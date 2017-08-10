@@ -7,7 +7,7 @@ This configuration is an extension of the airbnb codestyle which is [available h
 ## Installation
 
 ```
-npm i eslint-config-shopgate --save-dev
+npm i @shopgate/eslint-config --save-dev
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Add the following to the `.eslintrc` in your project:
 
 ```
 {
-  "extends": "shopgate",
+  "extends": "@shopgate/eslint-config",
   ...
 }
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-shopgate",
+  "name": "@shopgate/eslint-config",
   "version": "1.0.0",
   "description": "The eslint rules for all projects at Shopgate.",
   "author": "Shopgate <support@shopgate.com>",
