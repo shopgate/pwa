@@ -6,7 +6,7 @@ This configuration is an extension of the airbnb codestyle which is [available h
 
 ## Installation
 
-```
+```sh
 npm i @shopgate/eslint-config --save-dev
 ```
 
@@ -14,7 +14,7 @@ npm i @shopgate/eslint-config --save-dev
 
 Add the following to the `.eslintrc` in your project:
 
-```
+```javascript
 {
   "extends": "@shopgate/eslint-config",
   ...
@@ -47,9 +47,9 @@ No code should be left commented out.
 ```javascript
 /**
  * static propTypes = {
- *    width: PropTypes.string.isRequired,
- *    color: PropTypes.string,
- *    height: PropTypes.string.isRequired,
+ *   width: PropTypes.string.isRequired,
+ *   color: PropTypes.string,
+ *   height: PropTypes.string.isRequired,
  * };
  */
 ```
