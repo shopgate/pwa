@@ -1,0 +1,31 @@
+{
+  "name": "eslint-config-shopgate",
+  "version": "1.0.0",
+  "description": "The eslint rules for all projects at Shopgate.",
+  "author": "Shopgate <support@shopgate.com>",
+  "license": "Apache-2.0",
+  "main": "./ruleset/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shopgate/eslint-config-shopgate.git"
+  },
+  "keywords": [
+    "eslint",
+    "shopgate"
+  ],
+  "dependencies": {
+    "babel-eslint": "7.2.3",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.3",
+    "eslint-plugin-eslint-comments": "1.0.0",
+    "eslint-plugin-extra-rules": "0.8.1"
+  },
+  "devDependencies": {
+    "babel-core": "6.24.1",
+    "babel-preset-latest": "6.24.1",
+    "babel-preset-stage-0": "6.24.1"
+  }
+}
