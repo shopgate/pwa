@@ -1,0 +1,19 @@
+{
+  "name": "theme-gmd",
+  "version": "1.0.0",
+  "main": "index.jsx",
+  "repository": "https://devbucket@github.com/shopgate/theme-gmd.git",
+  "author": "Shopgate <support@shopgate.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-preset-latest": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-templates": "0.6.1"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "1.0.2"
+  }
+}
