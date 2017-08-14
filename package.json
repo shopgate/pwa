@@ -9,6 +9,15 @@
   "scripts": {
     "precommit": "lint-staged"
   },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.js": "eslint --parser babel-eslint"
+    }
+  },
+  "pre-commit": [
+    "precommit"
+  ],
   "dependencies": {
     "babel-preset-latest": "6.24.1",
     "babel-preset-stage-0": "6.24.1"
