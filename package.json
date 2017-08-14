@@ -1,0 +1,21 @@
+{
+  "name": "tracking-core",
+  "version": "1.0.0",
+  "description": "The Shopgate Cloud tracking core.",
+  "main": "index.js",
+  "repository": "git@github.com:shopgate/tracking-core.git",
+  "author": "Shopgate <support@shopgate.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "babel-preset-latest": "6.24.1",
+    "babel-preset-stage-0": "6.24.1"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "1.0.2",
+    "lint-staged": "4.0.3",
+    "pre-commit": "1.2.2"
+  }
+}
