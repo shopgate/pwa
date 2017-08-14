@@ -1,5 +1,5 @@
 {
-  "name": "tracking-core",
+  "name": "@shopgate/tracking-core",
   "version": "1.0.0",
   "description": "The Shopgate Cloud tracking core.",
   "main": "index.js",
