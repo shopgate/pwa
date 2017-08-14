@@ -6,6 +6,18 @@
   "repository": "git@github.com:shopgate/tracking-ga-native.git",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.js": "eslint --parser babel-eslint"
+    }
+  },
+  "pre-commit": [
+    "precommit"
+  ],
   "dependencies": {
     "babel-preset-latest": "6.24.1",
     "babel-preset-stage-0": "6.24.1"
