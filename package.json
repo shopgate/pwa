@@ -1,23 +1,31 @@
 {
   "name": "tracking-ga-native",
   "version": "1.0.0",
-  "description": "Shopgate's Google Analytics tracker.",
+  "description": "Shopgate's Google Analytics native tracker",
   "main": "index.js",
-  "dependencies": {
-    "tracking-core": "git+https://github.com/shopgate/tracking-core.git"
-  },
-  "devDependencies": {},
+  "repository": "git@github.com:shopgate/tracking-ga-native.git",
+  "author": "Shopgate <support@shopgate.com>",
+  "license": "Apache-2.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "precommit": "lint-staged"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shopgate/tracking-ga-native.git"
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.js": "eslint --parser babel-eslint"
+    }
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shopgate/tracking-ga-native/issues"
+  "pre-commit": [
+    "precommit"
+  ],
+  "dependencies": {
+    "babel-preset-latest": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "@shopgate/tracking-core": "^1.0.0"
   },
-  "homepage": "https://github.com/shopgate/tracking-ga-native#readme"
+  "devDependencies": {
+    "@shopgate/eslint-config": "1.0.2",
+    "lint-staged": "4.0.3",
+    "pre-commit": "1.2.2"
+  }
 }
