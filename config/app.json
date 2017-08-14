@@ -1,0 +1,14 @@
+{
+  "publicPath": null,
+  "appId": "shop_30694",
+  "shopName": "Offizieller Shopgate Testshop",
+  "shopIsActive": true,
+  "language": "en-us",
+  "logo": "https://data.shopgate.com/shops/23720/webapp@2x.png",
+  "colors": {},
+  "forgotPasswordUrl": "https://material-fashion.myshopify.com/admin/auth/recover",
+  "extensions": [
+    "shopgate-tracking",
+    "core-widgets"
+  ]
+}

@@ -44,5 +44,5 @@ node_modules/
 .cache-loader
 
 # Project
-/config.js
+/config/local.json
 /public/

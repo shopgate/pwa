@@ -1,3 +1,37 @@
 {
-  "presets": ["latest", "stage-0", "react"]
+  "presets": [
+    "latest",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "transform-export-extensions",
+    "transform-react-jsx-source",
+    "transform-runtime"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel",
+        ["react-transform", {
+          "transforms": [
+            {
+              "transform": "react-transform-catch-errors",
+              "imports": [
+                "react",
+                "redbox-react"
+              ]
+            }
+          ]
+        }]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-inline-elements"
+      ]
+    }
+  }
 }

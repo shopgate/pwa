@@ -5,4 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-console.warn('IT WORKED!');
+import React from 'react';
+import { render } from 'react-dom';
+
+/**
+ * A test component.
+ * @return {JSX}
+ */
+const App = () => (
+  <h1>My Awesome Component</h1>
+);
+
+render(<App />, document.getElementById('root'));
