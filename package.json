@@ -1,0 +1,23 @@
+{
+  "name": "tracking-ga-native",
+  "version": "1.0.0",
+  "description": "Shopgate's Google Analytics tracker.",
+  "main": "index.js",
+  "dependencies": {
+    "tracking-core": "git+https://github.com/shopgate/tracking-core.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/tracking-ga-native.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shopgate/tracking-ga-native/issues"
+  },
+  "homepage": "https://github.com/shopgate/tracking-ga-native#readme"
+}
