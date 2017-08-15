@@ -1,6 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
 import {
   getRelevantConfigs,
+// eslint-disable-next-line import/no-unresolved
 } from 'Library/helpers/tracking';
 import Plugin from './Plugin';
 import config from './config';
