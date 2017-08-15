@@ -13,7 +13,7 @@ import { render } from 'react-dom';
  * @return {JSX}
  */
 const App = () => (
-  <h1>My Awesome Component</h1>
+  <h1>My Awesome React Component</h1>
 );
 
 render(<App />, document.getElementById('root'));
