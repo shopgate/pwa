@@ -1,4 +1,5 @@
-import SgTrackingPlugin from 'tracking-core/frontend/plugins/shopgate-tracking-plugin';
+import SgTrackingPlugin from '@shopgate/tracking-core/frontend/plugins/shopgate-tracking-plugin';
+// eslint-disable-next-line import/no-unresolved
 import { SGLink } from 'tracking-helper';
 
 /**
