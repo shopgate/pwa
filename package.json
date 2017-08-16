@@ -2,12 +2,12 @@
   "name": "@shopgate/tracking-core",
   "version": "1.0.0",
   "description": "The Shopgate Cloud tracking core.",
-  "main": "index.js",
   "repository": "git@github.com:shopgate/tracking-core.git",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register ./frontend/tests/shopgate-tracking-coreTest ./frontend/tests/shopgate-tracking-unifiedTest ./frontend/tests/shopgate-tracking-pluginTest ./frontend/tests/shopgate-tracking-app-handlerTest ./frontend/tests/shopgate-tracking-url-mappingTest ./frontend/tests/helperTest"
   },
   "lint-staged": {
     "concurrent": false,
@@ -19,8 +19,15 @@
     "precommit"
   ],
   "dependencies": {
+    "babel-core": "^6.24.1",
     "babel-preset-latest": "6.24.1",
-    "babel-preset-stage-0": "6.24.1"
+    "babel-preset-stage-0": "6.24.1",
+    "chai": "^3.5.0",
+    "jsdom": "^9.8.3",
+    "mocha": "^3.1.0",
+    "mocha-jsdom": "^1.1.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
