@@ -8,12 +8,39 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-/**
- * A test component.
- * @return {JSX}
- */
-const App = () => (
-  <h1>My Awesome React Component</h1>
-);
+const rootEl = document.getElementById('root');
 
-render(<App />, document.getElementById('root'));
+// Do HMR if we are in development mode.
+if (isDev) {
+  const { AppContainer } = require('react-hot-loader'); // eslint-disable-line global-require
+
+  // Renders the application on first run.
+  render(
+    <AppContainer>
+      <Routes />
+    </AppContainer>,
+    rootEl,
+    onload
+  );
+
+  if (module.hot) {
+    module.hot.accept('Templates/Routes', () => {
+      const NextMain = require('Templates/Routes').default; // eslint-disable-line global-require
+
+      // Renders the application on HMR injection.
+      render(
+        <AppContainer>
+          <NextMain />
+        </AppContainer>,
+        rootEl
+      );
+    });
+  }
+} else {
+  // Render without HMR.
+  render(
+    <Routes />,
+    rootEl,
+    onload
+  );
+}
