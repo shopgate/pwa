@@ -1,0 +1,30 @@
+{
+  "name": "@shopgate/pwa-common-commerce",
+  "version": "1.0.0",
+  "description": "Shopgate's commerce library for PWAs",
+  "repository": "shopgate/pwa-common-commerce",
+  "bugs": "https://github.com/shopgate/pwa-common-commerce/issues",
+  "homepage": "https://github.com/shopgate/pwa-common-commerce",
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-export-extensions": "6.22.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "1.0.2",
+    "enzyme": "^2.9.1",
+    "lint-staged": "4.0.3"
+  }
+}
