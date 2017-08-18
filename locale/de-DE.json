@@ -1,0 +1,98 @@
+{
+  "titles": {
+    "categories": "Kategorien",
+    "filter": "Filter",
+    "cart": "Warenkorb",
+    "shipping": "Versand"
+  },
+  "filter": {
+    "sort": {
+      "default": "Sortieren",
+      "most_popular": "Beliebteste",
+      "price_desc": "Preis: höchster zuerst",
+      "price_asc": "Preis: niedrigster zuerst"
+    },
+    "apply": "Anwenden",
+    "more": "mehr",
+    "clear": "Zurücksetzen",
+    "clear_all": "Alle zurücksetzen",
+    "view_all": "mehr"
+  },
+  "price": {
+    "from": "Ab {price}",
+    "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "currency": "EUR"
+  },
+  "product": {
+    "description_heading": "Beschreibung",
+    "load_more": "Mehr laden",
+    "pick_an_attribute": "{0} auswählen"
+  },
+  "category": {
+    "no_result": {
+      "heading": "Uups!",
+      "body": "Keine Produkte gefunden."
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Uups!",
+      "body": "Ihre Suche nach \"{searchPhrase}\" hat 0 Ergebnisse."
+    }
+  },
+  "shipping": {
+    "free": "Kostenloser Versand",
+    "free_short": "Kostenlos",
+    "cost": "{price} Versand"
+  },
+  "liveshopping": {
+    "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
+    "discount_badge": "SAVE {0}%"
+  },
+  "modal": {
+    "confirm": "Bestätigen",
+    "dismiss": "OK",
+    "ok": "Ok",
+    "title_error": "Hoppla!",
+    "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "cart": {
+    "subtotal": "Zwischensumme",
+    "checkout": "Zur Kasse",
+    "remove": "Entfernen",
+    "edit": "Bearbeiten",
+    "empty": "Ihr Warenkorb ist leer",
+    "continue": "Weiter shoppen",
+    "redeem_coupon": "Coupon Code eingeben",
+    "coupon_code": "Code",
+    "default_coupon_label": "Coupon",
+    "coupon_was_added": "Gutschein wurde hinzugefügt!"
+  },
+  "login": {
+    "headline": "Willkommen",
+    "subline": "Anmelden um fortzufahren",
+    "email": "Email",
+    "password": "Passwort",
+    "forgot_password": "Passwort vergessen?",
+    "forgot_password_popup": "Bitte benutzen Sie die Desktop Webseite um Ihr Passwort zurückzusetzen.",
+    "button": "Anmelden",
+    "no_account": "Sie haben noch kein Konto?",
+    "signup": "Registrieren",
+    "logout_message": "Sie wurden ausgeloggt."
+  },
+  "navigation": {
+    "sign_in_up": "Anmelden",
+    "home": "Startseite",
+    "categories": "Kategorien",
+    "wishlist": "Merkliste",
+    "my_orders": "Meine Bestellungen",
+    "cart": "Warenkorb",
+    "shipping": "Versandmethoden",
+    "about": "Impressum",
+    "payment": "Zahlungsarten",
+    "terms": "AGB",
+    "privacy": "Datenschutz",
+    "welcome_message": "Hallo {name}",
+    "logout": "Abmelden"
+  }
+}

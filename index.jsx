@@ -5,8 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+/**
+ * -------------------------------------------------------------------------
+ * ATTENTION:
+ * Change this file with caution.
+ * Your changes may break the react application!
+ * -------------------------------------------------------------------------
+ */
+
 import React from 'react';
 import { render } from 'react-dom';
+import onload from '@shopgate/pwa-core/commands/onload';
+import { isDev } from '@shopgate/pwa-common/helpers/environment';
+import Pages from './pages';
 
 const rootEl = document.getElementById('root');
 
@@ -17,21 +28,23 @@ if (isDev) {
   // Renders the application on first run.
   render(
     <AppContainer>
-      <Routes />
+      <Pages />
     </AppContainer>,
     rootEl,
     onload
   );
 
   if (module.hot) {
-    module.hot.accept('Templates/Routes', () => {
-      const NextMain = require('Templates/Routes').default; // eslint-disable-line global-require
+    module.hot.accept('./pages', () => {
+      const NextPages = require('./pages').default; // eslint-disable-line global-require
 
       // Renders the application on HMR injection.
       render(
-        <AppContainer>
-          <NextMain />
-        </AppContainer>,
+        (
+          <AppContainer>
+            <NextPages />
+          </AppContainer>
+        ),
         rootEl
       );
     });
@@ -39,7 +52,7 @@ if (isDev) {
 } else {
   // Render without HMR.
   render(
-    <Routes />,
+    <Pages />,
     rootEl,
     onload
   );

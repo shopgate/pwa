@@ -1,0 +1,98 @@
+{
+  "titles": {
+    "categories": "Categories",
+    "filter": "Filter",
+    "cart": "Cart",
+    "shipping": "Shipping"
+  },
+  "filter": {
+    "sort": {
+      "default": "Sort by",
+      "most_popular": "Most popular",
+      "price_desc": "Price: High to Low",
+      "price_asc": "Price: Low to High"
+    },
+    "apply": "Apply",
+    "more": "more",
+    "clear": "Clear",
+    "clear_all": "Clear all",
+    "view_all": "View all"
+  },
+  "price": {
+    "from": "From {price}",
+    "range": "Price range from {fromPrice} to {toPrice}",
+    "currency": "USD"
+  },
+  "product": {
+    "description_heading": "About",
+    "load_more": "Load more",
+    "pick_an_attribute": "Pick a {0}"
+  },
+  "category": {
+    "no_result": {
+      "heading": "Oops!",
+      "body": "No products found."
+    }
+  },
+  "search": {
+    "no_result": {
+      "heading": "Oops!",
+      "body": "Your search \"{searchPhrase}\" has 0 results."
+    }
+  },
+  "shipping": {
+    "free": "Free delivery",
+    "free_short": "Free",
+    "cost": "{price} shipping"
+  },
+  "liveshopping": {
+    "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}",
+    "discount_badge": "SAVE {0}%"
+  },
+  "modal": {
+    "confirm": "Confirm",
+    "dismiss": "Dismiss",
+    "ok": "Ok",
+    "title_error": "Oops!",
+    "body_error": "An unexpected error occured. Please try again."
+  },
+  "cart": {
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "edit": "Edit",
+    "empty": "Your cart is empty",
+    "continue": "Continue shopping",
+    "redeem_coupon": "Enter coupon code",
+    "coupon_code": "Code",
+    "default_coupon_label": "Coupon",
+    "coupon_was_added": "Coupon has been added to cart!"
+  },
+  "login": {
+    "headline": "Welcome",
+    "subline": "Login to continue",
+    "email": "Email",
+    "password": "Password",
+    "forgot_password": "Forgot password?",
+    "forgot_password_popup": "Please use the desktop website to reset your password.",
+    "button": "Login",
+    "no_account": "Don't have an account yet?",
+    "signup": "Sign up",
+    "logout_message": "You have been logged out."
+  },
+  "navigation": {
+    "sign_in_up": "Sign in/up",
+    "home": "Home",
+    "categories": "Categories",
+    "wishlist": "Favorites",
+    "my_orders": "My orders",
+    "cart": "Shopping cart",
+    "shipping": "Shipping methods",
+    "about": "About us",
+    "payment": "Payment methods",
+    "terms": "Terms",
+    "privacy": "Privacy policy",
+    "welcome_message": "Welcome {name}",
+    "logout": "Sign out"
+  }
+}
