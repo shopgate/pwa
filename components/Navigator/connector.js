@@ -1,11 +1,13 @@
 /**
- * Navigator component connector.
- * @module connectors/navigator
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 import { connect } from 'react-redux';
 import { goBackHistory } from '@shopgate/pwa-common/actions/history';
-import { logo } from '../../config/app';
+import { logo } from 'Config/app.json';
 import { setSearchPhrase, toggleSearch } from './action-creators';
 import {
   setNavigatorBackground,
@@ -73,13 +75,4 @@ const mapDispatchToProps = dispatch => ({
   enableNavigator: () => dispatch(enableNavigator()),
 });
 
-/**
- * Connects a component to the navigator store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const navigator = Component =>
-  connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Component)
-;
-
-export default navigator;
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

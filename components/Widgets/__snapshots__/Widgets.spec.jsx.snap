@@ -1,0 +1,448 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Widgets /> should not wrap a widget which is not a grid and has no height 1`] = `
+<Widgets
+  widgets={
+    Array [
+      Object {
+        "col": 0,
+        "row": 0,
+        "settings": Object {
+          "id": 83535,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        },
+        "type": "core-widgets/image",
+        "width": 12,
+      },
+    ]
+  }
+>
+  <div
+    className="bc-f7f7f7"
+  >
+    <ImageWidget
+      col={0}
+      row={0}
+      settings={
+        Object {
+          "id": 83535,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        }
+      }
+      type="core-widgets/image"
+      width={12}
+    >
+      <Image
+        alt={null}
+        animating={true}
+        className=""
+        forcePlaceholder={false}
+        highestResolutionLoaded={[Function]}
+        onError={null}
+        onLoad={null}
+        ratio={null}
+        resolutions={
+          Array [
+            Object {
+              "blur": 2,
+              "height": 50,
+              "width": 50,
+            },
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src="https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg"
+      >
+        <Transition
+          childrenStyles={
+            Object {
+              "appear": Object {
+                "opacity": 1,
+                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+              },
+              "base": Object {
+                "opacity": 0,
+                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+              },
+              "enter": Object {
+                "opacity": 1,
+                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+              },
+              "leave": Object {
+                "opacity": 0,
+                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+              },
+            }
+          }
+          className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-100p000P "
+          component="div"
+        >
+          <TransitionHooks
+            className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-100p000P "
+            component="div"
+          >
+            <div
+              className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-100p000P "
+            />
+          </TransitionHooks>
+        </Transition>
+      </Image>
+    </ImageWidget>
+  </div>
+</Widgets>
+`;
+
+exports[`<Widgets /> should render a grid if height is defined 1`] = `
+<Widgets
+  widgets={
+    Array [
+      Object {
+        "col": 0,
+        "height": 3,
+        "row": 0,
+        "settings": Object {
+          "id": 83535,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        },
+        "type": "core-widgets/image",
+        "width": 12,
+      },
+    ]
+  }
+>
+  <div
+    className="bc-f7f7f7"
+  >
+    <WidgetGrid
+      config={
+        Array [
+          Object {
+            "col": 0,
+            "height": 3,
+            "row": 0,
+            "settings": Object {
+              "id": 83535,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+            },
+            "type": "core-widgets/image",
+            "width": 12,
+          },
+        ]
+      }
+    >
+      <div
+        className="b-f8f8f8 position-relative"
+        style={
+          Object {
+            "height": "255px",
+          }
+        }
+      >
+        <Widget
+          cellSize={85}
+          component={[Function]}
+          config={
+            Object {
+              "col": 0,
+              "height": 3,
+              "row": 0,
+              "settings": Object {
+                "id": 83535,
+                "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+              },
+              "type": "core-widgets/image",
+              "width": 12,
+            }
+          }
+        >
+          <GridItem
+            className="d-block position-absolute h-255px w-100P  "
+            component="div"
+            grow={0}
+            shrink={1}
+          >
+            <div
+              className="d-block position-absolute h-255px w-100P  "
+            >
+              <div
+                className="position-absolute top-0 left-0 right-0 bottom-0 overflow-hidden"
+              >
+                <ImageWidget
+                  ratio={
+                    Array [
+                      12,
+                      3,
+                    ]
+                  }
+                  settings={
+                    Object {
+                      "id": 83535,
+                      "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+                    }
+                  }
+                >
+                  <Image
+                    alt={null}
+                    animating={true}
+                    className=""
+                    forcePlaceholder={false}
+                    highestResolutionLoaded={[Function]}
+                    onError={null}
+                    onLoad={null}
+                    ratio={
+                      Array [
+                        12,
+                        3,
+                      ]
+                    }
+                    resolutions={
+                      Array [
+                        Object {
+                          "blur": 2,
+                          "height": 50,
+                          "width": 50,
+                        },
+                        Object {
+                          "height": 440,
+                          "width": 440,
+                        },
+                      ]
+                    }
+                    src="https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg"
+                  >
+                    <Transition
+                      childrenStyles={
+                        Object {
+                          "appear": Object {
+                            "opacity": 1,
+                            "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                          },
+                          "base": Object {
+                            "opacity": 0,
+                            "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                          },
+                          "enter": Object {
+                            "opacity": 1,
+                            "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                          },
+                          "leave": Object {
+                            "opacity": 0,
+                            "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                          },
+                        }
+                      }
+                      className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-25p000P "
+                      component="div"
+                    >
+                      <TransitionHooks
+                        className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-25p000P "
+                        component="div"
+                      >
+                        <div
+                          className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-25p000P "
+                        />
+                      </TransitionHooks>
+                    </Transition>
+                  </Image>
+                </ImageWidget>
+              </div>
+            </div>
+          </GridItem>
+        </Widget>
+      </div>
+    </WidgetGrid>
+  </div>
+</Widgets>
+`;
+
+exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
+<Widgets
+  widgets={
+    Array [
+      Object {
+        "settings": Object {
+          "widgets": Array [
+            Object {
+              "col": 0,
+              "height": 5,
+              "row": 0,
+              "settings": Object {
+                "alt": "",
+                "id": "84961",
+                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                "link": "/category/",
+              },
+              "type": "core-widgets/image",
+              "width": 12,
+            },
+          ],
+        },
+        "type": "core-widgets/widget-grid",
+      },
+    ]
+  }
+>
+  <div
+    className="bc-f7f7f7"
+  >
+    <WidgetGrid
+      config={
+        Array [
+          Object {
+            "col": 0,
+            "height": 5,
+            "row": 0,
+            "settings": Object {
+              "alt": "",
+              "id": "84961",
+              "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+              "link": "/category/",
+            },
+            "type": "core-widgets/image",
+            "width": 12,
+          },
+        ]
+      }
+    >
+      <div
+        className="b-f8f8f8 position-relative"
+        style={
+          Object {
+            "height": "425px",
+          }
+        }
+      >
+        <Widget
+          cellSize={85}
+          component={[Function]}
+          config={
+            Object {
+              "col": 0,
+              "height": 5,
+              "row": 0,
+              "settings": Object {
+                "alt": "",
+                "id": "84961",
+                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                "link": "/category/",
+              },
+              "type": "core-widgets/image",
+              "width": 12,
+            }
+          }
+        >
+          <GridItem
+            className="d-block position-absolute h-425px w-100P  "
+            component="div"
+            grow={0}
+            shrink={1}
+          >
+            <div
+              className="d-block position-absolute h-425px w-100P  "
+            >
+              <div
+                className="position-absolute top-0 left-0 right-0 bottom-0 overflow-hidden"
+              >
+                <ImageWidget
+                  ratio={
+                    Array [
+                      12,
+                      5,
+                    ]
+                  }
+                  settings={
+                    Object {
+                      "alt": "",
+                      "id": "84961",
+                      "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                      "link": "/category/",
+                    }
+                  }
+                >
+                  <Link
+                    className="w-100P"
+                    href="/category/"
+                  >
+                    <div
+                      className="p-0 m-0 border-none text-align-left align-items-stretch w-100P w-100P"
+                      onClick={[Function]}
+                      role="link"
+                    >
+                      <Image
+                        alt=""
+                        animating={true}
+                        className=""
+                        forcePlaceholder={false}
+                        highestResolutionLoaded={[Function]}
+                        onError={null}
+                        onLoad={null}
+                        ratio={
+                          Array [
+                            12,
+                            5,
+                          ]
+                        }
+                        resolutions={
+                          Array [
+                            Object {
+                              "blur": 2,
+                              "height": 50,
+                              "width": 50,
+                            },
+                            Object {
+                              "height": 440,
+                              "width": 440,
+                            },
+                          ]
+                        }
+                        src="https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg"
+                      >
+                        <Transition
+                          childrenStyles={
+                            Object {
+                              "appear": Object {
+                                "opacity": 1,
+                                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                              },
+                              "base": Object {
+                                "opacity": 0,
+                                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                              },
+                              "enter": Object {
+                                "opacity": 1,
+                                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                              },
+                              "leave": Object {
+                                "opacity": 0,
+                                "transition": "opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+                              },
+                            }
+                          }
+                          className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-41p667P "
+                          component="div"
+                        >
+                          <TransitionHooks
+                            className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-41p667P "
+                            component="div"
+                          >
+                            <div
+                              className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-41p667P "
+                            />
+                          </TransitionHooks>
+                        </Transition>
+                      </Image>
+                    </div>
+                  </Link>
+                </ImageWidget>
+              </div>
+            </div>
+          </GridItem>
+        </Widget>
+      </div>
+    </WidgetGrid>
+  </div>
+</Widgets>
+`;

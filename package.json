@@ -1,20 +1,29 @@
 {
   "name": "theme-gmd",
   "version": "1.0.0",
+  "description": "Shopgate's Google Material app theme.",
   "main": "index.jsx",
-  "repository": "https://devbucket@github.com/shopgate/theme-gmd.git",
-  "author": "Shopgate <support@shopgate.com>",
+  "repository": "shopgate/theme-gmd",
+  "bugs": "https://github.com/shopgate/theme-gmd/issues",
+  "homepage": "https://github.com/shopgate/theme-gmd",
   "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
+  },
   "dependencies": {
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
     "babel-core": "^6.26.0",
+    "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "color": "^2.0.0",
     "cxs": "github:shopgate/cxs",
     "enzyme": "^2.9.1",
     "lodash": "^4.17.4",
@@ -26,12 +35,16 @@
     "react-redux": "^5.0.5",
     "react-swipeable": "^4.1.0",
     "react-templates": "^0.6.1",
+    "react-transition-group": "^2.2.0",
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
+    "eslint": "^3.19.0",
+    "eslint-import-resolver-babel-module": "^3.0.0",
+    "eslint-plugin-import": "^2.7.0",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"
   }

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IndicatorCircle /> should apply the given color 1`] = `
+<IndicatorCircle
+  color="#fff"
+  size={32}
+  strokeWidth={3}
+>
+  <svg
+    className="_uisg2n m-auto _1n4t02q max-width-100P max-height-100P"
+    height={32}
+    viewBox="25 25 50 50"
+    width={32}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      className="_uh5j2y fill-none stroke-fff stroke-dasharray-1__200 stroke-dashoffset-0 stroke-linecap-round stroke-miterlimit-10 stroke-width-3"
+      cx="50"
+      cy="50"
+      r="20"
+    />
+  </svg>
+</IndicatorCircle>
+`;
+
+exports[`<IndicatorCircle /> should apply the given size 1`] = `
+<svg
+  className="_uisg2n m-auto _1n4t02q max-width-100P max-height-100P"
+  height={32}
+  viewBox="25 25 50 50"
+  width={32}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    className="_uh5j2y fill-none stroke-5ccee3 stroke-dasharray-1__200 stroke-dashoffset-0 stroke-linecap-round stroke-miterlimit-10 stroke-width-3"
+    cx="50"
+    cy="50"
+    r="20"
+  />
+</svg>
+`;

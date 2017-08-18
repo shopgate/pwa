@@ -1,5 +1,11 @@
-// import connect from '@shopgate/pwa-common/helpers/routedConnect';
-import { connect } from 'react-redux';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import connect from '@shopgate/pwa-common/helpers/routedConnect';
 import { getPageConfig } from '@shopgate/pwa-common/actions/page';
 
 /**
@@ -22,13 +28,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-/**
- * Connects a component to the widget store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const homepage = Component =>
-  connect(mapStateToProps, mapDispatchToProps)(Component)
-;
-
-export default homepage;
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

@@ -1,8 +1,17 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React, { Component, PropTypes } from 'react';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import { View } from '../../components/View';
+import View from '../../components/View';
+import ViewContent from '../../components/ViewContent';
+import Widgets from '../../components/Widgets';
 import connect from './connector';
-// import PageTemplate from './template.rt';
+import styles from './style';
 
 /**
  * The homepage view component.
@@ -10,15 +19,13 @@ import connect from './connector';
  */
 class Page extends Component {
   static propTypes = {
-    getPageConfig: PropTypes.func,
-    params: PropTypes.shape(),
+    getPageConfig: PropTypes.func.isRequired,
+    params: PropTypes.shape().isRequired,
     configs: PropTypes.shape(),
     style: PropTypes.shape(),
   };
 
   static defaultProps = {
-    getPageConfig: () => {},
-    params: {},
     configs: {},
     style: null,
   };
@@ -55,7 +62,9 @@ class Page extends Component {
 
     return (
       <View style={this.props.style}>
-        <div />
+        <ViewContent className={styles.view} title={pageConfig.title || ''}>
+          <Widgets widgets={pageConfig.widgets} />
+        </ViewContent>
       </View>
     );
   }

@@ -1,5 +1,12 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import cxs from 'cxs';
-import { variables } from 'Templates/styles';
+import { navigator } from 'Styles/variables';
 
 const button = cxs({
   color: 'inherit',
@@ -7,8 +14,8 @@ const button = cxs({
   lineHeight: 1,
   outline: 0,
   padding: 0,
-  minWidth: variables.navigator.height,
-  height: variables.navigator.height,
+  minWidth: navigator.height,
+  height: navigator.height,
   position: 'relative',
   zIndex: 1,
 });

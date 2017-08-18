@@ -1,12 +1,21 @@
 {
   "presets": [
-    "env",
+    "latest",
     "react"
   ],
   "plugins": [
     "transform-object-rest-spread",
     "transform-class-properties",
-    "transform-export-extensions"
+    "transform-export-extensions",
+    "transform-react-jsx-source",
+    ["module-resolver", {
+      "alias": {
+        "Components": "./components",
+        "Config": "./config",
+        "Pages": "./pages",
+        "Styles": "./styles"
+      }
+    }]
   ],
   "env": {
     "development": {

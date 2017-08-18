@@ -6,8 +6,8 @@
  */
 
 import cxs from 'cxs';
-import { light } from '../../styles/colors';
-import { navigator, gap } from '../../styles/variables';
+import { light } from 'Styles/colors';
+import { navigator, gap } from 'Styles/variables';
 
 const header = cxs({
   position: 'fixed',

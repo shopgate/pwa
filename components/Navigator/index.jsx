@@ -7,16 +7,14 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@shopgate/pwa-common/components/Grid';
+import Grid from '@shopgate/pwa-common/components/Grid';
+import ProgressBar from 'Components/ProgressBar';
+import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
-import {
-  SearchButton,
-  CartButton,
-  ApplyFilterButton,
-  ProgressBar,
-} from 'Templates/components';
-import colors from '../../styles/colors';
+import SearchButton from './components/SearchButton';
+import CartButton from './components/CartButton';
+import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
 import styles from './style';
 
