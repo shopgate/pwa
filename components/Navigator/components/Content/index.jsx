@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { connect as historyConnector } from '@shopgate/pwa-common/connectors/history';
+import { connect as historyConnector } from '@shopgate/pwa-common/history/connectors';
 import { connect as navigatorConnector } from '../../connector';
 import Logo from './components/Logo';
 import Title from './components/Title';

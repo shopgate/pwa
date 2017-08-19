@@ -27,7 +27,7 @@ import {
   SET_NAVIGATOR_DISABLED,
   ENABLE_VIEW_TRACKING,
   DISABLE_VIEW_TRACKING,
-} from '../constants/ActionTypes';
+} from '../constants';
 
 /**
  * Toggles the navigator cart icon.

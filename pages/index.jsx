@@ -14,18 +14,17 @@ import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   // PAGE_PATH,
+} from '@shopgate/pwa-common/page/constants';
+import {
   // LOGIN_PATH,
   // REGISTER_PATH,
-} from '@shopgate/pwa-common/constants/RoutePaths';
-// import {
-//   CATEGORY_PATH,
-//   FILTER_PATH,
-//   ITEM_PATH,
-//   SEARCH_PATH,
-//   CART_PATH,
-//   CHECKOUT_PATH,
-//   ORDERS_PATH,
-// } from '@shopgate/pwa-common-commerce/constants/RoutePaths';
+} from '@shopgate/pwa-common/user/constants';
+// @TODO: import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+// @TODO: import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
+// @TODO: import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+// @TODO: import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+// @TODO: import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+// @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import Viewport from '../components/Viewport';
 // @TODO import { Dialog } from 'Templates/components';
 import locale from '../locale';

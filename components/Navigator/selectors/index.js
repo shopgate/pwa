@@ -9,7 +9,7 @@ import { createSelector } from 'reselect';
 import {
   getHistoryPathname,
   getQueryParamsAsString,
-} from '@shopgate/pwa-common/selectors/history';
+} from '@shopgate/pwa-common/history/selectors';
 
 /**
  * Selects the navigator state.

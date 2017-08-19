@@ -11,10 +11,12 @@ import {
   HISTORY_PUSH_ACTION,
   HISTORY_POP_ACTION,
   HISTORY_REPLACE_ACTION,
-} from '@shopgate/pwa-common/constants/ActionTypes';
-import { Button } from 'Library/components';
-import { ArrowIcon, BurgerIcon, CrossIcon } from 'Templates/components/icons';
-import { Ripple } from 'Templates/components';
+} from '@shopgate/pwa-common/history/constants';
+import Button from 'Components/Button';
+import ArrowIcon from 'Components/icons/ArrowIcon';
+import BurgerIcon from 'Components/icons/BurgerIcon';
+import CrossIcon from 'Components/icons/CrossIcon';
+import Ripple from 'Components/Ripple';
 import connect from '../../connector';
 import {
   NAV_STATE_INDEX,

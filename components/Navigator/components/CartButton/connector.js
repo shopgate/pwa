@@ -6,8 +6,9 @@
  */
 
 import { connect } from 'react-redux';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/constants/RoutePaths';
+import { getHistoryPathname } from '@shopgate/pwa-common/history/selectors';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,6 +17,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/constants/RoutePaths';
  */
 const mapStateToProps = state => ({
   activeCartRoute: getHistoryPathname(state) === CART_PATH,
+  cartProductCount: getCartProductDisplayCount(state),
 });
 
 export default Component => connect(mapStateToProps)(Component);

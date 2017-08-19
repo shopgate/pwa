@@ -6,7 +6,7 @@
  */
 
 import connect from '@shopgate/pwa-common/helpers/routedConnect';
-import { updateHistoryState } from '@shopgate/pwa-common/actions/history';
+import { updateHistoryState } from '@shopgate/pwa-common/history/actions';
 
 /**
  * Maps the contents of the state to the component props.

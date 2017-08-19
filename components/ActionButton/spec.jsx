@@ -7,7 +7,8 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { IndicatorCircle, RippleButton } from 'Templates/components';
+import IndicatorCircle from 'Components/IndicatorCircle';
+import RippleButton from 'Components/RippleButton';
 import ActionButton from './index';
 
 describe('<ActionButton />', () => {

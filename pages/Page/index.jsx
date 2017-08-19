@@ -6,10 +6,10 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import View from '../../components/View';
-import ViewContent from '../../components/ViewContent';
-import Widgets from '../../components/Widgets';
+import { PAGE_ID_INDEX } from '@shopgate/pwa-common/page/constants';
+import View from 'Components/View';
+import ViewContent from 'Components/ViewContent';
+import Widgets from 'Components/Widgets';
 import connect from './connector';
 import styles from './style';
 

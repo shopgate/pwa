@@ -6,8 +6,8 @@
  */
 
 import { connect } from 'react-redux';
-import { haveFiltersChanged } from 'Library/selectors/filters';
-import { applyFilters } from 'Library/actions/filters';
+import { haveFiltersChanged } from '@shopgate/pwa-common-commerce/filters/selectors';
+import { applyFilters } from '@shopgate/pwa-common-commerce/filters/actions';
 
 /**
  * Maps the contents of the state to the component props.

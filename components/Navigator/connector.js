@@ -6,23 +6,21 @@
  */
 
 import { connect } from 'react-redux';
-import { goBackHistory } from '@shopgate/pwa-common/actions/history';
+import { goBackHistory } from '@shopgate/pwa-common/history/actions';
 import { logo } from 'Config/app.json';
 import { setSearchPhrase, toggleSearch } from './action-creators';
-import {
-  setNavigatorBackground,
-  setNavigatorColor,
-  enableNavigatorIconShadow,
-  disableNavigatorIconShadow,
-  enableNavigatorSearch,
-  disableNavigatorSearch,
-  enableNavigatorTitle,
-  disableNavigatorTitle,
-  enableNavigator,
-  disableNavigator,
-  submitSearch,
-  toggleNavDrawer,
-} from './actions';
+import setNavigatorBackground from './actions/setNavigatorBackground';
+import setNavigatorColor from './actions/setNavigatorColor';
+import enableNavigatorIconShadow from './actions/enableNavigatorIconShadow';
+import disableNavigatorIconShadow from './actions/disableNavigatorIconShadow';
+import enableNavigatorSearch from './actions/enableNavigatorSearch';
+import disableNavigatorSearch from './actions/disableNavigatorSearch';
+import enableNavigatorTitle from './actions/enableNavigatorTitle';
+import disableNavigatorTitle from './actions/disableNavigatorTitle';
+import enableNavigator from './actions/enableNavigator';
+import disableNavigator from './actions/disableNavigator';
+import submitSearch from './actions/submitSearch';
+import toggleNavDrawer from './actions/toggleNavDrawer';
 import { isCurrentViewLoading } from '../View/selectors';
 
 /**
