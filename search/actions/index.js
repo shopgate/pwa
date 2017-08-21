@@ -2,7 +2,7 @@ import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 // TODO remove mocked pipeline as soon as real pipeline available.
 // eslint-disable-next-line capitalized-comments
-// import PipelineRequest from 'Library/classes/PipelineRequest';
+// import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import PipelineRequest from './MockedPipeline';
 import { getProducts } from '../../product/actions';
 import {
