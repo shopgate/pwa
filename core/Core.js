@@ -284,18 +284,14 @@ class Core {
    *
    * @returns {boolean} Information about the opt out state
    */
-  isOptOut() {
-    return isOptOut();
-  }
+  isOptOut = () => isOptOut();
 
   /**
    * Returns scanner (adscanner and QR) event action constants.
    *
    * @returns {Object} Scanner events
    */
-  getScannerEvents() {
-    return scannerEvents;
-  }
+  getScannerEvents = () => scannerEvents;
 
   /**
    * Helper function to create ad scanner opt_label from pageTitle and pageId
@@ -304,11 +300,11 @@ class Core {
    * @param {string} id ID of the ad
    * @returns {string} String from pageTitle and pageId
    */
-  buildAdImageIdentifierName(pageTitle, id) {
+  buildAdImageIdentifierName = (pageTitle, id) => {
     const name = (pageTitle) ? `${pageTitle} ` : '';
 
     return `${name}(id: ${id})`;
-  }
+  };
 
   /**
    * This function will handle the cross domain tracking, depending on which sdks are there
@@ -317,7 +313,7 @@ class Core {
    * @returns {boolean} Tells if the function executed the steps that are necessary for domain
    *   transitions via tracking plugins.
    */
-  crossDomainTracking(originalUrl, formElement) {
+  crossDomainTracking = (originalUrl, formElement) => {
     if (window.sgData.device.access === 'App') {
       return false;
     }
@@ -364,7 +360,7 @@ class Core {
     }
 
     return true;
-  }
+  };
 
   /**
    * Called from the outside when all plugins are registered
