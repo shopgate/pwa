@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-core": "github:shopgate/pwa-core",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-react-transform": "^2.0.2",

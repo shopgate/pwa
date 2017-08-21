@@ -7,18 +7,16 @@
 
 import React from 'react';
 // @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
-import Route from '@shopgate/pwa-common/components/router/route/Route';
+import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import '@shopgate/pwa-common/styles/reset';
 // @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   // PAGE_PATH,
-} from '@shopgate/pwa-common/page/constants';
-import {
   // LOGIN_PATH,
   // REGISTER_PATH,
-} from '@shopgate/pwa-common/user/constants';
+} from '@shopgate/pwa-common/constants/RoutePaths';
 // @TODO: import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 // @TODO: import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 // @TODO: import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';

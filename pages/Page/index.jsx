@@ -6,7 +6,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/page/constants';
+import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
 import Widgets from 'Components/Widgets';

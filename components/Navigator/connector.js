@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { goBackHistory } from '@shopgate/pwa-common/history/actions';
+import { goBackHistory } from '@shopgate/pwa-common/actions/history';
 import { logo } from 'Config/app.json';
 import { setSearchPhrase, toggleSearch } from './action-creators';
 import setNavigatorBackground from './actions/setNavigatorBackground';

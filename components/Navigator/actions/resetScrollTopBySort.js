@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { getSortOrder } from '@shopgate/pwa-common/history/selectors';
+import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import setViewScrollToTop from './setViewScrollToTop';
 
 /**

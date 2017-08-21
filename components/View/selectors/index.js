@@ -6,7 +6,7 @@
  */
 
 import { createSelector } from 'reselect';
-import { getHistoryPathname } from '@shopgate/pwa-common/history/selectors';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 
 /**
  * Retrieves the view state from the global state.

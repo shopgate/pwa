@@ -6,11 +6,11 @@
  */
 
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getSearchPhrase } from '@shopgate/pwa-common/history/selectors';
+import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import {
   pushHistory,
   replaceHistory,
-} from '@shopgate/pwa-common/history/actions';
+} from '@shopgate/pwa-common/actions/history';
 import {
   setSearchPhrase,
   toggleSearch,

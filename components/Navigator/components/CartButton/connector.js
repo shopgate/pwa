@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { getHistoryPathname } from '@shopgate/pwa-common/history/selectors';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 

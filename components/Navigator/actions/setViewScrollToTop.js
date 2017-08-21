@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { replaceHistory } from '@shopgate/pwa-common/history/actions';
+import { replaceHistory } from '@shopgate/pwa-common/actions/history';
 
 /**
  * Sets the view scroll position to top.
