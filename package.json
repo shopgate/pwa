@@ -10,6 +10,8 @@
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
   },
   "dependencies": {
+    "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-core": "github:shopgate/pwa-core",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "6.24.1",
@@ -19,8 +21,10 @@
     "babel-polyfill": "6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "lodash": "^4.17.4",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
