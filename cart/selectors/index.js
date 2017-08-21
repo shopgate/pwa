@@ -90,6 +90,17 @@ export const getProductPendingCount = createSelector(
 );
 
 /**
+ * Selects the total, theoretical, number of products in the cart.
+ * @param {Object} state The current application state.
+ * @return {number}
+ */
+export const getCartProductDisplayCount = createSelector(
+  getCartProductCount,
+  getProductPendingCount,
+  (productCount, pendingCount) => productCount + pendingCount
+);
+
+/**
  * Checks if the cart button is available.
  * @return {boolean}
  */
