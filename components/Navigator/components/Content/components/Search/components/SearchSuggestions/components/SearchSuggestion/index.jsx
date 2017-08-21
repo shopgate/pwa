@@ -6,7 +6,7 @@
  */
 
 import React, { PropTypes } from 'react';
-import { List } from 'Templates/components';
+import List from 'Components/List';
 import styles from '../../style';
 
 /**

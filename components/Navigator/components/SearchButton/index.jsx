@@ -7,8 +7,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MagnifierIcon } from 'Templates/components/icons';
-import { Ripple } from 'Templates/components';
+import MagnifierIcon from 'Components/icons/MagnifierIcon';
+import Ripple from 'Components/Ripple';
 import styles from './style';
 
 /**

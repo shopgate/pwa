@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { List } from 'Templates/components';
+import List from 'Components/List';
 import SearchSuggestion from './components/SearchSuggestion';
 import connect from './connector';
 import styles from './style';

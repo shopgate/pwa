@@ -13,7 +13,7 @@ import '@shopgate/pwa-common/styles/reset';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
-  // PAGE_PATH,
+  PAGE_PATH,
   // LOGIN_PATH,
   // REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
@@ -37,6 +37,10 @@ const Pages = () =>
     <Viewport>
       <Route
         path={`${INDEX_PATH}`}
+        component={Page}
+      />
+      <Route
+        path={`${PAGE_PATH}/:pageId`}
         component={Page}
       />
     </Viewport>

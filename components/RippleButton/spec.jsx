@@ -8,9 +8,9 @@
 import trim from 'lodash/trim';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import styles from 'Templates/components/button/Button.style';
-import Ripple from 'Templates/components/ripple/Ripple';
-import Button from 'Library/components/form/button/Button';
+import Ripple from 'Components/Ripple';
+import Button from 'Components/Button';
+import styles from 'Components/Button/style';
 import RippleButton from './index';
 
 describe('<RippleButton />', () => {

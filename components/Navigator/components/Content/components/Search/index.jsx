@@ -8,11 +8,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { compose } from 'redux';
 import classNames from 'classnames';
-import { connect as historyConnector } from '@shopgate/pwa-common/connectors/history';
-import { connect as navigatorConnector } from '../../../../connector';
 import SearchSuggestions from './components/SearchSuggestions';
+import connect from './connector';
 import styles from './style';
 
 /**
@@ -198,7 +196,4 @@ class Search extends Component {
   }
 }
 
-export default compose(
-  navigatorConnector,
-  historyConnector
-)(Search);
+export default connect(Search);

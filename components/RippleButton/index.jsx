@@ -8,8 +8,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Ripple from 'Components/Ripple';
-import Button from 'Templates/components/button/Button';
-import style from 'Templates/components/button/Button.style';
+import Button from 'Components/Button';
+import style from 'Components/Button/style';
 
 /**
  * The ripple button component is a special derivation of the basic button component

@@ -6,14 +6,14 @@
  */
 
 import { connect } from 'react-redux';
-import { fetchSearchSuggestions } from 'Library/actions/search';
+import { fetchSearchSuggestions } from '@shopgate/pwa-common-commerce/search/actions';
 import {
   getCurrentSearchSuggestions,
   getSearchPhrase,
   isFetchingCurrentSearchSuggestions,
-} from 'Library/selectors/search';
-import { submitSearch } from '../../../../../../actions';
-import { setSearchPhrase } from '../../../../../../action-creators';
+} from '@shopgate/pwa-common-commerce/search/selectors';
+import submitSearch from 'Components/Navigator/actions/submitSearch';
+import { setSearchPhrase } from 'Components/Navigator/action-creators';
 
 /**
  * Map state to props.

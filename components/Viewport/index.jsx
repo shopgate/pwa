@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Navigator from 'Components/Navigator';
-// import { Navigator, NavDrawer } from 'Templates/components';
+import NavDrawer from 'Components/NavDrawer';
 import styles from './style';
 
 /**
@@ -19,8 +19,7 @@ import styles from './style';
 const Viewport = props => (
   <main className={styles} role="main" itemScope itemProp="http://schema.org/MobileApplication">
     <Navigator />
-    {/* <Navigator />
-    <NavDrawer /> */}
+    <NavDrawer />
     {props.children}
   </main>
 );

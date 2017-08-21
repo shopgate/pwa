@@ -7,9 +7,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect as historyConnector } from '@shopgate/pwa-common/connectors/history';
-import { connect as navigatorConnector } from '../../connector';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import connect from './connector';
 import Logo from './components/Logo';
 import Title from './components/Title';
 import Search from './components/Search';
@@ -21,11 +20,13 @@ import Search from './components/Search';
  */
 const Content = (props) => {
   let currentTitle = null;
+
   if (!props.searchActive) {
-    if (props.path === '/') {
+    if (props.path === INDEX_PATH) {
       currentTitle = <Logo />;
     } else {
       const isSearching = props.getQueryParam('s') !== undefined;
+
       currentTitle = <Title onClick={isSearching ? props.submitSearch : null} />;
     }
   }
@@ -49,7 +50,4 @@ Content.defaultProps = {
   searchActive: false,
 };
 
-export default compose(
-  navigatorConnector,
-  historyConnector
-)(Content);
+export default connect(Content);

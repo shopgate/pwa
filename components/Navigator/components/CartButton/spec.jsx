@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CART_MAX_ITEMS } from 'Library/constants/DisplayOptions';
+import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import CartButton from './index';
 import CartButtonBadge from './components/CartButtonBadge';
 

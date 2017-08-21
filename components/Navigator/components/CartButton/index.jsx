@@ -7,14 +7,12 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import connect from 'Library/connectors';
-import { CartIcon } from 'Templates/components/icons';
-import { Ripple } from 'Templates/components';
+import CartIcon from 'Components/icons/CartIcon';
+import Ripple from 'Components/Ripple';
 import { navigator } from 'Styles/variables';
 import CartButtonBadge from './components/CartButtonBadge';
 import styles from './style';
-import { connector as cartButtonConnector } from './connector';
+import connect from './connector';
 
 /**
  * The cart button component. It will show the amount of products in the cart as
@@ -97,9 +95,4 @@ class CartButton extends Component {
   }
 }
 
-const enhance = compose(
-  connect.cart,
-  cartButtonConnector
-);
-
-export default enhance(CartButton);
+export default connect(CartButton);
