@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "precommit": "lint-staged",
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register ./frontend/tests/shopgate-tracking-coreTest ./frontend/tests/shopgate-tracking-unifiedTest ./frontend/tests/shopgate-tracking-pluginTest ./frontend/tests/shopgate-tracking-app-handlerTest ./frontend/tests/shopgate-tracking-url-mappingTest ./frontend/tests/helperTest"
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register  ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest"
   },
   "lint-staged": {
     "concurrent": false,
@@ -19,7 +19,15 @@
     "precommit"
   ],
   "dependencies": {
+    "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-core": "github:shopgate/pwa-core"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "1.0.2",
+    "lint-staged": "4.0.3",
+    "pre-commit": "1.2.2",
     "babel-core": "6.25.0",
+    "babel-plugin-module-resolver": "2.7.1",
     "babel-preset-latest": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "chai": "^3.5.0",
@@ -28,10 +36,5 @@
     "mocha-jsdom": "^1.1.0",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
-  },
-  "devDependencies": {
-    "@shopgate/eslint-config": "1.0.2",
-    "lint-staged": "4.0.3",
-    "pre-commit": "1.2.2"
   }
 }
