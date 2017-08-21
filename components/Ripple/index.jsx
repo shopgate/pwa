@@ -11,7 +11,7 @@ import { findDOMNode } from 'react-dom';
 import clamp from 'lodash/clamp';
 import { shift } from '@shopgate/pwa-common/helpers/data';
 import { getOffset } from '@shopgate/pwa-common/helpers/dom';
-import { dark } from 'Styles/colors';
+import colors from 'Styles/colors';
 import RippleAnimation from './components/RippleAnimation';
 import style from './style';
 
@@ -30,7 +30,7 @@ class Ripple extends PureComponent {
 
   static defaultProps = {
     className: '',
-    color: dark,
+    color: colors.dark,
     fill: false,
     overflow: false,
     size: null,

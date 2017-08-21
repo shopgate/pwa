@@ -6,13 +6,13 @@
  */
 
 import cxs from 'cxs';
-import { shade9 } from 'Styles/colors';
-import { gap } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const wrapper = cxs({
   position: 'relative',
   textAlign: 'center',
-  color: shade9,
+  color: colors.shade9,
   fontSize: 12,
   paddingBottom: 20,
 });
@@ -25,7 +25,7 @@ const unselectable = cxs({
 
 const deviceId = cxs({
   wordBreak: 'break-all',
-  padding: `0 ${gap.big}px`,
+  padding: `0 ${variables.gap.big}px`,
 });
 
 export default {

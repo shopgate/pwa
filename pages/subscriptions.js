@@ -5,12 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+ import navigator from 'Components/Navigator/subscriptions';
+ // @TODO import coupons from './coupons';
 
-const logo = cxs({
-  margin: '0 auto',
-});
-
-export default {
-  logo,
-};
+ export default [
+   navigator,
+  //  @TODO coupons,
+ ];

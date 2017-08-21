@@ -6,7 +6,7 @@
  */
 
 import cxs from 'cxs';
-import { navigator } from 'Styles/variables';
+import variables from 'Styles/variables';
 
 const button = cxs({
   color: 'inherit',
@@ -14,8 +14,8 @@ const button = cxs({
   lineHeight: 1,
   outline: 0,
   padding: 0,
-  minWidth: navigator.height,
-  height: navigator.height,
+  minWidth: variables.navigator.height,
+  height: variables.navigator.height,
   position: 'relative',
   zIndex: 1,
 });

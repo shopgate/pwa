@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { colors } from 'Styles/colors';
+import colors from 'Styles/colors';
 import styles from './style';
 
 /**

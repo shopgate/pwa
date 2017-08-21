@@ -6,11 +6,11 @@
  */
 
 import cxs from 'cxs';
-import { navigator, gap } from 'Styles/variables';
-import { light, primary } from 'Styles/colors';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const button = cxs({
-  background: primary,
+  background: colors.primary,
   fontSize: '1.5rem',
   lineHeight: 1,
   outline: 0,
@@ -31,7 +31,7 @@ const buttonContent = cxs({
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  color: light,
+  color: colors.light,
 });
 
 const badge = cxs({
@@ -39,13 +39,13 @@ const badge = cxs({
   fontSize: '0.75rem',
   lineHeight: 1.4,
   fontWeight: 700,
-  background: light,
-  color: primary,
-  borderRadius: gap.small,
-  height: gap.big,
-  minWidth: gap.big,
-  paddingLeft: (gap.small / 2),
-  paddingRight: (gap.small / 2),
+  background: colors.light,
+  color: colors.primary,
+  borderRadius: variables.gap.small,
+  height: variables.gap.big,
+  minWidth: variables.gap.big,
+  paddingLeft: (variables.gap.small / 2),
+  paddingRight: (variables.gap.small / 2),
   transform: 'translate3d(7px, -10px, 0)',
   boxShadow: '0 1px 1px rgba(0, 0, 0, 0.25)',
 });

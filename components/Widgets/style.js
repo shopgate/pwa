@@ -6,8 +6,8 @@
  */
 
 import cxs from 'cxs';
-import { shade8 } from 'Styles/colors';
+import colors from 'Styles/colors';
 
 export default cxs({
-  backgroundColor: shade8,
+  backgroundColor: colors.shade8,
 });

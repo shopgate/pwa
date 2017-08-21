@@ -6,7 +6,7 @@
  */
 
 import cxs from 'cxs';
-import { dark, light } from 'Styles/colors';
+import colors from 'Styles/colors';
 
 const duration = 300;
 const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
@@ -21,8 +21,8 @@ const container = cxs({
 const content = cxs({
   height: '100%',
   overflowY: 'scroll',
-  color: dark,
-  background: light,
+  color: colors.dark,
+  background: colors.light,
   WebkitOverflowScrolling: 'touch',
 });
 

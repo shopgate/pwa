@@ -6,14 +6,14 @@
  */
 
 import cxs from 'cxs';
-import { darkGray } from 'Styles/colors';
+import colors from 'Styles/colors';
 
 const item = cxs({
   marginLeft: 72,
 });
 
 const itemNotLast = cxs({
-  boxShadow: `0 1px 0 0 ${darkGray}`,
+  boxShadow: `0 1px 0 0 ${colors.darkGray}`,
   marginBottom: 1,
 });
 

@@ -6,10 +6,10 @@
  */
 
 import cxs from 'cxs';
-import { gap } from 'Styles/variables';
-import { dark, light, accent, shade4, shade7 } from 'Styles/colors';
+import variables from 'Styles/variables';
+import colors from 'Styles/colors';
 
-const buttonPadding = `${gap.small + 1}px ${gap.big}px ${gap.small - 1}px`;
+const buttonPadding = `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`;
 
 /**
  * Creates the button style.
@@ -84,11 +84,11 @@ const plain = () => ({
 const regular = (disabled) => {
   if (disabled) {
     // Flat disabled button style.
-    return createButtonStyles(shade4, null);
+    return createButtonStyles(colors.shade4, null);
   }
 
   // Flat enabled button style.
-  return createButtonStyles(dark, null);
+  return createButtonStyles(colors.dark, null);
 };
 
 /**
@@ -101,20 +101,20 @@ const primary = (disabled, flat) => {
   if (!flat) {
     if (disabled) {
       // Regular disabled button style.
-      return createButtonStyles(shade4, shade7);
+      return createButtonStyles(colors.shade4, colors.shade7);
     }
 
     // Regular enabled button style.
-    return createButtonStyles(light, accent);
+    return createButtonStyles(colors.light, colors.accent);
   }
 
   if (disabled) {
     // Flat disabled button style.
-    return createButtonStyles(shade4, null);
+    return createButtonStyles(colors.shade4, null);
   }
 
   // Flat enabled button style.
-  return createButtonStyles(accent, null);
+  return createButtonStyles(colors.accent, null);
 };
 
 /**
@@ -127,20 +127,20 @@ const secondary = (disabled, flat) => {
   if (!flat) {
     if (disabled) {
       // Regular disabled button style.
-      return createButtonStyles(shade4, shade7);
+      return createButtonStyles(colors.shade4, colors.shade7);
     }
 
     // Regular enabled button style.
-    return createButtonStyles(light, primary);
+    return createButtonStyles(colors.light, colors.primary);
   }
 
   if (disabled) {
     // Flat disabled button style.
-    return createButtonStyles(shade4, null);
+    return createButtonStyles(colors.shade4, null);
   }
 
   // Flat enabled button style.
-  return createButtonStyles(primary, null);
+  return createButtonStyles(colors.primary, null);
 };
 
 export default {

@@ -6,13 +6,13 @@
  */
 
 import cxs from 'cxs';
-import { shade7, light } from 'Styles/colors';
-import { gap, navigator } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const container = cxs({
   position: 'absolute',
   width: '100%',
-  margin: `0 0 0 -${gap.big}px`,
+  margin: `0 0 0 -${variables.gap.big}px`,
   top: '4px',
 });
 
@@ -21,9 +21,9 @@ const input = cxs({
   position: 'relative',
   width: '100%',
   fontSize: '1rem',
-  border: `1px ${shade7} solid`,
-  padding: `0 ${gap.big}px`,
-  background: light,
+  border: `1px ${colors.shade7} solid`,
+  padding: `0 ${variables.gap.big}px`,
+  background: colors.light,
   lineHeight: '46px',
   borderRadius: '2px',
   outline: 'none',
@@ -31,8 +31,8 @@ const input = cxs({
 
 const overlay = cxs({
   position: 'fixed',
-  left: -navigator.height,
-  top: navigator.height,
+  left: -variables.navigator.height,
+  top: variables.navigator.height,
   width: '100vw',
   height: '100vh',
   background: 'transparent',

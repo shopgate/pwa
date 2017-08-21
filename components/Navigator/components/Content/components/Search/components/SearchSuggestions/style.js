@@ -6,17 +6,17 @@
  */
 
 import cxs from 'cxs';
-import { navigator, gap } from 'Styles/variables';
-import { shade8, light } from 'Styles/colors';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const container = cxs({
   position: 'fixed',
-  top: navigator.height,
-  borderTop: `${gap.small / 2}px solid ${shade8}`,
+  top: variables.navigator.height,
+  borderTop: `${variables.gap.small / 2}px solid ${colors.shade8}`,
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: light,
+  backgroundColor: colors.light,
   overflowY: 'scroll',
 });
 

@@ -6,9 +6,11 @@
  */
 
 import React from 'react';
+import Helmet from 'react-helmet';
 // @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import '@shopgate/pwa-common/styles/reset';
+import 'Styles/fonts';
 // @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
@@ -26,6 +28,8 @@ import {
 import Viewport from '../components/Viewport';
 // @TODO import { Dialog } from 'Templates/components';
 import locale from '../locale';
+import reducers from './reducers';
+import subscriptions from './subscriptions';
 import Page from './Page';
 
 /**
@@ -33,8 +37,15 @@ import Page from './Page';
  * @returns {JSX}
  */
 const Pages = () =>
-  <App locale={locale}>
+  <App
+    locale={locale}
+    reducers={reducers}
+    subscriptions={subscriptions}
+  >
     <Viewport>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" />
+      </Helmet>
       <Route
         path={`${INDEX_PATH}`}
         component={Page}

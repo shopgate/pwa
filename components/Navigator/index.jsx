@@ -102,4 +102,4 @@ class Navigator extends Component {
   }
 }
 
-export default connect.navigator(Navigator);
+export default connect(Navigator);

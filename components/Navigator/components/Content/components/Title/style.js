@@ -6,7 +6,7 @@
  */
 
 import cxs from 'cxs';
-import { gap } from 'Styles/variables';
+import variables from 'Styles/variables';
 
 /**
  * Styling for the title.
@@ -19,7 +19,7 @@ const title = cxs({
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   width: '100%',
-  padding: `0 ${gap.big}px`,
+  padding: `0 ${variables.gap.big}px`,
 });
 
 /**

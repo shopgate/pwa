@@ -1,9 +1,9 @@
 import cxs from 'cxs';
 import Color from 'color';
-import { accent } from 'Styles/colors';
+import colors from 'Styles/colors';
 
 const progressBarHeight = 4;
-const progressBarBackground = Color(accent).lighten(0.4);
+const progressBarBackground = Color(colors.accent).lighten(0.4);
 
 const wrapper = cxs({
   background: progressBarBackground.hsl().string(),
@@ -19,7 +19,7 @@ const innerElement = cxs({
   ':before': {
     content: '""',
     position: 'absolute',
-    background: accent,
+    background: colors.accent,
     top: 0,
     left: 0,
     bottom: 0,
@@ -28,7 +28,7 @@ const innerElement = cxs({
   ':after': {
     content: '""',
     position: 'absolute',
-    background: accent,
+    background: colors.accent,
     top: 0,
     left: 0,
     bottom: 0,

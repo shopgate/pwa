@@ -7,8 +7,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { accent } from 'Styles/colors';
-import { loadingIndicator } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 import styles from './style';
 
 /**
@@ -41,9 +41,9 @@ IndicatorCircle.propTypes = {
 };
 
 IndicatorCircle.defaultProps = {
-  color: accent,
-  size: loadingIndicator.size,
-  strokeWidth: loadingIndicator.strokeWidth,
+  color: colors.accent,
+  size: variables.loadingIndicator.size,
+  strokeWidth: variables.loadingIndicator.strokeWidth,
 };
 
 export default IndicatorCircle;

@@ -46,3 +46,5 @@ node_modules/
 # Project
 /config/local.json
 /public/
+/extensions/**
+!/extensions/.gitkeep

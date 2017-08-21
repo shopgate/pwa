@@ -12,7 +12,7 @@ import {
   HISTORY_POP_ACTION,
   HISTORY_REPLACE_ACTION,
 } from '@shopgate/pwa-common/constants/History';
-import Button from 'Components/Button';
+import Button from '@shopgate/pwa-common/components/Button';
 import ArrowIcon from 'Components/icons/ArrowIcon';
 import BurgerIcon from 'Components/icons/BurgerIcon';
 import CrossIcon from 'Components/icons/CrossIcon';
@@ -152,4 +152,4 @@ class NavButton extends PureComponent {
   }
 }
 
-export default connect.navigator(NavButton);
+export default connect(NavButton);

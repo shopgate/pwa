@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CartIcon from 'Components/icons/CartIcon';
 import Ripple from 'Components/Ripple';
-import { navigator } from 'Styles/variables';
+import variables from 'Styles/variables';
 import CartButtonBadge from './components/CartButtonBadge';
 import styles from './style';
 import connect from './connector';
@@ -74,7 +74,7 @@ class CartButton extends Component {
     const style = {};
 
     if (this.props.visible && this.props.cartProductCount > 0) {
-      style.minWidth = navigator.height;
+      style.minWidth = variables.navigator.height;
       style.transform = 'translate3d(0, 0, 0)';
       style.transitionDelay = '600ms';
 

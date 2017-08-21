@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 import logout from '@shopgate/pwa-common/actions/user/logout';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import { toggleNavDrawer } from 'Components/Navigator/actions/toggleNavDrawer';
+import toggleNavDrawer from 'Components/Navigator/actions/toggleNavDrawer';
 import { getMenuById } from './selectors';
 import { QUICKLINKS_MENU } from './constants';
 

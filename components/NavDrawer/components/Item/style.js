@@ -6,8 +6,8 @@
  */
 
 import cxs from 'cxs';
-import { light, primary as primaryColor, shade11 } from 'Styles/colors';
-import { gap } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const container = cxs({
   position: 'relative',
@@ -19,42 +19,42 @@ const grid = cxs({
 
 const icon = cxs({
   position: 'relative',
-  top: gap.big,
+  top: variables.gap.big,
   width: 72,
   fontSize: '1.5rem',
-  padding: `0 ${gap.big * 2}px 0 ${gap.big}px`,
-  color: shade11,
+  padding: `0 ${variables.gap.big * 2}px 0 ${variables.gap.big}px`,
+  color: colors.shade11,
 });
 
 const label = cxs({
   display: 'flex',
   alignItems: 'flex-start',
-  padding: `${gap.big + 2}px 0`,
+  padding: `${variables.gap.big + 2}px 0`,
   fontSize: '0.875rem',
   fontWeight: 500,
 });
 
 const count = cxs({
-  backgroundColor: primaryColor,
-  color: light,
+  backgroundColor: colors.primary,
+  color: colors.light,
   fontSize: '0.75rem',
   fontWeight: 700,
-  height: gap.big * 1.125,
-  minWidth: gap.big * 1.125,
-  borderRadius: gap.big * 1.125,
+  height: variables.gap.big * 1.125,
+  minWidth: variables.gap.big * 1.125,
+  borderRadius: variables.gap.big * 1.125,
   position: 'relative',
   textAlign: 'center',
-  padding: `0 ${gap.small * 0.625}px`,
-  margin: `${gap.big * 1.1875}px ${gap.big}px`,
+  padding: `0 ${variables.gap.small * 0.625}px`,
+  margin: `${variables.gap.big * 1.1875}px ${variables.gap.big}px`,
 });
 
 const primary = cxs({
-  background: primaryColor,
+  background: colors.primary,
   [`.${icon}`]: {
-    color: light,
+    color: colors.light,
   },
   [`.${label}`]: {
-    color: light,
+    color: colors.light,
   },
 });
 

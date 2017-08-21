@@ -6,13 +6,13 @@
  */
 
 import cxs from 'cxs';
-import { shade7 } from 'Styles/colors';
-import { gap } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const divider = cxs({
   height: 1,
-  margin: `${gap.big}px 0`,
-  background: shade7,
+  margin: `${variables.gap.big}px 0`,
+  background: colors.shade7,
   border: 0,
 });
 

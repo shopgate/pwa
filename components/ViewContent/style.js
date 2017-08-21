@@ -6,8 +6,8 @@
  */
 
 import cxs from 'cxs';
-import { light } from 'Styles/colors';
-import { navigator } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 /**
  * Creates the container style.
@@ -15,13 +15,13 @@ import { navigator } from 'Styles/variables';
  * @return {string} The container style class.
  */
 const container = (hasNavigator = true) => cxs({
-  background: light,
+  background: colors.light,
   overflow: 'auto',
   overflowScrolling: 'touch',
   WebkitOverflowScrolling: 'touch',
   width: '100%',
   position: 'absolute',
-  top: hasNavigator ? navigator.height : 0,
+  top: hasNavigator ? variables.navigator.height : 0,
   bottom: 0,
   display: 'flex',
   flexDirection: 'column',
@@ -30,7 +30,7 @@ const container = (hasNavigator = true) => cxs({
     display: 'block',
     top: 0,
     width: '100%',
-    height: hasNavigator ? navigator.height : 0,
+    height: hasNavigator ? variables.navigator.height : 0,
     zIndex: 3,
     content: '""',
     transition: 'box-shadow 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -39,7 +39,7 @@ const container = (hasNavigator = true) => cxs({
 
 const containerShaded = cxs({
   ':before': {
-    boxShadow: navigator.shadow,
+    boxShadow: variables.navigator.shadow,
   },
 });
 

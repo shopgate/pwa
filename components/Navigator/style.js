@@ -6,16 +6,16 @@
  */
 
 import cxs from 'cxs';
-import { light } from 'Styles/colors';
-import { navigator, gap } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const header = cxs({
   position: 'fixed',
-  height: navigator.height,
+  height: variables.navigator.height,
   left: 0,
   top: 0,
   width: '100%',
-  background: light,
+  background: colors.light,
   zIndex: 2,
 });
 
@@ -29,8 +29,8 @@ const title = cxs({
   display: 'flex',
   height: '100%',
   alignItems: 'center',
-  paddingLeft: gap.big,
-  paddingRight: gap.big,
+  paddingLeft: variables.gap.big,
+  paddingRight: variables.gap.big,
   fontSize: '1.25rem',
   fontWeight: 500,
 });

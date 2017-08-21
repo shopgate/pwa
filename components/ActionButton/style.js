@@ -6,9 +6,9 @@
  */
 
 import cxs from 'cxs';
-import { gap } from 'Styles/variables';
+import variables from 'Styles/variables';
 
-const halfGapBig = gap.big / 2;
+const halfGapBig = variables.gap.big / 2;
 
 const containerBase = {
   textAlign: 'center',

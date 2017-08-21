@@ -6,17 +6,17 @@
  */
 
 import cxs from 'cxs';
-import { light, accent } from 'Styles/colors';
-import { gap } from 'Styles/variables';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const container = cxs({
   marginBottom: 4,
 });
 
 const loggedIn = cxs({
-  background: accent,
-  color: light,
-  padding: `${gap.small + 1}px ${gap.big}px ${gap.small - 1}px`,
+  background: colors.accent,
+  color: colors.light,
+  padding: `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`,
 });
 
 const ellipsis = {
