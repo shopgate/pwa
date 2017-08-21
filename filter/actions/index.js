@@ -33,7 +33,7 @@ import {
   getHistoryFilterIndex,
 } from '../selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
-import { getProducts } from '../../product/actions';
+import getProducts from '../../product/actions/getProducts';
 import { FILTER_PATH } from '../constants';
 
 /**
