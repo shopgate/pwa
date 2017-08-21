@@ -4,7 +4,7 @@ import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 // eslint-disable-next-line capitalized-comments
 // import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import PipelineRequest from './MockedPipeline';
-import { getProducts } from '../../product/actions';
+import getProducts from '../../product/actions/getProducts';
 import {
   requestSearchSuggestions,
   receiveSearchSuggestions,
