@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -6,8 +6,7 @@
  */
 
 import SgTrackingPlugin from '@shopgate/tracking-core/plugins/Base';
-// eslint-disable-next-line import/no-unresolved
-import { SGLink } from 'tracking-helper';
+import { SGLink } from '@shopgate/tracking-core/helpers/helper';
 
 /**
  * List of public custom events
