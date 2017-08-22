@@ -73,7 +73,7 @@ class SgGoogleNative extends SgTrackingPlugin {
     /**
      * Page view which gets data for viewContent and triggers pageView cmd with whitelist.
      *
-     * @return bool - MUST return false so it won't be processed via unified
+     * @return {boolean} MUST return false so it won't be processed via unified
      */
     this.register.pageview((data, raw) => {
       const formattedData = SgTrackingPlugin.formatData('viewContent', raw);
@@ -95,6 +95,11 @@ class SgGoogleNative extends SgTrackingPlugin {
       return false;
     });
 
+   /**
+    * Register for the setCampaignWithUrl event and triggers the appHandler
+    *
+    * @return {boolean} MUST return false so it won't be processed via unified
+    */
     this.register.setCampaignWithUrl((data, raw) => {
       const finalData = {
         url: data.url,
@@ -134,7 +139,7 @@ class SgGoogleNative extends SgTrackingPlugin {
     this.register.viewContent(() => false);
 
     /*
-     Custom events starts here
+     * Custom events starts here
      */
     publicCustomEvents.forEach((name) => {
       this.register[name]((data) => {
@@ -169,5 +174,4 @@ class SgGoogleNative extends SgTrackingPlugin {
 
 export default SgGoogleNative;
 
-// Export the "module"
 window.SgGoogleNative = SgGoogleNative;
