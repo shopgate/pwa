@@ -9,7 +9,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { ApplyFilterButton } from './index';
 
-jest.mock('Library/actions/history', () => ({
+jest.mock('@shopgate/pwa-common/actions/history', () => ({
   goBackHistory: jest.fn(),
 }));
 

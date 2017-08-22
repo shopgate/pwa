@@ -13,18 +13,15 @@ jest.mock('react-portal', () => (
 ));
 
 // Mock the parsed link component.
-jest.mock('Library/helpers/parsed-link', () => (
+jest.mock('@shopgate/pwa-common/helpers/parsed-link', () => (
   class {
     open = () => {};
   }
 ));
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/navigator', () => obj => obj);
-jest.mock('Library/connectors/cart', () => obj => obj);
-jest.mock('Library/connectors/user', () => obj => obj);
-jest.mock('Library/connectors/menu', () => obj => obj);
-jest.mock('Library/components/client-information/connector', () => (obj) => {
+jest.mock('./connector', () => obj => obj);
+jest.mock('Components/ClientInformation/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {

@@ -12,7 +12,7 @@ import Logo from './components/Logo';
 import Title from './components/Title';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/navigator', () => (obj) => {
+jest.mock('./connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -21,18 +21,9 @@ jest.mock('Library/connectors/navigator', () => (obj) => {
     action: 'POP',
     title: 'My Title',
     submitSearch: () => {},
-  };
-
-  return newObj;
-});
-
-// Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/history', () => (obj) => {
-  const newObj = obj;
-  newObj.defaultProps = {
-    ...newObj.defaultProps,
     getQueryParam: () => null,
   };
+
   return newObj;
 });
 
