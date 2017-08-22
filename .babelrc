@@ -7,14 +7,5 @@
 
 {
   "presets": ["latest", "stage-0"],
-  "plugins": [
-    ["module-resolver", {
-      "root": ["./"],
-      "cwd": "babelrc",
-      "alias": {
-        "tracking-helper": "./helpers/helper"
-      }
-    }],
-  ],
 }
 

@@ -531,3 +531,5 @@ const addedToCartProduct = {
 };
 
 export { sgData, sgDataOrder, sgDataSearch, sgDataCategoryAll, sgDataProduct, sgDataCheckout, addedToCartProduct, product };
+
+/* eslint-enable */

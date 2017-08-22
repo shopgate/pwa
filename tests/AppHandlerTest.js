@@ -25,8 +25,7 @@ describe('AppHandler', () => {
     window.SGEvent = {};
 
     appHandler = require('../core/AppHandler').default;
-    // eslint-disable-next-line import/no-unresolved
-    SGAction = require('tracking-helper').SGAction;
+    SGAction = require('../helpers/helper').SGAction;
   });
 
   /**

@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+/* global $ */
+
 // eslint-disable-next-line import/no-unresolved
 export { default as SGLink } from 'Library/1.0/common/shopgate-link.js';
 

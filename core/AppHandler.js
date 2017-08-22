@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// eslint-disable-next-line import/no-unresolved
-import { SGAction } from 'tracking-helper';
+import { SGAction } from '../helpers/helper';
 
 /**
  * Handler for the communication between the tracking plugins and the app (LibShopgate_App)

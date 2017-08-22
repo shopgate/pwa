@@ -34,8 +34,7 @@ describe('FbPixel', () => {
 
     document.body.innerHTML = '<head><script></script></head><body></body>';
 
-    // eslint-disable-next-line import/no-unresolved
-    SGLink = require('tracking-helper').SGLink;
+    SGLink = require('../helpers/helper').SGLink;
     SgFbPixelTracking = require('../plugins/trackers/FbPixel').default;
     SgTrackingCore = require('../core/Core').default.reset();
     trackingCoreEvents = require('./helpers/triggerTrackingCoreEvents');

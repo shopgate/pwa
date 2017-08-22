@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// eslint-disable-next-line import/no-unresolved
-import { hex2bin, SGLink } from 'tracking-helper';
+import { hex2bin, SGLink } from './helper';
 import sgTrackingUrlMapper from './urlMapping';
 import { customEvents } from '../helpers/events';
 

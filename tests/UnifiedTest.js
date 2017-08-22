@@ -29,8 +29,7 @@ describe('Unified', () => {
     global.console.groupEnd = () => {};
     window.SGEvent = {};
 
-    // eslint-disable-next-line import/no-unresolved
-    trackingHelper = require('tracking-helper');
+    trackingHelper = require('../helpers/helper');
     SgTrackingCore = require('../core/Core').default.reset().registerFinished();
     SgUnifiedTracking = require('../plugins/trackers/Unified').default;
   });

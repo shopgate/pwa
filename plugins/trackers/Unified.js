@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// eslint-disable-next-line import/no-unresolved
-import { sendDataRequest } from 'tracking-helper';
+import { sendDataRequest } from '../../helpers/helper';
 import BasePlugin from '../Base';
 
 /**

@@ -81,9 +81,11 @@ describe('GaBase', () => {
       </body>`;
 
     // Spy on universal sdk
-    global.window.ga = global.ga = gaSpy = sinon.spy();
+    gaSpy = sinon.spy();
+    global.window.ga = gaSpy;
+    global.ga = gaSpy;
 
-    // Save all registered callbacks for events
+      // Save all registered callbacks for events
     [...events, ...Object.keys(customEvents)].forEach((event) => {
       SgTrackingCore.register[event] = (cb) => {
         eventCallbacks[event] = cb;
@@ -110,11 +112,12 @@ describe('GaBase', () => {
     // Spy on ga classic
     gaqSpy = sinon.spy();
     // eslint-disable-next-line no-underscore-dangle
-    global.window._gaq = global._gaq = {
+    global._gaq = {
       push: gaqSpy,
     };
+    global.window._gaq = global._gaq;
 
-    // Check classic
+      // Check classic
     SgTrackingGAPlugin.createClassic({
       config: {
         merchant: [
