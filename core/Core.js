@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -61,7 +61,7 @@ class Core {
       /**
        * Track event
        * @param {Object} rawData Raw data from sgData Object
-       * @param {string} [page]  Identifier of the page
+       * @param {string} [page] Identifier of the page
        * @param {Object} [scope] Scope for the event
        * @returns {Core} Instance of Core
        */
@@ -69,6 +69,7 @@ class Core {
         this.notifyPlugins({ ...rawData }, event, page, scope);
     });
   }
+
   /**
    * Returns and creates event store if needed
    *
@@ -124,7 +125,10 @@ class Core {
       options: {},
     };
 
-    const pluginOptions = { ...defaults, ...options };
+    const pluginOptions = {
+      ...defaults,
+      ...options,
+    };
 
     if (!pluginOptions.trackerName) {
       console.warn(`'SgTrackingCore': Attempt to register for event "${eventName}" by a nameless tracker`);
@@ -154,14 +158,14 @@ class Core {
   /**
    * Notify plugins helper
    *
-   * @param {Object} rawData   Object with tracking data for the event
+   * @param {Object} rawData Object with tracking data for the event
    * @param {string} eventName Name of the event
-   * @param {string} [page]    Identifier of the page
-   * @param {Object} [scope]   Scope of the event
+   * @param {string} [page] Identifier of the page
+   * @param {Object} [scope] Scope of the event
    * @returns {void}
    */
   notifyHelper(rawData, eventName, page, scope = {}) {
-    // Exit if the user opt out. but not for the explicit add or remove tracker events
+    // Exit if the user opt out. But not for the explicit add or remove tracker events
     if ([REMOVE_TRACKER, ADD_TRACKER].indexOf(eventName) === -1 && isOptOut()) {
       return;
     }
@@ -190,7 +194,7 @@ class Core {
 
     console.info('[TRACK]', eventName, rawData);
 
-    /*
+    /**
      * Loop through the queue and check if there is a unified and other plugins.
      * Registered callbacks of plugins not equal to the unified one, have to be added to a
      * blacklist, so that the app does not propagate the unified data, but the custom one
@@ -234,10 +238,10 @@ class Core {
   /**
    * Notify plugins
    *
-   * @param {Object} rawData   Object with tracking data for the event
+   * @param {Object} rawData Object with tracking data for the event
    * @param {string} eventName Name of the event
-   * @param {string} [page]    Identifier of the page
-   * @param {Object} [scope]   Scope of the event
+   * @param {string} [page] Identifier of the page
+   * @param {Object} [scope] Scope of the event
    * @returns {Core} Instance of the core instance
    */
   notifyPlugins(rawData, eventName, page, scope) {
@@ -258,8 +262,8 @@ class Core {
   /**
    * Opt out mechanism for all tracking tools
    *
-   * @param {boolean} [optOutParam = true] if false -> revert the opt out (enable tracking)
-   * @returns {boolean|null} - state which was set
+   * @param {boolean} [optOutParam = true] If false -> revert the opt out (enable tracking)
+   * @returns {boolean|null} State which was set
    */
   optOut(optOutParam) {
     let out = optOutParam;
@@ -342,7 +346,7 @@ class Core {
       // No classic sdk
 
       if (formElement) {
-        /*
+        /**
          * The no-param-reassign rule is deactivated on purpose,
          * since the form action has to be replaced in this situation
          */
@@ -371,7 +375,7 @@ class Core {
       return this;
     }
 
-    // Trigger all events that happened til now
+    // Trigger all events that happened till now
     this.triggeredEvents.forEach((entry) => {
       entry.function.apply(this, entry.params);
     });

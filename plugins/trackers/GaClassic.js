@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -6,17 +6,18 @@
  */
 
 /* global _gaq */
+
 /**
  * Tracking plugin for google analytics classic accounts
  */
 class GaClassic {
   /**
    * Constructor
-   * @param {Object}  options                   Common Tracking Configuration
+   * @param {Object} options Common Tracking Configuration
    * @param {boolean} [options.overrideUnified] If true -> overrides our unified tracking system
-   * @param {boolean} [options.useNativeSdk]    If true -> send data via our unified tracking system
-   *                                            to the native sdk
-   * @param {Object}  [options.config]          Configuration for google analytics classic tracking
+   * @param {boolean} [options.useNativeSdk] If true -> send data via our unified tracking system
+   *  to the native sdk
+   * @param {Object} [options.config] Configuration for google analytics classic tracking
    */
   constructor(options) {
     // eslint-disable-next-line no-underscore-dangle
@@ -70,6 +71,7 @@ class GaClassic {
    */
   initPlugin() {
     // Load the SDK
+    /* eslint-disable eslint-comments/no-unlimited-disable */
     /* eslint-disable */
     if ((typeof window._gaq === 'undefined' || typeof window._gaq._getAsyncTracker === 'undefined') || (global && global.it)) {
       (function() {
@@ -79,6 +81,7 @@ class GaClassic {
       })();
     }
     /* eslint-enable */
+    /* eslint-enable eslint-comments/no-unlimited-disable */
 
     // Setup merchant accounts
     this.merchantAccounts.forEach((account, index) => {
@@ -111,7 +114,7 @@ class GaClassic {
    * Function that sends the given command with the payload to the GA SDK
    * @param {string} command Name of the command
    * @param {Object|Array|string|Function} payload Data for the command,
-   *        or a function that returns data
+   *  or a function that returns data
    * @param {Object} [scope={}] Info if the event is for merchant and/or shopgate account
    */
   send(command, payload, scope = {}) {
@@ -120,9 +123,12 @@ class GaClassic {
       shopgate: true,
     };
 
-    const mergedScope = { ...defaults, ...scope };
+    const mergedScope = {
+      ...defaults,
+      ...scope,
+    };
 
-    /*
+    /**
      * Since we migrates all our classic account to universal,
      * Only the merchant can have classic accounts
      */

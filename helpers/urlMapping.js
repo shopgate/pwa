@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -6,9 +6,7 @@
  */
 
 /**
- *
  * Data modifier for urls
- *
  */
 
 // Contains a list of url parameter names that will be removed from the url
@@ -44,8 +42,8 @@ const pathWithParameters = (pageName, path) => {
   return `${pageName}/${path.join('/')}`;
 };
 
-// Mapping function, returns an array,
-//  The first value will be for shopgate account, second for merchant
+// Mapping function, returns an array.
+// The first value will be for shopgate account, second for merchant
 const mapping = {
   '': () => 'index',
 
@@ -79,7 +77,7 @@ const mapping = {
 /**
  * Maps an internal url to an external url that we can send to tracking providers
  *
- * @param {string} url    internal url
+ * @param {string} url internal url
  * @param {Object} [data] sgData object
  *
  * @returns {Object} external url
