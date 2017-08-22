@@ -43,9 +43,14 @@ const Pages = () =>
     subscriptions={subscriptions}
   >
     <Viewport>
-      <Helmet>
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" />
-      </Helmet>
+      {process.env.NODE_ENV === 'development' &&
+        <Helmet>
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900"
+            rel="stylesheet"
+          />
+        </Helmet>
+      }
       <Route
         path={`${INDEX_PATH}`}
         component={Page}
