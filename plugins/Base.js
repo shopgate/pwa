@@ -19,7 +19,7 @@ class Base {
    * @param {string} trackerName The name of the tracker that is represented by the plugin
    * @param {Object} options Configuration for the plugin
    * @param {Object} extendedDefaults Additional default options that are
-   *   needed by the inherited class
+   * needed by the inherited class
    */
   constructor(trackerName, options = {}, extendedDefaults = {}) {
     const defaults = {

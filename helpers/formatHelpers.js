@@ -371,6 +371,12 @@ dataFormatHelpers.search = (rawData) => {
   };
 };
 
+/**
+ * Return the url from the rawData
+ *
+ * @param {Object} rawData Raw data from the core
+ * @returns {Object} data for the setCampaignWithUrl event
+ */
 dataFormatHelpers.setCampaignWithUrl = rawData => ({
   url: rawData.url,
 });
