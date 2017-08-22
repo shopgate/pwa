@@ -21,7 +21,8 @@
   "dependencies": {
     "babel-preset-latest": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
-    "@shopgate/tracking-core": "github:shopgate/tracking-core"
+    "@shopgate/tracking-core": "github:shopgate/tracking-core",
+    "@shopgate/pwa-common": "github:shopgate/pwa-common"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",

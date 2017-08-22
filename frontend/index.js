@@ -5,10 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  getRelevantConfigs,
-// eslint-disable-next-line import/no-unresolved
-} from 'Library/helpers/tracking';
+import { getRelevantConfigs } from '@shopgate/pwa-common/helpers/tracking';
 import Plugin from './Plugin';
 import config from './config';
 
