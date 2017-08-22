@@ -9,6 +9,7 @@
     "transform-export-extensions",
     "transform-react-jsx-source",
     ["module-resolver", {
+      "cwd": "babelrc",
       "alias": {
         "Components": "./components",
         "Config": "./config",

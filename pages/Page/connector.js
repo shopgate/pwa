@@ -6,7 +6,7 @@
  */
 
 import connect from '@shopgate/pwa-common/helpers/routedConnect';
-import { getPageConfig } from '@shopgate/pwa-common/actions/page';
+import getPageConfig from '@shopgate/pwa-common/actions/page/getPageConfig';
 
 /**
  * Maps the contents of the state to the component props.

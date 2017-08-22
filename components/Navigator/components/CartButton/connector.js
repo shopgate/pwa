@@ -12,7 +12,7 @@ import {
   getCartProductDisplayCount,
   isCartButtonVisible,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { pushHistory } from '@shopgate/pwa-common/actions/history';
+import pushHistory from '@shopgate/pwa-common/actions/history/changeHistory';
 
 /**
  * Maps the contents of the state to the component props.
