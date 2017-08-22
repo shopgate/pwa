@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "sginit": "npm i shopgate/pwa-core shopgate/pwa-common shopgate/pwa-common-commerce --save",
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx --ext spec.jsx .",
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "test": "jest",
     "coverage": "jest --coverage"
   },

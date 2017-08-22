@@ -1,0 +1,69 @@
+{
+  "id": "shopgate-app-android-material",
+  "configuration": {
+    "language": {
+      "type": "bigApi",
+      "destination" : "frontend",
+      "params": {
+        "method":  "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "languageId"
+      }
+    },
+    "publicPath": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(publicPath)s/%(appId)s/%(themes[0].id)s/%(themes[0].version)s"
+      }
+    },
+    "appId": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(appId)s"
+      }
+    },
+    "logo": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "imageUrl"
+      }
+    },
+    "colors": {
+      "type": "s3",
+      "destination": "frontend",
+      "default": {},
+      "params": {
+        "s3Bucket": "shopgate-xs-extensions",
+        "s3Key": "%(s3Stage)s/applications/%(appId)s/colors.%(themes[0].id)s.json"
+      }
+    },
+    "shopName": {
+      "type": "bigApi",
+      "destination" : "frontend",
+      "params": {
+        "method":  "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "name"
+      }
+    },
+    "forgotPasswordUrl": {
+      "type": "bigApi",
+      "destination" : "frontend",
+      "default": null,
+      "params": {
+        "method":  "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
+        "key": "value"
+      }
+    }
+  }
+}

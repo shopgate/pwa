@@ -8,7 +8,6 @@
   "colors": {},
   "forgotPasswordUrl": "https://material-fashion.myshopify.com/admin/auth/recover",
   "extensions": [
-    "shopgate-tracking",
-    "core-widgets"
+    "commerce-widgets"
   ]
 }
