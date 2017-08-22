@@ -17,7 +17,6 @@
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
     "@shopgate/pwa-common-commerce": "github:shopgate/pwa-common-commerce",
     "@shopgate/pwa-core": "github:shopgate/pwa-core",
-    "@shopgate/pwa-unit-test": "github:shopgate/pwa-unit-test",
     "babel-core": "^6.26.0",
     "babel-plugin-glamor": "^3.0.0-1",
     "babel-plugin-module-resolver": "^2.7.1",
@@ -52,6 +51,7 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
+    "@shopgate/pwa-unit-test": "github:shopgate/pwa-unit-test",
     "coveralls": "^2.13.1",
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
