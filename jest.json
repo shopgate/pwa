@@ -11,8 +11,8 @@
   "snapshotSerializers": [
     "enzyme-to-json/serializer"
   ],
-  "testPathIgnorePatterns": [
-    "/node_modules/"
+  "transformIgnorePatterns": [
+    "node_modules/(?!@shopgate)/"
   ],
   "testRegex": "(/__tests__/.*|(\\.|/)spec)\\.(js|jsx)?$",
   "unmockedModulePathPatterns": [
@@ -26,8 +26,5 @@
   "setupFiles": [
     "@shopgate/pwa-unit-test/testSetup.js"
   ],
-  "setupTestFrameworkScriptFile": "@shopgate/pwa-unit-test/envSetup.js",
-  "transform": {
-    "\\.(js|jsx)$": "@shopgate/pwa-unit-test/babelTransform.js"
-  }
+  "setupTestFrameworkScriptFile": "@shopgate/pwa-unit-test/envSetup.js"
 }
