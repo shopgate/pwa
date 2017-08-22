@@ -9,7 +9,9 @@
   "license": "Apache-2.0",
   "scripts": {
     "sginit": "npm i shopgate/pwa-core shopgate/pwa-common shopgate/pwa-common-commerce --save",
-    "test": "jest --config ./jest.json"
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
+    "test": "jest --config ./jest.json",
+    "coverage": "jest --config ./jest.json --coverage"
   },
   "dependencies": {
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
+    "@shopgate/pwa-unit-test": "github:shopgate/pwa-unit-test",
     "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-import-resolver-babel-module": "^3.0.0",

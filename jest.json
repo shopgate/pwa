@@ -24,10 +24,10 @@
     "!**/node_modules/**"
   ],
   "setupFiles": [
-    "@shopgate/pwa-core/config/jest/testSetup.js"
+    "@shopgate/pwa-unit-test/testSetup.js"
   ],
-  "setupTestFrameworkScriptFile": "@shopgate/pwa-core/config/jest/envSetup.js",
+  "setupTestFrameworkScriptFile": "@shopgate/pwa-unit-test/envSetup.js",
   "transform": {
-    "\\.(js|jsx)$": "@shopgate/pwa-core/config/jest/babelTransform.js"
+    "\\.(js|jsx)$": "@shopgate/pwa-unit-test/babelTransform.js"
   }
 }
