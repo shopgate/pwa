@@ -9,7 +9,7 @@ import {
   updateHistoryState,
   pushHistory,
   goBackHistory,
-} from '@shopgate/pwa-common/actions/history';
+} from '@shopgate/pwa-common/actions/history/changeHistory';
 import {
   getSearchPhrase,
   getHistoryPathname,
