@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -19,7 +19,7 @@ class Base {
    * @param {string} trackerName The name of the tracker that is represented by the plugin
    * @param {Object} options Configuration for the plugin
    * @param {Object} extendedDefaults Additional default options that are
-   *                                  needed by the inherited class
+   *   needed by the inherited class
    */
   constructor(trackerName, options = {}, extendedDefaults = {}) {
     const defaults = {
@@ -29,7 +29,11 @@ class Base {
     };
 
     // Create the options for the plugin
-    this.options = { ...defaults, ...extendedDefaults, ...options };
+    this.options = {
+      ...defaults,
+      ...extendedDefaults,
+      ...options,
+    };
 
     this.trackingDisabled = false;
     this.trackerName = trackerName || '';
@@ -46,8 +50,8 @@ class Base {
       /**
        * Function to register a plugin for the event
        *
-       * @param {Function} callback  Function that is called if the event occurs
-       * @param {Object}   [optionParam] Options that will be passed to the core
+       * @param {Function} callback Function that is called if the event occurs
+       * @param {Object} [optionParam] Options that will be passed to the core
        * @returns {RemoveListener} Function to remove the listener
        */
       this.register[eventName] =
@@ -76,9 +80,9 @@ class Base {
   /**
    * Helper function to register a plugin for a specific event. Can be overwritten in the plugins.
    *
-   * @param {string}   eventName Name of the event
-   * @param {Function} callback  Callback from the plugin, to modify the data
-   * @param {Object}   options   Additional options that will be passed to the core
+   * @param {string} eventName Name of the event
+   * @param {Function} callback Callback from the plugin, to modify the data
+   * @param {Object} options Additional options that will be passed to the core
    * @returns {RemoveListener} Function to remove the listener
    * @private
    */

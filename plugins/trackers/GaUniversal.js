@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -6,10 +6,11 @@
  */
 
 /* global ga */
+
 // SgData access type constant for apps
 const ACCESS_TYPE_APP = 'App';
 
-/*
+/**
  * Dimensions and metrics
  * See: https://shopgate.atlassian.net/wiki/display/CONSUMER/Google+Analytics
  */
@@ -23,11 +24,11 @@ class GaUniversal {
   /**
    * Constructor
    *
-   * @param {Object}  options                   Common Tracking Configuration
+   * @param {Object} options Common Tracking Configuration
    * @param {boolean} [options.overrideUnified] If true -> overrides our unified tracking system
-   * @param {boolean} [options.useNativeSdk]    If true -> send data via our unified tracking system
-   *                                            to the native sdk
-   * @param {Object}  [options.config]          Configuration for facebook pixel tracking
+   * @param {boolean} [options.useNativeSdk] If true -> send data via our unified tracking system
+   *   to the native sdk
+   * @param {Object} [options.config] Configuration for facebook pixel tracking
    */
   constructor(options) {
     this.merchantAccounts = options.config.merchant;
@@ -66,12 +67,14 @@ class GaUniversal {
   initPlugin() {
     // Load the SDK (if the code is executed form a unit test, always load the sdk)
     if (typeof window.ga !== 'function' || (typeof global !== 'undefined' && typeof global.it === 'function')) {
+      /* eslint-disable eslint-comments/no-unlimited-disable */
       /* eslint-disable */
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       /* eslint-enable */
+      /* eslint-enable eslint-comments/no-unlimited-disable */
     }
 
     // Setup merchant accounts
@@ -146,7 +149,10 @@ class GaUniversal {
     };
 
     const useSendCmd = command !== 'require' && command.indexOf(':') === -1;
-    const mergedScope = { ...defaults, ...scope };
+    const mergedScope = {
+      ...defaults,
+      ...scope,
+    };
 
     if (mergedScope.merchant) {
       this.merchantAccounts.forEach((account) => {

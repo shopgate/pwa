@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -9,7 +9,7 @@ import DataRequest from '@shopgate/pwa-core/classes/DataRequest';
 import logger from '@shopgate/pwa-core/classes/Logger';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
-/*
+/**
  * We need to split the import and export here because of an babel/webpack issue.
  * "export { hex2bin } from 'Library/helpers/data';" is not working
  */
@@ -70,7 +70,7 @@ export class SGLink {
 
   /**
    * Encode the url and takes care of double encoding
-   * @param {string} string - string to be encoded
+   * @param {string} string String to be encoded
    * @returns {string} encoded string
    */
   static encodeURISafe(string) {
@@ -86,7 +86,7 @@ export class SGLink {
   /**
    * Parses url and extracts path, query, action, splittedPath, ...
    *
-   * @param {string} incomingUrl urlToSanitize to parse
+   * @param {string} incomingUrl The url that shall be parsed.
    */
   parseUrl(incomingUrl) {
     let urlToSanitize = incomingUrl;

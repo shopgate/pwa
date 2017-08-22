@@ -1,12 +1,11 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-// eslint-disable-next-line import/no-unresolved
-import { hex2bin, SGLink } from 'tracking-helper';
+import { hex2bin, SGLink } from './helper';
 import sgTrackingUrlMapper from './urlMapping';
 import { customEvents } from '../helpers/events';
 
@@ -14,10 +13,10 @@ import { customEvents } from '../helpers/events';
  * Gets the value at path of object. If the resolved value is undefined,
  * the defaultValue is used in its place.
  *
- * @param   {Object} object         The object to query
- * @param   {string} path           The path of the property to get
- * @param   {*}      [defaultValue] The value returned for undefined resolved values
- * @returns {*}                     Returns the resolved value
+ * @param {Object} object The object to query
+ * @param {string} path The path of the property to get
+ * @param {*} [defaultValue] The value returned for undefined resolved values
+ * @returns {*} Returns the resolved value
  */
 function get(object, path, defaultValue) {
   // Initialize the parameters
@@ -36,18 +35,18 @@ function get(object, path, defaultValue) {
   /**
    * Recursive callable function to traverse through a complex object
    *
-   * @param   {Object} currentData             The current data that shall be investigated
-   * @param   {number} currentPathSegmentIndex The current index within the path segment list
-   * @returns {*}                              The value at the end of the path or the default one
+   * @param {Object} currentData The current data that shall be investigated
+   * @param {number} currentPathSegmentIndex The current index within the path segment list
+   * @returns {*} The value at the end of the path or the default one
    */
   function checkPathSegment(currentData, currentPathSegmentIndex) {
     // Get the current segment within the path
     const currentPathSegment = pathSegments[currentPathSegmentIndex];
     const nextPathSegmentIndex = currentPathSegmentIndex + 1;
 
-    /*
-     Prepare the default value as return value for the case that no matching property was
-     found for the current path segment. In that case the path must be wrong.
+    /**
+     * Prepare the default value as return value for the case that no matching property was
+     * found for the current path segment. In that case the path must be wrong.
      */
     let result = defaultReturnValue;
 
@@ -74,8 +73,8 @@ function get(object, path, defaultValue) {
 /**
  * Converts a numeric value into a suitable one for the unified tracking data
  *
- * @param   {*}                numericValue The value that shall be converted
- * @returns {number|undefined}              The converted value
+ * @param {*} numericValue The value that shall be converted
+ * @returns {number|undefined} The converted value
  * @private
  */
 function getUnifiedNumber(numericValue) {
@@ -109,14 +108,16 @@ function sanitizeTitle(title, shopName) {
   const trimmedShopName = shopName.trim();
 
   if (!trimmedShopName) {
-    // If no shop name is available, it doesn't make sense to replace it.
-    // So we return the the trimmed title directly.
+    /**
+     * If no shop name is available, it doesn't make sense to replace it.
+     * So we return the the trimmed title directly.
+     */
     return trimmedTitle;
   }
 
-  /*
-   Setup the RegExp. It matches leading and trailing occurrences
-   of known patterns for generically added shop names within page title
+  /**
+   * Setup the RegExp. It matches leading and trailing occurrences
+   * of known patterns for generically added shop names within page title
    */
   const shopNameRegExp = new RegExp(`((^${trimmedShopName}:)|(- ${trimmedShopName}$))+`, 'ig');
 
@@ -174,9 +175,9 @@ function formatFavouriteListItems(products) {
   }));
 }
 
-/*
- Storage for helper functions that transforms raw data
- into the unified format for the tracking plugins
+/**
+ * Storage for helper functions that transforms raw data
+ * into the unified format for the tracking plugins
  */
 const dataFormatHelpers = {};
 
@@ -246,35 +247,35 @@ dataFormatHelpers.viewContent = (rawData) => {
   let link = get(rawData, 'page.link');
 
   if (link.indexOf('sg_app_resources') !== -1) {
-    /*
-     Check if the link is formatted in the app style
-     and reformat it do make it parsable with SGLink
-     Note: this will be removed when CON-410 is done
+    /**
+     * Check if the link is formatted in the app style
+     * and reformat it do make it parsable with SGLink
+     * Note: this will be removed when CON-410 is done
      */
     link = `http://dummy.com${link.replace(/(.*sg_app_resources\/\d*)/i, '')}`;
   }
 
   link = new SGLink(link);
 
-  /*
-   In splittedPath we have the action as the first array entry
-   to get the id/action params we remove the action from the array
+  /**
+   * In splittedPath we have the action as the first array entry
+   * to get the id/action params we remove the action from the array
    */
   const splittedPath = [...link.splittedPath];
   splittedPath.shift();
 
-  /*
-   All pages have action as type and a parsed page title without shop name as name
-   fb content ID = 'id / name'
+  /**
+   * All pages have action as type and a parsed page title without shop name as name
+   * fb content ID = 'id / name'
    */
   let id = splittedPath.join('/');
   let type = link.action || 'index';
   let name = sanitizeTitle(get(rawData, 'page.title', ''), get(rawData, 'shop.name', '')) ||
     get(rawData, 'page.name');
 
-  /*
-   Category, product and product related pages should have productnumber/categorynumber as id
-   they should have product name / category name as name
+  /**
+   * Category, product and product related pages should have productnumber/categorynumber as id
+   * they should have product name / category name as name
    */
   if (rawData.hasOwnProperty('product') && type === 'item') {
     type = 'product';

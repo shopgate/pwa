@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -6,6 +6,7 @@
  */
 
 /* global fbq */
+
 import BasePlugin from '../Base';
 
 /**
@@ -15,12 +16,12 @@ class FbPixel extends BasePlugin {
   /**
    * Constructor
    *
-   * @param {Object}  options                   Common Tracking Configuration
+   * @param {Object} options Common Tracking Configuration
    * @param {boolean} [options.overrideUnified] If true -> overrides our unified tracking system
-   * @param {boolean} [options.useNativeSdk]    If true -> send data via our unified tracking system
-   *                                              to the native sdk
-   * @param {Object}  [options.config]          Configuration for facebook pixel tracking
-   * @param {Array}   [options.config.pixelIds] List of Facebook pixels
+   * @param {boolean} [options.useNativeSdk] If true -> send data via our unified tracking system
+   *   to the native sdk
+   * @param {Object} [options.config] Configuration for facebook pixel tracking
+   * @param {Array} [options.config.pixelIds] List of Facebook pixels
    */
   constructor(options) {
     const trackerName = 'facebookPixel';
@@ -51,13 +52,15 @@ class FbPixel extends BasePlugin {
    */
   initPlugin() {
     // Load the fb pixel tracking sdk
-    /*eslint-disable */
+    /* eslint-disable eslint-comments/no-unlimited-disable */
+    /* eslint-disable */
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
       t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
       document,'script','//connect.facebook.net/en_US/fbevents.js');
-    /*eslint-enable */
+    /* eslint-enable */
+    /* eslint-enable eslint-comments/no-unlimited-disable */
 
     const pixelsForInit = this.options.config.pixelIds.slice(0);
     const firstPixel = pixelsForInit.shift();
@@ -72,9 +75,9 @@ class FbPixel extends BasePlugin {
       FbPixel.sendToFb(pixel.toString(), undefined, 'addPixelId');
     });
 
-    /*
+    /**
      * The pixel tracking have a PageView und ViewContent Event. The PageView event should be called
-     * On every page. It has no params
+     * on every page. It has no params
      */
     FbPixel.sendToFb('PageView');
 
@@ -144,11 +147,11 @@ class FbPixel extends BasePlugin {
     });
 
     this.register.addToCart((data) => {
-      FbPixel.sendToFb('AddToCart', this.getParamsForAddtoCartAndWishlist(data));
+      FbPixel.sendToFb('AddToCart', this.getParamsForAddToCartAndWishlist(data));
     });
 
     this.register.addToWishlist((data) => {
-      FbPixel.sendToFb('AddToWishlist', this.getParamsForAddtoCartAndWishlist(data));
+      FbPixel.sendToFb('AddToWishlist', this.getParamsForAddToCartAndWishlist(data));
     });
 
     this.register.search((data, rawData) => {
@@ -206,7 +209,7 @@ class FbPixel extends BasePlugin {
    * @param {Object} data Converted data from the parent plugin
    * @returns {Object} Params for the fb event
    */
-  getParamsForAddtoCartAndWishlist(data) {
+  getParamsForAddToCartAndWishlist(data) {
     const productIds = FbPixel.getProductIds(data.items);
     let value = 0;
     let currency = 'EUR';

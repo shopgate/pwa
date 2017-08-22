@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
@@ -284,7 +284,7 @@ class GaBase extends BasePlugin {
   }
 
   /**
-   * Creates an ga classic child tracker
+   * Creates a ga classic child tracker
    * @param {Object} tracker Tracker configuration data
    * @returns {GaClassic} plugin instance
    */
