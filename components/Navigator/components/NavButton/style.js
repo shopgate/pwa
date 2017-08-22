@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const button = cxs({
+const button = css({
   color: 'inherit',
   fontSize: '1.5rem',
   lineHeight: 1,
@@ -20,7 +20,7 @@ const button = cxs({
   zIndex: 1,
 });
 
-const buttonContent = cxs({
+const buttonContent = css({
   display: 'flex',
   height: '100%',
   width: '100%',
