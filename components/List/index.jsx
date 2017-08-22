@@ -8,14 +8,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { List as BaseList } from '@shopgate/pwa-common/components/List';
-import ListItem from './components/ListItem';
+import { Item as BaseListItem } from '@shopgate/pwa-common/components/List/components/Item';
+import Item from './components/Item';
 import styles from './style';
 
 /**
  * The list component.
  */
 class List extends Component {
-  static Item = ListItem;
+  static Item = Item;
 
   static propTypes = {
     children: PropTypes.node,
@@ -56,7 +57,7 @@ class List extends Component {
           }
 
           return (
-            <BaseList.Item
+            <BaseListItem
               className={classes}
               isSelected={isSelected}
               key={key}
@@ -64,7 +65,7 @@ class List extends Component {
               <div className={styles.innerContainer}>
                 {child}
               </div>
-            </BaseList.Item>
+            </BaseListItem>
           );
         })}
       </BaseList>
