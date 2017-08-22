@@ -7,10 +7,7 @@
 
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
-import {
-  pushHistory,
-  replaceHistory,
-} from '@shopgate/pwa-common/actions/history';
+import { pushHistory, replaceHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
 import {
   setSearchPhrase,
   toggleSearch,

@@ -9,6 +9,7 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const button = css({
+  label: 'Nav-Button',
   color: 'inherit',
   fontSize: '1.5rem',
   lineHeight: 1,
