@@ -15,7 +15,7 @@ import styles from './style';
 /**
  * The list item component.
  */
-class ListItem extends Component {
+class Item extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     className: PropTypes.string,
@@ -125,4 +125,4 @@ class ListItem extends Component {
   }
 }
 
-export default ListItem;
+export default Item;

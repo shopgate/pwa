@@ -1,1 +1,4 @@
+/.cache-loader/
 /public/
+/coverage/
+/extensions/

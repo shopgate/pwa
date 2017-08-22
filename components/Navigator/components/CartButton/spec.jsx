@@ -12,11 +12,10 @@ import CartButton from './index';
 import CartButtonBadge from './components/CartButtonBadge';
 
 // Mock the showTab() and popTabToRoot() command
-jest.mock('Library/commands/showTab');
-jest.mock('Library/commands/popTabToRoot');
+jest.mock('@shopgate/pwa-core/commands/showTab');
+jest.mock('@shopgate/pwa-core/commands/popTabToRoot');
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/cart', () => obj => obj);
-jest.mock('Templates/components/cart-button/CartButton.connector', () => obj => obj);
+jest.mock('./connector', () => obj => obj);
 
 describe('<CartButton />', () => {
   it('should not be visible with prop visible set to false', () => {
