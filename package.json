@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "sginit": "npm i shopgate/pwa-core shopgate/pwa-common shopgate/pwa-common-commerce --save",
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
+    "test": "jest --config ./jest.json"
   },
   "dependencies": {
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
@@ -49,9 +49,12 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
+    "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.7.0",
+    "jest": "^20.0.4",
+    "react-addons-test-utils": "^15.6.0",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0"
   }

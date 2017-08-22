@@ -1,0 +1,33 @@
+{
+  "moduleNameMapper": {
+    "^Components(.*)$": "<rootDir>/components",
+    "^Config(.*)$": "<rootDir>/config",
+    "^Extensions(.*)$": "<rootDir>/extensions",
+    "^Pages(.*)$": "<rootDir>/pages",
+    "^Styles(.*)$": "<rootDir>/styles",
+    "^.+\\.(css|scss)$": "identity-obj-proxy"
+  },
+  "moduleFileExtensions": ["js", "jsx", "json"],
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/"
+  ],
+  "testRegex": "(/__tests__/.*|(\\.|/)spec)\\.(js|jsx)?$",
+  "unmockedModulePathPatterns": [
+    "<rootDir>/node_modules/react/",
+    "<rootDir>/node_modules/enzyme/"
+  ],
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!**/node_modules/**"
+  ],
+  "setupFiles": [
+    "@shopgate/pwa-core/config/jest/testSetup.js"
+  ],
+  "setupTestFrameworkScriptFile": "@shopgate/pwa-core/config/jest/envSetup.js",
+  "transform": {
+    "\\.(js|jsx)$": "@shopgate/pwa-core/config/jest/babelTransform.js"
+  }
+}
