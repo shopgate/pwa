@@ -1,0 +1,56 @@
+<rt-import name="Link" from="Library/components" />
+<rt-import name="Grid" from="Library/components" />
+<rt-import name="Ellipsis" from="Library/components" />
+<rt-import name="bin2hex" from="Library/helpers/data" />
+<rt-import name="ProductImage" from="Templates/components" />
+<rt-import name="FavoritesButton" from="Templates/components" />
+<rt-import name="RatingStars" from="Templates/components" />
+<rt-import name="DiscountBadge" from="Templates/components" />
+<rt-import name="Price" from="Templates/components" />
+<rt-import name="PriceStriked" from="Templates/components" />
+<rt-import name="PriceInfo" from="Templates/components" />
+<rt-import name="default" as="style" from="./ProductCard.style" />
+
+<Link
+  tagName="a"
+  href="/item/{bin2hex(props.product.id)}"
+  className={style.container}
+  itemProp="item"
+  itemScope
+  itemType="http://schema.org/Product"
+  rt-stateless
+>
+  <ProductImage itemProp="image" src={props.product.featuredImageUrl} alt={props.product.name} />
+  <div rt-if="!props.hidePrice && props.product.price.discount" className={style.badgeWrapper}>
+    <DiscountBadge text="-{props.product.price.discount}%" />
+  </div>
+  <FavoritesButton className={style.wishlist} productId={props.product.id} />
+  <div rt-if="!(props.hideRating && props.hidePrice)" className={style.details}>
+    <RatingStars rt-if="!props.hideRating && props.product.rating && props.product.rating.count" value={props.product.rating.average} />
+    <div rt-if="!props.hideName" itemProp="name" className={style.title}>
+      <Ellipsis rows="{props.titleRows || 3}">{props.product.name}</Ellipsis>
+    </div>
+    <Grid rt-if="!props.hidePrice" className={style.priceWrapper} wrap>
+      <Grid.Item grow={1}>
+        <Price
+          unitPrice={props.product.price.unitPrice}
+          unitPriceMin={props.product.price.unitPriceMin}
+          discounted={!!props.product.price.discount}
+          currency={props.product.price.currency}
+        />
+      </Grid.Item>
+      <Grid.Item rt-if="props.product.price.unitPriceStriked">
+        <PriceStriked
+          value="{props.product.price.unitPriceStriked}"
+          currency="{props.product.price.currency}"
+          className={style.striked}
+        />
+      </Grid.Item>
+    </Grid>
+    <Grid>
+      <Grid.Item rt-if="!props.hidePrice && props.product.price.info">
+        <PriceInfo className={style.basicPrice} text={props.product.price.info} />
+      </Grid.Item>
+    </Grid>
+  </div>
+</Link>
