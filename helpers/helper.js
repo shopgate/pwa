@@ -7,14 +7,37 @@
 
 import DataRequest from '@shopgate/pwa-core/classes/DataRequest';
 import logger from '@shopgate/pwa-core/classes/Logger';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+
+export * as SGAction from '@shopgate/pwa-core/commands/unifiedTracking';
 
 /**
- * We need to split the import and export here because of an babel/webpack issue.
- * "export { hex2bin } from 'Library/helpers/data';" is not working
+ * Decodes a hexadecimal encoded binary string
+ * @param {string} str The string that shall be decoded
+ * @see http://locutus.io/php/strings/hex2bin/
+ * @returns {string|boolean} Hexadecimal representation of data. FALSE if decoding failed.
  */
-export { hex2bin };
-export * as SGAction from '@shopgate/pwa-core/commands/unifiedTracking';
+export const hex2bin = (str) => {
+  const s = `${str}`;
+
+  const ret = [];
+  let i = 0;
+  let l;
+
+  for (l = s.length; i < l; i += 2) {
+    const c = parseInt(s.substr(i, 1), 16);
+    const k = parseInt(s.substr(i + 1, 1), 16);
+
+    if (isNaN(c) || isNaN(k)) {
+      return false;
+    }
+
+    // eslint-disable-next-line no-bitwise
+    ret.push((c << 4) | k);
+  }
+
+  // eslint-disable-next-line prefer-spread
+  return String.fromCharCode.apply(String, ret);
+};
 
 /**
  * Sends a DataRequest

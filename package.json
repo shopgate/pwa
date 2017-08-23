@@ -19,7 +19,6 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "github:shopgate/pwa-common",
     "@shopgate/pwa-core": "github:shopgate/pwa-core"
   },
   "devDependencies": {
