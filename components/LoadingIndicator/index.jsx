@@ -1,19 +1,22 @@
-import React, { PropTypes } from 'react';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React from 'react';
+import IndicatorCircle from 'Components/IndicatorCircle';
 import styles from './style';
 
 /**
- * Renders a loading indicator
- * @param {Object} props the component properties
+ * Renders a loading indicator.
  * @returns {JSX}
  */
-const LoadingIndicator = props => (
+const LoadingIndicator = () => (
   <div className={styles}>
-    {props.children}
+    <IndicatorCircle />
   </div>
 );
-
-LoadingIndicator.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default LoadingIndicator;
