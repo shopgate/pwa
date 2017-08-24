@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import styles from './style';
 
 /**
@@ -14,11 +15,11 @@ import styles from './style';
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
-const Card = props => (
-  <div className={`${styles} ${props.className}`}>
-    {props.children}
+const Card = pure(({ className, children }) => (
+  <div className={`${styles} ${className}`}>
+    {children}
   </div>
-);
+));
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
