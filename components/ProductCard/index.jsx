@@ -18,7 +18,6 @@ import PriceInfo from 'Components/PriceInfo';
 import Price from 'Components/Price';
 import DiscountBadge from 'Components/DiscountBadge';
 import PriceStriked from 'Components/PriceStriked';
-import Content from './components/Content';
 import styles from './style';
 
 /**
@@ -87,13 +86,6 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
         )}
       </div>
     )}
-    <Content
-      product={product}
-      hidePrice={hidePrice}
-      hideRating={hideRating}
-      hideName={hideName}
-      titleRows={titleRows}
-    />
   </Link>
 );
 
