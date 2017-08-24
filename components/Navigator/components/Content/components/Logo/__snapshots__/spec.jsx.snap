@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Logo /> should render an image 1`] = `
-<img
-  alt="Logo"
-  className="m-0_auto"
-  src="https://data.shopgate.com/shops/23720/webapp@2x.png"
-/>
-`;
