@@ -124,3 +124,8 @@ export const getCurrentCategories = createSelector(
     return null;
   }
 );
+
+export const getCategoryProductCount = createSelector(
+  getCurrentCategory,
+  category => category.productCount || null
+);
