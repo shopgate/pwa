@@ -19,7 +19,7 @@ import {
   // LOGIN_PATH,
   // REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-// @TODO: import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 // @TODO: import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 // @TODO: import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 // @TODO: import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
@@ -31,6 +31,7 @@ import locale from '../locale';
 import reducers from './reducers';
 import subscriptions from './subscriptions';
 import Page from './Page';
+import Category from './Category';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -58,6 +59,14 @@ const Pages = () =>
       <Route
         path={`${PAGE_PATH}/:pageId`}
         component={Page}
+      />
+      <Route
+        path={`${CATEGORY_PATH}`}
+        component={Category}
+      />
+      <Route
+        path={`${CATEGORY_PATH}/:categoryId?`}
+        component={Category}
       />
     </Viewport>
   </App>

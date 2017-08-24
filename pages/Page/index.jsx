@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
