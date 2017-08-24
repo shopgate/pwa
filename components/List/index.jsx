@@ -7,8 +7,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { List as BaseList } from '@shopgate/pwa-common/components/List';
-import { Item as BaseListItem } from '@shopgate/pwa-common/components/List/components/Item';
+import BaseList from '@shopgate/pwa-common/components/List';
+import BaseListItem from '@shopgate/pwa-common/components/List/components/Item';
 import Item from './components/Item';
 import styles from './style';
 

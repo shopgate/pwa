@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { combineReducers } from 'redux';
+
 import client from '@shopgate/pwa-common/reducers/client';
 import history from '@shopgate/pwa-common/reducers/history';
 import user from '@shopgate/pwa-common/reducers/user';
@@ -19,6 +21,8 @@ import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import navigator from 'Components/Navigator/reducer';
 
+import categoryPage from 'Pages/Category/reducer';
+
 const reducers = {
   cart,
   category,
@@ -31,6 +35,9 @@ const reducers = {
   page,
   product,
   search,
+  ui: combineReducers({
+    categoryPage,
+  }),
   user,
   view,
 };

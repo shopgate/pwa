@@ -1,0 +1,39 @@
+import React from 'react';
+import { mount } from 'enzyme';
+import ProductGrid from 'Components/ProductGrid';
+import ProductList from 'Components/ProductList';
+import { GRID_VIEW, LIST_VIEW } from '../../pages/Category/constants';
+import Products from './index';
+
+describe('<Products>', () => {
+  const dummyProps = {
+    handleGetProducts: () => {},
+    products: [],
+  };
+
+  it('should hide list view in grid view mode', () => {
+    const wrapper = mount(
+      <Products viewMode={GRID_VIEW} {...dummyProps} />
+    );
+    wrapper.update();
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(ProductGrid).length).toEqual(1);
+    expect(wrapper.find(ProductGrid).at(0).parent().get(0).style.display).toEqual('block');
+    expect(wrapper.find(ProductList).length).toEqual(1);
+    expect(wrapper.find(ProductList).at(0).parent().get(0).style.display).toEqual('none');
+  });
+
+  it('should hide grid view in list view mode', () => {
+    const wrapper = mount(
+      <Products viewMode={LIST_VIEW} {...dummyProps} />
+    );
+    wrapper.update();
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(ProductGrid).length).toEqual(1);
+    expect(wrapper.find(ProductGrid).at(0).parent().get(0).style.display).toEqual('none');
+    expect(wrapper.find(ProductList).length).toEqual(1);
+    expect(wrapper.find(ProductList).at(0).parent().get(0).style.display).toEqual('block');
+  });
+});
