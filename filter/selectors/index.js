@@ -10,7 +10,7 @@ import { getCurrentCategoryId } from '../../category/selectors';
  * @param {Object} state The application state.
  * @return {Object}
  */
-export const getFilters = state => state.filters;
+export const getFilters = state => state.filter;
 
 /**
  * Gets the filter hash from the history state.
@@ -24,9 +24,7 @@ export const getStoredFilterHash = state => state.history.state.filterHash;
  * @param {Object} state The application state.
  * @returns {Array}
  */
-export const getActiveFiltersStack = state => (
-  getFilters(state).activeFilters
-);
+export const getActiveFiltersStack = state => getFilters(state).activeFilters;
 
 /**
  * Gets the currently active filters.
