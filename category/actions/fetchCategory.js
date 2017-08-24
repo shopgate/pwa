@@ -1,7 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import logger from '@shopgate/pwa-core/classes/Logger';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import { fetchCategoryChildren } from '../actions';
+import fetchCategoryChildren from './fetchCategoryChildren';
 import {
   requestCategory,
   receiveCategory,

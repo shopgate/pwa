@@ -1,6 +1,6 @@
 import logger from '@shopgate/pwa-core/classes/Logger';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getProducts } from '../../product/actions';
+import getProducts from '../../product/actions/getProducts';
 
 /**
  * Retrieves category products for a certain category by ID.
