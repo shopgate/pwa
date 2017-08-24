@@ -1,3 +1,4 @@
 /.cache-loader/
 /public/
 /coverage/
+**/dist/**
