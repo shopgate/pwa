@@ -21,9 +21,9 @@ const content = (
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const StarHalf = props => <Icon content={content} {...props} />;
+const StarHalfIcon = props => <Icon content={content} {...props} />;
 
-StarHalf.propTypes = {
+StarHalfIcon.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   size: React.PropTypes.oneOfType([
@@ -33,11 +33,11 @@ StarHalf.propTypes = {
   viewBox: PropTypes.string,
 };
 
-StarHalf.defaultProps = {
+StarHalfIcon.defaultProps = {
   className: '',
   color: null,
   viewBox: '0 0 24 24',
   size: 'inherit',
 };
 
-export default StarHalf;
+export default StarHalfIcon;
