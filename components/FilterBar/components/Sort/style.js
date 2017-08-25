@@ -13,10 +13,6 @@ const button = cxs({
   whiteSpace: 'nowrap',
 });
 
-const buttonActive = cxs({
-  color: colors.light,
-});
-
 const selection = cxs({
   fontSize: '0.875rem',
   fontWeight: '500',
@@ -50,24 +46,15 @@ const selectItem = cxs({
   },
 });
 
-const selectRipple = cxs({
-  padding: '6px 5px 6px 18px',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-});
-
 const selectBox = cxs({
   flexGrow: 2,
 });
 
 export default {
   button,
-  buttonActive,
   selection,
   icon,
   dropdown,
   selectItem,
-  selectRipple,
   selectBox,
 };

@@ -3,7 +3,6 @@ import variables from 'Styles/variables';
 
 const wrapper = cxs({
   alignItems: 'center',
-  display: 'flex',
   position: 'fixed',
   height: variables.filterbar.height,
   width: '100%',

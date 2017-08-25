@@ -4,7 +4,8 @@ import clamp from 'lodash/clamp';
 import { getScrollParent } from '@shopgate/pwa-common/helpers/dom';
 import styles from './style';
 import connect from './connector';
-import FilterBarContent from './components/Content';
+import Content from './components/Content';
+import Button from './components/Button';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
@@ -223,7 +224,7 @@ class FilterBar extends PureComponent {
           style={this.wrapperStyle}
         >
           <div className={this.filterBarClassName}>
-            <FilterBarContent componentUpdated={this.setSpacerHeight} />
+            <Content componentUpdated={this.setSpacerHeight} />
           </div>
         </div>
       </section>
