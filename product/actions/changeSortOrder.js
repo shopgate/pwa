@@ -1,4 +1,4 @@
-import { replaceHistory } from '@shopgate/pwa-common/actions/history';
+import { replaceHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
 
 /**
  * Updates the sort parameter in the history.
