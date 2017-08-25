@@ -92,29 +92,6 @@ class Category extends Component {
   };
 
   /**
-   * Re-renders the category page with a different view mode.
-   */
-  handleToggleViewMode = () => {
-    const { viewMode, setViewMode } = this.props;
-    const nextViewMode = viewMode === GRID_VIEW ? LIST_VIEW : GRID_VIEW;
-
-    setViewMode(nextViewMode);
-  };
-
-  /**
-   * Changes the sort (Infinity container will be reset)
-   * @param {string} sort The sort order for the products.
-   */
-  handleSortChange = (sort) => {
-    if (this.props.sort === sort) {
-      return;
-    }
-
-    this.handleGetProducts(0, ITEMS_PER_LOAD);
-    this.props.changeSortOrder(sort);
-  };
-
-  /**
    * Is the products component shown?
    * @return {boolean}
    */

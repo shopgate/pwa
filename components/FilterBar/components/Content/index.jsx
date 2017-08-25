@@ -1,24 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Chip from 'Components/Chip';
-import ChipLayout from 'Components/ChipLayout';
-import Ripple from 'Components/Ripple';
-import FilterIcon from 'Components/icons/FilterIcon';
-import GridIcon from 'Components/icons/GridIcon';
-import ListIcon from 'Components/icons/ListIcon';
+import { GRID_VIEW } from 'Pages/Category/constants';
 import connect from './connector';
 import Sort from '../Sort';
-import { GRID_VIEW, LIST_VIEW } from '../../../../pages/Category/constants';
-import styles from './style';
 import ViewSwitch from '../ViewSwitch';
+import styles from './style';
 
 /**
  * The Filter bar component.
  */
-class FilterBarContent extends PureComponent {
+class Content extends PureComponent {
   static propTypes = {
     componentUpdated: PropTypes.func.isRequired,
     getFilters: PropTypes.func.isRequired,
@@ -149,13 +143,9 @@ class FilterBarContent extends PureComponent {
    */
   render() {
     return (
-      <div>
+      <div className={styles.wrapper}>
         <ViewSwitch />
-        {/*<Sort
-          hasFilters={this.hasFilters}
-          sort={this.props.sort}
-          handleSelectionUpdate={this.props.handleSortChange}
-        />*/}
+        <Sort />
         {/*<button className={styles.button} onClick={this.props.handleOpenFiltersView}>
           <Ripple className={styles.filterButtonRipple} fill>
             <Grid component="div">
@@ -188,6 +178,6 @@ class FilterBarContent extends PureComponent {
   }
 }
 
-export const UnwrappedFilterBarContent = FilterBarContent;
+export const UnwrappedFilterBarContent = Content;
 
-export default connect(FilterBarContent);
+export default connect(Content);

@@ -26,10 +26,10 @@ const ViewSwitch = ({ toggleViewMode, viewMode }) => (
   >
     <Ripple className={styles.ripple} overflow>
       {viewMode === GRID_VIEW &&
-        <ListIcon />
+        <GridIcon />
       }
       {viewMode === LIST_VIEW &&
-        <GridIcon />
+        <ListIcon />
       }
     </Ripple>
   </button>

@@ -6,8 +6,9 @@ import {
   SORT_PRICE_DESC,
 } from '@shopgate/pwa-common/constants/DisplayOptions';
 import SelectBox from '@shopgate/pwa-common/components/SelectBox';
-import Ripple from 'Components/Ripple';
 import ArrowDropIcon from 'Components/icons/ArrowDropIcon';
+import Item from './components/Item';
+import connect from './connector';
 import styles from './style';
 
 const items = [
@@ -26,47 +27,30 @@ const items = [
 ];
 
 /**
- * Renders the FilterBarSort component.
+ * Renders the Sort component.
  * @param {Object} props The components props.
  * @param {Function} props.handleSelectionUpdate Callback that is executed when selection changed.
  * @returns {JSX}
  */
-const FilterBarSort = ({ children, handleSelectionUpdate, hasFilters, sort }) => {
-  const newStyles = { ...styles };
+const Sort = ({ changeSort, sort }) => (
+  <SelectBox
+    handleSelectionUpdate={newSort => changeSort(newSort, sort)}
+    items={items}
+    initialValue={sort}
+    icon={ArrowDropIcon}
+    item={Item}
+    className={styles.selectBox}
+    classNames={styles}
+  />
+);
 
-  if (hasFilters) {
-    newStyles.button = `${newStyles.button} ${newStyles.buttonActive}`;
-  }
-
-  const Item = (
-    <Ripple rt-stateless fill className={styles.selectRipple}>
-      {children}
-    </Ripple>
-  );
-
-  return (
-    <SelectBox
-      items={items}
-      initialValue={sort}
-      handleSelectionUpdate={handleSelectionUpdate}
-      icon={ArrowDropIcon}
-      item={Item}
-      className={styles.selectBox}
-      classNames={styles}
-    />
-  );
-};
-
-FilterBarSort.propTypes = {
-  children: PropTypes.element.isRequired,
-  handleSelectionUpdate: PropTypes.func.isRequired,
-  hasFilters: PropTypes.bool,
+Sort.propTypes = {
+  changeSort: PropTypes.func.isRequired,
   sort: PropTypes.string,
 };
 
-FilterBarSort.defaultProps = {
+Sort.defaultProps = {
   sort: null,
-  hasFilters: false,
 };
 
-export default FilterBarSort;
+export default connect(Sort);

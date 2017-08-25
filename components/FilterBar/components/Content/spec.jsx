@@ -5,7 +5,7 @@ import { mount, shallow } from 'enzyme';
 import GridIcon from 'Components/icons/GridIcon';
 import ListIcon from 'Components/icons/ListIcon';
 import { GRID_VIEW, LIST_VIEW } from '../../../../pages/Category/constants';
-import { UnwrappedFilterBarContent as FilterBarContent } from './index';
+import { UnwrappedContent as FilterBarContent } from './index';
 
 const mockRenderOptions = {
   context: {
