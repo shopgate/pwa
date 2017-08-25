@@ -14,8 +14,8 @@ import Iterator from './components/Iterator';
 import Layout from './components/Layout';
 
 /**
- * The category list component.
- * @param {Array} categories The categories to display.
+ * The Product Grid component.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const ProductGrid = pure(({ handleGetProducts, products, totalProductCount, viewId }) => (

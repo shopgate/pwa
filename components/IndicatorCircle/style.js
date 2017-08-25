@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import css from 'glamor';
+import { css } from 'glamor';
 
 const rotate = css.keyframes({
   '100%': { transform: 'rotate(360deg)' },
