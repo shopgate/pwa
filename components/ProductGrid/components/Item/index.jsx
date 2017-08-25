@@ -7,30 +7,26 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import pure from 'recompose/pure';
+import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+// TODO import FavoritesButton from 'Components/FavoritesButton';
 import ProductImage from 'Components/ProductImage';
-// TODO: import FavoritesButton from 'Components/FavoritesButton';
 import RatingStars from 'Components/RatingStars';
-import PriceInfo from 'Components/PriceInfo';
-import Price from 'Components/Price';
 import DiscountBadge from 'Components/DiscountBadge';
+import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
+import PriceInfo from 'Components/PriceInfo';
 import styles from './style';
 
 /**
- * The ProductCard component.
+ * The Product Grid Item component.
  * @param {Object} props The component props.
- * @param {Object} props.product The product data.
- * @param {boolean} props.hidePrice Whether the price should be hidden.
- * @param {boolean} props.hideRating Whether the rating should be hidden.
- * @param {boolean} props.hideName Whether the name should be hidden.
- * @param {number} props.titleRows The max number of rows for the product title.
  * @return {JSX}
  */
-const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) => (
+const Item = pure(({ product, display }) => (
   <Link
     tagName="a"
     href={`/item/${bin2hex(product.id)}`}
@@ -40,23 +36,25 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {(hidePrice || !product.price.discount) && (
+    {product.price.discount && (
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
     )}
-    {/* <FavoritesButton className={styles.wishlist} productId={product.id} /> */}
-    {(!(hidePrice && hideRating)) && (
+    {/* <FavoritesButton className={style.wishlist} productId={props.product.id} /> */}
+    {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        {(!hideRating && product.rating && product.rating.count) && (
-          <RatingStars value={product.rating.average} />
-        )}
-        {!hideName && (
-          <div itemProp="name" className={styles.title}>
-            <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
+        {(product.rating && product.rating.count) && (
+          <div>
+            {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
           </div>
         )}
-        {!hidePrice && (
+        {(!display || display.name) && (
+          <div className={styles.title} itemProp="name">
+            <Ellipsis>{product.name}</Ellipsis>
+          </div>
+        )}
+        {(!display || display.price) && (
           <Grid className={styles.priceWrapper} wrap>
             <Grid.Item grow={1}>
               <Price
@@ -69,32 +67,30 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
             {product.price.unitPriceStriked && (
               <Grid.Item>
                 <PriceStriked
-                  value="{product.price.unitPriceStriked}"
-                  currency="{product.price.currency}"
-                  className={styles.striked}
+                  value={product.price.unitPriceStriked}
+                  currency={product.price.currency}
                 />
               </Grid.Item>
             )}
           </Grid>
         )}
-        {(!hidePrice && product.price.info) && (
+        {(!display || display.price) && (
           <Grid>
-            <Grid.Item>
-              <PriceInfo className={styles.basicPrice} text={product.price.info} />
-            </Grid.Item>
+            {product.price.info && (
+              <Grid.Item>
+                <PriceInfo className={styles.basicPrice} text={product.price.info} />
+              </Grid.Item>
+            )}
           </Grid>
         )}
       </div>
     )}
   </Link>
-);
+));
 
-ProductCard.propTypes = {
-  hideName: PropTypes.bool.isRequired,
-  hidePrice: PropTypes.bool.isRequired,
-  hideRating: PropTypes.bool.isRequired,
+Item.propTypes = {
+  display: PropTypes.shape().isRequired,
   product: PropTypes.shape().isRequired,
-  titleRows: PropTypes.number.isRequired,
 };
 
-export default ProductCard;
+export default Item;

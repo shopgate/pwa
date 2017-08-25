@@ -6,14 +6,13 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import colors from 'Styles/colors';
 
-const headline = css({
-  fontSize: 18,
-  margin: `${variables.gap.big * 2}px 0 ${variables.gap.big}px`,
-  textAlign: 'center',
+const container = css({
+  paddingBottom: 2,
+  background: colors.background,
 }).toString();
 
 export default {
-  headline,
+  container,
 };

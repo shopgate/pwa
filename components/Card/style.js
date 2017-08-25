@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import css from 'glamor';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const shadow = '0 5px 7px rgba(0,0,0,0.09), 0 3px 6px rgba(0,0,0,0.07)';

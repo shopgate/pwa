@@ -5,14 +5,33 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 
-const spinner = cxs({
-  animation: 'rotate 1.6s linear infinite',
+const rotate = css.keyframes({
+  '100%': { transform: 'rotate(360deg)' },
+});
+
+const spinner = css({
+  animation: `${rotate} 1.6s linear infinite`,
   margin: 'auto',
   transformOrigin: 'center center',
   maxWidth: '100%',
   maxHeight: '100%',
+}).toString();
+
+const dash = css.keyframes({
+  '0%': {
+    strokeDasharray: '1, 200',
+    strokeDashoffset: '0',
+  },
+  '50%': {
+    strokeDasharray: '89, 200',
+    strokeDashoffset: '-35px',
+  },
+  '100%': {
+    strokeDasharray: '89, 200',
+    strokeDashoffset: '-124px',
+  },
 });
 
 /**
@@ -21,8 +40,8 @@ const spinner = cxs({
  * @param  {string} strokeWidth The stroke width of the circle.
  * @return {string} CSS class name.
  */
-const circle = (color, strokeWidth) => cxs({
-  animation: 'dash 1.2s ease-in-out infinite',
+const circle = (color, strokeWidth) => css({
+  animation: `${dash} 1.2s ease-in-out infinite`,
   fill: 'none',
   stroke: color,
   strokeDasharray: '1, 200',
@@ -30,30 +49,7 @@ const circle = (color, strokeWidth) => cxs({
   strokeLinecap: 'round',
   strokeMiterlimit: 10,
   strokeWidth,
-});
-
-cxs({
-  '@keyframes rotate': {
-    '100%': { transform: 'rotate(360deg)' },
-  },
-});
-
-cxs({
-  '@keyframes dash': {
-    '0%': {
-      strokeDasharray: '1, 200',
-      strokeDashoffset: '0',
-    },
-    '50%': {
-      strokeDasharray: '89, 200',
-      strokeDashoffset: '-35px',
-    },
-    '100%': {
-      strokeDasharray: '89, 200',
-      strokeDashoffset: '-124px',
-    },
-  },
-});
+}).toString();
 
 export default {
   spinner,

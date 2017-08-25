@@ -7,44 +7,40 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
-import IndicatorCircle from 'Components/IndicatorCircle';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';
 
 /**
- * The category list component.
- * @param {Array} categories The categories to display.
+ * The Product Grid component.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductGrid = ({ handleGetProducts, products, totalProductCount, viewId }) => {
-  const loadingIndicator = (
-    <LoadingIndicator>
-      <IndicatorCircle />
-    </LoadingIndicator>
-  );
-
-  return (
-    <InfiniteContainer
-      wrapper={Layout}
-      iterator={Iterator}
-      loader={handleGetProducts}
-      items={products}
-      loadingIndicator={loadingIndicator}
-      totalItems={totalProductCount}
-      viewId={viewId}
-      key={viewId}
-      initialLimit={6}
-    />
-  );
-};
+const ProductGrid = pure(({ handleGetProducts, products, totalProductCount, viewId }) => (
+  <InfiniteContainer
+    wrapper={Layout}
+    iterator={Iterator}
+    loader={handleGetProducts}
+    items={products}
+    loadingIndicator={LoadingIndicator}
+    totalItems={totalProductCount}
+    viewId={viewId}
+    key={viewId}
+    initialLimit={6}
+  />
+));
 
 ProductGrid.propTypes = {
+  totalProductCount: PropTypes.number.isRequired,
+  viewId: PropTypes.string.isRequired,
+  handleGetProducts: PropTypes.func,
   products: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 ProductGrid.defaultProps = {
+  handleGetProducts: () => {},
   products: null,
 };
 

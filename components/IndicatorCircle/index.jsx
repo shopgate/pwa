@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 import styles from './style';
@@ -19,7 +20,7 @@ import styles from './style';
  * @param {Object} props.strokeWidth Stroke width of the circle.
  * @returns {JSX}
  */
-const IndicatorCircle = ({ size, color, strokeWidth }) => (
+const IndicatorCircle = pure(({ size, color, strokeWidth }) => (
   <svg
     className={styles.spinner}
     viewBox="25 25 50 50"
@@ -32,7 +33,7 @@ const IndicatorCircle = ({ size, color, strokeWidth }) => (
       cx="50" cy="50" r="20"
     />
   </svg>
-);
+));
 
 IndicatorCircle.propTypes = {
   color: PropTypes.string,

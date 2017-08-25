@@ -6,14 +6,22 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import colors from 'Styles/colors';
 
-const headline = css({
-  fontSize: 18,
-  margin: `${variables.gap.big * 2}px 0 ${variables.gap.big}px`,
-  textAlign: 'center',
+const stateOk = css({
+  color: colors.success,
+}).toString();
+
+const stateWarning = css({
+  color: colors.warning,
+}).toString();
+
+const stateAlert = css({
+  color: colors.error,
 }).toString();
 
 export default {
-  headline,
+  stateOk,
+  stateWarning,
+  stateAlert,
 };
