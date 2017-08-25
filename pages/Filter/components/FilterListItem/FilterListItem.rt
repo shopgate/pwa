@@ -1,0 +1,20 @@
+<rt-import name="Grid" from="Library/components" />
+<rt-import name="Link" from="Library/components" />
+<rt-import name="default" as="FilterListItemChips" from="./FilterListItemChips.rt" />
+<rt-import name="default" as="FilterListItemLabel" from="./FilterListItemLabel.rt" />
+<rt-import name="default" as="FilterListItemCrossButton" from="./FilterListItemCrossButton.rt" />
+<rt-import name="default" as="styles" from="./FilterListItem.style" />
+
+<div className={styles.item} rt-stateless>
+  <Link href={props.href}>
+    <Grid>
+      <Grid.Item className={styles.gridItem} grow="{1}" shrink="{0}">
+        <FilterListItemLabel label={props.label} />
+      </Grid.Item>
+      <Grid.Item rt-if="props.values" grow="{1}" className={styles.rightContainer}>
+        <FilterListItemChips values={props.values} />
+      </Grid.Item>
+    </Grid>
+  </Link>
+  <FilterListItemCrossButton rt-if="props.values" onClear={props.onClear} />
+</div>
