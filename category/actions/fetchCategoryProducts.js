@@ -18,7 +18,7 @@ const fetchCategoryProducts =
       const category = state.category.categoriesById[categoryId];
 
       if (!category) {
-        logger.error(`Category '${categoryId}' doesn't exist in the state! No products fetched!`);
+        logger.error(`Category '${categoryId}' doesn't exist in the store. No products fetched.`);
         return;
       }
 
