@@ -1,8 +1,15 @@
-import cxs from 'cxs';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const button = cxs({
+const button = css({
   outline: 0,
   marginLeft: 10,
   display: 'flex',
@@ -11,21 +18,21 @@ const button = cxs({
   justifyContent: 'center',
   height: variables.filterbar.height,
   whiteSpace: 'nowrap',
-});
+}).toString();
 
-const selection = cxs({
+const selection = css({
   fontSize: '0.875rem',
   fontWeight: '500',
   lineHeight: 1,
   paddingTop: 1,
   alignSelf: 'center',
-});
+}).toString();
 
-const icon = cxs({
+const icon = css({
   fontSize: '1.5rem',
-});
+}).toString();
 
-const dropdown = cxs({
+const dropdown = css({
   position: 'absolute',
   width: '100%',
   zIndex: 2,
@@ -33,9 +40,9 @@ const dropdown = cxs({
   left: 0,
   backgroundColor: colors.background,
   boxShadow: 'rgba(0, 0, 0, 0.16) 0 4px 4px',
-});
+}).toString();
 
-const selectItem = cxs({
+const selectItem = css({
   padding: 0,
   outline: 0,
   overflow: 'hidden',
@@ -44,11 +51,11 @@ const selectItem = cxs({
   ':last-child': {
     marginBottom: variables.gap.big,
   },
-});
+}).toString();
 
-const selectBox = cxs({
+const selectBox = css({
   flexGrow: 2,
-});
+}).toString();
 
 export default {
   button,

@@ -1,10 +1,17 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { mount, shallow } from 'enzyme';
 import GridIcon from 'Components/icons/GridIcon';
 import ListIcon from 'Components/icons/ListIcon';
-import { GRID_VIEW, LIST_VIEW } from '../../../../pages/Category/constants';
+import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
 import { UnwrappedContent as FilterBarContent } from './index';
 
 const mockRenderOptions = {
