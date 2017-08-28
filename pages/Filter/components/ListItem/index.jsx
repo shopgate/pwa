@@ -7,12 +7,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Label from './components/Label';
+import Chips from './components/Chips';
 import styles from './style';
 
-const FilterListItem = ({ filter, onClear }) => (
+/**
+ * The Filter List Item component.
+ * @param {Object} props The component props.
+ * @return {JSX}
+ */
+const ListItem = pure(({ filter, onClear }) => (
   <div className={styles.item} rt-stateless>
     <Link href={filter.url}>
       <Grid>
@@ -20,20 +27,21 @@ const FilterListItem = ({ filter, onClear }) => (
           <Label label={filter.label} />
         </Grid.Item>
         <Grid.Item rt-if="props.values" grow="{1}" className={styles.rightContainer}>
-          <FilterListItemChips values={filter.active} />
+          <Chips values={filter.active} />
         </Grid.Item>
       </Grid>
     </Link>
     <FilterListItemCrossButton rt-if="props.values" onClear={onClear} />
   </div>
-);
+));
 
-FilterListItem.propTypes = {
-
+ListItem.propTypes = {
+  filter: PropTypes.shape().isRequired,
+  onClear: PropTypes.func,
 };
 
-FilterListItem.defaultProps = {
-
+ListItem.defaultProps = {
+  onClear: () => {},
 };
 
-export default FilterListItem;
+export default ListItem;

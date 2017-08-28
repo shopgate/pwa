@@ -1,6 +1,0 @@
-<rt-import name="CrossIcon" from="Templates/components/icons" />
-<rt-import name="default" as="styles" from="./FilterListItem.style" />
-
-<button className={styles.cross} onClick={props.onClear} rt-stateless>
-  <CrossIcon className={styles.crossIcon} />
-</button>

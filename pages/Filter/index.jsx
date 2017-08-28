@@ -14,7 +14,7 @@ import ViewContent from 'Components/ViewContent';
 import CardList from 'Components/CardList';
 import Button from 'Components/Button';
 import PriceRangeSlider from './components/PriceRangeSlider';
-import FilterListItem from './components/FilterListItem';
+import ListItem from './components/ListItem';
 import connect from './connector';
 import styles from './style';
 
@@ -147,7 +147,7 @@ class Filter extends Component {
                     </div>
                   )}
                   {(filter.type !== 'range') && (
-                    <FilterListItem
+                    <ListItem
                       href={filter.url}
                       label={filter.label}
                       values={filter.active}

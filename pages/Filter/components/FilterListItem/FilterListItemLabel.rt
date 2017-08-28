@@ -1,5 +1,0 @@
-<rt-import name="default" as="styles" from="./FilterListItem.style" />
-
-<div className={styles.label} rt-stateless>
-  {props.label}
-</div>

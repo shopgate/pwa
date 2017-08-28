@@ -7,11 +7,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import ChipsLayout from 'Components/ChipsLayout';
 import Chip from 'Components/Chip';
 
-const Chips = ({ values }) => {
-  if (values && values.length !== 0) {
+/**
+ * The Filter List Item Chips component.
+ * @param {Object} props The component props.
+ * @return {JSX|null}
+ */
+const Chips = pure(({ values }) => {
+  if (!values || (values && values.length !== 0)) {
     return null;
   }
 
@@ -22,17 +28,16 @@ const Chips = ({ values }) => {
           {value}
         </Chip>
       ))}
-
     </ChipsLayout>
   );
-};
+});
 
 Chips.propTypes = {
-
+  values: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Chips.defaultProps = {
-
+  values: null,
 };
 
 export default Chips;

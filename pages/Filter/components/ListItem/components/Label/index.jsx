@@ -10,6 +10,11 @@ import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
 import styles from './style';
 
+/**
+ * The Filter List Item Label component.
+ * @param {Object} props The component props.
+ * @return {JSX}
+ */
 const Label = pure(({ label }) => (
   <div className={styles}>
     {label}
