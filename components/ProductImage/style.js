@@ -17,7 +17,7 @@ const placeholderContainer = css({
     width: '100%',
     paddingTop: '100%',
   },
-});
+}).toString();
 
 const placeholderContent = css({
   position: 'absolute',
@@ -26,7 +26,7 @@ const placeholderContent = css({
   top: 0,
   padding: '1em',
   textAlign: 'center',
-});
+}).toString();
 
 const placeholderIconScale = 0.65;
 
@@ -37,7 +37,7 @@ const placeholder = css({
   top: `${(1.0 - placeholderIconScale) * 50}%`,
   left: `${(1.0 - placeholderIconScale) * 50}%`,
   color: 'rgba(0, 0, 0, .05)',
-});
+}).toString();
 
 export default {
   placeholderContainer,

@@ -17,7 +17,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Iterator = pure(props => (
+const Iterator = props => (
   <Grid.Item
     key={props.id}
     itemProp="itemListElement"
@@ -27,7 +27,7 @@ const Iterator = pure(props => (
   >
     <Item product={props} display={props.display} />
   </Grid.Item>
-));
+);
 
 Iterator.propTypes = {
   display: PropTypes.string.isRequired,

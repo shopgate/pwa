@@ -148,6 +148,14 @@ class Products extends Component {
               totalProductCount={this.props.totalProductCount}
             />
           </div>}
+        {(!this.initialRender || this.props.viewMode === LIST_VIEW) &&
+          <div ref={this.updateListReference}>
+            <ProductList
+              handleGetProducts={this.getProducts}
+              products={this.props.products}
+              totalProductCount={this.props.totalProductCount}
+            />
+          </div>}
       </div>
     );
   }
