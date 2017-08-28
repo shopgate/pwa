@@ -18,30 +18,33 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductGrid = pure(({ handleGetProducts, products, totalProductCount, viewId }) => (
-  <InfiniteContainer
-    wrapper={Layout}
-    iterator={Iterator}
-    loader={handleGetProducts}
-    items={products}
-    loadingIndicator={LoadingIndicator}
-    totalItems={totalProductCount}
-    viewId={viewId}
-    key={viewId}
-    initialLimit={6}
-  />
-));
+const ProductGrid = ({ handleGetProducts, products, totalProductCount }) => {
+  console.warn('products', products.length);
+
+  return (
+    <InfiniteContainer
+      wrapper={Layout}
+      iterator={Iterator}
+      loader={handleGetProducts}
+      items={products}
+      loadingIndicator={<LoadingIndicator />}
+      totalItems={totalProductCount}
+      initialLimit={6}
+      limit={30}
+    />
+  );
+};
 
 ProductGrid.propTypes = {
-  totalProductCount: PropTypes.number.isRequired,
-  viewId: PropTypes.string.isRequired,
   handleGetProducts: PropTypes.func,
   products: PropTypes.arrayOf(PropTypes.shape()),
+  totalProductCount: PropTypes.number,
 };
 
 ProductGrid.defaultProps = {
   handleGetProducts: () => {},
   products: null,
+  totalProductCount: null,
 };
 
 export default ProductGrid;

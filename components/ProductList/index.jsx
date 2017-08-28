@@ -17,30 +17,28 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductList = ({ handleGetProducts, products, totalProductCount, viewId }) => (
+const ProductList = ({ handleGetProducts, products, totalProductCount }) => (
   <InfiniteContainer
     wrapper={Layout}
     iterator={Iterator}
     loader={handleGetProducts}
     items={products}
-    loadingIndicator={LoadingIndicator}
+    loadingIndicator={<LoadingIndicator />}
     totalItems={totalProductCount}
-    viewId={viewId}
-    key={viewId}
     initialLimit={10}
   />
 );
 
 ProductList.propTypes = {
-  totalProductCount: PropTypes.number.isRequired,
-  viewId: PropTypes.string.isRequired,
   handleGetProducts: PropTypes.func,
   products: PropTypes.arrayOf(PropTypes.shape()),
+  totalProductCount: PropTypes.number,
 };
 
 ProductList.defaultProps = {
   handleGetProducts: () => {},
   products: null,
+  totalProductCount: null,
 };
 
 export default ProductList;

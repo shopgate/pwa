@@ -7,6 +7,7 @@ import FilterBar from 'Components/FilterBar';
 import NoResults from 'Components/NoResults';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
+import Products from './components/Products';
 import {
   GRID_VIEW,
   LIST_VIEW,
@@ -112,24 +113,16 @@ class Category extends Component {
    * @returns {JSX}
    */
   render() {
-    const viewId = `${this.path}_${this.props.sort}`;
-
     return (
       <View>
         <ViewContent title={this.title}>
           <CategoryList />
           <FilterBar />
-          {/*this.props.isProductsShown &&
-            <Products
-              viewMode={this.props.viewMode}
-              handleGetProducts={this.props.handleGetProducts}
-              products={this.props.products}
-              loadingIndicator={loadingIndicator}
-              totalProductCount={this.props.totalProductCount}
-              viewId={viewId}
-              limit={ITEMS_PER_LOAD}
-            />
-          */}
+          <Products
+            handleGetProducts={this.props.handleGetProducts}
+            products={this.props.products}
+            totalProductCount={this.props.totalProductCount}
+          />
           {/*this.isNoResultsShown &&
             <NoResults
               headlineText="category.no_result.heading"
