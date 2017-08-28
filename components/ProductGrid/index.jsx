@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import Iterator from './components/Iterator';
@@ -18,30 +17,29 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductGrid = pure(({ handleGetProducts, products, totalProductCount, viewId }) => (
+const ProductGrid = ({ handleGetProducts, products, totalProductCount }) => (
   <InfiniteContainer
     wrapper={Layout}
     iterator={Iterator}
     loader={handleGetProducts}
     items={products}
-    loadingIndicator={LoadingIndicator}
+    loadingIndicator={<LoadingIndicator />}
     totalItems={totalProductCount}
-    viewId={viewId}
-    key={viewId}
     initialLimit={6}
+    limit={30}
   />
-));
+);
 
 ProductGrid.propTypes = {
-  totalProductCount: PropTypes.number.isRequired,
-  viewId: PropTypes.string.isRequired,
   handleGetProducts: PropTypes.func,
   products: PropTypes.arrayOf(PropTypes.shape()),
+  totalProductCount: PropTypes.number,
 };
 
 ProductGrid.defaultProps = {
   handleGetProducts: () => {},
   products: null,
+  totalProductCount: null,
 };
 
 export default ProductGrid;

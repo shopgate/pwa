@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductGrid from 'Components/ProductGrid';
 import ProductList from 'Components/ProductList';
-import { GRID_VIEW, LIST_VIEW } from '../../pages/Category/constants';
+import { GRID_VIEW, LIST_VIEW } from '../../constants';
+import connect from './connector';
 
 /**
  * The Products component
@@ -10,9 +11,17 @@ import { GRID_VIEW, LIST_VIEW } from '../../pages/Category/constants';
  * all the time and then only switching the inline style directly in the real DOM.
  */
 class Products extends Component {
-
   static propTypes = {
+    isVisible: PropTypes.bool.isRequired,
+    sort: PropTypes.string.isRequired,
     viewMode: PropTypes.string.isRequired,
+    products: PropTypes.arrayOf(PropTypes.shape()),
+    totalProductCount: PropTypes.number,
+  };
+
+  static defaultProps = {
+    products: null,
+    totalProductCount: null,
   };
 
   /**
@@ -24,9 +33,10 @@ class Products extends Component {
 
     this.gridContainer = null;
     this.listContainer = null;
+
     /**
      * Variable to make sure that only one of the two ProductXxx Components
-     * is rendered in the first place
+     * is rendered in the first place.
      */
     this.initialRender = true;
   }
@@ -115,24 +125,40 @@ class Products extends Component {
     this.applyInlineStyle(this.props);
   };
 
+  getProducts = (offset) => {
+    this.props.getCategoryProducts(offset);
+  }
+
   /**
    * Renders the Products component.
    * @returns {JSX}
    */
   render() {
+    if (!this.props.isVisible || !this.props.products) {
+      return null;
+    }
+
     return (
       <div>
         {(!this.initialRender || this.props.viewMode === GRID_VIEW) &&
           <div ref={this.updateGridReference}>
-            <ProductGrid {...this.props} />
+            <ProductGrid
+              handleGetProducts={this.getProducts}
+              products={this.props.products}
+              totalProductCount={this.props.totalProductCount}
+            />
           </div>}
         {(!this.initialRender || this.props.viewMode === LIST_VIEW) &&
           <div ref={this.updateListReference}>
-            <ProductList {...this.props} />
+            <ProductList
+              handleGetProducts={this.getProducts}
+              products={this.props.products}
+              totalProductCount={this.props.totalProductCount}
+            />
           </div>}
       </div>
     );
   }
 }
 
-export default Products;
+export default connect(Products);

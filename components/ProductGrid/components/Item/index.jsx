@@ -7,12 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-// TODO import FavoritesButton from 'Components/FavoritesButton';
 import ProductImage from 'Components/ProductImage';
 import RatingStars from 'Components/RatingStars';
 import DiscountBadge from 'Components/DiscountBadge';
@@ -26,7 +24,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = pure(({ product, display }) => (
+const Item = ({ product, display }) => (
   <Link
     tagName="a"
     href={`/item/${bin2hex(product.id)}`}
@@ -36,19 +34,18 @@ const Item = pure(({ product, display }) => (
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {product.price.discount && (
+    {product.price.discount &&
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
-    )}
-    {/* <FavoritesButton className={style.wishlist} productId={props.product.id} /> */}
+    }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        {(product.rating && product.rating.count) && (
+        {(product.rating && product.rating.count > 0) &&
           <div>
             {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
           </div>
-        )}
+        }
         {(!display || display.name) && (
           <div className={styles.title} itemProp="name">
             <Ellipsis>{product.name}</Ellipsis>
@@ -64,7 +61,7 @@ const Item = pure(({ product, display }) => (
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.unitPriceStriked && (
+            {product.price.unitPriceStriked > 0 && (
               <Grid.Item>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
@@ -86,11 +83,15 @@ const Item = pure(({ product, display }) => (
       </div>
     )}
   </Link>
-));
+);
 
 Item.propTypes = {
-  display: PropTypes.shape().isRequired,
   product: PropTypes.shape().isRequired,
+  display: PropTypes.shape(),
+};
+
+Item.defaultProps = {
+  display: null,
 };
 
 export default Item;
