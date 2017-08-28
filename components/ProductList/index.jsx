@@ -26,6 +26,7 @@ const ProductList = ({ handleGetProducts, products, totalProductCount }) => (
     loadingIndicator={<LoadingIndicator />}
     totalItems={totalProductCount}
     initialLimit={10}
+    limit={30}
   />
 );
 

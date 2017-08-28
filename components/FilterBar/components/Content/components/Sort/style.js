@@ -10,6 +10,7 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const button = css({
+  color: 'inherit',
   outline: 0,
   marginLeft: 10,
   display: 'flex',

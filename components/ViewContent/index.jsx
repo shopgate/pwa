@@ -101,6 +101,7 @@ class ViewContent extends Component {
         velocity,
       },
     });
+
     this.element.dispatchEvent(swipeEvent);
   };
 
