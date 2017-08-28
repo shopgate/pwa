@@ -116,13 +116,9 @@ class Category extends Component {
     return (
       <View>
         <ViewContent title={this.title}>
-          <CategoryList />
           <FilterBar />
-          <Products
-            handleGetProducts={this.props.handleGetProducts}
-            products={this.props.products}
-            totalProductCount={this.props.totalProductCount}
-          />
+          <CategoryList />
+          <Products />
           {/*this.isNoResultsShown &&
             <NoResults
               headlineText="category.no_result.heading"
