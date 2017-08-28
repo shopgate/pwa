@@ -1,4 +1,3 @@
-import { getCurrentCategoryId } from '@shopgate/pwa-common-commerce/category/selectors';
 import changeSortOrder from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
@@ -17,13 +16,11 @@ const changeSort = newSort => (dispatch, getState) => {
     return;
   }
 
-  const categoryId = getCurrentCategoryId(state);
-
-  // Fetch new products based on the sort order.
-  dispatch(fetchCategoryProducts(categoryId));
-
   // Change the sort order
   dispatch(changeSortOrder(newSort));
+
+  // Fetch new products based on the sort order.
+  dispatch(fetchCategoryProducts(0, 30, newSort));
 
   // Reset the scroll top position of the page.
   dispatch(setViewScrollToTop());

@@ -26,7 +26,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = pure(({ display, product }) => (
+const Item = ({ display, product }) => (
   <Link
     tagName="a"
     href={`/item/${bin2hex(product.id)}`}
@@ -65,7 +65,7 @@ const Item = pure(({ display, product }) => (
             discounted={!!product.price.discount}
             currency={product.price.currency}
           />
-          {product.price.unitPriceStriked && (
+          {product.price.unitPriceStriked > 0 && (
             <PriceStriked
               value={product.price.unitPriceStriked}
               currency={product.price.currency}
@@ -80,11 +80,15 @@ const Item = pure(({ display, product }) => (
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
     </Grid>
   </Link>
-));
+);
 
 Item.propTypes = {
-  display: PropTypes.shape().isRequired,
   product: PropTypes.shape().isRequired,
+  display: PropTypes.shape(),
+};
+
+Item.defaultProps = {
+  display: null,
 };
 
 export default Item;

@@ -1,18 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
 import { getScrollParent } from '@shopgate/pwa-common/helpers/dom';
 import styles from './style';
 import connect from './connector';
 import Content from './components/Content';
-import Button from './components/Button';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 /**
  * The Filter bar component.
  */
-class FilterBar extends PureComponent {
+class FilterBar extends Component {
   static propTypes = {
     isActive: PropTypes.bool,
     isVisible: PropTypes.bool,
@@ -49,6 +48,9 @@ class FilterBar extends PureComponent {
    * Called after mount. Sets up the scroll DOM elements.
    */
   componentDidMount() {
+    // console.warn(this.refs);
+    // console.warn(this.rootNode);
+    // console.warn(this.element);
     this.setupScrollElement();
     this.setSpacerHeight();
   }
@@ -217,17 +219,16 @@ class FilterBar extends PureComponent {
     }
 
     return (
-      <section style={{ height: this.state.spacerHeight }}>
+      <div>
         <div
-          ref={(ref) => { this.element = ref; }}
+          ref={(element) => { this.element = element; }}
           className={styles.wrapper}
           style={this.wrapperStyle}
         >
-          <div className={this.filterBarClassName}>
-            <Content componentUpdated={this.setSpacerHeight} />
-          </div>
+          <Content componentUpdated={this.setSpacerHeight} />
         </div>
-      </section>
+        <div style={{ height: this.state.spacerHeight }} />
+      </div>
     );
   }
 }

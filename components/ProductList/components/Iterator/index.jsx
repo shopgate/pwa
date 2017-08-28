@@ -12,7 +12,7 @@ import List from '@shopgate/pwa-common/components/List';
 import Item from '../Item';
 import styles from './style';
 
-const Iterator = pure(props => (
+const Iterator = props => (
   <List.Item
     key={props.id}
     itemProp="itemListElement"
@@ -22,7 +22,7 @@ const Iterator = pure(props => (
   >
     <Item product={props} display={props.display} />
   </List.Item>
-));
+);
 
 Iterator.propTypes = {
   display: PropTypes.string.isRequired,

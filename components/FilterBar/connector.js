@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { isFilterBarActive, isFilterBarShown } from './selectors';
+import { isFilterBarShown } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +14,6 @@ import { isFilterBarActive, isFilterBarShown } from './selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isActive: isFilterBarActive(state),
   isVisible: isFilterBarShown(state),
 });
 

@@ -3,6 +3,7 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const button = cxs({
+  color: 'inherit',
   outline: 0,
   marginLeft: 10,
   display: 'flex',
