@@ -1,34 +1,32 @@
-import React, { PureComponent } from 'react';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Chip from 'Components/Chip';
-import { GRID_VIEW } from 'Pages/Category/constants';
+import Sort from './components/Sort';
+import ViewSwitch from './components/ViewSwitch';
+import FilterButton from './components/FilterButton';
+import FilterChips from './components/FilterChips';
 import connect from './connector';
-import Sort from '../Sort';
-import ViewSwitch from '../ViewSwitch';
 import styles from './style';
 
 /**
  * The Filter bar component.
  */
-class Content extends PureComponent {
+class Content extends Component {
   static propTypes = {
     componentUpdated: PropTypes.func.isRequired,
     getFilters: PropTypes.func.isRequired,
     activeFilters: PropTypes.shape(),
-    commitTemporaryFilters: PropTypes.func,
-    handleOpenFiltersView: PropTypes.func,
-    removeTemporaryFilter: PropTypes.func,
   };
 
   static defaultProps = {
     activeFilters: {},
-    commitTemporaryFilters: () => {},
-    handleOpenFiltersView: () => {},
-    removeTemporaryFilter: () => {},
-    sort: null,
-    viewMode: GRID_VIEW,
   };
 
   static contextTypes = {
@@ -60,81 +58,16 @@ class Content extends PureComponent {
   }
 
   /**
-   * Handles removal of a filter by clicking on a chip.
-   * @param {string} id The filter Id
-   * @param {number} index The filter index
+   * Returns the currency.
+   * @return {string}
    */
-  handleFilterRemove = (id, index) => {
-    this.props.removeTemporaryFilter(id, index);
-    this.props.commitTemporaryFilters();
-  };
-
-  /**
-   * Creates the chip elements that will be visible in the FilterBar.
-   * @returns {Array} Array of react elements.
-   */
-  createFilterChips() {
-    const { activeFilters } = this.props;
-
-    if (!activeFilters) {
-      return null;
-    }
-
+  get currency() {
     /**
      * TODO: Remove context translation for currency and,
      * instead, get it from shop settings when available.
      */
     const { __ } = this.context.i18n();
-    const currency = __('price.currency');
-    const chips = [];
-
-    Object.keys(activeFilters).forEach((key) => {
-      const filter = activeFilters[key];
-
-      if (filter.type === 'range') {
-        chips.push(
-          <Chip
-            key={filter.label}
-            onRemove={() => this.handleFilterRemove(key)}
-            onClick={this.props.handleOpenFiltersView}
-          >
-            <I18n.Price price={filter.minimum / 100} currency={currency} fractions={false} />
-            &nbsp;&mdash;&nbsp;
-            <I18n.Price price={filter.maximum / 100} currency={currency} fractions={false} />
-          </Chip>
-        );
-      } else if (filter.type === 'multiselect') {
-        filter.values.forEach((value, index) => chips.push(
-          <Chip
-            key={`${filter.label}-${index + 1}`}
-            onRemove={() => this.handleFilterRemove(key, index)}
-            onClick={this.props.handleOpenFiltersView}
-          >
-            {`${filter.label}: ${value}`}
-          </Chip>
-        ));
-      } else {
-        chips.push(
-          <Chip
-            key={filter.label}
-            onRemove={() => this.handleFilterRemove(key)}
-            onClick={this.props.handleOpenFiltersView}
-          >
-            {`${filter.label}: ${filter.value}`}
-          </Chip>
-        );
-      }
-    });
-
-    return chips;
-  }
-
-  /**
-   * Returns whether filters are set or not.
-   * @returns {boolean}
-   */
-  get hasFilters() {
-    return !!Object.keys(this.props.activeFilters).length;
+    return __('price.currency');
   }
 
   /**
@@ -146,33 +79,10 @@ class Content extends PureComponent {
       <div className={styles.wrapper}>
         <ViewSwitch />
         <Sort />
-        {/*<button className={styles.button} onClick={this.props.handleOpenFiltersView}>
-          <Ripple className={styles.filterButtonRipple} fill>
-            <Grid component="div">
-              <Grid.Item
-                className={styles.filterButton}
-                component="div"
-              >
-                <span className={styles.filterButtonLabel}>
-                  <I18n.Text string="titles.filter" />
-                </span>
-              </Grid.Item>
-              <Grid.Item component="div">
-                <FilterIcon />
-              </Grid.Item>
-            </Grid>
-          </Ripple>
-        </button>*/}
-        {/*<div className={styles.cardList}>
-          {this.hasFilters &&
-            <ChipLayout
-              moreLabel="filter.more"
-              handleMoreButton={this.props.handleOpenFiltersView}
-            >
-              {this.createFilterChips()}
-            </ChipLayout>
-          }
-        </div>*/}
+        <FilterButton />
+        <div className={styles.chips}>
+          <FilterChips currency={this.currency} />
+        </div>
       </div>
     );
   }

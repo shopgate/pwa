@@ -6,7 +6,11 @@
  */
 
 import { connect } from 'react-redux';
-import { getFilters } from '@shopgate/pwa-common-commerce/filter/actions';
+import {
+  commitTemporaryFilters,
+  removeTemporaryFilter,
+} from '@shopgate/pwa-common-commerce/filter/action-creators';
+import { openFilterView } from '@shopgate/pwa-common-commerce/filter/actions';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 
 /**
@@ -20,11 +24,16 @@ const mapStateToProps = state => ({
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param  {Function} dispatch The redux dispatch function.
+ * @param {Function} dispatch The redux dispatch function.
+ * @param  {Object} props The components props.
  * @return {Object} The extended component props.
  */
-const mapDispatchToProps = dispatch => ({
-  getFilters: () => dispatch(getFilters()),
+const mapDispatchToProps = (dispatch, props) => ({
+  handleFilterRemove: (id, index = null) => {
+    dispatch(removeTemporaryFilter(id, index));
+    dispatch(commitTemporaryFilters());
+  },
+  handleOpenFilters: () => dispatch(openFilterView(props)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
