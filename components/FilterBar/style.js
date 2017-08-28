@@ -7,6 +7,7 @@ const wrapper = cxs({
   height: variables.filterbar.height,
   width: '100%',
   zIndex: 3,
+  top: variables.navigator.height,
   willChange: 'transform',
 });
 
