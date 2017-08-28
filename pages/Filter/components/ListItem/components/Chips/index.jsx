@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import pure from 'recompose/pure';
-import ChipsLayout from 'Components/ChipsLayout';
+import ChipLayout from 'Components/ChipLayout';
 import Chip from 'Components/Chip';
 
 /**
@@ -22,13 +22,13 @@ const Chips = pure(({ values }) => {
   }
 
   return (
-    <ChipsLayout maxRows={3} moreLabel="filter.view_all" invertMoreButton>
+    <ChipLayout maxRows={3} moreLabel="filter.view_all" invertMoreButton>
       {values.map(value => (
         <Chip invert removable={false} key={value}>
           {value}
         </Chip>
       ))}
-    </ChipsLayout>
+    </ChipLayout>
   );
 });
 

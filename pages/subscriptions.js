@@ -5,10 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
- import navigator from 'Components/Navigator/subscriptions';
- // @TODO import coupons from './coupons';
+import navigator from 'Components/Navigator/subscriptions';
+// @TODO import coupons from './coupons';
+import filter from 'Pages/Filter/subscriptions';
 
- export default [
-   navigator,
-  //  @TODO coupons,
- ];
+export default [
+  navigator,
+  // @TODO coupons,
+  filter,
+];

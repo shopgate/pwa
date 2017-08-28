@@ -5,16 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import cloneDeep from 'lodash/cloneDeep';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
 import CardList from 'Components/CardList';
-import Button from 'Components/Button';
 import PriceRangeSlider from './components/PriceRangeSlider';
 import ListItem from './components/ListItem';
+import ClearButton from './components/ClearButton';
 import connect from './connector';
 import styles from './style';
 
@@ -25,36 +25,18 @@ class Filter extends Component {
   static propTypes = {
     mergeTemporaryFilters: PropTypes.func.isRequired,
     queryParams: PropTypes.string.isRequired,
-    removeAllTemporaryFilters: PropTypes.func.isRequired,
     removeTemporaryFilter: PropTypes.func.isRequired,
-    setFilterClosed: PropTypes.func.isRequired,
-    setFilterOpened: PropTypes.func.isRequired,
     temporaryFilters: PropTypes.shape().isRequired,
     availableFilters: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
-    activeFilters: {},
     availableFilters: [],
   };
 
   static contextTypes = {
     i18n: PropTypes.func,
   };
-
- /**
-  * Marks the filter page as open when entering the page.
-  */
-  componentDidMount() {
-    this.props.setFilterOpened();
-  }
-
- /**
-  * Marks the filter page as closed when leaving the page.
-  */
-  componentWillUnmount() {
-    this.props.setFilterClosed();
-  }
 
   /**
    * Updates the filter.
@@ -147,27 +129,12 @@ class Filter extends Component {
                     </div>
                   )}
                   {(filter.type !== 'range') && (
-                    <ListItem
-                      href={filter.url}
-                      label={filter.label}
-                      values={filter.active}
-                      onClear={filterId => this.props.removeTemporaryFilter(filterId)}
-                      key={filter.id}
-                    />
+                    <ListItem filter={filter} key={filter.id} />
                   )}
                 </CardList.Item>
               ))}
             </CardList>
-            <div className={styles.clearBtn}>
-              <Button
-                flat
-                type="regular"
-                onClick={() => this.props.removeAllTemporaryFilters()}
-                disabled={!hasFilters}
-              >
-                <I18n.Text string="filter.clear_all" />
-              </Button>
-            </div>
+            <ClearButton hasFilters={hasFilters} />
           </div>
         </ViewContent>
       </View>

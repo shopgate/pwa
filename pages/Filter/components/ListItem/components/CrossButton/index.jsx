@@ -7,22 +7,25 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import CrossIcon from 'Components/icons/CrossIcon';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The Cross Button component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const CrossButton = ({ onClear }) => (
-  <button className={styles.cross} onClick={onClear}>
+const CrossButton = pure(({ removeTemporaryFilter, filterId }) => (
+  <button className={styles.cross} onClick={() => removeTemporaryFilter(filterId)}>
     <CrossIcon className={styles.crossIcon} />
   </button>
-);
+));
 
 CrossButton.propTypes = {
-  onClear: PropTypes.func.isRequired,
+  filterId: PropTypes.number.isRequired,
+  removeTemporaryFilter: PropTypes.func.isRequired,
 };
 
-export default CrossButton;
+export default connect(CrossButton);

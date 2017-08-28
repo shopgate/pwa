@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -18,9 +25,9 @@ export const CHIP_ROW_HEIGHT = 40;
 export const CHIP_MINIMUM_WIDTH = 60;
 
 /**
- * The ChipsLayout component.
+ * The ChipLayout component.
  */
-class ChipsLayout extends Component {
+class ChipLayout extends Component {
   static propTypes = {
     children: PropTypes.node,
     handleMoreButton: PropTypes.func,
@@ -158,4 +165,4 @@ class ChipsLayout extends Component {
   }
 }
 
-export default ChipsLayout;
+export default ChipLayout;

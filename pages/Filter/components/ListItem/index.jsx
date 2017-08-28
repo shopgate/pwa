@@ -12,6 +12,7 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Label from './components/Label';
 import Chips from './components/Chips';
+import CrossButton from './components/CrossButton';
 import styles from './style';
 
 /**
@@ -19,7 +20,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ListItem = pure(({ filter, onClear }) => (
+const ListItem = pure(({ filter }) => (
   <div className={styles.item} rt-stateless>
     <Link href={filter.url}>
       <Grid>
@@ -31,13 +32,12 @@ const ListItem = pure(({ filter, onClear }) => (
         </Grid.Item>
       </Grid>
     </Link>
-    <FilterListItemCrossButton rt-if="props.values" onClear={onClear} />
+    {filter.values && <CrossButton filterId={filter.id} />}
   </div>
 ));
 
 ListItem.propTypes = {
   filter: PropTypes.shape().isRequired,
-  onClear: PropTypes.func,
 };
 
 ListItem.defaultProps = {
