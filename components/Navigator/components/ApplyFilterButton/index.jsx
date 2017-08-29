@@ -14,7 +14,7 @@ import connect from './connector';
 /**
  * The apply filter button component.
  */
-export class ApplyFilterButton extends Component {
+class ApplyFilterButton extends Component {
   static propTypes = {
     applyFilters: PropTypes.func.isRequired,
     filtersChanged: PropTypes.bool,
@@ -48,3 +48,6 @@ export class ApplyFilterButton extends Component {
 }
 
 export default connect(ApplyFilterButton);
+
+// For testing.
+export { ApplyFilterButton as Unwrapped };

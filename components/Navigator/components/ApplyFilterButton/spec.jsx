@@ -7,11 +7,7 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ApplyFilterButton } from './index';
-
-jest.mock('@shopgate/pwa-common/actions/history', () => ({
-  goBackHistory: jest.fn(),
-}));
+import { Unwrapped as ApplyFilterButton } from './index';
 
 describe('<ApplyFilterButton />', () => {
   it('it should render', () => {
@@ -39,18 +35,15 @@ describe('<ApplyFilterButton />', () => {
 
   it('should not trigger the applyFilters function when there are no filter changes', () => {
     const applyFiltersSpy = jest.fn();
-    const goBackHistorySpy = jest.fn();
 
     const wrapper = mount(
       <ApplyFilterButton
         applyFilters={applyFiltersSpy}
-        goBackHistory={goBackHistorySpy}
         filtersChanged={false}
       />
     );
 
     wrapper.simulate('click', { preventDefault: () => {} });
     expect(applyFiltersSpy).not.toHaveBeenCalled();
-    expect(goBackHistorySpy).not.toHaveBeenCalled();
   });
 });
