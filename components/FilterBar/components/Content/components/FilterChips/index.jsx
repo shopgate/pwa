@@ -11,6 +11,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import Chip from 'Components/Chip';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
+import styles from './style';
 
 /**
  * The Filter Bar Filter Chips component.
@@ -67,9 +68,11 @@ const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFi
   });
 
   return (
-    <ChipLayout moreLabel="filter.more" handleMoreButton={handleOpenFilters}>
-      {chips}
-    </ChipLayout>
+    <div className={styles}>
+      <ChipLayout moreLabel="filter.more" handleMoreButton={handleOpenFilters}>
+        {chips}
+      </ChipLayout>
+    </div>
   );
 };
 
