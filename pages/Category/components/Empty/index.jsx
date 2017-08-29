@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import NoResults from 'Components/NoResults';
 import connect from './connector';
 
@@ -21,8 +20,7 @@ import connect from './connector';
  * @param {boolean} props.discounted Tells if the pice is discounted
  * @return {JSX}
  */
-const Empty = pure((props) => {
-  console.warn('did render', props);
+const Empty = (props) => {
   if (!props.isVisible) {
     return null;
   }
@@ -30,7 +28,7 @@ const Empty = pure((props) => {
   return (
     <NoResults {...props} />
   );
-});
+};
 
 Empty.propTypes = {
   isVisible: PropTypes.bool.isRequired,

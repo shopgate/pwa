@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Item from '../Item';
 import styles from './style';

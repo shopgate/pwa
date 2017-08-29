@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import styles from './style';
 
 /**
@@ -15,11 +14,11 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Label = pure(({ label }) => (
+const Label = ({ label }) => (
   <div className={styles}>
     {label}
   </div>
-));
+);
 
 Label.propTypes = {
   label: PropTypes.string.isRequired,

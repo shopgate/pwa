@@ -18,7 +18,6 @@
     "@shopgate/pwa-common-commerce": "github:shopgate/pwa-common-commerce",
     "@shopgate/pwa-core": "github:shopgate/pwa-core",
     "babel-core": "^6.26.0",
-    "babel-plugin-glamor": "^3.0.0-1",
     "babel-plugin-module-resolver": "3.0.0-beta.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",

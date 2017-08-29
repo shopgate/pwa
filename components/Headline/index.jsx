@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import styles from './style';
 
 /**
@@ -15,9 +14,9 @@ import styles from './style';
  * @param {string} props The component props.
  * @returns {JSX}
  */
-const Headline = pure(({ text }) => (
+const Headline = ({ text }) => (
   text.length ? <h3 className={styles.headline}>{text}</h3> : null
-));
+);
 
 Headline.propTypes = {
   text: PropTypes.string.isRequired,

@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Button from 'Components/Button';
 import connect from './connector';
@@ -18,7 +17,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ClearButton = pure(({ hasFilters, removeAllTemporaryFilters }) => (
+const ClearButton = ({ hasFilters, removeAllTemporaryFilters }) => (
   <div className={styles}>
     <Button
       flat
@@ -29,7 +28,7 @@ const ClearButton = pure(({ hasFilters, removeAllTemporaryFilters }) => (
       <I18n.Text string="filter.clear_all" />
     </Button>
   </div>
-));
+);
 
 ClearButton.propTypes = {
   hasFilters: PropTypes.boolean.isRequired,
