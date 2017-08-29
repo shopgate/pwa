@@ -26,8 +26,10 @@ export default function category(subscribe) {
     ({ pathname }) => !pathname.startsWith(FILTER_PATH)
   );
 
-  subscribe(categoryRouteDidLeave$, ({ dispatch }) => {
-    dispatch(setCurrentCategoryId(''));
+  subscribe(categoryRouteDidLeave$, ({ dispatch, pathname }) => {
+    if (!pathname.startsWith(CATEGORY_PATH)) {
+      dispatch(setCurrentCategoryId(''));
+    }
   });
 
   /**
