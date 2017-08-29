@@ -6,8 +6,8 @@
  */
 
 import { connect } from 'react-redux';
-import submitSearch from './actions/submitSearch';
-import { isCurrentViewLoading } from '../View/selectors';
+import { goBackHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import toggleNavDrawer from '../../actions/toggleNavDrawer';
 
 /**
  * Maps the contents of the state to the component props.
@@ -15,14 +15,12 @@ import { isCurrentViewLoading } from '../View/selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  backgroundColor: state.navigator.backgroundColor,
+  action: state.history.action,
   filterOpen: state.navigator.filterOpen,
-  navigatorEnabled: state.navigator.enabled,
-  searchActive: state.navigator.searchActive,
-  showSearch: state.navigator.showSearch,
-  showTitle: state.navigator.showTitle,
-  showLoadingBar: isCurrentViewLoading(state),
-  textColor: state.navigator.textColor,
+  filterAttributeOpen: state.navigator.filterAttributeOpen,
+  loginOpen: state.navigator.loginOpen,
+  path: state.history.pathname,
+  showIconShadow: state.navigator.showIconShadow,
 });
 
 /**
@@ -31,7 +29,8 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  submitSearch: () => dispatch(submitSearch()),
+  goBackHistory: (amount = 1) => dispatch(goBackHistory(amount)),
+  toggleNavDrawer: active => dispatch(toggleNavDrawer(active)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

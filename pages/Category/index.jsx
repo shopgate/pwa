@@ -17,11 +17,13 @@ import connect from './connector';
 class Category extends Component {
   static propTypes = {
     category: PropTypes.shape(),
+    isFilterBarShown: PropTypes.bool,
     isRoot: PropTypes.bool,
   };
 
   static defaultProps = {
     category: null,
+    isFilterBarShown: true,
     isRoot: true,
   };
 
@@ -52,7 +54,7 @@ class Category extends Component {
     return (
       <View>
         <ViewContent title={this.title}>
-          <FilterBar />
+          {this.props.isFilterBarShown && <FilterBar />}
           <CategoryList />
           <Products />
           <Empty
@@ -71,4 +73,4 @@ const enhance = compose(
   NoBackgroundRender
 );
 
-export default enhance(Category);
+export default connect(Category);

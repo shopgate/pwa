@@ -13,11 +13,12 @@ import {
   HISTORY_REPLACE_ACTION,
 } from '@shopgate/pwa-common/constants/History';
 import Button from '@shopgate/pwa-common/components/Button';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import ArrowIcon from 'Components/icons/ArrowIcon';
 import BurgerIcon from 'Components/icons/BurgerIcon';
 import CrossIcon from 'Components/icons/CrossIcon';
 import Ripple from 'Components/Ripple';
-import connect from '../../connector';
+import connect from './connector';
 import {
   NAV_STATE_INDEX,
   NAV_STATE_BACK,
@@ -36,7 +37,7 @@ const getTypeFromProps = (props) => {
       return NAV_STATE_BACK;
     case HISTORY_POP_ACTION:
     case HISTORY_REPLACE_ACTION:
-      return (path !== '/') ? NAV_STATE_BACK : NAV_STATE_INDEX;
+      return (path !== INDEX_PATH) ? NAV_STATE_BACK : NAV_STATE_INDEX;
     default:
       return NAV_STATE_INDEX;
   }
@@ -46,7 +47,6 @@ const getTypeFromProps = (props) => {
  * The nav icon component for the navigator.
  */
 class NavButton extends PureComponent {
-
   static propTypes = {
     // eslint-disable-next-line react/no-unused-prop-types
     action: PropTypes.string.isRequired,
@@ -63,7 +63,6 @@ class NavButton extends PureComponent {
   static defaultProps = {
     goBackHistory: () => {},
     showIconShadow: false,
-
   };
 
   /**

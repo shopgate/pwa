@@ -1,5 +1,5 @@
 import connect from '@shopgate/pwa-common/helpers/routedConnect';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { isFilterBarShown } from '../../components/FilterBar/selectors';
 import {
   getCurrentCategory,
   getCurrentCategoryId,
@@ -14,6 +14,7 @@ import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selecto
  */
 const mapStateToProps = (state, props) => ({
   category: getCurrentCategory(state, props),
+  isFilterBarShown: isFilterBarShown(state),
   isRoot: !getCurrentCategoryId(state, props),
   ...getProductsResult(state, props),
 });

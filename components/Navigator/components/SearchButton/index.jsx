@@ -24,7 +24,7 @@ class SearchButton extends Component {
   };
 
   /**
-   * This component doesnt need to update at all.
+   * This component doesn't need to update at all.
    * @returns {boolean}
    */
   shouldComponentUpdate() {
