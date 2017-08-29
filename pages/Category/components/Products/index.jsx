@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductGrid from 'Components/ProductGrid';
@@ -13,13 +20,14 @@ import connect from './connector';
 class Products extends Component {
   static propTypes = {
     isVisible: PropTypes.bool.isRequired,
-    sort: PropTypes.string.isRequired,
     viewMode: PropTypes.string.isRequired,
+    getCategoryProducts: PropTypes.func,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
+    getCategoryProducts: () => {},
     products: null,
     totalProductCount: null,
   };
@@ -92,6 +100,14 @@ class Products extends Component {
   };
 
   /**
+   * Gets the products with a certain offset.
+   * @param {number} offset The offset.
+   */
+  getProducts = (offset) => {
+    this.props.getCategoryProducts(offset);
+  }
+
+  /**
    * Applies the styling directly to the DOM element without using react.
    * @param {Object} props The component props.
    */
@@ -124,10 +140,6 @@ class Products extends Component {
     this.listContainer = element;
     this.applyInlineStyle(this.props);
   };
-
-  getProducts = (offset) => {
-    this.props.getCategoryProducts(offset);
-  }
 
   /**
    * Renders the Products component.

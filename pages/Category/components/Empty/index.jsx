@@ -20,7 +20,7 @@ import connect from './connector';
  * @param {boolean} props.discounted Tells if the pice is discounted
  * @return {JSX}
  */
-const Empty = pure(({ isVisible, ...props }) => {
+const Empty = ({ isVisible, ...props }) => {
   if (!isVisible) {
     return null;
   }
