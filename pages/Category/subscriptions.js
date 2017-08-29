@@ -9,6 +9,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
 import { getCurrentCategoryId } from '@shopgate/pwa-common-commerce/category/selectors';
 import { setActiveFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 
 /**
@@ -22,7 +23,12 @@ export default function category(subscribe) {
    * Gets triggered on entering the filter route.
    */
   subscribe(categoryRouteDidEnter$, ({ dispatch, getState }) => {
-    dispatch(getCategory(getCurrentCategoryId(getState())));
-    dispatch(setActiveFilters({}));
+    const state = getState();
+
+    dispatch(getCategory(getCurrentCategoryId(state)));
+
+    if (Object.keys(getActiveFilters(state)).length !== 0) {
+      dispatch(setActiveFilters({}));
+    }
   });
 }

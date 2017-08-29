@@ -85,8 +85,12 @@ class CartButton extends Component {
     }
 
     return (
-      <button className={styles.button} style={style} onClick={this.handleClick}>
-        <Ripple className={styles.buttonContent} size={navigator.height} fill>
+      <button
+        className={styles.button}
+        style={style}
+        onClick={this.handleClick}
+      >
+        <Ripple fill className={styles.buttonContent} size={navigator.height}>
           <CartIcon />
           <CartButtonBadge className={styles.badge} productCount={this.props.cartProductCount} />
         </Ripple>

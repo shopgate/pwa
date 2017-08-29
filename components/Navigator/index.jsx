@@ -26,7 +26,6 @@ import styles from './style';
 class Navigator extends Component {
   static propTypes = {
     filterOpen: PropTypes.bool.isRequired,
-    path: PropTypes.string.isRequired,
     submitSearch: PropTypes.func.isRequired,
     backgroundColor: PropTypes.string,
     navigatorEnabled: PropTypes.bool,
@@ -56,7 +55,6 @@ class Navigator extends Component {
       this.props.textColor !== nextProps.textColor ||
       this.props.showTitle !== nextProps.showTitle ||
       this.props.showSearch !== nextProps.showSearch ||
-      this.props.path !== nextProps.path ||
       this.props.filterOpen !== nextProps.filterOpen ||
       this.props.navigatorEnabled !== nextProps.navigatorEnabled ||
       this.props.showLoadingBar !== nextProps.showLoadingBar
