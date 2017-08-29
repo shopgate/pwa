@@ -29,7 +29,7 @@ const title = cxs({
 
 const grid = cxs({
   alignItems: 'center',
-  minHeight: navigator.height,
+  minHeight: variables.navigator.height,
   padding: `${variables.gap.small}px 0`,
   position: 'relative',
   zIndex: 2,

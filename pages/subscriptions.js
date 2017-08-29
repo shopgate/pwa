@@ -5,12 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
+import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
 // @TODO import coupons from './coupons';
+import category from 'Pages/Category/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 
 export default [
+  commerceCart,
+  commerceCategory,
   navigator,
   // @TODO coupons,
+  category,
   filter,
 ];

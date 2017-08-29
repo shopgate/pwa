@@ -21,9 +21,8 @@ import connect from './connector';
  * @param {boolean} props.discounted Tells if the pice is discounted
  * @return {JSX}
  */
-const Empty = pure((props) => {
-  console.warn('did render', props);
-  if (!props.isVisible) {
+const Empty = pure(({ isVisible, ...props }) => {
+  if (!isVisible) {
     return null;
   }
 

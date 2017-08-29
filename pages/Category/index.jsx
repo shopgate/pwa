@@ -8,11 +8,6 @@ import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
 import Products from './components/Products';
 import Empty from './components/Empty';
-import {
-  GRID_VIEW,
-  LIST_VIEW,
-  ITEMS_PER_LOAD,
-} from './constants';
 import connect from './connector';
 
 /**
@@ -21,23 +16,13 @@ import connect from './connector';
  */
 class Category extends Component {
   static propTypes = {
-    isRoot: PropTypes.bool.isRequired,
-    params: PropTypes.shape().isRequired,
     category: PropTypes.shape(),
-    getCategory: PropTypes.func,
-    getCategoryProducts: PropTypes.func,
-    products: PropTypes.arrayOf(PropTypes.shape()),
-    sort: PropTypes.string,
-    totalProductCount: PropTypes.number,
+    isRoot: PropTypes.bool,
   };
 
   static defaultProps = {
     category: null,
-    getCategory: () => {},
-    getCategoryProducts: () => {},
-    products: null,
-    sort: null,
-    totalProductCount: null,
+    isRoot: true,
   };
 
   static contextTypes = {
@@ -46,66 +31,17 @@ class Category extends Component {
   };
 
   /**
-   * ComponentDidMount life-cycle hook.
-   */
-  componentDidMount() {
-    this.props.getCategory(this.props.params.categoryId);
-  }
-
-  /**
-   * Fetches a new category if the router parameter has changed.
-   * @param {Object} nextProps The next component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.params.categoryId !== this.props.params.categoryId) {
-      this.props.getCategory(nextProps.params.categoryId);
-      this.props.setActiveFilters({});
-    }
-  }
-
-  /**
-   * Checks if categories are available
-   * @return {boolean}
-   */
-  get hasCategories() {
-    return Array.isArray(this.props.categories) && this.props.categories.length > 0;
-  }
-
-  /**
    * Returns the current view title.
    * @return {string} The view title.
    */
   get title() {
     const { __ } = this.context.i18n();
-    const { category } = this.props;
-    return category ? category.name : __('titles.categories');
-  }
 
-  /**
-   * Fetches products by a given offset and limited number of items.
-   * @param {number} offset An offset index from where to start.
-   * @param {number} limit The limit of items beginning at offset.
-   */
-  handleGetProducts = (offset, limit) => {
-    const { getCategoryProducts, sort } = this.props;
+    if (this.props.isRoot) {
+      return __('titles.categories');
+    }
 
-    getCategoryProducts(offset, limit, sort);
-  };
-
-  /**
-   * Is the products component shown?
-   * @return {boolean}
-   */
-  get isProductsShown() {
-    return this.props.totalProductCount !== 0;
-  }
-
-  /**
-   * Is the no results component shown?
-   * @return {boolean}
-   */
-  get isNoResultsShown() {
-    return !this.hasCategories && this.props.totalProductCount === 0;
+    return this.props.category ? this.props.category.name : '';
   }
 
   /**
@@ -131,7 +67,8 @@ class Category extends Component {
 }
 
 const enhance = compose(
+  connect,
   NoBackgroundRender
 );
 
-export default connect(Category);
+export default enhance(Category);

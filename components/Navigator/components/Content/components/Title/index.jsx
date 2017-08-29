@@ -8,8 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/History';
-import KeyframeAnimation from '@shopgate/pwa-common/components/KeyframeAnimation';
-import connect from '../../../../connector';
+import connect from './connector';
 import styles from './style';
 
 /**
@@ -18,7 +17,6 @@ import styles from './style';
 class Title extends Component {
   static propTypes = {
     action: PropTypes.string.isRequired,
-    historyLength: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     onClick: PropTypes.func,
   };
@@ -40,21 +38,23 @@ class Title extends Component {
   }
 
   /**
+   * When the component receives new props, preserve the current title.
+   * @param {Object} nextProps The components next props.
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.title !== '' && nextProps.title !== this.title) {
+      this.previousTitle = this.title;
+      this.title = nextProps.title;
+    }
+  }
+
+  /**
    * Checks if the title was reset and if the component should update.
    * @param {Object} nextProps The next incoming props.
    * @returns {boolean} Whether the component should update.
    */
   shouldComponentUpdate(nextProps) {
-    return (this.props.title !== nextProps.title) && nextProps.title;
-  }
-
-  /**
-   * When the component updates, preserve the current title.
-   * @param {Object} nextProps The components next props.
-   */
-  componentWillUpdate(nextProps) {
-    this.previousTitle = this.title;
-    this.title = nextProps.title;
+    return (this.props.title !== nextProps.title) && nextProps.title !== '';
   }
 
   /**
@@ -63,7 +63,7 @@ class Title extends Component {
    */
   get transitionClass() {
     // For the first page don't do any animation.
-    if (this.props.historyLength === 1) {
+    if (!this.previousTitle) {
       return {
         inactive: '',
         active: '',
@@ -84,24 +84,19 @@ class Title extends Component {
    * @returns {JSX}
    */
   render() {
+    const transition = this.transitionClass;
+
     return (
       <div aria-hidden onClick={this.props.onClick}>
         {/* Renders the inactive / previous title */}
-        <KeyframeAnimation
-          className={styles.title}
-          activeClass={this.transitionClass.inactive}
-          inactiveClass={styles.hidden}
-        >
+        <div className={`${styles.title} ${transition.inactive}`}>
           {this.previousTitle}
-        </KeyframeAnimation>
+        </div>
 
         {/* Renders the active / current title */}
-        <KeyframeAnimation
-          className={styles.title}
-          activeClass={this.transitionClass.active}
-        >
+        <div className={`${styles.title} ${transition.active}`}>
           {this.props.title}
-        </KeyframeAnimation>
+        </div>
       </div>
     );
   }

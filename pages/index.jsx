@@ -41,7 +41,7 @@ const Pages = () =>
   <App
     locale={locale}
     reducers={reducers}
-    subscriptions={subscriptions}
+    subscribers={subscriptions}
   >
     <Viewport>
       {process.env.NODE_ENV === 'development' &&
