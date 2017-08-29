@@ -32,7 +32,7 @@ import connect from './connector';
 /**
  * The NavDrawer component.
  */
-export class NavDrawer extends Component {
+class NavDrawer extends Component {
   static propTypes = {
     toggleNavDrawer: PropTypes.func.isRequired,
     cartProductCount: PropTypes.number,
@@ -186,3 +186,5 @@ export class NavDrawer extends Component {
 }
 
 export default connect(NavDrawer);
+
+export { NavDrawer as Unwrapped };

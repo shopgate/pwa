@@ -7,8 +7,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import NoBackgroundRender from '@shopgate/pwa-common/components/Router/components/NoBackgroundRender';
 import CategoryList from 'Components/CategoryList';
 import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
@@ -75,9 +73,9 @@ class Category extends Component {
   }
 }
 
-const enhance = compose(
-  connect,
-  NoBackgroundRender
-);
+// TODO const enhance = compose(
+// TODO   connect,
+// TODO   NoBackgroundRender
+// TODO );
 
 export default connect(Category);

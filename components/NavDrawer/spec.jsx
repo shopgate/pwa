@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import ConnectedNavDrawer, { NavDrawer } from './index';
+import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
 import Item from './components/Item';
 import headerStyles from './components/Header/style';
 
