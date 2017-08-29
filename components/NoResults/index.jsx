@@ -20,7 +20,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const NoResults = props => (
-  <div className={styles.wrapper} rt-stateless>
+  <div className={styles.wrapper}>
     <div className={styles.icon}>
       <Icon />
     </div>

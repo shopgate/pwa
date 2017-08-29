@@ -4,10 +4,10 @@ import { compose } from 'redux';
 import NoBackgroundRender from '@shopgate/pwa-common/components/Router/components/NoBackgroundRender';
 import CategoryList from 'Components/CategoryList';
 import FilterBar from 'Components/FilterBar';
-import NoResults from 'Components/NoResults';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
 import Products from './components/Products';
+import Empty from './components/Empty';
 import {
   GRID_VIEW,
   LIST_VIEW,
@@ -119,13 +119,11 @@ class Category extends Component {
           <FilterBar />
           <CategoryList />
           <Products />
-          {/*this.isNoResultsShown &&
-            <NoResults
-              headlineText="category.no_result.heading"
-              bodyText="category.no_result.body"
-              searchPhrase={this.title}
-            />
-          */}
+          <Empty
+            headlineText="category.no_result.heading"
+            bodyText="category.no_result.body"
+            searchPhrase={this.title}
+          />
         </ViewContent>
       </View>
     );
