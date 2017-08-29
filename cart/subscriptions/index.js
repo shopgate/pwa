@@ -1,6 +1,6 @@
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { getCart } from '../actions';
+import getCart from '../actions/getCart';
 import { remoteCartDidUpdate$ } from '../streams';
 import { setCartProductPendingCount } from '../action-creators';
 
