@@ -14,7 +14,7 @@ import CardList from 'Components/CardList';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
-} from '../../style';
+} from '../../../../style';
 import connect from './connector';
 import Layout from './components/Layout';
 
