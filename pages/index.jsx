@@ -20,10 +20,10 @@ import {
   // REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-// @TODO: import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
+import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 // @TODO: import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 // @TODO: import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-// @TODO: import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 // @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import Viewport from '../components/Viewport';
 // @TODO import { Dialog } from 'Templates/components';
@@ -32,6 +32,9 @@ import reducers from './reducers';
 import subscriptions from './subscriptions';
 import Page from './Page';
 import Category from './Category';
+import Filter from './Filter';
+import FilterAttribute from './FilterAttribute';
+import Cart from './Cart';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -67,6 +70,18 @@ const Pages = () =>
       <Route
         path={`${CATEGORY_PATH}/:categoryId?`}
         component={Category}
+      />
+      <Route
+        path={`${FILTER_PATH}`}
+        component={Filter}
+      />
+      <Route
+        path={`${FILTER_PATH}/:attribute`}
+        component={FilterAttribute}
+      />
+      <Route
+        path={`${CART_PATH}`}
+        component={Cart}
       />
     </Viewport>
   </App>
