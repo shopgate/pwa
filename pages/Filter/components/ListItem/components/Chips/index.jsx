@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import ChipLayout from 'Components/ChipLayout';
 import Chip from 'Components/Chip';
 
@@ -16,7 +15,7 @@ import Chip from 'Components/Chip';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const Chips = pure(({ values }) => {
+const Chips = ({ values }) => {
   if (!values || (values && values.length !== 0)) {
     return null;
   }
@@ -30,7 +29,7 @@ const Chips = pure(({ values }) => {
       ))}
     </ChipLayout>
   );
-});
+};
 
 Chips.propTypes = {
   values: PropTypes.arrayOf(PropTypes.shape()),

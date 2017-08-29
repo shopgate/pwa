@@ -1,13 +1,19 @@
-import React, { PropTypes } from 'react';
-import { Grid } from 'Library/components';
-import {
-  ProductImage,
-  QuantityPicker,
-} from 'Templates/components';
-import ProductTitle from './Title';
-import ProductPrice from './Price';
-import ProductProperties from './Properties';
-import styles from '../style';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import Grid from '@shopgate/pwa-common/components/Grid';
+import ProductImage from 'Components/ProductImage';
+import QuantityPicker from 'Components/QuantityPicker';
+import Title from '../Title';
+import ProductPrice from '../ProductPrice';
+import Properties from '../Properties';
+import styles from './style';
 
 /**
  * The ProductLayout component.
@@ -28,13 +34,13 @@ const ProductLayout = props => (
       />
     </Grid.Item>
     <Grid.Item className={styles.content} grow={1}>
-      <ProductTitle
+      <Title
         handleRemove={props.handleDelete}
         toggleEditMode={props.toggleEditMode}
         value={props.product.name}
       />
       <Grid className={styles.info}>
-        <ProductProperties
+        <Properties
           properties={props.product.properties}
         />
         <ProductPrice

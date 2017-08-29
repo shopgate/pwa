@@ -1,8 +1,13 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import { connect } from 'react-redux';
-import {
-  deleteProductsFromCart,
-  updateProductsInCart,
-} from 'Library/actions/cart';
+import deleteProductsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteProductsFromCart';
+import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -17,13 +22,4 @@ const mapDispatchToProps = dispatch => ({
   }])),
 });
 
-/**
- * Connects a component to the global store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const connector = Component =>
-  connect(null, mapDispatchToProps)(Component)
-;
-
-export default connector;
+export default connect(null, mapDispatchToProps);

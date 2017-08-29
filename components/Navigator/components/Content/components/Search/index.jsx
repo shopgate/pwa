@@ -187,6 +187,7 @@ class Search extends Component {
             className={styles.overlay}
             onClick={this.handleOverlayClick}
             role="button"
+            aria-hidden
           />
         </form>
 

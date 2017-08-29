@@ -6,12 +6,19 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
-const stock = css({
-  marginTop: variables.gap.small * 0.25,
+const price = css({
+  fontSize: '1rem',
+  fontWeight: 500,
+  textAlign: 'right',
+}).toString();
+
+const priceStriked = css({
+  fontSize: '.875rem',
+  textAlign: 'right',
 }).toString();
 
 export default {
-  stock,
+  price,
+  priceStriked,
 };

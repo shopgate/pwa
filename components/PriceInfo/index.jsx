@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import styles from './style';
 
 /**
@@ -17,12 +16,12 @@ import styles from './style';
  * @param {string} [props.className] CSS classes
  * @return {JSX}
  */
-const PriceInfo = pure(({ className, text }) => (
+const PriceInfo = ({ className, text }) => (
   <div
     className={`${styles} ${className}`}
     dangerouslySetInnerHTML={{ __html: text }}
   />
-));
+);
 
 PriceInfo.propTypes = {
   text: PropTypes.string.isRequired,

@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import NoResults from 'Components/NoResults';
 import connect from './connector';
 
@@ -29,7 +28,7 @@ const Empty = pure(({ isVisible, ...props }) => {
   return (
     <NoResults {...props} />
   );
-});
+};
 
 Empty.propTypes = {
   isVisible: PropTypes.bool.isRequired,

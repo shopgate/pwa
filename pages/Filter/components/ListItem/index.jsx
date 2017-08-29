@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Label from './components/Label';
@@ -20,7 +19,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ListItem = pure(({ filter }) => (
+const ListItem = ({ filter }) => (
   <div className={styles.item} rt-stateless>
     <Link href={filter.url}>
       <Grid>
@@ -34,7 +33,7 @@ const ListItem = pure(({ filter }) => (
     </Link>
     {filter.values && <CrossButton filterId={filter.id} />}
   </div>
-));
+);
 
 ListItem.propTypes = {
   filter: PropTypes.shape().isRequired,

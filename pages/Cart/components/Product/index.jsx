@@ -1,20 +1,28 @@
-import React, { Component, PropTypes } from 'react';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
-import { getAbsoluteHeight } from 'Library/helpers/dom';
-import { variables } from 'Templates/styles';
-import { CardList } from 'Templates/components';
+import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import variables from 'Styles/variables';
+import CardList from 'Components/CardList';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
 } from '../../style';
-import connect from './connectors';
+import connect from './connector';
 import Template from './components/Layout';
 
 /**
- * The CartProduct component.
+ * The Cart Product component.
  */
-class CartProduct extends Component {
+class Product extends Component {
   static propTypes = {
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -132,4 +140,4 @@ class CartProduct extends Component {
   }
 }
 
-export default connect(CartProduct);
+export default connect(Product);

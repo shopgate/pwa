@@ -7,11 +7,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import List from '@shopgate/pwa-common/components/List';
 import Item from '../Item';
 import styles from './style';
 
+/**
+ * The Product List Iterator component.
+ * @param {Object} props The component props.
+ * @return {JSX}
+ */
 const Iterator = props => (
   <List.Item
     key={props.id}

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
 import { getScrollParent } from '@shopgate/pwa-common/helpers/dom';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 import styles from './style';
 import connect from './connector';
 import Content from './components/Content';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
 /**
  * The Filter bar component.
@@ -48,9 +48,6 @@ class FilterBar extends Component {
    * Called after mount. Sets up the scroll DOM elements.
    */
   componentDidMount() {
-    // console.warn(this.refs);
-    // console.warn(this.rootNode);
-    // console.warn(this.element);
     this.setupScrollElement();
     this.setSpacerHeight();
   }

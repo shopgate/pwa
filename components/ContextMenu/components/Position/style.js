@@ -8,10 +8,14 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const stock = css({
-  marginTop: variables.gap.small * 0.25,
+const outerGap = variables.gap.small;
+
+const container = css({
+  position: 'absolute',
+  margin: outerGap,
 }).toString();
 
 export default {
-  stock,
+  container,
+  outerGap,
 };
