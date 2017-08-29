@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> should render with two children 1`] = `
+<List>
+  <List
+    className=""
+  >
+    <ul
+      className="list-style-none m-0 p-0 "
+    >
+      <ListItem
+        className="ml-72 _dfirej mb-1"
+        isSelected={false}
+      >
+        <li
+          className="d-block position-relative ml-72 _dfirej mb-1 z-index-1"
+        >
+          <div
+            className="ml--72 min-height-56 position-relative"
+          >
+            <Item
+              className={null}
+              image={null}
+              isDisabled={false}
+              isSelected={false}
+              link={null}
+              onClick={null}
+              rightComponent={null}
+              title="List Item"
+            >
+              <Grid
+                className="align-items-center min-height-56 p-8px_0 position-relative z-index-2"
+                component="div"
+                wrap={false}
+              >
+                <div
+                  className="align-items-center min-height-56 p-8px_0 position-relative z-index-2 d-flex min-width-100P"
+                >
+                  <div
+                    className="align-self-flex-start flex-shrink-0 m-0_16px w-40"
+                  />
+                  <GridItem
+                    className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word flex-grow-1"
+                    >
+                      List Item
+                    </div>
+                  </GridItem>
+                </div>
+              </Grid>
+            </Item>
+          </div>
+        </li>
+      </ListItem>
+      <ListItem
+        className="ml-72"
+        isSelected={false}
+      >
+        <li
+          className="d-block position-relative ml-72 z-index-1"
+        >
+          <div
+            className="ml--72 min-height-56 position-relative"
+          >
+            <Item
+              className={null}
+              image={null}
+              isDisabled={false}
+              isSelected={false}
+              link={null}
+              onClick={null}
+              rightComponent={null}
+              title="List Item"
+            >
+              <Grid
+                className="align-items-center min-height-56 p-8px_0 position-relative z-index-2"
+                component="div"
+                wrap={false}
+              >
+                <div
+                  className="align-items-center min-height-56 p-8px_0 position-relative z-index-2 d-flex min-width-100P"
+                >
+                  <div
+                    className="align-self-flex-start flex-shrink-0 m-0_16px w-40"
+                  />
+                  <GridItem
+                    className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word"
+                    component="div"
+                    grow={1}
+                    shrink={1}
+                  >
+                    <div
+                      className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word flex-grow-1"
+                    >
+                      List Item
+                    </div>
+                  </GridItem>
+                </div>
+              </Grid>
+            </Item>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</List>
+`;

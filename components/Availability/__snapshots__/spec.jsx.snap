@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Availability /> should not render by default if state is "ok" 1`] = `
+<Availability
+  className=""
+  showWhenAvailable={false}
+  text="Available"
+/>
+`;
+
+exports[`<Availability /> should not render when text is empty 1`] = `
+<Availability
+  className=""
+  showWhenAvailable={false}
+  text=""
+/>
+`;
+
+exports[`<Availability /> should render if state is "ok" when "showWhenAvailable" is set 1`] = `
+<Availability
+  className=""
+  showWhenAvailable={true}
+  text="Available"
+>
+  <div
+    className=" css-qsvazi"
+  >
+    Available
+  </div>
+</Availability>
+`;
+
+exports[`<Availability /> should render if state is "warning" 1`] = `
+<Availability
+  className=""
+  showWhenAvailable={false}
+  text="Only 5 left"
+/>
+`;
+
+exports[`<Availability /> should render if state is "warning" 2`] = `
+<Availability
+  className=""
+  showWhenAvailable={false}
+  text="Out of stock"
+/>
+`;

@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RatingStars /> renders with value of 0 1`] = `
+<div
+  className="css-13azwyo "
+>
+  <div
+    className="css-4s85e9"
+  >
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+  </div>
+  <div
+    className="css-16y9zin"
+  />
+</div>
+`;
+
+exports[`<RatingStars /> renders with value of 0.5 1`] = `
+<div
+  className="css-13azwyo "
+>
+  <div
+    className="css-4s85e9"
+  >
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+  </div>
+  <div
+    className="css-16y9zin"
+  >
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <StarHalfIcon
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<RatingStars /> renders with value of 1 1`] = `
+<div
+  className="css-13azwyo "
+>
+  <div
+    className="css-4s85e9"
+  >
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+  </div>
+  <div
+    className="css-16y9zin"
+  >
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+    <div
+      className="css-1dpi4l8 css-hvpjjr"
+    >
+      <Star
+        className=""
+        color={null}
+        size="1em"
+        viewBox="0 0 24 24"
+      />
+    </div>
+  </div>
+</div>
+`;
