@@ -7,17 +7,6 @@
 
 import { connect } from 'react-redux';
 import { goBackHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
-import { getCartItems, getCartMessages } from '@shopgate/pwa-common-commerce/cart/selectors';
-
-/**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @return {Object} The extended component props.
- */
-const mapStateToProps = state => ({
-  cartItems: getCartItems(state),
-  messages: getCartMessages(state),
-});
 
 /**
  * Maps action dispatchers to the component props.
@@ -28,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
   goBackHistory: () => dispatch(goBackHistory(1)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(null, mapDispatchToProps);

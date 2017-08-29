@@ -7,22 +7,15 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  CART_ITEM_TYPE_PRODUCT,
-  CART_ITEM_TYPE_COUPON,
-} from '@shopgate/pwa-common-commerce/cart/constants';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
 import CardList from 'Components/CardList';
-import {
-  CartEmpty,
-  CartPaymentBar,
-  MessageBar,
-} from 'Templates/components';
-import CartProduct from './components/product';
-import CartCoupon from './components/coupon';
-import CartCouponField from './components/coupon-field';
-import connect from './connectors';
+import MessageBar from 'Components/MessageBar';
+import Item from './components/Item';
+import CouponField from './components/CouponField';
+import Empty from './components/Empty';
+import PaymentBar from './components/PaymentBar';
+import connect from './connector';
 import styles from './style';
 
 /**
@@ -31,15 +24,12 @@ import styles from './style';
  */
 class Cart extends Component {
   static propTypes = {
-    goBackHistory: PropTypes.func.isRequired,
     cartItems: PropTypes.arrayOf(PropTypes.shape()),
-    currency: PropTypes.string,
     messages: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
     cartItems: [],
-    currency: 'USD',
     messages: [],
   };
 
@@ -70,7 +60,7 @@ class Cart extends Component {
 
   /**
    * Toggles the visibility of the payment bar.
-   * It's called when the QuantityPicker or CartCouponField is focused or blurred.
+   * It's called when the QuantityPicker or CouponField is focused or blurred.
    * @param {boolean} isHidden Tells if the payment bar is hidden or not.
    */
   togglePaymentBar = (isHidden) => {
@@ -80,65 +70,28 @@ class Cart extends Component {
   };
 
   /**
-   * Renders a single cart item component.
-   * @param {Object} cartItem The data of the cart item.
-   * @return {JSX}
-   */
-  renderCartItem(cartItem) {
-    if (cartItem.type === CART_ITEM_TYPE_PRODUCT) {
-      return (
-        <CartProduct
-          currency={this.props.currency}
-          id={cartItem.id}
-          key={cartItem.id}
-          product={cartItem.product}
-          quantity={cartItem.quantity}
-          onToggleFocus={this.togglePaymentBar}
-        />
-      );
-    } else if (cartItem.type === CART_ITEM_TYPE_COUPON) {
-      return (
-        <CartCoupon
-          currency={this.props.currency}
-          id={cartItem.id}
-          key={cartItem.id}
-          coupon={cartItem.coupon}
-        />
-      );
-    }
-
-    return null;
-  }
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    const hasCartItems = this.props.cartItems.length > 0;
+    const { cartItems, messages } = this.props;
 
     return (
       <View>
         <ViewContent title={this.title}>
-          { this.props.messages.length > 0 &&
-            <MessageBar messages={this.props.messages} />
-          }
-
-          { hasCartItems &&
+          {messages.length > 0 && <MessageBar messages={messages} />}
+          {cartItems.length > 0 && (
             <section className={styles.container}>
               <CardList>
-                { this.props.cartItems.map(cartItem =>
-                  this.renderCartItem(cartItem)
-                )}
-                <CartCouponField onToggleFocus={this.togglePaymentBar} />
+                {cartItems.map(cartItem => (
+                  <Item item={cartItem} togglePaymentBar={this.togglePaymentBar} />
+                ))}
+                <CouponField onToggleFocus={this.togglePaymentBar} />
               </CardList>
-              <CartPaymentBar isVisible={!this.state.isPaymentBarHidden} />
+              <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
             </section>
-          }
-
-          { !hasCartItems &&
-            <CartEmpty goBackHistory={this.props.goBackHistory} />
-          }
+          )}
+          {cartItems.length === 0 && <Empty />}
         </ViewContent>
       </View>
     );
