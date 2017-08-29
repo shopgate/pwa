@@ -1,11 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import connect from './connectors';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import connect from './connector';
 import Layout from './components/Layout';
 
 /**
- * The CartCouponField component.
+ * The Coupon Field component.
  */
-class CartCouponField extends Component {
+class CouponField extends Component {
   static propTypes = {
     addCoupon: PropTypes.func,
     isLoading: PropTypes.bool,
@@ -115,4 +123,4 @@ class CartCouponField extends Component {
   }
 }
 
-export default connect(CartCouponField);
+export default connect(CouponField);

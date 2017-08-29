@@ -1,10 +1,13 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import { connect } from 'react-redux';
-import { goBackHistory } from 'Library/actions/history';
-import {
-  getCartItems,
-  getCurrency,
-  getCartMessages,
-} from 'Library/selectors/cart';
+import { goBackHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import { getCartItems, getCartMessages } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -13,7 +16,6 @@ import {
  */
 const mapStateToProps = state => ({
   cartItems: getCartItems(state),
-  currency: getCurrency(state),
   messages: getCartMessages(state),
 });
 
@@ -26,13 +28,4 @@ const mapDispatchToProps = dispatch => ({
   goBackHistory: () => dispatch(goBackHistory(1)),
 });
 
-/**
- * Connects a component to the global store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const connector = Component =>
-  connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Component)
-;
-
-export default connector;
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

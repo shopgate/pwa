@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import ProductGrid from 'Components/ProductGrid';
 import ProductList from 'Components/ProductList';
-import { GRID_VIEW, LIST_VIEW } from '../../pages/Category/constants';
+import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
 import Products from './index';
 
 describe('<Products>', () => {
