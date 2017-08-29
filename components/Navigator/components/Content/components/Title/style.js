@@ -26,7 +26,7 @@ const title = cxs({
  * Animation configuration
  */
 const distance = '20px';
-const duration = 300; // The duration of the animation in ms.
+const duration = 375; // The duration of the animation in ms.
 const center = {
   opacity: 1,
   transform: 'translate3d(0, 0, 0)',
@@ -45,20 +45,20 @@ const left = {
  */
 cxs({
   '@keyframes navTitleCenterToRight': {
-    from: center,
-    to: right,
+    '0%': center,
+    '100%': right,
   },
   '@keyframes navTitleCenterToLeft': {
-    from: center,
-    to: left,
+    '0%': center,
+    '100%': left,
   },
   '@keyframes navTitleRightToCenter': {
-    from: right,
-    to: center,
+    '0%': right,
+    '100%': center,
   },
   '@keyframes navTitleLeftToCenter': {
-    from: left,
-    to: center,
+    '0%': left,
+    '100%': center,
   },
 });
 
@@ -69,6 +69,7 @@ cxs({
  */
 const createKeyframeAnimationClass = name => cxs({
   animation: `navTitle${name} ${duration}ms cubic-bezier(0.25, 1, 0.25, 1)`,
+  animationFillMode: 'forwards',
 });
 
 const hidden = cxs({
