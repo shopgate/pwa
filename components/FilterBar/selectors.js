@@ -1,5 +1,8 @@
 import { createSelector } from 'reselect';
-import { getCategoryProductCount, getCurrentCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import {
+  getCategoryProductCount,
+  getCurrentCategoryChildCount,
+} from '@shopgate/pwa-common-commerce/category/selectors';
 import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 
 /**
@@ -16,12 +19,12 @@ export const isFilterBarActive = createSelector(
  * @type {number}
  */
 export const isFilterBarShown = createSelector(
-  getCurrentCategories,
+  getCurrentCategoryChildCount,
   hasActiveFilters,
   getCategoryProductCount,
-  (category, activeFilters, productCount) => {
+  (childCategoryCount, activeFilters, productCount) => {
     if (
-      !(category && category.categories && category.categories.length) &&
+      !childCategoryCount &&
       (activeFilters || productCount > 0)
     ) {
       return true;

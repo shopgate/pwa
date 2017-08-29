@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Chip from 'Components/Chip';
 import ChipLayout from 'Components/ChipLayout';
+import connect from './connector';
 
 /**
  * The Filter Bar Filter Chips component.
@@ -86,4 +87,4 @@ FilterChips.defaultProps = {
   handleOpenFilters: () => {},
 };
 
-export default FilterChips;
+export default connect(FilterChips);
