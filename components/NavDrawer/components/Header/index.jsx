@@ -23,7 +23,7 @@ const Header = (props) => {
     return (
       <div className={styles.container}>
         <Item href={LOGIN_PATH} icon={AccountBoxIcon} close={props.close} primary>
-          <I18n.Text string="navigation.sign_in_up" />
+          <I18n.Text string="navigation.login_register" />
         </Item>
       </div>
     );
