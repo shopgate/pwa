@@ -11,6 +11,7 @@ import navigator from 'Components/Navigator/subscriptions';
 // @TODO import coupons from './coupons';
 import category from 'Pages/Category/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
+import login from 'Pages/Login/subscriptions';
 
 export default [
   commerceCart,
@@ -19,4 +20,5 @@ export default [
   // @TODO coupons,
   category,
   filter,
+  login,
 ];
