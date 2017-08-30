@@ -12,6 +12,7 @@ import navigator from 'Components/Navigator/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
+import login from 'Pages/Login/subscriptions';
 
 export default [
   commerceCart,
@@ -21,4 +22,5 @@ export default [
   category,
   filter,
   filterbar,
+  login,
 ];

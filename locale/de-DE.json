@@ -77,11 +77,11 @@
     "forgot_password_popup": "Bitte benutzen Sie die Desktop Webseite um Ihr Passwort zurückzusetzen.",
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
-    "signup": "Registrieren",
+    "register": "Registrieren",
     "logout_message": "Sie wurden ausgeloggt."
   },
   "navigation": {
-    "sign_in_up": "Anmelden",
+    "login_register": "Anmelden",
     "home": "Startseite",
     "categories": "Kategorien",
     "wishlist": "Merkliste",

@@ -76,12 +76,12 @@
     "forgot_password": "Forgot password?",
     "forgot_password_popup": "Please use the desktop website to reset your password.",
     "button": "Login",
-    "no_account": "Don't have an account yet?",
-    "signup": "Sign up",
+    "no_account": "Don't have an account?",
+    "register": "Create one here!",
     "logout_message": "You have been logged out."
   },
   "navigation": {
-    "sign_in_up": "Sign in/up",
+    "login_register": "Login / Register",
     "home": "Home",
     "categories": "Categories",
     "wishlist": "Favorites",

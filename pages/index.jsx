@@ -7,16 +7,17 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-// @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
-import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import '@shopgate/pwa-common/styles/reset';
 import 'Styles/fonts';
+// @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
+import Route from '@shopgate/pwa-common/components/Router/components/Route';
+import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 // @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   PAGE_PATH,
-  // LOGIN_PATH,
+  LOGIN_PATH,
   // REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
@@ -25,8 +26,8 @@ import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 // @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
-import Viewport from '../components/Viewport';
-// @TODO import { Dialog } from 'Templates/components';
+import Viewport from 'Components/Viewport';
+import Dialog from 'Components/Dialog';
 import locale from '../locale';
 import reducers from './reducers';
 import subscriptions from './subscriptions';
@@ -36,6 +37,7 @@ import Filter from './Filter';
 import FilterAttribute from './FilterAttribute';
 import Cart from './Cart';
 import Search from './Search';
+import Login from './Login';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -56,6 +58,7 @@ const Pages = () =>
           />
         </Helmet>
       }
+      <ModalContainer component={Dialog} />
       <Route
         path={`${INDEX_PATH}`}
         component={Page}
@@ -87,6 +90,10 @@ const Pages = () =>
       <Route
         path={`${SEARCH_PATH}`}
         component={Search}
+      />
+      <Route
+        path={`${LOGIN_PATH}`}
+        component={Login}
       />
     </Viewport>
   </App>
