@@ -1,5 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import logger from '@shopgate/pwa-core/classes/Logger';
+import { logger } from '@shopgate/pwa-core/helpers';
 import {
   updateProductsInCart as updateProducts,
   successUpdateProductsInCart,

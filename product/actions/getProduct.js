@@ -1,5 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import logger from '@shopgate/pwa-core/classes/Logger';
+import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import {
   requestProduct,
@@ -7,7 +7,7 @@ import {
   errorProduct,
 } from '../action-creators';
 import { processProductFlags } from './processProductFlags';
-import { getProductById } from '../selectors';
+import { getProductById } from '../selectors/product';
 
 /**
  * Retrieves a product from the Redux store.

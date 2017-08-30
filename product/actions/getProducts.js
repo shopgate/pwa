@@ -1,5 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import logger from '@shopgate/pwa-core/classes/Logger';
+import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
