@@ -22,12 +22,14 @@ import connect from './connector';
 class Category extends Component {
   static propTypes = {
     category: PropTypes.shape(),
+    hasProducts: PropTypes.bool,
     isFilterBarShown: PropTypes.bool,
     isRoot: PropTypes.bool,
   };
 
   static defaultProps = {
     category: null,
+    hasProducts: false,
     isFilterBarShown: true,
     isRoot: true,
   };
@@ -61,7 +63,7 @@ class Category extends Component {
         <ViewContent title={this.title}>
           {this.props.isFilterBarShown && <FilterBar />}
           <CategoryList />
-          <Products />
+          {this.props.hasProducts && <Products />}
           <Empty
             headlineText="category.no_result.heading"
             bodyText="category.no_result.body"

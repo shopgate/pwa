@@ -142,4 +142,4 @@ class Filter extends Component {
   }
 }
 
-export default connect.filters(Filter);
+export default connect(Filter);

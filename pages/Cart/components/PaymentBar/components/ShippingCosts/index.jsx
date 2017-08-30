@@ -31,7 +31,7 @@ const ShippingCosts = ({ currency, isDisabled, value }) => {
 
 ShippingCosts.propTypes = {
   currency: PropTypes.string.isRequired,
-  isDisabled: PropTypes.boolean.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
 };
 

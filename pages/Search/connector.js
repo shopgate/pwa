@@ -6,8 +6,10 @@
  */
 
 import { connect } from 'react-redux';
+import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import getProducts from './actions/getProducts';
+import { getSearchResults } from '@shopgate/pwa-common-commerce/search/actions';
+import { setActiveFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,19 +18,22 @@ import getProducts from './actions/getProducts';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  viewMode: state.ui.categoryPage.viewMode,
-  ...getProductsResult(state),
+  hasProducts: getProductsResult(state).products.length > 0,
+  searchPhrase: getSearchPhrase(state),
 });
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
+ * @param  {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts(offset) {
-    dispatch(getProducts(offset));
+  getSearchResults(offset) {
+    dispatch(getSearchResults(offset));
+  },
+  setActiveFilters(filters) {
+    dispatch(setActiveFilters(filters));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

@@ -37,7 +37,7 @@ class Content extends Component {
    * Called after mount. Sets up the scroll DOM elements.
    */
   componentDidMount() {
-    this.props.getFilters();
+    // this.props.getFilters();
   }
 
   /**
@@ -45,9 +45,9 @@ class Content extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    if (!compareObjects(nextProps.activeFilters, this.props.activeFilters)) {
-      this.props.getFilters();
-    }
+    // if (!compareObjects(nextProps.activeFilters, this.props.activeFilters)) {
+      // this.props.getFilters();
+    // }
   }
 
   /**

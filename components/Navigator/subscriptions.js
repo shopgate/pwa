@@ -13,11 +13,9 @@ import {
   routeDidEnter,
   routeDidLeave,
 } from '@shopgate/pwa-common/streams/history';
-import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
-import {
-  setSearchPhrase,
-  toggleSearch,
-} from './action-creators';
+import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
+import toggleNavSearchField from 'Components/Navigator/actions/toggleNavSearchField';
+import { setSearchPhrase } from './action-creators';
 import enableNavigatorSearch from './actions/enableNavigatorSearch';
 import disableNavigatorSearch from './actions/disableNavigatorSearch';
 import toggleCartIcon from './actions/toggleCartIcon';
@@ -35,8 +33,10 @@ export default function navigator(subscribe) {
   /**
    * Gets triggered on all route changes.
    */
-  subscribe(routeDidChange$, ({ dispatch }) => {
-    dispatch(toggleSearch(false));
+  subscribe(routeDidChange$, ({ dispatch, pathname, prevPathname }) => {
+    if (pathname !== prevPathname) {
+      dispatch(toggleNavSearchField(false));
+    }
   });
 
   /**

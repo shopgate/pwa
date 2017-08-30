@@ -33,7 +33,7 @@ const ShippingCostsLabel = ({ isDisabled, shipping }) => {
 };
 
 ShippingCostsLabel.propTypes = {
-  isDisabled: PropTypes.boolean.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   shipping: PropTypes.number.isRequired,
 };
 

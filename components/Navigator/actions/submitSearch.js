@@ -8,10 +8,8 @@
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { pushHistory, replaceHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
-import {
-  setSearchPhrase,
-  toggleSearch,
-} from '../action-creators';
+import { setSearchPhrase } from '../action-creators';
+import toggleNavSearchField from './toggleNavSearchField';
 
  /**
   * Performs appropriate action(s) when UI search gets triggered.
@@ -25,11 +23,11 @@ const submitSearch = () => (dispatch, getState) => {
     // Reset search phrase
     dispatch(setSearchPhrase(''));
     // Show search input
-    dispatch(toggleSearch(true));
+    dispatch(toggleNavSearchField(true));
     return;
   } else if (!searchPhrase) {
     // Hide search input
-    dispatch(toggleSearch(false));
+    dispatch(toggleNavSearchField(false));
     return;
   }
 
@@ -68,7 +66,7 @@ const submitSearch = () => (dispatch, getState) => {
   }
 
   // Always close search upon submit
-  dispatch(toggleSearch(false));
+  dispatch(toggleNavSearchField(false));
 };
 
 export default submitSearch;

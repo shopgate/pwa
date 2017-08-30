@@ -7,7 +7,8 @@
 
 import { connect } from 'react-redux';
 import { getQueryParam } from '@shopgate/pwa-common/selectors/history';
-import { setSearchPhrase, toggleSearch } from 'Components/Navigator/action-creators';
+import { toggleSearch } from 'Components/Navigator/action-creators';
+import setSearchPhrase from './actions/setSearchPhrase';
 import submitSearch from 'Components/Navigator/actions/submitSearch';
 
 /**

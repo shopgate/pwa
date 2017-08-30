@@ -35,7 +35,7 @@ const Item = ({ checked, label, onClick }) => (
 );
 
 Item.propTypes = {
-  checked: PropTypes.boolean,
+  checked: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
 };

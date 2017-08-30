@@ -5,7 +5,6 @@ import { getScrollParent } from '@shopgate/pwa-common/helpers/dom';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 import styles from './style';
-import connect from './connector';
 import Content from './components/Content';
 
 /**
@@ -211,10 +210,6 @@ class FilterBar extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.isVisible) {
-      return null;
-    }
-
     return (
       <div>
         <div
@@ -230,4 +225,4 @@ class FilterBar extends Component {
   }
 }
 
-export default connect(FilterBar);
+export default FilterBar;

@@ -19,15 +19,14 @@ import connect from './connector';
  */
 class Products extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired,
     viewMode: PropTypes.string.isRequired,
-    getCategoryProducts: PropTypes.func,
+    getProducts: PropTypes.func,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
-    getCategoryProducts: () => {},
+    getProducts: () => {},
     products: null,
     totalProductCount: null,
   };
@@ -96,16 +95,11 @@ class Products extends Component {
       gridStyles = 'display: none;';
     }
 
-    return { gridStyles, listStyles };
+    return {
+      gridStyles,
+      listStyles,
+    };
   };
-
-  /**
-   * Gets the products with a certain offset.
-   * @param {number} offset The offset.
-   */
-  getProducts = (offset) => {
-    this.props.getCategoryProducts(offset);
-  }
 
   /**
    * Applies the styling directly to the DOM element without using react.
@@ -146,7 +140,7 @@ class Products extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.isVisible || !this.props.products) {
+    if (!this.props.products) {
       return null;
     }
 
@@ -155,7 +149,7 @@ class Products extends Component {
         {(!this.initialRender || this.props.viewMode === GRID_VIEW) &&
           <div ref={this.updateGridReference}>
             <ProductGrid
-              handleGetProducts={this.getProducts}
+              handleGetProducts={this.props.getProducts}
               products={this.props.products}
               totalProductCount={this.props.totalProductCount}
             />
@@ -163,7 +157,7 @@ class Products extends Component {
         {(!this.initialRender || this.props.viewMode === LIST_VIEW) &&
           <div ref={this.updateListReference}>
             <ProductList
-              handleGetProducts={this.getProducts}
+              handleGetProducts={this.props.getProducts}
               products={this.props.products}
               totalProductCount={this.props.totalProductCount}
             />

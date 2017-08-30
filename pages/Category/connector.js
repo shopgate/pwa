@@ -7,6 +7,7 @@
 
 import connect from '@shopgate/pwa-common/helpers/routedConnect';
 import {
+  getCategoryProductCount,
   getCurrentCategory,
   getCurrentCategoryId,
 } from '@shopgate/pwa-common-commerce/category/selectors';
@@ -21,6 +22,7 @@ import { isFilterBarShown } from '../../components/FilterBar/selectors';
  */
 const mapStateToProps = (state, props) => ({
   category: getCurrentCategory(state, props),
+  hasProducts: getCategoryProductCount(state) > 0,
   isFilterBarShown: isFilterBarShown(state),
   isRoot: !getCurrentCategoryId(state, props),
   ...getProductsResult(state, props),

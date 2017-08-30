@@ -31,7 +31,7 @@ const ClearButton = ({ hasFilters, removeAllTemporaryFilters }) => (
 );
 
 ClearButton.propTypes = {
-  hasFilters: PropTypes.boolean.isRequired,
+  hasFilters: PropTypes.bool.isRequired,
   removeAllTemporaryFilters: PropTypes.func.isRequired,
 };
 

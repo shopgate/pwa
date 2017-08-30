@@ -99,6 +99,16 @@ export const isNavDrawerActive = createSelector(
 );
 
 /**
+ * Selects the current state of the navigation drawer.
+ * @param {Object} state The global state.
+ * @return {string}
+ */
+export const isNavSearchFieldActive = createSelector(
+  getNavigatorState,
+  navigatorState => navigatorState.searchActive
+);
+
+/**
  * Selects the navigator state for tracking.
  * @param {Object} state The application state.
  * @return {Object}
