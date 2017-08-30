@@ -7,10 +7,11 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
-// @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
-import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import '@shopgate/pwa-common/styles/reset';
 import 'Styles/fonts';
+// @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
+import Route from '@shopgate/pwa-common/components/Router/components/Route';
+import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 // @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
@@ -25,8 +26,8 @@ import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 // @TODO: import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 // @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
-import Viewport from '../components/Viewport';
-// @TODO import { Dialog } from 'Templates/components';
+import Viewport from 'Components/Viewport';
+import Dialog from 'Components/Dialog';
 import locale from '../locale';
 import reducers from './reducers';
 import subscriptions from './subscriptions';
@@ -56,6 +57,7 @@ const Pages = () =>
           />
         </Helmet>
       }
+      <ModalContainer component={Dialog} />
       <Route
         path={`${INDEX_PATH}`}
         component={Page}
