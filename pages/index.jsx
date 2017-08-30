@@ -16,7 +16,7 @@ import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
   PAGE_PATH,
-  // LOGIN_PATH,
+  LOGIN_PATH,
   // REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
@@ -35,6 +35,7 @@ import Category from './Category';
 import Filter from './Filter';
 import FilterAttribute from './FilterAttribute';
 import Cart from './Cart';
+import Login from './Login';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -82,6 +83,10 @@ const Pages = () =>
       <Route
         path={`${CART_PATH}`}
         component={Cart}
+      />
+      <Route
+        path={`${LOGIN_PATH}`}
+        component={Login}
       />
     </Viewport>
   </App>
