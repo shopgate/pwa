@@ -23,7 +23,7 @@ const SubTotalLabel = ({ isDisabled }) => (
 );
 
 SubTotalLabel.propTypes = {
-  isDisabled: PropTypes.boolean.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
 };
 
 export default connect(SubTotalLabel);
