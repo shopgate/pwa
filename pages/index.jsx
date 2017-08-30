@@ -22,7 +22,7 @@ import {
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 // @TODO: import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-// @TODO: import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 // @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import Viewport from '../components/Viewport';
@@ -35,6 +35,7 @@ import Category from './Category';
 import Filter from './Filter';
 import FilterAttribute from './FilterAttribute';
 import Cart from './Cart';
+import Search from './Search';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -82,6 +83,10 @@ const Pages = () =>
       <Route
         path={`${CART_PATH}`}
         component={Cart}
+      />
+      <Route
+        path={`${SEARCH_PATH}`}
+        component={Search}
       />
     </Viewport>
   </App>
