@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
-import IsAnimating from '@shopgate/pwa-common/components/IsAnimating';
 import ProductImage from 'Components/ProductImage';
 import { ImageSlider as BaseImageSlider } from 'Components/ImageSlider';
 import connect from './connector';
@@ -19,11 +18,9 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @param {Object} props.product Basic product data from the product state.
  * @param {Array} props.images Array of image urls.
- * @param {boolean} props.isAnimating Whether view is being animated.
  */
 class ImageSlider extends Component {
   static propTypes = {
-    isAnimating: PropTypes.bool.isRequired,
     images: PropTypes.arrayOf(PropTypes.string),
     onOpen: PropTypes.func,
     product: PropTypes.shape(),
@@ -77,7 +74,7 @@ class ImageSlider extends Component {
    * @returns {JSX}
    */
   render() {
-    const { product, images, isAnimating } = this.props;
+    const { product, images } = this.props;
 
     const resolutions = [
       {
@@ -91,12 +88,12 @@ class ImageSlider extends Component {
     ];
     let content = null;
 
-    if (isAnimating || !product || !images || images.length === 0) {
+    if (!product || !images || images.length === 0) {
       content = (
         <ProductImage
           highestResolutionLoaded={this.previewLoaded}
           src={product ? product.featuredImageUrl : null}
-          forcePlaceholder={(isAnimating || !product)}
+          forcePlaceholder={!product}
           resolutions={resolutions}
         />
       );
@@ -128,4 +125,4 @@ class ImageSlider extends Component {
   }
 }
 
-export default IsAnimating(connect(ImageSlider), ['images', 'product']);
+export default connect(ImageSlider);
