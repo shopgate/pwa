@@ -40,17 +40,6 @@ const priceInfo = css({
   fontSize: '0.625rem',
 }).toString();
 
-const msrp = css({
-  color: colors.shade3,
-  fontSize: '0.875rem',
-  marginRight: variables.gap.small,
-}).toString();
-
-const msrpStriked = css({
-  display: 'inline',
-  fontSize: '0.875rem',
-}).toString();
-
 const infoContainer = css({
   width: '50%',
   alignSelf: 'flex-end',
@@ -92,8 +81,6 @@ export default {
   discount,
   price,
   priceInfo,
-  msrp,
-  msrpStriked,
   infoContainer,
   priceContainer,
   basePriceContainer,
