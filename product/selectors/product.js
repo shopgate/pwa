@@ -185,7 +185,13 @@ export const getProductsResult = createSelector(
  */
 export const getProductName = createSelector(
   getCurrentProduct,
-  product => product.name || null
+  (product) => {
+    if (!product || !product.name) {
+      return null;
+    }
+
+    return product.name;
+  }
 );
 
 /**
