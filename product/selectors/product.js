@@ -178,3 +178,20 @@ export const getProductsResult = createSelector(
   getPopulatedProductsResult
 );
 
+/**
+ * Selects the product images state.
+ * @param {Object} state The current application state.
+ * @return {Object} The product images state.
+ */
+const getProductImagesState = state => state.product.imagesByProductId;
+
+/**
+ * Retrieves the current product images.
+ * @param {Object} state The current application state.
+ * @return {Array|null}
+ */
+export const getProductImages = createSelector(
+  getCurrentProductId,
+  getProductImagesState,
+  (productId, productImagesState) => productImagesState[productId] || null
+);
