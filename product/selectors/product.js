@@ -179,6 +179,16 @@ export const getProductsResult = createSelector(
 );
 
 /**
+ * Retrieves the current product name.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getProductName = createSelector(
+  getCurrentProduct,
+  product => product.name || null
+);
+
+/**
  * Selects the product images state.
  * @param {Object} state The current application state.
  * @return {Object} The product images state.
