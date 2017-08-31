@@ -19,10 +19,6 @@ const manufacturer = css({
   fontSize: '1.0rem',
 }).toString();
 
-const shipping = css({
-  fontSize: '0.875rem',
-}).toString();
-
 const availability = css({
   fontSize: '0.875rem',
 }).toString();
@@ -76,7 +72,6 @@ export default {
   content,
   name,
   manufacturer,
-  shipping,
   availability,
   discount,
   price,
