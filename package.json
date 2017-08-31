@@ -2,7 +2,7 @@
   "name": "tracking-ga-native",
   "version": "1.0.0",
   "description": "Shopgate's Google Analytics native tracker",
-  "main": "index.js",
+  "main": "frontend/index.js",
   "repository": "git@github.com:shopgate/tracking-ga-native.git",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
