@@ -122,3 +122,13 @@ export const getCalculatedProduct = createSelector(
     })
   )
 );
+
+/**
+ * Retrieves the current product price data.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductPrice = createSelector(
+  getCalculatedProduct,
+  product => product.price || null
+);
