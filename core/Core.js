@@ -192,8 +192,6 @@ class Core {
     const blacklist = [];
     let useBlacklist = false;
 
-    console.info('[TRACK]', eventName, rawData);
-
     /**
      * Loop through the queue and check if there is a unified and other plugins.
      * Registered callbacks of plugins not equal to the unified one, have to be added to a
