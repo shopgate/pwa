@@ -203,7 +203,15 @@ const getProductImagesState = state => state.product.imagesByProductId;
 export const getProductImages = createSelector(
   getCurrentProductId,
   getProductImagesState,
-  (productId, productImagesState) => productImagesState[productId] || null
+  (productId, productImagesState) => {
+    const collection = productImagesState[productId];
+
+    if (!collection || !collection.images) {
+      return null;
+    }
+
+    return collection.images;
+  }
 );
 
 /**
@@ -224,4 +232,30 @@ export const getProductRating = createSelector(
 export const getProductManufacturer = createSelector(
   getCurrentProduct,
   product => product.manufacturer || null
+);
+
+/**
+ * Selects the product shipping state.
+ * @param {Object} state The current application state.
+ * @return {Object} The product shipping state.
+ */
+const getProductShippingState = state => state.product.shippingByProductId;
+
+/**
+ * Retrieves the current product shipping data.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductShipping = createSelector(
+  getCurrentProductId,
+  getProductShippingState,
+  (productId, productShippingState) => {
+    const collection = productShippingState[productId];
+
+    if (!collection || !collection.shipping) {
+      return null;
+    }
+
+    return collection.shipping;
+  }
 );
