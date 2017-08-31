@@ -130,5 +130,11 @@ export const getCalculatedProduct = createSelector(
  */
 export const getProductPrice = createSelector(
   getCalculatedProduct,
-  product => product.price || null
+  (product) => {
+    if (!product || !product.price) {
+      return null;
+    }
+
+    return product.price;
+  }
 );
