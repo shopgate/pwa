@@ -58,7 +58,7 @@ const Pages = () =>
           />
         </Helmet>
       }
-      <ModalContainer component={Dialog} />
+      {/* <ModalContainer component={Dialog} /> */}
       <Route
         path={`${INDEX_PATH}`}
         component={Page}
