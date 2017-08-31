@@ -195,3 +195,13 @@ export const getProductImages = createSelector(
   getProductImagesState,
   (productId, productImagesState) => productImagesState[productId] || null
 );
+
+/**
+ * Retrieves the current product rating.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductRating = createSelector(
+  getCurrentProduct,
+  product => product.rating || null
+);
