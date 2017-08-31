@@ -19,14 +19,6 @@ const manufacturer = css({
   fontSize: '1.0rem',
 }).toString();
 
-const shipping = css({
-  fontSize: '0.875rem',
-}).toString();
-
-const availability = css({
-  fontSize: '0.875rem',
-}).toString();
-
 const discount = css({
   width: 40,
   display: 'inline-block',
@@ -38,17 +30,6 @@ const price = css({
 
 const priceInfo = css({
   fontSize: '0.625rem',
-}).toString();
-
-const msrp = css({
-  color: colors.shade3,
-  fontSize: '0.875rem',
-  marginRight: variables.gap.small,
-}).toString();
-
-const msrpStriked = css({
-  display: 'inline',
-  fontSize: '0.875rem',
 }).toString();
 
 const infoContainer = css({
@@ -87,13 +68,9 @@ export default {
   content,
   name,
   manufacturer,
-  shipping,
-  availability,
   discount,
   price,
   priceInfo,
-  msrp,
-  msrpStriked,
   infoContainer,
   priceContainer,
   basePriceContainer,

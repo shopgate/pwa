@@ -6,10 +6,14 @@
  */
 
 import React from 'react';
+import Grid from '@shopgate/pwa-common/components/Grid';
 import AddToCartButton from './components/AddToCartButton';
 import Rating from './components/Rating';
 import Name from './components/Name';
 import Manufacturer from './components/Manufacturer';
+import PriceStriked from './components/PriceStriked';
+import Shipping from './components/Shipping';
+import Availability from './components/Availability';
 import styles from './style';
 
 /**
@@ -28,6 +32,22 @@ const ProductHeader = () => (
     <Rating />
     <Name />
     <Manufacturer />
+    <Grid component="div">
+      <Grid.Item component="div" shrink={0} className={styles.infoContainer}>
+        <PriceStriked />
+        <Shipping />
+        <Availability />
+      </Grid.Item>
+      <Grid.Item component="div" shrink={0} className={styles.priceContainer}>
+        {/* <ProductHeaderDiscount price={props.product.price} ready={props.placeholderProductReady} />
+        <ProductHeaderPrice price={props.product.price} ready={props.placeholderProductReady} /> */}
+      </Grid.Item>
+    </Grid>
+    <Grid component="div">
+      <Grid.Item component="div" shrink={0} className={styles.basePriceContainer}>
+        {/* <ProductHeaderPriceInfo info={props.product.price.info} ready={props.placeholderProductReady} /> */}
+      </Grid.Item>
+    </Grid>
   </div>
 );
 

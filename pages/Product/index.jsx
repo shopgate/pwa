@@ -20,34 +20,11 @@ class Product extends Component {
   static propTypes = {
     getProductData: PropTypes.func.isRequired,
     resetCurrentProduct: PropTypes.func.isRequired,
-    setProductOption: PropTypes.func.isRequired,
-    currentOptions: PropTypes.shape(),
-    description: PropTypes.string,
-    images: PropTypes.arrayOf(PropTypes.string),
-    openGallery: PropTypes.func,
-    options: PropTypes.arrayOf(PropTypes.shape()),
-    product: PropTypes.shape(),
-    properties: PropTypes.arrayOf(PropTypes.shape()),
-    shipping: PropTypes.shape({
-      price: PropTypes.number,
-      currency: PropTypes.string,
-    }),
-    variants: PropTypes.shape({
-      products: PropTypes.array.isRequired,
-      characteristics: PropTypes.array.isRequired,
-    }),
+    name: PropTypes.string,
   };
 
   static defaultProps = {
-    currentOptions: {},
-    description: null,
-    images: null,
-    product: null,
-    properties: null,
-    variants: null,
-    shipping: null,
-    options: null,
-    openGallery: () => {},
+    name: null,
   };
 
   /**
@@ -81,11 +58,9 @@ class Product extends Component {
    * @returns {JSX}
    */
   render() {
-    const title = this.props.product ? this.props.product.name : '';
-
     return (
       <View>
-        <ViewContent title={title}>
+        <ViewContent title={(this.props.name || '')}>
           <ImageSlider />
           <Header />
         </ViewContent>
@@ -94,4 +69,4 @@ class Product extends Component {
   }
 }
 
-export default connect.product(Product);
+export default connect(Product);

@@ -1,63 +1,68 @@
-import cxs from 'cxs';
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import { css } from 'glamor';
 import spring from 'css-spring';
-import { colors, variables } from 'Templates/styles';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
+
+const options = {
+  stiffness: 381.47,
+  damping: 15,
+};
 
 /**
  * Keyframe animations to create spring animation.
  * spring(..) automatically calculates all steps for the keyframe animation.
  */
-cxs({
-  '@keyframes springFromTop': spring({
-    transform: 'translate3d(0, 300%, 0)',
-  }, {
-    transform: 'translate3d(0, -50%, 0)',
-  }, { stiffness: 381.47, damping: 15 }),
-});
+const springFromTopKeyframes = css.keyframes(spring(
+  { transform: 'translate3d(0, 300%, 0)' },
+  { transform: 'translate3d(0, -50%, 0)' },
+  options
+));
 
-cxs({
-  '@keyframes springFromBottom': spring({
-    transform: 'translate3d(0, -300%, 0)',
-  }, {
-    transform: 'translate3d(0, -50%, 0)',
-  }, { stiffness: 381.47, damping: 15 }),
-});
+const springFromBottomKeyframes = css.keyframes(spring(
+  { transform: 'translate3d(0, -300%, 0)' },
+  { transform: 'translate3d(0, -50%, 0)' },
+  options
+));
 
-cxs({
-  '@keyframes springToTop': spring({
-    transform: 'translate3d(0, -50%, 0)',
-  }, {
-    transform: 'translate3d(0, 300%, 0)',
-  }, { stiffness: 381.47, damping: 15 }),
-});
+const springToTopKeyframes = css.keyframes(spring(
+  { transform: 'translate3d(0, -50%, 0)' },
+  { transform: 'translate3d(0, 300%, 0)' },
+  options
+));
 
-cxs({
-  '@keyframes springToBottom': spring({
-    transform: 'translate3d(0, -50%, 0)',
-  }, {
-    transform: 'translate3d(0, -300%, 0)',
-  }, { stiffness: 381.47, damping: 15 }),
-});
+const springToBottomKeyframes = css.keyframes(spring(
+  { transform: 'translate3d(0, -50%, 0)' },
+  { transform: 'translate3d(0, -300%, 0)' },
+  options
+));
 
-const springFromBottom = cxs({
-  animation: 'springFromBottom 600ms',
-});
+const springFromBottom = css({
+  animation: `${springFromBottomKeyframes} 600ms`,
+}).toString();
 
-const springFromTop = cxs({
-  animation: 'springFromTop 600ms',
-});
+const springFromTop = css({
+  animation: `${springFromTopKeyframes} 600ms`,
+}).toString();
 
-const springToTop = cxs({
-  animation: 'springToTop 600ms',
-});
+const springToTop = css({
+  animation: `${springToTopKeyframes} 600ms`,
+}).toString();
 
-const springToBottom = cxs({
-  animation: 'springToBottom 600ms',
-});
+const springToBottom = css({
+  animation: `${springToBottomKeyframes} 600ms`,
+}).toString();
 
 /**
  * Circular button and container for the icons.
  */
-const button = cxs({
+const button = css({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   borderRadius: '50%',
   width: 56,
@@ -70,28 +75,28 @@ const button = cxs({
   boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
-});
+}).toString();
 
 /**
  * Styling that is applied to the button when cart icon is shown.
  */
-const buttonReady = cxs({
+const buttonReady = css({
   background: colors.primary,
   color: colors.light,
-});
+}).toString();
 
 /**
  * Styling that is applied to the button when checkmark is shown.
  */
-const buttonSuccess = cxs({
+const buttonSuccess = css({
   background: colors.light,
   color: colors.primary,
-});
+}).toString();
 
 /**
  * Basic icon style that is always applied to all icons.
  */
-const icon = cxs({
+const icon = css({
   transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   opacity: 1,
   position: 'absolute',
@@ -101,14 +106,14 @@ const icon = cxs({
   width: 24,
   top: '50%',
   margin: 'auto',
-});
+}).toString();
 
 /**
  * Icon style that is applied only to the spinner icon.
  */
-const spinnerIcon = cxs({
+const spinnerIcon = css({
   transform: 'translate3d(0, -50%, 0)',
-});
+}).toString();
 
 export default {
   button,
