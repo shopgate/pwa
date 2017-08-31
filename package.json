@@ -19,8 +19,6 @@
     "precommit"
   ],
   "dependencies": {
-    "babel-preset-latest": "6.24.1",
-    "babel-preset-stage-0": "6.24.1",
     "@shopgate/tracking-core": "github:shopgate/tracking-core",
     "@shopgate/pwa-common": "github:shopgate/pwa-common"
   },
