@@ -259,3 +259,13 @@ export const getProductShipping = createSelector(
     return collection.shipping;
   }
 );
+
+/**
+ * Retrieves the current product availability.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductAvailability = createSelector(
+  getCurrentProduct,
+  product => product.availability || null
+);
