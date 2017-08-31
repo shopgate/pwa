@@ -1,7 +1,14 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import Event from '@shopgate/pwa-core/classes/Event';
 import { ADD_TO_CART_MISSING_VARIANT } from '../constants';
-import { getCurrentProduct } from '../../product/selectors';
-import { addProductsToCart } from '../actions';
+import { getCurrentProduct } from '../../product/selectors/product';
+import addProductsToCart from './addProductsToCart';
 
 /**
  * Adds the current product to the cart.
