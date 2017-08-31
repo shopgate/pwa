@@ -17,35 +17,29 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const PriceStriked = ({ price }) => {
-  if (!price) {
-    return null;
-  }
-
-  return (
-    <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
-      <div>
-        {price.msrp && (
-          <span className={styles.msrp}>MSRP</span>
-        )}
-        {price.msrp && (
-          <StrikePrice
-            className={styles.msrpStriked}
-            value={price.msrp}
-            currency={price.currency}
-          />
-        )}
-        {(!price.msrp && price.unitPriceStriked) && (
-          <StrikePrice
-            className={styles.msrpStriked}
-            value={price.unitPriceStriked}
-            currency={price.currency}
-          />
-        )}
-      </div>
-    </PlaceholderLabel>
-  );
-};
+const PriceStriked = ({ price }) => (
+  <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
+    <div>
+      {price.msrp && (
+        <span className={styles.msrp}>MSRP</span>
+      )}
+      {price.msrp && (
+        <StrikePrice
+          className={styles.msrpStriked}
+          value={price.msrp}
+          currency={price.currency}
+        />
+      )}
+      {(!price.msrp && price.unitPriceStriked) && (
+        <StrikePrice
+          className={styles.msrpStriked}
+          value={price.unitPriceStriked}
+          currency={price.currency}
+        />
+      )}
+    </div>
+  </PlaceholderLabel>
+);
 
 PriceStriked.propTypes = {
   price: PropTypes.shape(),
