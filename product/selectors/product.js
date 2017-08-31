@@ -307,7 +307,13 @@ export const getProductImages = createSelector(
  */
 export const getProductRating = createSelector(
   getCurrentProduct,
-  product => product.rating || null
+  (product) => {
+    if (!product || !product.rating) {
+      return null;
+    }
+
+    return product.rating;
+  }
 );
 
 /**
@@ -317,7 +323,13 @@ export const getProductRating = createSelector(
  */
 export const getProductManufacturer = createSelector(
   getCurrentProduct,
-  product => product.manufacturer || null
+  (product) => {
+    if (!product || !product.manufacturer) {
+      return null;
+    }
+
+    return product.manufacturer;
+  }
 );
 
 /**
