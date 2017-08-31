@@ -205,3 +205,13 @@ export const getProductRating = createSelector(
   getCurrentProduct,
   product => product.rating || null
 );
+
+/**
+ * Retrieves the current product manufacturer.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductManufacturer = createSelector(
+  getCurrentProduct,
+  product => product.manufacturer || null
+);
