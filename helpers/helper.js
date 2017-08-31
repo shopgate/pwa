@@ -6,7 +6,7 @@
  */
 
 import DataRequest from '@shopgate/pwa-core/classes/DataRequest';
-import logger from '@shopgate/pwa-core/classes/Logger';
+import { logger } from '@shopgate/pwa-core/helpers';
 
 export * as SGAction from '@shopgate/pwa-core/commands/unifiedTracking';
 
