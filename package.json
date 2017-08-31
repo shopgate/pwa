@@ -1,5 +1,5 @@
 {
-  "name": "tracking-ga-native",
+  "name": "@shopgate/tracking-ga-native",
   "version": "1.0.0",
   "description": "Shopgate's Google Analytics native tracker",
   "main": "frontend/index.js",
@@ -20,7 +20,9 @@
   ],
   "dependencies": {
     "babel-preset-latest": "6.24.1",
-    "babel-preset-stage-0": "6.24.1"
+    "babel-preset-stage-0": "6.24.1",
+    "@shopgate/tracking-core": "github:shopgate/tracking-core",
+    "@shopgate/pwa-common": "github:shopgate/pwa-common"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
