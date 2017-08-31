@@ -6,7 +6,6 @@
  */
 
 import { connect } from 'react-redux';
-import { getCalculatedProduct } from '@shopgate/pwa-common-commerce/product/selectors/price';
 import { getProductManufacturer } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -15,7 +14,6 @@ import { getProductManufacturer } from '@shopgate/pwa-common-commerce/product/se
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  product: getCalculatedProduct(state),
   manufacturer: getProductManufacturer(state),
 });
 
