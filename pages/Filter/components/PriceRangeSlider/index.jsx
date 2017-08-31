@@ -82,7 +82,7 @@ class PriceRangeSlider extends Component {
    * @returns {JSX}
    */
   render() {
-    const { min, max, value } = this.props;
+    const { min, max } = this.props;
     const { __ } = this.context.i18n();
     const currency = __('price.currency');
 
@@ -91,12 +91,12 @@ class PriceRangeSlider extends Component {
         <I18n.Text string="price.range">
           <I18n.Placeholder forKey="fromPrice">
             <span className={styles.price}>
-              <I18n.Price price={(value[0] / 100)} currency={currency} fractions={false} />
+              <I18n.Price price={(this.state.realValue[0] / 100)} currency={currency} fractions={false} />
             </span>
           </I18n.Placeholder>
           <I18n.Placeholder forKey="toPrice">
             <span className={styles.price}>
-              <I18n.Price price={(value[1] / 100)} currency={currency} fractions={false} />
+              <I18n.Price price={(this.state.realValue[1] / 100)} currency={currency} fractions={false} />
             </span>
           </I18n.Placeholder>
         </I18n.Text>
@@ -107,7 +107,7 @@ class PriceRangeSlider extends Component {
           max={max}
           min={min}
           onChange={this.onChange}
-          value={value}
+          value={this.state.realValue}
         />
       </div>
     );

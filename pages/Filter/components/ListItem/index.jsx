@@ -20,18 +20,24 @@ import styles from './style';
  * @return {JSX}
  */
 const ListItem = ({ filter }) => (
-  <div className={styles.item} rt-stateless>
+  <div className={styles.item}>
     <Link href={filter.url}>
       <Grid>
-        <Grid.Item className={styles.gridItem} grow="{1}" shrink="{0}">
+        <Grid.Item
+          className={styles.gridItem}
+          grow={1}
+          shrink={0}
+        >
           <Label label={filter.label} />
         </Grid.Item>
-        <Grid.Item rt-if="props.values" grow="{1}" className={styles.rightContainer}>
-          <Chips values={filter.active} />
-        </Grid.Item>
+        {filter.active && (
+          <Grid.Item grow={1} className={styles.rightContainer}>
+            <Chips active={filter.active} />
+          </Grid.Item>
+        )}
       </Grid>
     </Link>
-    {filter.values && <CrossButton filterId={filter.id} />}
+    {filter.active && <CrossButton filterId={filter.id} />}
   </div>
 );
 

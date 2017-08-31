@@ -116,8 +116,8 @@ class Filter extends Component {
         <ViewContent title={__('titles.filter')}>
           <div className={styles.container}>
             <CardList>
-              {this.availableFilters.map(filter => (
-                <CardList.Item>
+              {this.props.availableFilters.map(filter => (
+                <CardList.Item key={filter.id}>
                   {(filter.type === 'range') && (
                     <div key={filter.id} className={styles.filterContainer}>
                       <PriceRangeSlider

@@ -23,7 +23,7 @@ const CrossButton = ({ removeTemporaryFilter, filterId }) => (
 );
 
 CrossButton.propTypes = {
-  filterId: PropTypes.number.isRequired,
+  filterId: PropTypes.string.isRequired,
   removeTemporaryFilter: PropTypes.func.isRequired,
 };
 

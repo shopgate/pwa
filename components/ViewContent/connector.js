@@ -28,13 +28,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-/**
- * Connects a component to the view store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const view = Component =>
-  connect(mapStateToProps, mapDispatchToProps)(Component)
-;
-
-export default view;
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

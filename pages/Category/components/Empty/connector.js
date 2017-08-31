@@ -21,4 +21,4 @@ const mapStateToProps = state => ({
   isVisible: (getCategoryProductCount(state) === 0 && getCurrentCategoryChildCount(state) === 0),
 });
 
-export default connect(mapStateToProps);
+export default connect(mapStateToProps, null, null, { withRef: true });

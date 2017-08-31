@@ -22,7 +22,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  temporaryFilters: state.filters.temporaryFilters,
+  temporaryFilters: state.filter.temporaryFilters,
   currentAttribute: getCurrentFilterAttribute(state),
 });
 
@@ -38,4 +38,4 @@ const mapDispatchToProps = dispatch => ({
   removeTemporaryFilter: (id, index = null) => dispatch(removeTemporaryFilter(id, index)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

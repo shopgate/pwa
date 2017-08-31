@@ -20,12 +20,12 @@ import styles from './style';
 const Item = ({ checked, label, onClick }) => (
   <RippleButton type="plain" onClick={onClick} className={styles.item}>
     <Grid>
-      <Grid.Item grow="{1}" shrink="{1}">
+      <Grid.Item grow={1} shrink={1}>
         <div className={styles.label}>
           {label}
         </div>
       </Grid.Item>
-      <Grid.Item grow="{0}" shrink="{0}">
+      <Grid.Item grow={0} shrink={0}>
         <div className={styles.checkbox}>
           <Checkbox checked={checked} />
         </div>

@@ -21,7 +21,7 @@ import { getQueryParamsAsString } from '@shopgate/pwa-common/selectors/history';
  */
 const mapStateToProps = (state, props) => ({
   availableFilters: getAvailableFilters(state, props),
-  temporaryFilters: state.filters.temporaryFilters,
+  temporaryFilters: state.filter.temporaryFilters,
   queryParams: getQueryParamsAsString(state),
 });
 

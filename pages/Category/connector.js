@@ -28,13 +28,4 @@ const mapStateToProps = (state, props) => ({
   ...getProductsResult(state, props),
 });
 
-/**
- * Connects a component to the category store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const category = Component =>
-  connect(mapStateToProps, null, null, { withRef: true })(Component)
-;
-
-export default category;
+export default connect(mapStateToProps, null, null, { withRef: true });
