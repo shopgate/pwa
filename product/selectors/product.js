@@ -353,5 +353,11 @@ export const getProductShipping = createSelector(
  */
 export const getProductAvailability = createSelector(
   getCurrentProduct,
-  product => product.availability || null
+  (product) => {
+    if (!product || !product.availability) {
+      return null;
+    }
+
+    return product.availability;
+  }
 );
