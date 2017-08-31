@@ -15,20 +15,20 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Name = ({ product }) => (
+const Name = ({ name }) => (
   <div className={styles.name}>
-    <PlaceholderLabel className={styles.placeholder} ready={(product !== null)}>
-      <span>{product.name}</span>
+    <PlaceholderLabel className={styles.placeholder} ready={(name !== null)}>
+      <span>{name}</span>
     </PlaceholderLabel>
   </div>
 );
 
 Name.propTypes = {
-  product: PropTypes.shape(),
+  name: PropTypes.shape(),
 };
 
 Name.defaultProps = {
-  product: null,
+  name: null,
 };
 
 export default Name;

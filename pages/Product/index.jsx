@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
 import ImageSlider from './components/ImageSlider';
+import Header from './components/Header';
 import connect from './connector';
 
 /**
@@ -86,6 +87,7 @@ class Product extends Component {
       <View>
         <ViewContent title={title}>
           <ImageSlider />
+          <Header />
         </ViewContent>
       </View>
     );
