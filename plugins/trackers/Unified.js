@@ -83,6 +83,6 @@ class Unified extends BasePlugin {
   }
 }
 
-window.Unified = Unified;
+window.SgUnifiedTracking = Unified;
 
 export default Unified;
