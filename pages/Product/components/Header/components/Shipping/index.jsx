@@ -19,7 +19,9 @@ import styles from './style';
  */
 const Shipping = ({ shipping }) => (
   <PlaceholderLabel className={styles.placeholder} ready={(shipping !== null)}>
-    <Label className={styles.shipping} price={shipping.price} currency={shipping.currency} />
+    {shipping && (
+      <Label className={styles.shipping} price={shipping.price} currency={shipping.currency} />
+    )}
   </PlaceholderLabel>
 );
 

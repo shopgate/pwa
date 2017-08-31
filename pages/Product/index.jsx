@@ -69,4 +69,4 @@ class Product extends Component {
   }
 }
 
-export default connect.product(Product);
+export default connect(Product);

@@ -22,7 +22,7 @@ import {
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
-// @TODO: import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 // @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
@@ -35,6 +35,7 @@ import Page from './Page';
 import Category from './Category';
 import Filter from './Filter';
 import FilterAttribute from './FilterAttribute';
+import Product from './Product';
 import Cart from './Cart';
 import Search from './Search';
 import Login from './Login';
@@ -58,7 +59,7 @@ const Pages = () =>
           />
         </Helmet>
       }
-      {/* <ModalContainer component={Dialog} /> */}
+      <ModalContainer component={Dialog} />
       <Route
         path={`${INDEX_PATH}`}
         component={Page}
@@ -82,6 +83,10 @@ const Pages = () =>
       <Route
         path={`${FILTER_PATH}/:attribute`}
         component={FilterAttribute}
+      />
+      <Route
+        path={`${ITEM_PATH}/:productId`}
+        component={Product}
       />
       <Route
         path={`${CART_PATH}`}

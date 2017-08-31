@@ -20,17 +20,17 @@ import styles from './style';
 const PriceStriked = ({ price }) => (
   <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
     <div>
-      {price.msrp && (
+      {(price && price.msrp) && (
         <span className={styles.msrp}>MSRP</span>
       )}
-      {price.msrp && (
+      {(price && price.msrp) && (
         <StrikePrice
           className={styles.msrpStriked}
           value={price.msrp}
           currency={price.currency}
         />
       )}
-      {(!price.msrp && price.unitPriceStriked) && (
+      {(price && !price.msrp && price.unitPriceStriked) && (
         <StrikePrice
           className={styles.msrpStriked}
           value={price.unitPriceStriked}

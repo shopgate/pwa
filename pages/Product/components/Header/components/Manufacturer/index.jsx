@@ -9,7 +9,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import PlaceholderLabel from 'Components/PlaceholderLabel';
-import { Manufacturer as BaseManufacturer } from 'Components/Manufacturer';
+import BaseManufacturer from 'Components/Manufacturer';
+import connect from './connector';
 import styles from './style';
 
 /**
@@ -20,8 +21,8 @@ import styles from './style';
 const Manufacturer = ({ manufacturer }) => (
   <Grid component="div">
     <Grid.Item component="div" shrink={0} className={styles.infoContainer}>
-      <PlaceholderLabel className={styles.placeholder.info} ready={(manufacturer !== null)}>
-        <BaseManufacturer text={manufacturer} />
+      <PlaceholderLabel className={styles.placeholder} ready={(manufacturer !== null)}>
+        {manufacturer && <BaseManufacturer text={manufacturer} />}
       </PlaceholderLabel>
     </Grid.Item>
   </Grid>
@@ -35,4 +36,4 @@ Manufacturer.defaultProps = {
   manufacturer: null,
 };
 
-export default Manufacturer;
+export default connect(Manufacturer);
