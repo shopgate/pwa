@@ -6,7 +6,7 @@ import {
   receiveProduct,
   errorProduct,
 } from '../action-creators';
-import { processProductFlags } from './processProductFlags';
+import processProductFlags from './processProductFlags';
 import { getProductById } from '../selectors/product';
 
 /**

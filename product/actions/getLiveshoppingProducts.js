@@ -1,4 +1,4 @@
-import { getProducts } from './getProducts';
+import getProducts from './getProducts';
 
 /**
  * Retrieves the information for the liveshopping products widget.

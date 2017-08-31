@@ -1,5 +1,5 @@
-import { getProductVariants } from './getProductVariants';
-import { getProductOptions } from './getProductOptions';
+import getProductVariants from './getProductVariants';
+import getProductOptions from './getProductOptions';
 
 /**
  * Processes the flags of a product and requests additional data if necessary.

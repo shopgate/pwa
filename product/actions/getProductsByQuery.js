@@ -1,6 +1,6 @@
 import { getHighlightProducts } from './getHighlightProducts';
-import { getProducts } from './getProducts';
-import { getProductsById } from './getProductsById';
+import getProducts from './getProducts';
+import getProductsById from './getProductsById';
 
 /**
  * Dispatches other actions based on the query type.

@@ -1,4 +1,4 @@
-import { getProducts } from './getProducts';
+import getProducts from './getProducts';
 
 /**
  * Maybe requests highlight products from server.

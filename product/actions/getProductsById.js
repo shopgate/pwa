@@ -1,5 +1,5 @@
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import { getProducts } from './getProducts';
+import getProducts from './getProducts';
 
 /**
  * Retrieves products by id from the store.
