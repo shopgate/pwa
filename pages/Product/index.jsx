@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
 import ViewContent from 'Components/ViewContent';
-import ProductImageSlider from './components/ProductImageSlider';
+import ImageSlider from './components/ImageSlider';
 import connect from './connector';
 
 /**
@@ -85,22 +85,8 @@ class Product extends Component {
     return (
       <View>
         <ViewContent title={title}>
-          <ProductImageSlider />
+          <ImageSlider />
         </ViewContent>
-        <ProductTemplate
-          title={title}
-          description={this.props.description}
-          getProductData={this.ensureGetProductData}
-          setProductOption={this.props.setProductOption}
-          product={this.props.product}
-          properties={this.props.properties}
-          shipping={this.props.shipping}
-          images={this.props.images}
-          openGallery={this.props.openGallery}
-          variants={this.props.variants}
-          options={this.props.options}
-          currentOptions={this.props.currentOptions}
-        />
       </View>
     );
   }

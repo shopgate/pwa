@@ -6,6 +6,8 @@
  */
 
 import { connect } from 'react-redux';
+import { getCalculatedProduct } from '@shopgate/pwa-common-commerce/product/selectors/price';
+import { getProductImages } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import openGallery from '../../actions/openGallery';
 
 /**
@@ -14,7 +16,8 @@ import openGallery from '../../actions/openGallery';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-
+  product: getCalculatedProduct(state),
+  images: getProductImages(state),
 });
 
 /**
@@ -23,7 +26,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  openGallery: (productId, currentSlide) => dispatch(openGallery(productId, currentSlide)),
+  onOpen: (productId, currentSlide) => dispatch(openGallery(productId, currentSlide)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

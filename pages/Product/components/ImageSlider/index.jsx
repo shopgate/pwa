@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 import IsAnimating from '@shopgate/pwa-common/components/IsAnimating';
 import ProductImage from 'Components/ProductImage';
-import ImageSlider from 'Components/ImageSlider';
+import { ImageSlider as BaseImageSlider } from 'Components/ImageSlider';
 import connect from './connector';
 
 /**
@@ -21,7 +21,7 @@ import connect from './connector';
  * @param {Array} props.images Array of image urls.
  * @param {boolean} props.isAnimating Whether view is being animated.
  */
-class ProductImageSlider extends Component {
+class ImageSlider extends Component {
   static propTypes = {
     isAnimating: PropTypes.bool.isRequired,
     images: PropTypes.arrayOf(PropTypes.string),
@@ -102,11 +102,11 @@ class ProductImageSlider extends Component {
       );
     } else {
       content = (
-        <ImageSlider loop indicators onSlideChange={this.handleSlideChange}>
+        <BaseImageSlider loop indicators onSlideChange={this.handleSlideChange}>
           {images.map(image => (
             <ProductImage key={image} src={image} animating={false} />
           ))}
-        </ImageSlider>
+        </BaseImageSlider>
       );
     }
 
@@ -128,4 +128,4 @@ class ProductImageSlider extends Component {
   }
 }
 
-export default IsAnimating(connect(ProductImageSlider), ['images', 'product']);
+export default IsAnimating(connect(ImageSlider), ['images', 'product']);
