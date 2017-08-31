@@ -1,6 +1,7 @@
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-// TODO remove mocked pipeline as soon as real pipeline available.
+import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+// TODO: remove mocked pipeline as soon as real pipeline available.
 // eslint-disable-next-line capitalized-comments
 // import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import PipelineRequest from './MockedPipeline';
@@ -22,22 +23,27 @@ import {
  * @param {string} sort The sort order of the products.
  * @return {Function} The dispatched action.
  */
-export const getSearchResults = (
-  searchPhrase,
-  offset = 0,
-  limit = 30,
-  sort = DEFAULT_SORT
-) => dispatch =>
+export const getSearchResults = (offset = 0) => (dispatch, getState) => {
+  const state = getState();
+  const sort = getSortOrder(state);
+  const limit = ITEMS_PER_LOAD;
+  const searchPhrase = getSearchPhrase(state).trim();
+
+  if (!searchPhrase) {
+    return;
+  }
+
   dispatch(
     getProducts({
       params: {
-        searchPhrase: searchPhrase.trim(),
+        searchPhrase,
         offset,
         limit,
         sort,
       },
     })
   );
+};
 
 /**
  * Get suggestions from cache or pipeline.
