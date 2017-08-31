@@ -15,14 +15,6 @@ const content = css({
   borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
 }).toString();
 
-const name = css({
-  fontWeight: 'bold',
-  fontSize: '1.25rem',
-  lineHeight: '1.7rem',
-  paddingTop: 2,
-  marginRight: 72,
-}).toString();
-
 const manufacturer = css({
   fontSize: '1.0rem',
 }).toString();
@@ -78,11 +70,6 @@ const basePriceContainer = css({
 }).toString();
 
 const placeholder = {
-  name: css({
-    width: '70%',
-    height: 24,
-    marginTop: 5,
-  }).toString(),
   info: css({
     height: 16,
     width: '70%',

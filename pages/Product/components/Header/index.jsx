@@ -7,8 +7,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingStars from 'Components/RatingStars';
 import AddToCartButton from './components/AddToCartButton';
+import Rating from './components/Rating';
+import Name from './components/Name';
 import styles from './style';
 
 /**
@@ -53,6 +54,8 @@ const ProductHeader = (props) => {
   return (
     <div className={styles.content}>
       <AddToCartButton />
+      <Rating />
+      <Name />
     </div>
   );
 };
