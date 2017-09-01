@@ -9,7 +9,7 @@ import { createSelector } from 'reselect';
 import {
   getCurrentBaseProduct,
   getCurrentBaseProductId,
-} from '../selectors/product';
+} from './product';
 
 /**
  * Selects collection of all stored product variants from the store.
