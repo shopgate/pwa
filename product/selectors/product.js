@@ -324,8 +324,8 @@ export const getProductRating = createSelector(
 export const getProductManufacturer = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product || !product.manufacturer) {
-      return null;
+    if (!product) {
+      return '';
     }
 
     return product.manufacturer;
