@@ -6,10 +6,6 @@
  */
 
 import { createSelector } from 'reselect';
-import {
-  getCurrentBaseProduct,
-  getCurrentBaseProductId,
-} from './product';
 
 /**
  * Selects collection of all stored product variants from the store.
@@ -19,11 +15,41 @@ import {
 const getVariantsState = state => state.product.variantsByProductId;
 
 /**
+ * Selects collection of all stored products from the store.
+ * @param {Object} state The current application state.
+ * @return {Object} The collection of products.
+ */
+const getProducts = state => state.product.productsById;
+
+/**
  * Gets the id of the currently selected product variant.
  * @param {Object} state The application state.
  * @returns {string}
  */
 export const getCurrentProductVariantId = state => state.currentProduct.productVariantId;
+
+/**
+ * Retrieves the current base product for the detail page from the store.
+ * @param {Object} state The current application state.
+ * @return {string} The id of the current base product.
+ */
+export const getCurrentBaseProductId = state => state.currentProduct.productId;
+
+/**
+ * Retrieves the current base product data from the store.
+ * @param {Object} state The current application state.
+ * @returns {Object} The current product.
+ */
+export const getCurrentBaseProduct = createSelector(
+  getProducts,
+  getCurrentBaseProductId,
+  (products, productId) => {
+    if (!products[productId] || products[productId].isFetching) {
+      return null;
+    }
+    return products[productId].productData;
+  }
+);
 
 /**
  * Checks if the current product has variants.
@@ -83,5 +109,21 @@ export const getCurrentBaseProductVariants = createSelector(
     }
 
     return variantsState[productId];
+  }
+);
+
+/**
+ * Retrieves the current product variants.
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const getProductVariants = createSelector(
+  getCurrentBaseProductVariants,
+  (variants) => {
+    if (!variants) {
+      return null;
+    }
+
+    return variants.variants;
   }
 );
