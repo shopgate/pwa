@@ -15,6 +15,8 @@ import PriceStriked from './components/PriceStriked';
 import Shipping from './components/Shipping';
 import Availability from './components/Availability';
 import Discount from './components/Discount';
+import Price from './components/Price';
+import PriceInfo from './components/PriceInfo';
 import styles from './style';
 
 /**
@@ -41,13 +43,12 @@ const ProductHeader = () => (
       </Grid.Item>
       <Grid.Item component="div" shrink={0} className={styles.priceContainer}>
         <Discount />
-        {/* <ProductHeaderDiscount price={props.product.price} ready={props.placeholderProductReady} />
-        <ProductHeaderPrice price={props.product.price} ready={props.placeholderProductReady} /> */}
+        <Price />
       </Grid.Item>
     </Grid>
     <Grid component="div">
       <Grid.Item component="div" shrink={0} className={styles.basePriceContainer}>
-        {/* <ProductHeaderPriceInfo info={props.product.price.info} ready={props.placeholderProductReady} /> */}
+        <PriceInfo />
       </Grid.Item>
     </Grid>
   </div>
