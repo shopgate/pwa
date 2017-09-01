@@ -11,7 +11,6 @@ import variables from 'Styles/variables';
 const wrapper = css({
   alignItems: 'center',
   position: 'fixed',
-  height: variables.filterbar.height,
   width: '100%',
   zIndex: 3,
   top: variables.navigator.height,

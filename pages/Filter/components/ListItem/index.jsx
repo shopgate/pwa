@@ -19,27 +19,31 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ListItem = ({ filter }) => (
-  <div className={styles.item}>
-    <Link href={filter.url}>
-      <Grid>
-        <Grid.Item
-          className={styles.gridItem}
-          grow={1}
-          shrink={0}
-        >
-          <Label label={filter.label} />
-        </Grid.Item>
-        {filter.active && (
-          <Grid.Item grow={1} className={styles.rightContainer}>
-            <Chips active={filter.active} />
+const ListItem = ({ filter }) => {
+  const isActive = (filter.active && filter.active.length > 0);
+
+  return (
+    <div className={styles.item}>
+      <Link href={filter.url}>
+        <Grid>
+          <Grid.Item
+            className={styles.gridItem}
+            grow={1}
+            shrink={0}
+          >
+            <Label label={filter.label} />
           </Grid.Item>
-        )}
-      </Grid>
-    </Link>
-    {filter.active && <CrossButton filterId={filter.id} />}
-  </div>
-);
+          {isActive && (
+            <Grid.Item grow={1} className={styles.rightContainer}>
+              <Chips values={filter.active} />
+            </Grid.Item>
+          )}
+        </Grid>
+      </Link>
+      {filter.active && <CrossButton filterId={filter.id} />}
+    </div>
+  );
+};
 
 ListItem.propTypes = {
   filter: PropTypes.shape().isRequired,

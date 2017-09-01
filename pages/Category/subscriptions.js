@@ -27,7 +27,7 @@ export default function category(subscribe) {
 
     dispatch(getCategory(getCurrentCategoryId(state)));
 
-    if (Object.keys(getActiveFilters(state)).length !== 0) {
+    if (Object.keys(getActiveFilters(state)).length === 0) {
       dispatch(setActiveFilters({}));
     }
   });

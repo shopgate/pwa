@@ -6,6 +6,7 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 import styles from './style';
 import Content from './components/Content';
+import connect from './connector';
 
 /**
  * The Filter bar component.
@@ -13,12 +14,10 @@ import Content from './components/Content';
 class FilterBar extends Component {
   static propTypes = {
     isActive: PropTypes.bool,
-    isVisible: PropTypes.bool,
   };
 
   static defaultProps = {
     isActive: false,
-    isVisible: false,
   };
 
   /**
@@ -39,7 +38,7 @@ class FilterBar extends Component {
     this.state = {
       offset: 0,
       hasShadow: false,
-      spacerHeight: variables.filterbar.height,
+      spacerHeight: 0,
     };
   }
 
@@ -225,4 +224,4 @@ class FilterBar extends Component {
   }
 }
 
-export default FilterBar;
+export default connect(FilterBar);
