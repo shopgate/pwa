@@ -1,12 +1,13 @@
 import { shallowEqual } from 'recompose';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import {
   generateResultHash,
   shouldFetchFilters,
 } from '@shopgate/pwa-common/helpers/redux';
+import updateHistoryState from '@shopgate/pwa-common/actions/history/updateHistoryState';
 import {
-  updateHistoryState,
   pushHistory,
   goBackHistory,
 } from '@shopgate/pwa-common/actions/history/changeHistory';
@@ -175,7 +176,7 @@ export const commitTemporaryFilters = () => (dispatch, getState) => {
     dispatch(getProducts({
       params: {
         ...params,
-        limit: 30,
+        limit: ITEMS_PER_LOAD,
         offset: 0,
         sort,
       },

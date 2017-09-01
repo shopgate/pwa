@@ -1,4 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
 import { getCurrentCategoryId } from '../selectors';
@@ -11,7 +12,7 @@ import { getCurrentCategoryId } from '../selectors';
  * @return {Function} The dispatched action.
  */
 const fetchCategoryProducts =
-  (offset = 0, limit = 30, sort) =>
+  (offset = 0, limit = ITEMS_PER_LOAD, sort) =>
     (dispatch, getState) => {
       const state = getState();
       const categoryId = getCurrentCategoryId(state);
