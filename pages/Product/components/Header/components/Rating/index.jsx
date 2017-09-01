@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from 'Components/RatingStars';
+import connect from './connector';
 
 /**
  * The Rating component.
@@ -15,7 +16,7 @@ import RatingStars from 'Components/RatingStars';
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  if (!rating || !rating.count) {
+  if (!rating || !rating.count > 0) {
     return null;
   }
 
@@ -32,4 +33,4 @@ Rating.defaultProps = {
   rating: null,
 };
 
-export default Rating;
+export default connect(Rating);

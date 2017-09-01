@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   resetCurrentProduct: () => dispatch(resetCurrentProduct()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

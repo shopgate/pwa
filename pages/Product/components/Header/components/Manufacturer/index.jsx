@@ -22,7 +22,7 @@ const Manufacturer = ({ manufacturer }) => (
   <Grid component="div">
     <Grid.Item component="div" shrink={0} className={styles.infoContainer}>
       <PlaceholderLabel className={styles.placeholder} ready={(manufacturer !== null)}>
-        {manufacturer && <BaseManufacturer text={manufacturer} />}
+        <BaseManufacturer text={(manufacturer || '')} />
       </PlaceholderLabel>
     </Grid.Item>
   </Grid>
@@ -33,7 +33,7 @@ Manufacturer.propTypes = {
 };
 
 Manufacturer.defaultProps = {
-  manufacturer: null,
+  manufacturer: '',
 };
 
 export default connect(Manufacturer);

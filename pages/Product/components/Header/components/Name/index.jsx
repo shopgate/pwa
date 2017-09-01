@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceholderLabel from 'Components/PlaceholderLabel';
+import connect from './connector';
 import styles from './style';
 
 /**
@@ -24,11 +25,11 @@ const Name = ({ name }) => (
 );
 
 Name.propTypes = {
-  name: PropTypes.shape(),
+  name: PropTypes.string,
 };
 
 Name.defaultProps = {
   name: null,
 };
 
-export default Name;
+export default connect(Name);
