@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import View from 'Components/View';
 import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
+import VariantSelects from './components/VariantSelects';
 import connect from './connector';
 
 /**
@@ -48,7 +49,7 @@ class Product extends Component {
   ensureGetProductData = (selectedVariantId, callOnlyIfNeverCalled = false) => {
     if (!callOnlyIfNeverCalled || !this.wasCalled) {
       this.wasCalled = true;
-      this.props.getProductData(selectedVariantId);
+      this.props.getProductData(selectedVariantId, this.props.params.productId);
     }
   }
 
@@ -61,6 +62,7 @@ class Product extends Component {
       <View title={(this.props.name || '')}>
         <ImageSlider />
         <Header />
+        <VariantSelects />
       </View>
     );
   }

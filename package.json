@@ -61,6 +61,7 @@
     "jest": "^20.0.4",
     "react-addons-test-utils": "^15.6.0",
     "react-transform-catch-errors": "^1.0.2",
-    "redbox-react": "^1.5.0"
+    "redbox-react": "^1.5.0",
+    "redux-test-utils": "^0.1.2"
   }
 }
