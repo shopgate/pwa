@@ -20,8 +20,8 @@ import { requestProductData } from '../action-creators';
 
 /**
  * Triggers the fetching of all product data for a certain product ID.
- * @param {Object} props The component's props.
  * @param {string} [selectedVariantId=null] The selected variant's ID.
+ * @param {string} [baseProductId=null] The base product ID.
  * @return {Function} The dispatched action.
  */
 const getProductData = (selectedVariantId = null, baseProductId = null) =>
