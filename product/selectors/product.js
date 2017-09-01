@@ -266,7 +266,7 @@ export const isProductPageOrderable = (state) => {
 export const getProductName = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product || !product.name) {
+    if (!product) {
       return null;
     }
 
@@ -308,7 +308,7 @@ export const getProductImages = createSelector(
 export const getProductRating = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product || !product.rating) {
+    if (!product) {
       return null;
     }
 
@@ -325,7 +325,7 @@ export const getProductManufacturer = createSelector(
   getCurrentProduct,
   (product) => {
     if (!product) {
-      return '';
+      return null;
     }
 
     return product.manufacturer;
@@ -366,7 +366,7 @@ export const getProductShipping = createSelector(
 export const getProductAvailability = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product || !product.availability) {
+    if (!product) {
       return null;
     }
 
