@@ -13,26 +13,26 @@ import connect from './connector';
 import styles from './style';
 
 /**
- * The Filter List Item Clear Button component.
+ * The Filter List Clear All Button component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ClearButton = ({ hasFilters, removeAllTemporaryFilters }) => (
+const ClearAllButton = ({ isActive, removeAllTemporaryFilters }) => (
   <div className={styles}>
     <Button
       flat
       type="regular"
       onClick={() => removeAllTemporaryFilters()}
-      disabled={!hasFilters}
+      disabled={!isActive}
     >
       <I18n.Text string="filter.clear_all" />
     </Button>
   </div>
 );
 
-ClearButton.propTypes = {
-  hasFilters: PropTypes.bool.isRequired,
+ClearAllButton.propTypes = {
+  isActive: PropTypes.bool.isRequired,
   removeAllTemporaryFilters: PropTypes.func.isRequired,
 };
 
-export default connect(ClearButton);
+export default connect(ClearAllButton);

@@ -10,11 +10,10 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import cloneDeep from 'lodash/cloneDeep';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import CardList from 'Components/CardList';
 import PriceRangeSlider from './components/PriceRangeSlider';
 import ListItem from './components/ListItem';
-import ClearButton from './components/ClearButton';
+import ClearAllButton from './components/ClearAllButton';
 import connect from './connector';
 import styles from './style';
 
@@ -112,31 +111,29 @@ class Filter extends Component {
     const hasFilters = Object.keys(this.props.temporaryFilters).length > 0;
 
     return (
-      <View>
-        <ViewContent title={__('titles.filter')}>
-          <div className={styles.container}>
-            <CardList>
-              {this.props.availableFilters.map(filter => (
-                <CardList.Item key={filter.id}>
-                  {(filter.type === 'range') && (
-                    <div key={filter.id} className={styles.filterContainer}>
-                      <PriceRangeSlider
-                        min={filter.minimum}
-                        max={filter.maximum}
-                        value={filter.active}
-                        onChange={filter.handleChange}
-                      />
-                    </div>
-                  )}
-                  {(filter.type !== 'range') && (
-                    <ListItem filter={filter} key={filter.id} />
-                  )}
-                </CardList.Item>
-              ))}
-            </CardList>
-            <ClearButton hasFilters={hasFilters} />
-          </div>
-        </ViewContent>
+      <View title={__('titles.filter')}>
+        <div className={styles.container}>
+          <CardList>
+            {this.props.availableFilters.map(filter => (
+              <CardList.Item key={filter.id}>
+                {(filter.type === 'range') && (
+                  <div key={filter.id} className={styles.filterContainer}>
+                    <PriceRangeSlider
+                      min={filter.minimum}
+                      max={filter.maximum}
+                      value={filter.active}
+                      onChange={filter.handleChange}
+                    />
+                  </div>
+                )}
+                {(filter.type !== 'range') && (
+                  <ListItem filter={filter} key={filter.id} />
+                )}
+              </CardList.Item>
+            ))}
+          </CardList>
+          <ClearAllButton isActive={hasFilters} />
+        </div>
       </View>
     );
   }

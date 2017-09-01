@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import Attribute from './components/Attribute';
 import Item from './components/Item';
 import ClearButton from './components/ClearButton';
@@ -98,23 +97,21 @@ class FilterAttribute extends Component {
     const { currentAttribute } = this.props;
 
     return (
-      <View>
-        <ViewContent title={currentAttribute.label}>
-          <div className={styles}>
-            <Attribute>
-              {currentAttribute.values.map(value => (
-                <Item
-                  key={value.id}
-                  label={value.label}
-                  value={value.id}
-                  onClick={() => this.handleSelection(currentAttribute.id, value.id)}
-                  checked={activeValues.includes(value.id)}
-                />
-              ))}
-            </Attribute>
-            <ClearButton values={activeValues} currentAttribute={currentAttribute} />
-          </div>
-        </ViewContent>
+      <View title={currentAttribute.label}>
+        <div className={styles}>
+          <Attribute>
+            {currentAttribute.values.map(value => (
+              <Item
+                key={value.id}
+                label={value.label}
+                value={value.id}
+                onClick={() => this.handleSelection(currentAttribute.id, value.id)}
+                checked={activeValues.includes(value.id)}
+              />
+            ))}
+          </Attribute>
+          <ClearButton values={activeValues} currentAttribute={currentAttribute} />
+        </div>
       </View>
     );
   }

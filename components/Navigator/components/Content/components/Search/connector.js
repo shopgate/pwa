@@ -7,7 +7,7 @@
 
 import { connect } from 'react-redux';
 import { getQueryParam } from '@shopgate/pwa-common/selectors/history';
-import { toggleSearch } from 'Components/Navigator/action-creators';
+import toggleNavSearchField from 'Components/Navigator/actions/toggleNavSearchField';
 import setSearchPhrase from './actions/setSearchPhrase';
 import submitSearch from 'Components/Navigator/actions/submitSearch';
 
@@ -29,7 +29,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setSearchPhrase: query => dispatch(setSearchPhrase(query)),
   submitSearch: () => dispatch(submitSearch()),
-  toggleSearch: active => dispatch(toggleSearch(active)),
+  toggleSearch: active => dispatch(toggleNavSearchField(active)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

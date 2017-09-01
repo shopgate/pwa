@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import connect from '@shopgate/pwa-common/helpers/routedConnect';
+import { connect } from 'react-redux';
 import updateHistoryState from '@shopgate/pwa-common/actions/history/updateHistoryState';
 
 /**
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, mapDispatchToProps);

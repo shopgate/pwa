@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import RippleButton from 'Components/RippleButton';
 import TextField from 'Components/TextField';
 import connect from './connector';
@@ -96,52 +95,48 @@ class Login extends Component {
    * @return {JSX}
    */
   render() {
-    const { isLoading } = this.props;
-
     return (
       <View>
-        <ViewContent>
-          <section className={styles.container}>
-            <div className={styles.headline}>
-              <I18n.Text string="login.headline" />
+        <section className={styles.container}>
+          <div className={styles.headline}>
+            <I18n.Text string="login.headline" />
+          </div>
+          <div className={styles.subline}>
+            <I18n.Text string="login.subline" />
+          </div>
+          <form onSubmit={this.handleSubmitForm}>
+            <TextField
+              type="email"
+              name="email"
+              className={styles.input}
+              label="login.email"
+              onChange={this.handleEmailChange}
+              setRef={this.setUserFieldRef}
+            />
+            <TextField
+              password
+              name="password"
+              className={styles.input}
+              label="login.password"
+              onChange={this.handlePasswordChange}
+              setRef={this.setPasswordFieldRef}
+            />
+            <div className={styles.forgotWrapper}>
+              <ForgotPassword />
             </div>
-            <div className={styles.subline}>
-              <I18n.Text string="login.subline" />
+            <div className={styles.buttonWrapper}>
+              <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
+                <I18n.Text string="login.button" />
+              </RippleButton>
             </div>
-            <form onSubmit={this.handleSubmitForm}>
-              <TextField
-                type="email"
-                name="email"
-                className={styles.input}
-                label="login.email"
-                onChange={this.handleEmailChange}
-                setRef={this.setUserFieldRef}
-              />
-              <TextField
-                password
-                name="password"
-                className={styles.input}
-                label="login.password"
-                onChange={this.handlePasswordChange}
-                setRef={this.setPasswordFieldRef}
-              />
-              <div className={styles.forgotWrapper}>
-                <ForgotPassword />
-              </div>
-              <div className={styles.buttonWrapper}>
-                <RippleButton className={styles.button} type="secondary" disabled={isLoading}>
-                  <I18n.Text string="login.button" />
-                </RippleButton>
-              </div>
-            </form>
-            <div>
-              <I18n.Text string="login.no_account" className={styles.noAccount} />
-              <Link href="/register" className={styles.signup}>
-                <I18n.Text string="login.register" />
-              </Link>
-            </div>
-          </section>
-        </ViewContent>
+          </form>
+          <div>
+            <I18n.Text string="login.no_account" className={styles.noAccount} />
+            <Link href="/register" className={styles.signup}>
+              <I18n.Text string="login.register" />
+            </Link>
+          </div>
+        </section>
       </View>
     );
   }

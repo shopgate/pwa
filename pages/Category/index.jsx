@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import CategoryList from 'Components/CategoryList';
 import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import Products from './components/Products';
 import Empty from './components/Empty';
 import connect from './connector';
@@ -59,17 +58,15 @@ class Category extends Component {
    */
   render() {
     return (
-      <View>
-        <ViewContent title={this.title}>
-          {this.props.isFilterBarShown && <FilterBar />}
-          <CategoryList />
-          {this.props.hasProducts && <Products />}
-          <Empty
-            headlineText="category.no_result.heading"
-            bodyText="category.no_result.body"
-            searchPhrase={this.title}
-          />
-        </ViewContent>
+      <View title={this.title}>
+        {this.props.isFilterBarShown && <FilterBar />}
+        <CategoryList />
+        {this.props.hasProducts && <Products />}
+        <Empty
+          headlineText="category.no_result.heading"
+          bodyText="category.no_result.body"
+          searchPhrase={this.title}
+        />
       </View>
     );
   }

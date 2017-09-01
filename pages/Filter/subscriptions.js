@@ -24,16 +24,20 @@ export default function filter(subscribe) {
   const filterRouteDidLeave$ = routeDidLeave(FILTER_PATH);
 
   /**
-   * Gets triggered on entering the filter route.
+   * Gets triggered on leaving the filter route.
    */
-  subscribe(filterRouteDidEnter$, ({ dispatch }) => {
-    dispatch(setFilterOpened());
+  subscribe(filterRouteDidLeave$, ({ dispatch, pathname }) => {
+    if (!pathname.startsWith(FILTER_PATH)) {
+      dispatch(setFilterClosed());
+    }
   });
 
   /**
-   * Gets triggered on leaving the filter route.
+   * Gets triggered on entering the filter route.
    */
-  subscribe(filterRouteDidLeave$, ({ dispatch }) => {
-    dispatch(setFilterClosed());
+  subscribe(filterRouteDidEnter$, ({ dispatch, prevPathname }) => {
+    if (!prevPathname.startsWith(FILTER_PATH)) {
+      dispatch(setFilterOpened());
+    }
   });
 }

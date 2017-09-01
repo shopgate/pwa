@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import CardList from 'Components/CardList';
 import MessageBar from 'Components/MessageBar';
 import Item from './components/Item';
@@ -77,22 +76,20 @@ class Cart extends Component {
     const { cartItems, messages } = this.props;
 
     return (
-      <View>
-        <ViewContent title={this.title}>
-          {messages.length > 0 && <MessageBar messages={messages} />}
-          {cartItems.length > 0 && (
-            <section className={styles.container}>
-              <CardList>
-                {cartItems.map(cartItem => (
-                  <Item item={cartItem} togglePaymentBar={this.togglePaymentBar} />
-                ))}
-                <CouponField onToggleFocus={this.togglePaymentBar} />
-              </CardList>
-              <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
-            </section>
-          )}
-          {cartItems.length === 0 && <Empty />}
-        </ViewContent>
+      <View title={this.title}>
+        {messages.length > 0 && <MessageBar messages={messages} />}
+        {cartItems.length > 0 && (
+          <section className={styles.container}>
+            <CardList>
+              {cartItems.map(cartItem => (
+                <Item item={cartItem} togglePaymentBar={this.togglePaymentBar} />
+              ))}
+              <CouponField onToggleFocus={this.togglePaymentBar} />
+            </CardList>
+            <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
+          </section>
+        )}
+        {cartItems.length === 0 && <Empty />}
       </View>
     );
   }

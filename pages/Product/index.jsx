@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
 import connect from './connector';
@@ -59,11 +58,9 @@ class Product extends Component {
    */
   render() {
     return (
-      <View>
-        <ViewContent title={(this.props.name || '')}>
-          <ImageSlider />
-          <Header />
-        </ViewContent>
+      <View title={(this.props.name || '')}>
+        <ImageSlider />
+        <Header />
       </View>
     );
   }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
-import ViewContent from 'Components/ViewContent';
 import Products from 'Pages/Category/components/Products';
 import NoResults from 'Components/NoResults';
 import connect from './connector';
@@ -45,16 +44,14 @@ class Search extends Component {
    */
   render() {
     return (
-      <View>
-        <ViewContent title={this.props.searchPhrase}>
-          {this.props.hasProducts && <FilterBar />}
-          {this.props.hasProducts && <Products />}
-          <NoResults
-            headlineText="search.no_result.heading"
-            bodyText="search.no_result.body"
-            searchPhrase={this.props.searchPhrase}
-          />
-        </ViewContent>
+      <View title={this.props.searchPhrase}>
+        {this.props.hasProducts && <FilterBar />}
+        {this.props.hasProducts && <Products />}
+        <NoResults
+          headlineText="search.no_result.heading"
+          bodyText="search.no_result.body"
+          searchPhrase={this.props.searchPhrase}
+        />
       </View>
     );
   }
