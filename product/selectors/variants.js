@@ -51,7 +51,7 @@ export const getVariantsByProductId = (state, id) => {
     return null;
   }
 
-  return variants;
+  return variants[id];
 };
 
 /**
