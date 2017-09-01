@@ -90,7 +90,7 @@ class Filter extends Component {
    * Returns the currently available filters.
    * @return {Array}
    */
-  get availableFilters() {
+  get enrichedAvailableFilters() {
     // TODO: Handle other filter types (multiselect here)
     return this.props.availableFilters.map(
       filter => this.updateFilter(filter)
@@ -114,7 +114,7 @@ class Filter extends Component {
       <View title={__('titles.filter')}>
         <div className={styles.container}>
           <CardList>
-            {this.props.availableFilters.map(filter => (
+            {this.enrichedAvailableFilters.map(filter => (
               <CardList.Item key={filter.id}>
                 {(filter.type === 'range') && (
                   <div key={filter.id} className={styles.filterContainer}>

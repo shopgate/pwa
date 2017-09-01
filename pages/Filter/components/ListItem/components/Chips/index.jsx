@@ -16,7 +16,7 @@ import Chip from 'Components/Chip';
  * @return {JSX|null}
  */
 const Chips = ({ values }) => {
-  if (!values || (values && values.length !== 0)) {
+  if (!values || (values && values.length === 0)) {
     return null;
   }
 
@@ -32,7 +32,7 @@ const Chips = ({ values }) => {
 };
 
 Chips.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.shape()),
+  values: PropTypes.arrayOf(PropTypes.string),
 };
 
 Chips.defaultProps = {

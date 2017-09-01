@@ -76,12 +76,14 @@ class Content extends Component {
    */
   render() {
     return (
-      <div className={styles}>
-        <ViewSwitch />
-        <Sort />
-        <FilterButton />
+      <section>
+        <div className={styles}>
+          <ViewSwitch />
+          <Sort />
+          <FilterButton />
+        </div>
         <FilterChips currency={this.currency} />
-      </div>
+      </section>
     );
   }
 }

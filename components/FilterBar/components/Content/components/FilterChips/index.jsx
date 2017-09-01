@@ -19,7 +19,7 @@ import styles from './style';
  * @return {JSX}
  */
 const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFilters }) => {
-  if (!activeFilters.length) {
+  if (!Object.keys(activeFilters).length) {
     return null;
   }
 
