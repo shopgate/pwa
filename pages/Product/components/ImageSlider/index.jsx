@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Hammer from 'react-hammerjs';
 import ProductImage from 'Components/ProductImage';
-import { ImageSlider as BaseImageSlider } from 'Components/ImageSlider';
+import BaseImageSlider from 'Components/ImageSlider';
 import connect from './connector';
 
 /**
