@@ -161,7 +161,7 @@ export const commitTemporaryFilters = () => (dispatch, getState) => {
   const temporaryFilters = getTemporaryFilters(state);
 
   if (!activeFilters.length) {
-    logger.error('Tried to submit temporary filters, but no active filter stack was created');
+    logger.error('Tried to submit temporary filters, but no active filter stack was created.');
     return;
   }
 
