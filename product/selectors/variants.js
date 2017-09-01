@@ -111,3 +111,19 @@ export const getCurrentBaseProductVariants = createSelector(
     return variantsState[productId];
   }
 );
+
+/**
+ * Retrieves the current product variants.
+ * @param {Object} state The application state.
+ * @returns {boolean}
+ */
+export const getProductVariants = createSelector(
+  getCurrentBaseProductVariants,
+  (variants) => {
+    if (!variants) {
+      return null;
+    }
+
+    return variants.variants;
+  }
+);
