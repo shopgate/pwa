@@ -19,10 +19,6 @@ const manufacturer = css({
   fontSize: '1.0rem',
 }).toString();
 
-const price = css({
-  fontSize: '1.25rem',
-}).toString();
-
 const priceInfo = css({
   fontSize: '0.625rem',
 }).toString();
@@ -63,7 +59,6 @@ export default {
   content,
   name,
   manufacturer,
-  price,
   priceInfo,
   infoContainer,
   priceContainer,
