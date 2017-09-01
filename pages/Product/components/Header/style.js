@@ -15,14 +15,6 @@ const content = css({
   borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
 }).toString();
 
-const manufacturer = css({
-  fontSize: '1.0rem',
-}).toString();
-
-const priceInfo = css({
-  fontSize: '0.625rem',
-}).toString();
-
 const infoContainer = css({
   width: '50%',
   alignSelf: 'flex-end',
@@ -57,9 +49,6 @@ const placeholder = {
 
 export default {
   content,
-  name,
-  manufacturer,
-  priceInfo,
   infoContainer,
   priceContainer,
   basePriceContainer,
