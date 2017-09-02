@@ -25,7 +25,10 @@ const Button = ({ disabled, label, openList, value }) => (
 );
 
 Button.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape(),
+  ]).isRequired,
   value: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   openList: PropTypes.func,
