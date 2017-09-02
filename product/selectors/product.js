@@ -373,3 +373,29 @@ export const getProductAvailability = createSelector(
     return product.availability;
   }
 );
+
+/**
+ * Selects the product description state.
+ * @param {Object} state The current application state.
+ * @return {Object} The product description state.
+ */
+const getProductDescriptionState = state => state.product.descriptionsByProductId;
+
+/**
+ * Retrieves the current product description.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getProductDescription = createSelector(
+  getCurrentProductId,
+  getProductDescriptionState,
+  (productId, productDescriptionState) => {
+    const collection = productDescriptionState[productId];
+
+    if (!collection || !collection.description) {
+      return null;
+    }
+
+    return collection.description;
+  }
+);
