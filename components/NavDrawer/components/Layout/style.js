@@ -5,34 +5,34 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const duration = 300;
 const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
 
-const container = cxs({
+const container = css({
   width: '100%',
   height: '100vh',
   maxWidth: '67vw',
   transition: `transform ${duration}ms ${easing}`,
-});
+}).toString();
 
-const content = cxs({
+const content = css({
   height: '100%',
   overflowY: 'scroll',
   color: colors.dark,
   background: colors.light,
   WebkitOverflowScrolling: 'touch',
-});
+}).toString();
 
 const drawerAnimation = {
-  in: cxs({
+  in: css({
     transform: 'translate3d(0, 0, 0)',
-  }),
-  out: cxs({
+  }).toString(),
+  out: css({
     transform: 'translate3d(-100%, 0, 0)',
-  }),
+  }).toString(),
 };
 
 export default {

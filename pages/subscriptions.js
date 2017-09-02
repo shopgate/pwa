@@ -7,9 +7,10 @@
 
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
+import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
-// @TODO import coupons from './coupons';
 import category from 'Pages/Category/subscriptions';
+// @TODO: import coupons from './coupons';
 import filter from 'Pages/Filter/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import login from 'Pages/Login/subscriptions';
@@ -17,9 +18,10 @@ import login from 'Pages/Login/subscriptions';
 export default [
   commerceCart,
   commerceCategory,
+  commerceFilter,
   navigator,
-  // @TODO coupons,
   category,
+  // @TODO coupons,
   filter,
   filterbar,
   login,

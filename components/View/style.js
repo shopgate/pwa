@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = cxs({
+const container = css({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -17,14 +17,14 @@ const container = cxs({
   width: '100%',
   height: '100%',
   zIndex: 1,
-});
+}).toString();
 
 /**
  * Creates the content style.
  * @param {boolean} hasNavigator Whether to add the top offset when the navigator is visible.
  * @return {string} The content style class.
  */
-const content = (hasNavigator = true) => cxs({
+const content = (hasNavigator = true) => css({
   background: colors.light,
   overflow: 'auto',
   overflowScrolling: 'touch',
@@ -45,13 +45,13 @@ const content = (hasNavigator = true) => cxs({
     content: '""',
     transition: 'box-shadow 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   },
-});
+}).toString();
 
-const contentShaded = cxs({
+const contentShaded = css({
   ':before': {
     boxShadow: variables.navigator.shadow,
   },
-});
+}).toString();
 
 export default {
   container,

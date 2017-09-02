@@ -5,17 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const divider = cxs({
+export default css({
   height: 1,
   margin: `${variables.gap.big}px 0`,
   background: colors.shade7,
   border: 0,
-});
-
-export default {
-  divider,
-};
+}).toString();

@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
 import LoadingIndicator from 'Components/LoadingIndicator';
 import Iterator from './components/Iterator';
@@ -26,7 +27,7 @@ const ProductGrid = ({ handleGetProducts, products, totalProductCount }) => (
     loadingIndicator={<LoadingIndicator />}
     totalItems={totalProductCount}
     initialLimit={6}
-    limit={30}
+    limit={ITEMS_PER_LOAD}
   />
 );
 

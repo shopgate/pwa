@@ -1,4 +1,4 @@
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
@@ -7,28 +7,28 @@ import variables from 'Styles/variables';
  * @param {number} height The maximum height for the container.
  * @returns {string}
  */
-const container = height => cxs({
+const container = height => css({
   position: 'relative',
   maxHeight: height,
   overflow: 'hidden',
   marginBottom: variables.gap.small,
-});
+}).toString();
 
-const layout = cxs({
+const layout = css({
   display: 'flex',
   alignContent: 'flex-start',
   flexWrap: 'wrap',
   padding: '7px 5px',
   overflow: 'hidden',
-});
+}).toString();
 
-const moreButtonWrapper = cxs({
+const moreButtonWrapper = css({
   position: 'absolute',
   right: 0,
   bottom: variables.gap.small * 0.5,
   marginLeft: 'auto',
   marginRight: variables.gap.small,
-});
+}).toString();
 
 const moreButtonBase = {
   marginLeft: 'auto',
@@ -39,15 +39,15 @@ const moreButtonBase = {
   textTransform: 'uppercase',
 };
 
-const moreButton = cxs({
+const moreButton = css({
   ...moreButtonBase,
   color: colors.light,
-});
+}).toString();
 
-const moreButtonInverted = cxs({
+const moreButtonInverted = css({
   ...moreButtonBase,
   color: colors.accent,
-});
+}).toString();
 
 export default {
   container,

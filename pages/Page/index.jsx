@@ -61,7 +61,7 @@ class Page extends Component {
     }
 
     return (
-      <View className={styles.view} title={pageConfig.title || ''} style={this.props.style}>
+      <View className={styles} title={pageConfig.title || ''} style={this.props.style}>
         <Widgets widgets={pageConfig.widgets} />
       </View>
     );

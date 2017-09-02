@@ -1,17 +1,17 @@
-import cxs from 'cxs';
+import { css } from 'glamor';
 
-const magnifier = cxs({
+const magnifier = css({
   fill: 'currentColor',
-});
+}).toString();
 
-const background = cxs({
+const background = css({
   fill: '#fff',
-});
+}).toString();
 
-const circle = cxs({
+const circle = css({
   fill: 'currentColor',
   opacity: 0.065,
-});
+}).toString();
 
 export default {
   magnifier,

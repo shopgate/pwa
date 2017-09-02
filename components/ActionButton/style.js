@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const halfGapBig = variables.gap.big / 2;
@@ -14,15 +14,15 @@ const containerBase = {
   textAlign: 'center',
 };
 
-const container = cxs({
+const container = css({
   ...containerBase,
   margin: `${halfGapBig}px 0`,
-});
+}).toString();
 
-const containerCircle = cxs({
+const containerCircle = css({
   ...containerBase,
   margin: `${halfGapBig + 4}px 0`,
-});
+}).toString();
 
 export default {
   container,

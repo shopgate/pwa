@@ -5,13 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import variables from 'Styles/variables';
+
+/**
+ * Animation configuration.
+ */
+const distance = '20px';
 
 /**
  * Styling for the title.
  */
-const title = cxs({
+const title = css({
+  animationDuration: '375ms',
+  animationFillMode: 'forwards',
+  animationTimingFunction: 'cubic-bezier(0.25, 1, 0.25, 1)',
   position: 'absolute',
   top: '.65em',
   left: 0,
@@ -20,67 +28,72 @@ const title = cxs({
   whiteSpace: 'nowrap',
   width: '100%',
   padding: `0 ${variables.gap.big}px`,
-});
+}).toString();
 
-/**
- * Animation configuration
- */
-const distance = '20px';
-const duration = 375; // The duration of the animation in ms.
-const center = {
-  opacity: 1,
-  transform: 'translate3d(0, 0, 0)',
-};
-const right = {
-  opacity: 0,
-  transform: `translate3d(${distance}, 0, 0)`,
-};
-const left = {
-  opacity: 0,
-  transform: `translate3d(-${distance}, 0, 0)`,
-};
-
-/**
- * Keyframe animation for all title positions.
- */
-cxs({
-  '@keyframes navTitleCenterToRight': {
-    '0%': center,
-    '100%': right,
+const navTitleCenterToRight = css.keyframes({
+  '0%': {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
   },
-  '@keyframes navTitleCenterToLeft': {
-    '0%': center,
-    '100%': left,
-  },
-  '@keyframes navTitleRightToCenter': {
-    '0%': right,
-    '100%': center,
-  },
-  '@keyframes navTitleLeftToCenter': {
-    '0%': left,
-    '100%': center,
+  '100%': {
+    opacity: 0,
+    transform: `translate3d(${distance}, 0, 0)`,
   },
 });
 
-/**
- * Creates a simple class that is using a keyframe
- * @param {string} name The name of the keyframe
- * @returns {string} Class name
- */
-const createKeyframeAnimationClass = name => cxs({
-  animation: `navTitle${name} ${duration}ms cubic-bezier(0.25, 1, 0.25, 1)`,
-  animationFillMode: 'forwards',
+const navTitleCenterToLeft = css.keyframes({
+  '0%': {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+  '100%': {
+    opacity: 0,
+    transform: `translate3d(-${distance}, 0, 0)`,
+  },
 });
 
-const hidden = cxs({
-  opacity: 0,
+const navTitleRightToCenter = css.keyframes({
+  '0%': {
+    opacity: 0,
+    transform: `translate3d(${distance}, 0, 0)`,
+  },
+  '100%': {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+});
+
+const navTitleLeftToCenter = css.keyframes({
+  '0%': {
+    opacity: 0,
+    transform: `translate3d(-${distance}, 0, 0)`,
+  },
+  '100%': {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+});
+
+const centerToRight = css({
+  animationName: `${navTitleCenterToRight}`,
+});
+
+const centerToLeft = css({
+  animationName: `${navTitleCenterToLeft}`,
+});
+
+const rightToCenter = css({
+  animationName: `${navTitleRightToCenter}`,
+});
+
+const leftToCenter = css({
+  animationName: `${navTitleLeftToCenter}`,
 });
 
 export default {
   title,
-  hidden,
-  centerToRight: createKeyframeAnimationClass('CenterToRight'),
-  centerToLeft: createKeyframeAnimationClass('CenterToLeft'),
-  rightToCenter: createKeyframeAnimationClass('RightToCenter'),
-  leftToCenter: createKeyframeAnimationClass('LeftToCenter'),
+  centerToRight,
+  centerToLeft,
+  rightToCenter,
+  leftToCenter,
 };

@@ -5,16 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 
-const content = cxs({
+const content = css({
   position: 'absolute',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
   overflow: 'hidden',
-});
+}).toString();
 
 /**
  * Calculates the height of a widget.
@@ -22,11 +22,11 @@ const content = cxs({
  * @param {number} rows The number of rows to use.
  * @returns {Function}
  */
-const height = (base, rows) => cxs({
+const height = (base, rows) => css({
   display: 'block',
   position: 'absolute',
   height: `${Math.ceil(base * rows)}px`,
-});
+}).toString();
 
 /**
  * Calculates the left offset based on the given number of columns as a faction of 12.
@@ -38,9 +38,9 @@ const left = (offset) => {
     return '';
   }
 
-  return cxs({
+  return css({
     left: `${((offset * 100) / 12).toFixed(5)}%`,
-  });
+  }).toString();
 };
 
 /**
@@ -54,9 +54,9 @@ const top = (base, offset) => {
     return '';
   }
 
-  return cxs({
+  return css({
     top: `${Math.ceil(offset * base)}px`,
-  });
+  }).toString();
 };
 
 /**
@@ -66,14 +66,14 @@ const top = (base, offset) => {
  */
 const width = (columns) => {
   if (columns === 12) {
-    return cxs({
+    return css({
       width: '100%',
-    });
+    }).toString();
   }
 
-  return cxs({
+  return css({
     width: `${((columns * 100) / 12).toFixed(5)}%`,
-  });
+  }).toString();
 };
 
 export default {

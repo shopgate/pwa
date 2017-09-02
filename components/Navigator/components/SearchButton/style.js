@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const button = cxs({
+const button = css({
   color: 'inherit',
   fontSize: '1.5rem',
   lineHeight: 1,
@@ -18,15 +18,15 @@ const button = cxs({
   height: variables.navigator.height,
   position: 'relative',
   zIndex: 1,
-});
+}).toString();
 
-const buttonContent = cxs({
+const buttonContent = css({
   display: 'flex',
   height: '100%',
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-});
+}).toString();
 
 export default {
   button,

@@ -1,20 +1,20 @@
-import cxs from 'cxs';
+import { css } from 'glamor';
 import Color from 'color';
 import colors from 'Styles/colors';
 
 const progressBarHeight = 4;
 const progressBarBackground = Color(colors.accent).lighten(0.4);
 
-const wrapper = cxs({
+const wrapper = css({
   background: progressBarBackground.hsl().string(),
   position: 'relative',
   width: '100%',
   height: progressBarHeight,
   overflow: 'hidden',
   transition: 'height .3s linear',
-});
+}).toString();
 
-const innerElement = cxs({
+const innerElement = css({
   transition: 'width .3s linear',
   ':before': {
     content: '""',
@@ -34,51 +34,47 @@ const innerElement = cxs({
     bottom: 0,
     willChange: 'left, right',
   },
+}).toString();
+
+const indeterminateLong = css.keyframes({
+  '0%': {
+    left: '-35%',
+    right: '100%',
+  },
+  '60%': {
+    left: '100%',
+    right: '-90%',
+  },
+  '100%': {
+    left: '100%',
+    right: '-90%',
+  },
 });
 
-const animating = cxs({
+const indeterminateShort = css.keyframes({
+  '0%': {
+    left: '-200%',
+    right: '100%',
+  },
+  '60%': {
+    left: '107%',
+    right: '-8%',
+  },
+  '100%': {
+    left: '107%',
+    right: '-8%',
+  },
+});
+
+const animating = css({
   ':before': {
-    animation: 'indeterminateLong 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite',
+    animation: `${indeterminateLong} 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite`,
   },
   ':after': {
-    animation: 'indeterminateShort 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite',
+    animation: `${indeterminateShort} 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite`,
     animationDelay: '1.15s',
   },
-});
-
-cxs({
-  '@keyframes indeterminateLong': {
-    '0%': {
-      left: '-35%',
-      right: '100%',
-    },
-    '60%': {
-      left: '100%',
-      right: '-90%',
-    },
-    '100%': {
-      left: '100%',
-      right: '-90%',
-    },
-  },
-});
-
-cxs({
-  '@keyframes indeterminateShort': {
-    '0%': {
-      left: '-200%',
-      right: '100%',
-    },
-    '60%': {
-      left: '107%',
-      right: '-8%',
-    },
-    '100%': {
-      left: '107%',
-      right: '-8%',
-    },
-  },
-});
+}).toString();
 
 export default {
   wrapper,

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import variables from 'Styles/variables';
 import colors from 'Styles/colors';
 
@@ -33,9 +33,9 @@ const button = (text, background) => ({
 /**
  * The basic content wrapper styles.
  */
-const contentWrapper = cxs({
+const contentWrapper = css({
   padding: buttonPadding,
-});
+}).toString();
 
 /**
  * Creates the button styles object.
@@ -57,8 +57,8 @@ const createButtonStyles = (textColor, fillColor) => {
   };
 
   return {
-    button: cxs(buttonStyle),
-    content: cxs(contentStyle),
+    button: css(buttonStyle).toString(),
+    content: css(contentStyle).toString(),
   };
 };
 
@@ -67,12 +67,12 @@ const createButtonStyles = (textColor, fillColor) => {
  * @return {Object}
  */
 const plain = () => ({
-  button: cxs({
+  button: css({
     padding: 0,
     outline: 0,
     border: 0,
     textAlign: 'left',
-  }),
+  }).toString(),
   content: '',
 });
 

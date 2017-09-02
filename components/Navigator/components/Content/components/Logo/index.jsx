@@ -13,8 +13,6 @@ import styles from './style';
  * The navigator logo component.
  * @return {JSX}
  */
-const Logo = () => (
-  <img className={styles.logo} src={logo} alt="Logo" />
-);
+const Logo = () => <img className={styles} src={logo} alt="Logo" />;
 
 export default Logo;

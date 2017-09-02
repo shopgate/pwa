@@ -5,12 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 
-const view = cxs({
+export default css({
   paddingTop: 60,
 });
-
-export default {
-  view,
-};

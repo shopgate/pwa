@@ -1,4 +1,4 @@
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
@@ -27,19 +27,19 @@ const chipBase = (hasRemoveButton = true) => ({
  * @param {boolean} inverted Whether the colors of the chip are inverted.
  * @returns {string} The style class name.
  */
-const chip = (hasRemoveButton = true, inverted = false) => cxs({
+const chip = (hasRemoveButton = true, inverted = false) => css({
   ...chipBase(hasRemoveButton),
   backgroundColor: (inverted ? colors.accent : colors.light),
   color: (inverted ? colors.light : colors.accent),
-});
+}).toString();
 
-const removeButton = cxs({
+const removeButton = css({
   flexShrink: 0,
   margin: 0,
   padding: 0,
-});
+}).toString();
 
-const name = cxs({
+const name = css({
   paddingLeft: (variables.gap.small * 0.5),
   paddingRight: (variables.gap.small * 0.5),
   paddingTop: 3,
@@ -53,7 +53,7 @@ const name = cxs({
   display: 'block',
   lineHeight: '1',
   color: 'inherit',
-});
+}).toString();
 
 export default {
   chip,

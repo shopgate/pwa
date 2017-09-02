@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-export default cxs({
+export default css({
   backgroundColor: colors.shade8,
-});
+}).toString();

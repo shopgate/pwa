@@ -5,29 +5,29 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-const item = cxs({
+const item = css({
   marginLeft: 72,
-});
+}).toString();
 
-const itemNotLast = cxs({
+const itemNotLast = css({
   boxShadow: `0 1px 0 0 ${colors.darkGray}`,
   marginBottom: 1,
-});
+}).toString();
 
-const innerContainer = cxs({
+const innerContainer = css({
   marginLeft: -72,
   minHeight: 56,
   position: 'relative',
-});
+}).toString();
 
-const glow = cxs({
+const glow = css({
   bottom: -1,
   height: '100%',
   top: -1,
-});
+}).toString();
 
 export default {
   item,

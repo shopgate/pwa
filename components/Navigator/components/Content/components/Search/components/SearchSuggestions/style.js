@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = cxs({
+const container = css({
   position: 'fixed',
   top: variables.navigator.height,
   borderTop: `${variables.gap.small / 2}px solid ${colors.shade8}`,
@@ -18,12 +18,12 @@ const container = cxs({
   bottom: 0,
   backgroundColor: colors.light,
   overflowY: 'scroll',
-});
+}).toString();
 
-const listItem = cxs({
+const listItem = css({
   fontSize: '1rem',
   fontWeight: 400,
-});
+}).toString();
 
 export default {
   container,

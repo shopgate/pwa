@@ -5,36 +5,36 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = cxs({
+const container = css({
   position: 'relative',
-});
+}).toString();
 
-const grid = cxs({
+const grid = css({
   alignItems: 'flex-start',
-});
+}).toString();
 
-const icon = cxs({
+const icon = css({
   position: 'relative',
   top: variables.gap.big,
   width: 72,
   fontSize: '1.5rem',
   padding: `0 ${variables.gap.big * 2}px 0 ${variables.gap.big}px`,
   color: colors.shade11,
-});
+}).toString();
 
-const label = cxs({
+const label = css({
   display: 'flex',
   alignItems: 'flex-start',
   padding: `${variables.gap.big + 2}px 0`,
   fontSize: '0.875rem',
   fontWeight: 500,
-});
+}).toString();
 
-const count = cxs({
+const count = css({
   backgroundColor: colors.primary,
   color: colors.light,
   fontSize: '0.75rem',
@@ -46,9 +46,9 @@ const count = cxs({
   textAlign: 'center',
   padding: `0 ${variables.gap.small * 0.625}px`,
   margin: `${variables.gap.big * 1.1875}px ${variables.gap.big}px`,
-});
+}).toString();
 
-const primary = cxs({
+const primary = css({
   background: colors.primary,
   [`.${icon}`]: {
     color: colors.light,
@@ -56,7 +56,7 @@ const primary = cxs({
   [`.${label}`]: {
     color: colors.light,
   },
-});
+}).toString();
 
 export default {
   container,

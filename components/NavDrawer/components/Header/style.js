@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = cxs({
+const container = css({
   marginBottom: 4,
-});
+}).toString();
 
-const loggedIn = cxs({
+const loggedIn = css({
   background: colors.accent,
   color: colors.light,
   padding: `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`,
-});
+}).toString();
 
 const ellipsis = {
   textOverflow: 'ellipsis',
@@ -25,14 +25,14 @@ const ellipsis = {
   lineHeight: 1.3,
 };
 
-const welcome = cxs({
+const welcome = css({
   fontWeight: 500,
   ...ellipsis,
-});
+}).toString();
 
-const mail = cxs({
+const mail = css({
   ...ellipsis,
-});
+}).toString();
 
 export default {
   container,

@@ -5,12 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 
-const logo = cxs({
+export default css({
   margin: '0 auto',
 });
-
-export default {
-  logo,
-};

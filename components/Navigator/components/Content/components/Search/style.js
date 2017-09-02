@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import cxs from 'cxs';
+import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = cxs({
+const container = css({
   position: 'absolute',
   width: '100%',
   margin: `0 0 0 -${variables.gap.big}px`,
   top: '4px',
-});
+}).toString();
 
-const input = cxs({
+const input = css({
   display: 'block',
   position: 'relative',
   width: '100%',
@@ -27,9 +27,9 @@ const input = cxs({
   lineHeight: '46px',
   borderRadius: '2px',
   outline: 'none',
-});
+}).toString();
 
-const overlay = cxs({
+const overlay = css({
   position: 'fixed',
   left: -variables.navigator.height,
   top: variables.navigator.height,
@@ -37,33 +37,29 @@ const overlay = cxs({
   height: '100vh',
   background: 'transparent',
   zIndex: 10,
+}).toString();
+
+const slideInSearchBar = css.keyframes({
+  '0%': {
+    transform: 'translateX(100%)',
+    opacity: 0.5,
+  },
+  '100%': { transform: 'translateX(0)' },
+});
+
+const slideOutSearchBar = css.keyframes({
+  '0%': { transform: 'translateX(0)' },
+  '100%': { transform: 'translateX(100%)' },
 });
 
 const animation = {
-  in: cxs({
-    animation: 'slideInSearchBar 150ms 1 both cubic-bezier(0.25, 0.1, 0.25, 1)',
-  }),
-  out: cxs({
-    animation: 'slideOutSearchBar 150ms 1 both ease-in',
-  }),
+  in: css({
+    animation: `${slideInSearchBar} 150ms 1 both cubic-bezier(0.25, 0.1, 0.25, 1)`,
+  }).toString(),
+  out: css({
+    animation: `${slideOutSearchBar} 150ms 1 both ease-in`,
+  }).toString(),
 };
-
-cxs({
-  '@keyframes slideInSearchBar': {
-    '0%': {
-      transform: 'translateX(100%)',
-      opacity: 0.5,
-    },
-    '100%': { transform: 'translateX(0)' },
-  },
-});
-
-cxs({
-  '@keyframes slideOutSearchBar': {
-    '0%': { transform: 'translateX(0)' },
-    '100%': { transform: 'translateX(100%)' },
-  },
-});
 
 export default {
   container,
