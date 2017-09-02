@@ -8,7 +8,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@shopgate/pwa-common/components/Slider';
-import { mergeStyles } from '@shopgate/pwa-common/helpers/style';
 import defaultStyles from './style';
 
 /**
@@ -52,7 +51,10 @@ class ImageSlider extends Component {
     }
 
     // Extend default styles if wanted
-    const styles = mergeStyles(defaultStyles, this.props.classNames);
+    const styles = {
+      ...defaultStyles,
+      ...this.props.classNames,
+    };
 
     // Create a Slider.Item for each image
     const imageSliderItems = [];
