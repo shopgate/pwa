@@ -5,43 +5,45 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { css } from 'glamor';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
-const slider = {
+const slider = css({
   maxHeight: '100%',
   position: 'relative',
   width: 'auto',
-};
+}).toString();
 
-const indicator = {
+const indicator = css({
   position: 'absolute',
   bottom: 2,
   left: '50%',
   transform: 'translateX(-50%)',
   zIndex: 10,
-};
+}).toString();
 
 const dot = {
   display: 'inline-block',
   margin: 5,
   borderRadius: '50%',
-  width: 8,
-  height: 8,
+  width: variables.gap.small,
+  height: variables.gap.small,
 };
 
-const inactiveIndicator = {
+const inactiveIndicator = css({
   ...dot,
-  backgroundColor: '#ccc',
-};
+  backgroundColor: colors.shade5,
+}).toString();
 
-const activeIndicator = {
+const activeIndicator = css({
   ...dot,
   backgroundColor: colors.shade6,
-};
+}).toString();
 
-const container = {};
+const container = css({}).toString();
 
-const slide = {};
+const slide = css({}).toString();
 
 export default {
   slider,

@@ -10,6 +10,10 @@ import PropTypes from 'prop-types';
 import View from 'Components/View';
 import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
+import VariantSelects from './components/VariantSelects';
+import Options from './components/Options';
+import Description from './components/Description';
+import Properties from './components/Properties';
 import connect from './connector';
 
 /**
@@ -18,6 +22,7 @@ import connect from './connector';
 class Product extends Component {
   static propTypes = {
     getProductData: PropTypes.func.isRequired,
+    params: PropTypes.shape().isRequired,
     resetCurrentProduct: PropTypes.func.isRequired,
     name: PropTypes.string,
   };
@@ -48,7 +53,7 @@ class Product extends Component {
   ensureGetProductData = (selectedVariantId, callOnlyIfNeverCalled = false) => {
     if (!callOnlyIfNeverCalled || !this.wasCalled) {
       this.wasCalled = true;
-      this.props.getProductData(selectedVariantId);
+      this.props.getProductData(selectedVariantId, this.props.params.productId);
     }
   }
 
@@ -61,6 +66,10 @@ class Product extends Component {
       <View title={(this.props.name || '')}>
         <ImageSlider />
         <Header />
+        <VariantSelects />
+        <Options />
+        <Description />
+        <Properties />
       </View>
     );
   }

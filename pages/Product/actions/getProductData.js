@@ -10,6 +10,7 @@ import {
   setProductId,
   setProductVariantId,
 } from '@shopgate/pwa-common-commerce/currentProduct/action-creators';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';
 import getProductProperties from '@shopgate/pwa-common-commerce/product/actions/getProductProperties';
@@ -19,28 +20,29 @@ import { requestProductData } from '../action-creators';
 
 /**
  * Triggers the fetching of all product data for a certain product ID.
- * @param {Object} props The component's props.
  * @param {string} [selectedVariantId=null] The selected variant's ID.
+ * @param {string} [baseProductId=null] The base product ID.
  * @return {Function} The dispatched action.
  */
-const getProductData = (props, selectedVariantId = null) => (dispatch) => {
-  const parentId = hex2bin(props.params.productId);
-  const productId = selectedVariantId || parentId;
+const getProductData = (selectedVariantId = null, baseProductId = null) =>
+  (dispatch, getState) => {
+    const parentId = baseProductId ? hex2bin(baseProductId) : getCurrentBaseProductId(getState());
+    const productId = selectedVariantId || parentId;
 
-  if (!productId) {
-    return;
-  }
+    if (!productId) {
+      return;
+    }
 
-  dispatch(requestProductData(productId, selectedVariantId));
+    dispatch(requestProductData(productId, selectedVariantId));
 
-  dispatch(setProductId(parentId));
-  dispatch(setProductVariantId(selectedVariantId));
+    dispatch(setProductId(parentId));
+    dispatch(setProductVariantId(selectedVariantId));
 
-  dispatch(getProduct(productId));
-  dispatch(getProductDescription(productId));
-  dispatch(getProductProperties(productId));
-  dispatch(getProductImages(productId));
-  dispatch(getProductShipping(productId));
-};
+    dispatch(getProduct(productId));
+    dispatch(getProductDescription(productId));
+    dispatch(getProductProperties(productId));
+    dispatch(getProductImages(productId));
+    dispatch(getProductShipping(productId));
+  };
 
 export default getProductData;

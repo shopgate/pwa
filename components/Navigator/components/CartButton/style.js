@@ -17,7 +17,7 @@ const button = css({
   padding: 0,
   minWidth: 0,
   width: 0,
-  height: navigator.height,
+  height: variables.navigator.height,
   overflow: 'hidden',
   position: 'relative',
   zIndex: 1,
