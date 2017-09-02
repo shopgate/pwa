@@ -12,6 +12,7 @@ import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
 import VariantSelects from './components/VariantSelects';
 import Options from './components/Options';
+import Description from './components/Description';
 import connect from './connector';
 
 /**
@@ -66,6 +67,7 @@ class Product extends Component {
         <Header />
         <VariantSelects />
         <Options />
+        <Description />
       </View>
     );
   }
