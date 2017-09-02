@@ -405,7 +405,7 @@ export const getProductDescription = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product properties state.
  */
-const getProductPropertiesState = state => state.product.descriptionsByProductId;
+const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
  * Retrieves the current product properties.
