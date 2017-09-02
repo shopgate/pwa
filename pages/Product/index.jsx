@@ -13,6 +13,7 @@ import Header from './components/Header';
 import VariantSelects from './components/VariantSelects';
 import Options from './components/Options';
 import Description from './components/Description';
+import Properties from './components/Properties';
 import connect from './connector';
 
 /**
@@ -68,6 +69,7 @@ class Product extends Component {
         <VariantSelects />
         <Options />
         <Description />
+        <Properties />
       </View>
     );
   }
