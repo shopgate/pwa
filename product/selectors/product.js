@@ -399,3 +399,29 @@ export const getProductDescription = createSelector(
     return collection.description;
   }
 );
+
+/**
+ * Selects the product properties state.
+ * @param {Object} state The current application state.
+ * @return {Object} The product properties state.
+ */
+const getProductPropertiesState = state => state.product.descriptionsByProductId;
+
+/**
+ * Retrieves the current product properties.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getProductProperties = createSelector(
+  getCurrentProductId,
+  getProductPropertiesState,
+  (productId, propertiesState) => {
+    const collection = propertiesState[productId];
+
+    if (!collection || !collection.properties) {
+      return null;
+    }
+
+    return collection.properties;
+  }
+);
