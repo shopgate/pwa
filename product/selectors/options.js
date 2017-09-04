@@ -14,7 +14,7 @@ const getProductOptionsState = state => state.product.optionsByProductId;
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getCurrentProductOptions = state => state.currentProduct.options;
+export const getCurrentProductOptions = state => state.product.currentProduct.options;
 
 /**
  * Finds a product option item by the option id and item id.
