@@ -16,7 +16,7 @@ import addProductsToCart from './addProductsToCart';
  */
 const addCurrentProductToCart = () => (dispatch, getState) => {
   const state = getState();
-  const { quantity, productVariantId } = state.currentProduct;
+  const { quantity, productVariantId } = state.product.currentProduct;
   const product = getCurrentProduct(state);
 
   let productId = null;
