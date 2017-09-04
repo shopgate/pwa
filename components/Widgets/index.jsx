@@ -11,7 +11,7 @@ import extensions from 'Extensions';
 import styles from './style';
 
 const GRID_COLUMNS = 12; // One grid row has 12 columns.
-const WIDGET_GRID_TYPE = 'core-widgets/widget-grid';
+const WIDGET_GRID_TYPE = 'commerce-widgets/widget-grid';
 
 /**
  * Creates a grid wrapper for widget(s).
@@ -24,7 +24,10 @@ const createGridWrapper = (key, config) => (
     extensions[WIDGET_GRID_TYPE],
     {
       key,
-      config,
+      config: config.map(widget => ({
+        ...widget,
+        type: widget.type.replace('core-widgets', 'commerce-widgets'),
+      })),
     }
   )
 );
@@ -36,6 +39,10 @@ const createGridWrapper = (key, config) => (
  */
 const createArrayOfElements = widgets => (
   (widgets || []).map((widget, index) => {
+
+    console.warn(widget);
+    console.warn(extensions);
+
     if (!extensions[widget.type]) {
       return null;
     }
