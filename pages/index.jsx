@@ -9,8 +9,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import '@shopgate/pwa-common/styles/reset';
 import 'Styles/fonts';
-// @TODO import AuthRoutes from '@shopgate/pwa-common/components/router/auth-routes/AuthRoutes';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
+import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 // @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
@@ -25,7 +25,7 @@ import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-// @TODO: import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
@@ -41,6 +41,7 @@ import Cart from './Cart';
 import Search from './Search';
 import Login from './Login';
 import Register from './Register';
+import Checkout from './Checkout';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -70,6 +71,10 @@ const Pages = () =>
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} component={Register} />
+      <AuthRoutes to={`${LOGIN_PATH}`}>
+        <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
+        {/* <Route path={`${ORDERS_PATH}`} component="orders" /> */}
+      </AuthRoutes>
     </Viewport>
   </App>
 ;
