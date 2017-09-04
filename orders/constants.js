@@ -5,4 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const CHECKOUT_PATH = '/checkout';
+export const ORDERS_PATH = '/orders';
