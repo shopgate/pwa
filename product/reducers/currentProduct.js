@@ -4,7 +4,7 @@ import {
   SET_PRODUCT_QUANTITY,
   SET_PRODUCT_OPTION,
   RESET_CURRENT_PRODUCT,
-} from '../../product/constants';
+} from '../constants';
 
 const defaultState = {
   productId: null,
@@ -20,7 +20,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The store data.
  */
-const currentProduct = (state = defaultState, action) => {
+export default function currentProduct(state = defaultState, action) {
   switch (action.type) {
     case SET_PRODUCT_ID:
       return {
@@ -57,5 +57,3 @@ const currentProduct = (state = defaultState, action) => {
       return state;
   }
 };
-
-export default currentProduct;

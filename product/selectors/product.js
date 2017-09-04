@@ -22,7 +22,7 @@ const getProducts = state => state.product.productsById;
  * @return {string} The id of the current product.
  */
 export const getCurrentProductId = state =>
-  state.currentProduct.productVariantId || state.currentProduct.productId;
+  state.product.currentProduct.productVariantId || state.product.currentProduct.productId;
 
 /**
  * Retrieves a product by ID from state.
@@ -37,7 +37,7 @@ export const getProductById = (state, id) => getProducts(state)[id];
  * @param {Object} state The current application state.
  * @return {string} The id of the current base product.
  */
-export const getCurrentBaseProductId = state => state.currentProduct.productId;
+export const getCurrentBaseProductId = state => state.product.currentProduct.productId;
 
 /**
  * Retrieves the current base product data from the store.
