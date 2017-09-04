@@ -18,7 +18,7 @@ import {
   INDEX_PATH,
   PAGE_PATH,
   LOGIN_PATH,
-  // REGISTER_PATH,
+  REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
@@ -40,17 +40,14 @@ import ProductGallery from './ProductGallery';
 import Cart from './Cart';
 import Search from './Search';
 import Login from './Login';
+import Register from './Register';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
 const Pages = () =>
-  <App
-    locale={locale}
-    reducers={reducers}
-    subscribers={subscriptions}
-  >
+  <App locale={locale} reducers={reducers} subscribers={subscriptions}>
     <Viewport>
       {process.env.NODE_ENV === 'development' &&
         <Helmet>
@@ -61,50 +58,18 @@ const Pages = () =>
         </Helmet>
       }
       <ModalContainer component={Dialog} />
-      <Route
-        path={`${INDEX_PATH}`}
-        component={Page}
-      />
-      <Route
-        path={`${PAGE_PATH}/:pageId`}
-        component={Page}
-      />
-      <Route
-        path={`${CATEGORY_PATH}`}
-        component={Category}
-      />
-      <Route
-        path={`${CATEGORY_PATH}/:categoryId?`}
-        component={Category}
-      />
-      <Route
-        path={`${FILTER_PATH}`}
-        component={Filter}
-      />
-      <Route
-        path={`${FILTER_PATH}/:attribute`}
-        component={FilterAttribute}
-      />
-      <Route
-        path={`${ITEM_PATH}/:productId`}
-        component={Product}
-      />
-      <Route
-        path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`}
-        component={ProductGallery}
-      />
-      <Route
-        path={`${CART_PATH}`}
-        component={Cart}
-      />
-      <Route
-        path={`${SEARCH_PATH}`}
-        component={Search}
-      />
-      <Route
-        path={`${LOGIN_PATH}`}
-        component={Login}
-      />
+      <Route path={`${INDEX_PATH}`} component={Page} />
+      <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
+      <Route path={`${CATEGORY_PATH}`} component={Category} />
+      <Route path={`${CATEGORY_PATH}/:categoryId?`} component={Category} />
+      <Route path={`${FILTER_PATH}`} component={Filter} />
+      <Route path={`${FILTER_PATH}/:attribute`} component={FilterAttribute} />
+      <Route path={`${ITEM_PATH}/:productId`} component={Product} />
+      <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
+      <Route path={`${CART_PATH}`} component={Cart} />
+      <Route path={`${SEARCH_PATH}`} component={Search} />
+      <Route path={`${LOGIN_PATH}`} component={Login} />
+      <Route path={`${REGISTER_PATH}`} component={Register} />
     </Viewport>
   </App>
 ;
