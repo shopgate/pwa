@@ -16,7 +16,6 @@ import connect from './connector';
  * @returns {JSX|null}
  */
 const Properties = ({ properties }) => {
-  console.warn(properties);
   if (!properties || properties.length === 0) {
     return null;
   }

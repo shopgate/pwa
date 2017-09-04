@@ -16,7 +16,7 @@ import defaultStyles from './style';
 class ImageSlider extends Component {
   static propTypes = {
     ...Slider.propTypes,
-    classNames: PropTypes.objectOf(PropTypes.object),
+    classNames: PropTypes.objectOf(PropTypes.string),
   };
 
   static defaultProps = {

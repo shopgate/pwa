@@ -36,6 +36,7 @@ import Category from './Category';
 import Filter from './Filter';
 import FilterAttribute from './FilterAttribute';
 import Product from './Product';
+import ProductGallery from './ProductGallery';
 import Cart from './Cart';
 import Search from './Search';
 import Login from './Login';
@@ -87,6 +88,10 @@ const Pages = () =>
       <Route
         path={`${ITEM_PATH}/:productId`}
         component={Product}
+      />
+      <Route
+        path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`}
+        component={ProductGallery}
       />
       <Route
         path={`${CART_PATH}`}

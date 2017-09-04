@@ -6,8 +6,10 @@
  */
 
 import { connect } from 'react-redux';
-import { getCalculatedProduct } from '@shopgate/pwa-common-commerce/product/selectors/price';
-import { getProductImages } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getProductImages,
+  getCurrentBaseProduct,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import openGallery from '../../actions/openGallery';
 
 /**
@@ -16,8 +18,8 @@ import openGallery from '../../actions/openGallery';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  product: getCalculatedProduct(state),
   images: getProductImages(state),
+  product: getCurrentBaseProduct(state),
 });
 
 /**
