@@ -56,4 +56,4 @@ export default function currentProduct(state = defaultState, action) {
     default:
       return state;
   }
-};
+}
