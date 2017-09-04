@@ -6,8 +6,8 @@
  */
 
 import { connect } from 'react-redux';
+import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
 import submitSearch from './actions/submitSearch';
-import { isCurrentViewLoading } from '../View/selectors';
 
 /**
  * Maps the contents of the state to the component props.
