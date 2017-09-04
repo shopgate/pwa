@@ -9,6 +9,7 @@ import { combineReducers } from 'redux';
 
 import client from '@shopgate/pwa-common/reducers/client';
 import history from '@shopgate/pwa-common/reducers/history';
+import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
 import page from '@shopgate/pwa-common/reducers/page';
 import view from '@shopgate/pwa-common/reducers/view';
@@ -38,6 +39,7 @@ const reducers = {
   ui: combineReducers({
     categoryPage,
   }),
+  url,
   user,
   view,
 };
