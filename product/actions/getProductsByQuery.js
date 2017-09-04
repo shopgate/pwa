@@ -1,4 +1,4 @@
-import { getHighlightProducts } from './getHighlightProducts';
+import getHighlightProducts from './getHighlightProducts';
 import getProducts from './getProducts';
 import getProductsById from './getProductsById';
 
