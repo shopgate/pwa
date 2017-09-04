@@ -82,7 +82,7 @@ class Cart extends Component {
           <section className={styles.container}>
             <CardList>
               {cartItems.map(cartItem => (
-                <Item item={cartItem} togglePaymentBar={this.togglePaymentBar} />
+                <Item key={cartItem.id} item={cartItem} togglePaymentBar={this.togglePaymentBar} />
               ))}
               <CouponField onToggleFocus={this.togglePaymentBar} />
             </CardList>

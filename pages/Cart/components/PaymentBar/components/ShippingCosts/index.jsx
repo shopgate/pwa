@@ -32,7 +32,11 @@ const ShippingCosts = ({ currency, isDisabled, value }) => {
 ShippingCosts.propTypes = {
   currency: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
+};
+
+ShippingCosts.defaultProps = {
+  value: null,
 };
 
 export default connect(ShippingCosts);

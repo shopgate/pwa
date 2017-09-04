@@ -7,7 +7,7 @@
 
 import React, { Component, Children, isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import BaseList from '@shopgate/pwa-common/components/List';
+import List from '@shopgate/pwa-common/components/List';
 import Item from './components/Item';
 
 /**
@@ -36,7 +36,7 @@ class CardList extends Component {
     }
 
     return (
-      <BaseList>
+      <List>
         {Children.map(children, (child) => {
           if (!isValidElement(child)) {
             return null;
@@ -44,7 +44,7 @@ class CardList extends Component {
 
           return child;
         })}
-      </BaseList>
+      </List>
     );
   }
 }

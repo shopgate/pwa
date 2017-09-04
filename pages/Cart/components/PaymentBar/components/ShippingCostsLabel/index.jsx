@@ -34,7 +34,11 @@ const ShippingCostsLabel = ({ isDisabled, shipping }) => {
 
 ShippingCostsLabel.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
-  shipping: PropTypes.number.isRequired,
+  shipping: PropTypes.number,
+};
+
+ShippingCostsLabel.defaultProps = {
+  shipping: null,
 };
 
 export default connect(ShippingCostsLabel);

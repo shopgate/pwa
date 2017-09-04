@@ -7,7 +7,7 @@
 
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
-import BaseList from '@shopgate/pwa-common/components/List';
+import ListItem from '@shopgate/pwa-common/components/List/components/Item';
 import styles from './style';
 
 /**
@@ -21,9 +21,9 @@ const Item = ({ children, isSelected }) => {
   }
 
   return (
-    <BaseList.Item className={styles} isSelected={isSelected}>
+    <ListItem className={styles} isSelected={isSelected}>
       {children}
-    </BaseList.Item>
+    </ListItem>
   );
 };
 

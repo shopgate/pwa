@@ -11,7 +11,7 @@ import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import variables from 'Styles/variables';
-import CardList from 'Components/CardList';
+import CardListItem from 'Components/CardList/components/Item';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
@@ -56,7 +56,7 @@ class Product extends Component {
    * We need to set the element height explicitly so that we can animate it later.
    */
   componentDidMount() {
-    this.transitionElement.style.height = `${getAbsoluteHeight(findDOMNode(this.cardElement))}px`;
+    this.transitionElement.style.height = `${getAbsoluteHeight(findDOMNode(this.cardElement)) + 4}px`;
   }
 
   /**
@@ -122,17 +122,19 @@ class Product extends Component {
             key={this.props.id}
             style={getTransitionStyle(state)}
           >
-            <CardList.Item ref={(element) => { this.cardElement = element; }}>
-              <Layout
-                handleDelete={this.transitionOut}
-                handleUpdate={this.updateProduct}
-                toggleEditMode={this.toggleEditMode}
-                editMode={this.state.editMode}
-                product={this.props.product}
-                currency={this.props.currency}
-                quantity={this.props.quantity}
-              />
-            </CardList.Item>
+            <CardListItem>
+              <div ref={(element) => { this.cardElement = element; }}>
+                <Layout
+                  handleDelete={this.transitionOut}
+                  handleUpdate={this.updateProduct}
+                  toggleEditMode={this.toggleEditMode}
+                  editMode={this.state.editMode}
+                  product={this.props.product}
+                  currency={this.props.currency}
+                  quantity={this.props.quantity}
+                />
+              </div>
+            </CardListItem>
           </div>
         )}
       </Transition>
