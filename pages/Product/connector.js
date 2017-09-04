@@ -7,7 +7,7 @@
 
 import { connect } from 'react-redux';
 import { getProductName } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { resetCurrentProduct } from '@shopgate/pwa-common-commerce/currentProduct/action-creators';
+import { resetCurrentProduct } from '@shopgate/pwa-common-commerce/product/action-creators';
 import getProductData from './actions/getProductData';
 
 /**

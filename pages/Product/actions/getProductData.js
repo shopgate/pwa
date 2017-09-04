@@ -9,7 +9,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
   setProductId,
   setProductVariantId,
-} from '@shopgate/pwa-common-commerce/currentProduct/action-creators';
+} from '@shopgate/pwa-common-commerce/product/action-creators';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';

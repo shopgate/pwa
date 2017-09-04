@@ -16,7 +16,6 @@ import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
-import currentProduct from '@shopgate/pwa-common-commerce/currentProduct/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
@@ -28,7 +27,6 @@ const reducers = {
   cart,
   category,
   client,
-  currentProduct,
   filter,
   history,
   menu,

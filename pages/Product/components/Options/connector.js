@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { setProductOption } from '@shopgate/pwa-common-commerce/currentProduct/action-creators';
+import { setProductOption } from '@shopgate/pwa-common-commerce/product/action-creators';
 import {
   getCurrentProductOptions,
   getProductOptions,

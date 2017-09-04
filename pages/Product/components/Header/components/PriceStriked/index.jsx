@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceholderLabel from 'Components/PlaceholderLabel';
-import { PriceStriked as StrikePrice } from 'Components/PriceStriked';
+import StrikePrice from 'Components/PriceStriked';
 import connect from './connector';
 import styles from './style';
 
