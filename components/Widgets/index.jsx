@@ -24,10 +24,7 @@ const createGridWrapper = (key, config) => (
     extensions[WIDGET_GRID_TYPE],
     {
       key,
-      config: config.map(widget => ({
-        ...widget,
-        type: widget.type.replace('core-widgets', 'commerce-widgets'),
-      })),
+      config,
     }
   )
 );
@@ -39,10 +36,6 @@ const createGridWrapper = (key, config) => (
  */
 const createArrayOfElements = widgets => (
   (widgets || []).map((widget, index) => {
-
-    console.warn(widget);
-    console.warn(extensions);
-
     if (!extensions[widget.type]) {
       return null;
     }
