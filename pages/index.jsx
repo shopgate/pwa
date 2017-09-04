@@ -9,6 +9,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import '@shopgate/pwa-common/styles/reset';
 import 'Styles/fonts';
+import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
@@ -26,6 +27,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
@@ -42,6 +44,9 @@ import Search from './Search';
 import Login from './Login';
 import Register from './Register';
 import Checkout from './Checkout';
+import Orders from './Orders';
+
+const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -50,15 +55,8 @@ import Checkout from './Checkout';
 const Pages = () =>
   <App locale={locale} reducers={reducers} subscribers={subscriptions}>
     <Viewport>
-      {process.env.NODE_ENV === 'development' &&
-        <Helmet>
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900"
-            rel="stylesheet"
-          />
-        </Helmet>
-      }
       <ModalContainer component={Dialog} />
+
       <Route path={`${INDEX_PATH}`} component={Page} />
       <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
       <Route path={`${CATEGORY_PATH}`} component={Category} />
@@ -71,11 +69,18 @@ const Pages = () =>
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} component={Register} />
+
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
-        {/* <Route path={`${ORDERS_PATH}`} component="orders" /> */}
+        <Route path={`${ORDERS_PATH}`} component={Orders} />
       </AuthRoutes>
+
     </Viewport>
+    {isDev && (
+      <Helmet>
+        <link href={devFontsUrl} rel="stylesheet" />
+      </Helmet>
+    )}
   </App>
 ;
 
