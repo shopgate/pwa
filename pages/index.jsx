@@ -75,12 +75,12 @@ const Pages = () =>
         <Route path={`${ORDERS_PATH}`} component={Orders} />
       </AuthRoutes>
 
+      {isDev && (
+        <Helmet>
+          <link href={devFontsUrl} rel="stylesheet" />
+        </Helmet>
+      )}
     </Viewport>
-    {isDev && (
-      <Helmet>
-        <link href={devFontsUrl} rel="stylesheet" />
-      </Helmet>
-    )}
   </App>
 ;
 
