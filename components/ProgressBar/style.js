@@ -6,7 +6,7 @@ const progressBarHeight = 4;
 const progressBarBackground = Color(colors.accent).lighten(0.4);
 
 const wrapper = css({
-  background: progressBarBackground.hsl().string(),
+  background: progressBarBackground.rgbaString(),
   position: 'relative',
   width: '100%',
   height: progressBarHeight,

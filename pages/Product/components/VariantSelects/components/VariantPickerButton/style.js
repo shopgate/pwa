@@ -34,7 +34,7 @@ const pickerButton = css({
 const pickerButtonHighlighted = css({
   transformOrigin: '50% 50%',
   animation: `${shakeButton} 0.30s linear`,
-  backgroundColor: Color(colors.primary).fade(0.29).hsl().string(),
+  backgroundColor: Color(colors.primary).alpha(0.29).rgbaString(),
 }).toString();
 
 export default {
