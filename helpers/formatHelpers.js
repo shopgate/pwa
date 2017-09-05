@@ -324,10 +324,13 @@ dataFormatHelpers.addToCart = rawData => ({
 /**
  * Converter for the variantSelected event
  *
- * @param {Object} rawData Raw data from the core
+ * @param {Object} rawData {variant:{}, baseProduct:{}} Raw data from the core
  * @returns {Object} data for the addToCart event
  */
-dataFormatHelpers.variantSelected = rawData => formatSgDataProducts(rawData); // TODO:
+dataFormatHelpers.variantSelected = rawData => ({
+  variant: formatSgDataProduct(rawData.variant),
+  baseProduct: formatSgDataProduct(rawData.baseProduct),
+});
 
 /**
  * Converter for the addToWishlist event
