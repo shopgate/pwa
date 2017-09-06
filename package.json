@@ -1,0 +1,57 @@
+{
+  "name": "@shopgate/pwa-core",
+  "version": "1.0.0-beta1",
+  "description": "Shopgate's PWA core library",
+  "repository": "shopgate/pwa-core",
+  "bugs": "https://github.com/shopgate/pwa-core/issues",
+  "homepage": "https://github.com/shopgate/pwa-core",
+  "author": "Support <support@shopgate.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "pwa",
+    "mobile",
+    "app",
+    "node",
+    "shopgate"
+  ],
+  "scripts": {
+    "clean-dist": "node_modules/.bin/rimraf ./dist",
+    "copypackage": "cp -rf package.json package-lock.json ./dist",
+    "build": "npm run clean-dist && babel ./src --out-dir ./dist --no-comments && npm run copypackage",
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
+    "precommit": "lint-staged",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js ."
+    }
+  },
+  "pre-commit": [
+    "precommit"
+  ],
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-export-extensions": "6.22.0",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.6.0",
+    "crypto-js": "3.1.9-1",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "1.0.2",
+    "@shopgate/pwa-unit-test": "^1.0.0",
+    "coveralls": "^2.13.1",
+    "enzyme": "^2.9.1",
+    "eslint": "3.19.0",
+    "jest": "^21.0.1",
+    "lint-staged": "4.0.3",
+    "pre-commit": "1.2.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
