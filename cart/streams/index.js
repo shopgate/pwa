@@ -67,6 +67,16 @@ export const couponsDeleted$ = main$.filter(
 );
 
 /**
+ * Gets triggered when the user tried to add a coupon to the cart.
+ * @type {Observable}
+ */
+export const couponsDidUpdate$ = main$.filter(
+  ({ action }) =>
+    action.type === SUCCESS_ADD_COUPONS_TO_CART ||
+    action.type === ERROR_ADD_COUPONS_TO_CART
+);
+
+/**
  * Gets triggered when the user tried to add a product to the cart.
  * @type {Observable}
  */
