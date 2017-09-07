@@ -23,6 +23,7 @@ describe('Core', () => {
     'setCampaignWithUrl',
     'pageview',
     'viewContent',
+    'variantSelected',
     'purchase',
     'addToCart',
     'addToWishlist',

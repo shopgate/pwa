@@ -7,6 +7,7 @@
 
 // List of available tracking events
 export const TRACK_PAGEVIEW = 'pageview';
+export const TRACK_VARIANT_SELECTED = 'variantSelected';
 export const TRACK_VIEW_CONTENT = 'viewContent';
 export const TRACK_PURCHASE = 'purchase';
 export const TRACK_ADD_TO_CART = 'addToCart';
@@ -64,6 +65,7 @@ export const customEvents = [
 export default [
   TRACK_PAGEVIEW,
   TRACK_VIEW_CONTENT,
+  TRACK_VARIANT_SELECTED,
   TRACK_PURCHASE,
   TRACK_ADD_TO_CART,
   TRACK_ADD_TO_WISHLIST,
