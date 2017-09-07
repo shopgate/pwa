@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { removeTemporaryFilter } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 import { commitTemporaryFilters, openFilterView } from '@shopgate/pwa-common-commerce/filter/actions';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 

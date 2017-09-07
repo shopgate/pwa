@@ -7,10 +7,8 @@
 
 import { connect } from 'react-redux';
 import { getAvailableFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import {
-  mergeTemporaryFilters,
-  removeTemporaryFilter,
-} from '@shopgate/pwa-common-commerce/filter/action-creators';
+import mergeTemporaryFilters from '@shopgate/pwa-common-commerce/filter/action-creators/mergeTemporaryFilters';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 import { getQueryParamsAsString } from '@shopgate/pwa-common/selectors/history';
 
 /**
