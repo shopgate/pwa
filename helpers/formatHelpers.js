@@ -160,7 +160,7 @@ function formatSgDataProducts(products) {
   if (!products || !Array.isArray(products)) {
     return [];
   }
-  return products.map(product => formatSgDataProduct(product));
+  return products.map(formatSgDataProduct);
 }
 
 /**
