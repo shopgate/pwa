@@ -23,6 +23,9 @@ import {
   REQUEST_PRODUCT_OPTIONS,
   RECEIVE_PRODUCT_OPTIONS,
   ERROR_PRODUCT_OPTIONS,
+  REQUEST_PRODUCT_REVIEWS,
+  RECEIVE_PRODUCT_REVIEWS,
+  ERROR_PRODUCT_REVIEWS,
   SET_PRODUCT_ID,
   SET_PRODUCT_VARIANT_ID,
   SET_PRODUCT_QUANTITY,
@@ -341,4 +344,38 @@ export const setProductOption = (optionId, valueId) => ({
  */
 export const resetCurrentProduct = () => ({
   type: RESET_CURRENT_PRODUCT,
+});
+
+/**
+ * Dispatches the REQUEST_PRODUCT_REVIEWS action
+ * @param {string} productId The ID of the product
+ * @param {number} limit The max number of reviews
+ * @returns {Object} The REQUEST_PRODUCT_REVIEWS action
+ */
+export const requestProductReviews = (productId, limit) => ({
+  type: REQUEST_PRODUCT_REVIEWS,
+  productId,
+  limit,
+});
+
+/**
+ * Dispatches the RECEIVE_PRODUCT_REVIEWS action
+ * @param {string} productId The ID of the product
+ * @param {Object} reviews The received review data
+ * @returns {Object} The RECEIVE_PRODUCT_REVIEWS action
+ */
+export const receiveProductReviews = (productId, reviews) => ({
+  type: RECEIVE_PRODUCT_REVIEWS,
+  productId,
+  reviews,
+});
+
+/**
+ * Dispatches the ERROR_PRODUCT_REVIEWS action
+ * @param {string} productId The ID of the product
+ * @returns {Object} The ERROR_PRODUCT_REVIEWS action
+ */
+export const errorProductReviews = productId => ({
+  type: ERROR_PRODUCT_REVIEWS,
+  productId,
 });

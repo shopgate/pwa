@@ -8,6 +8,7 @@ import shippingByProductId from './shippingByProductId';
 import variantsByProductId from './variantsByProductId';
 import optionsByProductId from './optionsByProductId';
 import resultsByHash from './resultsByHash';
+import reviewsByProductId from './reviewsByProductId';
 
 export default combineReducers({
   currentProduct,
@@ -19,4 +20,5 @@ export default combineReducers({
   resultsByHash,
   shippingByProductId,
   variantsByProductId,
+  reviewsByProductId,
 });

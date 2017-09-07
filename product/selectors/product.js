@@ -425,3 +425,29 @@ export const getProductProperties = createSelector(
     return collection.properties;
   }
 );
+
+/**
+ * Select the product reviews state
+ * @param {Object} state The current application state.
+ * @return {Object} The product reviews state.
+ */
+const getProductReviewsState = state => state.product.reviewsByProductId;
+
+/**
+ * Retrieves the current product reviews.
+ * @param {Object} state The current application state.
+ * @return {Object} The reviews for a product
+ */
+export const getProductReviews = createSelector(
+  getCurrentProductId,
+  getProductReviewsState,
+  (productId, reviewsState) => {
+    const collection = reviewsState[productId];
+
+    if (!collection || !collection.reviews) {
+      return null;
+    }
+
+    return collection.reviews;
+  }
+);
