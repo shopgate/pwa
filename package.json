@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-core",
-  "version": "1.0.0-beta1",
+  "version": "1.0.0-beta2",
   "description": "Shopgate's PWA core library",
   "repository": "shopgate/pwa-core",
   "bugs": "https://github.com/shopgate/pwa-core/issues",
