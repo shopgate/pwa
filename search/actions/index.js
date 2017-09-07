@@ -8,13 +8,11 @@
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
-// TODO: remove mocked pipeline as soon as real pipeline available.
+// TODO: remove mocked pipeline as soon as real pipeline is available.
 import PipelineRequest from './MockedPipeline';
 import getProducts from '../../product/actions/getProducts';
-import {
-  requestSearchSuggestions,
-  receiveSearchSuggestions,
-} from '../action-creators';
+import requestSearchSuggestions from '../action-creators/requestSearchSuggestions';
+import receiveSearchSuggestions from '../action-creators/receiveSearchSuggestions';
 import {
   getCurrentSearchSuggestionsObject,
   getSearchPhrase,
