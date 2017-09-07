@@ -1,38 +1,42 @@
 {
   "name": "@shopgate/tracking-core",
-  "version": "1.0.0",
+  "version": "1.0.0-beta1",
   "description": "The Shopgate Cloud tracking core.",
-  "repository": "git@github.com:shopgate/tracking-core.git",
+  "repository": "shopgate/tracking-core",
+  "bugs": "https://github.com/shopgate/tracking-core/issues",
+  "homepage": "https://github.com/shopgate/tracking-core",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
   "scripts": {
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js .",
     "precommit": "lint-staged",
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register  ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest"
+    "test": "mocha --recursive --compilers js:babel-core/register ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest"
   },
   "lint-staged": {
     "concurrent": false,
     "linters": {
-      "*.js": "eslint --parser babel-eslint"
+      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js ."
     }
   },
   "pre-commit": [
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-core": "github:shopgate/pwa-core"
+    "@shopgate/pwa-core": "^1.0.0-beta1"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
-    "lint-staged": "4.0.3",
-    "pre-commit": "1.2.2",
     "babel-core": "6.25.0",
     "babel-plugin-module-resolver": "2.7.1",
     "babel-preset-latest": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "chai": "^3.5.0",
     "jsdom": "^9.8.3",
+    "lint-staged": "4.0.3",
     "mocha": "^3.1.0",
     "mocha-jsdom": "^1.1.0",
+    "nyc": "^11.2.1",
+    "pre-commit": "1.2.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
   }

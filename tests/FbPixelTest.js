@@ -27,7 +27,8 @@ describe('FbPixel', () => {
   mochaJsdom();
 
   before(() => {
-    global.sgData = window.sgData = sgData;
+    window.sgData = sgData;
+    global.sgData = sgData;
     global.fbq = () => {};
     global.localStorage = storageMock();
     window.SGEvent = {};
