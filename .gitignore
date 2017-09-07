@@ -45,4 +45,4 @@ node_modules/
 
 # Project
 /config.js
-/public/
+/dist/
