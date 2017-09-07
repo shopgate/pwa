@@ -44,7 +44,7 @@ const Reviews = ({ rating, reviews }) => {
 
 Reviews.propTypes = {
   rating: PropTypes.shape(),
-  reviews: PropTypes.shape(),
+  reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Reviews.defaultProps = {
