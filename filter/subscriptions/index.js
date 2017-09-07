@@ -9,10 +9,8 @@ import {
   routeDidEnter,
   historyDidUpdate$,
 } from '@shopgate/pwa-common/streams/history';
-import {
-  mergeTemporaryFilters,
-  setTemporaryFilters,
-} from '../action-creators';
+import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
+import setTemporaryFilters from '../action-creators/setTemporaryFilters';
 import {
   addActiveFilters,
   syncActiveFiltersWithHistory,

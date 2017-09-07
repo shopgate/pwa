@@ -23,15 +23,13 @@ import {
   getHistoryPathname,
   getSortOrder,
 } from '@shopgate/pwa-common/selectors/history';
-import {
-  requestFilters,
-  receiveFilters,
-  errorFilters,
-  addActiveFilters as addActiveFiltersAction,
-  setActiveFilters,
-  removeTemporaryFilter,
-  sliceActiveFilters,
-} from '../action-creators';
+import requestFilters from '../action-creators/requestFilters';
+import receiveFilters from '../action-creators/receiveFilters';
+import errorFilters from '../action-creators/errorFilters';
+import addActiveFiltersAction from '../action-creators/addActiveFilters';
+import setActiveFilters from '../action-creators/setActiveFilters';
+import removeTemporaryFilter from '../action-creators/removeTemporaryFilter';
+import sliceActiveFilters from '../action-creators/sliceActiveFilters';
 import {
   getFilterHash,
   getAvailableFiltersStack,
