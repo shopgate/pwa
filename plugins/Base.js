@@ -69,7 +69,6 @@ class Base {
   static formatData(eventName, rawData) {
     // Check if a suitable conversion function is available
     if (typeof dataFormatHelpers[eventName] !== 'function') {
-      console.warn(`SgTrackingPlugin: Convert function is missing for ${eventName}`);
       return rawData;
     }
 

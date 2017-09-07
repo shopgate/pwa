@@ -23,6 +23,7 @@ describe('Core', () => {
     'setCampaignWithUrl',
     'pageview',
     'viewContent',
+    'variantSelected',
     'purchase',
     'addToCart',
     'addToWishlist',
@@ -42,6 +43,8 @@ describe('Core', () => {
     'openSmartAppDownloadLink',
     'openPushNotification',
     'appReviewPrompt',
+    'loginSuccess',
+    'loginFailed',
   ];
 
   // Initializes fake DOM

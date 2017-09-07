@@ -131,6 +131,24 @@ function sanitizeTitle(title, shopName) {
 }
 
 /**
+ * Convert sgData product to unified item
+ *
+ * @param {Object} product Item from sgData
+ * @returns {Object} Data for the unified item
+ */
+function formatSgDataProduct(product) {
+  return {
+    id: getProductIdentifier(product),
+    type: 'product',
+    name: get(product, 'name'),
+    priceNet: getUnifiedNumber(get(product, 'amount.net')),
+    priceGross: getUnifiedNumber(get(product, 'amount.gross')),
+    quantity: getUnifiedNumber(get(product, 'quantity')),
+    currency: get(product, 'amount.currency'),
+  };
+}
+
+/**
  * Convert sgData products to unified items
  *
  * @param {Array} products Items from sgData
@@ -142,16 +160,7 @@ function formatSgDataProducts(products) {
   if (!products || !Array.isArray(products)) {
     return [];
   }
-
-  return products.map(product => ({
-    id: getProductIdentifier(product),
-    type: 'product',
-    name: get(product, 'name'),
-    priceNet: getUnifiedNumber(get(product, 'amount.net')),
-    priceGross: getUnifiedNumber(get(product, 'amount.gross')),
-    quantity: getUnifiedNumber(get(product, 'quantity')),
-    currency: get(product, 'amount.currency'),
-  }));
+  return products.map(formatSgDataProduct);
 }
 
 /**
@@ -310,6 +319,17 @@ dataFormatHelpers.viewContent = (rawData) => {
 dataFormatHelpers.addToCart = rawData => ({
   type: 'product',
   items: formatSgDataProducts(get(rawData, 'products')),
+});
+
+/**
+ * Converter for the variantSelected event
+ *
+ * @param {Object} rawData {variant:{}, baseProduct:{}} Raw data from the core
+ * @returns {Object} data for the addToCart event
+ */
+dataFormatHelpers.variantSelected = rawData => ({
+  variant: formatSgDataProduct(rawData.variant),
+  baseProduct: formatSgDataProduct(rawData.baseProduct),
 });
 
 /**
