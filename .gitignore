@@ -21,6 +21,7 @@ pids
 
 # Coverage directory used by tools like istanbul
 coverage
+.nyc_output
 
 # Dependency directories
 node_modules/
@@ -44,5 +45,4 @@ node_modules/
 .cache-loader
 
 # Project
-/config.js
-/public/
+/dist/

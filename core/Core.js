@@ -398,6 +398,11 @@ class Core {
   }
 }
 
-window.SgTrackingCore = new Core();
+/**
+ * Fix to prevent multiple instances of this class caused by two node_modules folders
+ */
+if (!window.SgTrackingCore) {
+  window.SgTrackingCore = new Core();
+}
 
 export default window.SgTrackingCore;
