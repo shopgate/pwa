@@ -6,7 +6,7 @@
  */
 
 import { SUCCESS_ADD_COUPONS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
-import { couponsDidUpdate$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { couponsUpdated$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 
 /**
@@ -15,7 +15,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
  */
 export default function coupon(subscribe) {
   // Derived stream with just the successful case.
-  const successfullyAddedCouponsToCart$ = couponsDidUpdate$.filter(
+  const successfullyAddedCouponsToCart$ = couponsUpdated$.filter(
     ({ action }) => action.type === SUCCESS_ADD_COUPONS_TO_CART
   );
 
