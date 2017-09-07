@@ -94,5 +94,12 @@
     "privacy": "Privacy policy",
     "welcome_message": "Welcome {name}",
     "logout": "Sign out"
+  },
+  "reviews": {
+    "rating": "Rating",
+    "no_reviews": "Be the first to rate this product:",
+    "review_count": "{count} {count, plural, =1 {Review} >1 {Reviews}}",
+    "button_add": "Write a Review",
+    "button_all": "All {0} Reviews"
   }
 }

@@ -44,6 +44,9 @@ const iconStyles = {
       marginRight: '0.25em',
     }).toString(),
   },
+  large: {
+    iconSize: '2em',
+  },
 };
 
 export default {
