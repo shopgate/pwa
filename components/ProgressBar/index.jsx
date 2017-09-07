@@ -14,16 +14,16 @@ const duration = 300;
 
 const transitionStyles = {
   entering: {
-    height: 4,
+    transform: 'scale(1, 1)',
   },
   entered: {
-    height: 4,
+    transform: 'scale(1, 1)',
   },
   exited: {
-    height: 0,
+    transform: 'scale(1, 0)',
   },
   exiting: {
-    height: 0,
+    transform: 'scale(1, 0)',
   },
 };
 
@@ -69,7 +69,7 @@ class ProgressBar extends Component {
   }
 
   /**
-   * Only update when certain state changes are made..
+   * Only update when certain state changes are made.
    * @param {Object} nextProps The next set of props.
    * @param {Object} nextState The next component state.
    * @returns {boolean}
