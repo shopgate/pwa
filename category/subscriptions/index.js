@@ -11,7 +11,7 @@ import {
 } from '@shopgate/pwa-common/streams/history';
 import { CATEGORY_PATH } from '../constants';
 import { FILTER_PATH } from '../../filter/constants';
-import { setCurrentCategoryId } from '../action-creators';
+import setCurrentCategoryId from '../action-creators/setCurrentCategoryId';
 
 /**
  * Category subscriptions.

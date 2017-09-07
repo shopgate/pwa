@@ -8,11 +8,9 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import {
-  requestCategoryChildren,
-  receiveCategoryChildren,
-  errorCategoryChildren,
-} from '../action-creators';
+import requestCategoryChildren from '../action-creators/requestCategoryChildren';
+import receiveCategoryChildren from '../action-creators/receiveCategoryChildren';
+import errorCategoryChildren from '../action-creators/errorCategoryChildren';
 
 /**
  * Retrieves category children for a certain category by ID.
