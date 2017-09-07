@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Placeholder /> Given the component was mounted to the DOM should render 1`] = `undefined`;

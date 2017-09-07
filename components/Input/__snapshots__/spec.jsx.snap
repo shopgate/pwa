@@ -1,0 +1,418 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should render the input as password 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <input
+    className=""
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    type="password"
+    value=""
+/>,
+  "nodes": Array [
+    <input
+      className=""
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="password"
+      value=""
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Input
+        className=""
+        disabled={false}
+        onChange={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={true}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
+        value=""
+/>,
+      "_debugID": 4,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Input {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleBlur": [Function],
+        "handleChange": [Function],
+        "handleFocus": [Function],
+        "props": Object {
+          "className": "",
+          "disabled": false,
+          "onChange": [Function],
+          "onFocusChange": [Function],
+          "onSanitize": [Function],
+          "onValidate": [Function],
+          "password": true,
+          "setRef": [Function],
+          "type": "text",
+          "validateOnBlur": true,
+          "value": "",
+        },
+        "refs": Object {},
+        "state": Object {
+          "isFocused": false,
+          "isValid": true,
+          "value": "",
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <input
+          className=""
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="password"
+          value=""
+/>,
+        "_debugID": 5,
+        "_renderedOutput": <input
+          className=""
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="password"
+          value=""
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Input
+    className=""
+    disabled={false}
+    onChange={[Function]}
+    onFocusChange={[Function]}
+    onSanitize={[Function]}
+    onValidate={[Function]}
+    password={true}
+    setRef={[Function]}
+    type="text"
+    validateOnBlur={true}
+    value=""
+/>,
+}
+`;
+
+exports[`<Input /> should render the input with a default value 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <input
+    className=""
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    type="text"
+    value="FooBar"
+/>,
+  "nodes": Array [
+    <input
+      className=""
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text"
+      value="FooBar"
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Input
+        className=""
+        disabled={false}
+        onChange={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
+        value="FooBar"
+/>,
+      "_debugID": 6,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Input {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleBlur": [Function],
+        "handleChange": [Function],
+        "handleFocus": [Function],
+        "props": Object {
+          "className": "",
+          "disabled": false,
+          "onChange": [Function],
+          "onFocusChange": [Function],
+          "onSanitize": [Function],
+          "onValidate": [Function],
+          "password": false,
+          "setRef": [Function],
+          "type": "text",
+          "validateOnBlur": true,
+          "value": "FooBar",
+        },
+        "refs": Object {},
+        "state": Object {
+          "isFocused": false,
+          "isValid": true,
+          "value": "FooBar",
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <input
+          className=""
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="FooBar"
+/>,
+        "_debugID": 7,
+        "_renderedOutput": <input
+          className=""
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="FooBar"
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Input
+    className=""
+    disabled={false}
+    onChange={[Function]}
+    onFocusChange={[Function]}
+    onSanitize={[Function]}
+    onValidate={[Function]}
+    password={false}
+    setRef={[Function]}
+    type="text"
+    validateOnBlur={true}
+    value="FooBar"
+/>,
+}
+`;
+
+exports[`<Input /> should validate the input 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <input
+    className=""
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    type="text"
+    value=""
+/>,
+  "nodes": Array [
+    <input
+      className=""
+      disabled={false}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text"
+      value=""
+/>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Input
+        className=""
+        disabled={false}
+        onChange={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
+        value=""
+/>,
+      "_debugID": 17,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Input {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleBlur": [Function],
+        "handleChange": [Function],
+        "handleFocus": [Function],
+        "props": Object {
+          "className": "",
+          "disabled": false,
+          "onChange": [Function],
+          "onFocusChange": [Function],
+          "onSanitize": [Function],
+          "onValidate": [Function],
+          "password": false,
+          "setRef": [Function],
+          "type": "text",
+          "validateOnBlur": true,
+          "value": "",
+        },
+        "refs": Object {},
+        "state": Object {
+          "isFocused": false,
+          "isValid": false,
+          "value": "",
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <input
+          className=""
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+/>,
+        "_debugID": 18,
+        "_renderedOutput": <input
+          className=""
+          disabled={false}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+/>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Input
+    className=""
+    disabled={false}
+    onChange={[Function]}
+    onFocusChange={[Function]}
+    onSanitize={[Function]}
+    onValidate={[Function]}
+    password={false}
+    setRef={[Function]}
+    type="text"
+    validateOnBlur={true}
+    value=""
+/>,
+}
+`;

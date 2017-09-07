@@ -1,0 +1,982 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InfiniteContainer /> Given that the initialLimit is used in the correct ways Given that the initialLimit is NOT used  should render without the initialLimit 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div>
+        <div>
+            <li>
+                Item 0
+            </li>
+            <li>
+                Item 1
+            </li>
+            <li>
+                Item 2
+            </li>
+            <li>
+                Item 3
+            </li>
+            <li>
+                Item 4
+            </li>
+            <li>
+                Item 5
+            </li>
+            <li>
+                Item 6
+            </li>
+            <li>
+                Item 7
+            </li>
+            <li>
+                Item 8
+            </li>
+            <li>
+                Item 9
+            </li>
+            <li>
+                Item 10
+            </li>
+            <li>
+                Item 11
+            </li>
+            <li>
+                Item 12
+            </li>
+            <li>
+                Item 13
+            </li>
+            <li>
+                Item 14
+            </li>
+            <li>
+                Item 15
+            </li>
+            <li>
+                Item 16
+            </li>
+            <li>
+                Item 17
+            </li>
+            <li>
+                Item 18
+            </li>
+            <li>
+                Item 19
+            </li>
+            <li>
+                Item 20
+            </li>
+            <li>
+                Item 21
+            </li>
+            <li>
+                Item 22
+            </li>
+            <li>
+                Item 23
+            </li>
+            <li>
+                Item 24
+            </li>
+            <li>
+                Item 25
+            </li>
+            <li>
+                Item 26
+            </li>
+            <li>
+                Item 27
+            </li>
+            <li>
+                Item 28
+            </li>
+            <li>
+                Item 29
+            </li>
+        </div>
+    </div>
+</div>,
+  "nodes": Array [
+    <div>
+      <div>
+            <div>
+                  <li>
+                        Item 0
+                  </li>
+                  <li>
+                        Item 1
+                  </li>
+                  <li>
+                        Item 2
+                  </li>
+                  <li>
+                        Item 3
+                  </li>
+                  <li>
+                        Item 4
+                  </li>
+                  <li>
+                        Item 5
+                  </li>
+                  <li>
+                        Item 6
+                  </li>
+                  <li>
+                        Item 7
+                  </li>
+                  <li>
+                        Item 8
+                  </li>
+                  <li>
+                        Item 9
+                  </li>
+                  <li>
+                        Item 10
+                  </li>
+                  <li>
+                        Item 11
+                  </li>
+                  <li>
+                        Item 12
+                  </li>
+                  <li>
+                        Item 13
+                  </li>
+                  <li>
+                        Item 14
+                  </li>
+                  <li>
+                        Item 15
+                  </li>
+                  <li>
+                        Item 16
+                  </li>
+                  <li>
+                        Item 17
+                  </li>
+                  <li>
+                        Item 18
+                  </li>
+                  <li>
+                        Item 19
+                  </li>
+                  <li>
+                        Item 20
+                  </li>
+                  <li>
+                        Item 21
+                  </li>
+                  <li>
+                        Item 22
+                  </li>
+                  <li>
+                        Item 23
+                  </li>
+                  <li>
+                        Item 24
+                  </li>
+                  <li>
+                        Item 25
+                  </li>
+                  <li>
+                        Item 26
+                  </li>
+                  <li>
+                        Item 27
+                  </li>
+                  <li>
+                        Item 28
+                  </li>
+                  <li>
+                        Item 29
+                  </li>
+            </div>
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <InfiniteContainer
+        initialLimit={10}
+        items={
+                Array [
+                        Object {
+                          "id": 0,
+                          "title": "Item 0",
+                        },
+                        Object {
+                          "id": 1,
+                          "title": "Item 1",
+                        },
+                        Object {
+                          "id": 2,
+                          "title": "Item 2",
+                        },
+                        Object {
+                          "id": 3,
+                          "title": "Item 3",
+                        },
+                        Object {
+                          "id": 4,
+                          "title": "Item 4",
+                        },
+                        Object {
+                          "id": 5,
+                          "title": "Item 5",
+                        },
+                        Object {
+                          "id": 6,
+                          "title": "Item 6",
+                        },
+                        Object {
+                          "id": 7,
+                          "title": "Item 7",
+                        },
+                        Object {
+                          "id": 8,
+                          "title": "Item 8",
+                        },
+                        Object {
+                          "id": 9,
+                          "title": "Item 9",
+                        },
+                        Object {
+                          "id": 10,
+                          "title": "Item 10",
+                        },
+                        Object {
+                          "id": 11,
+                          "title": "Item 11",
+                        },
+                        Object {
+                          "id": 12,
+                          "title": "Item 12",
+                        },
+                        Object {
+                          "id": 13,
+                          "title": "Item 13",
+                        },
+                        Object {
+                          "id": 14,
+                          "title": "Item 14",
+                        },
+                        Object {
+                          "id": 15,
+                          "title": "Item 15",
+                        },
+                        Object {
+                          "id": 16,
+                          "title": "Item 16",
+                        },
+                        Object {
+                          "id": 17,
+                          "title": "Item 17",
+                        },
+                        Object {
+                          "id": 18,
+                          "title": "Item 18",
+                        },
+                        Object {
+                          "id": 19,
+                          "title": "Item 19",
+                        },
+                        Object {
+                          "id": 20,
+                          "title": "Item 20",
+                        },
+                        Object {
+                          "id": 21,
+                          "title": "Item 21",
+                        },
+                        Object {
+                          "id": 22,
+                          "title": "Item 22",
+                        },
+                        Object {
+                          "id": 23,
+                          "title": "Item 23",
+                        },
+                        Object {
+                          "id": 24,
+                          "title": "Item 24",
+                        },
+                        Object {
+                          "id": 25,
+                          "title": "Item 25",
+                        },
+                        Object {
+                          "id": 26,
+                          "title": "Item 26",
+                        },
+                        Object {
+                          "id": 27,
+                          "title": "Item 27",
+                        },
+                        Object {
+                          "id": 28,
+                          "title": "Item 28",
+                        },
+                        Object {
+                          "id": 29,
+                          "title": "Item 29",
+                        },
+                      ]
+        }
+        iterator={[Function]}
+        limit={30}
+        loader={[Function]}
+        loadingIndicator={null}
+        preloadMultiplier={2}
+        totalItems={100}
+        wrapper="div"
+/>,
+      "_debugID": 21,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": InfiniteContainer {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "domElement": null,
+        "domScrollContainer": null,
+        "handleLoadingProxy": [Function],
+        "isLoading": true,
+        "props": Object {
+          "children": null,
+          "initialLimit": 10,
+          "items": Array [
+            Object {
+              "id": 0,
+              "title": "Item 0",
+            },
+            Object {
+              "id": 1,
+              "title": "Item 1",
+            },
+            Object {
+              "id": 2,
+              "title": "Item 2",
+            },
+            Object {
+              "id": 3,
+              "title": "Item 3",
+            },
+            Object {
+              "id": 4,
+              "title": "Item 4",
+            },
+            Object {
+              "id": 5,
+              "title": "Item 5",
+            },
+            Object {
+              "id": 6,
+              "title": "Item 6",
+            },
+            Object {
+              "id": 7,
+              "title": "Item 7",
+            },
+            Object {
+              "id": 8,
+              "title": "Item 8",
+            },
+            Object {
+              "id": 9,
+              "title": "Item 9",
+            },
+            Object {
+              "id": 10,
+              "title": "Item 10",
+            },
+            Object {
+              "id": 11,
+              "title": "Item 11",
+            },
+            Object {
+              "id": 12,
+              "title": "Item 12",
+            },
+            Object {
+              "id": 13,
+              "title": "Item 13",
+            },
+            Object {
+              "id": 14,
+              "title": "Item 14",
+            },
+            Object {
+              "id": 15,
+              "title": "Item 15",
+            },
+            Object {
+              "id": 16,
+              "title": "Item 16",
+            },
+            Object {
+              "id": 17,
+              "title": "Item 17",
+            },
+            Object {
+              "id": 18,
+              "title": "Item 18",
+            },
+            Object {
+              "id": 19,
+              "title": "Item 19",
+            },
+            Object {
+              "id": 20,
+              "title": "Item 20",
+            },
+            Object {
+              "id": 21,
+              "title": "Item 21",
+            },
+            Object {
+              "id": 22,
+              "title": "Item 22",
+            },
+            Object {
+              "id": 23,
+              "title": "Item 23",
+            },
+            Object {
+              "id": 24,
+              "title": "Item 24",
+            },
+            Object {
+              "id": 25,
+              "title": "Item 25",
+            },
+            Object {
+              "id": 26,
+              "title": "Item 26",
+            },
+            Object {
+              "id": 27,
+              "title": "Item 27",
+            },
+            Object {
+              "id": 28,
+              "title": "Item 28",
+            },
+            Object {
+              "id": 29,
+              "title": "Item 29",
+            },
+          ],
+          "iterator": [Function],
+          "limit": 30,
+          "loader": [Function],
+          "loadingIndicator": null,
+          "preloadMultiplier": 2,
+          "totalItems": 100,
+          "wrapper": "div",
+        },
+        "refs": Object {},
+        "state": Object {
+          "awaitingItems": true,
+          "offset": Array [
+            30,
+            30,
+          ],
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 11,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div>
+                    <div>
+                              <li>
+                                        Item 0
+                              </li>
+                              <li>
+                                        Item 1
+                              </li>
+                              <li>
+                                        Item 2
+                              </li>
+                              <li>
+                                        Item 3
+                              </li>
+                              <li>
+                                        Item 4
+                              </li>
+                              <li>
+                                        Item 5
+                              </li>
+                              <li>
+                                        Item 6
+                              </li>
+                              <li>
+                                        Item 7
+                              </li>
+                              <li>
+                                        Item 8
+                              </li>
+                              <li>
+                                        Item 9
+                              </li>
+                              <li>
+                                        Item 10
+                              </li>
+                              <li>
+                                        Item 11
+                              </li>
+                              <li>
+                                        Item 12
+                              </li>
+                              <li>
+                                        Item 13
+                              </li>
+                              <li>
+                                        Item 14
+                              </li>
+                              <li>
+                                        Item 15
+                              </li>
+                              <li>
+                                        Item 16
+                              </li>
+                              <li>
+                                        Item 17
+                              </li>
+                              <li>
+                                        Item 18
+                              </li>
+                              <li>
+                                        Item 19
+                              </li>
+                              <li>
+                                        Item 20
+                              </li>
+                              <li>
+                                        Item 21
+                              </li>
+                              <li>
+                                        Item 22
+                              </li>
+                              <li>
+                                        Item 23
+                              </li>
+                              <li>
+                                        Item 24
+                              </li>
+                              <li>
+                                        Item 25
+                              </li>
+                              <li>
+                                        Item 26
+                              </li>
+                              <li>
+                                        Item 27
+                              </li>
+                              <li>
+                                        Item 28
+                              </li>
+                              <li>
+                                        Item 29
+                              </li>
+                    </div>
+          </div>
+</div>,
+        "_debugID": 22,
+        "_renderedOutput": <div>
+          <div>
+                    <div>
+                              <li>
+                                        Item 0
+                              </li>
+                              <li>
+                                        Item 1
+                              </li>
+                              <li>
+                                        Item 2
+                              </li>
+                              <li>
+                                        Item 3
+                              </li>
+                              <li>
+                                        Item 4
+                              </li>
+                              <li>
+                                        Item 5
+                              </li>
+                              <li>
+                                        Item 6
+                              </li>
+                              <li>
+                                        Item 7
+                              </li>
+                              <li>
+                                        Item 8
+                              </li>
+                              <li>
+                                        Item 9
+                              </li>
+                              <li>
+                                        Item 10
+                              </li>
+                              <li>
+                                        Item 11
+                              </li>
+                              <li>
+                                        Item 12
+                              </li>
+                              <li>
+                                        Item 13
+                              </li>
+                              <li>
+                                        Item 14
+                              </li>
+                              <li>
+                                        Item 15
+                              </li>
+                              <li>
+                                        Item 16
+                              </li>
+                              <li>
+                                        Item 17
+                              </li>
+                              <li>
+                                        Item 18
+                              </li>
+                              <li>
+                                        Item 19
+                              </li>
+                              <li>
+                                        Item 20
+                              </li>
+                              <li>
+                                        Item 21
+                              </li>
+                              <li>
+                                        Item 22
+                              </li>
+                              <li>
+                                        Item 23
+                              </li>
+                              <li>
+                                        Item 24
+                              </li>
+                              <li>
+                                        Item 25
+                              </li>
+                              <li>
+                                        Item 26
+                              </li>
+                              <li>
+                                        Item 27
+                              </li>
+                              <li>
+                                        Item 28
+                              </li>
+                              <li>
+                                        Item 29
+                              </li>
+                    </div>
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <InfiniteContainer
+    initialLimit={10}
+    items={
+        Array [
+            Object {
+              "id": 0,
+              "title": "Item 0",
+            },
+            Object {
+              "id": 1,
+              "title": "Item 1",
+            },
+            Object {
+              "id": 2,
+              "title": "Item 2",
+            },
+            Object {
+              "id": 3,
+              "title": "Item 3",
+            },
+            Object {
+              "id": 4,
+              "title": "Item 4",
+            },
+            Object {
+              "id": 5,
+              "title": "Item 5",
+            },
+            Object {
+              "id": 6,
+              "title": "Item 6",
+            },
+            Object {
+              "id": 7,
+              "title": "Item 7",
+            },
+            Object {
+              "id": 8,
+              "title": "Item 8",
+            },
+            Object {
+              "id": 9,
+              "title": "Item 9",
+            },
+            Object {
+              "id": 10,
+              "title": "Item 10",
+            },
+            Object {
+              "id": 11,
+              "title": "Item 11",
+            },
+            Object {
+              "id": 12,
+              "title": "Item 12",
+            },
+            Object {
+              "id": 13,
+              "title": "Item 13",
+            },
+            Object {
+              "id": 14,
+              "title": "Item 14",
+            },
+            Object {
+              "id": 15,
+              "title": "Item 15",
+            },
+            Object {
+              "id": 16,
+              "title": "Item 16",
+            },
+            Object {
+              "id": 17,
+              "title": "Item 17",
+            },
+            Object {
+              "id": 18,
+              "title": "Item 18",
+            },
+            Object {
+              "id": 19,
+              "title": "Item 19",
+            },
+            Object {
+              "id": 20,
+              "title": "Item 20",
+            },
+            Object {
+              "id": 21,
+              "title": "Item 21",
+            },
+            Object {
+              "id": 22,
+              "title": "Item 22",
+            },
+            Object {
+              "id": 23,
+              "title": "Item 23",
+            },
+            Object {
+              "id": 24,
+              "title": "Item 24",
+            },
+            Object {
+              "id": 25,
+              "title": "Item 25",
+            },
+            Object {
+              "id": 26,
+              "title": "Item 26",
+            },
+            Object {
+              "id": 27,
+              "title": "Item 27",
+            },
+            Object {
+              "id": 28,
+              "title": "Item 28",
+            },
+            Object {
+              "id": 29,
+              "title": "Item 29",
+            },
+          ]
+    }
+    iterator={[Function]}
+    limit={30}
+    loader={[Function]}
+    loadingIndicator={null}
+    preloadMultiplier={2}
+    totalItems={100}
+    wrapper="div"
+/>,
+}
+`;
+
+exports[`<InfiniteContainer /> Given the component was mounted to the DOM should match snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <div>
+        <div>
+            
+        </div>
+    </div>
+</div>,
+  "nodes": Array [
+    <div>
+      <div>
+            <div>
+                  
+            </div>
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <InfiniteContainer
+        initialLimit={10}
+        items={Array []}
+        iterator={[Function]}
+        limit={30}
+        loader={[Function]}
+        loadingIndicator={null}
+        preloadMultiplier={2}
+        totalItems={null}
+        wrapper="div"
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": InfiniteContainer {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "domElement": null,
+        "domScrollContainer": null,
+        "handleLoadingProxy": [Function],
+        "isLoading": false,
+        "props": Object {
+          "children": null,
+          "initialLimit": 10,
+          "items": Array [],
+          "iterator": [Function],
+          "limit": 30,
+          "loader": [Function],
+          "loadingIndicator": null,
+          "preloadMultiplier": 2,
+          "totalItems": null,
+          "wrapper": "div",
+        },
+        "refs": Object {},
+        "state": Object {
+          "awaitingItems": true,
+          "offset": Array [
+            0,
+            30,
+          ],
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <div>
+                    <div>
+                              
+                    </div>
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <div>
+                    <div>
+                              
+                    </div>
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <InfiniteContainer
+    initialLimit={10}
+    items={Array []}
+    iterator={[Function]}
+    limit={30}
+    loader={[Function]}
+    loadingIndicator={null}
+    preloadMultiplier={2}
+    totalItems={null}
+    wrapper="div"
+/>,
+}
+`;

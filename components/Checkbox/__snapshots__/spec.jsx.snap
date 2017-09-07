@@ -1,0 +1,529 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> should render the checkbox with the label after the icon 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className={undefined}
+    onTouchTap={[Function]}
+>
+    <Unchecked />
+    <span>
+        Test Label Deluxe
+    </span>
+</div>,
+  "nodes": Array [
+    <div
+      className={undefined}
+      onTouchTap={[Function]}
+>
+      <Unchecked />
+      <span>
+            Test Label Deluxe
+      </span>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Checkbox
+        checked={false}
+        checkedIcon={<Checked />}
+        className={undefined}
+        defaultChecked={undefined}
+        label={
+                <span>
+                        Test Label Deluxe
+                </span>
+        }
+        labelPosition="right"
+        name={undefined}
+        onCheck={[Function]}
+        uncheckedIcon={<Unchecked />}
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Checkbox {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleCheck": [Function],
+        "isChecked": [Function],
+        "props": Object {
+          "checked": false,
+          "checkedIcon": <Checked />,
+          "className": undefined,
+          "defaultChecked": undefined,
+          "label": <span>
+            Test Label Deluxe
+</span>,
+          "labelPosition": "right",
+          "name": undefined,
+          "onCheck": [Function],
+          "uncheckedIcon": <Unchecked />,
+        },
+        "refs": Object {},
+        "renderIcon": [Function],
+        "renderInput": [Function],
+        "renderLabelIfItIsOnThe": [Function],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          <Unchecked />
+          <span>
+                    Test Label Deluxe
+          </span>
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          <Unchecked />
+          <span>
+                    Test Label Deluxe
+          </span>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Checkbox
+    checked={false}
+    checkedIcon={<Checked />}
+    className={undefined}
+    defaultChecked={undefined}
+    label={
+        <span>
+            Test Label Deluxe
+        </span>
+    }
+    labelPosition="right"
+    name={undefined}
+    onCheck={[Function]}
+    uncheckedIcon={<Unchecked />}
+/>,
+}
+`;
+
+exports[`<Checkbox /> should render the checkbox with the label before the icon 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className={undefined}
+    onTouchTap={[Function]}
+>
+    <span>
+        Test Label Deluxe
+    </span>
+    <Unchecked />
+</div>,
+  "nodes": Array [
+    <div
+      className={undefined}
+      onTouchTap={[Function]}
+>
+      <span>
+            Test Label Deluxe
+      </span>
+      <Unchecked />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Checkbox
+        checked={false}
+        checkedIcon={<Checked />}
+        className={undefined}
+        defaultChecked={undefined}
+        label={
+                <span>
+                        Test Label Deluxe
+                </span>
+        }
+        labelPosition="left"
+        name={undefined}
+        onCheck={[Function]}
+        uncheckedIcon={<Unchecked />}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Checkbox {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleCheck": [Function],
+        "isChecked": [Function],
+        "props": Object {
+          "checked": false,
+          "checkedIcon": <Checked />,
+          "className": undefined,
+          "defaultChecked": undefined,
+          "label": <span>
+            Test Label Deluxe
+</span>,
+          "labelPosition": "left",
+          "name": undefined,
+          "onCheck": [Function],
+          "uncheckedIcon": <Unchecked />,
+        },
+        "refs": Object {},
+        "renderIcon": [Function],
+        "renderInput": [Function],
+        "renderLabelIfItIsOnThe": [Function],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          <span>
+                    Test Label Deluxe
+          </span>
+          <Unchecked />
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          <span>
+                    Test Label Deluxe
+          </span>
+          <Unchecked />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Checkbox
+    checked={false}
+    checkedIcon={<Checked />}
+    className={undefined}
+    defaultChecked={undefined}
+    label={
+        <span>
+            Test Label Deluxe
+        </span>
+    }
+    labelPosition="left"
+    name={undefined}
+    onCheck={[Function]}
+    uncheckedIcon={<Unchecked />}
+/>,
+}
+`;
+
+exports[`<Checkbox /> should render the unchecked icon if "checked" is false 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className={undefined}
+    onTouchTap={[Function]}
+>
+    Test Label Deluxe
+    <Unchecked />
+</div>,
+  "nodes": Array [
+    <div
+      className={undefined}
+      onTouchTap={[Function]}
+>
+      Test Label Deluxe
+      <Unchecked />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Checkbox
+        checked={false}
+        checkedIcon={<Checked />}
+        className={undefined}
+        defaultChecked={undefined}
+        label="Test Label Deluxe"
+        labelPosition="left"
+        name={undefined}
+        onCheck={[Function]}
+        uncheckedIcon={<Unchecked />}
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Checkbox {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleCheck": [Function],
+        "isChecked": [Function],
+        "props": Object {
+          "checked": false,
+          "checkedIcon": <Checked />,
+          "className": undefined,
+          "defaultChecked": undefined,
+          "label": "Test Label Deluxe",
+          "labelPosition": "left",
+          "name": undefined,
+          "onCheck": [Function],
+          "uncheckedIcon": <Unchecked />,
+        },
+        "refs": Object {},
+        "renderIcon": [Function],
+        "renderInput": [Function],
+        "renderLabelIfItIsOnThe": [Function],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          Test Label Deluxe
+          <Unchecked />
+</div>,
+        "_debugID": 6,
+        "_renderedOutput": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          Test Label Deluxe
+          <Unchecked />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Checkbox
+    checked={false}
+    checkedIcon={<Checked />}
+    className={undefined}
+    defaultChecked={undefined}
+    label="Test Label Deluxe"
+    labelPosition="left"
+    name={undefined}
+    onCheck={[Function]}
+    uncheckedIcon={<Unchecked />}
+/>,
+}
+`;
+
+exports[`<Checkbox /> should render the unchecked icon if "checked" is false 2`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className={undefined}
+    onTouchTap={[Function]}
+>
+    Test Label Deluxe
+    <Checked />
+</div>,
+  "nodes": Array [
+    <div
+      className={undefined}
+      onTouchTap={[Function]}
+>
+      Test Label Deluxe
+      <Checked />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Checkbox
+        checked={true}
+        checkedIcon={<Checked />}
+        className={undefined}
+        defaultChecked={undefined}
+        label="Test Label Deluxe"
+        labelPosition="left"
+        name={undefined}
+        onCheck={[Function]}
+        uncheckedIcon={<Unchecked />}
+/>,
+      "_debugID": 7,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Checkbox {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "handleCheck": [Function],
+        "isChecked": [Function],
+        "props": Object {
+          "checked": true,
+          "checkedIcon": <Checked />,
+          "className": undefined,
+          "defaultChecked": undefined,
+          "label": "Test Label Deluxe",
+          "labelPosition": "left",
+          "name": undefined,
+          "onCheck": [Function],
+          "uncheckedIcon": <Unchecked />,
+        },
+        "refs": Object {},
+        "renderIcon": [Function],
+        "renderInput": [Function],
+        "renderLabelIfItIsOnThe": [Function],
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 4,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          Test Label Deluxe
+          <Checked />
+</div>,
+        "_debugID": 8,
+        "_renderedOutput": <div
+          className={undefined}
+          onTouchTap={[Function]}
+>
+          Test Label Deluxe
+          <Checked />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Checkbox
+    checked={true}
+    checkedIcon={<Checked />}
+    className={undefined}
+    defaultChecked={undefined}
+    label="Test Label Deluxe"
+    labelPosition="left"
+    name={undefined}
+    onCheck={[Function]}
+    uncheckedIcon={<Unchecked />}
+/>,
+}
+`;
