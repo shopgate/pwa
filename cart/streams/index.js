@@ -70,10 +70,12 @@ export const couponsDeleted$ = main$.filter(
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const couponsDidUpdate$ = main$.filter(
+export const couponsUpdated$ = main$.filter(
   ({ action }) =>
     action.type === SUCCESS_ADD_COUPONS_TO_CART ||
-    action.type === ERROR_ADD_COUPONS_TO_CART
+    action.type === ERROR_ADD_COUPONS_TO_CART ||
+    action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
+    action.type === ERROR_DELETE_COUPONS_FROM_CART
 );
 
 /**
@@ -88,7 +90,7 @@ export const productsAdded$ = main$.filter(
  * Gets triggered when the user tried to add a product to the cart.
  * @type {Observable}
  */
-export const productsUpdated$ = main$.filter(
+export const productsModified$ = main$.filter(
   ({ action }) => action.type === UPDATE_PRODUCTS_IN_CART
 );
 
@@ -98,6 +100,20 @@ export const productsUpdated$ = main$.filter(
  */
 export const productsDeleted$ = main$.filter(
   ({ action }) => action.type === DELETE_PRODUCTS_FROM_CART
+);
+
+/**
+ * Gets triggered when the user tried to add a coupon to the cart.
+ * @type {Observable}
+ */
+export const productsUpdated$ = main$.filter(
+  ({ action }) =>
+    action.type === SUCCESS_ADD_PRODUCTS_TO_CART ||
+    action.type === ERROR_ADD_PRODUCTS_TO_CART ||
+    action.type === SUCCESS_UPDATE_PRODUCTS_IN_CART ||
+    action.type === ERROR_UPDATE_PRODUCTS_IN_CART ||
+    action.type === SUCCESS_DELETE_PRODUCTS_FROM_CART ||
+    action.type === ERROR_DELETE_PRODUCTS_FROM_CART
 );
 
 /**

@@ -7,11 +7,23 @@
 
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
+import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import getCart from '../actions/getCart';
 import {
+  cartRequesting$,
+  cartReceived$,
+  productsAdded$,
+  productsModified$,
+  productsUpdated$,
+  productsDeleted$,
+  couponsAdded$,
+  couponsUpdated$,
+  couponsDeleted$,
   remoteCartDidUpdate$,
 } from '../streams';
 import { setCartProductPendingCount } from '../action-creators';
+import { CART_PATH } from '../constants';
 
 /**
  * Cart subscriptions.
@@ -24,8 +36,29 @@ export default function cart(subscribe) {
    */
   const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
 
+  const cartBusy$ = cartRequesting$.merge(
+    couponsAdded$,
+    couponsDeleted$,
+    productsAdded$,
+    productsModified$,
+    productsDeleted$
+  );
+
+  const cartIdle$ = cartReceived$.merge(
+    couponsUpdated$,
+    productsUpdated$
+  );
+
   subscribe(cartNeedsSync$, ({ dispatch }) => {
     dispatch(getCart());
+  });
+
+  subscribe(cartBusy$, ({ dispatch }) => {
+    dispatch(setViewLoading(CART_PATH));
+  });
+
+  subscribe(cartIdle$, ({ dispatch }) => {
+    dispatch(unsetViewLoading(CART_PATH));
   });
 
   /**
