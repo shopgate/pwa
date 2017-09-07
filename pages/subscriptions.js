@@ -8,6 +8,7 @@
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
+import tracking from '@shopgate/pwa-tracking/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
@@ -19,6 +20,7 @@ export default [
   commerceCart,
   commerceCategory,
   commerceFilter,
+  ...tracking,
   navigator,
   category,
   coupon,
