@@ -7,12 +7,10 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  addProductsToCart,
-  successAddProductsToCart,
-  errorAddProductsToCart,
-  setCartProductPendingCount,
-} from '../action-creators';
+import addProductsToCart from '../action-creators/addProductsToCart';
+import successAddProductsToCart from '../action-creators/successAddProductsToCart';
+import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
+import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { getProductPendingCount } from '../selectors';
 
 /**

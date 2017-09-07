@@ -7,11 +7,9 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  addCouponsToCart as addCoupons,
-  errorAddCouponsToCart,
-  successAddCouponsToCart,
-} from '../action-creators';
+import addCoupons from '../action-creators/addCouponsToCart';
+import errorAddCouponsToCart from '../action-creators/errorAddCouponsToCart';
+import successAddCouponsToCart from '../action-creators/successAddCouponsToCart';
 
 /**
  * Adds coupons to the cart.

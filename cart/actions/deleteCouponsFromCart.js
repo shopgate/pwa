@@ -7,11 +7,9 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  deleteCouponsFromCart as deleteCoupons,
-  errorDeleteCouponsFromCart,
-  successDeleteCouponsFromCart,
-} from '../action-creators';
+import deleteCoupons from '../action-creators/deleteCouponsFromCart';
+import errorDeleteCouponsFromCart from '../action-creators/errorDeleteCouponsFromCart';
+import successDeleteCouponsFromCart from '../action-creators/successDeleteCouponsFromCart';
 
 /**
  * Deletes coupons from the cart.

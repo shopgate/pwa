@@ -7,11 +7,9 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  updateProductsInCart as updateProducts,
-  successUpdateProductsInCart,
-  errorUpdateProductsInCart,
-} from '../action-creators';
+import updateProducts from '../action-creators/updateProductsInCart';
+import successUpdateProductsInCart from '../action-creators/successUpdateProductsInCart';
+import errorUpdateProductsInCart from '../action-creators/errorUpdateProductsInCart';
 
 /**
  * Converts the update data into the format, which is currently expected by the pipeline.

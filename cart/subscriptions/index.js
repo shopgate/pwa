@@ -22,7 +22,7 @@ import {
   couponsDeleted$,
   remoteCartDidUpdate$,
 } from '../streams';
-import { setCartProductPendingCount } from '../action-creators';
+import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH } from '../constants';
 
 /**
