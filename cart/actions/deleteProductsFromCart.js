@@ -1,10 +1,15 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  deleteProductsFromCart as deleteProducts,
-  successDeleteProductsFromCart,
-  errorDeleteProductsFromCart,
-} from '../action-creators';
+import deleteProducts from '../action-creators/deleteProductsFromCart';
+import successDeleteProductsFromCart from '../action-creators/successDeleteProductsFromCart';
+import errorDeleteProductsFromCart from '../action-creators/errorDeleteProductsFromCart';
 
 /**
  * Deletes products from the cart.

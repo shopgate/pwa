@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import { shallowEqual } from 'recompose';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
@@ -16,15 +23,13 @@ import {
   getHistoryPathname,
   getSortOrder,
 } from '@shopgate/pwa-common/selectors/history';
-import {
-  requestFilters,
-  receiveFilters,
-  errorFilters,
-  addActiveFilters as addActiveFiltersAction,
-  setActiveFilters,
-  removeTemporaryFilter,
-  sliceActiveFilters,
-} from '../action-creators';
+import requestFilters from '../action-creators/requestFilters';
+import receiveFilters from '../action-creators/receiveFilters';
+import errorFilters from '../action-creators/errorFilters';
+import addActiveFiltersAction from '../action-creators/addActiveFilters';
+import setActiveFilters from '../action-creators/setActiveFilters';
+import removeTemporaryFilter from '../action-creators/removeTemporaryFilter';
+import sliceActiveFilters from '../action-creators/sliceActiveFilters';
 import {
   getFilterHash,
   getAvailableFiltersStack,

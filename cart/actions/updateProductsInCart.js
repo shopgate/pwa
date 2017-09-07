@@ -1,10 +1,15 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  updateProductsInCart as updateProducts,
-  successUpdateProductsInCart,
-  errorUpdateProductsInCart,
-} from '../action-creators';
+import updateProducts from '../action-creators/updateProductsInCart';
+import successUpdateProductsInCart from '../action-creators/successUpdateProductsInCart';
+import errorUpdateProductsInCart from '../action-creators/errorUpdateProductsInCart';
 
 /**
  * Converts the update data into the format, which is currently expected by the pipeline.

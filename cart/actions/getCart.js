@@ -1,11 +1,16 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import {
-  receiveCart,
-  requestCart,
-  errorCart,
-  setCartProductPendingCount,
-} from '../action-creators';
+import receiveCart from '../action-creators/receiveCart';
+import requestCart from '../action-creators/requestCart';
+import errorCart from '../action-creators/errorCart';
+import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { getProductPendingCount } from '../selectors';
 
 /**
