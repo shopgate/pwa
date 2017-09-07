@@ -28,6 +28,8 @@ export const TRACK_OPEN_SMART_APP_DOWNLOAD_LINK = 'openSmartAppDownloadLink';
 export const TRACK_OPEN_PUSH_NOTIFICATION = 'openPushNotification';
 export const TRACK_APP_REVIEW_PROMPT = 'appReviewPrompt';
 export const TRACK_SET_CAMPAIGN_WITH_URL = 'setCampaignWithUrl';
+export const TRACK_LOGIN_SUCCESS = 'loginSuccess';
+export const TRACK_LOGIN_FAILED = 'loginFailed';
 export const REMOVE_TRACKER = 'removeTracker';
 export const ADD_TRACKER = 'addTracker';
 
@@ -86,4 +88,6 @@ export default [
   TRACK_SET_CAMPAIGN_WITH_URL,
   REMOVE_TRACKER,
   ADD_TRACKER,
+  TRACK_LOGIN_SUCCESS,
+  TRACK_LOGIN_FAILED,
 ];
