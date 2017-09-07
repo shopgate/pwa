@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { removeTemporaryFilter } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 
 /**
  * Connects the dispatch function to a callable function in the props.

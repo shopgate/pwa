@@ -11,7 +11,7 @@ const wrapper = css({
   width: '100%',
   height: progressBarHeight,
   overflow: 'hidden',
-  transition: 'height .3s linear',
+  transition: 'transform .3s linear',
 }).toString();
 
 const innerElement = css({

@@ -23,7 +23,6 @@ const Properties = ({ properties }) => (
         </li>
       )}
     </ul>
-    <div dangerouslySetInnerHTML={{ __html: '&nbsp;' }} />
   </Grid.Item>
 );
 

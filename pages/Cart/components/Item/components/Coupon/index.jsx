@@ -17,6 +17,7 @@ import {
 } from '../../../../style';
 import connect from './connector';
 import Layout from './components/Layout';
+import styles from './style';
 
 /**
  * The Coupon component.
@@ -81,13 +82,15 @@ class Coupon extends Component {
             key={this.props.id}
             style={getTransitionStyle(state)}
           >
-            <CardList.Item ref={(element) => { this.cardElement = element; }}>
-              <Layout
-                handleDelete={this.transitionOut}
-                coupon={this.props.coupon}
-                currency={this.props.currency}
-              />
-            </CardList.Item>
+            <div className={styles} ref={(element) => { this.cardElement = element; }}>
+              <CardList.Item>
+                <Layout
+                  handleDelete={this.transitionOut}
+                  coupon={this.props.coupon}
+                  currency={this.props.currency}
+                />
+              </CardList.Item>
+            </div>
           </div>
         )}
       </Transition>

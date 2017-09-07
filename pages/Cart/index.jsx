@@ -23,6 +23,7 @@ import styles from './style';
  */
 class Cart extends Component {
   static propTypes = {
+    isLoading: PropTypes.bool.isRequired,
     cartItems: PropTypes.arrayOf(PropTypes.shape()),
     messages: PropTypes.arrayOf(PropTypes.shape()),
   };
@@ -73,7 +74,7 @@ class Cart extends Component {
    * @returns {JSX}
    */
   render() {
-    const { cartItems, messages } = this.props;
+    const { cartItems, isLoading, messages } = this.props;
 
     return (
       <View title={this.title}>
@@ -89,7 +90,7 @@ class Cart extends Component {
             <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
           </section>
         )}
-        {cartItems.length === 0 && <Empty />}
+        {(!isLoading && cartItems.length === 0) && <Empty />}
       </View>
     );
   }
