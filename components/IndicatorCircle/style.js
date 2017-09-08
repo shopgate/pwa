@@ -36,8 +36,8 @@ const dash = css.keyframes({
 
 /**
  * Styles for the rotating circle.
- * @param  {string} color The color of the circle. Default color is "accent".
- * @param  {string} strokeWidth The stroke width of the circle.
+ * @param {string} color The color of the circle. Default color is "accent".
+ * @param {string} strokeWidth The stroke width of the circle.
  * @return {string} CSS class name.
  */
 const circle = (color, strokeWidth) => css({
