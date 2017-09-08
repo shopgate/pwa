@@ -7,11 +7,9 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import logger from '@shopgate/pwa-core/helpers';
-import {
-  requestUrl,
-  receiveUrl,
-  errorUrl,
-} from '@shopgate/pwa-common/action-creators/url';
+import requestUrl from '@shopgate/pwa-common/action-creators/url/requestUrl';
+import receiveUrl from '@shopgate/pwa-common/action-creators/url/receiveUrl';
+import errorUrl from '@shopgate/pwa-common/action-creators/url/errorUrl';
 import { getEntryByType } from '@shopgate/pwa-common/selectors/url';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { getCheckoutUrl } from '../selectors';

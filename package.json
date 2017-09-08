@@ -7,11 +7,11 @@
   "homepage": "https://github.com/shopgate/pwa-common-commerce",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js --ext .jsx ."
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx ."
   },
   "dependencies": {
-    "@shopgate/pwa-common": "github:shopgate/pwa-common",
-    "@shopgate/pwa-core": "github:shopgate/pwa-core",
+    "@shopgate/pwa-common": "^1.0.0-beta3",
+    "@shopgate/pwa-core": "^1.0.0-beta2",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "6.24.1",
