@@ -8,11 +8,9 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import {
-  requestProductVariants,
-  receiveProductVariants,
-  errorProductVariants,
-} from '../action-creators';
+import requestProductVariants from '../action-creators/requestProductVariants';
+import receiveProductVariants from '../action-creators/receiveProductVariants';
+import errorProductVariants from '../action-creators/errorProductVariants';
 
 /**
  * Retrieves product variants from store.

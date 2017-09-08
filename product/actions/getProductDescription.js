@@ -8,11 +8,9 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import {
-  requestProductDescription,
-  receiveProductDescription,
-  errorProductDescription,
-} from '../action-creators/';
+import requestProductDescription from '../action-creators/requestProductDescription';
+import receiveProductDescription from '../action-creators/receiveProductDescription';
+import errorProductDescription from '../action-creators/errorProductDescription';
 
 /**
  * Maybe requests a product description from server.

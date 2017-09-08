@@ -8,11 +8,9 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import {
-  requestProductOptions,
-  receiveProductOptions,
-  errorProductOptions,
-} from '../action-creators';
+import requestProductOptions from '../action-creators/requestProductOptions';
+import receiveProductOptions from '../action-creators/receiveProductOptions';
+import errorProductOptions from '../action-creators/errorProductOptions';
 
 /**
  * Retrieves product options from store.

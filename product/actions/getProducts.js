@@ -10,11 +10,9 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
-import {
-  requestProducts,
-  receiveProducts,
-  errorProducts,
-} from '../action-creators';
+import requestProducts from '../action-creators/requestProducts';
+import receiveProducts from '../action-creators/receiveProducts';
+import errorProducts from '../action-creators/errorProducts';
 import { getActiveFilters } from '../../filter/selectors';
 
 /**

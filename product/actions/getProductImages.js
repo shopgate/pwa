@@ -8,11 +8,9 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import {
-  requestProductImages,
-  receiveProductImages,
-  errorProductImages,
-} from '../action-creators';
+import requestProductImages from '../action-creators/requestProductImages';
+import receiveProductImages from '../action-creators/receiveProductImages';
+import errorProductImages from '../action-creators/errorProductImages';
 
 /**
  * Maybe requests images for a product from server.

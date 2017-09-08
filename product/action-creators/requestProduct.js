@@ -12,7 +12,7 @@ import { REQUEST_PRODUCT } from '../constants';
  * @param {string} productId The ID of the product to request.
  * @return {Object} The REQUEST_PRODUCT action.
  */
-export const requestProduct = productId => ({
+const requestProduct = productId => ({
   type: REQUEST_PRODUCT,
   productId,
 });
