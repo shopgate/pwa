@@ -19,6 +19,7 @@ export default function reviewsByProductId(state = {}, action) {
           ...state[action.productId],
           isFetching: true,
           reviews: null,
+          totalReviewCount: null,
         },
       };
     case RECEIVE_PRODUCT_REVIEWS:
@@ -28,6 +29,7 @@ export default function reviewsByProductId(state = {}, action) {
           ...state[action.productId],
           isFetching: false,
           reviews: action.reviews,
+          totalReviewCount: action.totalReviewCount,
         },
       };
     case ERROR_PRODUCT_REVIEWS:

@@ -458,3 +458,22 @@ export const getProductReviews = createSelector(
     return collection.reviews;
   }
 );
+
+/**
+ * Retrieves the number of reviews for a review
+ * @param {Object} state The current application state.
+ * @return {number} The total review count for a product
+ */
+export const getProductReviewCount = createSelector(
+  getCurrentProductId,
+  getProductReviewsState,
+  (productId, reviewsState) => {
+    const collection = reviewsState[productId];
+
+    if (!collection || !collection.totalReviewCount) {
+      return null;
+    }
+
+    return collection.totalReviewCount;
+  }
+);

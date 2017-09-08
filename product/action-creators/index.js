@@ -371,10 +371,11 @@ export const requestProductReviews = (productId, limit) => ({
  * @param {Object} reviews The received review data
  * @returns {Object} The RECEIVE_PRODUCT_REVIEWS action
  */
-export const receiveProductReviews = (productId, reviews) => ({
+export const receiveProductReviews = (productId, reviews, totalReviewCount) => ({
   type: RECEIVE_PRODUCT_REVIEWS,
   productId,
   reviews,
+  totalReviewCount,
 });
 
 /**

@@ -23,8 +23,7 @@ const getProductReviews = (productId, limit = 2) => (dispatch) => {
     })
     .dispatch()
     .then((result) => {
-      logger.log('reviews result', result);
-      dispatch(receiveProductReviews(productId, result.reviews));
+      dispatch(receiveProductReviews(productId, result.reviews, result.totalReviewCount));
     })
     .catch((error) => {
       logger.error(error);
