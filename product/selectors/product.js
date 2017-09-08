@@ -460,7 +460,7 @@ export const getProductReviews = createSelector(
 );
 
 /**
- * Retrieves the number of reviews for a review
+ * Retrieves the number of reviews for a product
  * @param {Object} state The current application state.
  * @return {number} The total review count for a product
  */
