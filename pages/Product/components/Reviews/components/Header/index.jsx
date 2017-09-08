@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import AddReviewButton from './components/AddReviewButton';
+import AddReviewLink from './components/AddReviewLink';
 import AverageRating from './components/AverageRating';
 import style from './style';
 
@@ -31,7 +31,7 @@ const Header = ({ rating }) => {
         <AverageRating rating={rating} />
         <div className={style.noReviews}>
           <I18n.Text string="reviews.no_reviews" />
-          <AddReviewButton />
+          <AddReviewLink />
         </div>
       </div>
     );
@@ -42,9 +42,9 @@ const Header = ({ rating }) => {
       <AverageRating rating={rating} />
       <div className={style.reviewsLine}>
         <I18n.Text string="reviews.rating">
-          <span className={style.averageRating}>{average}</span>
+          <span className={style.averageRating}>{average * 5}</span>
         </I18n.Text>
-        <AddReviewButton />
+        <AddReviewLink />
       </div>
     </div>
   );

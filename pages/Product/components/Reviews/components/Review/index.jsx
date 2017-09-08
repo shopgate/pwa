@@ -7,6 +7,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './style';
+import ReviewTitle from './components/ReviewTitle';
+import ReviewRating from './components/ReviewRating';
+import ReviewText from './components/ReviewText';
+import ReviewInfo from './components/ReviewInfo';
 
 /**
  * Single Review Component
@@ -14,27 +19,21 @@ import PropTypes from 'prop-types';
  * @returns {XML}
  * @constructor
  */
-const Review = props => (
-  <div>
-    <p>{props.rating}</p>
-    <p>{props.title}</p>
-    <p>{props.text}</p>
-    <p>{props.author}</p>
+const Review = ({ review }) => (
+  <div className={style.review}>
+    <ReviewTitle title={review.title} />
+    <ReviewRating rate={review.rate} />
+    <ReviewText review={review.review} />
+    <ReviewInfo review={review} />
   </div>
 );
 
 Review.propTypes = {
-  author: PropTypes.string,
-  rating: PropTypes.number,
-  text: PropTypes.string,
-  title: PropTypes.string,
+  review: PropTypes.shape(),
 };
 
 Review.defaultProps = {
-  title: null,
-  author: null,
-  text: null,
-  rating: null,
+  review: null,
 };
 
 export default Review;

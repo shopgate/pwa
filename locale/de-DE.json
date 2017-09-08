@@ -98,8 +98,10 @@
   "reviews": {
     "rating": "Bewertung",
     "no_reviews": "Be the first to rate this product:",
-    "review_count": "{count} {count, plural, =1 {Bewertung} >1 {Bewertungen}}",
+    "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
     "button_add": "Bewertung schreiben",
-    "button_all": "Alle {0} Bewertungen"
+    "button_all": "Alle {0} Bewertungen",
+    "author": "von {0}",
+    "rating_stars": "{0} stars"
   }
 }

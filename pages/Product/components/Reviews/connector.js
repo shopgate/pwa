@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import {
   getProductReviews,
   getProductRating,
+  getProductReviewCount,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -19,6 +20,7 @@ import {
 const mapStateToProps = state => ({
   reviews: getProductReviews(state),
   rating: getProductRating(state),
+  totalReviewCount: getProductReviewCount(state),
 });
 
 export default connect(mapStateToProps);

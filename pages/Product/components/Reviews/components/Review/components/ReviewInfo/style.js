@@ -6,12 +6,13 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import colors from 'Styles/colors';
 
-const container = css({
-  padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+const info = css({
+  color: colors.shade3,
+  fontSize: 'small',
 }).toString();
 
 export default {
-  container,
+  info,
 };

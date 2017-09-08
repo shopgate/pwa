@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import connect from './connector';
 import Review from './components/Review';
 import Header from './components/Header';
+import AllReviewsLink from './components/AllReviewsLink';
 import style from './style';
 
 /**
@@ -18,26 +19,26 @@ import style from './style';
  * @returns {XML}
  * @constructor
  */
-const Reviews = ({ rating, reviews }) => {
-  const components = [];
-  const header = (<Header key="header" rating={rating} />);
+const Reviews = ({ rating, reviews, totalReviewCount }) => {
+  let components = [<Header key="header" rating={rating} />];
 
   if (!reviews) {
-    return header;
+    return (<div className={style.container}>{components}</div>);
   }
 
-  components.push(header);
   Object.keys(reviews).forEach((key) => {
-    components.push(
-      <Review
-        key={key}
-        title={reviews[key].title}
-        text={reviews[key].review}
-        author={reviews[key].author}
-        rating={reviews[key].rate}
-      />
-    );
+    components = [
+      ...components,
+      <Review key={key} review={reviews[key]} />,
+    ];
   });
+
+  if (totalReviewCount > 2) {
+    components = [
+      ...components,
+      <AllReviewsLink key="link" count={totalReviewCount} />,
+    ];
+  }
 
   return (<div className={style.container}>{components}</div>);
 };
@@ -45,11 +46,13 @@ const Reviews = ({ rating, reviews }) => {
 Reviews.propTypes = {
   rating: PropTypes.shape(),
   reviews: PropTypes.arrayOf(PropTypes.shape()),
+  totalReviewCount: PropTypes.number,
 };
 
 Reviews.defaultProps = {
   rating: null,
   reviews: null,
+  totalReviewCount: null,
 };
 
 export default connect(Reviews);

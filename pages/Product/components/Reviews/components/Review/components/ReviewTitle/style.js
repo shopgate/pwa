@@ -6,12 +6,11 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
-const container = css({
-  padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+const title = css({
+  fontWeight: 500,
 }).toString();
 
 export default {
-  container,
+  title,
 };

@@ -6,12 +6,25 @@
  */
 
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = css({
-  padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+const ratingLine = css({
+
+}).toString();
+
+const stars = css({
+  display: 'inline-block',
+  top: 3,
+}).toString();
+
+const text = css({
+  marginLeft: variables.gap.small,
+  color: colors.primary,
 }).toString();
 
 export default {
-  container,
+  ratingLine,
+  stars,
+  text,
 };
