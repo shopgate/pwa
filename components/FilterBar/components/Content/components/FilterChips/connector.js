@@ -6,9 +6,10 @@
  */
 
 import { connect } from 'react-redux';
-import { removeTemporaryFilter } from '@shopgate/pwa-common-commerce/filter/action-creators';
-import { commitTemporaryFilters, openFilterView } from '@shopgate/pwa-common-commerce/filter/actions';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
+import { commitTemporaryFilters } from '@shopgate/pwa-common-commerce/filter/actions';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
+import openFilterView from '../../actions/openFilterView';
 
 /**
  * Maps the contents of the state to the component props.

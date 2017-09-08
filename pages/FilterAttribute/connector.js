@@ -6,10 +6,8 @@
  */
 
 import { connect } from 'react-redux';
-import {
-  mergeTemporaryFilters,
-  removeTemporaryFilter,
-} from '@shopgate/pwa-common-commerce/filter/action-creators';
+import mergeTemporaryFilters from '@shopgate/pwa-common-commerce/filter/action-creators/mergeTemporaryFilters';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 import { getCurrentFilterAttribute } from '@shopgate/pwa-common-commerce/filter/selectors';
 import {
   setFilterAttributeOpened,

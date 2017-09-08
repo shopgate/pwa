@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { openFilterView } from '@shopgate/pwa-common-commerce/filter/actions';
+import openFilterView from '../../actions/openFilterView';
 
 /**
  * Connects the dispatch function to a callable function in the props.
