@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { getFilters } from '@shopgate/pwa-common-commerce/filter/actions';
+import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 
 /**
