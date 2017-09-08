@@ -7,7 +7,7 @@
 
 import { connect } from 'react-redux';
 import { getProductName } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { resetCurrentProduct } from '@shopgate/pwa-common-commerce/product/action-creators';
+import resetCurrentProduct from '@shopgate/pwa-common-commerce/product/action-creators/resetCurrentProduct';
 import getProductData from './actions/getProductData';
 
 /**
@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param  {Function} dispatch The redux dispatch function.
+ * @param {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
