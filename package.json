@@ -15,9 +15,9 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
-    "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-common": "^1.0.0-beta3",
     "@shopgate/pwa-common-commerce": "github:shopgate/pwa-common-commerce",
-    "@shopgate/pwa-core": "github:shopgate/pwa-core",
+    "@shopgate/pwa-core": "^1.0.0-beta2",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "3.0.0-beta.0",
     "babel-plugin-react-transform": "^2.0.2",

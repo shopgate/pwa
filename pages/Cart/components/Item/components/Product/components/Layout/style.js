@@ -37,7 +37,7 @@ const info = css({
   marginTop: variables.gap.big * 0.875,
   marginBottom: variables.gap.small * 0.25,
   flexGrow: 1,
-  alignItems: 'flex-end',
+  alignItems: 'flex-start',
   justifyContent: 'space-between',
 }).toString();
 
