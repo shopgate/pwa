@@ -102,6 +102,6 @@
     "button_add": "Write a Review",
     "button_all": "All {0} Reviews",
     "author": "by {0}",
-    "rating_stars": "{0} stars"
+    "rating_stars": "{0} {0, plural, =1 {star} other {stars}}"
   }
 }
