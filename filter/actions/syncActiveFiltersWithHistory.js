@@ -6,10 +6,7 @@
  */
 
 import sliceActiveFilters from '../action-creators/sliceActiveFilters';
-import {
-  getActiveFiltersStack,
-  getHistoryFilterIndex,
-} from '../selectors';
+import { getActiveFiltersStack, getHistoryFilterIndex } from '../selectors';
 
 /**
  * Removes the last entry from the active filters stack.

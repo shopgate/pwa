@@ -7,10 +7,7 @@
 
 import updateHistoryState from '@shopgate/pwa-common/actions/history/updateHistoryState';
 import addActiveFiltersAction from '../action-creators/addActiveFilters';
-import {
-  getActiveFiltersStack,
-  getHistoryFilterIndex,
-} from '../selectors';
+import { getActiveFiltersStack, getHistoryFilterIndex } from '../selectors';
 
 /**
  * Creates a new stack for active filters.

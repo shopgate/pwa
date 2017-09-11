@@ -9,7 +9,7 @@ import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
-import getCart from '../actions/getCart';
+import fetchCart from '../actions/fetchCart';
 import {
   cartRequesting$,
   cartReceived$,
@@ -50,7 +50,7 @@ export default function cart(subscribe) {
   );
 
   subscribe(cartNeedsSync$, ({ dispatch }) => {
-    dispatch(getCart());
+    dispatch(fetchCart());
   });
 
   subscribe(cartBusy$, ({ dispatch }) => {

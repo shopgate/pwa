@@ -17,7 +17,7 @@ import { getProductPendingCount } from '../selectors';
  * Get the current cart of the user.
  * @return {Function} A redux thunk.
  */
-const getCart = () => (dispatch, getState) => {
+const fetchCart = () => (dispatch, getState) => {
   dispatch(requestCart());
 
   new PipelineRequest('getCart')
@@ -40,4 +40,4 @@ const getCart = () => (dispatch, getState) => {
     });
 };
 
-export default getCart;
+export default fetchCart;

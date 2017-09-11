@@ -5,10 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  routeDidEnter,
-  historyDidUpdate$,
-} from '@shopgate/pwa-common/streams/history';
+import { routeDidEnter, historyDidUpdate$ } from '@shopgate/pwa-common/streams/history';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
 import setTemporaryFilters from '../action-creators/setTemporaryFilters';
 import addActiveFilters from '../actions/addActiveFilters';

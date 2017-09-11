@@ -20,7 +20,7 @@ const URL_TYPE_CHECKOUT = 'checkout';
  * Get the url for checkout.
  * @return {Function} A redux thunk.
  */
-export default () => (dispatch, getState) => {
+const fetchCheckoutUrl = () => (dispatch, getState) => {
   const state = getState();
 
   return new Promise((resolve, reject) => {
@@ -44,3 +44,5 @@ export default () => (dispatch, getState) => {
     }
   });
 };
+
+export default fetchCheckoutUrl;
