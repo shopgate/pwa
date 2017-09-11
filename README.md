@@ -1,9 +1,9 @@
+# Shopgate's PWA common library
+
 ![](https://travis-ci.org/shopgate/pwa-common.svg?branch=master)
 [![GitHub release](https://img.shields.io/github/release/shopgate/pwa-common.svg)]()
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-common/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-common?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
-# Shopgate's PWA common library
 
 This library handles the basic application environment for a [PWA](https://developers.google.com/web/progressive-web-apps/) in the **Shopgate Cloud**.
 
