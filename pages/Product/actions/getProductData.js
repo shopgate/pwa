@@ -44,7 +44,7 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
     dispatch(getProductImages(productId));
     dispatch(getProductShipping(productId));
     if (features.showReviews) {
-      dispatch(getProductReviews(productId));
+      dispatch(getProductReviews(productId, 20));
     }
   };
 

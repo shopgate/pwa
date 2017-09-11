@@ -11,7 +11,6 @@ import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
 import Header from './components/Header';
-import AllReviewsLink from './components/AllReviewsLink';
 import style from './style';
 
 /**
@@ -39,7 +38,6 @@ const Reviews = ({ rating, reviews }) => {
     <div className={style.container}>
       {header}
       <List reviews={reviews} />
-      <AllReviewsLink key="link" />
     </div>
   );
 };
