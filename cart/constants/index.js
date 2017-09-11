@@ -39,4 +39,4 @@ export const ERROR_CART = 'ERROR_CART';
  * Event that is called when addToCart failed because not all variants where selected yet.
  * @type {string}
  */
-export const ADD_TO_CART_MISSING_VARIANT = 'addToCart.missingVariant';
+export const EVENT_ADD_TO_CART_MISSING_VARIANT = 'EVENT_ADD_TO_CART_MISSING_VARIANT';

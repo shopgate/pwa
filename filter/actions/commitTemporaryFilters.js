@@ -10,10 +10,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import setActiveFilters from '../action-creators/setActiveFilters';
-import {
-  getActiveFiltersStack,
-  getTemporaryFilters,
-} from '../selectors';
+import { getActiveFiltersStack, getTemporaryFilters } from '../selectors';
 import getProducts from '../../product/actions/getProducts';
 import buildFilterParams from './helpers/buildFilterParams';
 

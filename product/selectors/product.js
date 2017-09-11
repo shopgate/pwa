@@ -400,7 +400,7 @@ export const getProductDescription = createSelector(
     const collection = productDescriptionState[productId];
 
     if (!collection || !collection.description) {
-      return null;
+      return '';
     }
 
     return collection.description;

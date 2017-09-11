@@ -6,7 +6,7 @@
  */
 
 import { createStore } from 'redux';
-import reducers from 'Library/reducers';
+import reducers from '../reducers';
 import {
   getProductBasePrice,
   getProductCurrency,

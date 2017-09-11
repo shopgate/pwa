@@ -7,7 +7,7 @@
 
 export const ITEM_PATH = '/item';
 
-export const CATEGORY_LIFETIME = 3600000; // 1 hour in milliseconds
+export const PRODUCT_LIFETIME = 3600000; // 1 hour in milliseconds
 
 // PRODUCT
 export const REQUEST_PRODUCT = 'REQUEST_PRODUCT';
