@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { fetchSearchSuggestions } from '@shopgate/pwa-common-commerce/search/actions';
+import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 import {
   getCurrentSearchSuggestions,
   getSearchPhrase,

@@ -8,8 +8,8 @@
 import { connect } from 'react-redux';
 import { getQueryParam } from '@shopgate/pwa-common/selectors/history';
 import toggleNavSearchField from 'Components/Navigator/actions/toggleNavSearchField';
-import setSearchPhrase from './actions/setSearchPhrase';
 import submitSearch from 'Components/Navigator/actions/submitSearch';
+import setSearchPhrase from './actions/setSearchPhrase';
 
 /**
  * Maps the contents of the state to the component props.
