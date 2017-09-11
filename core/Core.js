@@ -312,11 +312,11 @@ class Core {
    * This function will handle the cross domain tracking, depending on which sdks are there
    * @param {string} originalUrl url of the link
    * @param {HTMLFormElement} [formElement] Form element if we do a POST
-   * @returns {boolean} Tells if the function executed the steps that are necessary for domain
-   *   transitions via tracking plugins.
+   * @returns {boolean|string} Tells if the function executed the steps that are necessary
+   *          for domain transitions via tracking plugins. In a sg cloud app it returns the new url.
    */
   crossDomainTracking = (originalUrl, formElement) => {
-    if (window.sgData.device.access === 'App') {
+    if (window.sgData && window.sgData.device.access === 'App') {
       return false;
     }
 
@@ -325,6 +325,11 @@ class Core {
     // Add econda params
     if (typeof window.getEmosCrossUrlParams === 'function') {
       newUrl += (!newUrl.includes('?') ? '?' : '&') + window.getEmosCrossUrlParams();
+    }
+
+    // If there is no sgData, we are in sg cloud app and have to return the new url
+    if (!window.sgData) {
+      return newUrl;
     }
 
     // Universal
