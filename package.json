@@ -7,8 +7,20 @@
   "homepage": "https://github.com/shopgate/pwa-common-commerce",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx ."
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx .",
+    "precommit": "lint-staged",
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx ."
+    }
+  },
+  "pre-commit": [
+    "precommit"
+  ],
   "dependencies": {
     "@shopgate/pwa-common": "^1.0.0-beta3",
     "@shopgate/pwa-core": "^1.0.0-beta2",
@@ -22,14 +34,19 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.4",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
     "recompose": "^0.25.0",
     "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
+    "@shopgate/pwa-unit-test": "^1.0.0",
+    "coveralls": "^2.13.1",
     "enzyme": "^2.9.1",
-    "lint-staged": "4.0.3"
+    "jest": "^21.0.2",
+    "lint-staged": "^4.0.3",
+    "pre-commit": "^1.2.2",
+    "react-test-renderer": "^15.6.1"
   }
 }
