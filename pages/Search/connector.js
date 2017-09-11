@@ -8,7 +8,7 @@
 import { connect } from 'react-redux';
 import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getSearchResults } from '@shopgate/pwa-common-commerce/search/actions';
+import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 
 /**
