@@ -13,6 +13,7 @@ import requestBuffer from '../RequestBuffer';
 import { getPipelineManager } from '../PipelineManagers';
 import {
   CURRENT_VERSION,
+  EVENT_PIPELINE_ERROR,
   ETIMEOUT,
   TYPE_TRUSTED,
 } from '../../constants/Pipeline';
@@ -96,13 +97,25 @@ class PipelineRequest extends Request {
       event.removeCallback(requestCallbackName, this.requestCallback);
       requestBuffer.remove(serial);
 
+      const { input, name } = this;
+
       logger.log(`pipelineResponse: ${this.name}`, {
-        input: this.input,
+        input,
         error,
         output,
       });
 
       if (error) {
+        const isHandledError = this.handledErrors.includes(error.code);
+
+        if (!isHandledError) {
+          event.trigger(EVENT_PIPELINE_ERROR, {
+            name,
+            input,
+            error,
+          });
+        }
+
         this.manager.handleError(this, reject, error);
         return;
       }
