@@ -25,7 +25,7 @@ export default combineReducers({
   productsById,
   propertiesByProductId,
   resultsByHash,
+  reviewsByProductId,
   shippingByProductId,
   variantsByProductId,
-  reviewsByProductId,
 });
