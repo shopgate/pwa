@@ -15,7 +15,7 @@ import { getSearchPhrase } from '../selectors';
  * @param {number} offset The offset for the products to request.
  * @return {Function} The dispatched action.
  */
-export const getSearchResults = (offset = 0) => (dispatch, getState) => {
+const getSearchResults = (offset = 0) => (dispatch, getState) => {
   const state = getState();
   const sort = getSortOrder(state);
   const limit = ITEMS_PER_LOAD;
@@ -36,3 +36,5 @@ export const getSearchResults = (offset = 0) => (dispatch, getState) => {
     })
   );
 };
+
+export default getSearchResults;
