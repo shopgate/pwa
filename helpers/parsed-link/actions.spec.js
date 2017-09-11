@@ -11,7 +11,7 @@ import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import actions from './actions';
 
-jest.mock('Library/commands', () => ({
+jest.mock('@shopgate/pwa-core/commands', () => ({
   showTab: jest.fn(),
   flushTab: jest.fn(),
   popTabToRoot: jest.fn(),

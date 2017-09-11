@@ -206,38 +206,4 @@ describe('Tests link options', () => {
       expect(parsedLink.getHandlers()).toEqual(testLinks[link]);
     });
   });
-
-  it('should handle coupons', () => {
-    const couponLinks = {
-      '/item/123?coupon=test': [
-        {
-          action: 'reactRouter',
-          options: '/item/123?coupon=test',
-        },
-      ],
-      '/page/foo?coupon=test': [
-        {
-          action: 'reactRouter',
-          options: '/page/foo',
-        },
-      ],
-      '/cart_add_coupon/test': [],
-    };
-
-    Object.keys(couponLinks).forEach((link) => {
-      const parsedLink = new ParsedLink(link);
-
-      const handlers = parsedLink.getHandlers();
-
-      const couponActions = handlers.filter(handler => handler.action === 'functionCall');
-
-      // Check if we have a valid coupon action
-      expect(couponActions).toHaveLength(1);
-      expect(couponActions[0].options).toBeInstanceOf(Function);
-
-      const regularActions = handlers.filter(handler => handler.action !== 'functionCall');
-
-      expect(regularActions).toEqual(couponLinks[link]);
-    });
-  });
 });

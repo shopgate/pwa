@@ -64,10 +64,10 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
-    "@shopgate/pwa-unit-test": "^1.0.0",
+    "@shopgate/pwa-unit-test": "^1.0.3",
     "coveralls": "^2.13.1",
     "enzyme": "^2.9.1",
-    "jest": "^20.0.4",
+    "jest": "20.0.4",
     "lint-staged": "^4.0.3",
     "pre-commit": "^1.2.2",
     "react": "^15.6.1",

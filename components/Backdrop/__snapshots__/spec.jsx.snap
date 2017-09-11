@@ -1,194 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Backdrop /> should render 1`] = `
-ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
-  "length": 1,
-  "node": <Transition
-    childrenStyles={
-        Object {
-            "appear": Object {
-              "opacity": 0.5,
-            },
-            "base": Object {
-              "background": "#000",
-              "opacity": 0,
-              "transition": "opacity 200ms ease-out",
-              "zIndex": 2,
-            },
-            "enter": Object {
-              "opacity": 0.5,
-            },
-            "leave": Object {
-              "opacity": 0,
-            },
-          }
+<Transition
+  childrenStyles={
+    Object {
+      "appear": Object {
+        "opacity": 0.5,
+      },
+      "base": Object {
+        "background": "#000",
+        "opacity": 0,
+        "transition": "opacity 200ms ease-out",
+        "zIndex": 2,
+      },
+      "enter": Object {
+        "opacity": 0.5,
+      },
+      "leave": Object {
+        "opacity": 0,
+      },
     }
-    component="div"
+  }
+  component="div"
 >
-    <div
-        aria-hidden={true}
-        className="css-hlk66h"
-        onClick={[Function]}
-    />
-</Transition>,
-  "nodes": Array [
-    <Transition
-      childrenStyles={
-            Object {
-                  "appear": Object {
-                    "opacity": 0.5,
-                  },
-                  "base": Object {
-                    "background": "#000",
-                    "opacity": 0,
-                    "transition": "opacity 200ms ease-out",
-                    "zIndex": 2,
-                  },
-                  "enter": Object {
-                    "opacity": 0.5,
-                  },
-                  "leave": Object {
-                    "opacity": 0,
-                  },
-                }
-      }
-      component="div"
->
-      <div
-            aria-hidden={true}
-            className="css-hlk66h"
-            onClick={[Function]}
-      />
-</Transition>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <Backdrop
-        color="#000"
-        duration={200}
-        isVisible={true}
-        level={2}
-        onClick={[Function]}
-        opacity={50}
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": Backdrop {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "props": Object {
-          "color": "#000",
-          "duration": 200,
-          "isVisible": true,
-          "level": 2,
-          "onClick": [Function],
-          "opacity": 50,
-        },
-        "refs": Object {},
-        "state": null,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <Transition
-          childrenStyles={
-                    Object {
-                              "appear": Object {
-                                "opacity": 0.5,
-                              },
-                              "base": Object {
-                                "background": "#000",
-                                "opacity": 0,
-                                "transition": "opacity 200ms ease-out",
-                                "zIndex": 2,
-                              },
-                              "enter": Object {
-                                "opacity": 0.5,
-                              },
-                              "leave": Object {
-                                "opacity": 0,
-                              },
-                            }
-          }
-          component="div"
->
-          <div
-                    aria-hidden={true}
-                    className="css-hlk66h"
-                    onClick={[Function]}
-          />
-</Transition>,
-        "_debugID": 2,
-        "_renderedOutput": <Transition
-          childrenStyles={
-                    Object {
-                              "appear": Object {
-                                "opacity": 0.5,
-                              },
-                              "base": Object {
-                                "background": "#000",
-                                "opacity": 0,
-                                "transition": "opacity 200ms ease-out",
-                                "zIndex": 2,
-                              },
-                              "enter": Object {
-                                "opacity": 0.5,
-                              },
-                              "leave": Object {
-                                "opacity": 0,
-                              },
-                            }
-          }
-          component="div"
->
-          <div
-                    aria-hidden={true}
-                    className="css-hlk66h"
-                    onClick={[Function]}
-          />
-</Transition>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <Backdrop
-    color="#000"
-    duration={200}
-    isVisible={true}
-    level={2}
+  <div
+    aria-hidden={true}
+    className="css-hlk66h"
     onClick={[Function]}
-    opacity={50}
-/>,
-}
+  />
+</Transition>
 `;

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ZoomPanContainer /> renders the correct initial zoom when minZoom < 1 1`] = `
+<div
+  className="css-11jqakt"
+>
+  <Hammer
+    direction="DIRECTION_ALL"
+    onDoubleTap={[Function]}
+    onPan={[Function]}
+    onPanEnd={[Function]}
+    onPanStart={[Function]}
+    onPinch={[Function]}
+    onPinchEnd={[Function]}
+    onPinchStart={[Function]}
+    options={
+      Object {
+        "recognizers": Object {
+          "pinch": Object {
+            "enable": true,
+          },
+        },
+      }
+    }
+  >
+    <div>
+      <div
+        className="css-1t53m48"
+      >
+        <div
+          className="css-ivsd5g"
+        >
+          <TestElement />
+        </div>
+      </div>
+    </div>
+  </Hammer>
+</div>
+`;
+
+exports[`<ZoomPanContainer /> renders the correct initial zoom when minZoom > 1 1`] = `
+<div
+  className="css-11jqakt"
+>
+  <Hammer
+    direction="DIRECTION_ALL"
+    onDoubleTap={[Function]}
+    onPan={[Function]}
+    onPanEnd={[Function]}
+    onPanStart={[Function]}
+    onPinch={[Function]}
+    onPinchEnd={[Function]}
+    onPinchStart={[Function]}
+    options={
+      Object {
+        "recognizers": Object {
+          "pinch": Object {
+            "enable": true,
+          },
+        },
+      }
+    }
+  >
+    <div>
+      <div
+        className="css-1t53m48"
+      >
+        <div
+          className="css-ivsd5g"
+        >
+          <TestElement />
+        </div>
+      </div>
+    </div>
+  </Hammer>
+</div>
+`;
