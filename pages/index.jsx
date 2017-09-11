@@ -32,7 +32,7 @@ import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
 import reducers from './reducers';
-import subscriptions from './subscriptions';
+import subscribers from './subscribers';
 import Page from './Page';
 import Category from './Category';
 import Filter from './Filter';
@@ -53,7 +53,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,
  * @returns {JSX}
  */
 const Pages = () =>
-  <App locale={locale} reducers={reducers} subscribers={subscriptions}>
+  <App locale={locale} reducers={reducers} subscribers={subscribers}>
     <Viewport>
       <ModalContainer component={Dialog} />
 
