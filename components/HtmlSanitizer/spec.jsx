@@ -11,7 +11,7 @@ import { JSDOM } from 'jsdom';
 import HtmlSanitizer from './index';
 
 const mockConstructor = jest.fn();
-jest.mock('../helpers/parsed-link', () => (class {
+jest.mock('../../helpers/parsed-link', () => (class {
   /**
    * Mocked version of the ParsedLink constructor.
    * @param {string} href Link location.

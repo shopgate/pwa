@@ -2,7 +2,6 @@
 
 exports[`<Route /> should create new instance when notified 1`] = `
 <Route
-  additionalTracking={[Function]}
   component={[Function]}
   path="category/:id"
 >
@@ -34,7 +33,6 @@ exports[`<Route /> should create new instance when notified 1`] = `
 
 exports[`<Route /> should keep two components when going forward 1`] = `
 <Route
-  additionalTracking={[Function]}
   component={[Function]}
   path="category/:id"
 >
@@ -85,7 +83,6 @@ exports[`<Route /> should keep two components when going forward 1`] = `
 
 exports[`<Route /> should register with Router in context 1`] = `
 <Route
-  additionalTracking={[Function]}
   component={[Function]}
   path="category/:id"
 >
@@ -97,7 +94,6 @@ exports[`<Route /> should register with Router in context 1`] = `
 
 exports[`<Route /> should remove route instance when going back 1`] = `
 <Route
-  additionalTracking={[Function]}
   component={[Function]}
   path="category/:id"
 >

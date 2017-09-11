@@ -1,736 +1,255 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RangeSlider /> renders with boundaries 1`] = `
-ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
-  "length": 1,
-  "node": <div
-    className={undefined}
+exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] = `
+<RangeSlider
+  animationSpeed={500}
+  classNames={Object {}}
+  easing="exponential"
+  factor={0.01}
+  max={1000}
+  min={0}
+  onChange={[Function]}
+  resolution={0.01}
+  styles={Object {}}
+  value={
+    Array [
+      10,
+      450,
+    ]
+  }
+>
+  <div
     onTouchStart={[Function]}
->
+  >
     <div
-        className="undefined css-12vo5ad"
+      className="undefined css-12vo5ad"
     >
-        <div
-            className="undefined css-10eto0a"
-            style={
-                Object {
-                    "left": "0%",
-                    "right": "0%",
-                    "transition": null,
-                  }
-            }
-        >
-            <RangeSliderHandle
-                active={false}
-                classNames={Object {}}
-                index={0}
-                onTouchStart={[Function]}
-            />
-            <RangeSliderHandle
-                active={false}
-                classNames={Object {}}
-                index={1}
-                onTouchStart={[Function]}
-            />
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div
-      className={undefined}
-      onTouchStart={[Function]}
->
       <div
-            className="undefined css-12vo5ad"
-      >
-            <div
-                  className="undefined css-10eto0a"
-                  style={
-                        Object {
-                              "left": "0%",
-                              "right": "0%",
-                              "transition": null,
-                            }
-                  }
-            >
-                  <RangeSliderHandle
-                        active={false}
-                        classNames={Object {}}
-                        index={0}
-                        onTouchStart={[Function]}
-                  />
-                  <RangeSliderHandle
-                        active={false}
-                        classNames={Object {}}
-                        index={1}
-                        onTouchStart={[Function]}
-                  />
-            </div>
-      </div>
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <RangeSlider
-        animationSpeed={500}
-        classNames={Object {}}
-        easing="linear"
-        factor={2}
-        max={100}
-        min={0}
-        onChange={null}
-        resolution={1}
-        styles={Object {}}
-        value={
-                Array [
-                        0,
-                        100,
-                      ]
+        className="undefined css-10eto0a"
+        style={
+          Object {
+            "left": "1.0000000000000008e-198%",
+            "right": "100%",
+            "transition": null,
+          }
         }
-/>,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": RangeSlider {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "domElement": null,
-        "draggedHandle": null,
-        "draggedHandlePixelOffset": 0,
-        "handleRangeTouch": [Function],
-        "handleTouchEnd": [Function],
-        "handleTouchMove": [Function],
-        "handleTouchStart": [Function],
-        "props": Object {
-          "animationSpeed": 500,
-          "classNames": Object {},
-          "easing": "linear",
-          "factor": 2,
-          "max": 100,
-          "min": 0,
-          "onChange": null,
-          "resolution": 1,
-          "styles": Object {},
-          "value": Array [
-            0,
-            100,
-          ],
-        },
-        "refs": Object {},
-        "state": Object {
-          "rangeMax": 1,
-          "rangeMin": 0,
-        },
-        "touchOffset": 0,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
           onTouchStart={[Function]}
->
+        >
           <div
-                    className="undefined css-12vo5ad"
+            className="undefined css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
           >
-                    <div
-                              className="undefined css-10eto0a"
-                              style={
-                                        Object {
-                                                  "left": "0%",
-                                                  "right": "0%",
-                                                  "transition": null,
-                                                }
-                              }
-                    >
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={0}
-                                        onTouchStart={[Function]}
-                              />
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={1}
-                                        onTouchStart={[Function]}
-                              />
-                    </div>
+            <div />
           </div>
-</div>,
-        "_debugID": 2,
-        "_renderedOutput": <div
-          className={undefined}
+        </RangeSliderHandle>
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
           onTouchStart={[Function]}
->
+        >
           <div
-                    className="undefined css-12vo5ad"
+            className="undefined css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
           >
-                    <div
-                              className="undefined css-10eto0a"
-                              style={
-                                        Object {
-                                                  "left": "0%",
-                                                  "right": "0%",
-                                                  "transition": null,
-                                                }
-                              }
-                    >
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={0}
-                                        onTouchStart={[Function]}
-                              />
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={1}
-                                        onTouchStart={[Function]}
-                              />
-                    </div>
+            <div />
           </div>
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <RangeSlider
-    animationSpeed={500}
-    classNames={Object {}}
-    easing="linear"
-    factor={2}
-    max={100}
-    min={0}
-    onChange={null}
-    resolution={1}
-    styles={Object {}}
-    value={
-        Array [
-            0,
-            100,
-          ]
-    }
-/>,
-}
+        </RangeSliderHandle>
+      </div>
+    </div>
+  </div>
+</RangeSlider>
+`;
+
+exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
+<RangeSlider
+  animationSpeed={500}
+  classNames={Object {}}
+  easing="linear"
+  factor={0.01}
+  max={100}
+  min={0}
+  onChange={[Function]}
+  resolution={0.01}
+  styles={Object {}}
+  value={
+    Array [
+      50,
+      75,
+    ]
+  }
+>
+  <div
+    onTouchStart={[Function]}
+  >
+    <div
+      className="undefined css-12vo5ad"
+    >
+      <div
+        className="undefined css-10eto0a"
+        style={
+          Object {
+            "left": "50%",
+            "right": "25%",
+            "transition": null,
+          }
+        }
+      >
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={0}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="undefined css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
+          >
+            <div />
+          </div>
+        </RangeSliderHandle>
+        <RangeSliderHandle
+          active={false}
+          classNames={Object {}}
+          index={1}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="undefined css-8mlj8f"
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "zIndex": 0,
+              }
+            }
+          >
+            <div />
+          </div>
+        </RangeSliderHandle>
+      </div>
+    </div>
+  </div>
+</RangeSlider>
+`;
+
+exports[`<RangeSlider /> renders with boundaries 1`] = `
+<div
+  onTouchStart={[Function]}
+>
+  <div
+    className="undefined css-12vo5ad"
+  >
+    <div
+      className="undefined css-10eto0a"
+      style={
+        Object {
+          "left": "0%",
+          "right": "0%",
+          "transition": null,
+        }
+      }
+    >
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={0}
+        onTouchStart={[Function]}
+      />
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={1}
+        onTouchStart={[Function]}
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`<RangeSlider /> renders without a value pair 1`] = `
-ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
-  "length": 1,
-  "node": <div
-    className={undefined}
-    onTouchStart={[Function]}
+<div
+  onTouchStart={[Function]}
 >
+  <div
+    className="undefined css-12vo5ad"
+  >
     <div
-        className="undefined css-12vo5ad"
-    >
-        <div
-            className="undefined css-10eto0a"
-            style={
-                Object {
-                    "left": "10%",
-                    "right": "50%",
-                    "transition": null,
-                  }
-            }
-        >
-            <RangeSliderHandle
-                active={false}
-                classNames={Object {}}
-                index={0}
-                onTouchStart={[Function]}
-            />
-            <RangeSliderHandle
-                active={false}
-                classNames={Object {}}
-                index={1}
-                onTouchStart={[Function]}
-            />
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div
-      className={undefined}
-      onTouchStart={[Function]}
->
-      <div
-            className="undefined css-12vo5ad"
-      >
-            <div
-                  className="undefined css-10eto0a"
-                  style={
-                        Object {
-                              "left": "10%",
-                              "right": "50%",
-                              "transition": null,
-                            }
-                  }
-            >
-                  <RangeSliderHandle
-                        active={false}
-                        classNames={Object {}}
-                        index={0}
-                        onTouchStart={[Function]}
-                  />
-                  <RangeSliderHandle
-                        active={false}
-                        classNames={Object {}}
-                        index={1}
-                        onTouchStart={[Function]}
-                  />
-            </div>
-      </div>
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <RangeSlider
-        animationSpeed={500}
-        classNames={Object {}}
-        easing="linear"
-        factor={2}
-        max={100}
-        min={0}
-        onChange={null}
-        resolution={1}
-        styles={Object {}}
-        value={
-                Array [
-                        10,
-                        50,
-                      ]
+      className="undefined css-10eto0a"
+      style={
+        Object {
+          "left": "10%",
+          "right": "50%",
+          "transition": null,
         }
-/>,
-      "_debugID": 5,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": RangeSlider {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "domElement": null,
-        "draggedHandle": null,
-        "draggedHandlePixelOffset": 0,
-        "handleRangeTouch": [Function],
-        "handleTouchEnd": [Function],
-        "handleTouchMove": [Function],
-        "handleTouchStart": [Function],
-        "props": Object {
-          "animationSpeed": 500,
-          "classNames": Object {},
-          "easing": "linear",
-          "factor": 2,
-          "max": 100,
-          "min": 0,
-          "onChange": null,
-          "resolution": 1,
-          "styles": Object {},
-          "value": Array [
-            10,
-            50,
-          ],
-        },
-        "refs": Object {},
-        "state": Object {
-          "rangeMax": 0.5,
-          "rangeMin": 0.1,
-        },
-        "touchOffset": 0,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 3,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}
-          onTouchStart={[Function]}
->
-          <div
-                    className="undefined css-12vo5ad"
-          >
-                    <div
-                              className="undefined css-10eto0a"
-                              style={
-                                        Object {
-                                                  "left": "10%",
-                                                  "right": "50%",
-                                                  "transition": null,
-                                                }
-                              }
-                    >
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={0}
-                                        onTouchStart={[Function]}
-                              />
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={1}
-                                        onTouchStart={[Function]}
-                              />
-                    </div>
-          </div>
-</div>,
-        "_debugID": 6,
-        "_renderedOutput": <div
-          className={undefined}
-          onTouchStart={[Function]}
->
-          <div
-                    className="undefined css-12vo5ad"
-          >
-                    <div
-                              className="undefined css-10eto0a"
-                              style={
-                                        Object {
-                                                  "left": "10%",
-                                                  "right": "50%",
-                                                  "transition": null,
-                                                }
-                              }
-                    >
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={0}
-                                        onTouchStart={[Function]}
-                              />
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={1}
-                                        onTouchStart={[Function]}
-                              />
-                    </div>
-          </div>
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <RangeSlider
-    animationSpeed={500}
-    classNames={Object {}}
-    easing="linear"
-    factor={2}
-    max={100}
-    min={0}
-    onChange={null}
-    resolution={1}
-    styles={Object {}}
-    value={
-        Array [
-            10,
-            50,
-          ]
-    }
-/>,
-}
+      }
+    >
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={0}
+        onTouchStart={[Function]}
+      />
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={1}
+        onTouchStart={[Function]}
+      />
+    </div>
+  </div>
+</div>
 `;
 
 exports[`<RangeSlider /> renders without boundaries 1`] = `
-ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
-  "length": 1,
-  "node": <div
-    className={undefined}
-    onTouchStart={[Function]}
+<div
+  onTouchStart={[Function]}
 >
+  <div
+    className="undefined css-12vo5ad"
+  >
     <div
-        className="undefined css-12vo5ad"
-    >
-        <div
-            className="undefined css-10eto0a"
-            style={
-                Object {
-                    "left": "0%",
-                    "right": "0%",
-                    "transition": null,
-                  }
-            }
-        >
-            <RangeSliderHandle
-                active={false}
-                classNames={Object {}}
-                index={0}
-                onTouchStart={[Function]}
-            />
-            <RangeSliderHandle
-                active={false}
-                classNames={Object {}}
-                index={1}
-                onTouchStart={[Function]}
-            />
-        </div>
-    </div>
-</div>,
-  "nodes": Array [
-    <div
-      className={undefined}
-      onTouchStart={[Function]}
->
-      <div
-            className="undefined css-12vo5ad"
-      >
-            <div
-                  className="undefined css-10eto0a"
-                  style={
-                        Object {
-                              "left": "0%",
-                              "right": "0%",
-                              "transition": null,
-                            }
-                  }
-            >
-                  <RangeSliderHandle
-                        active={false}
-                        classNames={Object {}}
-                        index={0}
-                        onTouchStart={[Function]}
-                  />
-                  <RangeSliderHandle
-                        active={false}
-                        classNames={Object {}}
-                        index={1}
-                        onTouchStart={[Function]}
-                  />
-            </div>
-      </div>
-</div>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <RangeSlider
-        animationSpeed={500}
-        classNames={Object {}}
-        easing="linear"
-        factor={2}
-        max={100}
-        min={0}
-        onChange={null}
-        resolution={1}
-        styles={Object {}}
-        value={
-                Array [
-                        0,
-                        100,
-                      ]
+      className="undefined css-10eto0a"
+      style={
+        Object {
+          "left": "0%",
+          "right": "0%",
+          "transition": null,
         }
-/>,
-      "_debugID": 3,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": RangeSlider {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "domElement": null,
-        "draggedHandle": null,
-        "draggedHandlePixelOffset": 0,
-        "handleRangeTouch": [Function],
-        "handleTouchEnd": [Function],
-        "handleTouchMove": [Function],
-        "handleTouchStart": [Function],
-        "props": Object {
-          "animationSpeed": 500,
-          "classNames": Object {},
-          "easing": "linear",
-          "factor": 2,
-          "max": 100,
-          "min": 0,
-          "onChange": null,
-          "resolution": 1,
-          "styles": Object {},
-          "value": Array [
-            0,
-            100,
-          ],
-        },
-        "refs": Object {},
-        "state": Object {
-          "rangeMax": 1,
-          "rangeMin": 0,
-        },
-        "touchOffset": 0,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 2,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className={undefined}
-          onTouchStart={[Function]}
->
-          <div
-                    className="undefined css-12vo5ad"
-          >
-                    <div
-                              className="undefined css-10eto0a"
-                              style={
-                                        Object {
-                                                  "left": "0%",
-                                                  "right": "0%",
-                                                  "transition": null,
-                                                }
-                              }
-                    >
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={0}
-                                        onTouchStart={[Function]}
-                              />
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={1}
-                                        onTouchStart={[Function]}
-                              />
-                    </div>
-          </div>
-</div>,
-        "_debugID": 4,
-        "_renderedOutput": <div
-          className={undefined}
-          onTouchStart={[Function]}
->
-          <div
-                    className="undefined css-12vo5ad"
-          >
-                    <div
-                              className="undefined css-10eto0a"
-                              style={
-                                        Object {
-                                                  "left": "0%",
-                                                  "right": "0%",
-                                                  "transition": null,
-                                                }
-                              }
-                    >
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={0}
-                                        onTouchStart={[Function]}
-                              />
-                              <RangeSliderHandle
-                                        active={false}
-                                        classNames={Object {}}
-                                        index={1}
-                                        onTouchStart={[Function]}
-                              />
-                    </div>
-          </div>
-</div>,
-      },
-      "_renderedNodeType": 0,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <RangeSlider
-    animationSpeed={500}
-    classNames={Object {}}
-    easing="linear"
-    factor={2}
-    max={100}
-    min={0}
-    onChange={null}
-    resolution={1}
-    styles={Object {}}
-    value={
-        Array [
-            0,
-            100,
-          ]
-    }
-/>,
-}
+      }
+    >
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={0}
+        onTouchStart={[Function]}
+      />
+      <RangeSliderHandle
+        active={false}
+        classNames={Object {}}
+        index={1}
+        onTouchStart={[Function]}
+      />
+    </div>
+  </div>
+</div>
 `;
