@@ -16,7 +16,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
  * @param {number} offset The result offset for the pipeline.
  * @return {Function} A redux thunk.
  */
-export const getProducts = (offset = 0) => (dispatch, getState) => {
+const getProducts = (offset = 0) => (dispatch, getState) => {
   const pathname = getHistoryPathname(getState());
 
   if (pathname.startsWith(CATEGORY_PATH)) {
