@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { CREATE_MODAL, REMOVE_MODAL } from '../../constants/ModalTypes';
+import { CREATE_MODAL, REMOVE_MODAL } from '../../constants/ActionTypes';
 
 /**
  * Stores all the view information.
