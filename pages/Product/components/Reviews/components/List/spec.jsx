@@ -48,11 +48,15 @@ describe('<List />', () => {
   });
 
   it('should not render when no reviews given', () => {
+    expect(list).toMatchSnapshot();
+
     expect(list.find('Review').exists()).toBe(false);
   });
 
   it('should render list with reviews', () => {
     list.setProps({ reviews });
+
+    expect(list).toMatchSnapshot();
 
     expect(list.find('Review').exists()).toBe(true);
 

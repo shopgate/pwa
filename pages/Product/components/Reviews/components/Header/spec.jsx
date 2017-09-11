@@ -28,13 +28,21 @@ describe('<Header />', () => {
     header = mount(<Header rating={null} />);
   });
 
-  it('should render', () => {
+  it('should render empty', () => {
     expect(header.find('Header').exists()).toBe(true);
+    header.setProps({ rating: ratings[0] });
 
-    ratings.forEach((rating) => {
-      header.setProps({ rating });
-      expect(header.find('RatingStars').prop('value')).toEqual(rating.average || 0);
-      expect(header.find('RatingCount').prop('count')).toEqual(rating.reviewCount || 0);
-    });
+    expect(header).toMatchSnapshot();
+    expect(header.find('RatingStars').prop('value')).toEqual(0);
+    expect(header.find('RatingCount').prop('count')).toEqual(0);
+  });
+
+  it('should render rating summary', () => {
+    expect(header.find('Header').exists()).toBe(true);
+    header.setProps({ rating: ratings[1] });
+
+    expect(header).toMatchSnapshot();
+    expect(header.find('RatingStars').prop('value')).toEqual(ratings[1].average);
+    expect(header.find('RatingCount').prop('count')).toEqual(ratings[1].reviewCount);
   });
 });
