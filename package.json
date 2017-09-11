@@ -22,8 +22,8 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-core": "^1.0.0-beta2",
-    "@shopgate/tracking-core": "^1.0.0-beta2",
+    "@shopgate/pwa-core": "^1.0.0-beta3",
+    "@shopgate/tracking-core": "^1.0.0-beta3",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "6.24.1",
