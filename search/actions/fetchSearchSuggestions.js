@@ -19,7 +19,7 @@ import {
  * @param {string} searchPhrase The search phrase.
  * @returns {undefined}
  */
-export const fetchSearchSuggestions = () => (dispatch, getState) => {
+const fetchSearchSuggestions = () => (dispatch, getState) => {
   const state = getState();
   const searchPhrase = getSearchPhrase(state);
   const cachedSuggestions = getCurrentSearchSuggestionsObject(state);
@@ -37,3 +37,5 @@ export const fetchSearchSuggestions = () => (dispatch, getState) => {
       dispatch(receiveSearchSuggestions(searchPhrase, suggestions));
     });
 };
+
+export default fetchSearchSuggestions;
