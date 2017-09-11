@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
 import { getScrollParent } from '@shopgate/pwa-common/helpers/dom';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 import styles from './style';
 import Content from './components/Content';
 import connect from './connector';
