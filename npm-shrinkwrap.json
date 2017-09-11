@@ -94,7 +94,7 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "github:shopgate/pwa-common-commerce#da05a27c467bdf46f60e0ee1773bdb0ab69e3be0",
+      "version": "github:shopgate/pwa-common-commerce#18d6232262a2dcec55e057bb54c6d3bb787b449b",
       "requires": {
         "@shopgate/pwa-common": "1.0.0-beta3",
         "@shopgate/pwa-core": "1.0.0-beta2",

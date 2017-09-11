@@ -8,10 +8,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style';
-import ReviewTitle from './components/ReviewTitle';
-import ReviewRating from './components/ReviewRating';
-import ReviewText from './components/ReviewText';
-import ReviewInfo from './components/ReviewInfo';
+import Title from './components/Title';
+import Rating from './components/Rating';
+import Text from './components/Text';
+import Info from './components/Info';
 
 /**
  * Single Review Component
@@ -21,10 +21,10 @@ import ReviewInfo from './components/ReviewInfo';
  */
 const Review = ({ review }) => (
   <div className={style.review}>
-    <ReviewTitle title={review.title} />
-    <ReviewRating rate={review.rate} />
-    <ReviewText review={review.review} />
-    <ReviewInfo review={review} />
+    <Title title={review.title} />
+    <Rating rate={review.rate} />
+    <Text review={review.review} />
+    <Info review={review} />
   </div>
 );
 

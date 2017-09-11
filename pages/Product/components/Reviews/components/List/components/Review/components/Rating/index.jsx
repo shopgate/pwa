@@ -1,7 +1,14 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import RatingStars from '../../../../../../../../components/RatingStars';
+import RatingStars from '../../../../../../../../../../components/RatingStars';
 import style from './style';
 
 /**
@@ -9,7 +16,7 @@ import style from './style';
  * @param {number} rate The rating value
  * @constructor
  */
-const ReviewRating = ({ rate }) => {
+const Rating = ({ rate }) => {
   let stars = 1;
   if (rate > 20) {
     stars = rate / 20;
@@ -30,12 +37,12 @@ const ReviewRating = ({ rate }) => {
   );
 };
 
-ReviewRating.propTypes = {
+Rating.propTypes = {
   rate: PropTypes.number,
 };
 
-ReviewRating.defaultProps = {
+Rating.defaultProps = {
   rate: null,
 };
 
-export default ReviewRating;
+export default Rating;

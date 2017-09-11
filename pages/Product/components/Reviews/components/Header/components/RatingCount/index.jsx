@@ -21,11 +21,13 @@ const RatingCount = ({ count }) => {
     return null;
   }
 
-  return (<I18n.Text
-    string="reviews.review_count"
-    params={{ count }}
-    className={style.mute}
-  />);
+  return (
+    <I18n.Text
+      string="reviews.review_count"
+      params={{ count }}
+      className={style.mute}
+    />
+  );
 };
 
 RatingCount.propTypes = {

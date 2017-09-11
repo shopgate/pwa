@@ -15,7 +15,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
  * @returns {*}
  * @constructor
  */
-const ReviewAuthor = ({ author }) => {
+const Author = ({ author }) => {
   if (!author) {
     return null;
   }
@@ -23,12 +23,12 @@ const ReviewAuthor = ({ author }) => {
   return (<I18n.Text string="reviews.author" params={[author]} />);
 };
 
-ReviewAuthor.propTypes = {
+Author.propTypes = {
   author: PropTypes.string,
 };
 
-ReviewAuthor.defaultProps = {
+Author.defaultProps = {
   author: null,
 };
 
-export default ReviewAuthor;
+export default Author;

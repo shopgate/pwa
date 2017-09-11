@@ -8,22 +8,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style';
+
 /**
- * Review Text Component
- * @param {string} review The review text
+ * Review Title Component
+ * @param {string} title The title of a review
  * @returns {XML}
  * @constructor
  */
-const ReviewText = ({ review }) => (
-  <div className={style.text}>{`"${review}"`}</div>
+const Title = ({ title }) => (
+  <div className={style.title}>{title}</div>
 );
 
-ReviewText.propTypes = {
-  review: PropTypes.string,
+Title.propTypes = {
+  title: PropTypes.string,
 };
 
-ReviewText.defaultProps = {
-  review: null,
+Title.defaultProps = {
+  title: null,
 };
 
-export default ReviewText;
+export default Title;

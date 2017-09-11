@@ -7,8 +7,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { features } from 'Config/app.json';
 import connect from './connector';
-import Review from './components/Review';
+import List from './components/List';
 import Header from './components/Header';
 import AllReviewsLink from './components/AllReviewsLink';
 import style from './style';
@@ -19,40 +20,38 @@ import style from './style';
  * @returns {XML}
  * @constructor
  */
-const Reviews = ({ rating, reviews, totalReviewCount }) => {
-  let components = [<Header key="header" rating={rating} />];
+const Reviews = ({ rating, reviews }) => {
+  if (!features.showReviews) {
+    return null;
+  }
+
+  const header = <Header key="header" rating={rating} />;
 
   if (!reviews) {
-    return (<div className={style.container}>{components}</div>);
+    return (
+      <div className={style.container}>
+        {header}
+      </div>
+    );
   }
 
-  Object.keys(reviews).forEach((key) => {
-    components = [
-      ...components,
-      <Review key={key} review={reviews[key]} />,
-    ];
-  });
-
-  if (totalReviewCount > 2) {
-    components = [
-      ...components,
-      <AllReviewsLink key="link" count={totalReviewCount} />,
-    ];
-  }
-
-  return (<div className={style.container}>{components}</div>);
+  return (
+    <div className={style.container}>
+      {header}
+      <List reviews={reviews} />
+      <AllReviewsLink key="link" />
+    </div>
+  );
 };
 
 Reviews.propTypes = {
   rating: PropTypes.shape(),
   reviews: PropTypes.arrayOf(PropTypes.shape()),
-  totalReviewCount: PropTypes.number,
 };
 
 Reviews.defaultProps = {
   rating: null,
   reviews: null,
-  totalReviewCount: null,
 };
 
 export default connect(Reviews);

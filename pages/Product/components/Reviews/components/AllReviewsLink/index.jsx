@@ -9,24 +9,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import connect from './connector';
 import style from './style';
 
 /**
  * Link to all reviews
+ * @param {number} totalReviewCount The number of reviews given
+ * @returns {*}
  * @constructor
  */
-const AllReviewsLink = ({ count }) => (
-  <Link href="/" className={style.button}>
-    <I18n.Text string="reviews.button_all" params={[count]} />
-  </Link>
-);
+const AllReviewsLink = ({ totalReviewCount }) => {
+  if (totalReviewCount < 2) {
+    return null;
+  }
+
+  return (
+    <Link href="/" className={style.button}>
+      <I18n.Text string="reviews.button_all" params={[totalReviewCount]}/>
+    </Link>
+  );
+};
 
 AllReviewsLink.propTypes = {
-  count: PropTypes.number,
+  totalReviewCount: PropTypes.number,
 };
 
 AllReviewsLink.defaultProps = {
-  count: null,
+  totalReviewCount: null,
 };
 
-export default AllReviewsLink;
+export default connect(AllReviewsLink);

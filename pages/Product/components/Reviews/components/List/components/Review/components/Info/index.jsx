@@ -9,26 +9,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './style';
 import ReviewDate from './components/ReviewDate';
-import ReviewAuthor from './components/ReviewAuthor';
+import Author from './components/Author';
 
 /**
- * Single Review Component
+ * Review Info Component
  * @param {Object} props The props
  * @returns {XML}
  * @constructor
  */
-const ReviewInfo = ({ review }) => (
+const Info = ({ review }) => (
   <div className={style.info}>
-    <ReviewDate date={review.date} /> <ReviewAuthor author={review.author} />
+    <ReviewDate date={review.date} /> <Author author={review.author} />
   </div>
 );
 
-ReviewInfo.propTypes = {
+Info.propTypes = {
   review: PropTypes.shape(),
 };
 
-ReviewInfo.defaultProps = {
+Info.defaultProps = {
   review: null,
 };
 
-export default ReviewInfo;
+export default Info;
