@@ -23,7 +23,7 @@ module.exports = {
     '!**/node_modules/**',
   ],
   setupFiles: [
-    '<rootDir>/testSetup.js',
+    '@shopgate/pwa-unit-test/testSetup.js',
   ],
-  setupTestFrameworkScriptFile: '<rootDir>/envSetup.js',
+  setupTestFrameworkScriptFile: '@shopgate/pwa-unit-test/envSetup.js',
 };
