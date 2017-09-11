@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { CHECKMARK_DURATION } from '@shopgate/pwa-common/constants/DisplayOptions';
 import CartPlusIcon from 'Components/icons/CartPlusIcon';
 import TickIcon from 'Components/icons/TickIcon';
 import IndicatorCircle from 'Components/IndicatorCircle';
@@ -64,7 +63,7 @@ class AddToCartButton extends Component {
       this.setState({
         showCheckmark: false,
       });
-    }, CHECKMARK_DURATION);
+    }, 900);
   };
 
   /**

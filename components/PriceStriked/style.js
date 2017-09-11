@@ -11,7 +11,7 @@ import colors from 'Styles/colors';
 const basic = css({
   color: colors.shade3,
   whiteSpace: 'nowrap',
-  span: {
+  '& span': {
     position: 'relative',
     ':before': { // The strike-through effect is achieved by using the :before pseudo-class.
       borderColor: 'currentColor',
@@ -30,7 +30,7 @@ const basic = css({
  * @returns {string} Classname
  */
 const getAngleStyle = angle => css({
-  span: {
+  '& span': {
     ':before': {
       borderTop: '1px solid',
       transform: `rotate(-${angle}deg)`,
