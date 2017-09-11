@@ -10,12 +10,12 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
+  color: colors.light,
   marginBottom: 4,
 }).toString();
 
 const loggedIn = css({
   background: colors.accent,
-  color: colors.light,
   padding: `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`,
 }).toString();
 
