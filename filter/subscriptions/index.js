@@ -11,10 +11,8 @@ import {
 } from '@shopgate/pwa-common/streams/history';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
 import setTemporaryFilters from '../action-creators/setTemporaryFilters';
-import {
-  addActiveFilters,
-  syncActiveFiltersWithHistory,
-} from '../actions';
+import addActiveFilters from '../actions/addActiveFilters';
+import syncActiveFiltersWithHistory from '../actions/syncActiveFiltersWithHistory';
 import { getActiveFilters } from '../selectors';
 import { FILTER_PATH } from '../constants';
 import { CATEGORY_PATH } from '../../category/constants';

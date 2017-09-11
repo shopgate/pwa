@@ -16,10 +16,8 @@ import {
   getRawProductOptions,
   getProductOptions,
 } from '../selectors/product';
-import {
-  setProductVariantId,
-  setProductOption,
-} from '../action-creators';
+import setProductVariantId from '../action-creators/setProductVariantId';
+import setProductOption from '../action-creators/setProductOption';
 import {
   basicProductState,
   productWithOneOption,
