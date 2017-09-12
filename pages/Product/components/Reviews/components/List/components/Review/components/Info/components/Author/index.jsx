@@ -19,7 +19,7 @@ const Author = ({ author }) => {
     return null;
   }
 
-  return (<I18n.Text string="reviews.author" params={[author]} />);
+  return <I18n.Text string="reviews.author" params={[author]} />;
 };
 
 Author.propTypes = {

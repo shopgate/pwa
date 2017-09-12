@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
@@ -18,7 +19,7 @@ import styles from './style';
  * @param {Object} props The reviews data
  * @returns {null|JSX}
  */
-const Reviews = ({ rating, reviews }) => {
+const Reviews = pure(({ rating, reviews }) => {
   if (!features.showReviews) {
     return null;
   }
@@ -39,7 +40,7 @@ const Reviews = ({ rating, reviews }) => {
       <List reviews={reviews} />
     </div>
   );
-};
+});
 
 Reviews.propTypes = {
   rating: PropTypes.shape(),

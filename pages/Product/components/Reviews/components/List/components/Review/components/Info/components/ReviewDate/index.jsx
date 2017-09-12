@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 
 /**
- * Review Component
+ * Review Date Component
  * @param {string} date The date of a review
  * @returns {JSX}
  */

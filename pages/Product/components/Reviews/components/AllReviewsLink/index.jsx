@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import connect from './connector';
@@ -19,7 +20,7 @@ const REVIEW_PREVIEW_LIMIT = 2;
  * @param {number} totalReviewCount The number of reviews given
  * @returns {null|JSX}
  */
-const AllReviewsLink = ({ totalReviewCount }) => {
+const AllReviewsLink = pure(({ totalReviewCount }) => {
   if (totalReviewCount < REVIEW_PREVIEW_LIMIT) {
     return null;
   }
@@ -29,7 +30,7 @@ const AllReviewsLink = ({ totalReviewCount }) => {
       <I18n.Text string="reviews.button_all" params={[totalReviewCount]} />
     </Link>
   );
-};
+});
 
 AllReviewsLink.propTypes = {
   totalReviewCount: PropTypes.number,

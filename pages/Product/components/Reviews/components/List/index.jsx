@@ -13,22 +13,13 @@ import Review from './components/Review';
  * @param {Object} reviews A list of reviews
  * @returns {JSX}
  */
-const List = ({ reviews }) => {
-  let components = [];
-
-  Object.keys(reviews).forEach((key) => {
-    components = [
-      ...components,
-      [<Review key={key} review={reviews[key]} />],
-    ];
-  });
-
-  return (
-    <div>
-      {components}
-    </div>
-  );
-};
+const List = ({ reviews }) => (
+  <div>
+    {Object.keys(reviews).map(key => (
+      <Review key={key} review={reviews[key]} />
+    ))}
+  </div>
+);
 
 List.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.shape()),
