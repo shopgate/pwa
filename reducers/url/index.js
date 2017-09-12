@@ -12,7 +12,7 @@ import {
 } from '../../constants/ActionTypes';
 import { persist } from '../../store/persistent';
 
-const INFINITE_LIFETIME = 365 * 24 * 60 * 60 * 1000; // 1 year. Almost infinite ;)
+const INFINITE_LIFETIME = 31536000000; // 1 year in milliseconds
 
 /**
  * The current version of the state created by this reducer.
@@ -46,7 +46,7 @@ const reducer = (state = {}, action) => {
           ...state[action.urlType],
           url: action.url,
           isFetching: false,
-          expires: action.expires ? Date.parse(action.expires) : Date.now() + INFINITE_LIFETIME,
+          expires: action.expires ? Date.parse(action.expires) : (Date.now() + INFINITE_LIFETIME),
         },
       };
     case ERROR_URL:
