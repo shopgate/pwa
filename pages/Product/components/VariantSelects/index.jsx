@@ -8,8 +8,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import Event from '@shopgate/pwa-core/classes/Event';
-import { ADD_TO_CART_MISSING_VARIANT } from '@shopgate/pwa-common-commerce/cart/constants';
+import event from '@shopgate/pwa-core/classes/Event';
+import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '@shopgate/pwa-common-commerce/cart/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RouteGuard from '@shopgate/pwa-common/components/Router/components/RouteGuard';
 import Picker from 'Components/Picker';
@@ -115,7 +115,7 @@ class VariantSelects extends Component {
    * Registers a callback to the missing variant event.
    */
   componentDidMount() {
-    Event.addCallback(ADD_TO_CART_MISSING_VARIANT, this.handleMissingVariant);
+    event.addCallback(EVENT_ADD_TO_CART_MISSING_VARIANT, this.handleMissingVariant);
   }
 
   /**
@@ -133,7 +133,7 @@ class VariantSelects extends Component {
    */
   componentWillUnmount() {
     clearTimeout(this.runningTimeout);
-    Event.removeCallback(ADD_TO_CART_MISSING_VARIANT, this.handleMissingVariant);
+    event.removeCallback(EVENT_ADD_TO_CART_MISSING_VARIANT, this.handleMissingVariant);
   }
 
   /**

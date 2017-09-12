@@ -37,7 +37,6 @@ const handleClick = ({ onClick, href, close }) => {
     close();
   }, clickDelay);
 };
-
 /**
  * The Item component.
  * @param {Object} props The component props.
@@ -56,7 +55,12 @@ const Item = (props) => {
         <Grid className={styles.grid}>
           <Grid.Item>
             <div className={styles.icon}>
-              {props.icon && React.createElement(props.icon)}
+              {props.icon && React.createElement(
+                props.icon,
+                {
+                  ...props.primary && { className: styles.primaryIcon },
+                }
+              )}
             </div>
           </Grid.Item>
           <Grid.Item grow={1}>
