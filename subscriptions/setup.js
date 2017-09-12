@@ -7,16 +7,14 @@
 
 import get from 'lodash/get';
 
-// TODO: how to do this?
-import extensions from 'Extensions';
+// TODO: how to do this? import extensions from 'Extensions'
 
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
 import { getWebStorageEntry } from '@shopgate/pwa-common/commands';
 import core from '@shopgate/tracking-core/core/Core';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
 
-const UnifiedPlugin = extensions['core-tracking/plugin-unified'];
-const GaNativePlugin = extensions['shopgate-tracking-ga-native/init'];
 
 /**
  * Setup tracking subscriptions.
@@ -42,7 +40,7 @@ export default function setup(subscribe) {
        * Call the init function of the GA plugin.
        * This init function will create the actual instances based on the config
        */
-      GaNativePlugin(clientInformation);
+      //GaNativePlugin(clientInformation);
 
       core.registerFinished();
     });
