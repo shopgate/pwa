@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@shopgate/tracking-core": "1.0.0-beta1",
-    "@shopgate/pwa-common": "^1.0.0-beta3",
+    "@shopgate/pwa-common": "^1.0.0-beta3"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
