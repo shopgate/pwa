@@ -9,27 +9,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from '../../../../../../../../components/RatingStars';
 import RatingCount from '../RatingCount';
-import style from './style';
+import styles from './style';
 
 /**
  * The average rating and number of ratings for a product
  * @param {Object} rating The rating values
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const AverageRating = ({ rating }) => {
-  let average = 0;
-  let count = 0;
-
-  if (rating && rating.count) {
-    average = rating.average;
-    count = rating.count;
-  }
+  const { average = 0, count = 0 } = rating;
 
   return (
-    <div className={style.center}>
+    <div className={styles.center}>
       <RatingStars value={average} display="large" />
-      <RatingCount count={count} />
+      {count > 0 && <RatingCount count={count} />}
     </div>
   );
 };

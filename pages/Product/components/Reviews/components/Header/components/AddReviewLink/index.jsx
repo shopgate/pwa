@@ -8,14 +8,13 @@
 import React from 'react';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import style from './style';
+import styles from './style';
 
 /**
  * Link to add a review
- * @constructor
  */
 const AddReviewLink = () => (
-  <Link href="/" className={style.button}>
+  <Link href="/" className={styles.button}>
     <I18n.Text string="reviews.button_add" />
   </Link>
 );

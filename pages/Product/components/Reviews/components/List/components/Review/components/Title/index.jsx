@@ -7,16 +7,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './style';
+import styles from './style';
 
 /**
  * Review Title Component
  * @param {string} title The title of a review
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const Title = ({ title }) => (
-  <div className={style.title}>{title}</div>
+  <div className={styles.title}>{title}</div>
 );
 
 Title.propTypes = {

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './style';
+import styles from './style';
 import Title from './components/Title';
 import Rating from './components/Rating';
 import Text from './components/Text';
@@ -16,11 +16,10 @@ import Info from './components/Info';
 /**
  * Single Review Component
  * @param {Object} props The props
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const Review = ({ review }) => (
-  <div className={style.review}>
+  <div className={styles.review}>
     <Title title={review.title} />
     <Rating rate={review.rate} />
     <Text review={review.review} />

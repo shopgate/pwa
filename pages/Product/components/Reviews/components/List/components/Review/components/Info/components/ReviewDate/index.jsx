@@ -12,8 +12,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 /**
  * Review Component
  * @param {string} date The date of a review
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const ReviewDate = ({ date }) => (
   <I18n.Date timestamp={new Date(date).getTime()} />

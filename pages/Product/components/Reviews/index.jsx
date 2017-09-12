@@ -11,13 +11,12 @@ import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
 import Header from './components/Header';
-import style from './style';
+import styles from './style';
 
 /**
  * Reviews Component
  * @param {Object} props The reviews data
- * @returns {XML}
- * @constructor
+ * @returns {null|JSX}
  */
 const Reviews = ({ rating, reviews }) => {
   if (!features.showReviews) {
@@ -28,14 +27,14 @@ const Reviews = ({ rating, reviews }) => {
 
   if (!reviews) {
     return (
-      <div className={style.container}>
+      <div className={styles.container}>
         {header}
       </div>
     );
   }
 
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       {header}
       <List reviews={reviews} />
     </div>

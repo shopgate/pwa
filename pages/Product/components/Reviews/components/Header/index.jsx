@@ -9,13 +9,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import AverageRating from './components/AverageRating';
-import style from './style';
+import styles from './style';
 
 /**
  * The header of the reviews component
  * @param {Object} rating The rating values
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const Header = ({ rating }) => {
   let average = 0;
@@ -26,9 +25,9 @@ const Header = ({ rating }) => {
 
   if (!average) {
     return (
-      <div className={style.container}>
+      <div className={styles.container}>
         <AverageRating rating={rating} />
-        <div className={style.noReviews}>
+        <div className={styles.noReviews}>
           <I18n.Text string="reviews.no_reviews" />
         </div>
       </div>
@@ -36,11 +35,11 @@ const Header = ({ rating }) => {
   }
 
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <AverageRating rating={rating} />
-      <div className={style.reviewsLine}>
+      <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating">
-          <span className={style.averageRating}>{average * 5}</span>
+          <span className={styles.averageRating}>{average * 5}</span>
         </I18n.Text>
       </div>
     </div>

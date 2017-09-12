@@ -9,12 +9,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RatingStars from '../../../../../../../../../../components/RatingStars';
-import style from './style';
+import styles from './style';
 
 /**
  * Review Rating Component
  * @param {number} rate The rating value
- * @constructor
+ * @returns {JSX}
  */
 const Rating = ({ rate }) => {
   let stars = 1;
@@ -26,12 +26,12 @@ const Rating = ({ rate }) => {
     <div>
       <RatingStars
         value={rate / 100}
-        className={style.stars}
+        className={styles.stars}
       />
       <I18n.Text
         string="reviews.rating_stars"
         params={[stars]}
-        className={style.text}
+        className={styles.text}
       />
     </div>
   );

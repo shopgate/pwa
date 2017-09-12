@@ -7,18 +7,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './style';
+import styles from './style';
 import ReviewDate from './components/ReviewDate';
 import Author from './components/Author';
 
 /**
  * Review Info Component
  * @param {Object} props The props
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const Info = ({ review }) => (
-  <div className={style.info}>
+  <div className={styles.info}>
     <ReviewDate date={review.date} /> <Author author={review.author} />
   </div>
 );

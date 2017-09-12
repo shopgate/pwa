@@ -11,8 +11,7 @@ import Review from './components/Review';
 /**
  * Review List Component
  * @param {Object} reviews A list of reviews
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const List = ({ reviews }) => {
   let components = [];

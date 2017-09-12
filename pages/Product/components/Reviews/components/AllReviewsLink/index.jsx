@@ -10,22 +10,23 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import connect from './connector';
-import style from './style';
+import styles from './style';
+
+const REVIEW_PREVIEW_LIMIT = 2;
 
 /**
  * Link to all reviews
  * @param {number} totalReviewCount The number of reviews given
- * @returns {*}
- * @constructor
+ * @returns {null|JSX}
  */
 const AllReviewsLink = ({ totalReviewCount }) => {
-  if (totalReviewCount < 2) {
+  if (totalReviewCount < REVIEW_PREVIEW_LIMIT) {
     return null;
   }
 
   return (
-    <Link href="/" className={style.button}>
-      <I18n.Text string="reviews.button_all" params={[totalReviewCount]}/>
+    <Link href="/" className={styles.button}>
+      <I18n.Text string="reviews.button_all" params={[totalReviewCount]} />
     </Link>
   );
 };

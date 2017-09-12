@@ -7,16 +7,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './style';
+import styles from './style';
 
 /**
  * Review Text Component
  * @param {string} review The review text
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const Text = ({ review }) => (
-  <div className={style.text}>{`"${review}"`}</div>
+  <div className={styles.text}>{`"${review}"`}</div>
 );
 
 Text.propTypes = {
