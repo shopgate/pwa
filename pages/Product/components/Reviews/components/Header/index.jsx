@@ -37,7 +37,7 @@ const Header = ({ rating }) => {
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating">
           <span className={styles.averageRating}>
-            {average > RATING_SCALE_DIVISOR ? average / RATING_SCALE_DIVISOR : 1}
+            {average / RATING_SCALE_DIVISOR}
           </span>
         </I18n.Text>
       </div>
