@@ -8,7 +8,7 @@
 import { REQUEST_PRODUCT_REVIEWS } from '../constants';
 
 /**
- * Dispatches the REQUEST_PRODUCT_REVIEWS action
+ * Dispatches the REQUEST_PRODUCT_REVIEWS action.
  * @param {string} productId The ID of the product
  * @param {number} limit The maximum number of reviews
  * @returns {Object} The REQUEST_PRODUCT_REVIEWS action
