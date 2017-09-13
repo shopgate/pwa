@@ -6,8 +6,9 @@
  */
 
 import { ERROR_PRODUCT_REVIEWS } from '../constants';
+
 /**
- * Dispatches the ERROR_PRODUCT_REVIEWS action
+ * Dispatches the ERROR_PRODUCT_REVIEWS action.
  * @param {string} productId The ID of the product
  * @returns {Object} The ERROR_PRODUCT_REVIEWS action
  */
