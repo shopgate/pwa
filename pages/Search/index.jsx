@@ -31,6 +31,7 @@ class Search extends Component {
    * @param {Object} nextProps The props the component will receive.
    */
   componentWillReceiveProps(nextProps) {
+    console.warn('componentWillReceiveProps', this.props.searchPhrase, nextProps.searchPhrase);
     if (this.props.searchPhrase !== nextProps.searchPhrase) {
       // Reset active filters.
       this.props.getSearchResults();
@@ -47,20 +48,16 @@ class Search extends Component {
       <View title={this.props.searchPhrase}>
         {this.props.hasProducts && <FilterBar />}
         {this.props.hasProducts && <Products />}
-        <NoResults
-          headlineText="search.no_result.heading"
-          bodyText="search.no_result.body"
-          searchPhrase={this.props.searchPhrase}
-        />
+        {!this.props.hasProducts && (
+          <NoResults
+            headlineText="search.no_result.heading"
+            bodyText="search.no_result.body"
+            searchPhrase={this.props.searchPhrase}
+          />
+        )}
       </View>
     );
   }
 }
-
-// TODO: const enhance = compose(
-//   TODO: connect.filters,
-//   TODO: connect.search,
-//   NoBackgroundRender
-// );
 
 export default connect(Search);
