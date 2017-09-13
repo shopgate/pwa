@@ -9,6 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RatingStars from 'Components/RatingStars';
+import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import styles from './style';
 
 /**
@@ -16,30 +17,26 @@ import styles from './style';
  * @param {number} rate The rating value
  * @returns {JSX}
  */
-const Rating = ({ rate }) => {
-  const stars = (rate > 20) ? (rate / 20) : 1;
-
-  return (
-    <div>
-      <RatingStars
-        value={rate / 100}
-        className={styles.stars}
-      />
-      <I18n.Text
-        string="reviews.rating_stars"
-        params={[stars]}
-        className={styles.text}
-      />
-    </div>
-  );
-};
+const Rating = ({ rate }) => (
+  <div>
+    <RatingStars
+      value={rate}
+      className={styles.stars}
+    />
+    <I18n.Text
+      string="reviews.rating_stars"
+      params={[rate / RATING_SCALE_DIVISOR]}
+      className={styles.text}
+    />
+  </div>
+);
 
 Rating.propTypes = {
   rate: PropTypes.number,
 };
 
 Rating.defaultProps = {
-  rate: null,
+  rate: 0,
 };
 
 export default Rating;
