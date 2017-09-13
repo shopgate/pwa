@@ -28,12 +28,8 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getSearchResults(offset) {
-    dispatch(getSearchResults(offset));
-  },
-  setActiveFilters(filters) {
-    dispatch(setActiveFilters(filters));
-  },
+  getSearchResults: offset => dispatch(getSearchResults(offset)),
+  setActiveFilters: filters => dispatch(setActiveFilters(filters)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
