@@ -11,17 +11,15 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import AverageRating from './components/AverageRating';
 import styles from './style';
 
+const RATING_AVERAGE_MULTIPLIER = 5;
+
 /**
  * The header of the reviews component
  * @param {Object} rating The rating values
  * @returns {JSX}
  */
 const Header = ({ rating }) => {
-  let average = 0;
-
-  if (rating && rating.count && rating.average) {
-    average = rating.average;
-  }
+  const { average } = rating;
 
   if (!average) {
     return (
@@ -39,7 +37,7 @@ const Header = ({ rating }) => {
       <AverageRating rating={rating} />
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating">
-          <span className={styles.averageRating}>{average * 5}</span>
+          <span className={styles.averageRating}>{average * RATING_AVERAGE_MULTIPLIER}</span>
         </I18n.Text>
       </div>
     </div>
@@ -51,7 +49,9 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  rating: null,
+  rating: {
+    average: 0,
+  },
 };
 
 export default Header;

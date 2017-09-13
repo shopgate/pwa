@@ -14,7 +14,7 @@ import styles from './style';
 /**
  * The average rating and number of ratings for a product
  * @param {Object} rating The rating values
- * @returns {null|JSX}
+ * @returns {JSX}
  */
 const AverageRating = ({ rating }) => {
   const { average, count } = rating;

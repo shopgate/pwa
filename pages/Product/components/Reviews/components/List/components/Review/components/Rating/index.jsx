@@ -17,10 +17,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Rating = ({ rate }) => {
-  let stars = 1;
-  if (rate > 20) {
-    stars = rate / 20;
-  }
+  const stars = (rate > 20) ? (rate / 20) : 1;
 
   return (
     <div>
