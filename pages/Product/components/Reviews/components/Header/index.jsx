@@ -7,11 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import AverageRating from './components/AverageRating';
 import styles from './style';
-
-const RATING_AVERAGE_MULTIPLIER = 5;
 
 /**
  * The header of the reviews component
@@ -37,7 +36,9 @@ const Header = ({ rating }) => {
       <AverageRating rating={rating} />
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating">
-          <span className={styles.averageRating}>{average * RATING_AVERAGE_MULTIPLIER}</span>
+          <span className={styles.averageRating}>
+            {average > RATING_SCALE_DIVISOR ? average / RATING_SCALE_DIVISOR : 1}
+          </span>
         </I18n.Text>
       </div>
     </div>
