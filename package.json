@@ -30,14 +30,16 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/tracking-core": "github:shopgate/tracking-core",
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-core": "github:shopgate/pwa-core",
+    "@shopgate/tracking-core": "github:shopgate/tracking-core",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",

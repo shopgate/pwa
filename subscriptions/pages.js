@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import tracking from '@shopgate/tracking-core/core/Core';
+import core from '@shopgate/tracking-core/core/Core';
 import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
-import { getQueryParamsAsString } from '@shopgate/pwa-common/selectors/history';
+import getTrackingData from '../selectors';
 
 /**
  * Pages tracking subscriptions.
@@ -17,15 +17,16 @@ export default function pages(subscribe) {
   /**
    * Gets triggered when the route changes.
    */
-  subscribe(routeDidChange$, ({ getState, pathname }) => {
-    const link = `${pathname}${getQueryParamsAsString(getState())}`;
-
-    tracking.track.pageview({
-      page: {
-        link,
-        title: 'some title',
-        name: 'some name',
-      },
-    });
-  });
+  subscribe(routeDidChange$, ({ getState }) => (
+    /*
+    TODO: Use route specific subscriptions.
+    In order to implement logic that waits for needed data.
+    Like the page title, when entering a product page.
+    */
+    core.track.pageview(
+      getTrackingData(
+        getState()
+      )
+    )
+  ));
 }
