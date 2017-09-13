@@ -9,13 +9,9 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const ratingLine = css({
-
-}).toString();
-
 const stars = css({
   display: 'inline-block',
-  top: 3,
+  lineHeight: 1,
 }).toString();
 
 const text = css({
@@ -24,7 +20,6 @@ const text = css({
 }).toString();
 
 export default {
-  ratingLine,
   stars,
   text,
 };

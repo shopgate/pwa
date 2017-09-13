@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import RatingStars from '../../../../../../../../../../components/RatingStars';
+import RatingStars from 'Components/RatingStars';
 import styles from './style';
 
 /**

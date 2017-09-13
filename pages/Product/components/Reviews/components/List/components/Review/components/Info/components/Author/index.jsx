@@ -11,7 +11,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 
 /**
  * Review Author Component
- * @param {string} author The author name
+ * @param {string} author The author's name
  * @returns {null|JSX}
  */
 const Author = ({ author }) => {

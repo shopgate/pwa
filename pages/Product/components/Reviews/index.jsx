@@ -7,40 +7,29 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
+import { onlyUpdateForKeys } from 'recompose';
 import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
 import Header from './components/Header';
-import styles from './style';
 
 /**
  * Reviews Component
  * @param {Object} props The reviews data
  * @returns {null|JSX}
  */
-const Reviews = pure(({ rating, reviews }) => {
-  if (!features.showReviews) {
+const Reviews = ({ rating, reviews }) => {
+  if (!features.showReviews || !rating || !rating.count) {
     return null;
   }
 
-  const header = <Header key="header" rating={rating} />;
-
-  if (!reviews) {
-    return (
-      <div className={styles.container}>
-        {header}
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.container}>
-      {header}
+    <div>
+      <Header key="header" rating={rating} />
       <List reviews={reviews} />
     </div>
   );
-});
+};
 
 Reviews.propTypes = {
   rating: PropTypes.shape(),
@@ -52,4 +41,4 @@ Reviews.defaultProps = {
   reviews: null,
 };
 
-export default connect(Reviews);
+export default connect(onlyUpdateForKeys(['rating', 'reviews'])(Reviews));

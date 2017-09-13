@@ -10,7 +10,6 @@ import colors from 'Styles/colors';
 
 const mute = css({
   color: colors.shade3,
-  fontSize: 'small',
 }).toString();
 
 export default {

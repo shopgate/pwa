@@ -7,17 +7,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingStars from '../../../../../../../../components/RatingStars';
+import RatingStars from 'Components/RatingStars';
 import RatingCount from '../RatingCount';
 import styles from './style';
 
 /**
  * The average rating and number of ratings for a product
  * @param {Object} rating The rating values
- * @returns {JSX}
+ * @returns {null|JSX}
  */
 const AverageRating = ({ rating }) => {
-  const { average = 0, count = 0 } = rating;
+  const { average, count } = rating;
 
   return (
     <div className={styles.center}>
@@ -32,7 +32,10 @@ AverageRating.propTypes = {
 };
 
 AverageRating.defaultProps = {
-  rating: null,
+  rating: {
+    average: 0,
+    count: 0,
+  },
 };
 
 export default AverageRating;

@@ -10,7 +10,6 @@ import colors from 'Styles/colors';
 
 const info = css({
   color: colors.shade3,
-  fontSize: 'small',
 }).toString();
 
 export default {

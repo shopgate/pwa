@@ -19,7 +19,7 @@ import styles from './style';
 const Header = ({ rating }) => {
   let average = 0;
 
-  if (rating && rating.count) {
+  if (rating && rating.count && rating.average) {
     average = rating.average;
   }
 

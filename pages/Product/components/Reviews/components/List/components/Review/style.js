@@ -10,7 +10,9 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const review = css({
-  padding: `${variables.gap.big}px 0`,
+  marginLeft: variables.gap.big,
+  padding: variables.gap.big,
+  paddingLeft: 0,
   borderTop: `1px solid ${colors.shade7}`,
 }).toString();
 
