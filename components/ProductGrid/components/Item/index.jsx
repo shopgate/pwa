@@ -42,7 +42,7 @@ const Item = ({ product, display }) => (
     }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        {features.showReviews && (product.rating && product.rating.count > 0) &&
+        {(features.showReviews && product.rating && product.rating.count > 0) &&
           <div>
             {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
           </div>

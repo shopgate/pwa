@@ -11,22 +11,16 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
 /**
- * Rating count
- * @param {number} count The number of ratings given for a product
- * @returns {null|JSX}
+ * Rating count.
+ * @param {number} count The number of ratings given for a product.
+ * @returns {JSX|null}
  */
 const RatingCount = ({ count }) => {
   if (!count) {
     return null;
   }
 
-  return (
-    <I18n.Text
-      string="reviews.review_count"
-      params={{ count }}
-      className={styles.mute}
-    />
-  );
+  return <I18n.Text string="reviews.review_count" params={{ count }} className={styles} />;
 };
 
 RatingCount.propTypes = {

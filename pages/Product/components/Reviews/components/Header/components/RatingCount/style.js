@@ -8,10 +8,6 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-const mute = css({
+export default css({
   color: colors.shade3,
 }).toString();
-
-export default {
-  mute,
-};

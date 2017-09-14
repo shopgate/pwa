@@ -7,13 +7,9 @@
 
 import { css } from 'glamor';
 
-const center = css({
+export default css({
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',
   alignItems: 'center',
 }).toString();
-
-export default {
-  center,
-};

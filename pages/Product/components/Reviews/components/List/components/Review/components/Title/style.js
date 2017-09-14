@@ -7,10 +7,6 @@
 
 import { css } from 'glamor';
 
-const title = css({
+export default css({
   fontWeight: 500,
 }).toString();
-
-export default {
-  title,
-};
