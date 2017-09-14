@@ -91,12 +91,20 @@ class PriceRangeSlider extends Component {
         <I18n.Text string="price.range">
           <I18n.Placeholder forKey="fromPrice">
             <span className={styles.price}>
-              <I18n.Price price={(this.state.realValue[0] / 100)} currency={currency} fractions={false} />
+              <I18n.Price
+                price={(this.state.realValue[0] / 100)}
+                currency={currency}
+                fractions={false}
+              />
             </span>
           </I18n.Placeholder>
           <I18n.Placeholder forKey="toPrice">
             <span className={styles.price}>
-              <I18n.Price price={(this.state.realValue[1] / 100)} currency={currency} fractions={false} />
+              <I18n.Price
+                price={(this.state.realValue[1] / 100)}
+                currency={currency}
+                fractions={false}
+              />
             </span>
           </I18n.Placeholder>
         </I18n.Text>

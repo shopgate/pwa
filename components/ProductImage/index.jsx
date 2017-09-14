@@ -91,7 +91,7 @@ class ProductImage extends Component {
 
   /**
    * Should component update given the new props?
-   * @param  {Object} nextProps The next component props.
+   * @param {Object} nextProps The next component props.
    * @return {boolean} Update or not.
    */
   shouldComponentUpdate(nextProps) {

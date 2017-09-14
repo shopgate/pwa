@@ -6,12 +6,12 @@ const progressBarHeight = 4;
 const progressBarBackground = Color(colors.accent).lighten(0.4);
 
 const wrapper = css({
-  background: progressBarBackground.rgbaString(),
+  background: progressBarBackground.string(),
   position: 'relative',
   width: '100%',
   height: progressBarHeight,
   overflow: 'hidden',
-  transition: 'height .3s linear',
+  transition: 'transform .3s linear',
 }).toString();
 
 const innerElement = css({

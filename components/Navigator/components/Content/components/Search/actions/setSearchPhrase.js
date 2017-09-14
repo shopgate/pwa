@@ -3,6 +3,7 @@ import { setSearchPhrase as setPhrase } from 'Components/Navigator/action-creato
 
 /**
  * Removes the last entry from the active filters stack.
+ * @param {string} query The request query.
  * @returns {Function} A redux thunk.
  */
 const setSearchPhrase = query => (dispatch, getState) => {

@@ -1,5 +1,12 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
-import { getSearchResults } from '@shopgate/pwa-common-commerce/search/actions';
+import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
@@ -9,7 +16,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
  * @param {number} offset The result offset for the pipeline.
  * @return {Function} A redux thunk.
  */
-export const getProducts = (offset = 0) => (dispatch, getState) => {
+const getProducts = (offset = 0) => (dispatch, getState) => {
   const pathname = getHistoryPathname(getState());
 
   if (pathname.startsWith(CATEGORY_PATH)) {

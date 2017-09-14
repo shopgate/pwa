@@ -19,6 +19,9 @@ const availabilities = {
     ...availability,
     color: colors.error,
   }).toString(),
+  ok: css({
+    ...availability,
+  }).toString(),
   warning: css({
     ...availability,
     color: colors.warning,

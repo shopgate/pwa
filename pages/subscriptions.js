@@ -5,24 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
-import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
-import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
-import navigator from 'Components/Navigator/subscriptions';
-import category from 'Pages/Category/subscriptions';
-import coupon from 'Pages/Cart/components/CouponField/subscriptions';
-import filter from 'Pages/Filter/subscriptions';
-import login from 'Pages/Login/subscriptions';
-import filterbar from 'Components/FilterBar/subscriptions';
+import event from '@shopgate/pwa-core/classes/Event';
+import { EVENT_PIPELINE_ERROR } from '@shopgate/pwa-core/constants/Pipeline';
+import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import pipelineErrorDialog from 'Components/Dialog/actions/pipelineErrorDialog';
 
-export default [
-  commerceCart,
-  commerceCategory,
-  commerceFilter,
-  navigator,
-  category,
-  coupon,
-  filter,
-  filterbar,
-  login,
-];
+/**
+ * App subscriptions.
+ * @param {Function} subscribe The subscribe function.
+ */
+export default function app(subscribe) {
+  /**
+   * Gets triggered when the app starts.
+   */
+  subscribe(appDidStart$, ({ dispatch }) => {
+    // Add event callbacks.
+    event.addCallback(EVENT_PIPELINE_ERROR, params => dispatch(pipelineErrorDialog(params)));
+  });
+}

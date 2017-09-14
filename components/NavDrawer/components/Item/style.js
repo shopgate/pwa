@@ -50,12 +50,10 @@ const count = css({
 
 const primary = css({
   background: colors.primary,
-  [`.${icon}`]: {
-    color: colors.light,
-  },
-  [`.${label}`]: {
-    color: colors.light,
-  },
+}).toString();
+
+const primaryIcon = css({
+  color: colors.light,
 }).toString();
 
 export default {
@@ -65,4 +63,5 @@ export default {
   label,
   count,
   primary,
+  primaryIcon,
 };

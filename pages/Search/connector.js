@@ -8,8 +8,8 @@
 import { connect } from 'react-redux';
 import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getSearchResults } from '@shopgate/pwa-common-commerce/search/actions';
-import { setActiveFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
+import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 
 /**
  * Maps the contents of the state to the component props.
@@ -24,7 +24,7 @@ const mapStateToProps = state => ({
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param  {Function} dispatch The redux dispatch function.
+ * @param {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({

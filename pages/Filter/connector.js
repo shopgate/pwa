@@ -7,10 +7,8 @@
 
 import { connect } from 'react-redux';
 import { getAvailableFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import {
-  mergeTemporaryFilters,
-  removeTemporaryFilter,
-} from '@shopgate/pwa-common-commerce/filter/action-creators';
+import mergeTemporaryFilters from '@shopgate/pwa-common-commerce/filter/action-creators/mergeTemporaryFilters';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 import { getQueryParamsAsString } from '@shopgate/pwa-common/selectors/history';
 
 /**
@@ -27,7 +25,7 @@ const mapStateToProps = (state, props) => ({
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param  {Function} dispatch The redux dispatch function.
+ * @param {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({

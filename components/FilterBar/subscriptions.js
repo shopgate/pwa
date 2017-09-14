@@ -7,7 +7,7 @@
 
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
-import { getFilters } from '@shopgate/pwa-common-commerce/filter/actions';
+import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 
 /**
  * Navigator subscriptions.
