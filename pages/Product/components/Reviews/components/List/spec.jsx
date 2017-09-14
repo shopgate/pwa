@@ -62,8 +62,8 @@ describe('<List />', () => {
       const ratingNode = node.find('Rating');
 
       expect(ratingNode.prop('rate')).toEqual(reviews[i].rate);
-      expect(ratingNode.find('Translate').prop('params')[0]).toEqual(reviews[i].rate / 20);
-      expect(ratingNode.find('RatingStars').prop('value')).toEqual(reviews[i].rate / 100);
+      expect(ratingNode.find('Translate').prop('params').rate).toEqual(reviews[i].rate / 20);
+      expect(ratingNode.find('RatingStars').prop('value')).toEqual(reviews[i].rate);
       expect(node.find('Info').prop('review').date).toEqual(reviews[i].date);
 
       if (reviews[i].author) {

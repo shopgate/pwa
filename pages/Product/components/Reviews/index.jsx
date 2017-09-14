@@ -24,7 +24,7 @@ const Reviews = ({ rating, reviews }) => {
 
   return (
     <div>
-      <Header key="header" rating={rating} />
+      <Header rating={rating} />
       <List reviews={reviews} />
     </div>
   );

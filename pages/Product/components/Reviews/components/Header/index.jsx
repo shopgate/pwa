@@ -18,7 +18,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Header = ({ rating }) => {
-  const { average } = rating;
+  const { average = 0 } = rating;
 
   if (!average) {
     return (
