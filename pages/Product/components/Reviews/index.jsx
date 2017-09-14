@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { onlyUpdateForKeys } from 'recompose';
 import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
@@ -16,7 +15,7 @@ import Header from './components/Header';
 /**
  * Reviews Component
  * @param {Object} props The reviews data
- * @returns {null|JSX}
+ * @returns {JSX|null}
  */
 const Reviews = ({ rating, reviews }) => {
   if (!features.showReviews || !rating || !rating.count) {
@@ -41,4 +40,4 @@ Reviews.defaultProps = {
   reviews: null,
 };
 
-export default connect(onlyUpdateForKeys(['rating', 'reviews'])(Reviews));
+export default connect(Reviews);

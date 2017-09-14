@@ -12,17 +12,17 @@ import RatingCount from '../RatingCount';
 import styles from './style';
 
 /**
- * The average rating and number of ratings for a product
- * @param {Object} rating The rating values
+ * The average rating and number of ratings for a product.
+ * @param {Object} rating The rating values.
  * @returns {JSX}
  */
 const AverageRating = ({ rating }) => {
   const { average, count } = rating;
 
   return (
-    <div className={styles.center}>
+    <div className={styles}>
       <RatingStars value={average} display="large" />
-      {count > 0 && <RatingCount count={count} />}
+      {(count > 0) && <RatingCount count={count} />}
     </div>
   );
 };

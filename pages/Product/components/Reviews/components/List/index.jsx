@@ -11,7 +11,7 @@ import Review from './components/Review';
 /**
  * Review List Component
  * @param {Object} reviews A list of reviews
- * @returns {null|JSX}
+ * @returns {JSX|null}
  */
 const List = ({ reviews }) => {
   if (!reviews || !reviews.length) {
@@ -33,7 +33,7 @@ List.propTypes = {
 };
 
 List.defaultProps = {
-  reviews: [],
+  reviews: null,
 };
 
 export default List;

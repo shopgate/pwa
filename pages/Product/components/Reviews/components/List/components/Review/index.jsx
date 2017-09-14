@@ -14,12 +14,12 @@ import Text from './components/Text';
 import Info from './components/Info';
 
 /**
- * Single Review Component
- * @param {Object} props The props
+ * Single Review Component.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Review = ({ review }) => (
-  <div className={styles.review}>
+  <div className={styles}>
     <Title title={review.title} />
     <Rating rate={review.rate} />
     <Text review={review.review} />
@@ -28,11 +28,7 @@ const Review = ({ review }) => (
 );
 
 Review.propTypes = {
-  review: PropTypes.shape(),
-};
-
-Review.defaultProps = {
-  review: null,
+  review: PropTypes.shape().isRequired,
 };
 
 export default Review;

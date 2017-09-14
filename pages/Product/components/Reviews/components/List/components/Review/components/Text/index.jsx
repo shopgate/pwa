@@ -15,7 +15,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Text = ({ review }) => (
-  <div className={styles.text}>{`"${review}"`}</div>
+  <div className={styles}>{`"${review}"`}</div>
 );
 
 Text.propTypes = {

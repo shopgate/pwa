@@ -10,12 +10,12 @@ import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * Review Title Component
- * @param {string} title The title of a review
+ * Review Title Component.
+ * @param {string} title The title of the review.
  * @returns {JSX}
  */
 const Title = ({ title }) => (
-  <div className={styles.title}>{title}</div>
+  <div className={styles}>{title}</div>
 );
 
 Title.propTypes = {

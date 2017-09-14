@@ -12,12 +12,12 @@ import ReviewDate from './components/ReviewDate';
 import Author from './components/Author';
 
 /**
- * Review Info Component
- * @param {Object} props The props
+ * Review Info Component.
+ * @param {Object} props The props.
  * @returns {JSX}
  */
 const Info = ({ review }) => (
-  <div className={styles.info}>
+  <div className={styles}>
     <ReviewDate date={review.date} /> <Author author={review.author} />
   </div>
 );

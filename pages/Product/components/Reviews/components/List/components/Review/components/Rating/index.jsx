@@ -13,19 +13,16 @@ import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import styles from './style';
 
 /**
- * Review Rating Component
- * @param {number} rate The rating value
+ * Review Rating Component.
+ * @param {number} rate The rating value.
  * @returns {JSX}
  */
 const Rating = ({ rate }) => (
   <div>
-    <RatingStars
-      value={rate}
-      className={styles.stars}
-    />
+    <RatingStars value={rate} className={styles.stars} />
     <I18n.Text
       string="reviews.rating_stars"
-      params={[rate / RATING_SCALE_DIVISOR]}
+      params={{ rate: rate / RATING_SCALE_DIVISOR }}
       className={styles.text}
     />
   </div>

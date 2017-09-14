@@ -7,10 +7,6 @@
 
 import { css } from 'glamor';
 
-const text = css({
+export default css({
   fontStyle: 'italic',
 }).toString();
-
-export default {
-  text,
-};

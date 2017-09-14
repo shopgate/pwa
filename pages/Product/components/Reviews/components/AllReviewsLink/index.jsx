@@ -7,18 +7,16 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { onlyUpdateForKeys } from 'recompose';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import { REVIEW_PREVIEW_LIMIT } from 'Pages/Product/constants';
 import connect from './connector';
 import styles from './style';
 
-const REVIEW_PREVIEW_LIMIT = 2;
-
 /**
- * Link to all reviews
- * @param {number} totalReviewCount The number of reviews given
- * @returns {null|JSX}
+ * Link to all reviews.
+ * @param {number} totalReviewCount The number of reviews given.
+ * @returns {JSX|null}
  */
 const AllReviewsLink = ({ totalReviewCount }) => {
   if (totalReviewCount < REVIEW_PREVIEW_LIMIT) {
@@ -26,8 +24,8 @@ const AllReviewsLink = ({ totalReviewCount }) => {
   }
 
   return (
-    <Link href="/" className={styles.button}>
-      <I18n.Text string="reviews.button_all" params={[totalReviewCount]} />
+    <Link href="/" className={styles}>
+      <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
     </Link>
   );
 };
@@ -40,4 +38,4 @@ AllReviewsLink.defaultProps = {
   totalReviewCount: null,
 };
 
-export default connect(onlyUpdateForKeys(['totalReviewCount'])(AllReviewsLink));
+export default connect(AllReviewsLink);
