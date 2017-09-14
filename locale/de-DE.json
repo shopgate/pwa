@@ -100,8 +100,8 @@
     "no_reviews": "Sei der Erste, der dieses Produkt bewertet:",
     "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
     "button_add": "Bewertung schreiben",
-    "button_all": "Alle {0} Bewertungen",
-    "author": "von {0}",
-    "rating_stars": "{0} {0, plural, =1 {Stern} other {Sterne}}"
+    "button_all": "Alle {count} Bewertungen",
+    "author": "von {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}"
   }
 }

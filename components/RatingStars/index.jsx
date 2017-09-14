@@ -11,6 +11,7 @@ import times from 'lodash/times';
 import StarIcon from 'Components/icons/StarIcon';
 import StarHalfIcon from 'Components/icons/StarHalfIcon';
 import styles from './style';
+import { RATING_SCALE_DIVISOR } from './constants';
 
 /**
  * The available style keys for the rating stars.
@@ -50,7 +51,7 @@ class RatingStars extends React.Component {
   render() {
     const { value } = this.props;
     const numStars = 5;
-    const ratedStars = value * numStars;
+    const ratedStars = value / RATING_SCALE_DIVISOR;
     const numFullStars = Math.floor(ratedStars);
     const numHalfStars = Math.ceil(ratedStars - numFullStars);
 

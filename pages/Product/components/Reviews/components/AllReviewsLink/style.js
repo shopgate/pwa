@@ -9,7 +9,7 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const button = css({
+export default css({
   color: colors.primary,
   textTransform: 'uppercase',
   width: 'auto',
@@ -17,7 +17,3 @@ const button = css({
   textAlign: 'right',
   fontWeight: 500,
 }).toString();
-
-export default {
-  button,
-};

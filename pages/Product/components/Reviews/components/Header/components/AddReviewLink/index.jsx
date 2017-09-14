@@ -11,10 +11,11 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import styles from './style';
 
 /**
- * Link to add a review
+ * Link to add a review.
+ * @returns {JSX}
  */
 const AddReviewLink = () => (
-  <Link href="/" className={styles.button}>
+  <Link href="/" className={styles}>
     <I18n.Text string="reviews.button_add" />
   </Link>
 );

@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 
 /**
- * Review Date Component
- * @param {string} date The date of a review
+ * Review Date Component.
+ * @param {string} date The date of a review.
  * @returns {JSX}
  */
 const ReviewDate = ({ date }) => (

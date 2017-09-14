@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { css } from 'glamor';
-
-export default css({
-  fontWeight: 500,
-}).toString();
+/**
+ * Value to recalculate the rating average.
+ * @type {number}
+ */
+export const RATING_SCALE_DIVISOR = 20;
