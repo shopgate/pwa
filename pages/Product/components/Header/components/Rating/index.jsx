@@ -17,7 +17,7 @@ import connect from './connector';
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  if (!features.showReviews || !rating || !rating.count > 0) {
+  if (!features.showReviews || !rating || !rating.count) {
     return null;
   }
 
