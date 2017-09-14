@@ -6,12 +6,11 @@
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 
-const mute = css({
-  color: colors.shade3,
+const title = css({
+  fontWeight: 500,
 }).toString();
 
 export default {
-  mute,
+  title,
 };

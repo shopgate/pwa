@@ -5,13 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { css } from 'glamor';
-import colors from 'Styles/colors';
-
-const mute = css({
-  color: colors.shade3,
-}).toString();
-
-export default {
-  mute,
-};
+/**
+ * Value to recalculate the rating average.
+ * @type {number}
+ */
+export const RATING_SCALE_DIVISOR = 20;

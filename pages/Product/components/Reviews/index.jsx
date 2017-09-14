@@ -7,44 +7,33 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
+import { features } from 'Config/app.json';
 import connect from './connector';
-import Review from './components/Review';
+import List from './components/List';
 import Header from './components/Header';
-import style from './style';
 
 /**
  * Reviews Component
  * @param {Object} props The reviews data
- * @returns {XML}
- * @constructor
+ * @returns {null|JSX}
  */
 const Reviews = ({ rating, reviews }) => {
-  const components = [];
-  const header = (<Header key="header" rating={rating} />);
-
-  if (!reviews) {
-    return header;
+  if (!features.showReviews || !rating || !rating.count) {
+    return null;
   }
 
-  components.push(header);
-  Object.keys(reviews).forEach((key) => {
-    components.push(
-      <Review
-        key={key}
-        title={reviews[key].title}
-        text={reviews[key].review}
-        author={reviews[key].author}
-        rating={reviews[key].rate}
-      />
-    );
-  });
-
-  return (<div className={style.container}>{components}</div>);
+  return (
+    <div>
+      <Header key="header" rating={rating} />
+      <List reviews={reviews} />
+    </div>
+  );
 };
 
 Reviews.propTypes = {
   rating: PropTypes.shape(),
-  reviews: PropTypes.shape(),
+  reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Reviews.defaultProps = {
@@ -52,4 +41,4 @@ Reviews.defaultProps = {
   reviews: null,
 };
 
-export default connect(Reviews);
+export default connect(onlyUpdateForKeys(['rating', 'reviews'])(Reviews));

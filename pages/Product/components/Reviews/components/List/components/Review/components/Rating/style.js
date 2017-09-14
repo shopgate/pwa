@@ -7,11 +7,19 @@
 
 import { css } from 'glamor';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
-const mute = css({
-  color: colors.shade3,
+const stars = css({
+  display: 'inline-block',
+  lineHeight: 1,
+}).toString();
+
+const text = css({
+  marginLeft: variables.gap.small,
+  color: colors.primary,
 }).toString();
 
 export default {
-  mute,
+  stars,
+  text,
 };

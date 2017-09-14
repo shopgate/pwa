@@ -7,16 +7,16 @@
 
 import React from 'react';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from '../../../../../../../../components/Button';
+import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import styles from './style';
 
 /**
- * Button to add a review
- * @constructor
+ * Link to add a review
  */
-const AddReviewButton = () => (
-  <Button type="secondary" flat={!0}>
+const AddReviewLink = () => (
+  <Link href="/" className={styles.button}>
     <I18n.Text string="reviews.button_add" />
-  </Button>
+  </Link>
 );
 
-export default AddReviewButton;
+export default AddReviewLink;

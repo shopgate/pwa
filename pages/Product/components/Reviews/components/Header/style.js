@@ -10,15 +10,15 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  padding: variables.gap.big,
   fontWeight: 500,
+  margin: `0 ${variables.gap.big}px`,
 }).toString();
 
 const reviewsLine = css({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  paddingTop: variables.gap.small,
+  padding: `${variables.gap.big}px 0`,
 }).toString();
 
 const averageRating = css({
@@ -31,7 +31,7 @@ const noReviews = css({
   justifyContent: 'space-between',
   flexDirection: 'column',
   alignItems: 'center',
-  paddingTop: variables.gap.small,
+  marginTop: variables.gap.small,
 }).toString();
 
 export default {

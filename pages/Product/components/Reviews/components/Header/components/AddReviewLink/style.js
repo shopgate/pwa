@@ -7,11 +7,15 @@
 
 import { css } from 'glamor';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
-const mute = css({
-  color: colors.shade3,
+const button = css({
+  color: colors.primary,
+  textTransform: 'uppercase',
+  width: 'auto',
+  padding: `${variables.gap.small}px 0`,
 }).toString();
 
 export default {
-  mute,
+  button,
 };

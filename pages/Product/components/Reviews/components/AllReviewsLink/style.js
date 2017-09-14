@@ -6,11 +6,18 @@
  */
 
 import { css } from 'glamor';
+import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
-const container = css({
-  padding: 16,
+const button = css({
+  color: colors.primary,
+  textTransform: 'uppercase',
+  width: 'auto',
+  padding: `${variables.gap.small}px 0`,
+  textAlign: 'right',
+  fontWeight: 500,
 }).toString();
 
 export default {
-  container,
+  button,
 };

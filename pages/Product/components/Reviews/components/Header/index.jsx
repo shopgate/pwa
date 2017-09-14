@@ -7,44 +7,39 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import AddReviewButton from './components/AddReviewButton';
 import AverageRating from './components/AverageRating';
-import style from './style';
+import styles from './style';
 
 /**
  * The header of the reviews component
  * @param {Object} rating The rating values
- * @returns {XML}
- * @constructor
+ * @returns {JSX}
  */
 const Header = ({ rating }) => {
-  let average = 0;
-
-  if (rating && rating.count) {
-    average = rating.average;
-  }
+  const { average } = rating;
 
   if (!average) {
     return (
-      <div className={style.container}>
+      <div className={styles.container}>
         <AverageRating rating={rating} />
-        <div className={style.noReviews}>
+        <div className={styles.noReviews}>
           <I18n.Text string="reviews.no_reviews" />
-          <AddReviewButton />
         </div>
       </div>
     );
   }
 
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <AverageRating rating={rating} />
-      <div className={style.reviewsLine}>
+      <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating">
-          <span className={style.averageRating}>{average}</span>
+          <span className={styles.averageRating}>
+            {average / RATING_SCALE_DIVISOR}
+          </span>
         </I18n.Text>
-        <AddReviewButton />
       </div>
     </div>
   );
@@ -55,7 +50,9 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  rating: null,
+  rating: {
+    average: 0,
+  },
 };
 
 export default Header;
