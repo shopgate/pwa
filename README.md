@@ -6,12 +6,6 @@
 
 The Shopgate Cloud tracking core.
 
-## Installation
-
-```
-npm i @shopgate/tracking-core --save
-```
-
 ## About Shopgate
 
 Shopgate is the leading mobile commerce platform.
