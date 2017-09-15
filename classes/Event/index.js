@@ -107,4 +107,10 @@ class Event extends EventEmitter {
   }
 }
 
-export default new Event();
+// TODO:
+// We need this as a temporary solution because of double node_modules form extensions and theme.
+if (!window.TmpEventInstance) {
+  window.TmpEventInstance = new Event();
+}
+
+export default window.TmpEventInstance;
