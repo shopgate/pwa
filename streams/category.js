@@ -14,8 +14,7 @@ import { RECEIVE_PRODUCTS } from '@shopgate/pwa-common-commerce/product/constant
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
- * Gets triggered when the page title is available.
- * @type {Observable}
+ * Emits when the current category id changed.
  */
 const categoryIdChanged$ = main$
   .filter(
@@ -27,7 +26,7 @@ const categoryIdChanged$ = main$
   );
 
 /**
- * Set up streams that emits when specific category data has been received.
+ * Emits when specific category data has been received.
  */
 const childrenReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_CATEGORY_CHILDREN);
@@ -36,14 +35,14 @@ const productsReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCTS);
 
 /**
- * Combine specific data streams that emits when all category data has been received.
+ * Emits when all necessary category data has been received.
  */
 const dataLoaded$ = categoryIdChanged$
   .zip(productsReceived$, childrenReceived$)
   .map(([first]) => first);
 
 /**
- * Set up stream that emits when category that is already available.
+ * Emits when a category's data is already available.
  */
 const dataPreloaded$ = categoryIdChanged$
   .filter(
@@ -52,7 +51,7 @@ const dataPreloaded$ = categoryIdChanged$
   );
 
 /**
- * Combine a stream that emits when data is ready,
+ * Emits when a category is ready to be tracked,
  * considering loaded or preloaded data.
  */
 export const categoryIsReady$ = dataLoaded$.merge(dataPreloaded$);
