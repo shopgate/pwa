@@ -94,12 +94,26 @@ class FilterBar extends Component {
       return;
     }
 
-    const height = this.element.offsetHeight;
+    /**
+     * Wait for the next tick to be sure the component has updated when
+     * this is triggered from the child components.
+     */
+    setTimeout(() => {
+      const height = this.element.offsetHeight;
 
-    if (height > 0 && height !== this.state.spacerHeight) {
-      this.setState({ spacerHeight: height });
-    }
+      if (height > 0 && height !== this.state.spacerHeight) {
+        this.setState({ spacerHeight: height });
+      }
+    }, 0);
   }
+
+  /**
+   * Sets the reference to the DOM element.
+   * @param {DOMNode} element The DOM element.
+   */
+  setRef = (element) => {
+    this.element = element;
+  };
 
   /**
    * Binds the DOM event handlers to the scroll element.
@@ -210,11 +224,7 @@ class FilterBar extends Component {
   render() {
     return (
       <div>
-        <div
-          ref={(element) => { this.element = element; }}
-          className={styles.wrapper}
-          style={this.wrapperStyle}
-        >
+        <div ref={this.setRef} className={styles.wrapper} style={this.wrapperStyle}>
           <Content componentUpdated={this.setSpacerHeight} />
         </div>
         <div style={{ height: this.state.spacerHeight }} />
