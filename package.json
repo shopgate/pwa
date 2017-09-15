@@ -7,12 +7,14 @@
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "precommit": "lint-staged"
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
+    "precommit": "lint-staged",
+    "test": "echo 0"
   },
   "lint-staged": {
     "concurrent": false,
     "linters": {
-      "*.js": "eslint --parser babel-eslint"
+      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js ."
     }
   },
   "pre-commit": [
