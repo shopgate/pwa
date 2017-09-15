@@ -19,7 +19,7 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/tracking-core": "1.0.0-beta1",
+    "@shopgate/tracking-core": "1.0.0-beta3",
     "@shopgate/pwa-common": "^1.0.0-beta3"
   },
   "devDependencies": {
