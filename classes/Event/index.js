@@ -74,9 +74,10 @@ class Event extends EventEmitter {
   /**
    * Triggers an event.
    * @param {string} event The event name.
+   * @param {Object} params Custom parameters for the event.
    */
-  trigger(event) {
-    setTimeout(() => this.emit(event), 0);
+  trigger(event, params = null) {
+    setTimeout(() => this.emit(event, params), 0);
   }
 
   /**

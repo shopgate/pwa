@@ -8,6 +8,9 @@
 // Pipeline current version.
 export const CURRENT_VERSION = 1;
 
+// Pipeline response error.
+export const EVENT_PIPELINE_ERROR = 'EVENT_PIPELINE_ERROR';
+
 // Pipeline timeout error.
 export const ETIMEOUT = 'ETIMEOUT';
 
