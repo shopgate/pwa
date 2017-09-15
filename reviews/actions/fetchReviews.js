@@ -9,6 +9,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import requestProductReviewsList from '../action-creators/requestReviews';
 import receiveProductReviewsList from '../action-creators/receiveReviews';
+import setCurrentReviewsProductId from '../action-creators/setCurrentReviewsProductId';
 import errorProductReviewsList from '../action-creators/errorReviews';
 
 /**
@@ -22,6 +23,7 @@ const fetchReviews = (productId, limit = 2, offset = 0) => (dispatch) => {
   const hash = generateResultHash({
     productId,
   });
+  dispatch(setCurrentReviewsProductId(productId));
   dispatch(requestProductReviewsList(hash, productId, limit, offset));
   new PipelineRequest('getProductReviews')
     .setInput({

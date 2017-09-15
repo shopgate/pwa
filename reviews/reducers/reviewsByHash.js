@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import uniq from 'lodash/uniq';
+import uniqBy from 'lodash/uniqBy';
 import {
   REVIEWS_LIFETIME,
   REQUEST_REVIEWS,
   RECEIVE_REVIEWS,
   ERROR_REVIEWS,
+  SET_CURRENT_REVIEWS_PRODUCT_ID,
 } from '../constants';
 
 /**
@@ -21,6 +22,17 @@ import {
  */
 export default function reviewsByHash(state = {}, action) {
   switch (action.type) {
+    /**
+     * Sets the currentReviewsProductID.
+     * This property is needed to make the reviews page independent of a product itself.
+     * Usually the currentProduct should be set when user navigates from a product page.
+     * However this workflow is not guaranteed also during automated tests.
+     */
+    case SET_CURRENT_REVIEWS_PRODUCT_ID:
+      return {
+        ...state,
+        currentReviewsProductId: action.productId,
+      };
     case REQUEST_REVIEWS:
       return {
         ...state,
@@ -38,11 +50,23 @@ export default function reviewsByHash(state = {}, action) {
        * If there are no previous products and no incoming products
        * its set to empty array, otherwise it will be an array of the previous and the
        * new products. Duplicates are removed.
+       *
+       * @todo Remove fakeId implementation when pipeline is updated.
        */
-      const stateReviews = (reviews || nextReviews.length) ? uniq([
-        ...(reviews || []),
-        ...nextReviews.map(review => review.id),
-      ]) : [];
+      let fakeId = (reviews && reviews.length) ? reviews.length : 0;
+      const nextReviewsWithFakeId = nextReviews.map((rev) => {
+        fakeId += 1;
+        const review = JSON.parse(JSON.stringify(rev));
+        review.id = fakeId;
+        return review;
+      });
+      const stateReviews = (reviews || nextReviews.length) ? uniqBy(
+        [
+          ...(reviews || []),
+          ...nextReviewsWithFakeId,
+        ],
+        'id'
+      ) : [];
 
       return {
         ...state,
