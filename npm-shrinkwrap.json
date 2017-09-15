@@ -21,12 +21,11 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "1.0.0-beta5",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.0-beta5.tgz",
-      "integrity": "sha512-jLBOGtRf6Peh26KZ7X3n0ICiBkMWAzIjDiVGHSrjLTdWpXUSS5HJvFlQ3MnxM9UHyl5NlOcDWRdonnwwwNwKZg==",
+      "version": "1.0.0-beta6",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.0-beta6.tgz",
+      "integrity": "sha512-EZzk/nV4SaVDXyL88D6cHF4wv3G2Rj/mab2bsobTIHjRpzZH0SWHPOjPYERyUUSbVQNMsok562/bjr9n9+PFQA==",
       "requires": {
-        "@shopgate/pwa-core": "1.0.0-beta3",
-        "@shopgate/tracking-core": "1.0.0-beta3",
+        "@shopgate/pwa-core": "1.0.0-beta4",
         "babel-core": "6.26.0",
         "babel-plugin-react-transform": "2.0.2",
         "babel-plugin-transform-class-properties": "6.24.1",
@@ -45,7 +44,7 @@
         "intl-messageformat": "2.1.0",
         "jsdom": "11.2.0",
         "lodash": "4.17.4",
-        "npm": "5.4.1",
+        "npm": "5.4.2",
         "path-match": "1.2.4",
         "prop-types": "15.5.10",
         "react-dotdotdot": "1.1.0",
@@ -66,6 +65,14 @@
         "url-search-params": "0.10.0"
       },
       "dependencies": {
+        "babel-plugin-react-transform": {
+          "version": "2.0.2",
+          "resolved": "https://registry.npmjs.org/babel-plugin-react-transform/-/babel-plugin-react-transform-2.0.2.tgz",
+          "integrity": "sha1-UVu/qZaJOYEULZCx+bFjXeKZUQk=",
+          "requires": {
+            "lodash": "4.17.4"
+          }
+        },
         "babel-plugin-transform-object-rest-spread": {
           "version": "6.23.0",
           "resolved": "https://registry.npmjs.org/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.23.0.tgz",
@@ -94,17 +101,17 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "github:shopgate/pwa-common-commerce#096144fe8d4afa18a32259e692cdb464460533bb",
+      "version": "github:shopgate/pwa-common-commerce#4cdd507639b4fe195b51703112975dd2b2bcc89d",
       "requires": {
-        "@shopgate/pwa-common": "1.0.0-beta5",
-        "@shopgate/pwa-core": "1.0.0-beta3",
+        "@shopgate/pwa-common": "1.0.0-beta6",
+        "@shopgate/pwa-core": "1.0.0-beta4",
         "babel-core": "6.26.0",
-        "babel-plugin-react-transform": "2.0.2",
+        "babel-plugin-react-transform": "3.0.0",
         "babel-plugin-transform-class-properties": "6.24.1",
         "babel-plugin-transform-export-extensions": "6.22.0",
-        "babel-plugin-transform-object-rest-spread": "6.23.0",
+        "babel-plugin-transform-object-rest-spread": "6.26.0",
         "babel-plugin-transform-react-inline-elements": "6.22.0",
-        "babel-polyfill": "6.23.0",
+        "babel-polyfill": "6.26.0",
         "babel-preset-env": "1.6.0",
         "babel-preset-react": "6.24.1",
         "lodash": "4.17.4",
@@ -114,108 +121,35 @@
         "reselect": "3.0.1"
       },
       "dependencies": {
-        "@shopgate/pwa-common": {
-          "version": "1.0.0-beta5",
-          "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.0-beta5.tgz",
-          "integrity": "sha512-jLBOGtRf6Peh26KZ7X3n0ICiBkMWAzIjDiVGHSrjLTdWpXUSS5HJvFlQ3MnxM9UHyl5NlOcDWRdonnwwwNwKZg==",
+        "babel-plugin-react-transform": {
+          "version": "3.0.0",
+          "resolved": "https://registry.npmjs.org/babel-plugin-react-transform/-/babel-plugin-react-transform-3.0.0.tgz",
+          "integrity": "sha512-4vJGddwPiHAOgshzZdGwYy4zRjjIr5SMY7gkOaCyIASjgpcsyLTlZNuB5rHOFoaTvGlhfo8/g4pobXPyHqm/3w==",
           "requires": {
-            "@shopgate/pwa-core": "1.0.0-beta3",
-            "@shopgate/tracking-core": "1.0.0-beta3",
-            "babel-core": "6.26.0",
-            "babel-plugin-react-transform": "2.0.2",
-            "babel-plugin-transform-class-properties": "6.24.1",
-            "babel-plugin-transform-export-extensions": "6.22.0",
-            "babel-plugin-transform-object-rest-spread": "6.23.0",
-            "babel-plugin-transform-react-inline-elements": "6.22.0",
-            "babel-polyfill": "6.23.0",
-            "babel-preset-env": "1.6.0",
-            "babel-preset-react": "6.24.1",
-            "classnames": "2.2.5",
-            "crypto-js": "3.1.9-1",
-            "glamor": "2.20.40",
-            "gsap": "1.20.2",
-            "history": "4.7.2",
-            "install": "0.10.1",
-            "intl-messageformat": "2.1.0",
-            "jsdom": "11.2.0",
-            "lodash": "4.17.4",
-            "npm": "5.4.1",
-            "path-match": "1.2.4",
-            "prop-types": "15.5.10",
-            "react-dotdotdot": "1.1.0",
-            "react-hammerjs": "github:JedWatson/react-hammerjs#2c51dfdaa63451f9ad95b56e206d24fe84337df9",
-            "react-hot-loader": "3.0.0-beta.6",
-            "react-id-swiper": "1.4.0",
-            "react-inline-transition-group": "2.1.7",
-            "react-portal": "3.1.0",
-            "react-redux": "5.0.6",
-            "react-tap-event-plugin": "2.0.1",
-            "recompose": "0.24.0",
-            "redux": "3.7.2",
-            "redux-logger": "3.0.6",
-            "redux-thunk": "2.2.0",
-            "remote-redux-devtools": "0.5.12",
-            "reselect": "3.0.1",
-            "rxjs": "5.4.3",
-            "url-search-params": "0.10.0"
-          },
-          "dependencies": {
-            "recompose": {
-              "version": "0.24.0",
-              "resolved": "https://registry.npmjs.org/recompose/-/recompose-0.24.0.tgz",
-              "integrity": "sha512-7+UVym5Mfks/ukIDfcAiasrY61YGki8uIs4CmLTGU7UV2lm2ObbhOl913WrlsZKu8x8uA/sLJUOI5hxVga0dIA==",
-              "requires": {
-                "change-emitter": "0.1.6",
-                "fbjs": "0.8.15",
-                "hoist-non-react-statics": "1.2.0",
-                "symbol-observable": "1.0.4"
-              }
-            }
+            "lodash": "4.17.4"
           }
         },
-        "@shopgate/pwa-core": {
-          "version": "1.0.0-beta3",
-          "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.0-beta3.tgz",
-          "integrity": "sha512-FcnBff+HO04pISyFRRxmFEn8iwGKC9eg4QXpHG5N+uL0AIcfJcifa113yKpkjE3I5e1uomwoe73FN17Mn7Je5g==",
+        "babel-polyfill": {
+          "version": "6.26.0",
+          "resolved": "https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz",
+          "integrity": "sha1-N5k3q8Z9eJWXCtxiHyhM2WbPIVM=",
           "requires": {
-            "babel-core": "6.26.0",
-            "babel-plugin-transform-class-properties": "6.24.1",
-            "babel-plugin-transform-export-extensions": "6.22.0",
-            "babel-plugin-transform-object-rest-spread": "6.23.0",
-            "babel-polyfill": "6.23.0",
-            "babel-preset-env": "1.6.0",
-            "crypto-js": "3.1.9-1",
-            "isomorphic-fetch": "2.2.1"
+            "babel-runtime": "6.26.0",
+            "core-js": "2.5.1",
+            "regenerator-runtime": "0.10.5"
           }
         },
-        "@shopgate/tracking-core": {
-          "version": "1.0.0-beta3",
-          "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.0-beta3.tgz",
-          "integrity": "sha512-6bwP9ZtkeMzgi5+kvLTEF27Nbf8wDJcP49aWwJl132XQpwq4MqxEvIR5LWuweUBSieiiL3l3KIuP7rWkgQAvCA==",
-          "requires": {
-            "@shopgate/pwa-core": "1.0.0-beta3"
-          }
-        },
-        "babel-plugin-transform-object-rest-spread": {
-          "version": "6.23.0",
-          "resolved": "https://registry.npmjs.org/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.23.0.tgz",
-          "integrity": "sha1-h11ryb52HFiirj/u5dxIldjH+SE=",
-          "requires": {
-            "babel-plugin-syntax-object-rest-spread": "6.13.0",
-            "babel-runtime": "6.26.0"
-          }
-        },
-        "hoist-non-react-statics": {
-          "version": "1.2.0",
-          "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz",
-          "integrity": "sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs="
+        "regenerator-runtime": {
+          "version": "0.10.5",
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz",
+          "integrity": "sha1-M2w+/BIgrc7dosn6tntaeVWjNlg="
         }
       }
     },
     "@shopgate/pwa-core": {
-      "version": "1.0.0-beta3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.0-beta3.tgz",
-      "integrity": "sha512-FcnBff+HO04pISyFRRxmFEn8iwGKC9eg4QXpHG5N+uL0AIcfJcifa113yKpkjE3I5e1uomwoe73FN17Mn7Je5g==",
+      "version": "1.0.0-beta4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.0-beta4.tgz",
+      "integrity": "sha512-fGKyddXQ9HC9T5F3bQoMZMX89vjo937zlsOQtoQuvmBz1trQHIQs4w5B2IbMGq0gJyTGu7e7fCZ1yPA6ebfy5Q==",
       "requires": {
         "babel-core": "6.26.0",
         "babel-plugin-transform-class-properties": "6.24.1",
@@ -223,6 +157,7 @@
         "babel-plugin-transform-object-rest-spread": "6.23.0",
         "babel-polyfill": "6.23.0",
         "babel-preset-env": "1.6.0",
+        "babel-preset-react": "6.24.1",
         "crypto-js": "3.1.9-1",
         "isomorphic-fetch": "2.2.1"
       },
@@ -268,14 +203,6 @@
             "parse5": "3.0.2"
           }
         }
-      }
-    },
-    "@shopgate/tracking-core": {
-      "version": "1.0.0-beta3",
-      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.0-beta3.tgz",
-      "integrity": "sha512-6bwP9ZtkeMzgi5+kvLTEF27Nbf8wDJcP49aWwJl132XQpwq4MqxEvIR5LWuweUBSieiiL3l3KIuP7rWkgQAvCA==",
-      "requires": {
-        "@shopgate/pwa-core": "1.0.0-beta3"
       }
     },
     "@types/node": {
@@ -801,9 +728,9 @@
       }
     },
     "babel-plugin-react-transform": {
-      "version": "2.0.2",
-      "resolved": "https://registry.npmjs.org/babel-plugin-react-transform/-/babel-plugin-react-transform-2.0.2.tgz",
-      "integrity": "sha1-UVu/qZaJOYEULZCx+bFjXeKZUQk=",
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/babel-plugin-react-transform/-/babel-plugin-react-transform-3.0.0.tgz",
+      "integrity": "sha512-4vJGddwPiHAOgshzZdGwYy4zRjjIr5SMY7gkOaCyIASjgpcsyLTlZNuB5rHOFoaTvGlhfo8/g4pobXPyHqm/3w==",
       "requires": {
         "lodash": "4.17.4"
       }
@@ -4258,7 +4185,7 @@
         "tough-cookie": "2.3.2",
         "webidl-conversions": "4.0.2",
         "whatwg-encoding": "1.0.1",
-        "whatwg-url": "6.1.0",
+        "whatwg-url": "6.2.1",
         "xml-name-validator": "2.0.1"
       }
     },
@@ -4672,9 +4599,9 @@
       }
     },
     "npm": {
-      "version": "5.4.1",
-      "resolved": "https://registry.npmjs.org/npm/-/npm-5.4.1.tgz",
-      "integrity": "sha512-34jnKVVGbIeFNXTRdDh3goZyVWafaCGMIlbBl0J7/5OduLJOVoEdXZOk0hS1a9X4oRnv347+4lIUT/bjoqmxNg==",
+      "version": "5.4.2",
+      "resolved": "https://registry.npmjs.org/npm/-/npm-5.4.2.tgz",
+      "integrity": "sha512-F6LLCAHriKyKQ9Ff03UKCjkXZoRBp281I42K42+VeHfjAXZ3TJdg3RccinzoCFV1kDxCedVm7AstIpb1Uf5UkQ==",
       "requires": {
         "JSONStream": "1.3.1",
         "abbrev": "1.1.0",
@@ -4773,7 +4700,7 @@
         "which": "1.3.0",
         "worker-farm": "1.5.0",
         "wrappy": "1.0.2",
-        "write-file-atomic": "2.3.0"
+        "write-file-atomic": "2.1.0"
       },
       "dependencies": {
         "JSONStream": {
@@ -7290,7 +7217,7 @@
                 "graceful-fs": "4.1.11",
                 "make-dir": "1.0.0",
                 "unique-string": "1.0.0",
-                "write-file-atomic": "2.3.0",
+                "write-file-atomic": "2.1.0",
                 "xdg-basedir": "3.0.0"
               },
               "dependencies": {
@@ -7610,18 +7537,12 @@
           "bundled": true
         },
         "write-file-atomic": {
-          "version": "2.3.0",
+          "version": "2.1.0",
           "bundled": true,
           "requires": {
             "graceful-fs": "4.1.11",
             "imurmurhash": "0.1.4",
-            "signal-exit": "3.0.2"
-          },
-          "dependencies": {
-            "signal-exit": {
-              "version": "3.0.2",
-              "bundled": true
-            }
+            "slide": "1.1.6"
           }
         }
       }
@@ -8445,9 +8366,9 @@
       }
     },
     "redux-mock-store": {
-      "version": "1.2.3",
-      "resolved": "https://registry.npmjs.org/redux-mock-store/-/redux-mock-store-1.2.3.tgz",
-      "integrity": "sha1-GzrSmdqRy0G6MNaOO28CRHX7nhs="
+      "version": "1.3.0",
+      "resolved": "https://registry.npmjs.org/redux-mock-store/-/redux-mock-store-1.3.0.tgz",
+      "integrity": "sha512-TiwaDF4WLX/lJP0v1j4CMYUEfaIftTGuMUOYb7hmYJjLMAdgj2b/LOf+G9QDssNKFOpSl4B8St8TMUzF3hx92Q=="
     },
     "redux-test-utils": {
       "version": "0.1.2",
@@ -9250,7 +9171,8 @@
     "tr46": {
       "version": "0.0.3",
       "resolved": "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz",
-      "integrity": "sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o="
+      "integrity": "sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=",
+      "dev": true
     },
     "traverse": {
       "version": "0.6.6",
@@ -9457,13 +9379,28 @@
       "integrity": "sha1-nITsLc9oGH/wC8ZOEnS0QhduHIQ="
     },
     "whatwg-url": {
-      "version": "6.1.0",
-      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-6.1.0.tgz",
-      "integrity": "sha1-X8gnm5PXVIO5ztiyYjmFSEehhXg=",
+      "version": "6.2.1",
+      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-6.2.1.tgz",
+      "integrity": "sha512-+WH1K7dyXmt9a3U1Nt1GcsQsmnnHWfl/D8VTSK30ltddZukygZh691yNmydWcyzn0aDwc9+OFpDHYwzRgBEZTQ==",
       "requires": {
         "lodash.sortby": "4.7.0",
-        "tr46": "0.0.3",
+        "tr46": "1.0.1",
         "webidl-conversions": "4.0.2"
+      },
+      "dependencies": {
+        "punycode": {
+          "version": "2.1.0",
+          "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.1.0.tgz",
+          "integrity": "sha1-X4Y+3Im5bbCQdLrXlHvwkFbKTn0="
+        },
+        "tr46": {
+          "version": "1.0.1",
+          "resolved": "https://registry.npmjs.org/tr46/-/tr46-1.0.1.tgz",
+          "integrity": "sha1-qLE/1r/SSJUZZ0zN5VujaTtwbQk=",
+          "requires": {
+            "punycode": "2.1.0"
+          }
+        }
       }
     },
     "which": {
