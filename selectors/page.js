@@ -59,7 +59,7 @@ const getPageName = createSelector(
  * @param {Object} state The current state.
  * @returns {string} The current page title.
  */
-const getPageTitle = createSelector(
+export const getPageTitle = createSelector(
   getHistoryState,
   history => history.state.title || ''
 );

@@ -31,6 +31,7 @@
   ],
   "dependencies": {
     "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-common-commerce": "github:shopgate/pwa-common-commerce",
     "@shopgate/pwa-core": "github:shopgate/pwa-core",
     "@shopgate/tracking-core": "github:shopgate/tracking-core",
     "babel-core": "^6.26.0",
@@ -39,7 +40,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "rxjs": "^5.4.3"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",

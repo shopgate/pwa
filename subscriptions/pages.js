@@ -6,23 +6,20 @@
  */
 
 import core from '@shopgate/tracking-core/core/Core';
-import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
 import getTrackingData from '../selectors';
+import { categoryIsReady$ } from '../streams/category';
 
 /**
  * Pages tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function pages(subscribe) {
+  // TODO: Merge all streams that should track 'pageview'.
+
   /**
-   * Gets triggered when the route changes.
+   * Gets triggered when category page is ready.
    */
-  subscribe(routeDidChange$, ({ getState }) => (
-    /*
-    TODO: Use route specific subscriptions.
-    In order to implement logic that waits for needed data.
-    Like the page title, when entering a product page.
-    */
+  subscribe(categoryIsReady$, ({ getState }) => (
     core.track.pageview(
       getTrackingData(
         getState()
