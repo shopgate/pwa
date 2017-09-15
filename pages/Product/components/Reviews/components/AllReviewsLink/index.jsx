@@ -15,22 +15,24 @@ import styles from './style';
 
 /**
  * Link to all reviews.
+ * @param {string} productId ProductId.
  * @param {number} totalReviewCount The number of reviews given.
  * @returns {JSX|null}
  */
-const AllReviewsLink = ({ totalReviewCount }) => {
+const AllReviewsLink = ({ productId, totalReviewCount }) => {
   if (totalReviewCount < REVIEW_PREVIEW_LIMIT) {
     return null;
   }
 
   return (
-    <Link href="/" className={styles}>
+    <Link href={`/item/${productId}/reviews`} className={styles}>
       <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
     </Link>
   );
 };
 
 AllReviewsLink.propTypes = {
+  productId: PropTypes.string.isRequired,
   totalReviewCount: PropTypes.number,
 };
 

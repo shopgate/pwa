@@ -11,26 +11,33 @@ import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
 import Header from './components/Header';
+import AllReviewsLink from './components/AllReviewsLink';
 
 /**
  * Reviews Component
- * @param {Object} props The reviews data
+ * @param {string} productId ProductId.
+ * @param {Object} rating Rating of the product.
+ * @param {Array} reviews Reviews which should be shown in the product page.
  * @returns {JSX|null}
  */
-const Reviews = ({ rating, reviews }) => {
+const Reviews = ({ productId, rating, reviews }) => {
   if (!features.showReviews || !rating || !rating.count) {
     return null;
   }
+
+  const count = reviews.totalReviewCount ? reviews.totalReviewCount : 0;
 
   return (
     <div>
       <Header key="header" rating={rating} />
       <List reviews={reviews} />
+      <AllReviewsLink totalReviewCount={count} productId={productId} />
     </div>
   );
 };
 
 Reviews.propTypes = {
+  productId: PropTypes.string.isRequired,
   rating: PropTypes.shape(),
   reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
