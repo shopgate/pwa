@@ -3,24 +3,26 @@
   "version": "1.0.0",
   "description": "Shopgate's Google Analytics native tracker",
   "main": "frontend/index.js",
-  "repository": "git@github.com:shopgate/tracking-ga-native.git",
+  "repository": "shopgate/tracking-ga-native",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "precommit": "lint-staged"
+    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
+    "precommit": "lint-staged",
+    "test": "echo 0"
   },
   "lint-staged": {
     "concurrent": false,
     "linters": {
-      "*.js": "eslint --parser babel-eslint"
+      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js ."
     }
   },
   "pre-commit": [
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/tracking-core": "1.0.0-beta3",
-    "@shopgate/pwa-common": "^1.0.0-beta3"
+    "@shopgate/pwa-common": "^1.0.0-beta6",
+    "@shopgate/tracking-core": "^1.0.0-beta4"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "1.0.2",
