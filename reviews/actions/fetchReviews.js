@@ -9,7 +9,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import requestProductReviewsList from '../action-creators/requestReviews';
 import receiveProductReviewsList from '../action-creators/receiveReviews';
-import setCurrentReviewsProductId from '../action-creators/setCurrentReviewsProductId';
+import setProductId from '../../product/action-creators/setProductId';
 import errorProductReviewsList from '../action-creators/errorReviews';
 
 /**
@@ -23,15 +23,28 @@ const fetchReviews = (productId, limit = 2, offset = 0) => (dispatch) => {
   const hash = generateResultHash({
     productId,
   });
-  dispatch(setCurrentReviewsProductId(productId));
+  dispatch(setProductId(productId));
   dispatch(requestProductReviewsList(hash, productId, limit, offset));
-  new PipelineRequest('getProductReviews')
+
+  /**
+   * For testing purposes there's need to keep and return the promise reference, not result of
+   * chained functions.
+   *
+   * Otherwise test case won't get the original resolver.
+   *
+   * To get more insights, please take a look at ../spec.js.
+   *
+   * @type {Promise}
+   */
+  const promise = new PipelineRequest('getProductReviews')
     .setInput({
       productId,
       limit,
       offset,
     })
-    .dispatch()
+    .dispatch();
+
+  promise
     .then((result) => {
       dispatch(receiveProductReviewsList(hash, productId, result.reviews, result.totalReviewCount));
     })
@@ -39,6 +52,8 @@ const fetchReviews = (productId, limit = 2, offset = 0) => (dispatch) => {
       logger.error(error);
       dispatch(errorProductReviewsList(hash, productId, limit, offset));
     });
+
+  return promise;
 };
 
 export default fetchReviews;

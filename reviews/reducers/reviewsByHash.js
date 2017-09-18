@@ -11,7 +11,6 @@ import {
   REQUEST_REVIEWS,
   RECEIVE_REVIEWS,
   ERROR_REVIEWS,
-  SET_CURRENT_REVIEWS_PRODUCT_ID,
 } from '../constants';
 
 /**
@@ -22,17 +21,6 @@ import {
  */
 export default function reviewsByHash(state = {}, action) {
   switch (action.type) {
-    /**
-     * Sets the currentReviewsProductID.
-     * This property is needed to make the reviews page independent of a product itself.
-     * Usually the currentProduct should be set when user navigates from a product page.
-     * However this workflow is not guaranteed also during automated tests.
-     */
-    case SET_CURRENT_REVIEWS_PRODUCT_ID:
-      return {
-        ...state,
-        currentReviewsProductId: action.productId,
-      };
     case REQUEST_REVIEWS:
       return {
         ...state,
@@ -76,7 +64,7 @@ export default function reviewsByHash(state = {}, action) {
           totalResultCount: typeof action.totalResultCount !== 'undefined' ?
             action.totalResultCount : null,
           isFetching: false,
-          expires: action.cached ? (Date.now() + REVIEWS_LIFETIME) : 0,
+          expires: Date.now() + REVIEWS_LIFETIME,
         },
       };
     }
@@ -86,6 +74,7 @@ export default function reviewsByHash(state = {}, action) {
         [action.hash]: {
           ...state[action.hash],
           isFetching: false,
+          expires: 0,
         },
       };
     default:
