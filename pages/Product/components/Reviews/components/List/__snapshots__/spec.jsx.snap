@@ -3,9 +3,7 @@
 exports[`<List /> should not render when no reviews given 1`] = `
 <List
   reviews={Array []}
->
-  <div />
-</List>
+/>
 `;
 
 exports[`<List /> should render list with reviews 1`] = `
@@ -56,7 +54,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-1qe6ny3"
+        className="css-2g5sa0"
       >
         <Title
           title=""
@@ -70,12 +68,12 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-1dtqhmg"
+              className="css-hgkz41"
               display="small"
-              value={1}
+              value={100}
             >
               <div
-                className="css-13azwyo css-1dtqhmg"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -440,9 +438,9 @@ exports[`<List /> should render list with reviews 1`] = `
             <Translate
               className="css-1nebnqb"
               params={
-                Array [
-                  5,
-                ]
+                Object {
+                  "rate": 5,
+                }
               }
               string="reviews.rating_stars"
             >
@@ -475,7 +473,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-9pmgny"
+            className="css-1kqiarg"
           >
             <ReviewDate
               date="2017-09-06T12:38:51.000Z"
@@ -509,7 +507,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-1qe6ny3"
+        className="css-2g5sa0"
       >
         <Title
           title="Test review 2 "
@@ -525,12 +523,12 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-1dtqhmg"
+              className="css-hgkz41"
               display="small"
-              value={0.4}
+              value={40}
             >
               <div
-                className="css-13azwyo css-1dtqhmg"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -790,9 +788,9 @@ exports[`<List /> should render list with reviews 1`] = `
             <Translate
               className="css-1nebnqb"
               params={
-                Array [
-                  2,
-                ]
+                Object {
+                  "rate": 2,
+                }
               }
               string="reviews.rating_stars"
             >
@@ -825,7 +823,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-9pmgny"
+            className="css-1kqiarg"
           >
             <ReviewDate
               date="2017-09-06T12:37:40.000Z"
@@ -846,9 +844,9 @@ exports[`<List /> should render list with reviews 1`] = `
               <Translate
                 className=""
                 params={
-                  Array [
-                    "username123",
-                  ]
+                  Object {
+                    "author": "username123",
+                  }
                 }
                 string="reviews.author"
               >
@@ -875,7 +873,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-1qe6ny3"
+        className="css-2g5sa0"
       >
         <Title
           title=""
@@ -889,12 +887,12 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-1dtqhmg"
+              className="css-hgkz41"
               display="small"
-              value={0.6}
+              value={60}
             >
               <div
-                className="css-13azwyo css-1dtqhmg"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -1189,9 +1187,9 @@ exports[`<List /> should render list with reviews 1`] = `
             <Translate
               className="css-1nebnqb"
               params={
-                Array [
-                  3,
-                ]
+                Object {
+                  "rate": 3,
+                }
               }
               string="reviews.rating_stars"
             >
@@ -1224,7 +1222,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-9pmgny"
+            className="css-1kqiarg"
           >
             <ReviewDate
               date="2017-09-06T12:30:23.000Z"
@@ -1245,9 +1243,9 @@ exports[`<List /> should render list with reviews 1`] = `
               <Translate
                 className=""
                 params={
-                  Array [
-                    "Carina Hoffmann",
-                  ]
+                  Object {
+                    "author": "Carina Hoffmann",
+                  }
                 }
                 string="reviews.author"
               >
@@ -1274,7 +1272,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-1qe6ny3"
+        className="css-2g5sa0"
       >
         <Title
           title=""
@@ -1288,12 +1286,12 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-1dtqhmg"
+              className="css-hgkz41"
               display="small"
-              value={0.2}
+              value={20}
             >
               <div
-                className="css-13azwyo css-1dtqhmg"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -1518,9 +1516,9 @@ exports[`<List /> should render list with reviews 1`] = `
             <Translate
               className="css-1nebnqb"
               params={
-                Array [
-                  1,
-                ]
+                Object {
+                  "rate": 1,
+                }
               }
               string="reviews.rating_stars"
             >
@@ -1553,7 +1551,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-9pmgny"
+            className="css-1kqiarg"
           >
             <ReviewDate
               date="2017-09-06T12:30:23.000Z"

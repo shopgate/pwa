@@ -29,7 +29,7 @@ const Reviews = ({ productId, rating, reviews }) => {
 
   return (
     <div>
-      <Header key="header" rating={rating} />
+      <Header rating={rating} />
       <List reviews={reviews} />
       <AllReviewsLink totalReviewCount={count} productId={productId} />
     </div>

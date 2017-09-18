@@ -17,7 +17,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const AverageRating = ({ rating }) => {
-  const { average, count } = rating;
+  const { average = 0, count = 0 } = rating;
 
   return (
     <div className={styles}>

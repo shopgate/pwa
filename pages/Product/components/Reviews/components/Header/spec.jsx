@@ -13,19 +13,19 @@ describe('<Header />', () => {
   let header = null;
   const ratings = [
     {
-      average: null,
-      count: null,
-      reviewCount: null,
+      average: 0,
+      count: 0,
+      reviewCount: 0,
     },
     {
-      average: 0.7,
+      average: 70,
       count: 3,
       reviewCount: 3,
     },
   ];
 
   beforeEach(() => {
-    header = mount(<Header rating={null} />);
+    header = mount(<Header rating={{}} />);
   });
 
   it('should render empty', () => {
@@ -34,7 +34,7 @@ describe('<Header />', () => {
 
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
-    expect(header.find('RatingCount').prop('count')).toEqual(0);
+    expect(header.find('RatingCount').exists()).toBe(false);
   });
 
   it('should render rating summary', () => {
