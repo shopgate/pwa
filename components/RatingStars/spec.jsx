@@ -14,9 +14,9 @@ import RatingStars from './index';
 const numEmptyStars = 5;
 
 describe('<RatingStars />', () => {
-  it('renders with value of 0.5', () => {
+  it('renders with value of 50', () => {
     const wrapper = shallow(
-      <RatingStars value={0.5} />
+      <RatingStars value={50} />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -34,9 +34,9 @@ describe('<RatingStars />', () => {
     expect(wrapper.find(StarHalfIcon).length).toBe(0);
   });
 
-  it('renders with value of 1', () => {
+  it('renders with value of 100', () => {
     const wrapper = shallow(
-      <RatingStars value={1} />
+      <RatingStars value={100} />
     );
 
     expect(wrapper).toMatchSnapshot();
