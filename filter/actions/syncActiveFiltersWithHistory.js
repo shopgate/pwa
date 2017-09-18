@@ -6,7 +6,7 @@
  */
 
 import sliceActiveFilters from '../action-creators/sliceActiveFilters';
-import { getActiveFiltersStack, getHistoryFilterIndex } from '../selectors';
+import { getActiveFiltersStack, getFilterIndex } from '../selectors';
 
 /**
  * Removes the last entry from the active filters stack.
@@ -14,7 +14,7 @@ import { getActiveFiltersStack, getHistoryFilterIndex } from '../selectors';
  */
 const syncActiveFiltersWithHistory = () => (dispatch, getState) => {
   const state = getState();
-  const filterIndex = getHistoryFilterIndex(state);
+  const filterIndex = getFilterIndex(state);
 
   // Only continue if history has filterIndex and the active filters stack changed.
   if (filterIndex !== null && getActiveFiltersStack(state).length !== (filterIndex + 1)) {

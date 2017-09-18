@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import updateHistoryState from '@shopgate/pwa-common/actions/history/updateHistoryState';
 import addActiveFiltersAction from '../action-creators/addActiveFilters';
-import { getActiveFiltersStack, getHistoryFilterIndex } from '../selectors';
+import setFilterIndex from '../action-creators/setFilterIndex';
+import { getActiveFiltersStack, getFilterIndex } from '../selectors';
 
 /**
  * Creates a new stack for active filters.
@@ -21,13 +21,11 @@ import { getActiveFiltersStack, getHistoryFilterIndex } from '../selectors';
  */
 const addActiveFilters = () => (dispatch, getState) => {
   const state = getState();
-  const filterIndex = getHistoryFilterIndex(state);
+  const filterIndex = getFilterIndex(state);
 
   if (filterIndex === null) {
     dispatch(addActiveFiltersAction());
-    dispatch(updateHistoryState({
-      filterIndex: getActiveFiltersStack(state).length,
-    }));
+    dispatch(setFilterIndex(getActiveFiltersStack(state).length));
   }
 };
 

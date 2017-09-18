@@ -6,12 +6,14 @@
  */
 
 import { combineReducers } from 'redux';
-import availableFilters from './availableFilters';
 import activeFilters from './activeFilters';
+import activeIndex from './activeIndex';
+import availableFilters from './availableFilters';
 import temporaryFilters from './temporaryFilters';
 
 export default combineReducers({
-  availableFilters,
   activeFilters,
+  availableFilters,
+  activeIndex,
   temporaryFilters,
 });
