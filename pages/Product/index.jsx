@@ -7,13 +7,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
+import Reviews from 'Components/Reviews';
 import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
 import VariantSelects from './components/VariantSelects';
 import Options from './components/Options';
 import Description from './components/Description';
 import Properties from './components/Properties';
-import Reviews from './components/Reviews';
 import connect from './connector';
 
 /**
