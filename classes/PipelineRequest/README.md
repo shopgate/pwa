@@ -69,13 +69,13 @@ This method can be overridden by a child class.
 ## Testing - MockedPipelineRequest
 ### How to mock this module?
 
-It's easy to test functions that are using PipelineRequest. The only thing which is important is that tested function must return an original `Promise` when called. For example:
+It's easy to test functions that are using PipelineRequest. The only thing which is important is that the tested function must return an original `Promise` when called. For example:
 ```js
-// Action function.
+// Redux action definition.
 const fetchSomething = (...params) => () => {
-  // First, create a promise.
+  // First, create a promise by dispatching the request.
   const promise = new PipelineRequest('pipelineName').dispatch();
-  // Then, define callbacks.
+  // Then define the necessary promise callbacks.
   promise
     .then(() => {
       // Callback when pipeline request resolves.
@@ -90,19 +90,19 @@ const fetchSomething = (...params) => () => {
 
 When fetch action is implemented like in the example above, testing is pretty easy to implement. For example:
 ```js
-// First import original fetch function 
+// First import the original fetch function 
 import fetchSomething from 'exampleFile';
 // Then, import mockPipelineRequestFactory
 import mockPipelineRequestFactory from '@shopgate/pwa-core/classes/PipelineRequest/mock';
-// Now, the PipelineRequest can be mocked.
+// Now the PipelineRequest can be mocked.
 jest.mock(
   '@shopgate/pwa-core/classes/PipelineRequest',
   () => (
-    // Factory requires a callback function which will be called, always when PipelineRequest.dispatch is called.
+    // The factory requires a callback function which will be called always when the `PipelineRequest.dispatch()` is called.
     mockedPipelineRequestFactory((mockedInstance, resolve, reject) => {
-      // Here can be placed the code which will decide if to resolve or reject a dispatch.
-      // For analysing purposes, mocked dispatch also passes the MockedPipelineRequest instance (this).
-      // This allows the test to analyse the internal data, like the effect of .setInput method.
+      // Here you can place your code that either resolves or rejects the promise.
+      // For analysing purposes, the mocked dispatch also passes the MockedPipelineRequest instance (this).
+      // This allows the test to analyse the internal data, like the effect of `PipelineRequest.setInput()` method.
     })
   )
 )
@@ -111,13 +111,13 @@ jest.mock(
 ## Mocked methods and properties
 ### Properties
 #### `static mockedDispatchResolver: function(this, resolve, reject)`
-Mock-specific property which contains a function which will be executed when .dispatch method is called.
+A mock-specific property which contains a function that will be executed when the `.dispatch()` method is called.
 #### `name: string`
-Pipeline name which was passed when MockedPipelineRequest was created. Mock doesn't use it, but keeps it for assertion.
+The pipeline name which was passed when The MockedPipelineRequest was created. The mock doesn't use it, but keeps it for assertion.
 #### `input: Object`
-Object which was passed by .setInput method. Defaults to an empty object.
+The object which was passed by `.setInput()` method. Defaults to an empty object.
 ### Methods
 #### `setInput([payload: Object]): MockedPipelineRequest`
 Sets the payload data and keeps it for further testing.
 #### `dispatch()`
-Returns a promise and resolves the promises immediately with function stored as .mockedDispatchResolver property.
+Returns a promise and resolves the promises immediately with a function stored as `.mockedDispatchResolver()` property.

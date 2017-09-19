@@ -4,38 +4,26 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 /**
  * Mocked PipelineRequest.
- * Use it any time you need to mock a PipelineQuest.
+ * Use it any time you need to mock a PipelineRequest.
  *
- * Usage:
- * For a test usually you need to have control over how the dispatch resolves.
- * For this purpose, use .setMockedDispatchResolver to set up a callback which will be called
- * after PipelineRequest.dispatch is called instead of the original one.
- *
- * To make it work, you can mock the original PipelineRequest by using jest.mock
- * after your test import statements. For example:
- * jest.mock(
- *  '@shopgate/pwa-core/classes/PipelineRequest',
- *  () => (
- *    mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
- *      // This is a callback which will be executed in .dispatch.
- *    })
- *  )
- * );
+ * For more information and usage examples, please check the readme.
  */
 class MockedPipelineRequest {
   /**
    * Getter for mockedDispatchResolver which is additional helper function for custom, mock-only
    * .dispatch resolver.
-   * @return {function()}
+   * @return {Function}
    */
   static get mockedDispatchResolver() {
     return () => {};
   }
 
   /**
-   * @inheritDoc
+   * Initializes the MockedPipelineRequest object.
+   * @param {string} name The pipeline name.
    */
   constructor(name) {
     this.name = name;
@@ -43,7 +31,9 @@ class MockedPipelineRequest {
   }
 
   /**
-   * @inheritDoc {PipelineRequest}
+   * Sets the payload for the MockedPipelineRequest
+   * @param {Object} [mockedInput={}] The payload to send with the request.
+   * @returns {MockedPipelineRequest}
    */
   setInput(mockedInput = {}) {
     this.input = mockedInput;
@@ -51,7 +41,8 @@ class MockedPipelineRequest {
   }
 
   /**
-   * Returns promise and calls .mockedDispatchResolver which can be set up by using
+   * Returns promise and calls `MockedPipelineRequest.mockedDispatchResolver()` which
+   * can be set up by using
    * .setMockedDispatchResolver.
    * @return {Promise}
    */
@@ -64,8 +55,7 @@ class MockedPipelineRequest {
 
 /**
  * Factory which creates an instance of MockedPipelineRequest.
- *
- * @param {function} cb Resolver callback.
+ * @param {Function} cb Resolver callback.
  * @return {MockedPipelineRequest}
  */
 export const mockedPipelineRequestFactory = cb =>
