@@ -52,8 +52,8 @@ export default function reviewsByHash(state = {}, action) {
         [action.hash]: {
           ...state[action.hash],
           reviews: stateReviews,
-          totalResultCount: typeof action.totalResultCount !== 'undefined' ?
-            action.totalResultCount : null,
+          totalReviewCount: typeof action.totalReviewCount !== 'undefined' ?
+            action.totalReviewCount : null,
           isFetching: false,
           expires: Date.now() + REVIEWS_LIFETIME,
         },

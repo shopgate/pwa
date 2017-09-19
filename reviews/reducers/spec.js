@@ -13,7 +13,7 @@ import {
 import {
   mockedReviews,
   moreMockedReviews,
-  totalResultCount,
+  totalReviewCount,
 } from './mock';
 
 import reducers from './index';
@@ -25,8 +25,8 @@ describe('Reviews reducers', () => {
    * @param {Object} state State.
    * @param {number} expectedReviewsLength How many reviews should be stored.
    */
-  const analyzeReceivedState = (state, expectedReviewsLength = totalResultCount) => {
-    expect(state.reviewsByHash[hash].totalResultCount).toBe(totalResultCount);
+  const analyzeReceivedState = (state, expectedReviewsLength = totalReviewCount) => {
+    expect(state.reviewsByHash[hash].totalReviewCount).toBe(totalReviewCount);
     expect(state.reviewsByHash[hash].reviews).toBeInstanceOf(Array);
     expect(state.reviewsByHash[hash].reviews).toBeInstanceOf(Array);
     expect(state.reviewsByHash[hash].reviews).toHaveLength(expectedReviewsLength);
@@ -50,7 +50,7 @@ describe('Reviews reducers', () => {
         type: RECEIVE_REVIEWS,
         hash,
         reviews: mockedReviews,
-        totalResultCount,
+        totalReviewCount,
       });
       analyzeReceivedState(state, mockedReviews.length);
       expect(state.reviewsByHash[hash].expires).toBeGreaterThan(Date.now());
@@ -60,7 +60,7 @@ describe('Reviews reducers', () => {
         type: RECEIVE_REVIEWS,
         hash,
         reviews: moreMockedReviews,
-        totalResultCount,
+        totalReviewCount,
       });
 
       analyzeReceivedState(state);

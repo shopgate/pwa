@@ -22,4 +22,4 @@ const moreReviews = reviews.slice(0).map(
 
 export const mockedReviews = reviews;
 export const moreMockedReviews = moreReviews;
-export const totalResultCount = reviews.length + moreReviews.length;
+export const totalReviewCount = reviews.length + moreReviews.length;
