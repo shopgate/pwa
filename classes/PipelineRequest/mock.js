@@ -62,7 +62,7 @@ export const mockedPipelineRequestFactory = cb =>
   class extends MockedPipelineRequest {
     /**
      * Getter for custom mocked resolver.
-     * @return {*}
+     * @return {Function}
      */
     static get mockedDispatchResolver() {
       return cb;
