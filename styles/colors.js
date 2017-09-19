@@ -1,4 +1,13 @@
-import { colors } from '../config/app';
+import { isObject } from '@shopgate/pwa-common/helpers/validation';
+import { colors as customColors } from '../config/app';
+
+let overrides = {};
+
+if (isObject(customColors)) {
+  overrides = {
+    ...customColors,
+  };
+}
 
 export default {
   background: '#f8f8f8',
@@ -20,5 +29,5 @@ export default {
   success: '#35cc29',
   warning: '#ff9300',
   error: '#ff0000',
-  ...colors,
+  ...overrides,
 };
