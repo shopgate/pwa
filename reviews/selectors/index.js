@@ -29,7 +29,7 @@ export const getReviews = createSelector(
 
     const collection = reviewsState[hash];
     if (!collection || !collection.reviews) {
-      return null;
+      return [];
     }
 
     return collection.reviews;

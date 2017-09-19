@@ -35,23 +35,14 @@ export default function reviewsByHash(state = {}, action) {
       const nextReviews = action.reviews || [];
 
       /**
-       * If there are no previous products and no incoming products
+       * If there are no previous reviews and no incoming reviews
        * its set to empty array, otherwise it will be an array of the previous and the
-       * new products. Duplicates are removed.
-       *
-       * @todo Remove fakeId implementation when pipeline is updated.
+       * new reviews. Duplicates are removed.
        */
-      let fakeId = (reviews && reviews.length) ? reviews.length : 0;
-      const nextReviewsWithFakeId = nextReviews.map((rev) => {
-        fakeId += 1;
-        const review = JSON.parse(JSON.stringify(rev));
-        review.id = fakeId;
-        return review;
-      });
       const stateReviews = (reviews || nextReviews.length) ? uniqBy(
         [
           ...(reviews || []),
-          ...nextReviewsWithFakeId,
+          ...nextReviews,
         ],
         'id'
       ) : [];
