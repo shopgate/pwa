@@ -25,7 +25,7 @@ The rating value that displays stars accordingly. It needs to be a floating numb
 
 ### display
 
-_Type_: `'small'`, `'big'`, any custom defined style key.<br>
+_Type_: `'small'`, `'big'`, `'large'`, any custom defined style key.<br>
 _Defaults_: `'small'` or first style key defined.<br>
 
 The display style of the stars. 

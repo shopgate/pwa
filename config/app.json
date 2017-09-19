@@ -9,5 +9,8 @@
   "forgotPasswordUrl": "https://material-fashion.myshopify.com/admin/auth/recover",
   "extensions": [
     "commerce-widgets"
-  ]
+  ],
+  "features": {
+    "showReviews": true
+  }
 }

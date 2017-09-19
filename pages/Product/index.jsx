@@ -14,6 +14,7 @@ import VariantSelects from './components/VariantSelects';
 import Options from './components/Options';
 import Description from './components/Description';
 import Properties from './components/Properties';
+import Reviews from './components/Reviews';
 import connect from './connector';
 
 /**
@@ -70,6 +71,7 @@ class Product extends Component {
         <Options />
         <Description />
         <Properties />
+        <Reviews />
       </View>
     );
   }
