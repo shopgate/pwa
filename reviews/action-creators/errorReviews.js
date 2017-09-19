@@ -8,7 +8,7 @@
 import { ERROR_REVIEWS } from '../constants';
 
 /**
- * Dispatches the ERROR_PRODUCT_REVIEWS action.
+ * Dispatches the ERROR_REVIEWS action.
  * @param {string} hash Generated hash.
  * @param {string} productId The ID of the product.
  * @param {number} limit The limit which was used for a get request.

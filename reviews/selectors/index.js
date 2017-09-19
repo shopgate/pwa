@@ -8,7 +8,7 @@ import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getCurrentProductId } from '../../product/selectors/product';
 /**
- * Select the product reviews state
+ * Select the product reviews state.
  * @param {Object} state The current application state.
  * @return {Object} The product reviews state.
  */

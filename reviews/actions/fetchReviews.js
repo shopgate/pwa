@@ -13,7 +13,7 @@ import setProductId from '../../product/action-creators/setProductId';
 import errorProductReviewsList from '../action-creators/errorReviews';
 
 /**
- * Request product reviews for a product from server.
+ * Request product reviews for a product from a server.
  * @param {string} productId The product ID
  * @param {number} limit The maximum number of reviews to fetch
  * @param {number} offset The list offset (defaults to 0).
@@ -27,13 +27,10 @@ const fetchReviews = (productId, limit = 2, offset = 0) => (dispatch) => {
   dispatch(requestProductReviewsList(hash, productId, limit, offset));
 
   /**
-   * For testing purposes there's need to keep and return the promise reference, not result of
+   * For testing purposes there's need to keep and return the promise reference, not a result of
    * chained functions.
-   *
    * Otherwise test case won't get the original resolver.
-   *
    * To get more insights, please take a look at ../spec.js.
-   *
    * @type {Promise}
    */
   const promise = new PipelineRequest('getProductReviews')

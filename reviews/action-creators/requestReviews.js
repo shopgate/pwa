@@ -8,7 +8,7 @@
 import { REQUEST_REVIEWS } from '../constants';
 
 /**
- * Dispatches the REQUEST_PRODUCT_REVIEWS_LIST action.
+ * Dispatches the REQUEST_REVIEWS action.
  * @param {string} hash Generated hash.
  * @param {string} productId The ID of the product
  * @param {number} limit The maximum number of reviews
