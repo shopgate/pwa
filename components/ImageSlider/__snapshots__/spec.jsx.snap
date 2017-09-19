@@ -47,3 +47,86 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   </Image>
 </ImageSlider>
 `;
+
+exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
+<Slider
+  autoPlay={false}
+  className=""
+  classNames={
+    Object {
+      "activeIndicator": "css-so6ht",
+      "container": "css-nil",
+      "inactiveIndicator": "css-1hipsfp",
+      "indicator": "css-17uszht",
+      "slide": "css-nil",
+      "slider": "css-1i764wo",
+    }
+  }
+  controls={false}
+  disabled={false}
+  indicators={false}
+  initialSlide={0}
+  interval={3000}
+  loop={false}
+  onSlideChange={null}
+  slidesPerView={1}
+  snapItems={true}
+>
+  <SliderItem>
+    <Image
+      alt={null}
+      animating={true}
+      backgroundColor="#f2f2f2"
+      className=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      onError={null}
+      onLoad={null}
+      ratio={null}
+      resolutions={
+        Array [
+          Object {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          Object {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="foo/bar"
+      transition={null}
+    />
+  </SliderItem>
+  <SliderItem>
+    <Image
+      alt={null}
+      animating={true}
+      backgroundColor="#f2f2f2"
+      className=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      onError={null}
+      onLoad={null}
+      ratio={null}
+      resolutions={
+        Array [
+          Object {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          Object {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="bar/foo"
+      transition={null}
+    />
+  </SliderItem>
+</Slider>
+`;

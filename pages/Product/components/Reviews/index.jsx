@@ -8,30 +8,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { features } from 'Config/app.json';
-import RatingStars from 'Components/RatingStars';
 import connect from './connector';
+import List from './components/List';
+import Header from './components/Header';
 
 /**
- * The Rating component.
- * @param {Object} props The component props.
- * @return {JSX}
+ * Reviews Component
+ * @param {Object} props The reviews data
+ * @returns {JSX|null}
  */
-const Rating = ({ rating }) => {
+const Reviews = ({ rating, reviews }) => {
   if (!features.showReviews || !rating || !rating.count) {
     return null;
   }
 
   return (
-    <RatingStars value={rating.average} />
+    <div>
+      <Header rating={rating} />
+      <List reviews={reviews} />
+    </div>
   );
 };
 
-Rating.propTypes = {
+Reviews.propTypes = {
   rating: PropTypes.shape(),
+  reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
 
-Rating.defaultProps = {
+Reviews.defaultProps = {
   rating: null,
+  reviews: null,
 };
 
-export default connect(Rating);
+export default connect(Reviews);
