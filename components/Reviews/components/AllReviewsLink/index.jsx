@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { REVIEW_PREVIEW_LIMIT } from 'Pages/Product/constants';
@@ -24,8 +25,10 @@ const AllReviewsLink = ({ productId, totalReviewCount }) => {
     return null;
   }
 
+  const publicProductId = bin2hex(productId);
+
   return (
-    <Link href={`/item/${productId}/reviews`} className={styles}>
+    <Link href={`/item/${publicProductId}/reviews`} className={styles}>
       <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
     </Link>
   );
