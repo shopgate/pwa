@@ -104,7 +104,7 @@ class FilterBar extends Component {
       if (height > 0 && height !== this.state.spacerHeight) {
         this.setState({ spacerHeight: height });
       }
-    }, 0);
+    }, 100);
   }
 
   /**
