@@ -70,7 +70,7 @@ class Product extends Component {
         <Options />
         <Description />
         <Properties />
-        <Reviews productId={this.props.params.productId} />
+        <Reviews />
       </View>
     );
   }

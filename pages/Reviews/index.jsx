@@ -19,7 +19,7 @@ class ReviewsList extends Component {
   static propTypes = {
     fetchReviews: PropTypes.func.isRequired,
     params: PropTypes.shape().isRequired,
-    reviews: PropTypes.arrayOf(),
+    reviews: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   /**

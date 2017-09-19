@@ -15,29 +15,25 @@ import AllReviewsLink from './components/AllReviewsLink';
 
 /**
  * Reviews Component
- * @param {string} productId ProductId.
  * @param {Object} rating Rating of the product.
  * @param {Array} reviews Reviews which should be shown in the product page.
  * @returns {JSX|null}
  */
-const Reviews = ({ productId, rating, reviews }) => {
+const Reviews = ({ rating, reviews }) => {
   if (!features.showReviews || !rating || !rating.count) {
     return null;
   }
-
-  const count = reviews.totalReviewCount ? reviews.totalReviewCount : 0;
 
   return (
     <div>
       <Header rating={rating} />
       <List reviews={reviews} />
-      <AllReviewsLink totalReviewCount={count} productId={productId} />
+      <AllReviewsLink />
     </div>
   );
 };
 
 Reviews.propTypes = {
-  productId: PropTypes.string.isRequired,
   rating: PropTypes.shape(),
   reviews: PropTypes.arrayOf(PropTypes.shape()),
 };

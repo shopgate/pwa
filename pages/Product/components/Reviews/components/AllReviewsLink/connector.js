@@ -6,7 +6,10 @@
  */
 
 import { connect } from 'react-redux';
-import { getProductReviewCount } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getProductReviewCount,
+  getCurrentProductId,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -15,6 +18,7 @@ import { getProductReviewCount } from '@shopgate/pwa-common-commerce/product/sel
  */
 const mapStateToProps = state => ({
   totalReviewCount: getProductReviewCount(state),
+  productId: getCurrentProductId(state),
 });
 
 export default connect(mapStateToProps);
