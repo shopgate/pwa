@@ -30,9 +30,9 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "github:shopgate/pwa-common",
+    "@shopgate/pwa-common": "^1.0.0-beta6",
     "@shopgate/pwa-common-commerce": "github:shopgate/pwa-common-commerce",
-    "@shopgate/pwa-core": "github:shopgate/pwa-core",
+    "@shopgate/pwa-core": "^1.0.0-beta4",
     "@shopgate/tracking-core": "github:shopgate/tracking-core",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
