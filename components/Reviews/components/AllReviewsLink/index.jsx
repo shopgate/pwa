@@ -24,12 +24,10 @@ import {
  * @returns {JSX|null}
  */
 const AllReviewsLink = ({ productId, totalReviewCount }) => {
-  if (totalReviewCount < REVIEW_PREVIEW_LIMIT) {
+  if (totalReviewCount <= REVIEW_PREVIEW_LIMIT) {
     return null;
   }
-
   const publicProductId = bin2hex(productId);
-
   return (
     <div className={containerStyle}>
       <Link href={`/item/${publicProductId}/reviews`} className={linkStyle}>
