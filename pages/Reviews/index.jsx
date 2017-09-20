@@ -6,12 +6,25 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import View from 'Components/View';
+import List from 'Components/Reviews/components/List';
+import LoadMoreButton from './components/LoadMore';
 import connect from './connector';
+import {
+  REVIEW_ITEMS_PER_PAGE,
+} from './constants';
 /**
  *
  */
 class ReviewsList extends Component {
+  /**
+   * Context types definition.
+   * @type {{i18n: shim}}
+   */
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
   /**
    * PropTypes definition
    * @return {{fetchReviews: (*|shim)}}
@@ -29,36 +42,23 @@ class ReviewsList extends Component {
   static defaultProps ={
     reviews: [],
   };
-  /**
-   * Set offset to 0 for init.
-   * @param {Object} props React props.
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      offset: 0,
-    };
-  }
 
   /**
    * Fetch the first reviews bundle.
    */
   componentDidMount() {
     const { productId } = this.props.params;
-    this.props.fetchReviews(productId, 20, this.state.offset);
+    // ProductId comes from url here, need to encode it first.
+    this.props.fetchReviews(hex2bin(productId), REVIEW_ITEMS_PER_PAGE, 0);
   }
 
   /**
-   * Check is there's need to bump offset.
-   * @param {Object} nextProps
+   * Gets a title translations.
+   * @returns {string} Title
    */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.reviews.length === this.props.reviews.length) {
-      return;
-    }
-    this.setState({
-      offset: this.state.offset += 20,
-    });
+  getTitle() {
+    const { __ } = this.context.i18n();
+    return __('titles.reviews');
   }
   /**
    * Renders the component
@@ -66,8 +66,9 @@ class ReviewsList extends Component {
    */
   render() {
     return (
-      <View>
-        <span>foo</span>
+      <View title={this.getTitle()}>
+        <List reviews={this.props.reviews} />
+        <LoadMoreButton />
       </View>
     );
   }
