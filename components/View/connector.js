@@ -6,7 +6,8 @@
  */
 
 import { connect } from 'react-redux';
-import updateHistoryState from '@shopgate/pwa-common/actions/history/updateHistoryState';
+import setViewTitle from './action-creators/setViewTitle';
+import setViewTop from './action-creators/setViewTop';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +15,7 @@ import updateHistoryState from '@shopgate/pwa-common/actions/history/updateHisto
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  viewTop: state.history.state.viewTop,
+  viewTop: state.ui.general.isTop,
 });
 
 /**
@@ -23,9 +24,8 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  updateHistoryState(state) {
-    dispatch(updateHistoryState(state));
-  },
+  setTitle: title => dispatch(setViewTitle(title)),
+  setTop: isTop => dispatch(setViewTop(isTop)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

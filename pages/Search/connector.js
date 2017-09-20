@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { connect } from 'react-redux';
-import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors';
+import connect from '@shopgate/pwa-common/helpers/routedConnect';
+import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
+import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
-import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,18 +18,9 @@ import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creato
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  hasProducts: getProductsResult(state).products.length > 0,
+  isLoading: isViewLoading(state, SEARCH_PATH),
   searchPhrase: getSearchPhrase(state),
+  ...getProductsResult(state),
 });
 
-/**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
- */
-const mapDispatchToProps = dispatch => ({
-  getSearchResults: offset => dispatch(getSearchResults(offset)),
-  setActiveFilters: filters => dispatch(setActiveFilters(filters)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, null, null, { withRef: true });

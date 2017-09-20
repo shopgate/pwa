@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
  */
 const mapStateToProps = state => ({
   action: state.history.action,
-  title: state.history.state.title || '',
+  title: state.ui.general.title || '',
 });
 
 export default connect(mapStateToProps);

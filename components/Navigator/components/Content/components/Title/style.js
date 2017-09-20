@@ -39,7 +39,7 @@ const navTitleCenterToRight = css.keyframes({
     opacity: 0,
     transform: `translate3d(${distance}, 0, 0)`,
   },
-});
+}).toString();
 
 const navTitleCenterToLeft = css.keyframes({
   '0%': {
@@ -50,7 +50,7 @@ const navTitleCenterToLeft = css.keyframes({
     opacity: 0,
     transform: `translate3d(-${distance}, 0, 0)`,
   },
-});
+}).toString();
 
 const navTitleRightToCenter = css.keyframes({
   '0%': {
@@ -61,7 +61,7 @@ const navTitleRightToCenter = css.keyframes({
     opacity: 1,
     transform: 'translate3d(0, 0, 0)',
   },
-});
+}).toString();
 
 const navTitleLeftToCenter = css.keyframes({
   '0%': {
@@ -72,23 +72,23 @@ const navTitleLeftToCenter = css.keyframes({
     opacity: 1,
     transform: 'translate3d(0, 0, 0)',
   },
-});
+}).toString();
 
 const centerToRight = css({
   animationName: `${navTitleCenterToRight}`,
-});
+}).toString();
 
 const centerToLeft = css({
   animationName: `${navTitleCenterToLeft}`,
-});
+}).toString();
 
 const rightToCenter = css({
   animationName: `${navTitleRightToCenter}`,
-});
+}).toString();
 
 const leftToCenter = css({
   animationName: `${navTitleLeftToCenter}`,
-});
+}).toString();
 
 export default {
   title,

@@ -22,6 +22,7 @@ import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import navigator from 'Components/Navigator/reducer';
 
+import general from 'Components/View/reducer';
 import categoryPage from 'Pages/Category/reducer';
 
 const reducers = {
@@ -37,6 +38,7 @@ const reducers = {
   product,
   search,
   ui: combineReducers({
+    general,
     categoryPage,
   }),
   url,

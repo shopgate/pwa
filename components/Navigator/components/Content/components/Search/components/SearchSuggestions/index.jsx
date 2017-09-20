@@ -44,13 +44,6 @@ class SearchSuggestions extends Component {
   }
 
   /**
-   * Component did mount.
-   */
-  componentDidMount() {
-    this.props.fetchSearchSuggestions();
-  }
-
-  /**
    * Get search suggestions for new search phrase.
    * @param {Object} nextProps The next properties.
    */
@@ -86,7 +79,10 @@ class SearchSuggestions extends Component {
   render() {
     const { suggestions } = this.state;
 
-    if (suggestions.length === 0 || this.props.searchPhrase.length < this.props.minCharacters) {
+    if (
+      suggestions.length === 0 ||
+      this.props.searchPhrase.length < this.props.minCharacters
+    ) {
       return null;
     }
 

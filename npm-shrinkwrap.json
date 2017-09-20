@@ -94,17 +94,17 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "github:shopgate/pwa-common-commerce#096144fe8d4afa18a32259e692cdb464460533bb",
+      "version": "github:shopgate/pwa-common-commerce#4cdd507639b4fe195b51703112975dd2b2bcc89d",
       "requires": {
-        "@shopgate/pwa-common": "1.0.0-beta5",
-        "@shopgate/pwa-core": "1.0.0-beta3",
+        "@shopgate/pwa-common": "1.0.0-beta6",
+        "@shopgate/pwa-core": "1.0.0-beta4",
         "babel-core": "6.26.0",
-        "babel-plugin-react-transform": "2.0.2",
+        "babel-plugin-react-transform": "3.0.0",
         "babel-plugin-transform-class-properties": "6.24.1",
         "babel-plugin-transform-export-extensions": "6.22.0",
-        "babel-plugin-transform-object-rest-spread": "6.23.0",
+        "babel-plugin-transform-object-rest-spread": "6.26.0",
         "babel-plugin-transform-react-inline-elements": "6.22.0",
-        "babel-polyfill": "6.23.0",
+        "babel-polyfill": "6.26.0",
         "babel-preset-env": "1.6.0",
         "babel-preset-react": "6.24.1",
         "lodash": "4.17.4",
@@ -115,12 +115,11 @@
       },
       "dependencies": {
         "@shopgate/pwa-common": {
-          "version": "1.0.0-beta5",
-          "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.0-beta5.tgz",
-          "integrity": "sha512-jLBOGtRf6Peh26KZ7X3n0ICiBkMWAzIjDiVGHSrjLTdWpXUSS5HJvFlQ3MnxM9UHyl5NlOcDWRdonnwwwNwKZg==",
+          "version": "1.0.0-beta6",
+          "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.0-beta6.tgz",
+          "integrity": "sha512-EZzk/nV4SaVDXyL88D6cHF4wv3G2Rj/mab2bsobTIHjRpzZH0SWHPOjPYERyUUSbVQNMsok562/bjr9n9+PFQA==",
           "requires": {
-            "@shopgate/pwa-core": "1.0.0-beta3",
-            "@shopgate/tracking-core": "1.0.0-beta3",
+            "@shopgate/pwa-core": "1.0.0-beta4",
             "babel-core": "6.26.0",
             "babel-plugin-react-transform": "2.0.2",
             "babel-plugin-transform-class-properties": "6.24.1",
@@ -160,6 +159,33 @@
             "url-search-params": "0.10.0"
           },
           "dependencies": {
+            "babel-plugin-react-transform": {
+              "version": "2.0.2",
+              "resolved": "https://registry.npmjs.org/babel-plugin-react-transform/-/babel-plugin-react-transform-2.0.2.tgz",
+              "integrity": "sha1-UVu/qZaJOYEULZCx+bFjXeKZUQk=",
+              "requires": {
+                "lodash": "4.17.4"
+              }
+            },
+            "babel-plugin-transform-object-rest-spread": {
+              "version": "6.23.0",
+              "resolved": "https://registry.npmjs.org/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.23.0.tgz",
+              "integrity": "sha1-h11ryb52HFiirj/u5dxIldjH+SE=",
+              "requires": {
+                "babel-plugin-syntax-object-rest-spread": "6.13.0",
+                "babel-runtime": "6.26.0"
+              }
+            },
+            "babel-polyfill": {
+              "version": "6.23.0",
+              "resolved": "https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.23.0.tgz",
+              "integrity": "sha1-g2TKYt+Or7gwSZ9pkXdGbDsDSZ0=",
+              "requires": {
+                "babel-runtime": "6.26.0",
+                "core-js": "2.5.1",
+                "regenerator-runtime": "0.10.5"
+              }
+            },
             "recompose": {
               "version": "0.24.0",
               "resolved": "https://registry.npmjs.org/recompose/-/recompose-0.24.0.tgz",
@@ -174,9 +200,9 @@
           }
         },
         "@shopgate/pwa-core": {
-          "version": "1.0.0-beta3",
-          "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.0-beta3.tgz",
-          "integrity": "sha512-FcnBff+HO04pISyFRRxmFEn8iwGKC9eg4QXpHG5N+uL0AIcfJcifa113yKpkjE3I5e1uomwoe73FN17Mn7Je5g==",
+          "version": "1.0.0-beta4",
+          "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.0-beta4.tgz",
+          "integrity": "sha512-fGKyddXQ9HC9T5F3bQoMZMX89vjo937zlsOQtoQuvmBz1trQHIQs4w5B2IbMGq0gJyTGu7e7fCZ1yPA6ebfy5Q==",
           "requires": {
             "babel-core": "6.26.0",
             "babel-plugin-transform-class-properties": "6.24.1",
@@ -184,31 +210,59 @@
             "babel-plugin-transform-object-rest-spread": "6.23.0",
             "babel-polyfill": "6.23.0",
             "babel-preset-env": "1.6.0",
+            "babel-preset-react": "6.24.1",
             "crypto-js": "3.1.9-1",
             "isomorphic-fetch": "2.2.1"
+          },
+          "dependencies": {
+            "babel-plugin-transform-object-rest-spread": {
+              "version": "6.23.0",
+              "resolved": "https://registry.npmjs.org/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.23.0.tgz",
+              "integrity": "sha1-h11ryb52HFiirj/u5dxIldjH+SE=",
+              "requires": {
+                "babel-plugin-syntax-object-rest-spread": "6.13.0",
+                "babel-runtime": "6.26.0"
+              }
+            },
+            "babel-polyfill": {
+              "version": "6.23.0",
+              "resolved": "https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.23.0.tgz",
+              "integrity": "sha1-g2TKYt+Or7gwSZ9pkXdGbDsDSZ0=",
+              "requires": {
+                "babel-runtime": "6.26.0",
+                "core-js": "2.5.1",
+                "regenerator-runtime": "0.10.5"
+              }
+            }
           }
         },
-        "@shopgate/tracking-core": {
-          "version": "1.0.0-beta3",
-          "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.0-beta3.tgz",
-          "integrity": "sha512-6bwP9ZtkeMzgi5+kvLTEF27Nbf8wDJcP49aWwJl132XQpwq4MqxEvIR5LWuweUBSieiiL3l3KIuP7rWkgQAvCA==",
+        "babel-plugin-react-transform": {
+          "version": "3.0.0",
+          "resolved": "https://registry.npmjs.org/babel-plugin-react-transform/-/babel-plugin-react-transform-3.0.0.tgz",
+          "integrity": "sha512-4vJGddwPiHAOgshzZdGwYy4zRjjIr5SMY7gkOaCyIASjgpcsyLTlZNuB5rHOFoaTvGlhfo8/g4pobXPyHqm/3w==",
           "requires": {
-            "@shopgate/pwa-core": "1.0.0-beta3"
+            "lodash": "4.17.4"
           }
         },
-        "babel-plugin-transform-object-rest-spread": {
-          "version": "6.23.0",
-          "resolved": "https://registry.npmjs.org/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.23.0.tgz",
-          "integrity": "sha1-h11ryb52HFiirj/u5dxIldjH+SE=",
+        "babel-polyfill": {
+          "version": "6.26.0",
+          "resolved": "https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz",
+          "integrity": "sha1-N5k3q8Z9eJWXCtxiHyhM2WbPIVM=",
           "requires": {
-            "babel-plugin-syntax-object-rest-spread": "6.13.0",
-            "babel-runtime": "6.26.0"
+            "babel-runtime": "6.26.0",
+            "core-js": "2.5.1",
+            "regenerator-runtime": "0.10.5"
           }
         },
         "hoist-non-react-statics": {
           "version": "1.2.0",
           "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz",
           "integrity": "sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs="
+        },
+        "regenerator-runtime": {
+          "version": "0.10.5",
+          "resolved": "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz",
+          "integrity": "sha1-M2w+/BIgrc7dosn6tntaeVWjNlg="
         }
       }
     },

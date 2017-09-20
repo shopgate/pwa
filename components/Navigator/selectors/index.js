@@ -53,9 +53,29 @@ export const isIconShadowShowing = createSelector(
  * @param {Object} state The global state.
  * @return {string}
  */
+export const getSearchPhrase = createSelector(
+  getNavigatorState,
+  navigatorState => navigatorState.searchPhrase
+);
+
+/**
+ * Selects the current state from navigator search.
+ * @param {Object} state The global state.
+ * @return {string}
+ */
 export const isSearchShowing = createSelector(
   getNavigatorState,
   navigatorState => navigatorState.showSearch
+);
+
+/**
+ * Selects the current state from navigator progress bar.
+ * @param {Object} state The global state.
+ * @return {string}
+ */
+export const isProgressBarShowing = createSelector(
+  getNavigatorState,
+  navigatorState => navigatorState.showProgressBar
 );
 
 /**
