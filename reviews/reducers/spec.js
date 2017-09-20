@@ -62,7 +62,6 @@ describe('Reviews reducers', () => {
         reviews: moreMockedReviews,
         totalReviewCount,
       });
-
       analyzeReceivedState(state);
       expect(state.reviewsByHash[hash].expires).toBeGreaterThan(Date.now());
     });

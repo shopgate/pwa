@@ -15,15 +15,17 @@ import errorProductReviews from '../action-creators/errorProductReviews';
  * Request product reviews for a product from server.
  * @param {string} productId The product ID
  * @param {number} limit The maximum number of reviews to fetch
+ * @param {string} sort Sorting: 'relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'
  * @returns {Function} The dispatched action.
  */
-const getProductReviews = (productId, limit = 2) => (dispatch) => {
+const getProductReviews = (productId, limit = 2, sort = 'relevance') => (dispatch) => {
   dispatch(requestProductReviews(productId, limit));
 
   new PipelineRequest('getProductReviews')
     .setInput({
       productId,
       limit,
+      sort,
     })
     .dispatch()
     .then((result) => {

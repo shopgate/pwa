@@ -17,9 +17,10 @@ import errorProductReviewsList from '../action-creators/errorReviews';
  * @param {string} productId The product ID
  * @param {number} limit The maximum number of reviews to fetch
  * @param {number} offset The list offset (defaults to 0).
+ * @param {string} sort Sorting: 'relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'
  * @returns {Function} The dispatched action.
  */
-const fetchReviews = (productId, limit = 2, offset = 0) => (dispatch) => {
+const fetchReviews = (productId, limit = 2, offset = 0, sort = 'dateDesc') => (dispatch) => {
   const hash = generateResultHash({
     productId,
   });
@@ -38,6 +39,7 @@ const fetchReviews = (productId, limit = 2, offset = 0) => (dispatch) => {
       productId,
       limit,
       offset,
+      sort,
     })
     .dispatch();
 

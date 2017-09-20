@@ -34,6 +34,7 @@ describe('Reviews actions', () => {
           productId: 'foo',
           limit: 2,
           offset: 1,
+          sort: 'dateDesc',
         });
         expect(mockedDispatch).toHaveBeenCalledTimes(3);
         done();

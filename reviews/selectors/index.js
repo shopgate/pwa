@@ -15,11 +15,11 @@ import { getCurrentProductId } from '../../product/selectors/product';
 const getReviewsState = state => state.reviews.reviewsByHash;
 
 /**
- * Retrieves the current product reviews.
+ * Retrieves the collection of reviews for current productId.
  * @param {Object} state The current application state.
- * @return {Array|null} The reviews for a product
+ * @return {Object|null} The reviews for a product.
  */
-export const getReviews = createSelector(
+const getCollectionForCurrentProductId = createSelector(
   getCurrentProductId,
   getReviewsState,
   (productId, reviewsState) => {
@@ -27,11 +27,67 @@ export const getReviews = createSelector(
       productId,
     });
 
-    const collection = reviewsState[hash];
+    if (reviewsState.hasOwnProperty(hash)) {
+      return reviewsState[hash];
+    }
+
+    return null;
+  }
+);
+
+/**
+ * Retrieves the current product reviews.
+ * @param {Object} state The current application state.
+ * @return {Array|null} The reviews for a product.
+ */
+export const getReviews = createSelector(
+  getCollectionForCurrentProductId,
+  (collection) => {
     if (!collection || !collection.reviews) {
       return [];
     }
 
     return collection.reviews;
   }
+);
+
+/**
+ * Retrieves the total number of reviews for a current product.
+ * @param {Object} state The current application state.
+ * @return {number|null} The total number of reviews.
+ */
+export const getReviewsTotalCount = createSelector(
+  getCollectionForCurrentProductId,
+  (collection) => {
+    if (!collection || !collection.hasOwnProperty('totalReviewCount')) {
+      return null;
+    }
+
+    return collection.totalReviewCount;
+  }
+);
+/**
+ * Retrieves the total number of currently fetched reviews for a current product.
+ * @param {Object} state The current application state.
+ * @return {number|null} The current number of fetched reviews.
+ */
+export const getCurrentReviewCount = createSelector(
+  getCollectionForCurrentProductId,
+  (collection) => {
+    if (!collection || !collection.reviews) {
+      return null;
+    }
+
+    return collection.reviews.length;
+  }
+);
+
+/**
+ * Retrieves the information if reviews are currently fetched.
+ * @param {Object} state The current application state.
+ * @return {bool} The boolean information if reviews are currently being fetched.
+ */
+export const getReviewsFetchingState = createSelector(
+  getCollectionForCurrentProductId,
+  collection => collection && collection.isFetching
 );

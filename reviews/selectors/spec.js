@@ -17,15 +17,15 @@ describe('Reviews selectors', () => {
       const reviews = getReviews(finalState);
       expect(reviews).toEqual(finalState.reviews.reviewsByHash[existingHash].reviews);
     });
-    it('should return null when state has no reviews for current product', () => {
+    it('should return empty array when state has no reviews for current product', () => {
       const state = Object.assign({}, finalState);
       state.product.currentProduct.productId = null;
       const reviews = getReviews(state);
-      expect(reviews).toBe(null);
+      expect(reviews).toEqual([]);
     });
-    it('should return null when state is empty', () => {
+    it('should return empty array when state is empty', () => {
       const reviews = getReviews(emptyState);
-      expect(reviews).toBe(null);
+      expect(reviews).toEqual([]);
     });
   });
 });

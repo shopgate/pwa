@@ -12,12 +12,10 @@ import {
 const reviews = finalState.reviews.reviewsByHash[existingHash].reviews;
 
 let currentId = reviews.length;
-const moreReviews = reviews.slice(0).map(
+const moreReviews = reviews.map(
   (incomingEl) => {
-    const el = incomingEl;
     currentId += 1;
-    el.id = currentId;
-    return el;
+    return Object.assign({}, incomingEl, { id: currentId });
   });
 
 export const mockedReviews = reviews;
