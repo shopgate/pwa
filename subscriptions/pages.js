@@ -16,6 +16,9 @@ import {
   searchIsReady$,
   searchDidLeave$,
 } from '../streams/search';
+import {
+  productIsReady$,
+} from '../streams/product';
 import getTrackingData from '../selectors';
 
 /**
@@ -48,5 +51,11 @@ export default function pages(subscribe) {
     searchDidEnter$,
     searchIsReady$,
     searchDidLeave$
+  );
+
+  // Track product page.
+  trackPageView(
+    appDidStart$,
+    productIsReady$
   );
 }

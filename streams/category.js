@@ -20,7 +20,6 @@ const categoryIdChanged$ = main$
   .filter(
     ({ action }) => (
       // TODO: Root category needs to be considered.
-      // TODO: Category route as entry point needs to be considered.
       action.type === SET_CURRENT_CATEGORY_ID &&
       !!action.categoryId
     )
@@ -38,6 +37,9 @@ const childrenReceived$ = main$
 const dataLoaded$ = categoryIdChanged$
   .zip(productsReceived$, childrenReceived$)
   .map(([first]) => first);
+
+// TODO: Category route as entry point needs to be considered.
+// Entry point seems to work if childrenReceived$ is omitted.
 
 /**
  * Emits when a category's data is already available.
