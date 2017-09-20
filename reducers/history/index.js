@@ -24,7 +24,6 @@ export default (
     pathname: history.location.pathname,
     queryParams: {},
     length: 1,
-    state: {},
     redirectLocation: null,
   },
   action
@@ -39,7 +38,6 @@ export default (
         action: historyProps.action,
         pathname: historyProps.pathname,
         queryParams: historyProps.queryParams,
-        state: historyProps.state || {},
       };
     }
     case HISTORY_SET_REDIRECT_LOCATION: {
