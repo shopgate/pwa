@@ -12,7 +12,10 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { REVIEW_PREVIEW_LIMIT } from 'Pages/Product/constants';
 import connect from './connector';
-import styles from './style';
+import {
+  containerStyle,
+  linkStyle,
+} from './style';
 
 /**
  * Link to all reviews.
@@ -28,9 +31,11 @@ const AllReviewsLink = ({ productId, totalReviewCount }) => {
   const publicProductId = bin2hex(productId);
 
   return (
-    <Link href={`/item/${publicProductId}/reviews`} className={styles}>
-      <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
-    </Link>
+    <div className={containerStyle}>
+      <Link href={`/item/${publicProductId}/reviews`} className={linkStyle}>
+        <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
+      </Link>
+    </div>
   );
 };
 

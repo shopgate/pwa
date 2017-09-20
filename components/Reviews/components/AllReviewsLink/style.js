@@ -9,11 +9,23 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-export default css({
+/**
+ * Styles for a link parent container.
+ * @type {string}
+ */
+export const containerStyle = css({
+  textAlign: 'right',
+});
+
+/**
+ * Styles for all reviews link.
+ * @type {string}
+ */
+export const linkStyle = css({
   color: colors.primary,
+  display: 'inline-block',
   textTransform: 'uppercase',
   width: 'auto',
-  padding: `${variables.gap.small}px 0`,
-  textAlign: 'right',
+  padding: `${variables.gap.big}px`,
   fontWeight: 500,
 }).toString();
