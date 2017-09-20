@@ -14,6 +14,10 @@ module.exports = {
     'node_modules/(?!@shopgate)/',
   ],
   testRegex: '(/__tests__/.*|(\\.|/)spec)\\.(js|jsx)?$',
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/',
+  ],
   unmockedModulePathPatterns: [
     '<rootDir>/node_modules/react/',
     '<rootDir>/node_modules/enzyme/',
