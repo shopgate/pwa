@@ -35,6 +35,40 @@ const registerVersion = (reducerName, version) => {
 };
 
 /**
+ * Normalizes a state before persisting it.
+ * @param {Object} state The state.
+ * @return {Object} The normalized state that is safe to persist.
+ */
+export const normalizeState = (state) => {
+  if (!state || typeof state !== 'object') {
+    // If state is not an object or array return it directly.
+    return state;
+  }
+
+  if (Array.isArray(state)) {
+    // Iterate over arrays.
+    return state.map(item => normalizeState(item));
+  }
+
+  // Handle objects.
+  return Object.keys(state).reduce((newState, key) => {
+    if (key === 'isFetching' && typeof state[key] === 'boolean') {
+      // Never persist the isFetching state of a cache item.
+      return {
+        ...newState,
+        isFetching: false,
+      };
+    }
+
+    // Recurse and continue iteration.
+    return {
+      ...newState,
+      [key]: normalizeState(state[key]),
+    };
+  }, {});
+};
+
+/**
  * Gets the persistent state from the localStorage.
  * @returns {Object}
  */
@@ -55,7 +89,8 @@ const getPersistentState = () => {
     }
   });
 
-  return savedStateValidated;
+  // Take care that the cached state is normalized before it's restored.
+  return normalizeState(savedStateValidated);
 };
 
 /**
@@ -84,7 +119,7 @@ const saveState = debounce(() => {
 /**
  * Wraps the original reducer and saves all related changes to the localStorage.
  * @param {string} reducerName The name of the reducer.
- * @param {Object} reducer The reducer.
+ * @param {Function} reducer The reducer.
  * @param {string} version The current version.
  * @returns {Object}
  */
