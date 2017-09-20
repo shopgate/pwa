@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { routeDidEnter, historyDidUpdate$ } from '@shopgate/pwa-common/streams/history';
+import { routeDidEnter, routeDidLeave, historyDidUpdate$ } from '@shopgate/pwa-common/streams/history';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
+import setFilterHash from '../action-creators/setFilterHash';
 import setTemporaryFilters from '../action-creators/setTemporaryFilters';
 import addActiveFilters from '../actions/addActiveFilters';
 import syncActiveFiltersWithHistory from '../actions/syncActiveFiltersWithHistory';
-import { getActiveFilters } from '../selectors';
+import { getActiveFilters, getFilterHash } from '../selectors';
 import { FILTER_PATH } from '../constants';
 import { CATEGORY_PATH } from '../../category/constants';
 import { SEARCH_PATH } from '../../search/constants';
@@ -21,13 +22,19 @@ import { SEARCH_PATH } from '../../search/constants';
  */
 export default function filters(subscribe) {
   /**
+   * Gets triggered when entering the filter route.
+   */
+  const filterRouteDidLeave$ = routeDidLeave(FILTER_PATH);
+
+  /**
+   * Gets triggered when entering the filter route.
+   */
+  const filterRouteDidEnter$ = routeDidEnter(FILTER_PATH);
+
+  /**
    * Gets triggered when entering a filterable route.
    */
   const filterableRoutesDidEnter$ = routeDidEnter(CATEGORY_PATH).merge(routeDidEnter(SEARCH_PATH));
-
-  subscribe(filterableRoutesDidEnter$, ({ dispatch }) => {
-    dispatch(addActiveFilters());
-  });
 
   /**
    * Gets triggered when entering a filterable route NOT coming from filters.
@@ -36,18 +43,22 @@ export default function filters(subscribe) {
     ({ prevPathname }) => !prevPathname.startsWith(FILTER_PATH)
   );
 
+  subscribe(filterRouteDidLeave$, ({ dispatch }) => {
+    dispatch(setFilterHash(''));
+  });
+
+  subscribe(filterRouteDidEnter$, ({ dispatch, getState, prevState }) => {
+    dispatch(setTemporaryFilters(getActiveFilters(getState())));
+    dispatch(setFilterHash(getFilterHash(prevState)));
+  });
+
+  subscribe(filterableRoutesDidEnter$, ({ dispatch }) => {
+    dispatch(addActiveFilters());
+  });
+
   subscribe(newFilterableRoutesEntered$, ({ dispatch }) => {
     dispatch(mergeTemporaryFilters({}));
   });
-
-  /**
-   * Gets triggered when entering the filter route.
-   */
-  const filterRouteDidEnter$ = routeDidEnter(FILTER_PATH);
-
-  subscribe(filterRouteDidEnter$, ({ dispatch, getState }) =>
-    dispatch(setTemporaryFilters(getActiveFilters(getState())))
-  );
 
   /**
    * Gets triggered on every history update.

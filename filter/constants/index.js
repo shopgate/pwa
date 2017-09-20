@@ -7,6 +7,7 @@
 
 export const FILTER_PATH = '/filter';
 
+export const SET_FILTER_HASH = 'SET_FILTER_HASH';
 export const SET_FILTER_INDEX = 'SET_FILTER_INDEX';
 
 export const REQUEST_FILTERS = 'REQUEST_FILTERS';

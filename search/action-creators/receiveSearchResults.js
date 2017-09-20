@@ -12,8 +12,9 @@ import { RECEIVE_SEARCH_RESULTS } from '../constants';
  * @param {string} searchPhrase The search phrase.
  * @return {Object} The RECEIVE_SEARCH_RESULTS action.
  */
-const receiveSearchResults = () => ({
+const receiveSearchResults = searchPhrase => ({
   type: RECEIVE_SEARCH_RESULTS,
+  searchPhrase,
 });
 
 export default receiveSearchResults;

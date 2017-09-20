@@ -27,7 +27,7 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
     return;
   }
 
-  dispatch(requestSearchResults(searchPhrase));
+  dispatch(requestSearchResults(searchPhrase, offset));
   dispatch(
     getProducts({
       params: {

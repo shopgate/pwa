@@ -24,7 +24,7 @@ export const getFilters = state => state.filter;
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getStoredFilterHash = state => state.history.state.filterHash;
+export const getStoredFilterHash = state => state.filter.activeHash;
 
 /**
  * Gets all active filters stacks.

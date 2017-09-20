@@ -88,7 +88,7 @@ const getProducts = ({
 
     // Stop if we don't need to get any data.
     if (!shouldFetchData(result, 'products', requiredProductCount)) {
-      return null;
+      return Promise.resolve();
     }
 
     dispatch(requestProducts({
