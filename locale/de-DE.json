@@ -94,5 +94,14 @@
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
     "logout": "Abmelden"
+  },
+  "reviews": {
+    "rating": "Bewertung",
+    "no_reviews": "Sei der Erste, der dieses Produkt bewertet:",
+    "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
+    "button_add": "Bewertung schreiben",
+    "button_all": "Alle {count} Bewertungen",
+    "author": "von {author}",
+    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}"
   }
 }

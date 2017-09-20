@@ -95,26 +95,12 @@ class View extends Component {
   }
 
   /**
-   * Handles the swipe down gesture.
-   * @param {Object} event The event object.
-   * @param {number} x The change on the x axis.
-   * @param {number} y The change on the y axis.
-   * @param {boolean} isFlick Whether this is a flick or swipe.
-   * @param {number} velocity The velocity of the gesture.
+   * Creates an internal reference to an element.
+   * @param {Object} ref The reference to an element.
    */
-  handleSwipe = (event, x, y, isFlick, velocity) => {
-    const swipeEvent = new CustomEvent('swipe', {
-      detail: {
-        event,
-        x,
-        y,
-        isFlick,
-        velocity,
-      },
-    });
-
-    this.element.dispatchEvent(swipeEvent);
-  };
+  setRef = (ref) => {
+    this.element = ref;
+  }
 
   /**
    * Handles the scroll event of this component's element.
@@ -140,6 +126,35 @@ class View extends Component {
   }
 
   /**
+   * Handles the swipe down gesture.
+   * @param {Object} event The event object.
+   * @param {number} x The change on the x axis.
+   * @param {number} y The change on the y axis.
+   * @param {boolean} isFlick Whether this is a flick or swipe.
+   * @param {number} velocity The velocity of the gesture.
+   */
+  handleSwipe = (event, x, y, isFlick, velocity) => {
+    const swipeEvent = new CustomEvent('swipe', {
+      detail: {
+        event,
+        x,
+        y,
+        isFlick,
+        velocity,
+      },
+    });
+
+    this.element.dispatchEvent(swipeEvent);
+  };
+
+  /**
+   * Sets the navigator title when the component mounts.
+   */
+  routeWillEnter() {
+    this.props.setTitle(this.title);
+  }
+
+  /**
    * Renders the HTML meta tags.
    * @returns {JSX}
    */
@@ -155,17 +170,6 @@ class View extends Component {
         style={style}
       />
     );
-  }
-
-  setRef = (ref) => {
-    this.element = ref;
-  }
-
-  /**
-   * Sets the navigator title when the component mounts.
-   */
-  routeWillEnter() {
-    this.props.setTitle(this.title);
   }
 
   /**

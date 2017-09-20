@@ -64,7 +64,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
 </div>
 `;
 
-exports[`<RatingStars /> renders with value of 0.5 1`] = `
+exports[`<RatingStars /> renders with value of 50 1`] = `
 <div
   className="css-13azwyo "
 >
@@ -159,7 +159,7 @@ exports[`<RatingStars /> renders with value of 0.5 1`] = `
 </div>
 `;
 
-exports[`<RatingStars /> renders with value of 1 1`] = `
+exports[`<RatingStars /> renders with value of 100 1`] = `
 <div
   className="css-13azwyo "
 >

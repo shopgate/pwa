@@ -6,7 +6,6 @@
  */
 
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 import {
   routeDidEnter,

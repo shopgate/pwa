@@ -26,9 +26,9 @@ const StarHalfIcon = props => <Icon content={content} {...props} />;
 StarHalfIcon.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
-  size: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  size: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
   viewBox: PropTypes.string,
 };

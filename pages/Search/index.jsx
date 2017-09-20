@@ -21,6 +21,9 @@ class Search extends Component {
     totalProductCount: null,
   };
 
+  /**
+   * Returns the number of received products.
+   */
   get hasProducts() {
     return this.props.products.length > 0;
   }

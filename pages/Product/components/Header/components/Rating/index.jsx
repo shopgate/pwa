@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { features } from 'Config/app.json';
 import RatingStars from 'Components/RatingStars';
 import connect from './connector';
 
@@ -16,7 +17,7 @@ import connect from './connector';
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  if (!rating || !rating.count > 0) {
+  if (!features.showReviews || !rating || !rating.count) {
     return null;
   }
 
