@@ -1,5 +1,5 @@
 {
-  "id": "shopgate-app-android-material",
+  "id": "@shopgate/theme-gmd",
   "configuration": {
     "language": {
       "type": "bigApi",
