@@ -1,8 +1,8 @@
 # Shopgate's Google Analytics tracker.
 
-![](https://travis-ci.org/shopgate/tracking-ga-native.svg?branch=master)
+![](https://travis-ci.org/shopgate/tracking-ga-native.svg?branch=development)
 [![GitHub release](https://img.shields.io/github/release/shopgate/tracking-ga-native.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/tracking-ga-native/badge.svg?branch=master)](https://coveralls.io/github/shopgate/tracking-ga-native?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/tracking-ga-native/badge.svg?branch=development)](https://coveralls.io/github/shopgate/tracking-ga-native?branch=development)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Shopgate's Google Analytics tracker.
