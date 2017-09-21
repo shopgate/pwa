@@ -11,8 +11,7 @@ module.exports = {
     'enzyme-to-json/serializer',
   ],
   transform: {
-    '^.+\\.jsx?$': 'babel-jest',
-    '^.+\\.js?$': 'babel-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
   transformIgnorePatterns: [
     'node_modules/(?!@shopgate)/',

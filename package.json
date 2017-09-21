@@ -34,7 +34,8 @@
     "cheerio": "1.0.0-rc.1",
     "enzyme-to-json": "^1.5.1",
     "identity-obj-proxy": "^3.0.0",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "react-test-renderer": "^15.6.1"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
