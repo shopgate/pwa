@@ -10,8 +10,8 @@ import {
   SET_CURRENT_CATEGORY_ID,
   RECEIVE_CATEGORY_CHILDREN,
 } from '@shopgate/pwa-common-commerce/category/constants';
-import { RECEIVE_PRODUCTS } from '@shopgate/pwa-common-commerce/product/constants';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { productsReceived$ } from './product';
 
 /**
  * Emits when the current category id changed.
@@ -31,9 +31,6 @@ const categoryIdChanged$ = main$
 const childrenReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_CATEGORY_CHILDREN);
 
-const productsReceived$ = main$
-  .filter(({ action }) => action.type === RECEIVE_PRODUCTS);
-
 /**
  * Emits when all necessary category data has been received.
  */
@@ -41,13 +38,17 @@ const dataLoaded$ = categoryIdChanged$
   .zip(productsReceived$, childrenReceived$)
   .map(([first]) => first);
 
+// TODO: Category route as entry point needs to be considered.
+// Entry point seems to work if childrenReceived$ is omitted.
+
 /**
  * Emits when a category's data is already available.
  */
 const dataPreloaded$ = categoryIdChanged$
   .filter(
-    // TODO: Validate if child categories and other related data is available.
-    ({ getState }) => getProductsResult(getState()).totalProductCount !== null
+    ({ getState }) => (
+      getProductsResult(getState()).totalProductCount !== null
+    )
   );
 
 /**
