@@ -1,5 +1,6 @@
 {
   "common": {
+    "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
     "load_more": "Mehr laden"
   },
   "titles": {
@@ -49,7 +50,6 @@
     "cost": "{price} Versand"
   },
   "liveshopping": {
-    "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
     "discount_badge": "SAVE {0}%"
   },
   "modal": {
