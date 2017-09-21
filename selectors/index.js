@@ -7,6 +7,8 @@
 
 import { createSelector } from 'reselect';
 import getPage from './page';
+import getCart from './cart';
+import getSearch from './search';
 
 /**
  * Selects the combined tracking information.
@@ -15,7 +17,11 @@ import getPage from './page';
  */
 export default createSelector(
   getPage,
-  page => ({
+  getCart,
+  getSearch,
+  (page, cart, search) => ({
     page,
+    cart,
+    search,
   })
 );
