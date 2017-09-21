@@ -21,7 +21,7 @@ import {
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
-const getProducts = state => state.product.productsById;
+export const getProducts = state => state.product.productsById;
 
 /**
  * Retrieves the current product for the detail page from the store.
