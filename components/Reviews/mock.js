@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 const mockedProduct = {
   productId: 'foo',
 };
@@ -9,6 +15,20 @@ const mockedProductWithRating = {
     count: 4,
   },
 };
+
+/**
+ * Creates mocked review object.
+ * @param {string|number} id Anything that can be an id.
+ * @return {Object}
+ */
+export const makeReview = id => ({
+  id,
+  author: '',
+  date: '2017-09-06T12:38:51.000Z',
+  rate: 100,
+  title: '',
+  review: 'No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.',
+});
 
 /**
  * Mocked state with 4 reviews.
@@ -25,38 +45,10 @@ export const mockedStateWithAll = {
     reviewsByProductId: {
       foo: {
         reviews: [
-          {
-            id: 1,
-            author: '',
-            date: '2017-09-06T12:38:51.000Z',
-            rate: 100,
-            title: '',
-            review: 'No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.',
-          },
-          {
-            id: 2,
-            author: 'username123',
-            date: '2017-09-06T12:37:40.000Z',
-            rate: 40,
-            title: 'Test review 2 ',
-            review: 'Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.',
-          },
-          {
-            id: 3,
-            author: 'Carina Hoffmann',
-            date: '2017-09-06T12:30:23.000Z',
-            rate: 60,
-            title: '',
-            review: 'Test review',
-          },
-          {
-            id: 4,
-            author: '',
-            date: '2017-09-06T12:30:23.000Z',
-            rate: 20,
-            title: '',
-            review: '',
-          },
+          makeReview(1),
+          makeReview(2),
+          makeReview(3),
+          makeReview(4),
         ],
         totalReviewCount: 4,
       },

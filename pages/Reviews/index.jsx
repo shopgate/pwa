@@ -17,7 +17,7 @@ import {
 /**
  *
  */
-class ReviewsList extends Component {
+class Reviews extends Component {
   /**
    * Context types definition.
    * @type {{i18n: shim}}
@@ -74,4 +74,4 @@ class ReviewsList extends Component {
   }
 }
 
-export default connect(ReviewsList);
+export default connect(Reviews);
