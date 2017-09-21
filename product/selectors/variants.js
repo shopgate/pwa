@@ -103,7 +103,6 @@ export const getProductVariants = createSelector(
   }
 );
 
-
 /**
  * Retrieves the current selected product variant.
  * @param {Object} state The application state.
