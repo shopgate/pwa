@@ -4,7 +4,8 @@
   "components": [
     {
       "id": "init",
-      "path": "index.js"
+      "path": "index.js",
+      "type": "tracking"
     }
   ],
   "configuration": {
