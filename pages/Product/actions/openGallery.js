@@ -7,7 +7,7 @@
 
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { pushHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
 import { openProductGallery } from '../action-creators';
 
 /**
