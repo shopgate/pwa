@@ -36,12 +36,14 @@
       }
     },
     "colors": {
-      "type": "s3",
-      "destination": "frontend",
+      "type": "bigApi",
+      "destination" : "frontend",
       "default": {},
       "params": {
-        "s3Bucket": "shopgate-xs-extensions",
-        "s3Key": "%(s3Stage)s/applications/%(appId)s/colors.%(themes[0].id)s.json"
+        "method":  "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors",
+        "key": "value"
       }
     },
     "shopName": {
