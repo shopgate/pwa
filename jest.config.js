@@ -10,6 +10,10 @@ module.exports = {
   snapshotSerializers: [
     'enzyme-to-json/serializer',
   ],
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.js?$': 'babel-jest',
+  },
   transformIgnorePatterns: [
     'node_modules/(?!@shopgate)/',
   ],
