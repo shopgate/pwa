@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "1.0.0-beta5",
+  "version": "1.0.0-beta6",
   "description": "Shopgate's common library for PWAs",
   "repository": "shopgate/pwa-common",
   "bugs": "https://github.com/shopgate/pwa-common/issues",
@@ -22,8 +22,7 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-core": "^1.0.0-beta3",
-    "@shopgate/tracking-core": "^1.0.0-beta3",
+    "@shopgate/pwa-core": "^1.0.0-beta4",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "6.24.1",

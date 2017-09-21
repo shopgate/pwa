@@ -39,25 +39,6 @@ export const routeDidChange$ = historyDidUpdate$
   }));
 
 /**
- * Gets triggered when a route has left.
- * @param {string} route The route path.
- * @type {Function}
- * @return {Observable}
- */
-export const routeDidLeave = route => routeDidChange$
-  .filter(({ pathname, prevPathname }) => {
-    // Check if both path names start with the watched route.
-    const pathnameMatch = pathname.startsWith(route);
-    const prevPathnameMatch = prevPathname.startsWith(route);
-
-    // Check if the previous path contains the route, but the next one doesn't.
-    const routeChanged = prevPathnameMatch && !pathnameMatch;
-
-    // The route was left, if there was a change between routes, or within the watched one.
-    return routeChanged || (pathnameMatch && prevPathnameMatch && pathname !== prevPathname);
-  });
-
-/**
  * Gets triggered when a route has entered.
  * @param {string} route The route path.
  * @type {Function}
@@ -73,5 +54,24 @@ export const routeDidEnter = route => routeDidChange$
     const routeChanged = (initialEnter && pathnameMatch) || (!prevPathnameMatch && pathnameMatch);
 
     // The route was entered, if there was a change between routes, or within the watched one.
+    return routeChanged || (pathnameMatch && prevPathnameMatch && pathname !== prevPathname);
+  });
+
+/**
+ * Gets triggered when a route has left.
+ * @param {string} route The route path.
+ * @type {Function}
+ * @return {Observable}
+ */
+export const routeDidLeave = route => routeDidChange$
+  .filter(({ pathname, prevPathname }) => {
+    // Check if both path names start with the watched route.
+    const pathnameMatch = pathname.startsWith(route);
+    const prevPathnameMatch = prevPathname.startsWith(route);
+
+    // Check if the previous path contains the route, but the next one doesn't.
+    const routeChanged = prevPathnameMatch && !pathnameMatch;
+
+    // The route was left, if there was a change between routes, or within the watched one.
     return routeChanged || (pathnameMatch && prevPathnameMatch && pathname !== prevPathname);
   });

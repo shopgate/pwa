@@ -11,6 +11,9 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/zip';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/shareReplay';
 import { mainSubject } from '../store/observable-middleware';
 
 /**
