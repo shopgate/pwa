@@ -1,0 +1,28 @@
+{
+  "widgets": {
+    "@shopgate/commerce-widgets/image": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/Image"
+    },
+    "@shopgate/commerce-widgets/image_slider": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/ImageSlider"
+    },
+    "@shopgate/commerce-widgets/html": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/Html"
+    },
+    "@shopgate/commerce-widgets/product_slider": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/ProductSlider"
+    },
+    "@shopgate/commerce-widgets/widget-grid": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/WidgetGrid"
+    },
+    "@shopgate/commerce-widgets/category_list": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/CategoryList"
+    },
+    "@shopgate/commerce-widgets/product_list": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/Products"
+    },
+    "@shopgate/commerce-widgets/liveshopping": {
+      "path": "@shopgate/commerce-widgets/frontend/dist/Liveshopping"
+    }
+  }
+}
