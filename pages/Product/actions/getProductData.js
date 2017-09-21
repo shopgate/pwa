@@ -8,7 +8,7 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import setProductId from '@shopgate/pwa-common-commerce/product/action-creators/setProductId';
 import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-creators/setProductVariantId';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';
 import getProductReviews from '@shopgate/pwa-common-commerce/product/actions/getProductReviews';

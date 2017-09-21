@@ -10,7 +10,7 @@ import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/
 import {
   isProductPageLoading,
   isProductPageOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+} from '@shopgate/pwa-common-commerce/product/selectors/page';
 
 /**
  * Maps the contents of the state to the component props.
