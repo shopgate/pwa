@@ -6,10 +6,8 @@
  */
 
 import setRedirectLocation from '../../action-creators/history/setRedirectLocation';
-import {
-  replaceHistory,
-  goBackHistory,
-} from './changeHistory';
+import replaceHistory from './replaceHistory';
+import goBackHistory from './goBackHistory';
 
 /**
  * Redirect to the redirectLocation from the state and resets it.
