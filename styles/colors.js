@@ -1,13 +1,7 @@
 import { isObject } from '@shopgate/pwa-common/helpers/validation';
 import { colors as customColors } from '../config/app';
 
-let overrides = {};
-
-if (isObject(customColors)) {
-  overrides = {
-    ...customColors,
-  };
-}
+const overrides = isObject(customColors) ? { ...customColors } : {};
 
 export default {
   background: '#f8f8f8',
