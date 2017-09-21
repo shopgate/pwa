@@ -44,3 +44,4 @@ node_modules/
 .cache-loader
 
 # Project
+dist/
