@@ -30,7 +30,7 @@ export const getFormattedTimeString = (
   const hourlyFormat = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
   return {
-    string: 'liveshopping.countdown',
+    string: 'common.countdown',
     params: {
       days,
       time: hourlyFormat,
