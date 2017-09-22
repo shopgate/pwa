@@ -36,7 +36,7 @@ const Translate = ({ string, children, params, className }, context) => {
   const separator = '__%S%__';
   const childrenArray = React.Children.toArray(children);
 
-  const values = childrenArray.reduce((obj, child) => ( child.props && child.props.forKey ? {
+  const values = childrenArray.reduce((obj, child) => (child.props && child.props.forKey ? {
     ...obj,
     [child.props.forKey]: separator,
   } : obj), { ...params });

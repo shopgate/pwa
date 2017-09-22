@@ -11,12 +11,13 @@ import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import actions from './actions';
 
-jest.mock('@shopgate/pwa-core/commands', () => ({
-  showTab: jest.fn(),
-  flushTab: jest.fn(),
-  popTabToRoot: jest.fn(),
-  openPage: jest.fn(),
-}));
+/**
+ * Mock the commands.
+ */
+jest.mock('@shopgate/pwa-core/commands/flushTab', () => jest.fn());
+jest.mock('@shopgate/pwa-core/commands/openPage', () => jest.fn());
+jest.mock('@shopgate/pwa-core/commands/popTabToRoot', () => jest.fn());
+jest.mock('@shopgate/pwa-core/commands/showTab', () => jest.fn());
 
 /**
  * Reset all imported mock functions

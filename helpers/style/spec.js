@@ -5,16 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { css } from 'glamor';
-import { rem, mergeStyles } from './index';
-
-/**
- * The style helper imports a fonts module from inside of the template, which contains the
- * root size for the rem calculations. To make the tests independent from the values inside
- * of this module, it's mocked here to have a constant value for the calculations.
- */
-jest.mock('Templates/styles/fonts', () => ({ rootSize: 16 }));
-jest.mock('Library/classes/Logger', () => ({ error: () => {} }));
+import { rem } from './index';
 
 describe('style helper', () => {
   describe('rem helper with 16px rootSize', () => {
@@ -38,49 +29,6 @@ describe('style helper', () => {
   describe('rem helper error handling', () => {
     it('should output 1rem as fallback for wrong parameters', () => {
       expect(rem('rem')).toBe('1rem');
-    });
-  });
-
-  describe('merge styles', () => {
-    it('should overwrite default styling', () => {
-      /**
-      * Considering that css caches styling that are the same
-      * we can assume that if the resulting hash is different
-      * it also means the styling changed.
-      */
-
-      const cachedUnchanged = css({
-        height: 1,
-      }).toString();
-
-      const cachedChanged = css({
-        backgroundColor: '#123',
-        width: 123,
-      }).toString();
-
-      const defaults = {
-        styleA: {
-          backgroundColor: '#123',
-          width: 123,
-        },
-        styleB: {
-          height: 1,
-        },
-      };
-
-      const extended = {
-        styleA: {
-          backgroundColor: '#567',
-          width: 10,
-        },
-      };
-
-      // Merges styling and check that the extended styling is really different!
-      const merged = mergeStyles(defaults, extended);
-      expect(merged.styleA).toBeTruthy();
-      expect(merged.styleB).toBeTruthy();
-      expect(merged.styleA).not.toEqual(cachedChanged);
-      expect(merged.styleB).toEqual(cachedUnchanged);
     });
   });
 });
