@@ -35,10 +35,11 @@ const Translate = ({ string, children, params, className }, context) => {
   // First replace every occurence of a translation key with a separator.
   const separator = '__%S%__';
   const childrenArray = React.Children.toArray(children);
-  const values = childrenArray.reduce((obj, child) => ({
+
+  const values = childrenArray.reduce((obj, child) => ( child.props && child.props.forKey ? {
     ...obj,
     [child.props.forKey]: separator,
-  }), { ...params });
+  } : obj), { ...params });
 
   // Split the tokenized string at the separators.
   const stringParts = __(string, values).split(separator);
