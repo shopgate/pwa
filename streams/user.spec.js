@@ -7,15 +7,22 @@
 
 import successLogin from '../action-creators/user/successLogin';
 import receiveUser from '../action-creators/user/receiveUser';
-import store from '../store';
+import configureStore from '../store';
 import { userDidLogin$, userDidUpdate$ } from './user';
 
 jest.mock('redux-logger', () => ({
   createLogger: () => () => next => action => next(action),
 }));
 
+/**
+ * A mocked dummy reducer to satisfy the store creation.
+ * @param {Object} state The current redux state.
+ * @return {Object} The unchanged state.
+ */
+const mockedReducer = (state = {}) => state;
+
 describe('streams/user.js', () => {
-  const { dispatch } = store;
+  const { dispatch } = configureStore({ mocked: mockedReducer });
   let loginMockSubscriber;
   let updateMockSubscriber;
 
