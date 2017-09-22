@@ -1,4 +1,7 @@
 {
+  "common": {
+    "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}"
+  },
   "titles": {
     "categories": "Categories",
     "filter": "Filter",
@@ -46,7 +49,6 @@
     "cost": "{price} shipping"
   },
   "liveshopping": {
-    "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}",
     "discount_badge": "SAVE {0}%"
   },
   "modal": {
