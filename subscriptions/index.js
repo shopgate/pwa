@@ -8,6 +8,7 @@
 import setup from './setup';
 import pages from './pages';
 import product from './product';
+import user from './user';
 
 /**
  * Holds all subscriber references.
@@ -17,4 +18,5 @@ export default [
   setup,
   pages,
   product,
+  user,
 ];
