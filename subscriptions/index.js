@@ -8,6 +8,7 @@
 import app from './app';
 import history from './history';
 import user from './user';
+import menu from './menu';
 
 /**
  * Holds all subscriber references.
@@ -17,6 +18,7 @@ const subscriptions = [
   app,
   history,
   user,
+  menu,
 ];
 
 /**

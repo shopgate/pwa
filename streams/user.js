@@ -62,3 +62,17 @@ export const userDidUpdate$ = main$
     (action.type === SUCCESS_LOGOUT) ||
     (action.type === ERROR_USER)
   );
+
+/**
+ * Gets triggered when we received the user data.
+ * @type {Observable}
+ */
+export const userReceived$ = userDidUpdate$
+  .filter(({ action }) => action.type === RECEIVE_USER);
+
+/**
+ * Gets triggered when the login failed.
+ * @type {Observable}
+ */
+export const loginDidFail$ = main$
+  .filter(({ action }) => action.type === ERROR_LOGIN);
