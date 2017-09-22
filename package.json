@@ -47,7 +47,7 @@
     "react-dotdotdot": "^1.1.0",
     "react-hammerjs": "^0.5.0",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-id-swiper": "^1.4.0",
+    "react-id-swiper": "1.4.0",
     "react-inline-transition-group": "^2.1.7",
     "react-portal": "^3.1.0",
     "react-redux": "^5.0.6",
