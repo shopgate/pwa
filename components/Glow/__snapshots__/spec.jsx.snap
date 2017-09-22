@@ -13,12 +13,12 @@ exports[`<Glow /> should render with a smile 1`] = `
 >
   <div
     aria-hidden={true}
-    className="position-relative"
+    className="css-13azwyo"
     onTouchTap={[Function]}
     style={null}
   >
     <div
-      className="position-absolute left-0 top-0 w-100P h-100P b-transparent _1dnc6ae z-index-0"
+      className="css-1bmd5dz"
       style={Object {}}
     />
     <p>

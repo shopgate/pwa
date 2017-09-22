@@ -2,11 +2,11 @@
 
 exports[`<SearchButton /> should render without any further props 1`] = `
 <button
-  className="c-inherit fs-1p5rem lh-1 outline-0 p-0 min-width-56 h-56 position-relative z-index-1"
+  className="css-1nlaj2c"
   onClick={[Function]}
 >
   <Ripple
-    className="d-flex h-100P w-100P justify-content-center align-items-center"
+    className="css-ugy6xl"
     color="#000"
     fill={false}
     overflow={false}

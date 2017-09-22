@@ -8,10 +8,10 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
   moreLabel="more"
 >
   <div
-    className="position-relative max-height-80 overflow-hidden mb-8"
+    className="css-2g949"
   >
     <div
-      className="d-flex _1oggyor flex-wrap-wrap p-7px_5px overflow-hidden"
+      className="css-dzs3g7"
     >
       <Chip
         invert={false}
@@ -20,15 +20,15 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removable={true}
       >
         <div
-          className="d-flex align-items-center border-radius-26 outline-0 h-26 pr-8 pl-4 mr-5 mt-5 mb-5 min-width-0 bc-fff c-5ccee3"
+          className="css-h0zu4c"
         >
           <Button
-            className="flex-shrink-0 m-0 p-0"
+            className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="flex-shrink-0 m-0 p-0 _focus-outline-0"
+              className="css-i7sqdh css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
@@ -44,7 +44,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                   viewBox="0 0 24 24"
                 >
                   <svg
-                    className="fill-currentColor w-1em h-1em "
+                    className="css-yys9hb "
                     dangerouslySetInnerHTML={
                       Object {
                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -64,12 +64,12 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             </button>
           </Button>
           <Button
-            className="pl-4 pr-4 pt-3 pb-3 fs-12 fw-500 text-overflow-ellipsis max-width-100P white-space-nowrap overflow-hidden d-block lh-1 c-inherit"
+            className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="pl-4 pr-4 pt-3 pb-3 fs-12 fw-500 text-overflow-ellipsis max-width-100P white-space-nowrap overflow-hidden d-block lh-1 c-inherit _focus-outline-0"
+              className="css-1al9zi1 css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
@@ -80,10 +80,10 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       </Chip>
     </div>
     <div
-      className="position-absolute right-0 bottom-4 ml-auto mr-8"
+      className="css-u9gfar"
     >
       <RippleButton
-        className="ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff"
+        className="css-rz4b27"
         disabled={false}
         fill={true}
         flat={false}
@@ -94,7 +94,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         wrapContent={true}
       >
         <Button
-          className="ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff"
+          className="css-rz4b27"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -102,17 +102,17 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           wrapContent={false}
         >
           <Button
-            className="p-0 outline-0 border-0 text-align-left ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff"
+            className="css-1xxwysr css-rz4b27"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="p-0 outline-0 border-0 text-align-left ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff _focus-outline-0"
+              className="css-1xxwysr css-rz4b27 css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
               <Ripple
-                className="p-9px_16px_7px "
+                className="css-8s1fw2 "
                 color="#000"
                 fill={true}
                 overflow={false}
@@ -120,7 +120,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="p-9px_16px_7px "
+                  className="css-8s1fw2 "
                   onClick={[Function]}
                   style={null}
                 >
@@ -154,10 +154,10 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
   moreLabel="more"
 >
   <div
-    className="position-relative max-height-80 overflow-hidden mb-8"
+    className="css-2g949"
   >
     <div
-      className="d-flex _1oggyor flex-wrap-wrap p-7px_5px overflow-hidden"
+      className="css-dzs3g7"
     >
       <Chip
         invert={false}
@@ -166,15 +166,15 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="d-flex align-items-center border-radius-26 outline-0 h-26 pr-8 pl-4 mr-5 mt-5 mb-5 min-width-0 bc-fff c-5ccee3"
+          className="css-h0zu4c"
         >
           <Button
-            className="flex-shrink-0 m-0 p-0"
+            className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="flex-shrink-0 m-0 p-0 _focus-outline-0"
+              className="css-i7sqdh css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
@@ -190,7 +190,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                   viewBox="0 0 24 24"
                 >
                   <svg
-                    className="fill-currentColor w-1em h-1em "
+                    className="css-yys9hb "
                     dangerouslySetInnerHTML={
                       Object {
                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -210,12 +210,12 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             </button>
           </Button>
           <Button
-            className="pl-4 pr-4 pt-3 pb-3 fs-12 fw-500 text-overflow-ellipsis max-width-100P white-space-nowrap overflow-hidden d-block lh-1 c-inherit"
+            className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="pl-4 pr-4 pt-3 pb-3 fs-12 fw-500 text-overflow-ellipsis max-width-100P white-space-nowrap overflow-hidden d-block lh-1 c-inherit _focus-outline-0"
+              className="css-1al9zi1 css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
@@ -231,15 +231,15 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="d-flex align-items-center border-radius-26 outline-0 h-26 pr-8 pl-4 mr-5 mt-5 mb-5 min-width-0 bc-fff c-5ccee3"
+          className="css-h0zu4c"
         >
           <Button
-            className="flex-shrink-0 m-0 p-0"
+            className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="flex-shrink-0 m-0 p-0 _focus-outline-0"
+              className="css-i7sqdh css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
@@ -255,7 +255,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                   viewBox="0 0 24 24"
                 >
                   <svg
-                    className="fill-currentColor w-1em h-1em "
+                    className="css-yys9hb "
                     dangerouslySetInnerHTML={
                       Object {
                         "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
@@ -275,12 +275,12 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             </button>
           </Button>
           <Button
-            className="pl-4 pr-4 pt-3 pb-3 fs-12 fw-500 text-overflow-ellipsis max-width-100P white-space-nowrap overflow-hidden d-block lh-1 c-inherit"
+            className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="pl-4 pr-4 pt-3 pb-3 fs-12 fw-500 text-overflow-ellipsis max-width-100P white-space-nowrap overflow-hidden d-block lh-1 c-inherit _focus-outline-0"
+              className="css-1al9zi1 css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
@@ -291,10 +291,10 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       </Chip>
     </div>
     <div
-      className="position-absolute right-0 bottom-4 ml-auto mr-8"
+      className="css-u9gfar"
     >
       <RippleButton
-        className="ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff"
+        className="css-rz4b27"
         disabled={false}
         fill={true}
         flat={false}
@@ -305,7 +305,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         wrapContent={true}
       >
         <Button
-          className="ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff"
+          className="css-rz4b27"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -313,17 +313,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           wrapContent={false}
         >
           <Button
-            className="p-0 outline-0 border-0 text-align-left ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff"
+            className="css-1xxwysr css-rz4b27"
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="p-0 outline-0 border-0 text-align-left ml-auto outline-0 p-9 fs-0p8rem fw-500 _156tc02 c-fff _focus-outline-0"
+              className="css-1xxwysr css-rz4b27 css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >
               <Ripple
-                className="p-9px_16px_7px "
+                className="css-8s1fw2 "
                 color="#000"
                 fill={true}
                 overflow={false}
@@ -331,7 +331,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="p-9px_16px_7px "
+                  className="css-8s1fw2 "
                   onClick={[Function]}
                   style={null}
                 >

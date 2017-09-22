@@ -20,17 +20,17 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     wrapContent={true}
   >
     <Button
-      className="position-relative d-inline-block outline-0 p-0 _156tc02 c-b5b5b5 bc-eaeaea fw-500 min-width-64 border-radius-2 "
+      className="css-5rbc6o "
       disabled={true}
       onClick={null}
     >
       <button
-        className="position-relative d-inline-block outline-0 p-0 _156tc02 c-b5b5b5 bc-eaeaea fw-500 min-width-64 border-radius-2  _focus-outline-0"
+        className="css-5rbc6o  css-1rn65c0"
         disabled={true}
         onClick={null}
       >
         <div
-          className="p-9px_16px_7px c-b5b5b5"
+          className="css-4uxwj9"
         >
           Press me
         </div>
@@ -50,7 +50,7 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
   wrapContent={false}
 >
   <Ripple
-    className="p-9px_16px_7px "
+    className="css-8s1fw2 "
     color="#000"
     fill={true}
     overflow={false}
