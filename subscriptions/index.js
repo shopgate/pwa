@@ -9,6 +9,7 @@ import setup from './setup';
 import pages from './pages';
 import product from './product';
 import user from './user';
+import cart from './cart';
 
 /**
  * Holds all subscriber references.
@@ -19,4 +20,5 @@ export default [
   pages,
   product,
   user,
+  cart,
 ];
