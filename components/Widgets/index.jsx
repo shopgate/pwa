@@ -11,7 +11,7 @@ import extensions from 'Extensions';
 import styles from './style';
 
 const GRID_COLUMNS = 12; // One grid row has 12 columns.
-const WIDGET_GRID_TYPE = 'commerce-widgets/widget-grid';
+const WIDGET_GRID_TYPE = '@shopgate/commerce-widgets/widget-grid';
 
 /**
  * Creates a grid wrapper for widget(s).
