@@ -6,15 +6,17 @@
  */
 
 import setRedirectLocation from '../../action-creators/history/setRedirectLocation';
+import { getRedirectLocation } from '../../selectors/history';
 import replaceHistory from './replaceHistory';
 import goBackHistory from './goBackHistory';
 
 /**
- * Redirect to the redirectLocation from the state and resets it.
+ * Redirects the user to the redirectLocation property within the history state and resets it
+ * afterwards.
  * @returns {Function} A redux thunk.
  */
 const redirectRoute = () => (dispatch, getState) => {
-  const { history: { redirectLocation } } = getState();
+  const redirectLocation = getRedirectLocation(getState());
 
   // If there is a redirect location set, go to this page.
   if (redirectLocation) {

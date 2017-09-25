@@ -8,12 +8,14 @@
 import { history } from '../../helpers/router';
 
 /**
- * Goes back in history.
- * @param {number} [amount=1] The optional number of steps to go back. Defaults to 1.
+ * Goes back one or more entries within the browse history.
+ * @param {number} [amount=1] The number of steps to go back. Defaults to 1.
  * @returns {Function} A redux thunk.
  */
-export default (amount = 1) => () => {
+const goBackHistory = (amount = 1) => () => {
   if (amount > 0) {
     history.go(-amount);
   }
 };
+
+export default goBackHistory;

@@ -7,19 +7,24 @@
 
 import goBackHistory from './goBackHistory';
 import pushHistory from './pushHistory';
+import { getHistoryLength } from '../../selectors/history';
 
 /**
- * Resets the history, clearing any previous entry.
+ * Resets the history and clears any previous entries. Optionally, a new location can be pushed
+ * directly into the history stack afterwards.
  * @param {Object|string|null} [location=null] The location to set after the reset.
  * @returns {Function} A redux thunk.
  */
-export default (location = null) => (dispatch, getState) => {
-  const numEntries = getState().history.length;
+const resetHistory = (location = null) => (dispatch, getState) => {
+  const numEntries = getHistoryLength(getState());
+
   // Go back the exact amount of entries stored in the history.
   dispatch(goBackHistory(numEntries - 1));
 
-  // Set the new location if requested.
+  // Set the new location if one was passed with the parameters.
   if (location) {
     dispatch(pushHistory(location));
   }
 };
+
+export default resetHistory;
