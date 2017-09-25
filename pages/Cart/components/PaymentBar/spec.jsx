@@ -23,6 +23,7 @@ jest.mock('./components/CheckoutButton/connector', () => (obj) => {
   newObj.defaultProps = {
     ...newObj.defaultProps,
     isActive: true,
+    pushHistory: () => {},
   };
 
   return newObj;

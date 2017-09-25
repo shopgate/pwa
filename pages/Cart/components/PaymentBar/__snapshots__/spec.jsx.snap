@@ -218,6 +218,7 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
                         >
                           <CheckoutButton
                             isActive={true}
+                            pushHistory={[Function]}
                           >
                             <RippleButton
                               className=""
@@ -512,6 +513,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                         >
                           <CheckoutButton
                             isActive={true}
+                            pushHistory={[Function]}
                           >
                             <RippleButton
                               className=""
@@ -853,6 +855,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                         >
                           <CheckoutButton
                             isActive={true}
+                            pushHistory={[Function]}
                           >
                             <RippleButton
                               className=""
@@ -1146,6 +1149,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                         >
                           <CheckoutButton
                             isActive={true}
+                            pushHistory={[Function]}
                           >
                             <RippleButton
                               className=""
@@ -1439,6 +1443,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                         >
                           <CheckoutButton
                             isActive={true}
+                            pushHistory={[Function]}
                           >
                             <RippleButton
                               className=""
