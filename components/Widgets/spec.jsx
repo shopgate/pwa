@@ -20,14 +20,13 @@ describe('<Widgets />', () => {
         id: 83535,
         image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
       },
-      type: 'core-widgets/image',
+      type: '@shopgate/commerce-widgets/image',
     }];
 
     const wrapper = mount(
       <Widgets widgets={widgets} />
     );
 
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
   });
 
@@ -40,7 +39,7 @@ describe('<Widgets />', () => {
         id: 83535,
         image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
       },
-      type: 'core-widgets/image',
+      type: '@shopgate/commerce-widgets/image',
     }];
 
     const wrapper = mount(
@@ -53,7 +52,7 @@ describe('<Widgets />', () => {
 
   it('should render a grid if the widget is of type grid', () => {
     const widgets = [{
-      type: 'core-widgets/widget-grid',
+      type: '@shopgate/commerce-widgets/widget-grid',
       settings: {
         widgets: [
           {
@@ -67,7 +66,7 @@ describe('<Widgets />', () => {
               image: 'https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg',
               link: '/category/',
             },
-            type: 'core-widgets/image',
+            type: '@shopgate/commerce-widgets/image',
           },
         ],
       },
