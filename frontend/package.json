@@ -4,7 +4,8 @@
   "description": "Shopgate's Google Analytics native tracker",
   "main": "frontend/index.js",
   "repository": "shopgate/tracking-ga-native",
-  "author": "Shopgate <support@shopgate.com>",
+  "bugs": "https://github.com/shopgate/tracking-ga-native/issues",
+  "homepage": "https://github.com/shopgate/tracking-ga-native",
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
@@ -12,16 +13,24 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
-    "@shopgate/pwa-common": "^1.0.0-beta6",
-    "@shopgate/tracking-core": "^1.0.0-beta4"
+    "@shopgate/tracking-core": "1.0.0-beta6"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "1.0.2",
+    "@shopgate/eslint-config": "^1.0.2",
+    "@shopgate/pwa-common": "1.0.0-beta10",
+    "@shopgate/pwa-core": "1.0.0-beta8",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
-    "jest": "^21.1.0"
+    "babel-runtime": "^6.26.0",
+    "jest": "^21.1.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "peerDependencies": {
+    "@shopgate/pwa-common": "1.0.0-beta10"
   }
 }
