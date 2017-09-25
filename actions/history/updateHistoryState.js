@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { replaceHistory } from './changeHistory';
+import replaceHistory from './replaceHistory';
 
 /**
  * Updates the history location state by merging it with the previous state.
