@@ -9,6 +9,7 @@ import setup from './setup';
 import pages from './pages';
 import product from './product';
 import user from './user';
+import cart from './cart';
 import checkout from './checkout';
 
 /**
@@ -20,5 +21,6 @@ export default [
   pages,
   product,
   user,
+  cart,
   checkout,
 ];
