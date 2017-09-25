@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
   goBackHistory: number => dispatch(goBackHistory(number)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
