@@ -1,8 +1,8 @@
 # Shopgate's PWA core library
 
-![](https://travis-ci.org/shopgate/pwa-core.svg?branch=master)
+[![Travis CI Build](https://travis-ci.org/shopgate/pwa-core.svg?branch=development)](https://travis-ci.org/shopgate/pwa-core)
 [![GitHub release](https://img.shields.io/github/release/shopgate/pwa-core.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-core/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-core?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-core/badge.svg?branch=development)](https://coveralls.io/github/shopgate/pwa-core?branch=development)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This is Shopgate's PWA core library that handles pipeline requests and app commands.
@@ -56,7 +56,9 @@ npm i @shopgate/pwa-core --save
 
 Shopgate is the leading mobile commerce platform.
 
-Shopgate offers everything online retailers need to be successful in mobile. Our leading software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize native apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
+Shopgate offers everything online retailers need to be successful in mobile. Our leading
+software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize native
+apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
 
 ## License
 
