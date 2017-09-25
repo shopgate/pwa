@@ -52,9 +52,5 @@
     "pre-commit": "1.2.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
-  },
-  "peerDependencies": {
-    "react": "15.x",
-    "react-dom": "15.x"
   }
 }
