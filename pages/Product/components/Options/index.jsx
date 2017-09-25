@@ -34,7 +34,7 @@ class Options extends Component {
    * Triggers setProductOptions when the component is mounted and has options set.
    */
   componentDidMount() {
-    if(!this.props.setProductOption) {
+    if(!this.props.setProductOption || !this.props.options) {
       return;
     }
 
