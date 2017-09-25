@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import RippleButton from 'Components/RippleButton';
 import CheckoutButton from './index';
 
