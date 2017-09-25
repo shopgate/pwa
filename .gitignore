@@ -44,5 +44,4 @@ node_modules/
 .cache-loader
 
 # Project
-/config.js
 /dist/
