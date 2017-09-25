@@ -2,7 +2,6 @@
 
 App commands description.
 
-#### broadcastEvent
 #### flushTab
 #### hideMenuBar
 #### hideNavigationBar
