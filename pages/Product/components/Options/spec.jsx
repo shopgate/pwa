@@ -7,18 +7,14 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import Picker from 'Components/Picker';
 import Options from './index';
 
-describe('<Options />', () => {
-  const mockRenderOptions = {
-    context: {
-      i18n: () => ({
-        __: () => '',
-        _p: () => '',
-      }),
-    },
-  };
+// Mock the redux connect() method instead of providing a fake store.
+jest.mock('./connector', () => obj => {
+  const newObj = obj;
+
   const mockOptions = [{
     id: 'test-id',
     type: 'select',
@@ -34,6 +30,41 @@ describe('<Options />', () => {
       },
     ],
   }];
+
+  newObj.defaultProps = {
+    options: mockOptions,
+    currentOptions: {},
+  };
+
+  return newObj;
+});
+
+describe('<Options />', () => {
+  const mockRenderOptions = {
+    context: {
+      i18n: () => ({
+        __: () => '',
+        _p: () => '',
+      }),
+    },
+  };
+
+  const mockOptions = [{
+    id: 'test-id',
+    type: 'select',
+    label: 'label',
+    items: [
+      {
+        currency: 'USD',
+        price: 10,
+      },
+      {
+        currency: 'USD',
+        price: 10,
+      },
+    ],
+  }];
+
   let mockSetProductOption;
   let renderedElement;
 
@@ -44,15 +75,17 @@ describe('<Options />', () => {
   const renderComponent = (props) => {
     mockSetProductOption = jest.fn();
 
-    renderedElement = mount(
-      <Options setProductOption={mockSetProductOption} {...props} />,
+    renderedElement = mount((
+        <I18n.Provider lang="en" locales={{}}>
+          <Options setProductOption={mockSetProductOption} {...props} />
+        </I18n.Provider>),
       mockRenderOptions
     );
   };
 
   describe('Given the component was mounted to the DOM', () => {
     beforeEach(() => {
-      renderComponent({});
+      renderComponent({ currentOptions: {} });
     });
 
     it('should match snapshot', () => {
