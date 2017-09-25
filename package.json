@@ -29,7 +29,7 @@
     "@shopgate/eslint-config": "^1.0.2",
     "@shopgate/pwa-common": "1.0.0-beta9",
     "@shopgate/pwa-core": "1.0.0-beta7",
-    "@shopgate/pwa-unit-test": "^1.0.3",
+    "@shopgate/pwa-unit-test": "^1.1.0",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^3.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
