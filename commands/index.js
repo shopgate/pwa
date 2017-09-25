@@ -1,4 +1,3 @@
-export broadcastEvent from './broadcastEvent';
 export flushTab from './flushTab';
 export onload from './onload';
 export hideMenuBar from './hideMenuBar';
