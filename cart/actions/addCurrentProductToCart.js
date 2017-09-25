@@ -6,7 +6,7 @@
  */
 
 import Event from '@shopgate/pwa-core/classes/Event';
-import { ADD_TO_CART_MISSING_VARIANT } from '../constants';
+import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '../constants';
 import { getCurrentProduct } from '../../product/selectors/product';
 import addProductsToCart from './addProductsToCart';
 
@@ -33,7 +33,7 @@ const addCurrentProductToCart = () => (dispatch, getState) => {
       quantity,
     }]));
   } else {
-    Event.call(ADD_TO_CART_MISSING_VARIANT);
+    Event.call(EVENT_ADD_TO_CART_MISSING_VARIANT);
   }
 };
 

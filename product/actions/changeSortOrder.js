@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { replaceHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import replaceHistory from '@shopgate/pwa-common/actions/history/replaceHistory';
 
 /**
  * Updates the sort parameter in the history.
