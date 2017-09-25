@@ -175,19 +175,28 @@ const selectionUpdate = [{
     id: '1',
     label: '0',
     selected: false,
-    availability: null,
+    availability: {
+      state: 'ok',
+      text: 'Available',
+    },
   }, {
     disabled: false,
     id: '2',
     label: '11',
     selected: false,
-    availability: null,
+    availability: {
+      state: 'ok',
+      text: 'Available',
+    },
   }, {
     disabled: false,
     id: '3',
     label: '7',
     selected: false,
-    availability: null,
+    availability: {
+      state: 'ok',
+      text: 'Available',
+    },
   }],
 }];
 
