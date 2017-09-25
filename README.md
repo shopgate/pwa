@@ -1,6 +1,6 @@
 # Shopgate's Tracking Core
 
-![](https://travis-ci.org/shopgate/tracking-core.svg?branch=master)
+[![Travis CI Build](https://travis-ci.org/shopgate/tracking-core.svg?branch=development)](https://travis-ci.org/shopgate/tracking-core)
 [![GitHub release](https://img.shields.io/github/release/shopgate/tracking-core.svg)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
