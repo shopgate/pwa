@@ -40,7 +40,7 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {(hidePrice || !product.price.discount) && (
+    {(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
@@ -48,7 +48,7 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
     {/* <FavoritesButton className={styles.wishlist} productId={product.id} /> */}
     {(!(hidePrice && hideRating)) && (
       <div className={styles.details}>
-        {(!hideRating && product.rating && product.rating.count) && (
+        {!hideRating && product.rating && product.rating.average > 0 && (
           <RatingStars value={product.rating.average} />
         )}
         {!hideName && (
@@ -66,11 +66,11 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.unitPriceStriked && (
+            {product.price.unitPriceStriked > 0 && (
               <Grid.Item>
                 <PriceStriked
-                  value="{product.price.unitPriceStriked}"
-                  currency="{product.price.currency}"
+                  value={product.price.unitPriceStriked}
+                  currency={product.price.currency}
                   className={styles.striked}
                 />
               </Grid.Item>

@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { goBackHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import fetchCheckoutUrl from '@shopgate/pwa-common-commerce/checkout/actions/fetchCheckoutUrl';
 import { getCheckoutUrl } from '@shopgate/pwa-common-commerce/checkout/selectors';
 
