@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "1.0.0-beta10",
+  "version": "1.0.0-beta11",
   "description": "Shopgate's common library for PWAs",
   "repository": "shopgate/pwa-common",
   "bugs": "https://github.com/shopgate/pwa-common/issues",
