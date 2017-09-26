@@ -11,7 +11,7 @@ import {
   ERROR_FILTERS,
 } from '../constants';
 import { PRODUCT_LIFETIME } from '../../product/constants';
-import { enrichFilters } from './utils';
+import enrichFilters from './helpers/enrichFilters';
 
 /**
  * Stores a collection of available filters by the related hash of the request parameters.
