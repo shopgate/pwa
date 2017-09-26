@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import I18n from '../../';
+import I18n from '../../index';
 
 describe('<FormatDate />', () => {
   let renderedElement;
