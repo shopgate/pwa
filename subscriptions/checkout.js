@@ -13,7 +13,7 @@ import getCart from '../selectors/cart';
 /**
  * Emits when the checkout route was entered.
  */
-export const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
+const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
 
 /**
  * Checkout tracking subscriptions.

@@ -6,14 +6,17 @@
  */
 
 import core from '@shopgate/tracking-core/core/Core';
-import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
+import { variantDidChange$, productReceived$ } from '@shopgate/pwa-common-commerce/product/streams';
+import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getSelectedVariantFormatted,
   getCurrentBaseProductFormatted,
+  getCurrentProductFormatted,
 } from '../selectors/product';
 
 /**
- * Pages tracking subscriptions.
+ * Product tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function product(subscribe) {
@@ -26,5 +29,33 @@ export default function product(subscribe) {
     const baseProduct = getCurrentBaseProductFormatted(state);
 
     core.track.variantSelected({ variant, baseProduct });
+  });
+
+  /**
+   * Emits when the product route was entered.
+   */
+  const productDidEnter$ = routeDidEnter(ITEM_PATH);
+
+  /**
+   * Gets triggered on product pageview
+   */
+  subscribe(productDidEnter$, ({ getState }) => {
+    const state = getState();
+
+    let currentProduct = getCurrentProductFormatted(state);
+
+    if (currentProduct) {
+      // Product data are already there
+      core.track.viewContent(currentProduct);
+    } else {
+      // Product data not there yet
+      const subscription = subscribe(productReceived$, ({ getState: getReceivedState }) => {
+        subscription.unsubscribe();
+
+        currentProduct = getCurrentProductFormatted(getReceivedState());
+
+        core.track.viewContent(currentProduct);
+      });
+    }
   });
 }

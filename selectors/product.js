@@ -7,22 +7,28 @@
 
 import { createSelector } from 'reselect';
 import { getSelectedVariant } from '@shopgate/pwa-common-commerce/product/selectors/variants';
-import { getCurrentBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentBaseProduct, getCurrentProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Re-format a given product form the store.
  * @param {Object} productData The product data from the store
- * @returns {Object} The formatted product.
+ * @returns {Object|null} The formatted product.
  */
-const formatProductData = productData => ({
-  uid: productData.id,
-  name: productData.name,
-  amount: {
-    net: productData.price.unitPriceNet,
-    gross: productData.price.unitPriceWithTax,
-    currency: productData.price.currency,
-  },
-});
+const formatProductData = (productData) => {
+  if (!productData) {
+    return null;
+  }
+
+  return {
+    uid: productData.id,
+    name: productData.name,
+    amount: {
+      net: productData.price.unitPriceNet,
+      gross: productData.price.unitPriceWithTax,
+      currency: productData.price.currency,
+    },
+  };
+};
 
 /**
  * Gets the current selected Variant in a formatted way.
@@ -41,6 +47,16 @@ export const getSelectedVariantFormatted = createSelector(
  */
 export const getCurrentBaseProductFormatted = createSelector(
   getCurrentBaseProduct,
+  formatProductData
+);
+
+/**
+ * Gets the current product in a formatted way.
+ * @param {Object} state The current state.
+ * @returns {Object} The formatted selected variant.
+ */
+export const getCurrentProductFormatted = createSelector(
+  getCurrentProduct,
   formatProductData
 );
 
