@@ -11,15 +11,7 @@ import {
   RECEIVE_ROOT_CATEGORIES,
   ERROR_ROOT_CATEGORIES,
 } from '../constants';
-
-/**
- * Handles the received category id's by mapping to store and returning results.
- * @param {Array} categories The received categories.
- * @returns {Array} An array of category objects.
- */
-const handleReceivedCategories = categories =>
-  (categories.length ? categories.map(category => category.id) : null)
-;
+import handleReceivedCategories from './helpers/handleReceivedCategories';
 
 /**
  * Stores a collection of category IDs that represent the

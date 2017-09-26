@@ -15,13 +15,6 @@ import {
 } from '../constants';
 
 /**
- * Retrieves the navigator state from the global state.
- * @param {Object} state The global state.
- * @returns {Object} The navigator state.
- */
-const getNavigatorState = state => state.navigator;
-
-/**
  * Selects the cart data from the store.
  * @param {Object} state The current state.
  * @return {Object}
@@ -108,20 +101,7 @@ export const getCartProductDisplayCount = createSelector(
 );
 
 /**
- * Checks if the cart button is available.
- * @return {boolean}
- */
-export const isCartButtonVisible = createSelector(
-  getCartProductCount,
-  getProductPendingCount,
-  getNavigatorState,
-  (count, pendingCount, navigator) => (
-    navigator.showCartIcon && (count + pendingCount) > 0
-  )
-);
-
-/**
- * Selects the orderabled status from the cart data.
+ * Selects the orderable status from the cart data.
  * @param {Object} state The current application state.
  * @return {boolean}
  */
@@ -176,16 +156,6 @@ export const getSubTotal = createSelector(
 export const getShippingCosts = createSelector(
   getTotals,
   totals => getTotalByType(totals, CART_TOTALS_TYPE_SHIPPING, null)
-);
-
-/**
- * Selects if the cart is fetching.
- * @param {Object} state The current application state.
- * @return {boolean}
- */
-export const isCartLoading = createSelector(
-  getCart,
-  cart => cart.isFetching
 );
 
 /**
