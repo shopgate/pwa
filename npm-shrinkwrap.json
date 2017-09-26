@@ -76,9 +76,9 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "1.0.0-beta3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.0.0-beta3.tgz",
-      "integrity": "sha512-RM2KEJaCU6s98s50J7N1KtvsgbJkjERqxSnVF11wduFndcyfMCVMaTmwIehvflQIuV72M5KbWDgyzfXnU5Xb1Q==",
+      "version": "1.0.0-beta4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.0.0-beta4.tgz",
+      "integrity": "sha512-l8WbrEI28PBOIO0pAzQV/dNyFoMgMrWb0KmcjeFOiZ6qHWP+4DOozU0w6QyT9GpzaMw/yMSfHEaHP9RbLcrItg==",
       "requires": {
         "recompose": "0.25.0",
         "reselect": "3.0.1"
