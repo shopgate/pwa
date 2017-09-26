@@ -8,7 +8,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import redirectRoute from '../actions/history/redirectRoute';
-import { resetHistory } from '../actions/history/changeHistory';
+import resetHistory from '../actions/history/resetHistory';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
 import { appDidStart$ } from '../streams/app';
 

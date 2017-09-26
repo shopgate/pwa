@@ -68,6 +68,26 @@ export const getHistoryPathname = createSelector(
 );
 
 /**
+ * Gets the length of the current history stack.
+ * @param {Object} state The current application state.
+ * @return {number}
+ */
+export const getHistoryLength = createSelector(
+  getHistoryState,
+  historyState => historyState.length
+);
+
+/**
+ * Gets the current redirectLocation from the history state.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getRedirectLocation = createSelector(
+  getHistoryState,
+  historyState => historyState.redirectLocation || null
+);
+
+/**
  * Gets the current query params from history state as a preformatted string.
  * @param {Object} state The global state.
  * @return {string}
