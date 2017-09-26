@@ -16,6 +16,22 @@ import {
   PROPAGATE_SINGLE,
 } from '../../constants/RequestManagerModes';
 
+import { EPIPELINERESPONSEREJECTED } from '../../constants/Pipeline';
+
+/**
+ * Creates an error object for requests that where rejected by the request manager.
+ * @param {Object} queueItem The rejected request item from the request queue.
+ * @return {Object}
+ */
+const createRejectedRequestErrorObject = (queueItem) => {
+  const { request } = queueItem;
+
+  return {
+    code: EPIPELINERESPONSEREJECTED,
+    message: `Response for ${request.name} with serial ${request.serial} rejected by the request manager.`,
+  };
+};
+
 /**
  * Process only the latest request that has been sent.
  * This mode can either reject outdated requests or resolve them with the
@@ -38,7 +54,7 @@ const processLastRequest = (self, request, response, resolve) => {
 
   if (self.propagationMode === PROPAGATE_REJECT) {
     // Reject all the previous requests.
-    self.requestQueue.forEach(item => item.reject());
+    self.requestQueue.forEach(item => item.reject(createRejectedRequestErrorObject(item)));
 
     if (self.requestQueue.length > 0) {
       logger.log(`RequestManager: rejected ${self.requestQueue.length} outdated request(s).`);
@@ -69,7 +85,7 @@ const processFirstResponse = (self, request, response, resolve) => {
     // Reject all of the queued requests except for this one.
     self.requestQueue.forEach((item) => {
       if (item.request.serial !== request.serial) {
-        item.reject();
+        item.reject(createRejectedRequestErrorObject(item));
       }
     });
 
@@ -224,9 +240,9 @@ class RequestManager {
    * Handles an error that occurred during the request.
    * @param {Request} request The request this response belongs to.
    * @param {function} reject The reject() callback of the request promise.
-   * @param {string} [message] The error message.
+   * @param {Object} [message] The error object.
    */
-  handleError(request, reject, message = '') {
+  handleError(request, reject, message) {
     clearTimeout(this.timers[request.serial]);
     delete this.timers[request.serial];
 
