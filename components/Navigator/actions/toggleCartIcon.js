@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { isCartButtonVisible } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { isCartButtonVisible } from '../selectors';
 import { toggleCartIcon as toggleNavigatorCartIcon } from '../action-creators';
 
 /**
