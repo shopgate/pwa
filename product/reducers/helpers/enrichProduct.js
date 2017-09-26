@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { calcDiscount } from '../helpers';
-import { PRODUCT_LIFETIME } from '../constants';
+import { calcDiscount } from '../../helpers';
 
 /**
  * Enriches a product object with additional properties that are helpful for the frontend,
@@ -14,7 +13,7 @@ import { PRODUCT_LIFETIME } from '../constants';
  * @param {Object} productData A product object
  * @return {Object} The enriched product
  */
-export const enrichProduct = (productData) => {
+const enrichProduct = (productData) => {
   const newProductData = {
     ...productData,
   };
@@ -40,22 +39,4 @@ export const enrichProduct = (productData) => {
   return newProductData;
 };
 
-/**
- * Builds state entries from a collection of products (Array).
- * @param {Array} products A products collection.
- * @return {Object} The product entries for the state.
- */
-export const handleProductCollection = (products) => {
-  if (!Array.isArray(products)) {
-    return {};
-  }
-
-  return products.reduce((currentProducts, product) => ({
-    ...currentProducts,
-    [product.id]: {
-      productData: enrichProduct(product),
-      isFetching: false,
-      expires: Date.now() + PRODUCT_LIFETIME,
-    },
-  }), {});
-};
+export default enrichProduct;
