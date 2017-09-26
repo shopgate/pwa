@@ -17,7 +17,7 @@ import {
  * Gets triggered when product data received.
  * @type {Observable}
  */
-const productReceived$ = main$
+export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
   .distinctUntilChanged();
 
