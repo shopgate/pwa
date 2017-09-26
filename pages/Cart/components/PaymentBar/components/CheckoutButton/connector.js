@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
+import { pushHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';

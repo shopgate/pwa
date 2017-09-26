@@ -11,7 +11,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import {
   getCartProductDisplayCount,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
-import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
+import { pushHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
 import { isCartButtonVisible } from '../../selectors';
 
 /**
