@@ -23,9 +23,9 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "1.0.0-beta10",
-    "@shopgate/pwa-common-commerce": "1.0.0-beta2",
-    "@shopgate/pwa-core": "1.0.0-beta8",
+    "@shopgate/pwa-common": "^1.0.0-beta11",
+    "@shopgate/pwa-common-commerce": "^1.0.0-beta3",
+    "@shopgate/pwa-core": "^1.0.0-beta9",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "3.0.0-beta.0",
     "babel-plugin-react-transform": "^3.0.0",
