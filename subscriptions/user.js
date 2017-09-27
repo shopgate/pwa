@@ -38,9 +38,8 @@ export default function user(subscribe) {
   });
 
   subscribe(appDidStart$, ({ dispatch }) => {
-    registerEvents(['viewDidAppear', 'userLoggedIn']);
+    registerEvents(['userLoggedIn']);
 
-    event.addCallback('viewDidAppear', () => dispatch(getUser()));
     event.addCallback('userLoggedIn', () => dispatch(successLogin()));
   });
 }
