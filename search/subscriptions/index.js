@@ -14,7 +14,7 @@ import {
 import { SEARCH_PATH } from '../constants';
 
 /**
- * Cart subscriptions.
+ * Search subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function search(subscribe) {

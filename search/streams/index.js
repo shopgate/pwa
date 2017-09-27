@@ -24,6 +24,5 @@ export const searchRequesting$ = main$.filter(
  * @type {Observable}
  */
 export const searchReceived$ = main$.filter(
-  ({ action }) =>
-    action.type === RECEIVE_SEARCH_RESULTS
+  ({ action }) => action.type === RECEIVE_SEARCH_RESULTS
 );

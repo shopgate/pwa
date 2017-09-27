@@ -24,12 +24,12 @@ export default function filters(subscribe) {
   /**
    * Gets triggered when entering the filter route.
    */
-  const filterRouteDidLeave$ = routeDidLeave(FILTER_PATH);
+  const filterRouteDidEnter$ = routeDidEnter(FILTER_PATH);
 
   /**
-   * Gets triggered when entering the filter route.
+   * Gets triggered when leaving the filter route.
    */
-  const filterRouteDidEnter$ = routeDidEnter(FILTER_PATH);
+  const filterRouteDidLeave$ = routeDidLeave(FILTER_PATH);
 
   /**
    * Gets triggered when entering a filterable route.
