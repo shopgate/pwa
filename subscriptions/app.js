@@ -39,5 +39,12 @@ export default function app(subscribe) {
     event.addCallback('viewWillAppear', hideLegacyNavigation);
     event.addCallback('viewWillDisappear', showLegacyNavigation);
     event.addCallback('showPreviousTab', showPreviousTab);
+
+    /**
+     * The following events are sometimes sent by the app, but don't need to be handled right now.
+     * To avoid console warnings from the event system, empty handlers are registered here.
+     */
+    event.addCallback('viewDidAppear', () => {});
+    event.addCallback('pageInsetsChanged', () => {});
   });
 }
