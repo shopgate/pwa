@@ -12,7 +12,8 @@ import {
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
 } from '../constants';
-import { handleProductCollection, enrichProduct } from './utils';
+import handleProductCollection from './helpers/handleProductCollection';
+import enrichProduct from './helpers/enrichProduct';
 
 /**
  * Stores products by their ID.
