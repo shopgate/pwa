@@ -14,6 +14,9 @@ export const EVENT_PIPELINE_ERROR = 'EVENT_PIPELINE_ERROR';
 // Pipeline timeout error.
 export const ETIMEOUT = 'ETIMEOUT';
 
+// A pipeline response was rejected by the request manager.
+export const EPIPELINERESPONSEREJECTED = 'EPIPELINERESPONSEREJECTED';
+
 // Pipeline no access.
 export const EACCESS = 'EACCESS';
 
