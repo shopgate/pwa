@@ -72,6 +72,7 @@ const mapping = {
   },
   checkout_payment: path => pathWithParameters('checkout_payment_and_shipping', path),
   checkout: () => 'checkout',
+  payment_failure: path => pathWithParameters('payment_failure', path),
 };
 
 /**
