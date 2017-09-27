@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-core",
-  "version": "1.0.0-beta3",
+  "version": "1.0.0-beta8",
   "description": "The Shopgate Cloud tracking core.",
   "repository": "shopgate/tracking-core",
   "bugs": "https://github.com/shopgate/tracking-core/issues",
@@ -21,15 +21,16 @@
   "pre-commit": [
     "precommit"
   ],
-  "dependencies": {
-    "@shopgate/pwa-core": "^1.0.0-beta3"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@shopgate/eslint-config": "1.0.2",
-    "babel-core": "6.25.0",
+    "@shopgate/eslint-config": "^1.0.2",
+    "@shopgate/pwa-core": "^1.0.0-beta10",
+    "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "2.7.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
+    "babel-runtime": "^6.26.0",
     "chai": "^3.5.0",
     "jsdom": "^9.8.3",
     "lint-staged": "4.0.3",
@@ -39,5 +40,8 @@
     "pre-commit": "1.2.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
+  },
+  "peerDependencies": {
+    "@shopgate/pwa-core": "1.0.0-beta10"
   }
 }
