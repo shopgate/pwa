@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { goBackHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import commitTemporaryFilters from './commitTemporaryFilters';
 import { FILTER_PATH } from '../constants';
