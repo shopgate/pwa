@@ -14,6 +14,8 @@ import { shopName } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
 
+const SCROLL_DEBOUNCE = 50;
+
 /**
  * The view component.
  */
@@ -43,7 +45,7 @@ class View extends Component {
       style: [],
     },
     style: null,
-    title: '',
+    title: null,
     viewTop: true,
   };
 
@@ -75,7 +77,11 @@ class View extends Component {
    * Sets the navigator title when the component mounts.
    */
   componentDidMount() {
-    this.props.setTitle(this.title);
+    // If we already know the page title then we can set it immediately.
+    if (this.props.title !== null) {
+      this.props.setTitle(this.props.title);
+    }
+
     this.props.setTop(true);
   }
 
@@ -85,7 +91,7 @@ class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.title !== this.props.title) {
-      this.props.setTitle(nextProps.title || this.title);
+      this.props.setTitle(nextProps.title || this.props.title);
     }
 
     if (nextProps.viewTop && nextProps.viewTop !== this.props.viewTop) {
@@ -115,14 +121,14 @@ class View extends Component {
     if (isViewTop !== this.props.viewTop) {
       this.props.setTop(isViewTop);
     }
-  }, 5);
+  }, SCROLL_DEBOUNCE);
 
   /**
    * Returns the view title.
    * @returns {string}
    */
   get title() {
-    return this.props.title || '';
+    return this.props.title;
   }
 
   /**
@@ -151,7 +157,7 @@ class View extends Component {
    * Sets the navigator title when the component mounts.
    */
   routeWillEnter() {
-    this.props.setTitle(this.title);
+    this.props.setTitle(this.props.title);
   }
 
   /**

@@ -107,6 +107,8 @@ class FilterBar extends Component {
    * spacers total height.
    */
   setSpacerHeight = () => {
+    const element = this.element;
+
     if (!this.element) {
       return;
     }
@@ -116,7 +118,7 @@ class FilterBar extends Component {
      * this is triggered from the child components.
      */
     setTimeout(() => {
-      const height = this.element.offsetHeight;
+      const height = element.offsetHeight;
 
       if (height > 0 && height !== this.state.spacerHeight) {
         this.setState({ spacerHeight: height });

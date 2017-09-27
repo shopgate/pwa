@@ -42,7 +42,6 @@ const submitSearch = () => (dispatch, getState) => {
 
   dispatch(setActiveFilters({}));
   dispatch(getSearchResults());
-
   dispatch(setViewTop(true));
 
   // Set up next history location.

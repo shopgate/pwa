@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { toggleProgressBar } from '../action-creators';
+import { toggleProgressBar as toggleProgressBarAction } from '../action-creators';
 import { isProgressBarShowing } from '../selectors';
 
 /**
@@ -13,10 +13,10 @@ import { isProgressBarShowing } from '../selectors';
  * @param {boolean} isActive Whether or not to activate the progress bar.
  * @return {Function} A redux thunk.
  */
-const setProgressBar = isActive => (dispatch, getState) => {
+const toggleProgressBar = isActive => (dispatch, getState) => {
   if (isProgressBarShowing(getState()) !== isActive) {
-    dispatch(toggleProgressBar(isActive));
+    dispatch(toggleProgressBarAction(isActive));
   }
 };
 
-export default setProgressBar;
+export default toggleProgressBar;

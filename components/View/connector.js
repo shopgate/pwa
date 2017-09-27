@@ -8,6 +8,7 @@
 import { connect } from 'react-redux';
 import setViewTitle from './action-creators/setViewTitle';
 import setViewTop from './action-creators/setViewTop';
+import { getTopStatus } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -15,7 +16,7 @@ import setViewTop from './action-creators/setViewTop';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  viewTop: state.ui.general.isTop,
+  viewTop: getTopStatus(state),
 });
 
 /**
