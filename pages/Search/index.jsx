@@ -11,31 +11,21 @@ import connect from './connector';
  */
 class Search extends Component {
   static propTypes = {
-    getSearchResults: PropTypes.func.isRequired,
-    setActiveFilters: PropTypes.func.isRequired,
-    hasProducts: PropTypes.bool,
-    searchPhrase: PropTypes.string,
+    isLoading: PropTypes.bool.isRequired,
+    searchPhrase: PropTypes.string.isRequired,
+    products: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
-    hasProducts: false,
-    searchPhrase: '',
-  };
-
-  static contextTypes = {
-    history: PropTypes.shape(),
+    products: [],
+    totalProductCount: null,
   };
 
   /**
-   * Trigger loading of products when the searchPhrase changes.
-   * @param {Object} nextProps The props the component will receive.
+   * Returns the number of received products.
    */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.searchPhrase !== nextProps.searchPhrase) {
-      // Reset active filters.
-      this.props.getSearchResults();
-      this.props.setActiveFilters({});
-    }
+  get hasProducts() {
+    return this.props.products.length > 0;
   }
 
   /**
@@ -43,24 +33,23 @@ class Search extends Component {
    * @returns {JSX}
    */
   render() {
+    const hasProducts = this.hasProducts;
+    const { isLoading, searchPhrase } = this.props;
+
     return (
-      <View title={this.props.searchPhrase}>
-        {this.props.hasProducts && <FilterBar />}
-        {this.props.hasProducts && <Products />}
-        <NoResults
-          headlineText="search.no_result.heading"
-          bodyText="search.no_result.body"
-          searchPhrase={this.props.searchPhrase}
-        />
+      <View title={searchPhrase}>
+        {(isLoading || hasProducts) && <FilterBar />}
+        <Products />
+        {(!hasProducts && !isLoading) && (
+          <NoResults
+            headlineText="search.no_result.heading"
+            bodyText="search.no_result.body"
+            searchPhrase={searchPhrase}
+          />
+        )}
       </View>
     );
   }
 }
-
-// TODO: const enhance = compose(
-//   TODO: connect.filters,
-//   TODO: connect.search,
-//   NoBackgroundRender
-// );
 
 export default connect(Search);

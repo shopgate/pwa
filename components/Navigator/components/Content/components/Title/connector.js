@@ -6,6 +6,7 @@
  */
 
 import { connect } from 'react-redux';
+import { getTitle } from 'Components/View/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +15,7 @@ import { connect } from 'react-redux';
  */
 const mapStateToProps = state => ({
   action: state.history.action,
-  title: state.history.state.title || '',
+  title: getTitle(state),
 });
 
 export default connect(mapStateToProps);
