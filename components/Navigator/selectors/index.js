@@ -11,6 +11,11 @@ import {
   getQueryParamsAsString,
 } from '@shopgate/pwa-common/selectors/history';
 
+import {
+  getCartProductCount,
+  getProductPendingCount,
+} from '@shopgate/pwa-common-commerce/cart/selectors';
+
 /**
  * Selects the navigator state.
  * @param {Object} state The global state.
@@ -126,6 +131,19 @@ export const isNavDrawerActive = createSelector(
 export const isNavSearchFieldActive = createSelector(
   getNavigatorState,
   navigatorState => navigatorState.searchActive
+);
+
+/**
+ * Checks if the cart button is available.
+ * @return {boolean}
+ */
+export const isCartButtonVisible = createSelector(
+  getCartProductCount,
+  getProductPendingCount,
+  getNavigatorState,
+  (count, pendingCount, navigator) => (
+    navigator.showCartIcon && (count + pendingCount) > 0
+  )
 );
 
 /**

@@ -7,7 +7,8 @@
 
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
-import { pushHistory, replaceHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
+import replaceHistory from '@shopgate/pwa-common/actions/history/replaceHistory';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 import setViewTop from 'Components/View/action-creators/setViewTop';

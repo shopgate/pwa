@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { pushHistory } from '@shopgate/pwa-common/actions/history/changeHistory';
+import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 
 /**
