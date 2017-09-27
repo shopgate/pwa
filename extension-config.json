@@ -1,10 +1,10 @@
 {
-  "version": "1.2.2",
+  "version": "1.2.3",
   "id": "@shopgate/tracking-ga-native",
   "components": [
     {
       "id": "init",
-      "path": "index.js",
+      "path": "frontend/index.js",
       "type": "tracking"
     }
   ],
