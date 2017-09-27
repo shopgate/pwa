@@ -6,7 +6,7 @@
  */
 
 import setRedirectLocation from '../../action-creators/history/setRedirectLocation';
-import { replaceHistory } from './changeHistory';
+import replaceHistory from './replaceHistory';
 import { parseQueryStringToObject } from '../../helpers/router';
 
 /**

@@ -37,7 +37,6 @@ describe('<Route />', () => {
     // Second parameter is a function and can't be compared.
 
     const call = mockRouterContext.registerRoute.mock.calls[0][5];
-    expect(typeof call.additionalTracking).toEqual('function');
     expect(call.component).toEqual(MockComponent);
     expect(call.path).toEqual('category/:id');
   });

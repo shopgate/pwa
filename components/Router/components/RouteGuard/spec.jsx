@@ -10,7 +10,7 @@ import { mount } from 'enzyme';
 import RouteGuard from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/routeGuard', () => obj => obj);
+jest.mock('./connector', () => obj => obj);
 
 describe('<RouteGuard />', () => {
   /**

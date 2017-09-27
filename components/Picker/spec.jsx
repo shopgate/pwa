@@ -17,7 +17,7 @@ jest.mock('react-portal', () => (
 ));
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('../Router/components/RouteGaurd/connector', () => obj => obj);
+jest.mock('../Router/components/RouteGuard/connector', () => obj => obj);
 
 describe('<Picker />', () => {
   let renderedElement;
