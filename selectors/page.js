@@ -7,7 +7,6 @@
 
 import { createSelector } from 'reselect';
 import {
-  getHistoryState,
   getHistoryPathname,
   getQueryParamsAsString,
 } from '@shopgate/pwa-common/selectors/history';
@@ -55,13 +54,20 @@ const getPageName = createSelector(
 );
 
 /**
+ * Selects the general UI state.
+ * @param {Object} state The global state.
+ * @return {Object}
+ */
+export const getGeneralUI = state => state.ui.general;
+
+/**
  * Selects the current page title.
  * @param {Object} state The current state.
  * @returns {string} The current page title.
  */
 export const getPageTitle = createSelector(
-  getHistoryState,
-  history => history.state.title || ''
+  getGeneralUI,
+  general => general.title || ''
 );
 
 /**

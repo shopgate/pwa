@@ -6,19 +6,10 @@
  */
 
 import core from '@shopgate/tracking-core/core/Core';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import makeTracker from '../helpers/makeTracker';
-import {
-  categoryIsReady$,
-} from '../streams/category';
-import {
-  searchDidEnter$,
-  searchIsReady$,
-  searchDidLeave$,
-} from '../streams/search';
-import {
-  productIsReady$,
-} from '../streams/product';
+import { categoryIsReady$ } from '../streams/category';
+import { searchIsReady$ } from '../streams/search';
+import { productIsReady$ } from '../streams/product';
+import { pagesAreReady$ } from '../streams/pages';
 import getTrackingData from '../selectors';
 
 /**
@@ -38,24 +29,8 @@ const callPageViewTracker = ({ getState }) => {
  * @param {Function} subscribe The subscribe function.
  */
 export default function pages(subscribe) {
-  const trackPageView = makeTracker(subscribe, callPageViewTracker);
-
-  // Track category page.
-  trackPageView(
-    appDidStart$,
-    categoryIsReady$
-  );
-
-  // Track search page.
-  trackPageView(
-    searchDidEnter$,
-    searchIsReady$,
-    searchDidLeave$
-  );
-
-  // Track product page.
-  trackPageView(
-    appDidStart$,
-    productIsReady$
-  );
+  subscribe(categoryIsReady$, callPageViewTracker);
+  subscribe(searchIsReady$, callPageViewTracker);
+  subscribe(productIsReady$, callPageViewTracker);
+  subscribe(pagesAreReady$.do(() => console.warn('track page view')), callPageViewTracker);
 }
