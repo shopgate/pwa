@@ -8,6 +8,8 @@
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
+import requestSearchResults from '../action-creators/requestSearchResults';
+import receiveSearchResults from '../action-creators/receiveSearchResults';
 import { getSearchPhrase } from '../selectors';
 
 /**
@@ -25,6 +27,7 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
     return;
   }
 
+  dispatch(requestSearchResults(searchPhrase, offset));
   dispatch(
     getProducts({
       params: {
@@ -34,7 +37,9 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
         sort,
       },
     })
-  );
+  ).then(() => {
+    dispatch(receiveSearchResults(searchPhrase));
+  });
 };
 
 export default getSearchResults;
