@@ -4,6 +4,8 @@ before_script: "cd frontend/ && NODE_ENV=development npm i"
 script: "npm run coverage"
 # Send coverage report to coveralls.io
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+notifications:
+  email: false
 branches:
   only:
-  - development
+  - master
