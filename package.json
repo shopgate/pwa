@@ -29,29 +29,38 @@
   "pre-commit": [
     "precommit"
   ],
-  "dependencies": {
-    "@shopgate/pwa-common": "^1.0.0-beta6",
-    "@shopgate/pwa-common-commerce": "github:shopgate/pwa-common-commerce",
-    "@shopgate/pwa-core": "^1.0.0-beta4",
-    "@shopgate/tracking-core": "^1.0.0-beta4",
+  "dependencies": {},
+  "devDependencies": {
+    "@shopgate/eslint-config": "^1.0.2",
+    "@shopgate/pwa-common": "^1.0.0-beta12",
+    "@shopgate/pwa-common-commerce": "^1.0.0-beta5",
+    "@shopgate/pwa-core": "^1.0.0-beta10",
+    "@shopgate/pwa-unit-test": "^1.1.0",
+    "@shopgate/tracking-core": "^1.0.0-beta9",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
-    "reselect": "^3.0.1",
-    "rxjs": "^5.4.3"
-  },
-  "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-unit-test": "^1.0.3",
+    "babel-runtime": "^6.26.0",
     "coveralls": "^2.13.1",
     "enzyme": "^2.9.1",
     "jest": "20.0.4",
     "lint-staged": "^4.1.3",
     "pre-commit": "^1.2.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "reselect": "^3.0.1",
+    "rxjs": "^5.4.3"
+  },
+  "peerDependencies": {
+    "react": "15.x",
+    "react-dom": "15.x",
+    "reselect": "3.x",
+    "rxjs": "5.x",
+    "@shopgate/tracking-core": "1.0.0-beta9",
+    "@shopgate/pwa-common": "1.0.0-beta12"
   }
 }
