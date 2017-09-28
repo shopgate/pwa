@@ -10,7 +10,7 @@ import { shallow } from 'enzyme';
 import Redirect from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/history', () => obj => obj);
+jest.mock('./connector', () => obj => obj);
 
 const loginUrl = '/login';
 const checkoutUrl = '/checkout';

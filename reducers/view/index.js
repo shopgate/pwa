@@ -9,7 +9,6 @@ import {
   DECREMENT_VIEW_LOADING,
   INCREMENT_VIEW_LOADING,
   SET_VIEW_LOADING,
-  SET_CATEGORY_VIEW_MODE,
   UNSET_VIEW_LOADING,
 } from '../../constants/ActionTypes';
 
@@ -55,10 +54,6 @@ export default (state = {
         isLoading: views,
       };
     }
-    case SET_CATEGORY_VIEW_MODE:
-      return {
-        ...state,
-      };
     default:
       return state;
   }

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import I18n from './index';
+import I18n from '../../index';
 
 describe('<Placeholder />', () => {
   let renderedElement;
@@ -28,7 +28,7 @@ describe('<Placeholder />', () => {
           <I18n.Placeholder forKey="world">
             <strong>WORLD</strong>
           </I18n.Placeholder>
-        </I18n.Text>
+      / </I18n.Text>
       </I18n.Provider>
     );
   };

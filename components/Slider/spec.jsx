@@ -9,6 +9,8 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Slider from './index';
 
+jest.mock('swiper/dist/css/swiper.min.css', () => {});
+
 describe('<Slider />', () => {
   const children = [
     <Slider.Item key="0"><div /></Slider.Item>,

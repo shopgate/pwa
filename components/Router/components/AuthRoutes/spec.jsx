@@ -7,12 +7,11 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import { AuthRoutes } from './index';
+import AuthRoutes from './index';
 import MockRoute from '../Route/mock';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/user', () => obj => obj);
-jest.mock('Library/connectors/history', () => (obj) => {
+jest.mock('./connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -21,6 +20,8 @@ jest.mock('Library/connectors/history', () => (obj) => {
 
   return newObj;
 });
+
+jest.mock('../Redirect/connector', () => obj => obj);
 
 describe('<AuthRoutes />', () => {
   let authWrapper;

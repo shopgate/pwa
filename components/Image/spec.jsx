@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import { Image } from './index';
+import Image from './index';
 
 window.requestAnimationFrame = () => {};
 
