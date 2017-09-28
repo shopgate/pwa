@@ -5,14 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { css } from 'glamor';
-import variables from 'Styles/variables';
-
-const availability = css({
-  marginRight: variables.gap.big,
-  minWidth: 100,
-}).toString();
-
-export default {
-  availability,
-};
+/**
+ * The availability states of a product.
+ */
+export const AVAILABILITY_STATE_OK = 'ok';
+export const AVAILABILITY_STATE_WARNING = 'warning';
+export const AVAILABILITY_STATE_ALERT = 'alert';

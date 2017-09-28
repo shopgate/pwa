@@ -9,7 +9,7 @@ import {
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_WARNING,
   AVAILABILITY_STATE_ALERT,
-} from '@shopgate/pwa-common/constants/DisplayOptions';
+} from 'Components/Availability/constants';
 
 /**
  * Used to filter products by characteristics.

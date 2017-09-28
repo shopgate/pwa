@@ -11,7 +11,7 @@ import {
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_WARNING,
   AVAILABILITY_STATE_ALERT,
-} from '@shopgate/pwa-common/constants/DisplayOptions';
+} from './constants';
 import styles from './style';
 
 /**
