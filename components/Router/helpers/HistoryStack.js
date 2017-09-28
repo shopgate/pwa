@@ -140,7 +140,7 @@ class HistoryStack extends EventEmitter {
          * Pop all history entries up to the one we are looking for
          * and fire an event for each entry that was removed.
          */
-        const targetIndex = this.findHistoryIndexByKey(location.key);
+        const targetIndex = this.findHistoryIndexByKey(location.key || 'root');
         if (targetIndex === -1) {
           // When going back to a page that is no longer stored push it instead.
           this.applyChange(HISTORY_PUSH_ACTION, location);

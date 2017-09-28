@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isFunction } from '../../../../helpers/validation';
 import RouteContent from './components/Content';
+import getChildInstance from '../../helpers/getChildInstance';
 
 /**
  * Updates the hosted component of the route.
@@ -161,9 +162,16 @@ class Route extends Component {
 
         newHostedComponent.componentInstance = this.findComponentRef(component);
 
+        const childInstance = getChildInstance(newHostedComponent.componentInstance);
+
         // Notify component that it is active now.
         if (isFunction(newHostedComponent.componentInstance.routeWillEnter)) {
           newHostedComponent.componentInstance.routeWillEnter();
+        }
+
+        // Notify first child that it is active now.
+        if (childInstance && isFunction(childInstance.routeWillLeave)) {
+          childInstance.routeWillLeave();
         }
 
         // Save a reference of the original componentDidUpdate lifecycle function.
@@ -179,13 +187,9 @@ class Route extends Component {
         newHostedComponent.componentInstance.componentDidUpdate =
           function componentDidUpdate(prevProps, prevState) {
             originalComponentDidUpdate(prevProps, prevState);
-            // @TODO: track(route, this);
           };
 
         newHostedComponent.componentInstance.enableTracking = this.enableTracking;
-
-        // @TODO: this.enableTracking();
-        // @TODO: track(route, newHostedComponent.componentInstance);
       },
       params,
     };
@@ -247,9 +251,17 @@ class Route extends Component {
     const { dom, componentInstance } = this.state.hostedComponents[index];
     dom.style.display = 'none';
 
+    // Select the instance of the first child component.
+    const childInstance = getChildInstance(componentInstance);
+
     // Notify component that it is inactive now.
     if (componentInstance && isFunction(componentInstance.routeWillLeave)) {
       componentInstance.routeWillLeave();
+    }
+
+    // Notify first child that it is active now.
+    if (childInstance && isFunction(childInstance.routeWillLeave)) {
+      childInstance.routeWillLeave();
     }
   }
 
@@ -261,13 +273,18 @@ class Route extends Component {
     const { dom, componentInstance } = this.state.hostedComponents[index];
     dom.style.display = '';
 
+    // Select the instance of the first child component.
+    const childInstance = getChildInstance(componentInstance);
+
     // Notify component that it is active now.
     if (componentInstance && isFunction(componentInstance.routeWillEnter)) {
       componentInstance.routeWillEnter();
     }
 
-    // @TODO: this.enableTracking();
-    // @TODO: this.track(this, componentInstance);
+    // Notify first child that it is active now.
+    if (childInstance && isFunction(childInstance.routeWillEnter)) {
+      childInstance.routeWillEnter();
+    }
   }
 
   /**

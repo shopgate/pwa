@@ -46,15 +46,12 @@ class App extends PureComponent {
 
     // Start synchronization of the history stack.
     this.historyStack = new HistoryStack({
-      ...history.location,
       key: 'root',
       immutableKey: 'root',
+      ...history.location,
     });
     history.listen((location, action) =>
       this.historyStack.applyChange(action, location));
-
-    // Start synchronization of history and redux store.
-    syncHistoryWithStore(history, this.store, this.historyStack);
   }
 
   /**
@@ -65,6 +62,10 @@ class App extends PureComponent {
     initSubscribers(this.props.subscribers);
 
     this.store.dispatch(appStart());
+
+    // Start synchronization of history and redux store.
+    syncHistoryWithStore(history, this.store, this.historyStack);
+
     this.store.dispatch(fetchClientInformation());
   }
 

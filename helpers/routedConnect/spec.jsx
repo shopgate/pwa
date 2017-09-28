@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -68,7 +69,7 @@ describe('routedConnect', () => {
       </Provider>,
       {
         context: { routePath: '/' },
-        childContextTypes: { routePath: React.PropTypes.string },
+        childContextTypes: { routePath: PropTypes.string },
       }
     );
   };
