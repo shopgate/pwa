@@ -22,12 +22,24 @@ class Event extends EventEmitter {
     super();
 
     /**
-     * A global implementation of the call function
-     * to make it accessible to the app.
-     * eslint-disable-next-line
+     * A global implementation of the call function to make it accessible to the app.
+     *
+     * We have to check here if there is already a __call from the cake2 project present.
+     * This could happen because we use the tracking-core in the cake2 project.
      */
     // eslint-disable-next-line no-underscore-dangle
-    window.SGEvent.__call = this.call.bind(this);
+    const legacy = window.SGEvent.__call;
+
+    if (typeof legacy !== 'function') {
+    // eslint-disable-next-line no-underscore-dangle
+      window.SGEvent.__call = this.call.bind(this);
+    } else {
+    // eslint-disable-next-line no-underscore-dangle
+      window.SGEvent.__call = (...args) => {
+        legacy(...args);
+        this.call(...args);
+      };
+    }
   }
 
   /**
