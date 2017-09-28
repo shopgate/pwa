@@ -11,7 +11,7 @@ module.exports = {
     'enzyme-to-json/serializer',
   ],
   transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(js|jsx)$': '@shopgate/pwa-unit-test/preprocessor.js',
   },
   transformIgnorePatterns: [
     'node_modules/(?!@shopgate)/',
@@ -33,5 +33,4 @@ module.exports = {
     '@shopgate/pwa-unit-test/testSetup.js',
   ],
   setupTestFrameworkScriptFile: '@shopgate/pwa-unit-test/envSetup.js',
-  scriptPreprocessor: '@shopgate/pwa-unit-test/preprocessor.js',
 };
