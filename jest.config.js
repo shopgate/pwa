@@ -33,4 +33,5 @@ module.exports = {
     '@shopgate/pwa-unit-test/testSetup.js',
   ],
   setupTestFrameworkScriptFile: '@shopgate/pwa-unit-test/envSetup.js',
+  scriptPreprocessor: '@shopgate/pwa-unit-test/preprocessor.js',
 };
