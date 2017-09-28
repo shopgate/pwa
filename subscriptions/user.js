@@ -17,13 +17,13 @@ import {
  * @param {Function} subscribe The subscribe function.
  */
 export default function user(subscribe) {
+  /**
+   * Gets triggered if login was successful and we received the user data.
+   */
   const loginSuccess$ = userReceived$
     .zip(userDidLogin$)
     .map(([first]) => first);
 
-  /**
-   * Gets triggered if login was successful and we received the user data.
-   */
   subscribe(loginSuccess$, ({ action }) => core.track.loginSuccess(action.user));
 
   /**

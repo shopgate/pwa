@@ -11,14 +11,16 @@ import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants'
 import getCart from '../selectors/cart';
 
 /**
- * Emits when the checkout route was entered.
- */
-const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
-
-/**
  * Checkout tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function checkout(subscribe) {
-  subscribe(checkoutDidEnter$, ({ getState }) => core.track.initiatedCheckout(getCart(getState())));
+  /**
+   * Emits when the checkout route was entered.
+   */
+  const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
+
+  subscribe(checkoutDidEnter$, ({ getState }) => (
+    core.track.initiatedCheckout(getCart(getState()))
+  ));
 }
