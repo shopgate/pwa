@@ -105,7 +105,7 @@ const primary = (disabled, flat) => {
     }
 
     // Regular enabled button style.
-    return createButtonStyles(colors.light, colors.accent);
+    return createButtonStyles(colors.accentContrast, colors.accent);
   }
 
   if (disabled) {
@@ -131,7 +131,7 @@ const secondary = (disabled, flat) => {
     }
 
     // Regular enabled button style.
-    return createButtonStyles(colors.light, colors.primary);
+    return createButtonStyles(colors.primaryContrast, colors.primary);
   }
 
   if (disabled) {
