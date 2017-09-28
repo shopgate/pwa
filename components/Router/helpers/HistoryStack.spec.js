@@ -91,4 +91,34 @@ describe('HistoryStack', () => {
       }
     );
   });
+
+  it('should allow history changes inside the event handler', () => {
+    const stack = new HistoryStack({ key: 'root' });
+
+    /**
+     * Replaces history immediately after adding.
+     */
+    const added = () => {
+      stack.applyChange(HISTORY_REPLACE_ACTION, { key: '123' });
+    };
+
+    /**
+     * Replaces history immediately after removing.
+     */
+    const removed = () => {
+      stack.applyChange(HISTORY_REPLACE_ACTION, { key: '456' });
+    };
+
+    stack.on(HistoryStack.EVENT_ENTRY_ADDED, added);
+    stack.on(HistoryStack.EVENT_ENTRY_REMOVED, removed);
+
+    stack.applyChange(HISTORY_PUSH_ACTION, { key: 'x123' });
+    stack.applyChange(HISTORY_PUSH_ACTION, { key: 'foo' });
+    stack.applyChange(HISTORY_POP_ACTION, { key: '123' });
+
+    expect(stack.stack).toEqual([
+      { key: 'root' },
+      { immutableKey: 'x123', key: '456' },
+    ]);
+  });
 });
