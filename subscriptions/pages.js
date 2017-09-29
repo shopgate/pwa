@@ -32,5 +32,5 @@ export default function pages(subscribe) {
   subscribe(categoryIsReady$, callPageViewTracker);
   subscribe(searchIsReady$, callPageViewTracker);
   subscribe(productIsReady$, callPageViewTracker);
-  subscribe(pagesAreReady$.do(() => console.warn('track page view')), callPageViewTracker);
+  subscribe(pagesAreReady$, callPageViewTracker);
 }
