@@ -140,19 +140,22 @@ class HistoryStack extends EventEmitter {
          * Pop all history entries up to the one we are looking for
          * and fire an event for each entry that was removed.
          */
-        const targetIndex = this.findHistoryIndexByKey(location.key);
+        const targetIndex = this.findHistoryIndexByKey(location.key || 'root');
         if (targetIndex === -1) {
           // When going back to a page that is no longer stored push it instead.
           this.applyChange(HISTORY_PUSH_ACTION, location);
           return;
         }
 
-        this.stack
-          .slice(targetIndex + 1, this.stack.length)
-          .forEach(target => this.emit(HistoryStack.EVENT_ENTRY_REMOVED, target));
+        // Clean the stack and store removed entries.
+        const removedEntries = this.stack
+          .slice(targetIndex + 1, this.stack.length);
+        this.stack = this.stack.slice(0, targetIndex + 1);
+
+        // Notify removed entries.
+        removedEntries.forEach(target => this.emit(HistoryStack.EVENT_ENTRY_REMOVED, target));
 
         // Active changed
-        this.stack = this.stack.slice(0, targetIndex + 1);
         this.emit(HistoryStack.EVENT_ENTRY_ACTIVE, this.stack[this.stack.length - 1]);
         break;
       }

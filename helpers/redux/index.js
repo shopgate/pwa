@@ -134,42 +134,59 @@ export const generateResultHash = (params, includeSort = true) => {
 };
 
 /**
- * Syncs the browser history wit the redux store.
- * @param {Object} historyRef A reference to the browser history.
- * @param {Object} storeRef A reference to the redux store.
+ * Syncs the history into the store.
+ * @param {Object} location A reference to the browser history location.
+ * @param {Object} action A reference to the browser history action.
  * @param {Object} historyStackRef A reference to the history stack.
+ * @param {Object} storeRef A reference to the redux store.
+ */
+const syncHistory = (location, action, historyStackRef, storeRef) => {
+  const historyProps = {
+    ...location,
+    action,
+    length: historyStackRef.getLength(),
+  };
+
+  const state = storeRef.getState();
+
+  /*
+   * We need this check here to make redirects work correctly.
+   * The problem is that this callback here is called in the opposite order (LIFO).
+   * of how the history changes happened. If we dispatch:
+   * 1. updateHistory checkout
+   * 2. updateHistory login
+   *
+   * We receive here first the login change and then the checkout change.
+   * This causes a wrong state in our redux history.
+   * Because of this we need to ignore this change here
+   */
+  if (
+    state.history.redirectLocation &&
+    state.history.redirectLocation.pathname === location.pathname
+  ) {
+    return;
+  }
+
+  storeRef.dispatch(processHistoryUpdate(historyProps));
+};
+
+/**
+ * Initially syncs the history with the store and then creates a listener for future changes.
+ * @param {Object} history A reference to the browser history.
+ * @param {Object} store A reference to the redux store.
+ * @param {Object} historyStack A reference to the history stack.
  * @returns {Object} The passed history reference.
  */
-export const syncHistoryWithStore = (historyRef, storeRef, historyStackRef) => {
-  historyRef.listen((location, action) => {
-    const historyProps = {
-      ...location,
-      action,
-      length: historyStackRef.getLength(),
-    };
+export const syncHistoryWithStore = (history, store, historyStack) => {
+  /**
+   * Initially sync the history with the store.
+   * We need to use setTimeout to push this call to the next tick.
+   */
+  syncHistory(history.location, history.action, historyStack, store);
+  /**
+   * Sync any further history changes with the store.
+   */
+  history.listen((location, action) => syncHistory(location, action, historyStack, store));
 
-    const state = storeRef.getState();
-
-    /*
-     * We need this check here to make redirects working correctly.
-     * The problem is that this callback here is called in the opposite order (LIFO)
-     * of how the history changes happened. If we dispatch:
-     * 1. updateHistory checkout
-     * 2. updateHistory login
-     *
-     * We receive here first the login change and then the checkout change.
-     * This causes a wrong state in our redux history.
-     * Because of this we need to ignore this change here
-     */
-    if (
-      state.history.redirectLocation &&
-      state.history.redirectLocation.pathname === location.pathname
-    ) {
-      return;
-    }
-
-    storeRef.dispatch(processHistoryUpdate(historyProps));
-  });
-
-  return historyRef;
+  return history;
 };
