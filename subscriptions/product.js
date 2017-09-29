@@ -14,7 +14,7 @@ import {
   getCurrentBaseProductFormatted,
   getCurrentProductFormatted,
 } from '../selectors/product';
-
+import getPage from '../selectors/page';
 /**
  * Product tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -42,11 +42,15 @@ export default function product(subscribe) {
   subscribe(productDidEnter$, ({ getState }) => {
     const state = getState();
 
+    const page = getPage(state);
     let currentProduct = getCurrentProductFormatted(state);
 
     if (currentProduct) {
       // Product data are already there
-      core.track.viewContent(currentProduct);
+      core.track.viewContent({
+        page,
+        ...currentProduct,
+      });
     } else {
       // Product data not there yet
       const subscription = subscribe(productReceived$, ({ getState: getReceivedState }) => {
@@ -54,7 +58,10 @@ export default function product(subscribe) {
 
         currentProduct = getCurrentProductFormatted(getReceivedState());
 
-        core.track.viewContent(currentProduct);
+        core.track.viewContent({
+          page,
+          ...currentProduct,
+        });
       });
     }
   });
