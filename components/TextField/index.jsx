@@ -6,6 +6,7 @@
  */
 
 import React, { Component } from 'react';
+import Color from 'color';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Input from '@shopgate/pwa-common/components/Input';
@@ -47,6 +48,19 @@ const getHintStyles = (visible = false) => (
 );
 
 /**
+ * Gets the default focus color. This usually is the themes primary color.
+ * However, if this color is too bright, the result of ths method
+ * will fall back to the accent color.
+ * @return {string} The color.
+ */
+const getDefaultFocusColor = () => {
+  if (Color(colors.primary).luminosity() >= 0.8) {
+    return colors.accent;
+  }
+  return colors.primary;
+};
+
+/**
  * A component that provides a styled text field for user input in material design.
  */
 class TextField extends Component {
@@ -69,7 +83,7 @@ class TextField extends Component {
 
   static defaultProps = {
     className: '',
-    colorFocus: colors.primary,
+    colorFocus: getDefaultFocusColor(),
     colorError: colors.error,
     errorText: '',
     setRef: () => {},

@@ -11,7 +11,7 @@ import colors from 'Styles/colors';
 const badge = {
   background: colors.primary,
   borderRadius: 2,
-  color: colors.light,
+  color: colors.primaryContrast,
   paddingTop: 5,
   paddingBottom: 5,
   width: '100%',
