@@ -147,12 +147,15 @@ class HistoryStack extends EventEmitter {
           return;
         }
 
-        this.stack
-          .slice(targetIndex + 1, this.stack.length)
-          .forEach(target => this.emit(HistoryStack.EVENT_ENTRY_REMOVED, target));
+        // Clean the stack and store removed entries.
+        const removedEntries = this.stack
+          .slice(targetIndex + 1, this.stack.length);
+        this.stack = this.stack.slice(0, targetIndex + 1);
+
+        // Notify removed entries.
+        removedEntries.forEach(target => this.emit(HistoryStack.EVENT_ENTRY_REMOVED, target));
 
         // Active changed
-        this.stack = this.stack.slice(0, targetIndex + 1);
         this.emit(HistoryStack.EVENT_ENTRY_ACTIVE, this.stack[this.stack.length - 1]);
         break;
       }

@@ -1,11 +1,12 @@
 # Shopgate's PWA common library
 
-[![Travis CI Build](https://travis-ci.org/shopgate/pwa-common.svg?branch=development)](https://travis-ci.org/shopgate/pwa-common)
+[![Travis CI Build](https://travis-ci.org/shopgate/pwa-common.svg?branch=master)](https://travis-ci.org/shopgate/pwa-common)
 [![GitHub release](https://img.shields.io/github/release/shopgate/pwa-common.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-common/badge.svg?branch=develoment)](https://coveralls.io/github/shopgate/pwa-common?branch=develoment)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-common/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-common?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-This library handles the basic application environment for a [PWA](https://developers.google.com/web/progressive-web-apps/) in the **Shopgate Cloud**.
+This library handles the basic application environment for a
+[PWA](https://developers.google.com/web/progressive-web-apps/) in the **Shopgate Cloud**.
 
 It holds everything that is needed for data storage via [Redux](http://redux.js.org),
 observable streams via [RxJS](https://github.com/ReactiveX/rxjs), and it serves with a variety of
