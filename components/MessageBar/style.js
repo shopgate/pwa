@@ -17,7 +17,6 @@ const container = css({
 
 const messageBase = {
   padding: `${variables.gap.small}px ${variables.gap.big}px`,
-  color: colors.light,
   fontSize: '0.875rem',
   fontWeight: 500,
   ':not(:last-child)': {
@@ -28,16 +27,19 @@ const messageBase = {
 const info = css({
   ...messageBase,
   background: colors.accent,
+  color: colors.accentContrast,
 }).toString();
 
 const error = css({
   ...messageBase,
   background: colors.error,
+  color: colors.light,
 }).toString();
 
 const warning = css({
   ...messageBase,
   background: colors.warning,
+  color: colors.light,
 }).toString();
 
 export default {

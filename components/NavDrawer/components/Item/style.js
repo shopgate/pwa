@@ -36,7 +36,7 @@ const label = css({
 
 const count = css({
   backgroundColor: colors.primary,
-  color: colors.light,
+  color: colors.primaryContrast,
   fontSize: '0.75rem',
   fontWeight: 700,
   height: variables.gap.big * 1.125,
@@ -53,7 +53,7 @@ const primary = css({
 }).toString();
 
 const primaryIcon = css({
-  color: colors.light,
+  color: colors.primaryContrast,
 }).toString();
 
 export default {

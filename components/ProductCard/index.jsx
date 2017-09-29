@@ -71,7 +71,6 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
                   currency={product.price.currency}
-                  className={styles.striked}
                 />
               </Grid.Item>
             )}

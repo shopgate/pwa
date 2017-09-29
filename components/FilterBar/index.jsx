@@ -231,7 +231,7 @@ class FilterBar extends Component {
     // Control the scrolling of the filter bar by applying a transform style property.
     return {
       background: (this.props.isActive) ? colors.accent : colors.background,
-      color: (this.props.isActive) ? colors.light : 'inherit',
+      color: (this.props.isActive) ? colors.accentContrast : 'inherit',
       transform: `translate3d(0, ${this.state.offset}px, 0)`,
     };
   }

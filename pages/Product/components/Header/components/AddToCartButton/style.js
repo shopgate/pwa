@@ -82,14 +82,14 @@ const button = css({
  */
 const buttonReady = css({
   background: colors.primary,
-  color: colors.light,
+  color: colors.primaryContrast,
 }).toString();
 
 /**
  * Styling that is applied to the button when checkmark is shown.
  */
 const buttonSuccess = css({
-  background: colors.light,
+  background: colors.primaryContrast,
   color: colors.primary,
 }).toString();
 

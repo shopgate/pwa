@@ -156,7 +156,7 @@ class AddToCartButton extends Component {
     return (
       <button className={`${styles.button} ${buttonStyle}`} onClick={this.handleClick}>
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
-          <IndicatorCircle color={colors.light} strokeWidth={5} />
+          <IndicatorCircle color={colors.primaryContrast} strokeWidth={5} />
         </div>
         <div className={tickIconStyle} style={tickInlineStyle}>
           <TickIcon />
