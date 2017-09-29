@@ -4,6 +4,7 @@ exports[`<Availability /> should not render by default if state is "ok" 1`] = `
 <Availability
   className=""
   showWhenAvailable={false}
+  state="ok"
   text="Available"
 />
 `;
@@ -12,6 +13,7 @@ exports[`<Availability /> should not render when text is empty 1`] = `
 <Availability
   className=""
   showWhenAvailable={false}
+  state="ok"
   text=""
 />
 `;
@@ -20,10 +22,11 @@ exports[`<Availability /> should render if state is "ok" when "showWhenAvailable
 <Availability
   className=""
   showWhenAvailable={true}
+  state="ok"
   text="Available"
 >
   <div
-    className=" css-qsvazi"
+    className=" css-1ixzglu"
   >
     Available
   </div>
@@ -34,14 +37,28 @@ exports[`<Availability /> should render if state is "warning" 1`] = `
 <Availability
   className=""
   showWhenAvailable={false}
+  state="warning"
   text="Only 5 left"
-/>
+>
+  <div
+    className=" css-14jedxl"
+  >
+    Only 5 left
+  </div>
+</Availability>
 `;
 
 exports[`<Availability /> should render if state is "warning" 2`] = `
 <Availability
   className=""
   showWhenAvailable={false}
+  state="alert"
   text="Out of stock"
-/>
+>
+  <div
+    className=" css-qsvazi"
+  >
+    Out of stock
+  </div>
+</Availability>
 `;
