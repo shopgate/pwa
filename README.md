@@ -1,8 +1,8 @@
 # Shopgate's PWA commerce library
 
-[![Travis CI Build](https://travis-ci.org/shopgate/pwa-common-commerce.svg?branch=development)](https://travis-ci.org/shopgate/pwa-common-commerce)
+[![Travis CI Build](https://travis-ci.org/shopgate/pwa-common-commerce.svg?branch=master)](https://travis-ci.org/shopgate/pwa-common-commerce)
 [![GitHub release](https://img.shields.io/github/release/shopgate/pwa-common-commerce.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-common-commerce/badge.svg?branch=development)](https://coveralls.io/github/shopgate/pwa-common-commerce?branch=development)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-common-commerce/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-common-commerce?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This library contains commerce modules for a shopping

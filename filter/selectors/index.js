@@ -24,7 +24,7 @@ export const getFilters = state => state.filter;
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getStoredFilterHash = state => state.history.state.filterHash;
+export const getStoredFilterHash = state => state.filter.activeHash;
 
 /**
  * Gets all active filters stacks.
@@ -208,15 +208,15 @@ export const getCurrentActiveValues = createSelector(
 );
 
 /**
- * Selects the filter index from history state.
+ * Selects the filter index.
  * @param {Object} state The current application state.
  * @returns {number|null}
  */
-export const getHistoryFilterIndex = createSelector(
-  state => state.history.state,
-  (historyState) => {
-    if (typeof historyState.filterIndex !== 'undefined') {
-      return historyState.filterIndex;
+export const getFilterIndex = createSelector(
+  getFilters,
+  (filterState) => {
+    if (typeof filterState.activeIndex !== 'undefined') {
+      return filterState.activeIndex;
     }
 
     return null;
