@@ -47,6 +47,7 @@ export const HISTORY_PUSH_ACTION = 'PUSH';
 export const HISTORY_POP_ACTION = 'POP';
 export const HISTORY_REPLACE_ACTION = 'REPLACE';
 export const HISTORY_SET_REDIRECT_LOCATION = 'HISTORY_SET_REDIRECT_LOCATION';
+export const OPEN_LINK = 'OPEN_LINK';
 
 /**
  * ------- MODALS -------

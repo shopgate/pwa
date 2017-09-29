@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import event from '@shopgate/pwa-core/classes/Event';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { history as defaultHistory } from '../../helpers/router';
 import options from './options';
@@ -42,6 +43,7 @@ class ParsedLink {
     // Parse url queries
     if (parser.search) {
       let match = 1;
+
       while (match) {
         match = regexQueryParams.exec(parser.search);
 
@@ -124,6 +126,7 @@ class ParsedLink {
     }
 
     this.getHandlers().forEach((handler) => {
+      event.trigger('openLink', handler);
       actions[handler.action](handler.options, history);
     });
   }
