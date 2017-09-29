@@ -1,28 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckoutButton / Checkout is not possible should render a disabled button when checkout is not possible 1`] = `
-<RippleButton
-  className=""
-  disabled={false}
-  flat={false}
-  onClick={[Function]}
-  rippleClassName=""
-  rippleSize={null}
-  type="secondary"
-  wrapContent={true}
->
-  <Translate
-    className=""
-    params={Object {}}
-    string="cart.checkout"
-  />
-</RippleButton>
-`;
-
 exports[`<CheckoutButton / Checkout is possible should render without any props 1`] = `
 <RippleButton
   className=""
-  disabled={false}
+  disabled={true}
   flat={false}
   onClick={[Function]}
   rippleClassName=""

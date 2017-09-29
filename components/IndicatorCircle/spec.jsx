@@ -17,21 +17,25 @@ describe('<IndicatorCircle />', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
+
     const svg = wrapper.find('svg');
+
     expect(svg.props().width).toBe(32);
     expect(svg.props().height).toBe(32);
   });
 
   it('should apply the given color', () => {
     const wrapper = mount(
-      <IndicatorCircle size={32} color="#fff" />
+      <IndicatorCircle size={32} color="#fff" strokeWidth={4} />
     );
 
     expect(wrapper).toMatchSnapshot();
-    const correctCssClass = styles.circle('#fff');
-    const wrongCssClass = styles.circle('#000');
+
+    const correctCssClass = styles.circle('#fff', 4);
+    const wrongCssClass = styles.circle('#000', 0);
     const circleHtml = wrapper.find('circle');
-    expect(circleHtml.html().indexOf(correctCssClass) >= 0).toBe(true);
-    expect(circleHtml.html().indexOf(wrongCssClass) >= 0).toBe(false);
+
+    expect(circleHtml.html().indexOf(correctCssClass)).toBeGreaterThanOrEqual(0);
+    expect(circleHtml.html().indexOf(wrongCssClass)).toBe(-1);
   });
 });

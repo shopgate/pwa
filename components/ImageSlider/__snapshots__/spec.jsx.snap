@@ -42,7 +42,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
     transition={null}
   >
     <div
-      className="position-relative b-f2f2f2 z-index-0 _before-d-block _before-content-__ _before-w-100P _before-pt-100p000P "
+      className="css-326p2s "
     />
   </Image>
 </ImageSlider>

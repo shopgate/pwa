@@ -18,7 +18,7 @@ jest.mock('./connector', () => (obj) => {
   newObj.defaultProps = {
     ...newObj.defaultProps,
     pushHistory: () => {},
-    isActive: true,
+    isActive: false,
   };
 
   return newObj;
@@ -41,7 +41,7 @@ describe('<CheckoutButton /', () => {
 
     it('should render without any props', () => {
       expect(wrapper).toMatchSnapshot();
-      expect(childButton.props().disabled).toBe(false);
+      expect(childButton.props().disabled).toBe(true);
     });
 
     it('should trigger a pushHistory on click', () => {
@@ -72,11 +72,6 @@ describe('<CheckoutButton /', () => {
       );
 
       childButton = wrapper.find(RippleButton);
-    });
-
-    it('should render a disabled button when checkout is not possible', () => {
-      expect(wrapper).toMatchSnapshot();
-      expect(childButton.props().disabled).toBe(true);
     });
 
     it('should not trigger the pushHistory on click', () => {

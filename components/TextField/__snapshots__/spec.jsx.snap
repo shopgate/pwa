@@ -1,0 +1,1137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField /> should focus the input 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onFocusChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-1fekhao"
+      htmlFor="test-input"
+      style={null}
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should receive the correct value while typing 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-16msjt6 css-1fekhao"
+      htmlFor="test-input"
+      style={
+        Object {
+          "color": "#fa5400",
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value="foobar"
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should render a simple text field 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-1fekhao"
+      htmlFor="test-input"
+      style={null}
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should render the text field as password 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={true}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-1fekhao"
+      htmlFor="test-input"
+      style={null}
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={true}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="password"
+        value=""
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should render the text field with a default value 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value="FooBar"
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-16msjt6 css-1fekhao"
+      htmlFor="test-input"
+      style={
+        Object {
+          "color": "#fa5400",
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value="FooBar"
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value="FooBar"
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should replace the error text with custom validation error 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-1fekhao"
+      htmlFor="test-input"
+      style={null}
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#ff0000",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string="Custom validation error"
+      >
+        <span
+          className=""
+        >
+          Custom validation error
+        </span>
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should sanitize the input 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-16msjt6 css-1fekhao"
+      htmlFor="test-input"
+      style={
+        Object {
+          "color": "#fa5400",
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value="FOOBAR"
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should show the error message 1`] = `
+<div
+  className="css-1uoxtbe "
+>
+  <div
+    className="css-tnfb18 css-1jyyyen"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string=""
+    />
+  </div>
+  <label
+    className="css-1980bi2 css-1fekhao"
+    htmlFor="test-input"
+    style={null}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string=""
+    />
+  </label>
+  <Input
+    className="css-mwlhju"
+    disabled={false}
+    id="test-input"
+    name="test-input"
+    onChange={[Function]}
+    onFocusChange={[Function]}
+    onSanitize={[Function]}
+    onValidate={[Function]}
+    password={false}
+    setRef={[Function]}
+    type="text"
+    validateOnBlur={true}
+    value=""
+  />
+  <div
+    className="css-s51m4w"
+  >
+    <div
+      className="css-1tpmuef"
+      style={
+        Object {
+          "borderBottomColor": "#ff0000",
+        }
+      }
+    />
+  </div>
+  <div
+    className="css-1tsf8y2"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="This is an error here"
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextField /> should show the hint text 1`] = `
+<div
+  className="css-1uoxtbe "
+>
+  <div
+    className="css-tnfb18 css-1jyyyen"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="This is the hint text"
+    />
+  </div>
+  <label
+    className="css-1980bi2 css-1fekhao"
+    htmlFor="test-input"
+    style={null}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string=""
+    />
+  </label>
+  <Input
+    className="css-mwlhju"
+    disabled={false}
+    id="test-input"
+    name="test-input"
+    onChange={[Function]}
+    onFocusChange={[Function]}
+    onSanitize={[Function]}
+    onValidate={[Function]}
+    password={false}
+    setRef={[Function]}
+    type="text"
+    validateOnBlur={true}
+    value=""
+  />
+  <div
+    className="css-s51m4w"
+  >
+    <div
+      className="css-1tpmuef"
+      style={
+        Object {
+          "borderBottomColor": "#fa5400",
+          "transform": "scale3d(0,1,1)",
+        }
+      }
+    />
+  </div>
+  <div
+    className="css-1tsf8y2"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string=""
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextField /> should show the label 1`] = `
+<div
+  className="css-1uoxtbe "
+>
+  <div
+    className="css-tnfb18 css-1jyyyen"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string=""
+    />
+  </div>
+  <label
+    className="css-1980bi2 css-1fekhao"
+    htmlFor="test-input"
+    style={null}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="This is the label"
+    />
+  </label>
+  <Input
+    className="css-mwlhju"
+    disabled={false}
+    id="test-input"
+    name="test-input"
+    onChange={[Function]}
+    onFocusChange={[Function]}
+    onSanitize={[Function]}
+    onValidate={[Function]}
+    password={false}
+    setRef={[Function]}
+    type="text"
+    validateOnBlur={true}
+    value=""
+  />
+  <div
+    className="css-s51m4w"
+  >
+    <div
+      className="css-1tpmuef"
+      style={
+        Object {
+          "borderBottomColor": "#fa5400",
+          "transform": "scale3d(0,1,1)",
+        }
+      }
+    />
+  </div>
+  <div
+    className="css-1tsf8y2"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string=""
+    />
+  </div>
+</div>
+`;
+
+exports[`<TextField /> should trigger the onChange callback 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-16msjt6 css-1fekhao"
+      htmlFor="test-input"
+      style={
+        Object {
+          "color": "#fa5400",
+        }
+      }
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value="a"
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;
+
+exports[`<TextField /> should trigger the validation callback 1`] = `
+<TextField
+  className=""
+  colorError="#ff0000"
+  colorFocus="#fa5400"
+  errorText=""
+  hintText=""
+  label=""
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
+>
+  <div
+    className="css-1uoxtbe "
+  >
+    <div
+      className="css-tnfb18 css-1jyyyen"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+    <label
+      className="css-1980bi2 css-1fekhao"
+      htmlFor="test-input"
+      style={null}
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </label>
+    <Input
+      className="css-mwlhju"
+      disabled={false}
+      id="test-input"
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      validateOnBlur={true}
+      value=""
+    >
+      <input
+        className="css-mwlhju"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+    </Input>
+    <div
+      className="css-s51m4w"
+    >
+      <div
+        className="css-1tpmuef"
+        style={
+          Object {
+            "borderBottomColor": "#fa5400",
+            "transform": "scale3d(0,1,1)",
+          }
+        }
+      />
+    </div>
+    <div
+      className="css-1tsf8y2"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string=""
+      >
+        <span
+          className=""
+        />
+      </Translate>
+    </div>
+  </div>
+</TextField>
+`;

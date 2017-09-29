@@ -9,7 +9,7 @@ import trim from 'lodash/trim';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Ripple from 'Components/Ripple';
-import Button from 'Components/Button';
+import Button from '@shopgate/pwa-common/components/Button';
 import styles from 'Components/Button/style';
 import RippleButton from './index';
 

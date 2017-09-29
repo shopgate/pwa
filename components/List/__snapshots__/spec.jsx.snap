@@ -6,17 +6,17 @@ exports[`<List /> should render with two children 1`] = `
     className=""
   >
     <ul
-      className="list-style-none m-0 p-0 "
+      className="css-gkw1j5 "
     >
       <ListItem
-        className="ml-72 _dfirej mb-1"
+        className="css-1brrprg css-1ym3l2n"
         isSelected={false}
       >
         <li
-          className="d-block position-relative ml-72 _dfirej mb-1 z-index-1"
+          className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
         >
           <div
-            className="ml--72 min-height-56 position-relative"
+            className="css-1nnz83b"
           >
             <Item
               className={null}
@@ -29,24 +29,24 @@ exports[`<List /> should render with two children 1`] = `
               title="List Item"
             >
               <Grid
-                className="align-items-center min-height-56 p-8px_0 position-relative z-index-2"
+                className="css-1qcr7hz"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="align-items-center min-height-56 p-8px_0 position-relative z-index-2 d-flex min-width-100P"
+                  className="css-1qcr7hz css-h7r55a"
                 >
                   <div
-                    className="align-self-flex-start flex-shrink-0 m-0_16px w-40"
+                    className="css-jwxytc"
                   />
                   <GridItem
-                    className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word"
+                    className="css-10fxwvh"
                     component="div"
                     grow={1}
                     shrink={1}
                   >
                     <div
-                      className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word flex-grow-1"
+                      className="css-10fxwvh css-1gs0ko2"
                     >
                       List Item
                     </div>
@@ -58,14 +58,14 @@ exports[`<List /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="ml-72"
+        className="css-1brrprg"
         isSelected={false}
       >
         <li
-          className="d-block position-relative ml-72 z-index-1"
+          className="css-1p5q8vq css-1brrprg css-16gj3o1"
         >
           <div
-            className="ml--72 min-height-56 position-relative"
+            className="css-1nnz83b"
           >
             <Item
               className={null}
@@ -78,24 +78,24 @@ exports[`<List /> should render with two children 1`] = `
               title="List Item"
             >
               <Grid
-                className="align-items-center min-height-56 p-8px_0 position-relative z-index-2"
+                className="css-1qcr7hz"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="align-items-center min-height-56 p-8px_0 position-relative z-index-2 d-flex min-width-100P"
+                  className="css-1qcr7hz css-h7r55a"
                 >
                   <div
-                    className="align-self-flex-start flex-shrink-0 m-0_16px w-40"
+                    className="css-jwxytc"
                   />
                   <GridItem
-                    className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word"
+                    className="css-10fxwvh"
                     component="div"
                     grow={1}
                     shrink={1}
                   >
                     <div
-                      className="w-100P mt-2 pr-16 hyphens-auto _br4lpt word-break-break-word flex-grow-1"
+                      className="css-10fxwvh css-1gs0ko2"
                     >
                       List Item
                     </div>

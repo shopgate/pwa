@@ -2,12 +2,12 @@
 
 exports[`<CartButton /> should not be visible with prop visible set to false 1`] = `
 <button
-  className="b-fa5400 fs-1p5rem lh-1 outline-0 p-0 min-width-0 w-0 overflow-hidden position-relative z-index-1 _1dmaw7o _1t1cq7e"
+  className="css-nmjls1"
   onClick={[Function]}
   style={Object {}}
 >
   <Ripple
-    className="d-flex h-100P w-100P justify-content-center align-items-center c-fff"
+    className="css-167cazg"
     color="#000"
     fill={true}
     overflow={false}
@@ -15,7 +15,7 @@ exports[`<CartButton /> should not be visible with prop visible set to false 1`]
   >
     <CartIcon />
     <CartButtonBadge
-      className="position-absolute fs-0p75rem lh-1p4 fw-700 b-fff c-fa5400 border-radius-8 h-16 min-width-16 pl-4 pr-4 _d72c9q _1d9980o"
+      className="css-ggepo6"
       productCount={0}
     />
   </Ripple>
@@ -24,7 +24,7 @@ exports[`<CartButton /> should not be visible with prop visible set to false 1`]
 
 exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] = `
 <button
-  className="b-fa5400 fs-1p5rem lh-1 outline-0 p-0 min-width-0 w-0 overflow-hidden position-relative z-index-1 _1dmaw7o _1t1cq7e"
+  className="css-nmjls1"
   onClick={[Function]}
   style={
     Object {
@@ -35,7 +35,7 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
   }
 >
   <Ripple
-    className="d-flex h-100P w-100P justify-content-center align-items-center c-fff"
+    className="css-167cazg"
     color="#000"
     fill={true}
     overflow={false}
@@ -43,7 +43,7 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
   >
     <CartIcon />
     <CartButtonBadge
-      className="position-absolute fs-0p75rem lh-1p4 fw-700 b-fff c-fa5400 border-radius-8 h-16 min-width-16 pl-4 pr-4 _d72c9q _1d9980o"
+      className="css-ggepo6"
       productCount={4}
     />
   </Ripple>
@@ -52,7 +52,7 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
 
 exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
 <button
-  className="b-fa5400 fs-1p5rem lh-1 outline-0 p-0 min-width-0 w-0 overflow-hidden position-relative z-index-1 _1dmaw7o _1t1cq7e"
+  className="css-nmjls1"
   onClick={[Function]}
   style={
     Object {
@@ -63,7 +63,7 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
   }
 >
   <Ripple
-    className="d-flex h-100P w-100P justify-content-center align-items-center c-fff"
+    className="css-167cazg"
     color="#000"
     fill={true}
     overflow={false}
@@ -71,7 +71,7 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
   >
     <CartIcon />
     <CartButtonBadge
-      className="position-absolute fs-0p75rem lh-1p4 fw-700 b-fff c-fa5400 border-radius-8 h-16 min-width-16 pl-4 pr-4 _d72c9q _1d9980o"
+      className="css-ggepo6"
       productCount={115}
     />
   </Ripple>
@@ -80,7 +80,7 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
 
 exports[`<CartButton /> should transition if it has cart amount 1`] = `
 <button
-  className="b-fa5400 fs-1p5rem lh-1 outline-0 p-0 min-width-0 w-0 overflow-hidden position-relative z-index-1 _1dmaw7o _1t1cq7e"
+  className="css-nmjls1"
   onClick={[Function]}
   style={
     Object {
@@ -91,7 +91,7 @@ exports[`<CartButton /> should transition if it has cart amount 1`] = `
   }
 >
   <Ripple
-    className="d-flex h-100P w-100P justify-content-center align-items-center c-fff"
+    className="css-167cazg"
     color="#000"
     fill={true}
     overflow={false}
@@ -99,7 +99,7 @@ exports[`<CartButton /> should transition if it has cart amount 1`] = `
   >
     <CartIcon />
     <CartButtonBadge
-      className="position-absolute fs-0p75rem lh-1p4 fw-700 b-fff c-fa5400 border-radius-8 h-16 min-width-16 pl-4 pr-4 _d72c9q _1d9980o"
+      className="css-ggepo6"
       productCount={5}
     />
   </Ripple>
