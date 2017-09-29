@@ -19,4 +19,8 @@ module.exports = {
     '^Styles(.*)$': '<rootDir>/styles',
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/extensions/',
+  ],
 };

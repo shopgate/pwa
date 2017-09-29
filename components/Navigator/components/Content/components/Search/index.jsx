@@ -102,17 +102,9 @@ class Search extends Component {
   };
 
   /**
-   * Handles blur events on the input element.
-   */
-  handleBlur = () => {
-    this.updateQuery();
-  };
-
-  /**
    * Sets cursor at the end of input on focus.
    */
   handleFocus = () => {
-    this.updateQuery();
     this.inputElement.selectionStart = this.state.inputValue.length;
     this.inputElement.selectionEnd = this.state.inputValue.length;
   };

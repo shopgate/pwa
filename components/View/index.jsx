@@ -14,12 +14,16 @@ import { shopName } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
 
+const SCROLL_DEBOUNCE = 50;
+
 /**
  * The view component.
  */
 class View extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    setTitle: PropTypes.func.isRequired,
+    setTop: PropTypes.func.isRequired,
     hasNavigator: PropTypes.bool,
     head: PropTypes.shape({
       meta: PropTypes.array,
@@ -29,7 +33,6 @@ class View extends Component {
     }),
     style: PropTypes.shape(),
     title: PropTypes.string,
-    updateHistoryState: PropTypes.func,
     viewTop: PropTypes.bool,
   };
 
@@ -42,9 +45,12 @@ class View extends Component {
       style: [],
     },
     style: null,
-    title: '',
-    updateHistoryState: () => {},
+    title: null,
     viewTop: true,
+  };
+
+  static childContextTypes = {
+    viewRef: PropTypes.shape(),
   };
 
   /**
@@ -58,13 +64,25 @@ class View extends Component {
   }
 
   /**
+   * Forwards the current route path to the child context.
+   * @return {Object} The child context.
+   */
+  getChildContext() {
+    return {
+      viewRef: this.element,
+    };
+  }
+
+  /**
    * Sets the navigator title when the component mounts.
    */
   componentDidMount() {
-    this.props.updateHistoryState({
-      title: this.props.title || '',
-      viewTop: true,
-    });
+    // If we already know the page title then we can set it immediately.
+    if (this.props.title !== null) {
+      this.props.setTitle(this.props.title);
+    }
+
+    this.props.setTop(true);
   }
 
   /**
@@ -73,16 +91,44 @@ class View extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.title !== this.props.title) {
-      this.props.updateHistoryState({
-        title: nextProps.title || this.props.title || '',
-        viewTop: this.props.viewTop,
-      });
+      this.props.setTitle(nextProps.title || this.props.title);
     }
 
     if (nextProps.viewTop && nextProps.viewTop !== this.props.viewTop) {
       // Scroll to top
       this.element.scrollTop = 0;
     }
+  }
+
+  /**
+   * Creates an internal reference to an element.
+   * @param {Object} ref The reference to an element.
+   */
+  setRef = (ref) => {
+    this.element = ref;
+  }
+
+  /**
+   * Handles the scroll event of this component's element.
+   */
+  handleScroll = throttle(() => {
+    if (!this.element) {
+      return;
+    }
+
+    const isViewTop = this.element.scrollTop === 0;
+
+    if (isViewTop !== this.props.viewTop) {
+      this.props.setTop(isViewTop);
+    }
+  }, SCROLL_DEBOUNCE);
+
+  /**
+   * Returns the view title.
+   * @returns {string}
+   */
+  get title() {
+    return this.props.title;
   }
 
   /**
@@ -108,22 +154,11 @@ class View extends Component {
   };
 
   /**
-   * Handles the scroll event of this component's element.
+   * Sets the navigator title when the component mounts.
    */
-  handleScroll = throttle(() => {
-    if (!this.element) {
-      return;
-    }
-
-    const isViewTop = this.element.scrollTop === 0;
-
-    if (isViewTop !== this.props.viewTop) {
-      this.props.updateHistoryState({
-        title: this.props.title || '',
-        viewTop: isViewTop,
-      });
-    }
-  }, 100);
+  routeWillEnter() {
+    this.props.setTitle(this.props.title);
+  }
 
   /**
    * Renders the HTML meta tags.
@@ -163,7 +198,7 @@ class View extends Component {
         >
           <article
             className={contentStyle}
-            ref={(ref) => { this.element = ref; }}
+            ref={this.setRef}
             onScroll={this.handleScroll}
           >
             {this.renderMetaTags()}

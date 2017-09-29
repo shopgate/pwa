@@ -136,7 +136,7 @@ class PipelineErrorDialog extends Component {
   );
 
   /**
-   * Renders the error message depdending on the current mode.
+   * Renders the error message depending on the current mode.
    * @return {JSX}
    */
   render() {

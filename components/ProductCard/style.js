@@ -27,11 +27,6 @@ const title = css({
   marginTop: 1,
 }).toString();
 
-const striked = css({
-  color: colors.primary,
-  opacity: 0.5,
-}).toString();
-
 const priceWrapper = css({
   lineHeight: 1.75,
 }).toString();
@@ -64,6 +59,5 @@ export default {
   details,
   priceWrapper,
   title,
-  striked,
   wishlist,
 };

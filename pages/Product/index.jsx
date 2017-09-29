@@ -63,7 +63,7 @@ class Product extends Component {
    */
   render() {
     return (
-      <View title={(this.props.name || '')}>
+      <View title={this.props.name}>
         <ImageSlider />
         <Header />
         <VariantSelects />

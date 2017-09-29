@@ -9,7 +9,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Glow from 'Components/Glow';
-import List from './index';
+import List from '../../index';
 
 describe('<List.Item />', () => {
   const title = 'My Title';

@@ -7,31 +7,88 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
+import configureStore from 'redux-mock-store';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import CheckoutButton from './components/CheckoutButton';
 import SubTotal from './components/SubTotal';
 import ShippingCosts from './components/ShippingCosts';
 import PaymentBar from './index';
 
-// Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/cart', () => obj => obj);
-jest.mock('Library/connectors/history', () => (obj) => {
+/**
+ * Mock the connect() methods of the relevant sub-components.
+ */
+jest.mock('./components/CheckoutButton/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
     ...newObj.defaultProps,
+    isActive: true,
     pushHistory: () => {},
   };
 
   return newObj;
 });
 
+jest.mock('./components/ShippingCosts/connector', () => (obj) => {
+  const newObj = obj;
+
+  newObj.defaultProps = {
+    ...newObj.defaultProps,
+    isDisabled: false,
+    currency: 'USD',
+    value: 2.99,
+  };
+
+  return newObj;
+});
+
+jest.mock('./components/ShippingCostsLabel/connector', () => (obj) => {
+  const newObj = obj;
+
+  newObj.defaultProps = {
+    ...newObj.defaultProps,
+    isDisabled: false,
+    shipping: 2.99,
+  };
+
+  return obj;
+});
+
+jest.mock('./components/SubTotal/connector', () => (obj) => {
+  const newObj = obj;
+
+  newObj.defaultProps = {
+    ...newObj.defaultProps,
+    isDisabled: false,
+    currency: 'USD',
+    value: 4.99,
+  };
+
+  return newObj;
+});
+
+jest.mock('./components/SubTotalLabel/connector', () => (obj) => {
+    const newObj = obj;
+
+    newObj.defaultProps = {
+      ...newObj.defaultProps,
+      isDisabled: false,
+    };
+
+    return newObj;
+});
+
 describe('<PaymentBar />', () => {
+  const mockStore = configureStore();
   const testLocales = {
     'shipping.free_short': 'Free',
   };
 
   const langCode = 'en-US';
+
+  const store = mockStore({
+    view: { isLoading: false },
+  });
 
   /**
    * Renders the component.
@@ -46,35 +103,22 @@ describe('<PaymentBar />', () => {
 
   it('should render without any props', () => {
     const wrapper = renderComponent();
-    const component = wrapper.find(PaymentBar);
-
     expect(wrapper).toMatchSnapshot();
-    expect(component.prop('subTotal')).toEqual(0);
-    expect(component.prop('currency')).toEqual('USD');
-    expect(component.prop('shipping')).toEqual(null);
-    expect(component.find(SubTotal).text()).toEqual('$0.00');
-    expect(component.find(ShippingCosts).length).toBe(0);
   });
 
   it('should show the formatted subtotal', () => {
-    const wrapper = renderComponent({ subTotal: 4.99 });
+    const wrapper = renderComponent({});
     const component = wrapper.find(PaymentBar);
 
     expect(wrapper).toMatchSnapshot();
-    expect(component.prop('subTotal')).toEqual(4.99);
-    expect(component.prop('currency')).toEqual('USD');
-    expect(component.prop('shipping')).toEqual(null);
     expect(component.find(SubTotal).text()).toEqual('$4.99');
   });
 
   it('should show formatted shipping costs', () => {
-    const wrapper = renderComponent({ shipping: 2.99 });
+    const wrapper = renderComponent({});
     const component = wrapper.find(PaymentBar);
 
     expect(wrapper).toMatchSnapshot();
-    expect(component.prop('subTotal')).toEqual(0);
-    expect(component.prop('currency')).toEqual('USD');
-    expect(component.prop('shipping')).toEqual(2.99);
     expect(component.find(ShippingCosts).text()).toEqual('$2.99');
   });
 
@@ -82,14 +126,6 @@ describe('<PaymentBar />', () => {
     const wrapper = renderComponent({ isDisabled: true });
 
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should disable the checkout button, if the isOrderable prop is false', () => {
-    const wrapper = renderComponent({ isOrderable: false });
-    const component = wrapper.find(CheckoutButton);
-
-    expect(wrapper).toMatchSnapshot();
-    expect(component.prop('checkoutPossible')).toEqual(false);
   });
 
   it('should be visible if prop isVisible is true', () => {

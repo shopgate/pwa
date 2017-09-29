@@ -9,6 +9,7 @@ import {
   TOGGLE_NAVIGATOR_CART_ICON,
   TOGGLE_NAVIGATOR_SEARCH,
   TOGGLE_NAV_DRAWER,
+  TOGGLE_PROGRESS_BAR,
   TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
@@ -46,6 +47,7 @@ export default (
     searchPhrase: '',
     showCartIcon: true,
     showIconShadow: false,
+    showProgressBar: true,
     showSearch: true,
     showTitle: true,
     textColor: null,
@@ -73,6 +75,11 @@ export default (
       return {
         ...state,
         loginOpen: action.active,
+      };
+    case TOGGLE_PROGRESS_BAR:
+      return {
+        ...state,
+        showProgressBar: action.active,
       };
     case SET_NAVIGATOR_BACKGROUND:
       return {

@@ -29,8 +29,8 @@ const chipBase = (hasRemoveButton = true) => ({
  */
 const chip = (hasRemoveButton = true, inverted = false) => css({
   ...chipBase(hasRemoveButton),
-  backgroundColor: (inverted ? colors.accent : colors.light),
-  color: (inverted ? colors.light : colors.accent),
+  backgroundColor: (inverted ? colors.accent : colors.accentContrast),
+  color: (inverted ? colors.accentContrast : colors.accent),
 }).toString();
 
 const removeButton = css({

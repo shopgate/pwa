@@ -24,5 +24,10 @@
     "@shopgate/commerce-widgets/liveshopping": {
       "path": "@shopgate/commerce-widgets/frontend/dist/Liveshopping"
     }
+  },
+  "tracking": {
+    "@shopgate/tracking-ga-native/init": {
+      "path": "@shopgate/tracking-ga-native/frontend/index"
+    }
   }
 }

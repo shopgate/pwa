@@ -72,9 +72,4 @@ class Category extends Component {
   }
 }
 
-// TODO const enhance = compose(
-// TODO   connect,
-// TODO   NoBackgroundRender
-// TODO );
-
 export default connect(Category);
