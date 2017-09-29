@@ -1,8 +1,8 @@
 # Shopgate's PWA core library
 
-[![Travis CI Build](https://travis-ci.org/shopgate/pwa-core.svg?branch=development)](https://travis-ci.org/shopgate/pwa-core)
+[![Travis CI Build](https://travis-ci.org/shopgate/pwa-core.svg?branch=master)](https://travis-ci.org/shopgate/pwa-core)
 [![GitHub release](https://img.shields.io/github/release/shopgate/pwa-core.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-core/badge.svg?branch=development)](https://coveralls.io/github/shopgate/pwa-core?branch=development)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-core/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-core?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 This is Shopgate's PWA core library that handles pipeline requests and app commands.
