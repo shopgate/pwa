@@ -12,10 +12,6 @@ import { createMockStore } from 'redux-test-utils';
 import ProductVariants from './index';
 import * as mockData from './mock';
 
-jest.mock('Library/action-creators/view', () => ({
-  setAnimationState: jest.fn(),
-}));
-
 /**
  * Wrapped mock component
  * @return {JSX}

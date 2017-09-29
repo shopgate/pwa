@@ -16,8 +16,7 @@ describe('<Dialog />', () => {
       <Dialog modal={{ message: 'msg' }} />
     );
     expect(wrapper).toMatchSnapshot();
-
-    expect(wrapper.find('TextMessageDialog').length).toBe(1);
+    expect(wrapper.find('BasicDialog').length).toBe(1);
   });
 
   it('should render a special dialog', () => {

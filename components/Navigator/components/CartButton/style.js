@@ -31,7 +31,7 @@ const buttonContent = css({
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  color: colors.light,
+  color: colors.primaryContrast,
 }).toString();
 
 const badge = css({
@@ -39,7 +39,7 @@ const badge = css({
   fontSize: '0.75rem',
   lineHeight: 1.4,
   fontWeight: 700,
-  background: colors.light,
+  background: colors.primaryContrast,
   color: colors.primary,
   borderRadius: variables.gap.small,
   height: variables.gap.big,

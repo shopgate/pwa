@@ -10,6 +10,8 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import Properties from './index';
 
+jest.mock('./connector', () => obj => obj);
+
 describe('<Properties />', () => {
   const mockStore = configureStore();
   const properties = [
@@ -22,16 +24,6 @@ describe('<Properties />', () => {
       value: 'foo',
     },
   ];
-
-  it('should not render if animating', () => {
-    const store = mockStore({ view: { isAnimating: true } });
-    const wrapper = mount(
-      <Properties store={store} properties={properties} />
-    );
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('table').length).toEqual(0);
-  });
 
   it('should not render if no data is available', () => {
     const store = mockStore({ view: { isAnimating: false } });

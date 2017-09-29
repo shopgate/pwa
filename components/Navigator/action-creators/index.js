@@ -9,6 +9,7 @@ import {
   TOGGLE_NAVIGATOR_CART_ICON,
   TOGGLE_NAVIGATOR_SEARCH,
   TOGGLE_NAV_DRAWER,
+  TOGGLE_PROGRESS_BAR,
   TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
@@ -28,6 +29,16 @@ import {
   ENABLE_VIEW_TRACKING,
   DISABLE_VIEW_TRACKING,
 } from '../constants';
+
+/**
+ * Toggles the navigator progress bar..
+ * @param {boolean} active The state of the progress bar.
+ * @returns {Object} The action object.
+ */
+export const toggleProgressBar = active => ({
+  type: TOGGLE_PROGRESS_BAR,
+  active,
+});
 
 /**
  * Toggles the navigator cart icon.

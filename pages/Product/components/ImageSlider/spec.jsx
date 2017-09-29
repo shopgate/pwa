@@ -12,6 +12,9 @@ import ProductImage from 'Components/ProductImage';
 import ImageSlider from 'Components/ImageSlider';
 import ProductImageSlider from './index';
 
+// Mock the redux connect() method instead of providing a fake store.
+jest.mock('./connector', () => obj => obj);
+
 describe('<ProductImageSlider />', () => {
   const mockStore = configureStore();
   const product = {
@@ -22,20 +25,8 @@ describe('<ProductImageSlider />', () => {
     'bar/foo.png',
   ];
 
-  it('should render image placeholder if animating', () => {
-    const store = mockStore({ view: { isAnimating: true } });
-    const wrapper = mount(
-      <ProductImageSlider store={store} product={product} images={images} />
-    );
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').length).toEqual(0);
-    expect(wrapper.find(ProductImage).prop('forcePlaceholder')).toEqual(true);
-    expect(wrapper.find(ImageSlider).length).toEqual(0);
-  });
-
   it('should render image placeholder if no data is available', () => {
-    const store = mockStore({ view: { isAnimating: false } });
+    const store = mockStore({});
     const wrapper = mount(
       <ProductImageSlider store={store} product={null} images={null} />
     );
@@ -47,7 +38,7 @@ describe('<ProductImageSlider />', () => {
   });
 
   it('should render featured image if only product data a is available', () => {
-    const store = mockStore({ view: { isAnimating: false } });
+    const store = mockStore({});
     const wrapper = mount(
       <ProductImageSlider store={store} product={product} images={null} />
     );
@@ -60,7 +51,7 @@ describe('<ProductImageSlider />', () => {
   });
 
   it('should render image slider if all data is available', () => {
-    const store = mockStore({ view: { isAnimating: false } });
+    const store = mockStore({});
     const wrapper = mount(
       <ProductImageSlider store={store} product={product} images={images} />
     );

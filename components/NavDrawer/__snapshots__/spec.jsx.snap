@@ -64,17 +64,17 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
           alwaysActive={true}
           animation={
             Object {
-              "in": "_l379qd",
-              "out": "_14t8knt",
+              "in": "css-bsefow",
+              "out": "css-jg4uw5",
             }
           }
-          className="w-100P h-100vh max-width-67vw _nj1y6u"
+          className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
           onOpen={[Function]}
         >
           <div
-            className="w-100P h-100vh max-width-67vw _nj1y6u position-fixed bottom-0 left-0 z-index-5 _14t8knt"
+            className="css-1aq22wi css-1rg7udn css-jg4uw5"
             onAnimationEnd={[Function]}
             style={
               Object {
@@ -83,7 +83,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
             }
           >
             <div
-              className="h-100P overflow-y-scroll c-000 b-fff _bqxoze"
+              className="css-1xj3g9q"
             >
               <Header
                 close={[Function]}
@@ -95,10 +95,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 }
               >
                 <div
-                  className="mb-4 b-5ccee3 c-fff p-9px_16px_7px"
+                  className="css-vk8a95 css-1a237xp"
                 >
                   <div
-                    className="fw-500 text-overflow-ellipsis overflow-hidden lh-1p3"
+                    className="css-1al5bli"
                   >
                     <Translate
                       className=""
@@ -117,7 +117,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                     </Translate>
                   </div>
                   <div
-                    className="text-overflow-ellipsis overflow-hidden lh-1p3"
+                    className="css-1ud0xpf"
                   >
                     foo@bar.baz
                   </div>
@@ -133,7 +133,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -150,12 +150,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -167,7 +167,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Home>
                                   <Icon
@@ -178,7 +178,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -205,10 +205,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -240,7 +240,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -257,12 +257,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -274,7 +274,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <ViewList>
                                   <Icon
@@ -285,7 +285,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -312,10 +312,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -355,7 +355,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 >
                   <div
                     aria-hidden={true}
-                    className="position-relative"
+                    className="css-13azwyo"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -372,12 +372,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                         style={null}
                       >
                         <Grid
-                          className="align-items-flex-start"
+                          className="css-1yzks37"
                           component="ul"
                           wrap={false}
                         >
                           <ul
-                            className="align-items-flex-start d-flex min-width-100P"
+                            className="css-1yzks37 css-h7r55a"
                           >
                             <GridItem
                               className=""
@@ -389,7 +389,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                 className=""
                               >
                                 <div
-                                  className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                  className="css-17ij4h5"
                                 >
                                   <ShoppingCart>
                                     <Icon
@@ -400,7 +400,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="fill-currentColor w-1em h-1em "
+                                        className="css-yys9hb "
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -427,10 +427,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               shrink={1}
                             >
                               <li
-                                className=" flex-grow-1"
+                                className=" css-1gs0ko2"
                               >
                                 <div
-                                  className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                  className="css-1hv14w9"
                                 >
                                   <Translate
                                     className=""
@@ -457,7 +457,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -470,7 +470,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -487,12 +487,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -504,7 +504,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Box>
                                   <Icon
@@ -515,7 +515,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M 13.900391,1.4433594 1.5996094,4.171875 l 0,0.025391 8.5390626,4.2089844 c 4.073387,-0.9018528 8.163817,-1.7958087 12.24414,-2.69141 z m 8.490221,4.8261718 -11.986328,2.6152344 0.111328,13.4472654 11.875,-2.658203 z M 9.9003906,22.25 c -6.600261,1.166667 -3.3001305,0.583333 0,0 z m 0,0 0,-13.4316406 -8.3007812,-4.0957032 0,13.4589848 z M 4.4238281,9.2304688 c 1.01719,0.50398 2.0367375,1.0052022 3.0546875,1.5078122 0.32345,0.12833 0.4898582,0.544909 0.3300782,0.855469 C 6.7949938,11.0955 5.7712662,10.587588 4.7539062,10.085938 4.4304763,9.9572575 4.2659081,9.5411387 4.4238281,9.2304688 Z\\" />",
@@ -542,10 +542,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -577,7 +577,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -594,12 +594,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -611,7 +611,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <LocalShipping>
                                   <Icon
@@ -622,7 +622,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\\"/>",
@@ -649,10 +649,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -684,7 +684,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -701,12 +701,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -718,7 +718,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Info>
                                   <Icon
@@ -729,7 +729,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
@@ -756,10 +756,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -791,7 +791,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -808,12 +808,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -825,7 +825,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <CreditCard>
                                   <Icon
@@ -836,7 +836,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z\\"/>",
@@ -863,10 +863,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -892,7 +892,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -905,7 +905,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -922,12 +922,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -939,7 +939,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Description>
                                   <Icon
@@ -950,7 +950,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z\\"/>",
@@ -977,10 +977,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1012,7 +1012,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -1029,12 +1029,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -1046,7 +1046,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Security>
                                   <Icon
@@ -1057,7 +1057,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -1084,10 +1084,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1113,7 +1113,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -1126,7 +1126,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -1143,12 +1143,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -1160,7 +1160,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Logout>
                                   <Icon
@@ -1171,7 +1171,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z\\"/>",
@@ -1198,10 +1198,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1295,17 +1295,17 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
           alwaysActive={true}
           animation={
             Object {
-              "in": "_l379qd",
-              "out": "_14t8knt",
+              "in": "css-bsefow",
+              "out": "css-jg4uw5",
             }
           }
-          className="w-100P h-100vh max-width-67vw _nj1y6u"
+          className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
           onOpen={[Function]}
         >
           <div
-            className="w-100P h-100vh max-width-67vw _nj1y6u position-fixed bottom-0 left-0 z-index-5 _14t8knt"
+            className="css-1aq22wi css-1rg7udn css-jg4uw5"
             onAnimationEnd={[Function]}
             style={
               Object {
@@ -1314,14 +1314,14 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
             }
           >
             <div
-              className="h-100P overflow-y-scroll c-000 b-fff _bqxoze"
+              className="css-1xj3g9q"
             >
               <Header
                 close={[Function]}
                 user={null}
               >
                 <div
-                  className="mb-4"
+                  className="css-vk8a95"
                 >
                   <Item
                     close={[Function]}
@@ -1333,7 +1333,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className="position-relative b-fa5400 _130y7ld _c3d682"
+                      className="css-13azwyo css-31obrv"
                       onClick={[Function]}
                     >
                       <Ripple
@@ -1350,12 +1350,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                           style={null}
                         >
                           <Grid
-                            className="align-items-flex-start"
+                            className="css-1yzks37"
                             component="ul"
                             wrap={false}
                           >
                             <ul
-                              className="align-items-flex-start d-flex min-width-100P"
+                              className="css-1yzks37 css-h7r55a"
                             >
                               <GridItem
                                 className=""
@@ -1367,18 +1367,20 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                   className=""
                                 >
                                   <div
-                                    className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                    className="css-17ij4h5"
                                   >
-                                    <AccountBox>
+                                    <AccountBox
+                                      className="css-j9z7vu"
+                                    >
                                       <Icon
-                                        className=""
+                                        className="css-j9z7vu"
                                         color={null}
                                         content="<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
                                         size="inherit"
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="fill-currentColor w-1em h-1em "
+                                          className="css-yys9hb css-j9z7vu"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -1405,20 +1407,20 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                 shrink={1}
                               >
                                 <li
-                                  className=" flex-grow-1"
+                                  className=" css-1gs0ko2"
                                 >
                                   <div
-                                    className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                    className="css-1hv14w9"
                                   >
                                     <Translate
                                       className=""
                                       params={Object {}}
-                                      string="navigation.sign_in_up"
+                                      string="navigation.login_register"
                                     >
                                       <span
                                         className=""
                                       >
-                                        navigation.sign_in_up
+                                        navigation.login_register
                                       </span>
                                     </Translate>
                                   </div>
@@ -1442,7 +1444,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -1459,12 +1461,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -1476,7 +1478,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Home>
                                   <Icon
@@ -1487,7 +1489,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -1514,10 +1516,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1549,7 +1551,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -1566,12 +1568,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -1583,7 +1585,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <ViewList>
                                   <Icon
@@ -1594,7 +1596,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -1621,10 +1623,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1664,7 +1666,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 >
                   <div
                     aria-hidden={true}
-                    className="position-relative"
+                    className="css-13azwyo"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -1681,12 +1683,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                         style={null}
                       >
                         <Grid
-                          className="align-items-flex-start"
+                          className="css-1yzks37"
                           component="ul"
                           wrap={false}
                         >
                           <ul
-                            className="align-items-flex-start d-flex min-width-100P"
+                            className="css-1yzks37 css-h7r55a"
                           >
                             <GridItem
                               className=""
@@ -1698,7 +1700,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                 className=""
                               >
                                 <div
-                                  className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                  className="css-17ij4h5"
                                 >
                                   <ShoppingCart>
                                     <Icon
@@ -1709,7 +1711,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="fill-currentColor w-1em h-1em "
+                                        className="css-yys9hb "
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -1736,10 +1738,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               shrink={1}
                             >
                               <li
-                                className=" flex-grow-1"
+                                className=" css-1gs0ko2"
                               >
                                 <div
-                                  className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                  className="css-1hv14w9"
                                 >
                                   <Translate
                                     className=""
@@ -1766,7 +1768,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -1779,7 +1781,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -1796,12 +1798,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -1813,7 +1815,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <LocalShipping>
                                   <Icon
@@ -1824,7 +1826,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\\"/>",
@@ -1851,10 +1853,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1886,7 +1888,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -1903,12 +1905,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -1920,7 +1922,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Info>
                                   <Icon
@@ -1931,7 +1933,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
@@ -1958,10 +1960,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -1993,7 +1995,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -2010,12 +2012,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -2027,7 +2029,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <CreditCard>
                                   <Icon
@@ -2038,7 +2040,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z\\"/>",
@@ -2065,10 +2067,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -2094,7 +2096,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -2107,7 +2109,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -2124,12 +2126,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -2141,7 +2143,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Description>
                                   <Icon
@@ -2152,7 +2154,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z\\"/>",
@@ -2179,10 +2181,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -2214,7 +2216,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -2231,12 +2233,12 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -2248,7 +2250,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Security>
                                   <Icon
@@ -2259,7 +2261,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -2286,10 +2288,10 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -2403,7 +2405,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="position-fixed top-0 right-0 bottom-0 left-0"
+                    className="css-hlk66h"
                     onClick={[Function]}
                     style={
                       Object {
@@ -2423,17 +2425,17 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
           alwaysActive={true}
           animation={
             Object {
-              "in": "_l379qd",
-              "out": "_14t8knt",
+              "in": "css-bsefow",
+              "out": "css-jg4uw5",
             }
           }
-          className="w-100P h-100vh max-width-67vw _nj1y6u"
+          className="css-1aq22wi"
           isOpen={true}
           onClose={[Function]}
           onOpen={[Function]}
         >
           <div
-            className="w-100P h-100vh max-width-67vw _nj1y6u position-fixed bottom-0 left-0 z-index-5 _l379qd"
+            className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
             style={
               Object {
@@ -2442,14 +2444,14 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
             }
           >
             <div
-              className="h-100P overflow-y-scroll c-000 b-fff _bqxoze"
+              className="css-1xj3g9q"
             >
               <Header
                 close={[Function]}
                 user={null}
               >
                 <div
-                  className="mb-4"
+                  className="css-vk8a95"
                 >
                   <Item
                     close={[Function]}
@@ -2461,7 +2463,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="position-relative b-fa5400 _130y7ld _c3d682"
+                      className="css-13azwyo css-31obrv"
                       onClick={[Function]}
                     >
                       <Ripple
@@ -2478,12 +2480,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                           style={null}
                         >
                           <Grid
-                            className="align-items-flex-start"
+                            className="css-1yzks37"
                             component="ul"
                             wrap={false}
                           >
                             <ul
-                              className="align-items-flex-start d-flex min-width-100P"
+                              className="css-1yzks37 css-h7r55a"
                             >
                               <GridItem
                                 className=""
@@ -2495,18 +2497,20 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                   className=""
                                 >
                                   <div
-                                    className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                    className="css-17ij4h5"
                                   >
-                                    <AccountBox>
+                                    <AccountBox
+                                      className="css-j9z7vu"
+                                    >
                                       <Icon
-                                        className=""
+                                        className="css-j9z7vu"
                                         color={null}
                                         content="<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
                                         size="inherit"
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="fill-currentColor w-1em h-1em "
+                                          className="css-yys9hb css-j9z7vu"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -2533,20 +2537,20 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                 shrink={1}
                               >
                                 <li
-                                  className=" flex-grow-1"
+                                  className=" css-1gs0ko2"
                                 >
                                   <div
-                                    className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                    className="css-1hv14w9"
                                   >
                                     <Translate
                                       className=""
                                       params={Object {}}
-                                      string="navigation.sign_in_up"
+                                      string="navigation.login_register"
                                     >
                                       <span
                                         className=""
                                       >
-                                        navigation.sign_in_up
+                                        navigation.login_register
                                       </span>
                                     </Translate>
                                   </div>
@@ -2570,7 +2574,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -2587,12 +2591,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -2604,7 +2608,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Home>
                                   <Icon
@@ -2615,7 +2619,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -2642,10 +2646,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -2677,7 +2681,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -2694,12 +2698,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -2711,7 +2715,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <ViewList>
                                   <Icon
@@ -2722,7 +2726,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -2749,10 +2753,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -2792,7 +2796,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="position-relative"
+                    className="css-13azwyo"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2809,12 +2813,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                         style={null}
                       >
                         <Grid
-                          className="align-items-flex-start"
+                          className="css-1yzks37"
                           component="ul"
                           wrap={false}
                         >
                           <ul
-                            className="align-items-flex-start d-flex min-width-100P"
+                            className="css-1yzks37 css-h7r55a"
                           >
                             <GridItem
                               className=""
@@ -2826,7 +2830,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                 className=""
                               >
                                 <div
-                                  className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                  className="css-17ij4h5"
                                 >
                                   <ShoppingCart>
                                     <Icon
@@ -2837,7 +2841,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="fill-currentColor w-1em h-1em "
+                                        className="css-yys9hb "
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -2864,10 +2868,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               shrink={1}
                             >
                               <li
-                                className=" flex-grow-1"
+                                className=" css-1gs0ko2"
                               >
                                 <div
-                                  className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                  className="css-1hv14w9"
                                 >
                                   <Translate
                                     className=""
@@ -2894,7 +2898,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -2907,7 +2911,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -2924,12 +2928,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -2941,7 +2945,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <LocalShipping>
                                   <Icon
@@ -2952,7 +2956,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\\"/>",
@@ -2979,10 +2983,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -3014,7 +3018,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -3031,12 +3035,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -3048,7 +3052,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Info>
                                   <Icon
@@ -3059,7 +3063,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
@@ -3086,10 +3090,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -3121,7 +3125,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -3138,12 +3142,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -3155,7 +3159,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <CreditCard>
                                   <Icon
@@ -3166,7 +3170,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z\\"/>",
@@ -3193,10 +3197,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -3222,7 +3226,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -3235,7 +3239,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -3252,12 +3256,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -3269,7 +3273,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Description>
                                   <Icon
@@ -3280,7 +3284,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z\\"/>",
@@ -3307,10 +3311,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -3342,7 +3346,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -3359,12 +3363,12 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -3376,7 +3380,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Security>
                                   <Icon
@@ -3387,7 +3391,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -3414,10 +3418,10 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -3666,7 +3670,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 >
                   <div
                     aria-hidden={true}
-                    className="position-fixed top-0 right-0 bottom-0 left-0"
+                    className="css-hlk66h"
                     onClick={[Function]}
                     style={
                       Object {
@@ -3686,17 +3690,17 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           alwaysActive={true}
           animation={
             Object {
-              "in": "_l379qd",
-              "out": "_14t8knt",
+              "in": "css-bsefow",
+              "out": "css-jg4uw5",
             }
           }
-          className="w-100P h-100vh max-width-67vw _nj1y6u"
+          className="css-1aq22wi"
           isOpen={true}
           onClose={[Function]}
           onOpen={[Function]}
         >
           <div
-            className="w-100P h-100vh max-width-67vw _nj1y6u position-fixed bottom-0 left-0 z-index-5 _l379qd"
+            className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
             style={
               Object {
@@ -3705,14 +3709,14 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
             }
           >
             <div
-              className="h-100P overflow-y-scroll c-000 b-fff _bqxoze"
+              className="css-1xj3g9q"
             >
               <Header
                 close={[Function]}
                 user={null}
               >
                 <div
-                  className="mb-4"
+                  className="css-vk8a95"
                 >
                   <Item
                     close={[Function]}
@@ -3724,7 +3728,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className="position-relative b-fa5400 _130y7ld _c3d682"
+                      className="css-13azwyo css-31obrv"
                       onClick={[Function]}
                     >
                       <Ripple
@@ -3741,12 +3745,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                           style={null}
                         >
                           <Grid
-                            className="align-items-flex-start"
+                            className="css-1yzks37"
                             component="ul"
                             wrap={false}
                           >
                             <ul
-                              className="align-items-flex-start d-flex min-width-100P"
+                              className="css-1yzks37 css-h7r55a"
                             >
                               <GridItem
                                 className=""
@@ -3758,18 +3762,20 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                   className=""
                                 >
                                   <div
-                                    className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                    className="css-17ij4h5"
                                   >
-                                    <AccountBox>
+                                    <AccountBox
+                                      className="css-j9z7vu"
+                                    >
                                       <Icon
-                                        className=""
+                                        className="css-j9z7vu"
                                         color={null}
                                         content="<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
                                         size="inherit"
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="fill-currentColor w-1em h-1em "
+                                          className="css-yys9hb css-j9z7vu"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -3796,20 +3802,20 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                 shrink={1}
                               >
                                 <li
-                                  className=" flex-grow-1"
+                                  className=" css-1gs0ko2"
                                 >
                                   <div
-                                    className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                    className="css-1hv14w9"
                                   >
                                     <Translate
                                       className=""
                                       params={Object {}}
-                                      string="navigation.sign_in_up"
+                                      string="navigation.login_register"
                                     >
                                       <span
                                         className=""
                                       >
-                                        navigation.sign_in_up
+                                        navigation.login_register
                                       </span>
                                     </Translate>
                                   </div>
@@ -3833,7 +3839,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -3850,12 +3856,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -3867,7 +3873,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Home>
                                   <Icon
@@ -3878,7 +3884,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -3905,10 +3911,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -3940,7 +3946,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -3957,12 +3963,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -3974,7 +3980,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <ViewList>
                                   <Icon
@@ -3985,7 +3991,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -4012,10 +4018,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -4055,7 +4061,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 >
                   <div
                     aria-hidden={true}
-                    className="position-relative"
+                    className="css-13azwyo"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -4072,12 +4078,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                         style={null}
                       >
                         <Grid
-                          className="align-items-flex-start"
+                          className="css-1yzks37"
                           component="ul"
                           wrap={false}
                         >
                           <ul
-                            className="align-items-flex-start d-flex min-width-100P"
+                            className="css-1yzks37 css-h7r55a"
                           >
                             <GridItem
                               className=""
@@ -4089,7 +4095,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                 className=""
                               >
                                 <div
-                                  className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                  className="css-17ij4h5"
                                 >
                                   <ShoppingCart>
                                     <Icon
@@ -4100,7 +4106,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="fill-currentColor w-1em h-1em "
+                                        className="css-yys9hb "
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -4127,10 +4133,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               shrink={1}
                             >
                               <li
-                                className=" flex-grow-1"
+                                className=" css-1gs0ko2"
                               >
                                 <div
-                                  className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                  className="css-1hv14w9"
                                 >
                                   <Translate
                                     className=""
@@ -4157,7 +4163,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -4170,7 +4176,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -4187,12 +4193,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -4204,7 +4210,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <LocalShipping>
                                   <Icon
@@ -4215,7 +4221,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\\"/>",
@@ -4242,10 +4248,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -4277,7 +4283,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -4294,12 +4300,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -4311,7 +4317,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Info>
                                   <Icon
@@ -4322,7 +4328,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
@@ -4349,10 +4355,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -4384,7 +4390,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -4401,12 +4407,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -4418,7 +4424,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <CreditCard>
                                   <Icon
@@ -4429,7 +4435,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z\\"/>",
@@ -4456,10 +4462,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -4485,7 +4491,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -4498,7 +4504,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -4515,12 +4521,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -4532,7 +4538,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Description>
                                   <Icon
@@ -4543,7 +4549,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z\\"/>",
@@ -4570,10 +4576,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -4605,7 +4611,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -4622,12 +4628,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -4639,7 +4645,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Security>
                                   <Icon
@@ -4650,7 +4656,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -4677,10 +4683,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -4794,7 +4800,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 >
                   <div
                     aria-hidden={true}
-                    className="position-fixed top-0 right-0 bottom-0 left-0"
+                    className="css-hlk66h"
                     onClick={[Function]}
                     style={
                       Object {
@@ -4814,17 +4820,17 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           alwaysActive={true}
           animation={
             Object {
-              "in": "_l379qd",
-              "out": "_14t8knt",
+              "in": "css-bsefow",
+              "out": "css-jg4uw5",
             }
           }
-          className="w-100P h-100vh max-width-67vw _nj1y6u"
+          className="css-1aq22wi"
           isOpen={true}
           onClose={[Function]}
           onOpen={[Function]}
         >
           <div
-            className="w-100P h-100vh max-width-67vw _nj1y6u position-fixed bottom-0 left-0 z-index-5 _l379qd"
+            className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
             style={
               Object {
@@ -4833,14 +4839,14 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
             }
           >
             <div
-              className="h-100P overflow-y-scroll c-000 b-fff _bqxoze"
+              className="css-1xj3g9q"
             >
               <Header
                 close={[Function]}
                 user={null}
               >
                 <div
-                  className="mb-4"
+                  className="css-vk8a95"
                 >
                   <Item
                     close={[Function]}
@@ -4852,7 +4858,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className="position-relative b-fa5400 _130y7ld _c3d682"
+                      className="css-13azwyo css-31obrv"
                       onClick={[Function]}
                     >
                       <Ripple
@@ -4869,12 +4875,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                           style={null}
                         >
                           <Grid
-                            className="align-items-flex-start"
+                            className="css-1yzks37"
                             component="ul"
                             wrap={false}
                           >
                             <ul
-                              className="align-items-flex-start d-flex min-width-100P"
+                              className="css-1yzks37 css-h7r55a"
                             >
                               <GridItem
                                 className=""
@@ -4886,18 +4892,20 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                   className=""
                                 >
                                   <div
-                                    className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                    className="css-17ij4h5"
                                   >
-                                    <AccountBox>
+                                    <AccountBox
+                                      className="css-j9z7vu"
+                                    >
                                       <Icon
-                                        className=""
+                                        className="css-j9z7vu"
                                         color={null}
                                         content="<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
                                         size="inherit"
                                         viewBox="0 0 24 24"
                                       >
                                         <svg
-                                          className="fill-currentColor w-1em h-1em "
+                                          className="css-yys9hb css-j9z7vu"
                                           dangerouslySetInnerHTML={
                                             Object {
                                               "__html": "<path d=\\"M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -4924,20 +4932,20 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                 shrink={1}
                               >
                                 <li
-                                  className=" flex-grow-1"
+                                  className=" css-1gs0ko2"
                                 >
                                   <div
-                                    className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                    className="css-1hv14w9"
                                   >
                                     <Translate
                                       className=""
                                       params={Object {}}
-                                      string="navigation.sign_in_up"
+                                      string="navigation.login_register"
                                     >
                                       <span
                                         className=""
                                       >
-                                        navigation.sign_in_up
+                                        navigation.login_register
                                       </span>
                                     </Translate>
                                   </div>
@@ -4961,7 +4969,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -4978,12 +4986,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -4995,7 +5003,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Home>
                                   <Icon
@@ -5006,7 +5014,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -5033,10 +5041,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -5068,7 +5076,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -5085,12 +5093,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -5102,7 +5110,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <ViewList>
                                   <Icon
@@ -5113,7 +5121,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -5140,10 +5148,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -5183,7 +5191,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 >
                   <div
                     aria-hidden={true}
-                    className="position-relative"
+                    className="css-13azwyo"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5200,12 +5208,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                         style={null}
                       >
                         <Grid
-                          className="align-items-flex-start"
+                          className="css-1yzks37"
                           component="ul"
                           wrap={false}
                         >
                           <ul
-                            className="align-items-flex-start d-flex min-width-100P"
+                            className="css-1yzks37 css-h7r55a"
                           >
                             <GridItem
                               className=""
@@ -5217,7 +5225,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                 className=""
                               >
                                 <div
-                                  className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                  className="css-17ij4h5"
                                 >
                                   <ShoppingCart>
                                     <Icon
@@ -5228,7 +5236,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
-                                        className="fill-currentColor w-1em h-1em "
+                                        className="css-yys9hb "
                                         dangerouslySetInnerHTML={
                                           Object {
                                             "__html": "<path d=\\"M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -5255,10 +5263,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               shrink={1}
                             >
                               <li
-                                className=" flex-grow-1"
+                                className=" css-1gs0ko2"
                               >
                                 <div
-                                  className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                  className="css-1hv14w9"
                                 >
                                   <Translate
                                     className=""
@@ -5285,7 +5293,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -5298,7 +5306,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -5315,12 +5323,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -5332,7 +5340,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <LocalShipping>
                                   <Icon
@@ -5343,7 +5351,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\\"/>",
@@ -5370,10 +5378,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -5405,7 +5413,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -5422,12 +5430,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -5439,7 +5447,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Info>
                                   <Icon
@@ -5450,7 +5458,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
@@ -5477,10 +5485,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -5512,7 +5520,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -5529,12 +5537,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -5546,7 +5554,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <CreditCard>
                                   <Icon
@@ -5557,7 +5565,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z\\"/>",
@@ -5584,10 +5592,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -5613,7 +5621,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 close={[Function]}
               >
                 <hr
-                  className="h-1 m-16px_0 b-eaeaea border-0"
+                  className="css-dkni1p"
                 />
               </NavDrawerDivider>
               <Item
@@ -5626,7 +5634,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -5643,12 +5651,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -5660,7 +5668,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Description>
                                   <Icon
@@ -5671,7 +5679,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z\\"/>",
@@ -5698,10 +5706,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""
@@ -5733,7 +5741,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               >
                 <div
                   aria-hidden={true}
-                  className="position-relative"
+                  className="css-13azwyo"
                   onClick={[Function]}
                 >
                   <Ripple
@@ -5750,12 +5758,12 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       style={null}
                     >
                       <Grid
-                        className="align-items-flex-start"
+                        className="css-1yzks37"
                         component="ul"
                         wrap={false}
                       >
                         <ul
-                          className="align-items-flex-start d-flex min-width-100P"
+                          className="css-1yzks37 css-h7r55a"
                         >
                           <GridItem
                             className=""
@@ -5767,7 +5775,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                               className=""
                             >
                               <div
-                                className="position-relative top-16 w-72 fs-1p5rem p-0_32px_0_16px c-747474"
+                                className="css-17ij4h5"
                               >
                                 <Security>
                                   <Icon
@@ -5778,7 +5786,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="fill-currentColor w-1em h-1em "
+                                      className="css-yys9hb "
                                       dangerouslySetInnerHTML={
                                         Object {
                                           "__html": "<path d=\\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
@@ -5805,10 +5813,10 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                             shrink={1}
                           >
                             <li
-                              className=" flex-grow-1"
+                              className=" css-1gs0ko2"
                             >
                               <div
-                                className="d-flex align-items-flex-start p-18px_0 fs-0p875rem fw-500"
+                                className="css-1hv14w9"
                               >
                                 <Translate
                                   className=""

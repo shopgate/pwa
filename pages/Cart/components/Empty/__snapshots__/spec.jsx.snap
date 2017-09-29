@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartEmpty /> should render 1`] = `
+<div
+  className="css-12lnmui"
+>
+  <div
+    className="css-aphe06"
+  >
+    <div
+      className="css-11342l"
+    >
+      <Icon />
+    </div>
+    <div
+      className="css-b9wt33"
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string="cart.empty"
+      />
+    </div>
+  </div>
+  <div
+    className="css-1dq8tqy"
+  >
+    <RippleButton
+      className="css-63oe3q"
+      disabled={false}
+      flat={false}
+      onClick={[Function]}
+      rippleClassName=""
+      rippleSize={null}
+      type="secondary"
+      wrapContent={true}
+    >
+      <Translate
+        className=""
+        params={Object {}}
+        string="cart.continue"
+      />
+    </RippleButton>
+  </div>
+</div>
+`;

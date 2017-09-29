@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
-import { getScrollParent } from '@shopgate/pwa-common/helpers/dom';
 import colors from 'Styles/colors';
 import styles from './style';
 import Content from './components/Content';
@@ -17,6 +16,10 @@ class FilterBar extends Component {
 
   static defaultProps = {
     isActive: false,
+  };
+
+  static contextTypes = {
+    viewRef: PropTypes.shape(),
   };
 
   /**
@@ -58,6 +61,21 @@ class FilterBar extends Component {
   }
 
   /**
+   * Only re-render the component when a props/state change occurs.
+   * @param {Object} nextProps The next set of component props.
+   * @param {Object} nextState The next state of the component.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.isActive !== nextProps.isActive ||
+      this.state.offset !== nextState.offset ||
+      this.state.hasShadow !== nextState.hasShadow ||
+      this.state.spacerHeight !== nextState.spacerHeight
+    );
+  }
+
+  /**
    * Update the spacer height if the component updates.
    */
   componentDidUpdate() {
@@ -79,8 +97,7 @@ class FilterBar extends Component {
       return;
     }
 
-    this.scrollElement = getScrollParent(this.element);
-
+    this.scrollElement = this.context.viewRef;
     this.bindEvents();
   }
 
@@ -90,6 +107,8 @@ class FilterBar extends Component {
    * spacers total height.
    */
   setSpacerHeight = () => {
+    const element = this.element;
+
     if (!this.element) {
       return;
     }
@@ -99,7 +118,7 @@ class FilterBar extends Component {
      * this is triggered from the child components.
      */
     setTimeout(() => {
-      const height = this.element.offsetHeight;
+      const height = element.offsetHeight;
 
       if (height > 0 && height !== this.state.spacerHeight) {
         this.setState({ spacerHeight: height });
@@ -212,7 +231,7 @@ class FilterBar extends Component {
     // Control the scrolling of the filter bar by applying a transform style property.
     return {
       background: (this.props.isActive) ? colors.accent : colors.background,
-      color: (this.props.isActive) ? colors.light : 'inherit',
+      color: (this.props.isActive) ? colors.accentContrast : 'inherit',
       transform: `translate3d(0, ${this.state.offset}px, 0)`,
     };
   }

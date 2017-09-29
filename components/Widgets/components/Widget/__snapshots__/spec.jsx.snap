@@ -40,7 +40,7 @@ exports[`<Widget /> should render an image widget 1`] = `
       className=""
     >
       <div
-        className="position-absolute top-0 left-0 right-0 bottom-0 overflow-hidden"
+        className="css-4hpmhj"
       >
         <MyComponent
           ratio={

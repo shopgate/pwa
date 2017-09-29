@@ -11,39 +11,59 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
           "id": 83535,
           "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
         },
-        "type": "core-widgets/image",
+        "type": "@shopgate/commerce-widgets/image",
         "width": 12,
       },
     ]
   }
 >
   <div
-    className="bc-f7f7f7"
-  />
-</Widgets>
-`;
-
-exports[`<Widgets /> should render a grid if height is defined 1`] = `
-<Widgets
-  widgets={
-    Array [
-      Object {
-        "col": 0,
-        "height": 3,
-        "row": 0,
-        "settings": Object {
+    className="css-1w6nywo"
+  >
+    <ImageWidget
+      col={0}
+      row={0}
+      settings={
+        Object {
           "id": 83535,
           "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-        },
-        "type": "core-widgets/image",
-        "width": 12,
-      },
-    ]
-  }
->
-  <div
-    className="bc-f7f7f7"
-  />
+        }
+      }
+      type="@shopgate/commerce-widgets/image"
+      width={12}
+    >
+      <Image
+        alt={null}
+        animating={true}
+        backgroundColor="#f2f2f2"
+        className=""
+        forcePlaceholder={false}
+        highestResolutionLoaded={[Function]}
+        onError={null}
+        onLoad={null}
+        ratio={null}
+        resolutions={
+          Array [
+            Object {
+              "blur": 2,
+              "height": 50,
+              "width": 50,
+            },
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+        src="https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg"
+        transition={null}
+      >
+        <div
+          className="css-326p2s "
+        />
+      </Image>
+    </ImageWidget>
+  </div>
 </Widgets>
 `;
 
@@ -64,18 +84,146 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
                 "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
                 "link": "/category/",
               },
-              "type": "core-widgets/image",
+              "type": "@shopgate/commerce-widgets/image",
               "width": 12,
             },
           ],
         },
-        "type": "core-widgets/widget-grid",
+        "type": "@shopgate/commerce-widgets/widget-grid",
       },
     ]
   }
 >
   <div
-    className="bc-f7f7f7"
-  />
+    className="css-1w6nywo"
+  >
+    <WidgetGrid
+      config={
+        Array [
+          Object {
+            "col": 0,
+            "height": 5,
+            "row": 0,
+            "settings": Object {
+              "alt": "",
+              "id": "84961",
+              "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+              "link": "/category/",
+            },
+            "type": "@shopgate/commerce-widgets/image",
+            "width": 12,
+          },
+        ]
+      }
+    >
+      <div
+        className="css-12z1ntc"
+        style={
+          Object {
+            "height": "425px",
+          }
+        }
+      >
+        <Widget
+          cellSize={85}
+          component={[Function]}
+          config={
+            Object {
+              "col": 0,
+              "height": 5,
+              "row": 0,
+              "settings": Object {
+                "alt": "",
+                "id": "84961",
+                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                "link": "/category/",
+              },
+              "type": "@shopgate/commerce-widgets/image",
+              "width": 12,
+            }
+          }
+        >
+          <GridItem
+            className="css-147ej5f css-63oe3q  "
+            component="div"
+            grow={0}
+            shrink={1}
+          >
+            <div
+              className="css-147ej5f css-63oe3q  "
+            >
+              <div
+                className="css-4hpmhj"
+              >
+                <ImageWidget
+                  ratio={
+                    Array [
+                      12,
+                      5,
+                    ]
+                  }
+                  settings={
+                    Object {
+                      "alt": "",
+                      "id": "84961",
+                      "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                      "link": "/category/",
+                    }
+                  }
+                >
+                  <Link
+                    className="css-63oe3q"
+                    href="/category/"
+                  >
+                    <div
+                      className="css-c6ki83 css-63oe3q"
+                      onClick={[Function]}
+                      role="link"
+                    >
+                      <Image
+                        alt=""
+                        animating={true}
+                        backgroundColor="#f2f2f2"
+                        className=""
+                        forcePlaceholder={false}
+                        highestResolutionLoaded={[Function]}
+                        onError={null}
+                        onLoad={null}
+                        ratio={
+                          Array [
+                            12,
+                            5,
+                          ]
+                        }
+                        resolutions={
+                          Array [
+                            Object {
+                              "blur": 2,
+                              "height": 50,
+                              "width": 50,
+                            },
+                            Object {
+                              "height": 440,
+                              "width": 440,
+                            },
+                          ]
+                        }
+                        src="https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg"
+                        transition={null}
+                      >
+                        <div
+                          className="css-1vaevcm "
+                        />
+                      </Image>
+                    </div>
+                  </Link>
+                </ImageWidget>
+              </div>
+            </div>
+          </GridItem>
+        </Widget>
+      </div>
+    </WidgetGrid>
+  </div>
 </Widgets>
 `;

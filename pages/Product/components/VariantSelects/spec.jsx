@@ -15,10 +15,10 @@ window.requestAnimationFrame = () => {};
 
 // Mock <Portal>
 jest.mock('react-portal', () => ({ children }) => children);
-jest.mock('Templates/components/sheet/Sheet', () => ({ children }) => children);
+jest.mock('Components/Sheet', () => ({ children }) => children);
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('Library/connectors/routeGuard', () => (obj) => {
+jest.mock('@shopgate/pwa-common/components/Router/components/RouteGuard', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {

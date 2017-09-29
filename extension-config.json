@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0-beta7",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "language": {
@@ -65,6 +66,15 @@
         "service": "config",
         "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
         "key": "value"
+      }
+    },
+    "features": {
+      "type": "static",
+      "destination" : "frontend",
+      "params": {
+        "value" : {
+          "showReviews": true
+        }
       }
     }
   }

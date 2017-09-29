@@ -5,6 +5,9 @@ import ProductList from 'Components/ProductList';
 import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
 import Products from './index';
 
+// Mock the redux connect() method instead of providing a fake store.
+jest.mock('./connector', () => obj => obj);
+
 describe('<Products>', () => {
   const dummyProps = {
     handleGetProducts: () => {},

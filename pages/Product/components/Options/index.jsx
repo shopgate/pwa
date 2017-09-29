@@ -31,6 +31,24 @@ class Options extends Component {
   };
 
   /**
+   * Triggers setProductOptions when the component is mounted and has options set.
+   */
+  componentDidMount() {
+    if(!this.props.setProductOption || !this.props.options) {
+      return;
+    }
+
+    this.props.options.forEach((option) => {
+      // Only options of type 'select' have a default value. Type 'text' has no default.
+      if (option.type !== 'select') {
+        return;
+      }
+
+      this.props.setProductOption(option.id, option.items[0].value);
+    });
+  }
+
+  /**
    * When the component receives the product options
    * it will set the first value of each option as active
    * @param {Object} nextProps The incoming props.

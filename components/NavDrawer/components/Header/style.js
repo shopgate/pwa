@@ -10,7 +10,7 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  color: colors.light,
+  color: colors.accentContrast,
   marginBottom: 4,
 }).toString();
 

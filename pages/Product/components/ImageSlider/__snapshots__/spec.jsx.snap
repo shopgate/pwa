@@ -1,0 +1,432 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductImageSlider /> should render featured image if only product data a is available 1`] = `
+<ImageSlider
+  images={null}
+  onOpen={[Function]}
+  product={
+    Object {
+      "featuredImageUrl": "featured.png",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Hammer
+    direction="DIRECTION_ALL"
+    onPinchStart={[Function]}
+    onTap={[Function]}
+    options={
+      Object {
+        "recognizers": Object {
+          "pinch": Object {
+            "enable": true,
+          },
+        },
+        "touchAction": "pan-x pan-y",
+      }
+    }
+  >
+    <div>
+      <ProductImage
+        alt={null}
+        animating={true}
+        forcePlaceholder={false}
+        highestResolutionLoaded={[Function]}
+        ratio={null}
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+            Object {
+              "height": 1024,
+              "width": 1024,
+            },
+          ]
+        }
+        src="featured.png"
+      >
+        <Image
+          alt={null}
+          animating={true}
+          backgroundColor="#f2f2f2"
+          className=""
+          forcePlaceholder={false}
+          highestResolutionLoaded={[Function]}
+          onError={[Function]}
+          onLoad={null}
+          ratio={null}
+          resolutions={
+            Array [
+              Object {
+                "height": 440,
+                "width": 440,
+              },
+              Object {
+                "height": 1024,
+                "width": 1024,
+              },
+            ]
+          }
+          src="featured.png"
+          transition={null}
+        >
+          <div
+            className="css-326p2s "
+          />
+        </Image>
+      </ProductImage>
+    </div>
+  </Hammer>
+</ImageSlider>
+`;
+
+exports[`<ProductImageSlider /> should render image placeholder if no data is available 1`] = `
+<ImageSlider
+  images={null}
+  onOpen={[Function]}
+  product={null}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Hammer
+    direction="DIRECTION_ALL"
+    onPinchStart={[Function]}
+    onTap={[Function]}
+    options={
+      Object {
+        "recognizers": Object {
+          "pinch": Object {
+            "enable": true,
+          },
+        },
+        "touchAction": "pan-x pan-y",
+      }
+    }
+  >
+    <div>
+      <ProductImage
+        alt={null}
+        animating={true}
+        forcePlaceholder={true}
+        highestResolutionLoaded={[Function]}
+        ratio={null}
+        resolutions={
+          Array [
+            Object {
+              "height": 440,
+              "width": 440,
+            },
+            Object {
+              "height": 1024,
+              "width": 1024,
+            },
+          ]
+        }
+        src={null}
+      >
+        <div
+          className="css-y5kkpq"
+        >
+          <div
+            className="css-15j45j0"
+          >
+            <Placeholder
+              className="css-19rc2oq"
+            >
+              <Icon
+                className="css-19rc2oq"
+                color={null}
+                content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                size="inherit"
+                viewBox="0 0 24 24"
+              >
+                <svg
+                  className="css-yys9hb css-19rc2oq"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </Placeholder>
+          </div>
+        </div>
+      </ProductImage>
+    </div>
+  </Hammer>
+</ImageSlider>
+`;
+
+exports[`<ProductImageSlider /> should render image slider if all data is available 1`] = `
+<ImageSlider
+  images={
+    Array [
+      "foo/bar.png",
+      "bar/foo.png",
+    ]
+  }
+  onOpen={[Function]}
+  product={
+    Object {
+      "featuredImageUrl": "featured.png",
+    }
+  }
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Hammer
+    direction="DIRECTION_ALL"
+    onPinchStart={[Function]}
+    onTap={[Function]}
+    options={
+      Object {
+        "recognizers": Object {
+          "pinch": Object {
+            "enable": true,
+          },
+        },
+        "touchAction": "pan-x pan-y",
+      }
+    }
+  >
+    <div>
+      <ImageSlider
+        autoPlay={false}
+        className=""
+        classNames={Object {}}
+        controls={false}
+        disabled={false}
+        indicators={true}
+        initialSlide={0}
+        interval={3000}
+        loop={true}
+        onSlideChange={[Function]}
+        slidesPerView={1}
+        snapItems={true}
+      >
+        <Slider
+          autoPlay={false}
+          className=""
+          classNames={
+            Object {
+              "activeIndicator": "css-so6ht",
+              "container": "css-nil",
+              "inactiveIndicator": "css-1hipsfp",
+              "indicator": "css-17uszht",
+              "slide": "css-nil",
+              "slider": "css-1i764wo",
+            }
+          }
+          controls={false}
+          disabled={false}
+          indicators={true}
+          initialSlide={0}
+          interval={3000}
+          loop={true}
+          onSlideChange={[Function]}
+          slidesPerView={1}
+          snapItems={true}
+        >
+          <div
+            className="css-1hlki0z "
+          >
+            <ReactIdSwiper
+              autoplay={null}
+              bulletActiveClass="css-so6ht"
+              bulletClass="css-1hipsfp"
+              containerClass="sg-swiper-container css-rdsogp css-nil"
+              freeMode={false}
+              initialSlide={0}
+              loop={true}
+              nextButton={null}
+              onInit={[Function]}
+              onSlideChangeEnd={[Function]}
+              onTouchStart={[Function]}
+              onTransitionEnd={[Function]}
+              onTransitionStart={[Function]}
+              pagination=".css-17uszht"
+              paginationModifierClass="sg-swiper-pagination-"
+              prevButton={null}
+              slideClass="sg-swiper-slide"
+              slidesPerView={1}
+              wrapperClass="swiper-wrapper"
+            >
+              <div
+                className="sg-swiper-container css-rdsogp css-nil"
+              >
+                <div
+                  className="swiper-wrapper"
+                >
+                  <div
+                    className="sg-swiper-slide css-1l9a57c "
+                  >
+                    <SliderItem>
+                      <div
+                        className="css-10a4qrv"
+                      >
+                        <ProductImage
+                          alt={null}
+                          animating={false}
+                          forcePlaceholder={false}
+                          highestResolutionLoaded={[Function]}
+                          ratio={null}
+                          resolutions={
+                            Array [
+                              Object {
+                                "blur": 2,
+                                "height": 50,
+                                "width": 50,
+                              },
+                              Object {
+                                "height": 440,
+                                "width": 440,
+                              },
+                            ]
+                          }
+                          src="foo/bar.png"
+                        >
+                          <Image
+                            alt={null}
+                            animating={false}
+                            backgroundColor="#f2f2f2"
+                            className=""
+                            forcePlaceholder={false}
+                            highestResolutionLoaded={[Function]}
+                            onError={[Function]}
+                            onLoad={null}
+                            ratio={null}
+                            resolutions={
+                              Array [
+                                Object {
+                                  "blur": 2,
+                                  "height": 50,
+                                  "width": 50,
+                                },
+                                Object {
+                                  "height": 440,
+                                  "width": 440,
+                                },
+                              ]
+                            }
+                            src="foo/bar.png"
+                            transition={null}
+                          >
+                            <div
+                              className="css-326p2s "
+                            />
+                          </Image>
+                        </ProductImage>
+                      </div>
+                    </SliderItem>
+                  </div>
+                  <div
+                    className="sg-swiper-slide css-1l9a57c "
+                  >
+                    <SliderItem>
+                      <div
+                        className="css-10a4qrv"
+                      >
+                        <ProductImage
+                          alt={null}
+                          animating={false}
+                          forcePlaceholder={false}
+                          highestResolutionLoaded={[Function]}
+                          ratio={null}
+                          resolutions={
+                            Array [
+                              Object {
+                                "blur": 2,
+                                "height": 50,
+                                "width": 50,
+                              },
+                              Object {
+                                "height": 440,
+                                "width": 440,
+                              },
+                            ]
+                          }
+                          src="bar/foo.png"
+                        >
+                          <Image
+                            alt={null}
+                            animating={false}
+                            backgroundColor="#f2f2f2"
+                            className=""
+                            forcePlaceholder={false}
+                            highestResolutionLoaded={[Function]}
+                            onError={[Function]}
+                            onLoad={null}
+                            ratio={null}
+                            resolutions={
+                              Array [
+                                Object {
+                                  "blur": 2,
+                                  "height": 50,
+                                  "width": 50,
+                                },
+                                Object {
+                                  "height": 440,
+                                  "width": 440,
+                                },
+                              ]
+                            }
+                            src="bar/foo.png"
+                            transition={null}
+                          >
+                            <div
+                              className="css-326p2s "
+                            />
+                          </Image>
+                        </ProductImage>
+                      </div>
+                    </SliderItem>
+                  </div>
+                </div>
+                <div
+                  className="css-17uszht "
+                />
+              </div>
+            </ReactIdSwiper>
+          </div>
+        </Slider>
+      </ImageSlider>
+    </div>
+  </Hammer>
+</ImageSlider>
+`;

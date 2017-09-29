@@ -1,9 +1,10 @@
+import Color from 'color';
 import { isObject } from '@shopgate/pwa-common/helpers/validation';
 import { colors as customColors } from '../config/app';
 
 const overrides = isObject(customColors) ? { ...customColors } : {};
 
-export default {
+const colors = {
   background: '#f8f8f8',
   light: '#fff',
   dark: '#000',
@@ -25,3 +26,26 @@ export default {
   error: '#ff0000',
   ...overrides,
 };
+
+/**
+ * Calculates a contrast color for a given background color.
+ * The color will either be black or white depending on the perceived
+ * luminosity of the background color.
+ * @param {string} bgColor The background color.
+ * @returns {string} The contrast color.
+ */
+const getContrastColor = (bgColor) => {
+  // We set a rather high cutoff to prefer light text if possible.
+  const cutoff = 0.74;
+
+  // Calculate the perceived luminosity (relative brightness) of the color.
+  const perceivedLuminosity = Color(bgColor).luminosity();
+
+  return perceivedLuminosity >= cutoff ? colors.dark : colors.light;
+};
+
+// Define some additional computed colors.
+colors.primaryContrast = getContrastColor(colors.primary);
+colors.accentContrast = getContrastColor(colors.accent);
+
+export default colors;
