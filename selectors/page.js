@@ -87,7 +87,6 @@ const getPageTrackingName = createSelector(
  */
 export default createSelector(
   getTrackingUrl,
-  getPageTitle,
   getPageTrackingName,
   (link, title, name) => ({
     link,
