@@ -5,7 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { initPersistentStorage, persist } from './persistent';
+import {
+  initPersistentStorage,
+  persist,
+  normalizeState,
+} from './persistent';
 
 const localStorageMock = global.window.localStorage;
 
@@ -83,5 +87,43 @@ describe('Persistent State storage', () => {
       });
       done();
     }, 2000);
+  });
+
+  it('should not persist isFetching flags that are true', () => {
+    const testState = {
+      foo: {
+        bar: {
+          isFetching: true,
+          baz: [
+            { isFetching: true },
+            { qux: { isFetching: true } },
+          ],
+        },
+        isFetching: {
+          foolMeOnce: {
+            isFetching: true,
+          },
+        },
+      },
+    };
+
+    const expectedState = {
+      foo: {
+        bar: {
+          isFetching: false,
+          baz: [
+            { isFetching: false },
+            { qux: { isFetching: false } },
+          ],
+        },
+        isFetching: {
+          foolMeOnce: {
+            isFetching: false,
+          },
+        },
+      },
+    };
+
+    expect(normalizeState(testState)).toEqual(expectedState);
   });
 });
