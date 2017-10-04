@@ -7,7 +7,6 @@
 
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import openLink from '../action-creators/history/openLink';
 import redirectRoute from '../actions/history/redirectRoute';
 import resetHistory from '../actions/history/resetHistory';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
@@ -38,8 +37,5 @@ export default function history(subscribe) {
   subscribe(appDidStart$, ({ dispatch }) => {
     registerEvents(['backToHomepage']);
     event.addCallback('backToHomepage', () => dispatch(resetHistory()));
-    event.addCallback('openLink', handler =>
-      dispatch(openLink(handler.action, handler.options))
-    );
   });
 }

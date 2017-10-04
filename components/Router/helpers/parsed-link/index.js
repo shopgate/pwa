@@ -7,7 +7,7 @@
 
 import event from '@shopgate/pwa-core/classes/Event';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { history as defaultHistory } from '../../helpers/router';
+import { history as defaultHistory } from '../../../../helpers/router';
 import options from './options';
 import actions from './actions';
 

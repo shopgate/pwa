@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { APP_START } from '../../constants/ActionTypes';
+import { APP_DID_START } from '../../constants/ActionTypes';
 
 /**
- * Creates the dispatched APP_START action object.
+ * Creates the dispatched APP_DID_START action object.
  * @returns {Object} The dispatched action object.
  */
-const appStart = () => ({
-  type: APP_START,
+const appDidStart = () => ({
+  type: APP_DID_START,
 });
 
-export default appStart;
+export default appDidStart;

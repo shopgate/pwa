@@ -10,13 +10,13 @@ import { OPEN_LINK } from '../../constants/ActionTypes';
 /**
  * Creates the OPEN_LINK action object.
  * @param {Object} name The link action name.
- * @param {Object} params The link action parameters.
+ * @param {Object} options The link action options.
  * @returns {Object} A redux action.
  */
-const openLink = (name, params) => ({
+const openLink = (name, options) => ({
   type: OPEN_LINK,
   name,
-  params,
+  options,
 });
 
 export default openLink;

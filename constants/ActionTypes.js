@@ -15,7 +15,8 @@ export const ERROR_CLIENT_INFORMATION = 'ERROR_CLIENT_INFORMATION';
 /**
  * ------- APP -------
  */
-export const APP_START = 'APP_START';
+export const APP_DID_START = 'APP_DID_START';
+export const APP_WILL_START = 'APP_WILL_START';
 
 /**
  * ------- MENU -------
