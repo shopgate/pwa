@@ -35,9 +35,7 @@ const registerVersion = (reducerName, version) => {
 };
 
 /**
- * Normalizes a state that was restored from the persistent storage. It's supposed to take care that
- * no data reaches the recovered state, which is only relevant during runtime and could influence
- * the behavior of an app session which was just (re)started.
+ * Normalizes the restored state to be predictable and non-breaking.
  * @param {Object} state The state.
  * @return {Object} The normalized state that is safe to persist.
  */
@@ -53,9 +51,8 @@ export const normalizeState = (state) => {
   }
 
   /**
-   * Run recursively through the passed state and set the isFetching property to false. This helps
-   * to avoid that expired data from a persisted state isn't re-requested because the logic assumes,
-   * that a related request is currently ongoing.
+   * Traverse the passed state and set any isFetching property to false. This avoids any false
+   * positives when determining if requests are ongoing.
    */
   return Object.keys(state).reduce((newState, key) => {
     if (key === 'isFetching' && typeof state[key] === 'boolean') {
