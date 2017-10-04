@@ -73,6 +73,7 @@ class AppCommand {
 
       const devServerCommands = [
         'sendPipelineRequest',
+        'sendHttpRequest',
         'sendDataRequest',
         'getWebStorageEntry',
       ];
