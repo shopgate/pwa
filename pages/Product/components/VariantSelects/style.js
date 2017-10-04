@@ -6,28 +6,13 @@
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const availability = {
+const availability = css({
   marginRight: variables.gap.big,
   minWidth: 100,
-};
-
-const availabilities = {
-  alert: css({
-    ...availability,
-    color: colors.error,
-  }).toString(),
-  ok: css({
-    ...availability,
-  }).toString(),
-  warning: css({
-    ...availability,
-    color: colors.warning,
-  }).toString(),
-};
+}).toString();
 
 export default {
-  availabilities,
+  availability,
 };
