@@ -10,7 +10,7 @@ import {
   HISTORY_PUSH_ACTION,
   HISTORY_POP_ACTION,
   HISTORY_REPLACE_ACTION,
-} from '../../../constants/ActionTypes';
+} from '../../../../constants/ActionTypes';
 
 /**
  * Manges the full history stack

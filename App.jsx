@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import initSubscribers from './subscriptions';
-import appStart from './action-creators/app/appStart';
+import appDidStart from './action-creators/app/appDidStart';
+import appWillStart from './action-creators/app/appWillStart';
 import { syncHistoryWithStore } from './helpers/redux';
 import { history } from './helpers/router';
 import HistoryStack from './components/Router/helpers/HistoryStack';
@@ -42,7 +43,12 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
 
+    // Initialize the subscriptions to observable streams.
+    initSubscribers(this.props.subscribers);
+
     this.store = configureStore(props.reducers);
+
+    this.store.dispatch(appWillStart(history.location));
 
     // Start synchronization of the history stack.
     this.historyStack = new HistoryStack({
@@ -58,10 +64,7 @@ class App extends PureComponent {
    * Registers the component for the native events and fires the onload AppCommand.
    */
   componentDidMount() {
-    // Initialize the subscriptions to observable streams.
-    initSubscribers(this.props.subscribers);
-
-    this.store.dispatch(appStart());
+    this.store.dispatch(appDidStart());
 
     // Start synchronization of history and redux store.
     syncHistoryWithStore(history, this.store, this.historyStack);

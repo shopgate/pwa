@@ -15,7 +15,8 @@ export const ERROR_CLIENT_INFORMATION = 'ERROR_CLIENT_INFORMATION';
 /**
  * ------- APP -------
  */
-export const APP_START = 'APP_START';
+export const APP_DID_START = 'APP_DID_START';
+export const APP_WILL_START = 'APP_WILL_START';
 
 /**
  * ------- MENU -------
@@ -47,6 +48,7 @@ export const HISTORY_PUSH_ACTION = 'PUSH';
 export const HISTORY_POP_ACTION = 'POP';
 export const HISTORY_REPLACE_ACTION = 'REPLACE';
 export const HISTORY_SET_REDIRECT_LOCATION = 'HISTORY_SET_REDIRECT_LOCATION';
+export const OPEN_LINK = 'OPEN_LINK';
 
 /**
  * ------- MODALS -------

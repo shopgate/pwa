@@ -13,8 +13,6 @@ import ParsedLink from '../parsed-link';
 
 const PUSH_MESSAGE_OPENED = 'ajax_push_message_opened';
 
-registerEvents(['openPushNotification', 'openDeepLink']);
-
 /**
  * Handler for the openPushNotification event
  * @param {Object} payload The event payload
@@ -58,6 +56,7 @@ const handleOpenDeepLink = (payload = {}) => {
  * Attaches all link event related listeners
  */
 const attachLinkEvents = () => {
+  registerEvents(['openPushNotification', 'openDeepLink']);
   event.addCallback('openPushNotification', handleOpenPushNotification);
   event.addCallback('openDeepLink', handleOpenDeepLink);
 };

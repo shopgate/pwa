@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ParsedLink from '../../helpers/parsed-link';
+import ParsedLink from '../Router/helpers/parsed-link';
 import parseHTML from '../../helpers/html/parseHTML';
 
 /**
