@@ -7,12 +7,10 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import View from 'Components/View';
 import List from 'Components/Reviews/components/List';
 import LoadMoreButton from './components/LoadMore';
 import connect from './connector';
-import { REVIEW_ITEMS_PER_PAGE } from './constants';
 
 /**
  * All reviews page component.
@@ -31,8 +29,6 @@ class Reviews extends Component {
    * @return {{fetchReviews: (*|shim)}}
    */
   static propTypes = {
-    fetchReviews: PropTypes.func.isRequired,
-    params: PropTypes.shape().isRequired,
     reviews: PropTypes.arrayOf(PropTypes.shape()),
   };
 
@@ -43,15 +39,6 @@ class Reviews extends Component {
   static defaultProps = {
     reviews: [],
   };
-
-  /**
-   * Fetch the first reviews bundle.
-   */
-  componentDidMount() {
-    const { productId } = this.props.params;
-    // ProductId comes from url here, need to encode it first.
-    this.props.fetchReviews(hex2bin(productId), REVIEW_ITEMS_PER_PAGE, 0);
-  }
 
   /**
    * A title translation string.
@@ -69,8 +56,8 @@ class Reviews extends Component {
   render() {
     return (
       <View title={this.title}>
-        <List reviews={this.props.reviews}/>
-        <LoadMoreButton/>
+        <List reviews={this.props.reviews} />
+        <LoadMoreButton />
       </View>
     );
   }
