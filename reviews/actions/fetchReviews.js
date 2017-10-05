@@ -11,7 +11,6 @@ import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { logger } from '@shopgate/pwa-core/helpers';
 import requestProductReviewsList from '../action-creators/requestReviews';
 import receiveProductReviewsList from '../action-creators/receiveReviews';
-import setProductId from '../../product/action-creators/setProductId';
 import errorProductReviewsList from '../action-creators/errorReviews';
 
 /**
@@ -23,7 +22,6 @@ import errorProductReviewsList from '../action-creators/errorReviews';
  * @returns {Function} The dispatched action.
  */
 const fetchReviews = (productId, limit = 2, offset = 0, sort = SORT_DATE_DESC) => (dispatch) => {
-  dispatch(setProductId(productId));
   const hash = generateResultHash({
     pipeline: 'getProductReviews',
     productId,
