@@ -30,7 +30,7 @@ const link = css({
   fontWeight: 500,
 }).toString();
 
-export default {
+export {
   container,
   link,
 };
