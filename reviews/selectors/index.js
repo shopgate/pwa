@@ -38,6 +38,13 @@ const getCollectionForCurrentProductId = createSelector(
   }
 );
 /**
+ * Select the product reviews state
+ * @param {Object} state The current application state.
+ * @return {Object} The product reviews state.
+ */
+const getProductReviewsState = state => state.reviews.reviewsByProductId;
+
+/**
  * Retrieves the reviews collection which contains all reviews data.
  * @param {Object} state The current application state.
  * @return {Object} The reviews collection stored as reviewId => review pairs.
@@ -49,6 +56,44 @@ export const getReviews = (state) => {
   return state.reviews.reviewsById || {};
 };
 
+/**
+ * Retrieves the current product reviews.
+ * @param {Object} state The current application state.
+ * @return {Object} The reviews for a product
+ */
+export const getProductReviews = createSelector(
+  getCurrentProductId,
+  getProductReviewsState,
+  getReviews,
+  (productId, productReviewsState, reviewsState) => {
+    const collection = productReviewsState[productId];
+
+    if (!collection || !collection.reviews) {
+      return null;
+    }
+
+    return collection.reviews.map(id => reviewsState[id]);
+  }
+);
+
+/**
+ * Retrieves the number of reviews for a product
+ * @param {Object} state The current application state.
+ * @return {number} The total review count for a product
+ */
+export const getProductReviewCount = createSelector(
+  getCurrentProductId,
+  getProductReviewsState,
+  (productId, reviewsState) => {
+    const collection = reviewsState[productId];
+
+    if (!collection || !collection.totalReviewCount) {
+      return null;
+    }
+
+    return collection.totalReviewCount;
+  }
+);
 /**
  * Retrieves the current product reviews.
  * @param {Object} state The current application state.

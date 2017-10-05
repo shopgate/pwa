@@ -6,6 +6,7 @@
  */
 
 import {
+  RECEIVE_PRODUCT_REVIEWS,
   RECEIVE_REVIEWS,
 } from '../constants';
 
@@ -17,6 +18,7 @@ import {
  */
 function reviewsById(state = {}, action) {
   switch (action.type) {
+    case RECEIVE_PRODUCT_REVIEWS:
     case RECEIVE_REVIEWS: {
       const nextReviews = action.reviews || [];
       return nextReviews.reduce((currentReviews, review) => ({
