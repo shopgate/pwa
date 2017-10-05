@@ -9,9 +9,7 @@ import PropTypes from 'prop-types';
 import ActionButton from 'Components/ActionButton';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import connect from './connector';
-import {
-  REVIEW_ITEMS_PER_PAGE,
-} from '../../constants';
+import { REVIEW_ITEMS_PER_PAGE } from '../../constants';
 
 /**
  * Load more button for reviews list.
@@ -28,6 +26,7 @@ class LoadMore extends Component {
     productId: PropTypes.string,
     totalReviewCount: PropTypes.number,
   };
+
   /**
    * Default props.
    * @type {Object} Default props.

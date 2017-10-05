@@ -4,6 +4,7 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 const mockedProduct = {
   productId: 'foo',
 };
@@ -21,7 +22,7 @@ const mockedProductWithRating = {
  * @param {string|number} id Anything that can be an id.
  * @return {Object}
  */
-export const makeReview = id => ({
+export const mockReview = id => ({
   id,
   author: '',
   date: '2017-09-06T12:38:51.000Z',
@@ -45,10 +46,10 @@ export const mockedStateWithAll = {
     reviewsByProductId: {
       foo: {
         reviews: [
-          makeReview(1),
-          makeReview(2),
-          makeReview(3),
-          makeReview(4),
+          mockReview(1),
+          mockReview(2),
+          mockReview(3),
+          mockReview(4),
         ],
         totalReviewCount: 4,
       },

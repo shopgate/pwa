@@ -17,8 +17,8 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  totalReviewCount: getProductReviewCount(state),
   productId: getCurrentProductId(state),
+  totalReviewCount: getProductReviewCount(state),
 });
 
 export default connect(mapStateToProps);

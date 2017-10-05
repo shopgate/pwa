@@ -4,6 +4,7 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
@@ -11,11 +12,10 @@ import View from 'Components/View';
 import List from 'Components/Reviews/components/List';
 import LoadMoreButton from './components/LoadMore';
 import connect from './connector';
-import {
-  REVIEW_ITEMS_PER_PAGE,
-} from './constants';
+import { REVIEW_ITEMS_PER_PAGE } from './constants';
+
 /**
- *
+ * All reviews page component.
  */
 class Reviews extends Component {
   /**
@@ -25,6 +25,7 @@ class Reviews extends Component {
   static contextTypes = {
     i18n: PropTypes.func,
   };
+
   /**
    * PropTypes definition
    * @return {{fetchReviews: (*|shim)}}
@@ -39,7 +40,7 @@ class Reviews extends Component {
    * Reviews are empty array as default.
    * @return {{reviews: Array}}
    */
-  static defaultProps ={
+  static defaultProps = {
     reviews: [],
   };
 
@@ -53,22 +54,23 @@ class Reviews extends Component {
   }
 
   /**
-   * Gets a title translations.
+   * A title translation string.
    * @returns {string} Title
    */
-  getTitle() {
+  get title() {
     const { __ } = this.context.i18n();
     return __('titles.reviews');
   }
+
   /**
    * Renders the component
    * @returns {JSX}
    */
   render() {
     return (
-      <View title={this.getTitle()}>
-        <List reviews={this.props.reviews} />
-        <LoadMoreButton />
+      <View title={this.title}>
+        <List reviews={this.props.reviews}/>
+        <LoadMoreButton/>
       </View>
     );
   }

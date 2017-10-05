@@ -13,7 +13,7 @@ import variables from 'Styles/variables';
  * Styles for a link parent container.
  * @type {string}
  */
-export const containerStyle = css({
+const container = css({
   textAlign: 'right',
 });
 
@@ -21,7 +21,7 @@ export const containerStyle = css({
  * Styles for all reviews link.
  * @type {string}
  */
-export const linkStyle = css({
+const link = css({
   color: colors.primary,
   display: 'inline-block',
   textTransform: 'uppercase',
@@ -29,3 +29,8 @@ export const linkStyle = css({
   padding: `${variables.gap.big}px`,
   fontWeight: 500,
 }).toString();
+
+export default {
+  container,
+  link,
+};

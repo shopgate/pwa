@@ -2375,19 +2375,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             productId="foo"
             totalReviewCount={4}
           >
-            <div
-              className={
-                Object {
-                  "data-css-syjz65": "",
-                }
-              }
-            >
+            <div>
               <Link
-                className="css-5nk6gc"
+                className=""
                 href="/item/666f6f/reviews"
               >
                 <div
-                  className="css-c6ki83 css-5nk6gc"
+                  className="css-c6ki83 "
                   onClick={[Function]}
                   role="link"
                 >
@@ -3763,7 +3757,36 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
             dispatch={[Function]}
             productId="foo"
             totalReviewCount={2}
-          />
+          >
+            <div>
+              <Link
+                className=""
+                href="/item/666f6f/reviews"
+              >
+                <div
+                  className="css-c6ki83 "
+                  onClick={[Function]}
+                  role="link"
+                >
+                  <Translate
+                    className=""
+                    params={
+                      Object {
+                        "count": 2,
+                      }
+                    }
+                    string="reviews.button_all"
+                  >
+                    <span
+                      className=""
+                    >
+                      reviews.button_all
+                    </span>
+                  </Translate>
+                </div>
+              </Link>
+            </div>
+          </AllReviewsLink>
         </Connect(AllReviewsLink)>
       </div>
     </Reviews>

@@ -16,10 +16,10 @@ import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchRev
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  totalReviewCount: getReviewsTotalCount(state),
   currentReviewCount: getCurrentReviewCount(state),
-  productId: getCurrentProductId(state),
   isFetching: getReviewsFetchingState(state),
+  productId: getCurrentProductId(state),
+  totalReviewCount: getReviewsTotalCount(state),
 });
 
 /**

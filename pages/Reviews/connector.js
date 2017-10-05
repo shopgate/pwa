@@ -7,7 +7,7 @@
 
 import { connect } from 'react-redux';
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { getReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
+import { getCurrentProductReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -15,7 +15,7 @@ import { getReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  reviews: getReviews(state),
+  reviews: getCurrentProductReviews(state),
 });
 
 /**

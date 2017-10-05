@@ -10,27 +10,29 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import { REVIEW_PREVIEW_LIMIT } from 'Pages/Product/constants';
+import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
 import connect from './connector';
 import {
-  containerStyle,
-  linkStyle,
+  container,
+  link,
 } from './style';
 
 /**
  * Link to all reviews.
- * @param {string} productId ProductId.
- * @param {number} totalReviewCount The number of reviews given.
+ * @param {string} productId The product id.
+ * @param {number} totalReviewCount The total number of reviews for the product.
  * @returns {JSX|null}
  */
 const AllReviewsLink = ({ productId, totalReviewCount }) => {
-  if (totalReviewCount <= REVIEW_PREVIEW_LIMIT) {
+  if (totalReviewCount <= REVIEW_PREVIEW_COUNT) {
     return null;
   }
+
   const publicProductId = bin2hex(productId);
+
   return (
-    <div className={containerStyle}>
-      <Link href={`/item/${publicProductId}/reviews`} className={linkStyle}>
+    <div className={container}>
+      <Link href={`/item/${publicProductId}/reviews`} className={link}>
         <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
       </Link>
     </div>

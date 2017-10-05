@@ -15,6 +15,7 @@ import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import search from 'Pages/Search/subscriptions';
+import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import app from './subscriptions';
 
@@ -31,4 +32,5 @@ export default [
   filterbar,
   login,
   search,
+  reviews,
 ];
