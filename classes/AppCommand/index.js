@@ -73,6 +73,7 @@ class AppCommand {
 
       const devServerCommands = [
         'sendPipelineRequest',
+        'sendHttpRequest',
         'sendDataRequest',
         'getWebStorageEntry',
       ];
@@ -108,8 +109,14 @@ class AppCommand {
    * @private
    */
   sendDevCommand() {
-    // Append a suffix for certain endpoints.
-    const suffix = this.command.c === 'getWebStorageEntry' ? 'web_storage' : '';
+    // Append an optional suffix for special command related endpoints
+    let suffix = '';
+
+    if (this.command.c === 'getWebStorageEntry') {
+      suffix = 'web_storage';
+    } else if (this.command.c === 'sendHttpRequest') {
+      suffix = 'http_request';
+    }
 
     const url = `http://${process.env.IP}:${process.env.PORT}/${suffix}`;
     const options = {
@@ -134,24 +141,19 @@ class AppCommand {
           let args = [];
 
           /**
-           * The server returns a response command for each request command.
-           * If the native app receives a response command, it calls a related event within the
-           * WebView.
-           * Here the response parameters are sorted in a specified order for each different
-           * type of response event.
+           * The server returns a response command for a request command.
+           * If the native app receives such a command, it calls a related event within the
+           * webviews. Here the response parameters are sorted in the specified order for
+           * the different response events.
            */
-          switch (name) {
-            case 'pipelineResponse':
-              args = [params.error, params.serial, params.output];
-              break;
-            case 'dataResponse':
-              args = [params.serial, params.status, params.body, params.bodyContentType];
-              break;
-            case 'webStorageResponse':
-              args = [params.serial, params.age, params.value];
-              break;
-            default:
-              break;
+          if (name === 'pipelineResponse') {
+            args = [params.error, params.serial, params.output];
+          } else if (name === 'httpResponse') {
+            args = [params.error, params.serial, params.response];
+          } else if (name === 'dataResponse') {
+            args = [params.serial, params.status, params.body, params.bodyContentType];
+          } else if (name === 'webStorageResponse') {
+            args = [params.serial, params.age, params.value];
           }
 
           event.call(name, args);
