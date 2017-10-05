@@ -24,15 +24,20 @@ const handlePushNotification = (payload = {}) => (dispatch) => {
   const { link = '', notificationId = null } = payload;
 
   if (notificationId) {
-    dispatch(openPushNotification());
+    const id = notificationId.toString();
+
+    dispatch(openPushNotification(id));
 
     new DataRequest(PUSH_MESSAGE_OPENED)
-      .setPayload({ notificationId: notificationId.toString() })
+      .setPayload({ notificationId: id })
       .dispatch()
-        .then(result => dispatch(successOpenPushNotification(result)))
+        .then(result => dispatch(successOpenPushNotification({
+          notificationId: id,
+          result,
+        })))
         .catch((error) => {
           logger.error(error);
-          dispatch(errorOpenPushNotification(notificationId.toString()));
+          dispatch(errorOpenPushNotification(id));
         });
   }
 
