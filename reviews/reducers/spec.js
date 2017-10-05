@@ -4,6 +4,7 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 import {
   RECEIVE_REVIEWS,
   REQUEST_REVIEWS,
@@ -20,18 +21,19 @@ import reducers from './index';
 
 describe('Reviews reducers', () => {
   const hash = 'foo';
+  let state = {};
+
   /**
    * Helper function for comparing changed state against expected shape.
-   * @param {Object} state State.
+   * @param {Object} receivedState State.
    * @param {number} expectedReviewsLength How many reviews should be stored.
    */
-  const analyzeReceivedState = (state, expectedReviewsLength = totalReviewCount) => {
-    expect(state.reviewsByHash[hash].totalReviewCount).toBe(totalReviewCount);
-    expect(state.reviewsByHash[hash].reviews).toBeInstanceOf(Array);
-    expect(state.reviewsByHash[hash].reviews).toBeInstanceOf(Array);
-    expect(state.reviewsByHash[hash].reviews).toHaveLength(expectedReviewsLength);
+  const analyzeReceivedState = (receivedState, expectedReviewsLength = totalReviewCount) => {
+    expect(receivedState.reviewsByHash[hash].totalReviewCount).toBe(totalReviewCount);
+    expect(receivedState.reviewsByHash[hash].reviews).toBeInstanceOf(Array);
+    expect(receivedState.reviewsByHash[hash].reviews).toBeInstanceOf(Array);
+    expect(receivedState.reviewsByHash[hash].reviews).toHaveLength(expectedReviewsLength);
   };
-  let state = {};
   describe(REQUEST_REVIEWS, () => {
     it('should manipulate state when REQUEST_REVIEWS', () => {
       state = reducers(state, {

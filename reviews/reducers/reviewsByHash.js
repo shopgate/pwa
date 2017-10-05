@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import uniqBy from 'lodash/uniqBy';
+import uniq from 'lodash/uniq';
 import {
   REVIEWS_LIFETIME,
   REQUEST_REVIEWS,
@@ -19,7 +19,7 @@ import {
  * @param {Object} action The current redux action.
  * @return {Object} The new state.
  */
-export default function reviewsByHash(state = {}, action) {
+function reviewsByHash(state = {}, action) {
   switch (action.type) {
     case REQUEST_REVIEWS:
       return {
@@ -31,7 +31,7 @@ export default function reviewsByHash(state = {}, action) {
         },
       };
     case RECEIVE_REVIEWS: {
-      const { reviews } = state[action.hash];
+      const reviews = state[action.hash].reviews || {};
       const nextReviews = action.reviews || [];
 
       /**
@@ -39,13 +39,10 @@ export default function reviewsByHash(state = {}, action) {
        * its set to empty array, otherwise it will be an array of the previous and the
        * new reviews. Duplicates are removed.
        */
-      const stateReviews = (reviews || nextReviews.length) ? uniqBy(
-        [
-          ...(reviews || []),
-          ...nextReviews,
-        ],
-        'id'
-      ) : [];
+      const stateReviews = (reviews || nextReviews.length) ? uniq([
+        ...reviews,
+        ...nextReviews.map(review => review.id),
+      ]) : [];
 
       return {
         ...state,
@@ -72,3 +69,5 @@ export default function reviewsByHash(state = {}, action) {
       return state;
   }
 }
+
+export default reviewsByHash;

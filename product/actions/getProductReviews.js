@@ -7,6 +7,7 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import requestProductReviews from '../action-creators/requestProductReviews';
 import receiveProductReviews from '../action-creators/receiveProductReviews';
 import errorProductReviews from '../action-creators/errorProductReviews';
@@ -18,7 +19,7 @@ import errorProductReviews from '../action-creators/errorProductReviews';
  * @param {string} sort Sorting: 'relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'
  * @returns {Function} The dispatched action.
  */
-const getProductReviews = (productId, limit = 2, sort = 'relevance') => (dispatch) => {
+const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (dispatch) => {
   dispatch(requestProductReviews(productId, limit));
 
   new PipelineRequest('getProductReviews')

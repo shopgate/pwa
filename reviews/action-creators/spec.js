@@ -16,19 +16,14 @@ import {
 
 const hash = 'foo';
 const productId = '1';
-const limit = 20;
-const offset = 0;
 
 describe('Reviews action-creators', () => {
   describe('errorReviews', () => {
     it('should return correct action', () => {
-      const action = errorReviews(hash, productId, limit, offset);
+      const action = errorReviews(hash);
       expect(action).toEqual({
         type: ERROR_REVIEWS,
         hash,
-        productId,
-        limit,
-        offset,
       });
     });
   });
@@ -48,13 +43,10 @@ describe('Reviews action-creators', () => {
   });
   describe('requestReviews', () => {
     it('should return correct action', () => {
-      const action = requestReviews(hash, productId, limit, offset);
+      const action = requestReviews(hash);
       expect(action).toEqual({
         type: REQUEST_REVIEWS,
         hash,
-        productId,
-        limit,
-        offset,
       });
     });
   });

@@ -4,28 +4,31 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getCurrentProductId } from '../../product/selectors/product';
+
 /**
  * Select the product reviews state.
  * @param {Object} state The current application state.
  * @return {Object} The product reviews state.
  */
-const getReviewsState = state => state.reviews.reviewsByHash;
+const getReviewsByHashState = state => state.reviews.reviewsByHash;
 
 /**
- * Retrieves the collection of reviews for current productId.
+ * Retrieves the fetching state for the current product's reviews.
  * @param {Object} state The current application state.
  * @return {Object|null} The reviews for a product.
  */
 const getCollectionForCurrentProductId = createSelector(
   getCurrentProductId,
-  getReviewsState,
+  getReviewsByHashState,
   (productId, reviewsState) => {
     const hash = generateResultHash({
+      pipeline: 'getProductReviews',
       productId,
-    });
+    }, false);
 
     if (reviewsState.hasOwnProperty(hash)) {
       return reviewsState[hash];
@@ -34,20 +37,31 @@ const getCollectionForCurrentProductId = createSelector(
     return null;
   }
 );
+/**
+ * Retrieves the reviews collection which contains all reviews data.
+ * @param {Object} state The current application state.
+ * @return {Object} The reviews collection stored as reviewId => review pairs.
+ */
+export const getReviews = (state) => {
+  if (!state.reviews) {
+    return {};
+  }
+  return state.reviews.reviewsById || {};
+};
 
 /**
  * Retrieves the current product reviews.
  * @param {Object} state The current application state.
  * @return {Array|null} The reviews for a product.
  */
-export const getReviews = createSelector(
+export const getCurrentProductReviews = createSelector(
   getCollectionForCurrentProductId,
-  (collection) => {
+  getReviews,
+  (collection, allReviews) => {
     if (!collection || !collection.reviews) {
       return [];
     }
-
-    return collection.reviews;
+    return collection.reviews.map(id => allReviews[id]);
   }
 );
 

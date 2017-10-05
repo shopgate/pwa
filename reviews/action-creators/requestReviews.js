@@ -10,17 +10,11 @@ import { REQUEST_REVIEWS } from '../constants';
 /**
  * Dispatches the REQUEST_REVIEWS action.
  * @param {string} hash Generated hash.
- * @param {string} productId The ID of the product
- * @param {number} limit The maximum number of reviews
- * @param {number} offset The list offset.
  * @returns {Object} The REQUEST_PRODUCT_REVIEWS action
  */
-const requestReviews = (hash, productId, limit, offset) => ({
+const requestReviews = hash => ({
   type: REQUEST_REVIEWS,
   hash,
-  productId,
-  limit,
-  offset,
 });
 
 export default requestReviews;
