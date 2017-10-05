@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { connect } from 'react-redux';
+import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import disableNavigator from 'Components/Navigator/actions/disableNavigator';
 import enableNavigator from 'Components/Navigator/actions/enableNavigator';
