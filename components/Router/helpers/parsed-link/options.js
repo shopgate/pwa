@@ -121,6 +121,13 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
       });
       break;
 
+    case 'cart_add_coupon':
+      this.addLinkAction('pushNotification', {
+        url,
+        queryParams,
+      });
+      break;
+
     case 'checkout_legacy':
       this.addLinkAction('legacyLink', {
         targetTab: 'cart',
