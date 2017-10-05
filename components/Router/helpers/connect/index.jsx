@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect as reduxConnect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
 
 /**
@@ -20,7 +20,7 @@ import isEqual from 'lodash/isEqual';
  * @param {Object} options The connect options.
  * @return {function} The connected component.
  */
-const routedConnect = (
+const connect = (
   mapStateToProps = null,
   mapDispatchToProps = null,
   mergeProps = null,
@@ -50,7 +50,7 @@ const routedConnect = (
   };
 
   // Wrap the real connect method with the local map state to props callback.
-  const realConnect = connect(
+  const realConnect = reduxConnect(
     localMapStateToProps,
     mapDispatchToProps,
     mergeProps,
@@ -71,6 +71,8 @@ const routedConnect = (
     static contextTypes = {
       routePath: PropTypes.string,
     };
+
+    static displayName = 'SGConnect';
 
     /**
      * Only allows component updates when the current route matches the components mounting route.
@@ -107,16 +109,17 @@ const routedConnect = (
       return this.myRef;
     }
 
+    setRef = (element) => {
+      this.myRef = element;
+    }
+
     /**
      * Renders the component.
      * @return {Node} The rendered component.
      */
     render() {
       return (
-        <WrappedComponent
-          {...this.props}
-          ref={(element) => { this.myRef = element; }}
-        />
+        <WrappedComponent {...this.props} ref={this.setRef} />
       );
     }
   };
@@ -125,4 +128,4 @@ const routedConnect = (
   return RealComponent => realConnect(componentWrapper(RealComponent));
 };
 
-export default routedConnect;
+export default connect;
