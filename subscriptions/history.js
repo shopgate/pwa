@@ -18,6 +18,14 @@ import { appDidStart$ } from '../streams/app';
  */
 export default function history(subscribe) {
   /**
+   * Gets triggered when the app starts.
+   */
+  subscribe(appDidStart$, ({ dispatch }) => {
+    registerEvents(['backToHomepage']);
+    event.addCallback('backToHomepage', () => dispatch(resetHistory()));
+  });
+
+  /**
    * Gets triggered when the user did log in.
    */
   subscribe(userDidLogin$, ({ dispatch }) => {
@@ -29,13 +37,5 @@ export default function history(subscribe) {
    */
   subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(resetHistory());
-  });
-
-  /**
-   * Gets triggered when the app starts.
-   */
-  subscribe(appDidStart$, ({ dispatch }) => {
-    registerEvents(['backToHomepage']);
-    event.addCallback('backToHomepage', () => dispatch(resetHistory()));
   });
 }
