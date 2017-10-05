@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isFunction } from '../../../../helpers/validation';
-import RouteContent from './components/Content';
+import RouteContentWrapper from './components/Content';
 import getChildInstance from '../../helpers/getChildInstance';
 
 /**
@@ -19,7 +19,7 @@ import getChildInstance from '../../helpers/getChildInstance';
  * @param {Object} componentProps The component properties.
  */
 const wrapHostedComponent = (route, hostedComponent, wrappedComponent, componentProps) => {
-  const WrappedComponent = RouteContent(wrappedComponent);
+  const WrappedComponent = RouteContentWrapper(wrappedComponent);
 
   const newHostedComponent = hostedComponent;
   newHostedComponent.component = (
