@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common-commerce",
-  "version": "1.0.0-beta6",
+  "version": "0.1.0",
   "description": "Shopgate's commerce library for PWAs",
   "repository": "shopgate/pwa-common-commerce",
   "bugs": "https://github.com/shopgate/pwa-common-commerce/issues",
@@ -27,9 +27,9 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-common": "^1.0.0-beta13",
-    "@shopgate/pwa-core": "^1.0.0-beta10",
-    "@shopgate/pwa-unit-test": "^1.1.0",
+    "@shopgate/pwa-common": "^0.1.0",
+    "@shopgate/pwa-core": "^0.1.0",
+    "@shopgate/pwa-unit-test": "^1.2.4",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "3.0.0-beta.0",
     "babel-plugin-react-transform": "^3.0.0",
@@ -41,19 +41,17 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "coveralls": "^2.13.1",
-    "enzyme": "^2.9.1",
+    "coveralls": "^3.0.0",
     "eslint-import-resolver-babel-module": "4.0.0-beta.1",
-    "jest": "20.0.4",
-    "lint-staged": "^4.1.3",
+    "lint-staged": "^4.2.3",
     "lodash": "^4.17.4",
     "pre-commit": "^1.2.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   },
   "peerDependencies": {
     "lodash": "4.x",
-    "@shopgate/pwa-core": "1.0.0-beta10",
-    "@shopgate/pwa-common": "1.0.0-beta13"
+    "@shopgate/pwa-core": "^0.1.0",
+    "@shopgate/pwa-common": "^0.1.0"
   }
 }
