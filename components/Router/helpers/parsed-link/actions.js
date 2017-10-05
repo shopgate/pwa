@@ -22,8 +22,7 @@ const native = (url) => {
 };
 
 /**
- * Function call handler. Executes the given function.
- * @param {function} callback The function that should be executed
+ * Push Notification handler.
  */
 const pushNotification = () => {};
 
