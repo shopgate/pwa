@@ -11,7 +11,7 @@ import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-cr
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';
-import getProductReviews from '@shopgate/pwa-common-commerce/product/actions/getProductReviews';
+import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
 import getProductProperties from '@shopgate/pwa-common-commerce/product/actions/getProductProperties';
 import getProductImages from '@shopgate/pwa-common-commerce/product/actions/getProductImages';
 import getProductShipping from '@shopgate/pwa-common-commerce/product/actions/getProductShipping';

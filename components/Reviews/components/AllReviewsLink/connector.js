@@ -7,10 +7,11 @@
 
 import { connect } from 'react-redux';
 import {
-  getProductReviewCount,
   getCurrentProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-
+import {
+  getProductReviewCount,
+} from '@shopgate/pwa-common-commerce/reviews/selectors';
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.

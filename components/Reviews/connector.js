@@ -7,9 +7,11 @@
 
 import { connect } from 'react-redux';
 import {
-  getProductReviews,
   getProductRating,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getProductReviews,
+} from '@shopgate/pwa-common-commerce/reviews/selectors';
 
 /**
  * Maps the contents of the state to the component props.
