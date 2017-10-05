@@ -118,8 +118,9 @@ class ParsedLink {
   /**
    * Opens the link
    * @param {Object} [history] The history object of react-router
+   * @param {Function} [callback] A callback that is called after the opening of the link.
    */
-  open(history = defaultHistory) {
+  open(history = defaultHistory, callback = () => {}) {
     if (this.invalid) {
       logger.warn('Tried to open invalid link..');
       return;
@@ -129,6 +130,8 @@ class ParsedLink {
       event.trigger('openLink', handler);
       actions[handler.action](handler.options, history);
     });
+
+    callback();
   }
 }
 

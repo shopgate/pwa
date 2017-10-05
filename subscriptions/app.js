@@ -8,8 +8,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { appDidStart$, appWillStart$ } from '../streams/app';
-import registerOpenLinks from '../actions/app/registerOpenLinks';
-import { attachLinkEvents } from '../components/Router/helpers/link-events';
+import registerLinkEvents from '../actions/app/registerLinkEvents';
 import {
   hideLegacyNavigation,
   showLegacyNavigation,
@@ -26,17 +25,7 @@ export default function app(subscribe) {
    * Gets triggered before the app starts.
    */
   subscribe(appWillStart$, ({ dispatch, action }) => {
-    /**
-     * Register the open link action. This must happen before the
-     * other link types are registered (below).
-     */
-    dispatch(registerOpenLinks(action.location));
-
-    /**
-     * Attach the link event listeners. This has to be done before the onload, so that the
-     * app will call the webview events and does not send the server commands.
-     */
-    attachLinkEvents();
+    dispatch(registerLinkEvents(action.location));
   });
 
   /**
