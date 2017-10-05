@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import routedConnect from './index';
+import connect from './index';
 
 let expectedValue = -1;
 let changeProp = true;
@@ -54,9 +54,9 @@ const TestComponent = () => {
   return <div />;
 };
 
-const ConnectedTestComponent = routedConnect(mapStateToProps)(TestComponent);
+const ConnectedTestComponent = connect(mapStateToProps)(TestComponent);
 
-describe('routedConnect', () => {
+describe('SGConnect', () => {
   let renderedElement;
 
   /**
