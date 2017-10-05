@@ -5,13 +5,47 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// @TODO: Use the context to give all the children access to the livecycle hooks.
+
 /**
  * Returns the instance of the first child component.
- * @param {*} component The component instance.
+ * @param {Object} component The component instance.
  * @returns {Object}
  */
-const getChildInstance = component =>
+const getChildInstance = (component) => {
+  if (!component) {
+    return null;
+  }
+
   // eslint-disable-next-line no-underscore-dangle
-  component._reactInternalInstance._renderedComponent._renderedComponent._instance;
+  const componentInstance = component._reactInternalInstance;
+
+  if (!componentInstance) {
+    return null;
+  }
+
+  // eslint-disable-next-line no-underscore-dangle
+  const renderedComponent = componentInstance._renderedComponent;
+
+  if (!renderedComponent) {
+    return null;
+  }
+
+  // eslint-disable-next-line no-underscore-dangle
+  const renderedChild = renderedComponent._renderedComponent;
+
+  if (!renderedChild) {
+    return null;
+  }
+
+  // eslint-disable-next-line no-underscore-dangle
+  const childInstance = renderedChild._instanc;
+
+  if (!childInstance) {
+    return null;
+  }
+
+  return childInstance;
+};
 
 export default getChildInstance;
