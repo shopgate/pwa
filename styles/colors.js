@@ -2,7 +2,18 @@ import Color from 'color';
 import { isObject } from '@shopgate/pwa-common/helpers/validation';
 import { colors as customColors } from '../config/app';
 
-const overrides = isObject(customColors) ? { ...customColors } : {};
+let overrides = {};
+
+if (isObject(customColors)) {
+  overrides = {
+    ...customColors,
+  };
+} else if (typeof customColors === 'string') {
+  // TODO remove when SGXS-1223 is done and the config service delivers parsed JSON strings.
+  overrides = {
+    ...JSON.parse(customColors),
+  };
+}
 
 const colors = {
   background: '#f8f8f8',
