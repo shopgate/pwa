@@ -9,12 +9,12 @@
  * Mocked PipelineRequest.
  * Use it any time you need to mock a PipelineRequest.
  *
- * For more information and usage examples, please check the readme.
+ * For more information and usage examples, please check the README.
  */
 class MockedPipelineRequest {
   /**
-   * Getter for mockedDispatchResolver which is additional helper function for custom, mock-only
-   * .dispatch resolver.
+   * Getter for mockedDispatchResolver which is an additional helper function for custom, mock-only
+   * `dispatch()` resolver.
    * @return {Function}
    */
   static get mockedDispatchResolver() {
@@ -31,7 +31,7 @@ class MockedPipelineRequest {
   }
 
   /**
-   * Sets the payload for the MockedPipelineRequest
+   * Sets the payload for the MockedPipelineRequest.
    * @param {Object} [mockedInput={}] The payload to send with the request.
    * @returns {MockedPipelineRequest}
    */
@@ -41,9 +41,7 @@ class MockedPipelineRequest {
   }
 
   /**
-   * Returns promise and calls `MockedPipelineRequest.mockedDispatchResolver()` which
-   * can be set up by using
-   * .setMockedDispatchResolver.
+   * Returns promise and calls `MockedPipelineRequest.mockedDispatchResolver()`.
    * @return {Promise}
    */
   dispatch() {
@@ -55,17 +53,17 @@ class MockedPipelineRequest {
 
 /**
  * Factory which creates an instance of MockedPipelineRequest.
- * @param {Function} cb Resolver callback.
- * @return {MockedPipelineRequest}
+ * @param {Function} callback Resolver callback.
+ * @returns {MockedPipelineRequest}
  */
-export const mockedPipelineRequestFactory = cb =>
+export const mockedPipelineRequestFactory = callback =>
   class extends MockedPipelineRequest {
     /**
      * Getter for custom mocked resolver.
      * @return {Function}
      */
     static get mockedDispatchResolver() {
-      return cb;
+      return callback;
     }
   };
 
