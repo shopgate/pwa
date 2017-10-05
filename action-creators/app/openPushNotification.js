@@ -9,10 +9,12 @@ import { OPEN_PUSH_NOTIFICATION } from '../../constants/ActionTypes';
 
 /**
  * Creates the OPEN_PUSH_NOTIFICATION action object.
+ * @param {string} notificationId The notification ID.
  * @returns {Object} A redux action.
  */
-const openPushNotification = () => ({
+const openPushNotification = notificationId => ({
   type: OPEN_PUSH_NOTIFICATION,
+  notificationId,
 });
 
 export default openPushNotification;
