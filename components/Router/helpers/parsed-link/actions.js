@@ -11,6 +11,7 @@ import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { getPageContext } from '../../../../helpers/legacy';
 import { isFunction } from '../../../../helpers/validation';
+import { INDEX_PATH } from '../../../../constants/RoutePaths';
 
 /**
  * Native link handler, simply changes current location.href to open email, tel, etc..
@@ -21,14 +22,9 @@ const native = (url) => {
 };
 
 /**
- * Function call handler. Executes the given function.
- * @param {function} callback The function that should be executed
+ * Push Notification handler.
  */
-const functionCall = (callback) => {
-  if (typeof callback === 'function') {
-    callback();
-  }
-};
+const pushNotification = () => {};
 
 /**
  * External link that should be opened in the in app browser.
@@ -105,7 +101,7 @@ const reactRouter = (options, historyHandler) => {
     targetTab: pageContext.tab,
   });
 
-  if (options.url === '/') {
+  if (options.url === INDEX_PATH) {
     return;
   }
 
@@ -122,5 +118,5 @@ export default {
   externalLink,
   legacyLink,
   reactRouter,
-  functionCall,
+  pushNotification,
 };
