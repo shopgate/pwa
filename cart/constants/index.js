@@ -14,6 +14,8 @@ export const CART_TOTALS_TYPE_SHIPPING = 'shipping';
 export const COUPON_TYPE_FIXED = 'fixed';
 export const COUPON_TYPE_PERCENTAGE = 'percentage';
 
+export const COUPON_PUSH_NOTIFICATION = 'cart_add_coupon';
+
 export const ADD_PRODUCTS_TO_CART = 'ADD_PRODUCTS_TO_CART';
 export const SUCCESS_ADD_PRODUCTS_TO_CART = 'SUCCESS_ADD_PRODUCTS_TO_CART';
 export const ERROR_ADD_PRODUCTS_TO_CART = 'ERROR_ADD_PRODUCTS_TO_CART';
