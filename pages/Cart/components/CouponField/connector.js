@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import connect from '@shopgate/pwa-common/helpers/routedConnect';
+import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
 

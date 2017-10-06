@@ -9,13 +9,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { history } from '@shopgate/pwa-common/helpers/router';
-import ParsedLink from '@shopgate/pwa-common/helpers/parsed-link';
+import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Ripple from 'Components/Ripple';
 import styles from './style';
 
 // Add some delay to the click event to show the ripple effect.
-const clickDelay = 250;
+const CLICK_DELAY = 250;
 
 /**
  * Handles an Item click by executing it's href.
@@ -35,7 +35,7 @@ const handleClick = ({ onClick, href, close }) => {
 
     // Call close callback from drawer
     close();
-  }, clickDelay);
+  }, CLICK_DELAY);
 };
 /**
  * The Item component.

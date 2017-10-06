@@ -24,7 +24,7 @@ export default function coupon(subscribe) {
       showModal({
         dismiss: null,
         confirm: 'modal.ok',
-        message: 'cart.coupon_was_added',
+        title: 'cart.coupon_was_added',
       })
     );
   });

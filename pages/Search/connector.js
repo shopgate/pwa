@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import connect from '@shopgate/pwa-common/helpers/routedConnect';
+import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
