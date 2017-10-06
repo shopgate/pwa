@@ -9,8 +9,9 @@ import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
-import { getPageContext } from '../../helpers/legacy';
-import { isFunction } from '../../helpers/validation';
+import { getPageContext } from '../../../../helpers/legacy';
+import { isFunction } from '../../../../helpers/validation';
+import { INDEX_PATH } from '../../../../constants/RoutePaths';
 
 /**
  * Native link handler, simply changes current location.href to open email, tel, etc..
@@ -21,14 +22,9 @@ const native = (url) => {
 };
 
 /**
- * Function call handler. Executes the given function.
- * @param {function} callback The function that should be executed
+ * Push Notification handler.
  */
-const functionCall = (callback) => {
-  if (typeof callback === 'function') {
-    callback();
-  }
-};
+const pushNotification = () => {};
 
 /**
  * External link that should be opened in the in app browser.
@@ -95,27 +91,26 @@ const legacyLink = (options) => {
 
 /**
  * Opens a link using a history handler. This can be a router history object or a function.
- * @param {string} url Target url.
+ * @param {string} options The location options.
  * @param {Object|Function} historyHandler The history handler.
  */
-const reactRouter = (url, historyHandler) => {
+const reactRouter = (options, historyHandler) => {
   const pageContext = getPageContext();
 
   showTab({
     targetTab: pageContext.tab,
   });
 
-  if (url === '/') {
-    // @TODO: Implement clearing the history stack if the index page shall be opened
+  if (options.url === INDEX_PATH) {
     return;
   }
 
   if (isFunction(historyHandler)) {
-    historyHandler(url);
+    historyHandler(options);
     return;
   }
 
-  historyHandler.push(url);
+  historyHandler.push(options.url);
 };
 
 export default {
@@ -123,5 +118,5 @@ export default {
   externalLink,
   legacyLink,
   reactRouter,
-  functionCall,
+  pushNotification,
 };

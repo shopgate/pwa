@@ -5,8 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import event from '@shopgate/pwa-core/classes/Event';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { history as defaultHistory } from '../../helpers/router';
+import { history as defaultHistory } from '../../../../helpers/router';
 import options from './options';
 import actions from './actions';
 
@@ -42,6 +43,7 @@ class ParsedLink {
     // Parse url queries
     if (parser.search) {
       let match = 1;
+
       while (match) {
         match = regexQueryParams.exec(parser.search);
 
@@ -116,16 +118,20 @@ class ParsedLink {
   /**
    * Opens the link
    * @param {Object} [history] The history object of react-router
+   * @param {Function} [callback] A callback that is called after the opening of the link.
    */
-  open(history = defaultHistory) {
+  open(history = defaultHistory, callback = () => {}) {
     if (this.invalid) {
       logger.warn('Tried to open invalid link..');
       return;
     }
 
     this.getHandlers().forEach((handler) => {
+      event.trigger('openLink', handler);
       actions[handler.action](handler.options, history);
     });
+
+    callback();
   }
 }
 

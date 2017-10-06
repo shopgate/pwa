@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shopgate's common library for PWAs",
   "repository": "shopgate/pwa-common",
   "bugs": "https://github.com/shopgate/pwa-common/issues",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-core": "^0.1.0",
+    "@shopgate/pwa-core": "^0.1.1",
     "@shopgate/pwa-unit-test": "^1.2.4",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^3.0.0",
@@ -76,6 +76,6 @@
     "react-dom": "15.x",
     "prop-types": "15.x",
     "lodash": "4.x",
-    "@shopgate/pwa-core": "^0.1.0"
+    "@shopgate/pwa-core": "^0.1.1"
   }
 }

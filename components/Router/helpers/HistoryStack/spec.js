@@ -9,8 +9,8 @@ import {
   HISTORY_PUSH_ACTION,
   HISTORY_POP_ACTION,
   HISTORY_REPLACE_ACTION,
-} from '../../../constants/ActionTypes';
-import HistoryStack from './HistoryStack';
+} from '../../../../constants/ActionTypes';
+import HistoryStack from './index';
 
 describe('HistoryStack', () => {
   it('should trigger added and inactive event when history entry was added', () => {

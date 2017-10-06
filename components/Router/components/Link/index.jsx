@@ -7,7 +7,7 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import ParsedLink from '../../../../helpers/parsed-link';
+import ParsedLink from '../../helpers/parsed-link';
 import style from './style';
 
 /**

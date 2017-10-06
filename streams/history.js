@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { UPDATE_HISTORY } from '../constants/ActionTypes';
+import { OPEN_LINK, UPDATE_HISTORY } from '../constants/ActionTypes';
 import { getHistoryPathname } from '../selectors/history';
 import { main$ } from './main';
 
@@ -14,9 +14,7 @@ import { main$ } from './main';
  * @type {Observable}
  */
 export const historyDidUpdate$ = main$
-  .filter(({ action }) =>
-    (action.type === UPDATE_HISTORY)
-  );
+  .filter(({ action }) => action.type === UPDATE_HISTORY);
 
 /**
  * Gets triggered when the route changes.
@@ -84,3 +82,10 @@ export const routeDidLeave = route => routeDidChange$
  */
 export const routeIsActive = route => historyDidUpdate$
   .filter(({ getState }) => getHistoryPathname(getState()).startsWith(route));
+
+/**
+ * Gets triggered when a link is opened.
+ * @type {Observable}
+ */
+export const openedLink$ = main$
+  .filter(({ action }) => action.type === OPEN_LINK);

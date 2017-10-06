@@ -7,8 +7,8 @@
 
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import { appDidStart$ } from '../streams/app';
-import { attachLinkEvents } from '../helpers/link-events';
+import { appDidStart$, appWillStart$ } from '../streams/app';
+import registerLinkEvents from '../actions/app/registerLinkEvents';
 import {
   hideLegacyNavigation,
   showLegacyNavigation,
@@ -22,15 +22,16 @@ import {
  */
 export default function app(subscribe) {
   /**
+   * Gets triggered before the app starts.
+   */
+  subscribe(appWillStart$, ({ dispatch, action }) => {
+    dispatch(registerLinkEvents(action.location));
+  });
+
+  /**
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, () => {
-    /**
-     * Attach the link event listeners. This has to be done before the onload, so that the
-     * app will call the webview events and does not send the server commands.
-     */
-    attachLinkEvents();
-
     // Register for custom events
     registerEvents(['showPreviousTab']);
 

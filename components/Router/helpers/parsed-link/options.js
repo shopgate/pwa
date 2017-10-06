@@ -74,7 +74,10 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case 'index':
       mappedPath[0] = '';
     case 'filter':
-      this.addLinkAction('reactRouter', url);
+      this.addLinkAction('reactRouter', {
+        url,
+        queryParams,
+      });
       break;
 
     case 'page':
@@ -86,7 +89,10 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
         });
       } else {
         // Custom pages are just routes.
-        this.addLinkAction('reactRouter', `/${mappedPath.join('/')}`);
+        this.addLinkAction('reactRouter', {
+          url: `/${mappedPath.join('/')}`,
+          queryParams,
+        });
       }
       break;
 
@@ -115,6 +121,13 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
       });
       break;
 
+    case 'cart_add_coupon':
+      this.addLinkAction('pushNotification', {
+        url,
+        queryParams,
+      });
+      break;
+
     case 'checkout_legacy':
       this.addLinkAction('legacyLink', {
         targetTab: 'cart',
@@ -131,7 +144,10 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
       break;
 
     default:
-      this.addLinkAction('reactRouter', url);
+      this.addLinkAction('reactRouter', {
+        url,
+        queryParams,
+      });
   }
   /* eslint-enable no-fallthrough */
 }
