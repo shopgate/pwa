@@ -25,7 +25,7 @@ export const searchDidLeave$ = routeDidLeave(SEARCH_PATH);
 /**
  * Emits when all necessary search data has been received.
  */
-const dataLoaded$ = productsReceived$;
+const dataLoaded$ = searchDidEnter$.zip(productsReceived$);
 
 /**
  * Emits when the search result data is already available.

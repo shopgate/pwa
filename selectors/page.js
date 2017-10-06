@@ -6,6 +6,7 @@
  */
 
 import { createSelector } from 'reselect';
+import { shopNumber } from '@shopgate/pwa-common/helpers/config';
 import {
   getHistoryPathname,
   getQueryParamsAsString,
@@ -35,10 +36,9 @@ const pageNameMap = {
  * @returns {string} The URL.
  */
 const getTrackingUrl = createSelector(
-  () => 0, // TODO: Retrieve shop number somehow
   getHistoryPathname,
   getQueryParamsAsString,
-  (shopNumber, pathname, queryString) => (
+  (pathname, queryString) => (
     `${baseUrl}/${shopNumber}${pathname}${queryString}`
   )
 );
@@ -51,23 +51,6 @@ const getTrackingUrl = createSelector(
 const getPageName = createSelector(
   getHistoryPathname,
   pathname => pathname.split('/')[1]
-);
-
-/**
- * Selects the general UI state.
- * @param {Object} state The global state.
- * @return {Object}
- */
-export const getGeneralUI = state => state.ui.general;
-
-/**
- * Selects the current page title.
- * @param {Object} state The current state.
- * @returns {string} The current page title.
- */
-export const getPageTitle = createSelector(
-  getGeneralUI,
-  general => general.title || ''
 );
 
 /**
@@ -88,9 +71,8 @@ const getPageTrackingName = createSelector(
 export default createSelector(
   getTrackingUrl,
   getPageTrackingName,
-  (link, title, name) => ({
+  (link, name) => ({
     link,
-    title,
     name,
   })
 );
