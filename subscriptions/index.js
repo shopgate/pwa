@@ -11,6 +11,7 @@ import product from './product';
 import user from './user';
 import cart from './cart';
 import checkout from './checkout';
+import search from './search';
 
 /**
  * Holds all subscriber references.
@@ -23,4 +24,5 @@ export default [
   user,
   cart,
   checkout,
+  search,
 ];
