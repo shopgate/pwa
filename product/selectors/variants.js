@@ -118,6 +118,10 @@ export const getSelectedVariant = createSelector(
 
     const product = getProductById(state, variantId);
 
-    return product.productData || null;
+    if (product) {
+      return product.productData;
+    }
+
+    return null;
   }
 );
