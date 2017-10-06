@@ -10,10 +10,12 @@ import variables from 'Styles/variables';
 
 const wrapper = css({
   alignItems: 'center',
+  left: 0,
   position: 'fixed',
   width: '100%',
   zIndex: 3,
   top: variables.navigator.height,
+  transition: 'transform 100ms linear',
   willChange: 'transform',
 }).toString();
 
