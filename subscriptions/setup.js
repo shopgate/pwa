@@ -25,6 +25,8 @@ export default function setup(subscribe) {
     // eslint-disable-next-line no-new
     new UnifiedPlugin();
 
+    // TODO: loop through all extensions/components with type=tracking an create a instance
+
     core.registerFinished();
   });
 }

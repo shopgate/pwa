@@ -19,6 +19,9 @@ import {
   getProductProperties,
   getProductShipping,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  isProductChildrenSelected,
+} from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
 /**
  * Emits when product results has been received.
@@ -52,18 +55,20 @@ const shippingReceived$ = main$
 /**
  * Emits when all necessary category data has been received.
  */
-const dataLoaded$ = productIdChanged$
+export const dataLoaded$ = productIdChanged$
   .zip(
     descriptionReceived$,
     propertiesReceived$,
     shippingReceived$
   )
-  .map(([first]) => first);
+  .map(([first]) => first)
+  .filter(({ getState }) => !isProductChildrenSelected(getState()));
 
 /**
- * Emits when a category's data is already available.
+ * Emits when product data are already available.
  */
-const dataPreloaded$ = productIdChanged$
+// TODO: add routeIsActive$ here
+export const dataPreloaded$ = productIdChanged$
   .filter(
     ({ getState }) => (
       getCurrentProduct(getState()) &&
@@ -73,7 +78,6 @@ const dataPreloaded$ = productIdChanged$
   ));
 
 /**
- * Emits when a category is ready to be tracked,
- * considering loaded or preloaded data.
+ * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
  */
 export const productIsReady$ = dataLoaded$.merge(dataPreloaded$);
