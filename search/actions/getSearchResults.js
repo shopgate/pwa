@@ -6,10 +6,10 @@
  */
 
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
+import errorSearchResults from '../action-creators/errorSearchResults';
 import { getSearchPhrase } from '../selectors';
 
 /**
@@ -19,7 +19,6 @@ import { getSearchPhrase } from '../selectors';
  */
 const getSearchResults = (offset = 0) => (dispatch, getState) => {
   const state = getState();
-  const sort = getSortOrder(state);
   const limit = ITEMS_PER_LOAD;
   const searchPhrase = getSearchPhrase(state).trim();
 
@@ -27,19 +26,42 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
     return;
   }
 
-  dispatch(requestSearchResults(searchPhrase, offset));
-  dispatch(
+  const promise = dispatch(
     getProducts({
       params: {
         searchPhrase,
         offset,
         limit,
-        sort,
+      },
+      onBeforeSend: () => {
+        // Dispatch the request action before the related pipeline request is executed
+        dispatch(requestSearchResults(searchPhrase, offset));
+      },
+      onCacheHit: (cachedData) => {
+        dispatch(requestSearchResults(searchPhrase, offset));
+        dispatch(receiveSearchResults(searchPhrase, cachedData));
       },
     })
-  ).then(() => {
-    dispatch(receiveSearchResults(searchPhrase));
-  });
+  );
+
+  if (promise instanceof Promise) {
+    /**
+     * When getProducts uses a pipelineRequest to fetch fresh data, it returns a promise which can
+     * will be used to handle the response and to determine the further actions.
+     */
+    promise.then((response) => {
+      const { products } = response;
+
+      // Inspect the response object to determine, if represents an search result, or an error
+      if (Array.isArray(products)) {
+        // Dispatch the receive action when the response contains valid data
+        dispatch(receiveSearchResults(searchPhrase, response));
+      } else {
+        // If no valid data is delivered within the response the error action is dispatched
+        dispatch(errorSearchResults(searchPhrase, offset));
+      }
+    });
+  }
 };
 
 export default getSearchResults;

@@ -10,11 +10,13 @@ import { RECEIVE_SEARCH_RESULTS } from '../constants';
 /**
  * Creates the dispatched RECEIVE_SEARCH_RESULTS action object.
  * @param {string} searchPhrase The search phrase.
+ * @param {Object} results The search results.
  * @return {Object} The RECEIVE_SEARCH_RESULTS action.
  */
-const receiveSearchResults = searchPhrase => ({
+const receiveSearchResults = (searchPhrase, results) => ({
   type: RECEIVE_SEARCH_RESULTS,
   searchPhrase,
+  results,
 });
 
 export default receiveSearchResults;
