@@ -20,7 +20,7 @@ import { getSearchPhrase } from '../selectors';
 const getSearchResults = (offset = 0) => (dispatch, getState) => {
   const state = getState();
   const limit = ITEMS_PER_LOAD;
-  const searchPhrase = getSearchPhrase(state).trim();
+  const searchPhrase = getSearchPhrase(state);
 
   if (!searchPhrase) {
     return;
