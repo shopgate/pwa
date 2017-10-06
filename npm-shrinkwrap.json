@@ -79,9 +79,10 @@
       }
     },
     "@shopgate/pwa-core": {
-      "version": "0.1.1",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-0.1.1.tgz",
-      "integrity": "sha512-WNLIuwqCPcv8kyJX51M3ECFeG+QATK+c4NO38RoVDR99pK/yrSm5CvNOKN6B89e+HSZzifaltqW36CZEBsYg/g==",
+      "version": "0.1.2",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-0.1.2.tgz",
+      "integrity": "sha512-0f53lO8OoSVgzNRU+FhuLsvYFHrIeCK5ZekfUXEZbBR0li8niE2mJp/IOY8rzR1KVuw/IU8j7oDxFJHQhYdBgQ==",
+      "dev": true,
       "requires": {
         "crypto-js": "3.1.9-1",
         "isomorphic-fetch": "2.2.1"
