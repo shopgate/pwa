@@ -36,7 +36,10 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
 
     dispatch(requestProductData(productId, selectedVariantId));
 
-    dispatch(setProductId(parentId));
+    if (!selectedVariantId) {
+      dispatch(setProductId(parentId));
+    }
+
     dispatch(setProductVariantId(selectedVariantId));
 
     dispatch(getProduct(productId));
