@@ -10,6 +10,7 @@
 import fetch from 'isomorphic-fetch';
 import event from '../Event';
 import { logger, hasSGJavaScriptBridge } from '../../helpers';
+import logGroup from '../../helpers/logGroup';
 
 /**
  * The app command class.
@@ -89,19 +90,20 @@ class AppCommand {
    * Logs the command to the console.
    */
   logCommand() {
-    if (!this.log) {
+    if (
+      !this.log ||
+      this.command.c === 'sendPipelineRequest' ||
+      this.command.c === 'sendHttpRequest' ||
+      this.command.c === 'getWebStorageEntry'
+    ) {
       return;
     }
 
-    const logGroupName = `AppCommand: ${this.command.c}`;
+    const title = `AppCommand %c${this.command.c}`;
 
     if (this.command.p) {
-      logger.groupCollapsed(logGroupName);
-      logger.log('parameters:', this.command.p);
-      logger.groupEnd(logGroupName);
-    } else {
-      logger.log(logGroupName);
-    }
+      logGroup(title, this.command.p, '#8e44ad');
+    } else logGroup(title, {}, '#8e44ad');
   }
 
   /**

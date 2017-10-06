@@ -6,7 +6,7 @@
  */
 
 import event from '../Event';
-import { logger } from '../../helpers';
+import logGroup from '../../helpers/logGroup';
 import AppCommand from '../AppCommand';
 import Request from '../Request';
 import requestBuffer from '../RequestBuffer';
@@ -64,13 +64,15 @@ class WebStorageRequest extends Request {
         value,
       };
 
-      logger.log(`webStorageResponse: ${this.name}`, { response });
+      logGroup(`WebStorageResponse %c${this.name}`, { response }, '#f39c12');
 
       resolve(response);
     };
 
     // Apply the event callback.
     event.addCallback(requestCallbackName, requestCallback);
+
+    logGroup(`WebStorageRequest %c${this.name}`, {}, '#e67e22');
 
     // Send the getWebStorageEntry request.
     const command = new AppCommand();

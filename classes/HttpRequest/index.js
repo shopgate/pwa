@@ -6,6 +6,7 @@
  */
 
 import { logger } from '../../helpers';
+import logGroup from '../../helpers/logGroup';
 import event from '../Event';
 import AppCommand from '../AppCommand';
 import Request from '../Request';
@@ -177,18 +178,19 @@ class HttpRequest extends Request {
           return reject(`${error.code}: ${error.message}`);
         }
 
-        logger.log(`httpResponse: ${this.url}`, {
+        logGroup(`HttpResponse %c${this.url}`, {
           options,
           error,
           response,
         });
+
         return resolve(response);
       };
 
       // Apply the event callback.
       event.addCallback(requestCallbackName, requestCallback);
 
-      logger.log(`httpRequest: ${this.url}`, this.payload);
+      logGroup(`HttpRequest %c${this.url}`, { payload: this.payload });
 
       // Send the HttpRequest.
       const command = new AppCommand();

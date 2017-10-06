@@ -6,6 +6,7 @@
  */
 
 import { logger } from '../../helpers';
+import logGroup from '../../helpers/logGroup';
 import event from '../Event';
 import AppCommand from '../AppCommand';
 import Request from '../Request';
@@ -99,11 +100,11 @@ class PipelineRequest extends Request {
 
       const { input, name } = this;
 
-      logger.log(`pipelineResponse: ${this.name}`, {
+      logGroup(`PipelineResponse %c${this.name}`, {
         input,
         error,
         output,
-      });
+      }, '#307bc2');
 
       if (error) {
         const isHandledError = this.handledErrors.includes(error.code);
@@ -126,7 +127,7 @@ class PipelineRequest extends Request {
     // Apply the event callback.
     event.addCallback(requestCallbackName, this.requestCallback);
 
-    logger.log(`pipelineRequest: ${this.name}`, this.input);
+    logGroup(`PipelineRequest %c${this.name}`, { input: this.input }, '#32ac5c');
 
     // Send the pipeline request.
     const command = new AppCommand();
