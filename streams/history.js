@@ -75,3 +75,12 @@ export const routeDidLeave = route => routeDidChange$
     // The route was left, if there was a change between routes, or within the watched one.
     return routeChanged || (pathnameMatch && prevPathnameMatch && pathname !== prevPathname);
   });
+
+/**
+ * Gets triggered, when a route is active after the history was updated.
+ * @param {string} route The route path.
+ * @type {Function}
+ * @return {Observable}
+ */
+export const routeIsActive = route => historyDidUpdate$
+  .filter(({ getState }) => getHistoryPathname(getState()).startsWith(route));
