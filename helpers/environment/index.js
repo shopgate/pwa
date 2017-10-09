@@ -12,7 +12,7 @@ const ENV_KEY_STAGING = 'staging';
 const ENV_KEY_PRODUCTION = 'production';
 const env = process.env.NODE_ENV || ENV_KEY_DEVELOPMENT;
 
-export default {
+module.exports = {
   env,
   isDev: (env === ENV_KEY_DEVELOPMENT || env === ENV_KEY_TEST),
   isProd: (env === ENV_KEY_PRODUCTION),
