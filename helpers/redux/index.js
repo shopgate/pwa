@@ -127,10 +127,21 @@ export const generateResultHash = (params, includeSort = true) => {
     filters: {},
   };
 
-  return generateSortedHash({
+  let mergedParams = {
     ...defaultParams,
     ...params,
-  });
+  };
+
+  const { searchPhrase } = mergedParams;
+
+  if (typeof searchPhrase !== 'undefined') {
+    mergedParams = {
+      ...mergedParams,
+      searchPhrase: searchPhrase.trim(),
+    };
+  }
+
+  return generateSortedHash(mergedParams);
 };
 
 /**
