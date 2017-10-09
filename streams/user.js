@@ -9,6 +9,7 @@ import {
   REQUEST_LOGIN,
   SUCCESS_LOGIN,
   ERROR_LOGIN,
+  REQUEST_LOGOUT,
   SUCCESS_LOGOUT,
   RECEIVE_USER,
   ERROR_USER,
@@ -19,7 +20,7 @@ import { main$ } from './main';
  * Gets triggered when user is requesting to login.
  * @type {Observable}
  */
-export const userLoginRequest$ = main$
+export const userWillLogin$ = main$
   .filter(({ action }) =>
     (action.type === REQUEST_LOGIN)
   );
@@ -42,6 +43,15 @@ export const userDidLogin$ = main$
   .filter(({ action }) =>
     (action.type === SUCCESS_LOGIN)
   );
+
+/**
+ * Gets triggered when user is requesting to logout.
+ * @type {Observable}
+ */
+export const userWillLogout$ = main$
+.filter(({ action }) =>
+  (action.type === REQUEST_LOGOUT)
+);
 
 /**
  * Gets triggered when user has logged out.

@@ -10,7 +10,7 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import getUser from '../actions/user/getUser';
 import successLogin from '../action-creators/user/successLogin';
 import { appDidStart$ } from '../streams/app';
-import { userLoginRequest$, userLoginResponse$, userDidLogin$ } from '../streams/user';
+import { userWillLogin$, userLoginResponse$, userDidLogin$ } from '../streams/user';
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
 import { LOGIN_PATH } from '../constants/RoutePaths';
@@ -25,7 +25,7 @@ export default function user(subscribe) {
    */
   const userNeedsUpdate$ = appDidStart$.merge(userDidLogin$);
 
-  subscribe(userLoginRequest$, ({ dispatch }) => {
+  subscribe(userWillLogin$, ({ dispatch }) => {
     dispatch(setViewLoading(LOGIN_PATH));
   });
 
