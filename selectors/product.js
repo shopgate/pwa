@@ -14,7 +14,7 @@ import { getCurrentBaseProduct, getCurrentProduct } from '@shopgate/pwa-common-c
  * @param {Object} productData The product data from the store
  * @returns {Object|null} The formatted product.
  */
-const formatProductData = (productData) => {
+export const formatProductData = (productData) => {
   if (!productData) {
     return null;
   }
