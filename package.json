@@ -33,6 +33,7 @@
   ],
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
+    "@shopgate/pwa-common": "^0.1.1",
     "@shopgate/pwa-core": "^0.1.2",
     "@shopgate/pwa-unit-test": "^1.2.4",
     "babel-core": "^6.26.0",
@@ -45,6 +46,14 @@
     "coveralls": "^3.0.0",
     "eslint": "3.19.0",
     "lint-staged": "^4.2.3",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "rxjs": "^5.4.3"
+  },
+  "peerDependencies": {
+    "@shopgate/pwa-common": "^0.1.1",
+    "@shopgate/pwa-core": "^0.1.2",
+    "rxjs": "^5.4.3"
   }
 }
