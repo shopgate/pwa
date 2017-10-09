@@ -37,25 +37,17 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
         // Dispatch the request action before the related pipeline request is executed
         dispatch(requestSearchResults(searchPhrase, offset));
       },
-      onCacheHit: (cachedData) => {
-        dispatch(requestSearchResults(searchPhrase, offset));
-        dispatch(receiveSearchResults(searchPhrase, cachedData));
-      },
     })
   );
 
   if (promise instanceof Promise) {
-    /**
-     * When getProducts uses a pipelineRequest to fetch fresh data, it returns a promise which can
-     * will be used to handle the response and to determine the further actions.
-     */
     promise.then((response) => {
       const { products } = response;
 
       // Inspect the response object to determine, if represents an search result, or an error
       if (Array.isArray(products)) {
         // Dispatch the receive action when the response contains valid data
-        dispatch(receiveSearchResults(searchPhrase, response));
+        dispatch(receiveSearchResults(searchPhrase, offset, response));
       } else {
         // If no valid data is delivered within the response the error action is dispatched
         dispatch(errorSearchResults(searchPhrase, offset));

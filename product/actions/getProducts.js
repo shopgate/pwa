@@ -51,10 +51,8 @@ const processParams = (params, filters, includeSort = true) => {
  * @param {string} [options.id=null] A unique id for the component that is using this action.
  * @param {boolean} [options.includeSort=true] Tells if the sort parameters shall be included
  *   into the product hash and the request.
- * @param {Function} [options.onBeforeSend=() => {}] A callback which is fired, before the
- *   PipelineRequest is dispatched.
- * @param {Function} [options.onCacheHit=(data) =>{}] A callback that is fired when suitable data
- *   is already available within the cache.
+ * @param {Function} [options.onBeforeSend=() => {}] A callback which is fired, before new data
+ *  will be returned.
  * @return {Function} A Redux Thunk
  */
 const getProducts = ({
@@ -64,7 +62,6 @@ const getProducts = ({
   id = null,
   includeSort = true,
   onBeforeSend = () => {},
-  onCacheHit = () => {},
 }) =>
   (dispatch, getState) => {
     const state = getState();
@@ -97,20 +94,15 @@ const getProducts = ({
       const { products } = result;
 
       if (Array.isArray(products)) {
-        /**
-         * Fire the onCacheHit callback when cached data is available within the state to enable
-         * the caller of getProducts to process this data.
-         */
-        onCacheHit(result);
+        // Fire the onBeforeSend callback to inform a caller that getProducts will return data.
+        onBeforeSend();
+        return Promise.resolve(result);
       }
 
       return null;
     }
 
-    /**
-     * Fire the onBeforeSend callback to inform a user of getProducts that a pipeline request will
-     * be executed to fetch fresh data.
-     */
+    // Fire the onBeforeSend callback to inform a caller that getProducts will return data.
     onBeforeSend();
 
     dispatch(requestProducts({
