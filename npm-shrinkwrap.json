@@ -124,6 +124,9 @@
         }
       }
     },
+    "@shopgate/pwa-webcheckout-shopify": {
+      "version": "github:shopgate/pwa-webcheckout-shopify#7d0defea1269a89622dcd47a14fc47f1b4d19389"
+    },
     "@types/node": {
       "version": "6.0.88",
       "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.88.tgz",
