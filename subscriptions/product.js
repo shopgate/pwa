@@ -41,7 +41,7 @@ export default function product(subscribe) {
 
     core.track.viewContent({
       page,
-      ...currentProduct,
+      product: currentProduct,
     });
   });
 }

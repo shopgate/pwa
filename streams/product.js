@@ -5,16 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/of';
+import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import { routeIsActive } from '@shopgate/pwa-common/streams/history';
 import {
   RECEIVE_PRODUCTS,
+  RECEIVE_PRODUCT,
   SET_PRODUCT_ID,
   RECEIVE_PRODUCT_DESCRIPTION,
   RECEIVE_PRODUCT_PROPERTIES,
   RECEIVE_PRODUCT_SHIPPING,
+  ITEM_PATH,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getCurrentProduct,
+  getCurrentBaseProductId,
   getProductDescription,
   getProductProperties,
   getProductShipping,
@@ -30,14 +37,24 @@ export const productsReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCTS);
 
 /**
+ * Emits when product result has been received.
+ */
+export const productReceived$ = main$
+  .filter(({ action }) => action.type === RECEIVE_PRODUCT);
+
+/**
  * Emits when the current product id changed.
  */
 const productIdChanged$ = main$
   .filter(
-    ({ action }) => (
-      action.type === SET_PRODUCT_ID &&
-      !!action.productId
-    )
+    ({ action, prevState }) => {
+      const prevId = getCurrentBaseProductId(prevState);
+      return (
+        action.type === SET_PRODUCT_ID &&
+        !!action.productId &&
+        action.productId !== prevId
+      );
+    }
   );
 
 /**
@@ -62,21 +79,44 @@ export const dataLoaded$ = productIdChanged$
     shippingReceived$
   )
   .map(([first]) => first)
+  .switchMap((data) => {
+    const product = getCurrentProduct(data.getState());
+
+    // Return the productReceived$ stream if the product data are not there yet
+    if (!product) {
+      return productReceived$;
+    }
+
+    // Return a new stream that just emits with the current data
+    return Observable.of(data);
+  })
   .filter(({ getState }) => !isProductChildrenSelected(getState()));
+
+/**
+ * Emits when product page is entered.
+ */
+const productRouteEntered$ = routeIsActive(ITEM_PATH);
 
 /**
  * Emits when product data are already available.
  */
-// TODO: add routeIsActive$ here
-export const dataPreloaded$ = productIdChanged$
-  .filter(
-    ({ getState }) => (
-      getCurrentProduct(getState()) &&
-      getProductDescription(getState()) &&
-      getProductProperties(getState()) &&
-      getProductShipping(getState())
-  ));
-
+export const dataPreloaded$ = productRouteEntered$
+  .switchMap(() => (
+    productIdChanged$
+      .filter(
+        ({ getState }) => {
+          const state = getState();
+          // TODO: improve these checks here if there was a response like [], '', {}, null.
+          // Like the code is now, it won't work for products without properties etc
+          return (
+            getCurrentProduct(state) &&
+            getProductDescription(state) &&
+            getProductProperties(state) &&
+            getProductShipping(state)
+          );
+        })
+    )
+  );
 /**
  * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
  */
