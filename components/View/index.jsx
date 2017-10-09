@@ -49,10 +49,6 @@ class View extends Component {
     viewTop: true,
   };
 
-  static childContextTypes = {
-    viewRef: PropTypes.shape(),
-  };
-
   /**
    * The component constructor
    * @param {Object} props The component props
@@ -61,16 +57,6 @@ class View extends Component {
     super(props);
 
     this.element = null;
-  }
-
-  /**
-   * Forwards the current route path to the child context.
-   * @return {Object} The child context.
-   */
-  getChildContext() {
-    return {
-      viewRef: this.element,
-    };
   }
 
   /**
@@ -122,14 +108,6 @@ class View extends Component {
       this.props.setTop(isViewTop);
     }
   }, SCROLL_DEBOUNCE);
-
-  /**
-   * Returns the view title.
-   * @returns {string}
-   */
-  get title() {
-    return this.props.title;
-  }
 
   /**
    * Handles the swipe down gesture.
@@ -185,6 +163,8 @@ class View extends Component {
   render() {
     let contentStyle = styles.content(this.props.hasNavigator);
 
+    const { children } = this.props;
+
     if (!this.props.viewTop) {
       contentStyle += ` ${styles.contentShaded}`;
     }
@@ -202,7 +182,19 @@ class View extends Component {
             onScroll={this.handleScroll}
           >
             {this.renderMetaTags()}
-            {this.props.children}
+            {React.Children.map(children, (child) => {
+              /**
+               * Inject a viewRef prop into all of the children
+               * to give them access to the <article> ref.
+               */
+              if (!child) {
+                return null;
+              }
+
+              return React.cloneElement(child, {
+                ...this.element && { viewRef: this.element },
+              });
+            })}
           </article>
         </Swipeable>
       </section>
