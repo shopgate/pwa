@@ -13,6 +13,7 @@ import {
   getCartProducts,
 } from '@shopgate/pwa-common-commerce/cart/selectors/index';
 import { formatProductData } from './product';
+import { convertPriceToString } from '../helpers';
 
 /**
  * Reformat product data for addToCart from the store to the format our core expects.
@@ -35,7 +36,7 @@ const formatCartProductData = ({ product, quantity }) => ({
   uid: product.id,
   name: product.name,
   amount: {
-    gross: product.price.unit,
+    gross: convertPriceToString(product.price.unit),
   },
   quantity,
 });
@@ -77,7 +78,7 @@ export default createSelector(
   (subTotal, currency, products) => ({
     amount: {
       // TODO: net is not possible at the moment
-      gross: subTotal,
+      gross: convertPriceToString(subTotal),
       currency,
     },
     products,
