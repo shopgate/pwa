@@ -18,8 +18,7 @@ export default function cart(subscribe) {
    * Gets triggered on product variant change/selection
    */
   subscribe(productsAdded$, ({ getState, action }) => {
-    const items = getAddToCartProducts(getState(), action.products);
-
-    core.track.addToCart({ items });
+    const products = getAddToCartProducts(getState(), action.products);
+    core.track.addToCart({ products });
   });
 }
