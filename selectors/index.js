@@ -17,14 +17,7 @@ export const hasShopifyCheckout = () => appConfig.webCheckoutShopify !== null;
  * Returns the Shopify checkout configuration.
  * @returns {Object|null}
  */
-export const getShopifyCheckout = () => {
-  // TODO: Remove when SGXS-1223 is done and the config service delivers parsed JSON strings.
-  if (typeof appConfig.webCheckoutShopify === 'string') {
-    return JSON.parse(appConfig.webCheckoutShopify);
-  }
-
-  return appConfig.webCheckoutShopify;
-};
+export const getShopifyCheckout = () => appConfig.webCheckoutShopify;
 
 /**
  * Returns the aliased Shopify URL.
