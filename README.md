@@ -8,7 +8,7 @@
 ## Install
 
 ```
-npm i shopgate/pwa-webcheckout-shopify --save
+npm i @shopgate/pwa-webcheckout-shopify --save
 ```
 
 ## About Shopgate
