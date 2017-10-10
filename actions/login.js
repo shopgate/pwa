@@ -6,10 +6,10 @@
  */
 
 import HttpRequest from '@shopgate/pwa-core/classes/HttpRequest';
-import requestShopifyLogin from '../../action-creators/requestShopifyLogin';
-import errorShopifyLogin from '../../action-creators/errorShopifyLogin';
-import successShopifyLogin from '../../action-creators/successShopifyLogin';
-import { getShopifyUrl } from '../../selectors';
+import requestShopifyLogin from '../action-creators/requestShopifyLogin';
+import errorShopifyLogin from '../action-creators/errorShopifyLogin';
+import successShopifyLogin from '../action-creators/successShopifyLogin';
+import { getShopifyUrl } from '../selectors';
 
 /**
  * Login the current user.

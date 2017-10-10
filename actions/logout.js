@@ -6,10 +6,10 @@
  */
 
 import HttpRequest from '@shopgate/pwa-core/classes/HttpRequest';
-import requestShopifyLogout from '../../action-creators/requestShopifyLogout';
-import errorShopifyLogout from '../../action-creators/errorShopifyLogout';
-import successShopifyLogout from '../../action-creators/successShopifyLogout';
-import { getShopifyUrl } from '../../selectors';
+import requestShopifyLogout from '../action-creators/requestShopifyLogout';
+import errorShopifyLogout from '../action-creators/errorShopifyLogout';
+import successShopifyLogout from '../action-creators/successShopifyLogout';
+import { getShopifyUrl } from '../selectors';
 
 /**
  * Log out the current user.
