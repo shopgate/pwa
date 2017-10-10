@@ -101,16 +101,12 @@ export const couponLinkOpened$ = main$.filter(
 export const couponPushNotification$ = openedLink$
   .filter(
     ({ action }) => {
-      /**
-       * Stop here if we didn't receive a url.
-       */
+      // Stop here if we didn't receive a url.
       if (!action.options || !action.options.url) {
         return false;
       }
 
-      /**
-       * Split the URL string and remove any empty strings.
-       */
+      // Split the URL string and remove any empty strings.
       const paths = action.options.url.split('/').filter(Boolean);
 
       /**

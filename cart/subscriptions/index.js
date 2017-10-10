@@ -44,6 +44,9 @@ export default function cart(subscribe) {
    */
   const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
 
+  /**
+   * Gets triggered when the app is started or the cart route is entered.
+   */
   const cartDidEnterOrAppDidStart$ = routeDidEnter(CART_PATH).merge(appDidStart$);
 
   const cartBusy$ = cartRequesting$.merge(
@@ -105,9 +108,6 @@ export default function cart(subscribe) {
     dispatch(addCouponsToCart([code]));
   });
 
-  /**
-   * Gets triggered when the app is started or the cart route is entered.
-   */
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
     dispatch(fetchCheckoutUrl());
     dispatch(fetchRegisterUrl());
