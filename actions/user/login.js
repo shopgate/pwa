@@ -17,7 +17,7 @@ import successLogin from '../../action-creators/user/successLogin';
  * @return {Function} A redux thunk.
  */
 export default ({ login, password }) => (dispatch) => {
-  dispatch(requestLogin());
+  dispatch(requestLogin(login, password));
 
   const params = {
     strategy: 'basic',

@@ -9,10 +9,16 @@ import { REQUEST_LOGIN } from '../../constants/ActionTypes';
 
 /**
  * Creates the dispatched REQUEST_LOGIN action object.
+ * It also passes login credentials to the action,
+ * in order to may access it within a stream subscription.
+ * @param {string} user The user name.
+ * @param {string} password The user password.
  * @returns {Object} The dispatched action object.
  */
-const requestLogin = () => ({
+const requestLogin = (user, password) => ({
   type: REQUEST_LOGIN,
+  user,
+  password,
 });
 
 export default requestLogin;

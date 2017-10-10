@@ -7,6 +7,7 @@
 
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import appConfig from '../helpers/config';
 import redirectRoute from '../actions/history/redirectRoute';
 import resetHistory from '../actions/history/resetHistory';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
@@ -26,11 +27,17 @@ export default function history(subscribe) {
   });
 
   /**
-   * Gets triggered when the user did log in.
+   * For the moment, we need to explicitly check for the Shopify webcheckout.
+   * If it's there then we let that module handle the user login.
    */
-  subscribe(userDidLogin$, ({ dispatch }) => {
-    dispatch(redirectRoute());
-  });
+  if (appConfig.webCheckoutShopify === null) {
+    /**
+     * Gets triggered when the user did log in.
+     */
+    subscribe(userDidLogin$, ({ dispatch }) => {
+      dispatch(redirectRoute());
+    });
+  }
 
   /**
    * Gets triggered when the user did log out.
