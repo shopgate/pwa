@@ -75,7 +75,7 @@
       "params": {
         "method":  "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify",
+        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
         "key": "value"
       }
     },

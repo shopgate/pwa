@@ -6,7 +6,6 @@
  */
 
 import appConfig from '@shopgate/pwa-common/helpers/config';
-
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
