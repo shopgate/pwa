@@ -68,6 +68,17 @@
         "key": "value"
       }
     },
+    "webCheckoutShopify": {
+      "type": "bigApi",
+      "destination" : "frontend",
+      "default": null,
+      "params": {
+        "method":  "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
+        "key": "value"
+      }
+    },
     "features": {
       "type": "static",
       "destination" : "frontend",
