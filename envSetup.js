@@ -7,6 +7,7 @@
 
 /* global jasmine */
 
+require('jest-enzyme/lib/index');
 const injectTapEventPlugin = require('react-tap-event-plugin');
 
 injectTapEventPlugin();

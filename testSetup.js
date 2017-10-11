@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const chai = require('chai');
-const chaiEnzyme = require('chai-enzyme');
+const Enzyme = require('enzyme');
+const Adapter = require('enzyme-adapter-react-15');
 
-chai.use(chaiEnzyme);
+Enzyme.configure({ adapter: new Adapter() });
 
 const localStorageMock = (() => {
   let store = {};
