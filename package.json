@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-unit-test",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Shopgate's Unit Test setup for PWAs.",
   "repository": "shopgate/pwa-unit-test",
   "bugs": "https://github.com/shopgate/pwa-unit-test/issues",
