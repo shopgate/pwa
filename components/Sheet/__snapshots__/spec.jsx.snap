@@ -124,7 +124,9 @@ exports[`<Sheet /> should render with content and title 1`] = `
     <div
       className="css-1tkozuj false"
     >
-      <div>
+      <div
+        key=".0"
+      >
         Test
       </div>
     </div>
@@ -252,7 +254,9 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         <div
           className="css-1tkozuj false"
         >
-          <div>
+          <div
+            key=".0"
+          >
             Test
           </div>
         </div>
@@ -316,6 +320,15 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   "opacity": 0,
                 }
               }
+              id={undefined}
+              key=".$.0"
+              onChildAppeared={undefined}
+              onChildEntered={undefined}
+              onChildLeft={undefined}
+              onChildStartAppear={undefined}
+              onChildStartEnter={undefined}
+              onChildStartLeave={undefined}
+              style={undefined}
             >
               <div
                 aria-hidden={true}

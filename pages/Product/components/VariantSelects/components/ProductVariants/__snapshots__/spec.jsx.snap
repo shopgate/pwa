@@ -343,15 +343,15 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           "disabled": false,
           "id": "1",
           "label": "Color",
-          "selected": true,
-          "value": "1",
+          "selected": false,
+          "value": null,
           "values": Array [
             Object {
               "availability": null,
               "disabled": false,
               "id": "1",
               "label": "Black",
-              "selected": true,
+              "selected": false,
             },
             Object {
               "availability": null,
@@ -363,38 +363,29 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           ],
         },
         Object {
-          "disabled": false,
+          "disabled": true,
           "id": "2",
           "label": "Size",
           "selected": false,
           "value": null,
           "values": Array [
             Object {
-              "availability": Object {
-                "state": "ok",
-                "text": "Available",
-              },
-              "disabled": false,
+              "availability": null,
+              "disabled": true,
               "id": "1",
               "label": "0",
               "selected": false,
             },
             Object {
-              "availability": Object {
-                "state": "ok",
-                "text": "Available",
-              },
-              "disabled": false,
+              "availability": null,
+              "disabled": true,
               "id": "2",
               "label": "11",
               "selected": false,
             },
             Object {
-              "availability": Object {
-                "state": "ok",
-                "text": "Available",
-              },
-              "disabled": false,
+              "availability": null,
+              "disabled": true,
               "id": "3",
               "label": "7",
               "selected": false,

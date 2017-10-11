@@ -40,6 +40,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
       <div>
         <PlaceholderLabel
           className="css-1k8v9u5"
+          key="0"
           ready={false}
           style={
             Object {
@@ -58,6 +59,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
         </PlaceholderLabel>
         <PlaceholderLabel
           className="css-1k8v9u5"
+          key="1"
           ready={false}
           style={null}
         >
@@ -68,6 +70,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
         </PlaceholderLabel>
         <PlaceholderLabel
           className="css-1k8v9u5"
+          key="2"
           ready={false}
           style={
             Object {

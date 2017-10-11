@@ -87,6 +87,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                 >
                   <div
                     className=" css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -122,6 +123,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                   </div>
                   <div
                     className=" css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -157,6 +159,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                   </div>
                   <div
                     className=" css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -192,6 +195,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                   </div>
                   <div
                     className=" css-hvpjjr"
+                    key="3"
                   >
                     <Star
                       className=""
@@ -227,6 +231,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                   </div>
                   <div
                     className=" css-hvpjjr"
+                    key="4"
                   >
                     <Star
                       className=""
@@ -266,6 +271,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                 >
                   <div
                     className=" css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -301,6 +307,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                   </div>
                   <div
                     className=" css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -336,6 +343,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                   </div>
                   <div
                     className=" css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -446,6 +454,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
     >
       <div>
         <Review
+          key="0"
           review={
             Object {
               "author": "",
@@ -483,6 +492,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -518,6 +528,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -553,6 +564,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -588,6 +600,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -623,6 +636,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -662,6 +676,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -697,6 +712,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -732,6 +748,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -767,6 +784,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -802,6 +820,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -899,6 +918,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
           </div>
         </Review>
         <Review
+          key="1"
           review={
             Object {
               "author": "username123",
@@ -938,6 +958,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -973,6 +994,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -1008,6 +1030,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -1043,6 +1066,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -1078,6 +1102,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -1117,6 +1142,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -1152,6 +1178,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -1265,6 +1292,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
           </div>
         </Review>
         <Review
+          key="2"
           review={
             Object {
               "author": "Carina Hoffmann",
@@ -1302,6 +1330,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -1337,6 +1366,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -1372,6 +1402,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -1407,6 +1438,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -1442,6 +1474,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -1481,6 +1514,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -1516,6 +1550,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -1551,6 +1586,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -1664,6 +1700,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
           </div>
         </Review>
         <Review
+          key="3"
           review={
             Object {
               "author": "",
@@ -1701,6 +1738,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -1736,6 +1774,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -1771,6 +1810,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -1806,6 +1846,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -1841,6 +1882,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                       </div>
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -1880,6 +1922,7 @@ exports[`<Reviews /> should render reviews and header 1`] = `
                     >
                       <div
                         className="css-1dpi4l8 css-hvpjjr"
+                        key="0"
                       >
                         <Star
                           className=""
