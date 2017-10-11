@@ -6,11 +6,10 @@
  */
 
 import {
-  finalState,
-  existingHash,
+  testReviews,
 } from '../selectors/mock';
 
-const { reviews } = finalState.reviews.reviewsByHash[existingHash];
+const reviews = testReviews.slice();
 
 let currentId = reviews.length;
 // Copy of reviews with different ids.

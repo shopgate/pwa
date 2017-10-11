@@ -22,13 +22,15 @@ import errorProductReviews from '../action-creators/errorProductReviews';
 const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (dispatch) => {
   dispatch(requestProductReviews(productId, limit));
 
-  new PipelineRequest('getProductReviews')
+  const request = new PipelineRequest('getProductReviews')
     .setInput({
       productId,
       limit,
       sort,
     })
-    .dispatch()
+    .dispatch();
+
+  request
     .then((result) => {
       dispatch(receiveProductReviews(productId, result.reviews, result.totalReviewCount));
     })
@@ -36,6 +38,8 @@ const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (disp
       logger.error(error);
       dispatch(errorProductReviews(productId));
     });
+
+  return request;
 };
 
 export default getProductReviews;
