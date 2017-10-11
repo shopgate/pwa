@@ -6,6 +6,8 @@
  */
 
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import { openedLink$ } from '@shopgate/pwa-common/streams/history';
+import { OPEN_LINK } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   REQUEST_CART,
   RECEIVE_CART,
@@ -26,6 +28,8 @@ import {
   ADD_COUPONS_TO_CART,
   SUCCESS_ADD_COUPONS_TO_CART,
   ERROR_ADD_COUPONS_TO_CART,
+
+  COUPON_PUSH_NOTIFICATION,
 
   DELETE_COUPONS_FROM_CART,
   ERROR_DELETE_COUPONS_FROM_CART,
@@ -77,6 +81,44 @@ export const couponsUpdated$ = main$.filter(
     action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
     action.type === ERROR_DELETE_COUPONS_FROM_CART
 );
+
+/**
+ * Gets triggered when a link containing a coupon parameter is opened.
+ * @type {Observable}
+ */
+export const couponLinkOpened$ = main$.filter(
+  ({ action }) => (
+    action.type === OPEN_LINK &&
+    action.options &&
+    action.options.queryParams &&
+    action.options.queryParams.coupon
+  ));
+
+/**
+ * Gets triggered when a push notification containing a coupon code is opened.
+ * @type {Observable}
+ */
+export const couponPushNotification$ = openedLink$
+  .filter(
+    ({ action }) => {
+      // Stop here if we didn't receive a url.
+      if (!action.options || !action.options.url) {
+        return false;
+      }
+
+      // Split the URL string and remove any empty strings.
+      const paths = action.options.url.split('/').filter(Boolean);
+
+      /**
+       * Check that this is the correct push action for coupons and
+       * that we have a code to use (second path).
+       */
+      return (paths[0] === COUPON_PUSH_NOTIFICATION && paths.length === 2);
+    })
+  .map(input => ({
+    ...input,
+    code: input.action.options.url.split('/').filter(Boolean)[1],
+  }));
 
 /**
  * Gets triggered when the user tried to add a product to the cart.
