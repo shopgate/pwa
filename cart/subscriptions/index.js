@@ -7,8 +7,15 @@
 
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import resetHistory from '@shopgate/pwa-common/actions/history/resetHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
+import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
+import fetchCheckoutUrl from '../../checkout/actions/fetchCheckoutUrl';
+import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
   cartRequesting$,
@@ -20,11 +27,12 @@ import {
   couponsAdded$,
   couponsUpdated$,
   couponsDeleted$,
+  couponLinkOpened$,
+  couponPushNotification$,
   remoteCartDidUpdate$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH } from '../constants';
-
 /**
  * Cart subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -35,6 +43,11 @@ export default function cart(subscribe) {
    * sync with the remote cart from the server.
    */
   const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
+
+  /**
+   * Gets triggered when the app is started or the cart route is entered.
+   */
+  const cartDidEnterOrAppDidStart$ = routeDidEnter(CART_PATH).merge(appDidStart$);
 
   const cartBusy$ = cartRequesting$.merge(
     couponsAdded$,
@@ -67,5 +80,36 @@ export default function cart(subscribe) {
   subscribe(appDidStart$, ({ dispatch }) => {
     // Reset the productPendingCount on app start to avoid a wrong value in the cart badge.
     dispatch(setCartProductPendingCount(0));
+  });
+
+  /**
+   * Gets triggered a coupon link was opened.
+   */
+  subscribe(couponLinkOpened$, ({ action, dispatch }) => {
+    dispatch(addCouponsToCart([action.options.queryParams.coupon]));
+  });
+
+  /**
+   * Gets triggered when a push notification containing a coupon link was received.
+   */
+  subscribe(couponPushNotification$, ({ action, code, dispatch, getState }) => {
+    const state = getState();
+    const historyLength = getHistoryLength(state);
+    const historyPathname = getHistoryPathname(state);
+
+    /**
+     * Check if the history only has one entry that is the push notification url.
+     * Then reset back to the homepage.
+     */
+    if (historyLength === 1 && historyPathname === action.options.url) {
+      dispatch(resetHistory(INDEX_PATH));
+    }
+
+    dispatch(addCouponsToCart([code]));
+  });
+
+  subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
+    dispatch(fetchCheckoutUrl());
+    dispatch(fetchRegisterUrl());
   });
 }
