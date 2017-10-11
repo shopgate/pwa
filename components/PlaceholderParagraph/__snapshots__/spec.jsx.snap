@@ -21,6 +21,7 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
   <div>
     <PlaceholderLabel
       className=""
+      key="0"
       ready={false}
       style={
         Object {
@@ -39,6 +40,7 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
     </PlaceholderLabel>
     <PlaceholderLabel
       className=""
+      key="1"
       ready={false}
       style={null}
     >
@@ -49,6 +51,7 @@ exports[`<PlaceholderParagraph /> should render placeholder  1`] = `
     </PlaceholderLabel>
     <PlaceholderLabel
       className=""
+      key="2"
       ready={false}
       style={
         Object {

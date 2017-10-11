@@ -12,14 +12,12 @@ import connect from './connector';
 class FilterBar extends Component {
   static propTypes = {
     isActive: PropTypes.bool,
+    viewRef: PropTypes.shape(),
   };
 
   static defaultProps = {
     isActive: false,
-  };
-
-  static contextTypes = {
-    viewRef: PropTypes.shape(),
+    viewRef: null,
   };
 
   /**
@@ -56,8 +54,10 @@ class FilterBar extends Component {
    * Called before the component receives new properties. Sets up the scroll DOM elements.
    * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps() {
-    this.setupScrollElement();
+  componentWillReceiveProps(nextProps) {
+    if (this.props.viewRef !== nextProps.viewRef) {
+      this.setupScrollElement(nextProps.viewRef);
+    }
   }
 
   /**
@@ -91,13 +91,14 @@ class FilterBar extends Component {
 
   /**
    * Sets up the scroll DOM element and binds all event handlers.
+   * @param {HTMLElement|null} element The element that will be scrolling.
    */
-  setupScrollElement() {
+  setupScrollElement(element = this.props.viewRef) {
     if (this.scrollElement) {
       return;
     }
 
-    this.scrollElement = this.context.viewRef;
+    this.scrollElement = element;
     this.bindEvents();
   }
 
@@ -241,9 +242,14 @@ class FilterBar extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = [
+      styles.wrapper,
+      ...(this.state.hasShadow) && [styles.shaded],
+    ];
+
     return (
       <div>
-        <div ref={this.setRef} className={styles.wrapper} style={this.wrapperStyle}>
+        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle}>
           <Content componentUpdated={this.setSpacerHeight} />
         </div>
         <div style={{ height: this.state.spacerHeight }} />

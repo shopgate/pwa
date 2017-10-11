@@ -57,6 +57,7 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
               <Grid
                 className="css-7hjff2"
                 component="ul"
+                key=".0"
                 wrap={false}
               >
                 <ul
@@ -352,6 +353,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
               <Grid
                 className="css-7hjff2"
                 component="ul"
+                key=".0"
                 wrap={false}
               >
                 <ul
@@ -694,6 +696,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
               <Grid
                 className="css-7hjff2"
                 component="ul"
+                key=".0"
                 wrap={false}
               >
                 <ul
@@ -988,6 +991,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
               <Grid
                 className="css-7hjff2"
                 component="ul"
+                key=".0"
                 wrap={false}
               >
                 <ul
@@ -1282,6 +1286,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
               <Grid
                 className="css-7hjff2"
                 component="ul"
+                key=".0"
                 wrap={false}
               >
                 <ul

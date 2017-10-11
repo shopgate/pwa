@@ -295,8 +295,11 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                 >
                   <div
                     className="sg-swiper-slide css-1l9a57c "
+                    key=".$s0"
                   >
-                    <SliderItem>
+                    <SliderItem
+                      key="0"
+                    >
                       <div
                         className="css-10a4qrv"
                       >
@@ -305,6 +308,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                           animating={false}
                           forcePlaceholder={false}
                           highestResolutionLoaded={[Function]}
+                          key="foo/bar.png"
                           ratio={null}
                           resolutions={
                             Array [
@@ -357,8 +361,11 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                   </div>
                   <div
                     className="sg-swiper-slide css-1l9a57c "
+                    key=".$s1"
                   >
-                    <SliderItem>
+                    <SliderItem
+                      key="1"
+                    >
                       <div
                         className="css-10a4qrv"
                       >
@@ -367,6 +374,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                           animating={false}
                           forcePlaceholder={false}
                           highestResolutionLoaded={[Function]}
+                          key="bar/foo.png"
                           ratio={null}
                           resolutions={
                             Array [

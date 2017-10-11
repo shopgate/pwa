@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { connect } from 'react-redux';
+import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import fetchCheckoutUrl from '@shopgate/pwa-common-commerce/checkout/actions/fetchCheckoutUrl';
 import { getCheckoutUrl } from '@shopgate/pwa-common-commerce/checkout/selectors';

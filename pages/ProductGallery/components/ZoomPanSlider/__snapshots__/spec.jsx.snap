@@ -84,12 +84,16 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
             >
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s0"
               >
-                <SliderItem>
+                <SliderItem
+                  key="0"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="0/.0"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}
@@ -169,12 +173,16 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
               </div>
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s1"
               >
-                <SliderItem>
+                <SliderItem
+                  key="1"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="1/.1"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}
@@ -254,12 +262,16 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
               </div>
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s2"
               >
-                <SliderItem>
+                <SliderItem
+                  key="2"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="2/.2"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}
@@ -339,12 +351,16 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
               </div>
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s3"
               >
-                <SliderItem>
+                <SliderItem
+                  key="3"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="3/.3"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}
@@ -424,12 +440,16 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
               </div>
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s4"
               >
-                <SliderItem>
+                <SliderItem
+                  key="4"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="4/.4"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}
@@ -600,12 +620,16 @@ exports[`<ZoomPanSlider /> wraps children in zoom containers 1`] = `
             >
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s0"
               >
-                <SliderItem>
+                <SliderItem
+                  key="0"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="0/.0"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}
@@ -685,12 +709,16 @@ exports[`<ZoomPanSlider /> wraps children in zoom containers 1`] = `
               </div>
               <div
                 className="sg-swiper-slide css-1l9a57c "
+                key=".$s1"
               >
-                <SliderItem>
+                <SliderItem
+                  key="1"
+                >
                   <div
                     className="css-10a4qrv"
                   >
                     <ZoomPanContainer
+                      key="1/.1"
                       maxZoom={4}
                       minZoom={1}
                       onZoom={[Function]}

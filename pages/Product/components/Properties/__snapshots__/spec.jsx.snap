@@ -49,7 +49,9 @@ exports[`<Properties /> should render table with properties 1`] = `
       className="css-13asv6l"
     >
       <tbody>
-        <tr>
+        <tr
+          key="foo"
+        >
           <td
             className="css-t8v3ij"
           >
@@ -61,7 +63,9 @@ exports[`<Properties /> should render table with properties 1`] = `
             bar
           </td>
         </tr>
-        <tr>
+        <tr
+          key="bar"
+        >
           <td
             className="css-t8v3ij"
           >

@@ -46,6 +46,6 @@ exports[`<ClientInformation /> App and lib version, and device ID should show th
 </div>
 `;
 
-exports[`<ClientInformation /> should not render if no data is available 1`] = `null`;
+exports[`<ClientInformation /> should not render if no data is available 1`] = `""`;
 
-exports[`<ClientInformation /> should not render if the data is still being fetched 1`] = `null`;
+exports[`<ClientInformation /> should not render if the data is still being fetched 1`] = `""`;
