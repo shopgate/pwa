@@ -101,8 +101,8 @@ jest.mock(
     // The factory requires a callback function which will be called always when the `PipelineRequest.dispatch()` is called.
     mockedPipelineRequestFactory((mockedInstance, resolve, reject) => {
       // Here you can place your code that either resolves or rejects the promise.
-      // For analysing purposes, the mocked dispatch also passes the MockedPipelineRequest instance (this).
-      // This allows the test to analyse the internal data, like the effect of `PipelineRequest.setInput()` method.
+      // For analytical purposes, the mocked dispatch also passes the MockedPipelineRequest instance (this).
+      // This allows the test to analyze the internal data, like the effect of `PipelineRequest.setInput()` method.
     })
   )
 )
