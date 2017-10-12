@@ -8,7 +8,7 @@
 import _ from 'lodash';
 import {
   getCurrentProductReviews,
-  getProductReviews,
+  getProductReviewsExcerpt,
   getReviewsTotalCount,
   getCurrentReviewCount,
   getReviewsFetchingState,
@@ -37,19 +37,19 @@ describe('Reviews selectors', () => {
       expect(reviews).toEqual([]);
     });
   });
-  describe('getProductReviews', () => {
+  describe('getProductReviewsExcerpt', () => {
     it('should return product reviews when reviews are available', () => {
-      const reviews = getProductReviews(finalState);
+      const reviews = getProductReviewsExcerpt(finalState);
       expect(reviews).toEqual(testReviews);
     });
     it('should return null when state has no reviews for current product', () => {
       const state = _.cloneDeep(finalState);
       state.product.currentProduct.productId = null;
-      const reviews = getProductReviews(state);
+      const reviews = getProductReviewsExcerpt(state);
       expect(reviews).toBe(null);
     });
     it('should return null when state has no reviews for current product', () => {
-      const reviews = getProductReviews(emptyState);
+      const reviews = getProductReviewsExcerpt(emptyState);
       expect(reviews).toBe(null);
     });
   });

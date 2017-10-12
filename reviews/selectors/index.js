@@ -61,7 +61,7 @@ export const getReviews = (state) => {
  * @param {Object} state The current application state.
  * @return {Object} The reviews for a product
  */
-export const getProductReviews = createSelector(
+export const getProductReviewsExcerpt = createSelector(
   getCurrentProductId,
   getProductReviewsState,
   getReviews,
