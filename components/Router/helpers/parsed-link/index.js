@@ -83,15 +83,6 @@ class ParsedLink {
   }
 
   /**
-   * Called when parsing the link failed for some reason.
-   * @param {string} message Message that describes the issue.
-   */
-  invalidLink(message) {
-    logger.warn(`Could not parse link: ${message}`);
-    this.invalid = true;
-  }
-
-  /**
    * Returns all active handlers
    * @returns {Array}
    */
@@ -118,20 +109,12 @@ class ParsedLink {
   /**
    * Opens the link
    * @param {Object} [history] The history object of react-router
-   * @param {Function} [callback] A callback that is called after the opening of the link.
    */
-  open(history = defaultHistory, callback = () => {}) {
-    if (this.invalid) {
-      logger.warn('Tried to open invalid link..');
-      return;
-    }
-
+  open(history = defaultHistory) {
     this.getHandlers().forEach((handler) => {
       event.trigger('openLink', handler);
       actions[handler.action](handler.options, history);
     });
-
-    callback();
   }
 }
 
