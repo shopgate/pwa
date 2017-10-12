@@ -206,19 +206,3 @@ export const getCurrentActiveValues = createSelector(
     return filter.values;
   }
 );
-
-/**
- * Selects the filter index.
- * @param {Object} state The current application state.
- * @returns {number|null}
- */
-export const getFilterIndex = createSelector(
-  getFilters,
-  (filterState) => {
-    if (typeof filterState.activeIndex !== 'undefined') {
-      return filterState.activeIndex;
-    }
-
-    return null;
-  }
-);
