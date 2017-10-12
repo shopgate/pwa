@@ -17,15 +17,21 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Discount = ({ price }) => (
-  <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
-    {(price && price.discount) && (
-      <div className={styles.discount}>
-        <DiscountBadge text={`-${price.discount}%`} />
-      </div>
-    )}
-  </PlaceholderLabel>
-);
+const Discount = ({ price }) => {
+  if (!price.discount) {
+    return null;
+  }
+
+  return (
+    <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
+      {(price && price.discount) && (
+        <div className={styles.discount}>
+          <DiscountBadge text={`-${price.discount}%`} />
+        </div>
+      )}
+    </PlaceholderLabel>
+  );
+};
 
 Discount.propTypes = {
   price: PropTypes.shape(),
