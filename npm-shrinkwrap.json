@@ -70,25 +70,12 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "0.1.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.3.tgz",
-      "integrity": "sha512-NEYw5m3n+okJ5CF+dQhLY0KsPdhtSpMANwSY4+Vi6ntRhq8ZjMs7+bqIXDnqQ1tnToIbOjJgQ2diNdGfbo9SkA==",
+      "version": "0.1.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.4.tgz",
+      "integrity": "sha512-A6gs5pw9TOpPYFjGuyk0e+aMIqfnXWdOEeJsZ5Ll8qyGZ7N1Wj6H1mX794Y8DfDG379by0/C6BpQWnNGd09c3w==",
       "requires": {
-        "recompose": "0.25.1",
+        "recompose": "0.26.0",
         "reselect": "3.0.1"
-      },
-      "dependencies": {
-        "recompose": {
-          "version": "0.25.1",
-          "resolved": "https://registry.npmjs.org/recompose/-/recompose-0.25.1.tgz",
-          "integrity": "sha512-EwFAv6UBrHbLIsIKHUZJ+BKdjTmyEsIrRlGO3R7PKu0S7hkgNznVDRvb+1upQUntURtBvxhYnTVQ3AcWOlsmWA==",
-          "requires": {
-            "change-emitter": "0.1.6",
-            "fbjs": "0.8.16",
-            "hoist-non-react-statics": "2.3.1",
-            "symbol-observable": "1.0.4"
-          }
-        }
       }
     },
     "@shopgate/pwa-core": {
