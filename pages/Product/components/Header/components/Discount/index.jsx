@@ -18,7 +18,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Discount = ({ price }) => {
-  if (!price.discount) {
+  if (price && typeof price.discount === 'undefined') {
     return null;
   }
 
