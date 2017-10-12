@@ -7,7 +7,7 @@
 
 import _ from 'lodash';
 import {
-  getCurrentProductReviews,
+  getProductReviews,
   getProductReviewsExcerpt,
   getReviewsTotalCount,
   getCurrentReviewCount,
@@ -21,19 +21,19 @@ import {
 } from './mock';
 
 describe('Reviews selectors', () => {
-  describe('getCurrentProductReviews', () => {
+  describe('getProductReviews', () => {
     it('should return reviews when reviews are available', () => {
-      const reviews = getCurrentProductReviews(finalState);
+      const reviews = getProductReviews(finalState);
       expect(reviews).toEqual(testReviews);
     });
     it('should return empty array when state has no reviews for current product', () => {
       const state = _.cloneDeep(finalState);
       state.product.currentProduct.productId = null;
-      const reviews = getCurrentProductReviews(state);
+      const reviews = getProductReviews(state);
       expect(reviews).toEqual([]);
     });
     it('should return empty array when state is empty', () => {
-      const reviews = getCurrentProductReviews(emptyState);
+      const reviews = getProductReviews(emptyState);
       expect(reviews).toEqual([]);
     });
   });

@@ -42,7 +42,7 @@ const getCollectionForCurrentProductId = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product reviews state.
  */
-const getProductReviewsState = state => state.reviews.reviewsByProductId;
+const getProductReviewsExcerptState = state => state.reviews.reviewsByProductId;
 
 /**
  * Retrieves the reviews collection which contains all reviews data.
@@ -63,7 +63,7 @@ export const getReviews = (state) => {
  */
 export const getProductReviewsExcerpt = createSelector(
   getCurrentProductId,
-  getProductReviewsState,
+  getProductReviewsExcerptState,
   getReviews,
   (productId, productReviewsState, reviewsState) => {
     const collection = productReviewsState[productId];
@@ -83,7 +83,7 @@ export const getProductReviewsExcerpt = createSelector(
  */
 export const getProductReviewCount = createSelector(
   getCurrentProductId,
-  getProductReviewsState,
+  getProductReviewsExcerptState,
   (productId, reviewsState) => {
     const collection = reviewsState[productId];
 
@@ -99,7 +99,7 @@ export const getProductReviewCount = createSelector(
  * @param {Object} state The current application state.
  * @return {Array|null} The reviews for a product.
  */
-export const getCurrentProductReviews = createSelector(
+export const getProductReviews = createSelector(
   getCollectionForCurrentProductId,
   getReviews,
   (collection, allReviews) => {
