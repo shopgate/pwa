@@ -10,7 +10,7 @@ import {
   getProductRating,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
-  getProductReviews,
+  getProductReviewsExcerpt,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 
 /**
@@ -19,7 +19,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  reviews: getProductReviews(state),
+  reviews: getProductReviewsExcerpt(state),
   rating: getProductRating(state),
 });
 
