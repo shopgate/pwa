@@ -7,7 +7,7 @@
 
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import ParsedLink from '@shopgate/pwa-common/helpers/parsed-link';
+import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import connect from './connector';
 
 /**

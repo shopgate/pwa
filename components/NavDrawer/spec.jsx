@@ -13,7 +13,7 @@ jest.mock('react-portal', () => (
 ));
 
 // Mock the parsed link component.
-jest.mock('@shopgate/pwa-common/helpers/parsed-link', () => (
+jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
   class {
     open = () => {};
   }
