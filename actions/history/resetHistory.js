@@ -7,6 +7,8 @@
 
 import goBackHistory from './goBackHistory';
 import pushHistory from './pushHistory';
+import historyWillReset from '../../action-creators/history/historyWillReset';
+import historyDidReset from '../../action-creators/history/historyDidReset';
 import { getHistoryLength } from '../../selectors/history';
 
 /**
@@ -16,10 +18,13 @@ import { getHistoryLength } from '../../selectors/history';
  * @returns {Function} A redux thunk.
  */
 const resetHistory = (location = null) => (dispatch, getState) => {
-  const numEntries = getHistoryLength(getState());
+  dispatch(historyWillReset());
 
+  const numEntries = getHistoryLength(getState());
   // Go back the exact amount of entries stored in the history.
   dispatch(goBackHistory(numEntries - 1));
+
+  dispatch(historyDidReset());
 
   // Set the new location if one was passed with the parameters.
   if (location) {

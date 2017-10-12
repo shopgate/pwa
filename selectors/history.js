@@ -58,6 +58,16 @@ export const getSearchPhrase = createSelector(
 );
 
 /**
+ * Gets the current history action.
+ * @param {Object} state The current application state.
+ * @returns {string}
+ */
+export const getHistoryAction = createSelector(
+  getHistoryState,
+  historyState => historyState.action
+);
+
+/**
  * Gets the current history pathname.
  * @param {Object} state The current application state.
  * @returns {string}
