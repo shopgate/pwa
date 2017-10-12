@@ -8,6 +8,7 @@ import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/Pipelin
 import fetchReviews from './fetchReviews';
 import getProductReviews from './getProductReviews';
 
+const { console } = global;
 let mockedResolver;
 jest.mock(
   '@shopgate/pwa-core/classes/PipelineRequest',
@@ -20,6 +21,12 @@ jest.mock(
 
 describe('Reviews actions', () => {
   describe('fetchReviews', () => {
+    beforeEach(() => {
+      console.error = jest.fn();
+    });
+    afterEach(() => {
+      console.error.mockClear();
+    });
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
@@ -38,6 +45,7 @@ describe('Reviews actions', () => {
             offset: 1,
             sort: 'dateDesc',
           });
+          expect(console.error).toHaveBeenCalledTimes(variant === 'then' ? 0 : 1);
           expect(mockedDispatch).toHaveBeenCalledTimes(2);
           done();
         });
