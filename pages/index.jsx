@@ -45,6 +45,7 @@ import Login from './Login';
 import Register from './Register';
 import Checkout from './Checkout';
 import Orders from './Orders';
+import Reviews from './Reviews';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
 
@@ -65,6 +66,7 @@ const Pages = () =>
       <Route path={`${FILTER_PATH}/:attribute`} component={FilterAttribute} />
       <Route path={`${ITEM_PATH}/:productId`} component={Product} />
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
+      <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
       <Route path={`${CART_PATH}`} component={Cart} />
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />

@@ -6,13 +6,7 @@
  */
 
 /**
- * Action Types
- */
-export const OPEN_PRODUCT_GALLERY = 'OPEN_PRODUCT_GALLERY';
-export const REQUEST_PRODUCT_DATA = 'REQUEST_PRODUCT_DATA';
-
-/**
- * Max number of reviews shown
+ * Number of reviews items that should be loaded per bundle (page or load more).
  * @type {number}
  */
-export const REVIEW_PREVIEW_COUNT = 2;
+export const REVIEW_ITEMS_PER_PAGE = 10;

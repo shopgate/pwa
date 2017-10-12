@@ -9,6 +9,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
+import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
 import category from 'Pages/Category/subscriptions';
@@ -16,6 +17,7 @@ import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import search from 'Pages/Search/subscriptions';
+import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import app from './subscriptions';
 
@@ -23,6 +25,7 @@ const subscriptions = [
   commerceCart,
   commerceCategory,
   commerceFilter,
+  commerceProduct,
   commerceSearch,
   app,
   navigator,
@@ -32,6 +35,7 @@ const subscriptions = [
   filterbar,
   login,
   search,
+  reviews,
 ];
 
 if (appConfig.webCheckoutShopify !== null) {
