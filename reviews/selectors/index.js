@@ -57,7 +57,7 @@ export const getReviews = (state) => {
 };
 
 /**
- * Retrieves the current product reviews.
+ * Retrieves the current product reviews excerpt.
  * @param {Object} state The current application state.
  * @return {Object} The reviews for a product
  */
