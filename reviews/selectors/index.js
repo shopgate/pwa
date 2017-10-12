@@ -49,12 +49,7 @@ const getProductReviewsExcerptState = state => state.reviews.reviewsByProductId;
  * @param {Object} state The current application state.
  * @return {Object} The reviews collection stored as reviewId => review pairs.
  */
-export const getReviews = (state) => {
-  if (!state.reviews) {
-    return {};
-  }
-  return state.reviews.reviewsById || {};
-};
+export const getReviews = state => state.reviews.reviewsById || {};
 
 /**
  * Retrieves the current product reviews excerpt.

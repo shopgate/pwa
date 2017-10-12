@@ -16,7 +16,7 @@ import errorProductReviews from '../action-creators/errorProductReviews';
  * Request product reviews for a product from server.
  * @param {string} productId The product ID
  * @param {number} limit The maximum number of reviews to fetch
- * @param {string} sort Sorting: 'relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'
+ * @param {('relevance'|'dateDesc'|'dateAsc'|'rateDesc'|'rateAsc')} sort Sorting.
  * @returns {Function} The dispatched action.
  */
 const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (dispatch) => {

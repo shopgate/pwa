@@ -49,8 +49,7 @@ function reviewsByHash(state = {}, action) {
         [action.hash]: {
           ...state[action.hash],
           reviews: stateReviews,
-          totalReviewCount: typeof action.totalReviewCount !== 'undefined' ?
-            action.totalReviewCount : null,
+          totalReviewCount: action.totalReviewCount || null,
           isFetching: false,
           expires: Date.now() + REVIEWS_LIFETIME,
         },
