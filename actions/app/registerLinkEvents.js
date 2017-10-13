@@ -37,7 +37,13 @@ const registerLinkEvents = location => (dispatch) => {
     dispatch(handleDeepLink(payload))
   );
 
+  window.push = (payload) => dispatch(handlePushNotification(payload));
+  window.deeplink = (payload) => dispatch(handleDeepLink(payload));
+
+
   dispatch(didRegisterLinkEvents());
+
+  // ??
 
   dispatch(openLink('reactRouter', {
     url: location.pathname,

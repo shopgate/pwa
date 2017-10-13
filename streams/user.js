@@ -69,7 +69,7 @@ export const userDidUpdate$ = main$
  * Gets triggered when we received the user data.
  * @type {Observable}
  */
-export const userReceived$ = userDidUpdate$
+export const userDataReceived$ = userDidUpdate$
   .filter(({ action }) => action.type === RECEIVE_USER);
 
 /**
