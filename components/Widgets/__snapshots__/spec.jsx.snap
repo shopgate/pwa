@@ -22,6 +22,7 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
   >
     <ImageWidget
       col={0}
+      key="w0"
       row={0}
       settings={
         Object {
@@ -115,6 +116,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
           },
         ]
       }
+      key="w0"
     >
       <div
         className="css-12z1ntc"
@@ -142,6 +144,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
               "width": 12,
             }
           }
+          key="w0"
         >
           <GridItem
             className="css-147ej5f css-63oe3q  "

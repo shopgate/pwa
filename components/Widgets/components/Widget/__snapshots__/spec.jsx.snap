@@ -49,6 +49,7 @@ exports[`<Widget /> should render an image widget 1`] = `
               6,
             ]
           }
+          settings={undefined}
         >
           <div />
         </MyComponent>

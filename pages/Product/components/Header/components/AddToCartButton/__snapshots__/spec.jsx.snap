@@ -123,7 +123,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   isOrderable={true}
 >
   <button
-    className="css-dgn98k css-oo1pf9"
+    className="css-dgn98k css-16iirry"
     onClick={[Function]}
   >
     <div
@@ -156,11 +156,11 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       </IndicatorCircle>
     </div>
     <div
-      className="css-1kdius0 css-1tg5aiu"
+      className="css-1kdius0"
       style={
         Object {
           "opacity": 1,
-          "transform": "translate3d(0, -50%, 0)",
+          "transform": "translate3d(0, 300%, 0)",
         }
       }
     >
@@ -192,12 +192,12 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       </Tick>
     </div>
     <div
-      className="css-1kdius0 css-1kfuvpr"
+      className="css-1kdius0"
       onAnimationEnd={[Function]}
       style={
         Object {
           "opacity": 1,
-          "transform": "translate3d(0, -300%, 0)",
+          "transform": "translate3d(0, -50%, 0)",
         }
       }
     >

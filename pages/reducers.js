@@ -20,6 +20,7 @@ import category from '@shopgate/pwa-common-commerce/category/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
+import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import navigator from 'Components/Navigator/reducer';
 
 import general from 'Components/View/reducer';
@@ -36,6 +37,7 @@ const reducers = {
   navigator,
   page,
   product,
+  reviews,
   search,
   ui: combineReducers({
     general,

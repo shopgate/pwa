@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should not render when no reviews given 1`] = `
-<List
-  reviews={Array []}
-/>
-`;
+exports[`<List /> should not render when no reviews given 1`] = `null`;
 
 exports[`<List /> should render list with reviews 1`] = `
 <List
@@ -43,6 +39,7 @@ exports[`<List /> should render list with reviews 1`] = `
 >
   <div>
     <Review
+      key="0"
       review={
         Object {
           "author": "",
@@ -80,6 +77,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -115,6 +113,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -150,6 +149,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -185,6 +185,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="3"
                   >
                     <Star
                       className=""
@@ -220,6 +221,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="4"
                   >
                     <Star
                       className=""
@@ -259,6 +261,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -294,6 +297,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -329,6 +333,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -364,6 +369,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="3"
                   >
                     <Star
                       className=""
@@ -399,6 +405,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="4"
                   >
                     <Star
                       className=""
@@ -496,6 +503,7 @@ exports[`<List /> should render list with reviews 1`] = `
       </div>
     </Review>
     <Review
+      key="1"
       review={
         Object {
           "author": "username123",
@@ -535,6 +543,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -570,6 +579,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -605,6 +615,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -640,6 +651,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="3"
                   >
                     <Star
                       className=""
@@ -675,6 +687,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="4"
                   >
                     <Star
                       className=""
@@ -714,6 +727,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -749,6 +763,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -862,6 +877,7 @@ exports[`<List /> should render list with reviews 1`] = `
       </div>
     </Review>
     <Review
+      key="2"
       review={
         Object {
           "author": "Carina Hoffmann",
@@ -899,6 +915,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -934,6 +951,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -969,6 +987,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -1004,6 +1023,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="3"
                   >
                     <Star
                       className=""
@@ -1039,6 +1059,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="4"
                   >
                     <Star
                       className=""
@@ -1078,6 +1099,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -1113,6 +1135,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -1148,6 +1171,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -1261,6 +1285,7 @@ exports[`<List /> should render list with reviews 1`] = `
       </div>
     </Review>
     <Review
+      key="3"
       review={
         Object {
           "author": "",
@@ -1298,6 +1323,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""
@@ -1333,6 +1359,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="1"
                   >
                     <Star
                       className=""
@@ -1368,6 +1395,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="2"
                   >
                     <Star
                       className=""
@@ -1403,6 +1431,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="3"
                   >
                     <Star
                       className=""
@@ -1438,6 +1467,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="4"
                   >
                     <Star
                       className=""
@@ -1477,6 +1507,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 >
                   <div
                     className="css-1dpi4l8 css-hvpjjr"
+                    key="0"
                   >
                     <Star
                       className=""

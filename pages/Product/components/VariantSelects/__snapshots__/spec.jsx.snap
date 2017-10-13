@@ -1,237 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<VariantSelects /> given availability should not render availability text if available 1`] = `
-<div>
-  <Component>
-    <Picker
-      buttonComponent={[Function]}
-      buttonProps={
-        Object {
-          "highlighted": false,
-        }
-      }
-      clickDelay={150}
-      disabled={false}
-      duration={350}
-      isOpen={false}
-      items={
-        Array [
-          Object {
-            "disabled": false,
-            "label": "Pink",
-            "rightComponent": null,
-            "value": "1",
-          },
-          Object {
-            "disabled": true,
-            "label": "Black",
-            "rightComponent": null,
-            "value": "2",
-          },
-        ]
-      }
-      label="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
-      onChange={[Function]}
-      onClose={[Function]}
-      placeholder={
-        <Translate
-          className=""
-          params={
-            Array [
-              "Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd",
-            ]
-          }
-          string="product.pick_an_attribute"
-        />
-      }
-      value={null}
-    />
-    <Picker
-      buttonComponent={[Function]}
-      buttonProps={
-        Object {
-          "highlighted": false,
-        }
-      }
-      clickDelay={150}
-      disabled={false}
-      duration={530}
-      isOpen={false}
-      items={
-        Array [
-          Object {
-            "disabled": false,
-            "label": "S",
-            "rightComponent": null,
-            "value": "1",
-          },
-          Object {
-            "disabled": false,
-            "label": "M",
-            "rightComponent": null,
-            "value": "2",
-          },
-          Object {
-            "disabled": true,
-            "label": "asjdaksdlkasdkalsklaeksoas iodialskdajsdjasdjkajdkajsd adshj",
-            "rightComponent": null,
-            "value": "3",
-          },
-          Object {
-            "disabled": false,
-            "label": "XS",
-            "rightComponent": null,
-            "value": "4",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "5",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "6",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "7",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "8",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "9",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "10",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "11",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "12",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "13",
-          },
-        ]
-      }
-      label="Size"
-      onChange={[Function]}
-      onClose={[Function]}
-      placeholder={
-        <Translate
-          className=""
-          params={
-            Array [
-              "Size",
-            ]
-          }
-          string="product.pick_an_attribute"
-        />
-      }
-      value="2"
-    />
-    <Picker
-      buttonComponent={[Function]}
-      buttonProps={
-        Object {
-          "highlighted": false,
-        }
-      }
-      clickDelay={150}
-      disabled={true}
-      duration={406}
-      isOpen={false}
-      items={
-        Array [
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "7",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "8",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "9",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "10",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "11",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "12",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "13",
-          },
-        ]
-      }
-      label="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
-      onChange={[Function]}
-      onClose={[Function]}
-      placeholder={
-        <Translate
-          className=""
-          params={
-            Array [
-              "FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk",
-            ]
-          }
-          string="product.pick_an_attribute"
-        />
-      }
-      value="Barasdhasjd kasjdkajskdjaksdjaksdjaksjdakjsdkajsd aksjdakjsdkajd kjdkajskdja"
-    />
-  </Component>
-</div>
-`;
-
 exports[`<VariantSelects /> should render with variants 1`] = `
 <div>
   <Component>
@@ -262,6 +30,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
           },
         ]
       }
+      key="1"
       label="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
       onChange={[Function]}
       onClose={[Function]}
@@ -371,6 +140,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
           },
         ]
       }
+      key="2"
       label="Size"
       onChange={[Function]}
       onClose={[Function]}
@@ -444,6 +214,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
           },
         ]
       }
+      key="3"
       label="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
       onChange={[Function]}
       onClose={[Function]}

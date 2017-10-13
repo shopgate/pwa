@@ -11,10 +11,12 @@ import { features } from 'Config/app.json';
 import connect from './connector';
 import List from './components/List';
 import Header from './components/Header';
+import AllReviewsLink from './components/AllReviewsLink';
 
 /**
  * Reviews Component
- * @param {Object} props The reviews data
+ * @param {Object} rating Rating of the product.
+ * @param {Array} reviews Reviews which should be shown in the product page.
  * @returns {JSX|null}
  */
 const Reviews = ({ rating, reviews }) => {
@@ -26,6 +28,7 @@ const Reviews = ({ rating, reviews }) => {
     <div>
       <Header rating={rating} />
       <List reviews={reviews} />
+      <AllReviewsLink />
     </div>
   );
 };

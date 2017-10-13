@@ -5,9 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
+import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 import tracking from '@shopgate/pwa-tracking/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
@@ -16,13 +18,15 @@ import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import search from 'Pages/Search/subscriptions';
+import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import app from './subscriptions';
 
-export default [
+const subscriptions = [
   commerceCart,
   commerceCategory,
   commerceFilter,
+  commerceProduct,
   commerceSearch,
   ...tracking,
   app,
@@ -33,4 +37,12 @@ export default [
   filterbar,
   login,
   search,
+  reviews,
 ];
+
+if (appConfig.webCheckoutShopify !== null) {
+  // eslint-disable-next-line global-require
+  subscriptions.push(require('@shopgate/pwa-webcheckout-shopify/subscriptions').default);
+}
+
+export default subscriptions;

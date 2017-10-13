@@ -1,5 +1,5 @@
 {
-  "version": "0.1.6",
+  "version": "0.1.10",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "language": {
@@ -65,6 +65,17 @@
         "method":  "GET",
         "service": "config",
         "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
+        "key": "value"
+      }
+    },
+    "webCheckoutShopify": {
+      "type": "bigApi",
+      "destination" : "frontend",
+      "default": null,
+      "params": {
+        "method":  "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
         "key": "value"
       }
     },
