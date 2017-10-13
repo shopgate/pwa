@@ -9,7 +9,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeIsActive } from '@shopgate/pwa-common/streams/history';
+import { routeDidNotChange } from '@shopgate/pwa-common/streams/history';
 import {
   RECEIVE_PRODUCTS,
   RECEIVE_PRODUCT,
@@ -99,7 +99,7 @@ export const dataLoaded$ = currentProductIdChanged
 /**
  * Emits when product page is entered.
  */
-const productRouteEntered$ = routeIsActive(ITEM_PATH);
+const productRouteEntered$ = routeDidNotChange(ITEM_PATH);
 
 /**
  * Emits when product data are already available.
