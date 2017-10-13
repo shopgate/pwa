@@ -14,8 +14,8 @@ import {
   HISTORY_POP_ACTION,
   HISTORY_PUSH_ACTION,
   HISTORY_REPLACE_ACTION,
-} from '@shopgate/pwa-common/constants/History';
-import { HISTORY_WILL_RESET } from '@shopgate/pwa-common/constants/ActionTypes';
+  HISTORY_WILL_RESET,
+} from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   getHistoryPathname,
   getHistoryAction,
