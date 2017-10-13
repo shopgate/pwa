@@ -60,7 +60,9 @@ export default function filters(subscribe) {
    * Gets triggered when entering a filterable route by going forward in, or replacing the history.
    */
   const filterableRoutesDidEnter$ = routeDidEnter(CATEGORY_PATH).merge(routeDidEnter(SEARCH_PATH))
-    .filter(({ historyAction }) => historyAction === HISTORY_PUSH_ACTION);
+    .filter(({ historyAction, initialEnter }) =>
+      historyAction === HISTORY_PUSH_ACTION || initialEnter === true
+    );
 
   /**
    * Gets triggered when leaving a filterable route by going back in history.
