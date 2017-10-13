@@ -191,6 +191,11 @@ class View extends Component {
                 return null;
               }
 
+              // Just return the child if it is not a React component.
+              if (typeof child.type === 'string') {
+                return child;
+              }
+
               return React.cloneElement(child, {
                 ...this.element && { viewRef: this.element },
               });

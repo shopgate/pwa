@@ -5,11 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
-import {
-  getCategoryProductCount,
-  getCurrentCategoryChildCount,
-} from '@shopgate/pwa-common-commerce/category/selectors';
+import { connect } from 'react-redux';
+import { hasContent } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -17,8 +14,8 @@ import {
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  isVisible: (getCategoryProductCount(state) === 0 && getCurrentCategoryChildCount(state) === 0),
+const mapStateToProps = (state, props) => ({
+  isVisible: hasContent(state, props),
 });
 
-export default connect(mapStateToProps, null, null, { withRef: true });
+export default connect(mapStateToProps);
