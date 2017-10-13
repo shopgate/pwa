@@ -5,13 +5,56 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import 'rxjs/add/operator/switchMap';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
+  HISTORY_PUSH_ACTION,
+  HISTORY_POP_ACTION,
+  HISTORY_REPLACE_ACTION,
+} from '@shopgate/pwa-common/constants/ActionTypes';
+import { historyDidUpdate$ } from '@shopgate/pwa-common/streams/history';
+import {
   SET_CURRENT_CATEGORY_ID,
-  RECEIVE_CATEGORY_CHILDREN,
+  CATEGORY_PATH,
 } from '@shopgate/pwa-common-commerce/category/constants';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  receivedRootCategories$,
+  categoryRouteDidEnter$,
+} from '@shopgate/pwa-common-commerce/category/streams';
+import { getCurrentCategories } from '@shopgate/pwa-common-commerce/category/selectors';
 import { productsReceived$ } from './product';
+
+/**
+ * Emits when the root category was entered.
+ */
+const rootCategoryDidEnter$ = historyDidUpdate$
+  .filter(
+    ({ action }) => (
+      action.historyProps.pathname === CATEGORY_PATH &&
+      (
+        action.historyProps.action === HISTORY_PUSH_ACTION ||
+        action.historyProps.action === HISTORY_POP_ACTION ||
+        action.historyProps.action === HISTORY_REPLACE_ACTION
+      )
+    )
+  );
+
+/**
+ * Emits when the root category data has been received.
+ */
+const rootCategoryLoaded$ = rootCategoryDidEnter$.switchMap(() => receivedRootCategories$);
+
+/**
+ * Emits when a root category's data is already available.
+ */
+const rootCategoryPreloaded$ = rootCategoryDidEnter$.filter(
+  ({ getState }) => {
+    const rootCategories = getCurrentCategories(getState());
+
+    return rootCategories ? !!rootCategories.length : false;
+  }
+);
 
 /**
  * Emits when the current category id changed.
@@ -19,32 +62,22 @@ import { productsReceived$ } from './product';
 const categoryIdChanged$ = main$
   .filter(
     ({ action }) => (
-      // TODO: Root category needs to be considered.
       action.type === SET_CURRENT_CATEGORY_ID &&
       !!action.categoryId
     )
   );
 
 /**
- * Emits when specific category data has been received.
- */
-const childrenReceived$ = main$
-  .filter(({ action }) => action.type === RECEIVE_CATEGORY_CHILDREN);
-
-/**
  * Emits when all necessary category data has been received.
  */
-const dataLoaded$ = categoryIdChanged$
-  .zip(productsReceived$, childrenReceived$)
+const categoryDataLoaded$ = categoryRouteDidEnter$
+  .zip(productsReceived$)
   .map(([first]) => first);
-
-// TODO: Category route as entry point needs to be considered.
-// Entry point seems to work if childrenReceived$ is omitted.
 
 /**
  * Emits when a category's data is already available.
  */
-const dataPreloaded$ = categoryIdChanged$
+const categoryDataPreloaded$ = categoryIdChanged$
   .filter(
     ({ getState }) => (
       getProductsResult(getState()).totalProductCount !== null
@@ -52,7 +85,11 @@ const dataPreloaded$ = categoryIdChanged$
   );
 
 /**
- * Emits when a category is ready to be tracked,
+ * Emits when a category or root category is ready to be tracked,
  * considering loaded or preloaded data.
  */
-export const categoryIsReady$ = dataLoaded$.merge(dataPreloaded$);
+export const categoryIsReady$ = categoryDataLoaded$.merge(
+  categoryDataPreloaded$,
+  rootCategoryLoaded$,
+  rootCategoryPreloaded$
+);

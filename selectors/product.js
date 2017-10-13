@@ -8,28 +8,7 @@
 import { createSelector } from 'reselect';
 import { getSelectedVariant } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import { getCurrentBaseProduct, getCurrentProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { convertPriceToString } from '../helpers';
-
-/**
- * Re-format a given product form the store.
- * @param {Object} productData The product data from the store
- * @returns {Object|null} The formatted product.
- */
-export const formatProductData = (productData) => {
-  if (!productData) {
-    return null;
-  }
-
-  return {
-    uid: productData.id,
-    name: productData.name,
-    amount: {
-      net: convertPriceToString(productData.price.unitPriceNet),
-      gross: convertPriceToString(productData.price.unitPriceWithTax),
-      currency: productData.price.currency,
-    },
-  };
-};
+import { formatProductData } from '../helpers';
 
 /**
  * Gets the current selected Variant in a formatted way.

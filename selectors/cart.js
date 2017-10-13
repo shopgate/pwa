@@ -12,34 +12,11 @@ import {
   getCurrency,
   getCartProducts,
 } from '@shopgate/pwa-common-commerce/cart/selectors/index';
-import { formatProductData } from './product';
-import { convertPriceToString } from '../helpers';
-
-/**
- * Reformat product data for addToCart from the store to the format our core expects.
- * @param {Object} product Product from the store
- * @param {Object} quantity Quantity of the product
- * @return {Object}
- */
-const formatAddToCartProductData = ({ product, quantity }) => ({
-  ...formatProductData(product),
-  quantity,
-});
-
-/**
- * Reformat product data from the store to the format our core expects.
- * @param {Object} product Product from the store
- * @param {Object} quantity Quantity of the product
- * @return {Object}
- */
-const formatCartProductData = ({ product, quantity }) => ({
-  uid: product.id,
-  name: product.name,
-  amount: {
-    gross: convertPriceToString(product.price.unit),
-  },
-  quantity,
-});
+import {
+  convertPriceToString,
+  formatCartProductData,
+  formatAddToCartProductData,
+} from '../helpers';
 
 /**
  * Selects the products from the cart and reformat them.

@@ -8,7 +8,7 @@
 import core from '@shopgate/tracking-core/core/Core';
 import {
   userDidLogin$,
-  userReceived$,
+  userDataReceived$,
   loginDidFail$,
 } from '@shopgate/pwa-common/streams/user';
 
@@ -20,7 +20,7 @@ export default function user(subscribe) {
   /**
    * Gets triggered if login was successful and we received the user data.
    */
-  const loginSuccess$ = userReceived$
+  const loginSuccess$ = userDataReceived$
     .zip(userDidLogin$)
     .map(([first]) => first);
 

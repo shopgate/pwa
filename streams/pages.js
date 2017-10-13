@@ -12,7 +12,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 
 /**
  * A list of all route paths that should be tracked,
- * except those that are handled individualy.
+ * except those that are handled individually.
  * @type {Array}
  */
 const ignoredPaths = [
@@ -22,13 +22,8 @@ const ignoredPaths = [
 ];
 
 /**
- * Emits when one of the tracked paths is entered.
+ * Emits when one of the tracked paths is entered except some special one.
  */
-const enterThemPages$ = routeDidChange$.filter(({ pathname }) => (
+export const pagesAreReady$ = routeDidChange$.filter(({ pathname }) => (
   !ignoredPaths.some(path => pathname.startsWith(path))
 ));
-
-/**
- * Emits when the search result data is already available.
- */
-export const pagesAreReady$ = enterThemPages$;

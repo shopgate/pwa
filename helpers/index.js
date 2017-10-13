@@ -17,3 +17,50 @@ export const convertPriceToString = (price) => {
 
   return price;
 };
+
+/**
+ * Re-format a given product form the store.
+ * @param {Object} productData The product data from the store
+ * @returns {Object|null} The formatted product.
+ */
+export const formatProductData = (productData) => {
+  if (!productData) {
+    return null;
+  }
+
+  return {
+    uid: productData.id,
+    name: productData.name,
+    amount: {
+      net: convertPriceToString(productData.price.unitPriceNet),
+      gross: convertPriceToString(productData.price.unitPriceWithTax),
+      currency: productData.price.currency,
+    },
+  };
+};
+
+/**
+ * Reformat product data for addToCart from the store to the format our core expects.
+ * @param {Object} product Product from the store
+ * @param {Object} quantity Quantity of the product
+ * @return {Object}
+ */
+export const formatAddToCartProductData = ({ product, quantity }) => ({
+  ...formatProductData(product),
+  quantity,
+});
+
+/**
+ * Reformat product data from the store to the format our core expects.
+ * @param {Object} product Product from the store
+ * @param {Object} quantity Quantity of the product
+ * @return {Object}
+ */
+export const formatCartProductData = ({ product, quantity }) => ({
+  uid: product.id,
+  name: product.name,
+  amount: {
+    gross: convertPriceToString(product.price.unit),
+  },
+  quantity,
+});

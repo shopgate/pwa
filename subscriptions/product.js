@@ -21,7 +21,7 @@ import getPage from '../selectors/page';
  */
 export default function product(subscribe) {
   /**
-   * Gets triggered on product variant change/selection
+   * Gets triggered on product variant change/selection.
    */
   subscribe(variantDidChange$, ({ getState }) => {
     const state = getState();
@@ -32,7 +32,7 @@ export default function product(subscribe) {
   });
 
   /**
-   * Gets triggered on product pageview
+   * Gets triggered on product pageview.
    */
   subscribe(productIsReady$, ({ getState }) => {
     const state = getState();

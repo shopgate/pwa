@@ -26,9 +26,7 @@ import {
   getProductProperties,
   getProductShipping,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import {
-  isProductChildrenSelected,
-} from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { isProductChildrenSelected } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
 /**
  * Emits when product results has been received.
@@ -45,7 +43,7 @@ export const productReceived$ = main$
 /**
  * Emits when the current product id changed.
  */
-const productIdChanged$ = main$
+const currentProductIdChanged = main$
   .filter(
     ({ action, prevState }) => {
       const prevId = getCurrentBaseProductId(prevState);
@@ -58,21 +56,27 @@ const productIdChanged$ = main$
   );
 
 /**
- * Emits when specific product data has been received.
+ * Emits when product description has been received.
  */
 const descriptionReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT_DESCRIPTION);
 
+/**
+ * Emits when product properties has been received.
+ */
 const propertiesReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT_PROPERTIES);
 
+/**
+ * Emits when product shipping info has been received.
+ */
 const shippingReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT_SHIPPING);
 
 /**
  * Emits when all necessary category data has been received.
  */
-export const dataLoaded$ = productIdChanged$
+export const dataLoaded$ = currentProductIdChanged
   .zip(
     descriptionReceived$,
     propertiesReceived$,
@@ -102,7 +106,7 @@ const productRouteEntered$ = routeIsActive(ITEM_PATH);
  */
 export const dataPreloaded$ = productRouteEntered$
   .switchMap(() => (
-    productIdChanged$
+    currentProductIdChanged
       .filter(
         ({ getState }) => {
           const state = getState();
@@ -117,6 +121,7 @@ export const dataPreloaded$ = productRouteEntered$
         })
     )
   );
+
 /**
  * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
  */
