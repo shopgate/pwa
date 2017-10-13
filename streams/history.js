@@ -6,7 +6,7 @@
  */
 
 import { OPEN_LINK, UPDATE_HISTORY } from '../constants/ActionTypes';
-import { getHistoryPathname } from '../selectors/history';
+import { getHistoryPathname, getHistoryAction } from '../selectors/history';
 import { main$ } from './main';
 
 /**
@@ -34,6 +34,7 @@ export const routeDidChange$ = historyDidUpdate$
     initialEnter: (input.getState().history.length === 1 && input.prevState.history.length === 1),
     pathname: getHistoryPathname(input.getState()),
     prevPathname: getHistoryPathname(input.prevState),
+    historyAction: getHistoryAction(input.getState()),
   }));
 
 /**
