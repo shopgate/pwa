@@ -30,11 +30,10 @@ const pushOpened$ = main$
  */
 export default function deeplinkPush(subscribe) {
   /**
-   * Gets triggered on deeplink opened
+   * Gets triggered when a deeplink was opened.
    */
   subscribe(deeplinkOpened$, ({ action }) => {
     const { link = '', sourceApp = '', wasOpenedFromSearchIndex } = action.payload;
-
     const eventLabel = wasOpenedFromSearchIndex ? 'os_search' : sourceApp;
 
     core.track.openDeepLink({
@@ -49,7 +48,7 @@ export default function deeplinkPush(subscribe) {
   });
 
   /**
-   * Gets triggered on push opened
+   * Gets triggered when a push was opened.
    */
   subscribe(pushOpened$, ({ action }) => {
     const notificationId = action.notificationId ? action.notificationId.toString() : 'n/a';
