@@ -11,7 +11,7 @@ import {
   HISTORY_PUSH_ACTION,
   HISTORY_POP_ACTION,
   HISTORY_REPLACE_ACTION,
-} from '@shopgate/pwa-common/constants/History';
+} from '@shopgate/pwa-common/constants/ActionTypes';
 import Button from '@shopgate/pwa-common/components/Button';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import ArrowIcon from 'Components/icons/ArrowIcon';

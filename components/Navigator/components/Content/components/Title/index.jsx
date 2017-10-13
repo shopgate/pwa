@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/History';
+import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import connect from './connector';
 import styles from './style';
 
