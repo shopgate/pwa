@@ -24,12 +24,12 @@ const resetHistory = (location = null) => (dispatch, getState) => {
   // Go back the exact amount of entries stored in the history.
   dispatch(goBackHistory(numEntries - 1));
 
-  dispatch(historyDidReset());
-
   // Set the new location if one was passed with the parameters.
   if (location) {
     dispatch(pushHistory(location));
   }
+
+  dispatch(historyDidReset());
 };
 
 export default resetHistory;
