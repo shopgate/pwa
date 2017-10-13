@@ -24,27 +24,27 @@ import {
 export const isProductPageLoading = (state) => {
   const baseProduct = getCurrentBaseProduct(state);
 
-  // Check if the base product is already present
+  // Check if the base product is already present.
   if (!baseProduct) {
     return true;
   }
 
   const hasVariants = hasCurrentProductVariants(state);
 
-  // Check if the base product has variants
+  // Check if the base product has variants.
   if (hasVariants) {
     const variantsPresent = !!getCurrentBaseProductVariants(state);
 
-    // Check if the variant list is already present
+    // Check if the variant list is already present.
     if (!variantsPresent) {
       return true;
     }
 
     const variantSelected = !!getCurrentProductVariantId(state);
 
-    // Check if one of the variants is currently selected by the user
+    // Check if one of the variants is currently selected by the user.
     if (variantSelected) {
-      // Check if the product data of the selected variant is already present
+      // Check if the product data of the selected variant is already present.
       return !getCurrentProduct(state);
     }
   }
@@ -60,27 +60,27 @@ export const isProductPageLoading = (state) => {
 export const isProductPageOrderable = (state) => {
   const baseProduct = getCurrentBaseProduct(state);
 
-  // Check if the base product is already present
+  // Check if the base product is already present.
   if (!baseProduct) {
     return false;
   }
 
   const hasVariants = hasCurrentProductVariants(state);
 
-  // Check if the base product has variants
+  // Check if the base product has variants.
   if (hasVariants) {
     const variantsPresent = !!getCurrentBaseProductVariants(state);
 
-    // Check if the variant list is already present
+    // Check if the variant list is already present.
     if (!variantsPresent) {
       return false;
     }
 
     const variantSelected = !!getCurrentProductVariantId(state);
 
-    // Check if one of the variants is currently selected by the user
+    // Check if one of the variants is currently selected by the user.
     if (variantSelected) {
-      // Check if the product data of the selected variant is already present
+      // Check if the product data of the selected variant is already present.
       return !!getCurrentProduct(state);
     }
 

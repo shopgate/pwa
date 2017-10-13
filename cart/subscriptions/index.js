@@ -28,7 +28,7 @@ import {
   couponsUpdated$,
   couponsDeleted$,
   couponLinkOpened$,
-  couponPushNotification$,
+  couponActionPushNotification$,
   remoteCartDidUpdate$,
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
@@ -92,7 +92,7 @@ export default function cart(subscribe) {
   /**
    * Gets triggered when a push notification containing a coupon link was received.
    */
-  subscribe(couponPushNotification$, ({ action, code, dispatch, getState }) => {
+  subscribe(couponActionPushNotification$, ({ action, code, dispatch, getState }) => {
     const state = getState();
     const historyLength = getHistoryLength(state);
     const historyPathname = getHistoryPathname(state);
