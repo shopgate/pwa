@@ -87,7 +87,12 @@ export const couponsUpdated$ = main$.filter(
  * @type {Observable}
  */
 export const couponLinkOpened$ = main$.filter(
-  ({ action }) => action.type === OPEN_LINK && action.options.queryParams.coupon);
+  ({ action }) => (
+    action.type === OPEN_LINK &&
+    action.options &&
+    action.options.queryParams &&
+    action.options.queryParams.coupon
+  ));
 
 /**
  * Gets triggered when a push notification containing a coupon code is opened.
@@ -96,9 +101,12 @@ export const couponLinkOpened$ = main$.filter(
 export const couponPushNotification$ = openedLink$
   .filter(
     ({ action }) => {
-      /**
-       * Split the URL string and remove any empty strings.
-       */
+      // Stop here if we didn't receive a url.
+      if (!action.options || !action.options.url) {
+        return false;
+      }
+
+      // Split the URL string and remove any empty strings.
       const paths = action.options.url.split('/').filter(Boolean);
 
       /**

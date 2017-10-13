@@ -7,11 +7,14 @@
 
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import resetHistory from '@shopgate/pwa-common/actions/history/resetHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
+import fetchCheckoutUrl from '../../checkout/actions/fetchCheckoutUrl';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
@@ -40,6 +43,11 @@ export default function cart(subscribe) {
    * sync with the remote cart from the server.
    */
   const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
+
+  /**
+   * Gets triggered when the app is started or the cart route is entered.
+   */
+  const cartDidEnterOrAppDidStart$ = routeDidEnter(CART_PATH).merge(appDidStart$);
 
   const cartBusy$ = cartRequesting$.merge(
     couponsAdded$,
@@ -98,5 +106,10 @@ export default function cart(subscribe) {
     }
 
     dispatch(addCouponsToCart([code]));
+  });
+
+  subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
+    dispatch(fetchCheckoutUrl());
+    dispatch(fetchRegisterUrl());
   });
 }
