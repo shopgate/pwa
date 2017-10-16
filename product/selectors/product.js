@@ -12,7 +12,7 @@ import { getActiveFilters } from '../../filter/selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
 
 /**
- * SSelects all products from the store.
+ * Selects all products from the store.
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
