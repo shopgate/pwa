@@ -91,12 +91,12 @@ export const dataLoaded$ = currentProductIdChanged
   .switchMap((data) => {
     const product = getCurrentProduct(data.getState());
 
-    // Return the productReceived$ stream if the product data are not there yet
+    // Return the productReceived$ stream if the product data is not there yet
     if (!product) {
       return productReceived$;
     }
 
-    // Return a new stream that just emits with the current data
+    // Return a new stream that just emits with the current data.
     return Observable.of(data);
   })
   .filter(({ getState }) => !isProductChildrenSelected(getState()));
@@ -107,7 +107,7 @@ export const dataLoaded$ = currentProductIdChanged
 const productRouteEntered$ = routeDidNotChange(ITEM_PATH);
 
 /**
- * Emits when product data are already available.
+ * Emits when product data is already available.
  */
 export const dataPreloaded$ = productRouteEntered$
   .switchMap(() => (
@@ -116,7 +116,7 @@ export const dataPreloaded$ = productRouteEntered$
         ({ getState }) => {
           const state = getState();
           // TODO: improve these checks here if there was a response like [], '', {}, null.
-          // Like the code is now, it won't work for products without properties etc
+          // Like the code is now, it won't work for products without properties etc.
           return (
             getCurrentProduct(state) &&
             getProductDescription(state) &&
