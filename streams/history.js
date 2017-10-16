@@ -38,6 +38,25 @@ export const routeDidChange$ = historyDidUpdate$
   }));
 
 /**
+ * Gets triggered when a route has entered.
+ * @param {string} route The route path.
+ * @type {Function}
+ * @return {Observable}
+ */
+export const routeDidEnter = route => routeDidChange$
+  .filter(({ initialEnter, pathname, prevPathname }) => {
+    // Check if both path names start with the watched route.
+    const pathnameMatch = pathname.startsWith(route);
+    const prevPathnameMatch = prevPathname.startsWith(route);
+
+    // Check if the previous path doesn't contain the route, but the next one does.
+    const routeChanged = (initialEnter && pathnameMatch) || (!prevPathnameMatch && pathnameMatch);
+
+    // The route was entered, if there was a change between routes, or within the watched one.
+    return routeChanged || (pathnameMatch && prevPathnameMatch && pathname !== prevPathname);
+  });
+
+/**
  * Gets triggered when a route has left.
  * @param {string} route The route path.
  * @type {Function}
@@ -57,23 +76,13 @@ export const routeDidLeave = route => routeDidChange$
   });
 
 /**
- * Gets triggered when a route has entered.
+ * Gets triggered, when the history was updated, but the route didn't change.
  * @param {string} route The route path.
  * @type {Function}
  * @return {Observable}
  */
-export const routeDidEnter = route => routeDidChange$
-  .filter(({ initialEnter, pathname, prevPathname }) => {
-    // Check if both path names start with the watched route.
-    const pathnameMatch = pathname.startsWith(route);
-    const prevPathnameMatch = prevPathname.startsWith(route);
-
-    // Check if the previous path doesn't contain the route, but the next one does.
-    const routeChanged = (initialEnter && pathnameMatch) || (!prevPathnameMatch && pathnameMatch);
-
-    // The route was entered, if there was a change between routes, or within the watched one.
-    return routeChanged || (pathnameMatch && prevPathnameMatch && pathname !== prevPathname);
-  });
+export const routeDidNotChange = route => historyDidUpdate$
+  .filter(({ getState }) => getHistoryPathname(getState()).startsWith(route));
 
 /**
  * Gets triggered when a link is opened.
