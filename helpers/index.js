@@ -28,11 +28,7 @@ export const formatProductData = (productData) => {
     return null;
   }
 
-  const { id, name, price } = productData;
-  let { tags } = productData;
-
-  // Take care that the tags property always has a valid value.
-  tags = Array.isArray(tags) ? tags : [];
+  const { id, name, price, tags = [] } = productData;
 
   return {
     name,
