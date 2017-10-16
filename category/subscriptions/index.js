@@ -5,13 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  routeDidEnter,
-  routeDidLeave,
-} from '@shopgate/pwa-common/streams/history';
 import { CATEGORY_PATH } from '../constants';
-import { FILTER_PATH } from '../../filter/constants';
 import setCurrentCategoryId from '../action-creators/setCurrentCategoryId';
+import {
+  categoryRouteDidEnter$,
+  categoryRouteDidLeave$,
+} from '../streams';
 
 /**
  * Category subscriptions.
@@ -28,11 +27,6 @@ export default function category(subscribe) {
    * When opening the filter page the categoryId should be preserved
    * so that the filters know what category needs to be filtered.
    */
-  const categoryRouteDidLeave$ = routeDidLeave(CATEGORY_PATH).filter(
-    // A transition to filters should not count as 'leaving'.
-    ({ pathname }) => !pathname.startsWith(FILTER_PATH)
-  );
-
   subscribe(categoryRouteDidLeave$, ({ dispatch, pathname }) => {
     if (!pathname.startsWith(CATEGORY_PATH)) {
       dispatch(setCurrentCategoryId(''));
@@ -42,8 +36,6 @@ export default function category(subscribe) {
   /**
    * Gets triggered when entering a category route.
    */
-  const categoryRouteDidEnter$ = routeDidEnter(CATEGORY_PATH);
-
   subscribe(categoryRouteDidEnter$, ({ dispatch, pathname }) => {
     dispatch(setCurrentCategoryId(pathname));
   });

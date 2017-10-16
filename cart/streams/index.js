@@ -7,7 +7,6 @@
 
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { openedLink$ } from '@shopgate/pwa-common/streams/history';
-import { OPEN_LINK } from '@shopgate/pwa-common/constants/ActionTypes';
 import {
   REQUEST_CART,
   RECEIVE_CART,
@@ -83,22 +82,22 @@ export const couponsUpdated$ = main$.filter(
 );
 
 /**
- * Gets triggered when a link containing a coupon parameter is opened.
+ * Gets triggered when a link containing a coupon parameter is opened from a push or deeplink.
  * @type {Observable}
  */
-export const couponLinkOpened$ = main$.filter(
+export const couponLinkOpened$ = openedLink$.filter(
   ({ action }) => (
-    action.type === OPEN_LINK &&
     action.options &&
     action.options.queryParams &&
     action.options.queryParams.coupon
   ));
 
 /**
- * Gets triggered when a push notification containing a coupon code is opened.
+ * Gets triggered when a push notification
+ * containing the coupon action (/cart_add_coupon/123) is opened.
  * @type {Observable}
  */
-export const couponPushNotification$ = openedLink$
+export const couponActionPushNotification$ = openedLink$
   .filter(
     ({ action }) => {
       // Stop here if we didn't receive a url.
