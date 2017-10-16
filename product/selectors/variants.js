@@ -6,6 +6,11 @@
  */
 
 import { createSelector } from 'reselect';
+import {
+  getCurrentBaseProductId,
+  getCurrentBaseProduct,
+  getProductById,
+} from './product';
 
 /**
  * Selects collection of all stored product variants from the store.
@@ -15,41 +20,11 @@ import { createSelector } from 'reselect';
 const getVariantsState = state => state.product.variantsByProductId;
 
 /**
- * Selects collection of all stored products from the store.
- * @param {Object} state The current application state.
- * @return {Object} The collection of products.
- */
-const getProducts = state => state.product.productsById;
-
-/**
  * Gets the id of the currently selected product variant.
  * @param {Object} state The application state.
  * @returns {string}
  */
 export const getCurrentProductVariantId = state => state.product.currentProduct.productVariantId;
-
-/**
- * Retrieves the current base product for the detail page from the store.
- * @param {Object} state The current application state.
- * @return {string} The id of the current base product.
- */
-export const getCurrentBaseProductId = state => state.product.currentProduct.productId;
-
-/**
- * Retrieves the current base product data from the store.
- * @param {Object} state The current application state.
- * @returns {Object} The current product.
- */
-export const getCurrentBaseProduct = createSelector(
-  getProducts,
-  getCurrentBaseProductId,
-  (products, productId) => {
-    if (!products[productId] || products[productId].isFetching) {
-      return null;
-    }
-    return products[productId].productData;
-  }
-);
 
 /**
  * Checks if the current product has variants.
@@ -125,5 +100,28 @@ export const getProductVariants = createSelector(
     }
 
     return variants.variants;
+  }
+);
+
+/**
+ * Retrieves the current selected product variant.
+ * @param {Object} state The application state.
+ * @returns {Object|null} The selected variant or null if none is selected
+ */
+export const getSelectedVariant = createSelector(
+  getCurrentProductVariantId,
+  state => state,
+  (variantId, state) => {
+    if (!variantId) {
+      return null;
+    }
+
+    const product = getProductById(state, variantId);
+
+    if (product) {
+      return product.productData;
+    }
+
+    return null;
   }
 );
