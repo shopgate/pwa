@@ -28,13 +28,20 @@ export const formatProductData = (productData) => {
     return null;
   }
 
+  const { id, name, price } = productData;
+  let { tags } = productData;
+
+  // Take care that the tags property always has a valid value.
+  tags = Array.isArray(tags) ? tags : [];
+
   return {
-    uid: productData.id,
-    name: productData.name,
+    name,
+    tags,
+    uid: id,
     amount: {
-      net: convertPriceToString(productData.price.unitPriceNet),
-      gross: convertPriceToString(productData.price.unitPriceWithTax),
-      currency: productData.price.currency,
+      net: convertPriceToString(price.unitPriceNet),
+      gross: convertPriceToString(price.unitPriceWithTax),
+      currency: price.currency,
     },
   };
 };
