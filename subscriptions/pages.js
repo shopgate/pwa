@@ -29,8 +29,8 @@ const callPageViewTracker = ({ getState }) => {
  * @param {Function} subscribe The subscribe function.
  */
 export default function pages(subscribe) {
-  subscribe(categoryIsReady$.do(() => console.warn('track categoryIsReady$')), callPageViewTracker);
-  subscribe(searchIsReady$.do(() => console.warn('track searchIsReady$')), callPageViewTracker);
-  subscribe(productIsReady$.do(() => console.warn('track productIsReady$')), callPageViewTracker);
-  subscribe(pagesAreReady$.do(() => console.warn('track pagesAreReady$')), callPageViewTracker);
+  subscribe(categoryIsReady$, callPageViewTracker);
+  subscribe(searchIsReady$, callPageViewTracker);
+  subscribe(productIsReady$, callPageViewTracker);
+  subscribe(pagesAreReady$, callPageViewTracker);
 }

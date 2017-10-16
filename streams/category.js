@@ -71,8 +71,11 @@ const categoryIdChanged$ = main$
  * Emits when all necessary category data has been received.
  */
 const categoryDataLoaded$ = categoryRouteDidEnter$
-  .zip(productsReceived$)
-  .map(([first]) => first);
+  .switchMap(
+    ({ action: routeAction }) => productsReceived$.filter(
+      ({ action }) => routeAction.categoryId === action.hash.categoryId
+    )
+  );
 
 /**
  * Emits when a category's data is already available.
