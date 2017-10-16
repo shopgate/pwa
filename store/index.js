@@ -15,6 +15,7 @@ import observableMiddleware from './observable-middleware';
 import { initPersistentStorage } from './persistent';
 
 let composeEnhancers = compose;
+let store = null;
 
 /**
  * Used to enable the Redux DevTools Extension in the browser in development mode.
@@ -55,7 +56,7 @@ const configureStore = (customReducers = {}) => {
     duration: true,
   }));
 
-  const store = createStore(
+  store = createStore(
     // Append the reducers.
     reducers(customReducers),
     // Append the pre-loaded state.
@@ -78,5 +79,11 @@ const configureStore = (customReducers = {}) => {
 
   return store;
 };
+
+/**
+ * Returns the current redux state
+ * @return {Object} The current redux state
+ */
+export const getState = () => (store ? store.getState() : {});
 
 export default configureStore;
