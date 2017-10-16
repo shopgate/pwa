@@ -33,23 +33,25 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
         offset,
         limit,
       },
-      onBeforeSend: () => {
-        // Dispatch the request action before the related pipeline request is executed
+      onBeforeDispatch: () => {
+        // Dispatch the request action before the related pipeline request is executed.
         dispatch(requestSearchResults(searchPhrase, offset));
       },
     })
   );
 
+  /**
+   * Whenever getProducts is able to deliver product data - either via a request or from the cache -
+   * it returns a promise which will be resolved with the response data.
+   */
   if (promise instanceof Promise) {
     promise.then((response) => {
-      const { products } = response;
-
-      // Inspect the response object to determine, if represents an search result, or an error
-      if (Array.isArray(products)) {
-        // Dispatch the receive action when the response contains valid data
+      // Inspect the response object to determine, if it represents a search result, or an error.
+      if (response && response.products && Array.isArray(response.products)) {
+        // Dispatch the receive action when the response contains valid data.s
         dispatch(receiveSearchResults(searchPhrase, offset, response));
       } else {
-        // If no valid data is delivered within the response the error action is dispatched
+        // If no valid data is delivered within the response the error action is dispatched.
         dispatch(errorSearchResults(searchPhrase, offset));
       }
     });
