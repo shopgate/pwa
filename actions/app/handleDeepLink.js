@@ -5,11 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import ParsedLink from '../../components/Router/helpers/parsed-link';
-import { history } from '../../helpers/router';
 import openDeepLink from '../../action-creators/app/openDeepLink';
-import successOpenDeepLink from '../../action-creators/app/successOpenDeepLink';
-import errorOpenDeepLink from '../../action-creators/app/errorOpenDeepLink';
+import handleLink from './handleLink';
 
 /**
  * Opens a DeepLink.
@@ -17,19 +14,8 @@ import errorOpenDeepLink from '../../action-creators/app/errorOpenDeepLink';
  * @return {Function} A redux thunk.
  */
 const handleDeepLink = (payload = {}) => (dispatch) => {
-  const { link = null } = payload;
-
-  if (!link) {
-    dispatch(errorOpenDeepLink());
-    return;
-  }
-
-  dispatch(openDeepLink(link));
-
-  const parsedLink = new ParsedLink(link);
-  parsedLink.open(history, () =>
-    dispatch(successOpenDeepLink(link))
-  );
+  handleLink(payload);
+  dispatch(openDeepLink(payload));
 };
 
 export default handleDeepLink;

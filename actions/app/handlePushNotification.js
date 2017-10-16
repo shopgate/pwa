@@ -6,11 +6,8 @@
  */
 
 import DataRequest from '@shopgate/pwa-core/classes/DataRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import openPushNotification from '../../action-creators/app/openPushNotification';
-import successOpenPushNotification from '../../action-creators/app/successOpenPushNotification';
-import errorOpenPushNotification from '../../action-creators/app/errorOpenPushNotification';
-import handleDeepLink from './handleDeepLink';
+import handleLink from './handleLink';
 
 const PUSH_MESSAGE_OPENED = 'ajax_push_message_opened';
 
@@ -26,24 +23,15 @@ const handlePushNotification = (payload = {}) => (dispatch) => {
   if (notificationId) {
     const id = notificationId.toString();
 
-    dispatch(openPushNotification(id));
-
+    // Send tracking event to the backend
     new DataRequest(PUSH_MESSAGE_OPENED)
       .setPayload({ notificationId: id })
-      .dispatch()
-        .then(result => dispatch(successOpenPushNotification({
-          notificationId: id,
-          result,
-        })))
-        .catch((error) => {
-          logger.error(error);
-          dispatch(errorOpenPushNotification(id));
-        });
+      .dispatch();
   }
 
-  if (link) {
-    dispatch(handleDeepLink({ link }));
-  }
+  handleLink({ link });
+
+  dispatch(openPushNotification(notificationId, link));
 };
 
 export default handlePushNotification;
