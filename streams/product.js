@@ -77,11 +77,16 @@ const shippingReceived$ = main$
  * Emits when all necessary category data has been received.
  */
 export const dataLoaded$ = currentProductIdChanged
-  .zip(
-    descriptionReceived$,
-    propertiesReceived$,
-    shippingReceived$
-  )
+  .switchMap(({ action: routeAction }) => {
+    const { productId } = routeAction;
+
+    return descriptionReceived$
+      .filter(({ action }) => action.productId === productId)
+      .zip(
+        propertiesReceived$.filter(({ action }) => action.productId === productId),
+        shippingReceived$.filter(({ action }) => action.productId === productId)
+      );
+  })
   .map(([first]) => first)
   .switchMap((data) => {
     const product = getCurrentProduct(data.getState());
