@@ -12,11 +12,8 @@ import Icon from './components/Icon';
 import styles from './style';
 
 /**
- * The circle indicator component.
+ * The NoResults component.
  * @param {Object} props The component props.
- * @param {Object} props.size Width and height of the circle.
- * @param {Object} props.color Color of the circle.
- * @param {Object} props.strokeWidth Stroke width of the circle.
  * @returns {JSX}
  */
 const NoResults = props => (
