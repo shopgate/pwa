@@ -10,7 +10,7 @@ import { searchIsReady$ } from '../streams/search';
 import getTrackingData from '../selectors/search';
 
 /**
- * Pages tracking subscriptions.
+ * Search tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function search(subscribe) {
