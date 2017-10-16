@@ -10,7 +10,7 @@ import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selecto
  * Determines whether or not a category has any content,
  * (subcategories, child products or products received via request).
  */
-export const hasContent = createSelector(
+export const isCategoryEmpty = createSelector(
   getCategoryProductCount,
   getCurrentCategoryChildCount,
   getProductsResult,

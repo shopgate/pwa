@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { hasContent } from './selectors';
+import { isCategoryEmpty } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -15,7 +15,7 @@ import { hasContent } from './selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  isVisible: hasContent(state, props),
+  isVisible: isCategoryEmpty(state, props),
 });
 
 export default connect(mapStateToProps);
