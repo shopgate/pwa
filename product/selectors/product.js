@@ -12,7 +12,7 @@ import { getActiveFilters } from '../../filter/selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
 
 /**
- * Selects collection of all stored products from the store.
+ * Selects all products from the store.
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
@@ -350,50 +350,5 @@ export const getProductProperties = createSelector(
     }
 
     return collection.properties;
-  }
-);
-
-/**
- * Select the product reviews state
- * @param {Object} state The current application state.
- * @return {Object} The product reviews state.
- */
-const getProductReviewsState = state => state.product.reviewsByProductId;
-
-/**
- * Retrieves the current product reviews.
- * @param {Object} state The current application state.
- * @return {Object} The reviews for a product
- */
-export const getProductReviews = createSelector(
-  getCurrentProductId,
-  getProductReviewsState,
-  (productId, reviewsState) => {
-    const collection = reviewsState[productId];
-
-    if (!collection || !collection.reviews) {
-      return null;
-    }
-
-    return collection.reviews;
-  }
-);
-
-/**
- * Retrieves the number of reviews for a product
- * @param {Object} state The current application state.
- * @return {number} The total review count for a product
- */
-export const getProductReviewCount = createSelector(
-  getCurrentProductId,
-  getProductReviewsState,
-  (productId, reviewsState) => {
-    const collection = reviewsState[productId];
-
-    if (!collection || !collection.totalReviewCount) {
-      return null;
-    }
-
-    return collection.totalReviewCount;
   }
 );

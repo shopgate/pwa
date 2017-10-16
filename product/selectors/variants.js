@@ -106,7 +106,7 @@ export const getProductVariants = createSelector(
 /**
  * Retrieves the current selected product variant.
  * @param {Object} state The application state.
- * @returns {Object|null} The selected variant or null if non is selected
+ * @returns {Object|null} The selected variant or null if none is selected
  */
 export const getSelectedVariant = createSelector(
   getCurrentProductVariantId,

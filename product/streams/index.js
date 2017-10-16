@@ -23,12 +23,13 @@ export const productReceived$ = main$
   .distinctUntilChanged();
 
 /**
- * Gets triggered when VariantId changes
+ * Gets triggered when VariantId changes.
  * @type {Observable}
  */
 const setVariantId$ = main$
   .filter(({ action }) => (
-    action.type === SET_PRODUCT_VARIANT_ID && action.productVariantId !== null
+    action.type === SET_PRODUCT_VARIANT_ID &&
+    action.productVariantId !== null
 ));
 
 /**
@@ -43,14 +44,14 @@ export const variantDidChangeUncached$ = setVariantId$
   );
 
 /**
- * Gets triggered when VariantId changes and product data are already there.
+ * Gets triggered when VariantId changes and product data is already there.
  * @type {Observable}
  */
 const variantDidChangedCached = setVariantId$
   .filter(({ getState }) => !!getSelectedVariant(getState()));
 
 /**
- * Gets triggered when VariantId changes and product data are available.
+ * Gets triggered when VariantId changes and product data is available.
  * @type {Observable}
  */
 export const variantDidChange$ = variantDidChangeUncached$.merge(variantDidChangedCached);
