@@ -6,7 +6,7 @@
  */
 
 /**
- * The app.json config from the theme
+ * The app.json config from the theme.
  * @typedef {Object}
  */
 const appConfig = process.env.APP_CONFIG;

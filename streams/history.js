@@ -75,12 +75,12 @@ export const routeDidLeave = route => routeDidChange$
   });
 
 /**
- * Gets triggered, when a route is active after the history was updated.
+ * Gets triggered, when the history was updated, but the route didn't change.
  * @param {string} route The route path.
  * @type {Function}
  * @return {Observable}
  */
-export const routeIsActive = route => historyDidUpdate$
+export const routeDidNotChange = route => historyDidUpdate$
   .filter(({ getState }) => getHistoryPathname(getState()).startsWith(route));
 
 /**

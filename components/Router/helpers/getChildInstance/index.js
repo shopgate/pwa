@@ -39,7 +39,7 @@ const getChildInstance = (component) => {
   }
 
   // eslint-disable-next-line no-underscore-dangle
-  const childInstance = renderedChild._instanc;
+  const childInstance = renderedChild._instance;
 
   if (!childInstance) {
     return null;
