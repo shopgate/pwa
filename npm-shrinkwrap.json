@@ -87,6 +87,9 @@
         "isomorphic-fetch": "2.2.1"
       }
     },
+    "@shopgate/pwa-tracking": {
+      "version": "github:shopgate/pwa-tracking#863c0cfadd961957a4ac887c975e78a7463b62d7"
+    },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
       "resolved": "https://registry.npmjs.org/@shopgate/pwa-unit-test/-/pwa-unit-test-1.2.5.tgz",
