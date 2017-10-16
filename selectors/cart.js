@@ -12,21 +12,11 @@ import {
   getCurrency,
   getCartProducts,
 } from '@shopgate/pwa-common-commerce/cart/selectors/index';
-
-/**
- * Reformat product data from the store to the format our core expects.
- * @param {Object} product Product from the store
- * @param {Object} quantity Quantity of the product
- * @return {Object}
- */
-const formatProductData = ({ product, quantity }) => ({
-  uid: product.id,
-  name: product.name,
-  amount: {
-    gross: product.price.unit,
-  },
-  quantity,
-});
+import {
+  convertPriceToString,
+  formatCartProductData,
+  formatAddToCartProductData,
+} from '../helpers';
 
 /**
  * Selects the products from the cart and reformat them.
@@ -35,22 +25,22 @@ const formatProductData = ({ product, quantity }) => ({
  */
 const getProducts = createSelector(
   getCartProducts,
-  products => products.map(formatProductData)
+  products => products.map(formatCartProductData)
 );
 
 /**
  * Selects products by ID and reformat them.
  * @param {Object} state The current state.
- * @param {Array} items Array of items.
+ * @param {Array} products Array of products.
  * @returns {Array} Formatted products.
  */
-export const getAddToCartProducts = (state, items) => (
-  items
-    .map(item => ({
-      product: getProductById(state, item.productId).productData,
-      quantity: item.quantity,
+export const getAddToCartProducts = (state, products) => (
+  products
+    .map(product => ({
+      product: getProductById(state, product.productId).productData,
+      quantity: product.quantity,
     }))
-    .map(formatProductData)
+    .map(formatAddToCartProductData)
 );
 
 /**
@@ -65,7 +55,7 @@ export default createSelector(
   (subTotal, currency, products) => ({
     amount: {
       // TODO: net is not possible at the moment
-      gross: subTotal,
+      gross: convertPriceToString(subTotal),
       currency,
     },
     products,
