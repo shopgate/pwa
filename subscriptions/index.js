@@ -11,6 +11,7 @@ import product from './product';
 import user from './user';
 import cart from './cart';
 import checkout from './checkout';
+import search from './search';
 import deeplinkPush from './deeplinkPush';
 
 /**
@@ -24,5 +25,6 @@ export default [
   user,
   cart,
   checkout,
+  search,
   deeplinkPush,
 ];
