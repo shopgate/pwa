@@ -46,7 +46,7 @@ export const getActiveFilters = (state) => {
     return null;
   }
 
-  return stack;
+  return stack.filters;
 };
 
 /**

@@ -20,18 +20,30 @@ import {
  * @return {Object} The new state.
  */
 export default function activeFilters(state = [], action) {
+  const { categoryId, searchPhrase } = action;
+
   switch (action.type) {
     case ADD_ACTIVE_FILTERS:
       return [
         ...state,
-        {},
+        {
+          filters: {},
+          ...categoryId && { categoryId },
+          ...searchPhrase && { searchPhrase },
+        },
       ];
 
     case SET_ACTIVE_FILTERS: {
       const newState = [
         ...state,
       ];
-      newState[newState.length - 1] = cloneDeep(action.activeFilters);
+
+      newState[newState.length - 1] = {
+        ...newState[newState.length - 1],
+        ...categoryId && { categoryId },
+        ...searchPhrase && { searchPhrase },
+        filters: cloneDeep(action.activeFilters),
+      };
       return newState;
     }
 

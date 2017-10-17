@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   routeDidEnter,
   routeDidLeave,
@@ -21,7 +22,7 @@ import {
   getHistoryAction,
   getSearchPhrase,
 } from '@shopgate/pwa-common/selectors/history';
-import { main$ } from '@shopgate/pwa-common/streams/main';
+import { getCurrentCategoryId } from '../../category/selectors';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
 import setFilterHash from '../action-creators/setFilterHash';
 import setTemporaryFilters from '../action-creators/setTemporaryFilters';
@@ -117,14 +118,25 @@ export default function filters(subscribe) {
     dispatch(mergeTemporaryFilters({}));
   });
 
-  subscribe(filterableRoutesDidEnter$, ({ dispatch }) => {
+  subscribe(filterableRoutesDidEnter$, ({ dispatch, getState }) => {
+    /**
+     * Depending on the route there will be a search phrase or a category id. To keep the logic
+     * simple both values are selected from the state. The one that doesn't belong to the route will
+     * turn to null.
+     */
+    const categoryId = getCurrentCategoryId(getState());
+    const searchPhrase = getSearchPhrase(getState());
     // Add a new placeholder object for active filters to the activeFilters stack
-    dispatch(addActiveFilters());
+    dispatch(addActiveFilters({
+      categoryId,
+      searchPhrase,
+    }));
   });
 
-  subscribe(searchRouteWasUpdated$, ({ dispatch }) => {
-    // Reset the current activeFilters object
-    dispatch(setActiveFilters({}));
+  subscribe(searchRouteWasUpdated$, ({ dispatch, getState }) => {
+    // Reset the current activeFilters object and update the search phrase with the new one
+    const searchPhrase = getSearchPhrase(getState());
+    dispatch(setActiveFilters({}, { searchPhrase }));
   });
 
   subscribe(filterableRoutesDidLeave$, ({ dispatch }) => {
