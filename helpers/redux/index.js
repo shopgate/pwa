@@ -90,11 +90,7 @@ export const shouldFetchFilters = (item) => {
     return true;
   }
 
-  if (hasExpired(item)) {
-    return true;
-  }
-
-  return false;
+  return hasExpired(item);
 };
 
 /**
@@ -127,10 +123,22 @@ export const generateResultHash = (params, includeSort = true) => {
     filters: {},
   };
 
-  return generateSortedHash({
+  let mergedParams = {
     ...defaultParams,
     ...params,
-  });
+  };
+
+  const { searchPhrase } = mergedParams;
+
+  if (searchPhrase) {
+    /*
+     * We trim the search phrase here, because otherwise we will create different hash and cache
+     * entries for the same search term (because whitespaces don't influence the search results)
+     */
+    mergedParams.searchPhrase = searchPhrase.trim();
+  }
+
+  return generateSortedHash(mergedParams);
 };
 
 /**

@@ -9,12 +9,12 @@ import { OPEN_DEEP_LINK } from '../../constants/ActionTypes';
 
 /**
  * Creates the OPEN_DEEP_LINK action object.
- * @param {string} link The link to open.
+ * @param {Object} payload The payload of the deeplink
  * @returns {Object} A redux action.
  */
-const openDeepLink = link => ({
+const openDeepLink = payload => ({
   type: OPEN_DEEP_LINK,
-  link,
+  payload,
 });
 
 export default openDeepLink;
