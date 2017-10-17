@@ -9,6 +9,7 @@ import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
+  ERROR_SEARCH_RESULTS,
 } from '../constants';
 
 /**
@@ -24,5 +25,7 @@ export const searchRequesting$ = main$.filter(
  * @type {Observable}
  */
 export const searchReceived$ = main$.filter(
-  ({ action }) => action.type === RECEIVE_SEARCH_RESULTS
+  ({ action }) =>
+    action.type === RECEIVE_SEARCH_RESULTS ||
+    action.type === ERROR_SEARCH_RESULTS
 );
