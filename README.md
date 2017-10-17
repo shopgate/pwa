@@ -1,7 +1,7 @@
-# Shopgate GMD Theme
+# Shopgate iOS 11 Theme
 
-[![Build Status](https://travis-ci.org/shopgate/theme-gmd.svg?branch=master)](https://travis-ci.org/shopgate/theme-gmd)
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/theme-gmd/badge.svg?branch=master)](https://coveralls.io/github/shopgate/theme-gmd?branch=master)
+[![Build Status](https://travis-ci.org/shopgate/theme-ios11.svg?branch=master)](https://travis-ci.org/shopgate/theme-ios11)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/theme-ios11/badge.svg?branch=master)](https://coveralls.io/github/shopgate/theme-ios11?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## About Shopgate
@@ -12,6 +12,6 @@ Shopgate offers everything online retailers need to be successful in mobile. Our
 
 ## License
 
-Shopgate's GMD theme is available under the Apache License, Version 2.0.
+Shopgate's iOS 11 theme is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

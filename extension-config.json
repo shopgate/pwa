@@ -1,6 +1,6 @@
 {
   "version": "0.1.10",
-  "id": "@shopgate/theme-gmd",
+  "id": "@shopgate/theme-ios11",
   "configuration": {
     "language": {
       "type": "bigApi",

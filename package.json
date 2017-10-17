@@ -1,11 +1,11 @@
 {
-  "name": "@shopgate/theme-gmd",
+  "name": "@shopgate/theme-ios11",
   "version": "0.1.10",
   "description": "Shopgate's Google Material app theme.",
   "main": "index.jsx",
-  "repository": "shopgate/theme-gmd",
-  "bugs": "https://github.com/shopgate/theme-gmd/issues",
-  "homepage": "https://github.com/shopgate/theme-gmd",
+  "repository": "shopgate/theme-ios11",
+  "bugs": "https://github.com/shopgate/theme-ios11/issues",
+  "homepage": "https://github.com/shopgate/theme-ios11",
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
