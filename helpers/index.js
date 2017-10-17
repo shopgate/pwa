@@ -28,13 +28,16 @@ export const formatProductData = (productData) => {
     return null;
   }
 
+  const { id, name, price, tags = [] } = productData;
+
   return {
-    uid: productData.id,
-    name: productData.name,
+    name,
+    tags,
+    uid: id,
     amount: {
-      net: convertPriceToString(productData.price.unitPriceNet),
-      gross: convertPriceToString(productData.price.unitPriceWithTax),
-      currency: productData.price.currency,
+      net: convertPriceToString(price.unitPriceNet),
+      gross: convertPriceToString(price.unitPriceWithTax),
+      currency: price.currency,
     },
   };
 };

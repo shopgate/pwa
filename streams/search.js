@@ -5,41 +5,26 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { routeDidEnter, routeDidLeave } from '@shopgate/pwa-common/streams/history';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { productsReceived$ } from './product';
-
-// TODO: Search is not tracked reliably / multiple times.
-
-/**
- * Emits when the search route was entered.
- */
-export const searchDidEnter$ = routeDidEnter(SEARCH_PATH);
+import 'rxjs/add/operator/switchMap';
+import {
+  SEARCH_PATH,
+  RECEIVE_SEARCH_RESULTS,
+} from '@shopgate/pwa-common-commerce/search/constants';
+import { routeDidNotChange } from '@shopgate/pwa-common/streams/history';
+import { main$ } from '@shopgate/pwa-common/streams/main';
 
 /**
- * Emits when the search route was left.
+ * Emits when the search route is active.
  */
-export const searchDidLeave$ = routeDidLeave(SEARCH_PATH);
+const searchIsActive$ = routeDidNotChange(SEARCH_PATH);
 
 /**
- * Emits when all necessary search data has been received.
+ * Emits when search results are received.
  */
-const dataLoaded$ = searchDidEnter$.zip(productsReceived$);
+const resultsReceived$ = main$
+  .filter(({ action }) => action.type === RECEIVE_SEARCH_RESULTS);
 
 /**
- * Emits when the search result data is already available.
+ * Emits when the search is ready to be tracked and all relevant data is available.
  */
-const dataPreloaded$ = searchDidEnter$
-  .shareReplay(1)
-  .filter(
-    ({ getState }) => (
-      getProductsResult(getState()).totalProductCount !== null
-    )
-  );
-
-/**
- * Emits when the search is ready to be tracked,
- * considering loaded or preloaded data.
- */
-export const searchIsReady$ = dataLoaded$.merge(dataPreloaded$);
+export const searchIsReady$ = searchIsActive$.switchMap(() => resultsReceived$.first());
