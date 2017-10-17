@@ -6,10 +6,10 @@
  */
 
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
+import errorSearchResults from '../action-creators/errorSearchResults';
 import { getSearchPhrase } from '../selectors';
 
 /**
@@ -19,27 +19,43 @@ import { getSearchPhrase } from '../selectors';
  */
 const getSearchResults = (offset = 0) => (dispatch, getState) => {
   const state = getState();
-  const sort = getSortOrder(state);
   const limit = ITEMS_PER_LOAD;
-  const searchPhrase = getSearchPhrase(state).trim();
+  const searchPhrase = getSearchPhrase(state);
 
   if (!searchPhrase) {
     return;
   }
 
-  dispatch(requestSearchResults(searchPhrase, offset));
-  dispatch(
+  const promise = dispatch(
     getProducts({
       params: {
         searchPhrase,
         offset,
         limit,
-        sort,
+      },
+      onBeforeDispatch: () => {
+        // Dispatch the request action before the related pipeline request is executed.
+        dispatch(requestSearchResults(searchPhrase, offset));
       },
     })
-  ).then(() => {
-    dispatch(receiveSearchResults(searchPhrase));
-  });
+  );
+
+  /**
+   * Whenever getProducts is able to deliver product data - either via a request or from the cache -
+   * it returns a promise which will be resolved with the response data.
+   */
+  if (promise instanceof Promise) {
+    promise.then((response) => {
+      // Inspect the response object to determine, if it represents a search result, or an error.
+      if (response && response.products && Array.isArray(response.products)) {
+        // Dispatch the receive action when the response contains valid data.s
+        dispatch(receiveSearchResults(searchPhrase, offset, response));
+      } else {
+        // If no valid data is delivered within the response the error action is dispatched.
+        dispatch(errorSearchResults(searchPhrase, offset));
+      }
+    });
+  }
 };
 
 export default getSearchResults;

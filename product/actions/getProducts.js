@@ -51,6 +51,8 @@ const processParams = (params, filters, includeSort = true) => {
  * @param {string} [options.id=null] A unique id for the component that is using this action.
  * @param {boolean} [options.includeSort=true] Tells if the sort parameters shall be included
  *   into the product hash and the request.
+ * @param {Function} [options.onBeforeDispatch=() => {}] A callback which is fired, before new data
+ *  will be returned.
  * @return {Function} A Redux Thunk
  */
 const getProducts = ({
@@ -59,6 +61,7 @@ const getProducts = ({
   cached = true,
   id = null,
   includeSort = true,
+  onBeforeDispatch = () => {},
 }) =>
   (dispatch, getState) => {
     const state = getState();
@@ -88,8 +91,19 @@ const getProducts = ({
 
     // Stop if we don't need to get any data.
     if (!shouldFetchData(result, 'products', requiredProductCount)) {
-      return Promise.resolve();
+      const { products } = result;
+
+      if (Array.isArray(products)) {
+        // Fire the onBeforeDispatch callback to inform a caller that getProducts will return data.
+        onBeforeDispatch();
+        return Promise.resolve(result);
+      }
+
+      return null;
     }
+
+    // Fire the onBeforeDispatch callback to inform a caller that getProducts will return data.
+    onBeforeDispatch();
 
     dispatch(requestProducts({
       hash,
@@ -132,6 +146,8 @@ const getProducts = ({
             hash,
             requestParams,
           }));
+
+          return error;
         });
   };
 
