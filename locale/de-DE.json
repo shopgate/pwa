@@ -1,12 +1,14 @@
 {
   "common": {
-    "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}"
+    "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
+    "load_more": "Mehr laden"
   },
   "titles": {
     "categories": "Kategorien",
     "filter": "Filter",
     "cart": "Warenkorb",
-    "shipping": "Versand"
+    "shipping": "Versand",
+    "reviews": "Bewertungen"
   },
   "filter": {
     "sort": {
@@ -28,7 +30,6 @@
   },
   "product": {
     "description_heading": "Beschreibung",
-    "load_more": "Mehr laden",
     "pick_an_attribute": "{0} auswählen"
   },
   "category": {

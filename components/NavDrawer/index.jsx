@@ -8,8 +8,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import { INDEX_PATH, PAGE_PATH, ORDERS_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import ClientInformation from 'Components/ClientInformation';
 import HomeIcon from 'Components/icons/HomeIcon';

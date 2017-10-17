@@ -2402,6 +2402,15 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       "opacity": 0,
                     }
                   }
+                  id={undefined}
+                  key=".$.0"
+                  onChildAppeared={undefined}
+                  onChildEntered={undefined}
+                  onChildLeft={undefined}
+                  onChildStartAppear={undefined}
+                  onChildStartEnter={undefined}
+                  onChildStartLeave={undefined}
+                  style={undefined}
                 >
                   <div
                     aria-hidden={true}
@@ -3667,6 +3676,15 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       "opacity": 0,
                     }
                   }
+                  id={undefined}
+                  key=".$.0"
+                  onChildAppeared={undefined}
+                  onChildEntered={undefined}
+                  onChildLeft={undefined}
+                  onChildStartAppear={undefined}
+                  onChildStartEnter={undefined}
+                  onChildStartLeave={undefined}
+                  style={undefined}
                 >
                   <div
                     aria-hidden={true}
@@ -4797,6 +4815,15 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       "opacity": 0,
                     }
                   }
+                  id={undefined}
+                  key=".$.0"
+                  onChildAppeared={undefined}
+                  onChildEntered={undefined}
+                  onChildLeft={undefined}
+                  onChildStartAppear={undefined}
+                  onChildStartEnter={undefined}
+                  onChildStartLeave={undefined}
+                  style={undefined}
                 >
                   <div
                     aria-hidden={true}

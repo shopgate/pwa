@@ -22,6 +22,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
     className=""
     forcePlaceholder={false}
     highestResolutionLoaded={[Function]}
+    key=".0"
     onError={null}
     onLoad={null}
     ratio={null}
@@ -72,7 +73,9 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
   slidesPerView={1}
   snapItems={true}
 >
-  <SliderItem>
+  <SliderItem
+    key="0"
+  >
     <Image
       alt={null}
       animating={true}
@@ -100,7 +103,9 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
       transition={null}
     />
   </SliderItem>
-  <SliderItem>
+  <SliderItem
+    key="1"
+  >
     <Image
       alt={null}
       animating={true}

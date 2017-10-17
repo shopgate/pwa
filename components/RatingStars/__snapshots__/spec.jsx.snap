@@ -9,6 +9,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   >
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="0"
     >
       <Star
         className=""
@@ -19,6 +20,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="1"
     >
       <Star
         className=""
@@ -29,6 +31,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="2"
     >
       <Star
         className=""
@@ -39,6 +42,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="3"
     >
       <Star
         className=""
@@ -49,6 +53,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="4"
     >
       <Star
         className=""
@@ -73,6 +78,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   >
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="0"
     >
       <Star
         className=""
@@ -83,6 +89,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="1"
     >
       <Star
         className=""
@@ -93,6 +100,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="2"
     >
       <Star
         className=""
@@ -103,6 +111,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="3"
     >
       <Star
         className=""
@@ -113,6 +122,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="4"
     >
       <Star
         className=""
@@ -127,6 +137,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   >
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="0"
     >
       <Star
         className=""
@@ -137,6 +148,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="1"
     >
       <Star
         className=""
@@ -147,6 +159,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="2"
     >
       <StarHalfIcon
         className=""
@@ -168,6 +181,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   >
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="0"
     >
       <Star
         className=""
@@ -178,6 +192,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="1"
     >
       <Star
         className=""
@@ -188,6 +203,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="2"
     >
       <Star
         className=""
@@ -198,6 +214,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="3"
     >
       <Star
         className=""
@@ -208,6 +225,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="4"
     >
       <Star
         className=""
@@ -222,6 +240,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   >
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="0"
     >
       <Star
         className=""
@@ -232,6 +251,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="1"
     >
       <Star
         className=""
@@ -242,6 +262,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="2"
     >
       <Star
         className=""
@@ -252,6 +273,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="3"
     >
       <Star
         className=""
@@ -262,6 +284,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
     <div
       className="css-1dpi4l8 css-hvpjjr"
+      key="4"
     >
       <Star
         className=""

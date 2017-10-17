@@ -8,15 +8,15 @@
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import setProductId from '@shopgate/pwa-common-commerce/product/action-creators/setProductId';
 import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-creators/setProductVariantId';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';
-import getProductReviews from '@shopgate/pwa-common-commerce/product/actions/getProductReviews';
+import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
 import getProductProperties from '@shopgate/pwa-common-commerce/product/actions/getProductProperties';
 import getProductImages from '@shopgate/pwa-common-commerce/product/actions/getProductImages';
 import getProductShipping from '@shopgate/pwa-common-commerce/product/actions/getProductShipping';
 import { features } from 'Config/app.json';
-import { REVIEW_PREVIEW_LIMIT } from '../constants';
+import { REVIEW_PREVIEW_COUNT } from '../constants';
 import { requestProductData } from '../action-creators';
 
 /**
@@ -36,7 +36,10 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
 
     dispatch(requestProductData(productId, selectedVariantId));
 
-    dispatch(setProductId(parentId));
+    if (!selectedVariantId) {
+      dispatch(setProductId(parentId));
+    }
+
     dispatch(setProductVariantId(selectedVariantId));
 
     dispatch(getProduct(productId));
@@ -45,7 +48,7 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
     dispatch(getProductImages(productId));
     dispatch(getProductShipping(productId));
     if (features.showReviews) {
-      dispatch(getProductReviews(productId, REVIEW_PREVIEW_LIMIT));
+      dispatch(getProductReviews(productId, REVIEW_PREVIEW_COUNT));
     }
   };
 

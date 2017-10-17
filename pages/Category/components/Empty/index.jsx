@@ -11,13 +11,8 @@ import NoResults from 'Components/NoResults';
 import connect from './connector';
 
 /**
- * The price component
- * @param {Object} props The component props
- * @param {string} [props.className] CSS classes
- * @param {string} props.currency The currency of the price
- * @param {number} props.unitPrice The price of the product
- * @param {number} props.unitPriceMin The minimum price of possible child products
- * @param {boolean} props.discounted Tells if the pice is discounted
+ * The Empty component for the Category.
+ * @param {Object} props The component props.
  * @return {JSX}
  */
 const Empty = ({ isVisible, ...props }) => {
