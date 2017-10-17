@@ -11,6 +11,12 @@
  */
 const appConfig = process.env.APP_CONFIG;
 
+/**
+ * The components.json config from the theme.
+ * @typedef {Object}
+ */
+export const componentsConfig = process.env.COMPONENTS_CONFIG;
+
 export const shopNumber = appConfig.appId.replace('shop_', '');
 
 export default appConfig;
