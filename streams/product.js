@@ -115,13 +115,12 @@ export const dataPreloaded$ = productRouteEntered$
       .filter(
         ({ getState }) => {
           const state = getState();
-          // TODO: improve these checks here if there was a response like [], '', {}, null.
-          // Like the code is now, it won't work for products without properties etc.
+
           return (
-            getCurrentProduct(state) &&
-            getProductDescription(state) &&
-            getProductProperties(state) &&
-            getProductShipping(state)
+            getCurrentProduct(state) !== null &&
+            getProductDescription(state) !== null &&
+            getProductProperties(state) !== null &&
+            getProductShipping(state) !== null
           );
         })
     )
