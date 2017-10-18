@@ -25,7 +25,6 @@ export default function shippingByProductId(state = {}, action) {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          shipping: null,
           isFetching: true,
           expires: 0,
         },
