@@ -3,11 +3,12 @@ import {
   getCategoryProductCount,
   getCurrentCategoryChildCount,
 } from '@shopgate/pwa-common-commerce/category/selectors';
+import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 
 /**
- * Selects the summed up shipping costs of the cart.
- * @type {number}
+ * Checks if the filter bar has active filters
+ * @return {bool}
  */
 export const isFilterBarActive = createSelector(
   hasActiveFilters,
@@ -15,21 +16,29 @@ export const isFilterBarActive = createSelector(
 );
 
 /**
- * Selects the summed up shipping costs of the cart.
- * @type {number}
+ * Checks if the filter bar is shown within a category page
+ * @return {bool}
  */
-export const isFilterBarShown = createSelector(
+export const isFilterBarShownInCategory = createSelector(
   getCurrentCategoryChildCount,
-  hasActiveFilters,
   getCategoryProductCount,
-  (childCategoryCount, activeFilters, productCount) => {
-    if (
-      !childCategoryCount &&
-      (activeFilters || productCount > 0)
-    ) {
-      return true;
-    }
+  hasActiveFilters,
+  getProductsResult,
+  (subCategories, categoryProductCount, activeFilters, { totalProductCount }) => {
+    const hasProducts = (totalProductCount === null && categoryProductCount > 0) ||
+      totalProductCount > 0;
 
-    return false;
+    return !subCategories && (hasProducts || activeFilters);
   }
+);
+
+/**
+ * Checks if the filter bar is shown within a search page
+ * @return {bool}
+ */
+export const isFilterBarShownInSearch = createSelector(
+  hasActiveFilters,
+  getProductsResult,
+  (activeFilters, { totalProductCount }) =>
+    totalProductCount === null || (totalProductCount > 0 || activeFilters)
 );

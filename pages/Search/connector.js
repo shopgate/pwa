@@ -10,6 +10,7 @@ import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isFilterBarShownInSearch } from '../../components/FilterBar/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -19,6 +20,7 @@ import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selecto
  */
 const mapStateToProps = state => ({
   isLoading: isViewLoading(state, SEARCH_PATH),
+  isFilterBarShown: isFilterBarShownInSearch(state),
   searchPhrase: getSearchPhrase(state),
   ...getProductsResult(state),
 });

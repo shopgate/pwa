@@ -13,12 +13,14 @@ class Search extends Component {
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     searchPhrase: PropTypes.string.isRequired,
+    isFilterBarShown: PropTypes.bool,
     products: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
     products: [],
     totalProductCount: null,
+    isFilterBarShown: true,
   };
 
   /**
@@ -38,7 +40,7 @@ class Search extends Component {
 
     return (
       <View title={searchPhrase}>
-        {(isLoading || hasProducts) && <FilterBar />}
+        {(this.props.isFilterBarShown) && <FilterBar />}
         <Products />
         {(!hasProducts && !isLoading) && (
           <NoResults
