@@ -42,11 +42,11 @@ export default function product(subscribe) {
     const state = getState();
     const page = getPage(state);
     const currentProduct = getCurrentProductFormatted(state);
+    const trackingData = {
+      page,
+      product: currentProduct,
+    };
 
-    track(
-      'viewContent',
-      { page, product: currentProduct },
-      state
-    );
+    track('viewContent', trackingData, state);
   });
 }
