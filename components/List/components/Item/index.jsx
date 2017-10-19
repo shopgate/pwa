@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Glow from 'Components/Glow';
 import styles from './style';
@@ -77,7 +78,7 @@ class Item extends Component {
           component="div"
           grow={1}
         >
-          {title}
+          <I18n.Text string={title} />
         </Grid.Item>
         {this.props.rightComponent &&
           <Grid.Item component="div" grow={1}>

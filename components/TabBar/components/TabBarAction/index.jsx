@@ -33,18 +33,16 @@ const TabBarAction = (props) => {
 };
 
 TabBarAction.propTypes = {
-  icon: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-  ]).isRequired,
   label: PropTypes.node.isRequired,
   children: PropTypes.node,
+  icon: PropTypes.element,
   isHighlighted: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
 TabBarAction.defaultProps = {
   children: null,
+  icon: null,
   isHighlighted: false,
   onClick: null,
 };
