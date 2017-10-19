@@ -25,11 +25,9 @@ export default function product(subscribe) {
    */
   subscribe(variantDidChange$, ({ getState }) => {
     const state = getState();
-    const variant = getSelectedVariantFormatted(state);
-    const baseProduct = getCurrentBaseProductFormatted(state);
     const trackingData = {
-      variant,
-      baseProduct,
+      variant: getSelectedVariantFormatted(state),
+      baseProduct: getCurrentBaseProductFormatted(state),
     };
 
     track('variantSelected', trackingData, state);
@@ -40,11 +38,9 @@ export default function product(subscribe) {
    */
   subscribe(productIsReady$, ({ getState }) => {
     const state = getState();
-    const page = getPage(state);
-    const currentProduct = getCurrentProductFormatted(state);
     const trackingData = {
-      page,
-      product: currentProduct,
+      page: getPage(state),
+      product: getCurrentProductFormatted(state),
     };
 
     track('viewContent', trackingData, state);
