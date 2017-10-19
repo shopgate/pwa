@@ -1,5 +1,5 @@
 {
-  "name": "@shopgate/theme-gmd",
+  "name": "@shopgate/theme-ios11",
   "version": "0.1.10",
   "lockfileVersion": 1,
   "requires": true,
@@ -34,7 +34,7 @@
         "jsdom": "11.3.0",
         "path-match": "1.2.4",
         "react-dotdotdot": "1.1.0",
-        "react-hammerjs": "git+https://github.com/JedWatson/react-hammerjs.git#2c51dfdaa63451f9ad95b56e206d24fe84337df9",
+        "react-hammerjs": "git+https://github.com/JedWatson/react-hammerjs.git#45d31c430a8323bcbbda67b9902809f3f1d88fb5",
         "react-hot-loader": "3.0.0-beta.6",
         "react-id-swiper": "1.4.0",
         "react-inline-transition-group": "2.1.7",
@@ -88,7 +88,9 @@
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "github:shopgate/pwa-tracking#863c0cfadd961957a4ac887c975e78a7463b62d7"
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.1.tgz",
+      "integrity": "sha512-2Dp3C2/XJJ6e0ug6iUUDN3lRsZFID+w2cgG2wQADSNj8CVLMrWL4nlAQi4NpTYHNiozNdNJjf8IMhGZQ1oBlIw=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
@@ -131,6 +133,11 @@
       "version": "0.1.2",
       "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.2.tgz",
       "integrity": "sha512-E6qF5Q1V9+reYpx1AY5+z3Xwx0sdMyGCvVvPnJmh1SzGn6HuAuc8GKF0e4iX38dAUsmu2lB3cdyrJ5fsu4zoJg=="
+    },
+    "@shopgate/tracking-core": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-0.1.1.tgz",
+      "integrity": "sha512-XCKKvEnUFMLsrRIMNeaCzD3+7AeQ9r0fyM4K3IZVn1EmLIF8FiV9czsXjeuKpFMI2S7qiE5BLgkHxWjK9TPX9Q=="
     },
     "@types/node": {
       "version": "6.0.89",
@@ -6835,7 +6842,7 @@
       }
     },
     "react-hammerjs": {
-      "version": "git+https://github.com/JedWatson/react-hammerjs.git#2c51dfdaa63451f9ad95b56e206d24fe84337df9",
+      "version": "git+https://github.com/JedWatson/react-hammerjs.git#45d31c430a8323bcbbda67b9902809f3f1d88fb5",
       "requires": {
         "hammerjs": "2.0.8"
       }
