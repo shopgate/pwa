@@ -27,8 +27,12 @@ export default function product(subscribe) {
     const state = getState();
     const variant = getSelectedVariantFormatted(state);
     const baseProduct = getCurrentBaseProductFormatted(state);
+    const trackingData = {
+      variant,
+      baseProduct,
+    };
 
-    track('variantSelected', { variant, baseProduct }, state);
+    track('variantSelected', trackingData, state);
   });
 
   /**
