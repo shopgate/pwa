@@ -63,10 +63,11 @@ class Core {
        * @param {Object} rawData Raw data from sgData Object
        * @param {string} [page] Identifier of the page
        * @param {Object} [scope] Scope for the event
+       * @param {Object} [state] The redux state
        * @returns {Core} Instance of Core
        */
-      this.track[event] = (rawData, page, scope) =>
-        this.notifyPlugins({ ...rawData }, event, page, scope);
+      this.track[event] = (rawData, page, scope, state) =>
+        this.notifyPlugins({ ...rawData }, event, page, scope, state);
     });
   }
 
@@ -162,9 +163,10 @@ class Core {
    * @param {string} eventName Name of the event
    * @param {string} [page] Identifier of the page
    * @param {Object} [scope] Scope of the event
+   * @param {Object} [state] The redux state
    * @returns {void}
    */
-  notifyHelper(rawData, eventName, page, scope = {}) {
+  notifyHelper(rawData, eventName, page, scope = {}, state) {
     // Exit if the user opt out. But not for the explicit add or remove tracker events
     if ([REMOVE_TRACKER, ADD_TRACKER].indexOf(eventName) === -1 && isOptOut()) {
       return;
@@ -223,11 +225,11 @@ class Core {
         return;
       }
 
-      const params = [eventData, scopeOptions];
+      const params = [eventData, scopeOptions, undefined, state];
 
       if (entry.trackerName === 'unified' && useBlacklist) {
         // Pass the unifiedBlacklist to the plugin if the plugin is the unified one
-        params.push(blacklist);
+        params[2] = blacklist;
       }
       entry.callback.apply(this, params);
     });
@@ -240,17 +242,18 @@ class Core {
    * @param {string} eventName Name of the event
    * @param {string} [page] Identifier of the page
    * @param {Object} [scope] Scope of the event
+   * @param {Object} [state] The redux state
    * @returns {Core} Instance of the core instance
    */
-  notifyPlugins(rawData, eventName, page, scope) {
+  notifyPlugins(rawData, eventName, page, scope, state) {
     // If registration is finished
     if (this.registerFinish) {
-      this.notifyHelper(rawData, eventName, page, scope);
+      this.notifyHelper(rawData, eventName, page, scope, state);
     } else {
     // Store the event if not
       this.triggeredEvents.push({
         function: this.notifyHelper,
-        params: [rawData, eventName, page, scope],
+        params: [rawData, eventName, page, scope, state],
       });
     }
 
