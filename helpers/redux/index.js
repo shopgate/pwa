@@ -123,7 +123,7 @@ export const generateResultHash = (params, includeSort = true) => {
     filters: {},
   };
 
-  let mergedParams = {
+  const mergedParams = {
     ...defaultParams,
     ...params,
   };
