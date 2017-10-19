@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import {
   TAB_HOME,
   TAB_BROWSE,
@@ -15,7 +22,7 @@ import TabBarMoreAction from '../components/MoreAction';
  * @param {string} type The type name of the tab.
  * @return {function|string} The corresponding component or the default tab action component.
  */
-export const getTabActionComponentForType = (type) => {
+const getTabActionComponentForType = (type) => {
   switch (type) {
     case TAB_HOME:
       return TabBarHomeAction;
@@ -29,3 +36,5 @@ export const getTabActionComponentForType = (type) => {
       return TabBarAction;
   }
 };
+
+export default getTabActionComponentForType;
