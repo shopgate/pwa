@@ -28,7 +28,7 @@ const commitTemporaryFilters = () => (dispatch, getState) => {
     return;
   }
 
-  if (!shallowEqual(temporaryFilters, activeFilters[activeFilters.length - 1])) {
+  if (!shallowEqual(temporaryFilters, activeFilters[activeFilters.length - 1].filters)) {
     dispatch(setActiveFilters(temporaryFilters));
 
     const sort = getSortOrder(state);

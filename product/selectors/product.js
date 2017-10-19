@@ -157,12 +157,9 @@ export const getPopulatedProductsResult = (state, hash, result) => {
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 
-  if (result) {
+  if (result && result.products) {
     totalProductCount = result.totalResultCount;
-
-    if (result.products) {
-      products = result.products.map(id => getProductById(state, id).productData);
-    }
+    products = result.products.map(id => getProductById(state, id).productData);
   }
 
   return {

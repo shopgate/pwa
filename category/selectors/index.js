@@ -59,7 +59,7 @@ export const getCurrentCategoryId = createSelector(
   state => (state.history ? state.history.pathname : null),
   (params, settings, categoryId, pathname) => {
     if (params && params.categoryId) {
-      return hex2bin(params.categoryId);
+      return hex2bin(params.categoryId) || null;
     }
 
     if (settings && settings.categoryNumber) {
@@ -68,7 +68,7 @@ export const getCurrentCategoryId = createSelector(
 
     if (!categoryId) {
       if (pathname && pathname.startsWith(CATEGORY_PATH)) {
-        return hex2bin(pathname.split('/')[2]);
+        return hex2bin(pathname.split('/')[2]) || null;
       }
     }
 

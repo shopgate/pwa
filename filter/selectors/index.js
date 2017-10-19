@@ -8,9 +8,18 @@
 import { createSelector } from 'reselect';
 import isEqual from 'lodash/isEqual';
 import find from 'lodash/find';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSearchPhrase, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { getCurrentCategoryId } from '../../category/selectors';
+
+/**
+ * Retrieves the router params from the props.
+ * @param {Object} _ The application state. (Will be ignored!)
+ * @param {Object} props The component props.
+ * @returns {Object} The router params.
+ */
+const getParamsFromProps = (_, props = {}) => props.params;
 
 /**
  * Gets the filters reducer.
@@ -36,18 +45,31 @@ export const getActiveFiltersStack = state => getFilters(state).activeFilters;
 /**
  * Gets the currently active filters.
  * @param {Object} state The application state.
+ * @param {Object} props The component props.
  * @returns {Object|null}
  */
-export const getActiveFilters = (state) => {
-  const stacks = getActiveFiltersStack(state);
-  const stack = stacks[stacks.length - 1];
+export const getActiveFilters = createSelector(
+  getParamsFromProps,
+  getActiveFiltersStack,
+  (params, activeFilters) => {
+    let stack;
 
-  if (!stack) {
-    return null;
+    if (params && params.categoryId) {
+      // If the params contain a categoryId, it's used to search the filter stack for a match
+      const paramCategoryId = hex2bin(params.categoryId) || null;
+      stack = activeFilters.find(({ categoryId }) => paramCategoryId === categoryId);
+    } else {
+      // Otherwise the most recent entry is taken from the stack
+      stack = activeFilters[activeFilters.length - 1];
+    }
+
+    if (!stack) {
+      return null;
+    }
+
+    return stack.filters;
   }
-
-  return stack;
-};
+);
 
 /**
  * Gets the filter hash for the given params.
@@ -204,21 +226,5 @@ export const getCurrentActiveValues = createSelector(
     }
 
     return filter.values;
-  }
-);
-
-/**
- * Selects the filter index.
- * @param {Object} state The current application state.
- * @returns {number|null}
- */
-export const getFilterIndex = createSelector(
-  getFilters,
-  (filterState) => {
-    if (typeof filterState.activeIndex !== 'undefined') {
-      return filterState.activeIndex;
-    }
-
-    return null;
   }
 );
