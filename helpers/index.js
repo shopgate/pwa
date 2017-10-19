@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import core from '@shopgate/tracking-core/core/Core';
+
 /**
  * Converts a price to a formatted string.
  * @param {number} price The original price.
@@ -67,3 +69,19 @@ export const formatCartProductData = ({ product, quantity }) => ({
   },
   quantity,
 });
+
+/**
+ * Helper to pass the redux state to the tracking core
+ * @param {string} event The name of the event.
+ * @param {Object} data The tracking data of the event.
+ * @param {Object} state The current redux state.
+ * @return {Core|boolean}
+ */
+export const track = (event, data, state) => {
+  if (typeof core.track[event] !== 'function') {
+    console.warn('unknown tracking event:', event);
+    return false;
+  }
+
+  return core.track[event](data, undefined, undefined, state);
+};

@@ -5,22 +5,24 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import core from '@shopgate/tracking-core/core/Core';
 import { categoryIsReady$ } from '../streams/category';
 import { searchIsReady$ } from '../streams/search';
 import { productIsReady$ } from '../streams/product';
 import { pagesAreReady$ } from '../streams/pages';
 import getTrackingData from '../selectors';
+import { track } from '../helpers/index';
 
 /**
  * Calls the pageview core tracking function.
  * @param {Object} input The input of the tracked stream.
  */
 const callPageViewTracker = ({ getState }) => {
-  core.track.pageview(
-    getTrackingData(
-      getState()
-    )
+  const state = getState();
+
+  track(
+    'pageview',
+    getTrackingData(state),
+    state
   );
 };
 
