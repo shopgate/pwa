@@ -19,8 +19,8 @@ export default function cart(subscribe) {
    */
   subscribe(productsAdded$, ({ getState, action }) => {
     const state = getState();
-
     const products = getAddToCartProducts(state, action.products);
+
     track('addToCart', { products }, state);
   });
 }
