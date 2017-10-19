@@ -9,22 +9,14 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeDidNotChange } from '@shopgate/pwa-common/streams/history';
 import {
   RECEIVE_PRODUCTS,
   RECEIVE_PRODUCT,
   SET_PRODUCT_ID,
-  RECEIVE_PRODUCT_DESCRIPTION,
-  RECEIVE_PRODUCT_PROPERTIES,
-  RECEIVE_PRODUCT_SHIPPING,
-  ITEM_PATH,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getCurrentProduct,
   getCurrentBaseProductId,
-  getProductDescription,
-  getProductProperties,
-  getProductShipping,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isProductChildrenSelected } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
@@ -56,40 +48,11 @@ const currentProductIdChanged = main$
   );
 
 /**
- * Emits when product description has been received.
+ * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
  */
-const descriptionReceived$ = main$
-  .filter(({ action }) => action.type === RECEIVE_PRODUCT_DESCRIPTION);
-
-/**
- * Emits when product properties has been received.
- */
-const propertiesReceived$ = main$
-  .filter(({ action }) => action.type === RECEIVE_PRODUCT_PROPERTIES);
-
-/**
- * Emits when product shipping info has been received.
- */
-const shippingReceived$ = main$
-  .filter(({ action }) => action.type === RECEIVE_PRODUCT_SHIPPING);
-
-/**
- * Emits when all necessary category data has been received.
- */
-export const dataLoaded$ = currentProductIdChanged
-  .switchMap(({ action: routeAction }) => {
-    const { productId } = routeAction;
-
-    return descriptionReceived$
-      .filter(({ action }) => action.productId === productId)
-      .zip(
-        propertiesReceived$.filter(({ action }) => action.productId === productId),
-        shippingReceived$.filter(({ action }) => action.productId === productId)
-      );
-  })
-  .map(([first]) => first)
+export const productIsReady$ = currentProductIdChanged
   .switchMap((data) => {
-    const product = getCurrentProduct(data.getState());
+    const product = getCurrentProduct(data.getState()) !== null;
 
     // Return the productReceived$ stream if the product data is not there yet
     if (!product) {
@@ -100,34 +63,3 @@ export const dataLoaded$ = currentProductIdChanged
     return Observable.of(data);
   })
   .filter(({ getState }) => !isProductChildrenSelected(getState()));
-
-/**
- * Emits when product page is entered.
- */
-const productRouteEntered$ = routeDidNotChange(ITEM_PATH);
-
-/**
- * Emits when product data is already available.
- */
-export const dataPreloaded$ = productRouteEntered$
-  .switchMap(() => (
-    currentProductIdChanged
-      .filter(
-        ({ getState }) => {
-          const state = getState();
-          // TODO: improve these checks here if there was a response like [], '', {}, null.
-          // Like the code is now, it won't work for products without properties etc.
-          return (
-            getCurrentProduct(state) &&
-            getProductDescription(state) &&
-            getProductProperties(state) &&
-            getProductShipping(state)
-          );
-        })
-    )
-  );
-
-/**
- * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
- */
-export const productIsReady$ = dataLoaded$.merge(dataPreloaded$);
