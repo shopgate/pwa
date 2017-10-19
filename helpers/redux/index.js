@@ -123,7 +123,7 @@ export const generateResultHash = (params, includeSort = true) => {
     filters: {},
   };
 
-  let mergedParams = {
+  const mergedParams = {
     ...defaultParams,
     ...params,
   };
@@ -131,7 +131,7 @@ export const generateResultHash = (params, includeSort = true) => {
   const { searchPhrase } = mergedParams;
 
   if (searchPhrase) {
-    /*
+    /**
      * We trim the search phrase here, because otherwise we will create different hash and cache
      * entries for the same search term (because whitespaces don't influence the search results)
      */
@@ -157,7 +157,7 @@ const syncHistory = (location, action, historyStackRef, storeRef) => {
 
   const state = storeRef.getState();
 
-  /*
+  /**
    * We need this check here to make redirects work correctly.
    * The problem is that this callback here is called in the opposite order (LIFO).
    * of how the history changes happened. If we dispatch:

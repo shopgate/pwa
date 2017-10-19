@@ -11,7 +11,6 @@ import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import { getPageContext } from '../../../../helpers/legacy';
 import { isFunction } from '../../../../helpers/validation';
-import { INDEX_PATH } from '../../../../constants/RoutePaths';
 
 /**
  * Native link handler, simply changes current location.href to open email, tel, etc..
@@ -100,10 +99,6 @@ const reactRouter = (options, historyHandler) => {
   showTab({
     targetTab: pageContext.tab,
   });
-
-  if (options.url === INDEX_PATH) {
-    return;
-  }
 
   if (isFunction(historyHandler)) {
     historyHandler(options);
