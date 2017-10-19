@@ -84,15 +84,15 @@ class Products extends Component {
    * @returns {Object}
    */
   getStyles = (props) => {
-    let gridStyles = '';
-    let listStyles = '';
+    let gridStyles;
+    let listStyles;
 
     if (props.viewMode === GRID_VIEW) {
-      listStyles = 'display: none;';
-      gridStyles = 'display: block;';
+      listStyles = { display: 'none' };
+      gridStyles = { display: 'block' };
     } else {
-      listStyles = 'display: block;';
-      gridStyles = 'display: none;';
+      listStyles = { display: 'block' };
+      gridStyles = { display: 'none' };
     }
 
     return {
@@ -106,14 +106,18 @@ class Products extends Component {
    * @param {Object} props The component props.
    */
   applyInlineStyle = (props) => {
-    const styles = this.getStyles(props);
+    const { gridStyles, listStyles } = this.getStyles(props);
 
     if (this.gridContainer) {
-      this.gridContainer.style = styles.gridStyles;
+      Object.keys(gridStyles).forEach((key) => {
+        this.gridContainer.style[key] = gridStyles[key];
+      });
     }
 
     if (this.listContainer) {
-      this.listContainer.style = styles.listStyles;
+      Object.keys(listStyles).forEach((key) => {
+        this.listContainer.style[key] = listStyles[key];
+      });
     }
   };
 
