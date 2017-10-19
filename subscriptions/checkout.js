@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import core from '@shopgate/tracking-core/core/Core';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import getCart from '../selectors/cart';
+import { track } from '../helpers/index';
 
 /**
  * Checkout tracking subscriptions.
@@ -20,7 +20,9 @@ export default function checkout(subscribe) {
    */
   const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
 
-  subscribe(checkoutDidEnter$, ({ getState }) => (
-    core.track.initiatedCheckout(getCart(getState()))
-  ));
+  subscribe(checkoutDidEnter$, ({ getState }) => {
+    const state = getState();
+
+    track('initiatedCheckout', getCart(state), state);
+  });
 }

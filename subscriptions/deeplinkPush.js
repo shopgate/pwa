@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import core from '@shopgate/tracking-core/core/Core';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   OPEN_DEEP_LINK,
   OPEN_PUSH_NOTIFICATION,
 } from '@shopgate/pwa-common/constants/ActionTypes';
+import { track } from '../helpers/index';
 
 /**
  * Emits when a deeplink was opened.
@@ -32,36 +32,38 @@ export default function deeplinkPush(subscribe) {
   /**
    * Gets triggered when a deeplink was opened.
    */
-  subscribe(deeplinkOpened$, ({ action }) => {
+  subscribe(deeplinkOpened$, ({ getState, action }) => {
+    const state = getState();
     const { link = '', sourceApp = '', wasOpenedFromSearchIndex } = action.payload;
     const eventLabel = wasOpenedFromSearchIndex ? 'os_search' : sourceApp;
 
-    core.track.openDeepLink({
+    track('openDeepLink', {
       eventAction: link,
       eventLabel,
-    });
+    }, state);
 
-    core.track.setCampaignWithUrl({
+    track('setCampaignWithUrl', {
       url: link,
       type: 'deeplink',
-    });
+    }, state);
   });
 
   /**
    * Gets triggered when a push was opened.
    */
-  subscribe(pushOpened$, ({ action }) => {
+  subscribe(pushOpened$, ({ getState, action }) => {
+    const state = getState();
     const notificationId = action.notificationId ? action.notificationId.toString() : 'n/a';
 
-    core.track.openPushNotification({
+    track('openPushNotification', {
       eventAction: 'opened',
       eventLabel: notificationId,
-    });
+    }, state);
 
-    core.track.setCampaignWithUrl({
+    track('setCampaignWithUrl', {
       url: action.link,
       notificationId,
       type: 'push_message',
-    });
+    }, state);
   });
 }

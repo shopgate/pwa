@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import core from '@shopgate/tracking-core/core/Core';
 import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { productIsReady$ } from '../streams/product';
 import {
@@ -14,6 +13,7 @@ import {
   getCurrentProductFormatted,
 } from '../selectors/product';
 import getPage from '../selectors/page';
+import { track } from '../helpers/index';
 
 /**
  * Product tracking subscriptions.
@@ -25,10 +25,12 @@ export default function product(subscribe) {
    */
   subscribe(variantDidChange$, ({ getState }) => {
     const state = getState();
-    const variant = getSelectedVariantFormatted(state);
-    const baseProduct = getCurrentBaseProductFormatted(state);
+    const trackingData = {
+      variant: getSelectedVariantFormatted(state),
+      baseProduct: getCurrentBaseProductFormatted(state),
+    };
 
-    core.track.variantSelected({ variant, baseProduct });
+    track('variantSelected', trackingData, state);
   });
 
   /**
@@ -36,12 +38,11 @@ export default function product(subscribe) {
    */
   subscribe(productIsReady$, ({ getState }) => {
     const state = getState();
-    const page = getPage(state);
-    const currentProduct = getCurrentProductFormatted(state);
+    const trackingData = {
+      page: getPage(state),
+      product: getCurrentProductFormatted(state),
+    };
 
-    core.track.viewContent({
-      page,
-      product: currentProduct,
-    });
+    track('viewContent', trackingData, state);
   });
 }
