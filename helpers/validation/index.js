@@ -60,6 +60,15 @@ export const isFunction = prop =>
 ;
 
 /**
+ * Tests if the prop is undefined.
+ * @param {*} prop The property to test.
+ * @return {boolean}
+ */
+export const isUndefined = prop =>
+  typeof prop === 'undefined'
+;
+
+/**
  * Tests if the prop is a promise.
  * @param {*} prop The property to test.
  * @return {boolean}
