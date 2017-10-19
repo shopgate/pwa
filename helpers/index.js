@@ -6,6 +6,7 @@
  */
 
 import core from '@shopgate/tracking-core/core/Core';
+import { logger } from '@shopgate/pwa-core/helpers';
 
 /**
  * Converts a price to a formatted string.
@@ -79,7 +80,7 @@ export const formatCartProductData = ({ product, quantity }) => ({
  */
 export const track = (event, data, state) => {
   if (typeof core.track[event] !== 'function') {
-    console.warn('unknown tracking event:', event);
+    logger.warn('Unknown tracking event:', event);
     return false;
   }
 
