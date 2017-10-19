@@ -106,5 +106,11 @@
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
     "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}"
+  },
+  "tab_bar": {
+    "home": "Home",
+    "browse": "Stöbern",
+    "cart": "Warenkorb",
+    "more": "Mehr"
   }
 }

@@ -9,13 +9,19 @@ import React from 'react';
 import Icon from '@shopgate/pwa-common/components/Icon';
 
 // SVG Content
-const content = '<path d="M7.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S9,18,7.9,18z M17.9,18c-1.1,0-2,0.9-2,2s0.9,2,2,2c1.1,0,2-0.9,2-2S19,18,17.9,18z M8.1,14.8l0-0.1L9,13h7.5c0.7,0,1.4-0.4,1.7-1l3.9-7l-1.7-1h0l-1.1,2l-2.8,5h-7l-0.1-0.3L7.1,6L6.1,4L5.2,2H1.9v2h2l3.6,7.6L6.2,14c-0.2,0.3-0.2,0.6-0.2,1c0,1.1,0.9,2,2,2h12v-2H8.3C8.2,15,8.1,14.9,8.1,14.8z"/>';
+const content = `
+  <path
+    fill="currentColor"
+    d="M26.5,1.98,25.6,6.309H20.7L21.817,1ZM21.413,23.509A1.491,1.491,0,1,0,22.9,22.017a1.491,1.491,0,0,0-1.491,1.491Zm-5.505,0A1.491,1.491,0,1,0,17.4,22.017a1.491,1.491,0,0,0-1.491,1.491ZM19.322,3.167l-3.713.771L16.1,6.3h2.567ZM12.906,5a1.134,1.134,0,0,0-1.053-.735H9.379a1.129,1.129,0,1,0,0,2.258h1.695l3.468,9.027a1.134,1.134,0,0,0,1.053.735h7.837a1.095,1.095,0,1,1,0,2.189H14.987a1.129,1.129,0,1,0,0,2.258h8.451a3.348,3.348,0,0,0,2.339-5.748l2.777-5.008a1.129,1.129,0,0,0-.438-1.536,1.085,1.085,0,0,0-.38-.127H14.174Z"
+    transform="translate(-10628.25 6657)"
+  />
+`;
 
 /**
  * The cart icon component.
  * @param {Object} props The icon component properties.
  * @returns {JSX}
  */
-const CartIcon = props => <Icon content={content} {...props} />;
+const CartIcon = props => <Icon content={content} viewBox="-10620 6658 20.447 24" {...props} />;
 
 export default CartIcon;

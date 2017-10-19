@@ -6,6 +6,7 @@
  */
 
 import { connect } from 'react-redux';
+import { isTabBarVisible } from 'Components/TabBar/selectors';
 import setViewTitle from './action-creators/setViewTitle';
 import setViewTop from './action-creators/setViewTop';
 import { getTopStatus } from './selectors';
@@ -16,6 +17,7 @@ import { getTopStatus } from './selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
+  hasTabBar: isTabBarVisible(state),
   viewTop: getTopStatus(state),
 });
 

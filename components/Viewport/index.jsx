@@ -9,6 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Navigator from 'Components/Navigator';
 import NavDrawer from 'Components/NavDrawer';
+import TabBar from 'Components/TabBar';
 import styles from './style';
 
 /**
@@ -21,6 +22,7 @@ const Viewport = props => (
     <Navigator />
     <NavDrawer />
     {props.children}
+    <TabBar />
   </main>
 );
 

@@ -19,7 +19,7 @@ const colors = {
   background: '#f8f8f8',
   light: '#fff',
   dark: '#000',
-  accent: '#5ccee3',
+  accent: '#00c3e6',
   placeholder: '#f2f2f2',
   primary: '#fa5400',
   darkGray: '#eaeaea',

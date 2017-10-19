@@ -9,7 +9,7 @@ import { css } from 'glamor';
 
 const name = css({
   fontWeight: 'bold',
-  fontSize: '1.25rem',
+  fontSize: '1.29rem',
   lineHeight: '1.7rem',
   paddingTop: 2,
   marginRight: 72,

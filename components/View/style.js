@@ -22,9 +22,10 @@ const container = css({
 /**
  * Creates the content style.
  * @param {boolean} hasNavigator Whether to add the top offset when the navigator is visible.
+ * @param {boolean} hasTabBar Whether to add the bottom offset when the tab bar is visible.
  * @return {string} The content style class.
  */
-const content = (hasNavigator = true) => css({
+const content = (hasNavigator = true, hasTabBar = true) => css({
   background: colors.light,
   overflow: 'auto',
   overflowScrolling: 'touch',
@@ -32,6 +33,7 @@ const content = (hasNavigator = true) => css({
   width: '100%',
   position: 'absolute',
   top: hasNavigator ? variables.navigator.height : 0,
+  paddingBottom: hasTabBar ? variables.tabBar.height : 0,
   bottom: 0,
   display: 'flex',
   flexDirection: 'column',
