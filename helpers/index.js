@@ -28,15 +28,18 @@ export const formatProductData = (productData) => {
     return null;
   }
 
-  const { id, name, price, tags = [] } = productData;
+  const { id, name, price, manufacturer, tags = [], stock } = productData;
 
   return {
     name,
+    manufacturer,
     tags,
+    stock,
     uid: id,
     amount: {
       net: convertPriceToString(price.unitPriceNet),
       gross: convertPriceToString(price.unitPriceWithTax),
+      striked: convertPriceToString(price.unitPriceStriked),
       currency: price.currency,
     },
   };
