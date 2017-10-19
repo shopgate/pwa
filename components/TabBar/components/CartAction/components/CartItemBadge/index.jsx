@@ -1,0 +1,39 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+import React, { PropTypes } from 'react';
+import { CART_MAX_ITEMS } from '@shopgate/pwa-common-commerce/cart/constants';
+import connect from './connector';
+import style from './style';
+
+/**
+ * The cart item badge component.
+ * Shows the amount of products in the cart.
+ * @param {Object} props The component props.
+ * @returns {JSX}
+ */
+const CartItemBadge = (props) => {
+  if (!props.cartProductCount) {
+    return null;
+  }
+
+  let cartProductCount = `${props.cartProductCount}`;
+
+  if (props.cartProductCount > CART_MAX_ITEMS) {
+    cartProductCount = `${CART_MAX_ITEMS}+`;
+  }
+
+  return (
+    <div className={style}>{cartProductCount}</div>
+  );
+};
+
+CartItemBadge.propTypes = {
+  cartProductCount: PropTypes.number.isRequired,
+};
+
+export default connect(CartItemBadge);

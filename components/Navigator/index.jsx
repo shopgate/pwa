@@ -41,7 +41,7 @@ class Navigator extends Component {
     showLoadingBar: false,
     showSearch: true,
     showTitle: true,
-    textColor: colors.dark,
+    textColor: colors.accent,
   };
 
   /**

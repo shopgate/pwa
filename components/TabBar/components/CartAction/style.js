@@ -7,21 +7,7 @@
 
 import { css } from 'glamor';
 
-const name = css({
-  fontWeight: 'bold',
-  fontSize: '1.29rem',
-  lineHeight: '1.7rem',
-  paddingTop: 2,
-  marginRight: 72,
-}).toString();
-
-const placeholder = css({
-  width: '70%',
+export default css({
   height: 24,
-  marginTop: 5,
+  width: 20,
 }).toString();
-
-export default {
-  name,
-  placeholder,
-};

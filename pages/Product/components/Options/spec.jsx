@@ -12,7 +12,7 @@ import Picker from 'Components/Picker';
 import Options from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => obj => {
+jest.mock('./connector', () => (obj) => {
   const newObj = obj;
 
   const mockOptions = [{
@@ -76,9 +76,9 @@ describe('<Options />', () => {
     mockSetProductOption = jest.fn();
 
     renderedElement = mount((
-        <I18n.Provider lang="en" locales={{}}>
-          <Options setProductOption={mockSetProductOption} {...props} />
-        </I18n.Provider>),
+      <I18n.Provider lang="en" locales={{}}>
+        <Options setProductOption={mockSetProductOption} {...props} />
+      </I18n.Provider>),
       mockRenderOptions
     );
   };
