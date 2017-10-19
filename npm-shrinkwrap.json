@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "0.1.10",
+  "version": "0.1.12",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -21,9 +21,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "0.1.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.3.tgz",
-      "integrity": "sha512-D7WxydDcaXRpHAiif/JS1nWh9phm3nKH0O5wbBU7Jh5Vkh3Nnf6uEuvtNHDDUUcFTgpW76oDNZATCNisK1bA8Q==",
+      "version": "0.1.5",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.5.tgz",
+      "integrity": "sha512-uEjrxYiISQ6FHDpTsiDsImqWZREdAcufOuPPAZPIfcPoVotJaFG5lEDDG242fURAHISuT/dSTIi8O0t8d+9jLA==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -41,7 +41,7 @@
         "react-portal": "3.1.0",
         "react-redux": "5.0.6",
         "react-tap-event-plugin": "2.0.1",
-        "recompose": "0.24.0",
+        "recompose": "0.26.0",
         "redux": "3.7.2",
         "redux-logger": "3.0.6",
         "redux-thunk": "2.2.0",
@@ -49,30 +49,12 @@
         "reselect": "3.0.1",
         "rxjs": "5.4.3",
         "url-search-params": "0.10.0"
-      },
-      "dependencies": {
-        "hoist-non-react-statics": {
-          "version": "1.2.0",
-          "resolved": "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz",
-          "integrity": "sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs="
-        },
-        "recompose": {
-          "version": "0.24.0",
-          "resolved": "https://registry.npmjs.org/recompose/-/recompose-0.24.0.tgz",
-          "integrity": "sha512-7+UVym5Mfks/ukIDfcAiasrY61YGki8uIs4CmLTGU7UV2lm2ObbhOl913WrlsZKu8x8uA/sLJUOI5hxVga0dIA==",
-          "requires": {
-            "change-emitter": "0.1.6",
-            "fbjs": "0.8.16",
-            "hoist-non-react-statics": "1.2.0",
-            "symbol-observable": "1.0.4"
-          }
-        }
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "0.1.4",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.4.tgz",
-      "integrity": "sha512-A6gs5pw9TOpPYFjGuyk0e+aMIqfnXWdOEeJsZ5Ll8qyGZ7N1Wj6H1mX794Y8DfDG379by0/C6BpQWnNGd09c3w==",
+      "version": "0.1.5",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.5.tgz",
+      "integrity": "sha512-KTfzKk6hurwLu1Ssqm90Bt0erfmVCHYjGSSakJ8VL/sEfTUsjAoKeuOEkGf90DmxM/YnRXvuRRAEnqg2mC7B9g==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
@@ -88,9 +70,15 @@
       }
     },
     "@shopgate/pwa-tracking": {
+<<<<<<< HEAD
       "version": "0.1.0",
       "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.0.tgz",
       "integrity": "sha512-xBuparWC5aVw+5cmoGKKZN/G/ciI7Ald7lh4CVv2svNa7VUSzJCVwfSdJlsDbOloXu3Vo8W/LG2NAoyXy8d+wQ=="
+=======
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.1.tgz",
+      "integrity": "sha512-2Dp3C2/XJJ6e0ug6iUUDN3lRsZFID+w2cgG2wQADSNj8CVLMrWL4nlAQi4NpTYHNiozNdNJjf8IMhGZQ1oBlIw=="
+>>>>>>> master
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
@@ -130,9 +118,14 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "0.1.2",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.2.tgz",
-      "integrity": "sha512-E6qF5Q1V9+reYpx1AY5+z3Xwx0sdMyGCvVvPnJmh1SzGn6HuAuc8GKF0e4iX38dAUsmu2lB3cdyrJ5fsu4zoJg=="
+      "version": "0.1.3",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.3.tgz",
+      "integrity": "sha512-x/BCa/YyQAeDnIQ9W20Bwr1gbLOfj5UDOA4Ao+2zzl8r+7XFnGHh8qCR5m/IYdJXxf/eCKyu6RcdvZCQdCS1GQ=="
+    },
+    "@shopgate/tracking-core": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-0.1.1.tgz",
+      "integrity": "sha512-XCKKvEnUFMLsrRIMNeaCzD3+7AeQ9r0fyM4K3IZVn1EmLIF8FiV9czsXjeuKpFMI2S7qiE5BLgkHxWjK9TPX9Q=="
     },
     "@shopgate/tracking-core": {
       "version": "0.1.0",
@@ -1128,9 +1121,9 @@
       }
     },
     "babel-preset-env": {
-      "version": "1.6.0",
-      "resolved": "https://registry.npmjs.org/babel-preset-env/-/babel-preset-env-1.6.0.tgz",
-      "integrity": "sha512-OVgtQRuOZKckrILgMA5rvctvFZPv72Gua9Rt006AiPoB0DJKGN07UmaQA+qRrYgK71MVct8fFhT0EyNWYorVew==",
+      "version": "1.6.1",
+      "resolved": "https://registry.npmjs.org/babel-preset-env/-/babel-preset-env-1.6.1.tgz",
+      "integrity": "sha512-W6VIyA6Ch9ePMI7VptNn2wBM6dbG0eSz25HEiL40nQXCsXGTGZSTZu1Iap+cj3Q0S5a7T9+529l/5Bkvd+afNA==",
       "requires": {
         "babel-plugin-check-es2015-constants": "6.22.0",
         "babel-plugin-syntax-trailing-function-commas": "6.22.0",
@@ -1429,8 +1422,8 @@
       "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-2.5.1.tgz",
       "integrity": "sha512-jAvM2ku7YDJ+leAq3bFH1DE0Ylw+F+EQDq4GkqZfgPEqpWYw9ofQH85uKSB9r3Tv7XDbfqVtE+sdvKJW7IlPJA==",
       "requires": {
-        "caniuse-lite": "1.0.30000745",
-        "electron-to-chromium": "1.3.24"
+        "caniuse-lite": "1.0.30000747",
+        "electron-to-chromium": "1.3.26"
       }
     },
     "bser": {
@@ -1471,9 +1464,9 @@
       "optional": true
     },
     "caniuse-lite": {
-      "version": "1.0.30000745",
-      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30000745.tgz",
-      "integrity": "sha1-INb+3hFXpJNRM1ApRvx+DmuIDaU="
+      "version": "1.0.30000747",
+      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30000747.tgz",
+      "integrity": "sha1-2obnjhLQZBq+6u5uzVXYG9m9O10="
     },
     "caseless": {
       "version": "0.12.0",
@@ -2104,9 +2097,9 @@
       }
     },
     "electron-to-chromium": {
-      "version": "1.3.24",
-      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.24.tgz",
-      "integrity": "sha1-m3uIuwXOufoBahd4M8wt3jiPIbY="
+      "version": "1.3.26",
+      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.26.tgz",
+      "integrity": "sha1-mWQnKUhhp02cfIK5Jg6jAejALWY="
     },
     "elegant-spinner": {
       "version": "1.0.1",
