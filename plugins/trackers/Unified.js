@@ -59,7 +59,7 @@ class Unified extends BasePlugin {
    */
   registerHelper(eventName, callback) {
     // Register the tracking event of the plugin at the core
-    return this.trackingCore.register[eventName]((data, scope, blacklist) => {
+    return this.trackingCore.register[eventName]((data, scope, blacklist, state) => {
       if (typeof this.appHandler[eventName] !== 'function') {
         console.warn(`this.appHandler[${eventName}] is not a function`);
         return;
@@ -69,7 +69,7 @@ class Unified extends BasePlugin {
       const unifiedData = BasePlugin.formatData(eventName, data);
 
       // Invoke the event callback of the plugin to enable it to extend the data
-      const finalData = callback(unifiedData, data);
+      const finalData = callback(unifiedData, data, scope, state);
 
       // Send command to the app via the appHandler
       this.appHandler[eventName](finalData, {

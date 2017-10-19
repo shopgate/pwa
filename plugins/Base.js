@@ -87,12 +87,12 @@ class Base {
    */
   registerHelper(eventName, callback, options) {
     // Register the tracking event of the plugin at the core
-    return this.trackingCore.register[eventName]((data, scope) => {
+    return this.trackingCore.register[eventName]((data, scope, blacklist, state) => {
       // Convert the tracking data into the unified format
       const unifiedData = Base.formatData(eventName, data);
 
       // Invoke the event callback of the plugin to enable it to extend the data
-      const finalData = callback(unifiedData, data, scope);
+      const finalData = callback(unifiedData, data, scope, state);
 
       // If final data is explicitly false, it means further processing is up to the plugin only.
       if (finalData === false) {
