@@ -25,7 +25,6 @@ export default function propertiesByProductId(state = {}, action) {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          properties: null,
           isFetching: true,
           expires: 0,
         },

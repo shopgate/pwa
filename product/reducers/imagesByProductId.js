@@ -24,9 +24,9 @@ export default function imagesByProductId(state = {}, action) {
       return {
         ...state,
         [action.productId]: {
+          ...state[action.productId],
           isFetching: true,
           expires: 0,
-          images: null,
         },
       };
     case RECEIVE_PRODUCT_IMAGES:

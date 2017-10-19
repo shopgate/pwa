@@ -25,7 +25,6 @@ export default function descriptionsByProductId(state = {}, action) {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          description: null,
           isFetching: true,
           expires: 0,
         },

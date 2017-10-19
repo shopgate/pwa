@@ -7,6 +7,7 @@
 
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
+import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
 import { getSortOrder, getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { getActiveFilters } from '../../filter/selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
@@ -47,13 +48,15 @@ export const getCurrentBaseProductId = state => state.product.currentProduct.pro
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  getProducts,
   getCurrentBaseProductId,
-  (products, productId) => {
-    if (!products[productId] || products[productId].isFetching) {
+  getProducts,
+  (productId, products) => {
+    const entry = products[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.productData)) {
       return null;
     }
-    return products[productId].productData;
+
+    return entry.productData;
   }
 );
 
@@ -63,13 +66,15 @@ export const getCurrentBaseProduct = createSelector(
  * @returns {Object} The current product.
  */
 export const getCurrentProduct = createSelector(
-  getProducts,
   getCurrentProductId,
-  (products, productId) => {
-    if (!products[productId] || products[productId].isFetching) {
+  getProducts,
+  (productId, products) => {
+    const entry = products[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.productData)) {
       return null;
     }
-    return products[productId].productData;
+
+    return entry.productData;
   }
 );
 
@@ -213,14 +218,13 @@ const getProductImagesState = state => state.product.imagesByProductId;
 export const getProductImages = createSelector(
   getCurrentProductId,
   getProductImagesState,
-  (productId, productImagesState) => {
-    const collection = productImagesState[productId];
-
-    if (!collection || !collection.images) {
+  (productId, images) => {
+    const entry = images[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.images)) {
       return null;
     }
 
-    return collection.images;
+    return entry.images;
   }
 );
 
@@ -271,14 +275,13 @@ const getProductShippingState = state => state.product.shippingByProductId;
 export const getProductShipping = createSelector(
   getCurrentProductId,
   getProductShippingState,
-  (productId, productShippingState) => {
-    const collection = productShippingState[productId];
-
-    if (!collection || !collection.shipping) {
+  (productId, shipping) => {
+    const entry = shipping[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.shipping)) {
       return null;
     }
 
-    return collection.shipping;
+    return entry.shipping;
   }
 );
 
@@ -313,14 +316,13 @@ const getProductDescriptionState = state => state.product.descriptionsByProductI
 export const getProductDescription = createSelector(
   getCurrentProductId,
   getProductDescriptionState,
-  (productId, productDescriptionState) => {
-    const collection = productDescriptionState[productId];
-
-    if (!collection || !collection.description) {
-      return '';
+  (productId, descriptions) => {
+    const entry = descriptions[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.description)) {
+      return null;
     }
 
-    return collection.description;
+    return entry.description;
   }
 );
 
@@ -339,13 +341,12 @@ const getProductPropertiesState = state => state.product.propertiesByProductId;
 export const getProductProperties = createSelector(
   getCurrentProductId,
   getProductPropertiesState,
-  (productId, propertiesState) => {
-    const collection = propertiesState[productId];
-
-    if (!collection || !collection.properties) {
+  (productId, properties) => {
+    const entry = properties[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.properties)) {
       return null;
     }
 
-    return collection.properties;
+    return entry.properties;
   }
 );
