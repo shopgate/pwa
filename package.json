@@ -43,11 +43,11 @@
     "babel-runtime": "^6.26.0",
     "coveralls": "^3.0.0",
     "eslint-import-resolver-babel-module": "4.0.0-beta.1",
-    "lint-staged": "^4.2.3",
+    "lint-staged": "^4.3.0",
     "lodash": "^4.17.4",
     "pre-commit": "^1.2.2",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "peerDependencies": {
     "lodash": "4.x",
