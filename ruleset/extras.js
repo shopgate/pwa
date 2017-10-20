@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
- module.exports = {
+module.exports = {
   plugins: [
     'eslint-comments',
     'extra-rules',
@@ -19,6 +19,6 @@
     'eslint-comments/no-unlimited-disable': 'error',
     'eslint-comments/no-unused-disable': 'error',
     'eslint-comments/no-unused-enable': 'error',
-    'eslint-comments/no-use': 'warn'
+    'eslint-comments/no-use': 'warn',
   },
 };
