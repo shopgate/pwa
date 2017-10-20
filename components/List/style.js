@@ -8,30 +8,22 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-const item = css({
-  marginLeft: 72,
-}).toString();
+const gap = 20;
 
-const itemNotLast = css({
-  boxShadow: `0 1px 0 0 ${colors.darkGray}`,
-  marginBottom: 1,
+const item = css({
+  marginLeft: gap,
+  marginRight: gap,
+  borderTop: `0.5px ${colors.dividers} solid`,
+  ':last-child': {
+    borderBottom: `0.5px ${colors.dividers} solid`,
+  },
 }).toString();
 
 const innerContainer = css({
-  marginLeft: -72,
-  minHeight: 56,
   position: 'relative',
-}).toString();
-
-const glow = css({
-  bottom: -1,
-  height: '100%',
-  top: -1,
 }).toString();
 
 export default {
   item,
-  itemNotLast,
   innerContainer,
-  glow,
 };

@@ -10,4 +10,5 @@ import colors from 'Styles/colors';
 
 export default css({
   backgroundColor: colors.shade8,
+  minHeight: '100%',
 }).toString();

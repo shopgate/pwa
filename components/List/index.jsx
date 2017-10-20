@@ -47,18 +47,10 @@ class List extends Component {
           const key = `child-${index}`;
           // Selected state for the child.
           const isSelected = child.props.isSelected;
-          // Whether or not this child is the last.
-          const isLast = (index === children.length - 1);
-
-          let classes = styles.item;
-
-          if (!isLast) {
-            classes += ` ${styles.itemNotLast}`;
-          }
 
           return (
             <BaseListItem
-              className={classes}
+              className={styles.item}
               isSelected={isSelected}
               key={key}
             >

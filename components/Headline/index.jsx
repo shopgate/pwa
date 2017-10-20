@@ -5,21 +5,37 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PropTypes } from 'react';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
 /**
  * The headline component.
- * @param {string} props The component props.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Headline = ({ text }) => (
-  text.length ? <h3 className={styles.headline}>{text}</h3> : null
-);
+const Headline = (props) => {
+  const className = (props.small) ? styles.small : styles.large;
+
+  const hasContent = props.children || (props.text && props.text.length);
+
+  const content = props.children || <I18n.Text string={props.text} />;
+
+  return hasContent ? <h3 className={className}>{content}</h3> : null;
+};
 
 Headline.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  small: PropTypes.bool,
+  // Enable Headline text via prop for backwards compatibility.
+  text: PropTypes.string,
+};
+
+Headline.defaultProps = {
+  children: null,
+  small: false,
+  text: null,
 };
 
 export default Headline;
+

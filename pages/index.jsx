@@ -28,6 +28,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
+import { MORE_PATH } from 'Pages/More/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
@@ -46,6 +47,7 @@ import Register from './Register';
 import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
+import More from './More';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
 
@@ -71,6 +73,7 @@ const Pages = () =>
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} component={Register} />
+      <Route path={`${MORE_PATH}`} component={More} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />

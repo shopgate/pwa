@@ -29,17 +29,10 @@ const title = css({
 
 const grid = css({
   alignItems: 'center',
-  minHeight: variables.navigator.height,
+  minHeight: 50,
   padding: `${variables.gap.small}px 0`,
   position: 'relative',
   zIndex: 2,
-}).toString();
-
-const image = css({
-  alignSelf: 'flex-start',
-  flexShrink: 0,
-  margin: `0 ${variables.gap.big}px`,
-  width: 40,
 }).toString();
 
 export default {
@@ -47,5 +40,5 @@ export default {
   selected,
   title,
   grid,
-  image,
 };
+

@@ -21,6 +21,7 @@ const colors = {
   dark: '#000',
   accent: '#00c3e6',
   placeholder: '#f2f2f2',
+  dividers: '#cecece',
   primary: '#fa5400',
   darkGray: '#eaeaea',
   shade3: '#9a9a9a',
