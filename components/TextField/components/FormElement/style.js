@@ -7,14 +7,15 @@
 import { css } from 'glamor';
 
 /**
- * The styles for the container element.
+ * The styles for the input field.
  */
-const container = css({
-  position: 'relative',
-  height: 72,
+const input = css({
+  position: 'absolute',
   width: '100%',
+  top: 38,
+  outline: 0,
 }).toString();
 
 export default {
-  container,
-};
+  input,
+}

@@ -46,6 +46,7 @@ import Register from './Register';
 import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
+import WriteReview from './WriteReview';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
 
@@ -67,6 +68,7 @@ const Pages = () =>
       <Route path={`${ITEM_PATH}/:productId`} component={Product} />
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
+      <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
       <Route path={`${CART_PATH}`} component={Cart} />
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />

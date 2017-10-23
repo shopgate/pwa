@@ -1,7 +1,9 @@
 {
   "common": {
     "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
-    "load_more": "Mehr laden"
+    "load_more": "Mehr laden",
+    "cancel": "Abbrechen",
+    "submit": "Abschicken"
   },
   "titles": {
     "categories": "Kategorien",
@@ -105,6 +107,10 @@
     "button_add": "Bewertung schreiben",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}"
+    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}",
+    "rate_product": "Bewerten Sie dieses Produkt:",
+    "review_form_name": "Name",
+    "review_form_title": "Titel (optional)",
+    "review_form_text": "Bewertung (optional)"
   }
 }

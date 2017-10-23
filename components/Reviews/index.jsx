@@ -20,7 +20,7 @@ import AllReviewsLink from './components/AllReviewsLink';
  * @returns {JSX|null}
  */
 const Reviews = ({ rating, reviews }) => {
-  if (!features.showReviews || !rating || !rating.count) {
+  if (!features.showReviews) {
     return null;
   }
 

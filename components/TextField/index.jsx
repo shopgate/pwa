@@ -12,53 +12,12 @@ import classNames from 'classnames';
 import Input from '@shopgate/pwa-common/components/Input';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import colors from 'Styles/colors';
+import Label from './components/Label';
+import Underline from './components/Underline';
+import ErrorText from './components/ErrorText';
+import Hint from './components/Hint';
 import styles from './style';
-
-/**
- * Gets the style classes for the label.
- * @param {boolean} focused Whether the input field is focused.
- * @param {boolean} floating Whether the label is floating.
- * @param {boolean} error Whether the input field shows an error message.
- * @return {string} The style classes.
- */
-const getLabelStyles = (focused = false, floating = false, error = false) => (
-  classNames(
-    styles.label,
-    {
-      [styles.labelFloating]: floating,
-      [styles.labelRegular]: !focused,
-      [styles.labelFocus]: !error && focused,
-      [styles.labelError]: error && focused,
-    }
-  )
-);
-
-/**
- * Gets the style classes for the underline element.
- * @param {boolean} visible Whether the hint is visible.
- * @return {string} The style classes.
- */
-const getHintStyles = (visible = false) => (
-  classNames(
-    styles.hint,
-    {
-      [styles.hintInactive]: !visible,
-    }
-  )
-);
-
-/**
- * Gets the default focus color. This usually is the themes primary color.
- * However, if this color is too bright, the result of ths method
- * will fall back to the accent color.
- * @return {string} The color.
- */
-const getDefaultFocusColor = () => {
-  if (Color(colors.primary).luminosity() >= 0.8) {
-    return colors.accent;
-  }
-  return colors.primary;
-};
+import FormElement from './components/FormElement/index';
 
 /**
  * A component that provides a styled text field for user input in material design.
@@ -67,8 +26,6 @@ class TextField extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
-    colorError: PropTypes.string,
-    colorFocus: PropTypes.string,
     errorText: PropTypes.node,
     hintText: PropTypes.node,
     label: PropTypes.node,
@@ -83,8 +40,6 @@ class TextField extends Component {
 
   static defaultProps = {
     className: '',
-    colorFocus: getDefaultFocusColor(),
-    colorError: colors.error,
     errorText: '',
     setRef: () => {},
     hintText: '',
@@ -177,7 +132,7 @@ class TextField extends Component {
    * @returns {boolean} Whether the label is currently floating.
    */
   get isLabelFloating() {
-    return this.isFocused || this.value;
+    return this.isFocused || !!this.value;
   }
 
   /**
@@ -195,111 +150,34 @@ class TextField extends Component {
   }
 
   /**
-   * Returns the label inline style.
-   * @return {Object|null}
-   */
-  get labelStyle() {
-    if (this.isFocused || this.isLabelFloating) {
-      return {
-        color: this.props.colorFocus,
-      };
-    }
-
-    return null;
-  }
-
-  /**
-   * Returns the underline style.
-   * @return {Object}
-   */
-  get underlineStyle() {
-    return {
-      borderBottomColor: this.hasErrorMessage ? this.props.colorError : this.props.colorFocus,
-      ...(!this.isFocused && !this.hasErrorMessage) && { transform: 'scale3d(0,1,1)' },
-    };
-  }
-
-  /**
-   * Renders the hint element.
-   * @param {boolean} isVisible Whether to show the hint element.
-   * @return {JSX}
-   */
-  renderHintElement = isVisible => (
-    <div className={getHintStyles(isVisible)}>
-      <I18n.Text string={this.props.hintText} />
-    </div>
-  );
-
-  /**
-   * Renders the label element.
-   * @param {boolean} isFocused Whether the input component is focused.
-   * @param {boolean} isFloating Whether the label is floating.
-   * @param {boolean} hasErrorMessage Whether the input field has an active error message.
-   * @return {JSX}
-   */
-  renderLabelElement = (isFocused, isFloating, hasErrorMessage) => (
-    <label
-      htmlFor={this.props.name}
-      className={getLabelStyles(isFocused, isFloating, hasErrorMessage)}
-      style={this.labelStyle}
-    >
-      <I18n.Text string={this.props.label} />
-    </label>
-  );
-
-  /**
-   * Renders the error element.
-   * @return {JSX}
-   */
-  renderErrorElement = () => (
-    <div className={styles.error}>
-      <I18n.Text string={this.state.validationError || this.props.errorText} />
-    </div>
-  );
-
-  /**
-   * Renders the input field.
-   * @return {JSX}
-   */
-  renderInputField = () => (
-    <Input
-      id={this.props.name}
-      name={this.props.name}
-      className={styles.input}
-      setRef={this.props.setRef}
-      onFocusChange={this.handleFocusChange}
-      onChange={this.handleChange}
-      onSanitize={this.props.onSanitize}
-      onValidate={this.handleValidate}
-      password={this.props.password}
-      type={this.props.type}
-      value={this.props.value}
-      validateOnBlur
-    />
-  );
-
-  /**
-   * Renders the underline element.
-   * @return {JSX}
-   */
-  renderUnderline = () => (
-    <div className={styles.underlineWrapper}>
-      <div className={styles.underline} style={this.underlineStyle} />
-    </div>
-  );
-
-  /**
    * Renders the text field.
    * @return {JSX}
    */
   render() {
     return (
       <div className={`${styles.container} ${this.props.className}`}>
-        {this.renderHintElement(this.isHintVisible)}
-        {this.renderLabelElement(this.isFocused, this.isLabelFloating, this.hasErrorMessage)}
-        {this.renderInputField()}
-        {this.renderUnderline(this.isFocused, this.hasErrorMessage)}
-        {this.renderErrorElement()}
+        <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
+        <Label
+          name={this.props.name}
+          label={this.props.label}
+          isFocused={this.isFocused}
+          isFloating={this.isLabelFloating}
+          hasErrorMessage={this.hasErrorMessage}
+        />
+        <FormElement
+          id={this.props.name}
+          name={this.props.name}
+          setRef={this.props.setRef}
+          onFocusChange={this.handleFocusChange}
+          onChange={this.handleChange}
+          onSanitize={this.props.onSanitize}
+          onValidate={this.handleValidate}
+          password={this.props.password}
+          type={this.props.type}
+          value={this.props.value}
+        />
+        <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
+        <ErrorText validationError={this.state.validationError} errorText={this.props.errorText} />
       </div>
     );
   }

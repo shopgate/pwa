@@ -1,7 +1,9 @@
 {
   "common": {
     "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}",
-    "load_more": "Load more"
+    "load_more": "Load more",
+    "cancel": "Cancel",
+    "submit": "Submit"
   },
   "titles": {
     "categories": "Categories",
@@ -105,6 +107,10 @@
     "button_add": "Write a Review",
     "button_all": "All {count} Reviews",
     "author": "by {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}"
+    "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
+    "rate_product": "Rate this product:",
+    "review_form_name": "Username",
+    "review_form_title": "Review title (optional)",
+    "review_form_text": "Product review (optional)"
   }
 }
