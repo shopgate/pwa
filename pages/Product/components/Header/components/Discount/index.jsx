@@ -24,7 +24,7 @@ const Discount = ({ price }) => {
 
   return (
     <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
-      {(price && price.discount) && (
+      {!!(price && price.discount) && (
         <div className={styles.discount}>
           <DiscountBadge text={`-${price.discount}%`} />
         </div>

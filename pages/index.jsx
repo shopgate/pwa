@@ -6,14 +6,11 @@
  */
 
 import React from 'react';
-import Helmet from 'react-helmet';
 import '@shopgate/pwa-common/styles/reset';
 import 'Styles/fonts';
-import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
-// @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
@@ -28,6 +25,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
+import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
@@ -48,8 +46,7 @@ import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
 import More from './More';
-
-const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
+import Browse from './Browse';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -74,17 +71,12 @@ const Pages = () =>
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} component={Register} />
       <Route path={`${MORE_PATH}`} component={More} />
+      <Route path={`${BROWSE_PATH}`} component={Browse} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
         <Route path={`${ORDERS_PATH}`} component={Orders} />
       </AuthRoutes>
-
-      {isDev && (
-        <Helmet>
-          <link href={devFontsUrl} rel="stylesheet" />
-        </Helmet>
-      )}
     </Viewport>
   </App>
 ;
