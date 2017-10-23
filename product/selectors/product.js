@@ -230,13 +230,13 @@ export const getProductImages = createSelector(
 /**
  * Retrieves the current product rating.
  * @param {Object} state The current application state.
- * @return {Object|null}
+ * @return {Object}
  */
 export const getProductRating = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product) {
-      return null;
+    if (!product || product.rating) {
+      return {};
     }
 
     return product.rating;

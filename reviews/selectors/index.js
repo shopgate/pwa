@@ -145,3 +145,17 @@ export const getReviewsFetchingState = createSelector(
   getCollectionForCurrentProductId,
   collection => collection && collection.isFetching
 );
+
+const userReviewsById = state => state.reviews.userReviewsById;
+
+export const getUserReviewsById = createSelector(
+  getCurrentProductId,
+  userReviewsById,
+  (collection) => {
+    if (!collection || !collection.review) {
+      return {};
+    }
+
+    return collection;
+  }
+);
