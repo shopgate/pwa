@@ -6,25 +6,26 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
-const headline = {
-  fontWeight: 700,
-};
-
-const large = css({
-  ...headline,
-  fontSize: 34,
-  margin: `${variables.gap.small / 2}px 20px 16px`,
+const grid = css({
+  padding: '0 15px',
+  marginBottom: 8,
 }).toString();
 
-const small = css({
-  ...headline,
-  fontSize: 22,
-  margin: '24px 20px 13px',
+const gridItem = css({
+  width: '50%',
+  padding: '0 5px',
+}).toString();
+
+const button = css({
+  width: '100%',
+  ' *': {
+    textAlign: 'center',
+  },
 }).toString();
 
 export default {
-  large,
-  small,
+  grid,
+  gridItem,
+  button,
 };

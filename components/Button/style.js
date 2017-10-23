@@ -21,13 +21,14 @@ const button = (text, background) => ({
   position: 'relative',
   display: 'inline-block',
   outline: 0,
-  padding: 0,
-  textTransform: 'uppercase',
+  padding: '0 0 3px',
+  textAlign: 'center',
   color: text,
   backgroundColor: background,
-  fontWeight: 500,
+  fontSize: 16,
+  fontWeight: 700,
   minWidth: 64,
-  borderRadius: 2,
+  borderRadius: 5,
 });
 
 /**

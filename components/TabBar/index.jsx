@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import getTabActionComponentForType from './helpers/getTabActionComponentForType';
 import connect from './connector';
-import style from './style';
+import styles from './style';
 
 /**
  * Renders the action for a given tab configuration.
@@ -40,7 +40,7 @@ const createTabAction = (tab, isHighlighted) => {
  */
 const TabBar = ({ isVisible, visibleTabs, activeTab }) => (
   isVisible ?
-    <Grid className={style.container}>
+    <Grid className={styles}>
       {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type))}
     </Grid>
     : null
