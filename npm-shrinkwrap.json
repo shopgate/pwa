@@ -21,9 +21,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "0.1.5",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.5.tgz",
-      "integrity": "sha512-uEjrxYiISQ6FHDpTsiDsImqWZREdAcufOuPPAZPIfcPoVotJaFG5lEDDG242fURAHISuT/dSTIi8O0t8d+9jLA==",
+      "version": "0.1.6",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.6.tgz",
+      "integrity": "sha512-uu8bE7d5AVSQLkaA+NfxVgbE8SgUg4xLiZ/c87lHXw660UBb/YvfQ4RkIuPpdqwjzt72lohDzuPMMdQj48fcPQ==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -34,7 +34,7 @@
         "jsdom": "11.3.0",
         "path-match": "1.2.4",
         "react-dotdotdot": "1.1.0",
-        "react-hammerjs": "git+https://github.com/JedWatson/react-hammerjs.git#2c51dfdaa63451f9ad95b56e206d24fe84337df9",
+        "react-hammerjs": "git+https://github.com/JedWatson/react-hammerjs.git#45d31c430a8323bcbbda67b9902809f3f1d88fb5",
         "react-hot-loader": "3.0.0-beta.6",
         "react-id-swiper": "1.4.0",
         "react-inline-transition-group": "2.1.7",
@@ -49,12 +49,20 @@
         "reselect": "3.0.1",
         "rxjs": "5.4.3",
         "url-search-params": "0.10.0"
+      },
+      "dependencies": {
+        "react-hammerjs": {
+          "version": "git+https://github.com/JedWatson/react-hammerjs.git#45d31c430a8323bcbbda67b9902809f3f1d88fb5",
+          "requires": {
+            "hammerjs": "2.0.8"
+          }
+        }
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "0.1.5",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.5.tgz",
-      "integrity": "sha512-KTfzKk6hurwLu1Ssqm90Bt0erfmVCHYjGSSakJ8VL/sEfTUsjAoKeuOEkGf90DmxM/YnRXvuRRAEnqg2mC7B9g==",
+      "version": "0.1.6",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.6.tgz",
+      "integrity": "sha512-i3yBChTfJEZh/qIYpXa46QEhxRizBK0a7LFSHGp960Tn9/to/L4yrwne2XUaahRz5NkLFlmPkoWnmfR3iW+tKA==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
@@ -70,9 +78,9 @@
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "0.1.1",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.1.tgz",
-      "integrity": "sha512-2Dp3C2/XJJ6e0ug6iUUDN3lRsZFID+w2cgG2wQADSNj8CVLMrWL4nlAQi4NpTYHNiozNdNJjf8IMhGZQ1oBlIw=="
+      "version": "0.1.2",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.2.tgz",
+      "integrity": "sha512-RBE7l53/HkM5BF+N5Ze/6zRmmARzVRTwGrTz5GNz2Reia+DyXIV0rRRRnm6OfIUNItS/yqtR4yJgHLnHJe3wBg=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
@@ -112,9 +120,9 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "0.1.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.3.tgz",
-      "integrity": "sha512-x/BCa/YyQAeDnIQ9W20Bwr1gbLOfj5UDOA4Ao+2zzl8r+7XFnGHh8qCR5m/IYdJXxf/eCKyu6RcdvZCQdCS1GQ=="
+      "version": "0.1.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.4.tgz",
+      "integrity": "sha512-G8UV/9PCIpREMZNQIPYgiGp3NOab4RFK4ll2UQclhcPmpEgsTf8LIQA8slgRuFotYhzkHKIK78NZqmvyrkTDaA=="
     },
     "@shopgate/tracking-core": {
       "version": "0.1.1",
@@ -4203,7 +4211,7 @@
       "integrity": "sha1-bAJC3qaz33r9oVPHEImzHG6Cqr8=",
       "requires": {
         "inherits": "2.0.1",
-        "statuses": "1.3.1"
+        "statuses": "1.4.0"
       }
     },
     "http-signature": {
@@ -6823,12 +6831,6 @@
         "prop-types": "15.6.0"
       }
     },
-    "react-hammerjs": {
-      "version": "git+https://github.com/JedWatson/react-hammerjs.git#2c51dfdaa63451f9ad95b56e206d24fe84337df9",
-      "requires": {
-        "hammerjs": "2.0.8"
-      }
-    },
     "react-helmet": {
       "version": "5.2.0",
       "resolved": "https://registry.npmjs.org/react-helmet/-/react-helmet-5.2.0.tgz",
@@ -7744,9 +7746,9 @@
       "dev": true
     },
     "statuses": {
-      "version": "1.3.1",
-      "resolved": "https://registry.npmjs.org/statuses/-/statuses-1.3.1.tgz",
-      "integrity": "sha1-+vUbnrdKrvOzrPStX2Gr8ky3uT4="
+      "version": "1.4.0",
+      "resolved": "https://registry.npmjs.org/statuses/-/statuses-1.4.0.tgz",
+      "integrity": "sha512-zhSCtt8v2NDrRlPQpCNtw/heZLtfUDqxBM1udqikb/Hbk52LK4nQSwr10u77iopCW5LsyHpuXS0GnEc48mLeew=="
     },
     "stealthy-require": {
       "version": "1.1.1",
