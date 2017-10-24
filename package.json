@@ -20,7 +20,7 @@
     }
   },
   "pre-commit": [
-     "precommit"
+    "precommit"
   ],
   "dependencies": {
     "@shopgate/pwa-common": "^0.1.6",
