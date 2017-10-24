@@ -20,7 +20,6 @@ jest.mock('./connector', () => (obj) => {
     historyLength: 1,
     action: 'POP',
     title: 'My Title',
-    submitSearch: () => {},
     getQueryParam: () => null,
   };
 
