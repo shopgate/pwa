@@ -49,6 +49,16 @@ class QuantityPicker extends Component {
     if (this.props.editMode) {
       this.input.focus();
     }
+
+    /**
+     * Prevent the opening of the context menu when this
+     * input is focused and the value is selected.
+     */
+    this.input.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    });
   }
 
   /**
@@ -76,6 +86,14 @@ class QuantityPicker extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.quantity !== nextState.quality;
   }
+
+  /**
+   * Sets the comoponent ref.
+   * @param {HTMLElement} input The input field ref.
+   */
+  setRef = (input) => {
+    this.input = input;
+  };
 
   /**
    * The default quantity.
@@ -183,7 +201,7 @@ class QuantityPicker extends Component {
   render() {
     return (
       <input
-        ref={(input) => { this.input = input; }}
+        ref={this.setRef}
         type="number"
         className={style}
         value={this.state.quantity}
