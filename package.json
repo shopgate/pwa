@@ -51,7 +51,6 @@
     "@shopgate/eslint-config": "^1.0.2",
     "@shopgate/pwa-core": "^0.1.3",
     "@shopgate/pwa-unit-test": "^1.2.5",
-    "@shopgate/tracking-core": "^0.1.1",
     "babel-core": "^6.26.0",
     "babel-plugin-react-transform": "^3.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -78,7 +77,6 @@
     "prop-types": "15.x",
     "lodash": "4.x",
     "@shopgate/react-hammerjs": "0.5.x",
-    "@shopgate/pwa-core": "0.1.x",
-    "@shopgate/tracking-core": "0.1.x"
+    "@shopgate/pwa-core": "0.1.x"
   }
 }
