@@ -11,38 +11,10 @@ to switch between different view modes (grid, list), to sort and filter products
 ```
 import { FilterBar } from 'Templates/components';
 
-<FilterBar handleToggleViewMode={() => {}}/>
+<FilterBar />
 ```
 
 ## Props
-
-### handleToggleViewMode (required)
-
-_Type_: `function`
-
-This callback is executed when the user decided to toggle the view mode. (list, grid)
-
-###### Usage:
-
-```
-<FilterBar handleToggleViewMode={() => console.log('toggle view')}/>
-```
-
-### viewMode
-
-_Default_: `GRID_VIEW`
-
-_Type_: `oneOf[GRID_VIEW, LIST_VIEW]`
-
-The view mode that decides how the product list is being rendered.
-
-###### Usage:
-
-```
-import { FilterBar } from 'Templates/components';
-import { LIST_VIEW } from 'Library/constants/ViewModes';
-
-<FilterBar handleToggleViewMode={() => {}} viewMode={LIST_VIEW}/>
 ```
 
 ### getFilters (required)
