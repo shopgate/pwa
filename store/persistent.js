@@ -113,7 +113,7 @@ export const initPersistentStorage = () => {
 };
 
 /**
- * Saves the state to the localStorage. (Debounced!)
+ * Saves the state to the localStorage.
  */
 const saveState = debounce(() => {
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(latestState));
@@ -124,19 +124,32 @@ const saveState = debounce(() => {
  * @param {string} reducerName The name of the reducer.
  * @param {Function} reducer The reducer.
  * @param {string} version The current version.
+ * @param {Array} blacklist Entries in the state to ignore and not cache.
  * @returns {Object}
  */
-export const persist = (reducerName, reducer, version) => {
+export const persist = (reducerName, reducer, version, blacklist = []) => {
   registerVersion(reducerName, version);
 
   return (state, action) => {
     const updatedState = reducer(state, action);
 
+    // We need a copy of the updated state in order to modify it.
+    const persistentState = Object.assign({}, updatedState);
+
+    /**
+     * If a blacklist is present then remove each item in the blacklist
+     * from the state that will be stored in the localstorage.
+     * Note: This only works for the top level keys in the state.
+     */
+    for (let i = 0, j = blacklist.length; i < j; i += 1) {
+      delete persistentState[blacklist[i]];
+    }
+
     latestState = {
       ...latestState,
       [reducerName]: {
         version,
-        state: updatedState,
+        state: persistentState,
       },
     };
     saveState();

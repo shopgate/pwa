@@ -21,6 +21,12 @@ const URL_LIFETIME = 31536000000; // 1 year in milliseconds
 const STATE_VERSION = 'v1';
 
 /**
+ * A blacklist of keys to not include in the localstorage.
+ * @type {string}
+ */
+const blacklist = ['checkout'];
+
+/**
  * Stores the requested urls
  * This part of the store is stored in the localStorage!
  * @param {Object} [state] The current state.
@@ -64,4 +70,4 @@ const reducer = (state = {}, action) => {
   }
 };
 
-export default persist('url', reducer, STATE_VERSION);
+export default persist('url', reducer, STATE_VERSION, blacklist);
