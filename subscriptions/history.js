@@ -22,8 +22,8 @@ export default function history(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ dispatch }) => {
-    registerEvents(['backToHomepage']);
-    event.addCallback('backToHomepage', () => dispatch(resetHistory()));
+    registerEvents(['checkoutSuccess']);
+    event.addCallback('checkoutSuccess', () => dispatch(resetHistory()));
   });
 
   /**
