@@ -8,16 +8,6 @@
 import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import fetchCheckoutUrl from '@shopgate/pwa-common-commerce/checkout/actions/fetchCheckoutUrl';
-import { getCheckoutUrl } from '@shopgate/pwa-common-commerce/checkout/selectors';
-
-/**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @return {Object} The extended component props.
- */
-const mapStateToProps = state => ({
-  hasCheckoutUrl: !!getCheckoutUrl(state),
-});
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -29,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
   goBackHistory: number => dispatch(goBackHistory(number)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(null, mapDispatchToProps, null, { withRef: true });

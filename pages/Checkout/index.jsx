@@ -8,6 +8,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import trackingCore from '@shopgate/tracking-core/core/Core';
 import connect from './connector';
 
@@ -18,11 +19,6 @@ class Checkout extends Component {
   static propTypes = {
     fetchCheckoutUrl: PropTypes.func.isRequired,
     goBackHistory: PropTypes.func.isRequired,
-    hasCheckoutUrl: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    hasCheckoutUrl: false,
   };
 
   /**
@@ -32,7 +28,7 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
 
-    if (props.hasCheckoutUrl) {
+    if (appConfig.webCheckoutShopify !== null) {
       // If the shop has a checkout url, we have to check if it is still valid
       props.fetchCheckoutUrl()
         .then((url) => {
