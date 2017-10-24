@@ -15,13 +15,14 @@ import styles from './style';
  * @returns {JSX}
  */
 const Headline = (props) => {
-  const className = (props.small) ? styles.small : styles.large;
+  const className = props.small ? styles.small : styles.large;
+  const Component = props.small ? 'h2' : 'h1';
 
   const hasContent = props.children || (props.text && props.text.length);
 
   const content = props.children || <I18n.Text string={props.text} />;
 
-  return hasContent ? <h3 className={className}>{content}</h3> : null;
+  return hasContent ? <Component className={className}>{content}</Component> : null;
 };
 
 Headline.propTypes = {
