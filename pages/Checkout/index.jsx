@@ -8,6 +8,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import trackingCore from '@shopgate/tracking-core/core/Core';
 import connect from './connector';
 
 /**
@@ -51,8 +52,11 @@ class Checkout extends Component {
    * @param {string} url The url where the user should be redirected to.
    */
   redirect(url) {
+    // Add some tracking params for cross domain tracking.
+    const newUrl = trackingCore.crossDomainTracking(url);
+
     // Redirect to the checkout
-    const link = new ParsedLink(url);
+    const link = new ParsedLink(newUrl || url);
     link.open();
 
     // Go back to hide the dummy page
