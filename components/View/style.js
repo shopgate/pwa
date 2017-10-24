@@ -33,7 +33,7 @@ const content = (hasNavigator = true, hasTabBar = true) => css({
   width: '100%',
   position: 'absolute',
   top: hasNavigator ? variables.navigator.height : 0,
-  paddingBottom: hasTabBar ? variables.tabBar.height : 0,
+  marginBottom: hasTabBar ? variables.tabBar.height : 0,
   bottom: 0,
   display: 'flex',
   flexDirection: 'column',

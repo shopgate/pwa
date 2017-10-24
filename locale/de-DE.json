@@ -4,11 +4,12 @@
     "load_more": "Mehr laden"
   },
   "titles": {
-    "categories": "Kategorien",
+    "categories": "Alle Kategorien",
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
-    "reviews": "Bewertungen"
+    "reviews": "Bewertungen",
+    "browse": "Durchsuchen"
   },
   "filter": {
     "sort": {
@@ -39,6 +40,8 @@
     }
   },
   "search": {
+    "label": "Suche",
+    "cancel": "Abbrechen",
     "no_result": {
       "heading": "Uups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" hat 0 Ergebnisse."
@@ -80,10 +83,11 @@
     "forgot_password_popup": "Bitte benutzen Sie die Desktop Webseite um Ihr Passwort zurückzusetzen.",
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
-    "register": "Registrieren",
+    "signup": "Registrieren",
     "logout_message": "Sie wurden ausgeloggt."
   },
   "navigation": {
+    "your_account": "Ihr Account",
     "login_register": "Anmelden",
     "home": "Startseite",
     "categories": "Kategorien",
@@ -92,10 +96,13 @@
     "cart": "Warenkorb",
     "shipping": "Versandmethoden",
     "about": "Impressum",
+    "contact": "Kontakt",
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
+    "store_information": "Shop Info",
+    "more_menu": "Mehr",
     "logout": "Abmelden"
   },
   "reviews": {

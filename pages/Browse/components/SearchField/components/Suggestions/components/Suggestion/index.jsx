@@ -7,8 +7,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from 'Components/List';
-import styles from '../../style';
+import List from '@shopgate/pwa-common/components/List';
+import styles from './style';
 
 /**
  * Search suggestion list entry component.
@@ -17,13 +17,15 @@ import styles from '../../style';
  * @param {function} props.onClick The action that is triggered on click.
  * @returns {JSX}
  */
-const SearchSuggestion = ({ suggestion, onClick }) => (
-  <List.Item
-    className={styles.listItem}
-    title={suggestion}
-    onClick={onClick}
-  />
-);
+const SearchSuggestion = ({ suggestion, onClick }) =>
+  <List.Item>
+    <button
+      className={styles}
+      onClick={onClick}
+    >
+      {suggestion}
+    </button>
+  </List.Item>;
 
 SearchSuggestion.propTypes = {
   onClick: PropTypes.func.isRequired,

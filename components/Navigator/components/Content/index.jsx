@@ -11,7 +11,6 @@ import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
 import Logo from './components/Logo';
 import Title from './components/Title';
-import Search from './components/Search';
 
 /**
  * The navigator content component.
@@ -19,35 +18,15 @@ import Search from './components/Search';
  * @returns {JSX}
  */
 const Content = (props) => {
-  let currentTitle = null;
-
-  if (!props.searchActive) {
-    if (props.path === INDEX_PATH) {
-      currentTitle = <Logo />;
-    } else {
-      const isSearching = props.getQueryParam('s') !== undefined;
-
-      currentTitle = <Title onClick={isSearching ? props.submitSearch : null} />;
-    }
+  if (props.path === INDEX_PATH) {
+    return <Logo />;
   }
 
-  return (
-    <div>
-      {currentTitle}
-      <Search active={props.searchActive} />
-    </div>
-  );
+  return <Title />;
 };
 
 Content.propTypes = {
-  getQueryParam: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
-  submitSearch: PropTypes.func.isRequired,
-  searchActive: PropTypes.bool,
-};
-
-Content.defaultProps = {
-  searchActive: false,
 };
 
 export default connect(Content);

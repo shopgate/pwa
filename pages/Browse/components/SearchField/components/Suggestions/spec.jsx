@@ -16,15 +16,11 @@ describe('<SearchSuggestions />', () => {
   const defaultProps = {
     getSearchSuggestions: () => {},
     fetchSearchSuggestions: () => {},
-    resetActiveSearchSuggestions: () => {},
     setSearchPhrase: () => {},
     submitSearch: () => {},
     suggestions: [],
     isFetching: false,
   };
-
-  beforeEach(() => {
-  });
 
   it('should render without props', () => {
     const wrapper = shallow(

@@ -7,11 +7,11 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import List from 'Components/List';
-import SearchSuggestion from './components/SearchSuggestion';
+import { SEARCH_SUGGESTIONS_MIN_CHARACTERS } from '@shopgate/pwa-common/constants/DisplayOptions';
+import List from '@shopgate/pwa-common/components/List';
+import SearchSuggestion from './components/Suggestion';
 import connect from './connector';
 import styles from './style';
-import { SEARCH_SUGGESTIONS_MIN_CHARACTERS } from './constants';
 
 /**
  * The search suggestions component.
@@ -41,6 +41,13 @@ class SearchSuggestions extends Component {
     this.state = {
       suggestions: props.suggestions,
     };
+  }
+
+  /**
+   * Component did mount.
+   */
+  componentDidMount() {
+    this.props.fetchSearchSuggestions();
   }
 
   /**
@@ -79,15 +86,12 @@ class SearchSuggestions extends Component {
   render() {
     const { suggestions } = this.state;
 
-    if (
-      suggestions.length === 0 ||
-      this.props.searchPhrase.length < this.props.minCharacters
-    ) {
+    if (suggestions.length === 0 || this.props.searchPhrase.length < this.props.minCharacters) {
       return null;
     }
 
     return (
-      <div className={styles.container}>
+      <div className={styles}>
         <List>
           {suggestions.map(suggestion =>
             <SearchSuggestion

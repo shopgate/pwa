@@ -4,11 +4,12 @@
     "load_more": "Load more"
   },
   "titles": {
-    "categories": "Categories",
+    "categories": "All Categories",
     "filter": "Filter",
     "cart": "Cart",
     "shipping": "Shipping",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "browse": "Browse"
   },
   "filter": {
     "sort": {
@@ -39,6 +40,8 @@
     }
   },
   "search": {
+    "label": "Search",
+    "cancel": "Cancel",
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."

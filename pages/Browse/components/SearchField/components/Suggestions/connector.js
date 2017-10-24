@@ -7,13 +7,13 @@
 
 import { connect } from 'react-redux';
 import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
+import { setSearchPhrase } from 'Components/Navigator/action-creators';
 import {
   getCurrentSearchSuggestions,
   getSearchPhrase,
   isFetchingCurrentSearchSuggestions,
-} from '@shopgate/pwa-common-commerce/search/selectors';
-import submitSearch from 'Components/Navigator/actions/submitSearch';
-import { setSearchPhrase } from 'Components/Navigator/action-creators';
+ } from '@shopgate/pwa-common-commerce/search/selectors';
+import submitSearch from '../../actions/submitSearch';
 
 /**
  * Map state to props.
@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 
 /**
  * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
+ * @param  {Function} dispatch The redux dispatch function.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({

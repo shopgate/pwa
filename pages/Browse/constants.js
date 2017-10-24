@@ -5,4 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const MORE_PATH = '/browse';
+export const BROWSE_PATH = '/browse';

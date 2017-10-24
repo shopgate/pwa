@@ -7,25 +7,16 @@
 
 import { css } from 'glamor';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
-const container = css({
-  position: 'fixed',
-  top: variables.navigator.height,
-  borderTop: `${variables.gap.small / 2}px solid ${colors.shade8}`,
+export default css({
+  position: 'absolute',
   left: 0,
   right: 0,
+  top: 124,
   bottom: 0,
   backgroundColor: colors.light,
   overflowY: 'scroll',
+  zIndex: 3,
+  borderTop: `0.5px ${colors.dividers} solid`,
+  paddingTop: 5,
 }).toString();
-
-const listItem = css({
-  fontSize: '1rem',
-  fontWeight: 400,
-}).toString();
-
-export default {
-  container,
-  listItem,
-};

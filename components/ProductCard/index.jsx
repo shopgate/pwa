@@ -40,7 +40,7 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {(!hidePrice && product.price.discount) && (
+    {(!hidePrice && product.price && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
@@ -56,7 +56,7 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}
-        {!hidePrice && (
+        {(!hidePrice && product.price) && (
           <Grid className={styles.priceWrapper} wrap>
             <Grid.Item grow={1}>
               <Price
@@ -76,7 +76,7 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
             )}
           </Grid>
         )}
-        {(!hidePrice && product.price.info) && (
+        {(!hidePrice && product.price && product.price.info) && (
           <Grid>
             <Grid.Item>
               <PriceInfo className={styles.basicPrice} text={product.price.info} />
