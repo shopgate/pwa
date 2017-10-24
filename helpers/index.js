@@ -7,6 +7,7 @@
 
 import core from '@shopgate/tracking-core/core/Core';
 import { logger } from '@shopgate/pwa-core/helpers';
+import event from '@shopgate/pwa-core/classes/Event';
 
 /**
  * Converts a price to a formatted string.
@@ -74,17 +75,37 @@ export const formatCartProductData = ({ product, quantity }) => ({
 });
 
 /**
+ * Flag to enable/disable the tracking.
+ * @type {boolean}
+ */
+let trackingDisabled = false;
+
+// Disable the tracking if the webview is not in the foreground anymore
+event.addCallback('viewWillDisappear', () => {
+  trackingDisabled = true;
+});
+// Enable the tracking if the webview enters the foreground
+event.addCallback('viewWillAppear', () => {
+  trackingDisabled = false;
+});
+
+/**
  * Helper to pass the redux state to the tracking core
- * @param {string} event The name of the event.
+ * @param {string} eventName The name of the event.
  * @param {Object} data The tracking data of the event.
  * @param {Object} state The current redux state.
  * @return {Core|boolean}
  */
-export const track = (event, data, state) => {
-  if (typeof core.track[event] !== 'function') {
-    logger.warn('Unknown tracking event:', event);
+export const track = (eventName, data, state) => {
+  if (typeof core.track[eventName] !== 'function') {
+    logger.warn('Unknown tracking event:', eventName);
     return false;
   }
 
-  return core.track[event](data, undefined, undefined, state);
+  if (trackingDisabled) {
+    logger.warn('Tracking disabled');
+    return false;
+  }
+
+  return core.track[eventName](data, undefined, undefined, state);
 };
