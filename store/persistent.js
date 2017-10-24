@@ -6,6 +6,7 @@
  */
 
 import debounce from 'lodash/debounce';
+import omit from 'lodash/omit';
 
 /**
  * The key name for the state in the localStorage.
@@ -133,23 +134,11 @@ export const persist = (reducerName, reducer, version, blacklist = []) => {
   return (state, action) => {
     const updatedState = reducer(state, action);
 
-    // We need a copy of the updated state in order to modify it.
-    const persistentState = Object.assign({}, updatedState);
-
-    /**
-     * If a blacklist is present then remove each item in the blacklist
-     * from the state that will be stored in the localstorage.
-     * Note: This only works for the top level keys in the state.
-     */
-    for (let i = 0, j = blacklist.length; i < j; i += 1) {
-      delete persistentState[blacklist[i]];
-    }
-
     latestState = {
       ...latestState,
       [reducerName]: {
         version,
-        state: persistentState,
+        state: omit(updatedState, blacklist),
       },
     };
     saveState();
