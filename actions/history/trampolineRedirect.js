@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import trackingCore from '@shopgate/tracking-core/core/Core';
 import setRedirectLocation from '../../action-creators/history/setRedirectLocation';
 import replaceHistory from './replaceHistory';
 import { parseQueryStringToObject } from '../../helpers/router';
@@ -19,11 +18,9 @@ import { parseQueryStringToObject } from '../../helpers/router';
  */
 const trampolineRedirect = (trampolineLocation, redirectUrlLocation) => (dispatch) => {
   const { pathname, search } = redirectUrlLocation;
-  // Add some params for cross domain tracking to the url
-  const newPathname = trackingCore.crossDomainTracking(pathname);
 
   // Save the the redirect url for later
-  dispatch(setRedirectLocation(newPathname, parseQueryStringToObject(search)));
+  dispatch(setRedirectLocation(pathname, parseQueryStringToObject(search)));
   // Go to the trampoline page
   dispatch(replaceHistory(trampolineLocation));
 };
