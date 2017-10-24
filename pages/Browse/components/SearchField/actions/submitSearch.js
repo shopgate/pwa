@@ -7,7 +7,6 @@
 
 import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { setSearchPhrase } from 'Components/Navigator/action-creators';
 
 /**
  * Performs appropriate action(s) when UI search gets triggered.
@@ -29,9 +28,6 @@ const submitSearch = () => (dispatch, getState) => {
       s: searchPhrase,
     },
   };
-
-  // Clear the search phrase.
-  dispatch(setSearchPhrase(''));
 
   // Move to the search location
   dispatch(pushHistory(historyLocation));

@@ -7,7 +7,6 @@
 
 import {
   routeDidEnter,
-  routeDidLeave,
 } from '@shopgate/pwa-common/streams/history';
 import { setSearchPhrase } from 'Components/Navigator/action-creators';
 import { BROWSE_PATH } from './constants';
@@ -18,11 +17,10 @@ import { BROWSE_PATH } from './constants';
  */
 export default function search(subscribe) {
   // Derived streams.
-  const browseRouteDidEnterOrLeave$ = routeDidEnter(BROWSE_PATH)
-    .merge(routeDidLeave(BROWSE_PATH));
+  const browseRouteDidEnter$ = routeDidEnter(BROWSE_PATH);
 
   /**
-   * Gets triggered on entering or leaving the browse route. Resets the search phrase.
+   * Gets triggered on entering the browse route. Resets the search phrase.
    */
-  subscribe(browseRouteDidEnterOrLeave$, ({ dispatch }) => dispatch(setSearchPhrase('')));
+  subscribe(browseRouteDidEnter$, ({ dispatch }) => dispatch(setSearchPhrase('')));
 }
