@@ -78,6 +78,6 @@
     "prop-types": "15.x",
     "lodash": "4.x",
     "@shopgate/pwa-core": "0.1.x",
-    "@shopgate/tracking-core": "0.1.x",
+    "@shopgate/tracking-core": "0.1.x"
   }
 }
