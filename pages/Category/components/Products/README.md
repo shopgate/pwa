@@ -7,7 +7,7 @@ Depending on the view mode the list or grid is hidden and not rendered.
 ## Getting Started
 
 ```
-import { Products } from 'Templates/components';
+import Products from 'Pages/Category/components/Products';
 
 <Products />
 ```
