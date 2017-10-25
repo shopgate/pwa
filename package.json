@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-tracking",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Shopgate's tracking library for PWAs",
   "repository": "shopgate/pwa-tracking",
   "bugs": "https://github.com/shopgate/pwa-tracking/issues",
