@@ -20,10 +20,12 @@ class List extends Component {
 
   static propTypes = {
     children: PropTypes.node,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
     children: null,
+    className: '',
   };
 
   /**
@@ -31,14 +33,14 @@ class List extends Component {
    * @returns {JSX}
    */
   render() {
-    const { children } = this.props;
+    const { className, children } = this.props;
 
     if (!React.Children.count(children)) {
       return null;
     }
 
     return (
-      <BaseList>
+      <BaseList className={className}>
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) {
             return null;

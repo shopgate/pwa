@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import List from 'Components/List';
 import connect from './connector';
+import styles from './style';
 
 /**
  * The category list component.
@@ -22,7 +23,7 @@ const CategoryList = ({ categories }) => {
   }
 
   return (
-    <List>
+    <List className={styles}>
       {categories.map(category =>
         <List.Item
           key={category.id}
