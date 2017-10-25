@@ -19,10 +19,10 @@ import styles from './style';
  * or the given source image cannot be loaded.
  */
 class ProductImage extends Component {
-
   /* eslint-disable react/no-unused-prop-types */
   /**
-   * See Image component manual for detailed description about the component property types.
+   * See Image component manual for detailed description
+   * about the component property types.
    */
   static propTypes = {
     alt: PropTypes.string,
@@ -39,7 +39,7 @@ class ProductImage extends Component {
     ),
     src: PropTypes.string,
   };
-  /* eslint-enable react/no-unused-prop-types */
+
 
   static defaultProps = {
     alt: null,
@@ -48,15 +48,8 @@ class ProductImage extends Component {
     highestResolutionLoaded: () => {},
     ratio: null,
     resolutions: [
-      {
-        width: 50,
-        height: 50,
-        blur: 2,
-      },
-      {
-        width: 440,
-        height: 440,
-      },
+      { width: 50, height: 50, blur: 2 },
+      { width: 440, height: 440 },
     ],
     src: null,
   };
@@ -91,7 +84,7 @@ class ProductImage extends Component {
 
   /**
    * Should component update given the new props?
-   * @param {Object} nextProps The next component props.
+   * @param  {Object} nextProps The next component props.
    * @return {boolean} Update or not.
    */
   shouldComponentUpdate(nextProps) {
@@ -108,10 +101,10 @@ class ProductImage extends Component {
   };
 
   /**
-   * Renders the component.
-   * @returns {JSX}
+   * Renders the actual content (image or placeholder).
+   * @return {JSX}
    */
-  render() {
+  get renderedContent() {
     if (this.state.showPlaceholder) {
       // Image is not present or could not be loaded, show a placeholder.
       return (
@@ -125,7 +118,20 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <Image {...this.props} onError={this.imageLoadingFailed} />
+      <Image {...this.props} className={styles.container} onError={this.imageLoadingFailed} />
+    );
+  }
+
+  /**
+   * Renders the component.
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <div className={styles.container}>
+        { this.renderedContent }
+        <div className={styles.glowContainer} />
+      </div>
     );
   }
 }

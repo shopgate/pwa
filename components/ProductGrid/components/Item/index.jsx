@@ -54,7 +54,7 @@ const Item = ({ product, display }) => (
         )}
         {(!display || display.price) && (
           <Grid className={styles.priceWrapper} wrap>
-            <Grid.Item grow={1}>
+            <Grid.Item grow={3}>
               <Price
                 unitPrice={product.price.unitPrice}
                 unitPriceMin={product.price.unitPriceMin}
@@ -63,7 +63,7 @@ const Item = ({ product, display }) => (
               />
             </Grid.Item>
             {product.price.unitPriceStriked > 0 && (
-              <Grid.Item>
+              <Grid.Item grow={2}>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
                   currency={product.price.currency}

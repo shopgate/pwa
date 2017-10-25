@@ -24,6 +24,8 @@ const container = css({
   '> svg': {
     flexGrow: 1,
     marginTop: 2,
+    marginRight: 'auto',
+    marginLeft: 'auto',
   },
 }).toString();
 
@@ -35,18 +37,12 @@ const highlighted = css({
   color: colors.accent,
 }).toString();
 
-const icon = css({
-  flexGrow: 1,
-  marginTop: 2,
-}).toString();
-
 const label = css({
   marginBottom: 2,
 }).toString();
 
 export default {
   container,
-  icon,
   regular,
   highlighted,
   label,

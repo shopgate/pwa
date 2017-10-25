@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from '@shopgate/pwa-common-commerce/cart/constants';
 import connect from './connector';
 import style from './style';

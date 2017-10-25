@@ -11,7 +11,8 @@ import variables from 'Styles/variables';
 
 const header = css({
   position: 'fixed',
-  height: variables.navigator.height,
+  height: variables.navigator.height + variables.statusBar.height,
+  paddingTop: variables.statusBar.height,
   left: 0,
   top: 0,
   width: '100%',

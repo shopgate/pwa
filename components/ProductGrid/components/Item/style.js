@@ -12,23 +12,25 @@ const container = css({
   position: 'relative',
   display: 'block',
   background: colors.light,
-  fontSize: 14,
+  fontSize: 15,
   height: '100%',
+  padding: '0 5px',
 }).toString();
 
 const details = css({
-  padding: '12px 16px',
-  lineHeight: 1.35,
+  padding: '12px 0 30px',
 }).toString();
 
 const title = css({
-  fontWeight: '500',
-  lineHeight: 1.15,
-  marginTop: 1,
+  fontSize: 'initial',
+  lineHeight: 1.2,
+  paddingRight: '1.5em',
 }).toString();
 
 const priceWrapper = css({
-  lineHeight: 1.75,
+  alignItems: 'center',
+  lineHeight: 1.8,
+  marginTop: 2,
 }).toString();
 
 const basicPrice = css({
@@ -39,7 +41,7 @@ const basicPrice = css({
 const badgeWrapper = css({
   lineHeight: 1,
   position: 'absolute',
-  left: 10,
+  left: 15,
   top: 10,
   width: 40,
 }).toString();
@@ -52,6 +54,11 @@ const wishlist = css({
   transform: 'translate3d(0, -50%, 0)',
 }).toString();
 
+const priceStriked = css({
+  fontSize: '0.75rem',
+  marginTop: 2,
+}).toString();
+
 export default {
   badgeWrapper,
   basicPrice,
@@ -60,4 +67,5 @@ export default {
   priceWrapper,
   title,
   wishlist,
+  priceStriked,
 };

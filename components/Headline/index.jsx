@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -28,7 +29,6 @@ const Headline = (props) => {
 Headline.propTypes = {
   children: PropTypes.node,
   small: PropTypes.bool,
-  // Enable Headline text via prop for backwards compatibility.
   text: PropTypes.string,
 };
 

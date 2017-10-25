@@ -10,10 +10,10 @@ import colors from 'Styles/colors';
 
 const badge = {
   background: colors.primary,
-  borderRadius: 2,
+  borderRadius: 3,
   color: colors.primaryContrast,
-  paddingTop: 5,
-  paddingBottom: 5,
+  paddingTop: 4,
+  paddingBottom: 4,
   width: '100%',
   fontWeight: 700,
   textAlign: 'center',
@@ -28,7 +28,7 @@ const badge = {
 export default {
   small: css({
     ...badge,
-    fontSize: '0.75rem',
+    fontSize: '0.7rem',
   }).toString(),
   big: css({
     ...badge,

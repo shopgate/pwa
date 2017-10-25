@@ -16,7 +16,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Layout = ({ children }) => (
-  <Grid wrap className={styles.container} itemScope itemType="http://schema.org/ItemList">
+  <Grid wrap className={styles} itemScope itemType="http://schema.org/ItemList">
     {children}
   </Grid>
 );

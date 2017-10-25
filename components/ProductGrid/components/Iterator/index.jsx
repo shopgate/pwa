@@ -22,7 +22,7 @@ const Iterator = props => (
     itemProp="itemListElement"
     itemScope
     itemType="http://schema.org/ListItem"
-    className={styles.item}
+    className={styles}
   >
     <Item product={props} display={props.display} />
   </Grid.Item>

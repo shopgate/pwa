@@ -14,6 +14,7 @@ import View from 'Components/View';
 import Products from './components/Products';
 import Empty from './components/Empty';
 import connect from './connector';
+import styles from './style';
 
 /**
  * The category view component.
@@ -22,14 +23,18 @@ import connect from './connector';
 class Category extends Component {
   static propTypes = {
     category: PropTypes.shape(),
+    hasHeadline: PropTypes.bool,
     hasProducts: PropTypes.bool,
+    isFilterBarActive: PropTypes.bool,
     isFilterBarShown: PropTypes.bool,
     isRoot: PropTypes.bool,
   };
 
   static defaultProps = {
     category: null,
+    hasHeadline: false,
     hasProducts: false,
+    isFilterBarActive: false,
     isFilterBarShown: true,
     isRoot: true,
   };
@@ -38,6 +43,18 @@ class Category extends Component {
     history: PropTypes.shape(),
     i18n: PropTypes.func,
   };
+
+  createHeadline = () => {
+    if (this.props.isFilterBarActive) {
+      return (
+        <div className={styles.headlineWrapper}>
+          <Headline text={this.title} />
+        </div>
+      );
+    }
+
+    return <Headline text={this.title} />;
+  }
 
   /**
    * Returns the current view title.
@@ -61,7 +78,7 @@ class Category extends Component {
     return (
       <View title={this.title}>
         {this.props.isFilterBarShown && <FilterBar />}
-        <Headline text={this.title} />
+        {this.props.hasHeadline && this.createHeadline()}
         <CategoryList />
         {this.props.hasProducts && <Products />}
         <Empty

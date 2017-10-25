@@ -69,7 +69,6 @@ class Title extends Component {
         active: '',
       };
     }
-
     const pop = this.props.action === HISTORY_POP_ACTION;
 
     return {

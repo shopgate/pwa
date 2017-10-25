@@ -11,14 +11,13 @@ const container = height => css({
   position: 'relative',
   maxHeight: height,
   overflow: 'hidden',
-  marginBottom: variables.gap.small,
 }).toString();
 
 const layout = css({
   display: 'flex',
   alignContent: 'flex-start',
   flexWrap: 'wrap',
-  padding: '7px 5px',
+  padding: '2px 5px 7px',
   overflow: 'hidden',
 }).toString();
 

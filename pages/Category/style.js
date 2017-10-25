@@ -7,6 +7,10 @@
 
 import { css } from 'glamor';
 
-export default css({
-  width: '50%',
+const headlineWrapper = css({
+  marginTop: 12,
 }).toString();
+
+export default {
+  headlineWrapper,
+};

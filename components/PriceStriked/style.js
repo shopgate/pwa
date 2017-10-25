@@ -9,7 +9,9 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const basic = css({
-  color: colors.shade3,
+  color: colors.shade12,
+  lineHeight: 1,
+  fontSize: 12,
   whiteSpace: 'nowrap',
   '& span': {
     position: 'relative',
