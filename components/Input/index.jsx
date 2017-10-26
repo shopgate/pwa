@@ -19,6 +19,7 @@ class Input extends Component {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     id: PropTypes.string,
+    multiLine: PropTypes.bool,
     name: PropTypes.string,
     onChange: PropTypes.func,
     onFocusChange: PropTypes.func,
@@ -35,6 +36,7 @@ class Input extends Component {
     className: '',
     disabled: false,
     id: null,
+    multiLine: false,
     name: null,
     onChange: () => {},
     onFocusChange: () => {},
@@ -53,7 +55,7 @@ class Input extends Component {
    */
   constructor(props) {
     super(props);
-
+    this.ref = null;
     // Initially sanitize the value.
     const sanitizedValue = this.props.onSanitize(this.props.value || '');
 
@@ -83,6 +85,15 @@ class Input extends Component {
        */
       const sanitizedValue = this.props.onSanitize(nextProps.value || '');
       this.updateValue(sanitizedValue);
+    }
+  }
+
+  /**
+   * Adjusts the element height if the component is set to be multiline.
+   */
+  componentDidUpdate() {
+    if (this.props.multiLine) {
+      this.adjustHeight();
     }
   }
 
@@ -126,6 +137,27 @@ class Input extends Component {
     // Emit an event.
     this.props.onChange(sanitizedValue);
   };
+
+  /**
+   * Handles reference passing to callback and assignation.
+   * @param {HTMLElement} ref The element
+   */
+  handleRef = (ref) => {
+    this.ref = ref;
+    this.props.setRef(ref);
+  };
+
+  /**
+   * Auto-expands the textarea.
+   */
+  adjustHeight() {
+    if (!(this.ref instanceof HTMLElement)) {
+      console.error('Ref is not an HTMLElement');
+      return;
+    }
+    this.ref.style.height = 'auto';
+    this.ref.style.height = `${this.ref.scrollHeight}px`;
+  }
 
   /**
    * Updates and validates the internal state value of the input field.
@@ -174,11 +206,27 @@ class Input extends Component {
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
 
+    if (this.props.multiLine) {
+      return (
+        <textarea
+          id={this.props.id}
+          name={this.props.name}
+          ref={this.handleRef}
+          className={className}
+          type={type}
+          value={value}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          disabled={this.props.disabled}
+        />
+      );
+    }
     return (
       <input
         id={this.props.id}
         name={this.props.name}
-        ref={this.props.setRef}
+        ref={this.handleRef}
         className={className}
         type={type}
         value={value}
