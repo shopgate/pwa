@@ -7,39 +7,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '@shopgate/pwa-common/components/Input';
-import TextArea from '@shopgate/pwa-common/components/TextArea';
 import styles from './style';
 
 /**
- * Creates an input or a textarea based on the type prop.
+ * Creates an input or a multiLine based on the type prop.
  * @param {Object} props - The props.
  * @returns {JSX}
  * @constructor
  */
 const FormElement = (props) => {
-  if (props.type === 'textarea') {
-    return (
-      <TextArea
-        {...props}
-        className={styles.textarea}
-        validateOnBlur
-      />);
-  }
-
+  const styleType = props.multiLine ? 'multiLine' : 'input';
   return (
     <Input
       {...props}
-      className={styles.input}
+      className={styles[styleType]}
       validateOnBlur
     />);
 };
 
 FormElement.propTypes = {
-  type: PropTypes.string,
+  multiLine: PropTypes.bool,
 };
 
 FormElement.defaultProps = {
-  type: 'text',
+  multiLine: false,
 };
 
 export default FormElement;

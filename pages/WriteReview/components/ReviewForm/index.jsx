@@ -123,7 +123,7 @@ class ReviewForm extends Component {
             id="review"
             name="review"
             label="reviews.review_form_text"
-            type="textarea"
+            multiLine
             onChange={(val) => {
               this.updateState('review', val);
             }}

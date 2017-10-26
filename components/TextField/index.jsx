@@ -24,6 +24,7 @@ class TextField extends Component {
     errorText: PropTypes.node,
     hintText: PropTypes.node,
     label: PropTypes.node,
+    multiLine: PropTypes.bool,
     onChange: PropTypes.func,
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
@@ -39,6 +40,7 @@ class TextField extends Component {
     setRef: () => {},
     hintText: '',
     label: '',
+    multiLine: false,
     onChange: () => {},
     onSanitize: value => value,
     onValidate: () => true,
@@ -149,7 +151,8 @@ class TextField extends Component {
    * @return {JSX}
    */
   render() {
-    const style = styles.container[this.props.type] || styles.container.input;
+    const styleType = this.props.multiLine ? 'multiLine' : 'input';
+    const style = styles.container[styleType];
 
     return (
       <div className={`${style} ${this.props.className}`}>
@@ -163,6 +166,7 @@ class TextField extends Component {
         />
         <FormElement
           id={this.props.name}
+          multiLine={this.props.multiLine}
           name={this.props.name}
           setRef={this.props.setRef}
           onFocusChange={this.handleFocusChange}

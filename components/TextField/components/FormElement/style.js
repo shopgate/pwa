@@ -17,9 +17,9 @@ const input = css({
 }).toString();
 
 /**
- * The styles for the textarea.
+ * The styles for the multiLine.
  */
-const textarea = css({
+const multiLine = css({
   position: 'relative',
   marginTop: 38,
   width: '100%',
@@ -29,5 +29,5 @@ const textarea = css({
 
 export default {
   input,
-  textarea,
+  multiLine,
 };

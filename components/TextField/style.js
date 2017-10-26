@@ -15,9 +15,8 @@ const container = {
     minHeight: 72,
     width: '100%',
   }).toString(),
-  textarea: css({
+  multiLine: css({
     position: 'relative',
-    minHeight: '7em',
     width: '100%',
   }).toString(),
 };
