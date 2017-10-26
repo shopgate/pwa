@@ -24,7 +24,6 @@ import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import navigator from 'Components/Navigator/reducer';
 
 import general from 'Components/View/reducer';
-import categoryPage from 'Pages/Category/reducer';
 
 const reducers = {
   cart,
@@ -41,7 +40,6 @@ const reducers = {
   search,
   ui: combineReducers({
     general,
-    categoryPage,
   }),
   url,
   user,

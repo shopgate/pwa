@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CategoryList from 'Components/CategoryList';
 import FilterBar from 'Components/FilterBar';
+import Headline from 'Components/Headline';
 import View from 'Components/View';
 import Products from './components/Products';
 import Empty from './components/Empty';
@@ -60,6 +61,7 @@ class Category extends Component {
     return (
       <View title={this.title}>
         {this.props.isFilterBarShown && <FilterBar />}
+        <Headline text={this.title} />
         <CategoryList />
         {this.props.hasProducts && <Products />}
         <Empty

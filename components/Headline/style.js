@@ -10,18 +10,20 @@ import variables from 'Styles/variables';
 
 const headline = {
   fontWeight: 700,
+  lineHeight: 1.17,
+  paddingRight: 40,
 };
 
 const large = css({
   ...headline,
   fontSize: 34,
-  margin: `${variables.gap.small / 2}px 20px 16px`,
+  margin: `${variables.gap.small}px 20px 20px`,
 }).toString();
 
 const small = css({
   ...headline,
   fontSize: 22,
-  margin: '24px 20px 13px',
+  margin: '26px 20px 16px',
 }).toString();
 
 export default {
