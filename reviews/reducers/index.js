@@ -9,11 +9,11 @@ import { combineReducers } from 'redux';
 import reviewsByHash from './reviewsByHash';
 import reviewsById from './reviewsById';
 import reviewsByProductId from './reviewsByProductId';
-import userReviewsById from './userReviewsById';
+import userReviewsByProductId from './userReviewsByProductId';
 
 export default combineReducers({
   reviewsByHash,
   reviewsById,
   reviewsByProductId,
-  userReviewsById,
+  userReviewsByProductId,
 });

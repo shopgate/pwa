@@ -18,7 +18,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function userReviewsById(state = {}, action) {
+export default function userReviewsByProductId(state = {}, action) {
   switch (action.type) {
     case REQUEST_USER_REVIEW:
       return {
@@ -26,7 +26,7 @@ export default function userReviewsById(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: true,
-          review: null,
+          reviews: {},
         },
       };
     case RECEIVE_USER_REVIEW:
@@ -35,7 +35,7 @@ export default function userReviewsById(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: false,
-          review: action
+          reviews: action.review,
         },
       };
     case ERROR_USER_REVIEW:

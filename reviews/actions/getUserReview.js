@@ -16,7 +16,7 @@ import errorUserReview from '../action-creators/errorUserReview';
  * @param {string} productId The product ID
  * @returns {Function} The dispatched action.
  */
-const getUserReview = productId => dispatch => {
+const getUserReview = productId => (dispatch) => {
   dispatch(requestUserReview(productId));
   const request = new PipelineRequest('getUserReview')
     .setInput({
@@ -25,12 +25,10 @@ const getUserReview = productId => dispatch => {
     .dispatch();
 
   request
-    .then(result => {
-      dispatch(receiveUserReview(productId, result.review));
-    })
-    .catch(error => {
-      logger.error(error);
-      dispatch(errorUserReview(productId));
+    .then(result => dispatch(receiveUserReview(productId, result)))
+    .catch((message) => {
+      logger.error(message);
+      dispatch(errorUserReview());
     });
 
   return request;

@@ -12,9 +12,8 @@ import { ERROR_USER_REVIEW } from '../constants';
  * @param {string} productId The ID of the product
  * @returns {Object} The ERROR_USER_REVIEW action
  */
-const errorUserReview = productId => ({
+const errorUserReview = () => ({
   type: ERROR_USER_REVIEW,
-  productId,
 });
 
 export default errorUserReview;

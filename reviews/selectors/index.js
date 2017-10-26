@@ -146,16 +146,24 @@ export const getReviewsFetchingState = createSelector(
   collection => collection && collection.isFetching
 );
 
-const userReviewsById = state => state.reviews.userReviewsById;
+/**
+ * Select the user reviews state.
+ * @param {Object} state The current application state.
+ * @return {Object} The user reviews collection stored as productId => review.
+ */
+const userReviewsByProductId = state => state.reviews.userReviewsByProductId;
 
-export const getUserReviewsById = createSelector(
+/**
+ * Retrieves a user review for a product.
+ */
+export const getUserReviewForProduct = createSelector(
   getCurrentProductId,
-  userReviewsById,
-  (collection) => {
-    if (!collection || !collection.review) {
+  userReviewsByProductId,
+  (productId, collection) => {
+    if (!collection || !collection[productId]) {
       return {};
     }
 
-    return collection;
+    return collection[productId];
   }
 );
