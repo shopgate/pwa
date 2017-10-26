@@ -33,6 +33,10 @@ const icon = css({
   fontSize: '1.5rem',
 }).toString();
 
+const iconOpen = css({
+  transform: 'rotate(180deg)',
+}).toString();
+
 const dropdown = css({
   position: 'absolute',
   width: '100%',
@@ -62,6 +66,7 @@ export default {
   button,
   selection,
   icon,
+  iconOpen,
   dropdown,
   selectItem,
   selectBox,
