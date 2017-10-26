@@ -14,7 +14,6 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
-import fetchCheckoutUrl from '../../checkout/actions/fetchCheckoutUrl';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
@@ -109,7 +108,6 @@ export default function cart(subscribe) {
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
-    dispatch(fetchCheckoutUrl());
     dispatch(fetchRegisterUrl());
   });
 }
