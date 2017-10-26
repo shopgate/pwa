@@ -26,7 +26,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: true,
-          reviews: {},
+          review: {},
         },
       };
     case RECEIVE_USER_REVIEW:
@@ -35,17 +35,14 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: false,
-          reviews: action.review,
+          review: action.review,
         },
       };
-    case ERROR_USER_REVIEW:
-      return {
-        ...state,
-        [action.productId]: {
-          ...state[action.productId],
-          isFetching: false,
-        },
-      };
+    case ERROR_USER_REVIEW: {
+      const newState = { ...state };
+      delete newState[action.productId];
+      return newState;
+    }
     default:
       return state;
   }

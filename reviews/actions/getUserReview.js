@@ -28,7 +28,7 @@ const getUserReview = productId => (dispatch) => {
     .then(result => dispatch(receiveUserReview(productId, result)))
     .catch((message) => {
       logger.error(message);
-      dispatch(errorUserReview());
+      dispatch(errorUserReview(productId));
     });
 
   return request;
