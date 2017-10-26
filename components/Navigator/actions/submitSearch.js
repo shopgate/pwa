@@ -10,7 +10,6 @@ import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
 import replaceHistory from '@shopgate/pwa-common/actions/history/replaceHistory';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
-import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 import setViewTop from 'Components/View/action-creators/setViewTop';
 import setNavigatorSearchPhrase from '../actions/setNavigatorSearchPhrase';
 import toggleNavSearchField from './toggleNavSearchField';
@@ -40,7 +39,6 @@ const submitSearch = () => (dispatch, getState) => {
   const { sort, ...otherParams } = history.queryParams;
   const prevSearchPhrase = getSearchPhrase(state);
 
-  dispatch(setActiveFilters({}));
   dispatch(getSearchResults());
   dispatch(setViewTop(true));
 
@@ -61,6 +59,7 @@ const submitSearch = () => (dispatch, getState) => {
         ...history.state,
         ...historyLocation.state,
       };
+
       // Just update the current history location.
       dispatch(replaceHistory(historyLocation));
     }

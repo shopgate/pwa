@@ -16,6 +16,10 @@ const container = css({
 
 const loggedIn = css({
   background: colors.accent,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  minHeight: variables.navigator.height,
   padding: `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`,
 }).toString();
 
