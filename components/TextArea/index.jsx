@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
  * This component has no styling and should not be used directly.
  * You may want to use an appropriate form field component from the template instead.
  */
-class Input extends Component {
+class TextArea extends Component {
 
   static propTypes = {
     className: PropTypes.string,
@@ -22,11 +22,11 @@ class Input extends Component {
     name: PropTypes.string,
     onChange: PropTypes.func,
     onFocusChange: PropTypes.func,
+    onKeyUp: PropTypes.func,
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
-    password: PropTypes.bool,
     setRef: PropTypes.func,
-    type: PropTypes.string,
+    style: PropTypes.func,
     validateOnBlur: PropTypes.bool,
     value: PropTypes.string,
   };
@@ -36,13 +36,17 @@ class Input extends Component {
     disabled: false,
     id: null,
     name: null,
-    onChange: () => {},
-    onFocusChange: () => {},
+    onChange: () => {
+    },
+    onFocusChange: () => {
+    },
+    onKeyUp: () => {
+    },
     onSanitize: value => value,
     onValidate: () => true,
-    password: false,
-    setRef: () => {},
-    type: 'text',
+    setRef: () => {
+    },
+    style: null,
     validateOnBlur: true,
     value: '',
   };
@@ -85,6 +89,7 @@ class Input extends Component {
       this.updateValue(sanitizedValue);
     }
   }
+
 
   /**
    * Internal focus event handler.
@@ -170,25 +175,25 @@ class Input extends Component {
    * @returns {JSX}
    */
   render() {
-    const { className, password } = this.props;
-    const type = password ? 'password' : this.props.type;
+    const { className, style } = this.props;
     const { value } = this.state;
 
     return (
-      <input
+      <textarea
         id={this.props.id}
-        name={this.props.name}
         ref={this.props.setRef}
+        name={this.props.name}
         className={className}
-        type={type}
         value={value}
+        style={style}
         onChange={this.handleChange}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
+        onKeyUp={this.props.onKeyUp}
         disabled={this.props.disabled}
       />
     );
   }
 }
 
-export default Input;
+export default TextArea;
