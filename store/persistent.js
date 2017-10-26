@@ -6,6 +6,7 @@
  */
 
 import debounce from 'lodash/debounce';
+import omit from 'lodash/omit';
 
 /**
  * The key name for the state in the localStorage.
@@ -113,7 +114,7 @@ export const initPersistentStorage = () => {
 };
 
 /**
- * Saves the state to the localStorage. (Debounced!)
+ * Saves the state to the localStorage.
  */
 const saveState = debounce(() => {
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(latestState));
@@ -124,9 +125,10 @@ const saveState = debounce(() => {
  * @param {string} reducerName The name of the reducer.
  * @param {Function} reducer The reducer.
  * @param {string} version The current version.
+ * @param {Array} blacklist Entries in the state to ignore and not cache.
  * @returns {Object}
  */
-export const persist = (reducerName, reducer, version) => {
+export const persist = (reducerName, reducer, version, blacklist = []) => {
   registerVersion(reducerName, version);
 
   return (state, action) => {
@@ -136,7 +138,7 @@ export const persist = (reducerName, reducer, version) => {
       ...latestState,
       [reducerName]: {
         version,
-        state: updatedState,
+        state: omit(updatedState, blacklist),
       },
     };
     saveState();
