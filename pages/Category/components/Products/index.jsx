@@ -29,16 +29,6 @@ class Products extends Component {
   };
 
   /**
-   *
-   * @param {Object} nextProps The components new props.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    // TODO: when should it update?
-    return true;
-  }
-
-  /**
    * Renders the Products component.
    * @returns {JSX}
    */
