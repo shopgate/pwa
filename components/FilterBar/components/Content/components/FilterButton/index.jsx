@@ -23,13 +23,16 @@ const FilterButton = ({ handleOpenFilters }) => (
   <button className={styles.button} onClick={handleOpenFilters}>
     <Ripple className={styles.filterButtonRipple} fill>
       <Grid component="div">
-        <Grid.Item className={styles.filterButton} component="div">
+        <Grid.Item component="div" className={styles.filterIcon}>
+          <FilterIcon />
+        </Grid.Item>
+        <Grid.Item
+          className={styles.filterButton}
+          component="div"
+        >
           <span className={styles.filterButtonLabel}>
             <I18n.Text string="titles.filter" />
           </span>
-        </Grid.Item>
-        <Grid.Item component="div">
-          <FilterIcon />
         </Grid.Item>
       </Grid>
     </Ripple>

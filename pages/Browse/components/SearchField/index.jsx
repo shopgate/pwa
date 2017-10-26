@@ -130,12 +130,14 @@ class SearchField extends Component {
    */
   renderInputField = () => (
     <Input
+      autoComplete={false}
       className={styles.input}
       onFocusChange={this.handleFocusChange}
       onChange={this.handleChange}
       onSubmit={this.handleSubmit}
       value={this.props.searchPhrase}
       setRef={this.setInputRef}
+      type="search"
     />
   );
 
@@ -156,7 +158,7 @@ class SearchField extends Component {
       <div>
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} action={'.'}>
               { this.renderLabelElement() }
               { this.renderInputField() }
             </form>

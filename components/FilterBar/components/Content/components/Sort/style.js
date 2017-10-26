@@ -13,7 +13,9 @@ const button = css({
   color: 'inherit',
   outline: 0,
   marginLeft: 10,
+  padding: '0 10px',
   display: 'flex',
+  flexDirection: 'row-reverse',
   alignItems: 'center',
   textOverflow: 'ellipsis',
   justifyContent: 'center',
@@ -22,8 +24,7 @@ const button = css({
 }).toString();
 
 const selection = css({
-  fontSize: '0.875rem',
-  fontWeight: '500',
+  fontSize: 17,
   lineHeight: 1,
   paddingTop: 1,
   alignSelf: 'center',
@@ -31,6 +32,7 @@ const selection = css({
 
 const icon = css({
   fontSize: '1.5rem',
+  marginRight: 2,
 }).toString();
 
 const dropdown = css({
@@ -39,18 +41,22 @@ const dropdown = css({
   zIndex: 2,
   top: variables.filterbar.height,
   left: 0,
-  backgroundColor: colors.background,
-  boxShadow: 'rgba(0, 0, 0, 0.16) 0 4px 4px',
+  backgroundColor: colors.light,
+  boxShadow: `inset 0 -1px ${colors.dividers}`,
 }).toString();
 
 const selectItem = css({
   padding: 0,
   outline: 0,
   overflow: 'hidden',
+  margin: '0 20px',
   textAlign: 'left',
-  width: '100%',
+  width: 'calc(100% - 40px)',
   ':last-child': {
     marginBottom: variables.gap.big,
+  },
+  ':not(:last-child)': {
+    boxShadow: `inset 0 -1px ${colors.dividers}`,
   },
 }).toString();
 
