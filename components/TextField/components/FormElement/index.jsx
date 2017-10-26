@@ -7,23 +7,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '@shopgate/pwa-common/components/Input';
+import TextArea from '@shopgate/pwa-common/components/TextArea';
 import styles from './style';
 
+/**
+ * Creates an input or a textarea based on the type prop.
+ * @param {Object} props - The props.
+ * @returns {JSX}
+ * @constructor
+ */
 const FormElement = (props) => {
   if (props.type === 'textarea') {
-    return (<textarea {...props} validateOnBlur />);
-  } else {
-    return (<Input {...props} validateOnBlur />);
+    return (
+      <TextArea
+        {...props}
+        className={styles.textarea}
+        validateOnBlur
+      />);
   }
+
+  return (
+    <Input
+      {...props}
+      className={styles.input}
+      validateOnBlur
+    />);
 };
 
 FormElement.propTypes = {
-  className: PropTypes.string,
   type: PropTypes.string,
 };
 
 FormElement.defaultProps = {
-  className: styles.input,
   type: 'text',
 };
 

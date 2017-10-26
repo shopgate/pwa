@@ -6,12 +6,7 @@
  */
 
 import React, { Component } from 'react';
-import Color from 'color';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Input from '@shopgate/pwa-common/components/Input';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import colors from 'Styles/colors';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
@@ -154,8 +149,10 @@ class TextField extends Component {
    * @return {JSX}
    */
   render() {
+    const style = styles.container[this.props.type] || styles.container.input;
+
     return (
-      <div className={`${styles.container} ${this.props.className}`}>
+      <div className={`${style} ${this.props.className}`}>
         <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
         <Label
           name={this.props.name}

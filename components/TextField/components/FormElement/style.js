@@ -16,6 +16,18 @@ const input = css({
   outline: 0,
 }).toString();
 
+/**
+ * The styles for the textarea.
+ */
+const textarea = css({
+  position: 'relative',
+  marginTop: 38,
+  width: '100%',
+  outline: 0,
+  minHeight: 'inherit',
+}).toString();
+
 export default {
   input,
-}
+  textarea,
+};

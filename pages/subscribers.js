@@ -19,6 +19,7 @@ import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
+import writeReview from 'Pages/WriteReview/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import app from './subscriptions';
 
@@ -38,6 +39,7 @@ const subscriptions = [
   login,
   search,
   reviews,
+  writeReview,
 ];
 
 if (appConfig.webCheckoutShopify !== null) {

@@ -10,31 +10,22 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getCurrentProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import {
-  getCurrentReviewCount,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
-import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { REVIEW_ITEMS_PER_PAGE } from './constants';
+import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 
 /**
  * Products subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function reviews(subscribe) {
+export default function writeReview(subscribe) {
   const reviewsRouteDidEnter$ = routeDidEnter(ITEM_PATH).filter(
-    ({ pathname }) => pathname.endsWith('reviews') || pathname.endsWith('reviews/')
+    ({ pathname }) => pathname.endsWith('write_review') || pathname.endsWith('write_review/')
   );
 
   /**
-   * Gets triggered on entering the reviews route.
+   * Gets triggered on entering the write review route.
    */
   subscribe(reviewsRouteDidEnter$, ({ dispatch, getState }) => {
-    const currentCount = getCurrentReviewCount(getState());
-    if (currentCount >= REVIEW_ITEMS_PER_PAGE) {
-      // No need to fetch.
-      return;
-    }
-    dispatch(fetchReviews(getCurrentProductId(getState()), REVIEW_ITEMS_PER_PAGE));
+    dispatch(getUserReview(getCurrentProductId(getState())));
   });
 }
 

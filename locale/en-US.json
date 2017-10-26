@@ -108,8 +108,8 @@
     "button_all": "All {count} Reviews",
     "author": "by {author}",
     "rating_stars": "{rate} {rate, plural, =1 {star} other {stars}}",
-    "rate_product": "Rate this product:",
-    "review_form_name": "Username",
+    "review_form_rate": "Rate this product:",
+    "review_form_author": "Username",
     "review_form_title": "Review title (optional)",
     "review_form_text": "Product review (optional)"
   }

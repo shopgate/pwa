@@ -5,36 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import View from 'Components/View';
-import ReviewForm from 'Components/ReviewForm';
-import connect from './connector';
+import ReviewForm from './components/ReviewForm';
 
-class WriteReview extends Component {
-  static propTypes = {
-    getUserReview: PropTypes.func.isRequired,
-    productId: PropTypes.string,
-    review: PropTypes.shape(),
-  };
+/**
+ * The view that holds a review form.
+ * @return {JSX}
+ * @constructor
+ */
+const WriteReview = () => {
+  return (
+    <View>
+      <ReviewForm />
+    </View>
+  );
+};
 
-  static defaultProps = {
-    review: null,
-    productId: '',
-  };
-
-  componentDidMount() {
-    const productId = this.props.productId;
-    this.props.getUserReview(productId);
-  }
-
-  render() {
-    return (
-      <View>
-        <ReviewForm review={this.props.review} />
-      </View>
-    );
-  }
-}
-
-export default connect(WriteReview);
+export default WriteReview;

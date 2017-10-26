@@ -15,6 +15,7 @@ const container = css({
 const icon = css({
   display: 'inline-block',
   verticalAlign: 'top',
+  outline: 0,
 }).toString();
 
 const emptyStars = css({

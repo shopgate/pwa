@@ -28,11 +28,16 @@ class RatingStars extends React.Component {
     value: PropTypes.number.isRequired,
     className: PropTypes.string,
     display: PropTypes.oneOf(Object.keys(availableStyles)),
+    isFormElement: PropTypes.bool,
+    onSelection: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     display: 'small',
+    isFormElement: false,
+    onSelection: () => {
+    },
   };
 
   /**
@@ -45,11 +50,27 @@ class RatingStars extends React.Component {
   }
 
   /**
+   * Handles click on RatingStars.
+   * @param {Object} e SyntheticEvent.
+   * @param {number} pos Position/Index of clicked RatingStar.
+   */
+  handleSelection(e, pos) {
+    const { isFormElement, onSelection } = this.props;
+
+    if (!isFormElement) {
+      return;
+    }
+
+    e.target.value = pos * RATING_SCALE_DIVISOR;
+    onSelection(e);
+  }
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    const { value } = this.props;
+    const { value, isFormElement } = this.props;
     const numStars = 5;
     const ratedStars = value / RATING_SCALE_DIVISOR;
     const numFullStars = Math.floor(ratedStars);
@@ -61,18 +82,43 @@ class RatingStars extends React.Component {
     const iconClassName = [styles.iconStyles[this.props.display].iconStyle, styles.icon].join(' ');
 
     const emptyStars = [
-      ...times(numStars, i =>
-        <div className={iconClassName} key={i}>
-          <StarIcon size={size} />
-        </div>
-      ),
+      ...times(numStars, (i) => {
+        const pos = i + 1;
+        const starProps = {
+          className: iconClassName,
+          key: i,
+          ...(isFormElement) && {
+            role: 'button',
+            onClick: e => this.handleSelection(e, pos),
+          },
+        };
+
+        return (
+          <div {...starProps}>
+            <StarIcon size={size} />
+          </div>
+        );
+      }),
     ];
+
     const filledStars = [
-      ...times(numFullStars, i =>
-        <div className={iconClassName} key={i}>
-          <StarIcon size={size} />
-        </div>
-      ),
+      ...times(numFullStars, (i) => {
+        const pos = i + 1;
+        const starProps = {
+          className: iconClassName,
+          key: i,
+          ...(isFormElement) && {
+            role: 'button',
+            onClick: e => this.handleSelection(e, pos),
+          },
+        };
+
+        return (
+          <div {...starProps}>
+            <StarIcon size={size} />
+          </div>
+        );
+      }),
       ...times(numHalfStars, i =>
         <div className={iconClassName} key={i + numFullStars}>
           <StarHalfIcon size={size} />

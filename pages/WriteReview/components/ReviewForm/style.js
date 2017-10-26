@@ -7,7 +7,6 @@
 
 import { css } from 'glamor';
 import variables from 'Styles/variables';
-import buttonStyles from 'Components/Button/style';
 
 const container = css({
   margin: `0 ${variables.gap.big}px`,
@@ -17,12 +16,7 @@ const buttonLine = css({
   float: 'right',
 }).toString();
 
-/* TODO move to index */
-const buttonstyle = buttonStyles.regular(false);
-const button = `${buttonstyle.button} ${buttonstyle.content}`;
-
 export default {
   container,
   buttonLine,
-  button,
 };

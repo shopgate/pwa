@@ -19,6 +19,10 @@ import connect from './connector';
  * @returns {JSX}
  */
 const WriteReviewLink = ({ productId }) => {
+  if (!productId) {
+    return null;
+  }
+
   const publicProductId = bin2hex(productId);
 
   return (
@@ -29,7 +33,11 @@ const WriteReviewLink = ({ productId }) => {
 };
 
 WriteReviewLink.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.string,
+};
+
+WriteReviewLink.defaultProps = {
+  productId: null,
 };
 
 export default connect(WriteReviewLink);

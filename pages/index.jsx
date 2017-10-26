@@ -68,7 +68,6 @@ const Pages = () =>
       <Route path={`${ITEM_PATH}/:productId`} component={Product} />
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
-      <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
       <Route path={`${CART_PATH}`} component={Cart} />
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
@@ -77,6 +76,7 @@ const Pages = () =>
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
         <Route path={`${ORDERS_PATH}`} component={Orders} />
+        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
       </AuthRoutes>
 
       {isDev && (

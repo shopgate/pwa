@@ -9,11 +9,18 @@ import { css } from 'glamor';
 /**
  * The styles for the container element.
  */
-const container = css({
-  position: 'relative',
-  height: 72,
-  width: '100%',
-}).toString();
+const container = {
+  input: css({
+    position: 'relative',
+    minHeight: 72,
+    width: '100%',
+  }).toString(),
+  textarea: css({
+    position: 'relative',
+    minHeight: '7em',
+    width: '100%',
+  }).toString(),
+};
 
 export default {
   container,
