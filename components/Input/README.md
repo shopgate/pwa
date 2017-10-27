@@ -5,6 +5,20 @@ styled template component instead.
 
 ## Props
 
+### autoComplete (optional)
+
+_Type_: `boolean`<br>
+_Default_: `true`
+
+Apply the auto-complete feature to the field.
+
+### autoCorrect (optional)
+
+_Type_: `boolean`<br>
+_Default_: `true`
+
+Apply the auto-correct feature to the field.
+
 ### className (optional)
 
 _Type_: `className`<br>

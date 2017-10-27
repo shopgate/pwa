@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
  * You may want to use an appropriate form field component from the template instead.
  */
 class Input extends Component {
-
   static propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
@@ -169,6 +168,8 @@ class Input extends Component {
     const { className, password } = this.props;
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
+    const autoComplete = this.props.autoComplete ? 'on' : 'off';
+    const autoCorrect = this.props.autoCorrect ? 'on' : 'off';
 
     return (
       <input
@@ -180,6 +181,8 @@ class Input extends Component {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         disabled={this.props.disabled}
+        autoCorrect={autoComplete}
+        autoComplete={autoCorrect}
       />
     );
   }
