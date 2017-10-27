@@ -12,8 +12,8 @@ import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selec
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  productId: getCurrentProductId(state),
   authorName: getDefaultAuthorName(state),
+  productId: getCurrentProductId(state),
   review: getUserReviewForProduct(state),
 });
 
@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  submit: state => dispatch(submitReview(state)),
+  submit: (review, update) => dispatch(submitReview(review, update)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
