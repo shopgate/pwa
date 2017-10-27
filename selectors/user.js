@@ -15,7 +15,7 @@ import { getUrl } from './url';
 export const isUserLoggedIn = state => state.user.login.isLoggedIn;
 
 /**
- * Gets user data from the logged-in user.
+ * Gets user.data from the redux store.
  * @param {Object} state The application state.
  * @return {Object|null}
  */
