@@ -51,7 +51,6 @@ class ReviewForm extends Component {
       productId: props.productId,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateState = this.updateState.bind(this);
   }
 
   /**
@@ -82,18 +81,6 @@ class ReviewForm extends Component {
   }
 
   /**
-   * Updates a state.
-   * @param {string} state - Name of the state.
-   * @param {*} val - Value of the state.
-   */
-  updateState(state, val) {
-    const newState = {
-      [state]: val,
-    };
-    this.setState(newState);
-  }
-
-  /**
    * Render the form elements.
    * @returns {JSX}
    */
@@ -106,7 +93,7 @@ class ReviewForm extends Component {
           <I18n.Text string="reviews.review_form_rate" />
           <RatingScale
             onChange={(val) => {
-              this.updateState('rate', val);
+              this.setState({ rate: val });
             }}
             value={this.state.rate}
           />
@@ -116,7 +103,7 @@ class ReviewForm extends Component {
             label="reviews.review_form_author"
             value={this.state.author}
             onChange={(val) => {
-              this.updateState('author', val);
+              this.setState({ author: val });
             }}
           />
           <TextField
@@ -125,7 +112,7 @@ class ReviewForm extends Component {
             label="reviews.review_form_title"
             value={this.state.title}
             onChange={(val) => {
-              this.updateState('title', val);
+              this.setState({ title: val });
             }}
           />
           <TextField
@@ -135,7 +122,7 @@ class ReviewForm extends Component {
             value={this.state.review}
             multiLine
             onChange={(val) => {
-              this.updateState('review', val);
+              this.setState({ review: val });
             }}
           />
           <div className={styles.buttonLine}>

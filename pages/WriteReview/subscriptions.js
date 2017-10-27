@@ -27,6 +27,7 @@ export default function writeReview(subscribe) {
     const state = getState();
     const review = getUserReviewForProduct(state);
 
+    // Only dispatch when review is not yet in store
     if (!Object.keys(review).length) {
       dispatch(getUserReview(getCurrentProductId(state)));
     }
