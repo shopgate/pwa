@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '@shopgate/pwa-common/components/Button';
 import I18n from '@shopgate/pwa-common/components/I18n';

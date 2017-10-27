@@ -12,7 +12,11 @@ import {
   getCurrentCategoryId,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { isFilterBarShown } from '../../components/FilterBar/selectors';
+import {
+  isFilterBarActive,
+  isFilterBarShown,
+} from '../../components/FilterBar/selectors';
+import { isCategoryEmpty } from './components/Empty/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -22,7 +26,9 @@ import { isFilterBarShown } from '../../components/FilterBar/selectors';
  */
 const mapStateToProps = (state, props) => ({
   category: getCurrentCategory(state, props),
+  hasHeadline: !isCategoryEmpty(state, props),
   hasProducts: getCategoryProductCount(state) > 0,
+  isFilterBarActive: isFilterBarActive(state),
   isFilterBarShown: isFilterBarShown(state),
   isRoot: !getCurrentCategoryId(state, props),
   ...getProductsResult(state, props),
