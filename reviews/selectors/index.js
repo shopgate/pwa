@@ -7,6 +7,7 @@
 
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
+import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { getCurrentProductId } from '../../product/selectors/product';
 
 /**
@@ -166,4 +167,14 @@ export const getUserReviewForProduct = createSelector(
 
     return collection[productId].review;
   }
+);
+
+/**
+ * Get a user name for the review form.
+ * @param {Object} state The state.
+ * @returns {string} A user name.
+ */
+export const getDefaultAuthorName = state => (
+  (isUserLoggedIn && state.user.data)
+    ? `${state.user.data.firstName} ${state.user.data.lastName}` : ''
 );
