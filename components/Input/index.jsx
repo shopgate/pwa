@@ -56,8 +56,9 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.ref = null;
-    // Initially sanitize the value.
-    const sanitizedValue = this.props.onSanitize(this.props.value || '');
+    // Initially sanitize the value. If it's multiline, first render must be empty.
+    const initialValue = this.props.multiLine ? '' : this.props.value;
+    const sanitizedValue = this.props.onSanitize(initialValue || '');
 
     this.state = {
       value: sanitizedValue,
@@ -67,10 +68,19 @@ class Input extends Component {
   }
 
   /**
+   * If multiline, set real value and trigger second render.
    * Initially trigger onChange() to set the initial value.
    */
   componentDidMount() {
-    this.props.onChange(this.state.value);
+    const sanitizedValue = this.props.onSanitize(this.props.value || '');
+    if (this.props.multiLine) {
+      this.changeState({
+        value: sanitizedValue,
+        isValid: this.props.onValidate(sanitizedValue, true),
+        isFocused: false,
+      });
+    }
+    this.props.onChange(sanitizedValue);
   }
 
   /**
@@ -96,7 +106,25 @@ class Input extends Component {
       this.adjustHeight();
     }
   }
-
+  /**
+   * Sets an initial height of the multiline HTMLElement.
+   */
+  setBaseHeight = () => {
+    if (this.baseHeight !== null) {
+      return;
+    }
+    this.baseHeight = this.ref.clientHeight;
+  };
+  /**
+   * Additional callback to avoid eslint complain.
+   * Secondary render is needed here because for first initial render
+   * the textarea should be empty to measure the base client height.
+   *
+   * @param {Object} newState New state
+   */
+  changeState(newState) {
+    this.setState(newState);
+  }
   /**
    * Internal focus event handler.
    */
@@ -122,7 +150,6 @@ class Input extends Component {
 
     this.props.onFocusChange(false);
   };
-
   /**
    * Internal change event handler.
    * @param {Object} event The event object.
@@ -145,6 +172,9 @@ class Input extends Component {
   handleRef = (ref) => {
     this.ref = ref;
     this.props.setRef(ref);
+    if (this.props.multiLine) {
+      this.setBaseHeight();
+    }
   };
 
   /**
@@ -155,7 +185,8 @@ class Input extends Component {
       console.error('Ref is not an HTMLElement');
       return;
     }
-    this.ref.style.height = 'auto';
+
+    this.ref.style.height = `${this.baseHeight}px`;
     this.ref.style.height = `${this.ref.scrollHeight}px`;
   }
 
