@@ -164,6 +164,6 @@ export const getUserReviewForProduct = createSelector(
       return {};
     }
 
-    return collection[productId];
+    return collection[productId].review;
   }
 );
