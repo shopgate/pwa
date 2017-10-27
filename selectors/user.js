@@ -15,6 +15,13 @@ import { getUrl } from './url';
 export const isUserLoggedIn = state => state.user.login.isLoggedIn;
 
 /**
+ * Gets user data from the logged-in user.
+ * @param {Object} state The application state.
+ * @return {Object|null}
+ */
+export const getUserData = state => state.user.data;
+
+/**
  * Gets the register url.
  * @param {Object} state The application state.
  * @return {string|null}
