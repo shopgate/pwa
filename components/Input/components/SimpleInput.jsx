@@ -56,6 +56,7 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.ref = null;
+    this.baseHeight = null;
     // Initially sanitize the value. If it's multiline, first render must be empty.
     const initialValue = this.props.multiLine ? '' : this.props.value;
     const sanitizedValue = this.props.onSanitize(initialValue || '');
