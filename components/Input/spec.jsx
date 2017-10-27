@@ -118,4 +118,15 @@ describe('<Input />', () => {
 
     expect(wrapper.instance().value).toBe('foobar');
   });
+
+  it('should render a multiline input with empty content and react on change', () => {
+    const multiLineValue = `dfsdsdf
+    sdfdsff
+    dsf`;
+    const wrapper = mount(<Input value="" multiLine />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.instance().value).toEqual('');
+    wrapper.setProps({ value: multiLineValue });
+    expect(wrapper.find('textarea').getDOMNode().innerHTML).toEqual(multiLineValue);
+  });
 });

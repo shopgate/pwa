@@ -4,6 +4,9 @@ exports[`<Input /> should change the value on user input 1`] = `
 <Input
   className=""
   disabled={false}
+  id={null}
+  multiLine={false}
+  name={null}
   onChange={[Function]}
   onFocusChange={[Function]}
   onSanitize={[Function]}
@@ -17,6 +20,8 @@ exports[`<Input /> should change the value on user input 1`] = `
   <input
     className=""
     disabled={false}
+    id={null}
+    name={null}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -30,6 +35,9 @@ exports[`<Input /> should focus the input 1`] = `
 <Input
   className=""
   disabled={false}
+  id={null}
+  multiLine={false}
+  name={null}
   onChange={[Function]}
   onFocusChange={[Function]}
   onSanitize={[Function]}
@@ -43,6 +51,8 @@ exports[`<Input /> should focus the input 1`] = `
   <input
     className=""
     disabled={false}
+    id={null}
+    name={null}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -56,6 +66,9 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
 <Input
   className=""
   disabled={false}
+  id={null}
+  multiLine={false}
+  name={null}
   onChange={[Function]}
   onFocusChange={[Function]}
   onSanitize={[Function]}
@@ -69,6 +82,8 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
   <input
     className=""
     disabled={false}
+    id={null}
+    name={null}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -78,10 +93,44 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
 </Input>
 `;
 
+exports[`<Input /> should render a multiline input with empty content and react on change 1`] = `
+<Input
+  className=""
+  disabled={false}
+  id={null}
+  multiLine={true}
+  name={null}
+  onChange={[Function]}
+  onFocusChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  validateOnBlur={true}
+  value=""
+>
+  <textarea
+    className=""
+    disabled={false}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    type="text"
+    value=""
+  />
+</Input>
+`;
+
 exports[`<Input /> should render a simple input field 1`] = `
 <Input
   className=""
   disabled={false}
+  id={null}
+  multiLine={false}
+  name={null}
   onChange={[Function]}
   onFocusChange={[Function]}
   onSanitize={[Function]}
@@ -95,6 +144,8 @@ exports[`<Input /> should render a simple input field 1`] = `
   <input
     className=""
     disabled={false}
+    id={null}
+    name={null}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -108,6 +159,8 @@ exports[`<Input /> should render the input as password 1`] = `
 <input
   className=""
   disabled={false}
+  id={null}
+  name={null}
   onBlur={[Function]}
   onChange={[Function]}
   onFocus={[Function]}
@@ -120,6 +173,8 @@ exports[`<Input /> should render the input with a default value 1`] = `
 <input
   className=""
   disabled={false}
+  id={null}
+  name={null}
   onBlur={[Function]}
   onChange={[Function]}
   onFocus={[Function]}
@@ -132,6 +187,9 @@ exports[`<Input /> should sanitize the input 1`] = `
 <Input
   className=""
   disabled={false}
+  id={null}
+  multiLine={false}
+  name={null}
   onChange={[Function]}
   onFocusChange={[Function]}
   onSanitize={[Function]}
@@ -145,6 +203,8 @@ exports[`<Input /> should sanitize the input 1`] = `
   <input
     className=""
     disabled={false}
+    id={null}
+    name={null}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -158,6 +218,9 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
 <Input
   className=""
   disabled={false}
+  id={null}
+  multiLine={false}
+  name={null}
   onChange={[Function]}
   onFocusChange={[Function]}
   onSanitize={[Function]}
@@ -171,6 +234,8 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
   <input
     className=""
     disabled={false}
+    id={null}
+    name={null}
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
@@ -184,6 +249,8 @@ exports[`<Input /> should validate the input 1`] = `
 <input
   className=""
   disabled={false}
+  id={null}
+  name={null}
   onBlur={[Function]}
   onChange={[Function]}
   onFocus={[Function]}
