@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import CollectionElement from './components/Item';
+import Item from './components/Item';
 
 /**
  * The collection component.
@@ -23,7 +23,7 @@ import CollectionElement from './components/Item';
 const Collection = (props) => {
   const { elementIndexProp, firstElementProp, lastElementProp } = props;
   const elements = React.Children.map(props.children, (element, index) => (
-    <CollectionElement
+    <Item
       element={element}
       elementIndexProp={elementIndexProp}
       firstElementProp={firstElementProp}
@@ -55,6 +55,6 @@ Collection.defaultProps = {
   lastElementProp: null,
 };
 
-Collection.Element = CollectionElement;
+Collection.Element = Item;
 
 export default Collection;

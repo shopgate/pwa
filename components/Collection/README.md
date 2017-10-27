@@ -8,7 +8,7 @@ be rendered (e.g. ordered/unordered lists).
 ## Getting Started
 
 ```
-import { Collection } from 'Library/components';
+import Collection from 'Components/Collection';
 
 <Collection elementIndexProp="myIndex" firstElementProp="amIFirst" lastElementProp="amILast">
   <MyComponent label="my first component"/>

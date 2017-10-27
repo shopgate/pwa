@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
  * @param {string} props.lastElementProp The name of the prop identifying the last child.
  * @returns {JSX}
  */
-const CollectionElement = (props) => {
+const CollectionItem = (props) => {
   const { elementIndexProp, firstElementProp, lastElementProp } = props;
   const elementProps = {};
 
@@ -43,7 +43,7 @@ const CollectionElement = (props) => {
   return React.cloneElement(props.element, elementProps);
 };
 
-CollectionElement.propTypes = {
+CollectionItem.propTypes = {
   elementIndex: PropTypes.number.isRequired,
   isFirstElement: PropTypes.bool.isRequired,
   isLastElement: PropTypes.bool.isRequired,
@@ -51,9 +51,9 @@ CollectionElement.propTypes = {
   lastElementProp: PropTypes.string,
 };
 
-CollectionElement.defaultProps = {
+CollectionItem.defaultProps = {
   elementIndexProp: null,
   lastElementProp: null,
 };
 
-export default CollectionElement;
+export default CollectionItem;
