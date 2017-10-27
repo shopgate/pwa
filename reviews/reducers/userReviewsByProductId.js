@@ -8,8 +8,11 @@
 
 import {
   REQUEST_USER_REVIEW,
+  REQUEST_SUBMIT_REVIEW,
   RECEIVE_USER_REVIEW,
+  RECEIVE_SUBMIT_REVIEW,
   ERROR_USER_REVIEW,
+  ERROR_SUBMIT_REVIEW,
 } from '../constants';
 
 /**
@@ -35,7 +38,10 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: false,
-          review: action.review,
+          review: {
+            ...action.review,
+            productId: action.productId,
+          },
         },
       };
     case ERROR_USER_REVIEW: {
@@ -43,6 +49,34 @@ export default function userReviewsByProductId(state = {}, action) {
       delete newState[action.productId];
       return newState;
     }
+    case REQUEST_SUBMIT_REVIEW:
+      return {
+        ...state,
+        [action.review.productId]: {
+          ...state[action.review.productId],
+          isFetching: true,
+        },
+      };
+    case RECEIVE_SUBMIT_REVIEW:
+      return {
+        ...state,
+        [action.review.productId]: {
+          ...state[action.review.productId],
+          isFetching: false,
+          review: {
+            ...state.review,
+            ...action.review,
+          },
+        },
+      };
+    case ERROR_SUBMIT_REVIEW:
+      return {
+        ...state,
+        [action.review.productId]: {
+          ...state[action.review.productId],
+          isFetching: false,
+        },
+      };
     default:
       return state;
   }

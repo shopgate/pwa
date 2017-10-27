@@ -19,21 +19,32 @@ import errorSubmitReview from '../action-creators/errorSubmitReview';
  */
 const submitReview = (review, update = false) => (dispatch) => {
   dispatch(requestSubmitReview(review));
+
   let Pipeline;
   if (update) {
     Pipeline = new PipelineRequest('updateProductReview');
   } else {
     Pipeline = new PipelineRequest('addProductReview');
   }
+
+  const fields = ['rate', 'title', 'review', 'author', 'productId'];
+  const pipelineData = {};
+  fields.forEach((field) => {
+    pipelineData[field] = review[field] || null;
+  });
+
   const request = Pipeline
-    .setInput(review)
+    .setInput(pipelineData)
     .dispatch();
 
   request
-    .then(result => dispatch(receiveSubmitReview(result)))
+    .then((result) => {
+      const newReview = Object.keys(result).length ? result : review;
+      dispatch(receiveSubmitReview(newReview));
+    })
     .catch((error) => {
       logger.error(error);
-      dispatch(errorSubmitReview());
+      dispatch(errorSubmitReview(review));
     });
 
   return request;
