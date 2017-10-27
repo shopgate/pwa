@@ -17,9 +17,7 @@ import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUser
  * @param {Function} subscribe The subscribe function.
  */
 export default function writeReview(subscribe) {
-  const reviewsRouteDidEnter$ = routeDidEnter(ITEM_PATH).filter(
-    ({ pathname }) => pathname.endsWith('write_review') || pathname.endsWith('write_review/')
-  );
+  const reviewsRouteDidEnter$ = routeDidEnter(ITEM_PATH);
 
   /**
    * Gets triggered on entering the write review route.

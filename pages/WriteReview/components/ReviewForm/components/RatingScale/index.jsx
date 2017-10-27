@@ -38,6 +38,14 @@ class RatingScale extends React.Component {
   }
 
   /**
+   * Update state with next props.
+   * @param {Object} nextProps The next props
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({ value: nextProps.value });
+  }
+
+  /**
    * Updates the state value.
    * @param {SyntheticEvent} e SyntheticEvent.
    */

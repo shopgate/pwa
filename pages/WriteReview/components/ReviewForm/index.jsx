@@ -22,16 +22,13 @@ class ReviewForm extends Component {
   static propTypes = {
     productId: PropTypes.string.isRequired,
     submit: PropTypes.func.isRequired,
+    authorName: PropTypes.string,
     review: PropTypes.shape(),
   };
 
   static defaultProps = {
-    review: {
-      rate: 0,
-      author: '',
-      title: '',
-      review: '',
-    },
+    authorName: '',
+    review: {},
   };
 
   /**
@@ -50,11 +47,18 @@ class ReviewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: props.productId,
       ...props.review,
+      productId: props.productId,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateState = this.updateState.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      ...nextProps.review,
+      author: nextProps.review.author ? nextProps.review.author : this.props.authorName,
+    });
   }
 
   /**

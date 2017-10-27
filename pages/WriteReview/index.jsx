@@ -5,21 +5,38 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import View from 'Components/View';
 import ReviewForm from './components/ReviewForm';
 
 /**
  * The view that holds a review form.
- * @return {JSX}
- * @constructor
  */
-const WriteReview = () => {
-  return (
-    <View>
-      <ReviewForm />
-    </View>
-  );
-};
+class WriteReview extends Component {
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
+  /**
+   * Get view title.
+   */
+  get title() {
+    const { __ } = this.context.i18n();
+    return __('titles.reviews');
+  }
+
+  /**
+   * Render view
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <View title={this.title}>
+        <ReviewForm />
+      </View>
+    );
+  }
+}
 
 export default WriteReview;
