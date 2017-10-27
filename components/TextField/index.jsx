@@ -58,7 +58,6 @@ class TextField extends Component {
 
     this.state = {
       isFocused: false,
-      value: '',
       validationError: null,
     };
   }
@@ -78,7 +77,6 @@ class TextField extends Component {
    * @param {string} value The entered text.
    */
   handleChange = (value) => {
-    this.setState({ value });
     this.props.onChange(value);
   };
 
@@ -119,24 +117,17 @@ class TextField extends Component {
   }
 
   /**
-   * @returns {string} The current value of the input field.
-   */
-  get value() {
-    return this.state.value;
-  }
-
-  /**
    * @returns {boolean} Whether the label is currently floating.
    */
   get isLabelFloating() {
-    return this.isFocused || !!this.value;
+    return this.isFocused || !!this.props.value;
   }
 
   /**
    * @returns {boolean} Whether the hint text is currently visible.
    */
   get isHintVisible() {
-    return this.isFocused && !this.value;
+    return this.isFocused && !this.props.value;
   }
 
   /**
