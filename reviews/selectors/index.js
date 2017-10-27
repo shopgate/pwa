@@ -175,6 +175,6 @@ export const getUserReviewForProduct = createSelector(
  * @returns {string} A user name.
  */
 export const getDefaultAuthorName = state => (
-  (isUserLoggedIn && state.user.data)
+  (isUserLoggedIn && state.user.data && state.user.data.firstName)
     ? `${state.user.data.firstName} ${state.user.data.lastName}` : ''
 );
