@@ -133,7 +133,7 @@ class Login extends Component {
           <div>
             <I18n.Text string="login.no_account" className={styles.noAccount} />
             <Link href="/register" className={styles.signup}>
-              <I18n.Text string="login.register" />
+              <I18n.Text string="login.signup" />
             </Link>
           </div>
         </section>

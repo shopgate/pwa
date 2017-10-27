@@ -14,7 +14,7 @@ const wrapper = css({
   position: 'fixed',
   width: '100%',
   zIndex: 3,
-  top: variables.navigator.height,
+  top: variables.navigator.height + variables.statusBar.height,
   transition: 'transform 100ms linear',
   willChange: 'transform',
 }).toString();

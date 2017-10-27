@@ -31,6 +31,7 @@ const input = css({
   outline: 'none',
   background: '#eaebed',
   verticalAlign: 'middle',
+  WebkitAppearance: 'none',
 }).toString();
 
 const label = css({

@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Ripple from 'Components/Ripple';
 import styles from './style';
 
 /**
@@ -17,9 +16,9 @@ import styles from './style';
  * @returns {JSX}
  */
 const Item = ({ children }) => (
-  <Ripple fill className={styles}>
+  <div className={styles}>
     {children}
-  </Ripple>
+  </div>
 );
 
 Item.propTypes = {

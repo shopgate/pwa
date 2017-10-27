@@ -115,7 +115,7 @@ class FilterBar extends Component {
     }
 
     /**
-     * Wait for the next tick to be sure the component has updated when
+     * Wait a little to be sure that the component has updated when
      * this is triggered from the child components.
      */
     setTimeout(() => {
@@ -173,9 +173,20 @@ class FilterBar extends Component {
     // Only update the state if the current scroll delta has changed.
     if (delta !== 0) {
       const { offset } = this.state;
-      const nextOffset = this.isVisible
-        ? clamp(offset - delta, -elementHeight, 0)
-        : -elementHeight;
+
+      let nextOffset;
+
+      /**
+       * When the page is scrolled down (due to iOS rubber band effect)
+       * then force the position to be at the top.
+       */
+      if (scrollTop < 1) {
+        nextOffset = 0;
+      } else if (this.isVisible) {
+        nextOffset = clamp(offset - delta, -elementHeight, 0);
+      } else {
+        nextOffset = -elementHeight;
+      }
 
       if (delta < 0) {
         // Shift the origin if the scroll direction is upwards.
@@ -200,13 +211,14 @@ class FilterBar extends Component {
 
       this.prevScrollTop = scrollTop;
     }
+
     // Continuously call the animate() method.
     this.animationFrameRequestId = requestAnimationFrame(this.animate);
   };
 
   /**
    * Handles the swipe events.
-   * @param {Object} event The swipe event as received from ViewContent.
+   * @param {Object} event The swipe event as received from View.
    */
   handleSwipe = (event) => {
     if (this.isVisible) {
@@ -231,8 +243,8 @@ class FilterBar extends Component {
   get wrapperStyle() {
     // Control the scrolling of the filter bar by applying a transform style property.
     return {
-      background: (this.props.isActive) ? colors.accent : colors.background,
-      color: (this.props.isActive) ? colors.accentContrast : 'inherit',
+      background: (this.props.isActive) ? colors.accent : colors.light,
+      color: (this.props.isActive) ? colors.accentContrast : colors.accent,
       transform: `translate3d(0, ${this.state.offset}px, 0)`,
     };
   }

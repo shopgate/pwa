@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 
 export default css({
-  padding: '6px 5px 6px 18px',
+  padding: '10px 0',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
