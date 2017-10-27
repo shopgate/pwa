@@ -54,6 +54,10 @@ class ReviewForm extends Component {
     this.updateState = this.updateState.bind(this);
   }
 
+  /**
+   * Update state with next props.
+   * @param {Object} nextProps The next props
+   */
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...nextProps.review,

@@ -10,6 +10,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getCurrentProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 
 /**
@@ -23,7 +24,12 @@ export default function writeReview(subscribe) {
    * Gets triggered on entering the write review route.
    */
   subscribe(reviewsRouteDidEnter$, ({ dispatch, getState }) => {
-    dispatch(getUserReview(getCurrentProductId(getState())));
+    const state = getState();
+    const review = getUserReviewForProduct(state);
+
+    if (!Object.keys(review).length) {
+      dispatch(getUserReview(getCurrentProductId(state)));
+    }
   });
 }
 

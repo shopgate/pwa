@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import submitReview from '@shopgate/pwa-common-commerce/reviews/actions/submitReview';
-import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
-import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import {
+  getUserReviewForProduct,
+  getDefaultAuthorName,
+} from '@shopgate/pwa-common-commerce/reviews/selectors';
 import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -11,7 +13,7 @@ import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selec
  */
 const mapStateToProps = state => ({
   productId: getCurrentProductId(state),
-  authorName: isUserLoggedIn ? `${state.user.data.firstName} ${state.user.data.lastName}` : '',
+  authorName: getDefaultAuthorName(state),
   review: getUserReviewForProduct(state),
 });
 
