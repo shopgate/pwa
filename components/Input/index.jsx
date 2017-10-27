@@ -6,6 +6,31 @@
  *
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import SimpleInput from './components/SimpleInput';
+import MultiLineInput from './components/MultiLineInput';
 
-module.exports = props => <SimpleInput {...props} />;
+
+/**
+ *
+ * @param {Object} props Props
+ * @return {Component}
+ * @constructor
+ */
+const Factory = (props) => {
+  if (props.multiLine) {
+    return <MultiLineInput {...props} />;
+  }
+  return <SimpleInput {...props} />;
+};
+
+Factory.propTypes = {
+  multiLine: PropTypes.bool,
+};
+
+Factory.defaultProps = {
+  multiLine: false,
+};
+
+module.exports = props => Factory(props);
+
