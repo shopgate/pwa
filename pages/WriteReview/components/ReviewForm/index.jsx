@@ -60,7 +60,7 @@ class ReviewForm extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...nextProps.review,
-      author: nextProps.review.author ? nextProps.review.author : this.props.authorName,
+      author: nextProps.review.author ? nextProps.review.author : nextProps.authorName,
     });
   }
 
