@@ -13,6 +13,7 @@ import {
   RECEIVE_SUBMIT_REVIEW,
   ERROR_USER_REVIEW,
   ERROR_SUBMIT_REVIEW,
+  RESET_SUBMIT_REVIEW,
 } from '../constants';
 
 /**
@@ -44,10 +45,11 @@ export default function userReviewsByProductId(state = {}, action) {
           },
         },
       };
+    case ERROR_SUBMIT_REVIEW:
     case ERROR_USER_REVIEW: {
       const newState = { ...state };
       delete newState[action.productId];
-      return newState;
+      return newState || {};
     }
     case REQUEST_SUBMIT_REVIEW:
       return {
@@ -61,20 +63,20 @@ export default function userReviewsByProductId(state = {}, action) {
       return {
         ...state,
         [action.review.productId]: {
-          ...state[action.review.productId],
           isFetching: false,
           review: {
-            ...state.review,
+            ...state[action.review.productId].review,
             ...action.review,
           },
         },
       };
-    case ERROR_SUBMIT_REVIEW:
+    case RESET_SUBMIT_REVIEW:
       return {
         ...state,
         [action.review.productId]: {
           ...state[action.review.productId],
           isFetching: false,
+          review: { ...action.review },
         },
       };
     default:

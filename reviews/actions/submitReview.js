@@ -10,6 +10,8 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import requestSubmitReview from '../action-creators/requestSubmitReview';
 import receiveSubmitReview from '../action-creators/receiveSubmitReview';
 import errorSubmitReview from '../action-creators/errorSubmitReview';
+import resetSubmittedReview from '../action-creators/resetSubmittedReview';
+import { getUserReviewForProduct } from '../selectors/index';
 
 /**
  * Request a user review for a product from server.
@@ -17,7 +19,8 @@ import errorSubmitReview from '../action-creators/errorSubmitReview';
  * @param {boolean} update Indicate whether the update pipeline be called or not.
  * @returns {Function} The dispatched action.
  */
-const submitReview = (review, update = false) => (dispatch) => {
+const submitReview = (review, update = false) => (dispatch, getState) => {
+  const originalReview = getUserReviewForProduct(getState());
   dispatch(requestSubmitReview(review));
 
   let Pipeline;
@@ -39,12 +42,20 @@ const submitReview = (review, update = false) => (dispatch) => {
 
   request
     .then((result) => {
-      const newReview = Object.keys(result).length ? result : review;
+      let newReview = result;
+      if (update) {
+        newReview = review;
+      }
+
       dispatch(receiveSubmitReview(newReview));
     })
     .catch((error) => {
       logger.error(error);
-      dispatch(errorSubmitReview(review));
+      if (update) {
+        dispatch(resetSubmittedReview(originalReview));
+      } else {
+        dispatch(errorSubmitReview(review.productId));
+      }
     });
 
   return request;

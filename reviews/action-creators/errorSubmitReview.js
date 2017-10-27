@@ -9,12 +9,12 @@ import { ERROR_SUBMIT_REVIEW } from '../constants';
 
 /**
  * Dispatches the ERROR_SUBMIT_REVIEW action.
- * @param {Object} review Review data.
+ * @param {string} productId Review data.
  * @returns {Object} The ERROR_SUBMIT_REVIEW action
  */
-const errorSubmitReview = review => ({
+const errorSubmitReview = productId => ({
   type: ERROR_SUBMIT_REVIEW,
-  review,
+  productId,
 });
 
 export default errorSubmitReview;
