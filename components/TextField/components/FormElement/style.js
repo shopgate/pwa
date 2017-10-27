@@ -24,7 +24,8 @@ const multiLine = css({
   marginTop: 38,
   width: '100%',
   outline: 0,
-  minHeight: 'inherit',
+  height: 32,
+  minHeight: 32,
 }).toString();
 
 export default {

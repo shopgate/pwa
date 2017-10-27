@@ -90,7 +90,6 @@ class ReviewForm extends Component {
    * @returns {JSX}
    */
   render() {
-    const { rate = 0 } = this.state;
     const buttonStyle = buttonStyles.regular(false);
 
     return (
@@ -101,12 +100,13 @@ class ReviewForm extends Component {
             onChange={(val) => {
               this.updateState('rate', val);
             }}
-            value={rate}
+            value={this.state.rate}
           />
           <TextField
             id="author"
             name="author"
             label="reviews.review_form_author"
+            value={this.state.author}
             onChange={(val) => {
               this.updateState('author', val);
             }}
@@ -115,6 +115,7 @@ class ReviewForm extends Component {
             id="title"
             name="title"
             label="reviews.review_form_title"
+            value={this.state.title}
             onChange={(val) => {
               this.updateState('title', val);
             }}
@@ -123,6 +124,7 @@ class ReviewForm extends Component {
             id="review"
             name="review"
             label="reviews.review_form_text"
+            value={this.state.review}
             multiLine
             onChange={(val) => {
               this.updateState('review', val);
