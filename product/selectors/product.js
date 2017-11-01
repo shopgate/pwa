@@ -236,7 +236,7 @@ export const getProductImages = createSelector(
 export const getProductRating = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product || product.rating) {
+    if (!product || !product.rating) {
       return {};
     }
 
