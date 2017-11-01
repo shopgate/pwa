@@ -76,7 +76,7 @@
         "method":  "GET",
         "service": "config",
         "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
-        "key": "value"
+        "key": "value.frontend"
       }
     },
     "features": {
