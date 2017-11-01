@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
+import Header from 'Components/Reviews/components/Header';
 import List from 'Components/Reviews/components/List';
 import LoadMoreButton from './components/LoadMore';
 import connect from './connector';
@@ -26,17 +27,19 @@ class Reviews extends Component {
 
   /**
    * PropTypes definition
-   * @return {{fetchReviews: (*|shim)}}
+   * @type {{rating: Object, reviews: (*|shim)}}
    */
   static propTypes = {
+    rating: PropTypes.shape(),
     reviews: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   /**
-   * Reviews are empty array as default.
-   * @return {{reviews: Array}}
+   *
+   * @type {{rating: {}, reviews: Array}}
    */
   static defaultProps = {
+    rating: {},
     reviews: [],
   };
 
@@ -56,6 +59,7 @@ class Reviews extends Component {
   render() {
     return (
       <View title={this.title}>
+        <Header rating={this.props.rating} />
         <List reviews={this.props.reviews} />
         <LoadMoreButton />
       </View>
