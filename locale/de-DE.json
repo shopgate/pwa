@@ -111,6 +111,8 @@
     "review_form_rate": "Bewerten Sie dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
-    "review_form_text": "Bewertung (optional)"
+    "review_form_text": "Bewertung (optional)",
+    "modal_title": "Vielen Dank!",
+    "modal_message": "Ihre Bewertung wurde gespeichert und hilft nun anderen Käufern dabei sich zu informieren!"
   }
 }

@@ -111,6 +111,8 @@
     "review_form_rate": "Rate this product:",
     "review_form_author": "Username",
     "review_form_title": "Review title (optional)",
-    "review_form_text": "Product review (optional)"
+    "review_form_text": "Product review (optional)",
+    "modal_title": "Thank you!",
+    "modal_message": "Your review has been added and it will help other shoppers to be better informed!"
   }
 }

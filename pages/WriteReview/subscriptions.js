@@ -19,9 +19,9 @@ import {
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
-import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 
 /**
  * Products subscriptions.
@@ -53,5 +53,10 @@ export default function writeReview(subscribe) {
 
   subscribe(successReviewSubmit$, ({ dispatch }) => {
     dispatch(goBackHistory());
+    dispatch(showModal({
+      dismiss: 'modal.ok',
+      confirm: 'reviews.modal_message',
+      title: 'reviews.modal_title',
+    }));
   });
 }
