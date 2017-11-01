@@ -7,11 +7,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import { history } from '@shopgate/pwa-common/helpers/router';
-import RippleButton from 'Components/Button';
 import TextField from 'Components/TextField';
-import buttonStyles from 'Components/Button/style';
 import RatingScale from './components/RatingScale';
+import FormButtons from './components/FormButtons';
 import connect from './connector';
 import styles from './style';
 
@@ -30,15 +28,6 @@ class ReviewForm extends Component {
     authorName: '',
     review: {},
   };
-
-  /**
-   * Navigates back.
-   * @returns {boolean}
-   */
-  static handleCancel() {
-    history.go(-1);
-    return false;
-  }
 
   /**
    * The Constructor.
@@ -85,15 +74,13 @@ class ReviewForm extends Component {
    * @returns {JSX}
    */
   render() {
-    const buttonStyle = buttonStyles.regular(false);
-
     return (
       <section className={styles.container}>
         <form onSubmit={this.handleSubmit}>
           <I18n.Text string="reviews.review_form_rate" />
           <RatingScale
-            onChange={(val) => {
-              this.setState({ rate: val });
+            onChange={(rate) => {
+              this.setState({ rate });
             }}
             value={this.state.rate}
           />
@@ -102,8 +89,8 @@ class ReviewForm extends Component {
             name="author"
             label="reviews.review_form_author"
             value={this.state.author}
-            onChange={(val) => {
-              this.setState({ author: val });
+            onChange={(author) => {
+              this.setState({ author });
             }}
           />
           <TextField
@@ -111,8 +98,8 @@ class ReviewForm extends Component {
             name="title"
             label="reviews.review_form_title"
             value={this.state.title}
-            onChange={(val) => {
-              this.setState({ title: val });
+            onChange={(title) => {
+              this.setState({ title });
             }}
           />
           <TextField
@@ -121,20 +108,11 @@ class ReviewForm extends Component {
             label="reviews.review_form_text"
             value={this.state.review}
             multiLine
-            onChange={(val) => {
-              this.setState({ review: val });
+            onChange={(review) => {
+              this.setState({ review });
             }}
           />
-          <div className={styles.buttonLine}>
-            <div
-              role="button"
-              className={`${buttonStyle.button} ${buttonStyle.content}`}
-              onClick={this.handleCancel}
-            >
-              <I18n.Text string="common.cancel" />
-            </div>
-            <RippleButton type="secondary"><I18n.Text string="common.submit" /></RippleButton>
-          </div>
+          <FormButtons />
         </form>
       </section>
     );

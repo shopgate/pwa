@@ -12,11 +12,6 @@ const container = css({
   margin: `0 ${variables.gap.big}px`,
 }).toString();
 
-const buttonLine = css({
-  float: 'right',
-}).toString();
-
 export default {
   container,
-  buttonLine,
 };

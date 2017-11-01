@@ -7,9 +7,18 @@
 
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import {
   getCurrentProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  requestReviewSubmit$,
+  responseReviewSubmit$,
+  successReviewSubmit$,
+} from '@shopgate/pwa-common-commerce/reviews/streams';
+import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
+import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
+import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 
@@ -32,5 +41,16 @@ export default function writeReview(subscribe) {
       dispatch(getUserReview(getCurrentProductId(state)));
     }
   });
-}
 
+  subscribe(requestReviewSubmit$, ({ dispatch, getState }) => {
+    dispatch(setViewLoading(getHistoryPathname(getState())));
+  });
+
+  subscribe(responseReviewSubmit$, ({ dispatch, getState }) => {
+    dispatch(unsetViewLoading(getHistoryPathname(getState())));
+  });
+
+  subscribe(successReviewSubmit$, ({ dispatch }) => {
+    dispatch(pushHistory());
+  });
+}
