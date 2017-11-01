@@ -6,6 +6,7 @@
  */
 
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { successReviewSubmit$ } from '@shopgate/pwa-common-commerce/reviews/streams';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getCurrentProductId,
@@ -35,6 +36,10 @@ export default function reviews(subscribe) {
       return;
     }
     dispatch(fetchReviews(getCurrentProductId(getState()), REVIEW_ITEMS_PER_PAGE));
+  });
+
+  subscribe(successReviewSubmit$, ({ dispatch, getState }) => {
+    dispatch(fetchReviews(getCurrentProductId(getState())));
   });
 }
 

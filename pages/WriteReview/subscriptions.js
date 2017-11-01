@@ -16,11 +16,12 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import pushHistory from '@shopgate/pwa-common/actions/history/pushHistory';
+import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
+import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 
 /**
  * Products subscriptions.
@@ -51,6 +52,6 @@ export default function writeReview(subscribe) {
   });
 
   subscribe(successReviewSubmit$, ({ dispatch }) => {
-    dispatch(pushHistory());
+    dispatch(goBackHistory());
   });
 }
