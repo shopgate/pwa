@@ -38,6 +38,9 @@ export default function reviews(subscribe) {
     dispatch(fetchReviews(getCurrentProductId(getState()), REVIEW_ITEMS_PER_PAGE));
   });
 
+  /**
+   * Get triggered when a review was successfully submitted
+   */
   subscribe(successReviewSubmit$, ({ dispatch, getState }) => {
     dispatch(fetchReviews(getCurrentProductId(getState())));
   });

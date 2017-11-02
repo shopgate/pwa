@@ -57,7 +57,7 @@ export default function writeReview(subscribe) {
   });
 
   /**
-   * Get triggered when a review was sucessfully submitted
+   * Get triggered when a review was successfully submitted
    */
   subscribe(successReviewSubmit$, ({ dispatch }) => {
     dispatch(goBackHistory());

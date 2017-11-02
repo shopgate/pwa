@@ -17,10 +17,11 @@ import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
+import product from 'Pages/Product/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
-import writeReview from 'Pages/WriteReview/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
+import writeReview from 'Pages/WriteReview/subscriptions';
 import app from './subscriptions';
 
 const subscriptions = [
@@ -37,6 +38,7 @@ const subscriptions = [
   filter,
   filterbar,
   login,
+  product,
   search,
   reviews,
   writeReview,
