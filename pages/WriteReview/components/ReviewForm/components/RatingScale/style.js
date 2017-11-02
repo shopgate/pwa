@@ -18,11 +18,12 @@ const ratingLine = css({
 }).toString();
 
 /**
- * The styles for the rating stars.
+ * The styles for the rating scale.
  */
 const scale = css({
   position: 'relative',
   float: 'right',
+  marginRight: '-0.25em',
 });
 
 /**

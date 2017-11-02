@@ -11,7 +11,7 @@ import variables from 'Styles/variables';
 
 const stars = css({
   display: 'inline-block',
-  lineHeight: 1,
+  lineHeight: 'initial',
 }).toString();
 
 const text = css({
