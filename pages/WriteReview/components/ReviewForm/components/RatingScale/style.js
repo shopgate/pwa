@@ -31,7 +31,8 @@ const scale = css({
 const error = css({
   textAlign: 'center',
   clear: 'both',
-  bottom: -16,
+  bottom: '-1.5em',
+  lineHeight: 'initial',
 }).toString();
 
 export default {
