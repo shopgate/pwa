@@ -6,10 +6,10 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import TextField from 'Components/TextField';
 import RatingScale from './components/RatingScale';
 import FormButtons from './components/FormButtons';
+import { REVIEW_FORM_MAX_LENGTH } from './constants';
 import connect from './connector';
 import styles from './style';
 
@@ -29,6 +29,10 @@ class ReviewForm extends Component {
     review: {},
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   /**
    * The Constructor.
    * @param {Object} props The received props.
@@ -38,6 +42,7 @@ class ReviewForm extends Component {
     this.state = {
       ...props.review,
       productId: props.productId,
+      validationErrors: {},
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -54,16 +59,52 @@ class ReviewForm extends Component {
   }
 
   /**
+   * Sets the validation error state.
+   * @return {boolean} Returns whether the submission was valid or not.
+   */
+  validate() {
+    const errors = {};
+    const { __ } = this.context.i18n();
+
+    if (!this.state.rate) {
+      errors.rate = __('reviews.review_form_rate_error');
+    }
+
+    if (!this.state.author) {
+      errors.author = __('reviews.review_form_error_author_empty');
+    }
+
+    if (this.state.author.length > REVIEW_FORM_MAX_LENGTH) {
+      errors.author = __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+    }
+
+    if (this.state.review.length > REVIEW_FORM_MAX_LENGTH) {
+      errors.review = __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+    }
+
+    if (this.state.title.length > REVIEW_FORM_MAX_LENGTH) {
+      errors.title = __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+    }
+
+    this.setState({
+      validationErrors: { ...errors },
+    });
+
+    return !Object.keys(errors).length;
+  }
+
+  /**
    * Handles the form submit.
    * @param {Object} e SyntheticEvent
    * @returns {boolean|false}
    */
   handleSubmit(e) {
     e.preventDefault();
-    if (!this.state.rate) {
-      alert('please give rate');
+    const valid = this.validate();
+    if (!valid) {
       return false;
     }
+
     const updateRate = !!this.props.review.rate;
     this.props.submit(this.state, updateRate);
     return false;
@@ -77,11 +118,11 @@ class ReviewForm extends Component {
     return (
       <section className={styles.container}>
         <form onSubmit={this.handleSubmit}>
-          <I18n.Text string="reviews.review_form_rate" />
           <RatingScale
             onChange={(rate) => {
               this.setState({ rate });
             }}
+            errorText={this.state.validationErrors.rate}
             value={this.state.rate}
           />
           <TextField
@@ -89,6 +130,7 @@ class ReviewForm extends Component {
             name="author"
             label="reviews.review_form_author"
             value={this.state.author}
+            errorText={this.state.validationErrors.author}
             onChange={(author) => {
               this.setState({ author });
             }}
@@ -98,6 +140,7 @@ class ReviewForm extends Component {
             name="title"
             label="reviews.review_form_title"
             value={this.state.title}
+            errorText={this.state.validationErrors.title}
             onChange={(title) => {
               this.setState({ title });
             }}
@@ -107,6 +150,7 @@ class ReviewForm extends Component {
             name="review"
             label="reviews.review_form_text"
             value={this.state.review}
+            errorText={this.state.validationErrors.review}
             multiLine
             onChange={(review) => {
               this.setState({ review });

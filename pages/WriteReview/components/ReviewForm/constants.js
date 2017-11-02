@@ -4,16 +4,4 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { css } from 'glamor';
-
-/**
- * The style for the component element.
- * @type {string}
- */
-const buttonLine = css({
-  float: 'right',
-}).toString();
-
-export default {
-  buttonLine,
-};
+export const REVIEW_FORM_MAX_LENGTH = 255;

@@ -9,12 +9,11 @@ import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * Renders the label element.
- * @param {boolean} isFocused Whether the input component is focused.
- * @param {boolean} hasErrorMessage Whether the input field has an active error message.
+ *  Renders the label element.
+ * @param {Object} props  The component props.
  * @return {JSX}
  */
-const Underline = (props) => (
+const Underline = props => (
   <div className={styles.underlineWrapper}>
     <div
       className={styles.underline}

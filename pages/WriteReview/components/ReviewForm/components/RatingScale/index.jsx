@@ -6,19 +6,23 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import RatingStars from 'Components/RatingStars';
+import ErrorText from 'Components/TextField/components/ErrorText';
 import styles from './style';
 
 /**
- * The Rating scale component.
+ * The rating scale component.
  */
 class RatingScale extends React.Component {
   static propTypes = {
+    errorText: PropTypes.string,
     onChange: PropTypes.func,
     value: PropTypes.number,
   };
 
   static defaultProps = {
+    errorText: '',
     onChange: null,
     value: 0,
   };
@@ -61,13 +65,22 @@ class RatingScale extends React.Component {
    */
   render() {
     return (
-      <RatingStars
-        isFormElement
-        className={styles.ratingLine}
-        onSelection={this.updateValue}
-        value={this.state.value}
-        display="large"
-      />
+      <div className={styles.ratingLine}>
+        <I18n.Text string="reviews.review_form_rate" />
+        <span className={styles.scale}>
+          <RatingStars
+            isFormElement
+            onSelection={this.updateValue}
+            value={this.state.value}
+            display="large"
+            errorText={this.props.errorText}
+          />
+          <ErrorText
+            className={styles.error}
+            errorText={this.props.errorText}
+          />
+        </span>
+      </div>
     );
   }
 }

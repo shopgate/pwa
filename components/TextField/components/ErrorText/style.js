@@ -21,8 +21,8 @@ const ellipsisLine = {
  * The styles for the error message.
  */
 const error = css({
-  position: 'relative',
-  bottom: 17,
+  position: 'absolute',
+  bottom: -8,
   fontSize: '0.75rem',
   lineHeight: 1,
   color: colors.error,

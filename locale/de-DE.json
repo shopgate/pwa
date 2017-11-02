@@ -108,11 +108,14 @@
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
     "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}",
-    "review_form_rate": "Bewerten Sie dieses Produkt:",
+    "review_form_rate": "Bewerte dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
     "review_form_text": "Bewertung (optional)",
+    "review_form_error_author_empty": "Bitte einen Namen angeben.",
+    "review_form_rate_error": "Bitte Sterne vergeben.",
+    "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "modal_title": "Vielen Dank!",
-    "modal_message": "Ihre Bewertung wurde gespeichert und hilft nun anderen Käufern dabei sich zu informieren!"
+    "modal_message": "Die Bewertung wurde gespeichert und hilft nun anderen Käufern dabei sich zu informieren!"
   }
 }

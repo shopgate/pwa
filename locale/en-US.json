@@ -112,6 +112,9 @@
     "review_form_author": "Username",
     "review_form_title": "Review title (optional)",
     "review_form_text": "Product review (optional)",
+    "review_form_error_author_empty": "Please give a name.",
+    "review_form_rate_error": "Please rate by stars.",
+    "review_form_error_length": "Max length {length} characters.",
     "modal_title": "Thank you!",
     "modal_message": "Your review has been added and it will help other shoppers to be better informed!"
   }

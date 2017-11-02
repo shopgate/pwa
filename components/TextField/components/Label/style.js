@@ -48,6 +48,10 @@ const labelFloating = css({
   transform: 'translate3d(0, -22px, 0) scale3d(0.75, 0.75, 0.75)',
 }).toString();
 
+/**
+ * The basic styles for the label.
+ * @type {string}
+ */
 const label = css({
   position: 'absolute',
   left: 0,

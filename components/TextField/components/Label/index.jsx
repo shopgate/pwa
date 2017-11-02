@@ -12,9 +12,7 @@ import styles from './style';
 
 /**
  * Renders the label element.
- * @param {boolean} isFocused Whether the input component is focused.
- * @param {boolean} isFloating Whether the label is floating.
- * @param {boolean} hasErrorMessage Whether the input field has an active error message.
+ * @param {Object} props The component props.
  * @return {JSX}
  */
 const Label = (props) => {

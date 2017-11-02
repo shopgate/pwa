@@ -4,7 +4,6 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
@@ -24,7 +23,7 @@ import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/s
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 
 /**
- * Products subscriptions.
+ * Review form subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function writeReview(subscribe) {
@@ -43,14 +42,23 @@ export default function writeReview(subscribe) {
     }
   });
 
+  /**
+   * Get triggered when a review submit is requested.
+   */
   subscribe(requestReviewSubmit$, ({ dispatch, getState }) => {
     dispatch(setViewLoading(getHistoryPathname(getState())));
   });
 
+  /**
+   * Get triggered when a review submitted got a response.
+   */
   subscribe(responseReviewSubmit$, ({ dispatch, getState }) => {
     dispatch(unsetViewLoading(getHistoryPathname(getState())));
   });
 
+  /**
+   * Get triggered when a review was sucessfully submitted
+   */
   subscribe(successReviewSubmit$, ({ dispatch }) => {
     dispatch(goBackHistory());
     dispatch(showModal({
