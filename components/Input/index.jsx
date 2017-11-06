@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import SimpleInput from './components/SimpleInput';
 import MultiLineInput from './components/MultiLineInput';
 
-
 /**
  *
  * @param {Object} props Props

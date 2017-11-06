@@ -133,7 +133,7 @@ class SimpleInput extends Component {
   handleRef(ref) {
     this.ref = ref;
     this.props.setRef(ref);
-  };
+  }
 
   /**
    * Updates and validates the internal state value of the input field.
