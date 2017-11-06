@@ -12,6 +12,12 @@ import {
   REQUEST_PRODUCT_REVIEWS,
   RECEIVE_PRODUCT_REVIEWS,
   ERROR_PRODUCT_REVIEWS,
+  REQUEST_USER_REVIEW,
+  RECEIVE_USER_REVIEW,
+  ERROR_USER_REVIEW,
+  REQUEST_SUBMIT_REVIEW,
+  RECEIVE_SUBMIT_REVIEW,
+  ERROR_SUBMIT_REVIEW,
 } from '../constants';
 
 import {
@@ -127,6 +133,91 @@ describe('Reviews reducers', () => {
           productId: 'foo',
         });
         expect(state.reviewsByProductId.foo.isFetching).toBe(false);
+      });
+    });
+  });
+  describe('userReviewsByProductId', () => {
+    let state = {};
+    const review = {
+      one: 1,
+      two: {},
+    };
+    const reviewWithProductId = {
+      ...review,
+      productId: 'foo',
+    };
+    describe(REQUEST_USER_REVIEW, () => {
+      it('should handle request state', () => {
+        state = reducers(state, {
+          type: REQUEST_USER_REVIEW,
+          productId: 'foo',
+        });
+        expect(state.userReviewsByProductId.foo.isFetching).toBe(true);
+        expect(state.userReviewsByProductId.foo.review).toEqual({});
+      });
+    });
+    describe(RECEIVE_USER_REVIEW, () => {
+      it('should handle receive state', () => {
+        state = reducers(state, {
+          type: RECEIVE_USER_REVIEW,
+          productId: 'foo',
+          review,
+        });
+        expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
+        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+      });
+    });
+    describe(ERROR_USER_REVIEW, () => {
+      it('should handle receive state', () => {
+        state = reducers(state, {
+          type: ERROR_USER_REVIEW,
+          productId: 'foo',
+        });
+        expect(typeof state.userReviewsByProductId.foo).toBe('undefined');
+      });
+    });
+    describe(RECEIVE_USER_REVIEW, () => {
+      it('should handle receive state', () => {
+        state = reducers(state, {
+          type: RECEIVE_USER_REVIEW,
+          productId: 'foo',
+          review: reviewWithProductId,
+        });
+        expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
+        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+      });
+    });
+    describe(REQUEST_SUBMIT_REVIEW, () => {
+      it('should handle request state', () => {
+        state = reducers(state, {
+          type: REQUEST_SUBMIT_REVIEW,
+          review: {
+            ...review,
+            productId: 'foo',
+          },
+        });
+        expect(state.userReviewsByProductId.foo.isFetching).toBe(true);
+        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+      });
+    });
+    describe(RECEIVE_SUBMIT_REVIEW, () => {
+      it('should handle receive state', () => {
+        reviewWithProductId.one = 'one';
+        state = reducers(state, {
+          type: RECEIVE_SUBMIT_REVIEW,
+          review: reviewWithProductId,
+        });
+        expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
+        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+      });
+    });
+    describe(ERROR_SUBMIT_REVIEW, () => {
+      it('should handle receive state', () => {
+        state = reducers(state, {
+          type: ERROR_SUBMIT_REVIEW,
+          productId: 'foo',
+        });
+        expect(typeof state.userReviewsByProductId.foo).toBe('undefined');
       });
     });
   });
