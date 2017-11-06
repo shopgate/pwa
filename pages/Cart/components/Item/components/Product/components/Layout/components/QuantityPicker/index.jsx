@@ -156,6 +156,15 @@ class QuantityPicker extends Component {
   };
 
   /**
+   * Event handler for the onSubmit event of the form which wraps the input.
+   * @param {Object} event The event object.
+   */
+  handleSubmitForm = (event) => {
+    event.preventDefault();
+    this.input.blur();
+  };
+
+  /**
    * Event handler for the the onBlur event of the input.
    * @param {Object} event The event object.
    */
@@ -200,17 +209,19 @@ class QuantityPicker extends Component {
    */
   render() {
     return (
-      <input
-        ref={this.setRef}
-        type="number"
-        className={style}
-        value={this.state.quantity}
-        onChange={this.handleInputChange}
-        onClick={this.handleInputClick}
-        onFocus={this.handleInputFocus}
-        onBlur={this.handleInputBlur}
-        min={this.defaultQuantity}
-      />
+      <form onSubmit={this.handleSubmitForm}>
+        <input
+          ref={this.setRef}
+          type="number"
+          className={style}
+          value={this.state.quantity}
+          onChange={this.handleInputChange}
+          onClick={this.handleInputClick}
+          onFocus={this.handleInputFocus}
+          onBlur={this.handleInputBlur}
+          min={this.defaultQuantity}
+        />
+      </form>
     );
   }
 }
