@@ -350,3 +350,13 @@ export const getProductProperties = createSelector(
     return entry.properties;
   }
 );
+
+/**
+ * Retrieves the metadata for the given product.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductMetadata = createSelector(
+  getProductById,
+  product => product.productData.metadata || null
+);
