@@ -9,7 +9,13 @@ import PropTypes from 'prop-types';
 import TextField from 'Components/TextField';
 import RatingScale from './components/RatingScale';
 import FormButtons from './components/FormButtons';
-import { REVIEW_FORM_MAX_LENGTH } from './constants';
+import {
+  REVIEW_FORM_MAX_LENGTH,
+  FIELD_NAME_AUTHOR,
+  FIELD_NAME_RATE,
+  FIELD_NAME_REVIEW,
+  FIELD_NAME_TITLE,
+} from './constants';
 import connect from './connector';
 import styles from './style';
 
@@ -44,6 +50,7 @@ class ReviewForm extends Component {
       productId: props.productId,
       validationErrors: {},
     };
+    this.tmpErrors = null;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -54,43 +61,98 @@ class ReviewForm extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       ...nextProps.review,
-      author: nextProps.review.author ? nextProps.review.author : nextProps.authorName,
+      [FIELD_NAME_AUTHOR]: nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName,
     });
+  }
+
+  /**
+   * Gets current validation errors.
+   * @return {null|*|{}}
+   */
+  get validationErrors() {
+    return this.tmpErrors || { ...this.state.validationErrors };
   }
 
   /**
    * Sets the validation error state.
    * @return {boolean} Returns whether the submission was valid or not.
    */
-  validate() {
-    const errors = {};
+  get formValid() {
+    // Store errors to validate all fields at once.
+    this.tmpErrors = this.validationErrors;
+
+    const valid = this.validateRate()
+      && this.validateAuthor()
+      && this.validateLength(FIELD_NAME_AUTHOR)
+      && this.validateLength(FIELD_NAME_TITLE)
+      && this.validateLength(FIELD_NAME_REVIEW);
+    this.tmpErrors = null;
+    return valid;
+  }
+
+  /**
+   * Validate rate.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateRate(scope = this.state) {
     const { __ } = this.context.i18n();
+    const validationErrors = this.validationErrors;
 
-    if (!this.state.rate) {
-      errors.rate = __('reviews.review_form_rate_error');
+    if (!scope.rate) {
+      validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
+    } else {
+      delete validationErrors[FIELD_NAME_RATE];
     }
 
-    if (!this.state.author) {
-      errors.author = __('reviews.review_form_error_author_empty');
+    this.setState({ validationErrors });
+
+    return !validationErrors[FIELD_NAME_RATE];
+  }
+
+  /**
+   * Validates the author.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateAuthor(scope = this.state) {
+    const { __ } = this.context.i18n();
+    const validationErrors = this.validationErrors;
+
+    if (!scope[FIELD_NAME_AUTHOR]) {
+      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
+    } else if (scope[FIELD_NAME_AUTHOR].length > REVIEW_FORM_MAX_LENGTH) {
+      validationErrors[FIELD_NAME_AUTHOR] =
+        __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+    } else {
+      delete validationErrors[FIELD_NAME_AUTHOR];
     }
 
-    if (this.state.author.length > REVIEW_FORM_MAX_LENGTH) {
-      errors.author = __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+    this.setState({ validationErrors });
+
+    return !validationErrors[FIELD_NAME_AUTHOR];
+  }
+
+  /**
+   * Length validation.
+   * @param {string} field The field name.
+   * @param {Object} scope The data to be validated.
+   * @return {boolean} Valid or invalid data provided.
+   */
+  validateLength(field, scope = this.state) {
+    const { __ } = this.context.i18n();
+    const validationErrors = this.validationErrors;
+
+    if (scope[field] && scope[field].length > REVIEW_FORM_MAX_LENGTH) {
+      validationErrors[field] =
+        __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+    } else {
+      delete validationErrors[field];
     }
 
-    if (this.state.review.length > REVIEW_FORM_MAX_LENGTH) {
-      errors.review = __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
-    }
+    this.setState({ validationErrors });
 
-    if (this.state.title.length > REVIEW_FORM_MAX_LENGTH) {
-      errors.title = __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
-    }
-
-    this.setState({
-      validationErrors: { ...errors },
-    });
-
-    return !Object.keys(errors).length;
+    return !validationErrors[field];
   }
 
   /**
@@ -100,8 +162,7 @@ class ReviewForm extends Component {
    */
   handleSubmit(e) {
     e.preventDefault();
-    const valid = this.validate();
-    if (!valid) {
+    if (!this.formValid) {
       return false;
     }
 
@@ -122,38 +183,41 @@ class ReviewForm extends Component {
             onChange={(rate) => {
               this.setState({ rate });
             }}
-            errorText={this.state.validationErrors.rate}
-            value={this.state.rate}
+            errorText={this.state.validationErrors[FIELD_NAME_RATE]}
+            value={this.state[FIELD_NAME_RATE]}
           />
           <TextField
-            id="author"
-            name="author"
+            id={FIELD_NAME_AUTHOR}
+            name={FIELD_NAME_AUTHOR}
             label="reviews.review_form_author"
-            value={this.state.author}
-            errorText={this.state.validationErrors.author}
+            value={this.state[FIELD_NAME_AUTHOR]}
+            errorText={this.state.validationErrors[FIELD_NAME_AUTHOR]}
             onChange={(author) => {
               this.setState({ author });
+              this.validateAuthor({ author });
             }}
           />
           <TextField
-            id="title"
-            name="title"
+            id={FIELD_NAME_TITLE}
+            name={FIELD_NAME_TITLE}
             label="reviews.review_form_title"
-            value={this.state.title}
-            errorText={this.state.validationErrors.title}
+            value={this.state[FIELD_NAME_TITLE]}
+            errorText={this.state.validationErrors[FIELD_NAME_TITLE]}
             onChange={(title) => {
               this.setState({ title });
+              this.validateLength(FIELD_NAME_TITLE, { title });
             }}
           />
           <TextField
-            id="review"
-            name="review"
+            id={FIELD_NAME_REVIEW}
+            name={FIELD_NAME_REVIEW}
             label="reviews.review_form_text"
-            value={this.state.review}
-            errorText={this.state.validationErrors.review}
+            value={this.state[FIELD_NAME_REVIEW]}
+            errorText={this.state.validationErrors[FIELD_NAME_REVIEW]}
             multiLine
             onChange={(review) => {
               this.setState({ review });
+              this.validateLength(FIELD_NAME_REVIEW, { review });
             }}
           />
           <FormButtons />
