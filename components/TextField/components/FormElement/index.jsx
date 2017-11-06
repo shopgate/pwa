@@ -11,7 +11,7 @@ import styles from './style';
 
 /**
  * Creates an input or a multiLine based on the type prop.
- * @param {Object} props - The props.
+ * @param {Object} props The props.
  * @returns {JSX}
  */
 const FormElement = (props) => {

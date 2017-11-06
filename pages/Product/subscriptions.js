@@ -12,7 +12,7 @@ import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
- * Product subscriptions
+ * Product subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function product(subscribe) {

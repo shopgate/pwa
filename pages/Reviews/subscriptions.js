@@ -39,7 +39,7 @@ export default function reviews(subscribe) {
   });
 
   /**
-   * Get triggered when a review was successfully submitted
+   * Get triggered when a review was successfully submitted.
    */
   subscribe(successReviewSubmit$, ({ dispatch, getState }) => {
     dispatch(fetchReviews(getCurrentProductId(getState())));

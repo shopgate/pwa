@@ -16,7 +16,7 @@ import connect from './connector';
 
 /**
  * Link to add a review.
- * @returns {JSX}
+ * @returns {JSX|null}
  */
 const WriteReviewLink = ({ productId }) => {
   if (!productId) {

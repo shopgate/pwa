@@ -56,7 +56,7 @@ class ReviewForm extends Component {
 
   /**
    * Update state with next props.
-   * @param {Object} nextProps The next props
+   * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -157,7 +157,7 @@ class ReviewForm extends Component {
 
   /**
    * Handles the form submit.
-   * @param {Object} e SyntheticEvent
+   * @param {Object} e SyntheticEvent.
    * @returns {boolean|false}
    */
   handleSubmit(e) {
