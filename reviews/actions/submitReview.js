@@ -20,45 +20,41 @@ import { getUserReviewForProduct } from '../selectors/index';
  * @returns {Function} The dispatched action.
  */
 const submitReview = (review, update = false) => (dispatch, getState) => {
+  const newReview = review;
   const originalReview = getUserReviewForProduct(getState());
-  dispatch(requestSubmitReview(review));
-
-  let Pipeline;
-  if (update) {
-    Pipeline = new PipelineRequest('updateProductReview');
-  } else {
-    Pipeline = new PipelineRequest('addProductReview');
-  }
-
   const fields = ['rate', 'title', 'review', 'author', 'productId'];
   const pipelineData = {};
-  fields.forEach((field) => {
-    pipelineData[field] = review[field] || null;
+
+  // Sanitize pipeline input
+  Object.keys(newReview).forEach((field) => {
+    if (typeof newReview[field] === 'string') {
+      newReview[field] = newReview[field].trim();
+    }
+    if (fields.indexOf(field) !== -1) {
+      pipelineData[field] = newReview[field];
+    }
   });
 
-  const request = Pipeline
+  dispatch(requestSubmitReview(review));
+  if (update) {
+    return new PipelineRequest('updateProductReview')
+      .setInput(pipelineData)
+      .dispatch()
+      .then(() => dispatch(receiveSubmitReview(newReview)))
+      .catch((error) => {
+        logger.error(error);
+        dispatch(resetSubmittedReview(originalReview));
+      });
+  }
+
+  return new PipelineRequest('addProductReview')
     .setInput(pipelineData)
-    .dispatch();
-
-  request
-    .then((result) => {
-      let newReview = result;
-      if (update) {
-        newReview = review;
-      }
-
-      dispatch(receiveSubmitReview(newReview));
-    })
+    .dispatch()
+    .then(() => dispatch(receiveSubmitReview(newReview)))
     .catch((error) => {
       logger.error(error);
-      if (update) {
-        dispatch(resetSubmittedReview(originalReview));
-      } else {
-        dispatch(errorSubmitReview(review.productId));
-      }
+      dispatch(errorSubmitReview(newReview.productId));
     });
-
-  return request;
 };
 
 export default submitReview;
