@@ -16,7 +16,7 @@ import getProduct from '../../product/actions/getProduct';
 
 /**
  * Request a user review for a product from server.
- * @param {string} review The review data
+ * @param {Object} review The review data.
  * @param {boolean} update Indicate whether the update pipeline be called or not.
  * @returns {Function} The dispatched action.
  */

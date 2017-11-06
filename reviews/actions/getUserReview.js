@@ -14,7 +14,7 @@ import errorUserReview from '../action-creators/errorUserReview';
 
 /**
  * Request a user review for a product from server.
- * @param {string} productId The product ID
+ * @param {string} productId The product ID.
  * @returns {Function} The dispatched action.
  */
 const getUserReview = productId => (dispatch) => {

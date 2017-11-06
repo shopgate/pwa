@@ -9,7 +9,7 @@ import { REQUEST_USER_REVIEW } from '../constants';
 
 /**
  * Dispatches the REQUEST_USER_REVIEW action.
- * @param {string} productId The ID of the product
+ * @param {string} productId The ID of the product.
  * @returns {Object} The REQUEST_USER_REVIEW action.
  */
 const requestUserReview = productId => ({
