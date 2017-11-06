@@ -19,6 +19,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
   }
 >
   <div
+    className={undefined}
     onTouchStart={[Function]}
   >
     <div
@@ -49,7 +50,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
               }
             }
           >
-            <div />
+            <div
+              className={undefined}
+            />
           </div>
         </RangeSliderHandle>
         <RangeSliderHandle
@@ -67,7 +70,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
               }
             }
           >
-            <div />
+            <div
+              className={undefined}
+            />
           </div>
         </RangeSliderHandle>
       </div>
@@ -95,6 +100,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
   }
 >
   <div
+    className={undefined}
     onTouchStart={[Function]}
   >
     <div
@@ -125,7 +131,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
               }
             }
           >
-            <div />
+            <div
+              className={undefined}
+            />
           </div>
         </RangeSliderHandle>
         <RangeSliderHandle
@@ -143,7 +151,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
               }
             }
           >
-            <div />
+            <div
+              className={undefined}
+            />
           </div>
         </RangeSliderHandle>
       </div>

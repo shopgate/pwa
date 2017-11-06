@@ -29,33 +29,3 @@ exports[`SGConnect Given the component was mounted to the DOM should match snaps
   </Connect(SGConnect)>
 </Provider>
 `;
-
-exports[`routedConnect Given the component was mounted to the DOM should match snapshot 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
->
-  <Connect(_class)>
-    <_class
-      dispatch={[Function]}
-      routedConnectPathname="/"
-      testProp={0}
-    >
-      <TestComponent
-        dispatch={[Function]}
-        routedConnectPathname="/"
-        testProp={0}
-      >
-        <div />
-      </TestComponent>
-    </_class>
-  </Connect(_class)>
-</Provider>
-`;

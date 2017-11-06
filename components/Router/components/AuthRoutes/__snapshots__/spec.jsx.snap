@@ -9,6 +9,7 @@ exports[`<AuthRoutes /> Given the user is logged in should render the Route with
   <div>
     <MockRoute
       component="checkout"
+      key=".0"
       mockAdd={[Function]}
       mockHide={[Function]}
       mockRemove={[Function]}
@@ -27,6 +28,7 @@ exports[`<AuthRoutes /> Given the user is logged out should render the redirect 
 >
   <div>
     <Redirect
+      key=".0"
       path="/checkout"
       to="/login"
     />
