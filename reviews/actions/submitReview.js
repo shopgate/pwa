@@ -12,6 +12,7 @@ import receiveSubmitReview from '../action-creators/receiveSubmitReview';
 import errorSubmitReview from '../action-creators/errorSubmitReview';
 import resetSubmittedReview from '../action-creators/resetSubmittedReview';
 import { getUserReviewForProduct } from '../selectors/index';
+import getProduct from '../../product/actions/getProduct';
 
 /**
  * Request a user review for a product from server.
@@ -46,8 +47,8 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
       if (update) {
         newReview = review;
       }
-
       dispatch(receiveSubmitReview(newReview));
+      dispatch(getProduct(review.productId, true));
     })
     .catch((error) => {
       logger.error(error);
