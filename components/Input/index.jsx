@@ -13,8 +13,7 @@ import MultiLineInput from './components/MultiLineInput';
 /**
  *
  * @param {Object} props Props
- * @return {Component}
- * @constructor
+ * @return {JSX}
  */
 const Factory = (props) => {
   if (props.multiLine) {

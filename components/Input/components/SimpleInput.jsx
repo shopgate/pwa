@@ -181,6 +181,8 @@ class SimpleInput extends Component {
     const { className, password } = this.props;
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
+    const autoComplete = this.props.autoComplete ? 'on' : 'off';
+    const autoCorrect = this.props.autoCorrect ? 'on' : 'off';
 
     return (
       <input
@@ -194,6 +196,8 @@ class SimpleInput extends Component {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         disabled={this.props.disabled}
+        autoCorrect={autoComplete}
+        autoComplete={autoCorrect}
       />
     );
   }
