@@ -12,6 +12,7 @@ import receiveSubmitReview from '../action-creators/receiveSubmitReview';
 import errorSubmitReview from '../action-creators/errorSubmitReview';
 import resetSubmittedReview from '../action-creators/resetSubmittedReview';
 import { getUserReviewForProduct } from '../selectors/index';
+import getProduct from '../../product/actions/getProduct';
 
 /**
  * Request a user review for a product from server.
@@ -40,7 +41,10 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
     return new PipelineRequest('updateProductReview')
       .setInput(pipelineData)
       .dispatch()
-      .then(() => dispatch(receiveSubmitReview(newReview)))
+      .then(() => {
+        dispatch(receiveSubmitReview(newReview));
+        dispatch(getProduct(newReview.productId, true));
+      })
       .catch((error) => {
         logger.error(error);
         dispatch(resetSubmittedReview(originalReview));
@@ -50,7 +54,10 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
   return new PipelineRequest('addProductReview')
     .setInput(pipelineData)
     .dispatch()
-    .then(() => dispatch(receiveSubmitReview(newReview)))
+    .then(() => {
+      dispatch(receiveSubmitReview(newReview));
+      dispatch(getProduct(newReview.productId, true));
+    })
     .catch((error) => {
       logger.error(error);
       dispatch(errorSubmitReview(newReview.productId));
