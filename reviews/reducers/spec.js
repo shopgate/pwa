@@ -18,6 +18,7 @@ import {
   REQUEST_SUBMIT_REVIEW,
   RECEIVE_SUBMIT_REVIEW,
   ERROR_SUBMIT_REVIEW,
+  RESET_SUBMIT_REVIEW,
 } from '../constants';
 
 import {
@@ -218,6 +219,26 @@ describe('Reviews reducers', () => {
           productId: 'foo',
         });
         expect(typeof state.userReviewsByProductId.foo).toBe('undefined');
+      });
+    });
+    describe(RESET_SUBMIT_REVIEW, () => {
+      it('should handle receive state', () => {
+        state = reducers(state, {
+          type: RESET_SUBMIT_REVIEW,
+          productId: 'foo',
+          review: {
+            productId: 'foo',
+            one: '1',
+          },
+        });
+        expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
+        expect(state.userReviewsByProductId.foo).toEqual({
+          isFetching: false,
+          review: {
+            productId: 'foo',
+            one: '1',
+          },
+        });
       });
     });
   });
