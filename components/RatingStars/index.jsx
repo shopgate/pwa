@@ -55,12 +55,7 @@ class RatingStars extends React.Component {
    * @param {number} pos Position/Index of clicked RatingStar.
    */
   handleSelection(e, pos) {
-    const { isFormElement, onSelection } = this.props;
-
-    if (!isFormElement) {
-      return;
-    }
-
+    const { onSelection } = this.props;
     e.target.value = pos * RATING_SCALE_DIVISOR;
     onSelection(e);
   }
@@ -86,7 +81,7 @@ class RatingStars extends React.Component {
         const pos = i + 1;
         const starProps = {
           className: iconClassName,
-          key: i,
+          key: pos,
           ...(isFormElement) && {
             role: 'button',
             onClick: e => this.handleSelection(e, pos),
@@ -106,7 +101,7 @@ class RatingStars extends React.Component {
         const pos = i + 1;
         const starProps = {
           className: iconClassName,
-          key: i,
+          key: numStars + pos,
           ...(isFormElement) && {
             role: 'button',
             onClick: e => this.handleSelection(e, pos),
