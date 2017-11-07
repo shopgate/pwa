@@ -30,7 +30,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: true,
-          review: {},
+          review: '',
         },
       };
     case RECEIVE_USER_REVIEW:
@@ -39,10 +39,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: false,
-          review: {
-            ...action.review,
-            productId: action.productId,
-          },
+          review: action.review.id,
         },
       };
     case ERROR_SUBMIT_REVIEW:
@@ -64,10 +61,7 @@ export default function userReviewsByProductId(state = {}, action) {
         ...state,
         [action.review.productId]: {
           isFetching: false,
-          review: {
-            ...state[action.review.productId].review,
-            ...action.review,
-          },
+          review: action.review.id,
         },
       };
     case RESET_SUBMIT_REVIEW:
@@ -76,7 +70,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.review.productId]: {
           ...state[action.review.productId],
           isFetching: false,
-          review: { ...action.review },
+          review: action.review.id,
         },
       };
     default:

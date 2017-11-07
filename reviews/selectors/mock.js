@@ -98,10 +98,7 @@ export const finalState = {
     userReviewsByProductId: {
       9209597131: {
         isFetching: false,
-        review: {
-          ...testReviews[0],
-          validationErrors: {},
-        },
+        review: testReviews[0].id,
       },
     },
   },

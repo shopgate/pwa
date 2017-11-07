@@ -160,12 +160,13 @@ const userReviewsByProductId = state => state.reviews.userReviewsByProductId;
 export const getUserReviewForProduct = createSelector(
   getCurrentProductId,
   userReviewsByProductId,
-  (productId, collection) => {
-    if (!collection || !collection[productId]) {
+  getReviews,
+  (productId, userReviews, allReviews) => {
+    if (!userReviews || !userReviews[productId] || !allReviews[userReviews[productId].review]) {
       return {};
     }
 
-    return collection[productId].review;
+    return allReviews[userReviews[productId].review];
   }
 );
 

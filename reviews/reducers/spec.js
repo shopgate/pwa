@@ -140,6 +140,7 @@ describe('Reviews reducers', () => {
   describe('userReviewsByProductId', () => {
     let state = {};
     const review = {
+      id: 'id',
       one: 1,
       two: {},
     };
@@ -154,7 +155,7 @@ describe('Reviews reducers', () => {
           productId: 'foo',
         });
         expect(state.userReviewsByProductId.foo.isFetching).toBe(true);
-        expect(state.userReviewsByProductId.foo.review).toEqual({});
+        expect(state.userReviewsByProductId.foo.review).toEqual('');
       });
     });
     describe(RECEIVE_USER_REVIEW, () => {
@@ -165,7 +166,7 @@ describe('Reviews reducers', () => {
           review,
         });
         expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
-        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+        expect(state.userReviewsByProductId.foo.review).toEqual('id');
       });
     });
     describe(ERROR_USER_REVIEW, () => {
@@ -185,7 +186,7 @@ describe('Reviews reducers', () => {
           review: reviewWithProductId,
         });
         expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
-        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+        expect(state.userReviewsByProductId.foo.review).toEqual('id');
       });
     });
     describe(REQUEST_SUBMIT_REVIEW, () => {
@@ -198,7 +199,7 @@ describe('Reviews reducers', () => {
           },
         });
         expect(state.userReviewsByProductId.foo.isFetching).toBe(true);
-        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+        expect(state.userReviewsByProductId.foo.review).toEqual('id');
       });
     });
     describe(RECEIVE_SUBMIT_REVIEW, () => {
@@ -209,7 +210,7 @@ describe('Reviews reducers', () => {
           review: reviewWithProductId,
         });
         expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
-        expect(state.userReviewsByProductId.foo.review).toEqual(reviewWithProductId);
+        expect(state.userReviewsByProductId.foo.review).toEqual('id');
       });
     });
     describe(ERROR_SUBMIT_REVIEW, () => {
@@ -234,10 +235,6 @@ describe('Reviews reducers', () => {
         expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
         expect(state.userReviewsByProductId.foo).toEqual({
           isFetching: false,
-          review: {
-            productId: 'foo',
-            one: '1',
-          },
         });
       });
     });

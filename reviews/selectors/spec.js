@@ -94,7 +94,7 @@ describe('Reviews selectors', () => {
   describe('getUserReviewForProduct', () => {
     it('should return user review', () => {
       const result = getUserReviewForProduct(finalState);
-      expect(result).toBe(finalState.reviews.userReviewsByProductId[9209597131].review);
+      expect(result).toBe(finalState.reviews.reviewsById[1]);
     });
     it('should return empty object when no user review is available', () => {
       const result = getUserReviewForProduct(emptyState);
