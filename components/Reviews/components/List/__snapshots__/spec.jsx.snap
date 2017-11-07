@@ -1575,13 +1575,7 @@ exports[`<List /> should render list with reviews 1`] = `
         </Rating>
         <Text
           review=""
-        >
-          <div
-            className="css-r494z3"
-          >
-            ""
-          </div>
-        </Text>
+        />
         <Info
           review={
             Object {
