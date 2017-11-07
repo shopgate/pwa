@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should not render when no reviews given 1`] = `null`;
+exports[`<List /> should not render when no reviews given 1`] = `
+<List
+  reviews={Array []}
+/>
+`;
 
 exports[`<List /> should render list with reviews 1`] = `
 <List
@@ -65,18 +69,20 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isFormElement={false}
+              onSelection={[Function]}
               value={100}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -112,7 +118,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -148,7 +154,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -184,7 +190,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -220,7 +226,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
                   >
                     <Star
@@ -260,7 +266,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -296,7 +302,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -332,7 +338,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -368,7 +374,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -404,7 +410,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
                   >
                     <Star
@@ -531,18 +537,20 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isFormElement={false}
+              onSelection={[Function]}
               value={40}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -578,7 +586,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -614,7 +622,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -650,7 +658,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -686,7 +694,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
                   >
                     <Star
@@ -726,7 +734,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -762,7 +770,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -903,18 +911,20 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isFormElement={false}
+              onSelection={[Function]}
               value={60}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -950,7 +960,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -986,7 +996,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -1022,7 +1032,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -1058,7 +1068,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
                   >
                     <Star
@@ -1098,7 +1108,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -1134,7 +1144,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -1170,7 +1180,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -1311,18 +1321,20 @@ exports[`<List /> should render list with reviews 1`] = `
         >
           <div>
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isFormElement={false}
+              onSelection={[Function]}
               value={20}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -1358,7 +1370,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -1394,7 +1406,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -1430,7 +1442,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -1466,7 +1478,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
                   >
                     <Star
@@ -1506,7 +1518,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="0"
                   >
                     <Star
@@ -1563,13 +1575,7 @@ exports[`<List /> should render list with reviews 1`] = `
         </Rating>
         <Text
           review=""
-        >
-          <div
-            className="css-r494z3"
-          >
-            ""
-          </div>
-        </Text>
+        />
         <Info
           review={
             Object {
