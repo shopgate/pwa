@@ -38,9 +38,10 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
 
   dispatch(requestSubmitReview(review));
   if (update) {
-    return new PipelineRequest('updateProductReview')
+    const request = new PipelineRequest('updateProductReview')
       .setInput(pipelineData)
-      .dispatch()
+      .dispatch();
+    request
       .then(() => {
         dispatch(receiveSubmitReview(newReview));
         dispatch(getProduct(newReview.productId, true));
@@ -49,11 +50,14 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
         logger.error(error);
         dispatch(resetSubmittedReview(originalReview));
       });
+
+    return request;
   }
 
-  return new PipelineRequest('addProductReview')
+  const request = new PipelineRequest('addProductReview')
     .setInput(pipelineData)
-    .dispatch()
+    .dispatch();
+  request
     .then(() => {
       dispatch(receiveSubmitReview(newReview));
       dispatch(getProduct(newReview.productId, true));
@@ -62,6 +66,8 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
       logger.error(error);
       dispatch(errorSubmitReview(newReview.productId));
     });
+
+  return request;
 };
 
 export default submitReview;
