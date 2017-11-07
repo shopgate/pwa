@@ -63,29 +63,6 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
 </Provider>
 `;
 
-exports[`<Reviews /> should not render when no reviews and rating given 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(Reviews)>
-    <Reviews
-      dispatch={[Function]}
-      rating={null}
-      reviews={null}
-    />
-  </Connect(Reviews)>
-</Provider>
-`;
-
 exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
 <Provider
   store={
@@ -171,6 +148,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <RatingStars
                   className=""
                   display="large"
+                  isFormElement={false}
+                  onSelection={[Function]}
                   value={50}
                 >
                   <div
@@ -180,7 +159,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       className="css-4s85e9"
                     >
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -215,7 +195,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -250,7 +231,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -285,7 +267,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -320,7 +303,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -359,7 +343,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       className="css-16y9zin"
                     >
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -394,7 +379,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -429,7 +415,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="2"
                       >
                         <StarHalfIcon
                           className=""
@@ -441,8 +428,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             className=""
                             color={null}
                             content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-                            <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-                            <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
+  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
+  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
                             size="2em"
                             viewBox="0 0 24 24"
                           >
@@ -451,8 +438,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               dangerouslySetInnerHTML={
                                 Object {
                                   "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-                                  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-                                  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
+  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
+  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
                                 }
                               }
                               style={
@@ -505,6 +492,35 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   reviews.rating
                 </span>
               </Translate>
+              <Connect(WriteReviewLink)>
+                <WriteReviewLink
+                  dispatch={[Function]}
+                  productId="foo"
+                >
+                  <Link
+                    className="css-3bpzxq"
+                    href="/item/666f6f/write_review"
+                  >
+                    <div
+                      className="css-c6ki83 css-3bpzxq"
+                      onClick={[Function]}
+                      role="link"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="reviews.button_add"
+                      >
+                        <span
+                          className=""
+                        >
+                          reviews.button_add
+                        </span>
+                      </Translate>
+                    </div>
+                  </Link>
+                </WriteReviewLink>
+              </Connect(WriteReviewLink)>
             </div>
           </div>
         </Header>
@@ -548,6 +564,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
         >
           <div>
             <Review
+              key="0"
               review={
                 Object {
                   "author": "",
@@ -574,18 +591,21 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 >
                   <div>
                     <RatingStars
-                      className="css-hgkz41"
+                      className="css-1tsawhq"
                       display="small"
+                      isFormElement={false}
+                      onSelection={[Function]}
                       value={100}
                     >
                       <div
-                        className="css-13azwyo css-hgkz41"
+                        className="css-13azwyo css-1tsawhq"
                       >
                         <div
                           className="css-4s85e9"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -620,7 +640,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -655,7 +676,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -690,7 +712,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -725,7 +748,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -764,7 +788,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           className="css-16y9zin"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -799,7 +824,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -834,7 +860,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -869,7 +896,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -904,7 +932,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -1003,6 +1032,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               </div>
             </Review>
             <Review
+              key="1"
               review={
                 Object {
                   "author": "",
@@ -1029,18 +1059,21 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 >
                   <div>
                     <RatingStars
-                      className="css-hgkz41"
+                      className="css-1tsawhq"
                       display="small"
+                      isFormElement={false}
+                      onSelection={[Function]}
                       value={100}
                     >
                       <div
-                        className="css-13azwyo css-hgkz41"
+                        className="css-13azwyo css-1tsawhq"
                       >
                         <div
                           className="css-4s85e9"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -1075,7 +1108,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -1110,7 +1144,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -1145,7 +1180,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -1180,7 +1216,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -1219,7 +1256,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           className="css-16y9zin"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -1254,7 +1292,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -1289,7 +1328,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -1324,7 +1364,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -1359,7 +1400,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -1458,6 +1500,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               </div>
             </Review>
             <Review
+              key="2"
               review={
                 Object {
                   "author": "",
@@ -1484,18 +1527,21 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 >
                   <div>
                     <RatingStars
-                      className="css-hgkz41"
+                      className="css-1tsawhq"
                       display="small"
+                      isFormElement={false}
+                      onSelection={[Function]}
                       value={100}
                     >
                       <div
-                        className="css-13azwyo css-hgkz41"
+                        className="css-13azwyo css-1tsawhq"
                       >
                         <div
                           className="css-4s85e9"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -1530,7 +1576,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -1565,7 +1612,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -1600,7 +1648,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -1635,7 +1684,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -1674,7 +1724,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           className="css-16y9zin"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -1709,7 +1760,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -1744,7 +1796,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -1779,7 +1832,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -1814,7 +1868,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -1913,6 +1968,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               </div>
             </Review>
             <Review
+              key="3"
               review={
                 Object {
                   "author": "",
@@ -1939,18 +1995,21 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 >
                   <div>
                     <RatingStars
-                      className="css-hgkz41"
+                      className="css-1tsawhq"
                       display="small"
+                      isFormElement={false}
+                      onSelection={[Function]}
                       value={100}
                     >
                       <div
-                        className="css-13azwyo css-hgkz41"
+                        className="css-13azwyo css-1tsawhq"
                       >
                         <div
                           className="css-4s85e9"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -1985,7 +2044,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -2020,7 +2080,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -2055,7 +2116,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -2090,7 +2152,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -2129,7 +2192,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           className="css-16y9zin"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -2164,7 +2228,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -2199,7 +2264,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -2234,7 +2300,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -2269,7 +2336,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -2375,13 +2443,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             productId="foo"
             totalReviewCount={4}
           >
-            <div>
+            <div
+              className={
+                Object {
+                  "data-css-syjz65": "",
+                }
+              }
+            >
               <Link
-                className=""
+                className="css-5nk6gc"
                 href="/item/666f6f/reviews"
               >
                 <div
-                  className="css-c6ki83 "
+                  className="css-c6ki83 css-5nk6gc"
                   onClick={[Function]}
                   role="link"
                 >
@@ -2480,6 +2554,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 <RatingStars
                   className=""
                   display="large"
+                  isFormElement={false}
+                  onSelection={[Function]}
                   value={50}
                 >
                   <div
@@ -2489,7 +2565,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       className="css-4s85e9"
                     >
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -2524,7 +2601,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -2559,7 +2637,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="2"
                       >
                         <Star
                           className=""
@@ -2594,7 +2673,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="3"
                       >
                         <Star
                           className=""
@@ -2629,7 +2709,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="4"
                       >
                         <Star
                           className=""
@@ -2668,7 +2749,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       className="css-16y9zin"
                     >
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="0"
                       >
                         <Star
                           className=""
@@ -2703,7 +2785,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="1"
                       >
                         <Star
                           className=""
@@ -2738,7 +2821,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </Star>
                       </div>
                       <div
-                        className=" css-hvpjjr"
+                        className="css-14rta1c css-q4owmg"
+                        key="2"
                       >
                         <StarHalfIcon
                           className=""
@@ -2750,8 +2834,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             className=""
                             color={null}
                             content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-                            <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-                            <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
+  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
+  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
                             size="2em"
                             viewBox="0 0 24 24"
                           >
@@ -2760,8 +2844,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               dangerouslySetInnerHTML={
                                 Object {
                                   "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
-                                  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
-                                  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
+  <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
+  <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
                                 }
                               }
                               style={
@@ -2814,6 +2898,35 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   reviews.rating
                 </span>
               </Translate>
+              <Connect(WriteReviewLink)>
+                <WriteReviewLink
+                  dispatch={[Function]}
+                  productId="foo"
+                >
+                  <Link
+                    className="css-3bpzxq"
+                    href="/item/666f6f/write_review"
+                  >
+                    <div
+                      className="css-c6ki83 css-3bpzxq"
+                      onClick={[Function]}
+                      role="link"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="reviews.button_add"
+                      >
+                        <span
+                          className=""
+                        >
+                          reviews.button_add
+                        </span>
+                      </Translate>
+                    </div>
+                  </Link>
+                </WriteReviewLink>
+              </Connect(WriteReviewLink)>
             </div>
           </div>
         </Header>
@@ -2841,6 +2954,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
         >
           <div>
             <Review
+              key="0"
               review={
                 Object {
                   "author": "",
@@ -2867,18 +2981,21 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 >
                   <div>
                     <RatingStars
-                      className="css-hgkz41"
+                      className="css-1tsawhq"
                       display="small"
+                      isFormElement={false}
+                      onSelection={[Function]}
                       value={100}
                     >
                       <div
-                        className="css-13azwyo css-hgkz41"
+                        className="css-13azwyo css-1tsawhq"
                       >
                         <div
                           className="css-4s85e9"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -2913,7 +3030,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -2948,7 +3066,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -2983,7 +3102,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -3018,7 +3138,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -3057,7 +3178,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                           className="css-16y9zin"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -3092,7 +3214,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -3127,7 +3250,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -3162,7 +3286,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -3197,7 +3322,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -3296,6 +3422,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               </div>
             </Review>
             <Review
+              key="1"
               review={
                 Object {
                   "author": "",
@@ -3322,18 +3449,21 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 >
                   <div>
                     <RatingStars
-                      className="css-hgkz41"
+                      className="css-1tsawhq"
                       display="small"
+                      isFormElement={false}
+                      onSelection={[Function]}
                       value={100}
                     >
                       <div
-                        className="css-13azwyo css-hgkz41"
+                        className="css-13azwyo css-1tsawhq"
                       >
                         <div
                           className="css-4s85e9"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -3368,7 +3498,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -3403,7 +3534,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -3438,7 +3570,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -3473,7 +3606,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -3512,7 +3646,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                           className="css-16y9zin"
                         >
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="0"
                           >
                             <Star
                               className=""
@@ -3547,7 +3682,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="1"
                           >
                             <Star
                               className=""
@@ -3582,7 +3718,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="2"
                           >
                             <Star
                               className=""
@@ -3617,7 +3754,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="3"
                           >
                             <Star
                               className=""
@@ -3652,7 +3790,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </Star>
                           </div>
                           <div
-                            className="css-1dpi4l8 css-hvpjjr"
+                            className="css-kdb68h css-q4owmg"
+                            key="4"
                           >
                             <Star
                               className=""
@@ -3757,36 +3896,302 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
             dispatch={[Function]}
             productId="foo"
             totalReviewCount={2}
+          />
+        </Connect(AllReviewsLink)>
+      </div>
+    </Reviews>
+  </Connect(Reviews)>
+</Provider>
+`;
+
+exports[`<Reviews /> should render when no reviews and rating given 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Reviews)>
+    <Reviews
+      dispatch={[Function]}
+      rating={Object {}}
+      reviews={null}
+    >
+      <div>
+        <Header
+          rating={Object {}}
+        >
+          <div
+            className="css-gffnwd"
           >
-            <div>
-              <Link
-                className=""
-                href="/item/666f6f/reviews"
+            <AverageRating
+              rating={Object {}}
+            >
+              <div
+                className="css-t193cd"
               >
-                <div
-                  className="css-c6ki83 "
-                  onClick={[Function]}
-                  role="link"
+                <RatingStars
+                  className=""
+                  display="large"
+                  isFormElement={false}
+                  onSelection={[Function]}
+                  value={0}
                 >
-                  <Translate
-                    className=""
-                    params={
-                      Object {
-                        "count": 2,
-                      }
-                    }
-                    string="reviews.button_all"
+                  <div
+                    className="css-13azwyo "
                   >
-                    <span
-                      className=""
+                    <div
+                      className="css-4s85e9"
                     >
-                      reviews.button_all
-                    </span>
-                  </Translate>
-                </div>
-              </Link>
+                      <div
+                        className="css-14rta1c css-q4owmg"
+                        key="0"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        className="css-14rta1c css-q4owmg"
+                        key="1"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        className="css-14rta1c css-q4owmg"
+                        key="2"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        className="css-14rta1c css-q4owmg"
+                        key="3"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                      <div
+                        className="css-14rta1c css-q4owmg"
+                        key="4"
+                      >
+                        <Star
+                          className=""
+                          color={null}
+                          size="2em"
+                          viewBox="0 0 24 24"
+                        >
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                            size="2em"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "2em",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Star>
+                      </div>
+                    </div>
+                    <div
+                      className="css-16y9zin"
+                    />
+                  </div>
+                </RatingStars>
+              </div>
+            </AverageRating>
+            <div
+              className="css-1nye1w4"
+            >
+              <Translate
+                className=""
+                params={Object {}}
+                string="reviews.no_reviews"
+              >
+                <span
+                  className=""
+                >
+                  reviews.no_reviews
+                </span>
+              </Translate>
+              <Connect(WriteReviewLink)>
+                <WriteReviewLink
+                  dispatch={[Function]}
+                  productId="foo"
+                >
+                  <Link
+                    className="css-3bpzxq"
+                    href="/item/666f6f/write_review"
+                  >
+                    <div
+                      className="css-c6ki83 css-3bpzxq"
+                      onClick={[Function]}
+                      role="link"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="reviews.button_add"
+                      >
+                        <span
+                          className=""
+                        >
+                          reviews.button_add
+                        </span>
+                      </Translate>
+                    </div>
+                  </Link>
+                </WriteReviewLink>
+              </Connect(WriteReviewLink)>
             </div>
-          </AllReviewsLink>
+          </div>
+        </Header>
+        <List
+          reviews={null}
+        />
+        <Connect(AllReviewsLink)>
+          <AllReviewsLink
+            dispatch={[Function]}
+            productId="foo"
+            totalReviewCount={null}
+          />
         </Connect(AllReviewsLink)>
       </div>
     </Reviews>

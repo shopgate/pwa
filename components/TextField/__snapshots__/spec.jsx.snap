@@ -3,11 +3,10 @@
 exports[`<TextField /> should focus the input 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onFocusChange={[Function]}
@@ -19,40 +18,51 @@ exports[`<TextField /> should focus the input 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-1fekhao"
-      htmlFor="test-input"
-      style={null}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -61,45 +71,92 @@ exports[`<TextField /> should focus the input 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -107,11 +164,10 @@ exports[`<TextField /> should focus the input 1`] = `
 exports[`<TextField /> should receive the correct value while typing 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -122,44 +178,51 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-16msjt6 css-1fekhao"
-      htmlFor="test-input"
-      style={
-        Object {
-          "color": "#fa5400",
-        }
-      }
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -168,45 +231,92 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
-        value="foobar"
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+        validateOnBlur={true}
+        value=""
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="foobar"
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -214,11 +324,10 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
 exports[`<TextField /> should render a simple text field 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -229,40 +338,51 @@ exports[`<TextField /> should render a simple text field 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-1fekhao"
-      htmlFor="test-input"
-      style={null}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -271,45 +391,92 @@ exports[`<TextField /> should render a simple text field 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -317,11 +484,10 @@ exports[`<TextField /> should render a simple text field 1`] = `
 exports[`<TextField /> should render the text field as password 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -332,40 +498,51 @@ exports[`<TextField /> should render the text field as password 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-1fekhao"
-      htmlFor="test-input"
-      style={null}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -374,45 +551,92 @@ exports[`<TextField /> should render the text field as password 1`] = `
       password={true}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
-        type="password"
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={true}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={true}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="password"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -420,11 +644,10 @@ exports[`<TextField /> should render the text field as password 1`] = `
 exports[`<TextField /> should render the text field with a default value 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -435,44 +658,51 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-16msjt6 css-1fekhao"
-      htmlFor="test-input"
-      style={
-        Object {
-          "color": "#fa5400",
-        }
-      }
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={true}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-16msjt6 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -481,45 +711,92 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value="FooBar"
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value="FooBar"
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value="FooBar"
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="FooBar"
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -527,11 +804,10 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
 exports[`<TextField /> should replace the error text with custom validation error 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -542,40 +818,51 @@ exports[`<TextField /> should replace the error text with custom validation erro
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-1fekhao"
-      htmlFor="test-input"
-      style={null}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -584,46 +871,92 @@ exports[`<TextField /> should replace the error text with custom validation erro
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#ff0000",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string="Custom validation error"
+        className="css-s51m4w"
       >
-        <span
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
           className=""
+          params={Object {}}
+          string=""
         >
-          Custom validation error
-        </span>
-      </Translate>
-    </div>
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -631,11 +964,10 @@ exports[`<TextField /> should replace the error text with custom validation erro
 exports[`<TextField /> should sanitize the input 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -646,44 +978,51 @@ exports[`<TextField /> should sanitize the input 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-16msjt6 css-1fekhao"
-      htmlFor="test-input"
-      style={
-        Object {
-          "color": "#fa5400",
-        }
-      }
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -692,77 +1031,114 @@ exports[`<TextField /> should sanitize the input 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
-        value="FOOBAR"
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+        validateOnBlur={true}
+        value=""
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="FOOBAR"
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
 
 exports[`<TextField /> should show the error message 1`] = `
 <div
-  className="css-1uoxtbe "
+  className="css-1n5fcdz "
 >
-  <div
-    className="css-tnfb18 css-1jyyyen"
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string=""
-    />
-  </div>
-  <label
-    className="css-1980bi2 css-1fekhao"
-    htmlFor="test-input"
-    style={null}
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string=""
-    />
-  </label>
-  <Input
-    className="css-mwlhju"
-    disabled={false}
+  <Hint
+    hintText=""
+    visible={false}
+  />
+  <Label
+    hasErrorMessage={true}
+    isFloating={false}
+    isFocused={false}
+    label=""
+    name="test-input"
+  />
+  <FormElement
     id="test-input"
+    multiLine={false}
     name="test-input"
     onChange={[Function]}
     onFocusChange={[Function]}
@@ -771,61 +1147,38 @@ exports[`<TextField /> should show the error message 1`] = `
     password={false}
     setRef={[Function]}
     type="text"
-    validateOnBlur={true}
     value=""
   />
-  <div
-    className="css-s51m4w"
-  >
-    <div
-      className="css-1tpmuef"
-      style={
-        Object {
-          "borderBottomColor": "#ff0000",
-        }
-      }
-    />
-  </div>
-  <div
-    className="css-1tsf8y2"
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string="This is an error here"
-    />
-  </div>
+  <Underline
+    hasErrorMessage={true}
+    isFocused={false}
+  />
+  <ErrorText
+    className={null}
+    errorText="This is an error here"
+    validationError={null}
+  />
 </div>
 `;
 
 exports[`<TextField /> should show the hint text 1`] = `
 <div
-  className="css-1uoxtbe "
+  className="css-1n5fcdz "
 >
-  <div
-    className="css-tnfb18 css-1jyyyen"
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string="This is the hint text"
-    />
-  </div>
-  <label
-    className="css-1980bi2 css-1fekhao"
-    htmlFor="test-input"
-    style={null}
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string=""
-    />
-  </label>
-  <Input
-    className="css-mwlhju"
-    disabled={false}
+  <Hint
+    hintText="This is the hint text"
+    visible={false}
+  />
+  <Label
+    hasErrorMessage={false}
+    isFloating={false}
+    isFocused={false}
+    label=""
+    name="test-input"
+  />
+  <FormElement
     id="test-input"
+    multiLine={false}
     name="test-input"
     onChange={[Function]}
     onFocusChange={[Function]}
@@ -834,62 +1187,38 @@ exports[`<TextField /> should show the hint text 1`] = `
     password={false}
     setRef={[Function]}
     type="text"
-    validateOnBlur={true}
     value=""
   />
-  <div
-    className="css-s51m4w"
-  >
-    <div
-      className="css-1tpmuef"
-      style={
-        Object {
-          "borderBottomColor": "#fa5400",
-          "transform": "scale3d(0,1,1)",
-        }
-      }
-    />
-  </div>
-  <div
-    className="css-1tsf8y2"
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string=""
-    />
-  </div>
+  <Underline
+    hasErrorMessage={false}
+    isFocused={false}
+  />
+  <ErrorText
+    className={null}
+    errorText=""
+    validationError={null}
+  />
 </div>
 `;
 
 exports[`<TextField /> should show the label 1`] = `
 <div
-  className="css-1uoxtbe "
+  className="css-1n5fcdz "
 >
-  <div
-    className="css-tnfb18 css-1jyyyen"
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string=""
-    />
-  </div>
-  <label
-    className="css-1980bi2 css-1fekhao"
-    htmlFor="test-input"
-    style={null}
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string="This is the label"
-    />
-  </label>
-  <Input
-    className="css-mwlhju"
-    disabled={false}
+  <Hint
+    hintText=""
+    visible={false}
+  />
+  <Label
+    hasErrorMessage={false}
+    isFloating={false}
+    isFocused={false}
+    label="This is the label"
+    name="test-input"
+  />
+  <FormElement
     id="test-input"
+    multiLine={false}
     name="test-input"
     onChange={[Function]}
     onFocusChange={[Function]}
@@ -898,42 +1227,27 @@ exports[`<TextField /> should show the label 1`] = `
     password={false}
     setRef={[Function]}
     type="text"
-    validateOnBlur={true}
     value=""
   />
-  <div
-    className="css-s51m4w"
-  >
-    <div
-      className="css-1tpmuef"
-      style={
-        Object {
-          "borderBottomColor": "#fa5400",
-          "transform": "scale3d(0,1,1)",
-        }
-      }
-    />
-  </div>
-  <div
-    className="css-1tsf8y2"
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string=""
-    />
-  </div>
+  <Underline
+    hasErrorMessage={false}
+    isFocused={false}
+  />
+  <ErrorText
+    className={null}
+    errorText=""
+    validationError={null}
+  />
 </div>
 `;
 
 exports[`<TextField /> should trigger the onChange callback 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -944,44 +1258,51 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-16msjt6 css-1fekhao"
-      htmlFor="test-input"
-      style={
-        Object {
-          "color": "#fa5400",
-        }
-      }
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -990,45 +1311,92 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
-        value="a"
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+        validateOnBlur={true}
+        value=""
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="a"
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
@@ -1036,11 +1404,10 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
 exports[`<TextField /> should trigger the validation callback 1`] = `
 <TextField
   className=""
-  colorError="#ff0000"
-  colorFocus="#fa5400"
   errorText=""
   hintText=""
   label=""
+  multiLine={false}
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
@@ -1051,40 +1418,51 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   value=""
 >
   <div
-    className="css-1uoxtbe "
+    className="css-1n5fcdz "
   >
-    <div
-      className="css-tnfb18 css-1jyyyen"
+    <Hint
+      hintText=""
+      visible={false}
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <div
+        className="css-tnfb18 css-1jyyyen"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </div>
-    <label
-      className="css-1980bi2 css-1fekhao"
-      htmlFor="test-input"
-      style={null}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
     >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
       >
-        <span
+        <Translate
           className=""
-        />
-      </Translate>
-    </label>
-    <Input
-      className="css-mwlhju"
-      disabled={false}
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
       id="test-input"
+      multiLine={false}
       name="test-input"
       onChange={[Function]}
       onFocusChange={[Function]}
@@ -1093,45 +1471,92 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       password={false}
       setRef={[Function]}
       type="text"
-      validateOnBlur={true}
       value=""
     >
-      <input
+      <Component
         className="css-mwlhju"
-        disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        multiLine={false}
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
-    <div
-      className="css-s51m4w"
+      >
+        <SimpleInput
+          className="css-mwlhju"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-mwlhju"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
     >
       <div
-        className="css-1tpmuef"
-        style={
-          Object {
-            "borderBottomColor": "#fa5400",
-            "transform": "scale3d(0,1,1)",
-          }
-        }
-      />
-    </div>
-    <div
-      className="css-1tsf8y2"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string=""
+        className="css-s51m4w"
       >
-        <span
-          className=""
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
         />
-      </Translate>
-    </div>
+      </div>
+    </Underline>
+    <ErrorText
+      className={null}
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className="null css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
   </div>
 </TextField>
 `;
