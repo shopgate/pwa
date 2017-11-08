@@ -48,42 +48,6 @@ exports[`<Header /> should render empty 1`] = `
               >
                 <div
                   className="css-14rta1c css-q4owmg"
-                  key="0"
-                >
-                  <Star
-                    className=""
-                    color={null}
-                    size="2em"
-                    viewBox="0 0 24 24"
-                  >
-                    <Icon
-                      className=""
-                      color={null}
-                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
-                      viewBox="0 0 24 24"
-                    >
-                      <svg
-                        className="css-yys9hb "
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                          }
-                        }
-                        style={
-                          Object {
-                            "fill": null,
-                            "fontSize": "2em",
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      />
-                    </Icon>
-                  </Star>
-                </div>
-                <div
-                  className="css-14rta1c css-q4owmg"
                   key="1"
                 >
                   <Star
@@ -193,6 +157,42 @@ exports[`<Header /> should render empty 1`] = `
                 <div
                   className="css-14rta1c css-q4owmg"
                   key="4"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="2em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="2em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "2em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
+                <div
+                  className="css-14rta1c css-q4owmg"
+                  key="5"
                 >
                   <Star
                     className=""
@@ -333,42 +333,6 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 <div
                   className="css-14rta1c css-q4owmg"
-                  key="0"
-                >
-                  <Star
-                    className=""
-                    color={null}
-                    size="2em"
-                    viewBox="0 0 24 24"
-                  >
-                    <Icon
-                      className=""
-                      color={null}
-                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
-                      viewBox="0 0 24 24"
-                    >
-                      <svg
-                        className="css-yys9hb "
-                        dangerouslySetInnerHTML={
-                          Object {
-                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                          }
-                        }
-                        style={
-                          Object {
-                            "fill": null,
-                            "fontSize": "2em",
-                          }
-                        }
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      />
-                    </Icon>
-                  </Star>
-                </div>
-                <div
-                  className="css-14rta1c css-q4owmg"
                   key="1"
                 >
                   <Star
@@ -511,13 +475,49 @@ exports[`<Header /> should render rating summary 1`] = `
                     </Icon>
                   </Star>
                 </div>
+                <div
+                  className="css-14rta1c css-q4owmg"
+                  key="5"
+                >
+                  <Star
+                    className=""
+                    color={null}
+                    size="2em"
+                    viewBox="0 0 24 24"
+                  >
+                    <Icon
+                      className=""
+                      color={null}
+                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                      size="2em"
+                      viewBox="0 0 24 24"
+                    >
+                      <svg
+                        className="css-yys9hb "
+                        dangerouslySetInnerHTML={
+                          Object {
+                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                          }
+                        }
+                        style={
+                          Object {
+                            "fill": null,
+                            "fontSize": "2em",
+                          }
+                        }
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      />
+                    </Icon>
+                  </Star>
+                </div>
               </div>
               <div
                 className="css-16y9zin"
               >
                 <div
                   className="css-14rta1c css-q4owmg"
-                  key="0"
+                  key="6"
                 >
                   <Star
                     className=""
@@ -553,7 +553,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 </div>
                 <div
                   className="css-14rta1c css-q4owmg"
-                  key="1"
+                  key="7"
                 >
                   <Star
                     className=""

@@ -70,7 +70,7 @@ class ReviewForm extends Component {
    * @return {null|*|{}}
    */
   get validationErrors() {
-    return this.tmpErrors || { ...this.state.validationErrors };
+    return { ...this.state.validationErrors };
   }
 
   /**
@@ -78,16 +78,17 @@ class ReviewForm extends Component {
    * @return {boolean} Returns whether the submission was valid or not.
    */
   get formValid() {
-    // Store errors to validate all fields at once.
-    this.tmpErrors = this.validationErrors;
+    const validationErrors = {
+      ...this.validateRate(),
+      ...this.validateAuthor(),
+      ...this.validateLength(FIELD_NAME_AUTHOR),
+      ...this.validateLength(FIELD_NAME_TITLE),
+      ...this.validateLength(FIELD_NAME_REVIEW),
+    };
 
-    const valid = this.validateRate()
-      && this.validateAuthor()
-      && this.validateLength(FIELD_NAME_AUTHOR)
-      && this.validateLength(FIELD_NAME_TITLE)
-      && this.validateLength(FIELD_NAME_REVIEW);
-    this.tmpErrors = null;
-    return valid;
+    this.setState({ validationErrors });
+
+    return !Object.keys(validationErrors).length;
   }
 
   /**
@@ -105,9 +106,7 @@ class ReviewForm extends Component {
       delete validationErrors[FIELD_NAME_RATE];
     }
 
-    this.setState({ validationErrors });
-
-    return !validationErrors[FIELD_NAME_RATE];
+    return validationErrors;
   }
 
   /**
@@ -128,9 +127,7 @@ class ReviewForm extends Component {
       delete validationErrors[FIELD_NAME_AUTHOR];
     }
 
-    this.setState({ validationErrors });
-
-    return !validationErrors[FIELD_NAME_AUTHOR];
+    return validationErrors;
   }
 
   /**
@@ -150,9 +147,7 @@ class ReviewForm extends Component {
       delete validationErrors[field];
     }
 
-    this.setState({ validationErrors });
-
-    return !validationErrors[field];
+    return validationErrors;
   }
 
   /**
@@ -193,8 +188,8 @@ class ReviewForm extends Component {
             value={this.state[FIELD_NAME_AUTHOR]}
             errorText={this.state.validationErrors[FIELD_NAME_AUTHOR]}
             onChange={(author) => {
-              this.setState({ author });
-              this.validateAuthor({ author });
+              const validationErrors = this.validateAuthor({ author });
+              this.setState({ author, validationErrors });
             }}
           />
           <TextField
@@ -204,8 +199,8 @@ class ReviewForm extends Component {
             value={this.state[FIELD_NAME_TITLE]}
             errorText={this.state.validationErrors[FIELD_NAME_TITLE]}
             onChange={(title) => {
-              this.setState({ title });
-              this.validateLength(FIELD_NAME_TITLE, { title });
+              const validationErrors = this.validateLength(FIELD_NAME_TITLE, { title });
+              this.setState({ title, validationErrors });
             }}
           />
           <TextField
@@ -216,8 +211,8 @@ class ReviewForm extends Component {
             errorText={this.state.validationErrors[FIELD_NAME_REVIEW]}
             multiLine
             onChange={(review) => {
-              this.setState({ review });
-              this.validateLength(FIELD_NAME_REVIEW, { review });
+              const validationErrors = this.validateLength(FIELD_NAME_REVIEW, { review });
+              this.setState({ review, validationErrors });
             }}
           />
           <FormButtons />

@@ -27,7 +27,7 @@ ErrorText.propTypes = {
 };
 
 ErrorText.defaultProps = {
-  className: null,
+  className: '',
   errorText: null,
   validationError: null,
 };
