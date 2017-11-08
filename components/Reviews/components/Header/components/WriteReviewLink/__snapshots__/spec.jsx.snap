@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WriteReviewLink> should not render when current product is empty 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(WriteReviewLink)>
+    <WriteReviewLink
+      dispatch={[Function]}
+      productId={null}
+    />
+  </Connect(WriteReviewLink)>
+</Provider>
+`;
+
+exports[`<WriteReviewLink> should render when current product is set 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(WriteReviewLink)>
+    <WriteReviewLink
+      dispatch={[Function]}
+      productId="foo"
+    >
+      <Link
+        className="css-3bpzxq"
+        href="/item/666f6f/write_review"
+      >
+        <div
+          className="css-c6ki83 css-3bpzxq"
+          onClick={[Function]}
+          role="link"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string="reviews.button_add"
+          >
+            <span
+              className=""
+            >
+              reviews.button_add
+            </span>
+          </Translate>
+        </div>
+      </Link>
+    </WriteReviewLink>
+  </Connect(WriteReviewLink)>
+</Provider>
+`;
