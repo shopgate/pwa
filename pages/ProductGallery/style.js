@@ -18,7 +18,7 @@ const fullSize = {
 const container = css({
   ...fullSize,
   background: colors.dark,
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   bottom: 0,
   left: 0,
@@ -27,7 +27,7 @@ const container = css({
 
 const navButton = css({
   position: 'fixed',
-  top: 0,
+  top: variables.statusBar.height,
   left: 0,
   width: variables.navigator.height,
   color: colors.light,
