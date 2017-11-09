@@ -42,7 +42,15 @@ const dropdown = css({
   top: variables.filterbar.height,
   left: 0,
   backgroundColor: colors.light,
-  boxShadow: `inset 0 -1px ${colors.dividers}`,
+  ':after': {
+    content: "''",
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: 0.5,
+    background: colors.dividers,
+  },
 }).toString();
 
 const selectItem = css({
@@ -52,11 +60,8 @@ const selectItem = css({
   margin: '0 20px',
   textAlign: 'left',
   width: 'calc(100% - 40px)',
-  ':last-child': {
-    marginBottom: variables.gap.big,
-  },
   ':not(:last-child)': {
-    boxShadow: `inset 0 -1px ${colors.dividers}`,
+    borderBottom: `solid 0.5px ${colors.dividers}`,
   },
 }).toString();
 
