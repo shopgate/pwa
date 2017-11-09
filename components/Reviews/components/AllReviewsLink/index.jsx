@@ -24,7 +24,7 @@ import {
  * @returns {JSX|null}
  */
 const AllReviewsLink = ({ productId, totalReviewCount }) => {
-  if (totalReviewCount <= REVIEW_PREVIEW_COUNT) {
+  if (!productId || totalReviewCount <= REVIEW_PREVIEW_COUNT) {
     return null;
   }
 
@@ -40,11 +40,12 @@ const AllReviewsLink = ({ productId, totalReviewCount }) => {
 };
 
 AllReviewsLink.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.string,
   totalReviewCount: PropTypes.number,
 };
 
 AllReviewsLink.defaultProps = {
+  productId: null,
   totalReviewCount: null,
 };
 
