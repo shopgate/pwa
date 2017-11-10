@@ -14,6 +14,7 @@ import {
   ERROR_USER_REVIEW,
   ERROR_SUBMIT_REVIEW,
   RESET_SUBMIT_REVIEW,
+  FLUSH_USER_REVIEWS,
 } from '../constants';
 
 /**
@@ -73,6 +74,8 @@ export default function userReviewsByProductId(state = {}, action) {
           review: action.review.id,
         },
       };
+    case FLUSH_USER_REVIEWS:
+      return {};
     default:
       return state;
   }
