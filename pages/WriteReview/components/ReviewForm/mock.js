@@ -78,5 +78,8 @@ export const mockedStateWithReview = {
         review: 'takimata sanctus est Lorem ipsum',
       },
     },
+    userReviewsByProductId: {
+      foo: { review: 1 },
+    },
   },
 };
