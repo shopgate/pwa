@@ -61,6 +61,14 @@ class ReviewForm extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
+    /**
+     * Once the review is loaded. Never change it again via props.
+     * This will make the form interaction unchanged if props are changed
+     * for whatever reason.
+     */
+    if (this.props.isLoadingUserReview === false) {
+      return;
+    }
     this.setState({
       ...nextProps.review,
       [FIELD_NAME_AUTHOR]: nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName,
