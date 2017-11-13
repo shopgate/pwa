@@ -53,7 +53,6 @@ class ReviewForm extends Component {
       productId: props.productId,
       validationErrors: {},
     };
-    this.tmpErrors = null;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

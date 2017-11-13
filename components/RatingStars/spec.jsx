@@ -85,6 +85,9 @@ describe('<RatingStars />', () => {
     const wrapper = shallow(
       <RatingStars value={100} onSelection={spy} />
     );
+
+    wrapper.find(StarIcon).at(5).parent('div').simulate('click');
     expect(wrapper.find('[role="button"]').length).toBe(0);
+    expect(spy.mock.calls.length).toBe(0);
   });
 });
