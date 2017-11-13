@@ -171,6 +171,23 @@ export const getUserReviewForProduct = createSelector(
 );
 
 /**
+ * Gets user reviews fetching state. Only the first fetch is considered.
+ * @return {bool} True if user review for current product is being fetched.
+ */
+export const getUserReviewFirstFetchState = createSelector(
+  getCurrentProductId,
+  userReviewsByProductId,
+  (productId, userReviews) =>
+    !!(
+      userReviews
+      && productId
+      && userReviews[productId]
+      && !userReviews[productId].review
+      && userReviews[productId].isFetching
+    )
+);
+
+/**
  * Get a user name for the review form.
  * @param {Object} state The state.
  * @returns {string} A user name.
