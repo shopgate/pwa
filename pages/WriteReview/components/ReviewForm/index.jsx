@@ -24,14 +24,15 @@ import styles from './style';
  */
 class ReviewForm extends Component {
   static propTypes = {
-    productId: PropTypes.string.isRequired,
     submit: PropTypes.func.isRequired,
     authorName: PropTypes.string,
+    productId: PropTypes.string,
     review: PropTypes.shape(),
   };
 
   static defaultProps = {
     authorName: '',
+    productId: null,
     review: {},
   };
 
@@ -171,6 +172,9 @@ class ReviewForm extends Component {
    * @returns {JSX}
    */
   render() {
+    if (this.props.productId === null) {
+      return null;
+    }
     return (
       <section className={styles.container}>
         <form onSubmit={this.handleSubmit}>

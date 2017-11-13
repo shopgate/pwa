@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import StarIcon from 'Components/icons/StarIcon';
 import StarHalfIcon from 'Components/icons/StarHalfIcon';
 import RatingStars from './index';
@@ -44,95 +44,47 @@ describe('<RatingStars />', () => {
     expect(wrapper.find(StarHalfIcon).length).toBe(0);
   });
 
-  it('renders as non-form element', () => {
+  it('should change rating on click', () => {
     const wrapper = shallow(
-      <RatingStars
-        value={60}
-        isFormElement={false}
-      />
+      <RatingStars value={100} isSelectable />
     );
-
     expect(wrapper).toMatchSnapshot();
-    const firstStarWrapper = wrapper.find(StarIcon).first().parent('div');
-    const lastStarWrapper = wrapper.find(StarIcon).last().parent('div');
-    expect(firstStarWrapper.prop('role')).not.toBeDefined();
-    expect(firstStarWrapper.prop('onClick')).not.toBeDefined();
-    expect(lastStarWrapper.prop('role')).not.toBeDefined();
-    expect(lastStarWrapper.prop('onClick')).not.toBeDefined();
+    expect(wrapper.find(StarIcon).length).toBe(10);
+    wrapper.setProps({ value: 20 });
+    expect(wrapper.find(StarIcon).length).toBe(6);
+    wrapper.setProps({ value: 70 });
+    expect(wrapper.find(StarIcon).length).toBe(8);
+    expect(wrapper.find(StarHalfIcon).length).toBe(1);
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('renders as form element', () => {
+  it('should call onSelection callback when component is selectable', () => {
+    const spy = jest.fn();
     const wrapper = shallow(
-      <RatingStars
-        value={60}
-        isFormElement
-      />
-    );
-
-    const firstStarWrapper = wrapper.find(StarIcon).first().parent('div');
-    const lastStarWrapper = wrapper.find(StarIcon).last().parent('div');
-
-    expect(wrapper).toMatchSnapshot();
-    expect(firstStarWrapper.prop('role')).toEqual('button');
-    expect(typeof firstStarWrapper.prop('onClick')).toEqual('function');
-    expect(lastStarWrapper.prop('role')).toEqual('button');
-    expect(typeof lastStarWrapper.prop('onClick')).toEqual('function');
-  });
-
-  it('sets a value on filled star click', (done) => {
-    const wrapper = mount(
       <RatingStars
         value={100}
+        isSelectable
         onSelection={(e) => {
-          expect(e.target.value).toEqual(20);
-          done();
+          wrapper.setProps({ value: e.target.value });
+          spy();
         }}
-        isFormElement
       />
     );
-
-    // Get the first filled star
-    const firstStarWrapper = wrapper
-      .findWhere(comp => comp.name() === 'div' && comp.key() === `${numEmptyStars + 1}`)
-      .first();
-    expect(wrapper).toMatchSnapshot();
-    expect(firstStarWrapper.prop('role')).toEqual('button');
-    expect(typeof firstStarWrapper.prop('onClick')).toEqual('function');
-    firstStarWrapper.simulate('click', { target: {} });
+    // Click on 1 filled star.
+    wrapper.find('[role="button"]').at(5).simulate('click', { target: { value: 10 } });
+    expect(spy.mock.calls.length).toBe(1);
+    expect(wrapper.find('[role="button"]').length).toBe(6);
+    // Click on 4th empty star
+    wrapper.find('[role="button"]').at(3).simulate('click', { target: { value: 80 } });
+    expect(wrapper.find('[role="button"]').length).toBe(9);
+    expect(spy.mock.calls.length).toBe(2);
   });
 
-  it('sets value on empty star click', (done) => {
+  it('should NOT call onSelection callback when component is NOT selectable', () => {
+    const spy = jest.fn();
     const wrapper = shallow(
-      <RatingStars
-        value={0}
-        onSelection={(e) => {
-          expect(e.target.value).toEqual(100);
-          done();
-        }}
-        isFormElement
-      />
+      <RatingStars value={100} onSelection={spy} />
     );
-
-    // Get the empty star at last position
-    const lastStarWrapper = wrapper
-      .findWhere(comp => comp.name() === 'div' && comp.key() === `${numEmptyStars}`)
-      .first();
-
-    expect(wrapper).toMatchSnapshot();
-    expect(lastStarWrapper.prop('role')).toEqual('button');
-    expect(typeof lastStarWrapper.prop('onClick')).toEqual('function');
-    lastStarWrapper.simulate('click', { target: {} });
-  });
-
-  it('should only update if value changed', () => {
-    const wrapper = shallow(
-      <RatingStars value={60} />
-    );
-
-    const shouldUpdate = wrapper.instance().shouldComponentUpdate({ value: 20 }, {});
-    expect(shouldUpdate).toBe(true);
-
-    const shouldNotUpdate = wrapper.instance().shouldComponentUpdate({ value: 60 }, {});
-    expect(shouldNotUpdate).toBe(false);
+    expect(wrapper.find('[role="button"]').length).toBe(0);
   });
 });

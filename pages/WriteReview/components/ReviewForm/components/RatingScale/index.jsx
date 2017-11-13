@@ -69,7 +69,7 @@ class RatingScale extends React.Component {
         <I18n.Text string="reviews.review_form_rate" />
         <span className={styles.scale}>
           <RatingStars
-            isFormElement
+            isSelectable
             onSelection={this.updateValue}
             value={this.state.value}
             display="large"

@@ -11,6 +11,10 @@ import {
   getCurrentProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
+  userDidLogout$,
+} from '@shopgate/pwa-common/streams/user';
+
+import {
   requestReviewSubmit$,
   responseReviewSubmit$,
   successReviewSubmit$,
@@ -21,7 +25,7 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
-
+import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 /**
  * Review form subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -67,4 +71,8 @@ export default function writeReview(subscribe) {
       title: 'reviews.modal_title',
     }));
   });
+  /**
+   * When user is logged out reviews relation should be removed.
+   */
+  subscribe(userDidLogout$, ({ dispatch }) => dispatch(flushUserReview()));
 }

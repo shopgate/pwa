@@ -28,14 +28,14 @@ class RatingStars extends React.Component {
     value: PropTypes.number.isRequired,
     className: PropTypes.string,
     display: PropTypes.oneOf(Object.keys(availableStyles)),
-    isFormElement: PropTypes.bool,
+    isSelectable: PropTypes.bool,
     onSelection: PropTypes.func,
   };
 
   static defaultProps = {
     className: '',
     display: 'small',
-    isFormElement: false,
+    isSelectable: false,
     onSelection: () => {
     },
   };
@@ -65,7 +65,7 @@ class RatingStars extends React.Component {
    * @returns {JSX}
    */
   render() {
-    const { value, isFormElement } = this.props;
+    const { value, isSelectable } = this.props;
     const numStars = 5;
     const ratedStars = value / RATING_SCALE_DIVISOR;
     const numFullStars = Math.floor(ratedStars);
@@ -82,7 +82,7 @@ class RatingStars extends React.Component {
         const starProps = {
           className: iconClassName,
           key: pos,
-          ...(isFormElement) && {
+          ...(isSelectable) && {
             role: 'button',
             onClick: e => this.handleSelection(e, pos),
           },
@@ -102,7 +102,7 @@ class RatingStars extends React.Component {
         const starProps = {
           className: iconClassName,
           key: numStars + pos,
-          ...(isFormElement) && {
+          ...(isSelectable) && {
             role: 'button',
             onClick: e => this.handleSelection(e, pos),
           },
