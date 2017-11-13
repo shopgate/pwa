@@ -7,8 +7,9 @@
 import { connect } from 'react-redux';
 import submitReview from '@shopgate/pwa-common-commerce/reviews/actions/submitReview';
 import {
-  getUserReviewForProduct,
   getDefaultAuthorName,
+  getUserReviewForProduct,
+  getUserReviewFirstFetchState,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
@@ -21,6 +22,7 @@ const mapStateToProps = state => ({
   authorName: getDefaultAuthorName(state),
   productId: getCurrentProductId(state),
   review: getUserReviewForProduct(state),
+  isLoadingUserReview: getUserReviewFirstFetchState(state),
 });
 
 /**

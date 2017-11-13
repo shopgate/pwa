@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'Components/TextField';
+import LoadingIndicator from 'Components/LoadingIndicator';
 import RatingScale from './components/RatingScale';
 import FormButtons from './components/FormButtons';
 import {
@@ -24,6 +25,7 @@ import styles from './style';
  */
 class ReviewForm extends Component {
   static propTypes = {
+    isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
     authorName: PropTypes.string,
     productId: PropTypes.string,
@@ -174,6 +176,9 @@ class ReviewForm extends Component {
   render() {
     if (this.props.productId === null) {
       return null;
+    }
+    if (this.props.isLoadingUserReview) {
+      return <LoadingIndicator />;
     }
     return (
       <section className={styles.container}>
