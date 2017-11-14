@@ -213,7 +213,8 @@ class ReviewForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <RatingScale
             onChange={(rate) => {
-              this.setState({ rate });
+              const validationErrors = this.validateRate({ rate });
+              this.setState({ rate, validationErrors });
             }}
             errorText={this.state.validationErrors[FIELD_NAME_RATE]}
             value={this.state[FIELD_NAME_RATE]}
