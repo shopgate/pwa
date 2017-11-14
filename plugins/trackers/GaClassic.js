@@ -76,7 +76,7 @@ class GaClassic {
     if ((typeof window._gaq === 'undefined' || typeof window._gaq._getAsyncTracker === 'undefined') || (global && global.it)) {
       (function() {
         var gaJs = document.createElement('script'); gaJs.type = 'text/javascript'; gaJs.async = true;
-        gaJs.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        gaJs.src = 'https://ssl.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gaJs, s);
       })();
     }
