@@ -71,7 +71,7 @@ exports[`<List /> should render list with reviews 1`] = `
             <RatingStars
               className="css-1tsawhq"
               display="small"
-              isFormElement={false}
+              isSelectable={false}
               onSelection={[Function]}
               value={100}
             >
@@ -539,7 +539,7 @@ exports[`<List /> should render list with reviews 1`] = `
             <RatingStars
               className="css-1tsawhq"
               display="small"
-              isFormElement={false}
+              isSelectable={false}
               onSelection={[Function]}
               value={40}
             >
@@ -913,7 +913,7 @@ exports[`<List /> should render list with reviews 1`] = `
             <RatingStars
               className="css-1tsawhq"
               display="small"
-              isFormElement={false}
+              isSelectable={false}
               onSelection={[Function]}
               value={60}
             >
@@ -1323,7 +1323,7 @@ exports[`<List /> should render list with reviews 1`] = `
             <RatingStars
               className="css-1tsawhq"
               display="small"
-              isFormElement={false}
+              isSelectable={false}
               onSelection={[Function]}
               value={20}
             >

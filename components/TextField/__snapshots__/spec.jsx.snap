@@ -139,12 +139,12 @@ exports[`<TextField /> should focus the input 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -299,12 +299,12 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -459,12 +459,12 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -619,12 +619,12 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -779,12 +779,12 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -939,12 +939,12 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -1099,12 +1099,12 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -1154,7 +1154,7 @@ exports[`<TextField /> should show the error message 1`] = `
     isFocused={false}
   />
   <ErrorText
-    className={null}
+    className=""
     errorText="This is an error here"
     validationError={null}
   />
@@ -1194,7 +1194,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     isFocused={false}
   />
   <ErrorText
-    className={null}
+    className=""
     errorText=""
     validationError={null}
   />
@@ -1234,7 +1234,7 @@ exports[`<TextField /> should show the label 1`] = `
     isFocused={false}
   />
   <ErrorText
-    className={null}
+    className=""
     errorText=""
     validationError={null}
   />
@@ -1379,12 +1379,12 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""
@@ -1539,12 +1539,12 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </div>
     </Underline>
     <ErrorText
-      className={null}
+      className=""
       errorText=""
       validationError={null}
     >
       <div
-        className="null css-gywm7f"
+        className=" css-gywm7f"
       >
         <Translate
           className=""

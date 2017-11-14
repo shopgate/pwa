@@ -148,7 +148,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <RatingStars
                   className=""
                   display="large"
-                  isFormElement={false}
+                  isSelectable={false}
                   onSelection={[Function]}
                   value={50}
                 >
@@ -593,7 +593,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
-                      isFormElement={false}
+                      isSelectable={false}
                       onSelection={[Function]}
                       value={100}
                     >
@@ -1061,7 +1061,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
-                      isFormElement={false}
+                      isSelectable={false}
                       onSelection={[Function]}
                       value={100}
                     >
@@ -1529,7 +1529,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
-                      isFormElement={false}
+                      isSelectable={false}
                       onSelection={[Function]}
                       value={100}
                     >
@@ -1997,7 +1997,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
-                      isFormElement={false}
+                      isSelectable={false}
                       onSelection={[Function]}
                       value={100}
                     >
@@ -2554,7 +2554,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 <RatingStars
                   className=""
                   display="large"
-                  isFormElement={false}
+                  isSelectable={false}
                   onSelection={[Function]}
                   value={50}
                 >
@@ -2983,7 +2983,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
-                      isFormElement={false}
+                      isSelectable={false}
                       onSelection={[Function]}
                       value={100}
                     >
@@ -3451,7 +3451,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
-                      isFormElement={false}
+                      isSelectable={false}
                       onSelection={[Function]}
                       value={100}
                     >
@@ -3939,7 +3939,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                 <RatingStars
                   className=""
                   display="large"
-                  isFormElement={false}
+                  isSelectable={false}
                   onSelection={[Function]}
                   value={0}
                 >

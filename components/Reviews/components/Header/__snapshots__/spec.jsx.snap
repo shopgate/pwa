@@ -36,7 +36,7 @@ exports[`<Header /> should render empty 1`] = `
           <RatingStars
             className=""
             display="large"
-            isFormElement={false}
+            isSelectable={false}
             onSelection={[Function]}
             value={0}
           >
@@ -321,7 +321,7 @@ exports[`<Header /> should render rating summary 1`] = `
           <RatingStars
             className=""
             display="large"
-            isFormElement={false}
+            isSelectable={false}
             onSelection={[Function]}
             value={50}
           >
