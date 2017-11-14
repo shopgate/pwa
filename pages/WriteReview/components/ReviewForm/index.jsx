@@ -61,18 +61,33 @@ class ReviewForm extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
-    /**
-     * Once the review is loaded. Never change it again via props.
-     * This will make the form interaction unchanged if props are changed
-     * for whatever reason.
-     */
-    if (this.props.isLoadingUserReview === false) {
-      return;
+    let stateUpdate = {
+      productId: nextProps.productId,
+    };
+    if (this.shouldUpdateReviewsStateFields()) {
+      stateUpdate = {
+        ...stateUpdate,
+        ...nextProps.review,
+        [FIELD_NAME_AUTHOR]: nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName,
+      };
     }
-    this.setState({
-      ...nextProps.review,
-      [FIELD_NAME_AUTHOR]: nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName,
-    });
+
+    this.setState(stateUpdate);
+  }
+
+  /**
+   * Once the review is loaded. Never change it again via props.
+   * This will make the form interaction unchanged if props are changed
+   * for whatever reason.
+   *
+   * @return {boolean}
+   */
+  shouldUpdateReviewsStateFields() {
+    if (this.props.isLoadingUserReview === false) {
+      return false;
+    }
+
+    return true;
   }
 
   /**
@@ -184,7 +199,13 @@ class ReviewForm extends Component {
     if (this.props.productId === null) {
       return null;
     }
-    if (this.props.isLoadingUserReview) {
+    /**
+     * Show loading indicator only when review is initially loading and user
+     * didn't interact with the form.
+     * Rate is a good indicator for that since it's the only property of review which is
+     * required and has no default value.
+     */
+    if (this.props.isLoadingUserReview && !this.state.rate) {
       return <LoadingIndicator />;
     }
     return (
