@@ -68,8 +68,11 @@ class ReviewForm extends Component {
       stateUpdate = {
         ...stateUpdate,
         ...nextProps.review,
-        [FIELD_NAME_AUTHOR]: nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName,
       };
+    }
+
+    if (!this.state[FIELD_NAME_AUTHOR]) {
+      stateUpdate[FIELD_NAME_AUTHOR] = nextProps.review[FIELD_NAME_AUTHOR] || nextProps.authorName;
     }
 
     this.setState(stateUpdate);
