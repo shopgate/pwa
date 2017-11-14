@@ -20,13 +20,14 @@ beforeEach(() => {
  * @param {Object} mockedState Mocked stage.
  * @return {ReactWrapper}
  */
-const createComponent = (mockedState) => {
+const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
   /* eslint-disable global-require */
   const ReviewForm = require('./index').default;
-
+  const store = mockedStore(mockedState);
+  store.dispatch = dispatchSpy;
   /* eslint-enable global-require */
   return mount(
-    <Provider store={mockedStore(mockedState)}>
+    <Provider store={store}>
       <ReviewForm submit={() => {}} />
     </Provider>,
     {
@@ -75,7 +76,7 @@ describe('<ReviewForm />', () => {
   });
 
   it('should set form data', () => {
-    const comp = createComponent(mockedStateWithInvalidReview);
+    const comp = createComponent(mockedStateWithReview);
     const id = mockedStateWithReview.reviews.userReviewsByProductId.foo.review;
     const review = mockedStateWithReview.reviews.reviewsById[id];
     const form = comp.find('form');
@@ -111,9 +112,7 @@ describe('<ReviewForm />', () => {
     const comp = createComponent(mockedStateWithReview);
     comp.find('form').simulate('submit');
     comp.update();
-
     const errors = comp.find('ReviewForm').instance().state.validationErrors;
-    console.warn(mockedStateWithReview);
-    expect(errors.length).isEqual(0);
+    expect(Object.keys(errors).length).toBe(0);
   });
 });
