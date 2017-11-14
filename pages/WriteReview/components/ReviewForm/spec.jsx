@@ -106,6 +106,25 @@ describe('<ReviewForm />', () => {
 
     const errors2 = comp.find('ReviewForm').instance().state.validationErrors;
     expect(errors2.review).toBeFalsy();
+
+    const longAuthor = new Array(256).fill('a').join('');
+    comp.find('input[name="author"]').simulate('change', {
+      target: {
+        value: longAuthor,
+      },
+    });
+    const errors3 = comp.find('ReviewForm').instance().state.validationErrors;
+    expect(errors3.author).toBeTruthy();
+    comp.find('input[name="author"]').simulate('change', {
+      target: {
+        value: 'Author',
+      } });
+
+    const errors4 = comp.find('ReviewForm').instance().state.validationErrors;
+    expect(errors4.author).toBeFalsy();
+
+    comp.find('RatingScale').find('[role="button"]').first().simulate('click');
+    expect(comp.find('ReviewForm').instance().state.rate).toBe(20);
   });
 
   it('should submit with valid review', () => {
