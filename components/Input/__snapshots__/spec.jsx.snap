@@ -20,6 +20,8 @@ exports[`<Input /> should change the value on user input 1`] = `
     value="My initial value"
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -54,6 +56,8 @@ exports[`<Input /> should focus the input 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -86,6 +90,8 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -154,6 +160,8 @@ exports[`<Input /> should render a simple input field 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -188,6 +196,8 @@ exports[`<Input /> should render the input as password 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -222,6 +232,8 @@ exports[`<Input /> should render the input with a default value 1`] = `
     value="FooBar"
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -256,6 +268,8 @@ exports[`<Input /> should sanitize the input 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -290,6 +304,8 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
@@ -324,6 +340,8 @@ exports[`<Input /> should validate the input 1`] = `
     value=""
   >
     <input
+      autoComplete="off"
+      autoCorrect="off"
       className=""
       disabled={false}
       id={null}
