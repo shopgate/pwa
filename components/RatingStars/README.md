@@ -14,7 +14,7 @@ import { RatingStars } from 'Templates/components';
 
 ### value (required)
 
-_Type_: `number`<br>
+_Type_: `number`  
 
 The rating value that displays stars accordingly. It needs to be a number between [0...100].
 
@@ -29,10 +29,10 @@ The rating value that displays stars accordingly. It needs to be a number betwee
 
 ### display
 
-_Type_: `'small'`, `'big'`, `'large'`, any custom defined style key.<br>
-_Default_: `'small'` or first style key defined.<br>
+_Type_: `'small'`, `'big'`, `'large'`, any custom defined style key.  
+_Default_: `'small'` or first style key defined.  
 
-The display style of the stars. 
+The display style of the stars.
 
 ```
 // Display a bigger version of the rating stars.
@@ -41,21 +41,21 @@ The display style of the stars.
 
 ### isSelectable
 
-_Type_: `boolean`<br>
-_Default_: `false`<br>
+_Type_: `boolean`  
+_Default_: `false`  
 
 The prop to enable rating stars to be a selectable element for forms.
 
 ### onSelection
 
-_Type_: `function`<br>
+_Type_: `function`  
 ```
 // Displays 4 filled stars and 1 empty star.
 <RatingStars
-    value={80} 
+    value={80}
     onSelection={event => this.setState({ value: e.target.value })}
-    isSelectable 
+    isSelectable
 />
 ```
 
-The callback for the user selection if isSelectable is `true`. It receives the event object where the target value can be `20`, `40`, `60`, `80` or `100`. 
+The callback for the user selection if isSelectable is `true`. It receives the event object where the target value can be `20`, `40`, `60`, `80` or `100`.

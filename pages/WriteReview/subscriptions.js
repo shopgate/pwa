@@ -26,6 +26,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
+import { DIALOG_TEXT_MESSAGE } from 'Components/Dialog/constants';
 /**
  * Review form subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -66,8 +67,10 @@ export default function writeReview(subscribe) {
   subscribe(successReviewSubmit$, ({ dispatch }) => {
     dispatch(goBackHistory());
     dispatch(showModal({
-      dismiss: 'modal.ok',
-      confirm: 'reviews.modal_message',
+      confirm: 'modal.ok',
+      dismiss: null,
+      type: DIALOG_TEXT_MESSAGE,
+      message: 'reviews.modal_message',
       title: 'reviews.modal_title',
     }));
   });
