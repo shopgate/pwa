@@ -31,8 +31,8 @@ class Input extends Component {
   };
 
   static defaultProps = {
-    autoComplete: true,
-    autoCorrect: true,
+    autoComplete: false,
+    autoCorrect: false,
     className: '',
     disabled: false,
     onChange: () => {},
