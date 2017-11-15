@@ -15,6 +15,8 @@ import PropTypes from 'prop-types';
  */
 class Input extends Component {
   static propTypes = {
+    autoComplete: PropTypes.bool,
+    autoCorrect: PropTypes.bool,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
@@ -29,6 +31,8 @@ class Input extends Component {
   };
 
   static defaultProps = {
+    autoComplete: false,
+    autoCorrect: false,
     className: '',
     disabled: false,
     onChange: () => {},
