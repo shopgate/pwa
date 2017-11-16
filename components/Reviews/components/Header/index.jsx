@@ -19,6 +19,9 @@ import styles from './style';
  * @returns {JSX}
  */
 const Header = ({ rating }) => {
+  if (!rating) {
+    return null;
+  }
   const { average = 0 } = rating;
 
   if (!average) {
@@ -53,9 +56,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  rating: {
-    average: 0,
-  },
+  rating: null,
 };
 
 export default Header;
