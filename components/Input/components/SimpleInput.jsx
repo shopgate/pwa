@@ -16,6 +16,8 @@ import PropTypes from 'prop-types';
 class SimpleInput extends Component {
 
   static propTypes = {
+    autoComplete: PropTypes.bool,
+    autoCorrect: PropTypes.bool,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     id: PropTypes.string,
@@ -32,6 +34,8 @@ class SimpleInput extends Component {
   };
 
   static defaultProps = {
+    autoComplete: false,
+    autoCorrect: false,
     className: '',
     disabled: false,
     id: null,
@@ -196,8 +200,8 @@ class SimpleInput extends Component {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         disabled={this.props.disabled}
-        autoCorrect={autoComplete}
-        autoComplete={autoCorrect}
+        autoCorrect={autoCorrect}
+        autoComplete={autoComplete}
       />
     );
   }
