@@ -90,6 +90,7 @@ class SimpleInput extends Component {
       this.updateValue(sanitizedValue);
     }
   }
+
   /**
    * Internal focus event handler.
    */
@@ -115,6 +116,7 @@ class SimpleInput extends Component {
 
     this.props.onFocusChange(false);
   };
+
   /**
    * Internal change event handler.
    * @param {Object} event The event object.
