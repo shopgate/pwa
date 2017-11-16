@@ -8,14 +8,14 @@ styled template component instead.
 ### autoComplete (optional)
 
 _Type_: `boolean`<br>
-_Default_: `true`
+_Default_: `false`
 
 Apply the auto-complete feature to the field.
 
 ### autoCorrect (optional)
 
 _Type_: `boolean`<br>
-_Default_: `true`
+_Default_: `false`
 
 Apply the auto-correct feature to the field.
 
