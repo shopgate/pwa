@@ -27,7 +27,7 @@ Any additional style classes that should be applied to the component.
 
 ### multiLine (optional)
 
-_Type: `boolean`<br>
+_Type_: `boolean`<br>
 _Default_: `false`
 
 Sets the input to behave as multi line input. Multi line input behaves similar to a textarea element, except it grows to the bottom as the user types more input instead of exposing a scrolling area.
