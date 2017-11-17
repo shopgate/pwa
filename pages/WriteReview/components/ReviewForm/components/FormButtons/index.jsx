@@ -21,13 +21,13 @@ const FormButtons = (props) => {
   const buttonStyle = buttonStyles.regular(false);
   return (
     <div className={styles.buttonLine}>
-      <div
-        role="button"
+      <button
+        type="button"
         className={`${buttonStyle.button} ${buttonStyle.content}`}
         onClick={props.cancel}
       >
         <I18n.Text string="common.cancel" />
-      </div>
+      </button>
       <RippleButton type="secondary" disabled={props.isLoading}>
         <I18n.Text string="common.submit" />
       </RippleButton>
