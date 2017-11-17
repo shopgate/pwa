@@ -3920,18 +3920,33 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
   <Connect(Reviews)>
     <Reviews
       dispatch={[Function]}
-      rating={Object {}}
+      rating={
+        Object {
+          "average": 0,
+          "count": 0,
+        }
+      }
       reviews={null}
     >
       <div>
         <Header
-          rating={Object {}}
+          rating={
+            Object {
+              "average": 0,
+              "count": 0,
+            }
+          }
         >
           <div
             className="css-gffnwd"
           >
             <AverageRating
-              rating={Object {}}
+              rating={
+                Object {
+                  "average": 0,
+                  "count": 0,
+                }
+              }
             >
               <div
                 className="css-t193cd"

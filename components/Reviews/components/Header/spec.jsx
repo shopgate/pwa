@@ -32,7 +32,8 @@ const createComponent = (mockedState, props = {}) => mount(
 describe('<Header />', () => {
   let header = null;
   it('should render empty', () => {
-    header = createComponent(mockedStateWithoutReview);
+    const rating = mockedStateWithoutReview.product.productsById.foo.productData.rating;
+    header = createComponent(mockedStateWithoutReview, { rating });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);

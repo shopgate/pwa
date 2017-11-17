@@ -32,7 +32,7 @@ describe('<FormButtons />', () => {
   it('should render submit and cancel button', () => {
     const comp = createComponent();
     const submitButton = comp.find('Button').at(0);
-    const cancelButton = comp.findWhere(c => c.type() === 'div' && c.prop('role') === 'button');
+    const cancelButton = comp.find('button').at(0);
     expect(submitButton.find('Translate').prop('string')).toEqual('common.submit');
     expect(cancelButton.length).toEqual(1);
     expect(cancelButton.find('Translate').prop('string')).toEqual('common.cancel');

@@ -7,6 +7,10 @@
 
 const mockedProduct = {
   productId: 'foo',
+  rating: {
+    average: 0,
+    count: 0,
+  },
 };
 
 const mockedProductWithRating = {

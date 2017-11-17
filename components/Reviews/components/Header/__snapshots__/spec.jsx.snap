@@ -17,6 +17,7 @@ exports[`<Header /> should render empty 1`] = `
     rating={
       Object {
         "average": 0,
+        "count": 0,
       }
     }
   >
@@ -27,6 +28,7 @@ exports[`<Header /> should render empty 1`] = `
         rating={
           Object {
             "average": 0,
+            "count": 0,
           }
         }
       >
