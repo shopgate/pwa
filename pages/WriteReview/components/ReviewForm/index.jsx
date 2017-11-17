@@ -27,7 +27,7 @@ class ReviewForm extends Component {
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
-    authorName: PropTypes.string,
+    authorName: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
     productId: PropTypes.string,
     review: PropTypes.shape(),
   };
