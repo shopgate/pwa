@@ -237,7 +237,7 @@ export const getProductRating = createSelector(
   getCurrentProduct,
   (product) => {
     if (!product || !product.rating) {
-      return {};
+      return null;
     }
 
     return product.rating;

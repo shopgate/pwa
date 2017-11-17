@@ -20,7 +20,7 @@ export const requestReviewSubmit$ = main$.filter(
  */
 export const responseReviewSubmit$ = main$.filter(
   ({ action }) =>
-    [RECEIVE_SUBMIT_REVIEW, ERROR_SUBMIT_REVIEW, RESET_SUBMIT_REVIEW].indexOf(action.type) !== -1
+    [RECEIVE_SUBMIT_REVIEW, ERROR_SUBMIT_REVIEW, RESET_SUBMIT_REVIEW].includes(action.type)
 );
 
 /**
@@ -37,5 +37,5 @@ export const successReviewSubmit$ = main$.filter(
  */
 export const errorReviewSubmit$ = main$.filter(
   ({ action }) =>
-    [ERROR_SUBMIT_REVIEW, RESET_SUBMIT_REVIEW].indexOf(action.type) !== -1
+    [ERROR_SUBMIT_REVIEW, RESET_SUBMIT_REVIEW].includes(action.type)
 );

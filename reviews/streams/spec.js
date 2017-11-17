@@ -27,7 +27,7 @@ describe('Reviews streams', () => {
       const type = actionTypes[typeName];
       possibleSubjects.forEach((subjectName) => {
         const result = subjects[subjectName].operator.predicate({ action: { type } });
-        const shouldBe = subjectActionsTypes[subjectName].indexOf(type) > -1;
+        const shouldBe = subjectActionsTypes[subjectName].includes(type);
         expect(result).toBe(shouldBe);
       });
     });

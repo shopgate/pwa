@@ -6,7 +6,6 @@
  */
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
 import { EUNKNOWN, EACCESS } from '@shopgate/pwa-core/constants/Pipeline';
 import requestUserReview from '../action-creators/requestUserReview';
 import receiveUserReview from '../action-creators/receiveUserReview';
@@ -28,8 +27,7 @@ const getUserReview = productId => (dispatch) => {
 
   request
     .then(result => dispatch(receiveUserReview(productId, result)))
-    .catch((message) => {
-      logger.error(message);
+    .catch(() => {
       dispatch(errorUserReview(productId));
     });
 
