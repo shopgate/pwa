@@ -18,7 +18,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Rating = ({ rate }) => (
-  <div>
+  <div className={styles.container}>
     <RatingStars value={rate} className={styles.stars} />
     <I18n.Text
       string="reviews.rating_stars"

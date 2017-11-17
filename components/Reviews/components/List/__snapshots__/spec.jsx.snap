@@ -67,7 +67,9 @@ exports[`<List /> should render list with reviews 1`] = `
         <Rating
           rate={100}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
               className="css-1tsawhq"
               display="small"
@@ -535,7 +537,9 @@ exports[`<List /> should render list with reviews 1`] = `
         <Rating
           rate={40}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
               className="css-1tsawhq"
               display="small"
@@ -909,7 +913,9 @@ exports[`<List /> should render list with reviews 1`] = `
         <Rating
           rate={60}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
               className="css-1tsawhq"
               display="small"
@@ -1319,7 +1325,9 @@ exports[`<List /> should render list with reviews 1`] = `
         <Rating
           rate={20}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
               className="css-1tsawhq"
               display="small"

@@ -589,7 +589,9 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <Rating
                   rate={100}
                 >
-                  <div>
+                  <div
+                    className="css-12alag6"
+                  >
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
@@ -1057,7 +1059,9 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <Rating
                   rate={100}
                 >
-                  <div>
+                  <div
+                    className="css-12alag6"
+                  >
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
@@ -1525,7 +1529,9 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <Rating
                   rate={100}
                 >
-                  <div>
+                  <div
+                    className="css-12alag6"
+                  >
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
@@ -1993,7 +1999,9 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <Rating
                   rate={100}
                 >
-                  <div>
+                  <div
+                    className="css-12alag6"
+                  >
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
@@ -2979,7 +2987,9 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 <Rating
                   rate={100}
                 >
-                  <div>
+                  <div
+                    className="css-12alag6"
+                  >
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
@@ -3447,7 +3457,9 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 <Rating
                   rate={100}
                 >
-                  <div>
+                  <div
+                    className="css-12alag6"
+                  >
                     <RatingStars
                       className="css-1tsawhq"
                       display="small"
