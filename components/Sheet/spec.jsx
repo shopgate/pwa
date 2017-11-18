@@ -64,7 +64,7 @@ describe('<Sheet />', () => {
   });
 
   it('should open', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Sheet isOpen={false} title="Test-Title">
         <div>Test</div>
       </Sheet>

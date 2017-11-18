@@ -17,7 +17,7 @@ import { PlaceholderParagraph } from 'Templates/components';
 
 ### children (required)
 
-_Type_: `node`<br>
+_Type_: `node  
 
 Children that will ONLY be rendered when ready is true.
 
@@ -31,8 +31,8 @@ Children that will ONLY be rendered when ready is true.
 
 ### ready
 
-_Default_: `false`<br>
-_Type_: `boolean`<br>
+_Default_: `false  
+_Type_: `boolean  
 
 When ready children will be rendered, otherwise the placeholder will be shown.
 

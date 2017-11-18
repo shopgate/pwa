@@ -27,7 +27,7 @@ import { ProductHeader } from 'Templates/components';
 
 ### isAnimating (required)
 
-_Type_: `boolean`<br>
+_Type_: `boolean  
 
 Should be true when parent is animating, this will cause placeholders to be displayed
 
@@ -39,8 +39,8 @@ Should be true when parent is animating, this will cause placeholders to be disp
 
 ### product 
 
-_Default_: `null`<br>
-_Type_: `Object`<br>
+_Default_: `null  
+_Type_: `Object  
 
 The BasicProduct object or `null` when product data is not available yet which will cause placeholders to be rendered.
 > **Note:** When `isAnimating` is `true`, `product` will be ignored until animation is done!

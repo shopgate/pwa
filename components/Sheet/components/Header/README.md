@@ -17,8 +17,8 @@ import { Sheet } from 'Templates/components';
 
 ### onToggleClose
 
-_Type_: `Function`<br>
-_Default_: `() => {}`<br>
+_Type_: `Function  
+_Default_: `() => {}  
 
 Function to be called when the close button is toggled.
 
@@ -33,8 +33,8 @@ const toggleClosed = () => { ... };
 
 ### title
 
-_Type_: `string`<br>
-_Default_: `''`<br>
+_Type_: `string  
+_Default_: `''  
 
 The title of the Sheet Header.
 

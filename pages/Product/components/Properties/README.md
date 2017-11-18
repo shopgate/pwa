@@ -17,7 +17,7 @@ import { ProductProperties } from 'Templates/component';
 
 ### isAnimating (required)
 
-_Type_: `boolean`<br>
+_Type_: `boolean  
 
 When animating the component is not rendered! 
 
@@ -29,8 +29,8 @@ When animating the component is not rendered!
 
 ### properties 
 
-_Default_: `null`<br>
-_Type_: `Object`<br>
+_Default_: `null  
+_Type_: `Object  
 
 A key-value object with product properties.
 If null the component is not rendered!

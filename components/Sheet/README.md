@@ -59,8 +59,8 @@ const sheetAnimation = {
 
 ### onOpen
 
-_Type_: `Function`<br>
-_Default_: `() => {}`<br>
+_Type_: `Function  
+_Default_: `() => {}  
 
 Callback function that is triggered if the Sheet is opened.
 
@@ -75,8 +75,8 @@ const handleOpen = () => { ... };
 
 ### onClose
 
-_Type_: `Function`<br>
-_Default_: `() => {}`<br>
+_Type_: `Function  
+_Default_: `() => {}  
 
 Callback function that is triggered if the Sheet is closed.
 
@@ -91,8 +91,8 @@ const handleClose = () => { ... };
 
 ### title
 
-_Type_: `string`<br>
-_Default_: `''`<br>
+_Type_: `string  
+_Default_: `''  
 
 The title of the Sheet.
 
@@ -105,8 +105,8 @@ The title of the Sheet.
 
 ### duration
 
-_Type_: `number`<br>
-_Default_: `300`<br>
+_Type_: `number  
+_Default_: `300  
 
 Duration of the open/close animation, in milliseconds.
 
@@ -119,8 +119,8 @@ Duration of the open/close animation, in milliseconds.
 
 ### isOpen
 
-_Type_: `boolean`<br>
-_Default_: `false`<br>
+_Type_: `boolean  
+_Default_: `false  
 
 Prop to set the open state of the component.
 

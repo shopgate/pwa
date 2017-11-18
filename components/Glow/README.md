@@ -6,8 +6,8 @@ The glow component is used to highlight elements that are being interacted with.
 
 ### color
 
-_Default_: `colors.shade8`<br>
-_Type_: `string`<br>
+_Default_: `colors.shade8  
+_Type_: `string  
 
 The color of the glow's background.
 

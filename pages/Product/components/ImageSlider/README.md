@@ -46,7 +46,7 @@ When animating it will only display a placeholder.
 
 ### product
 
-_Type_: `Object`<br>
+_Type_: `Object  
 
 Needs the featuredImageUrl string!
 BasicProduct data, when null will display placeholder.
@@ -60,7 +60,7 @@ BasicProduct data, when null will display placeholder.
 
 ### images 
 
-_Type_: `string[]`<br>
+_Type_: `string[]  
 
 Array of urls to images, when null will display placeholder.
 > **Note:** When `isAnimating` is `true`, `images` will be ignored until animation is done!

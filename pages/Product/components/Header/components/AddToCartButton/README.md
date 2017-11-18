@@ -16,7 +16,7 @@ import { AddToCartButton } from 'Templates/components';
 
 ### handleAddToCart (required)
 
-_Type_: `function`<br>
+_Type_: `function  
 
 This function will be called when the user clicks the button and `isOrderable` is `true` and `isLoading` is `false`
 
@@ -28,7 +28,7 @@ This function will be called when the user clicks the button and `isOrderable` i
 
 ### isLoading (required)
 
-_Type_: `boolean`<br>
+_Type_: `boolean  
 
 Should be `true` to indicate that the product or related data is currently loading.
 If `true` the button will contain a spinning loading icon.
@@ -41,7 +41,7 @@ If `true` the button will contain a spinning loading icon.
 
 ### isOrderable (required)
 
-_Type_: `boolean`<br>
+_Type_: `boolean  
 
 Should be `true` to indicate that the current product is orderable, if not orderable the button won't trigger the checkmark animation when clicked.
 `handleAddToCart` will be still called though to handle missing variant selection..

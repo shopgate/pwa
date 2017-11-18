@@ -15,13 +15,13 @@ import Button from 'Template/components';
 
 ## Props
 
-See the documentation of the library `Button` component for inherited properties. Additionally, this component 
+See the documentation of the library `Button` component for inherited properties. Additionally, this component
 provides the following properties:
 
 ### type
 
 _Type_: `string`  
-_Default_: `primary` 
+_Default_: `primary`
 
 The color scheme of the button, may be one of the following:
 `primary`, `secondary` or `regular`.
@@ -36,7 +36,7 @@ the button styles. These settings allow the rendering of flat buttons by setting
 _Type_: `boolean`  
 _Default_: `false`
 
-If set, the button will be rendered flat, without any background color set and using the color schemes primary color 
+If set, the button will be rendered flat, without any background color set and using the color schemes primary color
 as text color.
 
 ### wrapContent

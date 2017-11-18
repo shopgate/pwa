@@ -14,7 +14,7 @@ import { RatingStars } from 'Templates/components';
 
 ### value (required)
 
-_Type_: `number`<br>
+_Type_: `number  
 
 The rating value that displays stars accordingly. It needs to be a floating number [0...1].
 
