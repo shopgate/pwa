@@ -15,7 +15,7 @@ import { List } from 'Templates/components';
 
 ### title (required)
 
-_Type_: `string  
+_Type_: `string`  
 
 ###### Usage:
 
@@ -25,8 +25,8 @@ _Type_: `string
 
 ### image
 
-_Default_: `null  
-_Type_: `string  
+_Default_: `null`  
+_Type_: `string`  
 
 ###### Usage:
 
@@ -38,8 +38,8 @@ _Type_: `string
 
 A component or element to render on the right-hand side of the list item.
 
-_Default_: `null  
-_Type_: `element  
+_Default_: `null`  
+_Type_: `element`  
 
 ###### Usage:
 
@@ -51,8 +51,8 @@ const myComponent = <div />;
 
 ### isDisabled
 
-_Default_: `false  
-_Type_: `boolean  
+_Default_: `false`  
+_Type_: `boolean`  
 
 ###### Usage:
 
@@ -62,8 +62,8 @@ _Type_: `boolean
 
 ### isSelected
 
-_Default_: `false  
-_Type_: `boolean  
+_Default_: `false`  
+_Type_: `boolean`  
 
 ###### Usage:
 
@@ -73,8 +73,8 @@ _Type_: `boolean
 
 ### link
 
-_Default_: `null  
-_Type_: `string  
+_Default_: `null`  
+_Type_: `string`  
 
 ###### Usage:
 
@@ -84,8 +84,8 @@ _Type_: `string
 
 ### onClick
 
-_Default_: `null  
-_Type_: `string  
+_Default_: `null`  
+_Type_: `string`  
 
 ###### Usage:
 

@@ -18,7 +18,7 @@ import { Widget } from 'Library/components';
 
 ### config (required)
 
-_Type_: `Object  
+_Type_: `Object`  
 
 The `config` prop contains all of the necessary information to display the widget.  
 This includes `col`, `row`, `width`, `height`, `type` and `settings`.
@@ -31,8 +31,8 @@ This includes `col`, `row`, `width`, `height`, `type` and `settings`.
 
 ### component
 
-_Default_: `null  
-_Type_: `React Element  
+_Default_: `null`  
+_Type_: `React Element`  
 
 The component that should render inside the widget.
 

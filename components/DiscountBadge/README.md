@@ -12,7 +12,7 @@ import { DiscountBadge } from 'Template/components';
 ## Props
 
 ### text (required)
-_Type_: `string  
+_Type_: `string`  
 
 The text content of this component. It can be a translation string with a placeholder for the discount in it.
 
@@ -22,7 +22,7 @@ The text content of this component. It can be a translation string with a placeh
 ```
 
 ### discount
-_Type_: `number  
+_Type_: `number`  
 
 This value will be used for the placeholder given in .
 
@@ -32,8 +32,8 @@ This value will be used for the placeholder given in .
 ```
 
 ### className
-_Default_: `''  
-_Type_: `string  
+_Default_: `''`  
+_Type_: `string`  
 
 Additional classes that can be appended to the component's className attribute.
 
@@ -44,10 +44,10 @@ Additional classes that can be appended to the component's className attribute.
 
 ### display
 
-_Type_: `'small'`, `'big'`, any custom defined style key.<br>
-_Defaults_: `'small'` or first style key defined.<br>
+_Type_: `'small'`, `'big'`, any custom defined style key.  
+_Defaults_: `'small'` or first style key defined.  
 
-The display style of the badge. 
+The display style of the badge.
 
 ```
 // Display a bigger version of the discount badge.

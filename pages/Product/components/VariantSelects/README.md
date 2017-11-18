@@ -21,8 +21,8 @@ The response data of the _getProductVariants_ pipeline request. This prop needs 
 
 ### handleSelectionUpdate(variantId, valueId)
 
-_Type_: `function  
-_Default_: `() => {}  
+_Type_: `function`  
+_Default_: `() => {}`  
 
 Callback function that is triggered if the user selects a characteristic
 
@@ -37,8 +37,8 @@ const onCharacteristicUpdate = (variantId, valueId) => {...}
 
 ### closeDelay
 
-_Type_: `number  
-_Default_: `200  
+_Type_: `number`  
+_Default_: `200`  
 
 Delay after a click until the Drawer starts closing
 
@@ -51,8 +51,8 @@ Delay after a click until the Drawer starts closing
 
 ### selection
 
-_Type_: `Array  
-_Default_: `[]  
+_Type_: `Array`  
+_Default_: `[]`  
 
 Array of all characteristics
 

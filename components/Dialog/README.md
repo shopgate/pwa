@@ -107,19 +107,19 @@ store.dispatch( showModal({
 
 ### modal
 
-_Type_: `Object  
+_Type_: `Object`  
 
 The custom modal parameters passed to a dispatched `showModal` redux action:
 
 ##### modal.title
 
-_Type_: `string  
+_Type_: `string`  
 
 The title of the dialog. This should always be passed when dispatching the action.
 
 ##### modal.message (optional)
 
-_Type_: `string  
+_Type_: `string`  
 
 The text message to display. It is up to the implementation of any custom dialog
 type if it requires a message body, so this may or may not be used by the dialog
@@ -127,21 +127,21 @@ that is about to be displayed.
 
 ##### modal.params (optional)
 
-_Type_: `Object  
+_Type_: `Object`  
 
 A custom dialog may require additional parameters to render their contents.
 You can pass those parameters by using the `params` property.
 
 ### onConfirm (optional)
 
-_Type_: `function  
+_Type_: `function`  
 
 A callback that is triggerd when the confirm action of the the dialog has been
 submitted.
 
 ### onDismiss (optional)
 
-_Type_: `function  
+_Type_: `function`  
 
 A callback that is triggerd when the dismiss action of the the dialog has been
 submitted.

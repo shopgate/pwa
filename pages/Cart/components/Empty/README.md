@@ -16,7 +16,7 @@ import { CartEmpty } from 'Templates/components';
 
 ### goBackHistory (required)
 
-_Type_: `function  
+_Type_: `function`  
 
 The Cart Empty component shows a "Continue shopping" button. This prop delivers the callback function
 that is triggered by clicking on the button.

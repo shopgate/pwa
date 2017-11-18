@@ -6,13 +6,13 @@ The Chip component is used by the ChipsLayout. It displays a simple rounded tag 
 
 ### children (required)
 
-_Type_: `node` 
+_Type_: `node`  
 
 The inner content of the chip
 
 ### onRemove (optional)
 
-_Type_: `function (event)` 
+_Type_: `function (event)`  
 
 Callback that is executed when the tag is supposed to be removed.
 

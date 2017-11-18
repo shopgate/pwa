@@ -1,57 +1,57 @@
 TextField
 ---
-The text field component renders an input field with a 
+The text field component renders an input field with a
 floating label in material design.
 
 ## Props
 
 ### className (optional)
 
-_Type_: `className  
+_Type_: `className`  
 
 Any additional style classes that should be applied to the component.
 
 ### errorText (optional)
 
-_Type_: `Node  
+_Type_: `Node`  
 
 The current error text to display. See `onValidate` for further details
-on when to use this property. 
+on when to use this property.
 
 ### hintText (optional)
 
-_Type_: `Node  
+_Type_: `Node`  
 
 The hint text to display if there was no value entered by the user.
 
 ### label (optional)
 
-_Type_: `Node  
+_Type_: `Node`  
 
 The label to display for the text field.
 
 ### onChange (optional)
 
-_Type_: `function (value)  
+_Type_: `function (value)`  
 
 An optional callback that is triggered when the value of the text field
 has been changed.
 
 ### onSanitize (optional)
 
-_Type_: `function (value)  
+_Type_: `function (value)`  
 
 An optional callback that can be used to transform the value entered by the
 user on the fly. The function is expected to return the sanitized value.
 
 ### onValidate (optional)
 
-_Type_: `function (value)  
+_Type_: `function (value)`  
 
 An optional callback that can be used to validate the value entered by the
 user on the fly. The function is expected to return a boolean indicating
 whether the value is valid or, if the validation failed, a message indicating
-the error. 
+the error.
 
 *Note*: The error message will only be displayed if no custom error text
 has been set for the `errorText` property.
@@ -61,22 +61,22 @@ By default, input validation will only happen if the field is blurred
 
 ### password (optional)
 
-_Type_: `boolean  
-_Default_: `false`
+_Type_: `boolean`  
+_Default_: `false`  
 
 If this prop is set, the component will be rendered as a password field.
 
 ### value (optional)
 
-_Type_: `string  
+_Type_: `string`  
 
 The initial value of the text field. If the value of this property is modified,
 the current value entered by the user is overwritten.
 
 ### validateOnBlur (optional)
 
-_Type_: `boolean  
-_Default_: `true  
+_Type_: `boolean`  
+_Default_: `true`  
 
 By default, input validation will only happen if the field is blurred
 (lost its focus). To enable validation while the user is typing, this property
@@ -101,5 +101,3 @@ doValidate = (value) => value.indexOf('Hello') != -1;
     onSanitize={doSanitize}
 />
 ```
-
-
