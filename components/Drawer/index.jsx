@@ -111,7 +111,7 @@ class Drawer extends Component {
     );
 
     const style = {};
-    if (animation.duration !== null) {
+    if (typeof animation.duration === 'number') {
       style.animationDuration = `${animation.duration}ms`;
     }
 
