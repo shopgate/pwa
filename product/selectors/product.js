@@ -70,7 +70,8 @@ export const getCurrentProduct = createSelector(
   getProducts,
   (productId, products) => {
     const entry = products[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.productData)) {
+    // No return null when data is there but product data is updating.
+    if (!entry || isUndefined(entry.productData)) {
       return null;
     }
 
@@ -237,7 +238,7 @@ export const getProductRating = createSelector(
   getCurrentProduct,
   (product) => {
     if (!product || !product.rating) {
-      return {};
+      return null;
     }
 
     return product.rating;
