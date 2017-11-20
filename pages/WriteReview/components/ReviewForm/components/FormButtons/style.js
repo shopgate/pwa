@@ -12,6 +12,7 @@ import { css } from 'glamor';
  */
 const buttonLine = css({
   float: 'right',
+  marginTop: '14',
 }).toString();
 
 export default {
