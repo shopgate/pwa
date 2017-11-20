@@ -14,31 +14,46 @@ describe('Tests link options', () => {
     '/item/123': [
       {
         action: 'reactRouter',
-        options: '/item/123',
+        options: {
+          queryParams: {},
+          url: '/item/123',
+        },
       },
     ],
     'shopgate-12345://item/123': [
       {
         action: 'reactRouter',
-        options: '/item/123',
+        options: {
+          queryParams: {},
+          url: '/item/123',
+        },
       },
     ],
     '/': [
       {
         action: 'reactRouter',
-        options: '/',
+        options: {
+          queryParams: {},
+          url: '/',
+        },
       },
     ],
     '/category': [
       {
         action: 'reactRouter',
-        options: '/category',
+        options: {
+          queryParams: {},
+          url: '/category',
+        },
       },
     ],
     '/category/123': [
       {
         action: 'reactRouter',
-        options: '/category/123',
+        options: {
+          queryParams: {},
+          url: '/category/123',
+        },
       },
     ],
 
@@ -48,7 +63,7 @@ describe('Tests link options', () => {
         action: 'legacyLink',
         options: {
           targetTab: 'main',
-          url: '/register',
+          url: '/register/default',
         },
       },
     ],
@@ -119,7 +134,10 @@ describe('Tests link options', () => {
     '/page/foo': [
       {
         action: 'reactRouter',
-        options: '/page/foo',
+        options: {
+          queryParams: {},
+          url: '/page/foo',
+        },
       },
     ],
     '/account': [
@@ -143,7 +161,10 @@ describe('Tests link options', () => {
     '/orders': [
       {
         action: 'reactRouter',
-        options: '/orders',
+        options: {
+          queryParams: {},
+          url: '/orders',
+        },
       },
     ],
     '/channel/sn-10006?shop_number=10006': [
@@ -169,13 +190,23 @@ describe('Tests link options', () => {
     '/search?s=test': [
       {
         action: 'reactRouter',
-        options: '/search?s=test',
+        options: {
+          queryParams: {
+            s: 'test',
+          },
+          url: '/search?s=test',
+        },
       },
     ],
     'shopgate-12345://search?s=test': [
       {
         action: 'reactRouter',
-        options: '/search?s=test',
+        options: {
+          queryParams: {
+            s: 'test',
+          },
+          url: '/search?s=test',
+        },
       },
     ],
     'http://www.shopgate.com/foo/bar?a=b': [

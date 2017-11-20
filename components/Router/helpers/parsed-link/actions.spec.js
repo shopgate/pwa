@@ -34,7 +34,7 @@ describe('Tests link actions', () => {
     it('should open link using history.push', () => {
       const push = jest.fn();
       const history = { push };
-      actions.reactRouter('/category/123', history);
+      actions.reactRouter({ url: '/category/123' }, history);
 
       expect(showTab).toHaveBeenCalledTimes(1);
       expect(push).toHaveBeenCalledTimes(1);
