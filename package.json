@@ -18,7 +18,12 @@
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
     "precommit": "lint-staged",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "prebuild": "rimraf ./dist",
+    "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
+    "postbuild": "cp ./{package.json,package-lock.json,CHANGELOG.md,LICENSE.md,README.md} ./dist/",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && cd dist && npm publish --access public"
   },
   "lint-staged": {
     "concurrent": false,
@@ -35,6 +40,7 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
@@ -47,6 +53,7 @@
     "eslint": "3.19.0",
     "jest": "^21.2.1",
     "lint-staged": "^4.2.3",
-    "pre-commit": "1.2.2"
+    "pre-commit": "1.2.2",
+    "rimraf": "^2.6.2"
   }
 }
