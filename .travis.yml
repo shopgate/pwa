@@ -1,5 +1,6 @@
 install:
   - git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/sdk-devserver.git sdk-devserver
+  - cd sdk-devserver && npm i && cd ..
   - node ./sdk-devserver/extensions/setup.js
   - node ./sdk-devserver/extensions/index.js
 language: node_js
