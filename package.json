@@ -10,7 +10,12 @@
   "scripts": {
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js .",
     "precommit": "lint-staged",
-    "test": "mocha --recursive --compilers js:babel-core/register ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest"
+    "test": "mocha --recursive --compilers js:babel-core/register ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest",
+    "prebuild": "rimraf ./dist",
+    "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
+    "postbuild": "cp ./{package.json,package-lock.json,CHANGELOG.md,LICENSE.md,README.md} ./dist/",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && cd dist && npm publish --access public"
   },
   "lint-staged": {
     "concurrent": false,
@@ -24,7 +29,7 @@
   "dependencies": {},
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-core": "^0.1.3",
+    "@shopgate/pwa-core": "^0.1.5",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "2.7.1",
     "babel-plugin-transform-runtime": "^6.23.0",
