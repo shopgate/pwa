@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-webcheckout-shopify",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Shopgate's web checkout business logic for Shopify.",
   "main": "index.jsx",
   "repository": "shopgate/pwa-webcheckout-shopify",
