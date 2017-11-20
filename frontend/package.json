@@ -31,9 +31,11 @@
     "@shopgate/eslint-config": "^1.0.2",
     "@shopgate/pwa-common": "^0.1.11",
     "@shopgate/pwa-core": "^0.1.5",
+    "babel-cli": "^6.26.0",
     "jest": "^21.2.1",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "@shopgate/pwa-common": "0.1.x"
