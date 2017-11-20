@@ -15,6 +15,7 @@ const ratingLine = css({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  flexWrap: 'wrap',
 }).toString();
 
 /**
@@ -24,7 +25,15 @@ const scale = css({
   position: 'relative',
   float: 'right',
   marginRight: '-0.25em',
+  flex: 'none',
 });
+
+/**
+ * The styles for the rating scale label.
+ */
+const label = css({
+  flex: 1,
+}).toString();
 
 /**
  * The styles for the error message.
@@ -40,4 +49,5 @@ export default {
   error,
   scale,
   ratingLine,
+  label,
 };

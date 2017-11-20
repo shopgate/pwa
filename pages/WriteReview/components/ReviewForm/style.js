@@ -9,7 +9,7 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const container = css({
-  margin: `${variables.gap.small}px`,
+  margin: `${variables.gap.large}px ${variables.gap.big}px ${variables.gap.big}px`,
 }).toString();
 
 export default {

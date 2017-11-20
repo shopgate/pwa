@@ -66,7 +66,7 @@ class RatingScale extends React.Component {
   render() {
     return (
       <div className={styles.ratingLine}>
-        <I18n.Text string="reviews.review_form_rate" />
+        <I18n.Text className={styles.label} string="reviews.review_form_rate" />
         <span className={styles.scale}>
           <RatingStars
             isSelectable
