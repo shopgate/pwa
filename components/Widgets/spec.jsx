@@ -9,7 +9,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Widgets from './index';
 
-describe.skip('<Widgets />', () => {
+describe('<Widgets />', () => {
   it('should render a grid if height is defined', () => {
     const widgets = [{
       col: 0,
