@@ -10,7 +10,12 @@
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx .",
     "precommit": "lint-staged",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "prebuild": "rimraf ./dist",
+    "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
+    "postbuild": "cp ./{package.json,package-lock.json,CHANGELOG.md,LICENSE.md,README.md} ./dist/",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && cd dist && npm publish --access public"
   },
   "lint-staged": {
     "concurrent": false,
@@ -27,9 +32,10 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-common": "^0.1.9",
-    "@shopgate/pwa-core": "^0.1.3",
+    "@shopgate/pwa-common": "^0.1.11",
+    "@shopgate/pwa-core": "^0.1.5",
     "@shopgate/pwa-unit-test": "^1.2.5",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "3.0.0-beta.0",
     "babel-plugin-react-transform": "^3.0.0",
@@ -47,7 +53,8 @@
     "lodash": "^4.17.4",
     "pre-commit": "^1.2.2",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "lodash": "4.x",
