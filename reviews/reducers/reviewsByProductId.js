@@ -26,8 +26,6 @@ export default function reviewsByProductId(state = {}, action) {
         [action.productId]: {
           ...state[action.productId],
           isFetching: true,
-          reviews: null,
-          totalReviewCount: null,
         },
       };
     case RECEIVE_PRODUCT_REVIEWS:
