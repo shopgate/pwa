@@ -11,6 +11,10 @@ import {
   getCurrentProduct,
   getProductMetadata,
 } from '../../product/selectors/product';
+import {
+  getSelectedVariantMetadata,
+} from '../../product/selectors/variants';
+
 import addProductsToCart from './addProductsToCart';
 
 /**
@@ -30,9 +34,19 @@ const addCurrentProductToCart = () => (dispatch, getState) => {
     productId = productVariantId;
   }
 
-  const metadata = getProductMetadata(state, product.id);
-
   if (productId) {
+    let metadata = null;
+
+    if (productVariantId) {
+      // Check if the variant data for the selected product contains metadata.
+      metadata = getSelectedVariantMetadata(state);
+    }
+
+    if (metadata === null) {
+      // If no metadata was determined yet, check if the selected product contains metadata.
+      metadata = getProductMetadata(state, productId);
+    }
+
     dispatch(addProductsToCart([{
       productId,
       quantity,

@@ -125,3 +125,27 @@ export const getSelectedVariant = createSelector(
     return null;
   }
 );
+
+/**
+ * Retrieves the metadata from the product data within the variants.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getSelectedVariantMetadata = createSelector(
+  getProductVariants,
+  getCurrentProductVariantId,
+  (variants, variantId) => {
+    if (!variants || !variantId) {
+      return null;
+    }
+
+    // Get the product data of the selected product from the variants.
+    const productData = variants.products.find(({ id }) => id === variantId);
+
+    if (productData) {
+      return productData.metadata || null;
+    }
+
+    return null;
+  }
+);
