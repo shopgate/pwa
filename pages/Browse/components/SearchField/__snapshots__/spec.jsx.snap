@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchField /> should render the search field 1`] = `
+<div>
+  <div
+    className="css-1jyozbi"
+  >
+    <div
+      className="css-1utu657"
+    >
+      <form
+        action="."
+        onSubmit={[Function]}
+      >
+        <label
+          className="css-y5wpat"
+          htmlFor="search"
+        >
+          <div
+            className="css-tzdtea"
+          >
+            <Magnifier />
+          </div>
+        </label>
+        <Input
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1yoassp"
+          disabled={false}
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onSubmit={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="search"
+          validateOnBlur={true}
+          value="foo"
+        />
+      </form>
+    </div>
+    <div>
+      <button
+        className="css-17m2dgi css-gyrv08"
+        onClick={[Function]}
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="search.cancel"
+        />
+      </button>
+    </div>
+  </div>
+  <Connect(SearchSuggestions) />
+</div>
+`;

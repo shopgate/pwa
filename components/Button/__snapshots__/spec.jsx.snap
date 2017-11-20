@@ -16,7 +16,7 @@ exports[`<Button /> should render as a primary button 1`] = `
 
 exports[`<Button /> should render as a regular button if type is explicitly defined 1`] = `
 <Button
-  className="css-6bfwc1 "
+  className="css-1gr82ub "
   disabled={false}
   onClick={null}
 >
@@ -30,7 +30,7 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
 
 exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 <Button
-  className="css-1y1e1q7 "
+  className="css-1uxw61o "
   disabled={false}
   onClick={null}
 >

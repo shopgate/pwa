@@ -42,15 +42,15 @@ exports[`<List.Item /> should render with a link 1`] = `
           role="link"
         >
           <Grid
-            className="css-1qcr7hz"
+            className="css-l3889c"
             component="div"
             wrap={false}
           >
             <div
-              className="css-1qcr7hz css-h7r55a"
+              className="css-l3889c css-h7r55a"
             >
               <div
-                className="css-jwxytc"
+                className={undefined}
               />
               <GridItem
                 className="css-10fxwvh"
@@ -61,7 +61,17 @@ exports[`<List.Item /> should render with a link 1`] = `
                 <div
                   className="css-10fxwvh css-1gs0ko2"
                 >
-                  My Title
+                  <Translate
+                    className=""
+                    params={Object {}}
+                    string="My Title"
+                  >
+                    <span
+                      className=""
+                    >
+                      My Title
+                    </span>
+                  </Translate>
                 </div>
               </GridItem>
             </div>
@@ -89,15 +99,15 @@ exports[`<List.Item /> should render with a right component 1`] = `
   title="My Title"
 >
   <Grid
-    className="css-1qcr7hz"
+    className="css-l3889c"
     component="div"
     wrap={false}
   >
     <div
-      className="css-1qcr7hz css-h7r55a"
+      className="css-l3889c css-h7r55a"
     >
       <div
-        className="css-jwxytc"
+        className={undefined}
       />
       <GridItem
         className="css-10fxwvh"
@@ -108,7 +118,17 @@ exports[`<List.Item /> should render with a right component 1`] = `
         <div
           className="css-10fxwvh css-1gs0ko2"
         >
-          My Title
+          <Translate
+            className=""
+            params={Object {}}
+            string="My Title"
+          >
+            <span
+              className=""
+            >
+              My Title
+            </span>
+          </Translate>
         </div>
       </GridItem>
       <GridItem
@@ -142,15 +162,15 @@ exports[`<List.Item /> should render with a title 1`] = `
   title="My Title"
 >
   <Grid
-    className="css-1qcr7hz"
+    className="css-l3889c"
     component="div"
     wrap={false}
   >
     <div
-      className="css-1qcr7hz css-h7r55a"
+      className="css-l3889c css-h7r55a"
     >
       <div
-        className="css-jwxytc"
+        className={undefined}
       />
       <GridItem
         className="css-10fxwvh"
@@ -161,7 +181,17 @@ exports[`<List.Item /> should render with a title 1`] = `
         <div
           className="css-10fxwvh css-1gs0ko2"
         >
-          My Title
+          <Translate
+            className=""
+            params={Object {}}
+            string="My Title"
+          >
+            <span
+              className=""
+            >
+              My Title
+            </span>
+          </Translate>
         </div>
       </GridItem>
     </div>
@@ -186,15 +216,15 @@ exports[`<List.Item /> should render with an image 1`] = `
   title="My Title"
 >
   <Grid
-    className="css-1qcr7hz"
+    className="css-l3889c"
     component="div"
     wrap={false}
   >
     <div
-      className="css-1qcr7hz css-h7r55a"
+      className="css-l3889c css-h7r55a"
     >
       <div
-        className="css-jwxytc"
+        className={undefined}
       >
         <img
           alt="Alternative text"
@@ -210,7 +240,17 @@ exports[`<List.Item /> should render with an image 1`] = `
         <div
           className="css-10fxwvh css-1gs0ko2"
         >
-          My Title
+          <Translate
+            className=""
+            params={Object {}}
+            string="My Title"
+          >
+            <span
+              className=""
+            >
+              My Title
+            </span>
+          </Translate>
         </div>
       </GridItem>
     </div>
@@ -254,15 +294,15 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
           style={Object {}}
         />
         <Grid
-          className="css-1qcr7hz"
+          className="css-l3889c"
           component="div"
           wrap={false}
         >
           <div
-            className="css-1qcr7hz css-h7r55a"
+            className="css-l3889c css-h7r55a"
           >
             <div
-              className="css-jwxytc"
+              className={undefined}
             />
             <GridItem
               className="css-10fxwvh"
@@ -273,7 +313,17 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
               <div
                 className="css-10fxwvh css-1gs0ko2"
               >
-                My Title
+                <Translate
+                  className=""
+                  params={Object {}}
+                  string="My Title"
+                >
+                  <span
+                    className=""
+                  >
+                    My Title
+                  </span>
+                </Translate>
               </div>
             </GridItem>
           </div>
@@ -296,15 +346,15 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
   title="My Title"
 >
   <Grid
-    className="css-1qcr7hz"
+    className="css-l3889c"
     component="div"
     wrap={false}
   >
     <div
-      className="css-1qcr7hz css-h7r55a"
+      className="css-l3889c css-h7r55a"
     >
       <div
-        className="css-jwxytc"
+        className={undefined}
       />
       <GridItem
         className="css-10fxwvh css-19uk9mv"
@@ -315,7 +365,17 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
         <div
           className="css-10fxwvh css-19uk9mv css-1gs0ko2"
         >
-          My Title
+          <Translate
+            className=""
+            params={Object {}}
+            string="My Title"
+          >
+            <span
+              className=""
+            >
+              My Title
+            </span>
+          </Translate>
         </div>
       </GridItem>
     </div>
@@ -335,15 +395,15 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
   title="My Title"
 >
   <Grid
-    className="css-1qcr7hz css-14bkd8f"
+    className="css-l3889c css-14bkd8f"
     component="div"
     wrap={false}
   >
     <div
-      className="css-1qcr7hz css-14bkd8f css-h7r55a"
+      className="css-l3889c css-14bkd8f css-h7r55a"
     >
       <div
-        className="css-jwxytc"
+        className={undefined}
       />
       <GridItem
         className="css-10fxwvh"
@@ -354,7 +414,17 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
         <div
           className="css-10fxwvh css-1gs0ko2"
         >
-          My Title
+          <Translate
+            className=""
+            params={Object {}}
+            string="My Title"
+          >
+            <span
+              className=""
+            >
+              My Title
+            </span>
+          </Translate>
         </div>
       </GridItem>
     </div>

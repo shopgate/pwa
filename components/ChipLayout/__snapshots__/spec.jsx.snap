@@ -8,10 +8,10 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
   moreLabel="more"
 >
   <div
-    className="css-2g949"
+    className="css-cepqcn"
   >
     <div
-      className="css-dzs3g7"
+      className="css-1uds9t2"
     >
       <Chip
         invert={false}
@@ -20,7 +20,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removable={true}
       >
         <div
-          className="css-h0zu4c"
+          className="css-ampwqu"
         >
           <Button
             className="css-i7sqdh"
@@ -33,12 +33,12 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
               onClick={[Function]}
             >
               <Cross
-                color="#5ccee3"
+                color="#00c3e6"
                 size={16}
               >
                 <Icon
                   className=""
-                  color="#5ccee3"
+                  color="#00c3e6"
                   content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                   size={16}
                   viewBox="0 0 24 24"
@@ -52,7 +52,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                     }
                     style={
                       Object {
-                        "fill": "#5ccee3",
+                        "fill": "#00c3e6",
                         "fontSize": 16,
                       }
                     }
@@ -154,10 +154,10 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
   moreLabel="more"
 >
   <div
-    className="css-2g949"
+    className="css-cepqcn"
   >
     <div
-      className="css-dzs3g7"
+      className="css-1uds9t2"
     >
       <Chip
         invert={false}
@@ -166,7 +166,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="css-h0zu4c"
+          className="css-ampwqu"
         >
           <Button
             className="css-i7sqdh"
@@ -179,12 +179,12 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               onClick={[Function]}
             >
               <Cross
-                color="#5ccee3"
+                color="#00c3e6"
                 size={16}
               >
                 <Icon
                   className=""
-                  color="#5ccee3"
+                  color="#00c3e6"
                   content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                   size={16}
                   viewBox="0 0 24 24"
@@ -198,7 +198,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                     }
                     style={
                       Object {
-                        "fill": "#5ccee3",
+                        "fill": "#00c3e6",
                         "fontSize": 16,
                       }
                     }
@@ -231,7 +231,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="css-h0zu4c"
+          className="css-ampwqu"
         >
           <Button
             className="css-i7sqdh"
@@ -244,12 +244,12 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
               onClick={[Function]}
             >
               <Cross
-                color="#5ccee3"
+                color="#00c3e6"
                 size={16}
               >
                 <Icon
                   className=""
-                  color="#5ccee3"
+                  color="#00c3e6"
                   content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
                   size={16}
                   viewBox="0 0 24 24"
@@ -263,7 +263,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                     }
                     style={
                       Object {
-                        "fill": "#5ccee3",
+                        "fill": "#00c3e6",
                         "fontSize": 16,
                       }
                     }

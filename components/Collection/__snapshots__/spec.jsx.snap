@@ -11,7 +11,7 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
   <div
     className={null}
   >
-    <CollectionElement
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -25,6 +25,7 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
       firstElementProp={null}
       isFirstElement={true}
       isLastElement={false}
+      key=".0"
       lastElementProp={null}
     >
       <TestElement
@@ -39,8 +40,8 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
           0
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -54,6 +55,7 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
       firstElementProp={null}
       isFirstElement={false}
       isLastElement={false}
+      key=".1"
       lastElementProp={null}
     >
       <TestElement
@@ -68,8 +70,8 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
           1
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -83,6 +85,7 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
       firstElementProp={null}
       isFirstElement={false}
       isLastElement={true}
+      key=".2"
       lastElementProp={null}
     >
       <TestElement
@@ -97,7 +100,7 @@ exports[`<Collection /> correctly forwards the element props and merges the addi
           2
         </li>
       </TestElement>
-    </CollectionElement>
+    </CollectionItem>
   </div>
 </Collection>
 `;
@@ -113,7 +116,7 @@ exports[`<Collection /> receives the first/last props 1`] = `
   <div
     className={null}
   >
-    <CollectionElement
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -127,6 +130,7 @@ exports[`<Collection /> receives the first/last props 1`] = `
       firstElementProp="amIFirst"
       isFirstElement={true}
       isLastElement={false}
+      key=".0"
       lastElementProp="amILast"
     >
       <TestElement
@@ -146,8 +150,8 @@ exports[`<Collection /> receives the first/last props 1`] = `
           </span>
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -161,6 +165,7 @@ exports[`<Collection /> receives the first/last props 1`] = `
       firstElementProp="amIFirst"
       isFirstElement={false}
       isLastElement={false}
+      key=".1"
       lastElementProp="amILast"
     >
       <TestElement
@@ -175,8 +180,8 @@ exports[`<Collection /> receives the first/last props 1`] = `
           1
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -190,6 +195,7 @@ exports[`<Collection /> receives the first/last props 1`] = `
       firstElementProp="amIFirst"
       isFirstElement={false}
       isLastElement={true}
+      key=".2"
       lastElementProp="amILast"
     >
       <TestElement
@@ -209,7 +215,7 @@ exports[`<Collection /> receives the first/last props 1`] = `
           </span>
         </li>
       </TestElement>
-    </CollectionElement>
+    </CollectionItem>
   </div>
 </Collection>
 `;
@@ -231,7 +237,7 @@ exports[`<Collection /> renders with children 1`] = `
   <div
     className={null}
   >
-    <CollectionElement
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -245,6 +251,7 @@ exports[`<Collection /> renders with children 1`] = `
       firstElementProp={null}
       isFirstElement={true}
       isLastElement={false}
+      key=".0"
       lastElementProp="amILast"
     >
       <TestElement
@@ -258,8 +265,8 @@ exports[`<Collection /> renders with children 1`] = `
           0
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -273,6 +280,7 @@ exports[`<Collection /> renders with children 1`] = `
       firstElementProp={null}
       isFirstElement={false}
       isLastElement={false}
+      key=".1"
       lastElementProp="amILast"
     >
       <TestElement
@@ -286,8 +294,8 @@ exports[`<Collection /> renders with children 1`] = `
           1
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -301,6 +309,7 @@ exports[`<Collection /> renders with children 1`] = `
       firstElementProp={null}
       isFirstElement={false}
       isLastElement={false}
+      key=".2"
       lastElementProp="amILast"
     >
       <TestElement
@@ -314,8 +323,8 @@ exports[`<Collection /> renders with children 1`] = `
           2
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -329,6 +338,7 @@ exports[`<Collection /> renders with children 1`] = `
       firstElementProp={null}
       isFirstElement={false}
       isLastElement={false}
+      key=".3"
       lastElementProp="amILast"
     >
       <TestElement
@@ -342,8 +352,8 @@ exports[`<Collection /> renders with children 1`] = `
           3
         </li>
       </TestElement>
-    </CollectionElement>
-    <CollectionElement
+    </CollectionItem>
+    <CollectionItem
       element={
         <TestElement
           amIFirst={false}
@@ -357,6 +367,7 @@ exports[`<Collection /> renders with children 1`] = `
       firstElementProp={null}
       isFirstElement={false}
       isLastElement={true}
+      key=".4"
       lastElementProp="amILast"
     >
       <TestElement
@@ -375,7 +386,7 @@ exports[`<Collection /> renders with children 1`] = `
           </span>
         </li>
       </TestElement>
-    </CollectionElement>
+    </CollectionItem>
   </div>
 </Collection>
 `;

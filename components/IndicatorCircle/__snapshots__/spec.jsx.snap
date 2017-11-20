@@ -32,7 +32,7 @@ exports[`<IndicatorCircle /> should apply the given size 1`] = `
   xmlns="http://www.w3.org/2000/svg"
 >
   <circle
-    className="css-o43ryf"
+    className="css-2z29ld"
     cx="50"
     cy="50"
     r="20"

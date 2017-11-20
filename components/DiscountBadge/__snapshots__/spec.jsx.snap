@@ -2,7 +2,7 @@
 
 exports[`<DiscountBadge /> should render the text 1`] = `
 <Translate
-  className="css-1815nu9 "
+  className="css-zrt3h1 "
   params={
     Array [
       null,
@@ -14,7 +14,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
 
 exports[`<DiscountBadge /> should render the text and discount 1`] = `
 <Translate
-  className="css-1815nu9 "
+  className="css-zrt3h1 "
   params={
     Array [
       20,

@@ -2,43 +2,57 @@
 
 exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
 <div
-  className="css-y5kkpq"
+  className="css-1lwoc2u"
 >
   <div
-    className="css-15j45j0"
+    className="css-y5kkpq"
   >
-    <Placeholder
-      className="css-19rc2oq"
-    />
+    <div
+      className="css-15j45j0"
+    >
+      <Placeholder
+        className="css-19rc2oq"
+      />
+    </div>
   </div>
+  <div
+    className="css-n44iz3"
+  />
 </div>
 `;
 
 exports[`<ProductImage /> should render the image without a placeholder 1`] = `
-<Image
-  alt={null}
-  animating={true}
-  backgroundColor="#f2f2f2"
-  className=""
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  onError={[Function]}
-  onLoad={null}
-  ratio={null}
-  resolutions={
-    Array [
-      Object {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      Object {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="http://placehold.it/300x300"
-  transition={null}
-/>
+<div
+  className="css-1lwoc2u"
+>
+  <Image
+    alt={null}
+    animating={true}
+    backgroundColor="#f2f2f2"
+    className="css-1lwoc2u"
+    forcePlaceholder={false}
+    highestResolutionLoaded={[Function]}
+    onError={[Function]}
+    onLoad={null}
+    ratio={null}
+    resolutions={
+      Array [
+        Object {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        Object {
+          "height": 440,
+          "width": 440,
+        },
+      ]
+    }
+    src="http://placehold.it/300x300"
+    transition={null}
+  />
+  <div
+    className="css-n44iz3"
+  />
+</div>
 `;

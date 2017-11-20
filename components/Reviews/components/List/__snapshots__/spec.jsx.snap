@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<List /> should not render when no reviews given 1`] = `null`;
+exports[`<List /> should not render when no reviews given 1`] = `
+<List
+  reviews={Array []}
+/>
+`;
 
 exports[`<List /> should render list with reviews 1`] = `
 <List

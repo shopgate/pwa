@@ -50,7 +50,9 @@ exports[`<TextField /> should focus the input 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -65,7 +67,9 @@ exports[`<TextField /> should focus the input 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -157,7 +161,9 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -172,7 +178,9 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -260,7 +268,9 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -275,7 +285,9 @@ exports[`<TextField /> should render a simple text field 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -363,7 +375,9 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -378,7 +392,9 @@ exports[`<TextField /> should render the text field as password 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -470,7 +486,9 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -485,7 +503,9 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       value="FooBar"
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -573,7 +593,9 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -588,7 +610,9 @@ exports[`<TextField /> should replace the error text with custom validation erro
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -681,7 +705,9 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -696,7 +722,9 @@ exports[`<TextField /> should sanitize the input 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -760,7 +788,9 @@ exports[`<TextField /> should show the error message 1`] = `
     />
   </label>
   <Input
-    className="css-mwlhju"
+    autoComplete={false}
+    autoCorrect={false}
+    className="css-1l81tvz"
     disabled={false}
     id="test-input"
     name="test-input"
@@ -823,7 +853,9 @@ exports[`<TextField /> should show the hint text 1`] = `
     />
   </label>
   <Input
-    className="css-mwlhju"
+    autoComplete={false}
+    autoCorrect={false}
+    className="css-1l81tvz"
     disabled={false}
     id="test-input"
     name="test-input"
@@ -887,7 +919,9 @@ exports[`<TextField /> should show the label 1`] = `
     />
   </label>
   <Input
-    className="css-mwlhju"
+    autoComplete={false}
+    autoCorrect={false}
+    className="css-1l81tvz"
     disabled={false}
     id="test-input"
     name="test-input"
@@ -979,7 +1013,9 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -994,7 +1030,9 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -1082,7 +1120,9 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </Translate>
     </label>
     <Input
-      className="css-mwlhju"
+      autoComplete={false}
+      autoCorrect={false}
+      className="css-1l81tvz"
       disabled={false}
       id="test-input"
       name="test-input"
@@ -1097,7 +1137,9 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       value=""
     >
       <input
-        className="css-mwlhju"
+        autoComplete="off"
+        autoCorrect="off"
+        className="css-1l81tvz"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
