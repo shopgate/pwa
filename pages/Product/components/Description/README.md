@@ -21,7 +21,7 @@ import { ProductDescription } from 'Templates/components';
 
 ### html (required)
 
-_Type_: `string`<br>
+_Type_: `string`  
 
 Any kind of text and/or html.
 If null or animating, a placeholder will be shown
@@ -32,9 +32,9 @@ If null or animating, a placeholder will be shown
 <ProductDescription html="<h1>Foo</h1> Bar" isAnimating={false} />
 ```
 
-### isAnimating (required) 
+### isAnimating (required)
 
-_Type_: `boolean`<br>
+_Type_: `boolean`  
 
 When animating a placeholder will be shown instead.
 

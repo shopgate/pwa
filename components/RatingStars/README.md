@@ -14,7 +14,7 @@ import { RatingStars } from 'Templates/components';
 
 ### value (required)
 
-_Type_: `number`<br>
+_Type_: `number`  
 
 The rating value that displays stars accordingly. It needs to be a floating number [0...1].
 
@@ -25,13 +25,12 @@ The rating value that displays stars accordingly. It needs to be a floating numb
 
 ### display
 
-_Type_: `'small'`, `'big'`, `'large'`, any custom defined style key.<br>
-_Defaults_: `'small'` or first style key defined.<br>
+_Type_: `'small'`, `'big'`, `'large'`, any custom defined style key.  
+_Defaults_: `'small'` or first style key defined.  
 
-The display style of the stars. 
+The display style of the stars.
 
 ```
 // Display a bigger version of the rating stars.
 <RatingStars value={0.8} display="big" />
 ```
-

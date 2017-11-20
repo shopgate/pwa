@@ -95,7 +95,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 }
               >
                 <div
-                  className="css-vk8a95 css-1a237xp"
+                  className="css-vk8a95 css-fvkmon"
                 >
                   <div
                     className="css-1al5bli"

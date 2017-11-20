@@ -11,6 +11,7 @@
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "precommit": "lint-staged",
     "test": "jest",
+    "test:watch": "jest --watch",
     "coverage": "jest --coverage"
   },
   "lint-staged": {
