@@ -2,8 +2,9 @@ install:
   - git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/sdk-devserver.git ../../sdk-devserver
   - cd ../../sdk-devserver && npm install --update-binary
   - cd ../${TRAVIS_REPO_SLUG} && npm install --update-binary
-  - ls ./extensions -l
-  - node ../../sdk-devserver/extensions/setup.js
+  - ls ./extensions
+  - git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/commerce-widgets.git @shopgate/commerce-widgets
+  - cd ./extensions/@shopgate/commerce-widgets && npm install --update-binary && cd ../
   - ls ./extensions
   - node ../../sdk-devserver/extensions/index.js
 language: node_js
