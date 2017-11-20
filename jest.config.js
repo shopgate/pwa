@@ -24,11 +24,13 @@ module.exports = {
     '/extensions/',
     '/public/',
     '/coverage/',
+    '/components/Widgets/',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/extensions/',
     '/public/',
     '/coverage/',
+    '/components/Widgets/',
   ],
 };
