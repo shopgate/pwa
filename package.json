@@ -30,6 +30,7 @@
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
     "@shopgate/pwa-core": "^0.1.5",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "2.7.1",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -43,6 +44,7 @@
     "mocha-jsdom": "^1.1.0",
     "nyc": "^11.2.1",
     "pre-commit": "1.2.2",
+    "rimraf": "^2.6.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0"
   },
