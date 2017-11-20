@@ -76,7 +76,11 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
           <div
             className="css-1aq22wi css-1rg7udn css-jg4uw5"
             onAnimationEnd={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "animationDuration": "undefinedms",
+              }
+            }
           >
             <div
               className="css-1xj3g9q"
@@ -1303,7 +1307,11 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
           <div
             className="css-1aq22wi css-1rg7udn css-jg4uw5"
             onAnimationEnd={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "animationDuration": "undefinedms",
+              }
+            }
           >
             <div
               className="css-1xj3g9q"
@@ -2438,7 +2446,11 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
           <div
             className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "animationDuration": "undefinedms",
+              }
+            }
           >
             <div
               className="css-1xj3g9q"
@@ -3708,7 +3720,11 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           <div
             className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "animationDuration": "undefinedms",
+              }
+            }
           >
             <div
               className="css-1xj3g9q"
@@ -4843,7 +4859,11 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           <div
             className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "animationDuration": "undefinedms",
+              }
+            }
           >
             <div
               className="css-1xj3g9q"

@@ -22,5 +22,13 @@ module.exports = {
   testPathIgnorePatterns: [
     '/node_modules/',
     '/extensions/',
+    '/public/',
+    '/coverage/',
+  ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/extensions/',
+    '/public/',
+    '/coverage/',
   ],
 };
