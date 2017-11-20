@@ -26,13 +26,13 @@ const container = css({
  * @return {string} The content style class.
  */
 const content = (hasNavigator = true, hasTabBar = true) => css({
-  background: colors.light,
   overflow: 'auto',
   overflowScrolling: 'touch',
   WebkitOverflowScrolling: 'touch',
   width: '100%',
   position: 'absolute',
-  top: hasNavigator ? variables.navigator.height + variables.statusBar.height : variables.statusBar.height,
+  top: hasNavigator ?
+    variables.navigator.height + variables.statusBar.height : variables.statusBar.height,
   marginBottom: hasTabBar ? variables.tabBar.height : 0,
   bottom: 0,
   display: 'flex',
@@ -42,7 +42,8 @@ const content = (hasNavigator = true, hasTabBar = true) => css({
     display: 'block',
     top: 0,
     width: '100%',
-    height: hasNavigator ? variables.navigator.height + variables.statusBar.height : variables.statusBar.height,
+    height: hasNavigator ?
+      variables.navigator.height + variables.statusBar.height : variables.statusBar.height,
     zIndex: 3,
     content: '""',
     transition: 'box-shadow 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',

@@ -87,6 +87,7 @@ const input = css({
   width: '100%',
   top: 38,
   outline: 0,
+  padding: 0,
 }).toString();
 
 /**
