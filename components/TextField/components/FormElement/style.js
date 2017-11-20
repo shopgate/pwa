@@ -11,6 +11,7 @@ import { css } from 'glamor';
  */
 const input = css({
   position: 'absolute',
+  padding: 1,
   width: '100%',
   top: 38,
   outline: 0,
@@ -22,6 +23,7 @@ const input = css({
 const multiLine = css({
   position: 'relative',
   marginTop: 38,
+  padding: 1,
   width: '100%',
   outline: 0,
   height: 32,
