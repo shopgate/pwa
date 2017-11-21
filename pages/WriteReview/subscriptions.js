@@ -23,7 +23,6 @@ import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { getUserReviewForProduct } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import { DIALOG_TEXT_MESSAGE } from 'Components/Dialog/constants';
@@ -44,12 +43,8 @@ export default function writeReview(subscribe) {
     if (!state.user.login.isLoggedIn) {
       return;
     }
-    const review = getUserReviewForProduct(state);
-
     // Only dispatch when review is not yet in store
-    if (!Object.keys(review).length) {
-      dispatch(getUserReview(productId));
-    }
+    dispatch(getUserReview(productId));
   });
 
   /**
