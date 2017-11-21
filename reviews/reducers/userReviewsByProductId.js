@@ -15,6 +15,7 @@ import {
   ERROR_SUBMIT_REVIEW,
   RESET_SUBMIT_REVIEW,
   FLUSH_USER_REVIEWS,
+  USER_REVIEW_LIFETIME,
 } from '../constants';
 
 /**
@@ -32,6 +33,7 @@ export default function userReviewsByProductId(state = {}, action) {
           ...state[action.productId],
           isFetching: true,
           review: '',
+          expires: 0,
         },
       };
     case RECEIVE_USER_REVIEW:
@@ -41,6 +43,7 @@ export default function userReviewsByProductId(state = {}, action) {
           ...state[action.productId],
           isFetching: false,
           review: action.review.id,
+          expires: Date.now() + USER_REVIEW_LIFETIME,
         },
       };
     case ERROR_SUBMIT_REVIEW:
@@ -55,6 +58,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.review.productId]: {
           ...state[action.review.productId],
           isFetching: true,
+          expires: 0,
         },
       };
     case RECEIVE_SUBMIT_REVIEW:
@@ -63,6 +67,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.review.productId]: {
           isFetching: false,
           review: action.review.id,
+          expires: Date.now() + USER_REVIEW_LIFETIME,
         },
       };
     case RESET_SUBMIT_REVIEW:
