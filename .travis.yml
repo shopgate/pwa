@@ -1,6 +1,14 @@
+install:
+  - git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/sdk-devserver.git ../../sdk-devserver
+  - cd ../../sdk-devserver && npm install --update-binary
+  - cd ../${TRAVIS_REPO_SLUG} && npm install --update-binary
+  - cd ./extensions && git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/commerce-widgets.git @shopgate/commerce-widgets
+  - cd ./@shopgate/commerce-widgets/frontend/ && npm install --update-binary && cd ../../../../
+  - node ../../sdk-devserver/extensions/index.js
 language: node_js
-node_js: node
-script: "npm run coverage"
+node_js:
+  - "8.4.0"
+script: "NODE_ENV=production npm run coverage -- --maxWorkers=4"
 # Send coverage report to coveralls.io
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 notifications:

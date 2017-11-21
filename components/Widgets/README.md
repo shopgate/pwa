@@ -18,7 +18,7 @@ import { Widgets } from 'Library/components';
 
 ### config
 
-_Type_: `Object`<br>
+_Type_: `Object`  
 
 The `config` prop contains all of the necessary information to build the widgets.
 

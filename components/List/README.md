@@ -17,7 +17,7 @@ import { List } from 'Templates/components';
 
 ### children (required)
 
-_Type_: `node`<br>
+_Type_: `node`  
 
 ###### Usage:
 

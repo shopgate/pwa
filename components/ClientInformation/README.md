@@ -15,7 +15,7 @@ import ClientInformation from 'Templates/navigation-drawer/client-information';
 
 ### client (required)
 
-_Type_: `shape`<br>
+_Type_: `shape`  
 _Values_: { isFetching: [bool], appVersion: [string], libVersion: [string], deviceId: [string] }
 
 The data for this props comes from the client connector.

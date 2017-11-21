@@ -74,7 +74,7 @@ exports[`<TextField /> should focus the input 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -89,7 +89,9 @@ exports[`<TextField /> should focus the input 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -107,7 +109,7 @@ exports[`<TextField /> should focus the input 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -234,7 +236,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -249,7 +251,9 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -267,7 +271,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -394,7 +398,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -409,7 +413,9 @@ exports[`<TextField /> should render a simple text field 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -427,7 +433,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -554,7 +560,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -569,7 +575,9 @@ exports[`<TextField /> should render the text field as password 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -587,7 +595,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -714,7 +722,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       value="FooBar"
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -729,7 +737,9 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         value="FooBar"
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -747,7 +757,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -839,7 +849,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </div>
     </Hint>
     <Label
-      hasErrorMessage={false}
+      hasErrorMessage={true}
       isFloating={false}
       isFocused={false}
       label=""
@@ -874,7 +884,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -889,7 +899,9 @@ exports[`<TextField /> should replace the error text with custom validation erro
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -907,7 +919,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -921,7 +933,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </Component>
     </FormElement>
     <Underline
-      hasErrorMessage={false}
+      hasErrorMessage={true}
       isFocused={false}
     >
       <div
@@ -931,8 +943,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           className="css-1tpmuef"
           style={
             Object {
-              "borderBottomColor": "#fa5400",
-              "transform": "scale3d(0,1,1)",
+              "borderBottomColor": "#ff0000",
             }
           }
         />
@@ -941,7 +952,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     <ErrorText
       className=""
       errorText=""
-      validationError={null}
+      validationError="Custom validation error"
     >
       <div
         className=" css-gywm7f"
@@ -949,11 +960,13 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           className=""
           params={Object {}}
-          string=""
+          string="Custom validation error"
         >
           <span
             className=""
-          />
+          >
+            Custom validation error
+          </span>
         </Translate>
       </div>
     </ErrorText>
@@ -1034,7 +1047,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1049,7 +1062,9 @@ exports[`<TextField /> should sanitize the input 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1067,7 +1082,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1122,123 +1137,494 @@ exports[`<TextField /> should sanitize the input 1`] = `
 `;
 
 exports[`<TextField /> should show the error message 1`] = `
-<div
-  className="css-1n5fcdz "
+<TextField
+  className=""
+  errorText="This is an error here"
+  hintText=""
+  label=""
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
 >
-  <Hint
-    hintText=""
-    visible={false}
-  />
-  <Label
-    hasErrorMessage={true}
-    isFloating={false}
-    isFocused={false}
-    label=""
-    name="test-input"
-  />
-  <FormElement
-    id="test-input"
-    multiLine={false}
-    name="test-input"
-    onChange={[Function]}
-    onFocusChange={[Function]}
-    onSanitize={[Function]}
-    onValidate={[Function]}
-    password={false}
-    setRef={[Function]}
-    type="text"
-    value=""
-  />
-  <Underline
-    hasErrorMessage={true}
-    isFocused={false}
-  />
-  <ErrorText
-    className=""
-    errorText="This is an error here"
-    validationError={null}
-  />
-</div>
+  <div
+    className="css-1n5fcdz "
+  >
+    <Hint
+      hintText=""
+      visible={false}
+    >
+      <div
+        className="css-tnfb18 css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={true}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
+    >
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
+      id="test-input"
+      multiLine={false}
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      value=""
+    >
+      <Component
+        className="css-1bx7ajf"
+        id="test-input"
+        multiLine={false}
+        name="test-input"
+        onChange={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
+        value=""
+      >
+        <SimpleInput
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-1bx7ajf"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={true}
+      isFocused={false}
+    >
+      <div
+        className="css-s51m4w"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#ff0000",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText="This is an error here"
+      validationError={null}
+    >
+      <div
+        className=" css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="This is an error here"
+        >
+          <span
+            className=""
+          >
+            This is an error here
+          </span>
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</TextField>
 `;
 
 exports[`<TextField /> should show the hint text 1`] = `
-<div
-  className="css-1n5fcdz "
+<TextField
+  className=""
+  errorText=""
+  hintText="This is the hint text"
+  label=""
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
 >
-  <Hint
-    hintText="This is the hint text"
-    visible={false}
-  />
-  <Label
-    hasErrorMessage={false}
-    isFloating={false}
-    isFocused={false}
-    label=""
-    name="test-input"
-  />
-  <FormElement
-    id="test-input"
-    multiLine={false}
-    name="test-input"
-    onChange={[Function]}
-    onFocusChange={[Function]}
-    onSanitize={[Function]}
-    onValidate={[Function]}
-    password={false}
-    setRef={[Function]}
-    type="text"
-    value=""
-  />
-  <Underline
-    hasErrorMessage={false}
-    isFocused={false}
-  />
-  <ErrorText
-    className=""
-    errorText=""
-    validationError={null}
-  />
-</div>
+  <div
+    className="css-1n5fcdz "
+  >
+    <Hint
+      hintText="This is the hint text"
+      visible={false}
+    >
+      <div
+        className="css-tnfb18 css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="This is the hint text"
+        >
+          <span
+            className=""
+          >
+            This is the hint text
+          </span>
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label=""
+      name="test-input"
+    >
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
+      id="test-input"
+      multiLine={false}
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      value=""
+    >
+      <Component
+        className="css-1bx7ajf"
+        id="test-input"
+        multiLine={false}
+        name="test-input"
+        onChange={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
+        value=""
+      >
+        <SimpleInput
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-1bx7ajf"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-s51m4w"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className=" css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</TextField>
 `;
 
 exports[`<TextField /> should show the label 1`] = `
-<div
-  className="css-1n5fcdz "
+<TextField
+  className=""
+  errorText=""
+  hintText=""
+  label="This is the label"
+  multiLine={false}
+  name="test-input"
+  onChange={[Function]}
+  onSanitize={[Function]}
+  onValidate={[Function]}
+  password={false}
+  setRef={[Function]}
+  type="text"
+  value=""
 >
-  <Hint
-    hintText=""
-    visible={false}
-  />
-  <Label
-    hasErrorMessage={false}
-    isFloating={false}
-    isFocused={false}
-    label="This is the label"
-    name="test-input"
-  />
-  <FormElement
-    id="test-input"
-    multiLine={false}
-    name="test-input"
-    onChange={[Function]}
-    onFocusChange={[Function]}
-    onSanitize={[Function]}
-    onValidate={[Function]}
-    password={false}
-    setRef={[Function]}
-    type="text"
-    value=""
-  />
-  <Underline
-    hasErrorMessage={false}
-    isFocused={false}
-  />
-  <ErrorText
-    className=""
-    errorText=""
-    validationError={null}
-  />
-</div>
+  <div
+    className="css-1n5fcdz "
+  >
+    <Hint
+      hintText=""
+      visible={false}
+    >
+      <div
+        className="css-tnfb18 css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Hint>
+    <Label
+      hasErrorMessage={false}
+      isFloating={false}
+      isFocused={false}
+      label="This is the label"
+      name="test-input"
+    >
+      <label
+        className="css-1980bi2 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="This is the label"
+        >
+          <span
+            className=""
+          >
+            This is the label
+          </span>
+        </Translate>
+      </label>
+    </Label>
+    <FormElement
+      id="test-input"
+      multiLine={false}
+      name="test-input"
+      onChange={[Function]}
+      onFocusChange={[Function]}
+      onSanitize={[Function]}
+      onValidate={[Function]}
+      password={false}
+      setRef={[Function]}
+      type="text"
+      value=""
+    >
+      <Component
+        className="css-1bx7ajf"
+        id="test-input"
+        multiLine={false}
+        name="test-input"
+        onChange={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
+        value=""
+      >
+        <SimpleInput
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
+          disabled={false}
+          id="test-input"
+          multiLine={false}
+          name="test-input"
+          onChange={[Function]}
+          onFocusChange={[Function]}
+          onSanitize={[Function]}
+          onValidate={[Function]}
+          password={false}
+          setRef={[Function]}
+          type="text"
+          validateOnBlur={true}
+          value=""
+        >
+          <input
+            autoComplete="off"
+            autoCorrect="off"
+            className="css-1bx7ajf"
+            disabled={false}
+            id="test-input"
+            name="test-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value=""
+          />
+        </SimpleInput>
+      </Component>
+    </FormElement>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-s51m4w"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#fa5400",
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+      validationError={null}
+    >
+      <div
+        className=" css-gywm7f"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</TextField>
 `;
 
 exports[`<TextField /> should trigger the onChange callback 1`] = `
@@ -1314,7 +1700,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1329,7 +1715,9 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1347,7 +1735,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1474,7 +1862,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       value=""
     >
       <Component
-        className="css-mwlhju"
+        className="css-1bx7ajf"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1489,7 +1877,9 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         value=""
       >
         <SimpleInput
-          className="css-mwlhju"
+          autoComplete={false}
+          autoCorrect={false}
+          className="css-1bx7ajf"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1507,7 +1897,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-mwlhju"
+            className="css-1bx7ajf"
             disabled={false}
             id="test-input"
             name="test-input"
