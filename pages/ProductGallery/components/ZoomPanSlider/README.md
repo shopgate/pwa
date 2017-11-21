@@ -1,4 +1,4 @@
-# ZoomPanSlider 
+# ZoomPanSlider
 ---
 
 A slider component that can be used for zooming and panning of images.
@@ -26,7 +26,7 @@ An object with following keys can be passed as the classNames property.
 Appends styling to the outer wrapper of the slider
 
 ### indicator (optional)
-Appends styling to the outer wrapper of the 
+Appends styling to the outer wrapper of the
 
 ### activeIndicator (optional)
 Appends styling to the currently active dot
@@ -38,14 +38,14 @@ Appends styling to all other dots
 
 ### children (required)
 
-_Type_: `React.Node`<br>
+_Type_: `React.Node`  
 
 Each children element is treated as a single slider item
 
 ### disabled (optional)
 
-_Type_: `bool`<br />
-_Default_: `false`<br />
+_Type_: `bool`  
+_Default_: `false`  
 
 Whether swiping for this slider should be allowed.
 
@@ -55,11 +55,11 @@ Whether swiping for this slider should be allowed.
 <ZoomPanSlider disabled>
   ...
 </ZoomPanSlider>
+```
+### autoplay (optional)
 
-### autoplay (optional) 
-
-_Type_: `bool`<br>
-_Default_: `false`<br>
+_Type_: `bool`  
+_Default_: `false`  
 
 If autoplay is enabled, the next slider item will appear automatically after `interval`ms
 
@@ -76,10 +76,10 @@ import { ZoomPanSlider } from 'Templates/components';
 </ZoomPanSlider>
 ```
 
-### interval (optional) 
+### interval (optional)
 
-_Type_: `number`<br>
-_Default_: `3000`<br>
+_Type_: `number`  
+_Default_: `3000`  
 
 The time specifies how many ms the autoplay needs to wait.
 If autoplay is false, this prop is ignored.
@@ -98,8 +98,8 @@ import { ZoomPanSlider } from 'Templates/components';
 ```
 ### controls (optional)
 
-_Type_: `bool`<br>
-_Default_: `false`<br>
+_Type_: `bool`  
+_Default_: `false`  
 
 Whether to display the control buttons or not
 
@@ -118,8 +118,8 @@ import { ZoomPanSlider } from 'Templates/components';
 
 ### indicators (optional)
 
-_Type_: `bool`<br>
-_Default_: `false`<br>
+_Type_: `bool`  
+_Default_: `false`  
 
 Whether to display the indicators (little dots)
 
@@ -138,10 +138,10 @@ import { ZoomPanSlider } from 'Templates/components';
 
 ### loop (optional)
 
-_Type_: `bool`<br>
-_Default_: `false`<br>
+_Type_: `bool`  
+_Default_: `false`  
 
-If true then after the last item the first will appear again. 
+If true then after the last item the first will appear again.
 And therefore allow swiping infinitely.
 
 ###### Usage:

@@ -10,7 +10,7 @@ import { shallow } from 'enzyme';
 import { GRID_VIEW } from '../../pages/Category/constants';
 import FilterBar from './index';
 
-describe('<FilterBar>', () => {
+describe.skip('<FilterBar>', () => {
   global.requestAnimationFrame = () => {};
 
   it('should hide if outside of the view', () => {

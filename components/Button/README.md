@@ -5,7 +5,7 @@ the `ActionButton` and `RippleButton` components.
 
 ## Getting started
 
-```
+```js
 import Button from 'Template/components';
 
 ...
@@ -15,13 +15,13 @@ import Button from 'Template/components';
 
 ## Props
 
-See the documentation of the library `Button` component for inherited properties. Additionally, this component 
+See the documentation of the library `Button` component for inherited properties. Additionally, this component
 provides the following properties:
 
 ### type
 
 _Type_: `string`  
-_Default_: `primary` 
+_Default_: `primary`  
 
 The color scheme of the button, may be one of the following:
 `primary`, `secondary` or `regular`.
@@ -34,15 +34,15 @@ the button styles. These settings allow the rendering of flat buttons by setting
 ### flat
 
 _Type_: `boolean`  
-_Default_: `false`
+_Default_: `false`  
 
-If set, the button will be rendered flat, without any background color set and using the color schemes primary color 
+If set, the button will be rendered flat, without any background color set and using the color schemes primary color
 as text color.
 
 ### wrapContent
 
 _Type_: `boolean`  
-_Default_: `true`
+_Default_: `true`  
 
 If this prop is set, the content will get wrapped inside a padded element when rendererd. This is useful for
 text and centered content and should be disabled if the content should span over the full size of the button.

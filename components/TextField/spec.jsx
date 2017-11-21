@@ -157,8 +157,12 @@ describe('<TextField />', () => {
 
     expect(wrapper).toMatchSnapshot();
     // Expect at least one element containing the validation error text.
-    expect(wrapper.findWhere(
-      node => node.text() === onValidate()
-    ).length).toBeGreaterThan(0);
+    expect(wrapper.findWhere((node) => {
+      try {
+        return node.text() === onValidate();
+      } catch (e) {
+        return false;
+      }
+    }).length).toBeGreaterThan(0);
   });
 });

@@ -15,8 +15,8 @@ import { CartPaymentBar } from 'Templates/components';
 
 ### subTotal
 
-_Type_: `number`<br>
-_Default_: `0`<br>
+_Type_: `number`  
+_Default_: `0`  
 
 Here you can set the cart sub total amount. If you leave this out, it will be e.g. "$0.00".
 
@@ -28,8 +28,8 @@ Here you can set the cart sub total amount. If you leave this out, it will be e.
 
 ### shipping
 
-_Type_: `number`<br>
-_Default_: `null`<br>
+_Type_: `number`  
+_Default_: `null`  
 
 With this prop you can set shipping costs. If you leave this out, the component will consider
 shipping are "Free" shipping.
@@ -42,8 +42,8 @@ shipping are "Free" shipping.
 
 ### currency
 
-_Type_: `string`<br>
-_Default_: `''`<br>
+_Type_: `string`  
+_Default_: `''`  
 
 This represents the currency of the cart sub total and the shipping costs.
 

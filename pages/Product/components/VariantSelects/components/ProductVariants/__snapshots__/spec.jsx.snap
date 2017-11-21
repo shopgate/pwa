@@ -54,8 +54,8 @@ exports[`<ProductVariants /> should render with variants 1`] = `
       "products": Array [
         Object {
           "availability": Object {
-            "state": "ok",
-            "text": "Available",
+            "state": "waning",
+            "text": "Limited stock available",
           },
           "characteristics": Object {
             "1": "1",
@@ -66,8 +66,8 @@ exports[`<ProductVariants /> should render with variants 1`] = `
         },
         Object {
           "availability": Object {
-            "state": "ok",
-            "text": "Available",
+            "state": "alert",
+            "text": "Out of stock",
           },
           "characteristics": Object {
             "1": "1",
@@ -260,8 +260,8 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
       "products": Array [
         Object {
           "availability": Object {
-            "state": "ok",
-            "text": "Available",
+            "state": "waning",
+            "text": "Limited stock available",
           },
           "characteristics": Object {
             "1": "1",
@@ -272,8 +272,8 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
         },
         Object {
           "availability": Object {
-            "state": "ok",
-            "text": "Available",
+            "state": "alert",
+            "text": "Out of stock",
           },
           "characteristics": Object {
             "1": "1",
@@ -343,15 +343,15 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           "disabled": false,
           "id": "1",
           "label": "Color",
-          "selected": false,
-          "value": null,
+          "selected": true,
+          "value": "1",
           "values": Array [
             Object {
               "availability": null,
               "disabled": false,
               "id": "1",
               "label": "Black",
-              "selected": false,
+              "selected": true,
             },
             Object {
               "availability": null,
@@ -363,29 +363,35 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           ],
         },
         Object {
-          "disabled": true,
+          "disabled": false,
           "id": "2",
           "label": "Size",
           "selected": false,
           "value": null,
           "values": Array [
             Object {
-              "availability": null,
-              "disabled": true,
+              "availability": Object {
+                "state": "waning",
+                "text": "Limited stock available",
+              },
+              "disabled": false,
               "id": "1",
               "label": "0",
               "selected": false,
             },
             Object {
-              "availability": null,
-              "disabled": true,
+              "availability": Object {
+                "state": "alert",
+                "text": "Out of stock",
+              },
+              "disabled": false,
               "id": "2",
               "label": "11",
               "selected": false,
             },
             Object {
               "availability": null,
-              "disabled": true,
+              "disabled": false,
               "id": "3",
               "label": "7",
               "selected": false,
