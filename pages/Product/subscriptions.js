@@ -10,6 +10,7 @@ import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorS
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import getProductData from './actions/getProductData';
 
 /**
  * Product subscriptions.
@@ -55,6 +56,7 @@ export default function product(subscribe) {
    * Gets triggered on entering the product details route.
    */
   subscribe(productRouteDidEnter$, ({ dispatch }) => {
+    dispatch(getProductData());
     dispatch(enableNavigatorSearch());
   });
 }
