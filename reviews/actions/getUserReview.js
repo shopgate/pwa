@@ -20,7 +20,7 @@ import errorUserReview from '../action-creators/errorUserReview';
 const getUserReview = productId => (dispatch, getState) => {
   const data = getState().reviews.userReviewsByProductId[productId];
   if (!shouldFetchData(data)) {
-    return new Promise((resolve, reject) => reject());
+    return new Promise(resolve => resolve());
   }
   dispatch(requestUserReview(productId));
   const request = new PipelineRequest('getUserReview')

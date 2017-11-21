@@ -23,7 +23,7 @@ import errorProductReviews from '../action-creators/errorProductReviews';
 const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (dispatch, getState) => {
   const data = getState().reviews.reviewsByProductId[productId];
   if (!shouldFetchData(data)) {
-    return new Promise((resolve, reject) => reject());
+    return new Promise(resolve => resolve());
   }
   dispatch(requestProductReviews(productId, limit));
 
