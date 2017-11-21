@@ -23,6 +23,6 @@ export default function checkout(subscribe) {
   subscribe(checkoutDidEnter$, ({ getState }) => {
     const state = getState();
 
-    track('initiatedCheckout', getCart(state), state);
+    track('initiatedCheckout', { cart: getCart(state) }, state);
   });
 }
