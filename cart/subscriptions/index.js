@@ -117,8 +117,8 @@ export default function cart(subscribe) {
 
     if (Array.isArray(errors) && errors.length) {
       errors.forEach((entry) => {
-        let { message } = entry;
-        message = 'Got 400 from magento: {"messages": {"error": []}}';
+        const { message } = entry;
+
         dispatch(showModal({
           confirm: null,
           title: 'modal.title_error',
