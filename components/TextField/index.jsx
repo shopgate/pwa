@@ -274,7 +274,6 @@ class TextField extends Component {
       password={this.props.password}
       type={this.props.type}
       value={this.props.value}
-      validateOnBlur
     />
   );
 

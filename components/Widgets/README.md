@@ -1,30 +1,30 @@
-# React Component
+# Widgets
 ---
 
-The `Widgets` component for displaying all widgets. It receives a `config` prop that it uses to build the individual widgets and maps them to the correct components.
+The `Widgets` component for displaying all widgets. It receives a `widgets` prop that it uses to build the individual widgets and maps them to the correct components.
 
 > **Dependencies:**  
-`<Grid />`, `<Widget />`
+> `<Grid />`, `<Widget />`
 
 ## Getting Started
 
-```
-import { Widgets } from 'Library/components';
+```jsx
+import { Widgets } from 'Components/Widgets';
 
-<Widgets config={...} />
+<Widgets widgets={...} />
 ```
 
 ## Props
 
-### config
+### widgets
 
 _Type_: `Object`  
 
-The `config` prop contains all of the necessary information to build the widgets.
+The `widgets` prop contains all of the necessary information to build the widgets.
 
 ###### Usage:
 
 ```
-<Widgets config={...} />
+<Widgets widgets={...} />
 ```
 ---

@@ -4,12 +4,12 @@
 The `Widget` component is responsible for displaying a widget in a particular location inside the widget grid.
 
 > **Dependencies:**  
-`<Grid />`
+> `<Grid />`
 
 ## Getting Started
 
-```
-import { Widget } from 'Library/components';
+```jsx
+import Widget from 'Components/Widgets/Widget';
 
 <Widget config={...} component={...} />
 ```
@@ -25,7 +25,7 @@ This includes `col`, `row`, `width`, `height`, `type` and `settings`.
 
 ###### Usage:
 
-```
+```jsx
 <Widget config={...} />
 ```
 
@@ -38,7 +38,7 @@ The component that should render inside the widget.
 
 ###### Usage:
 
-```
+```jsx
 <Widget component={...} />
 ```
 ---

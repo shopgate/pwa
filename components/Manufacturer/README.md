@@ -3,8 +3,8 @@
 This component will display the manufacturer of a product.
 
 ## Getting Started
-```markup
-import { Manufacturer } from 'Template/components';
+```jsx
+import Manufacturer from 'Components/Manufacturer';
 
 <Manufacturer text="Manufacturer" />
 ```
@@ -12,12 +12,12 @@ import { Manufacturer } from 'Template/components';
 ## Props
 
 ### text (required)
-_Type_: `string`
+_Type_: `string`  
 
 The text for the component.
 
 ###### Usage:
-```
+```jsx
 <Manufacturer text="Manufacturer" />
 ```
 
@@ -28,7 +28,7 @@ _Type_: `string`
 Additional classes that can be appended to the component's className attribute.
 
 ###### Usage:
-```
+```jsx
 <Manufacturer className="class1 class2" />
 ```
 ---

@@ -1,13 +1,12 @@
 # NoResults
 ---
 
-The NoResults component can be used for situations where an arbitrary query didn't have any results.
-It will display a nice icon and an additional message to inform the user about the situation.
+The NoResults component can be used for situations where an arbitrary query didn't have any results. It will display a nice icon and an additional message to inform the user about the situation.
 
 ## Getting Started
 
-```
-import { NoResults } from 'Templates/components';
+```jsx
+import NoResults from 'Components/NoResults';
 
 <NoResults
     headlineText="No results"
@@ -17,7 +16,7 @@ import { NoResults } from 'Templates/components';
 
 Or, to use the component with I18n translations:
 
-```
+```jsx
 <NoResults
     headlineText="my.noresults.translation.headline"
     bodyText="my.noresults.translation.body"
@@ -31,18 +30,17 @@ Or, to use the component with I18n translations:
 
 ### headlineText
 
-_Type_: `string`
+_Type_: `string`  
 
 The text that should be displayed as the headline of the no results page.
 
-This could either be a key provided for the translation system (see the `I18n` component for further description)
-or a simple string.
+This could either be a key provided for the translation system (see the `I18n` component for further description) or a simple string.
 
 Any additional props passed to the `NoResults` component will be available as translation keys.
 
 ###### Usage:
 
-```
+```jsx
 <NoResults
     headlineText="My headline text displays some text."
 />
@@ -50,7 +48,7 @@ Any additional props passed to the `NoResults` component will be available as tr
 
 The same example with I18n translation key:
 
-```
+```jsx
 <NoResults
     headlineText="my.noresults.translation.headline"
     myTranslationVar="some text"
@@ -61,7 +59,7 @@ The same example with I18n translation key:
 
 ### bodyText
 
-_Type_: `string`
+_Type_: `string`  
 
 The text that should be displayed in the body of the no results page.
 
@@ -72,7 +70,7 @@ Any additional props passed to the `NoResults` component will be available as tr
 
 ###### Usage:
 
-```
+```jsx
 <NoResults
     bodyText="My results page just displays this message."
 />
@@ -80,7 +78,7 @@ Any additional props passed to the `NoResults` component will be available as tr
 
 The same example with I18n translation key:
 
-```
+```jsx
 <NoResults
     bodyText="my.noresults.translation.body"
     myTranslationVar="this message"
