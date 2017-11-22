@@ -1,11 +1,10 @@
 # PriceDifference
 ---
-Shows a difference of price. Renders the text in red if the price difference is negative,
-renders it green if price is positive.
+Shows a difference of price. Renders the text in red if the price difference is negative, renders it green if price is positive.
 
 ## Getting Started
-```
-import { PriceDifference } from 'Template/components';
+```js
+import PriceDifference from './PriceDifference';
 
 <PriceDifference currency="EUR" priceDifference={-1.5} />
 ```
@@ -13,26 +12,22 @@ import { PriceDifference } from 'Template/components';
 ## Props
 
 ### priceDifference (required)
-_Type_: `number`
+_Type_: `number`  
 
 The difference of the price.
 
 ###### Usage:
-```
-import { PriceDifference } from 'Template/components';
-
+```js
 <PriceDifference currency="EUR" priceDifference={-1.5} />
 ```
 
 
 ### currency (required)
-_Type_: `string`
+_Type_: `string`  
 
 The currency in what the price difference should be displayed.
 
 ###### Usage:
-```
-import { PriceDifference } from 'Template/components';
-
+```js
 <PriceDifference currency="EUR" priceDifference={-1.5} />
 ```

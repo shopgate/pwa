@@ -3,13 +3,15 @@
 
 A slider component that can be used for zooming and panning of images.
 
-> **Dependencies:** <br> `<ImageSlider />` <br /> `<ZoomPanContainer />`
+> **Dependencies:**  
+>`<ImageSlider />`  
+>`<ZoomPanContainer />`  
 
 ## Getting Started
 
-```
-import { Image } from 'Library/components';
-import { ZoomPanSlider } from 'Templates/components';
+```js
+import { Image } from '@shopgate/pwa-common/components/Image/';
+import ZoomPanSlider from './ZoomPanSlider';
 
 <ZoomPanSlider>
   <Image src="/foo/bar" />
@@ -51,7 +53,7 @@ Whether swiping for this slider should be allowed.
 
 ###### Usage:
 
-```
+```js
 <ZoomPanSlider disabled>
   ...
 </ZoomPanSlider>
@@ -65,14 +67,9 @@ If autoplay is enabled, the next slider item will appear automatically after `in
 
 ###### Usage:
 
-```
-import { Image } from 'Library/components';
-import { ZoomPanSlider } from 'Templates/components';
-
+```js
 <ZoomPanSlider autoplay>
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
+  ...
 </ZoomPanSlider>
 ```
 
@@ -86,14 +83,9 @@ If autoplay is false, this prop is ignored.
 
 ###### Usage:
 
-```
-import { Image } from 'Library/components';
-import { ZoomPanSlider } from 'Templates/components';
-
+```js
 <ZoomPanSlider autoplay interval={3000}>
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
+  ...
 </ZoomPanSlider>
 ```
 ### controls (optional)
@@ -105,14 +97,9 @@ Whether to display the control buttons or not
 
 ###### Usage:
 
-```
-import { Image } from 'Library/components';
-import { ZoomPanSlider } from 'Templates/components';
-
+```js
 <ZoomPanSlider controls>
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
+  ...
 </ZoomPanSlider>
 ```
 
@@ -125,14 +112,9 @@ Whether to display the indicators (little dots)
 
 ###### Usage:
 
-```
-import { Image } from 'Library/components';
-import { ZoomPanSlider } from 'Templates/components';
-
+```js
 <ZoomPanSlider indicators>
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
+  ...
 </ZoomPanSlider>
 ```
 
@@ -146,13 +128,8 @@ And therefore allow swiping infinitely.
 
 ###### Usage:
 
-```
-import { Image } from 'Library/components';
-import { ZoomPanSlider } from 'Templates/components';
-
+```js
 <ZoomPanSlider loop>
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
-  <Image src="/foo/bar" />
+  ...
 </ZoomPanSlider>
 ```

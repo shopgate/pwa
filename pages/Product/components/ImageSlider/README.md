@@ -10,17 +10,18 @@ Tries to display as fast as possible the first image (featuredImage) while waiti
 - When product data is available, display image for `product.featuredImageUrl`
 - When images is available, display an ImageSlider with all images.
 
-> **Dependencies:**
-<br> `<ImageSlider />`
-<br> `<Image />`
-<br> `<PlaceholderImage />`
+> **Dependencies:**  
+> `<ImageSlider />`  
+> `<Image />`  
+> `<PlaceholderImage />`  
 
-> **Dependents:** <br> `<ProductTemplate />`
+> **Dependents:**  
+> `<ProductTemplate />`
 
 ## Getting Started
 
-```
-import { ProductImageSlider } from 'Templates/components';
+```js
+import ProductImageSlider from './ProductImageSlider';
 
 <ProductImageSlider
   product={...}
@@ -33,28 +34,16 @@ import { ProductImageSlider } from 'Templates/components';
 
 ## Props
 
-### isAnimating (required)
-_Type_: `boolean`  
-
-When animating it will only display a placeholder.
-
-###### Usage:
-
-```
-<ProductImageSlider isAnimating={false} />
-```
-
 ### product
 
 _Type_: `Object`  
 
-Needs the featuredImageUrl string!
-BasicProduct data, when null will display placeholder.
+Needs the featuredImageUrl string! BasicProduct data, when null will display placeholder.
 > **Note:** When `isAnimating` is `true`, `product` will be ignored until animation is done!
 
 ###### Usage:
 
-```
+```js
 <ProductImageSlider product={...} isAnimating />
 ```
 
@@ -67,6 +56,6 @@ Array of urls to images, when null will display placeholder.
 
 ###### Usage:
 
-```
+```js
 <ProductImageSlider images={['foo/bar.png']} isAnimating />
 ```
