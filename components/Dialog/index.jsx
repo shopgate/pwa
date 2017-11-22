@@ -43,7 +43,13 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
     });
   }
 
-  switch (type) {
+  let dialogType = type;
+
+  if (!dialogType && message) {
+    dialogType = DIALOG_TEXT_MESSAGE;
+  }
+
+  switch (dialogType) {
     case MODAL_PIPELINE_ERROR:
       return (
         <Modal>
@@ -62,7 +68,7 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
       return (
         <Modal>
           <Backdrop isVisible level={0} />
-          <BasicDialog actions={actions} title={title} params={params} message={message} />
+          <BasicDialog actions={actions} title={title} params={params} />
         </Modal>
       );
   }
