@@ -57,9 +57,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "0.1.11",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.11.tgz",
-      "integrity": "sha512-Yf1Gi9uf3o8b/1kJhvVV+FPdnw6RRbzhVjv1d79Zgjjam07ZEc/Z8s1REZPucj2K1LlzMlIWaJDYtUppizIfAw==",
+      "version": "0.1.12",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.12.tgz",
+      "integrity": "sha512-iz/MJffat2xw5vjIL8Z06aZhZiV6Esh7pJeAz0hextjGgvS0tnzANnguoG+K2tMKdoIy3ltvw5YJ208K1MjBIA==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -87,27 +87,27 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "0.1.17",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.17.tgz",
-      "integrity": "sha512-/fC9eqaJDbyBtdGYqlGcgumFzXhjsXrG86J5h0Tf6iDtGH/aTLliDa0Rq/B17MpDghQUpYPmhJahscSdCjp5KQ==",
+      "version": "0.1.18",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.18.tgz",
+      "integrity": "sha512-ATQf6YTE6dmk1pcNnf6u2QHY5l/pK33+97C0/a+QjuD808Kp+jv6EpTGJshfdxDQWGCZ8qyO97X+0peKG6FDSQ==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
       }
     },
     "@shopgate/pwa-core": {
-      "version": "0.1.5",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-0.1.5.tgz",
-      "integrity": "sha512-nKap3aNhjwWEGOQrnY9m9Kp/iuS1+KvyX/xd/W7w4prLKnLIcpo5y7L2wGz2IyqVvG/v1jN7nFI3PLQy7asU0w==",
+      "version": "0.1.6",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-0.1.6.tgz",
+      "integrity": "sha512-LsM3mAvoHrr5vhHR8941H0h3+vRnfQ436yaVxAVzHjjhb7wd0OUOHng7le4e2OwF+YPcjulbEqtYIHSINHu5uw==",
       "requires": {
         "crypto-js": "3.1.9-1",
         "isomorphic-fetch": "2.2.1"
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "0.1.8",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.8.tgz",
-      "integrity": "sha512-Z//1i183xWhz+tcgjqiRCM5hCTYm72H1TsvzLQ/Tf27P//veFqOz4Cnuy5F5lGey7EryMquUdsfTLFOLWrtn6Q=="
+      "version": "0.1.9",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.9.tgz",
+      "integrity": "sha512-DR2GwWw+AMxts4dssPDJdMWTJiXdxrKnk89qDiY6V00q4TU1u6oXwZzWSD4CRqpKU9JlnEfeEK5/aGUEhBGC6A=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
@@ -147,9 +147,9 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "0.1.9",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.9.tgz",
-      "integrity": "sha512-WLjdI0rurgDcfAVTmvDVn8kAJWEiPagocS/1aGQfu3VDrGbSs2wycTv0KBSVYv7JsSHbcHHKFp/tN3OA0z4zDw=="
+      "version": "0.1.10",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.10.tgz",
+      "integrity": "sha512-04tneMmMy1Bto7XYno2Dgs0W/aXJFCSO6o6mAxtWScc8clCtfTOrzTBSv/YtlZNyfsFSTwxQe+aJ14ORLLFvNw=="
     },
     "@shopgate/react-hammerjs": {
       "version": "0.5.3",
@@ -160,9 +160,9 @@
       }
     },
     "@shopgate/tracking-core": {
-      "version": "0.1.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-0.1.3.tgz",
-      "integrity": "sha512-N1GK7WisPDDrWA0xgu70A4CWrrJcrmMtz2NDx8XKBTYX2n2PE/PsGgdwCHDRAvdxYSNC9XuNZ7UvTEVpSiiVPw=="
+      "version": "0.1.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-0.1.4.tgz",
+      "integrity": "sha512-DIPxDuRxsyFK3VHS9MUybGlufazakFG9QbUqvOoAs7xaUItS1ew6uMgndrzZ7E8l24cHL0SUSEANrgYEs45FqQ=="
     },
     "@types/node": {
       "version": "6.0.90",
@@ -8061,9 +8061,9 @@
       "optional": true
     },
     "ultron": {
-      "version": "1.1.0",
-      "resolved": "https://registry.npmjs.org/ultron/-/ultron-1.1.0.tgz",
-      "integrity": "sha1-sHoualQagV/Go0zNRTO67DB8qGQ="
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/ultron/-/ultron-1.1.1.tgz",
+      "integrity": "sha512-UIEXBNeYmKptWH6z8ZnqTeS8fV74zG0/eRU9VGkpzz+LIJNs8W/zM/L+7ctCkRrgbNnnR0xxw4bKOr0cW0N0Og=="
     },
     "underscore": {
       "version": "1.4.4",
@@ -8273,7 +8273,7 @@
       "integrity": "sha1-mN2wAFbIOQy3Ued4h4hJf5kQO2w=",
       "requires": {
         "safe-buffer": "5.0.1",
-        "ultron": "1.1.0"
+        "ultron": "1.1.1"
       },
       "dependencies": {
         "safe-buffer": {
