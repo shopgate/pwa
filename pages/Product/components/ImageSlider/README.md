@@ -20,7 +20,7 @@ Tries to display as fast as possible the first image (featuredImage) while waiti
 
 ## Getting Started
 
-```js
+```jsx
 import ProductImageSlider from './ProductImageSlider';
 
 <ProductImageSlider
@@ -43,7 +43,7 @@ Needs the featuredImageUrl string! BasicProduct data, when null will display pla
 
 ###### Usage:
 
-```js
+```jsx
 <ProductImageSlider product={...} isAnimating />
 ```
 
@@ -56,6 +56,6 @@ Array of urls to images, when null will display placeholder.
 
 ###### Usage:
 
-```js
+```jsx
 <ProductImageSlider images={['foo/bar.png']} isAnimating />
 ```

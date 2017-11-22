@@ -5,7 +5,7 @@ The Cart Empty component is shown inside the cart when no products are added to 
 
 ## Getting Started
 
-```js
+```jsx
 import Empty from './Empty';
 
 <Empty />
@@ -21,7 +21,7 @@ The Cart Empty component shows a "Continue shopping" button. This prop delivers 
 
 ###### Usage:
 
-```jsjx
+```jsx
 <Empty goBackHistory={() => { ... }}/>
 ```
 ---

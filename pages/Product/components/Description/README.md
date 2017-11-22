@@ -11,7 +11,7 @@ Displays the description of the product or placeholders if data is not available
 
 ## Getting Started
 
-```js
+```jsx
 import ProductDescription from './ProductDescription';
 
 <ProductDescription html="<h1>Foo</h1> Bar" />
@@ -28,7 +28,7 @@ Any kind of text and/or html. If null or animating, a placeholder will be shown
 
 ###### Usage:
 
-```js
+```jsx
 <ProductDescription html="<h1>Foo</h1> Bar" />
 ```
 

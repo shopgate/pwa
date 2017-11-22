@@ -24,7 +24,7 @@ A key-value object with product properties. If null the component is not rendere
 
 ###### Usage:
 
-```js
+```jsx
 <ProductProperties
   properties={{
     property1: 'value1',

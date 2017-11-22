@@ -9,7 +9,7 @@ A slider component that can be used for zooming and panning of images.
 
 ## Getting Started
 
-```js
+```jsx
 import { Image } from '@shopgate/pwa-common/components/Image/';
 import ZoomPanSlider from './ZoomPanSlider';
 
@@ -53,7 +53,7 @@ Whether swiping for this slider should be allowed.
 
 ###### Usage:
 
-```js
+```jsx
 <ZoomPanSlider disabled>
   ...
 </ZoomPanSlider>
@@ -67,7 +67,7 @@ If autoplay is enabled, the next slider item will appear automatically after `in
 
 ###### Usage:
 
-```js
+```jsx
 <ZoomPanSlider autoplay>
   ...
 </ZoomPanSlider>
@@ -83,7 +83,7 @@ If autoplay is false, this prop is ignored.
 
 ###### Usage:
 
-```js
+```jsx
 <ZoomPanSlider autoplay interval={3000}>
   ...
 </ZoomPanSlider>
@@ -97,7 +97,7 @@ Whether to display the control buttons or not
 
 ###### Usage:
 
-```js
+```jsx
 <ZoomPanSlider controls>
   ...
 </ZoomPanSlider>
@@ -112,7 +112,7 @@ Whether to display the indicators (little dots)
 
 ###### Usage:
 
-```js
+```jsx
 <ZoomPanSlider indicators>
   ...
 </ZoomPanSlider>
@@ -128,7 +128,7 @@ And therefore allow swiping infinitely.
 
 ###### Usage:
 
-```js
+```jsx
 <ZoomPanSlider loop>
   ...
 </ZoomPanSlider>

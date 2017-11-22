@@ -22,7 +22,7 @@ Tells if the PaymentBar is visible, or hidden.
 
 ###### Usage:
 
-```js
+```jsx
 <PaymentBar isVisible={true} />
 ```
 

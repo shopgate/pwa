@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-```js
+```jsx
 import VariantSelects from './VariantSelects'
 
 // Object with all variants
@@ -28,10 +28,10 @@ Callback function that is triggered if the user selects a characteristic
 
 ###### Usage:
 
-```js
+```jsx
 const onCharacteristicUpdate = (variantId, valueId) => {...}
 ```
-```js
+```jsx
 <VariantSelects onCharacteristicUpdate={onCharacteristicUpdate}/>
 ```
 
@@ -44,7 +44,7 @@ Delay after a click until the Drawer starts closing
 
 ###### Usage:
 
-```js
+```jsx
 <VariantSelects closeDelay={300}/>
 ```
 
@@ -76,7 +76,7 @@ const data = [
 ];
 ```
 
-```js
+```jsx
 <VariantSelects selection={data}/>
 ```
 ---
