@@ -5,6 +5,8 @@ exports[`<Input /> should change the value on user input 1`] = `
   value="My initial value"
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -41,6 +43,8 @@ exports[`<Input /> should focus the input 1`] = `
   onFocusChange={[Function]}
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -75,6 +79,8 @@ exports[`<Input /> should focus the input 1`] = `
 exports[`<Input /> should receive the correct value while typing 1`] = `
 <Component>
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -112,6 +118,8 @@ exports[`<Input /> should render a multiline input with empty content and react 
   value=""
 >
   <MultiLineInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -145,6 +153,8 @@ exports[`<Input /> should render a multiline input with empty content and react 
 exports[`<Input /> should render a simple input field 1`] = `
 <Component>
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -181,6 +191,8 @@ exports[`<Input /> should render the input as password 1`] = `
   password={true}
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -217,6 +229,8 @@ exports[`<Input /> should render the input with a default value 1`] = `
   value="FooBar"
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -253,6 +267,8 @@ exports[`<Input /> should sanitize the input 1`] = `
   onSanitize={[Function]}
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -289,6 +305,8 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
   onChange={[Function]}
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
@@ -325,6 +343,8 @@ exports[`<Input /> should validate the input 1`] = `
   onValidate={[Function]}
 >
   <SimpleInput
+    autoComplete={false}
+    autoCorrect={false}
     className=""
     disabled={false}
     id={null}
