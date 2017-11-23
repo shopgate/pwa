@@ -18,7 +18,9 @@ const container = css({
 }).toString();
 
 const details = css({
-  padding: '12px 0 30px',
+  ':not(:empty)': {
+    padding: '12px 0 30px',
+  },
 }).toString();
 
 const title = css({
