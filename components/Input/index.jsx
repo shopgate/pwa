@@ -11,6 +11,7 @@ import SimpleInput from './components/SimpleInput';
 import MultiLineInput from './components/MultiLineInput';
 
 /**
+ * Input component.
  *
  * @param {Object} props Props
  * @return {JSX}

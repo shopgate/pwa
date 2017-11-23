@@ -139,7 +139,7 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case 'register_legacy':
       this.addLinkAction('legacyLink', {
         targetTab: 'main',
-        url: '/register',
+        url: '/register/default',
       });
       break;
 

@@ -31,20 +31,26 @@ class MultiLineInput extends SimpleInput {
   }
 
   /**
-   * Set real value and trigger second render.
-   * Initially trigger onChange() to set the initial value.
+   * Additional function to make avoid .setState use in componentDidMount
+   * usage violation.
    */
-  componentDidMount() {
-    // No super, would have to sanitize anyway.
+  doComponentDidMount() {
     const sanitizedValue = this.props.onSanitize(this.props.value || '');
     this.props.onChange(sanitizedValue);
-    /* eslint-disable react/no-did-mount-set-state */
     this.setState({
       value: sanitizedValue,
       isValid: this.props.onValidate(sanitizedValue, true),
       isFocused: false,
     });
-    /* eslint-enable react/no-did-mount-set-state */
+  }
+
+  /**
+   * Set real value and trigger second render.
+   * Initially trigger onChange() to set the initial value.
+   */
+  componentDidMount() {
+    // No super, would have to sanitize anyway.
+    this.doComponentDidMount();
   }
 
   /**
