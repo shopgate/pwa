@@ -11,6 +11,7 @@ import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import resetHistory from '@shopgate/pwa-common/actions/history/resetHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
@@ -109,5 +110,21 @@ export default function cart(subscribe) {
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
     dispatch(fetchRegisterUrl());
+  });
+
+  subscribe(remoteCartDidUpdate$, ({ dispatch, action }) => {
+    const { errors } = action;
+
+    if (Array.isArray(errors) && errors.length) {
+      errors.forEach((entry) => {
+        const { message } = entry;
+
+        dispatch(showModal({
+          confirm: null,
+          title: 'modal.title_error',
+          message,
+        }));
+      });
+    }
   });
 }
