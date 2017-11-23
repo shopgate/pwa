@@ -46,6 +46,10 @@ css.global('button, textarea', {
   lineHeight: 'inherit',
 });
 
+css.global('button', {
+  borderRadius: 0,
+});
+
 css.global('button, label, [type="checkbox"], [type="radio"]', {
   cursor: 'pointer',
 });
