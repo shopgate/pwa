@@ -9,7 +9,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import List from './index';
 
-describe.skip('<List />', () => {
+describe('<List />', () => {
   let list = null;
 
   const reviews = [
