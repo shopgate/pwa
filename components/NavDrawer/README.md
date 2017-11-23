@@ -7,7 +7,7 @@ All items are defined inside the component or will be received via the shop conf
 ## Getting Started
 
 ```jsx
-import NavDrawe from 'Components/NavDrawer';
+import NavDrawer from 'Components/NavDrawer';
 
 <NavDrawer />
 ```
