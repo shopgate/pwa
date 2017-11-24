@@ -15,9 +15,7 @@ import {
 import Button from '@shopgate/pwa-common/components/Button';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import ArrowIcon from 'Components/icons/ArrowIcon';
-import BurgerIcon from 'Components/icons/BurgerIcon';
 import CrossIcon from 'Components/icons/CrossIcon';
-import Ripple from 'Components/Ripple';
 import connect from './connector';
 import {
   NAV_STATE_INDEX,
@@ -55,7 +53,6 @@ class NavButton extends PureComponent {
     loginOpen: PropTypes.bool.isRequired,
     // eslint-disable-next-line react/no-unused-prop-types
     path: PropTypes.string.isRequired,
-    toggleNavDrawer: PropTypes.func.isRequired,
     goBackHistory: PropTypes.func,
     showIconShadow: PropTypes.bool,
   };
@@ -114,10 +111,7 @@ class NavButton extends PureComponent {
 
     if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
       this.props.goBackHistory();
-      return;
     }
-
-    this.props.toggleNavDrawer(true);
   }
 
   /**
@@ -133,7 +127,7 @@ class NavButton extends PureComponent {
       return <ArrowIcon shadow={this.props.showIconShadow} />;
     }
 
-    return <BurgerIcon />;
+    return null;
   }
 
   /**
@@ -141,11 +135,17 @@ class NavButton extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const Icon = this.renderIcon();
+
+    if (!Icon) {
+      return null;
+    }
+
     return (
       <Button className={styles.button} onClick={this.handleClick}>
-        <Ripple className={styles.buttonContent}>
-          {this.renderIcon()}
-        </Ripple>
+        <div className={styles.buttonContent}>
+          {Icon}
+        </div>
       </Button>
     );
   }
