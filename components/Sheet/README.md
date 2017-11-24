@@ -5,8 +5,8 @@ The `Sheet` component is used as a page popup.
 
 ## Getting Started
 
-```
-import { Sheet } from 'Templates/components';
+```jsx
+import Sheet from 'Components/Sheet';
 
 <Sheet title="My Sheet">
   ...
@@ -24,7 +24,7 @@ Children that will be rendered.
 
 ###### Usage:
 
-```
+```jsx
 <Sheet>
   <ChildComponent />
 </Sheet>
@@ -34,7 +34,7 @@ Children that will be rendered.
 
 _Default_:
 
-```
+```jsx
 {
   in: null,
   out: null,
@@ -46,7 +46,7 @@ An object which contains classes for the in and out animation.
 
 ###### Usage:
 
-```
+```jsx
 const sheetAnimation = {
   in: 'animate_in_class',
   out: 'animate_in_class'
@@ -66,10 +66,10 @@ Callback function that is triggered if the Sheet is opened.
 
 ###### Usage:
 
-```
+```js
 const handleOpen = () => { ... };
 ```
-```
+```jsx
 <Sheet onClose={handleOpen}/>
 ```
 
@@ -82,10 +82,10 @@ Callback function that is triggered if the Sheet is closed.
 
 ###### Usage:
 
-```
+```js
 const handleClose = () => { ... };
 ```
-```
+```jsx
 <Sheet onClose={handleClose}/>
 ```
 
@@ -97,7 +97,7 @@ _Default_: `''`
 The title of the Sheet.
 
 ###### Usage:
-```
+```jsx
 <Sheet title='My Title'>
   ...
 </Sheet>
@@ -111,7 +111,7 @@ _Default_: `300`
 Duration of the open/close animation, in milliseconds.
 
 ###### Usage:
-```
+```jsx
 <Sheet duration={150}>
   ...
 </Sheet>
@@ -125,7 +125,7 @@ _Default_: `false`
 Prop to set the open state of the component.
 
 ###### Usage:
-```
+```jsx
 <Sheet isOpen>
   ...
 </Sheet>

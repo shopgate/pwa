@@ -1,13 +1,11 @@
 IndicatorCircle Component
 ---
+The IndicatorCircle serves as an animated loading indicator. It shows a rotating circle in GMD style.
 
-The IndicatorCircle serves as an animated loading indicator.
-It shows a rotating circle in GMD style.
+# Getting Started
 
-## Getting Started
-
-```
-import { IndicatorCircle } from 'Templates/components';
+```jsx
+import IndicatorCircle from 'Components/IndicatorCircle';
 
 <IndicatorCircle />
 <IndicatorCircle size={32} />
@@ -16,18 +14,23 @@ import { IndicatorCircle } from 'Templates/components';
 
 ## Props
 
+### color
+
+_Default_: `#5ccee3` (colors.accent)  
+_Type_: `string`  
+
+The color of the component.
+
 ### size
 
-_Default_: `32` (variables.loadingIndicator.size)
-
+_Default_: `32` (variables.loadingIndicator.size)  
 _Type_: `number`  
 
 The size of the component in px.
 
-### color
+### strokeWidth
 
-_Default_: `#5ccee3` (colors.accent)
+_Default_: `3` (variables.loadingIndicator.strokeWidth)  
+_Type_: `number`  
 
-_Type_: `string`  
-
-The color of the component.
+The stroke width of the component in px.

@@ -3,8 +3,8 @@
 This component will display the price info, which usually contains the base price for a product.
 
 ## Getting Started
-```markup
-import { PriceInfo } from 'Template/components';
+```jsx
+import PriceInfo from 'Components/PriceInfo';
 
 <PriceInfo text="2,55€ / KG" />
 ```
@@ -17,7 +17,7 @@ _Type_: `string`
 The text that the component shall display.
 
 ###### Usage:
-```
+```jsx
 <PriceInfo text="2,55€ / KG" />
 ```
 

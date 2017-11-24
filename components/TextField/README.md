@@ -1,13 +1,12 @@
 TextField
 ---
-The text field component renders an input field with a
-floating label in material design.
+The text field component renders an input field with a floating label in material design.
 
 ## Props
 
 ### className (optional)
 
-_Type_: `className`  
+_Type_: `string`  
 
 Any additional style classes that should be applied to the component.
 
@@ -15,8 +14,7 @@ Any additional style classes that should be applied to the component.
 
 _Type_: `Node`  
 
-The current error text to display. See `onValidate` for further details
-on when to use this property.
+The current error text to display. See `onValidate` for further details on when to use this property.
 
 ### hintText (optional)
 
@@ -34,30 +32,23 @@ The label to display for the text field.
 
 _Type_: `function (value)`  
 
-An optional callback that is triggered when the value of the text field
-has been changed.
+An optional callback that is triggered when the value of the text field has been changed.
 
 ### onSanitize (optional)
 
 _Type_: `function (value)`  
 
-An optional callback that can be used to transform the value entered by the
-user on the fly. The function is expected to return the sanitized value.
+An optional callback that can be used to transform the value entered by the user on the fly. The function is expected to return the sanitized value.
 
 ### onValidate (optional)
 
 _Type_: `function (value)`  
 
-An optional callback that can be used to validate the value entered by the
-user on the fly. The function is expected to return a boolean indicating
-whether the value is valid or, if the validation failed, a message indicating
-the error.
+An optional callback that can be used to validate the value entered by the user on the fly. The function is expected to return a boolean indicating whether the value is valid or, if the validation failed, a message indicating the error.
 
-*Note*: The error message will only be displayed if no custom error text
-has been set for the `errorText` property.
+*Note*: The error message will only be displayed if no custom error text has been set for the `errorText` property.
 
-By default, input validation will only happen if the field is blurred
-(lost its focus). See `validateOnBlur` for further reference.
+By default, input validation will only happen if the field is blurred (lost its focus). See `validateOnBlur` for further reference.
 
 ### password (optional)
 
@@ -70,22 +61,12 @@ If this prop is set, the component will be rendered as a password field.
 
 _Type_: `string`  
 
-The initial value of the text field. If the value of this property is modified,
-the current value entered by the user is overwritten.
-
-### validateOnBlur (optional)
-
-_Type_: `boolean`  
-_Default_: `true`  
-
-By default, input validation will only happen if the field is blurred
-(lost its focus). To enable validation while the user is typing, this property
-can be set to false.
+The initial value of the text field. If the value of this property is modified, the current value entered by the user is overwritten.
 
 ## Usage:
 
-```markup
-import { TextField } from 'Templates/components';
+```jsx
+import TextField from 'Components/TextField';
 
 // Makes the entered value lowercase.
 doSanitize = (value) => value.toLowerCase();

@@ -7,8 +7,8 @@ Therefore it wraps a component and injects a "selection" prop that represents th
 
 ## Getting Started
 
-```javascript
-import { ProductVariants } from 'Library/components';
+```jsx
+import ProductVariants from 'Pages/Product/components/VariantSelects/components/ProductVariants';
 ```
 
 ## Props
@@ -35,13 +35,13 @@ Triggers a product selection update. It has two parameters ***characteristicId**
 
 ## Functions
 
-##### ProductVariants 
+##### ProductVariants
 
 Wraps the given component and data fields.
 
 ###### Parameters
 
-- **WrappedComponent** {React.Component}<br>
+- **WrappedComponent** {React.Component}  
 Target component.
 
 ###### Returns
@@ -49,12 +49,12 @@ Target component.
 
 ###### Example
 
-```javascript
-import { ProductVariants } from 'Library/components';
+```jsx
+import ProductVariants from 'Pages/Product/components/VariantSelects/components/ProductVariants';
 
 class MyComponent extends Component {
   // ...
-  
+
   render() {
     const { selection } = this.props;
 
