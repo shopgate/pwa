@@ -11,7 +11,7 @@ A slider component that can be used for zooming and panning of images.
 
 ```jsx
 import { Image } from '@shopgate/pwa-common/components/Image/';
-import ZoomPanSlider from './ZoomPanSlider';
+import ZoomPanSlider from 'Pages/ProductGallery/components/ZoomPanSlider';
 
 <ZoomPanSlider>
   <Image src="/foo/bar" />

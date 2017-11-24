@@ -6,7 +6,7 @@ This component provides a input of type `number` for changing the amount of e.g.
 ## Getting Started
 
 ```jsx
-import QuantityPicker from './QuantityPicker';
+import QuantityPicker from 'Pages/Cart/components/Item/components/Product/components/Layout/components/QuantityPicker';
 
 <QuantityPicker quantity={...} />
 ```

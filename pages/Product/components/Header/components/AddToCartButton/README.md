@@ -1,13 +1,12 @@
 # AddToCartButton
 ---
 
-The add to cart button component renders a rounded button that will put the current product in to the cart.
-When clicked a bounce animation is triggered that will bounce in the checkmark icon and bounce out the cart icon and vice versa.
+The add to cart button component renders a rounded button that will put the current product in to the cart. When clicked a bounce animation is triggered that will bounce in the checkmark icon and bounce out the cart icon and vice versa.
 
 ## Getting Started
 
-```
-import { AddToCartButton } from 'Templates/components';
+```jsx
+import AddToCartButton from 'Pages/Product/components/Header/components/AddToCartButton';
 
 <AddToCartButton handleAddToCart={() => {}} isLoading isOrderable={false} />
 ```
@@ -22,7 +21,7 @@ This function will be called when the user clicks the button and `isOrderable` i
 
 ###### Usage:
 
-```
+```jsx
 <AddToCartButton handleAddToCart={() => { console.log('addToCart'); }} isLoading={false} isOrderable />
 ```
 
@@ -35,7 +34,7 @@ If `true` the button will contain a spinning loading icon.
 
 ###### Usage:
 
-```
+```jsx
 <AddToCartButton handleAddToCart={() => { console.log('addToCart'); }} isLoading isOrderable={false} />
 ```
 
@@ -48,7 +47,7 @@ Should be `true` to indicate that the current product is orderable, if not order
 
 ###### Usage:
 
-```
+```jsx
 <AddToCartButton handleAddToCart={() => { console.log('addToCart'); }} isLoading isOrderable />
 ```
 ---

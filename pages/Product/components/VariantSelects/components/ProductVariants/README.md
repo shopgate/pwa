@@ -7,8 +7,8 @@ Therefore it wraps a component and injects a "selection" prop that represents th
 
 ## Getting Started
 
-```javascript
-import ProductVariants from './ProductVariants';
+```jsx
+import ProductVariants from 'Pages/Product/components/VariantSelects/components/ProductVariants';
 ```
 
 ## Props
@@ -49,8 +49,8 @@ Target component.
 
 ###### Example
 
-```javascript
-import { ProductVariants } from 'Library/components';
+```jsx
+import ProductVariants from 'Pages/Product/components/VariantSelects/components/ProductVariants';
 
 class MyComponent extends Component {
   // ...

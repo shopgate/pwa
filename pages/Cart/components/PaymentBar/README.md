@@ -6,7 +6,7 @@ The `PaymentBar` is added to the bottom of the cart view and shows the cart's su
 ## Getting Started
 
 ```
-import PaymentBar from './PaymentBar';
+import PaymentBar from 'Pages/Cart/components/PaymentBar';
 
 <PaymentBar />
 ```

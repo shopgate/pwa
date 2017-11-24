@@ -8,7 +8,7 @@ Component to display properties in a tabular layout.
 ## Getting Started
 
 ```
-import ProductProperties from './ProductProperties';
+import ProductProperties from 'Pages/Product/components/Properties';
 
 <ProductProperties properties={null} />
 ```

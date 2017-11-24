@@ -4,7 +4,7 @@ Shows a difference of price. Renders the text in red if the price difference is 
 
 ## Getting Started
 ```jsx
-import PriceDifference from './PriceDifference';
+import PriceDifference from 'Pages/Product/components/Options/components/PriceDifference';
 
 <PriceDifference currency="EUR" priceDifference={-1.5} />
 ```

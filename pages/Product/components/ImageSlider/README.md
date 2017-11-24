@@ -21,7 +21,7 @@ Tries to display as fast as possible the first image (featuredImage) while waiti
 ## Getting Started
 
 ```jsx
-import ProductImageSlider from './ProductImageSlider';
+import ProductImageSlider from 'Pages/Product/components/ImageSlider';
 
 <ProductImageSlider
   product={...}

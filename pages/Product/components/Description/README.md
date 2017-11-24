@@ -12,7 +12,7 @@ Displays the description of the product or placeholders if data is not available
 ## Getting Started
 
 ```jsx
-import ProductDescription from './ProductDescription';
+import ProductDescription from 'Pages/Product/components/Description';
 
 <ProductDescription html="<h1>Foo</h1> Bar" />
 ```

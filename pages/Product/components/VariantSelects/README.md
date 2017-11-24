@@ -4,7 +4,7 @@
 ## Getting Started
 
 ```jsx
-import VariantSelects from './VariantSelects'
+import VariantSelects from 'Pages/Product/components/VariantSelects'
 
 // Object with all variants
 const variants = {};

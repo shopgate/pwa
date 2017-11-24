@@ -6,7 +6,7 @@ The Cart Empty component is shown inside the cart when no products are added to 
 ## Getting Started
 
 ```jsx
-import Empty from './Empty';
+import Empty from 'Pages/Cart/components/Empty';
 
 <Empty />
 ```
