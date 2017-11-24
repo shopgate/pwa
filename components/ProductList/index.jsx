@@ -19,7 +19,7 @@ import Layout from './components/Layout';
  * @returns {JSX}
  */
 const ProductList = ({ flags, infiniteLoad, handleGetProducts, products, totalProductCount }) => {
-  if (infiniteLoad) {
+  if (!infiniteLoad) {
     return (
       <Layout>
         {products.map(product =>
