@@ -19,31 +19,31 @@ import Layout from './components/Layout';
  * @returns {JSX}
  */
 const ProductList = ({ flags, infiniteLoad, handleGetProducts, products, totalProductCount }) => {
-  if (infiniteLoad) {
+  if (!infiniteLoad) {
     return (
-      <InfiniteContainer
-        wrapper={Layout}
-        iterator={Iterator}
-        loader={handleGetProducts}
-        items={products}
-        loadingIndicator={<LoadingIndicator />}
-        totalItems={totalProductCount}
-        initialLimit={6}
-        limit={ITEMS_PER_LOAD}
-      />
+      <Layout>
+        {products.map(product =>
+          <Iterator
+            display={flags}
+            id={product.id}
+            key={product.id} {...product}
+          />
+        )}
+      </Layout>
     );
   }
 
   return (
-    <Layout>
-      {products.map(product =>
-        <Iterator
-          display={flags}
-          id={product.id}
-          key={product.id} {...product}
-        />
-      )}
-    </Layout>
+    <InfiniteContainer
+      wrapper={Layout}
+      iterator={Iterator}
+      loader={handleGetProducts}
+      items={products}
+      loadingIndicator={<LoadingIndicator />}
+      totalItems={totalProductCount}
+      initialLimit={6}
+      limit={ITEMS_PER_LOAD}
+    />
   );
 };
 
