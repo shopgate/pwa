@@ -7,7 +7,6 @@
 
 import { connect } from 'react-redux';
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
-import toggleNavDrawer from '../../actions/toggleNavDrawer';
 
 /**
  * Maps the contents of the state to the component props.
@@ -30,7 +29,6 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   goBackHistory: (amount = 1) => dispatch(goBackHistory(amount)),
-  toggleNavDrawer: active => dispatch(toggleNavDrawer(active)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
