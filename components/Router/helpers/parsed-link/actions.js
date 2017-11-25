@@ -68,6 +68,7 @@ const legacyLink = (options) => {
       src: `sgapi:${options.url.substring(1)}`,
       previewSrc: 'sgapi:page_preview',
       targetTab: options.targetTab,
+      animated: false,
       navigationBarParams: {
         type: options.navigationType ? options.navigationType : 'default',
         leftButtonCallback: options.backCallback ? options.backCallback : '',
