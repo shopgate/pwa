@@ -205,8 +205,8 @@ class Select extends Component {
 
     return (
       <div className={`${styles.container} ${this.props.className}`} ref={(ref) => { this.domElement = ref; }}>
-        <div className={styles.select} onTouchStart={this.toggleOpenState}>
-          <span className={`${styles.selectLabel} ${hasSelection ? styles.selectedLabel : ''}`}>
+        <div onTouchStart={this.toggleOpenState}>
+          <span>
             {selectedLabel}
           </span>
           <span className={styles.selectHandle}>

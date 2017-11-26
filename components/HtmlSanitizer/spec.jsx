@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { JSDOM } from 'jsdom';
 import HtmlSanitizer from './index';
 
@@ -37,7 +37,7 @@ describe('<HtmlSanitizer />', () => {
      */
     const html = '&lt;h1&gt;Hello World!&lt;/h1&gt;';
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <HtmlSanitizer decode>
         {html}
       </HtmlSanitizer>
@@ -57,7 +57,7 @@ describe('<HtmlSanitizer />', () => {
       </div>
     `;
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <HtmlSanitizer>
         {html}
       </HtmlSanitizer>
@@ -76,7 +76,7 @@ describe('<HtmlSanitizer />', () => {
       </div>
     `;
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <HtmlSanitizer>
         {html}
       </HtmlSanitizer>
@@ -97,7 +97,7 @@ describe('<HtmlSanitizer />', () => {
      */
     const html = '&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt;var x = 42;&lt;/script&gt; &lt;p&gt;Foo Bar&lt;/p&gt; &lt;script&gt;var y = 23;&lt;/script&gt;';
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <HtmlSanitizer decode>
         {html}
       </HtmlSanitizer>
