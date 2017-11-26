@@ -30,7 +30,7 @@ describe('style helper', () => {
     let consoleSpy;
 
     beforeAll(() => {
-      // Deactivae the console for the next tests to avoid ugly logs.
+      // Deactivate the console for the next tests to avoid logs within the test report.
       consoleSpy = jest.spyOn(console, 'error').mockImplementation();
     });
 
