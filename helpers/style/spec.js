@@ -27,8 +27,24 @@ describe('style helper', () => {
   });
 
   describe('rem helper error handling', () => {
+    let consoleSpy;
+
+    beforeAll(() => {
+      // Deactivae the console for the next tests to avoid ugly logs.
+      consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+    });
+
+    afterAll(() => {
+      consoleSpy.mockRestore();
+    });
+
+    afterEach(() => {
+      consoleSpy.mockReset();
+    });
+
     it('should output 1rem as fallback for wrong parameters', () => {
       expect(rem('rem')).toBe('1rem');
+      expect(consoleSpy).toHaveBeenCalledTimes(1);
     });
   });
 });

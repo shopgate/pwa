@@ -20,11 +20,11 @@ import styles from './style';
  */
 const RangeSliderHandle = ({ active, index, onTouchStart, classNames }) => (
   <div
-    className={`${classNames.handleOuter} ${styles}`}
+    className={`${classNames.handleOuter || ''} ${styles}`}
     style={{ zIndex: Number(active) || 0 }}
     onTouchStart={event => onTouchStart(event, index)}
   >
-    <div className={classNames.handleInner} />
+    <div className={classNames.handleInner || ''} />
   </div>
 );
 

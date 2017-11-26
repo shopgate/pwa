@@ -20,7 +20,7 @@ const AuthRoutes = props => (
     {React.Children.map(props.children, child => (
       props.isLoggedIn
         ? child
-        : <Redirect to={props.to} path={child.props.path} />
+        : <Redirect to={props.to} path={child.props.path} trampolineRedirect={() => {}} />
     ))}
   </div>
 );

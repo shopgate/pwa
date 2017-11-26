@@ -2,6 +2,8 @@
 
 exports[`<Input /> should change the value on user input 1`] = `
 <Input
+  autoComplete={false}
+  autoCorrect={false}
   className=""
   disabled={false}
   onChange={[Function]}
@@ -15,6 +17,8 @@ exports[`<Input /> should change the value on user input 1`] = `
   value="My initial value"
 >
   <input
+    autoComplete="off"
+    autoCorrect="off"
     className=""
     disabled={false}
     onBlur={[Function]}
@@ -28,6 +32,8 @@ exports[`<Input /> should change the value on user input 1`] = `
 
 exports[`<Input /> should focus the input 1`] = `
 <Input
+  autoComplete={false}
+  autoCorrect={false}
   className=""
   disabled={false}
   onChange={[Function]}
@@ -41,6 +47,8 @@ exports[`<Input /> should focus the input 1`] = `
   value=""
 >
   <input
+    autoComplete="off"
+    autoCorrect="off"
     className=""
     disabled={false}
     onBlur={[Function]}
@@ -54,6 +62,8 @@ exports[`<Input /> should focus the input 1`] = `
 
 exports[`<Input /> should receive the correct value while typing 1`] = `
 <Input
+  autoComplete={false}
+  autoCorrect={false}
   className=""
   disabled={false}
   onChange={[Function]}
@@ -67,6 +77,8 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
   value=""
 >
   <input
+    autoComplete="off"
+    autoCorrect="off"
     className=""
     disabled={false}
     onBlur={[Function]}
@@ -80,6 +92,8 @@ exports[`<Input /> should receive the correct value while typing 1`] = `
 
 exports[`<Input /> should render a simple input field 1`] = `
 <Input
+  autoComplete={false}
+  autoCorrect={false}
   className=""
   disabled={false}
   onChange={[Function]}
@@ -93,6 +107,8 @@ exports[`<Input /> should render a simple input field 1`] = `
   value=""
 >
   <input
+    autoComplete="off"
+    autoCorrect="off"
     className=""
     disabled={false}
     onBlur={[Function]}
@@ -106,6 +122,8 @@ exports[`<Input /> should render a simple input field 1`] = `
 
 exports[`<Input /> should render the input as password 1`] = `
 <input
+  autoComplete="off"
+  autoCorrect="off"
   className=""
   disabled={false}
   onBlur={[Function]}
@@ -118,6 +136,8 @@ exports[`<Input /> should render the input as password 1`] = `
 
 exports[`<Input /> should render the input with a default value 1`] = `
 <input
+  autoComplete="off"
+  autoCorrect="off"
   className=""
   disabled={false}
   onBlur={[Function]}
@@ -130,6 +150,8 @@ exports[`<Input /> should render the input with a default value 1`] = `
 
 exports[`<Input /> should sanitize the input 1`] = `
 <Input
+  autoComplete={false}
+  autoCorrect={false}
   className=""
   disabled={false}
   onChange={[Function]}
@@ -143,6 +165,8 @@ exports[`<Input /> should sanitize the input 1`] = `
   value=""
 >
   <input
+    autoComplete="off"
+    autoCorrect="off"
     className=""
     disabled={false}
     onBlur={[Function]}
@@ -156,6 +180,8 @@ exports[`<Input /> should sanitize the input 1`] = `
 
 exports[`<Input /> should trigger the onChange callback 1`] = `
 <Input
+  autoComplete={false}
+  autoCorrect={false}
   className=""
   disabled={false}
   onChange={[Function]}
@@ -169,6 +195,8 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
   value=""
 >
   <input
+    autoComplete="off"
+    autoCorrect="off"
     className=""
     disabled={false}
     onBlur={[Function]}
@@ -182,6 +210,8 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
 
 exports[`<Input /> should validate the input 1`] = `
 <input
+  autoComplete="off"
+  autoCorrect="off"
   className=""
   disabled={false}
   onBlur={[Function]}

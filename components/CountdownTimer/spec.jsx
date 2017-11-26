@@ -46,8 +46,6 @@ describe('<CountdownTimer>', () => {
       return currentTimeOffset;
     };
 
-    wrapper.instance().componentDidMount();
-
     return wrapper;
   };
 
@@ -86,8 +84,10 @@ describe('<CountdownTimer>', () => {
     expect(setInterval.mock.calls.length).toBe(1);
 
     jest.runTimersToTime(1000);
+    wrapper.update();
 
     const { params, string } = wrapper.props();
+
     const renderedTimeFormat = {
       params,
       string,
@@ -127,6 +127,7 @@ describe('<CountdownTimer>', () => {
 
     // Run down to 00:00:00.
     jest.runTimersToTime(1000);
+    wrapper.update();
     let { params, string } = wrapper.props();
     renderedTimeFormat = {
       params,
