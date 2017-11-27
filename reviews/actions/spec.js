@@ -80,10 +80,11 @@ describe('Reviews actions', () => {
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
      * @param {function} done Async test case done callback function.
+     * @param {Object} state React state.
      */
-    const testGetProductReviews = (variant, done) => {
+    const testGetProductReviews = (variant, done, state) => {
       const mockedDispatch = jest.fn();
-      const promise = getProductReviews('foo', 10, 'invalidSort')(mockedDispatch);
+      const promise = getProductReviews('foo', 10, 'invalidSort')(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
           expect(result.mockInstance.name).toBe('getProductReviews');
@@ -104,7 +105,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetProductReviews('then', done);
+      testGetProductReviews('then', done, finalState);
     });
     it('should reject and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
@@ -112,7 +113,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetProductReviews('catch', done);
+      testGetProductReviews('catch', done, finalState);
     });
   });
   describe('getUserReview', () => {
@@ -120,10 +121,11 @@ describe('Reviews actions', () => {
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
      * @param {function} done Async test case done callback function.
+     * @param {Object} state React state.
      */
-    const testGetUserReview = (variant, done) => {
+    const testGetUserReview = (variant, done, state) => {
       const mockedDispatch = jest.fn();
-      const promise = getUserReview('foo')(mockedDispatch);
+      const promise = getUserReview('foo')(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
           expect(result.mockInstance.name).toBe('getUserReview');
@@ -143,7 +145,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetUserReview('then', done);
+      testGetUserReview('then', done, finalState);
     });
     it('should reject and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
@@ -151,7 +153,7 @@ describe('Reviews actions', () => {
           mockInstance,
         });
       };
-      testGetUserReview('catch', done);
+      testGetUserReview('catch', done, finalState);
     });
   });
   describe('submitReview', () => {

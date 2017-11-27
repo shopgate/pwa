@@ -100,9 +100,8 @@ describe('Reviews reducers', () => {
           productId: 'foo',
         });
         expect(state.reviewsByProductId.foo).toEqual({
+          expires: 0,
           isFetching: true,
-          reviews: null,
-          totalReviewCount: null,
         });
       });
     });
