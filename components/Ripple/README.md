@@ -6,8 +6,8 @@ The ripple component is a **Higher Order Component** that will render a Material
 
 ## Getting Started
 
-```
-import { Ripple } from 'Templates/components';
+```jsx
+import Ripple from 'Components/Ripple';
 
 <Ripple>
   <MyChildComponent />
@@ -25,7 +25,7 @@ Additional classes that can be appended to the component's `className` attribute
 
 ###### Usage:
 
-```
+```jsx
 <Ripple className="class1 class2">
   <MyChildComponent />
 </Ripple>
@@ -40,7 +40,7 @@ The color of the Ripple. Maps directly to the CSS color attribute.
 
 ###### Usage:
 
-```
+```jsx
 <Ripple color="purple">
   <MyChildComponent />
 </Ripple>
@@ -70,9 +70,17 @@ Setting this prop will allow the Ripple effect to spill outside the boundary of 
 
 ###### Usage:
 
-```
+```jsx
 <Ripple overflow>
   <MyChildComponent />
 </Ripple>
 ```
+
+### size
+
+_Default_: `null`  
+_Type_: `number`  
+
+The size of the ripple animation.
+
 ---

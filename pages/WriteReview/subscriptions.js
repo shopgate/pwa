@@ -25,7 +25,7 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
-import { DIALOG_TEXT_MESSAGE } from 'Components/Dialog/constants';
+
 /**
  * Review form subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -69,7 +69,6 @@ export default function writeReview(subscribe) {
     dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,
-      type: DIALOG_TEXT_MESSAGE,
       message: 'reviews.modal_message',
       title: 'reviews.modal_title',
     }));

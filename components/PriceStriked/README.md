@@ -3,8 +3,8 @@
 This component will display a striked-through price label.
 
 ## Getting Started
-```markup
-import { PriceStriked } from 'Template/components';
+```jsx
+import PriceStriked from 'Components/PriceStriked';
 
 <PriceStriked value={1337.49} currency="EUR" />
 ```
@@ -12,7 +12,7 @@ import { PriceStriked } from 'Template/components';
 ## Props
 
 ### value (required)
-_Type_: `number`
+_Type_: `number`  
 
 The amount that the component shall display as a formatted price.
 
@@ -22,7 +22,7 @@ The amount that the component shall display as a formatted price.
 ```
 
 ### currency (required)
-_Type_: `string`
+_Type_: `string`  
 
 The currency of the price.
 

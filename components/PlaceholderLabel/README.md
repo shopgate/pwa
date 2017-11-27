@@ -5,8 +5,8 @@ A simple colored block that represents a loading text.
 
 ## Getting Started
 
-```
-import { PlaceholderLabel } from 'Templates/components';
+```jsx
+import PlaceholderLabel from 'Components/PlaceholderLabel';
 
 <PlaceholderLabel>
   Hello World
@@ -23,7 +23,7 @@ Children that will ONLY be rendered when ready is true.
 
 ###### Usage:
 
-```
+```jsx
 <PlaceholderLabel>
   <h1>foobar</h1>
 </PlaceholderLabel>
@@ -38,9 +38,16 @@ When ready children will be rendered, otherwise the placeholder will be shown.
 
 ###### Usage:
 
-```
+```jsx
 <PlaceholderLabel ready>
   <h1>foobar</h1>
 </PlaceholderLabel>
 ```
+
+### className
+_Default_: `''`  
+_Type_: `string`  
+
+Additional classes that can be appended to the component's className attribute.
+
 ---
