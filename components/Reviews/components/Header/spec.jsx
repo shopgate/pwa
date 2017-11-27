@@ -48,4 +48,9 @@ describe('<Header />', () => {
     expect(header.find('RatingStars').prop('value')).toEqual(rating.average);
     expect(header.find('RatingCount').prop('count')).toEqual(rating.count);
   });
+
+  it('should render null when no review is provided', () => {
+    header = createComponent(mockedStateWithAll);
+    expect(header.html()).toBe(null);
+  });
 });
