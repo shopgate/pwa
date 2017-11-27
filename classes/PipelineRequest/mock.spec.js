@@ -67,4 +67,13 @@ describe('MockPipelineRequest', () => {
         });
     })
   );
+  it('should set defaults when calling methods', () => {
+    const PipelineClass = mockedPipelineRequestFactory(() => {});
+    const instance = new PipelineClass('third');
+    instance
+      .setInput()
+      .setHandledErrors();
+    expect(instance.input).toEqual({});
+    expect(instance.handledErrors).toEqual([]);
+  });
 });
