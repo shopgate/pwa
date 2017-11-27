@@ -17,8 +17,10 @@ const container = css({
 }).toString();
 
 const details = css({
-  padding: '12px 16px',
   lineHeight: 1.35,
+  ':not(:empty)': {
+    padding: '12px 16px',
+  },
 }).toString();
 
 const title = css({
