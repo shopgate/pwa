@@ -11,7 +11,8 @@ import LoadingIndicator from 'Components/LoadingIndicator';
 import RatingScale from './components/RatingScale';
 import FormButtons from './components/FormButtons';
 import {
-  REVIEW_FORM_MAX_LENGTH,
+  DEFAULT_FORM_MAX_LENGTH,
+  REVIEW_TEXT_MAX_LENGTH,
   FIELD_NAME_AUTHOR,
   FIELD_NAME_RATE,
   FIELD_NAME_REVIEW,
@@ -40,6 +41,12 @@ class ReviewForm extends Component {
 
   static contextTypes = {
     i18n: PropTypes.func,
+  };
+
+  static validationLengths = {
+    [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
+    [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
+    [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
   };
 
   /**
@@ -145,12 +152,13 @@ class ReviewForm extends Component {
   validateAuthor(scope = this.state) {
     const { __ } = this.context.i18n();
     const validationErrors = this.validationErrors;
+    const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
 
     if (!scope[FIELD_NAME_AUTHOR]) {
       validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
-    } else if (scope[FIELD_NAME_AUTHOR].length > REVIEW_FORM_MAX_LENGTH) {
+    } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
       validationErrors[FIELD_NAME_AUTHOR] =
-        __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+        __('reviews.review_form_error_length', { length });
     } else {
       delete validationErrors[FIELD_NAME_AUTHOR];
     }
@@ -167,10 +175,11 @@ class ReviewForm extends Component {
   validateLength(field, scope = this.state) {
     const { __ } = this.context.i18n();
     const validationErrors = this.validationErrors;
+    const length = this.constructor.validationLengths[field];
 
-    if (scope[field] && scope[field].length > REVIEW_FORM_MAX_LENGTH) {
+    if (length && scope[field] && scope[field].length >= length) {
       validationErrors[field] =
-        __('reviews.review_form_error_length', { length: REVIEW_FORM_MAX_LENGTH });
+        __('reviews.review_form_error_length', { length });
     } else {
       delete validationErrors[field];
     }
