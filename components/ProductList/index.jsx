@@ -18,27 +18,47 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductList = ({ handleGetProducts, products, totalProductCount }) => (
-  <InfiniteContainer
-    wrapper={Layout}
-    iterator={Iterator}
-    loader={handleGetProducts}
-    items={products}
-    loadingIndicator={<LoadingIndicator />}
-    totalItems={totalProductCount}
-    initialLimit={10}
-    limit={ITEMS_PER_LOAD}
-  />
-);
+const ProductList = ({ flags, infiniteLoad, handleGetProducts, products, totalProductCount }) => {
+  if (!infiniteLoad) {
+    return (
+      <Layout>
+        {products.map(product =>
+          <Iterator
+            display={flags}
+            id={product.id}
+            key={product.id} {...product}
+          />
+        )}
+      </Layout>
+    );
+  }
+
+  return (
+    <InfiniteContainer
+      wrapper={Layout}
+      iterator={Iterator}
+      loader={handleGetProducts}
+      items={products}
+      loadingIndicator={<LoadingIndicator />}
+      totalItems={totalProductCount}
+      initialLimit={6}
+      limit={ITEMS_PER_LOAD}
+    />
+  );
+};
 
 ProductList.propTypes = {
+  flags: PropTypes.shape(),
   handleGetProducts: PropTypes.func,
+  infiniteLoad: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
   totalProductCount: PropTypes.number,
 };
 
 ProductList.defaultProps = {
+  flags: null,
   handleGetProducts: () => {},
+  infiniteLoad: true,
   products: null,
   totalProductCount: null,
 };
