@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+import ReviewFormShallow from './index';
 import {
   mockedStateWithoutReview,
   mockedStateWithInvalidReview,
   mockedStateWithReview,
+  mockedStateWithUserReviewLoading,
+  mockedStateWithoutProductData,
 } from './mock';
 
 const mockedStore = configureStore();
@@ -50,16 +53,30 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
 describe('<ReviewForm />', () => {
   it('should render form correctly', () => {
     const comp = createComponent(mockedStateWithoutReview);
+    expect(comp).toMatchSnapshot();
     expect(comp.find('RatingScale').length).toEqual(1);
 
     const fields = comp.findWhere(c => c.length && c.name() === 'TextField');
     expect(fields.length).toEqual(3);
   });
 
+  it('should render empty', () => {
+    const compEmpty = createComponent(mockedStateWithoutProductData);
+    expect(compEmpty).toMatchSnapshot();
+    expect(compEmpty.exists()).toEqual(true);
+  });
+
+  it('should render loading indicator', () => {
+    const compLoading = createComponent(mockedStateWithUserReviewLoading);
+    expect(compLoading).toMatchSnapshot();
+    expect(compLoading.find('LoadingIndicator').length).toEqual(1);
+  });
+
   it('should validate form on submit', () => {
     const comp = createComponent(mockedStateWithoutReview);
     comp.find('form').simulate('submit');
     comp.update();
+    expect(comp).toMatchSnapshot();
 
     const errors = comp.find('ReviewForm').instance().state.validationErrors;
     const author = comp.findWhere(c =>
@@ -81,6 +98,7 @@ describe('<ReviewForm />', () => {
     const review = mockedStateWithReview.reviews.reviewsById[id];
     const form = comp.find('form');
 
+    expect(comp).toMatchSnapshot();
     expect(form.exists()).toEqual(true);
     expect(form.find('RatingScale').prop('value')).toEqual(review.rate);
     expect(form.find('TextField').at(0).prop('value')).toEqual(review.author);
@@ -90,8 +108,11 @@ describe('<ReviewForm />', () => {
 
   it('should validate fields on change', () => {
     const comp = createComponent(mockedStateWithInvalidReview);
+    expect(comp).toMatchSnapshot();
+
     comp.find('form').simulate('submit');
     comp.update();
+    expect(comp).toMatchSnapshot();
 
     // Check validation with to long review
     const errors1 = comp.find('ReviewForm').instance().state.validationErrors;
@@ -103,6 +124,7 @@ describe('<ReviewForm />', () => {
     // Check validation with changed, shorter review
     review.find('textarea').simulate('change', { target: { value: 'Lorem ipsum dolor sit amet' } });
     comp.update();
+    expect(comp).toMatchSnapshot();
 
     const errors2 = comp.find('ReviewForm').instance().state.validationErrors;
     expect(errors2.review).toBeFalsy();
@@ -129,6 +151,8 @@ describe('<ReviewForm />', () => {
 
   it('should submit with valid review', () => {
     const comp = createComponent(mockedStateWithReview);
+    expect(comp).toMatchSnapshot();
+
     comp.find('form').simulate('submit');
     comp.update();
     const errors = comp.find('ReviewForm').instance().state.validationErrors;

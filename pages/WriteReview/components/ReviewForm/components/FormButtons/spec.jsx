@@ -31,6 +31,8 @@ const createComponent = () => mount(
 describe('<FormButtons />', () => {
   it('should render submit and cancel button', () => {
     const comp = createComponent();
+    expect(comp).toMatchSnapshot();
+
     const submitButton = comp.find('Button').at(0);
     const cancelButton = comp.find('button').at(0);
     expect(submitButton.find('Translate').prop('string')).toEqual('common.submit');
