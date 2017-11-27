@@ -10,6 +10,7 @@
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx .",
     "precommit": "lint-staged",
     "test": "jest",
+    "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "prebuild": "rimraf ./dist",
     "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
