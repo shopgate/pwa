@@ -5,17 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import reducers from '../reducers';
 import {
   getProductBasePrice,
   getProductCurrency,
+} from './product';
+import {
+  getRawProductOptions,
+  getProductOptions,
+} from './options';
+import {
   getProductPriceAddition,
   getProductTotalPrice,
   isFullPriceAvailable,
-  getRawProductOptions,
-  getProductOptions,
-} from '../selectors/product';
+} from './price';
 import setProductVariantId from '../action-creators/setProductVariantId';
 import setProductOption from '../action-creators/setProductOption';
 import {
@@ -88,7 +92,10 @@ describe('Product.Price selectors', () => {
    * - Additional costs per item are correct.
    */
   describe('Scenario #1: Product with variants and options', () => {
-    const store = createStore(reducers, productWithVariantsAndOptions);
+    const store = createStore(
+      combineReducers({ product: reducers }),
+      productWithVariantsAndOptions
+    );
 
     it('Step 1: Opening the product', () => {
       const state = store.getState();

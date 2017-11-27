@@ -64,12 +64,12 @@ export const basicProductState = {
     variantsByProductId: {},
     optionsByProductId: {},
     resultsByHash: {},
-  },
-  currentProduct: {
-    productId: '913',
-    productVariantId: null,
-    quantity: 1,
-    options: {},
+    currentProduct: {
+      productId: '913',
+      productVariantId: null,
+      quantity: 1,
+      options: {},
+    },
   },
 };
 
@@ -161,21 +161,24 @@ export const productWithOneOption = {
       },
     },
     resultsByHash: {},
-  },
-  currentProduct: {
-    productId: '1097',
-    productVariantId: null,
-    quantity: 1,
-    options: {},
+    currentProduct: {
+      productId: '1097',
+      productVariantId: null,
+      quantity: 1,
+      options: {},
+    },
   },
 };
 
 export const productWithSelectedOptions = {
   ...productWithOneOption,
-  currentProduct: {
-    ...productWithOneOption.currentProduct,
-    options: {
-      1: '1',
+  product: {
+    ...productWithOneOption.product,
+    currentProduct: {
+      ...productWithOneOption.product.currentProduct,
+      options: {
+        1: '1',
+      },
     },
   },
 };
@@ -278,13 +281,14 @@ export const productWithVariants = {
     },
     optionsByProductId: {},
     resultsByHash: {},
+    currentProduct: {
+      productId: 'dif01',
+      productVariantId: null,
+      quantity: 1,
+      options: {},
+    },
   },
-  currentProduct: {
-    productId: 'dif01',
-    productVariantId: null,
-    quantity: 1,
-    options: {},
-  },
+
 };
 
 export const productWithSelectedVariant = {
@@ -346,11 +350,12 @@ export const productWithSelectedVariant = {
         },
       },
     },
+    currentProduct: {
+      ...productWithVariants.currentProduct,
+      productVariantId: 'dif01-exp',
+    },
   },
-  currentProduct: {
-    ...productWithVariants.currentProduct,
-    productVariantId: 'dif01-exp',
-  },
+
 };
 
 export const productWithVariantsAndOptions = {
@@ -850,12 +855,11 @@ export const productWithVariantsAndOptions = {
       },
     },
     resultsByHash: {},
-  },
-  page: {},
-  currentProduct: {
-    productId: 'SG74',
-    productVariantId: null,
-    quantity: 1,
-    options: {},
+    currentProduct: {
+      productId: 'SG74',
+      productVariantId: null,
+      quantity: 1,
+      options: {},
+    },
   },
 };
