@@ -1,11 +1,12 @@
 # ContextMenu
----
+
 The ContextMenu component is designed to be a freely positioned dropdown context menu,
-where each menu item performs a specific task. 
+where each menu item performs a specific task.
 
 ## Getting Started
-```markup
-import { ContextMenu } from 'Templates/components';
+
+```jsx
+import ContextMenu from 'Components/ContextMenu';
 
 <ContextMenu>
   <ContextMenu.Item onClick={doSomething}>
@@ -19,14 +20,13 @@ import { ContextMenu } from 'Templates/components';
 ### children
 
 _Default_: `null`  
-_Type_: `Array<ContextMenu.Item>`
+_Type_: `Array<ContextMenu.Item>`  
 
-The children of the ContextMenu component should be an array of `ContextMenu.Item`s.
-Each `ContextMenu.Item` also supports an `onClick` handler.
+The children of the ContextMenu component should be an array of `ContextMenu.Item`s. Each `ContextMenu.Item` also supports an `onClick` handler.
 
 ###### Usage:
 
-```
+```jsx
 <ContextMenu>
   <ContextMenu.Item onClick={doSomething}>Item #1</ContextMenu.Item>
   <ContextMenu.Item onClick={doSomething}>Item #2</ContextMenu.Item>

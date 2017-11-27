@@ -5,8 +5,8 @@ The ActionButton serves as a clickable Button and can also show a loading indica
 
 ## Getting Started
 
-```
-import { ActionButton } from 'Templates/components';
+```jsx
+import ActionButton from 'Components/ActionButton';
 
 <ActionButton onClick={handleClick} />
 ```
@@ -28,7 +28,7 @@ Shows a loading indicator if set to true.
 
 ###### Usage:
 
-```
+```jsx
 <ActionButton loading={true} ... />
 ```
 ---

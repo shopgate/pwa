@@ -4,8 +4,8 @@ The RatingStars component is a simple component that displays five stars based o
 
 ## Getting Started
 
-```markup
-import { RatingStars } from 'Templates/components';
+```jsx
+import RatingStars from 'Components/RatingStars';
 
 <RatingStars value={50} />
 ```
@@ -18,7 +18,7 @@ _Type_: `number`
 
 The rating value that displays stars accordingly. It needs to be a number between [0...100].
 
-```
+```jsx
 // Displays 4 filled stars and 1 empty star.
 <RatingStars value={80} />
 ```
@@ -27,6 +27,12 @@ The rating value that displays stars accordingly. It needs to be a number betwee
 <RatingStars value={90} />
 ```
 
+### className
+_Type_: `string`  
+_Default_: `''`  
+
+Additional classes that can be appended to the component's className attribute.
+
 ### display
 
 _Type_: `'small'`, `'big'`, `'large'`, any custom defined style key.  
@@ -34,7 +40,7 @@ _Default_: `'small'` or first style key defined.
 
 The display style of the stars.
 
-```
+```jsx
 // Display a bigger version of the rating stars.
 <RatingStars value={80} display="big" />
 ```

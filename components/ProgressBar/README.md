@@ -6,7 +6,7 @@ A component to render a horizontal progress bar.
 ## Getting Started
 
 ```
-import { ProgressBar } from 'Templates/components';
+import ProgressBar from 'Components/ProgressBar';
 
 <ProgressBar isVisible />
 ```
