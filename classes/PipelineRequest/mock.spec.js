@@ -14,6 +14,7 @@ describe('MockPipelineRequest', () => {
         expect(typeof mockedInstance === 'object').toBe(true);
         res(1);
       });
+      expect(typeof FirstClass.mockedDispatchResolver).toBe('function');
       const firstInstance = new FirstClass('first');
       expect(firstInstance.name).toBe('first');
       expect(firstInstance.input).toEqual({});
