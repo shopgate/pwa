@@ -67,7 +67,7 @@ export default function userReviewsByProductId(state = {}, action) {
         [action.review.productId]: {
           isFetching: false,
           review: action.review.id,
-          expires: Date.now() + USER_REVIEW_LIFETIME,
+          expires: action.review.id ? Date.now() + USER_REVIEW_LIFETIME : 0,
         },
       };
     case RESET_SUBMIT_REVIEW:
