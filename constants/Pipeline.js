@@ -23,6 +23,12 @@ export const EACCESS = 'EACCESS';
 // Pipeline invalid credentials.
 export const EINVALIDCREDENTIALS = 'EINVALIDCREDENTIALS';
 
+// Pipeline no data found
+export const EUNKNOWN = 'EUNKNOWN';
+
+// Pipeline found duplicate data.
+export const EEXIST = 'EEXIST';
+
 // Trusted pipeline string.
 export const TYPE_TRUSTED = 'trusted';
 

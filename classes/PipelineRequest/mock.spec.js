@@ -14,15 +14,22 @@ describe('MockPipelineRequest', () => {
         expect(typeof mockedInstance === 'object').toBe(true);
         res(1);
       });
+      expect(typeof FirstClass.mockedDispatchResolver).toBe('function');
       const firstInstance = new FirstClass('first');
       expect(firstInstance.name).toBe('first');
       expect(firstInstance.input).toEqual({});
+      expect(firstInstance.handledErrors).toEqual([]);
 
       const afterSetInput = firstInstance.setInput({ firstOne: 1 });
       // Check if returns `this`
       expect(afterSetInput instanceof FirstClass).toBe(true);
       // Check if input is set
       expect(firstInstance.input).toEqual({ firstOne: 1 });
+
+      const afterSetHandledErrors = firstInstance.setHandledErrors([1, 2]);
+      expect(afterSetHandledErrors instanceof FirstClass).toBe(true);
+      expect(afterSetInput.handledErrors).toEqual(afterSetHandledErrors.handledErrors);
+      expect(afterSetHandledErrors.handledErrors).toEqual([1, 2]);
       // Check dispatch
       afterSetInput
         .dispatch()
@@ -60,4 +67,13 @@ describe('MockPipelineRequest', () => {
         });
     })
   );
+  it('should set defaults when calling methods', () => {
+    const PipelineClass = mockedPipelineRequestFactory(() => {});
+    const instance = new PipelineClass('third');
+    instance
+      .setInput()
+      .setHandledErrors();
+    expect(instance.input).toEqual({});
+    expect(instance.handledErrors).toEqual([]);
+  });
 });
