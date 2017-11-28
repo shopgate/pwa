@@ -8,7 +8,7 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import { getCurrentProductId } from '../../product/selectors/product';
+import { getCurrentBaseProductId } from '../../product/selectors/product';
 
 /**
  * Select the product reviews state.
@@ -23,7 +23,7 @@ const getReviewsByHashState = state => state.reviews.reviewsByHash;
  * @return {Object|null} The reviews for a product.
  */
 const getCollectionForCurrentProductId = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getReviewsByHashState,
   (productId, reviewsState) => {
     const hash = generateResultHash({
@@ -58,7 +58,7 @@ export const getReviews = state => state.reviews.reviewsById || {};
  * @return {Object} The reviews for a product
  */
 export const getProductReviewsExcerpt = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   getReviews,
   (productId, productReviewsState, reviewsState) => {
@@ -78,7 +78,7 @@ export const getProductReviewsExcerpt = createSelector(
  * @return {number} The total review count for a product
  */
 export const getProductReviewCount = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   (productId, reviewsState) => {
     const collection = reviewsState[productId];
@@ -158,7 +158,7 @@ const userReviewsByProductId = state => state.reviews.userReviewsByProductId;
  * Retrieves a user review for a product.
  */
 export const getUserReviewForProduct = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   userReviewsByProductId,
   getReviews,
   (productId, userReviews, allReviews) => {
@@ -178,7 +178,7 @@ export const getUserReviewForProduct = createSelector(
  * @return {bool} True if user review for current product is being fetched.
  */
 export const getUserReviewFirstFetchState = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   userReviewsByProductId,
   (productId, userReviews) =>
     !!(
