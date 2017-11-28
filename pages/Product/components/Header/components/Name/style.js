@@ -10,8 +10,8 @@ import { css } from 'glamor';
 const name = css({
   fontWeight: 'bold',
   fontSize: '1.25rem',
-  lineHeight: '1.7rem',
-  paddingTop: 2,
+  lineHeight: '1.25',
+  marginBottom: 2,
   marginRight: 72,
 }).toString();
 

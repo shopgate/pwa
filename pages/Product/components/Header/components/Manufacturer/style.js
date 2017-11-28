@@ -8,8 +8,10 @@
 import { css } from 'glamor';
 
 const infoContainer = css({
-  width: '50%',
   alignSelf: 'flex-end',
+  fontWeight: 500,
+  marginTop: -2,
+  width: '50%',
 }).toString();
 
 const placeholder = css({
