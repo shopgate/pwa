@@ -41,10 +41,10 @@ export const getFormattedTimeString = (
 /**
  * Creates a formatted duration string for a given time span represented as unix time stamp.
  * @param {number} timeSpanInput The remaining time span (in seconds).
- * @return {Object} String and params for the i18n component
+ * @return {Object} String and params for the I18n component
  */
 const createFormattedTime = (timeSpanInput) => {
-  const timeSpan = timeSpanInput >= 0 ? timeSpanInput : 0;
+  const timeSpan = Math.max(0, timeSpanInput);
 
   // Calculate remaining days, hours, minutes and seconds.
   const days = Math.floor(timeSpan / 86400);
