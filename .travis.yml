@@ -1,11 +1,12 @@
 language: node_js
 node_js: node
-before_script: "cd frontend/ && NODE_ENV=development npm i"
-script: "npm run coverage"
-# Send coverage report to coveralls.io
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+before_script: cd frontend/ && NODE_ENV=development npm i
+script: npm run coverage
+after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 notifications:
   email: false
+  slack:
+    secure: im1oHGt2reteoGdFBoTvzZPYFIOL+i6N2zbttS3j+qABmoaOCL/OIcGitlg5k8HWNKrem+bEpyNBf4c9nxG3Eoxz+1ofCSyNANw9cnUnPnIqaAAESCV77y6qLY9WfEZirkjlVNpQBJRRNwsRfQas5cKPtLL99fwjzQMOmBWXXpOTl/It2+sN2XSDSO77L4rsrn9SJyxSIzX/LH0P09N53VRvThJ+JFi7sY0zvCbh35nAjoAFIsVuEVqO/YjrOICjki0PCsKbLq2ojDILcGlRGgFQNtR1/tMZYY7BxbLxiK5zE1CmoCjkCxrWslhfHempgyFlKF7mlamnrnFi/isRi3zKeTd8nl9pvgUb7AD1cshR0187BV8c+8ORImJdfkGE8HN+KSOXncSxAlSzzA3QTpweF95hu2gWA9VuLMIWVSaHpMXbeejARCAPL3DU7hdevLW4VHYqXGqG0PahkykEq/8XVB/M0m8LvDuOfLJhRpbVPT6jD0SCAou4mLnOsCLC/60sp347D5+7/5s6TtveJy6DhlYkmWfpFMGnzV1WtZ/M1bscprXpX6q0h1RHl2n0J/wnDE8Z0s/3q+ISFZ+0rYCSVel9TEDucQSIXyjy0f9afkg4g2QD6DJYEiZaaPnnRsDB1iFdcbKPtYg73c6uszseK+z64/J5BUClwl6SM/I=
 branches:
   only:
   - master
