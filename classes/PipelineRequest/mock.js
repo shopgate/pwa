@@ -58,7 +58,6 @@ class MockedPipelineRequest {
    */
   setHandledErrors(errors = []) {
     this.handledErrors = errors;
-
     return this;
   }
 }
