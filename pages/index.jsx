@@ -13,7 +13,6 @@ import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
-// @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
