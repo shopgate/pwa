@@ -11,12 +11,9 @@ import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-cr
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';
-import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
 import getProductProperties from '@shopgate/pwa-common-commerce/product/actions/getProductProperties';
 import getProductImages from '@shopgate/pwa-common-commerce/product/actions/getProductImages';
 import getProductShipping from '@shopgate/pwa-common-commerce/product/actions/getProductShipping';
-import { features } from 'Config/app.json';
-import { REVIEW_PREVIEW_COUNT } from '../constants';
 import { requestProductData } from '../action-creators';
 
 /**
@@ -47,9 +44,6 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
     dispatch(getProductProperties(productId));
     dispatch(getProductImages(productId));
     dispatch(getProductShipping(productId));
-    if (features.showReviews) {
-      dispatch(getProductReviews(productId, REVIEW_PREVIEW_COUNT));
-    }
   };
 
 export default getProductData;
