@@ -34,7 +34,7 @@ describe('Tests link actions', () => {
     it('should open link using history.push', () => {
       const push = jest.fn();
       const history = { push };
-      actions.reactRouter('/category/123', history);
+      actions.reactRouter({ url: '/category/123' }, history);
 
       expect(showTab).toHaveBeenCalledTimes(1);
       expect(push).toHaveBeenCalledTimes(1);
@@ -82,6 +82,7 @@ describe('Tests link actions', () => {
         src: 'sgapi:cart',
         previewSrc: 'sgapi:page_preview',
         targetTab: 'main',
+        animated: false,
         navigationBarParams: {
           type: 'default',
           leftButtonCallback: '',
@@ -105,6 +106,7 @@ describe('Tests link actions', () => {
         src: 'sgapi:cart',
         previewSrc: 'sgapi:page_preview',
         targetTab: 'main',
+        animated: false,
         navigationBarParams: {
           type: 'cart-index',
           leftButtonCallback: '',
@@ -127,6 +129,7 @@ describe('Tests link actions', () => {
         src: 'sgapi:cart',
         previewSrc: 'sgapi:page_preview',
         targetTab: 'cart',
+        animated: false,
         navigationBarParams: {
           type: 'default',
           leftButtonCallback: '',
@@ -151,6 +154,7 @@ describe('Tests link actions', () => {
         src: 'sgapi:cart',
         previewSrc: 'sgapi:page_preview',
         targetTab: 'cart',
+        animated: false,
         navigationBarParams: {
           type: 'default',
           leftButtonCallback: 'SGAction.popTabToRoot()',

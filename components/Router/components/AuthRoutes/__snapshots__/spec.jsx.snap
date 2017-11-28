@@ -4,7 +4,6 @@ exports[`<AuthRoutes /> Given the user is logged in should render the Route with
 <AuthRoutes
   isLoggedIn={true}
   to="/login"
-  trampolineRedirect={[Function]}
 >
   <div>
     <MockRoute
@@ -24,13 +23,13 @@ exports[`<AuthRoutes /> Given the user is logged out should render the redirect 
 <AuthRoutes
   isLoggedIn={false}
   to="/login"
-  trampolineRedirect={[Function]}
 >
   <div>
     <Redirect
       key=".0"
       path="/checkout"
       to="/login"
+      trampolineRedirect={[Function]}
     />
   </div>
 </AuthRoutes>

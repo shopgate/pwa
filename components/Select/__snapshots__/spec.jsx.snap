@@ -26,12 +26,9 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
     className="css-7c9av6 "
   >
     <div
-      className={undefined}
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -39,6 +36,100 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
       >
         ▾
       </span>
+    </div>
+    <div
+      className="css-182i7wq"
+    >
+      <SelectItem
+        className=""
+        key="a"
+        label="a"
+        onSelect={[Function]}
+        selected={null}
+        value="a"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          a
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="b"
+        label="b"
+        onSelect={[Function]}
+        selected={null}
+        value="b"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          b
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="c"
+        label="c"
+        onSelect={[Function]}
+        selected={null}
+        value="c"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          c
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="d"
+        label="d"
+        onSelect={[Function]}
+        selected={null}
+        value="d"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          d
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="e"
+        label="E"
+        onSelect={[Function]}
+        selected={null}
+        value="e"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          E
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="f"
+        label="f"
+        onSelect={[Function]}
+        selected={null}
+        value="f"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          f
+        </div>
+      </SelectItem>
     </div>
   </div>
 </Select>
@@ -65,12 +156,9 @@ exports[`<Select /> renders with implicit items (closed) 1`] = `
     className="css-7c9av6 "
   >
     <div
-      className={undefined}
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -104,12 +192,9 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
     className="css-7c9av6 "
   >
     <div
-      className={undefined}
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -117,6 +202,100 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
       >
         ▾
       </span>
+    </div>
+    <div
+      className="css-182i7wq"
+    >
+      <SelectItem
+        className=""
+        key="a"
+        label="a"
+        onSelect={[Function]}
+        selected={null}
+        value="a"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          a
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="b"
+        label="b"
+        onSelect={[Function]}
+        selected={null}
+        value="b"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          b
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="c"
+        label="c"
+        onSelect={[Function]}
+        selected={null}
+        value="c"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          c
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="d"
+        label="d"
+        onSelect={[Function]}
+        selected={null}
+        value="d"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          d
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="e"
+        label="e"
+        onSelect={[Function]}
+        selected={null}
+        value="e"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          e
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="f"
+        label="f"
+        onSelect={[Function]}
+        selected={null}
+        value="f"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          f
+        </div>
+      </SelectItem>
     </div>
   </div>
 </Select>
@@ -134,12 +313,9 @@ exports[`<Select /> renders without items 1`] = `
     className="css-7c9av6 "
   >
     <div
-      className={undefined}
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -173,12 +349,9 @@ exports[`<Select /> triggers callback on change 1`] = `
     className="css-7c9av6 "
   >
     <div
-      className={undefined}
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -186,6 +359,100 @@ exports[`<Select /> triggers callback on change 1`] = `
       >
         ▾
       </span>
+    </div>
+    <div
+      className="css-182i7wq"
+    >
+      <SelectItem
+        className=""
+        key="a"
+        label="a"
+        onSelect={[Function]}
+        selected={null}
+        value="a"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          a
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="b"
+        label="b"
+        onSelect={[Function]}
+        selected={null}
+        value="b"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          b
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="c"
+        label="c"
+        onSelect={[Function]}
+        selected={null}
+        value="c"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          c
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="d"
+        label="d"
+        onSelect={[Function]}
+        selected={null}
+        value="d"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          d
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="e"
+        label="e"
+        onSelect={[Function]}
+        selected={null}
+        value="e"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          e
+        </div>
+      </SelectItem>
+      <SelectItem
+        className=""
+        key="f"
+        label="f"
+        onSelect={[Function]}
+        selected={null}
+        value="f"
+      >
+        <div
+          className="css-fisw11 "
+          onTouchEnd={[Function]}
+        >
+          f
+        </div>
+      </SelectItem>
     </div>
   </div>
 </Select>

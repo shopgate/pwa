@@ -12,7 +12,7 @@ import Link from './index';
 const mockConstructor = jest.fn();
 const mockOpen = jest.fn();
 
-jest.mock('../../../../helpers/parsed-link', () => (class {
+jest.mock('../../helpers/parsed-link', () => (class {
   /**
    * Mocked version of the ParsedLink constructor.
    * @param {string} href Link location.

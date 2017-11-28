@@ -104,7 +104,7 @@ exports[`<Route /> should remove route instance when going back 1`] = `
     data-route-path="category/:id"
   >
     <RouteContent
-      key="root"
+      key="456"
       params={
         Object {
           "id": 456,
