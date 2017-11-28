@@ -58,8 +58,9 @@ describe('<Select />', () => {
         items={items}
       />
     );
-
     wrapper.instance().toggleOpenState();
+    wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SelectItem).length).toBe(items.length);
   });
@@ -86,6 +87,8 @@ describe('<Select />', () => {
     );
 
     wrapper.instance().toggleOpenState();
+    wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SelectItem).length).toBe(items.length);
 
@@ -109,7 +112,10 @@ describe('<Select />', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
     const selectionIndex = Math.floor(items.length / 2);
 
-    // eslint-disable-next-line require-jsdoc
+    /**
+     * Mocked callback for the onSelect event
+     * @param {string} value Mocked value
+     */
     const callback = (value) => {
       expect(value).toBe(items[selectionIndex]);
     };
@@ -122,8 +128,11 @@ describe('<Select />', () => {
     );
 
     wrapper.instance().toggleOpenState();
+    wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
-    const node = wrapper.find(SelectItem).nodes[selectionIndex];
-    node.props.onSelect(node.props.value, node.props.label);
+    const node = wrapper.find(SelectItem).at(selectionIndex);
+
+    node.prop('onSelect')(node.prop('value'), node.prop('label'));
   });
 });

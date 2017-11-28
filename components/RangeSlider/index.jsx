@@ -282,14 +282,14 @@ class RangeSlider extends Component {
 
     return (
       <div
-        className={this.props.classNames.container}
+        className={this.props.classNames.container || ''}
         onTouchStart={this.handleRangeTouch}
       >
         <div
-          className={`${this.props.classNames.outerRange} ${styles.outerRange}`}
+          className={`${this.props.classNames.outerRange || ''} ${styles.outerRange}`}
           ref={(ref) => { this.domElement = ref; }}
         >
-          <div className={`${this.props.classNames.range} ${styles.range}`} style={rangeStyle}>
+          <div className={`${this.props.classNames.range || ''} ${styles.range}`} style={rangeStyle}>
             {this.makeHandle(0)}
             {this.makeHandle(1)}
           </div>

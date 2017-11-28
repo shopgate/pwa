@@ -11,9 +11,7 @@ import Picker from './index';
 import PickerList from './components/List';
 
 jest.mock('react-portal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
+  ({ isOpened, children }) => (isOpened ? children : null)
 ));
 
 // Mock the redux connect() method instead of providing a fake store.
@@ -40,6 +38,7 @@ describe('<Picker />', () => {
     renderedElement = mount(
       <Picker {...props} />
     );
+
     renderedInstance = renderedElement.instance();
   };
 
@@ -48,6 +47,8 @@ describe('<Picker />', () => {
       items: mockItems,
       onChange: mockOnChange,
     });
+
+    renderedElement.update();
   });
 
   describe('Given the component was mounted to the DOM', () => {
@@ -62,6 +63,7 @@ describe('<Picker />', () => {
     describe('Given picker component gets opened', () => {
       beforeEach(() => {
         renderedInstance.toggleOpenState(true);
+        renderedElement.update();
       });
 
       it('should have isOpen state', () => {

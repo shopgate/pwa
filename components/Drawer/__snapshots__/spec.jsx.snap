@@ -23,4 +23,4 @@ exports[`<Drawer /> should add custom classes 1`] = `
 </Drawer>
 `;
 
-exports[`<Drawer /> should render 1`] = `null`;
+exports[`<Drawer /> should render 1`] = `""`;

@@ -6,7 +6,7 @@ exports[`<Slider /> renders with children 1`] = `
 >
   <ReactIdSwiper
     autoplay={null}
-    containerClass="sg-swiper-container css-rdsogp undefined"
+    containerClass="sg-swiper-container css-rdsogp "
     freeMode={false}
     initialSlide={0}
     loop={false}
@@ -25,22 +25,31 @@ exports[`<Slider /> renders with children 1`] = `
   >
     <div
       className="css-1l9a57c"
+      key="s0"
     >
-      <SliderItem>
+      <SliderItem
+        key="0"
+      >
         <div />
       </SliderItem>
     </div>
     <div
       className="css-1l9a57c"
+      key="s1"
     >
-      <SliderItem>
+      <SliderItem
+        key="1"
+      >
         <div />
       </SliderItem>
     </div>
     <div
       className="css-1l9a57c"
+      key="s2"
     >
-      <SliderItem>
+      <SliderItem
+        key="2"
+      >
         <div />
       </SliderItem>
     </div>
@@ -68,7 +77,9 @@ exports[`<Slider /> renders with controls 1`] = `
   >
     <ReactIdSwiper
       autoplay={null}
-      containerClass="sg-swiper-container css-rdsogp undefined"
+      bulletActiveClass={undefined}
+      bulletClass={undefined}
+      containerClass="sg-swiper-container css-rdsogp "
       freeMode={false}
       initialSlide={0}
       loop={false}
@@ -86,15 +97,18 @@ exports[`<Slider /> renders with controls 1`] = `
       wrapperClass="swiper-wrapper"
     >
       <div
-        className="sg-swiper-container css-rdsogp undefined"
+        className="sg-swiper-container css-rdsogp "
       >
         <div
           className="swiper-wrapper"
         >
           <div
             className="sg-swiper-slide css-1l9a57c "
+            key=".$s0"
           >
-            <SliderItem>
+            <SliderItem
+              key="0"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -104,8 +118,11 @@ exports[`<Slider /> renders with controls 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-1l9a57c "
+            key=".$s1"
           >
-            <SliderItem>
+            <SliderItem
+              key="1"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -115,8 +132,11 @@ exports[`<Slider /> renders with controls 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-1l9a57c "
+            key=".$s2"
           >
-            <SliderItem>
+            <SliderItem
+              key="2"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -161,7 +181,9 @@ exports[`<Slider /> renders with indicators 1`] = `
   >
     <ReactIdSwiper
       autoplay={null}
-      containerClass="sg-swiper-container css-rdsogp undefined"
+      bulletActiveClass={undefined}
+      bulletClass={undefined}
+      containerClass="sg-swiper-container css-rdsogp "
       freeMode={false}
       initialSlide={0}
       loop={false}
@@ -179,15 +201,18 @@ exports[`<Slider /> renders with indicators 1`] = `
       wrapperClass="swiper-wrapper"
     >
       <div
-        className="sg-swiper-container css-rdsogp undefined"
+        className="sg-swiper-container css-rdsogp "
       >
         <div
           className="swiper-wrapper"
         >
           <div
             className="sg-swiper-slide css-1l9a57c "
+            key=".$s0"
           >
-            <SliderItem>
+            <SliderItem
+              key="0"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -197,8 +222,11 @@ exports[`<Slider /> renders with indicators 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-1l9a57c "
+            key=".$s1"
           >
-            <SliderItem>
+            <SliderItem
+              key="1"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -208,8 +236,11 @@ exports[`<Slider /> renders with indicators 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-1l9a57c "
+            key=".$s2"
           >
-            <SliderItem>
+            <SliderItem
+              key="2"
+            >
               <div
                 className="css-10a4qrv"
               >
