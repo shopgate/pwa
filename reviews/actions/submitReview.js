@@ -7,6 +7,8 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { EEXIST } from '@shopgate/pwa-core/constants/Pipeline';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import requestSubmitReview from '../action-creators/requestSubmitReview';
 import receiveSubmitReview from '../action-creators/receiveSubmitReview';
 import errorSubmitReview from '../action-creators/errorSubmitReview';
@@ -55,6 +57,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
   }
 
   const request = new PipelineRequest('addProductReview')
+    .setHandledErrors([EEXIST])
     .setInput(pipelineData)
     .dispatch();
   request
@@ -63,6 +66,13 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
       dispatch(getProduct(newReview.productId, true));
     })
     .catch((error) => {
+      if (error.code === EEXIST) {
+        dispatch(showModal({
+          confirm: null,
+          title: 'modal.title_error',
+          message: 'modal.body_error',
+        }));
+      }
       logger.error(error);
       dispatch(errorSubmitReview(newReview.productId));
     });
