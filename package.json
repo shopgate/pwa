@@ -58,7 +58,7 @@
     "rxjs": "^5.4.3"
   },
   "peerDependencies": {
-    "@shopgate/pwa-common": "0.1.x",
+    "@shopgate/pwa-common": "0.2.x",
     "@shopgate/pwa-core": "0.1.x",
     "rxjs": "^5.4.3"
   }
