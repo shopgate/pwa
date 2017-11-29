@@ -4,7 +4,7 @@ This component will render a plain input field. You may consider to use a
 styled template component instead.
 
 ## Props
-
+ 
 ### autoComplete (optional)
 
 _Type_: `boolean`<br>
@@ -24,6 +24,15 @@ Apply the auto-correct feature to the field.
 _Type_: `className`<br>
 
 Any additional style classes that should be applied to the component.
+
+### multiLine (optional)
+
+_Type_: `boolean`<br>
+_Default_: `false`
+
+Sets the input to behave as multi line input. Multi line input behaves similar to a textarea element, except it grows to the bottom as the user types more input instead of exposing a scrolling area.
+
+The implementation [follows Material Design guidelines](https://material.io/guidelines/components/text-fields.html#text-fields-text-field-boxes).
 
 ### onChange (optional)
 

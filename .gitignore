@@ -46,3 +46,4 @@ node_modules/
 # Project
 /config.js
 /dist/
+/coverage/
