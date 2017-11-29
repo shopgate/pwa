@@ -38,6 +38,6 @@
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
-    "@shopgate/pwa-common": "0.1.x"
+    "@shopgate/pwa-common": "0.2.x"
   }
 }
