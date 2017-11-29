@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import AverageRating from './components/AverageRating';
+import WriteReviewLink from './components/WriteReviewLink';
 import styles from './style';
 
 /**
@@ -18,6 +19,9 @@ import styles from './style';
  * @returns {JSX}
  */
 const Header = ({ rating }) => {
+  if (!rating) {
+    return null;
+  }
   const { average = 0 } = rating;
 
   if (!average) {
@@ -26,6 +30,7 @@ const Header = ({ rating }) => {
         <AverageRating rating={rating} />
         <div className={styles.noReviews}>
           <I18n.Text string="reviews.no_reviews" />
+          <WriteReviewLink />
         </div>
       </div>
     );
@@ -40,6 +45,7 @@ const Header = ({ rating }) => {
             {average / RATING_SCALE_DIVISOR}
           </span>
         </I18n.Text>
+        <WriteReviewLink />
       </div>
     </div>
   );
@@ -50,9 +56,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  rating: {
-    average: 0,
-  },
+  rating: null,
 };
 
 export default Header;

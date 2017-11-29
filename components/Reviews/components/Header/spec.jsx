@@ -6,43 +6,51 @@
  */
 
 import React from 'react';
+import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
+import configureStore from 'redux-mock-store';
+import {
+  mockedStateWithoutReview,
+  mockedStateWithAll,
+} from 'Components/Reviews/mock';
 import Header from './index';
+
+const mockedStore = configureStore();
+
+/**
+ * Creates component with provided store state.
+ * @param {Object} mockedState Mocked stage.
+ * @param {Object|null} props Rating prop.
+ * @return {ReactWrapper}
+ */
+const createComponent = (mockedState, props = {}) => mount(
+  <Provider store={mockedStore(mockedState)}>
+    <Header {...props} />
+  </Provider>
+);
 
 describe('<Header />', () => {
   let header = null;
-  const ratings = [
-    {
-      average: 0,
-      count: 0,
-      reviewCount: 0,
-    },
-    {
-      average: 70,
-      count: 3,
-      reviewCount: 3,
-    },
-  ];
-
-  beforeEach(() => {
-    header = mount(<Header rating={{}} />);
-  });
-
   it('should render empty', () => {
+    const rating = mockedStateWithoutReview.product.productsById.foo.productData.rating;
+    header = createComponent(mockedStateWithoutReview, { rating });
     expect(header.find('Header').exists()).toBe(true);
-    header.setProps({ rating: ratings[0] });
-
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
     expect(header.find('RatingCount').exists()).toBe(false);
   });
 
   it('should render rating summary', () => {
+    const rating = mockedStateWithAll.product.productsById.foo.productData.rating;
+    header = createComponent(mockedStateWithAll, { rating });
     expect(header.find('Header').exists()).toBe(true);
-    header.setProps({ rating: ratings[1] });
-
     expect(header).toMatchSnapshot();
-    expect(header.find('RatingStars').prop('value')).toEqual(ratings[1].average);
-    expect(header.find('RatingCount').prop('count')).toEqual(ratings[1].reviewCount);
+    expect(header.find('RatingStars').prop('value')).toEqual(rating.average);
+    expect(header.find('RatingCount').prop('count')).toEqual(rating.count);
+  });
+
+  it('should render null when no review is provided', () => {
+    header = createComponent(mockedStateWithAll);
+    expect(header.html()).toBe(null);
   });
 });

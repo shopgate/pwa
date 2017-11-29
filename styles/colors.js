@@ -55,8 +55,22 @@ const getContrastColor = (bgColor) => {
   return perceivedLuminosity >= cutoff ? colors.dark : colors.light;
 };
 
+/**
+ * Gets the default focus color. This usually is the themes primary color.
+ * However, if this color is too bright, the result of ths method
+ * will fall back to the accent color.
+ * @return {string} The color.
+ */
+const getFocusColor = () => {
+  if (Color(colors.primary).luminosity() >= 0.8) {
+    return colors.accent;
+  }
+  return colors.primary;
+};
+
 // Define some additional computed colors.
 colors.primaryContrast = getContrastColor(colors.primary);
 colors.accentContrast = getContrastColor(colors.accent);
+colors.focus = getFocusColor();
 
 export default colors;

@@ -9,9 +9,14 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
+const container = css({
+  display: 'flex',
+  alignItems: 'center',
+}).toString();
+
 const stars = css({
   display: 'inline-block',
-  lineHeight: 1,
+  lineHeight: 'initial',
 }).toString();
 
 const text = css({
@@ -20,6 +25,7 @@ const text = css({
 }).toString();
 
 export default {
+  container,
   stars,
   text,
 };

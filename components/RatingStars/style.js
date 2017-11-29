@@ -15,6 +15,7 @@ const container = css({
 const icon = css({
   display: 'inline-block',
   verticalAlign: 'top',
+  outline: 0,
 }).toString();
 
 const emptyStars = css({
@@ -35,7 +36,7 @@ const iconStyles = {
   small: {
     iconSize: '1em',
     iconStyle: css({
-      marginRight: 0,
+      marginRight: '0.1em',
     }).toString(),
   },
   big: {
@@ -46,6 +47,9 @@ const iconStyles = {
   },
   large: {
     iconSize: '2em',
+    iconStyle: css({
+      marginRight: '0.25em',
+    }).toString(),
   },
 };
 

@@ -33,29 +33,10 @@ class Product extends Component {
   };
 
   /**
-   * Fetch the product data, but only if it was not by ProductVariants.
-   */
-  componentDidMount() {
-    this.ensureGetProductData(null, true);
-  }
-
-  /**
    * Component will unmount and reset the current product.
    */
   componentWillUnmount() {
     this.props.resetCurrentProduct();
-  }
-
-  /**
-   *
-   * @param {string} selectedVariantId The selected variant ID.
-   * @param {boolean} [callOnlyIfNeverCalled=false] Call getProductData only if it was never called.
-   */
-  ensureGetProductData = (selectedVariantId, callOnlyIfNeverCalled = false) => {
-    if (!callOnlyIfNeverCalled || !this.wasCalled) {
-      this.wasCalled = true;
-      this.props.getProductData(selectedVariantId, this.props.params.productId);
-    }
   }
 
   /**

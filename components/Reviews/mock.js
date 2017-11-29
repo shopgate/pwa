@@ -7,6 +7,10 @@
 
 const mockedProduct = {
   productId: 'foo',
+  rating: {
+    average: 0,
+    count: 0,
+  },
 };
 
 const mockedProductWithRating = {
@@ -37,19 +41,27 @@ export const mockReview = id => ({
  */
 export const mockedStateWithAll = {
   product: {
-    currentProduct: mockedProductWithRating,
+    currentProduct: mockedProduct,
     productsById: {
       foo: {
         productData: mockedProductWithRating,
       },
     },
+  },
+  reviews: {
+    reviewsById: {
+      1: mockReview(1),
+      2: mockReview(2),
+      3: mockReview(3),
+      4: mockReview(4),
+    },
     reviewsByProductId: {
       foo: {
         reviews: [
-          mockReview(1),
-          mockReview(2),
-          mockReview(3),
-          mockReview(4),
+          1,
+          2,
+          3,
+          4,
         ],
         totalReviewCount: 4,
       },
@@ -63,9 +75,9 @@ export const mockedStateWithAll = {
 export const mockedStateWithTwoReviews = (() => {
   // Must do deep clone here.
   const mockedState = JSON.parse(JSON.stringify(mockedStateWithAll));
-  mockedState.product.reviewsByProductId.foo.reviews =
-    mockedState.product.reviewsByProductId.foo.reviews.slice(0, 2);
-  mockedState.product.reviewsByProductId.foo.totalReviewCount = 2;
+  mockedState.reviews.reviewsByProductId.foo.reviews =
+    mockedState.reviews.reviewsByProductId.foo.reviews.slice(0, 2);
+  mockedState.reviews.reviewsByProductId.foo.totalReviewCount = 2;
   return mockedState;
 })();
 
@@ -73,7 +85,7 @@ export const mockedStateWithTwoReviews = (() => {
  * Mocked state with product only. Reviews not fetched.
  * @type {Object}
  */
-export const mockedStateWithProductOnly = {
+export const mockedStateWithoutReview = {
   product: {
     currentProduct: mockedProduct,
     productsById: {
@@ -81,7 +93,20 @@ export const mockedStateWithProductOnly = {
         productData: mockedProduct,
       },
     },
+  },
+  reviews: {
+    reviewsById: {},
     reviewsByProductId: {},
+  },
+};
+/**
+ * Mocked state without data.
+ * @type {{product: {currentProduct: {}, productsById: {}}}}
+ */
+export const mockedStateProductEmpty = {
+  product: {
+    currentProduct: {},
+    productsById: {},
   },
 };
 
@@ -95,9 +120,6 @@ export const setMocks = (mockReviewsAvailable = true) => {
     features: {
       showReviews: mockReviewsAvailable,
     },
-  }));
-  jest.mock('Pages/Product/constants', () => ({
-    REVIEW_PREVIEW_LIMIT: 2,
   }));
 };
 
