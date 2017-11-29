@@ -17,13 +17,14 @@ import { getProductById } from '../selectors/product';
 /**
  * Retrieves a product from the Redux store.
  * @param {string} productId The product ID.
+ * @param {boolean} forceFetch Skips shouldFetchData check. Always fetches.
  * @return {Function} A redux thunk.
  */
-const getProduct = productId => (dispatch, getState) => {
+const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   const state = getState();
   const product = getProductById(state, productId);
 
-  if (!shouldFetchData(product)) {
+  if (!forceFetch && !shouldFetchData(product)) {
     dispatch(processProductFlags(product.productData));
 
     return;

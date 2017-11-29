@@ -70,7 +70,8 @@ export const getCurrentProduct = createSelector(
   getProducts,
   (productId, products) => {
     const entry = products[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.productData)) {
+    // No return null when data is there but product data is updating.
+    if (!entry || isUndefined(entry.productData)) {
       return null;
     }
 
@@ -231,12 +232,12 @@ export const getProductImages = createSelector(
 /**
  * Retrieves the current product rating.
  * @param {Object} state The current application state.
- * @return {Object|null}
+ * @return {Object}
  */
 export const getProductRating = createSelector(
   getCurrentProduct,
   (product) => {
-    if (!product) {
+    if (!product || !product.rating) {
       return null;
     }
 

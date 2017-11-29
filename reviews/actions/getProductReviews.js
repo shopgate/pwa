@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
@@ -17,9 +18,13 @@ import errorProductReviews from '../action-creators/errorProductReviews';
  * @param {string} productId The product ID
  * @param {number} limit The maximum number of reviews to fetch
  * @param {('relevance'|'dateDesc'|'dateAsc'|'rateDesc'|'rateAsc')} sort Sorting.
- * @returns {Function} The dispatched action.
+ * @returns {Promise} The dispatched action.
  */
-const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (dispatch) => {
+const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (dispatch, getState) => {
+  const data = getState().reviews.reviewsByProductId[productId];
+  if (!shouldFetchData(data)) {
+    return new Promise(resolve => resolve());
+  }
   dispatch(requestProductReviews(productId, limit));
 
   const request = new PipelineRequest('getProductReviews')
