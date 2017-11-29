@@ -34,7 +34,7 @@
     "gsap": "^1.20.2",
     "history": "^4.7.2",
     "intl-messageformat": "^2.1.0",
-    "jsdom": "^11.5.1",
+    "jsdom": "11.1.0",
     "path-match": "^1.2.4",
     "react-dotdotdot": "^1.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
