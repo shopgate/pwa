@@ -1,21 +1,20 @@
 install:
-  - git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/sdk-devserver.git ../../sdk-devserver
-  - cd ../../sdk-devserver && npm install --update-binary
-  - cd ../${TRAVIS_REPO_SLUG} && npm install --update-binary
-  - cd ./extensions && git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/commerce-widgets.git @shopgate/commerce-widgets
-  - cd ./@shopgate/commerce-widgets/frontend/ && npm install --update-binary && cd ../../../../
-  - node ../../sdk-devserver/extensions/index.js
+- git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/sdk-devserver.git
+  ../../sdk-devserver
+- cd ../../sdk-devserver && npm install --update-binary
+- cd ../${TRAVIS_REPO_SLUG} && npm install --update-binary
+- cd ./extensions && git clone --branch=${TRAVIS_BRANCH} https://github.com/shopgate/commerce-widgets.git
+  @shopgate/commerce-widgets
+- cd ./@shopgate/commerce-widgets/frontend/ && npm install --update-binary && cd ../../../../
+- node ../../sdk-devserver/extensions/index.js
 language: node_js
 node_js:
-  - "8.4.0"
-script: "NODE_ENV=production npm run coverage -- --maxWorkers=4"
-# Send coverage report to coveralls.io
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+- 8.4.0
+script: NODE_ENV=production npm run coverage -- --maxWorkers=4
+after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 notifications:
   slack:
-    on_success: change
-    on_failure: change
-    secure: HXKi0l1hB+eRlwT0JrPsLNuhNL31U38FYKZbHOdQJ9MRIxoth6ryVtlfd1pj2bsn1S9KnzubRDJPAK4XrLX6yJpxgeMqEN0rpNx/ZxRAAGBIsGViPgFIVSLEdQAPF9/l0Y7KrhHj4/2w//l1IRUMNuueB/depwL1zuDl65LD2854fgO/+JKlKn6j/Y2CXA7aog57uzuZi9hSmgr4NR5J1fSTSa3eY/vuBgzdXYyRgjgvgzL5G2hHYB/4f7H1Gi0A5blFJItyL8LH10TeMT+r0HK+gvX8OSqmeX4GGSxWQoE0ud/z4Oe4wf/B3E/s8wXi1tWLDLMMoGUBYKW8qjRVKfRfSAlX4zC03sWVh6LT7oLqQzWgnFJOosU1FJVXlAEvnLrW+3TVnnqbiIzEkGPbHnMj/Ob6Z6Wx7IZIrRzrqp3cJl4aaIXTX+D5w36rSKzCbIBgnhd6UOpQ9h1w3IpKsBREDoERJWgf8mA1++lRTgurKsEtgTMuuudu5DlzoucQIj3Z2BFh19RUrO961uVy5opCaqtvLm8qWOK/mY3kfKThOe1N1xdY/0BJa2LgVuMkz7IxuRjXxVJydiZOdHh/tDz6XHw8MQ3th2j4iZ0p8UET/BWzyEKJQDH+getzj7Bju4gvpMHO1vHwIPXBByFBY2CVk7h0bEalO4Olg7FklVc=
+    secure: F8mrAVhkNXZaYGeKCFN8W6/9HihfIQk4WjVts2AdmPw7ik0UciC8zuhzGp77foyuSTiFV4ylRDaKcdrOWaS7M+1ATwhsOggxCYqbZVsM0cYQUeXxusVvm2rv77P7I4ElgOcNxXnFLl8QgHKD64dGkxlevjwEo44JyseZT2jFET4zWxEfhoYHp2EtbDAO0bAo7bUF/nYJzU0OJvwWefblLv/R1YimgfLE6dutS31/W/W5TDNyzl8Tu+vla6Y1tS1s6Ps7wgR3ygNia8WWq77ayOacaMltozFycMWPI0HdS/2M4bcRYRk4qWpUnsKbADvj1xravZRK9UjghQYCbLyYvEKR9wN0+D5YtEwj002oxEXUN7bA1mUzmsimq1QUtN4foymdiMwCnXZoeKP2p86tCJqH085kpiOUXA+jAwDJXKF/+x/RWLHIT1fwq7RaP5UA4fYzadaX8Ow6hcJpiccyRcS3nIp6UaVj5OgIJFcx8TIWCs+fQx/1a5QUndEL2FxGf5FLLf3RCe40CqtUvYbgyQzqy5h/kyMpzN+hQ81gLfL+ZJzfrOF4efF2M7jNqmw1lnQXDrLFbxZHrsYUbAcjT8djqa1ftGGDdBt6zFgRLTNrI4VYWqwt+iqoncl9RY3/RSGimWX0CaqXBToreZeK7l7MQ7p/NdRllFGj/sSvKGw=
   email: false
 branches:
   only:
