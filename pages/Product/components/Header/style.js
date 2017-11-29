@@ -15,22 +15,23 @@ const content = css({
   borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
 }).toString();
 
-const infoContainer = css({
-  width: '50%',
-  alignSelf: 'flex-end',
+const priceInfo = css({
+  marginTop: 3,
+  ':not(:last-child)': {
+    marginBottom: 3,
+  },
+}).toString();
+
+const productInfo = css({
+  marginTop: `${variables.gap.small / 2}px`,
+  ':not(:last-child)': {
+    marginBottom: `${variables.gap.small / 2}px`,
+  },
 }).toString();
 
 const priceContainer = css({
   width: '50%',
   textAlign: 'right',
-  alignSelf: 'flex-end',
-}).toString();
-
-const basePriceContainer = css({
-  width: '50%',
-  textAlign: 'right',
-  alignSelf: 'flex-end',
-  marginLeft: '50%',
 }).toString();
 
 const placeholder = {
@@ -49,8 +50,8 @@ const placeholder = {
 
 export default {
   content,
-  infoContainer,
+  productInfo,
   priceContainer,
-  basePriceContainer,
+  priceInfo,
   placeholder,
 };
