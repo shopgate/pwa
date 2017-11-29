@@ -14,7 +14,6 @@ import Manufacturer from './components/Manufacturer';
 import PriceStriked from './components/PriceStriked';
 import Shipping from './components/Shipping';
 import Availability from './components/Availability';
-import Discount from './components/Discount';
 import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
 import styles from './style';
@@ -34,21 +33,28 @@ const ProductHeader = () => (
     <AddToCartButton />
     <Rating />
     <Name />
-    <Manufacturer />
     <Grid component="div">
-      <Grid.Item component="div" shrink={0} className={styles.infoContainer}>
-        <PriceStriked />
-        <Shipping />
-        <Availability />
+      <Grid.Item component="div" shrink={0} grow={1}>
+        <div className={styles.productInfo}>
+          <Manufacturer />
+        </div>
+        <div className={styles.productInfo}>
+          <Shipping />
+        </div>
+        <div className={styles.productInfo}>
+          <Availability />
+        </div>
       </Grid.Item>
       <Grid.Item component="div" shrink={0} className={styles.priceContainer}>
-        <Discount />
-        <Price />
-      </Grid.Item>
-    </Grid>
-    <Grid component="div">
-      <Grid.Item component="div" shrink={0} className={styles.basePriceContainer}>
-        <PriceInfo />
+        <div className={styles.priceInfo}>
+          <PriceStriked />
+        </div>
+        <div className={styles.priceInfo}>
+          <Price />
+        </div>
+        <div className={styles.priceInfo}>
+          <PriceInfo />
+        </div>
       </Grid.Item>
     </Grid>
   </div>

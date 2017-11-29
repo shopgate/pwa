@@ -15,10 +15,10 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
   }
 >
   <div
-    className="css-19qwvah"
+    className="css-19q1rye"
   >
     <div
-      className="css-ud99sa"
+      className="css-10lhp8m"
     >
       <Translate
         className=""
@@ -108,10 +108,10 @@ exports[`<ProductDescription /> should render description if data is available 1
   }
 >
   <div
-    className="css-19qwvah"
+    className="css-19q1rye"
   >
     <div
-      className="css-ud99sa"
+      className="css-10lhp8m"
     >
       <Translate
         className=""
@@ -130,22 +130,26 @@ exports[`<ProductDescription /> should render description if data is available 1
       lines={3}
       ready={true}
     >
-      <HtmlSanitizer
-        decode={false}
-        settings={
-          Object {
-            "html": "<h1>foo</h1>",
-          }
-        }
+      <div
+        className="css-18q71ft"
       >
-        <div
-          dangerouslySetInnerHTML={
+        <HtmlSanitizer
+          decode={false}
+          settings={
             Object {
-              "__html": "<h1>foo</h1>",
+              "html": "<h1>foo</h1>",
             }
           }
-        />
-      </HtmlSanitizer>
+        >
+          <div
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<h1>foo</h1>",
+              }
+            }
+          />
+        </HtmlSanitizer>
+      </div>
     </PlaceholderParagraph>
   </div>
 </Description>
