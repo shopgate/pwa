@@ -16,7 +16,7 @@ notifications:
   slack:
     template:
       - "%{repository} @ %{branch}"
-      - "Commit: \"%{commit_subject}\" by %{author}"
+      - "Commit: $quot;%{commit_subject}&quot; by %{author}"
       - "<a href="%{build_url}">#%{build_number}</a> Message: %{message}"
     secure: F8mrAVhkNXZaYGeKCFN8W6/9HihfIQk4WjVts2AdmPw7ik0UciC8zuhzGp77foyuSTiFV4ylRDaKcdrOWaS7M+1ATwhsOggxCYqbZVsM0cYQUeXxusVvm2rv77P7I4ElgOcNxXnFLl8QgHKD64dGkxlevjwEo44JyseZT2jFET4zWxEfhoYHp2EtbDAO0bAo7bUF/nYJzU0OJvwWefblLv/R1YimgfLE6dutS31/W/W5TDNyzl8Tu+vla6Y1tS1s6Ps7wgR3ygNia8WWq77ayOacaMltozFycMWPI0HdS/2M4bcRYRk4qWpUnsKbADvj1xravZRK9UjghQYCbLyYvEKR9wN0+D5YtEwj002oxEXUN7bA1mUzmsimq1QUtN4foymdiMwCnXZoeKP2p86tCJqH085kpiOUXA+jAwDJXKF/+x/RWLHIT1fwq7RaP5UA4fYzadaX8Ow6hcJpiccyRcS3nIp6UaVj5OgIJFcx8TIWCs+fQx/1a5QUndEL2FxGf5FLLf3RCe40CqtUvYbgyQzqy5h/kyMpzN+hQ81gLfL+ZJzfrOF4efF2M7jNqmw1lnQXDrLFbxZHrsYUbAcjT8djqa1ftGGDdBt6zFgRLTNrI4VYWqwt+iqoncl9RY3/RSGimWX0CaqXBToreZeK7l7MQ7p/NdRllFGj/sSvKGw=
   email: false
