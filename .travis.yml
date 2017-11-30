@@ -5,6 +5,10 @@ after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.
 notifications:
   email: false
   slack:
+    template:
+      - "**%{repository_slug}**@%{branch} - %{message}"
+      - "Commit: \"%{commit_subject}\" by %{author}"
+      - "Build: [%{build_number}](%{build_url}"
     secure: q7+TmLxr+dnhBaIyZOuy8ph0ewzpvPrgcRzoXFjyxED4WEW91ThFNJ5/qr7Vk3aXQeOitR5R3FItow0P/N5pCnGBjYhbR1Ry7Xrv6J/dvTQ/6e2NCNosJp80KRJUcNCZMSAWN83xnhBHF6xVjtrpjMcpy9Hw3XEz7fWLky4ch2Vk65Ti0+1kgNu8L5+fAaUGk5VeATnwbnbD1gKLNW8aXCMg1Dl6j18WFKgbP2KXU3rfCza2lQ3tDrXdL9N8xwF+nLkiJXUcxpqcmYftDkN+MW91DEDS0ss9W45/nHsRffhMfT35eucFvNDZt2gPCbS1ny6859rf+aFwtzleMILFgwBUoIIJwohz68qDBi7T8n6O+jhKui6wz258wSW6AYAU8em1BQDNDqAZdt8m4+mJBWEYkZdYoG8CFdsLsm2If37uoJDI1RlluvkxlD6poU/ftUWfj8TTzTmUYcdWMg2NoXeBd7/qDwux0HjmQf+92TJ3WJJbm9nRhj1Lh5zMnOxji0oQ7Pmk10fuhJjdZVrvyVXMuu9v+eiN+4WmiGRLH/dircyGsA32eTFumNTNKX+KKtOnu7CSdeo4D1hhJkszD/hr96jNC/aLLgLWuxFlGiQ7SOcVoI+D0WWE5dd0G+PeusrJG6VWdoHu4iG4R5jhbzjpYtnvUNceHjw/iENu25w=
 branches:
   only:
