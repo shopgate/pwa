@@ -7,9 +7,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Widgets from '@shopgate/pwa-common/components/Widgets';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import View from 'Components/View';
-import Widgets from 'Components/Widgets';
 import connect from './connector';
 import styles from './style';
 
