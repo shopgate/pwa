@@ -5,7 +5,7 @@ exports[`<Logo /> should render an image 1`] = `
   alt="Logo"
   className={
     Object {
-      "data-css-12y5iqf": "",
+      "data-css-gva1fu": "",
     }
   }
   src="https://data.shopgate.com/shops/23720/webapp@2x.png"
