@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -147,9 +147,9 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "0.1.13",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.13.tgz",
-      "integrity": "sha512-zPDwrezgEzxJNFedi3SFvI/vSB6fSyO08FsMM9JY9Ezk+rmYszbrgVIpO4LvM4hOJbyIH8rOF/Mq/qiFR7SUSw=="
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-1.0.0.tgz",
+      "integrity": "sha512-vn9T+Nih+kGm6INv1spDehQaX4g1XZqgWWDFn6nT4rDwpPbb+FVqY1aaGlBeIZlSAZpvH1x1Pxu1rlLVs/JNTg=="
     },
     "@shopgate/react-hammerjs": {
       "version": "0.5.3",
