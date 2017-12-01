@@ -33,13 +33,8 @@ export default function setup(subscribe) {
     // eslint-disable-next-line no-new
     new UnifiedPlugin();
 
-    /*
-     * TODO: This is just a intermediate solution until the extensions are not longer located in
-     * the theme. __PROJECT_PATH__ is replaced by the StringReplacePlugin with project root path
-     * during the build.
-     */
     // eslint-disable-next-line no-undef
-    const extensionsIndex = (await import(`${__PROJECT_PATH__}/extensions/index`)).default;
+    const extensionsIndex = (await import(`${__THEME_PATH__}/extensions/tracking`)).default;
     const trackingExtensions = componentsConfig.tracking;
 
     Object.keys(trackingExtensions).forEach((key) => {
