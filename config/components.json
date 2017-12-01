@@ -12,9 +12,6 @@
     "@shopgate/commerce-widgets/product_slider": {
       "path": "@shopgate/commerce-widgets/frontend/dist/ProductSlider"
     },
-    "@shopgate/commerce-widgets/widget-grid": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/WidgetGrid"
-    },
     "@shopgate/commerce-widgets/category_list": {
       "path": "@shopgate/commerce-widgets/frontend/dist/CategoryList"
     },
