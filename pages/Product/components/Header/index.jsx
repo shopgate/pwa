@@ -34,7 +34,7 @@ const ProductHeader = () => (
     <Rating />
     <Name />
     <Grid component="div">
-      <Grid.Item component="div">
+      <Grid.Item component="div" grow={1}>
         <div className={styles.productInfo}>
           <Manufacturer />
         </div>
