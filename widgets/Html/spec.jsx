@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { JSDOM } from 'jsdom';
+// TODO import { JSDOM } from 'jsdom';
 import HtmlWidget from './index';
 
 const mockConstructor = jest.fn();
