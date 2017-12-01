@@ -48,3 +48,4 @@ coverage
 /public/
 /extensions/**
 !/extensions/.gitkeep
+widgets/index.js
