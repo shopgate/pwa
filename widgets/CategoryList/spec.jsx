@@ -10,7 +10,7 @@ import { mount } from 'enzyme';
 import List from 'Components/List';
 import { Unwrapped as CategoryListWidget } from './index';
 
-describe('<CategoryListWidget />', () => {
+describe.skip('<CategoryListWidget />', () => {
   it('should not render the CategoryListWidget', () => {
     const props = {
       fetchCategory: () => {},

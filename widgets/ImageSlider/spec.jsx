@@ -12,7 +12,7 @@ import Image from '@shopgate/pwa-common/components/Image';
 import Slider from '@shopgate/pwa-common/components/Slider';
 import ImageSliderWidget from './index';
 
-describe('<ImageSliderWidget />', () => {
+describe.skip('<ImageSliderWidget />', () => {
   const testImage = {
     image: 'http://placehold.it/350x150',
     link: 'http://example.com',

@@ -11,7 +11,7 @@ import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptio
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
-// import tracking from '@shopgate/pwa-tracking/subscriptions';
+import tracking from '@shopgate/pwa-tracking/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
@@ -30,7 +30,7 @@ const subscriptions = [
   commerceFilter,
   commerceProduct,
   commerceSearch,
-  // ...tracking,
+  ...tracking,
   app,
   navigator,
   category,
