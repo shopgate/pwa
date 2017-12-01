@@ -2,6 +2,11 @@
 
 exports[`<Widgets /> should not wrap a widget which is not a grid and has no height 1`] = `
 <Widgets
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
   widgets={
     Array [
       Object {
@@ -17,10 +22,8 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
     ]
   }
 >
-  <div
-    className="css-1w6nywo"
-  >
-    <ImageWidget
+  <div>
+    <Image
       col={0}
       key="w0"
       row={0}
@@ -33,43 +36,19 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
       type="@shopgate/commerce-widgets/image"
       width={12}
     >
-      <Image
-        alt={null}
-        animating={true}
-        backgroundColor="#f2f2f2"
-        className=""
-        forcePlaceholder={false}
-        highestResolutionLoaded={[Function]}
-        onError={null}
-        onLoad={null}
-        ratio={null}
-        resolutions={
-          Array [
-            Object {
-              "blur": 2,
-              "height": 50,
-              "width": 50,
-            },
-            Object {
-              "height": 440,
-              "width": 440,
-            },
-          ]
-        }
-        src="https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg"
-        transition={null}
-      >
-        <div
-          className="css-326p2s "
-        />
-      </Image>
-    </ImageWidget>
+      <div />
+    </Image>
   </div>
 </Widgets>
 `;
 
 exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
 <Widgets
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
   widgets={
     Array [
       Object {
@@ -95,10 +74,13 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
     ]
   }
 >
-  <div
-    className="css-1w6nywo"
-  >
+  <div>
     <WidgetGrid
+      components={
+        Object {
+          "@shopgate/commerce-widgets/image": [Function],
+        }
+      }
       config={
         Array [
           Object {
@@ -119,7 +101,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
       key="w0"
     >
       <div
-        className="css-12z1ntc"
+        className="css-13azwyo"
         style={
           Object {
             "height": "425px",
@@ -158,7 +140,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
               <div
                 className="css-4hpmhj"
               >
-                <ImageWidget
+                <Image
                   ratio={
                     Array [
                       12,
@@ -174,53 +156,8 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
                     }
                   }
                 >
-                  <Link
-                    className="css-63oe3q"
-                    href="/category/"
-                  >
-                    <div
-                      className="css-c6ki83 css-63oe3q"
-                      onClick={[Function]}
-                      role="link"
-                    >
-                      <Image
-                        alt=""
-                        animating={true}
-                        backgroundColor="#f2f2f2"
-                        className=""
-                        forcePlaceholder={false}
-                        highestResolutionLoaded={[Function]}
-                        onError={null}
-                        onLoad={null}
-                        ratio={
-                          Array [
-                            12,
-                            5,
-                          ]
-                        }
-                        resolutions={
-                          Array [
-                            Object {
-                              "blur": 2,
-                              "height": 50,
-                              "width": 50,
-                            },
-                            Object {
-                              "height": 440,
-                              "width": 440,
-                            },
-                          ]
-                        }
-                        src="https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg"
-                        transition={null}
-                      >
-                        <div
-                          className="css-1vaevcm "
-                        />
-                      </Image>
-                    </div>
-                  </Link>
-                </ImageWidget>
+                  <div />
+                </Image>
               </div>
             </div>
           </GridItem>

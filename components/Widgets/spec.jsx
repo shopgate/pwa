@@ -9,6 +9,16 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Widgets from './index';
 
+/**
+ * A mock Image component.
+ * @returns {JSX}
+ */
+const Image = () => <div />;
+
+const components = {
+  '@shopgate/commerce-widgets/image': Image,
+};
+
 describe('<Widgets />', () => {
   it('should render a grid if height is defined', () => {
     const widgets = [{
@@ -24,7 +34,10 @@ describe('<Widgets />', () => {
     }];
 
     const wrapper = mount(
-      <Widgets widgets={widgets} />
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
     );
 
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
@@ -43,7 +56,10 @@ describe('<Widgets />', () => {
     }];
 
     const wrapper = mount(
-      <Widgets widgets={widgets} />
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -73,7 +89,10 @@ describe('<Widgets />', () => {
     }];
 
     const wrapper = mount(
-      <Widgets widgets={widgets} />
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
     );
 
     expect(wrapper).toMatchSnapshot();

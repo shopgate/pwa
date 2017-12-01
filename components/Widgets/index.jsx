@@ -7,23 +7,25 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import extensions from '../../../../extensions';
+import WidgetGrid from './components/WidgetGrid';
 
-const GRID_COLUMNS = 12; // One grid row has 12 columns.
 const WIDGET_GRID_TYPE = '@shopgate/commerce-widgets/widget-grid';
+const GRID_COLUMNS = 12; // One grid row has 12 columns.
 
 /**
  * Creates a grid wrapper for widget(s).
  * @param {string} key The unique key.
  * @param {Array} config Array of widgets to be placed in the grid.
+ * @param {Array} components The component definitions for the widgets.
  * @returns {JSX} The wrapper.
  */
-const createGridWrapper = (key, config) => (
+const createGridWrapper = (key, config, components) => (
   React.createElement(
-    extensions[WIDGET_GRID_TYPE],
+    WidgetGrid,
     {
       key,
       config,
+      components,
     }
   )
 );
@@ -31,11 +33,12 @@ const createGridWrapper = (key, config) => (
 /**
  * Create array of elements from widget configuration.
  * @param {Array} widgets Array of widget configurations.
+ * @param {Array} components The component definitions for the widgets.
  * @returns {Array} Array of JSX elements.
  */
-const createArrayOfElements = widgets => (
+const createArrayOfElements = (widgets, components) => (
   (widgets || []).map((widget, index) => {
-    if (!extensions[widget.type]) {
+    if (!components[widget.type] && widget.type !== WIDGET_GRID_TYPE) {
       return null;
     }
 
@@ -43,7 +46,7 @@ const createArrayOfElements = widgets => (
 
     if (widget.type === WIDGET_GRID_TYPE) {
       // If it's a grid just create it and pass the child widgets.
-      return createGridWrapper(key, widget.settings.widgets);
+      return createGridWrapper(key, widget.settings.widgets, components);
     } else if (widget.height) {
       // If it has a definite height wrap the widget in a grid.
       return createGridWrapper(
@@ -53,13 +56,14 @@ const createArrayOfElements = widgets => (
           col: 0,
           row: 0,
           width: GRID_COLUMNS,
-        }]
+        }],
+        components
       );
     }
 
     // In all other cases just create and return the widget component.
     return React.createElement(
-      extensions[widget.type],
+      components[widget.type],
       {
         ...widget,
         key,
@@ -69,23 +73,27 @@ const createArrayOfElements = widgets => (
 );
 
 /**
- * The widgets component.
- * @param {Object} props The component properties.
- * @returns {JSX} The Widgets.
+ * The Widgets component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-const Widgets = props => (
-  <div style={{ background: props.background }}>
-    {createArrayOfElements(props.widgets)}
-  </div>
-);
+const Widgets = ({ widgets, components }) => {
+  if (!widgets) {
+    return null;
+  }
+
+  return (
+    <div>{createArrayOfElements(widgets, components)}</div>
+  );
+};
 
 Widgets.propTypes = {
-  background: PropTypes.string,
+  components: PropTypes.shape(),
   widgets: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Widgets.defaultProps = {
-  background: '#fff',
+  components: null,
   widgets: null,
 };
 
