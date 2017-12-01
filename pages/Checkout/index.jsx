@@ -8,7 +8,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import trackingCore from '@shopgate/tracking-core/core/Core';
 import connect from './connector';
 
@@ -28,19 +27,15 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
 
-    if (appConfig.webCheckoutShopify !== null) {
-      // If the shop has a checkout url, we have to check if it is still valid
-      props.fetchCheckoutUrl()
-        .then((url) => {
-          this.redirect(url);
-        })
-        .catch(() => {
-          props.goBackHistory(1);
-        });
-    } else {
-      // The shop doesn't have a checkoutUrl so we have to redirect to the legacy checkout
-      this.redirect('/checkout_legacy');
-    }
+    // Request an url for the checkout page.
+    props.fetchCheckoutUrl()
+      .then((url) => {
+        // Redirect to the checkout url, or the legacy checkout, if none was provided.
+        this.redirect(url || '/checkout_legacy');
+      })
+      .catch(() => {
+        props.goBackHistory(1);
+      });
   }
 
   /**
