@@ -31,7 +31,9 @@ const Layout = ({ coupon, currency, handleDelete }) => (
     </Grid.Item>
     <Grid.Item className={`${styles.content} ${styles.contentLast}`} grow={1} shrink={0}>
       <Delete handleDelete={handleDelete} />
-      <CouponPrice currency={currency} savedPrice={coupon.savedPrice} />
+      { (coupon.savedPrice && coupon.savedPrice.value > 0) &&
+        <CouponPrice currency={currency} savedPrice={coupon.savedPrice} />
+      }
     </Grid.Item>
   </Grid>
 );
