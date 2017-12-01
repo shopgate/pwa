@@ -38,7 +38,7 @@
   ],
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-common": "^0.2.0",
+    "@shopgate/pwa-common": "^1.0.0",
     "@shopgate/pwa-core": "^0.1.7",
     "@shopgate/pwa-unit-test": "^1.2.5",
     "babel-cli": "^6.26.0",
@@ -58,7 +58,7 @@
     "rxjs": "^5.4.3"
   },
   "peerDependencies": {
-    "@shopgate/pwa-common": "0.2.x",
+    "@shopgate/pwa-common": "1.0.x",
     "@shopgate/pwa-core": "0.1.x",
     "rxjs": "^5.4.3"
   }
