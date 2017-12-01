@@ -29,7 +29,7 @@
     "@shopgate/pwa-common-commerce": "^1.0.0",
     "@shopgate/pwa-core": "^0.1.7",
     "@shopgate/pwa-tracking": "^1.0.0",
-    "@shopgate/pwa-webcheckout-shopify": "^0.1.13",
+    "@shopgate/pwa-webcheckout-shopify": "^1.0.0",
     "@shopgate/react-hammerjs": "^0.5.3",
     "@shopgate/tracking-core": "^0.1.5",
     "babel-core": "^6.26.0",
