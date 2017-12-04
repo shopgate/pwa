@@ -993,7 +993,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-r494z3"
+                    className="css-13o3l67"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -1017,7 +1017,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       date="2017-09-06T12:38:51.000Z"
                     >
                       <FormatDate
-                        format="medium"
+                        format="long"
                         timestamp={1504701531000}
                       >
                         <span>
@@ -1463,7 +1463,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-r494z3"
+                    className="css-13o3l67"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -1487,7 +1487,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       date="2017-09-06T12:38:51.000Z"
                     >
                       <FormatDate
-                        format="medium"
+                        format="long"
                         timestamp={1504701531000}
                       >
                         <span>
@@ -1933,7 +1933,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-r494z3"
+                    className="css-13o3l67"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -1957,7 +1957,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       date="2017-09-06T12:38:51.000Z"
                     >
                       <FormatDate
-                        format="medium"
+                        format="long"
                         timestamp={1504701531000}
                       >
                         <span>
@@ -2403,7 +2403,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-r494z3"
+                    className="css-13o3l67"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -2427,7 +2427,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       date="2017-09-06T12:38:51.000Z"
                     >
                       <FormatDate
-                        format="medium"
+                        format="long"
                         timestamp={1504701531000}
                       >
                         <span>
@@ -3391,7 +3391,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-r494z3"
+                    className="css-13o3l67"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -3415,7 +3415,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       date="2017-09-06T12:38:51.000Z"
                     >
                       <FormatDate
-                        format="medium"
+                        format="long"
                         timestamp={1504701531000}
                       >
                         <span>
@@ -3861,7 +3861,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-r494z3"
+                    className="css-13o3l67"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -3885,7 +3885,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       date="2017-09-06T12:38:51.000Z"
                     >
                       <FormatDate
-                        format="medium"
+                        format="long"
                         timestamp={1504701531000}
                       >
                         <span>

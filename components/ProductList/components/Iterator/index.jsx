@@ -29,8 +29,12 @@ const Iterator = props => (
 );
 
 Iterator.propTypes = {
-  display: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  display: PropTypes.shape(),
+};
+
+Iterator.defaultProps = {
+  display: null,
 };
 
 export default Iterator;

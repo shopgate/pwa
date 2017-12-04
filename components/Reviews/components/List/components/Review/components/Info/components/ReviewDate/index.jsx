@@ -15,7 +15,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
  * @returns {JSX}
  */
 const ReviewDate = ({ date }) => (
-  <I18n.Date timestamp={new Date(date).getTime()} />
+  <I18n.Date timestamp={new Date(date).getTime()} format="long" />
 );
 
 ReviewDate.propTypes = {

@@ -13,7 +13,8 @@ const { gap } = variables;
 
 const content = css({
   backgroundColor: colors.shade8,
-  padding: `${(gap.small * 1.375)}px ${(gap.small * 1.375)}px ${gap.big}px`,
+  fontSize: 14,
+  padding: `0 ${(gap.small * 1.375)}px ${gap.big}px`,
   marginBottom: (gap.big * 1.5),
 }).toString();
 
@@ -23,6 +24,7 @@ const label = css({
 
 const cell = css({
   maxWidth: 100,
+  padding: '2px 5px',
   overflowWrap: 'break-word',
 }).toString();
 

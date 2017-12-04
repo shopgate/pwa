@@ -30,7 +30,7 @@ const Iterator = props => (
 
 Iterator.propTypes = {
   id: PropTypes.string.isRequired,
-  display: PropTypes.string,
+  display: PropTypes.shape(),
 };
 
 Iterator.defaultProps = {

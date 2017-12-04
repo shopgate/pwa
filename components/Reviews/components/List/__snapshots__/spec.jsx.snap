@@ -471,7 +471,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-r494z3"
+            className="css-13o3l67"
           >
             "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -494,7 +494,7 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:38:51.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701531000}
               >
                 <span>
@@ -833,7 +833,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-r494z3"
+            className="css-13o3l67"
           >
             "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -856,7 +856,7 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:37:40.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701460000}
               >
                 <span>
@@ -1245,7 +1245,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="Test review"
         >
           <div
-            className="css-r494z3"
+            className="css-13o3l67"
           >
             "Test review"
           </div>
@@ -1268,7 +1268,7 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:30:23.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701023000}
               >
                 <span>
@@ -1602,7 +1602,7 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:30:23.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701023000}
               >
                 <span>
