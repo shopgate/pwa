@@ -232,7 +232,7 @@ export const getProductImages = createSelector(
 /**
  * Retrieves the current product rating.
  * @param {Object} state The current application state.
- * @return {Object}
+ * @return {Object|null}
  */
 export const getProductRating = createSelector(
   getCurrentBaseProduct,
