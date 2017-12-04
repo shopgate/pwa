@@ -9,6 +9,7 @@
     "transform-export-extensions",
     "transform-react-jsx-source",
     ["module-resolver", {
+      "cwd": "babelrc",
       "alias": {
         "Components": "./components",
         "Config": "./config",
@@ -37,17 +38,7 @@
     },
     "production": {
       "plugins": [
-        "transform-react-inline-elements",
-        ["module-resolver", {
-          "cwd": "babelrc",
-          "alias": {
-            "Components": "./components",
-            "Config": "./config",
-            "Extensions": "./extensions",
-            "Pages": "./pages",
-            "Styles": "./styles"
-          }
-        }]
+        "transform-react-inline-elements"
       ]
     }
   }
