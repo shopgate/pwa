@@ -24,15 +24,16 @@ const Description = ({ html }) => {
   }
 
   return (
-    <div className={styles.content}>
-      <div className={styles.about}>
+    <div className={styles.container}>
+      <div className={styles.title}>
         <I18n.Text string="product.description_heading" />
       </div>
-
       <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
-        <HtmlSanitizer settings={{ html }}>
-          {html}
-        </HtmlSanitizer>
+        <div className={styles.content}>
+          <HtmlSanitizer settings={{ html }}>
+            {html}
+          </HtmlSanitizer>
+        </div>
       </PlaceholderParagraph>
     </div>
   );

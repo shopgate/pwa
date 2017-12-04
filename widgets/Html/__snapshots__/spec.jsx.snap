@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HtmlWidget /> should render the HtmlWidget 1`] = `
+<div>
+  <h1>
+    Hello World!
+  </h1>
+</div>
+`;
+
+exports[`<HtmlWidget /> strips out the script tags 1`] = `
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<p>Foo Bar</p> ",
+    }
+  }
+/>
+`;

@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "0.1.21",
+  "version": "1.0.0",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -57,9 +57,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "0.1.12",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-0.1.12.tgz",
-      "integrity": "sha512-iz/MJffat2xw5vjIL8Z06aZhZiV6Esh7pJeAz0hextjGgvS0tnzANnguoG+K2tMKdoIy3ltvw5YJ208K1MjBIA==",
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.0.tgz",
+      "integrity": "sha512-Nkt/nUpmoVCcWW2+tkfV6bRe0HGTZK3/QPVXaQ7um8Mc4r4xOdeS5wBYF38r7j5eV3ehXX9Fhy92bZpuYzpovw==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -67,7 +67,7 @@
         "gsap": "1.20.3",
         "history": "4.7.2",
         "intl-messageformat": "2.2.0",
-        "jsdom": "11.4.0",
+        "jsdom": "11.1.0",
         "path-match": "1.2.4",
         "react-dotdotdot": "1.1.0",
         "react-hot-loader": "3.0.0-beta.6",
@@ -87,27 +87,27 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "0.1.18",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-0.1.18.tgz",
-      "integrity": "sha512-ATQf6YTE6dmk1pcNnf6u2QHY5l/pK33+97C0/a+QjuD808Kp+jv6EpTGJshfdxDQWGCZ8qyO97X+0peKG6FDSQ==",
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.0.0.tgz",
+      "integrity": "sha512-c7wWVuEq/aphqTwjLQiinSvCKIG4qGYOlYTt7yVuuf9vG/hA0AJI/7gwxhsmDnCI4jq3xIeJhD0PW7QmU187WQ==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
       }
     },
     "@shopgate/pwa-core": {
-      "version": "0.1.6",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-0.1.6.tgz",
-      "integrity": "sha512-LsM3mAvoHrr5vhHR8941H0h3+vRnfQ436yaVxAVzHjjhb7wd0OUOHng7le4e2OwF+YPcjulbEqtYIHSINHu5uw==",
+      "version": "0.1.7",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-0.1.7.tgz",
+      "integrity": "sha512-74+FFHyonH87W3Rt98FL3sgMfACP79821xMzl6VbnekxZiXVtRaAHJPyGEybn9D/yxetrsw2VAXzC+TDgGlTdQ==",
       "requires": {
         "crypto-js": "3.1.9-1",
         "isomorphic-fetch": "2.2.1"
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "0.1.9",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-0.1.9.tgz",
-      "integrity": "sha512-DR2GwWw+AMxts4dssPDJdMWTJiXdxrKnk89qDiY6V00q4TU1u6oXwZzWSD4CRqpKU9JlnEfeEK5/aGUEhBGC6A=="
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.0.0.tgz",
+      "integrity": "sha512-aKAryo9LLcQhAseX+6CSE3QKRa7IJUnEdPtfkkxU9jNZ+mbebMKVwSmoS0ty1Jab4r7Vf81SUg36pmfyM7FJ1w=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
@@ -147,9 +147,9 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "0.1.10",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-0.1.10.tgz",
-      "integrity": "sha512-04tneMmMy1Bto7XYno2Dgs0W/aXJFCSO6o6mAxtWScc8clCtfTOrzTBSv/YtlZNyfsFSTwxQe+aJ14ORLLFvNw=="
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-1.0.0.tgz",
+      "integrity": "sha512-vn9T+Nih+kGm6INv1spDehQaX4g1XZqgWWDFn6nT4rDwpPbb+FVqY1aaGlBeIZlSAZpvH1x1Pxu1rlLVs/JNTg=="
     },
     "@shopgate/react-hammerjs": {
       "version": "0.5.3",
@@ -160,9 +160,9 @@
       }
     },
     "@shopgate/tracking-core": {
-      "version": "0.1.4",
-      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-0.1.4.tgz",
-      "integrity": "sha512-DIPxDuRxsyFK3VHS9MUybGlufazakFG9QbUqvOoAs7xaUItS1ew6uMgndrzZ7E8l24cHL0SUSEANrgYEs45FqQ=="
+      "version": "0.1.5",
+      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-0.1.5.tgz",
+      "integrity": "sha512-V+PI3kx8okThZlkjlRO9qEIy9QKKximbyznFpUuyXJZXVlnt/EJbDBYKFzCCMqsBA+K1hZ6CNnJguYhZJErCJQ=="
     },
     "@types/node": {
       "version": "6.0.90",
@@ -177,14 +177,22 @@
     "acorn": {
       "version": "5.1.2",
       "resolved": "https://registry.npmjs.org/acorn/-/acorn-5.1.2.tgz",
-      "integrity": "sha512-o96FZLJBPY1lvTuJylGA9Bk3t/GKPPJG8H0ydQQl01crzwJgspa4AEIq/pVTXigmK0PHVQhiAtn8WMBLL9D2WA=="
+      "integrity": "sha512-o96FZLJBPY1lvTuJylGA9Bk3t/GKPPJG8H0ydQQl01crzwJgspa4AEIq/pVTXigmK0PHVQhiAtn8WMBLL9D2WA==",
+      "dev": true
     },
     "acorn-globals": {
-      "version": "4.1.0",
-      "resolved": "https://registry.npmjs.org/acorn-globals/-/acorn-globals-4.1.0.tgz",
-      "integrity": "sha512-KjZwU26uG3u6eZcfGbTULzFcsoz6pegNKtHPksZPOUsiKo5bUmiBPa38FuHZ/Eun+XYh/JCCkS9AS3Lu4McQOQ==",
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/acorn-globals/-/acorn-globals-3.1.0.tgz",
+      "integrity": "sha1-/YJw9x+7SZawBPqIDuXUZXOnMb8=",
       "requires": {
-        "acorn": "5.1.2"
+        "acorn": "4.0.13"
+      },
+      "dependencies": {
+        "acorn": {
+          "version": "4.0.13",
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz",
+          "integrity": "sha1-EFSVrlNh1pe9GVyCUZLhrX8lN4c="
+        }
       }
     },
     "acorn-jsx": {
@@ -1432,11 +1440,6 @@
         "repeat-element": "1.1.2"
       }
     },
-    "browser-process-hrtime": {
-      "version": "0.1.2",
-      "resolved": "https://registry.npmjs.org/browser-process-hrtime/-/browser-process-hrtime-0.1.2.tgz",
-      "integrity": "sha1-Ql1opY00R/AqBKqJQYf86K+Le44="
-    },
     "browser-resolve": {
       "version": "1.11.2",
       "resolved": "https://registry.npmjs.org/browser-resolve/-/browser-resolve-1.11.2.tgz",
@@ -2101,11 +2104,6 @@
       "version": "1.3.0",
       "resolved": "https://registry.npmjs.org/domelementtype/-/domelementtype-1.3.0.tgz",
       "integrity": "sha1-sXrtguirWeUt2cGbF1bg/BhyBMI="
-    },
-    "domexception": {
-      "version": "1.0.0",
-      "resolved": "https://registry.npmjs.org/domexception/-/domexception-1.0.0.tgz",
-      "integrity": "sha512-WpwuBlZ2lQRFa4H/4w49deb9rJLot9KmqrKKjMc9qBl7CID+DdC2swoa34ccRl+anL2B6bLp6TjFdIdnzekMBQ=="
     },
     "domhandler": {
       "version": "2.4.1",
@@ -5436,19 +5434,17 @@
       "optional": true
     },
     "jsdom": {
-      "version": "11.4.0",
-      "resolved": "https://registry.npmjs.org/jsdom/-/jsdom-11.4.0.tgz",
-      "integrity": "sha512-BTp3qjJlrnzcZGl8XdGnR+jEXvNjzUmixf2hBhf6Ky05qbtLmF/xGTCCT6QK9ugrYdlBURWO8GlkKY65TpOLfw==",
+      "version": "11.1.0",
+      "resolved": "https://registry.npmjs.org/jsdom/-/jsdom-11.1.0.tgz",
+      "integrity": "sha512-vKKDU+Xh9O6VgzdOYf5Rmqbgp+Yz4YTBC19gaLtctXch33EmNucA395KJGGboldafPW1vv9XLuiprO4+wXfl0g==",
       "requires": {
         "abab": "1.0.4",
-        "acorn": "5.1.2",
-        "acorn-globals": "4.1.0",
+        "acorn": "4.0.13",
+        "acorn-globals": "3.1.0",
         "array-equal": "1.0.0",
-        "browser-process-hrtime": "0.1.2",
         "content-type-parser": "1.0.2",
         "cssom": "0.3.2",
         "cssstyle": "0.2.37",
-        "domexception": "1.0.0",
         "escodegen": "1.9.0",
         "html-encoding-sniffer": "1.0.2",
         "nwmatcher": "1.4.3",
@@ -5463,6 +5459,13 @@
         "whatwg-encoding": "1.0.2",
         "whatwg-url": "6.3.0",
         "xml-name-validator": "2.0.1"
+      },
+      "dependencies": {
+        "acorn": {
+          "version": "4.0.13",
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz",
+          "integrity": "sha1-EFSVrlNh1pe9GVyCUZLhrX8lN4c="
+        }
       }
     },
     "jsesc": {
