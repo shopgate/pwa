@@ -34,7 +34,7 @@ const ProductHeader = () => (
     <Rating />
     <Name />
     <Grid component="div">
-      <Grid.Item component="div" shrink={0} grow={1}>
+      <Grid.Item component="div" grow={1}>
         <div className={styles.productInfo}>
           <Manufacturer />
         </div>
@@ -45,7 +45,7 @@ const ProductHeader = () => (
           <Availability />
         </div>
       </Grid.Item>
-      <Grid.Item component="div" shrink={0} className={styles.priceContainer}>
+      <Grid.Item component="div" className={styles.priceContainer}>
         <div className={styles.priceInfo}>
           <PriceStriked />
         </div>

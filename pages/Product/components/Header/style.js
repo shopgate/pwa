@@ -30,8 +30,8 @@ const productInfo = css({
 }).toString();
 
 const priceContainer = css({
-  width: '50%',
   textAlign: 'right',
+  marginLeft: variables.gap.big,
 }).toString();
 
 const placeholder = {

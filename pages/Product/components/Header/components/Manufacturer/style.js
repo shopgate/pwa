@@ -11,7 +11,6 @@ const infoContainer = css({
   alignSelf: 'flex-end',
   fontWeight: 500,
   marginTop: -2,
-  width: '50%',
 }).toString();
 
 const placeholder = css({
