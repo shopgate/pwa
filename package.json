@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common-commerce",
-  "version": "0.1.18",
+  "version": "1.0.0",
   "description": "Shopgate's commerce library for PWAs",
   "repository": "shopgate/pwa-common-commerce",
   "bugs": "https://github.com/shopgate/pwa-common-commerce/issues",
@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-common": "^0.1.12",
-    "@shopgate/pwa-core": "^0.1.6",
+    "@shopgate/pwa-common": "^1.0.0",
+    "@shopgate/pwa-core": "^0.1.7",
     "@shopgate/pwa-unit-test": "^1.2.5",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -60,6 +60,6 @@
   "peerDependencies": {
     "lodash": "4.x",
     "@shopgate/pwa-core": "0.1.x",
-    "@shopgate/pwa-common": "0.1.x"
+    "@shopgate/pwa-common": "1.0.x"
   }
 }
