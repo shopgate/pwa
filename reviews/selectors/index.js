@@ -22,7 +22,7 @@ const getReviewsByHashState = state => state.reviews.reviewsByHash;
  * @param {Object} state The current application state.
  * @return {Object|null} The reviews for a product.
  */
-const getCollectionForCurrentProductId = createSelector(
+const getCollectionForCurrentBaseProduct = createSelector(
   getCurrentBaseProductId,
   getReviewsByHashState,
   (productId, reviewsState) => {
@@ -96,7 +96,7 @@ export const getProductReviewCount = createSelector(
  * @return {Array|null} The reviews for a product.
  */
 export const getProductReviews = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   getReviews,
   (collection, allReviews) => {
     if (!collection || !collection.reviews) {
@@ -112,7 +112,7 @@ export const getProductReviews = createSelector(
  * @return {number|null} The total number of reviews.
  */
 export const getReviewsTotalCount = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   (collection) => {
     if (!collection || !collection.hasOwnProperty('totalReviewCount')) {
       return null;
@@ -127,7 +127,7 @@ export const getReviewsTotalCount = createSelector(
  * @return {number|null} The current number of fetched reviews.
  */
 export const getCurrentReviewCount = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   (collection) => {
     if (!collection || !collection.reviews) {
       return null;
@@ -143,7 +143,7 @@ export const getCurrentReviewCount = createSelector(
  * @return {bool} The boolean information if reviews are currently being fetched.
  */
 export const getReviewsFetchingState = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   collection => collection && collection.isFetching
 );
 
