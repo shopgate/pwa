@@ -42,7 +42,7 @@ class Title extends Component {
    * @param {Object} nextProps The components next props.
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.title !== '' && nextProps.title !== this.title) {
+    if (nextProps.title !== this.title) {
       this.previousTitle = this.title;
       this.title = nextProps.title;
     }
@@ -54,7 +54,7 @@ class Title extends Component {
    * @returns {boolean} Whether the component should update.
    */
   shouldComponentUpdate(nextProps) {
-    return (this.props.title !== nextProps.title) && nextProps.title !== '';
+    return this.props.title !== nextProps.title;
   }
 
   /**
