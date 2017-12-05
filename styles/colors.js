@@ -32,6 +32,7 @@ const colors = {
   shade9: '#8d8d8d',
   shade10: '#f4f4f4',
   shade11: '#747474',
+  shade12: '#939393',
   success: '#35cc29',
   warning: '#ff9300',
   error: '#ff0000',

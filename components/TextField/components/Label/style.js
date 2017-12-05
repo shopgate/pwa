@@ -55,10 +55,11 @@ const labelFloating = css({
 const label = css({
   position: 'absolute',
   left: 0,
-  top: 38,
-  lineHeight: 1.375,
+  top: 24,
+  lineHeight: '19px',
   pointerEvents: 'none',
   userSelect: 'none',
+  color: colors.shade12,
   transformOrigin: 'left top 0px',
   willChange: 'transform, color',
   transition: `transform ${easing}, color ${easing}`,

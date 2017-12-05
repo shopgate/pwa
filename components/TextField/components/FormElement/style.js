@@ -10,11 +10,13 @@ import { css } from 'glamor';
  * The styles for the input field.
  */
 const input = css({
-  position: 'absolute',
-  padding: 1,
+  position: 'relative',
+  padding: 0,
   width: '100%',
-  top: 38,
+  marginTop: 24,
   outline: 0,
+  fontSize: 16,
+  lineHeight: '19px',
 }).toString();
 
 /**
@@ -22,12 +24,15 @@ const input = css({
  */
 const multiLine = css({
   position: 'relative',
-  marginTop: 38,
-  padding: 1,
+  marginTop: 24,
+  marginBottom: 3,
+  padding: 0,
   width: '100%',
   outline: 0,
-  height: 32,
-  minHeight: 32,
+  height: 19,
+  minHeight: 19,
+  lineHeight: '19px',
+  verticalAlign: 'top', // Important to avoid bottom whitespace.
 }).toString();
 
 export default {

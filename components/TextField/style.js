@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 import { css } from 'glamor';
-
+import variables from 'Styles/variables';
 /**
  * The styles for the container element.
  */
 const container = {
   input: css({
     position: 'relative',
-    minHeight: 72,
+    paddingBottom: variables.gap.big,
     width: '100%',
   }).toString(),
   multiLine: css({
