@@ -14,9 +14,17 @@ import RatingStars from './index';
 const numEmptyStars = 5;
 
 describe('<RatingStars />', () => {
+  const context = {
+    context: {
+      i18n: () => ({
+        __: () => 'translation',
+      }),
+    }
+  };
   it('renders with value of 50', () => {
     const wrapper = shallow(
-      <RatingStars value={50} />
+      <RatingStars value={50} />,
+      context
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -26,7 +34,8 @@ describe('<RatingStars />', () => {
 
   it('renders with value of 0', () => {
     const wrapper = shallow(
-      <RatingStars value={0} />
+      <RatingStars value={0} />,
+      context
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -36,7 +45,8 @@ describe('<RatingStars />', () => {
 
   it('renders with value of 100', () => {
     const wrapper = shallow(
-      <RatingStars value={100} />
+      <RatingStars value={100} />,
+      context
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -46,7 +56,8 @@ describe('<RatingStars />', () => {
 
   it('should change rating on click', () => {
     const wrapper = shallow(
-      <RatingStars value={100} isSelectable />
+      <RatingStars value={100} isSelectable />,
+      context
     );
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(StarIcon).length).toBe(10);
@@ -68,7 +79,8 @@ describe('<RatingStars />', () => {
           wrapper.setProps({ value: e.target.value });
           spy();
         }}
-      />
+      />,
+      context
     );
     // Click on 1 filled star.
     wrapper.find('[role="button"]').at(5).simulate('click', { target: { value: 10 } });
@@ -83,7 +95,8 @@ describe('<RatingStars />', () => {
   it('should NOT call onSelection callback when component is NOT selectable', () => {
     const spy = jest.fn();
     const wrapper = shallow(
-      <RatingStars value={100} onSelection={spy} />
+      <RatingStars value={100} onSelection={spy} />,
+      context
     );
 
     wrapper.find(StarIcon).at(5).parent('div').simulate('click');

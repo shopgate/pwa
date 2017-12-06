@@ -41,12 +41,40 @@ class RatingStars extends React.Component {
   };
 
   /**
+   * Context types definition.
+   * @type {{i18n: shim}}
+   */
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
+  /**
    * Only update the component if the star rating changed.
    * @param {Object} nextProps The next component props.
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
     return nextProps.value !== this.props.value;
+  }
+
+  /**
+   * Returns textual version of stars for screen readers.
+   * @param {number} stars Number of stars.
+   * @returns {string}
+   */
+  getTextualFinal(stars) {
+    const { __ } = this.context.i18n();
+    return __('reviews.rating_stars', { rate: stars });
+  }
+
+  /**
+   * Returns text for call to a
+   * @param {number} stars Number of stars.
+   * @returns {string}
+   */
+  getTextualCTA(stars) {
+    const { __ } = this.context.i18n();
+    return __('reviews.press_to_rate_with_x_stars', { rate: stars });
   }
 
   /**
@@ -83,6 +111,7 @@ class RatingStars extends React.Component {
           className: iconClassName,
           key: pos,
           ...(isSelectable) && {
+            'aria-label': this.getTextualCTA(pos),
             role: 'button',
             onClick: e => this.handleSelection(e, pos),
           },
@@ -103,6 +132,7 @@ class RatingStars extends React.Component {
           className: iconClassName,
           key: numStars + pos,
           ...(isSelectable) && {
+            'aria-hidden': true, // Aria hidden since it's basically a duplicate for a screen reader.
             role: 'button',
             onClick: e => this.handleSelection(e, pos),
           },
@@ -122,7 +152,7 @@ class RatingStars extends React.Component {
     ];
 
     return (
-      <div className={className}>
+      <div className={className} aria-label={this.getTextualFinal(ratedStars)}>
         <div className={styles.emptyStars}>
           {emptyStars}
         </div>

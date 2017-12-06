@@ -116,6 +116,7 @@
     "review_form_error_author_empty": "Bitte einen Namen angeben.",
     "review_form_rate_error": "Bitte Sterne vergeben.",
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
+    "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
     "modal_title": "Vielen Dank!",
     "modal_message": "Die Bewertung wurde gespeichert und hilft nun anderen Käufern dabei sich zu informieren!"
   }

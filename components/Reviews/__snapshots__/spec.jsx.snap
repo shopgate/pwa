@@ -156,6 +156,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     value={50}
                   >
                     <div
+                      aria-label="translation"
                       className="css-13azwyo "
                     >
                       <div
@@ -477,7 +478,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     <span
                       className="css-18d53x4"
                     >
-                      reviews.review_count
+                      translation
                     </span>
                   </Translate>
                 </RatingCount>
@@ -494,7 +495,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <span
                   className=""
                 >
-                  reviews.rating
+                  translation
+                  <span
+                    className="css-shoywj"
+                    key=".0"
+                  >
+                    2.5
+                  </span>
                 </span>
               </Translate>
               <Connect(WriteReviewLink)>
@@ -519,7 +526,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         <span
                           className=""
                         >
-                          reviews.button_add
+                          translation
                         </span>
                       </Translate>
                     </div>
@@ -588,7 +595,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   title=""
                 >
                   <div
-                    className="css-ud99sa"
+                    className="css-1rmdcnr"
                   />
                 </Title>
                 <Rating
@@ -605,6 +612,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       value={100}
                     >
                       <div
+                        aria-label="translation"
                         className="css-13azwyo css-1tsawhq"
                       >
                         <div
@@ -977,21 +985,6 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </div>
                       </div>
                     </RatingStars>
-                    <Translate
-                      className="css-1nebnqb"
-                      params={
-                        Object {
-                          "rate": 5,
-                        }
-                      }
-                      string="reviews.rating_stars"
-                    >
-                      <span
-                        className="css-1nebnqb"
-                      >
-                        reviews.rating_stars
-                      </span>
-                    </Translate>
                   </div>
                 </Rating>
                 <Text
@@ -1026,7 +1019,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          1504701531000
+                          date
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -1058,7 +1051,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   title=""
                 >
                   <div
-                    className="css-ud99sa"
+                    className="css-1rmdcnr"
                   />
                 </Title>
                 <Rating
@@ -1075,6 +1068,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       value={100}
                     >
                       <div
+                        aria-label="translation"
                         className="css-13azwyo css-1tsawhq"
                       >
                         <div
@@ -1447,21 +1441,6 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </div>
                       </div>
                     </RatingStars>
-                    <Translate
-                      className="css-1nebnqb"
-                      params={
-                        Object {
-                          "rate": 5,
-                        }
-                      }
-                      string="reviews.rating_stars"
-                    >
-                      <span
-                        className="css-1nebnqb"
-                      >
-                        reviews.rating_stars
-                      </span>
-                    </Translate>
                   </div>
                 </Rating>
                 <Text
@@ -1496,7 +1475,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          1504701531000
+                          date
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -1528,7 +1507,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   title=""
                 >
                   <div
-                    className="css-ud99sa"
+                    className="css-1rmdcnr"
                   />
                 </Title>
                 <Rating
@@ -1545,6 +1524,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       value={100}
                     >
                       <div
+                        aria-label="translation"
                         className="css-13azwyo css-1tsawhq"
                       >
                         <div
@@ -1917,21 +1897,6 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </div>
                       </div>
                     </RatingStars>
-                    <Translate
-                      className="css-1nebnqb"
-                      params={
-                        Object {
-                          "rate": 5,
-                        }
-                      }
-                      string="reviews.rating_stars"
-                    >
-                      <span
-                        className="css-1nebnqb"
-                      >
-                        reviews.rating_stars
-                      </span>
-                    </Translate>
                   </div>
                 </Rating>
                 <Text
@@ -1966,7 +1931,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          1504701531000
+                          date
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -1998,7 +1963,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   title=""
                 >
                   <div
-                    className="css-ud99sa"
+                    className="css-1rmdcnr"
                   />
                 </Title>
                 <Rating
@@ -2015,6 +1980,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       value={100}
                     >
                       <div
+                        aria-label="translation"
                         className="css-13azwyo css-1tsawhq"
                       >
                         <div
@@ -2387,21 +2353,6 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         </div>
                       </div>
                     </RatingStars>
-                    <Translate
-                      className="css-1nebnqb"
-                      params={
-                        Object {
-                          "rate": 5,
-                        }
-                      }
-                      string="reviews.rating_stars"
-                    >
-                      <span
-                        className="css-1nebnqb"
-                      >
-                        reviews.rating_stars
-                      </span>
-                    </Translate>
                   </div>
                 </Rating>
                 <Text
@@ -2436,7 +2387,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          1504701531000
+                          date
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -2484,7 +2435,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     <span
                       className=""
                     >
-                      reviews.button_all
+                      translation
                     </span>
                   </Translate>
                 </div>
@@ -2575,6 +2526,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     value={50}
                   >
                     <div
+                      aria-label="translation"
                       className="css-13azwyo "
                     >
                       <div
@@ -2896,7 +2848,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     <span
                       className="css-18d53x4"
                     >
-                      reviews.review_count
+                      translation
                     </span>
                   </Translate>
                 </RatingCount>
@@ -2913,7 +2865,13 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 <span
                   className=""
                 >
-                  reviews.rating
+                  translation
+                  <span
+                    className="css-shoywj"
+                    key=".0"
+                  >
+                    2.5
+                  </span>
                 </span>
               </Translate>
               <Connect(WriteReviewLink)>
@@ -2938,7 +2896,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         <span
                           className=""
                         >
-                          reviews.button_add
+                          translation
                         </span>
                       </Translate>
                     </div>
@@ -2991,7 +2949,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   title=""
                 >
                   <div
-                    className="css-ud99sa"
+                    className="css-1rmdcnr"
                   />
                 </Title>
                 <Rating
@@ -3008,6 +2966,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       value={100}
                     >
                       <div
+                        aria-label="translation"
                         className="css-13azwyo css-1tsawhq"
                       >
                         <div
@@ -3380,21 +3339,6 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </div>
                       </div>
                     </RatingStars>
-                    <Translate
-                      className="css-1nebnqb"
-                      params={
-                        Object {
-                          "rate": 5,
-                        }
-                      }
-                      string="reviews.rating_stars"
-                    >
-                      <span
-                        className="css-1nebnqb"
-                      >
-                        reviews.rating_stars
-                      </span>
-                    </Translate>
                   </div>
                 </Rating>
                 <Text
@@ -3429,7 +3373,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         timestamp={1504701531000}
                       >
                         <span>
-                          1504701531000
+                          date
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -3461,7 +3405,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   title=""
                 >
                   <div
-                    className="css-ud99sa"
+                    className="css-1rmdcnr"
                   />
                 </Title>
                 <Rating
@@ -3478,6 +3422,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       value={100}
                     >
                       <div
+                        aria-label="translation"
                         className="css-13azwyo css-1tsawhq"
                       >
                         <div
@@ -3850,21 +3795,6 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         </div>
                       </div>
                     </RatingStars>
-                    <Translate
-                      className="css-1nebnqb"
-                      params={
-                        Object {
-                          "rate": 5,
-                        }
-                      }
-                      string="reviews.rating_stars"
-                    >
-                      <span
-                        className="css-1nebnqb"
-                      >
-                        reviews.rating_stars
-                      </span>
-                    </Translate>
                   </div>
                 </Rating>
                 <Text
@@ -3899,7 +3829,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         timestamp={1504701531000}
                       >
                         <span>
-                          1504701531000
+                          date
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -3984,6 +3914,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                     value={0}
                   >
                     <div
+                      aria-label="translation"
                       className="css-13azwyo "
                     >
                       <div
@@ -4193,7 +4124,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                 <span
                   className=""
                 >
-                  reviews.no_reviews
+                  translation
                 </span>
               </Translate>
               <Connect(WriteReviewLink)>
@@ -4218,7 +4149,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                         <span
                           className=""
                         >
-                          reviews.button_add
+                          translation
                         </span>
                       </Translate>
                     </div>

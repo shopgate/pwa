@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
@@ -26,7 +27,17 @@ const mockedStore = configureStore();
 const createComponent = (mockedState, props = {}) => mount(
   <Provider store={mockedStore(mockedState)}>
     <Header {...props} />
-  </Provider>
+  </Provider>,
+  {
+    context: {
+      i18n: () => ({
+        __: () => 'translation',
+      }),
+    },
+    childContextTypes: {
+      i18n: PropTypes.func,
+    },
+  }
 );
 
 describe('<Header />', () => {

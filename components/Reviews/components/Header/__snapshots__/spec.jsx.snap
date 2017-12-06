@@ -46,6 +46,7 @@ exports[`<Header /> should render empty 1`] = `
               value={0}
             >
               <div
+                aria-label="translation"
                 className="css-13azwyo "
               >
                 <div
@@ -255,7 +256,7 @@ exports[`<Header /> should render empty 1`] = `
           <span
             className=""
           >
-            reviews.no_reviews
+            translation
           </span>
         </Translate>
         <Connect(WriteReviewLink)>
@@ -280,7 +281,7 @@ exports[`<Header /> should render empty 1`] = `
                   <span
                     className=""
                   >
-                    reviews.button_add
+                    translation
                   </span>
                 </Translate>
               </div>
@@ -339,6 +340,7 @@ exports[`<Header /> should render rating summary 1`] = `
               value={50}
             >
               <div
+                aria-label="translation"
                 className="css-13azwyo "
               >
                 <div
@@ -660,7 +662,7 @@ exports[`<Header /> should render rating summary 1`] = `
               <span
                 className="css-18d53x4"
               >
-                reviews.review_count
+                translation
               </span>
             </Translate>
           </RatingCount>
@@ -677,7 +679,13 @@ exports[`<Header /> should render rating summary 1`] = `
           <span
             className=""
           >
-            reviews.rating
+            translation
+            <span
+              className="css-shoywj"
+              key=".0"
+            >
+              2.5
+            </span>
           </span>
         </Translate>
         <Connect(WriteReviewLink)>
@@ -702,7 +710,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   <span
                     className=""
                   >
-                    reviews.button_add
+                    translation
                   </span>
                 </Translate>
               </div>

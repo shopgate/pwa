@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import List from './index';
 
@@ -44,7 +45,17 @@ describe('<List />', () => {
   ];
 
   beforeEach(() => {
-    list = mount(<List reviews={[]} />);
+    list = mount(<List reviews={[]} />, {
+      context: {
+        i18n: () => ({
+          __: () => 'translation',
+          _d: () => 'date',
+        }),
+      },
+      childContextTypes: {
+        i18n: PropTypes.func,
+      },
+    });
   });
 
   it('should not render when no reviews given', () => {
@@ -62,7 +73,6 @@ describe('<List />', () => {
       const ratingNode = node.find('Rating');
 
       expect(ratingNode.prop('rate')).toEqual(reviews[i].rate);
-      expect(ratingNode.find('Translate').prop('params').rate).toEqual(reviews[i].rate / 20);
       expect(ratingNode.find('RatingStars').prop('value')).toEqual(reviews[i].rate);
       expect(node.find('Info').prop('review').date).toEqual(reviews[i].date);
 
