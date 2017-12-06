@@ -8,7 +8,7 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import { getCurrentProductId } from '../../product/selectors/product';
+import { getCurrentBaseProductId } from '../../product/selectors/product';
 
 /**
  * Select the product reviews state.
@@ -22,8 +22,8 @@ const getReviewsByHashState = state => state.reviews.reviewsByHash;
  * @param {Object} state The current application state.
  * @return {Object|null} The reviews for a product.
  */
-const getCollectionForCurrentProductId = createSelector(
-  getCurrentProductId,
+const getCollectionForCurrentBaseProduct = createSelector(
+  getCurrentBaseProductId,
   getReviewsByHashState,
   (productId, reviewsState) => {
     const hash = generateResultHash({
@@ -58,7 +58,7 @@ export const getReviews = state => state.reviews.reviewsById || {};
  * @return {Object} The reviews for a product
  */
 export const getProductReviewsExcerpt = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   getReviews,
   (productId, productReviewsState, reviewsState) => {
@@ -78,7 +78,7 @@ export const getProductReviewsExcerpt = createSelector(
  * @return {number} The total review count for a product
  */
 export const getProductReviewCount = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   (productId, reviewsState) => {
     const collection = reviewsState[productId];
@@ -96,7 +96,7 @@ export const getProductReviewCount = createSelector(
  * @return {Array|null} The reviews for a product.
  */
 export const getProductReviews = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   getReviews,
   (collection, allReviews) => {
     if (!collection || !collection.reviews) {
@@ -112,7 +112,7 @@ export const getProductReviews = createSelector(
  * @return {number|null} The total number of reviews.
  */
 export const getReviewsTotalCount = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   (collection) => {
     if (!collection || !collection.hasOwnProperty('totalReviewCount')) {
       return null;
@@ -127,7 +127,7 @@ export const getReviewsTotalCount = createSelector(
  * @return {number|null} The current number of fetched reviews.
  */
 export const getCurrentReviewCount = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   (collection) => {
     if (!collection || !collection.reviews) {
       return null;
@@ -143,7 +143,7 @@ export const getCurrentReviewCount = createSelector(
  * @return {bool} The boolean information if reviews are currently being fetched.
  */
 export const getReviewsFetchingState = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   collection => collection && collection.isFetching
 );
 
@@ -158,7 +158,7 @@ const userReviewsByProductId = state => state.reviews.userReviewsByProductId;
  * Retrieves a user review for a product.
  */
 export const getUserReviewForProduct = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   userReviewsByProductId,
   getReviews,
   (productId, userReviews, allReviews) => {
@@ -178,7 +178,7 @@ export const getUserReviewForProduct = createSelector(
  * @return {bool} True if user review for current product is being fetched.
  */
 export const getUserReviewFirstFetchState = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   userReviewsByProductId,
   (productId, userReviews) =>
     !!(
