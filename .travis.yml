@@ -1,10 +1,18 @@
 language: node_js
-node_js: node
-script: "npm run coverage"
-# Send coverage report to coveralls.io
-after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-notifications:
-  email: false
+node_js:
+- 8.4.0
+script: NODE_ENV=production npm run coverage -- --maxWorkers=4
+after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
   - master
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: change
+    template:
+      - "%{repository_slug}"
+      - "<%{build_url}|#%{build_number}> - %{message}"
+      - "Commit: \"%{commit_subject}\" by %{author}"
+    secure: wKtmSS+dnpG366kgmyHHvUp/XUhHMtr+sTxh7VM/gv/unSPOU4wZN+poknGqAjMX9uqInLL8J+8Sy3J4FJ1nGrZcAsK+oF43gIgpjFzfH9kPnpe5QItqNtmyXIubjxcFuyEkTWLwrCHLxTcDUQ2sKa5IFUNzvwT+e7vhOKdkv5hlDEpo54yEk7fzg7amSHl/Nw6DpiTqpB1m1l0Y+/R+cycsG+wye0Ao71rGjmW2q6ADD5mfeIZZEC6T9WA44aiyyS3pGlygJoD8axPdaYeUbroE8Qe7M+rVxsWQzAbz2g7zqevP02J74S8b094pqKf0TBCRyWQEl6Gy+ETSAzMY6OlPShww2S7JVgmh/nRrP0tkAEfqLpkTMlqOcm2+w4QLkd2vRHyRT3Sw7Nkmkq9slF+V+GQ1EcaExgVaeIzEKN0fpcO0GYLUpfRdIj6Y32bceNIL6eY98hXHrmnETFxytEvsEBkZz9gxVzGp96k7USGs0m9rq1x5ChsAxmBgF5qm5hvvM+xNYIixHToOvczA4n04Xf4NjWZMb7Yf/YFYL/RhWx6xuPOGv8x6KzD1fKNWOCnUOVOTZCZZ9lYC+rNwecLUkS6k8CvZjeUkGEuQYWRND5/nDmjlizE55u5lB0s01oxgDwWwY1qgZzjpxqWf+NOBzaAcJ9iadkcJYBRDdXA=
