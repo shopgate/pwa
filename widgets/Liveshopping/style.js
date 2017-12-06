@@ -87,13 +87,13 @@ const timer = css({
   fontWeight: 500,
 }).toString();
 
-const indicator = {
+const indicator = css({
   position: 'relative',
   left: 0,
   bottom: 0,
   transform: 'translateX(0)',
   textAlign: 'center',
-};
+}).toString();
 
 export default {
   card,

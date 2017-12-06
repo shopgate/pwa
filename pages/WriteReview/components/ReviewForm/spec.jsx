@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount, shallow } from 'enzyme';
-import ReviewFormShallow from './index';
+import { mount } from 'enzyme';
 import {
   mockedStateWithoutReview,
   mockedStateWithInvalidReview,
@@ -21,6 +20,7 @@ beforeEach(() => {
 /**
  * Creates component with provided store state.
  * @param {Object} mockedState Mocked stage.
+ * @param {Function} dispatchSpy Dispatch spy
  * @return {ReactWrapper}
  */
 const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
