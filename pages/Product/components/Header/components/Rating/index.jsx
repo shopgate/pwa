@@ -9,6 +9,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { features } from 'Config/app.json';
 import RatingStars from 'Components/RatingStars';
+import RatingCount from 'Components/Reviews/components/RatingCount';
+import { container } from './style';
 import connect from './connector';
 
 /**
@@ -22,7 +24,10 @@ const Rating = ({ rating }) => {
   }
 
   return (
-    <RatingStars value={rating.average} />
+    <div className={container}>
+      <RatingStars value={rating.average} display="big" />
+      <RatingCount count={rating.count} prominent />
+    </div>
   );
 };
 

@@ -42,13 +42,13 @@ const iconStyles = {
   big: {
     iconSize: '1.24em',
     iconStyle: css({
-      marginRight: '0.25em',
+      marginRight: '0.12em',
     }).toString(),
   },
   large: {
-    iconSize: '2em',
+    iconSize: '2.3em',
     iconStyle: css({
-      marginRight: '0.25em',
+      marginRight: '0.23em',
     }).toString(),
   },
 };
