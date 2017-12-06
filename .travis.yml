@@ -1,11 +1,18 @@
 language: node_js
-node_js: node
-script: npm run coverage
+node_js:
+- 8.4.0
+script: NODE_ENV=production npm run coverage -- --maxWorkers=4
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-notifications:
-  email: false
-  slack:
-    secure: JOj7pgefByjpiHbwKmSj1Y0Qm43G1VZY61PHbGuXOokd9rjC4OCn4SBLsDF09BcFzBIhvPFJ5jAJEnYZAT+DFTCSB5wHN1cyRa9U+Co9WOPQSO98mzkX4J4ChKu9zRiF0PxKXtEodrlgOOxHsGTsVrG0a/zDJ8TnzLOlhU2fTr0eXZYikoqrQCLK/DDwgnmuwS6JP2Z91Hs53+KPcfetZL1OoDMXmEq9UzYFCUhD/YMvXiSkJ3oHgE17iMWA7XuypveyuY1OKJBn87qULoIsr4QFrWWj6lMW/qA80tmp5S3JdbHvl7LelJgkkqnu6/nNzg/lFXXkuMQppU0fijI4jIFpqIFHZsEAxnIyNBevYcE4Sm3+S51PLiiI3LLQU5pvMpJMIkF8AapFxk92kJEs1hNouL9q6FK0xaVIIHcFZ8XY+w3HgTbR6yR8ttbEkXvZWRoiExGxmkdgAx3bzh2ukki08Ak7nWmSOrIYdkDJ+hAkS8OoqpfAEMnspN3EB7aV7VjU5HJhjS/GBdAhC5LwSk3J4SEIK8Vr1ZZvznX1A8yv9o8LLVoPAxNwBc/YNvBaN6tHcyALqD7KTBlNPCq/DCcoq5vL56EHZykWVg5zTwiFJErUx47zx8TjQzt1GPef6y5ND4Xw1fvTr+t0SDifZ/ncBufntWDThZQXmDQx+hU=
 branches:
   only:
   - master
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: change
+    template:
+      - "%{repository_slug}"
+      - "<%{build_url}|#%{build_number}> - %{message}"
+      - "Commit: \"%{commit_subject}\" by %{author}"
+    secure: JOj7pgefByjpiHbwKmSj1Y0Qm43G1VZY61PHbGuXOokd9rjC4OCn4SBLsDF09BcFzBIhvPFJ5jAJEnYZAT+DFTCSB5wHN1cyRa9U+Co9WOPQSO98mzkX4J4ChKu9zRiF0PxKXtEodrlgOOxHsGTsVrG0a/zDJ8TnzLOlhU2fTr0eXZYikoqrQCLK/DDwgnmuwS6JP2Z91Hs53+KPcfetZL1OoDMXmEq9UzYFCUhD/YMvXiSkJ3oHgE17iMWA7XuypveyuY1OKJBn87qULoIsr4QFrWWj6lMW/qA80tmp5S3JdbHvl7LelJgkkqnu6/nNzg/lFXXkuMQppU0fijI4jIFpqIFHZsEAxnIyNBevYcE4Sm3+S51PLiiI3LLQU5pvMpJMIkF8AapFxk92kJEs1hNouL9q6FK0xaVIIHcFZ8XY+w3HgTbR6yR8ttbEkXvZWRoiExGxmkdgAx3bzh2ukki08Ak7nWmSOrIYdkDJ+hAkS8OoqpfAEMnspN3EB7aV7VjU5HJhjS/GBdAhC5LwSk3J4SEIK8Vr1ZZvznX1A8yv9o8LLVoPAxNwBc/YNvBaN6tHcyALqD7KTBlNPCq/DCcoq5vL56EHZykWVg5zTwiFJErUx47zx8TjQzt1GPef6y5ND4Xw1fvTr+t0SDifZ/ncBufntWDThZQXmDQx+hU=
