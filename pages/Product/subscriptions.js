@@ -6,11 +6,14 @@
  */
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
 import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { features } from 'Config/app.json';
 import getProductData from './actions/getProductData';
+import { REVIEW_PREVIEW_COUNT } from './constants';
 
 /**
  * Product subscriptions.
@@ -55,8 +58,12 @@ export default function product(subscribe) {
   /**
    * Gets triggered on entering the product details route.
    */
-  subscribe(productRouteDidEnter$, ({ dispatch }) => {
+  subscribe(productRouteDidEnter$, ({ dispatch, getState }) => {
     dispatch(getProductData());
     dispatch(enableNavigatorSearch());
+    if (features.showReviews) {
+      const baseProductId = getCurrentBaseProductId(getState());
+      dispatch(getProductReviews(baseProductId, REVIEW_PREVIEW_COUNT));
+    }
   });
 }

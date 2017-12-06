@@ -44,7 +44,8 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
-    }
+    },
+    "placeholder": "Search"
   },
   "shipping": {
     "free": "Free delivery",
