@@ -9,6 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { features } from 'Config/app.json';
 import connect from './connector';
+import styles from './style';
 import List from './components/List';
 import Header from './components/Header';
 import AllReviewsLink from './components/AllReviewsLink';
@@ -25,7 +26,7 @@ const Reviews = ({ rating, reviews }) => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Header rating={rating} />
       <List reviews={reviews} />
       <AllReviewsLink />

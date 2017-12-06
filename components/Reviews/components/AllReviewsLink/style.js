@@ -27,6 +27,7 @@ const link = css({
   textTransform: 'uppercase',
   width: 'auto',
   padding: `${variables.gap.big}px`,
+  marginBottom: `-${variables.gap.big}px`,
   fontWeight: 500,
 }).toString();
 
