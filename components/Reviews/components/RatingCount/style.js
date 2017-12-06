@@ -22,7 +22,7 @@ const greyStyle = css({
 const prominentStyle = css({
   ...main,
   color: colors.primary,
-});
+}).toString();
 
 export {
   greyStyle,
