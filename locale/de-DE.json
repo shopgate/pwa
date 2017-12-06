@@ -44,7 +44,8 @@
     "no_result": {
       "heading": "Uups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" hat 0 Ergebnisse."
-    }
+    },
+    "placeholder": "Suchen"
   },
   "shipping": {
     "free": "Kostenloser Versand",

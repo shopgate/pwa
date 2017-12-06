@@ -24,14 +24,15 @@ class ProductsWidget extends Component {
   static propTypes = {
     getProducts: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
-    isFetching: PropTypes.bool.isRequired,
     settings: PropTypes.shape().isRequired,
+    isFetching: PropTypes.bool,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
     getProducts: () => {},
+    isFetching: null,
     products: null,
     totalProductCount: null,
   };

@@ -12,7 +12,6 @@ import classNames from 'classnames';
 import SearchSuggestions from './components/SearchSuggestions';
 import connect from './connector';
 import styles from './style';
-
 /**
  * The navigator search component.
  */
@@ -29,11 +28,15 @@ class Search extends Component {
 
   static defaultProps = {
     active: true,
-    placeholder: 'Search',
+    placeholder: null,
     searchPhrase: '',
     setSearchPhrase: () => {},
     submitSearch: '',
     toggleSearch: () => {},
+  };
+
+  static contextTypes = {
+    i18n: PropTypes.func,
   };
 
   /**
@@ -157,6 +160,9 @@ class Search extends Component {
     );
 
     const { inputValue } = this.state;
+    const { placeholder } = this.props;
+    const { __ } = this.context.i18n();
+    const inputPlaceholder = placeholder !== null ? placeholder : __('search.placeholder');
 
     return (
       <div>
@@ -171,7 +177,7 @@ class Search extends Component {
             value={inputValue}
             onChange={this.handleInput}
             onBlur={this.handleBlur}
-            placeholder={this.props.placeholder}
+            placeholder={inputPlaceholder}
             ref={(element) => { this.inputElement = element; }}
             onFocus={this.handleFocus}
           />
