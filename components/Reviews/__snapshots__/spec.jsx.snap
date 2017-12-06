@@ -122,7 +122,9 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
         ]
       }
     >
-      <div>
+      <div
+        className="css-154rzf7"
+      >
         <Header
           rating={
             Object {
@@ -2415,11 +2417,11 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               }
             >
               <Link
-                className="css-5nk6gc"
+                className="css-1j862mn"
                 href="/item/666f6f/reviews"
               >
                 <div
-                  className="css-c6ki83 css-5nk6gc"
+                  className="css-c6ki83 css-1j862mn"
                   onClick={[Function]}
                   role="link"
                 >
@@ -2492,7 +2494,9 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
         ]
       }
     >
-      <div>
+      <div
+        className="css-154rzf7"
+      >
         <Header
           rating={
             Object {
@@ -3880,7 +3884,9 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
       }
       reviews={null}
     >
-      <div>
+      <div
+        className="css-154rzf7"
+      >
         <Header
           rating={
             Object {
