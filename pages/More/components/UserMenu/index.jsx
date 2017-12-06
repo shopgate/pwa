@@ -15,9 +15,11 @@ import Headline from 'Components/Headline';
 import List from 'Components/List';
 import {
   LOGIN_PATH,
-  ORDERS_PATH,
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
+import {
+  ORDERS_PATH,
+} from '@shopgate/pwa-common-commerce/orders/constants';
 import styles from './style';
 
 /**
