@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-tracking",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shopgate's tracking library for PWAs",
   "repository": "shopgate/pwa-tracking",
   "bugs": "https://github.com/shopgate/pwa-tracking/issues",
@@ -37,11 +37,11 @@
   "dependencies": {},
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-common": "^1.0.0",
-    "@shopgate/pwa-common-commerce": "^0.2.0",
-    "@shopgate/pwa-core": "^0.1.7",
+    "@shopgate/pwa-common": "^1.0.2",
+    "@shopgate/pwa-common-commerce": "^1.0.1",
+    "@shopgate/pwa-core": "^1.0.0",
     "@shopgate/pwa-unit-test": "^1.2.5",
-    "@shopgate/tracking-core": "^0.1.5",
+    "@shopgate/tracking-core": "^1.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-dynamic-import-node": "^1.1.0",
@@ -68,9 +68,9 @@
     "react-dom": "15.x",
     "reselect": "3.x",
     "rxjs": "5.x",
-    "@shopgate/tracking-core": "0.1.x",
+    "@shopgate/tracking-core": "1.0.x",
     "@shopgate/pwa-common": "1.0.x",
-    "@shopgate/pwa-common-commerce": "0.2.x",
-    "@shopgate/pwa-core": "0.1.x"
+    "@shopgate/pwa-common-commerce": "1.0.x",
+    "@shopgate/pwa-core": "1.0.x"
   }
 }
