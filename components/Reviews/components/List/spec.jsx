@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import List from './index';
 
 describe('<List />', () => {
@@ -45,17 +45,7 @@ describe('<List />', () => {
   ];
 
   beforeEach(() => {
-    list = mount(<List reviews={[]} />, {
-      context: {
-        i18n: () => ({
-          __: () => 'translation',
-          _d: () => 'date',
-        }),
-      },
-      childContextTypes: {
-        i18n: PropTypes.func,
-      },
-    });
+    list = mount(<List reviews={[]} />, mockRenderOptions);
   });
 
   it('should not render when no reviews given', () => {

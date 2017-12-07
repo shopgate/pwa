@@ -7,13 +7,13 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedStateWithTwoReviews,
-  mockedStateWithoutReview
+  mockedStateWithoutReview,
 } from 'Components/Reviews/mock';
 import Rating from './index';
 import { getElementById } from './mock';
@@ -26,23 +26,12 @@ describe('Rating (product header)', () => {
    * @param {Object} state State
    * @returns {Object}
    */
-  const getComponent = (state) => {
-    return mount(
-      <Provider store={mockedStore(state)}>
-        <Rating />
-      </Provider>,
-      {
-        context: {
-          i18n: () => ({
-            __: () => 'translation',
-          }),
-        },
-        childContextTypes: {
-          i18n: PropTypes.func,
-        },
-      }
-    );
-  };
+  const getComponent = state => mount(
+    <Provider store={mockedStore(state)}>
+      <Rating />
+    </Provider>,
+    mockRenderOptions
+  );
   describe('Rendering', () => {
     it('should render rating when data is available', () => {
       const component = getComponent(mockedStateWithTwoReviews);

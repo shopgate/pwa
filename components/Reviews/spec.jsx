@@ -6,10 +6,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedStateWithAll,
   mockedStateWithoutReview,
@@ -36,17 +36,7 @@ const createComponent = (mockedState) => {
     <Provider store={mockedStore(mockedState)}>
       <Reviews />
     </Provider>,
-    {
-      context: {
-        i18n: () => ({
-          __: () => 'translation',
-          _d: () => 'date',
-        }),
-      },
-      childContextTypes: {
-        i18n: PropTypes.func,
-      },
-    }
+    mockRenderOptions
   );
 };
 

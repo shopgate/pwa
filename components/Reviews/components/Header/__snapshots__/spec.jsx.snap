@@ -317,6 +317,7 @@ exports[`<Header /> should render rating summary 1`] = `
   >
     <div
       className="css-gffnwd"
+      id="reviewsExcerpt"
     >
       <AverageRating
         rating={

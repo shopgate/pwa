@@ -9,22 +9,16 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import StarIcon from 'Components/icons/StarIcon';
 import StarHalfIcon from 'Components/icons/StarHalfIcon';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import RatingStars from './index';
 
 const numEmptyStars = 5;
 
 describe('<RatingStars />', () => {
-  const context = {
-    context: {
-      i18n: () => ({
-        __: () => 'translation',
-      }),
-    }
-  };
   it('renders with value of 50', () => {
     const wrapper = shallow(
       <RatingStars value={50} />,
-      context
+      mockRenderOptions
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -35,7 +29,7 @@ describe('<RatingStars />', () => {
   it('renders with value of 0', () => {
     const wrapper = shallow(
       <RatingStars value={0} />,
-      context
+      mockRenderOptions
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -46,7 +40,7 @@ describe('<RatingStars />', () => {
   it('renders with value of 100', () => {
     const wrapper = shallow(
       <RatingStars value={100} />,
-      context
+      mockRenderOptions
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -57,7 +51,7 @@ describe('<RatingStars />', () => {
   it('should change rating on click', () => {
     const wrapper = shallow(
       <RatingStars value={100} isSelectable />,
-      context
+      mockRenderOptions
     );
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(StarIcon).length).toBe(10);
@@ -80,7 +74,7 @@ describe('<RatingStars />', () => {
           spy();
         }}
       />,
-      context
+      mockRenderOptions
     );
     // Click on 1 filled star.
     wrapper.find('[role="button"]').at(5).simulate('click', { target: { value: 10 } });
@@ -96,7 +90,7 @@ describe('<RatingStars />', () => {
     const spy = jest.fn();
     const wrapper = shallow(
       <RatingStars value={100} onSelection={spy} />,
-      context
+      mockRenderOptions
     );
 
     wrapper.find(StarIcon).at(5).parent('div').simulate('click');

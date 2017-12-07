@@ -484,7 +484,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701531000}
               >
                 <span>
-                  date
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -832,7 +832,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701460000}
               >
                 <span>
-                  date
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -1230,7 +1230,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701023000}
               >
                 <span>
-                  date
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -1550,7 +1550,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701023000}
               >
                 <span>
-                  date
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>

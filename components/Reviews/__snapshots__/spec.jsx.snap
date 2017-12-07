@@ -135,6 +135,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
         >
           <div
             className="css-gffnwd"
+            id="reviewsExcerpt"
           >
             <AverageRating
               rating={
@@ -1021,7 +1022,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          date
+                          d
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -1477,7 +1478,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          date
+                          d
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -1933,7 +1934,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          date
+                          d
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -2389,7 +2390,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         timestamp={1504701531000}
                       >
                         <span>
-                          date
+                          d
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -2507,6 +2508,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
         >
           <div
             className="css-gffnwd"
+            id="reviewsExcerpt"
           >
             <AverageRating
               rating={
@@ -3377,7 +3379,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         timestamp={1504701531000}
                       >
                         <span>
-                          date
+                          d
                         </span>
                       </FormatDate>
                     </ReviewDate>
@@ -3833,7 +3835,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         timestamp={1504701531000}
                       >
                         <span>
-                          date
+                          d
                         </span>
                       </FormatDate>
                     </ReviewDate>

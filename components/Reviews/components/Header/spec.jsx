@@ -6,10 +6,10 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedStateWithoutReview,
   mockedStateWithAll,
@@ -28,16 +28,7 @@ const createComponent = (mockedState, props = {}) => mount(
   <Provider store={mockedStore(mockedState)}>
     <Header {...props} />
   </Provider>,
-  {
-    context: {
-      i18n: () => ({
-        __: () => 'translation',
-      }),
-    },
-    childContextTypes: {
-      i18n: PropTypes.func,
-    },
-  }
+  mockRenderOptions
 );
 
 describe('<Header />', () => {
