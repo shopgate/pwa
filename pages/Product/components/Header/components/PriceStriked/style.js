@@ -19,7 +19,7 @@ const placeholder = css({
 const msrp = css({
   color: colors.shade3,
   fontSize: '0.875rem',
-  marginRight: variables.gap.small,
+  marginRight: variables.gap.small / 2,
 }).toString();
 
 const msrpStriked = css({

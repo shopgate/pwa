@@ -29,6 +29,7 @@ const title = css({
 
 const priceWrapper = css({
   lineHeight: 1.75,
+  alignItems: 'center',
 }).toString();
 
 const basicPrice = css({
