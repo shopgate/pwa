@@ -37,7 +37,7 @@ const Header = ({ rating }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="reviewsExcerpt">
       <AverageRating rating={rating} />
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating">
