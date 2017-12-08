@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import event from '@shopgate/pwa-core/classes/Event';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
@@ -33,6 +35,7 @@ import {
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH } from '../constants';
+
 /**
  * Cart subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -62,6 +65,22 @@ export default function cart(subscribe) {
     productsUpdated$
   );
 
+  /**
+   * Gets triggered when the app starts.
+   */
+  subscribe(appDidStart$, ({ dispatch }) => {
+    // Register for the app event that is triggered when the checkout process is finished
+    registerEvents(['checkoutSuccess']);
+
+    event.addCallback('checkoutSuccess', () => {
+      dispatch(resetHistory());
+      dispatch(fetchCart());
+    });
+
+    // Reset the productPendingCount on app start to avoid a wrong value in the cart badge.
+    dispatch(setCartProductPendingCount(0));
+  });
+
   subscribe(cartNeedsSync$, ({ dispatch }) => {
     dispatch(fetchCart());
   });
@@ -72,14 +91,6 @@ export default function cart(subscribe) {
 
   subscribe(cartIdle$, ({ dispatch }) => {
     dispatch(unsetViewLoading(CART_PATH));
-  });
-
-  /**
-   * Gets triggered when the app starts.
-   */
-  subscribe(appDidStart$, ({ dispatch }) => {
-    // Reset the productPendingCount on app start to avoid a wrong value in the cart badge.
-    dispatch(setCartProductPendingCount(0));
   });
 
   /**
