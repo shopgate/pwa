@@ -13,7 +13,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import Options from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => obj => {
+jest.mock('./connector', () => (obj) => {
   const newObj = obj;
 
   const mockOptions = [{
