@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import PlaceholderLabel from 'Components/PlaceholderLabel';
 import StrikePrice from 'Components/PriceStriked';
 import connect from './connector';
@@ -21,7 +22,7 @@ const PriceStriked = ({ price }) => (
   <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
     <div>
       {(price && price.msrp > 0) && (
-        <span className={styles.msrp}>MSRP</span>
+        <I18n.Text string="price.msrp" className={styles.msrp} />
       )}
       {(price && price.msrp > 0) && (
         <StrikePrice
