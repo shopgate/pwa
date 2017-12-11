@@ -23,7 +23,7 @@
     "coverage": "jest --coverage",
     "prebuild": "rimraf ./dist",
     "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp ./{package.json,package-lock.json,CHANGELOG.md,LICENSE.md,README.md} ./dist/",
+    "postbuild": "cp ./*.json ./dist/ && cp ./*.md ./dist/",
     "version": "npm run build",
     "postversion": "git push && git push --tags && cd dist && npm publish --access public"
   },
