@@ -154,10 +154,6 @@ class NavDrawer extends Component {
           <I18n.Text string="navigation.shipping" />
         </Item>
 
-        <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.about" />
-        </Item>
-
         <Item href={`${PAGE_PATH}/payment`} icon={CreditCardIcon} close={this.handleClose}>
           <I18n.Text string="navigation.payment" />
         </Item>
@@ -170,6 +166,10 @@ class NavDrawer extends Component {
 
         <Item href={`${PAGE_PATH}/privacy`} icon={SecurityIcon} close={this.handleClose}>
           <I18n.Text string="navigation.privacy" />
+        </Item>
+
+        <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
+          <I18n.Text string="navigation.about" />
         </Item>
 
         {user && <Divider close={this.handleClose} />}
