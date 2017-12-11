@@ -46,6 +46,7 @@ export default function app(subscribe) {
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
     event.addCallback('viewDidAppear', () => {});
+    event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
   });
 }
