@@ -27,7 +27,8 @@
   "price": {
     "from": "From {price}",
     "range": "Price range from {fromPrice} to {toPrice}",
-    "msrp": "MSRP"
+    "msrp": "MSRP",
+    "currency": "USD"
   },
   "product": {
     "description_heading": "About",
