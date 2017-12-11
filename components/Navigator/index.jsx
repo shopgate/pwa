@@ -26,6 +26,7 @@ class Navigator extends Component {
   static propTypes = {
     filterOpen: PropTypes.bool.isRequired,
     backgroundColor: PropTypes.string,
+    isIphoneX: PropTypes.bool,
     navigatorEnabled: PropTypes.bool,
     showLoadingBar: PropTypes.bool,
     showTitle: PropTypes.bool,
@@ -34,6 +35,7 @@ class Navigator extends Component {
 
   static defaultProps = {
     backgroundColor: colors.light,
+    isIphoneX: false,
     navigatorEnabled: true,
     showLoadingBar: false,
     showTitle: true,
@@ -71,7 +73,7 @@ class Navigator extends Component {
     };
 
     return (
-      <header className={styles.header} role="banner" style={headerStyle}>
+      <header className={`${styles.header} ${this.props.isIphoneX ? styles.iPhoneXPadding : ''}`} role="banner" style={headerStyle}>
         <Grid className={styles.grid} component="section" wrap={false}>
           <NavButton />
           <Grid.Item className={styles.title} component="div" grow={1}>

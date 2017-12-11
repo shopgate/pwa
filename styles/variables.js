@@ -29,4 +29,9 @@ export default {
   statusBar: {
     height: 25,
   },
+  // Padding for the iPhoneX home button indicator and status bar
+  iPhoneXPadding: {
+    top: 5,
+    bottom: 15,
+  },
 };

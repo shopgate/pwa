@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import getTabActionComponentForType from './helpers/getTabActionComponentForType';
 import connect from './connector';
-import styles from './style';
+import styles, { iPhoneXStyles } from './style';
 
 /**
  * Renders the action for a given tab configuration.
@@ -38,9 +38,9 @@ const createTabAction = (tab, isHighlighted) => {
  * @param {string|null} props.activeTab The currently active tab name.
  * @returns {JSX}
  */
-const TabBar = ({ isVisible, visibleTabs, activeTab }) => (
+const TabBar = ({ isVisible, visibleTabs, activeTab, isIphoneX }) => (
   isVisible ?
-    <Grid className={styles}>
+    <Grid className={`${styles} ${isIphoneX ? iPhoneXStyles : ''}`}>
       {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type))}
     </Grid>
     : null
@@ -54,12 +54,14 @@ TabBar.propTypes = {
     })
   ).isRequired,
   activeTab: PropTypes.string,
+  isIphoneX: PropTypes.bool,
   isVisible: PropTypes.bool,
 };
 
 TabBar.defaultProps = {
   activeTab: null,
   cartProductCount: 0,
+  isIphoneX: false,
   isVisible: true,
 };
 

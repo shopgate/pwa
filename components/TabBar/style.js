@@ -10,6 +10,14 @@ import variables from 'Styles/variables';
 
 const backgroundColor = 'rgba(249, 249, 249, 0.85)';
 
+// Additional styles for iPhoneX
+export const iPhoneXStyles = (
+  css({
+    height: `${variables.tabBar.height + variables.iPhoneXPadding.bottom}px !important`,
+    paddingBottom: variables.iPhoneXPadding.bottom,
+  }).toString()
+);
+
 export default css({
   position: 'fixed',
   bottom: 0,
