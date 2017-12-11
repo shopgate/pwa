@@ -12,7 +12,7 @@ const options = {
     i18n: () => ({
       __(input) {
         if (input) {
-          return 'translation';
+          return input;
         }
         return '';
       },
