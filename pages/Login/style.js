@@ -23,6 +23,7 @@ const headline = css({
 const subline = css({
   fontSize: '1.125rem',
   color: colors.shade6,
+  marginBottom: variables.gap.xxbig,
 }).toString();
 
 const input = css({
@@ -32,6 +33,8 @@ const input = css({
 const forgotWrapper = css({
   textAlign: 'right',
   fontSize: '0.75rem',
+  marginTop: -variables.gap.big,
+  marginBottom: variables.gap.big,
 }).toString();
 
 const buttonWrapper = css({
