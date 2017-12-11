@@ -105,9 +105,9 @@
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "1.0.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.0.3.tgz",
-      "integrity": "sha512-8YJEW/bA8nXe79CLHQE2y5CPmOIVkgOJOTVFeOEDg08WFw60I1+bIH8PuOYrZ21ZQgppeE4Z0vy714j/+TVSdQ=="
+      "version": "1.0.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.0.4.tgz",
+      "integrity": "sha512-Kz/Fu+ouc6Lr6YWSuR2IQkwpPz5zAJZvaD9M3BgU45fh0LfGX53BwEUuDVCYzMAG/tjOAZI9aQM9y6I90leNwg=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
