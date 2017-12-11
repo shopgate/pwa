@@ -36,7 +36,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
           value={50}
         >
           <div
-            aria-label="translation"
+            aria-label="reviews.rating_stars"
             className="css-13azwyo "
           >
             <div
@@ -357,7 +357,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
             <span
               className="css-fuq992"
             >
-              translation
+              reviews.review_count
             </span>
           </Translate>
         </RatingCount>

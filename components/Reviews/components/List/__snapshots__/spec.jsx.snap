@@ -78,7 +78,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={100}
             >
               <div
-                aria-label="translation"
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -534,7 +534,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={40}
             >
               <div
-                aria-label="translation"
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -852,7 +852,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 <span
                   className=""
                 >
-                  translation
+                  reviews.author
                 </span>
               </Translate>
             </Author>
@@ -896,7 +896,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={60}
             >
               <div
-                aria-label="translation"
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -1250,7 +1250,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 <span
                   className=""
                 >
-                  translation
+                  reviews.author
                 </span>
               </Translate>
             </Author>
@@ -1294,7 +1294,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={20}
             >
               <div
-                aria-label="translation"
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div

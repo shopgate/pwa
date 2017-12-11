@@ -46,7 +46,7 @@ exports[`<Header /> should render empty 1`] = `
               value={0}
             >
               <div
-                aria-label="translation"
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo "
               >
                 <div
@@ -256,7 +256,7 @@ exports[`<Header /> should render empty 1`] = `
           <span
             className=""
           >
-            translation
+            reviews.no_reviews
           </span>
         </Translate>
         <Connect(WriteReviewLink)>
@@ -281,7 +281,7 @@ exports[`<Header /> should render empty 1`] = `
                   <span
                     className=""
                   >
-                    translation
+                    reviews.button_add
                   </span>
                 </Translate>
               </div>
@@ -341,7 +341,7 @@ exports[`<Header /> should render rating summary 1`] = `
               value={50}
             >
               <div
-                aria-label="translation"
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo "
               >
                 <div
@@ -663,7 +663,7 @@ exports[`<Header /> should render rating summary 1`] = `
               <span
                 className="css-18d53x4"
               >
-                translation
+                reviews.review_count
               </span>
             </Translate>
           </RatingCount>
@@ -680,7 +680,7 @@ exports[`<Header /> should render rating summary 1`] = `
           <span
             className=""
           >
-            translation
+            reviews.rating
             <span
               className="css-shoywj"
               key=".0"
@@ -711,7 +711,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   <span
                     className=""
                   >
-                    translation
+                    reviews.button_add
                   </span>
                 </Translate>
               </div>

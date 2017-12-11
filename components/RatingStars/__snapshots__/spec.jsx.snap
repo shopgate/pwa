@@ -2,7 +2,7 @@
 
 exports[`<RatingStars /> renders with value of 0 1`] = `
 <div
-  aria-label="translation"
+  aria-label="reviews.rating_stars"
   className="css-13azwyo "
 >
   <div
@@ -72,7 +72,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
 
 exports[`<RatingStars /> renders with value of 50 1`] = `
 <div
-  aria-label="translation"
+  aria-label="reviews.rating_stars"
   className="css-13azwyo "
 >
   <div
@@ -176,7 +176,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
 
 exports[`<RatingStars /> renders with value of 100 1`] = `
 <div
-  aria-label="translation"
+  aria-label="reviews.rating_stars"
   className="css-13azwyo "
 >
   <div
@@ -302,14 +302,14 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
 
 exports[`<RatingStars /> should change rating on click 1`] = `
 <div
-  aria-label="translation"
+  aria-label="reviews.rating_stars"
   className="css-13azwyo "
 >
   <div
     className="css-4s85e9"
   >
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="1"
       onClick={[Function]}
@@ -323,7 +323,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="2"
       onClick={[Function]}
@@ -337,7 +337,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="3"
       onClick={[Function]}
@@ -351,7 +351,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="4"
       onClick={[Function]}
@@ -365,7 +365,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="5"
       onClick={[Function]}
@@ -458,14 +458,14 @@ exports[`<RatingStars /> should change rating on click 1`] = `
 
 exports[`<RatingStars /> should change rating on click 2`] = `
 <div
-  aria-label="translation"
+  aria-label="reviews.rating_stars"
   className="css-13azwyo "
 >
   <div
     className="css-4s85e9"
   >
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="1"
       onClick={[Function]}
@@ -479,7 +479,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="2"
       onClick={[Function]}
@@ -493,7 +493,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="3"
       onClick={[Function]}
@@ -507,7 +507,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="4"
       onClick={[Function]}
@@ -521,7 +521,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       />
     </div>
     <div
-      aria-label="translation"
+      aria-label="reviews.press_to_rate_with_x_stars"
       className="css-kdb68h css-q4owmg"
       key="5"
       onClick={[Function]}
