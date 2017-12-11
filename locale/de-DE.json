@@ -28,7 +28,7 @@
   "price": {
     "from": "Ab {price}",
     "range": "Preisspanne von {fromPrice} bis {toPrice}",
-    "currency": "EUR"
+    "msrp": "UVP"
   },
   "product": {
     "description_heading": "Beschreibung",
