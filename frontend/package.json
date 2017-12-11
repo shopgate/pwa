@@ -13,7 +13,7 @@
     "coverage": "jest --coverage",
     "prebuild": "rimraf ./dist",
     "build": "NODE_ENV=production babel ./ --out-dir dist --no-comments --minified --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp {package.json,package-lock.json,../CHANGELOG.md,../LICENSE.md,../README.md} ./dist/ && git add -A",
+    "postbuild": "cp ./*.json ./dist/ && cp ../*.md ./dist/ && git add -A",
     "version": "npm run build && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && bump ../extension-config.json -v $PACKAGE_VERSION -y",
     "postversion": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd ../ && git add -A && git commit -m \"$PACKAGE_VERSION\" && git push && git push --tags && cd ./frontend/dist/ && npm publish --access public"
   },
