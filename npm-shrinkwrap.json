@@ -21,9 +21,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "1.0.4",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.4.tgz",
-      "integrity": "sha512-22Wol1EwLah0hg8kno302uNhVM2Mj8wXpOojhnJ7wNNYfEW7WtIK2DaieCE1TiZLkld1mxIesB149z3uaHhfhA==",
+      "version": "1.0.5",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.5.tgz",
+      "integrity": "sha512-mR8NtzJuGI2a03M9JEVhy8Fp5BAgBX4oN7rZD+e5AE48nyqTk3esear7tlMZkXEUAkHgv9GzvzS5dHuIuebwnQ==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -51,27 +51,27 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "1.0.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.0.3.tgz",
-      "integrity": "sha512-6+v85sOfSsGUcbpDpMgEnwp183BwWYnAhGJBlpvpBm4MlENuJ7tyYo8Dz6O4QrusYdBR0Otz7qJtgR73QQSvvw==",
+      "version": "1.0.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.0.4.tgz",
+      "integrity": "sha512-ZTQlR8sUQp0k32QC1dq4AVA7olBQiigExQHc++9XpnflweJv+cizrSJ15uQC9/iz+gdqcQsHvHO8kFYgety1OQ==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
       }
     },
     "@shopgate/pwa-core": {
-      "version": "1.0.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.3.tgz",
-      "integrity": "sha512-MapJUbVfMEZLSvHtK1arIeSz81kEsx9seAOSxvUhlROkm9y35LAtSv3Hdg2stx1qNf/Jzva5edWqy2H700+Udw==",
+      "version": "1.0.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.0.4.tgz",
+      "integrity": "sha512-iRhv4c/n08RlCyxkaCE4cLYbY9F1ApHA1IvFcsWvSfzKf0ieDdwqrJTmRwbYRYYpXXM4pxcyhIhv/GL38fS+eA==",
       "requires": {
         "crypto-js": "3.1.9-1",
         "isomorphic-fetch": "2.2.1"
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "1.0.4",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.0.4.tgz",
-      "integrity": "sha512-Kz/Fu+ouc6Lr6YWSuR2IQkwpPz5zAJZvaD9M3BgU45fh0LfGX53BwEUuDVCYzMAG/tjOAZI9aQM9y6I90leNwg=="
+      "version": "1.0.5",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.0.5.tgz",
+      "integrity": "sha512-aeGer5cSijhwZS0vjpnVRaOeDysjNok6XSPgFTHLl5xoKEXnVYfRvB7GUejjFwaqSwlE69pks2zppg8vlI6pdA=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.2.5",
@@ -111,9 +111,9 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "1.0.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-1.0.3.tgz",
-      "integrity": "sha512-/g8c4saM6G0gAeflnFLrGuDUhc3jdb6+kvRrsXwr3MJFk2yPKxTO9rqYzhAkPPSzF8SyqkgXGO18XjyI6/Rbnw=="
+      "version": "1.0.4",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-1.0.4.tgz",
+      "integrity": "sha512-tskpVcDlz+Y2Mn2hbT58UA/swp9/a+2VexnDmrif5QO1CEfUcQmkSIdt3gEG2+SgnK5+R/12DCaEJT5A+QR1Pg=="
     },
     "@shopgate/react-hammerjs": {
       "version": "0.5.3",
@@ -124,9 +124,9 @@
       }
     },
     "@shopgate/tracking-core": {
-      "version": "1.0.2",
-      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.2.tgz",
-      "integrity": "sha512-QPI/c0FzYzZhZrQMJzrg0y65JdGyssUtbJOnC1TbD7yEaTkUnks4HQyu8i6JYdj+1pqpKMni8TA/MwYsSHjckw=="
+      "version": "1.0.3",
+      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.3.tgz",
+      "integrity": "sha512-8fUsR5JwhuNWF6vzHCrLPjewz82DeYrvtBk6qcCPw4OdoQ9ylCnYKRJ2Qjj26PJRmqqGbwWKdyV2t1Gc9OzL/A=="
     },
     "@types/node": {
       "version": "6.0.89",
