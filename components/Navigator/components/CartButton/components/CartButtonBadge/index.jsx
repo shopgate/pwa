@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
+import styles from './style';
 
 /**
  * The cart button badge component.
@@ -23,17 +24,12 @@ const CartButtonBadge = (props) => {
   }
 
   return (
-    <div className={props.className}>{productCount}</div>
+    <div className={styles}>{productCount}</div>
   );
 };
 
 CartButtonBadge.propTypes = {
   productCount: PropTypes.number.isRequired,
-  className: PropTypes.string,
-};
-
-CartButtonBadge.defaultProps = {
-  className: '',
 };
 
 export default CartButtonBadge;
