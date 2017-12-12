@@ -22,9 +22,9 @@ const ellipsisLine = {
  */
 const error = css({
   position: 'absolute',
-  bottom: -8,
-  fontSize: '0.75rem',
-  lineHeight: 1,
+  bottom: 2,
+  fontSize: 12,
+  lineHeight: '14px',
   color: colors.error,
   ...ellipsisLine,
 }).toString();
