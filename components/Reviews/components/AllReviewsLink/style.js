@@ -14,6 +14,8 @@ import variables from 'Styles/variables';
  * @type {string}
  */
 const container = css({
+  display: 'flex',
+  justifyContent: 'flex-end',
   textAlign: 'right',
 });
 
