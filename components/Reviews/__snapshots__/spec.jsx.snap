@@ -2465,36 +2465,92 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             <div
               className={
                 Object {
-                  "data-css-syjz65": "",
+                  "data-css-136bnoj": "",
                 }
               }
             >
-              <Link
-                className="css-1j862mn"
+              <ButtonLink
                 href="/item/666f6f/reviews"
               >
-                <div
-                  className="css-c6ki83 css-1j862mn"
+                <ActionButton
+                  className=""
+                  disabled={false}
+                  flat={true}
+                  loading={false}
                   onClick={[Function]}
-                  role="link"
+                  rippleClassName=""
+                  rippleSize={null}
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <Translate
-                    className=""
-                    params={
-                      Object {
-                        "count": 4,
-                      }
-                    }
-                    string="reviews.button_all"
+                  <div
+                    className="css-omcrdt"
                   >
-                    <span
+                    <RippleButton
                       className=""
+                      disabled={false}
+                      flat={true}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      type="secondary"
+                      wrapContent={true}
                     >
-                      reviews.button_all
-                    </span>
-                  </Translate>
-                </div>
-              </Link>
+                      <Button
+                        className=""
+                        disabled={false}
+                        flat={true}
+                        onClick={[Function]}
+                        type="secondary"
+                        wrapContent={false}
+                      >
+                        <Button
+                          className="css-20ad7t "
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <button
+                            className="css-20ad7t  css-1rn65c0"
+                            disabled={false}
+                            onClick={[Function]}
+                          >
+                            <Ripple
+                              className="css-8s1fw2 "
+                              color="#000"
+                              fill={true}
+                              overflow={false}
+                              size={null}
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-8s1fw2 "
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <Translate
+                                  className=""
+                                  params={
+                                    Object {
+                                      "count": 4,
+                                    }
+                                  }
+                                  string="reviews.button_all"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    reviews.button_all
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Ripple>
+                          </button>
+                        </Button>
+                      </Button>
+                    </RippleButton>
+                  </div>
+                </ActionButton>
+              </ButtonLink>
             </div>
           </AllReviewsLink>
         </Connect(AllReviewsLink)>

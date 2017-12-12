@@ -14,7 +14,6 @@ import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
 import connect from './connector';
 import {
   container,
-  link,
 } from './style';
 
 /**

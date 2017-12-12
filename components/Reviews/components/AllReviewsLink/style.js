@@ -19,21 +19,6 @@ const container = css({
   textAlign: 'right',
 });
 
-/**
- * Styles for all reviews link.
- * @type {string}
- */
-const link = css({
-  color: colors.primary,
-  display: 'inline-block',
-  textTransform: 'uppercase',
-  width: 'auto',
-  padding: `${variables.gap.big}px`,
-  marginBottom: `-${variables.gap.big}px`,
-  fontWeight: 500,
-}).toString();
-
 export {
   container,
-  link,
 };
