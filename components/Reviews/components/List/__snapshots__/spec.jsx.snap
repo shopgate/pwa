@@ -61,7 +61,7 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           />
         </Title>
         <Rating
@@ -78,6 +78,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={100}
             >
               <div
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -450,21 +451,6 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 5,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
@@ -498,7 +484,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701531000}
               >
                 <span>
-                  1504701531000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -529,7 +515,7 @@ exports[`<List /> should render list with reviews 1`] = `
           title="Test review 2 "
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           >
             Test review 2 
           </div>
@@ -548,6 +534,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={40}
             >
               <div
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -812,21 +799,6 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 2,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
@@ -860,7 +832,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701460000}
               >
                 <span>
-                  1504701460000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -907,7 +879,7 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           />
         </Title>
         <Rating
@@ -924,6 +896,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={60}
             >
               <div
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -1224,21 +1197,6 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 3,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
@@ -1272,7 +1230,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701023000}
               >
                 <span>
-                  1504701023000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -1319,7 +1277,7 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           />
         </Title>
         <Rating
@@ -1336,6 +1294,7 @@ exports[`<List /> should render list with reviews 1`] = `
               value={20}
             >
               <div
+                aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
               >
                 <div
@@ -1564,21 +1523,6 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 1,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
@@ -1606,7 +1550,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 timestamp={1504701023000}
               >
                 <span>
-                  1504701023000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>

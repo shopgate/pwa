@@ -6,11 +6,11 @@
  *
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedState,
 } from './components/ReviewForm/mock';
@@ -27,22 +27,12 @@ const createComponent = () => {
   /* eslint-disable global-require */
   const WriteReview = require('./index').default;
   /* eslint-enable global-require */
-  const component = mount(
+  return mount(
     <Provider store={mockedStore(mockedState)}>
       <WriteReview />
     </Provider>,
-    {
-      context: {
-        i18n: () => ({
-          __: () => 'translation',
-        }),
-      },
-      childContextTypes: {
-        i18n: PropTypes.func,
-      },
-    }
+    mockRenderOptions
   );
-  return component;
 };
 
 describe('<WriteReview> page', () => {

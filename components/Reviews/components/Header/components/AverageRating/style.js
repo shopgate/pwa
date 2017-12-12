@@ -6,10 +6,20 @@
  */
 
 import { css } from 'glamor';
+import variables from 'Styles/variables';
 
-export default css({
+const container = css({
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',
   alignItems: 'center',
 }).toString();
+
+const starsContainer = css({
+  marginBottom: variables.gap.small,
+}).toString();
+
+export {
+  container,
+  starsContainer,
+};

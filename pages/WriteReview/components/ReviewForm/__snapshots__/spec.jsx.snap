@@ -72,7 +72,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -91,13 +91,15 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   value={0}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -105,14 +107,14 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -125,7 +127,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -135,7 +137,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -143,14 +146,14 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -163,7 +166,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -173,7 +176,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -181,14 +185,14 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -201,7 +205,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -211,7 +215,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -219,14 +224,14 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -239,7 +244,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -249,7 +254,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -257,14 +263,14 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -277,7 +283,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -370,7 +376,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -532,7 +538,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -694,7 +700,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -819,7 +825,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -852,7 +858,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>
@@ -978,7 +984,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -997,13 +1003,15 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   value={100}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -1011,14 +1019,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1031,7 +1039,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1041,7 +1049,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -1049,14 +1058,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1069,7 +1078,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1079,7 +1088,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -1087,14 +1097,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1107,7 +1117,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1117,7 +1127,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -1125,14 +1136,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1145,7 +1156,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1155,7 +1166,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -1163,14 +1175,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1183,7 +1195,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1197,7 +1209,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="css-16y9zin"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="6"
                         onClick={[Function]}
                         role="button"
@@ -1205,14 +1218,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1225,7 +1238,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1235,7 +1248,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="7"
                         onClick={[Function]}
                         role="button"
@@ -1243,14 +1257,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1263,7 +1277,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1273,7 +1287,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="8"
                         onClick={[Function]}
                         role="button"
@@ -1281,14 +1296,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1301,7 +1316,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1311,7 +1326,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="9"
                         onClick={[Function]}
                         role="button"
@@ -1319,14 +1335,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1339,7 +1355,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1349,7 +1365,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="10"
                         onClick={[Function]}
                         role="button"
@@ -1357,14 +1374,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -1377,7 +1394,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -1467,7 +1484,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -1629,7 +1646,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -1791,7 +1808,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -1916,7 +1933,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -1949,7 +1966,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>
@@ -2021,7 +2038,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -2040,13 +2057,15 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   value={100}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -2054,14 +2073,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2074,7 +2093,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2084,7 +2103,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -2092,14 +2112,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2112,7 +2132,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2122,7 +2142,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -2130,14 +2151,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2150,7 +2171,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2160,7 +2181,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -2168,14 +2190,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2188,7 +2210,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2198,7 +2220,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -2206,14 +2229,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2226,7 +2249,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2240,7 +2263,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="css-16y9zin"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="6"
                         onClick={[Function]}
                         role="button"
@@ -2248,14 +2272,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2268,7 +2292,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2278,7 +2302,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="7"
                         onClick={[Function]}
                         role="button"
@@ -2286,14 +2311,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2306,7 +2331,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2316,7 +2341,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="8"
                         onClick={[Function]}
                         role="button"
@@ -2324,14 +2350,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2344,7 +2370,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2354,7 +2380,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="9"
                         onClick={[Function]}
                         role="button"
@@ -2362,14 +2389,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2382,7 +2409,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2392,7 +2419,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="10"
                         onClick={[Function]}
                         role="button"
@@ -2400,14 +2428,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -2420,7 +2448,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -2510,7 +2538,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -2672,7 +2700,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -2834,7 +2862,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -2959,7 +2987,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -2992,7 +3020,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>
@@ -3064,7 +3092,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -3083,13 +3111,15 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   value={100}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -3097,14 +3127,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3117,7 +3147,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3127,7 +3157,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -3135,14 +3166,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3155,7 +3186,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3165,7 +3196,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -3173,14 +3205,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3193,7 +3225,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3203,7 +3235,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -3211,14 +3244,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3231,7 +3264,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3241,7 +3274,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -3249,14 +3283,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3269,7 +3303,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3283,7 +3317,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="css-16y9zin"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="6"
                         onClick={[Function]}
                         role="button"
@@ -3291,14 +3326,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3311,7 +3346,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3321,7 +3356,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="7"
                         onClick={[Function]}
                         role="button"
@@ -3329,14 +3365,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3349,7 +3385,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3359,7 +3395,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="8"
                         onClick={[Function]}
                         role="button"
@@ -3367,14 +3404,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3387,7 +3424,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3397,7 +3434,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="9"
                         onClick={[Function]}
                         role="button"
@@ -3405,14 +3443,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3425,7 +3463,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3435,7 +3473,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="10"
                         onClick={[Function]}
                         role="button"
@@ -3443,14 +3482,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -3463,7 +3502,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -3553,7 +3592,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -3715,7 +3754,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -3823,7 +3862,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
           </TextField>
           <TextField
             className=""
-            errorText="translation"
+            errorText="reviews.review_form_error_length"
             hintText=""
             id="review"
             label="reviews.review_form_text"
@@ -3877,7 +3916,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -3961,7 +4000,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
               </Underline>
               <ErrorText
                 className=""
-                errorText="translation"
+                errorText="reviews.review_form_error_length"
                 validationError={null}
               >
                 <div
@@ -3970,12 +4009,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
-                    string="translation"
+                    string="reviews.review_form_error_length"
                   >
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_error_length
                     </span>
                   </Translate>
                 </div>
@@ -4003,7 +4042,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -4036,7 +4075,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>
@@ -4108,7 +4147,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -4127,13 +4166,15 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   value={100}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -4141,14 +4182,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4161,7 +4202,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4171,7 +4212,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -4179,14 +4221,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4199,7 +4241,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4209,7 +4251,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -4217,14 +4260,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4237,7 +4280,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4247,7 +4290,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -4255,14 +4299,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4275,7 +4319,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4285,7 +4329,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -4293,14 +4338,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4313,7 +4358,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4327,7 +4372,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="css-16y9zin"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="6"
                         onClick={[Function]}
                         role="button"
@@ -4335,14 +4381,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4355,7 +4401,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4365,7 +4411,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="7"
                         onClick={[Function]}
                         role="button"
@@ -4373,14 +4420,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4393,7 +4440,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4403,7 +4450,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="8"
                         onClick={[Function]}
                         role="button"
@@ -4411,14 +4459,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4431,7 +4479,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4441,7 +4489,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="9"
                         onClick={[Function]}
                         role="button"
@@ -4449,14 +4498,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4469,7 +4518,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4479,7 +4528,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="10"
                         onClick={[Function]}
                         role="button"
@@ -4487,14 +4537,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -4507,7 +4557,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -4597,7 +4647,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -4759,7 +4809,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -4867,7 +4917,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
           </TextField>
           <TextField
             className=""
-            errorText="translation"
+            errorText="reviews.review_form_error_length"
             hintText=""
             id="review"
             label="reviews.review_form_text"
@@ -4921,7 +4971,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -5005,7 +5055,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
               </Underline>
               <ErrorText
                 className=""
-                errorText="translation"
+                errorText="reviews.review_form_error_length"
                 validationError={null}
               >
                 <div
@@ -5014,12 +5064,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   <Translate
                     className=""
                     params={Object {}}
-                    string="translation"
+                    string="reviews.review_form_error_length"
                   >
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_error_length
                     </span>
                   </Translate>
                 </div>
@@ -5047,7 +5097,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -5080,7 +5130,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>
@@ -5152,7 +5202,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -5171,13 +5221,15 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   value={100}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -5185,14 +5237,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5205,7 +5257,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5215,7 +5267,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -5223,14 +5276,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5243,7 +5296,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5253,7 +5306,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -5261,14 +5315,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5281,7 +5335,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5291,7 +5345,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -5299,14 +5354,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5319,7 +5374,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5329,7 +5384,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -5337,14 +5393,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5357,7 +5413,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5371,7 +5427,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="css-16y9zin"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="6"
                         onClick={[Function]}
                         role="button"
@@ -5379,14 +5436,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5399,7 +5456,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5409,7 +5466,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="7"
                         onClick={[Function]}
                         role="button"
@@ -5417,14 +5475,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5437,7 +5495,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5447,7 +5505,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="8"
                         onClick={[Function]}
                         role="button"
@@ -5455,14 +5514,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5475,7 +5534,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5485,7 +5544,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="9"
                         onClick={[Function]}
                         role="button"
@@ -5493,14 +5553,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5513,7 +5573,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5523,7 +5583,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-hidden={true}
+                        className="css-ntfpo9 css-q4owmg"
                         key="10"
                         onClick={[Function]}
                         role="button"
@@ -5531,14 +5592,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -5551,7 +5612,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -5641,7 +5702,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -5803,7 +5864,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -5965,7 +6026,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -6090,7 +6151,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -6123,7 +6184,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>
@@ -6170,7 +6231,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
           onSubmit={[Function]}
         >
           <RatingScale
-            errorText="translation"
+            errorText="reviews.review_form_rate_error"
             onChange={[Function]}
             value={0}
           >
@@ -6185,7 +6246,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 <span
                   className="css-mfy564"
                 >
-                  translation
+                  reviews.review_form_rate
                 </span>
               </Translate>
               <span
@@ -6198,19 +6259,21 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 <RatingStars
                   className=""
                   display="large"
-                  errorText="translation"
+                  errorText="reviews.review_form_rate_error"
                   isSelectable={true}
                   onSelection={[Function]}
                   value={0}
                 >
                   <div
+                    aria-label="reviews.rating_stars"
                     className="css-13azwyo "
                   >
                     <div
                       className="css-4s85e9"
                     >
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="1"
                         onClick={[Function]}
                         role="button"
@@ -6218,14 +6281,14 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -6238,7 +6301,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -6248,7 +6311,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="2"
                         onClick={[Function]}
                         role="button"
@@ -6256,14 +6320,14 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -6276,7 +6340,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -6286,7 +6350,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="3"
                         onClick={[Function]}
                         role="button"
@@ -6294,14 +6359,14 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -6314,7 +6379,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -6324,7 +6389,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="4"
                         onClick={[Function]}
                         role="button"
@@ -6332,14 +6398,14 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -6352,7 +6418,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -6362,7 +6428,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         </Star>
                       </div>
                       <div
-                        className="css-14rta1c css-q4owmg"
+                        aria-label="reviews.press_to_rate_with_x_stars"
+                        className="css-ntfpo9 css-q4owmg"
                         key="5"
                         onClick={[Function]}
                         role="button"
@@ -6370,14 +6437,14 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Star
                           className=""
                           color={null}
-                          size="2em"
+                          size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <Icon
                             className=""
                             color={null}
                             content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                            size="2em"
+                            size="2.3em"
                             viewBox="0 0 24 24"
                           >
                             <svg
@@ -6390,7 +6457,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               style={
                                 Object {
                                   "fill": null,
-                                  "fontSize": "2em",
+                                  "fontSize": "2.3em",
                                 }
                               }
                               viewBox="0 0 24 24"
@@ -6407,7 +6474,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 </RatingStars>
                 <ErrorText
                   className="css-c6548q"
-                  errorText="translation"
+                  errorText="reviews.review_form_rate_error"
                   validationError={null}
                 >
                   <div
@@ -6416,12 +6483,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
-                      string="translation"
+                      string="reviews.review_form_rate_error"
                     >
                       <span
                         className=""
                       >
-                        translation
+                        reviews.review_form_rate_error
                       </span>
                     </Translate>
                   </div>
@@ -6431,7 +6498,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
           </RatingScale>
           <TextField
             className=""
-            errorText="translation"
+            errorText="reviews.review_form_error_author_empty"
             hintText=""
             id="author"
             label="reviews.review_form_author"
@@ -6485,7 +6552,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_author
                     </span>
                   </Translate>
                 </label>
@@ -6571,7 +6638,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
               </Underline>
               <ErrorText
                 className=""
-                errorText="translation"
+                errorText="reviews.review_form_error_author_empty"
                 validationError={null}
               >
                 <div
@@ -6580,12 +6647,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   <Translate
                     className=""
                     params={Object {}}
-                    string="translation"
+                    string="reviews.review_form_error_author_empty"
                   >
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_error_author_empty
                     </span>
                   </Translate>
                 </div>
@@ -6648,7 +6715,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_title
                     </span>
                   </Translate>
                 </label>
@@ -6810,7 +6877,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      reviews.review_form_text
                     </span>
                   </Translate>
                 </label>
@@ -6935,7 +7002,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <span
                       className=""
                     >
-                      translation
+                      common.cancel
                     </span>
                   </Translate>
                 </button>
@@ -6968,7 +7035,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           <span
                             className=""
                           >
-                            translation
+                            common.submit
                           </span>
                         </Translate>
                       </div>

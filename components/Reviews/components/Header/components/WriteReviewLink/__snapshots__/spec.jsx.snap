@@ -41,11 +41,11 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
       productId="foo"
     >
       <Link
-        className="css-3bpzxq"
+        className="css-sd5j8b"
         href="/item/666f6f/write_review"
       >
         <div
-          className="css-c6ki83 css-3bpzxq"
+          className="css-c6ki83 css-sd5j8b"
           onClick={[Function]}
           role="link"
         >

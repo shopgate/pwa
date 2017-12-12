@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedStateWithoutReview,
   mockedStateWithInvalidReview,
@@ -33,21 +33,8 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
     <Provider store={store}>
       <ReviewForm submit={() => {}} />
     </Provider>,
-    {
-      context: {
-        i18n: () => ({
-          __: (input) => {
-            if (input) {
-              return 'translation';
-            }
-            return '';
-          },
-        }),
-      },
-      childContextTypes: {
-        i18n: PropTypes.func,
-      },
-    });
+    mockRenderOptions
+  );
 };
 
 describe('<ReviewForm />', () => {

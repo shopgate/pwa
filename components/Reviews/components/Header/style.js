@@ -18,7 +18,7 @@ const reviewsLine = css({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: `${variables.gap.big}px 0`,
+  padding: `${variables.gap.small}px 0 ${variables.gap.big}px`,
 }).toString();
 
 const averageRating = css({

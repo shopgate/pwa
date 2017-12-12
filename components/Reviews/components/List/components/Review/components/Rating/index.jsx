@@ -7,9 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import RatingStars from 'Components/RatingStars';
-import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import styles from './style';
 
 /**
@@ -20,11 +18,6 @@ import styles from './style';
 const Rating = ({ rate }) => (
   <div className={styles.container}>
     <RatingStars value={rate} className={styles.stars} />
-    <I18n.Text
-      string="reviews.rating_stars"
-      params={{ rate: rate / RATING_SCALE_DIVISOR }}
-      className={styles.text}
-    />
   </div>
 );
 
