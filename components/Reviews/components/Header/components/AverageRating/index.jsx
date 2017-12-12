@@ -21,9 +21,7 @@ const AverageRating = ({ rating }) => {
 
   return (
     <div className={container} >
-      <div className={starsContainer}>
-        <RatingStars value={average} display="large" />
-      </div>
+      <RatingStars value={average} display="large" />
       <RatingCount count={count} />
     </div>
   );

@@ -40,28 +40,84 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
       dispatch={[Function]}
       productId="foo"
     >
-      <Link
-        className="css-sd5j8b"
+      <ButtonLink
         href="/item/666f6f/write_review"
       >
-        <div
-          className="css-c6ki83 css-sd5j8b"
+        <ActionButton
+          className=""
+          disabled={false}
+          flat={true}
+          loading={false}
           onClick={[Function]}
-          role="link"
+          rippleClassName=""
+          rippleSize={null}
+          type="secondary"
+          wrapContent={true}
         >
-          <Translate
-            className=""
-            params={Object {}}
-            string="reviews.button_add"
+          <div
+            className="css-omcrdt"
           >
-            <span
+            <RippleButton
               className=""
+              disabled={false}
+              flat={true}
+              onClick={[Function]}
+              rippleClassName=""
+              rippleSize={null}
+              type="secondary"
+              wrapContent={true}
             >
-              reviews.button_add
-            </span>
-          </Translate>
-        </div>
-      </Link>
+              <Button
+                className=""
+                disabled={false}
+                flat={true}
+                onClick={[Function]}
+                type="secondary"
+                wrapContent={false}
+              >
+                <Button
+                  className="css-20ad7t "
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  <button
+                    className="css-20ad7t  css-1rn65c0"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <Ripple
+                      className="css-8s1fw2 "
+                      color="#000"
+                      fill={true}
+                      overflow={false}
+                      size={null}
+                    >
+                      <div
+                        aria-hidden={true}
+                        className="css-8s1fw2 "
+                        onClick={[Function]}
+                        style={null}
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="reviews.button_add"
+                        >
+                          <span
+                            className=""
+                          >
+                            reviews.button_add
+                          </span>
+                        </Translate>
+                      </div>
+                    </Ripple>
+                  </button>
+                </Button>
+              </Button>
+            </RippleButton>
+          </div>
+        </ActionButton>
+      </ButtonLink>
     </WriteReviewLink>
   </Connect(WriteReviewLink)>
 </Provider>

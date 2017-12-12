@@ -8,10 +8,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import styles from './style';
+import ButtonLink from 'Components/ButtonLink';
 import connect from './connector';
 
 /**
@@ -26,9 +25,9 @@ const WriteReviewLink = ({ productId }) => {
   const publicProductId = bin2hex(productId);
 
   return (
-    <Link href={`${ITEM_PATH}/${publicProductId}/write_review`} className={styles}>
+    <ButtonLink href={`${ITEM_PATH}/${publicProductId}/write_review`}>
       <I18n.Text string="reviews.button_add" />
-    </Link>
+    </ButtonLink>
   );
 };
 
