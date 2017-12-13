@@ -10,6 +10,7 @@ import {
   REQUEST_PRODUCT_OPTIONS,
   RECEIVE_PRODUCT_OPTIONS,
   ERROR_PRODUCT_OPTIONS,
+  OPTION_TYPE_TEXT,
 } from '../constants';
 
 /**
@@ -29,16 +30,42 @@ export default function optionsByProductId(state = {}, action) {
           expires: 0,
         },
       };
-    case RECEIVE_PRODUCT_OPTIONS:
+    case RECEIVE_PRODUCT_OPTIONS: {
+      const options = action.options.map((option) => {
+        let { values } = option;
+        const { type } = option;
+
+        if (values) {
+          values = values.map(value => ({
+            ...value,
+            unitPriceModifier: value.unitPriceModifier || 0,
+          }));
+        }
+
+        let unitPriceModifier;
+
+        if (type === OPTION_TYPE_TEXT) {
+          unitPriceModifier = option.unitPriceModifier || 0;
+        }
+
+        return {
+          ...option,
+          unitPriceModifier,
+          values,
+        };
+      });
+
       return {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          options: action.options,
+          options,
           isFetching: false,
           expires: Date.now() + PRODUCT_LIFETIME,
         },
       };
+    }
+
     case ERROR_PRODUCT_OPTIONS:
       return {
         ...state,

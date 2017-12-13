@@ -8,10 +8,27 @@
 import { createSelector } from 'reselect';
 import sumBy from 'lodash/sumBy';
 import {
+  getRawProductOptions,
+  getCurrentProductOptions,
+  hasProductOptions,
+  areProductOptionsSet,
+} from '../../product/selectors/options';
+import {
+  getProductMetadata,
+} from '../../product/selectors/product';
+import {
+  getSelectedVariantMetadata,
+} from '../../product/selectors/variants';
+import {
+  OPTION_TYPE_SELECT,
+} from '../../product/constants';
+import {
   CART_ITEM_TYPE_PRODUCT,
   CART_ITEM_TYPE_COUPON,
   CART_TOTALS_TYPE_SUB,
   CART_TOTALS_TYPE_SHIPPING,
+  PROPERTY_TYPE_OPTION,
+  PROPERTY_TYPE_INPUT,
 } from '../constants';
 
 /**
@@ -166,4 +183,54 @@ export const getShippingCosts = createSelector(
 export const getCartMessages = createSelector(
   getCart,
   cart => cart.messages
+);
+
+/**
+ * Creates data for the "properties" property of addProductsToCart pipeline request payload.
+ * @returns {Object|null} The data if it was determinable, otherwise NULL.
+ */
+export const getAddToCartMetadata = createSelector(
+  getProductMetadata,
+  getSelectedVariantMetadata,
+  (metaData, variantMetaData) => {
+    if (variantMetaData) {
+      // Use the metadata from the getProductVariants data if available.
+      return variantMetaData;
+    } else if (metaData) {
+      // Use the metadata from the selected product if available.
+      return metaData;
+    }
+
+    return null;
+  }
+);
+
+/**
+ * Creates data for the "metadata" property of addProductsToCart pipeline request payload.
+ * @param {Object} state The application state.
+ * @returns {Object|null} The data if it was determinable, otherwise NULL.
+ */
+export const getAddToCartProperties = createSelector(
+  hasProductOptions,
+  areProductOptionsSet,
+  getRawProductOptions,
+  getCurrentProductOptions,
+  (hasOptions, areOptionsSet, options, currentOptions) => {
+    // Check if options are ready to be added to a pipeline request.
+    if (!hasOptions || !areOptionsSet) {
+      return null;
+    }
+
+    // Create the datastructure
+    return Object.keys(currentOptions).map((id) => {
+      const value = currentOptions[id];
+      const { type } = options.find(option => option.id === id);
+
+      return {
+        type: (type === OPTION_TYPE_SELECT ? PROPERTY_TYPE_OPTION : PROPERTY_TYPE_INPUT),
+        id,
+        value,
+      };
+    });
+  }
 );

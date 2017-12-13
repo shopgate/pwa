@@ -42,3 +42,6 @@ export const ERROR_CART = 'ERROR_CART';
  * @type {string}
  */
 export const EVENT_ADD_TO_CART_MISSING_VARIANT = 'EVENT_ADD_TO_CART_MISSING_VARIANT';
+
+export const PROPERTY_TYPE_OPTION = 'option';
+export const PROPERTY_TYPE_INPUT = 'input';
