@@ -25,7 +25,9 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   const product = getProductById(state, productId);
 
   if (!forceFetch && !shouldFetchData(product)) {
-    dispatch(processProductFlags(product.productData));
+    if (product.productData) {
+      dispatch(processProductFlags(product.productData));
+    }
 
     return;
   }
