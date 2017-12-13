@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from 'Components/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
-import { container, starsContainer } from './style';
+import { container } from './style';
 
 /**
  * The average rating and number of ratings for a product.

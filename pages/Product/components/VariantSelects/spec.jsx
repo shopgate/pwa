@@ -21,11 +21,6 @@ jest.mock('react-portal', () => (
     isOpened ? children : null
   )
 ));
-jest.mock('@shopgate/pwa-common/node_modules/react-portal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
-));
 
 jest.mock('Components/Sheet', () => ({ children }) => children);
 

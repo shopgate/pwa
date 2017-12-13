@@ -20,12 +20,8 @@ jest.mock(
 
 describe('<ButtonLink>', () => {
   describe('On click action', () => {
-    const originalActionButtonClickDelay = ActionButton.clickDelay;
     beforeAll(() => {
       ActionButton.clickDelay = 0;
-    });
-    afterAll(() => {
-      ActionButton.clickDelay = originalActionButtonClickDelay;
     });
     it('should create component and open page on click', (done) => {
       const component = mount(
