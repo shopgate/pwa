@@ -92,7 +92,7 @@ class CartButton extends Component {
       >
         <Ripple fill className={styles.buttonContent} size={navigator.height}>
           <CartIcon />
-          <CartButtonBadge className={styles.badge} productCount={this.props.cartProductCount} />
+          <CartButtonBadge productCount={this.props.cartProductCount} />
         </Ripple>
       </button>
     );
