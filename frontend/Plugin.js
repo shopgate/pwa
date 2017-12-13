@@ -133,10 +133,11 @@ class SgGoogleNative extends SgTrackingPlugin {
         }
 
         if (raw.type === 'push_message') {
+          const campaigns = ['cart_reminder', 'inactive_app_user'];
           const notificationId = raw.notificationId || 'not-provided';
           const campaignName = shopgateUrl.getParam('utm_campaign');
 
-          if (campaignName === 'cart_reminder') {
+          if (campaigns.indexOf(campaignName) !== -1) {
             // Set utm_content to distinguish the cart reminders from "normal" push messages
             shopgateUrl.setParam('utm_content', campaignName);
           }
