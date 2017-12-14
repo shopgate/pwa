@@ -113,5 +113,5 @@ export const getProductsFetchingState = createSelector(
   state => state,
   getResultHash,
   getResultByHash,
-  (state, hash, result) => result ? result.isFetching : null
+  (state, hash, result) => (result ? result.isFetching : null)
 );

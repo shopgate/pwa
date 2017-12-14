@@ -7,9 +7,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import configureStore from 'redux-mock-store';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import CheckoutButton from './components/CheckoutButton';
 import SubTotal from './components/SubTotal';
 import ShippingCosts from './components/ShippingCosts';
 import PaymentBar from './index';
@@ -68,27 +66,22 @@ jest.mock('./components/SubTotal/connector', () => (obj) => {
 });
 
 jest.mock('./components/SubTotalLabel/connector', () => (obj) => {
-    const newObj = obj;
+  const newObj = obj;
 
-    newObj.defaultProps = {
-      ...newObj.defaultProps,
-      isDisabled: false,
-    };
+  newObj.defaultProps = {
+    ...newObj.defaultProps,
+    isDisabled: false,
+  };
 
-    return newObj;
+  return newObj;
 });
 
 describe('<PaymentBar />', () => {
-  const mockStore = configureStore();
   const testLocales = {
     'shipping.free_short': 'Free',
   };
 
   const langCode = 'en-US';
-
-  const store = mockStore({
-    view: { isLoading: false },
-  });
 
   /**
    * Renders the component.

@@ -11,7 +11,7 @@
  * @param {function} scrollSpy Element.scroll spy function.
  * @returns {function}
  */
-const getElementById = (scrollSpy) => () => ({
+const getElementById = scrollSpy => () => ({
   offsetTop: 100,
   closest() {
     return {
