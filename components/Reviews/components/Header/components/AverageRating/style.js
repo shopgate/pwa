@@ -6,7 +6,6 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
 const container = css({
   display: 'flex',
@@ -15,11 +14,6 @@ const container = css({
   alignItems: 'center',
 }).toString();
 
-const starsContainer = css({
-  marginBottom: variables.gap.small,
-}).toString();
-
 export {
   container,
-  starsContainer,
 };
