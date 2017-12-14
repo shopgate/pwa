@@ -26,6 +26,7 @@ export default function search(subscribe) {
    */
   subscribe(searchRouteDidEnter$, ({ dispatch }) => {
     dispatch(toggleProgressBar(false));
+    alert();
     dispatch(setActiveFilters({}));
   });
 

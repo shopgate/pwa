@@ -7,7 +7,6 @@
 
 import { connect } from 'react-redux';
 import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
-import { isIphoneX } from '@shopgate/pwa-common/selectors/client';
 import { isProgressBarShowing } from './selectors';
 
 /**
@@ -24,7 +23,6 @@ const mapStateToProps = state => ({
   showTitle: state.navigator.showTitle,
   showLoadingBar: (isProgressBarShowing(state) && isCurrentViewLoading(state)),
   textColor: state.navigator.textColor,
-  isIphoneX: isIphoneX(state),
 });
 
 export default connect(mapStateToProps, null, null, { withRef: true });

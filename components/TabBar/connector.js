@@ -6,7 +6,6 @@
  */
 
 import { connect } from 'react-redux';
-import { isIphoneX } from '@shopgate/pwa-common/selectors/client';
 import {
   getActiveTab,
   isTabBarVisible,
@@ -22,7 +21,6 @@ const mapStateToProps = state => ({
   activeTab: getActiveTab(state),
   isVisible: isTabBarVisible(state),
   visibleTabs: getVisibleTabs(),
-  isIphoneX: isIphoneX(state),
 });
 
 export default Component => (

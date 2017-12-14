@@ -9,22 +9,21 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const headerHeight = variables.navigator.height + variables.statusBar.height;
-
 const header = css({
   position: 'fixed',
-  height: headerHeight,
-  paddingTop: variables.statusBar.height,
+  height: [
+    `${variables.navigator.height + variables.statusBar.height}px`,
+    `calc(${variables.navigator.height}px + constant(safe-area-inset-top))`,
+  ],
+  paddingTop: [
+    `${variables.statusBar.height}px`,
+    'constant(safe-area-inset-top)',
+  ],
   left: 0,
   top: 0,
   width: '100%',
   background: colors.light,
   zIndex: 2,
-}).toString();
-
-const iPhoneXPadding = css({
-  height: headerHeight + variables.iPhoneXPadding.top,
-  paddingTop: variables.statusBar.height + variables.iPhoneXPadding.top,
 }).toString();
 
 const grid = css({
@@ -49,7 +48,6 @@ const applyButton = css({
 
 export default {
   header,
-  iPhoneXPadding,
   grid,
   title,
   applyButton,

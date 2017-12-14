@@ -54,7 +54,7 @@ class Category extends Component {
     }
 
     return <Headline text={this.title} />;
-  }
+  };
 
   /**
    * Returns the current view title.

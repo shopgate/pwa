@@ -32,6 +32,7 @@ class View extends Component {
       script: PropTypes.array,
       style: PropTypes.array,
     }),
+    isFullscreen: PropTypes.bool,
     style: PropTypes.shape(),
     title: PropTypes.string,
     viewTop: PropTypes.bool,
@@ -46,6 +47,7 @@ class View extends Component {
       script: [],
       style: [],
     },
+    isFullscreen: false,
     style: null,
     title: null,
     viewTop: true,
@@ -94,7 +96,7 @@ class View extends Component {
    */
   setRef = (ref) => {
     this.element = ref;
-  }
+  };
 
   /**
    * Handles the scroll event of this component's element.
@@ -163,7 +165,11 @@ class View extends Component {
    * @returns {JSX}
    */
   render() {
-    let contentStyle = styles.content(this.props.hasNavigator, this.props.hasTabBar);
+    let contentStyle = styles.content(
+      this.props.hasNavigator,
+      this.props.hasTabBar,
+      this.props.isFullscreen
+    );
 
     const { children } = this.props;
 
