@@ -11,14 +11,3 @@
  * @returns {Object}
  */
 export const getClientInformation = state => state.client;
-
-/**
- * Returns true if the current client is an iPhoneX
- * @param {Object} state The application state.
- * @return {boolean}
- */
-export const isIphoneX = (state) => {
-  const { device = {} } = getClientInformation(state);
-
-  return ['iPhone10,3', 'iPhone10,6'].includes(device.model);
-};
