@@ -8,10 +8,24 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-export default css({
-  color: colors.shade6,
-  position: 'relative',
-  display: 'inline-block',
-  width: 'auto',
-  zIndex: '1',
+const main = {
+  fontSize: 12,
+  margin: '0 0.5em',
+};
+
+const greyStyle = css({
+  ...main,
+  color: colors.shade3,
+  fontSize: 12,
 }).toString();
+
+const prominentStyle = css({
+  ...main,
+  color: colors.primary,
+}).toString();
+
+export {
+  greyStyle,
+  prominentStyle,
+};
+

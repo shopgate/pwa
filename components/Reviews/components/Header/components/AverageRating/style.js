@@ -7,9 +7,13 @@
 
 import { css } from 'glamor';
 
-export default css({
+const container = css({
   display: 'flex',
   justifyContent: 'space-between',
   flexDirection: 'column',
   alignItems: 'center',
 }).toString();
+
+export {
+  container,
+};

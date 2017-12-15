@@ -22,8 +22,6 @@ import connect from './connector';
  */
 class Product extends Component {
   static propTypes = {
-    getProductData: PropTypes.func.isRequired,
-    params: PropTypes.shape().isRequired,
     resetCurrentProduct: PropTypes.func.isRequired,
     name: PropTypes.string,
   };

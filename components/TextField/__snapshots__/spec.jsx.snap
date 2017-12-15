@@ -18,7 +18,7 @@ exports[`<TextField /> should focus the input 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -46,7 +46,7 @@ exports[`<TextField /> should focus the input 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -74,7 +74,7 @@ exports[`<TextField /> should focus the input 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -91,7 +91,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -109,7 +109,7 @@ exports[`<TextField /> should focus the input 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -127,7 +127,7 @@ exports[`<TextField /> should focus the input 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -146,7 +146,7 @@ exports[`<TextField /> should focus the input 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -180,7 +180,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -208,7 +208,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -236,7 +236,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -253,7 +253,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -271,7 +271,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -289,7 +289,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -308,7 +308,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -342,7 +342,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -370,7 +370,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -398,7 +398,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -415,7 +415,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -433,7 +433,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -451,7 +451,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -470,7 +470,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -504,7 +504,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -532,7 +532,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -560,7 +560,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -577,7 +577,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -595,7 +595,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -613,7 +613,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -632,7 +632,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -666,7 +666,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -694,7 +694,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-16msjt6 css-1fekhao"
+        className="css-u7lqu6 css-16msjt6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -722,7 +722,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       value="FooBar"
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -739,7 +739,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -757,7 +757,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -775,7 +775,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -794,7 +794,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -828,7 +828,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -856,7 +856,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -884,7 +884,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -901,7 +901,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -919,7 +919,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -937,7 +937,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -955,7 +955,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       validationError="Custom validation error"
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -991,7 +991,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -1019,7 +1019,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -1047,7 +1047,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1064,7 +1064,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1082,7 +1082,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1100,7 +1100,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -1119,7 +1119,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -1153,7 +1153,7 @@ exports[`<TextField /> should show the error message 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -1181,7 +1181,7 @@ exports[`<TextField /> should show the error message 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -1209,7 +1209,7 @@ exports[`<TextField /> should show the error message 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1226,7 +1226,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1244,7 +1244,7 @@ exports[`<TextField /> should show the error message 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1262,7 +1262,7 @@ exports[`<TextField /> should show the error message 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -1280,7 +1280,7 @@ exports[`<TextField /> should show the error message 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -1316,7 +1316,7 @@ exports[`<TextField /> should show the hint text 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText="This is the hint text"
@@ -1346,7 +1346,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -1374,7 +1374,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1391,7 +1391,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1409,7 +1409,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1427,7 +1427,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -1446,7 +1446,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -1480,7 +1480,7 @@ exports[`<TextField /> should show the label 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -1508,7 +1508,7 @@ exports[`<TextField /> should show the label 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -1538,7 +1538,7 @@ exports[`<TextField /> should show the label 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1555,7 +1555,7 @@ exports[`<TextField /> should show the label 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1573,7 +1573,7 @@ exports[`<TextField /> should show the label 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1591,7 +1591,7 @@ exports[`<TextField /> should show the label 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -1610,7 +1610,7 @@ exports[`<TextField /> should show the label 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -1644,7 +1644,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -1672,7 +1672,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -1700,7 +1700,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1717,7 +1717,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1735,7 +1735,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1753,7 +1753,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -1772,7 +1772,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""
@@ -1806,7 +1806,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   value=""
 >
   <div
-    className="css-1n5fcdz "
+    className="css-1vjh8yv "
   >
     <Hint
       hintText=""
@@ -1834,7 +1834,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       name="test-input"
     >
       <label
-        className="css-1980bi2 css-1fekhao"
+        className="css-u7lqu6 css-1fekhao"
         htmlFor="test-input"
       >
         <Translate
@@ -1862,7 +1862,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       value=""
     >
       <Component
-        className="css-1bx7ajf"
+        className="css-keangt"
         id="test-input"
         multiLine={false}
         name="test-input"
@@ -1879,7 +1879,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <SimpleInput
           autoComplete={false}
           autoCorrect={false}
-          className="css-1bx7ajf"
+          className="css-keangt"
           disabled={false}
           id="test-input"
           multiLine={false}
@@ -1897,7 +1897,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           <input
             autoComplete="off"
             autoCorrect="off"
-            className="css-1bx7ajf"
+            className="css-keangt"
             disabled={false}
             id="test-input"
             name="test-input"
@@ -1915,7 +1915,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       isFocused={false}
     >
       <div
-        className="css-s51m4w"
+        className="css-ycal4l"
       >
         <div
           className="css-1tpmuef"
@@ -1934,7 +1934,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       validationError={null}
     >
       <div
-        className=" css-gywm7f"
+        className=" css-hmgfge"
       >
         <Translate
           className=""

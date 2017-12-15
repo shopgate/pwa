@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import TextField from './index';
 
 const inputProps = {

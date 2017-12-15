@@ -9,19 +9,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { mount, shallow } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import GridIcon from 'Components/icons/GridIcon';
 import ListIcon from 'Components/icons/ListIcon';
 import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
 import { UnwrappedContent as FilterBarContent } from './index';
-
-const mockRenderOptions = {
-  context: {
-    i18n: () => ({
-      __: () => '',
-      _p: () => '',
-    }),
-  },
-};
 
 const activeFilters = {
   Size: {

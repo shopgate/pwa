@@ -14,7 +14,7 @@ jest.mock('./connector', () => obj => obj);
 
 describe('<CartEmpty />', () => {
   it('should render', () => {
-    const wrapper = shallow(<Empty goBackHistory={()=>{}}/>);
+    const wrapper = shallow(<Empty goBackHistory={() => {}} />);
 
     expect(wrapper).toMatchSnapshot();
   });

@@ -22,7 +22,7 @@ exports[`<Header /> should render empty 1`] = `
     }
   >
     <div
-      className="css-gffnwd"
+      className="css-1ppx0ok"
     >
       <AverageRating
         rating={
@@ -43,26 +43,27 @@ exports[`<Header /> should render empty 1`] = `
             value={0}
           >
             <div
+              aria-label="reviews.rating_stars"
               className="css-13azwyo "
             >
               <div
                 className="css-4s85e9"
               >
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="1"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -75,7 +76,7 @@ exports[`<Header /> should render empty 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -85,20 +86,20 @@ exports[`<Header /> should render empty 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="2"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -111,7 +112,7 @@ exports[`<Header /> should render empty 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -121,20 +122,20 @@ exports[`<Header /> should render empty 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="3"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -147,7 +148,7 @@ exports[`<Header /> should render empty 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -157,20 +158,20 @@ exports[`<Header /> should render empty 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="4"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -183,7 +184,7 @@ exports[`<Header /> should render empty 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -193,20 +194,20 @@ exports[`<Header /> should render empty 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="5"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -219,7 +220,7 @@ exports[`<Header /> should render empty 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -234,6 +235,10 @@ exports[`<Header /> should render empty 1`] = `
               />
             </div>
           </RatingStars>
+          <RatingCount
+            count={0}
+            prominent={false}
+          />
         </div>
       </AverageRating>
       <div
@@ -255,28 +260,84 @@ exports[`<Header /> should render empty 1`] = `
             dispatch={[Function]}
             productId="foo"
           >
-            <Link
-              className="css-3bpzxq"
+            <ButtonLink
               href="/item/666f6f/write_review"
             >
-              <div
-                className="css-c6ki83 css-3bpzxq"
+              <ActionButton
+                className=""
+                disabled={false}
+                flat={true}
+                loading={false}
                 onClick={[Function]}
-                role="link"
+                rippleClassName=""
+                rippleSize={null}
+                type="secondary"
+                wrapContent={true}
               >
-                <Translate
-                  className=""
-                  params={Object {}}
-                  string="reviews.button_add"
+                <div
+                  className="css-omcrdt"
                 >
-                  <span
+                  <RippleButton
                     className=""
+                    disabled={false}
+                    flat={true}
+                    onClick={[Function]}
+                    rippleClassName=""
+                    rippleSize={null}
+                    type="secondary"
+                    wrapContent={true}
                   >
-                    reviews.button_add
-                  </span>
-                </Translate>
-              </div>
-            </Link>
+                    <Button
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      onClick={[Function]}
+                      type="secondary"
+                      wrapContent={false}
+                    >
+                      <Button
+                        className="css-20ad7t "
+                        disabled={false}
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="css-20ad7t  css-1rn65c0"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-8s1fw2 "
+                            color="#000"
+                            fill={true}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-8s1fw2 "
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="reviews.button_add"
+                              >
+                                <span
+                                  className=""
+                                >
+                                  reviews.button_add
+                                </span>
+                              </Translate>
+                            </div>
+                          </Ripple>
+                        </button>
+                      </Button>
+                    </Button>
+                  </RippleButton>
+                </div>
+              </ActionButton>
+            </ButtonLink>
           </WriteReviewLink>
         </Connect(WriteReviewLink)>
       </div>
@@ -307,7 +368,8 @@ exports[`<Header /> should render rating summary 1`] = `
     }
   >
     <div
-      className="css-gffnwd"
+      className="css-1ppx0ok"
+      id="reviewsExcerpt"
     >
       <AverageRating
         rating={
@@ -328,26 +390,27 @@ exports[`<Header /> should render rating summary 1`] = `
             value={50}
           >
             <div
+              aria-label="reviews.rating_stars"
               className="css-13azwyo "
             >
               <div
                 className="css-4s85e9"
               >
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="1"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -360,7 +423,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -370,20 +433,20 @@ exports[`<Header /> should render rating summary 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="2"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -396,7 +459,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -406,20 +469,20 @@ exports[`<Header /> should render rating summary 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="3"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -432,7 +495,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -442,20 +505,20 @@ exports[`<Header /> should render rating summary 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="4"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -468,7 +531,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -478,20 +541,20 @@ exports[`<Header /> should render rating summary 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="5"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -504,7 +567,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -518,20 +581,20 @@ exports[`<Header /> should render rating summary 1`] = `
                 className="css-16y9zin"
               >
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="6"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -544,7 +607,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -554,20 +617,20 @@ exports[`<Header /> should render rating summary 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="7"
                 >
                   <Star
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
                       className=""
                       color={null}
                       content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -580,7 +643,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -590,13 +653,13 @@ exports[`<Header /> should render rating summary 1`] = `
                   </Star>
                 </div>
                 <div
-                  className="css-14rta1c css-q4owmg"
+                  className="css-ntfpo9 css-q4owmg"
                   key="2"
                 >
                   <StarHalfIcon
                     className=""
                     color={null}
-                    size="2em"
+                    size="2.3em"
                     viewBox="0 0 24 24"
                   >
                     <Icon
@@ -605,7 +668,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs>
   <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath>
   <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
-                      size="2em"
+                      size="2.3em"
                       viewBox="0 0 24 24"
                     >
                       <svg
@@ -620,7 +683,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         style={
                           Object {
                             "fill": null,
-                            "fontSize": "2em",
+                            "fontSize": "2.3em",
                           }
                         }
                         viewBox="0 0 24 24"
@@ -634,9 +697,10 @@ exports[`<Header /> should render rating summary 1`] = `
           </RatingStars>
           <RatingCount
             count={4}
+            prominent={false}
           >
             <Translate
-              className="css-1kqiarg"
+              className="css-18d53x4"
               params={
                 Object {
                   "count": 4,
@@ -645,7 +709,7 @@ exports[`<Header /> should render rating summary 1`] = `
               string="reviews.review_count"
             >
               <span
-                className="css-1kqiarg"
+                className="css-18d53x4"
               >
                 reviews.review_count
               </span>
@@ -654,17 +718,23 @@ exports[`<Header /> should render rating summary 1`] = `
         </div>
       </AverageRating>
       <div
-        className="css-taioru"
+        className="css-2ctqjv"
       >
         <Translate
-          className=""
+          className="css-1nftllw"
           params={Object {}}
           string="reviews.rating"
         >
           <span
-            className=""
+            className="css-1nftllw"
           >
             reviews.rating
+            <span
+              className="css-shoywj"
+              key=".0"
+            >
+              2.5
+            </span>
           </span>
         </Translate>
         <Connect(WriteReviewLink)>
@@ -672,28 +742,84 @@ exports[`<Header /> should render rating summary 1`] = `
             dispatch={[Function]}
             productId="foo"
           >
-            <Link
-              className="css-3bpzxq"
+            <ButtonLink
               href="/item/666f6f/write_review"
             >
-              <div
-                className="css-c6ki83 css-3bpzxq"
+              <ActionButton
+                className=""
+                disabled={false}
+                flat={true}
+                loading={false}
                 onClick={[Function]}
-                role="link"
+                rippleClassName=""
+                rippleSize={null}
+                type="secondary"
+                wrapContent={true}
               >
-                <Translate
-                  className=""
-                  params={Object {}}
-                  string="reviews.button_add"
+                <div
+                  className="css-omcrdt"
                 >
-                  <span
+                  <RippleButton
                     className=""
+                    disabled={false}
+                    flat={true}
+                    onClick={[Function]}
+                    rippleClassName=""
+                    rippleSize={null}
+                    type="secondary"
+                    wrapContent={true}
                   >
-                    reviews.button_add
-                  </span>
-                </Translate>
-              </div>
-            </Link>
+                    <Button
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      onClick={[Function]}
+                      type="secondary"
+                      wrapContent={false}
+                    >
+                      <Button
+                        className="css-20ad7t "
+                        disabled={false}
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="css-20ad7t  css-1rn65c0"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-8s1fw2 "
+                            color="#000"
+                            fill={true}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-8s1fw2 "
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="reviews.button_add"
+                              >
+                                <span
+                                  className=""
+                                >
+                                  reviews.button_add
+                                </span>
+                              </Translate>
+                            </div>
+                          </Ripple>
+                        </button>
+                      </Button>
+                    </Button>
+                  </RippleButton>
+                </div>
+              </ActionButton>
+            </ButtonLink>
           </WriteReviewLink>
         </Connect(WriteReviewLink)>
       </div>

@@ -9,6 +9,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedStateWithoutReview,
   mockedStateWithAll,
@@ -26,7 +27,8 @@ const mockedStore = configureStore();
 const createComponent = (mockedState, props = {}) => mount(
   <Provider store={mockedStore(mockedState)}>
     <Header {...props} />
-  </Provider>
+  </Provider>,
+  mockRenderOptions
 );
 
 describe('<Header />', () => {
@@ -37,7 +39,7 @@ describe('<Header />', () => {
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
-    expect(header.find('RatingCount').exists()).toBe(false);
+    expect(header.find('RatingCount').html()).toBe(null);
   });
 
   it('should render rating summary', () => {

@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 import { css } from 'glamor';
+import variables from 'Styles/variables';
 
 /**
  * The styles for the container element.
  */
 const ratingLine = css({
-  minHeight: 40,
+  marginBottom: variables.gap.bigger,
   position: 'relative',
   display: 'flex',
   justifyContent: 'space-between',

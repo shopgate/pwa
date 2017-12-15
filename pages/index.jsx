@@ -47,7 +47,7 @@ import Orders from './Orders';
 import Reviews from './Reviews';
 import WriteReview from './WriteReview';
 
-const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
+const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.

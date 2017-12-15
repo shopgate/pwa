@@ -9,8 +9,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { features } from 'Config/app.json';
 import RatingStars from 'Components/RatingStars';
+import RatingCount from 'Components/Reviews/components/RatingCount';
+import { container } from './style';
 import connect from './connector';
 
+/**
+ * Scrolls page to reviews excerpt.
+ */
+const scrollToRating = () => {
+  const reviewsExcerpt = document.getElementById('reviewsExcerpt');
+  if (
+    typeof reviewsExcerpt !== 'object'
+    || !reviewsExcerpt
+    || !reviewsExcerpt.offsetTop
+    || !reviewsExcerpt.closest
+    || !reviewsExcerpt.closest('article')
+  ) {
+    return;
+  }
+
+  reviewsExcerpt
+    .closest('article')
+    .scroll(0, reviewsExcerpt.offsetTop - 30);
+};
 /**
  * The Rating component.
  * @param {Object} props The component props.
@@ -22,7 +43,11 @@ const Rating = ({ rating }) => {
   }
 
   return (
-    <RatingStars value={rating.average} />
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div role="link" className={container} onClick={scrollToRating}>
+      <RatingStars value={rating.average} display="big" />
+      <RatingCount count={rating.count} prominent />
+    </div>
   );
 };
 

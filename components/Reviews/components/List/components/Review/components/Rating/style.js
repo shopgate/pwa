@@ -6,8 +6,6 @@
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
 const container = css({
   display: 'flex',
@@ -19,13 +17,7 @@ const stars = css({
   lineHeight: 'initial',
 }).toString();
 
-const text = css({
-  marginLeft: variables.gap.small,
-  color: colors.primary,
-}).toString();
-
 export default {
   container,
   stars,
-  text,
 };

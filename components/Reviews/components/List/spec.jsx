@@ -7,6 +7,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import List from './index';
 
 describe('<List />', () => {
@@ -44,7 +45,7 @@ describe('<List />', () => {
   ];
 
   beforeEach(() => {
-    list = mount(<List reviews={[]} />);
+    list = mount(<List reviews={[]} />, mockRenderOptions);
   });
 
   it('should not render when no reviews given', () => {
@@ -62,7 +63,6 @@ describe('<List />', () => {
       const ratingNode = node.find('Rating');
 
       expect(ratingNode.prop('rate')).toEqual(reviews[i].rate);
-      expect(ratingNode.find('Translate').prop('params').rate).toEqual(reviews[i].rate / 20);
       expect(ratingNode.find('RatingStars').prop('value')).toEqual(reviews[i].rate);
       expect(node.find('Info').prop('review').date).toEqual(reviews[i].date);
 
