@@ -42,12 +42,10 @@ const underline = css({
  * @param {boolean} hasError Has error set or not.
  * @return {Object} style
  */
-const underlineStyle = (focused, hasError) => {
-  return {
-    borderBottomColor: hasError ? colors.error : colors.focus,
-    ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
-  };
-};
+const underlineStyle = (focused, hasError) => ({
+  borderBottomColor: hasError ? colors.error : colors.focus,
+  ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
+});
 
 export default {
   underline,

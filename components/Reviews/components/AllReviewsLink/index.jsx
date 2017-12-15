@@ -9,12 +9,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import ButtonLink from 'Components/ButtonLink';
 import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
 import connect from './connector';
 import {
   container,
-  link,
 } from './style';
 
 /**
@@ -32,9 +31,9 @@ const AllReviewsLink = ({ productId, totalReviewCount }) => {
 
   return (
     <div className={container}>
-      <Link href={`/item/${publicProductId}/reviews`} className={link}>
+      <ButtonLink href={`/item/${publicProductId}/reviews`}>
         <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
-      </Link>
+      </ButtonLink>
     </div>
   );
 };
