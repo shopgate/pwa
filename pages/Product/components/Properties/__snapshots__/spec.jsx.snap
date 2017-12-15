@@ -42,10 +42,9 @@ exports[`<Properties /> should render table with properties 1`] = `
   }
 >
   <div
-    className="css-92vs1g"
+    className="css-1bmbzx3"
   >
     <table
-      cellPadding={5}
       className="css-13asv6l"
     >
       <tbody>
@@ -53,12 +52,12 @@ exports[`<Properties /> should render table with properties 1`] = `
           key="foo"
         >
           <td
-            className="css-t8v3ij"
+            className="css-19ob0vg"
           >
             foo
           </td>
           <td
-            className="css-t8v3ij"
+            className="css-19ob0vg"
           >
             bar
           </td>
@@ -67,12 +66,12 @@ exports[`<Properties /> should render table with properties 1`] = `
           key="bar"
         >
           <td
-            className="css-t8v3ij"
+            className="css-19ob0vg"
           >
             bar
           </td>
           <td
-            className="css-t8v3ij"
+            className="css-19ob0vg"
           >
             foo
           </td>

@@ -49,11 +49,8 @@ exports[`<TextField /> should focus the input 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -66,18 +63,38 @@ exports[`<TextField /> should focus the input 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -160,11 +177,8 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -177,18 +191,38 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
-        value="foobar"
-      />
-    </Input>
+        validateOnBlur={true}
+        value=""
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="foobar"
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -267,11 +301,8 @@ exports[`<TextField /> should render a simple text field 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -284,18 +315,38 @@ exports[`<TextField /> should render a simple text field 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -374,11 +425,8 @@ exports[`<TextField /> should render the text field as password 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -391,18 +439,38 @@ exports[`<TextField /> should render the text field as password 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
-        type="password"
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={true}
+        setRef={[Function]}
+        type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="password"
+          value=""
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -485,11 +553,8 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -502,18 +567,38 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       validateOnBlur={true}
       value="FooBar"
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value="FooBar"
-      />
-    </Input>
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="FooBar"
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -592,11 +677,8 @@ exports[`<TextField /> should replace the error text with custom validation erro
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -609,18 +691,38 @@ exports[`<TextField /> should replace the error text with custom validation erro
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -704,11 +806,8 @@ exports[`<TextField /> should sanitize the input 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -721,18 +820,38 @@ exports[`<TextField /> should sanitize the input 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
-        value="FOOBAR"
-      />
-    </Input>
+        validateOnBlur={true}
+        value=""
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="FOOBAR"
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -787,11 +906,8 @@ exports[`<TextField /> should show the error message 1`] = `
       string=""
     />
   </label>
-  <Input
-    autoComplete={false}
-    autoCorrect={false}
+  <Component
     className="css-1l81tvz"
-    disabled={false}
     id="test-input"
     name="test-input"
     onChange={[Function]}
@@ -852,11 +968,8 @@ exports[`<TextField /> should show the hint text 1`] = `
       string=""
     />
   </label>
-  <Input
-    autoComplete={false}
-    autoCorrect={false}
+  <Component
     className="css-1l81tvz"
-    disabled={false}
     id="test-input"
     name="test-input"
     onChange={[Function]}
@@ -918,11 +1031,8 @@ exports[`<TextField /> should show the label 1`] = `
       string="This is the label"
     />
   </label>
-  <Input
-    autoComplete={false}
-    autoCorrect={false}
+  <Component
     className="css-1l81tvz"
-    disabled={false}
     id="test-input"
     name="test-input"
     onChange={[Function]}
@@ -1012,11 +1122,8 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -1029,18 +1136,38 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
-        value="a"
-      />
-    </Input>
+        validateOnBlur={true}
+        value=""
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="a"
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
@@ -1119,11 +1246,8 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         />
       </Translate>
     </label>
-    <Input
-      autoComplete={false}
-      autoCorrect={false}
+    <Component
       className="css-1l81tvz"
-      disabled={false}
       id="test-input"
       name="test-input"
       onChange={[Function]}
@@ -1136,18 +1260,38 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       validateOnBlur={true}
       value=""
     >
-      <input
-        autoComplete="off"
-        autoCorrect="off"
+      <SimpleInput
+        autoComplete={false}
+        autoCorrect={false}
         className="css-1l81tvz"
         disabled={false}
-        onBlur={[Function]}
+        id="test-input"
+        name="test-input"
         onChange={[Function]}
-        onFocus={[Function]}
+        onFocusChange={[Function]}
+        onSanitize={[Function]}
+        onValidate={[Function]}
+        password={false}
+        setRef={[Function]}
         type="text"
+        validateOnBlur={true}
         value=""
-      />
-    </Input>
+      >
+        <input
+          autoComplete="off"
+          autoCorrect="off"
+          className="css-1l81tvz"
+          disabled={false}
+          id="test-input"
+          name="test-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </SimpleInput>
+    </Component>
     <div
       className="css-s51m4w"
     >
