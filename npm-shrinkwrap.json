@@ -57,9 +57,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "1.0.10",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.10.tgz",
-      "integrity": "sha512-ekEAuBd19CLWLT9DfJdjFQKbkuYp1ToGq89k9wVakGTo+6NEqoWNja0n6n3kww9aOilG0YnctN4yMVXu+isgOg==",
+      "version": "1.0.11",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.0.11.tgz",
+      "integrity": "sha512-7pt06cwdH/BJQUy3awWqUlZn7SYuV9F4pmxacOz6vkTP/5h4dlchuwgILpS/ZCA1B//rOp09iUmzWcvcmZ+sEA==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
