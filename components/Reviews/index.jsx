@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { features } from 'Config/app.json';
+import { hasReviews } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
 import List from './components/List';
@@ -21,7 +21,7 @@ import AllReviewsLink from './components/AllReviewsLink';
  * @returns {JSX|null}
  */
 const Reviews = ({ rating, reviews }) => {
-  if (!features.showReviews) {
+  if (!hasReviews) {
     return null;
   }
 

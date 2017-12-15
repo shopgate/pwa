@@ -79,13 +79,14 @@
         "key": "value.frontend"
       }
     },
-    "features": {
+    "hasReviews": {
       "type": "static",
-      "destination" : "frontend",
+      "destination": "frontend",
       "params": {
-        "value" : {
-          "showReviews": true
-        }
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gcloud_frontend_feature_has_reviews",
+        "key": "value"
       }
     }
   }

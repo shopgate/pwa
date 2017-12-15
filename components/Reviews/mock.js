@@ -117,9 +117,7 @@ export const mockedStateProductEmpty = {
  */
 export const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('Config/app.json', () => ({
-    features: {
-      showReviews: mockReviewsAvailable,
-    },
+    hasReviews: mockReviewsAvailable,
   }));
 };
 
