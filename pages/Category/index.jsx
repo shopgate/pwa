@@ -25,7 +25,6 @@ class Category extends Component {
     category: PropTypes.shape(),
     hasHeadline: PropTypes.bool,
     hasProducts: PropTypes.bool,
-    isFilterBarActive: PropTypes.bool,
     isFilterBarShown: PropTypes.bool,
     isRoot: PropTypes.bool,
   };
@@ -34,7 +33,6 @@ class Category extends Component {
     category: null,
     hasHeadline: false,
     hasProducts: false,
-    isFilterBarActive: false,
     isFilterBarShown: true,
     isRoot: true,
   };
@@ -45,7 +43,7 @@ class Category extends Component {
   };
 
   createHeadline = () => {
-    if (this.props.isFilterBarActive) {
+    if (this.props.isFilterBarShown) {
       return (
         <div className={styles.headlineWrapper}>
           <Headline text={this.title} />

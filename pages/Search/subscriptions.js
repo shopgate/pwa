@@ -6,7 +6,6 @@
  */
 
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import setActiveFilters from '@shopgate/pwa-common-commerce/filter/action-creators/setActiveFilters';
 import {
   routeDidEnter,
   routeDidLeave,
@@ -26,8 +25,6 @@ export default function search(subscribe) {
    */
   subscribe(searchRouteDidEnter$, ({ dispatch }) => {
     dispatch(toggleProgressBar(false));
-    alert();
-    dispatch(setActiveFilters({}));
   });
 
   /**
