@@ -9,9 +9,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   mockedStateWithAll,
-  mockedStateWithProductOnly,
+  mockedStateWithoutReview,
   mockedStateWithTwoReviews,
   setMocks,
 } from './mock';
@@ -34,19 +35,21 @@ const createComponent = (mockedState) => {
   return mount(
     <Provider store={mockedStore(mockedState)}>
       <Reviews />
-    </Provider>
+    </Provider>,
+    mockRenderOptions
   );
 };
 
 describe('<Reviews />', () => {
   let component = null;
-  it('should not render when no reviews and rating given', () => {
+
+  it('should render when no reviews and rating given', () => {
     setMocks();
-    component = createComponent(mockedStateWithProductOnly);
+    component = createComponent(mockedStateWithoutReview);
     expect(component).toMatchSnapshot();
-    expect(component.find('Header').exists()).toBe(false);
-    expect(component.find('List').exists()).toBe(false);
-    expect(component.find('AllReviewsLink').exists()).toBe(false);
+    expect(component.find('Header').exists()).toBe(true);
+    expect(component.find('List').exists()).toBe(true);
+    expect(component.find('AllReviewsLink').exists()).toBe(true);
   });
 
   it('should render reviews, header and all reviews link', () => {

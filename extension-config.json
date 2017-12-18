@@ -79,13 +79,15 @@
         "key": "value.frontend"
       }
     },
-    "features": {
-      "type": "static",
+    "hasReviews": {
+      "type": "bigApi",
       "destination" : "frontend",
+      "default": false,
       "params": {
-        "value" : {
-          "showReviews": true
-        }
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
+        "key": "value"
       }
     }
   }
