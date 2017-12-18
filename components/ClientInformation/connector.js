@@ -15,15 +15,21 @@ import { enableDebugLogging } from './actions';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state) => {
-  const clientInformation = getClientInformation(state);
+  const {
+    isFetching,
+    appVersion,
+    libVersion,
+    codebaseVersion,
+    deviceId,
+  } = getClientInformation(state);
 
   return {
     client: {
-      isFetching: clientInformation.isFetching,
-      appVersion: clientInformation.appVersion,
-      libVersion: clientInformation.libVersion,
-      codebaseVersion: clientInformation.codebaseVersion,
-      deviceId: clientInformation.deviceId,
+      isFetching,
+      appVersion,
+      libVersion,
+      codebaseVersion,
+      deviceId,
     },
   };
 };
