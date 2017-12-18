@@ -112,7 +112,7 @@ export const mockedStateProductEmpty = {
 
 /**
  * Sets up mocks.
- * @param {bool} mockReviewsAvailable A feature flag "showReviews" value.
+ * @param {bool} mockReviewsAvailable A feature flag "hasReviews" value.
  * @type {Function}
  */
 export const setMocks = (mockReviewsAvailable = true) => {
