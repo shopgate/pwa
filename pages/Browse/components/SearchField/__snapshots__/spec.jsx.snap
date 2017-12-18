@@ -22,20 +22,14 @@ exports[`<SearchField /> should render the search field 1`] = `
             <Magnifier />
           </div>
         </label>
-        <Input
+        <Component
           autoComplete={false}
-          autoCorrect={false}
           className="css-1yoassp"
-          disabled={false}
           onChange={[Function]}
           onFocusChange={[Function]}
-          onSanitize={[Function]}
           onSubmit={[Function]}
-          onValidate={[Function]}
-          password={false}
           setRef={[Function]}
           type="search"
-          validateOnBlur={true}
           value="foo"
         />
       </form>

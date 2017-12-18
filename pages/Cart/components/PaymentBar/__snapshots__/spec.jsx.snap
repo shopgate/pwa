@@ -52,16 +52,16 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
             }
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-mt0ry0 css-k5vpvg"
             >
               <Grid
-                className="css-7hjff2"
+                className="css-1xadtqu"
                 component="ul"
                 key=".0"
                 wrap={false}
               >
                 <ul
-                  className="css-7hjff2 css-h7r55a"
+                  className="css-1xadtqu css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -348,16 +348,16 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
             }
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-mt0ry0 css-k5vpvg"
             >
               <Grid
-                className="css-7hjff2"
+                className="css-1xadtqu"
                 component="ul"
                 key=".0"
                 wrap={false}
               >
                 <ul
-                  className="css-7hjff2 css-h7r55a"
+                  className="css-1xadtqu css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -691,16 +691,16 @@ exports[`<PaymentBar /> should render without any props 1`] = `
             }
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-mt0ry0 css-k5vpvg"
             >
               <Grid
-                className="css-7hjff2"
+                className="css-1xadtqu"
                 component="ul"
                 key=".0"
                 wrap={false}
               >
                 <ul
-                  className="css-7hjff2 css-h7r55a"
+                  className="css-1xadtqu css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -986,16 +986,16 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
             }
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-mt0ry0 css-k5vpvg"
             >
               <Grid
-                className="css-7hjff2"
+                className="css-1xadtqu"
                 component="ul"
                 key=".0"
                 wrap={false}
               >
                 <ul
-                  className="css-7hjff2 css-h7r55a"
+                  className="css-1xadtqu css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
@@ -1281,16 +1281,16 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
             }
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-mt0ry0 css-k5vpvg"
             >
               <Grid
-                className="css-7hjff2"
+                className="css-1xadtqu"
                 component="ul"
                 key=".0"
                 wrap={false}
               >
                 <ul
-                  className="css-7hjff2 css-h7r55a"
+                  className="css-1xadtqu css-h7r55a"
                 >
                   <GridItem
                     className="css-1e1nulz"
