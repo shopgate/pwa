@@ -14,6 +14,7 @@ import {
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {
@@ -58,7 +59,11 @@ export const getActiveTab = createSelector(
 export const isTabBarVisible = createSelector(
   getHistoryPathname,
   (pathname) => {
-    if (pathname === CART_PATH || pathname.startsWith(ITEM_PATH)) {
+    if (
+      pathname === CART_PATH ||
+      pathname.startsWith(ITEM_PATH) ||
+      pathname.startsWith(FILTER_PATH)
+    ) {
       return false;
     }
 
