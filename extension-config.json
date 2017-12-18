@@ -80,8 +80,9 @@
       }
     },
     "hasReviews": {
-      "type": "static",
+      "type": "bigApi",
       "destination": "frontend",
+      "default": false,
       "params": {
         "method": "GET",
         "service": "config",
