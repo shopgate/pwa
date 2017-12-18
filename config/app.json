@@ -12,7 +12,5 @@
     "@shopgate/commerce-widgets",
     "@shopgate/tracking-ga-native"
   ],
-  "features": {
-    "showReviews": true
-  }
+  "hasReviews": true
 }

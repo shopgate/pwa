@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { features } from 'Config/app.json';
+import { hasReviews } from 'Config/app.json';
 import RatingStars from 'Components/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
@@ -38,7 +38,7 @@ const scrollToRating = () => {
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  if (!features.showReviews || !rating || !rating.count) {
+  if (!hasReviews || !rating || !rating.count) {
     return null;
   }
 
