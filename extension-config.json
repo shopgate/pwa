@@ -85,7 +85,7 @@
       "params": {
         "method": "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/sgcloud_frontend_feature_has_reviews",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews",
         "key": "value"
       }
     }
