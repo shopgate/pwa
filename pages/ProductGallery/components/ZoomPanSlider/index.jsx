@@ -9,7 +9,6 @@ import React from 'react';
 import ZoomPanContainer from '@shopgate/pwa-common/components/ZoomPanContainer';
 import { objectWithoutProps } from '@shopgate/pwa-common/helpers/data';
 import ImageSlider from 'Components/ImageSlider';
-import styles from './style';
 
 /**
  * A slider that is capable of zooming and panning its children.
@@ -63,11 +62,6 @@ class ZoomPanSlider extends React.Component {
 
     // Disable swiping if currently zoomed in.
     props.disabled = this.state.zoom > 1;
-
-    props.classNames = {
-      ...props.classNames,
-      ...styles,
-    };
 
     return (
       <ImageSlider {...props}>{sliderItems}</ImageSlider>
