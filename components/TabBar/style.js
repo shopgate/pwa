@@ -15,7 +15,11 @@ export default css({
   bottom: 0,
   left: 0,
   right: 0,
-  height: variables.tabBar.height,
+  height: [
+    `${variables.tabBar.height}px`,
+    `calc(${variables.tabBar.height}px + constant(safe-area-inset-bottom))`,
+  ],
+  paddingBottom: 'constant(safe-area-inset-bottom)',
   zIndex: 1,
   alignItems: 'center',
   justifyContent: 'space-around',

@@ -14,6 +14,10 @@ const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
 
 const container = css({
   padding: `${variables.gap.big}px ${variables.gap.small}px`,
+  paddingBottom: [
+    `${variables.gap.big}px`,
+    `calc(${variables.gap.big}px + constant(safe-area-inset-bottom))`,
+  ],
   lineHeight: 1.45,
 }).toString();
 

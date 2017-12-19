@@ -12,6 +12,7 @@ const container = css({
   background: colors.background,
   flexGrow: 1,
   paddingTop: 4,
+  paddingBottom: 'constant(safe-area-inset-bottom)',
 }).toString();
 
 const filterContainer = css({
