@@ -82,7 +82,7 @@
     "hasReviews": {
       "type": "bigApi",
       "destination": "frontend",
-      "default": false,
+      "default": true,
       "params": {
         "method": "GET",
         "service": "config",
