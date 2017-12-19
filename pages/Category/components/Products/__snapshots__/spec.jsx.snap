@@ -8,7 +8,9 @@ exports[`<Products> should render the grid 1`] = `
   totalProductCount={null}
 >
   <ProductGrid
+    flags={null}
     handleGetProducts={[Function]}
+    infiniteLoad={true}
     products={Array []}
     totalProductCount={null}
   >
