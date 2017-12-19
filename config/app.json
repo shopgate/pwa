@@ -1,12 +1,17 @@
 {
-  "language": "de-de",
-  "publicPath": "undefined/shop_30187/@shopgate/theme-gmd/1.0.2",
-  "appId": "shop_30187",
-  "logo": "https://data.shopgate.com/shops/23730/webapp@2x.png",
+  "publicPath": null,
+  "appId": "shop_30694",
+  "shopName": "Offizieller Shopgate Testshop",
+  "shopIsActive": true,
+  "language": "en-us",
+  "logo": "https://data.shopgate.com/shops/23720/webapp@2x.png",
   "colors": {},
-  "shopName": "sgxs-testshop5",
-  "forgotPasswordUrl": null,
+  "forgotPasswordUrl": "https://material-fashion.myshopify.com/admin/auth/recover",
   "webCheckoutShopify": null,
+  "extensions": [
+    "@shopgate/commerce-widgets",
+    "@shopgate/tracking-ga-native"
+  ],
   "features": {
     "showReviews": true
   }
