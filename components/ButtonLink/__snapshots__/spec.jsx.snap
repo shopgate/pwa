@@ -39,12 +39,12 @@ exports[`<ButtonLink> On click action should create component and open page on c
           wrapContent={false}
         >
           <Button
-            className="css-20ad7t "
+            className="css-17mtdgp "
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="css-20ad7t  css-1rn65c0"
+              className="css-17mtdgp  css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >

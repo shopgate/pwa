@@ -467,7 +467,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   prominent={false}
                 >
                   <Translate
-                    className="css-18d53x4"
+                    className="css-a7xi3l"
                     params={
                       Object {
                         "count": 4,
@@ -476,7 +476,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     string="reviews.review_count"
                   >
                     <span
-                      className="css-18d53x4"
+                      className="css-a7xi3l"
                     >
                       reviews.review_count
                     </span>
@@ -485,7 +485,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               </div>
             </AverageRating>
             <div
-              className="css-2ctqjv"
+              className="css-1anve4d"
             >
               <Translate
                 className="css-1nftllw"
@@ -511,12 +511,14 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 >
                   <ButtonLink
                     href="/item/666f6f/write_review"
+                    noGap={true}
                   >
                     <ActionButton
                       className=""
                       disabled={false}
                       flat={true}
                       loading={false}
+                      noGap={true}
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
@@ -524,7 +526,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       wrapContent={true}
                     >
                       <div
-                        className="css-omcrdt"
+                        className="css-1yv2jt6"
                       >
                         <RippleButton
                           className=""
@@ -2466,18 +2468,20 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             <div
               className={
                 Object {
-                  "data-css-136bnoj": "",
+                  "data-css-1pitgg2": "",
                 }
               }
             >
               <ButtonLink
                 href="/item/666f6f/reviews"
+                noGap={false}
               >
                 <ActionButton
                   className=""
                   disabled={false}
                   flat={true}
                   loading={false}
+                  noGap={false}
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
@@ -2948,7 +2952,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   prominent={false}
                 >
                   <Translate
-                    className="css-18d53x4"
+                    className="css-a7xi3l"
                     params={
                       Object {
                         "count": 4,
@@ -2957,7 +2961,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     string="reviews.review_count"
                   >
                     <span
-                      className="css-18d53x4"
+                      className="css-a7xi3l"
                     >
                       reviews.review_count
                     </span>
@@ -2966,7 +2970,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               </div>
             </AverageRating>
             <div
-              className="css-2ctqjv"
+              className="css-1anve4d"
             >
               <Translate
                 className="css-1nftllw"
@@ -2992,12 +2996,14 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 >
                   <ButtonLink
                     href="/item/666f6f/write_review"
+                    noGap={true}
                   >
                     <ActionButton
                       className=""
                       disabled={false}
                       flat={true}
                       loading={false}
+                      noGap={true}
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
@@ -3005,7 +3011,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       wrapContent={true}
                     >
                       <div
-                        className="css-omcrdt"
+                        className="css-1yv2jt6"
                       >
                         <RippleButton
                           className=""
@@ -4299,12 +4305,14 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                 >
                   <ButtonLink
                     href="/item/666f6f/write_review"
+                    noGap={true}
                   >
                     <ActionButton
                       className=""
                       disabled={false}
                       flat={true}
                       loading={false}
+                      noGap={true}
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
@@ -4312,7 +4320,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                       wrapContent={true}
                     >
                       <div
-                        className="css-omcrdt"
+                        className="css-1yv2jt6"
                       >
                         <RippleButton
                           className=""

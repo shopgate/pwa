@@ -39,7 +39,7 @@ const Header = ({ rating, withTopGap }) => {
   }
 
   return (
-    <div className={styles.container} id="reviewsExcerpt">
+    <div className={containerClass} id="reviewsExcerpt">
       <AverageRating rating={rating} />
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
@@ -55,10 +55,12 @@ const Header = ({ rating, withTopGap }) => {
 
 Header.propTypes = {
   rating: PropTypes.shape(),
+  withTopGap: PropTypes.bool,
 };
 
 Header.defaultProps = {
   rating: null,
+  withTopGap: false,
 };
 
 export default Header;

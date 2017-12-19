@@ -299,12 +299,12 @@ exports[`<Header /> should render empty 1`] = `
                       wrapContent={false}
                     >
                       <Button
-                        className="css-20ad7t "
+                        className="css-17mtdgp "
                         disabled={false}
                         onClick={[Function]}
                       >
                         <button
-                          className="css-20ad7t  css-1rn65c0"
+                          className="css-17mtdgp  css-1rn65c0"
                           disabled={false}
                           onClick={[Function]}
                         >
@@ -369,7 +369,6 @@ exports[`<Header /> should render rating summary 1`] = `
         "count": 4,
       }
     }
-    withTopGap={false}
   >
     <div
       className="css-1ppx0ok"
@@ -784,12 +783,12 @@ exports[`<Header /> should render rating summary 1`] = `
                       wrapContent={false}
                     >
                       <Button
-                        className="css-20ad7t "
+                        className="css-17mtdgp "
                         disabled={false}
                         onClick={[Function]}
                       >
                         <button
-                          className="css-20ad7t  css-1rn65c0"
+                          className="css-17mtdgp  css-1rn65c0"
                           disabled={false}
                           onClick={[Function]}
                         >
