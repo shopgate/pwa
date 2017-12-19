@@ -48,6 +48,16 @@ const sliderStyles = {
   container: css({
     height: '100%',
   }).toString(),
+  indicator: css({
+    position: 'absolute',
+    bottom: [
+      '2px',
+      'calc(2px + constant(safe-area-inset-bottom))',
+    ],
+    left: '50%',
+    transform: 'translateX(-50%)',
+    zIndex: 10,
+  }).toString(),
 };
 
 export default {
