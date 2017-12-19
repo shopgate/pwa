@@ -16,13 +16,15 @@ import styles from './style';
 /**
  * The header of the reviews component
  * @param {Object} rating The rating values
+ * @param {bool} withTopGap Adds additional top gap when true.
  * @returns {JSX}
  */
-const Header = ({ rating }) => {
+const Header = ({ rating, withTopGap }) => {
   if (!rating) {
     return null;
   }
   const { average = 0 } = rating;
+  const containerClass = withTopGap ? styles.withTopGapContainer : styles.container;
 
   if (!average) {
     return (

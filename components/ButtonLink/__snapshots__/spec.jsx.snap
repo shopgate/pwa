@@ -3,12 +3,14 @@
 exports[`<ButtonLink> On click action should create component and open page on click 1`] = `
 <ButtonLink
   href="https://example.com"
+  noGap={false}
 >
   <ActionButton
     className=""
     disabled={false}
     flat={true}
     loading={false}
+    noGap={false}
     onClick={[Function]}
     rippleClassName=""
     rippleSize={null}
@@ -37,12 +39,12 @@ exports[`<ButtonLink> On click action should create component and open page on c
           wrapContent={false}
         >
           <Button
-            className="css-17mtdgp "
+            className="css-20ad7t "
             disabled={false}
             onClick={[Function]}
           >
             <button
-              className="css-17mtdgp  css-1rn65c0"
+              className="css-20ad7t  css-1rn65c0"
               disabled={false}
               onClick={[Function]}
             >

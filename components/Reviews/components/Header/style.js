@@ -14,11 +14,17 @@ const container = css({
   margin: 0,
 }).toString();
 
+const withTopGapContainer = css({
+  ...container,
+  marginTop: variables.gap.xbig,
+}).toString();
+
 const reviewsLine = css({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: `0 0 ${variables.gap.big}px`,
+  alignItems: 'baseline',
+  padding: `0 0 ${variables.gap.small}px`,
+  marginBottom: -2,
 }).toString();
 
 const averageRatingNumber = css({
@@ -43,5 +49,6 @@ export default {
   reviewsLine,
   averageRatingNumber,
   averageRatingText,
+  withTopGapContainer,
   noReviews,
 };

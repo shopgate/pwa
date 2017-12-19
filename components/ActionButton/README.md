@@ -28,7 +28,7 @@ Shows a loading indicator if set to true.
 
 ###### Usage:
 
-```
+```jsx
 <ActionButton loading={true} ... />
 ```
 ---

@@ -42,12 +42,14 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
     >
       <ButtonLink
         href="/item/666f6f/write_review"
+        noGap={true}
       >
         <ActionButton
           className=""
           disabled={false}
           flat={true}
           loading={false}
+          noGap={true}
           onClick={[Function]}
           rippleClassName=""
           rippleSize={null}
@@ -55,7 +57,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
           wrapContent={true}
         >
           <div
-            className="css-omcrdt"
+            className="css-1yv2jt6"
           >
             <RippleButton
               className=""
@@ -76,12 +78,12 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="css-17mtdgp "
+                  className="css-20ad7t "
                   disabled={false}
                   onClick={[Function]}
                 >
                   <button
-                    className="css-17mtdgp  css-1rn65c0"
+                    className="css-20ad7t  css-1rn65c0"
                     disabled={false}
                     onClick={[Function]}
                   >

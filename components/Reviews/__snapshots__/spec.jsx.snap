@@ -132,6 +132,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               "count": 4,
             }
           }
+          withTopGap={false}
         >
           <div
             className="css-1ppx0ok"

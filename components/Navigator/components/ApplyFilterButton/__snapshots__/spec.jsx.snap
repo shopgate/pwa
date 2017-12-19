@@ -6,6 +6,7 @@ exports[`<ApplyFilterButton /> it should render 1`] = `
   disabled={false}
   flat={true}
   loading={false}
+  noGap={false}
   onClick={[Function]}
   rippleClassName=""
   rippleSize={null}
