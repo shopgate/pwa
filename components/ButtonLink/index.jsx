@@ -17,6 +17,11 @@ class ButtonLink extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     href: PropTypes.string.isRequired,
+    noGap: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    noGap: false,
   };
 
   /**
@@ -40,7 +45,7 @@ class ButtonLink extends Component {
    */
   render() {
     return (
-      <ActionButton onClick={this.handleClick} type="secondary">
+      <ActionButton onClick={this.handleClick} type="secondary" noGap={this.props.noGap}>
         {this.props.children}
       </ActionButton>
     );

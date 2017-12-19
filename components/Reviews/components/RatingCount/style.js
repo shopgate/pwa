@@ -11,6 +11,7 @@ import colors from 'Styles/colors';
 const main = {
   fontSize: 12,
   margin: '0 0.5em',
+  lineHeight: '2em',
 };
 
 const greyStyle = css({
