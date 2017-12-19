@@ -8,8 +8,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from 'Components/RatingStars';
-import RatingCount from '../RatingCount';
-import styles from './style';
+import RatingCount from 'Components/Reviews/components/RatingCount';
+import { container } from './style';
 
 /**
  * The average rating and number of ratings for a product.
@@ -20,9 +20,9 @@ const AverageRating = ({ rating }) => {
   const { average = 0, count = 0 } = rating;
 
   return (
-    <div className={styles}>
+    <div className={container} >
       <RatingStars value={average} display="large" />
-      {(count > 0) && <RatingCount count={count} />}
+      <RatingCount count={count} />
     </div>
   );
 };

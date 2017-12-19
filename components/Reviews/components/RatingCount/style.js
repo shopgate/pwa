@@ -7,11 +7,26 @@
 
 import { css } from 'glamor';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
-export default css({
-  color: colors.primary,
-  textTransform: 'uppercase',
-  width: 'auto',
-  padding: `${variables.gap.small}px 0`,
+const main = {
+  fontSize: 12,
+  margin: '0 0.5em',
+  lineHeight: '2em',
+};
+
+const greyStyle = css({
+  ...main,
+  color: colors.shade3,
+  fontSize: 12,
 }).toString();
+
+const prominentStyle = css({
+  ...main,
+  color: colors.primary,
+}).toString();
+
+export {
+  greyStyle,
+  prominentStyle,
+};
+

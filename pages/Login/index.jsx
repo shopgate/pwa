@@ -111,6 +111,7 @@ class Login extends Component {
               className={styles.input}
               label="login.email"
               onChange={this.handleEmailChange}
+              value={this.state.login}
               setRef={this.setUserFieldRef}
             />
             <TextField
@@ -119,6 +120,7 @@ class Login extends Component {
               className={styles.input}
               label="login.password"
               onChange={this.handlePasswordChange}
+              value={this.state.password}
               setRef={this.setPasswordFieldRef}
             />
             <div className={styles.forgotWrapper}>
