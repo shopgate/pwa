@@ -36,6 +36,16 @@ class AppCommand {
   }
 
   /**
+   * Sets the command params.
+   * @param {Object} [params=null] The command params.
+   * @returns {AppCommand}
+   */
+  setCommandParams(params = null) {
+    this.command.p = params;
+    return this;
+  }
+
+  /**
    * Sets the library version of the app.
    * @param {string} libVersion The library version.
    * @returns {AppCommand}
