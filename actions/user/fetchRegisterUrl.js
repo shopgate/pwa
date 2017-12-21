@@ -13,8 +13,7 @@ import errorUrl from '../../action-creators/url/errorUrl';
 import { getEntryByType } from '../../selectors/url';
 import { getRegisterUrl } from '../../selectors/user';
 import { shouldFetchData } from '../../helpers/redux';
-
-const URL_TYPE_REGISTER = 'register';
+import { URL_TYPE_REGISTER } from '../../constants/Registration';
 
 /**
  * Get the url for the registration.

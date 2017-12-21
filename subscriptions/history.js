@@ -8,7 +8,14 @@
 import appConfig from '../helpers/config';
 import redirectRoute from '../actions/history/redirectRoute';
 import resetHistory from '../actions/history/resetHistory';
+import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
+import goBackHistory from '../actions/history/goBackHistory';
+import { getRegisterUrl } from '../selectors/user';
+import ParsedLink from '../components/Router/helpers/parsed-link';
+import { openRegisterLink$ } from '../streams/history';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
+import openRegisterUrl from './helpers/openRegisterUrl';
+import { LEGACY_URL } from '../constants/Registration';
 
 /**
  * History subscriptions.
@@ -33,5 +40,27 @@ export default function history(subscribe) {
    */
   subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(resetHistory());
+  });
+
+  /**
+   * Gets triggered when the register link is opened.
+   */
+  subscribe(openRegisterLink$, ({ dispatch, getState }) => {
+    const state = getState();
+
+    const hasRegistrationUrl = !!getRegisterUrl(state);
+
+    // Open the legacy registration page if there is no other URL.
+    if (hasRegistrationUrl) {
+      dispatch(fetchRegisterUrl())
+        .then(url => openRegisterUrl(url, state))
+        .finally(() => dispatch(goBackHistory(1)));
+      return;
+    }
+
+    const link = new ParsedLink(LEGACY_URL);
+    link.open();
+
+    dispatch(goBackHistory(1));
   });
 }

@@ -20,3 +20,4 @@ export const isUserLoggedIn = state => state.user.login.isLoggedIn;
  * @return {string|null}
  */
 export const getRegisterUrl = state => getUrl('register', state);
+
