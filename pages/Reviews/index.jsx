@@ -59,7 +59,7 @@ class Reviews extends Component {
   render() {
     return (
       <View title={this.title}>
-        <Header rating={this.props.rating} />
+        <Header rating={this.props.rating} withTopGap />
         <List reviews={this.props.reviews} />
         <LoadMoreButton />
       </View>

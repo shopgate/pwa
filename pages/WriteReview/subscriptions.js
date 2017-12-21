@@ -8,7 +8,7 @@ import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import {
-  getCurrentProductId,
+  getCurrentBaseProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   userDidLogout$,
@@ -38,7 +38,7 @@ export default function writeReview(subscribe) {
    */
   subscribe(reviewsRouteDidEnter$, ({ dispatch, getState }) => {
     const state = getState();
-    const productId = getCurrentProductId(state);
+    const productId = getCurrentBaseProductId(state);
 
     if (!state.user.login.isLoggedIn) {
       return;

@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.1.2",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "language": {
@@ -82,7 +82,7 @@
     "hasReviews": {
       "type": "bigApi",
       "destination": "frontend",
-      "default": false,
+      "default": true,
       "params": {
         "method": "GET",
         "service": "config",
