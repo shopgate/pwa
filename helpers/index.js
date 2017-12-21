@@ -6,6 +6,7 @@
  */
 
 import get from 'lodash/get';
+import find from 'lodash/find';
 import core from '@shopgate/tracking-core/core/Core';
 import { logger } from '@shopgate/pwa-core/helpers';
 import event from '@shopgate/pwa-core/classes/Event';
@@ -77,54 +78,44 @@ export const formatCartProductData = ({ product, quantity }) => ({
 
 /**
  * Reformat order data from web checkout to the format our core expects.
- * @param {Object} order Information about the order.
+ * @param {Object} passedOrder Information about the order.
  * @return {Object}
  */
-export const formatPurchaseData = (order = {}) => {
-  let grandTotal = 0;
-  let shipping = 0;
-  let tax = 0;
-  let products = [];
+export const formatPurchaseData = (passedOrder) => {
+  const defaults = {
+    totals: [],
+    products: [],
+    number: '',
+    currency: '',
+  };
 
-  if (Array.isArray(order.totals)) {
-    order.totals.forEach((total) => {
-      switch (total.type) {
-        case 'grandTotal':
-          grandTotal = total.amount;
-          break;
-        case 'shipping':
-          shipping = total.amount;
-          break;
-        case 'tax':
-          tax = total.amount;
-          break;
-        default:
-          break;
-      }
-    });
-  }
+  const order = {
+    ...defaults,
+    ...passedOrder,
+  };
 
+  const { amount: grandTotal = 0 } = find(order.totals, { type: 'grandTotal' }) || {};
+  const { amount: shipping = 0 } = find(order.totals, { type: 'shipping' }) || {};
+  const { amount: tax = 0 } = find(order.totals, { type: 'tax' }) || {};
   const grandTotalNet = grandTotal - tax;
 
-  if (Array.isArray(order.products)) {
-    products = order.products.map(product => ({
-      uid: product.id || '',
-      productNumber: product.id || '',
-      name: product.name || '',
-      quantity: product.quantity || 1,
-      amount: {
-        currency: order.currency || '',
-        gross: convertPriceToString(get(product, 'price.withTax', 0)),
-        net: convertPriceToString(get(product, 'price.net', 0)),
-      },
-    }));
-  }
+  const products = order.products.map(product => ({
+    uid: product.id || '',
+    productNumber: product.id || '',
+    name: product.name || '',
+    quantity: product.quantity || 1,
+    amount: {
+      currency: order.currency,
+      gross: convertPriceToString(get(product, 'price.withTax', 0)),
+      net: convertPriceToString(get(product, 'price.net', 0)),
+    },
+  }));
 
   return {
     order: {
-      number: order.number || '',
+      number: order.number,
       amount: {
-        currency: order.currency || '',
+        currency: order.currency,
         gross: convertPriceToString(grandTotal),
         net: convertPriceToString(grandTotalNet),
         tax: convertPriceToString(tax),
