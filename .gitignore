@@ -47,3 +47,4 @@ coverage
 /config/local.json
 /public/
 /extensions/
+config/app.json
