@@ -20,15 +20,10 @@ import {
   getSelectedVariantMetadata,
 } from '../../product/selectors/variants';
 import {
-  OPTION_TYPE_SELECT,
-} from '../../product/constants';
-import {
   CART_ITEM_TYPE_PRODUCT,
   CART_ITEM_TYPE_COUPON,
   CART_TOTALS_TYPE_SUB,
   CART_TOTALS_TYPE_SHIPPING,
-  PROPERTY_TYPE_OPTION,
-  PROPERTY_TYPE_INPUT,
 } from '../constants';
 
 /**
@@ -186,7 +181,7 @@ export const getCartMessages = createSelector(
 );
 
 /**
- * Creates data for the "properties" property of addProductsToCart pipeline request payload.
+ * Creates data for the "metadata" property of addProductsToCart pipeline request payload.
  * @returns {Object|null} The data if it was determinable, otherwise NULL.
  */
 export const getAddToCartMetadata = createSelector(
@@ -206,11 +201,11 @@ export const getAddToCartMetadata = createSelector(
 );
 
 /**
- * Creates data for the "metadata" property of addProductsToCart pipeline request payload.
+ * Creates data for the "options" property of addProductsToCart pipeline request payload.
  * @param {Object} state The application state.
  * @returns {Object|null} The data if it was determinable, otherwise NULL.
  */
-export const getAddToCartProperties = createSelector(
+export const getAddToCartOptions = createSelector(
   hasProductOptions,
   areProductOptionsSet,
   getRawProductOptions,
@@ -227,7 +222,7 @@ export const getAddToCartProperties = createSelector(
       const { type } = options.find(option => option.id === id);
 
       return {
-        type: (type === OPTION_TYPE_SELECT ? PROPERTY_TYPE_OPTION : PROPERTY_TYPE_INPUT),
+        type,
         id,
         value,
       };

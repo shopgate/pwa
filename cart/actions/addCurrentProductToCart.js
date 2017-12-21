@@ -11,7 +11,7 @@ import {
   getCurrentProduct,
 } from '../../product/selectors/product';
 import {
-  getAddToCartProperties,
+  getAddToCartOptions,
   getAddToCartMetadata,
 } from '../selectors';
 
@@ -35,13 +35,13 @@ const addCurrentProductToCart = () => (dispatch, getState) => {
   }
 
   if (productId) {
-    const properties = getAddToCartProperties(state);
+    const options = getAddToCartOptions(state);
     const metadata = getAddToCartMetadata(state, productId, productVariantId);
 
     dispatch(addProductsToCart([{
       productId,
       quantity,
-      ...(properties) && { properties },
+      ...(options) && { options },
       ...(metadata) && { metadata },
     }]));
   } else {
