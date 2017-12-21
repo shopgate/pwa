@@ -14,10 +14,12 @@ const header = css({
   height: [
     `${variables.navigator.height + variables.statusBar.height}px`,
     `calc(${variables.navigator.height}px + constant(safe-area-inset-top))`,
+    `calc(${variables.navigator.height}px + env(safe-area-inset-top))`,
   ],
   paddingTop: [
     `${variables.statusBar.height}px`,
     'constant(safe-area-inset-top)',
+    'env(safe-area-inset-top)',
   ],
   left: 0,
   top: 0,
