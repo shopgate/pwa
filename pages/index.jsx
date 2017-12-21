@@ -41,7 +41,6 @@ import ProductGallery from './ProductGallery';
 import Cart from './Cart';
 import Search from './Search';
 import Login from './Login';
-import Register from './Register';
 import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
@@ -69,7 +68,7 @@ const Pages = () =>
       <Route path={`${CART_PATH}`} component={Cart} />
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
-      <Route path={`${REGISTER_PATH}`} component={Register} />
+      <Route path={`${REGISTER_PATH}`} />
       <Route path={`${MORE_PATH}`} component={More} />
       <Route path={`${BROWSE_PATH}`} component={Browse} />
 
