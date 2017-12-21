@@ -26,13 +26,13 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "^1.0.11",
-    "@shopgate/pwa-common-commerce": "^1.0.5",
-    "@shopgate/pwa-core": "^1.0.4",
+    "@shopgate/pwa-common": "^1.0.12",
+    "@shopgate/pwa-common-commerce": "^1.0.6",
+    "@shopgate/pwa-core": "^1.0.5",
     "@shopgate/pwa-tracking": "^1.0.6",
-    "@shopgate/pwa-webcheckout-shopify": "^1.0.5",
+    "@shopgate/pwa-webcheckout-shopify": "^1.0.6",
     "@shopgate/react-hammerjs": "^0.5.3",
-    "@shopgate/tracking-core": "^1.0.4",
+    "@shopgate/tracking-core": "^1.0.5",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "3.0.0-beta.0",
     "babel-plugin-react-transform": "^3.0.0",
