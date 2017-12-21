@@ -19,6 +19,10 @@ const container = css({
   margin: `${halfGapBig}px 0`,
 }).toString();
 
+const noGapContainer = css({
+  ...containerBase,
+}).toString();
+
 const containerCircle = css({
   ...containerBase,
   margin: `${halfGapBig + 4}px 0`,
@@ -27,4 +31,5 @@ const containerCircle = css({
 export default {
   container,
   containerCircle,
+  noGapContainer,
 };

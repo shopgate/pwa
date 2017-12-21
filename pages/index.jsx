@@ -46,6 +46,7 @@ import Orders from './Orders';
 import Reviews from './Reviews';
 import More from './More';
 import Browse from './Browse';
+import WriteReview from './WriteReview';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -75,6 +76,7 @@ const Pages = () =>
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
         <Route path={`${ORDERS_PATH}`} component={Orders} />
+        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
       </AuthRoutes>
     </Viewport>
   </App>

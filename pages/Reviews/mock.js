@@ -6,11 +6,11 @@
  */
 
 import {
-  mockedStateWithProductOnly,
+  mockedStateWithoutReview,
 } from 'Components/Reviews/mock';
 
 export const mockedState = {
-  ...mockedStateWithProductOnly,
+  ...mockedStateWithoutReview,
   reviews: {
     reviewsByHash: {},
   },

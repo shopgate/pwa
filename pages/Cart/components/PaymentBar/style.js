@@ -17,6 +17,7 @@ const container = css({
   paddingBottom: [
     `${variables.gap.big}px`,
     `calc(${variables.gap.big}px + constant(safe-area-inset-bottom))`,
+    `calc(${variables.gap.big}px + env(safe-area-inset-bottom))`,
   ],
   lineHeight: 1.45,
 }).toString();

@@ -6,8 +6,8 @@ The ripple component is a **Higher Order Component** that will render a Material
 
 ## Getting Started
 
-```
-import { Ripple } from 'Templates/components';
+```jsx
+import Ripple from 'Components/Ripple';
 
 <Ripple>
   <MyChildComponent />
@@ -18,14 +18,14 @@ import { Ripple } from 'Templates/components';
 
 ### className
 
-_Default_: `''`<br>
-_Type_: `string`<br>
+_Default_: `''`  
+_Type_: `string`  
 
 Additional classes that can be appended to the component's `className` attribute.
 
 ###### Usage:
 
-```
+```jsx
 <Ripple className="class1 class2">
   <MyChildComponent />
 </Ripple>
@@ -33,14 +33,14 @@ Additional classes that can be appended to the component's `className` attribute
 
 ### color
 
-_Default_: `#000`<br>
-_Type_: `string`<br>
+_Default_: `#000`  
+_Type_: `string`  
 
 The color of the Ripple. Maps directly to the CSS color attribute.
 
 ###### Usage:
 
-```
+```jsx
 <Ripple color="purple">
   <MyChildComponent />
 </Ripple>
@@ -48,8 +48,8 @@ The color of the Ripple. Maps directly to the CSS color attribute.
 
 ### fill
 
-_Default_: `false`<br>
-_Type_: `boolean`<br>
+_Default_: `false`  
+_Type_: `boolean`  
 
 Setting this prop will change the behaviour of the Ripple to fill the area of the child element and to render the Ripple from the point of click/touch.
 
@@ -63,16 +63,24 @@ Setting this prop will change the behaviour of the Ripple to fill the area of th
 
 ### overflow
 
-_Default_: `false`<br>
-_Type_: `boolean`<br>
+_Default_: `false`  
+_Type_: `boolean`  
 
 Setting this prop will allow the Ripple effect to spill outside the boundary of the Ripple's child element.
 
 ###### Usage:
 
-```
+```jsx
 <Ripple overflow>
   <MyChildComponent />
 </Ripple>
 ```
+
+### size
+
+_Default_: `null`  
+_Type_: `number`  
+
+The size of the ripple animation.
+
 ---

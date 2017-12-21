@@ -27,8 +27,12 @@ const content = css({
   maxHeight: [
     `calc(100vh - ${variables.navigator.height}px)`,
     `calc(100vh - ${variables.navigator.height}px - constant(safe-area-inset-top))`,
+    `calc(100vh - ${variables.navigator.height}px - env(safe-area-inset-top))`,
   ],
-  paddingBottom: 'constant(safe-area-inset-bottom)',
+  paddingBottom: [
+    'constant(safe-area-inset-bottom)',
+    'env(safe-area-inset-bottom)',
+  ],
   overflowY: 'scroll',
   WebkitOverflowScrolling: 'touch',
 }).toString();

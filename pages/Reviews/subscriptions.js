@@ -20,13 +20,13 @@ import { REVIEW_ITEMS_PER_PAGE } from './constants';
  * Products subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function products(subscribe) {
+export default function reviews(subscribe) {
   const reviewsRouteDidEnter$ = routeDidEnter(ITEM_PATH).filter(
     ({ pathname }) => pathname.endsWith('reviews') || pathname.endsWith('reviews/')
   );
 
   /**
-   * Gets triggered on entering the filter route.
+   * Gets triggered on entering the reviews route.
    */
   subscribe(reviewsRouteDidEnter$, ({ dispatch, getState }) => {
     const currentCount = getCurrentReviewCount(getState());

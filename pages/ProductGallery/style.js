@@ -53,6 +53,7 @@ const sliderStyles = {
     bottom: [
       '2px',
       'calc(2px + constant(safe-area-inset-bottom))',
+      'calc(2px + env(safe-area-inset-bottom))',
     ],
     left: '50%',
     transform: 'translateX(-50%)',

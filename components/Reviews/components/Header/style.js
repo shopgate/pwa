@@ -11,19 +11,29 @@ import variables from 'Styles/variables';
 
 const container = css({
   fontWeight: 500,
-  margin: `0 ${variables.gap.big}px`,
+  margin: 0,
+}).toString();
+
+const withTopGapContainer = css({
+  ...container,
+  marginTop: variables.gap.xbig,
 }).toString();
 
 const reviewsLine = css({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: `${variables.gap.big}px 0`,
+  alignItems: 'baseline',
+  padding: `0 0 ${variables.gap.small}px`,
+  marginBottom: -2,
 }).toString();
 
-const averageRating = css({
+const averageRatingNumber = css({
   color: colors.primary,
   marginLeft: variables.gap.small,
+}).toString();
+
+const averageRatingText = css({
+  marginLeft: variables.gap.big,
 }).toString();
 
 const noReviews = css({
@@ -37,6 +47,8 @@ const noReviews = css({
 export default {
   container,
   reviewsLine,
-  averageRating,
+  averageRatingNumber,
+  averageRatingText,
+  withTopGapContainer,
   noReviews,
 };

@@ -8,6 +8,9 @@ export default {
   gap: {
     small: 8,
     big: 16,
+    bigger: 20,
+    xbig: 32,
+    xxbig: 64,
   },
   navigator: {
     height: 56,

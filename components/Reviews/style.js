@@ -6,8 +6,11 @@
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 
-export default css({
-  color: colors.shade3,
+const container = css({
+  marginBottom: '35px',
 }).toString();
+
+export default {
+  container,
+};

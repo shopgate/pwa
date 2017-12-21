@@ -12,11 +12,17 @@ import styles from './style';
 /**
  * Review Text Component
  * @param {string} review The review text
- * @returns {JSX}
+ * @returns {JSX|null}
  */
-const Text = ({ review }) => (
-  <div className={styles}>{`"${review}"`}</div>
-);
+const Text = ({ review }) => {
+  if (!review) {
+    return null;
+  }
+
+  return (
+    <div className={styles}>{`"${review}"`}</div>
+  );
+};
 
 Text.propTypes = {
   review: PropTypes.string,

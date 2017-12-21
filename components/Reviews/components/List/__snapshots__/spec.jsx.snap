@@ -61,62 +61,31 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           />
         </Title>
         <Rating
           rate={100}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isSelectable={false}
+              onSelection={[Function]}
               value={100}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                aria-label="reviews.rating_stars"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -152,7 +121,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -188,7 +157,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -224,8 +193,44 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
+                  >
+                    <Star
+                      className=""
+                      color={null}
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <Icon
+                        className=""
+                        color={null}
+                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        size="1em"
+                        viewBox="0 0 24 24"
+                      >
+                        <svg
+                          className="css-yys9hb "
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            }
+                          }
+                          style={
+                            Object {
+                              "fill": null,
+                              "fontSize": "1em",
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Star>
+                  </div>
+                  <div
+                    className="css-kdb68h css-q4owmg"
+                    key="5"
                   >
                     <Star
                       className=""
@@ -264,8 +269,8 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
+                    className="css-kdb68h css-q4owmg"
+                    key="6"
                   >
                     <Star
                       className=""
@@ -300,8 +305,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="1"
+                    className="css-kdb68h css-q4owmg"
+                    key="7"
                   >
                     <Star
                       className=""
@@ -336,8 +341,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="2"
+                    className="css-kdb68h css-q4owmg"
+                    key="8"
                   >
                     <Star
                       className=""
@@ -372,8 +377,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="3"
+                    className="css-kdb68h css-q4owmg"
+                    key="9"
                   >
                     <Star
                       className=""
@@ -408,8 +413,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="4"
+                    className="css-kdb68h css-q4owmg"
+                    key="10"
                   >
                     <Star
                       className=""
@@ -446,28 +451,13 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 5,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
           review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-r494z3"
+            className="css-13o3l67"
           >
             "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -490,11 +480,11 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:38:51.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701531000}
               >
                 <span>
-                  1504701531000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -525,7 +515,7 @@ exports[`<List /> should render list with reviews 1`] = `
           title="Test review 2 "
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           >
             Test review 2 
           </div>
@@ -533,56 +523,25 @@ exports[`<List /> should render list with reviews 1`] = `
         <Rating
           rate={40}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isSelectable={false}
+              onSelection={[Function]}
               value={40}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                aria-label="reviews.rating_stars"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -618,7 +577,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -654,7 +613,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -690,8 +649,44 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
+                  >
+                    <Star
+                      className=""
+                      color={null}
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <Icon
+                        className=""
+                        color={null}
+                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        size="1em"
+                        viewBox="0 0 24 24"
+                      >
+                        <svg
+                          className="css-yys9hb "
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            }
+                          }
+                          style={
+                            Object {
+                              "fill": null,
+                              "fontSize": "1em",
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Star>
+                  </div>
+                  <div
+                    className="css-kdb68h css-q4owmg"
+                    key="5"
                   >
                     <Star
                       className=""
@@ -730,8 +725,8 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
+                    className="css-kdb68h css-q4owmg"
+                    key="6"
                   >
                     <Star
                       className=""
@@ -766,8 +761,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="1"
+                    className="css-kdb68h css-q4owmg"
+                    key="7"
                   >
                     <Star
                       className=""
@@ -804,28 +799,13 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 2,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
           review="Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-r494z3"
+            className="css-13o3l67"
           >
             "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -848,11 +828,11 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:37:40.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701460000}
               >
                 <span>
-                  1504701460000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -899,62 +879,31 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           />
         </Title>
         <Rating
           rate={60}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isSelectable={false}
+              onSelection={[Function]}
               value={60}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                aria-label="reviews.rating_stars"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -990,7 +939,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -1026,7 +975,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -1062,8 +1011,44 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
+                  >
+                    <Star
+                      className=""
+                      color={null}
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <Icon
+                        className=""
+                        color={null}
+                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        size="1em"
+                        viewBox="0 0 24 24"
+                      >
+                        <svg
+                          className="css-yys9hb "
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            }
+                          }
+                          style={
+                            Object {
+                              "fill": null,
+                              "fontSize": "1em",
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Star>
+                  </div>
+                  <div
+                    className="css-kdb68h css-q4owmg"
+                    key="5"
                   >
                     <Star
                       className=""
@@ -1102,8 +1087,8 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
+                    className="css-kdb68h css-q4owmg"
+                    key="6"
                   >
                     <Star
                       className=""
@@ -1138,8 +1123,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="1"
+                    className="css-kdb68h css-q4owmg"
+                    key="7"
                   >
                     <Star
                       className=""
@@ -1174,8 +1159,8 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="2"
+                    className="css-kdb68h css-q4owmg"
+                    key="8"
                   >
                     <Star
                       className=""
@@ -1212,28 +1197,13 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 3,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
           review="Test review"
         >
           <div
-            className="css-r494z3"
+            className="css-13o3l67"
           >
             "Test review"
           </div>
@@ -1256,11 +1226,11 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:30:23.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701023000}
               >
                 <span>
-                  1504701023000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>
@@ -1307,62 +1277,31 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-ud99sa"
+            className="css-1rmdcnr"
           />
         </Title>
         <Rating
           rate={20}
         >
-          <div>
+          <div
+            className="css-12alag6"
+          >
             <RatingStars
-              className="css-hgkz41"
+              className="css-1tsawhq"
               display="small"
+              isSelectable={false}
+              onSelection={[Function]}
               value={20}
             >
               <div
-                className="css-13azwyo css-hgkz41"
+                aria-label="reviews.rating_stars"
+                className="css-13azwyo css-1tsawhq"
               >
                 <div
                   className="css-4s85e9"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
-                  >
-                    <Star
-                      className=""
-                      color={null}
-                      size="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <Icon
-                        className=""
-                        color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
-                        size="1em"
-                        viewBox="0 0 24 24"
-                      >
-                        <svg
-                          className="css-yys9hb "
-                          dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
-                            }
-                          }
-                          style={
-                            Object {
-                              "fill": null,
-                              "fontSize": "1em",
-                            }
-                          }
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        />
-                      </Icon>
-                    </Star>
-                  </div>
-                  <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="1"
                   >
                     <Star
@@ -1398,7 +1337,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="2"
                   >
                     <Star
@@ -1434,7 +1373,7 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="3"
                   >
                     <Star
@@ -1470,8 +1409,44 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
+                    className="css-kdb68h css-q4owmg"
                     key="4"
+                  >
+                    <Star
+                      className=""
+                      color={null}
+                      size="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <Icon
+                        className=""
+                        color={null}
+                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        size="1em"
+                        viewBox="0 0 24 24"
+                      >
+                        <svg
+                          className="css-yys9hb "
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            }
+                          }
+                          style={
+                            Object {
+                              "fill": null,
+                              "fontSize": "1em",
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Star>
+                  </div>
+                  <div
+                    className="css-kdb68h css-q4owmg"
+                    key="5"
                   >
                     <Star
                       className=""
@@ -1510,8 +1485,8 @@ exports[`<List /> should render list with reviews 1`] = `
                   className="css-16y9zin"
                 >
                   <div
-                    className="css-1dpi4l8 css-hvpjjr"
-                    key="0"
+                    className="css-kdb68h css-q4owmg"
+                    key="6"
                   >
                     <Star
                       className=""
@@ -1548,32 +1523,11 @@ exports[`<List /> should render list with reviews 1`] = `
                 </div>
               </div>
             </RatingStars>
-            <Translate
-              className="css-1nebnqb"
-              params={
-                Object {
-                  "rate": 1,
-                }
-              }
-              string="reviews.rating_stars"
-            >
-              <span
-                className="css-1nebnqb"
-              >
-                reviews.rating_stars
-              </span>
-            </Translate>
           </div>
         </Rating>
         <Text
           review=""
-        >
-          <div
-            className="css-r494z3"
-          >
-            ""
-          </div>
-        </Text>
+        />
         <Info
           review={
             Object {
@@ -1592,11 +1546,11 @@ exports[`<List /> should render list with reviews 1`] = `
               date="2017-09-06T12:30:23.000Z"
             >
               <FormatDate
-                format="medium"
+                format="long"
                 timestamp={1504701023000}
               >
                 <span>
-                  1504701023000
+                  d
                 </span>
               </FormatDate>
             </ReviewDate>

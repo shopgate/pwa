@@ -18,8 +18,12 @@ export default css({
   height: [
     `${variables.tabBar.height}px`,
     `calc(${variables.tabBar.height}px + constant(safe-area-inset-bottom))`,
+    `calc(${variables.tabBar.height}px + env(safe-area-inset-bottom))`,
   ],
-  paddingBottom: 'constant(safe-area-inset-bottom)',
+  paddingBottom: [
+    'constant(safe-area-inset-bottom)',
+    'env(safe-area-inset-bottom)',
+  ],
   zIndex: 1,
   alignItems: 'center',
   justifyContent: 'space-around',
