@@ -96,11 +96,12 @@
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "shipping": "Shipping Methods",
+    "about": "About",
     "contact": "Contact",
     "payment": "Payment Methods",
     "terms": "Terms and Conditions",
     "privacy": "Privacy Policy",
-    "welcome_message": "Welcome!",
+    "welcome_message": "Welcome {name}",
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More"

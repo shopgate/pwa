@@ -23,12 +23,14 @@ class More extends Component {
     entries: PropTypes.shape(),
     isLoggedIn: PropTypes.bool,
     logout: PropTypes.func,
+    user: PropTypes.shape(),
   };
 
   static defaultProps = {
     entries: null,
     isLoggedIn: false,
     logout: () => {},
+    user: null,
   };
 
   /**
@@ -36,12 +38,12 @@ class More extends Component {
    * @returns {JSX}
    */
   render() {
-    const { entries, isLoggedIn, logout } = this.props;
+    const { entries, isLoggedIn, logout, user } = this.props;
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
     return (
       <View>
-        <UserMenu isLoggedIn={isLoggedIn} logout={logout} />
+        <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
         <Headline text="navigation.store_information" small />
         <List>
           <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
