@@ -40,7 +40,7 @@ const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) =>
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {(!hidePrice && product.price.discount) && (
+    {!!(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
