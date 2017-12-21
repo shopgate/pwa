@@ -8,7 +8,7 @@
 import get from 'lodash/get';
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
 import { componentsConfig } from '@shopgate/pwa-common/helpers/config';
-import { getWebStorageEntry } from '@shopgate/pwa-core/commands';
+import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
 import core from '@shopgate/tracking-core/core/Core';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
