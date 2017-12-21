@@ -6,9 +6,7 @@ App commands description.
 #### hideMenuBar
 #### hideNavigationBar
 #### onload
-#### openCart
 #### openPage
-#### openSearch
 #### popTabToRoot
 #### registerEvents
 #### setDebugLoggingEnabled
