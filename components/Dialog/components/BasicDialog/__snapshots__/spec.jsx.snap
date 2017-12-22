@@ -35,7 +35,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
         disabled={false}
         flat={true}
         key="action0"
-        onClick={[Function]}
+        onClick={[MockFunction]}
         type="primary"
         wrapContent={true}
       >
@@ -50,7 +50,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
         disabled={false}
         flat={true}
         key="action1"
-        onClick={[Function]}
+        onClick={[MockFunction]}
         type="primary"
         wrapContent={true}
       >
@@ -65,7 +65,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
         disabled={false}
         flat={true}
         key="action2"
-        onClick={[Function]}
+        onClick={[MockFunction]}
         type="primary"
         wrapContent={true}
       >
@@ -98,7 +98,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
         disabled={false}
         flat={true}
         key="action0"
-        onClick={[Function]}
+        onClick={[MockFunction]}
         type="primary"
         wrapContent={true}
       >
@@ -113,7 +113,13 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
         disabled={false}
         flat={true}
         key="action1"
-        onClick={[Function]}
+        onClick={
+          [MockFunction] {
+            "calls": Array [
+              Array [],
+            ],
+          }
+        }
         type="primary"
         wrapContent={true}
       >
@@ -128,7 +134,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
         disabled={false}
         flat={true}
         key="action2"
-        onClick={[Function]}
+        onClick={[MockFunction]}
         type="primary"
         wrapContent={true}
       >
