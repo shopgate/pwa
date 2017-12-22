@@ -36,16 +36,14 @@ export const productReceived$ = main$
  * Emits when the current product id changed.
  */
 const currentProductIdChanged = main$
-  .filter(
-    ({ action, prevState }) => {
-      const prevId = getCurrentBaseProductId(prevState);
-      return (
-        action.type === SET_PRODUCT_ID &&
-        !!action.productId &&
-        action.productId !== prevId
-      );
-    }
-  );
+  .filter(({ action, prevState }) => {
+    const prevId = getCurrentBaseProductId(prevState);
+    return (
+      action.type === SET_PRODUCT_ID &&
+      !!action.productId &&
+      action.productId !== prevId
+    );
+  });
 
 /**
  * Emits when a product page is ready to be tracked, considering loaded or preloaded data.

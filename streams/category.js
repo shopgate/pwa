@@ -29,16 +29,14 @@ import { productsReceived$ } from './product';
  * Emits when the root category was entered.
  */
 const rootCategoryDidEnter$ = historyDidUpdate$
-  .filter(
-    ({ action }) => (
-      action.historyProps.pathname === CATEGORY_PATH &&
-      (
-        action.historyProps.action === HISTORY_PUSH_ACTION ||
-        action.historyProps.action === HISTORY_POP_ACTION ||
-        action.historyProps.action === HISTORY_REPLACE_ACTION
-      )
+  .filter(({ action }) => (
+    action.historyProps.pathname === CATEGORY_PATH &&
+    (
+      action.historyProps.action === HISTORY_PUSH_ACTION ||
+      action.historyProps.action === HISTORY_POP_ACTION ||
+      action.historyProps.action === HISTORY_REPLACE_ACTION
     )
-  );
+  ));
 
 /**
  * Emits when the root category data has been received.
@@ -48,44 +46,33 @@ const rootCategoryLoaded$ = rootCategoryDidEnter$.switchMap(() => receivedRootCa
 /**
  * Emits when a root category's data is already available.
  */
-const rootCategoryPreloaded$ = rootCategoryDidEnter$.filter(
-  ({ getState }) => {
-    const rootCategories = getCurrentCategories(getState());
+const rootCategoryPreloaded$ = rootCategoryDidEnter$.filter(({ getState }) => {
+  const rootCategories = getCurrentCategories(getState());
 
-    return rootCategories ? !!rootCategories.length : false;
-  }
-);
+  return rootCategories ? !!rootCategories.length : false;
+});
 
 /**
  * Emits when the current category id changed.
  */
 const categoryIdChanged$ = main$
-  .filter(
-    ({ action }) => (
-      action.type === SET_CURRENT_CATEGORY_ID &&
-      !!action.categoryId
-    )
-  );
+  .filter(({ action }) => action.type === SET_CURRENT_CATEGORY_ID && !!action.categoryId);
 
 /**
  * Emits when all necessary category data has been received.
  */
 const categoryDataLoaded$ = categoryRouteDidEnter$
-  .switchMap(
-    ({ action: routeAction }) => productsReceived$.filter(
-      ({ action }) => routeAction.categoryId === action.hash.categoryId
-    )
-  );
+  .switchMap(({ action: routeAction }) => {
+    productsReceived$.filter(({ action }) => (
+      routeAction.categoryId === action.hash.categoryId
+    ));
+  });
 
 /**
  * Emits when a category's data is already available.
  */
 const categoryDataPreloaded$ = categoryIdChanged$
-  .filter(
-    ({ getState }) => (
-      getProductsResult(getState()).totalProductCount !== null
-    )
-  );
+  .filter(({ getState }) => getProductsResult(getState()).totalProductCount !== null);
 
 /**
  * Emits when a category or root category is ready to be tracked,

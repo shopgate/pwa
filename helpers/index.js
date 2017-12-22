@@ -34,7 +34,13 @@ export const formatProductData = (productData) => {
     return null;
   }
 
-  const { id, name, price, manufacturer, tags = [] } = productData;
+  const {
+    id,
+    name,
+    price,
+    manufacturer,
+    tags = [],
+  } = productData;
 
   return {
     name,
