@@ -9,7 +9,7 @@ exports[`<TextField /> should focus the input 1`] = `
   multiLine={false}
   name="test-input"
   onChange={[Function]}
-  onFocusChange={[Function]}
+  onFocusChange={[MockFunction]}
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
@@ -1635,7 +1635,18 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
   label=""
   multiLine={false}
   name="test-input"
-  onChange={[Function]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+        Array [
+          "a",
+        ],
+      ],
+    }
+  }
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
@@ -1799,7 +1810,15 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   name="test-input"
   onChange={[Function]}
   onSanitize={[Function]}
-  onValidate={[Function]}
+  onValidate={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+    }
+  }
   password={false}
   setRef={[Function]}
   type="text"

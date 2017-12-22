@@ -51,7 +51,7 @@ exports[`<QuantityPicker /> Given editMode prop is handled correctly should focu
 exports[`<QuantityPicker /> Given onChange callback is triggered correctly should not trigger the callback when the input didn't change 1`] = `
 <QuantityPicker
   editMode={false}
-  onChange={[Function]}
+  onChange={[MockFunction]}
   onToggleEditMode={[Function]}
   quantity={2}
 >
@@ -75,7 +75,15 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
 exports[`<QuantityPicker /> Given onChange callback is triggered correctly should trigger the callback when the input changed 1`] = `
 <QuantityPicker
   editMode={false}
-  onChange={[Function]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          123,
+        ],
+      ],
+    }
+  }
   onToggleEditMode={[Function]}
   quantity={2}
 >
@@ -100,7 +108,18 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
 <QuantityPicker
   editMode={false}
   onChange={[Function]}
-  onToggleEditMode={[Function]}
+  onToggleEditMode={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          true,
+        ],
+        Array [
+          false,
+        ],
+      ],
+    }
+  }
   quantity={1}
 >
   <form
@@ -124,7 +143,15 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
 <QuantityPicker
   editMode={false}
   onChange={[Function]}
-  onToggleEditMode={[Function]}
+  onToggleEditMode={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          true,
+        ],
+      ],
+    }
+  }
   quantity={1}
 >
   <form
