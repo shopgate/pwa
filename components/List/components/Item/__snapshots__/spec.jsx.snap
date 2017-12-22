@@ -4820,7 +4820,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                 </div>
               </div>
             </div>,
-            "timeStamp": 1513954994853,
+            "timeStamp": 1513956272996,
             "type": "click",
           },
         ],
@@ -9427,7 +9427,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                   </div>
                 </div>
               </div>,
-              "timeStamp": 1513954994853,
+              "timeStamp": 1513956272996,
               "type": "click",
             },
           ],
