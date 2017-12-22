@@ -56,9 +56,7 @@ export const getProductPriceAddition = createSelector(
 export const getProductTotalPrice = createSelector(
   getProductBasePrice,
   getProductPriceAddition,
-  validateSelectorParams(
-    (basePrice, priceAddition) => basePrice + priceAddition
-  )
+  validateSelectorParams((basePrice, priceAddition) => basePrice + priceAddition)
 );
 
 /**
@@ -117,17 +115,15 @@ export const getCalculatedProduct = createSelector(
   getCurrentProduct,
   getProductTotalPrice,
   isFullPriceAvailable,
-  validateSelectorParams(
-    (product, totalPrice, hasFullPrice) => ({
-      ...product,
-      price: {
-        ...product.price,
-        totalPrice,
-        // A min price of 0 signals that the full price can be displayed, @see Price component
-        unitPriceMin: !hasFullPrice ? product.price.unitPriceMin : 0,
-      },
-    })
-  )
+  validateSelectorParams((product, totalPrice, hasFullPrice) => ({
+    ...product,
+    price: {
+      ...product.price,
+      totalPrice,
+      // A min price of 0 signals that the full price can be displayed, @see Price component
+      unitPriceMin: !hasFullPrice ? product.price.unitPriceMin : 0,
+    },
+  }))
 );
 
 /**

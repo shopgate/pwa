@@ -103,7 +103,13 @@ export default function cart(subscribe) {
   /**
    * Gets triggered when a push notification containing a coupon link was received.
    */
-  subscribe(couponActionPushNotification$, ({ action, code, dispatch, getState }) => {
+  subscribe(couponActionPushNotification$, (options) => {
+    const {
+      action,
+      code,
+      dispatch,
+      getState,
+    } = options;
     const state = getState();
     const historyLength = getHistoryLength(state);
     const historyPathname = getHistoryPathname(state);

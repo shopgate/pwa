@@ -29,20 +29,18 @@ const getSearchResults = (offset = 0) => (dispatch, getState) => {
 
   const sort = getSortOrder(state);
 
-  const promise = dispatch(
-    getProducts({
-      params: {
-        searchPhrase,
-        offset,
-        limit,
-        sort,
-      },
-      onBeforeDispatch: () => {
-        // Dispatch the request action before the related pipeline request is executed.
-        dispatch(requestSearchResults(searchPhrase, offset));
-      },
-    })
-  );
+  const promise = dispatch(getProducts({
+    params: {
+      searchPhrase,
+      offset,
+      limit,
+      sort,
+    },
+    onBeforeDispatch: () => {
+      // Dispatch the request action before the related pipeline request is executed.
+      dispatch(requestSearchResults(searchPhrase, offset));
+    },
+  }));
 
   /**
    * Whenever getProducts is able to deliver product data - either via a request or from the cache -

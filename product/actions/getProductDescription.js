@@ -30,11 +30,11 @@ const getProductDescription = productId => (dispatch, getState) => {
   new PipelineRequest('getProductDescription')
     .setInput({ productId })
     .dispatch()
-      .then(result => dispatch(receiveProductDescription(productId, result.description)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorProductDescription(productId));
-      });
+    .then(result => dispatch(receiveProductDescription(productId, result.description)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorProductDescription(productId));
+    });
 };
 
 export default getProductDescription;

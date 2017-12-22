@@ -10,8 +10,8 @@
  * @param {Array} categories The received categories.
  * @returns {Array} An array of category objects.
  */
-const handleReceivedCategories = categories =>
-  (categories.length ? categories.map(category => category.id) : null)
-;
+const handleReceivedCategories = categories => (
+  categories.length ? categories.map(category => category.id) : null
+);
 
 export default handleReceivedCategories;

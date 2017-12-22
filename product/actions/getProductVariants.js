@@ -30,11 +30,11 @@ const getProductVariants = productId => (dispatch, getState) => {
   new PipelineRequest('getProductVariants')
     .setInput({ productId })
     .dispatch()
-      .then(result => dispatch(receiveProductVariants(productId, result)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorProductVariants(productId));
-      });
+    .then(result => dispatch(receiveProductVariants(productId, result)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorProductVariants(productId));
+    });
 };
 
 export default getProductVariants;

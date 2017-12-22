@@ -30,11 +30,11 @@ const getProductShipping = productId => (dispatch, getState) => {
   new PipelineRequest('getProductShipping')
     .setInput({ productId })
     .dispatch()
-      .then(result => dispatch(receiveProductShipping(productId, result.shipping)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorProductShipping(productId));
-      });
+    .then(result => dispatch(receiveProductShipping(productId, result.shipping)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorProductShipping(productId));
+    });
 };
 
 export default getProductShipping;

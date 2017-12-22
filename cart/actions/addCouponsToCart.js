@@ -20,22 +20,22 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
   dispatch(addCoupons(couponIds));
 
   new PipelineRequest('addCouponsToCart')
-      .setInput({ couponCodes: couponIds })
-      .dispatch()
-      .then(({ messages }) => {
-        if (messages) {
-          dispatch(errorAddCouponsToCart(couponIds, messages));
-          reject();
-        } else {
-          dispatch(successAddCouponsToCart(couponIds));
-          resolve();
-        }
-      })
-      .catch((error) => {
-        dispatch(errorAddCouponsToCart(couponIds));
-        logger.error('addCouponsToCart', error);
+    .setInput({ couponCodes: couponIds })
+    .dispatch()
+    .then(({ messages }) => {
+      if (messages) {
+        dispatch(errorAddCouponsToCart(couponIds, messages));
         reject();
-      });
+      } else {
+        dispatch(successAddCouponsToCart(couponIds));
+        resolve();
+      }
+    })
+    .catch((error) => {
+      dispatch(errorAddCouponsToCart(couponIds));
+      logger.error('addCouponsToCart', error);
+      reject();
+    });
 });
 
 export default addCouponsToCart;

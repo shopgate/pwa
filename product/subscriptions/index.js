@@ -22,9 +22,9 @@ import setProductId from '../action-creators/setProductId';
  */
 function product(subscribe) {
   const itemRouteDidEnter$ = routeDidEnter(ITEM_PATH);
-  const itemRouteDidLeave$ = routeDidLeave(ITEM_PATH).filter(
-    ({ pathname }) => !pathname.startsWith(ITEM_PATH)
-  );
+  const itemRouteDidLeave$ = routeDidLeave(ITEM_PATH).filter(({ pathname }) => (
+    !pathname.startsWith(ITEM_PATH)
+  ));
 
   subscribe(itemRouteDidEnter$, ({ dispatch, pathname }) => {
     const productId = hex2bin(pathname.split('/')[2]);

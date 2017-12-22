@@ -41,11 +41,11 @@ const fetchCategory = categoryId => (dispatch, getState) => {
       includeChildren: true,
     })
     .dispatch()
-      .then(result => dispatch(receiveCategory(categoryId, result, (result.children || []))))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorCategory(categoryId));
-      });
+    .then(result => dispatch(receiveCategory(categoryId, result, (result.children || []))))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorCategory(categoryId));
+    });
 };
 
 export default fetchCategory;
