@@ -3,16 +3,13 @@
 [![GitHub release](https://img.shields.io/github/release/shopgate/pwa-unit-test.svg)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-This test suite is a configuration for Shopgate's [ReactJS](https://facebook.github.io/react/) projects.
+This test suite is a configuration for Shopgate's [React](https://facebook.github.io/react/) projects.
+
+**The unit test suite needs React to be installed in at least version ~16.2.0**
 
 This configuration uses [Jest](https://facebook.github.io/jest/) for running the tests.
 It is only an extension of the default Jest configuration and
-prepares your tests for any React PWA using the Shopgate Cloud.
-
-## Dependencies
-
-The test suite has two peer dependencies. You need to install `enzyme@^2.9.1` and `jest@^20.0.4`
-together with this package. This can be seen in the installation step:
+prepares your tests for any React PWA using the [Shopgate Cloud](https://developer.shopgate.com).
 
 ## Installation
 
@@ -20,7 +17,7 @@ To install and use this package, you need to run the following command in your
 project's root directory:
 
 ```sh
-npm i @shopgate/pwa-unit-test enzyme jest --save-dev
+npm install @shopgate/pwa-unit-test --save-dev
 ```
 
 ## Usage
