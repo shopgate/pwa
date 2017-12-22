@@ -8,7 +8,7 @@
   "homepage": "https://github.com/shopgate/tracking-ga-native",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
+    "lint": "eslint --parser babel-eslint --ignore-path ../.gitignore --ignore-path .eslintignore --ext .js .",
     "test": "jest",
     "coverage": "jest --coverage",
     "prebuild": "rimraf ./dist",
@@ -18,7 +18,7 @@
     "postversion": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd ../ && git add -A && git commit -m \"$PACKAGE_VERSION\" && git tag v$PACKAGE_VERSION && git push && git push --tags && cd ./frontend/dist/ && npm publish --access public"
   },
   "dependencies": {
-    "@shopgate/tracking-core": "^1.0.5",
+    "@shopgate/tracking-core": "^1.0.6",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
@@ -28,16 +28,17 @@
     "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.2",
-    "@shopgate/pwa-common": "^1.0.12",
+    "@shopgate/eslint-config": "^1.0.3",
+    "@shopgate/pwa-common": "^1.1.1",
     "@shopgate/pwa-core": "^1.0.5",
+    "@shopgate/react-hammerjs": "^0.5.3",
     "babel-cli": "^6.26.0",
-    "jest": "^21.2.1",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "jest": "^22.0.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
-    "@shopgate/pwa-common": "1.0.x"
+    "@shopgate/pwa-common": "1.1.x"
   }
 }
