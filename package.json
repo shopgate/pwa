@@ -65,7 +65,7 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.2",
+    "@shopgate/eslint-config": "^1.0.3",
     "@shopgate/pwa-unit-test": "^1.2.5",
     "coveralls": "^3.0.0",
     "eslint": "3.19.0",
