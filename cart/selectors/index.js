@@ -181,7 +181,7 @@ export const getCartMessages = createSelector(
 );
 
 /**
- * Creates data for the "metadata" property of addProductsToCart pipeline request payload.
+ * Builds the data for the 'metadata' property of addProductsToCart pipeline request payload.
  * @returns {Object|null} The data if it was determinable, otherwise NULL.
  */
 export const getAddToCartMetadata = createSelector(
@@ -201,7 +201,7 @@ export const getAddToCartMetadata = createSelector(
 );
 
 /**
- * Creates data for the "options" property of addProductsToCart pipeline request payload.
+ * Builds the data for the 'options' property of addProductsToCart pipeline request payload.
  * @param {Object} state The application state.
  * @returns {Object|null} The data if it was determinable, otherwise NULL.
  */
@@ -216,7 +216,7 @@ export const getAddToCartOptions = createSelector(
       return null;
     }
 
-    // Create the datastructure
+    // Create the data structure.
     return Object.keys(currentOptions).map((id) => {
       const value = currentOptions[id];
       const { type } = options.find(option => option.id === id);

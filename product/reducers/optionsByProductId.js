@@ -10,8 +10,8 @@ import {
   REQUEST_PRODUCT_OPTIONS,
   RECEIVE_PRODUCT_OPTIONS,
   ERROR_PRODUCT_OPTIONS,
-  OPTION_TYPE_TEXT,
 } from '../constants';
+import formatOptions from './helpers/formatOptions';
 
 /**
  * Stores product options by the ID of the related parent product.
@@ -31,29 +31,7 @@ export default function optionsByProductId(state = {}, action) {
         },
       };
     case RECEIVE_PRODUCT_OPTIONS: {
-      const options = action.options.map((option) => {
-        let { values } = option;
-        const { type } = option;
-
-        if (values) {
-          values = values.map(value => ({
-            ...value,
-            unitPriceModifier: value.unitPriceModifier || 0,
-          }));
-        }
-
-        let unitPriceModifier;
-
-        if (type === OPTION_TYPE_TEXT) {
-          unitPriceModifier = option.unitPriceModifier || 0;
-        }
-
-        return {
-          ...option,
-          unitPriceModifier,
-          values,
-        };
-      });
+      const options = formatOptions(action.options);
 
       return {
         ...state,
