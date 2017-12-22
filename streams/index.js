@@ -16,18 +16,14 @@ import {
  * @type {Observable}
  */
 export const shopifyDidLogin$ = main$
-  .filter(({ action }) =>
-    (action.type === SUCCESS_SHOPIFY_LOGIN)
-  );
+  .filter(({ action }) => action.type === SUCCESS_SHOPIFY_LOGIN);
 
 /**
  * Gets triggered on failed Shopify login.
  * @type {Observable}
  */
 export const shopifyLoginFailed$ = main$
-  .filter(({ action }) =>
-    (action.type === ERROR_SHOPIFY_LOGIN)
-  );
+  .filter(({ action }) => action.type === ERROR_SHOPIFY_LOGIN);
 
 /**
  * Gets triggered on any Shopify login response (success or error).
