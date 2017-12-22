@@ -19,9 +19,6 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
-coverage
-
 # Dependency directories
 node_modules/
 # Optional npm cache directory
@@ -38,6 +35,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-
-# WebPack Cache
-.cache-loader
