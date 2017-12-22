@@ -166,9 +166,11 @@ class RequestManager {
    * @param {string} options.propagationMode The propagation mode for queued requests.
    * @param {number|false} options.timeout Requests timeout duration.
    */
-  constructor(
-    { processingMode = PROCESS_ANY, propagationMode = PROPAGATE_SINGLE, timeout = false } = {}
-  ) {
+  constructor({
+    processingMode = PROCESS_ANY,
+    propagationMode = PROPAGATE_SINGLE,
+    timeout = false,
+  } = {}) {
     this.processingMode = processingMode;
     this.propagationMode = propagationMode;
     this.requestQueue = [];
