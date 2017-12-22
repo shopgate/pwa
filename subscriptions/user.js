@@ -25,13 +25,11 @@ export default function user(subscribe) {
     .map(([first]) => first);
 
   subscribe(loginSuccess$, ({ action, getState }) => (
-    track('loginSuccess', action.user, getState()))
-  );
+    track('loginSuccess', action.user, getState())));
 
   /**
    * Gets triggered if login failed.
    */
   subscribe(loginDidFail$, ({ getState }) => (
-    track('loginFailed', undefined, getState()))
-  );
+    track('loginFailed', undefined, getState())));
 }

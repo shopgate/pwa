@@ -5,10 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import event from '@shopgate/pwa-core/classes/Event';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
 import getCart from '../selectors/cart';
-import { track } from '../helpers/index';
+import { track, formatPurchaseData } from '../helpers/index';
 
 /**
  * Checkout tracking subscriptions.
@@ -23,6 +25,23 @@ export default function checkout(subscribe) {
   subscribe(checkoutDidEnter$, ({ getState }) => {
     const state = getState();
 
-    track('initiatedCheckout', getCart(state), state);
+    track('initiatedCheckout', { cart: getCart(state) }, state);
+  });
+
+  /**
+   * Gets triggered when the app starts.
+   */
+  subscribe(appDidStart$, ({ getState }) => {
+    event.addCallback('checkoutSuccess', (data = {}) => {
+      /**
+       * Don't track the legacy checkout here for now, because it would be tracked twice.
+       * We can remove this as soon as we disabled the purchase tracking in the legacy checkout.
+       */
+      if (data.type === 'legacy' || typeof data.order === 'undefined') {
+        return;
+      }
+
+      track('purchase', formatPurchaseData(data.order), getState());
+    });
   });
 }

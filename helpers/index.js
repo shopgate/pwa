@@ -5,8 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import get from 'lodash/get';
+import find from 'lodash/find';
 import core from '@shopgate/tracking-core/core/Core';
 import { logger } from '@shopgate/pwa-core/helpers';
+import event from '@shopgate/pwa-core/classes/Event';
 
 /**
  * Converts a price to a formatted string.
@@ -31,15 +34,23 @@ export const formatProductData = (productData) => {
     return null;
   }
 
-  const { id, name, price, tags = [] } = productData;
+  const {
+    id,
+    name,
+    price,
+    manufacturer,
+    tags = [],
+  } = productData;
 
   return {
     name,
+    manufacturer,
     tags,
     uid: id,
     amount: {
       net: convertPriceToString(price.unitPriceNet),
       gross: convertPriceToString(price.unitPriceWithTax),
+      striked: convertPriceToString(price.unitPriceStriked),
       currency: price.currency,
     },
   };
@@ -72,17 +83,92 @@ export const formatCartProductData = ({ product, quantity }) => ({
 });
 
 /**
+ * Reformat order data from web checkout to the format our core expects.
+ * @param {Object} passedOrder Information about the order.
+ * @return {Object}
+ */
+export const formatPurchaseData = (passedOrder) => {
+  const defaults = {
+    totals: [],
+    products: [],
+    number: '',
+    currency: '',
+  };
+
+  const order = {
+    ...defaults,
+    ...passedOrder,
+  };
+
+  const { amount: grandTotal = 0 } = find(order.totals, { type: 'grandTotal' }) || {};
+  const { amount: shipping = 0 } = find(order.totals, { type: 'shipping' }) || {};
+  const { amount: tax = 0 } = find(order.totals, { type: 'tax' }) || {};
+  const grandTotalNet = grandTotal - tax;
+
+  const products = order.products.map(product => ({
+    uid: product.id || '',
+    productNumber: product.id || '',
+    name: product.name || '',
+    quantity: product.quantity || 1,
+    amount: {
+      currency: order.currency,
+      gross: convertPriceToString(get(product, 'price.withTax', 0)),
+      net: convertPriceToString(get(product, 'price.net', 0)),
+    },
+  }));
+
+  return {
+    order: {
+      number: order.number,
+      amount: {
+        currency: order.currency,
+        gross: convertPriceToString(grandTotal),
+        net: convertPriceToString(grandTotalNet),
+        tax: convertPriceToString(tax),
+      },
+      shipping: {
+        amount: {
+          gross: convertPriceToString(shipping),
+          net: convertPriceToString(shipping),
+        },
+      },
+      products,
+    },
+  };
+};
+
+/**
+ * Flag to enable/disable the tracking.
+ * @type {boolean}
+ */
+let trackingDisabled = false;
+
+// Disable the tracking if the webview is not in the foreground anymore
+event.addCallback('viewWillDisappear', () => {
+  trackingDisabled = true;
+});
+// Enable the tracking if the webview enters the foreground
+event.addCallback('viewWillAppear', () => {
+  trackingDisabled = false;
+});
+
+/**
  * Helper to pass the redux state to the tracking core
- * @param {string} event The name of the event.
+ * @param {string} eventName The name of the event.
  * @param {Object} data The tracking data of the event.
  * @param {Object} state The current redux state.
  * @return {Core|boolean}
  */
-export const track = (event, data, state) => {
-  if (typeof core.track[event] !== 'function') {
-    logger.warn('Unknown tracking event:', event);
+export const track = (eventName, data, state) => {
+  if (typeof core.track[eventName] !== 'function') {
+    logger.warn('Unknown tracking event:', eventName);
     return false;
   }
 
-  return core.track[event](data, undefined, undefined, state);
+  if (trackingDisabled) {
+    logger.warn('Tracking disabled');
+    return false;
+  }
+
+  return core.track[eventName](data, undefined, undefined, state);
 };
