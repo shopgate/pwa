@@ -61,9 +61,9 @@ export default function filters(subscribe) {
    * Gets triggered when entering a filterable route by going forward in, or replacing the history.
    */
   const filterableRoutesDidEnter$ = routeDidEnter(CATEGORY_PATH).merge(routeDidEnter(SEARCH_PATH))
-    .filter(({ historyAction, initialEnter }) =>
+    .filter(({ historyAction, initialEnter }) => (
       historyAction === HISTORY_PUSH_ACTION || initialEnter === true
-    );
+    ));
 
   /**
    * Gets triggered when leaving a filterable route by going back in history.
@@ -101,9 +101,9 @@ export default function filters(subscribe) {
   /**
    * Gets triggered when entering a filterable route NOT coming from filters.
    */
-  const newFilterableRoutesEntered$ = filterableRoutesDidEnter$.filter(
-    ({ prevPathname }) => !prevPathname.startsWith(FILTER_PATH)
-  );
+  const newFilterableRoutesEntered$ = filterableRoutesDidEnter$.filter(({ prevPathname }) => (
+    !prevPathname.startsWith(FILTER_PATH)
+  ));
 
   subscribe(filterRouteDidLeave$, ({ dispatch }) => {
     dispatch(setFilterHash(''));

@@ -12,7 +12,7 @@
  */
 export const getCurrentSearchSuggestionsObject = (state) => {
   const cache = state.search.suggestions;
-  const searchPhrase = state.navigator.searchPhrase;
+  const { searchPhrase } = state.navigator;
 
   if (!cache[searchPhrase]) {
     return {};
@@ -35,7 +35,7 @@ export const getCurrentSearchSuggestions = state =>
  * @returns {boolean}
  */
 export const isFetchingCurrentSearchSuggestions = (state) => {
-  const isFetching = getCurrentSearchSuggestionsObject(state).isFetching;
+  const { isFetching } = getCurrentSearchSuggestionsObject(state);
 
   if (typeof isFetching === 'undefined') {
     return true;

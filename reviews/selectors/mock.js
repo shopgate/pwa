@@ -59,6 +59,13 @@ export const emptyState = {
     reviewsByHash: {},
     reviewsById: {},
     reviewsByProductId: {},
+    userReviewsByProductId: {},
+  },
+  user: {
+    login: {
+      isLoggedIn: false,
+    },
+    data: {},
   },
 };
 
@@ -87,6 +94,21 @@ export const finalState = {
         reviews: [1, 2, 3, 4, 5],
         totalReviewCount: 10,
       },
+    },
+    userReviewsByProductId: {
+      9209597131: {
+        isFetching: false,
+        review: testReviews[0].id,
+      },
+    },
+  },
+  user: {
+    login: {
+      isLoggedIn: true,
+    },
+    data: {
+      firstName: 'Foo',
+      lastName: 'Bar',
     },
   },
 };

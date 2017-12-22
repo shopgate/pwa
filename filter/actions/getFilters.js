@@ -44,15 +44,20 @@ const getFilters = () => (dispatch, getState) => {
   // We need to process the params to handle edge cases in the pipeline params.
   const requestParams = processParams(params, activeFilters);
 
+  if (Object.keys(requestParams).length === 0) {
+    logger.error('Attempt to call getFilters pipeline without parameters - aborted');
+    return;
+  }
+
   dispatch(requestFilters(hash));
   new PipelineRequest('getFilters')
     .setInput(requestParams)
     .dispatch()
-      .then(({ filters }) => dispatch(receiveFilters(hash, filters)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorFilters(hash));
-      });
+    .then(({ filters }) => dispatch(receiveFilters(hash, filters)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorFilters(hash));
+    });
 };
 
 export default getFilters;

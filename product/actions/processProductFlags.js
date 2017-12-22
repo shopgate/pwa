@@ -18,7 +18,7 @@ const processProductFlags = product => (dispatch) => {
   const {
     hasVariants = false,
     hasOptions = false,
-   } = flags;
+  } = flags;
 
   if (hasVariants) {
     dispatch(getProductVariants(id));

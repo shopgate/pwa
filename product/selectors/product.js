@@ -70,7 +70,8 @@ export const getCurrentProduct = createSelector(
   getProducts,
   (productId, products) => {
     const entry = products[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.productData)) {
+    // No return null when data is there but product data is updating.
+    if (!entry || isUndefined(entry.productData)) {
       return null;
     }
 
@@ -234,9 +235,9 @@ export const getProductImages = createSelector(
  * @return {Object|null}
  */
 export const getProductRating = createSelector(
-  getCurrentProduct,
+  getCurrentBaseProduct,
   (product) => {
-    if (!product) {
+    if (!product || !product.rating) {
       return null;
     }
 
@@ -349,4 +350,14 @@ export const getProductProperties = createSelector(
 
     return entry.properties;
   }
+);
+
+/**
+ * Retrieves the metadata for the given product.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductMetadata = createSelector(
+  getProductById,
+  product => product.productData.metadata || null
 );

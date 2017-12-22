@@ -5,16 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import event from '@shopgate/pwa-core/classes/Event';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import resetHistory from '@shopgate/pwa-common/actions/history/resetHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
-import fetchCheckoutUrl from '../../checkout/actions/fetchCheckoutUrl';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
@@ -33,6 +35,7 @@ import {
 } from '../streams';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { CART_PATH } from '../constants';
+
 /**
  * Cart subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -62,6 +65,22 @@ export default function cart(subscribe) {
     productsUpdated$
   );
 
+  /**
+   * Gets triggered when the app starts.
+   */
+  subscribe(appDidStart$, ({ dispatch }) => {
+    // Register for the app event that is triggered when the checkout process is finished
+    registerEvents(['checkoutSuccess']);
+
+    event.addCallback('checkoutSuccess', () => {
+      dispatch(resetHistory());
+      dispatch(fetchCart());
+    });
+
+    // Reset the productPendingCount on app start to avoid a wrong value in the cart badge.
+    dispatch(setCartProductPendingCount(0));
+  });
+
   subscribe(cartNeedsSync$, ({ dispatch }) => {
     dispatch(fetchCart());
   });
@@ -75,14 +94,6 @@ export default function cart(subscribe) {
   });
 
   /**
-   * Gets triggered when the app starts.
-   */
-  subscribe(appDidStart$, ({ dispatch }) => {
-    // Reset the productPendingCount on app start to avoid a wrong value in the cart badge.
-    dispatch(setCartProductPendingCount(0));
-  });
-
-  /**
    * Gets triggered a coupon link was opened.
    */
   subscribe(couponLinkOpened$, ({ action, dispatch }) => {
@@ -92,7 +103,13 @@ export default function cart(subscribe) {
   /**
    * Gets triggered when a push notification containing a coupon link was received.
    */
-  subscribe(couponActionPushNotification$, ({ action, code, dispatch, getState }) => {
+  subscribe(couponActionPushNotification$, (options) => {
+    const {
+      action,
+      code,
+      dispatch,
+      getState,
+    } = options;
     const state = getState();
     const historyLength = getHistoryLength(state);
     const historyPathname = getHistoryPathname(state);
@@ -109,7 +126,22 @@ export default function cart(subscribe) {
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
-    dispatch(fetchCheckoutUrl());
     dispatch(fetchRegisterUrl());
+  });
+
+  subscribe(remoteCartDidUpdate$, ({ dispatch, action }) => {
+    const { errors } = action;
+
+    if (Array.isArray(errors) && errors.length) {
+      errors.forEach((entry) => {
+        const { message } = entry;
+
+        dispatch(showModal({
+          confirm: null,
+          title: 'modal.title_error',
+          message,
+        }));
+      });
+    }
   });
 }

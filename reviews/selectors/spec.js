@@ -13,6 +13,8 @@ import {
   getCurrentReviewCount,
   getReviewsFetchingState,
   getProductReviewCount,
+  getUserReviewForProduct,
+  getDefaultAuthorName,
 } from './index';
 import {
   emptyState,
@@ -87,6 +89,29 @@ describe('Reviews selectors', () => {
     it('should return null when there is no reviews', () => {
       const result = getProductReviewCount(emptyState);
       expect(result).toBe(null);
+    });
+  });
+  describe('getUserReviewForProduct', () => {
+    it('should return user review', () => {
+      const result = getUserReviewForProduct(finalState);
+      expect(result).toEqual({
+        ...finalState.reviews.reviewsById[1],
+        productId: '9209597131',
+      });
+    });
+    it('should return empty object when no user review is available', () => {
+      const result = getUserReviewForProduct(emptyState);
+      expect(result).toEqual({});
+    });
+  });
+  describe('getDefaultAuthorName', () => {
+    it('should return author name when user is logged in', () => {
+      const result = getDefaultAuthorName(finalState);
+      expect(result).toBe('Foo Bar');
+    });
+    it('should return empty string, when user it not logged in', () => {
+      const result = getDefaultAuthorName(emptyState);
+      expect(result).toBe('');
     });
   });
 });

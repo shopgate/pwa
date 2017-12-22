@@ -8,6 +8,7 @@
 import {
   RECEIVE_PRODUCT_REVIEWS,
   RECEIVE_REVIEWS,
+  RECEIVE_USER_REVIEW,
 } from '../constants';
 
 /**
@@ -26,6 +27,11 @@ function reviewsById(state = {}, action) {
         [review.id]: review,
       }), state);
     }
+    case RECEIVE_USER_REVIEW:
+      return {
+        ...state,
+        [action.review.id]: action.review,
+      };
     default:
       return state;
   }

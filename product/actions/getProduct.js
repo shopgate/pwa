@@ -17,14 +17,17 @@ import { getProductById } from '../selectors/product';
 /**
  * Retrieves a product from the Redux store.
  * @param {string} productId The product ID.
+ * @param {boolean} forceFetch Skips shouldFetchData check. Always fetches.
  * @return {Function} A redux thunk.
  */
-const getProduct = productId => (dispatch, getState) => {
+const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   const state = getState();
   const product = getProductById(state, productId);
 
-  if (!shouldFetchData(product)) {
-    dispatch(processProductFlags(product.productData));
+  if (!forceFetch && !shouldFetchData(product)) {
+    if (product.productData) {
+      dispatch(processProductFlags(product.productData));
+    }
 
     return;
   }
@@ -34,14 +37,14 @@ const getProduct = productId => (dispatch, getState) => {
   new PipelineRequest('getProduct')
     .setInput({ productId })
     .dispatch()
-      .then((result) => {
-        dispatch(processProductFlags(result));
-        dispatch(receiveProduct(productId, result));
-      })
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorProduct(productId));
-      });
+    .then((result) => {
+      dispatch(processProductFlags(result));
+      dispatch(receiveProduct(productId, result));
+    })
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorProduct(productId));
+    });
 };
 
 export default getProduct;

@@ -16,7 +16,7 @@ import successAddCouponsToCart from '../action-creators/successAddCouponsToCart'
  * @param {Array} couponIds The IDs of the coupons that shall be added to the cart.
  * @return {Function} A redux thunk.
  */
-const addCouponsToCart = couponIds => (dispatch) => {
+const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) => {
   dispatch(addCoupons(couponIds));
 
   new PipelineRequest('addCouponsToCart')
@@ -25,14 +25,17 @@ const addCouponsToCart = couponIds => (dispatch) => {
     .then(({ messages }) => {
       if (messages) {
         dispatch(errorAddCouponsToCart(couponIds, messages));
+        reject();
       } else {
         dispatch(successAddCouponsToCart(couponIds));
+        resolve();
       }
     })
     .catch((error) => {
       dispatch(errorAddCouponsToCart(couponIds));
       logger.error('addCouponsToCart', error);
+      reject();
     });
-};
+});
 
 export default addCouponsToCart;

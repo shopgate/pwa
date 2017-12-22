@@ -30,11 +30,11 @@ const fetchCategoryChildren = categoryId => (dispatch, getState) => {
   new PipelineRequest('getCategoryChildren')
     .setInput({ categoryId })
     .dispatch()
-      .then(result => dispatch(receiveCategoryChildren(categoryId, result.categories)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorCategoryChildren(categoryId));
-      });
+    .then(result => dispatch(receiveCategoryChildren(categoryId, result.categories)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorCategoryChildren(categoryId));
+    });
 };
 
 export default fetchCategoryChildren;

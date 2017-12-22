@@ -55,7 +55,8 @@ export const getCartItems = createSelector(
  */
 export const getCartProducts = createSelector(
   cartItemsSelector,
-  cartItems => cartItems.filter(item => item.type === CART_ITEM_TYPE_PRODUCT));
+  cartItems => cartItems.filter(item => item.type === CART_ITEM_TYPE_PRODUCT)
+);
 
 /**
  * Selects the coupons from the cart.
@@ -64,7 +65,8 @@ export const getCartProducts = createSelector(
  */
 export const getCartCoupons = createSelector(
   cartItemsSelector,
-  cartItems => cartItems.filter(item => item.type === CART_ITEM_TYPE_COUPON));
+  cartItems => cartItems.filter(item => item.type === CART_ITEM_TYPE_COUPON)
+);
 
 /**
  * Calculates the current number of product in the cart.

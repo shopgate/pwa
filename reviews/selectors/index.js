@@ -7,7 +7,8 @@
 
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { getCurrentProductId } from '../../product/selectors/product';
+import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import { getCurrentBaseProductId } from '../../product/selectors/product';
 
 /**
  * Select the product reviews state.
@@ -21,8 +22,8 @@ const getReviewsByHashState = state => state.reviews.reviewsByHash;
  * @param {Object} state The current application state.
  * @return {Object|null} The reviews for a product.
  */
-const getCollectionForCurrentProductId = createSelector(
-  getCurrentProductId,
+const getCollectionForCurrentBaseProduct = createSelector(
+  getCurrentBaseProductId,
   getReviewsByHashState,
   (productId, reviewsState) => {
     const hash = generateResultHash({
@@ -57,7 +58,7 @@ export const getReviews = state => state.reviews.reviewsById || {};
  * @return {Object} The reviews for a product
  */
 export const getProductReviewsExcerpt = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   getReviews,
   (productId, productReviewsState, reviewsState) => {
@@ -77,7 +78,7 @@ export const getProductReviewsExcerpt = createSelector(
  * @return {number} The total review count for a product
  */
 export const getProductReviewCount = createSelector(
-  getCurrentProductId,
+  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   (productId, reviewsState) => {
     const collection = reviewsState[productId];
@@ -95,7 +96,7 @@ export const getProductReviewCount = createSelector(
  * @return {Array|null} The reviews for a product.
  */
 export const getProductReviews = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   getReviews,
   (collection, allReviews) => {
     if (!collection || !collection.reviews) {
@@ -111,7 +112,7 @@ export const getProductReviews = createSelector(
  * @return {number|null} The total number of reviews.
  */
 export const getReviewsTotalCount = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   (collection) => {
     if (!collection || !collection.hasOwnProperty('totalReviewCount')) {
       return null;
@@ -126,7 +127,7 @@ export const getReviewsTotalCount = createSelector(
  * @return {number|null} The current number of fetched reviews.
  */
 export const getCurrentReviewCount = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   (collection) => {
     if (!collection || !collection.reviews) {
       return null;
@@ -142,6 +143,59 @@ export const getCurrentReviewCount = createSelector(
  * @return {bool} The boolean information if reviews are currently being fetched.
  */
 export const getReviewsFetchingState = createSelector(
-  getCollectionForCurrentProductId,
+  getCollectionForCurrentBaseProduct,
   collection => collection && collection.isFetching
+);
+
+/**
+ * Select the user reviews state.
+ * @param {Object} state The current application state.
+ * @return {Object} The user reviews collection stored as productId => review.
+ */
+const userReviewsByProductId = state => state.reviews.userReviewsByProductId;
+
+/**
+ * Retrieves a user review for a product.
+ */
+export const getUserReviewForProduct = createSelector(
+  getCurrentBaseProductId,
+  userReviewsByProductId,
+  getReviews,
+  (productId, userReviews, allReviews) => {
+    if (!userReviews || !userReviews[productId] || !allReviews[userReviews[productId].review]) {
+      return {};
+    }
+
+    return {
+      ...allReviews[userReviews[productId].review],
+      productId,
+    };
+  }
+);
+
+/**
+ * Gets user reviews fetching state. Only the first fetch is considered.
+ * @return {bool} True if user review for current product is being fetched.
+ */
+export const getUserReviewFirstFetchState = createSelector(
+  getCurrentBaseProductId,
+  userReviewsByProductId,
+  (productId, userReviews) =>
+    !!(
+      userReviews
+      && productId
+      && userReviews[productId]
+      && !userReviews[productId].review
+      && userReviews[productId].isFetching
+    )
+);
+
+/**
+ * Get a user name for the review form.
+ * @param {Object} state The state.
+ * @returns {string} A user name.
+ */
+export const getDefaultAuthorName = state => (
+  (isUserLoggedIn && state.user.data && state.user.data.firstName)
+    ? `${state.user.data.firstName} ${state.user.data.lastName}` : ''
 );
