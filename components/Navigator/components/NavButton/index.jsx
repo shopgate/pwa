@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   HISTORY_PUSH_ACTION,
@@ -44,7 +44,7 @@ const getTypeFromProps = (props) => {
 /**
  * The nav icon component for the navigator.
  */
-class NavButton extends PureComponent {
+class NavButton extends Component {
   static propTypes = {
     // eslint-disable-next-line react/no-unused-prop-types
     action: PropTypes.string.isRequired,
