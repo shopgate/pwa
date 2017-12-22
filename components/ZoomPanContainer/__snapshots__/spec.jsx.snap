@@ -520,7 +520,7 @@ exports[`<ZoomPanContainer /> triggers the zoom event 1`] = `
 <ZoomPanContainer
   maxZoom={4}
   minZoom={1}
-  onZoom={[Function]}
+  onZoom={[MockFunction]}
   smoothness={500}
   zoomBounce={0.3}
   zoomOnTap={2}
