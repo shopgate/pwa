@@ -1,28 +1,29 @@
-# ProductImageSlider 
+# ProductImageSlider
 ---
 
-Image slider for the product view. 
+Image slider for the product view.
 
 Tries to display as fast as possible the first image (featuredImage) while waiting for the actual image slider with higher resolution images.
 
 **Behavior:**
 - When product data is not available, display an image placeholder.
-- When product data is available, display image for `product.featuredImageUrl` 
+- When product data is available, display image for `product.featuredImageUrl`
 - When images is available, display an ImageSlider with all images.
 
-> **Dependencies:** 
-<br> `<ImageSlider />`
-<br> `<Image />`
-<br> `<PlaceholderImage />`
+> **Dependencies:**  
+> `<ImageSlider />`  
+> `<Image />`  
+> `<PlaceholderImage />`  
 
-> **Dependents:** <br> `<ProductTemplate />`
+> **Dependents:**  
+> `<ProductTemplate />`
 
 ## Getting Started
 
-```
-import { ProductImageSlider } from 'Templates/components';
+```jsx
+import ProductImageSlider from 'Pages/Product/components/ImageSlider';
 
-<ProductImageSlider 
+<ProductImageSlider
   product={...}
   images={[
     'foo/bar.png',
@@ -33,41 +34,28 @@ import { ProductImageSlider } from 'Templates/components';
 
 ## Props
 
-### isAnimating (required)
-_Type_: `boolean` <br>
-
-When animating it will only display a placeholder.
-
-###### Usage:
-
-```
-<ProductImageSlider isAnimating={false} />
-```
-
 ### product
 
-_Type_: `Object`<br>
+_Type_: `Object`  
 
-Needs the featuredImageUrl string!
-BasicProduct data, when null will display placeholder.
+Needs the featuredImageUrl string! BasicProduct data, when null will display placeholder.
 > **Note:** When `isAnimating` is `true`, `product` will be ignored until animation is done!
 
 ###### Usage:
 
-```
+```jsx
 <ProductImageSlider product={...} isAnimating />
 ```
 
-### images 
+### images
 
-_Type_: `string[]`<br>
+_Type_: `string[]`  
 
 Array of urls to images, when null will display placeholder.
 > **Note:** When `isAnimating` is `true`, `images` will be ignored until animation is done!
 
 ###### Usage:
 
-```
+```jsx
 <ProductImageSlider images={['foo/bar.png']} isAnimating />
 ```
-

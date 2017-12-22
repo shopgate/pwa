@@ -45,6 +45,6 @@ coverage
 
 # Project
 /config/local.json
+/config/app.json
 /public/
-/extensions/**
-!/extensions/.gitkeep
+/extensions/

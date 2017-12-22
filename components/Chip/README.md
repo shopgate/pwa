@@ -2,24 +2,11 @@ Chip
 ---
 The Chip component is used by the ChipsLayout. It displays a simple rounded tag with an close icon.
 
-## Props
-
-### children (required)
-
-_Type_: `node`<br>
-
-The inner content of the chip
-
-### onRemove (optional)
-
-_Type_: `function (event)`<br>
-
-Callback that is executed when the tag is supposed to be removed.
-
 ## Usage:
 
-```markup
-import { Chip, ChipsLayout } from 'Templates/components';
+```jsx
+import ChipsLayout from 'Components/ChipsLayout';
+import Chip from 'Components/Chip';
 
 <ChipsLayout>
   <Chip>foo</Chip>
@@ -28,3 +15,36 @@ import { Chip, ChipsLayout } from 'Templates/components';
 ```
 This will create a List of tags.
 
+## Props
+
+### children (required)
+
+_Type_: `node`  
+
+The inner content of the chip
+
+### invert (optional)
+
+_Type_: `boolean`  
+_Default_: `false`  
+
+If set, the chip will be displayed with an inverted background color.
+
+### onClick (optional)
+
+_Type_: `function (event)`  
+
+Callback that is executed when the chip is clicked.
+
+### onRemove (optional)
+
+_Type_: `function (event)`  
+
+Callback that is executed when the chip is supposed to be removed.
+
+### removable (optional)
+
+_Type_: `boolean`  
+_Default_: `true`  
+
+If set, the chip will include an icon to remove it.

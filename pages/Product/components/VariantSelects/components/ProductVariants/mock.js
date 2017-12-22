@@ -14,8 +14,8 @@ const variants = {
       2: '1',
     },
     availability: {
-      state: 'ok',
-      text: 'Available',
+      state: 'waning',
+      text: 'Limited stock available',
     },
   }, {
     id: '1013-1015',
@@ -25,8 +25,8 @@ const variants = {
       2: '2',
     },
     availability: {
-      state: 'ok',
-      text: 'Available',
+      state: 'alert',
+      text: 'Out of stock',
     },
   }, {
     id: '1013-1016',
@@ -152,17 +152,17 @@ const selectionUpdate = [{
   selected: true,
   value: '1',
   values: [{
+    availability: null,
     disabled: false,
     id: '1',
     label: 'Black',
     selected: true,
-    availability: null,
   }, {
+    availability: null,
     disabled: false,
     id: '2',
     label: 'Blue',
     selected: false,
-    availability: null,
   }],
 }, {
   disabled: false,
@@ -171,32 +171,29 @@ const selectionUpdate = [{
   selected: false,
   value: null,
   values: [{
+    availability: {
+      state: 'waning',
+      text: 'Limited stock available',
+    },
     disabled: false,
     id: '1',
     label: '0',
     selected: false,
-    availability: {
-      state: 'ok',
-      text: 'Available',
-    },
   }, {
+    availability: {
+      state: 'alert',
+      text: 'Out of stock',
+    },
     disabled: false,
     id: '2',
     label: '11',
     selected: false,
-    availability: {
-      state: 'ok',
-      text: 'Available',
-    },
   }, {
+    availability: null,
     disabled: false,
     id: '3',
     label: '7',
     selected: false,
-    availability: {
-      state: 'ok',
-      text: 'Available',
-    },
   }],
 }];
 

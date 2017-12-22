@@ -13,9 +13,9 @@ import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '@shopgate/pwa-common-commerce
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RouteGuard from '@shopgate/pwa-common/components/Router/components/RouteGuard';
 import Picker from 'Components/Picker';
+import Availability from 'Components/Availability';
 import VariantPickerButton from './components/VariantPickerButton';
 import ProductVariants from './components/ProductVariants';
-import Availability from 'Components/Availability';
 import connect from './connector';
 import styles from './style';
 

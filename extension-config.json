@@ -1,5 +1,5 @@
 {
-  "version": "0.1.12",
+  "version": "1.1.4",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "language": {
@@ -76,16 +76,18 @@
         "method":  "GET",
         "service": "config",
         "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
-        "key": "value"
+        "key": "value.frontend"
       }
     },
-    "features": {
-      "type": "static",
-      "destination" : "frontend",
+    "hasReviews": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
       "params": {
-        "value" : {
-          "showReviews": true
-        }
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
+        "key": "value"
       }
     }
   }

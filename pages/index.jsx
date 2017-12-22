@@ -13,7 +13,6 @@ import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
-// @TODO import tracking from 'Library/tracking/core';
 import App from '@shopgate/pwa-common/App';
 import {
   INDEX_PATH,
@@ -46,8 +45,9 @@ import Register from './Register';
 import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
+import WriteReview from './WriteReview';
 
-const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900';
+const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -75,6 +75,7 @@ const Pages = () =>
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
         <Route path={`${ORDERS_PATH}`} component={Orders} />
+        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
       </AuthRoutes>
 
       {isDev && (

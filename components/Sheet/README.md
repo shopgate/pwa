@@ -5,8 +5,8 @@ The `Sheet` component is used as a page popup.
 
 ## Getting Started
 
-```
-import { Sheet } from 'Templates/components';
+```jsx
+import Sheet from 'Components/Sheet';
 
 <Sheet title="My Sheet">
   ...
@@ -17,14 +17,14 @@ import { Sheet } from 'Templates/components';
 
 ### children
 
-_Default_: `null`
-_Type_: `node`
+_Default_: `null`  
+_Type_: `node`  
 
 Children that will be rendered.
 
 ###### Usage:
 
-```
+```jsx
 <Sheet>
   <ChildComponent />
 </Sheet>
@@ -34,19 +34,19 @@ Children that will be rendered.
 
 _Default_:
 
-```
+```jsx
 {
   in: null,
   out: null,
 }
 ```
-_Type_: `Object`
+_Type_: `Object`  
 
 An object which contains classes for the in and out animation.
 
 ###### Usage:
 
-```
+```jsx
 const sheetAnimation = {
   in: 'animate_in_class',
   out: 'animate_in_class'
@@ -59,45 +59,45 @@ const sheetAnimation = {
 
 ### onOpen
 
-_Type_: `Function`<br>
-_Default_: `() => {}`<br>
+_Type_: `Function`  
+_Default_: `() => {}`  
 
 Callback function that is triggered if the Sheet is opened.
 
 ###### Usage:
 
-```
+```js
 const handleOpen = () => { ... };
 ```
-```
+```jsx
 <Sheet onClose={handleOpen}/>
 ```
 
 ### onClose
 
-_Type_: `Function`<br>
-_Default_: `() => {}`<br>
+_Type_: `Function`  
+_Default_: `() => {}`  
 
 Callback function that is triggered if the Sheet is closed.
 
 ###### Usage:
 
-```
+```js
 const handleClose = () => { ... };
 ```
-```
+```jsx
 <Sheet onClose={handleClose}/>
 ```
 
 ### title
 
-_Type_: `string`<br>
-_Default_: `''`<br>
+_Type_: `string`  
+_Default_: `''`  
 
 The title of the Sheet.
 
 ###### Usage:
-```
+```jsx
 <Sheet title='My Title'>
   ...
 </Sheet>
@@ -105,13 +105,13 @@ The title of the Sheet.
 
 ### duration
 
-_Type_: `number`<br>
-_Default_: `300`<br>
+_Type_: `number`  
+_Default_: `300`  
 
 Duration of the open/close animation, in milliseconds.
 
 ###### Usage:
-```
+```jsx
 <Sheet duration={150}>
   ...
 </Sheet>
@@ -119,13 +119,13 @@ Duration of the open/close animation, in milliseconds.
 
 ### isOpen
 
-_Type_: `boolean`<br>
-_Default_: `false`<br>
+_Type_: `boolean`  
+_Default_: `false`  
 
 Prop to set the open state of the component.
 
 ###### Usage:
-```
+```jsx
 <Sheet isOpen>
   ...
 </Sheet>

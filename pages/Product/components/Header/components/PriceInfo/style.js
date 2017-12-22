@@ -14,7 +14,8 @@ const placeholder = css({
 }).toString();
 
 const priceInfo = css({
-  fontSize: '0.625rem',
+  fontSize: 12,
+  marginTop: 4,
 }).toString();
 
 export default {

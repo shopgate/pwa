@@ -1,28 +1,25 @@
 {
   "widgets": {
     "@shopgate/commerce-widgets/image": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/Image"
+      "path": "@shopgate/commerce-widgets/frontend/src/Image"
     },
     "@shopgate/commerce-widgets/image_slider": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/ImageSlider"
+      "path": "@shopgate/commerce-widgets/frontend/src/ImageSlider"
     },
     "@shopgate/commerce-widgets/html": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/Html"
+      "path": "@shopgate/commerce-widgets/frontend/src/Html"
     },
     "@shopgate/commerce-widgets/product_slider": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/ProductSlider"
-    },
-    "@shopgate/commerce-widgets/widget-grid": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/WidgetGrid"
+      "path": "@shopgate/commerce-widgets/frontend/src/ProductSlider"
     },
     "@shopgate/commerce-widgets/category_list": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/CategoryList"
+      "path": "@shopgate/commerce-widgets/frontend/src/CategoryList"
     },
     "@shopgate/commerce-widgets/product_list": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/Products"
+      "path": "@shopgate/commerce-widgets/frontend/src/Products"
     },
     "@shopgate/commerce-widgets/liveshopping": {
-      "path": "@shopgate/commerce-widgets/frontend/dist/Liveshopping"
+      "path": "@shopgate/commerce-widgets/frontend/src/Liveshopping"
     }
   },
   "tracking": {

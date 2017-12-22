@@ -1,7 +1,9 @@
 {
   "common": {
     "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
-    "load_more": "Mehr laden"
+    "load_more": "Mehr laden",
+    "cancel": "Abbrechen",
+    "submit": "Abschicken"
   },
   "titles": {
     "categories": "Kategorien",
@@ -26,6 +28,7 @@
   "price": {
     "from": "Ab {price}",
     "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "msrp": "UVP",
     "currency": "EUR"
   },
   "product": {
@@ -42,7 +45,8 @@
     "no_result": {
       "heading": "Uups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" hat 0 Ergebnisse."
-    }
+    },
+    "placeholder": "Suchen"
   },
   "shipping": {
     "free": "Kostenloser Versand",
@@ -105,6 +109,16 @@
     "button_add": "Bewertung schreiben",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
-    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}"
+    "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}",
+    "review_form_rate": "Bewerte dieses Produkt:",
+    "review_form_author": "Name",
+    "review_form_title": "Titel (optional)",
+    "review_form_text": "Bewertung (optional)",
+    "review_form_error_author_empty": "Bitte einen Namen angeben.",
+    "review_form_rate_error": "Bitte Sterne vergeben.",
+    "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
+    "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
+    "modal_title": "Vielen Dank!",
+    "modal_message": "Die Bewertung wurde gespeichert und hilft nun anderen Käufern dabei sich zu informieren!"
   }
 }

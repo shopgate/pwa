@@ -22,7 +22,7 @@ const Properties = ({ properties }) => {
 
   return (
     <div className={styles.content}>
-      <table className={styles.table} cellPadding={5}>
+      <table className={styles.table}>
         <tbody>
           {properties.map(({ label, value }) => (
             <tr key={label}>

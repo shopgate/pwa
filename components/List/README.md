@@ -5,8 +5,8 @@ This component accepts children and wraps each child with a `<List.Item>` base c
 
 ## Getting Started
 
-```
-import { List } from 'Templates/components';
+```jsx
+import List from 'Components/List';
 
 <List>
  ...
@@ -17,11 +17,11 @@ import { List } from 'Templates/components';
 
 ### children (required)
 
-_Type_: `node`<br>
+_Type_: `node`  
 
 ###### Usage:
 
-```
+```jsx
 <List>
   ...
 </List>

@@ -19,6 +19,7 @@ class ActionButton extends Component {
     ...RippleButton.propTypes,
     onClick: PropTypes.func.isRequired,
     loading: PropTypes.bool,
+    noGap: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -26,6 +27,7 @@ class ActionButton extends Component {
     loading: false,
     type: 'primary',
     flat: true,
+    noGap: false,
   };
 
   static clickDelay = 300;
@@ -40,7 +42,7 @@ class ActionButton extends Component {
     setTimeout(() => {
       this.props.onClick(event);
     }, clickDelay);
-  }
+  };
 
   /**
    * Getter for the calculated button props.
@@ -62,6 +64,8 @@ class ActionButton extends Component {
    * @returns {JSX}
    */
   render() {
+    const containerClass = this.props.noGap ? styles.noGapContainer : styles.container;
+
     if (this.props.loading) {
       return (
         <div className={styles.containerCircle}>
@@ -71,7 +75,7 @@ class ActionButton extends Component {
     }
 
     return (
-      <div className={styles.container}>
+      <div className={containerClass}>
         <RippleButton {...this.buttonProps} onClick={this.handleClick}>
           {this.props.children}
         </RippleButton>

@@ -6,6 +6,7 @@
  */
 
 import { connect } from 'react-redux';
+import { getClientInformation } from '@shopgate/pwa-common/selectors/client';
 import { enableDebugLogging } from './actions';
 
 /**
@@ -13,15 +14,19 @@ import { enableDebugLogging } from './actions';
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  client: {
-    isFetching: state.client.isFetching,
-    appVersion: state.client.appVersion,
-    libVersion: state.client.libVersion,
-    codebaseVersion: state.client.codebaseVersion,
-    deviceId: state.client.deviceId,
-  },
-});
+const mapStateToProps = (state) => {
+  const clientInformation = getClientInformation(state);
+
+  return {
+    client: {
+      isFetching: clientInformation.isFetching,
+      appVersion: clientInformation.appVersion,
+      libVersion: clientInformation.libVersion,
+      codebaseVersion: clientInformation.codebaseVersion,
+      deviceId: clientInformation.deviceId,
+    },
+  };
+};
 
 /**
  * Connects the dispatch function to a callable function in the props.

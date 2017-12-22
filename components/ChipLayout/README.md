@@ -1,38 +1,35 @@
 ChipsLayout
 -----------
-The ChipsLayout component renders a list of Chips,
-it makes sure to fit as much tags as possible without overflowing elements.
-If there are overflowing elements they will be hidden and a MORE button appears.
+The ChipsLayout component renders a list of Chips, it makes sure to fit as much tags as possible without overflowing elements. If there are overflowing elements they will be hidden and a MORE button appears.
 
 ## Props
 
 ### children (optional)
 
-_Type_: `[Chip]`<br>
-_Default_: `[]` <br>
+_Type_: `[Chip]`  
+_Default_: `[]`   
 
 This component does only allow to store Tags as children!
 
 ### maxRows (optional)
 
-_Type_: `number`<br>
-_Default_: `2`<br>`
+_Type_: `number`  
+_Default_: `2`  
 
-Allows to set the maximum amount of allowed rows. Any item that would overflow this limit
-won't be rendered!
+Allows to set the maximum amount of allowed rows. Any item that would overflow this limit won't be rendered!
 
 
 ### handleMoreButton (optional)
 
-_Type_: `function (event)`<br>
+_Type_: `function (event)`  
 
 Will be called if the MORE button is pressed.
 
-
 ## Usage:
 
-```markup
-import { Chip, ChipsLayout } from 'Templates/components';
+```jsx
+import ChipsLayout from 'Components/ChipsLayout';
+import Chip from 'Components/Chip';
 
 <ChipsLayout>
   <Chip>foo</Chip>

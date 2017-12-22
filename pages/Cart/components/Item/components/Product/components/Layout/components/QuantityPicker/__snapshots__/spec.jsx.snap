@@ -7,16 +7,20 @@ exports[`<QuantityPicker /> Given editMode prop is handled correctly should blur
   onToggleEditMode={[Function]}
   quantity={1}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -27,16 +31,20 @@ exports[`<QuantityPicker /> Given editMode prop is handled correctly should focu
   onToggleEditMode={[Function]}
   quantity={1}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -47,16 +55,20 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
   onToggleEditMode={[Function]}
   quantity={2}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={2}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={2}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -67,16 +79,20 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
   onToggleEditMode={[Function]}
   quantity={2}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={123}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={123}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -87,16 +103,20 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
   onToggleEditMode={[Function]}
   quantity={1}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -107,16 +127,20 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
   onToggleEditMode={[Function]}
   quantity={1}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -127,16 +151,20 @@ exports[`<QuantityPicker /> should fall back to its default of 1, if 0 is suppli
   onToggleEditMode={[Function]}
   quantity={0}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -147,16 +175,20 @@ exports[`<QuantityPicker /> should fall back to the previous value when the last
   onToggleEditMode={[Function]}
   quantity={124}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={124}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={124}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -167,16 +199,20 @@ exports[`<QuantityPicker /> should have an amount of 1 by default 1`] = `
   onToggleEditMode={[Function]}
   quantity={1}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -187,16 +223,20 @@ exports[`<QuantityPicker /> should have an amount of 3 via prop 1`] = `
   onToggleEditMode={[Function]}
   quantity={3}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={3}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={3}
+    />
+  </form>
 </QuantityPicker>
 `;
 
@@ -207,15 +247,19 @@ exports[`<QuantityPicker /> should reset the amount to 1 if set to lower than 0 
   onToggleEditMode={[Function]}
   quantity={-1}
 >
-  <input
-    className="css-7rhxrg"
-    min={1}
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    type="number"
-    value={1}
-  />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="css-7rhxrg"
+      min={1}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      type="number"
+      value={1}
+    />
+  </form>
 </QuantityPicker>
 `;

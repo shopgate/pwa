@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import TextField from './index';
 
 const inputProps = {
@@ -58,13 +58,11 @@ describe('<TextField />', () => {
     const wrapper = mount(
       <TextField {...inputProps} />
     );
-
     const input = wrapper.find('input');
 
     input.simulate('change', { target: { value: 'foobar' } });
-
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().value).toBe('foobar');
+    expect(input.instance().value).toBe('foobar');
   });
 
   it('should sanitize the input', () => {
@@ -77,7 +75,7 @@ describe('<TextField />', () => {
     input.simulate('change', { target: { value: 'foobar' } });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().value).toBe('FOOBAR');
+    expect(input.instance().value).toBe('FOOBAR');
   });
 
   it('should trigger the validation callback', () => {
@@ -114,34 +112,34 @@ describe('<TextField />', () => {
   it('should show the error message', () => {
     const errorText = 'This is an error here';
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <TextField {...inputProps} errorText={errorText} />
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.childAt(4).childAt(0).props().string).toEqual(errorText);
+    expect(wrapper.find('Translate').at(2).props().string).toEqual(errorText);
   });
 
   it('should show the label', () => {
     const label = 'This is the label';
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <TextField {...inputProps} label={label} />
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.childAt(1).childAt(0).props().string).toEqual(label);
+    expect(wrapper.find('Label').find('Translate').props().string).toEqual(label);
   });
 
   it('should show the hint text', () => {
     const hintText = 'This is the hint text';
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <TextField {...inputProps} hintText={hintText} />
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.childAt(0).childAt(0).props().string).toEqual(hintText);
+    expect(wrapper.find('Hint').find('Translate').at(0).props().string).toEqual(hintText);
   });
 
   it('should replace the error text with custom validation error', () => {
@@ -155,10 +153,15 @@ describe('<TextField />', () => {
       <TextField {...inputProps} onValidate={onValidate} />
     );
 
+    wrapper.find('input').simulate('blur');
     expect(wrapper).toMatchSnapshot();
     // Expect at least one element containing the validation error text.
-    expect(wrapper.findWhere(
-      node => node.text() === onValidate()
-    ).length).toBeGreaterThan(0);
+    expect(wrapper.findWhere((node) => {
+      try {
+        return node.text() === onValidate();
+      } catch (e) {
+        return false;
+      }
+    }).length).toBeGreaterThan(0);
   });
 });

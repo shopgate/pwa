@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { features } from 'Config/app.json';
+import { hasReviews } from 'Config/app.json';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
@@ -42,7 +42,7 @@ const Item = ({ product, display }) => (
     }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        {(features.showReviews && product.rating && product.rating.count > 0) &&
+        {(hasReviews && product.rating && product.rating.count > 0) &&
           <div>
             {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
           </div>

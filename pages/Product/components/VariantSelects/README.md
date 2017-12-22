@@ -1,64 +1,64 @@
-# ProductVariantSelects Component
+# VariantSelects
 ---
 
 ## Getting Started
 
-```
-import { ProductVariants, ProductVariantSelects } from 'Templates/components';
+```jsx
+import VariantSelects from 'Pages/Product/components/VariantSelects'
 
 // Object with all variants
 const variants = {};
 
-<ProductVariantSelects variants={variants}/>
+<VariantSelects variants={variants}/>
 ```
 
 ## Props
 
-### variants (only needed for the HOC and not available in the ProductVariantSelects)
+### variants (only needed for the HOC and not available in the VariantSelects)
 _Type_: `Array`  
 The response data of the _getProductVariants_ pipeline request. This prop needs to be applied to the wrapped component.
 
 
 ### handleSelectionUpdate(variantId, valueId)
 
-_Type_: `function`<br>
-_Default_: `() => {}`<br>
+_Type_: `function`  
+_Default_: `() => {}`  
 
 Callback function that is triggered if the user selects a characteristic
 
 ###### Usage:
 
-```
+```jsx
 const onCharacteristicUpdate = (variantId, valueId) => {...}
 ```
-```
-<ProductVariantSelects onCharacteristicUpdate={onCharacteristicUpdate}/>
+```jsx
+<VariantSelects onCharacteristicUpdate={onCharacteristicUpdate}/>
 ```
 
 ### closeDelay
 
-_Type_: `number`<br>
-_Default_: `200`<br>
+_Type_: `number`  
+_Default_: `200`  
 
 Delay after a click until the Drawer starts closing
 
 ###### Usage:
 
-```
-<ProductVariantSelects closeDelay={300}/>
+```jsx
+<VariantSelects closeDelay={300}/>
 ```
 
 
 ### selection
 
-_Type_: `Array`<br>
-_Default_: `[]`<br>
+_Type_: `Array`  
+_Default_: `[]`  
 
 Array of all characteristics
 
 ###### Usage:
 
-```
+```js
 const data = [
  {
    id: '2',
@@ -76,10 +76,7 @@ const data = [
 ];
 ```
 
+```jsx
+<VariantSelects selection={data}/>
 ```
-<ProductVariantSelects selection={data}/>
-```
----
-
-
 ---

@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import PlaceholderLabel from 'Components/PlaceholderLabel';
 import BaseManufacturer from 'Components/Manufacturer';
 import connect from './connector';
@@ -19,13 +18,11 @@ import styles from './style';
  * @return {JSX}
  */
 const Manufacturer = ({ manufacturer }) => (
-  <Grid component="div">
-    <Grid.Item component="div" shrink={0} className={styles.infoContainer}>
-      <PlaceholderLabel className={styles.placeholder} ready={(manufacturer !== null)}>
-        <BaseManufacturer text={(manufacturer || '')} />
-      </PlaceholderLabel>
-    </Grid.Item>
-  </Grid>
+  <div className={styles.infoContainer}>
+    <PlaceholderLabel className={styles.placeholder} ready={(manufacturer !== null)}>
+      <BaseManufacturer text={(manufacturer || '')} />
+    </PlaceholderLabel>
+  </div>
 );
 
 Manufacturer.propTypes = {

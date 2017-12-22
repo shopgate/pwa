@@ -76,11 +76,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
           <div
             className="css-1aq22wi css-1rg7udn css-jg4uw5"
             onAnimationEnd={[Function]}
-            style={
-              Object {
-                "animationDuration": "undefinedms",
-              }
-            }
+            style={Object {}}
           >
             <div
               className="css-1xj3g9q"
@@ -95,7 +91,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 }
               >
                 <div
-                  className="css-vk8a95 css-1a237xp"
+                  className="css-vk8a95 css-fvkmon"
                 >
                   <div
                     className="css-1al5bli"
@@ -677,113 +673,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               <Item
                 close={[Function]}
                 count={null}
-                href="/page/imprint"
-                icon={[Function]}
-                onClick={[Function]}
-                primary={false}
-              >
-                <div
-                  aria-hidden={true}
-                  className="css-13azwyo"
-                  onClick={[Function]}
-                >
-                  <Ripple
-                    className=""
-                    color="#000"
-                    fill={true}
-                    overflow={false}
-                    size={null}
-                  >
-                    <div
-                      aria-hidden={true}
-                      className=""
-                      onClick={[Function]}
-                      style={null}
-                    >
-                      <Grid
-                        className="css-1yzks37"
-                        component="ul"
-                        wrap={false}
-                      >
-                        <ul
-                          className="css-1yzks37 css-h7r55a"
-                        >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <div
-                                className="css-17ij4h5"
-                              >
-                                <Info>
-                                  <Icon
-                                    className=""
-                                    color={null}
-                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
-                                    size="inherit"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <svg
-                                      className="css-yys9hb "
-                                      dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
-                                        }
-                                      }
-                                      style={
-                                        Object {
-                                          "fill": null,
-                                          "fontSize": "inherit",
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Info>
-                              </div>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <li
-                              className=" css-1gs0ko2"
-                            >
-                              <div
-                                className="css-1hv14w9"
-                              >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="navigation.about"
-                                >
-                                  <span
-                                    className=""
-                                  >
-                                    navigation.about
-                                  </span>
-                                </Translate>
-                              </div>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </div>
-                  </Ripple>
-                </div>
-              </Item>
-              <Item
-                close={[Function]}
-                count={null}
                 href="/page/payment"
                 icon={[Function]}
                 onClick={[Function]}
@@ -1098,6 +987,113 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                                     className=""
                                   >
                                     navigation.privacy
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/page/imprint"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    fill={true}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Info>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Info>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.about"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.about
                                   </span>
                                 </Translate>
                               </div>
@@ -1307,11 +1303,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
           <div
             className="css-1aq22wi css-1rg7udn css-jg4uw5"
             onAnimationEnd={[Function]}
-            style={
-              Object {
-                "animationDuration": "undefinedms",
-              }
-            }
+            style={Object {}}
           >
             <div
               className="css-1xj3g9q"
@@ -1881,113 +1873,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               <Item
                 close={[Function]}
                 count={null}
-                href="/page/imprint"
-                icon={[Function]}
-                onClick={[Function]}
-                primary={false}
-              >
-                <div
-                  aria-hidden={true}
-                  className="css-13azwyo"
-                  onClick={[Function]}
-                >
-                  <Ripple
-                    className=""
-                    color="#000"
-                    fill={true}
-                    overflow={false}
-                    size={null}
-                  >
-                    <div
-                      aria-hidden={true}
-                      className=""
-                      onClick={[Function]}
-                      style={null}
-                    >
-                      <Grid
-                        className="css-1yzks37"
-                        component="ul"
-                        wrap={false}
-                      >
-                        <ul
-                          className="css-1yzks37 css-h7r55a"
-                        >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <div
-                                className="css-17ij4h5"
-                              >
-                                <Info>
-                                  <Icon
-                                    className=""
-                                    color={null}
-                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
-                                    size="inherit"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <svg
-                                      className="css-yys9hb "
-                                      dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
-                                        }
-                                      }
-                                      style={
-                                        Object {
-                                          "fill": null,
-                                          "fontSize": "inherit",
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Info>
-                              </div>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <li
-                              className=" css-1gs0ko2"
-                            >
-                              <div
-                                className="css-1hv14w9"
-                              >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="navigation.about"
-                                >
-                                  <span
-                                    className=""
-                                  >
-                                    navigation.about
-                                  </span>
-                                </Translate>
-                              </div>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </div>
-                  </Ripple>
-                </div>
-              </Item>
-              <Item
-                close={[Function]}
-                count={null}
                 href="/page/payment"
                 icon={[Function]}
                 onClick={[Function]}
@@ -2302,6 +2187,113 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                                     className=""
                                   >
                                     navigation.privacy
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/page/imprint"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    fill={true}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Info>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Info>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.about"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.about
                                   </span>
                                 </Translate>
                               </div>
@@ -2446,11 +2438,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
           <div
             className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
-            style={
-              Object {
-                "animationDuration": "undefinedms",
-              }
-            }
+            style={Object {}}
           >
             <div
               className="css-1xj3g9q"
@@ -3020,113 +3008,6 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               <Item
                 close={[Function]}
                 count={null}
-                href="/page/imprint"
-                icon={[Function]}
-                onClick={[Function]}
-                primary={false}
-              >
-                <div
-                  aria-hidden={true}
-                  className="css-13azwyo"
-                  onClick={[Function]}
-                >
-                  <Ripple
-                    className=""
-                    color="#000"
-                    fill={true}
-                    overflow={false}
-                    size={null}
-                  >
-                    <div
-                      aria-hidden={true}
-                      className=""
-                      onClick={[Function]}
-                      style={null}
-                    >
-                      <Grid
-                        className="css-1yzks37"
-                        component="ul"
-                        wrap={false}
-                      >
-                        <ul
-                          className="css-1yzks37 css-h7r55a"
-                        >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <div
-                                className="css-17ij4h5"
-                              >
-                                <Info>
-                                  <Icon
-                                    className=""
-                                    color={null}
-                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
-                                    size="inherit"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <svg
-                                      className="css-yys9hb "
-                                      dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
-                                        }
-                                      }
-                                      style={
-                                        Object {
-                                          "fill": null,
-                                          "fontSize": "inherit",
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Info>
-                              </div>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <li
-                              className=" css-1gs0ko2"
-                            >
-                              <div
-                                className="css-1hv14w9"
-                              >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="navigation.about"
-                                >
-                                  <span
-                                    className=""
-                                  >
-                                    navigation.about
-                                  </span>
-                                </Translate>
-                              </div>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </div>
-                  </Ripple>
-                </div>
-              </Item>
-              <Item
-                close={[Function]}
-                count={null}
                 href="/page/payment"
                 icon={[Function]}
                 onClick={[Function]}
@@ -3452,6 +3333,113 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   </Ripple>
                 </div>
               </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/page/imprint"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    fill={true}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Info>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Info>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.about"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.about
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
               <ClientInformation
                 client={Object {}}
                 enableDebugLogging={[Function]}
@@ -3537,20 +3525,6 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
   <Item
     close={[Function]}
     count={null}
-    href="/page/imprint"
-    icon={[Function]}
-    onClick={[Function]}
-    primary={false}
-  >
-    <Translate
-      className=""
-      params={Object {}}
-      string="navigation.about"
-    />
-  </Item>
-  <Item
-    close={[Function]}
-    count={null}
     href="/page/payment"
     icon={[Function]}
     onClick={[Function]}
@@ -3591,6 +3565,20 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       className=""
       params={Object {}}
       string="navigation.privacy"
+    />
+  </Item>
+  <Item
+    close={[Function]}
+    count={null}
+    href="/page/imprint"
+    icon={[Function]}
+    onClick={[Function]}
+    primary={false}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="navigation.about"
     />
   </Item>
   <ClientInformation
@@ -3720,11 +3708,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           <div
             className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
-            style={
-              Object {
-                "animationDuration": "undefinedms",
-              }
-            }
+            style={Object {}}
           >
             <div
               className="css-1xj3g9q"
@@ -4294,113 +4278,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               <Item
                 close={[Function]}
                 count={null}
-                href="/page/imprint"
-                icon={[Function]}
-                onClick={[Function]}
-                primary={false}
-              >
-                <div
-                  aria-hidden={true}
-                  className="css-13azwyo"
-                  onClick={[Function]}
-                >
-                  <Ripple
-                    className=""
-                    color="#000"
-                    fill={true}
-                    overflow={false}
-                    size={null}
-                  >
-                    <div
-                      aria-hidden={true}
-                      className=""
-                      onClick={[Function]}
-                      style={null}
-                    >
-                      <Grid
-                        className="css-1yzks37"
-                        component="ul"
-                        wrap={false}
-                      >
-                        <ul
-                          className="css-1yzks37 css-h7r55a"
-                        >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <div
-                                className="css-17ij4h5"
-                              >
-                                <Info>
-                                  <Icon
-                                    className=""
-                                    color={null}
-                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
-                                    size="inherit"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <svg
-                                      className="css-yys9hb "
-                                      dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
-                                        }
-                                      }
-                                      style={
-                                        Object {
-                                          "fill": null,
-                                          "fontSize": "inherit",
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Info>
-                              </div>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <li
-                              className=" css-1gs0ko2"
-                            >
-                              <div
-                                className="css-1hv14w9"
-                              >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="navigation.about"
-                                >
-                                  <span
-                                    className=""
-                                  >
-                                    navigation.about
-                                  </span>
-                                </Translate>
-                              </div>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </div>
-                  </Ripple>
-                </div>
-              </Item>
-              <Item
-                close={[Function]}
-                count={null}
                 href="/page/payment"
                 icon={[Function]}
                 onClick={[Function]}
@@ -4715,6 +4592,113 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     className=""
                                   >
                                     navigation.privacy
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/page/imprint"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    fill={true}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Info>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Info>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.about"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.about
                                   </span>
                                 </Translate>
                               </div>
@@ -4859,11 +4843,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           <div
             className="css-1aq22wi css-1rg7udn css-bsefow"
             onAnimationEnd={[Function]}
-            style={
-              Object {
-                "animationDuration": "undefinedms",
-              }
-            }
+            style={Object {}}
           >
             <div
               className="css-1xj3g9q"
@@ -5433,113 +5413,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               <Item
                 close={[Function]}
                 count={null}
-                href="/page/imprint"
-                icon={[Function]}
-                onClick={[Function]}
-                primary={false}
-              >
-                <div
-                  aria-hidden={true}
-                  className="css-13azwyo"
-                  onClick={[Function]}
-                >
-                  <Ripple
-                    className=""
-                    color="#000"
-                    fill={true}
-                    overflow={false}
-                    size={null}
-                  >
-                    <div
-                      aria-hidden={true}
-                      className=""
-                      onClick={[Function]}
-                      style={null}
-                    >
-                      <Grid
-                        className="css-1yzks37"
-                        component="ul"
-                        wrap={false}
-                      >
-                        <ul
-                          className="css-1yzks37 css-h7r55a"
-                        >
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={0}
-                            shrink={1}
-                          >
-                            <li
-                              className=""
-                            >
-                              <div
-                                className="css-17ij4h5"
-                              >
-                                <Info>
-                                  <Icon
-                                    className=""
-                                    color={null}
-                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
-                                    size="inherit"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <svg
-                                      className="css-yys9hb "
-                                      dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
-                                        }
-                                      }
-                                      style={
-                                        Object {
-                                          "fill": null,
-                                          "fontSize": "inherit",
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Info>
-                              </div>
-                            </li>
-                          </GridItem>
-                          <GridItem
-                            className=""
-                            component="li"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <li
-                              className=" css-1gs0ko2"
-                            >
-                              <div
-                                className="css-1hv14w9"
-                              >
-                                <Translate
-                                  className=""
-                                  params={Object {}}
-                                  string="navigation.about"
-                                >
-                                  <span
-                                    className=""
-                                  >
-                                    navigation.about
-                                  </span>
-                                </Translate>
-                              </div>
-                            </li>
-                          </GridItem>
-                        </ul>
-                      </Grid>
-                    </div>
-                  </Ripple>
-                </div>
-              </Item>
-              <Item
-                close={[Function]}
-                count={null}
                 href="/page/payment"
                 icon={[Function]}
                 onClick={[Function]}
@@ -5854,6 +5727,113 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                                     className=""
                                   >
                                     navigation.privacy
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/page/imprint"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    fill={true}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Info>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Info>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.about"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.about
                                   </span>
                                 </Translate>
                               </div>

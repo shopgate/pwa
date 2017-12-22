@@ -6,13 +6,12 @@ All items are defined inside the component or will be received via the shop conf
 
 ## Getting Started
 
-```
-import { NavDrawer } from 'Templates/components';
+```jsx
+import NavDrawer from 'Components/NavDrawer';
 
 <NavDrawer />
 ```
 
 ## Props
 
-Since the `NavDrawer` is a connected component there are right now no public props
-that need to be set when adding the component.
+Since the `NavDrawer` is a connected component there are right now no public props that need to be set when adding the component.

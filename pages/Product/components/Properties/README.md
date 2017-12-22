@@ -8,42 +8,28 @@ Component to display properties in a tabular layout.
 ## Getting Started
 
 ```
-import { ProductProperties } from 'Templates/component';
+import ProductProperties from 'Pages/Product/components/Properties';
 
-<ProductProperties properties={null} isAnimating />
+<ProductProperties properties={null} />
 ```
 
 ## Props
 
-### isAnimating (required)
+### properties
 
-_Type_: `boolean`<br>
+_Default_: `null`  
+_Type_: `Object`  
 
-When animating the component is not rendered! 
-
-###### Usage:
-
-```
-<ProductProperties properties={null} isAnimating={false} />
-```
-
-### properties 
-
-_Default_: `null`<br>
-_Type_: `Object`<br>
-
-A key-value object with product properties.
-If null the component is not rendered!
+A key-value object with product properties. If null the component is not rendered!
 
 ###### Usage:
 
-```
-<ProductProperties 
+```jsx
+<ProductProperties
   properties={{
     property1: 'value1',
     foo: 'bar',
     ...
   }}
-  isAnimating={false}
 />
 ```

@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormButtons /> should render submit and cancel button 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(FormButtons)>
+    <FormButtons
+      cancel={[Function]}
+      isLoading={false}
+    >
+      <div
+        className="css-1v7qljm"
+      >
+        <button
+          className="css-6bfwc1 css-1mhi2x7"
+          onClick={[Function]}
+          type="button"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string="common.cancel"
+          >
+            <span
+              className=""
+            >
+              common.cancel
+            </span>
+          </Translate>
+        </button>
+        <RippleButton
+          className=""
+          disabled={false}
+          flat={false}
+          onClick={null}
+          rippleClassName=""
+          rippleSize={null}
+          type="secondary"
+          wrapContent={true}
+        >
+          <Button
+            className=""
+            disabled={false}
+            flat={false}
+            onClick={null}
+            type="secondary"
+            wrapContent={false}
+          >
+            <Button
+              className="css-5xfjjh "
+              disabled={false}
+              onClick={null}
+            >
+              <button
+                className="css-5xfjjh  css-1rn65c0"
+                disabled={false}
+                onClick={null}
+              >
+                <Ripple
+                  className="css-8s1fw2 "
+                  color="#000"
+                  fill={true}
+                  overflow={false}
+                  size={null}
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-8s1fw2 "
+                    onClick={[Function]}
+                    style={null}
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="common.submit"
+                    >
+                      <span
+                        className=""
+                      >
+                        common.submit
+                      </span>
+                    </Translate>
+                  </div>
+                </Ripple>
+              </button>
+            </Button>
+          </Button>
+        </RippleButton>
+      </div>
+    </FormButtons>
+  </Connect(FormButtons)>
+</Provider>
+`;

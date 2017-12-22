@@ -8,6 +8,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import trackingCore from '@shopgate/tracking-core/core/Core';
 import connect from './connector';
 
 /**
@@ -17,11 +18,6 @@ class Checkout extends Component {
   static propTypes = {
     fetchCheckoutUrl: PropTypes.func.isRequired,
     goBackHistory: PropTypes.func.isRequired,
-    hasCheckoutUrl: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    hasCheckoutUrl: false,
   };
 
   /**
@@ -31,19 +27,15 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
 
-    if (props.hasCheckoutUrl) {
-      // If the shop has a checkout url, we have to check if it is still valid
-      props.fetchCheckoutUrl()
-        .then((url) => {
-          this.redirect(url);
-        })
-        .catch(() => {
-          props.goBackHistory(1);
-        });
-    } else {
-      // The shop doesn't have a checkoutUrl so we have to redirect to the legacy checkout
-      this.redirect('/checkout_legacy');
-    }
+    // Request an url for the checkout page.
+    props.fetchCheckoutUrl()
+      .then((url) => {
+        // Redirect to the checkout url, or the legacy checkout, if none was provided.
+        this.redirect(url || '/checkout_legacy');
+      })
+      .catch(() => {
+        props.goBackHistory(1);
+      });
   }
 
   /**
@@ -51,8 +43,11 @@ class Checkout extends Component {
    * @param {string} url The url where the user should be redirected to.
    */
   redirect(url) {
+    // Add some tracking params for cross domain tracking.
+    const newUrl = trackingCore.crossDomainTracking(url);
+
     // Redirect to the checkout
-    const link = new ParsedLink(url);
+    const link = new ParsedLink(newUrl || url);
     link.open();
 
     // Go back to hide the dummy page
