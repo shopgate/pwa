@@ -40,7 +40,7 @@ exports[`<Input /> should change the value on user input 1`] = `
 
 exports[`<Input /> should focus the input 1`] = `
 <Component
-  onFocusChange={[Function]}
+  onFocusChange={[MockFunction]}
 >
   <SimpleInput
     autoComplete={false}
@@ -50,7 +50,7 @@ exports[`<Input /> should focus the input 1`] = `
     id={null}
     name={null}
     onChange={[Function]}
-    onFocusChange={[Function]}
+    onFocusChange={[MockFunction]}
     onSanitize={[Function]}
     onValidate={[Function]}
     password={false}
@@ -302,7 +302,18 @@ exports[`<Input /> should sanitize the input 1`] = `
 
 exports[`<Input /> should trigger the onChange callback 1`] = `
 <Component
-  onChange={[Function]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+        Array [
+          "a",
+        ],
+      ],
+    }
+  }
 >
   <SimpleInput
     autoComplete={false}
@@ -311,7 +322,18 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
     disabled={false}
     id={null}
     name={null}
-    onChange={[Function]}
+    onChange={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "",
+          ],
+          Array [
+            "a",
+          ],
+        ],
+      }
+    }
     onFocusChange={[Function]}
     onSanitize={[Function]}
     onValidate={[Function]}

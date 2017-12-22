@@ -32,14 +32,60 @@ exports[`<Router /> should notify previous route to hide and new one to show 1`]
 >
   <div>
     <MockRoute
-      mockAdd={[Function]}
-      mockHide={[Function]}
+      mockAdd={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "key": "c123",
+                "pathname": "/category/123",
+              },
+              Object {
+                "id": "123",
+              },
+              undefined,
+            ],
+          ],
+        }
+      }
+      mockHide={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "key": "c123",
+                "pathname": "/category/123",
+              },
+              Object {
+                "id": "123",
+              },
+              undefined,
+            ],
+          ],
+        }
+      }
       mockRemove={[Function]}
       mockShow={[Function]}
       path="/category/:id"
     />
     <MockRoute
-      mockAdd={[Function]}
+      mockAdd={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "immutableKey": "i123",
+                "key": "i123",
+                "pathname": "/item/123",
+              },
+              Object {
+                "id": "123",
+              },
+              undefined,
+            ],
+          ],
+        }
+      }
       mockHide={[Function]}
       mockRemove={[Function]}
       mockShow={[Function]}
@@ -75,7 +121,22 @@ exports[`<Router /> should notify route about initial location 1`] = `
   }
 >
   <MockRoute
-    mockAdd={[Function]}
+    mockAdd={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "key": "c123",
+              "pathname": "/category/123",
+            },
+            Object {
+              "id": "123",
+            },
+            undefined,
+          ],
+        ],
+      }
+    }
     mockHide={[Function]}
     mockRemove={[Function]}
     mockShow={[Function]}
