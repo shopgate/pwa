@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`routedConnect Given the component was mounted to the DOM should match snapshot 1`] = `
+exports[`SGConnect Given the component was mounted to the DOM should match snapshot 1`] = `
 <Provider
   store={
     Object {
@@ -12,8 +12,8 @@ exports[`routedConnect Given the component was mounted to the DOM should match s
     }
   }
 >
-  <Connect(_class)>
-    <_class
+  <Connect(SGConnect)>
+    <SGConnect
       dispatch={[Function]}
       routedConnectPathname="/"
       testProp={0}
@@ -25,7 +25,7 @@ exports[`routedConnect Given the component was mounted to the DOM should match s
       >
         <div />
       </TestComponent>
-    </_class>
-  </Connect(_class)>
+    </SGConnect>
+  </Connect(SGConnect)>
 </Provider>
 `;

@@ -123,22 +123,27 @@ class SelectBox extends Component {
    */
   render() {
     const Icon = this.props.icon;
-    const { icon, selection, button, dropdown, selectItem } = this.props.classNames;
+    const {
+      icon,
+      iconOpen = null,
+      selection,
+      button,
+      dropdown,
+      selectItem,
+    } = this.props.classNames;
+    const buttonLabel = this.state.selected ? this.state.selected.label : this.props.defaultText;
+    const iconClasses = [
+      icon,
+      ...(this.state.isOpen && iconOpen !== null) && [iconOpen],
+    ].join(' ');
 
     return (
       <div className={this.props.className}>
         <button className={button} onClick={this.handleOpenList}>
           <span className={selection}>
-            {this.state.selected ? (
-              <I18n.Text string={this.state.selected.label} />
-            ) : (
-              <I18n.Text string={this.props.defaultText} />
-            )}
+            <I18n.Text string={buttonLabel} />
           </span>
-          {this.state.isOpen ?
-            <div className={`${icon} ${styles.rotatedIcon}`}><this.props.icon /></div> :
-            <div className={icon}><Icon /></div>
-          }
+          <div className={iconClasses}><Icon /></div>
         </button>
         <Dropdown
           className={dropdown}

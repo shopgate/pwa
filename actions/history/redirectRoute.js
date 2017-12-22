@@ -20,8 +20,12 @@ const redirectRoute = () => (dispatch, getState) => {
 
   // If there is a redirect location set, go to this page.
   if (redirectLocation) {
-    dispatch(replaceHistory(redirectLocation));
+    /**
+     * Redirect location MUST be nulled before replace history happens.
+     * Otherwise syncHistory would abort.
+     */
     dispatch(setRedirectLocation(null));
+    dispatch(replaceHistory(redirectLocation));
   } else {
     // No further redirect set. Go back the previous page.
     dispatch(goBackHistory(1));

@@ -28,9 +28,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
     <div
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -44,6 +42,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
     >
       <SelectItem
         className=""
+        key="a"
         label="a"
         onSelect={[Function]}
         selected={null}
@@ -58,6 +57,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="b"
         label="b"
         onSelect={[Function]}
         selected={null}
@@ -72,6 +72,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="c"
         label="c"
         onSelect={[Function]}
         selected={null}
@@ -86,6 +87,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="d"
         label="d"
         onSelect={[Function]}
         selected={null}
@@ -100,6 +102,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="e"
         label="E"
         onSelect={[Function]}
         selected={null}
@@ -114,6 +117,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="f"
         label="f"
         onSelect={[Function]}
         selected={null}
@@ -154,9 +158,7 @@ exports[`<Select /> renders with implicit items (closed) 1`] = `
     <div
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -192,9 +194,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
     <div
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -208,6 +208,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
     >
       <SelectItem
         className=""
+        key="a"
         label="a"
         onSelect={[Function]}
         selected={null}
@@ -222,6 +223,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="b"
         label="b"
         onSelect={[Function]}
         selected={null}
@@ -236,6 +238,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="c"
         label="c"
         onSelect={[Function]}
         selected={null}
@@ -250,6 +253,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="d"
         label="d"
         onSelect={[Function]}
         selected={null}
@@ -264,6 +268,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="e"
         label="e"
         onSelect={[Function]}
         selected={null}
@@ -278,6 +283,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="f"
         label="f"
         onSelect={[Function]}
         selected={null}
@@ -309,9 +315,7 @@ exports[`<Select /> renders without items 1`] = `
     <div
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -320,9 +324,6 @@ exports[`<Select /> renders without items 1`] = `
         ▾
       </span>
     </div>
-    <div
-      className="css-182i7wq"
-    />
   </div>
 </Select>
 `;
@@ -350,9 +351,7 @@ exports[`<Select /> triggers callback on change 1`] = `
     <div
       onTouchStart={[Function]}
     >
-      <span
-        className="undefined "
-      >
+      <span>
         Select ...
       </span>
       <span
@@ -366,6 +365,7 @@ exports[`<Select /> triggers callback on change 1`] = `
     >
       <SelectItem
         className=""
+        key="a"
         label="a"
         onSelect={[Function]}
         selected={null}
@@ -380,6 +380,7 @@ exports[`<Select /> triggers callback on change 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="b"
         label="b"
         onSelect={[Function]}
         selected={null}
@@ -394,6 +395,7 @@ exports[`<Select /> triggers callback on change 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="c"
         label="c"
         onSelect={[Function]}
         selected={null}
@@ -408,6 +410,7 @@ exports[`<Select /> triggers callback on change 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="d"
         label="d"
         onSelect={[Function]}
         selected={null}
@@ -422,6 +425,7 @@ exports[`<Select /> triggers callback on change 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="e"
         label="e"
         onSelect={[Function]}
         selected={null}
@@ -436,6 +440,7 @@ exports[`<Select /> triggers callback on change 1`] = `
       </SelectItem>
       <SelectItem
         className=""
+        key="f"
         label="f"
         onSelect={[Function]}
         selected={null}

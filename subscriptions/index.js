@@ -5,22 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import app from './app';
-import history from './history';
-import user from './user';
-import menu from './menu';
-
-/**
- * Holds all subscriber references.
- * @type {Array}
- */
-const subscriptions = [
-  app,
-  history,
-  user,
-  menu,
-];
-
 /**
  * A registry for all subscribers.
  * @type {Array}
@@ -49,15 +33,14 @@ const unsubscribe = () => {
 
 /**
  * Calls each subscriber function and passes the handleSubscribers() to it.
- * @param {Array} customSubscribers The custom subscribers from the theme.
+ * @param {Array} subscribers The subscribers from the theme.
  * @return {Function} A reference to unsubscribe().
  */
-const initSubscribers = (customSubscribers) => {
+const initSubscribers = (subscribers) => {
   if (subscriptionRegistry.length) {
     unsubscribe();
   }
 
-  const subscribers = subscriptions.concat(customSubscribers);
   subscribers.forEach(subscription => subscription(handleSubscribers));
 
   return unsubscribe;

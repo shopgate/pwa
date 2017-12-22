@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Widget /> should not render when the \`type\` prop is invalid 1`] = `
+<Widget
+  cellSize={null}
+  component={null}
+  config={
+    Object {
+      "col": 1,
+      "height": 6,
+      "row": 1,
+      "type": "some_widget",
+      "width": 12,
+    }
+  }
+/>
+`;
+
+exports[`<Widget /> should render an image widget 1`] = `
+<Widget
+  cellSize={null}
+  component={[Function]}
+  config={
+    Object {
+      "col": 1,
+      "height": 6,
+      "row": 1,
+      "type": "core-widgets/image",
+      "width": 12,
+    }
+  }
+>
+  <GridItem
+    className=""
+    component="div"
+    grow={0}
+    shrink={1}
+  >
+    <div
+      className=""
+    >
+      <div
+        className="css-4hpmhj"
+      >
+        <MyComponent
+          ratio={
+            Array [
+              12,
+              6,
+            ]
+          }
+          settings={undefined}
+        >
+          <div />
+        </MyComponent>
+      </div>
+    </div>
+  </GridItem>
+</Widget>
+`;

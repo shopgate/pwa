@@ -230,7 +230,7 @@ class Slider extends Component {
     const swiperProps = {
       paginationModifierClass: 'sg-swiper-pagination-',
       slideClass: 'sg-swiper-slide',
-      containerClass: `sg-swiper-container ${styles.sliderInnerContainer} ${classNames.container}`,
+      containerClass: `sg-swiper-container ${styles.sliderInnerContainer} ${classNames.container || ''}`,
       bulletClass: classNames.inactiveIndicator,
       bulletActiveClass: classNames.activeIndicator,
       pagination: (indicators && hasMultipleChildren) ? `.${classNames.indicator}` : null,

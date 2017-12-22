@@ -151,7 +151,7 @@ class Route extends Component {
     };
 
     const componentProps = {
-      key: location.key || 'root',
+      key: location.key || location.immutableKey || 'root',
       setRef: (element) => {
         newHostedComponent.dom = element;
       },

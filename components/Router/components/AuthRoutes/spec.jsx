@@ -11,7 +11,9 @@ import AuthRoutes from './index';
 import MockRoute from '../Route/mock';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => (obj) => {
+jest.mock('./connector', () => obj => obj);
+
+jest.mock('../Redirect/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -20,8 +22,6 @@ jest.mock('./connector', () => (obj) => {
 
   return newObj;
 });
-
-jest.mock('../Redirect/connector', () => obj => obj);
 
 describe('<AuthRoutes />', () => {
   let authWrapper;

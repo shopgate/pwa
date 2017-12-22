@@ -98,6 +98,7 @@ describe('<Route />', () => {
     }, { id: 123 });
 
     wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockComponent).length).toEqual(1);
     expect(wrapper.find(MockComponent).props()).toEqual({ params: { id: 456 } });

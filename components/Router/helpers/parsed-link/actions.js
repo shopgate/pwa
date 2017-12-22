@@ -68,6 +68,7 @@ const legacyLink = (options) => {
       src: `sgapi:${options.url.substring(1)}`,
       previewSrc: 'sgapi:page_preview',
       targetTab: options.targetTab,
+      animated: false,
       navigationBarParams: {
         type: options.navigationType ? options.navigationType : 'default',
         leftButtonCallback: options.backCallback ? options.backCallback : '',
@@ -90,7 +91,7 @@ const legacyLink = (options) => {
 
 /**
  * Opens a link using a history handler. This can be a router history object or a function.
- * @param {string} options The location options.
+ * @param {Object} options The location options.
  * @param {Object|Function} historyHandler The history handler.
  */
 const reactRouter = (options, historyHandler) => {
