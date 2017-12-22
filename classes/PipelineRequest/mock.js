@@ -28,6 +28,7 @@ class MockedPipelineRequest {
   constructor(name) {
     this.name = name;
     this.input = {};
+    this.handledErrors = [];
   }
 
   /**
@@ -42,12 +43,22 @@ class MockedPipelineRequest {
 
   /**
    * Returns promise and calls `MockedPipelineRequest.mockedDispatchResolver()`.
-   * @return {Promise}
+   * @returns {Promise}
    */
   dispatch() {
     return new Promise((resolve, reject) => {
       this.constructor.mockedDispatchResolver(this, resolve, reject);
     });
+  }
+
+  /**
+   * Sets handled errors.
+   * @param {Array} errors Handled errors.
+   * @returns {MockedPipelineRequest}
+   */
+  setHandledErrors(errors = []) {
+    this.handledErrors = errors;
+    return this;
   }
 }
 

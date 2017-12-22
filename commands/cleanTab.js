@@ -8,23 +8,23 @@
 import AppCommand from '../classes/AppCommand';
 
 /**
- * Builds an popTabToRoot command.
+ * Builds a cleanTab command.
  * @param {Object} params The command parameters.
- * @param {string} params.targetTab The navigation stack that shall be popped to root view.
+ * @param {string} params.targetTab Target tab for the page.
  * @return {AppCommand}
  */
-export const popTabToRootCmd = params => (
+export const cleanTabCmd = params => (
   new AppCommand()
-    .setCommandName('popTabToRoot')
+    .setCommandName('cleanTab')
     .setCommandParams(params)
 );
 
 /**
- * Sends an popTabToRoot command to the app.
+ * Sends a cleanTab command to the app.
  * @param {Object} params The command parameters.
- * @param {string} params.targetTab The navigation stack that shall be popped to root view.
+ * @param {string} params.targetTab Target tab for the page.
  */
 export default (params) => {
-  popTabToRootCmd(params)
+  cleanTabCmd(params)
     .dispatch();
 };

@@ -174,8 +174,7 @@ class HttpRequest extends Request {
         requestBuffer.remove(serial);
 
         if (error) {
-          // TODO add error handling?!
-          return reject(`${error.code}: ${error.message}`);
+          return reject(error);
         }
 
         logGroup(`HttpResponse %c${this.url}`, {
