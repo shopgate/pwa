@@ -11,6 +11,7 @@ import {
   RECEIVE_PRODUCT_OPTIONS,
   ERROR_PRODUCT_OPTIONS,
 } from '../constants';
+import formatOptions from './helpers/formatOptions';
 
 /**
  * Stores product options by the ID of the related parent product.
@@ -29,16 +30,20 @@ export default function optionsByProductId(state = {}, action) {
           expires: 0,
         },
       };
-    case RECEIVE_PRODUCT_OPTIONS:
+    case RECEIVE_PRODUCT_OPTIONS: {
+      const options = formatOptions(action.options);
+
       return {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          options: action.options,
+          options,
           isFetching: false,
           expires: Date.now() + PRODUCT_LIFETIME,
         },
       };
+    }
+
     case ERROR_PRODUCT_OPTIONS:
       return {
         ...state,

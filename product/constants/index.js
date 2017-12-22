@@ -53,3 +53,6 @@ export const SET_PRODUCT_OPTION = 'SET_PRODUCT_OPTION';
 export const AVAILABILITY_STATE_OK = 'ok';
 export const AVAILABILITY_STATE_WARNING = 'warning';
 export const AVAILABILITY_STATE_ALERT = 'alert';
+
+export const OPTION_TYPE_SELECT = 'select';
+export const OPTION_TYPE_TEXT = 'text';
