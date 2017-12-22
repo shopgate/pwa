@@ -27,6 +27,7 @@ export const hex2bin = (str) => {
     const c = parseInt(s.substr(i, 1), 16);
     const k = parseInt(s.substr(i + 1, 1), 16);
 
+    // eslint-disable-next-line no-restricted-globals
     if (isNaN(c) || isNaN(k)) {
       return false;
     }

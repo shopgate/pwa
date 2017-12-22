@@ -82,6 +82,7 @@ function getUnifiedNumber(numericValue) {
   const convertedValue = parseFloat(numericValue);
 
   // Check if the converted value is numeric. If it's not, return "undefined" instead of it
+  // eslint-disable-next-line no-restricted-globals
   return !isNaN(convertedValue) ? convertedValue : undefined;
 }
 

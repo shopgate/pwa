@@ -7,6 +7,7 @@
 
 /* global fbq */
 
+import { logger } from '@shopgate/pwa-core/helpers';
 import BasePlugin from '../Base';
 
 /**
@@ -35,12 +36,12 @@ class FbPixel extends BasePlugin {
     super(trackerName, options, extendedDefaults);
 
     if (this.options.useNativeSdk) {
-      console.warn('SgFbPixelTracking: no native SDK support for this plugin');
+      logger.warn('SgFbPixelTracking: no native SDK support for this plugin');
       return;
     }
 
     if (!this.options.config.pixelIds.length) {
-      console.warn('SgFbPixelTracking: pixels missing');
+      logger.warn('SgFbPixelTracking: pixels missing');
       return;
     }
 
@@ -216,7 +217,7 @@ class FbPixel extends BasePlugin {
 
     data.items.forEach((item) => {
       value += this.getPrice(item);
-      currency = item.currency;
+      currency = item.currency; // eslint-disable-line prefer-destructuring
     });
 
     const fbParams = {

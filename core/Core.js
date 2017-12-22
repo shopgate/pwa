@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { logger } from '@shopgate/pwa-core/helpers';
+
 import { optOut, isOptOut } from '../helpers/optOut';
 import trackingEvents, {
   REMOVE_TRACKER,
@@ -132,7 +134,7 @@ class Core {
     };
 
     if (!pluginOptions.trackerName) {
-      console.warn(`'SgTrackingCore': Attempt to register for event "${eventName}" by a nameless tracker`);
+      logger.warn(`'SgTrackingCore': Attempt to register for event "${eventName}" by a nameless tracker`);
     }
 
     // Get the correct store

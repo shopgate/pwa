@@ -111,8 +111,10 @@ function sgTrackingUrlMapper(url, data) {
   }
 
   // Get action from path
-  const action = urlPath.substring(0,
-    urlPath.indexOf('/') !== -1 ? (urlPath.indexOf('/')) : undefined);
+  const action = urlPath.substring(
+    0,
+    ((urlPath.indexOf('/') !== -1) ? (urlPath.indexOf('/')) : undefined)
+  );
 
   // If no mapping function is available for the action, continue
   if (typeof mapping[action] === 'undefined') {

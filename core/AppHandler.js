@@ -11,7 +11,6 @@ import { SGAction } from '../helpers/helper';
  * Handler for the communication between the tracking plugins and the app.
  */
 class AppHandler {
-
   /**
    * Log a pageview
    *
@@ -67,9 +66,7 @@ class AppHandler {
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   addedPaymentInfo(data, restrictions) {
-    SGAction.analyticsLogAddedPaymentInfo(
-      AppHandler.prepareTrackingData(data, restrictions)
-    );
+    SGAction.analyticsLogAddedPaymentInfo(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 
@@ -81,9 +78,7 @@ class AppHandler {
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   initiatedCheckout(data, restrictions) {
-    SGAction.analyticsLogInitiatedCheckout(
-      AppHandler.prepareTrackingData(data, restrictions)
-    );
+    SGAction.analyticsLogInitiatedCheckout(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 
@@ -95,9 +90,7 @@ class AppHandler {
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   completedRegistration(data, restrictions) {
-    SGAction.analyticsLogCompletedRegistration(
-      AppHandler.prepareTrackingData(data, restrictions)
-    );
+    SGAction.analyticsLogCompletedRegistration(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 
@@ -109,9 +102,7 @@ class AppHandler {
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   addToWishlist(data, restrictions) {
-    SGAction.analyticsLogAddToWishlist(
-      AppHandler.prepareTrackingData(data, restrictions)
-    );
+    SGAction.analyticsLogAddToWishlist(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 
@@ -134,9 +125,7 @@ class AppHandler {
    * @returns {AppHandler} Instance of SgTrackingAppHandler
    */
   setCampaignWithUrl(data, restrictions) {
-    SGAction.analyticsSetCampaignWithUrl(
-      AppHandler.prepareTrackingData(data, restrictions)
-    );
+    SGAction.analyticsSetCampaignWithUrl(AppHandler.prepareTrackingData(data, restrictions));
     return this;
   }
 
