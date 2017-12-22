@@ -5,8 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
- const path = require('path');
-
 module.exports = {
   extends: 'airbnb',
   parser: 'babel-eslint',
@@ -20,7 +18,7 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
   },
   rules: {
@@ -36,9 +34,9 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-multiple-empty-lines': [2, {
-      'max': 1,
-      'maxBOF': 0, 
-      'maxEOF': 1
+      max: 1,
+      maxBOF: 0,
+      maxEOF: 1,
     }],
     'no-prototype-builtins': 'off',
     'require-jsdoc': [2, {
@@ -47,7 +45,7 @@ module.exports = {
         MethodDefinition: true,
         ClassDeclaration: true,
         ArrowFunctionExpression: true,
-      }
+      },
     }],
     // Reference: http://eslint.org/docs/rules/valid-jsdoc
     'valid-jsdoc': [2, {
@@ -59,14 +57,14 @@ module.exports = {
         String: 'string',
         object: 'Object',
         array: 'Array',
-      }
+      },
     }],
   },
   settings: {
     'import/extensions': [
       '.js',
       '.json',
-      '.jsx'
+      '.jsx',
     ],
   },
 };
