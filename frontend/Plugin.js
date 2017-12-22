@@ -101,24 +101,24 @@ class SgGoogleNative extends SgTrackingPlugin {
       return false;
     });
 
-   /**
-    * Register for the setCampaignWithUrl event and triggers the appHandler
-    *
-    * For deeplinks and universal links we should not change the original url when tracking
-    * to merchant's account.
-    * Those links can come from the wild, we have no idea if they already contain some
-    * utm params, therefore no change here.
-    *
-    * For PushMessage there is also no need to change that, merchant can set his/her own
-    * campaign name in the merchant admin, or it's set to default when sending a push.
-    *
-    * We change it for our own account by adding a notification id, because we PULL the data
-    * afterwards from Google, and show the stats in the merchant admin area.
-    *
-    * For branch.io links we should add utm_params if it's not set previously by the merchant.
-    *
-    * @return {boolean} MUST return false so it won't be processed via unified
-    */
+    /**
+     * Register for the setCampaignWithUrl event and triggers the appHandler
+     *
+     * For deeplinks and universal links we should not change the original url when tracking
+     * to merchant's account.
+     * Those links can come from the wild, we have no idea if they already contain some
+     * utm params, therefore no change here.
+     *
+     * For PushMessage there is also no need to change that, merchant can set his/her own
+     * campaign name in the merchant admin, or it's set to default when sending a push.
+     *
+     * We change it for our own account by adding a notification id, because we PULL the data
+     * afterwards from Google, and show the stats in the merchant admin area.
+     *
+     * For branch.io links we should add utm_params if it's not set previously by the merchant.
+     *
+     * @return {boolean} MUST return false so it won't be processed via unified
+     */
     this.register.setCampaignWithUrl((data, raw) => {
       const finalData = {
         url: data.url,
