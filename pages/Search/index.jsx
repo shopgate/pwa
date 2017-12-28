@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FilterBar from 'Components/FilterBar';
@@ -19,7 +26,6 @@ class Search extends Component {
 
   static defaultProps = {
     products: [],
-    totalProductCount: null,
     isFilterBarShown: true,
   };
 
@@ -35,14 +41,13 @@ class Search extends Component {
    * @returns {JSX}
    */
   render() {
-    const hasProducts = this.hasProducts;
     const { isLoading, searchPhrase } = this.props;
 
     return (
       <View title={searchPhrase}>
         {(this.props.isFilterBarShown) && <FilterBar />}
         <Products />
-        {(!hasProducts && !isLoading) && (
+        {(!this.hasProducts && !isLoading) && (
           <NoResults
             headlineText="search.no_result.heading"
             bodyText="search.no_result.body"
