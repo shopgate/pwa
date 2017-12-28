@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React from 'react';
 import { mount } from 'enzyme';
 import ProductGrid from 'Components/ProductGrid';
@@ -15,9 +22,10 @@ describe.skip('<Products>', () => {
   };
 
   it('should hide list view in grid view mode', () => {
-    const wrapper = mount(
+    const Component = (
       <Products viewMode={GRID_VIEW} {...dummyProps} />
     );
+    const wrapper = mount(Component);
     wrapper.update();
 
     expect(wrapper).toMatchSnapshot();
@@ -28,9 +36,10 @@ describe.skip('<Products>', () => {
   });
 
   it('should hide grid view in list view mode', () => {
-    const wrapper = mount(
+    const Component = (
       <Products viewMode={LIST_VIEW} {...dummyProps} />
     );
+    const wrapper = mount(Component);
     wrapper.update();
 
     expect(wrapper).toMatchSnapshot();

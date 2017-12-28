@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
@@ -42,9 +49,7 @@ describe('<NavDrawer />', () => {
   });
 
   it('should render without optional props', () => {
-    const wrapper = shallow(
-      <ConnectedNavDrawer toggleNavDrawer={toggleNavDrawerMock} />
-    );
+    const wrapper = shallow(<ConnectedNavDrawer toggleNavDrawer={toggleNavDrawerMock} />);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -52,25 +57,26 @@ describe('<NavDrawer />', () => {
   });
 
   it('should render the navigation drawer opened', () => {
-    const wrapper = mount(
+    const Component = (
       <ConnectedNavDrawer
         navDrawerActive
         toggleNavDrawer={toggleNavDrawerMock}
       />
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
-
     expect(wrapper.find(Backdrop).length).toBe(1);
   });
 
   it('should trigger the toggle navigation callback when clicked on backdrop', () => {
-    const wrapper = mount(
+    const Component = (
       <ConnectedNavDrawer
         navDrawerActive
         toggleNavDrawer={toggleNavDrawerMock}
       />
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -84,12 +90,13 @@ describe('<NavDrawer />', () => {
   });
 
   it('should trigger the toggle navigation callback when clicked on an item', () => {
-    const wrapper = mount(
+    const Component = (
       <ConnectedNavDrawer
         navDrawerActive
         toggleNavDrawer={toggleNavDrawerMock}
       />
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -110,12 +117,13 @@ describe('<NavDrawer />', () => {
       firstName: 'Foo',
       mail: 'foo@bar.baz',
     };
-    const wrapper = mount(
+    const Component = (
       <NavDrawer
         user={user}
         toggleNavDrawer={toggleNavDrawerMock}
       />
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -125,12 +133,13 @@ describe('<NavDrawer />', () => {
   });
 
   it('should render the header properly when a user is logged out', () => {
-    const wrapper = mount(
+    const Component = (
       <NavDrawer
         user={null}
         toggleNavDrawer={toggleNavDrawerMock}
       />
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
 
