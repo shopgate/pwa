@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -15,11 +22,14 @@ const mockedStore = configureStore();
  * @param {Object} mockedState Mocked stage.
  * @return {ReactWrapper}
  */
-const createComponent = mockedState => mount(
-  <Provider store={mockedStore(mockedState)}>
-    <WriteReviewLink />
-  </Provider>
-);
+const createComponent = (mockedState) => {
+  const Component = (
+    <Provider store={mockedStore(mockedState)}>
+      <WriteReviewLink />
+    </Provider>
+  );
+  return mount(Component);
+};
 
 describe('<WriteReviewLink>', () => {
   let component = null;
