@@ -1,4 +1,11 @@
 /**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
  * The transition definitions.
  * @module templates/styles/transitions
  */
@@ -13,10 +20,10 @@ const viewTransitionDuration = 300;
  * The transition definition for views.
  * @type {string}
  */
-const viewTransition =
+const viewTransition = (
   `opacity ${viewTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1),` +
   `transform ${viewTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`
-;
+);
 
 /**
  * The not animating transition definition.

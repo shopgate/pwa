@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ *
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -66,9 +73,9 @@ describe('<ReviewForm />', () => {
     expect(comp).toMatchSnapshot();
 
     const errors = comp.find('ReviewForm').instance().state.validationErrors;
-    const author = comp.findWhere(c =>
+    const author = comp.findWhere(c => (
       c.length && c.name() === 'TextField' && c.prop('name') === 'author'
-    );
+    ));
 
     expect(comp.find('RatingScale').prop('value')).toEqual(0);
     expect(comp.find('RatingScale').prop('errorText')).toBeDefined();
@@ -103,9 +110,9 @@ describe('<ReviewForm />', () => {
 
     // Check validation with to long review
     const errors1 = comp.find('ReviewForm').instance().state.validationErrors;
-    const review = comp.findWhere(c =>
+    const review = comp.findWhere(c => (
       c.length && c.name() === 'TextField' && c.prop('name') === 'review'
-    );
+    ));
     expect(errors1.review).toBeDefined();
 
     // Check validation with changed, shorter review
@@ -127,7 +134,8 @@ describe('<ReviewForm />', () => {
     comp.find('input[name="author"]').simulate('change', {
       target: {
         value: 'Author',
-      } });
+      },
+    });
 
     const errors4 = comp.find('ReviewForm').instance().state.validationErrors;
     expect(errors4.author).toBeFalsy();
