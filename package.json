@@ -49,6 +49,6 @@
     "sinon-chai": "^2.8.0"
   },
   "peerDependencies": {
-    "@shopgate/pwa-core": "1.0.x"
+    "@shopgate/pwa-core": "1.1.x"
   }
 }
