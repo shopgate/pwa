@@ -6,7 +6,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
   entries={Object {}}
   logout={[Function]}
   navDrawerActive={false}
-  toggleNavDrawer={[Function]}
+  toggleNavDrawer={[MockFunction]}
   user={
     Object {
       "firstName": "Foo",
@@ -1238,7 +1238,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
   entries={Object {}}
   logout={[Function]}
   navDrawerActive={false}
-  toggleNavDrawer={[Function]}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
@@ -2324,7 +2324,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
   entries={Object {}}
   logout={[Function]}
   navDrawerActive={true}
-  toggleNavDrawer={[Function]}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
@@ -2394,15 +2394,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       "opacity": 0,
                     }
                   }
-                  id={undefined}
                   key=".$.0"
-                  onChildAppeared={undefined}
-                  onChildEntered={undefined}
-                  onChildLeft={undefined}
-                  onChildStartAppear={undefined}
-                  onChildStartEnter={undefined}
-                  onChildStartLeave={undefined}
-                  style={undefined}
                 >
                   <div
                     aria-hidden={true}
@@ -3594,7 +3586,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
   entries={Object {}}
   logout={[Function]}
   navDrawerActive={true}
-  toggleNavDrawer={[Function]}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
@@ -3664,15 +3656,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       "opacity": 0,
                     }
                   }
-                  id={undefined}
                   key=".$.0"
-                  onChildAppeared={undefined}
-                  onChildEntered={undefined}
-                  onChildLeft={undefined}
-                  onChildStartAppear={undefined}
-                  onChildStartEnter={undefined}
-                  onChildStartLeave={undefined}
-                  style={undefined}
                 >
                   <div
                     aria-hidden={true}
@@ -4729,7 +4713,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
   entries={Object {}}
   logout={[Function]}
   navDrawerActive={true}
-  toggleNavDrawer={[Function]}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
@@ -4799,15 +4783,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       "opacity": 0,
                     }
                   }
-                  id={undefined}
                   key=".$.0"
-                  onChildAppeared={undefined}
-                  onChildEntered={undefined}
-                  onChildLeft={undefined}
-                  onChildStartAppear={undefined}
-                  onChildStartEnter={undefined}
-                  onChildStartLeave={undefined}
-                  style={undefined}
                 >
                   <div
                     aria-hidden={true}

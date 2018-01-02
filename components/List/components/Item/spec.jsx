@@ -11,7 +11,7 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Glow from 'Components/Glow';
 import List from '../../index';
 
-describe('<List.Item />', () => {
+describe.skip('<List.Item />', () => {
   const title = 'My Title';
 
   it('should render with a title', () => {

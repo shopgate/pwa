@@ -2,7 +2,7 @@
 
 exports[`<AddToCartButton /> should render in loading state and should not be clickable 1`] = `
 <AddToCartButton
-  handleAddToCart={[Function]}
+  handleAddToCart={[MockFunction]}
   isLoading={true}
   isOrderable={true}
 >
@@ -118,7 +118,13 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
 
 exports[`<AddToCartButton /> should render with cart icon and should be clickable 1`] = `
 <AddToCartButton
-  handleAddToCart={[Function]}
+  handleAddToCart={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
   isLoading={false}
   isOrderable={true}
 >
@@ -234,7 +240,13 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
 
 exports[`<AddToCartButton /> should render with checkmark icon and should not be clickable the second time 1`] = `
 <AddToCartButton
-  handleAddToCart={[Function]}
+  handleAddToCart={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
   isLoading={false}
   isOrderable={true}
 >
