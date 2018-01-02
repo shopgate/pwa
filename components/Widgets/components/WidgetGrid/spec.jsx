@@ -33,17 +33,17 @@ describe('<WidgetGrid />', () => {
       type: 'core-widgets/image',
     }];
 
-    const wrapper = mount(
+    const wrapper = mount((
       <WidgetGrid config={config} components={components} />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should not render without a `config` prop', () => {
-    const wrapper = mount(
+    const wrapper = mount((
       <WidgetGrid components={components} />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('div').children().length).toBe(0);

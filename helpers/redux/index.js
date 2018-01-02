@@ -106,9 +106,9 @@ export const generateSortedHash = input => JSON.stringify(sortObject(input));
  * @param {Object} input2 The second object.
  * @return {boolean}
  */
-export const compareObjects = (input1, input2) =>
+export const compareObjects = (input1, input2) => (
   (generateSortedHash(input1) === generateSortedHash(input2))
-;
+);
 
 /**
  * Generates a hash for product collection results.

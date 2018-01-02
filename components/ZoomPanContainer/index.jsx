@@ -48,7 +48,6 @@ const MODE_PINCH = 2;
  * A container component that supports panning and zooming of children.
  */
 class ZoomPanContainer extends React.Component {
-
   static propTypes = {
     children: PropTypes.node.isRequired, // The components children.
     maxZoom: PropTypes.number, // The maximum zoom factor.
@@ -96,22 +95,6 @@ class ZoomPanContainer extends React.Component {
   }
 
   /**
-   * Sets the transform wrapper.
-   * @param {DOMElement} ref The dom reference to the transform wrapper element.
-   */
-  setTransformElement = (ref) => {
-    this.transformRef = ref;
-  };
-
-  /**
-   * Sets the content wrapper.
-   * @param {DOMElement} ref The dom reference to the content wrapper element.
-   */
-  setContentElement = (ref) => {
-    this.contentRef = ref;
-  };
-
-  /**
    * @return {number} The cached width of the transform wrapper.
    */
   get transformWidth() {
@@ -150,6 +133,22 @@ class ZoomPanContainer extends React.Component {
     }
     return this.cachedContentHeight;
   }
+
+  /**
+   * Sets the transform wrapper.
+   * @param {DOMElement} ref The dom reference to the transform wrapper element.
+   */
+  setTransformElement = (ref) => {
+    this.transformRef = ref;
+  };
+
+  /**
+   * Sets the content wrapper.
+   * @param {DOMElement} ref The dom reference to the content wrapper element.
+   */
+  setContentElement = (ref) => {
+    this.contentRef = ref;
+  };
 
   /**
    * Handles the pinch start events.
@@ -315,9 +314,9 @@ class ZoomPanContainer extends React.Component {
      */
     this.transformRef.style.transform = `${getTranslateStyle(this.posX, this.posY)} ${getScaleStyle(this.scale)}`;
 
-    this.transformRef.style.transition = getTransitionStyle(
+    this.transformRef.style.transition = getTransitionStyle((
       this.isTransforming ? 0 : this.props.smoothness
-    );
+    ));
 
     this.transformRef.style.transformOrigin = getTransformOriginStyle(this.centerX, this.centerY);
   };

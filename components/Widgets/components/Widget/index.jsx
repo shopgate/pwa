@@ -16,7 +16,13 @@ import styles from './style';
  * @returns {JSX}
  */
 const Widget = (props) => {
-  const { col, row, height, settings, width } = props.config;
+  const {
+    col,
+    row,
+    height,
+    settings,
+    width,
+  } = props.config;
   const { cellSize } = props;
 
   if (!props.component) {
