@@ -23,7 +23,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
   label=""
   listComponent={[Function]}
   modalComponent={[Function]}
-  onChange={[Function]}
+  onChange={[MockFunction]}
   onClose={[Function]}
   placeholder="Pick ..."
   value={null}

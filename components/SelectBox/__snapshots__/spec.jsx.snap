@@ -31,12 +31,9 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
     className=""
   >
     <button
-      className={undefined}
       onClick={[Function]}
     >
-      <span
-        className={undefined}
-      >
+      <span>
         <Translate
           className=""
           params={Object {}}
@@ -216,12 +213,9 @@ exports[`<SelectBox> should render with a default text 1`] = `
     className=""
   >
     <button
-      className={undefined}
       onClick={[Function]}
     >
-      <span
-        className={undefined}
-      >
+      <span>
         <Translate
           className=""
           params={Object {}}
@@ -401,12 +395,9 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
     className=""
   >
     <button
-      className={undefined}
       onClick={[Function]}
     >
-      <span
-        className={undefined}
-      >
+      <span>
         <Translate
           className=""
           params={Object {}}

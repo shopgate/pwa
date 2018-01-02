@@ -77,8 +77,6 @@ exports[`<Slider /> renders with controls 1`] = `
   >
     <ReactIdSwiper
       autoplay={null}
-      bulletActiveClass={undefined}
-      bulletClass={undefined}
       containerClass="sg-swiper-container css-rdsogp "
       freeMode={false}
       initialSlide={0}
@@ -181,8 +179,6 @@ exports[`<Slider /> renders with indicators 1`] = `
   >
     <ReactIdSwiper
       autoplay={null}
-      bulletActiveClass={undefined}
-      bulletClass={undefined}
       containerClass="sg-swiper-container css-rdsogp "
       freeMode={false}
       initialSlide={0}

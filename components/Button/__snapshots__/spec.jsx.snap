@@ -34,7 +34,13 @@ exports[`<Button /> should trigger the click event 1`] = `
 <button
   className=" css-1rn65c0"
   disabled={false}
-  onClick={[Function]}
+  onClick={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
 >
   My content
 </button>
