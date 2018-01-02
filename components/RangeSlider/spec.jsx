@@ -89,13 +89,14 @@ const simulateInputTest = (
 
   // eslint-disable-next-line require-jsdoc
   const callback = ([from, to]) => {
+    const {
+      currentTouchDeltaX,
+      valuePixelSize,
+    } = config;
+    const relativeValue = getRelativeValue(currentTouchDeltaX / valuePixelSize, min, max);
     const expected =
       getAbsoluteValue(
-        ease((
-          getRelativeValue((
-            config.currentTouchDeltaX / config.valuePixelSize, config.min, config.max
-          ))
-        )),
+        ease(relativeValue),
         config.min, config.max,
         true
       );

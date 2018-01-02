@@ -10,7 +10,6 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
   min={0}
   onChange={[Function]}
   resolution={0.01}
-  styles={Object {}}
   value={
     Array [
       10,
@@ -91,7 +90,6 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
   min={0}
   onChange={[Function]}
   resolution={0.01}
-  styles={Object {}}
   value={
     Array [
       50,

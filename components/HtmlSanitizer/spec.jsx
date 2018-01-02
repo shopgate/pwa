@@ -117,12 +117,15 @@ describe('<HtmlSanitizer />', () => {
       const doc = new JSDOM('<!doctype html><html><body><div>/<div></body></html>').window.document;
 
       const html = '&lt;a id=&quot;link&quot; href=&quot;#follow-me-and-everything-is-alright&quot;&gt;Plain Link&lt;/a&gt;';
-      const wrapper = mount((
-        <HtmlSanitizer decode>
-          {html}
-        </HtmlSanitizer>, {
+      const wrapper = mount(
+        (
+          <HtmlSanitizer decode>
+            {html}
+          </HtmlSanitizer>
+        ), {
           attachTo: doc.getElementsByTagName('div')[0],
-        }));
+        }
+      );
 
       const aTag = doc.getElementsByTagName('a')[0];
       aTag.closest = () => aTag;
@@ -139,12 +142,15 @@ describe('<HtmlSanitizer />', () => {
       const doc = new JSDOM('<!doctype html><html><body><div>/<div></body></html>').window.document;
 
       const html = '&lt;a id=&quot;link&quot; href=&quot;#I-ll-be-the-one-to-tuck-you-in-at-night&quot;&gt;&lt;span&gt;Span Link&lt;/span&gt;&lt;/a&gt;';
-      const wrapper = mount((
-        <HtmlSanitizer decode>
-          {html}
-        </HtmlSanitizer>, {
+      const wrapper = mount(
+        (
+          <HtmlSanitizer decode>
+            {html}
+          </HtmlSanitizer>
+        ), {
           attachTo: doc.getElementsByTagName('div')[0],
-        }));
+        }
+      );
 
       const aTag = doc.getElementsByTagName('a')[0];
       const spanTag = doc.getElementsByTagName('span')[0];
