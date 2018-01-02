@@ -18,16 +18,15 @@ import Redirect from '../Redirect';
 const AuthRoutes = props => (
   <div>
     {React.Children.map(props.children, child => (
-        props.isLoggedIn
-          ? child
-          : <Redirect to={props.to} path={child.props.path} />
-      ))}
+      props.isLoggedIn
+        ? child
+        : <Redirect to={props.to} path={child.props.path} />
+    ))}
   </div>
-  );
+);
 
 AuthRoutes.propTypes = {
   children: PropTypes.node.isRequired,
-  // eslint-disable-next-line react/no-unused-prop-types
   isLoggedIn: PropTypes.bool.isRequired,
   to: PropTypes.string.isRequired,
 };

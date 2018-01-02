@@ -16,13 +16,4 @@ const mapStateToProps = state => ({
   currentRoute: state.history.pathname,
 });
 
-/**
- * Connects a component to the view store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const view = Component =>
-  connect(mapStateToProps)(Component)
-;
-
-export default view;
+export default connect(mapStateToProps);

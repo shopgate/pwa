@@ -34,11 +34,19 @@ jest.mock('../../helpers/parsed-link', () => (class {
 
 describe('<Link />', () => {
   it('should render inner content of the link', () => {
-    const wrapper = shallow((
-      <Link href="/">
-        <span>Test</span>
-      </Link>),
-      { context: { history: { push: () => {} } } }
+    const wrapper = shallow(
+      (
+        <Link href="/">
+          <span>Test</span>
+        </Link>
+      ),
+      {
+        context: {
+          history: {
+            push: () => {},
+          },
+        },
+      }
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -47,11 +55,19 @@ describe('<Link />', () => {
   });
 
   it('should construct parsed-link and open it when clicked', () => {
-    const wrapper = mount((
-      <Link href="/category/123">
-        <span>Test</span>
-      </Link>),
-      { context: { history: { push: () => {} } } }
+    const wrapper = mount(
+      (
+        <Link href="/category/123">
+          <span>Test</span>
+        </Link>
+      ),
+      {
+        context: {
+          history: {
+            push: () => {},
+          },
+        },
+      }
     );
 
     expect(wrapper).toMatchSnapshot();

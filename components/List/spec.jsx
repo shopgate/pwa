@@ -18,18 +18,14 @@ describe('<List />', () => {
 
   it('renders with children', () => {
     const numChildren = children.length;
-    const wrapper = shallow(
-      <List>{children}</List>
-    );
+    const wrapper = shallow(<List>{children}</List>);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(List.Item).length).toBe(numChildren);
   });
 
   it('renders without children', () => {
-    const wrapper = shallow(
-      <List />
-    );
+    const wrapper = shallow(<List />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(List.Item).length).toBe(0);

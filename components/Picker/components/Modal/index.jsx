@@ -20,10 +20,10 @@ class PickerModal extends Component {
     onClose: PropTypes.func.isRequired,
   };
 
-/**
- * The constructor.
- * @param {Object} props The props.
- */
+  /**
+   * The constructor.
+   * @param {Object} props The props.
+   */
   constructor(props) {
     super(props);
 

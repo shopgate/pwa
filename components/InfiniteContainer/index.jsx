@@ -34,7 +34,6 @@ class InfiniteContainer extends React.Component {
   };
 
   static defaultProps = {
-    children: null,
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
@@ -284,7 +283,12 @@ class InfiniteContainer extends React.Component {
    * @returns {JSX}
    */
   render() {
-    const { wrapper, items, iterator, loadingIndicator } = this.props;
+    const {
+      wrapper,
+      items,
+      iterator,
+      loadingIndicator,
+    } = this.props;
     const { awaitingItems } = this.state;
     const [start, length] = this.state.offset;
     // Only show items in offset range.

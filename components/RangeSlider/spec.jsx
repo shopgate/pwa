@@ -91,11 +91,11 @@ const simulateInputTest = (
   const callback = ([from, to]) => {
     const expected =
       getAbsoluteValue(
-        ease(
-          getRelativeValue(
+        ease((
+          getRelativeValue((
             config.currentTouchDeltaX / config.valuePixelSize, config.min, config.max
-          )
-        ),
+          ))
+        )),
         config.min, config.max,
         true
       );
@@ -107,7 +107,7 @@ const simulateInputTest = (
     }
   };
 
-  const wrapper = mount(
+  const wrapper = mount((
     <RangeSlider
       min={config.min}
       max={config.max}
@@ -117,7 +117,7 @@ const simulateInputTest = (
       factor={config.factor}
       onChange={callback}
     />
-  );
+  ));
 
   expect(wrapper).toMatchSnapshot();
 
@@ -153,27 +153,21 @@ describe('<RangeSlider />', () => {
    */
 
   it('renders with boundaries', () => {
-    const wrapper = shallow(
-      <RangeSlider min={0} max={100} />
-    );
+    const wrapper = shallow(<RangeSlider min={0} max={100} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(RangeSliderHandle).length).toBe(2);
   });
 
   it('renders without boundaries', () => {
-    const wrapper = shallow(
-      <RangeSlider />
-    );
+    const wrapper = shallow(<RangeSlider />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(RangeSliderHandle).length).toBe(2);
   });
 
   it('renders without a value pair', () => {
-    const wrapper = shallow(
-      <RangeSlider value={[10, 50]} />
-    );
+    const wrapper = shallow(<RangeSlider value={[10, 50]} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(RangeSliderHandle).length).toBe(2);
@@ -214,14 +208,14 @@ describe('<RangeSlider />', () => {
     // eslint-disable-next-line require-jsdoc
     const callback = value => expect(value).toEqual([-80, 0]);
 
-    const wrapper = mount(
+    const wrapper = mount((
       <RangeSlider
         min={-100}
         max={100}
         value={[0, 0]}
         onChange={callback}
       />
-    );
+    ));
     // Create a simulated touch event at a page x offset of 20px.
     const touchEvent = createTouchEvent(20);
     const inst = wrapper.instance();

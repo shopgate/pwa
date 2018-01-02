@@ -60,13 +60,13 @@ class Picker extends Component {
     disabled: PropTypes.bool,
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
-    items: PropTypes.arrayOf(
+    items: PropTypes.arrayOf((
       PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
         PropTypes.object,
       ])
-    ),
+    )),
     label: PropTypes.string,
     listComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     modalComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),

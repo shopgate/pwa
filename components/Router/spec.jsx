@@ -19,11 +19,11 @@ describe('<Router />', () => {
     });
     const mockAdd = jest.fn();
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Router history={mockHistory}>
         <MockRoute mockAdd={mockAdd} path="/category/:id" />
       </Router>
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(mockAdd).toHaveBeenCalledTimes(1);
@@ -48,14 +48,14 @@ describe('<Router />', () => {
     const mockHideCategory = jest.fn();
     const mockAddProduct = jest.fn();
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Router history={mockHistory}>
         <div>
           <MockRoute mockAdd={mockAddCategory} mockHide={mockHideCategory} path="/category/:id" />
           <MockRoute mockAdd={mockAddProduct} path="/item/:id" />
         </div>
       </Router>
-    );
+    ));
 
     mockHistory.applyChange('PUSH', {
       key: 'i123',
@@ -101,14 +101,14 @@ describe('<Router />', () => {
     });
     const mockRemoveItem = jest.fn();
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Router history={mockHistory}>
         <div>
           <MockRoute path="/category/:id" />
           <MockRoute mockAdd={mockRemoveItem} path="/item/:id" />
         </div>
       </Router>
-    );
+    ));
 
     mockHistory.applyChange('PUSH', {
       key: 'i123',
