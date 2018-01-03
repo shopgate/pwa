@@ -96,7 +96,7 @@ export const openedLink$ = main$
  * Gets triggered when the registration link is opened.
  * @type {Observable}
  */
-export const openRegisterLink$ = openedLink$
+export const openedRegisterLink$ = openedLink$
   .filter(({ action }) =>
     action.options &&
     action.options.url &&

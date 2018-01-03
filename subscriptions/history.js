@@ -12,7 +12,7 @@ import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
 import goBackHistory from '../actions/history/goBackHistory';
 import { getRegisterUrl } from '../selectors/user';
 import ParsedLink from '../components/Router/helpers/parsed-link';
-import { openRegisterLink$ } from '../streams/history';
+import { openedRegisterLink$ } from '../streams/history';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
 import openRegisterUrl from './helpers/openRegisterUrl';
 import { LEGACY_URL } from '../constants/Registration';
@@ -45,7 +45,7 @@ export default function history(subscribe) {
   /**
    * Gets triggered when the register link is opened.
    */
-  subscribe(openRegisterLink$, ({ dispatch, getState }) => {
+  subscribe(openedRegisterLink$, ({ dispatch, getState }) => {
     const state = getState();
 
     const hasRegistrationUrl = !!getRegisterUrl(state);
@@ -53,7 +53,7 @@ export default function history(subscribe) {
     // Open the legacy registration page if there is no other URL.
     if (hasRegistrationUrl) {
       dispatch(fetchRegisterUrl())
-        .then(url => openRegisterUrl(url, state))
+        .then(url => openRegisterUrl(`${url}?test123`, state))
         .finally(() => dispatch(goBackHistory(1)));
       return;
     }
