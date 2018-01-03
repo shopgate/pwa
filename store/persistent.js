@@ -8,22 +8,14 @@
 import debounce from 'lodash/debounce';
 import omit from 'lodash/omit';
 
-/**
- * Generates the key for the localStorage entry
- * @return {string} The generatred key
- */
-export const generateStorageKey = () => {
-  const { appId = '' } = process.env.APP_CONFIG || {};
-  const theme = process.env.THEME || 'theme';
-
-  return `sgCloud-${appId.replace('_', '')}-${theme}`;
-};
+const { appId = '' } = process.env.APP_CONFIG || {};
+const theme = process.env.THEME || 'theme';
 
 /**
  * The key name for the state in the localStorage.
  * @type {string}
  */
-const LOCALSTORAGE_KEY = generateStorageKey();
+export const LOCALSTORAGE_KEY = `sgCloud-${appId.replace('_', '')}-${theme}`;
 
 /**
  * The debounce timing for the localStorage write.
