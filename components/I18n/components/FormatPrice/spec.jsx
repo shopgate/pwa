@@ -24,7 +24,7 @@ describe('<FormatPrice />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(
+    renderedElement = mount((
       <I18n.Provider {...props}>
         <div>
           <span className="only-price">
@@ -37,7 +37,7 @@ describe('<FormatPrice />', () => {
           </span>
         </div>
       </I18n.Provider>
-    );
+    ));
   };
 
   beforeEach(() => {

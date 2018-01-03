@@ -22,7 +22,7 @@ describe('<Placeholder />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(
+    renderedElement = mount((
       <I18n.Provider {...props}>
         <I18n.Text string="greeting">
           <I18n.Placeholder forKey="world">
@@ -30,7 +30,7 @@ describe('<Placeholder />', () => {
           </I18n.Placeholder>
       / </I18n.Text>
       </I18n.Provider>
-    );
+    ));
   };
 
   beforeEach(() => {
@@ -51,11 +51,11 @@ describe('<Placeholder />', () => {
     });
 
     it('should render the plain text if no placeholder is provided.', () => {
-      const wrapper = mount(
+      const wrapper = mount((
         <I18n.Provider lang={langCode} locales={testLocales}>
           <I18n.Text string="greeting" params={{ world: 'WORLD' }} />
         </I18n.Provider>
-      );
+      ));
 
       const text = wrapper.find('span').text();
       expect(text).toBe('Hello WORLD');

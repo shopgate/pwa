@@ -23,7 +23,12 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @param {Object} context The component context.
  * @returns {JSX} The translated string as JSX component.
  */
-const Translate = ({ string, children, params, className }, context) => {
+const Translate = ({
+  string,
+  children,
+  params,
+  className,
+}, context) => {
   if (typeof string !== 'string') {
     return string;
   }

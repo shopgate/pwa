@@ -14,9 +14,7 @@ describe('<Select />', () => {
   jest.useFakeTimers();
 
   it('opens and closes the item list', () => {
-    const wrapper = shallow(
-      <Select />
-    );
+    const wrapper = shallow(<Select />);
 
     let previousOpenState = wrapper.state('isOpen');
     wrapper.instance().toggleOpenState();
@@ -28,9 +26,7 @@ describe('<Select />', () => {
   });
 
   it('renders without items', () => {
-    const wrapper = mount(
-      <Select />
-    );
+    const wrapper = mount(<Select />);
 
     wrapper.instance().toggleOpenState();
     expect(wrapper).toMatchSnapshot();
@@ -40,11 +36,7 @@ describe('<Select />', () => {
   it('renders with implicit items (closed)', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-    const wrapper = mount(
-      <Select
-        items={items}
-      />
-    );
+    const wrapper = mount(<Select items={items} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SelectItem).length).toBe(0);
@@ -53,11 +45,7 @@ describe('<Select />', () => {
   it('renders with implicit items (opened)', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-    const wrapper = mount(
-      <Select
-        items={items}
-      />
-    );
+    const wrapper = mount(<Select items={items} />);
     wrapper.instance().toggleOpenState();
     wrapper.update();
 
@@ -80,11 +68,7 @@ describe('<Select />', () => {
       'f',
     ];
 
-    const wrapper = mount(
-      <Select
-        items={items}
-      />
-    );
+    const wrapper = mount(<Select items={items} />);
 
     wrapper.instance().toggleOpenState();
     wrapper.update();
@@ -120,12 +104,12 @@ describe('<Select />', () => {
       expect(value).toBe(items[selectionIndex]);
     };
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Select
         items={items}
         onChange={callback}
       />
-    );
+    ));
 
     wrapper.instance().toggleOpenState();
     wrapper.update();

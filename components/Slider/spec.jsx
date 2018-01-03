@@ -22,27 +22,23 @@ describe('<Slider />', () => {
 
   it('renders with children', () => {
     const numChildren = children.length;
-    const wrapper = shallow(
-      <Slider>{children}</Slider>
-    );
+    const wrapper = shallow(<Slider>{children}</Slider>);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Slider.Item).length).toBe(numChildren);
   });
 
   it('renders with controls', () => {
-    const wrapper = mount(
-      <Slider controls>{children}</Slider>
-    );
+    const wrapper = mount(<Slider controls>{children}</Slider>);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.swiper-button-next').length).toBe(1);
   });
 
   it('renders with indicators', () => {
-    const wrapper = mount(
+    const wrapper = mount((
       <Slider indicators classNames={{ indicator: 'indicator-class' }}>{children}</Slider>
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.indicator-class').length).toBe(1);

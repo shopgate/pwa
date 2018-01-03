@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+/* eslint no-restricted-globals: ["warn", "isNaN"] */
+
 import { isObject } from '../validation';
 
 /**
@@ -37,9 +39,9 @@ export const objectWithoutProps = (obj, keys = []) => {
  * @param {string} url The URL to check.
  * @return {boolean}
  */
-export const isExternal = url =>
+export const isExternal = url => (
   (url.includes('http://') || url.includes('https://') || url.includes('//'))
-;
+);
 
 /**
  * Returns the actual url to the image, by adding url parameters with the dimensions

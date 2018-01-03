@@ -15,7 +15,12 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const ModalContainer = ({ component, confirm, dismiss, modal }) => {
+const ModalContainer = ({
+  component,
+  confirm,
+  dismiss,
+  modal,
+}) => {
   if (!modal) {
     return null;
   }

@@ -27,9 +27,7 @@ const wrapHostedComponent = (route, hostedComponent, wrappedComponent, component
   );
 
   route.setState({
-    hostedComponents: route.state.hostedComponents.concat(
-      [newHostedComponent]
-    ),
+    hostedComponents: route.state.hostedComponents.concat([newHostedComponent]),
   });
 };
 
@@ -223,9 +221,9 @@ class Route extends Component {
    */
   removeRoute = (location) => {
     this.setState({
-      hostedComponents: this.state.hostedComponents.filter(
+      hostedComponents: this.state.hostedComponents.filter((
         (comp, i) => i !== this.findHostedComponentIndex(location)
-      ),
+      )),
     });
   }
 
@@ -296,9 +294,9 @@ class Route extends Component {
    * @returns {JSX}
    */
   render() {
-    const components = this.state.hostedComponents.map(
+    const components = this.state.hostedComponents.map((
       hosted => hosted.component
-    );
+    ));
 
     return (
       <div data-route-path={this.props.path}>

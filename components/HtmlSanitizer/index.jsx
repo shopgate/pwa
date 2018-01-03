@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+/* eslint no-restricted-globals: ["warn", "history"] */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '../Router/helpers/parsed-link';
