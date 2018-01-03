@@ -9,11 +9,11 @@ import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 /**
- * A list of all route paths that should be tracked,
- * except those that are handled individually.
+ * A whitelist of routes that should be tracked with
+ * exception to those that are handled individually.
  * @type {Array}
  */
 const ignoredPaths = [

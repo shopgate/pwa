@@ -8,7 +8,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import getCart from '../selectors/cart';
 import { track, formatPurchaseData } from '../helpers/index';
 
