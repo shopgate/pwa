@@ -50,10 +50,10 @@ export default function history(subscribe) {
 
     const hasRegistrationUrl = !!getRegisterUrl(state);
 
-    // Open the legacy registration page if there is no other URL.
+    // Open the registration url if one is found.
     if (hasRegistrationUrl) {
       dispatch(fetchRegisterUrl())
-        .then(url => openRegisterUrl(`${url}?test123`, state))
+        .then(url => openRegisterUrl(url, state))
         .finally(() => dispatch(goBackHistory(1)));
       return;
     }

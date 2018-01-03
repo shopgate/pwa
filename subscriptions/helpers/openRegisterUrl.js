@@ -37,7 +37,7 @@ const openRegisterUrl = (url, state) => {
   // Build up the params.
   const params = {
     sgcloud_callback_data: callbackData,
-    ...!redirectoToCheckout && { sgcloud_checkout: 1 },
+    ...redirectoToCheckout && { sgcloud_checkout: 1 },
   };
 
   // Format the previous params.
@@ -47,7 +47,7 @@ const openRegisterUrl = (url, state) => {
   const query = `${parseObjectToQueryString(params, true)}${prevParams}`;
 
   // Build the new url with the GET params.
-  const newUrl = `${url}/${query}`;
+  const newUrl = `${url}${query}`;
 
   const link = new ParsedLink(newUrl);
   link.open();
