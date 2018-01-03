@@ -45,13 +45,13 @@ class Select extends Component {
    */
   static propTypes = {
     className: PropTypes.string,
-    items: PropTypes.arrayOf(
+    items: PropTypes.arrayOf((
       PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
         PropTypes.object,
       ])
-    ),
+    )),
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.oneOfType([
@@ -86,9 +86,9 @@ class Select extends Component {
     this.domElement = null;
 
     if (props.value) {
-      this.state.selected = normalizeItem(
+      this.state.selected = normalizeItem((
         findItemByValue(props.items, props.value)
-      );
+      ));
     }
   }
 
@@ -108,9 +108,9 @@ class Select extends Component {
       !this.state.selected ||
       nextProps.value !== this.state.selected.value
     ) {
-      this.state.selected = normalizeItem(
+      this.state.selected = normalizeItem((
         findItemByValue(nextProps.items, nextProps.value)
-      );
+      ));
     }
   }
 

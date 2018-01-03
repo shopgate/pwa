@@ -33,12 +33,12 @@ describe('<Widgets />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Widgets
         components={components}
         widgets={widgets}
       />
-    );
+    ));
 
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
   });
@@ -55,12 +55,12 @@ describe('<Widgets />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Widgets
         components={components}
         widgets={widgets}
       />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(false);
@@ -88,12 +88,12 @@ describe('<Widgets />', () => {
       },
     }];
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Widgets
         components={components}
         widgets={widgets}
       />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);

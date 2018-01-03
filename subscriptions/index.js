@@ -17,9 +17,7 @@ const subscriptionRegistry = [];
  * @param {Function} subscriberFn The subscriber function.
  */
 const handleSubscribers = (stream$, subscriberFn) => {
-  subscriptionRegistry.push(
-    stream$.subscribe(subscriberFn)
-  );
+  subscriptionRegistry.push(stream$.subscribe(subscriberFn));
 };
 
 /**

@@ -32,9 +32,9 @@ describe('<Widget />', () => {
       height: 6,
     };
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Widget config={config} component={widgets[config.type]} />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Grid.Item).exists()).toBe(true);
@@ -49,9 +49,9 @@ describe('<Widget />', () => {
       height: 6,
     };
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Widget config={config} component={widgets[config.type]} />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Grid.Item).exists()).toBe(false);

@@ -32,12 +32,9 @@ describe('<CountdownTimer>', () => {
         + (remainingDays * 86400)
         + (remainingHours * 3600)
         + (remainingMinutes * 60)
-        + remainingSeconds
-      ;
+        + remainingSeconds;
 
-    const wrapper = shallow(
-      <CountdownTimer timeout={timeout} onExpire={callback} />
-    );
+    const wrapper = shallow(<CountdownTimer timeout={timeout} onExpire={callback} />);
 
     let currentTimeOffset = timeout - Math.floor(Date.now() / 1000);
 

@@ -118,7 +118,10 @@ describe('HistoryStack', () => {
 
     expect(stack.stack).toEqual([
       { key: 'root' },
-      { immutableKey: 'x123', key: '456' },
+      {
+        immutableKey: 'x123',
+        key: '456',
+      },
     ]);
   });
 });

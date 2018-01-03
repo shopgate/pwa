@@ -35,10 +35,7 @@ describe('<Picker />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(
-      <Picker {...props} />
-    );
-
+    renderedElement = mount(<Picker {...props} />);
     renderedInstance = renderedElement.instance();
   };
 
