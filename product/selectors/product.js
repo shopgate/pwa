@@ -20,7 +20,7 @@ import { getCurrentCategoryId } from '../../category/selectors';
 export const getProducts = state => state.product.productsById;
 
 /**
- * Retrieves the current product for the detail page from the store.
+ * Retrieves the current product or variant page from the store.
  * @param {Object} state The current application state.
  * @return {string} The id of the current product.
  */
@@ -36,7 +36,7 @@ export const getCurrentProductId = state =>
 export const getProductById = (state, id) => getProducts(state)[id];
 
 /**
- * Retrieves the current base product for the detail page from the store.
+ * Retrieves the current base product page from the store.
  * @param {Object} state The current application state.
  * @return {string} The id of the current base product.
  */
@@ -212,7 +212,7 @@ export const getProductName = createSelector(
 const getProductImagesState = state => state.product.imagesByProductId;
 
 /**
- * Retrieves the current product images.
+ * Retrieves the current product images or the images of the parent product.
  * If the current product does not have images, we try to select the images from the base product.
  * @param {Object} state The current application state.
  * @return {Array|null}
@@ -223,15 +223,16 @@ export const getProductImages = createSelector(
   getProductImagesState,
   (productId, baseProductId, images) => {
     let entry = images[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.images)) {
-      return null;
+    const productImages = images[productId];
+
+    /**
+     * Check if there are any images.
+     * If not then default back to the base product's images.
+     */
+    if (!productImages || !productImages.images || !productImages.images.length) {
+      entry = images[baseProductId];
     }
 
-    if (entry.images.length) {
-      return entry.images;
-    }
-
-    entry = images[baseProductId];
     if (!entry || entry.isFetching || isUndefined(entry.images)) {
       return null;
     }
