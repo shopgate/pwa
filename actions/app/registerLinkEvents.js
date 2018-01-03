@@ -27,15 +27,17 @@ const registerLinkEvents = location => (dispatch) => {
     'openDeepLink',
   ]);
 
-  event.addCallback('openLink', handler =>
+  event.addCallback('openLink', handler => (
     dispatch(openLink(handler.action, handler.options))
-  );
-  event.addCallback('openPushNotification', payload =>
+  ));
+
+  event.addCallback('openPushNotification', payload => (
     dispatch(handlePushNotification(payload))
-  );
-  event.addCallback('openDeepLink', payload =>
+  ));
+
+  event.addCallback('openDeepLink', payload => (
     dispatch(handleDeepLink(payload))
-  );
+  ));
 
   dispatch(didRegisterLinkEvents());
 

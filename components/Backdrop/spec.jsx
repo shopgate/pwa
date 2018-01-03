@@ -17,20 +17,13 @@ describe('<Backdrop />', () => {
   });
 
   it('should render', () => {
-    const wrapper = shallow(
-      <Backdrop isVisible />
-    );
-
+    const wrapper = shallow(<Backdrop isVisible />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should execute callback when Backdrop is clicked', () => {
-    const wrapper = shallow(
-      <Backdrop isVisible onClick={mockOpen} />
-    );
-
+    const wrapper = shallow(<Backdrop isVisible onClick={mockOpen} />);
     wrapper.find('div').simulate('click');
-
     expect(mockOpen).toBeCalled();
   });
 });

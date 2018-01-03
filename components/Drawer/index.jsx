@@ -28,8 +28,8 @@ class Drawer extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     isOpen: PropTypes.bool,
-    onClose: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
-    onOpen: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
+    onClose: PropTypes.func,
+    onOpen: PropTypes.func,
   };
 
   /**

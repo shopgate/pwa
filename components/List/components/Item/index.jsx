@@ -5,46 +5,45 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * The list item component.
+ * The ListItem component.
+ * @returns {JSX}
  */
-class ListItem extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    isSelected: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    className: null,
-    children: null,
-    isSelected: false,
-  };
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    if (!React.Children.count(this.props.children)) {
-      return null;
-    }
-
-    let classes = styles.item;
-
-    if (this.props.className) {
-      classes += ` ${this.props.className}`;
-    }
-
-    // Add selected or unselected styling.
-    classes += ` ${this.props.isSelected ? styles.selected : styles.unselected}`;
-
-    return <li className={classes}>{this.props.children}</li>;
+const ListItem = ({
+  children,
+  className,
+  isSelected,
+}) => {
+  if (!React.Children.count(children)) {
+    return null;
   }
-}
+
+  let classes = styles.item;
+
+  if (className) {
+    classes += ` ${className}`;
+  }
+
+  // Add selected or unselected styling.
+  classes += ` ${isSelected ? styles.selected : styles.unselected}`;
+
+  return <li className={classes}>{children}</li>;
+};
+
+ListItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  isSelected: PropTypes.bool,
+};
+
+ListItem.defaultProps = {
+  className: null,
+  children: null,
+  isSelected: false,
+};
 
 export default ListItem;

@@ -14,7 +14,6 @@ import connect from './connector';
  * from the component hierarchy based on the current route the component is mounted.
  */
 class RouteGuard extends Component {
-
   static propTypes = {
     currentRoute: PropTypes.string.isRequired,
     children: PropTypes.node,

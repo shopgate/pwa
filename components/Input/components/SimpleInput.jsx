@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
  * You may want to use an appropriate form field component from the template instead.
  */
 class SimpleInput extends Component {
-
   static propTypes = {
     autoComplete: PropTypes.bool,
     autoCorrect: PropTypes.bool,
@@ -92,6 +91,27 @@ class SimpleInput extends Component {
   }
 
   /**
+   * @returns {boolean} Whether the current value of the input field is valid.
+   */
+  get isValid() {
+    return this.state.isValid;
+  }
+
+  /**
+   * @return {boolean} Whether the input field is focused.
+   */
+  get isFocused() {
+    return this.state.isFocused;
+  }
+
+  /**
+   * @returns {string} The current value of the input field.
+   */
+  get value() {
+    return this.state.value;
+  }
+
+  /**
    * Internal focus event handler.
    */
   handleFocus = () => {
@@ -156,27 +176,6 @@ class SimpleInput extends Component {
     }
 
     this.setState(newState);
-  }
-
-  /**
-   * @returns {boolean} Whether the current value of the input field is valid.
-   */
-  get isValid() {
-    return this.state.isValid;
-  }
-
-  /**
-   * @return {boolean} Whether the input field is focused.
-   */
-  get isFocused() {
-    return this.state.isFocused;
-  }
-
-  /**
-   * @returns {string} The current value of the input field.
-   */
-  get value() {
-    return this.state.value;
   }
 
   /**

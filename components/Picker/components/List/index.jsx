@@ -14,9 +14,14 @@ import styles from './style';
  * The default button for the Picker component.
  * @returns {JSX} The button component.
  */
-const PickerList = ({ items, onClose, onSelect, selectedIndex }) => (
+const PickerList = ({
+  items,
+  onClose,
+  onSelect,
+  selectedIndex,
+}) => (
   <ul>
-    {items.map((item, currentIndex) =>
+    {items.map((item, currentIndex) => (
       <li
         key={item.value}
         className={classNames({ [styles.active]: currentIndex === selectedIndex })}
@@ -32,7 +37,7 @@ const PickerList = ({ items, onClose, onSelect, selectedIndex }) => (
           {item.label}
         </button>
       </li>
-    )}
+    ))}
   </ul>
 );
 

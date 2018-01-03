@@ -64,7 +64,6 @@ const connect = (
    */
   const componentWrapper = WrappedComponent => class extends Component {
     static propTypes = {
-      // eslint-disable-next-line react/no-unused-prop-types
       routedConnectPathname: PropTypes.string.isRequired,
     };
 

@@ -61,10 +61,7 @@ const configureStore = (customReducers = {}) => {
     // Append the pre-loaded state.
     initPersistentStorage(),
     // Compose the enhancers.
-    composeEnhancers(
-      // Apply all middleware.
-      applyMiddleware(...middleware)
-    )
+    composeEnhancers(applyMiddleware(...middleware))
   );
 
   // Do the HMR only if in development mode.

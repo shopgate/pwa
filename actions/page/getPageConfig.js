@@ -26,11 +26,11 @@ const getPageConfig = pageId => (dispatch, getState) => {
     return new PipelineRequest('getPageConfig')
       .setInput({ pageId })
       .dispatch()
-        .then(result => dispatch(receivePageConfig(pageId, result)))
-        .catch((error) => {
-          logger.error(error);
-          dispatch(errorPageConfig(pageId));
-        });
+      .then(result => dispatch(receivePageConfig(pageId, result)))
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorPageConfig(pageId));
+      });
   }
 
   return null;

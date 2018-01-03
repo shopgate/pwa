@@ -17,11 +17,11 @@ describe('<RouteGuard />', () => {
    * Creates a test component.
    * @returns {JSX} The test component.
    */
-  const createComponent = () => mount(
+  const createComponent = () => mount((
     <RouteGuard currentRoute="initialRoute">
       <div id="TheContents" />
     </RouteGuard>
-  );
+  ));
 
   it('should render the opened portal when on same route', () => {
     const wrapper = createComponent();

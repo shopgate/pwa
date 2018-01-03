@@ -26,9 +26,7 @@ describe('<I18nProvider />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = shallow(
-      <I18nProvider {...props} />
-    );
+    renderedElement = shallow(<I18nProvider {...props} />);
     renderedInstance = renderedElement.instance();
   };
 

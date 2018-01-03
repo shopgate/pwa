@@ -34,7 +34,7 @@ class GridItem extends Component {
    * @returns {Object} The composed props.
    */
   getProps() {
-    let className = this.props.className;
+    let { className } = this.props;
 
     if (this.props.grow !== 0) {
       className += ` ${styles.grow(this.props.grow)}`;

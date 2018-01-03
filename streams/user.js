@@ -28,10 +28,10 @@ export const userWillLogin$ = main$
  * @type {Observable}
  */
 export const userLoginResponse$ = main$
-  .filter(({ action }) =>
+  .filter(({ action }) => (
     action.type === SUCCESS_LOGIN ||
     action.type === ERROR_LOGIN
-  );
+  ));
 
 /**
  * Gets triggered when user has logged in.
@@ -45,7 +45,7 @@ export const userDidLogin$ = main$
  * @type {Observable}
  */
 export const userWillLogout$ = main$
-.filter(({ action }) => action.type === REQUEST_LOGOUT);
+  .filter(({ action }) => action.type === REQUEST_LOGOUT);
 
 /**
  * Gets triggered when user has logged out.
@@ -59,11 +59,11 @@ export const userDidLogout$ = main$
  * @type {Observable}
  */
 export const userDidUpdate$ = main$
-  .filter(({ action }) =>
+  .filter(({ action }) => (
     (action.type === RECEIVE_USER) ||
     (action.type === SUCCESS_LOGOUT) ||
     (action.type === ERROR_USER)
-  );
+  ));
 
 /**
  * Gets triggered when we received the user data.

@@ -18,7 +18,12 @@ import styles from './style';
  * @param {Object} props.classNames (Optional) An additional style classes for the handle.
  * @returns {JSX}
  */
-const RangeSliderHandle = ({ active, index, onTouchStart, classNames }) => (
+const RangeSliderHandle = ({
+  active,
+  index,
+  onTouchStart,
+  classNames,
+}) => (
   <div
     className={`${classNames.handleOuter || ''} ${styles}`}
     style={{ zIndex: Number(active) || 0 }}

@@ -20,11 +20,11 @@ describe('<Translate />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(
+    renderedElement = mount((
       <I18n.Provider {...props}>
         <I18n.Text string="greeting" params={{ name: 'Test' }} />
       </I18n.Provider>
-    );
+    ));
   };
 
   beforeEach(() => {
