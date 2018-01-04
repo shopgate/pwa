@@ -24,7 +24,20 @@ const getVariantsState = state => state.product.variantsByProductId;
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getCurrentProductVariantId = state => state.product.currentProduct.productVariantId;
+export const getCurrentProductVariantId = createSelector(
+  state => state,
+  (state) => {
+    if (
+      !state.product
+      || !state.product.currentProduct
+      || !state.product.currentProduct.productVariantId
+    ) {
+      return null;
+    }
+
+    return state.product.currentProduct.productVariantId;
+  }
+);
 
 /**
  * Checks if the current product has variants.

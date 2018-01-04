@@ -213,14 +213,25 @@ const getProductImagesState = state => state.product.imagesByProductId;
 
 /**
  * Retrieves the current product images.
+ * If the current product does not have images, we try to select the images from the base product.
  * @param {Object} state The current application state.
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
   getCurrentProductId,
+  getCurrentBaseProductId,
   getProductImagesState,
-  (productId, images) => {
-    const entry = images[productId];
+  (productId, baseProductId, images) => {
+    let entry = images[productId];
+    if (!entry || entry.isFetching || isUndefined(entry.images)) {
+      return null;
+    }
+
+    if (entry.images.length) {
+      return entry.images;
+    }
+
+    entry = images[baseProductId];
     if (!entry || entry.isFetching || isUndefined(entry.images)) {
       return null;
     }

@@ -15,6 +15,8 @@ import {
 } from '../constants';
 
 import setProductId from '../action-creators/setProductId';
+import setProductVariantId from '../action-creators/setProductVariantId';
+import { getCurrentProductVariantId } from '../selectors/variants';
 
 /**
  * Product subscriptions.
@@ -26,13 +28,29 @@ function product(subscribe) {
     ({ pathname }) => !pathname.startsWith(ITEM_PATH)
   );
 
-  subscribe(itemRouteDidEnter$, ({ dispatch, pathname }) => {
-    const productId = hex2bin(pathname.split('/')[2]);
-    dispatch(setProductId(productId));
+  subscribe(itemRouteDidEnter$, ({ dispatch, getState }) => {
+    const state = getState();
+    const baseProductId = hex2bin(state.history.pathname.split('/')[2]);
+    const selectedVariantId = getCurrentProductVariantId(state);
+
+    if (selectedVariantId) {
+      dispatch(setProductVariantId(selectedVariantId));
+      return;
+    }
+
+    dispatch(setProductId(baseProductId));
   });
 
-  subscribe(itemRouteDidLeave$, ({ dispatch }) => {
-    dispatch(setProductId(null));
+  subscribe(itemRouteDidLeave$, ({ dispatch, getState }) => {
+    const state = getState();
+    /*
+     If there is a redirect to login we don't want the state to be mutated,
+     only if we leave product route by navigation.
+     */
+    if (!state.history.redirectLocation) {
+      dispatch(setProductId(null));
+      dispatch(setProductVariantId(null));
+    }
   });
 }
 
