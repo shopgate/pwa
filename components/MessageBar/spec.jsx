@@ -18,14 +18,13 @@ describe('<MessageBar />', () => {
   describe('General rendering', () => {
     it('should be empty if no messages have been set', () => {
       const wrapper = mount(<MessageBar />);
-
       expect(wrapper.find('div').at(1).length).toEqual(0);
     });
 
     it('should render a message as info if type is missing', () => {
       const wrapper = mount(<MessageBar messages={[{ message: 'something' }]} />);
 
-      expect(wrapper.childAt(0).props().className).toEqual(styles.info);
+      expect(wrapper.find(`.${styles.container}`).childAt(0).props().className.trim()).toEqual(styles.info);
     });
   });
 
@@ -48,23 +47,25 @@ describe('<MessageBar />', () => {
       />
     );
 
+    const messageContainer = wrapper.find(`.${styles.container}`);
+
     it('should render 3 messages', () => {
-      expect(wrapper.children().length).toEqual(3);
+      expect(messageContainer.children().length).toEqual(3);
     });
 
     it(`should have the first child as info with the content of "${MESSAGE1}"`, () => {
-      expect(wrapper.childAt(0).props().className).toEqual(styles.info);
-      expect(wrapper.childAt(0).props().children).toEqual(MESSAGE1);
+      expect(messageContainer.childAt(0).props().className.trim()).toEqual(styles.info);
+      expect(messageContainer.childAt(0).props().children).toEqual(MESSAGE1);
     });
 
     it(`should have a second child as error with the content of "${MESSAGE2}"`, () => {
-      expect(wrapper.childAt(1).props().className).toEqual(styles.error);
-      expect(wrapper.childAt(1).props().children).toEqual(MESSAGE2);
+      expect(messageContainer.childAt(1).props().className.trim()).toEqual(styles.error);
+      expect(messageContainer.childAt(1).props().children).toEqual(MESSAGE2);
     });
 
     it(`should have a third child as error with the content of "${MESSAGE3}"`, () => {
-      expect(wrapper.childAt(2).props().className).toEqual(styles.warning);
-      expect(wrapper.childAt(2).props().children).toEqual(MESSAGE3);
+      expect(messageContainer.childAt(2).props().className.trim()).toEqual(styles.warning);
+      expect(messageContainer.childAt(2).props().children).toEqual(MESSAGE3);
     });
   });
 });
