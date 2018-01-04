@@ -29,6 +29,11 @@ class UserMenu extends Component {
   static propTypes = {
     isLoggedIn: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired,
+    user: PropTypes.shape(),
+  };
+
+  static defaultProps = {
+    user: null,
   };
 
   /**
@@ -36,11 +41,11 @@ class UserMenu extends Component {
    * @param {Object} user The user object.
    * @returns {JSX}
    */
-  renderLoggedIn() {
+  renderLoggedIn(user) {
     return (
       <div>
         <Headline>
-          <I18n.Text string="navigation.welcome_message" />
+          <I18n.Text string="navigation.welcome_message" params={{ name: user.firstName }} />
         </Headline>
         <List>
           <List.Item title="navigation.my_orders" link={ORDERS_PATH} />
@@ -87,7 +92,7 @@ class UserMenu extends Component {
    */
   render() {
     if (this.props.isLoggedIn) {
-      return this.renderLoggedIn();
+      return this.renderLoggedIn(this.props.user);
     }
 
     return this.renderLoggedOut();

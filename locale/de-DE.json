@@ -90,8 +90,8 @@
     "logout_message": "Sie wurden ausgeloggt."
   },
   "navigation": {
-    "your_account": "Ihr Account",
     "login_register": "Anmelden",
+    "your_account": "Ihr Account",
     "home": "Startseite",
     "categories": "Kategorien",
     "wishlist": "Merkliste",
@@ -104,9 +104,9 @@
     "terms": "AGB",
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
+    "logout": "Abmelden",
     "store_information": "Shop Info",
-    "more_menu": "Mehr",
-    "logout": "Abmelden"
+    "more_menu": "Mehr"
   },
   "reviews": {
     "rating": "Bewertung",
