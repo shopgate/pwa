@@ -11,13 +11,20 @@ import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import CardList from 'Components/CardList';
+import MessageBar from 'Components/MessageBar';
+import styles from './style';
+import cartStyles from '../../style';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
 } from '../../../../style';
 import connect from './connector';
 import Layout from './components/Layout';
-import styles from './style';
+
+const messageStyles = {
+  container: cartStyles.messagesContainer,
+  message: cartStyles.messages,
+};
 
 /**
  * The Coupon component.
@@ -27,6 +34,7 @@ class Coupon extends Component {
     coupon: PropTypes.shape().isRequired,
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     deleteCoupon: PropTypes.func,
   };
 
@@ -84,6 +92,8 @@ class Coupon extends Component {
           >
             <div className={styles} ref={(element) => { this.cardElement = element; }}>
               <CardList.Item>
+                {this.props.messages.length > 0 &&
+                <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Layout
                   handleDelete={this.transitionOut}
                   coupon={this.props.coupon}
