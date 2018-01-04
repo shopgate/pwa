@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
 import CardList from 'Components/CardList';
@@ -78,18 +78,24 @@ class Cart extends Component {
 
     return (
       <View title={this.title}>
-        {messages.length > 0 && <MessageBar messages={messages} />}
-        {cartItems.length > 0 && (
-          <section className={styles.container}>
-            <CardList>
-              {cartItems.map(cartItem => (
-                <Item key={cartItem.id} item={cartItem} togglePaymentBar={this.togglePaymentBar} />
-              ))}
-              <CouponField onToggleFocus={this.togglePaymentBar} />
-            </CardList>
-            <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
-          </section>
-        )}
+        <section className={styles.container}>
+          {messages.length > 0 && <MessageBar messages={messages} />}
+          {cartItems.length > 0 && (
+            <Fragment>
+              <CardList>
+                {cartItems.map(cartItem => (
+                  <Item
+                    key={cartItem.id}
+                    item={cartItem}
+                    togglePaymentBar={this.togglePaymentBar}
+                  />
+                ))}
+                <CouponField onToggleFocus={this.togglePaymentBar} />
+              </CardList>
+              <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
+            </Fragment>
+          )}
+        </section>
         {(!isLoading && cartItems.length === 0) && <Empty />}
       </View>
     );
