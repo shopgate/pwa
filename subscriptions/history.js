@@ -45,21 +45,20 @@ export default function history(subscribe) {
   /**
    * Gets triggered when the register link is opened.
    */
-  subscribe(openedRegisterLink$, ({ dispatch, getState }) => {
+  subscribe(openedRegisterLink$, async ({ dispatch, getState }) => {
     const state = getState();
 
     const hasRegistrationUrl = !!getRegisterUrl(state);
 
     // Open the registration url if one is found.
     if (hasRegistrationUrl) {
-      dispatch(fetchRegisterUrl())
+      await dispatch(fetchRegisterUrl())
         .then(url => openRegisterUrl(url, state))
-        .finally(() => dispatch(goBackHistory(1)));
-      return;
+        .catch(e => e);
+    } else {
+      const link = new ParsedLink(LEGACY_URL);
+      link.open();
     }
-
-    const link = new ParsedLink(LEGACY_URL);
-    link.open();
 
     dispatch(goBackHistory(1));
   });
