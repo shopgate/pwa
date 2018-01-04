@@ -60,8 +60,10 @@ export default function product(subscribe) {
    * Gets triggered on entering the product details route.
    */
   subscribe(productRouteDidEnter$, ({ dispatch, getState }) => {
-    // Ensures that the view is update after navigating back and forth
-    // through sub-pages like gallery, reviews, etc.
+    /*
+     Ensures that the view is updated after navigating back and forth
+     through sub-pages like gallery, reviews, etc.
+     */
     const variantId = getCurrentProductVariantId(getState());
     dispatch(getProductData(variantId));
 
