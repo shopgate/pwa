@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  getCurrentProductId,
+  getCurrentBaseProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 import {
@@ -18,7 +18,7 @@ import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchRev
 const mapStateToProps = state => ({
   currentReviewCount: getCurrentReviewCount(state),
   isFetching: getReviewsFetchingState(state),
-  productId: getCurrentProductId(state),
+  productId: getCurrentBaseProductId(state),
   totalReviewCount: getReviewsTotalCount(state),
 });
 

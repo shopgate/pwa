@@ -6,6 +6,7 @@
  */
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { getCurrentProductVariantId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
 import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
@@ -34,7 +35,7 @@ export default function product(subscribe) {
   );
 
   /**
-   * Gets trigger on entering any product route.
+   * Gets triggered on entering any product route.
    */
   subscribe(routeDidEnter(ITEM_PATH), ({ dispatch, getState }) => {
     const productId = getCurrentBaseProductId(getState());
@@ -59,7 +60,11 @@ export default function product(subscribe) {
    * Gets triggered on entering the product details route.
    */
   subscribe(productRouteDidEnter$, ({ dispatch, getState }) => {
-    dispatch(getProductData());
+    // Ensures that the view is update after navigating back and forth
+    // through sub-pages like gallery, reviews, etc.
+    const variantId = getCurrentProductVariantId(getState());
+    dispatch(getProductData(variantId));
+
     dispatch(enableNavigatorSearch());
     if (hasReviews) {
       const baseProductId = getCurrentBaseProductId(getState());
