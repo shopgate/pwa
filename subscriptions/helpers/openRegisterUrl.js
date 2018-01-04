@@ -8,7 +8,10 @@
 import { parseObjectToQueryString } from '../../helpers/router';
 import { getRedirectLocation } from '../../selectors/history';
 import ParsedLink from '../../components/Router/helpers/parsed-link';
-import { CHECKOUT_PATH } from '../../constants/RoutePaths';
+import {
+  CHECKOUT_PATH,
+  INDEX_PATH,
+} from '../../constants/RoutePaths';
 
 /**
  * Append any necessary params and open the register URL.
@@ -22,22 +25,22 @@ const openRegisterUrl = (url, state) => {
   // Split off any incoming params from the url.
   const originalParams = url.split('?')[1] || null;
 
-  // Determine a redirect url, null if missing.
-  const redirectTo = redirect ?
-    `${redirect.pathname}/${parseObjectToQueryString(redirect.params)}` : null;
+  // Determine a redirect url, null if missing or if it's the CHECKOUT_PATH.
+  const redirectTo = (redirect && redirect.pathname !== CHECKOUT_PATH) ?
+    `${redirect.pathname}${parseObjectToQueryString(redirect.params)}` : INDEX_PATH;
 
   // Build the callback data.
   const callbackData = JSON.stringify({
     redirectTo,
   });
 
-  // Explicitely check if we are about to be redirected to the checkout.
-  const redirectoToCheckout = redirect && redirect.pathname === CHECKOUT_PATH;
+  // Explicitly check if we are about to be redirected to the checkout.
+  const redirectToCheckout = redirect && redirect.pathname === CHECKOUT_PATH;
 
   // Build up the params.
   const params = {
     sgcloud_callback_data: callbackData,
-    ...redirectoToCheckout && { sgcloud_checkout: 1 },
+    ...redirectToCheckout && { sgcloud_checkout: 1 },
   };
 
   // Format the previous params.

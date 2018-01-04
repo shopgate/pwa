@@ -12,10 +12,15 @@ import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
 import goBackHistory from '../actions/history/goBackHistory';
 import { getRegisterUrl } from '../selectors/user';
 import ParsedLink from '../components/Router/helpers/parsed-link';
-import { openedRegisterLink$ } from '../streams/history';
+import { openedRegisterLink$, routeDidLeave } from '../streams/history';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
 import openRegisterUrl from './helpers/openRegisterUrl';
 import { LEGACY_URL } from '../constants/Registration';
+import setRedirectLocation from '../action-creators/history/setRedirectLocation';
+import {
+  LOGIN_PATH,
+  REGISTER_PATH,
+} from '../constants/RoutePaths';
 
 /**
  * History subscriptions.
@@ -61,5 +66,16 @@ export default function history(subscribe) {
     }
 
     dispatch(goBackHistory(1));
+  });
+
+  /**
+   * Gets triggered when the LOGIN_PATH is left but the REGISTER_PATH is not entered.
+   */
+  const loginRouteDidLeave$ = routeDidLeave(LOGIN_PATH).filter(({ pathname }) => (
+    pathname !== REGISTER_PATH
+  ));
+
+  subscribe(loginRouteDidLeave$, ({ dispatch }) => {
+    dispatch(setRedirectLocation(null));
   });
 }
