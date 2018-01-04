@@ -1,5 +1,24 @@
+
 # Changelog
 
-## 1.0.0 (September 6, 2017)
+### [1.1.0](https://github.com/shopgate/pwa-core/compare/v1.0.5...v1.1.0) - December 22, 2017
 
-* Initial public release
+#### Changed
+- Updated `@shopgate/eslint-config` to ^1.0.3
+- Updated `jest` to ^22.0.4
+
+---
+
+### [1.0.5](https://github.com/shopgate/pwa-core/compare/v1.0.0...v1.0.5) - December 21, 2017
+
+#### Added
+- cleanTab command  
+- closeInAppBrowser command  
+- performCommandsAfterDelay command  
+- setCommandParams method to AppCommand  
+
+#### Removed
+- index containing exports of all commands
+- openCart command  
+- openSearch command  
+
