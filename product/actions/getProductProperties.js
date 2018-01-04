@@ -30,11 +30,11 @@ const getProductProperties = productId => (dispatch, getState) => {
   new PipelineRequest('getProductProperties')
     .setInput({ productId })
     .dispatch()
-      .then(result => dispatch(receiveProductProperties(productId, result.properties)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorProductProperties(productId));
-      });
+    .then(result => dispatch(receiveProductProperties(productId, result.properties)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorProductProperties(productId));
+    });
 };
 
 export default getProductProperties;

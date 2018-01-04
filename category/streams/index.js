@@ -21,10 +21,10 @@ import { FILTER_PATH } from '../../filter/constants';
  * When opening the filter page the categoryId should be preserved
  * so that the filters know what category needs to be filtered.
  */
-export const categoryRouteDidLeave$ = routeDidLeave(CATEGORY_PATH).filter(
+export const categoryRouteDidLeave$ = routeDidLeave(CATEGORY_PATH).filter(({ pathname }) => (
   // A transition to filters should not count as 'leaving'.
-  ({ pathname }) => !pathname.startsWith(FILTER_PATH)
-);
+  !pathname.startsWith(FILTER_PATH)
+));
 
 /**
  * Gets triggered when entering a category route.
@@ -34,6 +34,6 @@ export const categoryRouteDidEnter$ = routeDidEnter(CATEGORY_PATH);
 /**
  * Gets triggered when the root categories received.
  */
-export const receivedRootCategories$ = main$.filter(
-  ({ action }) => action.type === RECEIVE_ROOT_CATEGORIES
-);
+export const receivedRootCategories$ = main$.filter(({ action }) => (
+  action.type === RECEIVE_ROOT_CATEGORIES
+));

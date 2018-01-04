@@ -26,10 +26,9 @@ export const productReceived$ = main$
  * Gets triggered when VariantId changes.
  * @type {Observable}
  */
-const setVariantId$ = main$
-  .filter(({ action }) => (
-    action.type === SET_PRODUCT_VARIANT_ID &&
-    action.productVariantId !== null
+const setVariantId$ = main$.filter(({ action }) => (
+  action.type === SET_PRODUCT_VARIANT_ID &&
+  action.productVariantId !== null
 ));
 
 /**
@@ -38,10 +37,10 @@ const setVariantId$ = main$
  */
 export const variantDidChangeUncached$ = setVariantId$
   .switchMap(({ action }) => (
-    productReceived$.filter(
-      ({ action: productAction }) => productAction.productId === action.productVariantId)
-    )
-  );
+    productReceived$.filter(({ action: productAction }) => (
+      productAction.productId === action.productVariantId
+    ))
+  ));
 
 /**
  * Gets triggered when VariantId changes and product data is already there.

@@ -28,11 +28,11 @@ const fetchRootCategories = () => (dispatch, getState) => {
 
   new PipelineRequest('getRootCategories')
     .dispatch()
-      .then(result => dispatch(receiveRootCategories(result.categories)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorRootCategories());
-      });
+    .then(result => dispatch(receiveRootCategories(result.categories)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorRootCategories());
+    });
 };
 
 export default fetchRootCategories;

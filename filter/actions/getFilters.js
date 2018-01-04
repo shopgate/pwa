@@ -53,11 +53,11 @@ const getFilters = () => (dispatch, getState) => {
   new PipelineRequest('getFilters')
     .setInput(requestParams)
     .dispatch()
-      .then(({ filters }) => dispatch(receiveFilters(hash, filters)))
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorFilters(hash));
-      });
+    .then(({ filters }) => dispatch(receiveFilters(hash, filters)))
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorFilters(hash));
+    });
 };
 
 export default getFilters;

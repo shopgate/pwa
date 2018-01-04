@@ -24,9 +24,9 @@ import { getCurrentProductVariantId } from '../selectors/variants';
  */
 function product(subscribe) {
   const itemRouteDidEnter$ = routeDidEnter(ITEM_PATH);
-  const itemRouteDidLeave$ = routeDidLeave(ITEM_PATH).filter(
-    ({ pathname }) => !pathname.startsWith(ITEM_PATH)
-  );
+  const itemRouteDidLeave$ = routeDidLeave(ITEM_PATH).filter(({ pathname }) => (
+    !pathname.startsWith(ITEM_PATH)
+  ));
 
   subscribe(itemRouteDidEnter$, ({ dispatch, getState }) => {
     const state = getState();

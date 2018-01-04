@@ -39,58 +39,55 @@ import {
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const cartRequesting$ = main$.filter(
-  ({ action }) => action.type === REQUEST_CART
-);
+export const cartRequesting$ = main$.filter(({ action }) => (
+  action.type === REQUEST_CART
+));
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const cartReceived$ = main$.filter(
-  ({ action }) =>
-    action.type === RECEIVE_CART ||
-    action.type === ERROR_CART
-);
+export const cartReceived$ = main$.filter(({ action }) => (
+  action.type === RECEIVE_CART ||
+  action.type === ERROR_CART
+));
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const couponsAdded$ = main$.filter(
-  ({ action }) => action.type === ADD_COUPONS_TO_CART
-);
+export const couponsAdded$ = main$.filter(({ action }) => (
+  action.type === ADD_COUPONS_TO_CART
+));
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const couponsDeleted$ = main$.filter(
-  ({ action }) => action.type === DELETE_COUPONS_FROM_CART
-);
+export const couponsDeleted$ = main$.filter(({ action }) => (
+  action.type === DELETE_COUPONS_FROM_CART
+));
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const couponsUpdated$ = main$.filter(
-  ({ action }) =>
-    action.type === SUCCESS_ADD_COUPONS_TO_CART ||
-    action.type === ERROR_ADD_COUPONS_TO_CART ||
-    action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
-    action.type === ERROR_DELETE_COUPONS_FROM_CART
-);
+export const couponsUpdated$ = main$.filter(({ action }) => (
+  action.type === SUCCESS_ADD_COUPONS_TO_CART ||
+  action.type === ERROR_ADD_COUPONS_TO_CART ||
+  action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
+  action.type === ERROR_DELETE_COUPONS_FROM_CART
+));
 
 /**
  * Gets triggered when a link containing a coupon parameter is opened from a push or deeplink.
  * @type {Observable}
  */
-export const couponLinkOpened$ = openedLink$.filter(
-  ({ action }) => (
-    action.options &&
-    action.options.queryParams &&
-    action.options.queryParams.coupon
-  ));
+export const couponLinkOpened$ = openedLink$.filter(({ action }) => (
+  action.options &&
+  action.options.queryParams &&
+  action.options.queryParams.coupon
+));
 
 /**
  * Gets triggered when a push notification
@@ -98,22 +95,21 @@ export const couponLinkOpened$ = openedLink$.filter(
  * @type {Observable}
  */
 export const couponActionPushNotification$ = openedLink$
-  .filter(
-    ({ action }) => {
-      // Stop here if we didn't receive a url.
-      if (!action.options || !action.options.url) {
-        return false;
-      }
+  .filter(({ action }) => {
+    // Stop here if we didn't receive a url.
+    if (!action.options || !action.options.url) {
+      return false;
+    }
 
-      // Split the URL string and remove any empty strings.
-      const paths = action.options.url.split('/').filter(Boolean);
+    // Split the URL string and remove any empty strings.
+    const paths = action.options.url.split('/').filter(Boolean);
 
-      /**
-       * Check that this is the correct push action for coupons and
-       * that we have a code to use (second path).
-       */
-      return (paths[0] === COUPON_PUSH_NOTIFICATION && paths.length === 2);
-    })
+    /**
+     * Check that this is the correct push action for coupons and
+     * that we have a code to use (second path).
+     */
+    return (paths[0] === COUPON_PUSH_NOTIFICATION && paths.length === 2);
+  })
   .map(input => ({
     ...input,
     code: input.action.options.url.split('/').filter(Boolean)[1],
@@ -123,54 +119,52 @@ export const couponActionPushNotification$ = openedLink$
  * Gets triggered when the user tried to add a product to the cart.
  * @type {Observable}
  */
-export const productsAdded$ = main$.filter(
-  ({ action }) => action.type === ADD_PRODUCTS_TO_CART
-);
+export const productsAdded$ = main$.filter(({ action }) => (
+  action.type === ADD_PRODUCTS_TO_CART
+));
 
 /**
  * Gets triggered when the user tried to add a product to the cart.
  * @type {Observable}
  */
-export const productsModified$ = main$.filter(
-  ({ action }) => action.type === UPDATE_PRODUCTS_IN_CART
-);
+export const productsModified$ = main$.filter(({ action }) => (
+  action.type === UPDATE_PRODUCTS_IN_CART
+));
 
 /**
  * Gets triggered when the user tried to add a product to the cart.
  * @type {Observable}
  */
-export const productsDeleted$ = main$.filter(
-  ({ action }) => action.type === DELETE_PRODUCTS_FROM_CART
-);
+export const productsDeleted$ = main$.filter(({ action }) => (
+  action.type === DELETE_PRODUCTS_FROM_CART
+));
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
  * @type {Observable}
  */
-export const productsUpdated$ = main$.filter(
-  ({ action }) =>
-    action.type === SUCCESS_ADD_PRODUCTS_TO_CART ||
-    action.type === ERROR_ADD_PRODUCTS_TO_CART ||
-    action.type === SUCCESS_UPDATE_PRODUCTS_IN_CART ||
-    action.type === ERROR_UPDATE_PRODUCTS_IN_CART ||
-    action.type === SUCCESS_DELETE_PRODUCTS_FROM_CART ||
-    action.type === ERROR_DELETE_PRODUCTS_FROM_CART
-);
+export const productsUpdated$ = main$.filter(({ action }) => (
+  action.type === SUCCESS_ADD_PRODUCTS_TO_CART ||
+  action.type === ERROR_ADD_PRODUCTS_TO_CART ||
+  action.type === SUCCESS_UPDATE_PRODUCTS_IN_CART ||
+  action.type === ERROR_UPDATE_PRODUCTS_IN_CART ||
+  action.type === SUCCESS_DELETE_PRODUCTS_FROM_CART ||
+  action.type === ERROR_DELETE_PRODUCTS_FROM_CART
+));
 
 /**
  * Gets triggered when the remote cart was updated.
  * @type {Observable}
  */
-export const remoteCartDidUpdate$ = main$.filter(
-  ({ action }) =>
-    action.type === SUCCESS_ADD_PRODUCTS_TO_CART ||
-    action.type === ERROR_ADD_PRODUCTS_TO_CART ||
-    action.type === SUCCESS_UPDATE_PRODUCTS_IN_CART ||
-    action.type === ERROR_UPDATE_PRODUCTS_IN_CART ||
-    action.type === SUCCESS_DELETE_PRODUCTS_FROM_CART ||
-    action.type === ERROR_DELETE_PRODUCTS_FROM_CART ||
-    action.type === SUCCESS_ADD_COUPONS_TO_CART ||
-    action.type === ERROR_ADD_COUPONS_TO_CART ||
-    action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
-    action.type === ERROR_DELETE_COUPONS_FROM_CART
-  );
+export const remoteCartDidUpdate$ = main$.filter(({ action }) => (
+  action.type === SUCCESS_ADD_PRODUCTS_TO_CART ||
+  action.type === ERROR_ADD_PRODUCTS_TO_CART ||
+  action.type === SUCCESS_UPDATE_PRODUCTS_IN_CART ||
+  action.type === ERROR_UPDATE_PRODUCTS_IN_CART ||
+  action.type === SUCCESS_DELETE_PRODUCTS_FROM_CART ||
+  action.type === ERROR_DELETE_PRODUCTS_FROM_CART ||
+  action.type === SUCCESS_ADD_COUPONS_TO_CART ||
+  action.type === ERROR_ADD_COUPONS_TO_CART ||
+  action.type === SUCCESS_DELETE_COUPONS_FROM_CART ||
+  action.type === ERROR_DELETE_COUPONS_FROM_CART
+));

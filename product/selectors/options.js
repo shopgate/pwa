@@ -63,8 +63,8 @@ export const getProductOptions = createSelector(
   getProductCurrency,
   getCurrentProductOptions,
   getRawProductOptions,
-  validateSelectorParams(
-    (currency, currentOptions, options) => options.map((option) => {
+  validateSelectorParams((currency, currentOptions, options) => (
+    options.map((option) => {
       const selected = currentOptions[option.id];
 
       return {
@@ -92,7 +92,7 @@ export const getProductOptions = createSelector(
         }),
       };
     })
-  )
+  ))
 );
 
 /**
@@ -117,7 +117,7 @@ export const hasProductOptions = (state) => {
 export const areProductOptionsSet = createSelector(
   getRawProductOptions,
   getCurrentProductOptions,
-  validateSelectorParams(
-    (options, currentOptions) => options.length === Object.keys(currentOptions).length
-  )
+  validateSelectorParams((options, currentOptions) => (
+    options.length === Object.keys(currentOptions).length
+  ))
 );

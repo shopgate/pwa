@@ -37,14 +37,14 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   new PipelineRequest('getProduct')
     .setInput({ productId })
     .dispatch()
-      .then((result) => {
-        dispatch(processProductFlags(result));
-        dispatch(receiveProduct(productId, result));
-      })
-      .catch((error) => {
-        logger.error(error);
-        dispatch(errorProduct(productId));
-      });
+    .then((result) => {
+      dispatch(processProductFlags(result));
+      dispatch(receiveProduct(productId, result));
+    })
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorProduct(productId));
+    });
 };
 
 export default getProduct;

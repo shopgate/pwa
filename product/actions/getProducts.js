@@ -113,42 +113,42 @@ const getProducts = ({
     return new PipelineRequest(pipeline)
       .setInput(requestParams)
       .dispatch()
-        .then((response) => {
-          let totalResultCount = response.totalProductCount;
+      .then((response) => {
+        let totalResultCount = response.totalProductCount;
 
-          /**
-           * When the next check was written, getHighlightProducts and getLiveshoppingProducts
-           * didn't deliver a totalProductCount within their responses - they simply returned all
-           * available products.
-           * So we set the products count of the response as totalProductCount to decrease the
-           * amount of logic, which is necessary to deal with product related pipelines.
-           */
-          if (
-            typeof totalResultCount === 'undefined' &&
-            (pipeline === 'getHighlightProducts' || pipeline === 'getLiveshoppingProducts')
-          ) {
-            totalResultCount = response.products.length;
-          }
+        /**
+         * When the next check was written, getHighlightProducts and getLiveshoppingProducts
+         * didn't deliver a totalProductCount within their responses - they simply returned all
+         * available products.
+         * So we set the products count of the response as totalProductCount to decrease the
+         * amount of logic, which is necessary to deal with product related pipelines.
+         */
+        if (
+          typeof totalResultCount === 'undefined' &&
+          (pipeline === 'getHighlightProducts' || pipeline === 'getLiveshoppingProducts')
+        ) {
+          totalResultCount = response.products.length;
+        }
 
-          dispatch(receiveProducts({
-            hash,
-            requestParams,
-            products: response.products,
-            totalResultCount,
-            cached,
-          }));
+        dispatch(receiveProducts({
+          hash,
+          requestParams,
+          products: response.products,
+          totalResultCount,
+          cached,
+        }));
 
-          return response;
-        })
-        .catch((error) => {
-          logger.error(error);
-          dispatch(errorProducts({
-            hash,
-            requestParams,
-          }));
+        return response;
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(errorProducts({
+          hash,
+          requestParams,
+        }));
 
-          return error;
-        });
+        return error;
+      });
   };
 
 export default getProducts;
