@@ -15,7 +15,6 @@ const messagesContainer = css({
 }).toString();
 
 const messages = css({
-
   borderRadius: 4,
 }).toString();
 
