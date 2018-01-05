@@ -49,6 +49,9 @@ const Item = (props) => {
     }
   );
 
+  const labelClassName =
+          props.withIndicator && !props.count ? styles.labelWithIndicator : styles.label;
+
   return (
     <div className={className} onClick={() => handleClick(props)} aria-hidden>
       <Ripple fill>
@@ -64,7 +67,7 @@ const Item = (props) => {
             </div>
           </Grid.Item>
           <Grid.Item grow={1}>
-            <div className={styles.label}>
+            <div className={labelClassName}>
               {props.children}
             </div>
           </Grid.Item>
@@ -92,6 +95,7 @@ Item.propTypes = {
   icon: PropTypes.func,
   onClick: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   primary: PropTypes.bool,
+  withIndicator: PropTypes.bool,
 };
 
 Item.defaultProps = {
@@ -102,6 +106,7 @@ Item.defaultProps = {
   icon: null,
   onClick: () => {},
   primary: false,
+  withIndicator: false,
 };
 
 export default Item;

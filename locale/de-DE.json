@@ -10,7 +10,8 @@
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
-    "reviews": "Bewertungen"
+    "reviews": "Bewertungen",
+    "favorites": "Merkliste"
   },
   "filter": {
     "sort": {
@@ -91,7 +92,7 @@
     "login_register": "Anmelden",
     "home": "Startseite",
     "categories": "Kategorien",
-    "wishlist": "Merkliste",
+    "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "shipping": "Versandmethoden",

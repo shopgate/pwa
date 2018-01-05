@@ -12,8 +12,10 @@ import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import ClientInformation from 'Components/ClientInformation';
 import HomeIcon from 'Components/icons/HomeIcon';
+import HeartIcon from 'Components/icons/HeartIcon';
 import ViewListIcon from 'Components/icons/ViewListIcon';
 import ShoppingCartIcon from 'Components/icons/ShoppingCartIcon';
 import BoxIcon from 'Components/icons/BoxIcon';
@@ -128,6 +130,10 @@ class NavDrawer extends Component {
 
         <Item href={CATEGORY_PATH} icon={ViewListIcon} close={this.handleClose}>
           <I18n.Text string="navigation.categories" />
+        </Item>
+
+        <Item href={FAVORITES_PATH} icon={HeartIcon} close={this.handleClose} withIndicator>
+          <I18n.Text string="navigation.favorites" />
         </Item>
 
         <CartItem
