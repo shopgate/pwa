@@ -48,11 +48,15 @@ const loadHostedComponent = (route) => {
  */
 class Route extends Component {
   static propTypes = {
+    path: PropTypes.string.isRequired,
     component: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
       PropTypes.func,
       PropTypes.string,
-    ]).isRequired,
-    path: PropTypes.string.isRequired,
+    ]),
+  };
+
+  static defaultProps = {
+    component: () => (null),
   };
 
   static contextTypes = {
