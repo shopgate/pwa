@@ -13,6 +13,7 @@ import {
   getCurrentSearchSuggestionsObject,
   getSearchPhrase,
 } from '../selectors';
+import removeHighlightingPlaceholders from '../helpers/removeHighlightingPlaceholders';
 
 /**
  * Get suggestions from cache or pipeline.
@@ -34,7 +35,7 @@ const fetchSearchSuggestions = () => (dispatch, getState) => {
     .setInput({ searchPhrase })
     .dispatch()
     .then(({ suggestions }) => {
-      dispatch(receiveSearchSuggestions(searchPhrase, suggestions));
+      dispatch(receiveSearchSuggestions(searchPhrase, removeHighlightingPlaceholders(suggestions)));
     });
 };
 
