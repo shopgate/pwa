@@ -84,18 +84,22 @@ class View extends Component {
    * @param {Object} nextProps The new component props.
    */
   componentWillReceiveProps(nextProps) {
-    // Only run the logic, if the path for the View instance is active
-    if (nextProps.historyPathname === this.pathname) {
-      if ((nextProps.title !== this.props.title) ||
-        (this.props.navigatorTitle !== nextProps.title)) {
-        // Update the title if it distinguishes from the current navigator title
-        this.props.setTitle(nextProps.title || this.props.title);
-      }
+    // Only update if the active pathname is the same as the pathname of this route.
+    if (nextProps.historyPathname !== this.pathname) {
+      return;
+    }
 
-      if (nextProps.viewTop && (nextProps.viewTop !== this.props.viewTop)) {
-        // Scroll to top
-        this.element.scrollTop = 0;
-      }
+    if (
+      (nextProps.title !== this.props.title) ||
+      (this.props.navigatorTitle !== nextProps.title)
+    ) {
+      // Update the title if it is different from the set navigator title.
+      this.props.setTitle(nextProps.title || this.props.title);
+    }
+
+    if (nextProps.viewTop && (nextProps.viewTop !== this.props.viewTop)) {
+      // Scroll to top
+      this.element.scrollTop = 0;
     }
   }
 
