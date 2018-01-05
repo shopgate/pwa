@@ -14,10 +14,10 @@ import updateHistory from '../../action-creators/history/updateHistory';
  * @return {Function} A redux thunk.
  */
 const processHistoryUpdate = historyProps => (dispatch) => {
-  // Extract search query string and other props
+  // Extract search query string and other props.
   const { search, ...processedProps } = historyProps;
 
-  // Parse search query string to an object
+  // Parse search query string to an object.
   processedProps.queryParams = parseQueryStringToObject(search);
 
   dispatch(updateHistory(processedProps));
