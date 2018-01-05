@@ -126,7 +126,8 @@ export default function cart(subscribe) {
   });
 
   subscribe(cartDidEnterOrAppDidStart$, ({ dispatch }) => {
-    dispatch(fetchRegisterUrl());
+    dispatch(fetchRegisterUrl())
+      .catch(e => e);
   });
 
   subscribe(remoteCartDidUpdate$, ({ dispatch, action }) => {
