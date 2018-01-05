@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RippleButton from 'Components/RippleButton';
 import connect from './connector';
