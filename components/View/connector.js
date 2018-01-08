@@ -6,9 +6,10 @@
  */
 
 import { connect } from 'react-redux';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import setViewTitle from './action-creators/setViewTitle';
 import setViewTop from './action-creators/setViewTop';
-import { getTopStatus } from './selectors';
+import { getTopStatus, getTitle } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,6 +17,8 @@ import { getTopStatus } from './selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
+  navigatorTitle: getTitle(state),
+  historyPathname: getHistoryPathname(state),
   viewTop: getTopStatus(state),
 });
 
