@@ -8,3 +8,9 @@
 
 // Favorites path.
 export const FAVORITES_PATH = '/favourite_list';
+
+export const REQUEST_FAVORITES = 'REQUEST_FAVORITES';
+export const RECEIVE_FAVORITES = 'RECEIVE_FAVORITES';
+export const ERROR_FETCH_FAVORITES = 'ERROR_FAVORITES';
+
+export const FAVORITES_LIFETIME = 3600000; // 1 hour
