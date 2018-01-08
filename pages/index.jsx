@@ -25,7 +25,7 @@ import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
@@ -41,7 +41,6 @@ import ProductGallery from './ProductGallery';
 import Cart from './Cart';
 import Search from './Search';
 import Login from './Login';
-import Register from './Register';
 import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
@@ -70,7 +69,7 @@ const Pages = () =>
       <Route path={`${CART_PATH}`} component={Cart} />
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
-      <Route path={`${REGISTER_PATH}`} component={Register} />
+      <Route path={`${REGISTER_PATH}`} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
