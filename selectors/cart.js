@@ -54,8 +54,9 @@ export default createSelector(
   getProducts,
   (subTotal, currency, products) => ({
     amount: {
-      // TODO: net is not possible at the moment
       gross: convertPriceToString(subTotal),
+      // TODO: Correct net prices are not possible atm.
+      net: convertPriceToString(subTotal),
       currency,
     },
     products,
