@@ -17,6 +17,7 @@ import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
+import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
@@ -30,6 +31,7 @@ const reducers = {
   cart,
   category,
   client,
+  favorites,
   filter,
   history,
   menu,
