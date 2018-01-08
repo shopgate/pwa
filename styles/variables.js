@@ -37,6 +37,6 @@ export default {
     height: 49,
   },
   statusBar: {
-    height: 25,
+    height: 20,
   },
 };

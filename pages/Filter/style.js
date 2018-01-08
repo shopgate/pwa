@@ -13,8 +13,7 @@ const container = css({
   flexGrow: 1,
   paddingTop: 4,
   paddingBottom: [
-    'constant(safe-area-inset-bottom)',
-    'env(safe-area-inset-bottom)',
+    'var(--safe-area-inset-bottom)',
   ],
 }).toString();
 
