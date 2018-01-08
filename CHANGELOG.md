@@ -1,6 +1,26 @@
 
 # Changelog
 
+### [1.2.0](https://github.com/shopgate/pwa-common/compare/v1.1.3...v1.2.0) - January 08, 2017
+
+#### Added
+- constant `CHECKOUT_PATH`
+- constant `LEGACY_URL`
+- constant `URL_TYPE_REGISTER`
+- selector `getHistoryLocation`
+- selector `getHistoryLocation`
+- Observable `openedRegisterLink`
+- Opening the `/register` route will now trigger the fetching of a registration URL, if one is available
+
+#### Changed
+- The localstorage key now has the following format: `sgCloud-<appId>-<themeName>`. Different themes will no longer share the same storage space
+- Converted `<List>` to be a stateless component
+
+#### Removed
+- Custom router lifecycle events `routeWillEnter` and `routeWillLeave`
+
+---
+
 ### [1.1.3](https://github.com/shopgate/pwa-common/compare/v1.1.2...v1.1.3) - December 28, 2017
 
 #### Fixed
@@ -66,7 +86,7 @@
 ### [1.0.4](https://github.com/shopgate/pwa-common/compare/v1.0.3...v1.0.4) - December 11, 2017
 
 #### Added
-- event.addCallback('viewDidDisappear', () => {});
+- Added a default callback for `viewDidDisappear`
 
 #### Changed
 - Updated `@shopgate/pwa-core` to ^1.0.3
