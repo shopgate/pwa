@@ -11,11 +11,14 @@ import variables from 'Styles/variables';
 
 const messagesContainer = css({
   padding: variables.gap.big,
+  paddingBottom: 0,
   backgroundColor: colors.light,
 }).toString();
 
 const messages = css({
   borderRadius: 4,
+  padding: `${variables.gap.small / 2}px ${variables.gap.small}px`,
+  lineHeight: 1.125,
 }).toString();
 
 export default {
