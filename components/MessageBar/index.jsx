@@ -13,12 +13,13 @@ import styles from './style';
  * The message bar component.
  * @param {Object} props The component props.
  * @param {Array} props.messages The message content.
+ * @param {Object} props.classNames Styling.
  * @return {JSX}
  */
-const MessageBar = ({ messages }) => (
-  <div className={styles.container}>
+const MessageBar = ({ messages, classNames }) => (
+  <div className={`${classNames.container} ${styles.container}`}>
     {messages.map(({ type = 'info', message }) => (
-      <div key={`${type}-${message}`} className={styles[type]}>
+      <div key={`${type}-${message}`} className={`${classNames.message} ${styles[type]}`}>
         {message}
       </div>
     ))}
@@ -32,10 +33,18 @@ MessageBar.propTypes = {
       type: PropTypes.string,
     })
   ).isRequired,
+  classNames: PropTypes.shape({
+    container: PropTypes.string,
+    message: PropTypes.string,
+  }),
 };
 
 MessageBar.defaultProps = {
   messages: [],
+  classNames: {
+    container: '',
+    message: '',
+  },
 };
 
 export default MessageBar;

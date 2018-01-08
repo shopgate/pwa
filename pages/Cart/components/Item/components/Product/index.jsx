@@ -12,12 +12,19 @@ import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import variables from 'Styles/variables';
 import CardListItem from 'Components/CardList/components/Item';
+import MessageBar from 'Components/MessageBar';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
 } from '../../../../style';
+import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
+
+const messageStyles = {
+  container: styles.messagesContainer,
+  message: styles.messages,
+};
 
 /**
  * The Cart Product component.
@@ -26,6 +33,7 @@ class Product extends Component {
   static propTypes = {
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
     deleteProduct: PropTypes.func,
@@ -124,6 +132,8 @@ class Product extends Component {
           >
             <CardListItem>
               <div ref={(element) => { this.cardElement = element; }}>
+                {this.props.messages.length > 0 &&
+                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Layout
                   handleDelete={this.transitionOut}
                   handleUpdate={this.updateProduct}
