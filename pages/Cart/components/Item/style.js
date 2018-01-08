@@ -10,9 +10,8 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const messagesContainer = css({
-  padding: variables.gap.big,
-  paddingBottom: 0,
-  backgroundColor: colors.light,
+  background: colors.light,
+  padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
 }).toString();
 
 const messages = css({
