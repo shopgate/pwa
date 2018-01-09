@@ -9,6 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 import { mount, shallow } from 'enzyme';
+import { FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import GridIcon from 'Components/icons/GridIcon';
 import ListIcon from 'Components/icons/ListIcon';
 import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
@@ -27,7 +28,7 @@ const activeFilters = {
   Size: {
     label: 'Size',
     source: 'attributes',
-    type: 'multiselect',
+    type: FILTER_TYPE_MULTISELECT,
     values: ['31'],
   },
 };
