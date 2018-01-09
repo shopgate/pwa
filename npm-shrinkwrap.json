@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "1.1.7",
+  "version": "1.2.0",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -162,9 +162,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "1.1.3",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.1.3.tgz",
-      "integrity": "sha512-NAvMRoMen4dk8QSSUroayexXkRhrOebH8AfRDUAY9dPV1G2z6vD7ECZrqsvYnL5ublZYKNILGYZXSgU7tUQIFQ==",
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-1.2.0.tgz",
+      "integrity": "sha512-hCJDNC3lt0LU+Ur29UCW3S2j6ERmM0moAOmuFJdfW8T2IoIqkZ8eTLRP+B+2bTcAIuAz9Jj3/vJVV7Yxvvffnw==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -177,7 +177,7 @@
         "react-dotdotdot": "1.1.0",
         "react-hot-loader": "3.0.0-beta.6",
         "react-id-swiper": "1.4.0",
-        "react-inline-transition-group": "2.1.7",
+        "react-inline-transition-group": "2.2.0",
         "react-portal": "3.2.0",
         "react-redux": "5.0.6",
         "react-tap-event-plugin": "3.0.2",
@@ -192,9 +192,9 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "1.1.4",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.1.4.tgz",
-      "integrity": "sha512-4sQ9lcxYyMKK1N7uPt7lmEr6kq6UM/8AK7KTZqkM7kuisAkmmZ8GX9PI1d7qwixQUENzbnQx65BdjE6RJA55cQ==",
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-1.2.0.tgz",
+      "integrity": "sha512-ER8bBCqrjUew8HXtBCCJGs/tC108HfDerPrZJKLh8YJf0pK9FVGPfNbbcXlodO7onTGsQ1XUtM51RTPDveBTtg==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
@@ -210,9 +210,9 @@
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "1.1.2",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.1.2.tgz",
-      "integrity": "sha512-EhJgwbGNcr5o6cjtCosbvunwzZfznXQm7E8bL5fF4uuTHMPYbhE7Z0EJeUFQ0SVY2FVrb/hP2eFANF2Pb6ak0Q=="
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.2.0.tgz",
+      "integrity": "sha512-mCkXvDOh0uYdrsRzjayvvcy9PHmJ0M96ejR2xSfxqnx2c6zs6kibw8U+L00GwvH93ECc+nqAIWNNvaD8wg21SQ=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.3.0",
@@ -7201,13 +7201,13 @@
       }
     },
     "react-inline-transition-group": {
-      "version": "2.1.7",
-      "resolved": "https://registry.npmjs.org/react-inline-transition-group/-/react-inline-transition-group-2.1.7.tgz",
-      "integrity": "sha1-qWgmmPlne4LNVfPXLLOs4c9PvqI=",
+      "version": "2.2.0",
+      "resolved": "https://registry.npmjs.org/react-inline-transition-group/-/react-inline-transition-group-2.2.0.tgz",
+      "integrity": "sha512-CXca9LtV0kTL8nUnK2IklM7LYLOM488w7qmD9szny6Odyq/6G/nwxwROsvj+2MLFBKn7e1fOAgqDXV6w11I3hQ==",
       "requires": {
         "create-react-class": "15.6.2",
         "prop-types": "15.6.0",
-        "react-transition-hooks": "1.1.1"
+        "react-transition-hooks": "1.2.0"
       }
     },
     "react-portal": {
@@ -7372,9 +7372,9 @@
       }
     },
     "react-transition-hooks": {
-      "version": "1.1.1",
-      "resolved": "https://registry.npmjs.org/react-transition-hooks/-/react-transition-hooks-1.1.1.tgz",
-      "integrity": "sha1-4wQhGKs8lgc5G8X+ebcqmJEBtFc=",
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/react-transition-hooks/-/react-transition-hooks-1.2.0.tgz",
+      "integrity": "sha512-F8eEvujOdrhrpEZRfNDaOfo/WOEfLKKqSs72y9ibsen68Uogap75Av2PQC5bbI+SoAnQCzUMCt0S2HfaM2e8ig==",
       "requires": {
         "create-react-class": "15.6.2",
         "prop-types": "15.6.0"
@@ -7873,9 +7873,9 @@
       "integrity": "sha1-wAvEx2apcMyNWTfQjNWOkx19rgU="
     },
     "sc-formatter": {
-      "version": "3.0.1",
-      "resolved": "https://registry.npmjs.org/sc-formatter/-/sc-formatter-3.0.1.tgz",
-      "integrity": "sha512-Jl2bH8zUtKn70JJIIPTEfWGDXK+TB9wV55C/zwSoDum4T1X1bsIBudO1QkxOG2RZMgkcKexfGQLlDCH37c/4fg=="
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/sc-formatter/-/sc-formatter-3.0.2.tgz",
+      "integrity": "sha512-9PbqYBpCq+OoEeRQ3QfFIGE6qwjjBcd2j7UjgDlhnZbtSnuGgHdcRklPKYGuYFH82V/dwd+AIpu8XvA1zqTd+A=="
     },
     "semver": {
       "version": "5.4.1",
@@ -7969,7 +7969,7 @@
         "sc-channel": "1.0.6",
         "sc-emitter": "1.1.0",
         "sc-errors": "1.3.3",
-        "sc-formatter": "3.0.1",
+        "sc-formatter": "3.0.2",
         "ws": "3.0.0"
       }
     },
