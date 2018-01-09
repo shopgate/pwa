@@ -39,7 +39,7 @@ const products = (state = {}, action) => {
       return {
         ...state,
         isFetching: false,
-        ids: [],
+        ids: state.ids || [],
         expires: 0,
       };
     default:

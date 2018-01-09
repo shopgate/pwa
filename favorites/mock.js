@@ -50,17 +50,59 @@ const mockedList = {
   ],
 };
 
-/**
- * Returns mocked pipeline request which resolve immediately with a non-empty list.
- * @returns {Promise}
- */
-function MockedPipelineRequest() {
-  this.dispatch = () => new Promise(resolve => resolve(mockedList));
+const mockedStateWithoutProducts = {
+  favorites: {
+    products: {
+      isFetching: false,
+      expires: 0,
+      ids: [],
+    },
+  },
+};
 
-  return this;
-}
+const mockedStateWithProducts = {
+  favorites: {
+    products: {
+      isFetching: false,
+      expires: 0,
+      ids: [mockedList.products[0].id],
+    },
+  },
+};
+
+/**
+ * Gets mocked state.
+ * @param {boolean} withProducts When true products are returned.
+ * @param {boolean} validCache When true, `.expires` flag is > `Date.now()`
+ * @returns {Object}
+ */
+const getMockedState = ({ withProducts, validCache = false }) => {
+  const data = withProducts ? mockedStateWithProducts : mockedStateWithoutProducts;
+  if (validCache) {
+    data.favorites.products.expires = Date.now() + 999999;
+  }
+
+  return data;
+};
+
+/**
+ * Gets mocked state.
+ * @param {'then'|string} variant Variant as in MockedPipelineResponse.
+ * @param {boolean} withProducts When true products are returned.
+ * @param {boolean} validCache When true, `.expires` flag is > `Date.now()`
+ * @returns {function}
+ */
+const mockedGetState = (variant, { withProducts = false, validCache = false } = {}) => () => {
+  if (variant === 'then') {
+    return getMockedState({
+      withProducts,
+      validCache,
+    });
+  }
+  return getMockedState({ withProducts: false });
+};
 
 export {
   mockedList,
-  MockedPipelineRequest,
+  mockedGetState,
 };

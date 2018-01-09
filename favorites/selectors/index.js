@@ -6,7 +6,6 @@
  *
  */
 import { createSelector } from 'reselect';
-
 import { getProducts } from '../../product/selectors/product';
 
 /**
@@ -19,12 +18,8 @@ const getFavoritesProductsIds = state => state.favorites.products.ids;
 /**
  * Favorites selector.
  */
-const getFavorites = createSelector(
+export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProducts,
   (productIds, products) => productIds.map(id => products[id])
 );
-
-export default {
-  getFavorites,
-};

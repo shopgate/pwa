@@ -6,7 +6,7 @@
  *
  */
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import { MockedPipelineRequest } from '../mock';
+import PipelineRequest from '../temp-pipeline-request';
 import receiveFavorites from '../action-creators/receiveFavorites';
 import requestFavorites from '../action-creators/requestFavorites';
 import errorFetchFavorites from '../action-creators/errorFetchFavorites';
@@ -20,7 +20,10 @@ const getFavorites = () => (dispatch, getState) => {
   if (!shouldFetchData(data)) {
     return new Promise(resolve => resolve());
   }
-  const request = new MockedPipelineRequest().dispatch();
+  /**
+   * Use real pipeline when #favPipelines are live.
+   */
+  const request = new PipelineRequest('getFavorites').dispatch();
   dispatch(requestFavorites());
   request
     .then((result) => {
