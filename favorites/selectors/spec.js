@@ -85,5 +85,13 @@ describe('Favorites - selectors', () => {
       });
       expect(result).toBe(true);
     });
+    /**
+     * `.hasFavorites` uses all state related selectors. This checks all possible type errors
+     * when selector tries to reach property from unready state.
+     */
+    it('should not fail when state is not ready', () => {
+      const result = hasFavorites({});
+      expect(result).toBe(false);
+    });
   });
 });

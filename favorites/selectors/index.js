@@ -13,7 +13,12 @@ import { getProducts } from '../../product/selectors/product';
  * @param {Object} state State.
  * @returns {Array}
  */
-const getFavoritesProductsIds = state => state.favorites.products.ids;
+const getFavoritesProductsIds = (state) => {
+  if (state.favorites && state.favorites.products) {
+    return state.favorites.products.ids;
+  }
+  return [];
+};
 
 /**
  * Favorites selector.
