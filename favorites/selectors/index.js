@@ -14,7 +14,11 @@ import { getProducts } from '../../product/selectors/product';
  * @returns {Array}
  */
 const getFavoritesProductsIds = (state) => {
-  if (state.favorites && state.favorites.products) {
+  if (
+    state.favorites
+    && state.favorites.products
+    && state.favorites.products.ids
+  ) {
     return state.favorites.products.ids;
   }
   return [];
