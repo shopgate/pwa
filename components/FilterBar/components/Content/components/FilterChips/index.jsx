@@ -8,6 +8,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import {
+  FILTER_TYPE_RANGE,
+  FILTER_TYPE_MULTISELECT,
+} from '@shopgate/pwa-common-commerce/filter/constants';
 import Chip from 'Components/Chip';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
@@ -18,7 +22,12 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFilters }) => {
+const FilterChips = ({
+  activeFilters,
+  currency,
+  handleFilterRemove,
+  handleOpenFilters,
+}) => {
   if (activeFilters === null || !Object.keys(activeFilters).length) {
     return null;
   }
@@ -29,8 +38,8 @@ const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFi
     const filter = activeFilters[key];
 
     switch (filter.type) {
-      case 'range':
-        chips.push(
+      case FILTER_TYPE_RANGE:
+        chips.push((
           <Chip
             key={filter.label}
             onRemove={() => handleFilterRemove(key)}
@@ -40,10 +49,10 @@ const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFi
             &nbsp;&mdash;&nbsp;
             <I18n.Price price={filter.maximum / 100} currency={currency} fractions={false} />
           </Chip>
-        );
+        ));
         break;
-      case 'multiselect':
-        filter.values.forEach((value, index) => chips.push(
+      case FILTER_TYPE_MULTISELECT:
+        filter.values.forEach((value, index) => chips.push((
           <Chip
             key={`${filter.label}-${index + 1}`}
             onRemove={() => handleFilterRemove(key, index)}
@@ -51,10 +60,10 @@ const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFi
           >
             {`${filter.label}: ${value}`}
           </Chip>
-        ));
+        )));
         break;
       default:
-        chips.push(
+        chips.push((
           <Chip
             key={filter.label}
             onRemove={() => handleFilterRemove(key)}
@@ -62,7 +71,7 @@ const FilterChips = ({ activeFilters, currency, handleFilterRemove, handleOpenFi
           >
             {`${filter.label}: ${filter.value}`}
           </Chip>
-        );
+        ));
         break;
     }
   });
