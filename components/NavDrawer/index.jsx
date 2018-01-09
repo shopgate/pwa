@@ -37,6 +37,7 @@ import connect from './connector';
  */
 class NavDrawer extends Component {
   static propTypes = {
+    hasFavorites: PropTypes.bool.isRequired,
     toggleNavDrawer: PropTypes.func.isRequired,
     cartProductCount: PropTypes.number,
     entries: PropTypes.shape(),
@@ -132,7 +133,12 @@ class NavDrawer extends Component {
           <I18n.Text string="navigation.categories" />
         </Item>
 
-        <Item href={FAVORITES_PATH} icon={HeartIcon} close={this.handleClose} withIndicator>
+        <Item
+          href={FAVORITES_PATH}
+          icon={HeartIcon}
+          close={this.handleClose}
+          withIndicator={this.props.hasFavorites}
+        >
           <I18n.Text string="navigation.favorites" />
         </Item>
 
