@@ -51,7 +51,7 @@ class View extends Component {
     },
     isFullscreen: false,
     style: null,
-    title: null,
+    title: '',
     viewTop: true,
   };
 
