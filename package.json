@@ -26,9 +26,9 @@
   ],
   "dependencies": {
     "@shopgate/pwa-common": "^1.2.0",
-    "@shopgate/pwa-common-commerce": "^1.2.0",
+    "@shopgate/pwa-common-commerce": "^1.2.1",
     "@shopgate/pwa-core": "^1.1.0",
-    "@shopgate/pwa-tracking": "^1.2.0",
+    "@shopgate/pwa-tracking": "^1.2.1",
     "@shopgate/pwa-webcheckout-shopify": "^1.1.2",
     "@shopgate/react-hammerjs": "^0.5.3",
     "@shopgate/tracking-core": "^1.0.8",
