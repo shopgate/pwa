@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 import styles from './style';
 import Content from './components/Content';
 import connect from './connector';
@@ -45,7 +46,7 @@ class FilterBar extends Component {
     this.state = {
       offset: 0,
       hasShadow: false,
-      spacerHeight: 0,
+      spacerHeight: variables.filterbar.height,
     };
   }
 
@@ -97,6 +98,19 @@ class FilterBar extends Component {
   }
 
   /**
+   * Returns the filter bar wrapper styles.
+   * @returns {Object} The filter bar wrapper styles.
+   */
+  get wrapperStyle() {
+    // Control the scrolling of the filter bar by applying a transform style property.
+    return {
+      background: (this.props.isActive) ? colors.accent : colors.light,
+      color: (this.props.isActive) ? colors.accentContrast : colors.accent,
+      transform: `translate3d(0, ${this.state.offset}px, 0)`,
+    };
+  }
+
+  /**
    * Sets up the scroll DOM element and binds all event handlers.
    * @param {HTMLElement|null} element The element that will be scrolling.
    */
@@ -115,9 +129,9 @@ class FilterBar extends Component {
    * spacers total height.
    */
   setSpacerHeight = () => {
-    const element = this.element;
+    const { element } = this;
 
-    if (!this.element) {
+    if (!element) {
       return;
     }
 
@@ -242,19 +256,6 @@ class FilterBar extends Component {
     this.isVisible = true;
     this.origin = this.scrollElement.scrollTop;
   };
-
-  /**
-   * Returns the filter bar wrapper styles.
-   * @returns {Object} The filter bar wrapper styles.
-   */
-  get wrapperStyle() {
-    // Control the scrolling of the filter bar by applying a transform style property.
-    return {
-      background: (this.props.isActive) ? colors.accent : colors.light,
-      color: (this.props.isActive) ? colors.accentContrast : colors.accent,
-      transform: `translate3d(0, ${this.state.offset}px, 0)`,
-    };
-  }
 
   /**
    * Renders the component.
