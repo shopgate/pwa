@@ -23,3 +23,19 @@ export const getFavorites = createSelector(
   getProducts,
   (productIds, products) => productIds.map(id => products[id])
 );
+
+/**
+ * Gets favorites list count.
+ */
+export const getFavoritesCount = createSelector(
+  getFavoritesProductsIds,
+  ids => ids.length
+);
+
+/**
+ * Returns true when favorites list is not empty.
+ */
+export const hasFavorites = createSelector(
+  getFavoritesCount,
+  count => !!count
+);
