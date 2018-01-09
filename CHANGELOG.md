@@ -8,7 +8,7 @@
 - Updated `@shopgate/pwa-common-commerce` to ^1.1.4
 
 #### Fixed
-- A bug where the `categoryDataLoaded$` Observable stream did not work correctly
+- A bug where the `categoryDataLoaded$` Observable did not work correctly
 
 ---
 
