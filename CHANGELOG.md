@@ -3,6 +3,13 @@
 
 ---
 
+### [1.2.0](https://github.com/shopgate/pwa-common-commerce/compare/v1.1.4...v1.2.0) - January 08, 2018
+
+#### Removed
+- `CHECKOUT_PATH` constant
+
+---
+
 ### [1.1.4](https://github.com/shopgate/pwa-common-commerce/compare/v1.1.3...v1.1.4) - January 05, 2018
 
 #### Added
