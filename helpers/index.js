@@ -6,7 +6,7 @@
  */
 
 /**
- * Converts arguments into a selenium readable format if test mode is set.
+ * Converts logs into a readable format for Selenium, if testMode is enabled.
  * @param {Array} args Arguments that should be converted
  * @return {Array} converted arguments
  */
