@@ -9,11 +9,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
+import connect from './connector';
+import EmptyFavorites from './components/EmptyFavorites';
 
 /**
  * Favorites page.
  */
 class Favorites extends Component {
+  static propTypes = {
+    products: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  };
+
   static contextTypes = {
     i18n: PropTypes.func,
   };
@@ -33,10 +39,10 @@ class Favorites extends Component {
   render() {
     return (
       <View title={this.title}>
-        <p>Hello world.</p>
+        <EmptyFavorites products={this.props.products} />
       </View>
     );
   }
 }
 
-export default Favorites;
+export default connect(Favorites);

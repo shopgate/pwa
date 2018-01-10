@@ -13,6 +13,10 @@
     "reviews": "Reviews",
     "favorites": "Favorites"
   },
+  "favorites": {
+    "continue": "Continue shopping",
+    "empty": "You don't have any favorites"
+  },
   "filter": {
     "sort": {
       "default": "Sort by",

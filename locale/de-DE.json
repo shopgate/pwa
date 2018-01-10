@@ -13,6 +13,10 @@
     "reviews": "Bewertungen",
     "favorites": "Merkliste"
   },
+  "favorites": {
+    "continue": "Weiter shoppen",
+    "empty": "Sie haben noch keine Artikel in der Merkliste"
+  },
   "filter": {
     "sort": {
       "default": "Sortieren",
