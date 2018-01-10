@@ -5,17 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import {
-  mockedList,
-} from './mock';
-
 /**
  * Returns mocked pipeline request which resolve immediately with a non-empty list.
  * #favPipelines
  * @returns {Promise}
  */
 export default function PipelineRequest() {
-  this.dispatch = () => new Promise(resolve => resolve(mockedList));
+  this.dispatch = () => new Promise(resolve => resolve({ products: [] }));
 
   return this;
 }
