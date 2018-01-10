@@ -149,14 +149,17 @@ describe('<NavDrawer />', () => {
   });
 
   it('should render favorites list link with an indicator', () => {
-    const Component = (<NavDrawer toggleNavDrawer highlightFavorites hasFavorites />);
+    const Component = (
+      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites hasFavorites />
+    );
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
   });
 
   let itemsCountwithFavoritesLink;
   it('should render favorites list link without an indicator', () => {
-    const Component = (<NavDrawer toggleNavDrawer highlightFavorites={false} hasFavorites />
+    const Component = (
+      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites={false} hasFavorites />
     );
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
@@ -164,7 +167,7 @@ describe('<NavDrawer />', () => {
   });
 
   it('should not render a favorites link at all when feature flag is off', () => {
-    const Component = (<NavDrawer toggleNavDrawer hasFavorites={false} />);
+    const Component = (<NavDrawer toggleNavDrawer={toggleNavDrawerMock} hasFavorites={false} />);
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Item').length).toBe(itemsCountwithFavoritesLink - 1);

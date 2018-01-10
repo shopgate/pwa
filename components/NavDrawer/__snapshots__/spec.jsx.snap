@@ -8,7 +8,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={false}
-  toggleNavDrawer={true}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
@@ -1106,7 +1106,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
   highlightFavorites={true}
   logout={[Function]}
   navDrawerActive={false}
-  toggleNavDrawer={true}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
@@ -2312,7 +2312,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={false}
-  toggleNavDrawer={true}
+  toggleNavDrawer={[MockFunction]}
   user={null}
 >
   <Layout
