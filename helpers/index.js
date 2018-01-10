@@ -11,7 +11,7 @@
  * @return {Array} converted arguments
  */
 const convertLogArgs = (args) => {
-  if (window.e2eTestLogs) {
+  if (window.stringifyLogs) {
     return [JSON.stringify(args)];
   }
 
