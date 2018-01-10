@@ -11,7 +11,7 @@ import {
 import { main$ } from './main';
 
 /**
- * Gets triggered after the client information war updated
+ * Gets triggered after the client information was updated
  * @type {Observable}
  */
 export const clientInformationDidUpdate$ = main$
