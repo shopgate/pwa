@@ -9,7 +9,7 @@ import { css } from 'glamor';
 
 /**
  * Updates the page inset css variables
- * @param {Object} [pageInsets={}] A page insets object
+ * @param {Object} pageInsets A page insets object
  */
 export const updatePageInsets = (pageInsets) => {
   const {

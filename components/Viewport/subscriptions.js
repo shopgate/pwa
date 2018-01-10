@@ -17,7 +17,7 @@ export default function app(subscribe) {
   const pageInsetsNeedUpdate$ = appDidStart$.merge(clientInformationDidUpdate$);
 
   /**
-   * Gets triggered when the app starts.
+   * Gets triggered when the page insets changed.
    */
   subscribe(pageInsetsNeedUpdate$, ({ getState }) => {
     updatePageInsets(getPageInsets(getState()));
