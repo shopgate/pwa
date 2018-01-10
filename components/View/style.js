@@ -31,14 +31,12 @@ const content = (hasNavigator = true, hasTabBar = true, isFullscreen = false) =>
   const navHeight = hasNavigator ? variables.navigator.height : 0;
   const navAndStatusBarHeight = [
     `${navHeight + variables.statusBar.height}px`,
-    `calc(${navHeight}px + constant(safe-area-inset-top))`,
-    `calc(${navHeight}px + env(safe-area-inset-top))`,
+    `calc(${navHeight}px + var(--safe-area-inset-top))`,
   ];
 
   const marginBottom = hasTabBar ? [
     `${variables.tabBar.height}px`,
-    `calc(${variables.tabBar.height}px + constant(safe-area-inset-bottom))`,
-    `calc(${variables.tabBar.height}px + env(safe-area-inset-bottom))`,
+    `calc(${variables.tabBar.height}px + var(--safe-area-inset-bottom))`,
   ] : 0;
 
   return css({

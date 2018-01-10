@@ -52,8 +52,7 @@ const sliderStyles = {
     position: 'absolute',
     bottom: [
       '2px',
-      'calc(2px + constant(safe-area-inset-bottom))',
-      'calc(2px + env(safe-area-inset-bottom))',
+      'calc(2px + var(--safe-area-inset-bottom))',
     ],
     left: '50%',
     transform: 'translateX(-50%)',
