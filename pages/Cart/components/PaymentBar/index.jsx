@@ -7,13 +7,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import Sheet from 'Components/Sheet';
-import ShippingCostsLabel from './components/ShippingCostsLabel';
-import ShippingCosts from './components/ShippingCosts';
-import SubTotalLabel from './components/SubTotalLabel';
-import SubTotal from './components/SubTotal';
-import CheckoutButton from './components/CheckoutButton';
+import Content from './components/Content';
 import styles from './style';
 
 /**
@@ -21,41 +16,20 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const PaymentBar = ({ isVisible }) => (
+const PaymentBar = ({ isVisible, onSize }) => (
   <Sheet isOpen={isVisible} backdrop={false} animation={styles.animation}>
-    <Grid className={styles.container}>
-
-      <Grid.Item className={styles.labelColumn} grow={1}>
-        <div className={styles.column}>
-          <SubTotalLabel />
-          <ShippingCostsLabel />
-        </div>
-      </Grid.Item>
-
-      <Grid.Item className={styles.costsColumn} grow={1}>
-        <div className={styles.column}>
-          <SubTotal />
-          <ShippingCosts />
-        </div>
-      </Grid.Item>
-
-      <Grid.Item className={styles.buttonColumn} grow={1}>
-        <div className={styles.column}>
-          <div className={styles.checkoutButton}>
-            <CheckoutButton />
-          </div>
-        </div>
-      </Grid.Item>
-    </Grid>
+    <Content onSize={onSize} />
   </Sheet>
 );
 
 PaymentBar.propTypes = {
   isVisible: PropTypes.bool,
+  onSize: PropTypes.func,
 };
 
 PaymentBar.defaultProps = {
   isVisible: true,
+  onSize: () => {},
 };
 
 export default PaymentBar;
