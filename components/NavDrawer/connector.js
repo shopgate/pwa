@@ -19,12 +19,14 @@ import { QUICKLINKS_MENU } from './constants';
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
+console.warn(process.env.APP_CONFIG.hasFavorites);
 const mapStateToProps = state => ({
   cartProductCount: getCartProductDisplayCount(state),
   entries: {
     quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
   },
-  hasFavorites: hasFavorites(state),
+  hasFavorites: process.env.APP_CONFIG.hasFavorites,
+  highlightFavorites: hasFavorites(state),
   navDrawerActive: state.navigator.navDrawerActive,
   user: isUserLoggedIn(state) ? state.user.data : null,
 });
