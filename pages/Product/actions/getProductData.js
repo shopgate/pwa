@@ -37,10 +37,17 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
 
     dispatch(requestProductData(productId, selectedVariantId));
 
+    /**
+     * Only set current product id (parent id) if we don't have a child product selected
+     * or when the current product id should be updated
+     */
     if (!selectedVariantId && (currentProductId !== parentId)) {
       dispatch(setProductId(parentId));
     }
 
+    /**
+     * Only set current variant id if it changed
+     */
     if (currentVariantId !== selectedVariantId) {
       dispatch(setProductVariantId(selectedVariantId));
     }
