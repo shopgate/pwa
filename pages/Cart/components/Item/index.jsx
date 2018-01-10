@@ -30,6 +30,7 @@ const Item = ({ item, togglePaymentBar }) => {
         id={item.id}
         key={item.id}
         coupon={item.coupon}
+        messages={item.messages}
       />
     );
   }
@@ -40,6 +41,7 @@ const Item = ({ item, togglePaymentBar }) => {
       key={item.id}
       product={item.product}
       quantity={item.quantity}
+      messages={item.messages}
       onToggleFocus={togglePaymentBar}
     />
   );

@@ -9,6 +9,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import cloneDeep from 'lodash/cloneDeep';
+import {
+  FILTER_TYPE_RANGE,
+  FILTER_TYPE_MULTISELECT,
+} from '@shopgate/pwa-common-commerce/filter/constants';
 import View from 'Components/View';
 import CardList from 'Components/CardList';
 import PriceRangeSlider from './components/PriceRangeSlider';
@@ -38,6 +42,15 @@ class Filter extends Component {
   };
 
   /**
+   * Returns the currently available filters.
+   * @return {Array}
+   */
+  get enrichedAvailableFilters() {
+    // TODO: Handle other filter types (multiselect here)
+    return this.props.availableFilters.map(filter => this.updateFilter(filter));
+  }
+
+  /**
    * Updates the filter.
    * @param {Object} filter The current filter.
    * @returns {Object} The updated filter.
@@ -46,7 +59,7 @@ class Filter extends Component {
     const temporaryFilter = cloneDeep(this.props.temporaryFilters[filter.id]);
 
     switch (filter.type) {
-      case 'range': {
+      case FILTER_TYPE_RANGE: {
         const filterMin = Math.round(filter.minimum / 100);
         const filterMax = Math.round(filter.maximum / 100);
 
@@ -77,7 +90,7 @@ class Filter extends Component {
         };
       }
       default:
-      case 'multiselect':
+      case FILTER_TYPE_MULTISELECT:
         return {
           ...filter,
           url: `${filter.url}${this.props.queryParams}`,
@@ -85,17 +98,6 @@ class Filter extends Component {
         };
     }
   };
-
-  /**
-   * Returns the currently available filters.
-   * @return {Array}
-   */
-  get enrichedAvailableFilters() {
-    // TODO: Handle other filter types (multiselect here)
-    return this.props.availableFilters.map(
-      filter => this.updateFilter(filter)
-    );
-  }
 
   /**
    * Renders the component.
@@ -116,7 +118,7 @@ class Filter extends Component {
           <CardList>
             {this.enrichedAvailableFilters.map(filter => (
               <CardList.Item key={filter.id}>
-                {(filter.type === 'range') && (
+                {(filter.type === FILTER_TYPE_RANGE) && (
                   <div key={filter.id} className={styles.filterContainer}>
                     <PriceRangeSlider
                       min={filter.minimum}
@@ -126,7 +128,7 @@ class Filter extends Component {
                     />
                   </div>
                 )}
-                {(filter.type !== 'range') && (
+                {(filter.type !== FILTER_TYPE_RANGE) && (
                   <ListItem filter={filter} key={filter.id} />
                 )}
               </CardList.Item>

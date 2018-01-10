@@ -22,6 +22,8 @@ const SCROLL_DEBOUNCE = 50;
 class View extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    historyPathname: PropTypes.string.isRequired,
+    navigatorTitle: PropTypes.string.isRequired,
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
     hasNavigator: PropTypes.bool,
@@ -45,7 +47,7 @@ class View extends Component {
       style: [],
     },
     style: null,
-    title: null,
+    title: '',
     viewTop: true,
   };
 
@@ -56,6 +58,8 @@ class View extends Component {
   constructor(props) {
     super(props);
 
+    // Store the active pathname at instantiation
+    this.pathname = props.historyPathname;
     this.element = null;
   }
 
@@ -76,11 +80,20 @@ class View extends Component {
    * @param {Object} nextProps The new component props.
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.title !== this.props.title) {
+    // Only update if the active pathname is the same as the pathname of this route.
+    if (nextProps.historyPathname !== this.pathname) {
+      return;
+    }
+
+    if (
+      (nextProps.title !== this.props.title) ||
+      (this.props.navigatorTitle !== nextProps.title)
+    ) {
+      // Update the title if it is different from the set navigator title.
       this.props.setTitle(nextProps.title || this.props.title);
     }
 
-    if (nextProps.viewTop && nextProps.viewTop !== this.props.viewTop) {
+    if (nextProps.viewTop && (nextProps.viewTop !== this.props.viewTop)) {
       // Scroll to top
       this.element.scrollTop = 0;
     }
@@ -132,18 +145,13 @@ class View extends Component {
   };
 
   /**
-   * Sets the navigator title when the component mounts.
-   */
-  routeWillEnter() {
-    this.props.setTitle(this.props.title);
-  }
-
-  /**
    * Renders the HTML meta tags.
    * @returns {JSX}
    */
   renderMetaTags() {
-    const { meta, link, script, style } = this.props.head;
+    const {
+      meta, link, script, style,
+    } = this.props.head;
 
     return (
       <Helmet
