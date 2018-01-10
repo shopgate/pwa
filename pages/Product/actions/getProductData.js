@@ -25,7 +25,7 @@ import { requestProductData } from '../action-creators';
  */
 const getProductData = (selectedVariantId = null, baseProductId = null) =>
   (dispatch, getState) => {
-  const state = getState();
+    const state = getState();
     const currentProductId = getCurrentBaseProductId(state);
     const currentVariantId = getCurrentProductVariantId(state);
     const parentId = baseProductId ? hex2bin(baseProductId) : currentProductId;
