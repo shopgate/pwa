@@ -6,7 +6,7 @@
  *
  */
 
-const mockedEmptyState = {
+export const mockedEmptyState = {
   product: {
     productsById: {},
   },
@@ -16,7 +16,11 @@ const mockedEmptyState = {
     },
   },
 };
-
-export default {
-  mockedEmptyState,
+export const mockedState = {
+  ...mockedEmptyState,
+  favorites: {
+    products: {
+      ids: [{}],
+    },
+  },
 };
