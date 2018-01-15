@@ -7,8 +7,14 @@
 
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import { getSortOrder, getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
+import {
+  getSortOrder,
+  getSearchPhrase,
+  getHistoryPathname,
+} from '@shopgate/pwa-common/selectors/history';
+import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
 
@@ -20,12 +26,33 @@ import { getCurrentCategoryId } from '../../category/selectors';
 export const getProducts = state => state.product.productsById;
 
 /**
- * Retrieves the current product for the detail page from the store.
+ * Retrieves the current product or variant page from the store.
  * @param {Object} state The current application state.
  * @return {string} The id of the current product.
  */
 export const getCurrentProductId = state =>
   state.product.currentProduct.productVariantId || state.product.currentProduct.productId;
+
+/**
+ * Gets the product id from the current history state pathname.
+ * @param {Object} state The current application state.
+ * @return {null|string} Product id or null
+ */
+export const getHistoryPathProductId = createSelector(
+  getHistoryPathname,
+  (pathname) => {
+    if (!pathname.startsWith(ITEM_PATH)) {
+      return null;
+    }
+
+    const pathSegments = pathname.split('/');
+    if (!pathSegments[2]) {
+      return null;
+    }
+
+    return hex2bin(pathSegments[2]);
+  }
+);
 
 /**
  * Retrieves a product by ID from state.
@@ -36,7 +63,7 @@ export const getCurrentProductId = state =>
 export const getProductById = (state, id) => getProducts(state)[id];
 
 /**
- * Retrieves the current base product for the detail page from the store.
+ * Retrieves the current base product page from the store.
  * @param {Object} state The current application state.
  * @return {string} The id of the current base product.
  */
@@ -212,15 +239,27 @@ export const getProductName = createSelector(
 const getProductImagesState = state => state.product.imagesByProductId;
 
 /**
- * Retrieves the current product images.
+ * Retrieves the current product images or the images of the parent product.
+ * If the current product does not have images, we try to select the images from the base product.
  * @param {Object} state The current application state.
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
   getCurrentProductId,
+  getCurrentBaseProductId,
   getProductImagesState,
-  (productId, images) => {
-    const entry = images[productId];
+  (productId, baseProductId, images) => {
+    let entry = images[productId];
+    const productImages = images[productId];
+
+    /**
+     * Check if there are any images.
+     * If not then default back to the base product's images.
+     */
+    if (!productImages || !productImages.images || !productImages.images.length) {
+      entry = images[baseProductId];
+    }
+
     if (!entry || entry.isFetching || isUndefined(entry.images)) {
       return null;
     }
