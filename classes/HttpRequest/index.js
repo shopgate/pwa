@@ -173,15 +173,15 @@ class HttpRequest extends Request {
         event.removeCallback(requestCallbackName, requestCallback);
         requestBuffer.remove(serial);
 
-        if (error) {
-          return reject(error);
-        }
-
         logGroup(`HttpResponse %c${this.url}`, {
           options,
           error,
           response,
         });
+
+        if (error) {
+          return reject(error);
+        }
 
         return resolve(response);
       };
