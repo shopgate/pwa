@@ -11,7 +11,7 @@ import {
   getUserReviewForProduct,
   getUserReviewFirstFetchState,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
-import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -20,7 +20,7 @@ import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selec
  */
 const mapStateToProps = state => ({
   authorName: getDefaultAuthorName(state),
-  productId: getCurrentProductId(state),
+  productId: getCurrentBaseProductId(state),
   review: getUserReviewForProduct(state),
   isLoadingUserReview: getUserReviewFirstFetchState(state),
 });
