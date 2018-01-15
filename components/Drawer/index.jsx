@@ -29,6 +29,7 @@ class Drawer extends Component {
     className: PropTypes.string,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
+    onDidClose: PropTypes.func,
     onOpen: PropTypes.func,
   };
 
@@ -43,6 +44,7 @@ class Drawer extends Component {
     isOpen: false,
     onOpen: () => {},
     onClose: () => {},
+    onDidClose: () => {},
     animation: {
       duration: null,
       in: '',
@@ -84,6 +86,7 @@ class Drawer extends Component {
    */
   handleAnimationEnd = () => {
     this.setState({ active: this.props.isOpen });
+    this.props.onDidClose();
   };
 
   /**
