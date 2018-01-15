@@ -47,7 +47,7 @@ class View extends Component {
       style: [],
     },
     style: null,
-    title: null,
+    title: '',
     viewTop: true,
   };
 
