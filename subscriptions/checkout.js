@@ -6,6 +6,7 @@
  */
 
 import event from '@shopgate/pwa-core/classes/Event';
+import analyticsSetCustomValues from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
@@ -37,9 +38,16 @@ export default function checkout(subscribe) {
        * Don't track the legacy checkout here for now, because it would be tracked twice.
        * We can remove this as soon as we disabled the purchase tracking in the legacy checkout.
        */
-      if (data.type === 'legacy' || typeof data.order === 'undefined') {
+      if (typeof data.order === 'undefined') {
         return;
       }
+
+      analyticsSetCustomValues({
+        customDimensions: [{
+          index: 4,
+          value: data.type !== 'legacy' ? 'web_PWA' : 'app_PWA',
+        }],
+      });
 
       track('purchase', formatPurchaseData(data.order), getState());
     });
