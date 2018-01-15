@@ -19,8 +19,7 @@ import {
 
 let mockedResolver;
 jest.mock(
-  // Exchange when #favPipelines are done to '@shopgate/pwa-core/classes/PipelineRequest'
-  '../temp-pipeline-request',
+  '@shopgate/pwa-core/classes/PipelineRequest',
   () => (
     mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
       mockedResolver(mockInstance, resolve, reject);
