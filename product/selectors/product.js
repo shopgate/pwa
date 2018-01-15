@@ -9,7 +9,11 @@ import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import { getSortOrder, getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
+import {
+  getSortOrder,
+  getSearchPhrase,
+  getHistoryPathname,
+} from '@shopgate/pwa-common/selectors/history';
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
@@ -34,18 +38,21 @@ export const getCurrentProductId = state =>
  * @param {Object} state The current application state.
  * @return {null|string} Product id or null
  */
-export const getHistoryPathProductId = (state) => {
-  if (!state.history.pathname.startsWith(ITEM_PATH)) {
-    return null;
-  }
+export const getHistoryPathProductId = createSelector(
+  getHistoryPathname,
+  (pathname) => {
+    if (!pathname.startsWith(ITEM_PATH)) {
+      return null;
+    }
 
-  const pathSegments = state.history.pathname.split('/');
-  if (!pathSegments[2]) {
-    return null;
-  }
+    const pathSegments = pathname.split('/');
+    if (!pathSegments[2]) {
+      return null;
+    }
 
-  return hex2bin(pathSegments[2]);
-};
+    return hex2bin(pathSegments[2]);
+  }
+);
 
 /**
  * Retrieves a product by ID from state.

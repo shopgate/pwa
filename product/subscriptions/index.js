@@ -13,7 +13,10 @@ import { ITEM_PATH } from '../constants';
 import setProductId from '../action-creators/setProductId';
 import setProductVariantId from '../action-creators/setProductVariantId';
 import { getCurrentProductVariantId } from '../selectors/variants';
-import { getHistoryPathProductId } from '../selectors/product';
+import {
+  getCurrentBaseProductId,
+  getHistoryPathProductId,
+} from '../selectors/product';
 
 /**
  * Product subscriptions.
@@ -28,9 +31,11 @@ function product(subscribe) {
   subscribe(itemRouteDidEnter$, ({ dispatch, getState }) => {
     const state = getState();
     const historyProductId = getHistoryPathProductId(state);
+    const currentBaseProductId = getCurrentBaseProductId(state);
     const selectedVariantId = getCurrentProductVariantId(state);
 
-    if (selectedVariantId) {
+    // Only update when no child product is selected yet or when the history changed
+    if (selectedVariantId || currentBaseProductId === historyProductId) {
       return;
     }
 
