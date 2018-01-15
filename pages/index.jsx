@@ -54,7 +54,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
-const Pages = () =>
+const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
     <Viewport>
       <ModalContainer component={Dialog} />
@@ -87,6 +87,6 @@ const Pages = () =>
       )}
     </Viewport>
   </App>
-;
+);
 
 export default Pages;
