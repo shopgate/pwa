@@ -36,7 +36,7 @@ class Toast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      isOpen: !!props.toast,
     };
     this.activeToast = 0;
     this.timeout = null;
@@ -48,46 +48,39 @@ class Toast extends Component {
    */
   componentWillReceiveProps(nextProps) {
     const hasToast = !!nextProps.toast;
-    if (
-      hasToast
-      && this.activeToast === nextProps.toast.id
-    ) {
+
+    if (hasToast && this.activeToast === nextProps.toast.id) {
       return;
     }
+
     if (hasToast) {
       this.activeToast = nextProps.toast.id;
-    }
-
-    const wasOpen = this.state.isOpen;
-    const willBeOpen = !!this.activeToast;
-    if (hasToast && !wasOpen && willBeOpen) {
       this.handleTimeout(nextProps.toast);
     }
-    if (wasOpen !== willBeOpen) {
+
+    if (!this.state.isOpen) {
       this.setState({
-        isOpen: willBeOpen,
+        isOpen: hasToast,
       });
     }
   }
 
-  /**
-   * Executed when Drawer calls onClose callback.
-   * Calls handleRemoveMessage to proceed with removal.
-   */
-  handleOnDrawerClose = () => {
-    this.handleRemoveMessage();
-  };
+  shouldComponentUpdate(nextProps, nextState) {
+    const toastUpdate = nextProps.toast && this.props.toast
+      && nextProps.toast.id !== this.props.toast.id;
+    const toastDidChange = toastUpdate || !this.props.toast;
+
+    if (nextState.isOpen !== this.state.isOpen) {
+      return true;
+    }
+
+    return toastDidChange;
+  }
 
   /**
    * Closes Drawer or removes the message when drawer is closed.
    */
   handleRemoveMessage = () => {
-    if (this.state.isOpen) {
-      this.setState({
-        isOpen: false,
-      });
-      return;
-    }
     if (this.props.toast) {
       this.props.removeToast(this.props.toast.id);
     }
@@ -100,7 +93,9 @@ class Toast extends Component {
   handleTimeout = (toast) => {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      this.handleRemoveMessage();
+      this.setState({
+        isOpen: false,
+      });
     }, toast.timeout);
   };
 
@@ -109,15 +104,13 @@ class Toast extends Component {
    * @returns {XML}
    */
   render() {
-    // Window.foo = this.props.createToast.
     const Container = this.props.container;
     const Message = this.props.message;
 
     return (
       <Drawer
-        isOpen={!!this.props.toast}
-        onDidClose={this.handleOnDrawerClose}
-        onClose={this.handleOnDrawerClose}
+        isOpen={this.state.isOpen}
+        onDidClose={this.handleRemoveMessage}
         className={this.props.className}
       >
         {
