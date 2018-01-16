@@ -31,9 +31,9 @@ FormatPrice.format = (props, context) => {
 };
 
 FormatPrice.propTypes = {
-  currency: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  fractions: PropTypes.bool,
+  currency: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+  price: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  fractions: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
 };
 
 FormatPrice.defaultProps = {

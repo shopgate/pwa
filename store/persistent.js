@@ -8,11 +8,14 @@
 import debounce from 'lodash/debounce';
 import omit from 'lodash/omit';
 
+const { appId = '' } = process.env.APP_CONFIG || {};
+const theme = process.env.THEME || 'theme';
+
 /**
  * The key name for the state in the localStorage.
  * @type {string}
  */
-const LOCALSTORAGE_KEY = 'shopgateState';
+export const LOCALSTORAGE_KEY = `sgCloud-${appId.replace('_', '')}-${theme}`;
 
 /**
  * The debounce timing for the localStorage write.

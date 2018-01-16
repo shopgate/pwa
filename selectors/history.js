@@ -88,16 +88,6 @@ export const getHistoryLength = createSelector(
 );
 
 /**
- * Gets the current redirectLocation from the history state.
- * @param {Object} state The current application state.
- * @return {string|null}
- */
-export const getRedirectLocation = createSelector(
-  getHistoryState,
-  historyState => historyState.redirectLocation || null
-);
-
-/**
  * Gets the current query params from history state as a preformatted string.
  * @param {Object} state The global state.
  * @return {string}
@@ -105,4 +95,25 @@ export const getRedirectLocation = createSelector(
 export const getQueryParamsAsString = createSelector(
   getQueryParams,
   queryParams => parseObjectToQueryString(queryParams)
+);
+
+/**
+ * Gets the current history location from the history state.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getHistoryLocation = createSelector(
+  getHistoryPathname,
+  getQueryParamsAsString,
+  (pathname, params) => `${pathname}${params}`
+);
+
+/**
+ * Gets the current redirectLocation from the history state.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getRedirectLocation = createSelector(
+  getHistoryState,
+  historyState => historyState.redirectLocation || null
 );

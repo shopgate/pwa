@@ -57,7 +57,12 @@ export function isTargetSupported(target, clientInformation) {
 export const getRelevantConfigs = (sgxsConfig = {}, clientInformation = {}) => {
   const { stage: sgxsStage = '', trackers = [] } = sgxsConfig;
 
-  return trackers.filter(({ stage, shopgateAccount, os, target }) => {
+  return trackers.filter(({
+    stage,
+    shopgateAccount,
+    os,
+    target,
+  }) => {
     /**
      * Only Shopgate tracking configurations contain a stage property. In case of the merchant
      * configurations we only get entries which match the stage, on which the client is running.

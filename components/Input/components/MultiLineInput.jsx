@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import { logger } from '@shopgate/pwa-core/helpers';
 import SimpleInput from './SimpleInput';
 
 /**
@@ -58,7 +59,7 @@ class MultiLineInput extends SimpleInput {
    */
   componentDidUpdate() {
     if (!(this.ref instanceof HTMLElement)) {
-      console.error('Ref is not an HTMLElement');
+      logger.error('Ref is not an HTMLElement');
       return;
     }
 

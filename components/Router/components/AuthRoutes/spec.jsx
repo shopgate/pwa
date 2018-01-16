@@ -9,6 +9,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import AuthRoutes from './index';
 import MockRoute from '../Route/mock';
+import {
+  CHECKOUT_PATH,
+  LOGIN_PATH,
+} from '../../../../constants/RoutePaths';
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
@@ -27,10 +31,11 @@ describe('<AuthRoutes />', () => {
   let authWrapper;
 
   beforeEach(() => {
-    authWrapper = mount((
-      <AuthRoutes to="/login" isLoggedIn={false}>
-        <MockRoute path="/checkout" component="checkout" />
-      </AuthRoutes>
+    authWrapper = mount(
+      (
+        <AuthRoutes to={LOGIN_PATH} isLoggedIn={false}>
+          <MockRoute path={CHECKOUT_PATH} component="checkout" />
+        </AuthRoutes>
       ), { context: { registerRoute: () => {} } }
     );
   });
@@ -62,8 +67,8 @@ describe('<AuthRoutes />', () => {
       const props = authWrapper.find('Redirect').props();
 
       expect(props).toMatchObject({
-        to: '/login',
-        path: '/checkout',
+        to: LOGIN_PATH,
+        path: CHECKOUT_PATH,
       });
     });
   });

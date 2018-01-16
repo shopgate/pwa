@@ -28,9 +28,7 @@ describe('<InfiniteContainer />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = shallow(
-      <InfiniteContainer {...props} />
-    );
+    renderedElement = shallow(<InfiniteContainer {...props} />);
     renderedInstance = renderedElement.instance();
   };
 

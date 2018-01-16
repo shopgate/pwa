@@ -215,17 +215,15 @@ class Slider extends Component {
     } = this.props;
     const hasMultipleChildren = children.length > 1;
 
-    const wrappedChildren = this.props.children.map(
-      (child, index) => {
-        const key = `s${index}`;
+    const wrappedChildren = this.props.children.map((child, index) => {
+      const key = `s${index}`;
 
-        return (
-          <div className={styles.slideWrapper} key={key}>
-            {child}
-          </div>
-        );
-      }
-    );
+      return (
+        <div className={styles.slideWrapper} key={key}>
+          {child}
+        </div>
+      );
+    });
 
     const swiperProps = {
       paginationModifierClass: 'sg-swiper-pagination-',

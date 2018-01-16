@@ -8,7 +8,19 @@
 import appConfig from '../helpers/config';
 import redirectRoute from '../actions/history/redirectRoute';
 import resetHistory from '../actions/history/resetHistory';
+import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
+import goBackHistory from '../actions/history/goBackHistory';
+import { getRegisterUrl } from '../selectors/user';
+import ParsedLink from '../components/Router/helpers/parsed-link';
+import { openedRegisterLink$, routeDidLeave } from '../streams/history';
 import { userDidLogin$, userDidLogout$ } from '../streams/user';
+import openRegisterUrl from './helpers/openRegisterUrl';
+import { LEGACY_URL } from '../constants/Registration';
+import setRedirectLocation from '../action-creators/history/setRedirectLocation';
+import {
+  LOGIN_PATH,
+  REGISTER_PATH,
+} from '../constants/RoutePaths';
 
 /**
  * History subscriptions.
@@ -33,5 +45,37 @@ export default function history(subscribe) {
    */
   subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(resetHistory());
+  });
+
+  /**
+   * Gets triggered when the register link is opened.
+   */
+  subscribe(openedRegisterLink$, async ({ dispatch, getState }) => {
+    const state = getState();
+
+    const hasRegistrationUrl = !!getRegisterUrl(state);
+
+    // Open the registration url if one is found.
+    if (hasRegistrationUrl) {
+      await dispatch(fetchRegisterUrl())
+        .then(url => openRegisterUrl(url, state))
+        .catch(e => e);
+    } else {
+      const link = new ParsedLink(LEGACY_URL);
+      link.open();
+    }
+
+    dispatch(goBackHistory(1));
+  });
+
+  /**
+   * Gets triggered when the LOGIN_PATH is left but the REGISTER_PATH is not entered.
+   */
+  const loginRouteDidLeave$ = routeDidLeave(LOGIN_PATH).filter(({ pathname }) => (
+    pathname !== REGISTER_PATH
+  ));
+
+  subscribe(loginRouteDidLeave$, ({ dispatch }) => {
+    dispatch(setRedirectLocation(null));
   });
 }

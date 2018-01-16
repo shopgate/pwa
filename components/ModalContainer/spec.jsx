@@ -51,13 +51,13 @@ describe('<ModalContainer />', () => {
    * The rendered component.
    */
   const renderComponent = () => {
-    renderedElement = mount(
+    renderedElement = mount((
       <Provider store={store}>
         <div id="container">
           <ModalContainer component={MockModal} />
         </div>
       </Provider>
-    );
+    ));
   };
 
   beforeEach(() => {

@@ -31,8 +31,8 @@ FormatDate.format = (props, context) => {
 };
 
 FormatDate.propTypes = {
-  timestamp: PropTypes.number.isRequired,
-  format: PropTypes.string,
+  timestamp: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  format: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
 };
 
 FormatDate.defaultProps = {

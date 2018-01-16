@@ -45,8 +45,12 @@ export default class Link extends PureComponent {
     const { className, children } = this.props;
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div role="link" className={`${style} ${className}`} onClick={this.handleOpenLink}>
+      <div
+        aria-hidden
+        className={`${style} ${className}`}
+        onClick={this.handleOpenLink}
+        role="link"
+      >
         {children}
       </div>
     );

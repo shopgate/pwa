@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * The icon component.
+ * The Icon component.
  * @param {Object} props The component props.
  * @param {string} props.content The SVG content of the icon
  * @param {string} [props.className] Additional CSS styles for this component
@@ -18,7 +18,7 @@ import styles from './style';
  * @param {number} [props.size=24] The icon size
  * @returns {JSX}
  */
-const Icon = props =>
+const Icon = props => (
   <svg
     className={`${styles} ${props.className}`}
     viewBox={props.viewBox}
@@ -28,7 +28,8 @@ const Icon = props =>
       fontSize: props.size,
       fill: props.color,
     }}
-  />;
+  />
+);
 
 Icon.propTypes = {
   content: PropTypes.string.isRequired,

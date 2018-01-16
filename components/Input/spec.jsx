@@ -11,26 +11,20 @@ import Input from './index';
 
 describe('<Input />', () => {
   it('should render a simple input field', () => {
-    const wrapper = mount(
-      <Input />
-    );
+    const wrapper = mount(<Input />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('input').length).toBe(1);
   });
 
   it('should render the input as password', () => {
-    const wrapper = mount(
-      <Input password />
-    );
+    const wrapper = mount(<Input password />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('input[type="password"]').length).toBe(1);
   });
 
   it('should render the input with a default value', () => {
-    const wrapper = mount(
-      <Input value="FooBar" />
-    );
+    const wrapper = mount(<Input value="FooBar" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('input[value="FooBar"]').length).toBe(1);
@@ -39,9 +33,7 @@ describe('<Input />', () => {
   it('should trigger the onChange callback', () => {
     const onChangeMock = jest.fn();
 
-    const wrapper = mount(
-      <Input onChange={onChangeMock} />
-    );
+    const wrapper = mount(<Input onChange={onChangeMock} />);
 
     wrapper.find('input').simulate('change', { target: { value: 'a' } });
 
@@ -50,9 +42,7 @@ describe('<Input />', () => {
   });
 
   it('should receive the correct value while typing', () => {
-    const wrapper = mount(
-      <Input />
-    );
+    const wrapper = mount(<Input />);
 
     const input = wrapper.find('input');
 
@@ -63,9 +53,7 @@ describe('<Input />', () => {
   });
 
   it('should sanitize the input', () => {
-    const wrapper = mount(
-      <Input onSanitize={value => value.toUpperCase()} />
-    );
+    const wrapper = mount(<Input onSanitize={value => value.toUpperCase()} />);
 
     const input = wrapper.find('input');
 
@@ -76,9 +64,7 @@ describe('<Input />', () => {
   });
 
   it('should validate the input', () => {
-    const wrapper = mount(
-      <Input onValidate={() => false} />
-    );
+    const wrapper = mount(<Input onValidate={() => false} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('SimpleInput').instance().isValid).toBe(false);
@@ -87,9 +73,7 @@ describe('<Input />', () => {
   it('should focus the input', () => {
     const onFocusMock = jest.fn();
 
-    const wrapper = mount(
-      <Input onFocusChange={onFocusMock} />
-    );
+    const wrapper = mount(<Input onFocusChange={onFocusMock} />);
 
     const input = wrapper.find('input');
 
@@ -105,9 +89,7 @@ describe('<Input />', () => {
   });
 
   it('should change the value on user input', () => {
-    const wrapper = mount(
-      <Input value="My initial value" />
-    );
+    const wrapper = mount(<Input value="My initial value" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('SimpleInput').instance().value).toBe('My initial value');
