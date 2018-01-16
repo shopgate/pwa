@@ -18,17 +18,17 @@ describe('Portlets', () => {
 
   it('should not render if array is not set.', () => {
     const wrapper = shallow(<Portlets />);
-    expect(wrapper.find('Component').length).toEqual(0);
+    expect(wrapper.children().get(0)).toEqual(null);
   });
 
   it('should not render if array is empty.', () => {
     const wrapper = shallow(<Portlets components={{}} />);
-    expect(wrapper.find('Component').length).toEqual(0);
+    expect(wrapper.children().get(0)).toEqual(null);
   });
 
   it('should not render invalid children', () => {
     const wrapper = shallow(<Portlets components={{ sometest: null }} />);
-    expect(wrapper.find('Component').length).toEqual(0);
+    expect(wrapper.children().get(0)).toEqual(null);
   });
 
   it('should return an array with the given test components.', () => {
