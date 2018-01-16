@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,7 +8,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import getUser from '../actions/user/getUser';
-import successLogin from '../action-creators/user/successLogin';
+import { successLogin } from '../action-creators/user';
 import { appDidStart$ } from '../streams/app';
 import { userWillLogin$, userLoginResponse$, userDidLogin$ } from '../streams/user';
 import setViewLoading from '../actions/view/setViewLoading';

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,9 +7,11 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import requestLogout from '../../action-creators/user/requestLogout';
-import successLogout from '../../action-creators/user/successLogout';
-import errorLogout from '../../action-creators/user/errorLogout';
+import {
+  requestLogout,
+  successLogout,
+  errorLogout,
+} from '../../action-creators/user';
 
 /**
  * Logout the current user.
