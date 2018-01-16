@@ -34,10 +34,6 @@ export default function checkout(subscribe) {
    */
   subscribe(appDidStart$, ({ getState }) => {
     event.addCallback('checkoutSuccess', (data = {}) => {
-      /**
-       * Don't track the legacy checkout here for now, because it would be tracked twice.
-       * We can remove this as soon as we disabled the purchase tracking in the legacy checkout.
-       */
       if (typeof data.order === 'undefined') {
         return;
       }
