@@ -7,14 +7,12 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
-const drawer = css({
-  width: '100%',
-  background: 'black',
-  padding: variables.gap.big,
+const message = css({
+  color: 'white',
+  margin: 0,
 }).toString();
 
 export default {
-  drawer,
+  message,
 };
