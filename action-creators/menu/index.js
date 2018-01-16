@@ -14,7 +14,7 @@ import {
 /**
  * Creates the dispatched REQUEST_MENU action object.
  * @param {string} id The menu id.
- * @return {Object} The REQUEST_MENU action.
+ * @return {Object} The dispatched action object.
  */
 export const requestMenu = id => ({
   type: REQUEST_MENU,
@@ -24,8 +24,8 @@ export const requestMenu = id => ({
 /**
  * Creates the dispatched RECEIVE_MENU action object
  * @param {string} id The menu id.
- * @param {Object} entries The menu entries.
- * @return {Object} The RECEIVE_MENU action.
+ * @param {Array} entries The menu entries.
+ * @return {Object} The dispatched action object.
  */
 export const receiveMenu = (id, entries) => ({
   type: RECEIVE_MENU,
@@ -36,7 +36,7 @@ export const receiveMenu = (id, entries) => ({
 /**
  * Creates the dispatched ERROR_MENU action object.
  * @param {string} id The menu id.
- * @return {Object} The ERROR_MENU action.
+ * @return {Object} The dispatched action object.
  */
 export const errorMenu = id => ({
   type: ERROR_MENU,

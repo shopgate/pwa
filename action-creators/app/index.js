@@ -17,7 +17,7 @@ import {
 /**
  * Creates the dispatched APP_WILL_START action object.
  * @param {Object} location The initial history entry location.
- * @returns {Object} The dispatched action object.
+ * @return {Object} The dispatched action object.
  */
 export const appWillStart = location => ({
   type: APP_WILL_START,
@@ -26,7 +26,7 @@ export const appWillStart = location => ({
 
 /**
  * Creates the dispatched APP_DID_START action object.
- * @returns {Object} The dispatched action object.
+ * @return {Object} The dispatched action object.
  */
 export const appDidStart = () => ({
   type: APP_DID_START,
@@ -34,7 +34,7 @@ export const appDidStart = () => ({
 
 /**
  * Creates the dispatched WILL_REGISTER_LINK_EVENTS action object.
- * @returns {Object} The dispatched action object.
+ * @return {Object} The dispatched action object.
  */
 export const willRegisterLinkEvents = () => ({
   type: WILL_REGISTER_LINK_EVENTS,
@@ -42,16 +42,16 @@ export const willRegisterLinkEvents = () => ({
 
 /**
  * Creates the dispatched DID_REGISTER_LINK_EVENTS action object.
- * @returns {Object} The dispatched action object.
+ * @return {Object} The dispatched action object.
  */
 export const didRegisterLinkEvents = () => ({
   type: DID_REGISTER_LINK_EVENTS,
 });
 
 /**
- * Creates the OPEN_DEEP_LINK action object.
+ * Creates the dispatched OPEN_DEEP_LINK action object.
  * @param {Object} payload The payload of the deeplink
- * @returns {Object} A redux action.
+ * @return {Object} The dispatched action object.
  */
 export const openDeepLink = payload => ({
   type: OPEN_DEEP_LINK,
@@ -59,10 +59,10 @@ export const openDeepLink = payload => ({
 });
 
 /**
- * Creates the OPEN_PUSH_NOTIFICATION action object.
+ * Creates the dispatched OPEN_PUSH_NOTIFICATION action object.
  * @param {string} notificationId The notification ID.
  * @param {string} [link] The link of the notification.
- * @returns {Object} A redux action.
+ * @return {Object} The dispatched action object.
  */
 export const openPushNotification = (notificationId, link = '') => ({
   type: OPEN_PUSH_NOTIFICATION,

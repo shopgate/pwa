@@ -14,26 +14,26 @@ import {
 } from '../../constants/ActionTypes';
 
 /**
- * Creates the HISTORY_DID_RESET action object.
- * @returns {Object} A redux action.
+ * Creates the dispatched HISTORY_DID_RESET action object.
+ * @return {Object} The dispatched action object.
  */
 export const historyDidReset = () => ({
   type: HISTORY_DID_RESET,
 });
 
 /**
- * Creates the HISTORY_WILL_RESET action object.
- * @returns {Object} A redux action.
+ * Creates the dispatched HISTORY_WILL_RESET action object.
+ * @return {Object} The dispatched action object.
  */
 export const historyWillReset = () => ({
   type: HISTORY_WILL_RESET,
 });
 
 /**
- * Creates the OPEN_LINK action object.
- * @param {Object} name The link action name.
- * @param {Object} options The link action options.
- * @returns {Object} A redux action.
+ * Creates the dispatched OPEN_LINK action object.
+ * @param {string} name The link action name.
+ * @param {Object|string} options The link action options or an url.
+ * @return {Object} The dispatched action object.
  */
 export const openLink = (name, options) => ({
   type: OPEN_LINK,
@@ -42,10 +42,10 @@ export const openLink = (name, options) => ({
 });
 
 /**
- * Creates the HISTORY_SET_REDIRECT_LOCATION action object.
+ * Creates the dispatched HISTORY_SET_REDIRECT_LOCATION action object.
  * @param {string|null} pathname The url which should be stored.
  * @param {Object} [params={}] The params which should be stored.
- * @returns {Object} A redux action.
+ * @return {Object} The dispatched action object.
  */
 export const setRedirectLocation = (pathname, params = {}) => ({
   type: HISTORY_SET_REDIRECT_LOCATION,
@@ -54,9 +54,9 @@ export const setRedirectLocation = (pathname, params = {}) => ({
 });
 
 /**
- * Creates the UPDATE_HISTORY action object.
+ * Creates the dispatched UPDATE_HISTORY action object.
  * @param {Object} historyProps The updated history props.
- * @returns {Object} A redux action.
+ * @return {Object} The dispatched action object.
  */
 export const updateHistory = historyProps => ({
   type: UPDATE_HISTORY,

@@ -14,8 +14,8 @@ import {
 
 /**
  * Creates the dispatched SET_VIEW_LOADING action object.
- * @param {boolean} pathname The target pathname.
- * @return {Function} The dispatched action.
+ * @param {string} pathname The target pathname.
+ * @return {Object} The dispatched action object.
  */
 export const setLoading = pathname => ({
   type: SET_VIEW_LOADING,
@@ -24,8 +24,8 @@ export const setLoading = pathname => ({
 
 /**
  * Creates the dispatched UNSET_VIEW_LOADING action object.
- * @param {boolean} pathname The target pathname.
- * @return {Function} The dispatched action.
+ * @param {string} pathname The target pathname.
+ * @return {Object} The dispatched action object.
  */
 export const unsetLoading = pathname => ({
   type: UNSET_VIEW_LOADING,
@@ -34,8 +34,8 @@ export const unsetLoading = pathname => ({
 
 /**
  * Creates the dispatched INCREMENT_VIEW_LOADING action object.
- * @param {boolean} pathname The target pathname.
- * @return {Function} The dispatched action.
+ * @param {string} pathname The target pathname.
+ * @return {Object} The dispatched action object.
  */
 export const incrementLoading = pathname => ({
   type: INCREMENT_VIEW_LOADING,
@@ -44,8 +44,8 @@ export const incrementLoading = pathname => ({
 
 /**
  * Creates the dispatched DECREMENT_VIEW_LOADING action object.
- * @param {boolean} pathname The target pathname.
- * @return {Function} The dispatched action.
+ * @param {string} pathname The target pathname.
+ * @return {Object} The dispatched action object.
  */
 export const decrementLoading = pathname => ({
   type: DECREMENT_VIEW_LOADING,

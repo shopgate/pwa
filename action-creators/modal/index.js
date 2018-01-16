@@ -13,7 +13,7 @@ import {
 /**
  * Creates the dispatched CREATE_MODAL action object.
  * @param {Object} options The modal options.
- * @return {Object} A Redux action.
+ * @return {Object} The dispatched action object.
  */
 export const createModal = options => ({
   type: CREATE_MODAL,
@@ -23,7 +23,7 @@ export const createModal = options => ({
 /**
  * Creates the dispatched REMOVE_MODAL action object.
  * @param {string} id The modal id to remove.
- * @return {Object} A Redux action.
+ * @return {Object} The dispatched action object.
  */
 export const removeModal = id => ({
   type: REMOVE_MODAL,

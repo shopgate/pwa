@@ -18,31 +18,28 @@ import {
 } from '../../constants/ActionTypes';
 
 describe('ActionCreators: client', () => {
-  it('should create an action to request client information', () => {
-    const expectedAction = {
-      type: REQUEST_CLIENT_INFORMATION,
-    };
-
-    expect(requestClientInformation()).toEqual(expectedAction);
+  describe('requestClientInformation()', () => {
+    it('should work as expected', () => {
+      const expected = { type: REQUEST_CLIENT_INFORMATION };
+      expect(requestClientInformation()).toEqual(expected);
+    });
   });
 
-  it('should create an action when receive client information', () => {
-    const data = {
-      some: 'data',
-    };
-    const expectedAction = {
-      type: RECEIVE_CLIENT_INFORMATION,
-      data,
-    };
-
-    expect(receiveClientInformation(data)).toEqual(expectedAction);
+  describe('receiveClientInformation()', () => {
+    it('should work as expected', () => {
+      const data = { some: 'data' };
+      const expected = {
+        type: RECEIVE_CLIENT_INFORMATION,
+        data,
+      };
+      expect(receiveClientInformation(data)).toEqual(expected);
+    });
   });
 
-  it('should create an action when requesting failed', () => {
-    const expectedAction = {
-      type: ERROR_CLIENT_INFORMATION,
-    };
-
-    expect(errorClientInformation()).toEqual(expectedAction);
+  describe('errorClientInformation()', () => {
+    it('should work as expected', () => {
+      const expected = { type: ERROR_CLIENT_INFORMATION };
+      expect(errorClientInformation()).toEqual(expected);
+    });
   });
 });
