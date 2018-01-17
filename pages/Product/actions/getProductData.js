@@ -9,6 +9,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import setProductId from '@shopgate/pwa-common-commerce/product/action-creators/setProductId';
 import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-creators/setProductVariantId';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentProductVariantId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import getProductDescription from '@shopgate/pwa-common-commerce/product/actions/getProductDescription';
 import getProductProperties from '@shopgate/pwa-common-commerce/product/actions/getProductProperties';
@@ -24,7 +25,10 @@ import { requestProductData } from '../action-creators';
  */
 const getProductData = (selectedVariantId = null, baseProductId = null) =>
   (dispatch, getState) => {
-    const parentId = baseProductId ? hex2bin(baseProductId) : getCurrentBaseProductId(getState());
+    const state = getState();
+    const currentProductId = getCurrentBaseProductId(state);
+    const currentVariantId = getCurrentProductVariantId(state);
+    const parentId = baseProductId ? hex2bin(baseProductId) : currentProductId;
     const productId = selectedVariantId || parentId;
 
     if (!productId) {
@@ -33,11 +37,20 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
 
     dispatch(requestProductData(productId, selectedVariantId));
 
-    if (!selectedVariantId) {
+    /**
+     * Only set current product id (parent id) if we don't have a child product selected
+     * or when the current product id should be updated
+     */
+    if (!selectedVariantId && (currentProductId !== parentId)) {
       dispatch(setProductId(parentId));
     }
 
-    dispatch(setProductVariantId(selectedVariantId));
+    /**
+     * Only set current variant id if it changed
+     */
+    if (currentVariantId !== selectedVariantId) {
+      dispatch(setProductVariantId(selectedVariantId));
+    }
 
     dispatch(getProduct(productId));
     dispatch(getProductDescription(productId));
