@@ -7,6 +7,8 @@
 
 import { connect } from 'react-redux';
 import { getProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import setProductVariantId from '@shopgate/pwa-common-commerce/product/action-creators/setProductVariantId';
 import getProductData from '../../actions/getProductData';
 
 /**
@@ -16,6 +18,7 @@ import getProductData from '../../actions/getProductData';
  */
 const mapStateToProps = state => ({
   variants: getProductVariants(state),
+  currentBaseProductId: getCurrentBaseProductId(state),
 });
 
 /**
@@ -26,6 +29,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getProductData: (selectedVariantId = null) =>
     dispatch(getProductData(selectedVariantId)),
+  setProductVariantId: (variantId = null) =>
+    dispatch(setProductVariantId(variantId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
