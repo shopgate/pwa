@@ -2,6 +2,11 @@
 # Changelog
 ---
 
+### [1.2.2](https://github.com/shopgate/pwa-tracking/compare/v1.2.1...v1.2.0) - January 17, 2018
+- Bugfix for tracking event `initiatedCheckout`
+
+---
+
 ### [1.2.0](https://github.com/shopgate/pwa-tracking/compare/v1.1.2...v1.2.0) - January 08, 2018
 
 #### Changed
