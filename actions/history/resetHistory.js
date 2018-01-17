@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,8 +7,10 @@
 
 import goBackHistory from './goBackHistory';
 import pushHistory from './pushHistory';
-import historyWillReset from '../../action-creators/history/historyWillReset';
-import historyDidReset from '../../action-creators/history/historyDidReset';
+import {
+  historyDidReset,
+  historyWillReset,
+} from '../../action-creators/history';
 import { getHistoryLength } from '../../selectors/history';
 
 /**
