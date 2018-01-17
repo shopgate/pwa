@@ -28,7 +28,7 @@ exports[`<SnackBar /> renders component 1`] = `
         toast={
           Object {
             "id": 1,
-            "message": "foo",
+            "message": "Lorem ipsum dolor sit amet.",
           }
         }
       >
@@ -55,7 +55,7 @@ exports[`<SnackBar /> renders component 1`] = `
             <Container>
               <div>
                 <Message
-                  text="foo"
+                  text="Lorem ipsum dolor sit amet."
                 >
                   <p
                     className="css-1yqa5rq"
@@ -63,12 +63,12 @@ exports[`<SnackBar /> renders component 1`] = `
                     <Translate
                       className=""
                       params={Object {}}
-                      string="foo"
+                      string="Lorem ipsum dolor sit amet."
                     >
                       <span
                         className=""
                       >
-                        foo
+                        Lorem ipsum dolor sit amet.
                       </span>
                     </Translate>
                   </p>

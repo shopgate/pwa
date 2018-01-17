@@ -6,30 +6,14 @@
  */
 
 /**
- *
- * @type {{id: number, message: string}}
- */
-const toast1 = {
-  id: 1,
-  message: 'foo',
-};
-
-/**
- *
- * @type {{id: number, message: string}}
- */
-const toast2 = {
-  id: 2,
-  message: 'bar',
-};
-
-/**
  * Mocked toast state
  * @type {{toast: [null,null]}}
  */
 export const mockedState = {
   toast: [
-    toast1,
-    toast2,
+    {
+      id: 1,
+      message: 'Lorem ipsum dolor sit amet.',
+    },
   ],
 };
