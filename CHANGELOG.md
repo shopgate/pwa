@@ -4,8 +4,12 @@
 ---
 
 ### [1.2.2](https://github.com/shopgate/pwa-common-commerce/compare/v1.2.1...v1.2.2) - January 17, 2018
-- Added constants for filtertypes "range" and "multiselect"
-- Bugfix for the reset of the currentProduct state when navigating through pages that belong to the product route.
+#### Fixed
+- The reset of the currentProduct state when navigating through pages that belong to the product route.
+
+#### Added
+- Added constants for filtertypes `range` and `multiselect`
+
 
 ---
 
