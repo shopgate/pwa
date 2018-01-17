@@ -17,7 +17,7 @@ import {
   ERROR_CLIENT_INFORMATION,
 } from '../../constants/ActionTypes';
 
-describe('ActionCreators: client', () => {
+describe('Action Creators: client', () => {
   describe('requestClientInformation()', () => {
     it('should work as expected', () => {
       const expected = { type: REQUEST_CLIENT_INFORMATION };

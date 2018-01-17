@@ -23,7 +23,7 @@ import {
 
 const dataMock = { some: 'data' };
 
-describe('ActionCreators: menu', () => {
+describe('Action Creators: history', () => {
   describe('historyDidReset()', () => {
     it('should work as expected', () => {
       const expected = { type: HISTORY_DID_RESET };

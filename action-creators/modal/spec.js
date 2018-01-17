@@ -18,7 +18,7 @@ import {
 const options = { some: 'data' };
 const id = 'modalId';
 
-describe('ActionCreators: modal', () => {
+describe('Action Creators: modal', () => {
   describe('createModal()', () => {
     it('should work as expected', () => {
       const expected = {

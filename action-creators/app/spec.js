@@ -25,7 +25,7 @@ import {
 
 const dataMock = { some: 'data' };
 
-describe('ActionCreators: app', () => {
+describe('Action Creators: app', () => {
   describe('appWillStart()', () => {
     it('should work as expected', () => {
       const expected = {

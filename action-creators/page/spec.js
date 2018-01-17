@@ -20,7 +20,7 @@ import {
 const pageId = 'index';
 const config = { some: 'data' };
 
-describe('ActionCreators: modal', () => {
+describe('Action Creators: page', () => {
   describe('requestPageConfig()', () => {
     it('should work as expected', () => {
       const expected = {

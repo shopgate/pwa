@@ -24,7 +24,7 @@ const entries = [{
 
 const id = 'quicklinks';
 
-describe('ActionCreators: menu', () => {
+describe('Action Creators: menu', () => {
   describe('requestMenu()', () => {
     it('should work as expected', () => {
       const expected = {

@@ -21,7 +21,7 @@ import {
 
 const pathname = '/path/name';
 
-describe('ActionCreators: view', () => {
+describe('Action Creators: view', () => {
   describe('setLoading()', () => {
     it('should work as expected', () => {
       const expected = {

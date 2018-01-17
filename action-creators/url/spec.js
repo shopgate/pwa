@@ -21,7 +21,7 @@ const url = 'https://www.myshop.com/checkout';
 const urlType = 'checkout';
 const expires = 123456;
 
-describe('ActionCreators: url', () => {
+describe('Action Creators: url', () => {
   describe('receiveUrl()', () => {
     it('should work as expected', () => {
       const expected = {
