@@ -16,11 +16,11 @@ import connect from './connector';
  */
 class Toast extends Component {
   static propTypes = {
-    className: PropTypes.string,
     container: PropTypes.func.isRequired,
     message: PropTypes.func.isRequired,
-    onClose: PropTypes.func,
     removeToast: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    onClose: PropTypes.func,
     toast: PropTypes.shape(),
   };
 

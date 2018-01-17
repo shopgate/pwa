@@ -15,7 +15,6 @@ exports[`<Toast /> should dispatch a toast message 1`] = `
   <Connect(Toast)
     container={[Function]}
     message={[Function]}
-    onClose={[Function]}
     toast={[Function]}
   >
     <Toast

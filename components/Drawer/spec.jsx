@@ -48,7 +48,7 @@ describe('<Drawer />', () => {
   });
 
   it('should execute callback when drawer close animation did end', () => {
-    const wrapper = mount(<Drawer className="custom-class-name" isOpen onDidClose={mockOpen}/>);
+    const wrapper = mount(<Drawer className="custom-class-name" isOpen onDidClose={mockOpen} />);
     expect(wrapper).toMatchSnapshot();
     wrapper.setProps({
       isOpen: false,

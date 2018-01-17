@@ -17,12 +17,31 @@ import { getToast } from '../../selectors/toast';
 import mockRenderOptions from '../../helpers/mocks/mockRenderOptions';
 
 const mockedStore = configureStore({ toast: toastReducer });
-const MockContainer = (props) => (<div>{props.children}</div>);
-const MockMessage = ({ text }) => (<span>{text}</span>);
 
-const createComponent = (onClose = () => {}) => {
+/* eslint-disable react/prop-types */
+/**
+ * Container Mock
+ * @param {Object} props Props
+ * @returns {XML}
+ */
+const MockContainer = props => (<div>{props.children}</div>);
+
+/**
+ * Message Mock
+ * @param {string} text Message text
+ * @returns {XML}
+ */
+const MockMessage = ({ text }) => (<span>{text}</span>);
+/* eslint-enable react/prop-types */
+
+/**
+ * Creates the component
+ * @param {function} onClose Close callback
+ * @return {*} ReactWrapper
+ */
+const createComponent = (onClose) => {
   /* eslint-disable global-require */
-  const Toast = require('./index').default;
+  const Toast = require('./index').default; // eslint-disable-line no-shadow
   /* eslint-enable global-require */
   return mount(
     <Provider store={mockedStore}>
@@ -38,6 +57,10 @@ const createComponent = (onClose = () => {}) => {
 };
 
 jest.mock('redux-logger', () => ({
+  /**
+   * Create logger
+   * @returns {*} action
+   */
   createLogger: () => () => next => action => next(action),
 }));
 
@@ -60,14 +83,14 @@ describe('<Toast />', () => {
   });
 
   it('should remove after timeout', (done) => {
-    const wrapper = createComponent(() => {
-      const drawerCallback = wrapper.find(Drawer).prop('onDidClose');
+    const wrapperWithTimeout = createComponent(() => {
+      const drawerCallback = wrapperWithTimeout.find(Drawer).prop('onDidClose');
       drawerCallback();
       expect(getState().toast.length).toBe(0);
       done();
     });
     dispatch(createToast({ message: 'Timeout Message', duration: 10 }));
-    wrapper.update();
+    wrapperWithTimeout.update();
   });
 
   it('should dispatch multiple toast messages', () => {
