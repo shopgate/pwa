@@ -27,6 +27,7 @@ const products = (state = {}, action) => {
         isFetching: true,
         ids: state.ids || [],
         expires: 0,
+        // No ready here! It should be undefined or true!
       };
     case RECEIVE_FAVORITES:
       return {
