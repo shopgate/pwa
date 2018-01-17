@@ -39,4 +39,8 @@ describe('Portlets', () => {
     expect(wrapper.children.length).toEqual(1);
     expect(wrapper.children().get(0).type === TestComponent).toEqual(true);
   });
+
+  it('should empty the target dom element if is replacer', () => {
+
+  });
 });
