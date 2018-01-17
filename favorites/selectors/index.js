@@ -30,9 +30,15 @@ const getFavoritesProductsIds = (state) => {
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProducts,
-  (productIds, products) => productIds.map(id => products[id])
+  (productIds, products) => productIds.map(id => products[id].productData)
 );
 
+/**
+ * True when favorites where not yet fetched for the first time.
+ * @param {Object} state State.
+ * @returns {bool}
+ */
+export const isInitialLoading = state => !state.favorites.ready;
 /**
  * Gets favorites list count.
  */

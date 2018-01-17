@@ -34,6 +34,7 @@ const products = (state = {}, action) => {
         isFetching: false,
         expires: Date.now() + FAVORITES_LIFETIME,
         ids: action.products.map(product => product.id),
+        ready: true,
       };
     case ERROR_FETCH_FAVORITES:
       return {
@@ -41,6 +42,7 @@ const products = (state = {}, action) => {
         isFetching: false,
         ids: state.ids || [],
         expires: 0,
+        ready: true,
       };
     default:
       return state;

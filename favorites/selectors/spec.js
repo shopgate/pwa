@@ -12,6 +12,7 @@ import {
   getFavorites,
   getFavoritesCount,
   hasFavorites,
+  isInitialLoading,
 } from './index';
 
 describe('Favorites - selectors', () => {
@@ -28,7 +29,9 @@ describe('Favorites - selectors', () => {
         },
       };
       const [product] = mockedList.products;
-      state.product.productsById[mockedList.products[0].id] = product;
+      state.product.productsById[mockedList.products[0].id] = {
+        productData: product,
+      };
 
       const result = getFavorites(state);
       expect(result instanceof Array).toBe(true);
@@ -92,6 +95,23 @@ describe('Favorites - selectors', () => {
     it('should not fail when state is not ready', () => {
       const result = hasFavorites({});
       expect(result).toBe(false);
+    });
+  });
+  describe('isInitialLoading', () => {
+    const notInitedState = {
+      favorites: {},
+    };
+    const initedState = {
+      favorites: {
+        ready: true,
+      },
+    };
+
+    it('should return true when state is not yet prepared', () => {
+      expect(isInitialLoading(notInitedState)).toBe(true);
+    });
+    it('should return false when state is fetched for the first  time', () => {
+      expect(isInitialLoading(initedState)).toBe(false);
     });
   });
 });
