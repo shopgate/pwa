@@ -16,6 +16,7 @@ import Shipping from './components/Shipping';
 import Availability from './components/Availability';
 import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
+import Tiers from './components/Tiers';
 import styles from './style';
 
 /**
@@ -24,6 +25,7 @@ import styles from './style';
  * - shipping
  * - discount
  * - price
+ * - tier prices
  * - price info
  * If not available or animating it will display placeholders
  * @returns {JSX}
@@ -51,6 +53,9 @@ const ProductHeader = () => (
         </div>
         <div className={styles.priceInfo}>
           <Price />
+        </div>
+        <div className={styles.priceInfo}>
+          <Tiers />
         </div>
         <div className={styles.priceInfo}>
           <PriceInfo />
