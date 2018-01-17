@@ -1,5 +1,5 @@
-/*
- *  Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+/**
+ *  Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  *  This source code is licensed under the Apache 2.0 license found in the
  *  LICENSE file in the root directory of this source tree.
@@ -17,7 +17,6 @@ import connect from './connector';
 class Toast extends Component {
   static propTypes = {
     container: PropTypes.func.isRequired,
-    // CreateToast: PropTypes.func.isRequired.
     message: PropTypes.func.isRequired,
     removeToast: PropTypes.func.isRequired,
     className: PropTypes.string,
@@ -65,6 +64,12 @@ class Toast extends Component {
     }
   }
 
+  /**
+   * ShouldComponentUpdate.
+   * @param {Object} nextProps NextProps.
+   * @param {Object} nextState NextState.
+   * @return {boolean}
+   */
   shouldComponentUpdate(nextProps, nextState) {
     const toastUpdate = nextProps.toast && this.props.toast
       && nextProps.toast.id !== this.props.toast.id;
@@ -91,12 +96,14 @@ class Toast extends Component {
    * @param {Object} toast Toast.
    */
   handleTimeout = (toast) => {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      this.setState({
-        isOpen: false,
-      });
-    }, toast.timeout);
+    if (toast.duration) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.setState({
+          isOpen: false,
+        });
+      }, toast.duration);
+    }
   };
 
   /**
