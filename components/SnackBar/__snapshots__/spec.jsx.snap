@@ -22,8 +22,8 @@ exports[`<SnackBar /> renders component 1`] = `
       <Toast
         className="css-13530nd"
         container={[Function]}
-        createToast={[Function]}
         message={[Function]}
+        onClose={[Function]}
         removeToast={[Function]}
         toast={
           Object {
