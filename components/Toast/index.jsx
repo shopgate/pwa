@@ -16,16 +16,18 @@ import connect from './connector';
  */
 class Toast extends Component {
   static propTypes = {
+    className: PropTypes.string,
     container: PropTypes.func.isRequired,
     message: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     removeToast: PropTypes.func.isRequired,
-    className: PropTypes.string,
     toast: PropTypes.shape(),
   };
 
   static defaultProps = {
-    toast: null,
     className: null,
+    onClose: () => {},
+    toast: null,
   };
 
   /**
@@ -37,7 +39,6 @@ class Toast extends Component {
     this.state = {
       isOpen: !!props.toast,
     };
-    this.activeToast = 0;
     this.timeout = null;
   }
 
@@ -48,12 +49,7 @@ class Toast extends Component {
   componentWillReceiveProps(nextProps) {
     const hasToast = !!nextProps.toast;
 
-    if (hasToast && this.activeToast === nextProps.toast.id) {
-      return;
-    }
-
     if (hasToast) {
-      this.activeToast = nextProps.toast.id;
       this.handleTimeout(nextProps.toast);
     }
 
@@ -102,6 +98,7 @@ class Toast extends Component {
         this.setState({
           isOpen: false,
         });
+        this.props.onClose();
       }, toast.duration);
     }
   };
