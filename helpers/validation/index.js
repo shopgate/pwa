@@ -1,11 +1,9 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-/* eslint no-restricted-globals: ["warn", "isNaN", "isFinite"] */
 
 /**
  * Tests if the prop is an object.
@@ -22,7 +20,7 @@ export const isObject = prop => (
  * @return {boolean}
  */
 export const isNumeric = prop => (
-  !isNaN(parseFloat(prop)) && isFinite(prop)
+  !Number.isNaN(parseFloat(prop)) && Number.isFinite(prop)
 );
 
 /**
@@ -31,7 +29,7 @@ export const isNumeric = prop => (
  * @return {boolean}
  */
 export const isNumber = prop => (
-  (typeof prop === 'number') && isFinite(prop)
+  (typeof prop === 'number') && Number.isFinite(prop)
 );
 
 /**
