@@ -46,7 +46,18 @@ class Cart extends Component {
 
     this.state = {
       isPaymentBarHidden: false,
+      containerPaddingStyle: styles.getContainerPaddingStyle(),
     };
+  }
+
+  /**
+   * Callback for the onSize event of the PaymentBar
+   * @param {Object} size An object which contains data about the current component dimensions
+   */
+  onSize = ({ height }) => {
+    this.setState({
+      containerPaddingStyle: styles.getContainerPaddingStyle(height),
+    });
   }
 
   /**
@@ -78,7 +89,7 @@ class Cart extends Component {
 
     return (
       <View title={this.title}>
-        <section className={styles.container}>
+        <section className={styles.container} style={this.state.containerPaddingStyle}>
           {messages.length > 0 && <MessageBar messages={messages} />}
           {cartItems.length > 0 && (
             <Fragment>
@@ -92,7 +103,7 @@ class Cart extends Component {
                 ))}
                 <CouponField onToggleFocus={this.togglePaymentBar} />
               </CardList>
-              <PaymentBar isVisible={!this.state.isPaymentBarHidden} />
+              <PaymentBar isVisible={!this.state.isPaymentBarHidden} onSize={this.onSize} />
             </Fragment>
           )}
         </section>
