@@ -38,7 +38,10 @@ export const getFavorites = createSelector(
  * @param {Object} state State.
  * @returns {bool}
  */
-export const isInitialLoading = state => !state.favorites.ready;
+export const isInitialLoading = state => !(
+  state.favorites
+  && state.favorites.products.ready
+);
 /**
  * Gets favorites list count.
  */
