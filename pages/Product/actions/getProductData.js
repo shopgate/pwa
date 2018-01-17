@@ -26,7 +26,7 @@ const getProductData = (selectedVariantId = null, baseProductId = null) =>
   (dispatch, getState) => {
     const state = getState();
     const currentProductId = getCurrentBaseProductId(state);
-    const currentVariantId = getCurrentProductVariantId(state);
+    const currentVariantId = null;
     const parentId = baseProductId ? hex2bin(baseProductId) : currentProductId;
     const productId = selectedVariantId || parentId;
 
