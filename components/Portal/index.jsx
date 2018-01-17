@@ -84,12 +84,16 @@ class Portal extends PureComponent {
         el.innerHTML = ''; // eslint-disable-line no-param-reassign
       }
 
+      // If the children are regular react children.
       if (typeof children !== 'function') {
         this.portals.push(createPortal(children, el));
         return;
       }
 
-      this.portals.push(createPortal((<div>{children(el.dataset.id)}</div>), el));
+      this.portals.push(createPortal(
+        <div>{children(el.dataset.id)}</div>,
+        el
+      ));
     });
 
     return this.portals;
