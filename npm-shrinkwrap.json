@@ -1514,6 +1514,11 @@
       "resolved": "https://registry.npmjs.org/base-64/-/base-64-0.1.0.tgz",
       "integrity": "sha1-eAqZyE59YAJgNhURxId2E78k9rs="
     },
+    "batch-processor": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/batch-processor/-/batch-processor-1.0.0.tgz",
+      "integrity": "sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg="
+    },
     "bcrypt-pbkdf": {
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz",
@@ -2275,6 +2280,14 @@
       "resolved": "https://registry.npmjs.org/elegant-spinner/-/elegant-spinner-1.0.1.tgz",
       "integrity": "sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=",
       "dev": true
+    },
+    "element-resize-detector": {
+      "version": "1.1.12",
+      "resolved": "https://registry.npmjs.org/element-resize-detector/-/element-resize-detector-1.1.12.tgz",
+      "integrity": "sha1-iz/W7t2hf5wAs2Cg6i35knroC6I=",
+      "requires": {
+        "batch-processor": "1.0.0"
+      }
     },
     "emoji-regex": {
       "version": "6.5.1",
@@ -7258,6 +7271,16 @@
       "requires": {
         "exenv": "1.2.2",
         "shallowequal": "1.0.2"
+      }
+    },
+    "react-sizeme": {
+      "version": "2.3.6",
+      "resolved": "https://registry.npmjs.org/react-sizeme/-/react-sizeme-2.3.6.tgz",
+      "integrity": "sha512-d3+9Kiz+5kLxyvGd44ZqxDPopNjLaSUP/qNgB5rv0O5qB8ZIjAHSeIXVHlfddJ6B841Q928V3jXm+UYyX2iUlA==",
+      "requires": {
+        "element-resize-detector": "1.1.12",
+        "invariant": "2.2.2",
+        "lodash": "4.17.4"
       }
     },
     "react-swipeable": {
