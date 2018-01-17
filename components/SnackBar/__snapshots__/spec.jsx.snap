@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SnackBar /> renders component 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <SnackBar>
+    <Connect(Toast)
+      className="css-13530nd"
+      container={[Function]}
+      message={[Function]}
+    >
+      <Toast
+        className="css-13530nd"
+        container={[Function]}
+        createToast={[Function]}
+        message={[Function]}
+        removeToast={[Function]}
+        toast={
+          Object {
+            "id": 1,
+            "message": "foo",
+          }
+        }
+      >
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": null,
+              "in": "",
+              "out": "",
+            }
+          }
+          className="css-13530nd"
+          isOpen={true}
+          onClose={[Function]}
+          onDidClose={[Function]}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-13530nd css-1rg7udn css-1dwe0qx"
+            onAnimationEnd={[Function]}
+            style={Object {}}
+          >
+            <Container>
+              <div>
+                <Message
+                  text="foo"
+                >
+                  <p
+                    className="css-1yqa5rq"
+                  >
+                    <Translate
+                      className=""
+                      params={Object {}}
+                      string="foo"
+                    >
+                      <span
+                        className=""
+                      >
+                        foo
+                      </span>
+                    </Translate>
+                  </p>
+                </Message>
+              </div>
+            </Container>
+          </div>
+        </Drawer>
+      </Toast>
+    </Connect(Toast)>
+  </SnackBar>
+</Provider>
+`;
