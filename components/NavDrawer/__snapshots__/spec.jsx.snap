@@ -141,7 +141,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -248,7 +248,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -363,7 +363,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                     >
                       <div
                         aria-hidden={true}
-                        className=""
+                        className="css-1268me8 "
                         onClick={[Function]}
                         style={null}
                       >
@@ -478,7 +478,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -585,7 +585,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -692,7 +692,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -806,7 +806,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -913,7 +913,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -1020,7 +1020,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -1134,7 +1134,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -1337,7 +1337,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       >
                         <div
                           aria-hidden={true}
-                          className=""
+                          className="css-1268me8 "
                           onClick={[Function]}
                           style={null}
                         >
@@ -1448,7 +1448,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -1555,7 +1555,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -1670,7 +1670,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                     >
                       <div
                         aria-hidden={true}
-                        className=""
+                        className="css-1268me8 "
                         onClick={[Function]}
                         style={null}
                       >
@@ -1785,7 +1785,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -1892,7 +1892,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -2006,7 +2006,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -2113,7 +2113,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -2220,7 +2220,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -2464,7 +2464,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       >
                         <div
                           aria-hidden={true}
-                          className=""
+                          className="css-1268me8 "
                           onClick={[Function]}
                           style={null}
                         >
@@ -2575,7 +2575,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -2682,7 +2682,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -2797,7 +2797,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                     >
                       <div
                         aria-hidden={true}
-                        className=""
+                        className="css-1268me8 "
                         onClick={[Function]}
                         style={null}
                       >
@@ -2912,7 +2912,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -3019,7 +3019,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -3133,7 +3133,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -3240,7 +3240,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -3347,7 +3347,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -3726,7 +3726,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       >
                         <div
                           aria-hidden={true}
-                          className=""
+                          className="css-1268me8 "
                           onClick={[Function]}
                           style={null}
                         >
@@ -3837,7 +3837,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -3944,7 +3944,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -4059,7 +4059,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     >
                       <div
                         aria-hidden={true}
-                        className=""
+                        className="css-1268me8 "
                         onClick={[Function]}
                         style={null}
                       >
@@ -4174,7 +4174,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -4281,7 +4281,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -4395,7 +4395,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -4502,7 +4502,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -4609,7 +4609,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -4853,7 +4853,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       >
                         <div
                           aria-hidden={true}
-                          className=""
+                          className="css-1268me8 "
                           onClick={[Function]}
                           style={null}
                         >
@@ -4964,7 +4964,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -5071,7 +5071,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -5186,7 +5186,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     >
                       <div
                         aria-hidden={true}
-                        className=""
+                        className="css-1268me8 "
                         onClick={[Function]}
                         style={null}
                       >
@@ -5301,7 +5301,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -5408,7 +5408,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -5522,7 +5522,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -5629,7 +5629,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >
@@ -5736,7 +5736,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   >
                     <div
                       aria-hidden={true}
-                      className=""
+                      className="css-1268me8 "
                       onClick={[Function]}
                       style={null}
                     >

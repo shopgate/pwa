@@ -96,7 +96,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                     >
                       <div
                         aria-hidden={true}
-                        className="css-8s1fw2 "
+                        className="css-1268me8 css-8s1fw2 "
                         onClick={[Function]}
                         style={null}
                       >

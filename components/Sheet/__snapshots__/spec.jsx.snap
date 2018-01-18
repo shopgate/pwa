@@ -59,7 +59,7 @@ exports[`<Sheet /> should open 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="css-ugy6xl"
+                    className="css-1268me8 css-ugy6xl"
                     onClick={[Function]}
                     style={null}
                   >
@@ -376,7 +376,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="css-ugy6xl"
+                    className="css-1268me8 css-ugy6xl"
                     onClick={[Function]}
                     style={null}
                   >
