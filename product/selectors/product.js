@@ -266,7 +266,7 @@ export const getProductManufacturer = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product shipping state.
  */
-const getProductShippingState = state => state.product.shippingByProductId;
+export const getProductShippingState = state => state.product.shippingByProductId;
 
 /**
  * Retrieves the current product shipping data.
@@ -332,7 +332,7 @@ export const getProductDescription = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product properties state.
  */
-const getProductPropertiesState = state => state.product.propertiesByProductId;
+export const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
  * Retrieves the current product properties.

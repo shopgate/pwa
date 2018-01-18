@@ -6,14 +6,17 @@
  *
  */
 import { createSelector } from 'reselect';
-import { getProducts } from '../../product/selectors/product';
+import {
+  getProductPropertiesState,
+  getProducts,
+} from '../../product/selectors/product';
 
 /**
  * Gets favorite products ids.
  * @param {Object} state State.
  * @returns {Array}
  */
-const getFavoritesProductsIds = (state) => {
+export const getFavoritesProductsIds = (state) => {
   if (
     state.favorites
     && state.favorites.products
@@ -30,7 +33,16 @@ const getFavoritesProductsIds = (state) => {
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProducts,
-  (productIds, products) => productIds.map(id => products[id].productData)
+  getProductPropertiesState,
+  (productIds, products, propertiesByProduct) => productIds.map((id) => {
+    const { productData } = products[id];
+    const properties = propertiesByProduct[id] ? propertiesByProduct[id].properties : undefined;
+
+    return {
+      ...productData,
+      properties,
+    };
+  })
 );
 
 /**

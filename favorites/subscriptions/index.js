@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import {
-  routeDidEnter,
-} from '@shopgate/pwa-common/streams/history';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import {
-  FAVORITES_PATH,
-} from '../constants';
+  favoritesDidEnter$,
+  favoritesDidEnterWithProducts$,
+} from '../streams';
+import getProductProperties from '../../product/actions/getProductProperties';
+import { getFavoritesProductsIds } from '../selectors';
 import getFavorites from '../actions/getFavorites';
 
 /**
@@ -32,8 +32,15 @@ const favorites = (subscribe) => {
   // On App start.
   subscribe(appDidStart$, dispatchFetch);
   // On page enter.
-  const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
   subscribe(favoritesDidEnter$, dispatchFetch);
+
+  // On page enter AND received.
+  subscribe(favoritesDidEnterWithProducts$, (values) => {
+    const [{ dispatch, getState }] = values.slice(-1);
+    getFavoritesProductsIds(getState()).forEach((productId) => {
+      dispatch(getProductProperties(productId));
+    });
+  });
 };
 
 export default favorites;
