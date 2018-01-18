@@ -230,7 +230,7 @@ class Ripple extends PureComponent {
     }
 
     return (
-      <div className={style.container}>
+      <div className={style.wrapper}>
         {this.state.ripples}
       </div>
     );
@@ -243,7 +243,7 @@ class Ripple extends PureComponent {
   render() {
     return (
       <div
-        className={this.props.className}
+        className={`${style.container} ${this.props.className}`}
         onClick={this.handleClick}
         style={this.style}
         aria-hidden
