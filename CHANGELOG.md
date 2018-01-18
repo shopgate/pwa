@@ -1,14 +1,23 @@
 
 # Changelog
 
+### [1.3.0](https://github.com/shopgate/pwa-common/compare/v1.2.0...v1.3.0) - January 08, 2017
+
+#### Added
+- Observable `clientInformationDidUpdate$`
+
+#### Fixed
+- Images inside the product gallery are now shown on iOS 10
+
+---
+
 ### [1.2.0](https://github.com/shopgate/pwa-common/compare/v1.1.3...v1.2.0) - January 08, 2017
 
 #### Added
-- constant `CHECKOUT_PATH`
-- constant `LEGACY_URL`
-- constant `URL_TYPE_REGISTER`
-- selector `getHistoryLocation`
-- selector `getHistoryLocation`
+- Constant `CHECKOUT_PATH`
+- Constant `LEGACY_URL`
+- Constant `URL_TYPE_REGISTER`
+- Selector `getHistoryLocation`
 - Observable `openedRegisterLink`
 - Opening the `/register` route will now trigger the fetching of a registration URL, if one is available
 
