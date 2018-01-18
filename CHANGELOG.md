@@ -93,7 +93,7 @@
 - Updated `@shopgate/tracking-core` to ^1.0.5
 
 #### Fixed
-The product card will now correctly display the discount badge
+- The product card will now correctly display the discount badge
 
 ---
 
