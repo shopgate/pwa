@@ -19,7 +19,6 @@ import { QUICKLINKS_MENU } from './constants';
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
-console.warn(process.env.APP_CONFIG.hasFavorites);
 const mapStateToProps = state => ({
   cartProductCount: getCartProductDisplayCount(state),
   entries: {

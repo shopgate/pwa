@@ -8,5 +8,5 @@
   "forgotPasswordUrl": null,
   "webCheckoutShopify": null,
   "hasReviews": true,
-  "hasFavorites": false
+  "hasFavorites": true
 }

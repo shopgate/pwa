@@ -7,7 +7,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
 
 /**
  * The Cart Product Properties component.
@@ -15,15 +14,13 @@ import Grid from '@shopgate/pwa-common/components/Grid';
  * @returns {JSX}
  */
 const Properties = ({ properties }) => (
-  <Grid.Item>
-    <ul>
-      {properties.map(({ label, value }) =>
-        <li key={`${label}-${value}`}>
-          {label}: {value}
-        </li>
-      )}
-    </ul>
-  </Grid.Item>
+  <ul>
+    {properties.map(({ label, value }) => (
+      <li key={`${label}-${value}`}>
+        {label}: {value}
+      </li>
+    ))}
+  </ul>
 );
 
 Properties.propTypes = {
