@@ -55,10 +55,10 @@ const ProductHeader = () => (
           <Price />
         </div>
         <div className={styles.priceInfo}>
-          <Tiers />
+          <PriceInfo />
         </div>
         <div className={styles.priceInfo}>
-          <PriceInfo />
+          <Tiers />
         </div>
       </Grid.Item>
     </Grid>
