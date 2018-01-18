@@ -6,7 +6,6 @@
 #### Added
 - Global CSS variables `--safe-area-inset-top` and `--safe-area-inset-bottom`
 - Selector `getPageInsets`
-- Constants for filter types `FILTER_TYPE_MULTISELECT` and `FILTER_TYPE_RANGE`
 - Dependency `react-sizeme`
 
 #### Changed
