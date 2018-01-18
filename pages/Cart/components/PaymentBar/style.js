@@ -6,40 +6,10 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
 const duration = 300;
 const delay = 300;
 const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
-
-const container = css({
-  padding: `${variables.gap.big}px ${variables.gap.small}px`,
-  lineHeight: 1.45,
-}).toString();
-
-const column = css({
-  padding: `0 ${variables.gap.small}px`,
-}).toString();
-
-const labelColumn = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-}).toString();
-
-const costsColumn = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-}).toString();
-
-const buttonColumn = costsColumn;
-
-const checkoutButton = css({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  marginTop: 1,
-}).toString();
 
 const slideInCartPaymentBarDrawer = css.keyframes({
   '0%': { transform: 'translateY(100%)' },
@@ -62,11 +32,5 @@ const animation = {
 };
 
 export default {
-  container,
-  column,
-  labelColumn,
-  costsColumn,
-  buttonColumn,
-  checkoutButton,
   animation,
 };

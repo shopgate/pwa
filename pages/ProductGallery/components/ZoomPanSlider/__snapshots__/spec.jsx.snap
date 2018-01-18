@@ -83,7 +83,7 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
               className="swiper-wrapper"
             >
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s0"
               >
                 <SliderItem
@@ -172,7 +172,7 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
                 </SliderItem>
               </div>
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s1"
               >
                 <SliderItem
@@ -261,7 +261,7 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
                 </SliderItem>
               </div>
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s2"
               >
                 <SliderItem
@@ -350,7 +350,7 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
                 </SliderItem>
               </div>
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s3"
               >
                 <SliderItem
@@ -439,7 +439,7 @@ exports[`<ZoomPanSlider /> renders with children 1`] = `
                 </SliderItem>
               </div>
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s4"
               >
                 <SliderItem
@@ -619,7 +619,7 @@ exports[`<ZoomPanSlider /> wraps children in zoom containers 1`] = `
               className="swiper-wrapper"
             >
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s0"
               >
                 <SliderItem
@@ -708,7 +708,7 @@ exports[`<ZoomPanSlider /> wraps children in zoom containers 1`] = `
                 </SliderItem>
               </div>
               <div
-                className="sg-swiper-slide css-1l9a57c "
+                className="sg-swiper-slide css-xwe5xi "
                 key=".$s1"
               >
                 <SliderItem
