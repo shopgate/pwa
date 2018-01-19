@@ -14,7 +14,7 @@ const wrapper = css({
 
 const tier = css({
   display: 'block',
-  lineHeight: 1.125,
+  lineHeight: 1.35,
 }).toString();
 
 const price = css({
