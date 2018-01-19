@@ -77,6 +77,7 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case 'index':
       this.addLinkAction('reactRouter', {
         url: INDEX_PATH,
+        queryParams,
       });
       break;
     case 'filter':

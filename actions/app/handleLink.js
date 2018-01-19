@@ -22,14 +22,17 @@ const handleLink = (payload = {}, dispatch) => {
     return false;
   }
 
-  if (link === '/index') {
+  const parsedLink = new ParsedLink(link);
+
+  if (link.startsWith('/index')) {
     /**
-     * Special treatment for the index page.
-     * The history will be reset to avoid multiple index pages within the history.
+     * Special treatment for the index page. To avoid multiple index pages within the history,
+     * the parsed link helper will only emit the openLink events for the link to inform the streams,
+     * but not open a real page. Additionally the history is reset.
      */
+    parsedLink.open(history, false);
     dispatch(resetHistory());
   } else {
-    const parsedLink = new ParsedLink(link);
     parsedLink.open(history);
   }
 

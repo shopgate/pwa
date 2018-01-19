@@ -109,11 +109,15 @@ class ParsedLink {
   /**
    * Opens the link
    * @param {Object} [history] The history object of react-router
+   * @param {boolean} [callActions=true] When set to FALSE only openLink events will be triggered,
+   *   but no router actions will be called.
    */
-  open(history = defaultHistory) {
+  open(history = defaultHistory, callActions = true) {
     this.getHandlers().forEach((handler) => {
       event.trigger('openLink', handler);
-      actions[handler.action](handler.options, history);
+      if (callActions) {
+        actions[handler.action](handler.options, history);
+      }
     });
   }
 }
