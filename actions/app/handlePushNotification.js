@@ -18,7 +18,16 @@ const PUSH_MESSAGE_OPENED = 'ajax_push_message_opened';
  * @return {Function} A redux thunk.
  */
 const handlePushNotification = (payload = {}) => (dispatch) => {
-  const { link = '', notificationId = null } = payload;
+  const { link = '', notificationId = null, nativeNotificationNotShown } = payload;
+
+  /**
+   * The following property is only available on iOS. A value of TRUE indicates that the push
+   * message came in, while the app was open. Since the app would instantly open the link of the
+   * message in those situations, the link handling is suppressed to not distract the user.
+   */
+  if (nativeNotificationNotShown === true) {
+    return;
+  }
 
   if (notificationId) {
     const id = notificationId.toString();
@@ -29,7 +38,7 @@ const handlePushNotification = (payload = {}) => (dispatch) => {
       .dispatch();
   }
 
-  handleLink({ link });
+  handleLink({ link }, dispatch);
 
   dispatch(openPushNotification(notificationId, link));
 };

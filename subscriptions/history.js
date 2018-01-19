@@ -15,7 +15,6 @@ import ParsedLink from '../components/Router/helpers/parsed-link';
 import {
   openedRegisterLink$,
   routeDidLeave,
-  openedIndexLink$,
 } from '../streams/history';
 import {
   userDidLogin$,
@@ -47,12 +46,10 @@ export default function history(subscribe) {
     });
   }
 
-  const historyNeedsReset$ = userDidLogout$.merge(openedIndexLink$);
-
   /**
-   * Gets triggered when the history needs to be reset
+   * Gets triggered when the user did log out.
    */
-  subscribe(historyNeedsReset$, ({ dispatch }) => {
+  subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(resetHistory());
   });
 

@@ -7,10 +7,7 @@
 
 import { OPEN_LINK, UPDATE_HISTORY } from '../constants/ActionTypes';
 import { getHistoryPathname, getHistoryAction } from '../selectors/history';
-import {
-  INDEX_PATH,
-  REGISTER_PATH,
-} from '../constants/RoutePaths';
+import { REGISTER_PATH } from '../constants/RoutePaths';
 import { main$ } from './main';
 
 /**
@@ -104,13 +101,3 @@ export const openedRegisterLink$ = openedLink$
     action.options &&
     action.options.url &&
     action.options.url === REGISTER_PATH);
-
-/**
- * Gets triggered when the index link is opened.
- * @type {Observable}
- */
-export const openedIndexLink$ = openedLink$
-  .filter(({ action }) =>
-    action.options &&
-    action.options.url &&
-    action.options.url === INDEX_PATH);

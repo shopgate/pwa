@@ -6,23 +6,32 @@
  */
 
 import ParsedLink from '../../components/Router/helpers/parsed-link';
+import resetHistory from '../history/resetHistory';
 import { history } from '../../helpers/router';
 
 /**
  * Opens a DeepLink.
  * @param {Object} [payload={}] The deep link event payload.
+ * @param {Function} dispatch The redux dispatch function.
  * @return {boolean} True if the parsed link handled the link.
  */
-const handleLink = (payload = {}) => {
+const handleLink = (payload = {}, dispatch) => {
   const { link = null } = payload;
 
   if (!link) {
     return false;
   }
 
-  const parsedLink = new ParsedLink(link);
-
-  parsedLink.open(history);
+  if (link === '/index') {
+    /**
+     * Special treatment for the index page.
+     * The history will be reset to avoid multiple index pages within the history.
+     */
+    dispatch(resetHistory());
+  } else {
+    const parsedLink = new ParsedLink(link);
+    parsedLink.open(history);
+  }
 
   return true;
 };
