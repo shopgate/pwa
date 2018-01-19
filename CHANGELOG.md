@@ -2,6 +2,25 @@
 # Changelog
 ---
 
+### [1.2.2](https://github.com/shopgate/theme-gmd/compare/v1.2.1...v1.2.2) - January 17, 2018
+
+#### Added
+- Global CSS variables `--safe-area-inset-top` and `--safe-area-inset-bottom`
+- Selector `getPageInsets`
+- Constants for filter types `FILTER_TYPE_MULTISELECT` and `FILTER_TYPE_RANGE`
+- Dependency `react-sizeme`
+
+#### Changed
+- Replaced the usage of `safe-area-insets` environment CSS constants with CSS variables that are set depending on the device
+- Updated `@shopgate/pwa-common` to ^1.3.0
+- Updated `@shopgate/pwa-common-commerce` to ^1.2.2
+- Updated `@shopgate/pwa-tracking` to ^1.2.2
+- Updated `@shopgate/pwa-webcheckout-shopify` to ^1.1.3
+
+#### Fixed
+- The product id that is set in the redux store is now not reset when navigating through product routes i.e. (gallery, reviews)
+- The spacing reserved for the `PaymentBar` is now relative to the height of the component
+
 ### [1.2.1](https://github.com/shopgate/theme-gmd/compare/v1.2.0...v1.2.1) - January 09, 2018
 
 #### Changed
