@@ -1,6 +1,5 @@
 
 # Changelog
----
 
 ### [1.2.2](https://github.com/shopgate/theme-gmd/compare/v1.2.1...v1.2.2) - January 17, 2018
 
@@ -20,6 +19,8 @@
 #### Fixed
 - The product id that is set in the redux store is now not reset when navigating through product routes i.e. (gallery, reviews)
 - The spacing reserved for the `PaymentBar` is now relative to the height of the component
+
+---
 
 ### [1.2.1](https://github.com/shopgate/theme-gmd/compare/v1.2.0...v1.2.1) - January 09, 2018
 
