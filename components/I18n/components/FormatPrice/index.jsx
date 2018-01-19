@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
  * @returns {JSX}
  */
 const FormatPrice = (props, context) => (
-  <span>
+  <span className={props.className}>
     {FormatPrice.format(props, context)}
   </span>
 );
@@ -33,10 +33,12 @@ FormatPrice.format = (props, context) => {
 FormatPrice.propTypes = {
   currency: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
   price: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  className: PropTypes.string,
   fractions: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
 };
 
 FormatPrice.defaultProps = {
+  className: '',
   fractions: true,
 };
 
