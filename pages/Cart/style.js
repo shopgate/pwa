@@ -14,9 +14,6 @@ export const cartItemTransitionDuration = 300;
 const container = css({
   background: colors.background,
   flexGrow: 1,
-  paddingTop: variables.gap.small * 0.5,
-  // Has to be this magic number because the Payment Bar is this height.
-  paddingBottom: variables.paymentBar.height,
 }).toString();
 
 const defaultTransitionStyle = {
@@ -36,6 +33,16 @@ const transitionStyles = {
 };
 
 /**
+ * Creates an object with style attributes for the container paddings.
+ * @param {number} [bottom=variables.paymentBar.height] The value for the bottom padding.
+ * @return {Object}
+ */
+const getContainerPaddingStyle = (bottom = variables.paymentBar.height) => ({
+  paddingTop: variables.gap.small * 0.5,
+  paddingBottom: `calc(${bottom}px + var(--safe-area-inset-bottom))`,
+});
+
+/**
  * Creates an object with style attributes to enable a cart item transition.
  * @param {string} state A state of the react-transition-group/Transition component.
  * @return {Object}
@@ -49,4 +56,5 @@ export default {
   container,
   cartItemTransitionDuration,
   getCartItemTransitionStyle,
+  getContainerPaddingStyle,
 };

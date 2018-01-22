@@ -8,7 +8,7 @@
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
-  getCurrentProductId,
+  getCurrentBaseProductId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   getCurrentReviewCount,
@@ -34,7 +34,7 @@ export default function reviews(subscribe) {
       // No need to fetch.
       return;
     }
-    dispatch(fetchReviews(getCurrentProductId(getState()), REVIEW_ITEMS_PER_PAGE));
+    dispatch(fetchReviews(getCurrentBaseProductId(getState()), REVIEW_ITEMS_PER_PAGE));
   });
 }
 

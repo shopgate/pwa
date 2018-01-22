@@ -33,6 +33,7 @@
   "price": {
     "from": "Ab {price}",
     "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "tier": "{from} oder mehr: {price}",
     "msrp": "UVP",
     "currency": "EUR"
   },
