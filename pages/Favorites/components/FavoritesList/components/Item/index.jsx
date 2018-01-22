@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CardItem from 'Components/CardList/components/Item';
-import ProductProperties from 'Components/ProductProperties';
+import ProductCharacteristics from 'Components/ProductCharacteristics';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import ProductImage from 'Components/ProductImage';
 import AvailableText from 'Components/Availability';
@@ -34,12 +34,13 @@ const Item = ({ product }) => (
           {product.name}
         </div>
         <div className={styles.details}>
-          <Grid>
+          <Grid className={styles.detailsRow}>
             <Grid.Item className={styles.propertiesContainer}>
-              <ProductProperties properties={product.properties} />
+              <ProductCharacteristics characteristics={product.characteristics} />
               <AvailableText
                 text={product.availability.text}
                 state={product.availability.state}
+                showWhenAvailable
               />
             </Grid.Item>
             <Grid.Item className={styles.priceContainer}>

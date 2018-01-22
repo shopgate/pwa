@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 
 const strikedPrice = css({
-  fontSize: 10,
+  fontSize: 11,
   textAlign: 'right',
 }).toString();
 

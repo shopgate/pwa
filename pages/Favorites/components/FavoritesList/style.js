@@ -26,12 +26,11 @@ const row = css({
 
 const leftColumn = css({
   paddingRight: variables.gap.small,
-  flexBasis: 126,
   flexShrink: 0,
   flexGrow: 1,
   minWidth: 126,
-  maxWidth: 300,
-  width: '35%',
+  maxWidth: 200,
+  width: '19%',
 }).toString();
 
 const rightColumn = css({
@@ -44,6 +43,7 @@ const rightColumn = css({
 const name = css({
   fontWeight: 500,
   lineHeight: 1.125,
+  marginBottom: '1em',
 }).toString();
 
 const details = css({
@@ -63,6 +63,11 @@ const priceContainer = css({
   fontSize: 14,
 }).toString();
 
+const detailsRow = css({
+  justifyContent: 'space-between',
+  alignItems: 'flex-end',
+}).toString();
+
 export default {
   container,
   image,
@@ -71,6 +76,7 @@ export default {
   name,
   row,
   details,
+  detailsRow,
   priceContainer,
   propertiesContainer,
 };

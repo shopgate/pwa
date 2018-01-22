@@ -20,7 +20,7 @@ class Price extends Component {
       currency: PropTypes.string.isRequired,
       unitPriceWithTax: PropTypes.number.isRequired,
       unitPriceStriked: PropTypes.number.isRequired,
-      discount: PropTypes.number.isRequired,
+      discount: PropTypes.number,
     }).isRequired,
   };
 
@@ -45,7 +45,7 @@ class Price extends Component {
     return (
       <Fragment>
         {
-          this.props.price.unitPriceStriked
+          this.props.price.unitPriceStriked > 0
           && <ProductPriceStriked
             className={styles.strikedPrice}
             value={this.props.price.unitPriceStriked}
