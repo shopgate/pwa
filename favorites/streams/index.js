@@ -26,5 +26,5 @@ export const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
  * Needs to check why returns 3 arguments O_o.
  * @todo Ask Carsten what is happening here.
  */
-export const favoritesDidEnterWithProducts$ = main$
-  .zip(favoritesDidEnter$, receivedFavorites$);
+export const favoritesDidEnterWithProducts$ = favoritesDidEnter$
+  .zip(receivedFavorites$);

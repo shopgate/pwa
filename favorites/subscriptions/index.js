@@ -7,6 +7,10 @@
  */
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import {
+  userDidLogin$,
+  userDidLogout$,
+} from '@shopgate/pwa-common/streams/user';
+import {
   favoritesDidEnter$,
   favoritesDidEnterWithProducts$,
 } from '../streams';
@@ -15,24 +19,17 @@ import { getFavoritesBaseProductIds } from '../selectors';
 import getFavorites from '../actions/getFavorites';
 
 /**
- * Dispatches fetch action.
- * Callback for all subscriptions which should end up in
- * fetching favorites.
- * @param {function} dispatch Dispatch.
- */
-const dispatchFetch = ({ dispatch }) => {
-  dispatch(getFavorites());
-};
-
-/**
  * Favorites page subscriptions.
  * @param {function} subscribe Subscribe function.
  */
 const favorites = (subscribe) => {
-  // On App start.
-  subscribe(appDidStart$, dispatchFetch);
-  // On page enter.
-  subscribe(favoritesDidEnter$, dispatchFetch);
+  // On App start, did log in, did log out and favorites page enter we need to fetch.
+  subscribe(
+    appDidStart$.merge(favoritesDidEnter$, userDidLogin$, userDidLogout$),
+    ({ dispatch }) => {
+      dispatch(getFavorites());
+    }
+  );
 
   // On page enter AND received.
   subscribe(favoritesDidEnterWithProducts$, (values) => {
