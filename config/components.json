@@ -23,10 +23,9 @@
     }
   },
   "portals": {
-    "product-item.name.before": {
-      "@shopgate/product-reviews/rating_stars": {
-        "path": "@shopgate/product-reviews/frontend/RatingStars"
-      }
+    "@shopgate/product-reviews/rating_stars": {
+      "id": "product-item.name.before",
+      "path": "@shopgate/product-reviews/frontend/RatingStars"
     }
   },
   "tracking": {
