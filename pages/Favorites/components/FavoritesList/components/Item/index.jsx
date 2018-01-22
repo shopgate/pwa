@@ -8,6 +8,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import CardItem from 'Components/CardList/components/Item';
 import ProductCharacteristics from 'Components/ProductCharacteristics';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -26,12 +28,28 @@ const Item = ({ product }) => (
     <Grid className={styles.row}>
       <Grid.Item className={styles.leftColumn}>
         <div className={styles.image}>
-          <ProductImage src={product.featuredImageUrl} />
+          <Link
+            tagName="a"
+            href={`/item/${bin2hex(product.id)}`}
+            itemProp="item"
+            itemScope
+            itemType="http://schema.org/Product"
+          >
+            <ProductImage src={product.featuredImageUrl} />
+          </Link>
         </div>
       </Grid.Item>
       <Grid.Item grow={1} className={styles.rightColumn}>
         <div className={styles.name}>
-          {product.name}
+          <Link
+            tagName="a"
+            href={`/item/${bin2hex(product.id)}`}
+            itemProp="item"
+            itemScope
+            itemType="http://schema.org/Product"
+          >
+            {product.name}
+          </Link>
         </div>
         <div className={styles.details}>
           <Grid className={styles.detailsRow}>
