@@ -10,8 +10,10 @@ import PropTypes from 'prop-types';
 import { hasReviews } from 'Config/app.json';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Target from '@shopgate/pwa-common/components/Target';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { PRODUCT_ITEM_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/portals';
 import ProductImage from 'Components/ProductImage';
 import RatingStars from 'Components/RatingStars';
 import DiscountBadge from 'Components/DiscountBadge';
@@ -42,6 +44,7 @@ const Item = ({ product, display }) => (
     }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
+        <Target id={PRODUCT_ITEM_NAME_BEFORE} identifier={product.id} />
         {(hasReviews && product.rating && product.rating.count > 0) &&
           <div>
             {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
