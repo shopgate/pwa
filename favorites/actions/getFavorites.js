@@ -13,11 +13,12 @@ import errorFetchFavorites from '../action-creators/errorFetchFavorites';
 
 /**
  * Get favorites action.
+ * @param {boolean} ignoreCache Ignores cache when true.
  * @returns {Promise} PipelineRequest dispatch..
  */
-const getFavorites = () => (dispatch, getState) => {
+const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   const data = getState().favorites.products;
-  if (!shouldFetchData(data)) {
+  if (!ignoreCache && !shouldFetchData(data)) {
     return new Promise(resolve => resolve());
   }
   const request = new PipelineRequest('getFavorites').dispatch();

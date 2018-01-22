@@ -25,11 +25,15 @@ import getFavorites from '../actions/getFavorites';
 const favorites = (subscribe) => {
   // On App start, did log in, did log out and favorites page enter we need to fetch.
   subscribe(
-    appDidStart$.merge(favoritesDidEnter$, userDidLogin$, userDidLogout$),
+    appDidStart$.merge(favoritesDidEnter$),
     ({ dispatch }) => {
       dispatch(getFavorites());
     }
   );
+
+  subscribe(userDidLogin$.merge(userDidLogout$), ({ dispatch }) => {
+    dispatch(getFavorites(true));
+  });
 
   // On page enter AND received.
   subscribe(favoritesDidEnterWithProducts$, (values) => {
