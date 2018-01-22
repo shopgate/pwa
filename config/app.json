@@ -1,10 +1,10 @@
 {
-  "language": "de-de",
-  "publicPath": "undefined/shop_30794/@shopgate/theme-gmd/1.0.2",
-  "appId": "shop_30794",
-  "logo": "https://data.shopgate.com/shops/24453/webapp@2x.png",
+  "language": "en-us",
+  "publicPath": "undefined/shop_30690/@shopgate/theme-gmd/1.0.2",
+  "appId": "shop_30690",
+  "logo": "https://data.shopgate.com/shops/24332/webapp@2x.png",
   "colors": {},
-  "shopName": "sgxs-testshop-us12-com",
+  "shopName": "sgxs-testshop-us6-com",
   "forgotPasswordUrl": null,
   "webCheckoutShopify": null,
   "hasReviews": true
