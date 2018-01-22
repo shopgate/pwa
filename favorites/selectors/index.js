@@ -9,6 +9,7 @@ import { createSelector } from 'reselect';
 import {
   getProductsWithCharacteristics,
   getProducts,
+  getCurrentProductId,
 } from '../../product/selectors/product';
 
 /**
@@ -84,4 +85,10 @@ export const getFavoritesCount = createSelector(
 export const hasFavorites = createSelector(
   getFavoritesCount,
   count => !!count
+);
+
+export const isCurrentProductOnFavoriteList = createSelector(
+  getCurrentProductId,
+  getFavoritesProductsIds,
+  (productId, ids) => ids.indexOf(productId) !== -1
 );

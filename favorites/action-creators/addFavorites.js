@@ -14,7 +14,7 @@ import {
 
 /**
  * Request add favorites action.
- * @param {Object} productId Product identifier.
+ * @param {string} productId Product identifier.
  * @returns {Object}
  */
 export const requestAddFavorites = productId => ({
@@ -24,20 +24,20 @@ export const requestAddFavorites = productId => ({
 
 /**
  * Request add favorites action.
- * @param {Object} products Products.
+ * @param {Object} response Response.
  * @returns {Object}
  */
-export const receiveAddFavorites = products => ({
+export const receiveAddFavorites = response => ({
   type: RECEIVE_ADD_FAVORITES,
-  products,
+  response,
 });
 
 /**
  * Error on add favorites action.
- * @param {Object} error Error.
+ * @param {string} productId Product identifier.
  * @returns {Object}
  */
-export const errorAddFavorites = error => ({
+export const errorAddFavorites = productId => ({
   type: ERROR_ADD_FAVORITES,
-  error,
+  productId,
 });
