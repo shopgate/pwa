@@ -18,6 +18,7 @@ const sliderInnerContainer = css({
 
 const slideWrapper = css({
   flexShrink: 0,
+  height: '100%',
 }).toString();
 
 const sliderItem = css({
