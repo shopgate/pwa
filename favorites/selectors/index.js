@@ -7,7 +7,7 @@
  */
 import { createSelector } from 'reselect';
 import {
-  getProductPropertiesState,
+  getProductsWithCharacteristics,
   getProducts,
 } from '../../product/selectors/product';
 
@@ -32,17 +32,33 @@ export const getFavoritesProductsIds = (state) => {
  */
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
-  getProducts,
-  getProductPropertiesState,
-  (productIds, products, propertiesByProduct) => productIds.map((id) => {
+  getProductsWithCharacteristics,
+  (productIds, products) => productIds.map((id) => {
     const { productData } = products[id];
-    const properties = propertiesByProduct[id] ? propertiesByProduct[id].properties : undefined;
-
     return {
       ...productData,
-      properties,
     };
   })
+);
+
+/**
+ * Selects `baseProductIds` or product `ids` when `baseProductId` is not available.
+ */
+export const getFavoritesBaseProductIds = createSelector(
+  getFavoritesProductsIds,
+  getProducts,
+  (productIds, products) => {
+    const baseProductIds = [];
+    productIds.forEach((id) => {
+      if (!products[id]) {
+        return;
+      }
+      const { productData } = products[id];
+      baseProductIds.push(productData.baseProductId || productData.id);
+    });
+
+    return baseProductIds;
+  }
 );
 
 /**

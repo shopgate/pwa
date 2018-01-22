@@ -10,8 +10,8 @@ import {
   favoritesDidEnter$,
   favoritesDidEnterWithProducts$,
 } from '../streams';
-import getProductProperties from '../../product/actions/getProductProperties';
-import { getFavoritesProductsIds } from '../selectors';
+import getProductVariants from '../../product/actions/getProductVariants';
+import { getFavoritesBaseProductIds } from '../selectors';
 import getFavorites from '../actions/getFavorites';
 
 /**
@@ -37,8 +37,8 @@ const favorites = (subscribe) => {
   // On page enter AND received.
   subscribe(favoritesDidEnterWithProducts$, (values) => {
     const [{ dispatch, getState }] = values.slice(-1);
-    getFavoritesProductsIds(getState()).forEach((productId) => {
-      dispatch(getProductProperties(productId));
+    getFavoritesBaseProductIds(getState()).forEach((productId) => {
+      dispatch(getProductVariants(productId));
     });
   });
 };
