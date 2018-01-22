@@ -17,8 +17,7 @@ import {
 } from '../constants';
 
 export const receivedFavorites$ = main$
-  .filter(({ action }) => action.type === RECEIVE_FAVORITES)
-  .distinctUntilChanged();
+  .filter(({ action }) => action.type === RECEIVE_FAVORITES);
 
 export const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
 

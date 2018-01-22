@@ -68,6 +68,7 @@ export const getFavoritesBaseProductIds = createSelector(
  */
 export const isInitialLoading = state => !(
   state.favorites
+  && state.favorites.products
   && state.favorites.products.ready
 );
 /**

@@ -103,7 +103,9 @@ describe('Favorites - selectors', () => {
     };
     const initedState = {
       favorites: {
-        ready: true,
+        products: {
+          ready: true,
+        },
       },
     };
 
