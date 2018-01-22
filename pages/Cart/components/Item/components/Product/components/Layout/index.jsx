@@ -9,10 +9,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import ProductImage from 'Components/ProductImage';
+import Properties from 'Components/ProductProperties';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
-import Properties from './components/Properties';
 import styles from './style';
 
 /**
@@ -40,12 +40,16 @@ const Layout = props => (
         value={props.product.name}
       />
       <Grid className={styles.info}>
-        <Properties properties={props.product.properties} />
-        <ProductPrice
-          currency={props.currency}
-          defaultPrice={props.product.price.default}
-          specialPrice={props.product.price.special}
-        />
+        <Grid.Item>
+          <Properties properties={props.product.properties} />
+        </Grid.Item>
+        <Grid.Item shrink={0}>
+          <ProductPrice
+            currency={props.currency}
+            defaultPrice={props.product.price.default}
+            specialPrice={props.product.price.special}
+          />
+        </Grid.Item>
       </Grid>
     </Grid.Item>
   </Grid>

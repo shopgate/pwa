@@ -27,6 +27,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
@@ -39,6 +40,7 @@ import FilterAttribute from './FilterAttribute';
 import Product from './Product';
 import ProductGallery from './ProductGallery';
 import Cart from './Cart';
+import Favorites from './Favorites';
 import Search from './Search';
 import Login from './Login';
 import Checkout from './Checkout';
@@ -67,6 +69,7 @@ const Pages = () => (
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
       <Route path={`${CART_PATH}`} component={Cart} />
+      <Route path={`${FAVORITES_PATH}`} component={Favorites} />
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} />

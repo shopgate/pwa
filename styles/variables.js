@@ -16,6 +16,11 @@ export default {
     xbig: 32,
     xxbig: 64,
   },
+  emptyPage: {
+    icon: 216,
+    titleTopGap: 36,
+    buttonVerticalGap: 24,
+  },
   navigator: {
     height: 56,
     shadow: materialShadow,

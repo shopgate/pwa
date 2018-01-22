@@ -17,7 +17,7 @@ import {
 
 const mockedView = MockedView;
 jest.mock('Components/View', () => mockedView);
-jest.mock('./components/ReviewForm', () => 'foo');
+jest.mock('./components/ReviewForm', () => () => '');
 const mockedStore = configureStore();
 /**
  * Creates component

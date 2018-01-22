@@ -12,8 +12,10 @@ import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import ClientInformation from 'Components/ClientInformation';
 import HomeIcon from 'Components/icons/HomeIcon';
+import HeartIcon from 'Components/icons/HeartIcon';
 import ViewListIcon from 'Components/icons/ViewListIcon';
 import ShoppingCartIcon from 'Components/icons/ShoppingCartIcon';
 import BoxIcon from 'Components/icons/BoxIcon';
@@ -38,6 +40,8 @@ class NavDrawer extends Component {
     toggleNavDrawer: PropTypes.func.isRequired,
     cartProductCount: PropTypes.number,
     entries: PropTypes.shape(),
+    hasFavorites: PropTypes.bool,
+    highlightFavorites: PropTypes.bool,
     logout: PropTypes.func,
     navDrawerActive: PropTypes.bool,
     user: PropTypes.shape(),
@@ -46,6 +50,8 @@ class NavDrawer extends Component {
   static defaultProps = {
     cartProductCount: 0,
     entries: {},
+    hasFavorites: false,
+    highlightFavorites: false,
     logout: () => {},
     navDrawerActive: false,
     user: null,
@@ -129,6 +135,17 @@ class NavDrawer extends Component {
         <Item href={CATEGORY_PATH} icon={ViewListIcon} close={this.handleClose}>
           <I18n.Text string="navigation.categories" />
         </Item>
+
+        { this.props.hasFavorites &&
+          <Item
+            href={FAVORITES_PATH}
+            icon={HeartIcon}
+            close={this.handleClose}
+            withIndicator={this.props.highlightFavorites}
+          >
+            <I18n.Text string="navigation.favorites"/>
+          </Item>
+        }
 
         <CartItem
           href={CART_PATH}
