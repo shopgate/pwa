@@ -27,9 +27,11 @@ planing to work on these as well, you don't need to install them separately insi
   * [Cart](./cart)
   * [Category](./category)
   * [Checkout](./checkout)
+  * [Favorites]('./favorites)
   * [Filter](./filter)
   * [Orders](./orders)
   * [Product](./product)
+  * [Reviews]('./reviews)
   * [Search](./search)
 
 ## About Shopgate
