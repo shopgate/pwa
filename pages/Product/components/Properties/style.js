@@ -6,16 +6,14 @@
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const { gap } = variables;
 
 const content = css({
-  backgroundColor: colors.shade8,
   fontSize: 14,
   padding: `0 ${(gap.small * 1.375)}px ${gap.big}px`,
-  marginBottom: (gap.big * 1.5),
+  marginBottom: 12,
 }).toString();
 
 const label = css({
