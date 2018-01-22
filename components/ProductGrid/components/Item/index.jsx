@@ -45,11 +45,11 @@ const Item = ({ product, display }) => (
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
         <Target id={PRODUCT_ITEM_NAME_BEFORE} identifier={product.id} />
-        {(hasReviews && product.rating && product.rating.count > 0) &&
+        {/* {(hasReviews && product.rating && product.rating.count > 0) &&
           <div>
             {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
           </div>
-        }
+        } */}
         {(!display || display.name) && (
           <div className={styles.title} itemProp="name">
             <Ellipsis>{product.name}</Ellipsis>
