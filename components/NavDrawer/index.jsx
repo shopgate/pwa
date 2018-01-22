@@ -143,7 +143,7 @@ class NavDrawer extends Component {
             close={this.handleClose}
             withIndicator={this.props.highlightFavorites}
           >
-            <I18n.Text string="navigation.favorites"/>
+            <I18n.Text string="navigation.favorites" />
           </Item>
         }
 

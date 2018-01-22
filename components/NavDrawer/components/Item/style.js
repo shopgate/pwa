@@ -40,6 +40,7 @@ const labelWithIndicator = css({
   ...labelBaseStyle,
   display: 'flex',
   justifyContent: 'space-between',
+  paddingRight: 32,
   ':after': {
     background: colors.primary,
     borderRadius: '4.5px',
@@ -48,7 +49,7 @@ const labelWithIndicator = css({
     height: '9px',
     width: '9px',
     alignSelf: 'center',
-    marginRight: variables.gap.big,
+    marginRight: -12,
   },
 }).toString();
 
