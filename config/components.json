@@ -24,7 +24,7 @@
   },
   "portals": {
     "@shopgate/product-reviews/rating_stars": {
-      "id": "product-item.name.before",
+      "target": "product-item.name.before",
       "path": "@shopgate/product-reviews/frontend/RatingStars"
     }
   },
