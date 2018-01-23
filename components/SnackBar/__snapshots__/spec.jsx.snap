@@ -32,51 +32,56 @@ exports[`<SnackBar /> renders component 1`] = `
           }
         }
       >
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": null,
-              "in": "",
-              "out": "",
-            }
-          }
-          className="css-13530nd"
-          isOpen={true}
-          onClose={[Function]}
-          onDidClose={[Function]}
-          onOpen={[Function]}
+        <div
+          aria-live="polite"
+          aria-relevant="additions"
         >
-          <div
-            className="css-13530nd css-1rg7udn css-1dwe0qx"
-            onAnimationEnd={[Function]}
-            style={Object {}}
+          <Drawer
+            alwaysActive={false}
+            animation={
+              Object {
+                "duration": null,
+                "in": "",
+                "out": "",
+              }
+            }
+            className="css-13530nd"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
           >
-            <Container>
-              <div>
-                <Message
-                  text="Lorem ipsum dolor sit amet."
-                >
-                  <p
-                    className="css-1yqa5rq"
+            <div
+              className="css-13530nd css-1rg7udn css-1dwe0qx"
+              onAnimationEnd={[Function]}
+              style={Object {}}
+            >
+              <Container>
+                <div>
+                  <Message
+                    text="Lorem ipsum dolor sit amet."
                   >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="Lorem ipsum dolor sit amet."
+                    <p
+                      className="css-1yqa5rq"
                     >
-                      <span
+                      <Translate
                         className=""
+                        params={Object {}}
+                        string="Lorem ipsum dolor sit amet."
                       >
-                        Lorem ipsum dolor sit amet.
-                      </span>
-                    </Translate>
-                  </p>
-                </Message>
-              </div>
-            </Container>
-          </div>
-        </Drawer>
+                        <span
+                          className=""
+                        >
+                          Lorem ipsum dolor sit amet.
+                        </span>
+                      </Translate>
+                    </p>
+                  </Message>
+                </div>
+              </Container>
+            </div>
+          </Drawer>
+        </div>
       </Toast>
     </Connect(Toast)>
   </SnackBar>
