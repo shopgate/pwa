@@ -8,16 +8,6 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-const disabled = css({
-  color: `${colors.shade4} !important`,
+export default css({
+  color: `${colors.shade4}`,
 }).toString();
-
-const totalLabel = css({
-  fontSize: '1.125rem',
-  fontWeight: 500,
-}).toString();
-
-export default {
-  disabled,
-  totalLabel,
-};

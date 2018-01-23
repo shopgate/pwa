@@ -53,8 +53,11 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
+  ':first-child': {
+    marginTop: variables.gap.big / 2,
+  },
   ':last-child': {
-    marginBottom: variables.gap.big,
+    marginBottom: variables.gap.big / 2,
   },
 }).toString();
 
