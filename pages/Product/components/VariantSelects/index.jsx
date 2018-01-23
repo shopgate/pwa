@@ -168,7 +168,7 @@ class VariantSelects extends Component {
    * into view.
    */
   handleMissingVariant = () => {
-    if (this.notSelectedPickerId === null) {
+    if (this.notSelectedPickerId === null || this.pickers[this.notSelectedPickerId] === null) {
       return;
     }
 

@@ -2,8 +2,10 @@
 
 exports[`<ProductVariants /> should render with variants 1`] = `
 <_class
+  currentBaseProductId={null}
   getProductData={[Function]}
   selection={null}
+  setProductVariantId={[Function]}
   store={
     Object {
       "dispatch": [Function],
@@ -129,6 +131,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
   }
 >
   <Mock
+    currentBaseProductId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={
@@ -188,6 +191,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
         },
       ]
     }
+    setProductVariantId={[Function]}
     store={
       Object {
         "dispatch": [Function],
@@ -208,8 +212,10 @@ exports[`<ProductVariants /> should render with variants 1`] = `
 
 exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
 <_class
+  currentBaseProductId={null}
   getProductData={[Function]}
   selection={null}
+  setProductVariantId={[Function]}
   store={
     Object {
       "dispatch": [Function],
@@ -335,6 +341,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
   }
 >
   <Mock
+    currentBaseProductId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={
@@ -400,6 +407,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
         },
       ]
     }
+    setProductVariantId={[Function]}
     store={
       Object {
         "dispatch": [Function],
@@ -420,8 +428,10 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
 
 exports[`<ProductVariants /> shouldn't render without variants 1`] = `
 <_class
+  currentBaseProductId={null}
   getProductData={[Function]}
   selection={null}
+  setProductVariantId={[Function]}
   store={
     Object {
       "dispatch": [Function],
@@ -436,9 +446,11 @@ exports[`<ProductVariants /> shouldn't render without variants 1`] = `
   variants={null}
 >
   <Mock
+    currentBaseProductId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={null}
+    setProductVariantId={[Function]}
     store={
       Object {
         "dispatch": [Function],
