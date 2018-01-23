@@ -239,7 +239,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     "highlighted": false,
                   }
                 }
-                className="css-degt7t"
+                className="css-murgv5"
                 clickDelay={150}
                 disabled={false}
                 duration={350}
@@ -279,7 +279,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                 value={null}
               >
                 <div
-                  className="css-degt7t"
+                  className="css-murgv5"
                 >
                   <ProductVariantPickerButton
                     disabled={false}
@@ -621,7 +621,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     "highlighted": false,
                   }
                 }
-                className="css-degt7t"
+                className="css-murgv5"
                 clickDelay={150}
                 disabled={false}
                 duration={530}
@@ -727,7 +727,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                 value="2"
               >
                 <div
-                  className="css-degt7t"
+                  className="css-murgv5"
                 >
                   <ProductVariantPickerButton
                     disabled={false}
@@ -1938,7 +1938,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     "highlighted": false,
                   }
                 }
-                className="css-degt7t"
+                className="css-murgv5"
                 clickDelay={150}
                 disabled={true}
                 duration={406}
@@ -2008,7 +2008,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                 value="Barasdhasjd kasjdkajskdjaksdjaksdjaksjdakjsdkajsd aksjdakjsdkajd kjdkajskdja"
               >
                 <div
-                  className="css-degt7t"
+                  className="css-murgv5"
                 >
                   <ProductVariantPickerButton
                     disabled={true}
