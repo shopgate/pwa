@@ -17,6 +17,19 @@ import {
 
 describe('Favorites - selectors', () => {
   describe('getFavorites', () => {
+    it('should return empty array when product is not yet available', () => {
+      const result = getFavorites({
+        product: {
+          productsById: {},
+        },
+        favorites: {
+          products: {
+            ids: [1],
+          },
+        },
+      });
+      expect(result).toEqual([{}]);
+    });
     it('should return products', () => {
       const state = {
         product: {

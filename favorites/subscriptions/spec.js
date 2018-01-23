@@ -12,7 +12,7 @@ describe('Favorites - subscriptions', () => {
     const mockedSubscribe = jest.fn();
     const mockedDispatch = jest.fn();
     favorites(mockedSubscribe);
-    expect(mockedSubscribe.mock.calls.length).toBe(3);
+    expect(mockedSubscribe.mock.calls.length).toBe(2);
     mockedSubscribe.mock.calls[0][1]({ dispatch: mockedDispatch });
     expect(mockedDispatch.mock.calls.length).toBe(1);
     expect(typeof mockedDispatch.mock.calls[0][0]).toBe('function');
