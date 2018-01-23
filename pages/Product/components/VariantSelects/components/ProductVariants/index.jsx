@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import find from 'lodash/find';
 import StepByStep from './helpers/StepByStep';
 
 export default WrappedComponent => class extends Component {
@@ -16,6 +17,7 @@ export default WrappedComponent => class extends Component {
    * @type {Object}
    */
   static propTypes = {
+    getVariantsByProductId: PropTypes.func.isRequired,
     currentBaseProductId: PropTypes.string,
     getProductData: PropTypes.func,
     selection: PropTypes.arrayOf(PropTypes.shape({
@@ -131,11 +133,18 @@ export default WrappedComponent => class extends Component {
 
       // If the productId was null, we know that we have to set the variantId in redux again.
       if (this.selectHelper && productIdChangedFromNull) {
-        const variantId = this.selectHelper.getProductId();
+        const variantId = this.productId;
 
         if (variantId) {
-          // Trigger a setProductVariantId to bring the redux store back to the correct state.
-          this.props.setProductVariantId(variantId);
+          const {
+            variants: baseProductVariants = {},
+          } = this.props.getVariantsByProductId(currentBaseProductId) || {};
+
+          // Check if the variantId we want to set belongs to the currentProduct
+          if (find(baseProductVariants.products, { id: variantId })) {
+            // Trigger a setProductVariantId to bring the redux store back to the correct state.
+            this.props.setProductVariantId(variantId);
+          }
         }
       }
     }
