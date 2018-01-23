@@ -8,11 +8,29 @@
 
 export const mockedEmptyState = {
   product: {
-    productsById: {},
+    productsById: {
+      foo: {
+        productData: {
+          name: 'Foo',
+          availability: {
+            text: 'Available',
+            state: 'OK',
+          },
+          id: 'foo',
+          baseProductId: null,
+          price: {
+            unitPriceStriked: 100,
+            unitPriceWithTax: 101,
+            currency: 'EUR',
+          },
+        },
+      },
+    },
   },
   favorites: {
     products: {
       ids: [],
+      ready: true,
     },
   },
 };
@@ -20,7 +38,16 @@ export const mockedState = {
   ...mockedEmptyState,
   favorites: {
     products: {
-      ids: [{}],
+      ids: ['foo'],
+      ready: true,
     },
   },
 };
+
+export const mockedNotReadyState = {
+  ...mockedEmptyState,
+  favorites: {
+    products: {},
+  },
+};
+
