@@ -34,6 +34,9 @@ export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProductsWithCharacteristics,
   (productIds, products) => productIds.map((id) => {
+    if (!products[id]) {
+      return {};
+    }
     const { productData } = products[id];
     return {
       ...productData,
