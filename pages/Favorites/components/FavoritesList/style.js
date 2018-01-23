@@ -13,6 +13,7 @@ import variables from 'Styles/variables';
 const container = css({
   background: colors.background,
   flexGrow: 1,
+  paddingTop: variables.gap.xsmall,
 }).toString();
 
 const image = css({

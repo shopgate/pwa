@@ -10,6 +10,7 @@ const materialShadow = 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647)
 export default {
   materialShadow,
   gap: {
+    xsmall: 4,
     small: 8,
     big: 16,
     bigger: 20,
