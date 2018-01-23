@@ -82,7 +82,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
         <Picker
           buttonComponent={[Function]}
           buttonProps={Object {}}
-          className="css-degt7t"
+          className="css-murgv5"
           clickDelay={150}
           disabled={false}
           duration={300}
@@ -128,7 +128,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
           value={null}
         >
           <div
-            className="css-degt7t"
+            className="css-murgv5"
           >
             <Button
               disabled={false}

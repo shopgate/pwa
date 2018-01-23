@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -72,7 +72,7 @@ const button = css({
   top: -30,
   fontSize: '1.5rem',
   outline: 0,
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
+  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.2)',
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
 }).toString();
