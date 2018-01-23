@@ -18,11 +18,13 @@ When `Toast` is rendered it would always open a `Drawer`. `Drawer` would contain
 The end result would be similar to this:
 ```jsx
 <Toast>
-    <Drawer>
-        <Container>
-            <Message text={'string'} />
-        </Container>
-    </Drawer>
+    <div aria-live="polite" aria-relevant="additions">
+        <Drawer>
+            <Container>
+                <Message text={'string'} />
+            </Container>
+        </Drawer>
+    </div>
 </Toast>
 ``` 
 
@@ -66,3 +68,7 @@ Class name which is passed to a `Drawer` component and affect the `Drawer` styli
 _Type_: `function`
 
 Function which would be called every time the Drawer will close. 
+
+## Accessibility
+The `Toast` component is wrapped with a `aria-live` container. It tells the screen readers to read every incoming message in a `polite` mode.
+

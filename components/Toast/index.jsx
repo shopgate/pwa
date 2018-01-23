@@ -112,18 +112,23 @@ class Toast extends Component {
     const Message = this.props.message;
 
     return (
-      <Drawer
-        isOpen={this.state.isOpen}
-        onDidClose={this.handleRemoveMessage}
-        className={this.props.className}
+      <div
+        aria-live="polite"
+        aria-relevant="additions"
       >
-        {
-          this.props.toast &&
-          <Container>
-            <Message text={this.props.toast.message} />
-          </Container>
-        }
-      </Drawer>
+        <Drawer
+          isOpen={this.state.isOpen}
+          onDidClose={this.handleRemoveMessage}
+          className={this.props.className}
+        >
+          {
+            this.props.toast &&
+            <Container>
+              <Message text={this.props.toast.message} />
+            </Container>
+          }
+        </Drawer>
+      </div>
     );
   }
 }

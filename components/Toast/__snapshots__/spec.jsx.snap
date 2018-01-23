@@ -31,39 +31,44 @@ exports[`<Toast /> should dispatch a toast message 1`] = `
         }
       }
     >
-      <Drawer
-        alwaysActive={false}
-        animation={
-          Object {
-            "duration": null,
-            "in": "",
-            "out": "",
-          }
-        }
-        className={null}
-        isOpen={true}
-        onClose={[Function]}
-        onDidClose={[Function]}
-        onOpen={[Function]}
+      <div
+        aria-live="polite"
+        aria-relevant="additions"
       >
-        <div
-          className="css-1rg7udn css-1dwe0qx"
-          onAnimationEnd={[Function]}
-          style={Object {}}
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": null,
+              "in": "",
+              "out": "",
+            }
+          }
+          className={null}
+          isOpen={true}
+          onClose={[Function]}
+          onDidClose={[Function]}
+          onOpen={[Function]}
         >
-          <MockContainer>
-            <div>
-              <MockMessage
-                text="Toast Message"
-              >
-                <span>
-                  Toast Message
-                </span>
-              </MockMessage>
-            </div>
-          </MockContainer>
-        </div>
-      </Drawer>
+          <div
+            className="css-1rg7udn css-1dwe0qx"
+            onAnimationEnd={[Function]}
+            style={Object {}}
+          >
+            <MockContainer>
+              <div>
+                <MockMessage
+                  text="Toast Message"
+                >
+                  <span>
+                    Toast Message
+                  </span>
+                </MockMessage>
+              </div>
+            </MockContainer>
+          </div>
+        </Drawer>
+      </div>
     </Toast>
   </Connect(Toast)>
 </Provider>
