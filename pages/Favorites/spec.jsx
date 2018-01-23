@@ -14,6 +14,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import {
   mockedState,
   mockedEmptyState,
+  mockedNotReadyState,
 } from './mock';
 
 const mockedView = MockedView;
@@ -24,13 +25,12 @@ jest.mock('@shopgate/pwa-common/actions/history/goBackHistory', () => () => ({
 }));
 /**
  * Creates component
- * @param {boolean} withProducts Store with or without products would be used.
+ * @param {boolean} state State that would be used for store.
  * @return {ReactWrapper}
  */
-const createComponent = (withProducts = false) => {
+const createComponent = (state) => {
   /* eslint-disable global-require */
   const Favorites = require('./index').default;
-  const state = withProducts ? mockedState : mockedEmptyState;
   /* eslint-enable global-require */
   return mount(
     <Provider store={mockedStore(state)}>
@@ -41,12 +41,23 @@ const createComponent = (withProducts = false) => {
 };
 
 describe('<Favorites> page', () => {
+  describe('Initial page', () => {
+    it('should render an initial page with loading indicator', () => {
+      const component = createComponent(mockedNotReadyState);
+      expect(component).toMatchSnapshot();
+      expect(component.find('LoadingIndicator').exists()).toBe(true);
+      expect(component.find('EmptyFavorites').exists()).toBe(false);
+      expect(component.find('FavoritesList').exists()).toBe(false);
+    });
+  });
   describe('Empty page', () => {
     let component;
     it('should render an empty page', () => {
-      component = createComponent();
+      component = createComponent(mockedEmptyState);
       expect(component).toMatchSnapshot();
       expect(component.find('EmptyFavorites').exists()).toBe(true);
+      expect(component.find('svg').exists()).toBe(true);
+      expect(component.find('FavoritesList').html()).toBe(null);
     });
     it('should not update when products are still empty', () => {
       expect(component
@@ -57,8 +68,10 @@ describe('<Favorites> page', () => {
   });
   describe('Page with items', () => {
     it('should render a page with products', () => {
-      const component = createComponent(true);
+      const component = createComponent(mockedState);
+      expect(component.find('LoadingIndicator').exists()).toBe(false);
       expect(component.find('EmptyFavorites').html()).toBe(null);
+      expect(component.find('FavoritesList').exists()).toBe(true);
     });
   });
 });

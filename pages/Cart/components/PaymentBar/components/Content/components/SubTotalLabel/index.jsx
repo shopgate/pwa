@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -17,7 +17,7 @@ import styles from './style';
  * @return {JSX}
  */
 const SubTotalLabel = ({ isDisabled }) => (
-  <div className={`${styles.totalLabel} ${isDisabled ? styles.disabled : ''}`}>
+  <div className={`${isDisabled ? styles : ''}`}>
     <I18n.Text string="cart.subtotal" />:
   </div>
 );

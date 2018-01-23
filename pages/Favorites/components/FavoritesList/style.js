@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017 - present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -13,6 +13,7 @@ import variables from 'Styles/variables';
 const container = css({
   background: colors.background,
   flexGrow: 1,
+  paddingTop: variables.gap.xsmall,
 }).toString();
 
 const image = css({
@@ -26,12 +27,11 @@ const row = css({
 
 const leftColumn = css({
   paddingRight: variables.gap.small,
-  flexBasis: 126,
   flexShrink: 0,
   flexGrow: 1,
   minWidth: 126,
-  maxWidth: 300,
-  width: '35%',
+  maxWidth: 200,
+  width: '19%',
 }).toString();
 
 const rightColumn = css({
@@ -44,6 +44,7 @@ const rightColumn = css({
 const name = css({
   fontWeight: 500,
   lineHeight: 1.125,
+  marginBottom: '1em',
 }).toString();
 
 const details = css({
@@ -63,6 +64,11 @@ const priceContainer = css({
   fontSize: 14,
 }).toString();
 
+const detailsRow = css({
+  justifyContent: 'space-between',
+  alignItems: 'flex-end',
+}).toString();
+
 export default {
   container,
   image,
@@ -71,6 +77,7 @@ export default {
   name,
   row,
   details,
+  detailsRow,
   priceContainer,
   propertiesContainer,
 };
