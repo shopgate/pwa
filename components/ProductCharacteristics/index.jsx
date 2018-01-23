@@ -16,9 +16,9 @@ import PropTypes from 'prop-types';
  */
 const ProductCharacteristics = ({ characteristics }) => (
   <ul>
-    {characteristics.map(({ label, value }) => (
-      <li key={`${label}-${value}`}>
-        {label}: {value}
+    {characteristics.map(({ name, value }) => (
+      <li key={`${name}-${value}`}>
+        {name}: {value}
       </li>
     ))}
   </ul>
