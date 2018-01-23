@@ -9,6 +9,12 @@ import {
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
   ERROR_FETCH_FAVORITES,
+  REQUEST_ADD_FAVORITES,
+  RECEIVE_ADD_FAVORITES,
+  ERROR_ADD_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
+  RECEIVE_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
 } from '../constants';
 import reducers from './index';
 import {
@@ -55,5 +61,69 @@ describe('Favorites - reducers', () => {
   it('should save array even if ERROR is dispatched first', () => {
     const result = reducers({}, { type: ERROR_FETCH_FAVORITES });
     expect(result.products.ids instanceof Array).toBe(true);
+  });
+
+  describe('Add Favorites', () => {
+    let addState = {};
+    const productId = 'product_1';
+
+    it('should react on REQUEST_ADD_FAVORITES ', () => {
+      addState = reducers(addState, {
+        type: REQUEST_ADD_FAVORITES,
+        productId,
+      });
+      expect(addState.products.isFetching).toBe(true);
+      expect(typeof addState).toBe('object');
+      expect(addState.products.ids).toContain(productId);
+    });
+    it('should react on RECEIVE_ADD_FAVORITES ', () => {
+      addState = reducers(addState, { type: RECEIVE_ADD_FAVORITES });
+      expect(addState.products.isFetching).toBe(false);
+      expect(typeof addState).toBe('object');
+      expect(addState.products.ids).toContain(productId);
+    });
+    it('should react on ERROR_ADD_FAVORITES ', () => {
+      addState = reducers(addState, {
+        type: ERROR_ADD_FAVORITES,
+        productId,
+      });
+      expect(addState.products.isFetching).toBe(false);
+      expect(typeof addState).toBe('object');
+      expect(addState.products.ids).not.toContain(productId);
+    });
+  });
+
+  describe('Remove Favorites', () => {
+    const productId = 'product_2';
+    let removeState = {
+      products: {
+        ids: [productId],
+      },
+    };
+    it('should react on REQUEST_REMOVE_FAVORITES ', () => {
+      removeState = reducers(removeState, {
+        type: REQUEST_REMOVE_FAVORITES,
+        productId,
+      });
+      expect(removeState.products.isFetching).toBe(true);
+      expect(typeof removeState).toBe('object');
+      expect(removeState.products.ids).not.toContain(productId);
+    });
+
+    it('should react on RECEIVE_REMOVE_FAVORITES ', () => {
+      removeState = reducers(removeState, { type: RECEIVE_REMOVE_FAVORITES });
+      expect(removeState.products.isFetching).toBe(false);
+      expect(typeof removeState).toBe('object');
+      expect(removeState.products.ids).not.toContain(productId);
+    });
+    it('should react on ERROR_REMOVE_FAVORITES ', () => {
+      removeState = reducers(removeState, {
+        type: ERROR_REMOVE_FAVORITES,
+        productId,
+      });
+      expect(removeState.products.isFetching).toBe(false);
+      expect(typeof removeState).toBe('object');
+      expect(removeState.products.ids).toContain(productId);
+    });
   });
 });

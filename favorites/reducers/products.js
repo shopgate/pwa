@@ -39,7 +39,7 @@ const products = (state = {}, action) => {
         ...state,
         isFetching: true,
         ids: [
-          ...state.ids,
+          ...(state.ids || []),
           action.productId,
         ],
       };

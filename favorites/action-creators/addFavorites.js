@@ -24,12 +24,10 @@ export const requestAddFavorites = productId => ({
 
 /**
  * Request add favorites action.
- * @param {Object} response Response.
  * @returns {Object}
  */
-export const receiveAddFavorites = response => ({
+export const receiveAddFavorites = () => ({
   type: RECEIVE_ADD_FAVORITES,
-  response,
 });
 
 /**

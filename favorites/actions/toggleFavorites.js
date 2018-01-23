@@ -21,18 +21,30 @@ import {
 let addTimeout = null;
 
 /**
+ *
+ */
+const clearAddTimer = () => {
+  clearTimeout(addTimeout);
+  addTimeout = null;
+};
+
+/**
  * Add favorites action.
  * @param {string} productId Product identifier.
  * @returns {Promise} PipelineRequest dispatch.
  */
 const addFavorites = productId => (dispatch) => {
-  const delayedRequest = new Promise((res, rej) => {
-    if (addTimeout) {
-      res();
+  const addPromise = new Promise((res, rej) => {
+    if (!productId) {
+      rej();
       return;
     }
 
     dispatch(requestAddFavorites(productId));
+
+    if (addTimeout) {
+      clearAddTimer();
+    }
 
     addTimeout = setTimeout(() => {
       new PipelineRequest('addFavorites')
@@ -43,19 +55,16 @@ const addFavorites = productId => (dispatch) => {
     }, 1000);
   });
 
-  delayedRequest
-    .then((result) => {
-      dispatch(receiveAddFavorites(result));
+  addPromise
+    .then(() => {
+      clearAddTimer();
+      dispatch(receiveAddFavorites());
     })
     .catch(() => {
+      clearAddTimer();
       dispatch(errorAddFavorites(productId));
-    })
-    .finally(() => {
-      clearTimeout(addTimeout);
-      addTimeout = null;
     });
-
-  return delayedRequest;
+  return addPromise;
 };
 
 /**
@@ -64,24 +73,32 @@ const addFavorites = productId => (dispatch) => {
  * @returns {Promise} PipelineRequest dispatch.
  */
 const removeFavorites = productId => (dispatch) => {
-  const request = new PipelineRequest('deleteFavorites')
-    .setInput({ productId })
-    .dispatch();
+  const removePromise = new Promise((res, rej) => {
+    if (!productId) {
+      rej();
+      return;
+    }
 
-  // TODO only execute when no timeout set
-  clearTimeout(addTimeout);
-  addTimeout = null;
+    dispatch(requestRemoveFavorites(productId));
 
-  dispatch(requestRemoveFavorites(productId));
-  request
-    .then((result) => {
-      dispatch(receiveRemoveFavorites(result));
-    })
-    .catch(() => {
-      dispatch(errorRemoveFavorites(productId));
-    });
+    if (addTimeout) {
+      clearAddTimer();
+      res();
+      return;
+    }
 
-  return request;
+    new PipelineRequest('deleteFavorites')
+      .setInput({ productId })
+      .dispatch()
+      .then(res)
+      .catch(rej);
+  });
+
+  removePromise
+    .then(() => dispatch(receiveRemoveFavorites()))
+    .catch(() => dispatch(errorRemoveFavorites(productId)));
+
+  return removePromise;
 };
 
 export {

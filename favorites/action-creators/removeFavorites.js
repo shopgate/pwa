@@ -24,12 +24,10 @@ export const requestRemoveFavorites = productId => ({
 
 /**
  * Request add favorites action.
- * @param {Object} response Reponse.
  * @returns {Object}
  */
-export const receiveRemoveFavorites = response => ({
+export const receiveRemoveFavorites = () => ({
   type: RECEIVE_REMOVE_FAVORITES,
-  response,
 });
 
 /**
