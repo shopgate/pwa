@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -16,6 +16,7 @@ import Shipping from './components/Shipping';
 import Availability from './components/Availability';
 import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
+import Tiers from './components/Tiers';
 import styles from './style';
 
 /**
@@ -24,6 +25,7 @@ import styles from './style';
  * - shipping
  * - discount
  * - price
+ * - tier prices
  * - price info
  * If not available or animating it will display placeholders
  * @returns {JSX}
@@ -54,6 +56,9 @@ const ProductHeader = () => (
         </div>
         <div className={styles.priceInfo}>
           <PriceInfo />
+        </div>
+        <div className={styles.priceInfo}>
+          <Tiers />
         </div>
       </Grid.Item>
     </Grid>
