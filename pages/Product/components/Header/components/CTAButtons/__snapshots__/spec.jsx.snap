@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTAs (product header) Rendering should render rating when data is available 1`] = `
+<div
+  className="css-7azkrx"
+>
+  <Connect(FavoritesButton)
+    className="css-16tssa1"
+    rippleClassName="css-1tdptiz"
+  />
+  <Connect(AddToCartButton) />
+</div>
+`;
