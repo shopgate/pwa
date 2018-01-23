@@ -1,11 +1,10 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-import { isEmpty } from 'lodash';
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
@@ -26,93 +25,6 @@ import { getCurrentCategoryId } from '../../category/selectors';
  */
 export const getProducts = state => state.product.productsById;
 
-/**
- * This madness is made to reverse the logic we do in the pipelines where product attributes
- * are removed from the response, but used to generate a variants configuration
- * for the base product.
- *
- * Until the getProducts pipeline would be extended with `.characteristics` property, this code
- * needs to iterate through the variants configuration to find the one which is an attribute for
- * the product.
- * @param {Object} state State
- * @param {Object} productData ProductData.
- * @returns {Array}
- */
-export const getProductVariant = (state, productData) => {
-  if (!productData.baseProductId) {
-    return [];
-  }
-  const { baseProductId } = productData;
-  const childId = productData.id;
-  const variantsState = state.product.variantsByProductId;
-  if (isEmpty(variantsState) || isEmpty(variantsState[baseProductId])) {
-    return [];
-  }
-  const productVariants = variantsState[baseProductId].variants;
-  if (!productVariants) {
-    return [];
-  }
-  const { characteristics, products } = productVariants;
-  if (!characteristics || !products) {
-    return [];
-  }
-
-  let requestedProduct = null;
-  products.some((prod) => {
-    if (prod.id === childId) {
-      requestedProduct = prod;
-      return true;
-    }
-    return false;
-  });
-
-  if (!requestedProduct) {
-    return null;
-  }
-  const attributes = [];
-  characteristics.forEach((attr) => {
-    const { label, id, values } = attr;
-    const attributeValueId = requestedProduct.characteristics[id];
-    let value = null;
-    values.some((val) => {
-      if (val.id === attributeValueId) {
-        value = val.label;
-        return true;
-      }
-      return false;
-    });
-    if (!value) {
-      return;
-    }
-    attributes.push({
-      label,
-      value,
-    });
-  });
-  return attributes;
-};
-
-/**
- * Selects product with additional `.characteristics` property.
- * @param {Object} state State.
- * @returns {Object}
- */
-export const getProductsWithCharacteristics = (state) => {
-  const products = getProducts(state);
-  const productsWithAttributes = {};
-  Object.keys(products).forEach((productId) => {
-    const product = {
-      ...products[productId],
-    };
-    const characteristics = getProductVariant(state, product.productData);
-    if (characteristics.length) {
-      product.productData.characteristics = characteristics.slice(0);
-    }
-
-    productsWithAttributes[productId] = product;
-  });
-  return productsWithAttributes;
-};
 /**
  * Retrieves the current product or variant page from the store.
  * @param {Object} state The current application state.
@@ -393,7 +305,7 @@ export const getProductManufacturer = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product shipping state.
  */
-export const getProductShippingState = state => state.product.shippingByProductId;
+const getProductShippingState = state => state.product.shippingByProductId;
 
 /**
  * Retrieves the current product shipping data.
@@ -459,7 +371,7 @@ export const getProductDescription = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product properties state.
  */
-export const getProductPropertiesState = state => state.product.propertiesByProductId;
+const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
  * Retrieves the current product properties.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,7 +7,6 @@
  */
 import { createSelector } from 'reselect';
 import {
-  getProductsWithCharacteristics,
   getProducts,
   getCurrentProductId,
 } from '../../product/selectors/product';
@@ -33,33 +32,16 @@ export const getFavoritesProductsIds = (state) => {
  */
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
-  getProductsWithCharacteristics,
+  getProducts,
   (productIds, products) => productIds.map((id) => {
+    if (!products[id]) {
+      return {};
+    }
     const { productData } = products[id];
     return {
       ...productData,
     };
   })
-);
-
-/**
- * Selects `baseProductIds` or product `ids` when `baseProductId` is not available.
- */
-export const getFavoritesBaseProductIds = createSelector(
-  getFavoritesProductsIds,
-  getProducts,
-  (productIds, products) => {
-    const baseProductIds = [];
-    productIds.forEach((id) => {
-      if (!products[id]) {
-        return;
-      }
-      const { productData } = products[id];
-      baseProductIds.push(productData.baseProductId || productData.id);
-    });
-
-    return baseProductIds;
-  }
 );
 
 /**
@@ -69,6 +51,7 @@ export const getFavoritesBaseProductIds = createSelector(
  */
 export const isInitialLoading = state => !(
   state.favorites
+  && state.favorites.products
   && state.favorites.products.ready
 );
 /**

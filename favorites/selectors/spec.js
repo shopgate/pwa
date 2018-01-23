@@ -1,8 +1,8 @@
-/*
- *  Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+/**
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
- *  This source code is licensed under the Apache 2.0 license found in the
- *  LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the Apache 2.0 license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 import {
@@ -17,6 +17,19 @@ import {
 
 describe('Favorites - selectors', () => {
   describe('getFavorites', () => {
+    it('should return empty array when product is not yet available', () => {
+      const result = getFavorites({
+        product: {
+          productsById: {},
+        },
+        favorites: {
+          products: {
+            ids: [1],
+          },
+        },
+      });
+      expect(result).toEqual([{}]);
+    });
     it('should return products', () => {
       const state = {
         product: {
@@ -103,7 +116,9 @@ describe('Favorites - selectors', () => {
     };
     const initedState = {
       favorites: {
-        ready: true,
+        products: {
+          ready: true,
+        },
       },
     };
 

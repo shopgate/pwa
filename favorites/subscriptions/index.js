@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -12,10 +12,7 @@ import {
 } from '@shopgate/pwa-common/streams/user';
 import {
   favoritesDidEnter$,
-  favoritesDidEnterWithProducts$,
 } from '../streams';
-import getProductVariants from '../../product/actions/getProductVariants';
-import { getFavoritesBaseProductIds } from '../selectors';
 import getFavorites from '../actions/getFavorites';
 
 /**
@@ -33,14 +30,6 @@ const favorites = (subscribe) => {
 
   subscribe(userDidLogin$.merge(userDidLogout$), ({ dispatch }) => {
     dispatch(getFavorites(true));
-  });
-
-  // On page enter AND received.
-  subscribe(favoritesDidEnterWithProducts$, (values) => {
-    const [{ dispatch, getState }] = values.slice(-1);
-    getFavoritesBaseProductIds(getState()).forEach((productId) => {
-      dispatch(getProductVariants(productId));
-    });
   });
 };
 
