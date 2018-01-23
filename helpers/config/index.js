@@ -6,6 +6,16 @@
  */
 
 /**
+ * Provides a default theme config as a fallback.
+ * @type {Object}
+ */
+const defaultThemeConfig = {
+  font: {},
+  colors: {},
+  variables: {},
+};
+
+/**
  * The app.json config from the theme.
  * @typedef {Object}
  */
@@ -16,6 +26,12 @@ const appConfig = process.env.APP_CONFIG;
  * @typedef {Object}
  */
 export const componentsConfig = process.env.COMPONENTS_CONFIG;
+
+/**
+ * The theme configuration.
+ * @typedef {Object}
+ */
+export const themeConfig = process.env.THEME_CONFIG || defaultThemeConfig;
 
 export const shopNumber = appConfig.appId.replace('shop_', '');
 

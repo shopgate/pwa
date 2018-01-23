@@ -1,50 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import portalCollection from '@shopgate/pwa-core/classes/PortalCollection';
+import { componentsConfig as config } from '../../helpers/config';
+
+const portals = portalCollection.getPortals();
 
 /**
  * The Target component.
- * It defines a DOM element where portal can connect to.
- * It also can define a replaceable portal.
+ * It renders out the portals relating to the ID prop.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {Array|null}
  */
-const Target = (props) => {
-  const {
-    id,
-    replaceable = false,
-    as,
-    identifier,
-    children,
-  } = props;
+const Target = ({ id, identifier }) => {
+  const components = [];
 
-  const targetProps = {
-    'data-key': id,
-    'data-id': identifier,
-  };
+  Object.keys(config.portals)
+    .forEach((key) => {
+      if (config.portals[key].target === id) {
+        const PortalComponent = portals[key];
+        components.push(<PortalComponent key={`${key}-${identifier}`} identifier={identifier} />);
+      }
+    });
 
-  if (!replaceable) {
-    return <div {...targetProps} />;
-  }
-
-  return React.createElement(as, targetProps, children);
+  return components.length ? components : null;
 };
 
 Target.propTypes = {
   id: PropTypes.string.isRequired,
-  as: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-  ]),
-  children: PropTypes.node,
   identifier: PropTypes.string,
-  replaceable: PropTypes.bool,
 };
 
 Target.defaultProps = {
-  as: 'div',
-  children: null,
   identifier: null,
-  replaceable: false,
 };
 
 export default Target;
