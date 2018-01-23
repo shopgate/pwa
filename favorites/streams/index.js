@@ -22,8 +22,7 @@ export const receivedFavorites$ = main$
 export const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
 
 /**
- * Needs to check why returns 3 arguments O_o.
- * @todo Ask Carsten what is happening here.
+ * Temporary stream which will be removed when #withCharacteristics would be true in the pipelines.
  */
 export const favoritesDidEnterWithProducts$ = favoritesDidEnter$
   .zip(receivedFavorites$);

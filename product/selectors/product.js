@@ -34,6 +34,8 @@ export const getProducts = state => state.product.productsById;
  * Until the getProducts pipeline would be extended with `.characteristics` property, this code
  * needs to iterate through the variants configuration to find the one which is an attribute for
  * the product.
+ *
+ * #withCharacteristics
  * @param {Object} state State
  * @param {Object} productData ProductData.
  * @returns {Array}
