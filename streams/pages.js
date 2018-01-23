@@ -10,6 +10,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 
 /**
  * A whitelist of routes that should be tracked with
@@ -21,6 +22,7 @@ const ignoredPaths = [
   CATEGORY_PATH,
   ITEM_PATH,
   CHECKOUT_PATH,
+  FAVORITES_PATH,
 ];
 
 /**
