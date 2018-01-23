@@ -7,7 +7,6 @@
  */
 
 import { connect } from 'react-redux';
-import createToast from '../../actions/toast/createToast';
 import removeToast from '../../actions/toast/removeToast';
 import { getToast } from '../../selectors/toast';
 
@@ -26,9 +25,6 @@ const mapStateToProps = state => ({
  * @returns {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  createToast: (options) => {
-    dispatch(createToast(options));
-  },
   removeToast: (id) => {
     dispatch(removeToast(id));
   },

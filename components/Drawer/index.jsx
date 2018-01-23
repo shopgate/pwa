@@ -86,7 +86,9 @@ class Drawer extends Component {
    */
   handleAnimationEnd = () => {
     this.setState({ active: this.props.isOpen });
-    this.props.onDidClose();
+    if (!this.props.isOpen) {
+      this.props.onDidClose();
+    }
   };
 
   /**

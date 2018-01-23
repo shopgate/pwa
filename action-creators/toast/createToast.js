@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -11,7 +11,7 @@ import { CREATE_TOAST } from '../../constants/ActionTypes';
 let currentId = 0;
 /**
  * Gets the next id.
- * @returns {function}
+ * @return {number}
  */
 const getNextId = () => {
   currentId += 1;
