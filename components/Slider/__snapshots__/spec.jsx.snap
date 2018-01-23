@@ -24,7 +24,7 @@ exports[`<Slider /> renders with children 1`] = `
     wrapperClass="swiper-wrapper"
   >
     <div
-      className="css-1l9a57c"
+      className="css-xwe5xi"
       key="s0"
     >
       <SliderItem
@@ -34,7 +34,7 @@ exports[`<Slider /> renders with children 1`] = `
       </SliderItem>
     </div>
     <div
-      className="css-1l9a57c"
+      className="css-xwe5xi"
       key="s1"
     >
       <SliderItem
@@ -44,7 +44,7 @@ exports[`<Slider /> renders with children 1`] = `
       </SliderItem>
     </div>
     <div
-      className="css-1l9a57c"
+      className="css-xwe5xi"
       key="s2"
     >
       <SliderItem
@@ -101,7 +101,7 @@ exports[`<Slider /> renders with controls 1`] = `
           className="swiper-wrapper"
         >
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
             key=".$s0"
           >
             <SliderItem
@@ -115,7 +115,7 @@ exports[`<Slider /> renders with controls 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
             key=".$s1"
           >
             <SliderItem
@@ -129,7 +129,7 @@ exports[`<Slider /> renders with controls 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
             key=".$s2"
           >
             <SliderItem
@@ -203,7 +203,7 @@ exports[`<Slider /> renders with indicators 1`] = `
           className="swiper-wrapper"
         >
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
             key=".$s0"
           >
             <SliderItem
@@ -217,7 +217,7 @@ exports[`<Slider /> renders with indicators 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
             key=".$s1"
           >
             <SliderItem
@@ -231,7 +231,7 @@ exports[`<Slider /> renders with indicators 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
             key=".$s2"
           >
             <SliderItem
