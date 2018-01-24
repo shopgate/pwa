@@ -12,8 +12,14 @@ import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
 import goBackHistory from '../actions/history/goBackHistory';
 import { getRegisterUrl } from '../selectors/user';
 import ParsedLink from '../components/Router/helpers/parsed-link';
-import { openedRegisterLink$, routeDidLeave } from '../streams/history';
-import { userDidLogin$, userDidLogout$ } from '../streams/user';
+import {
+  openedRegisterLink$,
+  routeDidLeave,
+} from '../streams/history';
+import {
+  userDidLogin$,
+  userDidLogout$,
+} from '../streams/user';
 import openRegisterUrl from './helpers/openRegisterUrl';
 import { LEGACY_URL } from '../constants/Registration';
 import { setRedirectLocation } from '../action-creators/history';

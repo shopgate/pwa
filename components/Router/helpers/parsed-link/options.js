@@ -5,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import {
+  INDEX_PATH,
+} from '../../../../constants/RoutePaths';
+
 /**
  * Parses the protocol of an url
  * @type {RegExp}
@@ -68,11 +72,14 @@ function convertDeepLink(href) {
 function getSimpleLinkParserOptions(path, queryParams, url) {
   const mappedPath = [...path];
 
-  /* eslint-disable no-fallthrough */
   // Switch through path
   switch (mappedPath[0]) {
     case 'index':
-      mappedPath[0] = '';
+      this.addLinkAction('reactRouter', {
+        url: INDEX_PATH,
+        queryParams,
+      });
+      break;
     case 'filter':
       this.addLinkAction('reactRouter', {
         url,
@@ -149,7 +156,6 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
         queryParams,
       });
   }
-  /* eslint-enable no-fallthrough */
 }
 
 /**
