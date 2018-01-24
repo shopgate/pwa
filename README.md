@@ -7,6 +7,14 @@
 
 Shopgate's Product Reviews extensions.
 
+## Contents
+
+This extensions extends your application with the following features:
+
+| Feature | Description |
+| - | - |
+| _Rating Stars_ | Products on the Product Grid show rating stars based on the rating amount. |
+
 ## About Shopgate
 
 Shopgate is the leading mobile commerce platform.

@@ -22,8 +22,6 @@ const RatingStars = ({ product }) => {
     return null;
   }
 
-  console.warn(product);
-
   return <Stars value={product.rating.average} />;
 };
 
