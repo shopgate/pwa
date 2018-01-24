@@ -1,6 +1,10 @@
 
 # Changelog
 ---
+### [1.3.1](https://github.com/shopgate/theme-gmd/compare/v1.3.0...v1.3.1) - January 24, 2018
+- Fixed unit tests by updating snapshots due to `@shopgate/pwa-common` v.2.0.0 changes.
+- Updated `@shopgate/pwa-common` to 2.0.1 version to get the `isNumeric` fix.
+---
 ### [1.3.0](https://github.com/shopgate/theme-gmd/compare/v1.2.2...v1.3.0) - January 24, 2018
 #### Added
 - Tier Prices (aka Block Prices) feature to the product detail page.
