@@ -21,7 +21,7 @@ import Item from '../Item';
 const Header = (props) => {
   if (!props.user) {
     return (
-      <div className={styles.container}>
+      <div className={styles.container} data-test-id="NavDrawerLoginButton">
         <Item href={LOGIN_PATH} icon={AccountBoxIcon} close={props.close} primary>
           <I18n.Text string="navigation.login_register" />
         </Item>
@@ -30,8 +30,8 @@ const Header = (props) => {
   }
 
   return (
-    <div className={`${styles.container} ${styles.loggedIn}`}>
-      <div className={styles.welcome}>
+    <div className={`${styles.container} ${styles.loggedIn}`} data-test-id="NavDrawerLoginButton">
+      <div className={styles.welcome} data-test-id="LoginWelcome">
         <I18n.Text string="navigation.welcome_message" params={{ name: props.user.firstName }} />
       </div>
       <div className={styles.mail}>

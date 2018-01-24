@@ -10,7 +10,6 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  label: 'LoginPage',
   flexGrow: 1,
   padding: `${variables.gap.small * 3}px ${variables.gap.big}px`,
 }).toString();
@@ -39,7 +38,6 @@ const forgotWrapper = css({
 }).toString();
 
 const buttonWrapper = css({
-  label: 'LoginButton',
   paddingTop: variables.gap.big * 2,
   paddingBottom: variables.gap.big * 1.5,
 }).toString();

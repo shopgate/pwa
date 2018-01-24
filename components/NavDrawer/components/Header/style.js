@@ -10,7 +10,6 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  label: 'NavDrawerLoginButton',
   color: colors.accentContrast,
   marginBottom: 4,
 }).toString();
@@ -31,7 +30,6 @@ const ellipsis = {
 };
 
 const welcome = css({
-  label: 'LoginWelcome',
   fontWeight: 500,
   ...ellipsis,
 }).toString();

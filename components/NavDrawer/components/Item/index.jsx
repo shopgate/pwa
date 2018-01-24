@@ -50,7 +50,12 @@ const Item = (props) => {
   );
 
   return (
-    <div className={className} onClick={() => handleClick(props)} aria-hidden>
+    <div
+      aria-hidden
+      className={className}
+      data-test-id="NavDrawerLink"
+      onClick={() => handleClick(props)}
+    >
       <Ripple fill>
         <Grid className={styles.grid}>
           <Grid.Item>

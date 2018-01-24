@@ -7,17 +7,13 @@
 
 import { css } from 'glamor';
 
-const container = css({
-  label: 'Ripple',
-}).toString();
-
 const ripple = css({
   position: 'absolute',
   borderRadius: '50%',
   transformOrigin: '50% 50% 0',
 }).toString();
 
-const wrapper = css({
+const container = css({
   position: 'absolute',
   zIndex: 0,
   top: 0,
@@ -29,5 +25,4 @@ const wrapper = css({
 export default {
   ripple,
   container,
-  wrapper,
 };

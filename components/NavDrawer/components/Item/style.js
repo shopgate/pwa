@@ -10,7 +10,6 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  label: 'NavDrawerLink',
   position: 'relative',
 }).toString();
 
