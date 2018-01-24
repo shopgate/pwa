@@ -2,9 +2,16 @@
 # Changelog
 ---
 
+### [1.2.3](https://github.com/shopgate/pwa-tracking/compare/v1.2.2...v1.2.3) - January 24, 2018
+#### Changed
+- Updated `@shopgate/pwa-common` dev dependency to ^2.0.0
+- Updated `@shopgate/pwa-common-commerce` dev dependency to ^2.0.0
+
+---
+
 ### [1.2.2](https://github.com/shopgate/pwa-tracking/compare/v1.2.1...v1.2.0) - January 17, 2018
 #### Fixed
-- tracking event `initiatedCheckout`
+- Tracking event `initiatedCheckout`
 
 ---
 
