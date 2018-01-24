@@ -10,6 +10,14 @@ import favorites from './index';
 jest.mock('../actions/getFavorites', () => withCache => withCache);
 
 describe('Favorites - subscriptions', () => {
+  beforeAll(() => {
+    global.process.env.APP_CONFIG = {
+      hasFavorites: true,
+    };
+  });
+  afterAll(() => {
+    delete global.process.env.APP_CONFIG;
+  });
   it('should register to streams', () => {
     const mockedSubscribe = jest.fn();
     const mockedDispatch = jest.fn();
