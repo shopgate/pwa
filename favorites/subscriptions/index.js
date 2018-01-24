@@ -20,6 +20,9 @@ import getFavorites from '../actions/getFavorites';
  * @param {function} subscribe Subscribe function.
  */
 const favorites = (subscribe) => {
+  if (!process.env.APP_CONFIG.hasFavorites) {
+    return;
+  }
   // On App start, did log in, did log out and favorites page enter we need to fetch.
   subscribe(
     appDidStart$.merge(favoritesDidEnter$),
