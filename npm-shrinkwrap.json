@@ -2041,7 +2041,7 @@
       }
     },
     "css-spring": {
-      "version": "github:shopgate/css-spring#2799c24e100cb5b646b44242e31a97d29404ca24",
+      "version": "git+https://github.com/shopgate/css-spring.git#2799c24e100cb5b646b44242e31a97d29404ca24",
       "requires": {
         "lodash": "4.17.4"
       }
