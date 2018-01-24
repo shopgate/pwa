@@ -15,7 +15,9 @@
   },
   "favorites": {
     "continue": "Weiter shoppen",
-    "empty": "Sie haben noch keine Artikel in der Merkliste"
+    "empty": "Sie haben noch keine Artikel in der Merkliste",
+    "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
+    "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden"
   },
   "filter": {
     "sort": {
