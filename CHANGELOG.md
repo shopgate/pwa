@@ -1,5 +1,11 @@
 
 # Changelog
+---
+
+### [1.1.0](https://github.com/shopgate/pwa-core/compare/v1.1.0...v1.1.1) - January 24, 2018
+#### Fixed
+- Enabled console logging for "httpResponse" event errors.
+---
 
 ### [1.1.0](https://github.com/shopgate/pwa-core/compare/v1.0.5...v1.1.0) - December 22, 2017
 
