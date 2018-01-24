@@ -39,6 +39,9 @@ export default function app(subscribe) {
     registerEvents([
       'showPreviousTab',
       'closeInAppBrowser',
+      // TODO The iOS apps don't emit the event to the webviews without registration till Lib 15.2.
+      // This needs to be removed, when IOS-1886 is done and the the iOS apps are updated.
+      'httpResponse',
     ]);
 
     // Add event callbacks
