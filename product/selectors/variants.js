@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -25,17 +25,17 @@ const getVariantsState = state => state.product.variantsByProductId;
  * @returns {string}
  */
 export const getCurrentProductVariantId = createSelector(
-  state => state,
-  (state) => {
+  state => state.product,
+  (productState) => {
     if (
-      !state.product
-      || !state.product.currentProduct
-      || !state.product.currentProduct.productVariantId
+      !productState
+      || !productState.currentProduct
+      || !productState.currentProduct.productVariantId
     ) {
       return null;
     }
 
-    return state.product.currentProduct.productVariantId;
+    return productState.currentProduct.productVariantId;
   }
 );
 
@@ -68,9 +68,10 @@ export const isProductChildrenSelected = state => !!getCurrentProductVariantId(s
  * @param {string} productId The product ID.
  * @return {Object|null} The dedicated variants. Or null when the requested data is unavailable.
  */
-export const getVariantsByProductId = (state, productId) => createSelector(
+export const getVariantsByProductId = createSelector(
   getVariantsState,
-  (variants) => {
+  (state, props, productId) => productId,
+  (variants, productId) => {
     if (!variants || !variants[productId] || variants[productId].isFetching === true) {
       return null;
     }
