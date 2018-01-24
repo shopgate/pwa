@@ -1,7 +1,15 @@
 
 # Changelog
+### [2.0.0](https://github.com/shopgate/pwa-common/compare/v1.3.0...v2.0.0) - January 24, 2018
+#### Added
+- A new stream that emits when the "index" route was opened.
+- A new history subscriber that listens on the opening of "index" routes and resets the history.
+- Support for the "className" prop in the i18n FormatPrice component to support styling.
+- Toast component.
+#### Changed
+- Combined related action creators to single files and updated the depending modules.
 
-### [1.3.0](https://github.com/shopgate/pwa-common/compare/v1.2.0...v1.3.0) - January 08, 2017
+### [1.3.0](https://github.com/shopgate/pwa-common/compare/v1.2.0...v1.3.0) - January 08, 2018
 
 #### Added
 - Observable `clientInformationDidUpdate$`
@@ -11,7 +19,7 @@
 
 ---
 
-### [1.2.0](https://github.com/shopgate/pwa-common/compare/v1.1.3...v1.2.0) - January 08, 2017
+### [1.2.0](https://github.com/shopgate/pwa-common/compare/v1.1.3...v1.2.0) - January 08, 2018
 
 #### Added
 - Constant `CHECKOUT_PATH`
