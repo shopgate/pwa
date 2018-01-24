@@ -1,5 +1,24 @@
 
 # Changelog
+---
+### [1.3.0](https://github.com/shopgate/theme-gmd/compare/v1.2.2...v1.3.0) - January 24, 2018
+#### Added
+- Tier Prices (aka Block Prices) feature to the product detail page.
+#### Removed
+- Background color of the product description.
+- Spacing between Product Variants and Product Options selection.
+#### Changed
+- The properties inside each cart item now align to the bottom of the card.
+- The spacing inside the sort dropdown has been adjusted.
+- Font size and weight corrected inside the `<PaymentBar>`.
+- Shadow is the `<AddToCartButton>` has been reduced.
+- Various style changes to the Review feature.
+#### Fixed
+- The bottom padding of the cart page is now applied correctly, so that the payment bar doesn't overlay the coupon input.
+- The ProductVariants component now works also if you have multiple product pages in your history. 
+- Child products can be added to cart after leaving and going back to the product page.
+
+---
 
 ### [1.2.2](https://github.com/shopgate/theme-gmd/compare/v1.2.1...v1.2.2) - January 17, 2018
 
