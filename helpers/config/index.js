@@ -19,13 +19,13 @@ const defaultThemeConfig = {
  * The app.json config from the theme.
  * @typedef {Object}
  */
-const appConfig = process.env.APP_CONFIG;
+const appConfig = process.env.APP_CONFIG || {};
 
 /**
  * The components.json config from the theme.
  * @typedef {Object}
  */
-export const componentsConfig = process.env.COMPONENTS_CONFIG;
+export const componentsConfig = process.env.COMPONENTS_CONFIG || {};
 
 /**
  * The theme configuration.
@@ -33,6 +33,7 @@ export const componentsConfig = process.env.COMPONENTS_CONFIG;
  */
 export const themeConfig = process.env.THEME_CONFIG || defaultThemeConfig;
 
-export const shopNumber = appConfig.appId.replace('shop_', '');
+const { appId } = appConfig;
+export const shopNumber = appId ? appId.replace('shop_', '') : '';
 
 export default appConfig;
