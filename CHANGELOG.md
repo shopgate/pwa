@@ -1,5 +1,8 @@
 
 # Changelog
+
+---
+
 ### [2.0.0](https://github.com/shopgate/pwa-common/compare/v1.3.0...v2.0.0) - January 24, 2018
 #### Added
 - A new stream that emits when the "index" route was opened.
@@ -8,6 +11,8 @@
 - Toast component.
 #### Changed
 - Combined related action creators to single files and updated the depending modules.
+
+---
 
 ### [1.3.0](https://github.com/shopgate/pwa-common/compare/v1.2.0...v1.3.0) - January 08, 2018
 
