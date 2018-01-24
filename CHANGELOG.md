@@ -3,6 +3,16 @@
 
 ---
 
+### [2.0.0](https://github.com/shopgate/pwa-common-commerce/compare/v1.2.2...v2.0.0) - January 17, 2018
+#### Changed
+- Updated the `getCheckoutUrl` action to use the refactored "url" action creators from "pwa-common"
+- The input param of the getVariantsByProductId selector, to reflect the default reselect signature
+
+#### Fixed
+- `getVariantsByProductId` selector returns now the correct redux state instead of just a function
+
+---
+
 ### [1.2.2](https://github.com/shopgate/pwa-common-commerce/compare/v1.2.1...v1.2.2) - January 17, 2018
 #### Fixed
 - The reset of the currentProduct state when navigating through pages that belong to the product route.
