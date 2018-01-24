@@ -1,12 +1,14 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-import unsetLoading from '../../action-creators/view/unsetLoading';
-import decrementLoading from '../../action-creators/view/decrementLoading';
+import {
+  unsetLoading,
+  decrementLoading,
+} from '../../action-creators/view';
 import { getLoadingViews } from '../../selectors/view';
 
 /**

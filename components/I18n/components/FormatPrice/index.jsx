@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
  * @returns {JSX}
  */
 const FormatPrice = (props, context) => (
-  <span>
+  <span className={props.className}>
     {FormatPrice.format(props, context)}
   </span>
 );
@@ -33,10 +33,12 @@ FormatPrice.format = (props, context) => {
 FormatPrice.propTypes = {
   currency: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
   price: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  className: PropTypes.string,
   fractions: PropTypes.bool, // eslint-disable-line react/no-unused-prop-types
 };
 
 FormatPrice.defaultProps = {
+  className: '',
   fractions: true,
 };
 

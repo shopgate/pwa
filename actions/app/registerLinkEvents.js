@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,9 +7,11 @@
 
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import willRegisterLinkEvents from '../../action-creators/app/willRegisterLinkEvents';
-import didRegisterLinkEvents from '../../action-creators/app/didRegisterLinkEvents';
-import openLink from '../../action-creators/history/openLink';
+import {
+  willRegisterLinkEvents,
+  didRegisterLinkEvents,
+} from '../../action-creators/app';
+import { openLink } from '../../action-creators/history';
 import { parseQueryStringToObject } from '../../helpers/router';
 import handlePushNotification from './handlePushNotification';
 import handleDeepLink from './handleDeepLink';

@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-import removeModal from '../../action-creators/modal/removeModal';
+import { removeModal } from '../../action-creators/modal';
 import promiseMap from './promiseMap';
 
 /**
