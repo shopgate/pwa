@@ -34,7 +34,7 @@ exports[`<Header /> should render empty 1`] = `
         }
       >
         <div
-          className="css-t193cd"
+          className="css-1us3hnd"
         >
           <RatingStars
             className=""
@@ -384,7 +384,7 @@ exports[`<Header /> should render rating summary 1`] = `
         }
       >
         <div
-          className="css-t193cd"
+          className="css-1us3hnd"
         >
           <RatingStars
             className=""

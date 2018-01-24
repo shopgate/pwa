@@ -55,7 +55,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-2g5sa0"
+        className="css-1yhq1gr"
       >
         <Title
           title=""
@@ -68,10 +68,10 @@ exports[`<List /> should render list with reviews 1`] = `
           rate={100}
         >
           <div
-            className="css-12alag6"
+            className="css-15pwoui"
           >
             <RatingStars
-              className="css-1tsawhq"
+              className="css-hgkz41"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -79,7 +79,7 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-1tsawhq"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -457,7 +457,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-13o3l67"
+            className="css-vkqu2k"
           >
             "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -474,7 +474,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-1kqiarg"
+            className="css-1dhkxb0"
           >
             <ReviewDate
               date="2017-09-06T12:38:51.000Z"
@@ -509,7 +509,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-2g5sa0"
+        className="css-1yhq1gr"
       >
         <Title
           title="Test review 2 "
@@ -524,10 +524,10 @@ exports[`<List /> should render list with reviews 1`] = `
           rate={40}
         >
           <div
-            className="css-12alag6"
+            className="css-15pwoui"
           >
             <RatingStars
-              className="css-1tsawhq"
+              className="css-hgkz41"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -535,7 +535,7 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-1tsawhq"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -805,7 +805,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-13o3l67"
+            className="css-vkqu2k"
           >
             "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -822,7 +822,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-1kqiarg"
+            className="css-1dhkxb0"
           >
             <ReviewDate
               date="2017-09-06T12:37:40.000Z"
@@ -873,7 +873,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-2g5sa0"
+        className="css-1yhq1gr"
       >
         <Title
           title=""
@@ -886,10 +886,10 @@ exports[`<List /> should render list with reviews 1`] = `
           rate={60}
         >
           <div
-            className="css-12alag6"
+            className="css-15pwoui"
           >
             <RatingStars
-              className="css-1tsawhq"
+              className="css-hgkz41"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -897,7 +897,7 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-1tsawhq"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -1203,7 +1203,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="Test review"
         >
           <div
-            className="css-13o3l67"
+            className="css-vkqu2k"
           >
             "Test review"
           </div>
@@ -1220,7 +1220,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-1kqiarg"
+            className="css-1dhkxb0"
           >
             <ReviewDate
               date="2017-09-06T12:30:23.000Z"
@@ -1271,7 +1271,7 @@ exports[`<List /> should render list with reviews 1`] = `
       }
     >
       <div
-        className="css-2g5sa0"
+        className="css-1yhq1gr"
       >
         <Title
           title=""
@@ -1284,10 +1284,10 @@ exports[`<List /> should render list with reviews 1`] = `
           rate={20}
         >
           <div
-            className="css-12alag6"
+            className="css-15pwoui"
           >
             <RatingStars
-              className="css-1tsawhq"
+              className="css-hgkz41"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -1295,7 +1295,7 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-1tsawhq"
+                className="css-13azwyo css-hgkz41"
               >
                 <div
                   className="css-4s85e9"
@@ -1540,7 +1540,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-1kqiarg"
+            className="css-1dhkxb0"
           >
             <ReviewDate
               date="2017-09-06T12:30:23.000Z"
