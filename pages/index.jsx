@@ -69,7 +69,10 @@ const Pages = () => (
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
       <Route path={`${CART_PATH}`} component={Cart} />
-      <Route path={`${FAVORITES_PATH}`} component={Favorites} />
+      {
+        process.env.APP_CONFIG.hasFavorites
+        && <Route path={`${FAVORITES_PATH}`} component={Favorites} />
+      }
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} />
