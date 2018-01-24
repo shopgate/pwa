@@ -866,7 +866,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >
@@ -1996,7 +1997,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >
@@ -3072,7 +3074,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >
@@ -4149,7 +4152,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >
@@ -5226,7 +5230,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >
@@ -6302,7 +6307,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >
@@ -7175,7 +7181,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         >
                           <div
                             aria-hidden={true}
-                            className="css-1268me8 css-8s1fw2 "
+                            className="css-8s1fw2 "
+                            data-test-id="Ripple"
                             onClick={[Function]}
                             style={null}
                           >

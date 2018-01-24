@@ -57,7 +57,8 @@ exports[`<ButtonLink> On click action should create component and open page on c
               >
                 <div
                   aria-hidden={true}
-                  className="css-1268me8 css-8s1fw2 "
+                  className="css-8s1fw2 "
+                  data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}
                 >
