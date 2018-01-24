@@ -1,5 +1,14 @@
 # Changelog
 ---
+### [1.4.0](https://github.com/shopgate/theme-ios11/compare/v1.3.2...v1.4.0) - January 24, 2018
+#### Added
+- Tier Prices (aka Block Prices) Feature to the product detail page.
+#### Changed
+- Corrected some German translation strings.
+#### Fixed
+- The ProductVariants component now works also if you have multiple product pages in your history.
+- Child products can be added to a cart after leaving and going back to the product page.
+---
 
 ### [1.3.2](https://github.com/shopgate/theme-ios11/compare/v1.3.1...v1.3.2) - January 17, 2018
 
