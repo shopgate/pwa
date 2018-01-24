@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -12,8 +12,14 @@ import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
 import goBackHistory from '../actions/history/goBackHistory';
 import { getRegisterUrl } from '../selectors/user';
 import ParsedLink from '../components/Router/helpers/parsed-link';
-import { openedRegisterLink$, routeDidLeave } from '../streams/history';
-import { userDidLogin$, userDidLogout$ } from '../streams/user';
+import {
+  openedRegisterLink$,
+  routeDidLeave,
+} from '../streams/history';
+import {
+  userDidLogin$,
+  userDidLogout$,
+} from '../streams/user';
 import openRegisterUrl from './helpers/openRegisterUrl';
 import { LEGACY_URL } from '../constants/Registration';
 import { setRedirectLocation } from '../action-creators/history';
