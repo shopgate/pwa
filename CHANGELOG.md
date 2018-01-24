@@ -1,5 +1,8 @@
 # Changelog
 ---
+### [1.4.1](https://github.com/shopgate/theme-ios11/compare/v1.4.0...v1.4.1) - January 24, 2018
+- Updated `@shopgate/pwa-common` to 2.0.1 version to get the `isNumeric` fix.
+---
 ### [1.4.0](https://github.com/shopgate/theme-ios11/compare/v1.3.2...v1.4.0) - January 24, 2018
 #### Added
 - Tier Prices (aka Block Prices) Feature to the product detail page.
