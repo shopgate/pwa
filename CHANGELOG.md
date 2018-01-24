@@ -1,6 +1,10 @@
 
 # Changelog
 ---
+### [1.1.1](https://github.com/shopgate/pwa-webcheckout-shopify/compare/v1.1.0...v1.1.1) - January 24, 2018
+#### Changed
+- Updated `@shopgate/pwa-common` to ^2.0.0
+---
 
 ### [1.1.0](https://github.com/shopgate/pwa-webcheckout-shopify/compare/v1.0.6...v1.1.0) - December 21, 2017
 
