@@ -11,7 +11,7 @@ const portals = portalCollection.getPortals();
  * @param {Object} props The component props.
  * @return {Array|null}
  */
-const Target = ({ id, identifier }) => {
+const Target = ({ id, identifier, children }) => {
   const components = [];
 
   Object.keys(config.portals)
@@ -22,16 +22,22 @@ const Target = ({ id, identifier }) => {
       }
     });
 
-  return components.length ? components : null;
+  if (components.length) {
+    return components;
+  }
+
+  return children;
 };
 
 Target.propTypes = {
   id: PropTypes.string.isRequired,
+  children: PropTypes.node,
   identifier: PropTypes.string,
 };
 
 Target.defaultProps = {
   identifier: null,
+  children: null,
 };
 
 export default Target;
