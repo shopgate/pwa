@@ -69,8 +69,8 @@
     "reselect": "3.x",
     "rxjs": "5.x",
     "@shopgate/tracking-core": "1.0.x",
-    "@shopgate/pwa-common": "1.1.x",
-    "@shopgate/pwa-common-commerce": "1.1.x",
+    "@shopgate/pwa-common": "2.0.x",
+    "@shopgate/pwa-common-commerce": "2.0.x",
     "@shopgate/pwa-core": "1.1.x"
   }
 }
