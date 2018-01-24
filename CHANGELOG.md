@@ -1,4 +1,7 @@
 # Changelog
+---
+### 1.0.9 - January 24, 2018
+- Updated `@shopgate/pwa-core`  peer dependency
 
 ---
 
