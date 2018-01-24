@@ -46,4 +46,14 @@ describe('<Drawer />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.hasClass('custom-class-name')).toEqual(true);
   });
+
+  it('should execute callback when drawer close animation did end', () => {
+    const wrapper = mount(<Drawer className="custom-class-name" isOpen onDidClose={mockOpen} />);
+    expect(wrapper).toMatchSnapshot();
+    wrapper.setProps({
+      isOpen: false,
+    });
+    wrapper.simulate('animationEnd');
+    expect(mockOpen).toBeCalled();
+  });
 });

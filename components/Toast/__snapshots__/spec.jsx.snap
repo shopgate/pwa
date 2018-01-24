@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toast /> should dispatch a toast message 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Toast)
+    container={[Function]}
+    message={[Function]}
+    toast={[Function]}
+  >
+    <Toast
+      className={null}
+      container={[Function]}
+      message={[Function]}
+      onClose={[Function]}
+      removeToast={[Function]}
+      toast={
+        Object {
+          "duration": 0,
+          "id": 1,
+          "message": "Toast Message",
+        }
+      }
+    >
+      <div
+        aria-live="polite"
+        aria-relevant="additions"
+      >
+        <Drawer
+          alwaysActive={false}
+          animation={
+            Object {
+              "duration": null,
+              "in": "",
+              "out": "",
+            }
+          }
+          className={null}
+          isOpen={true}
+          onClose={[Function]}
+          onDidClose={[Function]}
+          onOpen={[Function]}
+        >
+          <div
+            className="css-1rg7udn css-1dwe0qx"
+            onAnimationEnd={[Function]}
+            style={Object {}}
+          >
+            <MockContainer>
+              <div>
+                <MockMessage
+                  text="Toast Message"
+                >
+                  <span>
+                    Toast Message
+                  </span>
+                </MockMessage>
+              </div>
+            </MockContainer>
+          </div>
+        </Drawer>
+      </div>
+    </Toast>
+  </Connect(Toast)>
+</Provider>
+`;
