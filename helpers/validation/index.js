@@ -20,7 +20,8 @@ export const isObject = prop => (
  * @return {boolean}
  */
 export const isNumeric = prop => (
-  !Number.isNaN(parseFloat(prop)) && Number.isFinite(prop)
+  // eslint-disable-next-line no-restricted-globals
+  !Number.isNaN(parseFloat(prop)) && isFinite(prop)
 );
 
 /**
@@ -29,7 +30,8 @@ export const isNumeric = prop => (
  * @return {boolean}
  */
 export const isNumber = prop => (
-  (typeof prop === 'number') && Number.isFinite(prop)
+  // eslint-disable-next-line no-restricted-globals
+  (typeof prop === 'number') && isFinite(prop)
 );
 
 /**
