@@ -32,3 +32,6 @@ export const EEXIST = 'EEXIST';
 // Trusted pipeline string.
 export const TYPE_TRUSTED = 'trusted';
 
+// Errors from favorites pipeline
+export const EFAVORITE = 'EFAVORITE';
+export const EBIGAPI = 'EBIGAPI';
