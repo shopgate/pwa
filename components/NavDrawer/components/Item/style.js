@@ -26,12 +26,30 @@ const icon = css({
   color: colors.shade11,
 }).toString();
 
-const label = css({
+const labelBaseStyle = {
   display: 'flex',
   alignItems: 'flex-start',
   padding: `${variables.gap.big + 2}px 0`,
   fontSize: '0.875rem',
   fontWeight: 500,
+};
+
+const label = css(labelBaseStyle).toString();
+
+const labelWithIndicator = css({
+  ...labelBaseStyle,
+  justifyContent: 'space-between',
+  paddingRight: variables.gap.xbig,
+  ':after': {
+    background: colors.primary,
+    borderRadius: '4.5px',
+    content: ' ',
+    display: 'inline-block',
+    height: '9px',
+    width: '9px',
+    alignSelf: 'center',
+    marginRight: -12,
+  },
 }).toString();
 
 const count = css({
@@ -61,6 +79,7 @@ export default {
   grid,
   icon,
   label,
+  labelWithIndicator,
   count,
   primary,
   primaryIcon,
