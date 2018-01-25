@@ -1,5 +1,10 @@
 
 # Changelog
+---
+
+### [2.1.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.0.0...v2.1.0) - January 25, 2018
+#### Added
+- Redux actions, reducer and selectors for favourites feature
 
 ---
 
