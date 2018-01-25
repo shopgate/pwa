@@ -6,12 +6,18 @@
  */
 
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 /**
  * Mocked View.
  * @type {MockedView}
  */
 export const MockedView = class extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+  };
+  static defaultProps = {
+    children: null,
+  };
   /**
    * Renders mocked view.
    * @return {JSX}
@@ -19,7 +25,7 @@ export const MockedView = class extends Component {
   render() {
     return (
       <div>
-        {this.children}
+        {this.props.children}
       </div>
     );
   }

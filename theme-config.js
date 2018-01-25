@@ -38,11 +38,17 @@ module.exports = {
   variables: {
     materialShadow,
     gap: {
+      xsmall: 4,
       small: 8,
       big: 16,
       bigger: 20,
       xbig: 32,
       xxbig: 64,
+    },
+    emptyPage: {
+      icon: 216,
+      titleTopGap: 36,
+      buttonVerticalGap: 24,
     },
     navigator: {
       height: 56,

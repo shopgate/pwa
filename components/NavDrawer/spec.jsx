@@ -147,4 +147,29 @@ describe('<NavDrawer />', () => {
 
     expect(wrapper.find(headerLoggedInSelector).length).toBe(0);
   });
+
+  it('should render favorites list link with an indicator', () => {
+    const Component = (
+      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites hasFavorites />
+    );
+    const wrapper = mount(Component);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  let itemsCountwithFavoritesLink;
+  it('should render favorites list link without an indicator', () => {
+    const Component = (
+      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites={false} hasFavorites />
+    );
+    const wrapper = mount(Component);
+    expect(wrapper).toMatchSnapshot();
+    itemsCountwithFavoritesLink = wrapper.find('Item').length;
+  });
+
+  it('should not render a favorites link at all when feature flag is off', () => {
+    const Component = (<NavDrawer toggleNavDrawer={toggleNavDrawerMock} hasFavorites={false} />);
+    const wrapper = mount(Component);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Item').length).toBe(itemsCountwithFavoritesLink - 1);
+  });
 });
