@@ -38,9 +38,8 @@ const label = css(labelBaseStyle).toString();
 
 const labelWithIndicator = css({
   ...labelBaseStyle,
-  display: 'flex',
   justifyContent: 'space-between',
-  paddingRight: 32,
+  paddingRight: variables.gap.xbig,
   ':after': {
     background: colors.primary,
     borderRadius: '4.5px',
