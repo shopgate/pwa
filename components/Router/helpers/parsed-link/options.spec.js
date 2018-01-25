@@ -176,17 +176,6 @@ describe('Tests link options', () => {
         },
       },
     ],
-    '/favourite_list': [
-      {
-        action: 'legacyLink',
-        options: {
-          navigationType: 'plain',
-          targetTab: 'favourite_list',
-          url: '/favourite_list',
-          popTabToRoot: true,
-        },
-      },
-    ],
     '/search?s=test': [
       {
         action: 'reactRouter',
