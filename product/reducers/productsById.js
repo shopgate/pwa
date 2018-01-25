@@ -12,6 +12,9 @@ import {
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
 } from '../constants';
+import {
+  RECEIVE_FAVORITES,
+} from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
 import enrichProduct from './helpers/enrichProduct';
 
@@ -24,6 +27,7 @@ import enrichProduct from './helpers/enrichProduct';
 export default function productsById(state = {}, action) {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
+    case RECEIVE_FAVORITES:
       return {
         ...state,
         ...handleProductCollection(action.products),
