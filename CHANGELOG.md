@@ -3,7 +3,7 @@
 
 ---
 
-### [2.0.1](https://github.com/shopgate/pwa-common/compare/v1.3.0...v2.0.1) - January 25, 2018
+### [2.0.1](https://github.com/shopgate/pwa-common/compare/v2.0.0...v2.0.1) - January 25, 2018
 #### Changed
 - Removed `/favorite_list` from legacy links whitelist
 #### Fixed
