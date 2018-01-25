@@ -196,10 +196,7 @@ class QuantityPicker extends Component {
    * @param {Function} [callback] Callback for the setState call.
    */
   updateQuantityInState(quantity, callback = () => {}) {
-    console.log('YOYOYOY', quantity, isNumeric(quantity));
-
     const sanitizedQuantity = isNumeric(quantity) ? parseInt(quantity, 10) : '';
-    console.log(sanitizedQuantity);
     this.setState({
       quantity: sanitizedQuantity,
     }, callback);
