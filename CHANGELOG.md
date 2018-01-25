@@ -2,7 +2,7 @@
 # Changelog
 ---
 
-### [1.2.4](https://github.com/shopgate/pwa-tracking/compare/v1.23...v1.2.4) - January 25, 2018
+### [1.2.4](https://github.com/shopgate/pwa-tracking/compare/v1.2.3...v1.2.4) - January 25, 2018
 #### Changed
 - Added `/favorite_list` to the blacklist for tracked pages
 
