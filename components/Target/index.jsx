@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import last from 'lodash/last';
 import portalCollection from '@shopgate/pwa-core/classes/PortalCollection';
 import { componentsConfig as config } from '../../helpers/config';
 
@@ -22,8 +23,12 @@ const Target = ({ id, identifier, children }) => {
       }
     });
 
+  if (children && components.length) {
+    return
+  }
+
   if (components.length) {
-    return components;
+    return last(components);
   }
 
   return children;
