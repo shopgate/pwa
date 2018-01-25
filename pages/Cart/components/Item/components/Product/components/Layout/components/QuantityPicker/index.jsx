@@ -121,6 +121,7 @@ class QuantityPicker extends Component {
   handleInputChange = (event) => {
     const prevQuantity = this.state.quantity;
     let nextQuantity = event.target.value;
+
     if (this.regex.test(nextQuantity) === false) {
       // Reset the invalid value to the previous
       nextQuantity = prevQuantity;
@@ -180,7 +181,6 @@ class QuantityPicker extends Component {
       }
     };
 
-
     if (!event.target.value || event.target.value < this.defaultQuantity) {
       // Set the quantity state back to default, if the value of the input is invalid.
       this.updateQuantityInState(this.defaultQuantity, handleBlur);
@@ -197,6 +197,7 @@ class QuantityPicker extends Component {
    */
   updateQuantityInState(quantity, callback = () => {}) {
     const sanitizedQuantity = isNumeric(quantity) ? parseInt(quantity, 10) : '';
+
     this.setState({
       quantity: sanitizedQuantity,
     }, callback);
