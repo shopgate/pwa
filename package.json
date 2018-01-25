@@ -29,7 +29,7 @@
   "dependencies": {},
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.3",
-    "@shopgate/pwa-core": "^1.1.1",
+    "@shopgate/pwa-core": "^1.2.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "2.7.1",
