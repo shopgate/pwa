@@ -7,5 +7,6 @@
   "shopName": "sgxs-testshop3",
   "forgotPasswordUrl": null,
   "webCheckoutShopify": null,
-  "hasReviews": true
+  "hasReviews": true,
+  "hasFavorites": true
 }
