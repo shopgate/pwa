@@ -2,7 +2,12 @@
 # Changelog
 ---
 
-### [1.1.0](https://github.com/shopgate/pwa-core/compare/v1.1.0...v1.1.1) - January 24, 2018
+### [1.2.0](https://github.com/shopgate/pwa-core/compare/v1.1.1...v1.2.0) - January 25, 2018
+#### Added
+- `EFAVORITE` and `EBIGAPI` error codes
+---
+
+### [1.1.1](https://github.com/shopgate/pwa-core/compare/v1.1.0...v1.1.1) - January 24, 2018
 #### Fixed
 - Enabled console logging for "httpResponse" event errors.
 ---
