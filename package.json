@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common-commerce",
-  "version": "1.2.2",
+  "version": "2.1.0",
   "description": "Shopgate's commerce library for PWAs",
   "repository": "shopgate/pwa-common-commerce",
   "bugs": "https://github.com/shopgate/pwa-common-commerce/issues",
@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.3",
-    "@shopgate/pwa-common": "^1.3.0",
-    "@shopgate/pwa-core": "^1.1.0",
+    "@shopgate/pwa-common": "^2.0.1",
+    "@shopgate/pwa-core": "^1.2.0",
     "@shopgate/pwa-unit-test": "^1.3.0",
     "@shopgate/react-hammerjs": "^0.5.3",
     "babel-cli": "^6.26.0",

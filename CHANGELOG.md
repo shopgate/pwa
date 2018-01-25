@@ -1,5 +1,20 @@
 
 # Changelog
+---
+
+### [2.1.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.0.0...v2.1.0) - January 25, 2018
+#### Added
+- Redux actions, reducer and selectors for favourites feature
+
+---
+
+### [2.0.0](https://github.com/shopgate/pwa-common-commerce/compare/v1.2.2...v2.0.0) - January 24, 2018
+#### Changed
+- Updated the `getCheckoutUrl` action to use the refactored "url" action creators from "pwa-common".
+- The input param of the `getVariantsByProductId` selector, to reflect the default reselect signature.
+
+#### Fixed
+- `getVariantsByProductId` selector returns now the correct redux state instead of just a function.
 
 ---
 
