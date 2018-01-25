@@ -3583,6 +3583,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
           className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
@@ -4823,6 +4824,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
           className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
@@ -5962,6 +5964,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
           className="css-1aq22wi"
           isOpen={true}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
@@ -7244,6 +7247,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           className="css-1aq22wi"
           isOpen={true}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
@@ -8383,6 +8387,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
           className="css-1aq22wi"
           isOpen={true}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
