@@ -1,5 +1,36 @@
 
 # Changelog
+---
+### [2.0.0](https://github.com/shopgate/theme-gmd/compare/v1.3.0...v2.0.0) - January 25, 2018
+#### Added
+- Implemented Favorites page (`/favorite_list`). Favorites are not available for all shops. Feature is hidden behind a feature flag which can be changed using the shop configuration system.
+- `SnackBar` component.
+#### Changed
+- `ProductProperites` and `ProductPrice` are moved to the shared `/components` folder
+- Removed `Grid.Item` from `ProductProperites` and `ProductPrice` components
+#### Fixed
+- Fixed unit tests by updating snapshots due to `@shopgate/pwa-common` v.2.0.0 changes.
+- Updated `@shopgate/pwa-common` to 2.0.1 version to get the `isNumeric` fix.
+- Fixed MockedView component which didn't render any children before.
+---
+### [1.3.0](https://github.com/shopgate/theme-gmd/compare/v1.2.2...v1.3.0) - January 24, 2018
+#### Added
+- Tier Prices (aka Block Prices) feature to the product detail page.
+#### Removed
+- Background color of the product description.
+- Spacing between Product Variants and Product Options selection.
+#### Changed
+- The properties inside each cart item now align to the bottom of the card.
+- The spacing inside the sort dropdown has been adjusted.
+- Font size and weight corrected inside the `<PaymentBar>`.
+- Shadow is the `<AddToCartButton>` has been reduced.
+- Various style changes to the Review feature.
+#### Fixed
+- The bottom padding of the cart page is now applied correctly, so that the payment bar doesn't overlay the coupon input.
+- The ProductVariants component now works also if you have multiple product pages in your history. 
+- Child products can be added to cart after leaving and going back to the product page.
+
+---
 
 ### [1.2.2](https://github.com/shopgate/theme-gmd/compare/v1.2.1...v1.2.2) - January 17, 2018
 

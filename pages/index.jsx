@@ -30,6 +30,7 @@ import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
+import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
@@ -58,7 +59,7 @@ const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
     <Viewport>
       <ModalContainer component={Dialog} />
-
+      <SnackBar />
       <Route path={`${INDEX_PATH}`} component={Page} />
       <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
       <Route path={`${CATEGORY_PATH}`} component={Category} />
@@ -69,7 +70,10 @@ const Pages = () => (
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
       <Route path={`${CART_PATH}`} component={Cart} />
-      <Route path={`${FAVORITES_PATH}`} component={Favorites} />
+      {
+        process.env.APP_CONFIG.hasFavorites
+        && <Route path={`${FAVORITES_PATH}`} component={Favorites} />
+      }
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} />
