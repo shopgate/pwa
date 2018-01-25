@@ -68,6 +68,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
           className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
@@ -1166,6 +1167,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
           className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
@@ -2372,6 +2374,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
           className="css-1aq22wi"
           isOpen={false}
           onClose={[Function]}
+          onDidClose={[Function]}
           onOpen={[Function]}
         >
           <div
