@@ -25,7 +25,7 @@ exports[`<Widget /> should render an image widget 1`] = `
       "col": 1,
       "height": 6,
       "row": 1,
-      "type": "core-widgets/image",
+      "type": "@shopgate/commerce-widgets/image",
       "width": 12,
     }
   }
