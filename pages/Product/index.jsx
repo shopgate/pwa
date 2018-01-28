@@ -15,6 +15,7 @@ import VariantSelects from './components/VariantSelects';
 import Options from './components/Options';
 import Description from './components/Description';
 import Properties from './components/Properties';
+import AddToCartBar from './components/AddToCartBar';
 import connect from './connector';
 
 /**
@@ -51,6 +52,7 @@ class Product extends Component {
         <Description />
         <Properties />
         <Reviews />
+        <AddToCartBar />
       </View>
     );
   }
