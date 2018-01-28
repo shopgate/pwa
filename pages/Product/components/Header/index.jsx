@@ -7,7 +7,6 @@
 
 import React from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import AddToCartButton from './components/AddToCartButton';
 import Rating from './components/Rating';
 import Name from './components/Name';
 import Manufacturer from './components/Manufacturer';
@@ -32,7 +31,6 @@ import styles from './style';
  */
 const ProductHeader = () => (
   <div className={styles.content}>
-    <AddToCartButton />
     <Rating />
     <Name />
     <Grid component="div">

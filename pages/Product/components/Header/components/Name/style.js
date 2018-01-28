@@ -12,7 +12,6 @@ const name = css({
   fontSize: '1.25rem',
   lineHeight: '1.25',
   marginBottom: 2,
-  marginRight: 72,
 }).toString();
 
 const placeholder = css({
