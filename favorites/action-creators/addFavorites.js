@@ -10,6 +10,7 @@ import {
   REQUEST_ADD_FAVORITES,
   RECEIVE_ADD_FAVORITES,
   ERROR_ADD_FAVORITES,
+  ABORT_ADD_FAVORITES,
 } from '../constants';
 
 /**
@@ -37,5 +38,15 @@ export const receiveAddFavorites = () => ({
  */
 export const errorAddFavorites = productId => ({
   type: ERROR_ADD_FAVORITES,
+  productId,
+});
+
+/**
+ * Aborted adding to favorites.
+ * @param {string} productId Product identifier.
+ * @returns {Object}
+ */
+export const abortAddFavorites = productId => ({
+  type: ABORT_ADD_FAVORITES,
   productId,
 });

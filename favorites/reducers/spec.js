@@ -15,6 +15,7 @@ import {
   REQUEST_REMOVE_FAVORITES,
   RECEIVE_REMOVE_FAVORITES,
   ERROR_REMOVE_FAVORITES,
+  ABORT_ADD_FAVORITES,
 } from '../constants';
 import reducers from './index';
 import {
@@ -124,6 +125,15 @@ describe('Favorites - reducers', () => {
       expect(removeState.products.isFetching).toBe(false);
       expect(typeof removeState).toBe('object');
       expect(removeState.products.ids).toContain(productId);
+    });
+    it('should react on ABORT_ADD_FAVORITES', () => {
+      removeState = reducers(removeState, {
+        type: ABORT_ADD_FAVORITES,
+        productId,
+      });
+      expect(removeState.products.isFetching).toBe(false);
+      expect(typeof removeState).toBe('object');
+      expect(removeState.products.ids.includes(productId)).toBe(false);
     });
   });
 });

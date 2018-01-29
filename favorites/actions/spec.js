@@ -23,7 +23,6 @@ import {
   REQUEST_ADD_FAVORITES,
   RECEIVE_ADD_FAVORITES,
   ERROR_ADD_FAVORITES,
-  REQUEST_REMOVE_FAVORITES,
   RECEIVE_REMOVE_FAVORITES,
   ERROR_REMOVE_FAVORITES,
 } from '../constants';
@@ -86,12 +85,8 @@ describe('Favorites - actions', () => {
           done();
           return;
         }
-
-        expect(result.mockInstance.name).toBe('deleteFavorites');
-        expect(mockedDispatch).toHaveBeenCalledTimes(2);
-        expect(mockedDispatch.mock.calls[0][0].type).toBe(REQUEST_REMOVE_FAVORITES);
-        expect(mockedDispatch.mock.calls[1][0].type)
-          .toBe(variant === 'then' ? RECEIVE_REMOVE_FAVORITES : ERROR_ADD_FAVORITES);
+        expect(typeof result).toBe('object');
+        expect(result.type).toBe(RECEIVE_REMOVE_FAVORITES);
         done();
       });
     }, 0);
@@ -182,10 +177,12 @@ describe('Favorites - actions', () => {
       // Make sure test callback is executed after the internal fetchReviews one.
       setTimeout(() => {
         promiseRemove.then((result) => {
-          expect(result).toBe(undefined);
-
+          expect(result).toEqual({
+            type: 'ABORT_ADD_FAVORITES',
+            productId: 'product_id',
+          });
           expect(mockedDispatchAdd).toHaveBeenCalledTimes(1);
-          expect(mockedDispatchRemove).toHaveBeenCalledTimes(2);
+          expect(mockedDispatchRemove).toHaveBeenCalledTimes(1);
           done();
         });
       }, 0);

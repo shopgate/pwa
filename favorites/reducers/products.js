@@ -16,6 +16,7 @@ import {
   REQUEST_REMOVE_FAVORITES,
   RECEIVE_REMOVE_FAVORITES,
   ERROR_REMOVE_FAVORITES,
+  ABORT_ADD_FAVORITES,
 } from '../constants';
 
 /**
@@ -47,6 +48,12 @@ const products = (state = {}, action) => {
       return {
         ...state,
         isFetching: true,
+        ids: state.ids.filter(id => id !== action.productId),
+      };
+    case ABORT_ADD_FAVORITES:
+      return {
+        ...state,
+        isFetching: false,
         ids: state.ids.filter(id => id !== action.productId),
       };
     case RECEIVE_FAVORITES:

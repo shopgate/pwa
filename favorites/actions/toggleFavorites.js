@@ -10,6 +10,7 @@ import {
   receiveAddFavorites,
   requestAddFavorites,
   errorAddFavorites,
+  abortAddFavorites,
 } from '../action-creators/addFavorites';
 
 import {
@@ -79,23 +80,22 @@ const removeFavorites = productId => (dispatch) => {
       return;
     }
 
-    dispatch(requestRemoveFavorites(productId));
-
     if (addTimeout) {
       clearAddTimer();
-      res();
+      res(abortAddFavorites(productId));
       return;
     }
+    dispatch(requestRemoveFavorites(productId));
 
     new PipelineRequest('deleteFavorites')
       .setInput({ productId })
       .dispatch()
-      .then(res)
+      .then(res(receiveRemoveFavorites()))
       .catch(rej);
   });
 
   removePromise
-    .then(() => dispatch(receiveRemoveFavorites()))
+    .then(action => dispatch(action))
     .catch(() => dispatch(errorRemoveFavorites(productId)));
 
   return removePromise;
