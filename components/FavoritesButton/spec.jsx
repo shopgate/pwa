@@ -37,12 +37,12 @@ describe('<FavoritesButton />', () => {
 
     return mount(
       <Provider store={store}>
-        <FavoritesButton addFavorites={()=>{}} removeFavorites={()=>{}}/>
+        <FavoritesButton addFavorites={() => {}} removeFavorites={() => {}} />
       </Provider>,
       mockRenderOptions
     );
   };
-  beforeEach(()=>{
+  beforeEach(() => {
     dispatcher.mockReset();
   });
 
