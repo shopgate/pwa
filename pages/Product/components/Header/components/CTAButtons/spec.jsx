@@ -8,15 +8,14 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import CTAButtons from './index';
 import FavoritesButton from 'Components/FavoritesButton';
+import CTAButtons from './index';
 import AddToCartButton from './components/AddToCartButton';
 
 describe('CTAs (product header)', () => {
-
   describe('Rendering', () => {
     it('should render rating when data is available', () => {
-      const component = shallow(<CTAButtons/>);
+      const component = shallow(<CTAButtons />);
       expect(component).toMatchSnapshot();
       expect(component.find(FavoritesButton).exists()).toBe(true);
       expect(component.find(AddToCartButton).exists()).toBe(true);
