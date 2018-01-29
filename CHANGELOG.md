@@ -1,6 +1,12 @@
 
 # Changelog
 ---
+### [2.2.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.1.0...v2.2.0) - January 29, 2018
+#### Added
+- Add/Remove favorites actions, subscriptions and stream.
+#### Changed
+- Favorites reducers react on Add/Remove favorites actions by adding/removing a product to/from redux store on request action.
+---
 
 ### [2.1.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.0.0...v2.1.0) - January 25, 2018
 #### Added
