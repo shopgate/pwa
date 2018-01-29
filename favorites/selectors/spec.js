@@ -13,6 +13,7 @@ import {
   getFavoritesCount,
   hasFavorites,
   isInitialLoading,
+  isCurrentProductOnFavoriteList,
 } from './index';
 
 describe('Favorites - selectors', () => {
@@ -127,6 +128,34 @@ describe('Favorites - selectors', () => {
     });
     it('should return false when state is fetched for the first  time', () => {
       expect(isInitialLoading(initedState)).toBe(false);
+    });
+  });
+  describe('isCurrentProductOnFavoriteList', () => {
+    const currentProductState = {
+      product: {
+        currentProduct: {
+          productId: 'product_1',
+        },
+      },
+    };
+    const initialState = {
+      ...currentProductState,
+      favorites: {},
+    };
+    const state = {
+      ...currentProductState,
+      favorites: {
+        products: {
+          ids: ['product_1'],
+        },
+      },
+    };
+
+    it('should return false when product is not listed', () => {
+      expect(isCurrentProductOnFavoriteList(initialState)).toBe(false);
+    });
+    it('should return true when product is listed', () => {
+      expect(isCurrentProductOnFavoriteList(state)).toBe(true);
     });
   });
 });

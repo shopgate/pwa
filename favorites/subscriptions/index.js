@@ -12,6 +12,7 @@ import {
 } from '@shopgate/pwa-common/streams/user';
 import {
   favoritesDidEnter$,
+  favoritesChanged$,
 } from '../streams';
 import getFavorites from '../actions/getFavorites';
 
@@ -34,6 +35,8 @@ const favorites = (subscribe) => {
   subscribe(userDidLogin$.merge(userDidLogout$), ({ dispatch }) => {
     dispatch(getFavorites(true));
   });
+
+  subscribe(favoritesChanged$, ({ dispatch }) => dispatch(getFavorites(true)));
 };
 
 export default favorites;

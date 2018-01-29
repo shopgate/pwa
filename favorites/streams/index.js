@@ -10,8 +10,24 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import {
   routeDidEnter,
 } from '@shopgate/pwa-common/streams/history';
+
+import {
+  main$,
+} from '@shopgate/pwa-common/streams/main';
+
 import {
   FAVORITES_PATH,
+  RECEIVE_ADD_FAVORITES,
+  RECEIVE_REMOVE_FAVORITES,
+  ERROR_ADD_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
 } from '../constants';
 
 export const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
+
+export const favoritesChanged$ = main$.filter(({ action }) => [
+  RECEIVE_REMOVE_FAVORITES,
+  RECEIVE_ADD_FAVORITES,
+  ERROR_ADD_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
+].includes(action.type));
