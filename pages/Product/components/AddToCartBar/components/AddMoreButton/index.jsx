@@ -7,20 +7,23 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import AddMoreIcon from 'Components/icons/AddMoreIcon';
 import connect from './connector';
 import styles from './style';
 
 /**
- * The ButtonBlocker component.
+ * The AddMoreButton component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ButtonBlocker = ({ cartProductCount }) => (
-  <div className={cartProductCount ? styles.transform : styles.base} />
+const AddMoreButton = ({ handleAddToCart }) => (
+  <button onClick={handleAddToCart} className={styles.container}>
+    <AddMoreIcon />
+  </button>
 );
 
-ButtonBlocker.propTypes = {
-  cartProductCount: PropTypes.number.isRequired,
+AddMoreButton.propTypes = {
+  handleAddToCart: PropTypes.func.isRequired,
 };
 
-export default connect(ButtonBlocker);
+export default connect(AddMoreButton);

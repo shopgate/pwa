@@ -8,6 +8,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AddToCartButton from './components/AddToCartButton';
+import AddMoreButton from './components/AddMoreButton';
+import CartItemsCount from './components/CartItemsCount';
 import connect from './connector';
 import styles from './style';
 
@@ -16,12 +18,27 @@ import styles from './style';
  */
 class AddToCartBar extends Component {
   static propTypes = {
-    isOrderable: PropTypes.bool.isRequired,
     cartProductCount: PropTypes.number,
   };
 
   static defaultProps = {
     cartProductCount: 0,
+  }
+
+  /**
+   * Returns the status bar styles.
+   * @return {Object|null}
+   */
+  get statusBarStyles() {
+    const { cartProductCount } = this.props;
+
+    if (cartProductCount) {
+      return {
+        opacity: 1,
+      };
+    }
+
+    return null;
   }
 
   /**
@@ -31,7 +48,11 @@ class AddToCartBar extends Component {
   render() {
     return [
       <div className={styles.container} key="bar">
-        <div className={styles.ctaContainer}>
+        <div className={styles.base}>
+          <div className={styles.statusBar} style={this.statusBarStyles}>
+            <CartItemsCount />
+            <AddMoreButton />
+          </div>
           <AddToCartButton />
         </div>
       </div>,

@@ -18,17 +18,29 @@ const container = css({
   background: colors.light,
 });
 
-const ctaContainer = css({
+const base = css({
+  position: 'relative',
+  height: 46,
+});
+
+const statusBar = css({
   display: 'flex',
+  height: '100%',
+  alignItems: 'center',
+  maxWidth: '65%',
+  opacity: 0,
+  transition: 'opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  padding: `0 ${variables.gap.small}px`,
 });
 
 const dummy = css({
   display: 'block',
-  minHeight: 54,
+  minHeight: 62,
 });
 
 export default {
   container,
-  ctaContainer,
+  base,
+  statusBar,
   dummy,
 };

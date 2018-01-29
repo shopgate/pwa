@@ -7,7 +7,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@shopgate/pwa-common/components/Button';
 import connect from './connector';
 import styles from './style';
 
@@ -20,6 +19,43 @@ class AddToCartButton extends Component {
     handleAddToCart: PropTypes.func.isRequired,
     openCart: PropTypes.func.isRequired,
   }
+
+  /**
+   * Constructor.
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      opened: !!props.cartProductCount,
+    };
+  }
+
+  /**
+   * Resets to not open when the count is 0.
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      opened: !!nextProps.cartProductCount,
+    });
+  }
+
+  /**
+   * Returns the style.
+   * @return {Object} [description]
+   */
+  get style() {
+    if (this.state.opened) {
+      return {
+        width: '35%',
+      };
+    }
+
+    return null;
+  }
+
   /**
    * Adds a new product to cart or opens the cart if it already has products in it.
    */
@@ -31,6 +67,10 @@ class AddToCartButton extends Component {
       return;
     }
 
+    this.setState({
+      opened: true,
+    });
+
     openCart();
   }
 
@@ -40,11 +80,12 @@ class AddToCartButton extends Component {
    */
   render() {
     const { cartProductCount } = this.props;
+    const style = this.state.opened ? { width: '35%' } : null;
 
     return (
-      <Button className={styles} onClick={this.handleClick}>
+      <button className={styles} style={style} onClick={this.handleClick}>
         {!cartProductCount ? 'Add to cart' : 'Go to cart'}
-      </Button>
+      </button>
     );
   }
 }
