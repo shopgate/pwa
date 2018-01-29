@@ -1,4 +1,8 @@
 # Changelog
+### [1.4.2](https://github.com/shopgate/theme-gmd/compare/v1.4.1...v1.4.2) - January 26, 2018
+#### Added
+- Translation file for Australia (AU).
+---
 ---
 ### [1.4.1](https://github.com/shopgate/theme-ios11/compare/v1.4.0...v1.4.1) - January 25, 2018
 #### Changed
