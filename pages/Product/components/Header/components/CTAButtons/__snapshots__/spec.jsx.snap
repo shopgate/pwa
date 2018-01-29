@@ -5,7 +5,7 @@ exports[`CTAs (product header) Rendering should render rating when data is avail
   className="css-7azkrx"
 >
   <Connect(FavoritesButton)
-    className="css-16tssa1"
+    className="css-ed0vzt"
     rippleClassName="css-1tdptiz"
   />
   <Connect(AddToCartButton) />
