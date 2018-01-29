@@ -1,6 +1,11 @@
 
 # Changelog
+---
 
+### [2.0.2](https://github.com/shopgate/pwa-common/compare/v2.0.1...v2.0.2) - January 29, 2018
+#### Removed
+- Widget type conversion
+ 
 ---
 
 ### [2.0.1](https://github.com/shopgate/pwa-common/compare/v2.0.0...v2.0.1) - January 25, 2018
