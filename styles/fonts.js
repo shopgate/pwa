@@ -8,10 +8,10 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { fonts } = themeConfig;
+const { font } = themeConfig;
 
 css.global('body', {
-  font: `${fonts.rootSize}px/${fonts.lineHeight} ${fonts.family}`,
+  font: `${font.rootSize}px/${font.lineHeight} ${font.family}`,
 });
 
 export default fonts;
