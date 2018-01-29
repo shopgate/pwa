@@ -3,7 +3,6 @@
 #### Added
 - Translation file for Australia (AU).
 ---
----
 ### [1.4.1](https://github.com/shopgate/theme-ios11/compare/v1.4.0...v1.4.1) - January 25, 2018
 #### Changed
 - Updated `@shopgate/pwa-common` to 2.0.1 version to get the `isNumeric` fix.
