@@ -7,7 +7,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
   isOrderable={true}
 >
   <button
-    className="css-xgtp7n css-16iirry"
+    className="css-1xir2og css-16iirry"
     onClick={[Function]}
   >
     <div
@@ -129,7 +129,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   isOrderable={true}
 >
   <button
-    className="css-xgtp7n css-16iirry"
+    className="css-1xir2og css-16iirry"
     onClick={[Function]}
   >
     <div
@@ -251,7 +251,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
   isOrderable={true}
 >
   <button
-    className="css-xgtp7n css-oo1pf9"
+    className="css-1xir2og css-oo1pf9"
     onClick={[Function]}
   >
     <div
