@@ -24,11 +24,11 @@ const Target = ({ id, identifier, children }) => {
     });
 
   if (children && components.length) {
-    return
+    return last(components);
   }
 
   if (components.length) {
-    return last(components);
+    return components;
   }
 
   return children;
