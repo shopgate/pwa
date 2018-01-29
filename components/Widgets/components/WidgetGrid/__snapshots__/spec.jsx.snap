@@ -28,7 +28,7 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
           "id": 83535,
           "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
         },
-        "type": "core-widgets/image",
+        "type": "@shopgate/commerce-widgets/image",
         "width": 12,
       },
     ]
@@ -44,7 +44,7 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
   >
     <Widget
       cellSize={85}
-      component={null}
+      component={[Function]}
       config={
         Object {
           "col": 0,
@@ -54,12 +54,44 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
             "id": 83535,
             "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
           },
-          "type": "core-widgets/image",
+          "type": "@shopgate/commerce-widgets/image",
           "width": 12,
         }
       }
       key="w0"
-    />
+    >
+      <GridItem
+        className="css-1gywj2c css-63oe3q  "
+        component="div"
+        grow={0}
+        shrink={1}
+      >
+        <div
+          className="css-1gywj2c css-63oe3q  "
+        >
+          <div
+            className="css-4hpmhj"
+          >
+            <Image
+              ratio={
+                Array [
+                  12,
+                  3,
+                ]
+              }
+              settings={
+                Object {
+                  "id": 83535,
+                  "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+                }
+              }
+            >
+              <div />
+            </Image>
+          </div>
+        </div>
+      </GridItem>
+    </Widget>
   </div>
 </WidgetGrid>
 `;

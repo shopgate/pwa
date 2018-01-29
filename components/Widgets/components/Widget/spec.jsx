@@ -19,13 +19,13 @@ const MyComponent = () => (
 );
 
 const widgets = {
-  'core-widgets/image': MyComponent,
+  '@shopgate/commerce-widgets/image': MyComponent,
 };
 
 describe('<Widget />', () => {
   it('should render an image widget', () => {
     const config = {
-      type: 'core-widgets/image',
+      type: '@shopgate/commerce-widgets/image',
       col: 1,
       row: 1,
       width: 12,

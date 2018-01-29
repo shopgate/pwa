@@ -25,18 +25,7 @@ const STATE_VERSION = 'v1';
 const enrichWidgets = action =>
   action.config.widgets.map((widget, index) => ({
     ...widget,
-    // TODO Remove this line after pipeline has been changed!
-    type: widget.type.replace('core-widgets', '@shopgate/commerce-widgets'),
-    settings: {
-      ...widget.settings,
-      ...widget.settings.widgets && {
-        widgets: widget.settings.widgets.map(config => ({
-          ...config,
-          type: config.type.replace('core-widgets', '@shopgate/commerce-widgets'),
-        })),
-      },
-    },
-    id: `${action.pageId}-${index}-${widget.type.replace('core-widgets', '@shopgate/commerce-widgets')}`,
+    id: `${action.pageId}-${index}-${widget.type}`,
   }));
 
 /**
