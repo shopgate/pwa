@@ -10,16 +10,20 @@ import FavoritesButton from 'Components/FavoritesButton';
 import AddToCartButton from './components/AddToCartButton';
 import styles from './style';
 
-const CTAButtons = () => {
-  return (
-    <div className={styles.buttons}>
-      <FavoritesButton
-        className={styles.favButton}
-        rippleClassName={styles.ripple}
-      />
-      <AddToCartButton />
-    </div>
-  );
-};
+/**
+ * Renders CTA buttons for product page (add to cart + toggle favorites).
+ *
+ * @returns {XML}
+ * @constructor
+ */
+const CTAButtons = () => (
+  <div className={styles.buttons}>
+    <FavoritesButton
+      className={styles.favButton}
+      rippleClassName={styles.ripple}
+    />
+    <AddToCartButton />
+  </div>
+);
 
 export default CTAButtons;

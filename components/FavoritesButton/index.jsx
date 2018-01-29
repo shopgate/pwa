@@ -18,9 +18,10 @@ import connect from './connector';
  */
 class FavoritesButton extends Component {
   static propTypes = {
-    productId: PropTypes.string,
+    active: PropTypes.bool.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
+    productId: PropTypes.string,
     removeFavorites: PropTypes.func,
     rippleClassName: PropTypes.string,
   };
@@ -41,11 +42,11 @@ class FavoritesButton extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    if(!this.props.productId) {
+    if (!this.props.productId) {
       return;
     }
 
-    if(!this.props.active) {
+    if (!this.props.active) {
       this.props.addFavorites(this.props.productId);
     } else {
       this.props.removeFavorites(this.props.productId);
