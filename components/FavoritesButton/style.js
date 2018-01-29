@@ -14,11 +14,11 @@ const button = css({
   background: '#fff',
   borderRadius: '50%',
   padding: 0,
-  fontSize: 28,
+  fontSize: 20,
   lineHeight: 1,
   color: colors.accent,
   outline: 0,
-  zIndex: 1,
+  zIndex: 15, // Should overlap the gallery bullets
 }).toString();
 
 const ripple = css({
