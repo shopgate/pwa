@@ -90,7 +90,7 @@ const removeFavorites = productId => (dispatch) => {
     new PipelineRequest('deleteFavorites')
       .setInput({ productId })
       .dispatch()
-      .then(res(receiveRemoveFavorites()))
+      .then(() => res(receiveRemoveFavorites()))
       .catch(rej);
   });
 

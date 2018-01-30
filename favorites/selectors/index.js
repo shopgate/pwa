@@ -70,6 +70,9 @@ export const hasFavorites = createSelector(
   count => !!count
 );
 
+/**
+ * Returns true when the current product is on the favorites list
+ */
 export const isCurrentProductOnFavoriteList = createSelector(
   getCurrentProductId,
   getFavoritesProductsIds,
