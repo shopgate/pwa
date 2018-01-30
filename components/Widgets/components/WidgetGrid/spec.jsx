@@ -30,7 +30,7 @@ describe('<WidgetGrid />', () => {
         id: 83535,
         image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
       },
-      type: 'core-widgets/image',
+      type: '@shopgate/commerce-widgets/image',
     }];
 
     const wrapper = mount((
@@ -38,6 +38,7 @@ describe('<WidgetGrid />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Image).length).toEqual(1);
   });
 
   it('should not render without a `config` prop', () => {
@@ -46,6 +47,6 @@ describe('<WidgetGrid />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('div').children().length).toBe(0);
+    expect(wrapper.find(Image).length).toEqual(0);
   });
 });

@@ -119,15 +119,6 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
       });
       break;
 
-    case 'favourite_list':
-      this.addLinkAction('legacyLink', {
-        targetTab: 'favourite_list',
-        navigationType: 'plain',
-        popTabToRoot: true,
-        url: '/favourite_list',
-      });
-      break;
-
     case 'cart_add_coupon':
       this.addLinkAction('pushNotification', {
         url,
