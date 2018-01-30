@@ -15,7 +15,7 @@ import { getProductById } from '@shopgate/pwa-common-commerce/product/selectors/
  * @return {Object} The populated component props.
  */
 const mapStateToProps = (state, props) => ({
-  product: getProductById(state, props.identifier).productData || null,
+  product: getProductById(state, props.id).productData || null,
 });
 
 export default connect(mapStateToProps);
