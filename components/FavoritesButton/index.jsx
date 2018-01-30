@@ -21,20 +21,20 @@ class FavoritesButton extends Component {
     active: PropTypes.bool.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
-    handleClick: PropTypes.func,
-    handleRemove: PropTypes.func,
+    onRemove: PropTypes.func,
     productId: PropTypes.string,
     removeFavorites: PropTypes.func,
+    removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
   };
 
   static defaultProps = {
     addFavorites: () => {},
     className: '',
-    handleClick: () => {},
-    handleRemove: () => {},
+    onRemove: () => {},
     productId: null,
     removeFavorites: () => {},
+    removeTimeout: null,
     rippleClassName: '',
   };
 
@@ -63,13 +63,17 @@ class FavoritesButton extends Component {
       return;
     }
 
-    this.props.handleClick(this.state.active);
-
     if (!this.state.active) {
       this.props.addFavorites(this.props.productId);
     } else {
-      this.props.handleRemove();
-      this.props.removeFavorites(this.props.productId);
+      if (this.props.removeThrottle) {
+        setTimeout(()=> {
+          this.props.removeFavorites(this.props.productId);
+        }, this.props.removeThrottle);
+      } else {
+        this.props.removeFavorites(this.props.productId);
+      }
+      this.props.onRemove();
     }
 
     this.setState({

@@ -6,13 +6,13 @@
  *
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import { findDOMNode } from 'react-dom';
+import {findDOMNode} from 'react-dom';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import {bin2hex} from '@shopgate/pwa-common/helpers/data';
+import {getAbsoluteHeight} from '@shopgate/pwa-common/helpers/dom';
 import CardItem from 'Components/CardList/components/Item';
 import ProductCharacteristics from 'Components/ProductCharacteristics';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -42,12 +42,9 @@ class Item extends Component {
   /**
    * We need to set the element height explicitly so that we can animate it later.
    */
-  componentDidUpdate() {
-    this.transitionElement.style.height = `${getAbsoluteHeight(findDOMNode(this.transitionElement)) + 4}px`;
-  }
-
-  componentDidMount () {
-    this.transitionElement.style.height = `${getAbsoluteHeight(findDOMNode(this.transitionElement)) + 4}px`;
+  componentDidMount() {
+    this.initialHeight = `${getAbsoluteHeight(findDOMNode(this.transitionElement)) + 4}px`;
+    this.transitionElement.style.height = this.initialHeight;
   }
 
   /**
@@ -66,68 +63,80 @@ class Item extends Component {
     return (
       <Transition in={this.state.visible} timeout={styles.favItemTransitionDuration}>
         {state => (
-          <div
-            ref={(element) => { this.transitionElement = element; }}
-            key={this.props.product.id}
-            style={styles.getFavItemTransitionStyle(state)}
-          >
-            <CardItem key={this.props.product.id}>
-              <Grid className={styles.row}>
-                <Grid.Item className={styles.leftColumn}>
-                  <div className={styles.image}>
-                    <Link
-                      tagName="a"
-                      href={`/item/${bin2hex(this.props.product.id)}`}
-                      itemProp="item"
-                      itemScope
-                      itemType="http://schema.org/Product"
-                    >
-                      <ProductImage src={this.props.product.featuredImageUrl}/>
-                    </Link>
-                  </div>
-                  <FavoritesButton
-                    productId={this.props.product.id}
-                    active={true}
-                    handleClick={(active) => {
-                      this.setState({
-                        visible: false,
-                      });
-                      console.warn('foo', active);
-                    }}
-                  />
-                </Grid.Item>
-                <Grid.Item grow={1} className={styles.rightColumn}>
-                  <div className={styles.name}>
-                    <Link
-                      tagName="a"
-                      href={`/item/${bin2hex(this.props.product.id)}`}
-                      itemProp="item"
-                      itemScope
-                      itemType="http://schema.org/Product"
-                    >
-                      {this.props.product.name}
-                    </Link>
-                  </div>
-                  <div className={styles.details}>
-                    <Grid className={styles.detailsRow}>
-                      <Grid.Item className={styles.propertiesContainer}>
-                        <ProductCharacteristics characteristics={this.props.product.characteristics}/>
-                        <AvailableText
-                          text={this.props.product.availability.text}
-                          state={this.props.product.availability.state}
-                          showWhenAvailable
-                        />
-                      </Grid.Item>
-                      <Grid.Item className={styles.priceContainer}>
-                        <Price price={this.props.product.price}/>
-                      </Grid.Item>
-                    </Grid>
-                  </div>
-                </Grid.Item>
-              </Grid>
-            </CardItem>
-          </div>
+          <CardItem key={this.props.product.id}>
+            <div style={styles.itemWrapper}>
+              <div
+                ref={element => {
+                  this.transitionElement = element;
+                }}
+                key={this.props.product.id}
+                style={{
+                  ...styles.getFavItemTransitionStyle(state),
+                  ...(!this.state.visible && {
+                    transform: `translateY(-${this.initialHeight})`
+                  })
+                }}
+              >
+                <Grid className={styles.row}>
+                  <Grid.Item className={styles.leftColumn}>
+                    <div className={styles.image}>
+                      <Link
+                        tagName="a"
+                        href={`/item/${bin2hex(this.props.product.baseProductId || this.props.product.id)}`}
+                        itemProp="item"
+                        itemScope
+                        itemType="http://schema.org/Product"
+                      >
+                        <ProductImage src={this.props.product.featuredImageUrl}/>
+                      </Link>
+                    </div>
+                    <FavoritesButton
+                      productId={this.props.product.id}
+                      active={this.state.visible}
+                      removeThrottle={styles.favItemTransitionDuration + 200}
+                      onRemove={() => {
+                        setTimeout(() => {
+                          this.setState({
+                            visible: false,
+                          });
+                        }, 200);
+                      }}
+                    />
+                  </Grid.Item>
+                  <Grid.Item grow={1} className={styles.rightColumn}>
+                    <div className={styles.name}>
+                      <Link
+                        tagName="a"
+                        href={`/item/${bin2hex(this.props.product.id)}`}
+                        itemProp="item"
+                        itemScope
+                        itemType="http://schema.org/Product"
+                      >
+                        {this.props.product.name}
+                      </Link>
+                    </div>
+                    <div className={styles.details}>
+                      <Grid className={styles.detailsRow}>
+                        <Grid.Item className={styles.propertiesContainer}>
+                          <ProductCharacteristics
+                            characteristics={this.props.product.characteristics}/>
+                          <AvailableText
+                            text={this.props.product.availability.text}
+                            state={this.props.product.availability.state}
+                            showWhenAvailable
+                          />
+                        </Grid.Item>
+                        <Grid.Item className={styles.priceContainer}>
+                          <Price price={this.props.product.price}/>
+                        </Grid.Item>
+                      </Grid>
+                    </div>
+                  </Grid.Item>
+                </Grid>
+              </div>
+            </div>
 
+          </CardItem>
         )}
       </Transition>
     );

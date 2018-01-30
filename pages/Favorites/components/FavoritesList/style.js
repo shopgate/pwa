@@ -69,10 +69,10 @@ const detailsRow = css({
   alignItems: 'flex-end',
 }).toString();
 
-const favItemTransitionDuration = 500;
+const favItemTransitionDuration = 300;
 
 const defaultTransitionStyle = {
-  transition: `height ${favItemTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
+  transition: `all ${favItemTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
 };
 
 const transitionStyles = {
@@ -94,6 +94,14 @@ const getFavItemTransitionStyle = state => ({
   ...transitionStyles[state],
 });
 
+/**
+ * Styling for the wrapping div
+ * @type {{overflow: string}}
+ */
+const itemWrapper = {
+  overflow: 'hidden',
+};
+
 export default {
   container,
   image,
@@ -105,6 +113,7 @@ export default {
   detailsRow,
   priceContainer,
   propertiesContainer,
+  itemWrapper,
   favItemTransitionDuration,
   getFavItemTransitionStyle,
 };
