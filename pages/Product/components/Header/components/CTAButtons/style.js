@@ -19,7 +19,6 @@ const buttons = css({
 
 const favButton = css({
   marginRight: variables.gap.big,
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   zIndex: 15, // Prevents the icons to be visible outside of the circle
   fontSize: 24,
 }).toString();
