@@ -17,4 +17,4 @@ css.global('body', {
   font: `${fonts.rootSize}px/${fonts.lineHeight} ${fonts.family}`,
 });
 
-export default font;
+export default fonts;
