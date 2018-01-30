@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- 8.6.0
+before_script: cd frontend/ && npm i
+script: npm run coverage -- --maxWorkers=4
+after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+branches:
+  only:
+  - master
+notifications:
+  email: false
+  slack:
+    on_success: change
+    on_failure: change
+    template:
+      - "%{repository_slug}"
+      - "<%{build_url}|#%{build_number}> - %{message}"
+      - "Commit: \"%{commit_subject}\" by %{author}"
+    secure: NT0eoZ6RBMxEKej9NynlC0//aOSZmb8bSYZKrvhkbAqZffklivLPuStFO40RiNZ0j/UteSm36OShySRbpOCSm+sxSpo5uR5SwD6zTXIHOb2iK5wZXVRpsWFtlfq5vKycXRAfl9Lsr7AoIdsyP10+mJbq7Q8Iu643LoR3NoAsBmLExov51ZZuHalTlMZBJef7Ij6BTjQItSCK1q3DI1zYZRdFf0euLessyNjrHrMmiPtJoT0rvSmsRN+cHbg7DNqkcJI9RDvgv7iaV26ymBmqM3lRGAT07KL8MpLNkxeumW+hbgX0pIGlUK2XmUHdaNAIt5kid7U7pWDp++H9UqrjrxoZ81Gi0ck5feDhvkhhThWLQNuToiK+oueb5gEM+ufhl108qvrh/AMQQgq5KeE9aUzueUPZRwbHj09Vn0a5wEhROeICqyl5pwnHCCx7OL/JmfqzfgHxYUy1aVODsqZrp2fvXqO3xiicUDdKn4rXuVQn09nobcNqIVgKIGDZDtRbBo/x/TF6212oS3iZO/ETNzUpZsZoG/xZNMeRyH0mDyy0TjTYEMizQYf44Zsevzdm4kUkM6VtvZv4IKbif3vPq2qAkhzjANJGeYTCFF9MZcWGorCWqrXg5Vg2ezUWBXJlsYy0Xtk0au6KqOlN2W/xqRHDwHIjkwIJfN+tdh0/bCY=

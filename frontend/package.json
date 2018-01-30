@@ -1,0 +1,43 @@
+{
+  "name": "@shopgate/product-reviews",
+  "version": "1.0.0",
+  "description": "Shopgate's Product Reviews extension.",
+  "repository": "shopgate/product-reviews",
+  "bugs": "https://github.com/shopgate/product-reviews/issues",
+  "homepage": "https://github.com/shopgate/product-reviews",
+  "scripts": {
+    "lint": "eslint --parser babel-eslint --ignore-path ../.gitignore  --ext .js --ext .jsx .",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@shopgate/eslint-config": "^1.0.3",
+    "@shopgate/pwa-common": "^1.3.0",
+    "@shopgate/pwa-common-commerce": "^1.2.2",
+    "@shopgate/pwa-core": "^1.1.1",
+    "@shopgate/pwa-unit-test": "^1.3.0",
+    "@shopgate/react-hammerjs": "^0.5.3",
+    "babel-core": "^6.26.0",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-inline-elements": "^6.22.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "coveralls": "^3.0.0",
+    "lint-staged": "^6.0.1",
+    "pre-commit": "^1.2.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3",
+    "react-transform-catch-errors": "^1.0.2",
+    "redbox-react": "^1.5.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
