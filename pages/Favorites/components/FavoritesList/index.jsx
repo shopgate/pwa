@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CardList from 'Components/CardList';
 import Item from './components/Item';
@@ -17,21 +17,37 @@ import styles from './style';
  * @property {Array} products Products.
  * @returns {JSX}
  */
-const FavoritesList = ({ products }) => {
-  if (!products.length) {
-    return null;
-  }
-  return (
-    <div className={styles.container}>
-      <CardList>
-        {products.map(product => <Item key={product.id} product={product} />)}
-      </CardList>
-    </div>
-  );
-};
+class FavoritesList extends Component {
 
-FavoritesList.prototype.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.shape).isRequired,
-};
+  static propTypes = {
+    products: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  };
+
+  static defaultProps = {
+    product: [],
+  };
+
+  /**
+   * Checks if component should be updated.
+   * @param {Object} nextProps Next props.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.products.length !== nextProps.products.length;
+  }
+
+  render() {
+    if (!this.props.products.length) {
+      return null;
+    }
+    return (
+      <div className={styles.container}>
+        <CardList>
+          {this.props.products.map(product => <Item key={product.id} product={product} />)}
+        </CardList>
+      </div>
+    );
+  }
+}
 
 export default FavoritesList;

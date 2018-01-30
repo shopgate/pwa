@@ -21,18 +21,35 @@ class FavoritesButton extends Component {
     active: PropTypes.bool.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
+    handleClick: PropTypes.func,
+    handleRemove: PropTypes.func,
     productId: PropTypes.string,
     removeFavorites: PropTypes.func,
     rippleClassName: PropTypes.string,
   };
 
   static defaultProps = {
-    productId: null,
     addFavorites: () => {},
     className: '',
+    handleClick: () => {},
+    handleRemove: () => {},
+    productId: null,
     removeFavorites: () => {},
     rippleClassName: '',
   };
+
+  constructor(props){
+    super(props);
+    this.state = {
+      active: props.active
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      active: nextProps.active
+    });
+  }
 
   /**
    * Adds or removes a given product ID from the favorite list.
@@ -46,11 +63,18 @@ class FavoritesButton extends Component {
       return;
     }
 
-    if (!this.props.active) {
+    this.props.handleClick(this.state.active);
+
+    if (!this.state.active) {
       this.props.addFavorites(this.props.productId);
     } else {
+      this.props.handleRemove();
       this.props.removeFavorites(this.props.productId);
     }
+
+    this.setState({
+      active: !this.state.active
+    });
   };
 
   /**
@@ -58,7 +82,7 @@ class FavoritesButton extends Component {
    * @returns {JSX}
    */
   renderIcon() {
-    if (this.props.active) {
+    if (this.state.active) {
       return <HeartIcon />;
     }
 

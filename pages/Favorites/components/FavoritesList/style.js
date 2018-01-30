@@ -69,6 +69,31 @@ const detailsRow = css({
   alignItems: 'flex-end',
 }).toString();
 
+const favItemTransitionDuration = 500;
+
+const defaultTransitionStyle = {
+  transition: `height ${favItemTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
+};
+
+const transitionStyles = {
+  exited: {
+    height: 0,
+  },
+  exiting: {
+    height: 0,
+  },
+};
+
+/**
+ * Creates an object with style attributes to enable a cart item transition.
+ * @param {string} state A state of the react-transition-group/Transition component.
+ * @return {Object}
+ */
+const getFavItemTransitionStyle = state => ({
+  ...defaultTransitionStyle,
+  ...transitionStyles[state],
+});
+
 export default {
   container,
   image,
@@ -80,4 +105,6 @@ export default {
   detailsRow,
   priceContainer,
   propertiesContainer,
+  favItemTransitionDuration,
+  getFavItemTransitionStyle,
 };
