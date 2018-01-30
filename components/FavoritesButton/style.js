@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -14,11 +14,11 @@ const button = css({
   background: '#fff',
   borderRadius: '50%',
   padding: 0,
-  fontSize: 28,
+  fontSize: 20,
   lineHeight: 1,
   color: colors.accent,
   outline: 0,
-  zIndex: 1,
+  zIndex: 15, // Should overlap the gallery bullets
 }).toString();
 
 const ripple = css({
