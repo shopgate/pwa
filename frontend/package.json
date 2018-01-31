@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.3",
-    "@shopgate/pwa-common": "^2.0.2",
+    "@shopgate/pwa-common": "^2.1.0",
     "@shopgate/pwa-core": "^1.2.0",
     "@shopgate/react-hammerjs": "^0.5.3",
     "babel-cli": "^6.26.0",
