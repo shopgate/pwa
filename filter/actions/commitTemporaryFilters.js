@@ -10,18 +10,30 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import setActiveFilters from '../action-creators/setActiveFilters';
-import { getActiveFiltersStack, getTemporaryFilters } from '../selectors';
+import {
+  getActiveFiltersStack,
+  getTemporaryFilters,
+  getTemporaryFiltersWithRoudedDisplayAmounts,
+} from '../selectors';
 import getProducts from '../../product/actions/getProducts';
 import buildFilterParams from './helpers/buildFilterParams';
 
 /**
  * Submits the temporary state to the active filters.
+ * @param {boolean} roundDisplayAmounts If set to TRUE the values of the display_amount will be
+ *   rounded to the next full number.
  * @returns {Function} A redux thunk.
  */
-const commitTemporaryFilters = () => (dispatch, getState) => {
+const commitTemporaryFilters = (roundDisplayAmounts = true) => (dispatch, getState) => {
   const state = getState();
   const activeFilters = getActiveFiltersStack(state);
-  const temporaryFilters = getTemporaryFilters(state);
+  let temporaryFilters;
+
+  if (roundDisplayAmounts) {
+    temporaryFilters = getTemporaryFiltersWithRoudedDisplayAmounts(state);
+  } else {
+    temporaryFilters = getTemporaryFilters(state);
+  }
 
   if (!activeFilters.length) {
     logger.error('Tried to submit temporary filters, but no active filter stack was created.');
