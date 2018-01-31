@@ -35,7 +35,6 @@ module.exports = {
     success: '#35cc29',
     warning: '#ff9300',
     error: '#ff0000',
-    ...overrides,
   },
   variables: {
     materialShadow,
