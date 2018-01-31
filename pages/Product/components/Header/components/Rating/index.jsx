@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasReviews } from 'Config/app.json';
+import { hasReviews } from '@shopgate/pwa-common/helpers/config';
 import RatingStars from 'Components/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
@@ -43,8 +43,13 @@ const Rating = ({ rating }) => {
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div role="link" className={container} onClick={scrollToRating}>
+    // eslint-disable-next-line max-len
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
+    <div
+      className={container}
+      onClick={scrollToRating}
+      role="link"
+    >
       <RatingStars value={rating.average} display="big" />
       <RatingCount count={rating.count} prominent />
     </div>

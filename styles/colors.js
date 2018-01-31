@@ -7,6 +7,8 @@
 
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+const colors = (themeConfig && themeConfig.colors) ? themeConfig.colors : {};
+
 export default {
   accent: '#5ccee3',
   accentContrast: '#fff',
@@ -31,5 +33,5 @@ export default {
   shade12: '#939393',
   success: '#35cc29',
   warning: '#ff9300',
-  ...themeConfig.colors,
+  ...colors,
 };
