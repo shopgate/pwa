@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-ios11",
-  "version": "1.4.3",
+  "version": "2.0.0",
   "description": "Shopgate's Google Material app theme.",
   "main": "index.jsx",
   "repository": "shopgate/theme-ios11",
