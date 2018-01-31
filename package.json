@@ -61,6 +61,6 @@
   "peerDependencies": {
     "lodash": "4.x",
     "@shopgate/pwa-core": "1.0.x",
-    "@shopgate/pwa-common": "1.2.x"
+    "@shopgate/pwa-common": "1.3.x"
   }
 }
