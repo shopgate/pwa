@@ -11,30 +11,28 @@ import HeartIcon from 'Components/icons/HeartIcon';
 import HeartOutlineIcon from 'Components/icons/HeartOutlineIcon';
 import Ripple from 'Components/Ripple';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The favorites button component.
  */
 class FavoritesButton extends Component {
   static propTypes = {
+    active: PropTypes.bool.isRequired,
+    addFavorites: PropTypes.func,
     className: PropTypes.string,
+    productId: PropTypes.string,
+    removeFavorites: PropTypes.func,
+    rippleClassName: PropTypes.string,
   };
 
   static defaultProps = {
+    productId: null,
+    addFavorites: () => {},
     className: '',
+    removeFavorites: () => {},
+    rippleClassName: '',
   };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      active: false,
-    };
-  }
 
   /**
    * Adds or removes a given product ID from the favorite list.
@@ -44,17 +42,23 @@ class FavoritesButton extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    this.setState({
-      active: !this.state.active,
-    });
-  }
+    if (!this.props.productId) {
+      return;
+    }
+
+    if (!this.props.active) {
+      this.props.addFavorites(this.props.productId);
+    } else {
+      this.props.removeFavorites(this.props.productId);
+    }
+  };
 
   /**
    * Renders the heart icon as filled or outlined, depending on the favorite list state.
    * @returns {JSX}
    */
   renderIcon() {
-    if (this.state.active) {
+    if (this.props.active) {
       return <HeartIcon />;
     }
 
@@ -68,7 +72,7 @@ class FavoritesButton extends Component {
   render() {
     return (
       <button className={`${styles.button} ${this.props.className}`} onClick={this.handleClick}>
-        <Ripple className={styles.ripple}>
+        <Ripple className={`${styles.ripple} ${this.props.rippleClassName}`}>
           {this.renderIcon()}
         </Ripple>
       </button>
@@ -76,4 +80,4 @@ class FavoritesButton extends Component {
   }
 }
 
-export default FavoritesButton;
+export default connect(FavoritesButton);

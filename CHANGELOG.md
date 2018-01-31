@@ -1,6 +1,20 @@
 
 # Changelog
 ---
+### [4.0.0](https://github.com/shopgate/theme-gmd/compare/v3.0.0...v4.0.0) - January 30, 2018
+#### Changed
+- Breaking change. Moved `RatingStars` out to the `@shopgate/ext-product-reviews` extension using portals.
+---
+### [3.0.0](https://github.com/shopgate/theme-gmd/compare/v2.0.1...v3.0.0) - January 29, 2018
+#### Added
+- Added add/remove product to favorites on product detail page.
+#### Changed
+- Breaking change. Moved `Product.Header.AddToCartButton` to `Product.Header.CTAButtons` as a child component.
+---
+### [2.0.1](https://github.com/shopgate/theme-gmd/compare/v2.0.0...v2.0.1) - January 26, 2018
+#### Added
+- Translation file for Australia (AU).
+---
 ### [2.0.0](https://github.com/shopgate/theme-gmd/compare/v1.3.0...v2.0.0) - January 25, 2018
 #### Added
 - Implemented Favorites page (`/favorite_list`). Favorites are not available for all shops. Feature is hidden behind a feature flag which can be changed using the shop configuration system.

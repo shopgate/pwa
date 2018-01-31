@@ -8,7 +8,6 @@
 import { css } from 'glamor';
 import spring from 'css-spring';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
 const options = {
   stiffness: 381.47,
@@ -67,9 +66,7 @@ const button = css({
   borderRadius: '50%',
   width: 56,
   height: 56,
-  position: 'absolute',
-  right: variables.gap.big,
-  top: -30,
+  position: 'relative',
   fontSize: '1.5rem',
   outline: 0,
   boxShadow: '0 8px 13px rgba(0, 0, 0, 0.2)',
