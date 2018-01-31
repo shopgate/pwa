@@ -67,9 +67,12 @@ class FavoritesButton extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX|null}
    */
   render() {
+    if (!process.env.APP_CONFIG.hasFavorites) {
+      return null;
+    }
     return (
       <button className={`${styles.button} ${this.props.className}`} onClick={this.handleClick}>
         <Ripple className={`${styles.ripple} ${this.props.rippleClassName}`}>
