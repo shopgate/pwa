@@ -29,15 +29,16 @@ describe('<FavoritesButton />', () => {
   /**
    * Creates component with provided store state.
    * @param {Object} mockedState Mocked stage.
+   * @param {Object} props Additional props.
    * @return {ReactWrapper}
    */
-  const createComponent = (mockedState) => {
+  const createComponent = (mockedState, props) => {
     const store = mockedStore(mockedState);
     store.dispatch = dispatcher;
 
     return mount(
       <Provider store={store}>
-        <FavoritesButton addFavorites={() => {}} removeFavorites={() => {}} />
+        <FavoritesButton addFavorites={() => {}} removeFavorites={() => {}} {...props} />
       </Provider>,
       mockRenderOptions
     );
@@ -47,7 +48,7 @@ describe('<FavoritesButton />', () => {
   });
 
   it('should only render when no favorites set', () => {
-    component = createComponent(mockedStateEmpty);
+    component = createComponent(mockedStateEmpty, { active: false });
     expect(component).toMatchSnapshot();
 
     expect(component.find('Heart').exists()).toBe(false);
@@ -57,7 +58,7 @@ describe('<FavoritesButton />', () => {
   });
 
   it('should render when favorites set', () => {
-    component = createComponent(mockedStateOnList);
+    component = createComponent(mockedStateOnList, { active: true });
     expect(component).toMatchSnapshot();
 
     expect(component.find('Heart').exists()).toBe(true);
@@ -65,20 +66,28 @@ describe('<FavoritesButton />', () => {
   });
 
   it('should add to favorites on click', () => {
-    component = createComponent(mockedStateNotOnList);
+    component = createComponent(mockedStateNotOnList, {
+      productId: '1',
+      active: false,
+    });
     expect(component.find('Heart').exists()).toBe(false);
     expect(component.find('HeartOutline').exists()).toBe(true);
 
     component.find('button').simulate('click');
+    component.update();
     expect(dispatcher.mock.calls.length).toBe(1);
   });
 
   it('should remove from favorites on click', () => {
-    component = createComponent(mockedStateOnList);
+    component = createComponent(mockedStateOnList, {
+      productId: '1',
+      active: true,
+    });
     expect(component.find('Heart').exists()).toBe(true);
     expect(component.find('HeartOutline').exists()).toBe(false);
 
     component.find('button').simulate('click');
+    component.update();
     expect(dispatcher.mock.calls.length).toBe(1);
   });
 });

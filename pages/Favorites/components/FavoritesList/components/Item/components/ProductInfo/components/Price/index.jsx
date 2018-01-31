@@ -10,7 +10,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ProductPrice from 'Components/Price';
 import ProductPriceStriked from 'Components/PriceStriked';
-import styles from './styles';
+import styles from './style';
 /**
  * Price component made for Favorites.
  */

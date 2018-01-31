@@ -13,18 +13,11 @@ import Item from './components/Item';
 import styles from './style';
 
 /**
- * Favorites list. Renders items if available.
- * @property {Array} products Products.
- * @returns {JSX}
+ * Favorites list component
  */
 class FavoritesList extends Component {
-
   static propTypes = {
     products: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  };
-
-  static defaultProps = {
-    product: [],
   };
 
   /**
@@ -36,6 +29,10 @@ class FavoritesList extends Component {
     return this.props.products.length !== nextProps.products.length;
   }
 
+  /**
+   * Favorites list. Renders items if available.Renders the favorites list
+   * @returns {JSX|null}
+   */
   render() {
     if (!this.props.products.length) {
       return null;

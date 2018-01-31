@@ -19,7 +19,7 @@ const currentProduct = {
  */
 export const mockedStateNotOnList = {
   product: {
-    currentProduct: currentProduct,
+    currentProduct,
     productsById: {
       [mockedProduct1.productId]: {
         productData: mockedProduct1,
@@ -39,7 +39,7 @@ export const mockedStateNotOnList = {
  */
 export const mockedStateOnList = {
   product: {
-    currentProduct: currentProduct,
+    currentProduct,
     productsById: {
       [mockedProduct1.productId]: {
         productData: mockedProduct1,

@@ -7,15 +7,11 @@
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
-const container = css({
-  background: colors.background,
-  flexGrow: 1,
-  paddingTop: variables.gap.xsmall,
+const image = css({
+  width: '100%',
 }).toString();
 
 export default {
-  container,
+  image,
 };
