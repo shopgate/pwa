@@ -1,6 +1,10 @@
 
 # Changelog
 ---
+### [2.3.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.2.0...v2.3.0) - January 30, 2018
+#### Added
+- `PRODUCT_ITEM_NAME_BEFORE` portal ID.
+---
 ### [2.2.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.1.0...v2.2.0) - January 29, 2018
 #### Added
 - Add/Remove favorites actions, subscriptions and stream.
