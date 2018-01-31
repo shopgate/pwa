@@ -6,7 +6,7 @@
       "id": "rating_stars",
       "path": "frontend/RatingStars/index.jsx",
       "target": "product-item.name.before",
-      "type": "portal"
+      "type": "portals"
     }
   ],
   "configuration": {
