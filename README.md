@@ -1,8 +1,8 @@
 # Shopgate's Product Reviews
 
-[![Travis CI Build](https://travis-ci.org/shopgate/product-reviews.svg?branch=master)](https://travis-ci.org/shopgate/product-reviews)
-[![GitHub release](https://img.shields.io/github/release/shopgate/product-reviews.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/product-reviews/badge.svg?branch=master)](https://coveralls.io/github/shopgate/product-reviews?branch=master)
+[![Travis CI Build](https://travis-ci.org/shopgate/ext-product-reviews.svg?branch=master)](https://travis-ci.org/shopgate/ext-product-reviews)
+[![GitHub release](https://img.shields.io/github/release/shopgate/ext-product-reviews.svg)]()
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/ext-product-reviews/badge.svg?branch=master)](https://coveralls.io/github/shopgate/ext-product-reviews?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Shopgate's Product Reviews extensions.
