@@ -7,6 +7,10 @@
 
 import { css } from 'glamor';
 
+css.global('body', {
+  userSelect: 'none',
+});
+
 /**
  * Updates the page inset css variables
  * @param {Object} pageInsets A page insets object

@@ -12,6 +12,7 @@ const container = css({
   backgroundColor: colors.shade8,
   fontSize: 14,
   padding: '13px 16px 16px',
+  userSelect: 'all',
 }).toString();
 
 const title = css({
