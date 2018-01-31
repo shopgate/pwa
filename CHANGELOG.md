@@ -2,9 +2,9 @@
 # Changelog
 ---
 
-### [2.1.0](https://github.com/shopgate/pwa-common/compare/v2.0.1...v2.0.2) - January 30, 2018
+### [2.1.0](https://github.com/shopgate/pwa-common/compare/v2.0.2...v2.1.0) - January 30, 2018
 #### Added
-- Portal component and PortalCollection helper.
+- `Portal` component and `PortalCollection` helper.
 
 ### [2.0.2](https://github.com/shopgate/pwa-common/compare/v2.0.1...v2.0.2) - January 29, 2018
 #### Removed
