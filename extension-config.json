@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "id": "@shopgate/product-reviews",
+  "id": "@shopgate/ext-product-reviews",
   "components": [
     {
       "id": "rating_stars",
