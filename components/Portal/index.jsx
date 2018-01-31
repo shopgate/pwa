@@ -46,7 +46,10 @@ class Portal extends Component {
       .forEach((key) => {
         if (config.portals[key].target === name) {
           const PortalComponent = portals[key];
-          components.push(<PortalComponent key={`${key}-${id}`} id={id} />);
+
+          if (React.isValidElement(PortalComponent)) {
+            components.push(<PortalComponent key={`${key}-${id}`} id={id} />);
+          }
         }
       });
 
