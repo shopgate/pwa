@@ -8,13 +8,17 @@
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 export default {
-  background: '#f8f8f8',
-  light: '#fff',
-  dark: '#000',
   accent: '#5ccee3',
+  accentContrast: '#fff',
+  background: '#f8f8f8',
+  dark: '#000',
+  darkGray: '#eaeaea',
+  error: '#ff0000',
+  focus: '#fa5400',
+  light: '#fff',
   placeholder: '#f2f2f2',
   primary: '#fa5400',
-  darkGray: '#eaeaea',
+  primaryContrast: '#fff',
   shade3: '#9a9a9a',
   shade4: '#b5b5b5',
   shade5: '#ccc',
@@ -27,6 +31,5 @@ export default {
   shade12: '#939393',
   success: '#35cc29',
   warning: '#ff9300',
-  error: '#ff0000',
   ...themeConfig.colors,
 };

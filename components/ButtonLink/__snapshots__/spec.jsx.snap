@@ -45,6 +45,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
           >
             <button
               className="css-20ad7t  css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
