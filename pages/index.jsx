@@ -9,6 +9,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import '@shopgate/pwa-common/styles/reset';
 import 'Styles/fonts';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
@@ -71,7 +72,7 @@ const Pages = () => (
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
       <Route path={`${CART_PATH}`} component={Cart} />
       {
-        process.env.APP_CONFIG.hasFavorites
+        appConfig.hasFavorites
         && <Route path={`${FAVORITES_PATH}`} component={Favorites} />
       }
       <Route path={`${SEARCH_PATH}`} component={Search} />
