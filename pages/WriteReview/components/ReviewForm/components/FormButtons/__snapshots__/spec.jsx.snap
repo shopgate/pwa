@@ -63,6 +63,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             >
               <button
                 className="css-5xfjjh  css-1rn65c0"
+                data-test-id="Button"
                 disabled={false}
                 onClick={null}
               >
@@ -76,6 +77,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                   <div
                     aria-hidden={true}
                     className="css-8s1fw2 "
+                    data-test-id="Ripple"
                     onClick={[Function]}
                     style={null}
                   >

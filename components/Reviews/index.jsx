@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasReviews } from 'Config/app.json';
+import { hasReviews } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
 import List from './components/List';

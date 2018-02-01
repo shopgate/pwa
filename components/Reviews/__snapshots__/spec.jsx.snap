@@ -553,6 +553,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             >
                               <button
                                 className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
@@ -566,6 +567,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   <div
                                     aria-hidden={true}
                                     className="css-8s1fw2 "
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >
@@ -2516,6 +2518,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         >
                           <button
                             className="css-20ad7t  css-1rn65c0"
+                            data-test-id="Button"
                             disabled={false}
                             onClick={[Function]}
                           >
@@ -2529,6 +2532,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               <div
                                 aria-hidden={true}
                                 className="css-8s1fw2 "
+                                data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
                               >
@@ -3039,6 +3043,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             >
                               <button
                                 className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
@@ -3052,6 +3057,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   <div
                                     aria-hidden={true}
                                     className="css-8s1fw2 "
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >
@@ -4349,6 +4355,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                             >
                               <button
                                 className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
@@ -4362,6 +4369,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                                   <div
                                     aria-hidden={true}
                                     className="css-8s1fw2 "
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >

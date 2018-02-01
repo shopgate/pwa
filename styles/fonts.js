@@ -6,15 +6,19 @@
  */
 
 import { css } from 'glamor';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const fonts = {
+const { font } = themeConfig;
+
+const styles = {
   family: 'Roboto, Arial, sans-serif',
   rootSize: 16,
   lineHeight: 1.5,
+  ...font,
 };
 
 css.global('body', {
-  font: `${fonts.rootSize}px/${fonts.lineHeight} ${fonts.family}`,
+  font: `${styles.rootSize}px/${styles.lineHeight} ${styles.family}`,
 });
 
-export default fonts;
+export default styles;

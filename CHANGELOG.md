@@ -1,6 +1,10 @@
 
 # Changelog
 ---
+### [4.0.0](https://github.com/shopgate/theme-gmd/compare/v3.0.0...v4.0.0) - January 30, 2018
+#### Changed
+- Breaking change. Moved `RatingStars` out to the `@shopgate/ext-product-reviews` extension using portals.
+---
 ### [3.0.0](https://github.com/shopgate/theme-gmd/compare/v2.0.1...v3.0.0) - January 29, 2018
 #### Added
 - Added add/remove product to favorites on product detail page.

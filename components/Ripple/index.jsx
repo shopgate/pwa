@@ -246,10 +246,11 @@ class Ripple extends PureComponent {
   render() {
     return (
       <div
+        aria-hidden
         className={this.props.className}
+        data-test-id="Ripple"
         onClick={this.handleClick}
         style={this.style}
-        aria-hidden
       >
         {this.renderRipples()}
         {this.props.children}
