@@ -6,6 +6,23 @@
  */
 
 /**
+ * Provides a default app config as a fallback.
+ * @type {Object}
+ */
+const defaultAppConfig = {
+  appId: 'shop_30179',
+  colors: {},
+  forgotPasswordUrl: null,
+  hasFavorites: false,
+  hasReviews: true,
+  language: 'en-us',
+  logo: 'https://example.com/logo',
+  publicPath: 'https://example.com/public',
+  shopName: 'Shopgate Connect',
+  webCheckoutShopify: null,
+};
+
+/**
  * Provides a default theme config as a fallback.
  * @type {Object}
  */
@@ -33,7 +50,14 @@ export const componentsConfig = process.env.COMPONENTS_CONFIG || {};
  */
 export const themeConfig = process.env.THEME_CONFIG || defaultThemeConfig;
 
+/**
+ * The shop number.
+ * @typedef {string}
+ */
 const { appId } = appConfig;
 export const shopNumber = appId ? appId.replace('shop_', '') : '';
 
-export default appConfig;
+export default {
+  ...defaultAppConfig,
+  ...appConfig,
+};
