@@ -22,6 +22,12 @@
       "path": "@shopgate/commerce-widgets/frontend/src/Liveshopping"
     }
   },
+  "portals": {
+    "@shopgate/ext-product-reviews/rating_stars": {
+      "target": "product-item.name.before",
+      "path": "@shopgate/ext-product-reviews/frontend/RatingStars"
+    }
+  },
   "tracking": {
     "@shopgate/tracking-ga-native/init": {
       "path": "@shopgate/tracking-ga-native/frontend/index"

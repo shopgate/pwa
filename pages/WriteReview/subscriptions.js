@@ -22,7 +22,7 @@ import {
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 
@@ -66,12 +66,7 @@ export default function writeReview(subscribe) {
    */
   subscribe(successReviewSubmit$, ({ dispatch }) => {
     dispatch(goBackHistory());
-    dispatch(showModal({
-      confirm: 'modal.ok',
-      dismiss: null,
-      message: 'reviews.modal_message',
-      title: 'reviews.modal_title',
-    }));
+    dispatch(createToast({ message: 'reviews.success_message' }));
   });
   /**
    * When user is logged out reviews relation should be removed.

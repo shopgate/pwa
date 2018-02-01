@@ -10,7 +10,14 @@
     "filter": "Filter",
     "cart": "Cart",
     "shipping": "Shipping",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "favorites": "Favorites"
+  },
+  "favorites": {
+    "continue": "Continue shopping",
+    "empty": "You don't have any favorites",
+    "error_add": "Product could not be added to favorites",
+    "error_remove": "Product could not be removed from favorites"
   },
   "filter": {
     "sort": {
@@ -92,7 +99,7 @@
     "login_register": "Login / Register",
     "home": "Home",
     "categories": "Categories",
-    "wishlist": "Favorites",
+    "favorites": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "shipping": "Shipping methods",
@@ -119,7 +126,6 @@
     "review_form_rate_error": "Please select a star rating.",
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
-    "modal_title": "Thank you!",
-    "modal_message": "Your review has been posted and it will help other shoppers to be better informed!"
+    "success_message": "Thanks for your review!"
   }
 }

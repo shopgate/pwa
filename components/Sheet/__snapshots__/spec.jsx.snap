@@ -23,6 +23,7 @@ exports[`<Sheet /> should open 1`] = `
       className="css-h69706"
       isOpen={true}
       onClose={null}
+      onDidClose={[Function]}
       onOpen={[Function]}
     >
       <div
@@ -60,6 +61,7 @@ exports[`<Sheet /> should open 1`] = `
                   <div
                     aria-hidden={true}
                     className="css-ugy6xl"
+                    data-test-id="Ripple"
                     onClick={[Function]}
                     style={null}
                   >
@@ -216,6 +218,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     className="css-h69706"
     isOpen={false}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <div
@@ -247,6 +250,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     className="css-h69706"
     isOpen={true}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <div
@@ -278,6 +282,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
     className="css-h69706"
     isOpen={true}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <Header
@@ -340,6 +345,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           ],
         }
       }
+      onDidClose={[Function]}
       onOpen={[Function]}
     >
       <div
@@ -377,6 +383,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   <div
                     aria-hidden={true}
                     className="css-ugy6xl"
+                    data-test-id="Ripple"
                     onClick={[Function]}
                     style={null}
                   >

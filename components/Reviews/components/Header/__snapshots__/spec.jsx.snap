@@ -34,7 +34,7 @@ exports[`<Header /> should render empty 1`] = `
         }
       >
         <div
-          className="css-t193cd"
+          className="css-1us3hnd"
         >
           <RatingStars
             className=""
@@ -318,6 +318,7 @@ exports[`<Header /> should render empty 1`] = `
                             <div
                               aria-hidden={true}
                               className="css-8s1fw2 "
+                              data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
                             >
@@ -384,7 +385,7 @@ exports[`<Header /> should render rating summary 1`] = `
         }
       >
         <div
-          className="css-t193cd"
+          className="css-1us3hnd"
         >
           <RatingStars
             className=""
@@ -803,6 +804,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             <div
                               aria-hidden={true}
                               className="css-8s1fw2 "
+                              data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
                             >
