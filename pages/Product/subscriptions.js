@@ -12,7 +12,7 @@ import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorS
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { hasReviews } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import getProductData from './actions/getProductData';
 import { REVIEW_PREVIEW_COUNT } from './constants';
 
@@ -68,7 +68,7 @@ export default function product(subscribe) {
     dispatch(getProductData(variantId));
 
     dispatch(enableNavigatorSearch());
-    if (hasReviews) {
+    if (appConfig.hasReviews) {
       const baseProductId = getCurrentBaseProductId(getState());
       dispatch(getProductReviews(baseProductId, REVIEW_PREVIEW_COUNT));
     }

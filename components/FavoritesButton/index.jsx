@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { hasFavorites } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import HeartIcon from 'Components/icons/HeartIcon';
 import HeartOutlineIcon from 'Components/icons/HeartOutlineIcon';
 import Ripple from 'Components/Ripple';
@@ -71,7 +71,7 @@ class FavoritesButton extends Component {
    * @returns {JSX|null}
    */
   render() {
-    if (!hasFavorites) {
+    if (!appConfig.hasFavorites) {
       return null;
     }
     return (
