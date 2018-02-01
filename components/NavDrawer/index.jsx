@@ -41,7 +41,6 @@ class NavDrawer extends Component {
     toggleNavDrawer: PropTypes.func.isRequired,
     cartProductCount: PropTypes.number,
     entries: PropTypes.shape(),
-    hasFavorites: PropTypes.bool,
     highlightFavorites: PropTypes.bool,
     logout: PropTypes.func,
     navDrawerActive: PropTypes.bool,
@@ -51,7 +50,6 @@ class NavDrawer extends Component {
   static defaultProps = {
     cartProductCount: 0,
     entries: {},
-    hasFavorites: false,
     highlightFavorites: false,
     logout: () => {},
     navDrawerActive: false,
