@@ -86,6 +86,7 @@ class Item extends Component {
                       visible: active,
                     });
                   }}
+                  readOnlyOnFetch
                 />
               </Grid.Item>
               <Grid.Item grow={1} className={styles.rightColumn}>

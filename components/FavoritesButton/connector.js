@@ -6,10 +6,21 @@
  */
 import { connect } from 'react-redux';
 import {
+  isFetching
+} from '@shopgate/pwa-common-commerce/favorites/selectors/index';
+import {
   addFavorites,
   removeFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 
+/**
+ * Mapts state to props.
+ * @param {Object} state State.
+ * @return {Object}
+ */
+const mapStateToProps = state => ({
+  isFetching: isFetching(state),
+});
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
@@ -20,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
   removeFavorites: productId => dispatch(removeFavorites(productId)),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps);

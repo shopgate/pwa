@@ -20,10 +20,12 @@ import connect from './connector';
 class FavoritesButton extends Component {
   static propTypes = {
     active: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
+    readOnlyOnFetch: PropTypes.bool,
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
@@ -34,6 +36,7 @@ class FavoritesButton extends Component {
     className: '',
     onRippleComplete: () => {},
     productId: null,
+    readOnlyOnFetch: false,
     removeFavorites: () => {},
     removeThrottle: 0,
     rippleClassName: '',
@@ -68,6 +71,10 @@ class FavoritesButton extends Component {
     event.preventDefault();
     event.stopPropagation();
 
+    if (this.isReadOnly()) {
+      return;
+    }
+
     if (!this.props.productId) {
       return;
     }
@@ -75,8 +82,6 @@ class FavoritesButton extends Component {
     if (!this.state.active) {
       this.props.addFavorites(this.props.productId);
     } else {
-      this.props.removeFavorites(this.props.productId);
-
       setTimeout(() => {
         this.props.removeFavorites(this.props.productId);
       }, this.props.removeThrottle);
@@ -86,6 +91,13 @@ class FavoritesButton extends Component {
       active: !this.state.active,
     });
   };
+
+  /**
+   * Checks if button is currently read-only.
+   */
+  isReadOnly() {
+    return this.props.isFetching && this.props.readOnlyOnFetch;
+  }
 
   /**
    * Callback for the moment when the ripple animation is done.
@@ -122,6 +134,7 @@ class FavoritesButton extends Component {
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
           onComplete={this.onRippleComplete}
+          readOnly={this.isReadOnly()}
         >
           {this.renderIcon()}
         </Ripple>

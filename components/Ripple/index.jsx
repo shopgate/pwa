@@ -26,6 +26,7 @@ class Ripple extends PureComponent {
     fill: PropTypes.bool,
     onComplete: PropTypes.func,
     overflow: PropTypes.bool,
+    readOnly: PropTypes.bool,
     size: PropTypes.number,
   };
 
@@ -35,6 +36,7 @@ class Ripple extends PureComponent {
     fill: false,
     onComplete: () => {},
     overflow: false,
+    readOnly: false,
     size: null,
   };
 
@@ -219,6 +221,9 @@ class Ripple extends PureComponent {
    * @param {Object} event The even object.
    */
   handleClick = (event) => {
+    if (this.props.readOnly) {
+      return;
+    }
     this.addRipple(event, true);
   };
 
