@@ -23,6 +23,12 @@ export const EACCESS = 'EACCESS';
 // Pipeline invalid credentials.
 export const EINVALIDCREDENTIALS = 'EINVALIDCREDENTIALS';
 
+/**
+ * A pipeline can't be called in the given context.
+ * For example the login pipeline when the user is already logged in.
+ */
+export const EINVALIDCALL = 'EINVALIDCALL';
+
 // Pipeline no data found
 export const EUNKNOWN = 'EUNKNOWN';
 

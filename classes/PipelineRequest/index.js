@@ -35,7 +35,6 @@ class PipelineRequest extends Request {
     this.name = `${name}_v${version}`;
     this.input = {};
     this.handledErrors = [];
-    this.errorMessageWhitelist = [];
     this.createSerial(this.name);
     this.createEventCallbackName('pipelineResponse');
     this.requestCallback = null;
@@ -67,16 +66,6 @@ class PipelineRequest extends Request {
    */
   setHandledErrors(errors = []) {
     this.handledErrors = errors;
-    return this;
-  }
-
-  /**
-   * Sets a list of error codes where the pipeline error message is used for the user error modal.
-   * @param {Array} errors The error codes
-   * @return {PipelineRequest}
-   */
-  setErrorMessageWhitelist(errors = []) {
-    this.errorMessageWhitelist = errors;
     return this;
   }
 
