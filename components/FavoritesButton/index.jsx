@@ -21,7 +21,7 @@ class FavoritesButton extends Component {
     active: PropTypes.bool.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
-    onRemove: PropTypes.func,
+    onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
@@ -31,23 +31,31 @@ class FavoritesButton extends Component {
   static defaultProps = {
     addFavorites: () => {},
     className: '',
-    onRemove: () => {},
+    onRippleComplete: () => {},
     productId: null,
     removeFavorites: () => {},
-    removeTimeout: null,
+    removeThrottle: 0,
     rippleClassName: '',
   };
 
-  constructor(props){
+  /**
+   * Construct and init state
+   * @param {Object} props Component props
+   */
+  constructor(props) {
     super(props);
     this.state = {
-      active: props.active
+      active: props.active,
     };
   }
 
+  /**
+   * Update active state with next active prop
+   * @param {Object} nextProps Next props
+   */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      active: nextProps.active
+      active: nextProps.active,
     });
   }
 
@@ -66,19 +74,23 @@ class FavoritesButton extends Component {
     if (!this.state.active) {
       this.props.addFavorites(this.props.productId);
     } else {
-      if (this.props.removeThrottle) {
-        setTimeout(()=> {
-          this.props.removeFavorites(this.props.productId);
-        }, this.props.removeThrottle);
-      } else {
+      this.props.removeFavorites(this.props.productId);
+
+      setTimeout(() => {
         this.props.removeFavorites(this.props.productId);
-      }
-      this.props.onRemove();
+      }, this.props.removeThrottle);
     }
 
     this.setState({
-      active: !this.state.active
+      active: !this.state.active,
     });
+  };
+
+  /**
+   * Callback for the moment when the ripple animation is done.
+   */
+  onRippleComplete = () => {
+    this.props.onRippleComplete(this.state.active);
   };
 
   /**
@@ -99,8 +111,14 @@ class FavoritesButton extends Component {
    */
   render() {
     return (
-      <button className={`${styles.button} ${this.props.className}`} onClick={this.handleClick}>
-        <Ripple className={`${styles.ripple} ${this.props.rippleClassName}`}>
+      <button
+        className={`${styles.button} ${this.props.className}`}
+        onClick={this.handleClick}
+      >
+        <Ripple
+          className={`${styles.ripple} ${this.props.rippleClassName}`}
+          onComplete={this.onRippleComplete}
+        >
           {this.renderIcon()}
         </Ripple>
       </button>

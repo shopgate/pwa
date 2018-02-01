@@ -14,6 +14,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
   }
 >
   <Connect(FavoritesButton)
+    active={false}
     addFavorites={[Function]}
     removeFavorites={[Function]}
   >
@@ -21,18 +22,21 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       active={false}
       addFavorites={[Function]}
       className=""
+      onRippleComplete={[Function]}
       productId={null}
       removeFavorites={[Function]}
+      removeThrottle={0}
       rippleClassName=""
     >
       <button
-        className="css-csre2n "
+        className="css-1b5v381 "
         onClick={[Function]}
       >
         <Ripple
           className="css-15r2nrm "
           color="#000"
           fill={false}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
@@ -91,6 +95,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
   }
 >
   <Connect(FavoritesButton)
+    active={true}
     addFavorites={[Function]}
     removeFavorites={[Function]}
   >
@@ -98,18 +103,21 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       active={true}
       addFavorites={[Function]}
       className=""
-      productId="bar"
+      onRippleComplete={[Function]}
+      productId={null}
       removeFavorites={[Function]}
+      removeThrottle={0}
       rippleClassName=""
     >
       <button
-        className="css-csre2n "
+        className="css-1b5v381 "
         onClick={[Function]}
       >
         <Ripple
           className="css-15r2nrm "
           color="#000"
           fill={false}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >

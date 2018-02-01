@@ -24,6 +24,7 @@ class Ripple extends PureComponent {
     className: PropTypes.string,
     color: PropTypes.string,
     fill: PropTypes.bool,
+    onComplete: PropTypes.func,
     overflow: PropTypes.bool,
     size: PropTypes.number,
   };
@@ -32,6 +33,7 @@ class Ripple extends PureComponent {
     className: '',
     color: colors.dark,
     fill: false,
+    onComplete: () => {},
     overflow: false,
     size: null,
   };
@@ -204,6 +206,7 @@ class Ripple extends PureComponent {
     }
 
     const ripples = shift(this.state.ripples);
+    this.props.onComplete();
 
     this.setState({
       ripples,
