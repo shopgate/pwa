@@ -24,7 +24,6 @@ const mapStateToProps = state => ({
   entries: {
     quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
   },
-  hasFavorites: process.env.APP_CONFIG.hasFavorites,
   highlightFavorites: hasFavorites(state),
   navDrawerActive: state.navigator.navDrawerActive,
   user: isUserLoggedIn(state) ? state.user.data : null,

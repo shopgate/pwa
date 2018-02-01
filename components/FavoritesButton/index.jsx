@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { hasFavorites } from '@shopgate/pwa-common/helpers/config';
 import HeartIcon from 'Components/icons/HeartIcon';
 import HeartOutlineIcon from 'Components/icons/HeartOutlineIcon';
 import Ripple from 'Components/Ripple';
@@ -67,9 +68,12 @@ class FavoritesButton extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX|null}
    */
   render() {
+    if (!hasFavorites) {
+      return null;
+    }
     return (
       <button className={`${styles.button} ${this.props.className}`} onClick={this.handleClick}>
         <Ripple className={`${styles.ripple} ${this.props.rippleClassName}`}>
