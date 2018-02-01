@@ -36,7 +36,7 @@ const defaultThemeConfig = {
  * The app.json config from the theme.
  * @typedef {Object}
  */
-const appConfig = process.env.APP_CONFIG || {};
+const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : defaultAppConfig;
 
 /**
  * The components.json config from the theme.
@@ -57,7 +57,4 @@ export const themeConfig = process.env.THEME_CONFIG || defaultThemeConfig;
 const { appId } = appConfig;
 export const shopNumber = appId ? appId.replace('shop_', '') : '';
 
-export default {
-  ...defaultAppConfig,
-  ...appConfig,
-};
+export default appConfig;
