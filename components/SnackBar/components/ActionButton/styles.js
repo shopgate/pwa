@@ -5,18 +5,18 @@
  *  LICENSE file in the root directory of this source tree.
  *
  */
-
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 
-const message = css({
-  color: 'white',
-  margin: 0,
-  textAlign: 'left',
-  maxWidth: '75%',
-  paddingTop: 7,
-  paddingBottom: 7,
+const actionButton = css({
+  color: colors.primary,
+  flexGrow: 1,
+  textTransform: 'uppercase',
+  textAlign: 'right',
+  padding: '7px 0',
+  wordBreak: 'keep-all',
 }).toString();
 
 export default {
-  message,
+  actionButton,
 };

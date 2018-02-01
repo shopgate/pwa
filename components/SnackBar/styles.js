@@ -7,12 +7,11 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
 const drawer = css({
   width: '100%',
   background: 'black',
-  padding: variables.gap.big,
+  padding: '7px 24px',
 }).toString();
 
 export default {

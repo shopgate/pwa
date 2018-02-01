@@ -10,6 +10,8 @@ import {
   removeFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 
+import createToast from '@shopgate/pwa-common/actions/toast/createToast';
+
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
@@ -17,6 +19,12 @@ import {
  */
 const mapDispatchToProps = dispatch => ({
   addFavorites: productId => dispatch(addFavorites(productId)),
+  showToast: productId => (dispatch(createToast({
+    action: 'common.undo',
+    actionOnClick: addFavorites(productId),
+    message: 'favorites.removed',
+    duration: 600000,
+  }))),
   removeFavorites: productId => dispatch(removeFavorites(productId)),
 });
 

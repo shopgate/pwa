@@ -19,6 +19,7 @@ import connect from './connector';
 class FavoritesButton extends Component {
   static propTypes = {
     active: PropTypes.bool.isRequired,
+    showToast: PropTypes.func.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
     onRippleComplete: PropTypes.func,
@@ -60,6 +61,13 @@ class FavoritesButton extends Component {
   }
 
   /**
+   * Callback for the moment when the ripple animation is done.
+   */
+  onRippleComplete = () => {
+    this.props.onRippleComplete(this.state.active);
+  };
+
+  /**
    * Adds or removes a given product ID from the favorite list.
    * @param {Object} event The click event object.
    */
@@ -75,7 +83,7 @@ class FavoritesButton extends Component {
       this.props.addFavorites(this.props.productId);
     } else {
       this.props.removeFavorites(this.props.productId);
-
+      this.props.showToast(this.props.productId);
       setTimeout(() => {
         this.props.removeFavorites(this.props.productId);
       }, this.props.removeThrottle);
@@ -84,13 +92,6 @@ class FavoritesButton extends Component {
     this.setState({
       active: !this.state.active,
     });
-  };
-
-  /**
-   * Callback for the moment when the ripple animation is done.
-   */
-  onRippleComplete = () => {
-    this.props.onRippleComplete(this.state.active);
   };
 
   /**
