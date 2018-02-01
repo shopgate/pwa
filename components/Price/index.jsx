@@ -8,7 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helper/showTaxDisclaimer';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import styles from './style';
 
 /**

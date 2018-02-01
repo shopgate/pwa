@@ -7,7 +7,7 @@
 
 import React from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helper/showTaxDisclaimer';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import CTAButtons from './components/CTAButtons';
 import Rating from './components/Rating';
 import Name from './components/Name';
