@@ -9,16 +9,13 @@ import favorites from './index';
 
 jest.mock('../actions/getFavorites', () => withCache => withCache);
 
+let mockedHasFavorites = true;
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get hasFavorites() { return mockedHasFavorites; },
+}));
+
 describe('Favorites - subscriptions', () => {
   describe('Favorites - enabled', () => {
-    beforeAll(() => {
-      global.process.env.APP_CONFIG = {
-        hasFavorites: true,
-      };
-    });
-    afterAll(() => {
-      delete global.process.env.APP_CONFIG;
-    });
     it('should register to streams', () => {
       const mockedSubscribe = jest.fn();
       const mockedDispatch = jest.fn();
@@ -35,12 +32,7 @@ describe('Favorites - subscriptions', () => {
   });
   describe('Favorites disabled', () => {
     beforeAll(() => {
-      global.process.env.APP_CONFIG = {
-        hasFavorites: false,
-      };
-    });
-    afterAll(() => {
-      delete global.process.env.APP_CONFIG;
+      mockedHasFavorites = false;
     });
     it('should do nothing and return false', () => {
       const mockedSubscribe = jest.fn();
