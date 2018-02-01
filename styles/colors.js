@@ -7,7 +7,7 @@
 
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const colors = (themeConfig && themeConfig.colors) ? themeConfig.colors : {};
+const colors = (process.env.NODE_ENV !== 'test' && themeConfig && themeConfig.colors) ? themeConfig.colors : {};
 
 export default {
   accent: '#5ccee3',
