@@ -854,6 +854,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
@@ -1985,6 +1986,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
@@ -3062,6 +3064,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
@@ -4140,6 +4143,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
@@ -5218,6 +5222,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
@@ -6295,6 +6300,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
@@ -7169,6 +7175,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <button
                         className="css-5xfjjh  css-1rn65c0"
+                        data-test-id="Button"
                         disabled={false}
                         onClick={null}
                       >
