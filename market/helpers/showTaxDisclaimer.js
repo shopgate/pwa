@@ -6,10 +6,12 @@
  */
 
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { MARKET_GERMANY } from '../constants';
+import {
+  MARKET_AUSTRIA,
+  MARKET_GERMANY,
+} from '../constants';
 
-const isVisible = [
+export default [
+  MARKET_AUSTRIA,
   MARKET_GERMANY,
 ].includes(appConfig.marketId);
-
-export default isVisible;

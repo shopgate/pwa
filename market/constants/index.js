@@ -5,4 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+export const MARKET_AUSTRIA = 'AT';
 export const MARKET_GERMANY = 'DE';
