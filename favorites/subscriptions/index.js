@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import {
   userDidLogin$,
@@ -21,7 +22,7 @@ import getFavorites from '../actions/getFavorites';
  * @param {function} subscribe Subscribe function.
  */
 const favorites = (subscribe) => {
-  if (!process.env.APP_CONFIG.hasFavorites) {
+  if (!appConfig.hasFavorites) {
     return;
   }
   // On App start, did log in, did log out and favorites page enter we need to fetch.
