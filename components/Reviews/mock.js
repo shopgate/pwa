@@ -116,7 +116,7 @@ export const mockedStateProductEmpty = {
  * @type {Function}
  */
 export const setMocks = (mockReviewsAvailable = true) => {
-  jest.doMock('Config/app.json', () => ({
+  jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
     hasReviews: mockReviewsAvailable,
   }));
 };

@@ -305,6 +305,7 @@ exports[`<Header /> should render empty 1`] = `
                       >
                         <button
                           className="css-20ad7t  css-1rn65c0"
+                          data-test-id="Button"
                           disabled={false}
                           onClick={[Function]}
                         >
@@ -791,6 +792,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       >
                         <button
                           className="css-20ad7t  css-1rn65c0"
+                          data-test-id="Button"
                           disabled={false}
                           onClick={[Function]}
                         >
