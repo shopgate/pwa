@@ -14,6 +14,7 @@ exports[`<Header /> should render with correct title 1`] = `
       className="css-ugy6xl"
       color="#000"
       fill={false}
+      onComplete={[Function]}
       overflow={false}
       size={null}
     >

@@ -10,6 +10,7 @@ exports[`<CartButton /> should not be visible with prop visible set to false 1`]
     className="css-167cazg"
     color="#000"
     fill={true}
+    onComplete={[Function]}
     overflow={false}
     size={null}
   >
@@ -38,6 +39,7 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
     className="css-167cazg"
     color="#000"
     fill={true}
+    onComplete={[Function]}
     overflow={false}
     size={null}
   >
@@ -66,6 +68,7 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
     className="css-167cazg"
     color="#000"
     fill={true}
+    onComplete={[Function]}
     overflow={false}
     size={null}
   >
@@ -94,6 +97,7 @@ exports[`<CartButton /> should transition if it has cart amount 1`] = `
     className="css-167cazg"
     color="#000"
     fill={true}
+    onComplete={[Function]}
     overflow={false}
     size={null}
   >

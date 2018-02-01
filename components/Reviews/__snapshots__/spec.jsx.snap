@@ -561,6 +561,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                   className="css-8s1fw2 "
                                   color="#000"
                                   fill={true}
+                                  onComplete={[Function]}
                                   overflow={false}
                                   size={null}
                                 >
@@ -2526,6 +2527,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               className="css-8s1fw2 "
                               color="#000"
                               fill={true}
+                              onComplete={[Function]}
                               overflow={false}
                               size={null}
                             >
@@ -3051,6 +3053,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                   className="css-8s1fw2 "
                                   color="#000"
                                   fill={true}
+                                  onComplete={[Function]}
                                   overflow={false}
                                   size={null}
                                 >
@@ -4363,6 +4366,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                                   className="css-8s1fw2 "
                                   color="#000"
                                   fill={true}
+                                  onComplete={[Function]}
                                   overflow={false}
                                   size={null}
                                 >

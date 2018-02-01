@@ -55,6 +55,7 @@ exports[`<Sheet /> should open 1`] = `
                   className="css-ugy6xl"
                   color="#000"
                   fill={false}
+                  onComplete={[Function]}
                   overflow={false}
                   size={null}
                 >
@@ -377,6 +378,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   className="css-ugy6xl"
                   color="#000"
                   fill={false}
+                  onComplete={[Function]}
                   overflow={false}
                   size={null}
                 >
