@@ -1,6 +1,16 @@
 
 # Changelog
 ---
+### [4.0.2](https://github.com/shopgate/theme-gmd/compare/v4.0.1...v4.0.2) - February 01, 2018
+#### Added
+- Data attributes to components for automated testing
+- Default `theme-config.js` values to ensure passing tests
+#### Changed
+- Changed imports of `app.json` to use the `pwa-common` helper
+#### Fixed
+- Favorites icon was always visible on the product page
+- Corrected the name of the rating stars extension
+---
 ### [4.0.0](https://github.com/shopgate/theme-gmd/compare/v3.0.0...v4.0.0) - January 30, 2018
 #### Changed
 - Breaking change. Moved `RatingStars` out to the `@shopgate/ext-product-reviews` extension using portals.
