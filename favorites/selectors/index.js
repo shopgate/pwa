@@ -71,6 +71,12 @@ export const hasFavorites = createSelector(
 );
 
 /**
+ * Returns true if state is being updated.
+ * @param {Object} state State.
+ * @return {boolean}
+ */
+export const isFetching = state => state.favorites.products.isFetching;
+/**
  * Returns true when the current product is on the favorites list
  */
 export const isCurrentProductOnFavoriteList = createSelector(
