@@ -28,9 +28,10 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }) => (
     )}
     <Price
       className={styles.price}
-      unitPrice={specialPrice || defaultPrice}
       currency={currency}
       discounted={!!specialPrice}
+      taxDisclaimer
+      unitPrice={specialPrice || defaultPrice}
     />
   </Grid.Item>
 );

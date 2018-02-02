@@ -27,7 +27,12 @@ const CouponPrice = ({ currency, savedPrice }) => {
 
   if (discountType === COUPON_TYPE_FIXED) {
     return (
-      <Price className={styles} currency={currency} unitPrice={-discountValue} discounted />
+      <Price
+        className={styles}
+        currency={currency}
+        discounted
+        unitPrice={-discountValue}
+      />
     );
   } else if (discountType === COUPON_TYPE_PERCENTAGE) {
     return (
