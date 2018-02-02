@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -162,9 +162,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "2.1.0",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-2.1.0.tgz",
-      "integrity": "sha512-q/queRD4vXRDhSky6zXsiPxe+6xqJfbrRWy3bQtIzf8ycwn+4EKTHNptk1i1YeW6BpT7t6/b7YIQSfkw+8MD3w==",
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-2.1.1.tgz",
+      "integrity": "sha512-KtFKx06Z3EFgC8vnaXpHxHngm87kwx/cJAWsgDmioJk3rUKYj73qDyzSddtSUz/JgSyqjspit63RcTzLVTXV5A==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -174,7 +174,7 @@
         "intl-messageformat": "2.2.0",
         "jsdom": "11.1.0",
         "path-match": "1.2.4",
-        "react-dotdotdot": "1.1.0",
+        "react-dotdotdot": "1.2.0",
         "react-hot-loader": "3.0.0-beta.6",
         "react-id-swiper": "1.4.0",
         "react-inline-transition-group": "2.2.1",
@@ -6252,9 +6252,9 @@
       }
     },
     "react-dotdotdot": {
-      "version": "1.1.0",
-      "resolved": "https://registry.npmjs.org/react-dotdotdot/-/react-dotdotdot-1.1.0.tgz",
-      "integrity": "sha1-tnRrG/BJxrKAajJAMvckyW+hfvE=",
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/react-dotdotdot/-/react-dotdotdot-1.2.0.tgz",
+      "integrity": "sha512-DyZqyubkI3ntE1bslvvQXc2WMSv+qmBlam4OAK/GWVA1q4bEW7WMasfO4uUPSxUS8fS/Xh3fEhjvG+F7LLnQmg==",
       "requires": {
         "prop-types": "15.6.0"
       }

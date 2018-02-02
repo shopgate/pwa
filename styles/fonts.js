@@ -10,8 +10,15 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { font } = themeConfig;
 
+const styles = {
+  family: 'Roboto, Arial, sans-serif',
+  rootSize: 16,
+  lineHeight: 1.5,
+  ...font,
+};
+
 css.global('body', {
-  font: `${font.rootSize}px/${font.lineHeight} ${font.family}`,
+  font: `${styles.rootSize}px/${styles.lineHeight} ${styles.family}`,
 });
 
-export default font;
+export default styles;
