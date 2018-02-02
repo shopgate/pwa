@@ -6,8 +6,10 @@
  */
 
 import { createSelector } from 'reselect';
-import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors/index';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import {
+  getSortOrder,
+  getSearchPhrase,
+} from '@shopgate/pwa-common/selectors/history';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 
 /**
@@ -27,7 +29,10 @@ const resultCountSelector = createSelector(
   getSortOrder,
   resultsSelector,
   (searchPhrase, sort, results) => {
-    const hash = searchPhrase && generateResultHash({ sort, searchPhrase });
+    const hash = searchPhrase && generateResultHash({
+      sort,
+      searchPhrase,
+    });
 
     if (!hash || !results[hash]) {
       return null;
