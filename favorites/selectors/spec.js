@@ -29,7 +29,26 @@ describe('Favorites - selectors', () => {
           },
         },
       });
-      expect(result).toEqual([{}]);
+      expect(result instanceof Array).toBe(true);
+      expect(result.length).toBe(0);
+    });
+    it('should return empty array when product data is available but empty', () => {
+      const result = getFavorites({
+        product: {
+          productsById: {
+            foo: {
+              isFetching: true,
+            },
+          },
+        },
+        favorites: {
+          products: {
+            ids: ['fpp'],
+          },
+        },
+      });
+      expect(result instanceof Array).toBe(true);
+      expect(result.length).toBe(0);
     });
     it('should return products', () => {
       const state = {

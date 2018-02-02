@@ -33,15 +33,14 @@ export const getFavoritesProductsIds = (state) => {
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProducts,
-  (productIds, products) => productIds.map((id) => {
-    if (!products[id]) {
-      return {};
-    }
-    const { productData } = products[id];
-    return {
-      ...productData,
-    };
-  })
+  (productIds, products) => productIds
+    .filter(id => !!products[id] && products[id].productData)
+    .map((id) => {
+      const { productData } = products[id];
+      return {
+        ...productData,
+      };
+    })
 );
 
 /**

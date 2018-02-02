@@ -18,12 +18,23 @@ import {
 import {
   FAVORITES_PATH,
   RECEIVE_ADD_FAVORITES,
+  RECEIVE_FAVORITES,
   RECEIVE_REMOVE_FAVORITES,
+  REQUEST_ADD_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
   ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
+  ERROR_REMOVE_FAVORITES, REQUEST_FAVORITES,
 } from '../constants';
 
 export const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
+
+export const favoritesWillFetch$ = main$.filter(({ action }) => [
+  REQUEST_ADD_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
+  REQUEST_FAVORITES,
+].includes(action.type));
+
+export const favoritesDidFetch$ = main$.filter(({ action }) => action.type === RECEIVE_FAVORITES);
 
 export const favoritesChanged$ = main$.filter(({ action }) => [
   RECEIVE_REMOVE_FAVORITES,
