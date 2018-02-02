@@ -19,6 +19,12 @@ import {
 
 const mockedStore = configureStore();
 const dispatcher = jest.fn();
+
+let mockedHasFavorites = true;
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get hasFavorites() { return mockedHasFavorites; },
+}));
+
 beforeEach(() => {
   jest.resetModules();
 });
@@ -80,5 +86,10 @@ describe('<FavoritesButton />', () => {
 
     component.find('button').simulate('click');
     expect(dispatcher.mock.calls.length).toBe(1);
+  });
+  it('should render null when feature flag is off', () => {
+    mockedHasFavorites = false;
+    component = createComponent(mockedStateOnList);
+    expect(component.html()).toBe(null);
   });
 });

@@ -8,6 +8,6 @@ exports[`<Logo /> should render an image 1`] = `
       "data-css-gva1fu": "",
     }
   }
-  src="https://data.shopgate.com/shops/23722/webapp@2x.png"
+  src="https://example.com/logo"
 />
 `;
