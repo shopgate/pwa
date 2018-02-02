@@ -6,13 +6,13 @@
  */
 import { connect } from 'react-redux';
 import {
-  isFetching
+  isFetching,
 } from '@shopgate/pwa-common-commerce/favorites/selectors/index';
 import {
   addFavorites,
   removeFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-
+import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 /**
  * Mapts state to props.
  * @param {Object} state State.
@@ -29,6 +29,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addFavorites: productId => dispatch(addFavorites(productId)),
   removeFavorites: productId => dispatch(removeFavorites(productId)),
+  setViewLoading: dispatch(setViewLoading()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

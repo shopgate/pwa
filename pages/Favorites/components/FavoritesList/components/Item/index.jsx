@@ -77,17 +77,19 @@ class Item extends Component {
             <Grid className={styles.row}>
               <Grid.Item className={styles.leftColumn}>
                 <Image product={this.props.product} />
-                <FavoritesButton
-                  productId={this.props.product.id}
-                  active={this.state.visible}
-                  removeThrottle={styles.favItemTransitionDuration + 200}
-                  onRippleComplete={(active) => {
-                    this.setState({
-                      visible: active,
-                    });
-                  }}
-                  readOnlyOnFetch
-                />
+                <div className={styles.favButtonWrapper}>
+                  <FavoritesButton
+                    productId={this.props.product.id}
+                    active={this.state.visible}
+                    removeThrottle={styles.favItemTransitionDuration + 200}
+                    onRippleComplete={(active) => {
+                      this.setState({
+                        visible: active,
+                      });
+                    }}
+                    readOnlyOnFetch
+                  />
+                </div>
               </Grid.Item>
               <Grid.Item grow={1} className={styles.rightColumn}>
                 <ProductInfo product={this.props.product} />

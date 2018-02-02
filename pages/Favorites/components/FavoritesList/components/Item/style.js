@@ -11,6 +11,11 @@ import variables from 'Styles/variables';
 
 const favItemTransitionDuration = 500;
 
+const favButtonWrapper = css({
+  marginTop: '-16px',
+  marginLeft: '16px',
+}).toString();
+
 const row = css({
   padding: variables.gap.big,
   justifyContent: 'space-between',
@@ -21,12 +26,14 @@ const leftColumn = css({
   flexShrink: 0,
   flexGrow: 1,
   minWidth: 126,
-  maxWidth: 200,
+  maxWidth: 170,
   width: '19%',
 }).toString();
 
 const rightColumn = css({
   paddingLeft: variables.gap.small,
+  // Makes the bottom always aligned to bottom of the image.
+  paddingBottom: 16,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -58,6 +65,8 @@ const transitionStyles = {
 /**
  * Creates an object with style attributes to enable a cart item transition.
  * @param {string} state A state of the react-transition-group/Transition component.
+ * @param {boolean} visible Is element visible.
+ * @param {number} height Height of the element.
  * @return {Object}
  */
 const getFavItemTransitionStyle = (state, visible, height) => (
@@ -72,6 +81,7 @@ const getFavItemTransitionStyle = (state, visible, height) => (
 );
 
 export default {
+  favButtonWrapper,
   leftColumn,
   rightColumn,
   row,
