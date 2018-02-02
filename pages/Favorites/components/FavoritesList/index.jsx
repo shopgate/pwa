@@ -8,6 +8,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
 import CardList from 'Components/CardList';
 import Item from './components/Item';
 import styles from './style';
@@ -26,7 +27,7 @@ class FavoritesList extends Component {
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return this.props.products.length !== nextProps.products.length;
+    return !isEqual(this.props.products, nextProps.products);
   }
 
   /**
