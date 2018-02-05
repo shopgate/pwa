@@ -90,7 +90,7 @@ class Item extends Component {
                   <FavoritesButton
                     productId={this.props.product.id}
                     active={this.state.visible}
-                    removeThrottle={styles.favItemTransitionDuration + 1000}
+                    removeThrottle={styles.favItemTransitionDuration + 200}
                     onRippleComplete={(active) => {
                       this.setState({
                         visible: active,
