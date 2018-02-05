@@ -15,7 +15,9 @@
   },
   "favorites": {
     "continue": "Continue shopping",
-    "empty": "You don't have any favorites"
+    "empty": "You don't have any favorites",
+    "error_add": "Product could not be added to favorites",
+    "error_remove": "Product could not be removed from favorites"
   },
   "filter": {
     "sort": {
@@ -33,7 +35,10 @@
   "price": {
     "from": "From {price}",
     "range": "Price range from {fromPrice} to {toPrice}",
-    "tier": "{from} or more: {price}",
+    "tier": {
+      "set": "{from} items: {price}",
+      "range": "{from} or more: {price}"
+    },
     "msrp": "MSRP",
     "currency": "USD"
   },

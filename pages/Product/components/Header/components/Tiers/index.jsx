@@ -23,11 +23,25 @@ const Tiers = ({ price }) => {
 
   return (
     <div className={styles.wrapper}>
-      {price.tiers.map(tier => (
-        <I18n.Text string="price.tier" params={{ from: tier.from }} key={tier.from} className={styles.tier} >
-          <I18n.Price forKey="price" price={tier.unitPrice} currency={price.currency} className={styles.price} />
-        </I18n.Text>
-      ))}
+      {price.tiers.map((tier) => {
+        // Skip tier if tier price is equal the product price
+        if (tier.unitPrice === price.totalPrice) {
+          return null;
+        }
+
+        const i18nKey = tier.from === tier.to ? 'price.tier.set' : 'price.tier.range';
+
+        return (
+          <I18n.Text
+            string={i18nKey}
+            params={{ from: tier.from }}
+            key={tier.from}
+            className={styles.tier}
+          >
+            <I18n.Price forKey="price" price={tier.unitPrice} currency={price.currency} className={styles.price} />
+          </I18n.Text>
+        );
+      })}
     </div>
   );
 };
