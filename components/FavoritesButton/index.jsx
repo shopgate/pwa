@@ -50,6 +50,7 @@ class FavoritesButton extends Component {
     super(props);
     this.state = {
       active: props.active,
+      isFetching: props.isFetching,
     };
   }
 
@@ -60,6 +61,7 @@ class FavoritesButton extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       active: nextProps.active,
+      isFetching: nextProps.isFetching,
     });
   }
 
@@ -75,7 +77,7 @@ class FavoritesButton extends Component {
    * @return {boolean} read only "state" of the component
    */
   isReadOnly() {
-    return this.props.isFetching && this.props.readOnlyOnFetch;
+    return this.state.isFetching && this.props.readOnlyOnFetch;
   }
 
   /**
@@ -104,6 +106,7 @@ class FavoritesButton extends Component {
 
     this.setState({
       active: !this.state.active,
+      isFetching: true,
     });
   };
 
@@ -135,7 +138,7 @@ class FavoritesButton extends Component {
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
           onComplete={this.onRippleComplete}
-          readOnly={this.isReadOnly()}
+          disabled={this.isReadOnly()}
         >
           {this.renderIcon()}
         </Ripple>
