@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
+import event from '@shopgate/pwa-core/classes/Event';
 import { shopName } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
@@ -65,6 +66,12 @@ class View extends Component {
     // Store the active pathname at instantiation
     this.pathname = props.historyPathname;
     this.element = null;
+
+    this.state = {
+      keyboardHeight: 0,
+    }
+
+    event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
 
   /**
@@ -110,6 +117,18 @@ class View extends Component {
   setRef = (ref) => {
     this.element = ref;
   };
+
+  /**
+   * Handles a keyboard change event.
+   * @param {boolean} open If the keyboard is now open.
+   * @param {boolean} overlap The height of the keyboard.
+   */
+  handleKeyboardChange = ({ open, overlap }) => {
+    const height = open ? overlap : 0;
+    this.setState({
+      keyboardHeight: height,
+    })
+  }
 
   /**
    * Handles the scroll event of this component's element.
@@ -176,7 +195,8 @@ class View extends Component {
     let contentStyle = styles.content(
       this.props.hasNavigator,
       this.props.hasTabBar,
-      this.props.isFullscreen
+      this.props.isFullscreen,
+      this.state.keyboardHeight,
     );
 
     const { children } = this.props;
