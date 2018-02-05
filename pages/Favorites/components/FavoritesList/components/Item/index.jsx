@@ -46,6 +46,10 @@ class Item extends Component {
     this.height = this.getHeight();
   }
 
+  /**
+   * Measures height.
+   * @returns {number}
+   */
   getHeight = () => {
     if (!this.ref) {
       return 0;
