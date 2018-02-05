@@ -34,26 +34,36 @@ class Item extends Component {
    */
   constructor(props) {
     super(props);
-    this.initialHeight = 0;
     this.state = {
       visible: true,
     };
   }
 
   /**
+   * Component did update callback.
+   */
+  componentDidUpdate() {
+    this.height = this.getHeight();
+  }
+
+  getHeight = () => {
+    if (!this.ref) {
+      return 0;
+    }
+    // eslint-disable-next-line react/no-find-dom-node
+    return getAbsoluteHeight(findDOMNode(this.ref));
+  };
+
+  /**
    * Get the element height to determin the translate distance
    * @param {Object} element Component ref
    */
-  adjustHeight = (element) => {
-    if (!element || this.initialHeight > 5) {
+  saveRef = (element) => {
+    if (this.ref) {
       return;
     }
-    this.initialHeight = getAbsoluteHeight(findDOMNode(element));
-    if (!this.initialHeight) {
-      return;
-    }
-    // Add 4px to comply to the padding of the card item
-    this.initialHeight += 4;
+    this.ref = element;
+    window.foo = this.ref;
   };
 
   /**
@@ -69,9 +79,9 @@ class Item extends Component {
       >
         {state => (
           <CardItem
-            ref={this.adjustHeight}
+            ref={this.saveRef}
             className={
-              styles.getFavItemTransitionStyle(state, this.state.visible, this.initialHeight)
+              styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
             }
           >
             <Grid className={styles.row}>
@@ -81,7 +91,7 @@ class Item extends Component {
                   <FavoritesButton
                     productId={this.props.product.id}
                     active={this.state.visible}
-                    removeThrottle={styles.favItemTransitionDuration + 200}
+                    removeThrottle={styles.favItemTransitionDuration + 1000}
                     onRippleComplete={(active) => {
                       this.setState({
                         visible: active,
