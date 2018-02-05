@@ -28,7 +28,7 @@ class Toast extends Component {
       message: PropTypes.string.isRequired,
       duration: PropTypes.number.isRequired,
       action: PropTypes.string,
-      actionOnClick: PropTypes.shape(),
+      actionOnClick: PropTypes.func,
     }),
   };
 
