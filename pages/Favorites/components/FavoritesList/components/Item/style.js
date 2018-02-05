@@ -12,8 +12,8 @@ import variables from 'Styles/variables';
 const favItemTransitionDuration = 500;
 
 const favButtonWrapper = css({
-  marginTop: '-16px',
-  marginLeft: '16px',
+  marginTop: `-${variables.gap.big}px`,
+  marginLeft: variables.gap.big,
 }).toString();
 
 const row = css({
@@ -22,18 +22,15 @@ const row = css({
 }).toString();
 
 const leftColumn = css({
-  paddingRight: variables.gap.small,
-  flexShrink: 0,
-  flexGrow: 1,
   minWidth: 126,
   maxWidth: 170,
   width: '19%',
 }).toString();
 
 const rightColumn = css({
-  paddingLeft: variables.gap.small,
+  paddingLeft: variables.gap.big,
   // Makes the bottom always aligned to bottom of the image.
-  paddingBottom: 16,
+  paddingBottom: variables.gap.big,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
