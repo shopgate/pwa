@@ -30,7 +30,7 @@
     "from": "From {price}",
     "range": "Price range from {fromPrice} to {toPrice}",
     "tier": {
-      "set": "{from}: {price}",
+      "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
     "msrp": "MSRP",
