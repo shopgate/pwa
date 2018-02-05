@@ -20,11 +20,14 @@ exports[`<Toast /> should dispatch a toast message 1`] = `
     <Toast
       className={null}
       container={[Function]}
+      dispatchAction={[Function]}
       message={[Function]}
       onClose={[Function]}
       removeToast={[Function]}
       toast={
         Object {
+          "action": null,
+          "actionOnClick": null,
           "duration": 0,
           "id": 1,
           "message": "Toast Message",
