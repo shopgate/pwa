@@ -36,7 +36,7 @@
     "from": "Ab {price}",
     "range": "Preisspanne von {fromPrice} bis {toPrice}",
     "tier": {
-      "set": "{from}: {price}",
+      "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
     },
     "msrp": "UVP",
