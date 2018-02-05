@@ -312,6 +312,7 @@ exports[`<Header /> should render empty 1`] = `
                           <Ripple
                             className="css-8s1fw2 "
                             color="#000"
+                            disabled={false}
                             fill={true}
                             onComplete={[Function]}
                             overflow={false}
@@ -800,6 +801,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           <Ripple
                             className="css-8s1fw2 "
                             color="#000"
+                            disabled={false}
                             fill={true}
                             onComplete={[Function]}
                             overflow={false}

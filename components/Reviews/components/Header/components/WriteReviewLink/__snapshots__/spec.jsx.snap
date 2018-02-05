@@ -91,6 +91,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                     <Ripple
                       className="css-8s1fw2 "
                       color="#000"
+                      disabled={false}
                       fill={true}
                       onComplete={[Function]}
                       overflow={false}

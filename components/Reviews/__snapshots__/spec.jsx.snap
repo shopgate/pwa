@@ -560,6 +560,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Ripple
                                   className="css-8s1fw2 "
                                   color="#000"
+                                  disabled={false}
                                   fill={true}
                                   onComplete={[Function]}
                                   overflow={false}
@@ -2526,6 +2527,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             <Ripple
                               className="css-8s1fw2 "
                               color="#000"
+                              disabled={false}
                               fill={true}
                               onComplete={[Function]}
                               overflow={false}
@@ -3052,6 +3054,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Ripple
                                   className="css-8s1fw2 "
                                   color="#000"
+                                  disabled={false}
                                   fill={true}
                                   onComplete={[Function]}
                                   overflow={false}
@@ -4365,6 +4368,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                                 <Ripple
                                   className="css-8s1fw2 "
                                   color="#000"
+                                  disabled={false}
                                   fill={true}
                                   onComplete={[Function]}
                                   overflow={false}
