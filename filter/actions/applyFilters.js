@@ -12,8 +12,8 @@ import { FILTER_PATH } from '../constants';
 
 /**
  * Applies the filters to the products and navigates back to the previous route containing products.
- * @param {boolean} roundDisplayAmounts If set to TRUE the values of the display_amount will be
- *   rounded to the next full number.
+ * @param {boolean} [roundDisplayAmounts=true] If set to TRUE the values of the display_amount will
+ *   be rounded to the next full number.
  * @returns {Function} A redux thunk
  */
 const applyFilters = (roundDisplayAmounts = true) => (dispatch, getState) => {

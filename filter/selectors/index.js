@@ -145,7 +145,7 @@ export const getTemporaryFilters = state => (
 
 /**
  * Gets the temporary stored filter settings and rounds the display amounts. The minimum amount
- * is rounded down, and the maximum amount is rounded down to the next full number.
+ * is rounded down, and the maximum amount is rounded up to the next full number.
  * @return {Object}
  */
 export const getTemporaryFiltersWithRoudedDisplayAmounts = createSelector(

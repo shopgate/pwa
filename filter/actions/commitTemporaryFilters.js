@@ -20,8 +20,8 @@ import buildFilterParams from './helpers/buildFilterParams';
 
 /**
  * Submits the temporary state to the active filters.
- * @param {boolean} roundDisplayAmounts If set to TRUE the values of the display_amount will be
- *   rounded to the next full number.
+ * @param {boolean} [roundDisplayAmounts=true] If set to TRUE the values of the display_amount will
+ *   be rounded to the next full number.
  * @returns {Function} A redux thunk.
  */
 const commitTemporaryFilters = (roundDisplayAmounts = true) => (dispatch, getState) => {
