@@ -11,6 +11,7 @@
     "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "precommit": "lint-staged",
     "test": "jest",
+    "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "version": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && bump extension-config.json -v $PACKAGE_VERSION -y && git add -A",
     "postversion": "git push && git push --tags"

@@ -45,9 +45,9 @@ class Browse extends Component {
   render() {
     return (
       <View>
-        <Headline text={'titles.browse'} />
+        <Headline text="titles.browse" />
         <SearchField />
-        <Headline text={'titles.categories'} small />
+        <Headline text="titles.categories" small />
         <CategoryList categories={this.props.categories || []} />
       </View>
     );
