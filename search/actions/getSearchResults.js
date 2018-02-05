@@ -6,12 +6,14 @@
  */
 
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import {
+  getSortOrder,
+  getSearchPhrase,
+} from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
 import requestSearchResults from '../action-creators/requestSearchResults';
 import receiveSearchResults from '../action-creators/receiveSearchResults';
 import errorSearchResults from '../action-creators/errorSearchResults';
-import { getSearchPhrase } from '../selectors';
 
 /**
  * Retrieves products for a certain search query.
