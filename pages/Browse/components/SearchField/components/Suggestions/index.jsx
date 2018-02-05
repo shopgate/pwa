@@ -7,8 +7,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SEARCH_SUGGESTIONS_MIN_CHARACTERS } from '@shopgate/pwa-common/constants/DisplayOptions';
 import List from '@shopgate/pwa-common/components/List';
+import { SEARCH_SUGGESTIONS_MIN_CHARACTERS } from './constants';
 import SearchSuggestion from './components/Suggestion';
 import connect from './connector';
 import styles from './style';
@@ -19,7 +19,7 @@ import styles from './style';
 class SearchSuggestions extends Component {
   static propTypes = {
     fetchSearchSuggestions: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+    isFetching: PropTypes.bool.isRequired,
     searchPhrase: PropTypes.string.isRequired,
     setSearchPhrase: PropTypes.func.isRequired,
     submitSearch: PropTypes.func.isRequired,
@@ -93,13 +93,12 @@ class SearchSuggestions extends Component {
     return (
       <div className={styles}>
         <List>
-          {suggestions.map(suggestion =>
+          {suggestions.map(suggestion => (
             <SearchSuggestion
               key={suggestion}
               suggestion={suggestion}
               onClick={() => this.handleSelect(suggestion)}
-            />
-          )}
+            />))}
         </List>
       </div>
     );

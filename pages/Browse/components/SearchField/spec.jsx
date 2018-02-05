@@ -42,9 +42,6 @@ describe('<SearchField />', () => {
 
   it('should render the search field', () => {
     expect(element).toMatchSnapshot();
-
-    expect(element.find('Input').length).toBe(1);
-    expect(element.find(`.${getClassSelector(style.button)}`).length).toBe(1);
   });
 
   it('should show the overlay when focused', () => {
@@ -52,18 +49,18 @@ describe('<SearchField />', () => {
 
     element.instance().handleFocusChange(true);
     jest.runAllTimers();
-
+    element.update();
     const overlay = element.find(`.${getClassSelector(style.overlay)}`);
     expect(overlay.length).toBe(1);
   });
 
-  it('should clear the', () => {
+  it('should clear the overlay', () => {
     expect(element.find(`.${getClassSelector(style.overlay)}`).length).toBe(0);
 
-    element.instance().handleFocusChange(true);
+    element.instance().handleFocusChange(false);
     jest.runAllTimers();
-
+    element.update();
     const overlay = element.find(`.${getClassSelector(style.overlay)}`);
-    expect(overlay.length).toBe(1);
+    expect(overlay.length).toBe(0);
   });
 });

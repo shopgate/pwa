@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n/';
@@ -114,8 +114,7 @@ class SearchField extends Component {
    */
   renderCancelButton = () => (
     <button
-      className={classNames(
-        styles.button, {
+      className={classNames(styles.button, {
           [styles.hidden]: !this.state.focused,
         })}
       onClick={this.handleCancel}
@@ -142,23 +141,16 @@ class SearchField extends Component {
   );
 
   /**
-   * Renders the overlay.
-   * @return {JSX}
-   */
-  renderOverlay = () => (
-    this.state.focused && <button className={styles.overlay} />
-  );
-
-  /**
    * Renders the text field.
    * @return {JSX}
    */
   render() {
+    const { focused } = this.state;
     return (
       <div>
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
-            <form onSubmit={this.handleSubmit} action={'.'}>
+            <form onSubmit={this.handleSubmit} action=".">
               { this.renderLabelElement() }
               { this.renderInputField() }
             </form>
@@ -167,8 +159,12 @@ class SearchField extends Component {
             { this.renderCancelButton() }
           </div>
         </div>
-        { this.renderOverlay() }
-        <SearchSuggestions />
+        { focused && (
+          <Fragment>
+            <div className={styles.overlay} />
+            <SearchSuggestions />
+          </Fragment>)
+        }
       </div>
     );
   }

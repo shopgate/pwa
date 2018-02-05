@@ -12,7 +12,7 @@ import {
   getCurrentSearchSuggestions,
   getSearchPhrase,
   isFetchingCurrentSearchSuggestions,
- } from '@shopgate/pwa-common-commerce/search/selectors';
+} from '@shopgate/pwa-common-commerce/search/selectors';
 import submitSearch from '../../actions/submitSearch';
 
 /**

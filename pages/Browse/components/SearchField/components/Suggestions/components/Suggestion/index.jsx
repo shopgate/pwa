@@ -17,15 +17,18 @@ import styles from './style';
  * @param {function} props.onClick The action that is triggered on click.
  * @returns {JSX}
  */
-const SearchSuggestion = ({ suggestion, onClick }) =>
+const SearchSuggestion = ({ suggestion, onClick }) => (
   <List.Item>
-    <button
+    <div
       className={styles}
       onClick={onClick}
+      role="button"
+      aria-hidden
     >
       {suggestion}
-    </button>
-  </List.Item>;
+    </div>
+  </List.Item>
+);
 
 SearchSuggestion.propTypes = {
   onClick: PropTypes.func.isRequired,
