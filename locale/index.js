@@ -5,7 +5,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// eslint-disable-next-line import/no-dynamic-require
-const templateTranslations = require(`./${process.env.LANG}.json`);
+import extensionTranslations from 'Extensions/translations';
+import isPlainObject from 'lodash/isPlainObject';
+import defaultsDeep from 'lodash/defaultsDeep';
 
-export default templateTranslations;
+// eslint-disable-next-line import/no-dynamic-require
+const themeTranslations = require(`./${process.env.LANG}.json`);
+let extension = {};
+
+if (isPlainObject(extensionTranslations)) {
+  Object.keys(extensionTranslations).forEach((key) => {
+    if (key.includes(process.env.LANG)) {
+      extension = extensionTranslations[key];
+    }
+  });
+}
+
+export default defaultsDeep(extension, themeTranslations);
