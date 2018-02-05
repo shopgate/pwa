@@ -25,6 +25,10 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
 }));
 
+jest.mock('@shopgate/pwa-common-commerce/favorites/selectors/index', () => ({
+  isFetching: () => false,
+}));
+
 beforeEach(() => {
   jest.resetModules();
 });
@@ -38,13 +42,17 @@ describe('<FavoritesButton />', () => {
    * @param {Object} props Additional props.
    * @return {ReactWrapper}
    */
-  const createComponent = (mockedState, props) => {
+  const createComponent = (mockedState, props = { active: false }) => {
     const store = mockedStore(mockedState);
     store.dispatch = dispatcher;
 
     return mount(
       <Provider store={store}>
-        <FavoritesButton addFavorites={() => {}} removeFavorites={() => {}} {...props} />
+        <FavoritesButton
+          addFavorites={() => {}}
+          removeFavorites={() => {}}
+          {...props}
+        />
       </Provider>,
       mockRenderOptions
     );
@@ -54,7 +62,7 @@ describe('<FavoritesButton />', () => {
   });
 
   it('should only render when no favorites set', () => {
-    component = createComponent(mockedStateEmpty, { active: false });
+    component = createComponent(mockedStateEmpty);
     expect(component).toMatchSnapshot();
 
     expect(component.find('Heart').exists()).toBe(false);
@@ -84,7 +92,7 @@ describe('<FavoritesButton />', () => {
     expect(dispatcher.mock.calls.length).toBe(1);
   });
 
-  it('should remove from favorites on click', () => {
+  it('should remove from favorites on click', (done) => {
     component = createComponent(mockedStateOnList, {
       productId: '1',
       active: true,
@@ -94,8 +102,12 @@ describe('<FavoritesButton />', () => {
 
     component.find('button').simulate('click');
     component.update();
-    expect(dispatcher.mock.calls.length).toBe(1);
+    setTimeout(() => {
+      expect(dispatcher.mock.calls.length).toBe(1);
+      done();
+    }, 0);
   });
+
   it('should render null when feature flag is off', () => {
     mockedHasFavorites = false;
     component = createComponent(mockedStateOnList);
