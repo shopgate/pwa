@@ -38,7 +38,10 @@ jest.mock('Components/ClientInformation/connector', () => (obj) => {
 
   return newObj;
 });
-
+let mockedHasFavorites = true;
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get hasFavorites() { return mockedHasFavorites; },
+}));
 describe('<NavDrawer />', () => {
   let toggleNavDrawerMock;
 
@@ -150,7 +153,7 @@ describe('<NavDrawer />', () => {
 
   it('should render favorites list link with an indicator', () => {
     const Component = (
-      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites hasFavorites />
+      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites />
     );
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
@@ -159,7 +162,7 @@ describe('<NavDrawer />', () => {
   let itemsCountwithFavoritesLink;
   it('should render favorites list link without an indicator', () => {
     const Component = (
-      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites={false} hasFavorites />
+      <NavDrawer toggleNavDrawer={toggleNavDrawerMock} highlightFavorites={false} />
     );
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
@@ -167,7 +170,8 @@ describe('<NavDrawer />', () => {
   });
 
   it('should not render a favorites link at all when feature flag is off', () => {
-    const Component = (<NavDrawer toggleNavDrawer={toggleNavDrawerMock} hasFavorites={false} />);
+    mockedHasFavorites = false;
+    const Component = (<NavDrawer toggleNavDrawer={toggleNavDrawerMock} />);
     const wrapper = mount(Component);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Item').length).toBe(itemsCountwithFavoritesLink - 1);

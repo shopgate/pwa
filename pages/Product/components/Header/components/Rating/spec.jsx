@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -17,6 +16,10 @@ import {
 } from 'Components/Reviews/mock';
 import Rating from './index';
 import { getElementById } from './mock';
+
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  hasReviews: true,
+}));
 
 describe('Rating (product header)', () => {
   const mockedStore = configureStore();
