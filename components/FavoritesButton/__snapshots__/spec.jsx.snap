@@ -5,13 +5,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      },
+      "dispatch": [MockFunction],
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
@@ -35,6 +29,8 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       removeFavorites={[Function]}
       removeThrottle={0}
       rippleClassName=""
+      showToast={[Function]}
+      useUndo={false}
     >
       <button
         className="css-1b5v381 "
@@ -95,13 +91,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [MockFunction] {
-        "calls": Array [
-          Array [
-            [Function],
-          ],
-        ],
-      },
+      "dispatch": [MockFunction],
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
@@ -125,6 +115,8 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       removeFavorites={[Function]}
       removeThrottle={0}
       rippleClassName=""
+      showToast={[Function]}
+      useUndo={false}
     >
       <button
         className="css-1b5v381 "

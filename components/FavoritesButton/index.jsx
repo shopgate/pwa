@@ -30,6 +30,7 @@ class FavoritesButton extends Component {
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
+    useUndo: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -41,6 +42,7 @@ class FavoritesButton extends Component {
     removeFavorites: () => {},
     removeThrottle: 0,
     rippleClassName: '',
+    useUndo: false,
   };
 
   /**
@@ -102,7 +104,9 @@ class FavoritesButton extends Component {
     } else {
       setTimeout(() => {
         this.props.removeFavorites(this.props.productId);
-        this.props.showToast(this.props.productId);
+        if (this.props.useUndo) {
+          this.props.showToast(this.props.productId);
+        }
       }, this.props.removeThrottle);
     }
 

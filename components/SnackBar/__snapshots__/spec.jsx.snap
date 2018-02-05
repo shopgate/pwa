@@ -15,13 +15,16 @@ exports[`<SnackBar /> renders component 1`] = `
 >
   <SnackBar>
     <Connect(Toast)
-      className="css-13530nd"
+      actionButton={[Function]}
+      className="css-1nw5ecr"
       container={[Function]}
       message={[Function]}
     >
       <Toast
-        className="css-13530nd"
+        actionButton={[Function]}
+        className="css-1nw5ecr"
         container={[Function]}
+        dispatchAction={[Function]}
         message={[Function]}
         onClose={[Function]}
         removeToast={[Function]}
@@ -45,24 +48,26 @@ exports[`<SnackBar /> renders component 1`] = `
                 "out": "",
               }
             }
-            className="css-13530nd"
+            className="css-1nw5ecr"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-13530nd css-1rg7udn css-1dwe0qx"
+              className="css-1nw5ecr css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >
               <Container>
-                <div>
+                <div
+                  className="css-q9taby"
+                >
                   <Message
                     text="Lorem ipsum dolor sit amet."
                   >
                     <p
-                      className="css-1yqa5rq"
+                      className="css-pnkcbw"
                     >
                       <Translate
                         className=""
