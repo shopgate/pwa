@@ -15,6 +15,7 @@ import {
   mockedState,
   mockedEmptyState,
   mockedNotReadyState,
+  mockedNextProps,
 } from './mock';
 
 const mockedView = MockedView;
@@ -72,6 +73,19 @@ describe('<Favorites> page', () => {
       expect(component.find('LoadingIndicator').exists()).toBe(false);
       expect(component.find('EmptyFavorites').html()).toBe(null);
       expect(component.find('FavoritesList').exists()).toBe(true);
+    });
+
+    it('should only update when the list changed', () => {
+      const component = createComponent(mockedState);
+
+      const result1 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
+      expect(result1).toBe(true);
+
+      component.find('FavoritesList').instance().props = mockedNextProps;
+      component.update();
+
+      const result2 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
+      expect(result2).toBe(false);
     });
   });
 });
