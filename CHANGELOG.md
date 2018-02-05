@@ -1,5 +1,13 @@
 
 # Changelog
+
+### [2.1.1](https://github.com/shopgate/pwa-common/compare/v2.1.0...v2.1.1) - February 01, 2018
+#### Added
+- Data attribute to Button component for automated testing
+- Default `app.json` for test mode
+#### Fixed
+- Invalid portal components are now ignored
+
 ---
 
 ### [2.1.0](https://github.com/shopgate/pwa-common/compare/v2.0.2...v2.1.0) - January 30, 2018
