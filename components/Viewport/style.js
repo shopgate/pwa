@@ -7,6 +7,10 @@
 
 import { css } from 'glamor';
 
+css.global('body', {
+  userSelect: 'none',
+});
+
 export default css({
   minHeight: '100vh',
   overflowX: 'hidden',
