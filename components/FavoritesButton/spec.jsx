@@ -21,12 +21,14 @@ const mockedStore = configureStore();
 const dispatcher = jest.fn();
 
 let mockedHasFavorites = true;
+let mockedIsFetching = true;
+
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
 }));
 
 jest.mock('@shopgate/pwa-common-commerce/favorites/selectors/index', () => ({
-  isFetching: () => false,
+  isFetching: () => mockedIsFetching,
 }));
 
 beforeEach(() => {
@@ -79,6 +81,16 @@ describe('<FavoritesButton />', () => {
     expect(component.find('HeartOutline').exists()).toBe(false);
   });
 
+  it('should update component state when props are updated', () => {
+    component = createComponent(mockedStateNotOnList, {
+      productId: '1',
+      active: false,
+    });
+    expect(component.find('FavoritesButton').instance().state.active).toBe(false);
+    component.find('FavoritesButton').instance().componentWillReceiveProps({ active: true });
+    expect(component.find('FavoritesButton').instance().state.active).toBe(true);
+  });
+
   it('should add to favorites on click', () => {
     component = createComponent(mockedStateNotOnList, {
       productId: '1',
@@ -89,7 +101,7 @@ describe('<FavoritesButton />', () => {
 
     component.find('button').simulate('click');
     component.update();
-    expect(dispatcher.mock.calls.length).toBe(1);
+    expect(dispatcher).toHaveBeenCalled();
   });
 
   it('should remove from favorites on click', (done) => {
@@ -103,9 +115,33 @@ describe('<FavoritesButton />', () => {
     component.find('button').simulate('click');
     component.update();
     setTimeout(() => {
-      expect(dispatcher.mock.calls.length).toBe(1);
+      expect(dispatcher).toHaveBeenCalled();
       done();
     }, 0);
+  });
+
+  it('should be blocked when fetching and prop is set', () => {
+    mockedIsFetching = true;
+    component = createComponent(mockedStateOnList, {
+      readOnlyOnFetch: true,
+      active: true,
+    });
+
+    component.find('button').simulate('click');
+    component.update();
+    expect(dispatcher.mock.calls.length).toBe(0);
+  });
+
+  it('should process ripple complete callback', () => {
+    const onRippleComplete = jest.fn();
+    component = createComponent(mockedStateOnList, {
+      productId: '1',
+      active: true,
+      onRippleComplete,
+    });
+    component.find('Ripple').instance().props.onComplete();
+    component.update();
+    expect(onRippleComplete).toHaveBeenCalled();
   });
 
   it('should render null when feature flag is off', () => {
