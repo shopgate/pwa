@@ -51,11 +51,11 @@ class Item extends Component {
    * @returns {number}
    */
   getHeight = () => {
-    if (!this.ref) {
+    if (!this.refElement) {
       return 0;
     }
     // eslint-disable-next-line react/no-find-dom-node
-    return getAbsoluteHeight(findDOMNode(this.ref));
+    return getAbsoluteHeight(findDOMNode(this.refElement));
   };
 
   /**
@@ -63,10 +63,10 @@ class Item extends Component {
    * @param {Object} element Component ref
    */
   saveRef = (element) => {
-    if (this.ref) {
+    if (this.refElement) {
       return;
     }
-    this.ref = element;
+    this.refElement = element;
   };
 
   /**

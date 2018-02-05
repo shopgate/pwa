@@ -24,6 +24,9 @@ jest.mock('Components/View', () => mockedView);
 jest.mock('@shopgate/pwa-common/actions/history/goBackHistory', () => () => ({
   type: 'goback',
 }));
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  hasFavorites: true,
+}));
 /**
  * Creates component
  * @param {boolean} state State that would be used for store.
@@ -86,6 +89,13 @@ describe('<Favorites> page', () => {
 
       const result2 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
       expect(result2).toBe(false);
+    });
+    it('should hide when favItemButton is clicked', () => {
+      const component = createComponent(mockedState);
+      expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(true);
+      component.find('FavoritesButton').at(0).instance().props.onRippleComplete(false);
+      component.update();
+      expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(false);
     });
   });
 });
