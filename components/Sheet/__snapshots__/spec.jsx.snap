@@ -54,6 +54,7 @@ exports[`<Sheet /> should open 1`] = `
                 <Ripple
                   className="css-ugy6xl"
                   color="#000"
+                  disabled={false}
                   fill={false}
                   onComplete={[Function]}
                   overflow={false}
@@ -377,6 +378,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 <Ripple
                   className="css-ugy6xl"
                   color="#000"
+                  disabled={false}
                   fill={false}
                   onComplete={[Function]}
                   overflow={false}

@@ -52,6 +52,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
               <Ripple
                 className="css-8s1fw2 "
                 color="#000"
+                disabled={false}
                 fill={true}
                 onComplete={[Function]}
                 overflow={false}

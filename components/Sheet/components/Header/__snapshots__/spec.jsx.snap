@@ -13,6 +13,7 @@ exports[`<Header /> should render with correct title 1`] = `
     <Ripple
       className="css-ugy6xl"
       color="#000"
+      disabled={false}
       fill={false}
       onComplete={[Function]}
       overflow={false}
