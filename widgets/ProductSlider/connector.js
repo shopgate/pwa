@@ -19,7 +19,7 @@ const mapStateToProps = (state, props) => ({
   products: getProductsResult(state, props.settings.queryType, {
     sort: props.settings.sortOrder,
     value: props.settings.queryParams,
-  }).products,
+  }, props.id).products,
 });
 
 /**
@@ -28,10 +28,8 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (type, value, sort) =>
-    dispatch(
-      getProductsByQuery(type, value, sort)
-    ),
+  getProducts: (type, value, sort, id) =>
+    dispatch(getProductsByQuery(type, value, sort, id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
