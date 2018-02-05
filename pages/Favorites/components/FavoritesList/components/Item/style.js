@@ -50,15 +50,6 @@ const defaultTransitionStyle = {
   transition: `margin-top ${favItemTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
 };
 
-const transitionStyles = {
-  exited: {
-    height: 0,
-  },
-  exiting: {
-    height: 'auto',
-  },
-};
-
 /**
  * Creates an object with style attributes to enable a cart item transition.
  * @param {string} state A state of the react-transition-group/Transition component.
@@ -69,7 +60,6 @@ const transitionStyles = {
 const getFavItemTransitionStyle = (state, visible, height) => (
   css({
     ...defaultTransitionStyle,
-    ...transitionStyles[state],
     ...!visible && {
       zIndex: 0,
       marginTop: `-${height}`,

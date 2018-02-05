@@ -63,7 +63,6 @@ class Item extends Component {
       return;
     }
     this.ref = element;
-    window.foo = this.ref;
   };
 
   /**
