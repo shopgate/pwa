@@ -43,7 +43,7 @@ const info = css({
 
 const disclaimerSpacer = css({
   width: 10,
-}).toString()
+}).toString();
 
 export default {
   item,
