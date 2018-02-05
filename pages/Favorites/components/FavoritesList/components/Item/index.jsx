@@ -45,7 +45,7 @@ class Item extends Component {
    * @param {Object} element Component ref
    */
   adjustHeight = (element) => {
-    if (!element || this.initialHeight > 0) {
+    if (!element || this.initialHeight > 5) {
       return;
     }
     this.initialHeight = getAbsoluteHeight(findDOMNode(element));
