@@ -15,10 +15,12 @@
     "favorites": "Favorites"
   },
   "favorites": {
+    "add": "Add to favorites",
     "continue": "Continue shopping",
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",
     "error_remove": "Product could not be removed from favorites",
+    "remove": "Remove from favorites",
     "removed": "Removed from favorites"
   },
   "filter": {

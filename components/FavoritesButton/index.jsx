@@ -46,6 +46,14 @@ class FavoritesButton extends Component {
   };
 
   /**
+   * Context types definition.
+   * @type {{i18n: shim}}
+   */
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
+  /**
    * Construct and init state
    * @param {Object} props Component props
    */
@@ -74,6 +82,16 @@ class FavoritesButton extends Component {
   onRippleComplete = () => {
     this.props.onRippleComplete(this.state.active);
   };
+
+  /**
+   * Returns text for aria-label.
+   * @returns {string}
+   */
+  getLabel() {
+    const { __ } = this.context.i18n();
+    const lang = this.state.active ? 'favorites.remove' : 'favorites.add';
+    return __(lang);
+  }
 
   /**
    * Checks if button is currently read-only.
@@ -145,6 +163,7 @@ class FavoritesButton extends Component {
     }
     return (
       <button
+        aria-label={this.getLabel()}
         className={`${styles.button} ${this.props.className}`}
         onClick={this.handleClick}
       >
