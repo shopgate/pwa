@@ -5,7 +5,13 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [MockFunction],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            [Function],
+          ],
+        ],
+      },
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
@@ -22,8 +28,10 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       active={false}
       addFavorites={[Function]}
       className=""
+      isFetching={false}
       onRippleComplete={[Function]}
       productId={null}
+      readOnlyOnFetch={false}
       removeFavorites={[Function]}
       removeThrottle={0}
       rippleClassName=""
@@ -35,6 +43,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
         <Ripple
           className="css-15r2nrm "
           color="#000"
+          disabled={false}
           fill={false}
           onComplete={[Function]}
           overflow={false}
@@ -86,7 +95,13 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
   store={
     Object {
       "clearActions": [Function],
-      "dispatch": [MockFunction],
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            [Function],
+          ],
+        ],
+      },
       "getActions": [Function],
       "getState": [Function],
       "replaceReducer": [Function],
@@ -103,8 +118,10 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       active={true}
       addFavorites={[Function]}
       className=""
+      isFetching={false}
       onRippleComplete={[Function]}
       productId={null}
+      readOnlyOnFetch={false}
       removeFavorites={[Function]}
       removeThrottle={0}
       rippleClassName=""
@@ -116,6 +133,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
         <Ripple
           className="css-15r2nrm "
           color="#000"
+          disabled={false}
           fill={false}
           onComplete={[Function]}
           overflow={false}

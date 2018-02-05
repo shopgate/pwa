@@ -4,7 +4,6 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={false}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={false}
@@ -105,7 +104,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -219,7 +220,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -329,7 +332,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -448,7 +453,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -566,7 +573,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -676,7 +685,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -793,7 +804,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -903,7 +916,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1013,7 +1028,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1122,7 +1139,6 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={true}
   highlightFavorites={true}
   logout={[Function]}
   navDrawerActive={false}
@@ -1223,7 +1239,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -1337,7 +1355,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1447,7 +1467,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1557,7 +1579,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1676,7 +1700,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -1794,7 +1820,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1904,7 +1932,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2021,7 +2051,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2131,7 +2163,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2241,7 +2275,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2350,7 +2386,6 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={true}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={false}
@@ -2451,7 +2486,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -2565,7 +2602,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2675,7 +2714,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2785,7 +2826,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2904,7 +2947,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -3022,7 +3067,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3132,7 +3179,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3249,7 +3298,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3359,7 +3410,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3469,7 +3522,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3578,7 +3633,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={false}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={false}
@@ -3716,7 +3770,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3826,7 +3882,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3918,6 +3976,118 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   </Ripple>
                 </div>
               </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/favourite_list"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+                withIndicator={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  data-test-id="NavDrawerLink"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    disabled={false}
+                    fill={true}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Heart>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Heart>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.favorites"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.favorites
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
               <CartItem
                 close={[Function]}
                 count={0}
@@ -3945,7 +4115,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -4063,7 +4235,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4173,7 +4347,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4283,7 +4459,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4400,7 +4578,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4510,7 +4690,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4620,7 +4802,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4737,7 +4921,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4846,7 +5032,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={false}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={false}
@@ -4947,7 +5132,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -5061,7 +5248,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5171,7 +5360,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5263,6 +5454,118 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   </Ripple>
                 </div>
               </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/favourite_list"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+                withIndicator={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  data-test-id="NavDrawerLink"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    disabled={false}
+                    fill={true}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Heart>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Heart>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.favorites"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.favorites
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
               <CartItem
                 close={[Function]}
                 count={0}
@@ -5290,7 +5593,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -5408,7 +5713,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5518,7 +5825,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5635,7 +5944,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5745,7 +6056,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5855,7 +6168,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5964,7 +6279,6 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={false}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={true}
@@ -6106,7 +6420,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -6220,7 +6536,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6330,7 +6648,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6422,6 +6742,118 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   </Ripple>
                 </div>
               </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/favourite_list"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+                withIndicator={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  data-test-id="NavDrawerLink"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    disabled={false}
+                    fill={true}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Heart>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Heart>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.favorites"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.favorites
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
               <CartItem
                 close={[Function]}
                 count={0}
@@ -6449,7 +6881,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -6567,7 +7001,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6677,7 +7113,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6794,7 +7232,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6904,7 +7344,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7014,7 +7456,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7159,6 +7603,21 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       string="navigation.categories"
     />
   </Item>
+  <Item
+    close={[Function]}
+    count={null}
+    href="/favourite_list"
+    icon={[Function]}
+    onClick={[Function]}
+    primary={false}
+    withIndicator={false}
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="navigation.favorites"
+    />
+  </Item>
   <CartItem
     close={[Function]}
     count={0}
@@ -7266,7 +7725,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={false}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={true}
@@ -7408,7 +7866,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -7522,7 +7982,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7632,7 +8094,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7724,6 +8188,118 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   </Ripple>
                 </div>
               </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/favourite_list"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+                withIndicator={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  data-test-id="NavDrawerLink"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    disabled={false}
+                    fill={true}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Heart>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Heart>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.favorites"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.favorites
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
               <CartItem
                 close={[Function]}
                 count={0}
@@ -7751,7 +8327,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -7869,7 +8447,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7979,7 +8559,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8096,7 +8678,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8206,7 +8790,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8316,7 +8902,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8425,7 +9013,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
 <NavDrawer
   cartProductCount={0}
   entries={Object {}}
-  hasFavorites={false}
   highlightFavorites={false}
   logout={[Function]}
   navDrawerActive={true}
@@ -8567,7 +9154,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -8681,7 +9270,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8791,7 +9382,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8883,6 +9476,118 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   </Ripple>
                 </div>
               </Item>
+              <Item
+                close={[Function]}
+                count={null}
+                href="/favourite_list"
+                icon={[Function]}
+                onClick={[Function]}
+                primary={false}
+                withIndicator={false}
+              >
+                <div
+                  aria-hidden={true}
+                  className="css-13azwyo"
+                  data-test-id="NavDrawerLink"
+                  onClick={[Function]}
+                >
+                  <Ripple
+                    className=""
+                    color="#000"
+                    disabled={false}
+                    fill={true}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
+                  >
+                    <div
+                      aria-hidden={true}
+                      className=""
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
+                    >
+                      <Grid
+                        className="css-1yzks37"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-1yzks37 css-h7r55a"
+                        >
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={0}
+                            shrink={1}
+                          >
+                            <li
+                              className=""
+                            >
+                              <div
+                                className="css-17ij4h5"
+                              >
+                                <Heart>
+                                  <Icon
+                                    className=""
+                                    color={null}
+                                    content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                                    size="inherit"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <svg
+                                      className="css-yys9hb "
+                                      dangerouslySetInnerHTML={
+                                        Object {
+                                          "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                        }
+                                      }
+                                      style={
+                                        Object {
+                                          "fill": null,
+                                          "fontSize": "inherit",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </Icon>
+                                </Heart>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className=""
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className=" css-1gs0ko2"
+                            >
+                              <div
+                                className="css-1hv14w9"
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="navigation.favorites"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    navigation.favorites
+                                  </span>
+                                </Translate>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </div>
+                  </Ripple>
+                </div>
+              </Item>
               <CartItem
                 close={[Function]}
                 count={0}
@@ -8910,7 +9615,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -9028,7 +9735,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9138,7 +9847,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9255,7 +9966,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9365,7 +10078,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9475,7 +10190,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >

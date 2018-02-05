@@ -34,26 +34,39 @@ class Item extends Component {
    */
   constructor(props) {
     super(props);
-    this.initialHeight = '0px';
-    this.initialHeightNumber = 0;
     this.state = {
       visible: true,
     };
   }
 
   /**
+   * Component did update callback.
+   */
+  componentDidUpdate() {
+    this.height = this.getHeight();
+  }
+
+  /**
+   * Measures height.
+   * @returns {number}
+   */
+  getHeight = () => {
+    if (!this.ref) {
+      return 0;
+    }
+    // eslint-disable-next-line react/no-find-dom-node
+    return getAbsoluteHeight(findDOMNode(this.ref));
+  };
+
+  /**
    * Get the element height to determin the translate distance
    * @param {Object} element Component ref
    */
-  adjustHeight = (element) => {
-    if (!element || this.initialHeightNumber > 0) {
+  saveRef = (element) => {
+    if (this.ref) {
       return;
     }
-    this.initialHeightNumber = getAbsoluteHeight(findDOMNode(element));
-    if (!this.initialHeightNumber) {
-      return;
-    }
-    this.initialHeight = `${this.initialHeightNumber + 4}px`;
+    this.ref = element;
   };
 
   /**
@@ -69,24 +82,27 @@ class Item extends Component {
       >
         {state => (
           <CardItem
-            ref={this.adjustHeight}
+            ref={this.saveRef}
             className={
-              styles.getFavItemTransitionStyle(state, this.state.visible, this.initialHeight)
+              styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
             }
           >
             <Grid className={styles.row}>
               <Grid.Item className={styles.leftColumn}>
                 <Image product={this.props.product} />
-                <FavoritesButton
-                  productId={this.props.product.id}
-                  active={this.state.visible}
-                  removeThrottle={styles.favItemTransitionDuration + 200}
-                  onRippleComplete={(active) => {
-                    this.setState({
-                      visible: active,
-                    });
-                  }}
-                />
+                <div className={styles.favButtonWrapper}>
+                  <FavoritesButton
+                    productId={this.props.product.id}
+                    active={this.state.visible}
+                    removeThrottle={styles.favItemTransitionDuration + 200}
+                    onRippleComplete={(active) => {
+                      this.setState({
+                        visible: active,
+                      });
+                    }}
+                    readOnlyOnFetch
+                  />
+                </div>
               </Grid.Item>
               <Grid.Item grow={1} className={styles.rightColumn}>
                 <ProductInfo product={this.props.product} />

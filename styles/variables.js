@@ -5,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const variables = (process.env.NODE_ENV !== 'test' && themeConfig && themeConfig.variables) ? themeConfig.variables : {};
+
 const materialShadow = 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px';
 
 export default {
@@ -36,4 +40,5 @@ export default {
   paymentBar: {
     height: 78,
   },
+  ...variables,
 };

@@ -136,12 +136,14 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                         >
                           <button
                             className="css-5xfjjh css-63oe3q css-1rn65c0"
+                            data-test-id="Button"
                             disabled={false}
                             onClick={[Function]}
                           >
                             <Ripple
                               className="css-8s1fw2 "
                               color="#000"
+                              disabled={false}
                               fill={true}
                               onComplete={[Function]}
                               overflow={false}

@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import HeartIcon from 'Components/icons/HeartIcon';
 import HeartOutlineIcon from 'Components/icons/HeartOutlineIcon';
 import Ripple from 'Components/Ripple';
@@ -19,11 +20,13 @@ import connect from './connector';
 class FavoritesButton extends Component {
   static propTypes = {
     active: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     showToast: PropTypes.func.isRequired,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
+    readOnlyOnFetch: PropTypes.bool,
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
@@ -34,6 +37,7 @@ class FavoritesButton extends Component {
     className: '',
     onRippleComplete: () => {},
     productId: null,
+    readOnlyOnFetch: false,
     removeFavorites: () => {},
     removeThrottle: 0,
     rippleClassName: '',
@@ -47,6 +51,7 @@ class FavoritesButton extends Component {
     super(props);
     this.state = {
       active: props.active,
+      isFetching: props.isFetching,
     };
   }
 
@@ -57,6 +62,7 @@ class FavoritesButton extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       active: nextProps.active,
+      isFetching: nextProps.isFetching,
     });
   }
 
@@ -68,12 +74,24 @@ class FavoritesButton extends Component {
   };
 
   /**
+   * Checks if button is currently read-only.
+   * @return {boolean} read only "state" of the component
+   */
+  isReadOnly() {
+    return this.state.isFetching && this.props.readOnlyOnFetch;
+  }
+
+  /**
    * Adds or removes a given product ID from the favorite list.
    * @param {Object} event The click event object.
    */
   handleClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
+
+    if (this.isReadOnly()) {
+      return;
+    }
 
     if (!this.props.productId) {
       return;
@@ -82,16 +100,23 @@ class FavoritesButton extends Component {
     if (!this.state.active) {
       this.props.addFavorites(this.props.productId);
     } else {
-      this.props.removeFavorites(this.props.productId);
-      this.props.showToast(this.props.productId);
       setTimeout(() => {
         this.props.removeFavorites(this.props.productId);
+        this.props.showToast(this.props.productId);
       }, this.props.removeThrottle);
     }
 
     this.setState({
       active: !this.state.active,
+      isFetching: true,
     });
+  };
+
+  /**
+   * Callback for the moment when the ripple animation is done.
+   */
+  onRippleComplete = () => {
+    this.props.onRippleComplete(this.state.active);
   };
 
   /**
@@ -108,9 +133,12 @@ class FavoritesButton extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX|null}
    */
   render() {
+    if (!appConfig.hasFavorites) {
+      return null;
+    }
     return (
       <button
         className={`${styles.button} ${this.props.className}`}
@@ -119,6 +147,7 @@ class FavoritesButton extends Component {
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
           onComplete={this.onRippleComplete}
+          disabled={this.isReadOnly()}
         >
           {this.renderIcon()}
         </Ripple>

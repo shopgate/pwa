@@ -6,7 +6,7 @@
  *
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -22,7 +22,7 @@ import styles from './style';
  * @constructor
  */
 const ProductInfo = ({ product }) => (
-  <div>
+  <Fragment>
     <div className={styles.name}>
       <Link
         tagName="a"
@@ -47,7 +47,7 @@ const ProductInfo = ({ product }) => (
         <Price price={product.price} />
       </Grid.Item>
     </Grid>
-  </div>
+  </Fragment>
 );
 
 ProductInfo.propTypes = {
