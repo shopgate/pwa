@@ -14,6 +14,7 @@ import {
   hasFavorites,
   isInitialLoading,
   isCurrentProductOnFavoriteList,
+  isFetching,
 } from './index';
 
 describe('Favorites - selectors', () => {
@@ -175,6 +176,22 @@ describe('Favorites - selectors', () => {
     });
     it('should return true when product is listed', () => {
       expect(isCurrentProductOnFavoriteList(state)).toBe(true);
+    });
+  });
+  describe('isFetching', () => {
+    const state = {
+      favorites: {
+        products: {
+          isFetching: true,
+        },
+      },
+    };
+    it('should return true', () => {
+      expect(isFetching(state)).toBe(true);
+    });
+    it('should return false', () => {
+      state.favorites.products.isFetching = false;
+      expect(isFetching(state)).toBe(false);
     });
   });
 });
