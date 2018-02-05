@@ -32,8 +32,7 @@ const mapDispatchToProps = dispatch => ({
   showToast: productId => (dispatch(createToast({
     action: 'common.undo',
     actionOnClick: addFavorites(productId),
-    message: 'favorites.removed',
-    duration: 600000,
+    message: 'favorites.removed'
   }))),
   removeFavorites: productId => dispatch(removeFavorites(productId)),
 });
