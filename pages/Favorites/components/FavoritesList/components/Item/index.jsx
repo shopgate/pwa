@@ -34,8 +34,7 @@ class Item extends Component {
    */
   constructor(props) {
     super(props);
-    this.initialHeight = '0px';
-    this.initialHeightNumber = 0;
+    this.initialHeight = 0;
     this.state = {
       visible: true,
     };
@@ -46,14 +45,15 @@ class Item extends Component {
    * @param {Object} element Component ref
    */
   adjustHeight = (element) => {
-    if (!element || this.initialHeightNumber > 0) {
+    if (!element || this.initialHeight > 0) {
       return;
     }
-    this.initialHeightNumber = getAbsoluteHeight(findDOMNode(element));
-    if (!this.initialHeightNumber) {
+    this.initialHeight = getAbsoluteHeight(findDOMNode(element));
+    if (!this.initialHeight) {
       return;
     }
-    this.initialHeight = `${this.initialHeightNumber + 4}px`;
+    // Add 4px to comply to the padding of the card item
+    this.initialHeight += 4;
   };
 
   /**

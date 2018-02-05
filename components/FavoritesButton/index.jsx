@@ -64,6 +64,21 @@ class FavoritesButton extends Component {
   }
 
   /**
+   * Callback for the moment when the ripple animation is done.
+   */
+  onRippleComplete = () => {
+    this.props.onRippleComplete(this.state.active);
+  };
+
+  /**
+   * Checks if button is currently read-only.
+   * @return {boolean} read only "state" of the component
+   */
+  isReadOnly() {
+    return this.props.isFetching && this.props.readOnlyOnFetch;
+  }
+
+  /**
    * Adds or removes a given product ID from the favorite list.
    * @param {Object} event The click event object.
    */
@@ -90,20 +105,6 @@ class FavoritesButton extends Component {
     this.setState({
       active: !this.state.active,
     });
-  };
-
-  /**
-   * Checks if button is currently read-only.
-   */
-  isReadOnly() {
-    return this.props.isFetching && this.props.readOnlyOnFetch;
-  }
-
-  /**
-   * Callback for the moment when the ripple animation is done.
-   */
-  onRippleComplete = () => {
-    this.props.onRippleComplete(this.state.active);
   };
 
   /**
