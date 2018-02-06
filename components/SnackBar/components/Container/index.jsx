@@ -7,7 +7,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import styles from './style';
 /**
  * Container component.
  * @param {Object} props Props.

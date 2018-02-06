@@ -10,7 +10,7 @@ import Toast from '@shopgate/pwa-common/components/Toast';
 import Message from './components/Message';
 import Container from './components/Container';
 import ActionButton from './components/ActionButton';
-import styles from './styles';
+import styles from './style';
 
 /**
  * SnackBar component.

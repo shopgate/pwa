@@ -8,7 +8,7 @@
 import I18n from '@shopgate/pwa-common/components/I18n';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import styles from './style';
 
 /**
  * Message component.

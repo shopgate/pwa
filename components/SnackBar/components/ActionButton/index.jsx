@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from './styles';
+import styles from './style';
 
 /**
  * SnackBar action button.
