@@ -9,6 +9,7 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const button = css({
+  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   display: 'block',
   position: 'relative',
   background: '#fff',

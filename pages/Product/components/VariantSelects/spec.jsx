@@ -16,6 +16,9 @@ import styles from './style';
 window.requestAnimationFrame = () => {};
 
 // Mock <Portal>
+// When @shopgate/pwa-common is linked, it won't work.
+// @shopgate/pwa-common/node_modules/react-portal this should be used instead.
+// I have no good idea how to resolve this issue at the moment.
 jest.mock('react-portal', () => (
   ({ isOpened, children }) => (
     isOpened ? children : null

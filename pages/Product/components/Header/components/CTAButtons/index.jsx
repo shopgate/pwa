@@ -6,9 +6,11 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import FavoritesButton from 'Components/FavoritesButton';
 import AddToCartButton from './components/AddToCartButton';
 import styles from './style';
+import connect from './connector';
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).
@@ -16,9 +18,11 @@ import styles from './style';
  * @returns {XML}
  * @constructor
  */
-const CTAButtons = () => (
+const CTAButtons = ({ isFavorite, productId }) => (
   <div className={styles.buttons}>
     <FavoritesButton
+      active={isFavorite}
+      productId={productId}
       className={styles.favButton}
       rippleClassName={styles.ripple}
     />
@@ -26,4 +30,14 @@ const CTAButtons = () => (
   </div>
 );
 
-export default CTAButtons;
+CTAButtons.propTypes = {
+  isFavorite: PropTypes.bool.isRequired,
+  productId: PropTypes.string,
+};
+
+CTAButtons.defaultProps = {
+  isFavorite: null,
+  productId: null,
+};
+
+export default connect(CTAButtons);

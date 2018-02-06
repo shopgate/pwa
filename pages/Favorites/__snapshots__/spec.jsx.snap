@@ -143,7 +143,9 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                             <Ripple
                               className="css-8s1fw2 "
                               color="#000"
+                              disabled={false}
                               fill={true}
+                              onComplete={[Function]}
                               overflow={false}
                               size={null}
                             >
