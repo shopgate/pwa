@@ -1,16 +1,24 @@
 # Changelog
 ---
+### [2.0.1](https://github.com/shopgate/theme-gmd/compare/v2.0.0...v2.0.1) - February 05, 2018
+#### Fixed
+- Re-enabled the configuration of custom theme colors by adding `?parsed=true` to the path of the `colors` setting within the `extension-config.json`
+
+---
 ### [2.0.0](https://github.com/shopgate/theme-gmd/compare/v1.4.4...v2.0.0) - January 30, 2018
 #### Updated
 - Breaking change. Moved `RatingStars` out to the `@shopgate/ext-product-reviews` extension using portals.
+
 ---
 ### [1.4.2](https://github.com/shopgate/theme-gmd/compare/v1.4.1...v1.4.2) - January 26, 2018
 #### Added
 - Translation file for Australia (AU).
+
 ---
 ### [1.4.1](https://github.com/shopgate/theme-ios11/compare/v1.4.0...v1.4.1) - January 25, 2018
 #### Changed
 - Updated `@shopgate/pwa-common` to 2.0.1 version to get the `isNumeric` fix.
+
 ---
 ### [1.4.0](https://github.com/shopgate/theme-ios11/compare/v1.3.2...v1.4.0) - January 24, 2018
 #### Added
