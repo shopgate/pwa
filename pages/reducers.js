@@ -24,6 +24,7 @@ import product from '@shopgate/pwa-common-commerce/product/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import navigator from 'Components/Navigator/reducer';
+import extentions from 'Extensions/reducers';
 
 import general from 'Components/View/reducer';
 import categoryPage from 'Pages/Category/reducer';
@@ -32,6 +33,7 @@ const reducers = {
   cart,
   category,
   client,
+  ...extentions && { extensions: combineReducers(extentions) },
   favorites,
   filter,
   history,
