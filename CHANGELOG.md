@@ -1,6 +1,19 @@
 
 # Changelog
 ---
+### [2.5.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.4.0...v2.5.0) - February 06, 2018
+#### Added
+- Observable `favoritesWillFetch`
+- Observable `favoritesDidFetch`
+- `getProducts` action now includes a `includeFilters` parameter.
+
+#### Changed
+- Extended `addFavorites` action with `immediate` variable that bypasses throttling of the action.
+
+#### Fixed
+- Fixed `getFavorites` selector object property check.
+
+---
 ### [2.4.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.3.0...v2.4.0) - February 05, 2018
 #### Added
 - Added a `includeFilter` option to `getProducts` action
