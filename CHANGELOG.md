@@ -1,7 +1,7 @@
 
 # Changelog
 ---
-### [2.5.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.4.0...v2.6.0) - February 06, 2018
+### [2.5.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.4.0...v2.5.0) - February 06, 2018
 #### Added
 - Observable `favoritesWillFetch`
 - Observable `favoritesDidFetch`
