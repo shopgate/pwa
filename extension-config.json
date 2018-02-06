@@ -1,5 +1,5 @@
 {
-  "version": "4.0.2",
+  "version": "4.0.3",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "language": {
@@ -43,7 +43,7 @@
       "params": {
         "method":  "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors?parsed=true",
         "key": "value"
       }
     },

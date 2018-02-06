@@ -15,7 +15,7 @@ import {
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 
 /**
- * Mapts state to props.
+ * Maps state to props.
  * @param {Object} state State.
  * @return {Object}
  */

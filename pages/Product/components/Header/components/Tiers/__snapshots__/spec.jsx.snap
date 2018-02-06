@@ -31,7 +31,7 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
   }
 >
   <div
-    className="css-zaa461"
+    className="css-ipvvc7"
   >
     <Translate
       className="css-z8ikop"
@@ -41,12 +41,12 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
           "from": 1,
         }
       }
-      string="price.tier"
+      string="price.tier.range"
     >
       <span
         className="css-z8ikop"
       >
-        price.tier
+        price.tier.range
       </span>
     </Translate>
     <Translate
@@ -57,12 +57,12 @@ exports[`<Tiers /> Rendering Rendering with data should render tier prices when 
           "from": 11,
         }
       }
-      string="price.tier"
+      string="price.tier.range"
     >
       <span
         className="css-z8ikop"
       >
-        price.tier
+        price.tier.range
       </span>
     </Translate>
   </div>

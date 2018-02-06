@@ -19,9 +19,9 @@ import connect from './connector';
  */
 class FavoritesButton extends Component {
   static propTypes = {
-    active: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     showToast: PropTypes.func.isRequired,
+    active: PropTypes.bool,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
     onRippleComplete: PropTypes.func,
@@ -34,6 +34,7 @@ class FavoritesButton extends Component {
   };
 
   static defaultProps = {
+    active: false,
     addFavorites: () => {},
     className: '',
     onRippleComplete: () => {},
@@ -95,7 +96,7 @@ class FavoritesButton extends Component {
 
   /**
    * Checks if button is currently read-only.
-   * @return {boolean} read only "state" of the component
+   * @return {boolean} The read only "state" of the component
    */
   isReadOnly() {
     return this.state.isFetching && this.props.readOnlyOnFetch;
@@ -132,13 +133,6 @@ class FavoritesButton extends Component {
       active: !this.state.active,
       isFetching: true,
     });
-  };
-
-  /**
-   * Callback for the moment when the ripple animation is done.
-   */
-  onRippleComplete = () => {
-    this.props.onRippleComplete(this.state.active);
   };
 
   /**
