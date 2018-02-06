@@ -38,7 +38,7 @@ const content = (hasNavigator = true, hasTabBar = true, isFullscreen = false, ke
   const marginBottom = hasTabBar ? [
     `${variables.tabBar.height + keyboardHeight}px`,
     `calc(${variables.tabBar.height + keyboardHeight}px + var(--safe-area-inset-bottom))`,
-  ] : 0;
+  ] : keyboardHeight;
 
   return css({
     overflow: 'auto',
