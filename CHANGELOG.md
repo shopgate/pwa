@@ -1,6 +1,12 @@
 
 # Changelog
 
+### [2.2.0](https://github.com/shopgate/pwa-common/compare/v2.1.2...v2.2.0) - February 06, 2018
+#### Added
+- `generateResultHash` now includes a `includeFilters` parameter.
+#### Changed
+- Extended `unsetViewLoading` with `flush` variable that forces the action to reset loading view counter.
+
 ---
 
 ### [2.1.2](https://github.com/shopgate/pwa-common/compare/v2.1.1...v2.1.2) - February 05, 2018
