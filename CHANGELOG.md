@@ -1,5 +1,9 @@
 # Changelog
 ---
+### [2.0.2](https://github.com/shopgate/theme-gmd/compare/v2.0.1...v2.0.2) - February 06, 2018
+#### Changed
+- Layout of tier prices.
+---
 ### [2.0.1](https://github.com/shopgate/theme-gmd/compare/v2.0.0...v2.0.1) - February 05, 2018
 #### Fixed
 - Re-enabled the configuration of custom theme colors by adding `?parsed=true` to the path of the `colors` setting within the `extension-config.json`
