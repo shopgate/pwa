@@ -1,9 +1,18 @@
 
 # Changelog
 ---
+### [2.4.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.3.0...v2.4.0) - February 05, 2018
+#### Added
+- Added a `includeFilter` option to `getProducts` action
+
+#### Changed
+- The `getSearchResults` action now uses the `getSearchPhrase` history selector from `pwa-common` instead of the navigator selector from `pwa-common-commerce`
+
+---
 ### [2.3.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.2.0...v2.3.0) - January 30, 2018
 #### Added
 - `PRODUCT_ITEM_NAME_BEFORE` portal ID.
+
 ---
 ### [2.2.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.1.0...v2.2.0) - January 29, 2018
 #### Added
