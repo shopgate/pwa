@@ -43,6 +43,7 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
       dispatch(getProducts({
         params,
         ...id && { id },
+        includeFilters: false,
       }));
       break;
     }
@@ -63,6 +64,7 @@ const getProductsByQuery = (type, value, options = {}, id = null) => (dispatch) 
       dispatch(getProducts({
         params,
         ...id && { id },
+        includeFilters: false,
       }));
       break;
     }
