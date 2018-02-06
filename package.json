@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common-commerce",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Shopgate's commerce library for PWAs",
   "repository": "shopgate/pwa-common-commerce",
   "bugs": "https://github.com/shopgate/pwa-common-commerce/issues",
