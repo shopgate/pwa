@@ -114,13 +114,14 @@ export const compareObjects = (input1, input2) => (
  * Generates a hash for product collection results.
  * @param {Object} params The request parameters.
  * @param {boolean} [includeSort=true] Whether to include the sorting in the hash.
+ * @param {boolean} [includeFilters=true] Whether to include the filters in the hash.
  * @return {string} The generated hash.
  */
-export const generateResultHash = (params, includeSort = true) => {
+export const generateResultHash = (params, includeSort = true, includeFilters = true) => {
   const defaultParams = {
     pipeline: 'getProducts',
+    ...includeFilters && { filters: {} },
     ...includeSort && { sort: DEFAULT_SORT },
-    filters: {},
   };
 
   const mergedParams = {
