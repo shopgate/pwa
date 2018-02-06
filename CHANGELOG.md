@@ -1,10 +1,23 @@
 
 # Changelog
 
+---
+
+### [2.1.2](https://github.com/shopgate/pwa-common/compare/v2.1.1...v2.1.2) - February 05, 2018
+#### Added
+- Data attribute to Button component for automated testing
+- Default `app.json` for test mode
+- The `successLogin` action is now dispatched if a login pipeline request fails because the user is already logged in at the backed
+
+#### Fixed
+- Invalid portal components are now ignored
+
+---
 ### [2.1.1](https://github.com/shopgate/pwa-common/compare/v2.1.0...v2.1.1) - February 01, 2018
 #### Added
 - Data attribute to Button component for automated testing
 - Default `app.json` for test mode
+
 #### Fixed
 - Invalid portal components are now ignored
 
@@ -17,15 +30,16 @@
 ### [2.0.2](https://github.com/shopgate/pwa-common/compare/v2.0.1...v2.0.2) - January 29, 2018
 #### Removed
 - Widget type conversion
- 
+
 ---
 
 ### [2.0.1](https://github.com/shopgate/pwa-common/compare/v2.0.0...v2.0.1) - January 25, 2018
 #### Changed
 - Removed `/favorite_list` from legacy links whitelist
+
 #### Fixed
 - Fixed `isNumeric` and `isNumber` problem with falsy validations for numeric strings.
- 
+
 ---
 ### [2.0.0](https://github.com/shopgate/pwa-common/compare/v1.3.0...v2.0.0) - January 24, 2018
 #### Added
@@ -33,6 +47,7 @@
 - A new history subscriber that listens on the opening of "index" routes and resets the history.
 - Support for the "className" prop in the i18n FormatPrice component to support styling.
 - Toast component.
+
 #### Changed
 - Combined related action creators to single files and updated the depending modules.
 
