@@ -1,12 +1,20 @@
 
 # Changelog
 ---
+### [4.0.2](https://github.com/shopgate/theme-gmd/compare/v4.0.2...v4.0.3) - February 05, 2018
+
+### Fixed
+- Re-enabled the configuration of custom theme colors by adding `?parsed=true` to the path of the `colors` setting within the `extension-config.json`
+
+---
 ### [4.0.2](https://github.com/shopgate/theme-gmd/compare/v4.0.1...v4.0.2) - February 01, 2018
 #### Added
 - Data attributes to components for automated testing
 - Default `theme-config.js` values to ensure passing tests
+
 #### Changed
 - Changed imports of `app.json` to use the `pwa-common` helper
+
 #### Fixed
 - Favorites icon was always visible on the product page
 - Corrected the name of the rating stars extension
@@ -14,6 +22,7 @@
 ### [4.0.0](https://github.com/shopgate/theme-gmd/compare/v3.0.0...v4.0.0) - January 30, 2018
 #### Changed
 - Breaking change. Moved `RatingStars` out to the `@shopgate/ext-product-reviews` extension using portals.
+
 ---
 ### [3.0.0](https://github.com/shopgate/theme-gmd/compare/v2.0.1...v3.0.0) - January 29, 2018
 #### Added
@@ -24,6 +33,7 @@
 ### [2.0.1](https://github.com/shopgate/theme-gmd/compare/v2.0.0...v2.0.1) - January 26, 2018
 #### Added
 - Translation file for Australia (AU).
+
 ---
 ### [2.0.0](https://github.com/shopgate/theme-gmd/compare/v1.3.0...v2.0.0) - January 25, 2018
 #### Added
@@ -51,7 +61,7 @@
 - Various style changes to the Review feature.
 #### Fixed
 - The bottom padding of the cart page is now applied correctly, so that the payment bar doesn't overlay the coupon input.
-- The ProductVariants component now works also if you have multiple product pages in your history. 
+- The ProductVariants component now works also if you have multiple product pages in your history.
 - Child products can be added to cart after leaving and going back to the product page.
 
 ---
@@ -175,7 +185,7 @@
 ### [1.1.2](https://github.com/shopgate/theme-gmd/compare/v1.1.1...v1.1.2) - December 19, 2017
 
 #### Changed
-- writeReview subscriber now uses the base product when getting a user review 
+- writeReview subscriber now uses the base product when getting a user review
 
 ---
 
@@ -284,7 +294,7 @@
 - The search field now uses a locale string, `search.placeholder`, if no placeholder is given
 
 #### Changed
-- The `getProductReviews` action is now dispatched from a subscription 
+- The `getProductReviews` action is now dispatched from a subscription
 - Updated `@shopgate/pwa-common` to ^1.0.2
 - Updated `@shopgate/pwa-common-commerce` to ^1.0.1
 - Updated `@shopgate/pwa-core` to ^1.0.0
