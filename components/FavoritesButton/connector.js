@@ -13,7 +13,7 @@ import {
   removeFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 /**
- * Mapts state to props.
+ * Maps state to props.
  * @param {Object} state State.
  * @return {Object}
  */
