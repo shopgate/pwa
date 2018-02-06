@@ -32,10 +32,12 @@ const clearAddTimer = () => {
 /**
  * Add favorites action.
  * @param {string} productId Product identifier.
+ * @param {bool} immediate Send immediately (no throttling).
  * @returns {Promise} PipelineRequest dispatch.
  */
-const addFavorites = productId => (dispatch) => {
+const addFavorites = (productId, immediate = false) => (dispatch) => {
   const addPromise = new Promise((res, rej) => {
+    const timeoutTime = immediate ? 0 : 1000;
     if (!productId) {
       rej();
       return;
@@ -43,7 +45,7 @@ const addFavorites = productId => (dispatch) => {
 
     dispatch(requestAddFavorites(productId));
 
-    if (addTimeout) {
+    if (!immediate && addTimeout) {
       clearAddTimer();
     }
 
@@ -53,7 +55,7 @@ const addFavorites = productId => (dispatch) => {
         .dispatch()
         .then(res)
         .catch(rej);
-    }, 1000);
+    }, timeoutTime);
   });
 
   addPromise
@@ -90,7 +92,7 @@ const removeFavorites = productId => (dispatch) => {
     new PipelineRequest('deleteFavorites')
       .setInput({ productId })
       .dispatch()
-      .then(res(receiveRemoveFavorites()))
+      .then(() => res(receiveRemoveFavorites()))
       .catch(rej);
   });
 

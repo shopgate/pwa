@@ -40,8 +40,8 @@ const products = (state = {}, action) => {
         ...state,
         isFetching: true,
         ids: [
-          ...(state.ids || []),
           action.productId,
+          ...(state.ids || []),
         ],
       };
     case REQUEST_REMOVE_FAVORITES:

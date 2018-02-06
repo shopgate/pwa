@@ -33,15 +33,14 @@ export const getFavoritesProductsIds = (state) => {
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProducts,
-  (productIds, products) => productIds.map((id) => {
-    if (!products[id]) {
-      return {};
-    }
-    const { productData } = products[id];
-    return {
-      ...productData,
-    };
-  })
+  (productIds, products) => productIds
+    .filter(id => !!products[id] && products[id].productData)
+    .map((id) => {
+      const { productData } = products[id];
+      return {
+        ...productData,
+      };
+    })
 );
 
 /**
@@ -70,6 +69,15 @@ export const hasFavorites = createSelector(
   count => !!count
 );
 
+/**
+ * Returns true if state is being updated.
+ * @param {Object} state State.
+ * @return {boolean}
+ */
+export const isFetching = state => state.favorites.products.isFetching;
+/**
+ * Returns true when the current product is on the favorites list
+ */
 export const isCurrentProductOnFavoriteList = createSelector(
   getCurrentProductId,
   getFavoritesProductsIds,
