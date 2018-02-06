@@ -37,7 +37,7 @@ export const favoritesWillFetch$ = main$.filter(({ action }) => [
 
 export const favoritesDidFetch$ = main$.filter(({ action }) => action.type === RECEIVE_FAVORITES);
 
-export const favoritesChanged$ = main$.filter(({ action }) => [
+export const favoritesDidChange$ = main$.filter(({ action }) => [
   RECEIVE_REMOVE_FAVORITES,
   RECEIVE_ADD_FAVORITES,
   ERROR_ADD_FAVORITES,

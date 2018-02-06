@@ -7,7 +7,7 @@
 */
 
 import {
-  favoritesChanged$,
+  favoritesDidChange$,
   favoritesDidFetch$,
   favoritesWillFetch$,
 } from './index';
@@ -24,7 +24,7 @@ import {
 } from '../constants';
 
 describe('Favorites streams', () => {
-  describe('favoritesChanged$', () => {
+  describe('favoritesDidChange$', () => {
     const actionNames = [
       ERROR_ADD_FAVORITES,
       ERROR_REMOVE_FAVORITES,
@@ -33,11 +33,11 @@ describe('Favorites streams', () => {
     ];
     actionNames.forEach((type) => {
       it(`should return true for ${type}`, () => {
-        expect(favoritesChanged$.operator.predicate({ action: { type } })).toBe(true);
+        expect(favoritesDidChange$.operator.predicate({ action: { type } })).toBe(true);
       });
     });
     it('should return for other types', () => {
-      expect(favoritesChanged$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
+      expect(favoritesDidChange$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
     });
   });
   describe('favoritesDidFetch$', () => {
