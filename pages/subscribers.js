@@ -30,6 +30,7 @@ import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkP
 import navigator from 'Components/Navigator/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
+import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import product from 'Pages/Product/subscriptions';
@@ -69,6 +70,7 @@ const subscriptions = [
   navigator,
   category,
   coupon,
+  favorites,
   filter,
   filterbar,
   login,

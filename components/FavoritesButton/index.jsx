@@ -19,21 +19,85 @@ import connect from './connector';
  */
 class FavoritesButton extends Component {
   static propTypes = {
-    active: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    active: PropTypes.bool,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
+    onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
+    readOnlyOnFetch: PropTypes.bool,
     removeFavorites: PropTypes.func,
+    removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
   };
 
   static defaultProps = {
-    productId: null,
+    active: false,
     addFavorites: () => {},
     className: '',
+    onRippleComplete: () => {},
+    productId: null,
+    readOnlyOnFetch: false,
     removeFavorites: () => {},
+    removeThrottle: 0,
     rippleClassName: '',
   };
+
+  /**
+   * Context types definition.
+   * @type {{i18n: shim}}
+   */
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
+  /**
+   * Construct and init state
+   * @param {Object} props Component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: props.active,
+      isFetching: props.isFetching,
+    };
+  }
+
+  /**
+   * Update active state with next active prop
+   * @param {Object} nextProps Next props
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      active: nextProps.active,
+      isFetching: nextProps.isFetching,
+    });
+  }
+
+  /**
+   * Callback for the moment when the ripple animation is done.
+   */
+  onRippleComplete = () => {
+    this.props.onRippleComplete(this.state.active);
+  };
+
+  /**
+   * Returns text for aria-label.
+   * @returns {string}
+   */
+  getLabel() {
+    const { __ } = this.context.i18n();
+    const lang = this.state.active ? 'favorites.remove' : 'favorites.add';
+    return __(lang);
+  }
+
+  /**
+   * Checks if button is currently read-only.
+   * @return {boolean} The read only "state" of the component
+   */
+  isReadOnly() {
+    return this.state.isFetching && this.props.readOnlyOnFetch;
+  }
 
   /**
    * Adds or removes a given product ID from the favorite list.
@@ -43,15 +107,26 @@ class FavoritesButton extends Component {
     event.preventDefault();
     event.stopPropagation();
 
+    if (this.isReadOnly()) {
+      return;
+    }
+
     if (!this.props.productId) {
       return;
     }
 
-    if (!this.props.active) {
+    if (!this.state.active) {
       this.props.addFavorites(this.props.productId);
     } else {
-      this.props.removeFavorites(this.props.productId);
+      setTimeout(() => {
+        this.props.removeFavorites(this.props.productId);
+      }, this.props.removeThrottle);
     }
+
+    this.setState({
+      active: !this.state.active,
+      isFetching: true,
+    });
   };
 
   /**
@@ -59,7 +134,7 @@ class FavoritesButton extends Component {
    * @returns {JSX}
    */
   renderIcon() {
-    if (this.props.active) {
+    if (this.state.active) {
       return <HeartIcon />;
     }
 
@@ -75,8 +150,16 @@ class FavoritesButton extends Component {
       return null;
     }
     return (
-      <button className={`${styles.button} ${this.props.className}`} onClick={this.handleClick}>
-        <Ripple className={`${styles.ripple} ${this.props.rippleClassName}`}>
+      <button
+        aria-label={this.getLabel()}
+        className={`${styles.button} ${this.props.className}`}
+        onClick={this.handleClick}
+      >
+        <Ripple
+          className={`${styles.ripple} ${this.props.rippleClassName}`}
+          onComplete={this.onRippleComplete}
+          disabled={this.isReadOnly()}
+        >
           {this.renderIcon()}
         </Ripple>
       </button>
