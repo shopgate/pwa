@@ -129,7 +129,7 @@ class Toast extends Component {
 
   /**
    * Renders.
-   * @returns {XML}
+   * @returns {JSX}
    */
   render() {
     const Container = this.props.container;
