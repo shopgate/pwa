@@ -144,6 +144,38 @@ export const getTemporaryFilters = state => (
 );
 
 /**
+ * Gets the temporary stored filter settings and rounds the display amounts. The minimum amount
+ * is rounded down, and the maximum amount is rounded up to the next full number.
+ * @return {Object}
+ */
+export const getTemporaryFiltersWithRoudedDisplayAmounts = createSelector(
+  getTemporaryFilters,
+  (filters) => {
+    // Create a clone of the filters to avoid reference issues.
+    const result = {
+      ...filters,
+    };
+
+    let { display_amount: displayAmount } = result;
+
+    if (displayAmount) {
+      const { minimum, maximum } = displayAmount;
+      // Round the minimum an and the maximum display amounts.
+      displayAmount = {
+        ...displayAmount,
+        minimum: Math.floor(minimum / 100) * 100,
+        maximum: Math.ceil(maximum / 100) * 100,
+      };
+    }
+
+    return {
+      ...result,
+      display_amount: displayAmount,
+    };
+  }
+);
+
+/**
  * Finds a single filter in a list of filters by id.
  * @param {Array} filters A list of filters.
  * @param {string} id The filter id
