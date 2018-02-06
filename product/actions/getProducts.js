@@ -23,12 +23,13 @@ import { getActiveFilters } from '../../filter/selectors';
  * @param {Object} params The request params.
  * @param {Object} filters The current active filters.
  * @param {boolean} includeSort Tells if the sort parameters shall be included to the request.
+ * @param {boolean} includeFilters Tells if the filter parameters shall be included to the request.
  * @returns {Object} A set of compatible params.
  */
-const processParams = (params, filters, includeSort = true) => {
+const processParams = (params, filters, includeSort = true, includeFilters = true) => {
   const newParams = {
     ...params,
-    ...(filters && Object.keys(filters).length) && { filters },
+    ...(includeFilters && filters && Object.keys(filters).length) && { filters },
   };
 
   /**
@@ -51,6 +52,8 @@ const processParams = (params, filters, includeSort = true) => {
  * @param {string} [options.id=null] A unique id for the component that is using this action.
  * @param {boolean} [options.includeSort=true] Tells if the sort parameters shall be included
  *   into the product hash and the request.
+ * @param {boolean} [options.includeFilters=true] Tells if the filter parameters shall be included
+ *   into the product hash and the request.
  * @param {Function} [options.onBeforeDispatch=() => {}] A callback which is fired, before new data
  *  will be returned.
  * @return {Function} A Redux Thunk
@@ -61,6 +64,7 @@ const getProducts = ({
   cached = true,
   id = null,
   includeSort = true,
+  includeFilters = true,
   onBeforeDispatch = () => {},
 }) =>
   (dispatch, getState) => {
@@ -71,7 +75,7 @@ const getProducts = ({
     const filters = getActiveFilters(state);
 
     // We need to process the params to handle edge cases in the pipeline params.
-    const requestParams = processParams(params, filters, includeSort);
+    const requestParams = processParams(params, filters, includeSort, includeFilters);
 
     const hash = generateResultHash({
       pipeline,
@@ -79,7 +83,7 @@ const getProducts = ({
       ...hashParams,
       ...filters && { filters },
       ...id && { id },
-    }, includeSort);
+    }, includeSort, includeFilters);
 
     const result = state.product.resultsByHash[hash];
     let requiredProductCount = null;

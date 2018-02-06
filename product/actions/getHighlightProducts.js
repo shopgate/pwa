@@ -20,6 +20,7 @@ const getHighlightProducts = ({ params, id = null }) => (dispatch) => {
     params,
     id,
     includeSort: false,
+    includeFilters: false,
   }));
 };
 
