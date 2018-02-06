@@ -92,7 +92,7 @@ class FavoritesButton extends Component {
 
   /**
    * Checks if button is currently read-only.
-   * @return {boolean} read only "state" of the component
+   * @return {boolean} The read only "state" of the component
    */
   isReadOnly() {
     return this.state.isFetching && this.props.readOnlyOnFetch;
