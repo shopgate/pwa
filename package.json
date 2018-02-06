@@ -26,8 +26,8 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "git+https://github.com/shopgate/pwa-common.git#master",
-    "@shopgate/pwa-common-commerce": "git+https://github.com/shopgate/pwa-common-commerce.git#master",
+    "@shopgate/pwa-common": "^2.1.2",
+    "@shopgate/pwa-common-commerce": "^2.4.0",
     "@shopgate/pwa-core": "^1.3.0",
     "@shopgate/pwa-tracking": "^1.2.6",
     "@shopgate/pwa-webcheckout-shopify": "^1.1.7",
