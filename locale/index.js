@@ -6,19 +6,9 @@
  */
 
 import extensionTranslations from 'Extensions/translations';
-import isPlainObject from 'lodash/isPlainObject';
-import defaultsDeep from 'lodash/defaultsDeep';
+import mergeTranslations from '@shopgate/pwa-common/helpers/i18n/mergeTranslations';
 
 // eslint-disable-next-line import/no-dynamic-require
 const themeTranslations = require(`./${process.env.LANG}.json`);
-let extension = {};
 
-if (isPlainObject(extensionTranslations)) {
-  Object.keys(extensionTranslations).forEach((key) => {
-    if (key.includes(process.env.LANG)) {
-      extension = extensionTranslations[key];
-    }
-  });
-}
-
-export default defaultsDeep(extension, themeTranslations);
+export default mergeTranslations(extensionTranslations, themeTranslations);
