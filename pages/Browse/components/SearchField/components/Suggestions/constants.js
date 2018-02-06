@@ -5,6 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-export default themeConfig.colors;
+export const SEARCH_SUGGESTIONS_MIN_CHARACTERS = 2;
