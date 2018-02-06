@@ -15,6 +15,8 @@ const getLiveshoppingProducts = () => (dispatch) => {
   dispatch(getProducts({
     pipeline: 'getLiveshoppingProducts',
     cached: false,
+    includeFilters: false,
+    includeSort: false,
   }));
 };
 
