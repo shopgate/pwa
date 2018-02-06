@@ -13,7 +13,6 @@
 - Invalid portal components are now ignored
 
 ---
-
 ### [2.1.1](https://github.com/shopgate/pwa-common/compare/v2.1.0...v2.1.1) - February 01, 2018
 #### Added
 - Data attribute to Button component for automated testing
