@@ -117,6 +117,9 @@ class Toast extends Component {
     }
   };
 
+  /**
+   * Handles button click action.
+   */
   handleButtonClick = () => {
     if (this.props.toast.actionOnClick) {
       this.props.dispatchAction(this.props.toast.actionOnClick);
