@@ -99,4 +99,20 @@ describe('Product selectors', () => {
       property2,
     ]);
   });
+  it('should filter all when whitelist is empty array', () => {
+    mockedConfig = {
+      type: PROPERTIES_FILTER_WHITELIST,
+      properties: [],
+    };
+    const properties = getProductProperties(mockedState);
+    expect(properties.length).toEqual(0);
+  });
+  it('should pass all when blacklist is empty array', () => {
+    mockedConfig = {
+      type: PROPERTIES_FILTER_BLACKLIST,
+      properties: [],
+    };
+    const properties = getProductProperties(mockedState);
+    expect(properties.length).toEqual(2);
+  });
 });
