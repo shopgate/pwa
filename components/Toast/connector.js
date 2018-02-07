@@ -28,6 +28,8 @@ const mapDispatchToProps = dispatch => ({
   removeToast: (id) => {
     dispatch(removeToast(id));
   },
+  // Used for dispatching prepared action stored in a toast message.
+  dispatchAction: action => dispatch(action),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

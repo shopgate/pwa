@@ -22,16 +22,24 @@ const mockedStore = configureStore({ toast: toastReducer });
 /**
  * Container Mock
  * @param {Object} props Props
- * @returns {XML}
+ * @returns {JSX}
  */
 const MockContainer = props => (<div>{props.children}</div>);
 
 /**
  * Message Mock
  * @param {string} text Message text
- * @returns {XML}
+ * @returns {JSX}
  */
 const MockMessage = ({ text }) => (<span>{text}</span>);
+
+/**
+ * Action Button.
+ * @param {string} text Action text.
+ * @param {function} onClick OnClick callback.
+ * @returns {JSX}
+ */
+const MockActionButton = ({ text, onClick }) => (<button onClick={onClick} >{text}</button>);
 /* eslint-enable react/prop-types */
 
 /**
@@ -48,6 +56,7 @@ const createComponent = (onClose) => {
       <Toast
         container={MockContainer}
         message={MockMessage}
+        actionButton={MockActionButton}
         toast={getToast}
         onClose={onClose}
       />
@@ -109,5 +118,28 @@ describe('<Toast />', () => {
 
     const msg2 = getNextToast(getState());
     expect(wrapper.find(MockMessage).prop('text')).toEqual(msg2.message);
+  });
+  it('should call actionOnClick on action click', (done) => {
+    const mockedActionOnClick = jest.fn();
+    dispatch(createToast({
+      message: 'hello world',
+      action: 'click me',
+      actionOnClick: mockedActionOnClick,
+      duration: 2,
+    }));
+    wrapper.update();
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(MockMessage).exists()).toBe(true);
+    expect(wrapper.find(MockActionButton).exists()).toBe(true);
+    wrapper.find(MockActionButton).simulate('click');
+    wrapper.update();
+    setTimeout(() => {
+      wrapper.update();
+      expect(typeof mockedActionOnClick.mock.calls[0][0] === 'function').toBe(true);
+      expect(typeof mockedActionOnClick.mock.calls[0][1] === 'function').toBe(true);
+      expect(wrapper.find(MockMessage).exists()).toBe(false);
+      expect(wrapper).toMatchSnapshot();
+      done();
+    }, 0);
   });
 });
