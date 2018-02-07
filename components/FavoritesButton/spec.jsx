@@ -144,22 +144,6 @@ describe('<FavoritesButton />', () => {
     expect(onRippleComplete).toHaveBeenCalled();
   });
 
-  it('should remove from favorites and show undo message', (done) => {
-    component = createComponent(mockedStateOnList, {
-      productId: '1',
-      active: true,
-      useUndo: true,
-    });
-    expect(component.find('Heart').exists()).toBe(true);
-    expect(component.find('HeartOutline').exists()).toBe(false);
-    component.find('button').simulate('click');
-    component.update();
-    setTimeout(() => {
-      expect(dispatcher.mock.calls.length).toBe(2);
-      done();
-    }, 0);
-  });
-
   it('should render null when feature flag is off', () => {
     mockedHasFavorites = false;
     component = createComponent(mockedStateOnList);

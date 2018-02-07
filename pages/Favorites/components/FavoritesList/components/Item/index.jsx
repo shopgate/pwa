@@ -101,7 +101,6 @@ class Item extends Component {
                       });
                     }}
                     readOnlyOnFetch
-                    useUndo
                   />
                 </div>
               </Grid.Item>

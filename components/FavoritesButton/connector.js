@@ -12,7 +12,6 @@ import {
   addFavorites,
   removeFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 
 /**
  * Maps state to props.
@@ -29,12 +28,6 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   addFavorites: productId => dispatch(addFavorites(productId)),
-  showToast: productId => (dispatch(createToast({
-    action: 'common.undo',
-    actionOnClick: addFavorites(productId, true),
-    message: 'favorites.removed',
-    delay: 6000,
-  }))),
   removeFavorites: productId => dispatch(removeFavorites(productId)),
 });
 
