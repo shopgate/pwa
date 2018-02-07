@@ -8,14 +8,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import TaxDisclaimer from './index';
-
-jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => true);
 
 describe('<TaxDisclaimer />', () => {
+  afterEach(() => {
+    jest.resetModules();
+  });
+
   it('should display the component', () => {
+    const TaxDisclaimer = require('./index').default;
+    jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => true);
     const wrapper = shallow(<TaxDisclaimer />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(I18n.Text).exists()).toBe(true);
+  });
+
+  it('should display null', () => {
+    const TaxDisclaimer = require('./index').default;
+    jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => false);
+    const wrapper = shallow(<TaxDisclaimer />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(I18n.Text).exists()).toBe(false);
   });
 });
