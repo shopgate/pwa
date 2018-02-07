@@ -44,13 +44,19 @@ class Portal extends Component {
 
     Object.keys(config.portals)
       .forEach((key) => {
-        if (config.portals[key].target === name) {
-          const PortalComponent = portals[key];
+        const portalTarget = Array.isArray(config.portals[key].target)
+          ? config.portals[key].target
+          : [config.portals[key].target];
 
-          if (PortalComponent) {
-            components.push(<PortalComponent key={`${key}-${id}`} id={id} />);
+        portalTarget.forEach((target) => {
+          if (target === name) {
+            const PortalComponent = portals[key];
+
+            if (PortalComponent) {
+              components.push(<PortalComponent key={`${key}-${id}`} id={id} />);
+            }
           }
-        }
+        });
       });
 
     return components;
