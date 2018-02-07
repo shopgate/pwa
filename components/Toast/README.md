@@ -39,6 +39,17 @@ In order to add this message, simply use an action available in `Library/actions
 ## How to remove a toast message.
 Toast messages should not be removed from the outside. Removed message which is a subject of current visible toast message would suddenly disappear. This component handles messages removal in a clean way.
 
+## How to show action with a callback
+Toast messages can have single action button with a callback. When the button is clicked, callback would be executed and toast would hide.
+
+To show a message with action button simply use an action available in `Library/actions/toast/createToast` with options as follows:
+```js
+createToast({
+  message: 'Example message',
+  action: 'Click me!',
+  actionOnClick: () => alert('Clicked!')
+});
+```
 ## Styling
 Styling is mostly done by the `.message` and `.container` props. You can however pass `.className` prop which would be used
 by a `Drawer`.
