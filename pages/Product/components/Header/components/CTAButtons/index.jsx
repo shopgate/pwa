@@ -36,7 +36,6 @@ CTAButtons.propTypes = {
 };
 
 CTAButtons.defaultProps = {
-  isFavorite: null,
   productId: null,
 };
 
