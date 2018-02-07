@@ -100,6 +100,17 @@
         "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites?parsed=true",
         "key": "value"
       }
+    },
+    "productPropertiesFilter": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/sg_connect_product_properties?parsed=true",
+        "key": "value"
+      }
     }
   }
 }
