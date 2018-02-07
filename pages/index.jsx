@@ -29,6 +29,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import SnackBar from 'Components/SnackBar';
@@ -78,6 +79,8 @@ const Pages = () => (
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} />
+
+      <Portal name="app.routes" />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
