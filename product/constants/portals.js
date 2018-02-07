@@ -5,14 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// NAMESPACES
+// FEATURES
 const PRODUCT_ITEM = 'product-item';
 
-// SECTIONS
-export const NAME = 'name';
+// CONTENTS
+const NAME = 'name';
 
 // POSITIONS
-export const BEFORE = 'before';
+const BEFORE = 'before';
 
-// HOOKS
 export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT_ITEM}.${NAME}.${BEFORE}`;
