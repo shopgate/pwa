@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-ga-native",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "description": "Shopgate's Google Analytics native tracker",
   "main": "frontend/index.js",
   "repository": "shopgate/tracking-ga-native",
