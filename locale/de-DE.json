@@ -3,7 +3,8 @@
     "countdown": "{days, plural, =0 {Noch {time}} =1 {# Tag {time}} other {# Tage {time}}}",
     "load_more": "Mehr laden",
     "cancel": "Abbrechen",
-    "submit": "Abschicken"
+    "submit": "Abschicken",
+    "undo": "Rück­gän­gig"
   },
   "titles": {
     "categories": "Kategorien",
@@ -19,7 +20,8 @@
     "empty": "Sie haben noch keine Artikel in der Merkliste",
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
-    "remove": "Von der Merkliste löschen"
+    "remove": "Von der Merkliste löschen",
+    "removed": "Von Merkliste entfernt"
   },
   "filter": {
     "sort": {
