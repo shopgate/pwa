@@ -148,7 +148,7 @@ export const getTemporaryFilters = state => (
  * is rounded down, and the maximum amount is rounded up to the next full number.
  * @return {Object}
  */
-export const getTemporaryFiltersWithRoudedDisplayAmounts = createSelector(
+export const getTemporaryFiltersWithRoundedDisplayAmounts = createSelector(
   getTemporaryFilters,
   (filters) => {
     // Create a clone of the filters to avoid reference issues.
@@ -170,7 +170,7 @@ export const getTemporaryFiltersWithRoudedDisplayAmounts = createSelector(
 
     return {
       ...result,
-      display_amount: displayAmount,
+      ...displayAmount && { display_amount: displayAmount },
     };
   }
 );
