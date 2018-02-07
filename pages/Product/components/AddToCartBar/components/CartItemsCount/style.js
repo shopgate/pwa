@@ -6,7 +6,6 @@
  */
 
 import { css } from 'glamor';
-import spring from 'css-spring';
 import variables from 'Styles/variables';
 
 const container = css({
@@ -14,6 +13,8 @@ const container = css({
   display: 'flex',
   alignItems: 'center',
   overflow: 'hidden',
+  transition: 'opacity 200ms linear, transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.375)',
+  willChange: 'transform',
 });
 
 const check = css({
@@ -21,35 +22,7 @@ const check = css({
   paddingRight: variables.gap.small,
 });
 
-const options = {
-  stiffness: 381.47,
-  damping: 15,
-};
-
-const moveInFromBottom = css.keyframes(spring(
-  { transform: 'translate3d(0, 300%, 0)' },
-  { transform: 'translate3d(0, 0, 0)' },
-  options
-));
-
-const moveOutToTop = css.keyframes(spring(
-  { transform: 'translate3d(0, 0, 0)' },
-  { transform: 'translate3d(0, -300%, 0)' },
-  options
-));
-
-const animateIn = css({
-  transform: 'translate3d(0, 300%, 0)',
-  animation: `${moveInFromBottom} 300ms`,
-});
-
-const animateOut = css({
-  animation: `${moveOutToTop} 300ms`,
-});
-
 export default {
   container,
   check,
-  animateIn,
-  animateOut,
 };

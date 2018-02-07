@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Transition from 'react-transition-group/Transition';
 import CheckIcon from 'Components/icons/CheckIcon';
 import Count from './components/Count';
 import connect from './connector';
@@ -21,13 +22,48 @@ class CartItemsCount extends Component {
     cartProductCount: PropTypes.number.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      numItems: props.cartProductCount,
+      isVisible: !!props.cartProductCount,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const numItems = nextProps.cartProductCount;
+
+    if (numItems === 0) {
+      // When there are no items, reset this element to hide.
+      this.setState({
+        isVisible: false,
+        numItems,
+      })
+    } else if (!this.state.isVisible && numItems > 0) {
+      // Set to visible when is currently invisible and has items.
+      this.setState({
+        isVisible: true,
+        numItems,
+      })
+    } else if (this.state.numItems !== numItems) {
+      // Just update the value if the number of items changed.
+      this.setState({
+        numItems,
+      })
+    }
+  }
+
   /**
    * Only update if the cart product count changed.
    * @param {Object} nextProps The next props.
    * @return {boolean}
    */
-  shouldComponentUpdate(nextProps) {
-    return (this.props.cartProductCount !== nextProps.cartProductCount);
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.isVisible !== nextState.isVisible
+      || this.state.numItems !== nextState.numItems
+    );
   }
 
   /**
@@ -37,17 +73,41 @@ class CartItemsCount extends Component {
   render() {
     const { cartProductCount } = this.props;
 
-    if (!cartProductCount) {
-      return null;
-    }
+    const duration = 300;
+
+    const transition = {
+      entering: {
+        transform: 'translate3d(0, 100%, 0)',
+        opacity: 0,
+      },
+      entered: {
+        transform: 'translate3d(0, 0, 0)',
+        opacity: 1,
+      },
+      exited: {
+        transform: 'translate3d(0, -100%, 0)',
+        opacity: 0,
+      },
+      exiting: {
+        transform: 'translate3d(0, 0, 0)',
+        opacity: 1,
+      },
+    };
 
     return (
-      <div className={styles.container}>
-        <div className={styles.check}>
-          <CheckIcon />
-        </div>
-        <Count count={cartProductCount} animation={styles.animateIn} />
-      </div>
+      <Transition
+        in={this.state.isVisible}
+        timeout={duration}
+      >
+        {state => (
+          <div className={styles.container} style={transition[state]}>
+            <div className={styles.check}>
+              <CheckIcon />
+            </div>
+            <Count count={this.state.numItems} />
+          </div>
+        )}
+      </Transition>
     );
   }
 }

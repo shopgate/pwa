@@ -28,8 +28,6 @@ const statusBar = css({
   height: '100%',
   alignItems: 'center',
   maxWidth: '65%',
-  opacity: 0,
-  transition: 'opacity 400ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   padding: `0 ${variables.gap.small}px`,
 });
 

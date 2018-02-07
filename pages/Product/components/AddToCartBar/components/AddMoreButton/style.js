@@ -21,7 +21,7 @@ const container = css({
   opacity: 1,
   transform: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   outline: 0,
-  ':active': {
+  ':active svg': {
     opacity: 0.5,
   },
 });

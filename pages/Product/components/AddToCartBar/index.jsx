@@ -17,30 +17,6 @@ import styles from './style';
  * The AddToCartBar component.}
  */
 class AddToCartBar extends Component {
-  static propTypes = {
-    cartProductCount: PropTypes.number,
-  };
-
-  static defaultProps = {
-    cartProductCount: 0,
-  }
-
-  /**
-   * Returns the status bar styles.
-   * @return {Object|null}
-   */
-  get statusBarStyles() {
-    const { cartProductCount } = this.props;
-
-    if (cartProductCount) {
-      return {
-        opacity: 1,
-      };
-    }
-
-    return null;
-  }
-
   /**
    * Renders the component.
    * @return {JSX}
@@ -49,7 +25,7 @@ class AddToCartBar extends Component {
     return [
       <div className={styles.container} key="bar">
         <div className={styles.base}>
-          <div className={styles.statusBar} style={this.statusBarStyles}>
+          <div className={styles.statusBar}>
             <CartItemsCount />
             <AddMoreButton />
           </div>
