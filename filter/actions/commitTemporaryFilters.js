@@ -13,7 +13,7 @@ import setActiveFilters from '../action-creators/setActiveFilters';
 import {
   getActiveFiltersStack,
   getTemporaryFilters,
-  getTemporaryFiltersWithRoudedDisplayAmounts,
+  getTemporaryFiltersWithRoundedDisplayAmounts,
 } from '../selectors';
 import getProducts from '../../product/actions/getProducts';
 import buildFilterParams from './helpers/buildFilterParams';
@@ -30,7 +30,7 @@ const commitTemporaryFilters = (roundDisplayAmounts = true) => (dispatch, getSta
   let temporaryFilters;
 
   if (roundDisplayAmounts) {
-    temporaryFilters = getTemporaryFiltersWithRoudedDisplayAmounts(state);
+    temporaryFilters = getTemporaryFiltersWithRoundedDisplayAmounts(state);
   } else {
     temporaryFilters = getTemporaryFilters(state);
   }
