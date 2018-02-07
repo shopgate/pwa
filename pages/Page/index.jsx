@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import View from 'Components/View';
 import widgets from 'Extensions/widgets';
 import connect from './connector';
@@ -67,9 +68,13 @@ class Page extends Component {
         style={this.props.style}
         title={pageConfig.title || ''}
       >
-        <div className={styles.widgetWrapper}>
-          <Widgets components={widgets} widgets={pageConfig.widgets} />
-        </div>
+        <Portal name="page.content.before" />
+        <Portal name="page.content" id={this.pageID}>
+          <div className={styles.widgetWrapper}>
+            <Widgets components={widgets} widgets={pageConfig.widgets} />
+          </div>
+        </Portal>
+        <Portal id="page.content.after" />
       </View>
     );
   }
