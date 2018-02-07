@@ -56,3 +56,6 @@ export const AVAILABILITY_STATE_ALERT = 'alert';
 
 export const OPTION_TYPE_SELECT = 'select';
 export const OPTION_TYPE_TEXT = 'text';
+
+export const PROPERTIES_FILTER_WHITELIST = 'whitelist';
+export const PROPERTIES_FILTER_BLACKLIST = 'blacklist';

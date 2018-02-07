@@ -17,6 +17,7 @@ import {
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { getCurrentCategoryId } from '../../category/selectors';
+import { filterProperties } from '../helpers';
 
 /**
  * Selects all products from the store.
@@ -387,7 +388,7 @@ export const getProductProperties = createSelector(
       return null;
     }
 
-    return entry.properties;
+    return filterProperties(entry.properties);
   }
 );
 
