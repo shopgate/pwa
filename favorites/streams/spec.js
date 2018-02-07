@@ -10,6 +10,7 @@ import {
   favoritesDidChange$,
   favoritesDidFetch$,
   favoritesWillFetch$,
+  favoritesWillRemoveItem$,
 } from './index';
 
 import {
@@ -60,6 +61,17 @@ describe('Favorites streams', () => {
     });
     it('should return for other types', () => {
       expect(favoritesWillFetch$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
+    });
+  });
+  describe('favoritesWillRemoveItem$', () => {
+    it(`should return true for ${REQUEST_REMOVE_FAVORITES}`, () => {
+      expect(favoritesWillRemoveItem$
+        .operator
+        .predicate({ action: { type: REQUEST_REMOVE_FAVORITES } }))
+        .toBe(true);
+    });
+    it('should return for other types', () => {
+      expect(favoritesWillRemoveItem$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
     });
   });
 });

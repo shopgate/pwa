@@ -43,3 +43,6 @@ export const favoritesDidChange$ = main$.filter(({ action }) => [
   ERROR_ADD_FAVORITES,
   ERROR_REMOVE_FAVORITES,
 ].includes(action.type));
+
+export const favoritesWillRemoveItem$ = main$
+  .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES);
