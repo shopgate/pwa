@@ -12,6 +12,8 @@ import createToast from '../../action-creators/toast/createToast';
  * @type {Object}
  */
 const defaultToastOptions = {
+  action: null,
+  actionOnClick: null,
   message: null,
   duration: 4000,
 };

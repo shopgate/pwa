@@ -7,7 +7,7 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { EINVALIDCREDENTIALS } from '@shopgate/pwa-core/constants/Pipeline';
+import { EINVALIDCALL } from '@shopgate/pwa-core/constants/Pipeline';
 import {
   requestLogin,
   successLogin,
@@ -31,7 +31,7 @@ export default ({ login, password }) => (dispatch) => {
 
   new PipelineRequest('login')
     .setTrusted()
-    .setErrorMessageWhitelist([EINVALIDCREDENTIALS])
+    .setHandledErrors([EINVALIDCALL])
     .setInput(params)
     .dispatch()
     .then(({ success, messages }) => {
@@ -42,7 +42,18 @@ export default ({ login, password }) => (dispatch) => {
       }
     })
     .catch((error) => {
-      logger.error(error);
-      dispatch(errorLogin());
+      const { code } = error;
+
+      if (code === EINVALIDCALL) {
+        /**
+         * This code is thrown when the login request failed, because the user was already logged
+         * in. In that situation the success action can also dispatch to trigger the neccesary
+         * processes which have to happen after a successful login.
+         */
+        dispatch(successLogin());
+      } else {
+        logger.error(error);
+        dispatch(errorLogin());
+      }
     });
 };

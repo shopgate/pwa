@@ -16,12 +16,20 @@ import connect from './connector';
  */
 class Toast extends Component {
   static propTypes = {
+    actionButton: PropTypes.func.isRequired,
     container: PropTypes.func.isRequired,
+    dispatchAction: PropTypes.func.isRequired,
     message: PropTypes.func.isRequired,
     removeToast: PropTypes.func.isRequired,
     className: PropTypes.string,
     onClose: PropTypes.func,
-    toast: PropTypes.shape(),
+    toast: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      duration: PropTypes.number.isRequired,
+      action: PropTypes.string,
+      actionOnClick: PropTypes.func,
+    }),
   };
 
   static defaultProps = {
@@ -79,7 +87,16 @@ class Toast extends Component {
   }
 
   /**
-   * Closes Drawer or removes the message when drawer is closed.
+   * Closes the drawer and call onClose callback.
+   */
+  closeDrawer = () => {
+    this.setState({
+      isOpen: false,
+    });
+    this.props.onClose();
+  };
+  /**
+   * Removes the message if available.
    */
   handleRemoveMessage = () => {
     if (this.props.toast) {
@@ -95,21 +112,29 @@ class Toast extends Component {
     if (toast.duration) {
       clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
-        this.setState({
-          isOpen: false,
-        });
-        this.props.onClose();
+        this.closeDrawer();
       }, toast.duration);
     }
   };
 
   /**
+   * Handles button click action.
+   */
+  handleButtonClick = () => {
+    if (this.props.toast.actionOnClick) {
+      this.props.dispatchAction(this.props.toast.actionOnClick);
+    }
+    this.closeDrawer();
+  };
+
+  /**
    * Renders.
-   * @returns {XML}
+   * @returns {JSX}
    */
   render() {
     const Container = this.props.container;
     const Message = this.props.message;
+    const ActionButton = this.props.actionButton;
 
     return (
       <div
@@ -125,6 +150,13 @@ class Toast extends Component {
             this.props.toast &&
             <Container>
               <Message text={this.props.toast.message} />
+              {
+                this.props.toast.action
+                && <ActionButton
+                  text={this.props.toast.action}
+                  onClick={this.handleButtonClick}
+                />
+              }
             </Container>
           }
         </Drawer>
