@@ -77,20 +77,16 @@ class CartItemsCount extends Component {
 
     const transition = {
       entering: {
-        transform: 'translate3d(0, 100%, 0)',
-        opacity: 0,
+        transform: 'translate3d(0, 200%, 0)',
       },
       entered: {
         transform: 'translate3d(0, 0, 0)',
-        opacity: 1,
       },
       exited: {
-        transform: 'translate3d(0, -100%, 0)',
-        opacity: 0,
+        transform: 'translate3d(0, 200%, 0)',
       },
       exiting: {
         transform: 'translate3d(0, 0, 0)',
-        opacity: 1,
       },
     };
 

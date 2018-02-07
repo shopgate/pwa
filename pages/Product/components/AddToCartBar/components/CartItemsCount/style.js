@@ -13,7 +13,7 @@ const container = css({
   display: 'flex',
   alignItems: 'center',
   overflow: 'hidden',
-  transition: 'opacity 200ms linear, transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.375)',
+  transition: 'transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.375)',
   willChange: 'transform',
 });
 
