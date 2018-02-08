@@ -16,6 +16,7 @@ describe('<TaxDisclaimer />', () => {
 
   it('should display the component', () => {
     jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => true);
+    // eslint-disable-next-line global-require
     const TaxDisclaimer = require('./index').default;
     const wrapper = shallow(<TaxDisclaimer />);
     expect(wrapper).toMatchSnapshot();
@@ -24,6 +25,7 @@ describe('<TaxDisclaimer />', () => {
 
   it('should display null', () => {
     jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => false);
+    // eslint-disable-next-line global-require
     const TaxDisclaimer = require('./index').default;
     const wrapper = shallow(<TaxDisclaimer />);
     expect(wrapper).toMatchSnapshot();
