@@ -50,10 +50,10 @@ const Price = (props) => {
           fractions={props.fractions}
           price={props.unitPrice}
         />
-        )}
-        {props.taxDisclaimer && showTaxDisclaimer ? (
-          <div className={styles.disclaimer}>*</div>
-        ) : null}
+      )}
+      {props.taxDisclaimer && showTaxDisclaimer ? (
+        <div className={styles.disclaimer}>*</div>
+      ) : null}
     </div>
   );
 };

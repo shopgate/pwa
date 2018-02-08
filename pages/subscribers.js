@@ -28,8 +28,9 @@ import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkP
 // Theme
 import navigator from 'Components/Navigator/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
-import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
+import browse from 'Pages/Browse/subscriptions';
+import category from 'Pages/Category/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import product from 'Pages/Product/subscriptions';
@@ -38,6 +39,8 @@ import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+// Extensions
+import extensions from 'Extensions/subscribers';
 // App
 import app from './subscriptions';
 
@@ -67,6 +70,7 @@ const subscriptions = [
   // Theme subscribers.
   navigator,
   viewport,
+  browse,
   category,
   coupon,
   filter,
@@ -76,6 +80,8 @@ const subscriptions = [
   search,
   reviews,
   writeReview,
+  // Extensions
+  ...extensions,
 ];
 
 if (appConfig.webCheckoutShopify !== null) {
