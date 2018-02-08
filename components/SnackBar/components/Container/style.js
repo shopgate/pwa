@@ -5,14 +5,17 @@
  *  LICENSE file in the root directory of this source tree.
  *
  */
-
 import { css } from 'glamor';
 
-const message = css({
-  color: 'white',
-  margin: 0,
+const container = css({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  wordBreak: 'break-all',
+  hyphens: 'auto',
 }).toString();
 
 export default {
-  message,
+  container,
 };

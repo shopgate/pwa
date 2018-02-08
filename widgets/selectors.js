@@ -32,9 +32,11 @@ const getResultHash = (state, type, params, id) => {
     // Product highlights
     case 1: {
       hashParams = {
-        pipeline: 'getHighlightProducts',
         id,
+        pipeline: 'getHighlightProducts',
+        sort: transformedSort,
       };
+
       break;
     }
 
@@ -42,9 +44,9 @@ const getResultHash = (state, type, params, id) => {
     case 2:
     case 3: {
       hashParams = {
+        id,
         searchPhrase: value,
         sort: transformedSort,
-        id,
       };
 
       break;
@@ -53,9 +55,9 @@ const getResultHash = (state, type, params, id) => {
     // Product ID's
     case 4: {
       hashParams = {
+        id,
         productIds: value,
         sort: transformedSort,
-        id,
       };
 
       break;
@@ -64,9 +66,9 @@ const getResultHash = (state, type, params, id) => {
     // Category
     case 5: {
       hashParams = {
+        id,
         categoryId: value,
         sort: transformedSort,
-        id,
       };
 
       break;
@@ -75,7 +77,7 @@ const getResultHash = (state, type, params, id) => {
   }
 
   // Generate the hash string.
-  return generateResultHash(hashParams);
+  return generateResultHash(hashParams, true, false);
 };
 
 /**

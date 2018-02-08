@@ -7,15 +7,40 @@
  */
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { mount } from 'enzyme';
 import FavoritesButton from 'Components/FavoritesButton';
 import CTAButtons from './index';
 import AddToCartButton from './components/AddToCartButton';
 
 describe('CTAs (product header)', () => {
+  const mockedStore = configureStore();
+  const mockedState = {
+    product: {
+      currentProduct: {
+        productId: 'foo',
+      },
+      productsById: {
+        foo: {
+          id: 'foo',
+        },
+      },
+    },
+    favorites: {
+      products: {
+        isFetching: false,
+        ids: ['foo'],
+      },
+    },
+  };
   describe('Rendering', () => {
-    it('should render rating when data is available', () => {
-      const component = shallow(<CTAButtons />);
+    it('should render CTAButtons when data is available', () => {
+      const component = mount(
+        <Provider store={mockedStore(mockedState)}>
+          <CTAButtons />
+        </Provider>
+      );
       expect(component).toMatchSnapshot();
       expect(component.find(FavoritesButton).exists()).toBe(true);
       expect(component.find(AddToCartButton).exists()).toBe(true);

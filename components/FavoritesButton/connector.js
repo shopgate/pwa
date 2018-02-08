@@ -6,22 +6,21 @@
  */
 import { connect } from 'react-redux';
 import {
+  isFetching,
+} from '@shopgate/pwa-common-commerce/favorites/selectors/index';
+import {
   addFavorites,
   removeFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { isCurrentProductOnFavoriteList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 
 /**
- * Maps the contents of the state to the component props.
- * @param {Object} state The current application state.
- * @return {Object} The extended component props.
+ * Maps state to props.
+ * @param {Object} state State.
+ * @return {Object}
  */
 const mapStateToProps = state => ({
-  active: isCurrentProductOnFavoriteList(state),
-  productId: getCurrentProductId(state),
+  isFetching: isFetching(state),
 });
-
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.

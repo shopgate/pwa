@@ -104,7 +104,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -218,7 +220,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -328,7 +332,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -447,7 +453,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -565,7 +573,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -675,7 +685,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -792,7 +804,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -902,7 +916,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1012,7 +1028,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1221,7 +1239,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -1335,7 +1355,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1445,7 +1467,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1555,7 +1579,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1674,7 +1700,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -1792,7 +1820,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -1902,7 +1932,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2019,7 +2051,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2129,7 +2163,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2239,7 +2275,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2448,7 +2486,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -2562,7 +2602,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2672,7 +2714,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2782,7 +2826,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -2901,7 +2947,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -3019,7 +3067,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3129,7 +3179,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3246,7 +3298,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3356,7 +3410,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3466,7 +3522,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3712,7 +3770,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3822,7 +3882,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -3932,7 +3994,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4051,7 +4115,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -4169,7 +4235,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4279,7 +4347,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4389,7 +4459,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4506,7 +4578,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4616,7 +4690,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4726,7 +4802,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -4843,7 +4921,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5052,7 +5132,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -5166,7 +5248,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5276,7 +5360,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5386,7 +5472,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5505,7 +5593,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -5623,7 +5713,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5733,7 +5825,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5850,7 +5944,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -5960,7 +6056,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6070,7 +6168,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6320,7 +6420,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -6434,7 +6536,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6544,7 +6648,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6654,7 +6760,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -6773,7 +6881,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -6891,7 +7001,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7001,7 +7113,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7118,7 +7232,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7228,7 +7344,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7338,7 +7456,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7746,7 +7866,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -7860,7 +7982,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -7970,7 +8094,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8080,7 +8206,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8199,7 +8327,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -8317,7 +8447,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8427,7 +8559,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8544,7 +8678,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8654,7 +8790,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -8764,7 +8902,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9014,7 +9154,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       <Ripple
                         className=""
                         color="#000"
+                        disabled={false}
                         fill={true}
+                        onComplete={[Function]}
                         overflow={false}
                         size={null}
                       >
@@ -9128,7 +9270,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9238,7 +9382,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9348,7 +9494,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9467,7 +9615,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     <Ripple
                       className=""
                       color="#000"
+                      disabled={false}
                       fill={true}
+                      onComplete={[Function]}
                       overflow={false}
                       size={null}
                     >
@@ -9585,7 +9735,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9695,7 +9847,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9812,7 +9966,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -9922,7 +10078,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >
@@ -10032,7 +10190,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   <Ripple
                     className=""
                     color="#000"
+                    disabled={false}
                     fill={true}
+                    onComplete={[Function]}
                     overflow={false}
                     size={null}
                   >

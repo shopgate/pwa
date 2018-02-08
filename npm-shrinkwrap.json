@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "4.0.2",
+  "version": "4.3.0",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -162,9 +162,9 @@
       }
     },
     "@shopgate/pwa-common": {
-      "version": "2.1.1",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-2.1.1.tgz",
-      "integrity": "sha512-KtFKx06Z3EFgC8vnaXpHxHngm87kwx/cJAWsgDmioJk3rUKYj73qDyzSddtSUz/JgSyqjspit63RcTzLVTXV5A==",
+      "version": "2.4.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common/-/pwa-common-2.4.0.tgz",
+      "integrity": "sha512-LkOCZMcYEmvB9jZLkbbZziPjg325n5um3LASz3YJcldN33MxJcH8/Q+qAitzPf9QW54mOjF6SvPSiAJmAZ+y2g==",
       "requires": {
         "classnames": "2.2.5",
         "crypto-js": "3.1.9-1",
@@ -174,7 +174,7 @@
         "intl-messageformat": "2.2.0",
         "jsdom": "11.1.0",
         "path-match": "1.2.4",
-        "react-dotdotdot": "1.2.0",
+        "react-dotdotdot": "1.2.2",
         "react-hot-loader": "3.0.0-beta.6",
         "react-id-swiper": "1.4.0",
         "react-inline-transition-group": "2.2.1",
@@ -192,27 +192,27 @@
       }
     },
     "@shopgate/pwa-common-commerce": {
-      "version": "2.3.0",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-2.3.0.tgz",
-      "integrity": "sha512-hHfUKWShbUwcFd73CQthn4QBKjJWcs2Pq2JMCh8BZIbAYgZD1L05kDuPIyy3zwVwpL5z/pGv0fDSfuwa5W3haw==",
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-common-commerce/-/pwa-common-commerce-3.0.0.tgz",
+      "integrity": "sha512-wdAtJbSWxnj820FF6l2B9NEJEcsuJLFk3vr47dBPHy+8JivP9OtbBPh9yD/HOcJsSGZxg+33kpIuCVjP6uEIEw==",
       "requires": {
         "recompose": "0.26.0",
         "reselect": "3.0.1"
       }
     },
     "@shopgate/pwa-core": {
-      "version": "1.2.0",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.2.0.tgz",
-      "integrity": "sha512-ul8EtNmV9cPEBml09cEAaT+zzzP3NNGiJHkszQmRcnSLK+2TSnqzoYmYK5si2R62J7vP2TliC+8Y1fgpaSJFuA==",
+      "version": "1.3.0",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-core/-/pwa-core-1.3.0.tgz",
+      "integrity": "sha512-xFRLKKpSQHVgmTw3rYV/H2/jTeyClejdPC4N88jei9k91liouywDy5g6KNT/4ud4F2WXyy7f/d9h5HQQHuJD4A==",
       "requires": {
         "crypto-js": "3.1.9-1",
         "isomorphic-fetch": "2.2.1"
       }
     },
     "@shopgate/pwa-tracking": {
-      "version": "1.2.6",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.2.6.tgz",
-      "integrity": "sha512-vDEM0JNwVuQgRe8Iav4wg14RyJqe/E1Sxm3XZ1ViK7/Nm518EhfDENw4usuETxIezeTkx2JlK8hpq8aZoxSZ1Q=="
+      "version": "1.2.8",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-tracking/-/pwa-tracking-1.2.8.tgz",
+      "integrity": "sha512-gQIuSnp2YzLFpjcKhfW+0p8rlSSBJooK4lImWwZM9j9cZOvRcUgrJgX5BwySXXvZ8dPqvXXjUAG0E3OYASN/Hg=="
     },
     "@shopgate/pwa-unit-test": {
       "version": "1.3.0",
@@ -251,9 +251,9 @@
       }
     },
     "@shopgate/pwa-webcheckout-shopify": {
-      "version": "1.1.7",
-      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-1.1.7.tgz",
-      "integrity": "sha512-4yopCOtRz/vSTLg7WS/BLwggyFHq6tx8oiak310ubYc1TM6tJBb6ZzSCvlxZmXLONdmXTteLDtEZDHpDiPiaWw=="
+      "version": "1.1.9",
+      "resolved": "https://registry.npmjs.org/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-1.1.9.tgz",
+      "integrity": "sha512-yr9N9XbfljG4olXX7gbhWAg+Eh5kPSFpdzTm2D2xtXmwreYiP0+xIM0Lx7OLzQjIcLxUzoldGw25tUZSDb8GLg=="
     },
     "@shopgate/react-hammerjs": {
       "version": "0.5.3",
@@ -264,9 +264,9 @@
       }
     },
     "@shopgate/tracking-core": {
-      "version": "1.0.11",
-      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.11.tgz",
-      "integrity": "sha512-PvIkSY0XfjshS9nl4MbRl2wJBzYsf7f+r1csHw1gJoEFNZdWx4WMAHe26N+6g+bKMluMKX+boEeAStlYBZh9/w=="
+      "version": "1.0.12",
+      "resolved": "https://registry.npmjs.org/@shopgate/tracking-core/-/tracking-core-1.0.12.tgz",
+      "integrity": "sha512-sG/cavX58x+M6hPKB3oqvfyD7A9SA0OJ/o4LtMglRUT8GCNCrs4XKu9883k4ODwr/PZxeI9kvfgjFd3y0AyljA=="
     },
     "@types/node": {
       "version": "6.0.90",
@@ -5797,6 +5797,21 @@
         "is-extendable": "0.1.1"
       }
     },
+    "object.pick": {
+      "version": "1.3.0",
+      "resolved": "https://registry.npmjs.org/object.pick/-/object.pick-1.3.0.tgz",
+      "integrity": "sha1-h6EKxMFpS9Lhy/U1kaZhQftd10c=",
+      "requires": {
+        "isobject": "3.0.1"
+      },
+      "dependencies": {
+        "isobject": {
+          "version": "3.0.1",
+          "resolved": "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz",
+          "integrity": "sha1-TkMekrEalzFjaqH5yNHMvP2reN8="
+        }
+      }
+    },
     "object.values": {
       "version": "1.0.4",
       "resolved": "https://registry.npmjs.org/object.values/-/object.values-1.0.4.tgz",
@@ -6252,11 +6267,11 @@
       }
     },
     "react-dotdotdot": {
-      "version": "1.2.0",
-      "resolved": "https://registry.npmjs.org/react-dotdotdot/-/react-dotdotdot-1.2.0.tgz",
-      "integrity": "sha512-DyZqyubkI3ntE1bslvvQXc2WMSv+qmBlam4OAK/GWVA1q4bEW7WMasfO4uUPSxUS8fS/Xh3fEhjvG+F7LLnQmg==",
+      "version": "1.2.2",
+      "resolved": "https://registry.npmjs.org/react-dotdotdot/-/react-dotdotdot-1.2.2.tgz",
+      "integrity": "sha512-1/ZqzqVocfXNYOOF8aH3r7/RNQk0CA2BfEHgxxuveGKYLblRpY36Y9OOEROM1g8Msw+p3RQc58kKfVFuhAOCAQ==",
       "requires": {
-        "prop-types": "15.6.0"
+        "object.pick": "1.3.0"
       }
     },
     "react-hammerjs": {

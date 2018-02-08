@@ -1,5 +1,5 @@
 {
-  "version": "4.0.2",
+  "version": "4.3.0",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -16,7 +16,40 @@
       "params": {
         "method": "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors?parsed=true",
+        "key": "value"
+      }
+    },
+    "forgotPasswordUrl": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
+        "key": "value"
+      }
+    },
+    "hasFavorites": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites?parsed=true",
+        "key": "value"
+      }
+    },
+    "hasReviews": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
         "key": "value"
       }
     },
@@ -50,44 +83,22 @@
         "key": "marketId"
       }
     },
-    "publicPath": {
-      "type": "static",
-      "destination": "frontend",
-      "params": {
-        "value": "%(publicPath)s/%(appId)s/%(themes[0].id)s/%(themes[0].version)s"
-      }
-    },
-    "forgotPasswordUrl": {
+    "productPropertiesFilter": {
       "type": "bigApi",
       "destination": "frontend",
       "default": null,
       "params": {
         "method": "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
+        "path": "/v1/shop/%(shopId)s/sg_connect_product_properties?parsed=true",
         "key": "value"
       }
     },
-    "hasReviews": {
-      "type": "bigApi",
+    "publicPath": {
+      "type": "static",
       "destination": "frontend",
-      "default": true,
       "params": {
-        "method": "GET",
-        "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
-        "key": "value"
-      }
-    },
-    "hasFavorites": {
-      "type": "bigApi",
-      "destination": "frontend",
-      "default": false,
-      "params": {
-        "method": "GET",
-        "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites?parsed=true",
-        "key": "value"
+        "value": "%(publicPath)s/%(appId)s/%(themes[0].id)s/%(themes[0].version)s"
       }
     },
     "shopName": {
