@@ -88,7 +88,7 @@ class App extends PureComponent {
   render() {
     return (
       <Provider store={this.store}>
-        <I18n.Provider locales={this.props.locale} lang={process.env.LANG}>
+        <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
           <Router history={this.historyStack}>
             {this.props.children}
           </Router>
