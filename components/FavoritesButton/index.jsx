@@ -19,10 +19,10 @@ import connect from './connector';
  */
 class FavoritesButton extends Component {
   static propTypes = {
-    isFetching: PropTypes.bool.isRequired,
     active: PropTypes.bool,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
+    isFetching: PropTypes.bool,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
     readOnlyOnFetch: PropTypes.bool,
@@ -35,6 +35,7 @@ class FavoritesButton extends Component {
     active: false,
     addFavorites: () => {},
     className: '',
+    isFetching: false,
     onRippleComplete: () => {},
     productId: null,
     readOnlyOnFetch: false,

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
-import { shopName } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
 
@@ -155,7 +155,7 @@ class View extends Component {
 
     return (
       <Helmet
-        title={this.props.title ? `${this.props.title} - ${shopName}` : shopName}
+        title={this.props.title ? `${this.props.title} - ${appConfig.shopName}` : appConfig.shopName}
         meta={meta}
         link={link}
         script={script}

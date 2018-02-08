@@ -3,7 +3,8 @@
     "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}",
     "load_more": "Load more",
     "cancel": "Cancel",
-    "submit": "Submit"
+    "submit": "Submit",
+    "undo": "Undo"
   },
   "titles": {
     "categories": "Categories",
@@ -19,7 +20,8 @@
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",
     "error_remove": "Product could not be removed from favorites",
-    "remove": "Remove from favorites"
+    "remove": "Remove from favorites",
+    "removed": "Removed from favorites"
   },
   "filter": {
     "sort": {

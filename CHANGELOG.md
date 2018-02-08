@@ -1,6 +1,18 @@
 
 # Changelog
----
+
+### [4.3.0](https://github.com/shopgate/theme-gmd/compare/v4.2.0...v4.3.0) - February 07, 2018
+#### Added
+- An undo functionalty in the toast is provided in to the user when a favorite list item is deleted. 
+- Introduce app config `productPropertiesFilter` for whitelisting/blacklisting product properties.
+
+### [4.2.0](https://github.com/shopgate/theme-gmd/compare/v4.1.0...v4.2.0) - February 07, 2018
+#### Updated
+- `pwa-common` dependency to `^2.3.0`.
+- the reducer setup to use reducers from extension.
+- the subscribers setup to use subscriptions from extensions.
+- the translations setup to use translation strings from extensions.
+
 ### [4.1.0](https://github.com/shopgate/theme-gmd/compare/v4.0.3...v4.1.0) - February 06, 2018
 #### Added
 - Delete from favorites action on the favorites page.

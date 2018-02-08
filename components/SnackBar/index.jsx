@@ -9,7 +9,8 @@ import React from 'react';
 import Toast from '@shopgate/pwa-common/components/Toast';
 import Message from './components/Message';
 import Container from './components/Container';
-import styles from './styles';
+import ActionButton from './components/ActionButton';
+import styles from './style';
 
 /**
  * SnackBar component.
@@ -17,9 +18,10 @@ import styles from './styles';
  */
 const SnackBar = () => (
   <Toast
-    message={Message}
-    container={Container}
+    actionButton={ActionButton}
     className={styles.drawer}
+    container={Container}
+    message={Message}
   />
 );
 
