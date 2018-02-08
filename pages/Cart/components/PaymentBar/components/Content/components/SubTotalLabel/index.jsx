@@ -18,7 +18,7 @@ import styles from './style';
  */
 const SubTotalLabel = ({ isDisabled }) => (
   <div className={`${styles.totalLabel} ${isDisabled ? styles.disabled : ''}`}>
-    <I18n.Text string="cart.subtotal" />:
+    <I18n.Text string="cart.subtotal" className={styles.text} />:
   </div>
 );
 

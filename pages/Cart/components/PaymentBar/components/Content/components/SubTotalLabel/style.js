@@ -17,7 +17,13 @@ const totalLabel = css({
   fontWeight: 500,
 }).toString();
 
+const text = css({
+  hyphens: 'auto',
+  wordWrap: 'break-word',
+}).toString();
+
 export default {
   disabled,
   totalLabel,
+  text,
 };
