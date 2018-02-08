@@ -15,6 +15,10 @@ const content = css({
   borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
 }).toString();
 
+const price = css({
+  justifyContent: 'flex-end',
+}).toString();
+
 const priceInfo = css({
   marginTop: 3,
   ':not(:last-child)': {
@@ -48,10 +52,16 @@ const placeholder = {
   }).toString(),
 };
 
+const disclaimerSpacer = css({
+  width: 10,
+}).toString();
+
 export default {
   content,
   productInfo,
   priceContainer,
   priceInfo,
+  price,
   placeholder,
+  disclaimerSpacer,
 };

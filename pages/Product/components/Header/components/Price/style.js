@@ -15,6 +15,7 @@ const placeholder = css({
 
 const price = css({
   fontSize: '1.25rem',
+  justifyContent: 'flex-end',
   lineHeight: 1,
 }).toString();
 

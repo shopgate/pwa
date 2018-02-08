@@ -10,12 +10,14 @@ import PropTypes from 'prop-types';
 import View from 'Components/View';
 import CardList from 'Components/CardList';
 import MessageBar from 'Components/MessageBar';
+import TaxDisclaimer from 'Components/TaxDisclaimer';
 import Item from './components/Item';
 import CouponField from './components/CouponField';
 import Empty from './components/Empty';
 import PaymentBar from './components/PaymentBar';
 import connect from './connector';
 import styles from './style';
+
 /**
  * The cart view component.
  * @returns {JSX}
@@ -105,6 +107,7 @@ class Cart extends Component {
               <PaymentBar isVisible={!this.state.isPaymentBarHidden} onSize={this.onSize} />
             </Fragment>
           )}
+          {(!isLoading && cartItems.length !== 0) && <TaxDisclaimer />}
         </section>
         {(!isLoading && cartItems.length === 0) && <Empty />}
       </View>
