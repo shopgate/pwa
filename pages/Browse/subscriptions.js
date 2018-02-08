@@ -15,7 +15,7 @@ import { BROWSE_PATH } from './constants';
  * Search subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
-export default function search(subscribe) {
+export default function browse(subscribe) {
   // Derived streams.
   const browseRouteDidEnter$ = routeDidEnter(BROWSE_PATH);
 

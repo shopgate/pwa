@@ -44,7 +44,6 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
  * The core product slider widget.
  */
 class ProductSlider extends React.Component {
-
   static propTypes = {
     getProducts: PropTypes.func.isRequired,
     // The settings as received by the pipeline request
@@ -79,15 +78,17 @@ class ProductSlider extends React.Component {
    * Called when the component is mounted, requests the products.
    */
   componentDidMount() {
-    const { getProducts } = this.props;
+    const { getProducts, id } = this.props;
     const { queryType, queryParams } = this.props.settings;
+
 
     getProducts(
       queryType,
       queryParams,
       {
         sort: transformDisplayOptions(this.props.settings.sortOrder),
-      }
+      },
+      id,
     );
   }
 

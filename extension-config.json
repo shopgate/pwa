@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.2.0",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "language": {
@@ -43,7 +43,7 @@
       "params": {
         "method":  "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors?parsed=true",
         "key": "value"
       }
     },
@@ -87,6 +87,17 @@
         "method": "GET",
         "service": "config",
         "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
+        "key": "value"
+      }
+    },
+    "productPropertiesFilter": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/sg_connect_product_properties?parsed=true",
         "key": "value"
       }
     }
