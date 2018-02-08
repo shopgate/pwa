@@ -5,16 +5,18 @@
  *  LICENSE file in the root directory of this source tree.
  *
  */
-
 import { css } from 'glamor';
-import variables from 'Styles/variables';
+import colors from 'Styles/colors';
 
-const drawer = css({
-  width: '100%',
-  background: 'black',
-  padding: variables.gap.big,
+const actionButton = css({
+  color: colors.primary,
+  flexGrow: 1,
+  textTransform: 'uppercase',
+  textAlign: 'right',
+  padding: '7px 0',
+  wordBreak: 'keep-all',
 }).toString();
 
 export default {
-  drawer,
+  actionButton,
 };
