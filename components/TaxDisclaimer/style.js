@@ -6,20 +6,12 @@
  */
 
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 
-const placeholder = css({
-  height: 20,
-  width: '50px',
-  display: 'inline-block',
+export default css({
+  background: colors.background,
+  display: 'block',
+  fontSize: 12,
+  padding: '20px 0',
+  textAlign: 'center',
 }).toString();
-
-const price = css({
-  fontSize: '1.25rem',
-  justifyContent: 'flex-end',
-  lineHeight: 1,
-}).toString();
-
-export default {
-  placeholder,
-  price,
-};
