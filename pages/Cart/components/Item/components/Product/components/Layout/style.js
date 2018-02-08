@@ -41,10 +41,15 @@ const info = css({
   justifyContent: 'space-between',
 }).toString();
 
+const disclaimerSpacer = css({
+  width: 10,
+}).toString();
+
 export default {
   item,
   leftColumn,
   image,
   content,
   info,
+  disclaimerSpacer,
 };

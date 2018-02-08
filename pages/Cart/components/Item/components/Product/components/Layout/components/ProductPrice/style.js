@@ -10,6 +10,7 @@ import { css } from 'glamor';
 const price = css({
   fontSize: '1rem',
   fontWeight: 500,
+  justifyContent: 'flex-end',
   textAlign: 'right',
 }).toString();
 

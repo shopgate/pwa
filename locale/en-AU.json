@@ -48,7 +48,8 @@
   },
   "product": {
     "description_heading": "About",
-    "pick_an_attribute": "Pick a {0}"
+    "pick_an_attribute": "Pick a {0}",
+    "tax_disclaimer": "* Incl. VAT plus shipping costs"
   },
   "category": {
     "no_result": {
