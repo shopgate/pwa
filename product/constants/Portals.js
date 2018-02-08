@@ -6,7 +6,6 @@
  */
 
 // FEATURES
-const PRODUCT_LIST = 'product-list';
 const PRODUCT_ITEM = 'product-item';
 
 // CONTENTS
@@ -14,8 +13,5 @@ const NAME = 'name';
 
 // POSITIONS
 const BEFORE = 'before';
-const AFTER = 'after';
 
-export const PRODUCT_LIST_BEFORE = `${PRODUCT_LIST}.${BEFORE}`;
-export const PRODUCT_LIST_AFTER = `${PRODUCT_LIST}.${AFTER}`;
 export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT_ITEM}.${NAME}.${BEFORE}`;
