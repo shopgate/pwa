@@ -1,6 +1,18 @@
 
 # Changelog
 
+### [2.4.0](https://github.com/shopgate/pwa-common/compare/v2.3.0...v2.4.0) - February 07, 2018
+#### Added
+- Toast messages supports an action button functionality
+  
+---
+
+### [2.3.0](https://github.com/shopgate/pwa-common/compare/v2.2.0...v2.3.0) - February 07, 2018
+#### Added
+  * `mergeTranslations` helper function
+  
+---
+
 ### [2.2.0](https://github.com/shopgate/pwa-common/compare/v2.1.2...v2.2.0) - February 06, 2018
 #### Added
 - `generateResultHash` now includes a `includeFilters` parameter.
