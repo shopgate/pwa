@@ -6,16 +6,14 @@
  */
 
 // FEATURES
-const PRODUCT_LIST = 'product-list';
-const PRODUCT_ITEM = 'product-item';
+const CATEGORY = 'category';
 
 // CONTENTS
-const NAME = 'name';
+const LIST = 'list';
 
 // POSITIONS
 const BEFORE = 'before';
 const AFTER = 'after';
 
-export const PRODUCT_LIST_BEFORE = `${PRODUCT_LIST}.${BEFORE}`;
-export const PRODUCT_LIST_AFTER = `${PRODUCT_LIST}.${AFTER}`;
-export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT_ITEM}.${NAME}.${BEFORE}`;
+export const CATEGORY_LIST_BEFORE = `${CATEGORY}.${LIST}.${BEFORE}`;
+export const CATEGORY_LIST_AFTER = `${CATEGORY}.${LIST}.${AFTER}`;
