@@ -1,6 +1,18 @@
 
 # Changelog
 ---
+### [3.0.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.5.0...v3.0.0) - February 07, 2018
+#### Added
+- Extended favorites event streams with favoritesWillRemoveItem$.
+- Process appConfig.productPropertiesFilter in the properties selector. This will filter the properties by whitelisting or blacklisting properties according to the setting.
+
+#### Changed
+- renamed `getTemporaryFiltersWithRoudedDisplayAmounts` selector to `getTemporaryFiltersWithRoundedDisplayAmounts`
+
+#### Fixed
+- Apply filter didn't work
+
+---
 ### [2.5.0](https://github.com/shopgate/pwa-common-commerce/compare/v2.4.0...v2.5.0) - February 06, 2018
 #### Added
 - Observable `favoritesWillFetch`
