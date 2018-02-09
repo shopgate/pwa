@@ -6,32 +6,20 @@
  */
 
 import React, { Component } from 'react';
-import Transition from 'react-transition-group/Transition';
 import PropTypes from 'prop-types';
-
-const duration = 300;
-
-const transitionStyles = {
-  entering: {
-    transform: 'translate3d(0, 200%, 0)',
-  },
-  entered: {
-    transform: 'translate3d(0, 0, 0)',
-  },
-  exiting: {
-    transform: 'translate3d(0, 0, 0)',
-  },
-  exited: {
-    transform: 'translate3d(0, 0, 0)',
-  },
-};
+import Transition from 'react-transition-group/Transition';
+import styles, { duration, transition } from './style';
 
 /**
  * The Count component.
  */
 class Count extends Component {
   static propTypes = {
-    count: PropTypes.number.isRequired,
+    count: PropTypes.number,
+  };
+
+  static defaultProps = {
+    count: 1,
   };
 
   /**
@@ -43,7 +31,20 @@ class Count extends Component {
 
     this.state = {
       in: false,
+      numItems: props.count,
     };
+  }
+
+  isShown(nextProps) {
+    if (this.props.numItems > 0 && nextProps.numItems === 0) {
+      return false;
+    }
+
+    if (nextProps.numItems === 0) {
+      return false;
+    }
+
+    return true;
   }
 
   /**
@@ -52,32 +53,29 @@ class Count extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.count !== nextProps.count) {
+      console.warn('COUNT', nextProps.count);
       this.setState({
-        in: true,
+        in: this.isShown(nextProps),
+        numItems: nextProps.count,
       });
     }
   }
 
   /**
-   * Returns the default style.
-   * @return {Object}
+   * Only update if the cart product count changed.
+   * @param {Object} nextProps The next props.
+   * @param {Object} nextState The next state.
+   * @return {boolean}
    */
-  get defaultStyle() {
-    const { count } = this.props;
-
-    return {
-      transition: `transform ${duration}ms ease-in-out`,
-      transform: count ? 'translate3d(0, 0, 0)' : 'translate3d(0, 200%, 0)',
-    };
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.in !== nextState.in ||
+      this.state.numItems !== nextState.numItems
+    );
   }
 
-  /**
-   * Handles the onEntered event.
-   */
-  handleOnEntered = () => {
-    this.setState({
-      in: false,
-    });
+  handleOnExited = () => {
+    this.setState({ in: true });
   }
 
   /**
@@ -85,18 +83,11 @@ class Count extends Component {
    * @return {JSX}
    */
   render() {
-    const { count } = this.props;
-
     return (
-      <Transition id={this.state.in} timeout={duration} onEntered={this.handleOnEntered}>
+      <Transition in={this.state.in} timeout={duration} onExited={this.handleOnExited}>
         {state => (
-          <div
-            style={{
-              ...this.defaultStyle,
-              ...transitionStyles[state],
-            }}
-          >
-            {count} items added
+          <div className={styles.container} style={transition[state]}>
+            {this.state.numItems} items added
           </div>
         )}
       </Transition>

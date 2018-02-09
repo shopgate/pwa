@@ -11,7 +11,7 @@ import Transition from 'react-transition-group/Transition';
 import CheckIcon from 'Components/icons/CheckIcon';
 import Count from './components/Count';
 import connect from './connector';
-import styles from './style';
+import styles, { duration, durationShort, transition } from './style';
 
 /**
  * The cart items count component.
@@ -22,6 +22,10 @@ class CartItemsCount extends Component {
     cartProductCount: PropTypes.number.isRequired,
   };
 
+  /**
+   * Constructor.
+   * @param {Object} props The component props.
+   */
   constructor(props) {
     super(props);
 
@@ -31,6 +35,10 @@ class CartItemsCount extends Component {
     };
   }
 
+  /**
+   * Decides on how to animate when the component props change.
+   * @param {Object} nextProps Incoming component props.
+   */
   componentWillReceiveProps(nextProps) {
     const numItems = nextProps.cartProductCount;
 
@@ -39,24 +47,25 @@ class CartItemsCount extends Component {
       this.setState({
         isVisible: false,
         numItems,
-      })
+      });
     } else if (!this.state.isVisible && numItems > 0) {
       // Set to visible when is currently invisible and has items.
       this.setState({
         isVisible: true,
         numItems,
-      })
+      });
     } else if (this.state.numItems !== numItems) {
       // Just update the value if the number of items changed.
       this.setState({
         numItems,
-      })
+      });
     }
   }
 
   /**
    * Only update if the cart product count changed.
    * @param {Object} nextProps The next props.
+   * @param {Object} nextState The next state.
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
@@ -71,29 +80,13 @@ class CartItemsCount extends Component {
    * @return {[type]} [description]
    */
   render() {
-    const { cartProductCount } = this.props;
-
-    const duration = 300;
-
-    const transition = {
-      entering: {
-        transform: 'translate3d(0, 200%, 0)',
-      },
-      entered: {
-        transform: 'translate3d(0, 0, 0)',
-      },
-      exited: {
-        transform: 'translate3d(0, 200%, 0)',
-      },
-      exiting: {
-        transform: 'translate3d(0, 0, 0)',
-      },
-    };
-
     return (
       <Transition
         in={this.state.isVisible}
-        timeout={duration}
+        timeout={{
+          enter: duration,
+          exit: durationShort,
+        }}
       >
         {state => (
           <div className={styles.container} style={transition[state]}>

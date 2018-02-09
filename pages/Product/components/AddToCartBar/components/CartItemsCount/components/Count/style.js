@@ -6,40 +6,34 @@
  */
 
 import { css } from 'glamor';
-import variables from 'Styles/variables';
 
 export const duration = 300;
+export const durationShort = 50;
 
 export const transition = {
   entering: {
+    opacity: 0,
     transform: 'translate3d(0, 200%, 0)',
   },
   entered: {
+    opacity: 1,
     transform: 'translate3d(0, 0, 0)',
   },
   exited: {
+    opacity: 0,
     transform: 'translate3d(0, 200%, 0)',
   },
   exiting: {
-    transform: 'translate3d(0, 0, 0)',
+    opacity: 0,
+    transform: 'translate3d(0, 200%, 0)',
+    transition: `transform ${durationShort}ms linear`,
   },
 };
 
 const container = css({
-  flexGrow: 1,
-  display: 'flex',
-  alignItems: 'center',
-  overflow: 'hidden',
-  transition: `transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34)`,
-  willChange: 'transform',
-});
-
-const check = css({
-  fontSize: '1.2rem',
-  paddingRight: variables.gap.small,
+  transition: `transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34), opacity ${duration}ms linear`,
 });
 
 export default {
   container,
-  check,
 };
