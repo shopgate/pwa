@@ -89,7 +89,7 @@ class Page extends Component {
             <Widgets components={widgets} widgets={pageConfig.widgets} />
           </div>
         </Portal>
-        <Portal id={PAGE_CONTENT_AFTER} />
+        <Portal name={PAGE_CONTENT_AFTER} />
       </View>
     );
   }
