@@ -7,6 +7,7 @@
 
 import React from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import Rating from './components/Rating';
 import Name from './components/Name';
 import Manufacturer from './components/Manufacturer';
@@ -50,7 +51,7 @@ const ProductHeader = () => (
           <PriceStriked />
         </div>
         <div className={styles.priceInfo}>
-          <Price />
+          <Price className={styles.price} />
         </div>
         <div className={styles.priceInfo}>
           <PriceInfo />
@@ -59,6 +60,14 @@ const ProductHeader = () => (
           <Tiers />
         </div>
       </Grid.Item>
+      {showTaxDisclaimer && (
+        <Grid.Item
+          className={styles.disclaimerSpacer}
+          component="div"
+          grow={0}
+          shrink={0}
+        />
+      )}
     </Grid>
   </div>
 );
