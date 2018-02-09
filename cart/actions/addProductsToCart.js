@@ -24,11 +24,12 @@ const addToCart = productData => (dispatch, getState) => {
   dispatch(addProductsToCart(productData));
   dispatch(setCartProductPendingCount(pendingProductCount + 1));
 
-  new PipelineRequest('addProductsToCart')
-    .setInput({ products: productData })
+  const request = new PipelineRequest('addProductsToCart');
+  request.setInput({ products: productData })
     .dispatch()
     .then(({ messages }) => {
-      dispatch(successAddProductsToCart());
+      const requestsPending = request.hasPendingRequests();
+      dispatch(successAddProductsToCart(requestsPending));
 
       if (messages) {
         /**
@@ -36,11 +37,12 @@ const addToCart = productData => (dispatch, getState) => {
          * but a messages array within the response payload. So by now we also have to dispatch
          * the error action here.
          */
-        dispatch(errorAddProductsToCart(productData, messages));
+        dispatch(errorAddProductsToCart(productData, messages, requestsPending));
       }
     })
     .catch((error) => {
-      dispatch(errorAddProductsToCart(productData));
+      const requestsPending = request.hasPendingRequests();
+      dispatch(errorAddProductsToCart(productData, undefined, requestsPending));
       logger.error('addProductsToCart', error);
     });
 };

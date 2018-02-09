@@ -19,20 +19,22 @@ import successAddCouponsToCart from '../action-creators/successAddCouponsToCart'
 const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) => {
   dispatch(addCoupons(couponIds));
 
-  new PipelineRequest('addCouponsToCart')
-    .setInput({ couponCodes: couponIds })
+  const request = new PipelineRequest('addCouponsToCart');
+  request.setInput({ couponCodes: couponIds })
     .dispatch()
     .then(({ messages }) => {
+      const requestsPending = request.hasPendingRequests();
       if (messages) {
-        dispatch(errorAddCouponsToCart(couponIds, messages));
+        dispatch(errorAddCouponsToCart(couponIds, messages, requestsPending));
         reject();
       } else {
-        dispatch(successAddCouponsToCart(couponIds));
+        dispatch(successAddCouponsToCart(couponIds, requestsPending));
         resolve();
       }
     })
     .catch((error) => {
-      dispatch(errorAddCouponsToCart(couponIds));
+      const requestsPending = request.hasPendingRequests();
+      dispatch(errorAddCouponsToCart(couponIds, undefined, requestsPending));
       logger.error('addCouponsToCart', error);
       reject();
     });
