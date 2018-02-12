@@ -19,18 +19,20 @@ import successDeleteCouponsFromCart from '../action-creators/successDeleteCoupon
 const deleteCouponsFromCart = couponIds => (dispatch) => {
   dispatch(deleteCoupons(couponIds));
 
-  new PipelineRequest('deleteCouponsFromCart')
-    .setInput({ couponCodes: couponIds })
+  const request = new PipelineRequest('deleteCouponsFromCart');
+  request.setInput({ couponCodes: couponIds })
     .dispatch()
     .then(({ messages }) => {
-      dispatch(successDeleteCouponsFromCart());
+      const requestsPending = request.hasPendingRequests();
+      dispatch(successDeleteCouponsFromCart(requestsPending));
 
       if (messages) {
-        dispatch(errorDeleteCouponsFromCart(couponIds, messages));
+        dispatch(errorDeleteCouponsFromCart(couponIds, messages, requestsPending));
       }
     })
     .catch((error) => {
-      dispatch(errorDeleteCouponsFromCart(couponIds));
+      const requestsPending = request.hasPendingRequests();
+      dispatch(errorDeleteCouponsFromCart(couponIds, undefined, requestsPending));
       logger.error('deleteCouponsFromCart', error);
     });
 };
