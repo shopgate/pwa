@@ -92,7 +92,8 @@
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
     "signup": "Starten Sie hier!",
-    "logout_message": "Sie wurden ausgeloggt."
+    "logout_message": "Sie wurden ausgeloggt.",
+    "error": "Nutzername oder Passwort sind nicht korrekt"
   },
   "navigation": {
     "login_register": "Anmelden",
