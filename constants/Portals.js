@@ -10,6 +10,7 @@ const APP = 'app';
 const PAGE = 'page';
 
 // CONTENTS
+const GLOBALS = 'globals';
 const ROUTES = 'routes';
 const CONTENT = 'content';
 
@@ -17,7 +18,8 @@ const CONTENT = 'content';
 const BEFORE = 'before';
 const AFTER = 'after';
 
+export const APP_GLOBALS = `${APP}.${GLOBALS}`;
 export const APP_ROUTES = `${APP}.${ROUTES}`;
 export const PAGE_CONTENT_BEFORE = `${PAGE}.${CONTENT}.${BEFORE}`;
-export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
 export const PAGE_CONTENT = `${PAGE}.${CONTENT}`;
+export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
