@@ -13,17 +13,10 @@ const disabled = css({
 }).toString();
 
 const totalLabel = css({
-  fontSize: '1.125rem',
-  fontWeight: 500,
-}).toString();
-
-const text = css({
-  hyphens: 'auto',
-  wordWrap: 'break-word',
+  fontSize: 16,
 }).toString();
 
 export default {
   disabled,
   totalLabel,
-  text,
 };

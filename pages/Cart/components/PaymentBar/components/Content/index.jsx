@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import sizeMe from 'react-sizeme';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import ShippingCostsLabel from './components/ShippingCostsLabel';
@@ -21,30 +21,28 @@ import styles from './style';
  * @return {JSX}
  */
 const Content = () => (
-  <Grid className={styles.container}>
-
-    <Grid.Item className={styles.labelColumn} grow={1}>
-      <div className={styles.column}>
-        <SubTotalLabel />
-        <ShippingCostsLabel />
-      </div>
-    </Grid.Item>
-
-    <Grid.Item className={styles.costsColumn} grow={1}>
-      <div className={styles.column}>
-        <SubTotal />
-        <ShippingCosts />
-      </div>
-    </Grid.Item>
-
-    <Grid.Item className={styles.buttonColumn} grow={1}>
-      <div className={styles.column}>
-        <div className={styles.checkoutButton}>
-          <CheckoutButton />
+  <Fragment>
+    <Grid className={styles.container}>
+      <Grid.Item className={styles.labelColumn} grow={1}>
+        <div className={styles.column}>
+          <SubTotalLabel />
+          <ShippingCostsLabel />
         </div>
+      </Grid.Item>
+
+      <Grid.Item className={styles.costsColumn} grow={1}>
+        <div className={styles.column}>
+          <SubTotal />
+          <ShippingCosts />
+        </div>
+      </Grid.Item>
+    </Grid>
+    <div className={styles.checkoutButtonContainer}>
+      <div className={styles.checkoutButton}>
+        <CheckoutButton />
       </div>
-    </Grid.Item>
-  </Grid>
+    </div>
+  </Fragment>
 );
 
 export default sizeMe({ monitorHeight: true })(Content);
