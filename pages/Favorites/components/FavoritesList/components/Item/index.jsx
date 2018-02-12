@@ -13,6 +13,8 @@ import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import CardItem from 'Components/CardList/components/Item';
 import FavoritesButton from 'Components/FavoritesButton';
+import AddToCartButton from 'Components/AddToCartButton';
+import CTAButtons from './components/CTAButtons';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Image from './components/Image';
 import ProductInfo from './components/ProductInfo';
@@ -90,19 +92,16 @@ class Item extends Component {
             <Grid className={styles.row}>
               <Grid.Item className={styles.leftColumn}>
                 <Image product={this.props.product} />
-                <div className={styles.favButtonWrapper}>
-                  <FavoritesButton
-                    productId={this.props.product.id}
-                    active={this.state.visible}
-                    removeThrottle={styles.favItemTransitionDuration + 200}
-                    onRippleComplete={(active) => {
-                      this.setState({
-                        visible: active,
-                      });
-                    }}
-                    readOnlyOnFetch
-                  />
-                </div>
+                <CTAButtons
+                  productId={this.props.product.id}
+                  active={this.state.visible}
+                  removeThrottle={styles.favItemTransitionDuration + 200}
+                  onRippleComplete={(active) => {
+                    this.setState({
+                      visible: active,
+                    });
+                  }}
+                />
               </Grid.Item>
               <Grid.Item grow={1} className={styles.rightColumn}>
                 <ProductInfo product={this.props.product} />

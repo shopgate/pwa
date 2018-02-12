@@ -8,11 +8,15 @@
 import { css } from 'glamor';
 import spring from 'css-spring';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const options = {
   stiffness: 381.47,
   damping: 15,
 };
+
+const buttonSize = 40;
+const iconSize = 20;
 
 /**
  * Keyframe animations to create spring animation.
@@ -58,17 +62,20 @@ const springToBottom = css({
   animation: `${springToBottomKeyframes} 600ms`,
 }).toString();
 
+/* TODO refactor to function/object */
 /**
  * Circular button and container for the icons.
  */
-const button = css({
+const buttonWrapper = css({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   borderRadius: '50%',
-  width: 56,
-  height: 56,
+  width: buttonSize,
+  height: buttonSize,
   position: 'relative',
-  fontSize: '1.5rem',
+  fontSize: iconSize,
   outline: 0,
+  paddingLeft: (buttonSize - iconSize) / 2,
+  paddingRight: (buttonSize - iconSize) / 2,
   boxShadow: '0 8px 13px rgba(0, 0, 0, 0.2)',
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
@@ -97,23 +104,18 @@ const icon = css({
   transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   opacity: 1,
   position: 'absolute',
-  left: 0,
-  right: 0,
-  height: 24,
-  width: 24,
-  top: '50%',
-  margin: 'auto',
 }).toString();
 
 /**
  * Icon style that is applied only to the spinner icon.
  */
 const spinnerIcon = css({
+  left: variables.loadingIndicator.size - iconSize,
   transform: 'translate3d(0, -50%, 0)',
 }).toString();
 
 export default {
-  button,
+  buttonWrapper,
   buttonReady,
   buttonSuccess,
   icon,

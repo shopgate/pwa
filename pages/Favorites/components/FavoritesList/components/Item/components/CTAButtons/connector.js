@@ -4,13 +4,10 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
 import { connect } from 'react-redux';
-import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
-import {
-  isProductPageLoading,
-  isProductPageOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/page';
+import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+import { getIsBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import showVariantModal from '@shopgate/pwa-common-commerce/favorites/actions/showVariantModal';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,8 +15,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isLoading: isProductPageLoading(state),
-  isOrderable: isProductPageOrderable(state),
+  isBaseProduct: productId => getIsBaseProduct(state, productId),
 });
 
 /**
@@ -28,7 +24,8 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleAddToCart: () => dispatch(addCurrentProductToCart()),
+  addToCart: productData => dispatch(addToCart(productData)),
+  showVariantModal: productId => dispatch(showVariantModal(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
