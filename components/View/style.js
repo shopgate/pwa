@@ -28,7 +28,12 @@ const container = css({
  * @param {number} keyboardHeight The space that is taken by the keyboard.
  * @return {string} The content style class.
  */
-const content = (hasNavigator = true, hasTabBar = true, isFullscreen = false, keyboardHeight = 0) => {
+const content = (
+  hasNavigator = true,
+  hasTabBar = true,
+  isFullscreen = false,
+  keyboardHeight = 0
+) => {
   const navHeight = hasNavigator ? variables.navigator.height : 0;
   const navAndStatusBarHeight = [
     `${navHeight + variables.statusBar.height}px`,

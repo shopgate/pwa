@@ -69,7 +69,7 @@ class View extends Component {
 
     this.state = {
       keyboardHeight: 0,
-    }
+    };
 
     event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
@@ -127,7 +127,7 @@ class View extends Component {
     const height = open ? overlap : 0;
     this.setState({
       keyboardHeight: height,
-    })
+    });
   }
 
   /**
@@ -147,16 +147,16 @@ class View extends Component {
 
   /**
    * Handles the swipe down gesture.
-   * @param {Object} event The event object.
+   * @param {Object} e The event object.
    * @param {number} x The change on the x axis.
    * @param {number} y The change on the y axis.
    * @param {boolean} isFlick Whether this is a flick or swipe.
    * @param {number} velocity The velocity of the gesture.
    */
-  handleSwipe = (event, x, y, isFlick, velocity) => {
+  handleSwipe = (e, x, y, isFlick, velocity) => {
     const swipeEvent = new CustomEvent('swipe', {
       detail: {
-        event,
+        e,
         x,
         y,
         isFlick,
@@ -196,7 +196,7 @@ class View extends Component {
       this.props.hasNavigator,
       this.props.hasTabBar,
       this.props.isFullscreen,
-      this.state.keyboardHeight,
+      this.state.keyboardHeight
     );
 
     const { children } = this.props;
