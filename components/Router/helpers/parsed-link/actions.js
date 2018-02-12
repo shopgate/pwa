@@ -59,6 +59,7 @@ const externalLink = (url) => {
  * @param {string} options.targetTab Target tab where the page should be opened.
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
  * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
+ * @param {string} options.flushTab The tab that should be flushed
  * @param {string} options.backCallback
  *   Javascript callback that is executed when hitting the back button.
  */
@@ -79,6 +80,12 @@ const legacyLink = (options) => {
   if (options.targetTab) {
     showTab({
       targetTab: options.targetTab,
+    });
+  }
+
+  if (options.flushTab) {
+    flushTab({
+      targetTab: options.flushTab,
     });
   }
 

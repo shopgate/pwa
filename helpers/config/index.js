@@ -17,6 +17,7 @@ const defaultAppConfig = {
   hasReviews: true,
   language: 'en-us',
   logo: 'https://example.com/logo',
+  marketId: 'US',
   publicPath: 'https://example.com/public',
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
