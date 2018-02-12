@@ -22,10 +22,11 @@ const Price = ({ price }) => (
     {(price && price.unitPrice) && (
       <PriceBase
         className={styles.price}
-        unitPrice={price.totalPrice}
-        unitPriceMin={price.unitPriceMin}
         discounted={!!price.discount}
         currency={price.currency}
+        taxDisclaimer
+        unitPrice={price.totalPrice}
+        unitPriceMin={price.unitPriceMin}
       />
     )}
   </PlaceholderLabel>
