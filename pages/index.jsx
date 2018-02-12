@@ -30,7 +30,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { APP_ROUTES } from '@shopgate/pwa-common/constants/Portals';
+import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import SnackBar from 'Components/SnackBar';
@@ -60,6 +60,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  */
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
+    <Portal name={APP_GLOBALS} />
     <Viewport>
       <ModalContainer component={Dialog} />
       <SnackBar />
