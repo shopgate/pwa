@@ -31,9 +31,7 @@ const costsColumn = css({
 }).toString();
 
 const checkoutButtonContainer = css({
-  padding: `${variables.gap.big}px ${variables.gap.big}px`,
-  paddingTop: 0,
-  paddingBottom: 10,
+  padding: `0 ${variables.gap.big}px 10px ${variables.gap.big}px`,
 }).toString();
 
 const checkoutButton = css({
