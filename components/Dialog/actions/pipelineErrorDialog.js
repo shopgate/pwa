@@ -21,10 +21,13 @@ const getErrorMessage = ({ name, error }) => {
       return 'favorites.error_add';
     case 'deleteFavorites_v1':
       return 'favorites.error_remove';
+    case 'login_v1':
+      return 'login.error';
     default:
       return error.message;
   }
 };
+
 /**
  * Disables the navigator.
  * @return {Function} A redux thunk.
