@@ -28,7 +28,7 @@ import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { APP_ROUTES } from '@shopgate/pwa-common/constants/Portals';
+import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
@@ -56,6 +56,7 @@ import WriteReview from './WriteReview';
  */
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
+    <Portal name={APP_GLOBALS} />
     <Viewport>
       <ModalContainer component={Dialog} />
 
