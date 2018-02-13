@@ -100,7 +100,6 @@ class Item extends Component {
                         visible: active,
                       });
                     }}
-                    readOnlyOnFetch
                   />
                 </div>
               </Grid.Item>

@@ -22,10 +22,8 @@ class FavoritesButton extends Component {
     active: PropTypes.bool,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
-    isFetching: PropTypes.bool,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
-    readOnlyOnFetch: PropTypes.bool,
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
@@ -35,10 +33,8 @@ class FavoritesButton extends Component {
     active: false,
     addFavorites: () => {},
     className: '',
-    isFetching: false,
     onRippleComplete: () => {},
     productId: null,
-    readOnlyOnFetch: false,
     removeFavorites: () => {},
     removeThrottle: 0,
     rippleClassName: '',
@@ -60,7 +56,6 @@ class FavoritesButton extends Component {
     super(props);
     this.state = {
       active: props.active,
-      isFetching: props.isFetching,
     };
   }
 
@@ -71,7 +66,6 @@ class FavoritesButton extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       active: nextProps.active,
-      isFetching: nextProps.isFetching,
     });
   }
 
@@ -93,24 +87,12 @@ class FavoritesButton extends Component {
   }
 
   /**
-   * Checks if button is currently read-only.
-   * @return {boolean} The read only "state" of the component
-   */
-  isReadOnly() {
-    return this.state.isFetching && this.props.readOnlyOnFetch;
-  }
-
-  /**
    * Adds or removes a given product ID from the favorite list.
    * @param {Object} event The click event object.
    */
   handleClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
-
-    if (this.isReadOnly()) {
-      return;
-    }
 
     if (!this.props.productId) {
       return;
@@ -126,7 +108,6 @@ class FavoritesButton extends Component {
 
     this.setState({
       active: !this.state.active,
-      isFetching: true,
     });
   };
 
@@ -159,7 +140,6 @@ class FavoritesButton extends Component {
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
           onComplete={this.onRippleComplete}
-          disabled={this.isReadOnly()}
         >
           {this.renderIcon()}
         </Ripple>

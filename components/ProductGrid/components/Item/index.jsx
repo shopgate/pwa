@@ -18,14 +18,16 @@ import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
 import PriceInfo from 'Components/PriceInfo';
+import FavoritesButton from 'Components/FavoritesButton';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = ({ product, display }) => (
+const Item = ({ product, display, isFavorite }) => (
   <Link
     tagName="a"
     href={`/item/${bin2hex(product.id)}`}
@@ -40,6 +42,7 @@ const Item = ({ product, display }) => (
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
     }
+    <FavoritesButton active={isFavorite} productId={product.id} />
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
         <Portal name={PRODUCT_ITEM_NAME_BEFORE} id={product.id} />
@@ -91,4 +94,4 @@ Item.defaultProps = {
   display: null,
 };
 
-export default Item;
+export default connect(Item);

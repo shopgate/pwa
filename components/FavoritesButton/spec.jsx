@@ -21,14 +21,13 @@ const mockedStore = configureStore();
 const dispatcher = jest.fn();
 
 let mockedHasFavorites = true;
-let mockedIsFetching = true;
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
 }));
 
 jest.mock('@shopgate/pwa-common-commerce/favorites/selectors/index', () => ({
-  isFetching: () => mockedIsFetching,
+  isFetching: () => false,
 }));
 
 beforeEach(() => {
@@ -118,18 +117,6 @@ describe('<FavoritesButton />', () => {
       expect(dispatcher).toHaveBeenCalled();
       done();
     }, 0);
-  });
-
-  it('should be blocked when fetching and prop is set', () => {
-    mockedIsFetching = true;
-    component = createComponent(mockedStateOnList, {
-      readOnlyOnFetch: true,
-      active: true,
-    });
-
-    component.find('button').simulate('click');
-    component.update();
-    expect(dispatcher.mock.calls.length).toBe(0);
   });
 
   it('should process ripple complete callback', () => {
