@@ -109,6 +109,7 @@
     "terms": "Terms and Conditions",
     "privacy": "Privacy Policy",
     "welcome_message": "Welcome {name}",
+    "return_policy": "Return policy",
     "logout": "Logout",
     "store_information": "Store Information",
     "more_menu": "More"

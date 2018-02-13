@@ -50,6 +50,7 @@ class More extends Component {
           <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
           <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
           <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
+          <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
           <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
         </List>
         {showQuickLinks && (

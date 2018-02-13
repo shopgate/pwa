@@ -109,6 +109,7 @@
     "terms": "AGB",
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
+    "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr"
