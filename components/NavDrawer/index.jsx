@@ -184,6 +184,10 @@ class NavDrawer extends Component {
           <I18n.Text string="navigation.privacy" />
         </Item>
 
+        <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
+          <I18n.Text string="navigation.return_policy" />
+        </Item>
+
         <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
           <I18n.Text string="navigation.about" />
         </Item>
