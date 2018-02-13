@@ -18,30 +18,32 @@ import {
   errorFetchFavorites,
 } from '../action-creators';
 
+let getFavoritesThrottle = null;
 /**
  * Get favorites action.
- * @param {boolean} ignoreCache Ignores cache when true.
- * @returns {Promise} PipelineRequest dispatch..
+ * @param {boolean} ignoreCache Ignores cache when true
+ * @returns {undefined}
  */
 const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   const data = getState().favorites.products;
   if (!ignoreCache && !shouldFetchData(data)) {
-    return new Promise(resolve => resolve());
+    return;
   }
-  const request = new PipelineRequest('getFavorites')
-    .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
-    .dispatch();
-  dispatch(requestFavorites());
-  request
-    .then((result) => {
-      dispatch(receiveFavorites(result.products));
-    })
-    .catch((err) => {
-      console.error(err);
-      dispatch(errorFetchFavorites(err));
-    });
-
-  return request;
+  const delay = ignoreCache ? 5000 : 0;
+  clearTimeout(getFavoritesThrottle);
+  getFavoritesThrottle = setTimeout(() => {
+    dispatch(requestFavorites());
+    new PipelineRequest('getFavorites')
+      .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
+      .dispatch()
+      .then((result) => {
+        dispatch(receiveFavorites(result.products));
+      })
+      .catch((err) => {
+        console.error(err);
+        dispatch(errorFetchFavorites(err));
+      });
+  }, delay);
 };
 
 export default getFavorites;

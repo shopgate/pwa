@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+import { uniq } from 'lodash';
 import {
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
@@ -39,10 +40,10 @@ const products = (state = {}, action) => {
       return {
         ...state,
         isFetching: true,
-        ids: [
+        ids: uniq([
           action.productId,
           ...(state.ids || []),
-        ],
+        ]),
       };
     case REQUEST_REMOVE_FAVORITES:
       return {

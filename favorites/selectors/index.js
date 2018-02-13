@@ -83,3 +83,12 @@ export const isCurrentProductOnFavoriteList = createSelector(
   getFavoritesProductsIds,
   (productId, ids) => ids.indexOf(productId) !== -1
 );
+
+/**
+ * Checks if product is on favorires list.
+ * @param {Object} state Current state.
+ * @param {number} productId Product id.
+ * @return {boolean}
+ */
+export const isProductOnList = (state, productId) =>
+  getFavoritesProductsIds(state).includes(productId);
