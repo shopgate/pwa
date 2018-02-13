@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import sizeMe from 'react-sizeme';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import ShippingCostsLabel from './components/ShippingCostsLabel';
@@ -21,7 +21,11 @@ import styles from './style';
  * @return {JSX}
  */
 const Content = () => (
-  <Fragment>
+  /**
+   * Because the sizeMe HOC needs a real dom element to measure the height of the Content
+   * component, we can't use a Fragment as a wrapper here.
+   */
+  <div>
     <Grid className={styles.container}>
       <Grid.Item className={styles.labelColumn} grow={1}>
         <div className={styles.column}>
@@ -42,7 +46,7 @@ const Content = () => (
         <CheckoutButton />
       </div>
     </div>
-  </Fragment>
+  </div>
 );
 
 export default sizeMe({ monitorHeight: true })(Content);
