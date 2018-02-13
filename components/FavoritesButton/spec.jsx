@@ -50,8 +50,6 @@ describe('<FavoritesButton />', () => {
     return mount(
       <Provider store={store}>
         <FavoritesButton
-          addFavorites={() => {}}
-          removeFavorites={() => {}}
           {...props}
         />
       </Provider>,

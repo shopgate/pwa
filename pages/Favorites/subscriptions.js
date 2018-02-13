@@ -17,6 +17,7 @@ import {
   getHistoryPathname,
 } from '@shopgate/pwa-common/selectors/history';
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
+import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
  * Favorites page subscriptions.
@@ -36,7 +37,7 @@ export default function favorites(subscribe) {
         message: 'favorites.removed',
         duration: 6000,
       }));
-    }, 300);
+    }, FAVORITES_SHOW_TOAST_DELAY);
   });
 }
 

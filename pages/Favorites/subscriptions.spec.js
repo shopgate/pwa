@@ -11,6 +11,9 @@ import {
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import subscribe from './subscriptions';
 
+jest.mock('./constants', () => ({
+  FAVORITES_SHOW_TOAST_DELAY: 0,
+}));
 describe('Favorites subscriptions', () => {
   let subscribeMock;
   let first;
@@ -38,7 +41,7 @@ describe('Favorites subscriptions', () => {
       // Didn't pass dispatch. If won't return early, exception would be thrown.
       expect(first[1]({ getState })).toBe(undefined);
     });
-    it('should dispatch create toast action', () => {
+    it('should dispatch create toast action', (done) => {
       /**
        * Get state function.
        * @returns {Object}
@@ -57,8 +60,11 @@ describe('Favorites subscriptions', () => {
         action,
         dispatch,
       });
-      dispatch.mock.calls[0][0](dispatch);
-      expect(typeof dispatch.mock.calls[1][0] === 'object').toBe(true);
+      setTimeout(() => {
+        dispatch.mock.calls[0][0](dispatch);
+        expect(typeof dispatch.mock.calls[1][0] === 'object').toBe(true);
+        done();
+      }, 1);
     });
   });
 });
