@@ -8,7 +8,7 @@
 import { connect } from 'react-redux';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { isTabBarVisible } from 'Components/TabBar/selectors';
-import setViewTitle from './action-creators/setViewTitle';
+import setTitle from './actions/setTitle';
 import setViewTop from './action-creators/setViewTop';
 import { getTopStatus, getTitle } from './selectors';
 
@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  setTitle: title => dispatch(setViewTitle(title)),
+  setTitle: title => dispatch(setTitle(title)),
   setTop: isTop => dispatch(setViewTop(isTop)),
 });
 
