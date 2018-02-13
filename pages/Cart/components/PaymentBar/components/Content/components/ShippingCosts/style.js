@@ -13,7 +13,7 @@ const disabled = css({
 }).toString();
 
 const shippingInfoValue = css({
-  fontSize: '0.875rem',
+  fontSize: 16,
   color: colors.shade9,
   textAlign: 'right',
 }).toString();

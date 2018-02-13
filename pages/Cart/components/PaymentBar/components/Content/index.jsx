@@ -23,7 +23,7 @@ import styles from './style';
 const Content = () => (
   /**
    * Because the sizeMe HOC needs a real dom element to measure the height of the Content
-   * component, we can't use a Fragment as a wrapper here.
+   * component, we can't use a Fragment as a wrapped here.
    */
   <div>
     <Grid className={styles.container}>
