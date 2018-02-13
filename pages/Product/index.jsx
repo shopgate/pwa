@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
 import Reviews from 'Components/Reviews';
+import TaxDisclaimer from 'Components/TaxDisclaimer';
 import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
 import VariantSelects from './components/VariantSelects';
@@ -51,6 +52,7 @@ class Product extends Component {
         <Description />
         <Properties />
         <Reviews />
+        <TaxDisclaimer />
       </View>
     );
   }

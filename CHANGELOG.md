@@ -1,5 +1,9 @@
 # Changelog
 
+### [2.2.0](https://github.com/shopgate/theme-gmd/compare/v2.1.0...v2.2.0) - February 07, 2018
+#### Added
+- Introduce the new app config `productPropertiesFilter` for whitelisting/blacklisting product properties.
+
 ### [2.1.0](https://github.com/shopgate/theme-gmd/compare/v2.0.2...v2.1.0) - February 07, 2018
 #### Updated
 - `pwa-common` dependency to `^2.3.0`.

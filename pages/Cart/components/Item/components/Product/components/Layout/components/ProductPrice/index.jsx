@@ -18,7 +18,10 @@ import styles from './style';
  * @returns {JSX}
  */
 const ProductPrice = ({ currency, defaultPrice, specialPrice }) => (
-  <Grid.Item shrink={0}>
+  <Grid.Item
+    component="div"
+    shrink={0}
+  >
     {!!specialPrice && (
       <PriceStriked
         className={styles.priceStriked}
@@ -28,9 +31,10 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }) => (
     )}
     <Price
       className={styles.price}
-      unitPrice={specialPrice || defaultPrice}
       currency={currency}
       discounted={!!specialPrice}
+      taxDisclaimer
+      unitPrice={specialPrice || defaultPrice}
     />
   </Grid.Item>
 );
