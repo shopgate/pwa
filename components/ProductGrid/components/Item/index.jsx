@@ -42,7 +42,9 @@ const Item = ({ product, display, isFavorite }) => (
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
     }
-    <FavoritesButton active={isFavorite} productId={product.id} />
+    <div className={styles.favorites}>
+      <FavoritesButton active={isFavorite} productId={product.id} noShadow />
+    </div>
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
         <Portal name={PRODUCT_ITEM_NAME_BEFORE} id={product.id} />

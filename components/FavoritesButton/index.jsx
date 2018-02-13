@@ -22,6 +22,7 @@ class FavoritesButton extends Component {
     active: PropTypes.bool,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
+    noShadow: PropTypes.bool,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
     removeFavorites: PropTypes.func,
@@ -33,6 +34,7 @@ class FavoritesButton extends Component {
     active: false,
     addFavorites: () => {},
     className: '',
+    noShadow: false,
     onRippleComplete: () => {},
     productId: null,
     removeFavorites: () => {},
@@ -131,10 +133,11 @@ class FavoritesButton extends Component {
     if (!appConfig.hasFavorites) {
       return null;
     }
+    const className = this.props.noShadow ? styles.buttonFlat : styles.button;
     return (
       <button
         aria-label={this.getLabel()}
-        className={`${styles.button} ${this.props.className}`}
+        className={`${className} ${this.props.className}`}
         onClick={this.handleClick}
       >
         <Ripple
