@@ -19,18 +19,20 @@ import errorDeleteProductsFromCart from '../action-creators/errorDeleteProductsF
 const deleteProductsFromCart = cartItemIds => (dispatch) => {
   dispatch(deleteProducts(cartItemIds));
 
-  new PipelineRequest('deleteProductsFromCart')
-    .setInput({ CartItemIds: cartItemIds })
+  const request = new PipelineRequest('deleteProductsFromCart');
+  request.setInput({ CartItemIds: cartItemIds })
     .dispatch()
     .then(({ messages }) => {
-      dispatch(successDeleteProductsFromCart());
+      const requestsPending = request.hasPendingRequests();
+      dispatch(successDeleteProductsFromCart(requestsPending));
 
       if (messages) {
-        dispatch(errorDeleteProductsFromCart(cartItemIds, messages));
+        dispatch(errorDeleteProductsFromCart(cartItemIds, messages, requestsPending));
       }
     })
     .catch((error) => {
-      dispatch(errorDeleteProductsFromCart(cartItemIds));
+      const requestsPending = request.hasPendingRequests();
+      dispatch(errorDeleteProductsFromCart(cartItemIds, undefined, requestsPending));
       logger.error('deleteProductsFromCart', error);
     });
 };

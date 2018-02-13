@@ -32,18 +32,20 @@ const updateProductsInCart = updateData => (dispatch) => {
 
   dispatch(updateProducts(convertedData));
 
-  new PipelineRequest('updateProductsInCart')
-    .setInput({ CartItem: convertedData })
+  const request = new PipelineRequest('updateProductsInCart');
+  request.setInput({ CartItem: convertedData })
     .dispatch()
     .then(({ messages }) => {
-      dispatch(successUpdateProductsInCart());
+      const requestsPending = request.hasPendingRequests();
+      dispatch(successUpdateProductsInCart(requestsPending));
 
       if (messages) {
-        dispatch(errorUpdateProductsInCart(updateData, messages));
+        dispatch(errorUpdateProductsInCart(updateData, messages, requestsPending));
       }
     })
     .catch((error) => {
-      dispatch(errorUpdateProductsInCart(updateData));
+      const requestsPending = request.hasPendingRequests();
+      dispatch(errorUpdateProductsInCart(updateData, undefined, requestsPending));
       logger.error('updateProductsInCart', error);
     });
 };

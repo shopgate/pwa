@@ -81,8 +81,11 @@ export default function cart(subscribe) {
     dispatch(setCartProductPendingCount(0));
   });
 
-  subscribe(cartNeedsSync$, ({ dispatch }) => {
-    dispatch(fetchCart());
+  subscribe(cartNeedsSync$, ({ dispatch, action }) => {
+    const { requestsPending = false } = action;
+    if (requestsPending !== true) {
+      dispatch(fetchCart());
+    }
   });
 
   subscribe(cartBusy$, ({ dispatch }) => {
