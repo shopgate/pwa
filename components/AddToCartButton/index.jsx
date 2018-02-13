@@ -21,11 +21,15 @@ class AddToCartButton extends Component {
     handleAddToCart: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isOrderable: PropTypes.bool.isRequired,
+    buttonSize: PropTypes.number,
     className: PropTypes.string,
+    iconSize: PropTypes.number,
   };
 
   static defaultProps = {
+    buttonSize: styles.buttonSize,
     className: null,
+    iconSize: styles.iconSize,
   };
 
   /**
@@ -159,7 +163,7 @@ class AddToCartButton extends Component {
 
     return (
       <button
-        className={`${this.props.className} ${styles.buttonWrapper} ${buttonStyle}`}
+        className={`${this.props.className} ${styles.buttonWrapper(this.props.buttonSize, this.props.iconSize)} ${buttonStyle}`}
         onClick={this.handleClick}
       >
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>

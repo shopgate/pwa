@@ -30,6 +30,8 @@ const CTAButtons = props => (
       isLoading={props.isLoading}
       isOrderable={props.isOrderable}
       handleAddToCart={props.handleAddToCart}
+      buttonSize={styles.cartButtonSize}
+      iconSize={styles.iconSize}
       className={styles.cartButton}
     />
   </div>

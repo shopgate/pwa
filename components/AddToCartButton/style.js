@@ -62,20 +62,21 @@ const springToBottom = css({
   animation: `${springToBottomKeyframes} 600ms`,
 }).toString();
 
-/* TODO refactor to function/object */
 /**
  * Circular button and container for the icons.
+ * @param {number} bSize Size of the button.
+ * @param {number} iSize Size of the icon.
  */
-const buttonWrapper = css({
+const buttonWrapper = (bSize, iSize) => css({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   borderRadius: '50%',
-  width: buttonSize,
-  height: buttonSize,
+  width: bSize,
+  height: bSize,
   position: 'relative',
-  fontSize: iconSize,
+  fontSize: iSize,
   outline: 0,
-  paddingLeft: (buttonSize - iconSize) / 2,
-  paddingRight: (buttonSize - iconSize) / 2,
+  paddingLeft: (bSize - iSize) / 2,
+  paddingRight: (bSize - iSize) / 2,
   boxShadow: '0 8px 13px rgba(0, 0, 0, 0.2)',
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
@@ -110,15 +111,19 @@ const icon = css({
  * Icon style that is applied only to the spinner icon.
  */
 const spinnerIcon = css({
-  left: variables.loadingIndicator.size - iconSize,
-  transform: 'translate3d(0, -50%, 0)',
+  left: '50%',
+  top: '50%',
+  marginTop: -(variables.loadingIndicator.size) / 2,
+  marginLeft: -(variables.loadingIndicator.size) / 2,
 }).toString();
 
 export default {
   buttonWrapper,
   buttonReady,
   buttonSuccess,
+  buttonSize,
   icon,
+  iconSize,
   spinnerIcon,
   springFromBottom,
   springFromTop,

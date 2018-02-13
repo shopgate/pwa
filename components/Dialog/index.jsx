@@ -9,9 +9,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
-import { DIALOG_TEXT_MESSAGE } from './constants';
+import {
+  DIALOG_TEXT_MESSAGE,
+  MODAL_VARIANT_SELECT,
+} from './constants';
 import PipelineErrorDialog from './components/PipelineErrorDialog';
 import TextMessageDialog from './components/TextMessageDialog';
 import BasicDialog from './components/BasicDialog';

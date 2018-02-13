@@ -18,7 +18,7 @@ import connect from './connector';
  */
 const handleAddToCart = ({ productId, addToCart, showVariantModal, isBaseProduct }) => {
   if (isBaseProduct(productId)) {
-    showVariantModal();
+    showVariantModal(productId);
     return;
   }
 
@@ -60,6 +60,7 @@ CTAButtons.propTypes = {
   isBaseProduct: PropTypes.func,
   onRippleComplete: PropTypes.func,
   removeThrottle: PropTypes.number,
+  showVariantModal: PropTypes.func,
 };
 
 CTAButtons.defaultProps = {
@@ -68,6 +69,7 @@ CTAButtons.defaultProps = {
   isBaseProduct: null,
   onRippleComplete: () => {},
   removeThrottle: null,
+  showVariantModal: () => {},
 };
 
 export default connect(CTAButtons);

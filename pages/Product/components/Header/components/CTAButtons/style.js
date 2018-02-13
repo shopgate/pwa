@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const buttonSize = 56;
+const cartButtonSize = 56;
 const iconSize = 24;
 
 const buttons = css({
@@ -26,21 +26,14 @@ const favButton = css({
   fontSize: iconSize,
 }).toString();
 
-const cartButton = css({
-  fontSize: iconSize,
-  paddingLeft: (buttonSize - iconSize) / 2,
-  paddingRight: (buttonSize - iconSize) / 2,
-  width: buttonSize,
-  height: buttonSize,
-}).toString();
-
 const ripple = css({
   padding: 8,
 }).toString();
 
 export default {
   buttons,
-  cartButton,
+  cartButtonSize,
   favButton,
+  iconSize,
   ripple,
 };
