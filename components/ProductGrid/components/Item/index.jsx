@@ -62,7 +62,15 @@ const Item = ({ product, display }) => (
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.unitPriceStriked > 0 && (
+            {product.price.msrp > 0 && (
+              <Grid.Item>
+                <PriceStriked
+                  value={product.price.msrp}
+                  currency={product.price.currency}
+                />
+              </Grid.Item>
+            )}
+            {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
               <Grid.Item>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
