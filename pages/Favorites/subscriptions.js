@@ -34,7 +34,7 @@ export default function favorites(subscribe) {
         action: 'common.undo',
         actionOnClick: addFavorites(action.productId, true),
         message: 'favorites.removed',
-        duration: 600000,
+        duration: 6000,
       }));
     }, 300);
   });
