@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import ProductImage from 'Components/ProductImage';
 import Properties from 'Components/ProductProperties';
 import QuantityPicker from './components/QuantityPicker';
@@ -40,16 +41,23 @@ const Layout = props => (
         value={props.product.name}
       />
       <Grid className={styles.info}>
-        <Grid.Item>
+        <Grid.Item grow={1}>
           <Properties properties={props.product.properties} />
         </Grid.Item>
-        <Grid.Item shrink={0}>
+        <Grid.Item grow={1} shrink={0}>
           <ProductPrice
             currency={props.currency}
             defaultPrice={props.product.price.default}
             specialPrice={props.product.price.special}
           />
         </Grid.Item>
+        {showTaxDisclaimer && (
+          <Grid.Item
+            className={styles.disclaimerSpacer}
+            grow={0}
+            shrink={0}
+          />
+        )}
       </Grid>
     </Grid.Item>
   </Grid>

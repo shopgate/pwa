@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import PlaceholderLabel from 'Components/PlaceholderLabel';
@@ -19,26 +19,29 @@ import styles from './style';
  * @return {JSX}
  */
 const PriceStriked = ({ price }) => (
-  <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
-    <div>
-      {(price && price.msrp > 0) && (
-        <I18n.Text string="price.msrp" className={styles.msrp} />
-      )}
-      {(price && price.msrp > 0) && (
+  <PlaceholderLabel
+    className={styles.placeholder}
+    ready={(price !== null)}
+  >
+    {(price && price.msrp > 0 && price.unitPrice !== price.msrp) && (
+      <Fragment>
+        <I18n.Text
+          string="price.msrp"
+          className={styles.msrp}
+        />
         <StrikePrice
           className={styles.msrpStriked}
           value={price.msrp}
           currency={price.currency}
         />
-      )}
-      {(price && !price.msrp && price.unitPriceStriked > 0) && (
-        <StrikePrice
-          className={styles.msrpStriked}
-          value={price.unitPriceStriked}
-          currency={price.currency}
-        />
-      )}
-    </div>
+      </Fragment>
+    )}
+    {(price && !price.msrp && price.unitPriceStriked > 0) && (
+      <StrikePrice
+        value={price.unitPriceStriked}
+        currency={price.currency}
+      />
+    )}
   </PlaceholderLabel>
 );
 

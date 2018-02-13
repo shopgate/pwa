@@ -8,10 +8,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import styles, { discounted } from './style';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
+import styles from './style';
 
 /**
- * The price component
+ * The Price component
  * @param {Object} props The component props
  * @param {string} [props.className] CSS classes
  * @param {string} props.currency The currency of the price
@@ -21,8 +22,11 @@ import styles, { discounted } from './style';
  * @return {JSX}
  */
 const Price = (props) => {
-  let localStyles = styles;
-  localStyles += props.discounted ? ` ${discounted}` : '';
+  const containerClasses = [
+    styles.container,
+    props.className,
+    ...props.discounted && [styles.discounted],
+  ].join(' ');
 
   /**
    * A unitPriceMin > 0 means, that the product has child products with different prices.
@@ -30,14 +34,26 @@ const Price = (props) => {
    * displayed with a 'From' prefix.
    */
   return (
-    <div className={`${localStyles} ${props.className}`}>
+    <div className={containerClasses}>
       {props.unitPriceMin ? (
         <I18n.Text string="price.from">
-          <I18n.Price forKey="price" price={props.unitPriceMin} currency={props.currency} fractions={props.fractions} />
+          <I18n.Price
+            currency={props.currency}
+            fractions={props.fractions}
+            forKey="price"
+            price={props.unitPriceMin}
+          />
         </I18n.Text>
       ) : (
-        <I18n.Price price={props.unitPrice} currency={props.currency} fractions={props.fractions} />
+        <I18n.Price
+          currency={props.currency}
+          fractions={props.fractions}
+          price={props.unitPrice}
+        />
       )}
+      {props.taxDisclaimer && showTaxDisclaimer ? (
+        <div className={styles.disclaimer}>*</div>
+      ) : null}
     </div>
   );
 };
@@ -48,6 +64,7 @@ Price.propTypes = {
   className: PropTypes.string,
   discounted: PropTypes.bool,
   fractions: PropTypes.bool,
+  taxDisclaimer: PropTypes.bool,
   unitPriceMin: PropTypes.number,
 };
 
@@ -56,6 +73,7 @@ Price.defaultProps = {
   unitPriceMin: 0,
   discounted: false,
   fractions: true,
+  taxDisclaimer: false,
 };
 
 Price.contextTypes = {
