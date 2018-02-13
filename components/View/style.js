@@ -25,9 +25,15 @@ const container = css({
  * @param {boolean} hasTabBar Whether to add the bottom offset when the tab bar is visible.
  * @param {boolean} isFullscreen Whether remove all offsets,
  *                  so that it's really fullscreen (including the notch).
+ * @param {number} keyboardHeight The space that is taken by the keyboard.
  * @return {string} The content style class.
  */
-const content = (hasNavigator = true, hasTabBar = true, isFullscreen = false) => {
+const content = (
+  hasNavigator = true,
+  hasTabBar = true,
+  isFullscreen = false,
+  keyboardHeight = 0
+) => {
   const navHeight = hasNavigator ? variables.navigator.height : 0;
   const navAndStatusBarHeight = [
     `${navHeight + variables.statusBar.height}px`,
@@ -35,9 +41,9 @@ const content = (hasNavigator = true, hasTabBar = true, isFullscreen = false) =>
   ];
 
   const marginBottom = hasTabBar ? [
-    `${variables.tabBar.height}px`,
-    `calc(${variables.tabBar.height}px + var(--safe-area-inset-bottom))`,
-  ] : 0;
+    `${variables.tabBar.height + keyboardHeight}px`,
+    `calc(${variables.tabBar.height + keyboardHeight}px + var(--safe-area-inset-bottom))`,
+  ] : keyboardHeight;
 
   return css({
     overflow: 'auto',
