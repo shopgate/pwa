@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -49,8 +49,16 @@ const Item = (props) => {
     }
   );
 
+  const labelClassName =
+          props.withIndicator && !props.count ? styles.labelWithIndicator : styles.label;
+
   return (
-    <div className={className} onClick={() => handleClick(props)} aria-hidden>
+    <div
+      aria-hidden
+      className={className}
+      data-test-id="NavDrawerLink"
+      onClick={() => handleClick(props)}
+    >
       <Ripple fill>
         <Grid className={styles.grid}>
           <Grid.Item>
@@ -64,7 +72,7 @@ const Item = (props) => {
             </div>
           </Grid.Item>
           <Grid.Item grow={1}>
-            <div className={styles.label}>
+            <div className={labelClassName}>
               {props.children}
             </div>
           </Grid.Item>
@@ -92,6 +100,7 @@ Item.propTypes = {
   icon: PropTypes.func,
   onClick: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   primary: PropTypes.bool,
+  withIndicator: PropTypes.bool,
 };
 
 Item.defaultProps = {
@@ -102,6 +111,7 @@ Item.defaultProps = {
   icon: null,
   onClick: () => {},
   primary: false,
+  withIndicator: false,
 };
 
 export default Item;

@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 
 const container = css({
-  backgroundColor: colors.shade8,
   fontSize: 14,
+  marginTop: 8,
   padding: '13px 16px 16px',
+  userSelect: 'all',
 }).toString();
 
 const title = css({

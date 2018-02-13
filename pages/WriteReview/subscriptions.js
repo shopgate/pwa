@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -22,7 +22,7 @@ import {
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
-import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 
@@ -66,12 +66,7 @@ export default function writeReview(subscribe) {
    */
   subscribe(successReviewSubmit$, ({ dispatch }) => {
     dispatch(goBackHistory());
-    dispatch(showModal({
-      confirm: 'modal.ok',
-      dismiss: null,
-      message: 'reviews.modal_message',
-      title: 'reviews.modal_title',
-    }));
+    dispatch(createToast({ message: 'reviews.success_message' }));
   });
   /**
    * When user is logged out reviews relation should be removed.

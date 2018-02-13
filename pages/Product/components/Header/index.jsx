@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,7 +7,8 @@
 
 import React from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import AddToCartButton from './components/AddToCartButton';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
+import CTAButtons from './components/CTAButtons';
 import Rating from './components/Rating';
 import Name from './components/Name';
 import Manufacturer from './components/Manufacturer';
@@ -16,6 +17,7 @@ import Shipping from './components/Shipping';
 import Availability from './components/Availability';
 import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
+import Tiers from './components/Tiers';
 import styles from './style';
 
 /**
@@ -24,13 +26,14 @@ import styles from './style';
  * - shipping
  * - discount
  * - price
+ * - tier prices
  * - price info
  * If not available or animating it will display placeholders
  * @returns {JSX}
  */
 const ProductHeader = () => (
   <div className={styles.content}>
-    <AddToCartButton />
+    <CTAButtons />
     <Rating />
     <Name />
     <Grid component="div">
@@ -50,12 +53,23 @@ const ProductHeader = () => (
           <PriceStriked />
         </div>
         <div className={styles.priceInfo}>
-          <Price />
+          <Price className={styles.price} />
         </div>
         <div className={styles.priceInfo}>
           <PriceInfo />
         </div>
+        <div className={styles.priceInfo}>
+          <Tiers />
+        </div>
       </Grid.Item>
+      {showTaxDisclaimer && (
+        <Grid.Item
+          className={styles.disclaimerSpacer}
+          component="div"
+          grow={0}
+          shrink={0}
+        />
+      )}
     </Grid>
   </div>
 );

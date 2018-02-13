@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Favorites> page Empty page should render an empty page 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Favorites)>
+    <Favorites
+      dispatch={[Function]}
+      initialLoading={false}
+      products={Array []}
+    >
+      <MockedView
+        title="titles.favorites"
+      >
+        <div>
+          <EmptyFavorites
+            products={Array []}
+          >
+            <div
+              className="css-4wo01b"
+            >
+              <div
+                className="css-xsezhq"
+              >
+                <emptyFavoritesIcon>
+                  <svg
+                    className="css-11342l"
+                    viewBox="0 0 241 241"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <filter
+                        filterUnits="userSpaceOnUse"
+                        id="shadow"
+                      >
+                        <feOffset
+                          dy="3"
+                        />
+                        <feGaussianBlur
+                          result="b"
+                          stdDeviation="3"
+                        />
+                        <feFlood
+                          floodOpacity="0.169"
+                        />
+                        <feComposite
+                          in2="b"
+                          operator="in"
+                        />
+                        <feComposite
+                          in="SourceGraphic"
+                        />
+                      </filter>
+                    </defs>
+                    <circle
+                      className="css-4gyzyg"
+                      cx="120.5"
+                      cy="120.5"
+                      r="120.5"
+                    />
+                    <circle
+                      className="css-asq78u"
+                      cx="120.5"
+                      cy="120.5"
+                      r="113.5"
+                    />
+                    <circle
+                      className="css-w5cm2k"
+                      cx="121"
+                      cy="121"
+                      r="104"
+                    />
+                    <g
+                      className="css-w0icaa"
+                    >
+                      <path
+                        className="css-sipmf3"
+                        d="M121.002 187.377s-91.218-57.064-52.369-98.475c15.937-16.934 35.292-8.682 45.396-2.277l-3.559 25.473 11.384 5.834-8.821 21.915 7.537 5.973-.854 16.223 6.119-19.5-4.122-4.123 13.234-23.48-9.392-9.25 14.373-24.9c9.961-3.273 22.484-3.415 33.442 8.111 38.849 41.412-52.368 98.476-52.368 98.476z"
+                      />
+                    </g>
+                  </svg>
+                </emptyFavoritesIcon>
+                <Translate
+                  className="css-122dv8l"
+                  params={Object {}}
+                  string="favorites.empty"
+                >
+                  <span
+                    className="css-122dv8l"
+                  >
+                    favorites.empty
+                  </span>
+                </Translate>
+              </div>
+              <Connect(SGConnect)>
+                <SGConnect
+                  goBackHistory={[Function]}
+                  routedConnectPathname=""
+                >
+                  <ContinueButton
+                    goBackHistory={[Function]}
+                    routedConnectPathname=""
+                  >
+                    <RippleButton
+                      className="css-63oe3q"
+                      disabled={false}
+                      flat={false}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      type="secondary"
+                      wrapContent={true}
+                    >
+                      <Button
+                        className="css-63oe3q"
+                        disabled={false}
+                        flat={false}
+                        onClick={[Function]}
+                        type="secondary"
+                        wrapContent={false}
+                      >
+                        <Button
+                          className="css-5xfjjh css-63oe3q"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <button
+                            className="css-5xfjjh css-63oe3q css-1rn65c0"
+                            data-test-id="Button"
+                            disabled={false}
+                            onClick={[Function]}
+                          >
+                            <Ripple
+                              className="css-8s1fw2 "
+                              color="#000"
+                              disabled={false}
+                              fill={true}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-8s1fw2 "
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <Translate
+                                  className=""
+                                  params={Object {}}
+                                  string="favorites.continue"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    favorites.continue
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Ripple>
+                          </button>
+                        </Button>
+                      </Button>
+                    </RippleButton>
+                  </ContinueButton>
+                </SGConnect>
+              </Connect(SGConnect)>
+            </div>
+          </EmptyFavorites>
+          <FavoritesList
+            products={Array []}
+          />
+        </div>
+      </MockedView>
+    </Favorites>
+  </Connect(Favorites)>
+</Provider>
+`;
+
+exports[`<Favorites> page Initial page should render an initial page with loading indicator 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Favorites)>
+    <Favorites
+      dispatch={[Function]}
+      initialLoading={true}
+      products={Array []}
+    >
+      <MockedView
+        title="titles.favorites"
+      >
+        <div>
+          <LoadingIndicator>
+            <div
+              className="css-1aid7je"
+            >
+              <IndicatorCircle
+                color="#5ccee3"
+                size={32}
+                strokeWidth={3}
+              >
+                <svg
+                  className="css-17zev8s"
+                  height={32}
+                  viewBox="25 25 50 50"
+                  width={32}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    className="css-o43ryf"
+                    cx="50"
+                    cy="50"
+                    r="20"
+                  />
+                </svg>
+              </IndicatorCircle>
+            </div>
+          </LoadingIndicator>
+        </div>
+      </MockedView>
+    </Favorites>
+  </Connect(Favorites)>
+</Provider>
+`;

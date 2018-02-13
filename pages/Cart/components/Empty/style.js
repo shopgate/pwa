@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -27,17 +27,17 @@ const container = css({
 }).toString();
 
 const icon = css({
-  width: 216,
+  width: variables.emptyPage.icon,
 }).toString();
 
 const title = css({
   textAlign: 'center',
-  paddingTop: variables.gap.big * 2.25,
+  paddingTop: variables.emptyPage.titleTopGap,
 }).toString();
 
 const buttonContainer = css({
   flexGrow: '0',
-  padding: `${variables.gap.big * 1.5}px ${variables.gap.big}px`,
+  padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
 }).toString();
 
 const button = css({

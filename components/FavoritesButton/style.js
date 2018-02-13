@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -9,16 +9,17 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const button = css({
+  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   display: 'block',
   position: 'relative',
   background: '#fff',
   borderRadius: '50%',
   padding: 0,
-  fontSize: 28,
+  fontSize: 20,
   lineHeight: 1,
   color: colors.accent,
   outline: 0,
-  zIndex: 1,
+  zIndex: 15, // Should overlap the gallery bullets
 }).toString();
 
 const ripple = css({

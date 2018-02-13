@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,6 +7,7 @@
 
 import { connect } from 'react-redux';
 import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { hasFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import logout from '@shopgate/pwa-common/actions/user/logout';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import toggleNavDrawer from 'Components/Navigator/actions/toggleNavDrawer';
@@ -23,6 +24,7 @@ const mapStateToProps = state => ({
   entries: {
     quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
   },
+  highlightFavorites: hasFavorites(state),
   navDrawerActive: state.navigator.navDrawerActive,
   user: isUserLoggedIn(state) ? state.user.data : null,
 });

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -60,8 +60,8 @@ class Filter extends Component {
 
     switch (filter.type) {
       case FILTER_TYPE_RANGE: {
-        const filterMin = Math.round(filter.minimum / 100);
-        const filterMax = Math.round(filter.maximum / 100);
+        const filterMin = Math.floor(filter.minimum / 100);
+        const filterMax = Math.ceil(filter.maximum / 100);
 
         return {
           ...filter,
@@ -69,8 +69,8 @@ class Filter extends Component {
             ? [temporaryFilter.minimum, temporaryFilter.maximum]
             : [filter.minimum, filter.maximum],
           handleChange: debounce((minimum, maximum) => {
-            const roundedInputMin = Math.round(minimum / 100);
-            const roundedInputMax = Math.round(maximum / 100);
+            const roundedInputMin = Math.floor(minimum / 100);
+            const roundedInputMax = Math.ceil(maximum / 100);
 
             // Check if there is a change. If not we can remove the filter again
             if (roundedInputMin <= filterMin && roundedInputMax >= filterMax) {

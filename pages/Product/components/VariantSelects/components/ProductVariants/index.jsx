@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-/* eslint-disable react/no-unused-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import find from 'lodash/find';
 import StepByStep from './helpers/StepByStep';
 
 export default WrappedComponent => class extends Component {
@@ -17,6 +17,8 @@ export default WrappedComponent => class extends Component {
    * @type {Object}
    */
   static propTypes = {
+    getVariantsByProductId: PropTypes.func.isRequired,
+    currentBaseProductId: PropTypes.string,
     getProductData: PropTypes.func,
     selection: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -35,6 +37,7 @@ export default WrappedComponent => class extends Component {
         }),
       })).isRequired,
     })),
+    setProductVariantId: PropTypes.func,
     variants: PropTypes.shape({
       products: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -51,12 +54,13 @@ export default WrappedComponent => class extends Component {
       })).isRequired,
     }),
   };
-  /* eslint-enable react/no-unused-prop-types */
 
   static defaultProps = {
     selection: null,
     variants: null,
     getProductData: () => {},
+    setProductVariantId: () => {},
+    currentBaseProductId: null,
   };
 
   /**
@@ -106,7 +110,7 @@ export default WrappedComponent => class extends Component {
    * @param {Object} [props] The props from which to update
    */
   updateFromProps(props = this.props) {
-    const { variants } = props;
+    const { variants, currentBaseProductId } = props;
 
     if (!this.selectHelper && variants) {
       /**
@@ -117,8 +121,32 @@ export default WrappedComponent => class extends Component {
       this.selectHelper = new StepByStep(variants).init();
 
       // Trigger the component state update
-
       this.updateSelectionState();
+    } else {
+      /**
+       * Re-init for DOM cached pages.
+       * We need this to sync the redux state with the component state again.
+       */
+      const productIdChangedFromNull = (
+        this.props.currentBaseProductId === null && currentBaseProductId !== null
+      );
+
+      // If the productId was null, we know that we have to set the variantId in redux again.
+      if (this.selectHelper && productIdChangedFromNull) {
+        const variantId = this.productId;
+
+        if (variantId) {
+          const {
+            variants: baseProductVariants = {},
+          } = this.props.getVariantsByProductId(currentBaseProductId) || {};
+
+          // Check if the variantId we want to set belongs to the currentProduct
+          if (find(baseProductVariants.products, { id: variantId })) {
+            // Trigger a setProductVariantId to bring the redux store back to the correct state.
+            this.props.setProductVariantId(variantId);
+          }
+        }
+      }
     }
   }
 

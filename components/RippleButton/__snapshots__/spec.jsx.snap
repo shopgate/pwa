@@ -26,6 +26,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     >
       <button
         className="css-5rbc6o  css-1rn65c0"
+        data-test-id="Button"
         disabled={true}
         onClick={null}
       >
@@ -66,19 +67,23 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     >
       <button
         className="css-1y1e1q7  css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="css-8s1fw2 "
           color="#000"
+          disabled={false}
           fill={true}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
           <div
             aria-hidden={true}
             className="css-8s1fw2 "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >
@@ -103,7 +108,9 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
   <Ripple
     className="css-8s1fw2 "
     color="#000"
+    disabled={false}
     fill={true}
+    onComplete={[Function]}
     overflow={false}
     size={null}
   >
@@ -138,19 +145,23 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
     >
       <button
         className="css-6bfwc1  css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="css-8s1fw2 "
           color="#000"
+          disabled={false}
           fill={true}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
           <div
             aria-hidden={true}
             className="css-8s1fw2 "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >
@@ -189,19 +200,23 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     >
       <button
         className="css-5xfjjh  css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="css-8s1fw2 "
           color="#000"
+          disabled={false}
           fill={true}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
           <div
             aria-hidden={true}
             className="css-8s1fw2 "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >

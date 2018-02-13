@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TaxDisclaimer /> should display null 1`] = `""`;
+
+exports[`<TaxDisclaimer /> should display the component 1`] = `
+<Translate
+  className="css-7m8ga2"
+  params={Object {}}
+  string="product.tax_disclaimer"
+/>
+`;

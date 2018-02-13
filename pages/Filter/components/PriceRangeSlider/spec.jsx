@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -23,11 +23,10 @@ describe('<PriceRangeSlider />', () => {
    * @param {Object} props The component props.
    * @return {Object} The mounted component.
    */
-  const renderComponent = (props = {}) => mount(
+  const renderComponent = (props = {}) => mount((
     <I18n.Provider lang={langCode} locales={testLocales}>
       <PriceRangeSlider {...props} />
-    </I18n.Provider>
-  );
+    </I18n.Provider>));
 
   it('should render a range slider and two prices with default values', () => {
     const wrapper = renderComponent();
@@ -61,7 +60,7 @@ describe('<PriceRangeSlider />', () => {
 
     let index = 0;
     wrapper.find('FormatPrice').forEach((node) => {
-      expect(node.prop('price')).toBe(index === 0 ? min / 100 : max / 100);
+      expect(node.prop('price')).toBe(index === 0 ? Math.floor(min / 100) : Math.ceil(max / 100));
       index += 1;
     });
   });

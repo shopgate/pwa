@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -22,10 +22,11 @@ const Price = ({ price }) => (
     {(price && price.unitPrice) && (
       <PriceBase
         className={styles.price}
+        currency={price.currency}
+        discounted={!!price.discount}
+        taxDisclaimer
         unitPrice={price.totalPrice}
         unitPriceMin={price.unitPriceMin}
-        discounted={!!price.discount}
-        currency={price.currency}
       />
     )}
   </PlaceholderLabel>

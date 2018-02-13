@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -13,6 +13,7 @@ import commonMenu from '@shopgate/pwa-common/subscriptions/menu';
 // PWA Common Commerce
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
+import commerceFavorites from '@shopgate/pwa-common-commerce/favorites/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
@@ -29,6 +30,7 @@ import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkP
 import navigator from 'Components/Navigator/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
+import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import product from 'Pages/Product/subscriptions';
@@ -37,6 +39,8 @@ import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+// Extensions
+import extensions from 'Extensions/subscribers';
 // App
 import app from './subscriptions';
 
@@ -51,6 +55,7 @@ const subscriptions = [
   // Common Commerce subscribers.
   commerceCart,
   commerceCategory,
+  commerceFavorites,
   commerceFilter,
   commerceProduct,
   commerceSearch,
@@ -67,6 +72,7 @@ const subscriptions = [
   navigator,
   category,
   coupon,
+  favorites,
   filter,
   filterbar,
   login,
@@ -74,6 +80,8 @@ const subscriptions = [
   search,
   reviews,
   writeReview,
+  // Extensions
+  ...extensions,
 ];
 
 if (appConfig.webCheckoutShopify !== null) {

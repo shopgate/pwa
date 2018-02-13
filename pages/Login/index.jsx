@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -97,7 +97,7 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <section className={styles.container}>
+        <section className={styles.container} data-test-id="LoginPage">
           <div className={styles.headline}>
             <I18n.Text string="login.headline" />
           </div>
@@ -126,7 +126,7 @@ class Login extends Component {
             <div className={styles.forgotWrapper}>
               <ForgotPassword />
             </div>
-            <div className={styles.buttonWrapper}>
+            <div className={styles.buttonWrapper} data-test-id="LoginButton">
               <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
                 <I18n.Text string="login.button" />
               </RippleButton>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -53,8 +53,11 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
+  ':first-child': {
+    marginTop: variables.gap.big / 2,
+  },
   ':last-child': {
-    marginBottom: variables.gap.big,
+    marginBottom: variables.gap.big / 2,
   },
 }).toString();
 

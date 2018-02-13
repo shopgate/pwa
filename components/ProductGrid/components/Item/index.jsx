@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,13 +7,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasReviews } from 'Config/app.json';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { PRODUCT_ITEM_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/portals';
 import ProductImage from 'Components/ProductImage';
-import RatingStars from 'Components/RatingStars';
 import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
@@ -42,11 +42,7 @@ const Item = ({ product, display }) => (
     }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        {(hasReviews && product.rating && product.rating.count > 0) &&
-          <div>
-            {(!display || display.reviews) && <RatingStars value={product.rating.average} />}
-          </div>
-        }
+        <Portal name={PRODUCT_ITEM_NAME_BEFORE} id={product.id} />
         {(!display || display.name) && (
           <div className={styles.title} itemProp="name">
             <Ellipsis>{product.name}</Ellipsis>

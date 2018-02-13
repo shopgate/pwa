@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -8,11 +8,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import ProductImage from 'Components/ProductImage';
+import Properties from 'Components/ProductProperties';
 import QuantityPicker from './components/QuantityPicker';
 import Title from './components/Title';
 import ProductPrice from './components/ProductPrice';
-import Properties from './components/Properties';
 import styles from './style';
 
 /**
@@ -40,12 +41,23 @@ const Layout = props => (
         value={props.product.name}
       />
       <Grid className={styles.info}>
-        <Properties properties={props.product.properties} />
-        <ProductPrice
-          currency={props.currency}
-          defaultPrice={props.product.price.default}
-          specialPrice={props.product.price.special}
-        />
+        <Grid.Item grow={1}>
+          <Properties properties={props.product.properties} />
+        </Grid.Item>
+        <Grid.Item grow={1} shrink={0}>
+          <ProductPrice
+            currency={props.currency}
+            defaultPrice={props.product.price.default}
+            specialPrice={props.product.price.special}
+          />
+        </Grid.Item>
+        {showTaxDisclaimer && (
+          <Grid.Item
+            className={styles.disclaimerSpacer}
+            grow={0}
+            shrink={0}
+          />
+        )}
       </Grid>
     </Grid.Item>
   </Grid>

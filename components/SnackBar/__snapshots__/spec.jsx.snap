@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SnackBar /> should render component without action 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <SnackBar>
+    <Connect(Toast)
+      actionButton={[Function]}
+      className="css-1nw5ecr"
+      container={[Function]}
+      message={[Function]}
+    >
+      <Toast
+        actionButton={[Function]}
+        className="css-1nw5ecr"
+        container={[Function]}
+        dispatchAction={[Function]}
+        message={[Function]}
+        onClose={[Function]}
+        removeToast={[Function]}
+        toast={
+          Object {
+            "duration": 6000,
+            "id": 1,
+            "message": "Lorem ipsum dolor sit amet.",
+          }
+        }
+      >
+        <div
+          aria-live="polite"
+          aria-relevant="additions"
+        >
+          <Drawer
+            alwaysActive={false}
+            animation={
+              Object {
+                "duration": null,
+                "in": "",
+                "out": "",
+              }
+            }
+            className="css-1nw5ecr"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
+          >
+            <div
+              className="css-1nw5ecr css-1rg7udn css-1dwe0qx"
+              onAnimationEnd={[Function]}
+              style={Object {}}
+            >
+              <Container>
+                <div
+                  className="css-q9taby"
+                >
+                  <Message
+                    text="Lorem ipsum dolor sit amet."
+                  >
+                    <p
+                      className="css-pnkcbw"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="Lorem ipsum dolor sit amet."
+                      >
+                        <span
+                          className=""
+                        >
+                          Lorem ipsum dolor sit amet.
+                        </span>
+                      </Translate>
+                    </p>
+                  </Message>
+                </div>
+              </Container>
+            </div>
+          </Drawer>
+        </div>
+      </Toast>
+    </Connect(Toast)>
+  </SnackBar>
+</Provider>
+`;
+
+exports[`<SnackBar /> shuld render component with action button 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <SnackBar>
+    <Connect(Toast)
+      actionButton={[Function]}
+      className="css-1nw5ecr"
+      container={[Function]}
+      message={[Function]}
+    >
+      <Toast
+        actionButton={[Function]}
+        className="css-1nw5ecr"
+        container={[Function]}
+        dispatchAction={[Function]}
+        message={[Function]}
+        onClose={[Function]}
+        removeToast={[Function]}
+        toast={
+          Object {
+            "action": "click me",
+            "duration": 6000,
+            "id": 1,
+            "message": "Lorem ipsum dolor sit amet.",
+          }
+        }
+      >
+        <div
+          aria-live="polite"
+          aria-relevant="additions"
+        >
+          <Drawer
+            alwaysActive={false}
+            animation={
+              Object {
+                "duration": null,
+                "in": "",
+                "out": "",
+              }
+            }
+            className="css-1nw5ecr"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
+          >
+            <div
+              className="css-1nw5ecr css-1rg7udn css-1dwe0qx"
+              onAnimationEnd={[Function]}
+              style={Object {}}
+            >
+              <Container>
+                <div
+                  className="css-q9taby"
+                >
+                  <Message
+                    text="Lorem ipsum dolor sit amet."
+                  >
+                    <p
+                      className="css-pnkcbw"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="Lorem ipsum dolor sit amet."
+                      >
+                        <span
+                          className=""
+                        >
+                          Lorem ipsum dolor sit amet.
+                        </span>
+                      </Translate>
+                    </p>
+                  </Message>
+                  <ActionButton
+                    onClick={[Function]}
+                    text="click me"
+                  >
+                    <button
+                      className="css-1tbknzy"
+                      onClick={[Function]}
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="click me"
+                      >
+                        <span
+                          className=""
+                        >
+                          click me
+                        </span>
+                      </Translate>
+                    </button>
+                  </ActionButton>
+                </div>
+              </Container>
+            </div>
+          </Drawer>
+        </div>
+      </Toast>
+    </Connect(Toast)>
+  </SnackBar>
+</Provider>
+`;
