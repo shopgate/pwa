@@ -23,3 +23,4 @@ export const RECEIVE_REMOVE_FAVORITES = 'RECEIVE_REMOVE_FAVORITES';
 export const ERROR_REMOVE_FAVORITES = 'ERROR_REMOVE_FAVORITES';
 
 export const FAVORITES_LIFETIME = 3600000; // 1 hour
+export const FETCH_FAVORITES_THROTTLE = (process.env && process.env === 'test') ? 0 : 5000;

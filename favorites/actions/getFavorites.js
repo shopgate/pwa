@@ -17,33 +17,50 @@ import {
   requestFavorites,
   errorFetchFavorites,
 } from '../action-creators';
+import { FETCH_FAVORITES_THROTTLE } from '../constants';
 
 let getFavoritesThrottle = null;
+
+/**
+ * Dispatches request and returns promise.
+ * Handy for unit tests where throttle is always 0.
+ * @param {function} dispatch Dispatch.
+ * @returns {Promise}
+ */
+const dispatchRequest = (dispatch) => {
+  dispatch(requestFavorites());
+  const promise = new PipelineRequest('getFavorites')
+    .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
+    .dispatch();
+  promise
+    .then((result) => {
+      dispatch(receiveFavorites(result.products));
+    })
+    .catch((err) => {
+      console.error(err);
+      dispatch(errorFetchFavorites(err));
+    });
+  return promise;
+};
+/* eslint-disable consistent-return */
 /**
  * Get favorites action.
  * @param {boolean} ignoreCache Ignores cache when true
- * @returns {undefined}
+ * @returns {Promise|undefined}
+ *
  */
 const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   const data = getState().favorites.products;
   if (!ignoreCache && !shouldFetchData(data)) {
-    return;
+    return new Promise(res => res());
   }
-  const delay = ignoreCache ? 5000 : 0;
+  const delay = ignoreCache ? FETCH_FAVORITES_THROTTLE : 0;
+  if (delay === 0) {
+    return dispatchRequest(dispatch);
+  }
   clearTimeout(getFavoritesThrottle);
-  getFavoritesThrottle = setTimeout(() => {
-    dispatch(requestFavorites());
-    new PipelineRequest('getFavorites')
-      .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
-      .dispatch()
-      .then((result) => {
-        dispatch(receiveFavorites(result.products));
-      })
-      .catch((err) => {
-        console.error(err);
-        dispatch(errorFetchFavorites(err));
-      });
-  }, delay);
+  getFavoritesThrottle = setTimeout(() => dispatchRequest(dispatch), delay);
 };
+/* eslint-enable consistent-return */
 
 export default getFavorites;
