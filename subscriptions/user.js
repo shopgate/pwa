@@ -10,9 +10,15 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import getUser from '../actions/user/getUser';
 import { successLogin } from '../action-creators/user';
 import { appDidStart$ } from '../streams/app';
-import { userWillLogin$, userLoginResponse$, userDidLogin$ } from '../streams/user';
+import {
+  userWillLogin$,
+  userLoginResponse$,
+  userDidLogin$,
+  userDidLogout$,
+} from '../streams/user';
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
+import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
 
 /**
@@ -35,6 +41,15 @@ export default function user(subscribe) {
 
   subscribe(userNeedsUpdate$, ({ dispatch }) => {
     dispatch(getUser());
+  });
+
+  subscribe(userDidLogout$, ({ dispatch }) => {
+    dispatch(showModal({
+      confirm: 'modal.ok',
+      dismiss: null,
+      message: 'login.logout_message',
+      title: null,
+    }));
   });
 
   subscribe(appDidStart$, ({ dispatch }) => {
