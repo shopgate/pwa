@@ -408,7 +408,7 @@ export const getProductMetadata = createSelector(
  * @param {string} productId A product id.
  * @return {boolean|null}
  */
-export const getIsBaseProduct = createSelector(
+export const isBaseProduct = createSelector(
   getProductById,
   (product) => {
     if (!product.productData || product.isFetching) {

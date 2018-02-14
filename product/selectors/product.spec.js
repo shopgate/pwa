@@ -7,7 +7,7 @@
 
 import {
   getProductProperties,
-  getIsBaseProduct,
+  isBaseProduct,
 } from './product';
 import {
   PROPERTIES_FILTER_BLACKLIST,
@@ -142,9 +142,9 @@ describe('Product selectors', () => {
       },
     };
     it('should indicate base product', () => {
-      expect(getIsBaseProduct(mockedBaseProductState, 'product_1')).toBe(true);
-      expect(getIsBaseProduct(mockedBaseProductState, 'product_2')).toBe(false);
-      expect(getIsBaseProduct(mockedBaseProductState, 'product_3')).toBe(null);
+      expect(isBaseProduct(mockedBaseProductState, 'product_1')).toBe(true);
+      expect(isBaseProduct(mockedBaseProductState, 'product_2')).toBe(false);
+      expect(isBaseProduct(mockedBaseProductState, 'product_3')).toBe(null);
     });
   });
 });
