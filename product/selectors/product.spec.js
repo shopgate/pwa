@@ -134,12 +134,17 @@ describe('Product selectors', () => {
               baseProductId: 'product_1',
             },
           },
+          product_3: {
+            isFetching: true,
+            productData: null,
+          },
         },
       },
     };
     it('should indicate base product', () => {
       expect(getIsBaseProduct(mockedBaseProductState, 'product_1')).toBe(true);
       expect(getIsBaseProduct(mockedBaseProductState, 'product_2')).toBe(false);
+      expect(getIsBaseProduct(mockedBaseProductState, 'product_3')).toBe(null);
     });
   });
 });
