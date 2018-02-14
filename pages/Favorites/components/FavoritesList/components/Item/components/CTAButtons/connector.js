@@ -6,7 +6,7 @@
  */
 import { connect } from 'react-redux';
 import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { getIsBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { MODAL_VARIANT_SELECT } from 'Components/Dialog/constants';
 
@@ -16,7 +16,7 @@ import { MODAL_VARIANT_SELECT } from 'Components/Dialog/constants';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isBaseProduct: productId => getIsBaseProduct(state, productId),
+  isBaseProduct: productId => isBaseProduct(state, productId),
 });
 
 /**

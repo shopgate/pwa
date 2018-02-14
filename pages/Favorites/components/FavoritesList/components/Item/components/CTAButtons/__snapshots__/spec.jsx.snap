@@ -26,7 +26,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       showVariantModal={[Function]}
     >
       <div
-        className="css-m7pxhh"
+        className="css-wbu9yb"
       >
         <Connect(FavoritesButton)
           active={null}
@@ -49,7 +49,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           />
         </Connect(FavoritesButton)>
         <MockedAddToCartButton
-          className="css-1qacto3"
+          className="css-ipacgg"
           handleAddToCart={[Function]}
           isLoading={false}
           isOrderable={false}
