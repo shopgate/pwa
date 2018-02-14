@@ -10,10 +10,14 @@ import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
-import { DIALOG_TEXT_MESSAGE } from './constants';
+import {
+  DIALOG_TEXT_MESSAGE,
+  MODAL_VARIANT_SELECT,
+} from './constants';
 import PipelineErrorDialog from './components/PipelineErrorDialog';
 import TextMessageDialog from './components/TextMessageDialog';
 import BasicDialog from './components/BasicDialog';
+import VariantSelectModal from './components/VariantSelectModal';
 
 /**
  * The main component for rendering dialogs.
@@ -62,6 +66,13 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
         <Modal>
           <Backdrop isVisible level={0} />
           <TextMessageDialog actions={actions} title={title} params={params} message={message} />
+        </Modal>
+      );
+    case MODAL_VARIANT_SELECT:
+      return (
+        <Modal>
+          <Backdrop isVisible level={0} />
+          <VariantSelectModal actions={actions} title={title} params={params} message={message} />
         </Modal>
       );
     default:
