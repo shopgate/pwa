@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VariantSelectModal /> should render the actions 1`] = `
+<BasicDialog
+  actions={
+    Array [
+      Object {
+        "action": [Function],
+        "label": "dismiss",
+      },
+      Object {
+        "action": [Function],
+        "label": "confirm",
+      },
+    ]
+  }
+  title="This is the title."
+>
+  <Translate
+    className=""
+    params={Object {}}
+    string="This is the message."
+  />
+</BasicDialog>
+`;
+
+exports[`<VariantSelectModal /> should render with minimal props 1`] = `
+<BasicDialog
+  actions={Array []}
+  title={null}
+>
+  <Translate
+    className=""
+    params={Object {}}
+    string="This is the message."
+  />
+</BasicDialog>
+`;

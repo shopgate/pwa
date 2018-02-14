@@ -9,6 +9,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import ProductCharacteristics from 'Components/ProductCharacteristics';
@@ -26,7 +27,7 @@ const ProductInfo = ({ product }) => (
     <div className={styles.name}>
       <Link
         tagName="a"
-        href={`/item/${bin2hex(product.baseProductId || product.id)}`}
+        href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
         itemProp="item"
         itemScope
         itemType="http://schema.org/Product"
