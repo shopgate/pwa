@@ -20,9 +20,7 @@ jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
 
 describe('<VariantSelectModal />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(
-      <VariantSelectModal message={message} actions={[]} />
-    );
+    const wrapper = shallow(<VariantSelectModal message={message} actions={[]} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.html()).toMatch(message);

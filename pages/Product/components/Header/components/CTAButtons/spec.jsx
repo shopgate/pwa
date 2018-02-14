@@ -45,11 +45,7 @@ describe('CTAs (product header)', () => {
     /* eslint-disable global-require */
     const CTAButtons = require('./index').default;
     /* eslint-enable global-require */
-    return mount(
-      <Provider store={store}>
-        <CTAButtons />
-      </Provider>
-    );
+    return mount(<Provider store={store}><CTAButtons /></Provider>);
   };
 
   describe('Rendering', () => {

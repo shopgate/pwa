@@ -53,6 +53,7 @@ const CTAButtons = props => (
   </div>
 );
 
+/* eslint-disable react/no-unused-prop-types */
 CTAButtons.propTypes = {
   productId: PropTypes.string.isRequired,
   active: PropTypes.bool,
@@ -71,5 +72,6 @@ CTAButtons.defaultProps = {
   removeThrottle: null,
   showVariantModal: () => {},
 };
+/* eslint-enable react/no-unused-prop-types */
 
 export default connect(CTAButtons);

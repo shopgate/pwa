@@ -32,13 +32,12 @@ describe('<Dialog />', () => {
       request: {},
     };
 
-    const wrapper = shallow(
-      <Dialog
-        modal={{
-          type: MODAL_PIPELINE_ERROR,
-          params,
-        }}
-      />);
+    const wrapper = shallow(<Dialog
+      modal={{
+        type: MODAL_PIPELINE_ERROR,
+        params,
+      }}
+    />);
 
     expect(wrapper).toMatchSnapshot();
 
