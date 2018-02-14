@@ -401,3 +401,20 @@ export const getProductMetadata = createSelector(
   getProductById,
   product => product.productData.metadata || null
 );
+
+/**
+ * Indicates whether a product is a base product or not
+ * @param {Object} state The current application state.
+ * @param {string} productId A product id.
+ * @return {boolean|null}
+ */
+export const isBaseProduct = createSelector(
+  getProductById,
+  (product) => {
+    if (!product.productData || product.isFetching) {
+      return null;
+    }
+
+    return !product.productData.baseProductId;
+  }
+);
