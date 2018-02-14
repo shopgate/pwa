@@ -129,6 +129,36 @@ describe('<FavoritesButton />', () => {
     expect(onRippleComplete).toHaveBeenCalled();
   });
 
+  it('should only react on first click', (done) => {
+    component = createComponent(mockedStateOnList, {
+      once: true,
+      productId: '1',
+      active: false,
+    });
+    component.find('button').simulate('click');
+    component.update();
+    component.find('button').simulate('click');
+    component.update();
+    setTimeout(() => {
+      expect(dispatcher.mock.calls.length).toBe(1);
+      done();
+    }, 1);
+  });
+  it('should only react on both clicks', (done) => {
+    component = createComponent(mockedStateOnList, {
+      productId: '1',
+      active: false,
+    });
+    component.find('button').simulate('click');
+    component.update();
+    component.find('button').simulate('click');
+    component.update();
+    setTimeout(() => {
+      expect(dispatcher.mock.calls.length).toBe(2);
+      done();
+    }, 1);
+  });
+
   it('should render null when feature flag is off', () => {
     mockedHasFavorites = false;
     component = createComponent(mockedStateOnList);

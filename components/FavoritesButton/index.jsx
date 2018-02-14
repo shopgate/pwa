@@ -23,6 +23,8 @@ class FavoritesButton extends Component {
     addFavorites: PropTypes.func,
     className: PropTypes.string,
     noShadow: PropTypes.bool,
+    // When true, button would react on click only once.
+    once: PropTypes.bool,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
     removeFavorites: PropTypes.func,
@@ -35,6 +37,7 @@ class FavoritesButton extends Component {
     addFavorites: () => {},
     className: '',
     noShadow: false,
+    once: false,
     onRippleComplete: () => {},
     productId: null,
     removeFavorites: () => {},
@@ -59,6 +62,7 @@ class FavoritesButton extends Component {
     this.state = {
       active: props.active,
     };
+    this.clickedOnce = false;
   }
 
   /**
@@ -95,6 +99,12 @@ class FavoritesButton extends Component {
   handleClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
+
+    if (this.props.once && this.clickedOnce) {
+      return;
+    }
+
+    this.clickedOnce = true;
 
     if (!this.props.productId) {
       return;
