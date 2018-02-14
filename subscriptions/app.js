@@ -36,14 +36,10 @@ export default function app(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ getState }) => {
-    // Disable WebView scrolling when native keyboard opens.
-    setScrollingEnabled({ enabled: false });
-
     // Register for custom events
     registerEvents([
       'showPreviousTab',
       'closeInAppBrowser',
-      'keyboardWillChange',
       // TODO The iOS apps don't emit the event to the webviews without registration till Lib 15.2.
       // This needs to be removed, when IOS-1886 is done and the the iOS apps are updated.
       'httpResponse',
