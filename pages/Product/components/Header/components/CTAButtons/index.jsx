@@ -8,34 +8,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritesButton from 'Components/FavoritesButton';
-import AddToCartButton from './components/AddToCartButton';
+import AddToCartButton from 'Components/AddToCartButton';
 import styles from './style';
 import connect from './connector';
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).
  *
- * @returns {XML}
+ * @param {Object} props Props.
+ * @returns {JSX}
  * @constructor
  */
-const CTAButtons = ({ isFavorite, productId }) => (
+const CTAButtons = props => (
   <div className={styles.buttons}>
     <FavoritesButton
-      active={isFavorite}
-      productId={productId}
+      active={props.isFavorite}
+      productId={props.productId}
       className={styles.favButton}
       rippleClassName={styles.ripple}
     />
-    <AddToCartButton />
+    <AddToCartButton
+      isLoading={props.isLoading}
+      isOrderable={props.isOrderable}
+      handleAddToCart={props.handleAddToCart}
+      buttonSize={styles.cartButtonSize}
+      iconSize={styles.iconSize}
+      className={styles.cartButton}
+    />
   </div>
 );
 
 CTAButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
+  handleAddToCart: PropTypes.func,
+  isLoading: PropTypes.bool,
+  isOrderable: PropTypes.bool,
   productId: PropTypes.string,
 };
 
 CTAButtons.defaultProps = {
+  handleAddToCart: () => {},
+  isLoading: null,
+  isOrderable: null,
   productId: null,
 };
 
