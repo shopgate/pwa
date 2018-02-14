@@ -2,16 +2,19 @@
 
 exports[`<AddToCartButton /> should render in loading state and should not be clickable 1`] = `
 <AddToCartButton
+  buttonSize={40}
+  className={null}
   handleAddToCart={[MockFunction]}
+  iconSize={20}
   isLoading={true}
   isOrderable={true}
 >
   <button
-    className="css-1xir2og css-16iirry"
+    className="null css-1egjidp css-16iirry"
     onClick={[Function]}
   >
     <div
-      className="css-1kdius0 css-t7a47w"
+      className="css-rukjns css-1gleer"
       style={
         Object {
           "opacity": 1,
@@ -40,7 +43,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       </IndicatorCircle>
     </div>
     <div
-      className="css-1kdius0"
+      className="css-rukjns"
       style={
         Object {
           "opacity": 0,
@@ -76,7 +79,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       </Tick>
     </div>
     <div
-      className="css-1kdius0"
+      className="css-rukjns"
       onAnimationEnd={[Function]}
       style={
         Object {
@@ -118,6 +121,8 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
 
 exports[`<AddToCartButton /> should render with cart icon and should be clickable 1`] = `
 <AddToCartButton
+  buttonSize={40}
+  className={null}
   handleAddToCart={
     [MockFunction] {
       "calls": Array [
@@ -125,15 +130,16 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       ],
     }
   }
+  iconSize={20}
   isLoading={false}
   isOrderable={true}
 >
   <button
-    className="css-1xir2og css-16iirry"
+    className="null css-1egjidp css-16iirry"
     onClick={[Function]}
   >
     <div
-      className="css-1kdius0 css-t7a47w"
+      className="css-rukjns css-1gleer"
       style={
         Object {
           "opacity": 0,
@@ -162,7 +168,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       </IndicatorCircle>
     </div>
     <div
-      className="css-1kdius0"
+      className="css-rukjns"
       style={
         Object {
           "opacity": 1,
@@ -198,7 +204,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       </Tick>
     </div>
     <div
-      className="css-1kdius0"
+      className="css-rukjns"
       onAnimationEnd={[Function]}
       style={
         Object {
@@ -240,6 +246,8 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
 
 exports[`<AddToCartButton /> should render with checkmark icon and should not be clickable the second time 1`] = `
 <AddToCartButton
+  buttonSize={40}
+  className={null}
   handleAddToCart={
     [MockFunction] {
       "calls": Array [
@@ -247,15 +255,16 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       ],
     }
   }
+  iconSize={20}
   isLoading={false}
   isOrderable={true}
 >
   <button
-    className="css-1xir2og css-oo1pf9"
+    className="null css-1egjidp css-oo1pf9"
     onClick={[Function]}
   >
     <div
-      className="css-1kdius0 css-t7a47w"
+      className="css-rukjns css-1gleer"
       style={
         Object {
           "opacity": 0,
@@ -284,7 +293,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       </IndicatorCircle>
     </div>
     <div
-      className="css-1kdius0 css-1tg5aiu"
+      className="css-rukjns css-1tg5aiu"
       style={
         Object {
           "opacity": 1,
@@ -320,7 +329,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       </Tick>
     </div>
     <div
-      className="css-1kdius0 css-1kfuvpr"
+      className="css-rukjns css-1kfuvpr"
       onAnimationEnd={[Function]}
       style={
         Object {

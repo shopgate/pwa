@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
+<Modal>
+  <Backdrop
+    color="#000"
+    duration={200}
+    isVisible={true}
+    level={0}
+    onClick={[Function]}
+    opacity={50}
+  />
+  <BasicDialog
+    actions={Array []}
+    title={null}
+  />
+</Modal>
+`;
+
 exports[`<Dialog /> should render a special dialog 1`] = `
 <Modal>
   <Backdrop
@@ -21,6 +38,29 @@ exports[`<Dialog /> should render a special dialog 1`] = `
         "request": Object {},
       }
     }
+  />
+</Modal>
+`;
+
+exports[`<Dialog /> should render variant select dialog 1`] = `
+<Modal>
+  <Backdrop
+    color="#000"
+    duration={200}
+    isVisible={true}
+    level={0}
+    onClick={[Function]}
+    opacity={50}
+  />
+  <VariantSelectModal
+    actions={Array []}
+    message="Test"
+    params={
+      Object {
+        "productId": "product_1",
+      }
+    }
+    title={null}
   />
 </Modal>
 `;
