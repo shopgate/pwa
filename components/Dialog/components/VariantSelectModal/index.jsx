@@ -25,22 +25,24 @@ const reorderActions = (actions, { productId }) => {
   const orderedActions = actions;
 
   orderedActions.forEach((act, index) => {
-    if (act.action.name === 'onConfirm') {
-      confirmAction = {
-        ...act,
-        action: () => {
-          // Execute default action
-          act.action();
-          // Navigate to product details page
-          if (productId) {
-            const href = `${ITEM_PATH}/${bin2hex(productId)}`;
-            new ParsedLink(href).open();
-          }
-        },
-      };
-
-      orderedActions.splice(index, 1);
+    if (act.action.name !== 'onConfirm') {
+      return;
     }
+
+    confirmAction = {
+      ...act,
+      action: () => {
+        // Execute default action
+        act.action();
+        // Navigate to product details page
+        if (productId) {
+          const href = `${ITEM_PATH}/${bin2hex(productId)}`;
+          new ParsedLink(href).open();
+        }
+      },
+    };
+
+    orderedActions.splice(index, 1);
   });
 
   // Push the confirm action last so that we have the button rendered at the bottom right of modal.
@@ -70,7 +72,7 @@ const VariantSelectModal = ({
       <I18n.Text string={message} />
     </BasicDialog>
   );
-}
+};
 
 VariantSelectModal.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -81,7 +83,7 @@ VariantSelectModal.propTypes = {
 
 VariantSelectModal.defaultProps = {
   params: {
-    productId: null
+    productId: null,
   },
   title: null,
 };

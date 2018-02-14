@@ -66,6 +66,7 @@ const springToBottom = css({
  * Circular button and container for the icons.
  * @param {number} bSize Size of the button.
  * @param {number} iSize Size of the icon.
+ * @return {string} Class name
  */
 const buttonWrapper = (bSize, iSize) => css({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',

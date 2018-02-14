@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
  * Mocked View.
  * @type {MockedView}
  */
+// eslint-disable-next-line react/prefer-stateless-function
 export const MockedAddToCartButton = class extends Component {
   static propTypes = {
     handleAddToCart: PropTypes.func,
