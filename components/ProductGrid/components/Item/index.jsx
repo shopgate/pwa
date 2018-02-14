@@ -36,7 +36,7 @@ const Item = ({ product, display }) => (
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {product.price.discount &&
+    {!!product.price.discount &&
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
