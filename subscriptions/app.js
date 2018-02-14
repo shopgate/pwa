@@ -8,7 +8,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
-import setScrollingEnabled from '@shopgate/pwa-core/commands/setScrollingEnabled';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import { isAndroid } from '../selectors/client';
