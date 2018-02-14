@@ -56,12 +56,13 @@ class View extends Component {
   };
 
   static contextTypes = {
-    routePath: PropTypes.string
+    routePath: PropTypes.string,
   };
 
   /**
    * The component constructor
    * @param {Object} props The component props
+   * @param {Object} context The component context
    */
   constructor(props, context) {
     super(props);
