@@ -8,8 +8,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 /**
- * Mocked View.
- * @type {MockedView}
+ * Mocked AddToCartButton.
+ * @type {MockedAddToCartButton}
  */
 // eslint-disable-next-line react/prefer-stateless-function
 export const MockedAddToCartButton = class extends Component {
@@ -20,7 +20,7 @@ export const MockedAddToCartButton = class extends Component {
     handleAddToCart: () => {},
   };
   /**
-   * Renders mocked view.
+   * Renders mocked button.
    * @return {JSX}
    */
   render() {
