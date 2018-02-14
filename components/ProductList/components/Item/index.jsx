@@ -37,7 +37,7 @@ const Item = ({ display, product }) => (
     <Grid className={styles.listItemContainer}>
       <Grid.Item shrink={0} className={styles.imageContainer}>
         <Image itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-        {product.price.discount && (
+        {!!product.price.discount && (
           <DiscountBadge text={`-${product.price.discount}%`} />
         )}
       </Grid.Item>
