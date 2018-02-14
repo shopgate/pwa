@@ -51,6 +51,7 @@ const addFavorites = (productId, immediate = false) => (dispatch) => {
     }
 
     addTimeout[productId] = setTimeout(() => {
+      addTimeout[productId] = null;
       new PipelineRequest('addFavorites')
         .setInput({ productId })
         .dispatch()
@@ -84,7 +85,7 @@ const removeFavorites = productId => (dispatch) => {
     }
 
     if (addTimeout[productId]) {
-      clearAddTimer();
+      clearAddTimer(productId);
       res(abortAddFavorites(productId));
       return;
     }
