@@ -147,7 +147,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               }
             >
               <div
-                className="css-t193cd"
+                className="css-1us3hnd"
               >
                 <RatingStars
                   className=""
@@ -553,19 +553,23 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             >
                               <button
                                 className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
                                 <Ripple
                                   className="css-8s1fw2 "
                                   color="#000"
+                                  disabled={false}
                                   fill={true}
+                                  onComplete={[Function]}
                                   overflow={false}
                                   size={null}
                                 >
                                   <div
                                     aria-hidden={true}
                                     className="css-8s1fw2 "
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >
@@ -647,7 +651,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               }
             >
               <div
-                className="css-2g5sa0"
+                className="css-1yhq1gr"
               >
                 <Title
                   title=""
@@ -660,10 +664,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   rate={100}
                 >
                   <div
-                    className="css-12alag6"
+                    className="css-15pwoui"
                   >
                     <RatingStars
-                      className="css-1tsawhq"
+                      className="css-hgkz41"
                       display="small"
                       isSelectable={false}
                       onSelection={[Function]}
@@ -671,7 +675,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="css-13azwyo css-1tsawhq"
+                        className="css-13azwyo css-hgkz41"
                       >
                         <div
                           className="css-4s85e9"
@@ -1049,7 +1053,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-13o3l67"
+                    className="css-vkqu2k"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -1067,7 +1071,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   }
                 >
                   <div
-                    className="css-1kqiarg"
+                    className="css-1dhkxb0"
                   >
                     <ReviewDate
                       date="2017-09-06T12:38:51.000Z"
@@ -1103,7 +1107,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               }
             >
               <div
-                className="css-2g5sa0"
+                className="css-1yhq1gr"
               >
                 <Title
                   title=""
@@ -1116,10 +1120,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   rate={100}
                 >
                   <div
-                    className="css-12alag6"
+                    className="css-15pwoui"
                   >
                     <RatingStars
-                      className="css-1tsawhq"
+                      className="css-hgkz41"
                       display="small"
                       isSelectable={false}
                       onSelection={[Function]}
@@ -1127,7 +1131,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="css-13azwyo css-1tsawhq"
+                        className="css-13azwyo css-hgkz41"
                       >
                         <div
                           className="css-4s85e9"
@@ -1505,7 +1509,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-13o3l67"
+                    className="css-vkqu2k"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -1523,7 +1527,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   }
                 >
                   <div
-                    className="css-1kqiarg"
+                    className="css-1dhkxb0"
                   >
                     <ReviewDate
                       date="2017-09-06T12:38:51.000Z"
@@ -1559,7 +1563,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               }
             >
               <div
-                className="css-2g5sa0"
+                className="css-1yhq1gr"
               >
                 <Title
                   title=""
@@ -1572,10 +1576,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   rate={100}
                 >
                   <div
-                    className="css-12alag6"
+                    className="css-15pwoui"
                   >
                     <RatingStars
-                      className="css-1tsawhq"
+                      className="css-hgkz41"
                       display="small"
                       isSelectable={false}
                       onSelection={[Function]}
@@ -1583,7 +1587,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="css-13azwyo css-1tsawhq"
+                        className="css-13azwyo css-hgkz41"
                       >
                         <div
                           className="css-4s85e9"
@@ -1961,7 +1965,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-13o3l67"
+                    className="css-vkqu2k"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -1979,7 +1983,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   }
                 >
                   <div
-                    className="css-1kqiarg"
+                    className="css-1dhkxb0"
                   >
                     <ReviewDate
                       date="2017-09-06T12:38:51.000Z"
@@ -2015,7 +2019,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               }
             >
               <div
-                className="css-2g5sa0"
+                className="css-1yhq1gr"
               >
                 <Title
                   title=""
@@ -2028,10 +2032,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   rate={100}
                 >
                   <div
-                    className="css-12alag6"
+                    className="css-15pwoui"
                   >
                     <RatingStars
-                      className="css-1tsawhq"
+                      className="css-hgkz41"
                       display="small"
                       isSelectable={false}
                       onSelection={[Function]}
@@ -2039,7 +2043,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="css-13azwyo css-1tsawhq"
+                        className="css-13azwyo css-hgkz41"
                       >
                         <div
                           className="css-4s85e9"
@@ -2417,7 +2421,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-13o3l67"
+                    className="css-vkqu2k"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -2435,7 +2439,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   }
                 >
                   <div
-                    className="css-1kqiarg"
+                    className="css-1dhkxb0"
                   >
                     <ReviewDate
                       date="2017-09-06T12:38:51.000Z"
@@ -2516,19 +2520,23 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         >
                           <button
                             className="css-20ad7t  css-1rn65c0"
+                            data-test-id="Button"
                             disabled={false}
                             onClick={[Function]}
                           >
                             <Ripple
                               className="css-8s1fw2 "
                               color="#000"
+                              disabled={false}
                               fill={true}
+                              onComplete={[Function]}
                               overflow={false}
                               size={null}
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-8s1fw2 "
+                                data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
                               >
@@ -2633,7 +2641,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               }
             >
               <div
-                className="css-t193cd"
+                className="css-1us3hnd"
               >
                 <RatingStars
                   className=""
@@ -3039,19 +3047,23 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             >
                               <button
                                 className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
                                 <Ripple
                                   className="css-8s1fw2 "
                                   color="#000"
+                                  disabled={false}
                                   fill={true}
+                                  onComplete={[Function]}
                                   overflow={false}
                                   size={null}
                                 >
                                   <div
                                     aria-hidden={true}
                                     className="css-8s1fw2 "
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >
@@ -3117,7 +3129,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               }
             >
               <div
-                className="css-2g5sa0"
+                className="css-1yhq1gr"
               >
                 <Title
                   title=""
@@ -3130,10 +3142,10 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   rate={100}
                 >
                   <div
-                    className="css-12alag6"
+                    className="css-15pwoui"
                   >
                     <RatingStars
-                      className="css-1tsawhq"
+                      className="css-hgkz41"
                       display="small"
                       isSelectable={false}
                       onSelection={[Function]}
@@ -3141,7 +3153,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="css-13azwyo css-1tsawhq"
+                        className="css-13azwyo css-hgkz41"
                       >
                         <div
                           className="css-4s85e9"
@@ -3519,7 +3531,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-13o3l67"
+                    className="css-vkqu2k"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -3537,7 +3549,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   }
                 >
                   <div
-                    className="css-1kqiarg"
+                    className="css-1dhkxb0"
                   >
                     <ReviewDate
                       date="2017-09-06T12:38:51.000Z"
@@ -3573,7 +3585,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               }
             >
               <div
-                className="css-2g5sa0"
+                className="css-1yhq1gr"
               >
                 <Title
                   title=""
@@ -3586,10 +3598,10 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   rate={100}
                 >
                   <div
-                    className="css-12alag6"
+                    className="css-15pwoui"
                   >
                     <RatingStars
-                      className="css-1tsawhq"
+                      className="css-hgkz41"
                       display="small"
                       isSelectable={false}
                       onSelection={[Function]}
@@ -3597,7 +3609,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="css-13azwyo css-1tsawhq"
+                        className="css-13azwyo css-hgkz41"
                       >
                         <div
                           className="css-4s85e9"
@@ -3975,7 +3987,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                 >
                   <div
-                    className="css-13o3l67"
+                    className="css-vkqu2k"
                   >
                     "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                   </div>
@@ -3993,7 +4005,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   }
                 >
                   <div
-                    className="css-1kqiarg"
+                    className="css-1dhkxb0"
                   >
                     <ReviewDate
                       date="2017-09-06T12:38:51.000Z"
@@ -4078,7 +4090,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
               }
             >
               <div
-                className="css-t193cd"
+                className="css-1us3hnd"
               >
                 <RatingStars
                   className=""
@@ -4349,19 +4361,23 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                             >
                               <button
                                 className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
                                 <Ripple
                                   className="css-8s1fw2 "
                                   color="#000"
+                                  disabled={false}
                                   fill={true}
+                                  onComplete={[Function]}
                                   overflow={false}
                                   size={null}
                                 >
                                   <div
                                     aria-hidden={true}
                                     className="css-8s1fw2 "
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >

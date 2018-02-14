@@ -1,29 +1,66 @@
 {
-  "version": "1.2.2",
+  "version": "4.3.0",
   "id": "@shopgate/theme-gmd",
   "configuration": {
-    "language": {
-      "type": "bigApi",
-      "destination" : "frontend",
-      "params": {
-        "method":  "GET",
-        "service": "shop",
-        "path": "/v1/%(shopId)s",
-        "key": "languageId"
-      }
-    },
-    "publicPath": {
-      "type": "static",
-      "destination": "frontend",
-      "params": {
-        "value": "%(publicPath)s/%(appId)s/%(themes[0].id)s/%(themes[0].version)s"
-      }
-    },
     "appId": {
       "type": "static",
       "destination": "frontend",
       "params": {
         "value": "%(appId)s"
+      }
+    },
+    "colors": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": {},
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors?parsed=true",
+        "key": "value"
+      }
+    },
+    "forgotPasswordUrl": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
+        "key": "value"
+      }
+    },
+    "hasFavorites": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_has_favorites?parsed=true",
+        "key": "value"
+      }
+    },
+    "hasReviews": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
+        "key": "value"
+      }
+    },
+    "language": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "languageId"
       }
     },
     "logo": {
@@ -36,58 +73,53 @@
         "key": "imageUrl"
       }
     },
-    "colors": {
+    "marketId": {
       "type": "bigApi",
-      "destination" : "frontend",
-      "default": {},
+      "destination": "frontend",
       "params": {
-        "method":  "GET",
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "marketId"
+      }
+    },
+    "productPropertiesFilter": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "method": "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_theme_colors",
+        "path": "/v1/shop/%(shopId)s/sg_connect_product_properties?parsed=true",
         "key": "value"
+      }
+    },
+    "publicPath": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": "%(publicPath)s/%(appId)s/%(themes[0].id)s/%(themes[0].version)s"
       }
     },
     "shopName": {
       "type": "bigApi",
-      "destination" : "frontend",
+      "destination": "frontend",
       "params": {
-        "method":  "GET",
+        "method": "GET",
         "service": "shop",
         "path": "/v1/%(shopId)s",
         "key": "name"
       }
     },
-    "forgotPasswordUrl": {
-      "type": "bigApi",
-      "destination" : "frontend",
-      "default": null,
-      "params": {
-        "method":  "GET",
-        "service": "config",
-        "path": "/v1/shop/%(shopId)s/custom_forgot_password_link",
-        "key": "value"
-      }
-    },
     "webCheckoutShopify": {
       "type": "bigApi",
-      "destination" : "frontend",
-      "default": null,
-      "params": {
-        "method":  "GET",
-        "service": "config",
-        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
-        "key": "value.frontend"
-      }
-    },
-    "hasReviews": {
-      "type": "bigApi",
       "destination": "frontend",
-      "default": true,
+      "default": null,
       "params": {
         "method": "GET",
         "service": "config",
-        "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
-        "key": "value"
+        "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
+        "key": "value.frontend"
       }
     }
   }

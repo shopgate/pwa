@@ -15,7 +15,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
   }
 >
   <div
-    className="css-19q1rye"
+    className="css-1mfzgeo"
   >
     <div
       className="css-10lhp8m"
@@ -108,7 +108,7 @@ exports[`<ProductDescription /> should render description if data is available 1
   }
 >
   <div
-    className="css-19q1rye"
+    className="css-1mfzgeo"
   >
     <div
       className="css-10lhp8m"

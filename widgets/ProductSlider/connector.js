@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -19,7 +19,7 @@ const mapStateToProps = (state, props) => ({
   products: getProductsResult(state, props.settings.queryType, {
     sort: props.settings.sortOrder,
     value: props.settings.queryParams,
-  }).products,
+  }, props.id).products,
 });
 
 /**
@@ -28,10 +28,8 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (type, value, sort) =>
-    dispatch(
-      getProductsByQuery(type, value, sort)
-    ),
+  getProducts: (type, value, sort, id) =>
+    dispatch(getProductsByQuery(type, value, sort, id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

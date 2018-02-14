@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -88,6 +88,19 @@ class QuantityPicker extends Component {
   }
 
   /**
+   * Returns the initial quantity based on the props.
+   * If the props are set to 0 or lower, it will fall back to 1.
+   * @return {number}
+   */
+  get initialQuantity() {
+    if (this.props.quantity === 0 || this.props.quantity < this.defaultQuantity) {
+      return this.defaultQuantity;
+    }
+
+    return this.props.quantity;
+  }
+
+  /**
    * Sets the comoponent ref.
    * @param {HTMLElement} input The input field ref.
    */
@@ -100,19 +113,6 @@ class QuantityPicker extends Component {
    * @type {number}
    */
   defaultQuantity = 1;
-
-  /**
-   * Returns the initial quantity based on the props.
-   * If the props are set to 0 or lower, it will fall back to 1.
-   * @return {number}
-   */
-  get initialQuantity() {
-    if (this.props.quantity === 0 || this.props.quantity < this.defaultQuantity) {
-      return this.defaultQuantity;
-    }
-
-    return this.props.quantity;
-  }
 
   /**
    * Event handler for the the onChange event of the input.

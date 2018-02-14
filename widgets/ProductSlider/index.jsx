@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -44,7 +44,6 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
  * The core product slider widget.
  */
 class ProductSlider extends React.Component {
-
   static propTypes = {
     getProducts: PropTypes.func.isRequired,
     // The settings as received by the pipeline request
@@ -79,7 +78,7 @@ class ProductSlider extends React.Component {
    * Called when the component is mounted, requests the products.
    */
   componentDidMount() {
-    const { getProducts } = this.props;
+    const { getProducts, id } = this.props;
     const { queryType, queryParams } = this.props.settings;
 
     getProducts(
@@ -87,7 +86,8 @@ class ProductSlider extends React.Component {
       queryParams,
       {
         sort: transformDisplayOptions(this.props.settings.sortOrder),
-      }
+      },
+      id
     );
   }
 

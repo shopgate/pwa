@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -76,7 +76,12 @@ class Navigator extends Component {
     };
 
     return (
-      <header className={styles.header} role="banner" style={headerStyle}>
+      <header
+        className={styles.header}
+        data-test-id="Navigator"
+        role="banner"
+        style={headerStyle}
+      >
         <Grid className={styles.grid} component="section" wrap={false}>
           <NavButton />
           <Grid.Item className={styles.title} component="div" grow={1}>

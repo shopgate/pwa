@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -38,19 +38,28 @@ const FilterChips = ({
     const filter = activeFilters[key];
 
     switch (filter.type) {
-      case FILTER_TYPE_RANGE:
+      case FILTER_TYPE_RANGE: {
+        /**
+         * The min and max price need to be rounded before they are passed to the I18n component,
+         * since it rounds to the full nearest number when fractions are deactivated.
+         */
+        const piceMin = Math.floor(filter.minimum / 100);
+        const priceMax = Math.ceil(filter.maximum / 100);
+
         chips.push((
           <Chip
             key={filter.label}
             onRemove={() => handleFilterRemove(key)}
             onClick={handleOpenFilters}
           >
-            <I18n.Price price={filter.minimum / 100} currency={currency} fractions={false} />
+            <I18n.Price price={piceMin} currency={currency} fractions={false} />
             &nbsp;&mdash;&nbsp;
-            <I18n.Price price={filter.maximum / 100} currency={currency} fractions={false} />
+            <I18n.Price price={priceMax} currency={currency} fractions={false} />
           </Chip>
         ));
+
         break;
+      }
       case FILTER_TYPE_MULTISELECT:
         filter.values.forEach((value, index) => chips.push((
           <Chip

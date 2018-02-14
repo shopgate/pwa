@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -65,8 +65,8 @@ class PriceRangeSlider extends Component {
    */
   onChange = (value) => {
     const roundedValue = [
-      Math.round(value[0]),
-      Math.round(value[1]),
+      Math.floor(value[0]),
+      Math.ceil(value[1]),
     ];
 
     this.setState({
@@ -86,13 +86,20 @@ class PriceRangeSlider extends Component {
     const { __ } = this.context.i18n();
     const currency = __('price.currency');
 
+    /**
+     * The min and max price need to be rounded before they are passed to the I18n component,
+     * since it rounds to the full nearest number when fractions are deactivated.
+     */
+    const priceMin = Math.floor(this.state.value[0] / 100);
+    const priceMax = Math.ceil(this.state.value[1] / 100);
+
     return (
       <div className={styles.wrapper}>
         <I18n.Text string="price.range">
           <I18n.Placeholder forKey="fromPrice">
             <span className={styles.price}>
               <I18n.Price
-                price={(this.state.realValue[0] / 100)}
+                price={priceMin}
                 currency={currency}
                 fractions={false}
               />
@@ -101,7 +108,7 @@ class PriceRangeSlider extends Component {
           <I18n.Placeholder forKey="toPrice">
             <span className={styles.price}>
               <I18n.Price
-                price={(this.state.realValue[1] / 100)}
+                price={priceMax}
                 currency={currency}
                 fractions={false}
               />

@@ -29,6 +29,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           >
             <button
               className="css-i7sqdh css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
@@ -70,6 +71,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
@@ -108,19 +110,23 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           >
             <button
               className="css-1xxwysr css-rz4b27 css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
               <Ripple
                 className="css-8s1fw2 "
                 color="#000"
+                disabled={false}
                 fill={true}
+                onComplete={[Function]}
                 overflow={false}
                 size={null}
               >
                 <div
                   aria-hidden={true}
                   className="css-8s1fw2 "
+                  data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}
                 >
@@ -175,6 +181,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           >
             <button
               className="css-i7sqdh css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
@@ -216,6 +223,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
@@ -240,6 +248,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           >
             <button
               className="css-i7sqdh css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
@@ -281,6 +290,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
@@ -319,19 +329,23 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           >
             <button
               className="css-1xxwysr css-rz4b27 css-1rn65c0"
+              data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
               <Ripple
                 className="css-8s1fw2 "
                 color="#000"
+                disabled={false}
                 fill={true}
+                onComplete={[Function]}
                 overflow={false}
                 size={null}
               >
                 <div
                   aria-hidden={true}
                   className="css-8s1fw2 "
+                  data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}
                 >

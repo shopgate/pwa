@@ -1,11 +1,10 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -17,6 +16,10 @@ import {
 } from 'Components/Reviews/mock';
 import Rating from './index';
 import { getElementById } from './mock';
+
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  hasReviews: true,
+}));
 
 describe('Rating (product header)', () => {
   const mockedStore = configureStore();

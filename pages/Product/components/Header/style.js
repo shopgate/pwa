@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -13,6 +13,10 @@ const content = css({
   backgroundColor: colors.light,
   padding: variables.gap.big,
   borderTop: 'rgba(0, 0, 0, 0.05) 2px solid',
+}).toString();
+
+const price = css({
+  justifyContent: 'flex-end',
 }).toString();
 
 const priceInfo = css({
@@ -48,10 +52,16 @@ const placeholder = {
   }).toString(),
 };
 
+const disclaimerSpacer = css({
+  width: 10,
+}).toString();
+
 export default {
   content,
   productInfo,
   priceContainer,
   priceInfo,
+  price,
   placeholder,
+  disclaimerSpacer,
 };

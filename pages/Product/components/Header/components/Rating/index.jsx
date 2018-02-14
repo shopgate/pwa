@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasReviews } from 'Config/app.json';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingStars from 'Components/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
@@ -38,13 +38,18 @@ const scrollToRating = () => {
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  if (!hasReviews || !rating || !rating.count) {
+  if (!appConfig.hasReviews || !rating || !rating.count) {
     return null;
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div role="link" className={container} onClick={scrollToRating}>
+    // eslint-disable-next-line max-len
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
+    <div
+      className={container}
+      onClick={scrollToRating}
+      role="link"
+    >
       <RatingStars value={rating.average} display="big" />
       <RatingCount count={rating.count} prominent />
     </div>
