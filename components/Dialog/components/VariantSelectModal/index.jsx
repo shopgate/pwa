@@ -15,7 +15,7 @@ import BasicDialog from '../BasicDialog';
 
 /**
  * Reorders the actions for the modal so that the confirmation button will be rendered last.
- * Also attaches a naviagtion action to the confirmation action.
+ * Also attaches a navigation action to the confirmation action.
  * @param {Array} actions The confirm and dismiss actions.
  * @param {string} productId The product id passed through params.
  * @return {Array} Reordered and extended actions.
