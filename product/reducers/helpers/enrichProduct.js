@@ -18,18 +18,15 @@ const enrichProduct = (productData) => {
     ...productData,
   };
 
-  if (
-    newProductData.price &&
-    newProductData.price.unitPrice &&
-    newProductData.price.unitPriceStriked
-  ) {
+  if (newProductData.price) {
     let discount = 0;
+    const discountBase = newProductData.price.msrp ?
+      newProductData.price.msrp : newProductData.price.unitPriceStriked;
 
-    // Calculate the saved percentage discount and add it to the product
-    if (newProductData.price.unitPrice < newProductData.price.unitPriceStriked) {
+    if (newProductData.price.unitPrice < discountBase) {
       discount = calcDiscount(
         newProductData.price.unitPrice,
-        newProductData.price.unitPriceStriked
+        discountBase
       );
     }
 
