@@ -99,6 +99,7 @@ class Item extends Component {
                       visible: active,
                     });
                   }}
+                  favoritesOnce
                 />
               </Grid.Item>
               <Grid.Item grow={1} className={styles.rightColumn}>

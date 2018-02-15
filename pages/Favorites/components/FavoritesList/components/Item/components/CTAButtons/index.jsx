@@ -42,6 +42,7 @@ const CTAButtons = props => (
       active={props.active}
       removeThrottle={props.removeThrottle}
       onRippleComplete={props.onRippleComplete}
+      once={props.favoritesOnce}
       readOnlyOnFetch
     />
     <AddToCartButton
@@ -58,6 +59,7 @@ CTAButtons.propTypes = {
   productId: PropTypes.string.isRequired,
   active: PropTypes.bool,
   addToCart: PropTypes.func,
+  favoritesOnce: PropTypes.bool,
   isBaseProduct: PropTypes.func,
   onRippleComplete: PropTypes.func,
   removeThrottle: PropTypes.number,
@@ -67,6 +69,7 @@ CTAButtons.propTypes = {
 CTAButtons.defaultProps = {
   active: null,
   addToCart: () => {},
+  favoritesOnce: false,
   isBaseProduct: null,
   onRippleComplete: () => {},
   removeThrottle: null,

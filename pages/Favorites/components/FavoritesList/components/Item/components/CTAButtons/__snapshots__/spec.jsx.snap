@@ -19,6 +19,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
     <CTAButtons
       active={null}
       addToCart={[Function]}
+      favoritesOnce={false}
       isBaseProduct={[Function]}
       onRippleComplete={[Function]}
       productId="product_1"
@@ -31,6 +32,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         <Connect(FavoritesButton)
           active={null}
           onRippleComplete={[Function]}
+          once={false}
           productId="product_1"
           readOnlyOnFetch={true}
           removeThrottle={null}
@@ -39,8 +41,9 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             active={null}
             addFavorites={[Function]}
             className=""
-            isFetching={false}
+            noShadow={false}
             onRippleComplete={[Function]}
+            once={false}
             productId="product_1"
             readOnlyOnFetch={true}
             removeFavorites={[Function]}
