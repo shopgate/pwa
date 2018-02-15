@@ -19,14 +19,15 @@ import {
   errorRemoveFavorites,
 } from '../action-creators/removeFavorites';
 
-let addTimeout = null;
+const addTimeout = {};
 
 /**
  * Resets the throttle timer.
+ * @param {string} productId Product id.
  */
-const clearAddTimer = () => {
-  clearTimeout(addTimeout);
-  addTimeout = null;
+const clearAddTimer = (productId) => {
+  clearTimeout(addTimeout[productId]);
+  addTimeout[productId] = null;
 };
 
 /**
@@ -45,11 +46,12 @@ const addFavorites = (productId, immediate = false) => (dispatch) => {
 
     dispatch(requestAddFavorites(productId));
 
-    if (!immediate && addTimeout) {
-      clearAddTimer();
+    if (!immediate && addTimeout[productId]) {
+      clearAddTimer(productId);
     }
 
-    addTimeout = setTimeout(() => {
+    addTimeout[productId] = setTimeout(() => {
+      addTimeout[productId] = null;
       new PipelineRequest('addFavorites')
         .setInput({ productId })
         .dispatch()
@@ -60,11 +62,11 @@ const addFavorites = (productId, immediate = false) => (dispatch) => {
 
   addPromise
     .then(() => {
-      clearAddTimer();
+      clearAddTimer(productId);
       dispatch(receiveAddFavorites());
     })
     .catch(() => {
-      clearAddTimer();
+      clearAddTimer(productId);
       dispatch(errorAddFavorites(productId));
     });
   return addPromise;
@@ -82,8 +84,8 @@ const removeFavorites = productId => (dispatch) => {
       return;
     }
 
-    if (addTimeout) {
-      clearAddTimer();
+    if (addTimeout[productId]) {
+      clearAddTimer(productId);
       res(abortAddFavorites(productId));
       return;
     }
