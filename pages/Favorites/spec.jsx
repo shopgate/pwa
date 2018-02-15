@@ -17,6 +17,7 @@ import {
   mockedNotReadyState,
   mockedNextProps,
 } from './mock';
+import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 const mockedView = MockedView;
 const mockedStore = configureStore();
@@ -96,6 +97,11 @@ describe('<Favorites> page', () => {
       component.find('FavoritesButton').at(0).instance().props.onRippleComplete(false);
       component.update();
       expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(false);
+    });
+  });
+  describe('Constants', () => {
+    it('should export FAVORITES_SHOW_TOAST_DELAY', () => {
+      expect(typeof FAVORITES_SHOW_TOAST_DELAY).toBe('number');
     });
   });
 });
