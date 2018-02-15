@@ -19,6 +19,10 @@ import {
   errorRemoveFavorites,
 } from '../action-creators/removeFavorites';
 
+import {
+  getProductRelativesOnFavorites,
+} from '../selectors/';
+
 const addTimeout = {};
 
 /**
@@ -71,13 +75,13 @@ const addFavorites = (productId, immediate = false) => (dispatch) => {
     });
   return addPromise;
 };
-
 /**
- * Remove favorites action.
- * @param {string} productId Product identifier.
- * @returns {Promise} PipelineRequest dispatch.
+ * Removes single product from favorites.
+ * @param {string} productId Product id.
+ * @param {function} dispatch Disaptch function.
+ * @returns {Promise}
  */
-const removeFavorites = productId => (dispatch) => {
+const removeProductFromFavorites = (productId, dispatch) => {
   const removePromise = new Promise((res, rej) => {
     if (!productId) {
       rej();
@@ -105,6 +109,21 @@ const removeFavorites = productId => (dispatch) => {
   return removePromise;
 };
 
+/**
+ * Remove favorites action.
+ * @param {string} productId Product identifier.
+ * @param {bool} withRelatives When true relatives which are on list are also removed.
+ * @returns {Promise} PipelineRequest dispatch.
+ */
+const removeFavorites = (productId, withRelatives = false) => (dispatch, getState) => {
+  // Temporary solution
+  if (withRelatives) {
+    const allIds = getProductRelativesOnFavorites(getState(), productId);
+    allIds.forEach(id => removeProductFromFavorites(id, dispatch));
+    return;
+  }
+  removeProductFromFavorites(productId, dispatch);
+};
 export {
   addFavorites,
   removeFavorites,

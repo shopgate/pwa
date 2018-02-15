@@ -11,6 +11,10 @@ import {
   getCurrentProductId,
 } from '../../product/selectors/product';
 
+import {
+  getKnownRelatives,
+} from '../../product/selectors/variants';
+
 /**
  * Gets favorite products ids.
  * @param {Object} state State.
@@ -75,6 +79,7 @@ export const hasFavorites = createSelector(
  * @return {boolean}
  */
 export const isFetching = state => state.favorites.products.isFetching;
+
 /**
  * Returns true when the current product is on the favorites list
  */
@@ -85,11 +90,23 @@ export const isCurrentProductOnFavoriteList = createSelector(
 );
 
 /**
- * Checks if product is on favorires list.
+ * Returns all relatives which are on favorites.
  * @param {Object} state Current state.
- * @param {number} productId Product id.
- * @return {boolean}
- * @deprecated This selector will be removed in next version.
+ * @param {string} productId
+ * @returns {Array}
  */
-export const isProductOnList = (state, productId) =>
-  getFavoritesProductsIds(state).includes(productId);
+export const getProductRelativesOnFavorites = createSelector(
+  getKnownRelatives,
+  getFavoritesProductsIds,
+  (productRelativesIds, favoriteIds) => productRelativesIds.filter(id => favoriteIds.includes(id))
+);
+/**
+ * Checks if product or any relative is on favorires list.
+ * @param {Object} state Current state.
+ * @param {string} productId Product id.
+ * @return {boolean}
+ */
+export const isRelativeProductOnList = createSelector(
+  getProductRelativesOnFavorites,
+  relativesOnFavorites => relativesOnFavorites.length > 0
+);

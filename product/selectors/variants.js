@@ -10,6 +10,7 @@ import {
   getCurrentBaseProductId,
   getCurrentBaseProduct,
   getProductById,
+  getProducts,
 } from './product';
 
 /**
@@ -161,5 +162,58 @@ export const getSelectedVariantMetadata = createSelector(
     }
 
     return null;
+  }
+);
+
+/**
+ * Matches all products relatives which are already fetched and stored in redux.
+ * If this ever would be too slow, the calculation should happen in the reducer.
+ * @param {Object} state Current state.
+ * @returns {Object}
+ */
+export const getKnownProductRelatives = createSelector(
+  [getProducts],
+  (products) => {
+    const relativesByBaseProductId = {};
+    Object.keys(products).forEach((id) => {
+      const { productData } = products[id];
+      let parentId = productData.id;
+      if (productData.baseProductId) {
+        parentId = productData.baseProductId;
+      }
+      if (!relativesByBaseProductId[parentId]) {
+        relativesByBaseProductId[parentId] = [];
+      }
+      relativesByBaseProductId[parentId].push(productData.id);
+      if (
+        parentId !== productData.id
+        && !relativesByBaseProductId[parentId].includes(parentId)
+      ) {
+        relativesByBaseProductId[parentId].push(parentId);
+      }
+    });
+    return relativesByBaseProductId;
+  }
+);
+/**
+ * Returns relatives which are already fetched into a client app for given product id.
+ * @param {Object} state Current state.
+ * @param {string} productId Product id.
+ * @returns {Array}
+ */
+export const getKnownRelatives = createSelector(
+  getProductById,
+  getKnownProductRelatives,
+  (product, knownRelations) => {
+    const { productData } = product;
+    let parentId = productData.id;
+    // Product is parent.
+    if (productData.flags.hasVariants) {
+      parentId = productData.id;
+    } else if (productData.baseProductId) {
+      parentId = productData.baseProductId;
+    }
+
+    return knownRelations[parentId] || [];
   }
 );

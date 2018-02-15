@@ -11,11 +11,11 @@ import {
 import {
   getFavorites,
   getFavoritesCount,
+  getProductRelativesOnFavorites,
   hasFavorites,
   isInitialLoading,
   isCurrentProductOnFavoriteList,
   isFetching,
-  isProductOnList,
 } from './index';
 
 describe('Favorites - selectors', () => {
@@ -195,30 +195,149 @@ describe('Favorites - selectors', () => {
       expect(isFetching(state)).toBe(false);
     });
   });
-  describe('isProductOnList', () => {
-    it('should return false when product is not on the list', () => {
+  describe('getProductRelativesOnFavorites', () => {
+    const products = {
+      product: {
+        productsById: {
+          parent: {
+            productData: {
+              id: 'parent',
+              baseProductId: null,
+              flags: {
+                hasVariants: true,
+              },
+            },
+          },
+          child: {
+            productData: {
+              id: 'child',
+              baseProductId: 'parent',
+              flags: {
+                hasVariants: false,
+              },
+            },
+          },
+          child2: {
+            productData: {
+              id: 'child2',
+              baseProductId: 'parent',
+              flags: {
+                hasVariants: false,
+              },
+            },
+          },
+          notAChild: {
+            productData: {
+              id: 'notAChild',
+              baseProductId: 'foo',
+              flags: {
+                hasVariants: false,
+              },
+            },
+          },
+        },
+      },
+    };
+    it('should return parent', () => {
       const state = {
+        ...products,
         favorites: {
           products: {
-            ids: [1, 2, 'foo'],
+            ids: ['parent'],
           },
         },
       };
-      expect(isProductOnList(state, 0)).toBe(false);
-      expect(isProductOnList(state, '1')).toBe(false);
-      expect(isProductOnList(state, 'fooo')).toBe(false);
+      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual(['parent']);
     });
-    it('should return false when product is not on the list', () => {
+    it('should return parent and child', () => {
       const state = {
+        ...products,
         favorites: {
           products: {
-            ids: [1, 2, 'foo'],
+            ids: ['parent', 'child'],
           },
         },
       };
-      expect(isProductOnList(state, 1)).toBe(true);
-      expect(isProductOnList(state, 2)).toBe(true);
-      expect(isProductOnList(state, 'foo')).toBe(true);
+      expect(getProductRelativesOnFavorites(state, 'child')).toEqual(['parent', 'child']);
+    });
+    it('should return all relatives', () => {
+      const state = {
+        ...products,
+        favorites: {
+          products: {
+            ids: ['parent', 'child', 'child2'],
+          },
+        },
+      };
+      expect(getProductRelativesOnFavorites(state, 'child')).toEqual(['parent', 'child', 'child2']);
+    });
+    it('should return child', () => {
+      const state = {
+        ...products,
+        favorites: {
+          products: {
+            ids: ['child', 'notAChild'],
+          },
+        },
+      };
+      expect(getProductRelativesOnFavorites(state, 'child')).toEqual(['child']);
+    });
+    it('should return nothing for parent which is not on the list', () => {
+      const state = {
+        ...products,
+        favorites: {
+          products: {
+            ids: [],
+          },
+        },
+      };
+      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual([]);
+    });
+    it('should return parent product when parent is a simple product', () => {
+      const state = {
+        product: {
+          productsById: {
+            parent: {
+              productData: {
+                id: 'parent',
+                baseProductId: null,
+                flags: {
+                  hasVariants: false,
+                },
+              },
+            },
+          },
+        },
+        favorites: {
+          products: {
+            ids: ['parent'],
+          },
+        },
+      };
+      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual(['parent']);
+    });
+    it('should return nothing when parent is a simple product but not on fav list', () => {
+      const state = {
+        product: {
+          productsById: {
+            parent: {
+              productData: {
+                id: 'parent',
+                baseProductId: null,
+                flags: {
+                  hasVariants: false,
+                },
+              },
+            },
+          },
+        },
+        favorites: {
+          products: {
+            ids: [],
+          },
+        },
+      };
+      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual([]);
     });
   });
 });
