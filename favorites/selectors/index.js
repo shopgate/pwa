@@ -89,6 +89,7 @@ export const isCurrentProductOnFavoriteList = createSelector(
  * @param {Object} state Current state.
  * @param {number} productId Product id.
  * @return {boolean}
+ * @deprecated This selector will be removed in next version.
  */
 export const isProductOnList = (state, productId) =>
   getFavoritesProductsIds(state).includes(productId);
