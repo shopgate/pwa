@@ -415,6 +415,13 @@ export const isBaseProduct = createSelector(
       return null;
     }
 
-    return !product.productData.baseProductId;
+    const { productData } = product;
+    return !(
+      productData.baseProductId
+      || (
+        productData.flags
+        && productData.flags.hasVariants === false
+      )
+    );
   }
 );
