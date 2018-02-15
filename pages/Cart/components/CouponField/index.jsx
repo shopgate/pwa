@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import connect from './connector';
 import Layout from './components/Layout';
 
@@ -90,6 +91,22 @@ class CouponField extends Component {
    * @param {boolean} isFocused Whether the input component is focused.
    */
   handleFocusChange = (isFocused) => {
+    if (isFocused) {
+      /**
+       * When the user focuses the coupon input, the keyboard will pop up an overlap the input.
+       * Therefore the input has to be scrolled into the viewport again. Since between the focus and
+       * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       */
+      setTimeout(() => {
+        const yOffset = -(window.innerHeight / 2) + getAbsoluteHeight(this.element);
+
+        this.element.scrollIntoView({
+          behavior: 'smooth',
+          yOffset,
+        });
+      }, 600);
+    }
+
     this.setState({
       isFocused,
     });
@@ -108,17 +125,19 @@ class CouponField extends Component {
     };
 
     return (
-      <Layout
-        handleAddCoupon={this.addCoupon}
-        isFocused={this.state.isFocused}
-        isLoading={this.props.isLoading}
-        isButtonDisabled={this.isButtonDisabled}
-        handleFocusChange={this.handleFocusChange}
-        handleValueChange={this.handleValueChange}
-        labelStyle={labelStyle}
-        iconStyle={iconStyle}
-        value={this.state.value}
-      />
+      <div ref={(element) => { this.element = element; }}>
+        <Layout
+          handleAddCoupon={this.addCoupon}
+          isFocused={this.state.isFocused}
+          isLoading={this.props.isLoading}
+          isButtonDisabled={this.isButtonDisabled}
+          handleFocusChange={this.handleFocusChange}
+          handleValueChange={this.handleValueChange}
+          labelStyle={labelStyle}
+          iconStyle={iconStyle}
+          value={this.state.value}
+        />
+      </div>
     );
   }
 }
