@@ -16,6 +16,7 @@ const container = css({
   right: 0,
   padding: variables.gap.small,
   background: colors.light,
+  boxShadow: '0 0 30px rgba(0,0,0,0.1)',
 });
 
 const base = css({
