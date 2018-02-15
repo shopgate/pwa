@@ -37,7 +37,7 @@ const Item = ({ product, display, isFavorite }) => (
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {product.price.discount &&
+    {!!product.price.discount &&
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
@@ -63,7 +63,15 @@ const Item = ({ product, display, isFavorite }) => (
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.unitPriceStriked > 0 && (
+            {product.price.msrp > 0 && (
+              <Grid.Item>
+                <PriceStriked
+                  value={product.price.msrp}
+                  currency={product.price.currency}
+                />
+              </Grid.Item>
+            )}
+            {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
               <Grid.Item>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
