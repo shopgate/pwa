@@ -18,7 +18,7 @@ import { getPopulatedProductsResult } from '@shopgate/pwa-common-commerce/produc
 const getResultHash = state => generateResultHash({
   pipeline: 'getLiveshoppingProducts',
   sort: getSortOrder(state),
-});
+}, true, false);
 
 /**
  * Retrieves the result by hash.

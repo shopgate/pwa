@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import { Unwrapped as AddToCartButton } from './index';
+import AddToCartButton from './index';
 
 describe('<AddToCartButton />', () => {
   it('should render in loading state and should not be clickable', () => {
