@@ -6,7 +6,7 @@ The add to cart button component renders a rounded button that will put the curr
 ## Getting Started
 
 ```jsx
-import AddToCartButton from 'Pages/Product/components/Header/components/AddToCartButton';
+import AddToCartButton from 'Components/AddToCartButton';
 
 <AddToCartButton handleAddToCart={() => {}} isLoading isOrderable={false} />
 ```
@@ -51,3 +51,17 @@ Should be `true` to indicate that the current product is orderable, if not order
 <AddToCartButton handleAddToCart={() => { console.log('addToCart'); }} isLoading isOrderable />
 ```
 ---
+
+### buttonSize
+
+_Type_: `number`  
+_default_: 40
+
+Defines the size of the button.
+
+### iconSize
+
+_Type_: `number`  
+_default_: 20
+
+Defines the size of the inner icon.
