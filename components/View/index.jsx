@@ -51,15 +51,20 @@ class View extends Component {
     viewTop: true,
   };
 
+  static contextTypes = {
+    routePath: PropTypes.string,
+  };
+
   /**
    * The component constructor
    * @param {Object} props The component props
+   * @param {Object} context The component context
    */
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     // Store the active pathname at instantiation
-    this.pathname = props.historyPathname;
+    this.pathname = context.routePath;
     this.element = null;
   }
 

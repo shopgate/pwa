@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CTAs (product header) Rendering should render CTAButtons when data is available 1`] = `
+exports[`<CTAButtons /> should render buttons 1`] = `
 <Provider
   store={
     Object {
@@ -13,41 +13,48 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
     }
   }
 >
-  <Connect(CTAButtons)>
+  <Connect(CTAButtons)
+    productId="product_1"
+  >
     <CTAButtons
-      handleAddToCart={[Function]}
-      isFavorite={true}
-      isLoading={true}
-      isOrderable={false}
+      active={null}
+      addToCart={[Function]}
+      favoritesOnce={false}
+      isBaseProduct={[Function]}
+      onRippleComplete={[Function]}
       productId="product_1"
+      removeThrottle={null}
+      showVariantModal={[Function]}
     >
       <div
-        className="css-7azkrx"
+        className="css-wbu9yb"
       >
         <Connect(FavoritesButton)
-          active={true}
-          className="css-j05drb"
+          active={null}
+          onRippleComplete={[Function]}
+          once={false}
           productId="product_1"
-          rippleClassName="css-1tdptiz"
+          readOnlyOnFetch={true}
+          removeThrottle={null}
         >
           <FavoritesButton
-            active={true}
+            active={null}
             addFavorites={[Function]}
-            className="css-j05drb"
+            className=""
             noShadow={false}
             onRippleComplete={[Function]}
             once={false}
             productId="product_1"
+            readOnlyOnFetch={true}
             removeFavorites={[Function]}
-            removeThrottle={0}
-            rippleClassName="css-1tdptiz"
+            removeThrottle={null}
+            rippleClassName=""
           />
         </Connect(FavoritesButton)>
         <MockedAddToCartButton
-          buttonSize={56}
+          className="css-ipacgg"
           handleAddToCart={[Function]}
-          iconSize={24}
-          isLoading={true}
+          isLoading={false}
           isOrderable={false}
         >
           <button

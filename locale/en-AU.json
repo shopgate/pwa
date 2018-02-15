@@ -21,7 +21,11 @@
     "error_add": "Product could not be added to favorites",
     "error_remove": "Product could not be removed from favorites",
     "remove": "Remove from favorites",
-    "removed": "Removed from favorites"
+    "removed": "Removed from favorites",
+    "modal": {
+      "message": "To add this product to your cart, please select the variants.",
+      "confirm": "Select variants"
+    }
   },
   "filter": {
     "sort": {

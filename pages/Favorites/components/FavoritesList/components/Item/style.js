@@ -11,11 +11,6 @@ import variables from 'Styles/variables';
 
 const favItemTransitionDuration = 500;
 
-const favButtonWrapper = css({
-  marginTop: `-${variables.gap.big}px`,
-  marginLeft: variables.gap.big,
-}).toString();
-
 const row = css({
   padding: variables.gap.big,
   justifyContent: 'space-between',
@@ -68,7 +63,6 @@ const getFavItemTransitionStyle = (state, visible, height) => (
 );
 
 export default {
-  favButtonWrapper,
   leftColumn,
   rightColumn,
   row,
