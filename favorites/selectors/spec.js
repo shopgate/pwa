@@ -15,6 +15,7 @@ import {
   isInitialLoading,
   isCurrentProductOnFavoriteList,
   isFetching,
+  isProductOnList,
 } from './index';
 
 describe('Favorites - selectors', () => {
@@ -192,6 +193,32 @@ describe('Favorites - selectors', () => {
     it('should return false', () => {
       state.favorites.products.isFetching = false;
       expect(isFetching(state)).toBe(false);
+    });
+  });
+  describe('isProductOnList', () => {
+    it('should return false when product is not on the list', () => {
+      const state = {
+        favorites: {
+          products: {
+            ids: [1, 2, 'foo'],
+          },
+        },
+      };
+      expect(isProductOnList(state, 0)).toBe(false);
+      expect(isProductOnList(state, '1')).toBe(false);
+      expect(isProductOnList(state, 'fooo')).toBe(false);
+    });
+    it('should return false when product is not on the list', () => {
+      const state = {
+        favorites: {
+          products: {
+            ids: [1, 2, 'foo'],
+          },
+        },
+      };
+      expect(isProductOnList(state, 1)).toBe(true);
+      expect(isProductOnList(state, 2)).toBe(true);
+      expect(isProductOnList(state, 'foo')).toBe(true);
     });
   });
 });
