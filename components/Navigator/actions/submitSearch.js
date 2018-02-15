@@ -14,10 +14,10 @@ import setViewTop from 'Components/View/action-creators/setViewTop';
 import setNavigatorSearchPhrase from '../actions/setNavigatorSearchPhrase';
 import toggleNavSearchField from './toggleNavSearchField';
 
- /**
-  * Performs appropriate action(s) when UI search is submitted.
-  * @return {Function} A redux thunk.
-  */
+/**
+ * Performs appropriate action(s) when UI search is submitted.
+ * @return {Function} A redux thunk.
+ */
 const submitSearch = () => (dispatch, getState) => {
   const state = getState();
   const { searchActive, searchPhrase } = state.navigator;
@@ -39,7 +39,6 @@ const submitSearch = () => (dispatch, getState) => {
   const { sort, ...otherParams } = history.queryParams;
   const prevSearchPhrase = getSearchPhrase(state);
 
-  dispatch(getSearchResults());
   dispatch(setViewTop(true));
 
   // Set up next history location.
@@ -67,6 +66,8 @@ const submitSearch = () => (dispatch, getState) => {
     // Move to the search location.
     dispatch(pushHistory(historyLocation));
   }
+
+  dispatch(getSearchResults());
 
   // Always close search on submit.
   dispatch(toggleNavSearchField(false));
