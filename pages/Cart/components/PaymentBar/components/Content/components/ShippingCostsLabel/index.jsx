@@ -8,7 +8,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import InfoOutlineIcon from 'Components/icons/InfoOutlineIcon';
 import styles from './style';
 import connect from './connector';
 
@@ -24,9 +23,6 @@ const ShippingCostsLabel = ({ isDisabled, shipping }) => {
 
   return (
     <div className={`${styles.shippingInfo} ${isDisabled ? styles.disabled : ''}`}>
-      <div className={styles.shippingInfoIcon}>
-        <InfoOutlineIcon />
-      </div>
       <I18n.Text string="titles.shipping" />:
     </div>
   );
