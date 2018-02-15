@@ -7,20 +7,17 @@
  */
 
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
-import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import {
   addFavorites,
 } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import {
-  favoritesWillFetch$,
-  favoritesDidFetch$,
   favoritesWillRemoveItem$,
 } from '@shopgate/pwa-common-commerce/favorites/streams';
 import {
   getHistoryPathname,
 } from '@shopgate/pwa-common/selectors/history';
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
+import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
  * Favorites page subscriptions.
@@ -32,18 +29,15 @@ export default function favorites(subscribe) {
       // No toast message when favorites is not active page.
       return;
     }
-    dispatch(createToast({
-      action: 'common.undo',
-      actionOnClick: addFavorites(action.productId, true),
-      message: 'favorites.removed',
-      delay: 6000,
-    }));
-  });
-  subscribe(favoritesWillFetch$, ({ dispatch }) => {
-    dispatch(setViewLoading(FAVORITES_PATH));
-  });
-  subscribe(favoritesDidFetch$, ({ dispatch }) => {
-    dispatch(unsetViewLoading(FAVORITES_PATH, true));
+    // Animations are too fast. This should wait a little bit.
+    setTimeout(() => {
+      dispatch(createToast({
+        action: 'common.undo',
+        actionOnClick: addFavorites(action.productId, true),
+        message: 'favorites.removed',
+        duration: 6000,
+      }));
+    }, FAVORITES_SHOW_TOAST_DELAY);
   });
 }
 

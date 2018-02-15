@@ -15,6 +15,9 @@ const actionButton = css({
   textAlign: 'right',
   padding: '7px 0',
   wordBreak: 'keep-all',
+  ':focus': {
+    outline: 'none',
+  },
 }).toString();
 
 export default {

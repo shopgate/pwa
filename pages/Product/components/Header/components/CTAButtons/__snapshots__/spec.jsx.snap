@@ -34,10 +34,10 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
             active={true}
             addFavorites={[Function]}
             className="css-j05drb"
-            isFetching={false}
+            noShadow={false}
             onRippleComplete={[Function]}
+            once={false}
             productId="product_1"
-            readOnlyOnFetch={false}
             removeFavorites={[Function]}
             removeThrottle={0}
             rippleClassName="css-1tdptiz"
