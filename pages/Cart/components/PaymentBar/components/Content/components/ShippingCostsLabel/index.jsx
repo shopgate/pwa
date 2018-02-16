@@ -17,20 +17,15 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-const ShippingCostsLabel = ({ isDisabled, shipping }) => {
-  if (!shipping) {
-    return null;
-  }
-
-  return (
-    <div className={`${styles.shippingInfo} ${isDisabled ? styles.disabled : ''}`}>
-      <div className={styles.shippingInfoIcon}>
-        <InfoOutlineIcon />
-      </div>
-      <I18n.Text string="titles.shipping" />:
+const ShippingCostsLabel = ({ isDisabled, shipping }) => (
+  <div className={`${styles.shippingInfo} ${isDisabled ? styles.disabled : ''}`}>
+    <div className={styles.shippingInfoIcon}>
+      <InfoOutlineIcon />
     </div>
-  );
-};
+    <I18n.Text string={shipping === null ? 'shipping.unknown' : 'titles.shipping'} />
+    {shipping !== null ? ':' : ''}
+  </div>
+);
 
 ShippingCostsLabel.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
