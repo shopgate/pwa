@@ -69,6 +69,7 @@
     "placeholder": "Search"
   },
   "shipping": {
+    "unknown": "plus shipping",
     "free": "Free delivery",
     "free_short": "Free",
     "cost": "{price} shipping"
@@ -120,6 +121,7 @@
     "payment": "Payment methods",
     "terms": "Terms",
     "privacy": "Privacy policy",
+    "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
     "logout": "Sign out"
   },
