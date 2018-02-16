@@ -13,6 +13,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import ClientInformation from 'Components/ClientInformation';
 import HomeIcon from 'Components/icons/HomeIcon';
@@ -184,9 +185,11 @@ class NavDrawer extends Component {
           <I18n.Text string="navigation.privacy" />
         </Item>
 
-        <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.return_policy" />
-        </Item>
+        {showReturnPolicy && (
+          <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.return_policy" />
+          </Item>
+        )}
 
         <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
           <I18n.Text string="navigation.about" />
