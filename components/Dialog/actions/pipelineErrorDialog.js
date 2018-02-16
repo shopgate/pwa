@@ -7,6 +7,16 @@
 
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
+import { addErrorMessageMapping, getErrorMessage } from '@shopgate/pwa-common/helpers/i18n/errorMessage';
+
+// Add mapping between pipeline name/code and translation key to the mapping store
+addErrorMessageMapping({
+  addFavorites: 'favorites.error_add',
+  deleteFavorites: 'favorites.error_remove',
+  login: {
+    EINVALIDCREDENTIALS: 'login.error',
+  },
+});
 
 /**
  * Disables the navigator.
@@ -21,7 +31,7 @@ const pipelineErrorDialog = ({ name, input, error }) => (dispatch) => {
     // Give the template a clue about how to show this modal.
     type: MODAL_PIPELINE_ERROR,
     // Set the message param if users shall see the error message
-    message: error.message,
+    message: getErrorMessage(name, error),
     params: {
       // Expose the error details as params.
       pipelineName: name,
