@@ -22,6 +22,14 @@ class Toast extends Component {
     message: PropTypes.func.isRequired,
     removeToast: PropTypes.func.isRequired,
     className: PropTypes.string,
+    nextToast: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      duration: PropTypes.number.isRequired,
+      action: PropTypes.string,
+      actionOnClick: PropTypes.func,
+      replaceable: PropTypes.bool,
+    }),
     onClose: PropTypes.func,
     toast: PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -29,10 +37,12 @@ class Toast extends Component {
       duration: PropTypes.number.isRequired,
       action: PropTypes.string,
       actionOnClick: PropTypes.func,
+      replaceable: PropTypes.bool,
     }),
   };
 
   static defaultProps = {
+    nextToast: null,
     className: null,
     onClose: () => {},
     toast: null,
@@ -65,6 +75,15 @@ class Toast extends Component {
       this.setState({
         isOpen: hasToast,
       });
+      return;
+    }
+
+    if (
+      nextProps.nextToast
+      && this.props.toast
+      && this.props.toast.replaceable
+    ) {
+      this.closeDrawer();
     }
   }
 

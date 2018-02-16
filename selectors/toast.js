@@ -19,3 +19,17 @@ export const getToast = (state) => {
   }
   return null;
 };
+/**
+ * Gets next toast message which should be shown.
+ * Always the second one, and always just one.
+ * @param {Object} state State of the app.
+ * @returns {Object|null}
+ */
+export const getNextToast = (state) => {
+  if (state.toast.length > 1) {
+    return state.toast[1];
+  }
+
+  return null;
+};
+
