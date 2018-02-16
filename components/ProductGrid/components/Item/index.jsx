@@ -15,7 +15,6 @@ import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { PRODUCT_ITEM_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/portals';
 import ProductImage from 'Components/ProductImage';
-import RatingStars from 'Components/RatingStars';
 import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
@@ -37,14 +36,14 @@ const Item = ({ product, display }) => (
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {product.price.discount &&
+    {!!product.price.discount &&
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
     }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        <Portal name={PRODUCT_ITEM_NAME_BEFORE} id={product.id} />
+        <Portal name={PRODUCT_ITEM_NAME_BEFORE} props={{ id: product.id }} />
         {(!display || display.name) && (
           <div className={styles.title} itemProp="name">
             <Ellipsis>{product.name}</Ellipsis>
@@ -60,7 +59,15 @@ const Item = ({ product, display }) => (
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.unitPriceStriked > 0 && (
+            {product.price.msrp > 0 && (
+              <Grid.Item grow={2}>
+                <PriceStriked
+                  value={product.price.msrp}
+                  currency={product.price.currency}
+                />
+              </Grid.Item>
+            )}
+            {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
               <Grid.Item grow={2}>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
