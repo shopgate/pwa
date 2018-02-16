@@ -56,6 +56,7 @@
     }
   },
   "shipping": {
+    "unknown": "plus shipping",
     "free": "Free delivery",
     "free_short": "Free",
     "cost": "{price} shipping"
