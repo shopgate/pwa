@@ -37,7 +37,7 @@ const Item = ({ display, product }) => (
     <Grid className={styles.listItemContainer}>
       <Grid.Item shrink={0} className={styles.imageContainer}>
         <Image itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-        {product.price.discount && (
+        {!!product.price.discount && (
           <DiscountBadge text={`-${product.price.discount}%`} />
         )}
       </Grid.Item>
@@ -64,7 +64,14 @@ const Item = ({ display, product }) => (
             discounted={!!product.price.discount}
             currency={product.price.currency}
           />
-          {product.price.unitPriceStriked > 0 && (
+          {(product.price.msrp > 0) && (
+            <PriceStriked
+              value={product.price.msrp}
+              currency={product.price.currency}
+              className={styles.priceStriked}
+            />
+          )}
+          {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
             <PriceStriked
               value={product.price.unitPriceStriked}
               currency={product.price.currency}

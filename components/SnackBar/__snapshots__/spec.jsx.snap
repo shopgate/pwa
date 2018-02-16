@@ -183,7 +183,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                     text="click me"
                   >
                     <button
-                      className="css-1tbknzy"
+                      className="css-n09hx9"
                       onClick={[Function]}
                     >
                       <Translate
