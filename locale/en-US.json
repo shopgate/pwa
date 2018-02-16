@@ -106,7 +106,8 @@
     "button": "Login",
     "no_account": "Don't have an account?",
     "register": "Create one here!",
-    "logout_message": "You have been logged out."
+    "logout_message": "You have been logged out.",
+    "error": "Your username and password don't match any account"
   },
   "navigation": {
     "login_register": "Login / Register",
