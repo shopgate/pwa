@@ -12,6 +12,7 @@ import ClientInformation from 'Components/ClientInformation';
 import Headline from 'Components/Headline';
 import List from 'Components/List';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
 import connect from './connector';
 import UserMenu from './components/UserMenu/index';
 
@@ -38,7 +39,12 @@ class More extends Component {
    * @returns {JSX}
    */
   render() {
-    const { entries, isLoggedIn, logout, user } = this.props;
+    const {
+      entries,
+      isLoggedIn,
+      logout,
+      user,
+    } = this.props;
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
     return (
@@ -50,7 +56,7 @@ class More extends Component {
           <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
           <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
           <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
-          <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
+          {showReturnPolicy && <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />}
           <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
         </List>
         {showQuickLinks && (
