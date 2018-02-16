@@ -120,6 +120,7 @@
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
+    "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
     "logout": "Abmelden"
   },
