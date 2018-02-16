@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "id": "@shopgate/ext-product-reviews",
   "components": [
     {
-      "id": "rating_stars",
+      "id": "@shopgate/ext-product-reviews/rating_stars",
       "path": "frontend/RatingStars/index.jsx",
       "target": "product-item.name.before",
       "type": "portals"
