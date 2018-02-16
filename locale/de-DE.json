@@ -69,6 +69,7 @@
     "placeholder": "Suchen"
   },
   "shipping": {
+    "unknown": "zzgl. Versand",
     "free": "Kostenloser Versand",
     "free_short": "Kostenlos",
     "cost": "{price} Versand"
