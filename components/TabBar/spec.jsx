@@ -10,7 +10,7 @@ import { shallow } from 'enzyme';
 import TabBar from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('../connector.js', () => obj => obj);
+jest.mock('./connector.js', () => obj => obj);
 
 describe('<TabBar />', () => {
   const defaultProps = {

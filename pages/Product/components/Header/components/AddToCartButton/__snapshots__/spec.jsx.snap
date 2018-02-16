@@ -2,12 +2,12 @@
 
 exports[`<AddToCartButton /> should render in loading state and should not be clickable 1`] = `
 <AddToCartButton
-  handleAddToCart={[Function]}
+  handleAddToCart={[MockFunction]}
   isLoading={true}
   isOrderable={true}
 >
   <button
-    className="css-dgn98k css-16iirry"
+    className="css-dgn98k css-31obrv"
     onClick={[Function]}
   >
     <div
@@ -19,7 +19,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       }
     >
       <IndicatorCircle
-        color="#fff"
+        color="#00c3e6"
         size={32}
         strokeWidth={5}
       >
@@ -31,7 +31,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="css-w65y8t"
+            className="css-1jqvajc"
             cx="50"
             cy="50"
             r="20"
@@ -118,12 +118,18 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
 
 exports[`<AddToCartButton /> should render with cart icon and should be clickable 1`] = `
 <AddToCartButton
-  handleAddToCart={[Function]}
+  handleAddToCart={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
   isLoading={false}
   isOrderable={true}
 >
   <button
-    className="css-dgn98k css-16iirry"
+    className="css-dgn98k css-31obrv"
     onClick={[Function]}
   >
     <div
@@ -135,7 +141,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       }
     >
       <IndicatorCircle
-        color="#fff"
+        color="#00c3e6"
         size={32}
         strokeWidth={5}
       >
@@ -147,7 +153,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="css-w65y8t"
+            className="css-1jqvajc"
             cx="50"
             cy="50"
             r="20"
@@ -234,12 +240,18 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
 
 exports[`<AddToCartButton /> should render with checkmark icon and should not be clickable the second time 1`] = `
 <AddToCartButton
-  handleAddToCart={[Function]}
+  handleAddToCart={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
   isLoading={false}
   isOrderable={true}
 >
   <button
-    className="css-dgn98k css-oo1pf9"
+    className="css-dgn98k css-1ncyhu"
     onClick={[Function]}
   >
     <div
@@ -251,7 +263,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       }
     >
       <IndicatorCircle
-        color="#fff"
+        color="#00c3e6"
         size={32}
         strokeWidth={5}
       >
@@ -263,7 +275,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle
-            className="css-w65y8t"
+            className="css-1jqvajc"
             cx="50"
             cy="50"
             r="20"

@@ -14,6 +14,7 @@ exports[`<Sheet /> should open 1`] = `
     className="css-h69706"
     isOpen={true}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <Header
@@ -21,9 +22,11 @@ exports[`<Sheet /> should open 1`] = `
       title="Test-Title"
     />
     <div
-      className="css-1tkozuj false"
+      className="css-1aon90l false"
     >
-      <div>
+      <div
+        key=".0"
+      >
         Test
       </div>
     </div>
@@ -53,10 +56,11 @@ exports[`<Sheet /> should render closed without content 1`] = `
     className="css-h69706"
     isOpen={false}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <div
-      className="css-mt0ry0 false"
+      className="css-1aon90l false"
     />
   </Drawer>
   <Backdrop
@@ -84,10 +88,11 @@ exports[`<Sheet /> should render opened without content 1`] = `
     className="css-h69706"
     isOpen={true}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <div
-      className="css-mt0ry0 false"
+      className="css-1aon90l false"
     />
   </Drawer>
   <Backdrop
@@ -115,6 +120,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
     className="css-h69706"
     isOpen={true}
     onClose={null}
+    onDidClose={[Function]}
     onOpen={[Function]}
   >
     <Header
@@ -122,7 +128,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
       title="Test-Title"
     />
     <div
-      className="css-mt0ry0 false"
+      className="css-1aon90l false"
     >
       <div
         key=".0"
@@ -148,7 +154,13 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   backdrop={true}
   duration={300}
   isOpen={true}
-  onClose={[Function]}
+  onClose={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+    }
+  }
   onOpen={[Function]}
   title="Test-Title"
 >
@@ -164,7 +176,14 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       }
       className="css-h69706"
       isOpen={false}
-      onClose={[Function]}
+      onClose={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        }
+      }
+      onDidClose={[Function]}
       onOpen={[Function]}
     >
       <div
@@ -252,7 +271,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           </Grid>
         </Header>
         <div
-          className="css-mt0ry0 false"
+          className="css-1aon90l false"
         >
           <div
             key=".0"
@@ -320,15 +339,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   "opacity": 0,
                 }
               }
-              id={undefined}
               key=".$.0"
-              onChildAppeared={undefined}
-              onChildEntered={undefined}
-              onChildLeft={undefined}
-              onChildStartAppear={undefined}
-              onChildStartEnter={undefined}
-              onChildStartLeave={undefined}
-              style={undefined}
             >
               <div
                 aria-hidden={true}
