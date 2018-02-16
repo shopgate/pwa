@@ -10,10 +10,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
+import Grid from '@shopgate/pwa-common/components/Grid';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import CardItem from 'Components/CardList/components/Item';
-import FavoritesButton from 'Components/FavoritesButton';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import CTAButtons from './components/CTAButtons';
 import Image from './components/Image';
 import ProductInfo from './components/ProductInfo';
 import styles from './style';
@@ -90,19 +90,17 @@ class Item extends Component {
             <Grid className={styles.row}>
               <Grid.Item className={styles.leftColumn}>
                 <Image product={this.props.product} />
-                <div className={styles.favButtonWrapper}>
-                  <FavoritesButton
-                    productId={this.props.product.id}
-                    active={this.state.visible}
-                    removeThrottle={styles.favItemTransitionDuration + 200}
-                    onRippleComplete={(active) => {
-                      this.setState({
-                        visible: active,
-                      });
-                    }}
-                    readOnlyOnFetch
-                  />
-                </div>
+                <CTAButtons
+                  productId={this.props.product.id}
+                  active={this.state.visible}
+                  removeThrottle={styles.favItemTransitionDuration + 200}
+                  onRippleComplete={(active) => {
+                    this.setState({
+                      visible: active,
+                    });
+                  }}
+                  favoritesOnce
+                />
               </Grid.Item>
               <Grid.Item grow={1} className={styles.rightColumn}>
                 <ProductInfo product={this.props.product} />

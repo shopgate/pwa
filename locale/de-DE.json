@@ -21,7 +21,11 @@
     "error_add": "Das Produkt konnte nicht zur Merkliste hinzugefügt werden",
     "error_remove": "Das Produkt konnte nicht von der Merkliste entfernt werden",
     "remove": "Von der Merkliste löschen",
-    "removed": "Von Merkliste entfernt"
+    "removed": "Von Merkliste entfernt",
+    "modal": {
+      "message": "Um dieses Produkt zum Warenkorb hinzuzufügen, wählen Sie bitte die Varianten.",
+      "confirm": "Varianten wählen"
+    }
   },
   "filter": {
     "sort": {
@@ -65,6 +69,7 @@
     "placeholder": "Suchen"
   },
   "shipping": {
+    "unknown": "zzgl. Versand",
     "free": "Kostenloser Versand",
     "free_short": "Kostenlos",
     "cost": "{price} Versand"
@@ -101,7 +106,8 @@
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
     "register": "Registrieren",
-    "logout_message": "Sie wurden ausgeloggt."
+    "logout_message": "Sie wurden ausgeloggt.",
+    "error": "Nutzername oder Passwort sind nicht korrekt"
   },
   "navigation": {
     "login_register": "Anmelden",
@@ -115,6 +121,7 @@
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
+    "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
     "logout": "Abmelden"
   },

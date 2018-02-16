@@ -22,10 +22,11 @@ class FavoritesButton extends Component {
     active: PropTypes.bool,
     addFavorites: PropTypes.func,
     className: PropTypes.string,
-    isFetching: PropTypes.bool,
+    noShadow: PropTypes.bool,
+    // When true, button would react on click only once.
+    once: PropTypes.bool,
     onRippleComplete: PropTypes.func,
     productId: PropTypes.string,
-    readOnlyOnFetch: PropTypes.bool,
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
     rippleClassName: PropTypes.string,
@@ -35,10 +36,10 @@ class FavoritesButton extends Component {
     active: false,
     addFavorites: () => {},
     className: '',
-    isFetching: false,
+    noShadow: false,
+    once: false,
     onRippleComplete: () => {},
     productId: null,
-    readOnlyOnFetch: false,
     removeFavorites: () => {},
     removeThrottle: 0,
     rippleClassName: '',
@@ -60,8 +61,8 @@ class FavoritesButton extends Component {
     super(props);
     this.state = {
       active: props.active,
-      isFetching: props.isFetching,
     };
+    this.clickedOnce = false;
   }
 
   /**
@@ -71,7 +72,6 @@ class FavoritesButton extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       active: nextProps.active,
-      isFetching: nextProps.isFetching,
     });
   }
 
@@ -93,14 +93,6 @@ class FavoritesButton extends Component {
   }
 
   /**
-   * Checks if button is currently read-only.
-   * @return {boolean} The read only "state" of the component
-   */
-  isReadOnly() {
-    return this.state.isFetching && this.props.readOnlyOnFetch;
-  }
-
-  /**
    * Adds or removes a given product ID from the favorite list.
    * @param {Object} event The click event object.
    */
@@ -108,9 +100,11 @@ class FavoritesButton extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    if (this.isReadOnly()) {
+    if (this.props.once && this.clickedOnce) {
       return;
     }
+
+    this.clickedOnce = true;
 
     if (!this.props.productId) {
       return;
@@ -126,7 +120,6 @@ class FavoritesButton extends Component {
 
     this.setState({
       active: !this.state.active,
-      isFetching: true,
     });
   };
 
@@ -150,16 +143,16 @@ class FavoritesButton extends Component {
     if (!appConfig.hasFavorites) {
       return null;
     }
+    const className = this.props.noShadow ? styles.buttonFlat : styles.button;
     return (
       <button
         aria-label={this.getLabel()}
-        className={`${styles.button} ${this.props.className}`}
+        className={`${className} ${this.props.className}`}
         onClick={this.handleClick}
       >
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
           onComplete={this.onRippleComplete}
-          disabled={this.isReadOnly()}
         >
           {this.renderIcon()}
         </Ripple>
