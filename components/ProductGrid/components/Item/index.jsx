@@ -43,7 +43,7 @@ const Item = ({ product, display }) => (
     }
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        <Portal name={PRODUCT_ITEM_NAME_BEFORE} id={product.id} />
+        <Portal name={PRODUCT_ITEM_NAME_BEFORE} props={{ id: product.id }} />
         {(!display || display.name) && (
           <div className={styles.title} itemProp="name">
             <Ellipsis>{product.name}</Ellipsis>
