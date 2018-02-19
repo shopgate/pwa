@@ -75,9 +75,9 @@ class Category extends Component {
     return (
       <View title={this.title}>
         {this.props.isFilterBarShown && <FilterBar />}
-        <Portal name={CATEGORY_LIST_BEFORE} id={this.id} />
+        <Portal name={CATEGORY_LIST_BEFORE} />
         <CategoryList />
-        <Portal name={CATEGORY_LIST_AFTER} id={this.id} />
+        <Portal name={CATEGORY_LIST_AFTER} />
         <Portal name={PRODUCT_LIST_BEFORE} />
         {this.props.hasProducts && <Products />}
         <Portal name={PRODUCT_LIST_AFTER} />
