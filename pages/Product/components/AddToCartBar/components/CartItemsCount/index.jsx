@@ -19,7 +19,7 @@ import styles, { duration, durationShort, transition } from './style';
  */
 class CartItemsCount extends Component {
   static propTypes = {
-    cartProductCount: PropTypes.number.isRequired,
+    cartDisplayAmount: PropTypes.number.isRequired,
   };
 
   /**
@@ -30,8 +30,8 @@ class CartItemsCount extends Component {
     super(props);
 
     this.state = {
-      numItems: props.cartProductCount,
-      isVisible: !!props.cartProductCount,
+      numItems: props.cartDisplayAmount,
+      isVisible: props.cartDisplayAmount > 0,
     };
   }
 
@@ -40,7 +40,7 @@ class CartItemsCount extends Component {
    * @param {Object} nextProps Incoming component props.
    */
   componentWillReceiveProps(nextProps) {
-    const numItems = nextProps.cartProductCount;
+    const numItems = nextProps.cartDisplayAmount;
 
     if (numItems === 0) {
       // When there are no items, reset this element to hide.

@@ -7,13 +7,13 @@
 
 import { css } from 'glamor';
 
-export const duration = 300;
+export const duration = 200;
 export const durationShort = 50;
 
 export const transition = {
   entering: {
     opacity: 0,
-    transform: 'translate3d(0, 200%, 0)',
+    transform: 'translate3d(0, 100%, 0)',
   },
   entered: {
     opacity: 1,
@@ -21,11 +21,11 @@ export const transition = {
   },
   exited: {
     opacity: 0,
-    transform: 'translate3d(0, 200%, 0)',
+    transform: 'translate3d(0, 100%, 0)',
   },
   exiting: {
     opacity: 0,
-    transform: 'translate3d(0, 200%, 0)',
+    transform: 'translate3d(0, 100%, 0)',
     transition: `transform ${durationShort}ms linear`,
   },
 };

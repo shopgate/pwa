@@ -6,7 +6,7 @@
  */
 
 import { connect } from 'react-redux';
-import { getCartProductCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +14,7 @@ import { getCartProductCount } from '@shopgate/pwa-common-commerce/cart/selector
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  cartProductCount: getCartProductCount(state),
+  cartDisplayAmount: getCartProductDisplayCount(state),
 });
 
 export default connect(mapStateToProps);

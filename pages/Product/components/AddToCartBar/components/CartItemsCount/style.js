@@ -8,29 +8,35 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-export const duration = 300;
+export const duration = 200;
 
 export const transition = {
   entering: {
-    transform: 'translate3d(0, 200%, 0)',
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
+    transition: `opacity ${duration}ms, transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34)`,
   },
   entered: {
+    opacity: 1,
     transform: 'translate3d(0, 0, 0)',
+    transition: `opacity ${duration}ms, transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34)`,
   },
   exited: {
-    transform: 'translate3d(0, 200%, 0)',
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
   },
   exiting: {
+    opacity: 0,
     transform: 'translate3d(0, 0, 0)',
   },
 };
 
 const container = css({
-  flexGrow: 1,
-  display: 'flex',
   alignItems: 'center',
+  display: 'flex',
+  flexGrow: 1,
   overflow: 'hidden',
-  transition: `transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34)`,
+  transform: 'translate3d(0, 100%, 0)',
   willChange: 'transform',
 });
 

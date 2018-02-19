@@ -15,11 +15,7 @@ import styles, { duration, transition } from './style';
  */
 class Count extends Component {
   static propTypes = {
-    count: PropTypes.number,
-  };
-
-  static defaultProps = {
-    count: 1,
+    count: PropTypes.number.isRequired,
   };
 
   /**
@@ -30,21 +26,9 @@ class Count extends Component {
     super(props);
 
     this.state = {
-      in: false,
+      in: props.count > 0,
       numItems: props.count,
     };
-  }
-
-  isShown(nextProps) {
-    if (this.props.numItems > 0 && nextProps.numItems === 0) {
-      return false;
-    }
-
-    if (nextProps.numItems === 0) {
-      return false;
-    }
-
-    return true;
   }
 
   /**
@@ -53,9 +37,8 @@ class Count extends Component {
    */
   componentWillReceiveProps(nextProps) {
     if (this.props.count !== nextProps.count) {
-      console.warn('COUNT', nextProps.count);
       this.setState({
-        in: this.isShown(nextProps),
+        in: false,
         numItems: nextProps.count,
       });
     }
@@ -84,7 +67,11 @@ class Count extends Component {
    */
   render() {
     return (
-      <Transition in={this.state.in} timeout={duration} onExited={this.handleOnExited}>
+      <Transition
+        in={this.state.in}
+        onExited={this.handleOnExited}
+        timeout={this.state.in ? duration : 0}
+      >
         {state => (
           <div className={styles.container} style={transition[state]}>
             {this.state.numItems} items added
