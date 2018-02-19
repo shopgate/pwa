@@ -25,9 +25,9 @@ const INFO = 'info';
 const MANUFACTURER = 'manufacturer';
 const SHIPPING = 'shipping';
 const AVAILABILITY = 'availability';
-const PRICE_STRIKED = 'priceStriked';
+const PRICE_STRIKED = 'price-striked';
 const PRICE = 'price';
-const PRICE_INFO = 'priceInfo';
+const PRICE_INFO = 'price-info';
 const TIERS = 'tiers';
 
 // POSITIONS
