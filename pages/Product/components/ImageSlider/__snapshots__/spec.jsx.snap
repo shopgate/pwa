@@ -308,7 +308,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                   className="swiper-wrapper"
                 >
                   <div
-                    className="sg-swiper-slide css-1l9a57c "
+                    className="sg-swiper-slide css-xwe5xi "
                     key=".$s0"
                   >
                     <SliderItem
@@ -381,7 +381,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                     </SliderItem>
                   </div>
                   <div
-                    className="sg-swiper-slide css-1l9a57c "
+                    className="sg-swiper-slide css-xwe5xi "
                     key=".$s1"
                   >
                     <SliderItem

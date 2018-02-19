@@ -30,12 +30,12 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
 
 exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 <Button
-  className="css-1uxw61o "
+  className="css-pykrk6 "
   disabled={false}
   onClick={null}
 >
   <div
-    className="css-4mrwyf"
+    className="css-8s1fw2"
   >
     Press me
   </div>

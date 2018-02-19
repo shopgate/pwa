@@ -18,13 +18,15 @@ import styles from './style';
  */
 const ShippingCosts = ({ currency, isDisabled, value }) => {
   if (value === null) {
-    return null;
+    return (
+      <div className={styles.shippingInfoValue}>&nbsp;</div>
+    );
   }
 
   return (
     <div className={`${styles.shippingInfoValue} ${isDisabled ? styles.disabled : ''}`}>
       {!value && <I18n.Text string="shipping.free_short" />}
-      {value && <I18n.Price price={value} currency={currency} />}
+      {!!value && <I18n.Price price={value} currency={currency} />}
     </div>
   );
 };

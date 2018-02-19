@@ -56,6 +56,7 @@
     }
   },
   "shipping": {
+    "unknown": "zzgl. Versand",
     "free": "Kostenloser Versand",
     "free_short": "Kostenlos",
     "cost": "{price} Versand"
@@ -92,7 +93,8 @@
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
     "signup": "Registrieren",
-    "logout_message": "Sie wurden ausgeloggt."
+    "logout_message": "Sie wurden ausgeloggt.",
+    "error": "Nutzername oder Passwort sind nicht korrekt"
   },
   "navigation": {
     "login_register": "Anmelden",
@@ -109,6 +111,7 @@
     "terms": "AGB",
     "privacy": "Datenschutz",
     "welcome_message": "Hallo {name}",
+    "return_policy": "Widerrufsbelehrung",
     "logout": "Abmelden",
     "store_information": "Über uns",
     "more_menu": "Mehr"
