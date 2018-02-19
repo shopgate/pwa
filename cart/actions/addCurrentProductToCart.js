@@ -7,9 +7,7 @@
 
 import Event from '@shopgate/pwa-core/classes/Event';
 import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '../constants';
-import {
-  getCurrentProduct,
-} from '../../product/selectors/product';
+import { getCurrentProduct } from '../../product/selectors/product';
 import {
   getAddToCartOptions,
   getAddToCartMetadata,

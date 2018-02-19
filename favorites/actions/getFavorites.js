@@ -7,6 +7,7 @@
  */
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { logger } from '@shopgate/pwa-core/helpers';
 import {
   EFAVORITE,
   EUNKNOWN,
@@ -29,19 +30,20 @@ let getFavoritesThrottle = null;
  */
 const dispatchRequest = (dispatch) => {
   dispatch(requestFavorites());
-  const promise = new PipelineRequest('getFavorites')
+  const request = new PipelineRequest('getFavorites')
     .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
     .dispatch();
-  promise
+  request
     .then((result) => {
       dispatch(receiveFavorites(result.products));
     })
-    .catch((err) => {
-      console.error(err);
-      dispatch(errorFetchFavorites(err));
+    .catch((error) => {
+      logger.error(error);
+      dispatch(errorFetchFavorites(error));
     });
-  return promise;
+  return request;
 };
+
 /* eslint-disable consistent-return */
 /**
  * Get favorites action.

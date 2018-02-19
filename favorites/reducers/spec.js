@@ -18,9 +18,7 @@ import {
   ABORT_ADD_FAVORITES,
 } from '../constants';
 import reducers from './index';
-import {
-  mockedList,
-} from '../mock';
+import { mockedList } from '../mock';
 
 describe('Favorites - reducers', () => {
   let state = {};
