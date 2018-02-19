@@ -84,7 +84,7 @@ class Page extends Component {
     return (
       <View className={styles.container} style={this.props.style} title={this.title}>
         <Portal name={PAGE_CONTENT_BEFORE} />
-        <Portal name={PAGE_CONTENT} id={this.pageID}>
+        <Portal name={PAGE_CONTENT} props={{ id: this.pageId }}>
           <div className={styles.widgetWrapper}>
             <Widgets components={widgets} widgets={pageConfig.widgets} />
           </div>
