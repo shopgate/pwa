@@ -87,29 +87,39 @@ class Cart extends Component {
    */
   render() {
     const { cartItems, isLoading, messages } = this.props;
+    const hasItems = cartItems.length > 0;
+    const hasMessages = messages.length > 0;
 
     return (
       <View title={this.title}>
-        <section className={styles.container} style={this.state.containerPaddingStyle}>
-          {messages.length > 0 && <MessageBar messages={messages} />}
-          {cartItems.length > 0 && (
-            <Fragment>
-              <CardList>
-                {cartItems.map(cartItem => (
-                  <Item
-                    key={cartItem.id}
-                    item={cartItem}
-                    togglePaymentBar={this.togglePaymentBar}
-                  />
-                ))}
-                <CouponField onToggleFocus={this.togglePaymentBar} />
-              </CardList>
-              <PaymentBar isVisible={!this.state.isPaymentBarHidden} onSize={this.onSize} />
-            </Fragment>
-          )}
-          {(!isLoading && cartItems.length !== 0) && <TaxDisclaimer />}
-        </section>
-        {(!isLoading && cartItems.length === 0) && <Empty />}
+        {(hasItems || hasMessages) && (
+          <section
+            className={styles.container}
+            style={this.state.containerPaddingStyle}
+          >
+            {hasMessages && <MessageBar messages={messages} />}
+            {hasItems && (
+              <Fragment>
+                <CardList>
+                  {cartItems.map(cartItem => (
+                    <Item
+                      key={cartItem.id}
+                      item={cartItem}
+                      togglePaymentBar={this.togglePaymentBar}
+                    />
+                  ))}
+                  <CouponField onToggleFocus={this.togglePaymentBar} />
+                </CardList>
+                <PaymentBar
+                  isVisible={!this.state.isPaymentBarHidden}
+                  onSize={this.onSize}
+                />
+              </Fragment>
+            )}
+            {(!isLoading && hasItems) && <TaxDisclaimer />}
+          </section>
+        )}
+        {(!isLoading && !hasItems) && <Empty />}
       </View>
     );
   }
