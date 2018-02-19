@@ -6,9 +6,10 @@
  */
 
 import React from 'react';
-import MoreIcon from 'Components/icons/MoreIcon';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import { MORE_PATH } from 'Pages/More/constants';
+import MoreIcon from 'Components/icons/MoreIcon';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
 
@@ -28,7 +29,11 @@ const handleClick = () => {
 const TabBarMoreAction = props => (
   <TabBarAction
     {...props}
-    icon={<MoreIcon className={styles} />}
+    icon={(
+      <Portal name="tabbar.more-icon">
+        <MoreIcon className={styles} />
+      </Portal>
+    )}
     onClick={handleClick}
   />
 );

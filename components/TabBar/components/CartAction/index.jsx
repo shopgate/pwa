@@ -6,9 +6,10 @@
  */
 
 import React from 'react';
-import CartIcon from 'Components/icons/CartIcon';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import CartIcon from 'Components/icons/CartIcon';
 import TabBarAction from '../TabBarAction';
 import CartItemBadge from './components/CartItemBadge';
 import styles from './style';
@@ -29,7 +30,11 @@ const handleClick = () => {
 const TabBarCartAction = props => (
   <TabBarAction
     {...props}
-    icon={<CartIcon className={styles} />}
+    icon={(
+      <Portal name="tabbar.cart-icon">
+        <CartIcon className={styles} />
+      </Portal>
+    )}
     onClick={handleClick}
   >
     <CartItemBadge />

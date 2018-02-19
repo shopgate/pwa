@@ -6,9 +6,10 @@
  */
 
 import React from 'react';
-import BrowseIcon from 'Components/icons/BrowseIcon';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
+import BrowseIcon from 'Components/icons/BrowseIcon';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
 
@@ -28,7 +29,11 @@ const handleClick = () => {
 const TabBarBrowseAction = props => (
   <TabBarAction
     {...props}
-    icon={<BrowseIcon className={styles} />}
+    icon={(
+      <Portal name="tabbar.browse-icon">
+        <BrowseIcon className={styles} />
+      </Portal>
+    )}
     onClick={handleClick}
   />
 );
