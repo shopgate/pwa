@@ -57,12 +57,13 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             wrapContent={false}
           >
             <Button
-              className="css-1pv16t3 "
+              className="css-1mhr1mg "
               disabled={false}
               onClick={null}
             >
               <button
-                className="css-1pv16t3  css-1rn65c0"
+                className="css-1mhr1mg  css-1rn65c0"
+                data-test-id="Button"
                 disabled={false}
                 onClick={null}
               >

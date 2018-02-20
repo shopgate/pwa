@@ -6,9 +6,10 @@
  */
 
 import React from 'react';
-import HomeIcon from 'Components/icons/HomeIcon';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import HomeIcon from 'Components/icons/HomeIcon';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
 
@@ -28,7 +29,11 @@ const handleClick = () => {
 const TabBarHomeAction = props => (
   <TabBarAction
     {...props}
-    icon={<HomeIcon className={styles} />}
+    icon={(
+      <Portal name="tabbar.home-icon">
+        <HomeIcon className={styles} />
+      </Portal>
+    )}
     onClick={handleClick}
   />
 );

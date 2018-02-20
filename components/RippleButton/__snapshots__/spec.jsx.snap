@@ -26,6 +26,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     >
       <button
         className="css-dvo0mj  css-1rn65c0"
+        data-test-id="Button"
         disabled={true}
         onClick={null}
       >
@@ -60,12 +61,13 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="css-1uxw61o "
+      className="css-pykrk6 "
       disabled={false}
       onClick={null}
     >
       <button
-        className="css-1uxw61o  css-1rn65c0"
+        className="css-pykrk6  css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={null}
       >
@@ -138,6 +140,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
     >
       <button
         className="css-1gr82ub  css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={null}
       >
@@ -183,12 +186,13 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="css-1pv16t3 "
+      className="css-1mhr1mg "
       disabled={false}
       onClick={null}
     >
       <button
-        className="css-1pv16t3  css-1rn65c0"
+        className="css-1mhr1mg  css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={null}
       >

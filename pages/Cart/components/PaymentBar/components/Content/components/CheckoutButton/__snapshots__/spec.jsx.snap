@@ -2,7 +2,7 @@
 
 exports[`<CheckoutButton / Checkout is possible should render without any props 1`] = `
 <RippleButton
-  className=""
+  className="css-63oe3q"
   disabled={true}
   flat={false}
   onClick={[Function]}

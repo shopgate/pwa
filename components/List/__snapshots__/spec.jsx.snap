@@ -39,9 +39,7 @@ exports[`<List /> should render with two children 1`] = `
                 <div
                   className="css-l3889c css-h7r55a"
                 >
-                  <div
-                    className={undefined}
-                  />
+                  <div />
                   <GridItem
                     className="css-10fxwvh"
                     component="div"
@@ -99,9 +97,7 @@ exports[`<List /> should render with two children 1`] = `
                 <div
                   className="css-l3889c css-h7r55a"
                 >
-                  <div
-                    className={undefined}
-                  />
+                  <div />
                   <GridItem
                     className="css-10fxwvh"
                     component="div"
