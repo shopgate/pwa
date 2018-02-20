@@ -71,6 +71,7 @@ class ImageSlider extends Component {
       <Slider
         {...this.props}
         classNames={styles}
+        maxIndicators={10}
       >
         {imageSliderItems}
       </Slider>
