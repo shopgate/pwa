@@ -62,4 +62,9 @@ ProductPrice.defaultProps = {
   specialPrice: null,
 };
 
+ProductPrice.contextTypes = {
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
+};
+
 export default ProductPrice;

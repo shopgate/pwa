@@ -101,14 +101,32 @@ class Cart extends Component {
                 <CardList>
                   {cartItems.map(cartItem => (
                     <Fragment key={cartItem.id}>
-                      <Portal name={portals.CART_ITEM_BEFORE} props={{ id: cartItem.id }} />
-                      <Portal name={portals.CART_ITEM} props={{ id: cartItem.id }}>
+                      <Portal
+                        name={portals.CART_ITEM_BEFORE}
+                        props={{
+                          cartItemId: cartItem.id,
+                          type: cartItem.type,
+                        }}
+                      />
+                      <Portal
+                        name={portals.CART_ITEM}
+                        props={{
+                          cartItemId: cartItem.id,
+                          type: cartItem.type,
+                        }}
+                      >
                         <Item
                           item={cartItem}
                           togglePaymentBar={this.togglePaymentBar}
                         />
                       </Portal>
-                      <Portal name={portals.CART_ITEM_AFTER} props={{ id: cartItem.id }} />
+                      <Portal
+                        name={portals.CART_ITEM_AFTER}
+                        props={{
+                          cartItemId: cartItem.id,
+                          type: cartItem.type,
+                        }}
+                      />
                     </Fragment>
                   ))}
                   <Portal name={portals.CART_COUPON_FIELD_BEFORE} />

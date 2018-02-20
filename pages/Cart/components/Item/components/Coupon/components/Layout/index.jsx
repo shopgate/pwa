@@ -71,7 +71,8 @@ Layout.defaultProps = {
 };
 
 Layout.contextTypes = {
-  id: PropTypes.string,
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default Layout;

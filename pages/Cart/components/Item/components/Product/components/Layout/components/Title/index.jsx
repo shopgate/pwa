@@ -57,4 +57,9 @@ Title.defaultProps = {
   toggleEditMode: () => {},
 };
 
+Title.contextTypes = {
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
+};
+
 export default Title;

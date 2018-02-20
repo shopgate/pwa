@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardList from 'Components/CardList';
 import MessageBar from 'Components/MessageBar';
 import styles from './style';
@@ -42,7 +43,8 @@ class Coupon extends Component {
   };
 
   static childContextTypes = {
-    id: PropTypes.string,
+    cartItemId: PropTypes.string,
+    type: PropTypes.string,
   }
 
   /**
@@ -63,7 +65,8 @@ class Coupon extends Component {
    */
   getChildContext() {
     return {
-      id: this.props.id,
+      cartItemId: this.props.id,
+      type: CART_ITEM_TYPE_COUPON,
     };
   }
 
