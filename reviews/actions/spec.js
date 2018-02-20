@@ -10,9 +10,7 @@ import fetchReviews from './fetchReviews';
 import getProductReviews from './getProductReviews';
 import getUserReview from './getUserReview';
 import submitReview from './submitReview';
-import {
-  finalState,
-} from '../selectors/mock';
+import { finalState } from '../selectors/mock';
 
 const { console } = global;
 let mockedResolver;

@@ -5,9 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  CATEGORY_LIFETIME,
-} from '../../constants';
+import { CATEGORY_LIFETIME } from '../../constants';
 
 /**
  * Builds state entries from a collection of categories.
