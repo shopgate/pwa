@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import variables from 'Styles/variables';
 import CardListItem from 'Components/CardList/components/Item';
 import MessageBar from 'Components/MessageBar';
 import {
@@ -86,6 +85,7 @@ class Product extends Component {
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
    */
   toggleEditMode = (isEnabled = true) => {
+<<<<<<< HEAD
     if (isEnabled) {
       // Scroll the page to move the product component into the viewport.
       const yOffset = -(window.innerHeight / 2)
@@ -98,6 +98,8 @@ class Product extends Component {
       });
     }
 
+=======
+>>>>>>> master
     this.props.onToggleFocus(isEnabled);
 
     this.setState({
