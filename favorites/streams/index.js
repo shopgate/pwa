@@ -7,14 +7,8 @@
  */
 
 import 'rxjs/add/operator/distinctUntilChanged';
-import {
-  routeDidEnter,
-} from '@shopgate/pwa-common/streams/history';
-
-import {
-  main$,
-} from '@shopgate/pwa-common/streams/main';
-
+import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { main$ } from '@shopgate/pwa-common/streams/main';
 import {
   FAVORITES_PATH,
   REQUEST_REMOVE_FAVORITES,
