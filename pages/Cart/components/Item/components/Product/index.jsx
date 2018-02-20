@@ -7,10 +7,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import variables from 'Styles/variables';
 import CardListItem from 'Components/CardList/components/Item';
 import MessageBar from 'Components/MessageBar';
 import {
@@ -64,7 +62,7 @@ class Product extends Component {
    * We need to set the element height explicitly so that we can animate it later.
    */
   componentDidMount() {
-    this.transitionElement.style.height = `${getAbsoluteHeight(findDOMNode(this.cardElement)) + 4}px`;
+    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement) + 4}px`;
   }
 
   /**
@@ -73,19 +71,6 @@ class Product extends Component {
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
    */
   toggleEditMode = (isEnabled = true) => {
-    if (isEnabled) {
-      // Scroll the page to move the product component into the viewport.
-      const scrollElement = findDOMNode(this.cardElement);
-      const yOffset = -(window.innerHeight / 2)
-        + getAbsoluteHeight(scrollElement)
-        + variables.paymentBar.height;
-
-      scrollElement.scrollIntoView({
-        behavior: 'smooth',
-        yOffset,
-      });
-    }
-
     this.props.onToggleFocus(isEnabled);
 
     this.setState({
