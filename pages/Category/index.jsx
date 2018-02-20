@@ -7,6 +7,13 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  CATEGORY_LIST_BEFORE,
+  CATEGORY_LIST_AFTER,
+  PRODUCT_LIST_BEFORE,
+  PRODUCT_LIST_AFTER,
+} from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import CategoryList from 'Components/CategoryList';
 import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
@@ -53,6 +60,14 @@ class Category extends Component {
   }
 
   /**
+   * Returns the current category ID.
+   * @return {string|null}
+   */
+  get id() {
+    return this.props.category ? this.props.category.id : null;
+  }
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -60,8 +75,12 @@ class Category extends Component {
     return (
       <View title={this.title}>
         {this.props.isFilterBarShown && <FilterBar />}
+        <Portal name={CATEGORY_LIST_BEFORE} />
         <CategoryList />
+        <Portal name={CATEGORY_LIST_AFTER} />
+        <Portal name={PRODUCT_LIST_BEFORE} />
         {this.props.hasProducts && <Products />}
+        <Portal name={PRODUCT_LIST_AFTER} />
         <Empty
           headlineText="category.no_result.heading"
           bodyText="category.no_result.body"
