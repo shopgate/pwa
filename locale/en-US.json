@@ -69,6 +69,7 @@
     "placeholder": "Search"
   },
   "shipping": {
+    "unknown": "plus shipping",
     "free": "Free delivery",
     "free_short": "Free",
     "cost": "{price} shipping"
@@ -105,7 +106,8 @@
     "button": "Login",
     "no_account": "Don't have an account?",
     "register": "Create one here!",
-    "logout_message": "You have been logged out."
+    "logout_message": "You have been logged out.",
+    "error": "Your username and password don't match any account"
   },
   "navigation": {
     "login_register": "Login / Register",
@@ -119,6 +121,7 @@
     "payment": "Payment methods",
     "terms": "Terms",
     "privacy": "Privacy policy",
+    "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
     "logout": "Sign out"
   },

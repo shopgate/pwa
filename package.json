@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "4.4.0",
+  "version": "4.6.0",
   "description": "Shopgate's Google Material app theme.",
   "main": "index.jsx",
   "repository": "shopgate/theme-gmd",
@@ -26,11 +26,11 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "^2.4.1",
-    "@shopgate/pwa-common-commerce": "^3.1.0",
+    "@shopgate/pwa-common": "^2.6.0",
+    "@shopgate/pwa-common-commerce": "^3.2.0",
     "@shopgate/pwa-core": "^1.4.0",
-    "@shopgate/pwa-tracking": "^1.2.8",
-    "@shopgate/pwa-webcheckout-shopify": "^1.1.9",
+    "@shopgate/pwa-tracking": "^1.2.10",
+    "@shopgate/pwa-webcheckout-shopify": "^1.1.11",
     "@shopgate/react-hammerjs": "^0.5.3",
     "@shopgate/tracking-core": "^1.0.12",
     "babel-core": "^6.26.0",

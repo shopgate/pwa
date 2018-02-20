@@ -30,9 +30,9 @@
   "filter": {
     "sort": {
       "default": "Sortieren",
-      "most_popular": "Beliebteste",
-      "price_desc": "Preis: höchster zuerst",
-      "price_asc": "Preis: niedrigster zuerst"
+      "most_popular": "Beste Ergebnisse",
+      "price_desc": "Höchster Preis zuerst",
+      "price_asc": "Niedrigster Preis zuerst"
     },
     "apply": "Anwenden",
     "more": "mehr",
@@ -57,18 +57,19 @@
   },
   "category": {
     "no_result": {
-      "heading": "Uups!",
+      "heading": "Ups!",
       "body": "Keine Produkte gefunden."
     }
   },
   "search": {
     "no_result": {
-      "heading": "Uups!",
-      "body": "Ihre Suche nach \"{searchPhrase}\" hat 0 Ergebnisse."
+      "heading": "Ups!",
+      "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
     },
     "placeholder": "Suchen"
   },
   "shipping": {
+    "unknown": "zzgl. Versand",
     "free": "Kostenloser Versand",
     "free_short": "Kostenlos",
     "cost": "{price} Versand"
@@ -78,9 +79,9 @@
   },
   "modal": {
     "confirm": "Bestätigen",
-    "dismiss": "OK",
-    "ok": "Ok",
-    "title_error": "Hoppla!",
+    "dismiss": "Okay",
+    "ok": "Okay",
+    "title_error": "Ups!",
     "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   },
   "cart": {
@@ -88,24 +89,25 @@
     "checkout": "Zur Kasse",
     "remove": "Entfernen",
     "edit": "Bearbeiten",
-    "empty": "Ihr Warenkorb ist leer",
+    "empty": "Ihr Warenkorb ist leer.",
     "continue": "Weiter shoppen",
-    "redeem_coupon": "Coupon Code eingeben",
+    "redeem_coupon": "Gutscheincode eingeben",
     "coupon_code": "Code",
-    "default_coupon_label": "Coupon",
+    "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!"
   },
   "login": {
-    "headline": "Willkommen",
-    "subline": "Anmelden um fortzufahren",
-    "email": "Email",
+    "headline": "Willkommen!",
+    "subline": "Bitte melden Sie sich an, um fortzufahren",
+    "email": "E-Mail",
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
-    "forgot_password_popup": "Bitte benutzen Sie die Desktop Webseite um Ihr Passwort zurückzusetzen.",
+    "forgot_password_popup": "Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.",
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
-    "register": "Registrieren",
-    "logout_message": "Sie wurden ausgeloggt."
+    "register": "Starten Sie hier.",
+    "logout_message": "Sie wurden ausgeloggt.",
+    "error": "Nutzername oder Passwort sind nicht korrekt"
   },
   "navigation": {
     "login_register": "Anmelden",
@@ -114,30 +116,31 @@
     "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
-    "shipping": "Versandmethoden",
+    "shipping": "Versandarten",
     "about": "Impressum",
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
+    "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
     "logout": "Abmelden"
   },
   "reviews": {
     "rating": "Bewertung",
-    "no_reviews": "Sei der Erste, der dieses Produkt bewertet:",
+    "no_reviews": "Verfassen Sie die erste Bewertung.",
     "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
-    "button_add": "Bewertung schreiben",
+    "button_add": "Produkt bewerten",
     "button_all": "Alle {count} Bewertungen",
     "author": "von {author}",
     "rating_stars": "{rate} {rate, plural, =1 {Stern} other {Sterne}}",
-    "review_form_rate": "Bewerte dieses Produkt:",
+    "review_form_rate": "Bewerten Sie dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
-    "review_form_text": "Bewertung (optional)",
-    "review_form_error_author_empty": "Bitte einen Namen angeben.",
-    "review_form_rate_error": "Bitte Sterne vergeben.",
+    "review_form_text": "Ihre Bewertung (optional)",
+    "review_form_error_author_empty": "Bitte geben Sie einen Namen an.",
+    "review_form_rate_error": "Wie viele Sterne vergeben Sie?",
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
-    "success_message": "Danke für Ihre Bewertung!"
+    "success_message": "Vielen Dank für Ihre Bewertung!"
   }
 }
