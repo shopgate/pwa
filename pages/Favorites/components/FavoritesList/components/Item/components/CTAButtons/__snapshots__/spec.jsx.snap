@@ -48,6 +48,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             readOnlyOnFetch={true}
             removeFavorites={[Function]}
             removeThrottle={null}
+            removeWithRelatives={false}
             rippleClassName=""
           />
         </Connect(FavoritesButton)>
