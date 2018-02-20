@@ -85,21 +85,6 @@ class Product extends Component {
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
    */
   toggleEditMode = (isEnabled = true) => {
-<<<<<<< HEAD
-    if (isEnabled) {
-      // Scroll the page to move the product component into the viewport.
-      const yOffset = -(window.innerHeight / 2)
-        + getAbsoluteHeight(this.cardElement)
-        + variables.paymentBar.height;
-
-      this.cardElement.scrollIntoView({
-        behavior: 'smooth',
-        yOffset,
-      });
-    }
-
-=======
->>>>>>> master
     this.props.onToggleFocus(isEnabled);
 
     this.setState({
