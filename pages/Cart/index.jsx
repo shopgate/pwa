@@ -119,9 +119,7 @@ class Cart extends Component {
                 </CardList>
               </Portal>
               <Portal name={portals.CART_ITEM_LIST_AFTER} />
-              <Portal name={portals.CART_PAYMENT_BAR} >
-                <PaymentBar isVisible={!this.state.isPaymentBarHidden} onSize={this.onSize} />
-              </Portal>
+              <PaymentBar isVisible={!this.state.isPaymentBarHidden} onSize={this.onSize} />
             </Fragment>
           )}
           {(!isLoading && cartItems.length !== 0) && <TaxDisclaimer />}

@@ -7,9 +7,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import ContextMenu from 'Components/ContextMenu';
 import styles from './style';
