@@ -17,21 +17,20 @@ import {
 
 import {
   FAVORITES_PATH,
-  RECEIVE_ADD_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
-  ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
+  ERROR_SYNC_FAVORITES,
+  ERROR_FETCH_FAVORITES,
+  IDLE_SYNC_FAVORITES,
 } from '../constants';
 
 export const favoritesDidEnter$ = routeDidEnter(FAVORITES_PATH);
 
-export const favoritesDidChange$ = main$.filter(({ action }) => [
-  RECEIVE_REMOVE_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
-  ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
+export const favoritesError$ = main$.filter(({ action }) => [
+  ERROR_SYNC_FAVORITES,
+  ERROR_FETCH_FAVORITES,
 ].includes(action.type));
 
 export const favoritesWillRemoveItem$ = main$
   .filter(({ action }) => action.type === REQUEST_REMOVE_FAVORITES);
+
+export const favoritesSyncIdle$ = main$.filter(({ action }) => action.type === IDLE_SYNC_FAVORITES);

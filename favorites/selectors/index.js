@@ -30,7 +30,6 @@ export const getFavoritesProductsIds = (state) => {
   }
   return [];
 };
-
 /**
  * Favorites selector.
  */
