@@ -8,6 +8,8 @@
 import React from 'react';
 import sizeMe from 'react-sizeme';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import ShippingCostsLabel from './components/ShippingCostsLabel';
 import ShippingCosts from './components/ShippingCosts';
 import SubTotalLabel from './components/SubTotalLabel';
@@ -22,7 +24,7 @@ import styles from './style';
  */
 const Content = () => (
   <Grid className={styles.container}>
-
+    <Portal name={portals.CART_PAYMENT_BAR_BEFORE} />
     <Grid.Item className={styles.labelColumn} grow={1}>
       <div className={styles.column}>
         <SubTotalLabel />
@@ -44,6 +46,7 @@ const Content = () => (
         </div>
       </div>
     </Grid.Item>
+    <Portal name={portals.CART_PAYMENT_BAR_AFTER} />
   </Grid>
 );
 

@@ -8,6 +8,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import ProductImage from 'Components/ProductImage';
 import Properties from 'Components/ProductProperties';
@@ -19,13 +21,18 @@ import styles from './style';
 /**
  * The Cart Product Layout component.
  * @param {Object} props The component properties.
+ * @param {Object} context The component context.
  * @returns {JSX}
  */
-const Layout = props => (
+const Layout = (props, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.leftColumn}>
       <div className={styles.image}>
-        <ProductImage src={props.product.featuredImageUrl} />
+        <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={{ ...context }} />
+        <Portal name={portals.CART_ITEM_IMAGE} props={{ ...context }}>
+          <ProductImage src={props.product.featuredImageUrl} />
+        </Portal>
+        <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={{ ...context }} />
       </div>
       <QuantityPicker
         quantity={props.quantity}
@@ -77,6 +84,10 @@ Layout.defaultProps = {
   handleDelete: () => {},
   handleUpdate: () => {},
   toggleEditMode: () => {},
+};
+
+Layout.contextTypes = {
+  id: PropTypes.string,
 };
 
 export default Layout;
