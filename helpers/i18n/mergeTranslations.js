@@ -19,7 +19,7 @@ const mergeTranslations = (destination, source) => {
 
   if (isPlainObject(destination)) {
     Object.keys(destination).forEach((key) => {
-      if (key.includes(process.env.LANG)) {
+      if (key.includes(process.env.LOCALE_FILE)) {
         extension = destination[key];
       }
     });

@@ -41,24 +41,35 @@ class Portal extends Component {
    * @param {Object} props - The props to pass to the component.
    * @return {Array}
    */
-  getComponents(name, props) {
+  getComponents = (name, props) => {
     const components = [];
 
     // Loop over the portal keys.
     Object.keys(config.portals).forEach((key, index) => {
-      // Stop if there is no key that matches the given name (prop).
-      if (config.portals[key].target !== name) {
+      const portalTarget = Array.isArray(config.portals[key].target)
+        ? config.portals[key].target
+        : [config.portals[key].target];
+
+      if (portalTarget.length === 0) {
         return;
       }
 
-      const PortalComponent = portals[key];
+      portalTarget.forEach((target) => {
+        // Stop if there is no key that matches the given name (prop).
+        if (target !== name) {
+          return;
+        }
 
-      // Check that the component is valid.
-      if (PortalComponent) {
-        components.push((
-          <PortalComponent {...props} key={`${key}-${index}`} />
-        ));
-      }
+        const PortalComponent = portals[key];
+
+        // Check that the component is valid.
+        if (PortalComponent) {
+          const componentKey = `${key}-${index}`;
+          components.push((
+            <PortalComponent {...props} key={componentKey} />
+          ));
+        }
+      });
     });
 
     return components;
