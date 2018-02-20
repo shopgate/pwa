@@ -47,7 +47,6 @@ const Layout = ({ coupon, currency, handleDelete }, context) => (
     </Grid.Item>
     <Grid.Item className={`${styles.content} ${styles.contentLast}`} grow={1} shrink={0}>
       <Delete handleDelete={handleDelete} />
-      <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={{ ...context }} />
       { (coupon.savedPrice && coupon.savedPrice.value > 0) &&
         <Fragment>
           <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={{ ...context }} />
@@ -57,7 +56,6 @@ const Layout = ({ coupon, currency, handleDelete }, context) => (
           <Portal name={portals.CART_ITEM_PRICE_AFTER} props={{ ...context }} />
         </Fragment>
       }
-      <Portal name={portals.CART_ITEM_PRICE_AFTER} props={{ ...context }} />
     </Grid.Item>
   </Grid>
 );
@@ -73,7 +71,8 @@ Layout.defaultProps = {
 };
 
 Layout.contextTypes = {
-  id: PropTypes.string,
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default Layout;

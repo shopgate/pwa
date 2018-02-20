@@ -59,7 +59,8 @@ ProductPrice.defaultProps = {
 };
 
 ProductPrice.contextTypes = {
-  id: PropTypes.string,
+  cartItemId: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default ProductPrice;
