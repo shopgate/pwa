@@ -22,11 +22,11 @@ describe('<ActionButton />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props = {}) => {
-    renderedElement = shallow(
+    renderedElement = shallow((
       <ActionButton {...props}>
         Action Button
       </ActionButton>
-    );
+    ));
   };
 
   describe('Given the component was mounted to the DOM', () => {

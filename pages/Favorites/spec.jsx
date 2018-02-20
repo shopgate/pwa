@@ -15,13 +15,18 @@ import {
   mockedState,
   mockedEmptyState,
   mockedNotReadyState,
+  mockedNextProps,
 } from './mock';
+import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 const mockedView = MockedView;
 const mockedStore = configureStore();
 jest.mock('Components/View', () => mockedView);
 jest.mock('@shopgate/pwa-common/actions/history/goBackHistory', () => () => ({
   type: 'goback',
+}));
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  hasFavorites: true,
 }));
 /**
  * Creates component
@@ -72,6 +77,31 @@ describe('<Favorites> page', () => {
       expect(component.find('LoadingIndicator').exists()).toBe(false);
       expect(component.find('EmptyFavorites').html()).toBe(null);
       expect(component.find('FavoritesList').exists()).toBe(true);
+    });
+
+    it('should only update when the list changed', () => {
+      const component = createComponent(mockedState);
+
+      const result1 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
+      expect(result1).toBe(true);
+
+      component.find('FavoritesList').instance().props = mockedNextProps;
+      component.update();
+
+      const result2 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
+      expect(result2).toBe(false);
+    });
+    it('should hide when favItemButton is clicked', () => {
+      const component = createComponent(mockedState);
+      expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(true);
+      component.find('FavoritesButton').at(0).instance().props.onRippleComplete(false);
+      component.update();
+      expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(false);
+    });
+  });
+  describe('Constants', () => {
+    it('should export FAVORITES_SHOW_TOAST_DELAY', () => {
+      expect(typeof FAVORITES_SHOW_TOAST_DELAY).toBe('number');
     });
   });
 });

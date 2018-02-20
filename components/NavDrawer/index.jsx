@@ -13,6 +13,8 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import ClientInformation from 'Components/ClientInformation';
 import HomeIcon from 'Components/icons/HomeIcon';
 import HeartIcon from 'Components/icons/HeartIcon';
@@ -40,7 +42,6 @@ class NavDrawer extends Component {
     toggleNavDrawer: PropTypes.func.isRequired,
     cartProductCount: PropTypes.number,
     entries: PropTypes.shape(),
-    hasFavorites: PropTypes.bool,
     highlightFavorites: PropTypes.bool,
     logout: PropTypes.func,
     navDrawerActive: PropTypes.bool,
@@ -50,7 +51,6 @@ class NavDrawer extends Component {
   static defaultProps = {
     cartProductCount: 0,
     entries: {},
-    hasFavorites: false,
     highlightFavorites: false,
     logout: () => {},
     navDrawerActive: false,
@@ -136,7 +136,7 @@ class NavDrawer extends Component {
           <I18n.Text string="navigation.categories" />
         </Item>
 
-        { this.props.hasFavorites &&
+        { appConfig.hasFavorites &&
           <Item
             href={FAVORITES_PATH}
             icon={HeartIcon}
@@ -184,6 +184,12 @@ class NavDrawer extends Component {
         <Item href={`${PAGE_PATH}/privacy`} icon={SecurityIcon} close={this.handleClose}>
           <I18n.Text string="navigation.privacy" />
         </Item>
+
+        {showReturnPolicy && (
+          <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.return_policy" />
+          </Item>
+        )}
 
         <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
           <I18n.Text string="navigation.about" />

@@ -12,7 +12,7 @@ import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import Message from './components/Message';
 import Container from './components/Container';
-import SnackBar from './index';
+import ActionButton from './components/ActionButton';
 import { mockedState } from './mock';
 
 const mockedStore = configureStore();
@@ -30,10 +30,24 @@ const createComponent = (state) => {
 };
 
 describe('<SnackBar />', () => {
-  it('renders component', () => {
+  it('should render component without action', () => {
     const wrapper = createComponent(mockedState);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Message).exists()).toBe(true);
     expect(wrapper.find(Container).exists()).toBe(true);
+  });
+  it('shuld render component with action button', () => {
+    const wrapper = createComponent({
+      toast: [
+        {
+          ...mockedState.toast[0],
+          action: 'click me',
+        },
+      ],
+    });
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Message).exists()).toBe(true);
+    expect(wrapper.find(Container).exists()).toBe(true);
+    expect(wrapper.find(ActionButton).exists()).toBe(true);
   });
 });

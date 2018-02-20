@@ -8,6 +8,9 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
+const cartButtonSize = 56;
+const iconSize = 24;
+
 const buttons = css({
   position: 'absolute',
   right: variables.gap.big,
@@ -19,9 +22,8 @@ const buttons = css({
 
 const favButton = css({
   marginRight: variables.gap.big,
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   zIndex: 15, // Prevents the icons to be visible outside of the circle
-  fontSize: 24,
+  fontSize: iconSize,
 }).toString();
 
 const ripple = css({
@@ -30,6 +32,8 @@ const ripple = css({
 
 export default {
   buttons,
+  cartButtonSize,
   favButton,
+  iconSize,
   ripple,
 };

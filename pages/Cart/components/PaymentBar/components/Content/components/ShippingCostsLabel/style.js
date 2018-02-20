@@ -7,7 +7,6 @@
 
 import { css } from 'glamor';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
 
 const disabled = css({
   color: `${colors.shade4} !important`,
@@ -24,14 +23,7 @@ const shippingInfo = css({
   flexDirection: 'row',
 }).toString();
 
-const shippingInfoIcon = css({
-  fontSize: '1.25rem',
-  paddingRight: variables.gap.small * 0.5,
-  marginTop: '-1px',
-}).toString();
-
 export default {
   disabled,
   shippingInfo,
-  shippingInfoIcon,
 };

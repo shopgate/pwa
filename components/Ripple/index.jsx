@@ -23,7 +23,9 @@ class Ripple extends PureComponent {
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
     color: PropTypes.string,
+    disabled: PropTypes.bool,
     fill: PropTypes.bool,
+    onComplete: PropTypes.func,
     overflow: PropTypes.bool,
     size: PropTypes.number,
   };
@@ -31,7 +33,9 @@ class Ripple extends PureComponent {
   static defaultProps = {
     className: '',
     color: colors.dark,
+    disabled: false,
     fill: false,
+    onComplete: () => {},
     overflow: false,
     size: null,
   };
@@ -204,6 +208,7 @@ class Ripple extends PureComponent {
     }
 
     const ripples = shift(this.state.ripples);
+    this.props.onComplete();
 
     this.setState({
       ripples,
@@ -216,6 +221,9 @@ class Ripple extends PureComponent {
    * @param {Object} event The even object.
    */
   handleClick = (event) => {
+    if (this.props.disabled) {
+      return;
+    }
     this.addRipple(event, true);
   };
 

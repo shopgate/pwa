@@ -3,7 +3,8 @@
     "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}",
     "load_more": "Load more",
     "cancel": "Cancel",
-    "submit": "Submit"
+    "submit": "Submit",
+    "undo": "Undo"
   },
   "titles": {
     "categories": "Categories",
@@ -14,10 +15,17 @@
     "favorites": "Favorites"
   },
   "favorites": {
+    "add": "Add to favorites",
     "continue": "Continue shopping",
     "empty": "You don't have any favorites",
     "error_add": "Product could not be added to favorites",
-    "error_remove": "Product could not be removed from favorites"
+    "error_remove": "Product could not be removed from favorites",
+    "remove": "Remove from favorites",
+    "removed": "Removed from favorites",
+    "modal": {
+      "message": "To add this product to your cart, please select the variants.",
+      "confirm": "Select variants"
+    }
   },
   "filter": {
     "sort": {
@@ -35,13 +43,17 @@
   "price": {
     "from": "From {price}",
     "range": "Price range from {fromPrice} to {toPrice}",
-    "tier": "{from} or more: {price}",
+    "tier": {
+      "set": "{from} items: {price}",
+      "range": "{from} or more: {price}"
+    },
     "msrp": "MSRP",
     "currency": "USD"
   },
   "product": {
     "description_heading": "About",
-    "pick_an_attribute": "Pick a {0}"
+    "pick_an_attribute": "Pick a {0}",
+    "tax_disclaimer": "* Incl. VAT plus shipping costs"
   },
   "category": {
     "no_result": {
@@ -57,6 +69,7 @@
     "placeholder": "Search"
   },
   "shipping": {
+    "unknown": "plus shipping",
     "free": "Free delivery",
     "free_short": "Free",
     "cost": "{price} shipping"
@@ -93,7 +106,8 @@
     "button": "Login",
     "no_account": "Don't have an account?",
     "register": "Create one here!",
-    "logout_message": "You have been logged out."
+    "logout_message": "You have been logged out.",
+    "error": "Your username and password don't match any account"
   },
   "navigation": {
     "login_register": "Login / Register",
@@ -107,6 +121,7 @@
     "payment": "Payment methods",
     "terms": "Terms",
     "privacy": "Privacy policy",
+    "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
     "logout": "Sign out"
   },

@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-const button = css({
+const buttonProto = {
   display: 'block',
   position: 'relative',
   background: '#fff',
@@ -19,6 +19,13 @@ const button = css({
   color: colors.accent,
   outline: 0,
   zIndex: 15, // Should overlap the gallery bullets
+};
+
+const buttonFlat = css(buttonProto).toString();
+
+const button = css({
+  ...buttonProto,
+  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
 }).toString();
 
 const ripple = css({
@@ -26,6 +33,7 @@ const ripple = css({
 }).toString();
 
 export default {
+  buttonFlat,
   button,
   ripple,
 };

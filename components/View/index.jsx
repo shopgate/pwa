@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
-import { shopName } from 'Config/app.json';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
 
@@ -51,15 +51,20 @@ class View extends Component {
     viewTop: true,
   };
 
+  static contextTypes = {
+    routePath: PropTypes.string,
+  };
+
   /**
    * The component constructor
    * @param {Object} props The component props
+   * @param {Object} context The component context
    */
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     // Store the active pathname at instantiation
-    this.pathname = props.historyPathname;
+    this.pathname = context.routePath;
     this.element = null;
   }
 
@@ -155,7 +160,7 @@ class View extends Component {
 
     return (
       <Helmet
-        title={this.props.title ? `${this.props.title} - ${shopName}` : shopName}
+        title={this.props.title ? `${this.props.title} - ${appConfig.shopName}` : appConfig.shopName}
         meta={meta}
         link={link}
         script={script}

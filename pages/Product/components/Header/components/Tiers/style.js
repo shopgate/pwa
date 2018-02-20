@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 
 const wrapper = css({
-  marginTop: 10,
+  marginTop: 4,
   fontSize: '0.875rem',
 }).toString();
 

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CTAButtons /> should render buttons 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(CTAButtons)
+    productId="product_1"
+  >
+    <CTAButtons
+      active={null}
+      addToCart={[Function]}
+      favoritesOnce={false}
+      isBaseProduct={[Function]}
+      onRippleComplete={[Function]}
+      productId="product_1"
+      removeThrottle={null}
+      showVariantModal={[Function]}
+    >
+      <div
+        className="css-wbu9yb"
+      >
+        <Connect(FavoritesButton)
+          active={null}
+          onRippleComplete={[Function]}
+          once={false}
+          productId="product_1"
+          readOnlyOnFetch={true}
+          removeThrottle={null}
+        >
+          <FavoritesButton
+            active={null}
+            addFavorites={[Function]}
+            className=""
+            noShadow={false}
+            onRippleComplete={[Function]}
+            once={false}
+            productId="product_1"
+            readOnlyOnFetch={true}
+            removeFavorites={[Function]}
+            removeThrottle={null}
+            rippleClassName=""
+          />
+        </Connect(FavoritesButton)>
+        <MockedAddToCartButton
+          className="css-ipacgg"
+          handleAddToCart={[Function]}
+          isLoading={false}
+          isOrderable={false}
+        >
+          <button
+            onClick={[Function]}
+          />
+        </MockedAddToCartButton>
+      </div>
+    </CTAButtons>
+  </Connect(CTAButtons)>
+</Provider>
+`;
