@@ -12,20 +12,22 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { PRODUCT_ITEM_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/portals';
+import { PRODUCT_ITEM_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import ProductImage from 'Components/ProductImage';
 import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
 import PriceInfo from 'Components/PriceInfo';
+import FavoritesButton from 'Components/FavoritesButton';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = ({ product, display }) => (
+const Item = ({ product, display, isFavorite }) => (
   <Link
     tagName="a"
     href={`/item/${bin2hex(product.id)}`}
@@ -35,14 +37,17 @@ const Item = ({ product, display }) => (
     itemType="http://schema.org/Product"
   >
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
-    {product.price.discount &&
+    {!!product.price.discount &&
       <div className={styles.badgeWrapper}>
         <DiscountBadge text={`-${product.price.discount}%`} />
       </div>
     }
+    <div className={styles.favorites}>
+      <FavoritesButton active={isFavorite} productId={product.id} noShadow />
+    </div>
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
-        <Portal name={PRODUCT_ITEM_NAME_BEFORE} id={product.id} />
+        <Portal name={PRODUCT_ITEM_NAME_BEFORE} props={{ id: product.id }} />
         {(!display || display.name) && (
           <div className={styles.title} itemProp="name">
             <Ellipsis>{product.name}</Ellipsis>
@@ -58,7 +63,15 @@ const Item = ({ product, display }) => (
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.unitPriceStriked > 0 && (
+            {product.price.msrp > 0 && (
+              <Grid.Item>
+                <PriceStriked
+                  value={product.price.msrp}
+                  currency={product.price.currency}
+                />
+              </Grid.Item>
+            )}
+            {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
               <Grid.Item>
                 <PriceStriked
                   value={product.price.unitPriceStriked}
@@ -91,4 +104,4 @@ Item.defaultProps = {
   display: null,
 };
 
-export default Item;
+export default connect(Item);

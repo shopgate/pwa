@@ -7,8 +7,9 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductImage from 'Components/ProductImage';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import ProductImage from 'Components/ProductImage';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import styles from './style';
 
@@ -21,7 +22,7 @@ const Image = ({ product }) => (
   <div className={styles.image}>
     <Link
       tagName="a"
-      href={`/item/${bin2hex(product.baseProductId || product.id)}`}
+      href={`${ITEM_PATH}/${bin2hex(product.baseProductId || product.id)}`}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"

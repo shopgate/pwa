@@ -29,6 +29,8 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
 import SnackBar from 'Components/SnackBar';
@@ -58,13 +60,14 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  */
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
+    <Portal name={APP_GLOBALS} />
     <Viewport>
       <ModalContainer component={Dialog} />
       <SnackBar />
       <Route path={`${INDEX_PATH}`} component={Page} />
       <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
       <Route path={`${CATEGORY_PATH}`} component={Category} />
-      <Route path={`${CATEGORY_PATH}/:categoryId?`} component={Category} />
+      <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={Category} />
       <Route path={`${FILTER_PATH}`} component={Filter} />
       <Route path={`${FILTER_PATH}/:attribute`} component={FilterAttribute} />
       <Route path={`${ITEM_PATH}/:productId`} component={Product} />
@@ -78,6 +81,8 @@ const Pages = () => (
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} />
+
+      <Portal name={APP_ROUTES} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />

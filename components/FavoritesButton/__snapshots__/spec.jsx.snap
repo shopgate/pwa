@@ -15,24 +15,22 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
 >
   <Connect(FavoritesButton)
     active={false}
-    addFavorites={[Function]}
-    removeFavorites={[Function]}
   >
     <FavoritesButton
       active={false}
       addFavorites={[Function]}
       className=""
-      isFetching={true}
+      noShadow={false}
       onRippleComplete={[Function]}
+      once={false}
       productId={null}
-      readOnlyOnFetch={false}
       removeFavorites={[Function]}
       removeThrottle={0}
       rippleClassName=""
     >
       <button
         aria-label="favorites.add"
-        className="css-1b5v381 "
+        className="css-101jfv7 "
         onClick={[Function]}
       >
         <Ripple
@@ -100,24 +98,22 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
 >
   <Connect(FavoritesButton)
     active={true}
-    addFavorites={[Function]}
-    removeFavorites={[Function]}
   >
     <FavoritesButton
       active={true}
       addFavorites={[Function]}
       className=""
-      isFetching={true}
+      noShadow={false}
       onRippleComplete={[Function]}
+      once={false}
       productId={null}
-      readOnlyOnFetch={false}
       removeFavorites={[Function]}
       removeThrottle={0}
       rippleClassName=""
     >
       <button
         aria-label="favorites.remove"
-        className="css-1b5v381 "
+        className="css-101jfv7 "
         onClick={[Function]}
       >
         <Ripple

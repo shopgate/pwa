@@ -46,8 +46,7 @@ const badgeWrapper = css({
   width: 40,
 }).toString();
 
-const wishlist = css({
-  display: 'none',
+const favorites = css({
   position: 'absolute',
   right: 16,
   left: 'auto',
@@ -61,5 +60,5 @@ export default {
   details,
   priceWrapper,
   title,
-  wishlist,
+  favorites,
 };
