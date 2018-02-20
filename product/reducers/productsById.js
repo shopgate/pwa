@@ -12,9 +12,7 @@ import {
   RECEIVE_PRODUCTS,
   ERROR_PRODUCT,
 } from '../constants';
-import {
-  RECEIVE_FAVORITES,
-} from '../../favorites/constants';
+import { RECEIVE_FAVORITES } from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
 import enrichProduct from './helpers/enrichProduct';
 

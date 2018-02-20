@@ -77,9 +77,10 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         ...cart,
+        expires: 0,
         items: cartItems,
         isFetching: false,
-        expires: 0,
+        productPendingCount: 0,
       };
     }
     case ERROR_CART:
