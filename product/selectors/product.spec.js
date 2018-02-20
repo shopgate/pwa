@@ -126,17 +126,32 @@ describe('Product selectors', () => {
             isFetching: false,
             productData: {
               baseProductId: null,
+              id: 'product_1',
             },
           },
           product_2: {
             isFetching: false,
             productData: {
               baseProductId: 'product_1',
+              id: 'product_2',
+              flags: {
+                hasVariants: false,
+              },
             },
           },
           product_3: {
             isFetching: true,
             productData: null,
+          },
+          product_4: {
+            isFetching: false,
+            productData: {
+              baseProductId: null,
+              flags: {
+                hasVariants: false,
+              },
+              id: 'product_4',
+            },
           },
         },
       },
@@ -145,6 +160,7 @@ describe('Product selectors', () => {
       expect(isBaseProduct(mockedBaseProductState, 'product_1')).toBe(true);
       expect(isBaseProduct(mockedBaseProductState, 'product_2')).toBe(false);
       expect(isBaseProduct(mockedBaseProductState, 'product_3')).toBe(null);
+      expect(isBaseProduct(mockedBaseProductState, 'product_4')).toBe(false);
     });
   });
 });
