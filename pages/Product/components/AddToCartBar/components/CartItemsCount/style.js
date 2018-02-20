@@ -38,6 +38,7 @@ const container = css({
   overflow: 'hidden',
   transform: 'translate3d(0, 100%, 0)',
   willChange: 'transform',
+  lineHeight: 1.25,
 });
 
 const check = css({

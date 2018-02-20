@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import styles, { duration, transition } from './style';
 
 /**
@@ -74,7 +75,7 @@ class Count extends Component {
       >
         {state => (
           <div className={styles.container} style={transition[state]}>
-            {this.state.numItems} items added
+            <I18n.Text string="product.item_added" params={{ count: this.state.numItems }} />
           </div>
         )}
       </Transition>

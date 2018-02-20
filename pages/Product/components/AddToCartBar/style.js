@@ -28,7 +28,7 @@ const statusBar = css({
   display: 'flex',
   height: '100%',
   alignItems: 'center',
-  maxWidth: '65%',
+  maxWidth: '60%',
   padding: `0 ${variables.gap.small}px`,
 });
 

@@ -12,6 +12,7 @@ const container = css({
   alignItems: 'center',
   justifyContent: 'center',
   flexGrow: 0,
+  flexShrink: 0,
   fontSize: '1.75rem',
   width: 44,
   height: 44,

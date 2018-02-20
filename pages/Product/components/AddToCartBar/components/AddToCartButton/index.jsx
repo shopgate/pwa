@@ -7,6 +7,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import connect from './connector';
 import styles from './style';
 
@@ -80,11 +81,15 @@ class AddToCartButton extends Component {
    */
   render() {
     const { cartProductCount } = this.props;
-    const style = this.state.opened ? { width: '35%' } : null;
+    const style = this.state.opened ? { width: '40%' } : null;
 
     return (
       <button className={styles} style={style} onClick={this.handleClick}>
-        {!cartProductCount ? 'Add to cart' : 'Go to cart'}
+        {!cartProductCount ? (
+          <I18n.Text string="product.add_to_cart" />
+        ): (
+          <I18n.Text string="product.go_to_cart" />
+        )}
       </button>
     );
   }
