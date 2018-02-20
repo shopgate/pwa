@@ -16,6 +16,7 @@ exports[`<Toast /> should call actionOnClick on action click 1`] = `
     actionButton={[Function]}
     container={[Function]}
     message={[Function]}
+    onClose={[MockFunction]}
     toast={[Function]}
   >
     <Toast
@@ -24,7 +25,8 @@ exports[`<Toast /> should call actionOnClick on action click 1`] = `
       container={[Function]}
       dispatchAction={[Function]}
       message={[Function]}
-      onClose={[Function]}
+      nextToast={null}
+      onClose={[MockFunction]}
       removeToast={[Function]}
       toast={
         Object {
@@ -105,6 +107,14 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
     actionButton={[Function]}
     container={[Function]}
     message={[Function]}
+    onClose={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+          Array [],
+        ],
+      }
+    }
     toast={[Function]}
   >
     <Toast
@@ -113,9 +123,33 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
       container={[Function]}
       dispatchAction={[Function]}
       message={[Function]}
-      onClose={[Function]}
+      nextToast={null}
+      onClose={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+            Array [],
+          ],
+        }
+      }
       removeToast={[Function]}
-      toast={null}
+      toast={
+        Object {
+          "action": "click me",
+          "actionOnClick": [MockFunction] {
+            "calls": Array [
+              Array [
+                [Function],
+                [Function],
+                undefined,
+              ],
+            ],
+          },
+          "duration": 2,
+          "id": 5,
+          "message": "hello world",
+        }
+      }
     >
       <div
         aria-live="polite"
@@ -140,7 +174,29 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
             className="css-1rg7udn css-pbiap8"
             onAnimationEnd={[Function]}
             style={Object {}}
-          />
+          >
+            <MockContainer>
+              <div>
+                <MockMessage
+                  text="hello world"
+                >
+                  <span>
+                    hello world
+                  </span>
+                </MockMessage>
+                <MockActionButton
+                  onClick={[Function]}
+                  text="click me"
+                >
+                  <button
+                    onClick={[Function]}
+                  >
+                    click me
+                  </button>
+                </MockActionButton>
+              </div>
+            </MockContainer>
+          </div>
         </Drawer>
       </div>
     </Toast>
@@ -172,6 +228,7 @@ exports[`<Toast /> should dispatch a toast message 1`] = `
       container={[Function]}
       dispatchAction={[Function]}
       message={[Function]}
+      nextToast={null}
       onClose={[Function]}
       removeToast={[Function]}
       toast={
