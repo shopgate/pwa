@@ -9,7 +9,6 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import core from '@shopgate/tracking-core/core/Core';
 import { logger } from '@shopgate/pwa-core/helpers';
-import event from '@shopgate/pwa-core/classes/Event';
 
 /**
  * Converts a price to a formatted string.
@@ -138,21 +137,6 @@ export const formatPurchaseData = (passedOrder) => {
 };
 
 /**
- * Flag to enable/disable the tracking.
- * @type {boolean}
- */
-let trackingDisabled = false;
-
-// Disable the tracking if the webview is not in the foreground anymore
-event.addCallback('viewWillDisappear', () => {
-  trackingDisabled = true;
-});
-// Enable the tracking if the webview enters the foreground
-event.addCallback('viewWillAppear', () => {
-  trackingDisabled = false;
-});
-
-/**
  * Helper to pass the redux state to the tracking core
  * @param {string} eventName The name of the event.
  * @param {Object} data The tracking data of the event.
@@ -162,11 +146,6 @@ event.addCallback('viewWillAppear', () => {
 export const track = (eventName, data, state) => {
   if (typeof core.track[eventName] !== 'function') {
     logger.warn('Unknown tracking event:', eventName);
-    return false;
-  }
-
-  if (trackingDisabled) {
-    logger.warn('Tracking disabled');
     return false;
   }
 
