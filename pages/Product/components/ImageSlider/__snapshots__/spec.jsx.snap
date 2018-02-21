@@ -236,6 +236,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
         initialSlide={0}
         interval={3000}
         loop={true}
+        maxIndicators={null}
         onSlideChange={[Function]}
         slidesPerView={1}
         snapItems={true}
@@ -248,7 +249,10 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
               "activeIndicator": "css-so6ht",
               "container": "css-nil",
               "inactiveIndicator": "css-1hipsfp",
-              "indicator": "css-17uszht",
+              "indicator": Object {
+                "bullets": "css-17uszht",
+                "fraction": "css-eyy1lx",
+              },
               "slide": "css-nil",
               "slider": "css-1i764wo",
             }
@@ -259,6 +263,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
           initialSlide={0}
           interval={3000}
           loop={true}
+          maxIndicators={10}
           onSlideChange={[Function]}
           slidesPerView={1}
           snapItems={true}
@@ -282,6 +287,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
               onTransitionStart={[Function]}
               pagination=".css-17uszht"
               paginationModifierClass="sg-swiper-pagination-"
+              paginationType="bullets"
               prevButton={null}
               slideClass="sg-swiper-slide"
               slidesPerView={1}
