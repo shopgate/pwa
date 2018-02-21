@@ -11,6 +11,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   initialSlide={0}
   interval={3000}
   loop={false}
+  maxIndicators={null}
   onSlideChange={null}
   slidesPerView={1}
   snapItems={true}
@@ -58,7 +59,10 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
       "activeIndicator": "css-so6ht",
       "container": "css-nil",
       "inactiveIndicator": "css-1hipsfp",
-      "indicator": "css-17uszht",
+      "indicator": Object {
+        "bullets": "css-17uszht",
+        "fraction": "css-eyy1lx",
+      },
       "slide": "css-nil",
       "slider": "css-1i764wo",
     }
@@ -69,6 +73,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
   initialSlide={0}
   interval={3000}
   loop={false}
+  maxIndicators={10}
   onSlideChange={null}
   slidesPerView={1}
   snapItems={true}
