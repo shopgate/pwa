@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import connect from './connector';
 import Layout from './components/Layout';
+import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
 
 /**
  * The Coupon Field component.
@@ -104,7 +105,7 @@ class CouponField extends Component {
           behavior: 'smooth',
           yOffset,
         });
-      }, 600);
+      }, CART_INPUT_AUTO_SCROLL_DELAY);
     }
 
     this.setState({
