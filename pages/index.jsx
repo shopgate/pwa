@@ -17,13 +17,13 @@ import {
   PAGE_PATH,
   LOGIN_PATH,
   REGISTER_PATH,
+  CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
@@ -52,7 +52,7 @@ import WriteReview from './WriteReview';
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
-const Pages = () =>
+const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
     <Viewport>
       <ModalContainer component={Dialog} />
@@ -80,6 +80,6 @@ const Pages = () =>
       </AuthRoutes>
     </Viewport>
   </App>
-;
+);
 
 export default Pages;

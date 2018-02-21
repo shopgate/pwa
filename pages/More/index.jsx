@@ -7,6 +7,8 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
 import View from 'Components/View';
 import ClientInformation from 'Components/ClientInformation';
 import Headline from 'Components/Headline';
@@ -15,6 +17,8 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
 import connect from './connector';
 import UserMenu from './components/UserMenu/index';
+
+/* eslint-disable react/prefer-stateless-function */
 
 /**
  * The More component.
@@ -50,6 +54,8 @@ class More extends Component {
     return (
       <View>
         <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
+
+        <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
         <Headline text="navigation.store_information" small />
         <List>
           <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
@@ -69,10 +75,14 @@ class More extends Component {
             </List>
           </div>
         )}
+
+        <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
         <ClientInformation />
       </View>
     );
   }
 }
+
+/* eslint-enable react/prefer-stateless-function */
 
 export default connect(More);
