@@ -109,13 +109,14 @@ class Slider extends Component {
     children: PropTypes.node.isRequired,
     autoPlay: PropTypes.bool,
     className: PropTypes.string,
-    classNames: PropTypes.objectOf(PropTypes.string),
+    classNames: PropTypes.shape(),
     controls: PropTypes.bool,
     disabled: PropTypes.bool,
     indicators: PropTypes.bool,
     initialSlide: PropTypes.number,
     interval: PropTypes.number,
     loop: PropTypes.bool,
+    maxIndicators: PropTypes.number,
     onSlideChange: PropTypes.func,
     slidesPerView: PropTypes.oneOfType([
       PropTypes.number,
@@ -138,6 +139,7 @@ class Slider extends Component {
     initialSlide: 0,
     interval: 3000,
     loop: false,
+    maxIndicators: null,
     onSlideChange: null,
     slidesPerView: 1,
     snapItems: true,
@@ -210,6 +212,7 @@ class Slider extends Component {
       initialSlide,
       interval,
       loop,
+      maxIndicators,
       slidesPerView,
       snapItems,
     } = this.props;
@@ -225,13 +228,22 @@ class Slider extends Component {
       );
     });
 
+    /**
+     * Determine whether or not to use the fraction indicator.
+     */
+    const useFraction = (maxIndicators && maxIndicators < children.length);
+
+    const paginationType = useFraction ? 'fraction' : 'bullets';
+    const pagination = (indicators && hasMultipleChildren) ? `.${classNames.indicator[paginationType]}` : null;
+
     const swiperProps = {
       paginationModifierClass: 'sg-swiper-pagination-',
       slideClass: 'sg-swiper-slide',
       containerClass: `sg-swiper-container ${styles.sliderInnerContainer} ${classNames.container || ''}`,
       bulletClass: classNames.inactiveIndicator,
       bulletActiveClass: classNames.activeIndicator,
-      pagination: (indicators && hasMultipleChildren) ? `.${classNames.indicator}` : null,
+      paginationType,
+      pagination,
       nextButton: controls && hasMultipleChildren ? '.swiper-button-next' : null,
       prevButton: controls && hasMultipleChildren ? '.swiper-button-prev' : null,
       autoplay: autoPlay ? interval : null,
