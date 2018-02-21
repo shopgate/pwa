@@ -87,7 +87,7 @@ class AddToCartButton extends Component {
       <button className={styles} style={style} onClick={this.handleClick}>
         {!cartProductCount ? (
           <I18n.Text string="product.add_to_cart" />
-        ): (
+        ) : (
           <I18n.Text string="product.go_to_cart" />
         )}
       </button>
