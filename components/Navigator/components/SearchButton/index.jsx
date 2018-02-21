@@ -37,8 +37,11 @@ class SearchButton extends Component {
    */
   render() {
     return (
-      <button className={styles.button} onClick={this.props.onClick}>
-        <Ripple className={styles.buttonContent}>
+      <button className={styles.button}>
+        <Ripple
+          className={styles.buttonContent}
+          onComplete={this.props.onClick}
+        >
           <MagnifierIcon />
         </Ripple>
       </button>
