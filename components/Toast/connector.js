@@ -8,7 +8,7 @@
 
 import { connect } from 'react-redux';
 import removeToast from '../../actions/toast/removeToast';
-import { getToast, getNextToast } from '../../selectors/toast';
+import { getToast, hasNextToast } from '../../selectors/toast';
 
 /**
  * Maps state to props.
@@ -17,7 +17,7 @@ import { getToast, getNextToast } from '../../selectors/toast';
  */
 const mapStateToProps = state => ({
   toast: getToast(state),
-  nextToast: getNextToast(state),
+  hasNextToast: hasNextToast(state),
 });
 
 /**

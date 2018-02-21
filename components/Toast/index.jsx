@@ -22,14 +22,7 @@ class Toast extends Component {
     message: PropTypes.func.isRequired,
     removeToast: PropTypes.func.isRequired,
     className: PropTypes.string,
-    nextToast: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired,
-      duration: PropTypes.number.isRequired,
-      action: PropTypes.string,
-      actionOnClick: PropTypes.func,
-      replaceable: PropTypes.bool,
-    }),
+    hasNextToast: PropTypes.bool,
     onClose: PropTypes.func,
     toast: PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -42,7 +35,7 @@ class Toast extends Component {
   };
 
   static defaultProps = {
-    nextToast: null,
+    hasNextToast: false,
     className: null,
     onClose: () => {},
     toast: null,
@@ -79,7 +72,7 @@ class Toast extends Component {
     }
 
     if (
-      nextProps.nextToast
+      nextProps.hasNextToast
       && this.props.toast
       && this.props.toast.replaceable
     ) {
