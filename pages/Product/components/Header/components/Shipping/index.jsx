@@ -5,9 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import PlaceholderLabel from 'Components/PlaceholderLabel';
 import Label from './components/Label';
 import connect from './connector';
 import styles from './style';
@@ -18,11 +17,11 @@ import styles from './style';
  * @return {JSX}
  */
 const Shipping = ({ shipping }) => (
-  <PlaceholderLabel className={styles.placeholder} ready={(shipping !== null)}>
-    {shipping && (
+  <Fragment>
+    {shipping && shipping.price !== null && (
       <Label className={styles.shipping} price={shipping.price} currency={shipping.currency} />
     )}
-  </PlaceholderLabel>
+  </Fragment>
 );
 
 Shipping.propTypes = {
