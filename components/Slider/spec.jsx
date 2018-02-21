@@ -18,6 +18,11 @@ describe('<Slider />', () => {
     <Slider.Item key="2"><div /></Slider.Item>,
   ];
 
+  const indicatorClasses = {
+    bullets: 'bullet-class',
+    fraction: 'fraction-class',
+  };
+
   jest.useFakeTimers();
 
   it('renders with children', () => {
@@ -35,12 +40,32 @@ describe('<Slider />', () => {
     expect(wrapper.find('.swiper-button-next').length).toBe(1);
   });
 
-  it('renders with indicators', () => {
+  it('renders with bullet indicators', () => {
     const wrapper = mount((
-      <Slider indicators classNames={{ indicator: 'indicator-class' }}>{children}</Slider>
+      <Slider
+        classNames={{ indicator: indicatorClasses }}
+        indicators
+      >
+        {children}
+      </Slider>
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('.indicator-class').length).toBe(1);
+    expect(wrapper.find(`.${indicatorClasses.bullets}`).length).toBe(1);
+  });
+
+  it('renders with a fraction indicator', () => {
+    const wrapper = mount((
+      <Slider
+        classNames={{ indicator: indicatorClasses }}
+        indicators
+        maxIndicators={2}
+      >
+        {children}
+      </Slider>
+    ));
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(`.${indicatorClasses.fraction}`).length).toBe(1);
   });
 });
