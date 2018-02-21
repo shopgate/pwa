@@ -6,7 +6,6 @@
  */
 
 // FEATURES
-const PRODUCT_ITEM = 'product-item';
 const PRODUCT = 'product';
 
 // CONTENTS
@@ -35,10 +34,6 @@ const BEFORE = 'before';
 const AFTER = 'after';
 const ROW1 = 'row1';
 const ROW2 = 'row2';
-
-/* PRODUCT ITEM */
-
-export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT_ITEM}.${NAME}.${BEFORE}`;
 
 /* PRODUCT DETAILS */
 
