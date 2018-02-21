@@ -38,7 +38,7 @@ export const requestAddFavorites = productId => ({
 });
 
 /**
- * Request add favorites action.
+ * Request remove favorites action.
  * @param {string} productId Product identifier.
  * @returns {Object}
  */

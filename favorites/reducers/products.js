@@ -79,7 +79,7 @@ const products = (state = {
         isFetching: true,
         ids: state.ids || [],
         expires: 0,
-        // No ready here! It should be undefined or true!
+        // No `.ready` prop here! It should be undefined on first request and stay true later!
       };
     case RECEIVE_FAVORITES:
       return {

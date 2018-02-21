@@ -87,7 +87,6 @@ const removeProductFromFavorites = (productId, dispatch) => {
  * @returns {Promise} PipelineRequest dispatch.
  */
 const removeFavorites = (productId, withRelatives = false) => (dispatch, getState) => {
-  // Temporary solution
   if (withRelatives) {
     const allIds = getProductRelativesOnFavorites(getState(), productId);
     allIds.forEach(id => removeProductFromFavorites(id, dispatch, getState));
