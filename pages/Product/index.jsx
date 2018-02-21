@@ -105,12 +105,12 @@ class Product extends Component {
         </Portal>
         <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
 
-        {/* CTAs */}
-        <Portal name="product.add-to-cart-bar.before" />
-        <Portal name="product.add-to-cart-bar">
+        {/* ADD TO CART BAR */}
+        <Portal name={portals.PRODUCT_ADD_TO_CART_BAR_BEFORE} />
+        <Portal name={portals.PRODUCT_ADD_TO_CART_BAR}>
           <AddToCartBar />
         </Portal>
-        <Portal name="product.add-to-cart-bar.after" />
+        <Portal name={portals.PRODUCT_ADD_TO_CART_BAR_AFTER} />
       </View>
     );
   }
