@@ -16,8 +16,8 @@ import styles from './style';
  */
 class AddToCartButton extends Component {
   static propTypes = {
-    cartProductCount: PropTypes.number.isRequired,
     handleAddToCart: PropTypes.func.isRequired,
+    itemCount: PropTypes.number.isRequired,
     openCart: PropTypes.func.isRequired,
   }
 
@@ -29,7 +29,7 @@ class AddToCartButton extends Component {
     super(props);
 
     this.state = {
-      opened: !!props.cartProductCount,
+      opened: !!props.itemCount,
     };
   }
 
@@ -39,7 +39,7 @@ class AddToCartButton extends Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setState({
-      opened: !!nextProps.cartProductCount,
+      opened: !!nextProps.itemCount,
     });
   }
 
@@ -61,9 +61,9 @@ class AddToCartButton extends Component {
    * Adds a new product to cart or opens the cart if it already has products in it.
    */
   handleClick = () => {
-    const { cartProductCount, handleAddToCart, openCart } = this.props;
+    const { itemCount, handleAddToCart, openCart } = this.props;
 
-    if (!cartProductCount) {
+    if (!itemCount) {
       handleAddToCart();
       return;
     }
@@ -80,12 +80,12 @@ class AddToCartButton extends Component {
    * @return {JSX}
    */
   render() {
-    const { cartProductCount } = this.props;
+    const { itemCount } = this.props;
     const style = this.state.opened ? { width: '40%' } : null;
 
     return (
       <button className={styles} style={style} onClick={this.handleClick}>
-        {!cartProductCount ? (
+        {!itemCount ? (
           <I18n.Text string="product.add_to_cart" />
         ) : (
           <I18n.Text string="product.go_to_cart" />

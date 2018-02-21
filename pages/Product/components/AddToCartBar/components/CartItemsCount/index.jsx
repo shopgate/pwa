@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import CheckIcon from 'Components/icons/CheckIcon';
 import Count from './components/Count';
-import connect from './connector';
 import styles, { duration, durationShort, transition } from './style';
 
 /**
@@ -19,7 +18,7 @@ import styles, { duration, durationShort, transition } from './style';
  */
 class CartItemsCount extends Component {
   static propTypes = {
-    cartDisplayAmount: PropTypes.number.isRequired,
+    itemCount: PropTypes.number.isRequired,
   };
 
   /**
@@ -30,8 +29,8 @@ class CartItemsCount extends Component {
     super(props);
 
     this.state = {
-      numItems: props.cartDisplayAmount,
-      isVisible: props.cartDisplayAmount > 0,
+      numItems: props.itemCount,
+      isVisible: props.itemCount > 0,
     };
   }
 
@@ -40,7 +39,7 @@ class CartItemsCount extends Component {
    * @param {Object} nextProps Incoming component props.
    */
   componentWillReceiveProps(nextProps) {
-    const numItems = nextProps.cartDisplayAmount;
+    const numItems = nextProps.itemCount;
 
     if (numItems === 0) {
       // When there are no items, reset this element to hide.
@@ -76,8 +75,8 @@ class CartItemsCount extends Component {
   }
 
   /**
-   * Renders the component
-   * @return {[type]} [description]
+   * Renders the component.
+   * @return {JSX}
    */
   render() {
     return (
@@ -101,4 +100,4 @@ class CartItemsCount extends Component {
   }
 }
 
-export default connect(CartItemsCount);
+export default CartItemsCount;

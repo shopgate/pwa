@@ -27,7 +27,7 @@ class Count extends Component {
     super(props);
 
     this.state = {
-      in: props.count > 0,
+      in: true,
       numItems: props.count,
     };
   }
@@ -37,7 +37,9 @@ class Count extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
+    console.warn('RECEIVE', nextProps.count, this.props.count);
     if (this.props.count !== nextProps.count) {
+      console.warn('setState', nextProps.count);
       this.setState({
         in: false,
         numItems: nextProps.count,
@@ -59,6 +61,7 @@ class Count extends Component {
   }
 
   handleOnExited = () => {
+    console.warn('handleOnExited');
     this.setState({ in: true });
   }
 

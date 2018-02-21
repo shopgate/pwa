@@ -8,7 +8,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddMoreIcon from 'Components/icons/AddMoreIcon';
-import connect from './connector';
 import styles from './style';
 
 /**
@@ -26,4 +25,4 @@ AddMoreButton.propTypes = {
   handleAddToCart: PropTypes.func.isRequired,
 };
 
-export default connect(AddMoreButton);
+export default AddMoreButton;

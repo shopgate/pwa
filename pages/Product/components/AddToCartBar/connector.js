@@ -7,6 +7,16 @@
 
 import { connect } from 'react-redux';
 import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
+import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+
+/**
+ * Connects the current application state to the component props.
+ * @param {Object} state The current application state.
+ * @return {[type]} [description]
+ */
+const mapStateToProps = state => ({
+  cartProductCount: getCartProductDisplayCount(state),
+});
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -17,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
   handleAddToCart: () => dispatch(addCurrentProductToCart()),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps);
