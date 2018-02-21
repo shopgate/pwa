@@ -1,13 +1,15 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 import { createSelector } from 'reselect';
-import { getSearchPhrase } from '@shopgate/pwa-common-commerce/search/selectors/index';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import {
+  getSortOrder,
+  getSearchPhrase,
+} from '@shopgate/pwa-common/selectors/history';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 
 /**
@@ -27,7 +29,10 @@ const resultCountSelector = createSelector(
   getSortOrder,
   resultsSelector,
   (searchPhrase, sort, results) => {
-    const hash = searchPhrase && generateResultHash({ sort, searchPhrase });
+    const hash = searchPhrase && generateResultHash({
+      sort,
+      searchPhrase,
+    });
 
     if (!hash || !results[hash]) {
       return null;
