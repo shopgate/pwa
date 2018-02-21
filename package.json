@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-core",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "description": "Shopgate's PWA core library",
   "repository": "shopgate/pwa-core",
   "bugs": "https://github.com/shopgate/pwa-core/issues",
@@ -39,7 +39,7 @@
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.3",
+    "@shopgate/eslint-config": "^1.0.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",

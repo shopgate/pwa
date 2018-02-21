@@ -8,14 +8,13 @@
 import AppCommand from '../classes/AppCommand';
 
 /**
- * Sends a flushTab command to the app.
+ * Sends a setScrollingEnabled command to the app.
  * @param {Object} params The command parameters.
- * @param {string} params.targetTab Target tab for the page.
+ * @param {boolean} params.enabled Target tab for the page.
  */
 export default (params) => {
-  const command = new AppCommand();
-
-  command
-    .setCommandName('flushTab')
-    .dispatch(params);
+  new AppCommand()
+    .setCommandName('setScrollingEnabled')
+    .setCommandParams(params)
+    .dispatch();
 };

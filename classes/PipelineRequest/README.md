@@ -18,7 +18,7 @@ return new PipelineRequest('getProducts')
   .dispatch()
   .then((result) => {
     console.log('Result:', result);
-    
+
     // Return the result so that the upper promise could proceed with it
     return result;
   });
@@ -55,11 +55,6 @@ Marks this request as trusted.
 Sets a list of error codes which will be handled within the reject callback of the Promise.
 The error list defaults to an empty array.
 
-#### `setErrorMessageWhitelist([errors: Array]): PipelineRequest`
-
-Sets a list of error codes where the pipeline error message is used for the user error modal.
-The error list defaults to an empty array.
-
 #### `onDispatch(resolve: Function, reject: Function): void`
 
 A callback that gets triggered when a request is sent.
@@ -83,14 +78,14 @@ const fetchSomething = (...params) => () => {
     .catch((e) => {
       // Callback when pipeline request fails.
     });
- 
+
   return promise;
-} 
+}
 ```
 
 When fetch action is implemented like in the example above, testing is pretty easy to implement. For example:
 ```js
-// First import the original fetch function 
+// First import the original fetch function
 import fetchSomething from 'exampleFile';
 // Then, import mockPipelineRequestFactory
 import mockPipelineRequestFactory from '@shopgate/pwa-core/classes/PipelineRequest/mock';

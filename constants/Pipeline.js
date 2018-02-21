@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -23,6 +23,12 @@ export const EACCESS = 'EACCESS';
 // Pipeline invalid credentials.
 export const EINVALIDCREDENTIALS = 'EINVALIDCREDENTIALS';
 
+/**
+ * A pipeline can't be called in the given context.
+ * For example the login pipeline when the user is already logged in.
+ */
+export const EINVALIDCALL = 'EINVALIDCALL';
+
 // Pipeline no data found
 export const EUNKNOWN = 'EUNKNOWN';
 
@@ -32,3 +38,6 @@ export const EEXIST = 'EEXIST';
 // Trusted pipeline string.
 export const TYPE_TRUSTED = 'trusted';
 
+// Errors from favorites pipeline
+export const EFAVORITE = 'EFAVORITE';
+export const EBIGAPI = 'EBIGAPI';
