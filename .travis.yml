@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - 8.4.0
-script: NODE_ENV=production npm run coverage -- --maxWorkers=4
+script: NODE_ENV=test npm run coverage -- --maxWorkers=4
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
