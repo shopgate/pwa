@@ -43,7 +43,7 @@ const Item = ({ product, display, isFavorite }) => (
       </div>
     }
     <div className={styles.favorites}>
-      <FavoritesButton active={isFavorite} productId={product.id} noShadow />
+      <FavoritesButton active={isFavorite} productId={product.id} noShadow removeWithRelatives />
     </div>
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
@@ -98,10 +98,12 @@ const Item = ({ product, display, isFavorite }) => (
 Item.propTypes = {
   product: PropTypes.shape().isRequired,
   display: PropTypes.shape(),
+  isFavorite: PropTypes.bool,
 };
 
 Item.defaultProps = {
   display: null,
+  isFavorite: false,
 };
 
 export default connect(Item);
