@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 import { connect } from 'react-redux';
-import { isProductOnList } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { isRelativeProductOnList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,7 +14,7 @@ import { isProductOnList } from '@shopgate/pwa-common-commerce/favorites/selecto
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, { product }) => ({
-  isFavorite: isProductOnList(state, product.id),
+  isFavorite: isRelativeProductOnList(state, product.id),
 });
 
 export default connect(mapStateToProps);

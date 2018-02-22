@@ -42,7 +42,7 @@ const itemWrapper = css({
 const defaultTransitionStyle = {
   position: 'relative',
   zIndex: 1,
-  transition: `margin-top ${favItemTransitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
+  transition: `margin-top ${favItemTransitionDuration}ms`,
 };
 
 /**

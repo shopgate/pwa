@@ -26,6 +26,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       productId={null}
       removeFavorites={[Function]}
       removeThrottle={0}
+      removeWithRelatives={false}
       rippleClassName=""
     >
       <button
@@ -109,6 +110,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       productId={null}
       removeFavorites={[Function]}
       removeThrottle={0}
+      removeWithRelatives={false}
       rippleClassName=""
     >
       <button
