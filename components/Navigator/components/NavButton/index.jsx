@@ -107,11 +107,8 @@ class NavButton extends Component {
 
   /**
    * Handles a click on the icon.
-   * @param {Object} event The event object.
    */
-  handleClick = (event) => {
-    event.preventDefault();
-
+  handleClick = () => {
     if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
       this.props.goBackHistory();
       return;
@@ -142,8 +139,11 @@ class NavButton extends Component {
    */
   render() {
     return (
-      <Button className={styles.button} onClick={this.handleClick}>
-        <Ripple className={styles.buttonContent}>
+      <Button className={styles.button}>
+        <Ripple
+          className={styles.buttonContent}
+          onComplete={this.handleClick}
+        >
           {this.renderIcon()}
         </Ripple>
       </Button>
