@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TabBar /> should highlight the active tab 1`] = `
+<Grid
+  className="css-1x01a59"
+  component="ul"
+  wrap={false}
+>
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="foo"
+    label="Foo"
+    onClick={null}
+    type="foo"
+  />
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="bar"
+    label="Bar"
+    onClick={null}
+    type="bar"
+  />
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="baz"
+    label="Baz"
+    onClick={null}
+    type="baz"
+  />
+  <TabBarAction
+    icon={null}
+    isHighlighted={true}
+    key="qux"
+    label="Qux"
+    onClick={null}
+    type="qux"
+  />
+</Grid>
+`;
+
+exports[`<TabBar /> should not render when invisible 1`] = `""`;
+
+exports[`<TabBar /> should pass custom props to the tab action 1`] = `
+<Grid
+  className="css-1x01a59"
+  component="ul"
+  wrap={false}
+>
+  <TabBarAction
+    customProp="my custom prop"
+    icon={null}
+    isHighlighted={false}
+    key="foo"
+    label="bar"
+    onClick={null}
+    type="foo"
+  />
+</Grid>
+`;
+
+exports[`<TabBar /> should render when visible 1`] = `
+<Grid
+  className="css-1x01a59"
+  component="ul"
+  wrap={false}
+>
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="foo"
+    label="Foo"
+    onClick={null}
+    type="foo"
+  />
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="bar"
+    label="Bar"
+    onClick={null}
+    type="bar"
+  />
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="baz"
+    label="Baz"
+    onClick={null}
+    type="baz"
+  />
+  <TabBarAction
+    icon={null}
+    isHighlighted={false}
+    key="qux"
+    label="Qux"
+    onClick={null}
+    type="qux"
+  />
+</Grid>
+`;

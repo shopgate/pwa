@@ -27,14 +27,14 @@ describe('<Button />', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(trim(wrapper.node.props.className)).toEqual(styles.regular(false).button);
+    expect(trim(wrapper.prop('className'))).toEqual(styles.regular(false).button);
   });
 
   it('should render as a primary button', () => {
     const wrapper = shallow(
       <Button type={'primary'}>Press me</Button>
     );
-    expect(trim(wrapper.node.props.className)).toEqual(styles.primary(false, false).button);
+    expect(trim(wrapper.prop('className'))).toEqual(styles.primary(false, false).button);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -42,7 +42,7 @@ describe('<Button />', () => {
     const wrapper = shallow(
       <Button type={'secondary'}>Press me</Button>
     );
-    expect(trim(wrapper.node.props.className)).toEqual(styles.secondary(false, false).button);
+    expect(trim(wrapper.prop('className'))).toEqual(styles.secondary(false, false).button);
     expect(wrapper).toMatchSnapshot();
   });
 });
