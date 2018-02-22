@@ -75,34 +75,39 @@ jest.mock('redux-logger', () => ({
 
 describe('<Toast />', () => {
   const { dispatch, getState } = mockedStore;
-  let wrapper;
 
   beforeEach(() => {
     // Reset the toasts state before each test.
     getState().toast = [];
-    wrapper = createComponent();
   });
 
-  it('should dispatch a toast message', () => {
+  it('should dispatch a toast message', (done) => {
+    const wrapper = createComponent();
     dispatch(createToast({ message: 'Toast Message', duration: 0 }));
     wrapper.update();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockMessage).exists()).toBe(true);
     expect(wrapper.find(MockContainer).exists()).toBe(true);
+    expect(wrapper.find(MockMessage).prop('text')).toEqual('Toast Message');
+    wrapper.unmount();
+    setTimeout(() => done(), 0);
   });
 
   it('should remove after timeout', (done) => {
     const wrapperWithTimeout = createComponent(() => {
       const drawerCallback = wrapperWithTimeout.find(Drawer).prop('onDidClose');
       drawerCallback();
+      expect(wrapperWithTimeout.find(MockMessage).prop('text')).toEqual('Timeout Message');
       expect(getState().toast.length).toBe(0);
+      wrapperWithTimeout.unmount();
       done();
     });
     dispatch(createToast({ message: 'Timeout Message', duration: 10 }));
     wrapperWithTimeout.update();
   });
 
-  it('should dispatch multiple toast messages', () => {
+  it('should dispatch multiple toast messages', (done) => {
+    const wrapper = createComponent();
     const messages = ['Toast Message 2', 'Toast Message 3'];
     const getNextToast = wrapper.find(Toast).prop('toast');
 
@@ -118,8 +123,12 @@ describe('<Toast />', () => {
 
     const msg2 = getNextToast(getState());
     expect(wrapper.find(MockMessage).prop('text')).toEqual(msg2.message);
+    wrapper.unmount();
+    setTimeout(() => done(), 0);
   });
   it('should call actionOnClick on action click', (done) => {
+    const mockedOnClose = jest.fn();
+    const wrapper = createComponent(mockedOnClose);
     const mockedActionOnClick = jest.fn();
     dispatch(createToast({
       message: 'hello world',
@@ -133,13 +142,35 @@ describe('<Toast />', () => {
     expect(wrapper.find(MockActionButton).exists()).toBe(true);
     wrapper.find(MockActionButton).simulate('click');
     wrapper.update();
+    expect(typeof mockedActionOnClick.mock.calls[0][0] === 'function').toBe(true);
+    expect(typeof mockedActionOnClick.mock.calls[0][1] === 'function').toBe(true);
+    wrapper.update();
     setTimeout(() => {
       wrapper.update();
-      expect(typeof mockedActionOnClick.mock.calls[0][0] === 'function').toBe(true);
-      expect(typeof mockedActionOnClick.mock.calls[0][1] === 'function').toBe(true);
-      expect(wrapper.find(MockMessage).exists()).toBe(false);
+      expect(mockedOnClose).toBeCalled();
       expect(wrapper).toMatchSnapshot();
-      done();
+      wrapper.unmount();
+      setTimeout(() => done(), 0);
     }, 0);
+  });
+  it('should remove replaceable toast when next is incoming', (done) => {
+    const mockedOnClose = jest.fn();
+    const wrapper = createComponent(mockedOnClose);
+    const messages = ['Toast Message 2', 'Toast Message 3'];
+    const getNextToast = wrapper.find(Toast).prop('toast');
+
+    messages.forEach((message) => {
+      dispatch(createToast({ message, duration: 10, replaceable: true }));
+    });
+    wrapper.update();
+
+    const msg1 = getNextToast(getState());
+    expect(wrapper.find(MockMessage).prop('text')).toEqual(msg1.message);
+    wrapper.update();
+
+    const msg2 = getNextToast(getState());
+    expect(wrapper.find(MockMessage).prop('text')).toEqual(msg2.message);
+    wrapper.unmount();
+    setTimeout(() => done(), 0);
   });
 });

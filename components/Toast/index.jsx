@@ -22,6 +22,7 @@ class Toast extends Component {
     message: PropTypes.func.isRequired,
     removeToast: PropTypes.func.isRequired,
     className: PropTypes.string,
+    hasNextToast: PropTypes.bool,
     onClose: PropTypes.func,
     toast: PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -29,10 +30,12 @@ class Toast extends Component {
       duration: PropTypes.number.isRequired,
       action: PropTypes.string,
       actionOnClick: PropTypes.func,
+      replaceable: PropTypes.bool,
     }),
   };
 
   static defaultProps = {
+    hasNextToast: false,
     className: null,
     onClose: () => {},
     toast: null,
@@ -45,6 +48,7 @@ class Toast extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      closing: false,
       isOpen: !!props.toast,
     };
     this.timeout = null;
@@ -65,6 +69,15 @@ class Toast extends Component {
       this.setState({
         isOpen: hasToast,
       });
+      return;
+    }
+
+    if (
+      nextProps.hasNextToast
+      && this.props.toast
+      && this.props.toast.replaceable
+    ) {
+      this.closeDrawer();
     }
   }
 
@@ -75,6 +88,9 @@ class Toast extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.closing && nextState.closing) {
+      return false;
+    }
     const toastUpdate = nextProps.toast && this.props.toast
       && nextProps.toast.id !== this.props.toast.id;
     const toastDidChange = toastUpdate || !this.props.toast;
@@ -126,6 +142,17 @@ class Toast extends Component {
     }
     this.closeDrawer();
   };
+  handleOnClose = () => {
+    this.setState({
+      closing: true,
+    });
+  };
+  handleOnDidClose = () => {
+    this.setState({
+      closing: false,
+    });
+    this.handleRemoveMessage();
+  };
 
   /**
    * Renders.
@@ -143,7 +170,8 @@ class Toast extends Component {
       >
         <Drawer
           isOpen={this.state.isOpen}
-          onDidClose={this.handleRemoveMessage}
+          onClose={this.handleOnClose}
+          onDidClose={this.handleOnDidClose}
           className={this.props.className}
         >
           {
