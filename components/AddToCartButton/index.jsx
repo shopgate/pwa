@@ -11,7 +11,6 @@ import CartPlusIcon from 'Components/icons/CartPlusIcon';
 import TickIcon from 'Components/icons/TickIcon';
 import IndicatorCircle from 'Components/IndicatorCircle';
 import colors from 'Styles/colors';
-import connect from './connector';
 import styles from './style';
 
 /**
@@ -22,6 +21,15 @@ class AddToCartButton extends Component {
     handleAddToCart: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isOrderable: PropTypes.bool.isRequired,
+    buttonSize: PropTypes.number,
+    className: PropTypes.string,
+    iconSize: PropTypes.number,
+  };
+
+  static defaultProps = {
+    buttonSize: styles.buttonSize,
+    className: null,
+    iconSize: styles.iconSize,
   };
 
   /**
@@ -154,7 +162,10 @@ class AddToCartButton extends Component {
     }
 
     return (
-      <button className={`${styles.button} ${buttonStyle}`} onClick={this.handleClick}>
+      <button
+        className={`${this.props.className} ${styles.buttonWrapper(this.props.buttonSize, this.props.iconSize)} ${buttonStyle}`}
+        onClick={this.handleClick}
+      >
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
           <IndicatorCircle color={colors.primaryContrast} strokeWidth={5} />
         </div>
@@ -173,6 +184,4 @@ class AddToCartButton extends Component {
   }
 }
 
-export default connect(AddToCartButton);
-
-export { AddToCartButton as Unwrapped };
+export default AddToCartButton;

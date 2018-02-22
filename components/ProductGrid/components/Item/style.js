@@ -48,17 +48,16 @@ const badgeWrapper = css({
   width: 40,
 }).toString();
 
-const wishlist = css({
-  display: 'none',
+const priceStriked = css({
+  fontSize: '0.75rem',
+  marginTop: 2,
+}).toString();
+
+const favorites = css({
   position: 'absolute',
   right: 16,
   left: 'auto',
   transform: 'translate3d(0, -50%, 0)',
-}).toString();
-
-const priceStriked = css({
-  fontSize: '0.75rem',
-  marginTop: 2,
 }).toString();
 
 export default {
@@ -68,6 +67,6 @@ export default {
   details,
   priceWrapper,
   title,
-  wishlist,
   priceStriked,
+  favorites,
 };
