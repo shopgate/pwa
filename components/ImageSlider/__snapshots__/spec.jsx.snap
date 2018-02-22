@@ -11,6 +11,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   initialSlide={0}
   interval={3000}
   loop={false}
+  maxIndicators={null}
   onSlideChange={null}
   slidesPerView={1}
   snapItems={true}
