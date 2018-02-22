@@ -20,11 +20,7 @@ import {
   RECEIVE_FAVORITES,
   REQUEST_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  REQUEST_ADD_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
-  ERROR_ADD_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
+  RECEIVE_SYNC_FAVORITES, IDLE_SYNC_FAVORITES, ERROR_SYNC_FAVORITES,
 } from '../constants';
 
 let mockedResolver;
@@ -38,60 +34,6 @@ jest.mock(
 );
 
 describe('Favorites - actions', () => {
-  /**
-   * Assertion helper function
-   * @param {string} variant ('then' or 'catch')
-   * @param {string} id Product id
-   * @param {function} done Async test case done callback function.
-   */
-  const testAdd = (variant, id, done) => {
-    const mockedDispatch = jest.fn();
-    const promise = addFavorites(id)(mockedDispatch, mockedGetState(variant));
-    setTimeout(() => {
-      promise[variant]((result) => {
-        if (!id) {
-          expect(result).toBe(undefined);
-          expect(mockedDispatch).toHaveBeenCalledTimes(1);
-          expect(mockedDispatch.mock.calls[0][0].type).toBe(ERROR_ADD_FAVORITES);
-          done();
-          return;
-        }
-
-        expect(result.mockInstance.name).toBe('addFavorites');
-        expect(mockedDispatch).toHaveBeenCalledTimes(2);
-        expect(mockedDispatch.mock.calls[0][0].type).toBe(REQUEST_ADD_FAVORITES);
-        expect(mockedDispatch.mock.calls[1][0].type)
-          .toBe(variant === 'then' ? RECEIVE_ADD_FAVORITES : ERROR_ADD_FAVORITES);
-        done();
-      });
-    }, 0);
-  };
-
-  /**
-   * Assertion helper function
-   * @param {string} variant ('then' or 'catch')
-   * @param {string} id Product id
-   * @param {function} done Async test case done callback function.
-   */
-  const testRemove = (variant, id, done) => {
-    const mockedDispatch = jest.fn();
-    const promise = removeFavorites(id)(mockedDispatch, mockedGetState(variant));
-    setTimeout(() => {
-      promise[variant]((result) => {
-        if (!id) {
-          expect(result).toBe(undefined);
-          expect(mockedDispatch).toHaveBeenCalledTimes(1);
-          expect(mockedDispatch.mock.calls[0][0].type).toBe(ERROR_REMOVE_FAVORITES);
-          done();
-          return;
-        }
-        expect(typeof result).toBe('object');
-        expect(result.type).toBe(RECEIVE_REMOVE_FAVORITES);
-        done();
-      });
-    }, 0);
-  };
-
   describe('getFavorites', () => {
     /**
      * Assertion helper function
@@ -142,123 +84,77 @@ describe('Favorites - actions', () => {
     });
   });
   describe('addFavorites', () => {
+    const mockedDispatch = jest.fn();
     it('should add', (done) => {
       mockedResolver = (mockInstance, resolve) => {
-        resolve({
-          favorites: {
-            products: {
-              ids: ['product_1'],
-            },
-          },
-          mockInstance,
-        });
+        resolve();
       };
-      testAdd('then', 'product_1', done);
-    });
-
-    it('should cancel request on add - remove', (done) => {
-      mockedResolver = (mockInstance, resolve) => {
-        resolve({
-          favorites: {
-            products: {
-              ids: [],
-            },
-          },
-          mockInstance,
-        });
-      };
-
-      const mockedDispatchAdd = jest.fn();
-      const mockedDispatchRemove = jest.fn();
-      addFavorites('product_id')(mockedDispatchAdd, mockedGetState('then'));
-      const promiseRemove
-              = removeFavorites('product_id')(mockedDispatchRemove, mockedGetState('then'));
-
-      // Make sure test callback is executed after the internal fetchReviews one.
+      addFavorites('product')(mockedDispatch);
+      expect(mockedDispatch.mock.calls.length).toBe(2);
+      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
+      expect(mockedDispatch.mock.calls.length).toBe(3);
       setTimeout(() => {
-        promiseRemove.then((result) => {
-          expect(result).toEqual({
-            type: 'ABORT_ADD_FAVORITES',
-            productId: 'product_id',
-          });
-          expect(mockedDispatchAdd).toHaveBeenCalledTimes(1);
-          expect(mockedDispatchRemove).toHaveBeenCalledTimes(1);
-          done();
-        });
+        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(RECEIVE_SYNC_FAVORITES);
+        done();
       }, 0);
-    });
-
-    it('should prevent multiple add', (done) => {
-      mockedResolver = (mockInstance, resolve) => {
-        resolve({
-          favorites: {
-            products: {
-              ids: [],
-            },
-          },
-          mockInstance,
-        });
-      };
-
-      const mockedDispatchAdd1 = jest.fn();
-      const mockedDispatchAdd2 = jest.fn();
-      addFavorites('product_id')(mockedDispatchAdd1, mockedGetState('then'));
-      const addRemove = addFavorites('product_id')(mockedDispatchAdd2, mockedGetState('then'));
-
-      // Make sure test callback is executed after the internal fetchReviews one.
-      setTimeout(() => {
-        addRemove.then(() => {
-          expect(mockedDispatchAdd1).toHaveBeenCalledTimes(1);
-          expect(mockedDispatchAdd2).toHaveBeenCalledTimes(2);
-          done();
-        });
-      }, 0);
-    });
-
-    it('should not process empty request', (done) => {
-      mockedResolver = (mockInstance, resolve) => {
-        resolve({
-          favorites: {
-            products: {
-              ids: [],
-            },
-          },
-          mockInstance,
-        });
-      };
-
-      testAdd('catch', '', done);
     });
   });
 
   describe('removeFavorites', () => {
-    it('should add', (done) => {
+    it('should remove', (done) => {
+      const mockedDispatch = jest.fn();
       mockedResolver = (mockInstance, resolve) => {
-        resolve({
-          favorites: {
-            products: {
-              ids: ['product_1'],
-            },
-          },
-          mockInstance,
-        });
+        resolve();
       };
-      testRemove('then', 'product_1', done);
+      removeFavorites('product')(mockedDispatch);
+      expect(mockedDispatch.mock.calls.length).toBe(2);
+      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
+      expect(mockedDispatch.mock.calls.length).toBe(3);
+      setTimeout(() => {
+        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(RECEIVE_SYNC_FAVORITES);
+        done();
+      }, 0);
     });
 
-    it('should not process empty request', (done) => {
+    it('should remove with relatives', (done) => {
+      const mockedDispatch = jest.fn();
       mockedResolver = (mockInstance, resolve) => {
-        resolve({
-          favorites: {
-            products: {
-              ids: [],
-            },
-          },
-          mockInstance,
-        });
+        resolve();
       };
+      removeFavorites('SG117', true)(mockedDispatch, mockedGetState('then', {
+        withProducts: true,
+      }));
+      expect(mockedDispatch.mock.calls.length).toBe(4);
+      // Dispathing request sync twice to see if second one would be ignored (by counting others).
+      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
+      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
+      expect(mockedDispatch.mock.calls.length).toBe(5);
+      setTimeout(() => {
+        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(RECEIVE_SYNC_FAVORITES);
+        // Last call should be requestSync dispatch again.
+        expect(typeof mockedDispatch.mock.calls.slice(-1)[0][0]).toBe('function');
+        // Now, last call should be IDLE.
+        mockedDispatch.mock.calls.slice(-1)[0][0](mockedDispatch);
+        expect(mockedDispatch.mock.calls.slice(-1)[0][0].type).toBe(IDLE_SYNC_FAVORITES);
+        done();
+      }, 0);
+    });
+  });
 
-      testRemove('catch', '', done);
+  describe('requestSync', () => {
+    it('should handle error', (done) => {
+      const mockedDispatch = jest.fn();
+      mockedResolver = (mockInstance, resolve, reject) => {
+        reject();
+      };
+      removeFavorites('SG117', true)(mockedDispatch, mockedGetState('then', {
+        withProducts: true,
+      }));
+      mockedDispatch.mock.calls[1][0](mockedDispatch, mockedGetState('then'));
+      setTimeout(() => {
+        expect(mockedDispatch.mock.calls.slice(-2)[0][0].type).toBe(ERROR_SYNC_FAVORITES);
+        done();
+      }, 0);
     });
   });
 });
