@@ -8,6 +8,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
 import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
@@ -125,9 +127,8 @@ class NavDrawer extends Component {
         close={this.handleClose}
         setContentRef={this.setContentRef}
       >
-
         <Header user={user} close={this.handleClose} />
-
+        <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
         <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
           <I18n.Text string="navigation.home" />
         </Item>
@@ -201,7 +202,7 @@ class NavDrawer extends Component {
             <I18n.Text string="navigation.logout" />
           </Item>
         )}
-
+        <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
         <ClientInformation />
 
       </Layout>
