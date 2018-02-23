@@ -78,7 +78,8 @@ describe('<ContextMenu />', () => {
 
       describe('Given the first item gets clicked', () => {
         beforeEach(() => {
-          renderedElement.find(ContextMenu.Item).first().find('[onClick]').simulate('click');
+          renderedElement.find(ContextMenu.Item).first().children().find('[onClick]')
+            .simulate('click');
           jest.runAllTimers();
         });
 
@@ -87,13 +88,14 @@ describe('<ContextMenu />', () => {
         });
 
         it('should close the context menu', () => {
+          renderedElement.update();
           expect(renderedElement.find(ContextMenu.Item).length).toBe(0);
         });
       });
 
       describe('Given the backdrop gets clicked', () => {
         beforeEach(() => {
-          renderedElement.find(Backdrop).find('[onClick]').simulate('click');
+          renderedElement.find(Backdrop).children().find('[onClick]').simulate('click');
         });
 
         it('should have active state reset to false', () => {

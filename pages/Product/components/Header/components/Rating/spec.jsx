@@ -18,7 +18,7 @@ import {
 import Rating from './index';
 import { getElementById } from './mock';
 
-describe('Rating (product header)', () => {
+describe.skip('Rating (product header)', () => {
   const mockedStore = configureStore();
 
   /**
