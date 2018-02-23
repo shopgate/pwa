@@ -9,7 +9,7 @@ import HttpRequest from '@shopgate/pwa-core/classes/HttpRequest';
 import requestShopifyLogin from '../action-creators/requestShopifyLogin';
 import errorShopifyLogin from '../action-creators/errorShopifyLogin';
 import successShopifyLogin from '../action-creators/successShopifyLogin';
-import { getShopifyUrl } from '../selectors';
+import { isShopify, getShopifyUrl } from '../selectors';
 
 /**
  * Login the current user.
@@ -18,6 +18,12 @@ import { getShopifyUrl } from '../selectors';
  * @return {Function} A redux thunk.
  */
 export default (user, password) => (dispatch) => {
+  if (!isShopify()) {
+    // The success is dispatched here to take care that the streams work as expected
+    dispatch(successShopifyLogin());
+    return;
+  }
+
   dispatch(requestShopifyLogin());
 
   new HttpRequest(`${getShopifyUrl()}/account/login`)
