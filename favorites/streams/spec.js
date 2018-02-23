@@ -7,33 +7,42 @@
 */
 
 import {
-  favoritesDidChange$,
+  favoritesError$,
+  favoritesSyncIdle$,
   favoritesWillRemoveItem$,
 } from './index';
 
 import {
-  ERROR_ADD_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
-  RECEIVE_ADD_FAVORITES,
-  RECEIVE_REMOVE_FAVORITES,
+  ERROR_SYNC_FAVORITES,
+  ERROR_FETCH_FAVORITES,
+  IDLE_SYNC_FAVORITES,
   REQUEST_REMOVE_FAVORITES,
 } from '../constants';
 
 describe('Favorites streams', () => {
-  describe('favoritesDidChange$', () => {
+  describe('favoritesError$', () => {
     const actionNames = [
-      ERROR_ADD_FAVORITES,
-      ERROR_REMOVE_FAVORITES,
-      RECEIVE_ADD_FAVORITES,
-      RECEIVE_REMOVE_FAVORITES,
+      ERROR_SYNC_FAVORITES,
+      ERROR_FETCH_FAVORITES,
     ];
     actionNames.forEach((type) => {
       it(`should return true for ${type}`, () => {
-        expect(favoritesDidChange$.operator.predicate({ action: { type } })).toBe(true);
+        expect(favoritesError$.operator.predicate({ action: { type } })).toBe(true);
       });
     });
     it('should return for other types', () => {
-      expect(favoritesDidChange$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
+      expect(favoritesError$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
+    });
+  });
+  describe('favoritesSyncIdle$', () => {
+    it(`should return true for ${IDLE_SYNC_FAVORITES}`, () => {
+      expect(favoritesSyncIdle$
+        .operator
+        .predicate({ action: { type: IDLE_SYNC_FAVORITES } }))
+        .toBe(true);
+    });
+    it('should return for other types', () => {
+      expect(favoritesSyncIdle$.operator.predicate({ action: { type: 'foo' } })).toBe(false);
     });
   });
   describe('favoritesWillRemoveItem$', () => {

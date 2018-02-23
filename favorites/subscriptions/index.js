@@ -13,10 +13,11 @@ import {
 } from '@shopgate/pwa-common/streams/user';
 import {
   favoritesDidEnter$,
-  favoritesDidChange$,
+  favoritesSyncIdle$,
+  favoritesError$,
 } from '../streams';
 import getFavorites from '../actions/getFavorites';
-
+import { FETCH_FAVORITES_THROTTLE } from '../constants';
 /**
  * Favorites page subscriptions.
  * @param {function} subscribe Subscribe function.
@@ -37,7 +38,20 @@ const favorites = (subscribe) => {
     dispatch(getFavorites(true));
   });
 
-  subscribe(favoritesDidChange$, ({ dispatch }) => dispatch(getFavorites(true)));
+  /*
+   * Request after 5 seconds since last sync request to make sure
+   * backend did actually save it.
+   */
+  let fetchThrottle;
+  subscribe(favoritesSyncIdle$, ({ dispatch }) => {
+    clearTimeout(fetchThrottle);
+    fetchThrottle = setTimeout(() => dispatch(getFavorites(true)), FETCH_FAVORITES_THROTTLE);
+  });
+
+  subscribe(favoritesError$, ({ dispatch }) => {
+    // No clearTimeout. This is special case. Should fetch ASAP.
+    dispatch(getFavorites(true));
+  });
 };
 
 export default favorites;
