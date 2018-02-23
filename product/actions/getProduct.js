@@ -11,6 +11,7 @@ import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import requestProduct from '../action-creators/requestProduct';
 import receiveProduct from '../action-creators/receiveProduct';
 import errorProduct from '../action-creators/errorProduct';
+import receiveProductCached from '../action-creators/receiveProductCached';
 import processProductFlags from './processProductFlags';
 import { getProductById } from '../selectors/product';
 
@@ -27,6 +28,7 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   if (!forceFetch && !shouldFetchData(product)) {
     if (product.productData) {
       dispatch(processProductFlags(product.productData));
+      dispatch(receiveProductCached);
     }
 
     return;
