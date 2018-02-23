@@ -17,7 +17,8 @@ import {
  */
 const mapDispatchToProps = dispatch => ({
   addFavorites: productId => dispatch(addFavorites(productId)),
-  removeFavorites: productId => dispatch(removeFavorites(productId)),
+  removeFavorites: (productId, withRelatives) =>
+    dispatch(removeFavorites(productId, withRelatives)),
 });
 
 export default connect(null, mapDispatchToProps);

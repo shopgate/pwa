@@ -22,6 +22,7 @@ import {
 import styles from '../../style';
 import connect from './connector';
 import Layout from './components/Layout';
+import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../../../constants';
 
 const messageStyles = {
   container: styles.messagesContainer,
@@ -76,15 +77,21 @@ class Product extends Component {
    */
   toggleEditMode = (isEnabled = true) => {
     if (isEnabled) {
-      // Scroll the page to move the product component into the viewport.
-      const yOffset = -(window.innerHeight / 2)
-        + getAbsoluteHeight(this.cardElement)
-        + variables.paymentBar.height;
+      /**
+       * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
+       * Therefore the input has to be scrolled into the viewport again. Since between the focus and
+       * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       */
+      setTimeout(() => {
+        const yOffset = -(window.innerHeight / 2)
+          + getAbsoluteHeight(this.cardElement)
+          + variables.paymentBar.height;
 
-      this.cardElement.scrollIntoView({
-        behavior: 'smooth',
-        yOffset,
-      });
+        this.cardElement.scrollIntoView({
+          behavior: 'smooth',
+          yOffset,
+        });
+      }, CART_INPUT_AUTO_SCROLL_DELAY);
     }
 
     this.props.onToggleFocus(isEnabled);

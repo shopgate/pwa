@@ -3,7 +3,6 @@
 exports[`<SearchButton /> should render without any further props 1`] = `
 <button
   className="css-1nlaj2c"
-  onClick={[Function]}
 >
   <Ripple
     className="css-ugy6xl"

@@ -40,6 +40,7 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
             productId="product_1"
             removeFavorites={[Function]}
             removeThrottle={0}
+            removeWithRelatives={false}
             rippleClassName="css-1tdptiz"
           />
         </Connect(FavoritesButton)>
