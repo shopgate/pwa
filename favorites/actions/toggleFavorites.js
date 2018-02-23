@@ -7,102 +7,92 @@
  */
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import {
-  receiveAddFavorites,
   requestAddFavorites,
-  errorAddFavorites,
-  abortAddFavorites,
-} from '../action-creators/addFavorites';
-
-import {
-  receiveRemoveFavorites,
   requestRemoveFavorites,
-  errorRemoveFavorites,
-} from '../action-creators/removeFavorites';
+  requestSyncFavorites,
+  receiveSyncFavorites,
+  errorSyncFavorites,
+  idleSyncFavorites,
+} from '../action-creators';
+import {
+  getProductRelativesOnFavorites,
+  getFavoritesProductsIds,
+} from '../selectors/';
 
-const addTimeout = {};
+let syncPendingCount = 0;
+let syncInProgress = false;
 
 /**
- * Resets the throttle timer.
- * @param {string} productId Product id.
+ * Sends putFavorites requests. Maintains queue and throttling.
+ * @returns {function}
  */
-const clearAddTimer = (productId) => {
-  clearTimeout(addTimeout[productId]);
-  addTimeout[productId] = null;
+export const requestSync = () => (dispatch, getState) => {
+  // Syncing in progress. Will request next one on response.
+  if (syncInProgress) {
+    return;
+  }
+  // Nothing to sync. Dispatching idle to trigger stream.
+  if (!syncPendingCount) {
+    dispatch(idleSyncFavorites());
+    return;
+  }
+
+  // Reset pending count since we always send entire list.
+  // Whatever was added before is being synced now.
+  syncPendingCount = 0;
+  syncInProgress = true;
+  const state = getState();
+  dispatch(requestSyncFavorites());
+  new PipelineRequest('putFavorites')
+    .setInput({ productIds: getFavoritesProductsIds(state) })
+    .dispatch()
+    .then(() => {
+      dispatch(receiveSyncFavorites());
+      syncInProgress = false;
+      // Calling self to check is something maybe changed since last sync request.
+      dispatch(requestSync());
+    })
+    .catch(() => {
+      dispatch(errorSyncFavorites());
+      syncInProgress = false;
+      dispatch(requestSync());
+    });
 };
 
 /**
  * Add favorites action.
  * @param {string} productId Product identifier.
- * @param {bool} immediate Send immediately (no throttling).
  * @returns {Promise} PipelineRequest dispatch.
  */
-const addFavorites = (productId, immediate = false) => (dispatch) => {
-  const addPromise = new Promise((res, rej) => {
-    const timeoutTime = immediate ? 0 : 1000;
-    if (!productId) {
-      rej();
-      return;
-    }
-
-    dispatch(requestAddFavorites(productId));
-
-    if (!immediate && addTimeout[productId]) {
-      clearAddTimer(productId);
-    }
-
-    addTimeout[productId] = setTimeout(() => {
-      addTimeout[productId] = null;
-      new PipelineRequest('addFavorites')
-        .setInput({ productId })
-        .dispatch()
-        .then(res)
-        .catch(rej);
-    }, timeoutTime);
-  });
-
-  addPromise
-    .then(() => {
-      clearAddTimer(productId);
-      dispatch(receiveAddFavorites());
-    })
-    .catch(() => {
-      clearAddTimer(productId);
-      dispatch(errorAddFavorites(productId));
-    });
-  return addPromise;
+const addFavorites = productId => (dispatch) => {
+  dispatch(requestAddFavorites(productId));
+  syncPendingCount += 1;
+  dispatch(requestSync());
+};
+/**
+ * Removes single product from favorites.
+ * @param {string} productId Product id.
+ * @param {function} dispatch Disaptch function.
+ */
+const removeProductFromFavorites = (productId, dispatch) => {
+  dispatch(requestRemoveFavorites(productId));
+  syncPendingCount += 1;
+  dispatch(requestSync());
 };
 
 /**
  * Remove favorites action.
  * @param {string} productId Product identifier.
+ * @param {bool} withRelatives When true relatives which are on list are also removed.
  * @returns {Promise} PipelineRequest dispatch.
  */
-const removeFavorites = productId => (dispatch) => {
-  const removePromise = new Promise((res, rej) => {
-    if (!productId) {
-      rej();
-      return;
-    }
-
-    if (addTimeout[productId]) {
-      clearAddTimer(productId);
-      res(abortAddFavorites(productId));
-      return;
-    }
-    dispatch(requestRemoveFavorites(productId));
-
-    new PipelineRequest('deleteFavorites')
-      .setInput({ productId })
-      .dispatch()
-      .then(() => res(receiveRemoveFavorites()))
-      .catch(rej);
-  });
-
-  removePromise
-    .then(action => dispatch(action))
-    .catch(() => dispatch(errorRemoveFavorites(productId)));
-
-  return removePromise;
+const removeFavorites = (productId, withRelatives = false) => (dispatch, getState) => {
+  if (withRelatives) {
+    const allIds = getProductRelativesOnFavorites(getState(), productId);
+    allIds.forEach(id => removeProductFromFavorites(id, dispatch, getState));
+    return;
+  }
+  removeProductFromFavorites(productId, dispatch);
 };
 
 export {
