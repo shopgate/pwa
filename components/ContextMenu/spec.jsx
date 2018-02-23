@@ -78,7 +78,10 @@ describe('<ContextMenu />', () => {
 
       describe('Given the first item gets clicked', () => {
         beforeEach(() => {
-          renderedElement.find(ContextMenu.Item).first().find('[onClick]').simulate('click');
+          renderedElement.find(ContextMenu.Item).first().find('[onClick]').simulate('click', {
+            preventDefault: () => {},
+            stopPropagation: () => {},
+          });
           jest.runAllTimers();
         });
 
