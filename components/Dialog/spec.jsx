@@ -8,13 +8,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
+import { MODAL_VARIANT_SELECT } from './constants';
 import Dialog from './index';
 
 describe('<Dialog />', () => {
   it('should render without props', () => {
-    const wrapper = shallow(
-      <Dialog modal={{ message: 'msg' }} />
-    );
+    const wrapper = shallow(<Dialog modal={{ message: 'msg' }} />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('TextMessageDialog').length).toBe(1);
+  });
+
+  it('should render BasicDialog when no message given', () => {
+    const wrapper = shallow(<Dialog modal={{ message: null }} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('BasicDialog').length).toBe(1);
   });
@@ -27,14 +32,12 @@ describe('<Dialog />', () => {
       request: {},
     };
 
-    const wrapper = shallow(
-      <Dialog
-        modal={{
-          type: MODAL_PIPELINE_ERROR,
-          params,
-        }}
-      />
-    );
+    const wrapper = shallow(<Dialog
+      modal={{
+        type: MODAL_PIPELINE_ERROR,
+        params,
+      }}
+    />);
 
     expect(wrapper).toMatchSnapshot();
 

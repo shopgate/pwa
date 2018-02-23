@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { logo } from 'Config/app.json';
+import { logo } from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
 
 /**

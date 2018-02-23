@@ -19,6 +19,6 @@ describe('<List />', () => {
     );
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.children().length).toEqual(2);
+    expect(wrapper.find(List.Item).length).toEqual(2);
   });
 });

@@ -16,7 +16,7 @@ import defaultStyles from './style';
 class ImageSlider extends Component {
   static propTypes = {
     ...Slider.propTypes,
-    classNames: PropTypes.objectOf(PropTypes.string),
+    classNames: PropTypes.shape(),
   };
 
   static defaultProps = {
@@ -71,6 +71,7 @@ class ImageSlider extends Component {
       <Slider
         {...this.props}
         classNames={styles}
+        maxIndicators={10}
       >
         {imageSliderItems}
       </Slider>
