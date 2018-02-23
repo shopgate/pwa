@@ -8,9 +8,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
 import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
@@ -20,7 +21,6 @@ import HomeIcon from 'Components/icons/HomeIcon';
 import HeartIcon from 'Components/icons/HeartIcon';
 import ViewListIcon from 'Components/icons/ViewListIcon';
 import ShoppingCartIcon from 'Components/icons/ShoppingCartIcon';
-import BoxIcon from 'Components/icons/BoxIcon';
 import LocalShippingIcon from 'Components/icons/LocalShippingIcon';
 import InfoIcon from 'Components/icons/InfoIcon';
 import CreditCardIcon from 'Components/icons/CreditCardIcon';
@@ -125,9 +125,8 @@ class NavDrawer extends Component {
         close={this.handleClose}
         setContentRef={this.setContentRef}
       >
-
         <Header user={user} close={this.handleClose} />
-
+        <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
         <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
           <I18n.Text string="navigation.home" />
         </Item>
@@ -160,12 +159,6 @@ class NavDrawer extends Component {
 
         {showQuickLinks && this.renderEntries(entries.quicklinks)}
         {showQuickLinks && <Divider close={this.handleClose} />}
-
-        {user && (
-          <Item href={ORDERS_PATH} icon={BoxIcon} close={this.handleClose}>
-            <I18n.Text string="navigation.my_orders" />
-          </Item>
-        )}
 
         <Item href={`${PAGE_PATH}/shipping`} icon={LocalShippingIcon} close={this.handleClose}>
           <I18n.Text string="navigation.shipping" />
@@ -201,7 +194,7 @@ class NavDrawer extends Component {
             <I18n.Text string="navigation.logout" />
           </Item>
         )}
-
+        <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
         <ClientInformation />
 
       </Layout>
