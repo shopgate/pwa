@@ -40,6 +40,7 @@ jest.mock('Components/ClientInformation/connector', () => (obj) => {
 });
 let mockedHasFavorites = true;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  componentsConfig: { portals: {} },
   get hasFavorites() { return mockedHasFavorites; },
 }));
 describe('<NavDrawer />', () => {
