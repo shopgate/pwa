@@ -17,9 +17,7 @@ import {
   LOGIN_PATH,
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import {
-  ORDERS_PATH,
-} from '@shopgate/pwa-common-commerce/orders/constants';
+
 import styles from './style';
 
 /**
@@ -48,7 +46,6 @@ class UserMenu extends Component {
           <I18n.Text string="navigation.welcome_message" params={{ name: user.firstName }} />
         </Headline>
         <List>
-          <List.Item title="navigation.my_orders" link={ORDERS_PATH} />
           <List.Item title="navigation.logout" onClick={this.props.logout} />
         </List>
       </div>
