@@ -78,9 +78,9 @@ export default function cart(subscribe) {
     });
 
     /**
-     * Reload cart every time the view gets visible again.
-     * Needed for eg when the cart gets modified in the webcheckout and
-     * the user close the inAppBrowser before the success page.
+     * Reload cart every time the WebView becomes visible again.
+     * This is needed, for example, when the cart is modified inside the webcheckout and
+     * the user closes the inAppBrowser before reaching the success page.
      */
     event.addCallback('viewWillAppear', () => {
       dispatch(fetchCart());
