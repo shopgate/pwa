@@ -92,17 +92,6 @@ class Product extends Component {
    */
   toggleEditMode = (isEnabled = true) => {
     if (isEnabled) {
-<<<<<<< HEAD
-      // Scroll the page to move the product component into the viewport.
-      const yOffset = -(window.innerHeight / 2)
-        + getAbsoluteHeight(this.cardElement)
-        + variables.paymentBar.height;
-
-      this.cardElement.scrollIntoView({
-        behavior: 'smooth',
-        yOffset,
-      });
-=======
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
@@ -118,7 +107,6 @@ class Product extends Component {
           yOffset,
         });
       }, CART_INPUT_AUTO_SCROLL_DELAY);
->>>>>>> master
     }
 
     this.props.onToggleFocus(isEnabled);
