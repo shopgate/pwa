@@ -4,15 +4,20 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getCurrentProductVariantId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
+import {
+  ITEM_PATH,
+  RECEIVE_PRODUCT,
+  RECEIVE_PRODUCT_CACHED,
+} from '@shopgate/pwa-common-commerce/product/constants';
 import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
 import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
-import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import getProductData from './actions/getProductData';
 import { REVIEW_PREVIEW_COUNT } from './constants';
 
@@ -64,13 +69,21 @@ export default function product(subscribe) {
      * Ensures that the view is updated after navigating back and forth
      * through sub-pages like gallery, reviews, etc.
      */
-    const variantId = getCurrentProductVariantId(getState());
+    const state = getState();
+    const variantId = getCurrentProductVariantId(state);
     dispatch(getProductData(variantId));
-
     dispatch(enableNavigatorSearch());
-    if (appConfig.hasReviews) {
+  });
+
+  if (appConfig.hasReviews) {
+    const shouldFetchReviews$ = main$
+      .filter(({ action }) => (
+        action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
+      ));
+
+    subscribe(shouldFetchReviews$, ({ dispatch, getState }) => {
       const baseProductId = getCurrentBaseProductId(getState());
       dispatch(getProductReviews(baseProductId, REVIEW_PREVIEW_COUNT));
-    }
-  });
+    });
+  }
 }
