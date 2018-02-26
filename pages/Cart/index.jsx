@@ -147,9 +147,9 @@ class Cart extends Component {
                   isVisible={!this.state.isPaymentBarHidden}
                   onSize={this.onSize}
                 />
+                <TaxDisclaimer />
               </Fragment>
             )}
-            {(!isLoading && hasItems) && <TaxDisclaimer />}
           </section>
         )}
         {(!isLoading && !hasItems) && <Empty />}

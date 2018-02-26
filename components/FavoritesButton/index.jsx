@@ -29,6 +29,7 @@ class FavoritesButton extends Component {
     productId: PropTypes.string,
     removeFavorites: PropTypes.func,
     removeThrottle: PropTypes.number,
+    removeWithRelatives: PropTypes.bool,
     rippleClassName: PropTypes.string,
   };
 
@@ -42,6 +43,7 @@ class FavoritesButton extends Component {
     productId: null,
     removeFavorites: () => {},
     removeThrottle: 0,
+    removeWithRelatives: false,
     rippleClassName: '',
   };
 
@@ -114,7 +116,7 @@ class FavoritesButton extends Component {
       this.props.addFavorites(this.props.productId);
     } else {
       setTimeout(() => {
-        this.props.removeFavorites(this.props.productId);
+        this.props.removeFavorites(this.props.productId, this.props.removeWithRelatives);
       }, this.props.removeThrottle);
     }
 
