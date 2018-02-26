@@ -26,11 +26,11 @@ const Iterator = props => (
     itemType="http://schema.org/ListItem"
     className={styles}
   >
-    <Portal name={portals.PRODUCT_LIST_ITEM_BEFORE} props={{ id: props.id }} />
-    <Portal name={portals.PRODUCT_LIST_ITEM} props={{ id: props.id }}>
+    <Portal name={portals.PRODUCT_LIST_ITEM_BEFORE} props={{ productId: props.id }} />
+    <Portal name={portals.PRODUCT_LIST_ITEM} props={{ productId: props.id }}>
       <Item product={props} display={props.display} />
     </Portal>
-    <Portal name={portals.PRODUCT_LIST_ITEM_AFTER} props={{ id: props.id }} />
+    <Portal name={portals.PRODUCT_LIST_ITEM_AFTER} props={{ productId: props.id }} />
   </Grid.Item>
 );
 
