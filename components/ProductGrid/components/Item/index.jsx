@@ -13,7 +13,6 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { PRODUCT_ITEM_NAME_BEFORE } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ProductImage from 'Components/ProductImage';
 import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
@@ -31,7 +30,7 @@ import connect from './connector';
 const Item = ({ product, display, isFavorite }) => (
   <Link
     tagName="a"
-    href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+    href={`/item/${bin2hex(product.id)}`}
     className={styles.container}
     itemProp="item"
     itemScope
@@ -97,7 +96,6 @@ const Item = ({ product, display, isFavorite }) => (
 );
 
 Item.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
   product: PropTypes.shape().isRequired,
   display: PropTypes.shape(),
   isFavorite: PropTypes.bool,
