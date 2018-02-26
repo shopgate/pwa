@@ -32,7 +32,7 @@ const TabBarFavoritesAction = props => (
     {...props}
     icon={(
       <Portal name="tabbar.heart-icon">
-        <FavoritesIcon className={styles}/>
+        <FavoritesIcon className={styles} />
       </Portal>
     )}
     onClick={handleClick}

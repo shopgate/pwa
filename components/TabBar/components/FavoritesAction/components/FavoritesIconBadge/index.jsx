@@ -6,7 +6,7 @@ import style from './style';
 /**
  * Favorites icon badge.
  */
-class FavoritesIconBadge extends Component {
+export class FavoritesIconBadge extends Component {
   static MAX_NUMBER = 999;
   static propTypes = {
     favoritesCount: Proptypes.number,
@@ -39,6 +39,9 @@ class FavoritesIconBadge extends Component {
    * @returns {JSX}
    */
   render() {
+    if (this.props.favoritesCount === 0) {
+      return null;
+    }
     const number = (this.props.favoritesCount > this.constructor.MAX_NUMBER) ?
       `${this.constructor.MAX_NUMBER}+`
       : this.props.favoritesCount;
