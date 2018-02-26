@@ -33,6 +33,7 @@ const CTAButtons = props => (
       handleAddToCart={props.handleAddToCart}
       buttonSize={styles.cartButtonSize}
       iconSize={styles.iconSize}
+      hasLoading
       className={styles.cartButton}
     />
   </div>

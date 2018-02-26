@@ -47,6 +47,7 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
         <MockedAddToCartButton
           buttonSize={56}
           handleAddToCart={[Function]}
+          hasLoading={true}
           iconSize={24}
           isLoading={true}
           isOrderable={false}

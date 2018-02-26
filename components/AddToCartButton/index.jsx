@@ -23,12 +23,14 @@ class AddToCartButton extends Component {
     isOrderable: PropTypes.bool.isRequired,
     buttonSize: PropTypes.number,
     className: PropTypes.string,
+    hasLoading: PropTypes.bool,
     iconSize: PropTypes.number,
   };
 
   static defaultProps = {
     buttonSize: styles.buttonSize,
     className: null,
+    hasLoading: false,
     iconSize: styles.iconSize,
   };
 
@@ -168,12 +170,12 @@ class AddToCartButton extends Component {
       >
         {
           /**
-           * This svg must not be rendered when not visible
+           * This svg must not be rendered when never visible
            * When rendered, even hidden or with paused animation, the GPU goes crazy on
            * favorites when there are many of them.
            */
         }
-        {this.props.isLoading &&
+        {this.props.hasLoading &&
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
           <IndicatorCircle
             color={colors.primaryContrast}
