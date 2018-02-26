@@ -11,8 +11,8 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ProductImage from 'Components/ProductImage';
+// TODO: import FavoritesButton from 'Components/FavoritesButton';
 import RatingStars from 'Components/RatingStars';
 import PriceInfo from 'Components/PriceInfo';
 import Price from 'Components/Price';
@@ -30,12 +30,11 @@ import styles from './style';
  * @param {number} props.titleRows The max number of rows for the product title.
  * @return {JSX}
  */
-const ProductCard = ({
-  product, hidePrice, hideRating, hideName, titleRows,
-}) => (
+const ProductCard = ({ product, hidePrice, hideRating, hideName, titleRows }) => (
   <Link
     tagName="a"
-    href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+    href={`/item/${bin2hex(product.id)}`}
+    className={styles.container}
     itemProp="item"
     itemScope
     itemType="http://schema.org/Product"

@@ -21,7 +21,6 @@ const Mock = () => <div />;
 
 Mock.propTypes = {
   handleSelectionUpdate: PropTypes.func.isRequired,
-  getVariantsByProductId: PropTypes.func,
   selection: PropTypes.arrayOf(PropTypes.shape()),
   variants: PropTypes.shape(),
 };
@@ -29,7 +28,6 @@ Mock.propTypes = {
 Mock.defaultProps = {
   selection: null,
   variants: null,
-  getVariantsByProductId: () => {},
 };
 
 const WrappedMock = ProductVariants(Mock);

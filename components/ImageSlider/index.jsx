@@ -37,7 +37,7 @@ class ImageSlider extends Component {
       return true;
     }
 
-    return !nextChildren.every((child, index) => child === oldChildren[index]);
+    return nextChildren.every((child, index) => child === oldChildren[index]);
   }
 
   /**

@@ -12,7 +12,6 @@ import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ImageSlider from 'Components/ImageSlider';
 import Card from 'Components/Card';
 import DiscountBadge from 'Components/DiscountBadge';
@@ -59,15 +58,13 @@ const getLiveshoppingTimeout = (liveshoppings) => {
  * @param {number} timeout The timeout of the live-shopping deal.
  * @returns {JSX}
  */
-const createProductSliderItem = ({
-  id, name, featuredImageUrl, price,
-}, timeout) => {
+const createProductSliderItem = ({ id, name, featuredImageUrl, price }, timeout) => {
   const priceStriked = price.unitPriceStriked > 0 ? price.unitPriceStriked : price.msrp;
 
   return (
     <div key={id} className={styles.card}>
       <Card>
-        <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
+        <Link href={`/item/${bin2hex(id)}`}>
           <Grid>
             <Grid.Item className={styles.imagePane}>
               <ProductImage src={featuredImageUrl} alt={name} />
@@ -147,9 +144,9 @@ class LiveshoppingWidget extends React.Component {
    * @return {JSX}
    */
   render() {
-    const items = this.props.products.slice().map((
+    const items = this.props.products.slice().map(
       product => createProductSliderItem(product, getLiveshoppingTimeout(product.liveshoppings))
-    ));
+    );
 
     if (!items.length) {
       return null;
