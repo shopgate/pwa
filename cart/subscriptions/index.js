@@ -77,6 +77,15 @@ export default function cart(subscribe) {
       dispatch(fetchCart());
     });
 
+    /**
+     * Reload the cart everytime the WebView becomes visible.
+     * This is needed, for example, when the cart is modified inside the webcheckout and
+     * the user closes the inAppBrowser before reaching the success page.
+     */
+    event.addCallback('viewWillAppear', () => {
+      dispatch(fetchCart());
+    });
+
     // Reset the productPendingCount on app start to avoid a wrong value in the cart badge.
     dispatch(setCartProductPendingCount(0));
   });
