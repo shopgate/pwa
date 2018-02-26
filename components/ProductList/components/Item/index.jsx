@@ -5,13 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Image from '@shopgate/pwa-common/components/Image';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
@@ -36,53 +38,114 @@ const Item = ({ display, product }) => (
   >
     <Grid className={styles.listItemContainer}>
       <Grid.Item shrink={0} className={styles.imageContainer}>
-        <Image itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+
+        {/* IMAGE */}
+        <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
+        <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
+          <Image itemProp="image" src={product.featuredImageUrl} alt={product.name} />
+        </Portal>
+        <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
+
+        {/* DISCOUNT */}
         {!!product.price.discount && (
-          <DiscountBadge text={`-${product.price.discount}%`} />
+          <Fragment>
+            <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
+              <DiscountBadge text={`-${product.price.discount}%`} />
+            </Portal>
+            <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+          </Fragment>
         )}
+
       </Grid.Item>
       <Grid.Item grow={4} className={styles.titleContainer}>
-        <div itemProp="name">
-          <Ellipsis>{product.name}</Ellipsis>
-        </div>
+
+        {/* NAME */}
+        <Fragment>
+          <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
+          <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
+            <div itemProp="name">
+              <Ellipsis>{product.name}</Ellipsis>
+            </div>
+          </Portal>
+          <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
+        </Fragment>
+
+        {/* MANUFACTURER */}
         {(!display || (display.manufacturer && product.manufacturer)) && (
-          <Manufacturer text={product.manufacturer} className={styles.manufacturer} />
+          <Fragment>
+            <Portal
+              name={portals.PRODUCT_ITEM_MANUFACTURER_BEFORE}
+              props={{ productId: product.id }}
+            />
+            <Portal name={portals.PRODUCT_ITEM_MANUFACTURER} props={{ productId: product.id }}>
+              <Manufacturer text={product.manufacturer} className={styles.manufacturer} />
+            </Portal>
+            <Portal
+              name={portals.PRODUCT_ITEM_MANUFACTURER_AFTER}
+              props={{ productId: product.id }}
+            />
+          </Fragment>
         )}
+
+        {/* AVAILABILITY */}
         {product.availability && (
-          <Availability
-            className={styles.availability}
-            text={product.availability.text}
-            state={product.availability.state}
-          />
+          <Fragment>
+            <Portal
+              name={portals.PRODUCT_ITEM_AVAILABILITY_BEFORE}
+              props={{ productId: product.id }}
+            />
+            <Portal name={portals.PRODUCT_ITEM_AVAILABILITY} props={{ productId: product.id }}>
+              <Availability
+                className={styles.availability}
+                text={product.availability.text}
+                state={product.availability.state}
+              />
+            </Portal>
+            <Portal
+              name={portals.PRODUCT_ITEM_AVAILABILITY_AFTER}
+              props={{ productId: product.id }}
+            />
+          </Fragment>
         )}
+
       </Grid.Item>
+
+      {/* PRICE - STRIKE PRICE - PRICE INFO */}
       {(!display || display.price) && (
-        <Grid.Item grow={1} className={styles.priceContainer}>
-          <Price
-            unitPrice={product.price.unitPrice}
-            unitPriceMin={product.price.unitPriceMin}
-            discounted={!!product.price.discount}
-            currency={product.price.currency}
-          />
-          {(product.price.msrp > 0) && (
-            <PriceStriked
-              value={product.price.msrp}
-              currency={product.price.currency}
-              className={styles.priceStriked}
-            />
-          )}
-          {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-            <PriceStriked
-              value={product.price.unitPriceStriked}
-              currency={product.price.currency}
-              className={styles.priceStriked}
-            />
-          )}
-          {product.price.info && (
-            <PriceInfo text={product.price.info} className={styles.priceInfo} />
-          )}
-        </Grid.Item>
+        <Fragment>
+          <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
+          <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+            <Grid.Item grow={1} className={styles.priceContainer}>
+              <Price
+                unitPrice={product.price.unitPrice}
+                unitPriceMin={product.price.unitPriceMin}
+                discounted={!!product.price.discount}
+                currency={product.price.currency}
+              />
+              {(product.price.msrp > 0) && (
+                <PriceStriked
+                  value={product.price.msrp}
+                  currency={product.price.currency}
+                  className={styles.priceStriked}
+                />
+              )}
+              {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
+                <PriceStriked
+                  value={product.price.unitPriceStriked}
+                  currency={product.price.currency}
+                  className={styles.priceStriked}
+                />
+              )}
+              {product.price.info && (
+                <PriceInfo text={product.price.info} className={styles.priceInfo} />
+              )}
+            </Grid.Item>
+          </Portal>
+          <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
+        </Fragment>
       )}
+
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
     </Grid>
   </Link>
