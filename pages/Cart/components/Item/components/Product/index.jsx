@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from 'Components/CardList/components/Item';
 import MessageBar from 'Components/MessageBar';
 import {
@@ -45,6 +46,11 @@ class Product extends Component {
     onToggleFocus: () => {},
   };
 
+  static childContextTypes = {
+    cartItemId: PropTypes.string,
+    type: PropTypes.string,
+  }
+
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -55,6 +61,17 @@ class Product extends Component {
     this.state = {
       editMode: false,
       visible: true,
+    };
+  }
+
+  /**
+   * Expose props to the descendant components to use them for the portals.
+   * @return {Object}
+   */
+  getChildContext() {
+    return {
+      cartItemId: this.props.id,
+      type: CART_ITEM_TYPE_PRODUCT,
     };
   }
 

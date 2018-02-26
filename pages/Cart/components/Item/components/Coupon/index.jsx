@@ -7,9 +7,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardList from 'Components/CardList';
 import MessageBar from 'Components/MessageBar';
 import styles from './style';
@@ -42,6 +42,11 @@ class Coupon extends Component {
     deleteCoupon: () => {},
   };
 
+  static childContextTypes = {
+    cartItemId: PropTypes.string,
+    type: PropTypes.string,
+  }
+
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -55,10 +60,21 @@ class Coupon extends Component {
   }
 
   /**
+   * Expose props to the descendant components to use them for the portals.
+   * @return {Object}
+   */
+  getChildContext() {
+    return {
+      cartItemId: this.props.id,
+      type: CART_ITEM_TYPE_COUPON,
+    };
+  }
+
+  /**
    * We need to set the element height explicitly so that we can animate it later.
    */
   componentDidMount() {
-    this.transitionElement.style.height = `${getAbsoluteHeight(findDOMNode(this.cardElement))}px`;
+    this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement)}px`;
   }
 
   /**
