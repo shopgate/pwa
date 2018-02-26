@@ -30,6 +30,10 @@ export const PRODUCT_LIST = `${PRODUCT}.${LIST}`;
 export const PRODUCT_LIST_BEFORE = `${PRODUCT}.${LIST}.${BEFORE}`;
 export const PRODUCT_LIST_AFTER = `${PRODUCT}.${LIST}.${AFTER}`;
 
+export const PRODUCT_LIST_ITEM_BEFORE = `${PRODUCT}.${LIST_ITEM}.${BEFORE}`;
+export const PRODUCT_LIST_ITEM = `${PRODUCT}.${LIST_ITEM}`;
+export const PRODUCT_LIST_ITEM_AFTER = `${PRODUCT}.${LIST_ITEM}.${AFTER}`;
+
 export const PRODUCT_ITEM_IMAGE = `${PRODUCT}-${ITEM}.${IMAGE}`;
 export const PRODUCT_ITEM_IMAGE_BEFORE = `${PRODUCT}-${ITEM}.${IMAGE}.${BEFORE}`;
 export const PRODUCT_ITEM_IMAGE_AFTER = `${PRODUCT}-${ITEM}.${IMAGE}.${AFTER}`;
