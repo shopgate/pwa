@@ -219,15 +219,9 @@ class FilterBar extends Component {
         this.isVisible = false;
       }
 
-      // Update the shadow state
-      const hasShadow = (
-        this.isVisible && this.origin + nextOffset > 0
-      );
-
       // Update the state
       this.setState({
         offset: nextOffset,
-        hasShadow,
       });
 
       this.prevScrollTop = scrollTop;
@@ -262,14 +256,9 @@ class FilterBar extends Component {
    * @returns {JSX}
    */
   render() {
-    const classes = [
-      styles.wrapper,
-      ...(this.state.hasShadow) && [styles.shaded],
-    ];
-
     return (
       <div>
-        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle}>
+        <div ref={this.setRef} className={styles.wrapper} style={this.wrapperStyle}>
           <Content componentUpdated={this.setSpacerHeight} />
         </div>
         <div style={{ height: this.state.spacerHeight }} />
