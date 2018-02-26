@@ -9,7 +9,8 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const actionButton = css({
-  color: colors.primary,
+  color: colors.accent,
+  fontWeight: 500,
   flexGrow: 1,
   textTransform: 'uppercase',
   textAlign: 'right',

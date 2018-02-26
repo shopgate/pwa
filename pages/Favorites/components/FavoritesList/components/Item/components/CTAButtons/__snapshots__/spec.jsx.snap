@@ -27,10 +27,11 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       showVariantModal={[Function]}
     >
       <div
-        className="css-wbu9yb"
+        className="css-j25czk"
       >
         <Connect(FavoritesButton)
           active={null}
+          noShadow={true}
           onRippleComplete={[Function]}
           once={false}
           productId="product_1"
@@ -41,7 +42,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             active={null}
             addFavorites={[Function]}
             className=""
-            noShadow={false}
+            noShadow={true}
             onRippleComplete={[Function]}
             once={false}
             productId="product_1"
@@ -53,10 +54,10 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           />
         </Connect(FavoritesButton)>
         <MockedAddToCartButton
-          className="css-ipacgg"
           handleAddToCart={[Function]}
           isLoading={false}
           isOrderable={false}
+          noShadow={true}
         >
           <button
             onClick={[Function]}

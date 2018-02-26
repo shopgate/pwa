@@ -16,13 +16,13 @@ exports[`<SnackBar /> should render component without action 1`] = `
   <SnackBar>
     <Connect(Toast)
       actionButton={[Function]}
-      className="css-1nw5ecr"
+      className="css-1hkftja"
       container={[Function]}
       message={[Function]}
     >
       <Toast
         actionButton={[Function]}
-        className="css-1nw5ecr"
+        className="css-1hkftja"
         container={[Function]}
         dispatchAction={[Function]}
         hasNextToast={false}
@@ -50,26 +50,26 @@ exports[`<SnackBar /> should render component without action 1`] = `
                 "out": "",
               }
             }
-            className="css-1nw5ecr"
+            className="css-1hkftja"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-1nw5ecr css-1rg7udn css-1dwe0qx"
+              className="css-1hkftja css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >
               <Container>
                 <div
-                  className="css-q9taby"
+                  className="css-djhto0"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
                   >
                     <p
-                      className="css-pnkcbw"
+                      className="css-xkpi7v"
                     >
                       <Translate
                         className=""
@@ -111,13 +111,13 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
   <SnackBar>
     <Connect(Toast)
       actionButton={[Function]}
-      className="css-1nw5ecr"
+      className="css-1hkftja"
       container={[Function]}
       message={[Function]}
     >
       <Toast
         actionButton={[Function]}
-        className="css-1nw5ecr"
+        className="css-1hkftja"
         container={[Function]}
         dispatchAction={[Function]}
         hasNextToast={false}
@@ -146,26 +146,26 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                 "out": "",
               }
             }
-            className="css-1nw5ecr"
+            className="css-1hkftja"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-1nw5ecr css-1rg7udn css-1dwe0qx"
+              className="css-1hkftja css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >
               <Container>
                 <div
-                  className="css-q9taby"
+                  className="css-djhto0"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
                   >
                     <p
-                      className="css-pnkcbw"
+                      className="css-xkpi7v"
                     >
                       <Translate
                         className=""
@@ -185,7 +185,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                     text="click me"
                   >
                     <button
-                      className="css-n09hx9"
+                      className="css-1khifuo"
                       onClick={[Function]}
                     >
                       <Translate

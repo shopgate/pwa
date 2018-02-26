@@ -2,7 +2,7 @@
 
 exports[`<TabBar /> should highlight the active tab 1`] = `
 <Grid
-  className="css-5bcnow"
+  className="css-rnnn5r"
   component="ul"
   wrap={false}
 >
@@ -45,7 +45,7 @@ exports[`<TabBar /> should not render when invisible 1`] = `""`;
 
 exports[`<TabBar /> should pass custom props to the tab action 1`] = `
 <Grid
-  className="css-5bcnow"
+  className="css-rnnn5r"
   component="ul"
   wrap={false}
 >
@@ -63,7 +63,7 @@ exports[`<TabBar /> should pass custom props to the tab action 1`] = `
 
 exports[`<TabBar /> should render when visible 1`] = `
 <Grid
-  className="css-5bcnow"
+  className="css-rnnn5r"
   component="ul"
   wrap={false}
 >

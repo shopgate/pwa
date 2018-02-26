@@ -7,9 +7,12 @@
  */
 
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 
 const message = css({
-  color: 'white',
+  color: colors.shade6,
+  fontSize: 'smaller',
+  fontWeight: 500,
   margin: 0,
   textAlign: 'left',
   maxWidth: '75%',

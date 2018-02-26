@@ -9,9 +9,10 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
   iconSize={20}
   isLoading={true}
   isOrderable={true}
+  noShadow={false}
 >
   <button
-    className="null css-g3zsb css-31obrv"
+    className="null css-68omm3 css-31obrv"
     onClick={[Function]}
   >
     <div
@@ -106,9 +107,10 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   iconSize={20}
   isLoading={false}
   isOrderable={true}
+  noShadow={false}
 >
   <button
-    className="null css-g3zsb css-31obrv"
+    className="null css-68omm3 css-31obrv"
     onClick={[Function]}
   >
     <div
@@ -203,9 +205,10 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
   iconSize={20}
   isLoading={false}
   isOrderable={true}
+  noShadow={false}
 >
   <button
-    className="null css-g3zsb css-1ncyhu"
+    className="null css-68omm3 css-1ncyhu"
     onClick={[Function]}
   >
     <div
