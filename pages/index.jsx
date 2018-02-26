@@ -30,6 +30,7 @@ import { MORE_PATH } from 'Pages/More/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
+import View from 'Components/View';
 import Dialog from 'Components/Dialog';
 import locale from '../locale';
 import reducers from './reducers';
@@ -76,7 +77,7 @@ const Pages = () => (
       <Route path={`${MORE_PATH}`} component={More} />
       <Route path={`${BROWSE_PATH}`} component={Browse} />
 
-      <Portal name={APP_ROUTES} />
+      <Portal name={APP_ROUTES} props={{ View }} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
