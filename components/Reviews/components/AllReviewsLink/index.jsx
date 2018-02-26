@@ -9,6 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ButtonLink from 'Components/ButtonLink';
 import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
 import connect from './connector';
@@ -31,7 +32,7 @@ const AllReviewsLink = ({ productId, totalReviewCount }) => {
 
   return (
     <div className={container}>
-      <ButtonLink href={`/item/${publicProductId}/reviews`}>
+      <ButtonLink href={`${ITEM_PATH}/${publicProductId}/reviews`}>
         <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
       </ButtonLink>
     </div>
