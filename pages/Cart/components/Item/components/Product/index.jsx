@@ -9,6 +9,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from 'Components/CardList/components/Item';
 import MessageBar from 'Components/MessageBar';
@@ -135,16 +138,24 @@ class Product extends Component {
             <CardListItem>
               <div ref={(element) => { this.cardElement = element; }}>
                 {this.props.messages.length > 0 &&
-                <MessageBar messages={this.props.messages} classNames={messageStyles} />}
-                <Layout
-                  handleDelete={this.transitionOut}
-                  handleUpdate={this.updateProduct}
-                  toggleEditMode={this.toggleEditMode}
-                  editMode={this.state.editMode}
-                  product={this.props.product}
-                  currency={this.props.currency}
-                  quantity={this.props.quantity}
-                />
+                  <MessageBar messages={this.props.messages} classNames={messageStyles} />}
+                <Link
+                  tagName="a"
+                  href={`${ITEM_PATH}/${bin2hex(this.props.product.id)}`}
+                  itemProp="item"
+                  itemScope
+                  itemType="http://schema.org/Product"
+                >
+                  <Layout
+                    handleDelete={this.transitionOut}
+                    handleUpdate={this.updateProduct}
+                    toggleEditMode={this.toggleEditMode}
+                    editMode={this.state.editMode}
+                    product={this.props.product}
+                    currency={this.props.currency}
+                    quantity={this.props.quantity}
+                  />
+                </Link>
               </div>
             </CardListItem>
           </div>
