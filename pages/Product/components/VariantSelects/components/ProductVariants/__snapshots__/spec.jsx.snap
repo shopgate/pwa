@@ -3,6 +3,7 @@
 exports[`<ProductVariants /> should render with variants 1`] = `
 <_class
   currentBaseProductId={null}
+  currentProductVariantId={null}
   getProductData={[Function]}
   selection={null}
   setProductVariantId={[Function]}
@@ -132,6 +133,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
 >
   <Mock
     currentBaseProductId={null}
+    currentProductVariantId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={
@@ -350,15 +352,15 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           "disabled": false,
           "id": "1",
           "label": "Color",
-          "selected": false,
-          "value": null,
+          "selected": true,
+          "value": "1",
           "values": Array [
             Object {
               "availability": null,
               "disabled": false,
               "id": "1",
               "label": "Black",
-              "selected": false,
+              "selected": true,
             },
             Object {
               "availability": null,
@@ -370,7 +372,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           ],
         },
         Object {
-          "disabled": true,
+          "disabled": false,
           "id": "2",
           "label": "Size",
           "selected": false,
@@ -378,21 +380,21 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
           "values": Array [
             Object {
               "availability": null,
-              "disabled": true,
+              "disabled": false,
               "id": "1",
               "label": "0",
               "selected": false,
             },
             Object {
               "availability": null,
-              "disabled": true,
+              "disabled": false,
               "id": "2",
               "label": "11",
               "selected": false,
             },
             Object {
               "availability": null,
-              "disabled": true,
+              "disabled": false,
               "id": "3",
               "label": "7",
               "selected": false,
@@ -423,6 +425,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
 exports[`<ProductVariants /> shouldn't render without variants 1`] = `
 <_class
   currentBaseProductId={null}
+  currentProductVariantId={null}
   getProductData={[Function]}
   selection={null}
   setProductVariantId={[Function]}
@@ -441,6 +444,7 @@ exports[`<ProductVariants /> shouldn't render without variants 1`] = `
 >
   <Mock
     currentBaseProductId={null}
+    currentProductVariantId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={null}

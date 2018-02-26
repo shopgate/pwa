@@ -33,13 +33,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
 });
 
-/**
- * Connects a component to the global store.
- * @param {Object} Component A react component.
- * @return {Object} The react component with extended props.
- */
-const connector = Component => (
-  connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Component)
-);
-
-export default connector;
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });

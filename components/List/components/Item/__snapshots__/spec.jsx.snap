@@ -942,7 +942,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                 "updateQueue": null,
               },
               "_debugSource": Object {
-                "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                 "lineNumber": 120,
               },
               "alternate": null,
@@ -1623,7 +1623,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                   "updateQueue": null,
                 },
                 "_debugSource": Object {
-                  "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                  "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                   "lineNumber": 121,
                 },
                 "alternate": null,
@@ -1632,7 +1632,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                   "_debugIsCurrentlyTiming": false,
                   "_debugOwner": [Circular],
                   "_debugSource": Object {
-                    "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/Glow/index.jsx",
+                    "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/Glow/index.jsx",
                     "lineNumber": 79,
                   },
                   "alternate": null,
@@ -1641,7 +1641,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": Object {
-                      "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/Glow/index.jsx",
+                      "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/Glow/index.jsx",
                       "lineNumber": 85,
                     },
                     "alternate": null,
@@ -2339,14 +2339,14 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                         "updateQueue": null,
                       },
                       "_debugSource": Object {
-                        "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                        "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                         "lineNumber": 72,
                       },
                       "alternate": null,
                       "child": FiberNode {
                         "_debugID": 85,
                         "_debugIsCurrentlyTiming": false,
-                        "_debugOwner": [Circular],
+                        "_debugOwner": null,
                         "_debugSource": null,
                         "alternate": null,
                         "child": FiberNode {
@@ -3026,7 +3026,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                             "updateQueue": null,
                           },
                           "_debugSource": Object {
-                            "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                            "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                             "lineNumber": 73,
                           },
                           "alternate": null,
@@ -3724,14 +3724,14 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                               "updateQueue": null,
                             },
                             "_debugSource": Object {
-                              "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                              "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                               "lineNumber": 76,
                             },
                             "alternate": null,
                             "child": FiberNode {
                               "_debugID": 88,
                               "_debugIsCurrentlyTiming": false,
-                              "_debugOwner": [Circular],
+                              "_debugOwner": null,
                               "_debugSource": null,
                               "alternate": null,
                               "child": FiberNode {
@@ -4411,7 +4411,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                                   "updateQueue": null,
                                 },
                                 "_debugSource": Object {
-                                  "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                                  "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                                   "lineNumber": 81,
                                 },
                                 "alternate": null,
@@ -4419,7 +4419,10 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                                   "_debugID": 90,
                                   "_debugIsCurrentlyTiming": false,
                                   "_debugOwner": null,
-                                  "_debugSource": undefined,
+                                  "_debugSource": Object {
+                                    "fileName": "/Users/snowicki/sgdev/pwa/pwa-common/components/I18n/components/Translate/index.jsx",
+                                    "lineNumber": 37,
+                                  },
                                   "alternate": null,
                                   "child": null,
                                   "effectTag": 0,
@@ -5690,7 +5693,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                 </div>
               </div>
             </div>,
-            "timeStamp": 1518815639656,
+            "timeStamp": 1519298414609,
             "type": "click",
           },
         ],
@@ -6386,7 +6389,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                   "updateQueue": null,
                 },
                 "_debugSource": Object {
-                  "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                  "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                   "lineNumber": 120,
                 },
                 "alternate": null,
@@ -7067,7 +7070,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                     "updateQueue": null,
                   },
                   "_debugSource": Object {
-                    "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                    "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                     "lineNumber": 121,
                   },
                   "alternate": null,
@@ -7076,7 +7079,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                     "_debugIsCurrentlyTiming": false,
                     "_debugOwner": [Circular],
                     "_debugSource": Object {
-                      "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/Glow/index.jsx",
+                      "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/Glow/index.jsx",
                       "lineNumber": 79,
                     },
                     "alternate": null,
@@ -7085,7 +7088,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                       "_debugIsCurrentlyTiming": false,
                       "_debugOwner": [Circular],
                       "_debugSource": Object {
-                        "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/Glow/index.jsx",
+                        "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/Glow/index.jsx",
                         "lineNumber": 85,
                       },
                       "alternate": null,
@@ -7783,14 +7786,14 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                           "updateQueue": null,
                         },
                         "_debugSource": Object {
-                          "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                          "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                           "lineNumber": 72,
                         },
                         "alternate": null,
                         "child": FiberNode {
                           "_debugID": 85,
                           "_debugIsCurrentlyTiming": false,
-                          "_debugOwner": [Circular],
+                          "_debugOwner": null,
                           "_debugSource": null,
                           "alternate": null,
                           "child": FiberNode {
@@ -8470,7 +8473,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                               "updateQueue": null,
                             },
                             "_debugSource": Object {
-                              "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                              "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                               "lineNumber": 73,
                             },
                             "alternate": null,
@@ -9168,14 +9171,14 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                                 "updateQueue": null,
                               },
                               "_debugSource": Object {
-                                "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                                "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                                 "lineNumber": 76,
                               },
                               "alternate": null,
                               "child": FiberNode {
                                 "_debugID": 88,
                                 "_debugIsCurrentlyTiming": false,
-                                "_debugOwner": [Circular],
+                                "_debugOwner": null,
                                 "_debugSource": null,
                                 "alternate": null,
                                 "child": FiberNode {
@@ -9855,7 +9858,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                                     "updateQueue": null,
                                   },
                                   "_debugSource": Object {
-                                    "fileName": "/Users/Shopgate/projects/shopgate-cloud/themes/theme-ios11/components/List/components/Item/index.jsx",
+                                    "fileName": "/Users/snowicki/sgdev/themes/theme-ios11/components/List/components/Item/index.jsx",
                                     "lineNumber": 81,
                                   },
                                   "alternate": null,
@@ -9863,7 +9866,10 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                                     "_debugID": 90,
                                     "_debugIsCurrentlyTiming": false,
                                     "_debugOwner": null,
-                                    "_debugSource": undefined,
+                                    "_debugSource": Object {
+                                      "fileName": "/Users/snowicki/sgdev/pwa/pwa-common/components/I18n/components/Translate/index.jsx",
+                                      "lineNumber": 37,
+                                    },
                                     "alternate": null,
                                     "child": null,
                                     "effectTag": 0,
@@ -11134,7 +11140,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
                   </div>
                 </div>
               </div>,
-              "timeStamp": 1518815639656,
+              "timeStamp": 1519298414609,
               "type": "click",
             },
           ],

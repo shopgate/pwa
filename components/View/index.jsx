@@ -197,7 +197,7 @@ class View extends Component {
    * @returns {JSX}
    */
   render() {
-    let contentStyle = styles.content(
+    const contentStyle = styles.content(
       this.props.hasNavigator,
       this.props.hasTabBar,
       this.props.isFullscreen,
@@ -205,10 +205,6 @@ class View extends Component {
     );
 
     const { children } = this.props;
-
-    if (!this.props.viewTop) {
-      contentStyle += ` ${styles.contentShaded}`;
-    }
 
     return (
       <section className={styles.container} style={this.props.style}>

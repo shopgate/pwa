@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { shallow, mount } from 'enzyme';
 import Collection from './index';
 
