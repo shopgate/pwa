@@ -9,18 +9,23 @@ import HttpRequest from '@shopgate/pwa-core/classes/HttpRequest';
 import requestShopifyLogout from '../action-creators/requestShopifyLogout';
 import errorShopifyLogout from '../action-creators/errorShopifyLogout';
 import successShopifyLogout from '../action-creators/successShopifyLogout';
-import { getShopifyUrl } from '../selectors';
+import { getLogoutUrl, getLogoutSuccessUrl } from '../selectors';
 
 /**
  * Log out the current user.
  * @return {Function} A redux thunk.
  */
 export default () => (dispatch) => {
-  const shopifyUrl = getShopifyUrl();
+  const logoutUrl = getLogoutUrl();
+
+  if (!logoutUrl) {
+    // When no logout url is available it doesn't make sense to do the request
+    return;
+  }
 
   dispatch(requestShopifyLogout());
 
-  new HttpRequest(`${shopifyUrl}/account/logout`)
+  new HttpRequest(logoutUrl)
     .dispatch()
     .then((response) => {
       const {
@@ -28,7 +33,12 @@ export default () => (dispatch) => {
         statusCode,
       } = response;
 
-      if (statusCode === 302 && location && location.endsWith(`${shopifyUrl}/`)) {
+      const logoutSuccessUrl = getLogoutSuccessUrl();
+      // When a success url is available it needs to be considered at the response evaluation
+      const urlCheckValid = !logoutSuccessUrl ||
+         (location && location.startsWith(logoutSuccessUrl));
+
+      if (statusCode === 302 && urlCheckValid) {
         dispatch(successShopifyLogout());
       } else {
         dispatch(errorShopifyLogout());
