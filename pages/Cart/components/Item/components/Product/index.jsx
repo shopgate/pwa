@@ -12,6 +12,7 @@ import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
+import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from 'Components/CardList/components/Item';
 import MessageBar from 'Components/MessageBar';
 import {
@@ -48,6 +49,11 @@ class Product extends Component {
     onToggleFocus: () => {},
   };
 
+  static childContextTypes = {
+    cartItemId: PropTypes.string,
+    type: PropTypes.string,
+  }
+
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -58,6 +64,17 @@ class Product extends Component {
     this.state = {
       editMode: false,
       visible: true,
+    };
+  }
+
+  /**
+   * Expose props to the descendant components to use them for the portals.
+   * @return {Object}
+   */
+  getChildContext() {
+    return {
+      cartItemId: this.props.id,
+      type: CART_ITEM_TYPE_PRODUCT,
     };
   }
 
