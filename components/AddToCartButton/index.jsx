@@ -25,6 +25,7 @@ class AddToCartButton extends Component {
     className: PropTypes.string,
     hasLoading: PropTypes.bool,
     iconSize: PropTypes.number,
+    noShadow: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ class AddToCartButton extends Component {
     className: null,
     hasLoading: false,
     iconSize: styles.iconSize,
+    noShadow: false,
   };
 
   /**
@@ -163,9 +165,13 @@ class AddToCartButton extends Component {
       };
     }
 
+    const className = this.props.noShadow ?
+      styles.buttonWrapperNoShadow(this.props.buttonSize, this.props.iconSize)
+      : styles.buttonWrapper(this.props.buttonSize, this.props.iconSize);
+
     return (
       <button
-        className={`${this.props.className} ${styles.buttonWrapper(this.props.buttonSize, this.props.iconSize)} ${buttonStyle}`}
+        className={`${this.props.className} ${className} ${buttonStyle}`}
         onClick={this.handleClick}
       >
         {

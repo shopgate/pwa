@@ -44,12 +44,13 @@ const CTAButtons = props => (
       onRippleComplete={props.onRippleComplete}
       once={props.favoritesOnce}
       readOnlyOnFetch
+      noShadow
     />
     <AddToCartButton
-      className={styles.cartButton}
       handleAddToCart={() => handleAddToCart(props)}
       isLoading={false}
       isOrderable={!props.isBaseProduct(props.productId)}
+      noShadow
     />
   </div>
 );

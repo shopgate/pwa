@@ -64,11 +64,12 @@ const springToBottom = css({
 
 /**
  * Circular button and container for the icons.
+ * Default styles.
  * @param {number} bSize Size of the button.
  * @param {number} iSize Size of the icon.
  * @return {string} Class name
  */
-const buttonWrapper = (bSize, iSize) => css({
+const buttonWrapperDefault = (bSize, iSize) => ({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   borderRadius: '50%',
   width: bSize,
@@ -78,11 +79,30 @@ const buttonWrapper = (bSize, iSize) => css({
   outline: 0,
   paddingLeft: (bSize - iSize) / 2,
   paddingRight: (bSize - iSize) / 2,
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
+});
+/**
+ * Circular button and container for the icons.
+ * @param {number} bSize Size of the button.
+ * @param {number} iSize Size of the icon.
+ * @return {string} Class name
+ */
+const buttonWrapper = (bSize, iSize) => css({
+  ...buttonWrapperDefault(bSize, iSize),
+  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
 }).toString();
 
+/**
+ * Circular button and container for the icons.
+ * Without shadow.
+ * @param {number} bSize Size of the button.
+ * @param {number} iSize Size of the icon.
+ * @return {string} Class name
+ */
+const buttonWrapperNoShadow = (bSize, iSize) => css({
+  ...buttonWrapperDefault(bSize, iSize),
+}).toString();
 /**
  * Styling that is applied to the button when cart icon is shown.
  */
@@ -120,6 +140,7 @@ const spinnerIcon = css({
 
 export default {
   buttonWrapper,
+  buttonWrapperNoShadow,
   buttonReady,
   buttonSuccess,
   buttonSize,

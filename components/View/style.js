@@ -56,15 +56,6 @@ const content = (
     bottom: 0,
     display: 'flex',
     flexDirection: 'column',
-    ':before': {
-      position: 'fixed',
-      display: 'block',
-      top: 0,
-      width: '100%',
-      height: navAndStatusBarHeight,
-      zIndex: 3,
-      content: '""',
-    },
   }).toString();
 };
 
