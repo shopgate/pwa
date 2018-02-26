@@ -166,9 +166,22 @@ class AddToCartButton extends Component {
         className={`${this.props.className} ${styles.buttonWrapper(this.props.buttonSize, this.props.iconSize)} ${buttonStyle}`}
         onClick={this.handleClick}
       >
+        {
+          /**
+           * This svg must not be rendered when not visible
+           * When rendered, even hidden or with paused animation, the GPU goes crazy on
+           * favorites when there are many of them.
+           */
+        }
+        {this.props.isLoading &&
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
-          <IndicatorCircle color={colors.primaryContrast} strokeWidth={5} />
+          <IndicatorCircle
+            color={colors.primaryContrast}
+            strokeWidth={5}
+            paused={!this.props.isLoading}
+          />
         </div>
+        }
         <div className={tickIconStyle} style={tickInlineStyle}>
           <TickIcon />
         </div>

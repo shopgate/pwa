@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const backgroundColor = 'rgba(249, 249, 249, 0.85)';
+const backgroundColor = 'rgba(249, 249, 249, 0.9)';
 
 export default css({
   position: 'fixed',

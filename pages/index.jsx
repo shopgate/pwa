@@ -33,6 +33,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
+import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
@@ -62,6 +63,7 @@ const Pages = () => (
     <Portal name={APP_GLOBALS} />
     <Viewport>
       <ModalContainer component={Dialog} />
+      <SnackBar />
 
       <Route path={`${INDEX_PATH}`} component={Page} />
       <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
