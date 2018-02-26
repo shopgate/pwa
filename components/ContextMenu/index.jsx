@@ -58,14 +58,8 @@ class ContextMenu extends Component {
 
   /**
    * Handles any menu toggling interactions.
-   * @param {Object} [e] Event
    */
-  handleMenuToggle = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
+  handleMenuToggle = () => {
     if (this.elementRef) {
       this.setState({
         active: !this.state.active,

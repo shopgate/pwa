@@ -19,7 +19,6 @@ export default WrappedComponent => class extends Component {
   static propTypes = {
     getVariantsByProductId: PropTypes.func.isRequired,
     currentBaseProductId: PropTypes.string,
-    currentProductVariantId: PropTypes.string,
     getProductData: PropTypes.func,
     selection: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -62,7 +61,6 @@ export default WrappedComponent => class extends Component {
     getProductData: () => {},
     setProductVariantId: () => {},
     currentBaseProductId: null,
-    currentProductVariantId: null,
   };
 
   /**
@@ -112,7 +110,7 @@ export default WrappedComponent => class extends Component {
    * @param {Object} [props] The props from which to update
    */
   updateFromProps(props = this.props) {
-    const { variants, currentBaseProductId, currentProductVariantId } = props;
+    const { variants, currentBaseProductId } = props;
 
     if (!this.selectHelper && variants) {
       /**
@@ -122,13 +120,8 @@ export default WrappedComponent => class extends Component {
        */
       this.selectHelper = new StepByStep(variants).init();
 
-      // Check if there is already a variantId set. If yes set in in the selection as selected.
-      if (currentProductVariantId) {
-        this.handleVariantPreselection(variants, currentProductVariantId);
-      } else {
-        // Trigger the component state update
-        this.updateSelectionState();
-      }
+      // Trigger the component state update
+      this.updateSelectionState();
     } else {
       /**
        * Re-init for DOM cached pages.
@@ -153,8 +146,6 @@ export default WrappedComponent => class extends Component {
             this.props.setProductVariantId(variantId);
           }
         }
-      } else if (currentProductVariantId && variants) {
-        this.handleVariantPreselection(variants, currentProductVariantId);
       }
     }
   }
@@ -175,20 +166,6 @@ export default WrappedComponent => class extends Component {
         this.handleSelectionUpdate(characteristicId, characteristicValueId);
       },
     };
-  }
-
-  /**
-   * Preselect the the variant with the given currentProductVariantId
-   * @param {Object} variants Variants Object
-   * @param {string} currentProductVariantId current product variant id form store
-   */
-  handleVariantPreselection(variants, currentProductVariantId) {
-    const { characteristics } = find(variants.products, { id: currentProductVariantId });
-
-    Object.keys(characteristics).forEach((characteristicId) => {
-      const characteristicValueId = characteristics[characteristicId];
-      this.handleSelectionUpdate(characteristicId, characteristicValueId);
-    });
   }
 
   /**

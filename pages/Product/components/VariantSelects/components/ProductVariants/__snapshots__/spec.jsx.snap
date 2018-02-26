@@ -3,7 +3,6 @@
 exports[`<ProductVariants /> should render with variants 1`] = `
 <_class
   currentBaseProductId={null}
-  currentProductVariantId={null}
   getProductData={[Function]}
   selection={null}
   setProductVariantId={[Function]}
@@ -133,7 +132,6 @@ exports[`<ProductVariants /> should render with variants 1`] = `
 >
   <Mock
     currentBaseProductId={null}
-    currentProductVariantId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={
@@ -425,7 +423,6 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
 exports[`<ProductVariants /> shouldn't render without variants 1`] = `
 <_class
   currentBaseProductId={null}
-  currentProductVariantId={null}
   getProductData={[Function]}
   selection={null}
   setProductVariantId={[Function]}
@@ -444,7 +441,6 @@ exports[`<ProductVariants /> shouldn't render without variants 1`] = `
 >
   <Mock
     currentBaseProductId={null}
-    currentProductVariantId={null}
     getProductData={[Function]}
     handleSelectionUpdate={[Function]}
     selection={null}

@@ -12,7 +12,6 @@ import Image from '@shopgate/pwa-common/components/Image';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
@@ -29,7 +28,7 @@ import styles from './style';
 const Item = ({ display, product }) => (
   <Link
     tagName="a"
-    href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+    href={`/item/${bin2hex(product.id)}`}
     className={styles.container}
     itemProp="item"
     itemScope
