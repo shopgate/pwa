@@ -26,34 +26,34 @@ import styles from './style';
 const Layout = ({ coupon, currency, handleDelete }, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.icon}>
-      <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={{ ...context }} />
-      <Portal name={portals.CART_ITEM_IMAGE} props={{ ...context }}>
+      <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
+      <Portal name={portals.CART_ITEM_IMAGE} props={context}>
         <Icon />
       </Portal>
-      <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={{ ...context }} />
+      <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
     </Grid.Item>
     <Grid.Item className={styles.content} grow={1}>
-      <Portal name={portals.CART_ITEM_NAME_BEFORE} props={{ ...context }} />
-      <Portal name={portals.CART_ITEM_NAME} props={{ ...context }}>
+      <Portal name={portals.CART_ITEM_NAME_BEFORE} props={context} />
+      <Portal name={portals.CART_ITEM_NAME} props={context}>
         <Title value={coupon.label} />
       </Portal>
-      <Portal name={portals.CART_ITEM_NAME_AFTER} props={{ ...context }} />
+      <Portal name={portals.CART_ITEM_NAME_AFTER} props={context} />
 
-      <Portal name={portals.CART_ITEM_COUPON_CODE_BEFORE} props={{ ...context }} />
-      <Portal name={portals.CART_ITEM_COUPON_CODE} props={{ ...context }}>
+      <Portal name={portals.CART_ITEM_COUPON_CODE_BEFORE} props={context} />
+      <Portal name={portals.CART_ITEM_COUPON_CODE} props={context}>
         <Code value={coupon.code} />
       </Portal>
-      <Portal name={portals.CART_ITEM_COUPON_CODE_BEFORE} props={{ ...context }} />
+      <Portal name={portals.CART_ITEM_COUPON_CODE_BEFORE} props={context} />
     </Grid.Item>
     <Grid.Item className={`${styles.content} ${styles.contentLast}`} grow={1} shrink={0}>
       <Delete handleDelete={handleDelete} />
       { (coupon.savedPrice && coupon.savedPrice.value > 0) &&
         <Fragment>
-          <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={{ ...context }} />
-          <Portal name={portals.CART_ITEM_PRICE} props={{ ...context }}>
+          <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context} />
+          <Portal name={portals.CART_ITEM_PRICE} props={context}>
             <CouponPrice currency={currency} savedPrice={coupon.savedPrice} />
           </Portal>
-          <Portal name={portals.CART_ITEM_PRICE_AFTER} props={{ ...context }} />
+          <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context} />
         </Fragment>
       }
     </Grid.Item>

@@ -28,11 +28,11 @@ const Layout = (props, context) => (
   <Grid className={styles.item}>
     <Grid.Item className={styles.leftColumn}>
       <div className={styles.image}>
-        <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={{ ...context }} />
-        <Portal name={portals.CART_ITEM_IMAGE} props={{ ...context }}>
+        <Portal name={portals.CART_ITEM_IMAGE_BEFORE} props={context} />
+        <Portal name={portals.CART_ITEM_IMAGE} props={context}>
           <ProductImage src={props.product.featuredImageUrl} />
         </Portal>
-        <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={{ ...context }} />
+        <Portal name={portals.CART_ITEM_IMAGE_AFTER} props={context} />
       </div>
       <QuantityPicker
         quantity={props.quantity}

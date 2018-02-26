@@ -23,19 +23,19 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }, context) => (
   <Fragment>
     {!!specialPrice && (
       <Fragment>
-        <Portal name={portals.CART_ITEM_PRICE_STRIKED_BEFORE} props={{ ...context }} />
-        <Portal name={portals.CART_ITEM_PRICE_STRIKED} props={{ ...context }}>
+        <Portal name={portals.CART_ITEM_PRICE_STRIKED_BEFORE} props={context} />
+        <Portal name={portals.CART_ITEM_PRICE_STRIKED} props={context}>
           <PriceStriked
             className={styles.priceStriked}
             value={defaultPrice}
             currency={currency}
           />
         </Portal>
-        <Portal name={portals.CART_ITEM_PRICE_STRIKED_AFTER} props={{ ...context }} />
+        <Portal name={portals.CART_ITEM_PRICE_STRIKED_AFTER} props={context} />
       </Fragment>
     )}
-    <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={{ ...context }} />
-    <Portal name={portals.CART_ITEM_PRICE} props={{ ...context }}>
+    <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context} />
+    <Portal name={portals.CART_ITEM_PRICE} props={context}>
       <Price
         className={styles.price}
         currency={currency}
@@ -44,7 +44,7 @@ const ProductPrice = ({ currency, defaultPrice, specialPrice }, context) => (
         unitPrice={specialPrice || defaultPrice}
       />
     </Portal>
-    <Portal name={portals.CART_ITEM_PRICE_AFTER} props={{ ...context }} />
+    <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context} />
   </Fragment>
 );
 
