@@ -2,12 +2,12 @@
 
 exports[`<Button /> should render as a primary button 1`] = `
 <Button
-  className="css-1y1e1q7 "
+  className="css-pykrk6 "
   disabled={false}
   onClick={null}
 >
   <div
-    className="css-4mrwyf"
+    className="css-8s1fw2"
   >
     Press me
   </div>
@@ -44,12 +44,12 @@ exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 
 exports[`<Button /> should render as a secondary button 1`] = `
 <Button
-  className="css-5xfjjh "
+  className="css-1mhr1mg "
   disabled={false}
   onClick={null}
 >
   <div
-    className="css-4mrwyf"
+    className="css-8s1fw2"
   >
     Press me
   </div>
