@@ -116,7 +116,6 @@
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
-    "wishlist": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "shipping": "Shipping Methods",
@@ -154,6 +153,7 @@
     "home": "Home",
     "browse": "Browse",
     "cart": "Cart",
-    "more": "More"
+    "more": "More",
+    "favorites": "Favorites"
   }
 }

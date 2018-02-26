@@ -10,12 +10,14 @@ import {
   TAB_BROWSE,
   TAB_CART,
   TAB_MORE,
+  TAB_FAVORITES,
 } from '../constants';
 import TabBarAction from '../components/TabBarAction';
 import TabBarHomeAction from '../components/HomeAction';
 import TabBarBrowseAction from '../components/BrowseAction';
 import TabBarCartAction from '../components/CartAction';
 import TabBarMoreAction from '../components/MoreAction';
+import TabBarFavoritesAction from '../components/FavoritesAction';
 
 /**
  * Resolves the tab action component for a given type.
@@ -32,6 +34,8 @@ const getTabActionComponentForType = (type) => {
       return TabBarCartAction;
     case TAB_MORE:
       return TabBarMoreAction;
+    case TAB_FAVORITES:
+      return TabBarFavoritesAction;
     default:
       return TabBarAction;
   }

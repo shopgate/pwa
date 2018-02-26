@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const TAB_HOME = 'home';
-export const TAB_BROWSE = 'browse';
-export const TAB_CART = 'cart';
-export const TAB_MORE = 'more';
-export const TAB_NONE = 'none';
-export const TAB_FAVORITES = 'favorites';
+import { css } from 'glamor';
+
+export default css({
+  height: 6,
+  width: 26,
+}).toString();

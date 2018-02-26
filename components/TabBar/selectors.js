@@ -15,12 +15,14 @@ import {
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {
   TAB_HOME,
   TAB_BROWSE,
   TAB_CART,
+  TAB_FAVORITES,
   TAB_MORE,
   TAB_NONE,
 } from './constants';
@@ -33,21 +35,22 @@ import {
 export const getActiveTab = createSelector(
   getHistoryPathname,
   (pathname) => {
-    if (pathname === INDEX_PATH) {
-      return TAB_HOME;
-    } else if (
-      pathname === BROWSE_PATH
-      || pathname.startsWith(SEARCH_PATH)
-      || pathname.startsWith(CATEGORY_PATH)
-    ) {
-      return TAB_BROWSE;
-    } else if (pathname === CART_PATH) {
-      return TAB_CART;
-    } else if (pathname === MORE_PATH) {
-      return TAB_MORE;
+    switch (true) {
+      case pathname === INDEX_PATH:
+        return TAB_HOME;
+      case (pathname === BROWSE_PATH
+        || pathname.startsWith(SEARCH_PATH)
+        || pathname.startsWith(CATEGORY_PATH)):
+        return TAB_BROWSE;
+      case pathname === CART_PATH:
+        return TAB_CART;
+      case pathname === MORE_PATH:
+        return TAB_MORE;
+      case pathname === FAVORITES_PATH:
+        return TAB_FAVORITES;
+      default:
+        return TAB_NONE;
     }
-
-    return TAB_NONE;
   }
 );
 
@@ -88,6 +91,10 @@ export const getVisibleTabs = () => ([
   {
     type: TAB_CART,
     label: 'tab_bar.cart',
+  },
+  {
+    type: TAB_FAVORITES,
+    label: 'tab_bar.favorites',
   },
   {
     type: TAB_MORE,

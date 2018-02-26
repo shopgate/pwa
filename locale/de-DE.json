@@ -116,7 +116,6 @@
     "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
-    "wishlist": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
@@ -154,6 +153,7 @@
     "home": "Home",
     "browse": "Stöbern",
     "cart": "Warenkorb",
-    "more": "Mehr"
+    "more": "Mehr",
+    "favorites": "Merkliste"
   }
 }
