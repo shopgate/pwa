@@ -214,13 +214,16 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 <Ripple
                   className="css-ugy6xl"
                   color="#000"
+                  disabled={false}
                   fill={false}
+                  onComplete={[Function]}
                   overflow={false}
                   size={null}
                 >
                   <div
                     aria-hidden={true}
                     className="css-ugy6xl"
+                    data-test-id="Ripple"
                     onClick={[Function]}
                     style={null}
                   >

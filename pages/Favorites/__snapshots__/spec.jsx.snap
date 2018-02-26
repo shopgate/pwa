@@ -143,13 +143,16 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                             <Ripple
                               className="css-8s1fw2 "
                               color="#000"
+                              disabled={false}
                               fill={true}
+                              onComplete={[Function]}
                               overflow={false}
                               size={null}
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-8s1fw2 "
+                                data-test-id="Ripple"
                                 onClick={[Function]}
                                 style={null}
                               >

@@ -37,6 +37,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
         <Ripple
           className="css-15r2nrm "
           color="#000"
+          disabled={false}
           fill={false}
           onComplete={[Function]}
           overflow={false}
@@ -45,6 +46,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
           <div
             aria-hidden={true}
             className="css-15r2nrm "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >
@@ -119,6 +121,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
         <Ripple
           className="css-15r2nrm "
           color="#000"
+          disabled={false}
           fill={false}
           onComplete={[Function]}
           overflow={false}
@@ -127,6 +130,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
           <div
             aria-hidden={true}
             className="css-15r2nrm "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >
