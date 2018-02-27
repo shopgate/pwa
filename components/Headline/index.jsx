@@ -35,7 +35,7 @@ Headline.propTypes = {
 Headline.defaultProps = {
   children: null,
   small: false,
-  text: null,
+  text: '',
 };
 
 export default Headline;
