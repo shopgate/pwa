@@ -34,6 +34,7 @@ import category from 'Pages/Category/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import product from 'Pages/Product/subscriptions';
+import addToCartBar from 'Pages/Product/components/AddToCartBar/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
@@ -77,6 +78,7 @@ const subscriptions = [
   filterbar,
   login,
   product,
+  addToCartBar,
   search,
   reviews,
   writeReview,

@@ -23,6 +23,7 @@ import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import navigator from 'Components/Navigator/reducer';
 import extentions from 'Extensions/reducers';
+import addToCartBar from 'Pages/Product/components/AddToCartBar/reducer';
 
 import general from 'Components/View/reducer';
 
@@ -42,6 +43,7 @@ const reducers = {
   search,
   ui: combineReducers({
     general,
+    addToCartBar,
   }),
   url,
   user,

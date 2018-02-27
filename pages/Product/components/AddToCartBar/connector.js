@@ -6,8 +6,8 @@
  */
 
 import { connect } from 'react-redux';
-import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
-import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { handleAddToCart } from './actions';
+import { selectActionCount } from './selectors';
 
 /**
  * Connects the current application state to the component props.
@@ -15,7 +15,7 @@ import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/s
  * @return {[type]} [description]
  */
 const mapStateToProps = state => ({
-  cartProductCount: getCartProductDisplayCount(state),
+  cartProductCount: selectActionCount(state),
 });
 
 /**
@@ -24,7 +24,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleAddToCart: () => dispatch(addCurrentProductToCart()),
+  handleAddToCart: () => dispatch(handleAddToCart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
