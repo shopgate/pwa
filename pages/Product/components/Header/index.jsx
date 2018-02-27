@@ -10,10 +10,7 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
-<<<<<<< HEAD
-=======
 import CTAButtons from './components/CTAButtons';
->>>>>>> master
 import Rating from './components/Rating';
 import Name from './components/Name';
 import Manufacturer from './components/Manufacturer';
@@ -38,15 +35,12 @@ import styles from './style';
  */
 const ProductHeader = () => (
   <div className={styles.content}>
-<<<<<<< HEAD
-=======
     {/* CTAs */}
     <Portal name={portals.PRODUCT_CTAS_BEFORE} />
     <Portal name={portals.PRODUCT_CTAS}>
       <CTAButtons />
     </Portal>
     <Portal name={portals.PRODUCT_CTAS_AFTER} />
->>>>>>> master
 
     {/* RATING */}
     <Portal name={portals.PRODUCT_RATING_BEFORE} />
