@@ -243,7 +243,7 @@ exports[`<Header /> should render empty 1`] = `
         </div>
       </AverageRating>
       <div
-        className="css-1nye1w4"
+        className="css-1xwd76x"
       >
         <Translate
           className=""
@@ -312,13 +312,16 @@ exports[`<Header /> should render empty 1`] = `
                           <Ripple
                             className="css-8s1fw2 "
                             color="#000"
+                            disabled={false}
                             fill={true}
+                            onComplete={[Function]}
                             overflow={false}
                             size={null}
                           >
                             <div
                               aria-hidden={true}
                               className="css-8s1fw2 "
+                              data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
                             >
@@ -798,13 +801,16 @@ exports[`<Header /> should render rating summary 1`] = `
                           <Ripple
                             className="css-8s1fw2 "
                             color="#000"
+                            disabled={false}
                             fill={true}
+                            onComplete={[Function]}
                             overflow={false}
                             size={null}
                           >
                             <div
                               aria-hidden={true}
                               className="css-8s1fw2 "
+                              data-test-id="Ripple"
                               onClick={[Function]}
                               style={null}
                             >

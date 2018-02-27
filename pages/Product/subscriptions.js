@@ -9,6 +9,7 @@ import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getCurrentProductVariantId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { successReviewSubmit$ } from '@shopgate/pwa-common-commerce/reviews/streams';
 import getProduct from '@shopgate/pwa-common-commerce/product/actions/getProduct';
 import {
   ITEM_PATH,
@@ -77,11 +78,12 @@ export default function product(subscribe) {
 
   if (appConfig.hasReviews) {
     const shouldFetchReviews$ = main$
-      .filter(({ action }) => (
+      .filter(({action}) => (
         action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
-      ));
+      ))
+      .merge(successReviewSubmit$);
 
-    subscribe(shouldFetchReviews$, ({ dispatch, getState }) => {
+    subscribe(shouldFetchReviews$, ({dispatch, getState}) => {
       const baseProductId = getCurrentBaseProductId(getState());
       dispatch(getProductReviews(baseProductId, REVIEW_PREVIEW_COUNT));
     });

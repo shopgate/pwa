@@ -7,6 +7,7 @@
 
 import React from 'react';
 import '@shopgate/pwa-common/styles/reset';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import 'Styles/fonts';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
@@ -20,6 +21,7 @@ import {
   CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
@@ -31,11 +33,13 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import Dialog from 'Components/Dialog';
+import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
 import Page from './Page';
 import Category from './Category';
+import Favorites from './Favorites';
 import Filter from './Filter';
 import FilterAttribute from './FilterAttribute';
 import Product from './Product';
@@ -59,6 +63,7 @@ const Pages = () => (
     <Portal name={APP_GLOBALS} />
     <Viewport>
       <ModalContainer component={Dialog} />
+      <SnackBar />
 
       <Route path={`${INDEX_PATH}`} component={Page} />
       <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
@@ -70,6 +75,10 @@ const Pages = () => (
       <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
       <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
       <Route path={`${CART_PATH}`} component={Cart} />
+      {
+        appConfig.hasFavorites
+        && <Route path={`${FAVORITES_PATH}`} component={Favorites} />
+      }
       <Route path={`${SEARCH_PATH}`} component={Search} />
       <Route path={`${LOGIN_PATH}`} component={Login} />
       <Route path={`${REGISTER_PATH}`} />

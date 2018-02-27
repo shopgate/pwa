@@ -44,4 +44,25 @@ describe('<Dialog />', () => {
     expect(wrapper.find('DefaultDialog').length).toBe(0);
     expect(wrapper.find('PipelineErrorDialog').length).toBe(1);
   });
+
+  it('should render variant select dialog', () => {
+    const params = {
+      productId: 'product_1',
+    };
+
+    const wrapper = shallow(
+      <Dialog
+        modal={{
+          message: 'Test',
+          type: MODAL_VARIANT_SELECT,
+          params,
+        }}
+      />
+    );
+
+    expect(wrapper).toMatchSnapshot();
+
+    expect(wrapper.find('DefaultDialog').length).toBe(0);
+    expect(wrapper.find('VariantSelectModal').length).toBe(1);
+  });
 });
