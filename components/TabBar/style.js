@@ -8,7 +8,7 @@
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 
-const backgroundColor = 'rgba(249, 249, 249, 0.85)';
+const backgroundColor = 'rgba(249, 249, 249, 0.9)';
 
 export default css({
   position: 'fixed',
@@ -22,7 +22,7 @@ export default css({
   paddingBottom: [
     'var(--safe-area-inset-bottom)',
   ],
-  zIndex: 1,
+  zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
   boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1)',

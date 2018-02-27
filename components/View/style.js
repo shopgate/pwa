@@ -40,7 +40,7 @@ const content = (
     `calc(${navHeight}px + var(--safe-area-inset-top))`,
   ];
 
-  const marginBottom = hasTabBar ? [
+  const paddingBottom = hasTabBar ? [
     `${variables.tabBar.height + keyboardHeight}px`,
     `calc(${variables.tabBar.height + keyboardHeight}px + var(--safe-area-inset-bottom))`,
   ] : keyboardHeight;
@@ -52,19 +52,10 @@ const content = (
     width: '100%',
     position: 'absolute',
     top: isFullscreen ? 0 : navAndStatusBarHeight,
-    marginBottom,
+    paddingBottom,
     bottom: 0,
     display: 'flex',
     flexDirection: 'column',
-    ':before': {
-      position: 'fixed',
-      display: 'block',
-      top: 0,
-      width: '100%',
-      height: navAndStatusBarHeight,
-      zIndex: 3,
-      content: '""',
-    },
   }).toString();
 };
 

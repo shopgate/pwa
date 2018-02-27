@@ -37,7 +37,7 @@ const title = css({
 
 const buttonContainer = css({
   flexGrow: '0',
-  padding: `${variables.gap.big * 1.5}px ${variables.gap.big}px`,
+  padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
 }).toString();
 
 const button = css({
