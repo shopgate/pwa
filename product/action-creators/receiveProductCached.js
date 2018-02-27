@@ -9,12 +9,12 @@ import { RECEIVE_PRODUCT_CACHED } from '../constants';
 
 /**
  * Creates the dispatched RECEIVE_PRODUCT_CACHED action object.
- * @param {Object} payload The action payload.
+ * @param {Object} productData The product data.
  * @return {Object} The RECEIVE_PRODUCT_CACHED action.
  */
-const receiveProductCached = payload => ({
+const receiveProductCached = productData => ({
   type: RECEIVE_PRODUCT_CACHED,
-  ...payload,
+  productData,
 });
 
 export default receiveProductCached;
