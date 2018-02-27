@@ -243,7 +243,7 @@ exports[`<Header /> should render empty 1`] = `
         </div>
       </AverageRating>
       <div
-        className="css-1nye1w4"
+        className="css-108dizf"
       >
         <Translate
           className=""
