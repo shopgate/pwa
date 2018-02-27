@@ -64,7 +64,7 @@ const Item = ({ product, display, isFavorite }) => (
                 currency={product.price.currency}
               />
             </Grid.Item>
-            {product.price.msrp > 0 && (
+            {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
               <Grid.Item>
                 <PriceStriked
                   value={product.price.msrp}
@@ -100,12 +100,10 @@ Item.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   product: PropTypes.shape().isRequired,
   display: PropTypes.shape(),
-  isFavorite: PropTypes.bool,
 };
 
 Item.defaultProps = {
   display: null,
-  isFavorite: false,
 };
 
 export default connect(Item);
