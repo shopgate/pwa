@@ -74,13 +74,16 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
         <Ripple
           className="css-8s1fw2 "
           color="#000"
+          disabled={false}
           fill={true}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
           <div
             aria-hidden={true}
             className="css-8s1fw2 "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >
@@ -105,7 +108,9 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
   <Ripple
     className="css-8s1fw2 "
     color="#000"
+    disabled={false}
     fill={true}
+    onComplete={[Function]}
     overflow={false}
     size={null}
   >
@@ -147,13 +152,16 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
         <Ripple
           className="css-8s1fw2 "
           color="#000"
+          disabled={false}
           fill={true}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
           <div
             aria-hidden={true}
             className="css-8s1fw2 "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >
@@ -199,13 +207,16 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
         <Ripple
           className="css-8s1fw2 "
           color="#000"
+          disabled={false}
           fill={true}
+          onComplete={[Function]}
           overflow={false}
           size={null}
         >
           <div
             aria-hidden={true}
             className="css-8s1fw2 "
+            data-test-id="Ripple"
             onClick={[Function]}
             style={null}
           >

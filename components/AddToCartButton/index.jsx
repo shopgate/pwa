@@ -11,7 +11,6 @@ import CartPlusIcon from 'Components/icons/CartPlusIcon';
 import TickIcon from 'Components/icons/TickIcon';
 import IndicatorCircle from 'Components/IndicatorCircle';
 import colors from 'Styles/colors';
-import connect from './connector';
 import styles from './style';
 
 /**
@@ -22,6 +21,19 @@ class AddToCartButton extends Component {
     handleAddToCart: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isOrderable: PropTypes.bool.isRequired,
+    buttonSize: PropTypes.number,
+    className: PropTypes.string,
+    hasLoading: PropTypes.bool,
+    iconSize: PropTypes.number,
+    noShadow: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    buttonSize: styles.buttonSize,
+    className: null,
+    hasLoading: false,
+    iconSize: styles.iconSize,
+    noShadow: false,
   };
 
   /**
@@ -153,11 +165,31 @@ class AddToCartButton extends Component {
       };
     }
 
+    const className = this.props.noShadow ?
+      styles.buttonWrapperNoShadow(this.props.buttonSize, this.props.iconSize)
+      : styles.buttonWrapper(this.props.buttonSize, this.props.iconSize);
+
     return (
-      <button className={`${styles.button} ${buttonStyle}`} onClick={this.handleClick}>
+      <button
+        className={`${this.props.className} ${className} ${buttonStyle}`}
+        onClick={this.handleClick}
+      >
+        {
+          /**
+           * This svg must not be rendered when never visible
+           * When rendered, even hidden or with paused animation, the GPU goes crazy on
+           * favorites when there are many of them.
+           */
+        }
+        {this.props.hasLoading &&
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
-          <IndicatorCircle color={colors.primaryContrast} strokeWidth={5} />
+          <IndicatorCircle
+            color={colors.primaryContrast}
+            strokeWidth={5}
+            paused={!this.props.isLoading}
+          />
         </div>
+        }
         <div className={tickIconStyle} style={tickInlineStyle}>
           <TickIcon />
         </div>
@@ -173,6 +205,4 @@ class AddToCartButton extends Component {
   }
 }
 
-export default connect(AddToCartButton);
-
-export { AddToCartButton as Unwrapped };
+export default AddToCartButton;

@@ -15,6 +15,9 @@ const options = {
   damping: 15,
 };
 
+const buttonSize = 40;
+const iconSize = 20;
+
 /**
  * Keyframe animations to create spring animation.
  * spring(..) automatically calculates all steps for the keyframe animation.
@@ -61,22 +64,45 @@ const springToBottom = css({
 
 /**
  * Circular button and container for the icons.
+ * Default styles.
+ * @param {number} bSize Size of the button.
+ * @param {number} iSize Size of the icon.
+ * @return {string} Class name
  */
-const button = css({
+const buttonWrapperDefault = (bSize, iSize) => ({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   borderRadius: '50%',
-  width: 56,
-  height: 56,
-  position: 'absolute',
-  right: variables.gap.big,
-  top: -30,
-  fontSize: '1.5rem',
+  width: bSize,
+  height: bSize,
+  position: 'relative',
+  fontSize: iSize,
   outline: 0,
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
+  paddingLeft: (bSize - iSize) / 2,
+  paddingRight: (bSize - iSize) / 2,
   zIndex: 2, // Prevents the icons to be visible outside of the circle
   overflow: 'hidden',
+});
+/**
+ * Circular button and container for the icons.
+ * @param {number} bSize Size of the button.
+ * @param {number} iSize Size of the icon.
+ * @return {string} Class name
+ */
+const buttonWrapper = (bSize, iSize) => css({
+  ...buttonWrapperDefault(bSize, iSize),
+  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
 }).toString();
 
+/**
+ * Circular button and container for the icons.
+ * Without shadow.
+ * @param {number} bSize Size of the button.
+ * @param {number} iSize Size of the icon.
+ * @return {string} Class name
+ */
+const buttonWrapperNoShadow = (bSize, iSize) => css({
+  ...buttonWrapperDefault(bSize, iSize),
+}).toString();
 /**
  * Styling that is applied to the button when cart icon is shown.
  */
@@ -100,26 +126,26 @@ const icon = css({
   transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   opacity: 1,
   position: 'absolute',
-  left: 0,
-  right: 0,
-  height: 24,
-  width: 24,
-  top: '50%',
-  margin: 'auto',
 }).toString();
 
 /**
  * Icon style that is applied only to the spinner icon.
  */
 const spinnerIcon = css({
-  transform: 'translate3d(0, -50%, 0)',
+  left: '50%',
+  top: '50%',
+  marginTop: -(variables.loadingIndicator.size) / 2,
+  marginLeft: -(variables.loadingIndicator.size) / 2,
 }).toString();
 
 export default {
-  button,
+  buttonWrapper,
+  buttonWrapperNoShadow,
   buttonReady,
   buttonSuccess,
+  buttonSize,
   icon,
+  iconSize,
   spinnerIcon,
   springFromBottom,
   springFromTop,

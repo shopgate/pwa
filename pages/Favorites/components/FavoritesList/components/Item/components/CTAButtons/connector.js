@@ -4,13 +4,11 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
 import { connect } from 'react-redux';
-import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
-import {
-  isProductPageLoading,
-  isProductPageOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/page';
+import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+import { isBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import { MODAL_VARIANT_SELECT } from 'Components/Dialog/constants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,8 +16,7 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isLoading: isProductPageLoading(state),
-  isOrderable: isProductPageOrderable(state),
+  isBaseProduct: productId => isBaseProduct(state, productId),
 });
 
 /**
@@ -28,7 +25,17 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleAddToCart: () => dispatch(addCurrentProductToCart()),
+  addToCart: productData => dispatch(addToCart(productData)),
+  showVariantModal: productId => dispatch(showModal({
+    title: null,
+    type: MODAL_VARIANT_SELECT,
+    message: 'favorites.modal.message',
+    confirm: 'favorites.modal.confirm',
+    dismiss: 'common.cancel',
+    params: {
+      productId,
+    },
+  })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

@@ -14,7 +14,7 @@ const materialShadow = 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647)
 export default {
   materialShadow,
   blur: {
-    backdropFilter: 'blur(10px)',
+    backdropFilter: 'blur(20px)',
   },
   gap: {
     small: 8,
@@ -22,6 +22,11 @@ export default {
     bigger: 20,
     xbig: 32,
     xxbig: 64,
+  },
+  emptyPage: {
+    icon: 216,
+    titleTopGap: 36,
+    buttonVerticalGap: 24,
   },
   navigator: {
     height: 56,

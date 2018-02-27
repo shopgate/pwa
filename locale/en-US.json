@@ -3,7 +3,8 @@
     "countdown": "{days, plural, =0 {Only {time} left} =1 {# day {time}} other {# days {time}}}",
     "load_more": "Load more",
     "cancel": "Cancel",
-    "submit": "Submit"
+    "submit": "Submit",
+    "undo": "Undo"
   },
   "titles": {
     "categories": "All Categories",
@@ -11,7 +12,21 @@
     "cart": "Cart",
     "shipping": "Shipping",
     "reviews": "Reviews",
-    "browse": "Browse"
+    "browse": "Browse",
+    "favorites": "Favorites"
+  },
+  "favorites": {
+    "add": "Add to favorites",
+    "continue": "Continue shopping",
+    "empty": "You don't have any favorites",
+    "error_add": "Product could not be added to favorites",
+    "error_remove": "Product could not be removed from favorites",
+    "remove": "Remove from favorites",
+    "removed": "Removed from favorites",
+    "modal": {
+      "message": "To add this product to your cart, please select the variants.",
+      "confirm": "Select variants"
+    }
   },
   "filter": {
     "sort": {
@@ -101,7 +116,6 @@
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
-    "wishlist": "Favorites",
     "my_orders": "My orders",
     "cart": "Shopping cart",
     "shipping": "Shipping Methods",
@@ -139,6 +153,7 @@
     "home": "Home",
     "browse": "Browse",
     "cart": "Cart",
-    "more": "More"
+    "more": "More",
+    "favorites": "Favorites"
   }
 }
