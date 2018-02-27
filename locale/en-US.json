@@ -146,7 +146,7 @@
     "review_form_rate_error": "Please select a star rating.",
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
-    "modal_title": "Thank you!"
+    "success_message": "Thanks for your review!"
   },
   "tab_bar": {
     "home": "Home",
