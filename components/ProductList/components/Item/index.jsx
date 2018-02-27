@@ -60,12 +60,13 @@ const Item = ({ display, product }) => (
       {(!display || display.price) && (
         <Grid.Item grow={1} className={styles.priceContainer}>
           <Price
+            className={styles.price}
             unitPrice={product.price.unitPrice}
             unitPriceMin={product.price.unitPriceMin}
             discounted={!!product.price.discount}
             currency={product.price.currency}
           />
-          {(product.price.msrp > 0) && (
+          {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
             <PriceStriked
               value={product.price.msrp}
               currency={product.price.currency}
