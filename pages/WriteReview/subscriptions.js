@@ -69,7 +69,6 @@ export default function writeReview(subscribe) {
     dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,
-      message: 'reviews.modal_message',
       title: 'reviews.modal_title',
     }));
   });
