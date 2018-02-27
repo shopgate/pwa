@@ -29,6 +29,7 @@ Action type | description
 `home` | Redirects the user to the home page.
 `browse` | Opens the browse page of the store.
 `cart` | Opens the users cart. This tab also displays the number of cart items in a badge.
+`favorites` | Opens the favorites page. This tab also displays the number of favorites in a badge. Only available if shop has active favorites feature.
 `more` | Presents additional links and actions.
  
 #### Custom tab bar actions
