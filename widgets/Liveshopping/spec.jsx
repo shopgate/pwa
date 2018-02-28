@@ -14,7 +14,7 @@ import LiveshoppingWidget from './index';
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
 
-describe.skip('<LiveshoppingWidget />', () => {
+describe('<LiveshoppingWidget />', () => {
   /**
    * Mocks the liveshopping products pipeline request.
    */
@@ -66,7 +66,7 @@ describe.skip('<LiveshoppingWidget />', () => {
   });
 
   it('should render the widget with no slider for one product', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <LiveshoppingWidget
         settings={settings}
         getLiveshoppingProducts={getLiveshoppingProductsMock}
@@ -80,7 +80,7 @@ describe.skip('<LiveshoppingWidget />', () => {
   });
 
   it('should render the widget with a slider for multiple products', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <LiveshoppingWidget
         settings={settings}
         getLiveshoppingProducts={getLiveshoppingProductsMock}
