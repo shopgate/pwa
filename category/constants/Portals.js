@@ -14,6 +14,7 @@ const LIST = 'list';
 const LIST_ITEM = 'list-item';
 const ITEM = 'item';
 const IMAGE = 'image';
+const PRICE = 'price';
 const DISCOUNT = 'discount';
 const FAVORITES_BUTTON = 'favorites-button';
 const NAME = 'name';
@@ -53,6 +54,10 @@ export const PRODUCT_ITEM_FAVORITES_BUTTON_AFTER = `${PRODUCT}-${ITEM}.${FAVORIT
 export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT}-${ITEM}.${NAME}.${BEFORE}`;
 export const PRODUCT_ITEM_NAME = `${PRODUCT}-${ITEM}.${NAME}`;
 export const PRODUCT_ITEM_NAME_AFTER = `${PRODUCT}-${ITEM}.${NAME}.${AFTER}`;
+
+export const PRODUCT_ITEM_PRICE_BEFORE = `${PRODUCT}-${ITEM}.${PRICE}.${BEFORE}`;
+export const PRODUCT_ITEM_PRICE = `${PRODUCT}-${ITEM}.${PRICE}`;
+export const PRODUCT_ITEM_PRICE_AFTER = `${PRODUCT}-${ITEM}.${PRICE}.${AFTER}`;
 
 export const PRODUCT_ITEM_MANUFACTURER_BEFORE = `${PRODUCT}-${ITEM}.${MANUFACTURER}.${BEFORE}`;
 export const PRODUCT_ITEM_MANUFACTURER = `${PRODUCT}-${ITEM}.${MANUFACTURER}`;

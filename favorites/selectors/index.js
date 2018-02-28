@@ -10,10 +10,7 @@ import {
   getProducts,
   getCurrentProductId,
 } from '../../product/selectors/product';
-
-import {
-  getKnownRelatives,
-} from '../../product/selectors/variants';
+import { getKnownRelatives } from '../../product/selectors/variants';
 
 /**
  * Gets favorite products ids.
