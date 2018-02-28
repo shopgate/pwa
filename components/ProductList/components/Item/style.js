@@ -58,6 +58,10 @@ const manufacturer = css({
   fontSize: '0.875rem',
 }).toString();
 
+const price = css({
+  justifyContent: 'flex-end',
+}).toString();
+
 const priceStriked = css({
   fontSize: '0.875rem',
 }).toString();
@@ -74,6 +78,7 @@ export default {
   favouriteContainer,
   manufacturer,
   availability,
+  price,
   priceStriked,
   priceInfo,
 };
