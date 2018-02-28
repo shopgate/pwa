@@ -26,7 +26,7 @@ class Products extends Component {
   };
 
   static defaultProps = {
-    getProducts: () => { },
+    getProducts: () => {},
     products: null,
     totalProductCount: null,
   };
