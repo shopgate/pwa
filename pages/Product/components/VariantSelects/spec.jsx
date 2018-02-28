@@ -33,7 +33,6 @@ try {
     )
   ));
 } catch (e) {
-  throw e;
   // Do nothing.
 }
 
