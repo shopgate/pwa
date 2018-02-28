@@ -1,4 +1,4 @@
-import { PIPELINE_RESPONSE_MESSAGE_TYPE_ERROR } from '../constants';
+import { MESSAGE_TYPE_ERROR } from '../constants';
 
 /**
  * Checks if the messages array of a pipeline response contains error messages.
@@ -6,4 +6,4 @@ import { PIPELINE_RESPONSE_MESSAGE_TYPE_ERROR } from '../constants';
  * @return {boolean}
  */
 export const messagesHaveErrors = (messages = []) =>
-  messages.some(({ type }) => type === PIPELINE_RESPONSE_MESSAGE_TYPE_ERROR);
+  messages.some(({ type }) => type === MESSAGE_TYPE_ERROR);

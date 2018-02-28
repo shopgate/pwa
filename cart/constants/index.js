@@ -16,7 +16,7 @@ export const COUPON_TYPE_PERCENTAGE = 'percentage';
 
 export const COUPON_PUSH_NOTIFICATION = 'cart_add_coupon';
 
-export const PIPELINE_RESPONSE_MESSAGE_TYPE_ERROR = 'error';
+export const MESSAGE_TYPE_ERROR = 'error';
 
 export const ADD_PRODUCTS_TO_CART = 'ADD_PRODUCTS_TO_CART';
 export const SUCCESS_ADD_PRODUCTS_TO_CART = 'SUCCESS_ADD_PRODUCTS_TO_CART';
