@@ -114,7 +114,6 @@ const Item = ({ display, product }) => (
 
       {/* PRICE - STRIKE PRICE - PRICE INFO */}
       {(!display || display.price) && (
-<<<<<<< HEAD
         <Fragment>
           <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
@@ -125,7 +124,7 @@ const Item = ({ display, product }) => (
                 discounted={!!product.price.discount}
                 currency={product.price.currency}
               />
-              {product.price.msrp > 0 && (
+              {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
                 <PriceStriked
                   value={product.price.msrp}
                   currency={product.price.currency}
@@ -146,34 +145,6 @@ const Item = ({ display, product }) => (
           </Portal>
           <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
         </Fragment>
-=======
-        <Grid.Item grow={1} className={styles.priceContainer}>
-          <Price
-            className={styles.price}
-            unitPrice={product.price.unitPrice}
-            unitPriceMin={product.price.unitPriceMin}
-            discounted={!!product.price.discount}
-            currency={product.price.currency}
-          />
-          {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
-            <PriceStriked
-              value={product.price.msrp}
-              currency={product.price.currency}
-              className={styles.priceStriked}
-            />
-          )}
-          {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-            <PriceStriked
-              value={product.price.unitPriceStriked}
-              currency={product.price.currency}
-              className={styles.priceStriked}
-            />
-          )}
-          {product.price.info && (
-            <PriceInfo text={product.price.info} className={styles.priceInfo} />
-          )}
-        </Grid.Item>
->>>>>>> master
       )}
 
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
