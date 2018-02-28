@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { SUCCESS_ADD_PRODUCTS_TO_CART } from '../constants';
+import { SUCCESS_DELETE_PRODUCTS_FROM_CART } from '../constants';
 
 /**
  * Creates the dispatched SUCCESS_DELETE_PRODUCTS_FROM_CART action object.
@@ -13,7 +13,7 @@ import { SUCCESS_ADD_PRODUCTS_TO_CART } from '../constants';
  * @returns {Object} The dispatched action object.
  */
 const successDeleteProductsFromCart = (requestsPending = false) => ({
-  type: SUCCESS_ADD_PRODUCTS_TO_CART,
+  type: SUCCESS_DELETE_PRODUCTS_FROM_CART,
   requestsPending,
 });
 

@@ -10,6 +10,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import deleteCoupons from '../action-creators/deleteCouponsFromCart';
 import errorDeleteCouponsFromCart from '../action-creators/errorDeleteCouponsFromCart';
 import successDeleteCouponsFromCart from '../action-creators/successDeleteCouponsFromCart';
+import { messagesHaveErrors } from '../helpers';
 
 /**
  * Deletes coupons from the cart.
@@ -24,11 +25,13 @@ const deleteCouponsFromCart = couponIds => (dispatch) => {
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
-      dispatch(successDeleteCouponsFromCart(requestsPending));
 
-      if (messages) {
+      if (messagesHaveErrors(messages)) {
         dispatch(errorDeleteCouponsFromCart(couponIds, messages, requestsPending));
+        return;
       }
+
+      dispatch(successDeleteCouponsFromCart(requestsPending));
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
