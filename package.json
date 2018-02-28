@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-core",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "The Shopgate Cloud tracking core.",
   "repository": "shopgate/tracking-core",
   "bugs": "https://github.com/shopgate/tracking-core/issues",
