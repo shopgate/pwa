@@ -8,6 +8,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import List from 'Components/List';
@@ -32,7 +33,7 @@ const CategoryList = ({ categories }) => {
           props={{ categoryId: category.id }}
         >
           <List.Item
-            link={`/category/${bin2hex(category.id)}`}
+            link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
             title={category.name}
           />
         </Portal>
