@@ -19,14 +19,16 @@ import DiscountBadge from 'Components/DiscountBadge';
 import Price from 'Components/Price';
 import PriceStriked from 'Components/PriceStriked';
 import PriceInfo from 'Components/PriceInfo';
+import FavoritesButton from 'Components/FavoritesButton';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = ({ product, display }) => (
+const Item = ({ product, display, isFavorite }) => (
   <Link
     tagName="a"
     href={`${ITEM_PATH}/${bin2hex(product.id)}`}
@@ -52,6 +54,15 @@ const Item = ({ product, display }) => (
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
       </div>
     )}
+
+    {/* FAVORITES BUTTONS */}
+    <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={{ productId: product.id }} />
+    <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON} props={{ productId: product.id }}>
+      <div className={styles.favorites}>
+        <FavoritesButton active={isFavorite} productId={product.id} noShadow removeWithRelatives />
+      </div>
+    </Portal>
+    <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_AFTER} props={{ productId: product.id }} />
 
     {(!display || display.name || display.price || display.reviews) && (
       <div className={styles.details}>
@@ -81,7 +92,7 @@ const Item = ({ product, display }) => (
                   currency={product.price.currency}
                 />
               </Grid.Item>
-              {product.price.msrp > 0 && (
+              {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
                 <Grid.Item grow={2}>
                   <PriceStriked
                     value={product.price.msrp}
@@ -115,10 +126,12 @@ const Item = ({ product, display }) => (
 Item.propTypes = {
   product: PropTypes.shape().isRequired,
   display: PropTypes.shape(),
+  isFavorite: PropTypes.bool,
 };
 
 Item.defaultProps = {
   display: null,
+  isFavorite: false,
 };
 
-export default Item;
+export default connect(Item);
