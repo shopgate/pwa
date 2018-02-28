@@ -73,49 +73,49 @@ const createProductSliderItem = ({
               <ProductImage src={featuredImageUrl} alt={name} />
             </Grid.Item>
             <Grid.Item className={styles.infoPane}>
-              {price.discount > 0 ?
-                <DiscountBadge
-                  text="liveshopping.discount_badge"
-                  discount={price.discount}
-                  display="big"
-                  className={styles.discountBadge}
-                />
-                : null
-              }
-              <Ellipsis
-                rows={2}
-                className={styles.cardTitle}
-              >
-                {name}
-              </Ellipsis>
-              {timeout ?
-                <span className={styles.timer}>
-                  <CountdownTimer timeout={timeout} />
-                </span>
-                : null
-              }
-              <div className={styles.priceWrapper}>
-                <Grid className={styles.priceGrid}>
-                  {priceStriked > 0 ?
-                    <Grid.Item className={styles.priceStrikedItem}>
-                      <PriceStriked
-                        className={styles.priceStriked}
-                        value={priceStriked}
-                        currency={price.currency}
-                      />
-                    </Grid.Item>
-                    : null
-                  }
-                  <Grid.Item className={styles.priceItem}>
-                    <Price
-                      className={priceStriked > 0 ? styles.price : ''}
-                      unitPrice={price.unitPrice}
-                      unitPriceMin={price.unitPriceMin}
+              <div>
+                {price.discount > 0 ?
+                  <DiscountBadge
+                    text="liveshopping.discount_badge"
+                    discount={price.discount}
+                    display="big"
+                    className={styles.discountBadge}
+                  />
+                  : null
+                }
+                <Ellipsis
+                  rows={2}
+                  className={styles.cardTitle}
+                >
+                  {name}
+                </Ellipsis>
+                {timeout ?
+                  <span className={styles.timer}>
+                    <CountdownTimer timeout={timeout} />
+                  </span>
+                  : null
+                }
+              </div>
+              <Grid className={styles.priceGrid}>
+                {priceStriked > 0 ?
+                  <Grid.Item>
+                    <PriceStriked
+                      className={styles.priceStriked}
+                      value={priceStriked}
                       currency={price.currency}
                     />
                   </Grid.Item>
-                </Grid>
-              </div>
+                  : null
+                }
+                <Grid.Item>
+                  <Price
+                    className={priceStriked > 0 ? styles.price : ''}
+                    unitPrice={price.unitPrice}
+                    unitPriceMin={price.unitPriceMin}
+                    currency={price.currency}
+                  />
+                </Grid.Item>
+              </Grid>
             </Grid.Item>
           </Grid>
         </Link>
