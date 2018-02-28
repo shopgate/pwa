@@ -157,7 +157,7 @@ class LiveshoppingWidget extends React.Component {
 
     return (
       <div className={styles.cardsWrapper}>
-        <ImageSlider indicators loop classNames={{ bulletClass: styles.indicator }}>
+        <ImageSlider indicators loop classNames={{ indicator: styles.indicator }}>
           {items}
         </ImageSlider>
       </div>

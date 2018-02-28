@@ -79,9 +79,13 @@ const timer = css({
   fontWeight: 500,
 }).toString();
 
-const indicator = css({
+const bullets = css({
   textAlign: 'center',
 }).toString();
+
+const indicator = {
+  bullets,
+};
 
 export default {
   card,

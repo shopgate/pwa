@@ -11,7 +11,9 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     className=""
     classNames={
       Object {
-        "bulletClass": "css-1yv2jt6",
+        "indicator": Object {
+          "bullets": "css-1yv2jt6",
+        },
       }
     }
     controls={false}
@@ -234,7 +236,9 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     className=""
     classNames={
       Object {
-        "bulletClass": "css-1yv2jt6",
+        "indicator": Object {
+          "bullets": "css-1yv2jt6",
+        },
       }
     }
     controls={false}
