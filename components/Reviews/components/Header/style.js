@@ -42,6 +42,8 @@ const noReviews = css({
   flexDirection: 'column',
   alignItems: 'center',
   marginTop: variables.gap.small,
+  padding: `0 ${variables.gap.small}px`,
+  textAlign: 'center',
 }).toString();
 
 export default {

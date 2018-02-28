@@ -124,7 +124,7 @@ const Item = ({ display, product }) => (
                 discounted={!!product.price.discount}
                 currency={product.price.currency}
               />
-              {(product.price.msrp > 0) && (
+              {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
                 <PriceStriked
                   value={product.price.msrp}
                   currency={product.price.currency}

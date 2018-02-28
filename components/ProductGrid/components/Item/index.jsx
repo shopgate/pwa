@@ -95,7 +95,7 @@ const Item = ({ product, display, isFavorite }) => (
                     currency={product.price.currency}
                   />
                 </Grid.Item>
-                {product.price.msrp > 0 && (
+                {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
                   <Grid.Item>
                     <PriceStriked
                       value={product.price.msrp}

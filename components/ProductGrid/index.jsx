@@ -28,7 +28,14 @@ const ProductGrid = ({
   if (!infiniteLoad) {
     return (
       <Layout>
-        {products.map(product => <Iterator display={flags} key={product.id} {...product} />)}
+        {products.map(product => (
+          <Iterator
+            display={flags}
+            id={product.id}
+            key={product.id}
+            {...product}
+          />
+        ))}
       </Layout>
     );
   }
