@@ -10,7 +10,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import addCoupons from '../action-creators/addCouponsToCart';
 import errorAddCouponsToCart from '../action-creators/errorAddCouponsToCart';
 import successAddCouponsToCart from '../action-creators/successAddCouponsToCart';
-
+import { messagesHaveErrors } from '../helpers';
 /**
  * Adds coupons to the cart.
  * @param {Array} couponIds The IDs of the coupons that shall be added to the cart.
@@ -24,13 +24,15 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
-      if (messages) {
+
+      if (messagesHaveErrors(messages)) {
         dispatch(errorAddCouponsToCart(couponIds, messages, requestsPending));
         reject();
-      } else {
-        dispatch(successAddCouponsToCart(couponIds, requestsPending));
-        resolve();
+        return;
       }
+
+      dispatch(successAddCouponsToCart(couponIds, requestsPending));
+      resolve();
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
