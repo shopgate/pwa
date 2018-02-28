@@ -10,20 +10,31 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { shallow, mount } from 'enzyme';
 import { selection, selectionWithWarning, selectionWithAlert } from './mock';
-import { Unwrapped as VariantSelects } from './index';
 import styles from './style';
 
 window.requestAnimationFrame = () => {};
 
-// Mock <Portal>
-// When @shopgate/pwa-common is linked, it won't work.
-// @shopgate/pwa-common/node_modules/react-portal this should be used instead.
-// I have no good idea how to resolve this issue at the moment.
+/**
+ + * Mock <Portal>
+ + * When @shopgate/pwa-common is linked, it won't work.
+ + * This is why we need to try..catch second mock. Since `jest.mock` is hoisted, there's need
+ + * to use `jest.doMock`, therefore the VariantSelects component must be required from the test
+ + * body.
+ + */
 jest.mock('react-portal', () => (
   ({ isOpened, children }) => (
     isOpened ? children : null
   )
 ));
+try {
+  jest.doMock('@shopgate/pwa-common/node_modules/react-portal', () => (
+    ({ isOpened, children }) => (
+      isOpened ? children : null
+    )
+  ));
+} catch (e) {
+  // Do nothing.
+}
 
 jest.mock('Components/Sheet', () => ({ children }) => children);
 
@@ -40,11 +51,15 @@ const mockedState = {
  * @param {Function} spy A spy for the selection update callback
  * @return {JSX}
  */
-const renderComponent = (selectionValue, spy) => (
-  <Provider store={mockedStore(mockedState)}>
-    <VariantSelects selection={selectionValue} handleSelectionUpdate={spy} />
-  </Provider>
-);
+const renderComponent = (selectionValue, spy) => {
+  // eslint-disable-next-line global-require
+  const VariantSelects = require('./index.jsx').Unwrapped;
+  return (
+    <Provider store={mockedStore(mockedState)}>
+      <VariantSelects selection={selectionValue} handleSelectionUpdate={spy} />
+    </Provider>
+  );
+};
 
 describe('<VariantSelects />', () => {
   it('should render with variants', () => {
