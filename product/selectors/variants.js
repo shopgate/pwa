@@ -176,6 +176,10 @@ export const getKnownProductRelatives = createSelector(
   (products) => {
     const relativesByBaseProductId = {};
     Object.keys(products).forEach((id) => {
+      if (!products[id].productData) {
+        // It's possible that product has no data yet. Skip it then.
+        return;
+      }
       const { productData } = products[id];
       let parentId = productData.id;
       if (productData.baseProductId) {
