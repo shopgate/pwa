@@ -12,6 +12,7 @@ import successAddProductsToCart from '../action-creators/successAddProductsToCar
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { getProductPendingCount } from '../selectors';
+import { messagesHaveErrors } from '../helpers';
 
 /**
  * Adds a product to the cart.
@@ -29,16 +30,18 @@ const addToCart = productData => (dispatch, getState) => {
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
-      dispatch(successAddProductsToCart(requestsPending));
 
-      if (messages) {
+      if (messagesHaveErrors(messages)) {
         /**
          * If the addProductsToCart request fails, the pipeline doesn't respond with an error,
          * but a messages array within the response payload. So by now we also have to dispatch
          * the error action here.
          */
         dispatch(errorAddProductsToCart(productData, messages, requestsPending));
+        return;
       }
+
+      dispatch(successAddProductsToCart(requestsPending));
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();

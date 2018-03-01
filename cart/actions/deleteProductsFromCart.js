@@ -10,6 +10,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import deleteProducts from '../action-creators/deleteProductsFromCart';
 import successDeleteProductsFromCart from '../action-creators/successDeleteProductsFromCart';
 import errorDeleteProductsFromCart from '../action-creators/errorDeleteProductsFromCart';
+import { messagesHaveErrors } from '../helpers';
 
 /**
  * Deletes products from the cart.
@@ -24,11 +25,12 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
-      dispatch(successDeleteProductsFromCart(requestsPending));
 
-      if (messages) {
+      if (messagesHaveErrors(messages)) {
         dispatch(errorDeleteProductsFromCart(cartItemIds, messages, requestsPending));
       }
+
+      dispatch(successDeleteProductsFromCart(requestsPending));
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
