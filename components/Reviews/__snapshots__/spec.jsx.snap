@@ -4299,7 +4299,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
               </div>
             </AverageRating>
             <div
-              className="css-zfe251"
+              className="css-108dizf"
             >
               <Translate
                 className=""
