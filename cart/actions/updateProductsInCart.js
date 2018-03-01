@@ -10,6 +10,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import updateProducts from '../action-creators/updateProductsInCart';
 import successUpdateProductsInCart from '../action-creators/successUpdateProductsInCart';
 import errorUpdateProductsInCart from '../action-creators/errorUpdateProductsInCart';
+import { messagesHaveErrors } from '../helpers';
 
 /**
  * Converts the update data into the format, which is currently expected by the pipeline.
@@ -37,11 +38,13 @@ const updateProductsInCart = updateData => (dispatch) => {
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
-      dispatch(successUpdateProductsInCart(requestsPending));
 
-      if (messages) {
+      if (messagesHaveErrors(messages)) {
         dispatch(errorUpdateProductsInCart(updateData, messages, requestsPending));
+        return;
       }
+
+      dispatch(successUpdateProductsInCart(requestsPending));
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
