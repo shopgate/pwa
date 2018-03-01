@@ -16,7 +16,7 @@ import setProductVariantId from '../action-creators/setProductVariantId';
  * @param {Object} product A single product.
  * @returns {Function} A redux thunk.
  */
-const processProductFlags = product => (dispatch) => {
+const processProductFlags = product => dispatch => new Promise((resolve) => {
   const { id, flags = {}, baseProductId } = product;
   const {
     hasVariants = false,
@@ -37,6 +37,8 @@ const processProductFlags = product => (dispatch) => {
   if (hasOptions) {
     dispatch(getProductOptions(id));
   }
-};
+
+  resolve();
+});
 
 export default processProductFlags;

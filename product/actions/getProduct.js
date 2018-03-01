@@ -27,8 +27,10 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
 
   if (!forceFetch && !shouldFetchData(product)) {
     if (product.productData) {
-      dispatch(processProductFlags(product.productData));
-      dispatch(receiveProductCached(product.productData));
+      dispatch(processProductFlags(product.productData))
+        .then(() => {
+          dispatch(receiveProductCached(product.productData));
+        });
     }
 
     return;
