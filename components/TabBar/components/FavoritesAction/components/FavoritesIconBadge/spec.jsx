@@ -13,7 +13,7 @@ import configureStore from 'redux-mock-store';
 import {
   mockedState,
   mockedEmptyState,
-} from 'Pages/favorites/mock';
+} from 'Pages/Favorites/mock';
 import ConnectedBadge, { FavoritesIconBadge } from './index';
 
 const mockedStore = configureStore();

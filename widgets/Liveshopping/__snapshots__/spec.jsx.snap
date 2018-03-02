@@ -2,266 +2,354 @@
 
 exports[`<LiveshoppingWidget /> should not render the widget without any data 1`] = `""`;
 
-exports[`<LiveshoppingWidget /> should render the widget with no slider for one product 1`] = `
-<LiveshoppingWidget
-  getLiveshoppingProducts={[Function]}
-  products={
-    Array [
-      Object {
-        "featuredImageUrl": "http://placekitten.com/300/300",
-        "id": "1234",
-        "liveshoppings": Array [
-          Object {
-            "from": 0,
-            "to": 123456789,
-          },
-        ],
-        "name": "First product",
-        "price": Object {
-          "currency": "EUR",
-          "unitPrice": 100,
-          "unitPriceMin": 0,
-          "unitPriceStriked": 20,
-        },
-      },
-    ]
-  }
-  settings={Object {}}
+exports[`<LiveshoppingWidget /> should render the widget with a slider for multiple products 1`] = `
+<div
+  className="css-9a70pf"
 >
-  <div
-    className="css-9a70pf"
-  >
-    <ImageSlider
-      autoPlay={false}
-      className=""
-      classNames={
-        Object {
-          "indicator": Object {
-            "bottom": 0,
-            "left": 0,
-            "position": "relative",
-            "textAlign": "center",
-            "transform": "translateX(0)",
-          },
-        }
+  <ImageSlider
+    autoPlay={false}
+    className=""
+    classNames={
+      Object {
+        "indicator": Object {
+          "bullets": "css-1yv2jt6",
+        },
       }
-      controls={false}
-      disabled={false}
-      indicators={true}
-      initialSlide={0}
-      interval={3000}
-      loop={true}
-      onSlideChange={null}
-      slidesPerView={1}
-      snapItems={true}
+    }
+    controls={false}
+    disabled={false}
+    indicators={true}
+    initialSlide={0}
+    interval={3000}
+    loop={true}
+    maxIndicators={null}
+    onSlideChange={null}
+    slidesPerView={1}
+    snapItems={true}
+  >
+    <div
+      className="css-1allyey"
+      key="1234"
     >
-      <div
-        className="css-1allyey"
-        key=".$1234"
+      <Card
+        className=""
       >
-        <Card
+        <Link
           className=""
+          href="/item/31323334"
         >
-          <div
-            className="css-1l0if7f "
+          <Grid
+            className=""
+            component="ul"
+            wrap={false}
           >
-            <Link
-              className=""
-              href="/item/31323334"
+            <GridItem
+              className="css-cx3b8y"
+              component="li"
+              grow={0}
+              shrink={1}
             >
-              <div
-                className="css-c6ki83 "
-                onClick={[Function]}
-                role="link"
-              >
-                <Grid
-                  className=""
-                  component="ul"
-                  wrap={false}
+              <ProductImage
+                alt="First product"
+                animating={true}
+                forcePlaceholder={false}
+                highestResolutionLoaded={[Function]}
+                ratio={null}
+                resolutions={
+                  Array [
+                    Object {
+                      "blur": 2,
+                      "height": 50,
+                      "width": 50,
+                    },
+                    Object {
+                      "height": 440,
+                      "width": 440,
+                    },
+                  ]
+                }
+                src="http://placekitten.com/300/300"
+              />
+            </GridItem>
+            <GridItem
+              className="css-1dwh8zf"
+              component="li"
+              grow={0}
+              shrink={1}
+            >
+              <div>
+                <Ellipsis
+                  className="css-d6bxso"
+                  ellipsis="..."
+                  rows={2}
                 >
-                  <ul
-                    className=" css-h7r55a"
-                  >
-                    <GridItem
-                      className="css-cx3b8y"
-                      component="li"
-                      grow={0}
-                      shrink={1}
-                    >
-                      <li
-                        className="css-cx3b8y"
-                      >
-                        <ProductImage
-                          alt="First product"
-                          animating={true}
-                          forcePlaceholder={false}
-                          highestResolutionLoaded={[Function]}
-                          ratio={null}
-                          resolutions={
-                            Array [
-                              Object {
-                                "blur": 2,
-                                "height": 50,
-                                "width": 50,
-                              },
-                              Object {
-                                "height": 440,
-                                "width": 440,
-                              },
-                            ]
-                          }
-                          src="http://placekitten.com/300/300"
-                        >
-                          <Image
-                            alt="First product"
-                            animating={true}
-                            backgroundColor="#f2f2f2"
-                            className=""
-                            forcePlaceholder={false}
-                            highestResolutionLoaded={[Function]}
-                            onError={[Function]}
-                            onLoad={null}
-                            ratio={null}
-                            resolutions={
-                              Array [
-                                Object {
-                                  "blur": 2,
-                                  "height": 50,
-                                  "width": 50,
-                                },
-                                Object {
-                                  "height": 440,
-                                  "width": 440,
-                                },
-                              ]
-                            }
-                            src="http://placekitten.com/300/300"
-                            transition={null}
-                          >
-                            <div
-                              className="css-326p2s "
-                            />
-                          </Image>
-                        </ProductImage>
-                      </li>
-                    </GridItem>
-                    <GridItem
-                      className="css-kv3zc"
-                      component="li"
-                      grow={0}
-                      shrink={1}
-                    >
-                      <li
-                        className="css-kv3zc"
-                      >
-                        <Ellipsis
-                          className="css-d6bxso"
-                          ellipsis="..."
-                          rows={2}
-                        >
-                          <Dotdotdot
-                            clamp={2}
-                            className="css-d6bxso"
-                            ellipsis="..."
-                            truncationChar="…"
-                            useNativeClamp={true}
-                          >
-                            <div
-                              className="css-d6bxso"
-                            >
-                              First product
-                            </div>
-                          </Dotdotdot>
-                        </Ellipsis>
-                        <div
-                          className="css-10qwozm"
-                        >
-                          <Grid
-                            className="css-1nehkc5"
-                            component="ul"
-                            wrap={false}
-                          >
-                            <ul
-                              className="css-1nehkc5 css-h7r55a"
-                            >
-                              <GridItem
-                                className="css-1gs0ko2"
-                                component="li"
-                                grow={0}
-                                shrink={1}
-                              >
-                                <li
-                                  className="css-1gs0ko2"
-                                >
-                                  <PriceStriked
-                                    className="css-osh41h"
-                                    currency="EUR"
-                                    value={20}
-                                  >
-                                    <div
-                                      className="css-19vba8m css-osh41h "
-                                    >
-                                      <span>
-                                        <FormatPrice
-                                          currency="EUR"
-                                          fractions={true}
-                                          price={20}
-                                        >
-                                          <span>
-                                            20
-                                          </span>
-                                        </FormatPrice>
-                                      </span>
-                                    </div>
-                                  </PriceStriked>
-                                </li>
-                              </GridItem>
-                              <GridItem
-                                className="css-hhr8nm"
-                                component="li"
-                                grow={0}
-                                shrink={1}
-                              >
-                                <li
-                                  className="css-hhr8nm"
-                                >
-                                  <Price
-                                    className="css-1n6sgpj"
-                                    currency="EUR"
-                                    discounted={false}
-                                    fractions={true}
-                                    unitPrice={100}
-                                    unitPriceMin={0}
-                                  >
-                                    <div
-                                      className="css-xm5bud css-1n6sgpj"
-                                    >
-                                      <FormatPrice
-                                        currency="EUR"
-                                        fractions={true}
-                                        price={100}
-                                      >
-                                        <span>
-                                          100
-                                        </span>
-                                      </FormatPrice>
-                                    </div>
-                                  </Price>
-                                </li>
-                              </GridItem>
-                            </ul>
-                          </Grid>
-                        </div>
-                      </li>
-                    </GridItem>
-                  </ul>
-                </Grid>
+                  First product
+                </Ellipsis>
               </div>
-            </Link>
-          </div>
-        </Card>
-      </div>
-    </ImageSlider>
-  </div>
-</LiveshoppingWidget>
+              <Grid
+                className="css-13fwjl7"
+                component="ul"
+                wrap={false}
+              >
+                <GridItem
+                  className=""
+                  component="li"
+                  grow={0}
+                  shrink={1}
+                >
+                  <PriceStriked
+                    className="css-osh41h"
+                    currency="EUR"
+                    value={20}
+                  />
+                </GridItem>
+                <GridItem
+                  className=""
+                  component="li"
+                  grow={0}
+                  shrink={1}
+                >
+                  <Price
+                    className="css-ljd097"
+                    currency="EUR"
+                    discounted={false}
+                    fractions={true}
+                    taxDisclaimer={false}
+                    unitPrice={100}
+                    unitPriceMin={0}
+                  />
+                </GridItem>
+              </Grid>
+            </GridItem>
+          </Grid>
+        </Link>
+      </Card>
+    </div>
+    <div
+      className="css-1allyey"
+      key="1235"
+    >
+      <Card
+        className=""
+      >
+        <Link
+          className=""
+          href="/item/31323335"
+        >
+          <Grid
+            className=""
+            component="ul"
+            wrap={false}
+          >
+            <GridItem
+              className="css-cx3b8y"
+              component="li"
+              grow={0}
+              shrink={1}
+            >
+              <ProductImage
+                alt="Second product"
+                animating={true}
+                forcePlaceholder={false}
+                highestResolutionLoaded={[Function]}
+                ratio={null}
+                resolutions={
+                  Array [
+                    Object {
+                      "blur": 2,
+                      "height": 50,
+                      "width": 50,
+                    },
+                    Object {
+                      "height": 440,
+                      "width": 440,
+                    },
+                  ]
+                }
+                src="http://placekitten.com/300/300"
+              />
+            </GridItem>
+            <GridItem
+              className="css-1dwh8zf"
+              component="li"
+              grow={0}
+              shrink={1}
+            >
+              <div>
+                <Ellipsis
+                  className="css-d6bxso"
+                  ellipsis="..."
+                  rows={2}
+                >
+                  Second product
+                </Ellipsis>
+              </div>
+              <Grid
+                className="css-13fwjl7"
+                component="ul"
+                wrap={false}
+              >
+                <GridItem
+                  className=""
+                  component="li"
+                  grow={0}
+                  shrink={1}
+                >
+                  <PriceStriked
+                    className="css-osh41h"
+                    currency="EUR"
+                    value={20}
+                  />
+                </GridItem>
+                <GridItem
+                  className=""
+                  component="li"
+                  grow={0}
+                  shrink={1}
+                >
+                  <Price
+                    className="css-ljd097"
+                    currency="EUR"
+                    discounted={false}
+                    fractions={true}
+                    taxDisclaimer={false}
+                    unitPrice={100}
+                    unitPriceMin={0}
+                  />
+                </GridItem>
+              </Grid>
+            </GridItem>
+          </Grid>
+        </Link>
+      </Card>
+    </div>
+  </ImageSlider>
+</div>
+`;
+
+exports[`<LiveshoppingWidget /> should render the widget with no slider for one product 1`] = `
+<div
+  className="css-9a70pf"
+>
+  <ImageSlider
+    autoPlay={false}
+    className=""
+    classNames={
+      Object {
+        "indicator": Object {
+          "bullets": "css-1yv2jt6",
+        },
+      }
+    }
+    controls={false}
+    disabled={false}
+    indicators={true}
+    initialSlide={0}
+    interval={3000}
+    loop={true}
+    maxIndicators={null}
+    onSlideChange={null}
+    slidesPerView={1}
+    snapItems={true}
+  >
+    <div
+      className="css-1allyey"
+      key="1234"
+    >
+      <Card
+        className=""
+      >
+        <Link
+          className=""
+          href="/item/31323334"
+        >
+          <Grid
+            className=""
+            component="ul"
+            wrap={false}
+          >
+            <GridItem
+              className="css-cx3b8y"
+              component="li"
+              grow={0}
+              shrink={1}
+            >
+              <ProductImage
+                alt="First product"
+                animating={true}
+                forcePlaceholder={false}
+                highestResolutionLoaded={[Function]}
+                ratio={null}
+                resolutions={
+                  Array [
+                    Object {
+                      "blur": 2,
+                      "height": 50,
+                      "width": 50,
+                    },
+                    Object {
+                      "height": 440,
+                      "width": 440,
+                    },
+                  ]
+                }
+                src="http://placekitten.com/300/300"
+              />
+            </GridItem>
+            <GridItem
+              className="css-1dwh8zf"
+              component="li"
+              grow={0}
+              shrink={1}
+            >
+              <div>
+                <Ellipsis
+                  className="css-d6bxso"
+                  ellipsis="..."
+                  rows={2}
+                >
+                  First product
+                </Ellipsis>
+              </div>
+              <Grid
+                className="css-13fwjl7"
+                component="ul"
+                wrap={false}
+              >
+                <GridItem
+                  className=""
+                  component="li"
+                  grow={0}
+                  shrink={1}
+                >
+                  <PriceStriked
+                    className="css-osh41h"
+                    currency="EUR"
+                    value={20}
+                  />
+                </GridItem>
+                <GridItem
+                  className=""
+                  component="li"
+                  grow={0}
+                  shrink={1}
+                >
+                  <Price
+                    className="css-ljd097"
+                    currency="EUR"
+                    discounted={false}
+                    fractions={true}
+                    taxDisclaimer={false}
+                    unitPrice={100}
+                    unitPriceMin={0}
+                  />
+                </GridItem>
+              </Grid>
+            </GridItem>
+          </Grid>
+        </Link>
+      </Card>
+    </div>
+  </ImageSlider>
+</div>
 `;
