@@ -31,6 +31,8 @@ const getProductsById = (productIds, componentId = null) => (dispatch, getState)
     params: {
       productIds: missingIds,
     },
+    includeFilters: false,
+    includeSort: false,
   }));
 };
 
