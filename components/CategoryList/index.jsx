@@ -29,7 +29,7 @@ const CategoryList = ({ categories }) => {
       {categories.map(category => (
         <Portal
           key={category.id}
-          name={portals.CATEGORY_LIST_ITEM}
+          name={portals.CATEGORY_ITEM}
           props={{ categoryId: category.id }}
         >
           <List.Item
