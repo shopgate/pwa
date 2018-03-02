@@ -9,6 +9,7 @@
 const APP = 'app';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
+const NO_RESULTS = 'no-results';
 
 // CONTENTS
 const GLOBALS = 'globals';
@@ -27,3 +28,7 @@ export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
 
 export const NAV_MENU_CONTENT_BEFORE = `${NAV_MENU}.${CONTENT}.${BEFORE}`;
 export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
+
+export const NO_RESULTS_CONTENT_BEFORE = `${NO_RESULTS}.${CONTENT}.${BEFORE}`;
+export const NO_RESULTS_CONTENT = `${NO_RESULTS}.${CONTENT}`;
+export const NO_RESULTS_CONTENT_AFTER = `${NO_RESULTS}.${CONTENT}.${AFTER}`;
