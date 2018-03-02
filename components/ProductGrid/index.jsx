@@ -19,7 +19,11 @@ import Layout from './components/Layout';
  * @returns {JSX}
  */
 const ProductGrid = ({
-  flags, infiniteLoad, handleGetProducts, products, totalProductCount,
+  flags,
+  infiniteLoad,
+  handleGetProducts,
+  products,
+  totalProductCount,
 }) => {
   if (!infiniteLoad) {
     return (
@@ -60,7 +64,7 @@ ProductGrid.propTypes = {
 
 ProductGrid.defaultProps = {
   flags: null,
-  handleGetProducts: () => {},
+  handleGetProducts: () => { },
   infiniteLoad: true,
   products: null,
   totalProductCount: null,
