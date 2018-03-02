@@ -78,12 +78,12 @@ export default function product(subscribe) {
 
   if (appConfig.hasReviews) {
     const shouldFetchReviews$ = main$
-      .filter(({action}) => (
+      .filter(({ action }) => (
         action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
       ))
       .merge(successReviewSubmit$);
 
-    subscribe(shouldFetchReviews$, ({dispatch, getState}) => {
+    subscribe(shouldFetchReviews$, ({ dispatch, getState }) => {
       const baseProductId = getCurrentBaseProductId(getState());
       dispatch(getProductReviews(baseProductId, REVIEW_PREVIEW_COUNT));
     });
