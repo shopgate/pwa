@@ -1,6 +1,6 @@
 {
-  "name": "@shopgate/ext-product-reviews",
-  "version": "1.0.1",
+  "name": "@shopgate/product-reviews",
+  "version": "1.0.2",
   "description": "Shopgate's Product Reviews extension.",
   "repository": "shopgate/ext-product-reviews",
   "bugs": "https://github.com/shopgate/ext-product-reviews/issues",
