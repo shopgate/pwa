@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
 import Button from 'Components/Button';
 import Headline from 'Components/Headline';
 import List from 'Components/List';
@@ -42,11 +44,34 @@ class UserMenu extends Component {
   renderLoggedIn(user) {
     return (
       <div>
-        <Headline>
-          <I18n.Text string="navigation.welcome_message" params={{ name: user.firstName }} />
-        </Headline>
+
+        {/* Header */}
+        <Portal name={commonPortals.NAV_MENU_HEADER_BEFORE} />
+        <Portal
+          name={commonPortals.NAV_MENU_HEADER}
+          props={{
+            Item: List.Item,
+            Headline,
+            user,
+          }}
+        >
+          <Headline>
+            <I18n.Text string="navigation.welcome_message" params={{ name: user.firstName }} />
+          </Headline>
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_HEADER_AFTER} />
         <List>
-          <List.Item title="navigation.logout" onClick={this.props.logout} />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} />
+          <Portal
+            name={commonPortals.NAV_MENU_LOGOUT}
+            props={{
+              Item: List.Item,
+              handleLogout: this.props.logout,
+            }}
+          >
+            <List.Item title="navigation.logout" onClick={this.props.logout} />
+          </Portal>
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} />
         </List>
       </div>
     );

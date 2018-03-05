@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
@@ -51,20 +51,68 @@ class More extends Component {
     } = this.props;
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
+    const props = {
+      Item: List.Item,
+    };
+
     return (
       <View>
         <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
 
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
+
         <Headline text="navigation.store_information" small />
+
         <List>
-          <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
-          <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
-          <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
-          <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
-          {showReturnPolicy && <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />}
-          <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
+
+          {/* SHIPPING */}
+          <Portal name={portals.NAV_MENU_SHIPPING_BEFORE} />
+          <Portal name={portals.NAV_MENU_SHIPPING} props={props}>
+            <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_SHIPPING_AFTER} />
+
+          {/* PAYMENT */}
+          <Portal name={portals.NAV_MENU_PAYMENT_BEFORE} />
+          <Portal name={portals.NAV_MENU_PAYMENT} props={props}>
+            <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_PAYMENT_AFTER} />
+
+          {/* TERMS */}
+          <Portal name={portals.NAV_MENU_TERTMS_BEFORE} />
+          <Portal name={portals.NAV_MENU_TERTMS} props={props}>
+            <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_TERTMS_AFTER} />
+
+          {/* PRIVACY POLICY */}
+          <Portal name={portals.NAV_MENU_PRIVACY_BEFORE} />
+          <Portal name={portals.NAV_MENU_PRIVACY} props={props}>
+            <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_PRIVACY_AFTER} />
+
+          {/* RETURN POLICY */}
+          {showReturnPolicy && (
+            <Fragment>
+              <Portal name={portals.NAV_MENU_RETURN_POLICY_BEFORE} />
+              <Portal name={portals.NAV_MENU_RETURN_POLICY} props={props}>
+                <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
+              </Portal>
+              <Portal name={portals.NAV_MENU_RETURN_POLICY_AFTER} />
+            </Fragment>
+          )}
+
+          {/* IMPRINT */}
+          <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} />
+          <Portal name={portals.NAV_MENU_IMPRINT} props={props}>
+            <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_IMPRINT_AFTER} />
+
         </List>
+
         {showQuickLinks && (
           <div>
             <Headline small text="navigation.more_menu" />
@@ -77,7 +125,9 @@ class More extends Component {
         )}
 
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
+
         <ClientInformation />
+
       </View>
     );
   }
