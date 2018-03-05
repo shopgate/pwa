@@ -4,7 +4,7 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+import event from '@shopgate/pwa-core/classes/Event/index';
 import appConfig from '../helpers/config';
 import redirectRoute from '../actions/history/redirectRoute';
 import resetHistory from '../actions/history/resetHistory';
@@ -15,6 +15,7 @@ import ParsedLink from '../components/Router/helpers/parsed-link';
 import {
   openedRegisterLink$,
   routeDidLeave,
+  routeDidChange$,
 } from '../streams/history';
 import {
   userDidLogin$,
@@ -83,5 +84,9 @@ export default function history(subscribe) {
 
   subscribe(loginRouteDidLeave$, ({ dispatch }) => {
     dispatch(setRedirectLocation(null));
+  });
+
+  subscribe(routeDidChange$, () => {
+    event.trigger('routeDidChange');
   });
 }
