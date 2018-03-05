@@ -171,6 +171,6 @@ export const handleYouTube = (container) => {
    * Stops the player when a native app event is triggered when a webview gets hidden or when the
    * user navigated to some other page.
    */
-  event.addCallback('openLink', () => { stopPlayer(youtubeIframes); });
+  event.addCallback('routeDidChange', () => { stopPlayer(youtubeIframes); });
   event.addCallback('viewDidDisappear', () => { stopPlayer(youtubeIframes); });
 };
