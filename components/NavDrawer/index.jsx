@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -119,32 +119,73 @@ class NavDrawer extends Component {
 
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
+    const props = {
+      handleClose: this.handleClose,
+      Item,
+    };
+
     return (
       <Layout
         active={navDrawerActive}
         close={this.handleClose}
         setContentRef={this.setContentRef}
       >
-        <Header user={user} close={this.handleClose} />
+
+        {/* Header */}
+        <Portal name={portals.NAV_MENU_HEADER_BEFORE} />
+        <Portal
+          name={portals.NAV_MENU_HEADER}
+          props={{
+            ...props,
+            user,
+          }}
+        >
+          <Header user={user} close={this.handleClose} />
+        </Portal>
+        <Portal name={portals.NAV_MENU_HEADER_AFTER} />
+
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
-        <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.home" />
-        </Item>
 
-        <Item href={CATEGORY_PATH} icon={ViewListIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.categories" />
-        </Item>
-
-        { appConfig.hasFavorites &&
-          <Item
-            href={FAVORITES_PATH}
-            icon={HeartIcon}
-            close={this.handleClose}
-            withIndicator={this.props.highlightFavorites}
-          >
-            <I18n.Text string="navigation.favorites" />
+        {/* Home */}
+        <Portal name={portals.NAV_MENU_HOME_BEFORE} />
+        <Portal name={portals.NAV_MENU_HOME} props={props}>
+          <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.home" />
           </Item>
-        }
+        </Portal>
+        <Portal name={portals.NAV_MENU_HOME_BEFORE} />
+
+        {/* Categories */}
+        <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+        <Portal name={portals.NAV_MENU_CATEGORIES} props={props}>
+          <Item href={CATEGORY_PATH} icon={ViewListIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.categories" />
+          </Item>
+        </Portal>
+        <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+
+        {appConfig.hasFavorites && (
+          <Fragment>
+            <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+            <Portal
+              name={portals.NAV_MENU_CATEGORIES}
+              props={{
+                ...props,
+                withIndicator: this.props.highlightFavorites,
+              }}
+            >
+              <Item
+                href={FAVORITES_PATH}
+                icon={HeartIcon}
+                close={this.handleClose}
+                withIndicator={this.props.highlightFavorites}
+              >
+                <I18n.Text string="navigation.favorites" />
+              </Item>
+            </Portal>
+            <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+          </Fragment>
+        )}
 
         <CartItem
           href={CART_PATH}

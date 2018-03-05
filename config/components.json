@@ -1,36 +1,26 @@
 {
-  "widgets": {
-    "@shopgate/commerce-widgets/image": {
-      "path": "@shopgate/commerce-widgets/frontend/src/Image"
+  "portals": {
+    "@shopgate/custom-city-gear-release-calendar/@shopgate/custom-city-gear/custom-font": {
+      "path": "@shopgate/custom-city-gear-release-calendar/@shopgate-custom-city-gear-release-calendar/frontend/CustomFont",
+      "target": "app.globals"
     },
-    "@shopgate/commerce-widgets/image_slider": {
-      "path": "@shopgate/commerce-widgets/frontend/src/ImageSlider"
+    "@shopgate/custom-city-gear-release-calendar/@shopgate/custom-city-gear/release-calendar": {
+      "path": "@shopgate/custom-city-gear-release-calendar/@shopgate-custom-city-gear-release-calendar/frontend/ReleaseCalendar",
+      "target": "app.routes"
     },
-    "@shopgate/commerce-widgets/html": {
-      "path": "@shopgate/commerce-widgets/frontend/src/Html"
-    },
-    "@shopgate/commerce-widgets/product_slider": {
-      "path": "@shopgate/commerce-widgets/frontend/src/ProductSlider"
-    },
-    "@shopgate/commerce-widgets/category_list": {
-      "path": "@shopgate/commerce-widgets/frontend/src/CategoryList"
-    },
-    "@shopgate/commerce-widgets/product_list": {
-      "path": "@shopgate/commerce-widgets/frontend/src/Products"
-    },
-    "@shopgate/commerce-widgets/liveshopping": {
-      "path": "@shopgate/commerce-widgets/frontend/src/Liveshopping"
+    "@shopgate/custom-mizuno/@shopgate/custom-mizuno/HomeIcon": {
+      "path": "@shopgate/custom-mizuno/@shopgate-custom-mizuno/frontend/HomeIcon",
+      "target": "app.globals"
     }
   },
-  "portals": {
-    "@shopgate/ext-product-reviews/rating_stars": {
-      "target": "product-item.name.before",
-      "path": "@shopgate/ext-product-reviews/frontend/RatingStars"
+  "translations": {
+    "@shopgate/custom-dasha/locales/en-US": {
+      "path": "@shopgate/custom-dasha/frontend/locales/ro-RO.json"
     }
   },
   "tracking": {
     "@shopgate/tracking-ga-native/init": {
-      "path": "@shopgate/tracking-ga-native/frontend/index"
+      "path": "@shopgate/tracking-ga-native/frontend/index.js"
     }
   }
 }
