@@ -9,7 +9,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common/constants/Portals';
+import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
+import * as categoryPortals from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import * as favoritesPortals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
+import * as cartPortals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
@@ -132,9 +135,9 @@ class NavDrawer extends Component {
       >
 
         {/* Header */}
-        <Portal name={portals.NAV_MENU_HEADER_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_HEADER_BEFORE} />
         <Portal
-          name={portals.NAV_MENU_HEADER}
+          name={commonPortals.NAV_MENU_HEADER}
           props={{
             ...props,
             user,
@@ -142,33 +145,33 @@ class NavDrawer extends Component {
         >
           <Header user={user} close={this.handleClose} />
         </Portal>
-        <Portal name={portals.NAV_MENU_HEADER_AFTER} />
+        <Portal name={commonPortals.NAV_MENU_HEADER_AFTER} />
 
-        <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_CONTENT_BEFORE} />
 
         {/* Home */}
-        <Portal name={portals.NAV_MENU_HOME_BEFORE} />
-        <Portal name={portals.NAV_MENU_HOME} props={props}>
+        <Portal name={commonPortals.NAV_MENU_HOME_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_HOME} props={props}>
           <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
             <I18n.Text string="navigation.home" />
           </Item>
         </Portal>
-        <Portal name={portals.NAV_MENU_HOME_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_HOME_AFTER} />
 
         {/* Categories */}
-        <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
-        <Portal name={portals.NAV_MENU_CATEGORIES} props={props}>
+        <Portal name={categoryPortals.NAV_MENU_CATEGORIES_BEFORE} />
+        <Portal name={categoryPortals.NAV_MENU_CATEGORIES} props={props}>
           <Item href={CATEGORY_PATH} icon={ViewListIcon} close={this.handleClose}>
             <I18n.Text string="navigation.categories" />
           </Item>
         </Portal>
-        <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+        <Portal name={categoryPortals.NAV_MENU_CATEGORIES_AFTER} />
 
         {appConfig.hasFavorites && (
           <Fragment>
-            <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+            <Portal name={favoritesPortals.NAV_MENU_FAVORITES_BEFORE} />
             <Portal
-              name={portals.NAV_MENU_CATEGORIES}
+              name={favoritesPortals.NAV_MENU_FAVORITES}
               props={{
                 ...props,
                 withIndicator: this.props.highlightFavorites,
@@ -183,59 +186,109 @@ class NavDrawer extends Component {
                 <I18n.Text string="navigation.favorites" />
               </Item>
             </Portal>
-            <Portal name={portals.NAV_MENU_CATEGORIES_BEFORE} />
+            <Portal name={favoritesPortals.NAV_MENU_FAVORITES_AFTER} />
           </Fragment>
         )}
 
-        <CartItem
-          href={CART_PATH}
-          icon={ShoppingCartIcon}
-          count={cartProductCount}
-          close={this.handleClose}
+        <Portal name={cartPortals.NAV_MENU_CART_BEFORE} />
+        <Portal
+          name={cartPortals.NAV_MENU_CART}
+          props={{
+            ...props,
+            productCount: cartProductCount,
+          }}
         >
-          <I18n.Text string="navigation.cart" />
-        </CartItem>
+          <CartItem
+            href={CART_PATH}
+            icon={ShoppingCartIcon}
+            count={cartProductCount}
+            close={this.handleClose}
+          >
+            <I18n.Text string="navigation.cart" />
+          </CartItem>
+        </Portal>
+        <Portal name={cartPortals.NAV_MENU_CART_AFTER} />
 
         <Divider close={this.handleClose} />
 
         {showQuickLinks && this.renderEntries(entries.quicklinks)}
         {showQuickLinks && <Divider close={this.handleClose} />}
 
-        <Item href={`${PAGE_PATH}/shipping`} icon={LocalShippingIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.shipping" />
-        </Item>
+        <Portal name={commonPortals.NAV_MENU_SHIPPING_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_SHIPPING} props={props}>
+          <Item href={`${PAGE_PATH}/shipping`} icon={LocalShippingIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.shipping" />
+          </Item>
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_SHIPPING_AFTER} />
 
-        <Item href={`${PAGE_PATH}/payment`} icon={CreditCardIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.payment" />
-        </Item>
+        <Portal name={commonPortals.NAV_MENU_PAYMENT_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_PAYMENT} props={props}>
+          <Item href={`${PAGE_PATH}/payment`} icon={CreditCardIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.payment" />
+          </Item>
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_PAYMENT_AFTER} />
 
         <Divider close={this.handleClose} />
 
-        <Item href={`${PAGE_PATH}/terms`} icon={DescriptionIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.terms" />
-        </Item>
+        <Portal name={commonPortals.NAV_MENU_TERTMS_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_TERTMS} props={props}>
+          <Item href={`${PAGE_PATH}/terms`} icon={DescriptionIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.terms" />
+          </Item>
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_TERTMS_AFTER} />
 
-        <Item href={`${PAGE_PATH}/privacy`} icon={SecurityIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.privacy" />
-        </Item>
+        <Portal name={commonPortals.NAV_MENU_PRIVACY_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_PRIVACY} props={props}>
+          <Item href={`${PAGE_PATH}/privacy`} icon={SecurityIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.privacy" />
+          </Item>
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_PRIVACY_AFTER} />
 
         {showReturnPolicy && (
-          <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
-            <I18n.Text string="navigation.return_policy" />
-          </Item>
+          <Fragment>
+            <Portal name={commonPortals.NAV_MENU_RETURN_POLICY_BEFORE} />
+            <Portal name={commonPortals.NAV_MENU_RETURN_POLICY} props={props}>
+              <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
+                <I18n.Text string="navigation.return_policy" />
+              </Item>
+            </Portal>
+            <Portal name={commonPortals.NAV_MENU_RETURN_POLICY_AFTER} />
+          </Fragment>
         )}
 
-        <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
-          <I18n.Text string="navigation.about" />
-        </Item>
+        <Portal name={commonPortals.NAV_MENU_IMPRINT_BEFORE} />
+        <Portal name={commonPortals.NAV_MENU_IMPRINT} props={props}>
+          <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.about" />
+          </Item>
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_IMPRINT_AFTER} />
 
         {user && <Divider close={this.handleClose} />}
         {user && (
-          <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
-            <I18n.Text string="navigation.logout" />
-          </Item>
+          <Fragment>
+            <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} />
+            <Portal
+              name={commonPortals.NAV_MENU_LOGOUT}
+              props={{
+                ...props,
+                handleLogout: logout,
+              }}
+            >
+              <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+                <I18n.Text string="navigation.logout" />
+              </Item>
+            </Portal>
+            <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} />
+          </Fragment>
         )}
-        <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
+
+        <Portal name={commonPortals.NAV_MENU_CONTENT_AFTER} />
+
         <ClientInformation />
 
       </Layout>
