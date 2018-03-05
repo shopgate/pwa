@@ -7,10 +7,6 @@
 
 import { css } from 'glamor';
 
-const checkoutButton = css({
+export default css({
   width: '100%',
 }).toString();
-
-export default {
-  checkoutButton,
-};

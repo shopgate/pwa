@@ -51,7 +51,7 @@ const Item = ({ product, display, isFavorite }) => (
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
           <DiscountBadge text={`-${product.price.discount}%`} />
         </Portal>
-        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
 
@@ -76,7 +76,7 @@ const Item = ({ product, display, isFavorite }) => (
                 <Ellipsis>{product.name}</Ellipsis>
               </div>
             </Portal>
-            <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_NAME_AFTER} props={{ productId: product.id }} />
           </Fragment>
         )}
 
