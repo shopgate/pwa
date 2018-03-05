@@ -23,3 +23,27 @@ exports[`<CheckoutButton / Checkout is possible should render without any props 
   </Link>
 </RippleButton>
 `;
+
+exports[`<CheckoutButton /> Checkout is possible should render without any props 1`] = `
+<RippleButton
+  className=""
+  disabled={true}
+  flat={false}
+  onClick={null}
+  rippleClassName=""
+  rippleSize={null}
+  type="secondary"
+  wrapContent={true}
+>
+  <Link
+    className=""
+    href="/checkout"
+  >
+    <Translate
+      className=""
+      params={Object {}}
+      string="cart.checkout"
+    />
+  </Link>
+</RippleButton>
+`;
