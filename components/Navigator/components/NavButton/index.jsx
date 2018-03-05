@@ -97,7 +97,8 @@ class NavButton extends Component {
       nextProps.showIconShadow !== this.props.showIconShadow ||
       nextProps.filterOpen !== this.props.filterOpen ||
       nextProps.filterAttributeOpen !== this.props.filterAttributeOpen ||
-      nextProps.loginOpen !== this.props.loginOpen
+      nextProps.loginOpen !== this.props.loginOpen ||
+      nextProps.path !== this.props.path
     );
   }
 
