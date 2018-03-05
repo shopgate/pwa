@@ -7,6 +7,16 @@
 
 import { css } from 'glamor';
 
-export default css({
+const button = css({
   width: '100%',
 }).toString();
+
+const link = css({
+  display: 'block',
+  textAlign: 'center',
+}).toString();
+
+export default {
+  button,
+  link,
+};

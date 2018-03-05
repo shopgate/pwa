@@ -16,7 +16,7 @@ exports[`<CheckoutButton / Checkout is possible should render without any props 
     href="/checkout"
   >
     <Translate
-      className=""
+      className="css-1a2hjg9"
       params={Object {}}
       string="cart.checkout"
     />
