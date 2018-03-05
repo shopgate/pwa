@@ -4,6 +4,7 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+import event from '@shopgate/pwa-core/classes/Event/index';
 
 /**
  * Parses a collection of DOM nodes for external script tags.
@@ -112,4 +113,63 @@ export const getDOMContainer = (containerID) => {
   }
 
   return container;
+};
+
+/**
+ * Stops a NodeList of youtube players.
+ * @param {NodeList} players YouTube player iframes.
+ */
+const stopPlayer = (players) => {
+  const cmdStop = '{"event":"command","func":"stopVideo","args":""}';
+
+  players.forEach((node, index) => {
+    const yt = players[index];
+    if (yt.contentWindow && yt.contentWindow.postMessage) {
+      yt.contentWindow.postMessage(cmdStop, '*');
+    }
+  });
+};
+
+/**
+ * Handles YouTube iframes so that we are able to controll when the video should be stopped.
+ * It should not play in the background when a tab/page has changed.
+ * @param {NodeList} container HTML widget container.
+ */
+export const handleYouTube = (container) => {
+  const youtubeIframes = container.querySelectorAll('iframe[src*="youtube.com"]');
+  youtubeIframes[0].src += '&enablejsapi=1';
+
+  youtubeIframes.forEach((node, index) => {
+    let { src } = youtubeIframes[index];
+
+    if (!src) {
+      return;
+    }
+
+    // Enable the js api
+    if (src.indexOf('enablejsapi=0') !== -1) {
+      src = src.replace('enablejsapi=0', 'enablejsapi=1');
+    }
+
+    if (src.indexOf('enablejsapi') === -1) {
+      const queryChar = src.indexOf('?') ? '&' : '?';
+      src += `${queryChar}enablejsapi=1`;
+    }
+
+    // Set controls to avoid the iframe not being resumable because of controls=0 param on ios.
+    if (src.indexOf('controls') === -1) {
+      src += '&controls=1';
+    } else if (src.indexOf('controls=0')) {
+      src = src.replace('controls=0', 'controls=1');
+    }
+
+    youtubeIframes[index].src = src;
+  });
+
+  /**
+   * Stops the player when a native app event is triggered when a webview gets hidden or when the
+   * user navigated to some other page.
+   */
+  event.addCallback('routeDidChange', () => { stopPlayer(youtubeIframes); });
+  event.addCallback('viewDidDisappear', () => { stopPlayer(youtubeIframes); });
 };

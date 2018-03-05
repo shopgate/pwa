@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import parseHTML from './helpers/parseHTML';
+import { handleYouTube } from './helpers/handleDOM';
 import styles from './style';
 
 /**
@@ -45,6 +46,7 @@ class Html extends Component {
    */
   componentDidMount() {
     this.htmlContainer.addEventListener('click', this.handleTap, true);
+    handleYouTube(this.htmlContainer);
   }
 
   /**
@@ -66,16 +68,16 @@ class Html extends Component {
   /**
    * If the user tapped a link element, prevent the default behaviour
    * and handle them via ParsedLink.
-   * @param {Object} event The touchstart event.
+   * @param {Object} e The touchstart event.
    */
-  handleTap = (event) => {
-    const aTag = event.target.closest('a');
+  handleTap = (e) => {
+    const aTag = e.target.closest('a');
 
     if (aTag && aTag.attributes.href) {
       const href = aTag.attributes.href.value;
       const link = new ParsedLink(href);
 
-      event.preventDefault();
+      e.preventDefault();
       link.open(history);
     }
   };
