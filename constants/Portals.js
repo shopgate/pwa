@@ -9,6 +9,7 @@
 const APP = 'app';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
+const NO_RESULTS = 'no-results';
 
 // CONTENTS
 const GLOBALS = 'globals';
@@ -47,3 +48,7 @@ export const NAV_MENU_CATEGORIES_AFTER = `${NAV_MENU}.${CATEGORIES}.${BEFORE}`;
 export const NAV_MENU_FAVORITES_BEFORE = `${NAV_MENU}.${FAVORITES}.${BEFORE}`;
 export const NAV_MENU_FAVORITES = `${NAV_MENU}.${FAVORITES}`;
 export const NAV_MENU_FAVORITES_AFTER = `${NAV_MENU}.${FAVORITES}.${BEFORE}`;
+
+export const NO_RESULTS_CONTENT_BEFORE = `${NO_RESULTS}.${CONTENT}.${BEFORE}`;
+export const NO_RESULTS_CONTENT = `${NO_RESULTS}.${CONTENT}`;
+export const NO_RESULTS_CONTENT_AFTER = `${NO_RESULTS}.${CONTENT}.${AFTER}`;
