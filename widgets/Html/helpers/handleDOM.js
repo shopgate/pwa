@@ -146,19 +146,19 @@ export const handleYouTube = (container) => {
     }
 
     // Enable the js api
-    if (src.indexOf('enablejsapi=0') !== -1) {
+    if (src.includes('enablejsapi=0')) {
       src = src.replace('enablejsapi=0', 'enablejsapi=1');
     }
 
-    if (src.indexOf('enablejsapi') === -1) {
-      const queryChar = src.indexOf('?') ? '&' : '?';
+    if (!src.includes('enablejsapi')) {
+      const queryChar = src.includes('?') ? '&' : '?';
       src += `${queryChar}enablejsapi=1`;
     }
 
     // Set controls to avoid the iframe not being resumable because of controls=0 param on ios.
-    if (src.indexOf('controls') === -1) {
+    if (!src.includes('controls')) {
       src += '&controls=1';
-    } else if (src.indexOf('controls=0')) {
+    } else if (src.includes('controls=0')) {
       src = src.replace('controls=0', 'controls=1');
     }
 
