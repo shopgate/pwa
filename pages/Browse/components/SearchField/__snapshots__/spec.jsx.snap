@@ -29,6 +29,7 @@ exports[`<SearchField /> should render the search field 1`] = `
           onFocusChange={[Function]}
           onSubmit={[Function]}
           setRef={[Function]}
+          testId="searchInput"
           type="search"
           value="foo"
         />

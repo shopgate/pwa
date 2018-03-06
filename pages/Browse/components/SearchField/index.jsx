@@ -129,6 +129,7 @@ class SearchField extends Component {
    */
   renderInputField = () => (
     <Input
+      testId="searchInput"
       autoComplete={false}
       className={styles.input}
       onFocusChange={this.handleFocusChange}

@@ -3,6 +3,7 @@
 exports[`<CartButton /> should not be visible with prop visible set to false 1`] = `
 <button
   className="css-nmjls1"
+  data-test-id="cartButton"
   onClick={[Function]}
   style={Object {}}
 >
@@ -26,6 +27,7 @@ exports[`<CartButton /> should not be visible with prop visible set to false 1`]
 exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] = `
 <button
   className="css-nmjls1"
+  data-test-id="cartButton"
   onClick={[Function]}
   style={
     Object {
@@ -55,6 +57,7 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
 exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
 <button
   className="css-nmjls1"
+  data-test-id="cartButton"
   onClick={[Function]}
   style={
     Object {
@@ -84,6 +87,7 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
 exports[`<CartButton /> should transition if it has cart amount 1`] = `
 <button
   className="css-nmjls1"
+  data-test-id="cartButton"
   onClick={[Function]}
   style={
     Object {

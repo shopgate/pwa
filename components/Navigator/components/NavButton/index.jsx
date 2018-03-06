@@ -142,7 +142,11 @@ class NavButton extends Component {
     }
 
     return (
-      <Button className={styles.button} onClick={this.handleClick}>
+      <Button
+        data-test-id="backButton"
+        className={styles.button}
+        onClick={this.handleClick}
+      >
         <div className={styles.buttonContent}>
           {Icon}
         </div>
