@@ -86,7 +86,7 @@ class CartButton extends Component {
 
     return (
       <button
-        data-test-id="cartButton"
+        data-test-id="CartButton"
         className={styles.button}
         style={style}
         onClick={this.handleClick}

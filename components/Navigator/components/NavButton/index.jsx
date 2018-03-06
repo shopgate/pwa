@@ -140,7 +140,6 @@ class NavButton extends Component {
   render() {
     return (
       <Button
-        data-test-id="backButton"
         className={styles.button}
       >
         <Ripple

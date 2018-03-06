@@ -34,7 +34,7 @@ const Layout = props => (
       />
 
       <div
-        data-test-id="couponSubmitButton"
+        data-test-id="CouponSubmitButton"
         style={props.iconStyle}
         className={styles.icon}
         aria-hidden

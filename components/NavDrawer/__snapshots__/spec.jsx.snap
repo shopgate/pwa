@@ -19,7 +19,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -1164,7 +1164,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -2421,7 +2421,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -3683,7 +3683,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -4975,7 +4975,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -6232,7 +6232,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -7696,7 +7696,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"
@@ -8994,7 +8994,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
       isOpened={true}
     >
       <section
-        data-test-id="navigationPanel"
+        data-test-id="NavDrawer"
       >
         <Backdrop
           color="#000"

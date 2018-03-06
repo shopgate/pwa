@@ -38,7 +38,7 @@ class SearchButton extends Component {
   render() {
     return (
       <button
-        data-test-id="searchButton"
+        data-test-id="SearchButton"
         className={styles.button}
       >
         <Ripple

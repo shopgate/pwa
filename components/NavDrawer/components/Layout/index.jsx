@@ -19,7 +19,7 @@ import styles from './style';
  */
 const Layout = props => (
   <Portal isOpened>
-    <section data-test-id="navigationPanel">
+    <section data-test-id="NavDrawer">
       <Backdrop
         isVisible={props.active}
         level={3}
