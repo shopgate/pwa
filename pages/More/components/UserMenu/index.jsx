@@ -19,7 +19,6 @@ import {
   LOGIN_PATH,
   REGISTER_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-
 import styles from './style';
 
 /**
@@ -46,7 +45,13 @@ class UserMenu extends Component {
       <div>
 
         {/* Header */}
-        <Portal name={commonPortals.NAV_MENU_HEADER_BEFORE} />
+        <Portal
+          name={commonPortals.NAV_MENU_HEADER_BEFORE}
+          props={{
+            Item: List.Item,
+            user,
+          }}
+        />
         <Portal
           name={commonPortals.NAV_MENU_HEADER}
           props={{
@@ -59,9 +64,21 @@ class UserMenu extends Component {
             <I18n.Text string="navigation.welcome_message" params={{ name: user.firstName }} />
           </Headline>
         </Portal>
-        <Portal name={commonPortals.NAV_MENU_HEADER_AFTER} />
+        <Portal
+          name={commonPortals.NAV_MENU_HEADER_AFTER}
+          props={{
+            Item: List.Item,
+            user,
+          }}
+        />
         <List>
-          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} />
+          <Portal
+            name={commonPortals.NAV_MENU_LOGOUT_BEFORE}
+            props={{
+              Item: List.Item,
+              handleLogout: this.props.logout,
+            }}
+          />
           <Portal
             name={commonPortals.NAV_MENU_LOGOUT}
             props={{
@@ -71,7 +88,13 @@ class UserMenu extends Component {
           >
             <List.Item title="navigation.logout" onClick={this.props.logout} />
           </Portal>
-          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} />
+          <Portal
+            name={commonPortals.NAV_MENU_LOGOUT_AFTER}
+            props={{
+              Item: List.Item,
+              handleLogout: this.props.logout,
+            }}
+          />
         </List>
       </div>
     );
