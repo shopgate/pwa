@@ -5,53 +5,41 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import RippleButton from 'Components/RippleButton';
+import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
 import styles from './style';
 
 /**
  * The checkout button component.
+ * @returns {JSX}
  */
-class CheckoutButton extends Component {
-  static propTypes = {
-    pushHistory: PropTypes.func.isRequired,
-    isActive: PropTypes.bool,
-  };
+const CheckoutButton = ({ isActive }) => (
+  <RippleButton
+    disabled={!isActive}
+    flat={false}
+    type="secondary"
+    className={styles.button}
+  >
+    <Link href={CHECKOUT_PATH}>
+      <I18n.Text
+        className={styles.link}
+        string="cart.checkout"
+      />
+    </Link>
+  </RippleButton>
+);
 
-  static defaultProps = {
-    isActive: true,
-  };
+CheckoutButton.propTypes = {
+  isActive: PropTypes.bool,
+};
 
-  static clickDelay = 300;
-
-  /**
-   * Go to the checkout
-   */
-  handleClick = () => {
-    setTimeout(() => this.props.pushHistory(CHECKOUT_PATH), CheckoutButton.clickDelay);
-  };
-
-  /**
-   * The render function.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <RippleButton
-        onClick={this.handleClick}
-        disabled={!this.props.isActive}
-        flat={false}
-        type="secondary"
-        className={styles.checkoutButton}
-      >
-        <I18n.Text string="cart.checkout" />
-      </RippleButton>
-    );
-  }
-}
+CheckoutButton.defaultProps = {
+  isActive: true,
+};
 
 export default connect(CheckoutButton);

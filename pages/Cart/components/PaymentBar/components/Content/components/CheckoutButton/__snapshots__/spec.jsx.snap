@@ -5,16 +5,21 @@ exports[`<CheckoutButton / Checkout is possible should render without any props 
   className="css-63oe3q"
   disabled={true}
   flat={false}
-  onClick={[Function]}
+  onClick={null}
   rippleClassName=""
   rippleSize={null}
   type="secondary"
   wrapContent={true}
 >
-  <Translate
+  <Link
     className=""
-    params={Object {}}
-    string="cart.checkout"
-  />
+    href="/checkout"
+  >
+    <Translate
+      className="css-1a2hjg9"
+      params={Object {}}
+      string="cart.checkout"
+    />
+  </Link>
 </RippleButton>
 `;
