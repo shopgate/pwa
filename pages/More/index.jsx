@@ -9,6 +9,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
+import * as marketPortals from '@shopgate/pwa-common-commerce/market/constants/Portals';
 import View from 'Components/View';
 import ClientInformation from 'Components/ClientInformation';
 import Headline from 'Components/Headline';
@@ -66,18 +67,18 @@ class More extends Component {
         <List>
 
           {/* SHIPPING */}
-          <Portal name={portals.NAV_MENU_SHIPPING_BEFORE} props={props} />
-          <Portal name={portals.NAV_MENU_SHIPPING} props={props}>
+          <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
             <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
           </Portal>
-          <Portal name={portals.NAV_MENU_SHIPPING_AFTER} props={props} />
+          <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
 
           {/* PAYMENT */}
-          <Portal name={portals.NAV_MENU_PAYMENT_BEFORE} props={props} />
-          <Portal name={portals.NAV_MENU_PAYMENT} props={props}>
+          <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
             <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
           </Portal>
-          <Portal name={portals.NAV_MENU_PAYMENT_AFTER} props={props} />
+          <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
 
           {/* TERMS */}
           <Portal name={portals.NAV_MENU_TERTMS_BEFORE} props={props} />
@@ -94,15 +95,15 @@ class More extends Component {
           <Portal name={portals.NAV_MENU_PRIVACY_AFTER} props={props} />
 
           {/* RETURN POLICY */}
-          <Portal name={portals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
           {showReturnPolicy && (
             <Fragment>
-              <Portal name={portals.NAV_MENU_RETURN_POLICY} props={props}>
+              <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
                 <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
               </Portal>
             </Fragment>
           )}
-          <Portal name={portals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
 
           {/* IMPRINT */}
           <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} props={props} />
