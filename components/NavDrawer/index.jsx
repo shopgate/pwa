@@ -167,9 +167,9 @@ class NavDrawer extends Component {
         </Portal>
         <Portal name={categoryPortals.NAV_MENU_CATEGORIES_AFTER} />
 
+        <Portal name={favoritesPortals.NAV_MENU_FAVORITES_BEFORE} />
         {appConfig.hasFavorites && (
           <Fragment>
-            <Portal name={favoritesPortals.NAV_MENU_FAVORITES_BEFORE} />
             <Portal
               name={favoritesPortals.NAV_MENU_FAVORITES}
               props={{
@@ -186,9 +186,9 @@ class NavDrawer extends Component {
                 <I18n.Text string="navigation.favorites" />
               </Item>
             </Portal>
-            <Portal name={favoritesPortals.NAV_MENU_FAVORITES_AFTER} />
           </Fragment>
         )}
+        <Portal name={favoritesPortals.NAV_MENU_FAVORITES_AFTER} />
 
         <Portal name={cartPortals.NAV_MENU_CART_BEFORE} />
         <Portal
@@ -248,17 +248,17 @@ class NavDrawer extends Component {
         </Portal>
         <Portal name={commonPortals.NAV_MENU_PRIVACY_AFTER} />
 
+        <Portal name={commonPortals.NAV_MENU_RETURN_POLICY_BEFORE} />
         {showReturnPolicy && (
           <Fragment>
-            <Portal name={commonPortals.NAV_MENU_RETURN_POLICY_BEFORE} />
             <Portal name={commonPortals.NAV_MENU_RETURN_POLICY} props={props}>
               <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
                 <I18n.Text string="navigation.return_policy" />
               </Item>
             </Portal>
-            <Portal name={commonPortals.NAV_MENU_RETURN_POLICY_AFTER} />
           </Fragment>
         )}
+        <Portal name={commonPortals.NAV_MENU_RETURN_POLICY_AFTER} />
 
         <Portal name={commonPortals.NAV_MENU_IMPRINT_BEFORE} />
         <Portal name={commonPortals.NAV_MENU_IMPRINT} props={props}>
