@@ -138,7 +138,6 @@ const stopPlayer = (players) => {
  */
 export const handleYouTube = (container) => {
   const youtubeIframes = container.querySelectorAll('iframe[src*="youtube.com"]');
-  youtubeIframes[0].src += '&enablejsapi=1';
 
   youtubeIframes.forEach((node, index) => {
     let { src } = youtubeIframes[index];
