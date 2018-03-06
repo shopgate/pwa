@@ -139,7 +139,10 @@ class NavButton extends Component {
    */
   render() {
     return (
-      <Button className={styles.button}>
+      <Button
+        data-test-id="backButton"
+        className={styles.button}
+      >
         <Ripple
           className={styles.buttonContent}
           onComplete={this.handleClick}

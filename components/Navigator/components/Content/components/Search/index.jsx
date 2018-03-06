@@ -172,6 +172,7 @@ class Search extends Component {
           onAnimationEnd={this.handleAnimationEnd}
         >
           <input
+            data-test-id="searchInput"
             className={styles.input}
             type="search"
             value={inputValue}

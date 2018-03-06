@@ -18,7 +18,9 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -1161,7 +1163,9 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -2416,7 +2420,9 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -3676,7 +3682,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -4966,7 +4974,9 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -6221,7 +6231,9 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -7683,7 +7695,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}
@@ -8979,7 +8993,9 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
     <Component
       isOpened={true}
     >
-      <section>
+      <section
+        data-test-id="navigationPanel"
+      >
         <Backdrop
           color="#000"
           duration={200}

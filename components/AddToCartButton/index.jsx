@@ -163,6 +163,7 @@ class AddToCartButton extends Component {
 
     return (
       <button
+        data-test-id="addToCartButton"
         className={`${this.props.className} ${styles.buttonWrapper(this.props.buttonSize, this.props.iconSize)} ${buttonStyle}`}
         onClick={this.handleClick}
       >

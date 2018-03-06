@@ -37,7 +37,10 @@ class SearchButton extends Component {
    */
   render() {
     return (
-      <button className={styles.button}>
+      <button
+        data-test-id="searchButton"
+        className={styles.button}
+      >
         <Ripple
           className={styles.buttonContent}
           onComplete={this.props.onClick}
