@@ -12,6 +12,7 @@ exports[`<TabBar /> should highlight the active tab 1`] = `
     key="foo"
     label="Foo"
     onClick={null}
+    path="/"
     type="foo"
   />
   <TabBarAction
@@ -20,6 +21,7 @@ exports[`<TabBar /> should highlight the active tab 1`] = `
     key="bar"
     label="Bar"
     onClick={null}
+    path="/"
     type="bar"
   />
   <TabBarAction
@@ -28,6 +30,7 @@ exports[`<TabBar /> should highlight the active tab 1`] = `
     key="baz"
     label="Baz"
     onClick={null}
+    path="/"
     type="baz"
   />
   <TabBarAction
@@ -36,6 +39,7 @@ exports[`<TabBar /> should highlight the active tab 1`] = `
     key="qux"
     label="Qux"
     onClick={null}
+    path="/"
     type="qux"
   />
 </Grid>
@@ -56,6 +60,7 @@ exports[`<TabBar /> should pass custom props to the tab action 1`] = `
     key="foo"
     label="bar"
     onClick={null}
+    path="/"
     type="foo"
   />
 </Grid>
@@ -73,6 +78,7 @@ exports[`<TabBar /> should render when visible 1`] = `
     key="foo"
     label="Foo"
     onClick={null}
+    path="/"
     type="foo"
   />
   <TabBarAction
@@ -81,6 +87,7 @@ exports[`<TabBar /> should render when visible 1`] = `
     key="bar"
     label="Bar"
     onClick={null}
+    path="/"
     type="bar"
   />
   <TabBarAction
@@ -89,6 +96,7 @@ exports[`<TabBar /> should render when visible 1`] = `
     key="baz"
     label="Baz"
     onClick={null}
+    path="/"
     type="baz"
   />
   <TabBarAction
@@ -97,6 +105,7 @@ exports[`<TabBar /> should render when visible 1`] = `
     key="qux"
     label="Qux"
     onClick={null}
+    path="/"
     type="qux"
   />
 </Grid>

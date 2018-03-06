@@ -13,7 +13,6 @@ import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import HomeIcon from 'Components/icons/HomeIcon';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
-import connect from './connector';
 
 /**
  * The tab bar home action.
@@ -57,4 +56,4 @@ class TabBarHomeAction extends Component {
   }
 }
 
-export default connect(TabBarHomeAction);
+export default TabBarHomeAction;

@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { MORE_PATH } from 'Pages/More/constants';
@@ -14,31 +15,45 @@ import TabBarAction from '../TabBarAction';
 import styles from './style';
 
 /**
- * Opens the link on click on the action.
+ * The tab bar home action.
  */
-const handleClick = () => {
-  const link = new ParsedLink(MORE_PATH);
-  link.open();
-};
+class TabBarMoreAction extends Component {
+  static propTypes = {
+    path: PropTypes.string.isRequired,
+    ...TabBarAction.propTypes,
+  };
 
-/**
- * Renders the tab bar more action component.
- * @param {Object} props The component properties.
- * @returns {JSX}
- */
-const TabBarMoreAction = props => (
-  <TabBarAction
-    {...props}
-    icon={(
-      <Portal name="tabbar.more-icon">
-        <MoreIcon className={styles} />
-      </Portal>
-    )}
-    onClick={handleClick}
-  />
-);
+  static defaultProps = TabBarAction.defaultProps;
 
-TabBarMoreAction.propTypes = TabBarAction.propTypes;
-TabBarMoreAction.defaultProps = TabBarAction.defaultProps;
+  /**
+   * Handles the click action.
+   */
+  handleClick = () => {
+    if (this.props.path === MORE_PATH) {
+      return;
+    }
+
+    const link = new ParsedLink(MORE_PATH);
+    link.open();
+  }
+
+  /**
+   * Renders the component.
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <TabBarAction
+        {...this.props}
+        icon={(
+          <Portal name="tabbar.more-icon">
+            <MoreIcon className={styles} />
+          </Portal>
+        )}
+        onClick={this.handleClick}
+      />
+    );
+  }
+}
 
 export default TabBarMoreAction;

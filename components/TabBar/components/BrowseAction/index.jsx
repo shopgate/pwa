@@ -5,7 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
@@ -14,31 +15,45 @@ import TabBarAction from '../TabBarAction';
 import styles from './style';
 
 /**
- * Opens the link on click on the action.
+ * The tab bar browse action.
  */
-const handleClick = () => {
-  const link = new ParsedLink(BROWSE_PATH);
-  link.open();
-};
+class TabBarBrowseAction extends Component {
+  static propTypes = {
+    path: PropTypes.string.isRequired,
+    ...TabBarAction.propTypes,
+  };
 
-/**
- * Renders the tab bar browse action component.
- * @param {Object} props The component properties.
- * @returns {JSX}
- */
-const TabBarBrowseAction = props => (
-  <TabBarAction
-    {...props}
-    icon={(
-      <Portal name="tabbar.browse-icon">
-        <BrowseIcon className={styles} />
-      </Portal>
-    )}
-    onClick={handleClick}
-  />
-);
+  static defaultProps = TabBarAction.defaultProps;
 
-TabBarBrowseAction.propTypes = TabBarAction.propTypes;
-TabBarBrowseAction.defaultProps = TabBarAction.defaultProps;
+  /**
+   * Handles the click action.
+   */
+  handleClick = () => {
+    if (this.props.path === BROWSE_PATH) {
+      return;
+    }
+
+    const link = new ParsedLink(BROWSE_PATH);
+    link.open();
+  }
+
+  /**
+   * Renders the component.
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <TabBarAction
+        {...this.props}
+        icon={(
+          <Portal name="tabbar.browse-icon">
+            <BrowseIcon className={styles} />
+          </Portal>
+        )}
+        onClick={this.handleClick}
+      />
+    );
+  }
+}
 
 export default TabBarBrowseAction;
