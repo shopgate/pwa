@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SearchField /> should render the search field 1`] = `
-<div>
+<div
+  data-test-id="SearchField"
+>
   <div
     className="css-1jyozbi"
   >
@@ -29,7 +31,6 @@ exports[`<SearchField /> should render the search field 1`] = `
           onFocusChange={[Function]}
           onSubmit={[Function]}
           setRef={[Function]}
-          testId="searchInput"
           type="search"
           value="foo"
         />

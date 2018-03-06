@@ -32,10 +32,7 @@ const Title = ({ value, handleRemove, toggleEditMode }, context) => (
       <Portal name={portals.CART_ITEM_NAME_AFTER} props={context} />
     </Grid.Item>
     <Grid.Item className={styles.menuContainer} shrink={0}>
-      <div
-        data-test-id="cartProductOptionsButton"
-        className={styles.menuToggle}
-      >
+      <div className={styles.menuToggle}>
         <ContextMenu>
           <ContextMenu.Item onClick={handleRemove}>
             <I18n.Text string="cart.remove" />

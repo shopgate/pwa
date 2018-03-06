@@ -129,7 +129,6 @@ class SearchField extends Component {
    */
   renderInputField = () => (
     <Input
-      testId="searchInput"
       autoComplete={false}
       className={styles.input}
       onFocusChange={this.handleFocusChange}
@@ -148,7 +147,7 @@ class SearchField extends Component {
   render() {
     const { focused } = this.state;
     return (
-      <div>
+      <div data-test-id="SearchField">
         <div className={styles.container}>
           <div className={styles.inputWrapper}>
             <form onSubmit={this.handleSubmit} action=".">
