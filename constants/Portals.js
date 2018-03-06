@@ -17,11 +17,8 @@ const ROUTES = 'routes';
 const HEADER = 'header';
 const CONTENT = 'content';
 const HOME = 'home';
-const SHIPPING = 'shipping';
-const PAYMENT = 'payment';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
-const RETURN_POLICY = 'return-policy';
 const IMPRINT = 'imprint';
 const LOGOUT = 'logout';
 
@@ -47,14 +44,6 @@ export const NAV_MENU_HOME_BEFORE = `${NAV_MENU}.${HOME}.${BEFORE}`;
 export const NAV_MENU_HOME = `${NAV_MENU}.${HOME}`;
 export const NAV_MENU_HOME_AFTER = `${NAV_MENU}.${HOME}.${AFTER}`;
 
-export const NAV_MENU_SHIPPING_BEFORE = `${NAV_MENU}.${SHIPPING}.${BEFORE}`;
-export const NAV_MENU_SHIPPING = `${NAV_MENU}.${SHIPPING}`;
-export const NAV_MENU_SHIPPING_AFTER = `${NAV_MENU}.${SHIPPING}.${AFTER}`;
-
-export const NAV_MENU_PAYMENT_BEFORE = `${NAV_MENU}.${PAYMENT}.${BEFORE}`;
-export const NAV_MENU_PAYMENT = `${NAV_MENU}.${PAYMENT}`;
-export const NAV_MENU_PAYMENT_AFTER = `${NAV_MENU}.${PAYMENT}.${AFTER}`;
-
 export const NAV_MENU_TERMS_BEFORE = `${NAV_MENU}.${TERMS}.${BEFORE}`;
 export const NAV_MENU_TERMS = `${NAV_MENU}.${TERMS}`;
 export const NAV_MENU_TERMS_AFTER = `${NAV_MENU}.${TERMS}.${AFTER}`;
@@ -62,10 +51,6 @@ export const NAV_MENU_TERMS_AFTER = `${NAV_MENU}.${TERMS}.${AFTER}`;
 export const NAV_MENU_PRIVACY_BEFORE = `${NAV_MENU}.${PRIVACY}.${BEFORE}`;
 export const NAV_MENU_PRIVACY = `${NAV_MENU}.${PRIVACY}`;
 export const NAV_MENU_PRIVACY_AFTER = `${NAV_MENU}.${PRIVACY}.${AFTER}`;
-
-export const NAV_MENU_RETURN_POLICY_BEFORE = `${NAV_MENU}.${RETURN_POLICY}.${BEFORE}`;
-export const NAV_MENU_RETURN_POLICY = `${NAV_MENU}.${RETURN_POLICY}`;
-export const NAV_MENU_RETURN_POLICY_AFTER = `${NAV_MENU}.${RETURN_POLICY}.${AFTER}`;
 
 export const NAV_MENU_IMPRINT_BEFORE = `${NAV_MENU}.${IMPRINT}.${BEFORE}`;
 export const NAV_MENU_IMPRINT = `${NAV_MENU}.${IMPRINT}`;
