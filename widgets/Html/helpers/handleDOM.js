@@ -140,7 +140,7 @@ export const handleYouTube = (container) => {
   const youtubeIframes = container.querySelectorAll('iframe[src*="youtube.com"]');
 
   youtubeIframes.forEach((node, index) => {
-    let { src } = youtubeIframes[index];
+    let { src } = node;
 
     if (!src) {
       return;
