@@ -183,24 +183,22 @@ class NavDrawer extends Component {
         {/* Favorites */}
         <Portal name={favoritesPortals.NAV_MENU_FAVORITES_BEFORE} props={props} />
         {appConfig.hasFavorites && (
-          <Fragment>
-            <Portal
-              name={favoritesPortals.NAV_MENU_FAVORITES}
-              props={{
-                ...props,
-                withIndicator: this.props.highlightFavorites,
-              }}
+          <Portal
+            name={favoritesPortals.NAV_MENU_FAVORITES}
+            props={{
+              ...props,
+              withIndicator: this.props.highlightFavorites,
+            }}
+          >
+            <Item
+              href={FAVORITES_PATH}
+              icon={HeartIcon}
+              close={this.handleClose}
+              withIndicator={this.props.highlightFavorites}
             >
-              <Item
-                href={FAVORITES_PATH}
-                icon={HeartIcon}
-                close={this.handleClose}
-                withIndicator={this.props.highlightFavorites}
-              >
-                <I18n.Text string="navigation.favorites" />
-              </Item>
-            </Portal>
-          </Fragment>
+              <I18n.Text string="navigation.favorites" />
+            </Item>
+          </Portal>
         )}
         <Portal name={favoritesPortals.NAV_MENU_FAVORITES_AFTER} props={props} />
 
@@ -282,13 +280,11 @@ class NavDrawer extends Component {
         {/* Return Policy */}
         <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
         {showReturnPolicy && (
-          <Fragment>
-            <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
-              <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
-                <I18n.Text string="navigation.return_policy" />
-              </Item>
-            </Portal>
-          </Fragment>
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
+            <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
+              <I18n.Text string="navigation.return_policy" />
+            </Item>
+          </Portal>
         )}
         <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
 
@@ -304,13 +300,7 @@ class NavDrawer extends Component {
         {user && <Divider close={this.handleClose} />}
         {user && (
           <Fragment>
-            <Portal
-              name={commonPortals.NAV_MENU_LOGOUT_BEFORE}
-              props={{
-                ...props,
-                handleLogout: logout,
-              }}
-            />
+            <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
             <Portal
               name={commonPortals.NAV_MENU_LOGOUT}
               props={{
@@ -322,13 +312,7 @@ class NavDrawer extends Component {
                 <I18n.Text string="navigation.logout" />
               </Item>
             </Portal>
-            <Portal
-              name={commonPortals.NAV_MENU_LOGOUT_AFTER}
-              props={{
-                ...props,
-                handleLogout: logout,
-              }}
-            />
+            <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
           </Fragment>
         )}
 
