@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> renders with children 1`] = `
+<ul
+  className="css-gkw1j5 "
+>
+  <ListItem
+    className={null}
+    isSelected={false}
+    key="0"
+  />
+  <ListItem
+    className={null}
+    isSelected={false}
+    key="1"
+  />
+  <ListItem
+    className={null}
+    isSelected={false}
+    key="2"
+  />
+</ul>
+`;
+
+exports[`<List /> renders without children 1`] = `
+<ul
+  className="css-gkw1j5 "
+/>
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Checkbox /> should render the checkbox with the label after the icon 1`] = `
+<div
+  onTouchTap={[Function]}
+>
+  <Unchecked />
+  <span>
+    Test Label Deluxe
+  </span>
+</div>
+`;
+
+exports[`<Checkbox /> should render the checkbox with the label before the icon 1`] = `
+<div
+  onTouchTap={[Function]}
+>
+  <span>
+    Test Label Deluxe
+  </span>
+  <Unchecked />
+</div>
+`;
+
+exports[`<Checkbox /> should render the unchecked icon if "checked" is false 1`] = `
+<div
+  onTouchTap={[Function]}
+>
+  Test Label Deluxe
+  <Unchecked />
+</div>
+`;
+
+exports[`<Checkbox /> should render the unchecked icon if "checked" is false 2`] = `
+<div
+  onTouchTap={[Function]}
+>
+  Test Label Deluxe
+  <Checked />
+</div>
+`;

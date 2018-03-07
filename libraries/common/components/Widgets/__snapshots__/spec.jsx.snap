@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Widgets /> should not wrap a widget which is not a grid and has no height 1`] = `
+<Widgets
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
+  widgets={
+    Array [
+      Object {
+        "col": 0,
+        "row": 0,
+        "settings": Object {
+          "id": 83535,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        },
+        "type": "@shopgate/commerce-widgets/image",
+        "width": 12,
+      },
+    ]
+  }
+>
+  <div>
+    <Image
+      col={0}
+      key="w0"
+      row={0}
+      settings={
+        Object {
+          "id": 83535,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        }
+      }
+      type="@shopgate/commerce-widgets/image"
+      width={12}
+    >
+      <div />
+    </Image>
+  </div>
+</Widgets>
+`;
+
+exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
+<Widgets
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
+  widgets={
+    Array [
+      Object {
+        "settings": Object {
+          "widgets": Array [
+            Object {
+              "col": 0,
+              "height": 5,
+              "row": 0,
+              "settings": Object {
+                "alt": "",
+                "id": "84961",
+                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                "link": "/category/",
+              },
+              "type": "@shopgate/commerce-widgets/image",
+              "width": 12,
+            },
+          ],
+        },
+        "type": "@shopgate/commerce-widgets/widget-grid",
+      },
+    ]
+  }
+>
+  <div>
+    <WidgetGrid
+      components={
+        Object {
+          "@shopgate/commerce-widgets/image": [Function],
+        }
+      }
+      config={
+        Array [
+          Object {
+            "col": 0,
+            "height": 5,
+            "row": 0,
+            "settings": Object {
+              "alt": "",
+              "id": "84961",
+              "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+              "link": "/category/",
+            },
+            "type": "@shopgate/commerce-widgets/image",
+            "width": 12,
+          },
+        ]
+      }
+      key="w0"
+    >
+      <div
+        className="css-13azwyo"
+        style={
+          Object {
+            "height": "425px",
+          }
+        }
+      >
+        <Widget
+          cellSize={85}
+          component={[Function]}
+          config={
+            Object {
+              "col": 0,
+              "height": 5,
+              "row": 0,
+              "settings": Object {
+                "alt": "",
+                "id": "84961",
+                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                "link": "/category/",
+              },
+              "type": "@shopgate/commerce-widgets/image",
+              "width": 12,
+            }
+          }
+          key="w0"
+        >
+          <GridItem
+            className="css-147ej5f css-63oe3q  "
+            component="div"
+            grow={0}
+            shrink={1}
+          >
+            <div
+              className="css-147ej5f css-63oe3q  "
+            >
+              <div
+                className="css-4hpmhj"
+              >
+                <Image
+                  ratio={
+                    Array [
+                      12,
+                      5,
+                    ]
+                  }
+                  settings={
+                    Object {
+                      "alt": "",
+                      "id": "84961",
+                      "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                      "link": "/category/",
+                    }
+                  }
+                >
+                  <div />
+                </Image>
+              </div>
+            </div>
+          </GridItem>
+        </Widget>
+      </div>
+    </WidgetGrid>
+  </div>
+</Widgets>
+`;

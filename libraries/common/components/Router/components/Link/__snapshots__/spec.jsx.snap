@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> should construct parsed-link and open it when clicked 1`] = `
+<Link
+  className=""
+  href="/category/123"
+>
+  <div
+    aria-hidden={true}
+    className="css-c6ki83 "
+    onClick={[Function]}
+    role="link"
+  >
+    <span>
+      Test
+    </span>
+  </div>
+</Link>
+`;
+
+exports[`<Link /> should render inner content of the link 1`] = `
+<div
+  aria-hidden={true}
+  className="css-c6ki83 "
+  onClick={[Function]}
+  role="link"
+>
+  <span>
+    Test
+  </span>
+</div>
+`;
