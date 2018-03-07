@@ -81,11 +81,11 @@ class More extends Component {
           <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
 
           {/* TERMS */}
-          <Portal name={portals.NAV_MENU_TERTMS_BEFORE} props={props} />
-          <Portal name={portals.NAV_MENU_TERTMS} props={props}>
+          <Portal name={portals.NAV_MENU_TERMS_BEFORE} props={props} />
+          <Portal name={portals.NAV_MENU_TERMS} props={props}>
             <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
           </Portal>
-          <Portal name={portals.NAV_MENU_TERTMS_AFTER} props={props} />
+          <Portal name={portals.NAV_MENU_TERMS_AFTER} props={props} />
 
           {/* PRIVACY POLICY */}
           <Portal name={portals.NAV_MENU_PRIVACY_BEFORE} props={props} />
