@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import BrowseIcon from 'Components/icons/BrowseIcon';
+import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
 
@@ -43,15 +44,21 @@ class TabBarBrowseAction extends Component {
    */
   render() {
     return (
-      <TabBarAction
-        {...this.props}
-        icon={(
-          <Portal name="tabbar.browse-icon">
-            <BrowseIcon className={styles} />
-          </Portal>
-        )}
-        onClick={this.handleClick}
-      />
+      <Fragment>
+        <Portal name={portals.TAB_BAR_BROWSE_BEFORE} props={this.props} />
+        <Portal name={portals.TAB_BAR_BROWSE} props={this.props}>
+          <TabBarAction
+            {...this.props}
+            icon={(
+              <Portal name={portals.TAB_BAR_BROWSE_ICON}>
+                <BrowseIcon className={styles} />
+              </Portal>
+            )}
+            onClick={this.handleClick}
+          />
+        </Portal>
+        <Portal name={portals.TAB_BAR_BROWSE_AFTER} props={this.props} />
+      </Fragment>
     );
   }
 }

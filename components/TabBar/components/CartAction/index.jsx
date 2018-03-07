@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import CartIcon from 'Components/icons/CartIcon';
+import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import CartItemBadge from './components/CartItemBadge';
 import styles from './style';
@@ -44,17 +45,23 @@ class TabBarCartAction extends Component {
    */
   render() {
     return (
-      <TabBarAction
-        {...this.props}
-        icon={(
-          <Portal name="tabbar.cart-icon">
-            <CartIcon className={styles} />
-          </Portal>
-        )}
-        onClick={this.handleClick}
-      >
-        <CartItemBadge />
-      </TabBarAction>
+      <Fragment>
+        <Portal name={portals.TAB_BAR_CART_BEFORE} props={this.props} />
+        <Portal name={portals.TAB_BAR_CART} props={this.props}>
+          <TabBarAction
+            {...this.props}
+            icon={(
+              <Portal name={portals.TAB_BAR_CART_ICON}>
+                <CartIcon className={styles} />
+              </Portal>
+            )}
+            onClick={this.handleClick}
+          >
+            <CartItemBadge />
+          </TabBarAction>
+        </Portal>
+        <Portal name={portals.TAB_BAR_CART_AFTER} props={this.props} />
+      </Fragment>
     );
   }
 }
