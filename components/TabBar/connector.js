@@ -25,7 +25,5 @@ const mapStateToProps = state => ({
   visibleTabs: getVisibleTabs(),
 });
 
-export default Component => (
-  connect(mapStateToProps)(Component)
-);
+export default connect(mapStateToProps);
 
