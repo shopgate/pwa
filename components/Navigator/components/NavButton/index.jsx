@@ -51,7 +51,6 @@ class NavButton extends Component {
     filterAttributeOpen: PropTypes.bool.isRequired,
     filterOpen: PropTypes.bool.isRequired,
     loginOpen: PropTypes.bool.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     path: PropTypes.string.isRequired,
     goBackHistory: PropTypes.func,
     showIconShadow: PropTypes.bool,
@@ -98,7 +97,8 @@ class NavButton extends Component {
       nextProps.showIconShadow !== this.props.showIconShadow ||
       nextProps.filterOpen !== this.props.filterOpen ||
       nextProps.filterAttributeOpen !== this.props.filterAttributeOpen ||
-      nextProps.loginOpen !== this.props.loginOpen
+      nextProps.loginOpen !== this.props.loginOpen ||
+      nextProps.path !== this.props.path
     );
   }
 
@@ -119,6 +119,10 @@ class NavButton extends Component {
    * @return {JSX} The icon.
    */
   renderIcon() {
+    if (this.props.path === INDEX_PATH) {
+      return null;
+    }
+
     if (this.props.loginOpen || (this.props.filterOpen && !this.props.filterAttributeOpen)) {
       return <CrossIcon />;
     }
