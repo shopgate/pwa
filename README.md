@@ -1,0 +1,1 @@
+# Shopgate Connect PWA

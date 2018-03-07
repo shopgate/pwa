@@ -1,0 +1,6 @@
+[submodule "themes/gmd"]
+	path = themes/gmd
+	url = https://github.com/shopgate/theme-gmd.git
+[submodule "themes/ios11"]
+	path = themes/ios11
+	url = https://github.com/shopgate/theme-ios11.git

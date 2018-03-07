@@ -1,0 +1,16 @@
+{
+	"name": "@shopgate/pwa",
+	"private": true,
+	"scripts": {
+		"setup": "sgconnect init && lerna bootstrap"
+	},
+	"workspaces": [
+		"extensions/*",
+		"libraries/*",
+		"themes/*",
+		"utils/*"
+	],
+	"devDependencies": {
+		"lerna": "^2.9.0"
+	}
+}
