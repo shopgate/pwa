@@ -12,8 +12,6 @@ import { appDidStart$, appWillStart$ } from '../streams/app';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import { isAndroid } from '../selectors/client';
 import {
-  hideLegacyNavigation,
-  showLegacyNavigation,
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
@@ -46,10 +44,6 @@ export default function app(subscribe) {
 
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
-    if (isAndroid(getState())) {
-      event.addCallback('viewWillAppear', hideLegacyNavigation);
-      event.addCallback('viewWillDisappear', showLegacyNavigation);
-    }
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
      * This event is triggered form the desktop shop in the inAppBrowser.
