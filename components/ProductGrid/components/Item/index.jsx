@@ -12,7 +12,7 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ProductImage from 'Components/ProductImage';
 import DiscountBadge from 'Components/DiscountBadge';
@@ -51,7 +51,7 @@ const Item = ({ product, display, isFavorite }) => (
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
           <DiscountBadge text={`-${product.price.discount}%`} />
         </Portal>
-        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
 
@@ -76,7 +76,7 @@ const Item = ({ product, display, isFavorite }) => (
                 <Ellipsis>{product.name}</Ellipsis>
               </div>
             </Portal>
-            <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_NAME_AFTER} props={{ productId: product.id }} />
           </Fragment>
         )}
 

@@ -5,43 +5,58 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import {FAVORITES_PATH} from '@shopgate/pwa-common-commerce/favorites/constants';
 import FavoritesIcon from 'Components/icons/HeartIcon';
-import FavoritesIconBadge from './components/FavoritesIconBadge';
+import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disable-line import/no-named-as-default
 import TabBarAction from '../TabBarAction';
 import styles from './style';
 
 /**
- * Opens the link on click on the action.
+ * The tab bar favorites action.
  */
-const handleClick = () => {
-  const link = new ParsedLink(FAVORITES_PATH);
-  link.open();
-};
+class TabBarFavoritesAction extends Component {
+  static propTypes = {
+    path: PropTypes.string.isRequired,
+    ...TabBarAction.propTypes,
+  };
 
-/**
- * Renders the tab bar more action component.
- * @param {Object} props The component properties.
- * @returns {JSX}
- */
-const TabBarFavoritesAction = props => (
-  <TabBarAction
-    {...props}
-    icon={(
-      <Portal name="tabbar.heart-icon">
-        <FavoritesIcon className={styles} />
-      </Portal>
-    )}
-    onClick={handleClick}
-  >
-    <FavoritesIconBadge />
-  </TabBarAction>
-);
+  static defaultProps = TabBarAction.defaultProps;
 
-TabBarFavoritesAction.propTypes = TabBarAction.propTypes;
-TabBarFavoritesAction.defaultProps = TabBarAction.defaultProps;
+  /**
+   * Handles the click action.
+   */
+  handleClick = () => {
+    if (this.props.path === FAVORITES_PATH) {
+      return;
+    }
+
+    const link = new ParsedLink(FAVORITES_PATH);
+    link.open();
+  }
+
+  /**
+   * Renders the component.
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <TabBarAction
+        {...this.props}
+        icon={(
+          <Portal name="tabbar.heart-icon">
+            <FavoritesIcon className={styles} />
+          </Portal>
+        )}
+        onClick={this.handleClick}
+      >
+        <FavoritesIconBadge />
+      </TabBarAction>
+    );
+  }
+}
 
 export default TabBarFavoritesAction;
