@@ -7,7 +7,6 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from 'Components/RippleButton';
 import CheckoutButton from './index';
 
@@ -17,7 +16,6 @@ jest.mock('./connector', () => (obj) => {
 
   newObj.defaultProps = {
     ...newObj.defaultProps,
-    pushHistory: () => {},
     isActive: false,
   };
 
@@ -32,58 +30,13 @@ describe('<CheckoutButton /', () => {
 
   describe('Checkout is possible', () => {
     beforeEach(() => {
-      wrapper = shallow(
-        <CheckoutButton />
-      );
-
+      wrapper = shallow(<CheckoutButton />);
       childButton = wrapper.find(RippleButton);
     });
 
     it('should render without any props', () => {
       expect(wrapper).toMatchSnapshot();
       expect(childButton.props().disabled).toBe(true);
-    });
-
-    it('should trigger a pushHistory on click', () => {
-      const pushHistorySpy = jest.fn();
-
-      wrapper.setProps({
-        pushHistory: pushHistorySpy,
-      });
-
-      childButton.simulate('click');
-
-      jest.runOnlyPendingTimers();
-
-      // Check if the command was called
-      expect(pushHistorySpy).toHaveBeenCalledTimes(1);
-      expect(pushHistorySpy).toBeCalledWith(CHECKOUT_PATH);
-
-      // Check if the execution of  click handler was delayed
-      expect(setTimeout.mock.calls.length).toBe(1);
-      expect(setTimeout.mock.calls[0][1]).toBe(CheckoutButton.clickDelay);
-    });
-  });
-
-  describe('Checkout is not possible', () => {
-    beforeEach(() => {
-      wrapper = shallow(
-        <CheckoutButton checkoutPossible={false} />
-      );
-
-      childButton = wrapper.find(RippleButton);
-    });
-
-    it('should not trigger the pushHistory on click', () => {
-      const pushHistorySpy = jest.fn();
-
-      wrapper.setProps({
-        pushHistory: pushHistorySpy,
-      });
-
-      childButton.simulate('click');
-
-      expect(pushHistorySpy).toHaveBeenCalledTimes(0);
     });
   });
 });

@@ -6,13 +6,13 @@
  */
 
 import React from 'react';
-import { logo } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import styles from './style';
 
 /**
  * The navigator logo component.
  * @return {JSX}
  */
-const Logo = () => <img className={styles} src={logo} alt="Logo" />;
+const Logo = () => <img className={styles} src={appConfig.logo} alt="Logo" />;
 
 export default Logo;

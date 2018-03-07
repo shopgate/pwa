@@ -8,5 +8,6 @@ exports[`<Logo /> should render an image 1`] = `
       "data-css-gva1fu": "",
     }
   }
+  src="https://example.com/logo"
 />
 `;

@@ -16,9 +16,10 @@ import styles from './style';
  * Renders the action for a given tab configuration.
  * @param {Object} tab The tab configuration.
  * @param {boolean} isHighlighted Whether the tab is currently highlighted.
+ * @param {string} path The current history path.
  * @returns {JSX}
  */
-const createTabAction = (tab, isHighlighted) => {
+const createTabAction = (tab, isHighlighted, path) => {
   const Action = getTabActionComponentForType(tab.type);
 
   return (
@@ -26,6 +27,7 @@ const createTabAction = (tab, isHighlighted) => {
       key={tab.type}
       {...tab}
       isHighlighted={isHighlighted}
+      path={path}
     />
   );
 };
@@ -38,21 +40,23 @@ const createTabAction = (tab, isHighlighted) => {
  * @param {string|null} props.activeTab The currently active tab name.
  * @returns {JSX}
  */
-const TabBar = ({ isVisible, visibleTabs, activeTab }) => (
-  isVisible ?
-    <Grid className={styles}>
-      {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type))}
-    </Grid>
-    : null
-);
+const TabBar = ({
+  isVisible,
+  visibleTabs,
+  activeTab,
+  path,
+}) => (isVisible ? (
+  <Grid className={styles}>
+    {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+  </Grid>
+) : null);
 
 TabBar.propTypes = {
-  visibleTabs: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  path: PropTypes.string.isRequired,
+  visibleTabs: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  })).isRequired,
   activeTab: PropTypes.string,
   isVisible: PropTypes.bool,
 };

@@ -18,18 +18,17 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductGrid = ({ flags, infiniteLoad, handleGetProducts, products, totalProductCount }) => {
+const ProductGrid = ({
+  flags,
+  infiniteLoad,
+  handleGetProducts,
+  products,
+  totalProductCount,
+}) => {
   if (!infiniteLoad) {
     return (
       <Layout>
-        {products.map(product =>
-          <Iterator
-            display={flags}
-            id={product.id}
-            key={product.id}
-            {...product}
-          />
-        )}
+        {products.map(product => <Iterator display={flags} key={product.id} {...product} />)}
       </Layout>
     );
   }
@@ -58,7 +57,7 @@ ProductGrid.propTypes = {
 
 ProductGrid.defaultProps = {
   flags: null,
-  handleGetProducts: () => {},
+  handleGetProducts: () => { },
   infiniteLoad: true,
   products: null,
   totalProductCount: null,

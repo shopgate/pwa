@@ -8,12 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import {
-  CATEGORY_LIST_BEFORE,
-  CATEGORY_LIST_AFTER,
-  PRODUCT_LIST_BEFORE,
-  PRODUCT_LIST_AFTER,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import CategoryList from 'Components/CategoryList';
 import FilterBar from 'Components/FilterBar';
 import Headline from 'Components/Headline';
@@ -96,12 +91,21 @@ class Category extends Component {
       <View title={this.title}>
         {this.props.isFilterBarShown && <FilterBar />}
         {this.props.hasHeadline && this.renderHeadline()}
-        <Portal name={CATEGORY_LIST_BEFORE} />
-        <CategoryList />
-        <Portal name={CATEGORY_LIST_AFTER} />
-        <Portal name={PRODUCT_LIST_BEFORE} />
-        {this.props.hasProducts && <Products />}
-        <Portal name={PRODUCT_LIST_AFTER} />
+
+        {/* CATEGORY LIST */}
+        <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: this.id }} />
+        <Portal name={portals.CATEGORY_LIST} props={{ categoryId: this.id }}>
+          <CategoryList />
+        </Portal>
+        <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: this.id }} />
+
+        {/* PRODUCT LIST */}
+        <Portal name={portals.PRODUCT_LIST_BEFORE} props={{ categoryId: this.id }} />
+        <Portal name={portals.PRODUCT_LIST} props={{ categoryId: this.id }}>
+          {this.props.hasProducts && <Products />}
+        </Portal>
+        <Portal name={portals.PRODUCT_LIST_AFTER} props={{ categoryId: this.id }} />
+
         <Empty
           headlineText="category.no_result.heading"
           bodyText="category.no_result.body"

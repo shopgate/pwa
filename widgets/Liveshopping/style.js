@@ -37,26 +37,17 @@ const imagePane = css({
 const infoPane = css({
   ...pane,
   padding: 16,
-}).toString();
-
-const priceWrapper = css({
-  position: 'absolute',
-  left: 15,
-  bottom: 15,
-  right: 15,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
 }).toString();
 
 const priceGrid = css({
   alignItems: 'flex-end',
-}).toString();
-
-const priceStrikedItem = css({
-  flexGrow: 1,
-}).toString();
-
-const priceItem = css({
-  flexGrow: 1,
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
   textAlign: 'right',
+  marginTop: variables.gap.small,
 }).toString();
 
 const priceBase = css({
@@ -72,6 +63,7 @@ const price = css({
   ...priceBase,
   color: colors.primary,
   fontSize: '1.25rem',
+  lineHeight: 1,
 }).toString();
 
 const cardTitle = css({
@@ -87,13 +79,13 @@ const timer = css({
   fontWeight: 500,
 }).toString();
 
-const indicator = css({
-  position: 'relative',
-  left: 0,
-  bottom: 0,
-  transform: 'translateX(0)',
+const bullets = css({
   textAlign: 'center',
 }).toString();
+
+const indicator = {
+  bullets,
+};
 
 export default {
   card,
@@ -101,10 +93,7 @@ export default {
   imagePane,
   infoPane,
   indicator,
-  priceWrapper,
   priceGrid,
-  priceStrikedItem,
-  priceItem,
   priceStriked,
   price,
   cardsWrapper,

@@ -5,8 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
 import NoResults from 'Components/NoResults';
 import connect from './connector';
 
@@ -21,7 +23,13 @@ const Empty = ({ isVisible, ...props }) => {
   }
 
   return (
-    <NoResults {...props} />
+    <Fragment>
+      <Portal name={portals.NO_RESULTS_CONTENT_BEFORE} />
+      <Portal name={portals.NO_RESULTS_CONTENT}>
+        <NoResults {...props} />
+      </Portal>
+      <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />
+    </Fragment>
   );
 };
 
