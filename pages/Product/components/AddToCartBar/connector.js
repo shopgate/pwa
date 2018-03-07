@@ -4,9 +4,12 @@
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
+import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
+import {
+  isProductPageLoading,
+  isProductPageOrderable,
+} from '@shopgate/pwa-common-commerce/product/selectors/page';
 import { connect } from 'react-redux';
-import { handleAddToCart } from './actions';
 import { selectActionCount } from './selectors';
 
 /**
@@ -15,6 +18,8 @@ import { selectActionCount } from './selectors';
  * @return {[type]} [description]
  */
 const mapStateToProps = state => ({
+  isLoading: isProductPageLoading(state),
+  isOrderable: isProductPageOrderable(state),
   cartProductCount: selectActionCount(state),
 });
 
@@ -24,7 +29,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleAddToCart: () => dispatch(handleAddToCart()),
+  handleAddToCart: () => dispatch(addCurrentProductToCart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

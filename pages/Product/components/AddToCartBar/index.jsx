@@ -18,8 +18,17 @@ import styles from './style';
  */
 class AddToCartBar extends Component {
   static propTypes = {
-    cartProductCount: PropTypes.number.isRequired,
-    handleAddToCart: PropTypes.func.isRequired,
+    cartProductCount: PropTypes.number,
+    handleAddToCart: PropTypes.func,
+    isLoading: PropTypes.bool,
+    isOrderable: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    cartProductCount: null,
+    handleAddToCart: () => {},
+    isLoading: false,
+    isOrderable: true,
   };
 
   /**
@@ -38,11 +47,9 @@ class AddToCartBar extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.cartProductCount === 0) {
-      this.setState({
-        itemCount: 0,
-      });
-    }
+    this.setState({
+      itemCount: nextProps.cartProductCount,
+    });
   }
 
   /**
@@ -52,11 +59,20 @@ class AddToCartBar extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
+    console.warn(nextProps, this.props);
     return (this.state.itemCount !== nextState.itemCount);
   }
 
   handleAddToCart = () => {
+    if (this.props.isLoading) {
+      return;
+    }
+
     this.props.handleAddToCart();
+
+    if (!this.props.isOrderable) {
+      return;
+    }
 
     this.setState({
       itemCount: this.state.itemCount + 1,

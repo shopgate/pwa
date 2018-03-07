@@ -6,8 +6,15 @@
  */
 
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { ERROR_ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
+import { productsUpdated$, productsAdded$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { variantDidChange$ } from '@shopgate/pwa-common-commerce/product/streams';
 import { routeDidEnter, routeDidLeave } from '@shopgate/pwa-common/streams/history';
-import { resetActionCount } from './actions';
+import {
+  resetActionCount,
+  decrementActionCount,
+  incrementActionCount,
+} from './actions';
 
 /**
  * AddToCartBar subscriptions.
@@ -16,6 +23,10 @@ import { resetActionCount } from './actions';
 export default function addToCartBar(subscribe) {
   const itemRouteDidEnter$ = routeDidEnter(ITEM_PATH);
   const itemRouteDidLeave$ = routeDidLeave(ITEM_PATH);
+
+  const productNotAdded = productsUpdated$.filter(({ action }) => (
+    action.type === ERROR_ADD_PRODUCTS_TO_CART
+  ));
 
   /**
    * Gets triggered when the item route was entered.
@@ -29,5 +40,17 @@ export default function addToCartBar(subscribe) {
    */
   subscribe(itemRouteDidLeave$, ({ dispatch }) => {
     dispatch(resetActionCount());
+  });
+
+  subscribe(variantDidChange$, ({ dispatch }) => {
+    dispatch(resetActionCount());
+  });
+
+  subscribe(productsAdded$, ({ dispatch }) => {
+    dispatch(incrementActionCount());
+  });
+
+  subscribe(productNotAdded, ({ dispatch }) => {
+    dispatch(decrementActionCount());
   });
 }

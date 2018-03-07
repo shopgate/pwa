@@ -21,10 +21,17 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.INCREMENT_ACTION_COUNT:
       return {
+        ...state,
         added: state.added + 1,
+      };
+    case actionTypes.DECREMENT_ACTION_COUNT:
+      return {
+        ...state,
+        added: state.added ? state.added - 1 : 0,
       };
     case actionTypes.RESET_ACTION_COUNT:
       return {
+        ...state,
         added: 0,
       };
     default:
