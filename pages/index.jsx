@@ -48,7 +48,6 @@ import Cart from './Cart';
 import Favorites from './Favorites';
 import Search from './Search';
 import Login from './Login';
-import Checkout from './Checkout';
 import Orders from './Orders';
 import Reviews from './Reviews';
 import WriteReview from './WriteReview';
@@ -86,7 +85,7 @@ const Pages = () => (
       <Portal name={APP_ROUTES} props={{ View }} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
-        <Route path={`${CHECKOUT_PATH}`} component={Checkout} />
+        <Route path={`${CHECKOUT_PATH}`} />
         <Route path={`${ORDERS_PATH}`} component={Orders} />
         <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
       </AuthRoutes>
