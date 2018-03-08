@@ -90,7 +90,7 @@ class Portal extends Component {
   render() {
     const { children } = this.props;
     const { hasError } = this.state;
-    const components = this.getComponents(props.name, props.props);
+    const components = this.getComponents(this.props.name, this.props.props);
     const hasComponents = components.length > 0;
 
     /**
