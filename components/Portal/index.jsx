@@ -110,10 +110,10 @@ class Portal extends Component {
        * and we render the last match only.
        */
       if (children) {
-        return this.components[this.components.length - 1];
+        return components[components.length - 1];
       }
 
-      return this.components;
+      return components;
     }
 
     return children;
