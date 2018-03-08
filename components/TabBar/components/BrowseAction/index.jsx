@@ -46,7 +46,13 @@ class TabBarBrowseAction extends Component {
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_BROWSE_BEFORE} props={this.props} />
-        <Portal name={portals.TAB_BAR_BROWSE} props={this.props}>
+        <Portal
+          name={portals.TAB_BAR_BROWSE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
           <TabBarAction
             {...this.props}
             icon={(

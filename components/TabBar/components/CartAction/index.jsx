@@ -47,7 +47,13 @@ class TabBarCartAction extends Component {
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_CART_BEFORE} props={this.props} />
-        <Portal name={portals.TAB_BAR_CART} props={this.props}>
+        <Portal
+          name={portals.TAB_BAR_CART}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
           <TabBarAction
             {...this.props}
             icon={(

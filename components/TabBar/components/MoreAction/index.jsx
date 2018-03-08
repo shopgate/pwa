@@ -46,7 +46,13 @@ class TabBarMoreAction extends Component {
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_MORE_BEFORE} props={this.props} />
-        <Portal name={portals.TAB_BAR_MORE} props={this.props}>
+        <Portal
+          name={portals.TAB_BAR_MORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
           <TabBarAction
             {...this.props}
             icon={(
