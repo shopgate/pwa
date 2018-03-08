@@ -260,13 +260,13 @@ class NavDrawer extends Component {
         <Divider close={this.handleClose} />
 
         {/* Terms */}
-        <Portal name={commonPortals.NAV_MENU_TERTMS_BEFORE} props={props} />
-        <Portal name={commonPortals.NAV_MENU_TERTMS} props={props}>
+        <Portal name={commonPortals.NAV_MENU_TERMS_BEFORE} props={props} />
+        <Portal name={commonPortals.NAV_MENU_TERMS} props={props}>
           <Item href={`${PAGE_PATH}/terms`} icon={DescriptionIcon} close={this.handleClose}>
             <I18n.Text string="navigation.terms" />
           </Item>
         </Portal>
-        <Portal name={commonPortals.NAV_MENU_TERTMS_AFTER} props={props} />
+        <Portal name={commonPortals.NAV_MENU_TERMS_AFTER} props={props} />
 
         {/* Privacy */}
         <Portal name={commonPortals.NAV_MENU_PRIVACY_BEFORE} props={props} />
