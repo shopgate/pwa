@@ -1,41 +1,22 @@
 {
   "name": "@shopgate/pwa-webcheckout-shopify",
   "version": "1.2.1",
-  "description": "Shopgate's web checkout business logic for Shopify.",
+  "description": "Webcheckout Shopify library for the Shopgate Connect PWA.",
   "main": "index.jsx",
-  "repository": "shopgate/pwa-webcheckout-shopify",
-  "bugs": "https://github.com/shopgate/pwa-webcheckout-shopify/issues",
-  "homepage": "https://github.com/shopgate/pwa-webcheckout-shopify",
   "license": "Apache-2.0",
   "keywords": [
     "pwa",
-    "mobile",
-    "app",
-    "node",
-    "shopify",
+    "webcheckout",
     "checkout",
-    "shopgate"
+    "shopify",
+    "connect-library",
+    "shopgate",
+    "connect"
   ],
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
-    "precommit": "lint-staged",
     "test": "jest",
-    "coverage": "jest --coverage",
-    "prebuild": "rimraf ./dist",
-    "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp ./*.json ./dist/ && cp ./*.md ./dist/",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && cd dist && npm publish --access public"
+    "cover": "jest --coverage"
   },
-  "lint-staged": {
-    "concurrent": false,
-    "linters": {
-      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js ."
-    }
-  },
-  "pre-commit": [
-    "precommit"
-  ],
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.4",
     "@shopgate/pwa-common": "^3.2.0",
@@ -50,16 +31,12 @@
     "babel-preset-env": "^1.6.1",
     "babel-runtime": "^6.26.0",
     "coveralls": "^3.0.0",
-    "lint-staged": "^4.3.0",
-    "pre-commit": "^1.2.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
     "rxjs": "^5.4.3"
   },
   "peerDependencies": {
-    "@shopgate/pwa-common": "2.2.x",
-    "@shopgate/pwa-core": "1.2.x",
     "rxjs": "5.x"
   }
 }

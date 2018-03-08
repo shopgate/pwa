@@ -1,32 +1,20 @@
 {
   "name": "@shopgate/pwa-common",
   "version": "3.2.0",
-  "description": "Shopgate's common library for PWAs",
-  "repository": "shopgate/pwa-common",
-  "bugs": "https://github.com/shopgate/pwa-common/issues",
-  "homepage": "https://github.com/shopgate/pwa-common",
+  "description": "Common library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
+  "keywords": [
+    "pwa",
+    "common",
+    "connect-library",
+    "shopgate",
+    "connect"
+  ],
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
-    "precommit": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
-    "coverage": "jest --coverage",
-    "prebuild": "rimraf ./dist",
-    "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp ./*.json ./dist/ && cp ./*.md ./dist/",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && cd dist && npm publish --access public"
+    "cover": "jest --coverage"
   },
-  "lint-staged": {
-    "concurrent": false,
-    "linters": {
-      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
-    }
-  },
-  "pre-commit": [
-    "precommit"
-  ],
   "dependencies": {
     "classnames": "^2.2.5",
     "crypto-js": "3.1.9-1",
@@ -70,22 +58,17 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "coveralls": "^3.0.0",
-    "lint-staged": "^4.3.0",
     "lodash": "^4.17.4",
-    "pre-commit": "^1.2.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-transform-catch-errors": "^1.0.2",
-    "redbox-react": "^1.5.0",
-    "rimraf": "^2.6.2"
+    "redbox-react": "^1.5.0"
   },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x",
     "prop-types": "15.x",
-    "lodash": "4.x",
-    "@shopgate/react-hammerjs": "0.5.x",
-    "@shopgate/pwa-core": "1.2.x"
+    "lodash": "4.x"
   }
 }
