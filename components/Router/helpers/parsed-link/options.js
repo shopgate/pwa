@@ -5,9 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {
-  INDEX_PATH,
-} from '../../../../constants/RoutePaths';
+import { INDEX_PATH } from '../../../../constants/RoutePaths';
 
 /**
  * Parses the protocol of an url
