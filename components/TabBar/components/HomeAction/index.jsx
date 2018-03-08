@@ -46,7 +46,13 @@ class TabBarHomeAction extends Component {
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_HOME_BEFORE} props={this.props} />
-        <Portal name={portals.TAB_BAR_HOME} props={this.props}>
+        <Portal
+          name={portals.TAB_BAR_HOME}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
           <TabBarAction
             {...this.props}
             icon={(

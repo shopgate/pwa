@@ -47,7 +47,13 @@ class TabBarFavoritesAction extends Component {
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_FAVORITES_BEFORE} props={this.props} />
-        <Portal name={portals.TAB_BAR_FAVORITES} props={this.props}>
+        <Portal
+          name={portals.TAB_BAR_FAVORITES}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
           <TabBarAction
             {...this.props}
             icon={(
