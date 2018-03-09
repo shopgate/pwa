@@ -8,6 +8,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import '@shopgate/pwa-common/styles/reset';
+import Loadable from 'react-loadable';
 import 'Styles/fonts';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
@@ -38,21 +39,60 @@ import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
-import Page from './Page';
-import Category from './Category';
-import Filter from './Filter';
-import FilterAttribute from './FilterAttribute';
-import Product from './Product';
-import ProductGallery from './ProductGallery';
-import Cart from './Cart';
-import Favorites from './Favorites';
-import Search from './Search';
-import Login from './Login';
-import Orders from './Orders';
-import Reviews from './Reviews';
-import WriteReview from './WriteReview';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
+
+const Page = Loadable({
+  loader: () => import('./Page'),
+});
+
+const Category = Loadable({
+  loader: () => import('./Category'),
+});
+
+const Filter = Loadable({
+  loader: () => import('./Filter'),
+});
+
+const FilterAttribute = Loadable({
+  loader: () => import('./FilterAttribute'),
+});
+
+const Product = Loadable({
+  loader: () => import('./Product'),
+});
+
+const ProductGallery = Loadable({
+  loader: () => import('./ProductGallery'),
+});
+
+const Reviews = Loadable({
+  loader: () => import('./Reviews'),
+});
+
+const Cart = Loadable({
+  loader: () => import('./Cart'),
+});
+
+const Favorites = Loadable({
+  loader: () => import('./Favorites'),
+});
+
+const Search = Loadable({
+  loader: () => import('./Search'),
+});
+
+const Login = Loadable({
+  loader: () => import('./Login'),
+});
+
+const Orders = Loadable({
+  loader: () => import('./Orders'),
+});
+
+const WriteReview = Loadable({
+  loader: () => import('./WriteReview'),
+});
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
