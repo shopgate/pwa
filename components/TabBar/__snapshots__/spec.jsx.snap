@@ -111,54 +111,49 @@ exports[`<TabBar /> should render when visible 1`] = `
             path="/"
             type="home"
           >
-            <TabBarAction
-              icon={
-                <mockedPortal
-                  name="tabbar.home-icon"
-                >
-                  <Home
-                    className="css-1rqxdrd"
-                  />
-                </mockedPortal>
+            <mockedPortal
+              name="tab-bar.home.before"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": true,
+                  "label": "tab_bar.home",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "home",
+                }
               }
-              isHighlighted={true}
-              label="tab_bar.home"
-              onClick={[Function]}
-              path="/"
-              type="home"
-            >
-              <Button
-                className="css-1kz5xrj css-7rfn3t"
-                disabled={false}
-                onClick={[Function]}
-              >
-                <button
-                  className="css-1kz5xrj css-7rfn3t css-1rn65c0"
-                  data-test-id="Button"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <mockedPortal
-                    name="tabbar.home-icon"
-                  />
-                  <div
-                    className="css-1oe88ku"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="tab_bar.home"
-                    >
-                      <span
-                        className=""
-                      >
-                        tab_bar.home
-                      </span>
-                    </Translate>
-                  </div>
-                </button>
-              </Button>
-            </TabBarAction>
+            />
+            <mockedPortal
+              name="tab-bar.home"
+              props={
+                Object {
+                  "TabBarAction": [Function],
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": true,
+                  "label": "tab_bar.home",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "home",
+                }
+              }
+            />
+            <mockedPortal
+              name="tab-bar.home.after"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": true,
+                  "label": "tab_bar.home",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "home",
+                }
+              }
+            />
           </TabBarHomeAction>
           <TabBarBrowseAction
             icon={null}
@@ -169,54 +164,49 @@ exports[`<TabBar /> should render when visible 1`] = `
             path="/"
             type="browse"
           >
-            <TabBarAction
-              icon={
-                <mockedPortal
-                  name="tabbar.browse-icon"
-                >
-                  <Browse
-                    className="css-1g4dstu"
-                  />
-                </mockedPortal>
+            <mockedPortal
+              name="tab-bar.browse.before"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.browse",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "browse",
+                }
               }
-              isHighlighted={false}
-              label="tab_bar.browse"
-              onClick={[Function]}
-              path="/"
-              type="browse"
-            >
-              <Button
-                className="css-1kz5xrj css-1livkh4"
-                disabled={false}
-                onClick={[Function]}
-              >
-                <button
-                  className="css-1kz5xrj css-1livkh4 css-1rn65c0"
-                  data-test-id="Button"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <mockedPortal
-                    name="tabbar.browse-icon"
-                  />
-                  <div
-                    className="css-1oe88ku"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="tab_bar.browse"
-                    >
-                      <span
-                        className=""
-                      >
-                        tab_bar.browse
-                      </span>
-                    </Translate>
-                  </div>
-                </button>
-              </Button>
-            </TabBarAction>
+            />
+            <mockedPortal
+              name="tab-bar.browse"
+              props={
+                Object {
+                  "TabBarAction": [Function],
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.browse",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "browse",
+                }
+              }
+            />
+            <mockedPortal
+              name="tab-bar.browse.after"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.browse",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "browse",
+                }
+              }
+            />
           </TabBarBrowseAction>
           <TabBarCartAction
             icon={null}
@@ -227,60 +217,49 @@ exports[`<TabBar /> should render when visible 1`] = `
             path="/"
             type="cart"
           >
-            <TabBarAction
-              icon={
-                <mockedPortal
-                  name="tabbar.cart-icon"
-                >
-                  <CartIcon
-                    className="css-betil4"
-                  />
-                </mockedPortal>
+            <mockedPortal
+              name="tab-bar.cart.before"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.cart",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "cart",
+                }
               }
-              isHighlighted={false}
-              label="tab_bar.cart"
-              onClick={[Function]}
-              path="/"
-              type="cart"
-            >
-              <Button
-                className="css-1kz5xrj css-1livkh4"
-                disabled={false}
-                onClick={[Function]}
-              >
-                <button
-                  className="css-1kz5xrj css-1livkh4 css-1rn65c0"
-                  data-test-id="Button"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <mockedPortal
-                    name="tabbar.cart-icon"
-                  />
-                  <div
-                    className="css-1oe88ku"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="tab_bar.cart"
-                    >
-                      <span
-                        className=""
-                      >
-                        tab_bar.cart
-                      </span>
-                    </Translate>
-                  </div>
-                  <Connect(CartItemBadge)>
-                    <CartItemBadge
-                      cartProductCount={0}
-                      dispatch={[Function]}
-                    />
-                  </Connect(CartItemBadge)>
-                </button>
-              </Button>
-            </TabBarAction>
+            />
+            <mockedPortal
+              name="tab-bar.cart"
+              props={
+                Object {
+                  "TabBarAction": [Function],
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.cart",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "cart",
+                }
+              }
+            />
+            <mockedPortal
+              name="tab-bar.cart.after"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.cart",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "cart",
+                }
+              }
+            />
           </TabBarCartAction>
           <TabBarFavoritesAction
             icon={null}
@@ -291,60 +270,49 @@ exports[`<TabBar /> should render when visible 1`] = `
             path="/"
             type="favorites"
           >
-            <TabBarAction
-              icon={
-                <mockedPortal
-                  name="tabbar.heart-icon"
-                >
-                  <Heart
-                    className="css-yrjpmv"
-                  />
-                </mockedPortal>
+            <mockedPortal
+              name="tab-bar.favorites.before"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.favorites",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "favorites",
+                }
               }
-              isHighlighted={false}
-              label="tab_bar.favorites"
-              onClick={[Function]}
-              path="/"
-              type="favorites"
-            >
-              <Button
-                className="css-1kz5xrj css-1livkh4"
-                disabled={false}
-                onClick={[Function]}
-              >
-                <button
-                  className="css-1kz5xrj css-1livkh4 css-1rn65c0"
-                  data-test-id="Button"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <mockedPortal
-                    name="tabbar.heart-icon"
-                  />
-                  <div
-                    className="css-1oe88ku"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="tab_bar.favorites"
-                    >
-                      <span
-                        className=""
-                      >
-                        tab_bar.favorites
-                      </span>
-                    </Translate>
-                  </div>
-                  <Connect(FavoritesIconBadge)>
-                    <FavoritesIconBadge
-                      dispatch={[Function]}
-                      favoritesCount={0}
-                    />
-                  </Connect(FavoritesIconBadge)>
-                </button>
-              </Button>
-            </TabBarAction>
+            />
+            <mockedPortal
+              name="tab-bar.favorites"
+              props={
+                Object {
+                  "TabBarAction": [Function],
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.favorites",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "favorites",
+                }
+              }
+            />
+            <mockedPortal
+              name="tab-bar.favorites.after"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.favorites",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "favorites",
+                }
+              }
+            />
           </TabBarFavoritesAction>
           <TabBarMoreAction
             icon={null}
@@ -355,54 +323,49 @@ exports[`<TabBar /> should render when visible 1`] = `
             path="/"
             type="more"
           >
-            <TabBarAction
-              icon={
-                <mockedPortal
-                  name="tabbar.more-icon"
-                >
-                  <More
-                    className="css-yrjpmv"
-                  />
-                </mockedPortal>
+            <mockedPortal
+              name="tab-bar.more.before"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.more",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "more",
+                }
               }
-              isHighlighted={false}
-              label="tab_bar.more"
-              onClick={[Function]}
-              path="/"
-              type="more"
-            >
-              <Button
-                className="css-1kz5xrj css-1livkh4"
-                disabled={false}
-                onClick={[Function]}
-              >
-                <button
-                  className="css-1kz5xrj css-1livkh4 css-1rn65c0"
-                  data-test-id="Button"
-                  disabled={false}
-                  onClick={[Function]}
-                >
-                  <mockedPortal
-                    name="tabbar.more-icon"
-                  />
-                  <div
-                    className="css-1oe88ku"
-                  >
-                    <Translate
-                      className=""
-                      params={Object {}}
-                      string="tab_bar.more"
-                    >
-                      <span
-                        className=""
-                      >
-                        tab_bar.more
-                      </span>
-                    </Translate>
-                  </div>
-                </button>
-              </Button>
-            </TabBarAction>
+            />
+            <mockedPortal
+              name="tab-bar.more"
+              props={
+                Object {
+                  "TabBarAction": [Function],
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.more",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "more",
+                }
+              }
+            />
+            <mockedPortal
+              name="tab-bar.more.after"
+              props={
+                Object {
+                  "children": null,
+                  "icon": null,
+                  "isHighlighted": false,
+                  "label": "tab_bar.more",
+                  "onClick": null,
+                  "path": "/",
+                  "type": "more",
+                }
+              }
+            />
           </TabBarMoreAction>
         </ul>
       </Grid>
