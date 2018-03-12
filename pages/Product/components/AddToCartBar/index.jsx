@@ -59,7 +59,6 @@ class AddToCartBar extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    console.warn(nextProps, this.props);
     return (this.state.itemCount !== nextState.itemCount);
   }
 

@@ -42,14 +42,27 @@ export default function addToCartBar(subscribe) {
     dispatch(resetActionCount());
   });
 
+  /**
+   * Gets triggered when a variant selection is made.
+   * Resets the add to cart bar.
+   */
   subscribe(variantDidChange$, ({ dispatch }) => {
     dispatch(resetActionCount());
   });
 
+  /**
+   * Gets triggered when an add to cart is requested.
+   * Increases the quantity of added items that will be added to cart.
+   */
   subscribe(productsAdded$, ({ dispatch }) => {
+    console.warn('incr');
     dispatch(incrementActionCount());
   });
 
+  /**
+   * Gets triggered when a product couldn't be added to cart.
+   * Decreases the quantity of added items.
+   */
   subscribe(productNotAdded, ({ dispatch }) => {
     dispatch(decrementActionCount());
   });

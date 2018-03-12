@@ -44,20 +44,6 @@ class AddToCartButton extends Component {
   }
 
   /**
-   * Returns the style.
-   * @return {Object} [description]
-   */
-  get style() {
-    if (this.state.opened) {
-      return {
-        width: '35%',
-      };
-    }
-
-    return null;
-  }
-
-  /**
    * Adds a new product to cart or opens the cart if it already has products in it.
    */
   handleClick = () => {
