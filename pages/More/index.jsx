@@ -5,10 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
+import * as marketPortals from '@shopgate/pwa-common-commerce/market/constants/Portals';
 import View from 'Components/View';
 import ClientInformation from 'Components/ClientInformation';
 import Headline from 'Components/Headline';
@@ -51,20 +52,68 @@ class More extends Component {
     } = this.props;
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
+    const props = {
+      Item: List.Item,
+    };
+
     return (
       <View>
         <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
 
-        <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
+        <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
+
         <Headline text="navigation.store_information" small />
+
         <List>
-          <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
-          <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
-          <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
-          <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
-          {showReturnPolicy && <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />}
-          <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
+
+          {/* SHIPPING */}
+          <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
+            <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
+          </Portal>
+          <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+
+          {/* PAYMENT */}
+          <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
+            <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
+          </Portal>
+          <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+
+          {/* TERMS */}
+          <Portal name={portals.NAV_MENU_TERMS_BEFORE} props={props} />
+          <Portal name={portals.NAV_MENU_TERMS} props={props}>
+            <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_TERMS_AFTER} props={props} />
+
+          {/* PRIVACY POLICY */}
+          <Portal name={portals.NAV_MENU_PRIVACY_BEFORE} props={props} />
+          <Portal name={portals.NAV_MENU_PRIVACY} props={props}>
+            <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_PRIVACY_AFTER} props={props} />
+
+          {/* RETURN POLICY */}
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
+          {showReturnPolicy && (
+            <Fragment>
+              <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
+                <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
+              </Portal>
+            </Fragment>
+          )}
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
+
+          {/* IMPRINT */}
+          <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} props={props} />
+          <Portal name={portals.NAV_MENU_IMPRINT} props={props}>
+            <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
+          </Portal>
+          <Portal name={portals.NAV_MENU_IMPRINT_AFTER} props={props} />
+
         </List>
+
         {showQuickLinks && (
           <div>
             <Headline small text="navigation.more_menu" />
@@ -76,8 +125,10 @@ class More extends Component {
           </div>
         )}
 
-        <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
+        <Portal name={portals.NAV_MENU_CONTENT_AFTER} props={props} />
+
         <ClientInformation />
+
       </View>
     );
   }
