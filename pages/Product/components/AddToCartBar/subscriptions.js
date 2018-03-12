@@ -55,7 +55,6 @@ export default function addToCartBar(subscribe) {
    * Increases the quantity of added items that will be added to cart.
    */
   subscribe(productsAdded$, ({ dispatch }) => {
-    console.warn('incr');
     dispatch(incrementActionCount());
   });
 
