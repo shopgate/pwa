@@ -8,7 +8,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import '@shopgate/pwa-common/styles/reset';
-import Loadable from 'react-loadable';
 import 'Styles/fonts';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
@@ -39,60 +38,9 @@ import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
+import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
-
-const Page = Loadable({
-  loader: () => import('./Page'),
-});
-
-const Category = Loadable({
-  loader: () => import('./Category'),
-});
-
-const Filter = Loadable({
-  loader: () => import('./Filter'),
-});
-
-const FilterAttribute = Loadable({
-  loader: () => import('./FilterAttribute'),
-});
-
-const Product = Loadable({
-  loader: () => import('./Product'),
-});
-
-const ProductGallery = Loadable({
-  loader: () => import('./ProductGallery'),
-});
-
-const Reviews = Loadable({
-  loader: () => import('./Reviews'),
-});
-
-const Cart = Loadable({
-  loader: () => import('./Cart'),
-});
-
-const Favorites = Loadable({
-  loader: () => import('./Favorites'),
-});
-
-const Search = Loadable({
-  loader: () => import('./Search'),
-});
-
-const Login = Loadable({
-  loader: () => import('./Login'),
-});
-
-const Orders = Loadable({
-  loader: () => import('./Orders'),
-});
-
-const WriteReview = Loadable({
-  loader: () => import('./WriteReview'),
-});
 
 /**
  * The theme's main component defines all the routes (views) inside the application.
@@ -104,30 +52,30 @@ const Pages = () => (
     <Viewport>
       <ModalContainer component={Dialog} />
       <SnackBar />
-      <Route path={`${INDEX_PATH}`} component={Page} />
-      <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
-      <Route path={`${CATEGORY_PATH}`} component={Category} />
-      <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={Category} />
-      <Route path={`${FILTER_PATH}`} component={Filter} />
-      <Route path={`${FILTER_PATH}/:attribute`} component={FilterAttribute} />
-      <Route path={`${ITEM_PATH}/:productId`} component={Product} />
-      <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
-      <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
-      <Route path={`${CART_PATH}`} component={Cart} />
+      <Route path={`${INDEX_PATH}`} component={routes.Page} />
+      <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
+      <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
+      <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={routes.Category} />
+      <Route path={`${FILTER_PATH}`} component={routes.Filter} />
+      <Route path={`${FILTER_PATH}/:attribute`} component={routes.FilterAttribute} />
+      <Route path={`${ITEM_PATH}/:productId`} component={routes.Product} />
+      <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
+      <Route path={`${ITEM_PATH}/:productId/reviews/`} component={routes.Reviews} />
+      <Route path={`${CART_PATH}`} component={routes.Cart} />
       {
         appConfig.hasFavorites
-        && <Route path={`${FAVORITES_PATH}`} component={Favorites} />
+        && <Route path={`${FAVORITES_PATH}`} component={routes.Favorites} />
       }
-      <Route path={`${SEARCH_PATH}`} component={Search} />
-      <Route path={`${LOGIN_PATH}`} component={Login} />
+      <Route path={`${SEARCH_PATH}`} component={routes.Search} />
+      <Route path={`${LOGIN_PATH}`} component={routes.Login} />
       <Route path={`${REGISTER_PATH}`} />
 
       <Portal name={APP_ROUTES} props={{ View }} />
 
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} />
-        <Route path={`${ORDERS_PATH}`} component={Orders} />
-        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
+        <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
+        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
       </AuthRoutes>
 
       {isDev && (
