@@ -13,7 +13,7 @@ search results, filters, orders, the cart and the checkout.
 
 ## Installation
 
-```
+```sh
 npm i @shopgate/pwa-common-commerce --save
 ```
 
@@ -22,17 +22,17 @@ Installing this package will automatically bring the
 [@shopgate/pwa-common](https://github.com/shopgate/pwa-core) into your project. If you are not
 planing to work on these as well, you don't need to install them separately inside your theme.
 
-## What is inside?
+## What is inside
 
-  * [Cart](./cart)
-  * [Category](./category)
-  * [Checkout](./checkout)
-  * [Favorites]('./favorites)
-  * [Filter](./filter)
-  * [Orders](./orders)
-  * [Product](./product)
-  * [Reviews]('./reviews)
-  * [Search](./search)
+* [Cart](./cart)
+* [Category](./category)
+* [Checkout](./checkout)
+* [Favorites]('./favorites)
+* [Filter](./filter)
+* [Orders](./orders)
+* [Product](./product)
+* [Reviews]('./reviews)
+* [Search](./search)
 
 ## About Shopgate
 

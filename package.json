@@ -1,16 +1,19 @@
 {
-	"name": "@shopgate/pwa",
-	"private": true,
-	"scripts": {
-		"setup": "sgconnect init && lerna bootstrap"
-	},
-	"workspaces": [
-		"extensions/*",
-		"libraries/*",
-		"themes/*",
-		"utils/*"
-	],
-	"devDependencies": {
-		"lerna": "^2.9.0"
-	}
+  "name": "@shopgate/pwa",
+  "private": true,
+  "scripts": {
+    "setup": "sgconnect init && lerna bootstrap",
+    "test": "lerna run test",
+    "cover": "lerna run cover",
+    "cover:report": "node ./scripts/send-coverage.js"
+  },
+  "workspaces": [
+    "extensions/*",
+    "libraries/*",
+    "themes/*",
+    "utils/*"
+  ],
+  "devDependencies": {
+    "lerna": "^2.9.0"
+  }
 }

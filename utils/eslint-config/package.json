@@ -5,17 +5,6 @@
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
   "main": "./ruleset/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:shopgate/eslint-config-shopgate.git"
-  },
-  "keywords": [
-    "eslint",
-    "shopgate"
-  ],
-  "scripts": {
-    "postversion": "git push && git push --tags && npm publish --access public"
-  },
   "dependencies": {
     "babel-eslint": "^8.2.1",
     "eslint": "^4.17.0",
