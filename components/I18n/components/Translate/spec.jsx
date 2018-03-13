@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -20,11 +20,11 @@ describe('<Translate />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(
+    renderedElement = mount((
       <I18n.Provider {...props}>
         <I18n.Text string="greeting" params={{ name: 'Test' }} />
       </I18n.Provider>
-    );
+    ));
   };
 
   beforeEach(() => {

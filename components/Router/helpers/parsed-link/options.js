@@ -1,9 +1,11 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
+
+import { INDEX_PATH } from '../../../../constants/RoutePaths';
 
 /**
  * Parses the protocol of an url
@@ -68,11 +70,14 @@ function convertDeepLink(href) {
 function getSimpleLinkParserOptions(path, queryParams, url) {
   const mappedPath = [...path];
 
-  /* eslint-disable no-fallthrough */
   // Switch through path
   switch (mappedPath[0]) {
     case 'index':
-      mappedPath[0] = '';
+      this.addLinkAction('reactRouter', {
+        url: INDEX_PATH,
+        queryParams,
+      });
+      break;
     case 'filter':
       this.addLinkAction('reactRouter', {
         url,
@@ -112,15 +117,6 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
       });
       break;
 
-    case 'favourite_list':
-      this.addLinkAction('legacyLink', {
-        targetTab: 'favourite_list',
-        navigationType: 'plain',
-        popTabToRoot: true,
-        url: '/favourite_list',
-      });
-      break;
-
     case 'cart_add_coupon':
       this.addLinkAction('pushNotification', {
         url,
@@ -131,6 +127,7 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case 'checkout_legacy':
       this.addLinkAction('legacyLink', {
         targetTab: 'cart',
+        flushTab: 'cart',
         navigationType: 'checkout',
         url: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
@@ -139,7 +136,7 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
     case 'register_legacy':
       this.addLinkAction('legacyLink', {
         targetTab: 'main',
-        url: '/register',
+        url: '/register/default',
       });
       break;
 
@@ -149,7 +146,6 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
         queryParams,
       });
   }
-  /* eslint-enable no-fallthrough */
 }
 
 /**

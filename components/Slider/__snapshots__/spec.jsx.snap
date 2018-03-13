@@ -1,12 +1,220 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Slider /> renders with a fraction indicator 1`] = `
+<Slider
+  autoPlay={false}
+  className=""
+  classNames={
+    Object {
+      "indicator": Object {
+        "bullets": "bullet-class",
+        "fraction": "fraction-class",
+      },
+    }
+  }
+  controls={false}
+  disabled={false}
+  indicators={true}
+  initialSlide={0}
+  interval={3000}
+  loop={false}
+  maxIndicators={2}
+  onSlideChange={null}
+  slidesPerView={1}
+  snapItems={true}
+>
+  <div
+    className="css-1hlki0z "
+  >
+    <ReactIdSwiper
+      autoplay={null}
+      containerClass="sg-swiper-container css-rdsogp "
+      freeMode={false}
+      initialSlide={0}
+      loop={false}
+      nextButton={null}
+      onInit={[Function]}
+      onSlideChangeEnd={[Function]}
+      onTouchStart={[Function]}
+      onTransitionEnd={[Function]}
+      onTransitionStart={[Function]}
+      pagination=".fraction-class"
+      paginationModifierClass="sg-swiper-pagination-"
+      paginationType="fraction"
+      prevButton={null}
+      slideClass="sg-swiper-slide"
+      slidesPerView={1}
+      wrapperClass="swiper-wrapper"
+    >
+      <div
+        className="sg-swiper-container css-rdsogp "
+      >
+        <div
+          className="swiper-wrapper"
+        >
+          <div
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s0"
+          >
+            <SliderItem
+              key="0"
+            >
+              <div
+                className="css-10a4qrv"
+              >
+                <div />
+              </div>
+            </SliderItem>
+          </div>
+          <div
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s1"
+          >
+            <SliderItem
+              key="1"
+            >
+              <div
+                className="css-10a4qrv"
+              >
+                <div />
+              </div>
+            </SliderItem>
+          </div>
+          <div
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s2"
+          >
+            <SliderItem
+              key="2"
+            >
+              <div
+                className="css-10a4qrv"
+              >
+                <div />
+              </div>
+            </SliderItem>
+          </div>
+        </div>
+        <div
+          className="fraction-class "
+        />
+      </div>
+    </ReactIdSwiper>
+  </div>
+</Slider>
+`;
+
+exports[`<Slider /> renders with bullet indicators 1`] = `
+<Slider
+  autoPlay={false}
+  className=""
+  classNames={
+    Object {
+      "indicator": Object {
+        "bullets": "bullet-class",
+        "fraction": "fraction-class",
+      },
+    }
+  }
+  controls={false}
+  disabled={false}
+  indicators={true}
+  initialSlide={0}
+  interval={3000}
+  loop={false}
+  maxIndicators={null}
+  onSlideChange={null}
+  slidesPerView={1}
+  snapItems={true}
+>
+  <div
+    className="css-1hlki0z "
+  >
+    <ReactIdSwiper
+      autoplay={null}
+      containerClass="sg-swiper-container css-rdsogp "
+      freeMode={false}
+      initialSlide={0}
+      loop={false}
+      nextButton={null}
+      onInit={[Function]}
+      onSlideChangeEnd={[Function]}
+      onTouchStart={[Function]}
+      onTransitionEnd={[Function]}
+      onTransitionStart={[Function]}
+      pagination=".bullet-class"
+      paginationModifierClass="sg-swiper-pagination-"
+      paginationType="bullets"
+      prevButton={null}
+      slideClass="sg-swiper-slide"
+      slidesPerView={1}
+      wrapperClass="swiper-wrapper"
+    >
+      <div
+        className="sg-swiper-container css-rdsogp "
+      >
+        <div
+          className="swiper-wrapper"
+        >
+          <div
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s0"
+          >
+            <SliderItem
+              key="0"
+            >
+              <div
+                className="css-10a4qrv"
+              >
+                <div />
+              </div>
+            </SliderItem>
+          </div>
+          <div
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s1"
+          >
+            <SliderItem
+              key="1"
+            >
+              <div
+                className="css-10a4qrv"
+              >
+                <div />
+              </div>
+            </SliderItem>
+          </div>
+          <div
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s2"
+          >
+            <SliderItem
+              key="2"
+            >
+              <div
+                className="css-10a4qrv"
+              >
+                <div />
+              </div>
+            </SliderItem>
+          </div>
+        </div>
+        <div
+          className="bullet-class "
+        />
+      </div>
+    </ReactIdSwiper>
+  </div>
+</Slider>
+`;
+
 exports[`<Slider /> renders with children 1`] = `
 <div
   className="css-1hlki0z "
 >
   <ReactIdSwiper
     autoplay={null}
-    containerClass="sg-swiper-container css-rdsogp undefined"
+    containerClass="sg-swiper-container css-rdsogp "
     freeMode={false}
     initialSlide={0}
     loop={false}
@@ -18,29 +226,39 @@ exports[`<Slider /> renders with children 1`] = `
     onTransitionStart={[Function]}
     pagination={null}
     paginationModifierClass="sg-swiper-pagination-"
+    paginationType="bullets"
     prevButton={null}
     slideClass="sg-swiper-slide"
     slidesPerView={1}
     wrapperClass="swiper-wrapper"
   >
     <div
-      className="css-1l9a57c"
+      className="css-xwe5xi"
+      key="s0"
     >
-      <SliderItem>
+      <SliderItem
+        key="0"
+      >
         <div />
       </SliderItem>
     </div>
     <div
-      className="css-1l9a57c"
+      className="css-xwe5xi"
+      key="s1"
     >
-      <SliderItem>
+      <SliderItem
+        key="1"
+      >
         <div />
       </SliderItem>
     </div>
     <div
-      className="css-1l9a57c"
+      className="css-xwe5xi"
+      key="s2"
     >
-      <SliderItem>
+      <SliderItem
+        key="2"
+      >
         <div />
       </SliderItem>
     </div>
@@ -59,6 +277,7 @@ exports[`<Slider /> renders with controls 1`] = `
   initialSlide={0}
   interval={3000}
   loop={false}
+  maxIndicators={null}
   onSlideChange={null}
   slidesPerView={1}
   snapItems={true}
@@ -68,7 +287,7 @@ exports[`<Slider /> renders with controls 1`] = `
   >
     <ReactIdSwiper
       autoplay={null}
-      containerClass="sg-swiper-container css-rdsogp undefined"
+      containerClass="sg-swiper-container css-rdsogp "
       freeMode={false}
       initialSlide={0}
       loop={false}
@@ -80,21 +299,25 @@ exports[`<Slider /> renders with controls 1`] = `
       onTransitionStart={[Function]}
       pagination={null}
       paginationModifierClass="sg-swiper-pagination-"
+      paginationType="bullets"
       prevButton=".swiper-button-prev"
       slideClass="sg-swiper-slide"
       slidesPerView={1}
       wrapperClass="swiper-wrapper"
     >
       <div
-        className="sg-swiper-container css-rdsogp undefined"
+        className="sg-swiper-container css-rdsogp "
       >
         <div
           className="swiper-wrapper"
         >
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s0"
           >
-            <SliderItem>
+            <SliderItem
+              key="0"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -103,9 +326,12 @@ exports[`<Slider /> renders with controls 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s1"
           >
-            <SliderItem>
+            <SliderItem
+              key="1"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -114,9 +340,12 @@ exports[`<Slider /> renders with controls 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-1l9a57c "
+            className="sg-swiper-slide css-xwe5xi "
+            key=".$s2"
           >
-            <SliderItem>
+            <SliderItem
+              key="2"
+            >
               <div
                 className="css-10a4qrv"
               >
@@ -130,96 +359,6 @@ exports[`<Slider /> renders with controls 1`] = `
         />
         <div
           className="swiper-button-prev "
-        />
-      </div>
-    </ReactIdSwiper>
-  </div>
-</Slider>
-`;
-
-exports[`<Slider /> renders with indicators 1`] = `
-<Slider
-  autoPlay={false}
-  className=""
-  classNames={
-    Object {
-      "indicator": "indicator-class",
-    }
-  }
-  controls={false}
-  disabled={false}
-  indicators={true}
-  initialSlide={0}
-  interval={3000}
-  loop={false}
-  onSlideChange={null}
-  slidesPerView={1}
-  snapItems={true}
->
-  <div
-    className="css-1hlki0z "
-  >
-    <ReactIdSwiper
-      autoplay={null}
-      containerClass="sg-swiper-container css-rdsogp undefined"
-      freeMode={false}
-      initialSlide={0}
-      loop={false}
-      nextButton={null}
-      onInit={[Function]}
-      onSlideChangeEnd={[Function]}
-      onTouchStart={[Function]}
-      onTransitionEnd={[Function]}
-      onTransitionStart={[Function]}
-      pagination=".indicator-class"
-      paginationModifierClass="sg-swiper-pagination-"
-      prevButton={null}
-      slideClass="sg-swiper-slide"
-      slidesPerView={1}
-      wrapperClass="swiper-wrapper"
-    >
-      <div
-        className="sg-swiper-container css-rdsogp undefined"
-      >
-        <div
-          className="swiper-wrapper"
-        >
-          <div
-            className="sg-swiper-slide css-1l9a57c "
-          >
-            <SliderItem>
-              <div
-                className="css-10a4qrv"
-              >
-                <div />
-              </div>
-            </SliderItem>
-          </div>
-          <div
-            className="sg-swiper-slide css-1l9a57c "
-          >
-            <SliderItem>
-              <div
-                className="css-10a4qrv"
-              >
-                <div />
-              </div>
-            </SliderItem>
-          </div>
-          <div
-            className="sg-swiper-slide css-1l9a57c "
-          >
-            <SliderItem>
-              <div
-                className="css-10a4qrv"
-              >
-                <div />
-              </div>
-            </SliderItem>
-          </div>
-        </div>
-        <div
-          className="indicator-class "
         />
       </div>
     </ReactIdSwiper>

@@ -37,6 +37,7 @@ exports[`<FormatTime /> Given the component was mounted to the DOM should match 
           <FormatTime
             forKey="time"
             format="medium"
+            key=".0"
             timestamp={946092345000}
           >
             <span>

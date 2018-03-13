@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WidgetGrid /> should not render without a \`config\` prop 1`] = `
+<WidgetGrid
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
+  config={Array []}
+/>
+`;
+
+exports[`<WidgetGrid /> should render with a config 1`] = `
+<WidgetGrid
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
+  config={
+    Array [
+      Object {
+        "col": 0,
+        "height": 3,
+        "row": 0,
+        "settings": Object {
+          "id": 83535,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        },
+        "type": "@shopgate/commerce-widgets/image",
+        "width": 12,
+      },
+    ]
+  }
+>
+  <div
+    className="css-13azwyo"
+    style={
+      Object {
+        "height": "255px",
+      }
+    }
+  >
+    <Widget
+      cellSize={85}
+      component={[Function]}
+      config={
+        Object {
+          "col": 0,
+          "height": 3,
+          "row": 0,
+          "settings": Object {
+            "id": 83535,
+            "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+          },
+          "type": "@shopgate/commerce-widgets/image",
+          "width": 12,
+        }
+      }
+      key="w0"
+    >
+      <GridItem
+        className="css-1gywj2c css-63oe3q  "
+        component="div"
+        grow={0}
+        shrink={1}
+      >
+        <div
+          className="css-1gywj2c css-63oe3q  "
+        >
+          <div
+            className="css-4hpmhj"
+          >
+            <Image
+              ratio={
+                Array [
+                  12,
+                  3,
+                ]
+              }
+              settings={
+                Object {
+                  "id": 83535,
+                  "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+                }
+              }
+            >
+              <div />
+            </Image>
+          </div>
+        </div>
+      </GridItem>
+    </Widget>
+  </div>
+</WidgetGrid>
+`;

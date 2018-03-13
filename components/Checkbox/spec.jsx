@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -23,7 +23,7 @@ const Unchecked = () => <div />;
 
 describe('<Checkbox />', () => {
   it('should render the checkbox with the label before the icon', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         label={<span>Test Label Deluxe</span>}
         labelPosition="left"
@@ -31,7 +31,7 @@ describe('<Checkbox />', () => {
         uncheckedIcon={<Unchecked />}
         checked={false}
       />
-    );
+    ));
 
     const expected = (
       <div>
@@ -45,7 +45,7 @@ describe('<Checkbox />', () => {
   });
 
   it('should render the checkbox with the label after the icon', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         label={<span>Test Label Deluxe</span>}
         labelPosition="right"
@@ -53,7 +53,7 @@ describe('<Checkbox />', () => {
         uncheckedIcon={<Unchecked />}
         checked={false}
       />
-    );
+    ));
 
     const expected = (
       <div>
@@ -67,14 +67,14 @@ describe('<Checkbox />', () => {
   });
 
   it('should render the unchecked icon if "checked" is false', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         checked={false}
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
         uncheckedIcon={<Unchecked />}
       />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Checked).length).toBe(0);
@@ -82,14 +82,14 @@ describe('<Checkbox />', () => {
   });
 
   it('should render the unchecked icon if "checked" is false', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         checked
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
         uncheckedIcon={<Unchecked />}
       />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Checked).length).toBe(1);
@@ -99,7 +99,7 @@ describe('<Checkbox />', () => {
   it('should call the callback with the inverted value', () => {
     const spy = jest.fn();
 
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
@@ -107,14 +107,14 @@ describe('<Checkbox />', () => {
         checked={false}
         onCheck={spy}
       />
-    );
+    ));
 
     wrapper.simulate('touchTap');
     expect(spy).toHaveBeenCalledWith(true);
   });
 
   it('should render an <input> element if a name prop is provided', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
@@ -122,7 +122,7 @@ describe('<Checkbox />', () => {
         defaultChecked={false}
         name="myCheckbox"
       />
-    );
+    ));
 
     const input = wrapper.find('input');
     expect(input.length).toBe(1);
@@ -131,14 +131,14 @@ describe('<Checkbox />', () => {
   });
 
   it('should work as an uncontrolled input', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
         uncheckedIcon={<Unchecked />}
         defaultChecked={false}
       />
-    );
+    ));
 
     wrapper.simulate('touchTap');
     expect(wrapper.state('checked')).toBe(true);

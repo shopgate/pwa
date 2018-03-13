@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -21,9 +21,11 @@ describe('<Route />', () => {
       registerRoute: jest.fn(),
     };
 
-    const wrapper = mount((
-      <Route path="category/:id" component={MockComponent} />
-    ), { context: mockRouterContext });
+    const wrapper = mount(
+      (
+        <Route path="category/:id" component={MockComponent} />
+      ), { context: mockRouterContext }
+    );
 
     /**
      * The route should call the registerRoute function of the context.
@@ -50,15 +52,16 @@ describe('<Route />', () => {
       registerRoute: (path, fnAdd) => { add = fnAdd; },
     };
 
-    const wrapper = mount((
-      <Route path="category/:id" component={MockComponent} />
-    ), { context: mockRouterContext });
+    const wrapper = mount(
+      (
+        <Route path="category/:id" component={MockComponent} />
+      ), { context: mockRouterContext }
+    );
 
-    add(
-      {
-        key: '123',
-        pathname: '/category/123',
-      }, { id: 123 });
+    add({
+      key: '123',
+      pathname: '/category/123',
+    }, { id: 123 });
 
     wrapper.update();
     expect(wrapper).toMatchSnapshot();
@@ -80,9 +83,11 @@ describe('<Route />', () => {
       registerRoute: (path, fnAdd, fnRemove) => { add = fnAdd; remove = fnRemove; },
     };
 
-    const wrapper = mount((
-      <Route path="category/:id" component={MockComponent} />
-    ), { context: mockRouterContext });
+    const wrapper = mount(
+      (
+        <Route path="category/:id" component={MockComponent} />
+      ), { context: mockRouterContext }
+    );
 
     add({
       immutableKey: '123',
@@ -98,6 +103,7 @@ describe('<Route />', () => {
     }, { id: 123 });
 
     wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockComponent).length).toEqual(1);
     expect(wrapper.find(MockComponent).props()).toEqual({ params: { id: 456 } });
@@ -112,9 +118,11 @@ describe('<Route />', () => {
       registerRoute: (path, fnAdd) => { add = fnAdd; },
     };
 
-    const wrapper = mount((
-      <Route path="category/:id" component={MockComponent} />
-    ), { context: mockRouterContext });
+    const wrapper = mount(
+      (
+        <Route path="category/:id" component={MockComponent} />
+      ), { context: mockRouterContext }
+    );
 
     add({
       key: '123', pathname: '/category/123',

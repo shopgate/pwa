@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -19,8 +19,7 @@ const TestElement = () => <Image src="http://placekitten.com/300/300" />;
 describe('<ZoomPanContainer />', () => {
   it('renders with children', () => {
     const numChildren = 5;
-
-    const wrapper = mount(
+    const Component = (
       <ZoomPanContainer>
         <TestElement />
         <TestElement />
@@ -29,6 +28,7 @@ describe('<ZoomPanContainer />', () => {
         <TestElement />
       </ZoomPanContainer>
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(TestElement).length).toBe(numChildren);
@@ -36,26 +36,26 @@ describe('<ZoomPanContainer />', () => {
 
   it('renders the correct initial zoom when minZoom > 1', () => {
     const minZoom = 2;
-
-    const wrapper = shallow(
+    const Component = (
       <ZoomPanContainer minZoom={minZoom}>
         <TestElement />
       </ZoomPanContainer>
     );
-
+    const wrapper = shallow(Component);
     const instance = wrapper.instance();
+
     expect(wrapper).toMatchSnapshot();
     expect(instance.scale).toBe(minZoom);
   });
 
   it('renders the correct initial zoom when minZoom < 1', () => {
     const minZoom = 0.5;
-
-    const wrapper = shallow(
+    const Component = (
       <ZoomPanContainer minZoom={minZoom}>
         <TestElement />
       </ZoomPanContainer>
     );
+    const wrapper = shallow(Component);
 
     const instance = wrapper.instance();
     expect(wrapper).toMatchSnapshot();
@@ -63,11 +63,12 @@ describe('<ZoomPanContainer />', () => {
   });
 
   it('applies correct zoom factor when pinched', () => {
-    const wrapper = mount(
+    const Component = (
       <ZoomPanContainer>
         <TestElement />
       </ZoomPanContainer>
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -84,11 +85,12 @@ describe('<ZoomPanContainer />', () => {
   });
 
   it('applies correct position when panned', () => {
-    const wrapper = mount(
+    const Component = (
       <ZoomPanContainer>
         <TestElement />
       </ZoomPanContainer>
     );
+    const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -129,13 +131,14 @@ describe('<ZoomPanContainer />', () => {
   });
 
   it('applies the correct zoom when double tapped', () => {
-    const wrapper = mount(
+    const Component = (
       <ZoomPanContainer>
         <TestElement />
       </ZoomPanContainer>
     );
-
+    const wrapper = mount(Component);
     const instance = wrapper.instance();
+
     expect(wrapper).toMatchSnapshot();
 
     instance.handleDoubleTap({
@@ -162,14 +165,14 @@ describe('<ZoomPanContainer />', () => {
 
   it('triggers the zoom event', () => {
     const callback = jest.fn();
-
-    const wrapper = mount(
+    const Component = (
       <ZoomPanContainer onZoom={callback}>
         <TestElement />
       </ZoomPanContainer>
     );
-
+    const wrapper = mount(Component);
     const instance = wrapper.instance();
+
     expect(wrapper).toMatchSnapshot();
 
     instance.handleDoubleTap({

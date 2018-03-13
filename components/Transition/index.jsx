@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -62,9 +62,9 @@ class Transition extends Component {
    * @returns {React.Element}
    */
   getFirstChild() {
-    return React.Children.map(this.props.children, (element, idx) =>
+    return React.Children.map(this.props.children, (element, idx) => (
       React.cloneElement(element, { ref: idx })
-    )[0];
+    ))[0];
   }
 
   /**
@@ -72,7 +72,8 @@ class Transition extends Component {
    * @param {Object} props - The props object the animation should be based upon.
    */
   animate(props = this.props) {
-    const element = findDOMNode(this.refs[0]); // eslint-disable-line react/no-string-refs
+    // eslint-disable-next-line react/no-find-dom-node, react/no-string-refs
+    const element = findDOMNode(this.refs[0]);
     const duration = (props.duration / 1000);
 
     const transitionSettings = {

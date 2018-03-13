@@ -10,7 +10,6 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
   min={0}
   onChange={[Function]}
   resolution={0.01}
-  styles={Object {}}
   value={
     Array [
       10,
@@ -19,13 +18,14 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
   }
 >
   <div
+    className=""
     onTouchStart={[Function]}
   >
     <div
-      className="undefined css-12vo5ad"
+      className=" css-12vo5ad"
     >
       <div
-        className="undefined css-10eto0a"
+        className=" css-10eto0a"
         style={
           Object {
             "left": "1.0000000000000008e-198%",
@@ -41,7 +41,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
           onTouchStart={[Function]}
         >
           <div
-            className="undefined css-8mlj8f"
+            className=" css-8mlj8f"
             onTouchStart={[Function]}
             style={
               Object {
@@ -49,7 +49,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
               }
             }
           >
-            <div />
+            <div
+              className=""
+            />
           </div>
         </RangeSliderHandle>
         <RangeSliderHandle
@@ -59,7 +61,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
           onTouchStart={[Function]}
         >
           <div
-            className="undefined css-8mlj8f"
+            className=" css-8mlj8f"
             onTouchStart={[Function]}
             style={
               Object {
@@ -67,7 +69,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (exponential) 1`] 
               }
             }
           >
-            <div />
+            <div
+              className=""
+            />
           </div>
         </RangeSliderHandle>
       </div>
@@ -86,7 +90,6 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
   min={0}
   onChange={[Function]}
   resolution={0.01}
-  styles={Object {}}
   value={
     Array [
       50,
@@ -95,13 +98,14 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
   }
 >
   <div
+    className=""
     onTouchStart={[Function]}
   >
     <div
-      className="undefined css-12vo5ad"
+      className=" css-12vo5ad"
     >
       <div
-        className="undefined css-10eto0a"
+        className=" css-10eto0a"
         style={
           Object {
             "left": "50%",
@@ -117,7 +121,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="undefined css-8mlj8f"
+            className=" css-8mlj8f"
             onTouchStart={[Function]}
             style={
               Object {
@@ -125,7 +129,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
               }
             }
           >
-            <div />
+            <div
+              className=""
+            />
           </div>
         </RangeSliderHandle>
         <RangeSliderHandle
@@ -135,7 +141,7 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="undefined css-8mlj8f"
+            className=" css-8mlj8f"
             onTouchStart={[Function]}
             style={
               Object {
@@ -143,7 +149,9 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
               }
             }
           >
-            <div />
+            <div
+              className=""
+            />
           </div>
         </RangeSliderHandle>
       </div>
@@ -154,13 +162,14 @@ exports[`<RangeSlider /> emits onChange if handle was touched (linear) 1`] = `
 
 exports[`<RangeSlider /> renders with boundaries 1`] = `
 <div
+  className=""
   onTouchStart={[Function]}
 >
   <div
-    className="undefined css-12vo5ad"
+    className=" css-12vo5ad"
   >
     <div
-      className="undefined css-10eto0a"
+      className=" css-10eto0a"
       style={
         Object {
           "left": "0%",
@@ -188,13 +197,14 @@ exports[`<RangeSlider /> renders with boundaries 1`] = `
 
 exports[`<RangeSlider /> renders without a value pair 1`] = `
 <div
+  className=""
   onTouchStart={[Function]}
 >
   <div
-    className="undefined css-12vo5ad"
+    className=" css-12vo5ad"
   >
     <div
-      className="undefined css-10eto0a"
+      className=" css-10eto0a"
       style={
         Object {
           "left": "10%",
@@ -222,13 +232,14 @@ exports[`<RangeSlider /> renders without a value pair 1`] = `
 
 exports[`<RangeSlider /> renders without boundaries 1`] = `
 <div
+  className=""
   onTouchStart={[Function]}
 >
   <div
-    className="undefined css-12vo5ad"
+    className=" css-12vo5ad"
   >
     <div
-      className="undefined css-10eto0a"
+      className=" css-10eto0a"
       style={
         Object {
           "left": "0%",

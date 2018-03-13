@@ -46,7 +46,9 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
           </span>
         </Translate>
       </span>
-      <div>
+      <div
+        className=""
+      >
         <MockIconComponent>
           <span
             id="icon"
@@ -82,11 +84,13 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
       >
         <div
           className="css-rdsogp "
+          key=".0"
         >
           <div>
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_1"
               label="My item #1"
               value="item_1"
               wrapper={[Function]}
@@ -115,6 +119,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_2"
               label="My item #2"
               value="item_2"
               wrapper={[Function]}
@@ -143,6 +148,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_3"
               label="My item #3"
               value="item_3"
               wrapper={[Function]}
@@ -222,7 +228,9 @@ exports[`<SelectBox> should render with a default text 1`] = `
           </span>
         </Translate>
       </span>
-      <div>
+      <div
+        className=""
+      >
         <MockIconComponent>
           <span
             id="icon"
@@ -258,11 +266,13 @@ exports[`<SelectBox> should render with a default text 1`] = `
       >
         <div
           className="css-rdsogp "
+          key=".0"
         >
           <div>
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_1"
               label="My item #1"
               value="item_1"
               wrapper={[Function]}
@@ -291,6 +301,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_2"
               label="My item #2"
               value="item_2"
               wrapper={[Function]}
@@ -319,6 +330,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_3"
               label="My item #3"
               value="item_3"
               wrapper={[Function]}
@@ -398,7 +410,9 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
           </span>
         </Translate>
       </span>
-      <div>
+      <div
+        className=""
+      >
         <MockIconComponent>
           <span
             id="icon"
@@ -434,11 +448,13 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
       >
         <div
           className="css-rdsogp "
+          key=".0"
         >
           <div>
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_1"
               label="My item #1"
               value="item_1"
               wrapper={[Function]}
@@ -467,6 +483,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_2"
               label="My item #2"
               value="item_2"
               wrapper={[Function]}
@@ -495,6 +512,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             <SelectBoxItem
               className=""
               handleSelectionUpdate={[Function]}
+              key="item_3"
               label="My item #3"
               value="item_3"
               wrapper={[Function]}

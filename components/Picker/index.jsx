@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -60,13 +60,13 @@ class Picker extends Component {
     disabled: PropTypes.bool,
     duration: PropTypes.number,
     isOpen: PropTypes.bool,
-    items: PropTypes.arrayOf(
+    items: PropTypes.arrayOf((
       PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
         PropTypes.object,
       ])
-    ),
+    )),
     label: PropTypes.string,
     listComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     modalComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),

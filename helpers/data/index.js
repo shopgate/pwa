@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -37,9 +37,9 @@ export const objectWithoutProps = (obj, keys = []) => {
  * @param {string} url The URL to check.
  * @return {boolean}
  */
-export const isExternal = url =>
+export const isExternal = url => (
   (url.includes('http://') || url.includes('https://') || url.includes('//'))
-;
+);
 
 /**
  * Returns the actual url to the image, by adding url parameters with the dimensions
@@ -110,7 +110,7 @@ export const hex2bin = (str) => {
     const c = parseInt(s.substr(i, 1), 16);
     const k = parseInt(s.substr(i + 1, 1), 16);
 
-    if (isNaN(c) || isNaN(k)) {
+    if (Number.isNaN(c) || Number.isNaN(k)) {
       return false;
     }
 
@@ -190,4 +190,3 @@ export const validateSelectorParams = (selector, defaultResult = null) => (...pa
 
   return selector(...params);
 };
-

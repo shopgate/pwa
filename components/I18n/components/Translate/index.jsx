@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,6 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { logger } from '@shopgate/pwa-core/helpers';
 
 /**
  * Returns a translation and replaces placeholder with children output.
@@ -22,7 +23,12 @@ import PropTypes from 'prop-types';
  * @param {Object} context The component context.
  * @returns {JSX} The translated string as JSX component.
  */
-const Translate = ({ string, children, params, className }, context) => {
+const Translate = ({
+  string,
+  children,
+  params,
+  className,
+}, context) => {
   if (typeof string !== 'string') {
     return string;
   }
@@ -31,25 +37,32 @@ const Translate = ({ string, children, params, className }, context) => {
     return <span className={className}>{string}</span>;
   }
 
-  const { __ } = context.i18n();
-  // First replace every occurence of a translation key with a separator.
-  const separator = '__%S%__';
-  const childrenArray = React.Children.toArray(children);
+  // When the input string is malformed, rather return the original string then raising an error.
+  let formatted = string;
 
-  const values = childrenArray.reduce((obj, child) => (child.props && child.props.forKey ? {
-    ...obj,
-    [child.props.forKey]: separator,
-  } : obj), { ...params });
+  try {
+    const { __ } = context.i18n();
+    // First replace every occurence of a translation key with a separator.
+    const separator = '__%S%__';
+    const childrenArray = React.Children.toArray(children);
 
-  // Split the tokenized string at the separators.
-  const stringParts = __(string, values).split(separator);
+    const values = childrenArray.reduce((obj, child) => (child.props && child.props.forKey ? {
+      ...obj,
+      [child.props.forKey]: separator,
+    } : obj), { ...params });
 
-  // Now create a new array containing the separated chunks of the text and merge the substitutions.
-  const formatted = stringParts.reduce((result, text, index) => [
-    ...result,
-    text,
-    childrenArray[index],
-  ], []);
+    // Split the tokenized string at the separators.
+    const stringParts = __(string, values).split(separator);
+
+    // Create a new array containing the separated chunks of the text and merge the substitutions.
+    formatted = stringParts.reduce((result, text, index) => [
+      ...result,
+      text,
+      childrenArray[index],
+    ], []);
+  } catch (e) {
+    logger.error('i18n error for string %s', string, e);
+  }
 
   return (
     <span className={className}>{formatted}</span>

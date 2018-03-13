@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -45,13 +45,13 @@ class Select extends Component {
    */
   static propTypes = {
     className: PropTypes.string,
-    items: PropTypes.arrayOf(
+    items: PropTypes.arrayOf((
       PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
         PropTypes.object,
       ])
-    ),
+    )),
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.oneOfType([
@@ -86,9 +86,9 @@ class Select extends Component {
     this.domElement = null;
 
     if (props.value) {
-      this.state.selected = normalizeItem(
+      this.state.selected = normalizeItem((
         findItemByValue(props.items, props.value)
-      );
+      ));
     }
   }
 
@@ -108,9 +108,9 @@ class Select extends Component {
       !this.state.selected ||
       nextProps.value !== this.state.selected.value
     ) {
-      this.state.selected = normalizeItem(
+      this.state.selected = normalizeItem((
         findItemByValue(nextProps.items, nextProps.value)
-      );
+      ));
     }
   }
 
@@ -205,8 +205,8 @@ class Select extends Component {
 
     return (
       <div className={`${styles.container} ${this.props.className}`} ref={(ref) => { this.domElement = ref; }}>
-        <div className={styles.select} onTouchStart={this.toggleOpenState}>
-          <span className={`${styles.selectLabel} ${hasSelection ? styles.selectedLabel : ''}`}>
+        <div onTouchStart={this.toggleOpenState}>
+          <span>
             {selectedLabel}
           </span>
           <span className={styles.selectHandle}>

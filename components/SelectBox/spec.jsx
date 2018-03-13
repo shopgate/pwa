@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -49,9 +49,9 @@ describe('<SelectBox>', () => {
   ];
 
   it('should render the selectbox with given mock components', () => {
-    const wrapper = mount(
+    const wrapper = mount((
       <SelectBox icon={MockIconComponent} item={MockItemComponent} items={dummyItems} />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockIconComponent).length).toEqual(1);
@@ -59,21 +59,21 @@ describe('<SelectBox>', () => {
   });
 
   it('should render with a default text', () => {
-    const wrapper = mount(
+    const wrapper = mount((
       <SelectBox
         icon={MockIconComponent}
         item={MockItemComponent}
         items={dummyItems}
         defaultText="Foo"
       />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('span').at(0).text()).toEqual('Foo');
   });
 
   it('should render with a preselected selection', () => {
-    const wrapper = mount(
+    const wrapper = mount((
       <SelectBox
         icon={MockIconComponent}
         item={MockItemComponent}
@@ -81,7 +81,7 @@ describe('<SelectBox>', () => {
         defaultText="Foo"
         initialValue="item_2"
       />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('span').at(0).text()).toEqual('My item #2');

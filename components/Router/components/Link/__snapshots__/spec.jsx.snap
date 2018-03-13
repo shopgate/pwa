@@ -6,6 +6,7 @@ exports[`<Link /> should construct parsed-link and open it when clicked 1`] = `
   href="/category/123"
 >
   <div
+    aria-hidden={true}
     className="css-c6ki83 "
     onClick={[Function]}
     role="link"
@@ -19,6 +20,7 @@ exports[`<Link /> should construct parsed-link and open it when clicked 1`] = `
 
 exports[`<Link /> should render inner content of the link 1`] = `
 <div
+  aria-hidden={true}
   className="css-c6ki83 "
   onClick={[Function]}
   role="link"

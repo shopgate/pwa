@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -32,12 +32,9 @@ describe('<CountdownTimer>', () => {
         + (remainingDays * 86400)
         + (remainingHours * 3600)
         + (remainingMinutes * 60)
-        + remainingSeconds
-      ;
+        + remainingSeconds;
 
-    const wrapper = shallow(
-      <CountdownTimer timeout={timeout} onExpire={callback} />
-    );
+    const wrapper = shallow(<CountdownTimer timeout={timeout} onExpire={callback} />);
 
     let currentTimeOffset = timeout - Math.floor(Date.now() / 1000);
 
@@ -45,8 +42,6 @@ describe('<CountdownTimer>', () => {
       currentTimeOffset -= 1;
       return currentTimeOffset;
     };
-
-    wrapper.instance().componentDidMount();
 
     return wrapper;
   };
@@ -86,8 +81,10 @@ describe('<CountdownTimer>', () => {
     expect(setInterval.mock.calls.length).toBe(1);
 
     jest.runTimersToTime(1000);
+    wrapper.update();
 
     const { params, string } = wrapper.props();
+
     const renderedTimeFormat = {
       params,
       string,
@@ -127,6 +124,7 @@ describe('<CountdownTimer>', () => {
 
     // Run down to 00:00:00.
     jest.runTimersToTime(1000);
+    wrapper.update();
     let { params, string } = wrapper.props();
     renderedTimeFormat = {
       params,

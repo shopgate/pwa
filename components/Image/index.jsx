@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -25,13 +25,13 @@ class Image extends Component {
     onError: PropTypes.func,
     onLoad: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf(
+    resolutions: PropTypes.arrayOf((
       PropTypes.shape({
         width: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired,
         blur: PropTypes.number,
       })
-    ),
+    )),
     src: PropTypes.string,
     transition: PropTypes.shape(),
   };
@@ -95,6 +95,22 @@ class Image extends Component {
   }
 
   /**
+   * Sets the image ratio based on width and height.
+   * @return {number} The image ratio.
+   */
+  get imageRatio() {
+    if (this.props.ratio) {
+      const [x, y] = this.props.ratio;
+
+      return ((y / x) * 100).toFixed(3);
+    }
+
+    const { width, height } = this.props.resolutions[this.props.resolutions.length - 1];
+
+    return ((height / width) * 100).toFixed(3);
+  }
+
+  /**
    * Image loaded event listener
    * @param {number} resolutionIndex The index of the loaded resolution
    */
@@ -141,22 +157,6 @@ class Image extends Component {
     image.src = getActualImageSource(src, this.props.resolutions[resolutionIndex]);
 
     return image.complete;
-  }
-
-  /**
-   * Sets the image ratio based on width and height.
-   * @return {number} The image ratio.
-   */
-  get imageRatio() {
-    if (this.props.ratio) {
-      const [x, y] = this.props.ratio;
-
-      return ((y / x) * 100).toFixed(3);
-    }
-
-    const { width, height } = this.props.resolutions[this.props.resolutions.length - 1];
-
-    return ((height / width) * 100).toFixed(3);
   }
 
   /**

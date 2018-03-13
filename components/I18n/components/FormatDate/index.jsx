@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -31,8 +31,8 @@ FormatDate.format = (props, context) => {
 };
 
 FormatDate.propTypes = {
-  timestamp: PropTypes.number.isRequired,
-  format: PropTypes.string,
+  timestamp: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  format: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
 };
 
 FormatDate.defaultProps = {

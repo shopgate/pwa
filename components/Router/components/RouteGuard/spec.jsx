@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -17,11 +17,11 @@ describe('<RouteGuard />', () => {
    * Creates a test component.
    * @returns {JSX} The test component.
    */
-  const createComponent = () => mount(
+  const createComponent = () => mount((
     <RouteGuard currentRoute="initialRoute">
       <div id="TheContents" />
     </RouteGuard>
-  );
+  ));
 
   it('should render the opened portal when on same route', () => {
     const wrapper = createComponent();

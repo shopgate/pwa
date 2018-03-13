@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -11,9 +11,7 @@ import Picker from './index';
 import PickerList from './components/List';
 
 jest.mock('react-portal', () => (
-  ({ isOpened, children }) => (
-    isOpened ? children : null
-  )
+  ({ isOpened, children }) => (isOpened ? children : null)
 ));
 
 // Mock the redux connect() method instead of providing a fake store.
@@ -37,9 +35,7 @@ describe('<Picker />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(
-      <Picker {...props} />
-    );
+    renderedElement = mount(<Picker {...props} />);
     renderedInstance = renderedElement.instance();
   };
 
@@ -48,6 +44,8 @@ describe('<Picker />', () => {
       items: mockItems,
       onChange: mockOnChange,
     });
+
+    renderedElement.update();
   });
 
   describe('Given the component was mounted to the DOM', () => {
@@ -62,6 +60,7 @@ describe('<Picker />', () => {
     describe('Given picker component gets opened', () => {
       beforeEach(() => {
         renderedInstance.toggleOpenState(true);
+        renderedElement.update();
       });
 
       it('should have isOpen state', () => {

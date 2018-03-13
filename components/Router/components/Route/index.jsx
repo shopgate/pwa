@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isFunction } from '../../../../helpers/validation';
 import RouteContentWrapper from './components/Content';
-import getChildInstance from '../../helpers/getChildInstance';
 
 /**
  * Updates the hosted component of the route.
@@ -27,9 +26,7 @@ const wrapHostedComponent = (route, hostedComponent, wrappedComponent, component
   );
 
   route.setState({
-    hostedComponents: route.state.hostedComponents.concat(
-      [newHostedComponent]
-    ),
+    hostedComponents: route.state.hostedComponents.concat([newHostedComponent]),
   });
 };
 
@@ -50,11 +47,15 @@ const loadHostedComponent = (route) => {
  */
 class Route extends Component {
   static propTypes = {
+    path: PropTypes.string.isRequired,
     component: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
       PropTypes.func,
       PropTypes.string,
-    ]).isRequired,
-    path: PropTypes.string.isRequired,
+    ]),
+  };
+
+  static defaultProps = {
+    component: () => (null),
   };
 
   static contextTypes = {
@@ -151,7 +152,7 @@ class Route extends Component {
     };
 
     const componentProps = {
-      key: location.key || 'root',
+      key: location.key || location.immutableKey || 'root',
       setRef: (element) => {
         newHostedComponent.dom = element;
       },
@@ -161,18 +162,6 @@ class Route extends Component {
         }
 
         newHostedComponent.componentInstance = this.findComponentRef(component);
-
-        const childInstance = getChildInstance(newHostedComponent.componentInstance);
-
-        // Notify component that it is active now.
-        if (isFunction(newHostedComponent.componentInstance.routeWillEnter)) {
-          newHostedComponent.componentInstance.routeWillEnter();
-        }
-
-        // Notify first child that it is active now.
-        if (childInstance && isFunction(childInstance.routeWillLeave)) {
-          childInstance.routeWillLeave();
-        }
 
         // Save a reference of the original componentDidUpdate lifecycle function.
         const originalComponentDidUpdate =
@@ -219,9 +208,9 @@ class Route extends Component {
    */
   removeRoute = (location) => {
     this.setState({
-      hostedComponents: this.state.hostedComponents.filter(
+      hostedComponents: this.state.hostedComponents.filter((
         (comp, i) => i !== this.findHostedComponentIndex(location)
-      ),
+      )),
     });
   }
 
@@ -248,21 +237,8 @@ class Route extends Component {
    * @param {number} index Index of the hosted route.
    */
   deactivateRoute = (index) => {
-    const { dom, componentInstance } = this.state.hostedComponents[index];
+    const { dom } = this.state.hostedComponents[index];
     dom.style.display = 'none';
-
-    // Select the instance of the first child component.
-    const childInstance = getChildInstance(componentInstance);
-
-    // Notify component that it is inactive now.
-    if (componentInstance && isFunction(componentInstance.routeWillLeave)) {
-      componentInstance.routeWillLeave();
-    }
-
-    // Notify first child that it is active now.
-    if (childInstance && isFunction(childInstance.routeWillLeave)) {
-      childInstance.routeWillLeave();
-    }
   }
 
   /**
@@ -270,21 +246,8 @@ class Route extends Component {
    * @param {number} index Index of the hosted route.
    */
   activateRoute(index) {
-    const { dom, componentInstance } = this.state.hostedComponents[index];
+    const { dom } = this.state.hostedComponents[index];
     dom.style.display = '';
-
-    // Select the instance of the first child component.
-    const childInstance = getChildInstance(componentInstance);
-
-    // Notify component that it is active now.
-    if (componentInstance && isFunction(componentInstance.routeWillEnter)) {
-      componentInstance.routeWillEnter();
-    }
-
-    // Notify first child that it is active now.
-    if (childInstance && isFunction(childInstance.routeWillEnter)) {
-      childInstance.routeWillEnter();
-    }
   }
 
   /**
@@ -292,9 +255,9 @@ class Route extends Component {
    * @returns {JSX}
    */
   render() {
-    const components = this.state.hostedComponents.map(
+    const components = this.state.hostedComponents.map((
       hosted => hosted.component
-    );
+    ));
 
     return (
       <div data-route-path={this.props.path}>

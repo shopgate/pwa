@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -45,13 +45,16 @@ const reducer = (state = {}, action) => (
 let timesRendered = 0;
 let store;
 
-/**
- * The test component.
- * @return {JSX}
- */
-const TestComponent = () => {
-  timesRendered += 1;
-  return <div />;
+// eslint-disable-next-line react/prefer-stateless-function
+const TestComponent = class extends Component {
+  /**
+   * Renders the component
+   * @returns {JSX}
+   */
+  render() {
+    timesRendered += 1;
+    return <div />;
+  }
 };
 
 const ConnectedTestComponent = connect(mapStateToProps)(TestComponent);

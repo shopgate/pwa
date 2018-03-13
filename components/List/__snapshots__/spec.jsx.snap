@@ -7,14 +7,17 @@ exports[`<List /> renders with children 1`] = `
   <ListItem
     className={null}
     isSelected={false}
+    key="0"
   />
   <ListItem
     className={null}
     isSelected={false}
+    key="1"
   />
   <ListItem
     className={null}
     isSelected={false}
+    key="2"
   />
 </ul>
 `;

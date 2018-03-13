@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,6 +7,7 @@
 
 import { OPEN_LINK, UPDATE_HISTORY } from '../constants/ActionTypes';
 import { getHistoryPathname, getHistoryAction } from '../selectors/history';
+import { REGISTER_PATH } from '../constants/RoutePaths';
 import { main$ } from './main';
 
 /**
@@ -90,3 +91,13 @@ export const routeDidNotChange = route => historyDidUpdate$
  */
 export const openedLink$ = main$
   .filter(({ action }) => action.type === OPEN_LINK);
+
+/**
+ * Gets triggered when the registration link is opened.
+ * @type {Observable}
+ */
+export const openedRegisterLink$ = openedLink$
+  .filter(({ action }) =>
+    action.options &&
+    action.options.url &&
+    action.options.url === REGISTER_PATH);

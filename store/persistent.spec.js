@@ -1,11 +1,12 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 import {
+  LOCALSTORAGE_KEY,
   initPersistentStorage,
   persist,
   normalizeState,
@@ -14,6 +15,7 @@ import {
 const localStorageMock = global.window.localStorage;
 
 describe('Persistent State storage', () => {
+  const storageKey = LOCALSTORAGE_KEY;
   const fooReducer = persist('foo', () => ({ foo: 1 }), 'v1');
   const barReducer = persist('bar', () => ({ bar: 2 }), 'v2');
 
@@ -24,7 +26,7 @@ describe('Persistent State storage', () => {
 
   it('should persist when all versions are valid', () => {
     localStorageMock.clear();
-    localStorageMock.setItem('shopgateState', JSON.stringify({
+    localStorageMock.setItem(storageKey, JSON.stringify({
       foo: {
         version: 'v1',
         state: { foo: 1 },
@@ -42,7 +44,7 @@ describe('Persistent State storage', () => {
 
   it('should not persist when version is invalid', () => {
     localStorageMock.clear();
-    localStorageMock.setItem('shopgateState', JSON.stringify({
+    localStorageMock.setItem(storageKey, JSON.stringify({
       foo: {
         version: 'v1',
         state: { foo: 1 },
@@ -59,7 +61,7 @@ describe('Persistent State storage', () => {
 
   it('should update storage after reducer has been called', (done) => {
     localStorageMock.clear();
-    localStorageMock.setItem('shopgateState', JSON.stringify({
+    localStorageMock.setItem(storageKey, JSON.stringify({
       foo: {
         version: 'v1',
         state: { foo: 1 },
@@ -75,7 +77,7 @@ describe('Persistent State storage', () => {
     barReducer();
 
     setTimeout(() => {
-      expect(JSON.parse(localStorageMock.getItem('shopgateState'))).toEqual({
+      expect(JSON.parse(localStorageMock.getItem(storageKey))).toEqual({
         foo: {
           version: 'v1',
           state: { foo: 1 },

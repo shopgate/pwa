@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -28,8 +28,9 @@ class Drawer extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     isOpen: PropTypes.bool,
-    onClose: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
-    onOpen: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
+    onClose: PropTypes.func,
+    onDidClose: PropTypes.func,
+    onOpen: PropTypes.func,
   };
 
   /**
@@ -43,6 +44,7 @@ class Drawer extends Component {
     isOpen: false,
     onOpen: () => {},
     onClose: () => {},
+    onDidClose: () => {},
     animation: {
       duration: null,
       in: '',
@@ -84,6 +86,9 @@ class Drawer extends Component {
    */
   handleAnimationEnd = () => {
     this.setState({ active: this.props.isOpen });
+    if (!this.props.isOpen) {
+      this.props.onDidClose();
+    }
   };
 
   /**
@@ -111,7 +116,7 @@ class Drawer extends Component {
     );
 
     const style = {};
-    if (animation.duration !== null) {
+    if (typeof animation.duration === 'number') {
       style.animationDuration = `${animation.duration}ms`;
     }
 

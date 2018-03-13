@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -40,15 +40,18 @@ export const getFormattedTimeString = (
 
 /**
  * Creates a formatted duration string for a given time span represented as unix time stamp.
- * @param {number} timeSpan The remaining time span (in seconds).
- * @return {string} A formatted string for the remaining time.
+ * @param {number} timeSpanInput The remaining time span (in seconds).
+ * @return {Object} String and params for the I18n component
  */
-const createFormattedTime = (timeSpan) => {
+const createFormattedTime = (timeSpanInput) => {
+  const timeSpan = Math.max(0, timeSpanInput);
+
   // Calculate remaining days, hours, minutes and seconds.
   const days = Math.floor(timeSpan / 86400);
   const hours = Math.floor((timeSpan % 86400) / 3600);
   const minutes = Math.floor((timeSpan % 3600) / 60);
   const seconds = timeSpan % 60;
+
   return getFormattedTimeString(days, hours, minutes, seconds);
 };
 
@@ -76,7 +79,6 @@ class CountdownTimer extends Component {
 
     this.intervalHandle = null;
     this.remainingTime = this.getRemainingTime();
-    this.formattedTime = '';
     this.expired = this.remainingTime <= 0;
 
     // Calculate the initial formatted time string.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -9,10 +9,11 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from '../../store';
+import modalReducer from '../../reducers/modal';
 import showModal from '../../actions/modal/showModal';
 import ModalContainer from './index';
 
-const store = configureStore();
+const store = configureStore({ modal: modalReducer });
 
 jest.mock('react-portal', () => (
   ({ isOpened, children }) => (
@@ -50,18 +51,18 @@ describe('<ModalContainer />', () => {
    * The rendered component.
    */
   const renderComponent = () => {
-    renderedElement = mount(
+    renderedElement = mount((
       <Provider store={store}>
         <div id="container">
           <ModalContainer component={MockModal} />
         </div>
       </Provider>
-    );
+    ));
   };
 
   beforeEach(() => {
     // Reset the modals state before each test.
-    getState().modals = [];
+    getState().modal = [];
     renderComponent();
   });
 
@@ -82,10 +83,12 @@ describe('<ModalContainer />', () => {
           title: 'Title',
           message: 'Message',
         }));
+
+        renderedElement.update();
       });
 
       it('should contain a modal item in the state', () => {
-        expect(getState().modals.length).toBe(1);
+        expect(getState().modal.length).toBe(1);
       });
 
       it('should show the modal', () => {
@@ -104,7 +107,7 @@ describe('<ModalContainer />', () => {
         });
 
         it('should contain no modal item in the state', () => {
-          expect(getState().modals.length).toBe(0);
+          expect(getState().modal.length).toBe(0);
         });
 
         it('should not show the modal anymore', () => {

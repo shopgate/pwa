@@ -1,37 +1,30 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Input from './index';
 
 describe('<Input />', () => {
   it('should render a simple input field', () => {
-    const wrapper = mount(
-      <Input />
-    );
+    const wrapper = mount(<Input />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('input').length).toBe(1);
   });
 
   it('should render the input as password', () => {
-    const wrapper = shallow(
-      <Input password />
-    );
-
+    const wrapper = mount(<Input password />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('input[type="password"]').length).toBe(1);
   });
 
   it('should render the input with a default value', () => {
-    const wrapper = shallow(
-      <Input value="FooBar" />
-    );
+    const wrapper = mount(<Input value="FooBar" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('input[value="FooBar"]').length).toBe(1);
@@ -40,9 +33,7 @@ describe('<Input />', () => {
   it('should trigger the onChange callback', () => {
     const onChangeMock = jest.fn();
 
-    const wrapper = mount(
-      <Input onChange={onChangeMock} />
-    );
+    const wrapper = mount(<Input onChange={onChangeMock} />);
 
     wrapper.find('input').simulate('change', { target: { value: 'a' } });
 
@@ -51,71 +42,72 @@ describe('<Input />', () => {
   });
 
   it('should receive the correct value while typing', () => {
-    const wrapper = mount(
-      <Input />
-    );
+    const wrapper = mount(<Input />);
 
     const input = wrapper.find('input');
 
     input.simulate('change', { target: { value: 'foobar' } });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().value).toBe('foobar');
+    expect(wrapper.find('SimpleInput').instance().value).toBe('foobar');
   });
 
   it('should sanitize the input', () => {
-    const wrapper = mount(
-      <Input onSanitize={value => value.toUpperCase()} />
-    );
+    const wrapper = mount(<Input onSanitize={value => value.toUpperCase()} />);
 
     const input = wrapper.find('input');
 
     input.simulate('change', { target: { value: 'foobar' } });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().value).toBe('FOOBAR');
+    expect(wrapper.find('SimpleInput').instance().value).toBe('FOOBAR');
   });
 
   it('should validate the input', () => {
-    const wrapper = shallow(
-      <Input onValidate={() => false} />
-    );
+    const wrapper = mount(<Input onValidate={() => false} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().isValid).toBe(false);
+    expect(wrapper.find('SimpleInput').instance().isValid).toBe(false);
   });
 
   it('should focus the input', () => {
     const onFocusMock = jest.fn();
 
-    const wrapper = mount(
-      <Input onFocusChange={onFocusMock} />
-    );
+    const wrapper = mount(<Input onFocusChange={onFocusMock} />);
 
     const input = wrapper.find('input');
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().isFocused).toBe(false);
+    expect(wrapper.find('SimpleInput').instance().isFocused).toBe(false);
 
     input.simulate('focus');
 
-    expect(wrapper.instance().isFocused).toBe(true);
+    expect(wrapper.find('SimpleInput').instance().isFocused).toBe(true);
 
     input.simulate('blur');
-    expect(wrapper.instance().isFocused).toBe(false);
+    expect(wrapper.find('SimpleInput').instance().isFocused).toBe(false);
   });
 
   it('should change the value on user input', () => {
-    const wrapper = mount(
-      <Input value="My initial value" />
-    );
+    const wrapper = mount(<Input value="My initial value" />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().value).toBe('My initial value');
+    expect(wrapper.find('SimpleInput').instance().value).toBe('My initial value');
 
     const input = wrapper.find('input');
     input.simulate('change', { target: { value: 'foobar' } });
 
-    expect(wrapper.instance().value).toBe('foobar');
+    expect(wrapper.find('SimpleInput').instance().value).toBe('foobar');
+  });
+
+  it('should render a multiline input with empty content and react on change', () => {
+    const multiLineValue = `dfsdsdf
+    sdfdsff
+    dsf`;
+    const wrapper = mount(<Input value="" multiLine />);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('MultiLineInput').instance().value).toEqual('');
+    wrapper.setProps({ value: multiLineValue });
+    expect(wrapper.find('textarea').getDOMNode().innerHTML).toEqual(multiLineValue);
   });
 });

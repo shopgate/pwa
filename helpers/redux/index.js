@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -106,21 +106,22 @@ export const generateSortedHash = input => JSON.stringify(sortObject(input));
  * @param {Object} input2 The second object.
  * @return {boolean}
  */
-export const compareObjects = (input1, input2) =>
+export const compareObjects = (input1, input2) => (
   (generateSortedHash(input1) === generateSortedHash(input2))
-;
+);
 
 /**
  * Generates a hash for product collection results.
  * @param {Object} params The request parameters.
  * @param {boolean} [includeSort=true] Whether to include the sorting in the hash.
+ * @param {boolean} [includeFilters=true] Whether to include the filters in the hash.
  * @return {string} The generated hash.
  */
-export const generateResultHash = (params, includeSort = true) => {
+export const generateResultHash = (params, includeSort = true, includeFilters = true) => {
   const defaultParams = {
     pipeline: 'getProducts',
+    ...includeFilters && { filters: {} },
     ...includeSort && { sort: DEFAULT_SORT },
-    filters: {},
   };
 
   const mergedParams = {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,14 +7,15 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import requestUrl from '../../action-creators/url/requestUrl';
-import receiveUrl from '../../action-creators/url/receiveUrl';
-import errorUrl from '../../action-creators/url/errorUrl';
+import {
+  requestUrl,
+  receiveUrl,
+  errorUrl,
+} from '../../action-creators/url';
 import { getEntryByType } from '../../selectors/url';
 import { getRegisterUrl } from '../../selectors/user';
 import { shouldFetchData } from '../../helpers/redux';
-
-const URL_TYPE_REGISTER = 'register';
+import { URL_TYPE_REGISTER } from '../../constants/Registration';
 
 /**
  * Get the url for the registration.

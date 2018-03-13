@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -34,7 +34,6 @@ class InfiniteContainer extends React.Component {
   };
 
   static defaultProps = {
-    children: null,
     initialLimit: 10,
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
@@ -284,7 +283,12 @@ class InfiniteContainer extends React.Component {
    * @returns {JSX}
    */
   render() {
-    const { wrapper, items, iterator, loadingIndicator } = this.props;
+    const {
+      wrapper,
+      items,
+      iterator,
+      loadingIndicator,
+    } = this.props;
     const { awaitingItems } = this.state;
     const [start, length] = this.state.offset;
     // Only show items in offset range.

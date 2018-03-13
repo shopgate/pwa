@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -9,9 +9,15 @@ import React from 'react';
 import { mount } from 'enzyme';
 import AuthRoutes from './index';
 import MockRoute from '../Route/mock';
+import {
+  CHECKOUT_PATH,
+  LOGIN_PATH,
+} from '../../../../constants/RoutePaths';
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => (obj) => {
+jest.mock('./connector', () => obj => obj);
+
+jest.mock('../Redirect/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -21,16 +27,15 @@ jest.mock('./connector', () => (obj) => {
   return newObj;
 });
 
-jest.mock('../Redirect/connector', () => obj => obj);
-
 describe('<AuthRoutes />', () => {
   let authWrapper;
 
   beforeEach(() => {
-    authWrapper = mount((
-      <AuthRoutes to="/login" isLoggedIn={false}>
-        <MockRoute path="/checkout" component="checkout" />
-      </AuthRoutes>
+    authWrapper = mount(
+      (
+        <AuthRoutes to={LOGIN_PATH} isLoggedIn={false}>
+          <MockRoute path={CHECKOUT_PATH} component="checkout" />
+        </AuthRoutes>
       ), { context: { registerRoute: () => {} } }
     );
   });
@@ -62,8 +67,8 @@ describe('<AuthRoutes />', () => {
       const props = authWrapper.find('Redirect').props();
 
       expect(props).toMatchObject({
-        to: '/login',
-        path: '/checkout',
+        to: LOGIN_PATH,
+        path: CHECKOUT_PATH,
       });
     });
   });

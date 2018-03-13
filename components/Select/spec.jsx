@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -14,9 +14,7 @@ describe('<Select />', () => {
   jest.useFakeTimers();
 
   it('opens and closes the item list', () => {
-    const wrapper = shallow(
-      <Select />
-    );
+    const wrapper = shallow(<Select />);
 
     let previousOpenState = wrapper.state('isOpen');
     wrapper.instance().toggleOpenState();
@@ -28,9 +26,7 @@ describe('<Select />', () => {
   });
 
   it('renders without items', () => {
-    const wrapper = mount(
-      <Select />
-    );
+    const wrapper = mount(<Select />);
 
     wrapper.instance().toggleOpenState();
     expect(wrapper).toMatchSnapshot();
@@ -40,11 +36,7 @@ describe('<Select />', () => {
   it('renders with implicit items (closed)', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-    const wrapper = mount(
-      <Select
-        items={items}
-      />
-    );
+    const wrapper = mount(<Select items={items} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SelectItem).length).toBe(0);
@@ -53,13 +45,10 @@ describe('<Select />', () => {
   it('renders with implicit items (opened)', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-    const wrapper = mount(
-      <Select
-        items={items}
-      />
-    );
-
+    const wrapper = mount(<Select items={items} />);
     wrapper.instance().toggleOpenState();
+    wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SelectItem).length).toBe(items.length);
   });
@@ -79,13 +68,11 @@ describe('<Select />', () => {
       'f',
     ];
 
-    const wrapper = mount(
-      <Select
-        items={items}
-      />
-    );
+    const wrapper = mount(<Select items={items} />);
 
     wrapper.instance().toggleOpenState();
+    wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SelectItem).length).toBe(items.length);
 
@@ -109,21 +96,27 @@ describe('<Select />', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
     const selectionIndex = Math.floor(items.length / 2);
 
-    // eslint-disable-next-line require-jsdoc
+    /**
+     * Mocked callback for the onSelect event
+     * @param {string} value Mocked value
+     */
     const callback = (value) => {
       expect(value).toBe(items[selectionIndex]);
     };
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Select
         items={items}
         onChange={callback}
       />
-    );
+    ));
 
     wrapper.instance().toggleOpenState();
+    wrapper.update();
+
     expect(wrapper).toMatchSnapshot();
-    const node = wrapper.find(SelectItem).nodes[selectionIndex];
-    node.props.onSelect(node.props.value, node.props.label);
+    const node = wrapper.find(SelectItem).at(selectionIndex);
+
+    node.prop('onSelect')(node.prop('value'), node.prop('label'));
   });
 });

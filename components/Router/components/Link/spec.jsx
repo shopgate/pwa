@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -12,7 +12,7 @@ import Link from './index';
 const mockConstructor = jest.fn();
 const mockOpen = jest.fn();
 
-jest.mock('../../../../helpers/parsed-link', () => (class {
+jest.mock('../../helpers/parsed-link', () => (class {
   /**
    * Mocked version of the ParsedLink constructor.
    * @param {string} href Link location.
@@ -34,11 +34,19 @@ jest.mock('../../../../helpers/parsed-link', () => (class {
 
 describe('<Link />', () => {
   it('should render inner content of the link', () => {
-    const wrapper = shallow((
-      <Link href="/">
-        <span>Test</span>
-      </Link>),
-      { context: { history: { push: () => {} } } }
+    const wrapper = shallow(
+      (
+        <Link href="/">
+          <span>Test</span>
+        </Link>
+      ),
+      {
+        context: {
+          history: {
+            push: () => {},
+          },
+        },
+      }
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -47,11 +55,19 @@ describe('<Link />', () => {
   });
 
   it('should construct parsed-link and open it when clicked', () => {
-    const wrapper = mount((
-      <Link href="/category/123">
-        <span>Test</span>
-      </Link>),
-      { context: { history: { push: () => {} } } }
+    const wrapper = mount(
+      (
+        <Link href="/category/123">
+          <span>Test</span>
+        </Link>
+      ),
+      {
+        context: {
+          history: {
+            push: () => {},
+          },
+        },
+      }
     );
 
     expect(wrapper).toMatchSnapshot();

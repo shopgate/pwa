@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -45,8 +45,12 @@ export default class Link extends PureComponent {
     const { className, children } = this.props;
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-      <div role="link" className={`${style} ${className}`} onClick={this.handleOpenLink}>
+      <div
+        aria-hidden
+        className={`${style} ${className}`}
+        onClick={this.handleOpenLink}
+        role="link"
+      >
         {children}
       </div>
     );

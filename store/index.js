@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -61,10 +61,7 @@ const configureStore = (customReducers = {}) => {
     // Append the pre-loaded state.
     initPersistentStorage(),
     // Compose the enhancers.
-    composeEnhancers(
-      // Apply all middleware.
-      applyMiddleware(...middleware)
-    )
+    composeEnhancers(applyMiddleware(...middleware))
   );
 
   // Do the HMR only if in development mode.

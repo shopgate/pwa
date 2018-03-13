@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -25,18 +25,7 @@ const STATE_VERSION = 'v1';
 const enrichWidgets = action =>
   action.config.widgets.map((widget, index) => ({
     ...widget,
-    // TODO Remove this line after pipeline has been changed!
-    type: widget.type.replace('core-widgets', '@shopgate/commerce-widgets'),
-    settings: {
-      ...widget.settings,
-      ...widget.settings.widgets && {
-        widgets: widget.settings.widgets.map(config => ({
-          ...config,
-          type: config.type.replace('core-widgets', '@shopgate/commerce-widgets'),
-        })),
-      },
-    },
-    id: `${action.pageId}-${index}-${widget.type.replace('core-widgets', '@shopgate/commerce-widgets')}`,
+    id: `${action.pageId}-${index}-${widget.type}`,
   }));
 
 /**

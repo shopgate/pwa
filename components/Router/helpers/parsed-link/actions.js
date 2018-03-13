@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -59,6 +59,7 @@ const externalLink = (url) => {
  * @param {string} options.targetTab Target tab where the page should be opened.
  * @param {string} options.navigationType Type of the navigation bar that should be displayed.
  * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
+ * @param {string} options.flushTab The tab that should be flushed
  * @param {string} options.backCallback
  *   Javascript callback that is executed when hitting the back button.
  */
@@ -68,6 +69,7 @@ const legacyLink = (options) => {
       src: `sgapi:${options.url.substring(1)}`,
       previewSrc: 'sgapi:page_preview',
       targetTab: options.targetTab,
+      animated: false,
       navigationBarParams: {
         type: options.navigationType ? options.navigationType : 'default',
         leftButtonCallback: options.backCallback ? options.backCallback : '',
@@ -81,6 +83,12 @@ const legacyLink = (options) => {
     });
   }
 
+  if (options.flushTab) {
+    flushTab({
+      targetTab: options.flushTab,
+    });
+  }
+
   if (options.popTabToRoot) {
     popTabToRoot({
       targetTab: options.targetTab,
@@ -90,7 +98,7 @@ const legacyLink = (options) => {
 
 /**
  * Opens a link using a history handler. This can be a router history object or a function.
- * @param {string} options The location options.
+ * @param {Object} options The location options.
  * @param {Object|Function} historyHandler The history handler.
  */
 const reactRouter = (options, historyHandler) => {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -7,10 +7,12 @@
 
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { EINVALIDCREDENTIALS } from '@shopgate/pwa-core/constants/Pipeline';
-import requestLogin from '../../action-creators/user/requestLogin';
-import errorLogin from '../../action-creators/user/errorLogin';
-import successLogin from '../../action-creators/user/successLogin';
+import { EINVALIDCALL } from '@shopgate/pwa-core/constants/Pipeline';
+import {
+  requestLogin,
+  successLogin,
+  errorLogin,
+} from '../../action-creators/user';
 
 /**
  * Login the current user.
@@ -29,7 +31,7 @@ export default ({ login, password }) => (dispatch) => {
 
   new PipelineRequest('login')
     .setTrusted()
-    .setErrorMessageWhitelist([EINVALIDCREDENTIALS])
+    .setHandledErrors([EINVALIDCALL])
     .setInput(params)
     .dispatch()
     .then(({ success, messages }) => {
@@ -40,7 +42,18 @@ export default ({ login, password }) => (dispatch) => {
       }
     })
     .catch((error) => {
-      logger.error(error);
-      dispatch(errorLogin());
+      const { code } = error;
+
+      if (code === EINVALIDCALL) {
+        /**
+         * This code is thrown when the login request failed, because the user was already logged
+         * in. In that situation the success action can also dispatch to trigger the neccesary
+         * processes which have to happen after a successful login.
+         */
+        dispatch(successLogin());
+      } else {
+        logger.error(error);
+        dispatch(errorLogin());
+      }
     });
 };

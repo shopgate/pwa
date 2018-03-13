@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -48,7 +48,6 @@ class RangeSlider extends Component {
     max: 100,
     min: 0,
     resolution: 1,
-    styles: {},
     value: [0, 100],
     onChange: null,
   };
@@ -93,20 +92,6 @@ class RangeSlider extends Component {
   }
 
   /**
-   * Get range mina and max from props.
-   * @param {Object} props The component props.
-   * @returns {Object} The new state
-   */
-  getRange(props) {
-    const { value, min, max } = props;
-
-    return ({
-      rangeMin: this.invertedEase(getRelativeValue(value[0], min, max)),
-      rangeMax: this.invertedEase(getRelativeValue(value[1], min, max)),
-    });
-  }
-
-  /**
    * Get the easing function.
    */
   get ease() {
@@ -131,6 +116,20 @@ class RangeSlider extends Component {
   }
 
   /**
+   * Get range mina and max from props.
+   * @param {Object} props The component props.
+   * @returns {Object} The new state
+   */
+  getRange(props) {
+    const { value, min, max } = props;
+
+    return ({
+      rangeMin: this.invertedEase(getRelativeValue(value[0], min, max)),
+      rangeMax: this.invertedEase(getRelativeValue(value[1], min, max)),
+    });
+  }
+
+  /**
    * Processes touch start events on handles.
    * @param {Object} event The touch event
    * @param {number} index The index of the touched handle.
@@ -152,7 +151,12 @@ class RangeSlider extends Component {
    * Calls the change callback in case of a state update.
    */
   triggerChangeCallback() {
-    const { value, onChange, min, max } = this.props;
+    const {
+      value,
+      onChange,
+      min,
+      max,
+    } = this.props;
 
     if (!onChange) {
       return;
@@ -271,9 +275,9 @@ class RangeSlider extends Component {
    */
   render() {
     // Calculate the animation speed.
-    const animationSpeed = Math.round(
-        (1000 / this.props.animationSpeed) * this.draggedHandlePixelOffset
-      );
+    const animationSpeed = Math.round((
+      (1000 / this.props.animationSpeed) * this.draggedHandlePixelOffset
+    ));
     const rangeStyle = getRangeStyle(
       this.state.rangeMin,
       this.state.rangeMax,
@@ -282,14 +286,14 @@ class RangeSlider extends Component {
 
     return (
       <div
-        className={this.props.classNames.container}
+        className={this.props.classNames.container || ''}
         onTouchStart={this.handleRangeTouch}
       >
         <div
-          className={`${this.props.classNames.outerRange} ${styles.outerRange}`}
+          className={`${this.props.classNames.outerRange || ''} ${styles.outerRange}`}
           ref={(ref) => { this.domElement = ref; }}
         >
-          <div className={`${this.props.classNames.range} ${styles.range}`} style={rangeStyle}>
+          <div className={`${this.props.classNames.range || ''} ${styles.range}`} style={rangeStyle}>
             {this.makeHandle(0)}
             {this.makeHandle(1)}
           </div>

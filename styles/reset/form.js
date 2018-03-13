@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -44,6 +44,10 @@ css.global('input, select, textarea', {
 css.global('button, textarea', {
   fontFamily: 'inherit',
   lineHeight: 'inherit',
+});
+
+css.global('button', {
+  borderRadius: 0,
 });
 
 css.global('button, label, [type="checkbox"], [type="radio"]', {

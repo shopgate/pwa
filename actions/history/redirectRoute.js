@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
  */
 
-import setRedirectLocation from '../../action-creators/history/setRedirectLocation';
+import { setRedirectLocation } from '../../action-creators/history';
 import { getRedirectLocation } from '../../selectors/history';
 import replaceHistory from './replaceHistory';
 import goBackHistory from './goBackHistory';
@@ -20,8 +20,12 @@ const redirectRoute = () => (dispatch, getState) => {
 
   // If there is a redirect location set, go to this page.
   if (redirectLocation) {
-    dispatch(replaceHistory(redirectLocation));
+    /**
+     * Redirect location MUST be nulled before replace history happens.
+     * Otherwise syncHistory would abort.
+     */
     dispatch(setRedirectLocation(null));
+    dispatch(replaceHistory(redirectLocation));
   } else {
     // No further redirect set. Go back the previous page.
     dispatch(goBackHistory(1));

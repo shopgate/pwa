@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017, Shopgate, Inc. All rights reserved.
+ * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
  *
  * This source code is licensed under the Apache 2.0 license found in the
  * LICENSE file in the root directory of this source tree.
@@ -10,71 +10,73 @@
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isObject = prop =>
+export const isObject = prop => (
   (typeof prop === 'object') && (prop !== null) && (prop.constructor === Object)
-;
+);
 
 /**
  * Checks if a passed value is numeric.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isNumeric = prop =>
-  !isNaN(parseFloat(prop)) && isFinite(prop)
-;
+export const isNumeric = prop => (
+  // eslint-disable-next-line no-restricted-globals
+  !Number.isNaN(parseFloat(prop)) && isFinite(prop)
+);
 
 /**
  * Tests if the prop is a number.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isNumber = prop =>
+export const isNumber = prop => (
+  // eslint-disable-next-line no-restricted-globals
   (typeof prop === 'number') && isFinite(prop)
-;
+);
 
 /**
  * Tests if the prop is an integer.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isInteger = prop =>
+export const isInteger = prop => (
   isNumber(prop) && prop % 1 === 0
-;
+);
 
 /**
  * Tests if the prop is boolean.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isBoolean = prop =>
+export const isBoolean = prop => (
   typeof prop === 'boolean'
-;
+);
 
 /**
  * Tests if the prop is function.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isFunction = prop =>
+export const isFunction = prop => (
   typeof prop === 'function'
-;
+);
 
 /**
  * Tests if the prop is undefined.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isUndefined = prop =>
+export const isUndefined = prop => (
   typeof prop === 'undefined'
-;
+);
 
 /**
  * Tests if the prop is a promise.
  * @param {*} prop The property to test.
  * @return {boolean}
  */
-export const isPromise = prop =>
+export const isPromise = prop => (
   prop !== null &&
    (typeof prop === 'object' || typeof prop === 'function') &&
     typeof prop.then === 'function'
-;
+);
