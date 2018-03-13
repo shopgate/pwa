@@ -1,38 +1,25 @@
 {
   "name": "@shopgate/pwa-common-commerce",
   "version": "4.2.0",
-  "description": "Shopgate's commerce library for PWAs",
-  "repository": "shopgate/pwa-common-commerce",
-  "bugs": "https://github.com/shopgate/pwa-common-commerce/issues",
-  "homepage": "https://github.com/shopgate/pwa-common-commerce",
+  "description": "Commerce library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
+  "keywords": [
+    "pwa",
+    "commerce",
+    "connect-library",
+    "shopgate",
+    "connect"
+  ],
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx .",
-    "precommit": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
-    "coverage": "jest --coverage",
-    "prebuild": "rimraf ./dist",
-    "build": "NODE_ENV=production babel ./ --out-dir ./dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp ./*.json ./dist/ && cp ./*.md ./dist/",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && cd dist && npm publish --access public"
+    "cover": "jest --coverage"
   },
-  "lint-staged": {
-    "concurrent": false,
-    "linters": {
-      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx ."
-    }
-  },
-  "pre-commit": [
-    "precommit"
-  ],
   "dependencies": {
     "recompose": "^0.26.0",
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.4",
     "@shopgate/pwa-common": "^3.2.0",
     "@shopgate/pwa-core": "^1.5.0",
     "@shopgate/pwa-unit-test": "^1.3.0",
@@ -58,10 +45,5 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "rimraf": "^2.6.2"
-  },
-  "peerDependencies": {
-    "lodash": "4.x",
-    "@shopgate/pwa-core": "1.2.x",
-    "@shopgate/pwa-common": "1.3.x"
   }
 }

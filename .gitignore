@@ -37,7 +37,12 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# Project
 .cache-loader/
 .sgcloud/
+dist/
+build/
+coverage/
+public/
 pipelines/
 trustedPipelines/
