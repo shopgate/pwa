@@ -27,10 +27,7 @@ class Portal extends Component {
   constructor(props) {
     super(props);
 
-    this.components = this.getComponents(props.name, props.props);
-
     this.state = {
-      hasComponents: this.components.length > 0,
       hasError: false,
     };
   }
@@ -43,6 +40,10 @@ class Portal extends Component {
    */
   getComponents = (name, props) => {
     const components = [];
+
+    if (!config || !config.portals) {
+      return components;
+    }
 
     // Loop over the portal keys.
     Object.keys(config.portals).forEach((key, index) => {
@@ -88,7 +89,9 @@ class Portal extends Component {
    */
   render() {
     const { children } = this.props;
-    const { hasComponents, hasError } = this.state;
+    const { hasError } = this.state;
+    const components = this.getComponents(this.props.name, this.props.props);
+    const hasComponents = components.length > 0;
 
     /**
      * Render nothing if there are no children, matching components
@@ -107,10 +110,10 @@ class Portal extends Component {
        * and we render the last match only.
        */
       if (children) {
-        return this.components[this.components.length - 1];
+        return components[components.length - 1];
       }
 
-      return this.components;
+      return components;
     }
 
     return children;

@@ -46,10 +46,8 @@ export default function app(subscribe) {
 
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
-    if (isAndroid(getState())) {
-      event.addCallback('viewWillAppear', hideLegacyNavigation);
-      event.addCallback('viewWillDisappear', showLegacyNavigation);
-    }
+    event.addCallback('viewWillAppear', hideLegacyNavigation);
+    event.addCallback('viewWillDisappear', showLegacyNavigation);
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
      * This event is triggered form the desktop shop in the inAppBrowser.
