@@ -8,6 +8,7 @@
 // FEATURES
 const CATEGORY = 'category';
 const PRODUCT = 'product';
+const NAV_MENU = 'nav-menu';
 
 // CONTENTS
 const LIST = 'list';
@@ -19,6 +20,7 @@ const FAVORITES_BUTTON = 'favorites-button';
 const NAME = 'name';
 const MANUFACTURER = 'manufacturer';
 const AVAILABILITY = 'availability';
+const CATEGORIES = 'categories';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -65,3 +67,7 @@ export const PRODUCT_ITEM_MANUFACTURER_AFTER = `${PRODUCT}-${ITEM}.${MANUFACTURE
 export const PRODUCT_ITEM_AVAILABILITY_BEFORE = `${PRODUCT}-${ITEM}.${AVAILABILITY}.${BEFORE}`;
 export const PRODUCT_ITEM_AVAILABILITY = `${PRODUCT}-${ITEM}.${AVAILABILITY}`;
 export const PRODUCT_ITEM_AVAILABILITY_AFTER = `${PRODUCT}-${ITEM}.${AVAILABILITY}.${AFTER}`;
+
+export const NAV_MENU_CATEGORIES_BEFORE = `${NAV_MENU}.${CATEGORIES}.${BEFORE}`;
+export const NAV_MENU_CATEGORIES = `${NAV_MENU}.${CATEGORIES}`;
+export const NAV_MENU_CATEGORIES_AFTER = `${NAV_MENU}.${CATEGORIES}.${AFTER}`;

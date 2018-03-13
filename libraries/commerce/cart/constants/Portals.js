@@ -6,6 +6,7 @@
  */
 
 const CART = 'cart';
+const NAV_MENU = 'nav-menu';
 
 const ITEM_LIST = 'item-list';
 const ITEM = 'item';
@@ -56,3 +57,7 @@ export const CART_ITEM_COUPON_CODE_AFTER = `${CART}.${ITEM}.${COUPON_CODE}.${AFT
 export const CART_PAYMENT_BAR_BEFORE = `${CART}.${PAYMENT_BAR}.${BEFORE}`;
 export const CART_PAYMENT_BAR = `${CART}.${PAYMENT_BAR}`;
 export const CART_PAYMENT_BAR_AFTER = `${CART}.${PAYMENT_BAR}.${AFTER}`;
+
+export const NAV_MENU_CART_BEFORE = `${NAV_MENU}.${CART}.${BEFORE}`;
+export const NAV_MENU_CART = `${NAV_MENU}.${CART}`;
+export const NAV_MENU_CART_AFTER = `${NAV_MENU}.${CART}.${AFTER}`;
