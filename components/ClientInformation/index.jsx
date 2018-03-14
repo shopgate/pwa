@@ -78,7 +78,9 @@ class ClientInformation extends Component {
     }
 
     const { isDeviceIdVisible } = this.state;
-    const { appVersion, libVersion, deviceId, codebaseVersion } = this.props.client;
+    const {
+      appVersion, libVersion, deviceId, codebaseVersion,
+    } = this.props.client;
 
     return (
       <div className={styles.wrapper} onTouchStart={this.startTimer}>

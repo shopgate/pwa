@@ -1,6 +1,4 @@
-import {
-  favoritesWillRemoveItem$,
-} from '@shopgate/pwa-common-commerce/favorites/streams';
+import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import subscribe from './subscriptions';
 

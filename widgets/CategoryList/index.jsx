@@ -16,9 +16,7 @@ class CategoryListWidget extends Component {
   static propTypes = {
     settings: PropTypes.shape().isRequired,
     getCategory: PropTypes.func,
-    items: PropTypes.arrayOf(
-      PropTypes.shape()
-    ),
+    items: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {

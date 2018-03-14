@@ -6,9 +6,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index
 import ButtonLink from 'Components/ButtonLink';
 import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
 import connect from './connector';
-import {
-  container,
-} from './style';
+import { container } from './style';
 
 /**
  * Link to all reviews.

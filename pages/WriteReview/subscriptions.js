@@ -1,12 +1,9 @@
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import {
-  getCurrentBaseProductId,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import {
-  userDidLogout$,
-} from '@shopgate/pwa-common/streams/user';
+import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
+
 import {
   requestReviewSubmit$,
   responseReviewSubmit$,

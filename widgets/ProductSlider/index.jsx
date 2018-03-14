@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@shopgate/pwa-common/components/Slider';
 import Card from 'Components/Card';
@@ -36,9 +36,10 @@ const createSliderItem = (product, { showName, showPrice, showReviews }) => {
 /**
  * The core product slider widget.
  */
-class ProductSlider extends React.Component {
+class ProductSlider extends Component {
   static propTypes = {
     getProducts: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
     // The settings as received by the pipeline request
     settings: PropTypes.shape({
       headline: PropTypes.string.isRequired, // The headline of the product slider.
@@ -74,14 +75,13 @@ class ProductSlider extends React.Component {
     const { getProducts, id } = this.props;
     const { queryType, queryParams } = this.props.settings;
 
-
     getProducts(
       queryType,
       queryParams,
       {
         sort: transformDisplayOptions(this.props.settings.sortOrder),
       },
-      id,
+      id
     );
   }
 
@@ -106,13 +106,13 @@ class ProductSlider extends React.Component {
    * @return {JSX}
    */
   render() {
-    const settings = this.props.settings;
-    const sliderSettings = settings.sliderSettings;
+    const { settings } = this.props;
+    const { sliderSettings } = settings;
 
     // Create the slides for each product, only displays the first 30 products.
-    const items = this.props.products.slice(0, 30).map(
+    const items = this.props.products.slice(0, 30).map((
       product => createSliderItem(product, settings)
-    );
+    ));
 
     if (!items.length) {
       return null;

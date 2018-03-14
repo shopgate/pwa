@@ -7,6 +7,4 @@ const container = css({
   alignItems: 'center',
 }).toString();
 
-export {
-  container,
-};
+export { container };

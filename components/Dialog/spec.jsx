@@ -43,15 +43,13 @@ describe('<Dialog />', () => {
       productId: 'product_1',
     };
 
-    const wrapper = shallow(
-      <Dialog
-        modal={{
+    const wrapper = shallow(<Dialog
+      modal={{
           message: 'Test',
           type: MODAL_VARIANT_SELECT,
           params,
         }}
-      />
-    );
+    />);
 
     expect(wrapper).toMatchSnapshot();
 

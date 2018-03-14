@@ -19,9 +19,7 @@ describe.skip('<ProductsWidget />', () => {
   };
 
   it('should render the grid only when products are received', () => {
-    const wrapper = shallow(
-      <ProductsWidget {...props} />
-    );
+    const wrapper = shallow(<ProductsWidget {...props} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ProductGrid).length).toBe(0);
@@ -36,9 +34,7 @@ describe.skip('<ProductsWidget />', () => {
   });
 
   it('should render the products in the list view', () => {
-    const wrapper = shallow(
-      <ProductsWidget {...props} />
-    );
+    const wrapper = shallow(<ProductsWidget {...props} />);
 
     // Change the layout to a list.
     wrapper.setProps({

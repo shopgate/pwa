@@ -12,7 +12,6 @@ import styles from './style';
  * or the given source image cannot be loaded.
  */
 class ProductImage extends Component {
-  /* eslint-disable react/no-unused-prop-types */
   /**
    * See Image component manual for detailed description
    * about the component property types.
@@ -23,16 +22,13 @@ class ProductImage extends Component {
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf(
-      PropTypes.shape({
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-        blur: PropTypes.number,
-      })
-    ),
+    resolutions: PropTypes.arrayOf(PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      blur: PropTypes.number,
+    })),
     src: PropTypes.string,
   };
-
 
   static defaultProps = {
     alt: null,
@@ -41,8 +37,15 @@ class ProductImage extends Component {
     highestResolutionLoaded: () => {},
     ratio: null,
     resolutions: [
-      { width: 50, height: 50, blur: 2 },
-      { width: 440, height: 440 },
+      {
+        blur: 2,
+        height: 50,
+        width: 50,
+      },
+      {
+        height: 440,
+        width: 440,
+      },
     ],
     src: null,
   };
@@ -85,15 +88,6 @@ class ProductImage extends Component {
   }
 
   /**
-   * Triggered when the image could not be loaded for some reason.
-   */
-  imageLoadingFailed = () => {
-    this.setState({
-      showPlaceholder: true,
-    });
-  };
-
-  /**
    * Renders the actual content (image or placeholder).
    * @return {JSX}
    */
@@ -114,6 +108,15 @@ class ProductImage extends Component {
       <Image {...this.props} className={styles.container} onError={this.imageLoadingFailed} />
     );
   }
+
+  /**
+   * Triggered when the image could not be loaded for some reason.
+   */
+  imageLoadingFailed = () => {
+    this.setState({
+      showPlaceholder: true,
+    });
+  };
 
   /**
    * Renders the component.

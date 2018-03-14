@@ -20,9 +20,7 @@ describe('<ProductImageSlider />', () => {
 
   it('should render image placeholder if no data is available', () => {
     const store = mockStore({});
-    const wrapper = mount(
-      <ProductImageSlider store={store} product={null} images={null} />
-    );
+    const wrapper = mount(<ProductImageSlider store={store} product={null} images={null} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').length).toEqual(0);
@@ -32,9 +30,7 @@ describe('<ProductImageSlider />', () => {
 
   it('should render featured image if only product data a is available', () => {
     const store = mockStore({});
-    const wrapper = mount(
-      <ProductImageSlider store={store} product={product} images={null} />
-    );
+    const wrapper = mount(<ProductImageSlider store={store} product={product} images={null} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ProductImage).length).toEqual(1);
@@ -45,9 +41,7 @@ describe('<ProductImageSlider />', () => {
 
   it('should render image slider if all data is available', () => {
     const store = mockStore({});
-    const wrapper = mount(
-      <ProductImageSlider store={store} product={product} images={images} />
-    );
+    const wrapper = mount(<ProductImageSlider store={store} product={product} images={images} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ImageSlider).length).toEqual(1);

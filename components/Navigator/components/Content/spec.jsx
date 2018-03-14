@@ -21,18 +21,14 @@ jest.mock('./connector', () => (obj) => {
 
 describe('<Content />', () => {
   it('should render the logo', () => {
-    const wrapper = shallow(
-      <Content path="/" />
-    );
+    const wrapper = shallow(<Content path="/" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Logo).exists()).toBe(true);
   });
 
   it('should render the title', () => {
-    const wrapper = shallow(
-      <Content path="some/other/path" />
-    );
+    const wrapper = shallow(<Content path="some/other/path" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Title).exists()).toBe(true);

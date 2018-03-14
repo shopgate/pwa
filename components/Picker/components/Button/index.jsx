@@ -7,7 +7,9 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Button = ({ disabled, label, openList, value }) => (
+const Button = ({
+  disabled, label, openList, value,
+}) => (
   <button
     className={`${disabled ? styles.buttonDisabled : styles.button}`}
     onClick={openList}

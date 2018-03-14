@@ -7,15 +7,13 @@ describe.skip('<FilterBar>', () => {
   global.requestAnimationFrame = () => {};
 
   it('should hide if outside of the view', () => {
-    const wrapper = shallow(
-      <FilterBar
-        viewMode={GRID_VIEW}
-        handleToggleViewMode={() => {}}
-        handleSortChange={() => {}}
-        handleOpenFiltersView={() => {}}
-        getFilters={() => {}}
-      />
-    );
+    const wrapper = shallow(<FilterBar
+      viewMode={GRID_VIEW}
+      handleToggleViewMode={() => {}}
+      handleSortChange={() => {}}
+      handleOpenFiltersView={() => {}}
+      getFilters={() => {}}
+    />);
 
     const filterBar = wrapper.instance();
     filterBar.element = {
@@ -35,15 +33,13 @@ describe.skip('<FilterBar>', () => {
   });
 
   it('does not reset the spacer height if element height is not available', () => {
-    const wrapper = shallow(
-      <FilterBar
-        viewMode={GRID_VIEW}
-        handleToggleViewMode={() => {}}
-        handleSortChange={() => {}}
-        handleOpenFiltersView={() => {}}
-        getFilters={() => {}}
-      />
-    );
+    const wrapper = shallow(<FilterBar
+      viewMode={GRID_VIEW}
+      handleToggleViewMode={() => {}}
+      handleSortChange={() => {}}
+      handleOpenFiltersView={() => {}}
+      getFilters={() => {}}
+    />);
     const filterBar = wrapper.instance();
 
     filterBar.element = { offsetHeight: 50 };

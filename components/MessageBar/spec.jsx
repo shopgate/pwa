@@ -22,9 +22,8 @@ describe('<MessageBar />', () => {
   });
 
   describe('Multiple messages rendering', () => {
-    const wrapper = mount(
-      <MessageBar
-        messages={[
+    const wrapper = mount(<MessageBar
+      messages={[
           {
             message: MESSAGE1,
           },
@@ -37,8 +36,7 @@ describe('<MessageBar />', () => {
             message: MESSAGE3,
           },
         ]}
-      />
-    );
+    />);
 
     const messageContainer = wrapper.find(`.${styles.container}`);
 

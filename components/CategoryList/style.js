@@ -1,6 +1,6 @@
 
- import { css } from 'glamor';
+import { css } from 'glamor';
 
- export default css({
-   marginBottom: 20,
- }).toString();
+export default css({
+  marginBottom: 20,
+}).toString();

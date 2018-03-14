@@ -35,11 +35,11 @@ describe('<CTAButtons />', () => {
     /* eslint-disable global-require */
     const CTAButtons = require('./index').default;
     /* eslint-enable global-require */
-    return mount(
+    return mount((
       <Provider store={store}>
         <CTAButtons {...props} />
       </Provider>
-    );
+    ));
   };
 
   it('should render buttons', () => {

@@ -12,6 +12,4 @@ const getElementById = scrollSpy => () => ({
   },
 });
 
-export {
-  getElementById,
-};
+export { getElementById };

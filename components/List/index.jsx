@@ -38,15 +38,14 @@ class List extends Component {
           if (!React.isValidElement(child)) {
             return null;
           }
+
           // The key for each child.
           const key = `child-${index}`;
-          // Selected state for the child.
-          const isSelected = child.props.isSelected;
 
           return (
             <BaseListItem
               className={styles.item}
-              isSelected={isSelected}
+              isSelected={child.props.isSelected}
               key={key}
             >
               <div className={styles.innerContainer}>

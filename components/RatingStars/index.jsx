@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
 import StarIcon from 'Components/icons/StarIcon';
@@ -16,7 +16,7 @@ const availableStyles = styles.iconStyles;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-class RatingStars extends React.Component {
+class RatingStars extends Component {
   static propTypes = {
     value: PropTypes.number.isRequired,
     className: PropTypes.string,
@@ -137,11 +137,11 @@ class RatingStars extends React.Component {
           </div>
         );
       }),
-      ...times(numHalfStars, i =>
+      ...times(numHalfStars, i => (
         <div className={iconClassName} key={i + numFullStars}>
           <StarHalfIcon size={size} />
         </div>
-      ),
+      )),
     ];
 
     return (

@@ -8,6 +8,4 @@ const container = css({
   marginBottom: variables.gap.small,
 }).toString();
 
-export {
-  container,
-};
+export { container };
