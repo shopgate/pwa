@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ignore-path ../.gitignore  --ext .js --ext .jsx .",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "cover": "jest --coverage"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^1.0.4",
