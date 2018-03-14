@@ -1,4 +1,3 @@
-
 const materialShadow = 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px';
 
 module.exports = {
