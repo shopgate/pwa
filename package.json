@@ -5,7 +5,8 @@
     "setup": "sgconnect init && lerna bootstrap",
     "test": "lerna run test",
     "cover": "lerna run cover",
-    "cover:report": "node ./scripts/send-coverage.js"
+    "cover:report": "node ./scripts/send-coverage.js",
+    "lint": "lerna run lint"
   },
   "workspaces": [
     "extensions/*",
@@ -14,6 +15,7 @@
     "utils/*"
   ],
   "devDependencies": {
-    "lerna": "^2.9.0"
+    "lerna": "^2.9.0",
+    "lerna-changelog": "^0.7.0"
   }
 }

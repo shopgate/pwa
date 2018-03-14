@@ -1,6 +1,4 @@
-import {
-  RECEIVE_CLIENT_INFORMATION,
-} from '../constants/ActionTypes';
+import { RECEIVE_CLIENT_INFORMATION } from '../constants/ActionTypes';
 import { main$ } from './main';
 
 /**

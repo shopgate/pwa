@@ -1,4 +1,5 @@
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
+import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import trackingCore from '@shopgate/tracking-core/core/Core';
 import { LEGACY_URL } from './constants';
@@ -13,7 +14,12 @@ export default function checkout(subscribe) {
   /**
    * Gets triggered when the user enters the checkout.
    */
-  subscribe(openedCheckoutLink$, ({ dispatch }) => {
+  subscribe(openedCheckoutLink$, ({ dispatch, getState }) => {
+    // Check if user is logged in.
+    if (!isUserLoggedIn(getState())) {
+      return;
+    }
+
     dispatch(fetchCheckoutUrl())
       .then((url) => {
         /**
