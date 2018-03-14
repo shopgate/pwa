@@ -19,9 +19,12 @@ describe('<ClientInformation />', () => {
   });
 
   it('should not render if the data is still being fetched', () => {
-    const wrapper = shallow(
-      <ClientInformation client={{ isFetching: true }} enableDebugLogging={() => {}} />
-    );
+    const wrapper = shallow((
+      <ClientInformation
+        client={{ isFetching: true }}
+        enableDebugLogging={() => {}}
+      />
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('div').exists()).toBe(false);
@@ -29,9 +32,12 @@ describe('<ClientInformation />', () => {
 
   describe('App and lib version, and device ID', () => {
     it('should render the app and lib version', () => {
-      const wrapper = shallow(
-        <ClientInformation client={mockData} enableDebugLogging={() => {}} />
-      );
+      const wrapper = shallow((
+        <ClientInformation
+          client={mockData}
+          enableDebugLogging={() => {}}
+        />
+      ));
 
       expect(wrapper).toMatchSnapshot();
 
@@ -43,9 +49,12 @@ describe('<ClientInformation />', () => {
     });
 
     it('should show the device ID', () => {
-      const wrapper = shallow(
-        <ClientInformation client={mockData} enableDebugLogging={() => {}} />
-      );
+      const wrapper = shallow((
+        <ClientInformation
+          client={mockData}
+          enableDebugLogging={() => {}}
+        />
+      ));
 
       wrapper.setState({ isDeviceIdVisible: true });
       wrapper.render();

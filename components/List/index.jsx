@@ -39,7 +39,7 @@ class List extends Component {
           // The key for each child.
           const key = `child-${index}`;
           // Selected state for the child.
-          const isSelected = child.props.isSelected;
+          const { isSelected } = child.props;
           // Whether or not this child is the last.
           const isLast = (index === children.length - 1);
 

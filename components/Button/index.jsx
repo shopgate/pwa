@@ -71,7 +71,7 @@ class Button extends Component {
    * @return {JSX}
    */
   render() {
-    const style = this.style;
+    const { style } = this;
 
     const content = this.props.wrapContent ? (
       <div className={style.content}>

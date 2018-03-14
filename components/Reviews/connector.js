@@ -1,10 +1,6 @@
 import { connect } from 'react-redux';
-import {
-  getProductRating,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import {
-  getProductReviewsExcerpt,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
+import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductReviewsExcerpt } from '@shopgate/pwa-common-commerce/reviews/selectors';
 
 /**
  * Maps the contents of the state to the component props.

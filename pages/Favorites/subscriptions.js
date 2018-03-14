@@ -1,13 +1,7 @@
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import {
-  addFavorites,
-} from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import {
-  favoritesWillRemoveItem$,
-} from '@shopgate/pwa-common-commerce/favorites/streams';
-import {
-  getHistoryPathname,
-} from '@shopgate/pwa-common/selectors/history';
+import { addFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
+import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 

@@ -47,8 +47,9 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount((
-      <ImageSliderWidget settings={mySettings} />
+    const wrapper = mount(
+      (
+        <ImageSliderWidget settings={mySettings} />
       ),
       testContext
     );
@@ -69,9 +70,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     const images = wrapper.find(Image);
@@ -93,9 +92,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Slider.Item).length).toBe(0);
@@ -112,9 +109,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Link).length).toBe(0);
@@ -135,9 +130,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Link).length).toBe(mySettings.images.length - 1);

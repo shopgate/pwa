@@ -10,7 +10,9 @@ import styles from './style';
  * @param {string} props.text The text contents of the component.
  * @returns {JSX}
  */
-const DiscountBadge = ({ text, className, display, discount }) => (
+const DiscountBadge = ({
+  text, className, display, discount,
+}) => (
   <I18n.Text
     className={`${styles[display]} ${className}`}
     string={text}

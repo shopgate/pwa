@@ -11,9 +11,7 @@ describe.skip('<ImageWidget />', () => {
       url: '/category/3339',
     };
 
-    const wrapper = shallow(
-      <ImageWidget settings={settings} />
-    );
+    const wrapper = shallow(<ImageWidget settings={settings} />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -26,9 +24,7 @@ describe.skip('<ImageWidget />', () => {
       url: '',
     };
 
-    const wrapper = shallow(
-      <ImageWidget settings={settings} />
-    );
+    const wrapper = shallow(<ImageWidget settings={settings} />);
 
     expect(wrapper.find('Link').exists()).toBe(false);
     expect(wrapper).toMatchSnapshot();

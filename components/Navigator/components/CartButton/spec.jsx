@@ -12,9 +12,7 @@ jest.mock('./connector', () => obj => obj);
 
 describe('<CartButton />', () => {
   it('should not be visible with prop visible set to false', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={0} visible={false} activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={0} visible={false} activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('0');
@@ -24,27 +22,21 @@ describe('<CartButton />', () => {
   });
 
   it('should render with cartProductCount beeing set to 4', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={4} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={4} visible activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('4');
   });
 
   it('should show \'99+\' if the cart amount is higher', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={115} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={115} visible activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe(`${CART_MAX_ITEMS}+`);
   });
 
   it('should transition if it has cart amount', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={5} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={5} visible activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     const buttonProps = wrapper.find('button').props();
@@ -54,9 +46,7 @@ describe('<CartButton />', () => {
   });
 
   it('should not delay transition when the cart page is left', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={5} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={5} visible activeCartRoute={false} />);
 
     expect(wrapper.state().useAnimationDelay).toBe(true);
 

@@ -13,7 +13,7 @@ describe('<ZoomPanSlider />', () => {
   it('renders with children', () => {
     const numChildren = 5;
 
-    const wrapper = mount(
+    const wrapper = mount((
       <ZoomPanSlider>
         <TestElement />
         <TestElement />
@@ -21,7 +21,7 @@ describe('<ZoomPanSlider />', () => {
         <TestElement />
         <TestElement />
       </ZoomPanSlider>
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(TestElement).length).toBe(numChildren);
@@ -30,12 +30,12 @@ describe('<ZoomPanSlider />', () => {
   it('wraps children in zoom containers', () => {
     const numChildren = 2;
 
-    const wrapper = mount(
+    const wrapper = mount((
       <ZoomPanSlider>
         <TestElement />
         <TestElement />
       </ZoomPanSlider>
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('ZoomPanContainer').length).toBe(numChildren);

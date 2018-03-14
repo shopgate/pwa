@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RatingStars from 'Components/RatingStars';
@@ -8,7 +8,7 @@ import styles from './style';
 /**
  * The rating scale component.
  */
-class RatingScale extends React.Component {
+class RatingScale extends Component {
   static propTypes = {
     errorText: PropTypes.string,
     onChange: PropTypes.func,
@@ -48,7 +48,7 @@ class RatingScale extends React.Component {
    * @param {SyntheticEvent} e SyntheticEvent.
    */
   updateValue(e) {
-    const value = e.target.value;
+    const { value } = e.target;
     this.setState({ value });
     this.props.onChange(value);
   }

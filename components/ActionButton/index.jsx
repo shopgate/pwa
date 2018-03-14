@@ -26,18 +26,6 @@ class ActionButton extends Component {
   static clickDelay = 300;
 
   /**
-   * The click handler
-   * @param {Object} event The event object for the click handler
-   */
-  handleClick = (event) => {
-    const { clickDelay } = this.constructor;
-
-    setTimeout(() => {
-      this.props.onClick(event);
-    }, clickDelay);
-  };
-
-  /**
    * Getter for the calculated button props.
    * @returns {Object}
    */
@@ -51,6 +39,18 @@ class ActionButton extends Component {
 
     return buttonProps;
   }
+
+  /**
+   * The click handler
+   * @param {Object} event The event object for the click handler
+   */
+  handleClick = (event) => {
+    const { clickDelay } = this.constructor;
+
+    setTimeout(() => {
+      this.props.onClick(event);
+    }, clickDelay);
+  };
 
   /**
    * The render function.

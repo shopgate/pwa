@@ -15,9 +15,7 @@ describe.skip('<CategoryListWidget />', () => {
       },
     };
 
-    const wrapper = mount(
-      <CategoryListWidget {...props} />
-    );
+    const wrapper = mount(<CategoryListWidget {...props} />);
 
     expect(wrapper.find(List.Item).length).toBe(0);
     expect(wrapper).toMatchSnapshot();
@@ -45,9 +43,7 @@ describe.skip('<CategoryListWidget />', () => {
       },
     };
 
-    const wrapper = mount(
-      <CategoryListWidget {...props} />
-    );
+    const wrapper = mount(<CategoryListWidget {...props} />);
 
     expect(wrapper.find(List.Item).length).toBe(2);
     expect(wrapper).toMatchSnapshot();

@@ -36,11 +36,9 @@ const handleClick = ({ onClick, href, close }) => {
  * @returns {JSX}
  */
 const Item = (props) => {
-  const className = classNames(
-    styles.container, {
-      [styles.primary]: props.primary,
-    }
-  );
+  const className = classNames(styles.container, {
+    [styles.primary]: props.primary,
+  });
 
   const labelClassName =
           props.withIndicator && !props.count ? styles.labelWithIndicator : styles.label;

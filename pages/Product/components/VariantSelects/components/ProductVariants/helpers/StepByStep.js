@@ -39,9 +39,9 @@ class StepByStep extends ProductVariants {
 
       if (nextCharacteristicId === null) {
         // No further selections found. This means, a new product can be selected to display
-        const products = this.filterProducts(
+        const products = this.filterProducts((
           this.getCharacteristicsForProductFilter(characteristicId)
-        );
+        ));
 
         // Update the product to the new id
         this.setProductId(products[0].id);

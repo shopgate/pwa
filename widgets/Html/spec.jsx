@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-// TODO import { JSDOM } from 'jsdom';
+// TODO: import { JSDOM } from 'jsdom';
 import HtmlWidget from './index';
 
 const mockConstructor = jest.fn();
@@ -29,9 +29,7 @@ describe.skip('<HtmlWidget />', () => {
       html: '&lt;h1&gt;Hello World!&lt;/h1&gt;',
     };
 
-    const wrapper = shallow(
-      <HtmlWidget settings={settings} />
-    );
+    const wrapper = shallow(<HtmlWidget settings={settings} />);
 
     // Test result of dangerouslySetInnerHTML.
     expect(wrapper.html()).toEqual('<div><h1>Hello World!</h1></div>');
@@ -48,9 +46,7 @@ describe.skip('<HtmlWidget />', () => {
       html: '&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt;var x = 42;&lt;/script&gt; &lt;p&gt;Foo Bar&lt;/p&gt; &lt;script&gt;var y = 23;&lt;/script&gt;',
     };
 
-    const wrapper = shallow(
-      <HtmlWidget settings={settings} />
-    );
+    const wrapper = shallow(<HtmlWidget settings={settings} />);
 
     // Test result of dangerouslySetInnerHTML.
     expect(wrapper.html()).toEqual('<div><p>Foo Bar</p> </div>');
@@ -68,10 +64,9 @@ describe.skip('<HtmlWidget />', () => {
       const settings = {
         html: '&lt;a id=&quot;link&quot; href=&quot;#follow-me-and-everything-is-alright&quot;&gt;Plain Link&lt;/a&gt;',
       };
-      const wrapper = mount(
-        <HtmlWidget settings={settings} />, {
-          attachTo: doc.getElementsByTagName('div')[0],
-        });
+      const wrapper = mount(<HtmlWidget settings={settings} />, {
+        attachTo: doc.getElementsByTagName('div')[0],
+      });
 
       const aTag = doc.getElementsByTagName('a')[0];
       aTag.closest = () => aTag;
@@ -87,10 +82,9 @@ describe.skip('<HtmlWidget />', () => {
       const settings = {
         html: '&lt;a id=&quot;link&quot; href=&quot;#I-ll-be-the-one-to-tuck-you-in-at-night&quot;&gt;&lt;span&gt;Span Link&lt;/span&gt;&lt;/a&gt;',
       };
-      const wrapper = mount(
-        <HtmlWidget settings={settings} />, {
-          attachTo: doc.getElementsByTagName('div')[0],
-        });
+      const wrapper = mount(<HtmlWidget settings={settings} />, {
+        attachTo: doc.getElementsByTagName('div')[0],
+      });
 
       const aTag = doc.getElementsByTagName('a')[0];
       const spanTag = doc.getElementsByTagName('span')[0];

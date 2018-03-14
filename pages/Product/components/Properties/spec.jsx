@@ -20,9 +20,7 @@ describe('<Properties />', () => {
 
   it('should not render if no data is available', () => {
     const store = mockStore({ view: { isAnimating: false } });
-    const wrapper = mount(
-      <Properties store={store} properties={null} />
-    );
+    const wrapper = mount(<Properties store={store} properties={null} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('table').length).toEqual(0);
@@ -30,9 +28,7 @@ describe('<Properties />', () => {
 
   it('should render table with properties', () => {
     const store = mockStore({ view: { isAnimating: false } });
-    const wrapper = mount(
-      <Properties store={store} properties={properties} />
-    );
+    const wrapper = mount(<Properties store={store} properties={properties} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('table').length).toEqual(1);

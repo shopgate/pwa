@@ -35,7 +35,7 @@ class RippleAnimation extends Component {
    * @returns {JSX}
    */
   render() {
-    const duration = this.props.duration;
+    const { duration } = this.props;
 
     return (
       <Transition
