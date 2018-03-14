@@ -1,8 +1,7 @@
 {
   "name": "@shopgate/theme-gmd",
   "version": "4.11.2",
-  "description": "Shopgate's Google Material app theme.",
-  "main": "index.jsx",
+  "description": "Google Material Design theme for the Shopgate Connect PWA.",
   "repository": "shopgate/theme-gmd",
   "bugs": "https://github.com/shopgate/theme-gmd/issues",
   "homepage": "https://github.com/shopgate/theme-gmd",
@@ -19,7 +18,7 @@
   "lint-staged": {
     "concurrent": false,
     "linters": {
-      "*.js": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore --ext .js --ext .jsx ."
+      "*.js": "npm run lint"
     }
   },
   "pre-commit": [

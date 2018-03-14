@@ -1,4 +1,3 @@
-
 /**
  * -------------------------------------------------------------------------
  * ATTENTION:
@@ -7,8 +6,8 @@
  * -------------------------------------------------------------------------
  */
 import React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import {render} from 'react-dom';
+import {AppContainer} from 'react-hot-loader';
 import 'Extensions/portals';
 import onload from '@shopgate/pwa-core/commands/onload';
 import Pages from './pages';
