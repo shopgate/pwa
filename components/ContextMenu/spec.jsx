@@ -24,12 +24,12 @@ describe('<ContextMenu />', () => {
    * The view component
    */
   const renderComponent = () => {
-    renderedElement = mount(
+    renderedElement = mount((
       <ContextMenu>
         <ContextMenu.Item onClick={mockItemAClick}>Item A</ContextMenu.Item>
         <ContextMenu.Item onClick={mockItemBClick}>Item B</ContextMenu.Item>
       </ContextMenu>
-    );
+    ));
 
     renderedInstance = renderedElement.instance();
   };

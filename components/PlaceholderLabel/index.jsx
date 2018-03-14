@@ -7,7 +7,9 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const PlaceholderLabel = ({ children, className, ready, style }) => {
+const PlaceholderLabel = ({
+  children, className, ready, style,
+}) => {
   if (!ready) {
     return (
       <div style={style} className={`${styles.label} ${className}`} />

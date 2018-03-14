@@ -22,7 +22,9 @@ const IndicatorCircle = ({ size, color, strokeWidth }) => (
   >
     <circle
       className={styles.circle(color, strokeWidth)}
-      cx="50" cy="50" r="20"
+      cx="50"
+      cy="50"
+      r="20"
     />
   </svg>
 );

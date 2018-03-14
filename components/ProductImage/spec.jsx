@@ -6,9 +6,7 @@ import ProductImage from './index';
 
 describe('<ProductImage />', () => {
   it('should render a placeholder if no src prop is provided', () => {
-    const wrapper = shallow(
-      <ProductImage />
-    );
+    const wrapper = shallow(<ProductImage />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Image).length).toBe(0);
@@ -16,9 +14,7 @@ describe('<ProductImage />', () => {
   });
 
   it('should render the image without a placeholder', () => {
-    const wrapper = shallow(
-      <ProductImage src="http://placehold.it/300x300" />
-    );
+    const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Image).length).toBe(1);

@@ -14,9 +14,7 @@ export const getExternalScripts = (nodes, callback, isRoot = true) => {
     // We only want external scripts.
     if (node.tagName !== 'SCRIPT' || !node.src) {
       if (node.childNodes && node.childNodes.length) {
-        return result.concat(
-          getExternalScripts(node.childNodes, callback, false)
-        );
+        return result.concat(getExternalScripts(node.childNodes, callback, false));
       }
       return result;
     }

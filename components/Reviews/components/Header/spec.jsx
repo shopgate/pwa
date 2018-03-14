@@ -27,7 +27,7 @@ const createComponent = (mockedState, props = {}) => mount(
 describe('<Header />', () => {
   let header = null;
   it('should render empty', () => {
-    const rating = mockedStateWithoutReview.product.productsById.foo.productData.rating;
+    const { rating } = mockedStateWithoutReview.product.productsById.foo.productData;
     header = createComponent(mockedStateWithoutReview, { rating });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
@@ -36,7 +36,7 @@ describe('<Header />', () => {
   });
 
   it('should render rating summary', () => {
-    const rating = mockedStateWithAll.product.productsById.foo.productData.rating;
+    const { rating } = mockedStateWithAll.product.productsById.foo.productData;
     header = createComponent(mockedStateWithAll, { rating });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();

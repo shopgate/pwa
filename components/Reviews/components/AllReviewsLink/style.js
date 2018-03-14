@@ -12,6 +12,4 @@ const container = css({
   marginBottom: -variables.gap.big,
 });
 
-export {
-  container,
-};
+export { container };

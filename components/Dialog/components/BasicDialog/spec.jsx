@@ -22,17 +22,13 @@ describe('<BasicDialog />', () => {
   };
 
   it('should render with minimal props', () => {
-    const wrapper = shallow(
-      <BasicDialog actions={[]} />
-    );
+    const wrapper = shallow(<BasicDialog actions={[]} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should show correct number of buttons', () => {
-    const wrapper = shallow(
-      <BasicDialog {...props} />
-    );
+    const wrapper = shallow(<BasicDialog {...props} />);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -40,9 +36,7 @@ describe('<BasicDialog />', () => {
   });
 
   it('should trigger correct actions', () => {
-    const wrapper = shallow(
-      <BasicDialog {...props} />
-    );
+    const wrapper = shallow(<BasicDialog {...props} />);
 
     const button = wrapper.find(Button).at(1);
     button.simulate('click');

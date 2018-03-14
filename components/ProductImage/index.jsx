@@ -12,8 +12,6 @@ import styles from './style';
  * or the given source image cannot be loaded.
  */
 class ProductImage extends Component {
-
-  /* eslint-disable react/no-unused-prop-types */
   /**
    * See Image component manual for detailed description about the component property types.
    */
@@ -23,16 +21,13 @@ class ProductImage extends Component {
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf(
-      PropTypes.shape({
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-        blur: PropTypes.number,
-      })
-    ),
+    resolutions: PropTypes.arrayOf(PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      blur: PropTypes.number,
+    })),
     src: PropTypes.string,
   };
-  /* eslint-enable react/no-unused-prop-types */
 
   static defaultProps = {
     alt: null,

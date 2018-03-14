@@ -1,6 +1,4 @@
-import {
-  mockedStateWithoutReview,
-} from 'Components/Reviews/mock';
+import { mockedStateWithoutReview } from 'Components/Reviews/mock';
 
 export const mockedState = {
   ...mockedStateWithoutReview,

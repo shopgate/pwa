@@ -24,7 +24,6 @@ class ProductsWidget extends Component {
   };
 
   static defaultProps = {
-    getProducts: () => {},
     isFetching: null,
     products: null,
     totalProductCount: null,

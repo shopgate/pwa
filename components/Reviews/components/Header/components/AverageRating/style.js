@@ -8,6 +8,4 @@ const container = css({
   marginBottom: 8,
 }).toString();
 
-export {
-  container,
-};
+export { container };

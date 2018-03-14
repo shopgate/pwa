@@ -9,7 +9,9 @@ import connect from './connector';
  * Handles the add to cart action.
  * @param {Object} props The Component props
  */
-const handleAddToCart = ({ productId, addToCart, showVariantModal, isBaseProduct }) => {
+const handleAddToCart = ({
+  productId, addToCart, showVariantModal, isBaseProduct,
+}) => {
   if (isBaseProduct(productId)) {
     showVariantModal(productId);
     return;

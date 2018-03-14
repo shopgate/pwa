@@ -10,6 +10,10 @@ import { mockedState } from './mock';
 
 const mockedStore = configureStore();
 
+/**
+ * @param {Object} state The application state.
+ * @returns {JSX}
+ */
 const createComponent = (state) => {
   /* eslint-disable global-require */
   const SnackBar = require('./index').default;

@@ -42,8 +42,4 @@ ListItem.propTypes = {
   filter: PropTypes.shape().isRequired,
 };
 
-ListItem.defaultProps = {
-  onClear: () => {},
-};
-
 export default ListItem;

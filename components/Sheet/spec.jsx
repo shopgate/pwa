@@ -6,36 +6,32 @@ window.requestAnimationFrame = () => {};
 
 describe('<Sheet />', () => {
   it('should render closed without content', () => {
-    const wrapper = shallow(
-      <Sheet />
-    );
+    const wrapper = shallow(<Sheet />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render opened without content', () => {
-    const wrapper = shallow(
-      <Sheet isOpen />
-    );
+    const wrapper = shallow(<Sheet isOpen />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render with content and title', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <Sheet isOpen title="Test-Title">
         <div>Test</div>
       </Sheet>
-    );
+    ));
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should trigger onClose callback and close the Sheet', () => {
     const spy = jest.fn();
 
-    const wrapper = mount(
+    const wrapper = mount((
       <Sheet isOpen title="Test-Title" onClose={spy}>
         <div>Test</div>
       </Sheet>
-    );
+    ));
 
     // Trigger a click on the close button of the Sheet.
     wrapper.find('button').first().simulate('click');
@@ -57,11 +53,11 @@ describe('<Sheet />', () => {
   });
 
   it('should open', () => {
-    const wrapper = mount(
+    const wrapper = mount((
       <Sheet isOpen={false} title="Test-Title">
         <div>Test</div>
       </Sheet>
-    );
+    ));
 
     wrapper.setProps({ isOpen: true });
     expect(wrapper.find('Drawer').prop('isOpen')).toBeTruthy();

@@ -94,7 +94,9 @@ class Options extends Component {
 
     return (
       <div>
-        {options.map(({ id, type, label, items }) => {
+        {options.map(({
+ id, type, label, items,
+}) => {
           if (type !== 'select') {
             return null;
           }

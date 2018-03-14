@@ -20,13 +20,11 @@ describe('<SearchSuggestions />', () => {
   });
 
   it('should render without props', () => {
-    const wrapper = shallow(
-      <SearchSuggestions
-        {...defaultProps}
-        searchPhrase="foo"
-        isFecthing={false}
-      />
-    );
+    const wrapper = shallow(<SearchSuggestions
+      {...defaultProps}
+      searchPhrase="foo"
+      isFecthing={false}
+    />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -43,9 +41,7 @@ describe('<SearchSuggestions />', () => {
       searchPhrase,
     };
 
-    const wrapper = shallow(
-      <SearchSuggestions {...props} />
-    );
+    const wrapper = shallow(<SearchSuggestions {...props} />);
 
     wrapper.instance().handleSelect(searchPhrase);
 
@@ -65,9 +61,7 @@ describe('<SearchSuggestions />', () => {
       ],
     };
 
-    const wrapper = shallow(
-      <SearchSuggestions {...props} />
-    );
+    const wrapper = shallow(<SearchSuggestions {...props} />);
 
     expect(wrapper.find('SearchSuggestion').length).toBe(props.suggestions.length);
 
@@ -87,9 +81,7 @@ describe('<SearchSuggestions />', () => {
       ],
     };
 
-    const wrapper = shallow(
-      <SearchSuggestions {...props} />
-    );
+    const wrapper = shallow(<SearchSuggestions {...props} />);
 
     expect(wrapper.find('SearchSuggestion').length).toBe(0);
 

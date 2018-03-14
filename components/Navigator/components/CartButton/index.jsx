@@ -15,15 +15,10 @@ import connect from './connector';
  */
 class CartButton extends Component {
   static propTypes = {
-    activeCartRoute: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+    activeCartRoute: PropTypes.bool.isRequired,
     cartProductCount: PropTypes.number.isRequired,
     openCart: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
-  };
-
-  static defaultProps = {
-    openCart: () => {},
-    visible: true,
   };
 
   /**
