@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
-    "test": "lerna run test",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "cover": "lerna run cover",
     "cover:report": "node ./scripts/send-coverage.js",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
