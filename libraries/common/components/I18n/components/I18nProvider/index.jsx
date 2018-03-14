@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   getTranslator,
@@ -11,7 +11,7 @@ import {
  * A React component that provides child components with i18n features.
  * @returns {React.Component}
  */
-export default class I18nProvider extends React.Component {
+export default class I18nProvider extends Component {
   static propTypes = {
     lang: PropTypes.string.isRequired,
     locales: PropTypes.shape().isRequired,
