@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { MORE_PATH } from 'Pages/More/constants';
 import MoreIcon from 'Components/icons/MoreIcon';
+import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
 
@@ -36,15 +37,27 @@ class TabBarMoreAction extends Component {
    */
   render() {
     return (
-      <TabBarAction
-        {...this.props}
-        icon={(
-          <Portal name="tabbar.more-icon">
-            <MoreIcon className={styles} />
-          </Portal>
-        )}
-        onClick={this.handleClick}
-      />
+      <Fragment>
+        <Portal name={portals.TAB_BAR_MORE_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_MORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
+          <TabBarAction
+            {...this.props}
+            icon={(
+              <Portal name={portals.TAB_BAR_MORE_ICON}>
+                <MoreIcon className={styles} />
+              </Portal>
+            )}
+            onClick={this.handleClick}
+          />
+        </Portal>
+        <Portal name={portals.TAB_BAR_MORE_AFTER} props={this.props} />
+      </Fragment>
     );
   }
 }

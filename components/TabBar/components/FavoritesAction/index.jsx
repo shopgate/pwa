@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import {FAVORITES_PATH} from '@shopgate/pwa-common-commerce/favorites/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import FavoritesIcon from 'Components/icons/HeartIcon';
+import * as portals from '../../constants';
 import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disable-line import/no-named-as-default
 import TabBarAction from '../TabBarAction';
 import styles from './style';
@@ -37,17 +38,29 @@ class TabBarFavoritesAction extends Component {
    */
   render() {
     return (
-      <TabBarAction
-        {...this.props}
-        icon={(
-          <Portal name="tabbar.heart-icon">
-            <FavoritesIcon className={styles} />
-          </Portal>
-        )}
-        onClick={this.handleClick}
-      >
-        <FavoritesIconBadge />
-      </TabBarAction>
+      <Fragment>
+        <Portal name={portals.TAB_BAR_FAVORITES_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_FAVORITES}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        >
+          <TabBarAction
+            {...this.props}
+            icon={(
+              <Portal name={portals.TAB_BAR_FAVORITES_ICON}>
+                <FavoritesIcon className={styles} />
+              </Portal>
+            )}
+            onClick={this.handleClick}
+          >
+            <FavoritesIconBadge />
+          </TabBarAction>
+        </Portal>
+        <Portal name={portals.TAB_BAR_FAVORITES_AFTER} props={this.props} />
+      </Fragment>
     );
   }
 }
