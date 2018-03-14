@@ -5,6 +5,7 @@ exports[`<Ellipsis /> should render 1`] = `
   clamp={3}
   className=""
   ellipsis="..."
+  tagName="div"
   truncationChar="…"
   useNativeClamp={true}
 >
