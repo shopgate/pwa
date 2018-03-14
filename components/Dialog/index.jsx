@@ -22,7 +22,9 @@ import VariantSelectModal from './components/VariantSelectModal';
 const Dialog = ({ modal, onConfirm, onDismiss }) => {
   // Assemble the actions.
   const actions = [];
-  const { confirm, dismiss, title, params, message, type } = modal;
+  const {
+    confirm, dismiss, title, params, message, type,
+  } = modal;
 
   if (confirm) {
     // We have a confirm label, add a confirm action.

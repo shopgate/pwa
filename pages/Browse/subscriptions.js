@@ -1,6 +1,4 @@
-import {
-  routeDidEnter,
-} from '@shopgate/pwa-common/streams/history';
+import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { setSearchPhrase } from 'Components/Navigator/action-creators';
 import { BROWSE_PATH } from './constants';
 

@@ -10,11 +10,11 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 const Properties = ({ properties }) => (
   <Grid.Item component="div">
     <ul>
-      {properties.map(({ label, value }) =>
+      {properties.map(({ label, value }) => (
         <li key={`${label}-${value}`}>
           {label}: {value}
         </li>
-      )}
+      ))}
     </ul>
   </Grid.Item>
 );

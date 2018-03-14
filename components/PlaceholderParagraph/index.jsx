@@ -11,7 +11,9 @@ const widths = [95, 100, 92, 88, 96, 93, 96, 48];
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const PlaceholderParagraph = ({ className, children, lines, ready }) => {
+const PlaceholderParagraph = ({
+  className, children, lines, ready,
+}) => {
   if (ready) {
     return children;
   }

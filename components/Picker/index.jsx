@@ -37,7 +37,9 @@ class Picker extends Component {
 
     this.domElement = null;
     this.modalComponent = modalProps => <Sheet {...modalProps} title={this.props.label} />;
-    this.listComponent = ({ items, onSelect, selectedIndex, onClose }) => (
+    this.listComponent = ({
+      items, onSelect, selectedIndex, onClose,
+    }) => (
       <List>
         {items.map((item, index) => (
           <List.Item

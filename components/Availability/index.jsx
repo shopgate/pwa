@@ -17,7 +17,9 @@ import styles from './style';
  * @param {string} [props.className] CSS classes
  * @return {JSX}
  */
-const Availability = ({ text, state, showWhenAvailable = false, className = null }) => {
+const Availability = ({
+  text, state, showWhenAvailable = false, className = null,
+}) => {
   if (!text || (state === AVAILABILITY_STATE_OK && !showWhenAvailable)) {
     return null;
   }

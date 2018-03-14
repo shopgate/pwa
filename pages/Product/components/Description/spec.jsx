@@ -12,9 +12,7 @@ describe('<ProductDescription />', () => {
 
   it('should not render if no data is available', () => {
     const store = mockStore({});
-    const wrapper = mount(
-      <ProductDescription store={store} html={null} />
-    );
+    const wrapper = mount(<ProductDescription store={store} html={null} />);
     const foundContent = wrapper.findWhere(n =>
       typeof n.prop('dangerouslySetInnerHTML') !== 'undefined');
 
@@ -26,9 +24,7 @@ describe('<ProductDescription />', () => {
 
   it('should render description if data is available', () => {
     const store = mockStore({});
-    const wrapper = mount(
-      <ProductDescription store={store} html={html} />
-    );
+    const wrapper = mount(<ProductDescription store={store} html={html} />);
     const foundContent = wrapper.findWhere(n =>
       typeof n.prop('dangerouslySetInnerHTML') !== 'undefined');
 

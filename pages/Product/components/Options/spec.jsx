@@ -68,10 +68,11 @@ describe('<Options />', () => {
   const renderComponent = (props) => {
     mockSetProductOption = jest.fn();
 
-    renderedElement = mount((
-      <I18n.Provider lang="en" locales={{}}>
-        <Options setProductOption={mockSetProductOption} {...props} />
-      </I18n.Provider>),
+    renderedElement = mount(
+      (
+        <I18n.Provider lang="en" locales={{}}>
+          <Options setProductOption={mockSetProductOption} {...props} />
+        </I18n.Provider>),
       mockRenderOptions
     );
   };

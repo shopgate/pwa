@@ -46,8 +46,7 @@ describe('<QuantityPicker />', () => {
     let input;
 
     beforeEach(() => {
-      wrapper = mount(
-        <QuantityPicker />);
+      wrapper = mount(<QuantityPicker />);
 
       input = wrapper.instance().input;
 
@@ -82,9 +81,7 @@ describe('<QuantityPicker />', () => {
     beforeEach(() => {
       onChangeMock = jest.fn();
 
-      wrapper = mount(
-        <QuantityPicker quantity={2} onChange={onChangeMock} />
-      );
+      wrapper = mount(<QuantityPicker quantity={2} onChange={onChangeMock} />);
 
       input = wrapper.find('input');
     });
@@ -116,8 +113,7 @@ describe('<QuantityPicker />', () => {
     beforeEach(() => {
       onToggleEditModeMock = jest.fn();
 
-      wrapper = mount(
-        <QuantityPicker onToggleEditMode={onToggleEditModeMock} />);
+      wrapper = mount(<QuantityPicker onToggleEditMode={onToggleEditModeMock} />);
 
       input = wrapper.find('input');
     });

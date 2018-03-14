@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
@@ -127,7 +127,7 @@ createProductSliderItem.propTypes = {
 /**
  * The live shopping (deal of the day) widget.
  */
-class LiveshoppingWidget extends React.Component {
+class LiveshoppingWidget extends Component {
   /**
    * Requests the liveshopping product data when the component is mounted.
    */

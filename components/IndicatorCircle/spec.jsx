@@ -5,9 +5,7 @@ import styles from './style';
 
 describe('<IndicatorCircle />', () => {
   it('should apply the given size', () => {
-    const wrapper = shallow(
-      <IndicatorCircle size={32} />
-    );
+    const wrapper = shallow(<IndicatorCircle size={32} />);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -18,9 +16,7 @@ describe('<IndicatorCircle />', () => {
   });
 
   it('should apply the given color', () => {
-    const wrapper = mount(
-      <IndicatorCircle size={32} color="#fff" strokeWidth={4} />
-    );
+    const wrapper = mount(<IndicatorCircle size={32} color="#fff" strokeWidth={4} />);
 
     expect(wrapper).toMatchSnapshot();
 

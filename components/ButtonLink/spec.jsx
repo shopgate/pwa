@@ -16,11 +16,11 @@ describe('<ButtonLink>', () => {
       ActionButton.clickDelay = 0;
     });
     it('should create component and open page on click', (done) => {
-      const component = mount(
+      const component = mount((
         <ButtonLink href="https://example.com">
           Text inside
         </ButtonLink>
-      );
+      ));
       expect(component).toMatchSnapshot();
       expect(mockedParsedLink.openFunctionMock.mock.calls.length).toBe(0);
       component.find('RippleButton').simulate('click');

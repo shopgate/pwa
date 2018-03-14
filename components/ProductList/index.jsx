@@ -11,17 +11,19 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductList = ({ flags, infiniteLoad, handleGetProducts, products, totalProductCount }) => {
+const ProductList = ({
+  flags, infiniteLoad, handleGetProducts, products, totalProductCount,
+}) => {
   if (!infiniteLoad) {
     return (
       <Layout>
         {products.map(product =>
-          <Iterator
+          (<Iterator
             display={flags}
             id={product.id}
-            key={product.id} {...product}
-          />
-        )}
+            key={product.id}
+            {...product}
+          />))}
       </Layout>
     );
   }

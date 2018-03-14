@@ -71,12 +71,6 @@ class QuantityPicker extends Component {
   }
 
   /**
-   * The default quantity.
-   * @type {number}
-   */
-  defaultQuantity = 1;
-
-  /**
    * Returns the initial quantity based on the props.
    * If the props are set to 0 or lower, it will fall back to 1.
    * @return {number}
@@ -88,6 +82,12 @@ class QuantityPicker extends Component {
 
     return this.props.quantity;
   }
+
+  /**
+   * The default quantity.
+   * @type {number}
+   */
+  defaultQuantity = 1;
 
   /**
    * Event handler for the the onChange event of the input.

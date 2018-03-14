@@ -16,11 +16,11 @@ beforeEach(() => {
  * @param {Object} mockedState Mocked stage.
  * @return {ReactWrapper}
  */
-const createComponent = () => mount(
+const createComponent = () => mount((
   <Provider store={mockedStore(mockedState)}>
     <FormButtons />
   </Provider>
-);
+));
 
 describe('<FormButtons />', () => {
   it('should render submit and cancel button', () => {
