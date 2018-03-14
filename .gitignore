@@ -59,4 +59,5 @@ typings/
 
 # IDE
 .idea
+.vscode
 

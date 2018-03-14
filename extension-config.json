@@ -3,7 +3,7 @@
   "id": "@shopgate/product-reviews",
   "components": [
     {
-      "id": "@shopgate/product-reviews/rating_stars",
+      "id": "RatingSatrs",
       "path": "frontend/RatingStars/index.jsx",
       "target": "product-item.name.before",
       "type": "portals"
