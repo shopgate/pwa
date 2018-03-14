@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Hammer from '@shopgate/react-hammerjs';
 import clamp from 'lodash/clamp';
@@ -40,7 +40,7 @@ const MODE_PINCH = 2;
 /**
  * A container component that supports panning and zooming of children.
  */
-class ZoomPanContainer extends React.Component {
+class ZoomPanContainer extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired, // The components children.
     maxZoom: PropTypes.number, // The maximum zoom factor.
