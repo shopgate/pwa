@@ -132,7 +132,9 @@ class NavButton extends Component {
    */
   render() {
     return (
-      <Button className={styles.button}>
+      <Button
+        className={styles.button}
+      >
         <Ripple
           className={styles.buttonContent}
           onComplete={this.handleClick}

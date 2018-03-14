@@ -75,7 +75,11 @@ class ContextMenu extends Component {
     const { active } = this.state;
 
     return (
-      <div ref={(ref) => { this.elementRef = ref; }} className={styles.container}>
+      <div
+        data-test-id="ContextMenu"
+        ref={(ref) => { this.elementRef = ref; }}
+        className={styles.container}
+      >
         <button className={styles.button} onClick={this.handleMenuToggle}>
           <MoreVertIcon />
         </button>

@@ -160,6 +160,7 @@ class Search extends Component {
     return (
       <div>
         <form
+          data-test-id="Search"
           className={containerClassName}
           onSubmit={this.handleSubmit}
           onAnimationEnd={this.handleAnimationEnd}
