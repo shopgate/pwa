@@ -1,4 +1,3 @@
-
 const CART = 'cart';
 const NAV_MENU = 'nav-menu';
 

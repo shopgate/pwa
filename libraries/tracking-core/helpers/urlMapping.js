@@ -1,4 +1,3 @@
-
 /**
  * Data modifier for urls
  */

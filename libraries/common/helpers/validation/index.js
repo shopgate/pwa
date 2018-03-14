@@ -1,4 +1,3 @@
-
 /**
  * Tests if the prop is an object.
  * @param {*} prop The property to test.

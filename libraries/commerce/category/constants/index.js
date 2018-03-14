@@ -1,4 +1,3 @@
-
 export const CATEGORY_PATH = '/category';
 
 export const CATEGORY_LIFETIME = 3600000; // 1 hour in milliseconds

@@ -1,4 +1,3 @@
-
 module.exports = {
   rules: {
     'react/sort-prop-types': [2, {

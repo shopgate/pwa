@@ -1,4 +1,3 @@
-
 /**
  * Handles the received category id's by mapping to store and returning results.
  * @param {Array} categories The received categories.

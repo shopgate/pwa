@@ -1,4 +1,3 @@
-
 /**
  * Pipeline call adds $start$ and $end$ placeholders for higlighting purposes.
  *

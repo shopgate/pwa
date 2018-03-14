@@ -1,4 +1,3 @@
-
 /**
  * The linear easing callback.
  * @param {number} relativeValue The relative value between [0...1].

@@ -1,4 +1,3 @@
-
 /**
  * https://github.com/iamdustan/smoothscroll
  * - Added scroll to center of the element

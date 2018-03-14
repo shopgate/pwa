@@ -1,4 +1,3 @@
-
 export const ITEM_PATH = '/item';
 
 export const PRODUCT_LIFETIME = 3600000; // 1 hour in milliseconds

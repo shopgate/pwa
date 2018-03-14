@@ -1,4 +1,3 @@
-
 /**
  * Returns the current search suggestions object.
  * @param {Object} state The application state.

@@ -1,4 +1,3 @@
-
 export default {
   open: {
     set: { height: 'auto' },

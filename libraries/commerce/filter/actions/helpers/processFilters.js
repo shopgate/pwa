@@ -1,4 +1,3 @@
-
 /**
  * Removes the display_amount filter from the filters list.
  * @param {Object} filters The filters.

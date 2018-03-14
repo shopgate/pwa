@@ -1,4 +1,3 @@
-
 /**
  * The portals collection.
  */

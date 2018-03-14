@@ -1,4 +1,3 @@
-
 /**
  * Returns client state (state.client)
  * @param {Object} state The application state.

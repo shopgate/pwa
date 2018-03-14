@@ -1,4 +1,3 @@
-
 /**
  * Returns url state (state.url)
  * @param {Object} state The application state.

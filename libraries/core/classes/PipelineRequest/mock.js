@@ -1,4 +1,3 @@
-
 /**
  * Mocked PipelineRequest.
  * Use it any time you need to mock a PipelineRequest.

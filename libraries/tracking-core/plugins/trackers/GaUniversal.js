@@ -1,4 +1,3 @@
-
 /* global ga */
 
 // SgData access type constant for apps

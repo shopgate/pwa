@@ -1,4 +1,3 @@
-
 /* global jasmine */
 
 require('jest-enzyme/lib/index');

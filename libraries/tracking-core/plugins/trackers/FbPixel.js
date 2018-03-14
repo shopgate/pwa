@@ -1,4 +1,3 @@
-
 /* global fbq */
 import { logger } from '@shopgate/pwa-core/helpers';
 import BasePlugin from '../Base';

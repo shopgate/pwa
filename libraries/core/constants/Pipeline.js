@@ -1,4 +1,3 @@
-
 // Pipeline current version.
 export const CURRENT_VERSION = 1;
 

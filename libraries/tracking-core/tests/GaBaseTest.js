@@ -78,7 +78,7 @@ describe('GaBase', () => {
     global.window.ga = gaSpy;
     global.ga = gaSpy;
 
-      // Save all registered callbacks for events
+    // Save all registered callbacks for events
     [...events, ...Object.keys(customEvents)].forEach((event) => {
       SgTrackingCore.register[event] = (cb) => {
         eventCallbacks[event] = cb;
@@ -110,7 +110,7 @@ describe('GaBase', () => {
     };
     global.window._gaq = global._gaq;
 
-      // Check classic
+    // Check classic
     SgTrackingGAPlugin.createClassic({
       config: {
         merchant: [
@@ -250,9 +250,11 @@ describe('GaBase', () => {
   }
 
   it('should test sdk calls for addToCart event', () => {
-    testEventData('addToCart', global.window.sgData,
+    testEventData(
+      'addToCart', global.window.sgData,
       ['pageview', 'add_to_cart'],
-      ['_trackPageview', 'add_to_cart']);
+      ['_trackPageview', 'add_to_cart']
+    );
   });
 
   it('should test sdk calls for custom events', () => {
@@ -262,7 +264,7 @@ describe('GaBase', () => {
         'action',
         'label',
         'value',
-         false
+        false
       );
 
       testEventData(

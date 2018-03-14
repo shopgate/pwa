@@ -1,4 +1,3 @@
-
 export const CART_PATH = '/cart';
 
 export const CART_ITEM_TYPE_COUPON = 'coupon';

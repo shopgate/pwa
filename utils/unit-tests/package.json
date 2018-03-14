@@ -4,7 +4,6 @@
   "description": "Unit test setup for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path .gitignore  --ext .js .",
     "precommit": "lint-staged",
     "postversion": "git push && git push --tags && npm publish --access public"
   },

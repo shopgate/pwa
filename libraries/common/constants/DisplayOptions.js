@@ -1,4 +1,3 @@
-
 export const SORT_RELEVANCE = 'relevance';
 export const SORT_PRICE_ASC = 'priceAsc';
 export const SORT_PRICE_DESC = 'priceDesc';

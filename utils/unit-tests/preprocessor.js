@@ -1,4 +1,3 @@
-
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
 const { createTransformer } = require('babel-jest');

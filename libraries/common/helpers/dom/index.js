@@ -1,4 +1,3 @@
-
 /**
  * Checks if the given child is a descendant of the given parent.
  * @param {Object} parent The parent element.

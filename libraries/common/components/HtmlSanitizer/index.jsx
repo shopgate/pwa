@@ -1,4 +1,3 @@
-
 /* eslint no-restricted-globals: ["warn", "history"] */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';

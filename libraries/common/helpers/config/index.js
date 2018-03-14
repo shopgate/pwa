@@ -1,4 +1,3 @@
-
 /**
  * Provides a default app config as a fallback.
  * @type {Object}

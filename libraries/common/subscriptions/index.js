@@ -1,4 +1,3 @@
-
 /**
  * A registry for all subscribers.
  * @type {Array}

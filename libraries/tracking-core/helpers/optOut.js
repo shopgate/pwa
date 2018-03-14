@@ -1,4 +1,3 @@
-
 const disableStr = 'sg-tracking-disabled';
 
 /**

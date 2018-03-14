@@ -1,4 +1,3 @@
-
 /**
  * Converts logs into a readable format for Selenium, if testMode is enabled.
  * @param {Array} args Arguments that should be converted

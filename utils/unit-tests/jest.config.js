@@ -1,4 +1,3 @@
-
 module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json'],
   snapshotSerializers: [

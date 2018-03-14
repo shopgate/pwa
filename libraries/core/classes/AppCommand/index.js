@@ -1,4 +1,3 @@
-
 /* global SGJavascriptBridge */
 import fetch from 'isomorphic-fetch';
 import event from '../Event';

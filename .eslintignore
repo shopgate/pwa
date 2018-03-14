@@ -1,6 +1,4 @@
-*/dist/
-*/build/
-*/coverage/
-*/public/
-*/InlineTransitionGroup/
-*/node_modules/
+coverage
+dist
+node_modules
+InlineTransitionGroup

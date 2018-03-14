@@ -1,4 +1,3 @@
-
 export const FILTER_PATH = '/filter';
 
 export const SET_FILTER_HASH = 'SET_FILTER_HASH';

@@ -1,4 +1,3 @@
-
 /**
  * Data definitions of the multiple tracking events
  */

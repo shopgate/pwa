@@ -1,4 +1,3 @@
-
 // PRODUCT REVIEWS LIST
 export const REVIEWS_LIFETIME = 900000; // 15 minutes
 export const REQUEST_REVIEWS = 'REQUEST_REVIEWS';

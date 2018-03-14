@@ -1,4 +1,3 @@
-
 // Environment variables.
 const ENV_KEY_DEVELOPMENT = 'development';
 const ENV_KEY_TEST = 'test';

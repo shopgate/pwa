@@ -1,4 +1,3 @@
-
 export getTranslator from './getTranslator';
 export getPriceFormatter from './getPriceFormatter';
 export getDateFormatter from './getDateFormatter';

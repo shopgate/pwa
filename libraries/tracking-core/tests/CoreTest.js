@@ -298,9 +298,7 @@ describe('Core', () => {
     /* eslint-enable no-underscore-dangle, no-multi-assign */
 
     // Execute cross domain tracking logic
-    SgTrackingCore.crossDomainTracking(
-      'http://testshop.reichhorn.localdev.cc/php/shopgate/index'
-    );
+    SgTrackingCore.crossDomainTracking('http://testshop.reichhorn.localdev.cc/php/shopgate/index');
 
     // Check _gaq calls
     expect(gaqPush).to.have.been.calledOnce.to.not.throw();
@@ -344,9 +342,7 @@ describe('Core', () => {
     });
 
     // Execute cross domain tracking without ga sdk and without element
-    SgTrackingCore.crossDomainTracking(
-      'http://testshop.reichhorn.localdev.cc/php/shopgate/index'
-    );
+    SgTrackingCore.crossDomainTracking('http://testshop.reichhorn.localdev.cc/php/shopgate/index');
 
     expect(global.window.location.href).to.equal(expectedUrl);
   });

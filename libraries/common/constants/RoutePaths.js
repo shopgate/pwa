@@ -1,4 +1,3 @@
-
 export const INDEX_PATH = '/';
 export const PAGE_PATH = '/page';
 export const LOGIN_PATH = '/login';

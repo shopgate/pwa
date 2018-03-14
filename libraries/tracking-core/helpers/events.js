@@ -1,4 +1,3 @@
-
 // List of available tracking events
 export const TRACK_PAGEVIEW = 'pageview';
 export const TRACK_VARIANT_SELECTED = 'variantSelected';

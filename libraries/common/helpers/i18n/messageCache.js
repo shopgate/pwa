@@ -1,4 +1,3 @@
-
 /**
  * A hash-based cache for instances of IntlMessageFormat.
  * @type {Object}

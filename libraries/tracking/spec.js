@@ -1,4 +1,3 @@
-
 describe('Blank Test', () => {
   it('Ignore', () => {
     const x = 5;

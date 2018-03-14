@@ -95,7 +95,8 @@ describe('Unified', () => {
       {
         blacklist: true,
         trackers: undefined,
-      });
+      }
+    );
     spy.restore();
   });
 });
