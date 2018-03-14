@@ -2,7 +2,7 @@
 import chai from 'chai';
 import mochaJsdom from 'mocha-jsdom';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('SGLink helper', () => {
   let SGLink;

@@ -6,7 +6,7 @@ import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 import { sgDataProduct, sgDataSearch, sgDataCategoryAll } from './data/tracking.testData';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(sinonChai);
 

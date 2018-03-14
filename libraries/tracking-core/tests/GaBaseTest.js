@@ -6,8 +6,8 @@ import storageMock from './helpers/localStorage-mock';
 import { sgDataOrder } from './data/tracking.testData';
 import { gaOrderData } from './data/tracking.expectedData';
 
-const expect = chai.expect;
-const rerequire = mochaJsdom.rerequire;
+const { expect } = chai;
+const { rerequire } = mochaJsdom;
 
 describe('GaBase', () => {
   chai.use(chaiSinon);

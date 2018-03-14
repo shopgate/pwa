@@ -1,7 +1,7 @@
 import chai from 'chai';
 import sgUrlMapper from '../helpers/urlMapping';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const base = 'http://testshop.shopgate.localdev.cc';
 const pathLive = '/';

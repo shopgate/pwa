@@ -5,7 +5,7 @@ import sinonChai from 'sinon-chai';
 import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 
-const expect = chai.expect;
+const { expect } = chai;
 chai.use(sinonChai);
 
 describe('Unified', () => {

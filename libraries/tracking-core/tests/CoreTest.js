@@ -7,7 +7,7 @@ import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 import { sgData } from './data/tracking.testData';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Core', () => {
   let SgTrackingCore = null;

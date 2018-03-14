@@ -6,7 +6,7 @@ import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 import { sgData } from './data/tracking.testData';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(sinonChai);
 
@@ -56,7 +56,7 @@ describe('FbPixel', () => {
   });
 
   it('should send init events', () => {
-    const callCount = spyFbq.callCount;
+    const { callCount } = spyFbq;
 
     expect(spyFbq.getCall(callCount - 3).args).to.eql(['init', '7117', undefined]);
     expect(spyFbq.getCall(callCount - 2).args).to.eql(['addPixelId', '2222', undefined]);
