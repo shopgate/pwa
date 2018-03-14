@@ -1,4 +1,6 @@
 coverage
 dist
+extensions
+themes
 node_modules
 InlineTransitionGroup

@@ -7,8 +7,7 @@
     "test:watch": "jest --watch",
     "cover": "lerna run cover",
     "cover:report": "node ./scripts/send-coverage.js",
-    "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
-    "precommit": "yarn run lint"
+    "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
   },
   "workspaces": [
     "extensions/*",
@@ -17,8 +16,13 @@
     "utils/*"
   ],
   "devDependencies": {
-    "husky": "^0.14.3",
+    "husky": "^0.15.0-rc.9",
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
