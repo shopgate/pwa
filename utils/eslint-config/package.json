@@ -1,7 +1,7 @@
 {
   "name": "@shopgate/eslint-config",
   "version": "1.0.4",
-  "description": "The eslint rules for all projects at Shopgate.",
+  "description": "Eslint configuration for the Shopgate Connect projects.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
   "main": "./ruleset/index.js",

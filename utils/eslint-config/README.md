@@ -2,7 +2,8 @@
 
 Shopgate's reasonable approach to JavaScript.
 
-This configuration is an extension of the airbnb codestyle which is [available here](https://github.com/airbnb/javascript).
+This configuration is an extension of the airbnb codestyle which is
+[available here](https://github.com/airbnb/javascript).
 
 ## Installation
 
@@ -23,25 +24,27 @@ Add the following to the `.eslintrc` in your project:
 
 ## Rules
 
-1. [General](#general)  
-  1.1. [Commented out code](#commented-out-code)  
-  1.2. [Comma dangle](#comma-dangle)  
+1. [General](#general)
+  1.1. [Commented out code](#commented-out-code)
+  1.2. [Comma dangle](#comma-dangle)
   1.3. [Multiple empty lines](#multiple-empty-lines)
-2. [Comments](#comments)  
+2. [Comments](#comments)
   2.1. [Capitalized comments](#capitalized-comments)
-3. [Functions](#functions)  
+3. [Functions](#functions)
   3.1. [Point free](#point-free)
-4. [Objects](#objects)  
+4. [Objects](#objects)
   4.1. [Single line objects](#single-line-objects)
-5. [Documentation](#documentation)  
+5. [Documentation](#documentation)
   5.1. [JSDoc requirement](#jsdoc-required)
-6. [React](#react)  
+6. [React](#react)
   6.1 [Prop Types](#react-proptypes)
 
 ### General
 
 <a id="commented-out-code"></a><a name="1.1"></a>
+
 #### Commented out code
+
 No code should be left commented out.
 
 ```javascript
@@ -57,8 +60,11 @@ No code should be left commented out.
 **[⬆ back to top](#rules)**
 
 <a id="comma-dangle"></a><a name="1.2"></a>
+
 #### Comma dangle
-Dangling commas are required for objects with multiple items or properties. This applies to `Array`, `Object`, `Import` and `Export`.
+
+Dangling commas are required for objects with multiple items or properties. This applies
+to `Array`, `Object`, `Import` and `Export`.
 
 ```javascript
 // bad
@@ -87,7 +93,9 @@ import {
 **[⬆ back to top](#rules)**
 
 <a id="multiple-empty-lines"></a><a name="1.3"></a>
+
 #### Multiple empty lines
+
 There should not be multiple empty lines between code blocks.
 
 ```javascript
@@ -114,7 +122,9 @@ while (...) {
 ### Comments
 
 <a id="capitalized-comments"></a><a name="2.1"></a>
+
 #### Capitalized comments
+
 All comments should beging with a capital letter. This makes comments more readable and forces more care when constructing comments.
 
 ```javascript
@@ -134,7 +144,9 @@ All comments should beging with a capital letter. This makes comments more reada
 ### Functions
 
 <a id="point-free"></a><a name="3.1"></a>
+
 #### Point free
+
 A function should not simply call another function.
 
 ```javascript
@@ -152,7 +164,9 @@ const funcB = (params) {
 ### Objects
 
 <a id="single-line-objects"></a><a name="4.1"></a>
-#### Single line objects 
+
+#### Single line objects
+
 If an object is defined with multiple properties then each property should occupy a new line.
 
 ```javascript
@@ -173,8 +187,11 @@ const x = {
 ### Documentation
 
 <a id="jsdoc-required"></a><a name="3.1"></a>
+
 #### JSDoc requirement
-Every `Function`, `Class`, `Method` and `Arrow Function` definition should include a valid JSDoc specification.
+
+Every `Function`, `Class`, `Method` and `Arrow Function` definition should include a
+valid JSDoc specification.
 
 ```javascript
 // bad (missing parameter descriptions)
@@ -210,7 +227,9 @@ const funcC = (param1, param2) {
 ### React
 
 <a id="react-proptypes"></a><a name="6.1"></a>
+
 #### Prop Types
+
 Proptypes should be sorted by type (required or not) and alphabetically.
 
 ```javascript

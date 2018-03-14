@@ -6,8 +6,7 @@
     "test": "lerna run test",
     "cover": "lerna run cover",
     "cover:report": "node ./scripts/send-coverage.js",
-"lint": "eslint --parser babel-eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
-    
+    "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx ."
   },
   "workspaces": [
     "extensions/*",
