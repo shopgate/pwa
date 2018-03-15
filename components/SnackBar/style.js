@@ -1,4 +1,3 @@
-
 import { css } from 'glamor';
 import variables from 'Styles/variables';
 

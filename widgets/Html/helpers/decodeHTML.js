@@ -1,4 +1,3 @@
-
 /**
  * Unescape HTML entities.
  * @param {string} input The escaped HTML.

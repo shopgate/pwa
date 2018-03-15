@@ -1,4 +1,3 @@
-
 /**
  * Creates mocked review object.
  * @param {string|number} id Anything that can be an id.

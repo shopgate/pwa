@@ -1,4 +1,3 @@
-
 const TAB_BAR = 'tab-bar';
 
 export const TAB_HOME = 'home';

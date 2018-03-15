@@ -1,2 +1,1 @@
-
 export const SEARCH_SUGGESTIONS_MIN_CHARACTERS = 2;

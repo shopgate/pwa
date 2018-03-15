@@ -1,4 +1,3 @@
-
 /* eslint-disable extra-rules/no-single-line-objects */
 /* eslint-disable object-property-newline */
 
