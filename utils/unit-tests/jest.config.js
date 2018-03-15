@@ -13,6 +13,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
+    '<rootDir>/coverage/',
   ],
   unmockedModulePathPatterns: [
     '<rootDir>/node_modules/react/',
@@ -21,6 +22,9 @@ module.exports = {
   collectCoverageFrom: [
     '**/*.{js,jsx}',
     '!**/node_modules/**',
+    '!**/coverage/**',
+    '!.eslintrc.js',
+    '!**/jest.config.js',
   ],
   setupFiles: [
     '@shopgate/pwa-unit-test/testSetup.js',
