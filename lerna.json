@@ -21,7 +21,9 @@
         "ignored-file",
         "*.spec.*",
         "*.mock.*",
-        "*/tests/*"
+        "*/tests/*",
+        "extensions/*",
+        "themes/*"
       ]
     }
   }
