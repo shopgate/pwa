@@ -1,4 +1,3 @@
-
 const mockedProduct = {
   productId: 'foo',
   rating: {

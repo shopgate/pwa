@@ -1,4 +1,3 @@
-
 /**
  * Value to recalculate the rating average.
  * @type {number}

@@ -1,4 +1,3 @@
-
 /**
  * Mocked state with product only. Reviews not fetched.
  * @type {Object}

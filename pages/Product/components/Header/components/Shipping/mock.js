@@ -1,4 +1,3 @@
-
 export const mockedStoreWithShippingPrice = {
   product: {
     currentProduct: {

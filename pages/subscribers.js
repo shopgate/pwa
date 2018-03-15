@@ -1,4 +1,3 @@
-
 // PWA Common
 import commonApp from '@shopgate/pwa-common/subscriptions/app';
 import commonUser from '@shopgate/pwa-common/subscriptions/user';

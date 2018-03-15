@@ -1,4 +1,3 @@
-
 const mockData = [
   {
     name: 'Product with child 9 Mother - 3 Attributes',

@@ -1,4 +1,3 @@
-
 const variants = {
   products: [{
     id: '1013-1014',

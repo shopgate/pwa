@@ -1,4 +1,3 @@
-
 /**
  * Selects the menu state from the store.
  * @param {Object} state The global state.
