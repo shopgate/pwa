@@ -8,8 +8,11 @@ THEMES = gmd ios11
 release:
 		make clean
 		make pre-publish
-		make build
+		make build-libraries
 		make bump-extensions
+		make bump-themes
+		make git-publish
+		make npm-publish
 		make clean-build
 
 clean:
@@ -19,21 +22,25 @@ clean:
 pre-publish:
 		lerna publish --skip-npm --skip-git
 
-build:
-		$(foreach package, $(NPM_PACKAGES), \
-				$(call build-packages, $(package)))
+build-libraries:
+		$(foreach package, $(NPM_PACKAGES), $(call build-packages, $(package)))
 
 bump-extensions:
-		$(foreach extension, $(EXTENSIONS), \
-				$(call bump-extension-versions, $(extension)))
+		$(foreach extension, $(EXTENSIONS), $(call bump-extension-versions, $(extension)))
 
 bump-themes:
-		$(foreach theme, $(THEMES), \
-				$(call bump-theme-versions, $(theme)))
+		$(foreach theme, $(THEMES), $(call bump-theme-versions, $(theme)))
 
 clean-build:
-		$(foreach package, $(NPM_PACKAGES), \
-				$(call clean-build-packages, $(package)))
+		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
+
+git-publish:
+		$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
+		$(foreach package, $(NPM_PACKAGES), $(call git-tags, ./libraries/$(package)/))
+		$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
+
+npm-publish:
+		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package)))
 
 define build-packages
 		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules
@@ -49,11 +56,21 @@ define clean-build-packages
 endef
 
 define bump-extension-versions
-		PACKAGE_VERSION=$$(cat ./extensions/$(strip $(1))/frontend/package.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && ./node_modules/.bin/bump ./extensions/$(strip $(1))/extension-config.json -v $$PACKAGE_VERSION -y
+		PACKAGE_VERSION=$$(cat ./extensions/$(strip $(1))/frontend/package.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && ./node_modules/.bin/bump ./extensions/$(strip $(1))/extension-config.json -v $$PACKAGE_VERSION -y && cd ./extensions/$(strip $(1)) && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
 
 endef
 
 define bump-theme-versions
-		PACKAGE_VERSION=$$(cat ./themes/$(strip $(1))/package.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && ./node_modules/.bin/bump ./themes/$(strip $(1))/extension-config.json -v $$PACKAGE_VERSION -y
+		PACKAGE_VERSION=$$(cat ./themes/$(strip $(1))/package.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && ./node_modules/.bin/bump ./themes/$(strip $(1))/extension-config.json -v $$PACKAGE_VERSION -y && ./node_modules/.bin/bump ./themes/$(strip $(1))/npm-shrinkwrap.json -v $$PACKAGE_VERSION -y && cd ./themes/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
+
+endef
+
+define git-tags
+		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION -m "v$$VERSION" && git push --tags
+
+endef
+
+define npm-release
+		npm publish ./libraries/$(strip $(1))/dist/ --access public
 
 endef
