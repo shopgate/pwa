@@ -35,9 +35,9 @@ clean-build:
 		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
 
 git-publish:
-		#$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
-		#$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
-    $(call git-tags, ./)
+		$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
+		$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
+		$(call git-tags, ./)
 
 npm-publish:
 		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package)))
@@ -57,7 +57,6 @@ endef
 
 define bump-extension-versions
 		PACKAGE_VERSION=$$(cat ./extensions/$(strip $(1))/frontend/package.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && ./node_modules/.bin/bump ./extensions/$(strip $(1))/extension-config.json -v $$PACKAGE_VERSION -y && cd ./extensions/$(strip $(1)) && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
-
 endef
 
 define bump-theme-versions

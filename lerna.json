@@ -12,11 +12,9 @@
   "npmClientArgs": [
     "--no-optional"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "commands": {
     "publish": {
+      "access": "public",
       "ignore": [
         "ignored-file",
         "*.spec.*",
