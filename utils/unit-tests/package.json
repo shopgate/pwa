@@ -22,7 +22,7 @@
     "strip-json-comments": "^2.0.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.3",
+    "@shopgate/eslint-config": "^1.0.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
