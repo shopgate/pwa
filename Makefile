@@ -35,9 +35,9 @@ clean-build:
 		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
 
 git-publish:
-		$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
-		$(foreach package, $(NPM_PACKAGES), $(call git-tags, ./libraries/$(package)/))
-		$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
+		#$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
+		#$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
+    $(call git-tags, ./)
 
 npm-publish:
 		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package)))
