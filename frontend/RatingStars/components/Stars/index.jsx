@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
 import StarIcon from '../StarIcon';
@@ -16,7 +16,7 @@ const availableStyles = styles.iconStyles;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-class Stars extends React.Component {
+class Stars extends Component {
   static propTypes = {
     className: PropTypes.string,
     display: PropTypes.oneOf(Object.keys(availableStyles)),
