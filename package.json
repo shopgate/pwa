@@ -3,17 +3,20 @@
   "private": true,
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
-    "test": "lerna run test",
+    "clean": "make clean",
+    "test": "lerna run test --stream",
     "cover": "lerna run cover",
+    "cover:dev": "lerna run cover --stream",
     "cover:report": "node ./scripts/send-coverage.js",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "release": "make release"
   },
   "pre-commit": [
     "precommit"
   ],
   "lint-staged": {
-     "*.js": [
+    "*.js": [
       "yarn run lint"
     ]
   },

@@ -14,5 +14,15 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "commands": {
+    "publish": {
+      "ignore": [
+        "ignored-file",
+        "*.spec.*",
+        "*.mock.*",
+        "*/tests/*"
+      ]
+    }
   }
 }
