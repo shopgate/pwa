@@ -10,12 +10,7 @@
   "scripts": {
     "lint": "eslint --ignore-path ../.gitignore --ignore-path .eslintignore --ext .js .",
     "test": "jest",
-    "cover": "jest --coverage",
-    "prebuild": "rimraf ./dist",
-    "build": "NODE_ENV=production babel ./ --out-dir dist --no-comments --minified --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp ./*.json ./dist/ && cp ../*.md ./dist/ && git add -A",
-    "version": "npm run build && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && bump ../extension-config.json -v $PACKAGE_VERSION -y",
-    "postversion": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd ../ && git add -A && git commit -m \"$PACKAGE_VERSION\" && git tag v$PACKAGE_VERSION && git push && git push --tags && cd ./frontend/dist/ && npm publish --access public"
+    "cover": "jest --coverage"
   },
   "dependencies": {
     "@shopgate/tracking-core": "^1.0.13"
@@ -33,7 +28,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-runtime": "^6.26.0",
-    "jest": "^22.0.4",
-    "rimraf": "^2.6.2"
+    "jest": "^22.0.4"
   }
 }
