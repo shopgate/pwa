@@ -53,6 +53,7 @@ describe('GaBase', () => {
     global.localStorage = storageMock();
     window.SGEvent = {};
 
+    // eslint-disable-next-line global-require
     SgTrackingCore = require('../core/Core').default.reset();
   });
 
@@ -108,6 +109,7 @@ describe('GaBase', () => {
     global._gaq = {
       push: gaqSpy,
     };
+    // eslint-disable-next-line no-underscore-dangle
     global.window._gaq = global._gaq;
 
     // Check classic
@@ -192,7 +194,11 @@ describe('GaBase', () => {
     const gaCalls = gaSpy.getCalls().length;
     const gaqCalls = gaqSpy.getCalls().length;
 
-    eventCallbacks[eventName](data, { merchant: true, shopgate: true, trackerName: 'mock' });
+    eventCallbacks[eventName](data, {
+      merchant: true,
+      shopgate: true,
+      trackerName: 'mock',
+    });
 
     expect(gaSpy).to.have.callCount(merchant ? gaCalls + 3 : gaCalls + 1);
 

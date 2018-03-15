@@ -10,6 +10,7 @@ describe('SGLink helper', () => {
 
   before(() => {
     window.SGEvent = {};
+    // eslint-disable-next-line prefer-destructuring
     SGLink = require('../helpers/helper').SGLink;
   });
 

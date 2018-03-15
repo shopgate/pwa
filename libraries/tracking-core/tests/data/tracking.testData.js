@@ -214,7 +214,11 @@ const sgDataProduct = {
     tags: [],
     stockQuantity: 66,
   },
-  shop: { name: 'Offizieller Shopgate Testshop', shop_number: '10006', market_id: 'DE' },
+  shop: {
+    name: 'Offizieller Shopgate Testshop',
+    shop_number: '10006',
+    market_id: 'DE',
+  },
   user: {
     sessionId: '2034a73978bd4b5af547b82514dea39f',
     loggedIn: true,
@@ -247,7 +251,10 @@ const sgDataCheckout = {
       gross: '42.02',
       tax: '0.00',
       taxes: [],
-      products: { net: '42.02', gross: '42.02' },
+      products: {
+        net: '42.02',
+        gross: '42.02',
+      },
       complete_amount_string: '42.02',
     },
     orderable: true,
@@ -264,7 +271,10 @@ const sgDataCheckout = {
         taxRate: '19.00',
       },
       tags: [],
-      additionalShippingCosts: { perOrder: '0', perUnit: '0' },
+      additionalShippingCosts: {
+        perOrder: '0',
+        perUnit: '0',
+      },
       quantity: '2',
       stockQuantity: 66,
     }],
@@ -277,7 +287,11 @@ const sgDataCheckout = {
     shippingAddress: sgDataAddress,
     invoiceAddress: sgDataAddress,
   },
-  shop: { name: 'Offizieller Shopgate Testshop', shop_number: '10006', market_id: 'DE' },
+  shop: {
+    name: 'Offizieller Shopgate Testshop',
+    shop_number: '10006',
+    market_id: 'DE',
+  },
   user: {
     sessionId: '2034a73978bd4b5af547b82514dea39f',
     loggedIn: true,
@@ -445,7 +459,11 @@ const sgDataCategoryAll = {
     tags: [],
     stockQuantity: 98,
   }],
-  shop: { name: 'Offizieller Shopgate Testshop', shop_number: '10006', market_id: 'DE' },
+  shop: {
+    name: 'Offizieller Shopgate Testshop',
+    shop_number: '10006',
+    market_id: 'DE',
+  },
   user: {
     sessionId: '2034a73978bd4b5af547b82514dea39f',
     loggedIn: true,

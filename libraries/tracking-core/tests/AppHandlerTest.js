@@ -18,6 +18,7 @@ describe('AppHandler', () => {
     window.SGEvent = {};
 
     appHandler = require('../core/AppHandler').default;
+    // eslint-disable-next-line prefer-destructuring
     SGAction = require('../helpers/helper').SGAction;
   });
 

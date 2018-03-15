@@ -163,7 +163,10 @@ describe('Core', () => {
 
       expect(unifiedSpy).to.have.been.calledWith(
         sgData,
-        { shopgate: true, merchant: true },
+        {
+          shopgate: true,
+          merchant: true,
+        },
         ['mock']
       );
 
@@ -221,12 +224,24 @@ describe('Core', () => {
 
       // Register spies
       SgTrackingCore.register[event](spyAll, { trackerName: 'mock' });
-      SgTrackingCore.register[event](spyShopgateEvent, { trackerName: 'mock', merchant: false });
-      SgTrackingCore.register[event](spyMerchantEvent, { trackerName: 'mock', shopgate: false });
+      SgTrackingCore.register[event](spyShopgateEvent, {
+        trackerName: 'mock',
+        merchant: false,
+      });
+      SgTrackingCore.register[event](spyMerchantEvent, {
+        trackerName: 'mock',
+        shopgate: false,
+      });
 
       // Trigger events
-      SgTrackingCore.track[event]({}, null, { shopgate: true, merchant: false });
-      SgTrackingCore.track[event]({}, null, { shopgate: false, merchant: true });
+      SgTrackingCore.track[event]({}, null, {
+        shopgate: true,
+        merchant: false,
+      });
+      SgTrackingCore.track[event]({}, null, {
+        shopgate: false,
+        merchant: true,
+      });
 
       // Take assertions
       expect(spyAll).to.have.been.calledTwice.to.not.throw();
@@ -244,8 +259,14 @@ describe('Core', () => {
 
       // Register spies
       SgTrackingCore.register[event](spyAll, { trackerName: 'mock' });
-      SgTrackingCore.register[event](spyIndex, { trackerName: 'mock', page: 'index' });
-      SgTrackingCore.register[event](spyCart, { trackerName: 'mock', page: 'cart' });
+      SgTrackingCore.register[event](spyIndex, {
+        trackerName: 'mock',
+        page: 'index',
+      });
+      SgTrackingCore.register[event](spyCart, {
+        trackerName: 'mock',
+        page: 'cart',
+      });
 
       // Track for index
       SgTrackingCore.track[event]({}, 'index');

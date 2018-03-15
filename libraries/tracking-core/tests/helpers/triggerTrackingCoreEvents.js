@@ -7,7 +7,10 @@ const SgTrackingCore = require('../../core/Core').default.reset();
  * @returns {Object}
  */
 export function completedRegistration() {
-  const data = { ...sgData, registrationType: 'guest' };
+  const data = {
+    ...sgData,
+    registrationType: 'guest',
+  };
   SgTrackingCore.track.completedRegistration(data);
   return data;
 }
