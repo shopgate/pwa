@@ -8,9 +8,9 @@ THEMES = gmd ios11
 release:
 		make clean
 		make pre-publish
-		make build-libraries
 		# make bump-extensions
 		# make bump-themes
+		make build-libraries
 		# make git-publish
 		# make npm-publish
 		# make clean-build
