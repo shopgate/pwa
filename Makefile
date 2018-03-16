@@ -15,32 +15,44 @@ release:
 		make npm-publish
 		make clean-build
 
+# Clean the repository before starting a release.
 clean:
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
 
+# Lerna change all the version numbers.
 pre-publish:
 		lerna publish --skip-npm --skip-git
 
+# Pre build the libraries.
 build-libraries:
 		$(foreach package, $(NPM_PACKAGES), $(call build-packages, $(package)))
 
+# Change the version in the extensions extension-config.json
 bump-extensions:
 		$(foreach extension, $(EXTENSIONS), $(call bump-extension-versions, $(extension)))
 
+# Change the version in the thems extension-config.json
 bump-themes:
 		$(foreach theme, $(THEMES), $(call bump-theme-versions, $(theme)))
 
-clean-build:
-		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
-
+# Create it tags and push all to git.
 git-publish:
 		$(foreach theme, $(THEMES), $(call git-tags, ./themes/$(theme)/))
 		$(foreach extension, $(EXTENSIONS), $(call git-tags, ./extensions/$(extension)/))
 		$(call git-tags, ./)
 
+# Publish to npm.
 npm-publish:
 		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package)))
+
+# Clean the builds.
+clean-build:
+		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
+
+
+# DEFINITIONS
+
 
 define build-packages
 		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules
