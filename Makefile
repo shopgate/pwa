@@ -9,11 +9,11 @@ release:
 		make clean
 		make pre-publish
 		make build-libraries
-		make bump-extensions
+		# make bump-extensions
 		make bump-themes
-		make git-publish
-		make npm-publish
-		make clean-build
+		# make git-publish
+		# make npm-publish
+		# make clean-build
 
 # Clean the repository before starting a release.
 clean:
