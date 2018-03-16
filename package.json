@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-ios11",
-  "version": "4.12.0-beta.4",
+  "version": "4.12.0-beta.5",
   "description": "iOS11 theme for the Shopgate Connect PWA.",
   "main": "index.jsx",
   "repository": "shopgate/theme-ios11",
@@ -25,12 +25,12 @@
   ],
   "dependencies": {
     "@shopgate/pwa-common": "^3.2.2",
-    "@shopgate/pwa-common-commerce": "^4.12.0-beta.4",
-    "@shopgate/pwa-core": "^4.12.0-beta.4",
-    "@shopgate/pwa-tracking": "^4.12.0-beta.4",
-    "@shopgate/pwa-webcheckout-shopify": "^4.12.0-beta.4",
+    "@shopgate/pwa-common-commerce": "^4.12.0-beta.5",
+    "@shopgate/pwa-core": "^4.12.0-beta.5",
+    "@shopgate/pwa-tracking": "^4.12.0-beta.5",
+    "@shopgate/pwa-webcheckout-shopify": "^4.12.0-beta.5",
     "@shopgate/react-hammerjs": "^0.5.3",
-    "@shopgate/tracking-core": "^4.12.0-beta.4",
+    "@shopgate/tracking-core": "^4.12.0-beta.5",
     "babel-core": "^6.26.0",
     "babel-plugin-module-resolver": "^3.1.0",
     "babel-plugin-react-transform": "^3.0.0",
@@ -67,8 +67,8 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^4.12.0-beta.4",
-    "@shopgate/pwa-unit-test": "^4.12.0-beta.4",
+    "@shopgate/eslint-config": "^4.12.0-beta.5",
+    "@shopgate/pwa-unit-test": "^4.12.0-beta.5",
     "coveralls": "^3.0.0",
     "eslint-import-resolver-babel-module": "4.0.0-beta.1",
     "eslint-plugin-import": "^2.7.0",
