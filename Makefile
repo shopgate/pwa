@@ -10,7 +10,7 @@ release:
 		make pre-publish
 		make build-libraries
 		# make bump-extensions
-		make bump-themes
+		# make bump-themes
 		# make git-publish
 		# make npm-publish
 		# make clean-build
