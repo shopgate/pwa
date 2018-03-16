@@ -21,7 +21,7 @@ export default () => (dispatch, getState) => {
     if (shouldFetchData(getEntryByType(URL_TYPE_REGISTER, state), 'url')) {
       dispatch(requestUrl(URL_TYPE_REGISTER));
 
-      new PipelineRequest('getRegistrationUrl')
+      new PipelineRequest('shopgate.user.getRegistrationUrl')
         .setTrusted()
         .dispatch()
         .then(({ url, expires }) => {

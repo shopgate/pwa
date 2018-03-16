@@ -25,7 +25,7 @@ const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   }
   const timestamp = Date.now();
   dispatch(requestFavorites());
-  const promise = new PipelineRequest('getFavorites')
+  const promise = new PipelineRequest('shopgate.user.getFavorites')
     .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
     .dispatch();
   promise

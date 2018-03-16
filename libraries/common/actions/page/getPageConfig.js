@@ -18,7 +18,7 @@ const getPageConfig = pageId => (dispatch, getState) => {
   if (shouldFetchData(state.page[pageId])) {
     dispatch(requestPageConfig(pageId));
 
-    return new PipelineRequest('getPageConfig')
+    return new PipelineRequest('shopgate.cms.getPageConfig')
       .setInput({ pageId })
       .dispatch()
       .then(result => dispatch(receivePageConfig(pageId, result)))

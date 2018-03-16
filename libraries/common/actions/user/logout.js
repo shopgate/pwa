@@ -13,7 +13,7 @@ import {
 export default () => (dispatch) => {
   dispatch(requestLogout());
 
-  new PipelineRequest('logout')
+  new PipelineRequest('shopgate.user.logoutUser')
     .setTrusted()
     .dispatch()
     .then(({ success, messages }) => {

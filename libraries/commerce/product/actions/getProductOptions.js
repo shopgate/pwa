@@ -20,7 +20,7 @@ const getProductOptions = productId => (dispatch, getState) => {
 
   dispatch(requestProductOptions(productId));
 
-  new PipelineRequest('getProductOptions')
+  new PipelineRequest('shopgate.catalog.getProductOptions')
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductOptions(productId, result.options)))
