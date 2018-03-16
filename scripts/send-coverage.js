@@ -9,14 +9,18 @@ const reports = [];
 
 /**
  * Adds a new report file.
- * @param {string} workspace The package workspace.
  * @param {string} packageName The package name.
  * @param {string} [sub=''] A sub directory.
  */
-function addReport(workspace, packageName, sub = '') {
-  const reportFile = path.join(workspace, packageName, sub, 'coverage', 'lcov.info');
+function addReport(packageName, sub = '') {
+  const reportFile = path.join(__dirname, '..', packageName, sub, 'coverage', 'lcov.info');
 
-  console.log(reportFile);
+  if (fs.existsSync(reportFile)) {
+    reports.push({
+      type: 'lcov',
+      reportFile,
+    });
+  }
 }
 
 /**
@@ -38,6 +42,21 @@ const getDirectories = source => (
 );
 
 lernaJson.packages.forEach((pkg) => {
-  const pkgPath = path.join(__dirname, '..', pkg.split('/')[0]);
-  getDirectories(pkgPath).forEach(folder => console.log(folder));
+  const cleanPackage = pkg.split('/')[0];
+  const pkgPath = path.join(__dirname, '..', cleanPackage);
+  getDirectories(pkgPath).forEach((folder) => {
+    const cleanedFolder = folder.replace(path.join(__dirname, '..'), '');
+    const sub = (cleanPackage === 'extensions') ? 'frontend' : '';
+
+    addReport(cleanedFolder, sub);
+  });
 });
+
+try {
+  if (reports.length) {
+    coveralls.sendReports(reports);
+    console.log('Coverage reports sent!');
+  }
+} catch (err) {
+  console.error(err);
+}
