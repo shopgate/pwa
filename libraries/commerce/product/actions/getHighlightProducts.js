@@ -9,7 +9,7 @@ import getProducts from './getProducts';
  */
 const getHighlightProducts = ({ params, id = null }) => (dispatch) => {
   dispatch(getProducts({
-    pipeline: 'shopgate.filters.getHighlightProducts',
+    pipeline: 'shopgate.catalog.getHighlightProducts',
     params,
     id,
     includeSort: false,

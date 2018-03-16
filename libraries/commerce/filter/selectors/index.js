@@ -81,7 +81,7 @@ export const getFilterHash = createSelector(
     }
 
     const hashParams = {
-      pipeline: 'shopgate.filters.getFilters',
+      pipeline: 'shopgate.catalog.getFilters',
       ...categoryId && { categoryId },
       ...searchPhrase && { searchPhrase },
       ...filters && { filters: {} },
