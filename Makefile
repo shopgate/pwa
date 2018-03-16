@@ -19,6 +19,9 @@ release:
 clean:
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
+		lerna clean --yes
+		rm -rf ./node_modules/
+		lerna bootstrap
 
 # Lerna change all the version numbers.
 pre-publish:
