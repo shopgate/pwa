@@ -112,7 +112,7 @@ export const compareObjects = (input1, input2) => (
  */
 export const generateResultHash = (params, includeSort = true, includeFilters = true) => {
   const defaultParams = {
-    pipeline: 'getProducts',
+    pipeline: 'shopgate.catalog.getProducts',
     ...includeFilters && { filters: {} },
     ...includeSort && { sort: DEFAULT_SORT },
   };

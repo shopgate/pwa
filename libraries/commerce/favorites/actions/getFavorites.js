@@ -1,6 +1,6 @@
-import {shouldFetchData} from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import {logger} from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/pwa-core/helpers';
 import {
   EFAVORITE,
   EUNKNOWN,

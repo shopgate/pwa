@@ -6,7 +6,7 @@ import getProducts from './getProducts';
  */
 const getLiveshoppingProducts = () => (dispatch) => {
   dispatch(getProducts({
-    pipeline: 'getLiveshoppingProducts',
+    pipeline: 'shopgate.catalog.getLiveshoppingProducts',
     cached: false,
     includeFilters: false,
     includeSort: false,

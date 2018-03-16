@@ -1,5 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
+import {logger} from '@shopgate/pwa-core/helpers';
 import {
   generateResultHash,
   shouldFetchFilters,
@@ -24,7 +24,7 @@ const getFilters = () => (dispatch, getState) => {
   const params = buildFilterParams(state);
 
   const hash = generateResultHash({
-    pipeline: 'getFilters',
+    pipeline: 'shopgate.catalog.getFilters',
     ...params,
   }, false);
 
@@ -46,7 +46,7 @@ const getFilters = () => (dispatch, getState) => {
   new PipelineRequest('shopgate.catalog.getFilters')
     .setInput(requestParams)
     .dispatch()
-    .then(({ filters }) => dispatch(receiveFilters(hash, filters)))
+    .then(({filters}) => dispatch(receiveFilters(hash, filters)))
     .catch((error) => {
       logger.error(error);
       dispatch(errorFilters(hash));

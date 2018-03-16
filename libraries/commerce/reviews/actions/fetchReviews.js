@@ -16,7 +16,7 @@ import errorProductReviewsList from '../action-creators/errorReviews';
  */
 const fetchReviews = (productId, limit = 2, offset = 0, sort = SORT_DATE_DESC) => (dispatch) => {
   const hash = generateResultHash({
-    pipeline: 'getProductReviews',
+    pipeline: 'shopgate.catalog.getProductReviews',
     productId,
   }, false);
   dispatch(requestProductReviewsList(hash));
