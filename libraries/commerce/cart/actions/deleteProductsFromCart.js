@@ -13,7 +13,7 @@ import { messagesHaveErrors } from '../helpers';
 const deleteProductsFromCart = cartItemIds => (dispatch) => {
   dispatch(deleteProducts(cartItemIds));
 
-  const request = new PipelineRequest('deleteProductsFromCart');
+  const request = new PipelineRequest('shopgate.cart.deleteProducts');
   request.setInput({ CartItemIds: cartItemIds })
     .dispatch()
     .then(({ messages }) => {

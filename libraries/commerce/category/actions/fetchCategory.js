@@ -1,6 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import {logger} from '@shopgate/pwa-core/helpers';
+import {shouldFetchData} from '@shopgate/pwa-common/helpers/redux';
 import fetchCategoryChildren from './fetchCategoryChildren';
 import requestCategory from '../action-creators/requestCategory';
 import receiveCategory from '../action-creators/receiveCategory';
@@ -28,7 +28,7 @@ const fetchCategory = categoryId => (dispatch, getState) => {
   // No data at all. So we have the fetch the category with children included
   dispatch(requestCategory(categoryId));
 
-  new PipelineRequest('getCategory')
+  new PipelineRequest('shopgate.catalog.getCategory')
     .setInput({
       categoryId,
       includeChildren: true,

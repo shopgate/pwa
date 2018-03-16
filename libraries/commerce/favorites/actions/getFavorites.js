@@ -1,6 +1,6 @@
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import {shouldFetchData} from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { logger } from '@shopgate/pwa-core/helpers';
+import {logger} from '@shopgate/pwa-core/helpers';
 import {
   EFAVORITE,
   EUNKNOWN,
@@ -25,7 +25,7 @@ const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   }
   const timestamp = Date.now();
   dispatch(requestFavorites());
-  const promise = new PipelineRequest('getFavorites')
+  const promise = new PipelineRequest('shopgate.user.getFavorites')
     .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
     .dispatch();
   promise

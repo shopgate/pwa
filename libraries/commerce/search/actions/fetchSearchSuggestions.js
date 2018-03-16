@@ -24,7 +24,7 @@ const fetchSearchSuggestions = () => (dispatch, getState) => {
 
   dispatch(requestSearchSuggestions(searchPhrase));
 
-  new PipelineRequest('getSearchSuggestions')
+  new PipelineRequest('shopgate.catalog.getSearchSuggestions')
     .setInput({ searchPhrase })
     .dispatch()
     .then(({ suggestions }) => {

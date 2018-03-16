@@ -22,7 +22,7 @@ export default ({ login, password }) => (dispatch) => {
     },
   };
 
-  new PipelineRequest('login')
+  new PipelineRequest('shopgate.user.loginUser')
     .setTrusted()
     .setHandledErrors([EINVALIDCALL])
     .setInput(params)

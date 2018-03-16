@@ -28,7 +28,7 @@ const fetchReviews = (productId, limit = 2, offset = 0, sort = SORT_DATE_DESC) =
    * To get more insights, please take a look at ../spec.js.
    * @type {Promise}
    */
-  const request = new PipelineRequest('getProductReviews')
+  const request = new PipelineRequest('shopgate.catalog.getProductReviews')
     .setInput({
       productId,
       limit,
