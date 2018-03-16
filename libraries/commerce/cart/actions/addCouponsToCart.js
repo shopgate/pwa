@@ -12,7 +12,7 @@ import { messagesHaveErrors } from '../helpers';
 const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) => {
   dispatch(addCoupons(couponIds));
 
-  const request = new PipelineRequest('addCouponsToCart');
+  const request = new PipelineRequest('shopgate.cart.addCoupons');
   request.setInput({ couponCodes: couponIds })
     .dispatch()
     .then(({ messages }) => {

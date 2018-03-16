@@ -20,7 +20,7 @@ const getProductShipping = productId => (dispatch, getState) => {
 
   dispatch(requestProductShipping(productId));
 
-  new PipelineRequest('getProductShipping')
+  new PipelineRequest('shopgate.catalog.getProductShipping')
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductShipping(productId, result.shipping)))

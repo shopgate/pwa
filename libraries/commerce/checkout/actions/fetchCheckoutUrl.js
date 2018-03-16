@@ -16,7 +16,7 @@ const fetchCheckoutUrl = () => dispatch =>
   new Promise((resolve, reject) => {
     dispatch(requestUrl(URL_TYPE_CHECKOUT));
 
-    new PipelineRequest('getCheckoutUrl')
+    new PipelineRequest('shopgate.checkout.getUrl')
       .dispatch()
       .then(({ url, expires }) => {
         dispatch(receiveUrl(URL_TYPE_CHECKOUT, url, expires));

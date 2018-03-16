@@ -14,7 +14,7 @@ import {
 const fetchMenu = id => (dispatch) => {
   dispatch(requestMenu(id));
 
-  new PipelineRequest('getMenu')
+  new PipelineRequest('shopgate.cms.getMenu')
     .setInput({ id })
     .dispatch()
     .then((response) => {

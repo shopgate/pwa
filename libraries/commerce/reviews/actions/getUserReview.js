@@ -16,7 +16,7 @@ const getUserReview = productId => (dispatch, getState) => {
     return new Promise(resolve => resolve());
   }
   dispatch(requestUserReview(productId));
-  const request = new PipelineRequest('getUserReview')
+  const request = new PipelineRequest('shopgate.user.getReview')
     .setHandledErrors([EUNKNOWN, EACCESS])
     .setInput({
       productId,

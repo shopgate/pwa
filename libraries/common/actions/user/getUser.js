@@ -16,7 +16,7 @@ import { isUserLoggedIn } from '../../selectors/user';
 export default () => (dispatch, getState) => {
   dispatch(requestUser());
 
-  return new PipelineRequest('getUser')
+  return new PipelineRequest('shopgate.user.getUser')
     .setTrusted()
     .setHandledErrors([EACCESS])
     .dispatch()

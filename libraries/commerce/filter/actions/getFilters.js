@@ -24,7 +24,7 @@ const getFilters = () => (dispatch, getState) => {
   const params = buildFilterParams(state);
 
   const hash = generateResultHash({
-    pipeline: 'getFilters',
+    pipeline: 'shopgate.catalog.getFilters',
     ...params,
   }, false);
 
@@ -43,7 +43,7 @@ const getFilters = () => (dispatch, getState) => {
   }
 
   dispatch(requestFilters(hash));
-  new PipelineRequest('getFilters')
+  new PipelineRequest('shopgate.catalog.getFilters')
     .setInput(requestParams)
     .dispatch()
     .then(({ filters }) => dispatch(receiveFilters(hash, filters)))

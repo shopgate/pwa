@@ -36,7 +36,7 @@ export const requestSync = () => (dispatch, getState) => {
   syncInProgress = true;
   const state = getState();
   dispatch(requestSyncFavorites());
-  new PipelineRequest('putFavorites')
+  new PipelineRequest('shopgate.user.putFavorites')
     .setInput({ productIds: getFavoritesProductsIds(state) })
     .dispatch()
     .then(() => {
