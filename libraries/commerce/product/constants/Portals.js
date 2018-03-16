@@ -21,6 +21,7 @@ const PRICE_STRIKED = 'price-striked';
 const PRICE = 'price';
 const PRICE_INFO = 'price-info';
 const TIERS = 'tiers';
+const ADD_TO_CART_BAR = 'add-to-cart-bar';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -126,3 +127,8 @@ export const PRODUCT_REVIEWS_AFTER = `${PRODUCT}.${REVIEWS}.${AFTER}`;
 export const PRODUCT_TAX_DISCLAIMER_BEFORE = `${PRODUCT}.${TAX_DISCLAIMER}.${BEFORE}`;
 export const PRODUCT_TAX_DISCLAIMER = `${PRODUCT}.${TAX_DISCLAIMER}`;
 export const PRODUCT_TAX_DISCLAIMER_AFTER = `${PRODUCT}.${TAX_DISCLAIMER}.${AFTER}`;
+
+// ADD TO CART BAR
+export const PRODUCT_ADD_TO_CART_BAR_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${BEFORE}`;
+export const PRODUCT_ADD_TO_CART_BAR = `${PRODUCT}.${ADD_TO_CART_BAR}`;
+export const PRODUCT_ADD_TO_CART_BAR_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${AFTER}`;
