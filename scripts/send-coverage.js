@@ -3,6 +3,7 @@
 const coveralls = require('@sourceallies/coveralls-merge');
 const fs = require('fs');
 const path = require('path');
+const logger = require('./logger');
 const lernaJson = require('../lerna.json');
 
 const reports = [];
@@ -44,6 +45,7 @@ const getDirectories = source => (
 lernaJson.packages.forEach((pkg) => {
   const cleanPackage = pkg.split('/')[0];
   const pkgPath = path.join(__dirname, '..', cleanPackage);
+
   getDirectories(pkgPath).forEach((folder) => {
     const cleanedFolder = folder.replace(path.join(__dirname, '..'), '');
     const sub = (cleanPackage === 'extensions') ? 'frontend' : '';
@@ -55,8 +57,8 @@ lernaJson.packages.forEach((pkg) => {
 try {
   if (reports.length) {
     coveralls.sendReports(reports);
-    console.log('Coverage reports sent!');
+    logger.log('Coverage reports sent!');
   }
 } catch (err) {
-  console.error(err);
+  logger.error(err);
 }
