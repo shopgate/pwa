@@ -48,7 +48,9 @@ git-publish:
 
 # Publish to npm.
 npm-publish:
-		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package)))
+		$(eval VERSION=$(shell cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))
+		$(eval SUBSTR=$(findstring beta, $(VERSION)))
+		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package), $(SUBSTR)))
 
 # Clean the builds.
 clean-build:
@@ -87,7 +89,10 @@ define git-tags
 endef
 
 define npm-release
-		npm publish ./libraries/$(strip $(1))/dist/ --access public
+		@if [ "$(strip $(2))" == "beta" ]; \
+			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
+			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
+		fi;
 
 endef
 
