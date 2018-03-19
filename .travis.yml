@@ -8,3 +8,11 @@ branches:
   - develop
 notifications:
   email: false
+  slack:
+    on_success: change
+    on_failure: change
+    template:
+      - "%{repository_slug}"
+      - "<%{build_url}|#%{build_number}> - %{message}"
+      - "Commit: \"%{commit_subject}\" by %{author}"
+    secure: OMSppYsUAQmbgcYenzQvg8QhWuGZd3554lrwK4XDNPqlxeV6BATRYUvgU3fYVAt5Lkri6+ypRVf6VRasBwj4VgYwEHiO5PLqa3bXo9EgJoJiDcq8IjBHrgzVvw0FQShujiDwnpDPUpsjr8DHmuholbE2bX8qF+w0Vd97GJVOHq8FVCm8QQXiOTvPvlFnYCm8sBIoum6Bm9QeuFZM2UhcClMmtxODz799quMztWgbGVF5nO4lQzDE3eYveir21MyB9jKK1fnU2j7NZXc1CLW+vlVj6znN9dDVihNGW1De9Ey9LwXbQW6Y6GsYT4B6Qo/51Cl9jLsva/pSrAHQBzxCvmnCb4EKR+Mn3XQpa/kst6OgkmLEooLyTrLQw0o5ORI7ECmxxMcUHW9HoHRPfvUed9fNJo2nnC9LnwRhkiC6PuzWIhYMaWz2tGNtMxdIQhJLH+cJsL0vYJlWqgL6H9yDBFQd28jGYTl+uFG1KZlJGaVsvtGHDD0VXgjcnB8YT4MGaEbWMDwfuNvD4Y2ormyRhKz7F2ODZQwDR7aWnFGiI7Zl/wRcrc4Tey6NNK6LFT68l3zgQ5xkuKMgJDy7DhvGKiSGD3+XSjkmo2dHNevQvd1HerpCC1axbp6KNMNy/1iJpMhAYO5MPVAFRq/HZdzpGLESmuUQ3ojhRWwIQ7n6k7k=
