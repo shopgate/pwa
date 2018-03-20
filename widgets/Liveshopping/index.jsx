@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
@@ -134,7 +127,7 @@ createProductSliderItem.propTypes = {
 /**
  * The live shopping (deal of the day) widget.
  */
-class LiveshoppingWidget extends React.Component {
+class LiveshoppingWidget extends Component {
   /**
    * Requests the liveshopping product data when the component is mounted.
    */

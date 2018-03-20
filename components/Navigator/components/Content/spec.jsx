@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import Content from './index';
@@ -28,18 +21,14 @@ jest.mock('./connector', () => (obj) => {
 
 describe('<Content />', () => {
   it('should render the logo', () => {
-    const wrapper = shallow(
-      <Content path="/" />
-    );
+    const wrapper = shallow(<Content path="/" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Logo).exists()).toBe(true);
   });
 
   it('should render the title', () => {
-    const wrapper = shallow(
-      <Content path="some/other/path" />
-    );
+    const wrapper = shallow(<Content path="some/other/path" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Title).exists()).toBe(true);

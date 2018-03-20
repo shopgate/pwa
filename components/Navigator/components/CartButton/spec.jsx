@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
@@ -19,9 +12,9 @@ jest.mock('./connector', () => obj => obj);
 
 describe('<CartButton />', () => {
   it('should not be visible with prop visible set to false', () => {
-    const wrapper = shallow(
+    const wrapper = shallow((
       <CartButton cartProductCount={0} visible={false} activeCartRoute={false} />
-    );
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('0');
@@ -31,27 +24,21 @@ describe('<CartButton />', () => {
   });
 
   it('should render with cartProductCount beeing set to 4', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={4} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={4} visible activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('4');
   });
 
   it('should show \'99+\' if the cart amount is higher', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={115} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={115} visible activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe(`${CART_MAX_ITEMS}+`);
   });
 
   it('should transition if it has cart amount', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={5} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={5} visible activeCartRoute={false} />);
 
     expect(wrapper).toMatchSnapshot();
     const buttonProps = wrapper.find('button').props();
@@ -61,9 +48,7 @@ describe('<CartButton />', () => {
   });
 
   it('should not delay transition when the cart page is left', () => {
-    const wrapper = shallow(
-      <CartButton cartProductCount={5} visible activeCartRoute={false} />
-    );
+    const wrapper = shallow(<CartButton cartProductCount={5} visible activeCartRoute={false} />);
 
     expect(wrapper.state().useAnimationDelay).toBe(true);
 

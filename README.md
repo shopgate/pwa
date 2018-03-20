@@ -1,4 +1,4 @@
-# Shopgate iOS 11 Theme
+# iOS11 theme for the Shopgate Connect PWA
 
 [![Build Status](https://travis-ci.org/shopgate/theme-ios11.svg?branch=master)](https://travis-ci.org/shopgate/theme-ios11)
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/theme-ios11/badge.svg?branch=master)](https://coveralls.io/github/shopgate/theme-ios11?branch=master)
@@ -12,6 +12,6 @@ Shopgate offers everything online retailers need to be successful in mobile. Our
 
 ## License
 
-Shopgate's iOS 11 theme is available under the Apache License, Version 2.0.
+iOS11 theme for the Shopgate Connect PWA is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

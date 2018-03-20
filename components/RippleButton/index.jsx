@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Ripple from 'Components/Ripple';
 import Button from 'Components/Button';
@@ -15,7 +8,7 @@ import style from 'Components/Button/style';
  * The ripple button component is a special derivation of the basic button component
  * that adds a ripple effect when clicked.
  */
-class RippleButton extends React.Component {
+class RippleButton extends Component {
   static propTypes = {
     ...Button.propTypes,
     rippleClassName: PropTypes.string,
