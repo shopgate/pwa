@@ -1,9 +1,9 @@
 {
-  "version": "1.0.3",
+  "version": "4.12.0-beta.12",
   "id": "@shopgate/product-reviews",
   "components": [
     {
-      "id": "@shopgate/product-reviews/rating_stars",
+      "id": "RatingSatrs",
       "path": "frontend/RatingStars/index.jsx",
       "target": "product-item.name.before",
       "type": "portals"
