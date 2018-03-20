@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { mount } from 'enzyme';
 import QuantityPicker from './index';
@@ -53,8 +46,7 @@ describe('<QuantityPicker />', () => {
     let input;
 
     beforeEach(() => {
-      wrapper = mount(
-        <QuantityPicker />);
+      wrapper = mount(<QuantityPicker />);
 
       input = wrapper.instance().input;
 
@@ -89,9 +81,7 @@ describe('<QuantityPicker />', () => {
     beforeEach(() => {
       onChangeMock = jest.fn();
 
-      wrapper = mount(
-        <QuantityPicker quantity={2} onChange={onChangeMock} />
-      );
+      wrapper = mount(<QuantityPicker quantity={2} onChange={onChangeMock} />);
 
       input = wrapper.find('input');
     });
@@ -123,8 +113,7 @@ describe('<QuantityPicker />', () => {
     beforeEach(() => {
       onToggleEditModeMock = jest.fn();
 
-      wrapper = mount(
-        <QuantityPicker onToggleEditMode={onToggleEditModeMock} />);
+      wrapper = mount(<QuantityPicker onToggleEditMode={onToggleEditModeMock} />);
 
       input = wrapper.find('input');
     });

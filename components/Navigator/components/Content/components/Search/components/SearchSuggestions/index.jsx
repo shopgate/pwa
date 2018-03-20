@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import List from 'Components/List';
@@ -19,7 +12,7 @@ import { SEARCH_SUGGESTIONS_MIN_CHARACTERS } from './constants';
 class SearchSuggestions extends Component {
   static propTypes = {
     fetchSearchSuggestions: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+    isFetching: PropTypes.bool.isRequired,
     searchPhrase: PropTypes.string.isRequired,
     setSearchPhrase: PropTypes.func.isRequired,
     submitSearch: PropTypes.func.isRequired,
@@ -90,12 +83,11 @@ class SearchSuggestions extends Component {
       <div className={styles.container}>
         <List>
           {suggestions.map(suggestion =>
-            <SearchSuggestion
+            (<SearchSuggestion
               key={suggestion}
               suggestion={suggestion}
               onClick={() => this.handleSelect(suggestion)}
-            />
-          )}
+            />))}
         </List>
       </div>
     );

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import Button from 'Components/Button';
@@ -29,17 +22,13 @@ describe('<BasicDialog />', () => {
   };
 
   it('should render with minimal props', () => {
-    const wrapper = shallow(
-      <BasicDialog actions={[]} />
-    );
+    const wrapper = shallow(<BasicDialog actions={[]} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should show correct number of buttons', () => {
-    const wrapper = shallow(
-      <BasicDialog {...props} />
-    );
+    const wrapper = shallow(<BasicDialog {...props} />);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -47,9 +36,7 @@ describe('<BasicDialog />', () => {
   });
 
   it('should trigger correct actions', () => {
-    const wrapper = shallow(
-      <BasicDialog {...props} />
-    );
+    const wrapper = shallow(<BasicDialog {...props} />);
 
     const button = wrapper.find(Button).at(1);
     button.simulate('click');

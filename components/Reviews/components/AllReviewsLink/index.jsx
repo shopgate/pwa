@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
@@ -13,9 +6,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index
 import ButtonLink from 'Components/ButtonLink';
 import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
 import connect from './connector';
-import {
-  container,
-} from './style';
+import { container } from './style';
 
 /**
  * Link to all reviews.

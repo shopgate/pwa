@@ -1,9 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'Components/TextField';
@@ -28,7 +22,7 @@ class ReviewForm extends Component {
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
-    authorName: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+    authorName: PropTypes.string,
     productId: PropTypes.string,
     review: PropTypes.shape(),
   };
@@ -86,21 +80,6 @@ class ReviewForm extends Component {
   }
 
   /**
-   * Once the review is loaded. Never change it again via props.
-   * This will make the form interaction unchanged if props are changed
-   * for whatever reason.
-   *
-   * @return {boolean}
-   */
-  shouldUpdateReviewsStateFields() {
-    if (this.props.isLoadingUserReview === false) {
-      return false;
-    }
-
-    return true;
-  }
-
-  /**
    * Gets current validation errors.
    * @return {null|*|{}}
    */
@@ -127,13 +106,28 @@ class ReviewForm extends Component {
   }
 
   /**
+   * Once the review is loaded. Never change it again via props.
+   * This will make the form interaction unchanged if props are changed
+   * for whatever reason.
+   *
+   * @return {boolean}
+   */
+  shouldUpdateReviewsStateFields() {
+    if (this.props.isLoadingUserReview === false) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
    * Validate rate.
    * @param {Object} scope The data to be validated.
    * @return {boolean} Valid or invalid data provided.
    */
   validateRate(scope = this.state) {
     const { __ } = this.context.i18n();
-    const validationErrors = this.validationErrors;
+    const { validationErrors } = this;
 
     if (!scope.rate) {
       validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
@@ -151,7 +145,7 @@ class ReviewForm extends Component {
    */
   validateAuthor(scope = this.state) {
     const { __ } = this.context.i18n();
-    const validationErrors = this.validationErrors;
+    const { validationErrors } = this;
     const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
 
     if (!scope[FIELD_NAME_AUTHOR]) {
@@ -174,7 +168,7 @@ class ReviewForm extends Component {
    */
   validateLength(field, scope = this.state) {
     const { __ } = this.context.i18n();
-    const validationErrors = this.validationErrors;
+    const { validationErrors } = this;
     const length = this.constructor.validationLengths[field];
 
     if (length && scope[field] && scope[field].length >= length) {
@@ -226,7 +220,10 @@ class ReviewForm extends Component {
           <RatingScale
             onChange={(rate) => {
               const validationErrors = this.validateRate({ rate });
-              this.setState({ rate, validationErrors });
+              this.setState({
+                rate,
+                validationErrors,
+              });
             }}
             errorText={this.state.validationErrors[FIELD_NAME_RATE]}
             value={this.state[FIELD_NAME_RATE]}
@@ -239,7 +236,10 @@ class ReviewForm extends Component {
             errorText={this.state.validationErrors[FIELD_NAME_AUTHOR]}
             onChange={(author) => {
               const validationErrors = this.validateAuthor({ author });
-              this.setState({ author, validationErrors });
+              this.setState({
+                author,
+                validationErrors,
+              });
             }}
           />
           <TextField
@@ -250,7 +250,10 @@ class ReviewForm extends Component {
             errorText={this.state.validationErrors[FIELD_NAME_TITLE]}
             onChange={(title) => {
               const validationErrors = this.validateLength(FIELD_NAME_TITLE, { title });
-              this.setState({ title, validationErrors });
+              this.setState({
+                title,
+                validationErrors,
+              });
             }}
           />
           <TextField
@@ -262,7 +265,10 @@ class ReviewForm extends Component {
             multiLine
             onChange={(review) => {
               const validationErrors = this.validateLength(FIELD_NAME_REVIEW, { review });
-              this.setState({ review, validationErrors });
+              this.setState({
+                review,
+                validationErrors,
+              });
             }}
           />
           <FormButtons />

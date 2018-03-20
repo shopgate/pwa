@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import {
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_WARNING,
@@ -58,8 +51,7 @@ class ProductVariants {
    */
   init() {
     this.selection = this.characteristics.map(characteristic =>
-      this.createDefaultCharacteristicSelection(characteristic.id)
-    );
+      this.createDefaultCharacteristicSelection(characteristic.id));
 
     return this;
   }
@@ -102,13 +94,15 @@ class ProductVariants {
 
     this.selection = this.selection.map((characteristic) => {
       const updated = { ...characteristic };
-      const { id, disabled, selected, values } = characteristic;
+      const {
+        id, disabled, selected, values,
+      } = characteristic;
 
       if (id === characteristicId && disabled === false) {
         // If the requested characteristic is enabled for change, we start searching for the value
-        const characteristicValue = values.find(
+        const characteristicValue = values.find((
           value => value.id === characteristicValueId && value.disabled === false
-        );
+        ));
 
         if (characteristicValue) {
           // Only update the characteristic, if it's really necessary
@@ -147,9 +141,9 @@ class ProductVariants {
    */
   getNextCharacteristicSelectionId(characteristicId) {
     // Get the index of the characteristic within the selection state
-    const index = this.selection.findIndex(
+    const index = this.selection.findIndex((
       characteristic => characteristic.id === characteristicId
-    );
+    ));
 
     // Get the next characteristic
     const nextCharacteristic = this.selection[index + 1];
@@ -165,9 +159,9 @@ class ProductVariants {
    */
   createDefaultCharacteristicSelection(characteristicId) {
     // Get the desired characteristic settings from the variants pipeline response data
-    const source = this.characteristics.find(
+    const source = this.characteristics.find((
       characteristic => characteristic.id === characteristicId
-    );
+    ));
 
     return {
       ...source,
@@ -203,9 +197,9 @@ class ProductVariants {
          * which characteristics match the completed selections.
          * @type {Array}
          */
-        const products = this.filterProducts(
+        const products = this.filterProducts((
           this.getCharacteristicsForProductFilter(characteristicId)
-        );
+        ));
 
         // Create the characteristic selection values
         updated.values = updated.values.map((value) => {
