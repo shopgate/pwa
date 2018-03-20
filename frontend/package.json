@@ -17,6 +17,7 @@
     "@shopgate/react-hammerjs": "^0.5.3",
     "babel-plugin-react-transform": "^3.0.0",
     "coveralls": "^3.0.0",
+    "jest": "^22.4.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
