@@ -26,7 +26,7 @@ const getResultHash = (state, type, params, id) => {
     case 1: {
       hashParams = {
         id,
-        pipeline: 'shopgate.filters.getHighlightProducts',
+        pipeline: 'getHighlightProducts',
         sort: transformedSort,
       };
 
