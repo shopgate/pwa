@@ -13,7 +13,7 @@ import { messagesHaveErrors } from '../helpers';
 const deleteCouponsFromCart = couponIds => (dispatch) => {
   dispatch(deleteCoupons(couponIds));
 
-  const request = new PipelineRequest('deleteCouponsFromCart');
+  const request = new PipelineRequest('shopgate.cart.deleteCouponsFromCart');
   request.setInput({ couponCodes: couponIds })
     .dispatch()
     .then(({ messages }) => {
