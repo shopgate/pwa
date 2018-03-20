@@ -6,7 +6,7 @@ script: npm run cover -- --maxWorkers=4
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
-  - master
+  - develop
 notifications:
   email: false
   slack:
@@ -16,4 +16,4 @@ notifications:
       - "%{repository_slug}"
       - "<%{build_url}|#%{build_number}> - %{message}"
       - "Commit: \"%{commit_subject}\" by %{author}"
-    secure: NT0eoZ6RBMxEKej9NynlC0//aOSZmb8bSYZKrvhkbAqZffklivLPuStFO40RiNZ0j/UteSm36OShySRbpOCSm+sxSpo5uR5SwD6zTXIHOb2iK5wZXVRpsWFtlfq5vKycXRAfl9Lsr7AoIdsyP10+mJbq7Q8Iu643LoR3NoAsBmLExov51ZZuHalTlMZBJef7Ij6BTjQItSCK1q3DI1zYZRdFf0euLessyNjrHrMmiPtJoT0rvSmsRN+cHbg7DNqkcJI9RDvgv7iaV26ymBmqM3lRGAT07KL8MpLNkxeumW+hbgX0pIGlUK2XmUHdaNAIt5kid7U7pWDp++H9UqrjrxoZ81Gi0ck5feDhvkhhThWLQNuToiK+oueb5gEM+ufhl108qvrh/AMQQgq5KeE9aUzueUPZRwbHj09Vn0a5wEhROeICqyl5pwnHCCx7OL/JmfqzfgHxYUy1aVODsqZrp2fvXqO3xiicUDdKn4rXuVQn09nobcNqIVgKIGDZDtRbBo/x/TF6212oS3iZO/ETNzUpZsZoG/xZNMeRyH0mDyy0TjTYEMizQYf44Zsevzdm4kUkM6VtvZv4IKbif3vPq2qAkhzjANJGeYTCFF9MZcWGorCWqrXg5Vg2ezUWBXJlsYy0Xtk0au6KqOlN2W/xqRHDwHIjkwIJfN+tdh0/bCY=
+    secure: cLzn4uj06o5HQxfTVG0Mlg/Dq4YRJC+qNRpjsgDaTK2wtKFkkTZqRUaje/xrLDEncPXqw4UAoA1ua3CK1/Xy3NWWBox0cLB5gmelfJ1jhpOYwP3D7aQ6XVZB6pD0YwJow+wgGPAGAdO2XSJigUYvtXF2/ENP5d0xWQHIEoTVbLHr44tFk+cvf7ScOsEAFL3SHwugd0JUqSRCJMbJSTUtArmmhTZgRzmMgbkrIKKREQtv5UMAGou32blF3OasEJ8frQi+IPtRLGzqLzkE4LmemX2Q3IveyAt3WE21BJH+FqzhEXUTMzVts5SThElW1m9hSbd1KFMEE1gw/GatKCTux59rFWDZ/IEbi4JuWDTD76YEbih5WLuHkMU3aH9jaDu90hY9xGSIofQTwiSZT51p7N3pzBAWSbXCJH/HFhmtMB4m4dD4tRygPGWyn8QvGnCziTjzIkM83yYxzWaF1zmUVosHTGe2bayTFdiWEahU8aIhPbN6ZwmO+u07GGpDEpWizeKbhOx196jlbgARPx+q4SAodUKgOMn99P20BJb85X9mlCKGwHunCEJyqTGzF6XcqM+wnDog1iHrwPJNTyj1FG5oW0Tb+P4ZtdHBOVjt8RNj5COf6Z011ca83xZ7k6FHoq021rhsFUIlOL+Unk/9bHT6+DUrbdULvWdeu4PRG0E=
