@@ -1,9 +1,3 @@
-/**
- * Copyright (c) 2017 - present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -83,7 +77,10 @@ describe('<Toast />', () => {
 
   it('should dispatch a toast message', (done) => {
     const wrapper = createComponent();
-    dispatch(createToast({ message: 'Toast Message', duration: 0 }));
+    dispatch(createToast({
+      duration: 0,
+      message: 'Toast Message',
+    }));
     wrapper.update();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockMessage).exists()).toBe(true);
@@ -102,7 +99,10 @@ describe('<Toast />', () => {
       wrapperWithTimeout.unmount();
       done();
     });
-    dispatch(createToast({ message: 'Timeout Message', duration: 10 }));
+    dispatch(createToast({
+      duration: 10,
+      message: 'Timeout Message',
+    }));
     wrapperWithTimeout.update();
   });
 
@@ -112,7 +112,10 @@ describe('<Toast />', () => {
     const getNextToast = wrapper.find(Toast).prop('toast');
 
     messages.forEach((message) => {
-      dispatch(createToast({ message, duration: 0 }));
+      dispatch(createToast({
+        duration: 0,
+        message,
+      }));
     });
     wrapper.update();
 
@@ -160,7 +163,11 @@ describe('<Toast />', () => {
     const getNextToast = wrapper.find(Toast).prop('toast');
 
     messages.forEach((message) => {
-      dispatch(createToast({ message, duration: 10, replaceable: true }));
+      dispatch(createToast({
+        duration: 10,
+        message,
+        replaceable: true,
+      }));
     });
     wrapper.update();
 

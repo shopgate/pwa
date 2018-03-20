@@ -1,14 +1,7 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import chai from 'chai';
 import sgUrlMapper from '../helpers/urlMapping';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 const base = 'http://testshop.shopgate.localdev.cc';
 const pathLive = '/';

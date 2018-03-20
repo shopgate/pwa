@@ -1,7 +1,4 @@
-# Shopgate's Unit Test Suite
-
-[![GitHub release](https://img.shields.io/github/release/shopgate/pwa-unit-test.svg)]()
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# Unit test setup for the Shopgate Connect PWA
 
 This test suite is a configuration for Shopgate's [React](https://facebook.github.io/react/) projects.
 
@@ -25,6 +22,7 @@ npm install @shopgate/pwa-unit-test --save-dev
 All test files should follow the naming convention of `*spec.(js|jsx)`.
 
 You have two options of how to create a configuration for Jest:
+
 - You can create your own configuration following the [Jest Documentation](https://facebook.github.io/jest/docs/en/getting-started.html)
 - You can use Shopgate's pre-defined configuration and extend it as you wish.
 
@@ -59,6 +57,7 @@ module.exports = {
 ```
 
 ## Example Configuration
+
 Here is an example showing how to extend the default configuration:
 
 ```js
@@ -77,10 +76,12 @@ module.exports = {
 
 Shopgate is the leading mobile commerce platform.
 
-Shopgate offers everything online retailers need to be successful in mobile. Our leading software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize native apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
+Shopgate offers everything online retailers need to be successful in mobile. Our leading
+software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize
+native apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
 
 ## License
 
-Shopgate's Unit Test Suite is available under the Apache License, Version 2.0.
+Unit test setup for the Shopgate Connect PWA is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

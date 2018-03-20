@@ -1,8 +1,8 @@
 {
   "lerna": "2.9.0",
-  "version": "4.2.0",
+  "version": "4.12.0-beta.12",
   "packages": [
-    "extensions/*",
+    "extensions/*/frontend",
     "libraries/*",
     "themes/*",
     "utils/*"
@@ -12,7 +12,17 @@
   "npmClientArgs": [
     "--no-optional"
   ],
-  "publishConfig": {
-    "access": "public"
+  "commands": {
+    "publish": {
+      "access": "public",
+      "ignore": [
+        "ignored-file",
+        "*.spec.*",
+        "*.mock.*",
+        "*/tests/*",
+        "extensions/*",
+        "themes/*"
+      ]
+    }
   }
 }

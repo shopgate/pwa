@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 export const ITEM_PATH = '/item';
 
 export const PRODUCT_LIFETIME = 3600000; // 1 hour in milliseconds

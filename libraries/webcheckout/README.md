@@ -1,13 +1,8 @@
-# Shopgate's PWA webcheckout for Shopify
-
-![](https://travis-ci.org/shopgate/pwa-webcheckout-shopify.svg?branch=master)
-[![GitHub release](https://img.shields.io/github/release/shopgate/pwa-webcheckout-shopify.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-webcheckout-shopify/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-webcheckout-shopify?branch=master)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# Webcheckout Shopify library for the Shopgate Connect PWA
 
 ## Install
 
-```
+```sh
 npm i @shopgate/pwa-webcheckout-shopify --save
 ```
 
@@ -21,6 +16,6 @@ native apps and mobile websites for the iPhone, iPad, Android smartphones and ta
 
 ## License
 
-Shopgate's PWA webcheckout for Shopify is available under the Apache License, Version 2.0.
+Webcheckout Shopify library for the Shopgate Connect PWA is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

@@ -1,12 +1,4 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 /* eslint global-require: "off" */
-
 import chai from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -14,7 +6,7 @@ import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 import { sgData } from './data/tracking.testData';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(sinonChai);
 
@@ -35,6 +27,7 @@ describe('FbPixel', () => {
 
     document.body.innerHTML = '<head><script></script></head><body></body>';
 
+    // eslint-disable-next-line prefer-destructuring
     SGLink = require('../helpers/helper').SGLink;
     SgFbPixelTracking = require('../plugins/trackers/FbPixel').default;
     SgTrackingCore = require('../core/Core').default.reset();
@@ -42,6 +35,7 @@ describe('FbPixel', () => {
 
     spyFbq = sinon.spy(global, 'fbq');
 
+    // eslint-disable-next-line no-new
     new SgFbPixelTracking({
       config: {
         pixelIds: ['7117', '2222'],
@@ -52,7 +46,9 @@ describe('FbPixel', () => {
 
   it('should throw errors for wrong init', () => {
     const spyConsole = sinon.spy(console, 'warn');
+    // eslint-disable-next-line no-new
     new SgFbPixelTracking();
+    // eslint-disable-next-line no-new
     new SgFbPixelTracking({ useNativeSdk: true });
 
     expect(spyConsole).to.have.been.calledWith('SgFbPixelTracking: pixels missing');
@@ -64,7 +60,7 @@ describe('FbPixel', () => {
   });
 
   it('should send init events', () => {
-    const callCount = spyFbq.callCount;
+    const { callCount } = spyFbq;
 
     expect(spyFbq.getCall(callCount - 3).args).to.eql(['init', '7117', undefined]);
     expect(spyFbq.getCall(callCount - 2).args).to.eql(['addPixelId', '2222', undefined]);
@@ -73,6 +69,7 @@ describe('FbPixel', () => {
 
   it('should send completedRegistration', () => {
     const input = trackingCoreEvents.completedRegistration();
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'CompleteRegistration', { content_name: input.registrationType })).to.have.been.calledOnce;
   });
 
@@ -80,6 +77,7 @@ describe('FbPixel', () => {
     const input = trackingCoreEvents.viewContent();
     const contentType = new SGLink(input.page.link).action || 'index';
 
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'ViewContent', {
       content_name: input.page.name,
       content_ids: [''],
@@ -89,6 +87,7 @@ describe('FbPixel', () => {
 
   it('should send addedPaymentInfo', () => {
     trackingCoreEvents.addedPaymentInfo();
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'AddPaymentInfo', undefined)).to.have.been.calledOnce;
   });
 
@@ -107,6 +106,7 @@ describe('FbPixel', () => {
       expected.content_name = input.order.products[0].name;
     }
 
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'Purchase', expected)).to.have.been.calledOnce;
   });
 
@@ -126,6 +126,7 @@ describe('FbPixel', () => {
       expected.content_name = input.cart.products[0].name;
     }
 
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'InitiateCheckout', expected)).to.have.been.calledOnce;
   });
 
@@ -148,6 +149,7 @@ describe('FbPixel', () => {
       expected.content_name = input.products[0].name;
     }
 
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'AddToCart', expected)).to.have.been.calledOnce;
   });
 
@@ -170,6 +172,7 @@ describe('FbPixel', () => {
       expected.content_name = input.favouriteListProducts[0].name;
     }
 
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'AddToWishlist', expected)).to.have.been.calledOnce;
   });
 
@@ -177,6 +180,7 @@ describe('FbPixel', () => {
     const input = trackingCoreEvents.search();
     const productIds = input.products.map(product => product.productNumber || product.uid);
 
+    // eslint-disable-next-line no-unused-expressions
     expect(spyFbq.withArgs('track', 'Search', {
       content_ids: productIds,
       content_type: 'product',

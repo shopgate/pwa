@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import chai from 'chai';
 import sinon from 'sinon';
 import chaiSinon from 'sinon-chai';
@@ -13,8 +6,8 @@ import storageMock from './helpers/localStorage-mock';
 import { sgDataOrder } from './data/tracking.testData';
 import { gaOrderData } from './data/tracking.expectedData';
 
-const expect = chai.expect;
-const rerequire = mochaJsdom.rerequire;
+const { expect } = chai;
+const { rerequire } = mochaJsdom;
 
 describe('GaBase', () => {
   chai.use(chaiSinon);
@@ -60,6 +53,7 @@ describe('GaBase', () => {
     global.localStorage = storageMock();
     window.SGEvent = {};
 
+    // eslint-disable-next-line global-require
     SgTrackingCore = require('../core/Core').default.reset();
   });
 
@@ -85,7 +79,7 @@ describe('GaBase', () => {
     global.window.ga = gaSpy;
     global.ga = gaSpy;
 
-      // Save all registered callbacks for events
+    // Save all registered callbacks for events
     [...events, ...Object.keys(customEvents)].forEach((event) => {
       SgTrackingCore.register[event] = (cb) => {
         eventCallbacks[event] = cb;
@@ -115,9 +109,10 @@ describe('GaBase', () => {
     global._gaq = {
       push: gaqSpy,
     };
+    // eslint-disable-next-line no-underscore-dangle
     global.window._gaq = global._gaq;
 
-      // Check classic
+    // Check classic
     SgTrackingGAPlugin.createClassic({
       config: {
         merchant: [
@@ -199,7 +194,11 @@ describe('GaBase', () => {
     const gaCalls = gaSpy.getCalls().length;
     const gaqCalls = gaqSpy.getCalls().length;
 
-    eventCallbacks[eventName](data, { merchant: true, shopgate: true, trackerName: 'mock' });
+    eventCallbacks[eventName](data, {
+      merchant: true,
+      shopgate: true,
+      trackerName: 'mock',
+    });
 
     expect(gaSpy).to.have.callCount(merchant ? gaCalls + 3 : gaCalls + 1);
 
@@ -257,9 +256,11 @@ describe('GaBase', () => {
   }
 
   it('should test sdk calls for addToCart event', () => {
-    testEventData('addToCart', global.window.sgData,
+    testEventData(
+      'addToCart', global.window.sgData,
       ['pageview', 'add_to_cart'],
-      ['_trackPageview', 'add_to_cart']);
+      ['_trackPageview', 'add_to_cart']
+    );
   });
 
   it('should test sdk calls for custom events', () => {
@@ -269,7 +270,7 @@ describe('GaBase', () => {
         'action',
         'label',
         'value',
-         false
+        false
       );
 
       testEventData(

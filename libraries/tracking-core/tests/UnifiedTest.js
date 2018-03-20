@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 /* eslint global-require: "off" */
 import chai from 'chai';
 import sinon from 'sinon';
@@ -12,7 +5,7 @@ import sinonChai from 'sinon-chai';
 import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 
-const expect = chai.expect;
+const { expect } = chai;
 chai.use(sinonChai);
 
 describe('Unified', () => {
@@ -102,7 +95,8 @@ describe('Unified', () => {
       {
         blacklist: true,
         trackers: undefined,
-      });
+      }
+    );
     spy.restore();
   });
 });

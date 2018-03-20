@@ -1,51 +1,46 @@
-# Shopgate's PWA common library
-
-[![Travis CI Build](https://travis-ci.org/shopgate/pwa-common.svg?branch=master)](https://travis-ci.org/shopgate/pwa-common)
-[![GitHub release](https://img.shields.io/github/release/shopgate/pwa-common.svg)]()
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa-common/badge.svg?branch=master)](https://coveralls.io/github/shopgate/pwa-common?branch=master)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# Common library for the Shopgate Connect PWA
 
 This library handles the basic application environment for a
-[PWA](https://developers.google.com/web/progressive-web-apps/) in the **Shopgate Cloud**.
+[PWA](https://developers.google.com/web/progressive-web-apps/) in the **Shopgate Connect**.
 
 It holds everything that is needed for data storage via [Redux](http://redux.js.org),
 observable streams via [RxJS](https://github.com/ReactiveX/rxjs), and it serves with a variety of
 pre-defined Redux actions, reselect selectors and RxJS streams and subscriptions.
 
 It also provides you a variety of ready to go React Components that you can use inside your
-Shopgate Cloud PWA theme.
+Shopgate Connect PWA theme.
 
 ## Installation
 
-```
+```sh
 npm i @shopgate/pwa-common --save
 ```
 
-## What is inside?
+## What's inside
 
 ### Redux
 
-  * [Action Creators](./action-creators)
-  * [Actions](./actions)
-  * [Reducers](./reducers)
+- [Action Creators](./action-creators)
+- [Actions](./actions)
+- [Reducers](./reducers)
 
 ### Reselect
 
-  * [Selectors](./selectors)
+- [Selectors](./selectors)
 
 ### React
 
-  * [Components](./components)
+- [Components](./components)
 
 ### RxJS
 
-  * [Streams](./streams)
-  * [Subscriptions](./subscriptions)
+- [Streams](./streams)
+- [Subscriptions](./subscriptions)
 
 ### Miscellaneous
 
-  * [CSS Reset](./styles)
-  * [Helper Functions](./helpers)
+- [CSS Reset](./styles)
+- [Helper Functions](./helpers)
 
 ## About Shopgate
 
@@ -57,6 +52,6 @@ apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
 
 ## License
 
-Shopgate's PWA Common library is available under the Apache License, Version 2.0.
+Common library for the Shopgate Connect PWA is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

@@ -1,11 +1,4 @@
 /**
- * Copyright (c) 2017 - present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/**
  * Gets toast message which should be shown.
  * Always the first one, and always just one.
  * There should be only one toast message at a time shown to the user.

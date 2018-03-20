@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 /* eslint global-require: "off" */
 /* eslint-disable no-unused-expressions */
 import chai from 'chai';
@@ -13,7 +6,7 @@ import mochaJsdom from 'mocha-jsdom';
 import storageMock from './helpers/localStorage-mock';
 import { sgDataProduct, sgDataSearch, sgDataCategoryAll } from './data/tracking.testData';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(sinonChai);
 

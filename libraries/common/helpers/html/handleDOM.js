@@ -1,11 +1,4 @@
 /**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/**
  * Parses a collection of DOM nodes for external script tags.
  * @param {Array} nodes A collection of DOM nodes.
  * @param {Function} callback Will be called when a single script is loaded.

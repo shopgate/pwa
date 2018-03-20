@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 /* eslint global-require: "off" */
 import Chai from 'chai';
 import sinon from 'sinon';
@@ -12,7 +5,7 @@ import sinonChai from 'sinon-chai';
 import mochaJsdom from 'mocha-jsdom';
 
 const chai = Chai.use(sinonChai);
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('AppHandler', () => {
   let appHandler;
@@ -20,11 +13,12 @@ describe('AppHandler', () => {
   mochaJsdom();
 
   before(() => {
-    global.console.groupCollapsed = () => {};
-    global.console.groupEnd = () => {};
+    global.console.groupCollapsed = () => { };
+    global.console.groupEnd = () => { };
     window.SGEvent = {};
 
     appHandler = require('../core/AppHandler').default;
+    // eslint-disable-next-line prefer-destructuring
     SGAction = require('../helpers/helper').SGAction;
   });
 
@@ -51,15 +45,42 @@ describe('AppHandler', () => {
    * @type {[{SGAction: String, event: String}]}
    */
   const events = [
-    { SGAction: 'analyticsSetCampaignWithUrl', event: 'setCampaignWithUrl' },
-    { SGAction: 'analyticsLogPageview', event: 'viewContent' },
-    { SGAction: 'analyticsLogPurchase', event: 'purchase' },
-    { SGAction: 'analyticsLogAddToCart', event: 'addToCart' },
-    { SGAction: 'analyticsLogAddedPaymentInfo', event: 'addedPaymentInfo' },
-    { SGAction: 'analyticsLogInitiatedCheckout', event: 'initiatedCheckout' },
-    { SGAction: 'analyticsLogCompletedRegistration', event: 'completedRegistration' },
-    { SGAction: 'analyticsLogAddToWishlist', event: 'addToWishlist' },
-    { SGAction: 'analyticsLogSearch', event: 'search' },
+    {
+      SGAction: 'analyticsSetCampaignWithUrl',
+      event: 'setCampaignWithUrl',
+    },
+    {
+      SGAction: 'analyticsLogPageview',
+      event: 'viewContent',
+    },
+    {
+      SGAction: 'analyticsLogPurchase',
+      event: 'purchase',
+    },
+    {
+      SGAction: 'analyticsLogAddToCart',
+      event: 'addToCart',
+    },
+    {
+      SGAction: 'analyticsLogAddedPaymentInfo',
+      event: 'addedPaymentInfo',
+    },
+    {
+      SGAction: 'analyticsLogInitiatedCheckout',
+      event: 'initiatedCheckout',
+    },
+    {
+      SGAction: 'analyticsLogCompletedRegistration',
+      event: 'completedRegistration',
+    },
+    {
+      SGAction: 'analyticsLogAddToWishlist',
+      event: 'addToWishlist',
+    },
+    {
+      SGAction: 'analyticsLogSearch',
+      event: 'search',
+    },
   ];
 
   /**
@@ -84,7 +105,10 @@ describe('AppHandler', () => {
       const spy = getSpy(event.SGAction);
 
       appHandler[event.event](dummyData, restrictions);
-      checkSpy(spy, { ...dummyData, restrictions });
+      checkSpy(spy, {
+        ...dummyData,
+        restrictions,
+      });
     });
   });
 });

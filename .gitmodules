@@ -4,3 +4,9 @@
 [submodule "themes/ios11"]
 	path = themes/ios11
 	url = https://github.com/shopgate/theme-ios11.git
+[submodule "extensions/@shopgate-product-reviews"]
+	path = extensions/@shopgate-product-reviews
+	url = https://github.com/shopgate/ext-product-reviews.git
+[submodule "extensions/@shopgate-tracking-ga-native"]
+	path = extensions/@shopgate-tracking-ga-native
+	url = https://github.com/shopgate/tracking-ga-native.git

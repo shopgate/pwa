@@ -1,10 +1,3 @@
-/*
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { sgData, sgDataOrder, sgDataSearch, sgDataCheckout, product, addedToCartProduct } from '../data/tracking.testData';
 
 const SgTrackingCore = require('../../core/Core').default.reset();
@@ -14,7 +7,10 @@ const SgTrackingCore = require('../../core/Core').default.reset();
  * @returns {Object}
  */
 export function completedRegistration() {
-  const data = { ...sgData, registrationType: 'guest' };
+  const data = {
+    ...sgData,
+    registrationType: 'guest',
+  };
   SgTrackingCore.track.completedRegistration(data);
   return data;
 }

@@ -1,11 +1,4 @@
 /**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/**
  * The linear easing callback.
  * @param {number} relativeValue The relative value between [0...1].
  * @param {number} resolution The resolution, must be a value between [0,1...1].
