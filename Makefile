@@ -4,6 +4,7 @@ export FORCE_COLOR = true
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 THEMES = gmd ios11
+REPO_VERSION = ''
 
 release:
 		make clean
@@ -25,7 +26,11 @@ clean:
 
 # Lerna change all the version numbers.
 pre-publish:
+ifneq ($(REPO_VERSION), '')
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION))
+else
 		lerna publish --skip-npm --skip-git
+endif
 
 # Change the version in the extensions extension-config.json
 bump-extensions:
@@ -48,7 +53,9 @@ git-publish:
 
 # Publish to npm.
 npm-publish:
-		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package)))
+		$(eval VERSION=$(shell cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))
+		$(eval SUBSTR=$(findstring beta, $(VERSION)))
+		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package), $(SUBSTR)))
 
 # Clean the builds.
 clean-build:
@@ -87,7 +94,10 @@ define git-tags
 endef
 
 define npm-release
-		npm publish ./libraries/$(strip $(1))/dist/ --access public
+		@if [ "$(strip $(2))" == "beta" ]; \
+			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
+			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
+		fi;
 
 endef
 
