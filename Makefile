@@ -4,6 +4,7 @@ export FORCE_COLOR = true
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 THEMES = gmd ios11
+REPO_VERSION = ''
 
 release:
 		make clean
@@ -25,7 +26,11 @@ clean:
 
 # Lerna change all the version numbers.
 pre-publish:
+ifneq ($(REPO_VERSION), '')
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION))
+else
 		lerna publish --skip-npm --skip-git
+endif
 
 # Change the version in the extensions extension-config.json
 bump-extensions:
