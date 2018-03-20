@@ -10,7 +10,7 @@ const MESSAGE3 = 'This is just a warning. Nothing to freak out about.';
 describe('<MessageBar />', () => {
   describe('General rendering', () => {
     it('should be empty if no messages have been set', () => {
-      const wrapper = mount(<MessageBar />);
+      const wrapper = mount(<MessageBar messages={[]} />);
       expect(wrapper.find('div').at(1).length).toEqual(0);
     });
 
