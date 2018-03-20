@@ -1,44 +1,33 @@
 {
   "name": "@shopgate/tracking-ga-native",
-  "version": "2.2.17",
-  "description": "Shopgate's Google Analytics native tracker",
+  "version": "4.12.0-beta.12",
+  "description": "Shopgate Connect Google Analytics native tracker extension.",
   "main": "frontend/index.js",
   "repository": "shopgate/tracking-ga-native",
   "bugs": "https://github.com/shopgate/tracking-ga-native/issues",
   "homepage": "https://github.com/shopgate/tracking-ga-native",
   "license": "Apache-2.0",
   "scripts": {
-    "lint": "eslint --parser babel-eslint --ignore-path ../.gitignore --ignore-path .eslintignore --ext .js .",
+    "lint": "eslint --ignore-path ../.gitignore --ignore-path .eslintignore --ext .js .",
     "test": "jest",
-    "coverage": "jest --coverage",
-    "prebuild": "rimraf ./dist",
-    "build": "NODE_ENV=production babel ./ --out-dir dist --no-comments --minified --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules",
-    "postbuild": "cp ./*.json ./dist/ && cp ../*.md ./dist/ && git add -A",
-    "version": "npm run build && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && bump ../extension-config.json -v $PACKAGE_VERSION -y",
-    "postversion": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd ../ && git add -A && git commit -m \"$PACKAGE_VERSION\" && git tag v$PACKAGE_VERSION && git push && git push --tags && cd ./frontend/dist/ && npm publish --access public"
+    "cover": "jest --coverage"
   },
   "dependencies": {
-    "@shopgate/tracking-core": "^1.0.13",
+    "@shopgate/tracking-core": "^4.12.0-beta.12"
+  },
+  "devDependencies": {
+    "@shopgate/eslint-config": "^4.12.0-beta.12",
+    "@shopgate/pwa-common": "^4.12.0-beta.12",
+    "@shopgate/pwa-core": "^4.12.0-beta.12",
+    "@shopgate/react-hammerjs": "^0.5.3",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "babel-runtime": "^6.26.0"
-  },
-  "devDependencies": {
-    "@shopgate/eslint-config": "^1.0.4",
-    "@shopgate/pwa-common": "^3.2.2",
-    "@shopgate/pwa-core": "^1.5.0",
-    "@shopgate/react-hammerjs": "^0.5.3",
-    "babel-cli": "^6.26.0",
-    "jest": "^22.0.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "rimraf": "^2.6.2"
-  },
-  "peerDependencies": {
-    "@shopgate/pwa-common": "2.1.x"
+    "babel-runtime": "^6.26.0",
+    "jest": "^22.0.4"
   }
 }
