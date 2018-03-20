@@ -19,7 +19,7 @@ const fetchRootCategories = () => (dispatch, getState) => {
 
   dispatch(requestRootCategories());
 
-  new PipelineRequest('shopgate.catalog.getRootCategories')
+  new PipelineRequest('getRootCategories')
     .dispatch()
     .then(result => dispatch(receiveRootCategories(result.categories)))
     .catch((error) => {

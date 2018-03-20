@@ -18,7 +18,7 @@ const addToCart = productData => (dispatch, getState) => {
   dispatch(addProductsToCart(productData));
   dispatch(setCartProductPendingCount(pendingProductCount + 1));
 
-  const request = new PipelineRequest('shopgate.cart.addProducts');
+  const request = new PipelineRequest('addProductsToCart');
   request.setInput({ products: productData })
     .dispatch()
     .then(({ messages }) => {

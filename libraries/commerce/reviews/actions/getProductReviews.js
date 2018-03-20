@@ -20,7 +20,7 @@ const getProductReviews = (productId, limit = 2, sort = SORT_RELEVANCE) => (disp
   }
   dispatch(requestProductReviews(productId, limit));
 
-  const request = new PipelineRequest('shopgate.catalog.getProductReviews')
+  const request = new PipelineRequest('getProductReviews')
     .setInput({
       productId,
       limit,

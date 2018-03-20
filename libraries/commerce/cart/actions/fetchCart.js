@@ -11,7 +11,7 @@ import errorCart from '../action-creators/errorCart';
 const fetchCart = () => (dispatch) => {
   dispatch(requestCart());
 
-  new PipelineRequest('shopgate.cart.getCart')
+  new PipelineRequest('getCart')
     .dispatch()
     .then(response => dispatch(receiveCart(response)))
     .catch((error) => {

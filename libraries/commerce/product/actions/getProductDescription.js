@@ -20,7 +20,7 @@ const getProductDescription = productId => (dispatch, getState) => {
 
   dispatch(requestProductDescription(productId));
 
-  new PipelineRequest('shopgate.catalog.getProductDescription')
+  new PipelineRequest('getProductDescription')
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductDescription(productId, result.description)))

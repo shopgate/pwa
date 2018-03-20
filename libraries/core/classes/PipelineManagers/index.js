@@ -16,16 +16,16 @@ const cartModifyRequestManager = new RequestManager({
 });
 
 const pipelineManagers = {
-  'shopgate.cart.getCart': new RequestManager({
+  getCart: new RequestManager({
     processingMode: PROCESS_LAST_REQUEST, // Always use latest request.
     propagationMode: PROPAGATE_REJECT, // Reject outdated getCart() requests.
     timeout: PIPELINE_REQUEST_TIMEOUT,
   }),
-  'shopgate.cart.addProducts': cartModifyRequestManager,
-  'shopgate.cart.updateProducts': cartModifyRequestManager,
-  'shopgate.cart.deleteProducts': cartModifyRequestManager,
-  'shopgate.cart.addCoupons': cartModifyRequestManager,
-  'shopgate.cart.deleteCoupons': cartModifyRequestManager,
+  addProductsToCart: cartModifyRequestManager,
+  updateProductsInCart: cartModifyRequestManager,
+  deleteProductsFromCart: cartModifyRequestManager,
+  addCouponsToCart: cartModifyRequestManager,
+  deleteCouponsFromCart: cartModifyRequestManager,
 };
 
 const defaultManager = new RequestManager({ timeout: PIPELINE_REQUEST_TIMEOUT });

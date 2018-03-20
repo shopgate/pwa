@@ -53,7 +53,7 @@ const processParams = (params, filters, includeSort = true, includeFilters = tru
  */
 const getProducts = ({
   params = {},
-  pipeline = 'shopgate.catalog.getProducts',
+  pipeline = 'getProducts',
   cached = true,
   id = null,
   includeSort = true,

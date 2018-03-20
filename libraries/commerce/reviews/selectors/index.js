@@ -20,7 +20,7 @@ const getCollectionForCurrentBaseProduct = createSelector(
   getReviewsByHashState,
   (productId, reviewsState) => {
     const hash = generateResultHash({
-      pipeline: 'shopgate.catalog.getProductReviews',
+      pipeline: 'getProductReviews',
       productId,
     }, false);
 

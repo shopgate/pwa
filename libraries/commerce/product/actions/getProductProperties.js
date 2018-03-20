@@ -20,7 +20,7 @@ const getProductProperties = productId => (dispatch, getState) => {
 
   dispatch(requestProductProperties(productId));
 
-  new PipelineRequest('shopgate.catalog.getProductProperties')
+  new PipelineRequest('getProductProperties')
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductProperties(productId, result.properties)))
