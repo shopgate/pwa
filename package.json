@@ -4,7 +4,8 @@
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
     "clean": "make clean",
-    "test": "lerna run test --stream",
+    "test": "lerna run test",
+    "test:dev": "lerna run test --stream",
     "cover": "lerna run cover",
     "cover:dev": "lerna run cover --stream",
     "cover:report": "node ./scripts/send-coverage.js",
@@ -16,9 +17,7 @@
     "precommit"
   ],
   "lint-staged": {
-    "*.js": [
-      "yarn run lint"
-    ]
+    "*.js": "yarn run lint"
   },
   "workspaces": [
     "extensions/*/frontend",
@@ -27,6 +26,7 @@
     "utils/*"
   ],
   "devDependencies": {
+    "@sourceallies/coveralls-merge": "^1.0.0",
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^7.0.0",
