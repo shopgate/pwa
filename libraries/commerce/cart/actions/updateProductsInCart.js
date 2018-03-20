@@ -26,7 +26,7 @@ const updateProductsInCart = updateData => (dispatch) => {
 
   dispatch(updateProducts(convertedData));
 
-  const request = new PipelineRequest('shopgate.cart.updateProducts');
+  const request = new PipelineRequest('updateProductsInCart');
   request.setInput({ CartItem: convertedData })
     .dispatch()
     .then(({ messages }) => {

@@ -25,7 +25,7 @@ class PipelineRequest extends Request {
   constructor(name, version = CURRENT_VERSION) {
     super(getPipelineManager(name));
 
-    this.name = `${name}.v${version}`;
+    this.name = `${name}_v${version}`;
     this.input = {};
     this.handledErrors = [];
     this.createSerial(this.name);

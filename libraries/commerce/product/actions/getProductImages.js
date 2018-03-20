@@ -20,7 +20,7 @@ const getProductImages = productId => (dispatch, getState) => {
 
   dispatch(requestProductImages(productId));
 
-  new PipelineRequest('shopgate.catalog.getProductImages')
+  new PipelineRequest('getProductImages')
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductImages(productId, result.images)))

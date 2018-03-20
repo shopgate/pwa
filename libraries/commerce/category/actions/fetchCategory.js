@@ -28,7 +28,7 @@ const fetchCategory = categoryId => (dispatch, getState) => {
   // No data at all. So we have the fetch the category with children included
   dispatch(requestCategory(categoryId));
 
-  new PipelineRequest('shopgate.catalog.getCategory')
+  new PipelineRequest('getCategory')
     .setInput({
       categoryId,
       includeChildren: true,

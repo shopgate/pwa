@@ -31,7 +31,7 @@ const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
 
   dispatch(requestProduct(productId));
 
-  new PipelineRequest('shopgate.catalog.getProduct')
+  new PipelineRequest('getProduct')
     .setInput({ productId })
     .dispatch()
     .then((result) => {

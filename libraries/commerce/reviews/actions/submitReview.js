@@ -33,7 +33,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
 
   dispatch(requestSubmitReview(review));
   if (update) {
-    const request = new PipelineRequest('shopgate.catalog.updateProductReview')
+    const request = new PipelineRequest('updateProductReview')
       .setInput(pipelineData)
       .dispatch();
     request
@@ -49,7 +49,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
     return request;
   }
 
-  const request = new PipelineRequest('shopgate.catalog.addProductReview')
+  const request = new PipelineRequest('addProductReview')
     .setHandledErrors([EEXIST])
     .setInput(pipelineData)
     .dispatch();

@@ -20,7 +20,7 @@ const getProductVariants = productId => (dispatch, getState) => {
 
   dispatch(requestProductVariants(productId));
 
-  new PipelineRequest('shopgate.catalog.getProductVariants')
+  new PipelineRequest('getProductVariants')
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductVariants(productId, result)))

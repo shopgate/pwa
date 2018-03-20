@@ -20,7 +20,7 @@ const fetchCategoryChildren = categoryId => (dispatch, getState) => {
 
   dispatch(requestCategoryChildren(categoryId));
 
-  new PipelineRequest('shopgate.catalog.getCategoryChildren')
+  new PipelineRequest('getCategoryChildren')
     .setInput({ categoryId })
     .dispatch()
     .then(result => dispatch(receiveCategoryChildren(categoryId, result.categories)))
