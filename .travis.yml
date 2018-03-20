@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - 8.6.0
 before_script: cd frontend/ && npm i
-script: npm run coverage -- --maxWorkers=4
+script: npm run cover -- --maxWorkers=4
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
