@@ -3,6 +3,7 @@ export FORCE_COLOR = true
 
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
+UTILS = eslint-config unit-tests
 THEMES = gmd ios11
 REPO_VERSION = ''
 
@@ -55,7 +56,8 @@ git-publish:
 npm-publish:
 		$(eval VERSION=$(shell cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))
 		$(eval SUBSTR=$(findstring beta, $(VERSION)))
-		$(foreach package, $(NPM_PACKAGES), $(call npm-release, $(package), $(SUBSTR)))
+		$(foreach package, $(NPM_PACKAGES), $(call npm-release-libraries, $(package), $(SUBSTR)))
+		$(foreach package, $(UTILS), $(call npm-release-utils, $(package), $(SUBSTR)))
 
 # Clean the builds.
 clean-build:
@@ -93,10 +95,18 @@ define git-tags
 
 endef
 
-define npm-release
+define npm-release-libraries
 		@if [ "$(strip $(2))" == "beta" ]; \
 			then npm publish ./libraries/$(strip $(1))/dist/ --access public --tag beta; \
 			else npm publish ./libraries/$(strip $(1))/dist/ --access public; \
+		fi;
+
+endef
+
+define npm-release-utils
+		@if [ "$(strip $(2))" == "beta" ]; \
+			then npm publish ./utils/$(strip $(1))/dist/ --access public --tag beta; \
+			else npm publish ./utils/$(strip $(1))/dist/ --access public; \
 		fi;
 
 endef
