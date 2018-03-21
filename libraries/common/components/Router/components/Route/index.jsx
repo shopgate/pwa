@@ -170,10 +170,9 @@ class Route extends Component {
           function componentDidUpdate(prevProps, prevState) {
             originalComponentDidUpdate(prevProps, prevState);
           };
-
-        newHostedComponent.componentInstance.enableTracking = this.enableTracking;
       },
       params,
+      ...this.props,
     };
 
     if (this.wrappedComponent) {
