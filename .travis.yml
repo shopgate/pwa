@@ -1,9 +1,13 @@
+sudo: false
+dist: trusty
+
 language: node_js
 
 cache:
-  yarn: true
-  directories:
-  - node_modules
+  yarn: false
+
+matrix:
+  fast_finish: true
 
 node_js:
 - 8.10.0
@@ -15,11 +19,11 @@ env:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
 
-install: yarn --ignore-engines
+install: yarn
 
-script: travis_wait npm run cover
+script: yarn run cover
 
-after_script: npm run cover:report
+after_script: yarn run cover:report
 
 branches:
   only:
