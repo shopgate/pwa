@@ -5,6 +5,8 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import ProductImage from 'Components/ProductImage';
 import RatingStars from 'Components/RatingStars';
 import PriceInfo from 'Components/PriceInfo';
@@ -36,7 +38,11 @@ const ProductCard = ({
     <ProductImage itemProp="image" src={product.featuredImageUrl} alt={product.name} />
     {!!(!hidePrice && product.price.discount) && (
       <div className={styles.badgeWrapper}>
-        <DiscountBadge text={`-${product.price.discount}%`} />
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
+          <DiscountBadge text={`-${product.price.discount}%`} />
+        </Portal>
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
     {/* <FavoritesButton className={styles.wishlist} productId={product.id} /> */}
