@@ -21,7 +21,7 @@ before_install:
 
 install: yarn
 
-script: yarn run cover --runInBand
+script: NODE_ENV=test yarn run cover -- --runInBand
 
 after_script: yarn run cover:report
 
