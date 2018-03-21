@@ -8,6 +8,7 @@ const NO_RESULTS = 'no-results';
 const GLOBALS = 'globals';
 const ROUTES = 'routes';
 const HEADER = 'header';
+const USER_MENU = 'user-menu';
 const CONTENT = 'content';
 const HOME = 'home';
 const TERMS = 'terms';
@@ -29,6 +30,10 @@ export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
 export const NAV_MENU_HEADER_BEFORE = `${NAV_MENU}.${HEADER}.${BEFORE}`;
 export const NAV_MENU_HEADER = `${NAV_MENU}.${HEADER}`;
 export const NAV_MENU_HEADER_AFTER = `${NAV_MENU}.${HEADER}.${AFTER}`;
+
+export const NAV_MENU_USER_MENU_BEFORE = `${NAV_MENU}.${USER_MENU}.${BEFORE}`;
+export const NAV_MENU_USER_MENU = `${NAV_MENU}.${USER_MENU}`;
+export const NAV_MENU_USER_MENU_AFTER = `${NAV_MENU}.${USER_MENU}.${AFTER}`;
 
 export const NAV_MENU_CONTENT_BEFORE = `${NAV_MENU}.${CONTENT}.${BEFORE}`;
 export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
