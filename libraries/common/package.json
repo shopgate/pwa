@@ -47,7 +47,7 @@
     "@shopgate/eslint-config": "^4.12.0-beta.12",
     "@shopgate/pwa-core": "^4.12.0-beta.12",
     "@shopgate/pwa-unit-test": "^4.12.0-beta.12",
-    "@shopgate/react-hammerjs": "^0.5.3",
+    "@shopgate/react-hammerjs": "0.5.3",
     "coveralls": "^3.0.0",
     "jest": "^22.4.2",
     "lodash": "^4.17.4",
