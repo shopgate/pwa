@@ -12,10 +12,6 @@ matrix:
 node_js:
 - 8.10.0
 
-env:
-  global:
-    - PATH=$HOME/.yarn/bin:$PATH
-
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   # Go into develop branch for all modules.
@@ -25,9 +21,9 @@ before_install:
 
 install: yarn
 
-script: NODE_ENV=test yarn run cover --maxWorkers=4
+script: NODE_ENV=test npm run cover --maxWorkers=4
 
-after_script: yarn run cover:report
+after_script: npm run cover:report
 
 branches:
   only:
