@@ -30,8 +30,6 @@ describe('AddToCartBar subscriptions and actions', () => {
     // Check all the subscribers
     expect(subscribeMock.mock.calls.length).toBe(5);
 
-    expect(subscribeMock.mock).toMatchSnapshot();
-
     subscribeMock.mock.calls.forEach((mock) => {
       store = mockedStore(mockedState);
       // Execute the subscription method
