@@ -176,7 +176,7 @@ export default WrappedComponent => class extends Component {
    * @param {string} currentProductVariantId current product variant id form store
    */
   handleVariantPreselection(variants, currentProductVariantId) {
-    const { characteristics } = find(variants.products, { id: currentProductVariantId });
+    const { characteristics = {} } = find(variants.products, { id: currentProductVariantId }) || {};
 
     Object.keys(characteristics).forEach((characteristicId) => {
       const characteristicValueId = characteristics[characteristicId];
