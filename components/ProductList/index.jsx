@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
@@ -18,17 +11,19 @@ import Layout from './components/Layout';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ProductList = ({ flags, infiniteLoad, handleGetProducts, products, totalProductCount }) => {
+const ProductList = ({
+  flags, infiniteLoad, handleGetProducts, products, totalProductCount,
+}) => {
   if (!infiniteLoad) {
     return (
       <Layout>
         {products.map(product =>
-          <Iterator
+          (<Iterator
             display={flags}
             id={product.id}
-            key={product.id} {...product}
-          />
-        )}
+            key={product.id}
+            {...product}
+          />))}
       </Layout>
     );
   }

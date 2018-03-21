@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -27,9 +20,7 @@ const switchModeTapTimeout = 4000 / requiredTapsToSwitchModes;
  */
 class PipelineErrorDialog extends Component {
   static propTypes = {
-    actions: PropTypes.arrayOf(
-      PropTypes.shape()
-    ).isRequired,
+    actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     params: PropTypes.shape({
       errorCode: PropTypes.string, // The error code as string.
       message: PropTypes.string.isRequired, // The error message reported by the pipeline.
@@ -56,6 +47,24 @@ class PipelineErrorDialog extends Component {
     this.state = {
       devMode: false, // Indicating whether we are in dev mode.
     };
+  }
+
+  /**
+   * @return {string} The title based on the current state of the dialog.
+   */
+  get title() {
+    return this.state.devMode
+      ? 'Pipeline Error'
+      : 'modal.title_error';
+  }
+
+  /**
+   * @return {JSX} The content component based on the the current state of the dialog.
+   */
+  get content() {
+    return this.state.devMode
+      ? this.renderDevErrorMessage(this.props.params)
+      : this.renderUserErrorMessage();
   }
 
   /**
@@ -87,24 +96,6 @@ class PipelineErrorDialog extends Component {
       this.tapTimeout = setTimeout(this.handleTapTimeout, switchModeTapTimeout);
     }
   };
-
-  /**
-   * @return {string} The title based on the current state of the dialog.
-   */
-  get title() {
-    return this.state.devMode
-      ? 'Pipeline Error'
-      : 'modal.title_error';
-  }
-
-  /**
-   * @return {JSX} The content component based on the the current state of the dialog.
-   */
-  get content() {
-    return this.state.devMode
-      ? this.renderDevErrorMessage(this.props.params)
-      : this.renderUserErrorMessage();
-  }
 
   /**
    * Renders the error message in developer mode.

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import Card from 'Components/Card';
@@ -94,13 +87,11 @@ describe.skip('<ProductSlider />', () => {
   it('should call the products callback on mount', () => {
     const getProducts = jest.fn();
 
-    const wrapper = shallow(
-      <ProductSlider
-        settings={getSettings()}
-        getProducts={getProducts}
-        products={[]}
-      />
-    );
+    const wrapper = shallow(<ProductSlider
+      settings={getSettings()}
+      getProducts={getProducts}
+      products={[]}
+    />);
 
     wrapper.instance().componentDidMount();
 
@@ -109,13 +100,11 @@ describe.skip('<ProductSlider />', () => {
   });
 
   it('should not render the widget without any data', () => {
-    const wrapper = shallow(
-      <ProductSlider
-        settings={getSettings()}
-        getProducts={getProductsMock}
-        products={createProducts(0)}
-      />
-    );
+    const wrapper = shallow(<ProductSlider
+      settings={getSettings()}
+      getProducts={getProductsMock}
+      products={createProducts(0)}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Card).length).toBe(0);
@@ -124,52 +113,44 @@ describe.skip('<ProductSlider />', () => {
   it('should render the widget with data', () => {
     const products = createProducts();
 
-    const wrapper = shallow(
-      <ProductSlider
-        settings={getSettings()}
-        getProducts={getProductsMock}
-        products={products}
-      />
-    );
+    const wrapper = shallow(<ProductSlider
+      settings={getSettings()}
+      getProducts={getProductsMock}
+      products={products}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Card).length).toBe(products.length);
   });
 
   it('should not render an empty headline', () => {
-    const wrapper = shallow(
-      <ProductSlider
-        settings={getSettings(false)}
-        getProducts={getProductsMock}
-        products={createProducts()}
-      />
-    );
+    const wrapper = shallow(<ProductSlider
+      settings={getSettings(false)}
+      getProducts={getProductsMock}
+      products={createProducts()}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('h3').length).toBe(0);
   });
 
   it('should render the headline', () => {
-    const wrapper = shallow(
-      <ProductSlider
-        settings={getSettings(true)}
-        getProducts={getProductsMock}
-        products={createProducts()}
-      />
-    );
+    const wrapper = shallow(<ProductSlider
+      settings={getSettings(true)}
+      getProducts={getProductsMock}
+      products={createProducts()}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('h3').length).toBe(1);
   });
 
   it('should limit output to a maximum of 30 products', () => {
-    const wrapper = shallow(
-      <ProductSlider
-        settings={getSettings(true)}
-        getProducts={getProductsMock}
-        products={createProducts(40)}
-      />
-    );
+    const wrapper = shallow(<ProductSlider
+      settings={getSettings(true)}
+      getProducts={getProductsMock}
+      products={createProducts(40)}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Card).length).toBe(30);

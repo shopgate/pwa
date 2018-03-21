@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isNumeric } from '@shopgate/pwa-common/helpers/validation';
@@ -78,12 +71,6 @@ class QuantityPicker extends Component {
   }
 
   /**
-   * The default quantity.
-   * @type {number}
-   */
-  defaultQuantity = 1;
-
-  /**
    * Returns the initial quantity based on the props.
    * If the props are set to 0 or lower, it will fall back to 1.
    * @return {number}
@@ -95,6 +82,12 @@ class QuantityPicker extends Component {
 
     return this.props.quantity;
   }
+
+  /**
+   * The default quantity.
+   * @type {number}
+   */
+  defaultQuantity = 1;
 
   /**
    * Event handler for the the onChange event of the input.

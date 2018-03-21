@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import ProductVariants from './ProductVariants';
 
 /**
@@ -46,9 +39,9 @@ class StepByStep extends ProductVariants {
 
       if (nextCharacteristicId === null) {
         // No further selections found. This means, a new product can be selected to display
-        const products = this.filterProducts(
+        const products = this.filterProducts((
           this.getCharacteristicsForProductFilter(characteristicId)
-        );
+        ));
 
         // Update the product to the new id
         this.setProductId(products[0].id);

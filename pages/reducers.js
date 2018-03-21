@@ -1,12 +1,4 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { combineReducers } from 'redux';
-
 import client from '@shopgate/pwa-common/reducers/client';
 import history from '@shopgate/pwa-common/reducers/history';
 import url from '@shopgate/pwa-common/reducers/url';
@@ -26,7 +18,6 @@ import toast from '@shopgate/pwa-common/reducers/toast';
 import navigator from 'Components/Navigator/reducer';
 import extentions from 'Extensions/reducers';
 import addToCartBar from 'Pages/Product/components/AddToCartBar/reducer';
-
 import general from 'Components/View/reducer';
 
 const reducers = {
