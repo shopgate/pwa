@@ -21,7 +21,7 @@ before_install:
 
 install: yarn
 
-script: NODE_ENV=test npm run cover --stream -- --maxWorkers=4
+script: NODE_ENV=test npm run cover -- --maxWorkers=4
 
 after_script: npm run cover:report
 
