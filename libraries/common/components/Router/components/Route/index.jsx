@@ -144,6 +144,8 @@ class Route extends Component {
       location,
     };
 
+    const { component: c, ...otherProps } = this.props;
+
     const componentProps = {
       key: location.key || location.immutableKey || 'root',
       setRef: (element) => {
@@ -172,7 +174,7 @@ class Route extends Component {
           };
       },
       params,
-      ...this.props,
+      ...otherProps,
     };
 
     if (this.wrappedComponent) {
