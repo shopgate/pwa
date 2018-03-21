@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -118,7 +118,12 @@ class NavDrawer extends Component {
         close={this.handleClose}
         setContentRef={this.setContentRef}
       >
-        <Header user={user} close={this.handleClose} />
+        <Portal name={portals.NAV_MENU_USER_MENU_BEFORE} props={{ user }} />
+        <Portal name={portals.NAV_MENU_USER_MENU} props={{ user }}>
+          <Header user={user} close={this.handleClose} />
+        </Portal>
+        <Portal name={portals.NAV_MENU_USER_MENU_AFTER} props={{ user }} />
+
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
         <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
           <I18n.Text string="navigation.home" />
@@ -128,7 +133,7 @@ class NavDrawer extends Component {
           <I18n.Text string="navigation.categories" />
         </Item>
 
-        { appConfig.hasFavorites &&
+        {appConfig.hasFavorites && (
           <Item
             href={FAVORITES_PATH}
             icon={HeartIcon}
@@ -137,7 +142,7 @@ class NavDrawer extends Component {
           >
             <I18n.Text string="navigation.favorites" />
           </Item>
-        }
+        )}
 
         <CartItem
           href={CART_PATH}
@@ -183,11 +188,19 @@ class NavDrawer extends Component {
 
         {user && <Divider close={this.handleClose} />}
         {user && (
-          <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
-            <I18n.Text string="navigation.logout" />
-          </Item>
+          <Fragment>
+            <Portal name={portals.NAV_MENU_LOGOUT_BEFORE} />
+            <Portal name={portals.NAV_MENU_LOGOUT}>
+              <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+                <I18n.Text string="navigation.logout" />
+              </Item>
+            </Portal>
+            <Portal name={portals.NAV_MENU_LOGOUT_AFTER} />
+          </Fragment>
         )}
+
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
+
         <ClientInformation />
 
       </Layout>
