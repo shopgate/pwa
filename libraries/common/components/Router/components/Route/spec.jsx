@@ -59,7 +59,10 @@ describe('<Route />', () => {
     wrapper.update();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockComponent).length).toEqual(1);
-    expect(wrapper.find(MockComponent).props()).toEqual({ params: { id: 123 } });
+    expect(wrapper.find(MockComponent).props()).toEqual({
+      params: { id: 123 },
+      path: 'category/:id',
+    });
   });
 
   it('should remove route instance when going back', () => {
@@ -99,7 +102,10 @@ describe('<Route />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockComponent).length).toEqual(1);
-    expect(wrapper.find(MockComponent).props()).toEqual({ params: { id: 456 } });
+    expect(wrapper.find(MockComponent).props()).toEqual({
+      params: { id: 456 },
+      path: 'category/:id',
+    });
   });
 
   it('should keep two components when going forward', () => {
@@ -127,7 +133,13 @@ describe('<Route />', () => {
     wrapper.update();
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(MockComponent).length).toEqual(2);
-    expect(wrapper.find(MockComponent).at(0).props()).toEqual({ params: { id: 123 } });
-    expect(wrapper.find(MockComponent).at(1).props()).toEqual({ params: { id: 456 } });
+    expect(wrapper.find(MockComponent).at(0).props()).toEqual({
+      params: { id: 123 },
+      path: 'category/:id',
+    });
+    expect(wrapper.find(MockComponent).at(1).props()).toEqual({
+      params: { id: 456 },
+      path: 'category/:id',
+    });
   });
 });

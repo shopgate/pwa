@@ -15,6 +15,7 @@ exports[`<Route /> should create new instance when notified 1`] = `
           "id": 123,
         }
       }
+      path="category/:id"
       setComponentRef={[Function]}
       setRef={[Function]}
     >
@@ -25,6 +26,7 @@ exports[`<Route /> should create new instance when notified 1`] = `
               "id": 123,
             }
           }
+          path="category/:id"
         />
       </div>
     </RouteContent>
@@ -47,6 +49,7 @@ exports[`<Route /> should keep two components when going forward 1`] = `
           "id": 123,
         }
       }
+      path="category/:id"
       setComponentRef={[Function]}
       setRef={[Function]}
     >
@@ -57,6 +60,7 @@ exports[`<Route /> should keep two components when going forward 1`] = `
               "id": 123,
             }
           }
+          path="category/:id"
         />
       </div>
     </RouteContent>
@@ -67,6 +71,7 @@ exports[`<Route /> should keep two components when going forward 1`] = `
           "id": 456,
         }
       }
+      path="category/:id"
       setComponentRef={[Function]}
       setRef={[Function]}
     >
@@ -77,6 +82,7 @@ exports[`<Route /> should keep two components when going forward 1`] = `
               "id": 456,
             }
           }
+          path="category/:id"
         />
       </div>
     </RouteContent>
@@ -110,6 +116,7 @@ exports[`<Route /> should remove route instance when going back 1`] = `
           "id": 456,
         }
       }
+      path="category/:id"
       setComponentRef={[Function]}
       setRef={[Function]}
     >
@@ -120,6 +127,7 @@ exports[`<Route /> should remove route instance when going back 1`] = `
               "id": 456,
             }
           }
+          path="category/:id"
         />
       </div>
     </RouteContent>
