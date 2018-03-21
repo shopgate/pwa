@@ -1,4 +1,4 @@
-# Shopgate GMD Theme
+# Google Material Design theme for the Shopgate Connect PWA
 
 [![Build Status](https://travis-ci.org/shopgate/theme-gmd.svg?branch=master)](https://travis-ci.org/shopgate/theme-gmd)
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/theme-gmd/badge.svg?branch=master)](https://coveralls.io/github/shopgate/theme-gmd?branch=master)
@@ -8,10 +8,12 @@
 
 Shopgate is the leading mobile commerce platform.
 
-Shopgate offers everything online retailers need to be successful in mobile. Our leading software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize native apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
+Shopgate offers everything online retailers need to be successful in mobile. Our leading
+software-as-a-service (SaaS) enables online stores to easily create, maintain and optimize native
+apps and mobile websites for the iPhone, iPad, Android smartphones and tablets.
 
 ## License
 
-Shopgate's GMD theme is available under the Apache License, Version 2.0.
+Google Material Design theme for the Shopgate Connect PWA is available under the Apache License, Version 2.0.
 
 See the [LICENSE.md](./LICENSE.md) file for more information.

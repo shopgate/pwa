@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import SearchSuggestions from './index';
@@ -27,13 +20,11 @@ describe('<SearchSuggestions />', () => {
   });
 
   it('should render without props', () => {
-    const wrapper = shallow(
-      <SearchSuggestions
-        {...defaultProps}
-        searchPhrase="foo"
-        isFecthing={false}
-      />
-    );
+    const wrapper = shallow(<SearchSuggestions
+      {...defaultProps}
+      searchPhrase="foo"
+      isFecthing={false}
+    />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -50,9 +41,7 @@ describe('<SearchSuggestions />', () => {
       searchPhrase,
     };
 
-    const wrapper = shallow(
-      <SearchSuggestions {...props} />
-    );
+    const wrapper = shallow(<SearchSuggestions {...props} />);
 
     wrapper.instance().handleSelect(searchPhrase);
 
@@ -72,9 +61,7 @@ describe('<SearchSuggestions />', () => {
       ],
     };
 
-    const wrapper = shallow(
-      <SearchSuggestions {...props} />
-    );
+    const wrapper = shallow(<SearchSuggestions {...props} />);
 
     expect(wrapper.find('SearchSuggestion').length).toBe(props.suggestions.length);
 
@@ -94,9 +81,7 @@ describe('<SearchSuggestions />', () => {
       ],
     };
 
-    const wrapper = shallow(
-      <SearchSuggestions {...props} />
-    );
+    const wrapper = shallow(<SearchSuggestions {...props} />);
 
     expect(wrapper.find('SearchSuggestion').length).toBe(0);
 

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -19,8 +12,6 @@ import styles from './style';
  * or the given source image cannot be loaded.
  */
 class ProductImage extends Component {
-
-  /* eslint-disable react/no-unused-prop-types */
   /**
    * See Image component manual for detailed description about the component property types.
    */
@@ -30,16 +21,13 @@ class ProductImage extends Component {
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
-    resolutions: PropTypes.arrayOf(
-      PropTypes.shape({
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-        blur: PropTypes.number,
-      })
-    ),
+    resolutions: PropTypes.arrayOf(PropTypes.shape({
+      width: PropTypes.number.isRequired,
+      height: PropTypes.number.isRequired,
+      blur: PropTypes.number,
+    })),
     src: PropTypes.string,
   };
-  /* eslint-enable react/no-unused-prop-types */
 
   static defaultProps = {
     alt: null,

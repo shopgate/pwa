@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import colors from 'Styles/colors';
@@ -29,7 +22,9 @@ const IndicatorCircle = ({ size, color, strokeWidth }) => (
   >
     <circle
       className={styles.circle(color, strokeWidth)}
-      cx="50" cy="50" r="20"
+      cx="50"
+      cy="50"
+      r="20"
     />
   </svg>
 );

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { mount } from 'enzyme';
 import MessageBar from './index';
@@ -17,7 +10,7 @@ const MESSAGE3 = 'This is just a warning. Nothing to freak out about.';
 describe('<MessageBar />', () => {
   describe('General rendering', () => {
     it('should be empty if no messages have been set', () => {
-      const wrapper = mount(<MessageBar />);
+      const wrapper = mount(<MessageBar messages={[]} />);
       expect(wrapper.find('div').at(1).length).toEqual(0);
     });
 
@@ -29,9 +22,8 @@ describe('<MessageBar />', () => {
   });
 
   describe('Multiple messages rendering', () => {
-    const wrapper = mount(
-      <MessageBar
-        messages={[
+    const wrapper = mount(<MessageBar
+      messages={[
           {
             message: MESSAGE1,
           },
@@ -44,8 +36,7 @@ describe('<MessageBar />', () => {
             message: MESSAGE3,
           },
         ]}
-      />
-    );
+    />);
 
     const messageContainer = wrapper.find(`.${styles.container}`);
 

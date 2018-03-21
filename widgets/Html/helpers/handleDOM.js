@@ -1,9 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
 import event from '@shopgate/pwa-core/classes/Event/index';
 
 /**
@@ -20,9 +14,7 @@ export const getExternalScripts = (nodes, callback, isRoot = true) => {
     // We only want external scripts.
     if (node.tagName !== 'SCRIPT' || !node.src) {
       if (node.childNodes && node.childNodes.length) {
-        return result.concat(
-          getExternalScripts(node.childNodes, callback, false)
-        );
+        return result.concat(getExternalScripts(node.childNodes, callback, false));
       }
       return result;
     }

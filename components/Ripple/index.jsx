@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
@@ -104,30 +97,6 @@ class Ripple extends PureComponent {
   }
 
   /**
-   * Calculates the ripple position from the event.
-   * @param {Object} event The event object.
-   * @returns {Object} An object containing x and y values for the ripple.
-   */
-  getRipplePosition(event) {
-    // If the Ripple is to fill the element then we should set the
-    // Starting position to be where the user clicked within that element.
-    if (this.props.fill) {
-      // Determine if event is a touch event.
-      const isTouchEvent = event.touches && event.touches.length;
-
-      // Find the center points of the event.
-      const pageX = isTouchEvent ? event.touches[0].pageX : event.pageX;
-      const pageY = isTouchEvent ? event.touches[0].pageY : event.pageY;
-
-      // The pointer location is relative to the element offset.
-      this.position.x = pageX - this.offset.left;
-      this.position.y = pageY - this.offset.top;
-    }
-
-    return this.position;
-  }
-
-  /**
    * Calculate the size of the ripple.
    * @returns {number}
    */
@@ -154,6 +123,30 @@ class Ripple extends PureComponent {
   }
 
   /**
+   * Calculates the ripple position from the event.
+   * @param {Object} event The event object.
+   * @returns {Object} An object containing x and y values for the ripple.
+   */
+  getRipplePosition(event) {
+    // If the Ripple is to fill the element then we should set the
+    // Starting position to be where the user clicked within that element.
+    if (this.props.fill) {
+      // Determine if event is a touch event.
+      const isTouchEvent = event.touches && event.touches.length;
+
+      // Find the center points of the event.
+      const pageX = isTouchEvent ? event.touches[0].pageX : event.pageX;
+      const pageY = isTouchEvent ? event.touches[0].pageY : event.pageY;
+
+      // The pointer location is relative to the element offset.
+      this.position.x = pageX - this.offset.left;
+      this.position.y = pageY - this.offset.top;
+    }
+
+    return this.position;
+  }
+
+  /**
    * Adds a new Ripple to the queue.
    * @param {Object} event The event object.
    * @param {boolean} isTouchGenerated Whether the action was triggered by a touch or click.
@@ -172,21 +165,19 @@ class Ripple extends PureComponent {
     // Receive the x and y position for the new Ripple.
     const { x, y } = this.getRipplePosition(event);
 
-    const ripples = this.state.ripples;
+    const { ripples } = this.state;
 
     // Append the new ripple to the ripples array.
-    ripples.push(
-      <RippleAnimation
-        color={this.props.color}
-        duration={this.duration}
-        fill={this.props.fill}
-        key={this.state.nextKey}
-        onComplete={this.removeRipple}
-        size={this.rippleSize}
-        x={x}
-        y={y}
-      />
-    );
+    ripples.push(<RippleAnimation
+      color={this.props.color}
+      duration={this.duration}
+      fill={this.props.fill}
+      key={this.state.nextKey}
+      onComplete={this.removeRipple}
+      size={this.rippleSize}
+      x={x}
+      y={y}
+    />);
 
     this.ignoreNextMouseDown = isTouchGenerated;
 

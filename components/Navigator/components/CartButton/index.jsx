@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CartIcon from 'Components/icons/CartIcon';
@@ -22,15 +15,10 @@ import connect from './connector';
  */
 class CartButton extends Component {
   static propTypes = {
-    activeCartRoute: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+    activeCartRoute: PropTypes.bool.isRequired,
     cartProductCount: PropTypes.number.isRequired,
     openCart: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
-  };
-
-  static defaultProps = {
-    openCart: () => {},
-    visible: true,
   };
 
   /**
