@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { selection, selectionWithWarning, selectionWithAlert } from './mock';
@@ -51,15 +44,13 @@ jest.mock('@shopgate/pwa-common/components/Router/components/RouteGuard', () => 
 
 describe('<VariantSelects />', () => {
   it('should render with variants', () => {
-    const wrapper = shallow(<VariantSelects selection={selection}/>);
+    const wrapper = shallow(<VariantSelects selection={selection} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it.skip('should call the handleSelectionUpdate callback', () => {
     const spy = jest.fn();
-    const wrapper = mount(
-      <VariantSelects selection={selection} handleSelectionUpdate={spy}/>
-    );
+    const wrapper = mount(<VariantSelects selection={selection} handleSelectionUpdate={spy} />);
 
     // Trigger onChange callback
     wrapper.find('Picker').first().prop('onChange')('1');
@@ -94,7 +85,7 @@ describe('<VariantSelects />', () => {
     });
 
     it('should render an alert', () => {
-      const wrapper = mount(<VariantSelects selection={selectionWithAlert}/>);
+      const wrapper = mount(<VariantSelects selection={selectionWithAlert} />);
 
       expect(wrapper.find(warningCssClass).exists()).toBeFalsy();
       expect(wrapper.find(alertCssClass).length).toBe(2);

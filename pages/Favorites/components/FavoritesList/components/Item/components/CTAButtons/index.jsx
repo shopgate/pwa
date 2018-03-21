@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017 - present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritesButton from 'Components/FavoritesButton';
@@ -16,7 +9,9 @@ import connect from './connector';
  * Handles the add to cart action.
  * @param {Object} props The Component props
  */
-const handleAddToCart = ({ productId, addToCart, showVariantModal, isBaseProduct }) => {
+const handleAddToCart = ({
+  productId, addToCart, showVariantModal, isBaseProduct,
+}) => {
   if (isBaseProduct(productId)) {
     showVariantModal(productId);
     return;

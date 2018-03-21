@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { mount } from 'enzyme';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
@@ -54,8 +47,9 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount((
-      <ImageSliderWidget settings={mySettings} />
+    const wrapper = mount(
+      (
+        <ImageSliderWidget settings={mySettings} />
       ),
       testContext
     );
@@ -76,9 +70,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     const images = wrapper.find(Image);
@@ -100,9 +92,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Slider.Item).length).toBe(0);
@@ -119,9 +109,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Link).length).toBe(0);
@@ -142,9 +130,7 @@ describe.skip('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = mount(
-      <ImageSliderWidget settings={mySettings} />
-    );
+    const wrapper = mount(<ImageSliderWidget settings={mySettings} />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Link).length).toBe(mySettings.images.length - 1);

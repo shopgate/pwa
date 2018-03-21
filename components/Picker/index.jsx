@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BasePicker from '@shopgate/pwa-common/components/Picker';
@@ -44,7 +37,9 @@ class Picker extends Component {
 
     this.domElement = null;
     this.modalComponent = modalProps => <Sheet {...modalProps} title={this.props.label} />;
-    this.listComponent = ({ items, onSelect, selectedIndex, onClose }) => (
+    this.listComponent = ({
+      items, onSelect, selectedIndex, onClose,
+    }) => (
       <List>
         {items.map((item, index) => (
           <List.Item

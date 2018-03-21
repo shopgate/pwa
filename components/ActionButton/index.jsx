@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import IndicatorCircle from 'Components/IndicatorCircle';
@@ -33,18 +26,6 @@ class ActionButton extends Component {
   static clickDelay = 300;
 
   /**
-   * The click handler
-   * @param {Object} event The event object for the click handler
-   */
-  handleClick = (event) => {
-    const { clickDelay } = this.constructor;
-
-    setTimeout(() => {
-      this.props.onClick(event);
-    }, clickDelay);
-  };
-
-  /**
    * Getter for the calculated button props.
    * @returns {Object}
    */
@@ -58,6 +39,18 @@ class ActionButton extends Component {
 
     return buttonProps;
   }
+
+  /**
+   * The click handler
+   * @param {Object} event The event object for the click handler
+   */
+  handleClick = (event) => {
+    const { clickDelay } = this.constructor;
+
+    setTimeout(() => {
+      this.props.onClick(event);
+    }, clickDelay);
+  };
 
   /**
    * The render function.

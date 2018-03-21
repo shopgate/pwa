@@ -1,19 +1,12 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
-import {mount} from 'enzyme';
-import {Provider} from 'react-redux';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {INDEX_PATH} from '@shopgate/pwa-common/constants/RoutePaths';
-import {CART_PATH} from '@shopgate/pwa-common-commerce/cart/constants';
-import {FAVORITES_PATH} from '@shopgate/pwa-common-commerce/favorites/constants';
-import {BROWSE_PATH} from 'Pages/Browse/constants';
-import {MORE_PATH} from 'Pages/More/constants';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { BROWSE_PATH } from 'Pages/Browse/constants';
+import { MORE_PATH } from 'Pages/More/constants';
 import {
   TAB_HOME,
   TAB_CART,
@@ -21,7 +14,6 @@ import {
   TAB_BROWSE,
   TAB_FAVORITES,
 } from './constants';
-
 import {
   mockedStateDefault,
   mockedStateRoute,
@@ -47,7 +39,7 @@ beforeEach(() => {
 });
 
 jest.mock('react-portal', () => (
-  ({isOpened, children}) => (
+  ({ isOpened, children }) => (
     isOpened ? children : null
   )
 ));
@@ -72,7 +64,7 @@ const createComponent = (mockedState) => {
  * @param {bool} children -
  * @return {null}
  */
-const mockedPortal = ({isOpened, children}) => (
+const mockedPortal = ({ isOpened, children }) => (
   isOpened ? children : null
 );
 

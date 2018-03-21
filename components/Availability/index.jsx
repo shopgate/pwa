@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -24,7 +17,9 @@ import styles from './style';
  * @param {string} [props.className] CSS classes
  * @return {JSX}
  */
-const Availability = ({ text, state, showWhenAvailable = false, className = null }) => {
+const Availability = ({
+  text, state, showWhenAvailable = false, className = null,
+}) => {
   if (!text || (state === AVAILABILITY_STATE_OK && !showWhenAvailable)) {
     return null;
   }
