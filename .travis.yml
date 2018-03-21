@@ -18,10 +18,14 @@ env:
 
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
+  # Go into develop branch for all modules.
+  - git checkout develop && git fetch --all && git pull
+  - git submodule foreach --recursive git checkout develop
+  - git submodule foreach --recursive git fetch --all && git submodule foreach --recursive git pull
 
 install: yarn
 
-script: NODE_ENV=test yarn run cover -- --runInBand
+script: NODE_ENV=test yarn run cover --maxWorkers=4
 
 after_script: yarn run cover:report
 
