@@ -15,10 +15,8 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
 >
   <Connect(CTAButtons)>
     <CTAButtons
-      handleAddToCart={[Function]}
+      dispatch={[Function]}
       isFavorite={true}
-      isLoading={true}
-      isOrderable={false}
       productId="product_1"
     >
       <div
@@ -26,14 +24,14 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
       >
         <Connect(FavoritesButton)
           active={true}
-          className="css-j05drb"
+          className="css-h7rvbh"
           productId="product_1"
           rippleClassName="css-1tdptiz"
         >
           <FavoritesButton
             active={true}
             addFavorites={[Function]}
-            className="css-j05drb"
+            className="css-h7rvbh"
             noShadow={false}
             onRippleComplete={[Function]}
             once={false}
@@ -44,18 +42,6 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
             rippleClassName="css-1tdptiz"
           />
         </Connect(FavoritesButton)>
-        <MockedAddToCartButton
-          buttonSize={56}
-          handleAddToCart={[Function]}
-          hasLoading={true}
-          iconSize={24}
-          isLoading={true}
-          isOrderable={false}
-        >
-          <button
-            onClick={[Function]}
-          />
-        </MockedAddToCartButton>
       </div>
     </CTAButtons>
   </Connect(CTAButtons)>

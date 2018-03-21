@@ -11,6 +11,7 @@ import VariantSelects from './components/VariantSelects';
 import Options from './components/Options';
 import Description from './components/Description';
 import Properties from './components/Properties';
+import AddToCartBar from './components/AddToCartBar';
 import connect from './connector';
 
 /**
@@ -96,6 +97,13 @@ class Product extends Component {
           <TaxDisclaimer />
         </Portal>
         <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
+
+        {/* ADD TO CART BAR */}
+        <Portal name={portals.PRODUCT_ADD_TO_CART_BAR_BEFORE} />
+        <Portal name={portals.PRODUCT_ADD_TO_CART_BAR}>
+          <AddToCartBar />
+        </Portal>
+        <Portal name={portals.PRODUCT_ADD_TO_CART_BAR_AFTER} />
       </View>
     );
   }
