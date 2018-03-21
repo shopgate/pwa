@@ -17,6 +17,7 @@ import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import toast from '@shopgate/pwa-common/reducers/toast';
 import navigator from 'Components/Navigator/reducer';
 import extentions from 'Extensions/reducers';
+import addToCartBar from 'Pages/Product/components/AddToCartBar/reducer';
 import general from 'Components/View/reducer';
 
 const reducers = {
@@ -37,6 +38,7 @@ const reducers = {
   toast,
   ui: combineReducers({
     general,
+    addToCartBar,
   }),
   url,
   user,

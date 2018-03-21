@@ -51,6 +51,7 @@ const ProductHeader = () => (
 
     {/* INFO */}
     <Portal name={portals.PRODUCT_INFO_BEFORE} />
+
     <Grid component="div">
       <Grid.Item component="div" grow={1}>
         <Portal name={portals.PRODUCT_INFO_ROW1}>
