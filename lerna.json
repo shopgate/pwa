@@ -1,6 +1,6 @@
 {
   "lerna": "2.9.0",
-  "version": "4.12.0-beta.13",
+  "version": "4.12.0-beta.14",
   "packages": [
     "extensions/*/frontend",
     "libraries/*",
