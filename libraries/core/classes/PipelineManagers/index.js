@@ -4,6 +4,7 @@ import {
   PROCESS_SEQUENTIALLY,
   PROPAGATE_REJECT,
 } from '../../constants/RequestManagerModes';
+import * as pipelines from '../../constants/Pipeline';
 
 const PIPELINE_REQUEST_TIMEOUT = 20000;
 
@@ -16,16 +17,16 @@ const cartModifyRequestManager = new RequestManager({
 });
 
 const pipelineManagers = {
-  getCart: new RequestManager({
+  [pipelines.SHOPGATE_CART_GET_CART]: new RequestManager({
     processingMode: PROCESS_LAST_REQUEST, // Always use latest request.
     propagationMode: PROPAGATE_REJECT, // Reject outdated getCart() requests.
     timeout: PIPELINE_REQUEST_TIMEOUT,
   }),
-  addProductsToCart: cartModifyRequestManager,
-  updateProductsInCart: cartModifyRequestManager,
-  deleteProductsFromCart: cartModifyRequestManager,
-  addCouponsToCart: cartModifyRequestManager,
-  deleteCouponsFromCart: cartModifyRequestManager,
+  [pipelines.SHOPGATE_CART_ADD_PRODUCTS]: cartModifyRequestManager,
+  [pipelines.SHOPGATE_CART_UPDATE_PRODUCTS]: cartModifyRequestManager,
+  [pipelines.SHOPGATE_CART_DELETE_PRODUCTS]: cartModifyRequestManager,
+  [pipelines.SHOPGATE_CART_ADD_COUPONS]: cartModifyRequestManager,
+  [pipelines.SHOPGATE_CART_DELETE_COUPONS]: cartModifyRequestManager,
 };
 
 const defaultManager = new RequestManager({ timeout: PIPELINE_REQUEST_TIMEOUT });
