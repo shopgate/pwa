@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-unit-test",
-  "version": "4.12.0-beta.17",
+  "version": "4.12.0-beta.18",
   "description": "Unit test setup for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
     "strip-json-comments": "^2.0.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^4.12.0-beta.17",
+    "@shopgate/eslint-config": "^4.12.0-beta.18",
     "jest": "^22.4.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
