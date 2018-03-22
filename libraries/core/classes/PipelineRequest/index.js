@@ -28,6 +28,7 @@ class PipelineRequest extends Request {
     this.name = `${name}_v${version}`;
     this.input = {};
     this.handledErrors = [];
+    this.suppressErrors = false;
     this.createSerial(this.name);
     this.createEventCallbackName('pipelineResponse');
     this.requestCallback = null;
@@ -63,6 +64,17 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * Sets a flag to suppress errors.
+   * When true, no EVENT_PIPELINE_ERROR would be triggered.
+   * @param {bool} value Value.
+   * @return {PipelineRequest}
+   */
+  setSuppressErrors(value) {
+    this.suppressErrors = value;
+    return this;
+  }
+
+  /**
    * Sends the pipeline request.
    * @param {function} resolve The resolve() callback of the request promise.
    * @param {function} reject The reject() callback of the request promise.
@@ -90,8 +102,7 @@ class PipelineRequest extends Request {
 
       if (error) {
         const isHandledError = this.handledErrors.includes(error.code);
-
-        if (!isHandledError) {
+        if (!this.suppressErrors && !isHandledError) {
           event.trigger(EVENT_PIPELINE_ERROR, {
             name,
             input,
