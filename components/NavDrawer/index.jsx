@@ -187,17 +187,16 @@ class NavDrawer extends Component {
         </Item>
 
         {user && <Divider close={this.handleClose} />}
-        {user && (
-          <Fragment>
-            <Portal name={portals.NAV_MENU_LOGOUT_BEFORE} />
-            <Portal name={portals.NAV_MENU_LOGOUT}>
-              <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
-                <I18n.Text string="navigation.logout" />
-              </Item>
-            </Portal>
-            <Portal name={portals.NAV_MENU_LOGOUT_AFTER} />
-          </Fragment>
-        )}
+
+        <Portal name={portals.NAV_MENU_LOGOUT_BEFORE} />
+        <Portal name={portals.NAV_MENU_LOGOUT}>
+          {user && (
+            <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+              <I18n.Text string="navigation.logout" />
+            </Item>
+          )}
+        </Portal>
+        <Portal name={portals.NAV_MENU_LOGOUT_AFTER} />
 
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} />
 
