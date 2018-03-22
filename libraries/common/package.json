@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "4.12.0-beta.15",
+  "version": "4.12.0-beta.16",
   "description": "Common library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -44,9 +44,9 @@
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^4.12.0-beta.15",
-    "@shopgate/pwa-core": "^4.12.0-beta.15",
-    "@shopgate/pwa-unit-test": "^4.12.0-beta.15",
+    "@shopgate/eslint-config": "^4.12.0-beta.16",
+    "@shopgate/pwa-core": "^4.12.0-beta.16",
+    "@shopgate/pwa-unit-test": "^4.12.0-beta.16",
     "@shopgate/react-hammerjs": "^0.5.3",
     "coveralls": "^3.0.0",
     "jest": "^22.4.2",
