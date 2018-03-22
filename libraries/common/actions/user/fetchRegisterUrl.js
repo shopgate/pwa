@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../../constants/Pipelines';
 import {
   requestUrl,
   receiveUrl,
@@ -21,7 +22,7 @@ export default () => (dispatch, getState) => {
     if (shouldFetchData(getEntryByType(URL_TYPE_REGISTER, state), 'url')) {
       dispatch(requestUrl(URL_TYPE_REGISTER));
 
-      new PipelineRequest('getRegistrationUrl')
+      new PipelineRequest(pipelines.SHOPGATE_USER_GET_REGISTRATION_URL)
         .setTrusted()
         .dispatch()
         .then(({ url, expires }) => {

@@ -1,5 +1,6 @@
 import processHistoryUpdate from '../../actions/history/processHistoryUpdate';
 import { DEFAULT_SORT } from '../../constants/DisplayOptions';
+import * as pipelines from '../../constants/Pipelines';
 import { isObject } from '../validation';
 import { sortObject } from '../data';
 
@@ -112,7 +113,7 @@ export const compareObjects = (input1, input2) => (
  */
 export const generateResultHash = (params, includeSort = true, includeFilters = true) => {
   const defaultParams = {
-    pipeline: 'getProducts',
+    pipeline: pipelines.SHOPGATE_CATALOG_GET_PRODUCTS,
     ...includeFilters && { filters: {} },
     ...includeSort && { sort: DEFAULT_SORT },
   };

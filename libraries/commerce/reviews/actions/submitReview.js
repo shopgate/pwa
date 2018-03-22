@@ -2,6 +2,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { EEXIST } from '@shopgate/pwa-core/constants/Pipeline';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import * as pipelines from '../constants/Pipelines';
 import requestSubmitReview from '../action-creators/requestSubmitReview';
 import receiveSubmitReview from '../action-creators/receiveSubmitReview';
 import errorSubmitReview from '../action-creators/errorSubmitReview';
@@ -33,7 +34,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
 
   dispatch(requestSubmitReview(review));
   if (update) {
-    const request = new PipelineRequest('updateProductReview')
+    const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_UPDATE_PRODUCT_REVIEW)
       .setInput(pipelineData)
       .dispatch();
     request
@@ -49,7 +50,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
     return request;
   }
 
-  const request = new PipelineRequest('addProductReview')
+  const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW)
     .setHandledErrors([EEXIST])
     .setInput(pipelineData)
     .dispatch();

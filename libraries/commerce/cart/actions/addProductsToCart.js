@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../constants/Pipelines';
 import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
@@ -18,7 +19,7 @@ const addToCart = productData => (dispatch, getState) => {
   dispatch(addProductsToCart(productData));
   dispatch(setCartProductPendingCount(pendingProductCount + 1));
 
-  const request = new PipelineRequest('addProductsToCart');
+  const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_PRODUCTS);
   request.setInput({ products: productData })
     .dispatch()
     .then(({ messages }) => {
@@ -39,7 +40,7 @@ const addToCart = productData => (dispatch, getState) => {
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
       dispatch(errorAddProductsToCart(productData, undefined, requestsPending));
-      logger.error('addProductsToCart', error);
+      logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
 };
 

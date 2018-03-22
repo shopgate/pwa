@@ -2,6 +2,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import requestProductProperties from '../action-creators/requestProductProperties';
+import * as pipelines from '../constants/Pipelines';
 import receiveProductProperties from '../action-creators/receiveProductProperties';
 import errorProductProperties from '../action-creators/errorProductProperties';
 
@@ -20,7 +21,7 @@ const getProductProperties = productId => (dispatch, getState) => {
 
   dispatch(requestProductProperties(productId));
 
-  new PipelineRequest('getProductProperties')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_PROPERTIES)
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductProperties(productId, result.properties)))
