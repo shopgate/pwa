@@ -5,6 +5,7 @@ import {
   receiveUrl,
   errorUrl,
 } from '@shopgate/pwa-common/action-creators/url';
+import * as pipelines from '../constants/Pipelines';
 
 const URL_TYPE_CHECKOUT = 'checkout';
 
@@ -16,7 +17,7 @@ const fetchCheckoutUrl = () => dispatch =>
   new Promise((resolve, reject) => {
     dispatch(requestUrl(URL_TYPE_CHECKOUT));
 
-    new PipelineRequest('getCheckoutUrl')
+    new PipelineRequest(pipelines.SHOPGATE_CHECKOUT_GET_URL)
       .dispatch()
       .then(({ url, expires }) => {
         dispatch(receiveUrl(URL_TYPE_CHECKOUT, url, expires));

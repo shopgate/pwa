@@ -4,6 +4,7 @@ import find from 'lodash/find';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSearchPhrase, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import * as pipelines from '../constants/Pipelines';
 import { getCurrentCategoryId } from '../../category/selectors';
 
 /**
@@ -81,7 +82,7 @@ export const getFilterHash = createSelector(
     }
 
     const hashParams = {
-      pipeline: 'getFilters',
+      pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,
       ...categoryId && { categoryId },
       ...searchPhrase && { searchPhrase },
       ...filters && { filters: {} },

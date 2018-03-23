@@ -2,6 +2,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import requestProductImages from '../action-creators/requestProductImages';
+import * as pipelines from '../constants/Pipelines';
 import receiveProductImages from '../action-creators/receiveProductImages';
 import errorProductImages from '../action-creators/errorProductImages';
 
@@ -20,7 +21,7 @@ const getProductImages = productId => (dispatch, getState) => {
 
   dispatch(requestProductImages(productId));
 
-  new PipelineRequest('getProductImages')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductImages(productId, result.images)))

@@ -4,6 +4,7 @@ import {
   generateResultHash,
   shouldFetchFilters,
 } from '@shopgate/pwa-common/helpers/redux';
+import * as pipelines from '../constants/Pipelines';
 import requestFilters from '../action-creators/requestFilters';
 import receiveFilters from '../action-creators/receiveFilters';
 import errorFilters from '../action-creators/errorFilters';
@@ -24,7 +25,7 @@ const getFilters = () => (dispatch, getState) => {
   const params = buildFilterParams(state);
 
   const hash = generateResultHash({
-    pipeline: 'getFilters',
+    pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,
     ...params,
   }, false);
 
@@ -38,12 +39,12 @@ const getFilters = () => (dispatch, getState) => {
   const requestParams = processParams(params, activeFilters);
 
   if (Object.keys(requestParams).length === 0) {
-    logger.error('Attempt to call getFilters pipeline without parameters - aborted');
+    logger.error(`Attempt to call ${pipelines.SHOPGATE_CATALOG_GET_FILTERS} pipeline without parameters - aborted`);
     return;
   }
 
   dispatch(requestFilters(hash));
-  new PipelineRequest('getFilters')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_FILTERS)
     .setInput(requestParams)
     .dispatch()
     .then(({ filters }) => dispatch(receiveFilters(hash, filters)))

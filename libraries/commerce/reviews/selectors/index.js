@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import * as pipelines from '../constants/Pipelines';
 import { getCurrentBaseProductId } from '../../product/selectors/product';
 
 /**
@@ -20,7 +21,7 @@ const getCollectionForCurrentBaseProduct = createSelector(
   getReviewsByHashState,
   (productId, reviewsState) => {
     const hash = generateResultHash({
-      pipeline: 'getProductReviews',
+      pipeline: pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS,
       productId,
     }, false);
 

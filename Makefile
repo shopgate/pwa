@@ -105,8 +105,8 @@ endef
 
 define npm-release-utils
 		@if [ "$(strip $(2))" == "beta" ]; \
-			then npm publish ./utils/$(strip $(1))/dist/ --access public --tag beta; \
-			else npm publish ./utils/$(strip $(1))/dist/ --access public; \
+			then npm publish ./utils/$(strip $(1))/ --access public --tag beta; \
+			else npm publish ./utils/$(strip $(1))/ --access public; \
 		fi;
 
 endef
