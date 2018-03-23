@@ -130,14 +130,14 @@ class NavDrawer extends Component {
 
         {/* Header */}
         <Portal
-          name={commonPortals.NAV_MENU_HEADER_BEFORE}
+          name={commonPortals.USER_MENU_CONTAINER_BEFORE}
           props={{
             ...props,
             user,
           }}
         />
         <Portal
-          name={commonPortals.NAV_MENU_HEADER}
+          name={commonPortals.USER_MENU_CONTAINER}
           props={{
             ...props,
             user,
@@ -146,7 +146,7 @@ class NavDrawer extends Component {
           <Header user={user} close={this.handleClose} />
         </Portal>
         <Portal
-          name={commonPortals.NAV_MENU_HEADER_AFTER}
+          name={commonPortals.USER_MENU_CONTAINER_AFTER}
           props={{
             ...props,
             user,
@@ -291,23 +291,22 @@ class NavDrawer extends Component {
         <Portal name={commonPortals.NAV_MENU_IMPRINT_AFTER} props={props} />
 
         {user && <Divider close={this.handleClose} />}
+
+        <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
+        <Portal
+          name={commonPortals.NAV_MENU_LOGOUT}
+          props={{
+            ...props,
+            handleLogout: logout,
+          }}
+        >
         {user && (
-          <Fragment>
-            <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-            <Portal
-              name={commonPortals.NAV_MENU_LOGOUT}
-              props={{
-                ...props,
-                handleLogout: logout,
-              }}
-            >
-              <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
-                <I18n.Text string="navigation.logout" />
-              </Item>
-            </Portal>
-            <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
-          </Fragment>
+          <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+            <I18n.Text string="navigation.logout" />
+          </Item>
         )}
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
 
         <Portal name={commonPortals.NAV_MENU_CONTENT_AFTER} props={props} />
 
