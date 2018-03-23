@@ -13,6 +13,7 @@ describe('MockPipelineRequest', () => {
       expect(firstInstance.name).toBe('first');
       expect(firstInstance.input).toEqual({});
       expect(firstInstance.handledErrors).toEqual([]);
+      expect(firstInstance.suppressErrors).toBe(false);
 
       const afterSetInput = firstInstance.setInput({ firstOne: 1 });
       // Check if returns `this`
@@ -20,10 +21,13 @@ describe('MockPipelineRequest', () => {
       // Check if input is set
       expect(firstInstance.input).toEqual({ firstOne: 1 });
 
-      const afterSetHandledErrors = firstInstance.setHandledErrors([1, 2]);
+      const afterSetHandledErrors = firstInstance
+        .setHandledErrors([1, 2])
+        .setSuppressErrors(true);
       expect(afterSetHandledErrors instanceof FirstClass).toBe(true);
       expect(afterSetInput.handledErrors).toEqual(afterSetHandledErrors.handledErrors);
       expect(afterSetHandledErrors.handledErrors).toEqual([1, 2]);
+      expect(afterSetHandledErrors.suppressErrors).toBe(true);
       // Check dispatch
       afterSetInput
         .dispatch()
