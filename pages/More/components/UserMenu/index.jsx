@@ -65,29 +65,11 @@ class UserMenu extends Component {
           }}
         />
         <List>
-          <Portal
-            name={commonPortals.NAV_MENU_LOGOUT_BEFORE}
-            props={{
-              Item: List.Item,
-              handleLogout: this.props.logout,
-            }}
-          />
-          <Portal
-            name={commonPortals.NAV_MENU_LOGOUT}
-            props={{
-              Item: List.Item,
-              handleLogout: this.props.logout,
-            }}
-          >
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT}>
             <List.Item title="navigation.logout" onClick={this.props.logout} />
           </Portal>
-          <Portal
-            name={commonPortals.NAV_MENU_LOGOUT_AFTER}
-            props={{
-              Item: List.Item,
-              handleLogout: this.props.logout,
-            }}
-          />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} />
         </List>
       </div>
     );
