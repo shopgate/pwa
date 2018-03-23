@@ -14,6 +14,7 @@ import {
   ERROR_FETCH_FAVORITES,
   RECEIVE_SYNC_FAVORITES, IDLE_SYNC_FAVORITES, ERROR_SYNC_FAVORITES,
 } from '../constants';
+import * as pipelines from '../constants/Pipelines';
 
 let mockedResolver;
 jest.mock(
@@ -26,7 +27,7 @@ jest.mock(
 );
 
 describe('Favorites - actions', () => {
-  describe('getFavorites', () => {
+  describe(pipelines.SHOPGATE_USER_GET_FAVORITES, () => {
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
@@ -38,7 +39,7 @@ describe('Favorites - actions', () => {
       // Make sure test callback is executed after the internal fetchReviews one.
       setTimeout(() => {
         promise[variant]((result) => {
-          expect(result.mockInstance.name).toBe('getFavorites');
+          expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_USER_GET_FAVORITES);
           expect(mockedDispatch).toHaveBeenCalledTimes(2);
           expect(mockedDispatch.mock.calls[0][0].type).toBe(REQUEST_FAVORITES);
           expect(mockedDispatch.mock.calls[1][0].type)
@@ -75,7 +76,7 @@ describe('Favorites - actions', () => {
       });
     });
   });
-  describe('addFavorites', () => {
+  describe(pipelines.SHOPGATE_USER_PUT_FAVORITES, () => {
     const mockedDispatch = jest.fn();
     it('should add', (done) => {
       mockedResolver = (mockInstance, resolve) => {
