@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../../constants/Pipelines';
 import { shouldFetchData } from '../../helpers/redux';
 import {
   receivePageConfig,
@@ -18,7 +19,7 @@ const getPageConfig = pageId => (dispatch, getState) => {
   if (shouldFetchData(state.page[pageId])) {
     dispatch(requestPageConfig(pageId));
 
-    return new PipelineRequest('getPageConfig')
+    return new PipelineRequest(pipelines.SHOPGATE_CMS_GET_PAGE_CONFIG)
       .setInput({ pageId })
       .dispatch()
       .then(result => dispatch(receivePageConfig(pageId, result)))

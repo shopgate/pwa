@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import * as pipelines from '../constants/Pipelines';
 import {
   requestAddFavorites,
   requestRemoveFavorites,
@@ -36,7 +37,7 @@ export const requestSync = () => (dispatch, getState) => {
   syncInProgress = true;
   const state = getState();
   dispatch(requestSyncFavorites());
-  new PipelineRequest('putFavorites')
+  new PipelineRequest(pipelines.SHOPGATE_USER_PUT_FAVORITES)
     .setInput({ productIds: getFavoritesProductsIds(state) })
     .dispatch()
     .then(() => {

@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../../constants/Pipelines';
 import {
   requestLogout,
   successLogout,
@@ -13,7 +14,7 @@ import {
 export default () => (dispatch) => {
   dispatch(requestLogout());
 
-  new PipelineRequest('logout')
+  new PipelineRequest(pipelines.SHOPGATE_USER_LOGOUT_USER)
     .setTrusted()
     .dispatch()
     .then(({ success, messages }) => {

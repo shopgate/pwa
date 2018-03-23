@@ -3,6 +3,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
+import * as pipelines from '../constants/Pipelines';
 import requestProducts from '../action-creators/requestProducts';
 import receiveProducts from '../action-creators/receiveProducts';
 import errorProducts from '../action-creators/errorProducts';
@@ -53,7 +54,7 @@ const processParams = (params, filters, includeSort = true, includeFilters = tru
  */
 const getProducts = ({
   params = {},
-  pipeline = 'getProducts',
+  pipeline = pipelines.SHOPGATE_CATALOG_GET_PRODUCTS,
   cached = true,
   id = null,
   includeSort = true,
@@ -122,7 +123,10 @@ const getProducts = ({
          */
         if (
           typeof totalResultCount === 'undefined' &&
-          (pipeline === 'getHighlightProducts' || pipeline === 'getLiveshoppingProducts')
+          (
+            pipeline === pipelines.SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS ||
+            pipeline === pipelines.SHOPGATE_CATALOG_GET_LIVESHOPPING_PRODUCTS
+          )
         ) {
           totalResultCount = response.products.length;
         }

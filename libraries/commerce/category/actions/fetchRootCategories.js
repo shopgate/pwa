@@ -1,6 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import * as pipelines from '../constants/Pipelines';
 import requestRootCategories from '../action-creators/requestRootCategories';
 import receiveRootCategories from '../action-creators/receiveRootCategories';
 import errorRootCategories from '../action-creators/errorRootCategories';
@@ -19,7 +20,7 @@ const fetchRootCategories = () => (dispatch, getState) => {
 
   dispatch(requestRootCategories());
 
-  new PipelineRequest('getRootCategories')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_ROOT_CATEGORIES)
     .dispatch()
     .then(result => dispatch(receiveRootCategories(result.categories)))
     .catch((error) => {
