@@ -1,5 +1,6 @@
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import * as pipelines from '../constants/Pipelines';
 import requestSearchSuggestions from '../action-creators/requestSearchSuggestions';
 import receiveSearchSuggestions from '../action-creators/receiveSearchSuggestions';
 import {
@@ -24,7 +25,7 @@ const fetchSearchSuggestions = () => (dispatch, getState) => {
 
   dispatch(requestSearchSuggestions(searchPhrase));
 
-  new PipelineRequest('getSearchSuggestions')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
     .setInput({ searchPhrase })
     .dispatch()
     .then(({ suggestions }) => {

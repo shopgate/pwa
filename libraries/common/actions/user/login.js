@@ -1,6 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { EINVALIDCALL } from '@shopgate/pwa-core/constants/Pipeline';
+import * as pipelines from '../../constants/Pipelines';
 import {
   requestLogin,
   successLogin,
@@ -22,7 +23,7 @@ export default ({ login, password }) => (dispatch) => {
     },
   };
 
-  new PipelineRequest('login')
+  new PipelineRequest(pipelines.SHOPGATE_USER_LOGIN_USER)
     .setTrusted()
     .setHandledErrors([EINVALIDCALL])
     .setInput(params)

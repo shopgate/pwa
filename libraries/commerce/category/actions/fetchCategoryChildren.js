@@ -1,6 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import * as pipelines from '../constants/Pipelines';
 import requestCategoryChildren from '../action-creators/requestCategoryChildren';
 import receiveCategoryChildren from '../action-creators/receiveCategoryChildren';
 import errorCategoryChildren from '../action-creators/errorCategoryChildren';
@@ -20,7 +21,7 @@ const fetchCategoryChildren = categoryId => (dispatch, getState) => {
 
   dispatch(requestCategoryChildren(categoryId));
 
-  new PipelineRequest('getCategoryChildren')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_CATEGORY_CHILDREN)
     .setInput({ categoryId })
     .dispatch()
     .then(result => dispatch(receiveCategoryChildren(categoryId, result.categories)))

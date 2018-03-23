@@ -1,6 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { EACCESS } from '@shopgate/pwa-core/constants/Pipeline';
+import * as pipelines from '../../constants/Pipelines';
 import {
   requestUser,
   receiveUser,
@@ -16,7 +17,7 @@ import { isUserLoggedIn } from '../../selectors/user';
 export default () => (dispatch, getState) => {
   dispatch(requestUser());
 
-  return new PipelineRequest('getUser')
+  return new PipelineRequest(pipelines.SHOPGATE_USER_GET_USER)
     .setTrusted()
     .setHandledErrors([EACCESS])
     .dispatch()

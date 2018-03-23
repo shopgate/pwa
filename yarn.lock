@@ -71,7 +71,7 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@shopgate/react-hammerjs@^0.5.3":
+"@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
