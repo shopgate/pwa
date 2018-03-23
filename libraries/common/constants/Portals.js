@@ -3,18 +3,19 @@ const APP = 'app';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
 const NO_RESULTS = 'no-results';
+const USER_MENU = 'user-menu';
 
 // CONTENTS
 const GLOBALS = 'globals';
 const ROUTES = 'routes';
 const HEADER = 'header';
-const USER_MENU = 'user-menu';
 const CONTENT = 'content';
 const HOME = 'home';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
 const LOGOUT = 'logout';
+const CONTAINER = 'container';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -30,10 +31,6 @@ export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
 export const NAV_MENU_HEADER_BEFORE = `${NAV_MENU}.${HEADER}.${BEFORE}`;
 export const NAV_MENU_HEADER = `${NAV_MENU}.${HEADER}`;
 export const NAV_MENU_HEADER_AFTER = `${NAV_MENU}.${HEADER}.${AFTER}`;
-
-export const NAV_MENU_USER_MENU_BEFORE = `${NAV_MENU}.${USER_MENU}.${BEFORE}`;
-export const NAV_MENU_USER_MENU = `${NAV_MENU}.${USER_MENU}`;
-export const NAV_MENU_USER_MENU_AFTER = `${NAV_MENU}.${USER_MENU}.${AFTER}`;
 
 export const NAV_MENU_CONTENT_BEFORE = `${NAV_MENU}.${CONTENT}.${BEFORE}`;
 export const NAV_MENU_CONTENT_AFTER = `${NAV_MENU}.${CONTENT}.${AFTER}`;
@@ -61,3 +58,7 @@ export const NAV_MENU_LOGOUT_AFTER = `${NAV_MENU}.${LOGOUT}.${AFTER}`;
 export const NO_RESULTS_CONTENT_BEFORE = `${NO_RESULTS}.${CONTENT}.${BEFORE}`;
 export const NO_RESULTS_CONTENT = `${NO_RESULTS}.${CONTENT}`;
 export const NO_RESULTS_CONTENT_AFTER = `${NO_RESULTS}.${CONTENT}.${AFTER}`;
+
+export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
+export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
+export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
