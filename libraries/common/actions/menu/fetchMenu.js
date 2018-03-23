@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../../constants/Pipelines';
 import {
   requestMenu,
   receiveMenu,
@@ -14,7 +15,7 @@ import {
 const fetchMenu = id => (dispatch) => {
   dispatch(requestMenu(id));
 
-  new PipelineRequest('getMenu')
+  new PipelineRequest(pipelines.SHOPGATE_CMS_GET_MENU)
     .setInput({ id })
     .dispatch()
     .then((response) => {
