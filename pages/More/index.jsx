@@ -52,11 +52,23 @@ class More extends Component {
     return (
       <View>
         {/* USER MENU */}
-        <Portal name={portals.NAV_MENU_USER_MENU_BEFORE} props={{ user }} />
-        <Portal name={portals.NAV_MENU_USER_MENU} props={{ user }}>
+        <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={{
+          ...props,
+          user,
+          handleLogout: logout,
+        }} />
+        <Portal name={portals.USER_MENU_CONTAINER} props={{
+          ...props,
+          user,
+          handleLogout: logout,
+        }}>
           <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
         </Portal>
-        <Portal name={portals.NAV_MENU_USER_MENU_AFTER} props={{ user }} />
+        <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={{
+          ...props,
+          user,
+          handleLogout: logout,
+        }} />
 
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
 
