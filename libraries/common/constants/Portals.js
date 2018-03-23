@@ -3,6 +3,7 @@ const APP = 'app';
 const PAGE = 'page';
 const NAV_MENU = 'nav-menu';
 const NO_RESULTS = 'no-results';
+const USER_MENU = 'user-menu';
 
 // CONTENTS
 const GLOBALS = 'globals';
@@ -14,6 +15,7 @@ const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
 const LOGOUT = 'logout';
+const CONTAINER = 'container';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -56,3 +58,7 @@ export const NAV_MENU_LOGOUT_AFTER = `${NAV_MENU}.${LOGOUT}.${AFTER}`;
 export const NO_RESULTS_CONTENT_BEFORE = `${NO_RESULTS}.${CONTENT}.${BEFORE}`;
 export const NO_RESULTS_CONTENT = `${NO_RESULTS}.${CONTENT}`;
 export const NO_RESULTS_CONTENT_AFTER = `${NO_RESULTS}.${CONTENT}.${AFTER}`;
+
+export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
+export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
+export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
