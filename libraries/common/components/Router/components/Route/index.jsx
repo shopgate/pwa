@@ -68,6 +68,8 @@ class Route extends Component {
   constructor(props, context) {
     super(props, context);
 
+    console.warn(props);
+
     // Register to the router with all callbacks.
     this.context.registerRoute(
       props.path,
@@ -252,6 +254,10 @@ class Route extends Component {
     const components = this.state.hostedComponents.map((
       hosted => hosted.component
     ));
+
+    // Check if route needs authenticated
+    // Render Redirect component if not
+    console.error(components);
 
     return (
       <div data-route-path={this.props.path}>

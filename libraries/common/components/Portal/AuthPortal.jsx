@@ -1,18 +1,14 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AuthRoutes from '../Router/components/AuthRoutes';
 import connect from './connector';
 
 /**
  * The Portal component.
  */
-class Portal extends Component {
+class AuthPortal extends Component {
   static propTypes = {
     components: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    children: PropTypes.node,
-  };
-
-  static defaultProps = {
-    children: null,
   };
 
   /**
@@ -23,7 +19,6 @@ class Portal extends Component {
     super(props);
 
     this.state = {
-      hasChildren: !!props.children,
       hasComponents: props.components.length > 0,
       hasError: false,
     };
@@ -36,8 +31,7 @@ class Portal extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.hasChildren !== nextState.hasChildren
-      || this.state.hasComponents !== nextState.hasComponents
+      this.state.hasComponents !== nextState.hasComponents
       || this.state.hasError !== nextState.hasError
     );
   }
@@ -54,34 +48,23 @@ class Portal extends Component {
    * @return {JSX}
    */
   render() {
-    const { children, components } = this.props;
-    const { hasChildren, hasComponents, hasError } = this.state;
+    const { components } = this.props;
+    const { hasComponents, hasError } = this.state;
 
     /**
      * Render nothing if there are no children, matching components
      * via name or an error occured.
      */
-    if (hasError || !(hasComponents || hasChildren)) {
+    if (hasError || !hasComponents) {
       return null;
     }
 
-    /**
-     *  If there are matching components then render them.
-     */
-    if (hasComponents) {
-      /**
-       * If there is a child component then we treat the match as an override
-       * and we render the last match only.
-       */
-      if (hasChildren) {
-        return components[components.length - 1];
-      }
-
-      return components;
-    }
-
-    return children;
+    return (
+      <AuthRoutes to="/login">
+        {components}
+      </AuthRoutes>
+    );
   }
 }
 
-export default connect(Portal);
+export default connect(AuthPortal);
