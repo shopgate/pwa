@@ -118,11 +118,11 @@ class NavDrawer extends Component {
         close={this.handleClose}
         setContentRef={this.setContentRef}
       >
-        <Portal name={portals.NAV_MENU_USER_MENU_BEFORE} props={{ user }} />
-        <Portal name={portals.NAV_MENU_USER_MENU} props={{ user }}>
+        <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={{ user }} />
+        <Portal name={portals.USER_MENU_CONTAINER} props={{ user }}>
           <Header user={user} close={this.handleClose} />
         </Portal>
-        <Portal name={portals.NAV_MENU_USER_MENU_AFTER} props={{ user }} />
+        <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={{ user }} />
 
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} />
         <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
