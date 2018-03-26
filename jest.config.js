@@ -13,17 +13,11 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   testPathIgnorePatterns: [
-    '/node_modules/',
     '/extensions/',
-    '/public/',
-    '/coverage/',
-    '/components/Widgets/',
+    '/widgets/',
   ],
   coveragePathIgnorePatterns: [
-    '/node_modules/',
     '/extensions/',
-    '/public/',
-    '/coverage/',
-    '/components/Widgets/',
+    '/widgets/',
   ],
 };
