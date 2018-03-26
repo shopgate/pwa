@@ -27,6 +27,8 @@ const getDirectories = source => (
   )).filter(isDirectory)
 );
 
+logger.log('\n\n--- SEND COVERAGE ---\n\n');
+
 // Grab the coverage files.
 try {
   packages.forEach((pkg) => {
@@ -38,11 +40,15 @@ try {
       const reportFileAbsolute = path.resolve(folder, sub, 'coverage', 'lcov.info');
       const reportFile = `./${path.relative(projectRoot, reportFileAbsolute)}`;
 
+      logger.info(`Checking coverage file in package: ${cleanPackage}`);
+
       if (fs.existsSync(reportFileAbsolute)) {
         reports.push({
           type: 'lcov',
           reportFile,
         });
+      } else {
+        logger.warn(`Coverage file not found: ${reportFileAbsolute}`);
       }
     });
   });
@@ -50,16 +56,19 @@ try {
   throw err;
 }
 
+logger.log(reports);
+
 try {
   if (!reports.length) {
-    throw new Error('No report files found!');
+    logger.error('No report files found!');
+    return;
   }
 
   coveralls.sendReports(reports, {
     projectRoot,
   });
 } catch (err) {
-  throw err;
+  logger.error(err);
 }
 
-logger.log('Coverage reports sent!');
+logger.log('\n\n--- END: SEND COVERAGE ---\n\n');
