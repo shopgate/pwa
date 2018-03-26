@@ -4,7 +4,7 @@
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
     "clean": "make clean",
-    "test": "lerna run test --stream",
+    "test": "lerna run test",
     "cover": "lerna run cover --stream",
     "cover:report": "node ./scripts/send-coverage.js",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
