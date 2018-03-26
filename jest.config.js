@@ -13,6 +13,7 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   testPathIgnorePatterns: [
+    ...defaultConfig.testPathIgnorePatterns,
     '/extensions/',
     '/widgets/',
   ],
