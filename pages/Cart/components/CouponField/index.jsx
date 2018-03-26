@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
+import MessageBar from 'Components/MessageBar';
 import connect from './connector';
 import Layout from './components/Layout';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
@@ -11,14 +12,20 @@ import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
 class CouponField extends Component {
   static propTypes = {
     addCoupon: PropTypes.func,
+    hasCouponSupport: PropTypes.bool,
     isLoading: PropTypes.bool,
     onToggleFocus: PropTypes.func,
   };
 
   static defaultProps = {
     addCoupon: () => {},
+    hasCouponSupport: true,
     isLoading: false,
     onToggleFocus: () => {},
+  };
+
+  static contextTypes = {
+    i18n: PropTypes.func,
   };
 
   /**
@@ -113,6 +120,17 @@ class CouponField extends Component {
    * @returns {JSX}
    */
   render() {
+    if (!this.props.hasCouponSupport) {
+      // Only show a message if the shop doesn't support redeeming of coupons within the cart.
+      const { __ } = this.context.i18n();
+      const messages = [{
+        type: 'info',
+        message: __('cart.coupons_not_supported'),
+      }];
+
+      return <MessageBar messages={messages} />;
+    }
+
     const labelStyle = { display: this.state.value ? 'none' : 'block' };
     const iconStyle = {
       opacity: (this.isButtonVisible) ? 1 : 0,
