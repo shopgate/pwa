@@ -2,6 +2,7 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../constants/Pipelines';
 import requestProductReviewsList from '../action-creators/requestReviews';
 import receiveProductReviewsList from '../action-creators/receiveReviews';
 import errorProductReviewsList from '../action-creators/errorReviews';
@@ -16,7 +17,7 @@ import errorProductReviewsList from '../action-creators/errorReviews';
  */
 const fetchReviews = (productId, limit = 2, offset = 0, sort = SORT_DATE_DESC) => (dispatch) => {
   const hash = generateResultHash({
-    pipeline: 'getProductReviews',
+    pipeline: pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS,
     productId,
   }, false);
   dispatch(requestProductReviewsList(hash));
@@ -28,7 +29,7 @@ const fetchReviews = (productId, limit = 2, offset = 0, sort = SORT_DATE_DESC) =
    * To get more insights, please take a look at ../spec.js.
    * @type {Promise}
    */
-  const request = new PipelineRequest('getProductReviews')
+  const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
     .setInput({
       productId,
       limit,

@@ -6,6 +6,7 @@ import {
   EUNKNOWN,
   EBIGAPI,
 } from '@shopgate/pwa-core/constants/Pipeline';
+import * as pipelines from '../constants/Pipelines';
 import {
   receiveFavorites,
   requestFavorites,
@@ -25,7 +26,7 @@ const getFavorites = (ignoreCache = false) => (dispatch, getState) => {
   }
   const timestamp = Date.now();
   dispatch(requestFavorites());
-  const promise = new PipelineRequest('getFavorites')
+  const promise = new PipelineRequest(pipelines.SHOPGATE_USER_GET_FAVORITES)
     .setHandledErrors([EFAVORITE, EUNKNOWN, EBIGAPI])
     .dispatch();
   promise

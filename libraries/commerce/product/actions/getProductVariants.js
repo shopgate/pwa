@@ -2,6 +2,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import requestProductVariants from '../action-creators/requestProductVariants';
+import * as pipelines from '../constants/Pipelines';
 import receiveProductVariants from '../action-creators/receiveProductVariants';
 import errorProductVariants from '../action-creators/errorProductVariants';
 
@@ -20,7 +21,7 @@ const getProductVariants = productId => (dispatch, getState) => {
 
   dispatch(requestProductVariants(productId));
 
-  new PipelineRequest('getProductVariants')
+  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_VARIANTS)
     .setInput({ productId })
     .dispatch()
     .then(result => dispatch(receiveProductVariants(productId, result)))

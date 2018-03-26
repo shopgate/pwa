@@ -1,5 +1,6 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
+import * as pipelines from '../constants/Pipelines';
 import deleteCoupons from '../action-creators/deleteCouponsFromCart';
 import errorDeleteCouponsFromCart from '../action-creators/errorDeleteCouponsFromCart';
 import successDeleteCouponsFromCart from '../action-creators/successDeleteCouponsFromCart';
@@ -13,7 +14,7 @@ import { messagesHaveErrors } from '../helpers';
 const deleteCouponsFromCart = couponIds => (dispatch) => {
   dispatch(deleteCoupons(couponIds));
 
-  const request = new PipelineRequest('deleteCouponsFromCart');
+  const request = new PipelineRequest(pipelines.SHOPGATE_CART_DELETE_COUPONS);
   request.setInput({ couponCodes: couponIds })
     .dispatch()
     .then(({ messages }) => {
@@ -29,7 +30,7 @@ const deleteCouponsFromCart = couponIds => (dispatch) => {
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
       dispatch(errorDeleteCouponsFromCart(couponIds, undefined, requestsPending));
-      logger.error('deleteCouponsFromCart', error);
+      logger.error(pipelines.SHOPGATE_CART_DELETE_COUPONS, error);
     });
 };
 

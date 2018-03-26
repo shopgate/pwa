@@ -1,6 +1,7 @@
 import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { EUNKNOWN, EACCESS } from '@shopgate/pwa-core/constants/Pipeline';
+import * as pipelines from '../constants/Pipelines';
 import requestUserReview from '../action-creators/requestUserReview';
 import receiveUserReview from '../action-creators/receiveUserReview';
 import errorUserReview from '../action-creators/errorUserReview';
@@ -16,7 +17,7 @@ const getUserReview = productId => (dispatch, getState) => {
     return new Promise(resolve => resolve());
   }
   dispatch(requestUserReview(productId));
-  const request = new PipelineRequest('getUserReview')
+  const request = new PipelineRequest(pipelines.SHOPGATE_USER_GET_REVIEW)
     .setHandledErrors([EUNKNOWN, EACCESS])
     .setInput({
       productId,

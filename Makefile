@@ -28,9 +28,9 @@ clean:
 # Lerna change all the version numbers.
 pre-publish:
 ifneq ($(REPO_VERSION), '')
-		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION))
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish
 else
-		lerna publish --skip-npm --skip-git
+		lerna publish --skip-npm --skip-git --force-publish
 endif
 
 # Change the version in the extensions extension-config.json
@@ -105,8 +105,8 @@ endef
 
 define npm-release-utils
 		@if [ "$(strip $(2))" == "beta" ]; \
-			then npm publish ./utils/$(strip $(1))/dist/ --access public --tag beta; \
-			else npm publish ./utils/$(strip $(1))/dist/ --access public; \
+			then npm publish ./utils/$(strip $(1))/ --access public --tag beta; \
+			else npm publish ./utils/$(strip $(1))/ --access public; \
 		fi;
 
 endef

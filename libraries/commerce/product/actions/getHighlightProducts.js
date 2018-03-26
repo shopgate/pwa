@@ -1,3 +1,4 @@
+import * as pipelines from '../constants/Pipelines';
 import getProducts from './getProducts';
 
 /**
@@ -9,7 +10,7 @@ import getProducts from './getProducts';
  */
 const getHighlightProducts = ({ params, id = null }) => (dispatch) => {
   dispatch(getProducts({
-    pipeline: 'getHighlightProducts',
+    pipeline: pipelines.SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
     params,
     id,
     includeSort: false,

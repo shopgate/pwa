@@ -22,6 +22,7 @@ class MockedPipelineRequest {
     this.name = name;
     this.input = {};
     this.handledErrors = [];
+    this.suppressErrors = false;
   }
 
   /**
@@ -51,6 +52,17 @@ class MockedPipelineRequest {
    */
   setHandledErrors(errors = []) {
     this.handledErrors = errors;
+    return this;
+  }
+
+  /**
+   * Sets a flag to suppress errors.
+   * When true, no EVENT_PIPELINE_ERROR would be triggered.
+   * @param {bool} value Value.
+   * @return {PipelineRequest}
+   */
+  setSuppressErrors(value) {
+    this.suppressErrors = value;
     return this;
   }
 }
