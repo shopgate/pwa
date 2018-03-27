@@ -10,7 +10,7 @@ import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
  */
 const mapStateToProps = state => ({
   isLoading: isCurrentViewLoading(state),
-  supportedByCart: hasCouponSupport(state),
+  isSupported: hasCouponSupport(state),
 });
 
 /**

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import MessageBar from 'Components/MessageBar';
 import connect from './connector';
 import Layout from './components/Layout';
+import NotSupported from './components/NotSupported';
 
 /**
  * The Coupon Field component.
@@ -11,19 +11,15 @@ class CouponField extends Component {
   static propTypes = {
     addCoupon: PropTypes.func,
     isLoading: PropTypes.bool,
+    isSupported: PropTypes.bool,
     onToggleFocus: PropTypes.func,
-    supportedByCart: PropTypes.bool,
   };
 
   static defaultProps = {
     addCoupon: () => {},
     isLoading: false,
+    isSupported: true,
     onToggleFocus: () => {},
-    supportedByCart: true,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
@@ -102,15 +98,8 @@ class CouponField extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.supportedByCart) {
-      // Only show a message if the shop doesn't support redeeming of coupons within the cart.
-      const { __ } = this.context.i18n();
-      const messages = [{
-        type: 'info',
-        message: __('cart.coupons_not_supported'),
-      }];
-
-      return <MessageBar messages={messages} />;
+    if (!this.props.isSupported) {
+      return <NotSupported />;
     }
 
     const labelStyle = { display: this.state.value ? 'none' : 'block' };
