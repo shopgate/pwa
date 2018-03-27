@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -300,11 +300,11 @@ class NavDrawer extends Component {
             handleLogout: logout,
           }}
         >
-        {user && (
-          <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
-            <I18n.Text string="navigation.logout" />
-          </Item>
-        )}
+          {user && (
+            <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+              <I18n.Text string="navigation.logout" />
+            </Item>
+          )}
         </Portal>
         <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
 
