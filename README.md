@@ -1,7 +1,7 @@
 # Shopgate Connect PWA
 
 [![Travis](https://img.shields.io/travis/shopgate/pwa.svg)](https://travis-ci.org/shopgate/pwa)
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=%28HEAD+detached+at+495a68f%29)](https://coveralls.io/github/shopgate/pwa?branch=%28HEAD+detached+at+495a68f%29)
+[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=develop)](https://coveralls.io/github/shopgate/pwa?branch=develop)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
