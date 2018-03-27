@@ -177,7 +177,7 @@ export const getCartMessages = createSelector(
  */
 export const getFlags = createSelector(
   getCart,
-  ({ flags }) => flags
+  ({ flags }) => flags || {}
 );
 
 /**
