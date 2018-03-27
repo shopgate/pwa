@@ -41,7 +41,7 @@ const loadHostedComponent = (route) => {
 class Route extends Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
-    component: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
+    component: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
     ]),
@@ -67,8 +67,6 @@ class Route extends Component {
    */
   constructor(props, context) {
     super(props, context);
-
-    console.warn(props);
 
     // Register to the router with all callbacks.
     this.context.registerRoute(
@@ -254,10 +252,6 @@ class Route extends Component {
     const components = this.state.hostedComponents.map((
       hosted => hosted.component
     ));
-
-    // Check if route needs authenticated
-    // Render Redirect component if not
-    console.error(components);
 
     return (
       <div data-route-path={this.props.path}>
