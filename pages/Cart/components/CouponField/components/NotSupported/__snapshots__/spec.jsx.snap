@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotSupported should render as expected without any props 1`] = `
+<NotSupported>
+  <Translate
+    className="css-1dj4apd"
+    params={Object {}}
+    string="cart.coupons_not_supported"
+  >
+    <span
+      className="css-1dj4apd"
+    >
+      cart.coupons_not_supported
+    </span>
+  </Translate>
+</NotSupported>
+`;

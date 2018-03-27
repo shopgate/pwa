@@ -6,6 +6,7 @@ export default css({
   background: colors.background,
   display: 'block',
   fontSize: 12,
-  padding: `20px ${variables.gap.big}px`,
+  margin: '20px 0 -10px',
+  padding: `0 ${variables.gap.big}px`,
   textAlign: 'left',
 }).toString();

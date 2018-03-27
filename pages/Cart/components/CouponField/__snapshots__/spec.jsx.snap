@@ -1,68 +1,382 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CouponField should render a message when the cart does not support coupons 1`] = `
-<MessageBar
-  classNames={
-    Object {
-      "container": "",
-      "message": "",
-    }
-  }
-  messages={
-    Array [
-      Object {
-        "message": "cart.coupons_not_supported",
-        "type": "info",
-      },
-    ]
-  }
-/>
+<CouponField
+  addCoupon={[Function]}
+  isLoading={false}
+  isSupported={false}
+  onToggleFocus={[Function]}
+>
+  <NotSupported>
+    <Translate
+      className="css-1dj4apd"
+      params={Object {}}
+      string="cart.coupons_not_supported"
+    >
+      <span
+        className="css-1dj4apd"
+      >
+        cart.coupons_not_supported
+      </span>
+    </Translate>
+  </NotSupported>
+</CouponField>
 `;
 
 exports[`CouponField should render a message when the cart supports coupons 1`] = `
-<div>
-  <Layout
-    handleAddCoupon={[Function]}
-    handleFocusChange={[Function]}
-    handleValueChange={[Function]}
-    iconStyle={
-      Object {
-        "opacity": 0,
+<CouponField
+  addCoupon={[Function]}
+  isLoading={false}
+  isSupported={true}
+  onToggleFocus={[Function]}
+>
+  <div>
+    <Layout
+      handleAddCoupon={[Function]}
+      handleFocusChange={[Function]}
+      handleValueChange={[Function]}
+      iconStyle={
+        Object {
+          "opacity": 0,
+        }
       }
-    }
-    isButtonDisabled={true}
-    isFocused={false}
-    isLoading={false}
-    labelStyle={
-      Object {
-        "display": "block",
+      isButtonDisabled={true}
+      isFocused={false}
+      isLoading={false}
+      labelStyle={
+        Object {
+          "display": "block",
+        }
       }
-    }
-    value=""
-  />
-</div>
+      value=""
+    >
+      <div
+        className="css-gtkn00"
+      >
+        <form
+          className="css-pgykgj"
+          onSubmit={[Function]}
+        >
+          <label
+            className="css-m5j1fd"
+            htmlFor="coupon-code-field"
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <Translate
+              className=""
+              params={Object {}}
+              string="cart.redeem_coupon"
+            >
+              <span
+                className=""
+              >
+                cart.redeem_coupon
+              </span>
+            </Translate>
+          </label>
+          <Component
+            className="css-1nik2t"
+            disabled={false}
+            name="coupon-code-field"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            value=""
+          >
+            <SimpleInput
+              autoComplete={false}
+              autoCorrect={false}
+              className="css-1nik2t"
+              disabled={false}
+              id={null}
+              name="coupon-code-field"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              type="text"
+              validateOnBlur={true}
+              value=""
+            >
+              <input
+                autoComplete="off"
+                autoCorrect="off"
+                className="css-1nik2t"
+                disabled={false}
+                id={null}
+                name="coupon-code-field"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+                value=""
+              />
+            </SimpleInput>
+          </Component>
+          <div
+            aria-hidden={true}
+            className="css-8dl7x"
+            data-test-id="CouponSubmitButton"
+            onClick={[Function]}
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+          >
+            <CouponFieldIcon
+              disabled={true}
+            >
+              <Icon
+                className=""
+                color={null}
+                content="
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  "
+                size="inherit"
+                viewBox="1671 5924 30 30"
+              >
+                <svg
+                  className="css-yys9hb "
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="1671 5924 30 30"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </CouponFieldIcon>
+          </div>
+          <div
+            className="css-1usne35"
+          >
+            <div
+              className="css-11zbu8 css-1txaqv6"
+            />
+          </div>
+        </form>
+      </div>
+    </Layout>
+  </div>
+</CouponField>
 `;
 
 exports[`CouponField should render as expected without any props 1`] = `
-<div>
-  <Layout
-    handleAddCoupon={[Function]}
-    handleFocusChange={[Function]}
-    handleValueChange={[Function]}
-    iconStyle={
-      Object {
-        "opacity": 0,
+<CouponField
+  addCoupon={[Function]}
+  isLoading={false}
+  isSupported={true}
+  onToggleFocus={[Function]}
+>
+  <div>
+    <Layout
+      handleAddCoupon={[Function]}
+      handleFocusChange={[Function]}
+      handleValueChange={[Function]}
+      iconStyle={
+        Object {
+          "opacity": 0,
+        }
       }
-    }
-    isButtonDisabled={true}
-    isFocused={false}
-    isLoading={false}
-    labelStyle={
-      Object {
-        "display": "block",
+      isButtonDisabled={true}
+      isFocused={false}
+      isLoading={false}
+      labelStyle={
+        Object {
+          "display": "block",
+        }
       }
-    }
-    value=""
-  />
-</div>
+      value=""
+    >
+      <div
+        className="css-gtkn00"
+      >
+        <form
+          className="css-pgykgj"
+          onSubmit={[Function]}
+        >
+          <label
+            className="css-m5j1fd"
+            htmlFor="coupon-code-field"
+            style={
+              Object {
+                "display": "block",
+              }
+            }
+          >
+            <Translate
+              className=""
+              params={Object {}}
+              string="cart.redeem_coupon"
+            >
+              <span
+                className=""
+              >
+                cart.redeem_coupon
+              </span>
+            </Translate>
+          </label>
+          <Component
+            className="css-1nik2t"
+            disabled={false}
+            name="coupon-code-field"
+            onChange={[Function]}
+            onFocusChange={[Function]}
+            value=""
+          >
+            <SimpleInput
+              autoComplete={false}
+              autoCorrect={false}
+              className="css-1nik2t"
+              disabled={false}
+              id={null}
+              name="coupon-code-field"
+              onChange={[Function]}
+              onFocusChange={[Function]}
+              onSanitize={[Function]}
+              onValidate={[Function]}
+              password={false}
+              setRef={[Function]}
+              type="text"
+              validateOnBlur={true}
+              value=""
+            >
+              <input
+                autoComplete="off"
+                autoCorrect="off"
+                className="css-1nik2t"
+                disabled={false}
+                id={null}
+                name="coupon-code-field"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+                value=""
+              />
+            </SimpleInput>
+          </Component>
+          <div
+            aria-hidden={true}
+            className="css-8dl7x"
+            data-test-id="CouponSubmitButton"
+            onClick={[Function]}
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+          >
+            <CouponFieldIcon
+              disabled={true}
+            >
+              <Icon
+                className=""
+                color={null}
+                content="
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  "
+                size="inherit"
+                viewBox="1671 5924 30 30"
+              >
+                <svg
+                  className="css-yys9hb "
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="1671 5924 30 30"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </CouponFieldIcon>
+          </div>
+          <div
+            className="css-1usne35"
+          >
+            <div
+              className="css-11zbu8 css-1txaqv6"
+            />
+          </div>
+        </form>
+      </div>
+    </Layout>
+  </div>
+</CouponField>
 `;
