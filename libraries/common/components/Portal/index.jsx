@@ -1,18 +1,23 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import connect from './connector';
+import portalCollection from '../../helpers/portals/portalCollection';
+import { componentsConfig as config } from '../../helpers/config';
+
+const portals = portalCollection.getPortals();
 
 /**
  * The Portal component.
  */
 class Portal extends Component {
   static propTypes = {
-    components: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    name: PropTypes.string.isRequired,
     children: PropTypes.node,
+    props: PropTypes.shape(),
   };
 
   static defaultProps = {
     children: null,
+    props: null,
   };
 
   /**
@@ -23,23 +28,52 @@ class Portal extends Component {
     super(props);
 
     this.state = {
-      hasChildren: !!props.children,
-      hasComponents: props.components.length > 0,
       hasError: false,
     };
   }
 
   /**
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
+   * Returns the portal components.
+   * @param {string} name - The component name to match.
+   * @param {Object} props - The props to pass to the component.
+   * @return {Array}
    */
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.hasChildren !== nextState.hasChildren
-      || this.state.hasComponents !== nextState.hasComponents
-      || this.state.hasError !== nextState.hasError
-    );
+  getComponents = (name, props) => {
+    const components = [];
+
+    if (!config || !config.portals) {
+      return components;
+    }
+
+    // Loop over the portal keys.
+    Object.keys(config.portals).forEach((key, index) => {
+      const portalTarget = Array.isArray(config.portals[key].target)
+        ? config.portals[key].target
+        : [config.portals[key].target];
+
+      if (portalTarget.length === 0) {
+        return;
+      }
+
+      portalTarget.forEach((target) => {
+        // Stop if there is no key that matches the given name (prop).
+        if (target !== name) {
+          return;
+        }
+
+        const PortalComponent = portals[key];
+
+        // Check that the component is valid.
+        if (PortalComponent) {
+          const componentKey = `${key}-${index}`;
+          components.push((
+            <PortalComponent {...props} key={componentKey} />
+          ));
+        }
+      });
+    });
+
+    return components;
   }
 
   /**
@@ -54,14 +88,16 @@ class Portal extends Component {
    * @return {JSX}
    */
   render() {
-    const { children, components } = this.props;
-    const { hasChildren, hasComponents, hasError } = this.state;
+    const { children } = this.props;
+    const { hasError } = this.state;
+    const components = this.getComponents(this.props.name, this.props.props);
+    const hasComponents = components.length > 0;
 
     /**
      * Render nothing if there are no children, matching components
      * via name or an error occured.
      */
-    if (hasError || !(hasComponents || hasChildren)) {
+    if (hasError || !(hasComponents || children)) {
       return null;
     }
 
@@ -73,7 +109,7 @@ class Portal extends Component {
        * If there is a child component then we treat the match as an override
        * and we render the last match only.
        */
-      if (hasChildren) {
+      if (children) {
         return components[components.length - 1];
       }
 
@@ -84,4 +120,4 @@ class Portal extends Component {
   }
 }
 
-export default connect(Portal);
+export default Portal;
