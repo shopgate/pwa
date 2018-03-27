@@ -12,16 +12,16 @@ import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
 class CouponField extends Component {
   static propTypes = {
     addCoupon: PropTypes.func,
-    hasCouponSupport: PropTypes.bool,
     isLoading: PropTypes.bool,
     onToggleFocus: PropTypes.func,
+    supportedByCart: PropTypes.bool,
   };
 
   static defaultProps = {
     addCoupon: () => {},
-    hasCouponSupport: true,
     isLoading: false,
     onToggleFocus: () => {},
+    supportedByCart: true,
   };
 
   static contextTypes = {
@@ -120,7 +120,7 @@ class CouponField extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.hasCouponSupport) {
+    if (!this.props.supportedByCart) {
       // Only show a message if the shop doesn't support redeeming of coupons within the cart.
       const { __ } = this.context.i18n();
       const messages = [{
