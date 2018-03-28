@@ -20,6 +20,7 @@ const title = css({
   fontWeight: '500',
   lineHeight: 1.15,
   marginTop: 1,
+  wordBreak: 'break-all',
 }).toString();
 
 const priceWrapper = css({
