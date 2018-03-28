@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import connect from './connector';
 import Layout from './components/Layout';
-import NotSupported from './components/NotSupported';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
 
 /**
@@ -13,14 +12,14 @@ class CouponField extends Component {
   static propTypes = {
     addCoupon: PropTypes.func,
     isLoading: PropTypes.bool,
-    isSupported: PropTypes.bool,
+    isVisible: PropTypes.bool,
     onToggleFocus: PropTypes.func,
   };
 
   static defaultProps = {
     addCoupon: () => {},
     isLoading: false,
-    isSupported: true,
+    isVisible: true,
     onToggleFocus: () => {},
   };
 
@@ -116,8 +115,8 @@ class CouponField extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.isSupported) {
-      return <NotSupported />;
+    if (!this.props.isVisible) {
+      return null;
     }
 
     const labelStyle = { display: this.state.value ? 'none' : 'block' };

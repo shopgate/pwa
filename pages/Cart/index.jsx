@@ -5,10 +5,10 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import View from 'Components/View';
 import CardList from 'Components/CardList';
 import MessageBar from 'Components/MessageBar';
-import TaxDisclaimer from 'Components/TaxDisclaimer';
 import Item from './components/Item';
 import CouponField from './components/CouponField';
 import Empty from './components/Empty';
+import Footer from './components/Footer';
 import PaymentBar from './components/PaymentBar';
 import connect from './connector';
 import styles from './style';
@@ -140,9 +140,9 @@ class Cart extends Component {
                   isVisible={!this.state.isPaymentBarHidden}
                   onSize={this.onSize}
                 />
-                <TaxDisclaimer />
               </Fragment>
             )}
+            <Footer />
           </section>
         )}
         {(!isLoading && !hasItems) && <Empty />}
