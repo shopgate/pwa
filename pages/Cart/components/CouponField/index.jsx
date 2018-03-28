@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from './connector';
 import Layout from './components/Layout';
-import NotSupported from './components/NotSupported';
 
 /**
  * The Coupon Field component.
@@ -11,14 +10,14 @@ class CouponField extends Component {
   static propTypes = {
     addCoupon: PropTypes.func,
     isLoading: PropTypes.bool,
-    isSupported: PropTypes.bool,
+    isVisible: PropTypes.bool,
     onToggleFocus: PropTypes.func,
   };
 
   static defaultProps = {
     addCoupon: () => {},
     isLoading: false,
-    isSupported: true,
+    isVisible: true,
     onToggleFocus: () => {},
   };
 
@@ -98,8 +97,8 @@ class CouponField extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.isSupported) {
-      return <NotSupported />;
+    if (!this.props.isVisible) {
+      return null;
     }
 
     const labelStyle = { display: this.state.value ? 'none' : 'block' };
