@@ -2,13 +2,9 @@ import { css } from 'glamor';
 import variables from 'Styles/variables';
 
 const headline = {
-  display: '-webkit-box',
   fontWeight: 700,
   lineHeight: 1.17,
-  overflow: 'hidden',
   wordBreak: 'break-all',
-  WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: 3,
 };
 
 const large = css({
