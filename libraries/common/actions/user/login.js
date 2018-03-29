@@ -59,7 +59,5 @@ export default ({ login, password }) => (dispatch) => {
         logger.error(error);
         dispatch(errorLogin());
       }
-
-      dispatch(errorLegacyConnectRegister());
     });
 };
