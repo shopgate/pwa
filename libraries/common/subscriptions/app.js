@@ -5,8 +5,7 @@ import { appDidStart$, appWillStart$ } from '../streams/app';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import { isAndroid } from '../selectors/client';
 import {
-  hideLegacyNavigation,
-  showLegacyNavigation,
+  updateNavigationBarNone,
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
@@ -39,8 +38,7 @@ export default function app(subscribe) {
 
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
-    event.addCallback('viewWillAppear', hideLegacyNavigation);
-    event.addCallback('viewWillDisappear', showLegacyNavigation);
+    event.addCallback('viewWillAppear', updateNavigationBarNone);
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
      * This event is triggered form the desktop shop in the inAppBrowser.
@@ -59,6 +57,7 @@ export default function app(subscribe) {
      * To avoid console warnings from the event system, empty handlers are registered here.
      */
     event.addCallback('viewDidAppear', () => {});
+    event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
   });
