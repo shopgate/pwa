@@ -25,8 +25,8 @@ release:
 		make bump-extensions
 		make bump-themes
 		make build-libraries
-		make git-publish
 		make npm-publish
+		make git-publish
 		make clean-build
 
 # Clean the repository before starting a release.
