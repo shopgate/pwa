@@ -2,6 +2,7 @@ import {
   REQUEST_LOGIN,
   SUCCESS_LOGIN,
   ERROR_LOGIN,
+  ERROR_LEGACY_CONNECT_REGISTER,
   REQUEST_LOGOUT,
   SUCCESS_LOGOUT,
   ERROR_LOGOUT,
@@ -41,6 +42,14 @@ export const successLogin = () => ({
 export const errorLogin = (messages = []) => ({
   type: ERROR_LOGIN,
   messages,
+});
+
+/**
+ * Creates the dispatched ERROR_LEGACY_CONNECT_REGISTER action object.
+ * @returns {Object} The dispatched action object.
+ */
+export const errorLegacyConnectRegister = () => ({
+  type: ERROR_LEGACY_CONNECT_REGISTER,
 });
 
 /**
