@@ -22,6 +22,8 @@ export const EINVALIDCREDENTIALS = 'EINVALIDCREDENTIALS';
  */
 export const EINVALIDCALL = 'EINVALIDCALL';
 
+export const ELEGACYSGCONNECT = 'ELEGACYSGCONNECT';
+
 // Pipeline no data found
 export const EUNKNOWN = 'EUNKNOWN';
 

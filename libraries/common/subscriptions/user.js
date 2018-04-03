@@ -1,5 +1,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import ParsedLink from '../components/Router/helpers/parsed-link';
 import getUser from '../actions/user/getUser';
 import { successLogin } from '../action-creators/user';
 import { appDidStart$ } from '../streams/app';
@@ -8,11 +9,13 @@ import {
   userLoginResponse$,
   userDidLogin$,
   userDidLogout$,
+  legacyConnectRegisterDidFail$,
 } from '../streams/user';
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
+import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
 
 /**
  * User subscriptions.
@@ -49,5 +52,10 @@ export default function user(subscribe) {
     registerEvents(['userLoggedIn']);
 
     event.addCallback('userLoggedIn', () => dispatch(successLogin()));
+  });
+
+  subscribe(legacyConnectRegisterDidFail$, () => {
+    const link = new ParsedLink(`/${LEGACY_URL_CONNECT_REGISTER}`);
+    link.open();
   });
 }
