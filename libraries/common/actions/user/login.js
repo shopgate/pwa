@@ -55,6 +55,7 @@ export default ({ login, password }) => (dispatch) => {
          * the shop system credentials failed and further steps are necessary to login the user.
          */
         dispatch(errorLegacyConnectRegister());
+        dispatch(errorLogin());
       } else {
         logger.error(error);
         dispatch(errorLogin());

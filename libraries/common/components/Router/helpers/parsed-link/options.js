@@ -1,8 +1,5 @@
 import { INDEX_PATH } from '../../../../constants/RoutePaths';
-import {
-  LEGACY_URL_CONNECT_REGISTER,
-  LEGACY_URL_CONNECT_REGISTER_CHECKOUT,
-} from '../../../../constants/Registration';
+import { LEGACY_URL_CONNECT_REGISTER } from '../../../../constants/Registration';
 
 /**
  * Parses the protocol of an url
@@ -136,17 +133,13 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
         url: '/register/default',
       });
       break;
-    case LEGACY_URL_CONNECT_REGISTER.substr(1):
-    case LEGACY_URL_CONNECT_REGISTER_CHECKOUT.substr(1): {
-      const targetTab = mappedPath[0] === LEGACY_URL_CONNECT_REGISTER.substr(1) ? 'main' : 'cart';
-
+    case LEGACY_URL_CONNECT_REGISTER:
       this.addLinkAction('legacyLink', {
-        url: '/connect_register',
-        targetTab,
+        url: `/${LEGACY_URL_CONNECT_REGISTER}`,
+        targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
       break;
-    }
     default:
       this.addLinkAction('reactRouter', {
         url,

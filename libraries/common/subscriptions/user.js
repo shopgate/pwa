@@ -14,15 +14,8 @@ import {
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
 import showModal from '../actions/modal/showModal';
-import { getRedirectLocation } from '../selectors/history';
-import {
-  LOGIN_PATH,
-  CHECKOUT_PATH,
-} from '../constants/RoutePaths';
-import {
-  LEGACY_URL_CONNECT_REGISTER,
-  LEGACY_URL_CONNECT_REGISTER_CHECKOUT,
-} from '../constants/Registration';
+import { LOGIN_PATH } from '../constants/RoutePaths';
+import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
 
 /**
  * User subscriptions.
@@ -61,15 +54,8 @@ export default function user(subscribe) {
     event.addCallback('userLoggedIn', () => dispatch(successLogin()));
   });
 
-  subscribe(legacyConnectRegisterDidFail$, ({ getState }) => {
-    const { pathname } = getRedirectLocation(getState()) || {};
-    // Determine the correct route - depending on if the user wanted to initiate the checkout
-    const url =
-      pathname === CHECKOUT_PATH
-        ? LEGACY_URL_CONNECT_REGISTER_CHECKOUT
-        : LEGACY_URL_CONNECT_REGISTER;
-
-    const link = new ParsedLink(url);
+  subscribe(legacyConnectRegisterDidFail$, () => {
+    const link = new ParsedLink(`/${LEGACY_URL_CONNECT_REGISTER}`);
     link.open();
   });
 }
