@@ -81,6 +81,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -90,6 +91,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -225,6 +227,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -1565,6 +1568,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -1574,6 +1578,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -1709,6 +1714,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -3173,6 +3179,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -3182,6 +3189,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -3317,6 +3325,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -4786,6 +4795,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -4798,6 +4808,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -4851,6 +4862,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -6439,6 +6451,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -6448,6 +6461,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -6583,6 +6597,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -8088,6 +8103,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -8097,6 +8113,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -8232,6 +8249,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -9622,6 +9640,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
   setContentRef={[Function]}
 >
   <Portal
+    name="user-menu.container.before"
     props={
       Object {
         "Item": [Function],
@@ -9631,6 +9650,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
     }
   />
   <Portal
+    name="user-menu.container"
     props={
       Object {
         "Item": [Function],
@@ -9645,6 +9665,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
     />
   </Portal>
   <Portal
+    name="user-menu.container.after"
     props={
       Object {
         "Item": [Function],
@@ -10252,6 +10273,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -10261,6 +10283,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -10396,6 +10419,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -11901,6 +11925,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               className="css-1xj3g9q"
             >
               <Portal
+                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -11910,6 +11935,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 }
               />
               <Portal
+                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -12045,6 +12071,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 </Header>
               </Portal>
               <Portal
+                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
