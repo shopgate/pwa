@@ -1,5 +1,7 @@
+import { SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS } from '../constants/Pipelines';
+
 export const existingHash
-  = '{"filters":{},"pipeline":"getProductReviews","productId":"9209597131"}';
+  = `{"filters":{},"pipeline":"${SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS}","productId":"9209597131"}`;
 
 export const testReviews = [
   {
@@ -82,7 +84,7 @@ export const finalState = {
       [review.id]: review,
     }), {}),
     reviewsByHash: {
-      '{"filters":{},"pipeline":"getProductReviews","productId":"9209597131"}': {
+      [`{"filters":{},"pipeline":"${SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS}","productId":"9209597131"}`]: {
         isFetching: false,
         expires: 0,
         reviews: [1, 2, 3, 4, 5],

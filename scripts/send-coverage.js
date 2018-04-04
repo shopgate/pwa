@@ -1,28 +1,13 @@
 #!/usr/bin/env node
 
 const coveralls = require('@sourceallies/coveralls-merge');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
 const logger = require('./logger');
-const lernaJson = require('../lerna.json');
+const { packages } = require('../lerna.json');
 
+const projectRoot = path.resolve(__dirname, '..');
 const reports = [];
-
-/**
- * Adds a new report file.
- * @param {string} packageName The package name.
- * @param {string} [sub=''] A sub directory.
- */
-function addReport(packageName, sub = '') {
-  const reportFile = path.join(__dirname, '..', packageName, sub, 'coverage', 'lcov.info');
-
-  if (fs.existsSync(reportFile)) {
-    reports.push({
-      type: 'lcov',
-      reportFile,
-    });
-  }
-}
 
 /**
  * Checks if a path is a directory.
@@ -42,23 +27,48 @@ const getDirectories = source => (
   )).filter(isDirectory)
 );
 
-lernaJson.packages.forEach((pkg) => {
-  const cleanPackage = pkg.split('/')[0];
-  const pkgPath = path.join(__dirname, '..', cleanPackage);
+logger.log('\n\n--- SEND COVERAGE ---\n\n');
 
-  getDirectories(pkgPath).forEach((folder) => {
-    const cleanedFolder = folder.replace(path.join(__dirname, '..'), '');
-    const sub = (cleanPackage === 'extensions') ? 'frontend' : '';
+// Grab the coverage files.
+try {
+  packages.forEach((pkg) => {
+    const cleanPackage = pkg.split('/')[0];
+    const packageRoot = path.resolve(projectRoot, cleanPackage);
 
-    addReport(cleanedFolder, sub);
+    getDirectories(packageRoot).forEach((folder) => {
+      const sub = (cleanPackage === 'extensions') ? 'frontend' : '';
+      const reportFileAbsolute = path.resolve(folder, sub, 'coverage', 'lcov.info');
+      const reportFile = `./${path.relative(projectRoot, reportFileAbsolute)}`;
+
+      logger.info(`Checking coverage file in package: ${cleanPackage}`);
+
+      if (fs.existsSync(reportFileAbsolute)) {
+        reports.push({
+          type: 'lcov',
+          reportFile,
+        });
+      } else {
+        logger.warn(`Coverage file not found: ${reportFileAbsolute}`);
+      }
+    });
   });
-});
+} catch (err) {
+  throw err;
+}
+
+logger.log(reports);
 
 try {
-  if (reports.length) {
-    coveralls.sendReports(reports);
-    logger.log('Coverage reports sent!');
+  if (!reports.length) {
+    logger.error('No report files found!');
+    return;
   }
+
+  coveralls.sendReports(reports, {
+    projectRoot,
+  });
 } catch (err) {
   logger.error(err);
 }
+
+logger.log('\n\n--- END: SEND COVERAGE ---\n\n');

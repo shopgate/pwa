@@ -3,17 +3,11 @@ module.exports = {
   snapshotSerializers: [
     'enzyme-to-json/serializer',
   ],
-  transform: {
-    '^.+\\.(js|jsx)$': '@shopgate/pwa-unit-test/preprocessor.js',
-  },
-  transformIgnorePatterns: [
-    'node_modules/(?!@shopgate)/',
-  ],
   testRegex: '(/__tests__/.*|(\\.|/)spec)\\.(js|jsx)?$',
   testPathIgnorePatterns: [
-    '<rootDir>/node_modules/',
-    '<rootDir>/dist/',
-    '<rootDir>/coverage/',
+    'node_modules',
+    'dist',
+    'coverage',
   ],
   unmockedModulePathPatterns: [
     '<rootDir>/node_modules/react/',

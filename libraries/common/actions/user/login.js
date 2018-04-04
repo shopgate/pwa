@@ -1,11 +1,12 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { EINVALIDCALL } from '@shopgate/pwa-core/constants/Pipeline';
+import { EINVALIDCALL, ELEGACYSGCONNECT } from '@shopgate/pwa-core/constants/Pipeline';
 import * as pipelines from '../../constants/Pipelines';
 import {
   requestLogin,
   successLogin,
   errorLogin,
+  errorLegacyConnectRegister,
 } from '../../action-creators/user';
 
 /**
@@ -25,7 +26,10 @@ export default ({ login, password }) => (dispatch) => {
 
   new PipelineRequest(pipelines.SHOPGATE_USER_LOGIN_USER)
     .setTrusted()
-    .setHandledErrors([EINVALIDCALL])
+    .setHandledErrors([
+      EINVALIDCALL,
+      ELEGACYSGCONNECT,
+    ])
     .setInput(params)
     .dispatch()
     .then(({ success, messages }) => {
@@ -45,6 +49,13 @@ export default ({ login, password }) => (dispatch) => {
          * processes which have to happen after a successful login.
          */
         dispatch(successLogin());
+      } else if (code === ELEGACYSGCONNECT) {
+        /**
+         * The app is connected to the shop system via the legacy shopgate connect. Login via
+         * the shop system credentials failed and further steps are necessary to login the user.
+         */
+        dispatch(errorLegacyConnectRegister());
+        dispatch(errorLogin());
       } else {
         logger.error(error);
         dispatch(errorLogin());

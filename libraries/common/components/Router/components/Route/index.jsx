@@ -41,7 +41,7 @@ const loadHostedComponent = (route) => {
 class Route extends Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
-    component: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
+    component: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.string,
     ]),

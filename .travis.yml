@@ -1,29 +1,14 @@
-sudo: false
-dist: trusty
+git:
+  depth: 3
 
 language: node_js
 
-cache:
-  yarn: false
-
-matrix:
-  fast_finish: true
-
 node_js:
-- 8.10.0
+- 8
 
-env:
-  global:
-    - PATH=$HOME/.yarn/bin:$PATH
+script: npm run cover
 
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-
-install: yarn
-
-script: yarn run cover --runInBand
-
-after_script: yarn run cover:report
+after_script: npm run cover:report
 
 branches:
   only:
