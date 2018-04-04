@@ -4,7 +4,7 @@ import variables from 'Styles/variables';
 const headline = {
   fontWeight: 700,
   lineHeight: 1.17,
-  paddingRight: 40,
+  wordBreak: 'break-all',
 };
 
 const large = css({

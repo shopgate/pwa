@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -16,7 +17,12 @@ const Headline = (props) => {
 
   const content = props.children || <I18n.Text string={props.text} />;
 
-  return hasContent ? <Component className={className}>{content}</Component> : null;
+  return hasContent ? (
+    <Component className={className}>
+      <Ellipsis rows={3}>
+        {content}
+      </Ellipsis>
+    </Component>) : null;
 };
 
 Headline.propTypes = {

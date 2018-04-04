@@ -3,6 +3,9 @@ import variables from 'Styles/variables';
 import colors from 'Styles/colors';
 
 export default css({
+  ' + span': {
+    paddingTop: 0,
+  },
   background: colors.background,
   display: 'block',
   fontSize: 12,
