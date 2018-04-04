@@ -59,7 +59,13 @@ class TabBarCartAction extends Component {
             <CartItemBadge />
           </TabBarAction>
         </Portal>
-        <Portal name={portals.TAB_BAR_CART_AFTER} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_CART_AFTER}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
       </Fragment>
     );
   }

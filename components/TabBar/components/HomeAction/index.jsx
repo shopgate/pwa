@@ -38,7 +38,13 @@ class TabBarHomeAction extends Component {
   render() {
     return (
       <Fragment>
-        <Portal name={portals.TAB_BAR_HOME_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_HOME_BEFORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
         <Portal
           name={portals.TAB_BAR_HOME}
           props={{
@@ -56,7 +62,13 @@ class TabBarHomeAction extends Component {
             onClick={this.handleClick}
           />
         </Portal>
-        <Portal name={portals.TAB_BAR_HOME_AFTER} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_HOME_AFTER}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
       </Fragment>
     );
   }

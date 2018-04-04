@@ -38,7 +38,13 @@ class TabBarBrowseAction extends Component {
   render() {
     return (
       <Fragment>
-        <Portal name={portals.TAB_BAR_BROWSE_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_BROWSE_BEFORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
         <Portal
           name={portals.TAB_BAR_BROWSE}
           props={{
@@ -56,7 +62,13 @@ class TabBarBrowseAction extends Component {
             onClick={this.handleClick}
           />
         </Portal>
-        <Portal name={portals.TAB_BAR_BROWSE_AFTER} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_BROWSE_AFTER}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
       </Fragment>
     );
   }
