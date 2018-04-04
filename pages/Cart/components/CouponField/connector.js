@@ -1,5 +1,6 @@
 import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
+import { hasCouponSupport } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
 
 /**
@@ -9,6 +10,7 @@ import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
  */
 const mapStateToProps = state => ({
   isLoading: isCurrentViewLoading(state),
+  isVisible: hasCouponSupport(state),
 });
 
 /**
