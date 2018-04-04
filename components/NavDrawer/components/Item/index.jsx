@@ -14,16 +14,18 @@ const CLICK_DELAY = 250;
  * Handles an Item click by executing it's href.
  * @param {Object} props The component props.
  * @param {string} props.href A url string.
+ * @param {string} props.link A url string (compatibility with `NAV_MENU_CONTENT_BEFORE` portal).
  * @param {Function} props.close A callback.
  */
-const handleClick = ({ onClick, href, close }) => {
+const handleClick = ({ onClick, href, link, close }) => {
   setTimeout(() => {
+    const url = href || link;
     // Perform onClick callback
     onClick();
 
-    if (href) {
+    if (url) {
       // Open parsed link
-      new ParsedLink(href).open(history);
+      new ParsedLink(url).open(history);
     }
 
     // Call close callback from drawer
@@ -88,6 +90,7 @@ Item.propTypes = {
     PropTypes.string,
   ]),
   href: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+  link: PropTypes.string, // eslint-disable-line react/no-unused-prop-types // Alias for href.
   icon: PropTypes.func,
   onClick: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   primary: PropTypes.bool,
@@ -99,6 +102,7 @@ Item.defaultProps = {
   close: () => {},
   count: null,
   href: '',
+  link: '',
   icon: null,
   onClick: () => {},
   primary: false,

@@ -81,7 +81,6 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -91,7 +90,6 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -113,6 +111,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -226,7 +225,6 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -267,6 +265,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -407,6 +406,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -567,6 +567,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -576,6 +577,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -725,6 +727,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -865,6 +868,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -1012,6 +1016,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -1152,6 +1157,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -1310,6 +1316,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -1558,7 +1565,6 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -1568,7 +1574,6 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -1590,6 +1595,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -1703,7 +1709,6 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -1744,6 +1749,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -1884,6 +1890,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -2025,6 +2032,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={true}
@@ -2167,6 +2175,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -2176,6 +2185,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -2325,6 +2335,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -2465,6 +2476,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -2612,6 +2624,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -2752,6 +2765,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -2910,6 +2924,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -3158,7 +3173,6 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -3168,7 +3182,6 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -3190,6 +3203,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -3303,7 +3317,6 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -3344,6 +3357,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -3484,6 +3498,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -3625,6 +3640,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -3767,6 +3783,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -3776,6 +3793,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -3925,6 +3943,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -4065,6 +4084,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -4212,6 +4232,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -4352,6 +4373,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -4510,6 +4532,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -4763,7 +4786,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -4776,7 +4798,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -4830,7 +4851,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -4874,6 +4894,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5014,6 +5035,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5155,6 +5177,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5297,6 +5320,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5306,6 +5330,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -5455,6 +5480,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5595,6 +5621,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5742,6 +5769,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -5882,6 +5910,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -6040,6 +6069,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -6188,6 +6218,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   count={null}
                   href=""
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -6408,7 +6439,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -6418,7 +6448,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -6440,6 +6469,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -6553,7 +6583,6 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -6594,6 +6623,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -6734,6 +6764,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -6875,6 +6906,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -7017,6 +7049,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -7026,6 +7059,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -7175,6 +7209,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -7315,6 +7350,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -7462,6 +7498,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -7602,6 +7639,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -7760,6 +7798,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -8049,7 +8088,6 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -8059,7 +8097,6 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -8081,6 +8118,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -8194,7 +8232,6 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -8235,6 +8272,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -8375,6 +8413,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -8516,6 +8555,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -8658,6 +8698,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -8667,6 +8708,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -8816,6 +8858,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -8956,6 +8999,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -9103,6 +9147,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -9243,6 +9288,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -9401,6 +9447,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -9575,7 +9622,6 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
   setContentRef={[Function]}
 >
   <Portal
-    name="user-menu.container.before"
     props={
       Object {
         "Item": [Function],
@@ -9585,7 +9631,6 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
     }
   />
   <Portal
-    name="user-menu.container"
     props={
       Object {
         "Item": [Function],
@@ -9600,7 +9645,6 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
     />
   </Portal>
   <Portal
-    name="user-menu.container.after"
     props={
       Object {
         "Item": [Function],
@@ -9641,6 +9685,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9684,6 +9729,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/category"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9728,6 +9774,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/favourite_list"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9773,6 +9820,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={0}
       href="/cart"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9820,6 +9868,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/page/shipping"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9863,6 +9912,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/page/payment"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9909,6 +9959,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/page/terms"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -9952,6 +10003,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/page/privacy"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -10013,6 +10065,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       count={null}
       href="/page/imprint"
       icon={[Function]}
+      link=""
       onClick={[Function]}
       primary={false}
       withIndicator={false}
@@ -10199,7 +10252,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -10209,7 +10261,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -10231,6 +10282,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -10344,7 +10396,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -10385,6 +10436,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -10525,6 +10577,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -10666,6 +10719,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -10808,6 +10862,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -10817,6 +10872,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -10966,6 +11022,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -11106,6 +11163,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -11253,6 +11311,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -11393,6 +11452,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -11551,6 +11611,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -11840,7 +11901,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
               className="css-1xj3g9q"
             >
               <Portal
-                name="user-menu.container.before"
                 props={
                   Object {
                     "Item": [Function],
@@ -11850,7 +11910,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 }
               />
               <Portal
-                name="user-menu.container"
                 props={
                   Object {
                     "Item": [Function],
@@ -11872,6 +11931,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                       count={null}
                       href="/login"
                       icon={[Function]}
+                      link=""
                       onClick={[Function]}
                       primary={true}
                       withIndicator={false}
@@ -11985,7 +12045,6 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 </Header>
               </Portal>
               <Portal
-                name="user-menu.container.after"
                 props={
                   Object {
                     "Item": [Function],
@@ -12026,6 +12085,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -12166,6 +12226,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/category"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -12307,6 +12368,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/favourite_list"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -12449,6 +12511,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={0}
                   href="/cart"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -12458,6 +12521,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                     count={null}
                     href="/cart"
                     icon={[Function]}
+                    link=""
                     onClick={[Function]}
                     primary={false}
                     withIndicator={false}
@@ -12607,6 +12671,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/shipping"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -12747,6 +12812,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/payment"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -12894,6 +12960,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/terms"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -13034,6 +13101,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/privacy"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
@@ -13192,6 +13260,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   count={null}
                   href="/page/imprint"
                   icon={[Function]}
+                  link=""
                   onClick={[Function]}
                   primary={false}
                   withIndicator={false}
