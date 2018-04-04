@@ -7,14 +7,26 @@ UTILS = eslint-config unit-tests
 THEMES = gmd ios11
 REPO_VERSION = ''
 
+unit-tests:
+		lerna run --scope @shopgate/pwa-core cover --stream
+		lerna run --scope @shopgate/pwa-common cover --stream
+		lerna run --scope @shopgate/pwa-common-commerce cover --stream
+		lerna run --scope @shopgate/pwa-tracking cover --stream
+		lerna run --scope @shopgate/tracking-core cover --stream
+		lerna run --scope @shopgate/pwa-webcheckout-shopify cover --stream
+		lerna run --scope @shopgate/product-reviews cover --stream
+		lerna run --scope @shopgate/tracking-ga-native cover --stream
+		lerna run --scope @shopgate/theme-gmd cover --stream
+		lerna run --scope @shopgate/theme-ios11 cover --stream
+
 release:
 		make clean
 		make pre-publish
 		make bump-extensions
 		make bump-themes
 		make build-libraries
-		make git-publish
 		make npm-publish
+		make git-publish
 		make clean-build
 
 # Clean the repository before starting a release.
@@ -62,6 +74,10 @@ npm-publish:
 # Clean the builds.
 clean-build:
 		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
+
+
+coverage:
+		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
 
 
 # DEFINITIONS
@@ -113,5 +129,10 @@ endef
 
 define clean-build-packages
 		rm -rf -f ./libraries/$(strip $(1))/dist
+
+endef
+
+define run-libraries-coverage
+		cd ./libraries/$(strip $(1))/ && yarn run cover
 
 endef

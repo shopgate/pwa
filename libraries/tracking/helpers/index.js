@@ -130,6 +130,10 @@ export const formatPurchaseData = (passedOrder) => {
         },
       },
       products,
+      shippingAddress: {
+        city: '',
+        country: '',
+      },
     },
   };
 };

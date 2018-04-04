@@ -2,6 +2,7 @@ import {
   REQUEST_LOGIN,
   SUCCESS_LOGIN,
   ERROR_LOGIN,
+  ERROR_LEGACY_CONNECT_REGISTER,
   REQUEST_LOGOUT,
   SUCCESS_LOGOUT,
   RECEIVE_USER,
@@ -71,3 +72,10 @@ export const userDataReceived$ = userDidUpdate$
  */
 export const loginDidFail$ = main$
   .filter(({ action }) => action.type === ERROR_LOGIN);
+
+/**
+ * Gets triggered when the legacy sgconnect registration failed
+ * @type {Observable}
+ */
+export const legacyConnectRegisterDidFail$ = main$
+  .filter(({ action }) => action.type === ERROR_LEGACY_CONNECT_REGISTER);
