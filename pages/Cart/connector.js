@@ -1,4 +1,4 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { getCartItems, getCartMessages } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
