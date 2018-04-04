@@ -21,6 +21,7 @@ const defaultState = {
   items: [],
   totals: [],
   productPendingCount: 0,
+  flags: {},
 };
 
 /**

@@ -172,6 +172,15 @@ export const getCartMessages = createSelector(
 );
 
 /**
+ * Selects the cart flags from the cart data.
+ * @return {Object}
+ */
+export const getFlags = createSelector(
+  getCart,
+  ({ flags }) => flags || {}
+);
+
+/**
  * Builds the data for the 'metadata' property of addProductsToCart pipeline request payload.
  * @returns {Object|null} The data if it was determinable, otherwise NULL.
  */
@@ -219,4 +228,13 @@ export const getAddToCartOptions = createSelector(
       };
     });
   }
+);
+
+/**
+ * Checks if the cart supports redemption of coupons.
+ * @return {boolean}
+ */
+export const hasCouponSupport = createSelector(
+  getFlags,
+  ({ coupons }) => (typeof coupons === 'boolean' ? coupons : true)
 );
