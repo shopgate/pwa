@@ -32,6 +32,7 @@ import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
+import cart from 'Pages/Cart/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
@@ -75,6 +76,7 @@ const subscriptions = [
   search,
   reviews,
   writeReview,
+  cart,
   // Extensions
   ...extensions,
 ];
