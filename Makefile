@@ -20,6 +20,7 @@ unit-tests:
 		lerna run --scope @shopgate/theme-ios11 cover --stream
 
 release:
+		make pre-release
 		make clean
 		make pre-publish
 		make bump-extensions
@@ -28,6 +29,18 @@ release:
 		make npm-publish
 		make git-publish
 		make clean-build
+		make post-release
+		@echo "\n\nDone releasing!\n\n"
+
+pre-release:
+ifneq ($(REPO_VERSION), '')
+		@echo "\nReleasing version $(REPO_VERSION)\n"
+		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
+		$(call prepare-release)
+		$(call merge-master, $(SUBSTR))
+else
+		@echo "\nPeforming manual release process!!\n"
+endif
 
 # Clean the repository before starting a release.
 clean:
@@ -75,6 +88,12 @@ npm-publish:
 clean-build:
 		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
 
+post-release:
+ifneq ($(REPO_VERSION), '')
+		@echo "\nFinishing release for version $(REPO_VERSION)\n"
+		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
+		$(call merge-develop, $(SUBSTR))
+endif
 
 coverage:
 		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
@@ -82,6 +101,40 @@ coverage:
 
 # DEFINITIONS
 
+define prepare-release
+		@echo "\nChecking out develop branches ... \n"
+		git checkout develop
+		git submodule foreach --recursive git checkout develop
+		git fetch --all && git submodule foreach --recursive git fetch --all
+		git pull && git submodule foreach --recursive git pull
+
+endef
+
+define merge-master
+		@if [ "$(strip $(1))" != "beta" ]; \
+			then \
+				echo "\nMerging into master ... \n"; \
+				git checkout master; \
+				git submodule foreach --recursive git checkout master; \
+				git merge develop && git push; \
+				git submodule foreach --recursive git merge develop && git submodule foreach --recursive git push; \
+			else \
+				echo "\nNot using master: beta release!\n"; \
+		fi;
+
+endef
+
+define merge-develop
+		@if [ "$(strip $(1))" != "beta" ]; \
+			then \
+				echo "\nMerging back into develop ... \n"; \
+				git checkout develop; \
+				git submodule foreach --recursive git checkout develop; \
+				git merge master && git push; \
+				git submodule foreach --recursive git merge master && git submodule foreach --recursive git push; \
+		fi;
+
+endef
 
 define build-packages
 		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules
