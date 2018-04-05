@@ -53,7 +53,8 @@ clean:
 # Lerna change all the version numbers.
 pre-publish:
 ifneq ($(REPO_VERSION), '')
-		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish
+		@echo "$(strip $(REPO_VERSION))"
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes
 else
 		lerna publish --skip-npm --skip-git --force-publish
 endif
