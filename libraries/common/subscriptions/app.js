@@ -38,6 +38,7 @@ export default function app(subscribe) {
 
     // Add event callbacks
     event.addCallback('pageContext', pageContext);
+    // Handle native/legacy navigation bar
     event.addCallback('viewWillAppear', updateNavigationBarNone);
     event.addCallback('showPreviousTab', showPreviousTab);
     /**
