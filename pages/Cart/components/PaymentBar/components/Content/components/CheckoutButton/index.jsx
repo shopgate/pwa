@@ -11,15 +11,15 @@ import connect from './connector';
  * @returns {JSX}
  */
 const CheckoutButton = ({ isActive }) => (
-  <RippleButton
-    disabled={!isActive}
-    flat={false}
-    type="secondary"
-  >
-    <Link href={CHECKOUT_PATH}>
-      <I18n.Text string="cart.checkout" />
-    </Link>
-  </RippleButton>
+  <Link href={CHECKOUT_PATH}>
+    <RippleButton
+      disabled={!isActive}
+      flat={false}
+      type="secondary"
+    >
+      <I18n.Text string="cart.checkout"/>
+    </RippleButton>
+  </Link>
 );
 
 CheckoutButton.propTypes = {
