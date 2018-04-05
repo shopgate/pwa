@@ -1,25 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckoutButton / Checkout is possible should render without any props 1`] = `
-<RippleButton
-  className="css-63oe3q"
-  disabled={true}
-  flat={false}
-  onClick={null}
-  rippleClassName=""
-  rippleSize={null}
-  type="secondary"
-  wrapContent={true}
+<Link
+  className=""
+  href="/checkout"
 >
-  <Link
-    className=""
-    href="/checkout"
+  <RippleButton
+    className="css-63oe3q"
+    disabled={true}
+    flat={false}
+    onClick={null}
+    rippleClassName=""
+    rippleSize={null}
+    type="secondary"
+    wrapContent={true}
   >
     <Translate
       className="css-1a2hjg9"
       params={Object {}}
       string="cart.checkout"
     />
-  </Link>
-</RippleButton>
+  </RippleButton>
+</Link>
 `;
