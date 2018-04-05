@@ -26,7 +26,7 @@ describe('<AuthRoutes />', () => {
   beforeEach(() => {
     authWrapper = mount(
       (
-        <AuthRoutes to={LOGIN_PATH} isLoggedIn={false}>
+        <AuthRoutes isLoggedIn={false}>
           <MockRoute path={CHECKOUT_PATH} component="checkout" />
         </AuthRoutes>
       ), { context: { registerRoute: () => {} } }

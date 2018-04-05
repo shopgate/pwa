@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connect from './connector';
 import Redirect from '../Redirect';
+import { LOGIN_PATH } from '../../../../constants/RoutePaths';
 
 /**
  * The AuthRoutes component
@@ -21,7 +22,11 @@ const AuthRoutes = props => (
 AuthRoutes.propTypes = {
   children: PropTypes.node.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string,
+};
+
+AuthRoutes.defaultProps = {
+  to: LOGIN_PATH,
 };
 
 AuthRoutes.contextTypes = {

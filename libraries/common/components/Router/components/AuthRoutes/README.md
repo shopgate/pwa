@@ -71,7 +71,7 @@ const history = createHistory();
 </Router>
 ```
 
-### to (required)
+### to (optional, defaults to LOGIN_PATH)
 
 _Type_: `String`<br>
 
