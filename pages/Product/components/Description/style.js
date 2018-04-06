@@ -16,6 +16,23 @@ const title = css({
 
 const content = css({
   lineHeight: 1.7,
+  ' ul': {
+    listStyle: 'disc',
+  },
+  ' ol': {
+    listStyle: 'decimal',
+  },
+  ' ul, ol': {
+    margin: '.75em 0',
+    paddingLeft: '1.2em',
+  },
+  ' a': {
+    color: colors.primary,
+    margin: '-.35em',
+    padding: '.35em',
+    position: 'relative',
+    zIndex: 1,
+  }
 }).toString();
 
 const placeholder = css({
