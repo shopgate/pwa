@@ -17,7 +17,9 @@ const CLICK_DELAY = 250;
  * @param {string} props.link A url string (compatibility with `NAV_MENU_CONTENT_BEFORE` portal).
  * @param {Function} props.close A callback.
  */
-const handleClick = ({ onClick, href, link, close }) => {
+const handleClick = ({
+  onClick, href, link, close,
+}) => {
   setTimeout(() => {
     const url = href || link;
     // Perform onClick callback
@@ -90,7 +92,6 @@ Item.propTypes = {
     PropTypes.string,
   ]),
   href: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
-  link: PropTypes.string, // eslint-disable-line react/no-unused-prop-types // Alias for href.
   icon: PropTypes.func,
   onClick: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   primary: PropTypes.bool,
@@ -102,7 +103,6 @@ Item.defaultProps = {
   close: () => {},
   count: null,
   href: '',
-  link: '',
   icon: null,
   onClick: () => {},
   primary: false,

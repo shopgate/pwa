@@ -1,5 +1,6 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const duration = 300;
 const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
@@ -17,6 +18,10 @@ const content = css({
   color: colors.dark,
   background: colors.light,
   WebkitOverflowScrolling: 'touch',
+  paddingBottom: [
+    `${variables.tabBar.height}px`,
+    `calc(${variables.tabBar.height}px + var(--safe-area-inset-bottom))`,
+  ],
 }).toString();
 
 const drawerAnimation = {

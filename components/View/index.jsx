@@ -26,6 +26,7 @@ class View extends Component {
       script: PropTypes.array,
       style: PropTypes.array,
     }),
+    isFullscreen: PropTypes.bool,
     style: PropTypes.shape(),
     title: PropTypes.string,
     viewTop: PropTypes.bool,
@@ -39,6 +40,7 @@ class View extends Component {
       script: [],
       style: [],
     },
+    isFullscreen: false,
     style: null,
     title: '',
     viewTop: true,
@@ -167,7 +169,11 @@ class View extends Component {
    * @returns {JSX}
    */
   render() {
-    let contentStyle = styles.content(this.props.hasNavigator);
+    let contentStyle = styles.content(
+      this.props.hasNavigator,
+      false,
+      this.props.isFullscreen
+    );
 
     const { children } = this.props;
 
