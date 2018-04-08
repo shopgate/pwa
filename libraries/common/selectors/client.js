@@ -2,6 +2,10 @@ import { createSelector } from 'reselect';
 import {
   OS_ANDROID,
   OS_IOS,
+  MODEL_NAMES_IPHONE_X,
+  PAGE_INSETS_ANDROID,
+  PAGE_INSETS_IOS,
+  PAGE_INSETS_IPHONE_X,
 } from '../constants/Device';
 
 /**
@@ -12,7 +16,7 @@ import {
 export const getClientInformation = state => state.client;
 
 /**
- * Gets the device information.
+ * Returns the device information.
  * @param {Object} state The application state.
  * @return {Object|null}
  */
@@ -25,7 +29,7 @@ export const getDeviceInformation = createSelector(
 );
 
 /**
- * Gets the platform of the device.
+ * Returns the device platform.
  * @param {Object} state The application state.
  * @return {string|null}
  */
@@ -38,7 +42,7 @@ export const getPlatform = createSelector(
 );
 
 /**
- * Check if the model of the device.
+ * Returns the device model.
  * @param {Object} state The application state.
  * @return {string|null}
  */
@@ -71,7 +75,7 @@ export const isIos = createSelector(
 );
 
 /**
- * Calculates page insets for the current device
+ * Determines page insets for the current device
  * @param {Object} state The application state.
  * @returns {Object}
  */
@@ -80,30 +84,14 @@ export const getPageInsets = createSelector(
   getDeviceModel,
   isIos,
   (clientInformation, model, iOS) => {
-    const defaults = {
-      safeAreaInsetTop: iOS ? 20 : 0,
-      safeAreaInsetBottom: 0,
-      safeAreaInsetLeft: 0,
-      safeAreaInsetRight: 0,
-    };
-
-    let overrides = {};
-
     if (iOS) {
-      const iphoneX = ['iPhone10,3', 'iPhone10,6'];
-
-      // Detect the iPhone X to apply special insets
-      if (iphoneX.includes(model)) {
-        overrides = {
-          safeAreaInsetTop: 40,
-          safeAreaInsetBottom: 30,
-        };
+      if (MODEL_NAMES_IPHONE_X.includes(model)) {
+        return PAGE_INSETS_IPHONE_X;
       }
+
+      return PAGE_INSETS_IOS;
     }
 
-    return {
-      ...defaults,
-      ...overrides,
-    };
+    return PAGE_INSETS_ANDROID;
   }
 );
