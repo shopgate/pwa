@@ -31,15 +31,15 @@ class Product extends Component {
     messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
-    getBaseProductId: PropTypes.func,
     deleteProduct: PropTypes.func,
+    getBaseProductId: PropTypes.func,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static defaultProps = {
-    getBaseProductId: () => {},
     deleteProduct: () => {},
+    getBaseProductId: () => {},
     updateProduct: () => {},
     onToggleFocus: () => {},
   };
@@ -47,7 +47,7 @@ class Product extends Component {
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
-  }
+  };
 
   /**
    * Constructor.
@@ -79,6 +79,15 @@ class Product extends Component {
   componentDidMount() {
     this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement) + 4}px`;
   }
+
+  /**
+   * Creates the link url
+   * @return {string} The link
+   */
+  getLink = () => {
+    const baseProductId = this.props.getBaseProductId(this.props.product.id);
+    return `${ITEM_PATH}/${bin2hex(baseProductId || this.props.product.id)}`;
+  };
 
   /**
    * Toggles the edit mode of the products. This should be always called,
@@ -115,11 +124,6 @@ class Product extends Component {
    */
   updateProduct = (quantity) => {
     this.props.updateProduct(this.props.id, quantity);
-  };
-
-  getLink = () => {
-    const baseProductId = this.props.getBaseProductId(this.props.product.id);
-    return `${ITEM_PATH}/${bin2hex(baseProductId || this.props.product.id)}`;
   };
 
   /**
