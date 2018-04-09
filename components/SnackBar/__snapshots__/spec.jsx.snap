@@ -63,7 +63,7 @@ exports[`<SnackBar /> should render component without action 1`] = `
             >
               <Container>
                 <div
-                  className="css-djhto0"
+                  className="css-1pnw5o1"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
@@ -159,7 +159,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
             >
               <Container>
                 <div
-                  className="css-djhto0"
+                  className="css-1pnw5o1"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
