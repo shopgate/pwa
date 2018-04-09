@@ -5,6 +5,8 @@ const name = css({
   fontWeight: 500,
   lineHeight: 1.125,
   marginBottom: '1em',
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
 }).toString();
 
 const propertiesContainer = css({
