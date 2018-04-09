@@ -11,7 +11,7 @@ import { getBaseProductId } from '@shopgate/pwa-common-commerce/product/selector
  */
 const mapStateToProps = state => ({
   currency: getCurrency(state),
-  baseProductId: id => getBaseProductId(state, id),
+  getBaseProductId: id => getBaseProductId(state, id),
 });
 
 /**
