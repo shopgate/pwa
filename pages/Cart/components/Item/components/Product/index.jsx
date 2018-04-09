@@ -31,12 +31,14 @@ class Product extends Component {
     messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
+    getBaseProductId: PropTypes.func,
     deleteProduct: PropTypes.func,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static defaultProps = {
+    getBaseProductId: () => {},
     deleteProduct: () => {},
     updateProduct: () => {},
     onToggleFocus: () => {},
@@ -115,6 +117,11 @@ class Product extends Component {
     this.props.updateProduct(this.props.id, quantity);
   };
 
+  getLink = () => {
+    const baseProductId = this.props.getBaseProductId(this.props.product.id);
+    return `${ITEM_PATH}/${bin2hex(baseProductId || this.props.product.id)}`;
+  };
+
   /**
    * Render Function.
    * @returns {jsx}
@@ -134,7 +141,7 @@ class Product extends Component {
                   <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Link
                   tagName="a"
-                  href={`${ITEM_PATH}/${bin2hex(this.props.product.id)}`}
+                  href={this.getLink()}
                   itemProp="item"
                   itemScope
                   itemType="http://schema.org/Product"
