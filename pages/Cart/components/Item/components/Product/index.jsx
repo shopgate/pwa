@@ -33,12 +33,14 @@ class Product extends Component {
     messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
+    baseProductId: PropTypes.string,
     deleteProduct: PropTypes.func,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static defaultProps = {
+    baseProductId: null,
     deleteProduct: () => {},
     updateProduct: () => {},
     onToggleFocus: () => {},
@@ -47,8 +49,7 @@ class Product extends Component {
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
-
-  }
+  };
 
   /**
    * Constructor.
@@ -136,11 +137,17 @@ class Product extends Component {
     this.props.updateProduct(this.props.id, quantity);
   };
 
+  getLink = () => {
+    const baseProductId = this.props.getBaseProductId(this.props.product.id);
+    return `${ITEM_PATH}/${bin2hex(baseProductId || this.props.product.id)}`;
+  };
+
   /**
    * Render Function.
    * @returns {jsx}
    */
   render() {
+    console.warn(this.props.baseProductId);
     return (
       <Transition in={this.state.visible} timeout={duration} onExited={this.deleteProduct}>
         {state => (
@@ -155,7 +162,7 @@ class Product extends Component {
                   <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Link
                   tagName="a"
-                  href={`${ITEM_PATH}/${bin2hex(this.props.product.id)}`}
+                  href={this.getLink()}
                   itemProp="item"
                   itemScope
                   itemType="http://schema.org/Product"

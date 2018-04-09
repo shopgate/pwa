@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import deleteProductsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteProductsFromCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 
 /**
  * Maps the contents of the state to the component props.
@@ -10,6 +11,7 @@ import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
  */
 const mapStateToProps = state => ({
   currency: getCurrency(state),
+  baseProductId: id => getBaseProductId(state, id),
 });
 
 /**
