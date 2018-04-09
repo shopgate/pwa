@@ -6,6 +6,8 @@ const name = css({
   lineHeight: '1.25',
   marginBottom: 2,
   marginRight: 72,
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
 }).toString();
 
 const placeholder = css({
