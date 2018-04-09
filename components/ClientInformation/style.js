@@ -17,7 +17,7 @@ const unselectable = css({
 }).toString();
 
 const deviceId = css({
-  wordBreak: 'break-all',
+  wordBreak: 'keep-all',
   padding: `0 ${variables.gap.big}px`,
 }).toString();
 

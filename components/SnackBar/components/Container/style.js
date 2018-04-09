@@ -10,7 +10,7 @@ const container = css({
   alignItems: 'center',
   justifyContent: 'space-between',
   flexWrap: 'wrap',
-  wordBreak: 'break-all',
+  wordBreak: 'keep-all',
   hyphens: 'auto',
 }).toString();
 
