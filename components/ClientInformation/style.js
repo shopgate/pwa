@@ -17,7 +17,8 @@ const unselectable = css({
 }).toString();
 
 const deviceId = css({
-  wordBreak: 'break-all',
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
   padding: `0 ${variables.gap.big}px`,
 }).toString();
 

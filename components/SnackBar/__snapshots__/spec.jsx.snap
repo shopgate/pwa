@@ -63,7 +63,7 @@ exports[`<SnackBar /> should render component without action 1`] = `
             >
               <Container>
                 <div
-                  className="css-q9taby"
+                  className="css-xortjd"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
@@ -159,7 +159,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
             >
               <Container>
                 <div
-                  className="css-q9taby"
+                  className="css-xortjd"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
@@ -185,7 +185,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                     text="click me"
                   >
                     <button
-                      className="css-n09hx9"
+                      className="css-ti4mub"
                       onClick={[Function]}
                     >
                       <Translate
