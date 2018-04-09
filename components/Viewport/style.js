@@ -1,4 +1,9 @@
 import { css } from 'glamor';
+import variables from 'Styles/variables';
+
+css.global('html', {
+  '--tabbar-height': `${variables.tabBar.height}px`,
+});
 
 css.global('body', {
   userSelect: 'none',

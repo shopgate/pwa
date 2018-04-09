@@ -23,7 +23,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
       <div
         className={
           Object {
-            "data-css-61ld8k": "",
+            "data-css-1h8teix": "",
           }
         }
         key="bar"
@@ -247,7 +247,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
       <div
         className={
           Object {
-            "data-css-1jtl2dh": "",
+            "data-css-1kayqc3": "",
           }
         }
         key="dummy"
@@ -280,7 +280,7 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
       <div
         className={
           Object {
-            "data-css-61ld8k": "",
+            "data-css-1h8teix": "",
           }
         }
         key="bar"
@@ -504,7 +504,7 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
       <div
         className={
           Object {
-            "data-css-1jtl2dh": "",
+            "data-css-1kayqc3": "",
           }
         }
         key="dummy"
