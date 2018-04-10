@@ -20,10 +20,7 @@ const container = css({
 
 const navButton = css({
   position: 'fixed',
-  top: [
-    `${variables.statusBar.height}px`,
-    'var(--safe-area-inset-top)',
-  ],
+  top: 'var(--safe-area-inset-top)',
   left: 0,
   width: variables.navigator.height,
   color: colors.light,

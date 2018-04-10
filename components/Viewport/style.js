@@ -1,5 +1,14 @@
 import { css } from 'glamor';
 
+/**
+ * By default the GMD theme doesn't have a tabbar. But it's conceivable that 3rd party developers
+ * might want to implement one via an extension. So the code which calculates content bottom
+ * paddings for example is prepared to deal with it. For now the value is initialized with 0.
+ */
+css.global('html', {
+  '--tabbar-height': '0px',
+});
+
 css.global('body', {
   userSelect: 'none',
 });

@@ -5,10 +5,7 @@ import variables from 'Styles/variables';
 const container = css({
   position: 'relative',
   ':first-child': {
-    paddingTop: [
-      `${variables.statusBar.height}px`,
-      'var(--safe-area-inset-top)',
-    ],
+    paddingTop: 'var(--safe-area-inset-top)',
   },
 }).toString();
 

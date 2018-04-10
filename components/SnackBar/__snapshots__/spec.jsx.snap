@@ -16,13 +16,13 @@ exports[`<SnackBar /> should render component without action 1`] = `
   <SnackBar>
     <Connect(Toast)
       actionButton={[Function]}
-      className="css-1ogjxzw"
+      className="css-u8tmgv"
       container={[Function]}
       message={[Function]}
     >
       <Toast
         actionButton={[Function]}
-        className="css-1ogjxzw"
+        className="css-u8tmgv"
         container={[Function]}
         dispatchAction={[Function]}
         hasNextToast={false}
@@ -50,14 +50,14 @@ exports[`<SnackBar /> should render component without action 1`] = `
                 "out": "",
               }
             }
-            className="css-1ogjxzw"
+            className="css-u8tmgv"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-1ogjxzw css-1rg7udn css-1dwe0qx"
+              className="css-u8tmgv css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >
@@ -111,13 +111,13 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
   <SnackBar>
     <Connect(Toast)
       actionButton={[Function]}
-      className="css-1ogjxzw"
+      className="css-u8tmgv"
       container={[Function]}
       message={[Function]}
     >
       <Toast
         actionButton={[Function]}
-        className="css-1ogjxzw"
+        className="css-u8tmgv"
         container={[Function]}
         dispatchAction={[Function]}
         hasNextToast={false}
@@ -146,14 +146,14 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                 "out": "",
               }
             }
-            className="css-1ogjxzw"
+            className="css-u8tmgv"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-1ogjxzw css-1rg7udn css-1dwe0qx"
+              className="css-u8tmgv css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >

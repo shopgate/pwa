@@ -36,8 +36,5 @@ export default {
   tabBar: {
     height: 0,
   },
-  statusBar: {
-    height: 0,
-  },
   ...variables,
 };

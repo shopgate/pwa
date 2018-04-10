@@ -14,10 +14,7 @@ const loggedIn = css({
   justifyContent: 'center',
   minHeight: variables.navigator.height,
   padding: `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`,
-  paddingTop: [
-    `${variables.statusBar.height}px`,
-    'var(--safe-area-inset-top)',
-  ],
+  paddingTop: `calc(${variables.gap.small + 1}px + var(--safe-area-inset-top))`,
 }).toString();
 
 const ellipsis = {
