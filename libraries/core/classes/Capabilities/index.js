@@ -7,18 +7,6 @@ import { getWebStorageEntry } from '../../commands/webStorage';
 const getClientInformation = getWebStorageEntry({ name: 'clientInformation' });
 
 /**
- * Map with libversion which is used by iOS with corresponding Android app version.
- * @type {Object}
- */
-const libVersionWithAndroidAppVersion = {
-  // TODO remove appVersion checks for Android when libversion 17 is confirmed..
-  17: {
-    libVersion: '17.0',
-    appVersion: '5.27', // TODO change to 5.29 before LIVE
-  },
-};
-
-/**
  * Capabilities class.
  * Checks if command is supported by required libVersion or appVersion.
  */
@@ -28,9 +16,9 @@ class Capabilities {
    * @type {Object}
    */
   static commandRequirements = {
-    getCurrentBrightness: libVersionWithAndroidAppVersion['17'],
-    resetBrightness: libVersionWithAndroidAppVersion['17'],
-    setBrightness: libVersionWithAndroidAppVersion['17'],
+    getCurrentBrightness: '17.0',
+    resetBrightness: '17.0',
+    setBrightness: '17.0',
   };
 
   /**
@@ -77,17 +65,13 @@ class Capabilities {
   /**
    * Checks if given libVersion and appVersion are supported.
    * @param {string} libVersion Required libversion (ios only).
-   * @param {string} appVersion Required appVersion (android only).
    * @returns {Promise}
    */
-  static versionsAreAtLeast({ libVersion, appVersion }) {
+  static versionsAreAtLeast(libVersion) {
     return new Promise((resolve, reject) => {
       getClientInformation
+        // eslint-disable-next-line arrow-body-style
         .then((clientInformation) => {
-          if (clientInformation.value.device.os.platform === 'android') {
-            return this.compareVersionsAtLeast(appVersion, clientInformation.value.appVersion) ?
-              resolve() : reject();
-          }
           return this.compareVersionsAtLeast(libVersion, clientInformation.value.libVersion) ?
             resolve() : reject();
         })
