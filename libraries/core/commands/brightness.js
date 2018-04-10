@@ -22,7 +22,7 @@ export const resetBrightness = () => {
         return;
       }
       logger.error(e);
-    })
+    });
 };
 
 /**
@@ -44,7 +44,7 @@ export const setBrightness = (level) => {
         return;
       }
       logger.error(e);
-    })
+    });
 };
 
 /**
@@ -55,17 +55,13 @@ export const getCurrentBrightness = () => {
   return new Promise((resolve, reject) => {
     capabilities
       .isCommandSupported('getCurrentBrightness')
-      .then(() => {
-        return brightnessRequest.dispatch();
-      })
-      .then(result => {
-        resolve(result);
-      })
+      .then(() => brightnessRequest.dispatch())
+      .then(result => resolve(result))
       .catch((e) => {
         if (e) {
           logger.error(e);
         }
         return reject(e);
-      })
+      });
   });
 };

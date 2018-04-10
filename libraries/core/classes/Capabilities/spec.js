@@ -4,8 +4,8 @@ const mockedClientInformation = {};
 jest.mock('../../commands/webStorage', () => ({
   getWebStorageEntry: () => ({
     then(cb) {
-      cb({value: mockedClientInformation })
-    }
+      cb({ value: mockedClientInformation });
+    },
   }),
 }));
 
@@ -48,66 +48,68 @@ describe('Capabilities', () => {
           done();
         })
         .catch(() => {
-          throw new Error('Assert error')
-        })
+          throw new Error('Assert error');
+        });
     });
     const commands = [
       {
         names: ['getCurrentBrightness', 'resetBrightness', 'setBrightness'],
-        // [IOS, Android]
+        // [IOS, Android].
         positives: ['17', '5.30'],
-        negatives: ['16', '5.20']
+        negatives: ['16', '5.20'],
       },
     ];
 
     commands.forEach((c) => {
       c.names.forEach((n) => {
         it(`should resolve for iOS ${n} cmd with ${c.positives[0]}`, (done) => {
-          mockedClientInformation.libVersion = c.positives[0];
-          mockedClientInformation.device = { os: { platform: 'ios' }};
+          [mockedClientInformation.libVersion] = c.positives;
+          mockedClientInformation.device = { os: { platform: 'ios' } };
           // No expect(...).resolves because it always produces false positives.
           capabilities.isCommandSupported(n)
             .then(() => {
               done();
             })
             .catch(() => {
-              throw new Error('Assert error')
-            })
+              throw new Error('Assert error');
+            });
         });
         it(`should resolve for Android ${n} cmd with ${c.positives[1]}`, (done) => {
+          // eslint-disable-next-line prefer-destructuring
           mockedClientInformation.appVersion = c.positives[1];
-          mockedClientInformation.device = { os: { platform: 'android' }};
+          mockedClientInformation.device = { os: { platform: 'android' } };
           capabilities.isCommandSupported(n)
             .then(() => {
               done();
             })
             .catch(() => {
-              throw new Error('Assert error')
-            })
+              throw new Error('Assert error');
+            });
         });
         it(`should resolve for iOS ${n} cmd with ${c.negatives[0]}`, (done) => {
-          mockedClientInformation.libVersion = c.positives[0];
-          mockedClientInformation.device = { os: { platform: 'ios' }};
+          [mockedClientInformation.libVersion] = c.positives;
+          mockedClientInformation.device = { os: { platform: 'ios' } };
           capabilities.isCommandSupported(n)
             .then(() => {
               throw new Error('Assert error');
             })
             .catch(() => {
               done();
-            })
+            });
         });
         it(`should resolve for Android ${n} cmd with ${c.negatives[1]}`, (done) => {
+          // eslint-disable-next-line prefer-destructuring
           mockedClientInformation.appVersion = c.positives[1];
-          mockedClientInformation.device = { os: { platform: 'android' }};
+          mockedClientInformation.device = { os: { platform: 'android' } };
           capabilities.isCommandSupported(n)
             .then(() => {
-              throw new Error('Assert error')
+              throw new Error('Assert error');
             })
             .catch(() => {
               done();
-            })
+            });
         });
       });
-    })
-  })
+    });
+  });
 });
