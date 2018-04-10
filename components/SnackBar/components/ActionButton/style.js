@@ -7,7 +7,8 @@ const actionButton = css({
   textTransform: 'uppercase',
   textAlign: 'right',
   padding: '7px 0',
-  wordBreak: 'keep-all',
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
   ':focus': {
     outline: 'none',
   },
