@@ -30,6 +30,6 @@ export const PAGE_INSETS_IOS = {
 
 export const PAGE_INSETS_IPHONE_X = {
   ...PAGE_INSETS_IOS,
-  [PAGE_INSET_NAME_TOP]: 40,
+  [PAGE_INSET_NAME_TOP]: 44,
   [PAGE_INSET_NAME_BOTTOM]: 30,
 };
