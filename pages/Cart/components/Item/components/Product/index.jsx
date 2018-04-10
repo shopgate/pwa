@@ -34,14 +34,12 @@ class Product extends Component {
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
     deleteProduct: PropTypes.func,
-    getBaseProductId: PropTypes.func,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static defaultProps = {
     deleteProduct: () => {},
-    getBaseProductId: () => {},
     onToggleFocus: () => {},
     updateProduct: () => {},
   };
@@ -81,15 +79,6 @@ class Product extends Component {
   componentDidMount() {
     this.transitionElement.style.height = `${getAbsoluteHeight(this.cardElement) + 4}px`;
   }
-
-  /**
-   * Creates the link url
-   * @return {string} The link
-   */
-  getLink = () => {
-    const baseProductId = this.props.getBaseProductId(this.props.product.id);
-    return `${ITEM_PATH}/${bin2hex(baseProductId || this.props.product.id)}`;
-  };
 
   /**
    * Toggles the edit mode of the products. This should be always called,
@@ -165,7 +154,7 @@ class Product extends Component {
                   <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Link
                   tagName="a"
-                  href={this.getLink()}
+                  href={`${ITEM_PATH}/${bin2hex(this.props.product.id)}`}
                   itemProp="item"
                   itemScope
                   itemType="http://schema.org/Product"
