@@ -86,8 +86,9 @@ class Capabilities {
    */
   isCommandSupported(name) {
     if (!this.constructor.commandRequirements.hasOwnProperty(name)) {
-      return new Promise(resolve => resolve());
+      return Promise.resolve();
     }
+
     return this.constructor.versionsAreAtLeast(this.constructor.commandRequirements[name]);
   }
 }

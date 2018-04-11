@@ -17,7 +17,7 @@ export const resetBrightness = () => {
         .setLibVersion(libVersion)
         .dispatch();
     })
-    .catch(e => {
+    .catch((e) => {
       if (!e) {
         return;
       }
@@ -39,7 +39,7 @@ export const setBrightness = (level) => {
         .setCommandParams({ brightness: level })
         .dispatch();
     })
-    .catch(e => {
+    .catch((e) => {
       if (!e) {
         return;
       }
@@ -51,17 +51,15 @@ export const setBrightness = (level) => {
  * Returns promise that would resolve with current brightness (number).
  * @returns {Promise}
  */
-export const getCurrentBrightness = () => {
-  return new Promise((resolve, reject) => {
-    capabilities
-      .isCommandSupported('getCurrentBrightness')
-      .then(() => brightnessRequest.dispatch())
-      .then(result => resolve(result))
-      .catch((e) => {
-        if (e) {
-          logger.error(e);
-        }
-        return reject(e);
-      });
-  });
-};
+export const getCurrentBrightness = () => new Promise((resolve, reject) => {
+  capabilities
+    .isCommandSupported('getCurrentBrightness')
+    .then(() => brightnessRequest.dispatch())
+    .then(result => resolve(result))
+    .catch((e) => {
+      if (e) {
+        logger.error(e);
+      }
+      return reject(e);
+    });
+});
