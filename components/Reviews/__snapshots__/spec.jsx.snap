@@ -504,6 +504,97 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   </span>
                 </span>
               </Translate>
+              <Connect(WriteReviewLink)>
+                <WriteReviewLink
+                  dispatch={[Function]}
+                  productId="foo"
+                >
+                  <ButtonLink
+                    href="/item/666f6f/write_review"
+                    noGap={true}
+                  >
+                    <ActionButton
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      loading={false}
+                      noGap={true}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      type="secondary"
+                      wrapContent={true}
+                    >
+                      <div
+                        className="css-1yv2jt6"
+                      >
+                        <RippleButton
+                          className=""
+                          disabled={false}
+                          flat={true}
+                          onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
+                          type="secondary"
+                          wrapContent={true}
+                        >
+                          <Button
+                            className=""
+                            disabled={false}
+                            flat={true}
+                            onClick={[Function]}
+                            type="secondary"
+                            wrapContent={false}
+                          >
+                            <Button
+                              className="css-20ad7t "
+                              disabled={false}
+                              onClick={[Function]}
+                            >
+                              <button
+                                className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
+                                disabled={false}
+                                onClick={[Function]}
+                              >
+                                <Ripple
+                                  className="css-8s1fw2 "
+                                  color="#000"
+                                  disabled={false}
+                                  fill={true}
+                                  onComplete={[Function]}
+                                  overflow={false}
+                                  size={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8s1fw2 "
+                                    data-test-id="Ripple"
+                                    onClick={[Function]}
+                                    style={null}
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="reviews.button_add"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        reviews.button_add
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
+                  </ButtonLink>
+                </WriteReviewLink>
+              </Connect(WriteReviewLink)>
             </div>
           </div>
         </Header>
@@ -2907,6 +2998,97 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   </span>
                 </span>
               </Translate>
+              <Connect(WriteReviewLink)>
+                <WriteReviewLink
+                  dispatch={[Function]}
+                  productId="foo"
+                >
+                  <ButtonLink
+                    href="/item/666f6f/write_review"
+                    noGap={true}
+                  >
+                    <ActionButton
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      loading={false}
+                      noGap={true}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      type="secondary"
+                      wrapContent={true}
+                    >
+                      <div
+                        className="css-1yv2jt6"
+                      >
+                        <RippleButton
+                          className=""
+                          disabled={false}
+                          flat={true}
+                          onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
+                          type="secondary"
+                          wrapContent={true}
+                        >
+                          <Button
+                            className=""
+                            disabled={false}
+                            flat={true}
+                            onClick={[Function]}
+                            type="secondary"
+                            wrapContent={false}
+                          >
+                            <Button
+                              className="css-20ad7t "
+                              disabled={false}
+                              onClick={[Function]}
+                            >
+                              <button
+                                className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
+                                disabled={false}
+                                onClick={[Function]}
+                              >
+                                <Ripple
+                                  className="css-8s1fw2 "
+                                  color="#000"
+                                  disabled={false}
+                                  fill={true}
+                                  onComplete={[Function]}
+                                  overflow={false}
+                                  size={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8s1fw2 "
+                                    data-test-id="Ripple"
+                                    onClick={[Function]}
+                                    style={null}
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="reviews.button_add"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        reviews.button_add
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
+                  </ButtonLink>
+                </WriteReviewLink>
+              </Connect(WriteReviewLink)>
             </div>
           </div>
         </Header>
@@ -4118,7 +4300,110 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
             </AverageRating>
             <div
               className="css-108dizf"
-            />
+            >
+              <Translate
+                className=""
+                params={Object {}}
+                string="reviews.no_reviews"
+              >
+                <span
+                  className=""
+                >
+                  reviews.no_reviews
+                </span>
+              </Translate>
+              <Connect(WriteReviewLink)>
+                <WriteReviewLink
+                  dispatch={[Function]}
+                  productId="foo"
+                >
+                  <ButtonLink
+                    href="/item/666f6f/write_review"
+                    noGap={true}
+                  >
+                    <ActionButton
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      loading={false}
+                      noGap={true}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      type="secondary"
+                      wrapContent={true}
+                    >
+                      <div
+                        className="css-1yv2jt6"
+                      >
+                        <RippleButton
+                          className=""
+                          disabled={false}
+                          flat={true}
+                          onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
+                          type="secondary"
+                          wrapContent={true}
+                        >
+                          <Button
+                            className=""
+                            disabled={false}
+                            flat={true}
+                            onClick={[Function]}
+                            type="secondary"
+                            wrapContent={false}
+                          >
+                            <Button
+                              className="css-20ad7t "
+                              disabled={false}
+                              onClick={[Function]}
+                            >
+                              <button
+                                className="css-20ad7t  css-1rn65c0"
+                                data-test-id="Button"
+                                disabled={false}
+                                onClick={[Function]}
+                              >
+                                <Ripple
+                                  className="css-8s1fw2 "
+                                  color="#000"
+                                  disabled={false}
+                                  fill={true}
+                                  onComplete={[Function]}
+                                  overflow={false}
+                                  size={null}
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8s1fw2 "
+                                    data-test-id="Ripple"
+                                    onClick={[Function]}
+                                    style={null}
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="reviews.button_add"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        reviews.button_add
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
+                  </ButtonLink>
+                </WriteReviewLink>
+              </Connect(WriteReviewLink)>
+            </div>
           </div>
         </Header>
         <List
