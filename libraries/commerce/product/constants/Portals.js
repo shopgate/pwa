@@ -9,7 +9,6 @@ const OPTIONS = 'options';
 const DESCRIPTION = 'description';
 const PROPERTIES = 'properties';
 const REVIEWS = 'reviews';
-const WRITE_REVIEW = 'write-review';
 const TAX_DISCLAIMER = 'tax-disclaimer';
 const CTAS = 'ctas';
 const RATING = 'rating';
@@ -123,10 +122,6 @@ export const PRODUCT_PROPERTIES_AFTER = `${PRODUCT}.${PROPERTIES}.${AFTER}`;
 export const PRODUCT_REVIEWS_BEFORE = `${PRODUCT}.${REVIEWS}.${BEFORE}`;
 export const PRODUCT_REVIEWS = `${PRODUCT}.${REVIEWS}`;
 export const PRODUCT_REVIEWS_AFTER = `${PRODUCT}.${REVIEWS}.${AFTER}`;
-
-export const PRODUCT_WRITE_REVIEW_BEFORE = `${PRODUCT}.${WRITE_REVIEW}.${BEFORE}`;
-export const PRODUCT_WRITE_REVIEW = `${PRODUCT}.${WRITE_REVIEW}`;
-export const PRODUCT_WRITE_REVIEW_AFTER = `${PRODUCT}.${WRITE_REVIEW}.${AFTER}`;
 
 // TAX DISCLAIMER
 export const PRODUCT_TAX_DISCLAIMER_BEFORE = `${PRODUCT}.${TAX_DISCLAIMER}.${BEFORE}`;

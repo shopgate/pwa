@@ -8,6 +8,7 @@ const defaultAppConfig = {
   forgotPasswordUrl: null,
   hasFavorites: false,
   hasReviews: true,
+  showWriteReview: true,
   language: 'en-us',
   logo: 'https://example.com/logo',
   marketId: 'US',
