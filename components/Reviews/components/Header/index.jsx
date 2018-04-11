@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from './components/AverageRating';
 import WriteReviewLink from './components/WriteReviewLink';
 import styles from './style';
@@ -25,16 +24,10 @@ const Header = ({ rating, withTopGap }) => {
     return (
       <div className={styles.container}>
         <AverageRating rating={rating} />
-
-          <div className={styles.noReviews}>
-            <I18n.Text string="reviews.no_reviews" />
-            <Portal name={portals.PRODUCT_WRITE_REVIEW_BEFORE} />
-            <Portal name={portals.PRODUCT_WRITE_REVIEW}>
-              <WriteReviewLink />
-            </Portal>
-            <Portal name={portals.PRODUCT_WRITE_REVIEW_AFTER} />
-          </div>
-        <Portal name={portals.PRODUCT_WRITE_REVIEW_BEFORE} />
+        <div className={styles.noReviews}>
+          {appConfig.showWriteReview && (<I18n.Text string="reviews.no_reviews" />)}
+          {appConfig.showWriteReview && (<WriteReviewLink />)}
+        </div>
       </div>
     );
   }
@@ -48,11 +41,7 @@ const Header = ({ rating, withTopGap }) => {
             {average / RATING_SCALE_DIVISOR}
           </span>
         </I18n.Text>
-        <Portal name={portals.PRODUCT_WRITE_REVIEW_BEFORE} />
-        <Portal name={portals.PRODUCT_WRITE_REVIEW}>
-          <WriteReviewLink />
-        </Portal>
-        <Portal name={portals.PRODUCT_WRITE_REVIEW_AFTER} />
+        {appConfig.showWriteReview && (<WriteReviewLink />)}
       </div>
     </div>
   );

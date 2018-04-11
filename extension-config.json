@@ -53,6 +53,17 @@
         "key": "value"
       }
     },
+    "showWriteReview": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_show_write_review?parsed=true",
+        "key": "value"
+      }
+    },
     "language": {
       "type": "bigApi",
       "destination": "frontend",
