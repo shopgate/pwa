@@ -5,6 +5,7 @@ const drawer = css({
   background: 'black',
   padding: '7px 24px',
   bottom: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
+  zIndex: 2,
 }).toString();
 
 export default {
