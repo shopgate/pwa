@@ -1,5 +1,5 @@
 {
-  "version": "5.1.0",
+  "version": "5.2.0-beta.1",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -50,6 +50,17 @@
         "method": "GET",
         "service": "config",
         "path": "/v1/shop/%(shopId)s/gui_sg_cloud_has_reviews?parsed=true",
+        "key": "value"
+      }
+    },
+    "showWriteReview": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "default": true,
+      "params": {
+        "method": "GET",
+        "service": "config",
+        "path": "/v1/shop/%(shopId)s/gui_sg_connect_show_write_review?parsed=true",
         "key": "value"
       }
     },
