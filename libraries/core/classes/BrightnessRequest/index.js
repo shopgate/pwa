@@ -26,9 +26,8 @@ export class BrightnessRequest {
   constructor() {
     this.responseEventName = 'currentBrightnessResponse';
     this.getCommand = this.constructor.makeGetCommand();
-    this.lastRequestSerial = 0;
-    this.lastResponseSerial = 0;
-    this.responseQueue = {};
+    this.responseQueue = [];
+    this.counter = 0;
     event.addCallback(this.responseEventName, this.handleResponse);
   }
 
@@ -37,19 +36,19 @@ export class BrightnessRequest {
    * @param {Object} response Response.
    */
   handleResponse = (response) => {
-    this.lastResponseSerial += 1;
-    if (!this.responseQueue.hasOwnProperty(this.lastResponseSerial)) {
-      this.lastResponseSerial -= 1;
-      logger.error(`Could not find response queue for ${this.lastResponseSerial}`);
+    const queueEntry = this.responseQueue.shift();
+    if (typeof queueEntry === 'undefined') {
+      logger.error('Could not find response queue entry');
       return;
     }
-    const { resolve, reject } = this.responseQueue[this.lastResponseSerial];
-    // Deleting a reference.
-    delete this.responseQueue[this.lastResponseSerial];
+
+    const { resolve, reject } = queueEntry;
+
     if (!response.hasOwnProperty('brightness')) {
       reject(new Error('Invalid response for currentBrightnessResponse. Missing brightness property.'));
       return;
     }
+
     resolve(response.brightness);
   };
 
@@ -58,13 +57,13 @@ export class BrightnessRequest {
    * @returns {Promise}
    */
   dispatch() {
-    this.lastRequestSerial += 1;
-    const currentSerial = this.lastRequestSerial;
     return new Promise((resolve, reject) => {
-      this.responseQueue[currentSerial] = {
+      this.responseQueue.push({
+        counter: this.counter,
         resolve,
         reject,
-      };
+      });
+
       this.getCommand.dispatch();
     });
   }
