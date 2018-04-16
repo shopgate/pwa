@@ -187,9 +187,20 @@ class FilterBar extends Component {
     // Only update the state if the current scroll delta has changed.
     if (delta !== 0) {
       const { offset } = this.state;
-      const nextOffset = this.isVisible
-        ? clamp(offset - delta, -elementHeight, 0)
-        : -elementHeight;
+
+      let nextOffset;
+
+      /**
+       * When the page is scrolled down (due to iOS rubber band effect)
+       * then force the position to be at the top.
+       */
+      if (scrollTop < 1) {
+        nextOffset = 0;
+      } else if (this.isVisible) {
+        nextOffset = clamp(offset - delta, -elementHeight, 0);
+      } else {
+        nextOffset = -elementHeight;
+      }
 
       if (delta < 0) {
         // Shift the origin if the scroll direction is upwards.

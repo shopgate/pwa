@@ -22,6 +22,7 @@ import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
 import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
 // Theme
 import navigator from 'Components/Navigator/subscriptions';
+import viewport from 'Components/Viewport/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
@@ -32,7 +33,6 @@ import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
-import cart from 'Pages/Cart/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
@@ -66,6 +66,7 @@ const subscriptions = [
   trackingDeeplinkPush,
   // Theme subscribers.
   navigator,
+  viewport,
   category,
   coupon,
   favorites,
@@ -76,7 +77,6 @@ const subscriptions = [
   search,
   reviews,
   writeReview,
-  cart,
   // Extensions
   ...extensions,
 ];

@@ -17,7 +17,13 @@ const shadow = css({
 }).toString();
 
 const content = css({
-  maxHeight: `calc(100vh - ${variables.navigator.height}px)`, // 56px (Sheet Header)
+  maxHeight: [
+    `calc(100vh - ${variables.navigator.height}px)`,
+    `calc(100vh - ${variables.navigator.height}px - var(--safe-area-inset-top))`,
+  ],
+  paddingBottom: [
+    'var(--safe-area-inset-bottom)',
+  ],
   overflowY: 'scroll',
   WebkitOverflowScrolling: 'touch',
 }).toString();
