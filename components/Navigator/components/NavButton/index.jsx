@@ -102,7 +102,10 @@ class NavButton extends Component {
    * Handles a click on the icon.
    */
   handleClick = () => {
-    if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
+    if (
+      this.props.path !== INDEX_PATH &&
+      (this.props.filterOpen || this.state.type === NAV_STATE_BACK)
+    ) {
       this.props.goBackHistory();
       return;
     }
