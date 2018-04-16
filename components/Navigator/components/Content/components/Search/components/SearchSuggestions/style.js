@@ -4,7 +4,7 @@ import variables from 'Styles/variables';
 
 const container = css({
   position: 'fixed',
-  top: variables.navigator.height,
+  top: `calc(${variables.navigator.height}px + var(--safe-area-inset-top))`,
   borderTop: `${variables.gap.small / 2}px solid ${colors.shade8}`,
   left: 0,
   right: 0,

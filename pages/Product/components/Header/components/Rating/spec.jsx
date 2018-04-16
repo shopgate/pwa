@@ -12,6 +12,7 @@ import { getElementById } from './mock';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   hasReviews: true,
+  showWriteReview: true,
 }));
 
 describe('Rating (product header)', () => {

@@ -63,7 +63,7 @@ class ProductGallery extends Component {
     ];
 
     return (
-      <View title={title} hasNavigator={false}>
+      <View title={title} hasNavigator={false} isFullscreen>
         <div className={styles.navButton}>
           <BackButton />
         </div>

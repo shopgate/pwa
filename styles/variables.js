@@ -33,5 +33,8 @@ export default {
   paymentBar: {
     height: 78,
   },
+  tabBar: {
+    height: 0,
+  },
   ...variables,
 };
