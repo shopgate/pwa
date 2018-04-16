@@ -2,19 +2,22 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
+const barHeight = 46;
+
 const container = css({
   position: 'fixed',
   bottom: 0,
   left: 0,
   right: 0,
   padding: variables.gap.small,
+  paddingBottom: `calc(${variables.gap.small}px + var(--safe-area-inset-bottom))`,
   background: colors.light,
   boxShadow: '0 0 30px rgba(0,0,0,0.1)',
 });
 
 const base = css({
   position: 'relative',
-  height: 46,
+  height: barHeight,
 });
 
 const statusBar = css({
@@ -27,7 +30,7 @@ const statusBar = css({
 
 const dummy = css({
   display: 'block',
-  minHeight: 62,
+  minHeight: `calc(${barHeight}px + ${variables.gap.small}px)`,
 });
 
 export default {

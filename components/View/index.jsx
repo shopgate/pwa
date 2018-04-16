@@ -21,7 +21,6 @@ class View extends Component {
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
     hasNavigator: PropTypes.bool,
-    hasTabBar: PropTypes.bool,
     head: PropTypes.shape({
       meta: PropTypes.array,
       link: PropTypes.array,
@@ -36,7 +35,6 @@ class View extends Component {
 
   static defaultProps = {
     hasNavigator: true,
-    hasTabBar: true,
     head: {
       meta: [],
       link: [],
@@ -192,7 +190,6 @@ class View extends Component {
   render() {
     const contentStyle = styles.content(
       this.props.hasNavigator,
-      this.props.hasTabBar,
       this.props.isFullscreen,
       this.state.keyboardHeight
     );
