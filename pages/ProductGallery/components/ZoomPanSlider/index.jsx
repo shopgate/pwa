@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React from 'react';
+import React, { Component } from 'react';
 import ZoomPanContainer from '@shopgate/pwa-common/components/ZoomPanContainer';
 import { objectWithoutProps } from '@shopgate/pwa-common/helpers/data';
 import ImageSlider from 'Components/ImageSlider';
@@ -13,7 +6,7 @@ import ImageSlider from 'Components/ImageSlider';
 /**
  * A slider that is capable of zooming and panning its children.
  */
-class ZoomPanSlider extends React.Component {
+class ZoomPanSlider extends Component {
   static propTypes = {
     ...ImageSlider.propTypes,
   };
@@ -53,8 +46,7 @@ class ZoomPanSlider extends React.Component {
       <ZoomPanContainer key={index} onZoom={this.handleZoom}>
         {child}
       </ZoomPanContainer>
-      )
-    );
+    ));
 
     const props = objectWithoutProps(this.props, [
       'children',
@@ -67,7 +59,6 @@ class ZoomPanSlider extends React.Component {
       <ImageSlider {...props}>{sliderItems}</ImageSlider>
     );
   }
-
 }
 
 export default ZoomPanSlider;

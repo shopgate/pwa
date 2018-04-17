@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
@@ -24,7 +17,13 @@ const shadow = css({
 }).toString();
 
 const content = css({
-  maxHeight: `calc(100vh - ${variables.navigator.height}px)`, // 56px (Sheet Header)
+  maxHeight: [
+    `calc(100vh - ${variables.navigator.height}px)`,
+    `calc(100vh - ${variables.navigator.height}px - var(--safe-area-inset-top))`,
+  ],
+  paddingBottom: [
+    'var(--safe-area-inset-bottom)',
+  ],
   overflowY: 'scroll',
   WebkitOverflowScrolling: 'touch',
 }).toString();

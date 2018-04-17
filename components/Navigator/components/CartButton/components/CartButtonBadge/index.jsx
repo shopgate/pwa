@@ -1,13 +1,7 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
+import styles from './style';
 
 /**
  * The cart button badge component.
@@ -23,17 +17,12 @@ const CartButtonBadge = (props) => {
   }
 
   return (
-    <div className={props.className}>{productCount}</div>
+    <div className={styles}>{productCount}</div>
   );
 };
 
 CartButtonBadge.propTypes = {
   productCount: PropTypes.number.isRequired,
-  className: PropTypes.string,
-};
-
-CartButtonBadge.defaultProps = {
-  className: '',
 };
 
 export default CartButtonBadge;

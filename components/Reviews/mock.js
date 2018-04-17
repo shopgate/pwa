@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 const mockedProduct = {
   productId: 'foo',
   rating: {
@@ -118,6 +111,7 @@ export const mockedStateProductEmpty = {
 export const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
     hasReviews: mockReviewsAvailable,
+    showWriteReview: true,
   }));
 };
 

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CouponField /> should render a message when the cart does not support coupons 1`] = `""`;
+
+exports[`<CouponField /> should render a message when the cart supports coupons 1`] = `
+<div>
+  <Layout
+    handleAddCoupon={[Function]}
+    handleFocusChange={[Function]}
+    handleValueChange={[Function]}
+    iconStyle={
+      Object {
+        "opacity": 0,
+      }
+    }
+    isButtonDisabled={true}
+    isFocused={false}
+    isLoading={false}
+    labelStyle={
+      Object {
+        "display": "block",
+      }
+    }
+    value=""
+  />
+</div>
+`;
+
+exports[`<CouponField /> should render as expected without any props 1`] = `
+<div>
+  <Layout
+    handleAddCoupon={[Function]}
+    handleFocusChange={[Function]}
+    handleValueChange={[Function]}
+    iconStyle={
+      Object {
+        "opacity": 0,
+      }
+    }
+    isButtonDisabled={true}
+    isFocused={false}
+    isLoading={false}
+    labelStyle={
+      Object {
+        "display": "block",
+      }
+    }
+    value=""
+  />
+</div>
+`;

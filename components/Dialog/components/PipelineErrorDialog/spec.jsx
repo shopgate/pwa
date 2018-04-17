@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import PipelineErrorDialog from './index';
@@ -18,27 +11,27 @@ describe('<PipelineErrorDialog />', () => {
   };
 
   it('should render with minimal props', () => {
-    const wrapper = shallow(
-      <PipelineErrorDialog actions={[]} params={defaultParams} />
-    );
+    const wrapper = shallow(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should show a custom message if a message is is provided', () => {
     const message = 'Custom message';
-    const wrapper = shallow(
-      <PipelineErrorDialog actions={[]} params={defaultParams} message={message} />
-    );
+    const wrapper = shallow((
+      <PipelineErrorDialog
+        actions={[]}
+        message={message}
+        params={defaultParams}
+      />
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.html()).toMatch(message);
   });
 
   it('should switch modes on tap', () => {
-    const wrapper = shallow(
-      <PipelineErrorDialog actions={[]} params={defaultParams} />
-    );
+    const wrapper = shallow(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     const numTaps = 10;
 
@@ -63,9 +56,7 @@ describe('<PipelineErrorDialog />', () => {
   it('should not switch modes if tapped too slow', () => {
     jest.useFakeTimers();
 
-    const wrapper = shallow(
-      <PipelineErrorDialog actions={[]} params={defaultParams} />
-    );
+    const wrapper = shallow(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     const numTaps = 10;
     const numTapsUntilTimeout = Math.round(numTaps / 2);

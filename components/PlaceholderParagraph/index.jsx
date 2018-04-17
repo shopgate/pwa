@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import range from 'lodash/range';
@@ -18,7 +11,9 @@ const widths = [95, 100, 92, 88, 96, 93, 96, 48];
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const PlaceholderParagraph = ({ className, children, lines, ready }) => {
+const PlaceholderParagraph = ({
+  className, children, lines, ready,
+}) => {
   if (ready) {
     return children;
   }

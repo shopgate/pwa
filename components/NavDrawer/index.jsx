@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -137,14 +130,14 @@ class NavDrawer extends Component {
 
         {/* Header */}
         <Portal
-          name={commonPortals.NAV_MENU_HEADER_BEFORE}
+          name={commonPortals.USER_MENU_CONTAINER_BEFORE}
           props={{
             ...props,
             user,
           }}
         />
         <Portal
-          name={commonPortals.NAV_MENU_HEADER}
+          name={commonPortals.USER_MENU_CONTAINER}
           props={{
             ...props,
             user,
@@ -153,7 +146,7 @@ class NavDrawer extends Component {
           <Header user={user} close={this.handleClose} />
         </Portal>
         <Portal
-          name={commonPortals.NAV_MENU_HEADER_AFTER}
+          name={commonPortals.USER_MENU_CONTAINER_AFTER}
           props={{
             ...props,
             user,
@@ -298,23 +291,22 @@ class NavDrawer extends Component {
         <Portal name={commonPortals.NAV_MENU_IMPRINT_AFTER} props={props} />
 
         {user && <Divider close={this.handleClose} />}
-        {user && (
-          <Fragment>
-            <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-            <Portal
-              name={commonPortals.NAV_MENU_LOGOUT}
-              props={{
-                ...props,
-                handleLogout: logout,
-              }}
-            >
-              <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
-                <I18n.Text string="navigation.logout" />
-              </Item>
-            </Portal>
-            <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
-          </Fragment>
-        )}
+
+        <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
+        <Portal
+          name={commonPortals.NAV_MENU_LOGOUT}
+          props={{
+            ...props,
+            handleLogout: logout,
+          }}
+        >
+          {user && (
+            <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+              <I18n.Text string="navigation.logout" />
+            </Item>
+          )}
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
 
         <Portal name={commonPortals.NAV_MENU_CONTENT_AFTER} props={props} />
 

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
@@ -34,6 +27,8 @@ const input = css({
   top: 0,
   outline: 0,
   bottom: 6,
+  padding: 0,
+  left: 0,
 }).toString();
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
@@ -194,9 +187,20 @@ class FilterBar extends Component {
     // Only update the state if the current scroll delta has changed.
     if (delta !== 0) {
       const { offset } = this.state;
-      const nextOffset = this.isVisible
-        ? clamp(offset - delta, -elementHeight, 0)
-        : -elementHeight;
+
+      let nextOffset;
+
+      /**
+       * When the page is scrolled down (due to iOS rubber band effect)
+       * then force the position to be at the top.
+       */
+      if (scrollTop < 1) {
+        nextOffset = 0;
+      } else if (this.isVisible) {
+        nextOffset = clamp(offset - delta, -elementHeight, 0);
+      } else {
+        nextOffset = -elementHeight;
+      }
 
       if (delta < 0) {
         // Shift the origin if the scroll direction is upwards.

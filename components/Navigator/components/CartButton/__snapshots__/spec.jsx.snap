@@ -18,7 +18,6 @@ exports[`<CartButton /> should not be visible with prop visible set to false 1`]
   >
     <CartIcon />
     <CartButtonBadge
-      className="css-ggepo6"
       productCount={0}
     />
   </Ripple>
@@ -49,7 +48,6 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
   >
     <CartIcon />
     <CartButtonBadge
-      className="css-ggepo6"
       productCount={4}
     />
   </Ripple>
@@ -80,7 +78,6 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
   >
     <CartIcon />
     <CartButtonBadge
-      className="css-ggepo6"
       productCount={115}
     />
   </Ripple>
@@ -111,7 +108,6 @@ exports[`<CartButton /> should transition if it has cart amount 1`] = `
   >
     <CartIcon />
     <CartButtonBadge
-      className="css-ggepo6"
       productCount={5}
     />
   </Ripple>

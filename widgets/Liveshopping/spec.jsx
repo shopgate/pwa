@@ -1,12 +1,5 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Card from 'Components/Card';
 import PriceStriked from 'Components/PriceStriked';
 import LiveshoppingWidget from './index';
@@ -53,26 +46,22 @@ describe('<LiveshoppingWidget />', () => {
   ];
 
   it('should not render the widget without any data', () => {
-    const wrapper = shallow(
-      <LiveshoppingWidget
-        settings={settings}
-        getLiveshoppingProducts={getLiveshoppingProductsMock}
-        products={[]}
-      />
-    );
+    const wrapper = shallow(<LiveshoppingWidget
+      settings={settings}
+      getLiveshoppingProducts={getLiveshoppingProductsMock}
+      products={[]}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Card).length).toBe(0);
   });
 
   it('should render the widget with no slider for one product', () => {
-    const wrapper = shallow(
-      <LiveshoppingWidget
-        settings={settings}
-        getLiveshoppingProducts={getLiveshoppingProductsMock}
-        products={[products[0]]}
-      />
-    );
+    const wrapper = shallow(<LiveshoppingWidget
+      settings={settings}
+      getLiveshoppingProducts={getLiveshoppingProductsMock}
+      products={[products[0]]}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Card).length).toBe(1);
@@ -80,13 +69,11 @@ describe('<LiveshoppingWidget />', () => {
   });
 
   it('should render the widget with a slider for multiple products', () => {
-    const wrapper = shallow(
-      <LiveshoppingWidget
-        settings={settings}
-        getLiveshoppingProducts={getLiveshoppingProductsMock}
-        products={products}
-      />
-    );
+    const wrapper = shallow(<LiveshoppingWidget
+      settings={settings}
+      getLiveshoppingProducts={getLiveshoppingProductsMock}
+      products={products}
+    />);
 
     const expectedCards = products.length;
 

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -21,16 +14,20 @@ const CLICK_DELAY = 250;
  * Handles an Item click by executing it's href.
  * @param {Object} props The component props.
  * @param {string} props.href A url string.
+ * @param {string} props.link A url string (compatibility with `NAV_MENU_CONTENT_BEFORE` portal).
  * @param {Function} props.close A callback.
  */
-const handleClick = ({ onClick, href, close }) => {
+const handleClick = ({
+  onClick, href, link, close,
+}) => {
   setTimeout(() => {
+    const url = href || link;
     // Perform onClick callback
     onClick();
 
-    if (href) {
+    if (url) {
       // Open parsed link
-      new ParsedLink(href).open(history);
+      new ParsedLink(url).open(history);
     }
 
     // Call close callback from drawer
@@ -43,11 +40,9 @@ const handleClick = ({ onClick, href, close }) => {
  * @returns {JSX}
  */
 const Item = (props) => {
-  const className = classNames(
-    styles.container, {
-      [styles.primary]: props.primary,
-    }
-  );
+  const className = classNames(styles.container, {
+    [styles.primary]: props.primary,
+  });
 
   const labelClassName =
           props.withIndicator && !props.count ? styles.labelWithIndicator : styles.label;

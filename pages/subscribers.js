@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 // PWA Common
 import commonApp from '@shopgate/pwa-common/subscriptions/app';
 import commonUser from '@shopgate/pwa-common/subscriptions/user';
@@ -29,6 +22,7 @@ import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
 import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
 // Theme
 import navigator from 'Components/Navigator/subscriptions';
+import viewport from 'Components/Viewport/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
@@ -72,6 +66,7 @@ const subscriptions = [
   trackingDeeplinkPush,
   // Theme subscribers.
   navigator,
+  viewport,
   category,
   coupon,
   favorites,

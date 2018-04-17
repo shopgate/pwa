@@ -1,11 +1,5 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { connect } from 'react-redux';
+import { isIos } from '@shopgate/pwa-common/selectors/client';
 import deleteProductsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteProductsFromCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -16,6 +10,7 @@ import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
+  isIos: isIos(state),
   currency: getCurrency(state),
 });
 

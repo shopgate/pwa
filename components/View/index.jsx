@@ -1,15 +1,9 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
+import event from '@shopgate/pwa-core/classes/Event';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
@@ -33,6 +27,7 @@ class View extends Component {
       script: PropTypes.array,
       style: PropTypes.array,
     }),
+    isFullscreen: PropTypes.bool,
     style: PropTypes.shape(),
     title: PropTypes.string,
     viewTop: PropTypes.bool,
@@ -46,6 +41,7 @@ class View extends Component {
       script: [],
       style: [],
     },
+    isFullscreen: false,
     style: null,
     title: '',
     viewTop: true,
@@ -66,6 +62,12 @@ class View extends Component {
     // Store the active pathname at instantiation
     this.pathname = context.routePath;
     this.element = null;
+
+    this.state = {
+      keyboardHeight: 0,
+    };
+
+    event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
 
   /**
@@ -110,6 +112,18 @@ class View extends Component {
    */
   setRef = (ref) => {
     this.element = ref;
+  }
+
+  /**
+   * Handles a keyboard change event.
+   * @param {boolean} open If the keyboard is now open.
+   * @param {boolean} overlap The height of the keyboard.
+   */
+  handleKeyboardChange = ({ open, overlap }) => {
+    const height = open ? overlap : 0;
+    this.setState({
+      keyboardHeight: height,
+    });
   }
 
   /**
@@ -174,7 +188,11 @@ class View extends Component {
    * @returns {JSX}
    */
   render() {
-    let contentStyle = styles.content(this.props.hasNavigator);
+    let contentStyle = styles.content(
+      this.props.hasNavigator,
+      this.props.isFullscreen,
+      this.state.keyboardHeight
+    );
 
     const { children } = this.props;
 

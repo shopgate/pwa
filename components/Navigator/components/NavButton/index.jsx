@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -53,7 +46,6 @@ class NavButton extends Component {
     filterAttributeOpen: PropTypes.bool.isRequired,
     filterOpen: PropTypes.bool.isRequired,
     loginOpen: PropTypes.bool.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     path: PropTypes.string.isRequired,
     toggleNavDrawer: PropTypes.func.isRequired,
     goBackHistory: PropTypes.func,
@@ -101,7 +93,8 @@ class NavButton extends Component {
       nextProps.showIconShadow !== this.props.showIconShadow ||
       nextProps.filterOpen !== this.props.filterOpen ||
       nextProps.filterAttributeOpen !== this.props.filterAttributeOpen ||
-      nextProps.loginOpen !== this.props.loginOpen
+      nextProps.loginOpen !== this.props.loginOpen ||
+      nextProps.path !== this.props.path
     );
   }
 
@@ -109,13 +102,16 @@ class NavButton extends Component {
    * Handles a click on the icon.
    */
   handleClick = () => {
-    if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
+    if (
+      this.props.path !== INDEX_PATH &&
+      (this.props.filterOpen || this.state.type === NAV_STATE_BACK)
+    ) {
       this.props.goBackHistory();
       return;
     }
 
     this.props.toggleNavDrawer(true);
-  }
+  };
 
   /**
    * Returns the icon for the button.
@@ -126,7 +122,10 @@ class NavButton extends Component {
       return <CrossIcon />;
     }
 
-    if (this.state.type === NAV_STATE_BACK || this.props.filterAttributeOpen) {
+    if (
+      this.props.path !== INDEX_PATH &&
+      (this.state.type === NAV_STATE_BACK || this.props.filterAttributeOpen)
+    ) {
       return <ArrowIcon shadow={this.props.showIconShadow} />;
     }
 

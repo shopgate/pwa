@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
@@ -41,11 +34,13 @@ class Product extends Component {
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
     deleteProduct: PropTypes.func,
+    isIos: PropTypes.bool,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static defaultProps = {
+    isIos: false,
     deleteProduct: () => {},
     updateProduct: () => {},
     onToggleFocus: () => {},
@@ -94,11 +89,13 @@ class Product extends Component {
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
    */
   toggleEditMode = (isEnabled = true) => {
-    if (isEnabled) {
+    if (!this.props.isIos && isEnabled) {
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
        * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       *
+       * This should not happen on iOS devices, since their webviews behave different.
        */
       setTimeout(() => {
         const yOffset = -(window.innerHeight / 2)
