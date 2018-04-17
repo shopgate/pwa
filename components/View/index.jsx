@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
@@ -28,7 +21,6 @@ class View extends Component {
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
     hasNavigator: PropTypes.bool,
-    hasTabBar: PropTypes.bool,
     head: PropTypes.shape({
       meta: PropTypes.array,
       link: PropTypes.array,
@@ -43,7 +35,6 @@ class View extends Component {
 
   static defaultProps = {
     hasNavigator: true,
-    hasTabBar: true,
     head: {
       meta: [],
       link: [],
@@ -199,7 +190,6 @@ class View extends Component {
   render() {
     const contentStyle = styles.content(
       this.props.hasNavigator,
-      this.props.hasTabBar,
       this.props.isFullscreen,
       this.state.keyboardHeight
     );

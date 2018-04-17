@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -17,11 +10,11 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 const Properties = ({ properties }) => (
   <Grid.Item component="div">
     <ul>
-      {properties.map(({ label, value }) =>
+      {properties.map(({ label, value }) => (
         <li key={`${label}-${value}`}>
           {label}: {value}
         </li>
-      )}
+      ))}
     </ul>
   </Grid.Item>
 );

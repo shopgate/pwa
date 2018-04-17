@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
@@ -23,6 +16,23 @@ const title = css({
 
 const content = css({
   lineHeight: 1.7,
+  ' ul': {
+    listStyle: 'disc',
+  },
+  ' ol': {
+    listStyle: 'decimal',
+  },
+  ' ul, ol': {
+    margin: '.75em 0',
+    paddingLeft: '1.2em',
+  },
+  ' a': {
+    color: colors.primary,
+    margin: '-.35em',
+    padding: '.35em',
+    position: 'relative',
+    zIndex: 1,
+  }
 }).toString();
 
 const placeholder = css({

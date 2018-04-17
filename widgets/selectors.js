@@ -1,15 +1,9 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
-import { getPopulatedProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {getPopulatedProductsResult} from '@shopgate/pwa-common-commerce/product/selectors/product';
+import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 
 /**
  * Retrieves the result hash.
@@ -33,7 +27,7 @@ const getResultHash = (state, type, params, id) => {
     case 1: {
       hashParams = {
         id,
-        pipeline: 'getHighlightProducts',
+        pipeline: pipelines.SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
         sort: transformedSort,
       };
 
@@ -76,7 +70,6 @@ const getResultHash = (state, type, params, id) => {
     default:
   }
 
-
   // Generate the hash string.
   return generateResultHash(hashParams, true, false);
 };
@@ -116,5 +109,5 @@ export const getProductsFetchingState = createSelector(
   state => state,
   getResultHash,
   getResultByHash,
-  (state, hash, result) => result ? result.isFetching : null
+  (state, hash, result) => (result ? result.isFetching : null)
 );

@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
@@ -18,7 +11,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const ImageSliderWidget = (props) => {
-  const settings = props.settings;
+  const { settings } = props;
 
   return (
     <ImageSlider
@@ -57,13 +50,13 @@ ImageSliderWidget.propTypes = {
     delay: PropTypes.number.isRequired, // The delay between the automatic slides
     pagination: PropTypes.bool.isRequired, // Show the pagination (dots)?
     loop: PropTypes.bool.isRequired, // Wrap the slider content when it reached the last image?
-    images: PropTypes.arrayOf( // An array of images to display
+    images: PropTypes.arrayOf(( // An array of images to display
       PropTypes.shape({
         image: PropTypes.string.isRequired, // The image URL
         link: PropTypes.string, // The link to the image
         alt: PropTypes.string, // The alternative title for images that could not be loaded.
       })
-    ).isRequired,
+    )).isRequired,
   }).isRequired,
   className: PropTypes.string, // Additional styles to append to the image slider.
 };

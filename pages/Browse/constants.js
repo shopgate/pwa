@@ -1,8 +1,10 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 export const BROWSE_PATH = '/browse';
+
+const BROWSE = 'browse';
+const CATEGORY_LIST = 'category-list';
+const BEFORE = 'before';
+const AFTER = 'after';
+
+export const BROWSE_CATEGORY_LIST_BEFORE = `${BROWSE}.${CATEGORY_LIST}.${BEFORE}`;
+export const BROWSE_CATEGORY_LIST = `${BROWSE}.${CATEGORY_LIST}`;
+export const BROWSE_CATEGORY_LIST_AFTER = `${BROWSE}.${CATEGORY_LIST}.${AFTER}`;

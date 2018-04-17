@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from './connector';
@@ -85,7 +78,9 @@ class ClientInformation extends Component {
     }
 
     const { isDeviceIdVisible } = this.state;
-    const { appVersion, libVersion, deviceId, codebaseVersion } = this.props.client;
+    const {
+      appVersion, libVersion, deviceId, codebaseVersion,
+    } = this.props.client;
 
     return (
       <div className={styles.wrapper} onTouchStart={this.startTimer}>

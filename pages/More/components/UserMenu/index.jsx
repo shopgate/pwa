@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -72,29 +65,11 @@ class UserMenu extends Component {
           }}
         />
         <List>
-          <Portal
-            name={commonPortals.NAV_MENU_LOGOUT_BEFORE}
-            props={{
-              Item: List.Item,
-              handleLogout: this.props.logout,
-            }}
-          />
-          <Portal
-            name={commonPortals.NAV_MENU_LOGOUT}
-            props={{
-              Item: List.Item,
-              handleLogout: this.props.logout,
-            }}
-          >
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT}>
             <List.Item title="navigation.logout" onClick={this.props.logout} />
           </Portal>
-          <Portal
-            name={commonPortals.NAV_MENU_LOGOUT_AFTER}
-            props={{
-              Item: List.Item,
-              handleLogout: this.props.logout,
-            }}
-          />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} />
         </List>
       </div>
     );

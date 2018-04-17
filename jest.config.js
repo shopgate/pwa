@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 // Require the default configuration.
 const defaultConfig = require('@shopgate/pwa-unit-test/jest.config');
 
@@ -20,17 +13,12 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   testPathIgnorePatterns: [
-    '/node_modules/',
+    ...defaultConfig.testPathIgnorePatterns,
     '/extensions/',
-    '/public/',
-    '/coverage/',
-    '/components/Widgets/',
+    '/widgets/',
   ],
   coveragePathIgnorePatterns: [
-    '/node_modules/',
     '/extensions/',
-    '/public/',
-    '/coverage/',
-    '/components/Widgets/',
+    '/widgets/',
   ],
 };

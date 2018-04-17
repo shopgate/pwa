@@ -1,11 +1,4 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
@@ -13,6 +6,8 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import ImageSlider from 'Components/ImageSlider';
 import Card from 'Components/Card';
 import DiscountBadge from 'Components/DiscountBadge';
@@ -75,12 +70,19 @@ const createProductSliderItem = ({
             <Grid.Item className={styles.infoPane}>
               <div>
                 {price.discount > 0 ?
-                  <DiscountBadge
-                    text="liveshopping.discount_badge"
-                    discount={price.discount}
-                    display="big"
-                    className={styles.discountBadge}
-                  />
+                  <Fragment>
+                    <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: id }} />
+                    <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: id }}>
+                      <DiscountBadge
+                        text="liveshopping.discount_badge"
+                        discount={price.discount}
+                        display="big"
+                        className={styles.discountBadge}
+                      />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: id }} />
+                  </Fragment>
+
                   : null
                 }
                 <Ellipsis
@@ -134,7 +136,7 @@ createProductSliderItem.propTypes = {
 /**
  * The live shopping (deal of the day) widget.
  */
-class LiveshoppingWidget extends React.Component {
+class LiveshoppingWidget extends Component {
   /**
    * Requests the liveshopping product data when the component is mounted.
    */

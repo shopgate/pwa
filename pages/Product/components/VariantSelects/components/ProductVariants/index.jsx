@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import find from 'lodash/find';
@@ -183,7 +176,7 @@ export default WrappedComponent => class extends Component {
    * @param {string} currentProductVariantId current product variant id form store
    */
   handleVariantPreselection(variants, currentProductVariantId) {
-    const { characteristics } = find(variants.products, { id: currentProductVariantId });
+    const { characteristics = {} } = find(variants.products, { id: currentProductVariantId }) || {};
 
     Object.keys(characteristics).forEach((characteristicId) => {
       const characteristicValueId = characteristics[characteristicId];

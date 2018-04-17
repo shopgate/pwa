@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
@@ -27,6 +20,8 @@ const title = css({
   fontSize: 'initial',
   lineHeight: 1.2,
   paddingRight: '1.5em',
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
 }).toString();
 
 const priceWrapper = css({

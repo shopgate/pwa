@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import { css } from 'glamor';
 
 const name = css({
@@ -12,7 +5,8 @@ const name = css({
   fontSize: '1.25rem',
   lineHeight: '1.25',
   marginBottom: 2,
-  marginRight: 72,
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
 }).toString();
 
 const placeholder = css({

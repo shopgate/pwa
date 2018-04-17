@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -58,7 +51,24 @@ class More extends Component {
 
     return (
       <View>
-        <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
+        {/* USER MENU */}
+        <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={{
+          ...props,
+          user,
+          handleLogout: logout,
+        }} />
+        <Portal name={portals.USER_MENU_CONTAINER} props={{
+          ...props,
+          user,
+          handleLogout: logout,
+        }}>
+          <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
+        </Portal>
+        <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={{
+          ...props,
+          user,
+          handleLogout: logout,
+        }} />
 
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
 

@@ -1,16 +1,9 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import getTabActionComponentForType from './helpers/getTabActionComponentForType';
 import connect from './connector';
-import styles from './style';
+import styles, { updateHeightCSSProperty } from './style';
 
 /**
  * Renders the action for a given tab configuration.
@@ -45,11 +38,19 @@ const TabBar = ({
   visibleTabs,
   activeTab,
   path,
-}) => (isVisible ? (
-  <Grid className={styles}>
-    {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-  </Grid>
-) : null);
+}) => {
+  updateHeightCSSProperty(isVisible);
+
+  if (!isVisible) {
+    return null;
+  }
+
+  return (
+    <Grid className={styles}>
+      {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+    </Grid>
+  );
+};
 
 TabBar.propTypes = {
   path: PropTypes.string.isRequired,

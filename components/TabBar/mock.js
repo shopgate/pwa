@@ -8,14 +8,14 @@ export const mockedStateDefault = {
   },
 };
 
-export const mockedStateRoute = (path) => ({
+/**
+ * @param {string} path The route pathname
+ * @returns {Object}
+ */
+export const mockedStateRoute = path => ({
   ...mockedStateDefault,
-  ...{
-    history: {
-      ...mockedStateDefault.history,
-      ...{
-        pathname: path,
-      },
-    },
+  history: {
+    ...mockedStateDefault.history,
+    pathname: path,
   },
 });

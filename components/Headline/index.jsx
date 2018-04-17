@@ -1,12 +1,6 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
+import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -23,7 +17,12 @@ const Headline = (props) => {
 
   const content = props.children || <I18n.Text string={props.text} />;
 
-  return hasContent ? <Component className={className}>{content}</Component> : null;
+  return hasContent ? (
+    <Component className={className}>
+      <Ellipsis rows={3}>
+        {content}
+      </Ellipsis>
+    </Component>) : null;
 };
 
 Headline.propTypes = {
@@ -35,7 +34,7 @@ Headline.propTypes = {
 Headline.defaultProps = {
   children: null,
   small: false,
-  text: null,
+  text: '',
 };
 
 export default Headline;

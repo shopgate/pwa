@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Shopgate, Inc. All rights reserved.
- *
- * This source code is licensed under the Apache 2.0 license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 // PWA Common
 import commonApp from '@shopgate/pwa-common/subscriptions/app';
 import commonUser from '@shopgate/pwa-common/subscriptions/user';
@@ -37,10 +30,12 @@ import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import product from 'Pages/Product/subscriptions';
+import addToCartBar from 'Pages/Product/components/AddToCartBar/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
+import cart from 'Pages/Cart/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
@@ -83,9 +78,11 @@ const subscriptions = [
   filterbar,
   login,
   product,
+  addToCartBar,
   search,
   reviews,
   writeReview,
+  cart,
   // Extensions
   ...extensions,
 ];
