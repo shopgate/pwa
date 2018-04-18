@@ -58,6 +58,10 @@ export default WrappedComponent => class extends Component {
     currentProductVariantId: null,
   };
 
+  static contextTypes = {
+    history: PropTypes.shape(),
+  };
+
   /**
    * The component constructor
    * @param {Object} props The component props
@@ -69,6 +73,7 @@ export default WrappedComponent => class extends Component {
       selection: null,
     };
 
+    this.key = null;
     this.selectHelper = null;
     this.productId = null;
   }
@@ -77,6 +82,8 @@ export default WrappedComponent => class extends Component {
    * Fetch variants if available.
    */
   componentDidMount() {
+    this.key = this.context.history.getActive().key;
+
     if (this.props.variants) {
       this.updateFromProps(this.props);
     }
@@ -105,6 +112,11 @@ export default WrappedComponent => class extends Component {
    * @param {Object} [props] The props from which to update
    */
   updateFromProps(props = this.props) {
+    // Don't update when the variant select is in the background
+    if (this.key && (this.key !== this.context.history.getActive().key)) {
+      return;
+    }
+
     const { variants, currentBaseProductId, currentProductVariantId } = props;
 
     if (!this.selectHelper && variants) {
