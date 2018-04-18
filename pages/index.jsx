@@ -1,7 +1,6 @@
 import React from 'react';
-import '@shopgate/pwa-common/styles/reset';
+import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import 'Styles/fonts';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
 import AuthRoutes from '@shopgate/pwa-common/components/Router/components/AuthRoutes';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
@@ -75,4 +74,4 @@ const Pages = () => (
   </App>
 );
 
-export default Pages;
+export default hot(module)(Pages);
