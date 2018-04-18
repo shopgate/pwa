@@ -188,13 +188,8 @@ const mockedEmpty = {
   ...{
     filter: {
       activeFilters: [],
-      availableFilters: {
-        '{"categoryId":"men","filters":{},"pipeline":"shopgate.catalog.getFilters"}': {
-          filters: [],
-          isFetching: false,
-        },
-      },
-      activeHash: '{"categoryId":"men","filters":{},"pipeline":"shopgate.catalog.getFilters"}',
+      availableFilters: {},
+      activeHash: '',
       temporaryFilters: {},
     },
   },
