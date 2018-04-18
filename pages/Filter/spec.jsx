@@ -38,11 +38,12 @@ describe('<Filter> page', () => {
   it('should render', () => {
     const component = createComponent(mockedState);
     expect(component.find('Filter').exists()).toBe(true);
+    expect(component.find('CardList').children().length).toBeTruthy();
     expect(component).toMatchSnapshot();
   });
 
   it('should render empty', () => {
     const component = createComponent(mockedEmpty);
-    expect(component.find('CardList').children().length).toBe(0);
+    expect(component.find('Filter').children().length).toBe(0);
   });
 });
