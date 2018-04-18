@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import cloneDeep from 'lodash/cloneDeep';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/filter/constants/Portals';
 import {
   FILTER_TYPE_RANGE,
   FILTER_TYPE_MULTISELECT,
@@ -112,14 +114,20 @@ class Filter extends Component {
             {this.enrichedAvailableFilters.map(filter => (
               <CardList.Item key={filter.id}>
                 {(filter.type === FILTER_TYPE_RANGE) && (
-                  <div key={filter.id} className={styles.filterContainer}>
-                    <PriceRangeSlider
-                      min={filter.minimum}
-                      max={filter.maximum}
-                      value={filter.active}
-                      onChange={filter.handleChange}
-                    />
-                  </div>
+                  <Fragment>
+                    <Portal name={portals.FILTER_PRICE_RANGE_BEFORE} props={{ filter }} />
+                    <Portal name={portals.FILTER_PRICE_RANGE} props={{ filter }}>
+                      <div key={filter.id} className={styles.filterContainer}>
+                        <PriceRangeSlider
+                          min={filter.minimum}
+                          max={filter.maximum}
+                          value={filter.active}
+                          onChange={filter.handleChange}
+                        />
+                      </div>
+                    </Portal>
+                    <Portal name={portals.FILTER_PRICE_RANGE_AFTER} props={{ filter }} />
+                  </Fragment>
                 )}
                 {(filter.type !== FILTER_TYPE_RANGE) && (
                   <ListItem filter={filter} key={filter.id} />
