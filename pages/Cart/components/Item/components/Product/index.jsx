@@ -38,14 +38,14 @@ class Product extends Component {
 
   static defaultProps = {
     deleteProduct: () => {},
-    updateProduct: () => {},
     onToggleFocus: () => {},
+    updateProduct: () => {},
   };
 
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
-  }
+  };
 
   /**
    * Constructor.
