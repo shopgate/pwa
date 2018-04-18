@@ -190,8 +190,117 @@ const selectionUpdate = [{
   }],
 }];
 
+const selectionDone = [{
+  disabled: false,
+  id: '1',
+  label: 'Color',
+  selected: true,
+  value: '1',
+  values: [{
+    disabled: false,
+    id: '1',
+    label: 'Black',
+    selected: true,
+    availability: null,
+  }, {
+    disabled: false,
+    id: '2',
+    label: 'Blue',
+    selected: false,
+    availability: null,
+  }],
+}, {
+  disabled: false,
+  id: '2',
+  label: 'Size',
+  selected: true,
+  value: '2',
+  values: [{
+    availability: {
+      state: 'waning',
+      text: 'Limited stock available',
+    },
+    disabled: false,
+    id: '1',
+    label: '0',
+    selected: false,
+  }, {
+    availability: {
+      state: 'alert',
+      text: 'Out of stock',
+    },
+    disabled: false,
+    id: '2',
+    label: '11',
+    selected: true,
+  }, {
+    availability: null,
+    disabled: false,
+    id: '3',
+    label: '7',
+    selected: false,
+  }],
+}];
+
+const mockedState = {
+  product: {
+    currentProduct: {
+      productId: '1013',
+      productVariantId: null,
+    },
+    variantsByProductId: {
+      1013: {
+        isFetching: false,
+        variants,
+      },
+    },
+    productsById: {
+      1013: {
+        productData: {
+          id: 1013,
+        },
+      },
+      '1013-1014': {
+        productData: {
+          id: '1013-1014',
+        },
+      },
+      '1013-1018': {
+        productData: {
+          id: '1013-1015',
+        },
+      },
+    },
+    descriptionsByProductId: {
+      1013: {
+        description: 'test',
+      },
+    },
+    propertiesByProductId: {
+      1013: {
+        properties: [],
+      },
+    },
+    imagesByProductId: {
+      1013: {
+        images: [],
+      },
+    },
+    shippingByProductId: {
+      1013: {
+        shipping: {},
+      },
+    },
+  },
+  history: {
+    pathname: 'item/1013',
+  },
+};
+
 export {
   initialSelection,
+  mockedState,
+  selectionDone,
   selectionUpdate,
   variants,
 };
