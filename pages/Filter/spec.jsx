@@ -16,6 +16,7 @@ const mockedStore = configureStore();
 /**
  * Creates component
  * @return {ReactWrapper}
+ * @param {Object} state Component state
  */
 const createComponent = (state) => {
   /* eslint-disable global-require */
