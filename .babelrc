@@ -5,6 +5,7 @@
   ],
   "plugins": [
     "lodash",
+    "react-hot-loader/babel",
     "transform-object-rest-spread",
     "transform-class-properties",
     "transform-export-extensions",
@@ -27,7 +28,6 @@
   "env": {
     "development": {
       "plugins": [
-        "react-hot-loader/babel",
         [
           "react-transform",
           {

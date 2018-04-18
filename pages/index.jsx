@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import '@shopgate/pwa-common/styles/reset';
-import 'Styles/fonts';
+import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
@@ -80,4 +79,4 @@ const Pages = () => (
   </App>
 );
 
-export default Pages;
+export default hot(module)(Pages);
