@@ -28,9 +28,9 @@ export default function setup(subscribe) {
     new UnifiedPlugin();
 
     try {
-      // eslint-disable-next-line no-undef
-      const extensionsIndex = (await import(`${__THEME_PATH__}/extensions/tracking`)).default;
-      const trackingExtensions = componentsConfig.tracking;
+      // eslint-disable-next-line no-undef, global-require, import/no-dynamic-require
+      const extensionsIndex = require(`${__THEME_PATH__}/extensions/tracking`).default;
+      const trackingExtensions = componentsConfig.tracking || {};
 
       Object.keys(trackingExtensions).forEach((key) => {
         const pluginInit = extensionsIndex[key];
