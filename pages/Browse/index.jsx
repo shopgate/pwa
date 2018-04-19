@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
 import View from 'Components/View';
 import CategoryList from 'Components/CategoryList';
 import Headline from 'Components/Headline';
 import connect from './connector';
 import SearchField from './components/SearchField';
+import {
+  BROWSE_CATEGORY_LIST_BEFORE,
+  BROWSE_CATEGORY_LIST,
+  BROWSE_CATEGORY_LIST_AFTER,
+} from './constants';
 
 /**
  * Renders the browser page.
@@ -41,7 +47,11 @@ class Browse extends Component {
         <Headline text="titles.browse" />
         <SearchField />
         <Headline text="titles.categories" small />
-        <CategoryList categories={this.props.categories || []} />
+        <Portal name={BROWSE_CATEGORY_LIST_BEFORE} props={{categories: this.props.categories || []}}/>
+        <Portal name={BROWSE_CATEGORY_LIST} props={{categories: this.props.categories || []}} >
+          <CategoryList categories={this.props.categories || []} />
+        </Portal>
+        <Portal name={BROWSE_CATEGORY_LIST_AFTER} props={{categories: this.props.categories || []}}/>
       </View>
     );
   }
