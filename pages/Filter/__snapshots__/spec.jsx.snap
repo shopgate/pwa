@@ -1,0 +1,1216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter> page should render 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(SGConnect)>
+    <SGConnect
+      availableFilters={
+        Array [
+          Object {
+            "id": "display_amount",
+            "label": "Price",
+            "maximum": 3499,
+            "minimum": 1250,
+            "type": "range",
+            "url": "/filter/display-amount",
+          },
+          Object {
+            "id": "manufacturer",
+            "label": "Brand",
+            "source": "manufacturer",
+            "type": "multiselect",
+            "url": "/filter/manufacturer",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "Acme",
+                "label": "Acme",
+              },
+              Object {
+                "hits": 3,
+                "id": "Material Fashion",
+                "label": "Material Fashion",
+              },
+            ],
+          },
+          Object {
+            "id": "Color",
+            "label": "Color",
+            "source": "attributes",
+            "type": "multiselect",
+            "url": "/filter/color",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "Blue",
+                "label": "Blue",
+              },
+              Object {
+                "hits": 1,
+                "id": "Green",
+                "label": "Green",
+              },
+              Object {
+                "hits": 1,
+                "id": "Red",
+                "label": "Red",
+              },
+            ],
+          },
+          Object {
+            "id": "Length",
+            "label": "Length",
+            "source": "attributes",
+            "type": "multiselect",
+            "url": "/filter/length",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "60",
+                "label": "60",
+              },
+              Object {
+                "hits": 1,
+                "id": "80",
+                "label": "80",
+              },
+            ],
+          },
+          Object {
+            "id": "Size",
+            "label": "Size",
+            "source": "attributes",
+            "type": "multiselect",
+            "url": "/filter/size",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "2X-Large",
+                "label": "2X-Large",
+              },
+              Object {
+                "hits": 1,
+                "id": "3X-Large",
+                "label": "3X-Large",
+              },
+              Object {
+                "hits": 1,
+                "id": "Large",
+                "label": "Large",
+              },
+              Object {
+                "hits": 1,
+                "id": "Medium",
+                "label": "Medium",
+              },
+              Object {
+                "hits": 1,
+                "id": "Small",
+                "label": "Small",
+              },
+              Object {
+                "hits": 1,
+                "id": "X-Large",
+                "label": "X-Large",
+              },
+              Object {
+                "hits": 1,
+                "id": "X-Small",
+                "label": "X-Small",
+              },
+            ],
+          },
+          Object {
+            "id": "Title",
+            "label": "Title",
+            "source": "attributes",
+            "type": "multiselect",
+            "url": "/filter/title",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "Lithograph - Height: 9\\" x Width: 12\\"",
+                "label": "Lithograph - Height: 9\\" x Width: 12\\"",
+              },
+              Object {
+                "hits": 1,
+                "id": "Medium",
+                "label": "Medium",
+              },
+              Object {
+                "hits": 1,
+                "id": "Small",
+                "label": "Small",
+              },
+            ],
+          },
+          Object {
+            "id": "Width",
+            "label": "Width",
+            "source": "attributes",
+            "type": "multiselect",
+            "url": "/filter/width",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "20",
+                "label": "20",
+              },
+              Object {
+                "hits": 1,
+                "id": "40",
+                "label": "40",
+              },
+            ],
+          },
+        ]
+      }
+      mergeTemporaryFilters={[Function]}
+      queryParams=""
+      removeTemporaryFilter={[Function]}
+      routedConnectPathname="/filter"
+      temporaryFilters={Object {}}
+    >
+      <Filter
+        availableFilters={
+          Array [
+            Object {
+              "id": "display_amount",
+              "label": "Price",
+              "maximum": 3499,
+              "minimum": 1250,
+              "type": "range",
+              "url": "/filter/display-amount",
+            },
+            Object {
+              "id": "manufacturer",
+              "label": "Brand",
+              "source": "manufacturer",
+              "type": "multiselect",
+              "url": "/filter/manufacturer",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "Acme",
+                  "label": "Acme",
+                },
+                Object {
+                  "hits": 3,
+                  "id": "Material Fashion",
+                  "label": "Material Fashion",
+                },
+              ],
+            },
+            Object {
+              "id": "Color",
+              "label": "Color",
+              "source": "attributes",
+              "type": "multiselect",
+              "url": "/filter/color",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "Blue",
+                  "label": "Blue",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Green",
+                  "label": "Green",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Red",
+                  "label": "Red",
+                },
+              ],
+            },
+            Object {
+              "id": "Length",
+              "label": "Length",
+              "source": "attributes",
+              "type": "multiselect",
+              "url": "/filter/length",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "60",
+                  "label": "60",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "80",
+                  "label": "80",
+                },
+              ],
+            },
+            Object {
+              "id": "Size",
+              "label": "Size",
+              "source": "attributes",
+              "type": "multiselect",
+              "url": "/filter/size",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "2X-Large",
+                  "label": "2X-Large",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "3X-Large",
+                  "label": "3X-Large",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Large",
+                  "label": "Large",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Medium",
+                  "label": "Medium",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Small",
+                  "label": "Small",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "X-Large",
+                  "label": "X-Large",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "X-Small",
+                  "label": "X-Small",
+                },
+              ],
+            },
+            Object {
+              "id": "Title",
+              "label": "Title",
+              "source": "attributes",
+              "type": "multiselect",
+              "url": "/filter/title",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "Lithograph - Height: 9\\" x Width: 12\\"",
+                  "label": "Lithograph - Height: 9\\" x Width: 12\\"",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Medium",
+                  "label": "Medium",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "Small",
+                  "label": "Small",
+                },
+              ],
+            },
+            Object {
+              "id": "Width",
+              "label": "Width",
+              "source": "attributes",
+              "type": "multiselect",
+              "url": "/filter/width",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "20",
+                  "label": "20",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "40",
+                  "label": "40",
+                },
+              ],
+            },
+          ]
+        }
+        mergeTemporaryFilters={[Function]}
+        queryParams=""
+        removeTemporaryFilter={[Function]}
+        routedConnectPathname="/filter"
+        temporaryFilters={Object {}}
+      >
+        <MockedView
+          title="titles.filter"
+        >
+          <div>
+            <div
+              className="css-10d50q1"
+            >
+              <CardList>
+                <List
+                  className=""
+                >
+                  <ul
+                    className="css-gkw1j5 "
+                  >
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$display_amount"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <Portal
+                            name="filter.price-range.before"
+                            props={
+                              Object {
+                                "filter": Object {
+                                  "active": Array [
+                                    1250,
+                                    3499,
+                                  ],
+                                  "handleChange": [Function],
+                                  "id": "display_amount",
+                                  "label": "Price",
+                                  "maximum": 3499,
+                                  "minimum": 1250,
+                                  "type": "range",
+                                  "url": "/filter/display-amount",
+                                },
+                              }
+                            }
+                          />
+                          <Portal
+                            name="filter.price-range"
+                            props={
+                              Object {
+                                "filter": Object {
+                                  "active": Array [
+                                    1250,
+                                    3499,
+                                  ],
+                                  "handleChange": [Function],
+                                  "id": "display_amount",
+                                  "label": "Price",
+                                  "maximum": 3499,
+                                  "minimum": 1250,
+                                  "type": "range",
+                                  "url": "/filter/display-amount",
+                                },
+                              }
+                            }
+                          >
+                            <div
+                              className="css-1tgouoh"
+                              key="display_amount"
+                            >
+                              <PriceRangeSlider
+                                max={3499}
+                                min={1250}
+                                onChange={[Function]}
+                                value={
+                                  Array [
+                                    1250,
+                                    3499,
+                                  ]
+                                }
+                              >
+                                <div
+                                  className="css-1ifkpbu"
+                                >
+                                  <Translate
+                                    className=""
+                                    params={Object {}}
+                                    string="price.range"
+                                  >
+                                    <span
+                                      className=""
+                                    >
+                                      price.range
+                                      <Placeholder
+                                        forKey="fromPrice"
+                                        key=".0"
+                                      >
+                                        <span>
+                                          <span
+                                            className="css-1m6wuts"
+                                          >
+                                            <FormatPrice
+                                              className=""
+                                              currency="price.currency"
+                                              fractions={false}
+                                              price={12}
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                p
+                                              </span>
+                                            </FormatPrice>
+                                          </span>
+                                        </span>
+                                      </Placeholder>
+                                    </span>
+                                  </Translate>
+                                  <RangeSlider
+                                    animationSpeed={500}
+                                    classNames={
+                                      Object {
+                                        "container": "css-x355v3",
+                                        "handleInner": "css-ry0i7h",
+                                        "handleOuter": "css-nil",
+                                        "outerRange": "css-1rpifk9",
+                                        "range": "css-1o5lmug",
+                                      }
+                                    }
+                                    easing="exponential"
+                                    factor={3}
+                                    max={3499}
+                                    min={1250}
+                                    onChange={[Function]}
+                                    resolution={1}
+                                    value={
+                                      Array [
+                                        1250,
+                                        3499,
+                                      ]
+                                    }
+                                  >
+                                    <div
+                                      className="css-x355v3"
+                                      onTouchStart={[Function]}
+                                    >
+                                      <div
+                                        className="css-1rpifk9 css-12vo5ad"
+                                      >
+                                        <div
+                                          className="css-1o5lmug css-10eto0a"
+                                          style={
+                                            Object {
+                                              "left": "0%",
+                                              "right": "0%",
+                                              "transition": null,
+                                            }
+                                          }
+                                        >
+                                          <RangeSliderHandle
+                                            active={false}
+                                            classNames={
+                                              Object {
+                                                "container": "css-x355v3",
+                                                "handleInner": "css-ry0i7h",
+                                                "handleOuter": "css-nil",
+                                                "outerRange": "css-1rpifk9",
+                                                "range": "css-1o5lmug",
+                                              }
+                                            }
+                                            index={0}
+                                            onTouchStart={[Function]}
+                                          >
+                                            <div
+                                              className="css-nil css-8mlj8f"
+                                              onTouchStart={[Function]}
+                                              style={
+                                                Object {
+                                                  "zIndex": 0,
+                                                }
+                                              }
+                                            >
+                                              <div
+                                                className="css-ry0i7h"
+                                              />
+                                            </div>
+                                          </RangeSliderHandle>
+                                          <RangeSliderHandle
+                                            active={false}
+                                            classNames={
+                                              Object {
+                                                "container": "css-x355v3",
+                                                "handleInner": "css-ry0i7h",
+                                                "handleOuter": "css-nil",
+                                                "outerRange": "css-1rpifk9",
+                                                "range": "css-1o5lmug",
+                                              }
+                                            }
+                                            index={1}
+                                            onTouchStart={[Function]}
+                                          >
+                                            <div
+                                              className="css-nil css-8mlj8f"
+                                              onTouchStart={[Function]}
+                                              style={
+                                                Object {
+                                                  "zIndex": 0,
+                                                }
+                                              }
+                                            >
+                                              <div
+                                                className="css-ry0i7h"
+                                              />
+                                            </div>
+                                          </RangeSliderHandle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </RangeSlider>
+                                </div>
+                              </PriceRangeSlider>
+                            </div>
+                          </Portal>
+                          <Portal
+                            name="filter.price-range.after"
+                            props={
+                              Object {
+                                "filter": Object {
+                                  "active": Array [
+                                    1250,
+                                    3499,
+                                  ],
+                                  "handleChange": [Function],
+                                  "id": "display_amount",
+                                  "label": "Price",
+                                  "maximum": 3499,
+                                  "minimum": 1250,
+                                  "type": "range",
+                                  "url": "/filter/display-amount",
+                                },
+                              }
+                            }
+                          />
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$manufacturer"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "manufacturer",
+                                "label": "Brand",
+                                "source": "manufacturer",
+                                "type": "multiselect",
+                                "url": "/filter/manufacturer",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Acme",
+                                    "label": "Acme",
+                                  },
+                                  Object {
+                                    "hits": 3,
+                                    "id": "Material Fashion",
+                                    "label": "Material Fashion",
+                                  },
+                                ],
+                              }
+                            }
+                            key="manufacturer"
+                          >
+                            <div
+                              className="css-tfp87"
+                            >
+                              <Link
+                                className=""
+                                href="/filter/manufacturer"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Brand"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Brand
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$Color"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "Color",
+                                "label": "Color",
+                                "source": "attributes",
+                                "type": "multiselect",
+                                "url": "/filter/color",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Blue",
+                                    "label": "Blue",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Green",
+                                    "label": "Green",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Red",
+                                    "label": "Red",
+                                  },
+                                ],
+                              }
+                            }
+                            key="Color"
+                          >
+                            <div
+                              className="css-tfp87"
+                            >
+                              <Link
+                                className=""
+                                href="/filter/color"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Color"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Color
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$Length"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "Length",
+                                "label": "Length",
+                                "source": "attributes",
+                                "type": "multiselect",
+                                "url": "/filter/length",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "60",
+                                    "label": "60",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "80",
+                                    "label": "80",
+                                  },
+                                ],
+                              }
+                            }
+                            key="Length"
+                          >
+                            <div
+                              className="css-tfp87"
+                            >
+                              <Link
+                                className=""
+                                href="/filter/length"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Length"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Length
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$Size"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "Size",
+                                "label": "Size",
+                                "source": "attributes",
+                                "type": "multiselect",
+                                "url": "/filter/size",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "2X-Large",
+                                    "label": "2X-Large",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "3X-Large",
+                                    "label": "3X-Large",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Large",
+                                    "label": "Large",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Medium",
+                                    "label": "Medium",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Small",
+                                    "label": "Small",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "X-Large",
+                                    "label": "X-Large",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "X-Small",
+                                    "label": "X-Small",
+                                  },
+                                ],
+                              }
+                            }
+                            key="Size"
+                          >
+                            <div
+                              className="css-tfp87"
+                            >
+                              <Link
+                                className=""
+                                href="/filter/size"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Size"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Size
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$Title"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "Title",
+                                "label": "Title",
+                                "source": "attributes",
+                                "type": "multiselect",
+                                "url": "/filter/title",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Lithograph - Height: 9\\" x Width: 12\\"",
+                                    "label": "Lithograph - Height: 9\\" x Width: 12\\"",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Medium",
+                                    "label": "Medium",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "Small",
+                                    "label": "Small",
+                                  },
+                                ],
+                              }
+                            }
+                            key="Title"
+                          >
+                            <div
+                              className="css-tfp87"
+                            >
+                              <Link
+                                className=""
+                                href="/filter/title"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Title"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Title
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$Width"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "Width",
+                                "label": "Width",
+                                "source": "attributes",
+                                "type": "multiselect",
+                                "url": "/filter/width",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "20",
+                                    "label": "20",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "40",
+                                    "label": "40",
+                                  },
+                                ],
+                              }
+                            }
+                            key="Width"
+                          >
+                            <div
+                              className="css-tfp87"
+                            >
+                              <Link
+                                className=""
+                                href="/filter/width"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Width"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Width
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                  </ul>
+                </List>
+              </CardList>
+              <Connect(ClearAllButton)
+                isActive={false}
+              >
+                <ClearAllButton
+                  isActive={false}
+                  removeAllTemporaryFilters={[Function]}
+                >
+                  <div
+                    className="css-syjz65"
+                  >
+                    <Button
+                      className=""
+                      disabled={true}
+                      flat={true}
+                      onClick={[Function]}
+                      type="regular"
+                      wrapContent={true}
+                    >
+                      <Button
+                        className="css-hou6yp "
+                        disabled={true}
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="css-hou6yp  css-1rn65c0"
+                          data-test-id="Button"
+                          disabled={true}
+                          onClick={null}
+                        >
+                          <div
+                            className="css-4uxwj9"
+                          >
+                            <Translate
+                              className=""
+                              params={Object {}}
+                              string="filter.clear_all"
+                            >
+                              <span
+                                className=""
+                              >
+                                filter.clear_all
+                              </span>
+                            </Translate>
+                          </div>
+                        </button>
+                      </Button>
+                    </Button>
+                  </div>
+                </ClearAllButton>
+              </Connect(ClearAllButton)>
+            </div>
+          </div>
+        </MockedView>
+      </Filter>
+    </SGConnect>
+  </Connect(SGConnect)>
+</Provider>
+`;
