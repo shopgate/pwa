@@ -16,7 +16,7 @@ const RatingStars = ({ product }) => {
     return null;
   }
 
-  return <Stars value={product.rating.average} className="some" />;
+  return <Stars value={product.rating.average} />;
 };
 
 RatingStars.propTypes = {
