@@ -10,7 +10,7 @@ import styles from './style';
  */
 const AddMoreButton = ({ handleAddToCart }) => (
   <button onClick={handleAddToCart} className={styles.container}>
-    <AddMoreIcon className={styles.iconFlex}/>
+    <AddMoreIcon className={styles.icon}/>
   </button>
 );
 
