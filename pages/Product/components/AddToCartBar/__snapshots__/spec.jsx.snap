@@ -175,9 +175,11 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
                 }
                 onClick={[Function]}
               >
-                <AddMore>
+                <AddMore
+                  className="css-mfy564"
+                >
                   <Icon
-                    className=""
+                    className="css-mfy564"
                     color={null}
                     content="<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
 2.385-.004 1.193 1.193 0 0 0-2.385.004zm-4.4 0a1.193 1.193 0 1 0 1.192-1.192 1.193 1.193 0 0 0-1.198
@@ -189,7 +191,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb css-mfy564"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
@@ -432,9 +434,11 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
                 }
                 onClick={[Function]}
               >
-                <AddMore>
+                <AddMore
+                  className="css-mfy564"
+                >
                   <Icon
-                    className=""
+                    className="css-mfy564"
                     color={null}
                     content="<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
 2.385-.004 1.193 1.193 0 0 0-2.385.004zm-4.4 0a1.193 1.193 0 1 0 1.192-1.192 1.193 1.193 0 0 0-1.198
@@ -446,7 +450,7 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb css-mfy564"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
