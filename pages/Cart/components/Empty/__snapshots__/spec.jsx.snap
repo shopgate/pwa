@@ -5,9 +5,11 @@ exports[`<CartEmpty /> should render 1`] = `
   className="css-12lnmui"
 >
   <Portal
+    name="cart.empty.before"
     props={null}
   />
   <Portal
+    name="cart.empty"
     props={null}
   >
     <div
@@ -30,6 +32,7 @@ exports[`<CartEmpty /> should render 1`] = `
     </div>
   </Portal>
   <Portal
+    name="cart.empty.after"
     props={null}
   />
   <div
