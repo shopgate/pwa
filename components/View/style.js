@@ -3,9 +3,6 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  position: 'absolute',
-  top: 0,
-  left: 0,
   background: colors.light,
   width: '100%',
   height: '100%',
@@ -18,12 +15,15 @@ const container = css({
  * @param {boolean} isFullscreen Whether remove all offsets,
  *                  so that it's really fullscreen (including the notch).
  * @param {number} keyboardHeight The space that is taken by the keyboard.
+ * @param {boolean} considerPaddingTop Whether to consider the natively set inset
+ *                  and compensate itor not.
  * @return {string} The content style class.
  */
 const content = (
   hasNavigator = true,
   isFullscreen = false,
-  keyboardHeight = 0
+  keyboardHeight = 0,
+  considerPaddingTop = false
 ) => {
   const navHeight = hasNavigator ? variables.navigator.height : 0;
 
@@ -34,10 +34,14 @@ const content = (
     width: '100%',
     position: 'absolute',
     top: isFullscreen ? 0 : `calc(${navHeight}px + var(--safe-area-inset-top))`,
-    paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
-    bottom: 0,
     display: 'flex',
     flexDirection: 'column',
+    paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
+    bottom: 0,
+    ...considerPaddingTop && {
+      marginBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
+      bottom: -24,
+    },
   }).toString();
 };
 
