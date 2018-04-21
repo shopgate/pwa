@@ -50,7 +50,6 @@ const setClientInformation = (platform = 'ios', libVersion = '17.0', appVersion 
         platform,
       },
     },
-
   };
 };
 

@@ -119,7 +119,7 @@ const getVersionsFromClientInformation = async () => {
   if (versions !== null) {
     return versions;
   }
-
+  // TODO avoid paralell requests
   // Fetch the client information.
   const clientInformation = await getWebStorageEntry({ name: 'clientInformation' });
 
