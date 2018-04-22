@@ -72,6 +72,7 @@ class AppCommand {
 
   /**
    * Logs the command to the console.
+   * @private
    * @return {AppCommand}
    */
   logCommand() {
@@ -86,6 +87,7 @@ class AppCommand {
 
   /**
    * Creates the command object which will be dispatched through the JavaScript bridge.
+   * @private
    * @return {Object|null}
    */
   buildCommand() {
@@ -132,7 +134,7 @@ class AppCommand {
 
     // Only proceed if the command is supported by the app.
     if (appHasSupport === false) {
-      logger.warn(`Command "${this.name}" is not supported by the app. Required version: ${this.libVersion} | LibVersion: ${appLibVersion}`);
+      logger.warn(`Command "${this.name}" is not supported by LibVersion of the app (required ${this.libVersion} | current ${appLibVersion})`);
       return false;
     }
 

@@ -1,6 +1,5 @@
 import {
   PLATFORM_ANDROID,
-  ANDROID_APP_VERSION_WITHOUT_LIB_CORRECTION,
   MIN_ANDROID_LIB_VERSION,
   isValidVersion,
   isVersionAtLeast,
@@ -57,6 +56,7 @@ describe('Version helper', () => {
   beforeEach(() => {
     mockedWebStorageResponse.mockClear();
     setClientInformation();
+    clearVersionCache();
   });
 
   describe('isValidVersion()', () => {
@@ -214,7 +214,7 @@ describe('Version helper', () => {
     invalids.forEach((v) => {
       it(`should log an error and return false for "${v}"`, () => {
         expect(isVersion(v, '17.5.2')).toBe(false);
-        expect(mockedErrorLogger.mock.calls.length).toBe(1);
+        expect(mockedErrorLogger).toHaveBeenCalledTimes(1);
       });
     });
   });
@@ -256,10 +256,6 @@ describe('Version helper', () => {
   });
 
   describe('getLibVersion()', () => {
-    beforeEach(() => {
-      clearVersionCache();
-    });
-
     it('should work as expected', async () => {
       const { libVersion } = mockedClientInformation;
       const result = await getLibVersion();
@@ -273,19 +269,15 @@ describe('Version helper', () => {
       expect(result).toEqual(libVersion);
     });
 
-    it('should return the minimum lib version for old android apps', async () => {
-      setClientInformation(PLATFORM_ANDROID, '2.0', '5.23');
+    it('should return the minimum lib version for old Android apps', async () => {
+      setClientInformation(PLATFORM_ANDROID, '2.0');
       const result = await getLibVersion();
       expect(result).toEqual(MIN_ANDROID_LIB_VERSION);
     });
 
-    it('should return the real lib version for recent Androd apps', async () => {
+    it('should return the real lib version for recent Android apps', async () => {
       const libVersion = '16.0';
-      setClientInformation(
-        PLATFORM_ANDROID,
-        libVersion,
-        ANDROID_APP_VERSION_WITHOUT_LIB_CORRECTION
-      );
+      setClientInformation(PLATFORM_ANDROID, libVersion);
       const result = await getLibVersion();
       expect(result).toEqual(libVersion);
     });
@@ -296,10 +288,20 @@ describe('Version helper', () => {
       clearVersionCache();
       await isLibVersion('17.0.0');
       await isLibVersion('17.0.0');
-      expect(mockedWebStorageResponse.mock.calls.length).toBe(1);
+      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(1);
       clearVersionCache();
       await isLibVersion('17.0.0');
-      expect(mockedWebStorageResponse.mock.calls.length).toBe(2);
+      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('request handling', () => {
+    it('should only request once for multiple parallel calls', async () => {
+      isLibVersion('17.0.0');
+      isLibVersion('17.0.0');
+      const result = await isLibVersion('17.0.0');
+      expect(result).toBe(true);
+      expect(mockedWebStorageResponse).toHaveBeenCalledTimes(1);
     });
   });
 });

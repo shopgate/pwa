@@ -41,12 +41,12 @@ class DevServerBridge {
 
   /**
    * Dispatches a single command to the dev server.
-   * @param {Array} command The command to dispatch.
+   * @param {Object} command The command to dispatch.
    * @param {string} libVersion The lib version for the command.
    * @return {DevServerBridge}
    */
   dispatchCommandForVersion(command, libVersion) {
-    const { c: name } = command;
+    const { c: name } = command || {};
 
     if (this.supportedCommands.includes(name)) {
       // Append an optional suffix for special command related endpoints
@@ -81,7 +81,7 @@ class DevServerBridge {
 
   /**
    * Handles a response of the dev server.
-   * @param {Object} response The response.
+   * @param {Object} response The server response.
    * @return {DevServerBridge}
    */
   processDevServerResponse(response) {

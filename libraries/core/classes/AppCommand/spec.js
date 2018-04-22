@@ -1,25 +1,26 @@
 import AppCommand from './index';
 
-// Mock of the error logger.
-const mockedErrorLogger = jest.fn();
-const mockedWarnLogger = jest.fn();
-const mockedGroupLogger = jest.fn();
+// Mocks for the logger.
+const mockedLoggerError = jest.fn();
+const mockedLoggerWarn = jest.fn();
 jest.mock('../../helpers', () => ({
   logger: {
     error: (...args) => {
-      mockedErrorLogger(...args);
+      mockedLoggerError(...args);
     },
     warn: (...args) => {
-      mockedWarnLogger(...args);
+      mockedLoggerWarn(...args);
     },
     log: () => {},
-    groupCollapsed: (...args) => {
-      mockedGroupLogger(...args);
-    },
-    groupEnd: () => {},
   },
   hasSGJavaScriptBridge: () => false,
 }));
+
+const mockedLogGroup = jest.fn();
+// eslint-disable-next-line extra-rules/potential-point-free
+jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
+  mockedLogGroup(...args);
+});
 
 // Mock of the DevServer bridge.
 let mockedBridgeDispatch = jest.fn();
@@ -52,9 +53,9 @@ describe('AppCommand', () => {
 
   beforeEach(() => {
     setClientInformation();
-    mockedErrorLogger.mockClear();
-    mockedWarnLogger.mockClear();
-    mockedGroupLogger.mockClear();
+    mockedLoggerError.mockClear();
+    mockedLoggerWarn.mockClear();
+    mockedLogGroup.mockClear();
     mockedBridgeDispatch.mockClear();
     instance = new AppCommand();
   });
@@ -85,7 +86,7 @@ describe('AppCommand', () => {
       const command = instance.setCommandName(17.3);
       expect(command).toEqual(instance);
       expect(command.name).toEqual(initial);
-      expect(mockedErrorLogger.mock.calls.length).toBe(1);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -105,7 +106,7 @@ describe('AppCommand', () => {
       const command = instance.setCommandParams('sendPipelineRequest');
       expect(command).toEqual(instance);
       expect(command.params).toEqual(initial);
-      expect(mockedErrorLogger.mock.calls.length).toBe(1);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -122,7 +123,7 @@ describe('AppCommand', () => {
       const command = instance.setLibVersion('sendPipelineRequest');
       expect(command).toEqual(instance);
       expect(command.libVersion).toEqual(initial);
-      expect(mockedErrorLogger.mock.calls.length).toBe(1);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -131,7 +132,7 @@ describe('AppCommand', () => {
       instance.setCommandName('openPage');
       const command = instance.logCommand();
       expect(command).toEqual(instance);
-      expect(mockedGroupLogger.mock.calls.length).toBe(1);
+      expect(mockedLogGroup).toHaveBeenCalledTimes(1);
     });
 
     it('should not log a command when logging is turned off', () => {
@@ -139,14 +140,14 @@ describe('AppCommand', () => {
       instance.setCommandName('openPage');
       const command = instance.logCommand();
       expect(command).toEqual(instance);
-      expect(mockedGroupLogger.mock.calls.length).toBe(0);
+      expect(mockedLogGroup).toHaveBeenCalledTimes(0);
     });
 
     it('should not log a command when it is blacklisted', () => {
       instance.setCommandName('sendPipelineRequest');
       const command = instance.logCommand();
       expect(command).toEqual(instance);
-      expect(mockedGroupLogger.mock.calls.length).toBe(0);
+      expect(mockedLogGroup).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -202,11 +203,11 @@ describe('AppCommand', () => {
       instance.setCommandName(name);
       const result = await instance.dispatch();
       expect(result).toBe(true);
-      expect(mockedBridgeDispatch.mock.calls.length).toBe(1);
+      expect(mockedBridgeDispatch).toHaveBeenCalledTimes(1);
       expect(mockedBridgeDispatch.mock.calls[0][0][0].c).toBe(name);
       expect(mockedBridgeDispatch.mock.calls[0][1]).toBe(defaultLibVersion);
-      expect(mockedErrorLogger.mock.calls.length).toBe(0);
-      expect(mockedWarnLogger.mock.calls.length).toBe(0);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(0);
+      expect(mockedLoggerWarn).toHaveBeenCalledTimes(0);
     });
 
     it('should set the params if passed to dispatch', async () => {
@@ -218,18 +219,18 @@ describe('AppCommand', () => {
       instance.setCommandName('sendPipelineRequest');
       const result = await instance.dispatch(params);
       expect(result).toBe(true);
-      expect(mockedBridgeDispatch.mock.calls.length).toBe(1);
+      expect(mockedBridgeDispatch).toHaveBeenCalledTimes(1);
       expect(mockedBridgeDispatch.mock.calls[0][0][0].p).toEqual(params);
-      expect(mockedErrorLogger.mock.calls.length).toBe(0);
-      expect(mockedWarnLogger.mock.calls.length).toBe(0);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(0);
+      expect(mockedLoggerWarn).toHaveBeenCalledTimes(0);
     });
 
     it('should not dispatch when no command was set up', async () => {
       const result = await instance.dispatch();
       expect(result).toBe(false);
-      expect(mockedBridgeDispatch.mock.calls.length).toBe(0);
-      expect(mockedErrorLogger.mock.calls.length).toBe(1);
-      expect(mockedWarnLogger.mock.calls.length).toBe(0);
+      expect(mockedBridgeDispatch).toHaveBeenCalledTimes(0);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(1);
+      expect(mockedLoggerWarn).toHaveBeenCalledTimes(0);
     });
 
     it('should not dispatch when the command is not supported by the app', async () => {
@@ -237,9 +238,9 @@ describe('AppCommand', () => {
       instance.setLibVersion('18.0');
       const result = await instance.dispatch();
       expect(result).toBe(false);
-      expect(mockedBridgeDispatch.mock.calls.length).toBe(0);
-      expect(mockedErrorLogger.mock.calls.length).toBe(0);
-      expect(mockedWarnLogger.mock.calls.length).toBe(1);
+      expect(mockedBridgeDispatch).toHaveBeenCalledTimes(0);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(0);
+      expect(mockedLoggerWarn).toHaveBeenCalledTimes(1);
     });
 
     it('should dispatch when the command is not supported by the app but the check is off', async () => {
@@ -250,9 +251,9 @@ describe('AppCommand', () => {
       const result = await instance.dispatch();
       expect(result).toBe(true);
       expect(mockedBridgeDispatch.mock.calls[0][1]).toBe(libVersion);
-      expect(mockedBridgeDispatch.mock.calls.length).toBe(1);
-      expect(mockedErrorLogger.mock.calls.length).toBe(0);
-      expect(mockedWarnLogger.mock.calls.length).toBe(0);
+      expect(mockedBridgeDispatch).toHaveBeenCalledTimes(1);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(0);
+      expect(mockedLoggerWarn).toHaveBeenCalledTimes(0);
     });
 
     it('should handle errors during bridge dispatch', async () => {
@@ -264,9 +265,9 @@ describe('AppCommand', () => {
       instance.setCommandName(name);
       const result = await instance.dispatch();
       expect(result).toBe(false);
-      expect(mockedBridgeDispatch.mock.calls.length).toBe(1);
-      expect(mockedErrorLogger.mock.calls.length).toBe(1);
-      expect(mockedWarnLogger.mock.calls.length).toBe(0);
+      expect(mockedBridgeDispatch).toHaveBeenCalledTimes(1);
+      expect(mockedLoggerError).toHaveBeenCalledTimes(1);
+      expect(mockedLoggerWarn).toHaveBeenCalledTimes(0);
     });
   });
 });

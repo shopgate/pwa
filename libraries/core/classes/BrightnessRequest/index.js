@@ -2,6 +2,10 @@ import event from '../Event';
 import AppCommand from '../AppCommand';
 import { logger } from '../../helpers';
 
+const LIB_VERSION = '17.0';
+const GET_COMMAND_NAME = 'getCurrentBrightness';
+const RESPONSE_EVENT_NAME = 'currentBrightnessResponse';
+
 /**
  * Brightness request handler.
  *
@@ -10,25 +14,21 @@ import { logger } from '../../helpers';
  */
 export class BrightnessRequest {
   /**
-   * Creates get command.
+   * Creates a get command instance.
    * @returns {AppCommand}
    */
-  static makeGetCommand() {
-    const command = new AppCommand();
-    command.setCommandName('getCurrentBrightness');
-    command.setLibVersion('17.0');
-    return command;
+  static createGetCommand() {
+    return new AppCommand()
+      .setCommandName(GET_COMMAND_NAME)
+      .setLibVersion(LIB_VERSION);
   }
 
   /**
-   * Constructs.
+   * Constructor.
    */
   constructor() {
-    this.responseEventName = 'currentBrightnessResponse';
-    this.getCommand = this.constructor.makeGetCommand();
     this.responseQueue = [];
-    this.counter = 0;
-    event.addCallback(this.responseEventName, this.handleResponse);
+    event.addCallback(RESPONSE_EVENT_NAME, this.handleResponse);
   }
 
   /**
@@ -57,14 +57,22 @@ export class BrightnessRequest {
    * @returns {Promise}
    */
   dispatch() {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       this.responseQueue.push({
-        counter: this.counter,
         resolve,
         reject,
       });
 
-      this.getCommand.dispatch();
+      // Create a command instance.
+      const command = this.constructor.createGetCommand();
+      // Dispatch the command. The method will resolve with FALSE in case of an error.
+      const result = await command.dispatch();
+
+      if (result === false) {
+        // Remove the queue entry when the dispatch failed.
+        this.responseQueue.pop();
+        reject(new Error('getCurrentBrightness command dispatch failed'));
+      }
     });
   }
 }

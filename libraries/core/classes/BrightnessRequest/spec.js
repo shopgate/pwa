@@ -1,3 +1,10 @@
+import {
+  mockedSetCommandName,
+  mockedSetLibVersion,
+  mockedDispatch,
+  triggerDispatchError,
+} from '../AppCommand';
+
 const mockedAddCallback = jest.fn();
 jest.mock('../Event', () => ({
   addCallback(...args) {
@@ -5,22 +12,13 @@ jest.mock('../Event', () => ({
   },
 }));
 
-const mockedSetCommandName = jest.fn();
-const mockedSetLibVersion = jest.fn();
-const mockedDispatch = jest.fn();
+jest.mock('../AppCommand');
 
-jest.mock('../AppCommand', () => function MockedAppCommand() {
-  this.setCommandName = (...args) => mockedSetCommandName(...args);
-  this.setLibVersion = (...args) => mockedSetLibVersion(...args);
-  this.dispatch = (...args) => mockedDispatch(...args);
-  return this;
-});
-
-const mockedError = jest.fn();
+const mockedLoggerError = jest.fn();
 jest.mock('../../helpers', () => ({
   logger: {
     error(...args) {
-      mockedError(...args);
+      mockedLoggerError(...args);
     },
   },
 }));
@@ -32,23 +30,27 @@ describe('BrightnessRequest', () => {
   /* eslint-enable global-require */
 
   beforeEach(() => {
+    mockedSetCommandName.mockClear();
+    mockedSetLibVersion.mockClear();
+    mockedDispatch.mockClear();
+
     // Reset the queue for each test
     brightnessRequest.responseQueue = [];
   });
 
-  it('should export already instantiated class', () => {
+  it('should export an already instantiated class', () => {
     expect(brightnessRequest).toBeInstanceOf(BrightnessRequest);
-    expect(mockedSetCommandName).toHaveBeenCalled();
-    expect(mockedSetCommandName.mock.calls[0][0]).toBe('getCurrentBrightness');
-    expect(mockedSetLibVersion).toHaveBeenCalled();
-    expect(mockedSetLibVersion.mock.calls[0][0]).toBe('17.0');
-    expect(brightnessRequest.responseEventName).toBe('currentBrightnessResponse');
     expect(brightnessRequest.responseQueue).toEqual([]);
   });
 
-  it('should dispatch a command and prepare handler for response', async () => {
+  it('should dispatch a command and prepare a handler for response', async () => {
     brightnessRequest.dispatch()
       .then((result) => {
+        expect(mockedSetCommandName).toHaveBeenCalled();
+        expect(mockedSetCommandName.mock.calls[0][0]).toBe('getCurrentBrightness');
+        expect(mockedSetLibVersion).toHaveBeenCalledTimes(1);
+        expect(mockedSetLibVersion.mock.calls[0][0]).toBe('17.0');
+        expect(mockedDispatch).toHaveBeenCalledTimes(1);
         expect(brightnessRequest.responseQueue.length).toBe(0);
         expect(result).toBe(100);
       });
@@ -95,9 +97,23 @@ describe('BrightnessRequest', () => {
     brightnessRequest.handleResponse({ brightnessFFOFOF: 100 });
   });
 
+  it('should reject a promise when the command dispatch failed', async () => {
+    // Configure the AppCommand mock to respolve with an error.
+    triggerDispatchError();
+
+    try {
+      await brightnessRequest.dispatch();
+    } catch (e) {
+      expect(e).toBeInstanceOf(Error);
+      expect(e.message).toContain('getCurrentBrightness');
+      expect(brightnessRequest.responseQueue.length).toBe(0);
+      expect(mockedDispatch).toHaveBeenCalledTimes(1);
+    }
+  });
+
   it('should handle incoming events which did not have a dispatch', () => {
     const result = brightnessRequest.handleResponse({ brightness: 100 });
     expect(result).toBe(undefined);
-    expect(mockedError.mock.calls.length).toBe(1);
+    expect(mockedLoggerError.mock.calls.length).toBe(1);
   });
 });
