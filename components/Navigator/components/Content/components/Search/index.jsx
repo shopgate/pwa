@@ -182,8 +182,7 @@ class Search extends Component {
             aria-hidden
           />
         </form>
-
-        <SearchSuggestions />
+        <SearchSuggestions phrase={this.state.inputValue} />
       </div>
     );
   }
