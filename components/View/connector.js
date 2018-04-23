@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { considerNativeInset } from '@shopgate/pwa-common/selectors/client';
+import { isTabBarVisible } from 'Components/TabBar/selectors';
 import setTitle from './actions/setTitle';
 import setViewTop from './action-creators/setViewTop';
 import { getTopStatus, getTitle } from './selectors';
@@ -13,6 +15,8 @@ const mapStateToProps = state => ({
   navigatorTitle: getTitle(state),
   historyPathname: getHistoryPathname(state),
   viewTop: getTopStatus(state),
+  considerPaddingTop: considerNativeInset(state),
+  hasTabBar: isTabBarVisible(state),
 });
 
 /**
