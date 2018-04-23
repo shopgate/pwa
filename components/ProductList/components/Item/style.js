@@ -24,18 +24,12 @@ const titleContainer = css({
   ...containerPaddingSidewards,
   lineHeight: 1.35,
   width: '50%',
-  div: {
-    marginBottom: 4,
-  },
 }).toString();
 
 const priceContainer = css({
   ...containerPaddingSidewards,
   lineHeight: 1.35,
   textAlign: 'right',
-  div: {
-    marginBottom: 4,
-  },
 }).toString();
 
 const favouriteContainer = css({
