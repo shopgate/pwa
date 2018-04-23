@@ -4,15 +4,15 @@ import List from 'Components/List';
 import SearchSuggestion from './components/SearchSuggestion';
 import connect from './connector';
 import styles from './style';
-import { SEARCH_SUGGESTIONS_MIN_CHARACTERS } from './constants';
 
 /**
- * The search suggestions component.
+ * The SearchSuggestions component.
  */
 class SearchSuggestions extends Component {
   static propTypes = {
     fetchSearchSuggestions: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    phrase: PropTypes.string.isRequired,
     searchPhrase: PropTypes.string.isRequired,
     setSearchPhrase: PropTypes.func.isRequired,
     submitSearch: PropTypes.func.isRequired,
@@ -21,7 +21,7 @@ class SearchSuggestions extends Component {
   };
 
   static defaultProps = {
-    minCharacters: SEARCH_SUGGESTIONS_MIN_CHARACTERS,
+    minCharacters: 2,
   };
 
   /**
@@ -56,6 +56,20 @@ class SearchSuggestions extends Component {
   }
 
   /**
+   * Only re-render when a new input value is received or
+   * when a new set of suggestions arrive.
+   * @param {*} nextProps The next component props.
+   * @param {*} nextState The next component state.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.phrase !== nextProps.phrase
+      || this.state.suggestions.length !== nextState.length
+    );
+  }
+
+  /**
    * Handles the selection of a suggestion and updates the search.
    * @param {string} searchPhrase The selected search phrase.
    */
@@ -74,6 +88,7 @@ class SearchSuggestions extends Component {
 
     if (
       suggestions.length === 0 ||
+      this.props.phrase.length === 0 ||
       this.props.searchPhrase.length < this.props.minCharacters
     ) {
       return null;
