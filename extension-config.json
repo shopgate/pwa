@@ -122,6 +122,13 @@
         "key": "value.frontend"
       }
     },
+    "apiUrl": {
+      "type": "static",
+      "destination": "backend",
+      "params": {
+        "value": "%(browserApplicationAddress)s"
+      }
+    },
     "productPropertiesFilter": {
       "type": "bigApi",
       "destination": "frontend",
