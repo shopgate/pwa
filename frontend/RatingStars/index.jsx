@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import Stars from './components/Stars';
 import connect from './connector';
@@ -22,4 +23,4 @@ RatingStars.propTypes = {
   product: PropTypes.shape().isRequired,
 };
 
-export default connect(RatingStars);
+export default hot(module)(connect(RatingStars));
