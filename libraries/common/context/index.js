@@ -1,16 +1,7 @@
 import React from 'react';
 
-export const defaultComponents = {
-  Button: null,
-};
+export const AppContext = React.createContext();
+export const App = AppContext.Consumer;
 
-export const themeConfig = {
-  mySettings: 123,
-};
-
-export const ThemeContext = React.createContext({
-  components: defaultComponents,
-  config: themeConfig,
-});
-
+export const ThemeContext = React.createContext();
 export const Theme = ThemeContext.Consumer;
