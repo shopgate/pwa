@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchSuggestions /> should render without props 1`] = `""`;
+exports[`<SearchSuggestions /> should render with default props 1`] = `""`;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
@@ -25,10 +25,10 @@ const Content = (props) => {
   }
 
   return (
-    <div>
+    <Fragment>
       {currentTitle}
       <Search active={props.searchActive} />
-    </div>
+    </Fragment>
   );
 };
 
