@@ -231,23 +231,23 @@ describe('DevServerBridge', () => {
       ] = mockedEventCall.mock.calls;
 
       expect(pipelineResponse[0]).toBe('pipelineResponse');
-      expect(pipelineResponse[1].length).toBe(3);
+      expect(pipelineResponse[1]).toHaveLength(3);
       expect(pipelineResponse[1][1]).toBe(serial);
 
       expect(httpResponse[0]).toBe('httpResponse');
-      expect(httpResponse[1].length).toBe(3);
+      expect(httpResponse[1]).toHaveLength(3);
       expect(httpResponse[1][1]).toBe(serial);
 
       expect(dataResponse[0]).toBe('dataResponse');
-      expect(dataResponse[1].length).toBe(4);
+      expect(dataResponse[1]).toHaveLength(4);
       expect(dataResponse[1][0]).toBe(serial);
 
       expect(webStorageResponse[0]).toBe('webStorageResponse');
-      expect(webStorageResponse[1].length).toBe(3);
+      expect(webStorageResponse[1]).toHaveLength(3);
       expect(webStorageResponse[1][0]).toBe(serial);
 
       expect(unknownResponse[0]).toBe('unknownResponse');
-      expect(unknownResponse[1].length).toBe(0);
+      expect(unknownResponse[1]).toHaveLength(0);
     });
 
     it('should work as expected when nothing was passed', () => {

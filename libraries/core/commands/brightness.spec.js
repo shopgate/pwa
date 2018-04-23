@@ -47,25 +47,25 @@ describe('Brightness commands', () => {
     it('should set the brightness to 100 if no parameter is passed', () => {
       setBrightness();
 
-      expect(mockedSetCommandName.mock.calls.length).toBe(1);
-      expect(mockedSetCommandName.mock.calls[0][0]).toBe('setBrightness');
-      expect(mockedSetCommandParams.mock.calls.length).toBe(1);
-      expect(mockedSetCommandParams.mock.calls[0][0]).toEqual({ brightness: 100 });
-      expect(mockedSetLibVersion.mock.calls.length).toBe(1);
-      expect(mockedSetLibVersion.mock.calls[0][0]).toBe('17.0');
-      expect(mockedDispatch.mock.calls.length).toBe(1);
+      expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
+      expect(mockedSetCommandName).toHaveBeenLastCalledWith('setBrightness');
+      expect(mockedSetCommandParams).toHaveBeenCalledTimes(1);
+      expect(mockedSetCommandParams).toHaveBeenLastCalledWith({ brightness: 100 });
+      expect(mockedSetLibVersion).toHaveBeenCalledTimes(1);
+      expect(mockedSetLibVersion).toHaveBeenLastCalledWith('17.0');
+      expect(mockedDispatch).toHaveBeenCalledTimes(1);
     });
 
     it('should set the brightness to 80', () => {
       setBrightness(80);
 
-      expect(mockedSetCommandName.mock.calls.length).toBe(1);
-      expect(mockedSetCommandName.mock.calls[0][0]).toBe('setBrightness');
-      expect(mockedSetCommandParams.mock.calls.length).toBe(1);
-      expect(mockedSetCommandParams.mock.calls[0][0]).toEqual({ brightness: 80 });
-      expect(mockedSetLibVersion.mock.calls.length).toBe(1);
-      expect(mockedSetLibVersion.mock.calls[0][0]).toBe('17.0');
-      expect(mockedDispatch.mock.calls.length).toBe(1);
+      expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
+      expect(mockedSetCommandName).toHaveBeenLastCalledWith('setBrightness');
+      expect(mockedSetCommandParams).toHaveBeenCalledTimes(1);
+      expect(mockedSetCommandParams).toHaveBeenLastCalledWith({ brightness: 80 });
+      expect(mockedSetLibVersion).toHaveBeenCalledTimes(1);
+      expect(mockedSetLibVersion).toHaveBeenLastCalledWith('17.0');
+      expect(mockedDispatch).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -73,12 +73,12 @@ describe('Brightness commands', () => {
     it('should work as expected', () => {
       resetBrightness();
 
-      expect(mockedSetCommandName.mock.calls.length).toBe(1);
-      expect(mockedSetCommandName.mock.calls[0][0]).toBe('resetBrightness');
-      expect(mockedSetCommandParams.mock.calls.length).toBe(0);
-      expect(mockedSetLibVersion.mock.calls.length).toBe(1);
-      expect(mockedSetLibVersion.mock.calls[0][0]).toBe('17.0');
-      expect(mockedDispatch.mock.calls.length).toBe(1);
+      expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
+      expect(mockedSetCommandName).toHaveBeenLastCalledWith('resetBrightness');
+      expect(mockedSetCommandParams).toHaveBeenCalledTimes(0);
+      expect(mockedSetLibVersion).toHaveBeenCalledTimes(1);
+      expect(mockedSetLibVersion).toHaveBeenLastCalledWith('17.0');
+      expect(mockedDispatch).toHaveBeenCalledTimes(1);
     });
   });
 

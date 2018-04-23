@@ -7,7 +7,7 @@ import {
 
 const mockedAddCallback = jest.fn();
 jest.mock('../Event', () => ({
-  addCallback(...args) {
+  addCallback: (...args) => {
     mockedAddCallback(...args);
   },
 }));
@@ -17,7 +17,7 @@ jest.mock('../AppCommand');
 const mockedLoggerError = jest.fn();
 jest.mock('../../helpers', () => ({
   logger: {
-    error(...args) {
+    error: (...args) => {
       mockedLoggerError(...args);
     },
   },
@@ -30,6 +30,8 @@ describe('BrightnessRequest', () => {
   /* eslint-enable global-require */
 
   beforeEach(() => {
+    mockedLoggerError.mockClear();
+    mockedAddCallback.mockClear();
     mockedSetCommandName.mockClear();
     mockedSetLibVersion.mockClear();
     mockedDispatch.mockClear();
@@ -47,11 +49,11 @@ describe('BrightnessRequest', () => {
     brightnessRequest.dispatch()
       .then((result) => {
         expect(mockedSetCommandName).toHaveBeenCalled();
-        expect(mockedSetCommandName.mock.calls[0][0]).toBe('getCurrentBrightness');
+        expect(mockedSetCommandName).toHaveBeenLastCalledWith('getCurrentBrightness');
         expect(mockedSetLibVersion).toHaveBeenCalledTimes(1);
-        expect(mockedSetLibVersion.mock.calls[0][0]).toBe('17.0');
+        expect(mockedSetLibVersion).toHaveBeenLastCalledWith('17.0');
         expect(mockedDispatch).toHaveBeenCalledTimes(1);
-        expect(brightnessRequest.responseQueue.length).toBe(0);
+        expect(brightnessRequest.responseQueue).toHaveLength(0);
         expect(result).toBe(100);
       });
 
@@ -64,17 +66,17 @@ describe('BrightnessRequest', () => {
     const requestTwo = brightnessRequest.dispatch();
 
     // Check if the queue looks like expected
-    expect(brightnessRequest.responseQueue.length).toBe(2);
+    expect(brightnessRequest.responseQueue).toHaveLength(2);
 
     requestOne
       .then((result) => {
-        expect(brightnessRequest.responseQueue.length).toBe(1);
+        expect(brightnessRequest.responseQueue).toHaveLength(1);
         expect(result).toBe(100);
       });
 
     requestTwo
       .then((result) => {
-        expect(brightnessRequest.responseQueue.length).toBe(0);
+        expect(brightnessRequest.responseQueue).toHaveLength(0);
         expect(result).toBe(80);
       });
 
@@ -106,7 +108,7 @@ describe('BrightnessRequest', () => {
     } catch (e) {
       expect(e).toBeInstanceOf(Error);
       expect(e.message).toContain('getCurrentBrightness');
-      expect(brightnessRequest.responseQueue.length).toBe(0);
+      expect(brightnessRequest.responseQueue).toHaveLength(0);
       expect(mockedDispatch).toHaveBeenCalledTimes(1);
     }
   });
@@ -114,6 +116,6 @@ describe('BrightnessRequest', () => {
   it('should handle incoming events which did not have a dispatch', () => {
     const result = brightnessRequest.handleResponse({ brightness: 100 });
     expect(result).toBe(undefined);
-    expect(mockedLoggerError.mock.calls.length).toBe(1);
+    expect(mockedLoggerError).toHaveBeenCalledTimes(1);
   });
 });

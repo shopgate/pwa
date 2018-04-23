@@ -78,15 +78,15 @@ describe('Version helper', () => {
       [],
     ];
 
-    positives.forEach((v) => {
-      it(`should return true for ${v}`, () => {
-        expect(isValidVersion(v)).toBe(true);
+    positives.forEach((value) => {
+      it(`should return true for ${value}`, () => {
+        expect(isValidVersion(value)).toBe(true);
       });
     });
 
-    negatives.forEach((v) => {
-      it(`should return false for ${v}`, () => {
-        expect(isValidVersion(v)).toBe(false);
+    negatives.forEach((value) => {
+      it(`should return false for ${value}`, () => {
+        expect(isValidVersion(value)).toBe(false);
       });
     });
   });
@@ -114,15 +114,15 @@ describe('Version helper', () => {
       [],
     ];
 
-    positives.forEach((v) => {
-      it(`should return true for ${v.join(' <= ')}`, () => {
-        expect(isVersionAtLeast(v[0], v[1])).toBe(true);
+    positives.forEach((value) => {
+      it(`should return true for ${value.join(' <= ')}`, () => {
+        expect(isVersionAtLeast(value[0], value[1])).toBe(true);
       });
     });
 
-    negatives.forEach((v) => {
-      it(`should return false for ${v.join(' <= ')}`, () => {
-        expect(isVersionAtLeast(v[0], v[1])).toBe(false);
+    negatives.forEach((value) => {
+      it(`should return false for ${value.join(' <= ')}`, () => {
+        expect(isVersionAtLeast(value[0], value[1])).toBe(false);
       });
     });
   });
@@ -149,15 +149,15 @@ describe('Version helper', () => {
       ['17.1.1', '17.1.2'],
     ];
 
-    positives.forEach((v) => {
-      it(`should return true for ${v.join(' >= ')}`, () => {
-        expect(isVersionAtMost(v[0], v[1])).toBe(true);
+    positives.forEach((value) => {
+      it(`should return true for ${value.join(' >= ')}`, () => {
+        expect(isVersionAtMost(value[0], value[1])).toBe(true);
       });
     });
 
-    negatives.forEach((v) => {
-      it(`should return false for ${v.join(' >= ')}`, () => {
-        expect(isVersionAtMost(v[0], v[1])).toBe(false);
+    negatives.forEach((value) => {
+      it(`should return false for ${value.join(' >= ')}`, () => {
+        expect(isVersionAtMost(value[0], value[1])).toBe(false);
       });
     });
   });
@@ -184,15 +184,15 @@ describe('Version helper', () => {
       ['17.0.1', '17.1.2'],
     ];
 
-    positives.forEach((v) => {
-      it(`should return true for ${v.join(' == ')}`, () => {
-        expect(isVersion(v[0], v[1])).toBe(true);
+    positives.forEach((value) => {
+      it(`should return true for ${value.join(' == ')}`, () => {
+        expect(isVersion(value[0], value[1])).toBe(true);
       });
     });
 
-    negatives.forEach((v) => {
-      it(`should return false for ${v.join(' >= ')}`, () => {
-        expect(isVersion(v[0], v[1])).toBe(false);
+    negatives.forEach((value) => {
+      it(`should return false for ${value.join(' >= ')}`, () => {
+        expect(isVersion(value[0], value[1])).toBe(false);
       });
     });
   });
@@ -211,9 +211,9 @@ describe('Version helper', () => {
       '',
     ];
 
-    invalids.forEach((v) => {
-      it(`should log an error and return false for "${v}"`, () => {
-        expect(isVersion(v, '17.5.2')).toBe(false);
+    invalids.forEach((value) => {
+      it(`should log an error and return false for "${value}"`, () => {
+        expect(isVersion(value, '17.5.2')).toBe(false);
         expect(mockedErrorLogger).toHaveBeenCalledTimes(1);
       });
     });
