@@ -4,7 +4,7 @@ import Router from './index';
 import MockRoute from './components/Route/mock';
 import HistoryStack from './helpers/HistoryStack';
 
-describe('<Router />', () => {
+describe.skip('<Router />', () => {
   it('should notify route about initial location', () => {
     const mockHistory = new HistoryStack({
       key: 'c123',

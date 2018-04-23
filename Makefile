@@ -7,15 +7,40 @@ UTILS = eslint-config unit-tests
 THEMES = gmd ios11
 REPO_VERSION = ''
 
+unit-tests:
+		lerna run --scope @shopgate/pwa-core cover --stream
+		lerna run --scope @shopgate/pwa-common cover --stream
+		lerna run --scope @shopgate/pwa-common-commerce cover --stream
+		lerna run --scope @shopgate/pwa-tracking cover --stream
+		lerna run --scope @shopgate/tracking-core cover --stream
+		lerna run --scope @shopgate/pwa-webcheckout-shopify cover --stream
+		lerna run --scope @shopgate/product-reviews cover --stream
+		lerna run --scope @shopgate/tracking-ga-native cover --stream
+		lerna run --scope @shopgate/theme-gmd cover --stream
+		lerna run --scope @shopgate/theme-ios11 cover --stream
+
 release:
+		make pre-release
 		make clean
 		make pre-publish
 		make bump-extensions
 		make bump-themes
 		make build-libraries
-		make git-publish
 		make npm-publish
+		make git-publish
 		make clean-build
+		make post-release
+		@echo "\n\nDone releasing!\n\n"
+
+pre-release:
+ifneq ($(REPO_VERSION), '')
+		@echo "\nReleasing version $(REPO_VERSION)\n"
+		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
+		$(call prepare-release)
+		$(call merge-master, $(SUBSTR))
+else
+		@echo "\nPeforming manual release process!!\n"
+endif
 
 # Clean the repository before starting a release.
 clean:
@@ -28,7 +53,8 @@ clean:
 # Lerna change all the version numbers.
 pre-publish:
 ifneq ($(REPO_VERSION), '')
-		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish
+		@echo "$(strip $(REPO_VERSION))"
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes
 else
 		lerna publish --skip-npm --skip-git --force-publish
 endif
@@ -63,9 +89,53 @@ npm-publish:
 clean-build:
 		$(foreach package, $(NPM_PACKAGES), $(call clean-build-packages, $(package)))
 
+post-release:
+ifneq ($(REPO_VERSION), '')
+		@echo "\nFinishing release for version $(REPO_VERSION)\n"
+		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
+		$(call merge-develop, $(SUBSTR))
+endif
+
+coverage:
+		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
+
 
 # DEFINITIONS
 
+define prepare-release
+		@echo "\nChecking out develop branches ... \n"
+		git checkout develop
+		git submodule foreach --recursive git checkout develop
+		git fetch --all && git submodule foreach --recursive git fetch --all
+		git pull && git submodule foreach --recursive git pull
+
+endef
+
+define merge-master
+		@if [ "$(strip $(1))" != "beta" ]; \
+			then \
+				echo "\nMerging into master ... \n"; \
+				git checkout master; \
+				git submodule foreach --recursive git checkout master; \
+				git merge develop && git push; \
+				git submodule foreach --recursive git merge develop && git submodule foreach --recursive git push; \
+			else \
+				echo "\nNot using master: beta release!\n"; \
+		fi;
+
+endef
+
+define merge-develop
+		@if [ "$(strip $(1))" != "beta" ]; \
+			then \
+				echo "\nMerging back into develop ... \n"; \
+				git checkout develop; \
+				git submodule foreach --recursive git checkout develop; \
+				git merge master && git push; \
+				git submodule foreach --recursive git merge master && git submodule foreach --recursive git push; \
+		fi;
+
+endef
 
 define build-packages
 		BABEL_ENV=production ./node_modules/.bin/babel ./libraries/$(strip $(1))/ --out-dir ./libraries/$(strip $(1))/dist --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules
@@ -76,12 +146,12 @@ define build-packages
 endef
 
 define bump-extension-versions
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./extensions/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
+		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./extensions/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION"
 
 endef
 
 define bump-theme-versions
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./themes/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./themes/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
+		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./themes/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./themes/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION"
 
 endef
 
@@ -91,7 +161,7 @@ define push-main
 endef
 
 define git-tags
-		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION -m "v$$VERSION" && git push --tags
+		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION -m "v$$VERSION" && git push && git push --tags
 
 endef
 
@@ -113,5 +183,10 @@ endef
 
 define clean-build-packages
 		rm -rf -f ./libraries/$(strip $(1))/dist
+
+endef
+
+define run-libraries-coverage
+		cd ./libraries/$(strip $(1))/ && yarn run cover
 
 endef

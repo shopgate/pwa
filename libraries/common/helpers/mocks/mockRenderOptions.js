@@ -12,9 +12,17 @@ const options = {
       _p: () => 'p',
       _d: () => 'd',
     }),
+    history: {
+      length: 0,
+      stack: [],
+      getActive: () => ({
+        key: 'routekey',
+      }),
+    },
   },
   childContextTypes: {
     i18n: PropTypes.func,
+    history: PropTypes.shape(),
   },
 };
 

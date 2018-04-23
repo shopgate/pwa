@@ -1,4 +1,5 @@
 import { INDEX_PATH } from '../../../../constants/RoutePaths';
+import { LEGACY_URL_CONNECT_REGISTER } from '../../../../constants/Registration';
 
 /**
  * Parses the protocol of an url
@@ -132,7 +133,13 @@ function getSimpleLinkParserOptions(path, queryParams, url) {
         url: '/register/default',
       });
       break;
-
+    case LEGACY_URL_CONNECT_REGISTER:
+      this.addLinkAction('legacyLink', {
+        url: `/${LEGACY_URL_CONNECT_REGISTER}`,
+        targetTab: 'main',
+        backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
+      });
+      break;
     default:
       this.addLinkAction('reactRouter', {
         url,

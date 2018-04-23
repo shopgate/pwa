@@ -5,6 +5,7 @@ import getProductReviews from './getProductReviews';
 import getUserReview from './getUserReview';
 import submitReview from './submitReview';
 import { finalState } from '../selectors/mock';
+import * as pipelines from '../constants/Pipelines';
 
 const { console } = global;
 let mockedResolver;
@@ -36,7 +37,7 @@ describe('Reviews actions', () => {
       // Make sure test callback is executed after the internal fetchReviews one.
       setTimeout(() => {
         promise[variant]((result) => {
-          expect(result.mockInstance.name).toBe('getProductReviews');
+          expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS);
           expect(result.mockInstance.input).toEqual({
             productId: 'foo',
             limit: 2,
@@ -79,7 +80,7 @@ describe('Reviews actions', () => {
       const promise = getProductReviews('foo', 10, 'invalidSort')(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
-          expect(result.mockInstance.name).toBe('getProductReviews');
+          expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS);
           expect(result.mockInstance.input).toEqual({
             productId: 'foo',
             limit: 10,
@@ -120,7 +121,7 @@ describe('Reviews actions', () => {
       const promise = getUserReview('foo')(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
-          expect(result.mockInstance.name).toBe('getUserReview');
+          expect(result.mockInstance.name).toBe(pipelines.SHOPGATE_USER_GET_REVIEW);
           expect(result.mockInstance.handledErrors).toEqual([EUNKNOWN, EACCESS]);
           expect(result.mockInstance.input).toEqual({
             productId: 'foo',
@@ -177,7 +178,11 @@ describe('Reviews actions', () => {
       const promise = submitReview(review, update)(mockedDispatch, () => state);
       setTimeout(() => {
         promise[variant]((result) => {
-          expect(result.mockInstance.name).toBe(update ? 'updateProductReview' : 'addProductReview');
+          expect(result.mockInstance.name).toBe((
+            update ?
+              pipelines.SHOPGATE_CATALOG_UPDATE_PRODUCT_REVIEW :
+              pipelines.SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW
+          ));
           expect(result.mockInstance.input).toEqual(testReviewSanitized);
           expect(mockedDispatch).toHaveBeenCalledTimes(expectedDispatches);
           done();
