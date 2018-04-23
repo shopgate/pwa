@@ -14,16 +14,6 @@ const RESPONSE_EVENT_NAME = 'currentBrightnessResponse';
  */
 export class BrightnessRequest {
   /**
-   * Creates a get command instance.
-   * @returns {AppCommand}
-   */
-  static createGetCommand() {
-    return new AppCommand()
-      .setCommandName(GET_COMMAND_NAME)
-      .setLibVersion(LIB_VERSION);
-  }
-
-  /**
    * Constructor.
    */
   constructor() {
@@ -37,8 +27,9 @@ export class BrightnessRequest {
    */
   handleResponse = (response) => {
     const queueEntry = this.responseQueue.shift();
+
     if (typeof queueEntry === 'undefined') {
-      logger.error('Could not find response queue entry');
+      logger.error('currentBrightnessResponse received but the response handler queue is empty.');
       return;
     }
 
@@ -63,8 +54,11 @@ export class BrightnessRequest {
         reject,
       });
 
-      // Create a command instance.
-      const command = this.constructor.createGetCommand();
+      // Prepare the AppComand.
+      const command = new AppCommand()
+        .setCommandName(GET_COMMAND_NAME)
+        .setLibVersion(LIB_VERSION);
+
       // Dispatch the command. The method will resolve with FALSE in case of an error.
       const result = await command.dispatch();
 

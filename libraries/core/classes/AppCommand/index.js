@@ -91,13 +91,10 @@ class AppCommand {
    * @return {Object|null}
    */
   buildCommand() {
-    let command = null;
-    if (this.name) {
-      command = {
-        c: this.name,
-        ...this.params && { p: this.params },
-      };
-    }
+    const command = this.name ? {
+      c: this.name,
+      ...this.params && { p: this.params },
+    } : null;
 
     return command;
   }
@@ -107,7 +104,7 @@ class AppCommand {
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
    * @param {Object} params The command params.
-   * @return {Promise}
+   * @return {Promise<boolean>}
    */
   async dispatch(params) {
     if (params) {
@@ -118,7 +115,7 @@ class AppCommand {
 
     // Only proceed if the command is valid.
     if (command === null) {
-      logger.error('Command dispatch without command name');
+      logger.error(`Dispatch aborted for invalid command. name: "${this.name}" | params:`, this.params);
       return false;
     }
 
@@ -126,15 +123,15 @@ class AppCommand {
     let appHasSupport = true;
 
     // Perform a libVersion check if the flag is active.
-    if (this.checkLibVersion === true) {
+    if (this.checkLibVersion) {
       // Gather the libVersion of the app and check if it supports the command.
       appLibVersion = await getLibVersion();
       appHasSupport = isVersionAtLeast(this.libVersion, appLibVersion);
     }
 
     // Only proceed if the command is supported by the app.
-    if (appHasSupport === false) {
-      logger.warn(`Command "${this.name}" is not supported by LibVersion of the app (required ${this.libVersion} | current ${appLibVersion})`);
+    if (!appHasSupport) {
+      logger.warn(`The command "${this.name}" is not supported by LibVersion (required ${this.libVersion} | current ${appLibVersion})`);
       return false;
     }
 
@@ -142,7 +139,6 @@ class AppCommand {
 
     /* istanbul ignore else */
     if (!hasSGJavaScriptBridge()) {
-      // Inject the Frontend SDK bridge.
       bridge = new DevServerBridge();
     } else {
       bridge = SGJavascriptBridge;
