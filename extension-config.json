@@ -132,6 +132,13 @@
         "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
         "key": "value.frontend"
       }
+    },
+    "apiUrl": {
+      "type": "static",
+      "destination": "backend",
+      "params": {
+        "value": "%(browserApplicationAddress)s"
+      }
     }
   }
 }
