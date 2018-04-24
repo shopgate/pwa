@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - 8.10.0
-script: NODE_ENV=test npm run cover -- --maxWorkers=4
+script: npm run cover
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
@@ -9,8 +9,6 @@ branches:
 notifications:
   email: false
   slack:
-    on_success: change
-    on_failure: change
     template:
       - "%{repository_slug}"
       - "<%{build_url}|#%{build_number}> - %{message}"
