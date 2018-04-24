@@ -5,7 +5,7 @@ cache:
 language: node_js
 node_js:
 - 8.10.0
-before_script: cd frontend/ && yarn i
+before_script: cd frontend/ && yarn install
 script: yarn run cover
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
