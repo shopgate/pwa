@@ -1,7 +1,13 @@
+cache:
+  yarn: true
+  directories:
+    - node_modules
 language: node_js
 node_js:
 - 8.10.0
-script: NODE_ENV=test npm run cover -- --maxWorkers=4
+install:
+  - yarn install
+script: yarn run cover
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
@@ -9,10 +15,9 @@ branches:
 notifications:
   email: false
   slack:
-    on_success: change
-    on_failure: change
     template:
       - "%{repository_slug}"
       - "<%{build_url}|#%{build_number}> - %{message}"
       - "Commit: \"%{commit_subject}\" by %{author}"
-    secure: sv/tIrXgj+1Kq/BA3PUfdcsMjAgiv7XinGUlgkk9TKXw70Wcor+vYsumJPfNRObvK7AhyXc71k+KyD04jpf5iWAbKpavsjXk0Ta8Jxxz791UOVEYC97/OfmUB2Ecs58gqFtibV2U/+30Bm1oSet322ux6B9KjHCBWRHtScFhPCoZiUZ46+sNpwLy7C30A7C3PJ3p1w8JoS3yqqAGI0FGk/5aCnqt6cFfeMewUTcnGe7/QVkDojy2oiydEeYRf28emngHs0FVWsXrXUXhtRgnu+wuU1kjq7eBgzgbBZDhr3+Wdp7JszL7vXkuOZsSY1CXyAeQ351MQ9O9rVlBueyr/14+V4C/FNoSxy/uGVn2GZPgtFqYigry/9VuusJ+ApUR7d7aEMfnRS7o14e9dCIRiGrEMUUAF6B+ZPIY3rbk3awDsg8yjKa+5wMrjGLkkJX3qzldgQ4Pts0SG8kIZIePC0TmAYWkcWc8qGJD+PsW/iosEQO60yJx58A8Tu/LiOB5J4LTMYS+pOFfs3Y742sY63NOnvX7Pjw/YtgA1t9nfu0Ngm8Zhv0bFG7Ma8NYSzcne4C3+eL8ntpg7AEmZ2y+O0TEW7nIV1dfpvCg0AAEXDt25jdAQ7M1bVXnMdNqeqvqXoj2nlX04MjN4k2ag2LFl3k2XOcl9qZhZxH2c416754=
+    rooms:
+      - secure: dbamgzDxvSMjnW3A4zfuImyq0FF6B3dZAekrb0cl5fy5wUEiNPCG37JJOh69iuctsLFRYfME7kEvst0iT/XRKS5qNpFob5mmcQ5Z0FkVOInjNBH/LjgcPbekP/0KnOfDFDK4bNubYR+ku8T8cIP9/kYV+jWvBfmGjxzdyUSBCBuFF8SkoNM+gQR+0yCy3uPCEzVkxJhm0r/ZOuTAl3/XZeQF2SRLYF4z88Nsbz7/SnZVxQOBhBQ9nXoF+HbcP/duQgIE3Ia5RDWhKvpOKRbhLR3RAjtTeyRpmteq5zaBYOpDS6a3tqZEHGruoGKO8s56Rh6KC0Wd+XRaogcN8CYlT2vNlabbzCEkjv7UwAboN8s/EFq5YFmCfm3/7SvwEQnKc8GVI+W06ALwZT2uul3j8cjSJ+L1isBiZug0E16khdUHLXjJWpgfTxMP2cv48TmMCWnU1KaRZqbWVqPLwyikqRZH39yekhM+fiahEkbTAfdRPN0a1mKRAYArzAsA2g+NeCD0DnQGQ7YcTur4ebx6fNA5jwELMan4pfvJ2KcUxADoA3gNhp/ybflLsxqJ7kHY/093n7IMnwClgTUnxW2EJspoRTihS0LrNaCcL+7c7NEeYjQQ5MJ1R2UoRFj3PHlSh1aLG55nb0UpZvr/Nv1/rFzRNQBuyq0W2OVchF+O2PQ=
