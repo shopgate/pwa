@@ -75,7 +75,7 @@ const getProducts = ({
       pipeline,
       sort,
       ...hashParams,
-      ...filters && { filters },
+      ...(filters && Object.keys(filters).length) && { filters },
       ...id && { id },
     }, includeSort, includeFilters);
 
