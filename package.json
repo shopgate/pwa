@@ -4,9 +4,8 @@
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
     "clean": "make clean",
-    "test": "lerna run test",
-    "cover": "make unit-tests",
-    "cover:report": "node ./scripts/send-coverage.js",
+    "test": "jest",
+    "cover": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "precommit": "lint-staged",
     "release": "make release"
