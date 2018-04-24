@@ -2,7 +2,8 @@
 import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
-import DevServerBridge from '../DevServerBridge';
+import * as appCommands from '../../constants/AppCommands';
+import BrowserConnector from '../BrowserConnector';
 
 /**
  * The app command class.
@@ -19,9 +20,9 @@ class AppCommand {
     this.params = null;
     this.libVersion = '9.0';
     this.commandsWithoutLog = [
-      'sendPipelineRequest',
-      'sendHttpRequest',
-      'getWebStorageEntry',
+      appCommands.COMMAND_SEND_PIPELINE_REQUEST,
+      appCommands.COMMAND_SEND_HTTP_REQUEST,
+      appCommands.COMMAND_GET_WEBSTORAGE_ENTRY,
     ];
   }
 
@@ -139,14 +140,16 @@ class AppCommand {
 
     /* istanbul ignore else */
     if (!hasSGJavaScriptBridge()) {
-      bridge = new DevServerBridge();
+      bridge = new BrowserConnector(command);
     } else {
       bridge = SGJavascriptBridge;
     }
 
     try {
-      /* istanbul ignore else */
-      if ('dispatchCommandsForVersion' in bridge) {
+      if (!hasSGJavaScriptBridge() && 'dispatchCommandForVersion' in bridge) {
+        bridge.dispatchCommandForVersion(appLibVersion);
+        /* istanbul ignore else */
+      } else if ('dispatchCommandsForVersion' in bridge) {
         bridge.dispatchCommandsForVersion([command], appLibVersion);
       } else {
         bridge.dispatchCommandsStringForVersion(
