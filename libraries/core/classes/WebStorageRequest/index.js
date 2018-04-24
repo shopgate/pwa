@@ -67,8 +67,12 @@ class WebStorageRequest extends Request {
 
     logGroup(`WebStorageRequest %c${this.name}`, {}, '#e67e22');
 
-    // Send the getWebStorageEntry request.
-    const command = new AppCommand();
+    /**
+     * Send the getWebStorageEntry request.
+     * The lib version check is deactivated, since the AppCommand uses the WebStorage internally
+     * to fetch the client information, which provides the current lib version of the app.
+     */
+    const command = new AppCommand(true, false);
     command
       .setCommandName('getWebStorageEntry')
       .dispatch({

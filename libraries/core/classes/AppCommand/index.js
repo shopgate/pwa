@@ -1,8 +1,8 @@
 /* global SGJavascriptBridge */
-import fetch from 'isomorphic-fetch';
-import event from '../Event';
 import { logger, hasSGJavaScriptBridge } from '../../helpers';
+import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
+import DevServerBridge from '../DevServerBridge';
 
 /**
  * The app command class.
@@ -10,160 +10,158 @@ import logGroup from '../../helpers/logGroup';
 class AppCommand {
   /**
    * @param {boolean} log Whether the command will be logged.
+   * @param {boolean} checkLibVersion Whether the lib version will be checked before dispatch.
    */
-  constructor(log = true) {
+  constructor(log = true, checkLibVersion = true) {
     this.log = log;
-    this.command = {};
+    this.checkLibVersion = checkLibVersion;
+    this.name = '';
+    this.params = null;
     this.libVersion = '9.0';
+    this.commandsWithoutLog = [
+      'sendPipelineRequest',
+      'sendHttpRequest',
+      'getWebStorageEntry',
+    ];
   }
 
   /**
    * Sets the command name.
    * @param {string} name The command name.
-   * @returns {AppCommand}
+   * @return {AppCommand}
    */
   setCommandName(name) {
-    this.command.c = name;
+    if (typeof name === 'string') {
+      this.name = name;
+    } else {
+      logger.error('Invalid command name', name);
+    }
+
     return this;
   }
 
   /**
    * Sets the command params.
    * @param {Object} [params=null] The command params.
-   * @returns {AppCommand}
+   * @return {AppCommand}
    */
-  setCommandParams(params = null) {
-    this.command.p = params;
+  setCommandParams(params) {
+    if (params && typeof params === 'object' && params.constructor === Object) {
+      this.params = params;
+    } else {
+      logger.error('Invalid command params', params);
+    }
+
     return this;
   }
 
   /**
-   * Sets the library version of the app.
+   * Sets the minimum required shopgate lib version for the command.
    * @param {string} libVersion The library version.
-   * @returns {AppCommand}
+   * @return {AppCommand}
    */
   setLibVersion(libVersion) {
-    this.libVersion = libVersion;
-    return this;
-  }
-
-  /**
-   * Dispatches the command into the app.
-   * @param {Object} [params=null] The command params.
-   */
-  dispatch(params = null) {
-    if (params) {
-      this.command.p = params;
-    }
-
-    if (hasSGJavaScriptBridge()) {
-      try {
-        if ('dispatchCommandsForVersion' in SGJavascriptBridge) {
-          SGJavascriptBridge.dispatchCommandsForVersion([this.command], this.libVersion);
-        } else {
-          SGJavascriptBridge.dispatchCommandsStringForVersion(
-            JSON.stringify([this.command]),
-            this.libVersion
-          );
-        }
-
-        this.logCommand();
-      } catch (exception) {
-        logger.error(exception);
-      }
+    if (isValidVersion(libVersion)) {
+      this.libVersion = libVersion;
     } else {
-      this.logCommand();
-
-      const devServerCommands = [
-        'sendPipelineRequest',
-        'sendHttpRequest',
-        'sendDataRequest',
-        'getWebStorageEntry',
-      ];
-
-      // Only commands which represent a request are sent to the development server.
-      if (devServerCommands.includes(this.command.c)) {
-        this.sendDevCommand();
-      }
+      logger.error('Invalid lib version', libVersion);
     }
+
+    return this;
   }
 
   /**
    * Logs the command to the console.
+   * @private
+   * @return {AppCommand}
    */
   logCommand() {
-    if (
-      !this.log ||
-      this.command.c === 'sendPipelineRequest' ||
-      this.command.c === 'sendHttpRequest' ||
-      this.command.c === 'getWebStorageEntry'
-    ) {
-      return;
+    if (this.log && !this.commandsWithoutLog.includes(this.name)) {
+      const title = `AppCommand %c${this.name}`;
+
+      logGroup(title, this.params || {}, '#8e44ad');
     }
 
-    const title = `AppCommand %c${this.command.c}`;
-
-    if (this.command.p) {
-      logGroup(title, this.command.p, '#8e44ad');
-    } else logGroup(title, {}, '#8e44ad');
+    return this;
   }
 
   /**
-   * Sends the command to the development API.
+   * Creates the command object which will be dispatched through the JavaScript bridge.
    * @private
+   * @return {Object|null}
    */
-  sendDevCommand() {
-    // Append an optional suffix for special command related endpoints
-    let suffix = '';
+  buildCommand() {
+    const command = this.name ? {
+      c: this.name,
+      ...this.params && { p: this.params },
+    } : null;
 
-    if (this.command.c === 'getWebStorageEntry') {
-      suffix = 'web_storage';
-    } else if (this.command.c === 'sendHttpRequest') {
-      suffix = 'http_request';
+    return command;
+  }
+
+  /**
+   * Dispatches the command to the app.
+   * The returned promise will not be rejected for now in error cases to avoid the necessity
+   * of refactoring within existing code. But it resolves with FALSE in those cases.
+   * @param {Object} params The command params.
+   * @return {Promise<boolean>}
+   */
+  async dispatch(params) {
+    if (params) {
+      this.setCommandParams(params);
     }
 
-    const url = `http://${process.env.IP}:${process.env.PORT}/${suffix}`;
-    const options = {
-      method: 'post',
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      body: JSON.stringify({ cmds: [this.command] }),
-    };
+    const command = this.buildCommand();
 
-    fetch(url, options)
-      .then(response => response.json())
-      .then((response) => {
-        if (!response.cmds.length) {
-          return;
-        }
+    // Only proceed if the command is valid.
+    if (command === null) {
+      logger.error(`Dispatch aborted for invalid command. name: "${this.name}" | params:`, this.params);
+      return false;
+    }
 
-        response.cmds.forEach((command) => {
-          const name = command.c;
-          const params = command.p;
+    let appLibVersion = this.libVersion;
+    let appHasSupport = true;
 
-          let args = [];
+    // Perform a libVersion check if the flag is active.
+    if (this.checkLibVersion) {
+      // Gather the libVersion of the app and check if it supports the command.
+      appLibVersion = await getLibVersion();
+      appHasSupport = isVersionAtLeast(this.libVersion, appLibVersion);
+    }
 
-          /**
-           * The server returns a response command for a request command.
-           * If the native app receives such a command, it calls a related event within the
-           * webviews. Here the response parameters are sorted in the specified order for
-           * the different response events.
-           */
-          if (name === 'pipelineResponse') {
-            args = [params.error, params.serial, params.output];
-          } else if (name === 'httpResponse') {
-            args = [params.error, params.serial, params.response];
-          } else if (name === 'dataResponse') {
-            args = [params.serial, params.status, params.body, params.bodyContentType];
-          } else if (name === 'webStorageResponse') {
-            args = [params.serial, params.age, params.value];
-          }
+    // Only proceed if the command is supported by the app.
+    if (!appHasSupport) {
+      logger.warn(`The command "${this.name}" is not supported by LibVersion (required ${this.libVersion} | current ${appLibVersion})`);
+      return false;
+    }
 
-          event.call(name, args);
-        });
-      })
-      .catch(err => err && logger.error(err));
+    let bridge;
+
+    /* istanbul ignore else */
+    if (!hasSGJavaScriptBridge()) {
+      bridge = new DevServerBridge();
+    } else {
+      bridge = SGJavascriptBridge;
+    }
+
+    try {
+      /* istanbul ignore else */
+      if ('dispatchCommandsForVersion' in bridge) {
+        bridge.dispatchCommandsForVersion([command], appLibVersion);
+      } else {
+        bridge.dispatchCommandsStringForVersion(
+          JSON.stringify([command]),
+          appLibVersion
+        );
+      }
+
+      this.logCommand();
+    } catch (exception) {
+      logger.error(exception);
+      return false;
+    }
+
+    return true;
   }
 }
 
