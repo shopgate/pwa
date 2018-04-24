@@ -112,10 +112,11 @@ const Item = ({ display, product }) => (
           <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
             <Grid.Item grow={1} className={styles.priceContainer}>
               <Price
+                className={styles.price}
+                currency={product.price.currency}
+                discounted={!!product.price.discount}
                 unitPrice={product.price.unitPrice}
                 unitPriceMin={product.price.unitPriceMin}
-                discounted={!!product.price.discount}
-                currency={product.price.currency}
               />
               {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
                 <PriceStriked
