@@ -10,8 +10,6 @@ branches:
 notifications:
   email: false
   slack:
-    on_success: change
-    on_failure: change
     template:
       - "%{repository_slug}"
       - "<%{build_url}|#%{build_number}> - %{message}"
