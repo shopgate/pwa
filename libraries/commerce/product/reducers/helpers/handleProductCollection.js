@@ -1,5 +1,4 @@
 import { PRODUCT_LIFETIME } from '../../constants';
-import enrichProduct from './enrichProduct';
 
 /**
  * Builds state entries from a collection of products (Array).
@@ -11,10 +10,10 @@ const handleProductCollection = (products) => {
     return {};
   }
 
-  return products.reduce((currentProducts, product) => ({
+  return products.reduce((currentProducts, productData) => ({
     ...currentProducts,
-    [product.id]: {
-      productData: enrichProduct(product),
+    [productData.id]: {
+      productData,
       isFetching: false,
       expires: Date.now() + PRODUCT_LIFETIME,
     },
