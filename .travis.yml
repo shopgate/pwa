@@ -1,7 +1,7 @@
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 language: node_js
 node_js:
 - 8.10.0
@@ -18,4 +18,5 @@ notifications:
       - "%{repository_slug}"
       - "<%{build_url}|#%{build_number}> - %{message}"
       - "Commit: \"%{commit_subject}\" by %{author}"
-    secure: cLzn4uj06o5HQxfTVG0Mlg/Dq4YRJC+qNRpjsgDaTK2wtKFkkTZqRUaje/xrLDEncPXqw4UAoA1ua3CK1/Xy3NWWBox0cLB5gmelfJ1jhpOYwP3D7aQ6XVZB6pD0YwJow+wgGPAGAdO2XSJigUYvtXF2/ENP5d0xWQHIEoTVbLHr44tFk+cvf7ScOsEAFL3SHwugd0JUqSRCJMbJSTUtArmmhTZgRzmMgbkrIKKREQtv5UMAGou32blF3OasEJ8frQi+IPtRLGzqLzkE4LmemX2Q3IveyAt3WE21BJH+FqzhEXUTMzVts5SThElW1m9hSbd1KFMEE1gw/GatKCTux59rFWDZ/IEbi4JuWDTD76YEbih5WLuHkMU3aH9jaDu90hY9xGSIofQTwiSZT51p7N3pzBAWSbXCJH/HFhmtMB4m4dD4tRygPGWyn8QvGnCziTjzIkM83yYxzWaF1zmUVosHTGe2bayTFdiWEahU8aIhPbN6ZwmO+u07GGpDEpWizeKbhOx196jlbgARPx+q4SAodUKgOMn99P20BJb85X9mlCKGwHunCEJyqTGzF6XcqM+wnDog1iHrwPJNTyj1FG5oW0Tb+P4ZtdHBOVjt8RNj5COf6Z011ca83xZ7k6FHoq021rhsFUIlOL+Unk/9bHT6+DUrbdULvWdeu4PRG0E=
+    rooms:
+      - secure: hqnhY8tW2TDsg8Hhnl/G7AYVMz5tbza8x3KJKF2w+bErUnVvn9XuvQGxQecBqzsQT/iLs+aeWsODA67DP7qa/XsOBbfbX8CbKaO1aZgUv4w9LncvlVuA4UY8opajl7cVtPng9n0lCBS3ojxbR6KP9VYItjtU8ATVCAFJh4h/wP0SNSvh07gWikpUCMmkVBRIS1ouX7h5oZdUS9DMtYVM7LwBWAIxT5q7qPfOLExpwv+8An+U117SENqdNMDPlhA2R8cdCLuKGU0bSadX2UxxEFs4ArlqGNuAgFDCdb+ZmmlCa0pbNfTPnxHnE+6lQVqVmMQJuJhHlxdu74r2TGCpcC4ghZssk2r/QyeA4a49mj92aOcHtdU4MnNbyV2WL/sTMpE6SETlCKYyIwkAleciMFUh8QHF3XVx5Lt8ZyC1eQXlUD2Rn4B+i3L4ocupPz8GEevoVPQrS8IbNZ8vNlhZBFHzZLdjE9YIDJScItNaV91ceKukZJrluy/ImORUSy+nppz28sOjqk1FtVwXfUM1o2sx2/Hkujmfw5MBCZWt9ans2vJGKfh8dl3EWaxTJ1P2UG9400DeFCd9MUzKHHO9jxM0K2X9qr7Cv6RgV2TSgopuuxzYNkk0FTtfcNQNLIbgWeVw1Xi+w/vW5W4+GEHPi2u0324qMCeSGPAPVktHlJs=
