@@ -7,7 +7,6 @@ import {
 } from '../constants';
 import { RECEIVE_FAVORITES } from '../../favorites/constants';
 import handleProductCollection from './helpers/handleProductCollection';
-import enrichProduct from './helpers/enrichProduct';
 
 /**
  * Stores products by their ID.
@@ -37,7 +36,7 @@ export default function productsById(state = {}, action) {
         ...state,
         [action.productId]: {
           ...state[action.productId],
-          productData: enrichProduct(action.productData),
+          productData: action.productData,
           isFetching: false,
           expires: Date.now() + PRODUCT_LIFETIME,
         },

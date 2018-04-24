@@ -5,18 +5,6 @@ import {
 } from '../constants/';
 
 /**
- * Calculates the percentage discount for two unit prices.
- * @param {number} price The current price.
- * @param {number} priceOld The old price.
- * @return {number} The discount.
- */
-export const calcDiscount = (price, priceOld) => {
-  const savedAmount = priceOld - price;
-  const discount = Math.round((savedAmount / priceOld) * 100);
-  return (discount > 0) ? discount : 0;
-};
-
-/**
  * Reads the setting for product properties whitelisting/blacklisting
  * and filters the properties accordingly.
  * @param {Array} properties Array of properties with label and value attributes.
