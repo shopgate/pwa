@@ -124,7 +124,7 @@
     },
     "apiUrl": {
       "type": "static",
-      "destination": "backend",
+      "destination": "frontend",
       "params": {
         "value": "%(browserApplicationAddress)s"
       }
