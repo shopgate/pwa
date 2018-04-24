@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
+import variables from 'Styles/variables';
 import parseHTML from './helpers/parseHTML';
 import { handleYouTube } from './helpers/handleDOM';
 import styles from './style';
@@ -16,6 +17,7 @@ class Html extends Component {
    */
   static propTypes = {
     settings: PropTypes.shape({
+      defaultPadding: PropTypes.bool.isRequired,
       html: PropTypes.string.isRequired,
     }).isRequired,
   };
@@ -84,7 +86,10 @@ class Html extends Component {
       <div
         className={styles}
         dangerouslySetInnerHTML={{ __html: this.state.html }}
-        ref={(domElm) => { this.htmlContainer = domElm; }}
+        ref={(element) => { this.htmlContainer = element; }}
+        style={{
+          ...this.props.settings.defaultPadding && { padding: variables.gap.big },
+        }}
       />
     );
   }
