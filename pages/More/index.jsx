@@ -52,23 +52,32 @@ class More extends Component {
     return (
       <View>
         {/* USER MENU */}
-        <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={{
+        <Portal
+          name={portals.USER_MENU_CONTAINER_BEFORE}
+          props={{
+            ...props,
+            user,
+            handleLogout: logout,
+          }}
+        />
+        <Portal
+          name={portals.USER_MENU_CONTAINER}
+          props={{
           ...props,
-          user,
-          handleLogout: logout,
-        }} />
-        <Portal name={portals.USER_MENU_CONTAINER} props={{
-          ...props,
-          user,
-          handleLogout: logout,
-        }}>
+            user,
+            handleLogout: logout,
+          }}
+        >
           <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
         </Portal>
-        <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={{
-          ...props,
-          user,
-          handleLogout: logout,
-        }} />
+        <Portal
+          name={portals.USER_MENU_CONTAINER_AFTER}
+          props={{
+            ...props,
+            user,
+            handleLogout: logout,
+          }}
+        />
 
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
 
@@ -118,7 +127,7 @@ class More extends Component {
           {/* IMPRINT */}
           <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} props={props} />
           <Portal name={portals.NAV_MENU_IMPRINT} props={props}>
-            <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
+            <List.Item title="navigation.about" link={`${PAGE_PATH}/imprint`} />
           </Portal>
           <Portal name={portals.NAV_MENU_IMPRINT_AFTER} props={props} />
 
