@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import logGroup from '@shopgate/pwa-core/helpers/logGroup';
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
 import { componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
@@ -26,21 +27,27 @@ export default function setup(subscribe) {
     // eslint-disable-next-line no-new
     new UnifiedPlugin();
 
-    // eslint-disable-next-line no-undef
-    const extensionsIndex = (await import(`${__THEME_PATH__}/extensions/tracking`)).default;
-    const trackingExtensions = componentsConfig.tracking;
+    try {
+      // eslint-disable-next-line no-undef, global-require, import/no-dynamic-require
+      const extensionsIndex = require(`${__THEME_PATH__}/extensions/tracking`).default;
+      const trackingExtensions = componentsConfig.tracking || {};
 
-    Object.keys(trackingExtensions).forEach((key) => {
-      const pluginInit = extensionsIndex[key];
+      Object.keys(trackingExtensions).forEach((key) => {
+        const pluginInit = extensionsIndex[key];
 
-      if (pluginInit) {
-        /**
-         * Call the init function of the plugin.
-         * This init function will create the actual instances
-         */
-        pluginInit(clientInformation);
-      }
-    });
+        if (pluginInit) {
+          /**
+           * Call the init function of the plugin.
+           * This init function will create the actual instances
+           */
+          pluginInit(clientInformation);
+        }
+      });
+    } catch (error) {
+      logGroup('Tracking %c: Could not setup plugins', {
+        error,
+      }, '#ED0422');
+    }
 
     core.registerFinished();
   });

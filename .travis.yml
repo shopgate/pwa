@@ -1,31 +1,29 @@
+cache:
+  yarn: true
+  directories:
+  - node_modules
 git:
   depth: 3
   submodules: false
-
 before_install:
 - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
 - git submodule update --init --recursive
-
 language: node_js
-
 node_js:
-- 8
-
-script: npm run cover
-
-after_script: npm run cover:report
-
+- 8.10.0
+install:
+- yarn install
+script: yarn run cover
+after_script: yarn run cover:report
 branches:
   only:
   - develop
-
 notifications:
   email: false
   slack:
-    on_success: change
-    on_failure: change
     template:
       - "%{repository_slug}"
       - "<%{build_url}|#%{build_number}> - %{message}"
       - "Commit: \"%{commit_subject}\" by %{author}"
-    secure: OMSppYsUAQmbgcYenzQvg8QhWuGZd3554lrwK4XDNPqlxeV6BATRYUvgU3fYVAt5Lkri6+ypRVf6VRasBwj4VgYwEHiO5PLqa3bXo9EgJoJiDcq8IjBHrgzVvw0FQShujiDwnpDPUpsjr8DHmuholbE2bX8qF+w0Vd97GJVOHq8FVCm8QQXiOTvPvlFnYCm8sBIoum6Bm9QeuFZM2UhcClMmtxODz799quMztWgbGVF5nO4lQzDE3eYveir21MyB9jKK1fnU2j7NZXc1CLW+vlVj6znN9dDVihNGW1De9Ey9LwXbQW6Y6GsYT4B6Qo/51Cl9jLsva/pSrAHQBzxCvmnCb4EKR+Mn3XQpa/kst6OgkmLEooLyTrLQw0o5ORI7ECmxxMcUHW9HoHRPfvUed9fNJo2nnC9LnwRhkiC6PuzWIhYMaWz2tGNtMxdIQhJLH+cJsL0vYJlWqgL6H9yDBFQd28jGYTl+uFG1KZlJGaVsvtGHDD0VXgjcnB8YT4MGaEbWMDwfuNvD4Y2ormyRhKz7F2ODZQwDR7aWnFGiI7Zl/wRcrc4Tey6NNK6LFT68l3zgQ5xkuKMgJDy7DhvGKiSGD3+XSjkmo2dHNevQvd1HerpCC1axbp6KNMNy/1iJpMhAYO5MPVAFRq/HZdzpGLESmuUQ3ojhRWwIQ7n6k7k=
+    rooms:
+      - secure: NCWjkmlb8QK3fTVNBGbI/K9FY4FETDdUfISgz4Xdkgmo82rMC9CLPX9bS0MiBpcjf79jHSTPlLmCu3PkzPLFxtTfPetET9QgmvEgso7MS2/ZTPs6iXB6k4xF3whRQjFbU9Z016lS3lHj2gmWfc64d025O3XX5J7H6YUKdHOdZ4QDM1oLFZ+rDR7dP3LKX+s5HJ57Q1a5Gglgq7q4hIUusPnovKQsnUJEYrE1xLLAJlel16nwFZR5nendptIqTT3cK8NA2u1URo4FcY+QcZYBf4q2fDaPyuRhUsAsER5QSERTK/cfonCj7jhMpxk/xzM0tQp6WFQLuaBFlmfwwFOISAnQucDBBoSNbTw8mw8+Zftwldop06kox0dzE/Y2gIz6VunKVg0d4moEaZp9GiT1H97Oq1IjaGISVbarMOGvmeZnaJdJxfwqo78yMfsvuIkxVWyFuh4lSWfpQSRTgOFDeLBllFWyh+i3njK9fxL1i3nA9Kq47pGgqNU2zRp0QbThfupqqq6d90Rd1EI/fzhHQGOog6oFAF8b7tkxlWogqMofIVSBUzI6Qxjr6HIKGcNKgw7mRV1Du+Oiwr94OqpKn+b0D+gJc31US4WaKFkEWCTgeQ3cQAOfgBof7j9WFk/naT5Sxs+ibqVzUsZe0SicuAYAHDu9RkDcS/gyTY8LD0I=

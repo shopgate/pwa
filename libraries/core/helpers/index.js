@@ -1,3 +1,5 @@
+const csl = console;
+
 /**
  * Converts logs into a readable format for Selenium, if testMode is enabled.
  * @param {Array} args Arguments that should be converted
@@ -17,13 +19,13 @@ const convertLogArgs = (args) => {
  */
 export const logger = {
   ...console,
-  debug: (...args) => console.debug(...convertLogArgs(args)),
-  dir: (...args) => console.dir(...convertLogArgs(args)),
-  dirxml: (...args) => console.dirxml(...convertLogArgs(args)),
-  error: (...args) => console.error(...convertLogArgs(args)),
-  info: (...args) => console.info(...convertLogArgs(args)),
-  log: (...args) => console.log(...convertLogArgs(args)),
-  warn: (...args) => console.warn(...convertLogArgs(args)),
+  debug: (...args) => csl.debug(...convertLogArgs(args)),
+  dir: (...args) => csl.dir(...convertLogArgs(args)),
+  dirxml: (...args) => csl.dirxml(...convertLogArgs(args)),
+  error: (...args) => csl.error(...convertLogArgs(args)),
+  info: (...args) => csl.info(...convertLogArgs(args)),
+  log: (...args) => csl.log(...convertLogArgs(args)),
+  warn: (...args) => csl.warn(...convertLogArgs(args)),
 };
 
 /**

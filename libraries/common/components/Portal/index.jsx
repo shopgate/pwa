@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig as config } from '../../helpers/config';
 
-const portals = portalCollection.getPortals();
-
 /**
  * The Portal component.
  */
@@ -27,6 +25,7 @@ class Portal extends Component {
   constructor(props) {
     super(props);
 
+    this.portals = portalCollection.getPortals();
     this.state = {
       hasError: false,
     };
@@ -61,7 +60,7 @@ class Portal extends Component {
           return;
         }
 
-        const PortalComponent = portals[key];
+        const PortalComponent = this.portals[key];
 
         // Check that the component is valid.
         if (PortalComponent) {

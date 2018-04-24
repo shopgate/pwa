@@ -11,6 +11,7 @@ const IMAGE = 'image';
 const PRICE = 'price';
 const PRICE_STRIKED = 'price-striked';
 const COUPON_CODE = 'coupon-code';
+const EMPTY = 'empty';
 
 const BEFORE = 'before';
 const AFTER = 'after';
@@ -46,6 +47,10 @@ export const CART_ITEM_PRICE_STRIKED_AFTER = `${CART}.${ITEM}.${PRICE_STRIKED}.$
 export const CART_ITEM_COUPON_CODE_BEFORE = `${CART}.${ITEM}.${COUPON_CODE}.${BEFORE}`;
 export const CART_ITEM_COUPON_CODE = `${CART}.${ITEM}.${COUPON_CODE}`;
 export const CART_ITEM_COUPON_CODE_AFTER = `${CART}.${ITEM}.${COUPON_CODE}.${AFTER}`;
+
+export const CART_EMPTY_BEFORE = `${CART}.${EMPTY}.${BEFORE}`;
+export const CART_EMPTY = `${CART}.${EMPTY}`;
+export const CART_EMPTY_AFTER = `${CART}.${EMPTY}.${AFTER}`;
 
 export const CART_PAYMENT_BAR_BEFORE = `${CART}.${PAYMENT_BAR}.${BEFORE}`;
 export const CART_PAYMENT_BAR = `${CART}.${PAYMENT_BAR}`;

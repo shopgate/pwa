@@ -42,6 +42,18 @@ export const getPlatform = createSelector(
 );
 
 /**
+ * Returns the os version.
+ * @return {string|null}
+ */
+export const getOSVersion = createSelector(
+  getDeviceInformation,
+  (deviceInformation) => {
+    const { os: { ver = null } = {} } = deviceInformation || {};
+    return ver;
+  }
+);
+
+/**
  * Returns the device model.
  * @param {Object} state The application state.
  * @return {string|null}
@@ -94,4 +106,14 @@ export const getPageInsets = createSelector(
 
     return PAGE_INSETS_ANDROID;
   }
+);
+
+/**
+ * Determines what os version handles the insets differently compared to other os versions.
+ * @returns {boolean}
+ */
+export const considerNativeInset = createSelector(
+  isIos,
+  getOSVersion,
+  (ios, ver) => ios && ver && ver.indexOf('10.') === 0
 );
