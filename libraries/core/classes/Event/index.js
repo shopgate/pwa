@@ -1,5 +1,9 @@
 import EventEmitter from 'events';
 import { logger } from '../../helpers';
+import {
+  GET_PERMISSIONS_RESPONSE_EVENT_NAME,
+  REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
+} from '../../constants/AppPermissions';
 
 const HANDLER_ADD = 'add';
 const HANDLER_REMOVE = 'remove';
@@ -101,7 +105,12 @@ class Event extends EventEmitter {
      */
     if (event === 'pipelineResponse' || event === 'httpResponse') {
       eventName += `:${parameters[1]}`;
-    } else if (event === 'dataResponse' || event === 'webStorageResponse' || event === 'getAppPermissionsResponse') {
+    } else if ([
+      'dataResponse',
+      'webStorageResponse',
+      GET_PERMISSIONS_RESPONSE_EVENT_NAME,
+      REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
+    ].includes(event)) {
       eventName += `:${parameters[0]}`;
     }
 

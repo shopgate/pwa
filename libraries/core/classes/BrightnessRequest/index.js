@@ -3,7 +3,7 @@ import AppCommand from '../AppCommand';
 import { logger } from '../../helpers';
 
 const LIB_VERSION = '17.0';
-const GET_COMMAND_NAME = 'getCurrentBrightness';
+const GET_PERMISSIONS_COMMAND_NAME = 'getCurrentBrightness';
 const RESPONSE_EVENT_NAME = 'currentBrightnessResponse';
 
 /**
@@ -56,7 +56,7 @@ export class BrightnessRequest {
 
       // Prepare the AppComand.
       const command = new AppCommand()
-        .setCommandName(GET_COMMAND_NAME)
+        .setCommandName(GET_PERMISSIONS_COMMAND_NAME)
         .setLibVersion(LIB_VERSION);
 
       // Dispatch the command. The method will resolve with FALSE in case of an error.

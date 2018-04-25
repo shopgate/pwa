@@ -3,7 +3,10 @@ import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
 import DevServerBridge from '../DevServerBridge';
-
+import {
+  GET_PERMISSIONS_COMMAND_NAME,
+  REQUEST_PERMISSIONS_COMMAND_NAME,
+} from '../../constants/AppPermissions';
 /**
  * The app command class.
  */
@@ -22,6 +25,8 @@ class AppCommand {
       'sendPipelineRequest',
       'sendHttpRequest',
       'getWebStorageEntry',
+      GET_PERMISSIONS_COMMAND_NAME,
+      REQUEST_PERMISSIONS_COMMAND_NAME,
     ];
   }
 

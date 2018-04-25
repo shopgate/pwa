@@ -1,28 +1,22 @@
-import AppPermissionsRequest, { TYPE_GET, TYPE_REQUEST } from '../classes/AppPermissionsRequest';
+import GetAppPermissionsRequest from '../classes/AppPermissionsRequest/GetAppPermissionsRequest';
+import RequestAppPermissionsRequest from '../classes/AppPermissionsRequest/RequestAppPermissionsRequest';
 
 /**
- * Gathers the current permissions from the app.
- * @param {Array} permissionIds The desired permission ids. If kept empty all will be retured.
- * @return {Promise<Object>}
+ * Gathers the current permissions from the operating system.
+ * @param {Array} [permissionIds=[]] The desired permission ids. If kept empty all will be retured.
+ * @return {Promise<Array>}
  */
-export const getAppPermissions = (permissionIds = []) => {
-  const request = new AppPermissionsRequest();
-  return request
-    .setType(TYPE_GET)
+export const getAppPermissions = (permissionIds = []) =>
+  new GetAppPermissionsRequest()
     .setPermissionIds(permissionIds)
     .dispatch();
-};
 
 /**
- * Requests additional permissions from the app.
- * @param {Array} permissionIds The desired permission ids. If kept empty all will be retured.
- * @return {Promise<Object>}
+ * Requests additional permissions from the operating system.
+ * @param {Array} permissions The desired permissions. If kept empty all will be retured.
+ * @return {Promise<Array>}
  */
-export const requestAppPermissions = (permissionIds = []) => {
-  const request = new AppPermissionsRequest();
-  return request
-    .setType(TYPE_REQUEST)
-    .setPermissionIds(permissionIds)
+export const requestAppPermissions = permissions =>
+  new RequestAppPermissionsRequest()
+    .setPermissions(permissions)
     .dispatch();
-};
-
