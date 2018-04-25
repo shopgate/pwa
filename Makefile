@@ -13,6 +13,7 @@ checkout-develop:
 		git fetch --all
 		git pull
 		git submodule foreach --recursive git pull
+		make clean
 
 release:
 		make pre-release
