@@ -101,7 +101,7 @@ class Event extends EventEmitter {
      */
     if (event === 'pipelineResponse' || event === 'httpResponse') {
       eventName += `:${parameters[1]}`;
-    } else if (event === 'dataResponse' || event === 'webStorageResponse') {
+    } else if (event === 'dataResponse' || event === 'webStorageResponse' || event === 'getAppPermissionsResponse') {
       eventName += `:${parameters[0]}`;
     }
 
