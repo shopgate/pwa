@@ -1,8 +1,9 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
-const actionButton = css({
-  color: colors.primary,
+export default css({
+  color: colors.accent,
+  fontWeight: 500,
   flexGrow: 1,
   textTransform: 'uppercase',
   textAlign: 'right',
@@ -12,8 +13,4 @@ const actionButton = css({
   ':focus': {
     outline: 'none',
   },
-}).toString();
-
-export default {
-  actionButton,
-};
+});

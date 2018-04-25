@@ -3,6 +3,8 @@ import { addFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/to
 import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
+import flushToast from '@shopgate/pwa-common/action-creators/toast/flushToast';
+import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
@@ -20,11 +22,14 @@ export default function favorites(subscribe) {
       dispatch(createToast({
         action: 'common.undo',
         actionOnClick: addFavorites(action.productId, true),
+        duration: 25000,
         message: 'favorites.removed',
         replaceable: true,
-        duration: 2000,
       }));
     }, FAVORITES_SHOW_TOAST_DELAY);
   });
-}
 
+  subscribe(routeDidChange$, ({ dispatch }) => {
+    dispatch(flushToast());
+  });
+}
