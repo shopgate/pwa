@@ -53,7 +53,7 @@ const favorites = css({
   right: 16,
   left: 'auto',
   transform: 'translate3d(0, -50%, 0)',
-  zIndex: 10,
+  zIndex: 1,
 }).toString();
 
 export default {
