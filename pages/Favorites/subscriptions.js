@@ -22,7 +22,7 @@ export default function favorites(subscribe) {
         actionOnClick: addFavorites(action.productId, true),
         message: 'favorites.removed',
         replaceable: true,
-        duration: 6000,
+        duration: 2000,
       }));
     }, FAVORITES_SHOW_TOAST_DELAY);
   });
