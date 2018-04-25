@@ -71,93 +71,11 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@shopgate/eslint-config@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.2.0.tgz#cc9089941827af6a3fec73668dbbe3af154a69f6"
-  dependencies:
-    babel-eslint "^8.2.1"
-    eslint-config-airbnb "^16.1.0"
-    eslint-plugin-eslint-comments "^1.1.0"
-    eslint-plugin-extra-rules "0.8.1"
-    eslint-plugin-import "^2.8.0"
-    eslint-plugin-jsx-a11y "^6.0.3"
-    eslint-plugin-react "^7.6.1"
-    react-hot-loader "4.0.1"
-
-"@shopgate/pwa-common-commerce@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.2.0.tgz#60a5df3e37abf32763c2a8308258b61d4e383dda"
-  dependencies:
-    recompose "^0.26.0"
-    reselect "^3.0.1"
-
-"@shopgate/pwa-common@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.2.0.tgz#b02741ff8af855da3977986d9f699b871f7ca408"
-  dependencies:
-    classnames "^2.2.5"
-    crypto-js "3.1.9-1"
-    glamor "^2.20.40"
-    gsap "^1.20.2"
-    history "^4.7.2"
-    intl-messageformat "^2.1.0"
-    jsdom "11.1.0"
-    path-match "^1.2.4"
-    react-dotdotdot "^1.1.0"
-    react-id-swiper "1.4.0"
-    react-inline-transition-group "^2.1.7"
-    react-portal "^3.1.0"
-    react-redux "^5.0.6"
-    react-tap-event-plugin "^3.0.2"
-    recompose "^0.26.0"
-    redux "^3.7.2"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    remote-redux-devtools "^0.5.12"
-    reselect "^3.0.1"
-    rxjs "^5.4.3"
-    url-search-params "^0.10.0"
-
-"@shopgate/pwa-core@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.2.0.tgz#2bd84f914d05054899f221286d04d71a5da7c9b7"
-  dependencies:
-    crypto-js "3.1.9-1"
-    isomorphic-fetch "^2.2.1"
-
-"@shopgate/pwa-tracking@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.2.0.tgz#88c0d7144f1ed699c1705a0e1e2923784c3fac2d"
-
-"@shopgate/pwa-unit-test@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.2.0.tgz#6e11aa4efeab578b142cd28fb5ff7e280829fcb0"
-  dependencies:
-    babel-core "^6.26.0"
-    babel-preset-es2015 "^6.24.1"
-    cheerio "^1.0.0-rc.2"
-    enzyme "^3.2.0"
-    enzyme-adapter-react-16 "^1.1.1"
-    enzyme-to-json "^3.3.0"
-    identity-obj-proxy "^3.0.0"
-    jest-enzyme "^4.0.1"
-    react-hot-loader "4.0.1"
-    react-tap-event-plugin "^3.0.2"
-    react-test-renderer "^16.2.0"
-
-"@shopgate/pwa-webcheckout-shopify@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.2.0.tgz#9a33613b8cdf6fe0e6232bd697930fd89e113c78"
-
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
-
-"@shopgate/tracking-core@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.2.0.tgz#09aefa11a0297af95d00b7e714d2afac251bc9ab"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
@@ -6112,15 +6030,6 @@ react-dom@^16.3.2:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-dom@^16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
-
 react-dotdotdot@^1.1.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/react-dotdotdot/-/react-dotdotdot-1.2.3.tgz#45bb264153cee73471f55c51c8d1542f4880a34f"
@@ -6272,15 +6181,6 @@ react-transition-hooks@^1.2.0:
   dependencies:
     create-react-class "^15.5.2"
     prop-types "^15.5.8"
-
-react@^16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
-  dependencies:
-    fbjs "^0.8.16"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.0"
 
 react@^16.3.2:
   version "16.3.2"
