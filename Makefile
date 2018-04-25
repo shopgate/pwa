@@ -7,17 +7,13 @@ UTILS = eslint-config unit-tests
 THEMES = gmd ios11
 REPO_VERSION = ''
 
-unit-tests:
-		lerna run --scope @shopgate/pwa-core cover --stream
-		lerna run --scope @shopgate/pwa-common cover --stream
-		lerna run --scope @shopgate/pwa-common-commerce cover --stream
-		lerna run --scope @shopgate/pwa-tracking cover --stream
-		lerna run --scope @shopgate/tracking-core cover --stream
-		lerna run --scope @shopgate/pwa-webcheckout-shopify cover --stream
-		lerna run --scope @shopgate/product-reviews cover --stream
-		lerna run --scope @shopgate/tracking-ga-native cover --stream
-		lerna run --scope @shopgate/theme-gmd cover --stream
-		lerna run --scope @shopgate/theme-ios11 cover --stream
+checkout-develop:
+		git checkout develop
+		git submodule foreach --recursive git checkout develop
+		git fetch --all
+		git pull
+		git submodule foreach --recursive git pull
+		make clean
 
 release:
 		make pre-release
