@@ -9,6 +9,7 @@ import {
   PAGE_CONTENT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import View from 'Components/View';
+import Button from '@shopgate/ui-material/Button';
 import widgets from 'Extensions/widgets';
 import connect from './connector';
 import styles from './style';
@@ -29,6 +30,11 @@ class Page extends Component {
     configs: {},
     style: null,
   };
+
+  constructor(props) {
+    super(props);
+    this.inputRef = React.createRef();
+  }
 
   /**
    * ComponentDidMount lifecycle hook.
@@ -74,8 +80,16 @@ class Page extends Component {
       return null;
     }
 
+    console.error(this.inputRef);
+
     return (
       <View className={styles.container} style={this.props.style} title={this.title}>
+        <section style={{
+          position: 'relative',
+          margin: 50,
+        }}>
+          <Button>Welcome</Button>
+        </section>
         <Portal name={PAGE_CONTENT_BEFORE} props={{ id: this.pageId }} />
         <Portal name={PAGE_CONTENT} props={{ id: this.pageId }}>
           <div className={styles.widgetWrapper}>
