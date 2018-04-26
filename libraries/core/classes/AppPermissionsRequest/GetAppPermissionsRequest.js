@@ -2,6 +2,7 @@ import AppPermissionsRequest from './AppPermissionsRequest';
 import {
   GET_PERMISSIONS_COMMAND_NAME,
   GET_PERMISSIONS_RESPONSE_EVENT_NAME,
+  availablePermissionsIds,
 } from '../../constants/AppPermissions';
 
 /**
@@ -18,10 +19,10 @@ class GetAppPermissionsRequest extends AppPermissionsRequest {
 
   /**
    * Sets the desired permission ids for the request.
-   * @param {Array} permissionIds The permission ids.
+   * @param {Array} [permissionIds=[]] The permission ids.
    * @return {GetAppPermissionsRequest}
    */
-  setPermissionIds(permissionIds) {
+  setPermissionIds(permissionIds = []) {
     this.setCommandParams({ permissionIds });
     return this;
   }
@@ -33,8 +34,25 @@ class GetAppPermissionsRequest extends AppPermissionsRequest {
    * @return {boolean}
    */
   validateCommandParams() {
-    // TODO implement validator.
-    return true;
+    // Empty commmand params are ok for this commmand.
+    if (this.commandParams === null) {
+      return true;
+    }
+
+    const { permissionIds } = this.commandParams;
+
+    // If permission ids  are present they have to be an array.
+    if (!Array.isArray(permissionIds)) {
+      return false;
+    }
+
+    // An empty permissionsIds array is ok for the command.
+    if (permissionIds.length === 0) {
+      return true;
+    }
+
+    // Check if all permission ids are valid.
+    return permissionIds.every(permissionId => availablePermissionsIds.includes(permissionId));
   }
 }
 

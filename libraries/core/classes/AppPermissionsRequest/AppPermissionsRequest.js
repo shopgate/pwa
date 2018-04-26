@@ -107,7 +107,7 @@ class AppPermissionsRequest extends Request {
       .setLibVersion(this.libVersion)
       .setCommandParams({
         serial: this.serial,
-        ...this.commandParams,
+        ...this.commandParams && { ...this.commandParams },
       });
 
     // Try to dispatch the command.

@@ -8,6 +8,13 @@ import {
 
 jest.mock('../Event', () => ({}));
 
+const permissions = [{
+  permissionId: PERMISSION_ID_LOCATION,
+  options: {
+    usage: USAGE_WHEN_IN_USE,
+  },
+}];
+
 describe('AppPermissionsRequest', () => {
   let instance;
   let setCommandParamsSpy;
@@ -26,12 +33,6 @@ describe('AppPermissionsRequest', () => {
 
   describe('.setPermissions()', () => {
     it('should set command params as expected', () => {
-      const permissions = [{
-        permissionId: PERMISSION_ID_LOCATION,
-        options: {
-          usage: USAGE_WHEN_IN_USE,
-        },
-      }];
       const expected = { permissions };
 
       const result = instance.setPermissions(permissions);
@@ -44,6 +45,33 @@ describe('AppPermissionsRequest', () => {
   });
 
   describe('.validateCommandParams()', () => {
+    it('should return true for valid params', () => {
+      instance.setPermissions(permissions);
+      const result = instance.validateCommandParams();
+      expect(result).toBe(true);
+    });
 
+    it('should return false when .setPermissions() was not called', () => {
+      const result = instance.validateCommandParams();
+      expect(result).toBe(false);
+    });
+
+    it('should return false when the permission array is empty', () => {
+      instance.setPermissions([]);
+      const result = instance.validateCommandParams();
+      expect(result).toBe(false);
+    });
+
+    it('should return false when the permission array contains invalid permission entry', () => {
+      instance.setPermissions([null]);
+      const result = instance.validateCommandParams();
+      expect(result).toBe(false);
+    });
+
+    it('should return false when the permission array contains invalid permissions', () => {
+      instance.setPermissions([{ wrongParam: 1337 }]);
+      const result = instance.validateCommandParams();
+      expect(result).toBe(false);
+    });
   });
 });
