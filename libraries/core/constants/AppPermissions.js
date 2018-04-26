@@ -45,9 +45,11 @@ export const availableUsages = [
 export const STATUS_DENIED = 'denied';
 export const STATUS_GRANTED = 'granted';
 export const STATUS_NOT_DETERMINED = 'notDetermined';
+export const STATUS_NOT_SUPPORTED = 'notSupported';
 
 export const availableStatuses = [
   STATUS_DENIED,
   STATUS_GRANTED,
   STATUS_NOT_DETERMINED,
+  STATUS_NOT_SUPPORTED,
 ];

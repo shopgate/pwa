@@ -3,7 +3,6 @@ import {
   REQUEST_PERMISSIONS_COMMAND_NAME,
   REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
   availablePermissionsIds,
-  availableUsages,
 } from '../../constants/AppPermissions';
 
 /**
