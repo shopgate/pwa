@@ -51,6 +51,7 @@ class Toast extends Component {
    * @param {Object} nextProps NextProps.
    */
   componentWillReceiveProps(nextProps) {
+    console.warn(nextProps);
     const hasToast = !!nextProps.toast;
 
     if (hasToast) {

@@ -7,11 +7,13 @@
  * @returns {Object|null}
  */
 export const getToast = (state) => {
-  if (state.toast.length) {
-    return state.toast[0];
+  if (!state.toast.length) {
+    return null;
   }
-  return null;
+
+  return state.toast[0];
 };
+
 /**
  * Checks if there is a toast message which should be shown.
  * @param {Object} state State of the app.

@@ -62,6 +62,7 @@ export const REMOVE_MODAL = 'REMOVE_MODAL';
  */
 export const CREATE_TOAST = 'CREATE_TOAST';
 export const REMOVE_TOAST = 'REMOVE_TOAST';
+export const FLUSH_TOAST = 'FLUSH_TOAST';
 /**
  * ------- USER -------
  */
