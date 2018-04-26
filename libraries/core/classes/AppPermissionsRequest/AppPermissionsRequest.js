@@ -3,6 +3,7 @@ import AppCommand from '../AppCommand';
 import event from '../Event';
 import requestBuffer from '../RequestBuffer';
 import { logger } from '../../helpers';
+import logGroup from '../../helpers/logGroup';
 
 /**
  * The AppPermissionsRequest class is be base class for app permission related request.
@@ -71,6 +72,9 @@ class AppPermissionsRequest extends Request {
    * @param {Function} reject The reject() callback of the dispatch promise.
    */
   async onDispatch(resolve, reject) {
+    // Prepare the request type for logging.
+    const requestType = this.commandName.replace('AppPermissions', '');
+
     // Validate the command parameters.
     if (this.validateCommandParams(this.commandParams) === false) {
       // In case of an error log a message and reject the request promise.
@@ -87,6 +91,7 @@ class AppPermissionsRequest extends Request {
      * @param {Array} permissions An array with the current app permissions.
      */
     const requestCallback = (serial, permissions) => {
+      logGroup(`AppPermissionsResponse %c${requestType}`, permissions, '#9a9800');
       this.cleanUpRequest(requestCallback);
       resolve(permissions);
     };
@@ -112,7 +117,10 @@ class AppPermissionsRequest extends Request {
     if (success === false) {
       this.cleanUpRequest(requestCallback);
       reject(new Error(`${this.commandName} command dispatch failed`));
+      return;
     }
+
+    logGroup(`AppPermissionsRequest %c${requestType}`, this.commandParams, '#adab00');
   }
 }
 

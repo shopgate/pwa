@@ -42,6 +42,12 @@ jest.mock('../../helpers', () => ({
   },
 }));
 
+const mockedLogGroup = jest.fn();
+// eslint-disable-next-line extra-rules/potential-point-free
+jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
+  mockedLogGroup(...args);
+});
+
 const commandName = 'appCommand';
 const eventName = 'appEvent';
 
@@ -148,6 +154,7 @@ describe('AppPermissionsRequest', () => {
         ...commandParams,
       });
       expect(mockedDispatch).toHaveBeenCalledTimes(1);
+      expect(mockedLogGroup).toHaveBeenCalledTimes(2);
     });
 
     it('should reject when the command params are invalid', async () => {
@@ -161,6 +168,7 @@ describe('AppPermissionsRequest', () => {
       expect(resolveCallback).toHaveBeenCalledTimes(0);
       expect(mockedLoggerError).toHaveBeenCalledTimes(1);
       expect(mockedLoggerError).toHaveBeenCalledWith(expect.any(String), commandParams);
+      expect(mockedLogGroup).toHaveBeenCalledTimes(0);
     });
 
     it('should reject when the command was not dispatched', async () => {
@@ -173,6 +181,7 @@ describe('AppPermissionsRequest', () => {
       expect(resolveCallback).toHaveBeenCalledTimes(0);
       expect(cleanUpRequestSpy).toHaveBeenCalledTimes(1);
       expect(cleanUpRequestSpy).toHaveBeenCalledWith(lastAddedEventCallback);
+      expect(mockedLogGroup).toHaveBeenCalledTimes(0);
     });
 
     it('should be called and resolve during inherited .dispatch()', (done) => {
@@ -181,6 +190,7 @@ describe('AppPermissionsRequest', () => {
           expect(result).toEqual(permissionsResponse);
           expect(onDispatchSpy).toHaveBeenCalledTimes(1);
           expect(onDispatchSpy).toHaveBeenCalledWith(expect.any(Function), expect.any(Function));
+          expect(mockedLogGroup).toHaveBeenCalledTimes(2);
           done();
         });
 
@@ -198,6 +208,7 @@ describe('AppPermissionsRequest', () => {
           expect(onDispatchSpy).toHaveBeenCalledWith(expect.any(Function), expect.any(Function));
           expect(cleanUpRequestSpy).toHaveBeenCalledTimes(1);
           expect(cleanUpRequestSpy).toHaveBeenCalledWith(lastAddedEventCallback);
+          expect(mockedLogGroup).toHaveBeenCalledTimes(0);
           done();
         });
     });
