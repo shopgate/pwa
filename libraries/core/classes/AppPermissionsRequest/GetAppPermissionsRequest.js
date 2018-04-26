@@ -41,7 +41,7 @@ class GetAppPermissionsRequest extends AppPermissionsRequest {
 
     const { permissionIds } = this.commandParams;
 
-    // If permission ids  are present they have to be an array.
+    // If permission ids are present they have to be an array.
     if (!Array.isArray(permissionIds)) {
       return false;
     }
