@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-core",
-  "version": "5.2.0",
+  "version": "5.3.0-beta.1",
   "description": "Core library for the Shopgate Connect PWA.",
   "author": "Support <support@shopgate.com>",
   "license": "Apache-2.0",
@@ -24,7 +24,7 @@
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "^5.2.0",
+    "@shopgate/eslint-config": "^5.3.0-beta.1",
     "coveralls": "^3.0.0",
     "jest": "^22.0.4"
   }
