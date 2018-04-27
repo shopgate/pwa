@@ -19,8 +19,10 @@ const container = (background = '#f2f2f2', paddingTop = '100%') => css({
 
 const image = css({
   position: 'absolute',
-  top: 0,
-  left: 0,
+  left: '50%',
+  maxHeight: '100%',
+  top: '50%',
+  transform: 'translate3d(-50%, -50%, 0)',
   width: '100%',
 }).toString();
 
