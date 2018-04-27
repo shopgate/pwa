@@ -1,0 +1,2 @@
+export const PROCESS_ALWAYS = 'PROCESS_ALWAYS';
+export const PROCESS_LAST = 'PROCESS_LAST';
