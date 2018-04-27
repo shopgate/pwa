@@ -108,7 +108,7 @@ class AppCommand {
    * Dispatches the command to the app.
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
-   * @param {Object} params The command params.
+   * @param {Object} [params] The command params.
    * @return {Promise<boolean>}
    */
   async dispatch(params) {
