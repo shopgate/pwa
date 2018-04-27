@@ -31,11 +31,6 @@ class Page extends Component {
     style: null,
   };
 
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-  }
-
   /**
    * ComponentDidMount lifecycle hook.
    */
@@ -80,15 +75,14 @@ class Page extends Component {
       return null;
     }
 
-    console.error(this.inputRef);
-
     return (
       <View className={styles.container} style={this.props.style} title={this.title}>
         <section style={{
           position: 'relative',
           margin: 50,
-        }}>
-          <Button>Welcome</Button>
+        }}
+        >
+          <Button onClick={() => console.warn('Clicked!')}>Raised Button</Button>
         </section>
         <Portal name={PAGE_CONTENT_BEFORE} props={{ id: this.pageId }} />
         <Portal name={PAGE_CONTENT} props={{ id: this.pageId }}>
