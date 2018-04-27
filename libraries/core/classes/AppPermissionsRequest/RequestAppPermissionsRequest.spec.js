@@ -1,10 +1,11 @@
 import RequestAppPermissionsRequest from './RequestAppPermissionsRequest';
 import {
-  REQUEST_PERMISSIONS_COMMAND_NAME,
-  REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
   PERMISSION_ID_LOCATION,
   USAGE_WHEN_IN_USE,
 } from '../../constants/AppPermissions';
+
+const REQUEST_PERMISSIONS_COMMAND_NAME = 'requestAppPermissions';
+const REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME = 'requestAppPermissionsResponse';
 
 jest.mock('../Event', () => ({}));
 

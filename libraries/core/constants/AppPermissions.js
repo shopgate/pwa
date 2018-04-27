@@ -1,13 +1,4 @@
 /**
- * Command and event names.
- */
-export const GET_PERMISSIONS_COMMAND_NAME = 'getAppPermissions';
-export const GET_PERMISSIONS_RESPONSE_EVENT_NAME = 'getAppPermissionsResponse';
-
-export const REQUEST_PERMISSIONS_COMMAND_NAME = 'requestAppPermissions';
-export const REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME = 'requestAppPermissionsResponse';
-
-/**
  * Permission ids.
  */
 export const PERMISSION_ID_LOCATION = 'location';

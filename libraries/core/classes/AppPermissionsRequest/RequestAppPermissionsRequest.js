@@ -1,9 +1,5 @@
 import AppPermissionsRequest from './AppPermissionsRequest';
-import {
-  REQUEST_PERMISSIONS_COMMAND_NAME,
-  REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
-  availablePermissionsIds,
-} from '../../constants/AppPermissions';
+import { availablePermissionsIds } from '../../constants/AppPermissions';
 
 /**
  * The RequestAppPermissionsRequest class is about to initiate the process to request
@@ -14,13 +10,13 @@ class RequestAppPermissionsRequest extends AppPermissionsRequest {
    * The constructor.
    */
   constructor() {
-    super(REQUEST_PERMISSIONS_COMMAND_NAME, REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME);
+    super('requestAppPermissions', 'requestAppPermissionsResponse');
   }
 
   /**
    * Sets the desired permissions for the request.
    * @param {Array} permissions The permissions.
-   * @return {GetAppPermissionsRequest}
+   * @return {RequestAppPermissionsRequest}
    */
   setPermissions(permissions) {
     this.setCommandParams({ permissions });

@@ -14,7 +14,7 @@ class AppPermissionsRequest extends Request {
   /**
    * The constructor.
    * @param {string} commandName The name of the command which is dispatched to the app.
-   * @param {*} eventName The event name which is called by the app to deliver the requested data.
+   * @param {string} eventName The event name which is called by the app to deliver the data.
    */
   constructor(commandName, eventName) {
     super();
@@ -25,7 +25,7 @@ class AppPermissionsRequest extends Request {
     this.commandParams = null;
 
     this.libVersion = '18.0';
-    this.createSerial();
+    this.createSerial(this.commandName);
     this.createEventCallbackName(this.eventName);
   }
 

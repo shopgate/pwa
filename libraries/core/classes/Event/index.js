@@ -1,9 +1,5 @@
 import EventEmitter from 'events';
 import { logger } from '../../helpers';
-import {
-  GET_PERMISSIONS_RESPONSE_EVENT_NAME,
-  REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
-} from '../../constants/AppPermissions';
 
 const HANDLER_ADD = 'add';
 const HANDLER_REMOVE = 'remove';
@@ -103,13 +99,16 @@ class Event extends EventEmitter {
      * to identify an appropriate callback event.
      * To identify these callbacks, the serial has to be decoded from the parameter list.
      */
-    if (event === 'pipelineResponse' || event === 'httpResponse') {
+    if ([
+      'pipelineResponse',
+      'httpResponse',
+    ].includes(event)) {
       eventName += `:${parameters[1]}`;
     } else if ([
       'dataResponse',
       'webStorageResponse',
-      GET_PERMISSIONS_RESPONSE_EVENT_NAME,
-      REQUEST_PERMISSIONS_RESPONSE_EVENT_NAME,
+      'getAppPermissionsResponse',
+      'requestAppPermissionsResponse',
     ].includes(event)) {
       eventName += `:${parameters[0]}`;
     }
