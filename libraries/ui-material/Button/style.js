@@ -1,11 +1,17 @@
 import { css } from 'glamor';
 
 export default css({
-  background: 'green',
-  color: 'white',
+  borderRadius: 2,
+  boxShadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',
+  display: 'flex',
+  font: '500 16px Roboto',
+  height: 40,
+  justifyContent: 'center',
+  minWidth: 64,
   overflow: 'hidden',
   outline: 0,
-  padding: '20px 40px',
+  padding: '0 16px',
   position: 'relative',
+  textTransform: 'uppercase',
   whiteSpace: 'nowrap',
 });

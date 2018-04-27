@@ -1,50 +1,77 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Ripple from '../Ripple';
 import styles from './style';
 
 /**
- * 
+ * The Button component.
  */
 class Button extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired,
+    color: PropTypes.string,
+    disabled: PropTypes.bool,
+    style: PropTypes.shape(),
+    textColor: PropTypes.string,
+  }
+
+  static defaultProps = {
+    color: '#3f51b5',
+    disabled: false,
+    style: {},
+    textColor: '#fff',
+  }
+
   /**
-   * 
-   * @param {*} props 
+   * @param {*} props The component props.
    */
   constructor(props) {
     super(props);
-
     this.buttonRef = React.createRef();
   }
 
   /**
-   * 
+   * @param {MouseEvent} event The mouse event.
    */
-  get diameter() {
-    const current = this.buttonRef.current ? this.buttonRef.current : {};
-    const { clientHeight = 0, clientWidth = 0 } = current;
-    return clientWidth;
-
-    return Math.sqrt((clientHeight ** 2) + (clientWidth ** 2));
-  }
-
-  handleClick = () => {
-    console.warn('Click!');
+  handleClick = (event) => {
+    this.props.onClick(event);
   }
 
   /**
-   * 
+   * @returns {JSX}
    */
   render() {
-    const ButtonComponent = React.forwardRef((props, ref) => {
-      return (
-        <button className={styles} ref={ref}>
-          <Ripple size={this.diameter} onClick={props.onClick} parent={ref} />
-          {props.children}
-        </button>
-      );
-    });
+    const { color: background, disabled, textColor: color } = this.props;
+    const ButtonComponent = React.forwardRef((props, ref) => (
+      <button
+        className={styles}
+        ref={ref}
+        style={{
+          background,
+          color,
+          ...this.props.style,
+          ...disabled && { pointerEvents: 'none' },
+        }}
+        type="button"
+      >
+        <Ripple
+          color="light"
+          onClick={props.onClick}
+          parent={ref}
+        />
+        {props.children}
+      </button>
+    ));
 
-    return <ButtonComponent ref={this.buttonRef} onClick={this.handleClick}>hello</ButtonComponent>;
+    return (
+      <ButtonComponent
+        onClick={this.handleClick}
+        ref={this.buttonRef}
+      >
+        {this.props.children}
+      </ButtonComponent>
+    );
   }
 }
 

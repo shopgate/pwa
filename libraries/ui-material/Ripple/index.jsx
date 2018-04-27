@@ -9,16 +9,14 @@ import transition from './transition';
  */
 class Ripple extends Component {
   static propTypes = {
-    size: PropTypes.number.isRequired,
+    parent: PropTypes.element.isRequired,
     color: PropTypes.oneOf(['dark', 'light']),
     onClick: PropTypes.func,
-    origin: PropTypes.arrayOf(PropTypes.number),
   };
 
   static defaultProps = {
     color: 'dark',
     onClick: () => {},
-    origin: null,
   };
 
   /**
@@ -41,34 +39,87 @@ class Ripple extends Component {
   }
 
   /**
-   * 
-   * @param {*} nextState 
+   * @param {*} nextState The next component state.
+   * @returns {boolean}
    */
   shouldComponentUpdate(nextState) {
     return this.state.animating !== nextState.animating;
   }
 
   /**
-   * 
+   * Get the bubble size.
    */
-  get origin() {
-    if (!this.props.origin) {
-      return {
-        left: -(this.size - this.props.size) / 2,
-        top: -(this.size - this.props.size) / 2,
-      };
-    }
+  get bubbleSize() {
+    const { clientHeight, clientWidth } = this.props.parent.current;
 
+    // Get the offset relative to the center and the MouseEvent origin.
+    const offsetX = this.center.x - (this.center.x - this.origin.left);
+    const offsetY = this.center.y - (this.center.y - this.origin.top);
+
+    // Calculate the distance from the center to the MouseEvent origin.
+    const offset = Math.sqrt((offsetX ** 2) + (offsetY ** 2));
+
+    // Return the center offset plus the diameter of the container.
+    return offset + Math.sqrt((clientHeight ** 2) + (clientWidth ** 2));
+  }
+
+  /**
+   * Get the origin point of the bubble.
+   */
+  get bubbleOrigin() {
+    const radius = this.bubbleSize / 2;
     return {
-      left: -(this.size / 2) + this.props.origin[0],
-      top: -(this.size / 2) + this.props.origin[1],
+      left: this.state.offsetX - radius,
+      top: this.state.offsetY - radius,
     };
   }
 
   /**
-   * 
+   * Get the center of the parent element.
+   */
+  get center() {
+    const { clientHeight, clientWidth } = this.props.parent.current;
+    return {
+      x: clientWidth / 2,
+      y: clientHeight / 2,
+    };
+  }
+
+  /**
+   * Get the color.
+   */
+  get color() {
+    return this.colors[this.props.color];
+  }
+
+  /**
+   * Get the origin point of the container.
+   */
+  get origin() {
+    const radius = this.size / 2;
+    return {
+      left: this.state.offsetX - radius,
+      top: this.state.offsetY - radius,
+    };
+  }
+
+  /**
+   * Get the size of the container.
+   */
+  get size() {
+    const { clientHeight, clientWidth } = this.props.parent.current;
+    return Math.max(clientHeight, clientWidth);
+  }
+
+  /**
+   * Start a ripple.
+   * @param {MouseEvent} event The mouse event.
    */
   start = (event) => {
+    if (this.state.animating) {
+      return;
+    }
+
     this.setState({
       animating: true,
       offsetX: event.nativeEvent.offsetX,
@@ -77,42 +128,43 @@ class Ripple extends Component {
   }
 
   /**
-   * 
+   * Finish a ripple.
    */
-  stop = () => {
+  finish = () => {
     this.setState({ animating: false }, this.props.onClick);
   }
 
   /**
-   * 
+   * @returns {JSX}
    */
   render() {
+    if (!this.props.parent.current) {
+      return null;
+    }
+
     return (
       <div
         aria-hidden
         className={styles.container}
         onClick={this.start}
         style={{
-          height: this.props.size,
-          width: this.props.size,
+          height: this.size,
+          width: this.size,
         }}
       >
         <Transition
           in={this.state.animating}
-          onEntered={this.stop}
-          timeout={{
-            enter: 500,
-            exit: 0,
-          }}
+          onEntered={this.finish}
+          timeout={375}
         >
           {state => (
             <div
               className={styles.bubble}
               style={{
-                background: this.colors[this.props.color],
-                height: this.props.size,
-                width: this.props.size,
-                ...this.origin,
+                background: this.color,
+                height: this.bubbleSize,
+                width: this.bubbleSize,
+                ...this.bubbleOrigin,
                 ...transition[state],
               }}
             />

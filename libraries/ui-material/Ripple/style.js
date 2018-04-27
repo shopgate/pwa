@@ -13,6 +13,7 @@ const bubble = css({
   borderRadius: '50%',
   opacity: '.15',
   position: 'absolute',
+  transform: 'scale3d(0, 0, 1)',
   willChange: 'transform',
   zIndex: 1,
 });
