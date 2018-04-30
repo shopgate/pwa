@@ -71,7 +71,6 @@ class ErrorManager {
 
     const id = `${source}-${context}-${code}`;
     const overrideMessage = this.getMessage(id) || message;
-
     this.errorQueue.set(id, {
       id,
       code,
@@ -104,7 +103,7 @@ class ErrorManager {
    * Dispatched the stored error objects through the event emitter.
    * @returns {boolean}
    */
-  dispatch() {
+  dispatch = () => {
     if (this.errorQueue.size === 0) {
       return false;
     }

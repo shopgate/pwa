@@ -1,6 +1,8 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
+import errorManager, { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
+import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import { isAndroid } from '../selectors/client';
@@ -10,17 +12,20 @@ import {
   pageContext,
 } from '../helpers/legacy';
 import ParsedLink from '../components/Router/helpers/parsed-link';
+import { appError, pipelineError } from '../action-creators/error';
 
 /**
  * App subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function app(subscribe) {
-  /**
-   * Gets triggered before the app starts.
-   */
+  // Gets triggered before the app starts.
   subscribe(appWillStart$, ({ dispatch, action }) => {
     dispatch(registerLinkEvents(action.location));
+
+    // Map the error events into the Observable streams.
+    errorEmitter.addListener(SOURCE_APP, error => dispatch(appError(error)));
+    errorEmitter.addListener(SOURCE_PIPELINE, error => dispatch(pipelineError(error)));
   });
 
   /**
