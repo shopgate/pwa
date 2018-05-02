@@ -63,13 +63,13 @@ const Pages = () => (
       <Route path={`${MORE_PATH}`} component={routes.More} />
       <Route path={`${BROWSE_PATH}`} component={routes.Browse} />
 
-      <Portal name={APP_ROUTES} props={{ View }} />
-
       <AuthRoutes to={`${LOGIN_PATH}`}>
         <Route path={`${CHECKOUT_PATH}`} />
         <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
         <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
       </AuthRoutes>
+      
+      <Portal name={APP_ROUTES} props={{ View }} />
     </Viewport>
   </App>
 );
