@@ -28,7 +28,6 @@ import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from 'Components/Dialog';
 import SnackBar from 'Components/SnackBar';
-import Button from '@shopgate/ui-material/Button';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
@@ -43,7 +42,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{ Button }}>
+      <ThemeContext.Provider value={{}}>
         <Portal name={APP_GLOBALS} />
         <Viewport>
           <ModalContainer component={Dialog} />
