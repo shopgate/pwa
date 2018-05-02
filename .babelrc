@@ -9,14 +9,7 @@
     "transform-class-properties",
     "transform-export-extensions",
     "dynamic-import-node",
-    [
-      "transform-runtime",
-      {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true
-      }
-    ]
+    "transform-runtime"
   ],
   "env": {
     "development": {
