@@ -4,7 +4,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import View from 'Components/View';
 import RippleButton from 'Components/RippleButton';
-import TextField from 'Components/TextField';
+import TextField from '@shopgate/pwa-ui-shared/TextField';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
 import styles from './style';

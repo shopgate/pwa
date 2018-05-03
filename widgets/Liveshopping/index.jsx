@@ -8,10 +8,10 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import ImageSlider from 'Components/ImageSlider';
-import Card from 'Components/Card';
+import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
+import Card from '@shopgate/pwa-ui-shared/Card';
 import DiscountBadge from 'Components/DiscountBadge';
-import Price from 'Components/Price';
+import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from 'Components/PriceStriked';
 import ProductImage from 'Components/ProductImage';
 import connect from './connector';

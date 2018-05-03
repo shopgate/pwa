@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddMoreIcon from 'Components/icons/AddMoreIcon';
+import AddMoreIcon from '@shopgate/pwa-ui-shared/icons/AddMoreIcon';
 import styles from './style';
 
 /**

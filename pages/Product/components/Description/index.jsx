@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import PlaceholderParagraph from 'Components/PlaceholderParagraph';
+import PlaceholderParagraph from '@shopgate/pwa-ui-shared/PlaceholderParagraph';
 import connect from './connector';
 import styles from './style';
 

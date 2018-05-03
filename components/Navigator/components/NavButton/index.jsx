@@ -7,8 +7,8 @@ import {
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import Button from '@shopgate/pwa-common/components/Button';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import ArrowIcon from 'Components/icons/ArrowIcon';
-import CrossIcon from 'Components/icons/CrossIcon';
+import ArrowIcon from '@shopgate/pwa-ui-shared/icons/ArrowIcon';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import connect from './connector';
 import {
   NAV_STATE_INDEX,

@@ -4,7 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import * as marketPortals from '@shopgate/pwa-common-commerce/market/constants/Portals';
 import View from 'Components/View';
-import ClientInformation from 'Components/ClientInformation';
+import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
 import Headline from 'Components/Headline';
 import List from 'Components/List';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';

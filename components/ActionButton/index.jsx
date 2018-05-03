@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import IndicatorCircle from 'Components/IndicatorCircle';
+import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import RippleButton from 'Components/RippleButton';
 import styles from './style';
 
