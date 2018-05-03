@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
-import CrossIcon from '../icons/CrossIcon';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import CrossIcon from '../icons/CrossIcon';
 import styles from './style';
 
 /**
