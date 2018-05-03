@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import Ripple from 'Components/Ripple';
-import CrossIcon from 'Components/icons/CrossIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import styles from './style';
 
 /**

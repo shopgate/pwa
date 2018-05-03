@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart/constants';
-import CardList from 'Components/CardList';
-import MessageBar from 'Components/MessageBar';
+import CardList from '@shopgate/pwa-ui-shared/CardList';
+import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import styles from './style';
 import cartStyles from '../../style';
 import {

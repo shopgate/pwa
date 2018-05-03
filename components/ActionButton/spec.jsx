@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import IndicatorCircle from 'Components/IndicatorCircle';
+import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import RippleButton from 'Components/RippleButton';
 import ActionButton from './index';
 

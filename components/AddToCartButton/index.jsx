@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CartPlusIcon from 'Components/icons/CartPlusIcon';
-import TickIcon from 'Components/icons/TickIcon';
-import IndicatorCircle from 'Components/IndicatorCircle';
+import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
+import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
+import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import colors from 'Styles/colors';
 import styles from './style';
 

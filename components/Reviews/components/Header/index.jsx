@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RATING_SCALE_DIVISOR } from 'Components/RatingStars/constants';
+import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from './components/AverageRating';

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
-import Ripple from 'Components/Ripple';
-import ArrowIcon from 'Components/icons/ArrowIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
+import ArrowIcon from '@shopgate/pwa-ui-shared/icons/ArrowIcon';
 import styles from 'Components/Navigator/components/NavButton/style';
 import connect from './connector';
 

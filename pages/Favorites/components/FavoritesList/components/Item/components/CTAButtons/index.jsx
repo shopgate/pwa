@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FavoritesButton from 'Components/FavoritesButton';
+import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import AddToCartButton from 'Components/AddToCartButton';
 import styles from './style';
 import connect from './connector';
