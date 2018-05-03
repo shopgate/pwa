@@ -1,11 +1,11 @@
 import Request from '../Request';
 import AppCommand from '../AppCommand';
 import event from '../Event';
+import pipelineManager from '../PipelineManager';
 import { CURRENT_VERSION } from '../../constants/Pipeline';
 import * as processTypes from '../../constants/ProcessTypes';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import logGroup from '../../helpers/logGroup';
-import requestBuffer from '../RequestBuffer';
 
 export const DEFAULT_VERSION = CURRENT_VERSION;
 export const DEFAULT_RETRIES = 0;
@@ -149,7 +149,6 @@ class PipelineRequest extends Request {
      */
     this.requestCallback = (error, serial, output) => {
       event.removeCallback(requestCallbackName, this.requestCallback);
-      requestBuffer.remove(serial);
 
       const { input, name, version } = this;
 
@@ -173,28 +172,11 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * Dispatches the pipeline.
    * @return {Promise}
    */
   dispatch() {
-    return new Promise((resolve, reject) => {
-      const pipelineName = `${this.name}.v${this.version}`;
-
-      this.createSerial(pipelineName);
-      this.createEventCallbackName('pipelineResponse');
-      this.initRequestCallback(resolve, reject);
-      logGroup(`PipelineRequest %c${pipelineName}`, { input: this.input }, '#32ac5c');
-
-      // Send the pipeline request.
-      const command = new AppCommand();
-      command.setCommandName('sendPipelineRequest');
-      command.setLibVersion('12.0');
-      command.dispatch({
-        name: pipelineName,
-        serial: this.serial,
-        input: this.input,
-        ...this.trusted && { type: 'trusted' },
-      });
-    });
+    return pipelineManager.add(this);
   }
 }
 
