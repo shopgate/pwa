@@ -12,8 +12,8 @@ import Rating from './index';
 import { getElementById } from './mock';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasReviews() { return true },
-  get showWriteReview() { return true },
+  get hasReviews() { return true; },
+  get showWriteReview() { return true; },
   themeConfig: mockedConfig,
 }));
 

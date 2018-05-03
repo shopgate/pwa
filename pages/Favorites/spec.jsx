@@ -20,7 +20,7 @@ jest.mock('@shopgate/pwa-common/actions/history/goBackHistory', () => () => ({
   type: 'goback',
 }));
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasFavorites() { return true},
+  get hasFavorites() { return true; },
   themeConfig: mockedConfig,
 }));
 /**
