@@ -1,3 +1,4 @@
+import { themeConfig as mock } from './mock';
 /**
  * Provides a default app config as a fallback.
  * @type {Object}
@@ -43,7 +44,7 @@ export const componentsConfig = process.env.COMPONENTS_CONFIG || {};
  * The theme configuration.
  * @typedef {Object}
  */
-export const themeConfig = process.env.THEME_CONFIG || defaultThemeConfig;
+export const themeConfig = process.env.NODE_ENV === 'test' ? mock : (process.env.THEME_CONFIG || defaultThemeConfig);
 
 /**
  * The shop number.
