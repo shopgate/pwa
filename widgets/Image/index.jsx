@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from '@shopgate/pwa-common/components/Image';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import styles from './style';
+
+const resolutions = [{
+  width: 0,
+  height: 0,
+}];
 
 /**
  * The image widget.
@@ -10,7 +16,7 @@ import styles from './style';
  */
 const ImageWidget = ({ settings }) => {
   const content = (
-    <img src={settings.image} alt={settings.alt} />
+    <Image src={settings.image} alt={settings.alt} resolutions={resolutions} />
   );
 
   // Wrap a Link around the Image if needed.
