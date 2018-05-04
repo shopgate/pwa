@@ -1,7 +1,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { EVENT_PIPELINE_ERROR } from '@shopgate/pwa-core/constants/Pipeline';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import pipelineErrorDialog from 'Components/Dialog/actions/pipelineErrorDialog';
+import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipelineErrorDialog';
 
 /**
  * App subscriptions.

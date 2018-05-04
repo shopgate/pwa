@@ -11,8 +11,8 @@ import ProductImage from 'Components/ProductImage';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
 import Price from '@shopgate/pwa-ui-shared/Price';
-import DiscountBadge from 'Components/DiscountBadge';
-import PriceStriked from 'Components/PriceStriked';
+import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import styles from './style';
 
 /**
