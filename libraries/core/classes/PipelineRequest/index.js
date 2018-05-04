@@ -1,11 +1,9 @@
 import Request from '../Request';
-import AppCommand from '../AppCommand';
-import event from '../Event';
 import pipelineManager from '../PipelineManager';
 import { CURRENT_VERSION } from '../../constants/Pipeline';
 import * as processTypes from '../../constants/ProcessTypes';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
-import logGroup from '../../helpers/logGroup';
+import { logger } from '../../helpers';
 
 export const DEFAULT_VERSION = CURRENT_VERSION;
 export const DEFAULT_RETRIES = 0;
@@ -131,44 +129,8 @@ class PipelineRequest extends Request {
    * @deprecated
    */
   setHandledErrors() {
+    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setHandleErrors()!');
     return this;
-  }
-
-  /**
-   * @param {Function} resolve Resolves the promise.
-   * @param {Function} reject Rejects the promise.
-   */
-  initRequestCallback(resolve, reject) {
-    const requestCallbackName = this.getEventCallbackName();
-
-    /**
-     * The request event callback for the response call.
-     * @param {Object|null} error The error object if an error happened.
-     * @param {string} serial The serial that was used to identify the PipelineRequest callback.
-     * @param {Object} output The output of the pipeline.
-     */
-    this.requestCallback = (error, serial, output) => {
-      event.removeCallback(requestCallbackName, this.requestCallback);
-
-      const { input, name, version } = this;
-
-      logGroup(`PipelineResponse %c${name}.v${version}`, {
-        input,
-        error,
-        output,
-      }, '#307bc2');
-
-      if (error) {
-        // TODO: Has be handled when the ErrorManager is ready.
-        reject(error);
-        return;
-      }
-
-      resolve(output);
-    };
-
-    // Apply the event callback.
-    event.addCallback(requestCallbackName, this.requestCallback);
   }
 
   /**
