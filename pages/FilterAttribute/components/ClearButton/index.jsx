@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Button from 'Components/Button';
+import Button from '@shopgate/pwa-ui-shared/Button';
 import connect from './connector';
 import styles from './style';
 

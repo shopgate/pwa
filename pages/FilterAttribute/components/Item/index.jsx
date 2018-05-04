@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import RippleButton from 'Components/RippleButton';
+import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import Checkbox from '@shopgate/pwa-ui-shared/Checkbox';
 import styles from './style';
 

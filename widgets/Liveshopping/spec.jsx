@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Card from '@shopgate/pwa-ui-shared/Card';
-import PriceStriked from 'Components/PriceStriked';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import LiveshoppingWidget from './index';
 
 // Mock the redux connect() method instead of providing a fake store.
