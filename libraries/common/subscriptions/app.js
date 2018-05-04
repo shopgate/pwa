@@ -1,10 +1,14 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
-import errorManager, { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
+import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
+import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
+import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
 import { appDidStart$, appWillStart$ } from '../streams/app';
+import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
+import showModal from '../actions/modal/showModal';
 import { isAndroid } from '../selectors/client';
 import {
   updateNavigationBarNone,
@@ -22,6 +26,10 @@ export default function app(subscribe) {
   // Gets triggered before the app starts.
   subscribe(appWillStart$, ({ dispatch, action }) => {
     dispatch(registerLinkEvents(action.location));
+
+    pipelineManager.addSuppressedErrors([
+      errorCodes.EACCESS,
+    ]);
 
     // Map the error events into the Observable streams.
     errorEmitter.addListener(SOURCE_APP, error => dispatch(appError(error)));
@@ -66,5 +74,16 @@ export default function app(subscribe) {
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
+  });
+
+  subscribe(pipelineError$, ({ dispatch, action }) => {
+    const { error } = action;
+
+    dispatch(showModal({
+      confirm: 'modal.ok',
+      dismiss: null,
+      message: error.message,
+      title: null,
+    }));
   });
 }

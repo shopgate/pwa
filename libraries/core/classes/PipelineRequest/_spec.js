@@ -13,7 +13,7 @@ import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
 let request;
 
-describe('PipelineRequest', () => {
+describe.skip('PipelineRequest', () => {
   beforeEach(() => {
     request = new PipelineRequest('testPipeline');
   });

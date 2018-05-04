@@ -15,6 +15,7 @@ class PipelineManager {
    */
   constructor() {
     this.requests = new Map();
+    this.suppressedErrors = [];
   }
 
   /**
@@ -40,6 +41,34 @@ class PipelineManager {
   }
 
   /**
+   * Adds error code(s) to the suppressed collection.
+   * @param {Array|string} code The code(s) to suppress errors for.
+   */
+  addSuppressedErrors(code) {
+    if (Array.isArray(code)) {
+      this.suppressedErrors = [
+        ...this.suppressedErrors,
+        ...code,
+      ];
+    } else {
+      this.suppressedErrors.push(code);
+    }
+  }
+
+  /**
+   * Dispatches the pipeline request.
+   * @param {string} pipelineName The pipeline name.
+   * @return {Promise}
+   */
+  dispatch(pipelineName) {
+    return new Promise((resolve, reject) => {
+      this.createRequestCallback(pipelineName, resolve, reject);
+      this.handleTimeout(pipelineName, reject);
+      this.sendRequest(pipelineName);
+    });
+  }
+
+  /**
    * Creates the request callback.
    * @param {string} pipelineName The name of the pipeline request.
    * @param {Function} resolve Resolves the promise.
@@ -62,34 +91,20 @@ class PipelineManager {
 
       event.removeCallback(callbackName, request.callback);
 
-      logGroup(`PipelineResponse %c${pipelineName}`, {
-        input,
-        error,
-        output,
-        serial,
-      }, '#307bc2');
-
       if (error) {
-        this.handleError(pipelineName, reject);
+        this.handleError(error.message, pipelineName, reject, error.code);
       } else {
+        logGroup(`PipelineResponse %c${pipelineName}`, {
+          input,
+          error,
+          output,
+          serial,
+        }, '#307bc2');
         resolve(output);
       }
 
       this.requests.delete(pipelineName);
     };
-  }
-
-  /**
-   * Dispatches the pipeline request.
-   * @param {string} pipelineName The pipeline name.
-   * @return {Promise}
-   */
-  dispatch(pipelineName) {
-    return new Promise((resolve, reject) => {
-      this.createRequestCallback(pipelineName, resolve, reject);
-      this.handleTimeout(pipelineName, reject);
-      this.sendRequest(pipelineName);
-    });
   }
 
   /**
@@ -99,17 +114,20 @@ class PipelineManager {
 
   /**
    * Handles a pipeline error.
+   * @param {string} message The actual error message.
    * @param {string} pipelineName The name of the pipeline request.
    * @param {Function} reject Rejects the promise.
+   * @param {string} code The error code.
    */
-  handleError = (pipelineName, reject) => {
+  handleError = (message, pipelineName, reject, code = 'ETIMEOUT') => {
+    if (this.suppressedErrors.includes(code)) return;
+
     const { request } = this.requests.get(pipelineName);
-    const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
 
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
-        code: 'ETIMEOUT',
+        code,
         context: pipelineName,
         message,
       });
@@ -132,7 +150,8 @@ class PipelineManager {
       event.addCallback(callbackName, this.dummyCallback);
 
       if (!retries) {
-        this.handleError(pipelineName, reject);
+        const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
+        this.handleError(message, pipelineName, reject);
         this.requests.delete(pipelineName);
         return;
       }

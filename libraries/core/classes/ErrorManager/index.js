@@ -26,8 +26,17 @@ class ErrorManager {
    * @param {string} id The id to lookup.
    * @returns {Object|null}
    */
-  getMessage(id) {
-    return this.messages[id] || null;
+  getMessage(code, context, source) {
+    const id = `${source}-${context}-${code}`;
+    const defaultId = `${source}-${DEFAULT_CONTEXT}-${code}`;
+
+    if (this.messages[id]) {
+      return this.messages[id];
+    } else if (this.messages[defaultId]) {
+      return this.messages[defaultId];
+    }
+
+    return null;
   }
 
   /**
@@ -70,7 +79,7 @@ class ErrorManager {
     } = error;
 
     const id = `${source}-${context}-${code}`;
-    const overrideMessage = this.getMessage(id) || message;
+    const overrideMessage = this.getMessage(code, context, source) || message;
     this.errorQueue.set(id, {
       id,
       code,
