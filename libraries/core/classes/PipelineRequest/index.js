@@ -77,9 +77,8 @@ class PipelineRequest extends Request {
   setRetries(retries = DEFAULT_RETRIES) {
     if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
     if (retries < 0) throw new Error(`Expected positive integer. Received: '${retries}'`);
-    if (retries > DEFAULT_MAX_RETRIES) throw new Error(`Maximum is ${DEFAULT_MAX_RETRIES} for retries!`);
 
-    this.retries = retries;
+    this.retries = Math.min(retries, DEFAULT_MAX_RETRIES);
     return this;
   }
 
@@ -90,9 +89,8 @@ class PipelineRequest extends Request {
   setTimeout(timeout = DEFAULT_TIMEOUT) {
     if (typeof timeout !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof timeout}'`);
     if (timeout < 0) throw new Error(`Expected positive integer. Received: '${timeout}'`);
-    if (timeout > DEFAULT_MAX_TIMEOUT) throw new Error(`Maximum is ${DEFAULT_MAX_TIMEOUT} for timeout!`);
 
-    this.timeout = timeout;
+    this.timeout = Math.min(timeout, DEFAULT_MAX_TIMEOUT);
     return this;
   }
 

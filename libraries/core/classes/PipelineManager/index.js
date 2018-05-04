@@ -1,5 +1,8 @@
 import AppCommand from '../AppCommand';
 import event from '../Event';
+import errorManager from '../ErrorManager';
+import * as errorSources from '../ErrorManager/constants';
+import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
 import logGroup from '../../helpers/logGroup';
 
@@ -37,36 +40,6 @@ class PipelineManager {
   }
 
   /**
-   * A little dummy callback.
-   */
-  dummyCallback = () => {}
-
-  /**
-   * Handles the request timeout.
-   * @param {string} pipelineName The name of the pipeline.
-   * @param {Function} reject Rejects the promise.
-   */
-  handleTimeout(pipelineName, reject) {
-    const { request, retries } = this.requests.get(pipelineName);
-    const callbackName = request.getEventCallbackName();
-
-    setTimeout(() => {
-      event.removeCallback(callbackName, request.callback);
-      event.addCallback(callbackName, this.dummyCallback);
-
-      if (!retries) {
-        this.requests.delete(pipelineName);
-        reject(new Error(`${request.name}.v${request.version} timed out after ${request.timeout}ms`));
-        // TODO: Push to ErrorManager (consider request.handleErrors!!!)
-        return;
-      }
-
-      this.decrementRetries(pipelineName);
-      this.sendRequest(pipelineName);
-    }, request.timeout);
-  }
-
-  /**
    * Creates the request callback.
    * @param {string} pipelineName The name of the pipeline request.
    * @param {Function} resolve Resolves the promise.
@@ -97,14 +70,12 @@ class PipelineManager {
       }, '#307bc2');
 
       if (error) {
-        this.requests.delete(pipelineName);
-        reject(error);
-        // TODO: Push to ErrorManager (consider request.handleErrors!!!)
-        return;
+        this.handleError(pipelineName, reject);
+      } else {
+        resolve(output);
       }
 
       this.requests.delete(pipelineName);
-      resolve(output);
     };
   }
 
@@ -119,6 +90,56 @@ class PipelineManager {
       this.handleTimeout(pipelineName, reject);
       this.sendRequest(pipelineName);
     });
+  }
+
+  /**
+   * A little dummy callback.
+   */
+  dummyCallback = () => {}
+
+  /**
+   * Handles a pipeline error.
+   * @param {string} pipelineName The name of the pipeline request.
+   * @param {Function} reject Rejects the promise.
+   */
+  handleError = (pipelineName, reject) => {
+    const { request } = this.requests.get(pipelineName);
+    const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
+
+    if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
+      errorManager.queue({
+        source: errorSources.SOURCE_PIPELINE,
+        code: 'ETIMEOUT',
+        context: pipelineName,
+        message,
+      });
+    }
+
+    reject(new Error(message));
+  }
+
+  /**
+   * Handles the request timeout.
+   * @param {string} pipelineName The name of the pipeline.
+   * @param {Function} reject Rejects the promise.
+   */
+  handleTimeout(pipelineName, reject) {
+    const { request, retries } = this.requests.get(pipelineName);
+    const callbackName = request.getEventCallbackName();
+
+    setTimeout(() => {
+      event.removeCallback(callbackName, request.callback);
+      event.addCallback(callbackName, this.dummyCallback);
+
+      if (!retries) {
+        this.handleError(pipelineName, reject);
+        this.requests.delete(pipelineName);
+        return;
+      }
+
+      this.decrementRetries(pipelineName);
+      this.sendRequest(pipelineName);
+    }, request.timeout);
   }
 
   /**
