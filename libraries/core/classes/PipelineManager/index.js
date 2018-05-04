@@ -1,5 +1,6 @@
 import AppCommand from '../AppCommand';
 import event from '../Event';
+import * as processTypes from '../../constants/ProcessTypes';
 import logGroup from '../../helpers/logGroup';
 
 /**
@@ -28,7 +29,7 @@ class PipelineManager {
     this.requests.set(pipelineName, {
       request,
       retries: request.retries,
-      ongoing: false,
+      ongoing: 0,
       timer: null,
     });
 
@@ -46,8 +47,7 @@ class PipelineManager {
    * @param {Function} reject Rejects the promise.
    */
   handleTimeout(pipelineName, reject) {
-    let { retries } = this.requests.get(pipelineName);
-    const { request } = this.requests.get(pipelineName);
+    const { request, retries } = this.requests.get(pipelineName);
     const callbackName = request.getEventCallbackName();
 
     setTimeout(() => {
@@ -61,7 +61,7 @@ class PipelineManager {
         return;
       }
 
-      retries -= 1;
+      this.decrementRetries(pipelineName);
       this.sendRequest(pipelineName);
     }, request.timeout);
   }
@@ -78,12 +78,16 @@ class PipelineManager {
     const callbackName = request.getEventCallbackName();
 
     request.callback = (error, serial, output) => {
+      this.decrementOngoing(pipelineName);
+
+      const isRetriesOngoing = this.isRetriesOngoing(pipelineName);
+      const isProccessLastOngoing = this.isProccessLastOngoing(pipelineName);
+
+      if (isRetriesOngoing || isProccessLastOngoing) {
+        return;
+      }
+
       event.removeCallback(callbackName, request.callback);
-
-      const entry = this.requests.get(pipelineName);
-      const retry = request.retries - entry.retries;
-
-      console.warn(`Retry: ${retry}`, entry);
 
       logGroup(`PipelineResponse %c${pipelineName}`, {
         input,
@@ -122,26 +126,129 @@ class PipelineManager {
    * @param {string} pipelineName The name of the pipeline request.
    */
   sendRequest = (pipelineName) => {
-    const { request } = this.requests.get(pipelineName);
-    const callbackName = request.getEventCallbackName();
+    const entry = this.requests.get(pipelineName);
+
+    if (!entry) {
+      return;
+    }
+
+    const callbackName = entry.request.getEventCallbackName();
+    const prefix = this.getRetriesPrefix(pipelineName);
+
+    this.incrementOngoing(pipelineName);
 
     event.removeCallback(callbackName, this.dummyCallback);
-    event.addCallback(callbackName, request.callback);
-    logGroup(`PipelineRequest %c${pipelineName}`, {
-      input: request.input,
-      serial: request.serial,
+    event.addCallback(callbackName, entry.request.callback);
+
+    logGroup(`${prefix}PipelineRequest %c${pipelineName}`, {
+      input: entry.request.input,
+      serial: entry.request.serial,
     }, '#32ac5c');
 
     // Send the pipeline request.
     const command = new AppCommand();
-    command.setCommandName('sendPipelineRequest');
-    command.setLibVersion('12.0');
-    command.dispatch({
-      name: pipelineName,
-      serial: request.serial,
-      input: request.input,
-      ...request.trusted && { type: 'trusted' },
-    });
+
+    command
+      .setCommandName('sendPipelineRequest')
+      .setLibVersion('12.0')
+      .dispatch({
+        name: pipelineName,
+        serial: entry.request.serial,
+        input: entry.request.input,
+        ...entry.request.trusted && { type: 'trusted' },
+      });
+  }
+
+  /**
+   * Increments the ongoing count.
+   * @param {string} pipelineName The name of the pipeline request.
+   */
+  incrementOngoing = (pipelineName) => {
+    const entry = this.requests.get(pipelineName);
+
+    if (!entry) {
+      return;
+    }
+
+    entry.ongoing += 1;
+  }
+
+  /**
+   * Decrements the ongoing count.
+   * @param {string} pipelineName The name of the pipeline request.
+   */
+  decrementOngoing = (pipelineName) => {
+    const entry = this.requests.get(pipelineName);
+
+    if (!entry) {
+      return;
+    }
+
+    if (entry.ongoing) {
+      entry.ongoing -= 1;
+    }
+  }
+
+  /**
+   * Decrements the retries count.
+   * @param {string} pipelineName The name of the pipeline request.
+   */
+  decrementRetries = (pipelineName) => {
+    const entry = this.requests.get(pipelineName);
+
+    if (!entry) {
+      return;
+    }
+
+    if (entry.retries) {
+      entry.retries -= 1;
+    }
+  }
+
+  /**
+   * Returns the retries prefix for logs.
+   * @param {string} pipelineName The name of the pipeline request.
+   * @return {string}
+   */
+  getRetriesPrefix = (pipelineName) => {
+    const { request, retries } = this.requests.get(pipelineName);
+    const numRetries = request.retries - retries;
+
+    return numRetries ? `Retry ${numRetries}: ` : '';
+  }
+
+  /**
+   * Checks whether retries are ongoing.
+   * @param {string} pipelineName The name of the pipeline request.
+   * @return {boolean}
+   */
+  isRetriesOngoing = (pipelineName) => {
+    const entry = this.requests.get(pipelineName);
+
+    if (!entry) {
+      return false;
+    }
+
+    return (
+      entry.request.process === processTypes.PROCESS_ALWAYS &&
+      entry.retries > 0 &&
+      entry.ongoing > 0
+    );
+  }
+
+  /**
+   * Checks whether only the last should be processed..
+   * @param {string} pipelineName The name of the pipeline request.
+   * @return {boolean}
+   */
+  isProccessLastOngoing = (pipelineName) => {
+    const entry = this.requests.get(pipelineName);
+
+    if (!entry) {
+      return false;
+    }
+
+    return (entry.request.process === processTypes.PROCESS_LAST && entry.ongoing);
   }
 }
 

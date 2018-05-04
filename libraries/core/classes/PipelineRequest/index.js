@@ -6,7 +6,7 @@ import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import { logger } from '../../helpers';
 
 export const DEFAULT_VERSION = CURRENT_VERSION;
-export const DEFAULT_RETRIES = 0;
+export const DEFAULT_RETRIES = 3;
 export const DEFAULT_MAX_RETRIES = 5;
 export const DEFAULT_INPUT = {};
 export const DEFAULT_TIMEOUT = 20000;
