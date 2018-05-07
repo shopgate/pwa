@@ -1,6 +1,8 @@
 import AppCommand from '../AppCommand';
 import event from '../Event';
 import errorManager from '../ErrorManager';
+import pipelineDependencies from '../PipelineDependencies';
+import pipelineBuffer from '../PipelineBuffer';
 import * as errorSources from '../ErrorManager/constants';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
@@ -62,6 +64,10 @@ class PipelineManager {
    */
   dispatch(pipelineName) {
     return new Promise((resolve, reject) => {
+      if (this.hasRunningDependencies(pipelineName)) {
+        return;
+      }
+
       this.createRequestCallback(pipelineName, resolve, reject);
       this.handleTimeout(pipelineName, reject);
       this.sendRequest(pipelineName);
@@ -81,6 +87,7 @@ class PipelineManager {
 
     request.callback = (error, serial, output) => {
       this.decrementOngoing(pipelineName);
+      this.runDependencies(pipelineName);
 
       const isRetriesOngoing = this.isRetriesOngoing(pipelineName);
       const isProccessLastOngoing = this.isProccessLastOngoing(pipelineName);
@@ -105,6 +112,39 @@ class PipelineManager {
 
       this.requests.delete(pipelineName);
     };
+  }
+
+  /**
+   *
+   * @param {string} pipelineName The pipeline name.
+   * @return {boolean}
+   */
+  hasRunningDependencies(pipelineName) {
+    const dependencies = pipelineDependencies.get(pipelineName);
+    let found = 0;
+
+    if (!dependencies || !dependencies.length) return false;
+
+    dependencies.forEach((dependency) => {
+      if (this.requests.has(dependency) && this.requests.get(dependency).ongoing) {
+        found += 1;
+        pipelineBuffer.set(dependency, pipelineName);
+      }
+    });
+
+    if (!found) return false;
+    return true;
+  }
+
+  /**
+   * @param {string} pipelineName The pipeline request name.
+   */
+  runDependencies = (pipelineName) => {
+    pipelineBuffer
+      .get(pipelineName)
+      .forEach((dependency) => {
+        this.dispatch(dependency);
+      });
   }
 
   /**
