@@ -118,6 +118,30 @@ class PipelineManager {
   }
 
   /**
+   * Handles the request timeout.
+   * @param {string} serial The pipeline request serial.
+   */
+  handleTimeout(serial) {
+    const { request, retries } = this.requests.get(serial);
+    const callbackName = request.getEventCallbackName();
+
+    setTimeout(() => {
+      event.removeCallback(callbackName, request.callback);
+      event.addCallback(callbackName, this.dummyCallback);
+
+      if (!retries) {
+        const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
+        this.handleError(serial, message);
+        this.requests.delete(serial);
+        return;
+      }
+
+      this.decrementRetries(serial);
+      this.sendRequest(serial);
+    }, request.timeout);
+  }
+
+  /**
    * Runs a pipeline request's dependencies.
    * @param {string} pipelineName The pipeline request name.
    */
@@ -216,30 +240,6 @@ class PipelineManager {
   }
 
   /**
-   * Handles the request timeout.
-   * @param {string} serial The pipeline request serial.
-   */
-  handleTimeout(serial) {
-    const { request, retries } = this.requests.get(serial);
-    const callbackName = request.getEventCallbackName();
-
-    setTimeout(() => {
-      event.removeCallback(callbackName, request.callback);
-      event.addCallback(callbackName, this.dummyCallback);
-
-      if (!retries) {
-        const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
-        this.handleError(serial, message);
-        this.requests.delete(serial);
-        return;
-      }
-
-      this.decrementRetries(serial);
-      this.sendRequest(serial);
-    }, request.timeout);
-  }
-
-  /**
    * Sends the actual request command.
    * @param {string} serial The pipeline request serial.
    */
@@ -329,6 +329,18 @@ class PipelineManager {
   }
 
   /**
+   * Returns the pipeline request name.
+   * @param {string} serial The pipeline request serial.
+   * @return {string}
+   */
+  getPipelineNameBySerial = (serial) => {
+    const entry = this.requests.get(serial);
+
+    if (!entry) return '';
+    return `${entry.request.name}.v${entry.request.version}`;
+  }
+
+  /**
    * Returns the retries prefix for logs.
    * @param {string} serial The pipeline request serial.
    * @return {string}
@@ -372,18 +384,6 @@ class PipelineManager {
     }
 
     return (entry.request.process === processTypes.PROCESS_LAST && entry.ongoing);
-  }
-
-  /**
-   * Returns the pipeline request name.
-   * @param {string} serial The pipeline request serial.
-   * @return {string}
-   */
-  getPipelineNameBySerial = (serial) => {
-    const entry = this.requests.get(serial);
-
-    if (!entry) return '';
-    return `${entry.request.name}.v${entry.request.version}`;
   }
 }
 
