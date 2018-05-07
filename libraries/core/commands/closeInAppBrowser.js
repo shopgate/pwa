@@ -12,7 +12,10 @@ export default (isAndroid) => {
     targetTab: 'in_app_browser',
   };
 
-  const delayedCommand = (isAndroid ? cleanTabCmd(targetTab) : popTabToRootCmd(targetTab)).command;
+  const delayedCommand = (isAndroid
+    ? cleanTabCmd(targetTab)
+    : popTabToRootCmd(targetTab)
+  ).buildCommand();
 
   performCommandsAfterDelay({
     cmds: [delayedCommand],
