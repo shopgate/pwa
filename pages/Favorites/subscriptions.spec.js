@@ -1,4 +1,5 @@
 import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
+import { routeDidLeave } from '@shopgate/pwa-common/streams/history';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import subscribe from './subscriptions';
 
@@ -13,7 +14,7 @@ describe('Favorites subscriptions', () => {
   });
   it('should subscribe', () => {
     subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(1);
+    expect(subscribeMock.mock.calls.length).toBe(2);
     [first] = subscribeMock.mock.calls;
     expect(first[0]).toBe(favoritesWillRemoveItem$);
   });

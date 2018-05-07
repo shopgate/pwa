@@ -24,6 +24,7 @@ exports[`<SnackBar /> should render component without action 1`] = `
         actionButton={[Function]}
         className="css-tcsh9y"
         container={[Function]}
+        dismissed={false}
         dispatchAction={[Function]}
         hasNextToast={false}
         message={[Function]}
@@ -36,6 +37,7 @@ exports[`<SnackBar /> should render component without action 1`] = `
             "message": "Lorem ipsum dolor sit amet.",
           }
         }
+        unblockToast={[Function]}
       >
         <div
           aria-live="polite"
@@ -119,6 +121,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
         actionButton={[Function]}
         className="css-tcsh9y"
         container={[Function]}
+        dismissed={false}
         dispatchAction={[Function]}
         hasNextToast={false}
         message={[Function]}
@@ -132,6 +135,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
             "message": "Lorem ipsum dolor sit amet.",
           }
         }
+        unblockToast={[Function]}
       >
         <div
           aria-live="polite"
