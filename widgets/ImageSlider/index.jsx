@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from '@shopgate/pwa-common/components/Image';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import ImageSlider from 'Components/ImageSlider';
 import styles from './style';
-
-const resolutions = [{
-  width: 0,
-  height: 0,
-}];
 
 /**
  * Core image slider widget.
@@ -29,12 +23,12 @@ const ImageSliderWidget = ({ settings, className }) => (
       if (image.link) {
         return (
           <Link key={key} href={image.link} className={styles.link}>
-            <Image src={image.image} alt={image.alt} resolutions={resolutions} />
+            <img src={image.image} alt={image.alt} className={styles.image} />
           </Link>
         );
       }
 
-      return <Image src={image.image} alt={image.alt} resolutions={resolutions} />;
+      return <img src={image.image} alt={image.alt} className={styles.image} />;
     })}
   </ImageSlider>
 );
