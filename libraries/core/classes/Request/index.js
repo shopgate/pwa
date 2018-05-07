@@ -33,7 +33,7 @@ class Request {
    */
   createSerial = (serialKey) => {
     if (!this.serial) {
-      this.serial = CryptoJs.MD5(`${serialKey}${Math.random()}`).toString();
+      this.serial = CryptoJs.MD5(`${serialKey}${Date.now()}`).toString();
     }
   }
 
