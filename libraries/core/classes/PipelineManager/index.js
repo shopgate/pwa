@@ -46,14 +46,12 @@ class PipelineManager {
    * @param {Array|string} code The code(s) to suppress errors for.
    */
   addSuppressedErrors(code) {
-    if (Array.isArray(code)) {
-      this.suppressedErrors = [
-        ...this.suppressedErrors,
-        ...code,
-      ];
-    } else {
-      this.suppressedErrors.push(code);
-    }
+    const codes = [].concat(code);
+
+    this.suppressedErrors = [
+      ...this.suppressedErrors,
+      ...codes,
+    ];
   }
 
   /**
@@ -89,7 +87,7 @@ class PipelineManager {
       request.reject = reject;
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-        this.handleResultSequence();
+        this.handleResultSequence(serial);
       } else {
         this.handleResult(serial);
       }
@@ -165,6 +163,7 @@ class PipelineManager {
    */
   handleResult = (serial) => {
     const { request } = this.requests.get(serial);
+    const { input, error, output } = request;
     const pipelineName = this.getPipelineNameBySerial(serial);
     const callbackName = request.getEventCallbackName();
 
@@ -184,9 +183,9 @@ class PipelineManager {
       this.handleError(serial);
     } else {
       logGroup(`PipelineResponse %c${pipelineName}`, {
-        input: request.inout,
-        error: request.error,
-        output: request.output,
+        input,
+        error,
+        output,
         serial,
       }, '#307bc2');
       request.resolve(request.output);
@@ -195,18 +194,25 @@ class PipelineManager {
     this.requests.delete(serial);
   }
 
-  handleResultSequence = () => {
+  /**
+   * Handles the result in squentially.
+   * @param {string} serial The pipeline request serial.
+   */
+  handleResultSequence = (serial) => {
     const sequence = pipelineSequence.get();
 
-    for (const serial in sequence) {
-      const entry = this.requests.get(serial);
+    /* eslint-disable no-restricted-syntax */
+    for (const ser of sequence) {
+      const entry = this.requests.get(ser);
 
-      if (!entry.output) {
-        break;
+      if (serial === ser || entry.output) {
+        this.handleResult(ser);
+        return;
       }
 
-      this.handleResult(serial);
+      break;
     }
+    /* eslint-enable no-restricted-syntax */
   }
 
   /**
