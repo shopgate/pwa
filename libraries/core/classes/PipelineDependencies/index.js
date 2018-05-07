@@ -21,13 +21,11 @@ class PipelineDependencies {
 
     if (!this.get(pipelineName)) {
       this.dependencies[pipelineName] = new Set(newDependencies);
-      return;
+    } else {
+      this.dependencies[pipelineName].add(...newDependencies);
     }
 
-    this.dependencies[pipelineName].add(...newDependencies);
-    logGroup(`PipelineDependencies set %c${pipelineName}`, {
-      dependencies: this.dependencies,
-    }, '#FFCD34');
+    logGroup(`PipelineDependencies %c${pipelineName}`, this.dependencies, '#FFCD34');
   }
 
   /**
