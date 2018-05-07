@@ -55,13 +55,11 @@ class Toast extends Component {
    * @param {Object} nextProps NextProps.
    */
   componentWillReceiveProps(nextProps) {
-    console.warn(nextProps);
     const hasToast = !!nextProps.toast;
 
     if (nextProps.dismissed) {
       this.closeDrawer();
       setTimeout(() => {
-        console.warn('ass')
         this.props.unblockToast();
       }, 1000);
 
