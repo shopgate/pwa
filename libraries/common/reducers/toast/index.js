@@ -1,10 +1,14 @@
 import {
   CREATE_TOAST,
   REMOVE_TOAST,
-  FLUSH_TOAST,
+  DISMISS_TOASTS,
+  UNBLOCK_TOASTS,
 } from '../../constants/ActionTypes';
 
-const defaultState = [];
+const defaultState = {
+  dismissed: false,
+  toasts: [],
+};
 
 /**
  * Stores all the toast messages.
@@ -15,14 +19,29 @@ const defaultState = [];
 export default (state = defaultState, action) => {
   switch (action.type) {
     case CREATE_TOAST:
-      return [
+      if (state.dismissed) {
+        return state;
+      }
+      return {
         ...state,
-        action.options,
-      ];
+        toasts: [...state.toasts, action.options],
+      };
     case REMOVE_TOAST:
-      return state.filter(toast => toast.id !== action.id);
-    case FLUSH_TOAST:
-      return [];
+      return {
+        ...state,
+        toasts: state.toasts.filter(toast => toast.id !== action.id),
+      };
+    case DISMISS_TOASTS:
+      return {
+        ...state,
+        dismissed: true,
+        toasts: [],
+      };
+    case UNBLOCK_TOASTS:
+      return {
+        ...state,
+        dismissed: false,
+      };
     default:
       return state;
   }

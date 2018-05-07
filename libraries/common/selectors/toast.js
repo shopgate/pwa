@@ -1,3 +1,7 @@
+import { createSelector } from 'reselect';
+
+export const getToastState = state => state.toast;
+
 /**
  * Gets toast message which should be shown.
  * Always the first one, and always just one.
@@ -7,11 +11,11 @@
  * @returns {Object|null}
  */
 export const getToast = (state) => {
-  if (!state.toast.length) {
+  if (!state.toast.toasts.length) {
     return null;
   }
 
-  return state.toast[0];
+  return state.toast.toasts[0];
 };
 
 /**
@@ -19,5 +23,11 @@ export const getToast = (state) => {
  * @param {Object} state State of the app.
  * @returns {Object|null}
  */
-export const hasNextToast = state => state.toast.length > 1;
+export const hasNextToast = state => state.toast.toasts.length > 1;
+
+/**
+ * Returns the dismissed flag of the toast state
+ * @returns {boolean}
+ */
+export const isDismissed = createSelector(getToastState, toast => toast.dismissed);
 
