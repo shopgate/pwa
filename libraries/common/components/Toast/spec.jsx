@@ -72,7 +72,10 @@ describe('<Toast />', () => {
 
   beforeEach(() => {
     // Reset the toasts state before each test.
-    getState().toast = [];
+    getState().toast = {
+      dismissed: false,
+      toasts: [],
+    };
   });
 
   it('should dispatch a toast message', (done) => {
@@ -95,7 +98,7 @@ describe('<Toast />', () => {
       const drawerCallback = wrapperWithTimeout.find(Drawer).prop('onDidClose');
       drawerCallback();
       expect(wrapperWithTimeout.find(MockMessage).prop('text')).toEqual('Timeout Message');
-      expect(getState().toast.length).toBe(0);
+      expect(getState().toast.toasts.length).toBe(0);
       wrapperWithTimeout.unmount();
       done();
     });
