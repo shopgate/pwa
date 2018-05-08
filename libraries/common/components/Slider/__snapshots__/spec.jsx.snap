@@ -54,6 +54,7 @@ exports[`<Slider /> renders with a fraction indicator 1`] = `
         >
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s0"
           >
             <SliderItem
@@ -68,6 +69,7 @@ exports[`<Slider /> renders with a fraction indicator 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s1"
           >
             <SliderItem
@@ -82,6 +84,7 @@ exports[`<Slider /> renders with a fraction indicator 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s2"
           >
             <SliderItem
@@ -158,6 +161,7 @@ exports[`<Slider /> renders with bullet indicators 1`] = `
         >
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s0"
           >
             <SliderItem
@@ -172,6 +176,7 @@ exports[`<Slider /> renders with bullet indicators 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s1"
           >
             <SliderItem
@@ -186,6 +191,7 @@ exports[`<Slider /> renders with bullet indicators 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s2"
           >
             <SliderItem
@@ -234,6 +240,7 @@ exports[`<Slider /> renders with children 1`] = `
   >
     <div
       className="css-xwe5xi"
+      data-test-id="Slider"
       key="s0"
     >
       <SliderItem
@@ -244,6 +251,7 @@ exports[`<Slider /> renders with children 1`] = `
     </div>
     <div
       className="css-xwe5xi"
+      data-test-id="Slider"
       key="s1"
     >
       <SliderItem
@@ -254,6 +262,7 @@ exports[`<Slider /> renders with children 1`] = `
     </div>
     <div
       className="css-xwe5xi"
+      data-test-id="Slider"
       key="s2"
     >
       <SliderItem
@@ -313,6 +322,7 @@ exports[`<Slider /> renders with controls 1`] = `
         >
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s0"
           >
             <SliderItem
@@ -327,6 +337,7 @@ exports[`<Slider /> renders with controls 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s1"
           >
             <SliderItem
@@ -341,6 +352,7 @@ exports[`<Slider /> renders with controls 1`] = `
           </div>
           <div
             className="sg-swiper-slide css-xwe5xi "
+            data-test-id="Slider"
             key=".$s2"
           >
             <SliderItem
