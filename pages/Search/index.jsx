@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
 import Products from 'Pages/Category/components/Products';
-import NoResults from 'Components/NoResults';
+import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import connect from './connector';
 
 /**

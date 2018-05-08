@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Hammer from '@shopgate/react-hammerjs';
 import ProductImage from 'Components/ProductImage';
-import BaseImageSlider from 'Components/ImageSlider';
+import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import connect from './connector';
 
 /**

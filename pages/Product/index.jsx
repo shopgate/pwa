@@ -4,7 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import View from 'Components/View';
 import Reviews from 'Components/Reviews';
-import TaxDisclaimer from 'Components/TaxDisclaimer';
+import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import ImageSlider from './components/ImageSlider';
 import Header from './components/Header';
 import VariantSelects from './components/VariantSelects';

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CrossIcon from 'Components/icons/CrossIcon';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import styles from './style';
 
 /**
