@@ -365,7 +365,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-1fekhao"
+                  className="css-u7lqu6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -448,7 +448,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -527,7 +527,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-1fekhao"
+                  className="css-u7lqu6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -610,7 +610,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -689,7 +689,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-1fekhao"
+                  className="css-u7lqu6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -770,7 +770,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -813,7 +813,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -848,12 +848,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}
@@ -926,10 +926,10 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
     >
       <LoadingIndicator>
         <div
-          className="css-emdeqc"
+          className="css-1aid7je"
         >
           <IndicatorCircle
-            color="#00c3e6"
+            color="#5ccee3"
             size={32}
             strokeWidth={3}
           >
@@ -941,7 +941,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <circle
-                className="css-2z29ld"
+                className="css-o43ryf"
                 cx="50"
                 cy="50"
                 r="20"
@@ -1499,7 +1499,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -1582,7 +1582,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -1661,7 +1661,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -1744,7 +1744,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -1823,7 +1823,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -1904,7 +1904,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -1947,7 +1947,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -1982,12 +1982,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}
@@ -2579,7 +2579,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -2662,7 +2662,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -2741,7 +2741,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -2824,7 +2824,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -2903,7 +2903,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -2984,7 +2984,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -3027,7 +3027,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -3062,12 +3062,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}
@@ -3659,7 +3659,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -3742,7 +3742,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -3821,7 +3821,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -3904,7 +3904,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -3983,7 +3983,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -4064,7 +4064,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -4108,7 +4108,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -4143,12 +4143,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}
@@ -4740,7 +4740,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -4823,7 +4823,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -4902,7 +4902,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -4985,7 +4985,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -5064,7 +5064,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -5145,7 +5145,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -5189,7 +5189,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -5224,12 +5224,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}
@@ -5821,7 +5821,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -5904,7 +5904,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -5983,7 +5983,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -6066,7 +6066,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -6145,7 +6145,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-16msjt6 css-1fekhao"
+                  className="css-u7lqu6 css-16msjt6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -6226,7 +6226,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -6269,7 +6269,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -6304,12 +6304,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}
@@ -6697,7 +6697,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 name="author"
               >
                 <label
-                  className="css-o280f1 css-1fekhao"
+                  className="css-u7lqu6 css-1fekhao"
                   htmlFor="author"
                 >
                   <Translate
@@ -6780,7 +6780,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -6860,7 +6860,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 name="title"
               >
                 <label
-                  className="css-o280f1 css-1fekhao"
+                  className="css-u7lqu6 css-1fekhao"
                   htmlFor="title"
                 >
                   <Translate
@@ -6943,7 +6943,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -7022,7 +7022,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 name="review"
               >
                 <label
-                  className="css-o280f1 css-1fekhao"
+                  className="css-u7lqu6 css-1fekhao"
                   htmlFor="review"
                 >
                   <Translate
@@ -7103,7 +7103,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 isFocused={false}
               >
                 <div
-                  className="css-8gquxd"
+                  className="css-ycal4l"
                 >
                   <div
                     className="css-1tpmuef"
@@ -7146,7 +7146,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 className="css-1v7qljm"
               >
                 <button
-                  className="css-1gr82ub css-1mhi2x7"
+                  className="css-kevfw8 css-1mhi2x7"
                   onClick={[Function]}
                   type="button"
                 >
@@ -7181,12 +7181,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     wrapContent={false}
                   >
                     <Button
-                      className="css-1mhr1mg "
+                      className="css-187rja2 "
                       disabled={false}
                       onClick={null}
                     >
                       <button
-                        className="css-1mhr1mg  css-1rn65c0"
+                        className="css-187rja2  css-1rn65c0"
                         data-test-id="Button"
                         disabled={false}
                         onClick={null}

@@ -4,8 +4,8 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import ProductCharacteristics from 'Components/ProductCharacteristics';
-import AvailableText from 'Components/Availability';
+import ProductCharacteristics from '@shopgate/pwa-ui-shared/ProductCharacteristics';
+import AvailableText from '@shopgate/pwa-ui-shared/Availability';
 import Price from './components/Price';
 import styles from './style';
 

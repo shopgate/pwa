@@ -6,8 +6,8 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
-import CardListItem from 'Components/CardList/components/Item';
-import MessageBar from 'Components/MessageBar';
+import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
+import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,

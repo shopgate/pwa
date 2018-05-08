@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import CartIcon from 'Components/icons/CartIcon';
+import CartIcon from '@shopgate/pwa-ui-ios/icons/CartIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import CartItemBadge from './components/CartItemBadge';

@@ -4,4 +4,4 @@ import mergeTranslations from '@shopgate/pwa-common/helpers/i18n/mergeTranslatio
 // eslint-disable-next-line import/no-dynamic-require
 const themeTranslations = require(`./${process.env.LOCALE_FILE}.json`);
 
-export default mergeTranslations(extensionTranslations, themeTranslations);
+export default mergeTranslations(themeTranslations, extensionTranslations);

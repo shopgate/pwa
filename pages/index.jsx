@@ -22,10 +22,11 @@ import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
-import Dialog from 'Components/Dialog';
+import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
@@ -38,39 +39,43 @@ import * as routes from './routes';
  */
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
-    <Portal name={APP_GLOBALS} />
-    <Viewport>
-      <ModalContainer component={Dialog} />
-      <SnackBar />
+    <AppContext.Provider value={{ ...appConfig }}>
+      <ThemeContext.Provider value={{}}>
+        <Portal name={APP_GLOBALS} />
+        <Viewport>
+          <ModalContainer component={Dialog} />
+          <SnackBar />
 
-      <Route path={`${INDEX_PATH}`} component={routes.Page} />
-      <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
-      <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
-      <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={routes.Category} />
-      <Route path={`${FILTER_PATH}`} component={routes.Filter} />
-      <Route path={`${FILTER_PATH}/:attribute`} component={routes.FilterAttribute} />
-      <Route path={`${ITEM_PATH}/:productId`} component={routes.Product} />
-      <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
-      <Route path={`${ITEM_PATH}/:productId/reviews/`} component={routes.Reviews} />
-      <Route path={`${CART_PATH}`} component={routes.Cart} />
-      {
-        appConfig.hasFavorites
-        && <Route path={`${FAVORITES_PATH}`} component={routes.Favorites} />
-      }
-      <Route path={`${SEARCH_PATH}`} component={routes.Search} />
-      <Route path={`${LOGIN_PATH}`} component={routes.Login} />
-      <Route path={`${REGISTER_PATH}`} />
-      <Route path={`${MORE_PATH}`} component={routes.More} />
-      <Route path={`${BROWSE_PATH}`} component={routes.Browse} />
+          <Route path={`${INDEX_PATH}`} component={routes.Page} />
+          <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
+          <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
+          <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={routes.Category} />
+          <Route path={`${FILTER_PATH}`} component={routes.Filter} />
+          <Route path={`${FILTER_PATH}/:attribute`} component={routes.FilterAttribute} />
+          <Route path={`${ITEM_PATH}/:productId`} component={routes.Product} />
+          <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
+          <Route path={`${ITEM_PATH}/:productId/reviews/`} component={routes.Reviews} />
+          <Route path={`${CART_PATH}`} component={routes.Cart} />
+          {
+            appConfig.hasFavorites
+            && <Route path={`${FAVORITES_PATH}`} component={routes.Favorites} />
+          }
+          <Route path={`${SEARCH_PATH}`} component={routes.Search} />
+          <Route path={`${LOGIN_PATH}`} component={routes.Login} />
+          <Route path={`${REGISTER_PATH}`} />
+          <Route path={`${MORE_PATH}`} component={routes.More} />
+          <Route path={`${BROWSE_PATH}`} component={routes.Browse} />
 
-      <AuthRoutes to={`${LOGIN_PATH}`}>
-        <Route path={`${CHECKOUT_PATH}`} />
-        <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
-        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
-      </AuthRoutes>
-      
-      <Portal name={APP_ROUTES} props={{ View }} />
-    </Viewport>
+          <AuthRoutes to={`${LOGIN_PATH}`}>
+            <Route path={`${CHECKOUT_PATH}`} />
+            <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
+            <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
+          </AuthRoutes>
+          
+          <Portal name={APP_ROUTES} props={{ View }} />
+        </Viewport>
+      </ThemeContext.Provider>
+    </AppContext.Provider>
   </App>
 );
 

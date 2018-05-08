@@ -5,7 +5,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
-import Button from 'Components/Button';
+import Button from '@shopgate/pwa-ui-shared/Button';
 import Headline from 'Components/Headline';
 import List from 'Components/List';
 import {
