@@ -1,3 +1,5 @@
+import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
+
 const mockedProduct = {
   productId: 'foo',
   rating: {
@@ -110,8 +112,9 @@ export const mockedStateProductEmpty = {
  */
 export const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
-    hasReviews: mockReviewsAvailable,
-    showWriteReview: true,
+    get hasReviews() { return mockReviewsAvailable; },
+    get showWriteReview() { return true},
+    themeConfig: mockedConfig,
   }));
 };
 

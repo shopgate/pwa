@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import addToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { isBaseProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { MODAL_VARIANT_SELECT } from 'Components/Dialog/constants';
+import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 
 /**
  * Maps the contents of the state to the component props.

@@ -26,7 +26,7 @@ import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
-import Dialog from 'Components/Dialog';
+import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';

@@ -2,7 +2,7 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import ProductImage from 'Components/ProductImage';
-import ImageSlider from 'Components/ImageSlider';
+import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import ProductImageSlider from './index';
 
 // Mock the redux connect() method instead of providing a fake store.

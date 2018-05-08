@@ -130,12 +130,12 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-5xfjjh css-63oe3q"
+                          className="css-187rja2 css-63oe3q"
                           disabled={false}
                           onClick={[Function]}
                         >
                           <button
-                            className="css-5xfjjh css-63oe3q css-1rn65c0"
+                            className="css-187rja2 css-63oe3q css-1rn65c0"
                             data-test-id="Button"
                             disabled={false}
                             onClick={[Function]}

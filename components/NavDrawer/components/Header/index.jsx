@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import AccountBoxIcon from 'Components/icons/AccountBoxIcon';
+import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
 import styles from './style';
 import Item from '../Item';
 

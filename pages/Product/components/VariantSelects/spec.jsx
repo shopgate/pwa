@@ -29,7 +29,7 @@ try {
   // Do nothing.
 }
 
-jest.mock('Components/Sheet', () => ({ children }) => children);
+jest.mock('@shopgate/pwa-ui-shared/Sheet', () => ({ children }) => children);
 
 const mockedStore = configureStore();
 const mockedState = {

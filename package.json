@@ -27,6 +27,8 @@
     "@shopgate/pwa-common-commerce": "^5.3.0-beta.4",
     "@shopgate/pwa-core": "^5.3.0-beta.4",
     "@shopgate/pwa-tracking": "^5.3.0-beta.4",
+    "@shopgate/pwa-ui-material": "^5.3.0-beta.4",
+    "@shopgate/pwa-ui-shared": "^5.3.0-beta.4",
     "@shopgate/pwa-webcheckout-shopify": "^5.3.0-beta.4",
     "@shopgate/react-hammerjs": "^0.5.3",
     "@shopgate/tracking-core": "^5.3.0-beta.4",

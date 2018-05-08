@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import Ripple from 'Components/Ripple';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import styles from './style';
 
 // Add some delay to the click event to show the ripple effect.
