@@ -7,6 +7,7 @@ import configureStore from '../../store';
 import toastReducer from '../../reducers/toast';
 import createToast from '../../actions/toast/createToast';
 import removeToast from '../../actions/toast/removeToast';
+import dismissToasts from '../../action-creators/toast/dismissToasts';
 import { getToast } from '../../selectors/toast';
 import mockRenderOptions from '../../helpers/mocks/mockRenderOptions';
 
@@ -182,5 +183,36 @@ describe('<Toast />', () => {
     expect(wrapper.find(MockMessage).prop('text')).toEqual(msg2.message);
     wrapper.unmount();
     setTimeout(() => done(), 0);
+  });
+
+  it('should handle dismiss', (done) => {
+    createComponent();
+    dispatch(createToast({
+      duration: 0,
+      message: 'Toast Message',
+    }));
+
+    expect(mockedStore.getState().toast.dismissed).toBe(false);
+    expect(mockedStore.getState().toast.toasts.length).toEqual(1);
+
+    mockedStore.dispatch(dismissToasts());
+    // Flush toasts and flag as dismissed
+    expect(mockedStore.getState().toast.dismissed).toBe(true);
+    expect(mockedStore.getState().toast.toasts.length).toEqual(0);
+
+    // Keep blocking after dismiss
+    dispatch(createToast({
+      duration: 0,
+      message: 'Toast Message',
+    }));
+    expect(mockedStore.getState().toast.toasts.length).toEqual(0);
+
+    setTimeout(() => {
+      // Check unblocking
+      expect(mockedStore.getState().toast.dismissed).toBe(false);
+      expect(mockedStore.getState().toast.toasts.length).toEqual(0);
+
+      done();
+    }, 0);
   });
 });

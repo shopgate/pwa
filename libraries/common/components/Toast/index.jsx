@@ -61,7 +61,7 @@ class Toast extends Component {
       this.closeDrawer();
       setTimeout(() => {
         this.props.unblockToast();
-      }, 1000);
+      }, 0);
 
       return;
     }
@@ -105,6 +105,13 @@ class Toast extends Component {
     }
 
     return toastDidChange;
+  }
+
+  /**
+   * Clean up the timeout.
+   */
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
   }
 
   /**
