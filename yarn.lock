@@ -71,11 +71,93 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@shopgate/eslint-config@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.3.0-beta.3.tgz#ff03bd76be776dc2d17204c7f626c0c1d9dbfa04"
+  dependencies:
+    babel-eslint "^8.2.1"
+    eslint-config-airbnb "^16.1.0"
+    eslint-plugin-eslint-comments "^1.1.0"
+    eslint-plugin-extra-rules "0.8.1"
+    eslint-plugin-import "^2.8.0"
+    eslint-plugin-jsx-a11y "^6.0.3"
+    eslint-plugin-react "^7.6.1"
+    react-hot-loader "4.0.1"
+
+"@shopgate/pwa-common-commerce@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.3.0-beta.3.tgz#7498a642070d854a9fed3be23e0f94a066ae2d14"
+  dependencies:
+    recompose "^0.26.0"
+    reselect "^3.0.1"
+
+"@shopgate/pwa-common@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.3.0-beta.3.tgz#14200de99f885db16370efe0e640760f0735e023"
+  dependencies:
+    classnames "^2.2.5"
+    crypto-js "3.1.9-1"
+    glamor "^2.20.40"
+    gsap "^1.20.2"
+    history "^4.7.2"
+    intl-messageformat "^2.1.0"
+    jsdom "11.1.0"
+    path-match "^1.2.4"
+    react-dotdotdot "^1.1.0"
+    react-id-swiper "1.4.0"
+    react-inline-transition-group "^2.1.7"
+    react-portal "^3.1.0"
+    react-redux "^5.0.6"
+    react-tap-event-plugin "^3.0.2"
+    recompose "^0.26.0"
+    redux "^3.7.2"
+    redux-logger "^3.0.6"
+    redux-thunk "^2.2.0"
+    remote-redux-devtools "^0.5.12"
+    reselect "^3.0.1"
+    rxjs "^5.4.3"
+    url-search-params "^0.10.0"
+
+"@shopgate/pwa-core@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.3.0-beta.3.tgz#ee99c7fb5d768471c5173a69d0e5fd8c6f29379a"
+  dependencies:
+    crypto-js "3.1.9-1"
+    isomorphic-fetch "^2.2.1"
+
+"@shopgate/pwa-tracking@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.3.0-beta.3.tgz#a25ff40cab64e005b832805fa1192e3a9b1b3f1b"
+
+"@shopgate/pwa-unit-test@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.3.0-beta.3.tgz#dab57a51e21fdc704b6096bb1f23e6b99bcfeb6d"
+  dependencies:
+    babel-core "^6.26.0"
+    babel-preset-es2015 "^6.24.1"
+    cheerio "^1.0.0-rc.2"
+    enzyme "^3.2.0"
+    enzyme-adapter-react-16 "^1.1.1"
+    enzyme-to-json "^3.3.0"
+    identity-obj-proxy "^3.0.0"
+    jest-enzyme "^4.0.1"
+    react-hot-loader "4.0.1"
+    react-tap-event-plugin "^3.0.2"
+    react-test-renderer "^16.2.0"
+
+"@shopgate/pwa-webcheckout-shopify@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.3.0-beta.3.tgz#c10791397f0c8bf1a0672e8ea3972b20b7171de4"
+
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
+
+"@shopgate/tracking-core@^5.3.0-beta.3":
+  version "5.3.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.3.0-beta.3.tgz#742ab8914a1d2aca6c82262b3d37f6a449088fda"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
