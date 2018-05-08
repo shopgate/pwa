@@ -2,6 +2,7 @@ import { cleanTabCmd } from './cleanTab';
 import { popTabToRootCmd } from './popTabToRoot';
 import showTab from './showTab';
 import performCommandsAfterDelay from './performCommandsAfterDelay';
+import { PWA_DEFAULT_TAB } from '../constants/Command';
 
 /**
  * Send all commands that are needed to close the inAppBrowser.
@@ -23,7 +24,7 @@ export default (isAndroid) => {
   });
 
   showTab({
-    targetTab: 'main',
+    targetTab: PWA_DEFAULT_TAB,
     transition: 'slideOutToBottom',
   });
 };
