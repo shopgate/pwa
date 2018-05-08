@@ -92,9 +92,6 @@ ifneq ($(REPO_VERSION), '')
 		$(call merge-develop, $(SUBSTR))
 endif
 
-coverage:
-		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
-
 
 # DEFINITIONS
 
@@ -179,10 +176,5 @@ endef
 
 define clean-build-packages
 		rm -rf -f ./libraries/$(strip $(1))/dist
-
-endef
-
-define run-libraries-coverage
-		cd ./libraries/$(strip $(1))/ && yarn run cover
 
 endef

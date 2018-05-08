@@ -17,15 +17,21 @@ class PipelineBuffer {
    * @param {Array|string} dependant The pipeline request name of the dependant(s).
    */
   set(pipelineName, dependant) {
+    if (typeof pipelineName !== 'string') throw new Error(`Expected string for 'pipelineName'. Received: '${typeof pipelineName}'`);
+    if (!dependant) throw new Error('No dependant was set!');
+    if (!Array.isArray(dependant) && typeof dependant !== 'string') {
+      throw new Error(`Expected string or array for 'dependant'. Received: '${typeof dependant}'`);
+    }
+
     const dependants = [].concat(dependant);
     const entry = this.buffer.get(pipelineName);
 
     if (!entry) {
-      this.buffer.add(pipelineName, dependants);
+      this.buffer.set(pipelineName, dependants);
       return;
     }
 
-    this.buffer.add(pipelineName, [
+    this.buffer.set(pipelineName, [
       ...entry,
       ...dependants,
     ]);
@@ -37,6 +43,7 @@ class PipelineBuffer {
    * @return {Array}
    */
   get(pipelineName) {
+    if (typeof pipelineName !== 'string') throw new Error(`Expected string for 'pipelineName'. Received: '${typeof pipelineName}'`);
     const entry = this.buffer.get(pipelineName);
 
     if (!entry) return DEFAULT_ENTRY;
