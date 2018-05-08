@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import Glow from 'Components/Glow';
+import Glow from '@shopgate/pwa-ui-shared/Glow';
 import styles from './style';
 
 /**

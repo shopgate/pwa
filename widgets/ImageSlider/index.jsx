@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import ImageSlider from 'Components/ImageSlider';
+import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import styles from './style';
 
 /**

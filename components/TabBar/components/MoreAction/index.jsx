@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { MORE_PATH } from 'Pages/More/constants';
-import MoreIcon from 'Components/icons/MoreIcon';
+import MoreIcon from '@shopgate/pwa-ui-shared/icons/MoreIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
