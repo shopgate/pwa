@@ -6,7 +6,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   className="css-13azwyo "
 >
   <div
-    className="css-nil"
+    className="css-4s85e9"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -65,7 +65,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
   </div>
   <div
-    className="css-b6m90j"
+    className="css-16y9zin"
   />
 </div>
 `;
@@ -76,7 +76,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
   className="css-13azwyo "
 >
   <div
-    className="css-nil"
+    className="css-4s85e9"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -135,7 +135,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
   </div>
   <div
-    className="css-b6m90j"
+    className="css-16y9zin"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -180,7 +180,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
   className="css-13azwyo "
 >
   <div
-    className="css-nil"
+    className="css-4s85e9"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -239,7 +239,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
   </div>
   <div
-    className="css-b6m90j"
+    className="css-16y9zin"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -306,7 +306,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
   className="css-13azwyo "
 >
   <div
-    className="css-nil"
+    className="css-4s85e9"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -380,7 +380,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
   </div>
   <div
-    className="css-b6m90j"
+    className="css-16y9zin"
   >
     <div
       aria-hidden={true}
@@ -462,7 +462,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
   className="css-13azwyo "
 >
   <div
-    className="css-nil"
+    className="css-4s85e9"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
@@ -536,7 +536,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
   </div>
   <div
-    className="css-b6m90j"
+    className="css-16y9zin"
   >
     <div
       aria-hidden={true}
