@@ -28,7 +28,7 @@ const ImageSliderWidget = ({ settings, className }) => (
         );
       }
 
-      return <img src={image.image} alt={image.alt} className={styles.image} />;
+      return <img key={key} src={image.image} alt={image.alt} className={styles.image} />;
     })}
   </ImageSlider>
 );
