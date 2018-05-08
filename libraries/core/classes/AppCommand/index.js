@@ -92,7 +92,6 @@ class AppCommand {
 
   /**
    * Creates the command object which will be dispatched through the JavaScript bridge.
-   * @private
    * @return {Object|null}
    */
   buildCommand() {
