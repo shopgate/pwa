@@ -99,9 +99,17 @@ class Event extends EventEmitter {
      * to identify an appropriate callback event.
      * To identify these callbacks, the serial has to be decoded from the parameter list.
      */
-    if (event === 'pipelineResponse' || event === 'httpResponse') {
+    if ([
+      'pipelineResponse',
+      'httpResponse',
+    ].includes(event)) {
       eventName += `:${parameters[1]}`;
-    } else if (event === 'dataResponse' || event === 'webStorageResponse') {
+    } else if ([
+      'dataResponse',
+      'webStorageResponse',
+      'getAppPermissionsResponse',
+      'requestAppPermissionsResponse',
+    ].includes(event)) {
       eventName += `:${parameters[0]}`;
     }
 
