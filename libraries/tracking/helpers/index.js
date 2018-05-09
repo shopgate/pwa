@@ -115,6 +115,9 @@ export const formatPurchaseData = (passedOrder) => {
   }));
 
   return {
+    shop: {
+      name: '',
+    },
     order: {
       number: order.number,
       amount: {
