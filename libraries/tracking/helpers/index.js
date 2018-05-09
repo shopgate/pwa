@@ -82,7 +82,9 @@ export const formatCartProductData = ({ product, quantity }) => ({
 export const formatPurchaseData = (passedOrder) => {
   // Return the passedOrder if the format is already correct
   if (!passedOrder.totals && passedOrder.amount) {
-    return passedOrder;
+    return {
+      order: passedOrder,
+    };
   }
 
   const defaults = {
@@ -115,6 +117,9 @@ export const formatPurchaseData = (passedOrder) => {
   }));
 
   return {
+    shop: {
+      name: '',
+    },
     order: {
       number: order.number,
       amount: {

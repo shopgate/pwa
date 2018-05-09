@@ -82,4 +82,3 @@ export const mockedPipelineRequestFactory = callback =>
       return callback;
     }
   };
-

@@ -1,5 +1,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
@@ -10,6 +11,7 @@ import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
+import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
@@ -62,6 +64,14 @@ export default function cart(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ dispatch }) => {
+    pipelineDependencies.set(`${pipelines.SHOPGATE_CART_GET_CART}.v1`, [
+      `${pipelines.SHOPGATE_CART_ADD_PRODUCTS}.v1`,
+      `${pipelines.SHOPGATE_CART_UPDATE_PRODUCTS}.v1`,
+      `${pipelines.SHOPGATE_CART_DELETE_PRODUCTS}.v1`,
+      `${pipelines.SHOPGATE_CART_ADD_COUPONS}.v1`,
+      `${pipelines.SHOPGATE_CART_DELETE_COUPONS}.v1`,
+    ]);
+
     // Register for the app event that is triggered when the checkout process is finished
     registerEvents(['checkoutSuccess']);
 
@@ -83,11 +93,8 @@ export default function cart(subscribe) {
     dispatch(setCartProductPendingCount(0));
   });
 
-  subscribe(cartNeedsSync$, ({ dispatch, action }) => {
-    const { requestsPending = false } = action;
-    if (requestsPending !== true) {
-      dispatch(fetchCart());
-    }
+  subscribe(cartNeedsSync$, ({ dispatch }) => {
+    dispatch(fetchCart());
   });
 
   subscribe(cartBusy$, ({ dispatch }) => {
