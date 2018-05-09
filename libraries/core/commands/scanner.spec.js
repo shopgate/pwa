@@ -2,17 +2,15 @@ import { PWA_DEFAULT_TAB } from '../constants/Command';
 import {
   SCANNER_ANIMATION_FOREGROUND_BOTTON,
   SCANNER_ANIMATION_FOREGROUND_LEFT,
-  SCANNER_MODE_BARCODE,
-  SCANNER_MODE_CARD,
-  SCANNER_MODE_IMAGE,
+  SCANNER_TYPE_BARCODE,
+  SCANNER_TYPE_CARD,
+  SCANNER_TYPE_IMAGE,
   SCANNER_MODE_ON,
   SCANNER_MODE_OFF,
 } from '../constants/Scanner';
 
 import {
   mockedSetCommandName,
-  mockedSetCommandParams,
-  mockedBuildCommand,
   mockedDispatch,
 } from '../classes/AppCommand';
 
@@ -35,9 +33,9 @@ describe('scanner commands', () => {
       const expected = {
         src: 'sgapi:scanner',
         modes: {
-          [SCANNER_MODE_BARCODE]: SCANNER_MODE_OFF,
-          [SCANNER_MODE_CARD]: SCANNER_MODE_OFF,
-          [SCANNER_MODE_IMAGE]: SCANNER_MODE_OFF,
+          [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
+          [SCANNER_TYPE_CARD]: SCANNER_MODE_OFF,
+          [SCANNER_TYPE_IMAGE]: SCANNER_MODE_OFF,
         },
         animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
         eventParams: {
@@ -64,17 +62,17 @@ describe('scanner commands', () => {
       const expected = {
         src: 'sgapi:scanner',
         modes: {
-          [SCANNER_MODE_BARCODE]: SCANNER_MODE_OFF,
-          [SCANNER_MODE_CARD]: SCANNER_MODE_OFF,
-          [SCANNER_MODE_IMAGE]: SCANNER_MODE_ON,
+          [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
+          [SCANNER_TYPE_IMAGE]: SCANNER_MODE_ON,
+          [SCANNER_TYPE_CARD]: SCANNER_MODE_OFF,
         },
         animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
         eventParams: {
           scannerData: {
             modes: {
-              barcodeRecognition: false,
-              cardRecognition: false,
-              imageCapturing: true,
+              [SCANNER_TYPE_BARCODE]: false,
+              [SCANNER_TYPE_IMAGE]: true,
+              [SCANNER_TYPE_CARD]: false,
             },
           },
           sourceTab: PWA_DEFAULT_TAB,

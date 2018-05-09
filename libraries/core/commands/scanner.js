@@ -3,9 +3,9 @@ import AppCommand from '../classes/AppCommand';
 import { PWA_DEFAULT_TAB } from '../constants/Command';
 import {
   SCANNER_ANIMATION_FOREGROUND_BOTTON,
-  SCANNER_MODE_BARCODE,
-  SCANNER_MODE_CARD,
-  SCANNER_MODE_IMAGE,
+  SCANNER_TYPE_BARCODE,
+  SCANNER_TYPE_CARD,
+  SCANNER_TYPE_IMAGE,
   SCANNER_MODE_ON,
   SCANNER_MODE_OFF,
 } from '../constants/Scanner';
@@ -32,9 +32,9 @@ export const openScanner = (params) => {
     src: 'sgapi:scanner',
     animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
     modes: {
-      [SCANNER_MODE_BARCODE]: SCANNER_MODE_OFF,
-      [SCANNER_MODE_CARD]: SCANNER_MODE_OFF,
-      [SCANNER_MODE_IMAGE]: SCANNER_MODE_OFF,
+      [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
+      [SCANNER_TYPE_IMAGE]: SCANNER_MODE_OFF,
+      [SCANNER_TYPE_CARD]: SCANNER_MODE_OFF,
     },
   };
 
@@ -46,9 +46,9 @@ export const openScanner = (params) => {
     eventParams: {
       scannerData: {
         modes: {
-          barcodeRecognition: barcodeRecognition === SCANNER_MODE_ON,
-          imageCapturing: imageCapturing === SCANNER_MODE_ON,
-          cardRecognition: cardRecognition === SCANNER_MODE_ON,
+          [SCANNER_TYPE_BARCODE]: barcodeRecognition === SCANNER_MODE_ON,
+          [SCANNER_TYPE_IMAGE]: imageCapturing === SCANNER_MODE_ON,
+          [SCANNER_TYPE_CARD]: cardRecognition === SCANNER_MODE_ON,
         },
       },
       sourceTab: PWA_DEFAULT_TAB,

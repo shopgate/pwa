@@ -1,3 +1,4 @@
+import { logger } from '../../helpers';
 import event from '../../classes/Event';
 
 import registerEvents from '../../commands/registerEvents';
@@ -5,7 +6,6 @@ import broadcastEvent from '../../commands/broadcastEvent';
 
 import {
   SCANNER_MODE_ON,
-  SCANNER_MODE_BARCODE,
   SCANNER_TYPE_BARCODE,
   SCANNER_TYPE_IMAGE,
 } from '../../constants/Scanner';
@@ -59,6 +59,8 @@ class ScannerManager {
     this.autoClose = options.autoClose || true;
 
     this.scanHandlerCallback = () => {};
+
+    this.supportedTypes = [SCANNER_TYPE_BARCODE, SCANNER_TYPE_IMAGE];
 
     /**
      * Create references to the app event handler fuctions. They preserve the "this" context of
@@ -132,9 +134,15 @@ class ScannerManager {
 
   /**
    * Open the scanner webview. It will instantly start the scanning process.
+   * @param {string} type The initially activated scanner type.
    * @return {ScannerManager}
    */
-  openScanner() {
+  openScanner(type = SCANNER_TYPE_BARCODE) {
+    if (!this.supportedTypes.includes(type)) {
+      logger.error(`Scanner opening failed. ${type} is a not supported scanner type.`);
+      return this;
+    }
+
     // Add a listener to the closeScanner event to react on a close button press in the scanner.
     event.addListener(APP_EVENT_CLOSE_SCANNER, this.closeScanner);
     // Add a listener to the scannerDidScan event to process scanner data.
@@ -143,7 +151,7 @@ class ScannerManager {
     // Add a listener to restart the scanner recognition after the user accepted the notification.
     event.addListener(APP_EVENT_SCANNER_ERROR_CLOSED, startScanner);
     // Open the scanner webview.
-    openScanner({ modes: { [SCANNER_MODE_BARCODE]: SCANNER_MODE_ON } });
+    openScanner({ modes: { [type]: SCANNER_MODE_ON } });
     return this;
   }
 

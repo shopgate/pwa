@@ -32,19 +32,16 @@ export const SCANNER_MODE_OFF = 'off';
  * The barcode recognition scanner mode.
  * @type {string}
  */
-export const SCANNER_MODE_BARCODE = 'barcodeRecognition';
+export const SCANNER_TYPE_BARCODE = 'barcodeRecognition';
 
 /**
  * The card recognition scanner mode.
  * @type {string}
  */
-export const SCANNER_MODE_CARD = 'cardRecognition';
+export const SCANNER_TYPE_CARD = 'cardRecognition';
 
 /**
  * The image recognition scanner mode.
  * @type {string}
  */
-export const SCANNER_MODE_IMAGE = 'imageCapturing';
-
-export const SCANNER_TYPE_BARCODE = 'barcodeScanner';
-export const SCANNER_TYPE_IMAGE = 'imageScanner';
+export const SCANNER_TYPE_IMAGE = 'imageCapturing';
