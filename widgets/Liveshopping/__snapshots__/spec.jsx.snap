@@ -29,6 +29,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
   >
     <div
       className="css-1allyey"
+      data-test-id="liveShoppingWidget"
       key="1234"
     >
       <Card
@@ -127,6 +128,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     </div>
     <div
       className="css-1allyey"
+      data-test-id="liveShoppingWidget"
       key="1235"
     >
       <Card
@@ -254,6 +256,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
   >
     <div
       className="css-1allyey"
+      data-test-id="liveShoppingWidget"
       key="1234"
     >
       <Card
