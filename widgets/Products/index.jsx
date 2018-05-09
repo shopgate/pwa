@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { LIST_VIEW } from 'Pages/Category/constants';
-import ActionButton from 'Components/ActionButton';
+import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
 import ProductList from 'Components/ProductList';

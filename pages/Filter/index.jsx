@@ -9,7 +9,7 @@ import {
   FILTER_TYPE_MULTISELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
 import View from 'Components/View';
-import CardList from 'Components/CardList';
+import CardList from '@shopgate/pwa-ui-shared/CardList';
 import PriceRangeSlider from './components/PriceRangeSlider';
 import ListItem from './components/ListItem';
 import ClearAllButton from './components/ClearAllButton';

@@ -28,7 +28,7 @@ try {
 } catch (e) {
   // Do nothing.
 }
-jest.mock('Components/Sheet', () => ({ children }) => children);
+jest.mock('@shopgate/pwa-ui-shared/Sheet', () => ({ children }) => children);
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('@shopgate/pwa-common/components/Router/components/RouteGuard', () => (obj) => {

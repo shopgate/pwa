@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
-import LoadingIndicator from 'Components/LoadingIndicator';
+import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import connect from './connector';
 import EmptyFavorites from './components/EmptyFavorites';
 import FavoritesList from './components/FavoritesList';

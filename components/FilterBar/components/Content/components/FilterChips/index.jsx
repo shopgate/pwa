@@ -5,7 +5,7 @@ import {
   FILTER_TYPE_RANGE,
   FILTER_TYPE_MULTISELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
-import Chip from 'Components/Chip';
+import Chip from '@shopgate/pwa-ui-shared/Chip';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';
 import styles from './style';
