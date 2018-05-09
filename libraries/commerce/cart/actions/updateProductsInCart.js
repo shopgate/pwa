@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import updateProducts from '../action-creators/updateProductsInCart';
@@ -29,6 +30,7 @@ const updateProductsInCart = updateData => (dispatch) => {
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_UPDATE_PRODUCTS);
   request.setInput({ CartItem: convertedData })
+    .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();

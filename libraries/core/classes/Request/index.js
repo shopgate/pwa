@@ -31,9 +31,9 @@ class Request {
    * Generates the serial for this data request.
    * @param {string} serialKey The serial key.
    */
-  createSerial(serialKey) {
+  createSerial = (serialKey) => {
     if (!this.serial) {
-      this.serial = CryptoJs.MD5(`${serialKey}${Math.random()}`).toString();
+      this.serial = CryptoJs.MD5(`${serialKey}${Date.now()}`).toString();
     }
   }
 
@@ -41,7 +41,7 @@ class Request {
    * Creates the event callback name from the data request serial.
    * @param {string} callbackKey The callback key to use.
    */
-  createEventCallbackName(callbackKey) {
+  createEventCallbackName = (callbackKey) => {
     this.callbackName = `${callbackKey}:${this.serial}`;
   }
 
