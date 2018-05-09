@@ -16,7 +16,7 @@ checkout-develop:
 		make clean
 
 release:
-		# make pre-release
+		make pre-release
 		make clean
 		make pre-publish
 		make bump-extensions
@@ -25,7 +25,7 @@ release:
 		make npm-publish
 		make git-publish
 		make clean-build
-		# make post-release
+		make post-release
 		@echo "\n\nDone releasing!\n\n"
 
 pre-release:
