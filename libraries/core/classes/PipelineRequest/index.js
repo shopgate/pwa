@@ -1,158 +1,142 @@
-import { logger } from '../../helpers';
-import logGroup from '../../helpers/logGroup';
-import event from '../Event';
-import AppCommand from '../AppCommand';
 import Request from '../Request';
-import requestBuffer from '../RequestBuffer';
-import { getPipelineManager } from '../PipelineManagers';
-import {
-  CURRENT_VERSION,
-  EVENT_PIPELINE_ERROR,
-  ETIMEOUT,
-  TYPE_TRUSTED,
-} from '../../constants/Pipeline';
+import pipelineManager from '../PipelineManager';
+import { CURRENT_VERSION } from '../../constants/Pipeline';
+import * as processTypes from '../../constants/ProcessTypes';
+import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
+import { logger } from '../../helpers';
+
+export const DEFAULT_VERSION = CURRENT_VERSION;
+export const DEFAULT_RETRIES = 3;
+export const DEFAULT_MAX_RETRIES = 5;
+export const DEFAULT_INPUT = {};
+export const DEFAULT_TIMEOUT = 20000;
+export const DEFAULT_MAX_TIMEOUT = 30000;
+export const DEFAULT_PROCESSED = processTypes.PROCESS_ALWAYS;
+export const DEFAULT_HANDLE_ERROR = errorHandleTypes.ERROR_HANDLE_DEFAULT;
 
 /**
- * The pipeline request class.
- * It sends a pipeline request and returns a promise.
+ * Defines a pipeline request.
+ * @class
  */
 class PipelineRequest extends Request {
   /**
-   * Initializes the PipelineRequest object.
-   * @param {string} name The pipeline name.
-   * @param {number} [version=CURRENT_VERSION] The pipeline version.
+   * @param {string} name The pipeline name. Excluding the version.
    */
-  constructor(name, version = CURRENT_VERSION) {
-    super(getPipelineManager(name));
+  constructor(name) {
+    if (!name) throw new Error('The \'name\' parameter is not set!');
+    super();
 
-    this.name = `${name}.v${version}`;
-    this.input = {};
-    this.handledErrors = [];
-    this.suppressErrors = false;
-    this.createSerial(this.name);
-    this.createEventCallbackName('pipelineResponse');
-    this.requestCallback = null;
+    this.name = name;
+    this.version = DEFAULT_VERSION;
+    this.input = DEFAULT_INPUT;
+    this.trusted = false;
+    this.retries = DEFAULT_RETRIES;
+    this.timeout = DEFAULT_TIMEOUT;
+    this.process = DEFAULT_PROCESSED;
+    this.handleErrors = DEFAULT_HANDLE_ERROR;
   }
 
   /**
-   * Sets the payload for the PipelineRequest
+   * @param {number} version The version number of the pipeline request.
+   * @return {PipelineRequest}
+   */
+  setVersion(version = DEFAULT_VERSION) {
+    if (typeof version !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof version}'`);
+    if (version < 0) throw new Error(`Expected positive integer. Received: '${version}'`);
+    if (version === 0) throw new Error('Has to be > 0!');
+
+    this.version = version;
+    return this;
+  }
+
+  /**
    * @param {Object} [input={}] The payload to send with the request.
    * @returns {PipelineRequest}
    */
-  setInput(input = {}) {
+  setInput(input = DEFAULT_INPUT) {
+    if ((typeof input !== 'object') || (input.constructor !== Object)) {
+      throw new TypeError(`Expected 'object'. Received: '${typeof input}'`);
+    }
+
     this.input = input;
     return this;
   }
 
   /**
-   * Sets the type of the request to TYPE_TRUSTED
-   * @returns {PipelineRequest}
+   * @return {PipelineRequest}
    */
   setTrusted() {
-    this.type = TYPE_TRUSTED;
+    this.trusted = true;
     return this;
   }
 
   /**
-   * Sets a list of error codes which will be handled within the reject callback of the promise.
-   * @param {Array} errors The error codes
+   * @param {number} retries The number of retries this pipeline request should perform.
    * @return {PipelineRequest}
    */
-  setHandledErrors(errors = []) {
-    this.handledErrors = errors;
+  setRetries(retries = DEFAULT_RETRIES) {
+    if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
+    if (retries < 0) throw new Error(`Expected positive integer. Received: '${retries}'`);
+
+    this.retries = Math.min(retries, DEFAULT_MAX_RETRIES);
     return this;
   }
 
   /**
-   * Sets a flag to suppress errors.
-   * When true, no EVENT_PIPELINE_ERROR would be triggered.
-   * @param {bool} value Value.
+   * @param {number} timeout The timeout (ms) that the request will wait before canceling.
    * @return {PipelineRequest}
    */
-  setSuppressErrors(value) {
-    this.suppressErrors = value;
+  setTimeout(timeout = DEFAULT_TIMEOUT) {
+    if (typeof timeout !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof timeout}'`);
+    if (timeout < 0) throw new Error(`Expected positive integer. Received: '${timeout}'`);
+
+    this.timeout = Math.min(timeout, DEFAULT_MAX_TIMEOUT);
     return this;
   }
 
   /**
-   * Sends the pipeline request.
-   * @param {function} resolve The resolve() callback of the request promise.
-   * @param {function} reject The reject() callback of the request promise.
+   * @param {string} processed The response process type.
+   * @return {PipelineRequest}
    */
-  onDispatch(resolve, reject) {
-    const requestCallbackName = this.getEventCallbackName();
+  setResponseProcessed(processed = DEFAULT_PROCESSED) {
+    if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
+    if (!Object.values(processTypes).includes(processed)) {
+      throw new Error(`The value '${processed}' is not supported!`);
+    }
 
-    /**
-     * The request event callback for the response call.
-     * @param {Object|null} error The error object if an error happened.
-     * @param {string} serial The serial that was used to identify the PipelineRequest callback.
-     * @param {Object} output The output of the pipeline.
-     */
-    this.requestCallback = (error, serial, output) => {
-      event.removeCallback(requestCallbackName, this.requestCallback);
-      requestBuffer.remove(serial);
-
-      const { input, name } = this;
-
-      logGroup(`PipelineResponse %c${this.name}`, {
-        input,
-        error,
-        output,
-      }, '#307bc2');
-
-      if (error) {
-        const isHandledError = this.handledErrors.includes(error.code);
-        if (!this.suppressErrors && !isHandledError) {
-          event.trigger(EVENT_PIPELINE_ERROR, {
-            name,
-            input,
-            error,
-          });
-        }
-
-        this.manager.handleError(this, reject, error);
-        return;
-      }
-
-      this.manager.handleResponse(this, resolve, output);
-    };
-
-    // Apply the event callback.
-    event.addCallback(requestCallbackName, this.requestCallback);
-
-    logGroup(`PipelineRequest %c${this.name}`, { input: this.input }, '#32ac5c');
-
-    // Send the pipeline request.
-    const command = new AppCommand();
-    command.setCommandName('sendPipelineRequest');
-    command.setLibVersion('12.0');
-    command.dispatch({
-      name: this.name,
-      serial: this.serial,
-      input: this.input,
-      ...this.type && { type: this.type },
-    });
+    this.process = processed;
+    return this;
   }
 
   /**
-   * On timeout log error.
+   * @param {string} handle The handle errors type.
+   * @return {PipelineRequest}
    */
-  onTimeout() {
-    const subject = `pipelineRequest: ${this.name}`;
-    const message = `Timeout (${this.manager.timeout / 1000}s) reached`;
-    const error = {
-      code: ETIMEOUT,
-      message,
-    };
+  setHandleErrors(handle = errorHandleTypes.ERROR_HANDLE_DEFAULT) {
+    if (typeof handle !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof handle}'`);
+    if (!Object.values(errorHandleTypes).includes(handle)) {
+      throw new Error(`The value '${handle}' is not supported!`);
+    }
 
-    this.requestCallback(error, this.serial, {});
-    this.manager.handleError(this, () => {}, message);
+    this.handleErrors = handle;
+    return this;
+  }
 
-    logger.log(subject, {
-      input: this.input,
-      error,
-      message,
-    });
+  /**
+   * @return {PipelineRequest}
+   * @deprecated
+   */
+  setHandledErrors() {
+    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setHandleErrors()!');
+    return this;
+  }
+
+  /**
+   * Dispatches the pipeline.
+   * @return {Promise}
+   */
+  dispatch() {
+    return pipelineManager.add(this);
   }
 }
 
