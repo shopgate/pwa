@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BasePicker from '@shopgate/pwa-common/components/Picker';
-import Sheet from 'Components/Sheet';
+import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import List from 'Components/List';
 import Button from './components/Button';
 import styles from './style';

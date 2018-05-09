@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceholderLabel from 'Components/PlaceholderLabel';
-import PriceInfoBase from 'Components/PriceInfo';
+import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
+import PriceInfoBase from '@shopgate/pwa-ui-shared/PriceInfo';
 import connect from './connector';
 import styles from './style';
 

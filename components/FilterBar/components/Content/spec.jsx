@@ -4,8 +4,8 @@ import TestUtils from 'react-dom/test-utils';
 import { mount, shallow } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
-import GridIcon from 'Components/icons/GridIcon';
-import ListIcon from 'Components/icons/ListIcon';
+import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
+import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
 import { GRID_VIEW, LIST_VIEW } from 'Pages/Category/constants';
 import { UnwrappedContent as FilterBarContent } from './index';
 

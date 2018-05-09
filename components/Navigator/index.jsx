@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import ProgressBar from 'Components/ProgressBar';
+import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
