@@ -142,22 +142,22 @@ define build-packages
 endef
 
 define bump-extension-versions
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./extensions/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION"
+		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./extensions/$(strip $(1))/ && git add -A && git commit --no-verify -m "$$PACKAGE_VERSION"
 
 endef
 
 define bump-theme-versions
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./themes/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./themes/$(strip $(1))/ && git add -A && git commit -m "$$PACKAGE_VERSION"
+		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && node ./scripts/bump-extension.js --file="./themes/$(strip $(1))/extension-config.json" --v="$$PACKAGE_VERSION" && cd ./themes/$(strip $(1))/ && git add -A && git commit --no-verify -m "$$PACKAGE_VERSION"
 
 endef
 
 define push-main
-		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git add -A && git commit -m "$$PACKAGE_VERSION" && git push
+		PACKAGE_VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git add -A && git commit --no-verify -m "$$PACKAGE_VERSION" && git push --no-verify
 
 endef
 
 define git-tags
-		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION -m "v$$VERSION" && git push && git push --tags
+		VERSION=$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && cd $(1) && git tag v$$VERSION --no-verify -m "v$$VERSION" && git push --no-verify && git push --tags --no-verify
 
 endef
 
