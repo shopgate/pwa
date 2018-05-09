@@ -1,0 +1,4 @@
+{
+    "defaultCommandTimeout" : 10000,
+    "baseUrl": "http://10.0.77.228:8080"
+}

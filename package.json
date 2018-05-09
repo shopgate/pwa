@@ -24,6 +24,7 @@
   ],
   "devDependencies": {
     "@sourceallies/coveralls-merge": "^1.0.0",
+    "cypress": "^2.1.0",
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^7.0.0",
