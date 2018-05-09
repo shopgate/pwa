@@ -5,6 +5,7 @@
     "setup": "sgconnect init && lerna bootstrap",
     "clean": "make clean",
     "test": "jest",
+    "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "precommit": "lint-staged",
