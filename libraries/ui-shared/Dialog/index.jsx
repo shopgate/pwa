@@ -26,19 +26,20 @@ const Dialog = ({ modal, onConfirm, onDismiss }) => {
     confirm, dismiss, title, params, message, type,
   } = modal;
 
-  if (confirm) {
-    // We have a confirm label, add a confirm action.
-    actions.push({
-      label: modal.confirm,
-      action: onConfirm,
-    });
-  }
-
+  // Push dismiss action first so the button is rendered first
   if (dismiss) {
     // We have a dismiss label, add a dismiss action.
     actions.push({
       label: modal.dismiss,
       action: onDismiss,
+    });
+  }
+
+  if (confirm) {
+    // We have a confirm label, add a confirm action.
+    actions.push({
+      label: modal.confirm,
+      action: onConfirm,
     });
   }
 

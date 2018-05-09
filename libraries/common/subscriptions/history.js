@@ -2,12 +2,7 @@ import event from '@shopgate/pwa-core/classes/Event/index';
 import appConfig from '../helpers/config';
 import redirectRoute from '../actions/history/redirectRoute';
 import resetHistory from '../actions/history/resetHistory';
-import fetchRegisterUrl from '../actions/user/fetchRegisterUrl';
-import goBackHistory from '../actions/history/goBackHistory';
-import { getRegisterUrl } from '../selectors/user';
-import ParsedLink from '../components/Router/helpers/parsed-link';
 import {
-  openedRegisterLink$,
   routeDidLeave,
   routeDidChange$,
 } from '../streams/history';
@@ -15,8 +10,6 @@ import {
   userDidLogin$,
   userDidLogout$,
 } from '../streams/user';
-import openRegisterUrl from './helpers/openRegisterUrl';
-import { LEGACY_URL } from '../constants/Registration';
 import { setRedirectLocation } from '../action-creators/history';
 import {
   LOGIN_PATH,
@@ -46,27 +39,6 @@ export default function history(subscribe) {
    */
   subscribe(userDidLogout$, ({ dispatch }) => {
     dispatch(resetHistory());
-  });
-
-  /**
-   * Gets triggered when the register link is opened.
-   */
-  subscribe(openedRegisterLink$, async ({ dispatch, getState }) => {
-    const state = getState();
-
-    const hasRegistrationUrl = !!getRegisterUrl(state);
-
-    // Open the registration url if one is found.
-    if (hasRegistrationUrl) {
-      await dispatch(fetchRegisterUrl())
-        .then(url => openRegisterUrl(url, state))
-        .catch(e => e);
-    } else {
-      const link = new ParsedLink(LEGACY_URL);
-      link.open();
-    }
-
-    dispatch(goBackHistory(1));
   });
 
   /**
