@@ -1,5 +1,5 @@
 import { logger } from '../../helpers';
-import event from '../../classes/Event';
+import event from '../Event';
 
 import registerEvents from '../../commands/registerEvents';
 import broadcastEvent from '../../commands/broadcastEvent';
@@ -16,37 +16,27 @@ import {
   startScanner,
 } from '../../commands/scanner';
 
-const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
-const APP_EVENT_SCANNER_DID_CAPTURE_IMAGE = 'scannerDidCaptureImage';
-const APP_EVENT_SCANNER_RESULT_PROCESSED = 'scannerResultProcessed';
-const APP_EVENT_CLOSE_SCANNER = 'closeScanner';
-const APP_EVENT_SCANNER_ERROR_CLOSED = 'scannerErrorClosed';
+export const APP_EVENT_CLOSE_SCANNER = 'closeScanner';
+export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
+export const APP_EVENT_SCANNER_ERROR_CONFIRMED = 'scannerErrorConfirmed';
+export const APP_EVENT_SCANNER_RESULT_PROCESSED = 'scannerResultProcessed';
 
 registerEvents([
-  APP_EVENT_SCANNER_ERROR_CLOSED,
-  APP_EVENT_SCANNER_DID_SCAN,
-  APP_EVENT_SCANNER_DID_CAPTURE_IMAGE,
   APP_EVENT_CLOSE_SCANNER,
+  APP_EVENT_SCANNER_DID_SCAN,
+  APP_EVENT_SCANNER_ERROR_CONFIRMED,
 ]);
 
 /**
- * The payload of a "scannerDidScan" app event.
- * @typedef {Object} ScannerDidScanPayload
- * @property {string} format The format of the scanned content. Possible values are: UPC_E, CODE_39,
- *   EAN_13, EAN_8, CODE_93, CODE_128 PDF_417, QR_CODE, AZTEC, ITF and DATA_MATRIX.
- * @property {string} code The code that has been scanned.
- */
-
-/**
  * A callback that is invoked whenever the scanner recognized supported content.
- * @callback scanHandlerCallback
- * @param {ScannerDidScanPayload} data The event payload.
+ * @callback scanHandler
+ * @param {Object} payload The event payload for a successful content scan.
  */
 
 /**
  * The ScannerManager class. It's intendend to simplify the processes that are necessary to
  * programmatically interact with the scanner feature of the app. It provides the possiblity to
- * register a handler callback to process the scanned barcode / qr code payload.
+ * register a handler callback to process the scanned content.
  */
 class ScannerManager {
   /**
@@ -56,9 +46,13 @@ class ScannerManager {
    *  automatically after a successful scan.
    */
   constructor(options = {}) {
-    this.autoClose = options.autoClose || true;
+    this.autoClose = true;
 
-    this.scanHandlerCallback = () => {};
+    if (typeof options.autoClose === 'boolean') {
+      this.autoClose = options.autoClose;
+    }
+
+    this.scanHandler = () => {};
 
     this.supportedTypes = [SCANNER_TYPE_BARCODE, SCANNER_TYPE_IMAGE];
 
@@ -66,21 +60,21 @@ class ScannerManager {
      * Create references to the app event handler fuctions. They preserve the "this" context of
      * a ScannerManager instance and can be used to register and unregister event listeners.
      */
-    this.scannerDidScanCallback = this.scannerDidScanCallback.bind(this);
+    this.scannerDidScanListener = this.scannerDidScanListener.bind(this);
     this.closeScanner = this.closeScanner.bind(this);
   }
 
   /**
    * The internal handler for the "scannerDidScan" app event.
    * @private
-   * @param {ScannerDidScanPayload} payload The event payload.
+   * @param {Object} payload The event payload.
    */
-  scannerDidScanCallback(payload) {
+  scannerDidScanListener(payload) {
     /**
-     * Trigger an ad scanner result processed event to inform the scanner view
-     * about the outcome of the scan.
+     * Trigger a scannerResultProcessed event to inform the scanner view
+     * about the outcome of the scan payload processing.
      * @param {string} requestId The id of the scanner request.
-     * @param {boolean} [success=true] Tells if processing was successful.
+     * @param {boolean} [success=true] Whether the processing was successful or not.
      * @param {Object|null} message An object that contains properties for a dialog popup.
      */
     const scannerResultProcessedEvent = (requestId, success = true, message = null) => {
@@ -94,10 +88,16 @@ class ScannerManager {
      * Wrapper function to enable execution of async code within an EventEmitter callback.
      */
     const execScanCallback = async () => {
-      const { requestId } = payload;
+      const { requestId, scannerType, ...data } = payload;
+
       try {
-        // Invoke the callback.
-        await this.scanHandlerCallback(payload);
+        // Invoke the scan handler. Split the actual scan payload from the meta data.
+        await this.scanHandler({
+          scannerType,
+          requestId,
+          data,
+        });
+        // Inform the scanner view about the outcome.
         scannerResultProcessedEvent(requestId);
         if (this.autoClose) {
           // Close the scanner after a successful scan.
@@ -105,7 +105,7 @@ class ScannerManager {
         }
       } catch (error) {
         const { message, title = null } = error;
-        // Trigger an error message within the app scanner webview. When content processing failed.
+        // Trigger an error message within the scanner webview when content processing failed.
         scannerResultProcessedEvent(requestId, false, {
           message,
           title,
@@ -117,23 +117,24 @@ class ScannerManager {
   }
 
   /**
-   * Register a callback to handle scanned content. Errors that are thrown inside will be displayed
+   * Register a handler to process scanned content. Errors that are thrown inside will be displayed
    * to the user as a notification, so that the webview can stay open for further scan attempts.
-   * It's recommended to use the ScannerError for that purpose, since it provides the possiblity
-   * to set a message and a title for the notification.
-   * @param {scanHandlerCallback} callback The callback - async functions are supported.
+   * It's recommended to use the ScanProcessingError for that purpose,
+   * since it provides the possiblity to set a message and a title for the notification.
+   * @param {scanHandler} handler The callback - async functions are supported.
    * @return {ScannerManager}
    */
-  registerScanHandler(callback) {
-    if (typeof callback === 'function') {
-      this.scanHandlerCallback = callback;
+  registerScanHandler(handler) {
+    if (typeof handler === 'function') {
+      this.scanHandler = handler;
     }
 
     return this;
   }
 
   /**
-   * Open the scanner webview. It will instantly start the scanning process.
+   * Open the scanner webview. It will instantly start the scanning process when the barcode scanner
+   * is active. For the image scanner user interaction is necessary.
    * @param {string} type The initially activated scanner type.
    * @return {ScannerManager}
    */
@@ -144,12 +145,11 @@ class ScannerManager {
     }
 
     // Add a listener to the closeScanner event to react on a close button press in the scanner.
-    event.addListener(APP_EVENT_CLOSE_SCANNER, this.closeScanner);
+    event.addCallback(APP_EVENT_CLOSE_SCANNER, this.closeScanner);
     // Add a listener to the scannerDidScan event to process scanner data.
-    event.addListener(APP_EVENT_SCANNER_DID_SCAN, this.scannerDidScanCallback);
-    event.addListener(APP_EVENT_SCANNER_DID_CAPTURE_IMAGE, this.scannerDidScanCallback);
+    event.addCallback(APP_EVENT_SCANNER_DID_SCAN, this.scannerDidScanListener);
     // Add a listener to restart the scanner recognition after the user accepted the notification.
-    event.addListener(APP_EVENT_SCANNER_ERROR_CLOSED, startScanner);
+    event.addCallback(APP_EVENT_SCANNER_ERROR_CONFIRMED, startScanner);
     // Open the scanner webview.
     openScanner({ modes: { [type]: SCANNER_MODE_ON } });
     return this;
@@ -161,10 +161,10 @@ class ScannerManager {
    */
   closeScanner() {
     // Remove the listeners to avoid further execution by other instances.
-    event.removeListener(APP_EVENT_CLOSE_SCANNER, this.closeScanner);
-    event.removeListener(APP_EVENT_SCANNER_DID_SCAN, this.scannerDidScanCallback);
-    event.removeListener(APP_EVENT_SCANNER_DID_CAPTURE_IMAGE, this.scannerDidScanCallback);
-    event.removeListener(APP_EVENT_SCANNER_ERROR_CLOSED, startScanner);
+    event.removeCallback(APP_EVENT_CLOSE_SCANNER, this.closeScanner);
+    event.removeCallback(APP_EVENT_SCANNER_DID_SCAN, this.scannerDidScanListener);
+    event.removeCallback(APP_EVENT_SCANNER_ERROR_CONFIRMED, startScanner);
+
     // Close the scanner webview.
     closeScanner();
     return this;
