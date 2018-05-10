@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import deleteProducts from '../action-creators/deleteProductsFromCart';
@@ -16,6 +17,7 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_DELETE_PRODUCTS);
   request.setInput({ CartItemIds: cartItemIds })
+    .setResponseProcessed(PROCESS_SEQUENTIAL)
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();

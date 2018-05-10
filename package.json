@@ -5,6 +5,7 @@
     "setup": "sgconnect init && lerna bootstrap",
     "clean": "make clean",
     "test": "jest",
+    "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "precommit": "lint-staged",
@@ -24,6 +25,7 @@
   ],
   "devDependencies": {
     "@sourceallies/coveralls-merge": "^1.0.0",
+    "coveralls": "^3.0.1",
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^7.0.0",
