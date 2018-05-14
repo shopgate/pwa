@@ -31,7 +31,7 @@ class Request {
    * Generates the serial for this data request.
    * @param {string} serialKey The serial key.
    */
-  createSerial = (serialKey) => {
+  createSerial(serialKey) {
     if (!this.serial) {
       this.serial = CryptoJs.MD5(`${serialKey}${Date.now()}`).toString();
     }
