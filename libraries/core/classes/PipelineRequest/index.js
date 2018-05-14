@@ -77,6 +77,7 @@ class PipelineRequest extends Request {
   setRetries(retries = DEFAULT_RETRIES) {
     if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
     if (retries < 0) throw new Error(`Expected positive integer. Received: '${retries}'`);
+    if (retries >= DEFAULT_MAX_RETRIES) throw new Error(`Max retries exceeded. Received: '${retries}'`);
 
     this.retries = Math.min(retries, DEFAULT_MAX_RETRIES);
     return this;
@@ -89,6 +90,7 @@ class PipelineRequest extends Request {
   setTimeout(timeout = DEFAULT_TIMEOUT) {
     if (typeof timeout !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof timeout}'`);
     if (timeout < 0) throw new Error(`Expected positive integer. Received: '${timeout}'`);
+    if (timeout > DEFAULT_MAX_TIMEOUT) throw new Error(`Max timeout exceeded. Received: '${timeout}'`);
 
     this.timeout = Math.min(timeout, DEFAULT_MAX_TIMEOUT);
     return this;
@@ -128,6 +130,20 @@ class PipelineRequest extends Request {
    */
   setHandledErrors() {
     logger.warn('Deprecated: setHandledErrors() will be removed in favor of setHandleErrors()!');
+    return this;
+  }
+
+  /**
+   * Sets a flag to suppress errors.
+   * When true, no EVENT_PIPELINE_ERROR would be triggered.
+   * @param {bool} value Value.
+   * @return {PipelineRequest}
+   * @deprecated
+   */
+  setSuppressErrors(value) {
+    this.setHandleErrors(value ?
+      errorHandleTypes.ERROR_HANDLE_SUPPRESS : errorHandleTypes.ERROR_HANDLE_DEFAULT);
+    logger.warn('Deprecated: setSuppressErrors() will be removed in favor of setHandleErrors()!');
     return this;
   }
 

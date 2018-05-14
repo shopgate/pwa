@@ -13,12 +13,12 @@ import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
 let request;
 
-describe.skip('PipelineRequest', () => {
+describe('PipelineRequest', () => {
   beforeEach(() => {
     request = new PipelineRequest('testPipeline');
   });
 
-  it('should throw is no pipeline name is set', (done) => {
+  it('should throw if no pipeline name is set', (done) => {
     try {
       // eslint-disable-next-line no-new
       new PipelineRequest();
@@ -351,6 +351,20 @@ describe.skip('PipelineRequest', () => {
     it('should return a class instance', () => {
       const value = request.setHandleErrors();
       expect(value instanceof PipelineRequest).toEqual(true);
+    });
+  });
+
+  describe('deprecation', () => {
+    it('setSuppressErrors', () => {
+      request.setSuppressErrors(true);
+      expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
+
+      request.setSuppressErrors(false);
+      expect(request.handleErrors).toEqual(DEFAULT_HANDLE_ERROR);
+    });
+
+    it('setHandledErrors', () => {
+      expect(request.setHandledErrors()).toEqual(request);
     });
   });
 });
