@@ -49,6 +49,7 @@ class Product extends Component {
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
+    product: PropTypes.shape()
   };
 
   /**
@@ -72,6 +73,7 @@ class Product extends Component {
     return {
       cartItemId: this.props.id,
       type: CART_ITEM_TYPE_PRODUCT,
+      product: this.props.product,
     };
   }
 
