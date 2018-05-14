@@ -214,7 +214,7 @@ customEvents.forEach((event) => {
 dataFormatHelpers.purchase = rawData => ({
   id: get(rawData, 'order.number'),
   type: 'product',
-  affiliation: get(rawData, 'shop.name'),
+  affiliation: get(rawData, 'shop.name', ''),
   revenueGross: getUnifiedNumber(get(rawData, 'order.amount.gross')),
   revenueNet: getUnifiedNumber(get(rawData, 'order.amount.net')),
   tax: getUnifiedNumber(get(rawData, 'order.amount.tax')),

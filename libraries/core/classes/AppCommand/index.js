@@ -3,7 +3,10 @@ import { logger, hasSGJavaScriptBridge } from '../../helpers';
 import { isValidVersion, getLibVersion, isVersionAtLeast } from '../../helpers/version';
 import logGroup from '../../helpers/logGroup';
 import DevServerBridge from '../DevServerBridge';
-
+import {
+  GET_PERMISSIONS_COMMAND_NAME,
+  REQUEST_PERMISSIONS_COMMAND_NAME,
+} from '../../constants/AppPermissions';
 /**
  * The app command class.
  */
@@ -22,6 +25,8 @@ class AppCommand {
       'sendPipelineRequest',
       'sendHttpRequest',
       'getWebStorageEntry',
+      GET_PERMISSIONS_COMMAND_NAME,
+      REQUEST_PERMISSIONS_COMMAND_NAME,
     ];
   }
 
@@ -102,7 +107,7 @@ class AppCommand {
    * Dispatches the command to the app.
    * The returned promise will not be rejected for now in error cases to avoid the necessity
    * of refactoring within existing code. But it resolves with FALSE in those cases.
-   * @param {Object} params The command params.
+   * @param {Object} [params] The command params.
    * @return {Promise<boolean>}
    */
   async dispatch(params) {

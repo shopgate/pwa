@@ -88,3 +88,9 @@ export const ERROR_USER = 'ERROR_USER';
 export const REQUEST_URL = 'REQUEST_URL';
 export const RECEIVE_URL = 'RECEIVE_URL';
 export const ERROR_URL = 'ERROR_URL';
+
+/**
+ * ------- ERROR -------
+ */
+export const APP_ERROR = 'APP_ERROR';
+export const PIPELINE_ERROR = 'PIPELINE_ERROR';

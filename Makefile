@@ -1,7 +1,7 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-NPM_PACKAGES = commerce common core tracking tracking-core webcheckout
+NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
 UTILS = eslint-config unit-tests
 THEMES = gmd ios11
@@ -91,9 +91,6 @@ ifneq ($(REPO_VERSION), '')
 		$(eval SUBSTR=$(findstring beta, $(REPO_VERSION)))
 		$(call merge-develop, $(SUBSTR))
 endif
-
-coverage:
-		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
 
 
 # DEFINITIONS
