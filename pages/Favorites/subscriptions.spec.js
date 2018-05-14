@@ -1,7 +1,10 @@
 import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { routeDidLeave } from '@shopgate/pwa-common/streams/history';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import configureStore from 'redux-mock-store';
+import { DISMISS_TOASTS } from '@shopgate/pwa-common/constants/ActionTypes';
 import subscribe from './subscriptions';
+
+const mockedStore = configureStore();
 
 jest.mock('./constants', () => ({
   FAVORITES_SHOW_TOAST_DELAY: 0,
@@ -57,6 +60,15 @@ describe('Favorites subscriptions', () => {
         expect(typeof dispatch.mock.calls[1][0] === 'object').toBe(true);
         done();
       }, 1);
+    });
+  });
+  describe('routeDidLeave', () => {
+    it('dimissToast when route did leave', () => {
+      const didLeave = subscribeMock.mock.calls[1];
+      const store = mockedStore();
+      didLeave[1](store);
+      const actionStack = store.getActions();
+      expect(actionStack[0].type).toEqual(DISMISS_TOASTS);
     });
   });
 });
