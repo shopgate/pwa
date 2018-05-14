@@ -13,7 +13,7 @@ describe('Favorites subscriptions', () => {
   });
   it('should subscribe', () => {
     subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(2);
+    expect(subscribeMock.mock.calls.length).toBe(1);
     [first] = subscribeMock.mock.calls;
     expect(first[0]).toBe(favoritesWillRemoveItem$);
   });
