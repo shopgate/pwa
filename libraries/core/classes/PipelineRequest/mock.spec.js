@@ -22,13 +22,13 @@ describe('MockPipelineRequest', () => {
       // Check if input is set
       expect(firstInstance.input).toEqual({ firstOne: 1 });
 
-      const afterSetHandledErrors = firstInstance
+      const afterSetErrorBlacklist = firstInstance
         .setErrorBlacklist([1, 2])
         .setHandleErrors(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
-      expect(afterSetHandledErrors instanceof FirstClass).toBe(true);
-      expect(afterSetInput.errorBlacklist).toEqual(afterSetHandledErrors.errorBlacklist);
-      expect(afterSetHandledErrors.errorBlacklist).toEqual([1, 2]);
-      expect(afterSetHandledErrors.handleErrors).toBe(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
+      expect(afterSetErrorBlacklist instanceof FirstClass).toBe(true);
+      expect(afterSetInput.errorBlacklist).toEqual(afterSetErrorBlacklist.errorBlacklist);
+      expect(afterSetErrorBlacklist.errorBlacklist).toEqual([1, 2]);
+      expect(afterSetErrorBlacklist.handleErrors).toBe(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
       // Check dispatch
       afterSetInput
         .dispatch()
@@ -74,5 +74,39 @@ describe('MockPipelineRequest', () => {
       .setErrorBlacklist();
     expect(instance.input).toEqual({});
     expect(instance.errorBlacklist).toEqual([]);
+  });
+
+  it('should handle deprecated setSuppressErrors', () => {
+    const PipelineClass = mockedPipelineRequestFactory(() => {});
+    const request = new PipelineClass('test');
+    request.setSuppressErrors(true);
+    expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
+
+    request.setSuppressErrors(false);
+    expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_DEFAULT);
+  });
+
+  describe('setHandleErrors()', () => {
+    it('should throw if input not one of the possible values', (done) => {
+      const PipelineClass = mockedPipelineRequestFactory(() => {});
+      const request = new PipelineClass('test');
+      try {
+        request.setHandleErrors('SOME_WEIRD_THING');
+        done('Did not throw');
+      } catch (e) {
+        done();
+      }
+    });
+
+    it('should throw if if input is not a string', (done) => {
+      const PipelineClass = mockedPipelineRequestFactory(() => {});
+      const request = new PipelineClass('test');
+      try {
+        request.setHandleErrors(['test']);
+        done('Did not throw');
+      } catch (e) {
+        done();
+      }
+    });
   });
 });
