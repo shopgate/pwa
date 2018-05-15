@@ -12,7 +12,7 @@ const getNextId = () => {
 
 /**
  * Creates the dispatched CREATE_TOAST action object.
- * @param {Object} options The modal options.
+ * @param {Object} options The toast options.
  * @return {Object} A Redux action.
  */
 const createToast = options => ({
