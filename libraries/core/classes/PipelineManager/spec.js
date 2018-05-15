@@ -2,6 +2,12 @@ import pipelineManager from '../PipelineManager';
 import PipelineRequest from '../PipelineRequest';
 import { PROCESS_LAST } from '../../constants/ProcessTypes';
 
+const mockedLogGroup = jest.fn();
+// eslint-disable-next-line extra-rules/potential-point-free
+jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
+  mockedLogGroup(...args);
+});
+
 const PIPELINE_NAME = 'TestPipeline';
 let request;
 
@@ -78,6 +84,20 @@ describe('PipelineManager', () => {
       expect(request.reject).toHaveBeenCalledTimes(0);
     });
 
+    it('should ignore when pipeline is set to ignore specific error code', () => {
+      const mock = jest.fn();
+      const req = new PipelineRequest(PIPELINE_NAME).setErrorBlacklist(['MY_ERROR']);
+      pipelineManager.add(req);
+      req.reject = mock;
+      req.error = {
+        code: 'MY_ERROR',
+      };
+
+      pipelineManager.handleError(req.serial);
+
+      expect(req.reject).toHaveBeenCalledTimes(0);
+    });
+
     it('should call the appropriate reject()', () => {
       const mock = jest.fn();
       pipelineManager.add(request);
@@ -139,48 +159,29 @@ describe('PipelineManager', () => {
       const instance = pipelineManager.requests.get(request.serial);
       expect(instance.ongoing).toEqual(1);
     });
-
-    // it('should be processed last', () => {
-    //   const req = new PipelineRequest(PIPELINE_NAME).setResponseProcessed(PROCESS_LAST);
-
-    //   pipelineManager.add(req);
-
-    //   const instance = pipelineManager.requests.get(req.serial);
-    //   instance.ongoing = true;
-
-    //   const isOngoing = pipelineManager.isProccessLastOngoing(req.serial);
-    //   expect(isOngoing).toBeTruthy();
-    // });
-
-    // it('should not be processed last', () => {
-    //   pipelineManager.add(request);
-    //   const isOngoing = pipelineManager.isProccessLastOngoing(request.serial);
-    //   expect(isOngoing).toBeFalsy();
-    // });
-
   });
 
   describe('decrementRetries()', () => {
     it('should reduce the number of retries by 1', () => {
-      const req = new PipelineRequest(PIPELINE_NAME).setRetries(5);
+      const req = new PipelineRequest(PIPELINE_NAME).setRetries(4);
       pipelineManager.add(req);
 
       const { serial } = req;
       const instance = pipelineManager.requests.get(serial);
       pipelineManager.decrementRetries(serial);
 
-      expect(instance.retries).toEqual(4);
+      expect(instance.retries).toEqual(3);
     });
 
     it('should ignore an invalid serial', () => {
-      const req = new PipelineRequest(PIPELINE_NAME).setRetries(5);
+      const req = new PipelineRequest(PIPELINE_NAME).setRetries(4);
       pipelineManager.add(req);
 
       const { serial } = req;
       const instance = pipelineManager.requests.get(serial);
       pipelineManager.decrementRetries('1234');
 
-      expect(instance.retries).toEqual(5);
+      expect(instance.retries).toEqual(4);
     });
   });
 
@@ -213,9 +214,9 @@ describe('PipelineManager', () => {
     });
   });
 
-  describe('isProccessLastOngoing()', () => {
+  describe('isProcessLastOngoing()', () => {
     it('should ignore invalid serial', () => {
-      const isOngoing = pipelineManager.isProccessLastOngoing('1234');
+      const isOngoing = pipelineManager.isProcessLastOngoing('1234');
       expect(isOngoing).toBeFalsy();
     });
 
@@ -227,13 +228,13 @@ describe('PipelineManager', () => {
       const instance = pipelineManager.requests.get(req.serial);
       instance.ongoing = true;
 
-      const isOngoing = pipelineManager.isProccessLastOngoing(req.serial);
+      const isOngoing = pipelineManager.isProcessLastOngoing(req.serial);
       expect(isOngoing).toBeTruthy();
     });
 
     it('should not be processed last', () => {
       pipelineManager.add(request);
-      const isOngoing = pipelineManager.isProccessLastOngoing(request.serial);
+      const isOngoing = pipelineManager.isProcessLastOngoing(request.serial);
       expect(isOngoing).toBeFalsy();
     });
   });

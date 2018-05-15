@@ -181,7 +181,10 @@ class PipelineManager {
       return;
     }
 
-    if (request.errorBlacklist.includes(request.error.code)) return;
+    // Stop if this PipelineRequest was configured to ignore this specific error code.
+    if (request.errorBlacklist.includes(request.error.code)) {
+      return;
+    }
 
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
