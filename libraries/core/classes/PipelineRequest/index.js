@@ -34,6 +34,7 @@ class PipelineRequest extends Request {
     this.timeout = DEFAULT_TIMEOUT;
     this.process = DEFAULT_PROCESSED;
     this.handleErrors = DEFAULT_HANDLE_ERROR;
+    this.errorBlacklist = [];
   }
 
   /**
@@ -77,6 +78,7 @@ class PipelineRequest extends Request {
   setRetries(retries = DEFAULT_RETRIES) {
     if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
     if (retries < 0) throw new Error(`Expected positive integer. Received: '${retries}'`);
+    if (retries >= DEFAULT_MAX_RETRIES) throw new Error(`Max retries exceeded. Received: '${retries}'`);
 
     this.retries = Math.min(retries, DEFAULT_MAX_RETRIES);
     return this;
@@ -89,6 +91,7 @@ class PipelineRequest extends Request {
   setTimeout(timeout = DEFAULT_TIMEOUT) {
     if (typeof timeout !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof timeout}'`);
     if (timeout < 0) throw new Error(`Expected positive integer. Received: '${timeout}'`);
+    if (timeout > DEFAULT_MAX_TIMEOUT) throw new Error(`Max timeout exceeded. Received: '${timeout}'`);
 
     this.timeout = Math.min(timeout, DEFAULT_MAX_TIMEOUT);
     return this;
@@ -109,6 +112,17 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * Sets a blacklist of error codes that should not be handled internally.
+   * Can be used for custom error handling outside.
+   * @param {Object} errors - Array of error codes
+   * @return {PipelineRequest}
+   */
+  setErrorBlacklist(errors = []) {
+    this.errorBlacklist = errors;
+    return this;
+  }
+
+  /**
    * @param {string} handle The handle errors type.
    * @return {PipelineRequest}
    */
@@ -123,11 +137,28 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * Sets a flag to suppress errors.
+   * When true, no EVENT_PIPELINE_ERROR would be triggered.
+   * @param {bool} value Value.
    * @return {PipelineRequest}
    * @deprecated
    */
-  setHandledErrors() {
-    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setHandleErrors()!');
+  setSuppressErrors(value) {
+    logger.warn('Deprecated: setSuppressErrors() will be removed. Use setHandleErrors() instead!');
+    const handle = value ?
+      errorHandleTypes.ERROR_HANDLE_SUPPRESS : errorHandleTypes.ERROR_HANDLE_DEFAULT;
+    this.setHandleErrors(handle);
+    return this;
+  }
+
+  /**
+   * @param {Object} errors - Array of error codes
+   * @return {PipelineRequest}
+   * @deprecated
+   */
+  setHandledErrors(errors) {
+    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setErrorBlacklist()!');
+    this.setErrorBlacklist(errors);
     return this;
   }
 

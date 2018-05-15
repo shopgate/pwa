@@ -182,6 +182,8 @@ class PipelineManager {
       return;
     }
 
+    if (request.errorBlacklist.includes(request.error.code)) return;
+
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
@@ -208,12 +210,13 @@ class PipelineManager {
     this.runDependencies(pipelineName);
 
     const isRetriesOngoing = this.isRetriesOngoing(serial);
-    const isProccessLastOngoing = this.isProccessLastOngoing(serial);
+    const isProcessLastOngoing = this.isProcessLastOngoing(serial);
 
-    if (isRetriesOngoing || isProccessLastOngoing) {
+    if (isRetriesOngoing || isProcessLastOngoing) {
       return;
     }
 
+    pipelineSequence.remove(serial);
     event.removeCallback(callbackName, request.callback);
 
     if (request.error) {
@@ -232,7 +235,7 @@ class PipelineManager {
   }
 
   /**
-   * Handles the result in squentially.
+   * Handles the results sequentially.
    * @param {string} serial The pipeline request serial.
    */
   handleResultSequence = (serial) => {
@@ -391,7 +394,7 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    * @return {boolean}
    */
-  isProccessLastOngoing = (serial) => {
+  isProcessLastOngoing = (serial) => {
     const entry = this.requests.get(serial);
 
     if (!entry) {

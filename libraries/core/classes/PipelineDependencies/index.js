@@ -19,10 +19,14 @@ class PipelineDependencies {
   set(pipelineName, dependencies = []) {
     const newDependencies = [].concat(dependencies);
 
-    if (!this.get(pipelineName)) {
+    if (!dependencies || !dependencies.length) {
+      return;
+    }
+
+    if (!this.has(pipelineName)) {
       this.dependencies[pipelineName] = new Set(newDependencies);
     } else {
-      this.dependencies[pipelineName].add(...newDependencies);
+      newDependencies.forEach(dep => this.dependencies[pipelineName].add(dep));
     }
 
     logGroup(`PipelineDependencies %c${pipelineName}`, this.dependencies, '#FFCD34');
@@ -31,10 +35,23 @@ class PipelineDependencies {
   /**
    * Returns a list of pipeline names that are a dependency of a pipeline request.
    * @param {string} pipelineName The name of the pipeline request.
-   * @return {Array}
+   * @return {Set}
    */
   get(pipelineName) {
-    return this.dependencies[pipelineName];
+    if (!pipelineName) {
+      return new Set();
+    }
+
+    return this.has(pipelineName) ? this.dependencies[pipelineName] : new Set();
+  }
+
+  /**
+   * Checks if a pipeline has dependencies registered
+   * @param {string} pipelineName The pipeline name
+   * @return {boolean}
+   */
+  has(pipelineName) {
+    return this.dependencies.hasOwnProperty(pipelineName);
   }
 }
 
