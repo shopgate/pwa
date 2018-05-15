@@ -13,12 +13,12 @@ import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
 let request;
 
-describe.skip('PipelineRequest', () => {
+describe('PipelineRequest', () => {
   beforeEach(() => {
     request = new PipelineRequest('testPipeline');
   });
 
-  it('should throw is no pipeline name is set', (done) => {
+  it('should throw if no pipeline name is set', (done) => {
     try {
       // eslint-disable-next-line no-new
       new PipelineRequest();
@@ -351,6 +351,30 @@ describe.skip('PipelineRequest', () => {
     it('should return a class instance', () => {
       const value = request.setHandleErrors();
       expect(value instanceof PipelineRequest).toEqual(true);
+    });
+  });
+
+  describe('setHandleErrors()', () => {
+    it('should set a blacklist of error codes to be not handled', () => {
+      const codes = ['ETEST1', 'ETEST2'];
+      request.setErrorBlacklist(codes);
+      expect(request.errorBlacklist).toEqual(codes);
+    });
+  });
+
+  describe('deprecation', () => {
+    it('setSuppressErrors', () => {
+      request.setSuppressErrors(true);
+      expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
+
+      request.setSuppressErrors(false);
+      expect(request.handleErrors).toEqual(DEFAULT_HANDLE_ERROR);
+    });
+
+    it('setHandledErrors', () => {
+      const codes = ['ETEST'];
+      request.setHandledErrors(codes);
+      expect(request.errorBlacklist).toEqual(codes);
     });
   });
 });

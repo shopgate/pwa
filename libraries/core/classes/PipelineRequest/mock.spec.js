@@ -1,4 +1,5 @@
 import { mockedPipelineRequestFactory } from './mock';
+import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
 describe('MockPipelineRequest', () => {
   it(
@@ -12,8 +13,8 @@ describe('MockPipelineRequest', () => {
       const firstInstance = new FirstClass('first');
       expect(firstInstance.name).toBe('first');
       expect(firstInstance.input).toEqual({});
-      expect(firstInstance.handledErrors).toEqual([]);
-      expect(firstInstance.suppressErrors).toBe(false);
+      expect(firstInstance.errorBlacklist).toEqual([]);
+      expect(firstInstance.handleErrors).toBe(errorHandleTypes.ERROR_HANDLE_DEFAULT);
 
       const afterSetInput = firstInstance.setInput({ firstOne: 1 });
       // Check if returns `this`
@@ -21,13 +22,13 @@ describe('MockPipelineRequest', () => {
       // Check if input is set
       expect(firstInstance.input).toEqual({ firstOne: 1 });
 
-      const afterSetHandledErrors = firstInstance
-        .setHandledErrors([1, 2])
-        .setSuppressErrors(true);
-      expect(afterSetHandledErrors instanceof FirstClass).toBe(true);
-      expect(afterSetInput.handledErrors).toEqual(afterSetHandledErrors.handledErrors);
-      expect(afterSetHandledErrors.handledErrors).toEqual([1, 2]);
-      expect(afterSetHandledErrors.suppressErrors).toBe(true);
+      const afterSetErrorBlacklist = firstInstance
+        .setErrorBlacklist([1, 2])
+        .setHandleErrors(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
+      expect(afterSetErrorBlacklist instanceof FirstClass).toBe(true);
+      expect(afterSetInput.errorBlacklist).toEqual(afterSetErrorBlacklist.errorBlacklist);
+      expect(afterSetErrorBlacklist.errorBlacklist).toEqual([1, 2]);
+      expect(afterSetErrorBlacklist.handleErrors).toBe(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
       // Check dispatch
       afterSetInput
         .dispatch()
@@ -70,8 +71,42 @@ describe('MockPipelineRequest', () => {
     const instance = new PipelineClass('third');
     instance
       .setInput()
-      .setHandledErrors();
+      .setErrorBlacklist();
     expect(instance.input).toEqual({});
-    expect(instance.handledErrors).toEqual([]);
+    expect(instance.errorBlacklist).toEqual([]);
+  });
+
+  it('should handle deprecated setSuppressErrors', () => {
+    const PipelineClass = mockedPipelineRequestFactory(() => {});
+    const request = new PipelineClass('test');
+    request.setSuppressErrors(true);
+    expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_SUPPRESS);
+
+    request.setSuppressErrors(false);
+    expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_DEFAULT);
+  });
+
+  describe('setHandleErrors()', () => {
+    it('should throw if input not one of the possible values', (done) => {
+      const PipelineClass = mockedPipelineRequestFactory(() => {});
+      const request = new PipelineClass('test');
+      try {
+        request.setHandleErrors('SOME_WEIRD_THING');
+        done('Did not throw');
+      } catch (e) {
+        done();
+      }
+    });
+
+    it('should throw if if input is not a string', (done) => {
+      const PipelineClass = mockedPipelineRequestFactory(() => {});
+      const request = new PipelineClass('test');
+      try {
+        request.setHandleErrors(['test']);
+        done('Did not throw');
+      } catch (e) {
+        done();
+      }
+    });
   });
 });

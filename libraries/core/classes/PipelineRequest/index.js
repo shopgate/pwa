@@ -34,6 +34,7 @@ class PipelineRequest extends Request {
     this.timeout = DEFAULT_TIMEOUT;
     this.process = DEFAULT_PROCESSED;
     this.handleErrors = DEFAULT_HANDLE_ERROR;
+    this.errorBlacklist = [];
   }
 
   /**
@@ -77,6 +78,7 @@ class PipelineRequest extends Request {
   setRetries(retries = DEFAULT_RETRIES) {
     if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
     if (retries < 0) throw new Error(`Expected positive integer. Received: '${retries}'`);
+    if (retries >= DEFAULT_MAX_RETRIES) throw new Error(`Max retries exceeded. Received: '${retries}'`);
 
     this.retries = Math.min(retries, DEFAULT_MAX_RETRIES);
     return this;
@@ -89,6 +91,7 @@ class PipelineRequest extends Request {
   setTimeout(timeout = DEFAULT_TIMEOUT) {
     if (typeof timeout !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof timeout}'`);
     if (timeout < 0) throw new Error(`Expected positive integer. Received: '${timeout}'`);
+    if (timeout > DEFAULT_MAX_TIMEOUT) throw new Error(`Max timeout exceeded. Received: '${timeout}'`);
 
     this.timeout = Math.min(timeout, DEFAULT_MAX_TIMEOUT);
     return this;
@@ -105,6 +108,17 @@ class PipelineRequest extends Request {
     }
 
     this.process = processed;
+    return this;
+  }
+
+  /**
+   * Sets a blacklist of error codes that should not be handled internally.
+   * Can be used for custom error handling outside.
+   * @param {Object} errors - Array of error codes
+   * @return {PipelineRequest}
+   */
+  setErrorBlacklist(errors = []) {
+    this.errorBlacklist = errors;
     return this;
   }
 
@@ -138,11 +152,13 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * @param {Object} errors - Array of error codes
    * @return {PipelineRequest}
    * @deprecated
    */
-  setHandledErrors() {
-    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setHandleErrors()!');
+  setHandledErrors(errors) {
+    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setErrorBlacklist()!');
+    this.setErrorBlacklist(errors);
     return this;
   }
 
