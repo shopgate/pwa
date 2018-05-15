@@ -34,14 +34,21 @@ describe('<SnackBar />', () => {
     expect(wrapper.find(Container).exists()).toBe(true);
   });
   it('shuld render component with action button', () => {
-    const wrapper = createComponent({
-      toast: [
-        {
-          ...mockedState.toast[0],
-          action: 'click me',
+    const mock = {
+      ...mockedState,
+      toast: {
+        ...mockedState.toast,
+        ...{
+          toasts: [
+            {
+              ...mockedState.toast.toasts[0],
+              action: 'click me',
+            },
+          ],
         },
-      ],
-    });
+      },
+    };
+    const wrapper = createComponent(mock);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Message).exists()).toBe(true);
     expect(wrapper.find(Container).exists()).toBe(true);
