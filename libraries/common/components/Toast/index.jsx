@@ -14,6 +14,7 @@ class Toast extends Component {
     message: PropTypes.func.isRequired,
     removeToast: PropTypes.func.isRequired,
     className: PropTypes.string,
+    dismissed: PropTypes.bool,
     hasNextToast: PropTypes.bool,
     onClose: PropTypes.func,
     toast: PropTypes.shape({
@@ -24,13 +25,16 @@ class Toast extends Component {
       actionOnClick: PropTypes.func,
       replaceable: PropTypes.bool,
     }),
+    unblockToast: PropTypes.func,
   };
 
   static defaultProps = {
     hasNextToast: false,
     className: null,
+    dismissed: false,
     onClose: () => {},
     toast: null,
+    unblockToast: () => {},
   };
 
   /**
@@ -52,6 +56,15 @@ class Toast extends Component {
    */
   componentWillReceiveProps(nextProps) {
     const hasToast = !!nextProps.toast;
+
+    if (nextProps.dismissed) {
+      this.closeDrawer();
+      setTimeout(() => {
+        this.props.unblockToast();
+      }, 0);
+
+      return;
+    }
 
     if (hasToast) {
       this.handleTimeout(nextProps.toast);
@@ -92,6 +105,13 @@ class Toast extends Component {
     }
 
     return toastDidChange;
+  }
+
+  /**
+   * Clean up the timeout.
+   */
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
   }
 
   /**
