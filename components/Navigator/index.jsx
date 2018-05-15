@@ -64,7 +64,7 @@ class Navigator extends Component {
     };
 
     return (
-      <header className={styles.header} role="banner" style={headerStyle}>
+      <header className={styles.header} role="banner" style={headerStyle} data-test-id="Navigator">
         <Grid className={styles.grid} component="section" wrap={false}>
           <NavButton />
           <Grid.Item className={styles.title} component="div" grow={1}>

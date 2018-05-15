@@ -10,7 +10,7 @@ import styles from './style';
  */
 const ImageWidget = ({ settings }) => {
   const content = (
-    <img src={settings.image} alt={settings.alt} className={styles.image} />
+    <img src={settings.image} alt={settings.alt} className={styles.image} data-test-id={`imageWidget: ${settings.link}`} />
   );
 
   // Wrap a Link around the Image if needed.

@@ -23,12 +23,12 @@ const ImageSliderWidget = ({ settings, className }) => (
       if (image.link) {
         return (
           <Link key={key} href={image.link} className={styles.link}>
-            <img src={image.image} alt={image.alt} className={styles.image} />
+            <img src={image.image} alt={image.alt} className={styles.image} data-test-id={`link : ${settings.link}`} />
           </Link>
         );
       }
 
-      return <img key={key} src={image.image} alt={image.alt} className={styles.image} />;
+      return <img key={key} src={image.image} alt={image.alt} className={styles.image} data-test-id="withoutLink" />;
     })}
   </ImageSlider>
 );
