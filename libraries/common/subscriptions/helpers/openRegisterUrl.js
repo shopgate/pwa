@@ -16,7 +16,9 @@ const openRegisterUrl = (url, state) => {
   const redirect = getRedirectLocation(state);
 
   // Split off any incoming params from the url.
-  const originalParams = url.split('?')[1] || null;
+  const urlParts = url.split('?');
+  const originalUrlWithoutParams = urlParts[0] || url;
+  const originalParams = urlParts[1] || null;
 
   // Determine a redirect url, null if missing or if it's the CHECKOUT_PATH.
   const redirectTo = (redirect && redirect.pathname !== CHECKOUT_PATH) ?
@@ -43,7 +45,7 @@ const openRegisterUrl = (url, state) => {
   const query = `${parseObjectToQueryString(params, true)}${prevParams}`;
 
   // Build the new url with the GET params.
-  const newUrl = `${url}${query}`;
+  const newUrl = `${originalUrlWithoutParams}${query}`;
 
   const link = new ParsedLink(newUrl);
   link.open();
