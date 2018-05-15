@@ -8,6 +8,15 @@ jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
   mockedLogGroup(...args);
 });
 
+jest.mock('../AppCommand', () => require.requireActual('../AppCommand/__mocks__/index').default);
+
+const mockedRemove = jest.fn();
+const mockedAdd = jest.fn();
+jest.mock('../Event', () => ({
+  get removeCallback() { return mockedRemove; },
+  get addCallback() { return mockedAdd; },
+}));
+
 const PIPELINE_NAME = 'TestPipeline';
 let request;
 
@@ -18,6 +27,7 @@ describe('PipelineManager', () => {
 
   afterEach(() => {
     pipelineManager.constructor();
+    jest.restoreAllMocks();
   });
 
   describe('add()', () => {
@@ -28,7 +38,7 @@ describe('PipelineManager', () => {
 
     it('should add multiple requests to the queue', () => {
       pipelineManager.add(request);
-      pipelineManager.add(new PipelineRequest(PIPELINE_NAME));
+      pipelineManager.add(new PipelineRequest(`${PIPELINE_NAME}1`));
       expect(pipelineManager.requests.size).toEqual(2);
     });
   });
@@ -46,23 +56,63 @@ describe('PipelineManager', () => {
   });
 
   describe('dispatch()', () => {
+    beforeEach(() => {
+      pipelineManager.constructor();
 
-  });
+    });
 
-  describe('createRequestCallback()', () => {
+    it('it should create callback', () => {
+      pipelineManager.add(request);
+      expect(request.callbackName).toEqual(`pipelineResponse:${request.serial}`);
+      expect(typeof request.callback).toBe('function');
+    });
 
-  });
+    it('should sendRequest', () => {
+      mockedRemove.mockClear();
+      mockedAdd.mockClear();
 
-  describe('hasRunningDependencies()', () => {
+      request.setTimeout(1);
+      pipelineManager.add(request);
+      const { serial } = request.serial;
+      request.callback(null, jest.fn(), jest.fn());
 
-  });
+      const requestCheck = pipelineManager.requests.get(serial);
+      expect(mockedAdd).toHaveBeenCalledTimes(1);
+      expect(mockedRemove).toHaveBeenCalledTimes(2);
+      expect(requestCheck).toBeFalsy();
+    });
 
-  describe('handleTimeout()', () => {
+    it('should set up a timeout handler - fail', (done) => {
+      mockedRemove.mockClear();
+      mockedAdd.mockClear();
+      request.reject = jest.fn();
 
-  });
+      request.setTimeout(1);
+      pipelineManager.add(request).then(() => {
+        done('should not succedd');
+      }).catch(() => {
+        expect(mockedAdd).toHaveBeenCalled();
+        expect(mockedRemove).toHaveBeenCalled();
+        expect(pipelineManager.requests.size).toBe(0);
+        done();
+      });
 
-  describe('runDependencies()', () => {
+      setTimeout(() => {
+        request.callback({code: 'Fail', message: 'Fail'}, jest.fn(), jest.fn());
+      }, 4);
+    });
 
+    it('should handle sequential', () => {
+      request.setTimeout(1);
+      request.process = 'PROCESS_SEQUENTIAL';
+      request.reject = jest.fn();
+      request.resolve = jest.fn();
+      pipelineManager.add(request);
+
+      expect(pipelineManager.requests.size).toBe(1);
+      pipelineManager.handleResultSequence(request.serial);
+      expect(pipelineManager.requests.size).toBe(0);
+    });
   });
 
   describe('handleError()', () => {
@@ -110,18 +160,6 @@ describe('PipelineManager', () => {
 
       expect(request.reject).toHaveBeenCalledTimes(1);
     });
-  });
-
-  describe('handleResult()', () => {
-
-  });
-
-  describe('handleResultSequence()', () => {
-
-  });
-
-  describe('sendRequest()', () => {
-
   });
 
   describe('incrementOngoing()', () => {

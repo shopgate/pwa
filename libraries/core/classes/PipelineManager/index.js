@@ -110,11 +110,6 @@ class PipelineManager {
     const dependencies = pipelineDependencies.get(pipelineName);
     let found = 0;
 
-    // Check if there are any dependencies at all.
-    if (!dependencies || !dependencies.length) {
-      return false;
-    }
-
     dependencies.forEach((dependency) => {
       // Check if the dependency exists and is ongoing.
       if (this.requests.has(dependency) && this.requests.get(dependency).ongoing) {
@@ -170,32 +165,33 @@ class PipelineManager {
   /**
    * Handles a pipeline error.
    * @param {string} serial The pipeline request serial.
-   * @param {string} [message=null] A custom error message.
+   * @param {string} [customMessage=null] A custom error message.
    */
-  handleError = (serial, message = null) => {
+  handleError = (serial, customMessage = null) => {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
+    const { code, message } = request.error || {};
     // Stop if this error code was set to be suppressed.
-    if (this.suppressedErrors.includes(request.error.code)) {
+    if (this.suppressedErrors.includes(code)) {
       return;
     }
 
     // Stop if this PipelineRequest was configured to ignore this specific error code.
-    if (request.errorBlacklist.includes(request.error.code)) {
+    if (request.errorBlacklist.includes(code)) {
       return;
     }
 
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
-        code: message ? ETIMEOUT : request.error.code,
+        code: customMessage ? ETIMEOUT : code,
         context: pipelineName,
-        message: message || request.error.message,
+        message: customMessage || message,
       });
     }
 
-    request.reject(new Error(request.error.message));
+    request.reject(new Error(message));
   }
 
   /**
