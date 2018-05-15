@@ -169,6 +169,8 @@ class PipelineManager {
 
     if (this.suppressedErrors.includes(request.error.code)) return;
 
+    if (request.errorBlacklist.includes(request.error.code)) return;
+
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,

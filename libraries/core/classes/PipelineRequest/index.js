@@ -34,6 +34,7 @@ class PipelineRequest extends Request {
     this.timeout = DEFAULT_TIMEOUT;
     this.process = DEFAULT_PROCESSED;
     this.handleErrors = DEFAULT_HANDLE_ERROR;
+    this.errorBlacklist = [];
   }
 
   /**
@@ -111,6 +112,17 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * Sets a blacklist of error codes that should not be handled internally.
+   * Can be used for custom error handling outside.
+   * @param {Object} errors - Array of error codes
+   * @return {PipelineRequest}
+   */
+  setErrorBlacklist(errors = []) {
+    this.errorBlacklist = errors;
+    return this;
+  }
+
+  /**
    * @param {string} handle The handle errors type.
    * @return {PipelineRequest}
    */
@@ -140,11 +152,13 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * @param {Object} errors - Array of error codes
    * @return {PipelineRequest}
    * @deprecated
    */
-  setHandledErrors() {
-    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setHandleErrors()!');
+  setHandledErrors(errors) {
+    logger.warn('Deprecated: setHandledErrors() will be removed in favor of setErrorBlacklist()!');
+    this.setErrorBlacklist(errors);
     return this;
   }
 

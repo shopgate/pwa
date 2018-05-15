@@ -354,6 +354,14 @@ describe('PipelineRequest', () => {
     });
   });
 
+  describe('setHandleErrors()', () => {
+    it('should set a blacklist of error codes to be not handled', () => {
+      const codes = ['ETEST1', 'ETEST2'];
+      request.setErrorBlacklist(codes);
+      expect(request.errorBlacklist).toEqual(codes);
+    });
+  });
+
   describe('deprecation', () => {
     it('setSuppressErrors', () => {
       request.setSuppressErrors(true);
@@ -364,7 +372,9 @@ describe('PipelineRequest', () => {
     });
 
     it('setHandledErrors', () => {
-      expect(request.setHandledErrors()).toEqual(request);
+      const codes = ['ETEST'];
+      request.setHandledErrors(codes);
+      expect(request.errorBlacklist).toEqual(codes);
     });
   });
 });
