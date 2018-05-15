@@ -72,7 +72,6 @@ class PipelineManager {
       }
 
       this.createRequestCallback(serial, resolve, reject);
-      this.handleTimeout(serial, reject);
       this.sendRequest(serial);
     });
   }
@@ -265,6 +264,8 @@ class PipelineManager {
     if (!entry) {
       return;
     }
+
+    this.handleTimeout(serial);
 
     if (entry.request.process === processTypes.PROCESS_SEQUENTIAL) {
       pipelineSequence.set(serial);
