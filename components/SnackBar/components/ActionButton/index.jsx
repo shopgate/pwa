@@ -10,7 +10,7 @@ import styles from './style';
  */
 const ActionButton = props => (
   <button
-    className={styles.actionButton}
+    className={styles}
     onClick={props.onClick}
   >
     <I18n.Text string={props.text} />
