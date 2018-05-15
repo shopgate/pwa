@@ -149,20 +149,6 @@ class PipelineRequest extends Request {
   }
 
   /**
-   * Sets a flag to suppress errors.
-   * When true, no EVENT_PIPELINE_ERROR would be triggered.
-   * @param {bool} value Value.
-   * @return {PipelineRequest}
-   * @deprecated
-   */
-  setSuppressErrors(value) {
-    this.setHandleErrors(value ?
-      errorHandleTypes.ERROR_HANDLE_SUPPRESS : errorHandleTypes.ERROR_HANDLE_DEFAULT);
-    logger.warn('Deprecated: setSuppressErrors() will be removed in favor of setHandleErrors()!');
-    return this;
-  }
-
-  /**
    * Dispatches the pipeline.
    * @return {Promise}
    */
