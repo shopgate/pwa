@@ -20,11 +20,10 @@ export default function favorites(subscribe) {
       dispatch(createToast({
         action: 'common.undo',
         actionOnClick: addFavorites(action.productId, true),
+        duration: 2500,
         message: 'favorites.removed',
         replaceable: true,
-        duration: 6000,
       }));
     }, FAVORITES_SHOW_TOAST_DELAY);
   });
 }
-
