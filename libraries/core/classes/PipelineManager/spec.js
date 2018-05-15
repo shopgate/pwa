@@ -2,6 +2,12 @@ import pipelineManager from '../PipelineManager';
 import PipelineRequest from '../PipelineRequest';
 import { PROCESS_LAST } from '../../constants/ProcessTypes';
 
+const mockedLogGroup = jest.fn();
+// eslint-disable-next-line extra-rules/potential-point-free
+jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
+  mockedLogGroup(...args);
+});
+
 const PIPELINE_NAME = 'TestPipeline';
 let request;
 
