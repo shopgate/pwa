@@ -1,0 +1,240 @@
+import pipelineManager from '../PipelineManager';
+import PipelineRequest from '../PipelineRequest';
+import { PROCESS_LAST } from '../../constants/ProcessTypes';
+
+const PIPELINE_NAME = 'TestPipeline';
+let request;
+
+describe('PipelineManager', () => {
+  beforeEach(() => {
+    request = new PipelineRequest(PIPELINE_NAME);
+  });
+
+  afterEach(() => {
+    pipelineManager.constructor();
+  });
+
+  describe('add()', () => {
+    it('should add a request to the queue', () => {
+      pipelineManager.add(request);
+      expect(pipelineManager.requests.size).toEqual(1);
+    });
+
+    it('should add multiple requests to the queue', () => {
+      pipelineManager.add(request);
+      pipelineManager.add(new PipelineRequest(PIPELINE_NAME));
+      expect(pipelineManager.requests.size).toEqual(2);
+    });
+  });
+
+  describe('addSuppressedErrors()', () => {
+    it('should store an error code to suppress', () => {
+      pipelineManager.addSuppressedErrors(1);
+      expect(pipelineManager.suppressedErrors).toHaveLength(1);
+    });
+
+    it('should store multiple error codes to suppress', () => {
+      pipelineManager.addSuppressedErrors([1, 2]);
+      expect(pipelineManager.suppressedErrors).toHaveLength(2);
+    });
+  });
+
+  describe('dispatch()', () => {
+
+  });
+
+  describe('createRequestCallback()', () => {
+
+  });
+
+  describe('hasRunningDependencies()', () => {
+
+  });
+
+  describe('handleTimeout()', () => {
+
+  });
+
+  describe('runDependencies()', () => {
+
+  });
+
+  describe('handleError()', () => {
+    // test to stop when suppressed errors are there
+    // check error manager for an entry
+    // test if reject is called
+
+    it('should ignore when error code should be suppressed', () => {
+      const mock = jest.fn();
+      pipelineManager.add(request);
+      pipelineManager.addSuppressedErrors('MY_ERROR');
+      request.reject = mock;
+      request.error = {
+        code: 'MY_ERROR',
+      };
+
+      pipelineManager.handleError(request.serial);
+
+      expect(request.reject).toHaveBeenCalledTimes(0);
+    });
+
+    it('should call the appropriate reject()', () => {
+      const mock = jest.fn();
+      pipelineManager.add(request);
+      request.reject = mock;
+      request.error = {
+        code: 'MY_ERROR',
+      };
+
+      pipelineManager.handleError(request.serial);
+
+      expect(request.reject).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('handleResult()', () => {
+
+  });
+
+  describe('handleResultSequence()', () => {
+
+  });
+
+  describe('sendRequest()', () => {
+
+  });
+
+  describe('incrementOngoing()', () => {
+    it('should increment the ongoing flag', () => {
+      pipelineManager.add(request);
+      pipelineManager.incrementOngoing(request.serial);
+
+      const instance = pipelineManager.requests.get(request.serial);
+      expect(instance.ongoing).toEqual(2);
+    });
+
+    it('should not increment the ongoing flag', () => {
+      pipelineManager.add(request);
+      pipelineManager.incrementOngoing('1234');
+
+      const instance = pipelineManager.requests.get(request.serial);
+      expect(instance.ongoing).toEqual(1);
+    });
+
+  });
+
+  describe('decrementOngoing()', () => {
+    it('should decrement the ongoing flag', () => {
+      pipelineManager.add(request);
+      pipelineManager.decrementOngoing(request.serial);
+
+      const instance = pipelineManager.requests.get(request.serial);
+      expect(instance.ongoing).toEqual(0);
+    });
+
+    it('should not decrement the ongoing flag', () => {
+      pipelineManager.add(request);
+      pipelineManager.decrementOngoing('1234');
+
+      const instance = pipelineManager.requests.get(request.serial);
+      expect(instance.ongoing).toEqual(1);
+    });
+
+    // it('should be processed last', () => {
+    //   const req = new PipelineRequest(PIPELINE_NAME).setResponseProcessed(PROCESS_LAST);
+
+    //   pipelineManager.add(req);
+
+    //   const instance = pipelineManager.requests.get(req.serial);
+    //   instance.ongoing = true;
+
+    //   const isOngoing = pipelineManager.isProccessLastOngoing(req.serial);
+    //   expect(isOngoing).toBeTruthy();
+    // });
+
+    // it('should not be processed last', () => {
+    //   pipelineManager.add(request);
+    //   const isOngoing = pipelineManager.isProccessLastOngoing(request.serial);
+    //   expect(isOngoing).toBeFalsy();
+    // });
+
+  });
+
+  describe('decrementRetries()', () => {
+    it('should reduce the number of retries by 1', () => {
+      const req = new PipelineRequest(PIPELINE_NAME).setRetries(5);
+      pipelineManager.add(req);
+
+      const { serial } = req;
+      const instance = pipelineManager.requests.get(serial);
+      pipelineManager.decrementRetries(serial);
+
+      expect(instance.retries).toEqual(4);
+    });
+
+    it('should ignore an invalid serial', () => {
+      const req = new PipelineRequest(PIPELINE_NAME).setRetries(5);
+      pipelineManager.add(req);
+
+      const { serial } = req;
+      const instance = pipelineManager.requests.get(serial);
+      pipelineManager.decrementRetries('1234');
+
+      expect(instance.retries).toEqual(5);
+    });
+  });
+
+  describe('getPipelineNameBySerial()', () => {
+    it('should return the correct pipeline name', () => {
+      pipelineManager.add(request);
+
+      const { serial } = request;
+      const name = pipelineManager.getPipelineNameBySerial(serial);
+
+      expect(name).toEqual(`${PIPELINE_NAME}.v1`);
+    });
+
+    it('should return empty name when serial is invalid', () => {
+      const name = pipelineManager.getPipelineNameBySerial('1234');
+      expect(name).toEqual('');
+    });
+  });
+
+  describe('isRetriesOngoing()', () => {
+    it('should ignore invalid serial', () => {
+      const isOngoing = pipelineManager.isRetriesOngoing('1234');
+      expect(isOngoing).toBeFalsy();
+    });
+
+    it('should detect an ongoing request', () => {
+      pipelineManager.add(request);
+      const isOngoing = pipelineManager.isRetriesOngoing(request.serial);
+      expect(isOngoing).toBeTruthy();
+    });
+  });
+
+  describe('isProccessLastOngoing()', () => {
+    it('should ignore invalid serial', () => {
+      const isOngoing = pipelineManager.isProccessLastOngoing('1234');
+      expect(isOngoing).toBeFalsy();
+    });
+
+    it('should be processed last', () => {
+      const req = new PipelineRequest(PIPELINE_NAME).setResponseProcessed(PROCESS_LAST);
+
+      pipelineManager.add(req);
+
+      const instance = pipelineManager.requests.get(req.serial);
+      instance.ongoing = true;
+
+      const isOngoing = pipelineManager.isProccessLastOngoing(req.serial);
+      expect(isOngoing).toBeTruthy();
+    });
+
+    it('should not be processed last', () => {
+      pipelineManager.add(request);
+      const isOngoing = pipelineManager.isProccessLastOngoing(request.serial);
+      expect(isOngoing).toBeFalsy();
+    });
+  });
+});
