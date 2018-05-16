@@ -7,22 +7,27 @@ import pipelineSequence from '../PipelineSequence';
 import * as errorSources from '../ErrorManager/constants';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
+import { ETIMEOUT } from '../../constants/Pipeline';
 import logGroup from '../../helpers/logGroup';
 
 /**
- * Manages the pipeline's requests and responses.
+ * The PipelineManager class.
+ * Manages requests, retries responses and timeouts of PipelineRequest instances.
  */
 class PipelineManager {
   /**
    * Constructor.
    */
   constructor() {
+    // The open requests at any given time.
     this.requests = new Map();
+
+    // The error codes that should be suppressed.
     this.suppressedErrors = [];
   }
 
   /**
-   * Add a new pipeline request instance.
+   * Adds a new PipelineRequest instance.
    * @param {PipelineRequest} request The pipeline request instance.
    * @return {Promise}
    */
@@ -30,7 +35,7 @@ class PipelineManager {
     request.createSerial(`${request.name}.v${request.version}`);
     request.createEventCallbackName('pipelineResponse');
 
-    // Store the request.
+    // Store the request by serial to be accessible later.
     this.requests.set(request.serial, {
       request,
       retries: request.retries,
@@ -43,7 +48,7 @@ class PipelineManager {
 
   /**
    * Adds error code(s) to the suppressed collection.
-   * @param {Array|string} code The code(s) to suppress errors for.
+   * @param {Array|string} code The code(s) of the errors to suppress.
    */
   addSuppressedErrors(code) {
     const codes = [].concat(code);
@@ -55,18 +60,18 @@ class PipelineManager {
   }
 
   /**
-   * Dispatches the pipeline request.
+   * Dispatches a PipelineRequest instance.
    * @param {string} serial The pipeline request serial.
    * @return {Promise}
    */
   dispatch(serial) {
     return new Promise((resolve, reject) => {
+      // Stop if this pipeline has any ongoing dependencies.
       if (this.hasRunningDependencies(serial)) {
         return;
       }
 
       this.createRequestCallback(serial, resolve, reject);
-      this.handleTimeout(serial, reject);
       this.sendRequest(serial);
     });
   }
@@ -81,6 +86,7 @@ class PipelineManager {
     const { request } = this.requests.get(serial);
 
     request.callback = (error, serialResult, output) => {
+      // Map some values to the request instance to be accessible later.
       request.error = error;
       request.output = output;
       request.resolve = resolve;
@@ -104,17 +110,15 @@ class PipelineManager {
     const dependencies = pipelineDependencies.get(pipelineName);
     let found = 0;
 
-    if (!dependencies || !dependencies.length) return false;
-
     dependencies.forEach((dependency) => {
+      // Check if the dependency exists and is ongoing.
       if (this.requests.has(dependency) && this.requests.get(dependency).ongoing) {
         found += 1;
         pipelineBuffer.set(dependency, pipelineName);
       }
     });
 
-    if (!found) return false;
-    return true;
+    return found > 0;
   }
 
   /**
@@ -161,28 +165,37 @@ class PipelineManager {
   /**
    * Handles a pipeline error.
    * @param {string} serial The pipeline request serial.
-   * @param {string} [message=null] A custom error message.
+   * @param {string} [customMessage=null] A custom error message.
    */
-  handleError = (serial, message = null) => {
+  handleError = (serial, customMessage = null) => {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
-    if (this.suppressedErrors.includes(request.error.code)) return;
+    const { code, message } = request.error || {};
+    // Stop if this error code was set to be suppressed.
+    if (this.suppressedErrors.includes(code)) {
+      return;
+    }
+
+    // Stop if this PipelineRequest was configured to ignore this specific error code.
+    if (request.errorBlacklist.includes(code)) {
+      return;
+    }
 
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
-        code: message ? 'ETIMEOUT' : request.error.code,
+        code: customMessage ? ETIMEOUT : code,
         context: pipelineName,
-        message: message || request.error.message,
+        message: customMessage || message,
       });
     }
 
-    request.reject(new Error(request.error.message));
+    request.reject(new Error(message));
   }
 
   /**
-   * Handles the result of a pipeline request.
+   * Handles the result of a dispatched PipelineRequest.
    * @param {string} serial The pipeline request serial.
    */
   handleResult = (serial) => {
@@ -250,6 +263,8 @@ class PipelineManager {
     if (!entry) {
       return;
     }
+
+    this.handleTimeout(serial);
 
     if (entry.request.process === processTypes.PROCESS_SEQUENTIAL) {
       pipelineSequence.set(serial);
@@ -319,7 +334,6 @@ class PipelineManager {
    */
   decrementRetries = (serial) => {
     const entry = this.requests.get(serial);
-
     if (!entry) {
       return;
     }
@@ -330,14 +344,17 @@ class PipelineManager {
   }
 
   /**
-   * Returns the pipeline request name.
+   * Returns the PipelineRequest name.
    * @param {string} serial The pipeline request serial.
    * @return {string}
    */
   getPipelineNameBySerial = (serial) => {
     const entry = this.requests.get(serial);
 
-    if (!entry) return '';
+    if (!entry) {
+      return '';
+    }
+
     return `${entry.request.name}.v${entry.request.version}`;
   }
 
@@ -373,7 +390,7 @@ class PipelineManager {
   }
 
   /**
-   * Checks whether only the last should be processed..
+   * Checks whether only the last should be processed.
    * @param {string} serial The pipeline request serial.
    * @return {boolean}
    */
