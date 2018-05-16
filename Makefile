@@ -92,9 +92,6 @@ ifneq ($(REPO_VERSION), '')
 		$(call merge-develop, $(SUBSTR))
 endif
 
-coverage:
-		$(foreach package, $(NPM_PACKAGES), $(call run-libraries-coverage, $(package)))
-
 
 # DEFINITIONS
 
