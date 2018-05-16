@@ -4,14 +4,14 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import { ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
-import { MockedAddToCartButton } from 'Components/AddToCartButton/mock';
+import { MockedAddToCartButton } from '@shopgate/pwa-ui-shared/AddToCartButton/mock';
 import {
   mockedState,
   mockedVariantState,
 } from './mock';
 
 const mockedButton = MockedAddToCartButton;
-jest.mock('Components/AddToCartButton', () => mockedButton);
+jest.mock('@shopgate/pwa-ui-shared/AddToCartButton', () => mockedButton);
 
 /**
  * Mock add to cart action

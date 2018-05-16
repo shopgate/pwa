@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Image from '@shopgate/pwa-common/components/Image';
-import Placeholder from 'Components/icons/PlaceholderIcon';
+import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
+import colors from 'Styles/colors';
 import styles from './style';
 
 /**
@@ -113,7 +114,11 @@ class ProductImage extends Component {
 
     // Return the actual image.
     return (
-      <Image {...this.props} onError={this.imageLoadingFailed} />
+      <Image
+        {...this.props}
+        backgroundColor={colors.light}
+        onError={this.imageLoadingFailed}
+      />
     );
   }
 }

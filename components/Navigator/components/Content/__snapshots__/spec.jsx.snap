@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Content /> should render the logo 1`] = `
-<div>
+<React.Fragment>
   <Logo />
   <Connect(Search)
     active={false}
   />
-</div>
+</React.Fragment>
 `;
 
 exports[`<Content /> should render the title 1`] = `
-<div>
+<React.Fragment>
   <Connect(Title)
     onClick={[Function]}
   />
   <Connect(Search)
     active={false}
   />
-</div>
+</React.Fragment>
 `;

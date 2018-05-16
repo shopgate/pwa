@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CartIcon from 'Components/icons/CartIcon';
-import Ripple from 'Components/Ripple';
+import CartIcon from '@shopgate/pwa-ui-shared/icons/CartIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import variables from 'Styles/variables';
 import CartButtonBadge from './components/CartButtonBadge';
 import styles from './style';

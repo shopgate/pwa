@@ -7,10 +7,10 @@ import {
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import Button from '@shopgate/pwa-common/components/Button';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import ArrowIcon from 'Components/icons/ArrowIcon';
-import BurgerIcon from 'Components/icons/BurgerIcon';
-import CrossIcon from 'Components/icons/CrossIcon';
-import Ripple from 'Components/Ripple';
+import ArrowIcon from '@shopgate/pwa-ui-shared/icons/ArrowIcon';
+import BurgerIcon from '@shopgate/pwa-ui-shared/icons/BurgerIcon';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import connect from './connector';
 import {
   NAV_STATE_INDEX,

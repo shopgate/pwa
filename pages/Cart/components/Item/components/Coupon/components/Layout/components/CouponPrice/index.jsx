@@ -4,7 +4,7 @@ import {
   COUPON_TYPE_FIXED,
   COUPON_TYPE_PERCENTAGE,
 } from '@shopgate/pwa-common-commerce/cart/constants';
-import Price from 'Components/Price';
+import Price from '@shopgate/pwa-ui-shared/Price';
 import styles from './style';
 
 /**

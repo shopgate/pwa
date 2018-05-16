@@ -8,11 +8,11 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ProductImage from 'Components/ProductImage';
-import DiscountBadge from 'Components/DiscountBadge';
-import Price from 'Components/Price';
-import PriceStriked from 'Components/PriceStriked';
-import PriceInfo from 'Components/PriceInfo';
-import FavoritesButton from 'Components/FavoritesButton';
+import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import Price from '@shopgate/pwa-ui-shared/Price';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import styles from './style';
 import connect from './connector';
 

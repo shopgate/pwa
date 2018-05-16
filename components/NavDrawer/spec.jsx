@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
+import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
 import Item from './components/Item';
 import headerStyles from './components/Header/style';
@@ -21,7 +22,7 @@ jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
-jest.mock('Components/ClientInformation/connector', () => (obj) => {
+jest.mock('@shopgate/pwa-ui-shared/ClientInformation/connector', () => (obj) => {
   const newObj = obj;
 
   newObj.defaultProps = {
@@ -35,6 +36,7 @@ let mockedHasFavorites = true;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   componentsConfig: { portals: {} },
   get hasFavorites() { return mockedHasFavorites; },
+  themeConfig: mockedConfig,
 }));
 describe('<NavDrawer />', () => {
   let toggleNavDrawerMock;

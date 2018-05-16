@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import Image from '@shopgate/pwa-common/components/Image';
 import styles from './style';
 
 /**
@@ -9,19 +8,15 @@ import styles from './style';
  * @param {Object} props Props of the component
  * @returns {JSX}
  */
-const ImageWidget = (props) => {
-  let content = (
-    <Image
-      ratio={props.ratio}
-      src={props.settings.image}
-      alt={props.settings.alt}
-    />
+const ImageWidget = ({ settings }) => {
+  const content = (
+    <img src={settings.image} alt={settings.alt} className={styles.image} />
   );
 
   // Wrap a Link around the Image if needed.
-  if (props.settings.link) {
-    content = (
-      <Link href={props.settings.link} className={styles}>
+  if (settings.link) {
+    return (
+      <Link href={settings.link} className={styles.link}>
         {content}
       </Link>
     );

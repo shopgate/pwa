@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Ripple from 'Components/Ripple';
-import FilterIcon from 'Components/icons/FilterIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
+import FilterIcon from '@shopgate/pwa-ui-shared/icons/FilterIcon';
 import connect from './connector';
 import styles from './style';
 

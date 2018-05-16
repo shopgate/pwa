@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ZoomPanContainer from '@shopgate/pwa-common/components/ZoomPanContainer';
 import { objectWithoutProps } from '@shopgate/pwa-common/helpers/data';
-import ImageSlider from 'Components/ImageSlider';
+import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 
 /**
  * A slider that is capable of zooming and panning its children.

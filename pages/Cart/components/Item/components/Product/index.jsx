@@ -7,8 +7,8 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import variables from 'Styles/variables';
-import CardListItem from 'Components/CardList/components/Item';
-import MessageBar from 'Components/MessageBar';
+import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
+import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
@@ -49,6 +49,7 @@ class Product extends Component {
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
+    product: PropTypes.shape()
   };
 
   /**
@@ -72,6 +73,7 @@ class Product extends Component {
     return {
       cartItemId: this.props.id,
       type: CART_ITEM_TYPE_PRODUCT,
+      product: this.props.product,
     };
   }
 

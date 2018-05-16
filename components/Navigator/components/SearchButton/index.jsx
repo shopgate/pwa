@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import MagnifierIcon from 'Components/icons/MagnifierIcon';
-import Ripple from 'Components/Ripple';
+import MagnifierIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import styles from './style';
 
 /**

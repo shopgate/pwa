@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import ActionButton from 'Components/ActionButton';
+import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import connect from './connector';
 
 /**

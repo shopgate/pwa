@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChipLayout from 'Components/ChipLayout';
-import Chip from 'Components/Chip';
+import Chip from '@shopgate/pwa-ui-shared/Chip';
 
 /**
  * The Filter List Item Chips component.

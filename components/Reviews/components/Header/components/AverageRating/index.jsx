@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingStars from 'Components/RatingStars';
+import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
 
