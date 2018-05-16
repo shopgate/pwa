@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
-import SearchIcon from 'Components/icons/MagnifierIcon';
+import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
 import SearchSuggestions from './components/Suggestions';
 import connect from './connector';
 import styles from './style';

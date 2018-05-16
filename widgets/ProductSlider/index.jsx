@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slider from '@shopgate/pwa-common/components/Slider';
-import Card from 'Components/Card';
+import Card from '@shopgate/pwa-ui-shared/Card';
 import ProductCard from 'Components/ProductCard';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import connect from './connector';

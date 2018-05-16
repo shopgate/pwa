@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import CheckIcon from 'Components/icons/CheckIcon';
+import CheckIcon from '@shopgate/pwa-ui-shared/icons/CheckIcon';
 import Count from './components/Count';
 import styles, { duration, durationShort, transition } from './style';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import RippleButton from 'Components/RippleButton';
+import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import Icon from './components/Icon';
 import connect from './connector';
 import styles from './style';

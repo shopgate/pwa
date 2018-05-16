@@ -4,7 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import * as marketPortals from '@shopgate/pwa-common-commerce/market/constants/Portals';
 import View from 'Components/View';
-import ClientInformation from 'Components/ClientInformation';
+import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
 import Headline from 'Components/Headline';
 import List from 'Components/List';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
@@ -52,23 +52,32 @@ class More extends Component {
     return (
       <View>
         {/* USER MENU */}
-        <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={{
+        <Portal
+          name={portals.USER_MENU_CONTAINER_BEFORE}
+          props={{
+            ...props,
+            user,
+            handleLogout: logout,
+          }}
+        />
+        <Portal
+          name={portals.USER_MENU_CONTAINER}
+          props={{
           ...props,
-          user,
-          handleLogout: logout,
-        }} />
-        <Portal name={portals.USER_MENU_CONTAINER} props={{
-          ...props,
-          user,
-          handleLogout: logout,
-        }}>
+            user,
+            handleLogout: logout,
+          }}
+        >
           <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
         </Portal>
-        <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={{
-          ...props,
-          user,
-          handleLogout: logout,
-        }} />
+        <Portal
+          name={portals.USER_MENU_CONTAINER_AFTER}
+          props={{
+            ...props,
+            user,
+            handleLogout: logout,
+          }}
+        />
 
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
 
@@ -118,7 +127,7 @@ class More extends Component {
           {/* IMPRINT */}
           <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} props={props} />
           <Portal name={portals.NAV_MENU_IMPRINT} props={props}>
-            <List.Item title="navigation.contact" link={`${PAGE_PATH}/imprint`} />
+            <List.Item title="navigation.about" link={`${PAGE_PATH}/imprint`} />
           </Portal>
           <Portal name={portals.NAV_MENU_IMPRINT_AFTER} props={props} />
 

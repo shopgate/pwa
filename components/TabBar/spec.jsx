@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {
@@ -72,7 +73,8 @@ const mockOpen = jest.fn();
 
 jest.mock('@shopgate/pwa-common/components/Portal', () => mockedPortal);
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  hasFavorites: true,
+  get hasFavorites() { return true; },
+  themeConfig: mockedConfig,
 }));
 jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
   class {
