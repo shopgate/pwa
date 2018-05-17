@@ -1,4 +1,4 @@
-import {logger} from '../../helpers';
+import { logger } from '../../helpers';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 
 /**
@@ -35,6 +35,19 @@ class MockedPipelineRequest {
    */
   setInput(mockedInput = {}) {
     this.input = mockedInput;
+    return this;
+  }
+
+  /**
+   * @param {number} retries The number of retries this pipeline request should perform.
+   * @return {PipelineRequest}
+   */
+  setRetries(retries = 3) {
+    if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
+    if (retries < 0) throw new Error(`Expected positive integer. Received: '${retries}'`);
+    if (retries >= 5) throw new Error(`Max retries exceeded. Received: '${retries}'`);
+
+    this.retries = Math.min(retries, 5);
     return this;
   }
 
