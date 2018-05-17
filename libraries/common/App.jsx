@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import AppCommand from '@shopgate/pwa-core/classes/AppCommand';
 import initSubscribers from './subscriptions';
 import {
   appDidStart,
@@ -67,6 +68,11 @@ class App extends PureComponent {
    */
   componentDidMount() {
     this.store.dispatch(appDidStart());
+
+    const command = new AppCommand();
+    command
+      .setCommandName('hideSplashScreen')
+      .dispatch();
 
     // Start synchronization of history and redux store.
     syncHistoryWithStore(history, this.store, this.historyStack);
