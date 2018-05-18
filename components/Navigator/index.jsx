@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
 import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import colors from 'Styles/colors';
 import connect from './connector';
@@ -77,8 +79,10 @@ class Navigator extends Component {
               <ApplyFilterButton />
             </div>
           }
+          <Portal name="navigator.cart.before" />
           <CartButton />
         </Grid>
+        <Portal name="navigator.progress-bar.before" />
         <ProgressBar isVisible={this.props.showLoadingBar} />
       </header>
     );
