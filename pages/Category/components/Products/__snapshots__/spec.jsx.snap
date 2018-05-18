@@ -30,12 +30,14 @@ exports[`<Products> should render the grid 1`] = `
           <Grid
             className="css-ifln79"
             component="ul"
+            data-test-id="productGrid"
             itemScope={true}
             itemType="http://schema.org/ItemList"
             wrap={true}
           >
             <ul
               className="css-ifln79 css-h7r55a css-u7q1iu"
+              data-test-id="productGrid"
               itemScope={true}
               itemType="http://schema.org/ItemList"
             />
