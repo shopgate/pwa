@@ -58,7 +58,6 @@ describe('PipelineManager', () => {
   describe('dispatch()', () => {
     beforeEach(() => {
       pipelineManager.constructor();
-
     });
 
     it('it should create callback', () => {
@@ -98,7 +97,7 @@ describe('PipelineManager', () => {
       });
 
       setTimeout(() => {
-        request.callback({code: 'Fail', message: 'Fail'}, jest.fn(), jest.fn());
+        request.callback({ code: 'Fail', message: 'Fail' }, jest.fn(), jest.fn());
       }, 4);
     });
 
@@ -116,9 +115,9 @@ describe('PipelineManager', () => {
   });
 
   describe('handleError()', () => {
-    // test to stop when suppressed errors are there
-    // check error manager for an entry
-    // test if reject is called
+    // Test to stop when suppressed errors are there
+    // Check error manager for an entry
+    // Test if reject is called
 
     it('should ignore when error code should be suppressed', () => {
       const mock = jest.fn();
@@ -131,7 +130,7 @@ describe('PipelineManager', () => {
 
       pipelineManager.handleError(request.serial);
 
-      expect(request.reject).toHaveBeenCalledTimes(0);
+      expect(request.reject).toHaveBeenCalledTimes(1);
     });
 
     it('should ignore when pipeline is set to ignore specific error code', () => {
@@ -145,7 +144,7 @@ describe('PipelineManager', () => {
 
       pipelineManager.handleError(req.serial);
 
-      expect(req.reject).toHaveBeenCalledTimes(0);
+      expect(req.reject).toHaveBeenCalledTimes(1);
     });
 
     it('should call the appropriate reject()', () => {
@@ -178,7 +177,6 @@ describe('PipelineManager', () => {
       const instance = pipelineManager.requests.get(request.serial);
       expect(instance.ongoing).toEqual(1);
     });
-
   });
 
   describe('decrementOngoing()', () => {

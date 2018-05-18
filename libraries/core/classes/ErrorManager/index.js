@@ -23,7 +23,9 @@ class ErrorManager {
 
   /**
    * Gets a message by the given id.
-   * @param {string} id The id to lookup.
+   * @param {string} code The error code.
+   * @param {string} context The error context.
+   * @param {string} source The error source.
    * @returns {Object|null}
    */
   getMessage(code, context, source) {
@@ -96,16 +98,17 @@ class ErrorManager {
   /**
    * Calls dispatch() as an interval.
    */
-  startTimer = () => {
-    this.stopTimer();
+  startTimer = async () => {
+    await this.stopTimer();
     this.timer = setInterval(this.dispatch, 500);
   }
 
   /**
    * Clears the dispatch interval.
    */
-  stopTimer = () => {
-    clearInterval(this.timer);
+  stopTimer = async () => {
+    await clearInterval(this.timer);
+    this.timer = null;
   }
 
   /**

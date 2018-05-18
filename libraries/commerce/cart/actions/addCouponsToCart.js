@@ -17,6 +17,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_COUPONS);
   request.setInput({ couponCodes: couponIds })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
+    .setRetries(0)
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
