@@ -25,21 +25,5 @@ describe('Navigator', () => {
       </Provider>
     ));
     expect(component.find('header').exists()).toBe(true);
-    const propsUpdate = {
-      backgroundColor: 'greenish',
-      textColor: 'blueish',
-      showTitle: true,
-      filterOpen: true,
-      navigatorEnabled: false,
-      showLoadingBar: true,
-    };
-    const compInstance = component.find('Navigator').at(0).instance();
-    const { props } = compInstance;
-    Object.keys(propsUpdate).forEach((key) => {
-      expect(compInstance.shouldComponentUpdate({
-        ...props,
-        [key]: propsUpdate[key],
-      })).toBe(true);
-    });
   });
 });
