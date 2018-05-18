@@ -172,6 +172,9 @@ class PipelineManager {
     const pipelineName = this.getPipelineNameBySerial(serial);
 
     const { code, message } = request.error || {};
+
+    request.reject(new Error(message));
+
     // Stop if this error code was set to be suppressed.
     if (this.suppressedErrors.includes(code)) {
       return;
@@ -190,8 +193,6 @@ class PipelineManager {
         message: customMessage || message,
       });
     }
-
-    request.reject(new Error(message));
   }
 
   /**
@@ -217,17 +218,21 @@ class PipelineManager {
     pipelineSequence.remove(serial);
     event.removeCallback(callbackName, request.callback);
 
+    let logColor = '#307bc2';
+
     if (request.error) {
+      logColor = '#ff0000';
       this.handleError(serial);
     } else {
-      logGroup(`PipelineResponse %c${pipelineName}`, {
-        input,
-        error,
-        output,
-        serial,
-      }, '#307bc2');
       request.resolve(request.output);
     }
+
+    logGroup(`PipelineResponse %c${pipelineName}`, {
+      input,
+      error,
+      output,
+      serial,
+    }, logColor);
 
     this.requests.delete(serial);
   }
