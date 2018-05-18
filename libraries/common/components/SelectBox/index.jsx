@@ -20,6 +20,7 @@ class SelectBox extends Component {
     duration: PropTypes.number,
     handleSelectionUpdate: PropTypes.func,
     initialValue: PropTypes.string,
+    testId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -29,6 +30,7 @@ class SelectBox extends Component {
     defaultText: 'filter.sort.default',
     handleSelectionUpdate: () => {},
     initialValue: null,
+    testId: null,
   };
 
   /**
@@ -131,7 +133,7 @@ class SelectBox extends Component {
     ].join(' ');
 
     return (
-      <div className={this.props.className}>
+      <div className={this.props.className} data-test-id={this.props.testId}>
         <button className={button} onClick={this.handleOpenList}>
           <span className={selection}>
             <I18n.Text string={buttonLabel} />
