@@ -62,9 +62,7 @@ class CartButton extends Component {
     const style = {};
 
     if (this.props.visible && this.props.cartProductCount > 0) {
-      // TODO:
-      //style.minWidth = variables.navigator.height;
-      style.minWidth = '56px';
+      style.minWidth = variables.navigator.height;
       style.transform = 'translate3d(0, 0, 0)';
       style.transitionDelay = '600ms';
 

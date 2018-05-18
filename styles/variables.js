@@ -21,6 +21,9 @@ export default {
     titleTopGap: 36,
     buttonVerticalGap: 24,
   },
+  navbar: {
+    height: 56,
+  },
   navigator: {
     height: 56,
     shadow: materialShadow,
