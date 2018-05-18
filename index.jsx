@@ -13,4 +13,5 @@ import { render } from 'react-dom';
 import onload from '@shopgate/pwa-core/commands/onload';
 import Pages from './pages';
 
-render(<Pages />, document.getElementById('root'), onload);
+onload();
+render(<Pages />, document.getElementById('root'));
