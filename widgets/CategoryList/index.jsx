@@ -54,7 +54,7 @@ class CategoryListWidget extends Component {
     }
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container} data-test-id="categoryList">
         {(settings.headline) ? <h3 className={styles.headline}>{settings.headline}</h3> : null}
         <List>
           {items.map((item) => {

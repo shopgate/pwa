@@ -9,7 +9,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Layout = ({ children }) => (
-  <Grid wrap className={styles} itemScope itemType="http://schema.org/ItemList">
+  <Grid wrap className={styles} itemScope itemType="http://schema.org/ItemList" data-test-id="productGrid">
     {children}
   </Grid>
 );

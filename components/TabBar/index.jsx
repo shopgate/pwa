@@ -46,9 +46,11 @@ const TabBar = ({
   }
 
   return (
-    <Grid className={styles}>
-      {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-    </Grid>
+    <div data-test-id="tabBar">
+      <Grid className={styles}>
+        {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+      </Grid>
+    </div>
   );
 };
 

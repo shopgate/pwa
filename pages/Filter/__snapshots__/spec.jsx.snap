@@ -643,6 +643,7 @@ exports[`<Filter> page should render 1`] = `
                                 <div
                                   aria-hidden={true}
                                   className="css-c6ki83 "
+                                  data-test-id="link: /filter/manufacturer"
                                   onClick={[Function]}
                                   role="link"
                                 >
@@ -735,6 +736,7 @@ exports[`<Filter> page should render 1`] = `
                                 <div
                                   aria-hidden={true}
                                   className="css-c6ki83 "
+                                  data-test-id="link: /filter/color"
                                   onClick={[Function]}
                                   role="link"
                                 >
@@ -822,6 +824,7 @@ exports[`<Filter> page should render 1`] = `
                                 <div
                                   aria-hidden={true}
                                   className="css-c6ki83 "
+                                  data-test-id="link: /filter/length"
                                   onClick={[Function]}
                                   role="link"
                                 >
@@ -934,6 +937,7 @@ exports[`<Filter> page should render 1`] = `
                                 <div
                                   aria-hidden={true}
                                   className="css-c6ki83 "
+                                  data-test-id="link: /filter/size"
                                   onClick={[Function]}
                                   role="link"
                                 >
@@ -1026,6 +1030,7 @@ exports[`<Filter> page should render 1`] = `
                                 <div
                                   aria-hidden={true}
                                   className="css-c6ki83 "
+                                  data-test-id="link: /filter/title"
                                   onClick={[Function]}
                                   role="link"
                                 >
@@ -1113,6 +1118,7 @@ exports[`<Filter> page should render 1`] = `
                                 <div
                                   aria-hidden={true}
                                   className="css-c6ki83 "
+                                  data-test-id="link: /filter/width"
                                   onClick={[Function]}
                                   role="link"
                                 >
