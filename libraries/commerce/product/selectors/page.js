@@ -1,8 +1,6 @@
-import { createSelector } from 'reselect';
 import {
   getCurrentBaseProduct,
   getCurrentProduct,
-  isProductOrderable,
 } from './product';
 import {
   hasCurrentProductVariants,
@@ -52,37 +50,35 @@ export const isProductPageLoading = (state) => {
  * @param {Object} state The application state.
  * @return {boolean}
  */
-export const isProductPageOrderable = createSelector(
-  state => state,
-  getCurrentBaseProduct,
-  hasCurrentProductVariants,
-  (state, baseProduct, hasVariants) => {
-    // Check if the base product has variants.
-    if (hasVariants) {
-      const variantsPresent = !!getCurrentBaseProductVariants(state);
+export const isProductPageOrderable = (state) => {
+  const baseProduct = getCurrentBaseProduct(state);
 
-      // Check if the variant list is already present.
-      if (!variantsPresent) {
-        return false;
-      }
+  // Check if the base product is already present.
+  if (!baseProduct) {
+    return false;
+  }
 
-      const variantSelected = !!getCurrentProductVariantId(state);
+  const hasVariants = hasCurrentProductVariants(state);
 
-      // Check if one of the variants is currently selected by the user.
-      if (!variantSelected) {
-        return false;
-      }
+  // Check if the base product has variants.
+  if (hasVariants) {
+    const variantsPresent = !!getCurrentBaseProductVariants(state);
 
-      const variantData = getCurrentProduct(state);
+    // Check if the variant list is already present.
+    if (!variantsPresent) {
+      return false;
+    }
 
-      if (!variantData) {
-        return false;
-      }
+    const variantSelected = !!getCurrentProductVariantId(state);
 
+    // Check if one of the variants is currently selected by the user.
+    if (variantSelected) {
       // Check if the product data of the selected variant is already present.
-      return !!variantData;
+      return !!getCurrentProduct(state);
     }
 
     return false;
   }
-);
+
+  return true;
+};

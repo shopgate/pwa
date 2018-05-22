@@ -319,7 +319,7 @@ export const isProductOrderable = createSelector(
   getProductStockInformation,
   (stockInfo) => {
     if (!stockInfo) {
-      return false;
+      return true;
     }
 
     return stockInfo.orderable;
