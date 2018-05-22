@@ -11,7 +11,8 @@
     "precommit": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
-    "cover": "jest --coverage"
+    "cover": "jest --coverage",
+    "e2e": "cypress open -P ./e2e"
   },
   "lint-staged": {
     "concurrent": false,
@@ -26,7 +27,6 @@
     "@shopgate/pwa-common": "^5.3.0-beta.14",
     "@shopgate/pwa-common-commerce": "^5.3.0-beta.14",
     "@shopgate/pwa-core": "^5.3.0-beta.14",
-    "@shopgate/pwa-e2e-test": "^5.3.0-beta.14",
     "@shopgate/pwa-tracking": "^5.3.0-beta.14",
     "@shopgate/pwa-ui-material": "^5.3.0-beta.14",
     "@shopgate/pwa-ui-shared": "^5.3.0-beta.14",
@@ -71,8 +71,10 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "^5.3.0-beta.14",
+    "@shopgate/pwa-e2e-test": "^5.3.0-beta.14",
     "@shopgate/pwa-unit-test": "^5.3.0-beta.14",
     "coveralls": "^3.0.0",
+    "cypress": "^2.1.0",
     "eslint-import-resolver-babel-module": "4.0.0",
     "eslint-plugin-import": "^2.7.0",
     "jest": "^22.4.2",
