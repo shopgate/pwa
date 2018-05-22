@@ -32,6 +32,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       <button
         aria-label="favorites.add"
         className="css-orm6vn "
+        data-test-id="button"
         onClick={[Function]}
       >
         <Ripple
@@ -115,6 +116,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       <button
         aria-label="favorites.remove"
         className="css-orm6vn "
+        data-test-id="button"
         onClick={[Function]}
       >
         <Ripple
