@@ -82,7 +82,6 @@ class Cart extends Component {
    */
   render() {
     const { cartItems, isLoading, messages } = this.props;
-    console.warn(cartItems);
     const hasItems = cartItems.length > 0;
     const hasMessages = messages.length > 0;
 
