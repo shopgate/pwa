@@ -53,7 +53,12 @@ class Navigator extends PureComponent {
       <Fragment>
         <Portal name={portals.NAV_BAR_BEFORE} />
         <Portal name={portals.NAV_BAR}>
-          <header className={styles.header} role="banner" style={headerStyle} data-test-id="Navigator">
+          <header
+            className={styles.header}
+            role="banner"
+            style={headerStyle}
+            data-test-id="Navigator"
+          >
             <Portal name={portals.NAV_BAR_NAVIGATOR_BEFORE} />
             <Portal name={portals.NAV_BAR_NAVIGATOR}>
               <Grid className={styles.grid} component="section" wrap={false}>
