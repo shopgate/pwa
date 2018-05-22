@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { getCurrentProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getCurrentProductId,
+  isProductOrderable,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isCurrentProductOnFavoriteList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
 import {
@@ -17,6 +20,7 @@ const mapStateToProps = state => ({
   productId: getCurrentProductId(state),
   isLoading: isProductPageLoading(state),
   isOrderable: isProductPageOrderable(state),
+  isDisabled: !isProductOrderable(state),
 });
 
 /**
