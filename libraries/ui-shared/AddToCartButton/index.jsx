@@ -12,6 +12,7 @@ import styles from './style';
 class AddToCartButton extends Component {
   static propTypes = {
     handleAddToCart: PropTypes.func.isRequired,
+    isDisabled: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isOrderable: PropTypes.bool.isRequired,
     buttonSize: PropTypes.number,
@@ -49,8 +50,8 @@ class AddToCartButton extends Component {
    * - Show cart icon again.
    */
   handleClick = () => {
-    // Ignore clicks when checkmark or loading spinner is shown.
-    if (this.state.showCheckmark || this.props.isLoading) {
+    // Ignore clicks when checkmark or loading spinner is shown or the button is disabled.
+    if (this.state.showCheckmark || this.props.isLoading || this.props.isDisabled) {
       return;
     }
 
@@ -115,7 +116,9 @@ class AddToCartButton extends Component {
       ...iconOpacity,
     } : null;
 
-    if (this.state.showCheckmark) {
+    if (this.props.isDisabled) {
+      buttonStyle = styles.buttonDisabled;
+    } else if (this.state.showCheckmark) {
       /**
        * When checkmark should be shown, we start the spring transition
        * Tick icon springs in, and cart icon springs out.
@@ -158,9 +161,11 @@ class AddToCartButton extends Component {
       };
     }
 
-    const className = this.props.noShadow ?
-      styles.buttonWrapperNoShadow(this.props.buttonSize, this.props.iconSize)
-      : styles.buttonWrapper(this.props.buttonSize, this.props.iconSize);
+    let className = styles.buttonWrapper(this.props.buttonSize, this.props.iconSize);
+
+    if (this.props.noShadow) {
+      className = styles.buttonWrapperNoShadow(this.props.buttonSize, this.props.iconSize);
+    }
 
     return (
       <button
