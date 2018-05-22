@@ -113,7 +113,7 @@ const buttonSuccess = css({
 }).toString();
 
 /**
- * Styling that is applied to the button when checkmark is shown.
+ * Styling that is applied to the button when it is disabled.
  */
 const buttonDisabled = css({
   background: themeConfig.colors.shade5,
