@@ -9,7 +9,9 @@
     "cover": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
     "precommit": "lint-staged",
-    "release": "make release"
+    "release": "make release",
+    "e2e:gmd": "make e2e-gmd",
+    "e2e:ios11": "make e2e-ios11"
   },
   "pre-commit": [
     "precommit"

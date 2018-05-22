@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import removeToast from '../../actions/toast/removeToast';
-import { getToast, hasNextToast } from '../../selectors/toast';
+import { getToast, hasNextToast, isDismissed } from '../../selectors/toast';
+import unblockToast from '../../action-creators/toast/unblockToast';
 
 /**
  * Maps state to props.
@@ -8,6 +9,7 @@ import { getToast, hasNextToast } from '../../selectors/toast';
  * @returns {Object}
  */
 const mapStateToProps = state => ({
+  dismissed: isDismissed(state),
   toast: getToast(state),
   hasNextToast: hasNextToast(state),
 });
@@ -21,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
   removeToast: (id) => {
     dispatch(removeToast(id));
   },
+  unblockToast: () => dispatch(unblockToast()),
   // Used for dispatching prepared action stored in a toast message.
   dispatchAction: action => dispatch(action),
 });

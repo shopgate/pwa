@@ -36,6 +36,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
   if (update) {
     const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_UPDATE_PRODUCT_REVIEW)
       .setInput(pipelineData)
+      .setRetries(0)
       .dispatch();
     request
       .then(() => {
@@ -51,6 +52,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
   }
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW)
+    .setRetries(0)
     .setHandledErrors([EEXIST])
     .setInput(pipelineData)
     .dispatch();
