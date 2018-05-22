@@ -13,6 +13,7 @@ class AddToCartBar extends Component {
   static propTypes = {
     cartProductCount: PropTypes.number,
     handleAddToCart: PropTypes.func,
+    isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
     isOrderable: PropTypes.bool,
   };
@@ -20,6 +21,7 @@ class AddToCartBar extends Component {
   static defaultProps = {
     cartProductCount: null,
     handleAddToCart: () => {},
+    isDisabled: false,
     isLoading: false,
     isOrderable: true,
   };
@@ -52,11 +54,14 @@ class AddToCartBar extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    return (this.state.itemCount !== nextState.itemCount);
+    return (
+      (this.state.itemCount !== nextState.itemCount) ||
+      (nextProps.isDisabled !== this.props.isDisabled)
+    );
   }
 
   handleAddToCart = () => {
-    if (this.props.isLoading) {
+    if (this.props.isLoading || this.props.isDisabled) {
       return;
     }
 
@@ -85,7 +90,11 @@ class AddToCartBar extends Component {
             <CartItemsCount itemCount={itemCount} />
             <AddMoreButton handleAddToCart={this.handleAddToCart} />
           </div>
-          <AddToCartButton itemCount={itemCount} handleAddToCart={this.handleAddToCart} />
+          <AddToCartButton
+            isDisabled={this.props.isDisabled}
+            itemCount={itemCount}
+            handleAddToCart={this.handleAddToCart}
+          />
         </div>
       </div>,
       <div className={styles.dummy} key="dummy" />,
