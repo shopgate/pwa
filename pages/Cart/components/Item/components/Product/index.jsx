@@ -7,8 +7,8 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import variables from 'Styles/variables';
-import CardListItem from 'Components/CardList/components/Item';
-import MessageBar from 'Components/MessageBar';
+import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
+import MessageBar from '@shopgate/pwa-ui-shared/MessageBar';
 import {
   cartItemTransitionDuration as duration,
   getCartItemTransitionStyle as getTransitionStyle,
@@ -34,21 +34,23 @@ class Product extends Component {
     product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
     deleteProduct: PropTypes.func,
+    isIos: PropTypes.bool,
     onToggleFocus: PropTypes.func,
     updateProduct: PropTypes.func,
   };
 
   static defaultProps = {
+    isIos: false,
     deleteProduct: () => {},
-    updateProduct: () => {},
     onToggleFocus: () => {},
+    updateProduct: () => {},
   };
 
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
-
-  }
+    product: PropTypes.shape()
+  };
 
   /**
    * Constructor.
@@ -71,6 +73,7 @@ class Product extends Component {
     return {
       cartItemId: this.props.id,
       type: CART_ITEM_TYPE_PRODUCT,
+      product: this.props.product,
     };
   }
 
@@ -87,11 +90,13 @@ class Product extends Component {
    * @param {boolean} [isEnabled=true] Tells if the edit mode is enabled, or disabled.
    */
   toggleEditMode = (isEnabled = true) => {
-    if (isEnabled) {
+    if (!this.props.isIos && isEnabled) {
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
        * Therefore the input has to be scrolled into the viewport again. Since between the focus and
        * the keyboard apearance some time ticks away, the execution of the scroll code is delayed.
+       *
+       * This should not happen on iOS devices, since their webviews behave different.
        */
       setTimeout(() => {
         const yOffset = -(window.innerHeight / 2)

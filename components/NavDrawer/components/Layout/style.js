@@ -17,6 +17,7 @@ const content = css({
   color: colors.dark,
   background: colors.light,
   WebkitOverflowScrolling: 'touch',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
 }).toString();
 
 const drawerAnimation = {

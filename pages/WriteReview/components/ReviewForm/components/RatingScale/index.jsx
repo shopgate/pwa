@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import RatingStars from 'Components/RatingStars';
-import ErrorText from 'Components/TextField/components/ErrorText';
+import ErrorText from '@shopgate/pwa-ui-shared/TextField/components/ErrorText';
+import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import styles from './style';
 
 /**

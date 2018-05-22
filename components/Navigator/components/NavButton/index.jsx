@@ -7,10 +7,10 @@ import {
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import Button from '@shopgate/pwa-common/components/Button';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import ArrowIcon from 'Components/icons/ArrowIcon';
-import BurgerIcon from 'Components/icons/BurgerIcon';
-import CrossIcon from 'Components/icons/CrossIcon';
-import Ripple from 'Components/Ripple';
+import ArrowIcon from '@shopgate/pwa-ui-shared/icons/ArrowIcon';
+import BurgerIcon from '@shopgate/pwa-ui-shared/icons/BurgerIcon';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
+import Ripple from '@shopgate/pwa-ui-shared/Ripple';
 import connect from './connector';
 import {
   NAV_STATE_INDEX,
@@ -46,7 +46,6 @@ class NavButton extends Component {
     filterAttributeOpen: PropTypes.bool.isRequired,
     filterOpen: PropTypes.bool.isRequired,
     loginOpen: PropTypes.bool.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     path: PropTypes.string.isRequired,
     toggleNavDrawer: PropTypes.func.isRequired,
     goBackHistory: PropTypes.func,
@@ -94,7 +93,8 @@ class NavButton extends Component {
       nextProps.showIconShadow !== this.props.showIconShadow ||
       nextProps.filterOpen !== this.props.filterOpen ||
       nextProps.filterAttributeOpen !== this.props.filterAttributeOpen ||
-      nextProps.loginOpen !== this.props.loginOpen
+      nextProps.loginOpen !== this.props.loginOpen ||
+      nextProps.path !== this.props.path
     );
   }
 
@@ -102,13 +102,16 @@ class NavButton extends Component {
    * Handles a click on the icon.
    */
   handleClick = () => {
-    if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
+    if (
+      this.props.path !== INDEX_PATH &&
+      (this.props.filterOpen || this.state.type === NAV_STATE_BACK)
+    ) {
       this.props.goBackHistory();
       return;
     }
 
     this.props.toggleNavDrawer(true);
-  }
+  };
 
   /**
    * Returns the icon for the button.
@@ -119,7 +122,10 @@ class NavButton extends Component {
       return <CrossIcon />;
     }
 
-    if (this.state.type === NAV_STATE_BACK || this.props.filterAttributeOpen) {
+    if (
+      this.props.path !== INDEX_PATH &&
+      (this.state.type === NAV_STATE_BACK || this.props.filterAttributeOpen)
+    ) {
       return <ArrowIcon shadow={this.props.showIconShadow} />;
     }
 

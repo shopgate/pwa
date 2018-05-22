@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import '@shopgate/pwa-common/styles/reset';
-import 'Styles/fonts';
+import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
@@ -23,27 +22,16 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ORDERS_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
-import Dialog from 'Components/Dialog';
+import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
-import Page from './Page';
-import Category from './Category';
-import Filter from './Filter';
-import FilterAttribute from './FilterAttribute';
-import Product from './Product';
-import ProductGallery from './ProductGallery';
-import Cart from './Cart';
-import Favorites from './Favorites';
-import Search from './Search';
-import Login from './Login';
-import Orders from './Orders';
-import Reviews from './Reviews';
-import WriteReview from './WriteReview';
+import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
@@ -53,43 +41,47 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  */
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers}>
-    <Portal name={APP_GLOBALS} />
-    <Viewport>
-      <ModalContainer component={Dialog} />
-      <SnackBar />
-      <Route path={`${INDEX_PATH}`} component={Page} />
-      <Route path={`${PAGE_PATH}/:pageId`} component={Page} />
-      <Route path={`${CATEGORY_PATH}`} component={Category} />
-      <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={Category} />
-      <Route path={`${FILTER_PATH}`} component={Filter} />
-      <Route path={`${FILTER_PATH}/:attribute`} component={FilterAttribute} />
-      <Route path={`${ITEM_PATH}/:productId`} component={Product} />
-      <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={ProductGallery} />
-      <Route path={`${ITEM_PATH}/:productId/reviews/`} component={Reviews} />
-      <Route path={`${CART_PATH}`} component={Cart} />
-      {
-        appConfig.hasFavorites
-        && <Route path={`${FAVORITES_PATH}`} component={Favorites} />
-      }
-      <Route path={`${SEARCH_PATH}`} component={Search} />
-      <Route path={`${LOGIN_PATH}`} component={Login} />
-      <Route path={`${REGISTER_PATH}`} />
+    <AppContext.Provider value={{ ...appConfig }}>
+      <ThemeContext.Provider value={{}}>
+        <Portal name={APP_GLOBALS} />
+        <Viewport>
+          <ModalContainer component={Dialog} />
+          <SnackBar />
+          <Route path={`${INDEX_PATH}`} component={routes.Page} />
+          <Route path={`${PAGE_PATH}/:pageId`} component={routes.Page} />
+          <Route path={`${CATEGORY_PATH}`} component={routes.Category} />
+          <Route path={`${CATEGORY_PATH}/:categoryId?/:selection?`} component={routes.Category} />
+          <Route path={`${FILTER_PATH}`} component={routes.Filter} />
+          <Route path={`${FILTER_PATH}/:attribute`} component={routes.FilterAttribute} />
+          <Route path={`${ITEM_PATH}/:productId`} component={routes.Product} />
+          <Route path={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
+          <Route path={`${ITEM_PATH}/:productId/reviews/`} component={routes.Reviews} />
+          <Route path={`${CART_PATH}`} component={routes.Cart} />
+          {
+            appConfig.hasFavorites
+            && <Route path={`${FAVORITES_PATH}`} component={routes.Favorites} />
+          }
+          <Route path={`${SEARCH_PATH}`} component={routes.Search} />
+          <Route path={`${LOGIN_PATH}`} component={routes.Login} />
+          <Route path={`${REGISTER_PATH}`} />
 
-      <Portal name={APP_ROUTES} props={{ View }} />
+          <AuthRoutes to={`${LOGIN_PATH}`}>
+            <Route path={`${CHECKOUT_PATH}`} />
+            <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
+            <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
+          </AuthRoutes>
+          
+          <Portal name={APP_ROUTES} props={{ View }} />
 
-      <AuthRoutes to={`${LOGIN_PATH}`}>
-        <Route path={`${CHECKOUT_PATH}`} />
-        <Route path={`${ORDERS_PATH}`} component={Orders} />
-        <Route path={`${ITEM_PATH}/:productId/write_review/`} component={WriteReview} />
-      </AuthRoutes>
-
-      {isDev && (
-        <Helmet>
-          <link href={devFontsUrl} rel="stylesheet" />
-        </Helmet>
-      )}
-    </Viewport>
+          {isDev && (
+            <Helmet>
+              <link href={devFontsUrl} rel="stylesheet" />
+            </Helmet>
+          )}
+        </Viewport>
+      </ThemeContext.Provider>
+    </AppContext.Provider>
   </App>
 );
 
-export default Pages;
+export default hot(module)(Pages);

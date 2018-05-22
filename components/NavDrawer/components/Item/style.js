@@ -4,6 +4,9 @@ import variables from 'Styles/variables';
 
 const container = css({
   position: 'relative',
+  ':first-child': {
+    paddingTop: 'var(--safe-area-inset-top)',
+  },
 }).toString();
 
 const grid = css({

@@ -17,9 +17,11 @@ const input = css({
   border: `1px ${colors.shade7} solid`,
   padding: `0 ${variables.gap.big}px`,
   background: colors.light,
-  lineHeight: '46px',
+  lineHeight: '19px',
+  height: '46px',
   borderRadius: '2px',
   outline: 'none',
+  WebkitAppearance: 'none',
 }).toString();
 
 const overlay = css({

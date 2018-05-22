@@ -1,4 +1,4 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import getProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/getProductsByQuery';
 import { getProductsResult } from '../selectors';
 

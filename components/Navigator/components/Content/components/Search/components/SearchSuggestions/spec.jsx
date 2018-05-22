@@ -9,6 +9,7 @@ describe('<SearchSuggestions />', () => {
   const defaultProps = {
     getSearchSuggestions: () => {},
     fetchSearchSuggestions: () => {},
+    phrase: 'mysearchphrase',
     resetActiveSearchSuggestions: () => {},
     setSearchPhrase: () => {},
     submitSearch: () => {},
@@ -19,12 +20,14 @@ describe('<SearchSuggestions />', () => {
   beforeEach(() => {
   });
 
-  it('should render without props', () => {
-    const wrapper = shallow(<SearchSuggestions
-      {...defaultProps}
-      searchPhrase="foo"
-      isFecthing={false}
-    />);
+  it('should render with default props', () => {
+    const wrapper = shallow((
+      <SearchSuggestions
+        {...defaultProps}
+        searchPhrase="foo"
+        isFetching={false}
+      />
+    ));
 
     expect(wrapper).toMatchSnapshot();
   });

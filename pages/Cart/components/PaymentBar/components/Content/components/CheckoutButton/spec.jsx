@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RippleButton from 'Components/RippleButton';
+import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import CheckoutButton from './index';
 
 // Mock the history connector

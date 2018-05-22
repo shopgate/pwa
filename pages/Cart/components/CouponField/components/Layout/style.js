@@ -27,6 +27,8 @@ const input = css({
   top: 0,
   outline: 0,
   bottom: 6,
+  padding: 0,
+  left: 0,
 }).toString();
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';

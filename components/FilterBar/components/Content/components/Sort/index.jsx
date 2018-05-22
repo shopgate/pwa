@@ -6,7 +6,7 @@ import {
   SORT_PRICE_DESC,
 } from '@shopgate/pwa-common/constants/DisplayOptions';
 import SelectBox from '@shopgate/pwa-common/components/SelectBox';
-import ArrowDropIcon from 'Components/icons/ArrowDropIcon';
+import ArrowDropIcon from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import Item from './components/Item';
 import connect from './connector';
 import styles from './style';

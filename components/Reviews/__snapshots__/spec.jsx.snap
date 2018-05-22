@@ -547,12 +547,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="css-20ad7t "
+                              className="css-dh0pju "
                               disabled={false}
                               onClick={[Function]}
                             >
                               <button
-                                className="css-20ad7t  css-1rn65c0"
+                                className="css-dh0pju  css-1rn65c0"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
@@ -2514,12 +2514,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-20ad7t "
+                          className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
                         >
                           <button
-                            className="css-20ad7t  css-1rn65c0"
+                            className="css-dh0pju  css-1rn65c0"
                             data-test-id="Button"
                             disabled={false}
                             onClick={[Function]}
@@ -3041,12 +3041,12 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             wrapContent={false}
                           >
                             <Button
-                              className="css-20ad7t "
+                              className="css-dh0pju "
                               disabled={false}
                               onClick={[Function]}
                             >
                               <button
-                                className="css-20ad7t  css-1rn65c0"
+                                className="css-dh0pju  css-1rn65c0"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
@@ -4355,12 +4355,12 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="css-20ad7t "
+                              className="css-dh0pju "
                               disabled={false}
                               onClick={[Function]}
                             >
                               <button
-                                className="css-20ad7t  css-1rn65c0"
+                                className="css-dh0pju  css-1rn65c0"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}

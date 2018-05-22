@@ -16,6 +16,7 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
   <Connect(CTAButtons)>
     <CTAButtons
       handleAddToCart={[Function]}
+      isDisabled={false}
       isFavorite={true}
       isLoading={true}
       isOrderable={false}
@@ -48,6 +49,7 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
           buttonSize={56}
           handleAddToCart={[Function]}
           iconSize={24}
+          isDisabled={false}
           isLoading={true}
           isOrderable={false}
         >

@@ -11,7 +11,7 @@ const fullSize = {
 const container = css({
   ...fullSize,
   background: colors.dark,
-  position: 'absolute',
+  position: 'fixed',
   top: 0,
   bottom: 0,
   left: 0,
@@ -20,7 +20,7 @@ const container = css({
 
 const navButton = css({
   position: 'fixed',
-  top: 0,
+  top: 'var(--safe-area-inset-top)',
   left: 0,
   width: variables.navigator.height,
   color: colors.light,
@@ -40,6 +40,16 @@ const slide = css({
 const sliderStyles = {
   container: css({
     height: '100%',
+  }).toString(),
+  indicator: css({
+    position: 'absolute',
+    bottom: [
+      '2px',
+      'calc(2px + var(--safe-area-inset-bottom))',
+    ],
+    left: '50%',
+    transform: 'translateX(-50%)',
+    zIndex: 10,
   }).toString(),
 };
 

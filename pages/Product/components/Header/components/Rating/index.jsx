@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import RatingStars from 'Components/RatingStars';
+import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
 import connect from './connector';
