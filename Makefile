@@ -104,6 +104,11 @@ ifneq ($(REPO_VERSION), '')
 		$(call merge-develop, $(SUBSTR))
 endif
 
+e2e-gmd:
+		cd themes/gmd && yarn run e2e
+
+e2e-ios11:
+		cd themes/ios11 && yarn run e2e
 
 # DEFINITIONS
 

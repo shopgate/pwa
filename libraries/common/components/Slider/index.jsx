@@ -215,7 +215,7 @@ class Slider extends Component {
       const key = `s${index}`;
 
       return (
-        <div className={styles.slideWrapper} key={key}>
+        <div className={styles.slideWrapper} key={key} data-test-id="Slider">
           {child}
         </div>
       );

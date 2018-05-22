@@ -43,6 +43,7 @@ export default class Link extends PureComponent {
         className={`${style} ${className}`}
         onClick={this.handleOpenLink}
         role="link"
+        data-test-id={`link: ${this.props.href}`}
       >
         {children}
       </div>

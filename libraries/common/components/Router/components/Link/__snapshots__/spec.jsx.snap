@@ -8,6 +8,7 @@ exports[`<Link /> should construct parsed-link and open it when clicked 1`] = `
   <div
     aria-hidden={true}
     className="css-c6ki83 "
+    data-test-id="link: /category/123"
     onClick={[Function]}
     role="link"
   >
@@ -22,6 +23,7 @@ exports[`<Link /> should render inner content of the link 1`] = `
 <div
   aria-hidden={true}
   className="css-c6ki83 "
+  data-test-id="link: /"
   onClick={[Function]}
   role="link"
 >
