@@ -32,7 +32,7 @@ const transitionStyles = {
  */
 const getContainerPaddingStyle = (bottom = variables.paymentBar.height) => ({
   paddingTop: variables.gap.small * 0.5,
-  paddingBottom: `calc(${bottom}px + var(--safe-area-inset-bottom))`,
+  paddingBottom: `${bottom}px`,
 });
 
 /**

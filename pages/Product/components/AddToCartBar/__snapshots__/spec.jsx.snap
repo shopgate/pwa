@@ -17,13 +17,14 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
     <AddToCartBar
       cartProductCount={0}
       handleAddToCart={[Function]}
+      isDisabled={false}
       isLoading={false}
       isOrderable={true}
     >
       <div
         className={
           Object {
-            "data-css-61ld8k": "",
+            "data-css-1h8teix": "",
           }
         }
         key="bar"
@@ -175,9 +176,11 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
                 }
                 onClick={[Function]}
               >
-                <AddMore>
+                <AddMore
+                  className="css-mfy564"
+                >
                   <Icon
-                    className=""
+                    className="css-mfy564"
                     color={null}
                     content="<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
 2.385-.004 1.193 1.193 0 0 0-2.385.004zm-4.4 0a1.193 1.193 0 1 0 1.192-1.192 1.193 1.193 0 0 0-1.198
@@ -189,7 +192,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb css-mfy564"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
@@ -216,15 +219,21 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
           </div>
           <Connect(AddToCartButton)
             handleAddToCart={[Function]}
+            isDisabled={false}
             itemCount={0}
           >
             <AddToCartButton
               handleAddToCart={[Function]}
+              isDisabled={false}
               itemCount={0}
               openCart={[Function]}
             >
               <button
-                className="css-1537b95"
+                className={
+                  Object {
+                    "data-css-1537b95": "",
+                  }
+                }
                 onClick={[Function]}
                 style={null}
               >
@@ -247,7 +256,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
       <div
         className={
           Object {
-            "data-css-1jtl2dh": "",
+            "data-css-1kayqc3": "",
           }
         }
         key="dummy"
@@ -274,13 +283,14 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
     <AddToCartBar
       cartProductCount={0}
       handleAddToCart={[Function]}
+      isDisabled={false}
       isLoading={true}
       isOrderable={false}
     >
       <div
         className={
           Object {
-            "data-css-61ld8k": "",
+            "data-css-1h8teix": "",
           }
         }
         key="bar"
@@ -432,9 +442,11 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
                 }
                 onClick={[Function]}
               >
-                <AddMore>
+                <AddMore
+                  className="css-mfy564"
+                >
                   <Icon
-                    className=""
+                    className="css-mfy564"
                     color={null}
                     content="<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
 2.385-.004 1.193 1.193 0 0 0-2.385.004zm-4.4 0a1.193 1.193 0 1 0 1.192-1.192 1.193 1.193 0 0 0-1.198
@@ -446,7 +458,7 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
                     viewBox="0 0 24 24"
                   >
                     <svg
-                      className="css-yys9hb "
+                      className="css-yys9hb css-mfy564"
                       dangerouslySetInnerHTML={
                         Object {
                           "__html": "<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
@@ -473,15 +485,21 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
           </div>
           <Connect(AddToCartButton)
             handleAddToCart={[Function]}
+            isDisabled={false}
             itemCount={0}
           >
             <AddToCartButton
               handleAddToCart={[Function]}
+              isDisabled={false}
               itemCount={0}
               openCart={[Function]}
             >
               <button
-                className="css-1537b95"
+                className={
+                  Object {
+                    "data-css-1537b95": "",
+                  }
+                }
                 onClick={[Function]}
                 style={null}
               >
@@ -504,7 +522,7 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
       <div
         className={
           Object {
-            "data-css-1jtl2dh": "",
+            "data-css-1kayqc3": "",
           }
         }
         key="dummy"

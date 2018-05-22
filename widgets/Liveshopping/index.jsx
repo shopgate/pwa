@@ -8,11 +8,11 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import ImageSlider from 'Components/ImageSlider';
-import Card from 'Components/Card';
-import DiscountBadge from 'Components/DiscountBadge';
-import Price from 'Components/Price';
-import PriceStriked from 'Components/PriceStriked';
+import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
+import Card from '@shopgate/pwa-ui-shared/Card';
+import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import Price from '@shopgate/pwa-ui-shared/Price';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import ProductImage from 'Components/ProductImage';
 import connect from './connector';
 import styles from './style';
@@ -60,7 +60,7 @@ const createProductSliderItem = ({
   const priceStriked = price.unitPriceStriked > 0 ? price.unitPriceStriked : price.msrp;
 
   return (
-    <div key={id} className={styles.card}>
+    <div key={id} className={styles.card} data-test-id="liveShoppingWidget">
       <Card>
         <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
           <Grid>

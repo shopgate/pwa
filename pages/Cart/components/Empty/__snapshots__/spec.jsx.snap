@@ -4,24 +4,37 @@ exports[`<CartEmpty /> should render 1`] = `
 <div
   className="css-12lnmui"
 >
-  <div
-    className="css-aphe06"
+  <Portal
+    name="cart.empty.before"
+    props={null}
+  />
+  <Portal
+    name="cart.empty"
+    props={null}
   >
     <div
-      className="css-11342l"
+      className="css-aphe06"
     >
-      <Icon />
+      <div
+        className="css-11342l"
+      >
+        <Icon />
+      </div>
+      <div
+        className="css-b9wt33"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="cart.empty"
+        />
+      </div>
     </div>
-    <div
-      className="css-b9wt33"
-    >
-      <Translate
-        className=""
-        params={Object {}}
-        string="cart.empty"
-      />
-    </div>
-  </div>
+  </Portal>
+  <Portal
+    name="cart.empty.after"
+    props={null}
+  />
   <div
     className="css-1dq8tqy"
   >

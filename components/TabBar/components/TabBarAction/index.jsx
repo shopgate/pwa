@@ -25,7 +25,7 @@ const TabBarAction = (props) => {
       onClick={props.onClick}
     >
       {Icon}
-      <div className={style.label}>
+      <div className={style.label} data-test-id={props.label}>
         <I18n.Text string={props.label} />
       </div>
       {props.children}

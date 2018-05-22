@@ -130,12 +130,12 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                         wrapContent={false}
                       >
                         <Button
-                          className="css-1mhr1mg css-63oe3q"
+                          className="css-187rja2 css-63oe3q"
                           disabled={false}
                           onClick={[Function]}
                         >
                           <button
-                            className="css-1mhr1mg css-63oe3q css-1rn65c0"
+                            className="css-187rja2 css-63oe3q css-1rn65c0"
                             data-test-id="Button"
                             disabled={false}
                             onClick={[Function]}
@@ -213,10 +213,10 @@ exports[`<Favorites> page Initial page should render an initial page with loadin
         <div>
           <LoadingIndicator>
             <div
-              className="css-emdeqc"
+              className="css-1aid7je"
             >
               <IndicatorCircle
-                color="#00c3e6"
+                color="#5ccee3"
                 size={32}
                 strokeWidth={3}
               >
@@ -228,7 +228,7 @@ exports[`<Favorites> page Initial page should render an initial page with loadin
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <circle
-                    className="css-2z29ld"
+                    className="css-o43ryf"
                     cx="50"
                     cy="50"
                     r="20"

@@ -20,6 +20,11 @@ const container = css({
   },
 });
 
+const icon = css({
+  flex: 1,
+}).toString();
+
 export default {
   container,
+  icon,
 };

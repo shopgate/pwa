@@ -8,11 +8,11 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ProductImage from 'Components/ProductImage';
-import DiscountBadge from 'Components/DiscountBadge';
-import Price from 'Components/Price';
-import PriceStriked from 'Components/PriceStriked';
-import PriceInfo from 'Components/PriceInfo';
-import FavoritesButton from 'Components/FavoritesButton';
+import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import Price from '@shopgate/pwa-ui-shared/Price';
+import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
+import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import styles from './style';
 import connect from './connector';
 
@@ -76,39 +76,43 @@ const Item = ({ product, display, isFavorite }) => (
         {/* PRICE - STRIKE PRICE - PRICE INFO */}
         {(!display || display.price) && (
           <Fragment>
-            <Grid className={styles.priceWrapper} wrap>
-              <Grid.Item grow={3}>
-                <Price
-                  unitPrice={product.price.unitPrice}
-                  unitPriceMin={product.price.unitPriceMin}
-                  discounted={!!product.price.discount}
-                  currency={product.price.currency}
-                />
-              </Grid.Item>
-              {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
-                <Grid.Item grow={2}>
-                  <PriceStriked
-                    value={product.price.msrp}
+            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+              <Grid className={styles.priceWrapper} wrap>
+                <Grid.Item grow={3}>
+                  <Price
+                    unitPrice={product.price.unitPrice}
+                    unitPriceMin={product.price.unitPriceMin}
+                    discounted={!!product.price.discount}
                     currency={product.price.currency}
                   />
                 </Grid.Item>
-              )}
-              {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-                <Grid.Item grow={2}>
-                  <PriceStriked
-                    value={product.price.unitPriceStriked}
-                    currency={product.price.currency}
-                  />
-                </Grid.Item>
-              )}
-            </Grid>
-            <Grid>
-              {product.price.info && (
-                <Grid.Item>
-                  <PriceInfo className={styles.basicPrice} text={product.price.info} />
-                </Grid.Item>
-              )}
-            </Grid>
+                {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
+                  <Grid.Item grow={2}>
+                    <PriceStriked
+                      value={product.price.msrp}
+                      currency={product.price.currency}
+                    />
+                  </Grid.Item>
+                )}
+                {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
+                  <Grid.Item grow={2}>
+                    <PriceStriked
+                      value={product.price.unitPriceStriked}
+                      currency={product.price.currency}
+                    />
+                  </Grid.Item>
+                )}
+              </Grid>
+              <Grid>
+                {product.price.info && (
+                  <Grid.Item>
+                    <PriceInfo className={styles.basicPrice} text={product.price.info} />
+                  </Grid.Item>
+                )}
+              </Grid>
+            </Portal>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
           </Fragment>
         )}
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import ProgressBar from 'Components/ProgressBar';
+import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
@@ -64,7 +64,7 @@ class Navigator extends Component {
     };
 
     return (
-      <header className={styles.header} role="banner" style={headerStyle}>
+      <header className={styles.header} role="banner" style={headerStyle} data-test-id="Navigator">
         <Grid className={styles.grid} component="section" wrap={false}>
           <NavButton />
           <Grid.Item className={styles.title} component="div" grow={1}>
