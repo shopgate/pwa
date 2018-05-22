@@ -299,7 +299,7 @@ export const getProductManufacturer = createSelector(
  * @param {Object} state The current application state.
  * @return {Object|null}
  */
-export const getProductStockInformation = createSelector(
+export const getCurrentProductStock = createSelector(
   getCurrentProduct,
   (product) => {
     if (!product) {
@@ -316,7 +316,7 @@ export const getProductStockInformation = createSelector(
  * @return {boolean}
  */
 export const isProductOrderable = createSelector(
-  getProductStockInformation,
+  getCurrentProductStock,
   (stockInfo) => {
     if (!stockInfo) {
       return true;
