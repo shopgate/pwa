@@ -23,6 +23,7 @@ const CTAButtons = props => (
     <AddToCartButton
       isLoading={props.isLoading}
       isOrderable={props.isOrderable}
+      isDisabled={props.isDisabled}
       handleAddToCart={props.handleAddToCart}
       buttonSize={styles.cartButtonSize}
       iconSize={styles.iconSize}
@@ -34,6 +35,7 @@ const CTAButtons = props => (
 CTAButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   handleAddToCart: PropTypes.func,
+  isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   isOrderable: PropTypes.bool,
   productId: PropTypes.string,
@@ -43,6 +45,7 @@ CTAButtons.defaultProps = {
   handleAddToCart: () => {},
   isLoading: null,
   isOrderable: null,
+  isDisabled: false,
   productId: null,
 };
 

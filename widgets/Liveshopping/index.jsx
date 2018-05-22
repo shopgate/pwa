@@ -60,7 +60,7 @@ const createProductSliderItem = ({
   const priceStriked = price.unitPriceStriked > 0 ? price.unitPriceStriked : price.msrp;
 
   return (
-    <div key={id} className={styles.card}>
+    <div key={id} className={styles.card} data-test-id="liveShoppingWidget">
       <Card>
         <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
           <Grid>
