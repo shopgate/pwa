@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import toggleNavDrawer from '../../actions/toggleNavDrawer';
 
 /**
@@ -8,11 +7,6 @@ import toggleNavDrawer from '../../actions/toggleNavDrawer';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  action: state.history.action,
-  filterOpen: state.navigator.filterOpen,
-  filterAttributeOpen: state.navigator.filterAttributeOpen,
-  loginOpen: state.navigator.loginOpen,
-  path: state.history.pathname,
   showIconShadow: state.navigator.showIconShadow,
 });
 
@@ -22,8 +16,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  goBackHistory: (amount = 1) => dispatch(goBackHistory(amount)),
   toggleNavDrawer: active => dispatch(toggleNavDrawer(active)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, mapDispatchToProps);
