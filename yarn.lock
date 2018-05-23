@@ -86,62 +86,11 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/eslint-config@^5.1.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.2.0.tgz#cc9089941827af6a3fec73668dbbe3af154a69f6"
-  dependencies:
-    babel-eslint "^8.2.1"
-    eslint-config-airbnb "^16.1.0"
-    eslint-plugin-eslint-comments "^1.1.0"
-    eslint-plugin-extra-rules "0.8.1"
-    eslint-plugin-import "^2.8.0"
-    eslint-plugin-jsx-a11y "^6.0.3"
-    eslint-plugin-react "^7.6.1"
-    react-hot-loader "4.0.1"
-
-"@shopgate/pwa-common@^5.1.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.2.0.tgz#b02741ff8af855da3977986d9f699b871f7ca408"
-  dependencies:
-    classnames "^2.2.5"
-    crypto-js "3.1.9-1"
-    glamor "^2.20.40"
-    gsap "^1.20.2"
-    history "^4.7.2"
-    intl-messageformat "^2.1.0"
-    jsdom "11.1.0"
-    path-match "^1.2.4"
-    react-dotdotdot "^1.1.0"
-    react-id-swiper "1.4.0"
-    react-inline-transition-group "^2.1.7"
-    react-portal "^3.1.0"
-    react-redux "^5.0.6"
-    react-tap-event-plugin "^3.0.2"
-    recompose "^0.26.0"
-    redux "^3.7.2"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    remote-redux-devtools "^0.5.12"
-    reselect "^3.0.1"
-    rxjs "^5.4.3"
-    url-search-params "^0.10.0"
-
-"@shopgate/pwa-core@^5.1.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.2.0.tgz#2bd84f914d05054899f221286d04d71a5da7c9b7"
-  dependencies:
-    crypto-js "3.1.9-1"
-    isomorphic-fetch "^2.2.1"
-
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
-
-"@shopgate/tracking-core@^5.1.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.2.0.tgz#09aefa11a0297af95d00b7e714d2afac251bc9ab"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
