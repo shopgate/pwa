@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> renders with children 1`] = `
+<div
+  aria-hidden={true}
+  className="css-c6ki83 "
+  onClick={[Function]}
+  role="link"
+>
+  <span />
+</div>
+`;
