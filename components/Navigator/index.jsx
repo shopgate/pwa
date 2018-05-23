@@ -5,10 +5,10 @@ import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
-import SearchButton from './components/SearchButton';
-import CartButton from './components/CartButton';
-import ApplyFilterButton from './components/ApplyFilterButton';
-import Content from './components/Content';
+// import SearchButton from './components/SearchButton';
+// import CartButton from './components/CartButton';
+// import ApplyFilterButton from './components/ApplyFilterButton';
+// import Content from './components/Content';
 import styles from './style';
 
 /**
