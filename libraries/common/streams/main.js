@@ -9,7 +9,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
-import { mainSubject } from '../store/observable-middleware';
+import { mainSubject } from '../store/middelwares/streams';
 
 /**
  * Gets triggered on every redux action that is dispatched.

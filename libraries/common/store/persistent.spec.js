@@ -7,7 +7,7 @@ import {
 
 const localStorageMock = global.window.localStorage;
 
-describe('Persistent State storage', () => {
+describe.skip('Persistent State storage', () => {
   const storageKey = LOCALSTORAGE_KEY;
   const fooReducer = persist('foo', () => ({ foo: 1 }), 'v1');
   const barReducer = persist('bar', () => ({ bar: 2 }), 'v2');

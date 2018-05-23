@@ -36,9 +36,9 @@
     "react-tap-event-plugin": "^3.0.2",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "remote-redux-devtools": "^0.5.12",
     "reselect": "^3.0.1",
     "rxjs": "^5.4.3",
     "url-search-params": "^0.10.0"
