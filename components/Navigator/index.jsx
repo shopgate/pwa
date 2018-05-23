@@ -77,6 +77,7 @@ class Navigator extends Component {
       >
         <Grid className={styles.grid} component="section" wrap={false}>
           <NavButton />
+          {/* 
           <Grid.Item className={styles.title} component="div" grow={1}>
             {this.props.showTitle &&
               <Content />
@@ -90,7 +91,7 @@ class Navigator extends Component {
           {this.props.showSearch &&
             <SearchButton onClick={this.props.submitSearch} />
           }
-          <CartButton />
+          <CartButton /> */}
         </Grid>
         <ProgressBar isVisible={this.props.showLoadingBar} />
       </header>
