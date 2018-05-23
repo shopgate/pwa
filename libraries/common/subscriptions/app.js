@@ -43,7 +43,6 @@ export default function app(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ action, getState }) => {
-    console.warn(conductor);
     conductor.push(action.location);
 
     // Register for custom events
