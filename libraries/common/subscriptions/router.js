@@ -23,7 +23,6 @@ export default function router(subscribe) {
         break;
       }
       case ACTION_PUSH: {
-        console.warn('PUSHING');
         conductor.push(location, state);
         break;
       }
