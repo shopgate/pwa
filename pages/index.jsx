@@ -18,6 +18,7 @@ import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
+import Worker from './worker';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
@@ -26,7 +27,7 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  * @returns {JSX}
  */
 const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers}>
+  <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{}}>
         <Portal name={APP_GLOBALS} />

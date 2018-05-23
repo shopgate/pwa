@@ -20,7 +20,7 @@ import extensions from 'Extensions/reducers';
 import general from 'Components/View/reducer';
 import categoryPage from 'Pages/Category/reducer';
 
-const reducers = {
+const reducers = combineReducers({
   cart,
   category,
   client,
@@ -43,6 +43,6 @@ const reducers = {
   url,
   user,
   view,
-};
+});
 
 export default reducers;
