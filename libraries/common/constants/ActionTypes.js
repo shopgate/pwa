@@ -93,3 +93,8 @@ export const ERROR_URL = 'ERROR_URL';
  */
 export const APP_ERROR = 'APP_ERROR';
 export const PIPELINE_ERROR = 'PIPELINE_ERROR';
+
+/**
+ * --------- ROUTER ------------
+ */
+export const NAVIGATE = 'NAVIGATE';
