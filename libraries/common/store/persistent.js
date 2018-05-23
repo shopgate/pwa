@@ -1,5 +1,6 @@
 import debounce from 'lodash/debounce';
 import omit from 'lodash/omit';
+import localforage from './localforage';
 
 const { appId = '' } = process.env.APP_CONFIG || {};
 const theme = process.env.THEME || 'theme';
@@ -8,7 +9,12 @@ const theme = process.env.THEME || 'theme';
  * The key name for the state in the localStorage.
  * @type {string}
  */
-export const LOCALSTORAGE_KEY = `sgCloud-${appId.replace('_', '')}-${theme}`;
+export const STORAGE_KEY = `sgCloud-${appId.replace('_', '')}-${theme}`;
+
+localforage.config({
+  name: 'shopgate-connect',
+  driver: localforage.INDEXEDDB,
+});
 
 /**
  * The debounce timing for the localStorage write.
@@ -72,9 +78,9 @@ export const normalizeState = (state) => {
  * Gets the persistent state from the localStorage.
  * @returns {Object}
  */
-const getPersistentState = () => {
+const getPersistentState = async () => {
   // Read from localStorage.
-  const jsonSavedState = localStorage.getItem(LOCALSTORAGE_KEY);
+  const jsonSavedState = await localforage.getItem(STORAGE_KEY);
   if (jsonSavedState === null) {
     return {};
   }
@@ -112,8 +118,8 @@ export const initPersistentStorage = () => {
 /**
  * Saves the state to the localStorage.
  */
-const saveState = debounce(() => {
-  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(latestState));
+const saveState = debounce(async () => {
+  await localforage.setItem(STORAGE_KEY, JSON.stringify(latestState));
 }, DEBOUNCE_TIMING);
 
 /**
