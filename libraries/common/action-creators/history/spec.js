@@ -2,14 +2,12 @@ import {
   HISTORY_DID_RESET,
   HISTORY_WILL_RESET,
   OPEN_LINK,
-  HISTORY_SET_REDIRECT_LOCATION,
   UPDATE_HISTORY,
 } from '../../constants/ActionTypes';
 import {
   historyDidReset,
   historyWillReset,
   openLink,
-  setRedirectLocation,
   updateHistory,
 } from './index';
 
@@ -56,28 +54,6 @@ describe('Action Creators: history', () => {
       };
 
       expect(openLink(name, options)).toEqual(expected);
-    });
-  });
-
-  describe('setRedirectLocation()', () => {
-    it('should work as expected', () => {
-      const pathname = '/some/path';
-      const expected = {
-        type: HISTORY_SET_REDIRECT_LOCATION,
-        params: dataMock,
-        pathname,
-      };
-      expect(setRedirectLocation(pathname, dataMock)).toEqual(expected);
-    });
-
-    it('should work as expected with empty params', () => {
-      const pathname = '/some/path';
-      const expected = {
-        type: HISTORY_SET_REDIRECT_LOCATION,
-        params: {},
-        pathname,
-      };
-      expect(setRedirectLocation(pathname)).toEqual(expected);
     });
   });
 

@@ -19,10 +19,12 @@ export const appWillStart = location => ({
 
 /**
  * Creates the dispatched APP_DID_START action object.
+ * @param {Object} location The initial history entry location.
  * @return {Object} The dispatched action object.
  */
-export const appDidStart = () => ({
+export const appDidStart = location => ({
   type: APP_DID_START,
+  location,
 });
 
 /**

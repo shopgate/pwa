@@ -5,6 +5,7 @@ import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
+import conductor from '@virtuous/conductor';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -41,7 +42,9 @@ export default function app(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ getState }) => {
+  subscribe(appDidStart$, ({ action, getState }) => {
+    conductor.push(action.location);
+
     // Register for custom events
     registerEvents([
       'showPreviousTab',

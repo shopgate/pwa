@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getHistoryPathname } from './history';
+import { getCurrentPathname } from './router';
 
 /**
  * Retrieves the view state from the global state.
@@ -36,4 +36,4 @@ export const isViewLoading = createSelector(
  * @param {Object} state The current application state.
  * @return {boolean}
  */
-export const isCurrentViewLoading = state => isViewLoading(state, getHistoryPathname(state));
+export const isCurrentViewLoading = state => isViewLoading(state, getCurrentPathname(state));
