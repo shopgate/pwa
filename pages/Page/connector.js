@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getPageConfig from '@shopgate/pwa-common/actions/page/getPageConfig';
+import { getCurrentPageId } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,15 +8,7 @@ import getPageConfig from '@shopgate/pwa-common/actions/page/getPageConfig';
  */
 const mapStateToProps = state => ({
   configs: state.page,
+  pageId: getCurrentPageId(state),
 });
 
-/**
- * Connects the dispatch function to a callable function in the props.
- * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
- */
-const mapDispatchToProps = dispatch => ({
-  getPageConfig: pageId => dispatch(getPageConfig(pageId)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps);

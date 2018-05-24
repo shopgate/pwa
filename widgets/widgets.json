@@ -13,11 +13,5 @@
   },
   "@shopgate/commerce-widgets/category_list": {
     "path": "CategoryList"
-  },
-  "@shopgate/commerce-widgets/product_list": {
-    "path": "Products"
-  },
-  "@shopgate/commerce-widgets/liveshopping": {
-    "path": "Liveshopping"
   }
 }

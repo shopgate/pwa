@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import setTitle from './actions/setTitle';
 import setViewTop from './action-creators/setViewTop';
 import { getTopStatus, getTitle } from './selectors';
@@ -11,7 +11,7 @@ import { getTopStatus, getTitle } from './selectors';
  */
 const mapStateToProps = state => ({
   navigatorTitle: getTitle(state),
-  historyPathname: getHistoryPathname(state),
+  historyPathname: getCurrentPathname(state),
   viewTop: getTopStatus(state),
 });
 
