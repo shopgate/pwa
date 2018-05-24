@@ -126,10 +126,11 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    */
   handleTimeout(serial) {
-    const { request, retries } = this.requests.get(serial);
+    const entry = this.requests.get(serial);
+    const { request, retries } = entry;
     const callbackName = request.getEventCallbackName();
 
-    setTimeout(() => {
+    entry.timer = setTimeout(() => {
       event.removeCallback(callbackName, request.callback);
       event.addCallback(callbackName, this.dummyCallback);
 
@@ -200,7 +201,8 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    */
   handleResult = (serial) => {
-    const { request } = this.requests.get(serial);
+    const entry = this.requests.get(serial);
+    const { request } = entry;
     const { input, error, output } = request;
     const pipelineName = this.getPipelineNameBySerial(serial);
     const callbackName = request.getEventCallbackName();
@@ -215,7 +217,10 @@ class PipelineManager {
       return;
     }
 
-    pipelineSequence.remove(serial);
+    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.remove(serial);
+    }
+
     event.removeCallback(callbackName, request.callback);
 
     let logColor = '#307bc2';
@@ -234,6 +239,7 @@ class PipelineManager {
       serial,
     }, logColor);
 
+    clearTimeout(entry.timer);
     this.requests.delete(serial);
   }
 
@@ -252,6 +258,7 @@ class PipelineManager {
       }
 
       this.handleResult(ser);
+      this.handleResultSequence();
     }
     /* eslint-enable no-restricted-syntax */
   }
