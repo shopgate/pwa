@@ -268,7 +268,7 @@ class VariantSelects extends Component {
     }
 
     return (
-      <div>
+      <div data-test-id="varaintsPicker">
         <RouteGuard>
           {this.createPickers(selection)}
         </RouteGuard>
