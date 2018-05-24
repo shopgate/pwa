@@ -93,7 +93,7 @@ class PipelineManager {
       request.reject = reject;
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-        this.handleResultSequence(serial);
+        this.handleResultSequence();
       } else {
         this.handleResult(serial);
       }
@@ -126,10 +126,11 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    */
   handleTimeout(serial) {
-    const { request, retries } = this.requests.get(serial);
+    const entry = this.requests.get(serial);
+    const { request, retries } = entry;
     const callbackName = request.getEventCallbackName();
 
-    setTimeout(() => {
+    entry.timer = setTimeout(() => {
       event.removeCallback(callbackName, request.callback);
       event.addCallback(callbackName, this.dummyCallback);
 
@@ -200,7 +201,8 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    */
   handleResult = (serial) => {
-    const { request } = this.requests.get(serial);
+    const entry = this.requests.get(serial);
+    const { request } = entry;
     const { input, error, output } = request;
     const pipelineName = this.getPipelineNameBySerial(serial);
     const callbackName = request.getEventCallbackName();
@@ -215,7 +217,10 @@ class PipelineManager {
       return;
     }
 
-    pipelineSequence.remove(serial);
+    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.remove(serial);
+    }
+
     event.removeCallback(callbackName, request.callback);
 
     let logColor = '#307bc2';
@@ -234,26 +239,26 @@ class PipelineManager {
       serial,
     }, logColor);
 
+    clearTimeout(entry.timer);
     this.requests.delete(serial);
   }
 
   /**
    * Handles the results sequentially.
-   * @param {string} serial The pipeline request serial.
    */
-  handleResultSequence = (serial) => {
+  handleResultSequence = () => {
     const sequence = pipelineSequence.get();
 
     /* eslint-disable no-restricted-syntax */
     for (const ser of sequence) {
       const entry = this.requests.get(ser);
 
-      if (serial === ser || entry.output) {
-        this.handleResult(ser);
-        return;
+      if (!entry.request.output) {
+        break;
       }
 
-      break;
+      this.handleResult(ser);
+      this.handleResultSequence();
     }
     /* eslint-enable no-restricted-syntax */
   }

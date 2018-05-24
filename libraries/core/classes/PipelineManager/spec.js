@@ -106,6 +106,7 @@ describe('PipelineManager', () => {
       request.process = 'PROCESS_SEQUENTIAL';
       request.reject = jest.fn();
       request.resolve = jest.fn();
+      request.output = {};
       pipelineManager.add(request);
 
       expect(pipelineManager.requests.size).toBe(1);
