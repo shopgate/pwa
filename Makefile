@@ -60,9 +60,9 @@ ifneq ($(REPO_VERSION), '')
 		@echo " "
 		@echo "$(strip $(REPO_VERSION))"
 		@echo " "
-		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes
+		lerna publish --skip-npm --skip-git --repo-version $(strip $(REPO_VERSION)) --force-publish --yes --exact
 else
-		lerna publish --skip-npm --skip-git --force-publish
+		lerna publish --skip-npm --skip-git --force-publish --exact
 endif
 
 # Change the version in the extensions extension-config.json
