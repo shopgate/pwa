@@ -34,6 +34,7 @@
     "@shopgate/react-hammerjs": "^0.5.3",
     "@shopgate/tracking-core": "^5.3.0-beta.18",
     "@virtuous/conductor": "1.0.0-beta.13",
+    "@virtuous/conductor-helpers": "1.0.0-beta.13",
     "@virtuous/react-conductor": "1.0.0-beta.13",
     "babel-core": "^6.26.0",
     "babel-plugin-dynamic-import-webpack": "^1.0.2",
