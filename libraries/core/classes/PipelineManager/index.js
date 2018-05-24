@@ -93,7 +93,7 @@ class PipelineManager {
       request.reject = reject;
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-        this.handleResultSequence(serial);
+        this.handleResultSequence();
       } else {
         this.handleResult(serial);
       }
@@ -239,21 +239,19 @@ class PipelineManager {
 
   /**
    * Handles the results sequentially.
-   * @param {string} serial The pipeline request serial.
    */
-  handleResultSequence = (serial) => {
+  handleResultSequence = () => {
     const sequence = pipelineSequence.get();
 
     /* eslint-disable no-restricted-syntax */
     for (const ser of sequence) {
       const entry = this.requests.get(ser);
 
-      if (serial === ser || entry.output) {
-        this.handleResult(ser);
-        return;
+      if (!entry.request.output) {
+        break;
       }
 
-      break;
+      this.handleResult(ser);
     }
     /* eslint-enable no-restricted-syntax */
   }
