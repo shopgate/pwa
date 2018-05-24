@@ -19,6 +19,7 @@ import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
 import Worker from './worker';
+import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
@@ -35,7 +36,7 @@ const Pages = () => (
           <ModalContainer component={Dialog} />
           <SnackBar />
           <Router>
-            <Route pattern={`${INDEX_PATH}`} component={() => <div />} />
+            <Route pattern={`${INDEX_PATH}`} component={routes.Page} />
           </Router>
           <Portal name={APP_ROUTES} props={{ View }} />
           {isDev && (

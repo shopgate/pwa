@@ -1,4 +1,4 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
 import { getCurrentCategories } from '@shopgate/pwa-common-commerce/category/selectors';
 

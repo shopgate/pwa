@@ -1,4 +1,4 @@
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect';
+import { connect } from 'react-redux';
 import getPageConfig from '@shopgate/pwa-common/actions/page/getPageConfig';
 
 /**
@@ -16,9 +16,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getPageConfig: (pageId) => {
-    dispatch(getPageConfig(pageId));
-  },
+  getPageConfig: pageId => dispatch(getPageConfig(pageId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, mapDispatchToProps);
