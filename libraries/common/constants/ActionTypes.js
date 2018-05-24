@@ -98,3 +98,7 @@ export const PIPELINE_ERROR = 'PIPELINE_ERROR';
  * --------- ROUTER ------------
  */
 export const NAVIGATE = 'NAVIGATE';
+export const ROUTE_WILL_ENTER = 'ROUTE_WILL_ENTER';
+export const ROUTE_DID_ENTER = 'ROUTE_DID_ENTER';
+export const ROUTE_WILL_LEAVE = 'ROUTE_WILL_LEAVE';
+export const ROUTE_DID_LEAVE = 'ROUTE_DID_LEAVE';

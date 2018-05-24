@@ -5,7 +5,13 @@ import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
-import conductor from '@virtuous/conductor';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import * as events from '@virtuous/conductor-events';
+import { navigate } from '../action-creators/router';
+import routeWillEnter from '../actions/router/routeWillEnter';
+import routeWillLeave from '../actions/router/routeWillLeave';
+import routeDidEnter from '../actions/router/routeDidEnter';
+import routeDidLeave from '../actions/router/routeDidLeave';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -28,6 +34,11 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({ dispatch, action }) => {
     dispatch(registerLinkEvents(action.location));
 
+    events.onWillPush(id => dispatch(routeWillEnter(id)));
+    events.onDidPush(id => dispatch(routeDidEnter(id)));
+    events.onWillPop(() => dispatch(routeWillLeave()));
+    events.onDidPop(() => dispatch(routeDidLeave()));
+
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
       errorCodes.EACCESS,
@@ -42,9 +53,7 @@ export default function app(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ action, getState }) => {
-    conductor.push(action.location);
-
+  subscribe(appDidStart$, ({ action, dispatch, getState }) => {
     // Register for custom events
     registerEvents([
       'showPreviousTab',
@@ -79,6 +88,8 @@ export default function app(subscribe) {
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
+
+    dispatch(navigate(ACTION_PUSH, action.location));
   });
 
   subscribe(pipelineError$, ({ dispatch, action }) => {
