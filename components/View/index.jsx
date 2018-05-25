@@ -16,7 +16,6 @@ const SCROLL_DEBOUNCE = 50;
 class View extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    historyPathname: PropTypes.string.isRequired,
     navigatorTitle: PropTypes.string.isRequired,
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
@@ -27,6 +26,7 @@ class View extends Component {
       script: PropTypes.array,
       style: PropTypes.array,
     }),
+    historyPathname: PropTypes.string,
     isFullscreen: PropTypes.bool,
     style: PropTypes.shape(),
     title: PropTypes.string,
@@ -41,6 +41,7 @@ class View extends Component {
       script: [],
       style: [],
     },
+    historyPathname: null,
     isFullscreen: false,
     style: null,
     title: '',

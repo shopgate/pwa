@@ -8,6 +8,7 @@ import Route from '@virtuous/react-conductor/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import App from '@shopgate/pwa-common/App';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
@@ -37,6 +38,7 @@ const Pages = () => (
           <SnackBar />
           <Router>
             <Route pattern={`${INDEX_PATH}`} component={routes.Page} />
+            <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
           </Router>
           <Portal name={APP_ROUTES} props={{ View }} />
           {isDev && (
