@@ -15,7 +15,7 @@ export default {
   categoryListWidgetFirstProduct: "[data-test-id='categoryList'] [data-test-id='link: /category/3537']",
   productWithManyProps4GridViewImage: "[data-test-id='productGrid'] img[alt='Product with many Properties - 4 -']",
   productWithManyProps4GridViewName: "[data-route-path='/category/:categoryId?/:selection?'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
-  productWithManyProps4GridViewFavButton: "[data-test-id='link: /item/393939'] [data-test-id='favorites'] [data-test-id='button']",
+  productWithManyProps4GridViewFavButton: "[data-test-id='link: /item/393939'] [data-test-id='favorites'] [data-test-id='favoriteButton']",
   productWithManyProps4GridViewPrice: "[data-test-id='productGrid'] [data-test-id='link: /item/393939'] [data-test-id='minPrice: 0 price: 199 currency: EUR']",
   sortingDropDown: "[data-test-id='sorting']",
   filterButton: "[data-test-id='filterBar'] [data-test-id='filterButton']",
