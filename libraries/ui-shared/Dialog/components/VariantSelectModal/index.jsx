@@ -2,18 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import BasicDialog from '../BasicDialog';
+import connect from './connector';
 
 /**
  * Reorders the actions for the modal so that the confirmation button will be rendered last.
  * Also attaches a navigation action to the confirmation action.
  * @param {Array} actions The confirm and dismiss actions.
  * @param {string} productId The product id passed through params.
+ * @param {string} navigate The navigate action.
  * @return {Array} Reordered and extended actions.
  */
-const reorderActions = (actions, { productId }) => {
+const reorderActions = (actions, { productId }, navigate) => {
   let confirmAction;
   const orderedActions = actions;
 
@@ -30,7 +32,7 @@ const reorderActions = (actions, { productId }) => {
         // Navigate to product details page
         if (productId) {
           const href = `${ITEM_PATH}/${bin2hex(productId)}`;
-          new ParsedLink(href).open();
+          navigate(ACTION_PUSH, href);
         }
       },
     };
@@ -56,9 +58,9 @@ const reorderActions = (actions, { productId }) => {
  * @constructor
  */
 const VariantSelectModal = ({
-  actions, message, title, params,
+  actions, message, navigate, title, params,
 }) => {
-  const parsedActions = reorderActions(actions, params);
+  const parsedActions = reorderActions(actions, params, navigate);
 
   return (
     <BasicDialog title={title} actions={parsedActions}>
@@ -70,6 +72,7 @@ const VariantSelectModal = ({
 VariantSelectModal.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   message: PropTypes.string.isRequired,
+  navigate: PropTypes.func.isRequired,
   params: PropTypes.shape(),
   title: PropTypes.string,
 };
@@ -81,4 +84,4 @@ VariantSelectModal.defaultProps = {
   title: null,
 };
 
-export default VariantSelectModal;
+export default connect(VariantSelectModal);

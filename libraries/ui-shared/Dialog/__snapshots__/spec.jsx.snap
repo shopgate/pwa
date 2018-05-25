@@ -52,7 +52,7 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
     onClick={[Function]}
     opacity={50}
   />
-  <VariantSelectModal
+  <Connect(VariantSelectModal)
     actions={Array []}
     message="Test"
     params={
@@ -60,7 +60,6 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
         "productId": "product_1",
       }
     }
-    title={null}
   />
 </Modal>
 `;
