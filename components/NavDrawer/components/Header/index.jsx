@@ -15,9 +15,13 @@ const Header = (props) => {
   if (!props.user) {
     return (
       <div className={styles.container} data-test-id="NavDrawerLoginButton">
-        <Item href={LOGIN_PATH} icon={AccountBoxIcon} close={props.close} primary>
-          <I18n.Text string="navigation.login_register" />
-        </Item>
+        <Item
+          close={props.close}
+          href={LOGIN_PATH}
+          icon={AccountBoxIcon}
+          label="navigation.login_register"
+          primary
+        />
       </div>
     );
   }
