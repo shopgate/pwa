@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 
 export const getCurrentPageId = createSelector(
