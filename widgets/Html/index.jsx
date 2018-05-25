@@ -4,6 +4,7 @@ import variables from 'Styles/variables';
 import parseHTML from './helpers/parseHTML';
 import { handleYouTube } from './helpers/handleDOM';
 import styles from './style';
+import connect from './connector';
 
 /**
  * The custom HTML widget.
@@ -91,4 +92,4 @@ class Html extends Component {
   }
 }
 
-export default Html;
+export default connect(Html);

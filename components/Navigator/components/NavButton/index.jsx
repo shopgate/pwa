@@ -40,11 +40,9 @@ class NavButton extends Component {
    */
   render() {
     return (
-      <div data-tesName={styles.buttonContent}>
-        <Button className={styles} onClick={this.handleClick}>
-          <BurgerIcon />
-        </Button>
-      </div>
+      <Button className={styles} onClick={this.handleClick}>
+        <BurgerIcon />
+      </Button>
     );
   }
 }
