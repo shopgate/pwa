@@ -6,6 +6,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
 >
   <div
     className="css-15j45j0"
+    data-test-id="placeHolder"
   >
     <Placeholder
       className="css-19rc2oq"
