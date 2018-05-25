@@ -27,7 +27,10 @@ const Price = (props) => {
    * displayed with a 'From' prefix.
    */
   return (
-    <div className={containerClasses}>
+    <div
+      className={containerClasses}
+      data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
+    >
       {props.unitPriceMin ? (
         <I18n.Text string="price.from">
           <I18n.Price
