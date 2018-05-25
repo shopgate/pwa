@@ -23,7 +23,7 @@ const Description = ({ html }) => {
       </div>
 
       <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
-        <div className={styles.content}>
+        <div className={styles.content} data-test-id={html}>
           <HtmlSanitizer settings={{ html }}>
             {html}
           </HtmlSanitizer>
