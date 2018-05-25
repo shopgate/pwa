@@ -13,5 +13,17 @@ export default {
   productGridWidgetFirstProduct: "[data-test-id='productGrid'] [data-test-id='link: /item/393939']",
   productListWidgetFirstProduct: "[data-test-id='productList'] [data-test-id='link: /item/393939']",
   categoryListWidgetFirstProduct: "[data-test-id='categoryList'] [data-test-id='link: /category/3537']",
-
+  productWithManyProps4GridViewImage: "[data-test-id='productGrid'] img[alt='Product with many Properties - 4 -']",
+  productWithManyProps4GridViewName: "[data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
+  productWithManyProps4GridViewFavButton: "[data-test-id='link: /item/393939'] [data-test-id='favorites'] [data-test-id='button']",
+  productWithManyProps4GridViewPrice: "[data-test-id='productGrid'] [data-test-id='link: /item/393939'] [data-test-id='minPrice: 0 price: 199 currency: EUR']",
+  sortingDropDown: "[data-test-id='sorting']",
+  filterButton: "[data-test-id='filterBar'] [data-test-id='filterButton']",
+  backButton: "[data-test-id='backButton']",
+  productWithStrikePrice4GridViewStrikePrice: "[data-test-id='productGrid'] [data-test-id='link: /item/31303634'] [data-test-id='strikedPrice: 10']",
+  productWithStrikePrice4GridViewDiscountBadge: "[data-test-id='productGrid'] [data-test-id='link: /item/31303634'] [data-test-id='-1%']",
+  productWithStrikePrice4GridViewPrice: "[data-test-id='productGrid'] [data-test-id='link: /item/31303634'] [data-test-id='minPrice: 0 price: 9.95 currency: EUR']",
+  productWithRating4GridViewRatingStars: "[data-test-id='productGrid'] [data-test-id='link: /item/393430'] [data-test-id='ratedStars: 5']",
+  allProductCategory: "[data-test-id='link: /category/3733']",
+  allProductsCategoryTitle: "[data-test-id='title: 4. all products']",
 };

@@ -13,7 +13,7 @@ import styles from './style';
  * @return {JSX}
  */
 const FilterButton = ({ handleOpenFilters }) => (
-  <button className={styles.button} onClick={handleOpenFilters}>
+  <button className={styles.button} onClick={handleOpenFilters} data-test-id="filterButton">
     <Ripple className={styles.filterButtonRipple} fill>
       <Grid component="div">
         <Grid.Item component="div" className={styles.filterIcon}>
