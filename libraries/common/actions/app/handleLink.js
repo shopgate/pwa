@@ -1,3 +1,4 @@
+import { ACTION_PUSH } from '@virtuous/conductor/constants'; 
 import { navigate } from '../../action-creators/router';
 import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
 
@@ -24,7 +25,7 @@ const handleLink = (payload = {}, dispatch) => {
     // dispatch(resetHistory());
   }
 
-  dispatch(navigate('PUSH', link));
+  dispatch(navigate(ACTION_PUSH, link));
 
   return true;
 };
