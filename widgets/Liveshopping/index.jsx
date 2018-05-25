@@ -62,7 +62,12 @@ const createProductSliderItem = ({
   return (
     <div key={id} className={styles.card} data-test-id="liveShoppingWidget">
       <Card>
-        <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
+        <Link
+          href={`${ITEM_PATH}/${bin2hex(id)}`}
+          state={{
+            title: name,
+          }}
+        >
           <Grid>
             <Grid.Item className={styles.imagePane}>
               <ProductImage src={featuredImageUrl} alt={name} />
