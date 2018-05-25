@@ -13,10 +13,6 @@ import { getLoadingViews } from '../../selectors/view';
 const unsetViewLoading = (pathname, flush = false) => (dispatch, getState) => {
   const loadingViews = getLoadingViews(getState());
 
-  if (!Object.keys(loadingViews).includes(pathname)) {
-    return;
-  }
-
   if (!flush && loadingViews[pathname] > 1) {
     dispatch(decrementLoading(pathname));
   } else {
