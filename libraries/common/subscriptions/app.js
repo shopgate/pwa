@@ -27,8 +27,10 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({ dispatch, action }) => {
     dispatch(registerLinkEvents(action.location));
 
+    // Suppress errors globally
     pipelineManager.addSuppressedErrors([
       errorCodes.EACCESS,
+      errorCodes.E999,
     ]);
 
     // Map the error events into the Observable streams.

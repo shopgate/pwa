@@ -295,6 +295,38 @@ export const getProductManufacturer = createSelector(
 );
 
 /**
+ * Retrieves the current product stock information.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getCurrentProductStock = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.stock;
+  }
+);
+
+/**
+ * Retrieves the current product orderable information.
+ * @param {Object} state The current application state.
+ * @return {boolean}
+ */
+export const isProductOrderable = createSelector(
+  getCurrentProductStock,
+  (stockInfo) => {
+    if (!stockInfo) {
+      return true;
+    }
+
+    return stockInfo.orderable;
+  }
+);
+
+/**
  * Selects the product shipping state.
  * @param {Object} state The current application state.
  * @return {Object} The product shipping state.
