@@ -2,6 +2,13 @@
 
 This is the Integraion of [Cypress](https://www.cypress.io/) into the Shopgate PWA for E2E Testing.
 
+## Execution
+from pwa root folder:
+```sh
+npm run e2e:gmd
+npm run e2e:ios11
+```
+
 ## Structure
 ### Supporting Files
 ```

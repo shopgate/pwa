@@ -88,7 +88,7 @@ class PriceStriked extends Component {
 
     return (
       <div className={`${styles.basic} ${this.props.className} ${angleStyle}`}>
-        <span ref={(ref) => { this.element = ref; }}>
+        <span ref={(ref) => { this.element = ref; }} data-test-id={`strikedPrice: ${this.props.value}`}>
           <I18n.Price price={this.props.value} currency={this.props.currency} />
         </span>
       </div>
