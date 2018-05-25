@@ -22,7 +22,6 @@ import {
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
-import ParsedLink from '../components/Router/helpers/parsed-link';
 import { appError, pipelineError } from '../action-creators/error';
 
 /**
@@ -74,7 +73,7 @@ export default function app(subscribe) {
      */
     event.addCallback('closeInAppBrowser', (data = {}) => {
       if (data.redirectTo) {
-        new ParsedLink(data.redirectTo).open();
+        dispatch(navigate(ACTION_PUSH, data.redirectTo));
       }
 
       closeInAppBrowser(isAndroid(getState()));
