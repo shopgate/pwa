@@ -5,62 +5,62 @@ export const Page = Loadable({
   loading: () => null,
 });
 
-export const Category = Loadable({
-  loader: () => import('./Category'),
-  loading: () => null,
-});
+// Export const Category = Loadable({
+//   Loader: () => import('./Category'),
+//   Loading: () => null,
+// });
 
-export const Filter = Loadable({
-  loader: () => import('./Filter'),
-  loading: () => null,
-});
+// Export const Filter = Loadable({
+//   Loader: () => import('./Filter'),
+//   Loading: () => null,
+// });
 
-export const FilterAttribute = Loadable({
-  loader: () => import('./FilterAttribute'),
-  loading: () => null,
-});
+// Export const FilterAttribute = Loadable({
+//   Loader: () => import('./FilterAttribute'),
+//   Loading: () => null,
+// });
 
-export const Product = Loadable({
-  loader: () => import('./Product'),
-  loading: () => null,
-});
+// Export const Product = Loadable({
+//   Loader: () => import('./Product'),
+//   Loading: () => null,
+// });
 
-export const ProductGallery = Loadable({
-  loader: () => import('./ProductGallery'),
-  loading: () => null,
-});
+// Export const ProductGallery = Loadable({
+//   Loader: () => import('./ProductGallery'),
+//   Loading: () => null,
+// });
 
-export const Reviews = Loadable({
-  loader: () => import('./Reviews'),
-  loading: () => null,
-});
+// Export const Reviews = Loadable({
+//   Loader: () => import('./Reviews'),
+//   Loading: () => null,
+// });
 
-export const Cart = Loadable({
-  loader: () => import('./Cart'),
-  loading: () => null,
-});
+// Export const Cart = Loadable({
+//   Loader: () => import('./Cart'),
+//   Loading: () => null,
+// });
 
-export const Favorites = Loadable({
-  loader: () => import('./Favorites'),
-  loading: () => null,
-});
+// Export const Favorites = Loadable({
+//   Loader: () => import('./Favorites'),
+//   Loading: () => null,
+// });
 
-export const Search = Loadable({
-  loader: () => import('./Search'),
-  loading: () => null,
-});
+// Export const Search = Loadable({
+//   Loader: () => import('./Search'),
+//   Loading: () => null,
+// });
 
-export const Login = Loadable({
-  loader: () => import('./Login'),
-  loading: () => null,
-});
+// Export const Login = Loadable({
+//   Loader: () => import('./Login'),
+//   Loading: () => null,
+// });
 
-export const Orders = Loadable({
-  loader: () => import('./Orders'),
-  loading: () => null,
-});
+// Export const Orders = Loadable({
+//   Loader: () => import('./Orders'),
+//   Loading: () => null,
+// });
 
-export const WriteReview = Loadable({
-  loader: () => import('./WriteReview'),
-  loading: () => null,
-});
+// Export const WriteReview = Loadable({
+//   Loader: () => import('./WriteReview'),
+//   Loading: () => null,
+// });

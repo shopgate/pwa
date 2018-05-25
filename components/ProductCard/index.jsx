@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
