@@ -20,7 +20,7 @@ export default {
   viewSwitch: "[data-test-id='viewSwitch']",
   productWithManyProps4GridViewImage: "[data-test-id='productGrid'] img[alt='Product with many Properties - 4 -']",
   productWithManyProps4GridViewName: "[style='display: block;'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
-  productWithManyProps4GridViewFavButton: "[data-test-id='link: /item/393939'] [data-test-id='favorites'] [data-test-id='button']",
+  productWithManyProps4GridViewFavButton: "[data-test-id='link: /item/393939'] [data-test-id='favorites'] [data-test-id='favoriteButton']",
   productWithManyProps4GridViewPrice: "[data-test-id='productGrid'] [data-test-id='link: /item/393939'] [data-test-id='minPrice: 0 price: 199 currency: EUR']",
   productWithManyProps4ListViewImage: "[data-test-id='productList'] img[alt='Product with many Properties - 4 -']",
   productWithManyProps4ListViewName: "[data-test-id='productList'] [data-test-id='Productname: Product with many Properties - 4 -']",
