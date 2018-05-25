@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
 import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
-// import SearchButton from './components/SearchButton';
-// import CartButton from './components/CartButton';
-// import ApplyFilterButton from './components/ApplyFilterButton';
-// import Content from './components/Content';
+// Import SearchButton from './components/SearchButton';
+// Import CartButton from './components/CartButton';
+// Import ApplyFilterButton from './components/ApplyFilterButton';
+// Import Content from './components/Content';
 import styles from './style';
 
 /**
@@ -16,7 +18,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-class Navigator extends Component {
+class Navigator extends PureComponent {
   static propTypes = {
     filterOpen: PropTypes.bool.isRequired,
     submitSearch: PropTypes.func.isRequired,
@@ -38,23 +40,6 @@ class Navigator extends Component {
   };
 
   /**
-   * Only update when the path changes.
-   * @param {Object} nextProps The next set of component props.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.backgroundColor !== nextProps.backgroundColor ||
-      this.props.textColor !== nextProps.textColor ||
-      this.props.showTitle !== nextProps.showTitle ||
-      this.props.showSearch !== nextProps.showSearch ||
-      this.props.filterOpen !== nextProps.filterOpen ||
-      this.props.navigatorEnabled !== nextProps.navigatorEnabled ||
-      this.props.showLoadingBar !== nextProps.showLoadingBar
-    );
-  }
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -69,32 +54,61 @@ class Navigator extends Component {
     };
 
     return (
-      <header
-        className={styles.header}
-        data-test-id="Navigator"
-        role="banner"
-        style={headerStyle}
-      >
-        <Grid className={styles.grid} component="section" wrap={false}>
-          <NavButton />
-          {/* 
-          <Grid.Item className={styles.title} component="div" grow={1}>
-            {this.props.showTitle &&
-              <Content />
-            }
-          </Grid.Item>
-          {(this.props.filterOpen) &&
-            <div className={styles.applyButton}>
-              <ApplyFilterButton />
-            </div>
-          }
-          {this.props.showSearch &&
-            <SearchButton onClick={this.props.submitSearch} />
-          }
-          <CartButton /> */}
-        </Grid>
-        <ProgressBar isVisible={this.props.showLoadingBar} />
-      </header>
+      <Fragment>
+        <Portal name={portals.NAV_BAR_BEFORE} />
+        <Portal name={portals.NAV_BAR}>
+          <header
+            className={styles.header}
+            data-test-id="Navigator"
+            role="banner"
+            style={headerStyle}
+          >
+            <Portal name={portals.NAV_BAR_NAVIGATOR_BEFORE} />
+            <Portal name={portals.NAV_BAR_NAVIGATOR}>
+              <Grid className={styles.grid} component="section" wrap={false}>
+                <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_BEFORE} />
+                <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON} props={{ NavButton }}>
+                  <NavButton />
+                </Portal>
+                <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER} />
+                {/* <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_BEFORE} />
+                <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
+                  <Grid.Item className={styles.title} component="div" grow={1}>
+                    {this.props.showTitle &&
+                    <Content />
+                    }
+                  </Grid.Item>
+                </Portal>
+                <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_AFTER} />
+                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_BEFORE} />
+                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS} >
+                  {(this.props.filterOpen) &&
+                  <div className={styles.applyButton}>
+                    <ApplyFilterButton />
+                  </div>
+                  }
+                  {this.props.showSearch &&
+                  <SearchButton onClick={this.props.submitSearch} />
+                  }
+                  <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE} />
+                  <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON} props={{ CartButton }}>
+                    <CartButton />
+                  </Portal>
+                  <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_AFTER} />
+                </Portal>
+                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_AFTER} /> */}
+              </Grid>
+            </Portal>
+            <Portal name={portals.NAV_BAR_NAVIGATOR_AFTER} />
+            <Portal name={portals.NAV_BAR_PROGRESS_BAR_BEFORE} />
+            <Portal name={portals.NAV_BAR_PROGRESS_BAR} props={{ ProgressBar }}>
+              <ProgressBar isVisible={this.props.showLoadingBar} />
+            </Portal>
+            <Portal name={portals.NAV_BAR_PROGRESS_BAR_AFTER} />
+          </header>
+        </Portal>
+        <Portal name={portals.NAV_BAR_AFTER} />
+      </Fragment>
     );
   }
 }

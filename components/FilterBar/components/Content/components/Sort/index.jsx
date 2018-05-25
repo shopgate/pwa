@@ -40,6 +40,7 @@ const Sort = ({ changeSort, sort }) => (
     item={Item}
     className={styles.selectBox}
     classNames={styles}
+    testId="sorting"
   />
 );
 
