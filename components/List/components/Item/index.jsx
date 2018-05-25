@@ -86,6 +86,8 @@ class Item extends Component {
    * @returns {JSX}
    */
   render() {
+    const { title } = this.props;
+
     /**
      * If this item is disabled, selected or doesn't have a valid
      * link or click handler then wrap the content with other components.
@@ -101,7 +103,7 @@ class Item extends Component {
     if (this.props.link) {
       return (
         <Glow className={this.props.className}>
-          <Link href={this.props.link} onClick={this.props.onClick}>
+          <Link href={this.props.link} onClick={this.props.onClick} state={{ title }}>
             {this.renderContent()}
           </Link>
         </Glow>

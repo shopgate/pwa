@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { history } from '@shopgate/pwa-common/helpers/router';
-import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import variables from 'Styles/variables';
 import parseHTML from './helpers/parseHTML';
 import { handleYouTube } from './helpers/handleDOM';
@@ -16,6 +14,7 @@ class Html extends Component {
    * @type {Object}
    */
   static propTypes = {
+    navigate: PropTypes.func.isRequired,
     settings: PropTypes.shape({
       defaultPadding: PropTypes.bool.isRequired,
       html: PropTypes.string.isRequired,
@@ -69,11 +68,8 @@ class Html extends Component {
     const aTag = e.target.closest('a');
 
     if (aTag && aTag.attributes.href) {
-      const href = aTag.attributes.href.value;
-      const link = new ParsedLink(href);
-
       e.preventDefault();
-      link.open(history);
+      this.props.navigate(aTag.attributes.href.value);
     }
   };
 
