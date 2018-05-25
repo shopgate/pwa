@@ -23,6 +23,7 @@ const colors =  {
   error: '#ff0000',
 };
 
+// WARNING: if this is extended, you need to adjust style/variables.js as well.
 module.exports = {
   font: {
     family: 'system, -apple-system, "SF Pro Display", "Helvetica Neue", "Lucida Grande"',
@@ -41,6 +42,9 @@ module.exports = {
       bigger: 20,
       xbig: 32,
       xxbig: 64,
+    },
+    navbar: {
+      height: 56,
     },
     navigator: {
       height: 56,
