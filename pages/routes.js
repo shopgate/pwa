@@ -35,10 +35,10 @@ export const Page = Loadable({
 //   Loading: () => null,
 // });
 
-// Export const Cart = Loadable({
-//   Loader: () => import('./Cart'),
-//   Loading: () => null,
-// });
+export const Cart = Loadable({
+  loader: () => import('./Cart'),
+  loading: () => null,
+});
 
 // Export const Favorites = Loadable({
 //   Loader: () => import('./Favorites'),
