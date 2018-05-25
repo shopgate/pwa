@@ -7,7 +7,6 @@ import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
 import Products from './components/Products';
 import Empty from './components/Empty';
-import connect from './connector';
 
 /**
  * The category view component.
@@ -62,30 +61,10 @@ class Category extends Component {
   render() {
     return (
       <View title={this.title}>
-        {this.props.isFilterBarShown && <FilterBar />}
-
-        {/* CATEGORY LIST */}
-        <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: this.id }} />
-        <Portal name={portals.CATEGORY_LIST} props={{ categoryId: this.id }}>
-          <CategoryList />
-        </Portal>
-        <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: this.id }} />
-
-        {/* PRODUCT LIST */}
-        <Portal name={portals.PRODUCT_LIST_BEFORE} props={{ categoryId: this.id }} />
-        <Portal name={portals.PRODUCT_LIST} props={{ categoryId: this.id }}>
-          {this.props.hasProducts && <Products />}
-        </Portal>
-        <Portal name={portals.PRODUCT_LIST_AFTER} props={{ categoryId: this.id }} />
-
-        <Empty
-          headlineText="category.no_result.heading"
-          bodyText="category.no_result.body"
-          searchPhrase={this.title}
-        />
+        <div />
       </View>
     );
   }
 }
 
-export default connect(Category);
+export default Category;

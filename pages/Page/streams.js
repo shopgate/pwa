@@ -1,5 +1,5 @@
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 export const pageDidEnter$ = routeDidEnter$
   .filter(({ action }) => (

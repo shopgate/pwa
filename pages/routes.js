@@ -10,10 +10,10 @@ export const RootCategory = Loadable({
   loading: () => null,
 });
 
-// Export const Category = Loadable({
-//   Loader: () => import('./Category'),
-//   Loading: () => null,
-// });
+export const Category = Loadable({
+  loader: () => import('./Category'),
+  loading: () => null,
+});
 
 // Export const Filter = Loadable({
 //   Loader: () => import('./Filter'),
