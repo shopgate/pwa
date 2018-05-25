@@ -29,6 +29,7 @@ module.exports = {
     lineHeight: 1.5,
   },
   colors,
+  // WARNING: if this is extended, you need to adjust style/variables.js as well.
   variables: {
     materialShadow,
     gap: {
@@ -43,6 +44,9 @@ module.exports = {
       icon: 216,
       titleTopGap: 36,
       buttonVerticalGap: 24,
+    },
+    navbar: {
+      height: 56,
     },
     navigator: {
       height: 56,
