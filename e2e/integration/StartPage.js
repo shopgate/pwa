@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 import els from '../elements/de';
 
 describe('AndroidGMDTest startPage', () => {
