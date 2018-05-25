@@ -215,23 +215,25 @@ class VariantSelects extends Component {
     };
 
     return (
-      <Picker
-        buttonComponent={VariantPickerButton}
-        buttonProps={buttonProps}
-        items={items}
-        value={item.value}
-        placeholder={
-          <I18n.Text string="product.pick_an_attribute" params={[item.label]} />
-        }
-        label={item.label}
-        onClose={this.handleOnClose}
-        onChange={value => this.handleOnChange(item.id, value)}
-        key={item.id}
-        disabled={item.disabled}
-        duration={duration}
-        ref={(element) => { this.pickers[item.id] = element; }}
-        isOpen={this.state.openPickerId === item.id}
-      />
+      <div data-test-id={item.label}>
+        <Picker
+          buttonComponent={VariantPickerButton}
+          buttonProps={buttonProps}
+          items={items}
+          value={item.value}
+          placeholder={
+            <I18n.Text string="product.pick_an_attribute" params={[item.label]} />
+          }
+          label={item.label}
+          onClose={this.handleOnClose}
+          onChange={value => this.handleOnChange(item.id, value)}
+          key={item.id}
+          disabled={item.disabled}
+          duration={duration}
+          ref={(element) => { this.pickers[item.id] = element; }}
+          isOpen={this.state.openPickerId === item.id}
+        />
+      </div>
     );
   }
 
@@ -268,7 +270,7 @@ class VariantSelects extends Component {
     }
 
     return (
-      <div data-test-id="varaintsPicker">
+      <div data-test-id="variantsPicker">
         <RouteGuard>
           {this.createPickers(selection)}
         </RouteGuard>

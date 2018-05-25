@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import els from "../elements/de"
+import els from '../elements/de';
 
 describe('AndroidGMDTest productPage', () => {
   it('should check for productImage', () => {
@@ -58,26 +58,74 @@ describe('AndroidGMDTest productPage', () => {
       .should('be.visible');
   });
 
-  it('should check for reviewSection', () => {
-    cy.get(els.ReviewSection)
-      .scrollIntoView()
-      .should('be.visible');
-  });
-
   it('should check for taxDislcaimer', () => {
     cy.get(els.taxDisclaimer)
       .scrollIntoView()
       .should('be.visible');
   });
 
-  it('it should check for submit review button', () => {
-    cy.get(els.writeReviewButton)
+  it('should check for reviewSection', () => {
+    cy.visit('/item/393339');
+    cy.get(els.ReviewSection)
+      .scrollIntoView()
       .should('be.visible');
   });
 
-  it('it should ', () => {
+  it('should check for submit review button', () => {
+    cy.get(els.writeReviewButton)
+      .scrollIntoView()
+      .should('be.visible');
+  });
+
+  it('should check for reviewStars', () => {
+    cy.get(els.ratingStars)
+      .should('be.visible');
+  });
+
+  it('should check for review preview', () => {
+    cy.get(els.productWithRating3Review1Title)
+      .scrollIntoView()
+      .should('be.visible');
+    cy.get(els.productWithRating3Review2Title)
+      .scrollIntoView()
+      .should('be.visible');
+  });
+
+  it('should check for show all reviews button', () => {
+    cy.get(els.showAllReviewsButton)
+      .should('be.visible');
+  });
+
+  it('should check for variants', () => {
     cy.visit('/item/393639');
-    cy.get()
+    cy.get(els.variantsPicker)
+      .should('be.visible');
+    cy.get(els.variantPickerColor)
+      .should('be.visible');
+    cy.get(els.variantPickerShoeSize)
+      .should('be.visible');
+  });
+
+  it('should check for options', () => {
+    cy.visit('/item/31303937');
+    cy.get(els.optionsPicker)
+      .should('be.visible');
+    cy.get(els.optionPickerGlow)
+      .should('be.visible');
+    cy.get(els.optionPickerBallColor)
+      .should('be.visible');
+  });
+
+  it('should check for base price', () => {
+    cy.visit('/item/393132');
+    cy.get(els.productWithBasePrice1basePrice)
+      .scrollIntoView()
+      .should('be.visible');
+  });
+
+  it('should check for strike price', () => {
+    cy.visit('/item/31303634');
+    cy.get(els.productWithStrikePrice4StrikePrice)
       .should('be.visible');
   });
 });

@@ -93,7 +93,7 @@ class Options extends Component {
     }
 
     return (
-      <div>
+      <div data-test-id="optionsPicker">
         {options.map(({
  id, type, label, items,
 }) => {
@@ -102,25 +102,27 @@ class Options extends Component {
           }
 
           return (
-            <Picker
-              key={id}
-              label={label}
-              items={items.map(item => ({
-                ...item,
-                rightComponent: (
-                  <PriceDifference
-                    className={styles.price}
-                    currency={item.currency}
-                    difference={item.price}
-                  />
-                ),
-              }))}
-              placeholder={
-                <I18n.Text string="product.pick_an_attribute" params={[label]} />
-              }
-              value={currentOptions[id]}
-              onChange={value => this.handlePickerChange(id, value)}
-            />
+            <div data-test-id={label}>
+              <Picker
+                key={id}
+                label={label}
+                items={items.map(item => ({
+                  ...item,
+                  rightComponent: (
+                    <PriceDifference
+                      className={styles.price}
+                      currency={item.currency}
+                      difference={item.price}
+                    />
+                  ),
+                }))}
+                placeholder={
+                  <I18n.Text string="product.pick_an_attribute" params={[label]} />
+                }
+                value={currentOptions[id]}
+                onChange={value => this.handlePickerChange(id, value)}
+              />
+            </div>
           );
         })}
       </div>
