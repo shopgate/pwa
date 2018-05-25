@@ -1,4 +1,6 @@
 import { createSelector } from 'reselect';
+import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
+import { getCurrentRoute, getRouterStack } from '@shopgate/pwa-common/selectors/router';
 import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';
 
@@ -10,11 +12,14 @@ import { DEFAULT_SORT } from '../constants/DisplayOptions';
 export const getHistoryState = state => state.history;
 
 /**
- * Selects the current query params from history state.
+ * Selects the current query params from current route.
  * @param {Object} state The global state.
  * @return {Object}
  */
-export const getQueryParams = state => getHistoryState(state).queryParams;
+export const getQueryParams = createSelector(
+  getCurrentRoute,
+  route => route.query
+);
 
 /**
  * Retrieves a single url parameter from the query parameters object.
@@ -22,7 +27,16 @@ export const getQueryParams = state => getHistoryState(state).queryParams;
  * @param {string} param The dedicated url parameter.
  * @return {*} The URL parameter value.
  */
-export const getQueryParam = (state, param) => getQueryParams(state)[param];
+export const getQueryParam = createSelector(
+  (state, param) => param,
+  getQueryParams,
+  (param, params) => {
+    const queryParam = params[param];
+
+    if (!queryParam) return null;
+    return queryParam;
+  }
+);
 
 /**
  * Retrieves the sort order from the URL query parameters.
@@ -41,13 +55,7 @@ export const getSortOrder = createSelector(
  */
 export const getSearchPhrase = createSelector(
   state => getQueryParam(state, 's'),
-  (param) => {
-    if (param) {
-      return param.trim();
-    }
-
-    return null;
-  }
+  param => (param ? param.trim() : null)
 );
 
 /**
@@ -56,8 +64,8 @@ export const getSearchPhrase = createSelector(
  * @returns {string}
  */
 export const getHistoryAction = createSelector(
-  getHistoryState,
-  historyState => historyState.action
+  getCurrentAction,
+  action => action
 );
 
 /**
@@ -66,8 +74,8 @@ export const getHistoryAction = createSelector(
  * @returns {string}
  */
 export const getHistoryPathname = createSelector(
-  getHistoryState,
-  historyState => historyState.pathname
+  getCurrentRoute,
+  route => route.pathname
 );
 
 /**
@@ -76,8 +84,8 @@ export const getHistoryPathname = createSelector(
  * @return {number}
  */
 export const getHistoryLength = createSelector(
-  getHistoryState,
-  historyState => historyState.length
+  getRouterStack,
+  stack => stack.length
 );
 
 /**

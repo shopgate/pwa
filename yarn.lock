@@ -161,52 +161,53 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.14", "@virtuous/conductor-events@^1.0.0-beta.14":
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.14.tgz#5fa0e83958c3fe451097e6b91829aefc3775b063"
+"@virtuous/conductor-events@1.0.0-beta.15", "@virtuous/conductor-events@^1.0.0-beta.15":
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.15.tgz#7b85f2ed4ef33940cfd3073f010188045ed1b4a8"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.14"
+    "@virtuous/conductor" "1.0.0-beta.15"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/conductor-helpers@1.0.0-beta.14", "@virtuous/conductor-helpers@^1.0.0-beta.14":
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.14.tgz#d50e7f53f4ff128efc4f1597a43877d09346d8d4"
+"@virtuous/conductor-helpers@1.0.0-beta.15", "@virtuous/conductor-helpers@^1.0.0-beta.15":
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.15.tgz#7e4580c1cea1a19b636300b6898e8971ec7fa89c"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.14"
+    "@virtuous/conductor" "1.0.0-beta.15"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/conductor@1.0.0-beta.14", "@virtuous/conductor@^1.0.0-beta.14":
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.14.tgz#4ac34ecdff82cab21f27943c6be6c8753e293c3e"
+"@virtuous/conductor@1.0.0-beta.15", "@virtuous/conductor@^1.0.0-beta.15":
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.15.tgz#6efcd949c99386dff317c8b20d5bba4f1457b93d"
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
+    query-string "^6.1.0"
     react "^16.3.2"
     react-dom "^16.3.2"
     url-pattern "^1.0.3"
 
-"@virtuous/react-conductor@^1.0.0-beta.14":
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.14.tgz#9ec31ef08a394af4a2e5e8ef795340e6387fe88e"
+"@virtuous/react-conductor@^1.0.0-beta.15":
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.15.tgz#22907e77a137cb9cdfbef84c2031821d0c8fee37"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.14"
-    "@virtuous/conductor-events" "1.0.0-beta.14"
-    "@virtuous/conductor-helpers" "1.0.0-beta.14"
+    "@virtuous/conductor" "1.0.0-beta.15"
+    "@virtuous/conductor-events" "1.0.0-beta.15"
+    "@virtuous/conductor-helpers" "1.0.0-beta.15"
     gsap "^1.20.4"
     react "^16.3.2"
     react-dom "^16.3.2"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@^1.0.0-beta.14":
-  version "1.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.14.tgz#6ccb8f95a54e0ddb9442c8984a37d18c3238567a"
+"@virtuous/redux-conductor@^1.0.0-beta.15":
+  version "1.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.15.tgz#190c9d5c7e4f6fe98e2d36c3e561d96b82069e22"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.14"
-    "@virtuous/conductor-events" "1.0.0-beta.14"
-    "@virtuous/conductor-helpers" "1.0.0-beta.14"
+    "@virtuous/conductor" "1.0.0-beta.15"
+    "@virtuous/conductor-events" "1.0.0-beta.15"
+    "@virtuous/conductor-helpers" "1.0.0-beta.15"
     react "^16.3.2"
     react-dom "^16.3.2"
 
@@ -6321,6 +6322,13 @@ qs@~6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
+query-string@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.1.0.tgz#01e7d69f6a0940dac67a937d6c6325647aa4532a"
+  dependencies:
+    decode-uri-component "^0.2.0"
+    strict-uri-encode "^2.0.0"
+
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
@@ -7337,6 +7345,10 @@ stream-to-observable@^0.2.0:
   resolved "https://registry.yarnpkg.com/stream-to-observable/-/stream-to-observable-0.2.0.tgz#59d6ea393d87c2c0ddac10aa0d561bc6ba6f0e10"
   dependencies:
     any-observable "^0.2.0"
+
+strict-uri-encode@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
 
 string-length@^2.0.0:
   version "2.0.0"
