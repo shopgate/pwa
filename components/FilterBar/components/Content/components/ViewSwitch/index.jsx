@@ -16,6 +16,7 @@ const ViewSwitch = ({ toggleViewMode, viewMode }) => (
   <button
     className={styles.button}
     onClick={() => toggleViewMode(viewMode === GRID_VIEW ? LIST_VIEW : GRID_VIEW)}
+    data-test-id="viewSwitch"
   >
     <Ripple className={styles.ripple} overflow>
       {viewMode === GRID_VIEW &&
