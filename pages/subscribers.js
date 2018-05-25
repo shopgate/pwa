@@ -23,6 +23,7 @@ import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkP
 // Theme
 import navigator from 'Components/Navigator/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
+import rootCategory from 'Pages/RootCategory/subscriptions';
 import category from 'Pages/Category/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
@@ -68,6 +69,7 @@ const subscriptions = [
   // Theme subscribers.
   navigator,
   viewport,
+  rootCategory,
   category,
   coupon,
   favorites,
