@@ -14,7 +14,7 @@ export const getCurrentPageId = createSelector(
       return PAGE_ID_INDEX;
     }
 
-    if (route.pathname.startsWith(PAGE_PATH)) {
+    if (route.params.pageId) {
       return route.params.pageId;
     }
 
