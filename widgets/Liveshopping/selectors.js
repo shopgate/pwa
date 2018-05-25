@@ -6,7 +6,6 @@ import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 
 /**
  * Retrieves the result hash.
- * @param {Object} state The application state.
  * @returns {string} The result hash.
  */
 const getResultHash = () => generateResultHash({
