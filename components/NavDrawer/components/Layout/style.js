@@ -9,6 +9,7 @@ const container = css({
   height: '100vh',
   maxWidth: '67vw',
   transition: `transform ${duration}ms ${easing}`,
+  willChange: 'transform',
 }).toString();
 
 const content = css({
