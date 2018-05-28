@@ -14,7 +14,32 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+const istanbul = require('istanbul-lib-coverage');
+
+const map = istanbul.createCoverageMap({});
+
+Cypress.on('window:before:unload', (e) => {
+  const coverage = e.currentTarget.__coverage__;
+
+  if (coverage) {
+    map.merge(coverage);
+  }
+});
+
+after(() => {
+  cy.window().then((win) => {
+    const coverage = win.__coverage__;
+
+    if (coverage) {
+      map.merge(coverage);
+    }
+
+    cy.writeFile('.nyc_output/out.json', JSON.stringify(map));
+    cy.exec('nyc report --temp-directory e2e/.nyc_output --reporter=html --reporter=lcov');
+  });
+});

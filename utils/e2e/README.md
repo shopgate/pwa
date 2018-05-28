@@ -52,6 +52,9 @@ The elements folder stores all elements used in tests as strings.
 
 Please configure the cypress.json to meet your enviroment. 
 
+## Coverage report
+A coverage report can be found in ./themes/"USED_THEME"/coverage as html output after a test run.
+
 ## About Shopgate
 
 Shopgate is the leading mobile commerce platform.
