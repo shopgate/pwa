@@ -12,7 +12,7 @@ import connect from './connector';
 const handleAddToCart = ({
   productId, addToCart, showVariantModal, isBaseProduct,
 }) => {
-  if (isBaseProduct(productId)) {
+  if (isBaseProduct) {
     showVariantModal(productId);
     return;
   }
@@ -44,8 +44,8 @@ const CTAButtons = props => (
     <AddToCartButton
       handleAddToCart={() => handleAddToCart(props)}
       isLoading={false}
-      isDisabled={!props.isOrderable(props.productId)}
-      isOrderable={!props.isBaseProduct(props.productId) && props.isOrderable(props.productId)}
+      isDisabled={!props.isOrderable}
+      isOrderable={!props.isBaseProduct && props.isOrderable}
       noShadow
     />
   </div>
@@ -57,8 +57,8 @@ CTAButtons.propTypes = {
   active: PropTypes.bool,
   addToCart: PropTypes.func,
   favoritesOnce: PropTypes.bool,
-  isBaseProduct: PropTypes.func,
-  isOrderable: PropTypes.func,
+  isBaseProduct: PropTypes.bool,
+  isOrderable: PropTypes.bool,
   onRippleComplete: PropTypes.func,
   removeThrottle: PropTypes.number,
   showVariantModal: PropTypes.func,
@@ -68,8 +68,8 @@ CTAButtons.defaultProps = {
   active: null,
   addToCart: () => {},
   favoritesOnce: false,
-  isBaseProduct: null,
-  isOrderable: () => {},
+  isBaseProduct: true,
+  isOrderable: true,
   onRippleComplete: () => {},
   removeThrottle: null,
   showVariantModal: () => {},

@@ -20,8 +20,8 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       active={null}
       addToCart={[Function]}
       favoritesOnce={false}
-      isBaseProduct={[Function]}
-      isOrderable={[Function]}
+      isBaseProduct={true}
+      isOrderable={true}
       onRippleComplete={[Function]}
       productId="product_1"
       removeThrottle={null}
@@ -56,7 +56,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         </Connect(FavoritesButton)>
         <MockedAddToCartButton
           handleAddToCart={[Function]}
-          isDisabled={true}
+          isDisabled={false}
           isLoading={false}
           isOrderable={false}
           noShadow={true}

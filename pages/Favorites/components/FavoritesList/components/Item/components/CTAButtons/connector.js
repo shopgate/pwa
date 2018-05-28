@@ -9,9 +9,9 @@ import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  isBaseProduct: productId => isBaseProduct(state, productId),
-  isOrderable: productId => isOrderable(state, productId),
+const mapStateToProps = (state, { productId }) => ({
+  isBaseProduct: isBaseProduct(state, productId),
+  isOrderable: isOrderable(state, productId),
 });
 
 /**

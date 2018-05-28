@@ -46,6 +46,7 @@ exports[`<Header /> should render empty 1`] = `
             <div
               aria-label="reviews.rating_stars"
               className="css-13azwyo "
+              data-test-id="ratedStars: 0"
             >
               <div
                 className="css-4s85e9"
@@ -400,6 +401,7 @@ exports[`<Header /> should render rating summary 1`] = `
             <div
               aria-label="reviews.rating_stars"
               className="css-13azwyo "
+              data-test-id="ratedStars: 2.5"
             >
               <div
                 className="css-4s85e9"
