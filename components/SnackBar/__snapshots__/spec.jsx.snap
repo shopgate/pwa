@@ -16,14 +16,15 @@ exports[`<SnackBar /> should render component without action 1`] = `
   <SnackBar>
     <Connect(Toast)
       actionButton={[Function]}
-      className="css-1hkftja"
+      className="css-tcsh9y"
       container={[Function]}
       message={[Function]}
     >
       <Toast
         actionButton={[Function]}
-        className="css-1hkftja"
+        className="css-tcsh9y"
         container={[Function]}
+        dismissed={false}
         dispatchAction={[Function]}
         hasNextToast={false}
         message={[Function]}
@@ -36,6 +37,7 @@ exports[`<SnackBar /> should render component without action 1`] = `
             "message": "Lorem ipsum dolor sit amet.",
           }
         }
+        unblockToast={[Function]}
       >
         <div
           aria-live="polite"
@@ -50,20 +52,20 @@ exports[`<SnackBar /> should render component without action 1`] = `
                 "out": "",
               }
             }
-            className="css-1hkftja"
+            className="css-tcsh9y"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-1hkftja css-1rg7udn css-1dwe0qx"
+              className="css-tcsh9y css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >
               <Container>
                 <div
-                  className="css-djhto0"
+                  className="css-1byphgd"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
@@ -111,14 +113,15 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
   <SnackBar>
     <Connect(Toast)
       actionButton={[Function]}
-      className="css-1hkftja"
+      className="css-tcsh9y"
       container={[Function]}
       message={[Function]}
     >
       <Toast
         actionButton={[Function]}
-        className="css-1hkftja"
+        className="css-tcsh9y"
         container={[Function]}
+        dismissed={false}
         dispatchAction={[Function]}
         hasNextToast={false}
         message={[Function]}
@@ -132,6 +135,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
             "message": "Lorem ipsum dolor sit amet.",
           }
         }
+        unblockToast={[Function]}
       >
         <div
           aria-live="polite"
@@ -146,20 +150,20 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                 "out": "",
               }
             }
-            className="css-1hkftja"
+            className="css-tcsh9y"
             isOpen={true}
             onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
             <div
-              className="css-1hkftja css-1rg7udn css-1dwe0qx"
+              className="css-tcsh9y css-1rg7udn css-1dwe0qx"
               onAnimationEnd={[Function]}
               style={Object {}}
             >
               <Container>
                 <div
-                  className="css-djhto0"
+                  className="css-1byphgd"
                 >
                   <Message
                     text="Lorem ipsum dolor sit amet."
@@ -185,7 +189,7 @@ exports[`<SnackBar /> shuld render component with action button 1`] = `
                     text="click me"
                   >
                     <button
-                      className="css-1khifuo"
+                      className="css-yx1i31"
                       onClick={[Function]}
                     >
                       <Translate

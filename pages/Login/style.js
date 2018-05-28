@@ -17,6 +17,7 @@ const subline = css({
   fontSize: '1.125rem',
   color: colors.shade6,
   marginBottom: variables.gap.xxbig,
+  marginTop: 4,
 }).toString();
 
 const input = css({
@@ -47,6 +48,8 @@ const signup = css({
   display: 'inline-block',
   color: colors.primary,
   width: 'auto',
+  margin: '-.35em',
+  padding: '.35em',
 }).toString();
 
 export default {

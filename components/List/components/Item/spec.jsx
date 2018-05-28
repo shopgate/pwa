@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import Glow from 'Components/Glow';
+import Glow from '@shopgate/pwa-ui-shared/Glow';
 import List from '../../index';
 
 describe.skip('<List.Item />', () => {

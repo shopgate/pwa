@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isEqual } from 'lodash';
-import CardList from 'Components/CardList';
+import CardList from '@shopgate/pwa-ui-shared/CardList';
 import Item from './components/Item';
 import styles from './style';
 

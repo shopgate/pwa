@@ -20,7 +20,8 @@ const title = css({
   fontSize: 'initial',
   lineHeight: 1.2,
   paddingRight: '1.5em',
-  wordBreak: 'break-all',
+  wordBreak: ['keep-all', 'break-word'],
+  hyphens: 'auto',
 }).toString();
 
 const priceWrapper = css({
@@ -52,7 +53,7 @@ const favorites = css({
   right: 16,
   left: 'auto',
   transform: 'translate3d(0, -50%, 0)',
-  zIndex: 10,
+  zIndex: 1,
 }).toString();
 
 export default {

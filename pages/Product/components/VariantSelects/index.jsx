@@ -6,7 +6,7 @@ import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '@shopgate/pwa-common-commerce
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RouteGuard from '@shopgate/pwa-common/components/Router/components/RouteGuard';
 import Picker from 'Components/Picker';
-import Availability from 'Components/Availability';
+import Availability from '@shopgate/pwa-ui-shared/Availability';
 import VariantPickerButton from './components/VariantPickerButton';
 import ProductVariants from './components/ProductVariants';
 import connect from './connector';
@@ -215,23 +215,25 @@ class VariantSelects extends Component {
     };
 
     return (
-      <Picker
-        buttonComponent={VariantPickerButton}
-        buttonProps={buttonProps}
-        items={items}
-        value={item.value}
-        placeholder={
-          <I18n.Text string="product.pick_an_attribute" params={[item.label]} />
-        }
-        label={item.label}
-        onClose={this.handleOnClose}
-        onChange={value => this.handleOnChange(item.id, value)}
-        key={item.id}
-        disabled={item.disabled}
-        duration={duration}
-        ref={(element) => { this.pickers[item.id] = element; }}
-        isOpen={this.state.openPickerId === item.id}
-      />
+      <div data-test-id={item.label}>
+        <Picker
+          buttonComponent={VariantPickerButton}
+          buttonProps={buttonProps}
+          items={items}
+          value={item.value}
+          placeholder={
+            <I18n.Text string="product.pick_an_attribute" params={[item.label]} />
+          }
+          label={item.label}
+          onClose={this.handleOnClose}
+          onChange={value => this.handleOnChange(item.id, value)}
+          key={item.id}
+          disabled={item.disabled}
+          duration={duration}
+          ref={(element) => { this.pickers[item.id] = element; }}
+          isOpen={this.state.openPickerId === item.id}
+        />
+      </div>
     );
   }
 
@@ -268,7 +270,7 @@ class VariantSelects extends Component {
     }
 
     return (
-      <div>
+      <div data-test-id="variantsPicker">
         <RouteGuard>
           {this.createPickers(selection)}
         </RouteGuard>

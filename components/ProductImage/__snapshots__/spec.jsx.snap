@@ -9,6 +9,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   >
     <div
       className="css-15j45j0"
+      data-test-id="placeHolder"
     >
       <Placeholder
         className="css-19rc2oq"
@@ -28,7 +29,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   <Image
     alt={null}
     animating={true}
-    backgroundColor="#f2f2f2"
+    backgroundColor="#fff"
     className="css-1lwoc2u"
     forcePlaceholder={false}
     highestResolutionLoaded={[Function]}

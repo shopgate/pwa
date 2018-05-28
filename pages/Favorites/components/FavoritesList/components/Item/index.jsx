@@ -4,7 +4,7 @@ import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import CardItem from 'Components/CardList/components/Item';
+import CardItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import CTAButtons from './components/CTAButtons';
 import Image from './components/Image';
 import ProductInfo from './components/ProductInfo';

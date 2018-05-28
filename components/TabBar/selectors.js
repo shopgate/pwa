@@ -5,11 +5,13 @@ import {
   INDEX_PATH,
   SEARCH_PATH,
   CATEGORY_PATH,
+  LOGIN_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { hasFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {
@@ -55,11 +57,14 @@ export const getActiveTab = createSelector(
  */
 export const isTabBarVisible = createSelector(
   getHistoryPathname,
-  (pathname) => {
+  hasFavorites,
+  (pathname, favorites) => {
     if (
       pathname === CART_PATH ||
       pathname.startsWith(ITEM_PATH) ||
-      pathname.startsWith(FILTER_PATH)
+      pathname.startsWith(FILTER_PATH) ||
+      pathname.startsWith(LOGIN_PATH) ||
+      (pathname.startsWith(FAVORITES_PATH) && !favorites)
     ) {
       return false;
     }

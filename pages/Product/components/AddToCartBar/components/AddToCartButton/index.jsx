@@ -10,6 +10,7 @@ import styles from './style';
 class AddToCartButton extends Component {
   static propTypes = {
     handleAddToCart: PropTypes.func.isRequired,
+    isDisabled: PropTypes.bool.isRequired,
     itemCount: PropTypes.number.isRequired,
     openCart: PropTypes.func.isRequired,
   }
@@ -61,9 +62,10 @@ class AddToCartButton extends Component {
   render() {
     const { itemCount } = this.props;
     const style = this.state.opened ? { width: '40%' } : null;
+    const className = this.props.isDisabled ? styles.disabled : styles.button;
 
     return (
-      <button className={styles} style={style} onClick={this.handleClick}>
+      <button className={className} style={style} onClick={this.handleClick} data-test-id="addToCartButton">
         {!itemCount ? (
           <I18n.Text string="product.add_to_cart" />
         ) : (

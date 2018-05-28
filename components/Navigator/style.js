@@ -4,14 +4,8 @@ import variables from 'Styles/variables';
 
 const header = css({
   position: 'fixed',
-  height: [
-    `${variables.navigator.height + variables.statusBar.height}px`,
-    `calc(${variables.navigator.height}px + var(--safe-area-inset-top))`,
-  ],
-  paddingTop: [
-    `${variables.statusBar.height}px`,
-    'var(--safe-area-inset-top)',
-  ],
+  height: `calc(${variables.navbar.height}px + var(--safe-area-inset-top))`,
+  paddingTop: 'var(--safe-area-inset-top)',
   left: 0,
   top: 0,
   width: '100%',

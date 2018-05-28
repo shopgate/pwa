@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingStars from 'Components/RatingStars';
+import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
 
@@ -13,7 +13,7 @@ const AverageRating = ({ rating }) => {
   const { average = 0, count = 0 } = rating;
 
   return (
-    <div className={container} >
+    <div className={container} data-test-id="ratedStarsAverage">
       <RatingStars value={average} display="large" />
       <RatingCount count={count} />
     </div>

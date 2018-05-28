@@ -131,7 +131,8 @@ exports[`<ProductDescription /> should render description if data is available 1
       ready={true}
     >
       <div
-        className="css-18q71ft"
+        className="css-1qmeern"
+        data-test-id="<h1>foo</h1>"
       >
         <HtmlSanitizer
           decode={false}

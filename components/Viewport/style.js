@@ -1,4 +1,11 @@
 import { css } from 'glamor';
+import variables from 'Styles/variables';
+import colors from '../../styles/colors';
+
+css.global('html', {
+  '--tabbar-height': `${variables.tabBar.height}px`,
+  background: colors.light,
+});
 
 css.global('body', {
   userSelect: 'none',

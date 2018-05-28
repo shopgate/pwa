@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import FavoritesIcon from 'Components/icons/HeartIcon';
+import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import * as portals from '../../constants';
 import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disable-line import/no-named-as-default
 import TabBarAction from '../TabBarAction';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ActionButton from 'Components/ActionButton';
+import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import LoadMore from './index';
 
 jest.mock('./connector', () => Component => Component);

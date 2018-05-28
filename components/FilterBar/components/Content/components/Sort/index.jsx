@@ -6,7 +6,7 @@ import {
   SORT_PRICE_DESC,
 } from '@shopgate/pwa-common/constants/DisplayOptions';
 import SelectBox from '@shopgate/pwa-common/components/SelectBox';
-import SortIcon from 'Components/icons/SortIcon';
+import SortIcon from '@shopgate/pwa-ui-shared/icons/SortIcon';
 import Item from './components/Item';
 import connect from './connector';
 import styles from './style';
@@ -40,6 +40,7 @@ const Sort = ({ changeSort, sort }) => (
     item={Item}
     className={styles.selectBox}
     classNames={styles}
+    testId="sorting"
   />
 );
 
