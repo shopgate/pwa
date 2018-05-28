@@ -93,7 +93,6 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 0"
                   >
                     <div
                       className="css-4s85e9"
@@ -1032,7 +1031,6 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 5"
                   >
                     <div
                       className="css-4s85e9"
@@ -2113,7 +2111,6 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 5"
                   >
                     <div
                       className="css-4s85e9"
@@ -3194,7 +3191,6 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 5"
                   >
                     <div
                       className="css-4s85e9"
@@ -4276,7 +4272,6 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 5"
                   >
                     <div
                       className="css-4s85e9"
@@ -5358,7 +5353,6 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 5"
                   >
                     <div
                       className="css-4s85e9"
@@ -6429,7 +6423,6 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
-                    data-test-id="ratedStars: 0"
                   >
                     <div
                       className="css-4s85e9"
