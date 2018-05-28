@@ -1,20 +1,19 @@
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import toggleCartIcon from 'Components/Navigator/actions/toggleCartIcon';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
+import { cartWillEnter$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import setTitle from '../../components/View/actions/setTitle';
 
 /**
  * Cart subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function cart(subscribe) {
-  const cartRouteDidEnter$ = routeDidEnter(CART_PATH);
-
-  /**
-   * Gets triggered on entering the cart route.
-   */
-  subscribe(cartRouteDidEnter$, ({ dispatch }) => {
+  subscribe(cartWillEnter$, ({ action, dispatch }) => {
+    const { title } = action.route.state;
     dispatch(toggleCartIcon(false));
     dispatch(disableNavigatorSearch());
+    if (title) {
+      dispatch(setTitle(title));
+    }
   });
 }
