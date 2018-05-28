@@ -56,6 +56,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-1yhq1gr"
+        data-test-id="reviewTitle: "
       >
         <Title
           title=""
@@ -511,6 +512,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-1yhq1gr"
+        data-test-id="reviewTitle: Test review 2 "
       >
         <Title
           title="Test review 2 "
@@ -876,6 +878,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-1yhq1gr"
+        data-test-id="reviewTitle: "
       >
         <Title
           title=""
@@ -1275,6 +1278,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-1yhq1gr"
+        data-test-id="reviewTitle: "
       >
         <Title
           title=""

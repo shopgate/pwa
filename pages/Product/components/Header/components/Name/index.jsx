@@ -12,7 +12,9 @@ import styles from './style';
 const Name = ({ name }) => (
   <div className={styles.name}>
     <PlaceholderLabel className={styles.placeholder} ready={(name !== null)}>
-      <span>{name}</span>
+      <span data-test-id={`name: ${name}`}>
+        {name}
+      </span>
     </PlaceholderLabel>
   </div>
 );
