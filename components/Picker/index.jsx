@@ -54,6 +54,7 @@ class Picker extends Component {
             isDisabled={item.disabled}
             isSelected={index === selectedIndex}
             rightComponent={item.rightComponent}
+            testId={item.label}
           />
         ))}
       </List>

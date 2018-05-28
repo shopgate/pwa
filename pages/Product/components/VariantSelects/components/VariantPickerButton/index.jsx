@@ -36,7 +36,7 @@ const getButtonStyles = ({ highlighted, disabled }) => {
  * @returns {JSX} The rendered component.
  */
 const ProductVariantPickerButton = props => (
-  <button className={getButtonStyles(props)} onClick={props.openList}>
+  <button className={getButtonStyles(props)} onClick={props.openList} data-test-id="variantSelector">
     <span className={pickerButtonStyle.label}>{props.label}</span>
     {props.value && (
       <span className={pickerButtonStyle.value}>{props.value}</span>

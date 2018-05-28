@@ -11,7 +11,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Manufacturer = ({ manufacturer }) => (
-  <div className={styles.infoContainer}>
+  <div className={styles.infoContainer} data-test-id={`manufacturer: ${manufacturer}`}>
     <PlaceholderLabel className={styles.placeholder} ready={(manufacturer !== null)}>
       <BaseManufacturer text={(manufacturer || '')} />
     </PlaceholderLabel>
