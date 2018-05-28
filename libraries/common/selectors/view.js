@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getCurrentPathname } from './router';
+import { getCurrentPathname, getCurrentState } from './router';
 
 /**
  * Retrieves the view state from the global state.
@@ -37,3 +37,16 @@ export const isViewLoading = createSelector(
  * @return {boolean}
  */
 export const isCurrentViewLoading = state => isViewLoading(state, getCurrentPathname(state));
+
+/**
+ * Selects the current route title.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getCurrentTitle = createSelector(
+  getCurrentState,
+  (state) => {
+    if (!state || !state.title) return null;
+    return state.title;
+  }
+);
