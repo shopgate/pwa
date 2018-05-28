@@ -5,6 +5,7 @@ import {
   getCurrentCategoryId,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentTitle } from '@shopgate/pwa-common/selectors/view';
 import { isFilterBarShown } from './selectors';
 
 /**
@@ -19,6 +20,7 @@ const mapStateToProps = (state, props) => ({
   isFilterBarShown: isFilterBarShown(state, props),
   isRoot: !getCurrentCategoryId(state, props),
   ...getProductsResult(state, props),
+  title: getCurrentTitle(state),
 });
 
-export default connect(mapStateToProps, null, null, { withRef: true });
+export default connect(mapStateToProps);

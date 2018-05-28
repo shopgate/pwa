@@ -9,62 +9,31 @@ import Products from './components/Products';
 import Empty from './components/Empty';
 
 /**
- * The category view component.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
-class Category extends Component {
-  static propTypes = {
-    category: PropTypes.shape(),
-    hasProducts: PropTypes.bool,
-    isFilterBarShown: PropTypes.bool,
-    isRoot: PropTypes.bool,
-  };
+const Category = ({ category, title }) => {
+  return (
+    <View title={title}>
+      <div />
+    </View>
+  );
+};
 
-  static defaultProps = {
-    category: null,
-    hasProducts: false,
-    isFilterBarShown: true,
-    isRoot: true,
-  };
+Category.propTypes = {
+  category: PropTypes.shape(),
+  hasProducts: PropTypes.bool,
+  isFilterBarShown: PropTypes.bool,
+  isRoot: PropTypes.bool,
+  title: PropTypes.string,
+};
 
-  static contextTypes = {
-    history: PropTypes.shape(),
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * Returns the current view title.
-   * @return {string} The view title.
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-
-    if (this.props.isRoot) {
-      return __('titles.categories');
-    }
-
-    return this.props.category ? this.props.category.name : '';
-  }
-
-  /**
-   * Returns the current category ID.
-   * @return {string|null}
-   */
-  get id() {
-    return this.props.category ? this.props.category.id : null;
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <View title={this.title}>
-        <div />
-      </View>
-    );
-  }
-}
+Category.defaultProps = {
+  category: null,
+  hasProducts: false,
+  isFilterBarShown: true,
+  isRoot: true,
+  title: null,
+};
 
 export default Category;
