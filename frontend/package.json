@@ -4,7 +4,7 @@
   "description": "Shopgate Connect user privacy extension",
   "repository": {
     "type": "git",
-    "url": "ssh://git@stash.localdev.cc:7999/sgx/shopgate-user-privacy.git"
+    "url": "https://github.com/shopgate/ext-user-privacy"
   },
   "scripts": {
     "lint": "eslint --ignore-path ../.gitignore --ext .js --ext .jsx ."
