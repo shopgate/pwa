@@ -12,7 +12,7 @@ import Info from './components/Info';
  * @returns {JSX}
  */
 const Review = ({ review }) => (
-  <div className={styles}>
+  <div className={styles} data-test-id={`reviewTitle: ${review.title}`}>
     <Title title={review.title} />
     <Rating rate={review.rate} />
     <Text review={review.review} />
