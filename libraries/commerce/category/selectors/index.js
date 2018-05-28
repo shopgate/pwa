@@ -117,20 +117,10 @@ export const getCurrentCategoryChildCount = createSelector(
  * @returns {Array|null} The current categories collection.
  */
 export const getCurrentCategories = createSelector(
-  getCategoriesState,
-  getCurrentCategoryId,
-  getRootCategories,
-  getCurrentChildCategories,
-  (categoryState, categoryId, rootCategories, childCategories) => {
-    if (!categoryId && rootCategories && rootCategories.categories) {
-      return rootCategories.categories.map(id => categoryState[id]);
-    }
-
-    if (childCategories && childCategories.children) {
-      return childCategories.children.map(id => categoryState[id]);
-    }
-
-    return null;
+  [getCurrentChildCategories, getCategoriesState],
+  (childCategories, categoryState) => {
+    if (!childCategories || !childCategories.children) return null;
+    return childCategories.children.map(id => categoryState[id]);
   }
 );
 
