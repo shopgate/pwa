@@ -12,7 +12,9 @@
         "type": "pipeline",
         "id": "shopgate.user.getUser.v1",
         "trusted": "true",
-        "input": [],
+        "input": [
+          {"key": "sgxsMeta", "id": "1000"}
+        ],
         "output": [
           {"key": "mail", "id": "10"}
         ]
