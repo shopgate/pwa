@@ -1,39 +1,47 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import CategoryList from 'Components/CategoryList';
-import FilterBar from 'Components/FilterBar';
+// Import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
-import Products from './components/Products';
-import Empty from './components/Empty';
+// Import Products from './components/Products';
+// Import Empty from './components/Empty';
+import connect from './connector';
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Category = ({ category, title }) => {
+  const id = category ? category.id : null;
+
   return (
     <View title={title}>
-      <div />
+      {/* CATEGORY LIST */}
+      <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: id }} />
+      <Portal name={portals.CATEGORY_LIST} props={{ categoryId: id }}>
+        <CategoryList />
+      </Portal>
+      <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: id }} />
     </View>
   );
 };
 
 Category.propTypes = {
   category: PropTypes.shape(),
-  hasProducts: PropTypes.bool,
-  isFilterBarShown: PropTypes.bool,
-  isRoot: PropTypes.bool,
+  // HasProducts: PropTypes.bool,
+  // IsFilterBarShown: PropTypes.bool,
+  // IsRoot: PropTypes.bool,
   title: PropTypes.string,
 };
 
 Category.defaultProps = {
   category: null,
-  hasProducts: false,
-  isFilterBarShown: true,
-  isRoot: true,
+  // HasProducts: false,
+  // IsFilterBarShown: true,
+  // IsRoot: true,
   title: null,
 };
 
-export default Category;
+export default connect(Category);

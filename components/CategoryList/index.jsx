@@ -5,6 +5,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import List from 'Components/List';
+import connect from './connector';
 
 /**
  * The category list component.
@@ -42,4 +43,4 @@ CategoryList.defaultProps = {
   categories: null,
 };
 
-export default CategoryList;
+export default connect(CategoryList);
