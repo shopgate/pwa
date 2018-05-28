@@ -44,7 +44,8 @@ const CTAButtons = props => (
       className={styles.cartButton}
       handleAddToCart={() => handleAddToCart(props)}
       isLoading={false}
-      isOrderable={!props.isBaseProduct(props.productId)}
+      isDisabled={!props.isOrderable(props.productId)}
+      isOrderable={!props.isBaseProduct(props.productId) && props.isOrderable(props.productId)}
     />
   </div>
 );
@@ -56,6 +57,7 @@ CTAButtons.propTypes = {
   addToCart: PropTypes.func,
   favoritesOnce: PropTypes.bool,
   isBaseProduct: PropTypes.func,
+  isOrderable: PropTypes.func,
   onRippleComplete: PropTypes.func,
   removeThrottle: PropTypes.number,
   showVariantModal: PropTypes.func,
@@ -66,6 +68,7 @@ CTAButtons.defaultProps = {
   addToCart: () => {},
   favoritesOnce: false,
   isBaseProduct: null,
+  isOrderable: () => {},
   onRippleComplete: () => {},
   removeThrottle: null,
   showVariantModal: () => {},
