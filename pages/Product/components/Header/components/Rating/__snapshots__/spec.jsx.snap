@@ -38,7 +38,6 @@ exports[`Rating (product header) Rendering should render rating when data is ava
           <div
             aria-label="reviews.rating_stars"
             className="css-13azwyo "
-            data-test-id="ratedStars: 2.5"
           >
             <div
               className="css-4s85e9"
