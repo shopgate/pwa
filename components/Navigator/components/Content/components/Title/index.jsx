@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { HISTORY_POP_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
 import connect from './connector';
 import styles from './style';
 
@@ -9,7 +10,6 @@ import styles from './style';
  */
 class Title extends Component {
   static propTypes = {
-    action: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     onClick: PropTypes.func,
   };
@@ -63,7 +63,7 @@ class Title extends Component {
       };
     }
 
-    const pop = this.props.action === HISTORY_POP_ACTION;
+    const pop = getCurrentAction() === ACTION_PUSH;
 
     return {
       inactive: pop ? styles.centerToRight : styles.centerToLeft,

@@ -7,10 +7,10 @@ import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
-// Import SearchButton from './components/SearchButton';
-// Import CartButton from './components/CartButton';
+import SearchButton from './components/SearchButton';
+import CartButton from './components/CartButton';
 // Import ApplyFilterButton from './components/ApplyFilterButton';
-// Import Content from './components/Content';
+import Content from './components/Content';
 import styles from './style';
 
 /**
@@ -71,24 +71,24 @@ class Navigator extends PureComponent {
                   <NavButton />
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER} />
-                {/* <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_BEFORE} />
+                <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
                   <Grid.Item className={styles.title} component="div" grow={1}>
                     {this.props.showTitle &&
-                    <Content />
+                      <Content />
                     }
                   </Grid.Item>
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_AFTER} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS} >
-                  {(this.props.filterOpen) &&
+                  {/*(this.props.filterOpen) &&
                   <div className={styles.applyButton}>
                     <ApplyFilterButton />
                   </div>
-                  }
+                  */}
                   {this.props.showSearch &&
-                  <SearchButton onClick={this.props.submitSearch} />
+                    <SearchButton onClick={this.props.submitSearch} />
                   }
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE} />
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON} props={{ CartButton }}>
@@ -96,7 +96,7 @@ class Navigator extends PureComponent {
                   </Portal>
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_AFTER} />
                 </Portal>
-                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_AFTER} /> */}
+                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_AFTER} />
               </Grid>
             </Portal>
             <Portal name={portals.NAV_BAR_NAVIGATOR_AFTER} />

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getQueryParam } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentPathname, getCurrentSearchQuery } from '@shopgate/pwa-common/selectors/router';
 import submitSearch from '../../actions/submitSearch';
 
 /**
@@ -8,8 +8,8 @@ import submitSearch from '../../actions/submitSearch';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  getQueryParam: param => getQueryParam(state, param),
-  path: state.history.pathname,
+  path: getCurrentPathname(state),
+  searchQuery: getCurrentSearchQuery(state),
   searchActive: state.navigator.searchActive,
 });
 

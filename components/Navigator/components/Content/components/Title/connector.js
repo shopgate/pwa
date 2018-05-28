@@ -7,7 +7,6 @@ import { getTitle } from 'Components/View/selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  action: state.history.action,
   title: getTitle(state),
 });
 
