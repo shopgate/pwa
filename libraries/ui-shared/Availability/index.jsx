@@ -35,7 +35,7 @@ const Availability = ({
   }
 
   return (
-    <div className={`${className} ${style}`}>
+    <div className={`${className} ${style}`} data-test-id={`availabilityText: ${text}`}>
       {text}
     </div>
   );

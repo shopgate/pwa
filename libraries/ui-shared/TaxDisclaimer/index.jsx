@@ -9,10 +9,12 @@ import styles from './style';
  */
 const TaxDisclaimer = () => (
   showTaxDisclaimer ? (
-    <I18n.Text
-      className={styles}
-      string="product.tax_disclaimer"
-    />
+    <div data-test-id="taxDisclaimer">
+      <I18n.Text
+        className={styles}
+        string="product.tax_disclaimer"
+      />
+    </div>
   ) : null
 );
 
