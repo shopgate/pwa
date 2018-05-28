@@ -18,9 +18,11 @@ const WriteReviewLink = ({ productId }) => {
   const publicProductId = bin2hex(productId);
 
   return (
-    <ButtonLink href={`${ITEM_PATH}/${publicProductId}/write_review`} noGap>
-      <I18n.Text string="reviews.button_add" />
-    </ButtonLink>
+    <div data-test-id="writeReview">
+      <ButtonLink href={`${ITEM_PATH}/${publicProductId}/write_review`} noGap>
+        <I18n.Text string="reviews.button_add" />
+      </ButtonLink>
+    </div>
   );
 };
 

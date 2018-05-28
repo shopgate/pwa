@@ -13,7 +13,7 @@ const AverageRating = ({ rating }) => {
   const { average = 0, count = 0 } = rating;
 
   return (
-    <div className={container} >
+    <div className={container} data-test-id="ratedStarsAverage">
       <RatingStars value={average} display="large" />
       <RatingCount count={count} />
     </div>
