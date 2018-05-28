@@ -81,6 +81,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 5"
               >
                 <div
                   className="css-4s85e9"
@@ -538,6 +539,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 2"
               >
                 <div
                   className="css-4s85e9"
@@ -901,6 +903,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 3"
               >
                 <div
                   className="css-4s85e9"
@@ -1300,6 +1303,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 1"
               >
                 <div
                   className="css-4s85e9"
