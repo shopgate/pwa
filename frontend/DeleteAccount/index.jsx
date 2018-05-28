@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import LogoutIcon from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
+import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import connect from './connector';
 
 /**
@@ -37,7 +37,7 @@ class DeleteAccount extends Component {
     }
 
     return (
-      <Item key="deleteuser" onClick={this.handleDeleteAccount} title="user.delete_account" icon={LogoutIcon}>
+      <Item key="deleteuser" onClick={this.handleDeleteAccount} title="user.delete_account" icon={SecurityIcon}>
         <I18n.Text string="user.delete_account" />
       </Item>
     );
