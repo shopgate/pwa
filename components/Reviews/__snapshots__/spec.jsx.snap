@@ -161,6 +161,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
+                    data-test-id="ratedStars: 2.5"
                   >
                     <div
                       className="css-4s85e9"
@@ -683,6 +684,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -1140,6 +1142,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -1597,6 +1600,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -2054,6 +2058,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -2666,6 +2671,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
+                    data-test-id="ratedStars: 2.5"
                   >
                     <div
                       className="css-4s85e9"
@@ -3172,6 +3178,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -3629,6 +3636,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -4123,6 +4131,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                   <div
                     aria-label="reviews.rating_stars"
                     className="css-13azwyo "
+                    data-test-id="ratedStars: 0"
                   >
                     <div
                       className="css-4s85e9"
