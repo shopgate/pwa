@@ -13,7 +13,7 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Category = ({ category, title }) => {
+const Category = ({ categories, category, title }) => {
   const id = category ? category.id : null;
 
   return (
@@ -21,7 +21,7 @@ const Category = ({ category, title }) => {
       {/* CATEGORY LIST */}
       <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: id }} />
       <Portal name={portals.CATEGORY_LIST} props={{ categoryId: id }}>
-        <CategoryList />
+        <CategoryList categories={categories} />
       </Portal>
       <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: id }} />
     </View>
@@ -29,6 +29,7 @@ const Category = ({ category, title }) => {
 };
 
 Category.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.shape()),
   category: PropTypes.shape(),
   // HasProducts: PropTypes.bool,
   // IsFilterBarShown: PropTypes.bool,
@@ -37,6 +38,7 @@ Category.propTypes = {
 };
 
 Category.defaultProps = {
+  categories: null,
   category: null,
   // HasProducts: false,
   // IsFilterBarShown: true,

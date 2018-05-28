@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   // GetCategoryProductCount,
-  // GetCurrentCategories,
+  getCurrentCategories,
   getCurrentCategory,
   // GetCurrentCategoryId,
 } from '@shopgate/pwa-common-commerce/category/selectors';
@@ -15,8 +15,31 @@ import { getCurrentTitle } from '@shopgate/pwa-common/selectors/view';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
+  categories: getCurrentCategories(state),
   category: getCurrentCategory(state),
   title: getCurrentTitle(state),
 });
 
-export default connect(mapStateToProps);
+/**
+ * Check to see if the categories have arrived.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.category && next.category) {
+    return false;
+  }
+
+  if (!prev.categories && next.categories) {
+    return false;
+  }
+
+  if (!prev.title && next.title) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
