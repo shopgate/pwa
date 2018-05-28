@@ -201,56 +201,17 @@ exports[`<ProductVariants /> should render with variants 1`] = `
         setAnimationState={[Function]}
         setProductVariantId={[Function]}
       >
-        <div>
+        <div
+          data-test-id="variantsPicker"
+        >
           <Connect(RouteGuard)>
             <RouteGuard
               currentRoute="item/1013"
               dispatch={[Function]}
             >
               <div>
-                <Picker
-                  buttonComponent={[Function]}
-                  buttonProps={
-                    Object {
-                      "highlighted": false,
-                    }
-                  }
-                  clickDelay={150}
-                  disabled={false}
-                  duration={350}
-                  isOpen={false}
-                  items={
-                    Array [
-                      Object {
-                        "disabled": false,
-                        "label": "Black",
-                        "rightComponent": null,
-                        "value": "1",
-                      },
-                      Object {
-                        "disabled": false,
-                        "label": "Blue",
-                        "rightComponent": null,
-                        "value": "2",
-                      },
-                    ]
-                  }
-                  key="1"
-                  label="Color"
-                  onChange={[Function]}
-                  onClose={[Function]}
-                  placeholder={
-                    <Translate
-                      className=""
-                      params={
-                        Array [
-                          "Color",
-                        ]
-                      }
-                      string="product.pick_an_attribute"
-                    />
-                  }
-                  value={null}
+                <div
+                  data-test-id="Color"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -259,7 +220,6 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         "highlighted": false,
                       }
                     }
-                    className="css-degt7t"
                     clickDelay={150}
                     disabled={false}
                     duration={350}
@@ -280,9 +240,8 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         },
                       ]
                     }
+                    key="1"
                     label="Color"
-                    listComponent={[Function]}
-                    modalComponent={[Function]}
                     onChange={[Function]}
                     onClose={[Function]}
                     placeholder={
@@ -298,33 +257,59 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                     }
                     value={null}
                   >
-                    <div
-                      className="css-degt7t"
-                    >
-                      <ProductVariantPickerButton
-                        disabled={false}
-                        highlighted={false}
-                        label={
-                          <Translate
-                            className=""
-                            params={
-                              Array [
-                                "Color",
-                              ]
-                            }
-                            string="product.pick_an_attribute"
-                          />
+                    <Picker
+                      buttonComponent={[Function]}
+                      buttonProps={
+                        Object {
+                          "highlighted": false,
                         }
-                        openList={[Function]}
-                        value=""
+                      }
+                      className="css-degt7t"
+                      clickDelay={150}
+                      disabled={false}
+                      duration={350}
+                      isOpen={false}
+                      items={
+                        Array [
+                          Object {
+                            "disabled": false,
+                            "label": "Black",
+                            "rightComponent": null,
+                            "value": "1",
+                          },
+                          Object {
+                            "disabled": false,
+                            "label": "Blue",
+                            "rightComponent": null,
+                            "value": "2",
+                          },
+                        ]
+                      }
+                      label="Color"
+                      listComponent={[Function]}
+                      modalComponent={[Function]}
+                      onChange={[Function]}
+                      onClose={[Function]}
+                      placeholder={
+                        <Translate
+                          className=""
+                          params={
+                            Array [
+                              "Color",
+                            ]
+                          }
+                          string="product.pick_an_attribute"
+                        />
+                      }
+                      value={null}
+                    >
+                      <div
+                        className="css-degt7t"
                       >
-                        <button
-                          className="css-upjo2d css-164ggb6"
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="css-1358lbd"
-                          >
+                        <ProductVariantPickerButton
+                          disabled={false}
+                          highlighted={false}
+                          label={
                             <Translate
                               className=""
                               params={
@@ -333,74 +318,49 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 ]
                               }
                               string="product.pick_an_attribute"
+                            />
+                          }
+                          openList={[Function]}
+                          value=""
+                        >
+                          <button
+                            className="css-upjo2d css-164ggb6"
+                            data-test-id="variantSelector"
+                            onClick={[Function]}
+                          >
+                            <span
+                              className="css-1358lbd"
                             >
-                              <span
+                              <Translate
                                 className=""
+                                params={
+                                  Array [
+                                    "Color",
+                                  ]
+                                }
+                                string="product.pick_an_attribute"
                               >
-                                product.pick_an_attribute
-                              </span>
-                            </Translate>
-                          </span>
-                        </button>
-                      </ProductVariantPickerButton>
-                      <Portal
-                        isOpened={true}
-                        onClose={[Function]}
-                        onOpen={[Function]}
-                        onUpdate={[Function]}
-                      />
-                    </div>
+                                <span
+                                  className=""
+                                >
+                                  product.pick_an_attribute
+                                </span>
+                              </Translate>
+                            </span>
+                          </button>
+                        </ProductVariantPickerButton>
+                        <Portal
+                          isOpened={true}
+                          onClose={[Function]}
+                          onOpen={[Function]}
+                          onUpdate={[Function]}
+                        />
+                      </div>
+                    </Picker>
                   </Picker>
-                </Picker>
-                <Picker
-                  buttonComponent={[Function]}
-                  buttonProps={
-                    Object {
-                      "highlighted": false,
-                    }
-                  }
-                  clickDelay={150}
-                  disabled={true}
-                  duration={350}
-                  isOpen={false}
-                  items={
-                    Array [
-                      Object {
-                        "disabled": true,
-                        "label": "0",
-                        "rightComponent": null,
-                        "value": "1",
-                      },
-                      Object {
-                        "disabled": true,
-                        "label": "11",
-                        "rightComponent": null,
-                        "value": "2",
-                      },
-                      Object {
-                        "disabled": true,
-                        "label": "7",
-                        "rightComponent": null,
-                        "value": "3",
-                      },
-                    ]
-                  }
-                  key="2"
-                  label="Size"
-                  onChange={[Function]}
-                  onClose={[Function]}
-                  placeholder={
-                    <Translate
-                      className=""
-                      params={
-                        Array [
-                          "Size",
-                        ]
-                      }
-                      string="product.pick_an_attribute"
-                    />
-                  }
-                  value={null}
+                </div>
+                <div
+                  data-test-id="Size"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -409,7 +369,6 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         "highlighted": false,
                       }
                     }
-                    className="css-degt7t"
                     clickDelay={150}
                     disabled={true}
                     duration={350}
@@ -436,9 +395,8 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         },
                       ]
                     }
+                    key="2"
                     label="Size"
-                    listComponent={[Function]}
-                    modalComponent={[Function]}
                     onChange={[Function]}
                     onClose={[Function]}
                     placeholder={
@@ -454,33 +412,65 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                     }
                     value={null}
                   >
-                    <div
-                      className="css-degt7t"
-                    >
-                      <ProductVariantPickerButton
-                        disabled={true}
-                        highlighted={false}
-                        label={
-                          <Translate
-                            className=""
-                            params={
-                              Array [
-                                "Size",
-                              ]
-                            }
-                            string="product.pick_an_attribute"
-                          />
+                    <Picker
+                      buttonComponent={[Function]}
+                      buttonProps={
+                        Object {
+                          "highlighted": false,
                         }
-                        openList={null}
-                        value=""
+                      }
+                      className="css-degt7t"
+                      clickDelay={150}
+                      disabled={true}
+                      duration={350}
+                      isOpen={false}
+                      items={
+                        Array [
+                          Object {
+                            "disabled": true,
+                            "label": "0",
+                            "rightComponent": null,
+                            "value": "1",
+                          },
+                          Object {
+                            "disabled": true,
+                            "label": "11",
+                            "rightComponent": null,
+                            "value": "2",
+                          },
+                          Object {
+                            "disabled": true,
+                            "label": "7",
+                            "rightComponent": null,
+                            "value": "3",
+                          },
+                        ]
+                      }
+                      label="Size"
+                      listComponent={[Function]}
+                      modalComponent={[Function]}
+                      onChange={[Function]}
+                      onClose={[Function]}
+                      placeholder={
+                        <Translate
+                          className=""
+                          params={
+                            Array [
+                              "Size",
+                            ]
+                          }
+                          string="product.pick_an_attribute"
+                        />
+                      }
+                      value={null}
+                    >
+                      <div
+                        className="css-degt7t"
                       >
-                        <button
-                          className="css-upjo2d css-1tr18jt"
-                          onClick={null}
-                        >
-                          <span
-                            className="css-1358lbd"
-                          >
+                        <ProductVariantPickerButton
+                          disabled={true}
+                          highlighted={false}
+                          label={
                             <Translate
                               className=""
                               params={
@@ -489,25 +479,47 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 ]
                               }
                               string="product.pick_an_attribute"
+                            />
+                          }
+                          openList={null}
+                          value=""
+                        >
+                          <button
+                            className="css-upjo2d css-1tr18jt"
+                            data-test-id="variantSelector"
+                            onClick={null}
+                          >
+                            <span
+                              className="css-1358lbd"
                             >
-                              <span
+                              <Translate
                                 className=""
+                                params={
+                                  Array [
+                                    "Size",
+                                  ]
+                                }
+                                string="product.pick_an_attribute"
                               >
-                                product.pick_an_attribute
-                              </span>
-                            </Translate>
-                          </span>
-                        </button>
-                      </ProductVariantPickerButton>
-                      <Portal
-                        isOpened={true}
-                        onClose={[Function]}
-                        onOpen={[Function]}
-                        onUpdate={[Function]}
-                      />
-                    </div>
+                                <span
+                                  className=""
+                                >
+                                  product.pick_an_attribute
+                                </span>
+                              </Translate>
+                            </span>
+                          </button>
+                        </ProductVariantPickerButton>
+                        <Portal
+                          isOpened={true}
+                          onClose={[Function]}
+                          onOpen={[Function]}
+                          onUpdate={[Function]}
+                        />
+                      </div>
+                    </Picker>
                   </Picker>
-                </Picker>
+                </div>
               </div>
             </RouteGuard>
           </Connect(RouteGuard)>
@@ -725,56 +737,17 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
         setAnimationState={[Function]}
         setProductVariantId={[Function]}
       >
-        <div>
+        <div
+          data-test-id="variantsPicker"
+        >
           <Connect(RouteGuard)>
             <RouteGuard
               currentRoute="item/1013"
               dispatch={[Function]}
             >
               <div>
-                <Picker
-                  buttonComponent={[Function]}
-                  buttonProps={
-                    Object {
-                      "highlighted": false,
-                    }
-                  }
-                  clickDelay={150}
-                  disabled={false}
-                  duration={350}
-                  isOpen={false}
-                  items={
-                    Array [
-                      Object {
-                        "disabled": false,
-                        "label": "Black",
-                        "rightComponent": null,
-                        "value": "1",
-                      },
-                      Object {
-                        "disabled": false,
-                        "label": "Blue",
-                        "rightComponent": null,
-                        "value": "2",
-                      },
-                    ]
-                  }
-                  key="1"
-                  label="Color"
-                  onChange={[Function]}
-                  onClose={[Function]}
-                  placeholder={
-                    <Translate
-                      className=""
-                      params={
-                        Array [
-                          "Color",
-                        ]
-                      }
-                      string="product.pick_an_attribute"
-                    />
-                  }
-                  value="1"
+                <div
+                  data-test-id="Color"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -783,7 +756,6 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         "highlighted": false,
                       }
                     }
-                    className="css-degt7t"
                     clickDelay={150}
                     disabled={false}
                     duration={350}
@@ -804,9 +776,8 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         },
                       ]
                     }
+                    key="1"
                     label="Color"
-                    listComponent={[Function]}
-                    modalComponent={[Function]}
                     onChange={[Function]}
                     onClose={[Function]}
                     placeholder={
@@ -822,100 +793,91 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                     }
                     value="1"
                   >
-                    <div
+                    <Picker
+                      buttonComponent={[Function]}
+                      buttonProps={
+                        Object {
+                          "highlighted": false,
+                        }
+                      }
                       className="css-degt7t"
-                    >
-                      <ProductVariantPickerButton
-                        disabled={false}
-                        highlighted={false}
-                        label="Color"
-                        openList={[Function]}
-                        value="Black"
-                      >
-                        <button
-                          className="css-upjo2d css-164ggb6"
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="css-1358lbd"
-                          >
-                            Color
-                          </span>
-                          <span
-                            className="css-13rzlhv"
-                          >
-                            Black
-                          </span>
-                        </button>
-                      </ProductVariantPickerButton>
-                      <Portal
-                        isOpened={true}
-                        onClose={[Function]}
-                        onOpen={[Function]}
-                        onUpdate={[Function]}
-                      />
-                    </div>
-                  </Picker>
-                </Picker>
-                <Picker
-                  buttonComponent={[Function]}
-                  buttonProps={
-                    Object {
-                      "highlighted": false,
-                    }
-                  }
-                  clickDelay={150}
-                  disabled={false}
-                  duration={350}
-                  isOpen={false}
-                  items={
-                    Array [
-                      Object {
-                        "disabled": false,
-                        "label": "0",
-                        "rightComponent": <Availability
-                          className="css-1kcjft6"
-                          showWhenAvailable={false}
-                          state="waning"
-                          text="Limited stock available"
-                        />,
-                        "value": "1",
-                      },
-                      Object {
-                        "disabled": false,
-                        "label": "11",
-                        "rightComponent": <Availability
-                          className="css-1kcjft6"
-                          showWhenAvailable={false}
-                          state="alert"
-                          text="Out of stock"
-                        />,
-                        "value": "2",
-                      },
-                      Object {
-                        "disabled": false,
-                        "label": "7",
-                        "rightComponent": null,
-                        "value": "3",
-                      },
-                    ]
-                  }
-                  key="2"
-                  label="Size"
-                  onChange={[Function]}
-                  onClose={[Function]}
-                  placeholder={
-                    <Translate
-                      className=""
-                      params={
+                      clickDelay={150}
+                      disabled={false}
+                      duration={350}
+                      isOpen={false}
+                      items={
                         Array [
-                          "Size",
+                          Object {
+                            "disabled": false,
+                            "label": "Black",
+                            "rightComponent": null,
+                            "value": "1",
+                          },
+                          Object {
+                            "disabled": false,
+                            "label": "Blue",
+                            "rightComponent": null,
+                            "value": "2",
+                          },
                         ]
                       }
-                      string="product.pick_an_attribute"
-                    />
-                  }
-                  value={null}
+                      label="Color"
+                      listComponent={[Function]}
+                      modalComponent={[Function]}
+                      onChange={[Function]}
+                      onClose={[Function]}
+                      placeholder={
+                        <Translate
+                          className=""
+                          params={
+                            Array [
+                              "Color",
+                            ]
+                          }
+                          string="product.pick_an_attribute"
+                        />
+                      }
+                      value="1"
+                    >
+                      <div
+                        className="css-degt7t"
+                      >
+                        <ProductVariantPickerButton
+                          disabled={false}
+                          highlighted={false}
+                          label="Color"
+                          openList={[Function]}
+                          value="Black"
+                        >
+                          <button
+                            className="css-upjo2d css-164ggb6"
+                            data-test-id="variantSelector"
+                            onClick={[Function]}
+                          >
+                            <span
+                              className="css-1358lbd"
+                            >
+                              Color
+                            </span>
+                            <span
+                              className="css-13rzlhv"
+                            >
+                              Black
+                            </span>
+                          </button>
+                        </ProductVariantPickerButton>
+                        <Portal
+                          isOpened={true}
+                          onClose={[Function]}
+                          onOpen={[Function]}
+                          onUpdate={[Function]}
+                        />
+                      </div>
+                    </Picker>
+                  </Picker>
+                </div>
+                <div
+                  data-test-id="Size"
                 >
                   <Picker
                     buttonComponent={[Function]}
@@ -924,7 +886,6 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         "highlighted": false,
                       }
                     }
-                    className="css-degt7t"
                     clickDelay={150}
                     disabled={false}
                     duration={350}
@@ -961,9 +922,8 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         },
                       ]
                     }
+                    key="2"
                     label="Size"
-                    listComponent={[Function]}
-                    modalComponent={[Function]}
                     onChange={[Function]}
                     onClose={[Function]}
                     placeholder={
@@ -979,33 +939,75 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                     }
                     value={null}
                   >
-                    <div
-                      className="css-degt7t"
-                    >
-                      <ProductVariantPickerButton
-                        disabled={false}
-                        highlighted={false}
-                        label={
-                          <Translate
-                            className=""
-                            params={
-                              Array [
-                                "Size",
-                              ]
-                            }
-                            string="product.pick_an_attribute"
-                          />
+                    <Picker
+                      buttonComponent={[Function]}
+                      buttonProps={
+                        Object {
+                          "highlighted": false,
                         }
-                        openList={[Function]}
-                        value=""
+                      }
+                      className="css-degt7t"
+                      clickDelay={150}
+                      disabled={false}
+                      duration={350}
+                      isOpen={false}
+                      items={
+                        Array [
+                          Object {
+                            "disabled": false,
+                            "label": "0",
+                            "rightComponent": <Availability
+                              className="css-1kcjft6"
+                              showWhenAvailable={false}
+                              state="waning"
+                              text="Limited stock available"
+                            />,
+                            "value": "1",
+                          },
+                          Object {
+                            "disabled": false,
+                            "label": "11",
+                            "rightComponent": <Availability
+                              className="css-1kcjft6"
+                              showWhenAvailable={false}
+                              state="alert"
+                              text="Out of stock"
+                            />,
+                            "value": "2",
+                          },
+                          Object {
+                            "disabled": false,
+                            "label": "7",
+                            "rightComponent": null,
+                            "value": "3",
+                          },
+                        ]
+                      }
+                      label="Size"
+                      listComponent={[Function]}
+                      modalComponent={[Function]}
+                      onChange={[Function]}
+                      onClose={[Function]}
+                      placeholder={
+                        <Translate
+                          className=""
+                          params={
+                            Array [
+                              "Size",
+                            ]
+                          }
+                          string="product.pick_an_attribute"
+                        />
+                      }
+                      value={null}
+                    >
+                      <div
+                        className="css-degt7t"
                       >
-                        <button
-                          className="css-upjo2d css-164ggb6"
-                          onClick={[Function]}
-                        >
-                          <span
-                            className="css-1358lbd"
-                          >
+                        <ProductVariantPickerButton
+                          disabled={false}
+                          highlighted={false}
+                          label={
                             <Translate
                               className=""
                               params={
@@ -1014,25 +1016,47 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                 ]
                               }
                               string="product.pick_an_attribute"
+                            />
+                          }
+                          openList={[Function]}
+                          value=""
+                        >
+                          <button
+                            className="css-upjo2d css-164ggb6"
+                            data-test-id="variantSelector"
+                            onClick={[Function]}
+                          >
+                            <span
+                              className="css-1358lbd"
                             >
-                              <span
+                              <Translate
                                 className=""
+                                params={
+                                  Array [
+                                    "Size",
+                                  ]
+                                }
+                                string="product.pick_an_attribute"
                               >
-                                product.pick_an_attribute
-                              </span>
-                            </Translate>
-                          </span>
-                        </button>
-                      </ProductVariantPickerButton>
-                      <Portal
-                        isOpened={true}
-                        onClose={[Function]}
-                        onOpen={[Function]}
-                        onUpdate={[Function]}
-                      />
-                    </div>
+                                <span
+                                  className=""
+                                >
+                                  product.pick_an_attribute
+                                </span>
+                              </Translate>
+                            </span>
+                          </button>
+                        </ProductVariantPickerButton>
+                        <Portal
+                          isOpened={true}
+                          onClose={[Function]}
+                          onOpen={[Function]}
+                          onUpdate={[Function]}
+                        />
+                      </div>
+                    </Picker>
                   </Picker>
-                </Picker>
+                </div>
               </div>
             </RouteGuard>
           </Connect(RouteGuard)>
