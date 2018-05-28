@@ -144,7 +144,7 @@ class FavoritesButton extends Component {
         aria-label={this.getLabel()}
         className={`${className} ${this.props.className}`}
         onClick={this.handleClick}
-        data-test-id="button"
+        data-test-id="favoriteButton"
       >
         <Ripple
           className={`${styles.ripple} ${this.props.rippleClassName}`}
