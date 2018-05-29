@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '../constants';
 
 /**
  * Retrieves the category state from the global state.
@@ -9,35 +9,30 @@ import { CATEGORY_PATH } from '../constants';
  */
 const getCategoryState = state => state.category;
 
+const getCategoriesState = createSelector(
+  getCategoryState,
+  state => state.categoriesById
+);
+
 /**
  * Retrieves the full category children collection from the state.
  * @param {Object} state The application state.
  * @returns {Object} The category children collection.
  */
-const getChildCategories = state => state.category.childrenByCategoryId;
+const getChildCategoriesState = createSelector(
+  getCategoryState,
+  state => state.childrenByCategoryId
+);
 
 /**
  * Retrieves the root categories collection from the state.
  * @param {Object} state The application state.
  * @returns {Array} The root categories collection.
  */
-const getRootCategoriesState = state => state.category.rootCategories;
-
-/**
- * Retrieves the router params from the props.
- * @param {Object} _ The application state. (Will be ignored!)
- * @param {Object} props The component props.
- * @returns {Object} The router params.
- */
-const getParamsFromProps = (_, props = {}) => props.params;
-
-/**
- * Retrieves widget settings from the props.
- * @param {Object} _ The application state. (Will be ignored!)
- * @param {Object} props The component props.
- * @returns {Object} The widget settings.
- */
-const getSettingsFromProps = (_, props = {}) => props.settings;
+const getRootCategoriesState = createSelector(
+  getCategoryState,
+  state => state.rootCategories
+);
 
 /**
  * Retrieves the child categories for a specific parent category from the state.
@@ -47,52 +42,38 @@ const getSettingsFromProps = (_, props = {}) => props.settings;
  */
 export const getRootCategories = createSelector(
   getRootCategoriesState,
-  getCategoryState,
-  (rootCategory, categoryState) => {
-    if (Object.keys(rootCategory).length === 0) {
+  getCategoriesState,
+  (rootCategories, categoryState) => {
+    if (Object.keys(rootCategories).length === 0) {
       return null;
     }
 
-    if (!rootCategory.categories) {
+    if (!rootCategories.categories) {
       return null;
     }
 
-    const categories = rootCategory.categories.map(id => categoryState.categoriesById[id]);
+    const categories = rootCategories.categories.map(id => categoryState[id]);
 
     return {
-      ...rootCategory,
+      ...rootCategories,
       categories,
     };
   }
 );
 
 /**
- * Retrieves the current category ID from the props.
+ * Retrieves the current category ID from the current route params.
  * @param {Object} state The application state.
- * @param {Object} props The component props.
  * @returns {string|null} The category ID.
  */
 export const getCurrentCategoryId = createSelector(
-  getParamsFromProps,
-  getSettingsFromProps,
-  state => (state.category ? state.category.currentCategoryId : null),
-  state => (state.history ? state.history.pathname : null),
-  (params, settings, categoryId, pathname) => {
-    if (params && params.categoryId) {
-      return hex2bin(params.categoryId) || null;
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.params || !route.params.categoryId) {
+      return null;
     }
 
-    if (settings && settings.categoryNumber) {
-      return settings.categoryNumber;
-    }
-
-    if (!categoryId) {
-      if (pathname && pathname.startsWith(CATEGORY_PATH)) {
-        return hex2bin(pathname.split('/')[2]) || null;
-      }
-    }
-
-    return categoryId;
+    return hex2bin(route.params.categoryId);
   }
 );
 
@@ -104,17 +85,9 @@ export const getCurrentCategoryId = createSelector(
  */
 const getCurrentChildCategories = createSelector(
   getCurrentCategoryId,
-  getChildCategories,
+  getChildCategoriesState,
   (categoryId, childCategories) => childCategories[categoryId]
 );
-
-/**
- * Retrieves a category by ID from categoryState.
- * @param {Object} categoryState The current application categoryState.
- * @param {string} id The category ID.
- * @returns {Object} The dedicated category.
- */
-const getCategoryById = (categoryState, id) => categoryState.categoriesById[id];
 
 /**
  * Retrieves the current category from the state.
@@ -123,9 +96,9 @@ const getCategoryById = (categoryState, id) => categoryState.categoriesById[id];
  * @returns {Object|null} The current category.
  */
 export const getCurrentCategory = createSelector(
-  getCategoryState,
+  getCategoriesState,
   getCurrentCategoryId,
-  (categoryState, categoryId) => getCategoryById(categoryState, categoryId) || null
+  (state, categoryId) => state[categoryId] || null
 );
 
 /**
@@ -144,20 +117,10 @@ export const getCurrentCategoryChildCount = createSelector(
  * @returns {Array|null} The current categories collection.
  */
 export const getCurrentCategories = createSelector(
-  getCategoryState,
-  getCurrentCategoryId,
-  getRootCategories,
-  getCurrentChildCategories,
-  (categoryState, categoryId, rootCategories, childCategories) => {
-    if (!categoryId && rootCategories && rootCategories.categories) {
-      return rootCategories.categories.map(id => getCategoryById(categoryState, id));
-    }
-
-    if (childCategories && childCategories.children) {
-      return childCategories.children.map(id => getCategoryById(categoryState, id));
-    }
-
-    return null;
+  [getCurrentChildCategories, getCategoriesState],
+  (childCategories, categoryState) => {
+    if (!childCategories || !childCategories.children) return null;
+    return childCategories.children.map(id => categoryState[id]);
   }
 );
 

@@ -311,6 +311,21 @@ export const getCurrentProductStock = createSelector(
 );
 
 /**
+ * Retrieves the product stock information.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductStockInfo = createSelector(
+  getProductById,
+  (product) => {
+    if (!product || !product.productData) {
+      return null;
+    }
+    return product.productData.stock;
+  }
+)
+
+/**
  * Retrieves the current product orderable information.
  * @param {Object} state The current application state.
  * @return {boolean}
@@ -324,6 +339,16 @@ export const isProductOrderable = createSelector(
 
     return stockInfo.orderable;
   }
+);
+
+/**
+ * Retrieves the product orderable information.
+ * @param {Object} state The current application state.
+ * @return {boolean}
+ */
+export const isOrderable = createSelector(
+  getProductStockInfo,
+  stockInfo => stockInfo && stockInfo.orderable
 );
 
 /**

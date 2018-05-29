@@ -71,3 +71,18 @@ export const getCurrentSearchQuery = createSelector(
     return query.s;
   }
 );
+
+/**
+ * @param {Object} state The global state.
+ * @returns {string|null} The current history entry state.
+ */
+export const getCurrentState = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.state) {
+      return null;
+    }
+
+    return route.state;
+  }
+);
