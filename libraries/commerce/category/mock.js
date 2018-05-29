@@ -57,7 +57,15 @@ const categoryState = {
         expires: 9999999999999,
       },
     },
-    childrenByCategoryId: {},
+    childrenByCategoryId: {
+      women: {
+        children: [
+          'test',
+        ],
+        isFetching: false,
+        expires: 9999999999999,
+      },
+    },
     currentCategoryId: null,
   },
 };
@@ -82,6 +90,19 @@ const categoryRouteMock = {
   },
 };
 
+const childCategoryRouteMock = {
+  id: '5a227cfd-c55a-4e9b-9deb-d2ee20154030',
+  params: {
+    categoryId: '776f6d656e',
+  },
+  pathname: '/category/776f6d656e',
+  pattern: '/category/:categoryId',
+  query: {},
+  state: {
+    title: 'Women',
+  },
+};
+
 const routerState = {
   router: {
     routing: false,
@@ -102,5 +123,6 @@ export {
   categoryState,
   routerState,
   categoryRouteMock,
+  childCategoryRouteMock,
   uiState,
 };
