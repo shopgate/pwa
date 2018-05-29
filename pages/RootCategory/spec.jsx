@@ -4,8 +4,7 @@ import configureStore from 'redux-mock-store';
 import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import receiveRootCategories from '@shopgate/pwa-common-commerce/category/action-creators/receiveRootCategories';
-import { initialCategoryState, categoryState } from './mock';
+import { initialCategoryState, categoryState } from '@shopgate/pwa-common-commerce/category/mock';
 
 const mockedView = MockedView;
 const mockedStore = configureStore();

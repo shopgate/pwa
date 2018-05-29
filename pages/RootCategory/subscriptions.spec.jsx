@@ -3,9 +3,15 @@ import thunk from 'redux-thunk';
 import { SET_VIEW_TITLE } from '@shopgate/pwa-common/constants/ActionTypes';
 import { REQUEST_ROOT_CATEGORIES } from '@shopgate/pwa-common-commerce/category/constants';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
+import {
+  routerState,
+  categoryRouteMock,
+  uiState,
+  categoryState,
+  initialCategoryState,
+} from '@shopgate/pwa-common-commerce/category/mock';
 import { rootCategoryWillEnter$ } from './streams';
 import subscribe from './subscriptions';
-import { routerState, categoryRouteMock, uiState, categoryState, initialCategoryState } from './mock';
 
 const mockedStore = configureStore([thunk]);
 
