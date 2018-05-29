@@ -1,6 +1,9 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { openedLink$ } from '@shopgate/pwa-common/streams/history';
+import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import {
+  CART_PATH,
+
   REQUEST_CART,
   RECEIVE_CART,
   ERROR_CART,
@@ -27,6 +30,12 @@ import {
   ERROR_DELETE_COUPONS_FROM_CART,
   SUCCESS_DELETE_COUPONS_FROM_CART,
 } from '../constants';
+
+/**
+ * @type {Observable}
+ */
+export const cartWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === CART_PATH);
 
 /**
  * Gets triggered when the user tried to add a coupon to the cart.
