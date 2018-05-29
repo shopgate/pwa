@@ -2,7 +2,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
-import { getCurrentCategoryId } from '../selectors';
+import { getCurrentCategory } from '../selectors';
 
 /**
  * Retrieves category products for a certain category by ID.
@@ -11,27 +11,25 @@ import { getCurrentCategoryId } from '../selectors';
  * @param {string} sort The sort order of the products.
  * @return {Function} The dispatched action.
  */
-const fetchCategoryProducts =
-  (offset = 0, limit = ITEMS_PER_LOAD, sort) =>
-    (dispatch, getState) => {
-      const state = getState();
-      const categoryId = getCurrentCategoryId(state);
-      const category = state.category.categoriesById[categoryId];
-      const sortOrder = sort || getSortOrder(state);
+const fetchCategoryProducts = (offset = 0, limit = ITEMS_PER_LOAD, sort) =>
+  (dispatch, getState) => {
+    const state = getState();
+    const category = getCurrentCategory(state);
+    const sortOrder = sort || getSortOrder(state);
 
-      if (!category) {
-        logger.error(`Category '${categoryId}' doesn't exist in the store. No products fetched.`);
-        return;
-      }
+    if (!category) {
+      logger.error(`Category '${category.id}' doesn't exist in the store. No products fetched.`);
+      return;
+    }
 
-      dispatch(getProducts({
-        params: {
-          categoryId,
-          offset,
-          limit,
-          sort: sortOrder,
-        },
-      }));
-    };
+    dispatch(getProducts({
+      params: {
+        categoryId: category.id,
+        offset,
+        limit,
+        sort: sortOrder,
+      },
+    }));
+  };
 
 export default fetchCategoryProducts;

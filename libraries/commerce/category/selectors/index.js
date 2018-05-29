@@ -127,10 +127,7 @@ export const getCurrentCategories = createSelector(
 export const getCategoryProductCount = createSelector(
   getCurrentCategory,
   (category) => {
-    if (!category) {
-      return null;
-    }
-
+    if (!category) return null;
     return category.productCount;
   }
 );
