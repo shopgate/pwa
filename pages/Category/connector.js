@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  // GetCategoryProductCount,
+  getCategoryProductCount,
   getCurrentCategories,
   getCurrentCategory,
   // GetCurrentCategoryId,
@@ -17,6 +17,7 @@ import { getCurrentTitle } from '@shopgate/pwa-common/selectors/view';
 const mapStateToProps = state => ({
   categories: getCurrentCategories(state),
   category: getCurrentCategory(state),
+  hasProducts: getCategoryProductCount(state),
   title: getCurrentTitle(state),
 });
 
@@ -27,18 +28,9 @@ const mapStateToProps = state => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.category && next.category) {
-    return false;
-  }
-
-  if (!prev.categories && next.categories) {
-    return false;
-  }
-
-  if (!prev.title && next.title) {
-    return false;
-  }
-
+  if (!prev.category && next.category) return false;
+  if (!prev.categories && next.categories) return false;
+  if (prev.hasProducts !== next.hasProducts) return false;
   return true;
 };
 

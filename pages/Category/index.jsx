@@ -5,7 +5,7 @@ import * as portals from '@shopgate/pwa-common-commerce/category/constants/Porta
 import CategoryList from 'Components/CategoryList';
 // Import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
-// Import Products from './components/Products';
+import Products from './components/Products';
 // Import Empty from './components/Empty';
 import connect from './connector';
 
@@ -13,17 +13,26 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Category = ({ categories, category, title }) => {
-  const id = category ? category.id : null;
+const Category = (props) => {
+  const id = props.category ? props.category.id : null;
 
   return (
-    <View title={title}>
+    <View>
+
       {/* CATEGORY LIST */}
       <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: id }} />
       <Portal name={portals.CATEGORY_LIST} props={{ categoryId: id }}>
-        <CategoryList categories={categories} />
+        <CategoryList categories={props.categories} />
       </Portal>
       <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: id }} />
+
+      {/* PRODUCT LIST */}
+      <Portal name={portals.PRODUCT_LIST_BEFORE} props={{ categoryId: id }} />
+      <Portal name={portals.PRODUCT_LIST} props={{ categoryId: id }}>
+        {props.hasProducts && <Products />}
+      </Portal>
+      <Portal name={portals.PRODUCT_LIST_AFTER} props={{ categoryId: id }} />
+
     </View>
   );
 };
@@ -31,19 +40,15 @@ const Category = ({ categories, category, title }) => {
 Category.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
   category: PropTypes.shape(),
-  // HasProducts: PropTypes.bool,
+  hasProducts: PropTypes.number,
   // IsFilterBarShown: PropTypes.bool,
-  // IsRoot: PropTypes.bool,
-  title: PropTypes.string,
 };
 
 Category.defaultProps = {
   categories: null,
   category: null,
-  // HasProducts: false,
+  hasProducts: 0,
   // IsFilterBarShown: true,
-  // IsRoot: true,
-  title: null,
 };
 
 export default connect(Category);

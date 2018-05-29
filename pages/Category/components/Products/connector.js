@@ -19,9 +19,19 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts(offset) {
-    dispatch(getProducts(offset));
-  },
+  getProducts: offset => dispatch(getProducts(offset)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the categories have arrived.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.products.length !== next.products.length) return false;
+  if (prev.totalProductCount !== next.totalProductCount) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
