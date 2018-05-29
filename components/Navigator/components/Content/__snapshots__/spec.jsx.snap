@@ -12,7 +12,7 @@ exports[`<Content /> should render the logo 1`] = `
 exports[`<Content /> should render the title 1`] = `
 <React.Fragment>
   <Connect(Title)
-    onClick={[Function]}
+    onClick={null}
   />
   <Connect(Search)
     active={false}
