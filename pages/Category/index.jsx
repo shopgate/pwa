@@ -1,91 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import CategoryList from 'Components/CategoryList';
-import FilterBar from 'Components/FilterBar';
+// Import FilterBar from 'Components/FilterBar';
 import View from 'Components/View';
-import Products from './components/Products';
-import Empty from './components/Empty';
+// Import Products from './components/Products';
+// Import Empty from './components/Empty';
 import connect from './connector';
 
 /**
- * The category view component.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
-class Category extends Component {
-  static propTypes = {
-    category: PropTypes.shape(),
-    hasProducts: PropTypes.bool,
-    isFilterBarShown: PropTypes.bool,
-    isRoot: PropTypes.bool,
-  };
+const Category = ({ categories, category, title }) => {
+  const id = category ? category.id : null;
 
-  static defaultProps = {
-    category: null,
-    hasProducts: false,
-    isFilterBarShown: true,
-    isRoot: true,
-  };
+  return (
+    <View title={title}>
+      {/* CATEGORY LIST */}
+      <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: id }} />
+      <Portal name={portals.CATEGORY_LIST} props={{ categoryId: id }}>
+        <CategoryList categories={categories} />
+      </Portal>
+      <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: id }} />
+    </View>
+  );
+};
 
-  static contextTypes = {
-    history: PropTypes.shape(),
-    i18n: PropTypes.func,
-  };
+Category.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.shape()),
+  category: PropTypes.shape(),
+  // HasProducts: PropTypes.bool,
+  // IsFilterBarShown: PropTypes.bool,
+  // IsRoot: PropTypes.bool,
+  title: PropTypes.string,
+};
 
-  /**
-   * Returns the current view title.
-   * @return {string} The view title.
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-
-    if (this.props.isRoot) {
-      return __('titles.categories');
-    }
-
-    return this.props.category ? this.props.category.name : '';
-  }
-
-  /**
-   * Returns the current category ID.
-   * @return {string|null}
-   */
-  get id() {
-    return this.props.category ? this.props.category.id : null;
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <View title={this.title}>
-        {this.props.isFilterBarShown && <FilterBar />}
-
-        {/* CATEGORY LIST */}
-        <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId: this.id }} />
-        <Portal name={portals.CATEGORY_LIST} props={{ categoryId: this.id }}>
-          <CategoryList />
-        </Portal>
-        <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId: this.id }} />
-
-        {/* PRODUCT LIST */}
-        <Portal name={portals.PRODUCT_LIST_BEFORE} props={{ categoryId: this.id }} />
-        <Portal name={portals.PRODUCT_LIST} props={{ categoryId: this.id }}>
-          {this.props.hasProducts && <Products />}
-        </Portal>
-        <Portal name={portals.PRODUCT_LIST_AFTER} props={{ categoryId: this.id }} />
-
-        <Empty
-          headlineText="category.no_result.heading"
-          bodyText="category.no_result.body"
-          searchPhrase={this.title}
-        />
-      </View>
-    );
-  }
-}
+Category.defaultProps = {
+  categories: null,
+  category: null,
+  // HasProducts: false,
+  // IsFilterBarShown: true,
+  // IsRoot: true,
+  title: null,
+};
 
 export default connect(Category);

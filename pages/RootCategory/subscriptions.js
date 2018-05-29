@@ -1,6 +1,6 @@
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
 import { rootCategoryWillEnter$ } from './streams';
-import setTitle from '../../components/View/actions/setTitle';
 
 /**
  * @param {Function} subscribe The subscribe function.
