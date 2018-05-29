@@ -1,15 +1,14 @@
-import setViewTitle from '@shopgate/pwa-common/action-creators/view/setViewTitle';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { rootCategoryDidEnter$ } from './streams';
+import { rootCategoryWillEnter$ } from './streams';
 
 /**
  * @param {Function} subscribe The subscribe function.
  */
 export default function category(subscribe) {
-  subscribe(rootCategoryDidEnter$, ({ dispatch, action }) => {
-    const { title } = action.route.state;
-
+  subscribe(rootCategoryWillEnter$, ({ action, dispatch }) => {
     dispatch(getCategory());
-    if (title) dispatch(setViewTitle(title));
+    const { title } = action.route.state;
+    if (title) dispatch(setTitle(title));
   });
 }

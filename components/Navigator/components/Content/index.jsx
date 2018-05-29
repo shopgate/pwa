@@ -18,7 +18,7 @@ const Content = (props) => {
     if (props.path === INDEX_PATH) {
       currentTitle = <Logo />;
     } else {
-      const isSearching = props.getQueryParam('s') !== undefined;
+      const isSearching = props.searchQuery !== null;
 
       currentTitle = <Title onClick={isSearching ? props.submitSearch : null} />;
     }
@@ -33,14 +33,16 @@ const Content = (props) => {
 };
 
 Content.propTypes = {
-  getQueryParam: PropTypes.func.isRequired,
-  path: PropTypes.string.isRequired,
   submitSearch: PropTypes.func.isRequired,
+  path: PropTypes.string,
   searchActive: PropTypes.bool,
+  searchQuery: PropTypes.string,
 };
 
 Content.defaultProps = {
+  path: null,
   searchActive: false,
+  searchQuery: null,
 };
 
 export default connect(Content);
