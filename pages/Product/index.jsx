@@ -1,106 +1,92 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
+// Import Portal from '@shopgate/pwa-common/components/Portal';
+// Import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import View from 'Components/View';
-import Reviews from 'Components/Reviews';
-import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-import ImageSlider from './components/ImageSlider';
-import Header from './components/Header';
-import VariantSelects from './components/VariantSelects';
-import Options from './components/Options';
-import Description from './components/Description';
-import Properties from './components/Properties';
+// Import Reviews from 'Components/Reviews';
+// Import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+// Import ImageSlider from './components/ImageSlider';
+// Import Header from './components/Header';
+// Import VariantSelects from './components/VariantSelects';
+// Import Options from './components/Options';
+// Import Description from './components/Description';
+// Import Properties from './components/Properties';
 import connect from './connector';
 
 /**
- * The product component.
+ * The product detail page (PDP).
+ * @return {JSX}
  */
-class Product extends Component {
-  static propTypes = {
-    resetCurrentProduct: PropTypes.func.isRequired,
-    name: PropTypes.string,
-  };
+const Product = ({ name }) => (
+  <div data-test-id={`product: ${name}`}>
+    <View>
+      <div />
 
-  static defaultProps = {
-    name: null,
-  };
+      {/* IMAGE */}
+      {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+      <Portal name={portals.PRODUCT_IMAGE}>
+        <ImageSlider />
+      </Portal>
+      <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
 
-  /**
-   * Component will unmount and reset the current product.
-   */
-  componentWillUnmount() {
-    this.props.resetCurrentProduct();
-  }
+      {/* HEADER */}
+      {/* <Portal name={portals.PRODUCT_HEADER_BEFORE} />
+      <Portal name={portals.PRODUCT_HEADER}>
+        <Header />
+      </Portal>
+      <Portal name={portals.PRODUCT_HEADER_AFTER} /> */}
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <div data-test-id={`product: ${this.props.name}`}>
-        <View title={this.props.name}>
+      {/* VARIANT SELECT */}
+      {/* <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
+      <Portal name={portals.PRODUCT_VARIANT_SELECT}>
+        <VariantSelects />
+      </Portal>
+      <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} /> */}
 
-          {/* IMAGE */}
-          <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
-          <Portal name={portals.PRODUCT_IMAGE}>
-            <ImageSlider />
-          </Portal>
-          <Portal name={portals.PRODUCT_IMAGE_AFTER} />
+      {/* OPTIONS */}
+      {/* <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
+      <Portal name={portals.PRODUCT_OPTIONS}>
+        <Options />
+      </Portal>
+      <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
 
-          {/* HEADER */}
-          <Portal name={portals.PRODUCT_HEADER_BEFORE} />
-          <Portal name={portals.PRODUCT_HEADER}>
-            <Header />
-          </Portal>
-          <Portal name={portals.PRODUCT_HEADER_AFTER} />
+      {/* DESCRIPTION */}
+      {/* <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
+      <Portal name={portals.PRODUCT_DESCRIPTION}>
+        <Description />
+      </Portal>
+      <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} /> */}
 
-          {/* VARIANT SELECT */}
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
-          <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-            <VariantSelects />
-          </Portal>
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
+      {/* PROPERTIES */}
+      {/* <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
+      <Portal name={portals.PRODUCT_PROPERTIES}>
+        <Properties />
+      </Portal>
+      <Portal name={portals.PRODUCT_PROPERTIES_AFTER} /> */}
 
-          {/* OPTIONS */}
-          <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
-          <Portal name={portals.PRODUCT_OPTIONS}>
-            <Options />
-          </Portal>
-          <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
+      {/* REVIEWS */}
+      {/* <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
+      <Portal name={portals.PRODUCT_REVIEWS}>
+        <Reviews />
+      </Portal>
+      <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
 
-          {/* DESCRIPTION */}
-          <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
-          <Portal name={portals.PRODUCT_DESCRIPTION}>
-            <Description />
-          </Portal>
-          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
+      {/* TAX DISCLAIMER */}
+      {/* <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
+      <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
+        <TaxDisclaimer />
+      </Portal>
+      <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} /> */}
+    </View>
+  </div>
+);
 
-          {/* PROPERTIES */}
-          <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
-          <Portal name={portals.PRODUCT_PROPERTIES}>
-            <Properties />
-          </Portal>
-          <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
+Product.propTypes = {
+  name: PropTypes.string,
+};
 
-          {/* REVIEWS */}
-          <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
-          <Portal name={portals.PRODUCT_REVIEWS}>
-            <Reviews />
-          </Portal>
-          <Portal name={portals.PRODUCT_REVIEWS_AFTER} />
-
-          {/* TAX DISCLAIMER */}
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
-            <TaxDisclaimer />
-          </Portal>
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
-        </View>
-      </div>
-    );
-  }
-}
+Product.defaultProps = {
+  name: null,
+};
 
 export default connect(Product);
