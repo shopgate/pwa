@@ -1,13 +1,19 @@
+import els from '../elements/de'
 
-export function clearCart() {
-  //delete single product from cart
-  cy.get('[data-test-id="ContextMenu"]', { timeout: 10000 }).click()
-  cy.get('span').contains('Entfernen').click()
-
-  //check for empty cart
-  cy.wait(5000)
-  cy.get('span').contains('Zur Kasse').should('not.be.visible')
-  cy.get('span').contains('Ihr Warenkorb ist leer.', { timeout: 10000 }).should('be.visible')
+/**
+ * Helper function that clears the Cart
+ */
+export function clearProductFromCart() {
+  // Delete single product from cart
+  cy.visit('Cart');
+  cy.get(els.contextMenu)
+    .click();
+  cy.get(els.contextMenuButton)
+    .contains('Entfernen')
+    .click();
+  // check for empty cart
+  cy.get(els.emptyCartPlaceHolderString)
+    .should('be.visible');
 }
 
 export function deleteCoupon() {

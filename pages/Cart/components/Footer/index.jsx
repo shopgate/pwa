@@ -10,10 +10,12 @@ import connect from './connector';
  * @return {JSX}
  */
 const Footer = ({ showTaxDisclaimer, showCouponsHint }) => (
-  <Fragment>
-    {showCouponsHint && <CouponsHint />}
-    {showTaxDisclaimer && <TaxDisclaimer />}
-  </Fragment>
+  <div data-test-id="footer">
+    <Fragment>
+      {showCouponsHint && <CouponsHint />}
+      {showTaxDisclaimer && <TaxDisclaimer />}
+    </Fragment>
+  </div>
 );
 
 Footer.propTypes = {
