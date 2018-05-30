@@ -67,7 +67,7 @@ export default {
   productWithManyProps4CartitemPrice: "[data-test-id='cartItem'] [data-test-id='link: /item/393939'] [data-test-id='minPrice: 0 price: 199 currency: EUR']",
   productWithManyProps4CartSubTotal: "[data-test-id='subTotal: 199']",
   shippingLabel: "[data-test-id='shippingLabel'] span",
-  taxDisclaimerFooter: "[data-test-id='footer'] [data-test-id='taxDisclaimer'] span",
+  taxDisclaimerFooter: "[data-route-path='/cart'] [data-test-id='taxDisclaimer'] span",
   couponFieldInput: "[data-test-id='couponField'] input",
   couponSubmitButton: "[data-test-id='CouponSubmitButton']",
 };
