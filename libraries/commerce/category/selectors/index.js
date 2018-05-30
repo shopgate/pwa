@@ -35,7 +35,7 @@ const getRootCategoriesState = createSelector(
 );
 
 /**
- * Retrieves the child categories for a specific parent category from the state.
+ * Retrieves the root categories.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {Object} The child categories state.
@@ -52,12 +52,7 @@ export const getRootCategories = createSelector(
       return null;
     }
 
-    const categories = rootCategories.categories.map(id => categoryState[id]);
-
-    return {
-      ...rootCategories,
-      categories,
-    };
+    return rootCategories.categories.map(id => categoryState[id]);
   }
 );
 
