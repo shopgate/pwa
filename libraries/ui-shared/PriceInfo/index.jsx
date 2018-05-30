@@ -13,6 +13,7 @@ const PriceInfo = ({ className, text }) => (
   <div
     className={`${styles} ${className}`}
     dangerouslySetInnerHTML={{ __html: text }}
+    data-test-id={`priceInfo: ${text}`}
   />
 );
 

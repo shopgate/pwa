@@ -183,6 +183,7 @@ class Image extends Component {
           style={inlineStyles}
           alt={this.props.alt}
           role="presentation"
+          data-test-id="image"
         />
       );
     }

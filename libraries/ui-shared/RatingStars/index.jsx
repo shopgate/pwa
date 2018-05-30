@@ -145,7 +145,7 @@ class RatingStars extends Component {
     ];
 
     return (
-      <div className={className} aria-label={this.getTextualFinal(ratedStars)}>
+      <div className={className} aria-label={this.getTextualFinal(ratedStars)} data-test-id={`ratedStars: ${ratedStars}`}>
         <div className={styles.emptyStars}>
           {emptyStars}
         </div>
