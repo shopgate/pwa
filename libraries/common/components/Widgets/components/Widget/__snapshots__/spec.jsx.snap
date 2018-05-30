@@ -57,3 +57,45 @@ exports[`<Widget /> should render an image widget 1`] = `
   </GridItem>
 </Widget>
 `;
+
+exports[`<Widget /> should render an image widget with offset 1`] = `
+<Widget
+  cellSize={100}
+  component={[Function]}
+  config={
+    Object {
+      "col": 1,
+      "height": 6,
+      "row": 1,
+      "type": "@shopgate/commerce-widgets/image",
+      "width": 6,
+    }
+  }
+>
+  <GridItem
+    className="css-f819gy css-84qd44 css-1b0vnwm css-skhncj"
+    component="div"
+    grow={0}
+    shrink={1}
+  >
+    <div
+      className="css-f819gy css-84qd44 css-1b0vnwm css-skhncj"
+    >
+      <div
+        className="css-4hpmhj"
+      >
+        <MyComponent
+          ratio={
+            Array [
+              6,
+              6,
+            ]
+          }
+        >
+          <div />
+        </MyComponent>
+      </div>
+    </div>
+  </GridItem>
+</Widget>
+`;

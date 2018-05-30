@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import WidgetGrid from './components/WidgetGrid';
+import shouldShowWidget from './helpers/shouldShowWidget';
 
 const WIDGET_GRID_TYPE = '@shopgate/commerce-widgets/widget-grid';
 const GRID_COLUMNS = 12; // One grid row has 12 columns.
@@ -31,6 +32,9 @@ const createGridWrapper = (key, config, components) => (
  */
 const createArrayOfElements = (widgets, components) => (
   (widgets || []).map((widget, index) => {
+    if (!shouldShowWidget(widget.settings)) {
+      return null;
+    }
     if (!components[widget.type] && widget.type !== WIDGET_GRID_TYPE) {
       return null;
     }
@@ -64,30 +68,94 @@ const createArrayOfElements = (widgets, components) => (
     );
   })
 );
-
 /**
  * The Widgets component.
- * @param {Object} props The component props.
- * @returns {JSX}
  */
-const Widgets = ({ widgets, components }) => {
-  if (!widgets) {
-    return null;
+class Widgets extends Component {
+  static propTypes = {
+    components: PropTypes.shape(),
+    widgets: PropTypes.arrayOf(PropTypes.shape()),
+  };
+  static defaultProps = {
+    components: null,
+    widgets: null,
+  };
+
+  /**
+   * Checks if any widget is schedulable.
+   * @param {Array} widgets Array of widgets.
+   * @returns {boolean}
+   */
+  static hasSchedulableWidgets(widgets) {
+    let result = false;
+    (widgets || []).some((w) => {
+      if (w.settings.plan) {
+        result = true;
+        return true;
+      }
+      return false;
+    });
+
+    return result;
   }
 
-  return (
-    <div>{createArrayOfElements(widgets, components)}</div>
-  );
-};
+  /**
+   * Constructs.
+   * @param {Object} props Props.
+   */
+  constructor(props) {
+    super(props);
+    this.autoReloadInterval = undefined;
+    if (this.constructor.hasSchedulableWidgets(this.props.widgets)) {
+      this.startAutoRerender();
+    }
+  }
 
-Widgets.propTypes = {
-  components: PropTypes.shape(),
-  widgets: PropTypes.arrayOf(PropTypes.shape()),
-};
+  /**
+   * Component will unmount lifecycle method.
+   */
+  componentWillUnmount() {
+    this.stopAutoRerender();
+  }
 
-Widgets.defaultProps = {
-  components: null,
-  widgets: null,
-};
+  /**
+   * Sets auto re-render.
+   */
+  startAutoRerender() {
+    const minutesToRoundedHour = 60 - new Date().getMinutes();
+    const nextRerenderIn = minutesToRoundedHour * 60000;
+    this.autoReloadTimeout = setTimeout(() => this.doAutoRerender(), nextRerenderIn);
+  }
+
+  /**
+   * Stops auto re-render. Must be called before component is unmounted to avoid
+   * memory leak.
+   */
+  stopAutoRerender() {
+    clearTimeout(this.autoReloadTimeout);
+  }
+
+  /**
+   * Forces re-render and sets another timeout for next cycle.
+   */
+  doAutoRerender() {
+    this.forceUpdate();
+    this.startAutoRerender();
+  }
+
+  /**
+   * Renders widgets.
+   * @returns {JSX}
+   */
+  render() {
+    if (!this.props.widgets) {
+      return null;
+    }
+
+    return (
+      <div>{createArrayOfElements(this.props.widgets, this.props.components)}</div>
+    );
+  }
+}
 
 export default Widgets;

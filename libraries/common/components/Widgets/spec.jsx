@@ -2,11 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Widgets from './index';
 
+jest.useFakeTimers();
 /**
  * A mock Image component.
  * @returns {JSX}
  */
-const Image = () => <div />;
+const Image = () => <img />;
 
 const components = {
   '@shopgate/commerce-widgets/image': Image,
@@ -90,5 +91,108 @@ describe('<Widgets />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
+  });
+  it('should render only one widget when the second one is not published and third one is invalid', () => {
+    const widgets = [
+      {
+        col: 0,
+        row: 0,
+        width: 12,
+        settings: {
+          id: 835351,
+          image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
+        },
+        type: '@shopgate/commerce-widgets/image',
+      },
+      {
+        col: 0,
+        row: 0,
+        width: 12,
+        settings: {
+          id: 835352,
+          image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
+        },
+        type: '@shopgate/commerce-widgets/imagefoo',
+      },
+      {
+        col: 0,
+        row: 0,
+        width: 12,
+        settings: {
+          published: false,
+          id: 835353,
+          image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
+        },
+        type: '@shopgate/commerce-widgets/image',
+      },
+    ];
+
+    const wrapper = mount((
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
+    ));
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('img').length).toBe(1);
+  });
+  it('should schedule a re-render when widget is scheduled', () => {
+    const minutesToNextFullHour = 60 - new Date().getMinutes();
+    const msToNextFullHour = minutesToNextFullHour * 60000;
+    const scheduledFromMs = (Date.now() + msToNextFullHour) - 1;
+    const scheduledToMs = Date.now() + minutesToNextFullHour + 1000;
+    const widgets = [
+      {
+        col: 0,
+        row: 0,
+        width: 12,
+        settings: {
+          id: 835351,
+          image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
+          published: true,
+          plan: true,
+          planDate: {
+            valid_from: new Date(scheduledFromMs).toISOString(),
+            valid_to: new Date(scheduledToMs).toISOString(),
+          },
+        },
+        type: '@shopgate/commerce-widgets/image',
+      },
+    ];
+    const wrapper = mount((
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
+    ));
+    wrapper.instance().forceUpdate = jest.fn();
+    expect(wrapper.find(Image).exists()).toBe(false);
+    jest.advanceTimersByTime(msToNextFullHour);
+    expect(wrapper.instance().forceUpdate).toHaveBeenCalledTimes(1);
+    // In real life next timeout should be in 60 minutes.
+    // This test has same Date and fake timers.
+    jest.advanceTimersByTime(msToNextFullHour);
+    expect(wrapper.instance().forceUpdate).toHaveBeenCalledTimes(2);
+    wrapper.instance().componentWillUnmount();
+    expect(clearTimeout).toHaveBeenCalled();
+  });
+  it('should render only wrapper when widgets array is empty', () => {
+    const widgets = [];
+    const wrapper = mount((
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
+    ));
+    expect(wrapper.find('Image').exists()).toBe(false);
+  });
+  it('should render null when no widgets are passed', () => {
+    const wrapper = mount((
+      <Widgets
+        components={components}
+      />
+    ));
+    expect(wrapper.html()).toBe(null);
   });
 });

@@ -36,7 +36,7 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
       type="@shopgate/commerce-widgets/image"
       width={12}
     >
-      <div />
+      <img />
     </Image>
   </div>
 </Widgets>
@@ -156,7 +156,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
                     }
                   }
                 >
-                  <div />
+                  <img />
                 </Image>
               </div>
             </div>
@@ -164,6 +164,69 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
         </Widget>
       </div>
     </WidgetGrid>
+  </div>
+</Widgets>
+`;
+
+exports[`<Widgets /> should render only one widget when the second one is not published and third one is invalid 1`] = `
+<Widgets
+  components={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+    }
+  }
+  widgets={
+    Array [
+      Object {
+        "col": 0,
+        "row": 0,
+        "settings": Object {
+          "id": 835351,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        },
+        "type": "@shopgate/commerce-widgets/image",
+        "width": 12,
+      },
+      Object {
+        "col": 0,
+        "row": 0,
+        "settings": Object {
+          "id": 835352,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        },
+        "type": "@shopgate/commerce-widgets/imagefoo",
+        "width": 12,
+      },
+      Object {
+        "col": 0,
+        "row": 0,
+        "settings": Object {
+          "id": 835353,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+          "published": false,
+        },
+        "type": "@shopgate/commerce-widgets/image",
+        "width": 12,
+      },
+    ]
+  }
+>
+  <div>
+    <Image
+      col={0}
+      key="w0"
+      row={0}
+      settings={
+        Object {
+          "id": 835351,
+          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+        }
+      }
+      type="@shopgate/commerce-widgets/image"
+      width={12}
+    >
+      <img />
+    </Image>
   </div>
 </Widgets>
 `;
