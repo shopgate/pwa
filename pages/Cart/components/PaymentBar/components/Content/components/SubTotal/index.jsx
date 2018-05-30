@@ -10,7 +10,7 @@ import styles from './style';
  * @return {JSX}
  */
 const SubTotal = ({ currency, isDisabled, value }) => (
-  <div className={`${styles.totalValue} ${isDisabled ? styles.disabled : ''}`}>
+  <div className={`${styles.totalValue} ${isDisabled ? styles.disabled : ''}`}data-test-id={`subTotal: ${value}`}>
     <I18n.Price price={value} currency={currency} />
   </div>
 );

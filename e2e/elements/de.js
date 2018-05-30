@@ -51,4 +51,16 @@ export default {
   showAllReviewsButton: "[data-test-id='showAllReviewsButton']",
   productWithBasePrice1basePrice: "[data-test-id='priceInfo: &euro;10.00 / 1 kg']",
   productWithStrikePrice4StrikePrice: "[data-test-id='strikedPrice: 10']",
+  emptyCartPlaceHolderString: "[data-test-id='emptyCartPlaceHolderString']",
+  cartButton: "[data-test-id='CartButton']",
+  productWithManyProps4CartItem: "[data-test-id='cartItem'] [data-test-id='link: /item/393939']",
+  contextMenu: "[data-test-id='contextMenu']",
+  contextMenuButton: "[data-test-id='contextMenuButton'] span",
+  productWithManyProps4CartitemPrice: "[data-test-id='cartItem'] [data-test-id='link: /item/393939'] [data-test-id='minPrice: 0 price: 199 currency: EUR']",
+  productWithManyProps4CartSubTotal: "[data-test-id='subTotal: 199']",
+  shippingLabel: "[data-test-id='shippingLabel'] span",
+  taxDisclaimerFooter: "[data-test-id='footer'] [data-test-id='taxDisclaimer'] span",
+  couponFieldInput: "[data-test-id='couponField'] input",
+  couponSubmitButton: "[data-test-id='CouponSubmitButton']",
+
 };
