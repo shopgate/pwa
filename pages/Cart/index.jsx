@@ -29,10 +29,6 @@ class Cart extends Component {
     messages: [],
   };
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -46,6 +42,10 @@ class Cart extends Component {
     };
   }
 
+  // shouldComponentUpdate(nextprops, nextState) {
+
+  // }
+
   /**
    * Callback for the onSize event of the PaymentBar.
    * @param {Object} size An object which contains data about the current componenent dimensions.
@@ -54,15 +54,6 @@ class Cart extends Component {
     this.setState({
       containerPaddingStyle: styles.getContainerPaddingStyle(height),
     });
-  }
-
-  /**
-   * Returns the translated view title.
-   * @return {string}
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.cart');
   }
 
   /**
@@ -86,7 +77,7 @@ class Cart extends Component {
     const hasMessages = messages.length > 0;
 
     return (
-      <View title={this.title}>
+      <View>
         {(hasItems || hasMessages) && (
           <section
             className={styles.container}

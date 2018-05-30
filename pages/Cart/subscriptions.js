@@ -8,12 +8,9 @@ import setTitle from '../../components/View/actions/setTitle';
  * @param {Function} subscribe The subscribe function.
  */
 export default function cart(subscribe) {
-  subscribe(cartWillEnter$, ({ action, dispatch }) => {
-    const { title } = action.route.state;
+  subscribe(cartWillEnter$, ({ dispatch }) => {
+    dispatch(setTitle('titles.cart'));
     dispatch(toggleCartIcon(false));
     dispatch(disableNavigatorSearch());
-    if (title) {
-      dispatch(setTitle(title));
-    }
   });
 }

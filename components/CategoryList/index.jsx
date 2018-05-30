@@ -12,7 +12,7 @@ import List from 'Components/List';
  * @returns {JSX}
  */
 const CategoryList = ({ categories }) => {
-  if (!categories) {
+  if (!categories || !categories.length) {
     return null;
   }
 
