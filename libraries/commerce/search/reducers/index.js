@@ -2,9 +2,11 @@ import {
   REQUEST_SEARCH_SUGGESTIONS,
   RECEIVE_SEARCH_SUGGESTIONS,
   SEARCH_SUGGESTIONS_LIFETIME,
+  SET_SEARCH_SUGGESTIONS_PHRASE,
 } from '../constants';
 
 const initialState = {
+  suggestionsPhrase: '',
   suggestions: {},
 };
 
@@ -41,7 +43,11 @@ const search = (state = initialState, action) => {
           },
         },
       };
-
+    case SET_SEARCH_SUGGESTIONS_PHRASE:
+      return {
+        ...state,
+        suggestionsPhrase: action.suggestionsPhrase,
+      };
     default:
       return state;
   }

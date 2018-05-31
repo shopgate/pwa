@@ -5,7 +5,7 @@ import requestSearchSuggestions from '../action-creators/requestSearchSuggestion
 import receiveSearchSuggestions from '../action-creators/receiveSearchSuggestions';
 import {
   getCurrentSearchSuggestionsObject,
-  getSearchPhrase,
+  getSearchSuggestionsPhrase,
 } from '../selectors';
 import removeHighlightingPlaceholders from '../helpers/removeHighlightingPlaceholders';
 
@@ -16,7 +16,7 @@ import removeHighlightingPlaceholders from '../helpers/removeHighlightingPlaceho
  */
 const fetchSearchSuggestions = () => (dispatch, getState) => {
   const state = getState();
-  const searchPhrase = getSearchPhrase(state);
+  const searchPhrase = getSearchSuggestionsPhrase(state);
   const cachedSuggestions = getCurrentSearchSuggestionsObject(state);
 
   if (!shouldFetchData(cachedSuggestions)) {
