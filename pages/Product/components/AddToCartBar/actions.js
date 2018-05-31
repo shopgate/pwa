@@ -23,3 +23,19 @@ export const decrementActionCount = () => ({
 export const resetActionCount = () => ({
   type: actionTypes.RESET_ACTION_COUNT,
 });
+
+/**
+ * Dispatches the SHOW_ADD_TO_CART_BAR action.
+ * @return {Object}
+ */
+export const showAddToCartBar = () => ({
+  type: actionTypes.SHOW_ADD_TO_CART_BAR,
+});
+
+/**
+ * Dispatches the HIDE_ADD_TO_CART_BUTTON action.
+ * @return {Object}
+ */
+export const hideAddToCartBar = () => ({
+  type: actionTypes.HIDE_ADD_TO_CART_BAR,
+});

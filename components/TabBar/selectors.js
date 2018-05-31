@@ -21,11 +21,19 @@ import {
   TAB_FAVORITES,
   TAB_MORE,
   TAB_NONE,
+  TAB_BAR_TOGGLE_HANDLER_EXTENSION,
 } from './constants';
 
 /**
+ * Returns a tabBar state.
+ * @param {Object} state State.
+ * @return {Object}
+ */
+const getTabBarState = state => state.ui.tabBar;
+
+/**
  * Returns what tab is active, returns TAB_NONE if none is active.
- * @params {Object} state The application state.
+ * @param {Object} state The application state.
  * @returns {string}
  */
 export const getActiveTab = createSelector(
@@ -51,25 +59,57 @@ export const getActiveTab = createSelector(
 );
 
 /**
+ * Checks if the TabBar visiblity is supposed to be handled by an extension. If it's like
+ * that it returns the desired state. If no extension is registered as a handler,
+ * the selector will return NULL.
+ * @param {Object} state The application state.
+ * @returns {boolean|null}
+ */
+export const isTabBarVisibleByExtension = createSelector(
+  getTabBarState,
+  (tabBarState) => {
+    const {
+      toggleHandler,
+      shownByExtension,
+    } = tabBarState;
+
+    if (toggleHandler !== TAB_BAR_TOGGLE_HANDLER_EXTENSION) {
+      return null;
+    }
+
+    return shownByExtension;
+  }
+);
+
+/**
  * Returns whether the tab bar is visible or not.
- * @params {Object} state The application state.
+ * @param {Object} state The application state.
  * @returns {boolean}
  */
 export const isTabBarVisible = createSelector(
+  isTabBarVisibleByExtension,
   getHistoryPathname,
   hasFavorites,
-  (pathname, favorites) => {
-    if (
-      pathname === CART_PATH ||
-      pathname.startsWith(ITEM_PATH) ||
-      pathname.startsWith(FILTER_PATH) ||
-      pathname.startsWith(LOGIN_PATH) ||
-      (pathname.startsWith(FAVORITES_PATH) && !favorites)
-    ) {
+  (visibleByExtension, pathname, favorites) => {
+    // If the visibiity state is currently handled by an extension return the desired state.
+    if (visibleByExtension !== null) {
+      return visibleByExtension;
+    }
+
+    // Hide the TabBar on an empty favorite list.
+    if (pathname === FAVORITES_PATH && !favorites) {
       return false;
     }
 
-    return true;
+    const pathsWithoutTabBar = [
+      CART_PATH,
+      ITEM_PATH,
+      FILTER_PATH,
+      LOGIN_PATH,
+    ];
+
+    // Hide the TabBar when the current path is blacklisted.
+    return !pathsWithoutTabBar.find(entry => pathname.startsWith(entry));
   }
 );
 

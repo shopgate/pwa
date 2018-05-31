@@ -94,281 +94,765 @@ exports[`<TabBar /> should render when visible 1`] = `
         ]
       }
     >
-      <Grid
-        className="css-rnnn5r"
-        component="ul"
-        wrap={false}
+      <div
+        data-test-id="tabBar"
       >
-        <ul
-          className="css-rnnn5r css-h7r55a"
+        <Grid
+          className="css-1evzxa3"
+          component="ul"
+          wrap={false}
         >
-          <TabBarHomeAction
-            icon={null}
-            isHighlighted={true}
-            key="home"
-            label="tab_bar.home"
-            onClick={null}
-            path="/"
-            type="home"
+          <ul
+            className="css-1evzxa3 css-h7r55a"
           >
-            <mockedPortal
-              name="tab-bar.home.before"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": true,
-                  "label": "tab_bar.home",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "home",
+            <TabBarHomeAction
+              icon={null}
+              isHighlighted={true}
+              key="home"
+              label="tab_bar.home"
+              onClick={null}
+              path="/"
+              type="home"
+            >
+              <Portal
+                name="tab-bar.home.before"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": true,
+                    "label": "tab_bar.home",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "home",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.home"
-              props={
-                Object {
-                  "TabBarAction": [Function],
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": true,
-                  "label": "tab_bar.home",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "home",
+              />
+              <Portal
+                name="tab-bar.home"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": true,
+                    "label": "tab_bar.home",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "home",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.home.after"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": true,
-                  "label": "tab_bar.home",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "home",
+              >
+                <TabBarAction
+                  icon={
+                    <Portal
+                      name="tab-bar.home-icon"
+                      props={null}
+                    >
+                      <Home
+                        className="css-1rqxdrd"
+                      />
+                    </Portal>
+                  }
+                  isHighlighted={true}
+                  label="tab_bar.home"
+                  onClick={[Function]}
+                  path="/"
+                  type="home"
+                >
+                  <Button
+                    className="css-1kz5xrj css-7rfn3t"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="css-1kz5xrj css-7rfn3t css-1rn65c0"
+                      data-test-id="Button"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <Portal
+                        name="tab-bar.home-icon"
+                        props={null}
+                      >
+                        <Home
+                          className="css-1rqxdrd"
+                        >
+                          <Icon
+                            className="css-1rqxdrd"
+                            color={null}
+                            content="
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M63.6,27.6V10.4a1.028,1.028,0,0,0-1.1-1H49.4a1.1,1.1,0,0,0-1.1,1V27.6a1.028,1.028,0,0,0,1.1,1H62.5A1.028,1.028,0,0,0,63.6,27.6ZM62.6,8A2.433,2.433,0,0,1,65,10.4V27.6A2.433,2.433,0,0,1,62.6,30H49.4A2.433,2.433,0,0,1,47,27.6V10.4A2.433,2.433,0,0,1,49.4,8ZM49.8,27H62.3V14.7H49.8Zm.7-14.6H56A.7.7,0,1,0,56,11H50.5a.7.7,0,1,0,0,1.4Z\\"
+    transform=\\"translate(-3112 1705)\\"
+  />
+"
+                            size="inherit"
+                            viewBox="-3065 1713 18 22"
+                          >
+                            <svg
+                              className="css-yys9hb css-1rqxdrd"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M63.6,27.6V10.4a1.028,1.028,0,0,0-1.1-1H49.4a1.1,1.1,0,0,0-1.1,1V27.6a1.028,1.028,0,0,0,1.1,1H62.5A1.028,1.028,0,0,0,63.6,27.6ZM62.6,8A2.433,2.433,0,0,1,65,10.4V27.6A2.433,2.433,0,0,1,62.6,30H49.4A2.433,2.433,0,0,1,47,27.6V10.4A2.433,2.433,0,0,1,49.4,8ZM49.8,27H62.3V14.7H49.8Zm.7-14.6H56A.7.7,0,1,0,56,11H50.5a.7.7,0,1,0,0,1.4Z\\"
+    transform=\\"translate(-3112 1705)\\"
+  />
+",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="-3065 1713 18 22"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Home>
+                      </Portal>
+                      <div
+                        className="css-1oe88ku"
+                        data-test-id="tab_bar.home"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="tab_bar.home"
+                        >
+                          <span
+                            className=""
+                          >
+                            tab_bar.home
+                          </span>
+                        </Translate>
+                      </div>
+                    </button>
+                  </Button>
+                </TabBarAction>
+              </Portal>
+              <Portal
+                name="tab-bar.home.after"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": true,
+                    "label": "tab_bar.home",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "home",
+                  }
                 }
-              }
-            />
-          </TabBarHomeAction>
-          <TabBarBrowseAction
-            icon={null}
-            isHighlighted={false}
-            key="browse"
-            label="tab_bar.browse"
-            onClick={null}
-            path="/"
-            type="browse"
-          >
-            <mockedPortal
-              name="tab-bar.browse.before"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.browse",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "browse",
+              />
+            </TabBarHomeAction>
+            <TabBarBrowseAction
+              icon={null}
+              isHighlighted={false}
+              key="browse"
+              label="tab_bar.browse"
+              onClick={null}
+              path="/"
+              type="browse"
+            >
+              <Portal
+                name="tab-bar.browse.before"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.browse",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "browse",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.browse"
-              props={
-                Object {
-                  "TabBarAction": [Function],
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.browse",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "browse",
+              />
+              <Portal
+                name="tab-bar.browse"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.browse",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "browse",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.browse.after"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.browse",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "browse",
+              >
+                <TabBarAction
+                  icon={
+                    <Portal
+                      name="tab-bar.browse-icon"
+                      props={null}
+                    >
+                      <Browse
+                        className="css-1g4dstu"
+                      />
+                    </Portal>
+                  }
+                  isHighlighted={false}
+                  label="tab_bar.browse"
+                  onClick={[Function]}
+                  path="/"
+                  type="browse"
+                >
+                  <Button
+                    className="css-1kz5xrj css-1livkh4"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="css-1kz5xrj css-1livkh4 css-1rn65c0"
+                      data-test-id="Button"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <Portal
+                        name="tab-bar.browse-icon"
+                        props={null}
+                      >
+                        <Browse
+                          className="css-1g4dstu"
+                        >
+                          <Icon
+                            className="css-1g4dstu"
+                            color={null}
+                            content="
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M16799.3,14716.7l-5.8-5.9a8.438,8.438,0,0,1-4.9,1.6,8.7,8.7,0,1,1,8.6-8.7,8.814,8.814,0,0,1-2.2,5.8l5.705,5.8a.966.966,0,0,1,0,1.4.906.906,0,0,1-.705.3A1.054,1.054,0,0,1,16799.3,14716.7Zm-17.3-13a6.748,6.748,0,0,0,6.6,6.7,6.7,6.7,0,1,0-6.6-6.7Zm20,2.3a1,1,0,0,1,0-2h8a1,1,0,0,1,0,2Zm-1-4a1,1,0,1,1,0-2h9a1,1,0,1,1,0,2Zm-1-4a1,1,0,0,1,0-2h10a1,1,0,0,1,0,2Z\\"
+    transform=\\"translate(-27500 -8035.002)\\"
+  />
+"
+                            size="inherit"
+                            viewBox="-10720 6659.999 31.002 21.998"
+                          >
+                            <svg
+                              className="css-yys9hb css-1g4dstu"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M16799.3,14716.7l-5.8-5.9a8.438,8.438,0,0,1-4.9,1.6,8.7,8.7,0,1,1,8.6-8.7,8.814,8.814,0,0,1-2.2,5.8l5.705,5.8a.966.966,0,0,1,0,1.4.906.906,0,0,1-.705.3A1.054,1.054,0,0,1,16799.3,14716.7Zm-17.3-13a6.748,6.748,0,0,0,6.6,6.7,6.7,6.7,0,1,0-6.6-6.7Zm20,2.3a1,1,0,0,1,0-2h8a1,1,0,0,1,0,2Zm-1-4a1,1,0,1,1,0-2h9a1,1,0,1,1,0,2Zm-1-4a1,1,0,0,1,0-2h10a1,1,0,0,1,0,2Z\\"
+    transform=\\"translate(-27500 -8035.002)\\"
+  />
+",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="-10720 6659.999 31.002 21.998"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Browse>
+                      </Portal>
+                      <div
+                        className="css-1oe88ku"
+                        data-test-id="tab_bar.browse"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="tab_bar.browse"
+                        >
+                          <span
+                            className=""
+                          >
+                            tab_bar.browse
+                          </span>
+                        </Translate>
+                      </div>
+                    </button>
+                  </Button>
+                </TabBarAction>
+              </Portal>
+              <Portal
+                name="tab-bar.browse.after"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.browse",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "browse",
+                  }
                 }
-              }
-            />
-          </TabBarBrowseAction>
-          <TabBarCartAction
-            icon={null}
-            isHighlighted={false}
-            key="cart"
-            label="tab_bar.cart"
-            onClick={null}
-            path="/"
-            type="cart"
-          >
-            <mockedPortal
-              name="tab-bar.cart.before"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.cart",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "cart",
+              />
+            </TabBarBrowseAction>
+            <TabBarCartAction
+              icon={null}
+              isHighlighted={false}
+              key="cart"
+              label="tab_bar.cart"
+              onClick={null}
+              path="/"
+              type="cart"
+            >
+              <Portal
+                name="tab-bar.cart.before"
+                props={
+                  Object {
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.cart",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "cart",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.cart"
-              props={
-                Object {
-                  "TabBarAction": [Function],
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.cart",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "cart",
+              />
+              <Portal
+                name="tab-bar.cart"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.cart",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "cart",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.cart.after"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.cart",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "cart",
+              >
+                <TabBarAction
+                  icon={
+                    <Portal
+                      name="tab-bar.cart-icon"
+                      props={null}
+                    >
+                      <CartIcon
+                        className="css-betil4"
+                      />
+                    </Portal>
+                  }
+                  isHighlighted={false}
+                  label="tab_bar.cart"
+                  onClick={[Function]}
+                  path="/"
+                  type="cart"
+                >
+                  <Button
+                    className="css-1kz5xrj css-1livkh4"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="css-1kz5xrj css-1livkh4 css-1rn65c0"
+                      data-test-id="Button"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <Portal
+                        name="tab-bar.cart-icon"
+                        props={null}
+                      >
+                        <CartIcon
+                          className="css-betil4"
+                        >
+                          <Icon
+                            className="css-betil4"
+                            color={null}
+                            content="
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M26.5,1.98,25.6,6.309H20.7L21.817,1ZM21.413,23.509A1.491,1.491,0,1,0,22.9,22.017a1.491,1.491,0,0,0-1.491,1.491Zm-5.505,0A1.491,1.491,0,1,0,17.4,22.017a1.491,1.491,0,0,0-1.491,1.491ZM19.322,3.167l-3.713.771L16.1,6.3h2.567ZM12.906,5a1.134,1.134,0,0,0-1.053-.735H9.379a1.129,1.129,0,1,0,0,2.258h1.695l3.468,9.027a1.134,1.134,0,0,0,1.053.735h7.837a1.095,1.095,0,1,1,0,2.189H14.987a1.129,1.129,0,1,0,0,2.258h8.451a3.348,3.348,0,0,0,2.339-5.748l2.777-5.008a1.129,1.129,0,0,0-.438-1.536,1.085,1.085,0,0,0-.38-.127H14.174Z\\"
+    transform=\\"translate(-10628.25 6657)\\"
+  />
+"
+                            size="inherit"
+                            viewBox="-10620 6658 20.447 24"
+                          >
+                            <svg
+                              className="css-yys9hb css-betil4"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "
+  <path
+    fill=\\"currentColor\\"
+    d=\\"M26.5,1.98,25.6,6.309H20.7L21.817,1ZM21.413,23.509A1.491,1.491,0,1,0,22.9,22.017a1.491,1.491,0,0,0-1.491,1.491Zm-5.505,0A1.491,1.491,0,1,0,17.4,22.017a1.491,1.491,0,0,0-1.491,1.491ZM19.322,3.167l-3.713.771L16.1,6.3h2.567ZM12.906,5a1.134,1.134,0,0,0-1.053-.735H9.379a1.129,1.129,0,1,0,0,2.258h1.695l3.468,9.027a1.134,1.134,0,0,0,1.053.735h7.837a1.095,1.095,0,1,1,0,2.189H14.987a1.129,1.129,0,1,0,0,2.258h8.451a3.348,3.348,0,0,0,2.339-5.748l2.777-5.008a1.129,1.129,0,0,0-.438-1.536,1.085,1.085,0,0,0-.38-.127H14.174Z\\"
+    transform=\\"translate(-10628.25 6657)\\"
+  />
+",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="-10620 6658 20.447 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </CartIcon>
+                      </Portal>
+                      <div
+                        className="css-1oe88ku"
+                        data-test-id="tab_bar.cart"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="tab_bar.cart"
+                        >
+                          <span
+                            className=""
+                          >
+                            tab_bar.cart
+                          </span>
+                        </Translate>
+                      </div>
+                      <Connect(CartItemBadge)>
+                        <CartItemBadge
+                          cartProductCount={0}
+                          dispatch={[Function]}
+                        />
+                      </Connect(CartItemBadge)>
+                    </button>
+                  </Button>
+                </TabBarAction>
+              </Portal>
+              <Portal
+                name="tab-bar.cart.after"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.cart",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "cart",
+                  }
                 }
-              }
-            />
-          </TabBarCartAction>
-          <TabBarFavoritesAction
-            icon={null}
-            isHighlighted={false}
-            key="favorites"
-            label="tab_bar.favorites"
-            onClick={null}
-            path="/"
-            type="favorites"
-          >
-            <mockedPortal
-              name="tab-bar.favorites.before"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.favorites",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "favorites",
+              />
+            </TabBarCartAction>
+            <TabBarFavoritesAction
+              icon={null}
+              isHighlighted={false}
+              key="favorites"
+              label="tab_bar.favorites"
+              onClick={null}
+              path="/"
+              type="favorites"
+            >
+              <Portal
+                name="tab-bar.favorites.before"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.favorites",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "favorites",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.favorites"
-              props={
-                Object {
-                  "TabBarAction": [Function],
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.favorites",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "favorites",
+              />
+              <Portal
+                name="tab-bar.favorites"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.favorites",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "favorites",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.favorites.after"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.favorites",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "favorites",
+              >
+                <TabBarAction
+                  icon={
+                    <Portal
+                      name="tab-bar.favorites-icon"
+                      props={null}
+                    >
+                      <Heart
+                        className="css-yrjpmv"
+                      />
+                    </Portal>
+                  }
+                  isHighlighted={false}
+                  label="tab_bar.favorites"
+                  onClick={[Function]}
+                  path="/"
+                  type="favorites"
+                >
+                  <Button
+                    className="css-1kz5xrj css-1livkh4"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="css-1kz5xrj css-1livkh4 css-1rn65c0"
+                      data-test-id="Button"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <Portal
+                        name="tab-bar.favorites-icon"
+                        props={null}
+                      >
+                        <Heart
+                          className="css-yrjpmv"
+                        >
+                          <Icon
+                            className="css-yrjpmv"
+                            color={null}
+                            content="<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>"
+                            size="inherit"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb css-yrjpmv"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Heart>
+                      </Portal>
+                      <div
+                        className="css-1oe88ku"
+                        data-test-id="tab_bar.favorites"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="tab_bar.favorites"
+                        >
+                          <span
+                            className=""
+                          >
+                            tab_bar.favorites
+                          </span>
+                        </Translate>
+                      </div>
+                      <Connect(FavoritesIconBadge)>
+                        <FavoritesIconBadge
+                          dispatch={[Function]}
+                          favoritesCount={2}
+                        >
+                          <div
+                            className="css-1i6tmkt"
+                          >
+                            2
+                          </div>
+                        </FavoritesIconBadge>
+                      </Connect(FavoritesIconBadge)>
+                    </button>
+                  </Button>
+                </TabBarAction>
+              </Portal>
+              <Portal
+                name="tab-bar.favorites.after"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.favorites",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "favorites",
+                  }
                 }
-              }
-            />
-          </TabBarFavoritesAction>
-          <TabBarMoreAction
-            icon={null}
-            isHighlighted={false}
-            key="more"
-            label="tab_bar.more"
-            onClick={null}
-            path="/"
-            type="more"
-          >
-            <mockedPortal
-              name="tab-bar.more.before"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.more",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "more",
+              />
+            </TabBarFavoritesAction>
+            <TabBarMoreAction
+              icon={null}
+              isHighlighted={false}
+              key="more"
+              label="tab_bar.more"
+              onClick={null}
+              path="/"
+              type="more"
+            >
+              <Portal
+                name="tab-bar.more.before"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.more",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "more",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.more"
-              props={
-                Object {
-                  "TabBarAction": [Function],
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.more",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "more",
+              />
+              <Portal
+                name="tab-bar.more"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.more",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "more",
+                  }
                 }
-              }
-            />
-            <mockedPortal
-              name="tab-bar.more.after"
-              props={
-                Object {
-                  "children": null,
-                  "icon": null,
-                  "isHighlighted": false,
-                  "label": "tab_bar.more",
-                  "onClick": null,
-                  "path": "/",
-                  "type": "more",
+              >
+                <TabBarAction
+                  icon={
+                    <Portal
+                      name="tab-bar.more-icon"
+                      props={null}
+                    >
+                      <More
+                        className="css-yrjpmv"
+                      />
+                    </Portal>
+                  }
+                  isHighlighted={false}
+                  label="tab_bar.more"
+                  onClick={[Function]}
+                  path="/"
+                  type="more"
+                >
+                  <Button
+                    className="css-1kz5xrj css-1livkh4"
+                    disabled={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="css-1kz5xrj css-1livkh4 css-1rn65c0"
+                      data-test-id="Button"
+                      disabled={false}
+                      onClick={[Function]}
+                    >
+                      <Portal
+                        name="tab-bar.more-icon"
+                        props={null}
+                      >
+                        <More
+                          className="css-yrjpmv"
+                        >
+                          <Icon
+                            className="css-yrjpmv"
+                            color={null}
+                            content="
+<path
+  fill=\\"currentColor\\"
+  d=\\"M16343.128,14719.063a3.25,3.25,0,1,1,3.25,3.25A3.249,3.249,0,0,1,16343.128,14719.063Zm-10,0a3.252,3.252,0,1,1,3.25,3.25A3.253,3.253,0,0,1,16333.124,14719.063Zm-10,0a3.25,3.25,0,1,1,3.249,3.25A3.252,3.252,0,0,1,16323.125,14719.063Z\\"
+  transform=\\"translate(-26852 -8048.063)\\"
+/>
+"
+                            size="inherit"
+                            viewBox="-10528.875 6667.75 26.502 6.5"
+                          >
+                            <svg
+                              className="css-yys9hb css-yrjpmv"
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "
+<path
+  fill=\\"currentColor\\"
+  d=\\"M16343.128,14719.063a3.25,3.25,0,1,1,3.25,3.25A3.249,3.249,0,0,1,16343.128,14719.063Zm-10,0a3.252,3.252,0,1,1,3.25,3.25A3.253,3.253,0,0,1,16333.124,14719.063Zm-10,0a3.25,3.25,0,1,1,3.249,3.25A3.252,3.252,0,0,1,16323.125,14719.063Z\\"
+  transform=\\"translate(-26852 -8048.063)\\"
+/>
+",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="-10528.875 6667.75 26.502 6.5"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </More>
+                      </Portal>
+                      <div
+                        className="css-1oe88ku"
+                        data-test-id="tab_bar.more"
+                      >
+                        <Translate
+                          className=""
+                          params={Object {}}
+                          string="tab_bar.more"
+                        >
+                          <span
+                            className=""
+                          >
+                            tab_bar.more
+                          </span>
+                        </Translate>
+                      </div>
+                    </button>
+                  </Button>
+                </TabBarAction>
+              </Portal>
+              <Portal
+                name="tab-bar.more.after"
+                props={
+                  Object {
+                    "TabBarAction": [Function],
+                    "children": null,
+                    "icon": null,
+                    "isHighlighted": false,
+                    "label": "tab_bar.more",
+                    "onClick": null,
+                    "path": "/",
+                    "type": "more",
+                  }
                 }
-              }
-            />
-          </TabBarMoreAction>
-        </ul>
-      </Grid>
+              />
+            </TabBarMoreAction>
+          </ul>
+        </Grid>
+      </div>
     </TabBar>
   </Connect(TabBar)>
 </Provider>

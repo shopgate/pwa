@@ -11,6 +11,7 @@ import styles from './style';
  */
 class AddToCartBar extends Component {
   static propTypes = {
+    isVisible: PropTypes.bool.isRequired,
     cartProductCount: PropTypes.number,
     handleAddToCart: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -55,6 +56,7 @@ class AddToCartBar extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      (this.props.isVisible !== nextProps.isVisible) ||
       (this.state.itemCount !== nextState.itemCount) ||
       (nextProps.isDisabled !== this.props.isDisabled)
     );
@@ -81,6 +83,9 @@ class AddToCartBar extends Component {
    * @return {JSX}
    */
   render() {
+    if (this.props.isVisible === false) {
+      return null;
+    }
     const { itemCount } = this.state;
 
     return [
