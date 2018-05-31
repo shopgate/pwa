@@ -1,45 +1,54 @@
+import { createSelector } from 'reselect';
+
+/**
+ * Get the current search phrase.
+ * @param {Object} state The application state.
+ * @return {string}
+ */
+export const getSearchSuggestionsPhrase = state => state.search.suggestionsPhrase || '';
+
+/**
+ * Get the current search suggestions.
+ * @param {Object} state The application state.
+ * @return {Object}
+ */
+export const getSearchSuggestions = state => state.search.suggestions;
+
 /**
  * Returns the current search suggestions object.
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getCurrentSearchSuggestionsObject = (state) => {
-  const cache = state.search.suggestions;
-  const { searchPhrase } = state.navigator;
+export const getCurrentSearchSuggestionsObject = createSelector(
+  getSearchSuggestionsPhrase,
+  getSearchSuggestions,
+  (phrase, suggestions) => {
+    if (!suggestions[phrase]) {
+      return {};
+    }
 
-  if (!cache[searchPhrase]) {
-    return {};
+    return suggestions[phrase];
   }
-
-  return cache[searchPhrase];
-};
+);
 
 /**
  * Returns the current search suggestions as array of strings.
  * @param {Object} state The application state.
  * @returns {Array}
  */
-export const getCurrentSearchSuggestions = state =>
-  getCurrentSearchSuggestionsObject(state).suggestions || [];
+
+export const getCurrentSearchSuggestions = createSelector(
+  getCurrentSearchSuggestionsObject,
+  ({ suggestions }) => suggestions || []
+);
 
 /**
  * Returns whether the current search suggestions are still being fetched.
  * @param {Object} state The application state.
  * @returns {boolean}
  */
-export const isFetchingCurrentSearchSuggestions = (state) => {
-  const { isFetching } = getCurrentSearchSuggestionsObject(state);
+export const isFetchingCurrentSearchSuggestions = createSelector(
+  getCurrentSearchSuggestionsObject,
+  ({ isFetching = true }) => isFetching
+);
 
-  if (typeof isFetching === 'undefined') {
-    return true;
-  }
-
-  return isFetching;
-};
-
-/**
- * Get current search phrase.
- * @param {Object} state The application state.
- * @return {string}
- */
-export const getSearchPhrase = state => state.navigator.searchPhrase || '';
