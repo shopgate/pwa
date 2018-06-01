@@ -42,6 +42,8 @@ export const TAB_BAR_CART_ICON = `${TAB_BAR}.${CART_ICON}`;
 export const TAB_BAR_MORE_ICON = `${TAB_BAR}.${MORE_ICON}`;
 export const TAB_BAR_FAVORITES_ICON = `${TAB_BAR}.${FAVORITES_ICON}`;
 
-export const SET_TAB_BAR_ENABLED = 'SET_TAB_BAR_ENABLED';
-export const SET_TAB_BAR_VISIBLE = 'SET_TAB_BAR_VISIBLE';
+export const ENABLE_TAB_BAR = 'ENABLE_TAB_BAR';
+export const DISABLE_TAB_BAR = 'DISABLE_TAB_BAR';
 
+export const SHOW_TAB_BAR = 'SHOW_TAB_BAR';
+export const HIDE_TAB_BAR = 'HIDE_TAB_BAR';

@@ -1,6 +1,8 @@
 import {
-  SET_TAB_BAR_ENABLED,
-  SET_TAB_BAR_VISIBLE,
+  ENABLE_TAB_BAR,
+  DISABLE_TAB_BAR,
+  SHOW_TAB_BAR,
+  HIDE_TAB_BAR,
 } from './constants';
 
 const defaultState = {
@@ -16,15 +18,25 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case SET_TAB_BAR_ENABLED:
+    case ENABLE_TAB_BAR:
       return {
         ...state,
-        enabled: action.enabled,
+        enabled: true,
       };
-    case SET_TAB_BAR_VISIBLE:
+    case DISABLE_TAB_BAR:
       return {
         ...state,
-        visible: action.visible,
+        enabled: false,
+      };
+    case SHOW_TAB_BAR:
+      return {
+        ...state,
+        visible: true,
+      };
+    case HIDE_TAB_BAR:
+      return {
+        ...state,
+        visible: false,
       };
     default:
       return state;

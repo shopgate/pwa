@@ -1,47 +1,43 @@
 import {
-  SET_TAB_BAR_ENABLED,
-  SET_TAB_BAR_VISIBLE,
+  ENABLE_TAB_BAR,
+  DISABLE_TAB_BAR,
+  SHOW_TAB_BAR,
+  HIDE_TAB_BAR,
 } from './constants';
 
 import {
-  setTabBarEnabled,
-  setTabBarVisible,
+  enableTabBar,
+  disableTabBar,
+  showTabBar,
+  hideTabBar,
 } from './actions';
 
 describe('TabBar actions', () => {
-  describe('setTabBarEnabled()', () => {
-    it('should set enabled to true when no parameter is passed', () => {
-      const result = setTabBarEnabled();
-      expect(result).toEqual({
-        type: SET_TAB_BAR_ENABLED,
-        enabled: true,
-      });
-    });
-
-    it('should set enabled to false when false is passed as parameter', () => {
-      const result = setTabBarEnabled(false);
-      expect(result).toEqual({
-        type: SET_TAB_BAR_ENABLED,
-        enabled: false,
-      });
+  describe('enableTabBar()', () => {
+    it('should work as expected', () => {
+      const result = enableTabBar();
+      expect(result).toEqual({ type: ENABLE_TAB_BAR });
     });
   });
 
-  describe('setTabBarVisible()', () => {
-    it('should set visible to true when no parameter is passed', () => {
-      const result = setTabBarVisible();
-      expect(result).toEqual({
-        type: SET_TAB_BAR_VISIBLE,
-        visible: true,
-      });
+  describe('disableTabBar()', () => {
+    it('should work as expected', () => {
+      const result = disableTabBar();
+      expect(result).toEqual({ type: DISABLE_TAB_BAR });
     });
+  });
 
-    it('should set visible to false when false is passed as parameter', () => {
-      const result = setTabBarVisible(false);
-      expect(result).toEqual({
-        type: SET_TAB_BAR_VISIBLE,
-        visible: false,
-      });
+  describe('showTabBar()', () => {
+    it('should work as expected', () => {
+      const result = showTabBar();
+      expect(result).toEqual({ type: SHOW_TAB_BAR });
+    });
+  });
+
+  describe('hideTabBar()', () => {
+    it('should work as expected', () => {
+      const result = hideTabBar();
+      expect(result).toEqual({ type: HIDE_TAB_BAR });
     });
   });
 });

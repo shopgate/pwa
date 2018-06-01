@@ -1,8 +1,14 @@
-import * as actionTypes from './constants';
+import {
+  INCREMENT_ACTION_COUNT,
+  DECREMENT_ACTION_COUNT,
+  RESET_ACTION_COUNT,
+  SHOW_ADD_TO_CART_BAR,
+  HIDE_ADD_TO_CART_BAR,
+} from './constants';
 
 const defaultState = {
   added: 0,
-  show: true,
+  visible: true,
 };
 
 /**
@@ -13,30 +19,30 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.INCREMENT_ACTION_COUNT:
+    case INCREMENT_ACTION_COUNT:
       return {
         ...state,
         added: state.added + 1,
       };
-    case actionTypes.DECREMENT_ACTION_COUNT:
+    case DECREMENT_ACTION_COUNT:
       return {
         ...state,
         added: state.added ? state.added - 1 : 0,
       };
-    case actionTypes.RESET_ACTION_COUNT:
+    case RESET_ACTION_COUNT:
       return {
         ...state,
         added: 0,
       };
-    case actionTypes.SHOW_ADD_TO_CART_BAR:
+    case SHOW_ADD_TO_CART_BAR:
       return {
         ...state,
-        show: true,
+        visible: true,
       };
-    case actionTypes.HIDE_ADD_TO_CART_BAR:
+    case HIDE_ADD_TO_CART_BAR:
       return {
         ...state,
-        show: false,
+        visible: false,
       };
     default:
       return state;

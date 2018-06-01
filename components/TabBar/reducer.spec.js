@@ -1,7 +1,9 @@
 import reducer from './reducer';
 import {
-  SET_TAB_BAR_ENABLED,
-  SET_TAB_BAR_VISIBLE,
+  ENABLE_TAB_BAR,
+  DISABLE_TAB_BAR,
+  SHOW_TAB_BAR,
+  HIDE_TAB_BAR,
 } from './constants';
 
 describe('TabBar reducer', () => {
@@ -15,12 +17,20 @@ describe('TabBar reducer', () => {
     expect(state).toEqual(initialState);
   });
 
-  describe('SET_TAB_BAR_ENABLED', () => {
-    it('should set the enabled state to false', () => {
-      const result = reducer(initialState, {
-        type: SET_TAB_BAR_ENABLED,
-        enabled: false,
+  describe('ENABLE_TAB_BAR', () => {
+    it('should set the enabled state to true', () => {
+      const result = reducer(initialState, { type: ENABLE_TAB_BAR });
+
+      expect(result).toEqual({
+        ...initialState,
+        enabled: true,
       });
+    });
+  });
+
+  describe('DISABLE_TAB_BAR', () => {
+    it('should set the enabled state to false', () => {
+      const result = reducer(initialState, { type: DISABLE_TAB_BAR });
 
       expect(result).toEqual({
         ...initialState,
@@ -29,12 +39,20 @@ describe('TabBar reducer', () => {
     });
   });
 
-  describe('SET_TAB_BAR_VISIBLE', () => {
-    it('should set the visible state to false', () => {
-      const result = reducer(initialState, {
-        type: SET_TAB_BAR_VISIBLE,
-        visible: false,
+  describe('SHOW_TAB_BAR', () => {
+    it('should set the visible state to true', () => {
+      const result = reducer(initialState, { type: SHOW_TAB_BAR });
+
+      expect(result).toEqual({
+        ...initialState,
+        visible: true,
       });
+    });
+  });
+
+  describe('HIDE_TAB_BAR', () => {
+    it('should set the visible state to false', () => {
+      const result = reducer(initialState, { type: HIDE_TAB_BAR });
 
       expect(result).toEqual({
         ...initialState,

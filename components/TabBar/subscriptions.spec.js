@@ -1,6 +1,9 @@
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
-import { setTabBarEnabled } from './actions';
+import {
+  enableTabBar,
+  disableTabBar,
+} from './actions';
 import subscriptions from './subscriptions';
 
 describe('TabBar subscriptions', () => {
@@ -43,7 +46,7 @@ describe('TabBar subscriptions', () => {
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(setTabBarEnabled(true));
+      expect(dispatch).toHaveBeenCalledWith(enableTabBar());
     });
 
     it('should disable the tabbar on a blacklisted route', () => {
@@ -55,7 +58,7 @@ describe('TabBar subscriptions', () => {
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(setTabBarEnabled(false));
+      expect(dispatch).toHaveBeenCalledWith(disableTabBar());
     });
   });
 });

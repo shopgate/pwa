@@ -5,7 +5,10 @@ import {
   favoritesWillRemoveItem$,
   favoritesDidUpdate$,
 } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { setTabBarVisible } from 'Components/TabBar/actions';
+import {
+  showTabBar,
+  hideTabBar,
+} from 'Components/TabBar/actions';
 
 import subscriptions from './subscriptions';
 
@@ -108,14 +111,14 @@ describe('Favorites subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should make the tabbar visible on the favorites route when products are on the list', () => {
+    it('should show the tabbar on the favorites route when products are on the list', () => {
       callback({
         dispatch,
         getState: createMockedGetState(FAVORITES_PATH, true),
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(setTabBarVisible(true));
+      expect(dispatch).toHaveBeenCalledWith(showTabBar());
     });
 
     it('should hide the tabbar on the favorites route when the list is empty', () => {
@@ -125,7 +128,7 @@ describe('Favorites subscriptions', () => {
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(setTabBarVisible(false));
+      expect(dispatch).toHaveBeenCalledWith(hideTabBar(false));
     });
 
     it('should not update the tabbar visiblity if the favorites route is not active', () => {
@@ -151,14 +154,14 @@ describe('Favorites subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should make the tabbar visible on the favorites route when products are on the list', () => {
+    it('should show the tabbar on the favorites route when products are on the list', () => {
       callback({
         dispatch,
         getState: createMockedGetState(FAVORITES_PATH, true),
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(setTabBarVisible(true));
+      expect(dispatch).toHaveBeenCalledWith(showTabBar());
     });
 
     it('should hide the tabbar on the favorites route when the list is empty', () => {
@@ -168,7 +171,7 @@ describe('Favorites subscriptions', () => {
       });
 
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(setTabBarVisible(false));
+      expect(dispatch).toHaveBeenCalledWith(hideTabBar());
     });
   });
 
@@ -185,14 +188,14 @@ describe('Favorites subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should dismiss the toast and make the tabbar visible again', () => {
+    it('should dismiss the toast and show the tabbar again', () => {
       callback({
         dispatch,
       });
 
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith(dismissToasts());
-      expect(dispatch).toHaveBeenCalledWith(setTabBarVisible(true));
+      expect(dispatch).toHaveBeenCalledWith(showTabBar());
     });
   });
 });

@@ -1,24 +1,38 @@
 import {
-  SET_TAB_BAR_ENABLED,
-  SET_TAB_BAR_VISIBLE,
+  ENABLE_TAB_BAR,
+  DISABLE_TAB_BAR,
+  SHOW_TAB_BAR,
+  HIDE_TAB_BAR,
 } from './constants';
 
 /**
- * Dispatches the SET_TAB_BAR_ENABLED action.
- * @param {boolean} [enabled=true] The desired state.
+ * Dispatches the ENABLE_TAB_BAR action.
  * @return {Object}
  */
-export const setTabBarEnabled = (enabled = true) => ({
-  type: SET_TAB_BAR_ENABLED,
-  enabled,
+export const enableTabBar = () => ({
+  type: ENABLE_TAB_BAR,
 });
 
 /**
- * Dispatches the SET_TAB_BAR_VISIBLE action.
- * @param {boolean} [visible=true] The desired state.
+ * Dispatches the DISABLE_TAB_BAR action.
  * @return {Object}
  */
-export const setTabBarVisible = (visible = true) => ({
-  type: SET_TAB_BAR_VISIBLE,
-  visible,
+export const disableTabBar = () => ({
+  type: DISABLE_TAB_BAR,
+});
+
+/**
+ * Dispatches the SHOW_TAB_BAR action.
+ * @return {Object}
+ */
+export const showTabBar = () => ({
+  type: SHOW_TAB_BAR,
+});
+
+/**
+ * Dispatches the HIDE_TAB_BAR action.
+ * @return {Object}
+ */
+export const hideTabBar = () => ({
+  type: HIDE_TAB_BAR,
 });

@@ -6,14 +6,14 @@ import {
 /**
  * Creates a state for the AddToCartBar.
  * @param {number} added The number of added products.
- * @param {boolean} show Should the bar be shown.
+ * @param {boolean} visible Is the bar visible.
  * @return {Object}
  */
-const createState = (added = 3, show = false) => ({
+const createState = (added = 3, visible = false) => ({
   ui: {
     addToCartBar: {
       added,
-      show,
+      visible,
     },
   },
 });

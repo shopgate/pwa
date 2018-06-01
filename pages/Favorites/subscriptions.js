@@ -12,7 +12,10 @@ import {
   routeDidEnter,
   routeDidLeave,
 } from '@shopgate/pwa-common/streams/history';
-import { setTabBarVisible } from 'Components/TabBar/actions';
+import {
+  showTabBar,
+  hideTabBar,
+} from 'Components/TabBar/actions';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
@@ -41,19 +44,27 @@ export default function favorites(subscribe) {
     const state = getState();
     if (getHistoryPathname(state) === FAVORITES_PATH) {
       // Update the tabbar visibility state when the list changes while the user is on the list.
-      dispatch(setTabBarVisible(hasFavorites(state)));
+      if (hasFavorites(getState())) {
+        dispatch(showTabBar());
+      } else {
+        dispatch(hideTabBar());
+      }
     }
   });
 
   subscribe(routeDidEnter(FAVORITES_PATH), ({ dispatch, getState }) => {
     // When the favorites route is active and no products are on the list, the tabbar is hidden.
-    dispatch(setTabBarVisible(hasFavorites(getState())));
+    if (hasFavorites(getState())) {
+      dispatch(showTabBar());
+    } else {
+      dispatch(hideTabBar());
+    }
   });
 
   subscribe(routeDidLeave(FAVORITES_PATH), ({ dispatch }) => {
     dispatch(dismissToasts());
     // Re establish the tabbar visibility.
-    dispatch(setTabBarVisible(true));
+    dispatch(showTabBar(true));
   });
 }
 

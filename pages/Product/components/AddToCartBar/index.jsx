@@ -11,12 +11,12 @@ import styles from './style';
  */
 class AddToCartBar extends Component {
   static propTypes = {
-    isVisible: PropTypes.bool.isRequired,
     cartProductCount: PropTypes.number,
     handleAddToCart: PropTypes.func,
     isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
     isOrderable: PropTypes.bool,
+    isVisible: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -25,6 +25,7 @@ class AddToCartBar extends Component {
     isDisabled: false,
     isLoading: false,
     isOrderable: true,
+    isVisible: true,
   };
 
   /**
@@ -86,6 +87,7 @@ class AddToCartBar extends Component {
     if (this.props.isVisible === false) {
       return null;
     }
+
     const { itemCount } = this.state;
 
     return [
