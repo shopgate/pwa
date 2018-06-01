@@ -13,7 +13,7 @@ describe('TabBar reducer', () => {
   beforeEach(() => {
     initialState = {
       toggleHandler: TAB_BAR_TOGGLE_HANDLER_THEME,
-      shownByExtension: false,
+      shownByExtension: null,
     };
   });
 

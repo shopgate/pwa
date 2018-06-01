@@ -6,7 +6,7 @@ import {
 } from './constants';
 
 const defaultState = {
-  shownByExtension: false,
+  shownByExtension: null,
   toggleHandler: TAB_BAR_TOGGLE_HANDLER_THEME,
 };
 

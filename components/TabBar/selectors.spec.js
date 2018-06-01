@@ -19,6 +19,11 @@ describe('TabBar selectors', () => {
       const result = isTabBarVisibleByExtension(state);
       expect(result).toBeNull();
     });
+    it('should return null if the visibility state is handled by the extension but no value is set', () => {
+      const state = mockedStateRoute(INDEX_PATH, null, TAB_BAR_TOGGLE_HANDLER_EXTENSION);
+      const result = isTabBarVisibleByExtension(state);
+      expect(result).toBeNull();
+    });
 
     it('should return true if the visibility state is handled by the extension', () => {
       const state = mockedStateRoute(INDEX_PATH, true, TAB_BAR_TOGGLE_HANDLER_EXTENSION);
