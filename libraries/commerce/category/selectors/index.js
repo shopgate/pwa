@@ -141,7 +141,7 @@ export const getChildCategoriesById = createSelector(
   (state, props) => props.categoryId,
   (categories, childCategories, categoryId) => {
     // Check if there are any children of the given category id.
-    if (!categories[categoryId] || !childCategories[categoryId] || !childCategories[categoryId].children) {
+    if (!childCategories[categoryId] || !childCategories[categoryId].children) {
       return null;
     }
 
