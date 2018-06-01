@@ -91,7 +91,7 @@ describe('shouldHideWidget', () => {
 
   it('should return false, when valid_to is higher than valid_from', () => {
     expect(shouldShowWidget({
-      publisheda: true,
+      published: true,
       plan: true,
       planDate: {
         valid_from: new Date(Date.now() + 2000).toISOString(),

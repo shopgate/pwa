@@ -35,7 +35,7 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
   }
 >
   <div
-    className="css-13azwyo"
+    className="css-1oo02jj"
     style={
       Object {
         "height": "255px",
