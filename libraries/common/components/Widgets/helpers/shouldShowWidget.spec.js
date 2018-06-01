@@ -1,6 +1,6 @@
 import shouldShowWidget from './shouldShowWidget';
 
-describe('shouldHideWidget', () => {
+describe('shouldShowWidget', () => {
   it('should return true when widget has no schedule related flags', () => {
     expect(shouldShowWidget({})).toBe(true);
   });
