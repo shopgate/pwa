@@ -87,16 +87,7 @@ class Widgets extends Component {
    * @returns {boolean}
    */
   static hasSchedulableWidgets(widgets) {
-    let result = false;
-    (widgets || []).some((w) => {
-      if (w.settings.plan) {
-        result = true;
-        return true;
-      }
-      return false;
-    });
-
-    return result;
+    return (widgets || []).some(w => w.settings.plan);
   }
 
   /**
