@@ -1,32 +1,24 @@
 import {
-  SET_TAB_BAR_TOGGLE_HANDLER,
-  TAB_BAR_TOGGLE_HANDLER_THEME,
-  SHOW_TAB_BAR_BY_EXTENSION,
-  HIDE_TAB_BAR_BY_EXTENSION,
+  SET_TAB_BAR_ENABLED,
+  SET_TAB_BAR_VISIBLE,
 } from './constants';
 
 /**
- * Dispatches the SHOW_TAB_BAR_BY_EXTENSION action.
+ * Dispatches the SET_TAB_BAR_ENABLED action.
+ * @param {boolean} [enabled=true] The desired state.
  * @return {Object}
  */
-export const showTabBarByExtension = () => ({
-  type: SHOW_TAB_BAR_BY_EXTENSION,
+export const setTabBarEnabled = (enabled = true) => ({
+  type: SET_TAB_BAR_ENABLED,
+  enabled,
 });
 
 /**
- * Dispatches the HIDE_TAB_BAR_BY_EXTENSION action.
+ * Dispatches the SET_TAB_BAR_VISIBLE action.
+ * @param {boolean} [visible=true] The desired state.
  * @return {Object}
  */
-export const hideTabBarByExtension = () => ({
-  type: HIDE_TAB_BAR_BY_EXTENSION,
-});
-
-/**
- * Dispatches the SET_TAB_BAR_TOGGLE_HANDLER action.
- * @param {string} [handler=TAB_BAR_TOGGLE_HANDLER_THEME] The handler to be set.
- * @return {Object}
- */
-export const setTabBarToggleHandler = (handler = TAB_BAR_TOGGLE_HANDLER_THEME) => ({
-  type: SET_TAB_BAR_TOGGLE_HANDLER,
-  handler,
+export const setTabBarVisible = (visible = true) => ({
+  type: SET_TAB_BAR_VISIBLE,
+  visible,
 });

@@ -1,13 +1,11 @@
 import {
-  SET_TAB_BAR_TOGGLE_HANDLER,
-  TAB_BAR_TOGGLE_HANDLER_THEME,
-  SHOW_TAB_BAR_BY_EXTENSION,
-  HIDE_TAB_BAR_BY_EXTENSION,
+  SET_TAB_BAR_ENABLED,
+  SET_TAB_BAR_VISIBLE,
 } from './constants';
 
 const defaultState = {
-  shownByExtension: null,
-  toggleHandler: TAB_BAR_TOGGLE_HANDLER_THEME,
+  enabled: true,
+  visible: true,
 };
 
 /**
@@ -18,20 +16,15 @@ const defaultState = {
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case SET_TAB_BAR_TOGGLE_HANDLER:
+    case SET_TAB_BAR_ENABLED:
       return {
         ...state,
-        toggleHandler: action.handler,
+        enabled: action.enabled,
       };
-    case SHOW_TAB_BAR_BY_EXTENSION:
+    case SET_TAB_BAR_VISIBLE:
       return {
         ...state,
-        shownByExtension: true,
-      };
-    case HIDE_TAB_BAR_BY_EXTENSION:
-      return {
-        ...state,
-        shownByExtension: false,
+        visible: action.visible,
       };
     default:
       return state;

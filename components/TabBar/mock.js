@@ -1,5 +1,3 @@
-import { TAB_BAR_TOGGLE_HANDLER_THEME } from './constants';
-
 export const mockedStateDefault = {
   history: {
     pathname: '/',
@@ -15,28 +13,28 @@ export const mockedStateDefault = {
   },
   ui: {
     tabBar: {
-      shownByExtension: true,
-      toggleHandler: TAB_BAR_TOGGLE_HANDLER_THEME,
+      enabled: true,
+      visible: true,
     },
   },
 };
 
 /**
  * @param {string} path The route pathname
- * @param {boolean} shownByExtension Tells if the TabBar is shown by an extension.
- * @param {string} toggleHandler The TabBar toggle handler.
+ * @param {boolean} [enabled=true] Tells if the tab bar is enabled for the current route.
+ * @param {boolean} [visible=true] Tells if the tab bar is currently visible.
  * @returns {Object}
  */
 export const mockedStateRoute = (
   path,
-  shownByExtension = true,
-  toggleHandler = TAB_BAR_TOGGLE_HANDLER_THEME
+  enabled = true,
+  visible = true
 ) => ({
   ...mockedStateDefault,
   ui: {
     tabBar: {
-      shownByExtension,
-      toggleHandler,
+      enabled,
+      visible,
     },
   },
   history: {

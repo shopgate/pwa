@@ -1,42 +1,46 @@
 import {
-  SET_TAB_BAR_TOGGLE_HANDLER,
-  TAB_BAR_TOGGLE_HANDLER_THEME,
-  TAB_BAR_TOGGLE_HANDLER_EXTENSION,
-  SHOW_TAB_BAR_BY_EXTENSION,
-  HIDE_TAB_BAR_BY_EXTENSION,
+  SET_TAB_BAR_ENABLED,
+  SET_TAB_BAR_VISIBLE,
 } from './constants';
 
 import {
-  showTabBarByExtension,
-  hideTabBarByExtension,
-  setTabBarToggleHandler,
+  setTabBarEnabled,
+  setTabBarVisible,
 } from './actions';
 
 describe('TabBar actions', () => {
-  describe('showTabBarByExtension()', () => {
-    it('should work as expected', () => {
-      expect(showTabBarByExtension()).toEqual({ type: SHOW_TAB_BAR_BY_EXTENSION });
-    });
-  });
-
-  describe('hideTabBarByExtension()', () => {
-    it('should work as expected', () => {
-      expect(hideTabBarByExtension()).toEqual({ type: HIDE_TAB_BAR_BY_EXTENSION });
-    });
-  });
-
-  describe('setTabBarToggleHandler()', () => {
-    it('should apply TAB_BAR_TOGGLE_HANDLER_THEME by default', () => {
-      expect(setTabBarToggleHandler()).toEqual({
-        type: SET_TAB_BAR_TOGGLE_HANDLER,
-        handler: TAB_BAR_TOGGLE_HANDLER_THEME,
+  describe('setTabBarEnabled()', () => {
+    it('should set enabled to true when no parameter is passed', () => {
+      const result = setTabBarEnabled();
+      expect(result).toEqual({
+        type: SET_TAB_BAR_ENABLED,
+        enabled: true,
       });
     });
 
-    it('should apply TAB_BAR_TOGGLE_HANDLER_EXTENSION ', () => {
-      expect(setTabBarToggleHandler(TAB_BAR_TOGGLE_HANDLER_EXTENSION)).toEqual({
-        type: SET_TAB_BAR_TOGGLE_HANDLER,
-        handler: TAB_BAR_TOGGLE_HANDLER_EXTENSION,
+    it('should set enabled to false when false is passed as parameter', () => {
+      const result = setTabBarEnabled(false);
+      expect(result).toEqual({
+        type: SET_TAB_BAR_ENABLED,
+        enabled: false,
+      });
+    });
+  });
+
+  describe('setTabBarVisible()', () => {
+    it('should set visible to true when no parameter is passed', () => {
+      const result = setTabBarVisible();
+      expect(result).toEqual({
+        type: SET_TAB_BAR_VISIBLE,
+        visible: true,
+      });
+    });
+
+    it('should set visible to false when false is passed as parameter', () => {
+      const result = setTabBarVisible(false);
+      expect(result).toEqual({
+        type: SET_TAB_BAR_VISIBLE,
+        visible: false,
       });
     });
   });

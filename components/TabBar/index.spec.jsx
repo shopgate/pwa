@@ -73,13 +73,14 @@ jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
 
 describe('<TabBar />', () => {
   it('should render when visible', () => {
-    const wrapper = createComponent(mockedStateDefault);
+    const wrapper = createComponent(mockedStateDefault, true, true);
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TabBarAction').length).toBe(Object.keys(allTabs).length);
   });
 
   it('should not render when invisible', () => {
-    const invisibleState = mockedStateRoute(CART_PATH);
+    const invisibleState = mockedStateRoute(CART_PATH, true, false);
     const wrapper = createComponent(invisibleState);
 
     expect(wrapper).toMatchSnapshot();

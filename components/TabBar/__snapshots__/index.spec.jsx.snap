@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<TabBar /> custom props should pass custom props to the tab action 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(TabBar)>
+    <TabBar
+      activeTab="/"
+      cartProductCount={0}
+      dispatch={[Function]}
+      isVisible={false}
+      path="/"
+      visibleTabs={
+        Array [
+          Object {
+            "customProp": "my custom prop",
+            "label": "bar",
+            "type": "foo",
+          },
+        ]
+      }
+    />
+  </Connect(TabBar)>
+</Provider>
+`;
+
 exports[`<TabBar /> should not render when invisible 1`] = `
 <Provider
   store={
