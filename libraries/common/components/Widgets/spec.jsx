@@ -7,10 +7,19 @@ jest.useFakeTimers();
  * A mock Image component.
  * @returns {JSX}
  */
-const Image = () => <img />;
+const Image = () => <img alt="" />;
+/* eslint-disable react/prop-types */
+/**
+ * A mock WidgetGrid component.
+ * @param {Array} children Array of children.
+ * @returns {JSX}
+ */
+const WidgetGrid = ({ children }) => <div className="widget-grid">{children}</div>;
+/* eslint-enable react/prop-types */
 
 const components = {
   '@shopgate/commerce-widgets/image': Image,
+  '@shopgate/commerce-widgets/widget-grid': WidgetGrid,
 };
 
 describe('<Widgets />', () => {
@@ -194,5 +203,49 @@ describe('<Widgets />', () => {
       />
     ));
     expect(wrapper.html()).toBe(null);
+  });
+  it('should check settings of child widgets inside widget-grid', () => {
+    const widgets = [
+      {
+        height: 2,
+        id: 'index-5-@shopgate/commerce-widgets/widget-grid',
+        type: '@shopgate/commerce-widgets/widget-grid',
+        settings: {
+          widgets: [
+            {
+              col: 0,
+              row: 0,
+              height: 2,
+              settings: {
+                id: 835351,
+                image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
+                published: true,
+                plan: false,
+              },
+              type: '@shopgate/commerce-widgets/image',
+            },
+            {
+              col: 2,
+              row: 0,
+              height: 2,
+              settings: {
+                id: 835352,
+                image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
+                published: false,
+                plan: false,
+              },
+              type: '@shopgate/commerce-widgets/image',
+            },
+          ],
+        },
+      },
+    ];
+    const wrapper = mount((
+      <Widgets
+        components={components}
+        widgets={widgets}
+      />
+    ));
+    expect(wrapper.find('img').length).toBe(1);
   });
 });

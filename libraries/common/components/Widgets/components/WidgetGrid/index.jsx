@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import sortBy from 'lodash/sortBy';
+import shouldShowWidget from '../../helpers/shouldShowWidget';
 import Widget from '../Widget';
 import styles from './style';
 
@@ -45,6 +46,11 @@ const WidgetGrid = (props) => {
     <div className={styles} style={{ height }}>
       {Object.keys(widgets).map((key) => {
         const widget = widgets[key];
+
+        if (!shouldShowWidget(widget.settings)) {
+          return null;
+        }
+
         const widgetKey = `w${key}`;
 
         // Map to the correct widget component using the `type` key inside the widget.

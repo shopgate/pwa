@@ -5,6 +5,7 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
   components={
     Object {
       "@shopgate/commerce-widgets/image": [Function],
+      "@shopgate/commerce-widgets/widget-grid": [Function],
     }
   }
   widgets={
@@ -36,7 +37,9 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
       type="@shopgate/commerce-widgets/image"
       width={12}
     >
-      <img />
+      <img
+        alt=""
+      />
     </Image>
   </div>
 </Widgets>
@@ -47,6 +50,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
   components={
     Object {
       "@shopgate/commerce-widgets/image": [Function],
+      "@shopgate/commerce-widgets/widget-grid": [Function],
     }
   }
   widgets={
@@ -79,6 +83,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
       components={
         Object {
           "@shopgate/commerce-widgets/image": [Function],
+          "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       config={
@@ -156,7 +161,9 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
                     }
                   }
                 >
-                  <img />
+                  <img
+                    alt=""
+                  />
                 </Image>
               </div>
             </div>
@@ -173,6 +180,7 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
   components={
     Object {
       "@shopgate/commerce-widgets/image": [Function],
+      "@shopgate/commerce-widgets/widget-grid": [Function],
     }
   }
   widgets={
@@ -225,7 +233,9 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
       type="@shopgate/commerce-widgets/image"
       width={12}
     >
-      <img />
+      <img
+        alt=""
+      />
     </Image>
   </div>
 </Widgets>
