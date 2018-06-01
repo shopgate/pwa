@@ -1,14 +1,16 @@
-import shouldHideWidget from './shouldShowWidget';
+import shouldShowWidget from './shouldShowWidget';
 
 describe('shouldHideWidget', () => {
   it('should return true when widget has no schedule related flags', () => {
-    expect(shouldHideWidget({})).toBe(true);
+    expect(shouldShowWidget({})).toBe(true);
   });
+
   it('should return false, when widget is not published', () => {
-    expect(shouldHideWidget({ published: false })).toBe(false);
+    expect(shouldShowWidget({ published: false })).toBe(false);
   });
+
   it('should return false, when widget is not yet available', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -16,8 +18,9 @@ describe('shouldHideWidget', () => {
       },
     })).toBe(false);
   });
+
   it('should return false, when widget is not yet available and has valid_to', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -26,8 +29,9 @@ describe('shouldHideWidget', () => {
       },
     })).toBe(false);
   });
+
   it('should return false, when widget is no longer available', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -35,8 +39,9 @@ describe('shouldHideWidget', () => {
       },
     })).toBe(false);
   });
+
   it('should return false, when widget was but is no longer available', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -46,7 +51,7 @@ describe('shouldHideWidget', () => {
     })).toBe(false);
   });
   it('should return true, when widget is already available', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -54,8 +59,9 @@ describe('shouldHideWidget', () => {
       },
     })).toBe(true);
   });
+
   it('should return true, when widget is already available and has endDate', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -64,8 +70,9 @@ describe('shouldHideWidget', () => {
       },
     })).toBe(true);
   });
+
   it('should return true, when widget is has only endDate in the future', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {
@@ -73,16 +80,18 @@ describe('shouldHideWidget', () => {
       },
     })).toBe(true);
   });
+
   it('should return true, when widget has plan but no valid_* fields', () => {
-    expect(shouldHideWidget({
+    expect(shouldShowWidget({
       published: true,
       plan: true,
       planDate: {},
     })).toBe(true);
   });
+
   it('should return false, when valid_to is higher than valid_from', () => {
-    expect(shouldHideWidget({
-      published: true,
+    expect(shouldShowWidget({
+      publisheda: true,
       plan: true,
       planDate: {
         valid_from: new Date(Date.now() + 2000).toISOString(),
