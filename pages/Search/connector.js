@@ -14,7 +14,7 @@ import { isFilterBarShown } from './selectors';
 const mapStateToProps = state => ({
   isLoading: isViewLoading(state, SEARCH_PATH),
   isFilterBarShown: isFilterBarShown(state),
-  searchPhrase: getSearchPhrase(state),
+  searchPhrase: getSearchPhrase(state) || '',
   ...getProductsResult(state),
 });
 
