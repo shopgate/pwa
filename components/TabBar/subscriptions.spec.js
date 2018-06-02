@@ -1,3 +1,4 @@
+import configureStore from 'redux-mock-store';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
 import {
@@ -5,6 +6,12 @@ import {
   disableTabBar,
 } from './actions';
 import subscriptions from './subscriptions';
+
+/**
+ * Creates a mocked store.
+ * @return {Object}
+ */
+const createMockedStore = () => configureStore()({});
 
 describe('TabBar subscriptions', () => {
   let mockedSubscribe;
@@ -19,7 +26,6 @@ describe('TabBar subscriptions', () => {
   });
 
   describe('routeDidChange$', () => {
-    const dispatch = jest.fn();
     let stream;
     let callback;
 
@@ -28,16 +34,13 @@ describe('TabBar subscriptions', () => {
       [stream, callback] = mockedSubscribe.mock.calls[0];
     });
 
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
-
     it('should be initialized as expected', () => {
       expect(stream).toEqual(routeDidChange$);
       expect(callback).toBeInstanceOf(Function);
     });
 
     it('should enable the tabbar on a not blacklisted route', () => {
+      const { dispatch, getActions } = createMockedStore();
       const pathname = '/somepath';
 
       callback({
@@ -45,11 +48,13 @@ describe('TabBar subscriptions', () => {
         pathname,
       });
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(enableTabBar());
+      const actions = getActions();
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toEqual(enableTabBar());
     });
 
     it('should disable the tabbar on a blacklisted route', () => {
+      const { dispatch, getActions } = createMockedStore();
       const pathname = LOGIN_PATH;
 
       callback({
@@ -57,8 +62,9 @@ describe('TabBar subscriptions', () => {
         pathname,
       });
 
-      expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(dispatch).toHaveBeenCalledWith(disableTabBar());
+      const actions = getActions();
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toEqual(disableTabBar());
     });
   });
 });
