@@ -1,7 +1,7 @@
 import toggleCartIcon from 'Components/Navigator/actions/toggleCartIcon';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import { cartWillEnter$ } from '@shopgate/pwa-common-commerce/cart/streams';
-import setTitle from '../../components/View/actions/setTitle';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 
 /**
  * Cart subscriptions.
