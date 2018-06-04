@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGrid /> should 1`] = `
+<InfiniteContainer
+  initialLimit={6}
+  items={null}
+  iterator={[Function]}
+  limit={30}
+  loader={[Function]}
+  loadingIndicator={<LoadingIndicator />}
+  preloadMultiplier={2}
+  totalItems={null}
+  wrapper={[Function]}
+/>
+`;

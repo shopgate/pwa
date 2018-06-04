@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { getChildCategoriesById } from '@shopgate/pwa-common-commerce/category/selectors';
+import {
+  getChildCategoriesById,
+  getCategoryProductCount,
+} from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -9,6 +12,7 @@ import { getChildCategoriesById } from '@shopgate/pwa-common-commerce/category/s
  */
 const mapStateToProps = (state, props) => ({
   categories: getChildCategoriesById(state, props),
+  hasProducts: getCategoryProductCount(state, props),
 });
 
 /**
