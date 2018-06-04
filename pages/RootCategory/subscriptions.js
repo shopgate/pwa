@@ -1,5 +1,5 @@
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
-import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
+import fetchRootCategories from '@shopgate/pwa-common-commerce/category/actions/fetchRootCategories';
 import { rootCategoryWillEnter$ } from './streams';
 
 /**
@@ -7,7 +7,7 @@ import { rootCategoryWillEnter$ } from './streams';
  */
 export default function category(subscribe) {
   subscribe(rootCategoryWillEnter$, ({ dispatch }) => {
-    dispatch(getCategory());
+    dispatch(fetchRootCategories());
     dispatch(setTitle('titles.categories'));
   });
 }
