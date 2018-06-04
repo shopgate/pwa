@@ -41,7 +41,7 @@ const Pages = () => (
             <Route pattern={`${INDEX_PATH}`} component={routes.Page} />
             <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
-            <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} />
+            <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
           </Router>
           <Portal name={APP_ROUTES} props={{ View }} />

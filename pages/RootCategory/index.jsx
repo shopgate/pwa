@@ -11,7 +11,6 @@ import connect from './connector';
  */
 const RootCategory = ({ category }) => {
   const categories = (category && category.categories) ? category.categories : null;
-
   return (
     <View>
       <CategoryList categories={categories} />
