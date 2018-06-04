@@ -1,14 +1,16 @@
 import configureStore from 'redux-mock-store';
 
-const defaultState = {
-  backgroundColor: 'red',
-  filterOpen: false,
-  enabled: false,
-  searchActive: false,
-  showSearch: false,
-  showTitle: false,
-  showLoadingBar: false,
-  textColor: 'white',
+export const defaultState = {
+  navigator: {
+    backgroundColor: 'red',
+    filterOpen: false,
+    enabled: false,
+    searchActive: false,
+    showSearch: false,
+    showTitle: false,
+    showLoadingBar: false,
+    textColor: 'white',
+  },
 };
 
 /**
@@ -18,7 +20,7 @@ const defaultState = {
  */
 export const getStore = props => configureStore()({
   navigator: {
-    ...defaultState,
+    ...defaultState.navigator,
     ...props,
   },
 });
