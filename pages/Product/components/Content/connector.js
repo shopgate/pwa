@@ -10,4 +10,15 @@ const mapStateToProps = state => ({
   name: getProductName(state),
 });
 
-export default connect(mapStateToProps);
+/**
+ * Check to see if the product name arrived.
+ * @param {*} next The next props.
+ * @param {*} prev The previous props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.name && next.name) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
