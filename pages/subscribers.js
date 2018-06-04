@@ -30,6 +30,7 @@ import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
+import startPage from 'Pages/StartPage/subscriptions';
 import page from 'Pages/Page/subscriptions';
 import product from 'Pages/Product/subscriptions';
 import search from 'Pages/Search/subscriptions';
@@ -78,6 +79,7 @@ const subscriptions = [
   filter,
   filterbar,
   login,
+  startPage,
   page,
   product,
   search,

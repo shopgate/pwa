@@ -38,7 +38,7 @@ const Pages = () => (
           <ModalContainer component={Dialog} />
           <SnackBar />
           <Router>
-            <Route pattern={`${INDEX_PATH}`} component={routes.Page} />
+            <Route pattern={`${INDEX_PATH}`} component={routes.StartPage} />
             <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
             <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />

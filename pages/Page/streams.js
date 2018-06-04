@@ -1,8 +1,4 @@
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 export const pageWillEnter$ = routeWillEnter$
-  .filter(({ action }) => (
-    action.route.pathname === INDEX_PATH ||
-    action.route.params.pageId
-  ));
+  .filter(({ action }) => !!action.route.params.pageId);
