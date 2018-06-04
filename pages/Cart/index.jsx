@@ -86,7 +86,7 @@ class Cart extends Component {
     const hasMessages = messages.length > 0;
 
     return (
-      <View title={this.title}>
+      <View>
         {(hasItems || hasMessages) && (
           <section
             className={styles.container}

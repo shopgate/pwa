@@ -1,33 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
 
 /**
- * @param {Object} props The component props.
- * @return {JSX}
+ * The Category products component.
  */
-const Products = (props) => {
-  if (!props.products) return null;
-  return (
-    <ProductGrid
-      handleGetProducts={props.getProducts}
-      products={props.products}
-      totalProductCount={props.totalProductCount}
-    />
-  );
-};
+class CategoryProducts extends Component {
+  static propTypes = {
+    categoryId: PropTypes.string,
+    getProducts: PropTypes.func,
+    products: PropTypes.arrayOf(PropTypes.shape()),
+    totalProductCount: PropTypes.number,
+  };
 
-Products.propTypes = {
-  getProducts: PropTypes.func,
-  products: PropTypes.arrayOf(PropTypes.shape()),
-  totalProductCount: PropTypes.number,
-};
+  static defaultProps = {
+    categoryId: null,
+    getProducts: () => { },
+    products: null,
+    totalProductCount: null,
+  };
 
-Products.defaultProps = {
-  getProducts: () => {},
-  products: null,
-  totalProductCount: null,
-};
+  fetchProducts = () => {
+    this.props.getProducts(this.props.categoryId, this.props.products.length);
+  }
 
-export default connect(Products);
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    if (!this.props.products) {
+      return null;
+    }
+
+    return (
+      <ProductGrid
+        handleGetProducts={this.fetchProducts}
+        products={this.props.products}
+        totalProductCount={this.props.totalProductCount}
+      />
+    );
+  }
+}
+
+export default connect(CategoryProducts);
