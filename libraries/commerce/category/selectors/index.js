@@ -120,12 +120,28 @@ export const getCurrentCategories = createSelector(
 );
 
 export const getCategoryProductCount = createSelector(
-  getCurrentCategory,
-  (category) => {
-    if (!category) {
+  getCategoriesState,
+  (state, props) => props.categoryId,
+  (category, categoryId) => {
+    if (!category[categoryId] || !category[categoryId].productCount) {
       return null;
     }
 
-    return category.productCount;
+    return category[categoryId].productCount;
+  }
+);
+
+export const getChildCategoriesById = createSelector(
+  getCategoriesState,
+  getChildCategoriesState,
+  (state, props) => props.categoryId,
+  (categories, childCategories, categoryId) => {
+    // Check if there are any children of the given category id.
+    if (!childCategories[categoryId] || !childCategories[categoryId].children) {
+      return null;
+    }
+
+    // Map the child ids over the category state.
+    return childCategories[categoryId].children.map(id => categories[id]);
   }
 );
