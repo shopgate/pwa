@@ -53,15 +53,14 @@ class App extends PureComponent {
 
     this.store = configureStore(props.reducers, props.Worker);
     syncRouter(this.store);
-
-    this.store.dispatch(appWillStart(window.location.pathname));
+    this.store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
   }
 
   /**
    * Registers the component for the native events and fires the onload AppCommand.
    */
   componentDidMount() {
-    this.store.dispatch(appDidStart(window.location.pathname));
+    this.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
     hideSplashScreen();
     this.store.dispatch(fetchClientInformation());
   }
