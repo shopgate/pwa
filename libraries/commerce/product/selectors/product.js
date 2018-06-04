@@ -135,7 +135,7 @@ export const getProductCurrency = (state) => {
  * @returns {string} The result hash.
  */
 const getResultHash = createSelector(
-  getCurrentCategoryId,
+  (state, props) => props.categoryId,
   getSearchPhrase,
   getSortOrder,
   getActiveFilters,

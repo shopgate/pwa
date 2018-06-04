@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import sortBy from 'lodash/sortBy';
 import Widget from '../Widget';
@@ -22,54 +23,68 @@ const getMaxHeight = widgets => (
 
 /**
  * The widget grid widget component.
- * @param {Object} props The component properties.
- * @returns {JSX} The widget grid.
  */
-const WidgetGrid = (props) => {
-  const rowCount = getMaxHeight(props.config);
+class WidgetGrid extends Component {
+  static propTypes = {
+    components: PropTypes.shape().isRequired,
+    config: PropTypes.arrayOf(PropTypes.shape()),
+  };
 
-  // The cell size is 1/12 of the viewport width.
-  const cellSize = Math.floor(window.innerWidth / GRID_COLUMNS);
+  static defaultProps = {
+    config: [],
+  };
 
-  if (!props.config || !rowCount) {
-    return null;
+  /**
+   * @param {Object} nextProps The next component props.
+   * @return {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    if (!isEqual(this.props.components, nextProps.components)) return true;
+    if (!isEqual(this.props.config, nextProps.config)) return true;
+    return false;
   }
 
-  // Sort the widgets by row. This has to happen to take care of the z-index flow.
-  const widgets = sortBy(props.config, ['row']);
+  /**
+   * Render the component.
+   * @return {JSX}
+   */
+  render() {
+    const rowCount = getMaxHeight(this.props.config);
 
-  // The height of the widget area.
-  const height = `${rowCount * cellSize}px`;
+    // The cell size is 1/12 of the viewport width.
+    const cellSize = Math.floor(window.innerWidth / GRID_COLUMNS);
 
-  return (
-    <div className={styles} style={{ height }}>
-      {Object.keys(widgets).map((key) => {
-        const widget = widgets[key];
-        const widgetKey = `w${key}`;
+    if (!this.props.config || !rowCount) {
+      return null;
+    }
 
-        // Map to the correct widget component using the `type` key inside the widget.
-        const WidgetComponent = props.components[widget.type];
+    // Sort the widgets by row. This has to happen to take care of the z-index flow.
+    const widgets = sortBy(this.props.config, ['row']);
 
-        return (
-          <Widget
-            cellSize={cellSize}
-            config={widget}
-            component={WidgetComponent}
-            key={widgetKey}
-          />
-        );
-      })}
-    </div>
-  );
-};
+    // The height of the widget area.
+    const height = `${rowCount * cellSize}px`;
 
-WidgetGrid.propTypes = {
-  components: PropTypes.shape().isRequired,
-  config: PropTypes.arrayOf(PropTypes.shape()),
-};
+    return (
+      <div className={styles} style={{ height }}>
+        {Object.keys(widgets).map((key) => {
+          const widget = widgets[key];
+          const widgetKey = `w${key}`;
 
-WidgetGrid.defaultProps = {
-  config: [],
-};
+          // Map to the correct widget component using the `type` key inside the widget.
+          const WidgetComponent = this.props.components[widget.type];
+
+          return (
+            <Widget
+              cellSize={cellSize}
+              config={widget}
+              component={WidgetComponent}
+              key={widgetKey}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+}
 
 export default WidgetGrid;
