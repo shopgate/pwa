@@ -26,11 +26,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 /**
- * @param {Object} prev The prev state props.
  * @param {Object} next The next state props.
+ * @param {Object} prev The prev state props.
  * @return {boolean}
  */
-const areStatePropsEqual = (prev, next) => (
+const areStatePropsEqual = (next, prev) => (
   next.searchPhrase !== prev.searchPhrase
 );
 
