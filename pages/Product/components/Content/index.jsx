@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// Import Portal from '@shopgate/pwa-common/components/Portal';
-// Import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import ImageSlider from '../ImageSlider';
 // Import Reviews from 'Components/Reviews';
 // Import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-// Import ImageSlider from './components/ImageSlider';
 // Import Header from './components/Header';
 // Import VariantSelects from './components/VariantSelects';
 // Import Options from './components/Options';
@@ -18,10 +18,12 @@ import connect from './connector';
 class ProductContent extends Component {
   static propTypes = {
     name: PropTypes.string,
+    productId: PropTypes.string,
   };
 
   static defaultProps = {
     name: null,
+    productId: null,
   };
 
   /**
@@ -41,8 +43,9 @@ class ProductContent extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
+    if (!this.props.productId && nextProps.productId) return true;
+    if (!this.props.name && nextProps.name) return true;
     if (this.state.variantId !== nextState.variantId) return true;
-    if (this.props.name !== nextProps.name) return true;
     return false;
   }
 
@@ -63,11 +66,11 @@ class ProductContent extends Component {
     return (
       <div data-test-id={`product: ${this.props.name}`}>
         {/* IMAGE */}
-        {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+        <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
         <Portal name={portals.PRODUCT_IMAGE}>
-          <ImageSlider />
+          <ImageSlider productId={this.props.productId} />
         </Portal>
-        <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
+        <Portal name={portals.PRODUCT_IMAGE_AFTER} />
 
         {/* HEADER */}
         {/* <Portal name={portals.PRODUCT_HEADER_BEFORE} />
