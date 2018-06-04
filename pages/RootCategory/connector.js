@@ -7,15 +7,20 @@ import { getRootCategories } from '@shopgate/pwa-common-commerce/category/select
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  category: getRootCategories(state),
+  categories: getRootCategories(state),
 });
 
 /**
- * Check to see if the categories have arrived.
- * @param {*} next The next state.
- * @param {*} prev the previous state.
- * @returns {boolean}
+ * @param {Object} next The next state.
+ * @param {Object} prev the previous state.
+ * @return {boolean}
  */
-const areStatePropsEqual = (next, prev) => !(!prev.category && next.category);
+const areStatePropsEqual = (next, prev) => {
+  if (next.categories !== null && prev.categories === null) {
+    return false;
+  }
+
+  return true;
+};
 
 export default connect(mapStateToProps, null, null, { areStatePropsEqual });

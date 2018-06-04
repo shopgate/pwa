@@ -29,10 +29,6 @@ class Cart extends Component {
     messages: [],
   };
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -54,15 +50,6 @@ class Cart extends Component {
     this.setState({
       containerPaddingStyle: styles.getContainerPaddingStyle(height),
     });
-  }
-
-  /**
-   * Returns the translated view title.
-   * @return {string}
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.cart');
   }
 
   /**

@@ -1,29 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import shouldUpdate from 'recompose/shouldUpdate';
 import CategoryList from 'Components/CategoryList';
 import View from 'Components/View';
 import connect from './connector';
 
 /**
- * The RootCategory component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @return {JSX}
  */
-const RootCategory = ({ category }) => {
-  const categories = (category && category.categories) ? category.categories : null;
-  return (
-    <View>
-      <CategoryList categories={categories} />
-    </View>
-  );
-};
+const RootCategory = ({ categories }) => (
+  <View>
+    {categories && <CategoryList categories={categories} />}
+  </View>
+);
 
 RootCategory.propTypes = {
-  category: PropTypes.shape(),
+  categories: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 RootCategory.defaultProps = {
-  category: null,
+  categories: null,
 };
 
-export default connect(RootCategory);
+export default connect(shouldUpdate((prev, next) => (
+  !prev.categories && next.categories
+))(RootCategory));

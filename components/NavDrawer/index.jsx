@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
 import * as categoryPortals from '@shopgate/pwa-common-commerce/category/constants/Portals';
