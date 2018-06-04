@@ -23,12 +23,10 @@ Category.defaultProps = {
   id: null,
 };
 
-export default (
-  () => (
-    <RouteContext.Consumer>
-      {({ params }) => (
-        <Category id={hex2bin(params.categoryId) || null} />
-      )}
-    </RouteContext.Consumer>
-  )
+export default () => (
+  <RouteContext.Consumer>
+    {({ params }) => (
+      <Category id={hex2bin(params.categoryId) || null} />
+    )}
+  </RouteContext.Consumer>
 );

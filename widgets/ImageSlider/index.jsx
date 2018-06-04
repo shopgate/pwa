@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import shouldUpdate from 'recompose/shouldUpdate';
 import Link from '@shopgate/pwa-common/components/Link';
 import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import styles from './style';
@@ -55,4 +56,8 @@ ImageSliderWidget.defaultProps = {
   className: '',
 };
 
-export default ImageSliderWidget;
+export default shouldUpdate((prev, next) => {
+  if (!prev.className && next.className) return true;
+  if (!prev.settings && next.settings) return true;
+  return false;
+})(ImageSliderWidget);

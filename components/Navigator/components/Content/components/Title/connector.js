@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getTitle } from 'Components/View/selectors';
+import { getTitle } from '@shopgate/pwa-common/selectors/ui';
 
 /**
  * Maps the contents of the state to the component props.

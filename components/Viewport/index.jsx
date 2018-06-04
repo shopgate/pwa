@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import Navigator from 'Components/Navigator';
 import NavDrawer from 'Components/NavDrawer';
 import styles from './style';
@@ -21,4 +22,4 @@ Viewport.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Viewport;
+export default pure(Viewport);
