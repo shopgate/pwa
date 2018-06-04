@@ -16,18 +16,18 @@ export default function router(subscribe) {
     const { action: historyAction, location, state } = action;
 
     // If there is one of the known protocols in the url.
-    if (handler.hasKnownProtocols(location)) {
+    if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) handler.openExternalLink(location);
       else if (handler.isNativeLink(location)) handler.openNativeLink(location);
       return;
     }
 
-    if (handler.isLegacyPage(location)) {
+    if (location && handler.isLegacyPage(location)) {
       handler.openLegacy(location);
       return;
     }
 
-    if (handler.isLegacyLink(location)) {
+    if (location && handler.isLegacyLink(location)) {
       handler.openLegacyLink(location);
       return;
     }
