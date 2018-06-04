@@ -7,7 +7,7 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 export const categoryWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pathname.startsWith(`${CATEGORY_PATH}/`));
 
-export const receivedActiveCategory$ = main$
+export const receivedVisibleCategory$ = main$
   .filter(({ action }) => {
     const route = getCurrentRoute();
 
