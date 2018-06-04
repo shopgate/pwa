@@ -18,7 +18,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: categoryId => dispatch(fetchCategoryProducts(categoryId)),
+  getProducts: (categoryId, offset) => dispatch(fetchCategoryProducts(categoryId, offset)),
 });
 
 /**
