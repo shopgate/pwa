@@ -149,6 +149,15 @@ class LiveshoppingWidget extends Component {
   }
 
   /**
+   * Checks whether the component can update.
+   * @param {Object} nextProps The next component props.
+   * @return {JSX}
+   */
+  shouldComponentUpdate(nextProps) {
+    return (this.props.products.length !== nextProps.products.length);
+  }
+
+  /**
    * Renders the component.
    * @return {JSX}
    */

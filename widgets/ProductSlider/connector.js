@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import getProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/getProductsByQuery';
 import { getProductsResult } from '../selectors';
 
@@ -25,4 +26,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getProductsByQuery(type, value, sort, id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the component props have even changed.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => isEqual(prev.products, next.products);
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import Widgets from '@shopgate/pwa-common/components/Widgets';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -28,6 +29,16 @@ class Page extends Component {
     pageId: null,
     style: null,
   };
+
+  /**
+   * @param {Object} nextProps The next component props.
+   * @return {JSX}
+   */
+  shouldComponentUpdate(nextProps) {
+    if (!isEqual(this.props.configs, nextProps.configs)) return true;
+    if (this.props.pageId !== nextProps.pageId) return true;
+    return false;
+  }
 
   /**
    * Returns the current view title.

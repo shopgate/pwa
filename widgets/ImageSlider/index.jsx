@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import Link from '@shopgate/pwa-common/components/Link';
 import ImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
 import styles from './style';
@@ -55,4 +56,4 @@ ImageSliderWidget.defaultProps = {
   className: '',
 };
 
-export default ImageSliderWidget;
+export default pure(ImageSliderWidget);

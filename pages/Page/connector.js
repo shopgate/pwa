@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { getCurrentPageId } from './selectors';
 
 /**
@@ -11,4 +12,16 @@ const mapStateToProps = state => ({
   pageId: getCurrentPageId(state),
 });
 
-export default connect(mapStateToProps);
+/**
+ * Check to see if the categories have arrived.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!isEqual(prev.configs, next.configs)) return false;
+  if (!prev.pageId && next.pageId) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
