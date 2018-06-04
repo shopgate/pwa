@@ -1,61 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import Grid from '../../../Grid';
 import styles from './style';
 
 /**
  * The widget component.
- * @param {Object} props The component props.
- * @returns {JSX}
  */
-const Widget = (props) => {
-  const {
-    col,
-    row,
-    height,
-    settings,
-    width,
-  } = props.config;
-  const { cellSize } = props;
+class Widget extends Component {
+  static propTypes = {
+    config: PropTypes.shape().isRequired,
+    cellSize: PropTypes.number,
+    component: PropTypes.func,
+  };
 
-  if (!props.component) {
-    return null;
+  static defaultProps = {
+    cellSize: null,
+    component: null,
+  };
+
+  /**
+   * @param {Object} nextProps The next component props.
+   * @return {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    if (!isEqual(this.props.config, nextProps.config)) return true;
+    if (this.props.cellSize !== nextProps.cellSize) return true;
+    if (this.props.component !== nextProps.component) return true;
+    return false;
   }
 
-  let className = '';
-  if (cellSize) {
-    className = [
-      styles.height(cellSize, height, width),
-      styles.width(width),
-      styles.top(cellSize, row, height),
-      styles.left(col),
-    ].join(' ');
+  /**
+   * @return {JSX}
+   */
+  render() {
+    const {
+      col,
+      row,
+      height,
+      settings,
+      width,
+    } = this.props.config;
+    const { cellSize } = this.props;
+
+    if (!this.props.component) {
+      return null;
+    }
+
+    let className = '';
+    if (cellSize) {
+      className = [
+        styles.height(cellSize, height, width),
+        styles.width(width),
+        styles.top(cellSize, row, height),
+        styles.left(col),
+      ].join(' ');
+    }
+
+    return (
+      <Grid.Item
+        className={className}
+        component="div"
+      >
+        <div className={styles.content}>
+          {React.createElement(this.props.component, {
+            settings,
+            ratio: [width, height],
+          })}
+        </div>
+      </Grid.Item>
+    );
   }
-
-  return (
-    <Grid.Item
-      className={className}
-      component="div"
-    >
-      <div className={styles.content}>
-        {React.createElement(props.component, {
-          settings,
-          ratio: [width, height],
-        })}
-      </div>
-    </Grid.Item>
-  );
-};
-
-Widget.propTypes = {
-  config: PropTypes.shape().isRequired,
-  cellSize: PropTypes.number,
-  component: PropTypes.func,
-};
-
-Widget.defaultProps = {
-  cellSize: null,
-  component: null,
-};
+}
 
 export default Widget;
