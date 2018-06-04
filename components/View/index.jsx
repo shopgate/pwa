@@ -15,10 +15,10 @@ const SCROLL_DEBOUNCE = 50;
  */
 class View extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
     navigatorTitle: PropTypes.string.isRequired,
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
+    children: PropTypes.node,
     hasNavigator: PropTypes.bool,
     head: PropTypes.shape({
       meta: PropTypes.array,
@@ -34,6 +34,7 @@ class View extends Component {
   };
 
   static defaultProps = {
+    children: [],
     hasNavigator: true,
     head: {
       meta: [],
@@ -46,10 +47,6 @@ class View extends Component {
     style: null,
     title: '',
     viewTop: true,
-  };
-
-  static contextTypes = {
-    routePath: PropTypes.string,
   };
 
   /**
