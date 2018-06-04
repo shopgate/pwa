@@ -125,13 +125,14 @@ export const getCurrentCategories = createSelector(
 );
 
 export const getCategoryProductCount = createSelector(
-  getCurrentCategory,
-  (category) => {
-    if (!category) {
+  getCategoriesState,
+  (state, props) => props.categoryId,
+  (category, categoryId) => {
+    if (!category[categoryId] || !category[categoryId].productCount) {
       return null;
     }
 
-    return category.productCount;
+    return category[categoryId].productCount;
   }
 );
 
