@@ -21,4 +21,14 @@ const mapDispatchToProps = dispatch => ({
   getLiveshoppingProducts: () => dispatch(getLiveshoppingProducts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the component props have even changed.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => (
+  next.products.length === prev.products.length
+);
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

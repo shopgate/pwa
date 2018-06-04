@@ -11,4 +11,9 @@ const mapDispatchToProps = dispatch => ({
   navigate: (href, state) => dispatch(navigate(ACTION_PUSH, href, state)),
 });
 
-export default connect(null, mapDispatchToProps);
+/**
+ * @returns {boolean}
+ */
+const areStatePropsEqual = () => true;
+
+export default connect(null, mapDispatchToProps, null, { areStatePropsEqual });

@@ -25,4 +25,13 @@ const mapDispatchToProps = dispatch => ({
   toggleSearch: active => dispatch(toggleNavSearchField(active)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next state props.
+ * @param {Object} prev The prev state props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => (
+  next.searchPhrase !== prev.searchPhrase
+);
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

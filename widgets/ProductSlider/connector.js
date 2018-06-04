@@ -21,8 +21,25 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (type, value, sort, id) =>
-    dispatch(getProductsByQuery(type, value, sort, id)),
+  getProducts: (type, value, sort, id) => dispatch(getProductsByQuery(type, value, sort, id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the component props have even changed.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.settings && next.settings) {
+    return false;
+  }
+
+  if (!prev.products.length && next.products.length) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

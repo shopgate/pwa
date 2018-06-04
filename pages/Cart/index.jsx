@@ -29,10 +29,6 @@ class Cart extends Component {
     messages: [],
   };
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -57,15 +53,6 @@ class Cart extends Component {
   }
 
   /**
-   * Returns the translated view title.
-   * @return {string}
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.cart');
-  }
-
-  /**
    * Toggles the visibility of the payment bar.
    * It's called when the QuantityPicker or CouponField is focused or blurred.
    * @param {boolean} isHidden Tells if the payment bar is hidden or not.
@@ -86,7 +73,7 @@ class Cart extends Component {
     const hasMessages = messages.length > 0;
 
     return (
-      <View title={this.title}>
+      <View>
         {(hasItems || hasMessages) && (
           <section
             className={styles.container}

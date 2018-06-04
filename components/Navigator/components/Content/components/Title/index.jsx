@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import { ACTION_POP } from '@virtuous/conductor/constants';
 import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
+import I18n from '@shopgate/pwa-common/components/I18n';
 import connect from './connector';
 import styles from './style';
 
@@ -26,7 +27,7 @@ class Title extends Component {
   constructor(props) {
     super(props);
 
-    this.previousTitle = null;
+    this.previousTitle = '';
     this.title = props.title;
   }
 
@@ -47,7 +48,7 @@ class Title extends Component {
    * @returns {boolean} Whether the component should update.
    */
   shouldComponentUpdate(nextProps) {
-    return (this.props.title !== nextProps.title) && nextProps.title !== '';
+    return this.props.title !== nextProps.title;
   }
 
   /**
@@ -63,7 +64,7 @@ class Title extends Component {
       };
     }
 
-    const pop = getCurrentAction() === ACTION_PUSH;
+    const pop = getCurrentAction() === ACTION_POP;
 
     return {
       inactive: pop ? styles.centerToRight : styles.centerToLeft,
@@ -83,12 +84,12 @@ class Title extends Component {
       <div aria-hidden onClick={this.props.onClick}>
         {/* Renders the inactive / previous title */}
         <div className={`${styles.title} ${transition.inactive}`}>
-          {this.previousTitle}
+          <I18n.Text string={this.previousTitle} />
         </div>
 
         {/* Renders the active / current title */}
         <div className={`${styles.title} ${transition.active}`} data-test-id={`title: ${this.props.title}`}>
-          {this.props.title}
+          <I18n.Text string={this.props.title} />
         </div>
       </div>
     );

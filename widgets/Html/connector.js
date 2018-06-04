@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
   navigate: location => dispatch(navigate(ACTION_PUSH, location)),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps, null, { pure: () => true });

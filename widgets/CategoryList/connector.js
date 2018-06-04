@@ -23,4 +23,16 @@ const mapStateToProps = (state, props) => ({
   items: getCurrentCategories(state, props),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * Check to see if the categories have arrived.
+ * @param {*} next The next state.
+ * @param {*} prev the previous state.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.items && next.items) return false;
+  if (prev.items && prev.items.length !== next.items.length) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
