@@ -83,7 +83,6 @@ describe('<Cart> page', () => {
       const component = createComponent(couponState);
       expect(component).toMatchSnapshot();
       expect(component.find('CouponField').length).toEqual(1);
-      expect(component.debug());
     });
   });
 });
