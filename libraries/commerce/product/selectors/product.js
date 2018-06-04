@@ -69,7 +69,7 @@ export const getCurrentBaseProductId = state => state.product.currentProduct.pro
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  getCurrentBaseProductId,
+  (state, props) => props.productId,
   getProducts,
   (productId, products) => {
     const entry = products[productId];
@@ -239,7 +239,7 @@ const getProductImagesState = state => state.product.imagesByProductId;
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  getCurrentProductId,
+  (state, props) => props.productId,
   getCurrentBaseProductId,
   getProductImagesState,
   (productId, baseProductId, images) => {
