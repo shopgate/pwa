@@ -19,6 +19,7 @@ class ProductImage extends Component {
    */
   static propTypes = {
     alt: PropTypes.string,
+    styleUpdate: PropTypes.object,
     animating: PropTypes.bool,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
@@ -35,6 +36,10 @@ class ProductImage extends Component {
     alt: null,
     animating: true,
     forcePlaceholder: false,
+    styleUpdate: {
+      container: null,
+      glowContainer: null
+    },
     highestResolutionLoaded: () => {},
     ratio: null,
     resolutions: [
@@ -57,7 +62,7 @@ class ProductImage extends Component {
    */
   constructor(props) {
     super(props);
-
+    
     this.state = {
       showPlaceholder: props.src === null,
     };
@@ -104,12 +109,11 @@ class ProductImage extends Component {
       );
     }
 
-    // Return the actual image.
     return (
       <Image
         {...this.props}
         backgroundColor={colors.light}
-        className={styles.container}
+        className={`${styles.container} ${this.props.styleUpdate.container}`}
         onError={this.imageLoadingFailed}
       />
     );
@@ -132,7 +136,7 @@ class ProductImage extends Component {
     return (
       <div className={styles.container}>
         { this.renderedContent }
-        <div className={styles.glowContainer} />
+        <div className={`${styles.glowContainer} ${this.props.styleUpdate.glowContainer}`} />
       </div>
     );
   }
