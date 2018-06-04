@@ -62,5 +62,6 @@ export default {
   taxDisclaimerFooter: "[data-route-path='/cart'] [data-test-id='taxDisclaimer'] span",
   couponFieldInput: "[data-test-id='couponField'] input",
   couponSubmitButton: "[data-test-id='CouponSubmitButton']",
-
+  searchFieldInput: "[data-test-id='SearchField'] input",
+  browsePageBasicProductsCategory: "[data-test-id='categoriesList'] [data-test-id='link: /category/3537']",
 };
