@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig as config } from '../../helpers/config';
@@ -6,7 +6,7 @@ import { componentsConfig as config } from '../../helpers/config';
 /**
  * The Portal component.
  */
-class Portal extends Component {
+class Portal extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.node,

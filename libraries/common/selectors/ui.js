@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { getCurrentState } from './router';
 
 /**
  * @param {Object} state The current application state.
@@ -24,7 +23,7 @@ const getGeneralUI = createSelector(
  */
 export const getTitle = createSelector(
   getGeneralUI,
-  general => general.title || null
+  general => general.title || ''
 );
 
 /**
