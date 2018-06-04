@@ -70,43 +70,70 @@ const emptyState = {
   },
 };
 
-const items = [
+const products = [
   {
-    id: 'foo',
-    type: 'product',
+    id: '123',
     quantity: 1,
-    currency: 'USD',
+    type: 'product',
     product: {
-      name: 'The Lego Movie Mens T-Shirt - "Taco Tuesdays!" 3 Lego Amigos Image',
-      active: true,
-      stock: {
-        ignoreQuantity: true,
-        quantity: 0,
-        orderable: true,
-      },
-      flags: {
-        hasChildren: false,
-        hasVariants: true,
-        hasOptions: false,
-      },
-      baseProductId: null,
-      featuredImageUrl: 'https://img-cdn.shopgate.com/30794/1/3e722e1d8acd348dfa33132777be7b8ef96cdcb50671b8b0c853df4950a2e91d',
-      type: 'parent',
+      id: 'test_product',
+      name: 'Test Product',
+      featuredImageUrl: 'https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa',
       price: {
-        currency: 'USD',
-        unitPrice: 12.5,
-        unitPriceNet: 12.5,
+        unit: 20,
+        'default': 20,
+        special: null,
       },
+      properties: [
+        {
+          label: 'Weight',
+          value: '15kg',
+        },
+      ],
+      appliedDiscounts: [],
     },
+    coupon: null,
+    messages: [],
   },
 ];
+
+const coupon = {
+  id: '234',
+  quantity: 1,
+  type: 'coupon',
+  coupon: {
+    code: 'FOREVER',
+    description: null,
+    label: 'Coupon',
+    savedPrice: {
+      value: 5,
+      type: 'fixed',
+    },
+  },
+
+  messages: [],
+  product: null,
+};
 
 const cartState = {
   ...emptyState,
   ...{
     cart: {
       ...emptyState.cart,
-      items,
+      items: products,
+    },
+  },
+};
+
+const couponState = {
+  ...emptyState,
+  ...{
+    cart: {
+      ...emptyState.cart,
+      items: [
+        ...products,
+        { ...coupon },
+      ],
     },
   },
 };
@@ -114,4 +141,5 @@ const cartState = {
 export {
   emptyState,
   cartState,
+  couponState,
 };
