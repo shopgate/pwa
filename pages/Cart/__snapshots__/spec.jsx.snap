@@ -199,205 +199,6 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
 </Provider>
 `;
 
-exports[`<Cart> page Initial page should render 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(Cart)>
-    <Cart
-      cartItems={Array []}
-      dispatch={[Function]}
-      isLoading={false}
-      messages={Array []}
-    >
-      <MockedView
-        title="titles.cart"
-      >
-        <div>
-          <Connect(Empty)>
-            <Empty
-              goBackHistory={[Function]}
-            >
-              <div
-                className="css-12lnmui"
-              >
-                <Portal
-                  name="cart.empty.before"
-                  props={null}
-                />
-                <Portal
-                  name="cart.empty"
-                  props={null}
-                >
-                  <div
-                    className="css-aphe06"
-                  >
-                    <div
-                      className="css-11342l"
-                    >
-                      <Icon>
-                        <svg
-                          viewBox="0 0 208 208"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle
-                            className="css-4gyzyg"
-                            cx="104"
-                            cy="104"
-                            r="104"
-                          />
-                          <ellipse
-                            className="css-16igopp"
-                            cx="104"
-                            cy="161"
-                            rx="65"
-                            ry="7"
-                          />
-                          <path
-                            className="css-jsm13g"
-                            d="M84.4 121.4c.4-.1.9-.3 1.4-.4 1.6-.4 3.2-.5 4.8-.5h.8c-.1 0-.3-.1-.6-.2-2-.4-4-.4-6 .1-.9.2-1.7.4-2.5.8.2-.6.5-1.2.9-1.7l.9-1.2c.4-.5.9-1 1.5-1.4.7-.5 1.5-.9 2.4-1.1 1.6-.4 3.3-.4 4.9 0 5.7 1.4 10.7 1.6 11.2.8.2-.4-4.9 10.7-11.7 9.7-6.8-.8-10.1-3.2-13-1.3-.2.1 1.1-2.3 5-3.6z"
-                          />
-                          <path
-                            className="css-1v0szgm"
-                            d="M92.6 140.8l.5-.9c.6-1 1.3-1.9 2.1-2.7l.4-.4h-.1l-.4.2c-1.2.8-2.2 1.9-2.9 3.2-.3.5-.6 1.1-.8 1.7-.2-.4-.3-.8-.4-1.3-.1-.4-.1-.7-.1-1.1 0-.5 0-.9.1-1.4.1-.6.3-1.2.6-1.8.6-1 1.4-1.9 2.5-2.5 3.5-2.2 6.1-4.7 5.9-5.3-.1-.3 3.1 7.7-.8 10.8-3.8 3.1-6.6 3.6-7.1 6.1-.2 0-.7-1.9.5-4.6z"
-                          />
-                          <path
-                            className="css-1ysxuyf"
-                            d="M122 128.1c-2.1-.4-3.5 1.7-7.2 3.8s-9.2-3.1-9-2.9c.5.4 3.3-.9 6.2-3 .8-.6 1.8-1 2.8-1.2.6 0 1.1 0 1.6.1.4.1.8.2 1.1.4.3.1.6.3.8.5.3.2.6.5.9.8-.5 0-1.1.1-1.6.2-1.2.2-2.4.6-3.5 1.3-.1.1-.2.2-.3.2.1 0 .3-.1.5-.2.9-.4 1.9-.7 2.9-.8.3 0 .7-.1.9-.1 2.7-.1 4.1.9 3.9.9z"
-                          />
-                          <path
-                            className="css-1nh4xbo"
-                            d="M130.3 119.2l-.6.2c-3.5 1.3-7.5.1-9.7-2.9l-.9-1.4c1.3.4 2.6.5 4 .4 2.6-.3 5.1.8 6.7 2.9l.5.8z"
-                          />
-                          <path
-                            className="css-jsm13g"
-                            d="M135.8 133.9l-.9-.8c-2.3-2.1-3-5.5-1.6-8.2l.2-.4.6.5c1.6 1.5 2.3 3.6 1.8 5.8-.2.9-.2 2-.1 3.1z"
-                          />
-                          <path
-                            className="css-1gd8opt"
-                            d="M137.2 114.4l-.7.6c-1.8 1.6-2.4 4.2-1.4 6.4l.1.3.4-.4c1.3-1.1 1.9-2.8 1.5-4.4 0-.8 0-1.7.1-2.5z"
-                          />
-                          <g
-                            className="css-18z0cc9"
-                          >
-                            <path
-                              className="css-itadob"
-                              d="M161.1 102.2l-2.7-7.7c-.4-1.3-1.5-2.2-2.8-2.4-1.3-.2-2.3-1.1-2.7-2.4L142 55.5c-.5-1.4-1.9-2.3-3.4-2.4H68.4c-1.5.1-2.8 1-3.4 2.4l-10.8 34c-.3 1.3-1.4 2.2-2.7 2.4-1.3.2-2.4 1.1-2.8 2.4l-2.6 7.7c-.5 1.4.1 2.5 1.2 2.5h42c1.6-.1 3.2-.7 4.4-1.8l3.2-3.1v-.1c.6-3.2 3.6-5.3 6.8-4.7.1 0 .2 0 .3.1l37 7.7c1.4.3 2.6 1 3.4 2h15.3c1.3 0 1.9-1.1 1.4-2.4zM82.6 88.1c0 1.4-1.2 2.5-2.6 2.5h-9.3c-1.1.1-2-.7-2.1-1.8 0-.2 0-.5.1-.7l5.2-24.7c.4-1.4 1.7-2.4 3.1-2.5h3c1.4 0 2.6 1.1 2.6 2.5v24.7zm25.5 2.5h-8.4c-1.3.1-2.3-.9-2.4-2.2v-.3l2.1-24.5c.2-1.4 1.4-2.5 2.8-2.5h3.1c1.4 0 2.7 1.1 2.8 2.5l2.1 24.5c0 1.3-.9 2.4-2.1 2.5zm29.2-.1c-.2.1-.5.1-.7.1h-9.3c-1.4 0-2.6-1.1-2.6-2.5V63.6c0-1.4 1.2-2.5 2.6-2.5h3.1c1.5 0 2.8 1 3.1 2.5l5.2 24.6c.3 1-.4 2-1.4 2.3z"
-                            />
-                            <path
-                              className="css-itadob"
-                              d="M99 99.9c-.4 2.2 1.1 4.3 3.3 4.8l37.2 7.8c1 .2 2 0 2.8-.6.8-.6 1.4-1.5 1.6-2.5.4-2.2-1.1-4.3-3.3-4.8l-37.2-7.8c-.2 0-.5-.1-.7-.1-1.7.1-3.4 1.4-3.7 3.2z"
-                            />
-                          </g>
-                        </svg>
-                      </Icon>
-                    </div>
-                    <div
-                      className="css-b9wt33"
-                    >
-                      <Translate
-                        className=""
-                        params={Object {}}
-                        string="cart.empty"
-                      >
-                        <span
-                          className=""
-                        >
-                          cart.empty
-                        </span>
-                      </Translate>
-                    </div>
-                  </div>
-                </Portal>
-                <Portal
-                  name="cart.empty.after"
-                  props={null}
-                />
-                <div
-                  className="css-1dq8tqy"
-                >
-                  <RippleButton
-                    className="css-63oe3q"
-                    disabled={false}
-                    flat={false}
-                    onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
-                    type="secondary"
-                    wrapContent={true}
-                  >
-                    <Button
-                      className="css-63oe3q"
-                      disabled={false}
-                      flat={false}
-                      onClick={[Function]}
-                      type="secondary"
-                      wrapContent={false}
-                    >
-                      <Button
-                        className="css-187rja2 css-63oe3q"
-                        disabled={false}
-                        onClick={[Function]}
-                      >
-                        <button
-                          className="css-187rja2 css-63oe3q css-1rn65c0"
-                          data-test-id="Button"
-                          disabled={false}
-                          onClick={[Function]}
-                        >
-                          <Ripple
-                            className="css-8s1fw2 "
-                            color="#000"
-                            disabled={false}
-                            fill={true}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
-                          >
-                            <div
-                              aria-hidden={true}
-                              className="css-8s1fw2 "
-                              data-test-id="Ripple"
-                              onClick={[Function]}
-                              style={null}
-                            >
-                              <Translate
-                                className=""
-                                params={Object {}}
-                                string="cart.continue"
-                              >
-                                <span
-                                  className=""
-                                >
-                                  cart.continue
-                                </span>
-                              </Translate>
-                            </div>
-                          </Ripple>
-                        </button>
-                      </Button>
-                    </Button>
-                  </RippleButton>
-                </div>
-              </div>
-            </Empty>
-          </Connect(Empty)>
-        </div>
-      </MockedView>
-    </Cart>
-  </Connect(Cart)>
-</Provider>
-`;
-
 exports[`<Cart> page Initial page should render empty 1`] = `
 <Provider
   store={
@@ -597,216 +398,6 @@ exports[`<Cart> page Initial page should render empty 1`] = `
 </Provider>
 `;
 
-exports[`<Cart> page Initial page should render items 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(Cart)>
-    <Cart
-      cartItems={
-        Array [
-          Object {
-            "id": "foo",
-          },
-        ]
-      }
-      dispatch={[Function]}
-      isLoading={false}
-      messages={Array []}
-    >
-      <MockedView
-        title="titles.cart"
-      >
-        <div>
-          <section
-            className="css-1g0wxuv"
-            style={
-              Object {
-                "paddingBottom": "78px",
-                "paddingTop": 4,
-              }
-            }
-          >
-            <Portal
-              name="cart.item-list.before"
-              props={null}
-            />
-            <Portal
-              name="cart.item-list"
-              props={null}
-            >
-              <CardList>
-                <List
-                  className=""
-                >
-                  <ul
-                    className="css-gkw1j5 "
-                  >
-                    <Portal
-                      name="cart.item.before"
-                      props={
-                        Object {
-                          "cartItemId": "foo",
-                          "type": undefined,
-                        }
-                      }
-                    />
-                    <Portal
-                      name="cart.item"
-                      props={
-                        Object {
-                          "cartItemId": "foo",
-                          "type": undefined,
-                        }
-                      }
-                    >
-                      <Item
-                        item={
-                          Object {
-                            "id": "foo",
-                          }
-                        }
-                        togglePaymentBar={[Function]}
-                      />
-                    </Portal>
-                    <Portal
-                      name="cart.item.after"
-                      props={
-                        Object {
-                          "cartItemId": "foo",
-                          "type": undefined,
-                        }
-                      }
-                    />
-                    <Portal
-                      key=".1"
-                      name="cart.coupon-field.before"
-                      props={null}
-                    />
-                    <Portal
-                      key=".2"
-                      name="cart.coupon-field"
-                      props={null}
-                    />
-                    <Portal
-                      key=".3"
-                      name="cart.coupon-field.after"
-                      props={null}
-                    />
-                  </ul>
-                </List>
-              </CardList>
-            </Portal>
-            <Portal
-              name="cart.item-list.after"
-              props={null}
-            />
-            <PaymentBar
-              isVisible={true}
-              onSize={[Function]}
-            >
-              <Sheet
-                animation={
-                  Object {
-                    "in": "css-31n36f",
-                    "out": "css-gyrv08",
-                  }
-                }
-                backdrop={false}
-                duration={300}
-                isOpen={true}
-                onClose={null}
-                onOpen={[Function]}
-                title=""
-              >
-                <section>
-                  <Drawer
-                    alwaysActive={false}
-                    animation={
-                      Object {
-                        "duration": 300,
-                        "in": "css-31n36f",
-                        "out": "css-gyrv08",
-                      }
-                    }
-                    className="css-h69706"
-                    isOpen={true}
-                    onClose={null}
-                    onDidClose={[Function]}
-                    onOpen={[Function]}
-                  >
-                    <div
-                      className="css-h69706 css-1rg7udn css-31n36f"
-                      onAnimationEnd={[Function]}
-                      style={
-                        Object {
-                          "animationDuration": "300ms",
-                        }
-                      }
-                    >
-                      <div
-                        className="css-1aon90l css-k5vpvg"
-                      >
-                        <SizeMe(Content)
-                          key=".0"
-                          onSize={[Function]}
-                        >
-                          <SizeMeRenderer(Content)
-                            disablePlaceholder={false}
-                            explicitRef={[Function]}
-                            onSize={[Function]}
-                            size={
-                              Object {
-                                "height": undefined,
-                                "position": undefined,
-                                "width": undefined,
-                              }
-                            }
-                          >
-                            <SizeMeReferenceWrapper>
-                              <SizeMePlaceholder>
-                                <div
-                                  style={
-                                    Object {
-                                      "height": "100%",
-                                      "width": "100%",
-                                    }
-                                  }
-                                />
-                              </SizeMePlaceholder>
-                            </SizeMeReferenceWrapper>
-                          </SizeMeRenderer(Content)>
-                        </SizeMe(Content)>
-                      </div>
-                    </div>
-                  </Drawer>
-                </section>
-              </Sheet>
-            </PaymentBar>
-            <Connect(Footer)>
-              <Footer
-                dispatch={[Function]}
-                showCouponsHint={false}
-                showTaxDisclaimer={false}
-              />
-            </Connect(Footer)>
-          </section>
-        </div>
-      </MockedView>
-    </Cart>
-  </Connect(Cart)>
-</Provider>
-`;
-
 exports[`<Cart> page Initial page should render with items 1`] = `
 <Provider
   store={
@@ -825,7 +416,32 @@ exports[`<Cart> page Initial page should render with items 1`] = `
       cartItems={
         Array [
           Object {
+            "currency": "USD",
             "id": "foo",
+            "product": Object {
+              "active": true,
+              "baseProductId": null,
+              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/3e722e1d8acd348dfa33132777be7b8ef96cdcb50671b8b0c853df4950a2e91d",
+              "flags": Object {
+                "hasChildren": false,
+                "hasOptions": false,
+                "hasVariants": true,
+              },
+              "name": "The Lego Movie Mens T-Shirt - \\"Taco Tuesdays!\\" 3 Lego Amigos Image",
+              "price": Object {
+                "currency": "USD",
+                "unitPrice": 12.5,
+                "unitPriceNet": 12.5,
+              },
+              "stock": Object {
+                "ignoreQuantity": true,
+                "orderable": true,
+                "quantity": 0,
+              },
+              "type": "parent",
+            },
+            "quantity": 1,
+            "type": "product",
           },
         ]
       }
@@ -866,7 +482,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                       props={
                         Object {
                           "cartItemId": "foo",
-                          "type": undefined,
+                          "type": "product",
                         }
                       }
                     />
@@ -875,25 +491,16 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                       props={
                         Object {
                           "cartItemId": "foo",
-                          "type": undefined,
+                          "type": "product",
                         }
                       }
-                    >
-                      <Item
-                        item={
-                          Object {
-                            "id": "foo",
-                          }
-                        }
-                        togglePaymentBar={[Function]}
-                      />
-                    </Portal>
+                    />
                     <Portal
                       name="cart.item.after"
                       props={
                         Object {
                           "cartItemId": "foo",
-                          "type": undefined,
+                          "type": "product",
                         }
                       }
                     />
@@ -906,7 +513,189 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                       key=".2"
                       name="cart.coupon-field"
                       props={null}
-                    />
+                    >
+                      <Connect(CouponField)
+                        onToggleFocus={[Function]}
+                      >
+                        <CouponField
+                          addCoupon={[Function]}
+                          isIos={false}
+                          isLoading={false}
+                          isVisible={true}
+                          onToggleFocus={[Function]}
+                        >
+                          <div>
+                            <Layout
+                              handleAddCoupon={[Function]}
+                              handleFocusChange={[Function]}
+                              handleValueChange={[Function]}
+                              iconStyle={
+                                Object {
+                                  "opacity": 0,
+                                }
+                              }
+                              isButtonDisabled={true}
+                              isFocused={false}
+                              isLoading={false}
+                              labelStyle={
+                                Object {
+                                  "display": "block",
+                                }
+                              }
+                              value=""
+                            >
+                              <div
+                                className="css-gtkn00"
+                              >
+                                <form
+                                  className="css-pgykgj"
+                                  onSubmit={[Function]}
+                                >
+                                  <label
+                                    className="css-m5j1fd"
+                                    htmlFor="coupon-code-field"
+                                    style={
+                                      Object {
+                                        "display": "block",
+                                      }
+                                    }
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.redeem_coupon"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.redeem_coupon
+                                      </span>
+                                    </Translate>
+                                  </label>
+                                  <Component
+                                    className="css-gm6ek6"
+                                    disabled={false}
+                                    name="coupon-code-field"
+                                    onChange={[Function]}
+                                    onFocusChange={[Function]}
+                                    value=""
+                                  >
+                                    <SimpleInput
+                                      autoComplete={false}
+                                      autoCorrect={false}
+                                      className="css-gm6ek6"
+                                      disabled={false}
+                                      id={null}
+                                      name="coupon-code-field"
+                                      onChange={[Function]}
+                                      onFocusChange={[Function]}
+                                      onSanitize={[Function]}
+                                      onValidate={[Function]}
+                                      password={false}
+                                      setRef={[Function]}
+                                      type="text"
+                                      validateOnBlur={true}
+                                      value=""
+                                    >
+                                      <input
+                                        autoComplete="off"
+                                        autoCorrect="off"
+                                        className="css-gm6ek6"
+                                        disabled={false}
+                                        id={null}
+                                        name="coupon-code-field"
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        type="text"
+                                        value=""
+                                      />
+                                    </SimpleInput>
+                                  </Component>
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8dl7x"
+                                    data-test-id="CouponSubmitButton"
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "opacity": 0,
+                                      }
+                                    }
+                                  >
+                                    <CouponFieldIcon
+                                      disabled={true}
+                                    >
+                                      <Icon
+                                        className=""
+                                        color={null}
+                                        content="
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  "
+                                        size="inherit"
+                                        viewBox="1671 5924 30 30"
+                                      >
+                                        <svg
+                                          className="css-yys9hb "
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  ",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "fill": null,
+                                              "fontSize": "inherit",
+                                            }
+                                          }
+                                          viewBox="1671 5924 30 30"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </Icon>
+                                    </CouponFieldIcon>
+                                  </div>
+                                  <div
+                                    className="css-1usne35"
+                                  >
+                                    <div
+                                      className="css-11zbu8 css-1txaqv6"
+                                    />
+                                  </div>
+                                </form>
+                              </div>
+                            </Layout>
+                          </div>
+                        </CouponField>
+                      </Connect(CouponField)>
+                    </Portal>
                     <Portal
                       key=".3"
                       name="cart.coupon-field.after"
