@@ -43,8 +43,14 @@ class Widgets extends Component {
    * @return {JSX}
    */
   shouldComponentUpdate(nextProps) {
-    if (!isEqual(this.props.components, nextProps.components)) return true;
-    if (!isEqual(this.props.widgets, nextProps.widgets)) return true;
+    if (!isEqual(this.props.components, nextProps.components)) {
+      return true;
+    }
+
+    if (!isEqual(this.props.widgets, nextProps.widgets)) {
+      return true;
+    }
+
     return false;
   }
 
