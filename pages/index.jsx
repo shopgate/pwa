@@ -26,6 +26,8 @@ import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
+const appRoutesProps = { View };
+
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
@@ -39,14 +41,14 @@ const Pages = () => (
           <ModalContainer component={Dialog} />
           <SnackBar />
           <Router>
-            <Route pattern={`${INDEX_PATH}`} component={routes.Page} />
+            <Route pattern={`${INDEX_PATH}`} component={routes.StartPage} />
             <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
-            <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} />
-            <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} />
+            <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
+            <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
           </Router>
-          <Portal name={APP_ROUTES} props={{ View }} />
+          <Portal name={APP_ROUTES} props={appRoutesProps} />
           {isDev && (
             <Helmet>
               <link href={devFontsUrl} rel="stylesheet" />

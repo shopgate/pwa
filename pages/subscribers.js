@@ -6,7 +6,6 @@ import commonMenu from '@shopgate/pwa-common/subscriptions/menu';
 import commonRouter from '@shopgate/pwa-common/subscriptions/router';
 // PWA Common Commerce
 import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
-import commerceCategory from '@shopgate/pwa-common-commerce/category/subscriptions';
 import commerceFavorites from '@shopgate/pwa-common-commerce/favorites/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
@@ -30,6 +29,7 @@ import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
+import startPage from 'Pages/StartPage/subscriptions';
 import page from 'Pages/Page/subscriptions';
 import product from 'Pages/Product/subscriptions';
 import search from 'Pages/Search/subscriptions';
@@ -53,7 +53,6 @@ const subscriptions = [
   commonRouter,
   // Common Commerce subscribers.
   commerceCart,
-  commerceCategory,
   commerceFavorites,
   commerceFilter,
   commerceProduct,
@@ -78,6 +77,7 @@ const subscriptions = [
   filter,
   filterbar,
   login,
+  startPage,
   page,
   product,
   search,

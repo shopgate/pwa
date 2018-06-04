@@ -1,5 +1,10 @@
 import Loadable from 'react-loadable';
 
+export const StartPage = Loadable({
+  loader: () => import('./StartPage'),
+  loading: () => null,
+});
+
 export const Page = Loadable({
   loader: () => import('./Page'),
   loading: () => null,
