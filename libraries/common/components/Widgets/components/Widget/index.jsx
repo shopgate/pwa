@@ -24,9 +24,9 @@ class Widget extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (!isEqual(this.props.config, nextProps.config)) return true;
     if (this.props.cellSize !== nextProps.cellSize) return true;
     if (this.props.component !== nextProps.component) return true;
+    if (!isEqual(this.props.config, nextProps.config)) return true;
     return false;
   }
 
