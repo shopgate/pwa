@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import pure from 'recompose/pure';
 import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
@@ -236,4 +237,4 @@ class View extends Component {
   }
 }
 
-export default connect(View);
+export default connect(pure(View));
