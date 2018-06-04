@@ -70,4 +70,5 @@ export default {
   taxDisclaimerFooter: "[data-route-path='/cart'] [data-test-id='taxDisclaimer'] span",
   couponFieldInput: "[data-test-id='couponField'] input",
   couponSubmitButton: "[data-test-id='CouponSubmitButton']",
+  searchInput: "[data-test-id='Search'] input",
 };
