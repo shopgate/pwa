@@ -42,10 +42,6 @@ class Cart extends Component {
     };
   }
 
-  // shouldComponentUpdate(nextprops, nextState) {
-
-  // }
-
   /**
    * Callback for the onSize event of the PaymentBar.
    * @param {Object} size An object which contains data about the current componenent dimensions.
