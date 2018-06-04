@@ -137,8 +137,14 @@ const couponState = {
     },
   },
 };
+const uiState = {
+  ui: {
+    general: {},
+  },
+};
 
 export {
+  uiState,
   emptyState,
   cartState,
   couponState,
