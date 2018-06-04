@@ -7,8 +7,6 @@ import { pageWillEnter$ } from './streams';
  */
 export default function page(subscribe) {
   subscribe(pageWillEnter$, ({ action, dispatch }) => {
-    const { pageId } = action.route.params;
-
-    dispatch(getPageConfig(pageId));
+    dispatch(getPageConfig(action.route.params.pageId));
   });
 }
