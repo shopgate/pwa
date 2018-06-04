@@ -11,11 +11,11 @@ const mapStateToProps = state => ({
 });
 
 /**
- * @param {Object} prev The previous state.
  * @param {Object} next The next state.
+ * @param {Object} prev The previous state.
  * @returns {boolean}
  */
-const areStatePropsEqual = (prev, next) => (
+const areStatePropsEqual = (next, prev) => (
   prev.title === next.title
 );
 
