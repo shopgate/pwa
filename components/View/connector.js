@@ -25,4 +25,16 @@ const mapDispatchToProps = dispatch => ({
   setTop: isTop => dispatch(setViewTop(isTop)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.navigatorTitle !== next.navigatorTitle) return false;
+  if (prev.historyPathname !== next.historyPathname) return false;
+  if (prev.viewTop !== next.viewTop) return false;
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
