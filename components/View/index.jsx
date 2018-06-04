@@ -15,10 +15,10 @@ const SCROLL_DEBOUNCE = 50;
  */
 class View extends Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
     navigatorTitle: PropTypes.string.isRequired,
     setTitle: PropTypes.func.isRequired,
     setTop: PropTypes.func.isRequired,
+    children: PropTypes.node,
     hasNavigator: PropTypes.bool,
     head: PropTypes.shape({
       meta: PropTypes.array,
@@ -34,6 +34,7 @@ class View extends Component {
   };
 
   static defaultProps = {
+    children: [],
     hasNavigator: true,
     head: {
       meta: [],
@@ -46,10 +47,6 @@ class View extends Component {
     style: null,
     title: '',
     viewTop: true,
-  };
-
-  static contextTypes = {
-    routePath: PropTypes.string,
   };
 
   /**
@@ -72,18 +69,6 @@ class View extends Component {
   }
 
   /**
-   * Sets the navigator title when the component mounts.
-   */
-  componentDidMount() {
-    // If we already know the page title then we can set it immediately.
-    if (this.props.title !== null) {
-      this.props.setTitle(this.props.title);
-    }
-
-    this.props.setTop(true);
-  }
-
-  /**
    * Sets the new navigator title if it has changed.
    * @param {Object} nextProps The new component props.
    */
@@ -91,14 +76,6 @@ class View extends Component {
     // Only update if the active pathname is the same as the pathname of this route.
     if (nextProps.historyPathname !== this.pathname) {
       return;
-    }
-
-    if (
-      (nextProps.title !== this.props.title) ||
-      (this.props.navigatorTitle !== nextProps.title)
-    ) {
-      // Update the title if it is different from the set navigator title.
-      this.props.setTitle(nextProps.title || this.props.title);
     }
 
     if (nextProps.viewTop && (nextProps.viewTop !== this.props.viewTop)) {

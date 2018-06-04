@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import getProducts from './actions/getProducts';
+import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,9 +8,8 @@ import getProducts from './actions/getProducts';
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  viewMode: state.ui.categoryPage.viewMode,
-  ...getProductsResult(state),
+const mapStateToProps = (state, props) => ({
+  ...getProductsResult(state, props),
 });
 
 /**
@@ -19,7 +18,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: offset => dispatch(getProducts(offset)),
+  getProducts: categoryId => dispatch(fetchCategoryProducts(categoryId)),
 });
 
 /**
