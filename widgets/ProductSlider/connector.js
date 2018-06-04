@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
  */
 const areStatePropsEqual = (next, prev) => {
   if (!prev.settings && next.settings) return false;
-  if (!prev.products.products.length && next.prev.products.products.length) return false;
+  if (!prev.products.length && next.products.length) return false;
   return true;
 };
 
