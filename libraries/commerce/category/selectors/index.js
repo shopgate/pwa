@@ -35,7 +35,7 @@ const getRootCategoriesState = createSelector(
 );
 
 /**
- * Retrieves the child categories for a specific parent category from the state.
+ * Retrieves the root categories.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {Object} The child categories state.
@@ -52,12 +52,7 @@ export const getRootCategories = createSelector(
       return null;
     }
 
-    const categories = rootCategories.categories.map(id => categoryState[id]);
-
-    return {
-      ...rootCategories,
-      categories,
-    };
+    return rootCategories.categories.map(id => categoryState[id]);
   }
 );
 
@@ -125,12 +120,28 @@ export const getCurrentCategories = createSelector(
 );
 
 export const getCategoryProductCount = createSelector(
-  getCurrentCategory,
-  (category) => {
-    if (!category) {
+  getCategoriesState,
+  (state, props) => props.categoryId,
+  (category, categoryId) => {
+    if (!category[categoryId] || !category[categoryId].productCount) {
       return null;
     }
 
-    return category.productCount;
+    return category[categoryId].productCount;
+  }
+);
+
+export const getChildCategoriesById = createSelector(
+  getCategoriesState,
+  getChildCategoriesState,
+  (state, props) => props.categoryId,
+  (categories, childCategories, categoryId) => {
+    // Check if there are any children of the given category id.
+    if (!childCategories[categoryId] || !childCategories[categoryId].children) {
+      return null;
+    }
+
+    // Map the child ids over the category state.
+    return childCategories[categoryId].children.map(id => categories[id]);
   }
 );
