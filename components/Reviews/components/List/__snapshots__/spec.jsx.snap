@@ -56,6 +56,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-2g5sa0"
+        data-test-id="reviewTitle: "
       >
         <Title
           title=""
@@ -80,6 +81,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 5"
               >
                 <div
                   className="css-4s85e9"
@@ -510,6 +512,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-2g5sa0"
+        data-test-id="reviewTitle: Test review 2 "
       >
         <Title
           title="Test review 2 "
@@ -536,6 +539,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 2"
               >
                 <div
                   className="css-4s85e9"
@@ -874,6 +878,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-2g5sa0"
+        data-test-id="reviewTitle: "
       >
         <Title
           title=""
@@ -898,6 +903,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 3"
               >
                 <div
                   className="css-4s85e9"
@@ -1272,6 +1278,7 @@ exports[`<List /> should render list with reviews 1`] = `
     >
       <div
         className="css-2g5sa0"
+        data-test-id="reviewTitle: "
       >
         <Title
           title=""
@@ -1296,6 +1303,7 @@ exports[`<List /> should render list with reviews 1`] = `
               <div
                 aria-label="reviews.rating_stars"
                 className="css-13azwyo css-1tsawhq"
+                data-test-id="ratedStars: 1"
               >
                 <div
                   className="css-4s85e9"

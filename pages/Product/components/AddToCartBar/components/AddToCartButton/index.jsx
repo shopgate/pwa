@@ -65,7 +65,7 @@ class AddToCartButton extends Component {
     const className = this.props.isDisabled ? styles.disabled : styles.button;
 
     return (
-      <button className={className} style={style} onClick={this.handleClick}>
+      <button className={className} style={style} onClick={this.handleClick} data-test-id="addToCartButton">
         {!itemCount ? (
           <I18n.Text string="product.add_to_cart" />
         ) : (
