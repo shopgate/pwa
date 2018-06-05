@@ -1,61 +1,67 @@
-import {
-  routeDidEnter,
-  routeDidLeave,
-} from '@shopgate/pwa-common/streams/history';
-import { getRedirectLocation } from '@shopgate/pwa-common/selectors/history';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
-import { ITEM_PATH } from '../constants';
-import setProductId from '../action-creators/setProductId';
-import setProductVariantId from '../action-creators/setProductVariantId';
-import { getCurrentProductVariantId } from '../selectors/variants';
+import getProduct from '../actions/getProduct';
+import getProductDescription from '../actions/getProductDescription';
+import getProductProperties from '../actions/getProductProperties';
+import getProductImages from '../actions/getProductImages';
+import getProductShipping from '../actions/getProductShipping';
+import getProductVariants from '../actions/getProductVariants';
+import getProductOptions from '../actions/getProductOptions';
 import {
-  getCurrentBaseProductId,
-  getHistoryPathProductId,
-} from '../selectors/product';
-import { receivedVisibleProduct$ } from '../streams';
+  productWillEnter$,
+  productReceived$,
+  cachedProductReceived$,
+  receivedVisibleProduct$,
+} from '../streams';
 
 /**
  * Product subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 function product(subscribe) {
-  const itemRouteDidEnter$ = routeDidEnter(ITEM_PATH);
-  const itemRouteDidLeave$ = routeDidLeave(ITEM_PATH).filter(({ pathname }) => (
-    !pathname.startsWith(ITEM_PATH)
-  ));
+  const processProduct$ = productReceived$.merge(cachedProductReceived$);
 
-  subscribe(itemRouteDidEnter$, ({ dispatch, getState }) => {
-    const state = getState();
-    const historyProductId = getHistoryPathProductId(state);
-    const currentBaseProductId = getCurrentBaseProductId(state);
-    const selectedVariantId = getCurrentProductVariantId(state);
+  subscribe(productWillEnter$, ({ action, dispatch }) => {
+    const { title } = action.route.state;
+    const { productId } = action.route.params;
+    const id = hex2bin(productId);
 
-    // Only update when no child product is selected yet or when the history changed
-    if (selectedVariantId || currentBaseProductId === historyProductId) {
-      return;
-    }
+    dispatch(getProduct(id));
+    dispatch(getProductDescription(id));
+    dispatch(getProductProperties(id));
+    dispatch(getProductImages(id));
+    dispatch(getProductShipping(id));
 
-    dispatch(setProductId(historyProductId));
-  });
-
-  subscribe(itemRouteDidLeave$, ({ dispatch, getState }) => {
-    /**
-     * If there is a redirect to login, e.g. when a user wants to give a review on a product and
-     * he is not logged in, we don't want the state to be mutated and to reset the current product.
-     * We only reset the current product if the user leaves the product route by navigation.
-     */
-    if (!getRedirectLocation(getState())) {
-      dispatch(setProductId(null));
-      dispatch(setProductVariantId(null));
+    if (title) {
+      dispatch(setTitle(title));
     }
   });
 
-  subscribe(receivedVisibleProduct$, ({ dispatch, action }) => {
-    const { name } = action.productData;
+  subscribe(processProduct$, ({ action, dispatch }) => {
+    const {
+      id,
+      flags = {
+        hasVariants: false,
+        hasOptions: false,
+      },
+      baseProductId,
+    } = action.productData;
 
-    if (name) {
-      dispatch(setTitle(name));
+    if (baseProductId) {
+      dispatch(getProduct(baseProductId));
     }
+
+    if (flags.hasVariants) {
+      dispatch(getProductVariants(id));
+    }
+
+    if (flags.hasOptions) {
+      dispatch(getProductOptions(id));
+    }
+  });
+
+  subscribe(receivedVisibleProduct$, ({ action, dispatch }) => {
+    dispatch(setTitle(action.productData.name));
   });
 }
 

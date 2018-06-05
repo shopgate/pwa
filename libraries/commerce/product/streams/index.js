@@ -1,18 +1,26 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
+  ITEM_PATH,
   RECEIVE_PRODUCT,
+  RECEIVE_PRODUCT_CACHED,
   SET_PRODUCT_VARIANT_ID,
 } from '../constants';
 import { getSelectedVariant } from '../selectors/variants';
 
-/**
- * Gets triggered when product data received.
- * @type {Observable}
- */
+export const productWillEnter$ = routeWillEnter$
+  .filter(({ action }) => (
+    action.route.pattern === `${ITEM_PATH}/:productId`
+  ));
+
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
+  .distinctUntilChanged();
+
+export const cachedProductReceived$ = main$
+  .filter(({ action }) => action.type === RECEIVE_PRODUCT_CACHED)
   .distinctUntilChanged();
 
 export const receivedVisibleProduct$ = productReceived$
@@ -27,7 +35,7 @@ export const receivedVisibleProduct$ = productReceived$
       return false;
     }
 
-    return (action.productId === hex2bin(route.params.productId));
+    return action.productId === hex2bin(route.params.productId);
   });
 
 /**
