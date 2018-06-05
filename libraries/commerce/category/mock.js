@@ -56,6 +56,25 @@ const categoryState = {
         isFetching: false,
         expires: 9999999999999,
       },
+      test: {
+        id: 'test',
+        name: 'test',
+        parent: {
+          id: 'women',
+          name: 'Women',
+        },
+        path: 'Default- category=>Women=>test',
+        description: '',
+        imageUrl: null,
+        externalUrl: '',
+        sort: 10001,
+        productCount: 0,
+        childrenSort: 'import',
+        childrenCount: 0,
+        children: [],
+        isFetching: false,
+        expires: 9999999999999,
+      },
     },
     childrenByCategoryId: {
       women: {
