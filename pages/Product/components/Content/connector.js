@@ -12,12 +12,15 @@ const mapStateToProps = state => ({
 
 /**
  * Check to see if the product name arrived.
- * @param {*} next The next props.
- * @param {*} prev The previous props.
+ * @param {Object} next The next props.
+ * @param {Object} prev The previous props.
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.name && next.name) return false;
+  if (!prev.name && next.name) {
+    return false;
+  }
+
   return true;
 };
 

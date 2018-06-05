@@ -2,7 +2,7 @@
 // Import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 // Import appConfig from '@shopgate/pwa-common/helpers/config';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import setViewTitle from '@shopgate/pwa-common/action-creators/view/setViewTitle';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 // Import { getCurrentProductVariantId } from '@shopgate/pwa-common-commerce/product/selectors/variants';
 // Import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 // Import { successReviewSubmit$ } from '@shopgate/pwa-common-commerce/reviews/streams';
@@ -37,7 +37,7 @@ export default function product(subscribe) {
     const { productId } = action.route.params;
     const id = hex2bin(productId);
 
-    if (title) dispatch(setViewTitle(title));
+    if (title) dispatch(setTitle(title));
     dispatch(getProduct(id));
     dispatch(getProductDescription(id));
     dispatch(getProductProperties(id));
