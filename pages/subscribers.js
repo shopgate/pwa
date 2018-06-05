@@ -31,7 +31,6 @@ import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import startPage from 'Pages/StartPage/subscriptions';
 import page from 'Pages/Page/subscriptions';
-import product from 'Pages/Product/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
@@ -79,7 +78,6 @@ const subscriptions = [
   login,
   startPage,
   page,
-  product,
   search,
   reviews,
   writeReview,

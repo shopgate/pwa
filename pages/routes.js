@@ -30,10 +30,10 @@ export const Category = Loadable({
 //   Loading: () => null,
 // });
 
-// Export const Product = Loadable({
-//   Loader: () => import('./Product'),
-//   Loading: () => null,
-// });
+export const Product = Loadable({
+  loader: () => import('./Product'),
+  loading: () => null,
+});
 
 // Export const ProductGallery = Loadable({
 //   Loader: () => import('./ProductGallery'),

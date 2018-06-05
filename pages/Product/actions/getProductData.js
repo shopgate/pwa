@@ -30,14 +30,14 @@ const getProductData = (selectedVariantId = null) =>
      * Only set current variant id if it changed
      */
     if (currentVariantId !== selectedVariantId) {
-      dispatch(setProductVariantId(selectedVariantId));
+      // Dispatch(setProductVariantId(selectedVariantId));
     }
 
     dispatch(getProduct(productId));
-    dispatch(getProductDescription(productId));
-    dispatch(getProductProperties(productId));
-    dispatch(getProductImages(productId));
-    dispatch(getProductShipping(productId));
+    // Dispatch(getProductDescription(productId));
+    // Dispatch(getProductProperties(productId));
+    // Dispatch(getProductImages(productId));
+    // Dispatch(getProductShipping(productId));
   };
 
 export default getProductData;
