@@ -32,7 +32,7 @@ export default function favorites(subscribe) {
     setTimeout(() => {
       dispatch(createToast({
         action: 'common.undo',
-        actionOnClick: addFavorites(action.productId, true),
+        actionOnClick: addFavorites(action.productId),
         message: 'favorites.removed',
         replaceable: true,
         duration: 2500,
@@ -44,7 +44,7 @@ export default function favorites(subscribe) {
     const state = getState();
     if (getHistoryPathname(state) === FAVORITES_PATH) {
       // Update the tabbar visibility state when the list changes while the user is on the list.
-      if (hasFavorites(getState())) {
+      if (hasFavorites(state)) {
         dispatch(showTabBar());
       } else {
         dispatch(hideTabBar());
