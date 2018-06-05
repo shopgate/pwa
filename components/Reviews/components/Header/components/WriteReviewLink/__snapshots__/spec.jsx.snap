@@ -56,6 +56,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
             onClick={[Function]}
             rippleClassName=""
             rippleSize={null}
+            testId="Button"
             type="secondary"
             wrapContent={true}
           >
@@ -69,6 +70,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                 onClick={[Function]}
                 rippleClassName=""
                 rippleSize={null}
+                testId="Button"
                 type="secondary"
                 wrapContent={true}
               >
@@ -77,6 +79,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                   disabled={false}
                   flat={true}
                   onClick={[Function]}
+                  testId="Button"
                   type="secondary"
                   wrapContent={false}
                 >
@@ -84,6 +87,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                     className="css-dh0pju "
                     disabled={false}
                     onClick={[Function]}
+                    testId="Button"
                   >
                     <button
                       className="css-dh0pju  css-1rn65c0"

@@ -10,6 +10,7 @@ exports[`<ApplyFilterButton /> it should render 1`] = `
   onClick={[Function]}
   rippleClassName=""
   rippleSize={null}
+  testId="Button"
   type="primary"
   wrapContent={true}
 >

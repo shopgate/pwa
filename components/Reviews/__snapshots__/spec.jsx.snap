@@ -528,6 +528,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
+                        testId="Button"
                         type="secondary"
                         wrapContent={true}
                       >
@@ -541,6 +542,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             onClick={[Function]}
                             rippleClassName=""
                             rippleSize={null}
+                            testId="Button"
                             type="secondary"
                             wrapContent={true}
                           >
@@ -549,6 +551,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               disabled={false}
                               flat={true}
                               onClick={[Function]}
+                              testId="Button"
                               type="secondary"
                               wrapContent={false}
                             >
@@ -556,6 +559,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 className="css-dh0pju "
                                 disabled={false}
                                 onClick={[Function]}
+                                testId="Button"
                               >
                                 <button
                                   className="css-dh0pju  css-1rn65c0"
@@ -2505,6 +2509,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
+                  testId="Button"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -2518,6 +2523,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
+                      testId="Button"
                       type="secondary"
                       wrapContent={true}
                     >
@@ -2526,6 +2532,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         disabled={false}
                         flat={true}
                         onClick={[Function]}
+                        testId="Button"
                         type="secondary"
                         wrapContent={false}
                       >
@@ -2533,6 +2540,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
                           <button
                             className="css-dh0pju  css-1rn65c0"
@@ -3038,6 +3046,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
+                        testId="Button"
                         type="secondary"
                         wrapContent={true}
                       >
@@ -3051,6 +3060,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             onClick={[Function]}
                             rippleClassName=""
                             rippleSize={null}
+                            testId="Button"
                             type="secondary"
                             wrapContent={true}
                           >
@@ -3059,6 +3069,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               disabled={false}
                               flat={true}
                               onClick={[Function]}
+                              testId="Button"
                               type="secondary"
                               wrapContent={false}
                             >
@@ -3066,6 +3077,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 className="css-dh0pju "
                                 disabled={false}
                                 onClick={[Function]}
+                                testId="Button"
                               >
                                 <button
                                   className="css-dh0pju  css-1rn65c0"
@@ -4363,6 +4375,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
+                        testId="Button"
                         type="secondary"
                         wrapContent={true}
                       >
@@ -4376,6 +4389,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                             onClick={[Function]}
                             rippleClassName=""
                             rippleSize={null}
+                            testId="Button"
                             type="secondary"
                             wrapContent={true}
                           >
@@ -4384,6 +4398,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                               disabled={false}
                               flat={true}
                               onClick={[Function]}
+                              testId="Button"
                               type="secondary"
                               wrapContent={false}
                             >
@@ -4391,6 +4406,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                                 className="css-dh0pju "
                                 disabled={false}
                                 onClick={[Function]}
+                                testId="Button"
                               >
                                 <button
                                   className="css-dh0pju  css-1rn65c0"
