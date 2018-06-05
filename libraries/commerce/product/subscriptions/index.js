@@ -3,7 +3,7 @@ import {
   routeDidLeave,
 } from '@shopgate/pwa-common/streams/history';
 import { getRedirectLocation } from '@shopgate/pwa-common/selectors/history';
-import setViewTitle from '@shopgate/pwa-common/action-creators/view/setViewTitle';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import { ITEM_PATH } from '../constants';
 import setProductId from '../action-creators/setProductId';
 import setProductVariantId from '../action-creators/setProductVariantId';
@@ -12,7 +12,7 @@ import {
   getCurrentBaseProductId,
   getHistoryPathProductId,
 } from '../selectors/product';
-import { productReceived$ } from '../streams';
+import { receivedVisibleProduct$ } from '../streams';
 
 /**
  * Product subscriptions.
@@ -50,9 +50,12 @@ function product(subscribe) {
     }
   });
 
-  subscribe(productReceived$, ({ dispatch, action }) => {
+  subscribe(receivedVisibleProduct$, ({ dispatch, action }) => {
     const { name } = action.productData;
-    if (name) dispatch(setViewTitle(name));
+
+    if (name) {
+      dispatch(setTitle(name));
+    }
   });
 }
 

@@ -1,4 +1,6 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
   RECEIVE_PRODUCT,
   SET_PRODUCT_VARIANT_ID,
@@ -12,6 +14,21 @@ import { getSelectedVariant } from '../selectors/variants';
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
   .distinctUntilChanged();
+
+export const receivedVisibleProduct$ = productReceived$
+  .filter(({ action }) => {
+    const route = getCurrentRoute();
+
+    if (typeof action.productId === 'undefined') {
+      return false;
+    }
+
+    if (!route.params.productId) {
+      return false;
+    }
+
+    return (action.productId === hex2bin(route.params.productId));
+  });
 
 /**
  * Gets triggered when VariantId changes.
