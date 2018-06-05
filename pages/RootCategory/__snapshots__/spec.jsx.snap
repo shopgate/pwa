@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<RootCategory> page Initial page should render 1`] = `
+exports[`<RootCategory> page should render 1`] = `
 <Provider
   store={
     Object {
@@ -397,7 +397,7 @@ exports[`<RootCategory> page Initial page should render 1`] = `
 </Provider>
 `;
 
-exports[`<RootCategory> page Initial page should render empty 1`] = `
+exports[`<RootCategory> page should render empty 1`] = `
 <Provider
   store={
     Object {

@@ -10,6 +10,16 @@ const mockedView = MockedView;
 const mockedStore = configureStore();
 jest.mock('Components/View', () => mockedView);
 let store;
+
+const results = [
+  [{
+    type: 'NAVIGATE',
+    action: 'PUSH',
+    location: '/category/6d656e',
+    state: { title: 'Men' },
+  }],
+];
+
 /**
  * Creates component
  * @param {boolean} state State that would be used for store.
@@ -21,27 +31,34 @@ const createComponent = (state) => {
   const RootCategory = require('./index').default;
   /* eslint-enable global-require */
   return mount(
-    <Provider store={store} >
-      <RootCategory />
-    </Provider>,
+    <Provider store={store} ><RootCategory /></Provider>,
     mockRenderOptions
   );
 };
 
 describe('<RootCategory> page', () => {
-  describe('Initial page', () => {
-    it('should render', () => {
-      const component = createComponent(categoryState);
-      expect(component).toMatchSnapshot();
-      expect(component.find('CategoryList').length).toEqual(1);
-      expect(component.find('List').length).toEqual(2);
-    });
+  beforeEach(() => {
+    jest.resetModules();
+  });
+  it('should render', () => {
+    const component = createComponent(categoryState);
+    expect(component).toMatchSnapshot();
+    expect(component.find('CategoryList').length).toEqual(1);
+    expect(component.find('ListItem').length).toEqual(2);
+  });
 
-    it('should render empty', () => {
-      const component = createComponent(initialCategoryState);
-      expect(component).toMatchSnapshot();
-      expect(component.find('CategoryList').length).toEqual(1);
-      expect(component.find('List').length).toEqual(0);
-    });
+  it('should render empty', () => {
+    const component = createComponent(initialCategoryState);
+    expect(component).toMatchSnapshot();
+    expect(component.find('CategoryList').length).toEqual(0);
+    expect(component.find('ListItem').length).toEqual(0);
+  });
+
+  it('should navigate to subcategory', () => {
+    const wrapper = createComponent(categoryState);
+
+    wrapper.find('CategoryList').find('Connect(Link)').at(0).simulate('click');
+    wrapper.update();
+    expect(store.getActions()).toEqual(results[0]);
   });
 });

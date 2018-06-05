@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import { LIST_VIEW } from 'Pages/Category/constants';
+import { LIST_VIEW } from 'Components/FilterBar/components/Content/components/ViewSwitch/constants';
 import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
