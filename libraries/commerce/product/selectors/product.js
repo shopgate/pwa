@@ -272,13 +272,14 @@ export const getProductImages = createSelector(
  * @return {Object|null}
  */
 export const getProductRating = createSelector(
-  getCurrentBaseProduct,
-  (product) => {
-    if (!product || !product.rating) {
+  getProducts,
+  (state, props) => props.productId,
+  (products, productId) => {
+    if (!productId || !products[productId] || !products[productId].productData) {
       return null;
     }
 
-    return product.rating;
+    return products[productId].productData.rating;
   }
 );
 
@@ -288,13 +289,14 @@ export const getProductRating = createSelector(
  * @return {Object|null}
  */
 export const getProductManufacturer = createSelector(
-  getCurrentProduct,
-  (product) => {
-    if (!product) {
+  getProducts,
+  (state, props) => props.productId,
+  (products, productId) => {
+    if (!productId || !products[productId] || !products[productId].productData) {
       return null;
     }
 
-    return product.manufacturer;
+    return products[productId].productData.manufacturer;
   }
 );
 
@@ -368,10 +370,11 @@ const getProductShippingState = state => state.product.shippingByProductId;
  * @return {Object|null}
  */
 export const getProductShipping = createSelector(
-  getCurrentProductId,
   getProductShippingState,
-  (productId, shipping) => {
+  (state, props) => props.productId,
+  (shipping, productId) => {
     const entry = shipping[productId];
+
     if (!entry || entry.isFetching || isUndefined(entry.shipping)) {
       return null;
     }
@@ -386,13 +389,18 @@ export const getProductShipping = createSelector(
  * @return {Object|null}
  */
 export const getProductAvailability = createSelector(
-  getCurrentProduct,
-  (product) => {
-    if (!product) {
+  getProducts,
+  (state, props) => props.productId,
+  (products, productId) => {
+    if (!productId) {
       return null;
     }
 
-    return product.availability;
+    if (!products[productId] || !products[productId].productData) {
+      return null;
+    }
+
+    return products[productId].productData.availability;
   }
 );
 
