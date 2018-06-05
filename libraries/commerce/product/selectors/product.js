@@ -9,7 +9,6 @@ import {
 } from '@shopgate/pwa-common/selectors/history';
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
-import { getCurrentCategoryId } from '../../category/selectors';
 import { filterProperties } from '../helpers';
 
 /**
@@ -210,18 +209,23 @@ export const getProductsResult = createSelector(
 );
 
 /**
- * Retrieves the current product name.
+ * Retrieves the product name for the given id.
  * @param {Object} state The current application state.
  * @return {string|null}
  */
 export const getProductName = createSelector(
-  getCurrentProduct,
-  (product) => {
-    if (!product) {
+  getProducts,
+  (state, props) => props.productId,
+  (products, productId) => {
+    if (!productId) {
       return null;
     }
 
-    return product.name;
+    if (!products[productId] || !products[productId].productData) {
+      return null;
+    }
+
+    return products[productId].productData.name;
   }
 );
 
@@ -453,25 +457,64 @@ export const getProductMetadata = createSelector(
 );
 
 /**
- * Indicates whether a product is a base product or not
  * @param {Object} state The current application state.
- * @param {string} productId A product id.
+ * @param {object} props The component props.
  * @return {boolean|null}
  */
 export const isBaseProduct = createSelector(
-  getProductById,
-  (product) => {
-    if (!product.productData || product.isFetching) {
+  getProducts,
+  (state, props) => props.id,
+  (products, productId) => {
+    if (!productId) {
       return null;
     }
 
-    const { productData } = product;
-    return !(
-      productData.baseProductId
-      || (
-        productData.flags
-        && productData.flags.hasVariants === false
-      )
-    );
+    if (!products[productId] || !products[productId].productData) {
+      return null;
+    }
+
+    return products[productId].productData.baseProductId === null;
+  }
+);
+
+/**
+ * @param {Object} state The current application state.
+ * @param {object} props The component props.
+ * @return {boolean|null}
+ */
+export const getBaseProductId = createSelector(
+  getProducts,
+  (state, props) => props.id,
+  (products, productId) => {
+    if (!productId) {
+      return null;
+    }
+
+    if (!products[productId] || !products[productId].productData) {
+      return null;
+    }
+
+    if (products[productId].productData.baseProductId) {
+      return products[productId].productData.baseProductId;
+    }
+
+    return productId;
+  }
+);
+
+/**
+ * @param {Object} state The current application state.
+ * @param {object} props The component props.
+ * @return {boolean|null}
+ */
+export const getVariantId = createSelector(
+  isBaseProduct,
+  (state, props) => props.id,
+  (isBase, productId) => {
+    if (isBase) {
+      return null;
+    }
+
+    return productId;
   }
 );
