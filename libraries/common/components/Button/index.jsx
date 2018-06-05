@@ -11,12 +11,14 @@ class Button extends Component {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     onClick: PropTypes.func,
+    testId: PropTypes.string,
   };
 
   static defaultProps = {
     className: '',
     disabled: false,
     onClick: null,
+    testId: 'Button',
   };
 
   /**
@@ -39,7 +41,7 @@ class Button extends Component {
    */
   render() {
     return (
-      <button data-test-id="Button" {...this.buttonProps}>
+      <button data-test-id={this.props.testId} {...this.buttonProps}>
         {this.props.children}
       </button>
     );
