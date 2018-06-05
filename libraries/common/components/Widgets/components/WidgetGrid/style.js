@@ -2,7 +2,8 @@ import { css } from 'glamor';
 
 export default css({
   position: 'relative',
-  ':empty': {
-    display: 'none',
-  },
+  display: 'grid',
+  gridTemplateColumns: 'repeat(12, 1fr)',
+  gridAutoRows: 'auto',
+  gridAutoFlow: 'row dense',
 }).toString();

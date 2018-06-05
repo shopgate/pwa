@@ -4,7 +4,7 @@ import WidgetGrid from './components/WidgetGrid';
 import shouldShowWidget from './helpers/shouldShowWidget';
 
 const WIDGET_GRID_TYPE = '@shopgate/commerce-widgets/widget-grid';
-const GRID_COLUMNS = 12; // One grid row has 12 columns.
+const GRID_COLUMNS = 12; // One grid row has 12 columns. // TODO is it deprecated since css grid?
 
 /**
  * Creates a grid wrapper for widget(s).
@@ -31,42 +31,41 @@ const createGridWrapper = (key, config, components) => (
  * @returns {Array} Array of JSX elements.
  */
 const createArrayOfElements = (widgets, components) => (
-  (widgets || []).map((widget, index) => {
-    if (!shouldShowWidget(widget.settings)) {
-      return null;
-    }
-    if (!components[widget.type] && widget.type !== WIDGET_GRID_TYPE) {
-      return null;
-    }
-
-    const key = `w${index}`;
-
-    if (widget.type === WIDGET_GRID_TYPE) {
-      // If it's a grid just create it and pass the child widgets.
-      return createGridWrapper(key, widget.settings.widgets, components);
-    } else if (widget.height) {
-      // If it has a definite height wrap the widget in a grid.
-      return createGridWrapper(
-        key,
-        [{
-          ...widget,
-          col: 0,
-          row: 0,
-          width: GRID_COLUMNS,
-        }],
-        components
-      );
-    }
-
-    // In all other cases just create and return the widget component.
-    return React.createElement(
-      components[widget.type],
-      {
-        ...widget,
-        key,
+  (widgets || [])
+    .filter(widget => shouldShowWidget(widget.settings))
+    .map((widget, index) => {
+      if (!components[widget.type] && widget.type !== WIDGET_GRID_TYPE) {
+        return null;
       }
-    );
-  })
+
+      const key = `w${index}`;
+
+      if (widget.type === WIDGET_GRID_TYPE) {
+        // If it's a grid just create it and pass the child widgets.
+        return createGridWrapper(key, widget.settings.widgets, components);
+      } else if (widget.height) {
+        // If it has a definite height wrap the widget in a grid.
+        return createGridWrapper(
+          key,
+          [{
+            ...widget,
+            col: 0,
+            row: 0,
+            width: GRID_COLUMNS,
+          }],
+          components
+        );
+      }
+
+      // In all other cases just create and return the widget component.
+      return React.createElement(
+        components[widget.type],
+        {
+          ...widget,
+          key,
+        }
+      );
+    })
 );
 /**
  * The Widgets component.

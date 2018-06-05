@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '../../../Grid';
 import styles from './style';
-
+import shouldShowWidget from '../../helpers/shouldShowWidget';
 /**
  * The widget component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Widget = (props) => {
+  if (!props.component) {
+    return null;
+  }
   const {
     col,
     row,
@@ -16,28 +19,21 @@ const Widget = (props) => {
     settings,
     width,
   } = props.config;
-  const { cellSize } = props;
 
-  if (!props.component) {
-    return null;
-  }
-
-  let className = '';
-  if (cellSize) {
-    className = [
-      styles.height(cellSize, height, width),
-      styles.width(width),
-      styles.top(cellSize, row, height),
-      styles.left(col),
-    ].join(' ');
-  }
+  const visible = shouldShowWidget(settings);
 
   return (
     <Grid.Item
-      className={className}
+      className={styles.widgetCell({
+        col,
+        row,
+        height,
+        width,
+        visible,
+      })}
       component="div"
     >
-      <div className={styles.content}>
+      <div >
         {React.createElement(props.component, {
           settings,
           ratio: [width, height],
@@ -49,12 +45,10 @@ const Widget = (props) => {
 
 Widget.propTypes = {
   config: PropTypes.shape().isRequired,
-  cellSize: PropTypes.number,
   component: PropTypes.func,
 };
 
 Widget.defaultProps = {
-  cellSize: null,
   component: null,
 };
 
