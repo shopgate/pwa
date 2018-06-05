@@ -1,7 +1,5 @@
-/* eslint no-restricted-globals: ["warn", "history"] */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ParsedLink from '../Router/helpers/parsed-link';
 import parseHTML from '../../helpers/html/parseHTML';
 
 /**
@@ -46,19 +44,25 @@ class HtmlSanitizer extends Component {
   }
 
   /**
+   * @param {Object} element The DOM element.
+   */
+  setRef = (element) => {
+    this.htmlContainer = element;
+  }
+
+  /**
    * If the user tapped a link element, prevent the default behaviour.
    * and handle them via ParsedLink.
    * @param {Object} event The touchstart event.
    */
   handleTap = (event) => {
+    event.preventDefault();
+
     const aTag = event.target.closest('a');
 
     if (aTag && aTag.attributes.href) {
       const href = aTag.attributes.href.value;
-      const link = new ParsedLink(href);
-
-      event.preventDefault();
-      link.open(history);
+      this.props.settings.handleClick(href);
     }
   };
 
@@ -76,10 +80,7 @@ class HtmlSanitizer extends Component {
     };
 
     return (
-      <div
-        dangerouslySetInnerHTML={innerHTML}
-        ref={(domElm) => { this.htmlContainer = domElm; }}
-      />
+      <div dangerouslySetInnerHTML={innerHTML} ref={this.setRef} />
     );
   }
 }
