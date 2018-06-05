@@ -1,4 +1,89 @@
-export const basicProductState = {
+const mockedProducts = {
+  products: [
+    {
+      id: 'SG117',
+      name: 'no_description',
+      active: true,
+      description: '',
+      customData: null,
+      manufacturer: '',
+      identifiers: {
+        sku: 'pub_SG117',
+      },
+      tags: [],
+      ageRating: 0,
+      baseProductId: null,
+      stock: {
+        ignoreQuantity: true,
+        quantity: 0,
+        info: '',
+        orderable: true,
+        minOrderQuantity: 0,
+        maxOrderQuantity: 0,
+      },
+      rating: {
+        count: 0,
+        average: 0,
+        reviewCount: 0,
+      },
+      flags: {
+        hasChildren: true,
+        hasVariants: false,
+        hasOptions: false,
+      },
+      internalLog: 'd41d8cd98f00b204e9800998ecf8427e',
+      availability: {
+        text: 'Verfügbar',
+        state: 'ok',
+      },
+      featuredImageUrl: null,
+      type: 'simple',
+      price: null,
+    },
+    {
+      id: 'SG118',
+      name: 'no_description',
+      active: true,
+      description: '',
+      customData: null,
+      manufacturer: '',
+      baseProductId: 'SG117',
+      identifiers: {
+        sku: 'pub_SG117',
+      },
+      tags: [],
+      ageRating: 0,
+      stock: {
+        ignoreQuantity: true,
+        quantity: 0,
+        info: '',
+        orderable: true,
+        minOrderQuantity: 0,
+        maxOrderQuantity: 0,
+      },
+      rating: {
+        count: 0,
+        average: 0,
+        reviewCount: 0,
+      },
+      flags: {
+        hasChildren: false,
+        hasVariants: false,
+        hasOptions: false,
+      },
+      internalLog: 'd41d8cd98f00b204e9800998ecf8427e',
+      availability: {
+        text: 'Verfügbar',
+        state: 'ok',
+      },
+      featuredImageUrl: null,
+      type: 'simple',
+      price: null,
+    },
+  ],
+};
+
+const basicProductState = {
   product: {
     productsById: {
       913: {
@@ -66,7 +151,7 @@ export const basicProductState = {
   },
 };
 
-export const productWithOneOption = {
+const productWithOneOption = {
   product: {
     productsById: {
       1097: {
@@ -163,7 +248,7 @@ export const productWithOneOption = {
   },
 };
 
-export const productWithSelectedOptions = {
+const productWithSelectedOptions = {
   ...productWithOneOption,
   product: {
     ...productWithOneOption.product,
@@ -176,7 +261,7 @@ export const productWithSelectedOptions = {
   },
 };
 
-export const productWithVariants = {
+const productWithVariants = {
   product: {
     productsById: {
       dif01: {
@@ -284,7 +369,7 @@ export const productWithVariants = {
 
 };
 
-export const productWithSelectedVariant = {
+const productWithSelectedVariant = {
   ...productWithVariants,
   product: {
     ...productWithVariants.product,
@@ -351,7 +436,7 @@ export const productWithSelectedVariant = {
 
 };
 
-export const productWithVariantsAndOptions = {
+const productWithVariantsAndOptions = {
   product: {
     productsById: {
       SG74: {
@@ -855,4 +940,14 @@ export const productWithVariantsAndOptions = {
       options: {},
     },
   },
+};
+
+export {
+  mockedProducts,
+  basicProductState,
+  productWithOneOption,
+  productWithSelectedOptions,
+  productWithVariants,
+  productWithSelectedVariant,
+  productWithVariantsAndOptions,
 };

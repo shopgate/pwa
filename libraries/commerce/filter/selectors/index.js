@@ -34,7 +34,7 @@ export const getStoredFilterHash = state => state.filter.activeHash;
  * @param {Object} state The application state.
  * @returns {Array}
  */
-export const getActiveFiltersStack = state => getFilters(state).activeFilters;
+export const getActiveFiltersStack = state => state.filter.activeFilters || [];
 
 /**
  * Gets the currently active filters.
