@@ -19,6 +19,7 @@
     "development": {
       "plugins": [
         "react-hot-loader/babel",
+        "istanbul",
         [
           "react-transform",
           {
