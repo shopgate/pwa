@@ -25,7 +25,7 @@ const content = (
   isFullscreen = false,
   keyboardHeight = 0
 ) => {
-  const navHeight = hasNavigator ? variables.navigator.height : 0;
+  const navHeight = hasNavigator ? variables.navbar.height : 0;
   const navAndStatusBarHeight = `calc(${navHeight}px + var(--safe-area-inset-top))`;
 
   return css({
