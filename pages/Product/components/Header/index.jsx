@@ -17,14 +17,7 @@ import styles from './style';
 import ProductContext from '../../context';
 
 /**
- * The product header component that displays textual information
- * - manufacturer
- * - shipping
- * - discount
- * - price
- * - tier prices
- * - price info
- * If not available or animating it will display placeholders
+ * The ProductHeader component.
  * @returns {JSX}
  */
 const ProductHeader = () => (
@@ -36,14 +29,14 @@ const ProductHeader = () => (
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons />
+            <CTAButtons productId={id} />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
           {/* RATING */}
           <Portal name={portals.PRODUCT_RATING_BEFORE} />
           <Portal name={portals.PRODUCT_RATING}>
-            <Rating />
+            <Rating productId={productId} />
           </Portal>
           <Portal name={portals.PRODUCT_RATING_AFTER} />
 
@@ -61,32 +54,32 @@ const ProductHeader = () => (
               <Grid.Item component="div" grow={1}>
                 <Portal name={portals.PRODUCT_INFO_ROW1}>
 
-                  {/* MANUFACTURER
+                  {/* MANUFACTURER */}
                   <div className={styles.productInfo}>
                     <Portal name={portals.PRODUCT_MANUFACTURER_BEFORE} />
                     <Portal name={portals.PRODUCT_MANUFACTURER}>
-                      <Manufacturer />
+                      <Manufacturer productId={productId} />
                     </Portal>
                     <Portal name={portals.PRODUCT_MANUFACTURER_AFTER} />
-                  </div> */}
+                  </div>
 
-                  {/* SHIPPING
+                  {/* SHIPPING */}
                   <div className={styles.productInfo}>
                     <Portal name={portals.PRODUCT_SHIPPING_BEFORE} />
                     <Portal name={portals.PRODUCT_SHIPPING}>
-                      <Shipping />
+                      <Shipping productId={id} />
                     </Portal>
                     <Portal name={portals.PRODUCT_SHIPPING_AFTER} />
-                  </div> */}
+                  </div>
 
-                  {/* AVAILABILITY
+                  {/* AVAILABILITY */}
                   <div className={styles.productInfo}>
                     <Portal name={portals.PRODUCT_AVAILABILITY_BEFORE} />
                     <Portal name={portals.PRODUCT_AVAILABILITY}>
-                      <Availability />
+                      <Availability productId={id} />
                     </Portal>
                     <Portal name={portals.PRODUCT_AVAILABILITY_AFTER} />
-                  </div> */}
+                  </div>
 
                 </Portal>
               </Grid.Item>
@@ -143,7 +136,7 @@ const ProductHeader = () => (
           </Grid>
           <Portal name={portals.PRODUCT_INFO_AFTER} />
         </div>
-        )
+        );
       }
     }
   </ProductContext.Consumer>
