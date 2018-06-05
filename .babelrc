@@ -41,7 +41,8 @@
               }
             ]
           }
-        ]
+        ],
+        "istanbul"
       ]
     },
     "production": {
