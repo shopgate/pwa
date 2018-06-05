@@ -17,117 +17,111 @@ import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import styles from './style';
 import connect from './connector';
 
-const props = {};
-
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = ({ product, display, isFavorite }) => {
-  props.productId = product.id;
+const Item = ({ product, display, isFavorite }) => (
+  <Link
+    tagName="a"
+    href={`${ITEM_PATH}/${bin2hex(product.id)}`}
+    className={styles.container}
+    itemProp="item"
+    itemScope
+    itemType="http://schema.org/Product"
+    state={{ title: product.name }}
+  >
 
-  return (
-    <Link
-      tagName="a"
-      href={`${ITEM_PATH}/${bin2hex(product.id)}`}
-      className={styles.container}
-      itemProp="item"
-      itemScope
-      itemType="http://schema.org/Product"
-      state={{ title: product.name }}
-    >
+    {/* IMAGE */}
+    <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
+    <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
+      <ProductImage alt={product.name} itemProp="image" src={product.featuredImageUrl} />
+    </Portal>
+    <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
 
-      {/* IMAGE */}
-      <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={props} />
-      <Portal name={portals.PRODUCT_ITEM_IMAGE} props={props}>
-        <ProductImage alt={product.name} itemProp="image" src={product.featuredImageUrl} />
-      </Portal>
-      <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={props} />
+    {/* DISCOUNT */}
+    {!!product.price.discount && (
+      <div className={styles.badgeWrapper}>
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
+          <DiscountBadge text={`-${product.price.discount}%`} />
+        </Portal>
+        <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
+      </div>
+    )}
 
-      {/* DISCOUNT */}
-      {!!product.price.discount && (
-        <div className={styles.badgeWrapper}>
-          <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
-          <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={props}>
-            <DiscountBadge text={`-${product.price.discount}%`} />
-          </Portal>
-          <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={props} />
-        </div>
-      )}
+    {/* FAVORITES BUTTONS */}
+    <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={{ productId: product.id }} />
+    <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON} props={{ productId: product.id }}>
+      <div className={styles.favorites} data-test-id="favorites">
+        <FavoritesButton active={isFavorite} productId={product.id} noShadow removeWithRelatives />
+      </div>
+    </Portal>
+    <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_AFTER} props={{ productId: product.id }} />
 
-      {/* FAVORITES BUTTONS */}
-      <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={props} />
-      <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON} props={props}>
-        <div className={styles.favorites} data-test-id="favorites">
-          <FavoritesButton active={isFavorite} productId={product.id} noShadow removeWithRelatives />
-        </div>
-      </Portal>
-      <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_AFTER} props={props} />
+    {(!display || display.name || display.price || display.reviews) && (
+      <div className={styles.details}>
 
-      {(!display || display.name || display.price || display.reviews) && (
-        <div className={styles.details}>
+        {/* NAME */}
+        {(!display || display.name) && (
+          <Fragment>
+            <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
+              <div className={styles.title} itemProp="name" data-test-id={`Productname: ${product.name}`}>
+                <Ellipsis>{product.name}</Ellipsis>
+              </div>
+            </Portal>
+            <Portal name={portals.PRODUCT_ITEM_NAME_AFTER} props={{ productId: product.id }} />
+          </Fragment>
+        )}
 
-          {/* NAME */}
-          {(!display || display.name) && (
-            <Fragment>
-              <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={props} />
-              <Portal name={portals.PRODUCT_ITEM_NAME} props={props}>
-                <div className={styles.title} itemProp="name" data-test-id={`Productname: ${product.name}`}>
-                  <Ellipsis>{product.name}</Ellipsis>
-                </div>
-              </Portal>
-              <Portal name={portals.PRODUCT_ITEM_NAME_AFTER} props={props} />
-            </Fragment>
-          )}
-
-          {/* PRICE - STRIKE PRICE - PRICE INFO */}
-          {(!display || display.price) && (
-            <Fragment>
-              <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={props} />
-              <Portal name={portals.PRODUCT_ITEM_PRICE} props={props}>
-                <Grid className={styles.priceWrapper} wrap>
-                  <Grid.Item grow={1}>
-                    <Price
-                      unitPrice={product.price.unitPrice}
-                      unitPriceMin={product.price.unitPriceMin}
-                      discounted={!!product.price.discount}
+        {/* PRICE - STRIKE PRICE - PRICE INFO */}
+        {(!display || display.price) && (
+          <Fragment>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+              <Grid className={styles.priceWrapper} wrap>
+                <Grid.Item grow={1}>
+                  <Price
+                    unitPrice={product.price.unitPrice}
+                    unitPriceMin={product.price.unitPriceMin}
+                    discounted={!!product.price.discount}
+                    currency={product.price.currency}
+                  />
+                </Grid.Item>
+                {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
+                  <Grid.Item>
+                    <PriceStriked
+                      value={product.price.msrp}
                       currency={product.price.currency}
                     />
                   </Grid.Item>
-                  {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
-                    <Grid.Item>
-                      <PriceStriked
-                        value={product.price.msrp}
-                        currency={product.price.currency}
-                      />
-                    </Grid.Item>
-                  )}
-                  {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-                    <Grid.Item>
-                      <PriceStriked
-                        value={product.price.unitPriceStriked}
-                        currency={product.price.currency}
-                      />
-                    </Grid.Item>
-                  )}
-                </Grid>
-                <Grid>
-                  {product.price.info && (
-                    <Grid.Item>
-                      <PriceInfo className={styles.basicPrice} text={product.price.info} />
-                    </Grid.Item>
-                  )}
-                </Grid>
-              </Portal>
-              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={props} />
-            </Fragment>
-          )}
-        </div>
-      )}
-    </Link>
-  );
-};
+                )}
+                {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
+                  <Grid.Item>
+                    <PriceStriked
+                      value={product.price.unitPriceStriked}
+                      currency={product.price.currency}
+                    />
+                  </Grid.Item>
+                )}
+              </Grid>
+              <Grid>
+                {product.price.info && (
+                  <Grid.Item>
+                    <PriceInfo className={styles.basicPrice} text={product.price.info} />
+                  </Grid.Item>
+                )}
+              </Grid>
+            </Portal>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
+          </Fragment>
+        )}
+      </div>
+    )}
+  </Link>
+);
 
 Item.propTypes = {
   isFavorite: PropTypes.bool.isRequired,

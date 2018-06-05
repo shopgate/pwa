@@ -4,7 +4,7 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 
 export const productWillEnter$ = routeWillEnter$
   .filter(({ action }) => (
-    action.route.pathname.startsWith(ITEM_PATH) &&
+    action.route.pattern === `${ITEM_PATH}/:productId` &&
     !action.route.pathname.includes('/reviews') &&
     !action.route.pathname.includes('/write_review')
   ));
