@@ -84,5 +84,17 @@ describe('<Cart> page', () => {
       expect(component).toMatchSnapshot();
       expect(component.find('CouponField').length).toEqual(1);
     });
+
+    it('should toggle payment bar coupon field focus', () => {
+      const component = createComponent(couponState);
+      expect(component.find('CouponField').instance().state.isFocused).toBeFalsy();
+      expect(component.find('PaymentBar').props().isVisible).toEqual(true);
+
+      component.find('CouponField').find('input').simulate('focus');
+      component.update();
+
+      expect(component.find('CouponField').instance().state.isFocused).toEqual(true);
+      expect(component.find('PaymentBar').props().isVisible).toEqual(false);
+    });
   });
 });
