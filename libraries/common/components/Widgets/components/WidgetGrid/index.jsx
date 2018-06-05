@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import sortBy from 'lodash/sortBy';
 import Widget from '../Widget';
 import styles from './style';
-
+import shouldShowWidget from '../../helpers/shouldShowWidget';
 /**
  * The widget grid widget component.
  * @param {Object} props The component properties.
@@ -15,7 +15,7 @@ const WidgetGrid = (props) => {
     return null;
   }
   // Sort the widgets by row. This has to happen to take care of the z-index flow.
-  const widgets = sortBy(props.config, ['row']);
+  const widgets = sortBy(props.config, ['row']).filter(w => shouldShowWidget(w.settings));
 
   // The height of the widget area.
   return (

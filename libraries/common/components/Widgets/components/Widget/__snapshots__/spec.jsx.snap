@@ -2,7 +2,6 @@
 
 exports[`<Widget /> should not render when the \`type\` prop is invalid 1`] = `
 <Widget
-  cellSize={null}
   component={null}
   config={
     Object {
@@ -18,7 +17,6 @@ exports[`<Widget /> should not render when the \`type\` prop is invalid 1`] = `
 
 exports[`<Widget /> should render an image widget 1`] = `
 <Widget
-  cellSize={null}
   component={[Function]}
   config={
     Object {
@@ -31,17 +29,15 @@ exports[`<Widget /> should render an image widget 1`] = `
   }
 >
   <GridItem
-    className=""
+    className="css-11tky1j"
     component="div"
     grow={0}
     shrink={1}
   >
     <div
-      className=""
+      className="css-11tky1j"
     >
-      <div
-        className="css-4hpmhj"
-      >
+      <div>
         <MyComponent
           ratio={
             Array [
@@ -73,17 +69,15 @@ exports[`<Widget /> should render an image widget with offset 1`] = `
   }
 >
   <GridItem
-    className="css-f819gy css-84qd44 css-1b0vnwm css-skhncj"
+    className="css-1fy9kc8"
     component="div"
     grow={0}
     shrink={1}
   >
     <div
-      className="css-f819gy css-84qd44 css-1b0vnwm css-skhncj"
+      className="css-1fy9kc8"
     >
-      <div
-        className="css-4hpmhj"
-      >
+      <div>
         <MyComponent
           ratio={
             Array [

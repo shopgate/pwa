@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '../../../Grid';
 import styles from './style';
-import shouldShowWidget from '../../helpers/shouldShowWidget';
 /**
  * The widget component.
  * @param {Object} props The component props.
@@ -20,7 +19,6 @@ const Widget = (props) => {
     width,
   } = props.config;
 
-  const visible = shouldShowWidget(settings);
 
   return (
     <Grid.Item
@@ -29,7 +27,6 @@ const Widget = (props) => {
         row,
         height,
         width,
-        visible,
       })}
       component="div"
     >

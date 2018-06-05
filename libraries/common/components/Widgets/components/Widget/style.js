@@ -14,18 +14,13 @@ function widgetCell({
   row,
   width,
   height,
-  visible,
 }) {
-  const props = {
+  return css({
     gridColumnStart: col + 1,
     gridColumnEnd: col + width + 1,
     gridRowStart: row + 1,
     gridRowEnd: row + height + 1,
-  };
-  if (!visible) {
-    props.display = 'none';
-  }
-  return css(props).toString();
+  }).toString();
 }
 
 export default {

@@ -216,6 +216,7 @@ describe('<Widgets />', () => {
               col: 0,
               row: 0,
               height: 2,
+              width: 2,
               settings: {
                 id: 835351,
                 image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',
@@ -228,6 +229,7 @@ describe('<Widgets />', () => {
               col: 2,
               row: 0,
               height: 2,
+              width: 2,
               settings: {
                 id: 835352,
                 image: 'https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg',

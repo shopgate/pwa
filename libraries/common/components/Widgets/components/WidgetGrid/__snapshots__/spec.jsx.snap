@@ -35,15 +35,9 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
   }
 >
   <div
-    className="css-1oo02jj"
-    style={
-      Object {
-        "height": "255px",
-      }
-    }
+    className="css-qxybbl"
   >
     <Widget
-      cellSize={85}
       component={[Function]}
       config={
         Object {
@@ -61,17 +55,15 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
       key="w0"
     >
       <GridItem
-        className="css-1gywj2c css-63oe3q  "
+        className="css-1v59zcp"
         component="div"
         grow={0}
         shrink={1}
       >
         <div
-          className="css-1gywj2c css-63oe3q  "
+          className="css-1v59zcp"
         >
-          <div
-            className="css-4hpmhj"
-          >
+          <div>
             <Image
               ratio={
                 Array [

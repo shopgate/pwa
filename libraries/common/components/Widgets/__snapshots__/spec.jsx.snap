@@ -106,15 +106,9 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
       key="w0"
     >
       <div
-        className="css-1oo02jj"
-        style={
-          Object {
-            "height": "425px",
-          }
-        }
+        className="css-qxybbl"
       >
         <Widget
-          cellSize={85}
           component={[Function]}
           config={
             Object {
@@ -134,17 +128,15 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
           key="w0"
         >
           <GridItem
-            className="css-147ej5f css-63oe3q  "
+            className="css-14cdwhd"
             component="div"
             grow={0}
             shrink={1}
           >
             <div
-              className="css-147ej5f css-63oe3q  "
+              className="css-14cdwhd"
             >
-              <div
-                className="css-4hpmhj"
-              >
+              <div>
                 <Image
                   ratio={
                     Array [
