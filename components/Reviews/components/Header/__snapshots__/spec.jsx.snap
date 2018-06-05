@@ -279,12 +279,13 @@ exports[`<Header /> should render empty 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId={null}
                   type="secondary"
                   wrapContent={true}
                 >
                   <div
                     className="css-1yv2jt6"
+                    data-test-id={null}
                   >
                     <RippleButton
                       className=""
@@ -778,12 +779,13 @@ exports[`<Header /> should render rating summary 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId={null}
                   type="secondary"
                   wrapContent={true}
                 >
                   <div
                     className="css-1yv2jt6"
+                    data-test-id={null}
                   >
                     <RippleButton
                       className=""
