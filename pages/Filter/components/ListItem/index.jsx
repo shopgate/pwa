@@ -16,7 +16,7 @@ const ListItem = ({ filter }) => {
   const isActive = (filter.active && filter.active.length > 0);
 
   return (
-    <div className={styles.item}>
+    <div className={styles.item} data-test-id="filterListItem">
       <Link href={filter.url}>
         <Grid>
           <Grid.Item
