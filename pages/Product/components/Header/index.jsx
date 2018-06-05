@@ -14,6 +14,7 @@ import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
 import Tiers from './components/Tiers';
 import styles from './style';
+import ProductContext from '../../context';
 
 /**
  * The product header component that displays textual information
@@ -27,117 +28,125 @@ import styles from './style';
  * @returns {JSX}
  */
 const ProductHeader = () => (
-  <div className={styles.content}>
-    {/* CTAs */}
-    <Portal name={portals.PRODUCT_CTAS_BEFORE} />
-    <Portal name={portals.PRODUCT_CTAS}>
-      <CTAButtons />
-    </Portal>
-    <Portal name={portals.PRODUCT_CTAS_AFTER} />
-
-    {/* RATING */}
-    <Portal name={portals.PRODUCT_RATING_BEFORE} />
-    <Portal name={portals.PRODUCT_RATING}>
-      <Rating />
-    </Portal>
-    <Portal name={portals.PRODUCT_RATING_AFTER} />
-
-    {/* NAME */}
-    <Portal name={portals.PRODUCT_NAME_BEFORE} />
-    <Portal name={portals.PRODUCT_NAME}>
-      <Name />
-    </Portal>
-    <Portal name={portals.PRODUCT_NAME_AFTER} />
-
-    {/* INFO */}
-    <Portal name={portals.PRODUCT_INFO_BEFORE} />
-    <Grid component="div">
-      <Portal name={portals.PRODUCT_INFO}>
-        <Grid.Item component="div" grow={1}>
-          <Portal name={portals.PRODUCT_INFO_ROW1}>
-
-            {/* MANUFACTURER */}
-            <div className={styles.productInfo}>
-              <Portal name={portals.PRODUCT_MANUFACTURER_BEFORE} />
-              <Portal name={portals.PRODUCT_MANUFACTURER}>
-                <Manufacturer />
-              </Portal>
-              <Portal name={portals.PRODUCT_MANUFACTURER_AFTER} />
-            </div>
-
-            {/* SHIPPING */}
-            <div className={styles.productInfo}>
-              <Portal name={portals.PRODUCT_SHIPPING_BEFORE} />
-              <Portal name={portals.PRODUCT_SHIPPING}>
-                <Shipping />
-              </Portal>
-              <Portal name={portals.PRODUCT_SHIPPING_AFTER} />
-            </div>
-
-            {/* AVAILABILITY */}
-            <div className={styles.productInfo}>
-              <Portal name={portals.PRODUCT_AVAILABILITY_BEFORE} />
-              <Portal name={portals.PRODUCT_AVAILABILITY}>
-                <Availability />
-              </Portal>
-              <Portal name={portals.PRODUCT_AVAILABILITY_AFTER} />
-            </div>
-
+  <ProductContext.Consumer>
+    {({ productId, variantId }) => {
+      const id = variantId || productId;
+      return (
+        <div className={styles.content}>
+          {/* CTAs */}
+          <Portal name={portals.PRODUCT_CTAS_BEFORE} />
+          <Portal name={portals.PRODUCT_CTAS}>
+            <CTAButtons />
           </Portal>
-        </Grid.Item>
-        <Grid.Item component="div" className={styles.priceContainer}>
-          <Portal name={portals.PRODUCT_INFO_ROW2}>
+          <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
-            {/* PRICE STRIKED */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_PRICE_STRIKED_BEFORE} />
-              <Portal name={portals.PRODUCT_PRICE_STRIKED}>
-                <PriceStriked />
-              </Portal>
-              <Portal name={portals.PRODUCT_PRICE_STRIKED_AFTER} />
-            </div>
-
-            {/* PRICE */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_PRICE_BEFORE} />
-              <Portal name={portals.PRODUCT_PRICE}>
-                <Price />
-              </Portal>
-              <Portal name={portals.PRODUCT_PRICE_AFTER} />
-            </div>
-
-            {/* PRICE INFO */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_PRICE_INFO_BEFORE} />
-              <Portal name={portals.PRODUCT_PRICE_INFO}>
-                <PriceInfo />
-              </Portal>
-              <Portal name={portals.PRODUCT_PRICE_INFO_AFTER} />
-            </div>
-
-            {/* TIER PRICES */}
-            <div className={styles.priceInfo}>
-              <Portal name={portals.PRODUCT_TIERS_BEFORE} />
-              <Portal name={portals.PRODUCT_TIERS}>
-                <Tiers />
-              </Portal>
-              <Portal name={portals.PRODUCT_TIERS_AFTER} />
-            </div>
-
+          {/* RATING */}
+          <Portal name={portals.PRODUCT_RATING_BEFORE} />
+          <Portal name={portals.PRODUCT_RATING}>
+            <Rating />
           </Portal>
-        </Grid.Item>
-        {showTaxDisclaimer && (
-          <Grid.Item
-            className={styles.disclaimerSpacer}
-            component="div"
-            grow={0}
-            shrink={0}
-          />
-        )}
-      </Portal>
-    </Grid>
-    <Portal name={portals.PRODUCT_INFO_AFTER} />
-  </div>
+          <Portal name={portals.PRODUCT_RATING_AFTER} />
+
+          {/* NAME */}
+          <Portal name={portals.PRODUCT_NAME_BEFORE} />
+          <Portal name={portals.PRODUCT_NAME}>
+            <Name productId={id} />
+          </Portal>
+          <Portal name={portals.PRODUCT_NAME_AFTER} />
+
+          {/* INFO */}
+          <Portal name={portals.PRODUCT_INFO_BEFORE} />
+          <Grid component="div">
+            <Portal name={portals.PRODUCT_INFO}>
+              <Grid.Item component="div" grow={1}>
+                <Portal name={portals.PRODUCT_INFO_ROW1}>
+
+                  {/* MANUFACTURER
+                  <div className={styles.productInfo}>
+                    <Portal name={portals.PRODUCT_MANUFACTURER_BEFORE} />
+                    <Portal name={portals.PRODUCT_MANUFACTURER}>
+                      <Manufacturer />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_MANUFACTURER_AFTER} />
+                  </div> */}
+
+                  {/* SHIPPING
+                  <div className={styles.productInfo}>
+                    <Portal name={portals.PRODUCT_SHIPPING_BEFORE} />
+                    <Portal name={portals.PRODUCT_SHIPPING}>
+                      <Shipping />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_SHIPPING_AFTER} />
+                  </div> */}
+
+                  {/* AVAILABILITY
+                  <div className={styles.productInfo}>
+                    <Portal name={portals.PRODUCT_AVAILABILITY_BEFORE} />
+                    <Portal name={portals.PRODUCT_AVAILABILITY}>
+                      <Availability />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_AVAILABILITY_AFTER} />
+                  </div> */}
+
+                </Portal>
+              </Grid.Item>
+              <Grid.Item component="div" className={styles.priceContainer}>
+                <Portal name={portals.PRODUCT_INFO_ROW2}>
+
+                  {/* PRICE STRIKED
+                  <div className={styles.priceInfo}>
+                    <Portal name={portals.PRODUCT_PRICE_STRIKED_BEFORE} />
+                    <Portal name={portals.PRODUCT_PRICE_STRIKED}>
+                      <PriceStriked />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_PRICE_STRIKED_AFTER} />
+                  </div> */}
+
+                  {/* PRICE
+                  <div className={styles.priceInfo}>
+                    <Portal name={portals.PRODUCT_PRICE_BEFORE} />
+                    <Portal name={portals.PRODUCT_PRICE}>
+                      <Price />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_PRICE_AFTER} />
+                  </div> */}
+
+                  {/* PRICE INFO
+                  <div className={styles.priceInfo}>
+                    <Portal name={portals.PRODUCT_PRICE_INFO_BEFORE} />
+                    <Portal name={portals.PRODUCT_PRICE_INFO}>
+                      <PriceInfo />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_PRICE_INFO_AFTER} />
+                  </div> */}
+
+                  {/* TIER PRICES
+                  <div className={styles.priceInfo}>
+                    <Portal name={portals.PRODUCT_TIERS_BEFORE} />
+                    <Portal name={portals.PRODUCT_TIERS}>
+                      <Tiers />
+                    </Portal>
+                    <Portal name={portals.PRODUCT_TIERS_AFTER} />
+                  </div> */}
+
+                </Portal>
+              </Grid.Item>
+              {showTaxDisclaimer && (
+                <Grid.Item
+                  className={styles.disclaimerSpacer}
+                  component="div"
+                  grow={0}
+                  shrink={0}
+                />
+              )}
+            </Portal>
+          </Grid>
+          <Portal name={portals.PRODUCT_INFO_AFTER} />
+        </div>
+        )
+      }
+    }
+  </ProductContext.Consumer>
 );
 
 export default ProductHeader;
