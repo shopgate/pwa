@@ -14,12 +14,12 @@ import connect from './connector';
  */
 const CTAButtons = props => (
   <div className={styles.buttons}>
-    <FavoritesButton
+    {/*<FavoritesButton
       active={props.isFavorite}
       productId={props.productId}
       className={styles.favButton}
       rippleClassName={styles.ripple}
-    />
+    />*/}
     <AddToCartButton
       isLoading={props.isLoading}
       isOrderable={props.isOrderable}
@@ -33,12 +33,12 @@ const CTAButtons = props => (
 );
 
 CTAButtons.propTypes = {
-  isFavorite: PropTypes.bool.isRequired,
+  // isFavorite: PropTypes.bool.isRequired,
   handleAddToCart: PropTypes.func,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   isOrderable: PropTypes.bool,
-  productId: PropTypes.string,
+  // productId: PropTypes.string,
 };
 
 CTAButtons.defaultProps = {
@@ -46,7 +46,7 @@ CTAButtons.defaultProps = {
   isLoading: null,
   isOrderable: null,
   isDisabled: false,
-  productId: null,
+  // productId: null,
 };
 
 export default connect(CTAButtons);

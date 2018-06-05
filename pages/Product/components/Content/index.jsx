@@ -38,8 +38,8 @@ class ProductContent extends Component {
     super(props);
 
     this.state = {
-      productId: null,
-      variantId: null,
+      productId: props.isBaseProduct === true ? props.id : null,
+      variantId: props.isBaseProduct === false ? props.id : null,
     };
   }
 
@@ -66,16 +66,6 @@ class ProductContent extends Component {
       || this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
     );
-  }
-
-  /**
-   * Sets the variant ID.
-   * @param {string} variantId The selected variant ID.
-   */
-  handleSetVariantId = (variantId) => {
-    if (variantId !== this.state.variantId) {
-      this.setState({ variantId });
-    }
   }
 
   /**
