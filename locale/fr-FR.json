@@ -110,6 +110,7 @@
     "forgot_password_popup": "Veuillez utiliser le site sur ordinateur pour réinitialiser votre mot de passe.",
     "button": "Se connecter",
     "no_account": "Vous n'êtes pas inscrit?",
+    "signup": "S'enregistrer",
     "register": "Créer un compte ici!",
     "logout_message": "Vous avez été déconnecté",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
