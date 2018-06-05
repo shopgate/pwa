@@ -17,6 +17,13 @@ import smoothscrollPolyfill from './helpers/scrollPolyfill';
 injectTapEventPlugin();
 smoothscrollPolyfill();
 
+// If (process.env.NODE_ENV !== 'production') {
+//   Const { whyDidYouUpdate } = require('why-did-you-update');
+//   WhyDidYouUpdate(React, {
+
+//   });
+// }
+
 /**
  * The application component.
  * It sets up the store and the react router. The router's children (routes) come from
