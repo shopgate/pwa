@@ -8,7 +8,7 @@ import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portal
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
 // Import Options from './components/Options';
-// Import Description from './components/Description';
+import Description from '../Description';
 // Import Properties from './components/Properties';
 import connect from './connector';
 import ProductContext from '../../context';
@@ -82,14 +82,12 @@ class ProductContent extends Component {
    * @return {JSX}
    */
   render() {
-    const { productId, variantId } = this.state;
-
-    if (!productId && !variantId) {
+    if (!this.state.productId && !this.state.variantId) {
       return null;
     }
 
     return (
-      <ProductContext.Provider value={{ productId, variantId }}>
+      <ProductContext.Provider value={this.state}>
         <Fragment>
           {/* IMAGE */}
           {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
@@ -120,11 +118,11 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
 
           {/* DESCRIPTION */}
-          {/* <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
+          <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
           <Portal name={portals.PRODUCT_DESCRIPTION}>
-            <Description />
+            <Description productId={this.props.id} />
           </Portal>
-          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} /> */}
+          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
           {/* PROPERTIES */}
           {/* <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
