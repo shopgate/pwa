@@ -61,11 +61,11 @@ class ProductContent extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    return true;
-    if (this.props.id !== nextProps.id) return true;
-    if (this.state.productId !== nextState.productId) return true;
-    if (this.state.variantId !== nextState.variantId) return true;
-    return false;
+    return (
+      this.props.id !== nextProps.id
+      || this.state.productId !== nextState.productId
+      || this.state.variantId !== nextState.variantId
+    );
   }
 
   /**
