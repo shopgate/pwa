@@ -10,7 +10,7 @@ const header = css({
   top: 0,
   width: '100%',
   background: colors.light,
-  zIndex: 2,
+  zIndex: 4,
 }).toString();
 
 const grid = css({

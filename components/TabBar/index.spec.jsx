@@ -59,37 +59,28 @@ const createComponent = (mockedState) => {
   return mount(<Provider store={store}><TabBarConnected /></Provider>);
 };
 
-/**
- * Portal mock
- * @param {bool} isOpened -
- * @param {bool} children -
- * @return {null}
- */
-const mockedPortal = ({ isOpened, children }) => (
-  isOpened ? children : null
-);
-
 const mockOpen = jest.fn();
 
-jest.mock('@shopgate/pwa-common/components/Portal', () => mockedPortal);
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasFavorites() { return true; },
+  hasFavorites: true,
   themeConfig: mockedConfig,
 }));
+
 jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
   class {
     open = mockOpen;
   }));
 
-describe.skip('<TabBar />', () => {
+describe('<TabBar />', () => {
   it('should render when visible', () => {
-    const wrapper = createComponent(mockedStateDefault);
+    const wrapper = createComponent(mockedStateDefault, true, true);
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TabBarAction').length).toBe(Object.keys(allTabs).length);
   });
 
   it('should not render when invisible', () => {
-    const invisibleState = mockedStateRoute(CART_PATH);
+    const invisibleState = mockedStateRoute(CART_PATH, true, false);
     const wrapper = createComponent(invisibleState);
 
     expect(wrapper).toMatchSnapshot();
@@ -100,7 +91,6 @@ describe.skip('<TabBar />', () => {
     Object.keys(activePathsToTabs).forEach((path) => {
       const state = mockedStateRoute(path);
       const wrapper = createComponent(state);
-
       expect(wrapper.find('TabBarAction[isHighlighted=true]').length).toBe(1);
       expect(wrapper.find('TabBarAction[isHighlighted=true]').props().type).toEqual(activePathsToTabs[path]);
     });

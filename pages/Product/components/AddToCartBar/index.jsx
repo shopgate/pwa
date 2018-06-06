@@ -16,6 +16,7 @@ class AddToCartBar extends Component {
     isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
     isOrderable: PropTypes.bool,
+    isVisible: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -24,6 +25,7 @@ class AddToCartBar extends Component {
     isDisabled: false,
     isLoading: false,
     isOrderable: true,
+    isVisible: true,
   };
 
   /**
@@ -55,6 +57,7 @@ class AddToCartBar extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      (this.props.isVisible !== nextProps.isVisible) ||
       (this.state.itemCount !== nextState.itemCount) ||
       (nextProps.isDisabled !== this.props.isDisabled)
     );
@@ -81,6 +84,10 @@ class AddToCartBar extends Component {
    * @return {JSX}
    */
   render() {
+    if (this.props.isVisible === false) {
+      return null;
+    }
+
     const { itemCount } = this.state;
 
     return [
