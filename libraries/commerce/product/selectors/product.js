@@ -475,18 +475,13 @@ export const getProductMetadata = createSelector(
  * @return {boolean|null}
  */
 export const isBaseProduct = createSelector(
-  getProducts,
-  (state, props) => props.productId,
-  (products, productId) => {
-    if (!productId) {
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
 
-    if (!products[productId] || !products[productId].productData) {
-      return null;
-    }
-
-    return products[productId].productData.baseProductId === null;
+    return productData.baseProductId === null;
   }
 );
 
