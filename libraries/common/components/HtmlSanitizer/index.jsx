@@ -19,6 +19,15 @@ class HtmlSanitizer extends Component {
   };
 
   /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.htmlContainer = React.createRef();
+  }
+
+  /**
    * Registers the event handler for when the user taps inside the html content.
    */
   componentDidMount() {
@@ -41,13 +50,6 @@ class HtmlSanitizer extends Component {
   componentWillUnmount() {
     this.htmlContainer.removeEventListener('touchstart', this.handleTap, true);
     this.htmlContainer.removeEventListener('click', this.handleTap, true);
-  }
-
-  /**
-   * @param {Object} element The DOM element.
-   */
-  setRef = (element) => {
-    this.htmlContainer = element;
   }
 
   /**
@@ -80,7 +82,7 @@ class HtmlSanitizer extends Component {
     };
 
     return (
-      <div dangerouslySetInnerHTML={innerHTML} ref={this.setRef} />
+      <div dangerouslySetInnerHTML={innerHTML} ref={this.htmlContainer} />
     );
   }
 }
