@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 // Import Reviews from 'Components/Reviews';
-// Import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 // Import ImageSlider from './components/ImageSlider';
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
@@ -19,15 +19,15 @@ import ProductContext from '../../context';
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
-    id: PropTypes.string,
     isBaseProduct: PropTypes.bool,
+    productId: PropTypes.string,
     variantId: PropTypes.string,
   };
 
   static defaultProps = {
     baseProductId: null,
-    id: null,
     isBaseProduct: null,
+    productId: null,
     variantId: null,
   };
 
@@ -38,8 +38,8 @@ class ProductContent extends Component {
     super(props);
 
     this.state = {
-      productId: props.isBaseProduct === true ? props.id : null,
-      variantId: props.isBaseProduct === false ? props.id : null,
+      productId: props.isBaseProduct === true ? props.productId : null,
+      variantId: props.isBaseProduct === false ? props.productId : null,
     };
   }
 
@@ -47,11 +47,11 @@ class ProductContent extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const isBaseProduct = nextProps.isBaseProduct === true;
+    const isBaseProduct = (nextProps.isBaseProduct === true);
 
     this.setState({
-      productId: isBaseProduct ? this.props.id : nextProps.baseProductId,
-      variantId: isBaseProduct ? null : this.props.id,
+      productId: (isBaseProduct) ? this.props.productId : nextProps.baseProductId,
+      variantId: (isBaseProduct) ? null : this.props.productId,
     });
   }
 
@@ -62,7 +62,7 @@ class ProductContent extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.props.id !== nextProps.id
+      this.props.productId !== nextProps.productId
       || this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
     );
@@ -89,7 +89,7 @@ class ProductContent extends Component {
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
           <Portal name={portals.PRODUCT_HEADER}>
-            <Header productId={this.props.id} />
+            <Header productId={this.props.productId} />
           </Portal>
           <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
@@ -129,11 +129,11 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
 
           {/* TAX DISCLAIMER */}
-          {/* <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
           <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
             <TaxDisclaimer />
           </Portal>
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} /> */}
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
         </Fragment>
       </ProductContext.Provider>
     );
