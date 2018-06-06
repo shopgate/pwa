@@ -3,46 +3,23 @@ import PropTypes from 'prop-types';
 import sortBy from 'lodash/sortBy';
 import Widget from '../Widget';
 import styles from './style';
-
-// One grid row has 12 columns.
-const GRID_COLUMNS = 12;
-
-/**
- * Iterate through all widgets and return the maximum
- * height based on row and height information.
- * @param {Array} widgets Array of widgets.
- * @returns {number} Height of the widget grid.
- */
-const getMaxHeight = widgets => (
-  widgets.reduce(
-    (max, widget) => Math.max(widget.row + widget.height, max),
-    0
-  )
-);
-
+import shouldShowWidget from '../../helpers/shouldShowWidget';
 /**
  * The widget grid widget component.
  * @param {Object} props The component properties.
  * @returns {JSX} The widget grid.
  */
 const WidgetGrid = (props) => {
-  const rowCount = getMaxHeight(props.config);
-
-  // The cell size is 1/12 of the viewport width.
-  const cellSize = Math.floor(window.innerWidth / GRID_COLUMNS);
-
-  if (!props.config || !rowCount) {
+  // No widgets, nothing to do.
+  if (!props.config.length) {
     return null;
   }
-
   // Sort the widgets by row. This has to happen to take care of the z-index flow.
-  const widgets = sortBy(props.config, ['row']);
+  const widgets = sortBy(props.config, ['row']).filter(w => shouldShowWidget(w.settings));
 
   // The height of the widget area.
-  const height = `${rowCount * cellSize}px`;
-
   return (
-    <div className={styles} style={{ height }}>
+    <div className={styles} >
       {Object.keys(widgets).map((key) => {
         const widget = widgets[key];
         const widgetKey = `w${key}`;
@@ -52,7 +29,6 @@ const WidgetGrid = (props) => {
 
         return (
           <Widget
-            cellSize={cellSize}
             config={widget}
             component={WidgetComponent}
             key={widgetKey}
