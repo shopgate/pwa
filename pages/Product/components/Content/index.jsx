@@ -19,15 +19,15 @@ import ProductContext from '../../context';
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
-    id: PropTypes.string,
     isBaseProduct: PropTypes.bool,
+    productId: PropTypes.string,
     variantId: PropTypes.string,
   };
 
   static defaultProps = {
     baseProductId: null,
-    id: null,
     isBaseProduct: null,
+    productId: null,
     variantId: null,
   };
 
@@ -38,8 +38,8 @@ class ProductContent extends Component {
     super(props);
 
     this.state = {
-      productId: props.isBaseProduct === true ? props.id : null,
-      variantId: props.isBaseProduct === false ? props.id : null,
+      productId: props.isBaseProduct === true ? props.productId : null,
+      variantId: props.isBaseProduct === false ? props.productId : null,
     };
   }
 
@@ -47,11 +47,11 @@ class ProductContent extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const isBaseProduct = nextProps.isBaseProduct === true;
+    const isBaseProduct = (nextProps.isBaseProduct === true);
 
     this.setState({
-      productId: isBaseProduct ? this.props.id : nextProps.baseProductId,
-      variantId: isBaseProduct ? null : this.props.id,
+      productId: (isBaseProduct) ? this.props.productId : nextProps.baseProductId,
+      variantId: (isBaseProduct) ? null : this.props.productId,
     });
   }
 
@@ -62,7 +62,7 @@ class ProductContent extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.props.id !== nextProps.id
+      this.props.productId !== nextProps.productId
       || this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
     );
@@ -79,7 +79,7 @@ class ProductContent extends Component {
     }
 
     return (
-      <ProductContext.Provider value={{ productId, variantId }}>
+      <ProductContext.Provider value={this.state}>
         <Fragment>
           {/* IMAGE */}
           {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
@@ -91,7 +91,7 @@ class ProductContent extends Component {
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
           <Portal name={portals.PRODUCT_HEADER}>
-            <Header productId={this.props.id} />
+            <Header productId={this.props.productId} />
           </Portal>
           <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
