@@ -35,7 +35,7 @@ class List extends Component {
     return (
       <BaseList className={className}>
         {React.Children.map(children, (child, index) => {
-          if (!React.isValidElement(child)) {
+          if (!React.isValidElement(child) || child.props.children === null) {
             return null;
           }
 
