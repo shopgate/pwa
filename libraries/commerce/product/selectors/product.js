@@ -213,19 +213,31 @@ export const getProductsResult = createSelector(
  * @param {Object} state The current application state.
  * @return {string|null}
  */
-export const getProductName = createSelector(
+export const getProductData = createSelector(
   getProducts,
   (state, props) => props.productId,
   (products, productId) => {
-    if (!productId) {
+    if (!productId || !products[productId] || !products[productId].productData) {
       return null;
     }
 
-    if (!products[productId] || !products[productId].productData) {
+    return products[productId].productData;
+  }
+);
+
+/**
+ * Retrieves the product name for the given id.
+ * @param {Object} state The current application state.
+ * @return {string|null}
+ */
+export const getProductName = createSelector(
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
 
-    return products[productId].productData.name;
+    return productData.name;
   }
 );
 
@@ -272,31 +284,29 @@ export const getProductImages = createSelector(
  * @return {Object|null}
  */
 export const getProductRating = createSelector(
-  getProducts,
-  (state, props) => props.productId,
-  (products, productId) => {
-    if (!productId || !products[productId] || !products[productId].productData) {
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
 
-    return products[productId].productData.rating;
+    return productData.rating;
   }
 );
 
 /**
- * Retrieves the current product manufacturer.
+ * Retrieves manufacturer for a given product.
  * @param {Object} state The current application state.
- * @return {Object|null}
+ * @return {string|null}
  */
 export const getProductManufacturer = createSelector(
-  getProducts,
-  (state, props) => props.productId,
-  (products, productId) => {
-    if (!productId || !products[productId] || !products[productId].productData) {
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
 
-    return products[productId].productData.manufacturer;
+    return productData.manufacturer;
   }
 );
 
@@ -389,18 +399,13 @@ export const getProductShipping = createSelector(
  * @return {Object|null}
  */
 export const getProductAvailability = createSelector(
-  getProducts,
-  (state, props) => props.productId,
-  (products, productId) => {
-    if (!productId) {
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
 
-    if (!products[productId] || !products[productId].productData) {
-      return null;
-    }
-
-    return products[productId].productData.availability;
+    return productData.availability;
   }
 );
 
@@ -466,44 +471,35 @@ export const getProductMetadata = createSelector(
 
 /**
  * @param {Object} state The current application state.
- * @param {object} props The component props.
+ * @param {Object} props The component props.
  * @return {boolean|null}
  */
 export const isBaseProduct = createSelector(
-  getProducts,
-  (state, props) => props.id,
-  (products, productId) => {
-    if (!productId) {
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
 
-    if (!products[productId] || !products[productId].productData) {
-      return null;
-    }
-
-    return products[productId].productData.baseProductId === null;
+    return productData.baseProductId === null;
   }
 );
 
 /**
  * @param {Object} state The current application state.
- * @param {object} props The component props.
- * @return {boolean|null}
+ * @param {Object} props The component props.
+ * @return {string|null}
  */
 export const getBaseProductId = createSelector(
-  getProducts,
-  (state, props) => props.id,
-  (products, productId) => {
-    if (!productId) {
+  getProductData,
+  (state, props) => props.productId,
+  (productData, productId) => {
+    if (!productData) {
       return null;
     }
 
-    if (!products[productId] || !products[productId].productData) {
-      return null;
-    }
-
-    if (products[productId].productData.baseProductId) {
-      return products[productId].productData.baseProductId;
+    if (productData.baseProductId) {
+      return productData.baseProductId;
     }
 
     return productId;
@@ -512,12 +508,12 @@ export const getBaseProductId = createSelector(
 
 /**
  * @param {Object} state The current application state.
- * @param {object} props The component props.
- * @return {boolean|null}
+ * @param {Object} props The component props.
+ * @return {string|null}
  */
 export const getVariantId = createSelector(
   isBaseProduct,
-  (state, props) => props.id,
+  (state, props) => props.productId,
   (isBase, productId) => {
     if (isBase) {
       return null;
