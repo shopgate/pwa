@@ -80,6 +80,7 @@
     "eslint-plugin-import": "^2.7.0",
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
+    "nyc": "^11.8.0",
     "react-addons-test-utils": "^15.6.2",
     "react-transform-catch-errors": "^1.0.2",
     "redbox-react": "^1.5.0",

@@ -433,6 +433,7 @@ exports[`<Filter> page should render 1`] = `
                               >
                                 <div
                                   className="css-1ifkpbu"
+                                  data-test-id="priceRangeSlider"
                                 >
                                   <Translate
                                     className=""
@@ -635,6 +636,7 @@ exports[`<Filter> page should render 1`] = `
                           >
                             <div
                               className="css-tfp87"
+                              data-test-id="filterListItem"
                             >
                               <Link
                                 className=""
@@ -728,6 +730,7 @@ exports[`<Filter> page should render 1`] = `
                           >
                             <div
                               className="css-tfp87"
+                              data-test-id="filterListItem"
                             >
                               <Link
                                 className=""
@@ -816,6 +819,7 @@ exports[`<Filter> page should render 1`] = `
                           >
                             <div
                               className="css-tfp87"
+                              data-test-id="filterListItem"
                             >
                               <Link
                                 className=""
@@ -929,6 +933,7 @@ exports[`<Filter> page should render 1`] = `
                           >
                             <div
                               className="css-tfp87"
+                              data-test-id="filterListItem"
                             >
                               <Link
                                 className=""
@@ -1022,6 +1027,7 @@ exports[`<Filter> page should render 1`] = `
                           >
                             <div
                               className="css-tfp87"
+                              data-test-id="filterListItem"
                             >
                               <Link
                                 className=""
@@ -1110,6 +1116,7 @@ exports[`<Filter> page should render 1`] = `
                           >
                             <div
                               className="css-tfp87"
+                              data-test-id="filterListItem"
                             >
                               <Link
                                 className=""
@@ -1177,6 +1184,7 @@ exports[`<Filter> page should render 1`] = `
                       disabled={true}
                       flat={true}
                       onClick={[Function]}
+                      testId="Button"
                       type="regular"
                       wrapContent={true}
                     >
@@ -1184,6 +1192,7 @@ exports[`<Filter> page should render 1`] = `
                         className="css-4q16hk "
                         disabled={true}
                         onClick={[Function]}
+                        testId="Button"
                       >
                         <button
                           className="css-4q16hk  css-1rn65c0"
