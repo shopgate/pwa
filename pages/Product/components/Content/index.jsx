@@ -80,16 +80,16 @@ class ProductContent extends Component {
       <ProductContext.Provider value={this.state}>
         <Fragment>
           {/* IMAGE */}
-          {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+          <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
           <Portal name={portals.PRODUCT_IMAGE}>
-            <ImageSlider />
+            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
           </Portal>
-          <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
+          <Portal name={portals.PRODUCT_IMAGE_AFTER} />
 
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
           <Portal name={portals.PRODUCT_HEADER}>
-            <Header productId={this.props.productId} />
+            <Header />
           </Portal>
           <Portal name={portals.PRODUCT_HEADER_AFTER} />
 

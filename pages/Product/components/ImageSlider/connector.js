@@ -23,7 +23,8 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = (dispatch, props) => ({
-  onOpen: currentSlide => dispatch(openGallery(props.productId, currentSlide)),
+  onOpen: currentSlide =>
+    dispatch(openGallery((props.variantId || props.productId), currentSlide)),
 });
 
 /**
