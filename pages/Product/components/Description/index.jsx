@@ -8,13 +8,18 @@ import styles from './style';
 
 /**
  * The Product Description component.
- * @param {Object} props The component props.
+ * @param {Object} props The component
  * @returns {JSX}
  */
-const Description = ({ html }) => {
+const Description = ({ html, navigate }) => {
   if (html === '') {
     return null;
   }
+
+  const settings = {
+    html,
+    handleClick: navigate,
+  };
 
   return (
     <div className={styles.container}>
@@ -23,7 +28,7 @@ const Description = ({ html }) => {
       </div>
       <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
         <div className={styles.content} data-test-id={html}>
-          <HtmlSanitizer settings={{ html }}>
+          <HtmlSanitizer settings={settings}>
             {html}
           </HtmlSanitizer>
         </div>
@@ -34,10 +39,12 @@ const Description = ({ html }) => {
 
 Description.propTypes = {
   html: PropTypes.string,
+  navigate: PropTypes.func,
 };
 
 Description.defaultProps = {
   html: null,
+  navigate: () => {},
 };
 
 export default connect(Description);

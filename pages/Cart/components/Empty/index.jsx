@@ -21,7 +21,7 @@ const Empty = ({ goBackHistory }) => (
         <div className={styles.icon}>
           <Icon />
         </div>
-        <div className={styles.title}>
+        <div className={styles.title} data-test-id="emptyCartPlaceHolderString">
           <I18n.Text string="cart.empty" />
         </div>
       </div>

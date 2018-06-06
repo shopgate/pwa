@@ -1,29 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import ImageSlider from '../ImageSlider';
 // Import Reviews from 'Components/Reviews';
-// Import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-// Import Header from './components/Header';
+import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import ImageSlider from '../ImageSlider';
+import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
 // Import Options from './components/Options';
-// Import Description from './components/Description';
+import Description from '../Description';
 // Import Properties from './components/Properties';
 import connect from './connector';
+import ProductContext from '../../context';
 
 /**
  * The product content component.
  */
 class ProductContent extends Component {
   static propTypes = {
-    name: PropTypes.string,
+    baseProductId: PropTypes.string,
+    isBaseProduct: PropTypes.bool,
     productId: PropTypes.string,
+    variantId: PropTypes.string,
   };
 
   static defaultProps = {
-    name: null,
+    baseProductId: null,
+    isBaseProduct: null,
     productId: null,
+    variantId: null,
   };
 
   /**
@@ -33,8 +38,21 @@ class ProductContent extends Component {
     super(props);
 
     this.state = {
-      variantId: null,
+      productId: props.isBaseProduct === true ? props.productId : null,
+      variantId: props.isBaseProduct === false ? props.productId : null,
     };
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    const isBaseProduct = (nextProps.isBaseProduct === true);
+
+    this.setState({
+      productId: (isBaseProduct) ? this.props.productId : nextProps.baseProductId,
+      variantId: (isBaseProduct) ? null : this.props.productId,
+    });
   }
 
   /**
@@ -43,84 +61,81 @@ class ProductContent extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    if (!this.props.productId && nextProps.productId) return true;
-    if (!this.props.name && nextProps.name) return true;
-    if (this.state.variantId !== nextState.variantId) return true;
-    return false;
-  }
-
-  /**
-   * Sets the variant ID.
-   * @param {string} variantId The selected variant ID.
-   */
-  handleSetVariantId = (variantId) => {
-    if (variantId !== this.state.variantId) {
-      this.setState({ variantId });
-    }
+    return (
+      this.props.productId !== nextProps.productId
+      || this.state.productId !== nextState.productId
+      || this.state.variantId !== nextState.variantId
+    );
   }
 
   /**
    * @return {JSX}
    */
   render() {
+    if (!this.state.productId && !this.state.variantId) {
+      return null;
+    }
+
     return (
-      <div data-test-id={`product: ${this.props.name}`}>
-        {/* IMAGE */}
-        <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
-        <Portal name={portals.PRODUCT_IMAGE}>
-          <ImageSlider productId={this.props.productId} />
-        </Portal>
-        <Portal name={portals.PRODUCT_IMAGE_AFTER} />
+      <ProductContext.Provider value={this.state}>
+        <Fragment>
+          {/* IMAGE */}
+          {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+          <Portal name={portals.PRODUCT_IMAGE}>
+            <ImageSlider />
+          </Portal>
+          <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
 
-        {/* HEADER */}
-        {/* <Portal name={portals.PRODUCT_HEADER_BEFORE} />
-        <Portal name={portals.PRODUCT_HEADER}>
-          <Header />
-        </Portal>
-        <Portal name={portals.PRODUCT_HEADER_AFTER} /> */}
+          {/* HEADER */}
+          <Portal name={portals.PRODUCT_HEADER_BEFORE} />
+          <Portal name={portals.PRODUCT_HEADER}>
+            <Header productId={this.props.productId} />
+          </Portal>
+          <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
-        {/* VARIANT SELECT */}
-        {/* <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
-        <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-          <VariantSelects />
-        </Portal>
-        <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} /> */}
+          {/* VARIANT SELECT */}
+          {/* <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
+          <Portal name={portals.PRODUCT_VARIANT_SELECT}>
+            <VariantSelects />
+          </Portal>
+          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} /> */}
 
-        {/* OPTIONS */}
-        {/* <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
-        <Portal name={portals.PRODUCT_OPTIONS}>
-          <Options />
-        </Portal>
-        <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
+          {/* OPTIONS */}
+          {/* <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
+          <Portal name={portals.PRODUCT_OPTIONS}>
+            <Options />
+          </Portal>
+          <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
 
-        {/* DESCRIPTION */}
-        {/* <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
-        <Portal name={portals.PRODUCT_DESCRIPTION}>
-          <Description />
-        </Portal>
-        <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} /> */}
+          {/* DESCRIPTION */}
+          <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
+          <Portal name={portals.PRODUCT_DESCRIPTION}>
+            <Description productId={this.props.productId} />
+          </Portal>
+          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
-        {/* PROPERTIES */}
-        {/* <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
-        <Portal name={portals.PRODUCT_PROPERTIES}>
-          <Properties />
-        </Portal>
-        <Portal name={portals.PRODUCT_PROPERTIES_AFTER} /> */}
+          {/* PROPERTIES */}
+          {/* <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
+          <Portal name={portals.PRODUCT_PROPERTIES}>
+            <Properties />
+          </Portal>
+          <Portal name={portals.PRODUCT_PROPERTIES_AFTER} /> */}
 
-        {/* REVIEWS */}
-        {/* <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
-        <Portal name={portals.PRODUCT_REVIEWS}>
-          <Reviews />
-        </Portal>
-        <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
+          {/* REVIEWS */}
+          {/* <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
+          <Portal name={portals.PRODUCT_REVIEWS}>
+            <Reviews />
+          </Portal>
+          <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
 
-        {/* TAX DISCLAIMER */}
-        {/* <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
-        <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
-          <TaxDisclaimer />
-        </Portal>
-        <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} /> */}
-      </div>
+          {/* TAX DISCLAIMER */}
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
+            <TaxDisclaimer />
+          </Portal>
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
+        </Fragment>
+      </ProductContext.Provider>
     );
   }
 }

@@ -91,7 +91,7 @@ class FilterAttribute extends Component {
 
     return (
       <View title={currentAttribute.label}>
-        <div className={styles}>
+        <div className={styles} data-test-id="filterAttributes">
           <Attribute>
             {currentAttribute.values.map(value => (
               <Item
