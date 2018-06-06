@@ -53,17 +53,30 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             rippleClassName=""
           />
         </Connect(FavoritesButton)>
-        <MockedAddToCartButton
-          className="css-ipacgg"
-          handleAddToCart={[Function]}
-          isDisabled={false}
-          isLoading={false}
-          isOrderable={false}
+        <Portal
+          name="favorites.add-to-cart.before"
+          props={Object {}}
+        />
+        <Portal
+          name="favorites.add-to-cart"
+          props={Object {}}
         >
-          <button
-            onClick={[Function]}
-          />
-        </MockedAddToCartButton>
+          <MockedAddToCartButton
+            className="css-ipacgg"
+            handleAddToCart={[Function]}
+            isDisabled={false}
+            isLoading={false}
+            isOrderable={false}
+          >
+            <button
+              onClick={[Function]}
+            />
+          </MockedAddToCartButton>
+        </Portal>
+        <Portal
+          name="favorites.add-to-cart.after"
+          props={Object {}}
+        />
       </div>
     </CTAButtons>
   </Connect(CTAButtons)>
