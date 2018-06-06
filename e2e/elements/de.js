@@ -71,4 +71,9 @@ export default {
   couponFieldInput: "[data-test-id='couponField'] input",
   couponSubmitButton: "[data-test-id='CouponSubmitButton']",
   searchInput: "[data-test-id='Search'] input",
+  loginPageEmailInput: "[data-test-id='LoginPage'] input[id='email']",
+  loginPagePasswordInput: "[data-test-id='LoginPage'] input[id='password']",
+  forgotPasswordButton: "[data-test-id='forgotPasswordButton']",
+  loginButton: "[data-test-id='LoginButton'] ",
+  registerButton: "[data-test-id='link: /register']",
 };
