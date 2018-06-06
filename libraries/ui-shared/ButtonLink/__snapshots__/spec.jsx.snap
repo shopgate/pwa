@@ -14,6 +14,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
     onClick={[Function]}
     rippleClassName=""
     rippleSize={null}
+    testId="Button"
     type="secondary"
     wrapContent={true}
   >
@@ -27,6 +28,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
         onClick={[Function]}
         rippleClassName=""
         rippleSize={null}
+        testId="Button"
         type="secondary"
         wrapContent={true}
       >
@@ -35,6 +37,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
           disabled={false}
           flat={true}
           onClick={[Function]}
+          testId="Button"
           type="secondary"
           wrapContent={false}
         >
@@ -42,6 +45,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
             className="css-dh0pju "
             disabled={false}
             onClick={[Function]}
+            testId="Button"
           >
             <button
               className="css-dh0pju  css-1rn65c0"
