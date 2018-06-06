@@ -76,7 +76,7 @@ class ContextMenu extends Component {
 
     return (
       <div
-        data-test-id="ContextMenu"
+        data-test-id="contextMenu"
         ref={(ref) => { this.elementRef = ref; }}
         className={styles.container}
       >
