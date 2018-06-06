@@ -31,7 +31,7 @@ const mapStateToProps = (state, props) => ({
  */
 const areStatePropsEqual = (next, prev) => {
   if (!prev.items && next.items) return false;
-  if (prev.items && prev.items.length !== next.items.length) return false;
+  if ((prev.items && next.items) && (prev.items.length !== next.items.length)) return false;
   return true;
 };
 

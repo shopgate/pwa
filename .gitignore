@@ -47,3 +47,4 @@ coverage
 /config/
 /public/
 /extensions/
+.nyc_output

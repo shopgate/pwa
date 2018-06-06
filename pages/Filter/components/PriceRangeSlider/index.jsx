@@ -87,7 +87,7 @@ class PriceRangeSlider extends Component {
     const priceMax = Math.ceil(this.state.value[1] / 100);
 
     return (
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper} data-test-id="priceRangeSlider">
         <I18n.Text string="price.range">
           <I18n.Placeholder forKey="fromPrice">
             <span className={styles.price}>
