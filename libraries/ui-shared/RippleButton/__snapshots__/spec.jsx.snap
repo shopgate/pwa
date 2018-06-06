@@ -8,6 +8,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
   onClick={null}
   rippleClassName=""
   rippleSize={null}
+  testId="Button"
   type="primary"
   wrapContent={true}
 >
@@ -16,6 +17,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     disabled={true}
     flat={false}
     onClick={null}
+    testId="Button"
     type="primary"
     wrapContent={true}
   >
@@ -23,6 +25,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
       className="css-ot1d6i "
       disabled={true}
       onClick={null}
+      testId="Button"
     >
       <button
         className="css-ot1d6i  css-1rn65c0"
@@ -49,6 +52,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
   onClick={null}
   rippleClassName=""
   rippleSize={null}
+  testId="Button"
   type="primary"
   wrapContent={true}
 >
@@ -57,6 +61,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     disabled={false}
     flat={false}
     onClick={null}
+    testId="Button"
     type="primary"
     wrapContent={false}
   >
@@ -64,6 +69,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
       className="css-cimv5k "
       disabled={false}
       onClick={null}
+      testId="Button"
     >
       <button
         className="css-cimv5k  css-1rn65c0"
@@ -102,6 +108,7 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
   disabled={false}
   flat={false}
   onClick={null}
+  testId="Button"
   type="primary"
   wrapContent={false}
 >
@@ -127,6 +134,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
   onClick={null}
   rippleClassName=""
   rippleSize={null}
+  testId="Button"
   type="regular"
   wrapContent={true}
 >
@@ -135,6 +143,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
     disabled={false}
     flat={false}
     onClick={null}
+    testId="Button"
     type="regular"
     wrapContent={false}
   >
@@ -142,6 +151,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
       className="css-kevfw8 "
       disabled={false}
       onClick={null}
+      testId="Button"
     >
       <button
         className="css-kevfw8  css-1rn65c0"
@@ -182,6 +192,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
   onClick={null}
   rippleClassName=""
   rippleSize={null}
+  testId="Button"
   type="secondary"
   wrapContent={true}
 >
@@ -190,6 +201,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     disabled={false}
     flat={false}
     onClick={null}
+    testId="Button"
     type="secondary"
     wrapContent={false}
   >
@@ -197,6 +209,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
       className="css-187rja2 "
       disabled={false}
       onClick={null}
+      testId="Button"
     >
       <button
         className="css-187rja2  css-1rn65c0"
