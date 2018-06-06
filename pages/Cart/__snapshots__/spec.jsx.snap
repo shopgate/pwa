@@ -114,6 +114,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
                     </div>
                     <div
                       className="css-b9wt33"
+                      data-test-id="emptyCartPlaceHolderString"
                     >
                       <Translate
                         className=""
@@ -143,6 +144,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
                     onClick={[Function]}
                     rippleClassName=""
                     rippleSize={null}
+                    testId="Button"
                     type="secondary"
                     wrapContent={true}
                   >
@@ -151,6 +153,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
                       disabled={false}
                       flat={false}
                       onClick={[Function]}
+                      testId="Button"
                       type="secondary"
                       wrapContent={false}
                     >
@@ -158,6 +161,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
                         className="css-187rja2 css-63oe3q"
                         disabled={false}
                         onClick={[Function]}
+                        testId="Button"
                       >
                         <button
                           className="css-187rja2 css-63oe3q css-1rn65c0"
@@ -435,7 +439,9 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                     <li
                                       className="css-1p5q8vq css-9hjfag null css-16gj3o1"
                                     >
-                                      <div>
+                                      <div
+                                        data-test-id="cartItem"
+                                      >
                                         <Connect(Link)
                                           href="/item/746573745f70726f64756374"
                                           itemProp="item"
@@ -693,7 +699,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                                                     <ContextMenu>
                                                                       <div
                                                                         className="css-13azwyo"
-                                                                        data-test-id="ContextMenu"
+                                                                        data-test-id="contextMenu"
                                                                       >
                                                                         <button
                                                                           className="css-d6h5ju"
@@ -1471,6 +1477,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                               >
                                 <form
                                   className="css-pgykgj"
+                                  data-test-id="couponField"
                                   onSubmit={[Function]}
                                 >
                                   <label
@@ -1842,6 +1849,7 @@ exports[`<Cart> page Initial page should render empty 1`] = `
                     </div>
                     <div
                       className="css-b9wt33"
+                      data-test-id="emptyCartPlaceHolderString"
                     >
                       <Translate
                         className=""
@@ -1871,6 +1879,7 @@ exports[`<Cart> page Initial page should render empty 1`] = `
                     onClick={[Function]}
                     rippleClassName=""
                     rippleSize={null}
+                    testId="Button"
                     type="secondary"
                     wrapContent={true}
                   >
@@ -1879,6 +1888,7 @@ exports[`<Cart> page Initial page should render empty 1`] = `
                       disabled={false}
                       flat={false}
                       onClick={[Function]}
+                      testId="Button"
                       type="secondary"
                       wrapContent={false}
                     >
@@ -1886,6 +1896,7 @@ exports[`<Cart> page Initial page should render empty 1`] = `
                         className="css-187rja2 css-63oe3q"
                         disabled={false}
                         onClick={[Function]}
+                        testId="Button"
                       >
                         <button
                           className="css-187rja2 css-63oe3q css-1rn65c0"
@@ -2147,7 +2158,9 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                                     <li
                                       className="css-1p5q8vq css-9hjfag null css-16gj3o1"
                                     >
-                                      <div>
+                                      <div
+                                        data-test-id="cartItem"
+                                      >
                                         <Connect(Link)
                                           href="/item/746573745f70726f64756374"
                                           itemProp="item"
@@ -2405,7 +2418,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                                                                     <ContextMenu>
                                                                       <div
                                                                         className="css-13azwyo"
-                                                                        data-test-id="ContextMenu"
+                                                                        data-test-id="contextMenu"
                                                                       >
                                                                         <button
                                                                           className="css-d6h5ju"
@@ -2637,6 +2650,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                               >
                                 <form
                                   className="css-pgykgj"
+                                  data-test-id="couponField"
                                   onSubmit={[Function]}
                                 >
                                   <label

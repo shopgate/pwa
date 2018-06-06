@@ -469,7 +469,7 @@ exports[`<Category> page should render 1`] = `
                                       }
                                     }
                                   >
-                                    <Connect(Item)
+                                    <Connect(pure(Item))
                                       product={
                                         Object {
                                           "ageRating": 0,
@@ -521,9 +521,8 @@ exports[`<Category> page should render 1`] = `
                                         }
                                       }
                                     >
-                                      <Item
+                                      <pure(Item)
                                         dispatch={[Function]}
-                                        display={null}
                                         isFavorite={false}
                                         product={
                                           Object {
@@ -576,80 +575,118 @@ exports[`<Category> page should render 1`] = `
                                           }
                                         }
                                       >
-                                        <Connect(Link)
-                                          className="css-b4pchx"
-                                          href="/item/393133"
-                                          itemProp="item"
-                                          itemScope={true}
-                                          itemType="http://schema.org/Product"
-                                          tagName="a"
+                                        <Item
+                                          dispatch={[Function]}
+                                          display={null}
+                                          isFavorite={false}
+                                          product={
+                                            Object {
+                                              "ageRating": 0,
+                                              "availability": Object {
+                                                "state": "ok",
+                                                "text": "In stock",
+                                              },
+                                              "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                              "flags": Object {
+                                                "hasChildren": false,
+                                                "hasOptions": false,
+                                                "hasVariants": false,
+                                              },
+                                              "highlight": true,
+                                              "id": "913",
+                                              "identifiers": Object {
+                                                "sku": "857347363",
+                                              },
+                                              "liveshoppings": Array [],
+                                              "manufacturer": "",
+                                              "name": "This is a product with a very very long name -5-",
+                                              "price": Object {
+                                                "currency": "EUR",
+                                                "info": "",
+                                                "msrp": 0,
+                                                "taxAmount": 0,
+                                                "taxPercent": 0,
+                                                "tiers": Array [],
+                                                "unitPrice": 89,
+                                                "unitPriceMax": 1000,
+                                                "unitPriceMin": 0,
+                                                "unitPriceNet": 89,
+                                                "unitPriceStriked": 0,
+                                                "unitPriceWithTax": 89,
+                                              },
+                                              "rating": Object {
+                                                "average": 0,
+                                                "count": 0,
+                                                "reviewCount": 0,
+                                              },
+                                              "stock": Object {
+                                                "ignoreQuantity": true,
+                                                "info": "In stock",
+                                                "maxOrderQuantity": 10000,
+                                                "minOrderQuantity": 1,
+                                                "orderable": true,
+                                                "quantity": 0,
+                                              },
+                                            }
+                                          }
                                         >
-                                          <Link
+                                          <Connect(Link)
                                             className="css-b4pchx"
                                             href="/item/393133"
                                             itemProp="item"
                                             itemScope={true}
                                             itemType="http://schema.org/Product"
-                                            navigate={[Function]}
-                                            replace={false}
-                                            state={Object {}}
-                                            tag="div"
+                                            state={
+                                              Object {
+                                                "title": "This is a product with a very very long name -5-",
+                                              }
+                                            }
                                             tagName="a"
                                           >
-                                            <div
-                                              aria-hidden={true}
-                                              className="css-c6ki83 css-b4pchx"
-                                              onClick={[Function]}
-                                              role="link"
+                                            <Link
+                                              className="css-b4pchx"
+                                              href="/item/393133"
+                                              itemProp="item"
+                                              itemScope={true}
+                                              itemType="http://schema.org/Product"
+                                              navigate={[Function]}
+                                              replace={false}
+                                              state={
+                                                Object {
+                                                  "title": "This is a product with a very very long name -5-",
+                                                }
+                                              }
+                                              tag="div"
+                                              tagName="a"
                                             >
-                                              <Portal
-                                                name="product-item.image.before"
-                                                props={
-                                                  Object {
-                                                    "productId": "913",
-                                                  }
-                                                }
-                                              />
-                                              <Portal
-                                                name="product-item.image"
-                                                props={
-                                                  Object {
-                                                    "productId": "913",
-                                                  }
-                                                }
+                                              <div
+                                                aria-hidden={true}
+                                                className="css-c6ki83 css-b4pchx"
+                                                onClick={[Function]}
+                                                role="link"
                                               >
-                                                <ProductImage
-                                                  alt="This is a product with a very very long name -5-"
-                                                  animating={true}
-                                                  forcePlaceholder={false}
-                                                  highestResolutionLoaded={[Function]}
-                                                  itemProp="image"
-                                                  ratio={null}
-                                                  resolutions={
-                                                    Array [
-                                                      Object {
-                                                        "blur": 2,
-                                                        "height": 50,
-                                                        "width": 50,
-                                                      },
-                                                      Object {
-                                                        "height": 440,
-                                                        "width": 440,
-                                                      },
-                                                    ]
+                                                <Portal
+                                                  name="product-item.image.before"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
                                                   }
-                                                  src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
+                                                />
+                                                <Portal
+                                                  name="product-item.image"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
                                                 >
-                                                  <Image
+                                                  <ProductImage
                                                     alt="This is a product with a very very long name -5-"
                                                     animating={true}
-                                                    backgroundColor="#fff"
-                                                    className=""
                                                     forcePlaceholder={false}
                                                     highestResolutionLoaded={[Function]}
                                                     itemProp="image"
-                                                    onError={[Function]}
-                                                    onLoad={null}
                                                     ratio={null}
                                                     resolutions={
                                                       Array [
@@ -665,77 +702,42 @@ exports[`<Category> page should render 1`] = `
                                                       ]
                                                     }
                                                     src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
-                                                    transition={null}
                                                   >
-                                                    <div
-                                                      className="css-1d0r90g "
-                                                    />
-                                                  </Image>
-                                                </ProductImage>
-                                              </Portal>
-                                              <Portal
-                                                name="product-item.image.after"
-                                                props={
-                                                  Object {
-                                                    "productId": "913",
-                                                  }
-                                                }
-                                              />
-                                              <Portal
-                                                name="product-item.favorites-button.before"
-                                                props={
-                                                  Object {
-                                                    "productId": "913",
-                                                  }
-                                                }
-                                              />
-                                              <Portal
-                                                name="product-item.favorites-button"
-                                                props={
-                                                  Object {
-                                                    "productId": "913",
-                                                  }
-                                                }
-                                              >
-                                                <div
-                                                  className="css-apqpkv"
-                                                  data-test-id="favorites"
-                                                >
-                                                  <Connect(FavoritesButton)
-                                                    active={false}
-                                                    noShadow={true}
-                                                    productId="913"
-                                                    removeWithRelatives={true}
-                                                  >
-                                                    <FavoritesButton
-                                                      active={false}
-                                                      addFavorites={[Function]}
+                                                    <Image
+                                                      alt="This is a product with a very very long name -5-"
+                                                      animating={true}
+                                                      backgroundColor="#fff"
                                                       className=""
-                                                      noShadow={true}
-                                                      onRippleComplete={[Function]}
-                                                      once={false}
-                                                      productId="913"
-                                                      removeFavorites={[Function]}
-                                                      removeThrottle={0}
-                                                      removeWithRelatives={true}
-                                                      rippleClassName=""
-                                                    />
-                                                  </Connect(FavoritesButton)>
-                                                </div>
-                                              </Portal>
-                                              <Portal
-                                                name="product-item.favorites-button.after"
-                                                props={
-                                                  Object {
-                                                    "productId": "913",
-                                                  }
-                                                }
-                                              />
-                                              <div
-                                                className="css-16e7pt1"
-                                              >
+                                                      forcePlaceholder={false}
+                                                      highestResolutionLoaded={[Function]}
+                                                      itemProp="image"
+                                                      onError={[Function]}
+                                                      onLoad={null}
+                                                      ratio={null}
+                                                      resolutions={
+                                                        Array [
+                                                          Object {
+                                                            "blur": 2,
+                                                            "height": 50,
+                                                            "width": 50,
+                                                          },
+                                                          Object {
+                                                            "height": 440,
+                                                            "width": 440,
+                                                          },
+                                                        ]
+                                                      }
+                                                      src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
+                                                      transition={null}
+                                                    >
+                                                      <div
+                                                        className="css-1d0r90g "
+                                                      />
+                                                    </Image>
+                                                  </ProductImage>
+                                                </Portal>
                                                 <Portal
-                                                  name="product-item.name.before"
+                                                  name="product-item.image.after"
                                                   props={
                                                     Object {
                                                       "productId": "913",
@@ -743,7 +745,15 @@ exports[`<Category> page should render 1`] = `
                                                   }
                                                 />
                                                 <Portal
-                                                  name="product-item.name"
+                                                  name="product-item.favorites-button.before"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.favorites-button"
                                                   props={
                                                     Object {
                                                       "productId": "913",
@@ -751,128 +761,182 @@ exports[`<Category> page should render 1`] = `
                                                   }
                                                 >
                                                   <div
-                                                    className="css-1xzic9e"
-                                                    data-test-id="Productname: This is a product with a very very long name -5-"
-                                                    itemProp="name"
+                                                    className="css-apqpkv"
+                                                    data-test-id="favorites"
                                                   >
-                                                    <Ellipsis
-                                                      className=""
-                                                      ellipsis="..."
-                                                      rows={3}
+                                                    <Connect(FavoritesButton)
+                                                      active={false}
+                                                      noShadow={true}
+                                                      productId="913"
+                                                      removeWithRelatives={true}
                                                     >
-                                                      <Dotdotdot
-                                                        clamp={3}
+                                                      <FavoritesButton
+                                                        active={false}
+                                                        addFavorites={[Function]}
                                                         className=""
-                                                        ellipsis="..."
-                                                        tagName="div"
-                                                        truncationChar="…"
-                                                        useNativeClamp={true}
-                                                      >
-                                                        <div
-                                                          className=""
-                                                        >
-                                                          This is a product with a very very long name -5-
-                                                        </div>
-                                                      </Dotdotdot>
-                                                    </Ellipsis>
+                                                        noShadow={true}
+                                                        onRippleComplete={[Function]}
+                                                        once={false}
+                                                        productId="913"
+                                                        removeFavorites={[Function]}
+                                                        removeThrottle={0}
+                                                        removeWithRelatives={true}
+                                                        rippleClassName=""
+                                                      />
+                                                    </Connect(FavoritesButton)>
                                                   </div>
                                                 </Portal>
                                                 <Portal
-                                                  name="product-item.name.after"
+                                                  name="product-item.favorites-button.after"
                                                   props={
                                                     Object {
                                                       "productId": "913",
                                                     }
                                                   }
                                                 />
-                                                <Portal
-                                                  name="product-item.price.before"
-                                                  props={
-                                                    Object {
-                                                      "productId": "913",
-                                                    }
-                                                  }
-                                                />
-                                                <Portal
-                                                  name="product-item.price"
-                                                  props={
-                                                    Object {
-                                                      "productId": "913",
-                                                    }
-                                                  }
+                                                <div
+                                                  className="css-16e7pt1"
                                                 >
-                                                  <Grid
-                                                    className="css-1glzrmu"
-                                                    component="ul"
-                                                    wrap={true}
-                                                  >
-                                                    <ul
-                                                      className="css-1glzrmu css-h7r55a css-u7q1iu"
-                                                    >
-                                                      <GridItem
-                                                        className=""
-                                                        component="li"
-                                                        grow={1}
-                                                        shrink={1}
-                                                      >
-                                                        <li
-                                                          className=" css-1gs0ko2"
-                                                        >
-                                                          <Price
-                                                            className=""
-                                                            currency="EUR"
-                                                            discounted={false}
-                                                            fractions={true}
-                                                            taxDisclaimer={false}
-                                                            unitPrice={89}
-                                                            unitPriceMin={0}
-                                                          >
-                                                            <div
-                                                              className="css-izofhs "
-                                                              data-test-id="minPrice: 0 price: 89 currency: EUR"
-                                                            >
-                                                              <FormatPrice
-                                                                className=""
-                                                                currency="EUR"
-                                                                fractions={true}
-                                                                price={89}
-                                                              >
-                                                                <span
-                                                                  className=""
-                                                                >
-                                                                  p
-                                                                </span>
-                                                              </FormatPrice>
-                                                            </div>
-                                                          </Price>
-                                                        </li>
-                                                      </GridItem>
-                                                    </ul>
-                                                  </Grid>
-                                                  <Grid
-                                                    className=""
-                                                    component="ul"
-                                                    wrap={false}
-                                                  >
-                                                    <ul
-                                                      className=" css-h7r55a"
-                                                    />
-                                                  </Grid>
-                                                </Portal>
-                                                <Portal
-                                                  name="product-item.price.after"
-                                                  props={
-                                                    Object {
-                                                      "productId": "913",
+                                                  <Portal
+                                                    name="product-item.name.before"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
                                                     }
-                                                  }
-                                                />
+                                                  />
+                                                  <Portal
+                                                    name="product-item.name"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  >
+                                                    <div
+                                                      className="css-1xzic9e"
+                                                      data-test-id="Productname: This is a product with a very very long name -5-"
+                                                      itemProp="name"
+                                                    >
+                                                      <Ellipsis
+                                                        className=""
+                                                        ellipsis="..."
+                                                        rows={3}
+                                                      >
+                                                        <Dotdotdot
+                                                          clamp={3}
+                                                          className=""
+                                                          ellipsis="..."
+                                                          tagName="div"
+                                                          truncationChar="…"
+                                                          useNativeClamp={true}
+                                                        >
+                                                          <div
+                                                            className=""
+                                                          >
+                                                            This is a product with a very very long name -5-
+                                                          </div>
+                                                        </Dotdotdot>
+                                                      </Ellipsis>
+                                                    </div>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="product-item.name.after"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.price.before"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.price"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  >
+                                                    <Grid
+                                                      className="css-1glzrmu"
+                                                      component="ul"
+                                                      wrap={true}
+                                                    >
+                                                      <ul
+                                                        className="css-1glzrmu css-h7r55a css-u7q1iu"
+                                                      >
+                                                        <GridItem
+                                                          className=""
+                                                          component="li"
+                                                          grow={1}
+                                                          shrink={1}
+                                                        >
+                                                          <li
+                                                            className=" css-1gs0ko2"
+                                                          >
+                                                            <Price
+                                                              className=""
+                                                              currency="EUR"
+                                                              discounted={false}
+                                                              fractions={true}
+                                                              taxDisclaimer={false}
+                                                              unitPrice={89}
+                                                              unitPriceMin={0}
+                                                            >
+                                                              <div
+                                                                className="css-izofhs "
+                                                                data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                                              >
+                                                                <FormatPrice
+                                                                  className=""
+                                                                  currency="EUR"
+                                                                  fractions={true}
+                                                                  price={89}
+                                                                >
+                                                                  <span
+                                                                    className=""
+                                                                  >
+                                                                    p
+                                                                  </span>
+                                                                </FormatPrice>
+                                                              </div>
+                                                            </Price>
+                                                          </li>
+                                                        </GridItem>
+                                                      </ul>
+                                                    </Grid>
+                                                    <Grid
+                                                      className=""
+                                                      component="ul"
+                                                      wrap={false}
+                                                    >
+                                                      <ul
+                                                        className=" css-h7r55a"
+                                                      />
+                                                    </Grid>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="product-item.price.after"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                </div>
                                               </div>
-                                            </div>
-                                          </Link>
-                                        </Connect(Link)>
-                                      </Item>
-                                    </Connect(Item)>
+                                            </Link>
+                                          </Connect(Link)>
+                                        </Item>
+                                      </pure(Item)>
+                                    </Connect(pure(Item))>
                                   </Portal>
                                   <Portal
                                     name="product.item.after"

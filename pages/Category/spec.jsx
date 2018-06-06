@@ -87,7 +87,7 @@ describe('<Category> page', () => {
   it('should render', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('ProductGrid').length).toEqual(1);
-    expect(wrapper.find('Connect(Item)').length).toEqual(1);
+    expect(wrapper.find('Connect(pure(Item))').length).toEqual(1);
     expect(wrapper.find('CategoryList').length).toEqual(1);
     expect(wrapper.find('CategoryList').props().categories.length).toEqual(1);
     expect(wrapper.find('CategoryList').find('Item').length).toEqual(1);
