@@ -64,4 +64,11 @@ export default {
   couponSubmitButton: "[data-test-id='CouponSubmitButton']",
   searchFieldInput: "[data-test-id='SearchField'] input",
   browsePageBasicProductsCategory: "[data-test-id='categoriesList'] [data-test-id='link: /category/3537']",
+  userMenuLogin: "[data-test-id='UserMenuLogin']",
+  userMenuRegister: "[data-test-id='UserMenuRegister']",
+  loginPageUsernameInput: "[data-test-id='loginPage'] input[type='email']",
+  loginPagePasswordInput: "[data-test-id='loginPage'] input[type='password']",
+  forgotPasswordButton: "[data-test-id='forgotPasswordButton']",
+  loginButton: "[data-test-id='loginButton']",
+  registerButton: "[data-test-id='link: /register']",
 };
