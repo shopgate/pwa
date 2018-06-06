@@ -22,6 +22,7 @@ exports[`<CartEmpty /> should render 1`] = `
       </div>
       <div
         className="css-b9wt33"
+        data-test-id="emptyCartPlaceHolderString"
       >
         <Translate
           className=""

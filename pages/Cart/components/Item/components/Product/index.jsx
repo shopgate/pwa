@@ -131,7 +131,7 @@ class Product extends Component {
             style={getTransitionStyle(state)}
           >
             <CardListItem>
-              <div ref={(element) => { this.cardElement = element; }}>
+              <div ref={(element) => { this.cardElement = element; }} data-test-id="cartItem">
                 {this.props.messages.length > 0 &&
                   <MessageBar messages={this.props.messages} classNames={messageStyles} />}
                 <Link
