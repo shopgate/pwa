@@ -71,4 +71,9 @@ export default {
   forgotPasswordButton: "[data-test-id='forgotPasswordButton']",
   loginButton: "[data-test-id='loginButton']",
   registerButton: "[data-test-id='link: /register']",
+  priceRangeSlider: "[data-test-id='priceRangeSlider']",
+  filterListItemManufacturer: "[data-test-id='filterListItem'] [data-test-id='link: /filter/manufacturer']",
+  filterAttributeManufacturer1: "[data-test-id='filterAttributes'] [data-test-id='kungBirgers']",
+  clearAllButton: "[data-test-id='clearAllButton']",
+  applyFilterButton: "[data-test-id='applyFilterButton']",
 };
