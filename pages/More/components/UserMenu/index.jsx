@@ -87,14 +87,14 @@ class UserMenu extends Component {
         </Headline>
         <Grid className={styles.grid}>
           <Grid.Item className={styles.gridItem}>
-            <Button className={styles.button}>
+            <Button className={styles.button} testId="UserMenuLogin">
               <Link href={LOGIN_PATH}>
                 <I18n.Text string="login.button" />
               </Link>
             </Button>
           </Grid.Item>
           <Grid.Item className={styles.gridItem}>
-            <Button className={styles.button}>
+            <Button className={styles.button} testId="UserMenuRegister">
               <Link href={REGISTER_PATH}>
                 {/* Proper registration link will be handled later. */}
                 <I18n.Text string="login.signup" />
