@@ -11,7 +11,7 @@ import ProductContent from './components/Content';
  */
 const Product = ({ id }) => (
   <View>
-    {id && <ProductContent />}
+    {id && <ProductContent productId={id} />}
   </View>
 );
 

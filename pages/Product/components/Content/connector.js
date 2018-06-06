@@ -1,27 +1,20 @@
 import { connect } from 'react-redux';
-import { getProductName } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getBaseProductId,
+  getVariantId,
+  isBaseProduct,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  name: getProductName(state),
+const mapStateToProps = (state, props) => ({
+  isBaseProduct: isBaseProduct(state, props),
+  baseProductId: getBaseProductId(state, props),
+  variantId: getVariantId(state, props),
 });
 
-/**
- * Check to see if the product name arrived.
- * @param {Object} next The next props.
- * @param {Object} prev The previous props.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.name && next.name) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);
