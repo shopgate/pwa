@@ -30,7 +30,7 @@ export const productReceived$ = main$
 /**
  * Emits when the current product id changed.
  */
-const currentProductIdChanged = main$
+const currentProductIdChanged$ = main$
   .filter(({ action, prevState }) => {
     const prevId = getCurrentBaseProductId(prevState);
     return (
@@ -49,7 +49,7 @@ const productRouteReappeared$ = pwaDidAppear$
 /**
  * Emits when a product page is ready to be tracked, considering loaded or preloaded data.
  */
-export const productIsReady$ = currentProductIdChanged
+export const productIsReady$ = currentProductIdChanged$
   .switchMap((data) => {
     const product = getCurrentProduct(data.getState()) !== null;
 

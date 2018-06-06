@@ -7,11 +7,10 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { pwaDidAppear$ } from './app';
 
 /**
- * A whitelist of routes that should be tracked with
- * exception to those that are handled individually.
+ * A blacklist of paths that should be tracked whithin their individual subscriptions.
  * @type {Array}
  */
-const ignoredPaths = [
+export const blacklistedPaths = [
   SEARCH_PATH,
   CATEGORY_PATH,
   ITEM_PATH,
@@ -23,5 +22,5 @@ const ignoredPaths = [
  * Emits when one of the tracked paths is entered except some special one.
  */
 export const pagesAreReady$ = routeDidChange$.merge(pwaDidAppear$).filter(({ pathname }) => (
-  !ignoredPaths.some(path => pathname.startsWith(path))
+  !blacklistedPaths.some(path => pathname.startsWith(path))
 ));
