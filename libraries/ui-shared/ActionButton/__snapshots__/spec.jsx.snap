@@ -15,6 +15,7 @@ exports[`<ActionButton /> Given the component was mounted to the DOM Given the l
 exports[`<ActionButton /> Given the component was mounted to the DOM should match snapshot 1`] = `
 <div
   className="css-omcrdt"
+  data-test-id={null}
 >
   <RippleButton
     className=""
@@ -23,6 +24,7 @@ exports[`<ActionButton /> Given the component was mounted to the DOM should matc
     onClick={[Function]}
     rippleClassName=""
     rippleSize={null}
+    testId="Button"
     type="primary"
     wrapContent={true}
   >
