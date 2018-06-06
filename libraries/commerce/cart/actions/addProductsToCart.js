@@ -14,7 +14,7 @@ import { messagesHaveErrors } from '../helpers';
  * @param {Array} productData The options for the products to be added.
  * @return {Function} A redux thunk.
  */
-const addToCart = productData => (dispatch, getState) => {
+const addProductToCart = productData => (dispatch, getState) => {
   const pendingProductCount = getProductPendingCount(getState());
 
   dispatch(addProductsToCart(productData));
@@ -47,4 +47,4 @@ const addToCart = productData => (dispatch, getState) => {
     });
 };
 
-export default addToCart;
+export default addProductToCart;

@@ -331,29 +331,14 @@ export const getCurrentProductStock = createSelector(
  * @param {Object} state The current application state.
  * @return {Object|null}
  */
-export const getProductStockInfo = createSelector(
-  getProductById,
-  (product) => {
-    if (!product || !product.productData) {
+export const getProductStock = createSelector(
+  getProductData,
+  (productData) => {
+    if (!productData) {
       return null;
     }
-    return product.productData.stock;
-  }
-);
 
-/**
- * Retrieves the current product orderable information.
- * @param {Object} state The current application state.
- * @return {boolean}
- */
-export const isProductOrderable = createSelector(
-  getCurrentProductStock,
-  (stockInfo) => {
-    if (!stockInfo) {
-      return true;
-    }
-
-    return stockInfo.orderable;
+    return productData.stock;
   }
 );
 
@@ -363,7 +348,7 @@ export const isProductOrderable = createSelector(
  * @return {boolean}
  */
 export const isOrderable = createSelector(
-  getProductStockInfo,
+  getProductStock,
   stockInfo => stockInfo && stockInfo.orderable
 );
 
@@ -526,4 +511,33 @@ export const getVariantId = createSelector(
 
     return productId;
   }
+);
+
+/**
+ * Retrieves the current product orderable information.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const isProductOrderable = createSelector(
+  isBaseProduct,
+  getProductStock,
+  (isBase, stock) => {
+    if (!isBase || !stock) {
+      return false;
+    }
+
+    return stock.orderable;
+  }
+);
+
+/**
+ * Determines whether or not the product is fetching.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasProductData = createSelector(
+  getProductData,
+  productData => !!productData
 );
