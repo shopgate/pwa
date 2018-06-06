@@ -55,11 +55,26 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         </Connect(FavoritesButton)>
         <Portal
           name="favorites.add-to-cart.before"
-          props={Object {}}
+          props={null}
         />
         <Portal
           name="favorites.add-to-cart"
-          props={Object {}}
+          props={
+            Object {
+              "active": null,
+              "addToCart": [Function],
+              "className": "css-ipacgg",
+              "favoritesOnce": false,
+              "handleAddToCart": [Function],
+              "isBaseProduct": true,
+              "isOrderable": true,
+              "noShadow": false,
+              "onRippleComplete": [Function],
+              "productId": "product_1",
+              "removeThrottle": null,
+              "showVariantModal": [Function],
+            }
+          }
         >
           <MockedAddToCartButton
             className="css-ipacgg"
@@ -75,7 +90,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         </Portal>
         <Portal
           name="favorites.add-to-cart.after"
-          props={Object {}}
+          props={null}
         />
       </div>
     </CTAButtons>

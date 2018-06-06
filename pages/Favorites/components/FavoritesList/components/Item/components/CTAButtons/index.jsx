@@ -30,10 +30,9 @@ const handleAddToCart = ({
 /**
  * Favorites item CTA buttons
  * @param {Object} props The component props.
- * @param {Object} context The component context.
  * @constructor
  */
-const CTAButtons = (props, context) => (
+const CTAButtons = props => (
   <div className={styles.ctaButtonWrapper}>
     <FavoritesButton
       productId={props.productId}
@@ -43,8 +42,16 @@ const CTAButtons = (props, context) => (
       once={props.favoritesOnce}
       readOnlyOnFetch
     />
-    <Portal name={portals.FAVORITES_ADD_TO_CART_BEFORE} props={context} />
-    <Portal name={portals.FAVORITES_ADD_TO_CART} props={context}>
+    <Portal name={portals.FAVORITES_ADD_TO_CART_BEFORE} />
+    <Portal
+      name={portals.FAVORITES_ADD_TO_CART}
+      props={{
+        ...props,
+        className: styles.cartButton,
+        handleAddToCart: () => handleAddToCart(props),
+        noShadow: false,
+      }}
+    >
       <AddToCartButton
         className={styles.cartButton}
         handleAddToCart={() => handleAddToCart(props)}
@@ -53,7 +60,7 @@ const CTAButtons = (props, context) => (
         isOrderable={!props.isBaseProduct && props.isOrderable}
       />
     </Portal>
-    <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} props={context} />
+    <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
   </div>
 );
 
