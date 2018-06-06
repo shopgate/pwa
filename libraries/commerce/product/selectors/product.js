@@ -407,7 +407,7 @@ const getProductDescriptionState = state => state.product.descriptionsByProductI
  * @return {string|null}
  */
 export const getProductDescription = createSelector(
-  getCurrentProductId,
+  (state, props) => props.productId,
   getProductDescriptionState,
   (productId, descriptions) => {
     const entry = descriptions[productId];
