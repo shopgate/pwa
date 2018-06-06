@@ -10,7 +10,7 @@ import { getProductPendingCount, getAddToCartMetadata } from '../selectors';
 import { messagesHaveErrors } from '../helpers';
 
 /**
- * Adds a product to the cart. Includes metadata if available and not provided
+ * Adds a product to the cart. Includes metadata if available and not provided before.
  * @param {Array} productData The options for the products to be added.
  * @return {Function} A redux thunk.
  */
