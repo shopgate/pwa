@@ -33,6 +33,23 @@ describe('<Widget />', () => {
     expect(wrapper.find(Grid.Item).exists()).toBe(true);
   });
 
+  it('should render an image widget with offset', () => {
+    const config = {
+      type: '@shopgate/commerce-widgets/image',
+      col: 1,
+      row: 1,
+      width: 6,
+      height: 6,
+    };
+
+    const wrapper = mount((
+      <Widget config={config} component={widgets[config.type]} cellSize={100} />
+    ));
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Grid.Item).exists()).toBe(true);
+  });
+
   it('should not render when the `type` prop is invalid', () => {
     const config = {
       type: 'some_widget', // Invalid

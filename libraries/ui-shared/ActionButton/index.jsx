@@ -13,6 +13,7 @@ class ActionButton extends Component {
     onClick: PropTypes.func.isRequired,
     loading: PropTypes.bool,
     noGap: PropTypes.bool,
+    testId: PropTypes.string,
   };
 
   static defaultProps = {
@@ -21,6 +22,7 @@ class ActionButton extends Component {
     type: 'primary',
     flat: true,
     noGap: false,
+    testId: null,
   };
 
   static clickDelay = 300;
@@ -68,7 +70,7 @@ class ActionButton extends Component {
     }
 
     return (
-      <div className={containerClass}>
+      <div className={containerClass} data-test-id={this.props.testId}>
         <RippleButton {...this.buttonProps} onClick={this.handleClick}>
           {this.props.children}
         </RippleButton>
