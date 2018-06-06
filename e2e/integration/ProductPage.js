@@ -66,7 +66,7 @@ describe('AndroidGMDTest productPage', () => {
 
   it('should check for reviewSection', () => {
     cy.visit('/item/393339');
-    cy.get(els.ReviewSection)
+    cy.get(els.reviewSection)
       .scrollIntoView()
       .should('be.visible');
   });

@@ -51,7 +51,7 @@ const Item = (props) => {
     <div
       aria-hidden
       className={className}
-      data-test-id="NavDrawerLink"
+      data-test-id={props.testId}
       onClick={() => handleClick(props)}
     >
       <Ripple fill>
@@ -95,6 +95,7 @@ Item.propTypes = {
   icon: PropTypes.func,
   onClick: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   primary: PropTypes.bool,
+  testId: PropTypes.string,
   withIndicator: PropTypes.bool,
 };
 
@@ -107,6 +108,7 @@ Item.defaultProps = {
   onClick: () => {},
   primary: false,
   withIndicator: false,
+  testId: null,
 };
 
 export default Item;
