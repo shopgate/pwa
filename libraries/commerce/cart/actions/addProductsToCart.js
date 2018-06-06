@@ -6,7 +6,7 @@ import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
-import { getProductPendingCount } from '../selectors';
+import { getProductPendingCount, getAddToCartMetadata } from '../selectors';
 import { messagesHaveErrors } from '../helpers';
 
 /**
@@ -16,12 +16,20 @@ import { messagesHaveErrors } from '../helpers';
  */
 const addToCart = productData => (dispatch, getState) => {
   const pendingProductCount = getProductPendingCount(getState());
+  const products = productData.map(product => {
+    const metadata = getAddToCartMetadata(getState(), product.productId);
+    return {
+      ...product,
+      ...(metadata) && { metadata },
+    }
+  })
 
-  dispatch(addProductsToCart(productData));
+  dispatch(addProductsToCart(products));
   dispatch(setCartProductPendingCount(pendingProductCount + 1));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_PRODUCTS);
-  request.setInput({ products: productData })
+
+  request.setInput({ products })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .setRetries(0)
     .dispatch()
@@ -34,7 +42,7 @@ const addToCart = productData => (dispatch, getState) => {
          * but a messages array within the response payload. So by now we also have to dispatch
          * the error action here.
          */
-        dispatch(errorAddProductsToCart(productData, messages, requestsPending));
+        dispatch(errorAddProductsToCart(products, messages, requestsPending));
         return;
       }
 
@@ -42,7 +50,7 @@ const addToCart = productData => (dispatch, getState) => {
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
-      dispatch(errorAddProductsToCart(productData, undefined, requestsPending));
+      dispatch(errorAddProductsToCart(products, undefined, requestsPending));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
 };
