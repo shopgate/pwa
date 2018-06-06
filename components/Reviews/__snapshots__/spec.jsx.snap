@@ -528,12 +528,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
-                        testId="Button"
+                        testId={null}
                         type="secondary"
                         wrapContent={true}
                       >
                         <div
                           className="css-1yv2jt6"
+                          data-test-id={null}
                         >
                           <RippleButton
                             className=""
@@ -2509,12 +2510,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId={null}
                   type="secondary"
                   wrapContent={true}
                 >
                   <div
                     className="css-omcrdt"
+                    data-test-id={null}
                   >
                     <RippleButton
                       className=""
@@ -3046,12 +3048,13 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
-                        testId="Button"
+                        testId={null}
                         type="secondary"
                         wrapContent={true}
                       >
                         <div
                           className="css-1yv2jt6"
+                          data-test-id={null}
                         >
                           <RippleButton
                             className=""
@@ -4375,12 +4378,13 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
-                        testId="Button"
+                        testId={null}
                         type="secondary"
                         wrapContent={true}
                       >
                         <div
                           className="css-1yv2jt6"
+                          data-test-id={null}
                         >
                           <RippleButton
                             className=""
