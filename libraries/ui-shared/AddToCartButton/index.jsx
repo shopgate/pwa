@@ -11,13 +11,11 @@ import styles from './style';
  */
 class AddToCartButton extends Component {
   static propTypes = {
-    handleAddToCart: PropTypes.func.isRequired,
     isDisabled: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    isOrderable: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired,
     buttonSize: PropTypes.number,
     className: PropTypes.string,
-    hasLoading: PropTypes.bool,
     iconSize: PropTypes.number,
     noShadow: PropTypes.bool,
   };
@@ -25,7 +23,6 @@ class AddToCartButton extends Component {
   static defaultProps = {
     buttonSize: styles.buttonSize,
     className: null,
-    hasLoading: false,
     iconSize: styles.iconSize,
     noShadow: false,
   };
@@ -55,11 +52,7 @@ class AddToCartButton extends Component {
       return;
     }
 
-    this.props.handleAddToCart();
-
-    if (!this.props.isOrderable) {
-      return;
-    }
+    this.props.onClick();
 
     this.setState({
       showCheckmark: true,
@@ -116,7 +109,7 @@ class AddToCartButton extends Component {
       ...iconOpacity,
     } : null;
 
-    if (this.props.isDisabled) {
+    if (this.props.isDisabled && !this.props.isLoading) {
       buttonStyle = styles.buttonDisabled;
     } else if (this.state.showCheckmark) {
       /**
@@ -180,7 +173,7 @@ class AddToCartButton extends Component {
            * favorites when there are many of them.
            */
         }
-        {this.props.hasLoading &&
+        {this.props.isLoading &&
         <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
           <IndicatorCircle
             color={themeConfig.colors.primaryContrast}
