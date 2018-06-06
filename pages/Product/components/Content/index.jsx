@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 // Import Reviews from 'Components/Reviews';
-// Import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
+import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 // Import ImageSlider from './components/ImageSlider';
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
@@ -131,11 +131,11 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
 
           {/* TAX DISCLAIMER */}
-          {/* <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
           <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
             <TaxDisclaimer />
           </Portal>
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} /> */}
+          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
         </Fragment>
       </ProductContext.Provider>
     );
