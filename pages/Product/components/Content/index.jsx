@@ -8,7 +8,7 @@ import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
 // Import Options from './components/Options';
-// Import Description from './components/Description';
+import Description from '../Description';
 // Import Properties from './components/Properties';
 import connect from './connector';
 import ProductContext from '../../context';
@@ -72,9 +72,7 @@ class ProductContent extends Component {
    * @return {JSX}
    */
   render() {
-    const { productId, variantId } = this.state;
-
-    if (!productId && !variantId) {
+    if (!this.state.productId && !this.state.variantId) {
       return null;
     }
 
@@ -110,11 +108,11 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
 
           {/* DESCRIPTION */}
-          {/* <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
+          <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
           <Portal name={portals.PRODUCT_DESCRIPTION}>
-            <Description />
+            <Description productId={this.props.productId} />
           </Portal>
-          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} /> */}
+          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
           {/* PROPERTIES */}
           {/* <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
