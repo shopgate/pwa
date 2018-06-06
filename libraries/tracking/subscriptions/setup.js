@@ -11,7 +11,7 @@ import {
   appDidStart$,
 } from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
-
+import { APP_EVENT_VIEW_DID_APPEAR } from '../constants';
 import { pwaDidAppear } from '../action-creators';
 
 /**
@@ -21,11 +21,10 @@ import { pwaDidAppear } from '../action-creators';
 export default function setup(subscribe) {
   subscribe(appWillStart$, ({ dispatch }) => {
     registerEvents([
-      'viewDidAppear',
-      'viewDidDisappear',
+      APP_EVENT_VIEW_DID_APPEAR,
     ]);
 
-    event.addCallback('viewDidAppear', () => {
+    event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
       dispatch(pwaDidAppear());
     });
   });
