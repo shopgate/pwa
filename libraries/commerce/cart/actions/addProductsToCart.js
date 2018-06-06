@@ -10,7 +10,7 @@ import { getProductPendingCount, getAddToCartMetadata } from '../selectors';
 import { messagesHaveErrors } from '../helpers';
 
 /**
- * Adds a product to the cart.
+ * Adds a product to the cart. Includes metadata if available and not provided
  * @param {Array} productData The options for the products to be added.
  * @return {Function} A redux thunk.
  */
@@ -18,7 +18,7 @@ const addToCart = productData => (dispatch, getState) => {
   const pendingProductCount = getProductPendingCount(getState());
   const products = productData.map(product => {
     const metadata = getAddToCartMetadata(getState(), product.productId);
-    return {
+    return product.metadata && product || {
       ...product,
       ...(metadata) && { metadata },
     }
