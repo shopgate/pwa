@@ -23,7 +23,7 @@ const Item = ({ children, closeMenu, onClick }) => {
 
   return (
     <Glow>
-      <div className={styles.item} onClick={handleClick} aria-hidden>
+      <div className={styles.item} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
         {children}
       </div>
     </Glow>

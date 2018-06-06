@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Grid from '../../../Grid';
 import styles from './style';
-
 /**
  * The widget component.
  */
 class Widget extends Component {
   static propTypes = {
     config: PropTypes.shape().isRequired,
-    cellSize: PropTypes.number,
     component: PropTypes.func,
   };
 
   static defaultProps = {
-    cellSize: null,
     component: null,
   };
 
@@ -24,7 +21,6 @@ class Widget extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    if (this.props.cellSize !== nextProps.cellSize) return true;
     if (this.props.component !== nextProps.component) return true;
     if (!isEqual(this.props.config, nextProps.config)) return true;
     return false;
@@ -41,25 +37,19 @@ class Widget extends Component {
       settings,
       width,
     } = this.props.config;
-    const { cellSize } = this.props;
 
     if (!this.props.component) {
       return null;
     }
 
-    let className = '';
-    if (cellSize) {
-      className = [
-        styles.height(cellSize, height, width),
-        styles.width(width),
-        styles.top(cellSize, row, height),
-        styles.left(col),
-      ].join(' ');
-    }
-
     return (
       <Grid.Item
-        className={className}
+        className={styles.widgetCell({
+          col,
+          row,
+          height,
+          width,
+        })}
         component="div"
       >
         <div className={styles.content}>
