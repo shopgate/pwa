@@ -199,6 +199,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                     className="css-1kz5xrj css-7rfn3t"
                     disabled={false}
                     onClick={[Function]}
+                    testId="Button"
                   >
                     <button
                       className="css-1kz5xrj css-7rfn3t css-1rn65c0"
@@ -347,6 +348,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                     className="css-1kz5xrj css-1livkh4"
                     disabled={false}
                     onClick={[Function]}
+                    testId="Button"
                   >
                     <button
                       className="css-1kz5xrj css-1livkh4 css-1rn65c0"
@@ -494,6 +496,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                     className="css-1kz5xrj css-1livkh4"
                     disabled={false}
                     onClick={[Function]}
+                    testId="Button"
                   >
                     <button
                       className="css-1kz5xrj css-1livkh4 css-1rn65c0"
@@ -648,6 +651,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                     className="css-1kz5xrj css-1livkh4"
                     disabled={false}
                     onClick={[Function]}
+                    testId="Button"
                   >
                     <button
                       className="css-1kz5xrj css-1livkh4 css-1rn65c0"
@@ -796,6 +800,7 @@ exports[`<TabBar /> should render when visible 1`] = `
                     className="css-1kz5xrj css-1livkh4"
                     disabled={false}
                     onClick={[Function]}
+                    testId="Button"
                   >
                     <button
                       className="css-1kz5xrj css-1livkh4 css-1rn65c0"
