@@ -93,14 +93,16 @@ export const getProductOptions = createSelector(
  * @param {Object} state The application state.
  * @returns {boolean}
  */
-export const hasProductOptions = (state) => {
-  const product = getCurrentProduct(state);
-  if (!product) {
-    return false;
-  }
+export const hasProductOptions = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return false;
+    }
 
-  return product.flags.hasOptions;
-};
+    return product.flags.hasOptions;
+  }
+);
 
 /**
  * Checks if all product options for the product are set
