@@ -4,6 +4,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import { pwaDidAppear$ } from './app';
 
 /**
  * A whitelist of routes that should be tracked with
@@ -21,6 +22,6 @@ const ignoredPaths = [
 /**
  * Emits when one of the tracked paths is entered except some special one.
  */
-export const pagesAreReady$ = routeDidChange$.filter(({ pathname }) => (
+export const pagesAreReady$ = routeDidChange$.merge(pwaDidAppear$).filter(({ pathname }) => (
   !ignoredPaths.some(path => pathname.startsWith(path))
 ));
