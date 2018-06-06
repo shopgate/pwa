@@ -33,6 +33,7 @@ class ApplyFilterButton extends Component {
       <ActionButton
         onClick={this.handleApplyFilters}
         disabled={!this.props.filtersChanged}
+        testId="applyFilterButton"
       >
         <I18n.Text string="filter.apply" />
       </ActionButton>

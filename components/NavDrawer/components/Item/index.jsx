@@ -21,6 +21,7 @@ class Item extends Component {
     icon: PropTypes.func,
     onClick: PropTypes.func,
     primary: PropTypes.bool,
+    testId: PropTypes.string,
     withIndicator: PropTypes.bool,
   };
 
@@ -31,6 +32,7 @@ class Item extends Component {
     icon: null,
     onClick: () => { },
     primary: false,
+    testId: null,
     withIndicator: false,
   };
 
@@ -79,7 +81,7 @@ class Item extends Component {
       <div
         aria-hidden
         className={className}
-        data-test-id="NavDrawerLink"
+        data-test-id={this.props.testId}
         onClick={this.handleClick}
       >
         <Grid className={styles.grid}>
