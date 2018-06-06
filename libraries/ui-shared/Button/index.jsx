@@ -20,6 +20,7 @@ class Button extends Component {
     ...BaseButton.propTypes,
     className: PropTypes.string,
     flat: PropTypes.bool,
+    testId: PropTypes.string,
     type: PropTypes.oneOf(buttonTypes),
     wrapContent: PropTypes.bool,
   };
@@ -30,6 +31,7 @@ class Button extends Component {
     flat: false,
     type: 'primary',
     wrapContent: true,
+    testId: 'Button',
   };
 
   /**
@@ -80,7 +82,7 @@ class Button extends Component {
     ) : this.props.children;
 
     return (
-      <BaseButton {...this.buttonProps} className={`${style.button} ${this.props.className}`}>
+      <BaseButton {...this.buttonProps} className={`${style.button} ${this.props.className}`} testId={this.props.testId}>
         {content}
       </BaseButton>
     );
