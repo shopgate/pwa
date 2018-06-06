@@ -110,7 +110,7 @@ class ProductContent extends Component {
           {/* DESCRIPTION */}
           <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
           <Portal name={portals.PRODUCT_DESCRIPTION}>
-            <Description productId={this.props.id} />
+            <Description productId={this.props.productId} />
           </Portal>
           <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
