@@ -1,31 +1,26 @@
 import { connect } from 'react-redux';
-import { isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { hasProductData, isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { isCurrentProductOnFavoriteList } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import addCurrentProductToCart from '@shopgate/pwa-common-commerce/cart/actions/addCurrentProductToCart';
-import {
-  isProductPageLoading,
-  isProductPageOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/page';
+import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
 /**
- * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
   isFavorite: isCurrentProductOnFavoriteList(state),
-  isLoading: isProductPageLoading(state),
-  isOrderable: isProductPageOrderable(state),
-  isDisabled: !isProductOrderable(state),
+  isLoading: !hasProductData(state, props),
+  isDisabled: !isProductOrderable(state, props),
 });
 
 /**
- * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
+ * @param {Function} props The component props.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleAddToCart: () => dispatch(addCurrentProductToCart()),
+  addToCart: products => dispatch(addProductsToCart(products)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
