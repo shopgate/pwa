@@ -15,7 +15,7 @@ describe('AndroidGMDTest login page', () => {
       .should('be.visible');
   });
 
-  it('should heck for login password input', () => {
+  it('should check for login password input', () => {
     cy.get(els.loginPagePasswordInput)
       .should('be.visible');
   });
