@@ -1,11 +1,17 @@
-import * as actionTypes from './constants';
+import {
+  INCREMENT_ACTION_COUNT,
+  DECREMENT_ACTION_COUNT,
+  RESET_ACTION_COUNT,
+  SHOW_ADD_TO_CART_BAR,
+  HIDE_ADD_TO_CART_BAR,
+} from './constants';
 
 /**
  * Dispatches the INCREMENT_ACTION_COUNT action.
  * @return {Object}
  */
 export const incrementActionCount = () => ({
-  type: actionTypes.INCREMENT_ACTION_COUNT,
+  type: INCREMENT_ACTION_COUNT,
 });
 
 /**
@@ -13,7 +19,7 @@ export const incrementActionCount = () => ({
  * @return {Object}
  */
 export const decrementActionCount = () => ({
-  type: actionTypes.DECREMENT_ACTION_COUNT,
+  type: DECREMENT_ACTION_COUNT,
 });
 
 /**
@@ -21,5 +27,21 @@ export const decrementActionCount = () => ({
  * @return {Object}
  */
 export const resetActionCount = () => ({
-  type: actionTypes.RESET_ACTION_COUNT,
+  type: RESET_ACTION_COUNT,
+});
+
+/**
+ * Dispatches the SHOW_ADD_TO_CART_BAR action.
+ * @return {Object}
+ */
+export const showAddToCartBar = () => ({
+  type: SHOW_ADD_TO_CART_BAR,
+});
+
+/**
+ * Dispatches the HIDE_ADD_TO_CART_BUTTON action.
+ * @return {Object}
+ */
+export const hideAddToCartBar = () => ({
+  type: HIDE_ADD_TO_CART_BAR,
 });

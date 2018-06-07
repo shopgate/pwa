@@ -1,45 +1,39 @@
 import {
-  INCREMENT_ACTION_COUNT,
-  DECREMENT_ACTION_COUNT,
-  RESET_ACTION_COUNT,
-  SHOW_ADD_TO_CART_BAR,
-  HIDE_ADD_TO_CART_BAR,
+  ENABLE_TAB_BAR,
+  DISABLE_TAB_BAR,
+  SHOW_TAB_BAR,
+  HIDE_TAB_BAR,
 } from './constants';
 
 const defaultState = {
-  added: 0,
+  enabled: true,
   visible: true,
 };
 
 /**
- * Stores all AddToCartBar information.
+ * Stores all TabBar information.
  * @param {Object} state The current state.
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case INCREMENT_ACTION_COUNT:
+    case ENABLE_TAB_BAR:
       return {
         ...state,
-        added: state.added + 1,
+        enabled: true,
       };
-    case DECREMENT_ACTION_COUNT:
+    case DISABLE_TAB_BAR:
       return {
         ...state,
-        added: state.added ? state.added - 1 : 0,
+        enabled: false,
       };
-    case RESET_ACTION_COUNT:
-      return {
-        ...state,
-        added: 0,
-      };
-    case SHOW_ADD_TO_CART_BAR:
+    case SHOW_TAB_BAR:
       return {
         ...state,
         visible: true,
       };
-    case HIDE_ADD_TO_CART_BAR:
+    case HIDE_TAB_BAR:
       return {
         ...state,
         visible: false,

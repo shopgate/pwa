@@ -25,6 +25,7 @@ const mockedStateBase = {
   ui: {
     addToCartBar: {
       added: 0,
+      visible: true,
     },
   },
 };
@@ -130,6 +131,26 @@ export const mockedStateVariantsNotOrderable = {
     product: {
       ...mockedStateVariantsReady.product,
       variantsByProductId: variantsByProductId(true),
+    },
+  },
+};
+
+export const mockedStateVisible = {
+  ...mockedStateSimpleProduct,
+  ui: {
+    addToCartBar: {
+      added: 0,
+      visible: true,
+    },
+  },
+};
+
+export const mockedStateHidden = {
+  ...mockedStateSimpleProduct,
+  ui: {
+    addToCartBar: {
+      added: 0,
+      visible: false,
     },
   },
 };
