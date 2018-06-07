@@ -1,12 +1,12 @@
 {
   "name": "@shopgate/pwa-ui-ios",
-  "version": "5.4.0-beta.2",
+  "version": "5.4.0-beta.3",
   "description": "Shopgate's iOS UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/eslint-config": "5.4.0-beta.2",
-    "@shopgate/pwa-common": "5.4.0-beta.2",
-    "@shopgate/pwa-unit-test": "5.4.0-beta.2"
+    "@shopgate/eslint-config": "5.4.0-beta.3",
+    "@shopgate/pwa-common": "5.4.0-beta.3",
+    "@shopgate/pwa-unit-test": "5.4.0-beta.3"
   }
 }
