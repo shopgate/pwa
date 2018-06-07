@@ -118,6 +118,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
+                      testId="Button"
                       type="secondary"
                       wrapContent={true}
                     >
@@ -126,6 +127,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                         disabled={false}
                         flat={false}
                         onClick={[Function]}
+                        testId="Button"
                         type="secondary"
                         wrapContent={false}
                       >
@@ -133,6 +135,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                           className="css-187rja2 css-63oe3q"
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
                           <button
                             className="css-187rja2 css-63oe3q css-1rn65c0"

@@ -35,6 +35,7 @@ exports[`<Header /> should render empty 1`] = `
       >
         <div
           className="css-t193cd"
+          data-test-id="ratedStarsAverage"
         >
           <RatingStars
             className=""
@@ -46,6 +47,7 @@ exports[`<Header /> should render empty 1`] = `
             <div
               aria-label="reviews.rating_stars"
               className="css-13azwyo "
+              data-test-id="ratedStars: 0"
             >
               <div
                 className="css-4s85e9"
@@ -261,90 +263,99 @@ exports[`<Header /> should render empty 1`] = `
             dispatch={[Function]}
             productId="foo"
           >
-            <ButtonLink
-              href="/item/666f6f/write_review"
-              noGap={true}
+            <div
+              data-test-id="writeReview"
             >
-              <ActionButton
-                className=""
-                disabled={false}
-                flat={true}
-                loading={false}
+              <ButtonLink
+                href="/item/666f6f/write_review"
                 noGap={true}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                type="secondary"
-                wrapContent={true}
               >
-                <div
-                  className="css-1yv2jt6"
+                <ActionButton
+                  className=""
+                  disabled={false}
+                  flat={true}
+                  loading={false}
+                  noGap={true}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId={null}
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButton
-                    className=""
-                    disabled={false}
-                    flat={true}
-                    onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
-                    type="secondary"
-                    wrapContent={true}
+                  <div
+                    className="css-1yv2jt6"
+                    data-test-id={null}
                   >
-                    <Button
+                    <RippleButton
                       className=""
                       disabled={false}
                       flat={true}
                       onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      testId="Button"
                       type="secondary"
-                      wrapContent={false}
+                      wrapContent={true}
                     >
                       <Button
-                        className="css-dh0pju "
+                        className=""
                         disabled={false}
+                        flat={true}
                         onClick={[Function]}
+                        testId="Button"
+                        type="secondary"
+                        wrapContent={false}
                       >
-                        <button
-                          className="css-dh0pju  css-1rn65c0"
-                          data-test-id="Button"
+                        <Button
+                          className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
-                          <Ripple
-                            className="css-8s1fw2 "
-                            color="#000"
+                          <button
+                            className="css-dh0pju  css-1rn65c0"
+                            data-test-id="Button"
                             disabled={false}
-                            fill={true}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
+                            onClick={[Function]}
                           >
-                            <div
-                              aria-hidden={true}
+                            <Ripple
                               className="css-8s1fw2 "
-                              data-test-id="Ripple"
-                              onClick={[Function]}
-                              style={null}
+                              color="#000"
+                              disabled={false}
+                              fill={true}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
-                              <Translate
-                                className=""
-                                params={Object {}}
-                                string="reviews.button_add"
+                              <div
+                                aria-hidden={true}
+                                className="css-8s1fw2 "
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <span
+                                <Translate
                                   className=""
+                                  params={Object {}}
+                                  string="reviews.button_add"
                                 >
-                                  reviews.button_add
-                                </span>
-                              </Translate>
-                            </div>
-                          </Ripple>
-                        </button>
+                                  <span
+                                    className=""
+                                  >
+                                    reviews.button_add
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Ripple>
+                          </button>
+                        </Button>
                       </Button>
-                    </Button>
-                  </RippleButton>
-                </div>
-              </ActionButton>
-            </ButtonLink>
+                    </RippleButton>
+                  </div>
+                </ActionButton>
+              </ButtonLink>
+            </div>
           </WriteReviewLink>
         </Connect(WriteReviewLink)>
       </div>
@@ -389,6 +400,7 @@ exports[`<Header /> should render rating summary 1`] = `
       >
         <div
           className="css-t193cd"
+          data-test-id="ratedStarsAverage"
         >
           <RatingStars
             className=""
@@ -400,6 +412,7 @@ exports[`<Header /> should render rating summary 1`] = `
             <div
               aria-label="reviews.rating_stars"
               className="css-13azwyo "
+              data-test-id="ratedStars: 2.5"
             >
               <div
                 className="css-4s85e9"
@@ -750,90 +763,99 @@ exports[`<Header /> should render rating summary 1`] = `
             dispatch={[Function]}
             productId="foo"
           >
-            <ButtonLink
-              href="/item/666f6f/write_review"
-              noGap={true}
+            <div
+              data-test-id="writeReview"
             >
-              <ActionButton
-                className=""
-                disabled={false}
-                flat={true}
-                loading={false}
+              <ButtonLink
+                href="/item/666f6f/write_review"
                 noGap={true}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                type="secondary"
-                wrapContent={true}
               >
-                <div
-                  className="css-1yv2jt6"
+                <ActionButton
+                  className=""
+                  disabled={false}
+                  flat={true}
+                  loading={false}
+                  noGap={true}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId={null}
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButton
-                    className=""
-                    disabled={false}
-                    flat={true}
-                    onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
-                    type="secondary"
-                    wrapContent={true}
+                  <div
+                    className="css-1yv2jt6"
+                    data-test-id={null}
                   >
-                    <Button
+                    <RippleButton
                       className=""
                       disabled={false}
                       flat={true}
                       onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      testId="Button"
                       type="secondary"
-                      wrapContent={false}
+                      wrapContent={true}
                     >
                       <Button
-                        className="css-dh0pju "
+                        className=""
                         disabled={false}
+                        flat={true}
                         onClick={[Function]}
+                        testId="Button"
+                        type="secondary"
+                        wrapContent={false}
                       >
-                        <button
-                          className="css-dh0pju  css-1rn65c0"
-                          data-test-id="Button"
+                        <Button
+                          className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
-                          <Ripple
-                            className="css-8s1fw2 "
-                            color="#000"
+                          <button
+                            className="css-dh0pju  css-1rn65c0"
+                            data-test-id="Button"
                             disabled={false}
-                            fill={true}
-                            onComplete={[Function]}
-                            overflow={false}
-                            size={null}
+                            onClick={[Function]}
                           >
-                            <div
-                              aria-hidden={true}
+                            <Ripple
                               className="css-8s1fw2 "
-                              data-test-id="Ripple"
-                              onClick={[Function]}
-                              style={null}
+                              color="#000"
+                              disabled={false}
+                              fill={true}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
-                              <Translate
-                                className=""
-                                params={Object {}}
-                                string="reviews.button_add"
+                              <div
+                                aria-hidden={true}
+                                className="css-8s1fw2 "
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <span
+                                <Translate
                                   className=""
+                                  params={Object {}}
+                                  string="reviews.button_add"
                                 >
-                                  reviews.button_add
-                                </span>
-                              </Translate>
-                            </div>
-                          </Ripple>
-                        </button>
+                                  <span
+                                    className=""
+                                  >
+                                    reviews.button_add
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Ripple>
+                          </button>
+                        </Button>
                       </Button>
-                    </Button>
-                  </RippleButton>
-                </div>
-              </ActionButton>
-            </ButtonLink>
+                    </RippleButton>
+                  </div>
+                </ActionButton>
+              </ButtonLink>
+            </div>
           </WriteReviewLink>
         </Connect(WriteReviewLink)>
       </div>

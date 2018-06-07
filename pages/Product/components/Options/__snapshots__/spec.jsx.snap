@@ -37,56 +37,16 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
       }
     }
   >
-    <div>
-      <Picker
-        buttonComponent={null}
-        buttonProps={Object {}}
-        clickDelay={150}
-        items={
-          Array [
-            Object {
-              "currency": "USD",
-              "price": 10,
-              "rightComponent": <PriceDifference
-                className="css-fxshz5"
-                currency="USD"
-                difference={10}
-              />,
-            },
-            Object {
-              "currency": "USD",
-              "price": 10,
-              "rightComponent": <PriceDifference
-                className="css-fxshz5"
-                currency="USD"
-                difference={10}
-              />,
-            },
-          ]
-        }
-        key="test-id"
-        label="label"
-        onChange={[Function]}
-        placeholder={
-          <Translate
-            className=""
-            params={
-              Array [
-                "label",
-              ]
-            }
-            string="product.pick_an_attribute"
-          />
-        }
+    <div
+      data-test-id="optionsPicker"
+    >
+      <div
+        data-test-id="label"
       >
         <Picker
-          buttonComponent={[Function]}
+          buttonComponent={null}
           buttonProps={Object {}}
-          className="css-degt7t"
           clickDelay={150}
-          disabled={false}
-          duration={300}
-          isOpen={false}
           items={
             Array [
               Object {
@@ -109,11 +69,9 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
               },
             ]
           }
+          key="test-id"
           label="label"
-          listComponent={[Function]}
-          modalComponent={[Function]}
           onChange={[Function]}
-          onClose={[Function]}
           placeholder={
             <Translate
               className=""
@@ -125,34 +83,61 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
               string="product.pick_an_attribute"
             />
           }
-          value={null}
         >
-          <div
+          <Picker
+            buttonComponent={[Function]}
+            buttonProps={Object {}}
             className="css-degt7t"
+            clickDelay={150}
+            disabled={false}
+            duration={300}
+            isOpen={false}
+            items={
+              Array [
+                Object {
+                  "currency": "USD",
+                  "price": 10,
+                  "rightComponent": <PriceDifference
+                    className="css-fxshz5"
+                    currency="USD"
+                    difference={10}
+                  />,
+                },
+                Object {
+                  "currency": "USD",
+                  "price": 10,
+                  "rightComponent": <PriceDifference
+                    className="css-fxshz5"
+                    currency="USD"
+                    difference={10}
+                  />,
+                },
+              ]
+            }
+            label="label"
+            listComponent={[Function]}
+            modalComponent={[Function]}
+            onChange={[Function]}
+            onClose={[Function]}
+            placeholder={
+              <Translate
+                className=""
+                params={
+                  Array [
+                    "label",
+                  ]
+                }
+                string="product.pick_an_attribute"
+              />
+            }
+            value={null}
           >
-            <Button
-              disabled={false}
-              label={
-                <Translate
-                  className=""
-                  params={
-                    Array [
-                      "label",
-                    ]
-                  }
-                  string="product.pick_an_attribute"
-                />
-              }
-              openList={[Function]}
-              value=""
+            <div
+              className="css-degt7t"
             >
-              <button
-                className="css-164ggb6"
-                onClick={[Function]}
-              >
-                <span
-                  className="css-1358lbd"
-                >
+              <Button
+                disabled={false}
+                label={
                   <Translate
                     className=""
                     params={
@@ -161,25 +146,46 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
                       ]
                     }
                     string="product.pick_an_attribute"
+                  />
+                }
+                openList={[Function]}
+                value=""
+              >
+                <button
+                  className="css-164ggb6"
+                  onClick={[Function]}
+                >
+                  <span
+                    className="css-1358lbd"
                   >
-                    <span
+                    <Translate
                       className=""
+                      params={
+                        Array [
+                          "label",
+                        ]
+                      }
+                      string="product.pick_an_attribute"
                     >
-                      product.pick_an_attribute
-                    </span>
-                  </Translate>
-                </span>
-              </button>
-            </Button>
-            <Portal
-              isOpened={true}
-              onClose={[Function]}
-              onOpen={[Function]}
-              onUpdate={[Function]}
-            />
-          </div>
+                      <span
+                        className=""
+                      >
+                        product.pick_an_attribute
+                      </span>
+                    </Translate>
+                  </span>
+                </button>
+              </Button>
+              <Portal
+                isOpened={true}
+                onClose={[Function]}
+                onOpen={[Function]}
+                onUpdate={[Function]}
+              />
+            </div>
+          </Picker>
         </Picker>
-      </Picker>
+      </div>
     </div>
   </Options>
 </I18nProvider>

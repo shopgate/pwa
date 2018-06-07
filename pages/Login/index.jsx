@@ -90,7 +90,7 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <section className={styles.container}>
+        <section className={styles.container} data-test-id="loginPage">
           <div className={styles.headline}>
             <I18n.Text string="login.headline" />
           </div>
@@ -119,7 +119,7 @@ class Login extends Component {
             <div className={styles.forgotWrapper}>
               <ForgotPassword />
             </div>
-            <div className={styles.buttonWrapper}>
+            <div className={styles.buttonWrapper} data-test-id="loginButton">
               <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
                 <I18n.Text string="login.button" />
               </RippleButton>

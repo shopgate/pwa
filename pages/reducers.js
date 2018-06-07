@@ -19,6 +19,7 @@ import navigator from 'Components/Navigator/reducer';
 import extentions from 'Extensions/reducers';
 import addToCartBar from 'Pages/Product/components/AddToCartBar/reducer';
 import general from 'Components/View/reducer';
+import tabBar from 'Components/TabBar/reducer';
 
 const reducers = {
   cart,
@@ -39,6 +40,7 @@ const reducers = {
   ui: combineReducers({
     general,
     addToCartBar,
+    tabBar,
   }),
   url,
   user,

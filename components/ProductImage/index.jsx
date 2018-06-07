@@ -102,7 +102,7 @@ class ProductImage extends Component {
       // Image is not present or could not be loaded, show a placeholder.
       return (
         <div className={styles.placeholderContainer}>
-          <div className={styles.placeholderContent}>
+          <div className={styles.placeholderContent} data-test-id="placeHolder">
             <Placeholder className={styles.placeholder} />
           </div>
         </div>
