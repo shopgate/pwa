@@ -10,6 +10,7 @@ import {
 
 describe('Pages streams', () => {
   let pagesAreReadySubscriber;
+
   beforeEach(() => {
     pagesAreReadySubscriber = jest.fn();
     pagesAreReady$.subscribe(pagesAreReadySubscriber);
