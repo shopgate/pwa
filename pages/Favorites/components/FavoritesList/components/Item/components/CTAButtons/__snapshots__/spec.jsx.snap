@@ -55,6 +55,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         </Connect(FavoritesButton)>
         <MockedAddToCartButton
           handleAddToCart={[Function]}
+          isDisabled={false}
           isLoading={false}
           isOrderable={false}
           noShadow={true}

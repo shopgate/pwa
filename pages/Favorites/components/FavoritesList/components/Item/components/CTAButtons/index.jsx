@@ -42,6 +42,7 @@ const CTAButtons = props => (
       noShadow
     />
     <AddToCartButton
+      isDisabled={false}
       handleAddToCart={() => handleAddToCart(props)}
       isLoading={false}
       isOrderable={!props.isBaseProduct(props.productId)}
