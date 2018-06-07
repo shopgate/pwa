@@ -209,7 +209,7 @@ export const getAddToCartOptions = createSelector(
   hasProductOptions,
   areProductOptionsSet,
   getRawProductOptions,
-  getCurrentProductOptions,
+  (state, props) => props.currentOptions,
   (hasOptions, areOptionsSet, options, currentOptions) => {
     // Check if options are ready to be added to a pipeline request.
     if (!hasOptions || !areOptionsSet) {

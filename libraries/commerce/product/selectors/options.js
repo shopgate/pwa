@@ -1,20 +1,20 @@
 import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
-import { getCurrentProductId, getCurrentProduct, getProductCurrency } from '../selectors/product';
+import {
+  getProductState,
+  getCurrentProduct,
+  getProductCurrency,
+} from '../selectors/product';
 
 /**
  * Retrieves the product options state.
  * @param {Object} state The application state.
  * @returns {Object} The product options state.
  */
-const getProductOptionsState = state => state.product.optionsByProductId;
-
-/**
- * Retrieves the current options for the active product.
- * @param {Object} state The application state.
- * @returns {Object}
- */
-export const getCurrentProductOptions = state => state.product.currentProduct.options;
+const getProductOptionsState = createSelector(
+  getProductState,
+  state => state.optionsByProductId
+);
 
 /**
  * Finds a product option item by the option id and item id.
@@ -36,15 +36,46 @@ const findProductOptionItem = (options, optionId, itemId) => (
  * @returns {Object} The product options.
  */
 export const getRawProductOptions = createSelector(
+  (state, props) => props.productId,
   getProductOptionsState,
-  getCurrentProductId,
-  (productOptionsState, productId) => {
+  (productId, productOptionsState) => {
     const productOptions = productOptionsState[productId];
+
     if (!productOptions || productOptions.isFetching) {
       return null;
     }
+
     return productOptions.options;
   }
+);
+
+// TODO: This needs to be optimized!
+const getOptionItems = createSelector(
+  options => options,
+  (options, values) => values,
+  (options, values, option) => option,
+  (options, values, option, selected) => selected,
+  (options, values, option, selected, currency) => currency,
+  (options, values = [], option, selected, currency) => values.map((value) => {
+    // Add prices to each item that are relative to the current total product price.
+    if (!selected) {
+      return {
+        label: value.label,
+        currency,
+        value: value.id,
+        price: value.unitPriceModifier,
+      };
+    }
+
+    const selectedItem = findProductOptionItem(options, option.id, selected);
+
+    return {
+      label: value.label,
+      currency,
+      value: value.id,
+      price: (value.unitPriceModifier - selectedItem.unitPriceModifier),
+    };
+  })
 );
 
 /**
@@ -54,37 +85,15 @@ export const getRawProductOptions = createSelector(
  */
 export const getProductOptions = createSelector(
   getProductCurrency,
-  getCurrentProductOptions,
+  (state, props) => props.currentOptions,
   getRawProductOptions,
   validateSelectorParams((currency, currentOptions, options) => (
-    options.map((option) => {
-      const selected = currentOptions[option.id];
-
-      return {
-        id: option.id,
-        label: option.label,
-        type: option.type,
-        items: (option.values || []).map(({ id, label, unitPriceModifier }) => {
-          // Add prices to each item that are relative to the current total product price.
-          if (!selected) {
-            return {
-              label,
-              currency,
-              value: id,
-              price: unitPriceModifier,
-            };
-          }
-
-          const selectedItem = findProductOptionItem(options, option.id, selected);
-          return {
-            label,
-            currency,
-            value: id,
-            price: unitPriceModifier - selectedItem.unitPriceModifier,
-          };
-        }),
-      };
-    })
+    options.map(option => ({
+      id: option.id,
+      label: option.label,
+      type: option.type,
+      items: getOptionItems(options, option.values, option, currentOptions[option.id], currency),
+    }))
   ))
 );
 
@@ -111,7 +120,7 @@ export const hasProductOptions = createSelector(
  */
 export const areProductOptionsSet = createSelector(
   getRawProductOptions,
-  getCurrentProductOptions,
+  (state, props) => props.currentOptions,
   validateSelectorParams((options, currentOptions) => (
     options.length === Object.keys(currentOptions).length
   ))

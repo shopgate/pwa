@@ -12,11 +12,20 @@ import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 
 /**
+ * @param {Object} state The current application state.
+ * @return {Object}
+ */
+export const getProductState = state => state.product;
+
+/**
  * Selects all products from the store.
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
-export const getProducts = state => state.product.productsById;
+export const getProducts = createSelector(
+  getProductState,
+  state => state.productsById
+);
 
 /**
  * Retrieves the current product or variant page from the store.
@@ -120,14 +129,16 @@ export const getProductBasePrice = createSelector(
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getProductCurrency = (state) => {
-  const currentProduct = getCurrentProduct(state);
-  if (!currentProduct) {
-    return null;
-  }
+export const getProductCurrency = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
 
-  return currentProduct.price.currency;
-};
+    return product.price.currency;
+  }
+);
 
 /**
  * Retrieves the generated result hash for a category ID.

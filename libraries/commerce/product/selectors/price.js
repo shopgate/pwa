@@ -5,7 +5,6 @@ import {
   getProductBasePrice,
 } from '../selectors/product';
 import {
-  getCurrentProductOptions,
   getRawProductOptions,
   hasProductOptions,
   areProductOptionsSet,
@@ -21,7 +20,7 @@ import {
  * @returns {number}
  */
 export const getProductPriceAddition = createSelector(
-  getCurrentProductOptions,
+  (state, props) => props.currentOptions,
   getRawProductOptions,
   validateSelectorParams(
     (currentOptions, productOptions) => {
