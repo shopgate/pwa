@@ -4,10 +4,11 @@ exports[`<CheckoutButton / Checkout is possible should render without any props 
 <Link
   className=""
   href="/checkout"
+  disabled={true}
 >
   <RippleButton
     className="css-63oe3q"
-    disabled={true}
+    disabled={false}
     flat={false}
     onClick={null}
     rippleClassName=""
