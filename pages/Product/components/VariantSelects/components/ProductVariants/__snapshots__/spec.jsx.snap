@@ -229,13 +229,69 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         Object {
                           "disabled": false,
                           "label": "Black",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "1",
                         },
                         Object {
                           "disabled": false,
                           "label": "Blue",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "2",
                         },
                       ]
@@ -274,13 +330,69 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                           Object {
                             "disabled": false,
                             "label": "Black",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "1",
                           },
                           Object {
                             "disabled": false,
                             "label": "Blue",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "2",
                           },
                         ]
@@ -378,19 +490,103 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         Object {
                           "disabled": true,
                           "label": "0",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "1",
                         },
                         Object {
                           "disabled": true,
                           "label": "11",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "2",
                         },
                         Object {
                           "disabled": true,
                           "label": "7",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "3",
                         },
                       ]
@@ -429,19 +625,103 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                           Object {
                             "disabled": true,
                             "label": "0",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "1",
                           },
                           Object {
                             "disabled": true,
                             "label": "11",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "2",
                           },
                           Object {
                             "disabled": true,
                             "label": "7",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "3",
                           },
                         ]
@@ -765,13 +1045,69 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         Object {
                           "disabled": false,
                           "label": "Black",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "1",
                         },
                         Object {
                           "disabled": false,
                           "label": "Blue",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "2",
                         },
                       ]
@@ -810,13 +1146,69 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                           Object {
                             "disabled": false,
                             "label": "Black",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "1",
                           },
                           Object {
                             "disabled": false,
                             "label": "Blue",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "2",
                           },
                         ]
@@ -977,7 +1369,35 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         Object {
                           "disabled": false,
                           "label": "7",
-                          "rightComponent": null,
+                          "rightComponent": <UNDEFINED>
+                            <Portal
+                              name="product.variant-select.picker.availability.before"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                            <Portal
+                              name="product.variant-select.picker.availability.after"
+                              props={
+                                Object {
+                                  "state": undefined,
+                                  "text": undefined,
+                                }
+                              }
+                            />
+                          </UNDEFINED>,
                           "value": "3",
                         },
                       ]
@@ -1098,7 +1518,35 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                           Object {
                             "disabled": false,
                             "label": "7",
-                            "rightComponent": null,
+                            "rightComponent": <UNDEFINED>
+                              <Portal
+                                name="product.variant-select.picker.availability.before"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                              <Portal
+                                name="product.variant-select.picker.availability.after"
+                                props={
+                                  Object {
+                                    "state": undefined,
+                                    "text": undefined,
+                                  }
+                                }
+                              />
+                            </UNDEFINED>,
                             "value": "3",
                           },
                         ]

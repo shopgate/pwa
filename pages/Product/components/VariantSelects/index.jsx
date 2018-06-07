@@ -44,39 +44,41 @@ const createPickerItem = (value) => {
     rightComponent: null,
   };
 
-  if (value.availability) {
-    result.rightComponent = (
-      <Fragment>
-        <Portal
-          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE}
-          props={{
-            text: value.availability.text,
-            state: value.availability.state,
-          }}
-        />
-        <Portal
-          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY}
-          props={{
-            text: value.availability.text,
-            state: value.availability.state,
-          }}
-        >
+  const { text, state } = value.availability || {};
+
+  result.rightComponent = (
+    <Fragment>
+      <Portal
+        name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE}
+        props={{
+          text,
+          state,
+        }}
+      />
+      <Portal
+        name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY}
+        props={{
+          text,
+          state,
+        }}
+      >
+        { value.availability &&
           <Availability
-            text={value.availability.text}
-            state={value.availability.state}
+            text={text}
+            state={state}
             className={styles.availability}
           />
-        </Portal>
-        <Portal
-          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER}
-          props={{
-            text: value.availability.text,
-            state: value.availability.state,
-          }}
-        />
-      </Fragment>
-    );
-  }
+        }
+      </Portal>
+      <Portal
+        name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER}
+        props={{
+          text,
+          state,
+        }}
+      />
+    </Fragment>
+  );
 
   return result;
 };
