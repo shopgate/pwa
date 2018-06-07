@@ -6,14 +6,12 @@ import PriceDifference from './components/PriceDifference';
 import connect from './connector';
 import styles from './style';
 
-const PICKER_CHANGE_DELAY = 300;
-
 /**
  * The Product Options component.
  */
 class Options extends Component {
   static propTypes = {
-    setProductOption: PropTypes.func.isRequired,
+    storeSelection: PropTypes.func.isRequired,
     currentOptions: PropTypes.shape(),
     options: PropTypes.arrayOf(PropTypes.shape()),
   };
@@ -24,10 +22,10 @@ class Options extends Component {
   };
 
   /**
-   * Triggers setProductOptions when the component is mounted and has options set.
+   * Triggers storeSelections when the component is mounted and has options set.
    */
   componentDidMount() {
-    if (!this.props.setProductOption || !this.props.options) {
+    if (!this.props.storeSelection || !this.props.options) {
       return;
     }
 
@@ -37,7 +35,7 @@ class Options extends Component {
         return;
       }
 
-      this.props.setProductOption(option.id, option.items[0].value);
+      this.props.storeSelection(option.id, option.items[0].value);
     });
   }
 
@@ -54,7 +52,7 @@ class Options extends Component {
           return;
         }
 
-        this.props.setProductOption(option.id, option.items[0].value);
+        this.props.storeSelection(option.id, option.items[0].value);
       });
     }
   }
@@ -62,24 +60,13 @@ class Options extends Component {
   /**
    * Only update when options change.
    * @param {Object} nextProps The incoming props.
+   * @param {Object} nextState The new state.
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
     return this.props.options !== nextProps.options ||
       this.props.currentOptions !== nextProps.currentOptions;
   }
-
-  /**
-   * Handles change callbacks from Picker components.
-   * @param {string} id The Picker Id
-   * @param {*} value The Picker value
-   */
-  handlePickerChange = (id, value) => {
-    setTimeout(
-      () => this.props.setProductOption(id, value),
-      PICKER_CHANGE_DELAY
-    );
-  };
 
   /**
    * Renders the component
@@ -94,19 +81,20 @@ class Options extends Component {
 
     return (
       <div data-test-id="optionsPicker">
-        {options.map(({
- id, type, label, items,
-}) => {
-          if (type !== 'select') {
+        {options.map((option) => {
+          if (option.type !== 'select') {
             return null;
           }
 
+          const params = [
+            option.label,
+          ];
+
           return (
-            <div data-test-id={label}>
+            <div key={option.id} data-test-id={option.label}>
               <Picker
-                key={id}
-                label={label}
-                items={items.map(item => ({
+                label={option.label}
+                items={option.items.map(item => ({
                   ...item,
                   rightComponent: (
                     <PriceDifference
@@ -117,10 +105,10 @@ class Options extends Component {
                   ),
                 }))}
                 placeholder={
-                  <I18n.Text string="product.pick_an_attribute" params={[label]} />
+                  <I18n.Text string="product.pick_an_attribute" params={params} />
                 }
-                value={currentOptions[id]}
-                onChange={value => this.handlePickerChange(id, value)}
+                value={currentOptions[option.id]}
+                onChange={value => this.props.storeSelection(option.id, value)}
               />
             </div>
           );
