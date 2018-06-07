@@ -1,7 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import event from '@shopgate/pwa-core/classes/Event';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE,
+  PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY,
+  PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '@shopgate/pwa-common-commerce/cart/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RouteGuard from '@shopgate/pwa-common/components/Router/components/RouteGuard';
@@ -40,11 +46,23 @@ const createPickerItem = (value) => {
 
   if (value.availability) {
     result.rightComponent = (
-      <Availability
-        text={value.availability.text}
-        state={value.availability.state}
-        className={styles.availability}
-      />
+      <Fragment>
+        <Portal
+          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE}
+          props={{ ...value.availability }}
+        />
+        <Portal name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY} props={{ ...value.availability }}>
+          <Availability
+            text={value.availability.text}
+            state={value.availability.state}
+            className={styles.availability}
+          />
+        </Portal>
+        <Portal
+          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER}
+          props={{ ...value.availability }}
+        />
+      </Fragment>
     );
   }
 
