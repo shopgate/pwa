@@ -49,9 +49,18 @@ const createPickerItem = (value) => {
       <Fragment>
         <Portal
           name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE}
-          props={{ ...value.availability }}
+          props={{
+            text: value.availability.text,
+            state: value.availability.state,
+          }}
         />
-        <Portal name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY} props={{ ...value.availability }}>
+        <Portal
+          name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY}
+          props={{
+            text: value.availability.text,
+            state: value.availability.state,
+          }}
+        >
           <Availability
             text={value.availability.text}
             state={value.availability.state}
@@ -60,7 +69,10 @@ const createPickerItem = (value) => {
         </Portal>
         <Portal
           name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER}
-          props={{ ...value.availability }}
+          props={{
+            text: value.availability.text,
+            state: value.availability.state,
+          }}
         />
       </Fragment>
     );
