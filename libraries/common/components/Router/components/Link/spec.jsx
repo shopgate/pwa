@@ -69,4 +69,27 @@ describe('<Link />', () => {
     expect(mockConstructor).toHaveBeenCalledWith('/category/123');
     expect(mockOpen).toHaveBeenCalled();
   });
+
+  it('should construct disabled parsed-link and click should be noop', () => {
+    const wrapper = mount(
+      (
+        <Link href="/category/toClick" disabled={true}>
+          <span>Test</span>
+        </Link>
+      ),
+      {
+        context: {
+          history: {
+            push: () => {},
+          },
+        },
+      }
+    );
+
+    expect(wrapper).toMatchSnapshot();
+    wrapper.find('div[role="link"]').at(0).simulate('click');
+
+    expect(mockConstructor).not.toHaveBeenCalledWith('/category/toClick');
+    expect(mockOpen).not.toHaveBeenCalled();
+  });
 });

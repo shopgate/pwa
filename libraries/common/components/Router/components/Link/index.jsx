@@ -13,10 +13,12 @@ export default class Link extends PureComponent {
     children: PropTypes.node.isRequired,
     href: PropTypes.string.isRequired,
     className: PropTypes.string,
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
     className: '',
+    disabled: false,
   };
 
   /**
@@ -25,6 +27,10 @@ export default class Link extends PureComponent {
    */
   handleOpenLink = (e) => {
     e.preventDefault();
+
+    if (this.props.disabled) {
+      return;
+    }
 
     const link = new ParsedLink(this.props.href);
     link.open();
