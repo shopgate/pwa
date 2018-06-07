@@ -46,10 +46,13 @@ const CTAButtons = props => (
     <Portal
       name={portals.FAVORITES_ADD_TO_CART}
       props={{
-        ...props,
         className: styles.cartButton,
         handleAddToCart: () => handleAddToCart(props),
+        isLoading: false,
+        isBaseProduct: props.isBaseProduct,
+        isDisabled: !props.isOrderable,
         noShadow: false,
+        productId: props.productId,
       }}
     >
       <AddToCartButton
