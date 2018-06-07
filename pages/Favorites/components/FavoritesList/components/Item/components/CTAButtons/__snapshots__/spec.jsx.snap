@@ -61,18 +61,13 @@ exports[`<CTAButtons /> should render buttons 1`] = `
           name="favorites.add-to-cart"
           props={
             Object {
-              "active": null,
-              "addToCart": [Function],
               "className": "css-ipacgg",
-              "favoritesOnce": false,
               "handleAddToCart": [Function],
               "isBaseProduct": true,
-              "isOrderable": true,
+              "isDisabled": false,
+              "isLoading": false,
               "noShadow": false,
-              "onRippleComplete": [Function],
               "productId": "product_1",
-              "removeThrottle": null,
-              "showVariantModal": [Function],
             }
           }
         >
