@@ -60,10 +60,10 @@ export const Cart = Loadable({
 //   Loading: () => null,
 // });
 
-// Export const Login = Loadable({
-//   Loader: () => import('./Login'),
-//   Loading: () => null,
-// });
+export const Login = Loadable({
+  loader: () => import('./Login'),
+  loading: () => null,
+});
 
 // Export const Orders = Loadable({
 //   Loader: () => import('./Orders'),
