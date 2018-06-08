@@ -9,6 +9,23 @@ import actions from './actions';
  * The parsed link class.
  */
 class ParsedLink {
+  static isShopgateShopLink(href) {
+    if (href.indexOf('http') !== 0) {
+      return false;
+    }
+    const regex = /^(https:\/\/)?[^.]+(.shopgate(pg)?.com)/;
+    const isShopgatedomain = regex.test(href);
+    if (!isShopgatedomain) {
+      return false;
+    }
+    const parsed = new URL(href);
+
+    if (parsed.hostname === 'www.shopgate.com' || parsed.hostname === 'shopgate.com') {
+      return false;
+    }
+
+    return true;
+  }
   /**
    * Parses a link based on its href.
    * @param {string} href Link href.
@@ -49,6 +66,19 @@ class ParsedLink {
       }
     }
 
+    if (this.constructor.isShopgateShopLink(this.href)) {
+      // For shopgate links, we only pass the pathname.
+      options.getSimpleLinkParserOptions.apply(
+        this,
+        [
+          parser.pathname.split('/').splice(1),
+          queryParams,
+          parser.pathname,
+          parser.search,
+        ]
+      );
+      return;
+    }
     // Is absolute link
     const isAbsolute = regexAbsoluteLink.exec(this.href) !== null;
     if (isAbsolute) {

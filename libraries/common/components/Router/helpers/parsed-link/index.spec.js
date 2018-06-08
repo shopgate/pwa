@@ -17,8 +17,10 @@ jest.mock('@shopgate/pwa-core/classes/Event', () => ({
 }));
 
 const mockedExternalLink = jest.fn();
+const mockedReactRouter = jest.fn();
 jest.mock('./actions', () => ({
   externalLink: (...args) => mockedExternalLink(...args),
+  reactRouter: (...args) => mockedReactRouter(...args),
 }));
 
 describe('ParsedLink', () => {
@@ -26,27 +28,66 @@ describe('ParsedLink', () => {
     mockedWarnLog.mockClear();
     mockedEventTrigger.mockClear();
     mockedExternalLink.mockClear();
+    mockedReactRouter.mockClear();
   });
-  it('should parse a simple link', () => {
-    const href = 'https://example.com/foo?bar=1';
-    const link = new ParsedLink(href);
-    expect(link.getHref()).toBe(href);
-    expect(link.getOriginalHref()).toBe(href);
-    expect(link.actions).toEqual([
-      {
-        action: 'externalLink',
-        options: 'https://example.com/foo?bar=1',
-      },
-    ]);
+  describe('.isShopgateShopLink', () => {
+    const positives = [
+      'http://foo.shopgate.com',
+      'https://foo.shopgate.com',
+      'http://foo.shopgate.com/page/cms',
+      'https://foo.shopgate.com/page/cms',
+    ];
+    const negatives = [
+      'https://example.com/bar',
+      'https://example.com',
+      'http://shopgate.com/foo',
+      'https://shopgate.com/foo',
+      'https://www.shopgate.com',
+      'http://www.shopgate.com',
+    ];
+
+    positives.forEach((href) => {
+      it(`should return true for ${href} link`, () => {
+        expect(ParsedLink.isShopgateShopLink(href)).toBe(true);
+      });
+    });
+    negatives.forEach((href) => {
+      it(`should return false for ${href} link`, () => {
+        expect(ParsedLink.isShopgateShopLink(href)).toBe(false);
+      });
+    });
   });
-  it('should warn when invalid action is added', () => {
-    const link = new ParsedLink('/foo');
-    link.addLinkAction('foo');
-    expect(mockedWarnLog).toHaveBeenCalled();
-  });
-  it('should call all handlers with appropriate action on open', () => {
-    const link = new ParsedLink('https://example.com/foo');
-    link.open(undefined, true);
-    expect(mockedExternalLink).toHaveBeenCalled();
+  describe('Main', () => {
+    it('should parse a simple link', () => {
+      const href = 'https://example.com/foo?bar=1';
+      const link = new ParsedLink(href);
+      expect(link.getHref()).toBe(href);
+      expect(link.getOriginalHref()).toBe(href);
+      expect(link.actions).toEqual([
+        {
+          action: 'externalLink',
+          options: 'https://example.com/foo?bar=1',
+        },
+      ]);
+    });
+    it('should warn when invalid action is added', () => {
+      const link = new ParsedLink('/foo');
+      link.addLinkAction('foo');
+      expect(mockedWarnLog).toHaveBeenCalled();
+    });
+    it('should call all handlers with appropriate action on open', () => {
+      const link = new ParsedLink('https://example.com/foo');
+      link.open(undefined, true);
+      expect(mockedExternalLink).toHaveBeenCalled();
+      expect(mockedWarnLog).not.toHaveBeenCalled();
+    });
+    it('should recognize internal shopgate link as internal', () => {
+      const link = new ParsedLink('https://foo.shopgate.com/page/cms');
+      link.open();
+      expect(mockedExternalLink).not.toHaveBeenCalled();
+      expect(mockedWarnLog).not.toHaveBeenCalled();
+      expect(mockedReactRouter).toHaveBeenCalled();
+      expect(mockedReactRouter.mock.calls[0][0]).toEqual({ queryParams: {}, url: '/page/cms' });
+    });
   });
 });
