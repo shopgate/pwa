@@ -21,10 +21,10 @@ export const getProducts = state => state.product.productsById;
 /**
  * Retrieves the current product or variant page from the store.
  * @param {Object} state The current application state.
+ * @param {Object} props The current component props.
  * @return {string} The id of the current product.
  */
-export const getCurrentProductId = state =>
-  state.product.currentProduct.productVariantId || state.product.currentProduct.productId;
+export const getCurrentProductId = (state, props) => (props ? props.productId : null);
 
 /**
  * Gets the product id from the current history state pathname.
@@ -86,9 +86,9 @@ export const getCurrentBaseProduct = createSelector(
  * @returns {Object} The current product.
  */
 export const getCurrentProduct = createSelector(
-  getCurrentProductId,
   getProducts,
-  (productId, products) => {
+  (state, props) => props.productId,
+  (products, productId) => {
     const entry = products[productId];
     // No return null when data is there but product data is updating.
     if (!entry || isUndefined(entry.productData)) {
@@ -104,14 +104,16 @@ export const getCurrentProduct = createSelector(
  * @param {Object} state The application state.
  * @returns {number|null}
  */
-export const getProductBasePrice = (state) => {
-  const currentProduct = getCurrentProduct(state);
-  if (!currentProduct) {
-    return null;
-  }
+export const getProductUnitPrice = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
 
-  return currentProduct.price.unitPrice;
-};
+    return product.price.unitPrice;
+  }
+);
 
 /**
  * Retrieves the price currency from a product.
@@ -432,9 +434,9 @@ const getProductPropertiesState = state => state.product.propertiesByProductId;
  * @return {string|null}
  */
 export const getProductProperties = createSelector(
-  getCurrentProductId,
   getProductPropertiesState,
-  (productId, properties) => {
+  (state, props) => props.productId,
+  (properties, productId) => {
     const entry = properties[productId];
     if (!entry || entry.isFetching || isUndefined(entry.properties)) {
       return null;
