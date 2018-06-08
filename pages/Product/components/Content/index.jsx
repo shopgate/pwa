@@ -4,7 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 // Import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-// Import ImageSlider from './components/ImageSlider';
+import ImageSlider from '../ImageSlider';
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
 // Import Options from './components/Options';
@@ -82,11 +82,11 @@ class ProductContent extends Component {
       <ProductContext.Provider value={this.state}>
         <Fragment>
           {/* IMAGE */}
-          {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+          <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
           <Portal name={portals.PRODUCT_IMAGE}>
-            <ImageSlider />
+            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
           </Portal>
-          <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
+          <Portal name={portals.PRODUCT_IMAGE_AFTER} />
 
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
