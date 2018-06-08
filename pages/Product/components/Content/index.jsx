@@ -91,7 +91,7 @@ class ProductContent extends Component {
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
           <Portal name={portals.PRODUCT_HEADER}>
-            <Header productId={id} />
+            <Header />
           </Portal>
           <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
