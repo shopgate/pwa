@@ -20,8 +20,7 @@ class AuthRoutes {
 
   /**
    * Returns all protected routes.
-   * @param {string} pattern The pattern to find.
-   * @return {string|null}
+   * @return {Map}
    */
   getAll() {
     return this.routes;
