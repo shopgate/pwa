@@ -2,17 +2,17 @@ import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
   getCurrentProduct,
-  getProductBasePrice,
-} from '../selectors/product';
+  getProductUnitPrice,
+} from './product';
 import {
   getRawProductOptions,
   hasProductOptions,
   areProductOptionsSet,
-} from '../selectors/options';
+} from './options';
 import {
   hasCurrentProductVariants,
   isProductChildrenSelected,
-} from '../selectors/variants';
+} from './variants';
 
 /**
  * Calculates the additional price for the current product.
@@ -46,7 +46,7 @@ export const getProductPriceAddition = createSelector(
  * @returns {number}
  */
 export const getProductTotalPrice = createSelector(
-  getProductBasePrice,
+  getProductUnitPrice,
   getProductPriceAddition,
   validateSelectorParams((basePrice, priceAddition) => basePrice + priceAddition)
 );

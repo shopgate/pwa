@@ -95,9 +95,9 @@ export const getCurrentBaseProduct = createSelector(
  * @returns {Object} The current product.
  */
 export const getCurrentProduct = createSelector(
-  (state, props) => props.productId,
   getProducts,
-  (productId, products) => {
+  (state, props) => props.productId,
+  (products, productId) => {
     const entry = products[productId];
     // No return null when data is there but product data is updating.
     if (!entry || isUndefined(entry.productData)) {
@@ -113,7 +113,7 @@ export const getCurrentProduct = createSelector(
  * @param {Object} state The application state.
  * @returns {number|null}
  */
-export const getProductBasePrice = createSelector(
+export const getProductUnitPrice = createSelector(
   getCurrentProduct,
   (product) => {
     if (!product) {
@@ -445,9 +445,9 @@ const getProductPropertiesState = state => state.product.propertiesByProductId;
  * @return {string|null}
  */
 export const getProductProperties = createSelector(
-  getCurrentProductId,
   getProductPropertiesState,
-  (productId, properties) => {
+  (state, props) => props.productId,
+  (properties, productId) => {
     const entry = properties[productId];
     if (!entry || entry.isFetching || isUndefined(entry.properties)) {
       return null;
