@@ -85,7 +85,7 @@ const getOptionItems = createSelector(
  */
 export const getProductOptions = createSelector(
   getProductCurrency,
-  (state, props) => props.currentOptions,
+  (state, props) => props.options,
   getRawProductOptions,
   validateSelectorParams((currency, currentOptions, options) => (
     options.map(option => ({
@@ -120,7 +120,7 @@ export const hasProductOptions = createSelector(
  */
 export const areProductOptionsSet = createSelector(
   getRawProductOptions,
-  (state, props) => props.currentOptions,
+  (state, props) => props.options,
   validateSelectorParams((options, currentOptions) => (
     options.length === Object.keys(currentOptions).length
   ))

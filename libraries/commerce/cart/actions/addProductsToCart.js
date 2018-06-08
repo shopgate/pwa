@@ -6,22 +6,34 @@ import addProductsToCart from '../action-creators/addProductsToCart';
 import successAddProductsToCart from '../action-creators/successAddProductsToCart';
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
-import { getProductPendingCount } from '../selectors';
+import { getProductPendingCount, getAddToCartOptions } from '../selectors';
+import { getProductMetadata } from '../../product/selectors/product';
 import { messagesHaveErrors } from '../helpers';
 
 /**
  * Adds a product to the cart.
- * @param {Array} productData The options for the products to be added.
+ * @param {Object} data The pieces for the products to be added.
  * @return {Function} A redux thunk.
  */
-const addProductToCart = productData => (dispatch, getState) => {
-  const pendingProductCount = getProductPendingCount(getState());
+const addProductToCart = data => (dispatch, getState) => {
+  const state = getState();
+  const pendingProductCount = getProductPendingCount(state);
+  const options = getAddToCartOptions(state, data);
+  const metadata = getProductMetadata(state, data.productId);
+  const products = [
+    {
+      productId: data.productId,
+      quantity: data.quantity,
+      ...options && { options },
+      ...metadata && { metadata },
+    },
+  ];
 
-  dispatch(addProductsToCart(productData));
+  dispatch(addProductsToCart(products));
   dispatch(setCartProductPendingCount(pendingProductCount + 1));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_PRODUCTS);
-  request.setInput({ products: productData })
+  request.setInput({ products })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .setRetries(0)
     .dispatch()
@@ -34,7 +46,7 @@ const addProductToCart = productData => (dispatch, getState) => {
          * but a messages array within the response payload. So by now we also have to dispatch
          * the error action here.
          */
-        dispatch(errorAddProductsToCart(productData, messages, requestsPending));
+        dispatch(errorAddProductsToCart(products, messages, requestsPending));
         return;
       }
 
@@ -42,7 +54,7 @@ const addProductToCart = productData => (dispatch, getState) => {
     })
     .catch((error) => {
       const requestsPending = request.hasPendingRequests();
-      dispatch(errorAddProductsToCart(productData, undefined, requestsPending));
+      dispatch(errorAddProductsToCart(products, undefined, requestsPending));
       logger.error(pipelines.SHOPGATE_CART_ADD_PRODUCTS, error);
     });
 };
