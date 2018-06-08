@@ -28,10 +28,12 @@ export const requestLogin = (user, password) => ({
 
 /**
  * Creates the dispatched RECEIVE_LOGIN action object.
+ * @param {string} redirect The location to redirect to.
  * @returns {Object} The dispatched action object.
  */
-export const successLogin = () => ({
+export const successLogin = redirect => ({
   type: SUCCESS_LOGIN,
+  redirect,
 });
 
 /**

@@ -11,9 +11,12 @@ import {
 
 /**
  * Login the current user.
+ * @param {string} credentials.login The username to login.
+ * @param {string} credentials.password The password to login.
+ * @param {string} redirect The location to redirect to when logged in.
  * @return {Function} A redux thunk.
  */
-export default ({ login, password }) => (dispatch) => {
+export default ({ login, password }, redirect) => (dispatch) => {
   dispatch(requestLogin(login, password));
 
   const params = {
@@ -34,7 +37,7 @@ export default ({ login, password }) => (dispatch) => {
     .dispatch()
     .then(({ success, messages }) => {
       if (success) {
-        dispatch(successLogin());
+        dispatch(successLogin(redirect));
       } else {
         dispatch(errorLogin(messages));
       }
@@ -48,7 +51,7 @@ export default ({ login, password }) => (dispatch) => {
          * in. In that situation the success action can also dispatch to trigger the neccesary
          * processes which have to happen after a successful login.
          */
-        dispatch(successLogin());
+        dispatch(successLogin(redirect));
       } else if (code === ELEGACYSGCONNECT) {
         /**
          * The app is connected to the shop system via the legacy shopgate connect. Login via
