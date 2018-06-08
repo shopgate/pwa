@@ -1,5 +1,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { shopAlias } from '@shopgate/pwa-common/helpers/config';
 import { history as defaultHistory } from '../../../../helpers/router';
 import options from './options';
 import actions from './actions';
