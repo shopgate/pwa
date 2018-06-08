@@ -8,9 +8,6 @@ import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipeline
  * @param {Function} subscribe The subscribe function.
  */
 export default function app(subscribe) {
-  /**
-   * Gets triggered when the app starts.
-   */
   subscribe(appDidStart$, ({ dispatch }) => {
     // Add event callbacks.
     event.addCallback(EVENT_PIPELINE_ERROR, params => dispatch(pipelineErrorDialog(params)));

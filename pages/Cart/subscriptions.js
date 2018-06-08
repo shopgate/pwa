@@ -1,6 +1,7 @@
 import toggleCartIcon from 'Components/Navigator/actions/toggleCartIcon';
+import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
-import { cartWillEnter$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { cartWillEnter$, cartWillLeave$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 
 /**
@@ -12,5 +13,10 @@ export default function cart(subscribe) {
     dispatch(setTitle('titles.cart'));
     dispatch(toggleCartIcon(false));
     dispatch(disableNavigatorSearch());
+  });
+
+  subscribe(cartWillLeave$, ({ dispatch }) => {
+    dispatch(toggleCartIcon(true));
+    dispatch(enableNavigatorSearch());
   });
 }
