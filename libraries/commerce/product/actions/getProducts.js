@@ -1,7 +1,7 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
 import * as pipelines from '../constants/Pipelines';
 import requestProducts from '../action-creators/requestProducts';
@@ -65,7 +65,7 @@ const getProducts = ({
     const state = getState();
     const { offset, limit, ...hashParams } = params;
 
-    const sort = getSortOrder(state);
+    const { sort = DEFAULT_SORT } = params;
     const filters = getActiveFilters(state);
 
     // We need to process the params to handle edge cases in the pipeline params.
