@@ -71,11 +71,16 @@ class ProductContent extends Component {
     );
   }
 
-  storeOptionSelection = (optionId, valueId) => {
+  /**
+   * Stores the selected options in local state.
+   * @param {string} optionId The ID of the option.
+   * @param {string} value The option value.
+   */
+  storeOptionSelection = (optionId, value) => {
     this.setState(prevState => ({
       options: {
         ...prevState.options,
-        [optionId]: valueId,
+        [optionId]: value,
       },
     }));
   }
@@ -118,9 +123,9 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
           <Portal name={portals.PRODUCT_OPTIONS}>
             <Options
-              productId={this.props.variantId || this.props.productId}
+              productId={id}
               storeSelection={this.storeOptionSelection}
-              currentOptions={this.state.options}
+              options={this.state.options}
             />
           </Portal>
           <Portal name={portals.PRODUCT_OPTIONS_AFTER} />

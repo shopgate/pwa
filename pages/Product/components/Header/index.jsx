@@ -29,7 +29,7 @@ const ProductHeader = () => (
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons productId={id} currentOptions={options} />
+            <CTAButtons productId={id} options={options} />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
@@ -90,7 +90,7 @@ const ProductHeader = () => (
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_PRICE_STRIKED_BEFORE} />
                     <Portal name={portals.PRODUCT_PRICE_STRIKED}>
-                      <PriceStriked productId={id} currentOptions={options} />
+                      <PriceStriked productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_PRICE_STRIKED_AFTER} />
                   </div>
@@ -99,7 +99,7 @@ const ProductHeader = () => (
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_PRICE_BEFORE} />
                     <Portal name={portals.PRODUCT_PRICE}>
-                      <Price productId={id} currentOptions={options} />
+                      <Price productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_PRICE_AFTER} />
                   </div>
@@ -108,7 +108,7 @@ const ProductHeader = () => (
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_PRICE_INFO_BEFORE} />
                     <Portal name={portals.PRODUCT_PRICE_INFO}>
-                      <PriceInfo productId={id} currentOptions={options} />
+                      <PriceInfo productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_PRICE_INFO_AFTER} />
                   </div>
@@ -117,7 +117,7 @@ const ProductHeader = () => (
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_TIERS_BEFORE} />
                     <Portal name={portals.PRODUCT_TIERS}>
-                      <Tiers productId={id} currentOptions={options} />
+                      <Tiers productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_TIERS_AFTER} />
                   </div>
