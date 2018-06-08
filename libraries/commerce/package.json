@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common-commerce",
-  "version": "5.4.0-beta.3",
+  "version": "5.4.0-beta.4",
   "description": "Commerce library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -24,11 +24,11 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "5.4.0-beta.3",
-    "@shopgate/pwa-core": "5.4.0-beta.3",
-    "@shopgate/pwa-unit-test": "5.4.0-beta.3",
+    "@shopgate/pwa-common": "5.4.0-beta.4",
+    "@shopgate/pwa-core": "5.4.0-beta.4",
+    "@shopgate/pwa-unit-test": "5.4.0-beta.4",
     "@shopgate/react-hammerjs": "^0.5.3",
-    "@shopgate/tracking-core": "5.4.0-beta.3",
+    "@shopgate/tracking-core": "5.4.0-beta.4",
     "jest": "^22.4.3",
     "lodash": "^4.17.4",
     "react": "^16.3.2",
