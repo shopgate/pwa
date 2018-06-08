@@ -11,6 +11,7 @@ css.global('html', {
 
 css.global('body', {
   userSelect: 'none',
+  backgroundColor: '#fff',
 });
 
 /**
