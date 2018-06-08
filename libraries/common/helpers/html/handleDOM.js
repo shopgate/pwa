@@ -1,4 +1,5 @@
 import event from '@shopgate/pwa-core/classes/Event/index';
+
 /**
  * Parses a collection of DOM nodes for external script tags.
  * @param {Array} nodes A collection of DOM nodes.
