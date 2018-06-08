@@ -42,10 +42,11 @@ const Pages = () => (
           <SnackBar />
           <Router>
             <Route pattern={`${INDEX_PATH}`} component={routes.StartPage} />
-            <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} />
+            <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
             <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
             <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
+            <Route pattern={`${ITEM_PATH}/:productId/gallery/:initialSlide?`} component={routes.ProductGallery} />
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
             <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
           </Router>

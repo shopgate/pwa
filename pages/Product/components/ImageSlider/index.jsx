@@ -26,14 +26,14 @@ const resolutions = [
 class ImageSlider extends Component {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.string),
-    onOpen: PropTypes.func,
+    navigate: PropTypes.func,
     product: PropTypes.shape(),
   };
 
   static defaultProps = {
     images: null,
     product: null,
-    onOpen: () => {},
+    navigate: () => {},
   };
 
   /**
@@ -56,7 +56,7 @@ class ImageSlider extends Component {
       return;
     }
 
-    this.props.onOpen(this.currentSlide);
+    this.props.navigate(this.currentSlide);
   };
 
   handleSlideChange = (currentSlide) => {
