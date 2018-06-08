@@ -16,7 +16,7 @@ const ImageWidget = ({ settings }) => {
   // Wrap a Link around the Image if needed.
   if (settings.link) {
     return (
-      <Link href={settings.link} className={styles.link}>
+      <Link href={settings.link} className={styles.link} data-test-id="link">
         {content}
       </Link>
     );
