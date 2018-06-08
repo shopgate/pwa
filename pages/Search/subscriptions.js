@@ -1,29 +1,21 @@
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import {
-  routeDidEnter,
-  routeDidLeave,
-} from '@shopgate/pwa-common/streams/history';
+import { searchWillEnter$, searchWillLeave$ } from '@shopgate/pwa-common-commerce/search/streams';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import toggleProgressBar from '../../components/Navigator/actions/toggleProgressBar';
+import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 
 /**
  * Filter subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function search(subscribe) {
-  const searchRouteDidEnter$ = routeDidEnter(SEARCH_PATH);
-  const searchRouteDidLeave$ = routeDidLeave(SEARCH_PATH);
-
-  /**
-   * Gets triggered on entering the search route.
-   */
-  subscribe(searchRouteDidEnter$, ({ dispatch }) => {
+  subscribe(searchWillEnter$, ({ action, dispatch }) => {
+    const { searchPhrase } = action.route.params;
+    dispatch(getSearchResults(searchPhrase));
+    dispatch(setTitle(searchPhrase));
     dispatch(toggleProgressBar(false));
   });
 
-  /**
-   * Gets triggered on leaving the search route.
-   */
-  subscribe(searchRouteDidLeave$, ({ dispatch }) => {
+  subscribe(searchWillLeave$, ({ dispatch }) => {
     dispatch(toggleProgressBar(true));
   });
 }
