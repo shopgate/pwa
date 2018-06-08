@@ -68,7 +68,7 @@ export const getCurrentBaseProductId = state => state.product.currentProduct.pro
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  getCurrentBaseProductId,
+  (state, props) => props.productId,
   getProducts,
   (productId, products) => {
     const entry = products[productId];
@@ -257,19 +257,19 @@ const getProductImagesState = state => state.product.imagesByProductId;
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  getCurrentProductId,
-  getCurrentBaseProductId,
+  (state, props) => props.variantId,
+  (state, props) => props.productId,
   getProductImagesState,
-  (productId, baseProductId, images) => {
-    let entry = images[productId];
-    const productImages = images[productId];
+  (variantId, productId, images) => {
+    let entry = images[variantId];
+    const productImages = images[variantId];
 
     /**
      * Check if there are any images.
      * If not then default back to the base product's images.
      */
     if (!productImages || !productImages.images || !productImages.images.length) {
-      entry = images[baseProductId];
+      entry = images[productId];
     }
 
     if (!entry || entry.isFetching || isUndefined(entry.images)) {
