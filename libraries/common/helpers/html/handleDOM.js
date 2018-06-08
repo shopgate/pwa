@@ -158,6 +158,7 @@ export const handleYouTube = (container) => {
   youtubeIframes.forEach((node, index) => {
     let { src } = node;
 
+    // Is it really needed? We just queried for iframes WITH src attribute.
     if (!src) {
       return;
     }
