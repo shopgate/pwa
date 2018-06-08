@@ -16,7 +16,7 @@ const mapStateToProps = (state, props) => ({
  * @param {Object} prev The current component props.
  * @return {boolean}
  */
-const areStatPropsEqual = (next, prev) => {
+const areStatePropsEqual = (next, prev) => {
   if (!prev.price && next.price) {
     return false;
   }
@@ -24,4 +24,4 @@ const areStatPropsEqual = (next, prev) => {
   return true;
 };
 
-export default connect(mapStateToProps, null, null, { areStatPropsEqual });
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
