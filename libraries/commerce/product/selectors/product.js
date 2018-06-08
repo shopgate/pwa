@@ -434,9 +434,9 @@ const getProductPropertiesState = state => state.product.propertiesByProductId;
  * @return {string|null}
  */
 export const getProductProperties = createSelector(
-  getCurrentProductId,
   getProductPropertiesState,
-  (productId, properties) => {
+  (state, props) => props.productId,
+  (properties, productId) => {
     const entry = properties[productId];
     if (!entry || entry.isFetching || isUndefined(entry.properties)) {
       return null;
