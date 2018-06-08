@@ -3,6 +3,14 @@ import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
+import pathMatch from 'path-match';
+import authRoutes from '../../collections/AuthRoutes';
+
+const matcher = pathMatch({
+  sensitive: false,
+  strict: false,
+  end: true,
+});
 
 const PROTOCOL_HTTP = 'http:';
 const PROTOCOL_HTTPS = 'https:';
@@ -225,4 +233,41 @@ export const openLegacyLink = (location) => {
       logger.warn(`openLegacyLink not handled: ${location}`);
       break;
   }
+};
+
+/**
+ * Check if the given pathname is a protected route.
+ * @param {string} location The location to check.
+ * @returns {boolean}
+ */
+export const getProtector = (location) => {
+  /**
+   * Try to make a direct match with the location.
+   * If we get lucky then we don't have to iterate over the protected patterns.
+   */
+  let protector = authRoutes.get(location);
+
+  /**
+   * If we didn't find a direct match then we need to match
+   * the given location against the protected patters.
+   */
+  if (!protector) {
+    // Get the protected patterns as an array.
+    const patterns = Array.from(authRoutes.getAll().keys());
+
+    // Loop over the patterns until a match is found.
+    patterns.some((pattern) => {
+      // Check for a match.
+      const match = matcher(pattern)(location);
+
+      // Match found, set the proector.
+      if (match) {
+        protector = authRoutes.get(pattern);
+      }
+
+      return match;
+    });
+  }
+
+  return protector;
 };
