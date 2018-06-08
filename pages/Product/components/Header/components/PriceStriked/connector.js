@@ -10,4 +10,17 @@ const mapStateToProps = (state, props) => ({
   price: getProductPrice(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The current component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.price && next.price) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
