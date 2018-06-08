@@ -86,7 +86,7 @@ class Title extends Component {
         </div>
 
         {/* Renders the active / current title */}
-        <div className={`${styles.title} ${transition.active}`}>
+        <div className={`${styles.title} ${transition.active}`} data-test-id={`title: ${this.props.title}`}>
           {this.props.title}
         </div>
       </div>

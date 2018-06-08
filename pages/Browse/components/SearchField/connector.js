@@ -8,7 +8,7 @@ import submitSearch from './actions/submitSearch';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  searchPhrase: state.navigator.searchPhrase,
+  searchPhrase: state.navigator.searchPhrase || '',
 });
 
 /**

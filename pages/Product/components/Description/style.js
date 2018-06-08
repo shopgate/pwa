@@ -16,6 +16,9 @@ const title = css({
 
 const content = css({
   lineHeight: 1.7,
+  overflow: 'hidden',
+  wordBreak: ['break-all', 'break-word'],
+  hyphens: 'auto',
   ' ul': {
     listStyle: 'disc',
   },

@@ -1,236 +1,866 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<VariantSelects /> should render with variants 1`] = `
-<div>
+<div
+  data-test-id="variantsPicker"
+>
   <Component>
-    <Picker
-      buttonComponent={[Function]}
-      buttonProps={
-        Object {
-          "highlighted": false,
-        }
-      }
-      clickDelay={150}
-      disabled={false}
-      duration={350}
-      isOpen={false}
-      items={
-        Array [
+    <div
+      data-test-id="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
+    >
+      <Picker
+        buttonComponent={[Function]}
+        buttonProps={
           Object {
-            "disabled": false,
-            "label": "Pink",
-            "rightComponent": null,
-            "value": "1",
-          },
-          Object {
-            "disabled": true,
-            "label": "Black",
-            "rightComponent": null,
-            "value": "2",
-          },
-        ]
-      }
-      key="1"
-      label="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
-      onChange={[Function]}
-      onClose={[Function]}
-      placeholder={
-        <Translate
-          className=""
-          params={
-            Array [
-              "Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd",
-            ]
+            "highlighted": false,
           }
-          string="product.pick_an_attribute"
-        />
-      }
-      value={null}
-    />
-    <Picker
-      buttonComponent={[Function]}
-      buttonProps={
-        Object {
-          "highlighted": false,
         }
-      }
-      clickDelay={150}
-      disabled={false}
-      duration={530}
-      isOpen={false}
-      items={
-        Array [
-          Object {
-            "disabled": false,
-            "label": "S",
-            "rightComponent": null,
-            "value": "1",
-          },
-          Object {
-            "disabled": false,
-            "label": "M",
-            "rightComponent": null,
-            "value": "2",
-          },
-          Object {
-            "disabled": true,
-            "label": "asjdaksdlkasdkalsklaeksoas iodialskdajsdjasdjkajdkajsd adshj",
-            "rightComponent": null,
-            "value": "3",
-          },
-          Object {
-            "disabled": false,
-            "label": "XS",
-            "rightComponent": null,
-            "value": "4",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "5",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "6",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "7",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "8",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "9",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "10",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "11",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "12",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "13",
-          },
-        ]
-      }
-      key="2"
-      label="Size"
-      onChange={[Function]}
-      onClose={[Function]}
-      placeholder={
-        <Translate
-          className=""
-          params={
-            Array [
-              "Size",
-            ]
-          }
-          string="product.pick_an_attribute"
-        />
-      }
-      value="2"
-    />
-    <Picker
-      buttonComponent={[Function]}
-      buttonProps={
-        Object {
-          "highlighted": false,
+        clickDelay={150}
+        disabled={false}
+        duration={350}
+        isOpen={false}
+        items={
+          Array [
+            Object {
+              "disabled": false,
+              "label": "Pink",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "1",
+            },
+            Object {
+              "disabled": true,
+              "label": "Black",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "2",
+            },
+          ]
         }
-      }
-      clickDelay={150}
-      disabled={true}
-      duration={406}
-      isOpen={false}
-      items={
-        Array [
+        key="1"
+        label="Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd"
+        onChange={[Function]}
+        onClose={[Function]}
+        placeholder={
+          <Translate
+            className=""
+            params={
+              Array [
+                "Coloras kdjakdsjaklsdj aksdj aksjdkajsdkajsdjaskdjaksdjkajsdaiweiriasjd",
+              ]
+            }
+            string="product.pick_an_attribute"
+          />
+        }
+        value={null}
+      />
+    </div>
+    <div
+      data-test-id="Size"
+    >
+      <Picker
+        buttonComponent={[Function]}
+        buttonProps={
           Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "7",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "8",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "9",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "10",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "11",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "12",
-          },
-          Object {
-            "disabled": false,
-            "label": "XL",
-            "rightComponent": null,
-            "value": "13",
-          },
-        ]
-      }
-      key="3"
-      label="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
-      onChange={[Function]}
-      onClose={[Function]}
-      placeholder={
-        <Translate
-          className=""
-          params={
-            Array [
-              "FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk",
-            ]
+            "highlighted": false,
           }
-          string="product.pick_an_attribute"
-        />
-      }
-      value="Barasdhasjd kasjdkajskdjaksdjaksdjaksjdakjsdkajsd aksjdakjsdkajd kjdkajskdja"
-    />
+        }
+        clickDelay={150}
+        disabled={false}
+        duration={530}
+        isOpen={false}
+        items={
+          Array [
+            Object {
+              "disabled": false,
+              "label": "S",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "1",
+            },
+            Object {
+              "disabled": false,
+              "label": "M",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "2",
+            },
+            Object {
+              "disabled": true,
+              "label": "asjdaksdlkasdkalsklaeksoas iodialskdajsdjasdjkajdkajsd adshj",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "3",
+            },
+            Object {
+              "disabled": false,
+              "label": "XS",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "4",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "5",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "6",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "7",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "8",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "9",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "10",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "11",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "12",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "13",
+            },
+          ]
+        }
+        key="2"
+        label="Size"
+        onChange={[Function]}
+        onClose={[Function]}
+        placeholder={
+          <Translate
+            className=""
+            params={
+              Array [
+                "Size",
+              ]
+            }
+            string="product.pick_an_attribute"
+          />
+        }
+        value="2"
+      />
+    </div>
+    <div
+      data-test-id="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
+    >
+      <Picker
+        buttonComponent={[Function]}
+        buttonProps={
+          Object {
+            "highlighted": false,
+          }
+        }
+        clickDelay={150}
+        disabled={true}
+        duration={406}
+        isOpen={false}
+        items={
+          Array [
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "7",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "8",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "9",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "10",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "11",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "12",
+            },
+            Object {
+              "disabled": false,
+              "label": "XL",
+              "rightComponent": <UNDEFINED>
+                <Portal
+                  name="product.variant-select.picker.availability.before"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+                <Portal
+                  name="product.variant-select.picker.availability.after"
+                  props={
+                    Object {
+                      "state": undefined,
+                      "text": undefined,
+                    }
+                  }
+                />
+              </UNDEFINED>,
+              "value": "13",
+            },
+          ]
+        }
+        key="3"
+        label="FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk"
+        onChange={[Function]}
+        onClose={[Function]}
+        placeholder={
+          <Translate
+            className=""
+            params={
+              Array [
+                "FOOasodjaksd jkasjdkajsdk askdjaksdjaskd kasjkdjaksdjasjdk",
+              ]
+            }
+            string="product.pick_an_attribute"
+          />
+        }
+        value="Barasdhasjd kasjdkajskdjaksdjaksdjaksjdakjsdkajsd aksjdakjsdkajd kjdkajskdja"
+      />
+    </div>
   </Component>
 </div>
 `;

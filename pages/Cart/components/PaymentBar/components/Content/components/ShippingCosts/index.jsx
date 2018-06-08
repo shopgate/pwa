@@ -12,7 +12,7 @@ import styles from './style';
 const ShippingCosts = ({ currency, isDisabled, value }) => {
   if (value === null) {
     return (
-      <div className={styles.shippingInfoValue}>&nbsp;</div>
+      <div className={styles.shippingInfoValue} data-test-id="noShippingPrice">&nbsp;</div>
     );
   }
 

@@ -143,7 +143,7 @@ class NavButton extends Component {
         className={styles.button}
         onClick={this.handleClick}
       >
-        <div className={styles.buttonContent}>
+        <div className={styles.buttonContent} data-test-id="backButton">
           {Icon}
         </div>
       </Button>

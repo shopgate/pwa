@@ -53,7 +53,7 @@ const ProductCard = ({
           <RatingStars value={product.rating.average} />
         )}
         {!hideName && (
-          <div itemProp="name" className={styles.title}>
+          <div itemProp="name" className={styles.title} data-test-id={`Productname: ${product.name}`}>
             <Ellipsis rows={titleRows || 3}>{product.name}</Ellipsis>
           </div>
         )}

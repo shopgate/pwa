@@ -19,7 +19,7 @@ const Reviews = ({ rating, reviews }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-test-id="reviewSection">
       <Header rating={rating} />
       <List reviews={reviews} />
       <AllReviewsLink />

@@ -20,7 +20,8 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       active={null}
       addToCart={[Function]}
       favoritesOnce={false}
-      isBaseProduct={[Function]}
+      isBaseProduct={true}
+      isOrderable={true}
       onRippleComplete={[Function]}
       productId="product_1"
       removeThrottle={null}
@@ -53,17 +54,40 @@ exports[`<CTAButtons /> should render buttons 1`] = `
             rippleClassName=""
           />
         </Connect(FavoritesButton)>
-        <MockedAddToCartButton
-          handleAddToCart={[Function]}
-          isDisabled={false}
-          isLoading={false}
-          isOrderable={false}
-          noShadow={true}
+        <Portal
+          name="favorites.add-to-cart.before"
+          props={null}
+        />
+        <Portal
+          name="favorites.add-to-cart"
+          props={
+            Object {
+              "className": undefined,
+              "handleAddToCart": [Function],
+              "isBaseProduct": true,
+              "isDisabled": false,
+              "isLoading": false,
+              "noShadow": false,
+              "productId": "product_1",
+            }
+          }
         >
-          <button
-            onClick={[Function]}
-          />
-        </MockedAddToCartButton>
+          <MockedAddToCartButton
+            handleAddToCart={[Function]}
+            isDisabled={false}
+            isLoading={false}
+            isOrderable={false}
+            noShadow={true}
+          >
+            <button
+              onClick={[Function]}
+            />
+          </MockedAddToCartButton>
+        </Portal>
+        <Portal
+          name="favorites.add-to-cart.after"
+          props={null}
+        />
       </div>
     </CTAButtons>
   </Connect(CTAButtons)>

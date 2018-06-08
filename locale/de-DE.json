@@ -84,7 +84,7 @@
   },
   "modal": {
     "confirm": "Bestätigen",
-    "dismiss": "Okay",
+    "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
     "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
