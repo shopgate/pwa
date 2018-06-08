@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
 import styles from './style';
@@ -16,10 +18,12 @@ class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
     isLoading: PropTypes.bool,
+    redirect: PropTypes.shape(),
   };
 
   static defaultProps = {
     isLoading: false,
+    redirect: {},
   };
   /**
    * Constructor.
@@ -79,8 +83,10 @@ class Login extends Component {
     // Blur all the fields.
     this.userField.blur();
     this.passwordField.blur();
-    // Submit the form data.
-    this.props.login(this.state);
+
+    const { redirect = {} } = this.props;
+    const { location = INDEX_PATH, state = {} } = redirect;
+    this.props.login(this.state, { location, state });
   };
 
   /**
@@ -137,4 +143,10 @@ class Login extends Component {
   }
 }
 
-export default connect(Login);
+export default connect(props => (
+  <RouteContext.Consumer>
+    {({ state }) => (
+      <Login {...props} redirect={state.redirect} />
+    )}
+  </RouteContext.Consumer>
+));
