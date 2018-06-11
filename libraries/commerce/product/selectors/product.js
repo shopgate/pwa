@@ -257,9 +257,12 @@ export const getProductName = createSelector(
 /**
  * Selects the product images state.
  * @param {Object} state The current application state.
- * @return {Object} The product images state.
+ * @return {Object}
  */
-const getProductImagesState = state => state.product.imagesByProductId;
+const getProductImagesState = createSelector(
+  getProductState,
+  state => state.imagesByProductId
+);
 
 /**
  * Retrieves the current product images or the images of the parent product.
@@ -268,26 +271,28 @@ const getProductImagesState = state => state.product.imagesByProductId;
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  (state, props) => props.variantId,
   (state, props) => props.productId,
+  getCurrentProduct,
   getProductImagesState,
-  (variantId, productId, images) => {
-    let entry = images[variantId];
-    const productImages = images[variantId];
-
-    /**
-     * Check if there are any images.
-     * If not then default back to the base product's images.
-     */
-    if (!productImages || !productImages.images || !productImages.images.length) {
-      entry = images[productId];
-    }
-
-    if (!entry || entry.isFetching || isUndefined(entry.images)) {
+  (productId, product, images) => {
+    if (!productId) {
       return null;
     }
 
-    return entry.images;
+    const variantEntry = images[productId];
+    const baseProductEntry = (product && product.baseProductId) && images[product.baseProductId];
+
+    // If the variant doesn't have images.
+    if (!variantEntry || !variantEntry.images || !variantEntry.images.length) {
+      // Check the base product.
+      if (!baseProductEntry || !baseProductEntry.images || !baseProductEntry.images.length) {
+        return null;
+      }
+
+      return baseProductEntry.images;
+    }
+
+    return variantEntry.images;
   }
 );
 
