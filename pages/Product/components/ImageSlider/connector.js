@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import {
   getProductImages,
   getCurrentBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import openGallery from '../../actions/openGallery';
 
 /**
  * Maps the contents of the state to the component props.
@@ -19,12 +22,12 @@ const mapStateToProps = (state, props) => ({
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
- * @param {Object} props The current component props.
+ * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = (dispatch, props) => ({
-  onOpen: currentSlide =>
-    dispatch(openGallery((props.variantId || props.productId), currentSlide)),
+  navigate: currentSlide =>
+    dispatch(navigate(ACTION_PUSH, `${ITEM_PATH}/${bin2hex(props.productId)}/gallery/${currentSlide}`)),
 });
 
 /**
