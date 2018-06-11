@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import View from 'Components/View';
 import Image from '@shopgate/pwa-common/components/Image';
-import BackButton from '../BackButton';
 import ZoomPanSlider from '../ZoomPanSlider';
 import styles from './style';
 import connect from './connector';
@@ -22,10 +20,7 @@ const resolutions = [
  * @return {JSX}
  */
 const ProductGalleryContent = ({ initialSlide, images }) => (
-  <View hasNavigator={false} isFullscreen>
-    <div className={styles.navButton}>
-      <BackButton />
-    </div>
+  <Fragment>
     <div className={styles.container}>
       {images && (
         <ZoomPanSlider
@@ -43,16 +38,16 @@ const ProductGalleryContent = ({ initialSlide, images }) => (
         </ZoomPanSlider>
       )}
     </div>
-  </View>
+  </Fragment>
 );
 
 ProductGalleryContent.propTypes = {
   initialSlide: PropTypes.number.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape()),
+  images: PropTypes.arrayOf(PropTypes.string),
 };
 
 ProductGalleryContent.defaultProps = {
-  images: [],
+  images: null,
 };
 
 export default connect(ProductGalleryContent);

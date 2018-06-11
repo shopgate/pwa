@@ -15,4 +15,21 @@ const mapStateToProps = (state, props) => ({
   product: getCurrentBaseProduct(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {*} next The next props.
+ * @param {*} prev the previous props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.images && next.images) {
+    return false;
+  }
+
+  if (!prev.product && next.product) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

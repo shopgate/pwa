@@ -9,15 +9,11 @@ import ProductGalleryContent from './components/Content';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ProductGallery = ({ id, initialSlide }) => {
-  console.warn('ProductGallery', id);
-
-  return (
-    <View>
-      {id && <ProductGalleryContent productId={id} initialSlide={initialSlide} />}
-    </View>
-  );
-};
+const ProductGallery = ({ id, initialSlide }) => (
+  <View hasNavigator={false} isFullscreen>
+    {id && <ProductGalleryContent productId={id} initialSlide={initialSlide} />}
+  </View>
+);
 
 ProductGallery.propTypes = {
   id: PropTypes.string,

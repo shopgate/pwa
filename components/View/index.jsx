@@ -51,8 +51,4 @@ View.defaultProps = {
   style: null,
 };
 
-export default shouldUpdate((prev, next) => {
-  if (!isEqual(prev.children, next.children)) return true;
-  if (!isEqual(prev.style, next.style)) return true;
-  return false;
-})(View);
+export default View;
