@@ -34,7 +34,7 @@ export default () => (
     {({ params }) => (
       <ProductGallery
         id={hex2bin(params.productId) || null}
-        initialSlide={parseInt(params.initialSlide, 10) || 0}
+        initialSlide={parseInt(params.slide, 10) || 0}
       />
     )}
   </RouteContext.Consumer>

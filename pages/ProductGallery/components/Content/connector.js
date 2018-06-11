@@ -12,7 +12,7 @@ import {
  */
 const mapStateToProps = (state, props) => ({
   images: getProductImages(state, props),
-  product: getCurrentBaseProduct(state),
+  product: getCurrentBaseProduct(state, props),
 });
 
 export default connect(mapStateToProps);
