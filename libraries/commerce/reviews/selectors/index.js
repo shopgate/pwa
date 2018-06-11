@@ -52,10 +52,10 @@ export const getReviews = state => state.reviews.reviewsById || {};
  * @return {Object} The reviews for a product
  */
 export const getProductReviewsExcerpt = createSelector(
-  getCurrentBaseProductId,
   getProductReviewsExcerptState,
   getReviews,
-  (productId, productReviewsState, reviewsState) => {
+  (state, props) => props.productId,
+  (productReviewsState, reviewsState, productId) => {
     const collection = productReviewsState[productId];
 
     if (!collection || !collection.reviews) {
