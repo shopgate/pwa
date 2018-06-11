@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-// Import ImageSlider from './components/ImageSlider';
+import ImageSlider from '../ImageSlider';
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
-// Import Options from './components/Options';
+import Options from '../Options';
 import Description from '../Description';
 import Properties from '../Properties';
 import connect from './connector';
@@ -40,6 +41,7 @@ class ProductContent extends Component {
     this.state = {
       productId: props.isBaseProduct === true ? props.productId : null,
       variantId: props.isBaseProduct === false ? props.productId : null,
+      options: {},
     };
   }
 
@@ -65,7 +67,22 @@ class ProductContent extends Component {
       this.props.productId !== nextProps.productId
       || this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
+      || this.state.options.length !== nextState.options.length
     );
+  }
+
+  /**
+   * Stores the selected options in local state.
+   * @param {string} optionId The ID of the option.
+   * @param {string} value The option value.
+   */
+  storeOptionSelection = (optionId, value) => {
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        [optionId]: value,
+      },
+    }));
   }
 
   /**
@@ -82,11 +99,11 @@ class ProductContent extends Component {
       <ProductContext.Provider value={this.state}>
         <Fragment>
           {/* IMAGE */}
-          {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+          <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
           <Portal name={portals.PRODUCT_IMAGE}>
-            <ImageSlider />
+            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
           </Portal>
-          <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
+          <Portal name={portals.PRODUCT_IMAGE_AFTER} />
 
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
@@ -103,11 +120,15 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} /> */}
 
           {/* OPTIONS */}
-          {/* <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
+          <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
           <Portal name={portals.PRODUCT_OPTIONS}>
-            <Options />
+            <Options
+              productId={id}
+              storeSelection={this.storeOptionSelection}
+              currentOptions={this.state.options}
+            />
           </Portal>
-          <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
+          <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
 
           {/* DESCRIPTION */}
           <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
