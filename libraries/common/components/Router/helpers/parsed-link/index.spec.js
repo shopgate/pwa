@@ -8,7 +8,7 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
 }));
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  shopAlias: 'example-alias',
+  shopCNAME: 'm.example.com',
 }));
 
 const mockedEventTrigger = jest.fn();
@@ -36,6 +36,10 @@ describe('ParsedLink', () => {
       'https://foo.shopgate.com',
       'http://foo.shopgate.com/page/cms',
       'https://foo.shopgate.com/page/cms',
+      'https://m.example.com',
+      'http://m.example.com',
+      'http://m.example.com/page/cms',
+      'https://m.example.com/page/cms',
     ];
     const negatives = [
       'https://example.com/bar',
@@ -44,6 +48,9 @@ describe('ParsedLink', () => {
       'https://shopgate.com/foo',
       'https://www.shopgate.com',
       'http://www.shopgate.com',
+      'http://example.com',
+      'https://example.com',
+      'https://example.com/page/cms',
     ];
 
     positives.forEach((href) => {

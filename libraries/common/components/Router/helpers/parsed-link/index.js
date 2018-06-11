@@ -1,6 +1,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { logger } from '@shopgate/pwa-core/helpers';
-import { shopAlias } from '@shopgate/pwa-common/helpers/config';
+import { shopCNAME } from '@shopgate/pwa-common/helpers/config';
 import { history as defaultHistory } from '../../../../helpers/router';
 import options from './options';
 import actions from './actions';
@@ -9,18 +9,31 @@ import actions from './actions';
  * The parsed link class.
  */
 class ParsedLink {
+  /**
+   * Checks if href looks like a shopgate shop link.
+   * Shopgate shop links can have two variants. [shopName].shopgate.com or CNAME.
+   * @param {string} href Href.
+   * @returns {boolean}
+   */
   static isShopgateShopLink(href) {
-    if (href.indexOf('http') !== 0) {
-      return false;
-    }
-    const regex = /^(https:\/\/)?[^.]+(.shopgate(pg)?.com)/;
-    const isShopgatedomain = regex.test(href);
-    if (!isShopgatedomain) {
+    // Doesn't start with http, not external link. No need to check further.
+    if (!href.startsWith('http')) {
       return false;
     }
     const parsed = new URL(href);
+    // Check if hostname is shop's CNAME
+    if (parsed.hostname === shopCNAME) {
+      return true;
+    }
+    // Check if link ends with shopgate.com. If not it is not a shopgate shop link.
+    const isShopgatedomain =
+            parsed.hostname.endsWith('shopgate.com') || parsed.hostname.endsWith('shopgatepg.com');
+    if (!isShopgatedomain) {
+      return false;
+    }
 
-    if (parsed.hostname === 'www.shopgate.com' || parsed.hostname === 'shopgate.com') {
+    // If hostame is www.shopgate.com or just shopgate.com this is also not a shopgate shop link.
+    if (['www.shopgate.com', 'shopgate.com'].includes(parsed.hostname)) {
       return false;
     }
 
