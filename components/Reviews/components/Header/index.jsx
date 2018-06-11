@@ -4,7 +4,7 @@ import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/consta
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from './components/AverageRating';
-import WriteReviewLink from './components/WriteReviewLink';
+// import WriteReviewLink from './components/WriteReviewLink';
 import styles from './style';
 
 /**
@@ -26,7 +26,7 @@ const Header = ({ rating, withTopGap }) => {
         <AverageRating rating={rating} />
         <div className={styles.noReviews}>
           {appConfig.showWriteReview && (<I18n.Text string="reviews.no_reviews" />)}
-          {appConfig.showWriteReview && (<WriteReviewLink />)}
+          {/* appConfig.showWriteReview && (<WriteReviewLink />) */}
         </div>
       </div>
     );
@@ -41,7 +41,7 @@ const Header = ({ rating, withTopGap }) => {
             {average / RATING_SCALE_DIVISOR}
           </span>
         </I18n.Text>
-        {appConfig.showWriteReview && (<WriteReviewLink />)}
+        {/* appConfig.showWriteReview && (<WriteReviewLink />) */}
       </div>
     </div>
   );

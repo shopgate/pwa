@@ -9,6 +9,7 @@ import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceFavorites from '@shopgate/pwa-common-commerce/favorites/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
+import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
@@ -56,6 +57,7 @@ const subscriptions = [
   commerceFavorites,
   commerceFilter,
   commerceProduct,
+  commerceReviews,
   commerceSearch,
   // Tracking subscribers.
   trackingSetup,

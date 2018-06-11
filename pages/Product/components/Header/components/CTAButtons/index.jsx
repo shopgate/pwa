@@ -12,12 +12,11 @@ import connect from './connector';
  */
 class CTAButtons extends Component {
   handleAddToCart = () => {
-    this.props.addToCart([
-      {
-        productId: this.props.productId,
-        quantity: 1,
-      },
-    ]);
+    this.props.addToCart({
+      productId: this.props.productId,
+      options: this.props.options,
+      quantity: 1,
+    });
   }
 
   /**
@@ -26,12 +25,12 @@ class CTAButtons extends Component {
   render() {
     return (
       <div className={styles.buttons}>
-        {/*<FavoritesButton
+        {/* <FavoritesButton
             active={props.isFavorite}
             productId={props.productId}
             className={styles.favButton}
             rippleClassName={styles.ripple}
-          />*/}
+          /> */}
         <AddToCartButton
           buttonSize={styles.cartButtonSize}
           className={styles.cartButton}
@@ -45,7 +44,7 @@ class CTAButtons extends Component {
   }
 }
 CTAButtons.propTypes = {
-  // isFavorite: PropTypes.bool.isRequired,
+  // IsFavorite: PropTypes.bool.isRequired,
   addToCart: PropTypes.func,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
