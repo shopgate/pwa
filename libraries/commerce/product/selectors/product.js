@@ -323,7 +323,7 @@ export const getProductStockInfo = createSelector(
     }
     return product.productData.stock;
   }
-)
+);
 
 /**
  * Retrieves the current product orderable information.
