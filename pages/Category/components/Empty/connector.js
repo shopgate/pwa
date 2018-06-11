@@ -11,4 +11,17 @@ const mapStateToProps = (state, props) => ({
   isVisible: isCategoryEmpty(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev the previous component props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.isVisible !== next.isVisible) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

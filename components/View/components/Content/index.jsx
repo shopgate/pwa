@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
@@ -14,7 +14,7 @@ import styles from './style';
 /**
  * The view content.
  */
-class ViewContent extends Component {
+class ViewContent extends PureComponent {
   static propTypes = {
     setTop: PropTypes.func.isRequired,
     children: PropTypes.node,
@@ -75,17 +75,6 @@ class ViewContent extends Component {
       // Scroll to top
       this.element.scrollTop = 0;
     }
-  }
-
-  /**
-   * @param {Object} nextProps The next component props;
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    if (!isEqual(this.props.children, nextProps.children)) return true;
-    if (this.props.viewTop !== nextProps.viewTop) return true;
-    if (this.props.title !== nextProps.title) return true;
-    return false;
   }
 
   /**

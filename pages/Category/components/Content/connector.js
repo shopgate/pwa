@@ -26,6 +26,10 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
+  if (prev.hasProducts !== next.hasProducts) {
+    return false;
+  }
+
   return true;
 };
 
