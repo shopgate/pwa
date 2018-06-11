@@ -20,6 +20,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
       isDisabled={false}
       isLoading={false}
       isOrderable={true}
+      isVisible={true}
     >
       <div
         className={
@@ -287,6 +288,301 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
       isDisabled={false}
       isLoading={true}
       isOrderable={false}
+      isVisible={true}
+    >
+      <div
+        className={
+          Object {
+            "data-css-1h8teix": "",
+          }
+        }
+        key="bar"
+      >
+        <div
+          className={
+            Object {
+              "data-css-a151wn": "",
+            }
+          }
+        >
+          <div
+            className={
+              Object {
+                "data-css-obw2qb": "",
+              }
+            }
+          >
+            <CartItemsCount
+              itemCount={0}
+            >
+              <Transition
+                appear={false}
+                enter={true}
+                exit={true}
+                in={false}
+                mountOnEnter={false}
+                onEnter={[Function]}
+                onEntered={[Function]}
+                onEntering={[Function]}
+                onExit={[Function]}
+                onExited={[Function]}
+                onExiting={[Function]}
+                timeout={
+                  Object {
+                    "enter": 200,
+                    "exit": undefined,
+                  }
+                }
+                unmountOnExit={false}
+              >
+                <div
+                  className={
+                    Object {
+                      "data-css-2wfn1n": "",
+                    }
+                  }
+                  style={
+                    Object {
+                      "opacity": 0,
+                      "transform": "translate3d(0, 100%, 0)",
+                    }
+                  }
+                >
+                  <div
+                    className={
+                      Object {
+                        "data-css-1qusxtb": "",
+                      }
+                    }
+                  >
+                    <Check>
+                      <Icon
+                        className=""
+                        color={null}
+                        content="<path d=\\"M1 11.248L8.84 19 23 5\\" stroke=\\"#000\\" stroke-width=\\"2\\" fill=\\"none\\" fill-rule=\\"evenodd\\"/>"
+                        size="inherit"
+                        viewBox="0 0 24 24"
+                      >
+                        <svg
+                          className="css-yys9hb "
+                          dangerouslySetInnerHTML={
+                            Object {
+                              "__html": "<path d=\\"M1 11.248L8.84 19 23 5\\" stroke=\\"#000\\" stroke-width=\\"2\\" fill=\\"none\\" fill-rule=\\"evenodd\\"/>",
+                            }
+                          }
+                          style={
+                            Object {
+                              "fill": null,
+                              "fontSize": "inherit",
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Check>
+                  </div>
+                  <Count
+                    count={0}
+                  >
+                    <Transition
+                      appear={false}
+                      enter={true}
+                      exit={true}
+                      in={true}
+                      mountOnEnter={false}
+                      onEnter={[Function]}
+                      onEntered={[Function]}
+                      onEntering={[Function]}
+                      onExit={[Function]}
+                      onExited={[Function]}
+                      onExiting={[Function]}
+                      timeout={200}
+                      unmountOnExit={false}
+                    >
+                      <div
+                        className={
+                          Object {
+                            "data-css-1becuut": "",
+                          }
+                        }
+                        style={
+                          Object {
+                            "opacity": 1,
+                            "transform": "translate3d(0, 0, 0)",
+                          }
+                        }
+                      >
+                        <Translate
+                          className=""
+                          params={
+                            Object {
+                              "count": 0,
+                            }
+                          }
+                          string="product.item_added"
+                        >
+                          <span
+                            className=""
+                          >
+                            product.item_added
+                          </span>
+                        </Translate>
+                      </div>
+                    </Transition>
+                  </Count>
+                </div>
+              </Transition>
+            </CartItemsCount>
+            <AddMoreButton
+              handleAddToCart={[Function]}
+            >
+              <button
+                className={
+                  Object {
+                    "data-css-1h4uy2e": "",
+                  }
+                }
+                onClick={[Function]}
+              >
+                <AddMore
+                  className="css-mfy564"
+                >
+                  <Icon
+                    className="css-mfy564"
+                    color={null}
+                    content="<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
+2.385-.004 1.193 1.193 0 0 0-2.385.004zm-4.4 0a1.193 1.193 0 1 0 1.192-1.192 1.193 1.193 0 0 0-1.198
+1.192h.006zm-2.4-14.8a.906.906 0 0 0-.843-.587h-1.98a.903.903 0 1 0 0 1.806h1.355l2.772 7.217a.906.906
+0 0 0 .843.588h6.266a.875.875 0 1 1 0 1.75H6.187a.903.903 0 1 0 0 1.806h6.758a2.677 2.677 0 0 0
+1.87-4.596l2.221-4.005a.902.902 0 0 0-.654-1.33H5.537L4.526 5.882zM20.897
+6.682H23.8V4.87h-2.903V2h-1.794v2.869h-2.897v1.813h2.897v2.88h1.794z\\"/></g>"
+                    size="inherit"
+                    viewBox="0 0 24 24"
+                  >
+                    <svg
+                      className="css-yys9hb css-mfy564"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<g fill=\\"#000\\" fill-rule=\\"nonzero\\"><path d=\\"M11.326 20.682a1.193 1.193 0 1 0
+2.385-.004 1.193 1.193 0 0 0-2.385.004zm-4.4 0a1.193 1.193 0 1 0 1.192-1.192 1.193 1.193 0 0 0-1.198
+1.192h.006zm-2.4-14.8a.906.906 0 0 0-.843-.587h-1.98a.903.903 0 1 0 0 1.806h1.355l2.772 7.217a.906.906
+0 0 0 .843.588h6.266a.875.875 0 1 1 0 1.75H6.187a.903.903 0 1 0 0 1.806h6.758a2.677 2.677 0 0 0
+1.87-4.596l2.221-4.005a.902.902 0 0 0-.654-1.33H5.537L4.526 5.882zM20.897
+6.682H23.8V4.87h-2.903V2h-1.794v2.869h-2.897v1.813h2.897v2.88h1.794z\\"/></g>",
+                        }
+                      }
+                      style={
+                        Object {
+                          "fill": null,
+                          "fontSize": "inherit",
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </Icon>
+                </AddMore>
+              </button>
+            </AddMoreButton>
+          </div>
+          <Connect(AddToCartButton)
+            handleAddToCart={[Function]}
+            isDisabled={false}
+            itemCount={0}
+          >
+            <AddToCartButton
+              handleAddToCart={[Function]}
+              isDisabled={false}
+              itemCount={0}
+              openCart={[Function]}
+            >
+              <button
+                className={
+                  Object {
+                    "data-css-1537b95": "",
+                  }
+                }
+                data-test-id="addToCartButton"
+                onClick={[Function]}
+                style={null}
+              >
+                <Translate
+                  className=""
+                  params={Object {}}
+                  string="product.add_to_cart"
+                >
+                  <span
+                    className=""
+                  >
+                    product.add_to_cart
+                  </span>
+                </Translate>
+              </button>
+            </AddToCartButton>
+          </Connect(AddToCartButton)>
+        </div>
+      </div>
+      <div
+        className={
+          Object {
+            "data-css-1kayqc3": "",
+          }
+        }
+        key="dummy"
+      />
+    </AddToCartBar>
+  </Connect(AddToCartBar)>
+</Provider>
+`;
+
+exports[`<AddToCartBar> Visiblity should be hidden 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(AddToCartBar)>
+    <AddToCartBar
+      cartProductCount={0}
+      handleAddToCart={[Function]}
+      isDisabled={false}
+      isLoading={false}
+      isOrderable={true}
+      isVisible={false}
+    />
+  </Connect(AddToCartBar)>
+</Provider>
+`;
+
+exports[`<AddToCartBar> Visiblity should be visible 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(AddToCartBar)>
+    <AddToCartBar
+      cartProductCount={0}
+      handleAddToCart={[Function]}
+      isDisabled={false}
+      isLoading={false}
+      isOrderable={true}
+      isVisible={true}
     >
       <div
         className={

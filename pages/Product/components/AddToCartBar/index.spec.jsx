@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import { UPDATE_HISTORY } from '@shopgate/pwa-common/constants/ActionTypes';
 import { ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
 import {
+  mockedStateVisible,
+  mockedStateHidden,
   mockedStateSimpleProduct,
   mockedStateSimpleProductNotReady,
   mockedStateVariants,
@@ -51,6 +53,20 @@ describe('<AddToCartBar>', () => {
     /* eslint-enable global-require */
     return mount(<Provider store={store}><AddToCartBar /></Provider>);
   };
+
+  describe('Visiblity', () => {
+    it('should be visible', () => {
+      const component = createComponent(mockedStateVisible);
+      expect(component).toMatchSnapshot();
+      expect(component.find('AddToCartBar').children()).toHaveLength(2);
+    });
+
+    it('should be hidden', () => {
+      const component = createComponent(mockedStateHidden);
+      expect(component).toMatchSnapshot();
+      expect(component.find('AddToCartBar').children()).toHaveLength(0);
+    });
+  });
 
   describe('Variants', () => {
     it('should render car when data is available', () => {
