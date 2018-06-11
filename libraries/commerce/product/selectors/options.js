@@ -85,7 +85,7 @@ const getOptionItems = createSelector(
  */
 export const getProductOptions = createSelector(
   getProductCurrency,
-  (state, props) => props.options,
+  (state, props) => props.currentOptions,
   getRawProductOptions,
   validateSelectorParams((currency, currentOptions, options) => (
     options.map(option => ({
