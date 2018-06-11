@@ -67,7 +67,7 @@ class ProductContent extends Component {
       this.props.productId !== nextProps.productId
       || this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
-      || !isEqual(this.state.otpions, nextState.options)
+      || this.state.options.length !== nextState.options.length
     );
   }
 
