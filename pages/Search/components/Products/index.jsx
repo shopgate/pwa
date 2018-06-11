@@ -23,7 +23,11 @@ class SearchProducts extends Component {
   };
 
   fetchProducts = () => {
-    this.props.getProducts(this.props.searchPhrase, this.props.products.length, this.props.sortOrder);
+    this.props.getProducts(
+      this.props.searchPhrase,
+      this.props.products.length,
+      this.props.sortOrder
+    );
   }
 
   /**
