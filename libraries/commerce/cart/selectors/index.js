@@ -181,26 +181,6 @@ export const getFlags = createSelector(
 );
 
 /**
- * Builds the data for the 'metadata' property of addProductsToCart pipeline request payload.
- * @returns {Object|null} The data if it was determinable, otherwise NULL.
- */
-export const getAddToCartMetadata = createSelector(
-  getProductMetadata,
-  getSelectedVariantMetadata,
-  (metaData, variantMetaData) => {
-    if (variantMetaData) {
-      // Use the metadata from the getProductVariants data if available.
-      return variantMetaData;
-    } else if (metaData) {
-      // Use the metadata from the selected product if available.
-      return metaData;
-    }
-
-    return null;
-  }
-);
-
-/**
  * Builds the data for the 'options' property of addProductsToCart pipeline request payload.
  * @param {Object} state The application state.
  * @returns {Object|null} The data if it was determinable, otherwise NULL.
@@ -209,7 +189,7 @@ export const getAddToCartOptions = createSelector(
   hasProductOptions,
   areProductOptionsSet,
   getRawProductOptions,
-  getCurrentProductOptions,
+  (state, props) => props.options,
   (hasOptions, areOptionsSet, options, currentOptions) => {
     // Check if options are ready to be added to a pipeline request.
     if (!hasOptions || !areOptionsSet) {
