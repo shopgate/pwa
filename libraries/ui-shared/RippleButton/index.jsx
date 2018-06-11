@@ -13,12 +13,14 @@ class RippleButton extends Component {
     ...Button.propTypes,
     rippleClassName: PropTypes.string,
     rippleSize: PropTypes.number,
+    testId: PropTypes.string,
   };
 
   static defaultProps = {
     ...Button.defaultProps,
     rippleClassName: '',
     rippleSize: null,
+    testId: 'Button',
   };
 
   /**
@@ -57,7 +59,7 @@ class RippleButton extends Component {
     };
 
     return (
-      <Button {...this.buttonProps}>
+      <Button {...this.buttonProps} testId={this.props.testId}>
         <Ripple {...rippleProps}>
           {this.props.children}
         </Ripple>
