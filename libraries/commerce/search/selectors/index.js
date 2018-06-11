@@ -1,3 +1,17 @@
+import { createSelector } from 'reselect';
+import { getResultByHash } from '../../product/selectors/product';
+
+export const hasSearchResults = createSelector(
+  getResultByHash,
+  (results) => {
+    if (!results || !results.products || !results.products.length) {
+      return false;
+    }
+
+    return true;
+  }
+);
+
 /**
  * Returns the current search suggestions object.
  * @param {Object} state The application state.

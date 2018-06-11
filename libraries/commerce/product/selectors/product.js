@@ -138,12 +138,12 @@ export const getProductCurrency = createSelector(
 );
 
 /**
- * Retrieves the generated result hash for a category ID.
+ * Retrieves the generated result hash for a category id or search phrase.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {string} The result hash.
  */
-const getResultHash = createSelector(
+export const getResultHash = createSelector(
   (state, props) => props.categoryId,
   (state, props) => props.searchPhrase,
   (state, props) => props.sortOrder || DEFAULT_SORT,
@@ -175,7 +175,7 @@ const getResultHash = createSelector(
  * @param {Object} props The component props.
  * @returns {Object} The result.
  */
-const getResultByHash = createSelector(
+export const getResultByHash = createSelector(
   state => state.product,
   getResultHash,
   (productState, hash) => productState.resultsByHash[hash]
