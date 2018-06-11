@@ -5,7 +5,6 @@ import {
   getProductUnitPrice,
 } from './product';
 import {
-  getCurrentProductOptions,
   getRawProductOptions,
   hasProductOptions,
   areProductOptionsSet,
@@ -21,13 +20,13 @@ import {
  * @returns {number}
  */
 export const getProductPriceAddition = createSelector(
-  getCurrentProductOptions,
+  (state, props) => props.options,
   getRawProductOptions,
   validateSelectorParams(
-    (currentOptions, productOptions) => {
+    (options, productOptions) => {
       // Get all item modifiers.
-      const modifiers = Object.keys(currentOptions).map((optionId) => {
-        const itemId = currentOptions[optionId];
+      const modifiers = Object.keys(options).map((optionId) => {
+        const itemId = options[optionId];
         const optionItems = productOptions.find(item => item.id === optionId).values;
         const selectedItem = optionItems.find(item => item.id === itemId);
 
