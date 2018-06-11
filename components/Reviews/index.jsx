@@ -5,7 +5,7 @@ import connect from './connector';
 import styles from './style';
 import List from './components/List';
 import Header from './components/Header';
-import AllReviewsLink from './components/AllReviewsLink';
+// import AllReviewsLink from './components/AllReviewsLink';
 
 /**
  * Reviews Component
@@ -22,7 +22,7 @@ const Reviews = ({ rating, reviews }) => {
     <div className={styles.container} data-test-id="reviewSection">
       <Header rating={rating} />
       <List reviews={reviews} />
-      <AllReviewsLink />
+      {/* <AllReviewsLink /> */}
     </div>
   );
 };
