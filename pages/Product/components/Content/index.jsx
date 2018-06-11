@@ -125,7 +125,7 @@ class ProductContent extends Component {
             <Options
               productId={id}
               storeSelection={this.storeOptionSelection}
-              options={this.state.options}
+              currentOptions={this.state.options}
             />
           </Portal>
           <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
