@@ -9,11 +9,20 @@ import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 
 /**
+ * @param {Object} state The current application state.
+ * @return {Object}
+ */
+export const getProductState = state => state.product;
+
+/**
  * Selects all products from the store.
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
-export const getProducts = state => state.product.productsById;
+export const getProducts = createSelector(
+  getProductState,
+  state => state.productsById
+);
 
 /**
  * Retrieves the current product or variant page from the store.
@@ -65,7 +74,7 @@ export const getCurrentBaseProductId = state => state.product.currentProduct.pro
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  getCurrentBaseProductId,
+  (state, props) => props.productId,
   getProducts,
   (productId, products) => {
     const entry = products[productId];
@@ -117,14 +126,16 @@ export const getProductUnitPrice = createSelector(
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getProductCurrency = (state) => {
-  const currentProduct = getCurrentProduct(state);
-  if (!currentProduct) {
-    return null;
-  }
+export const getProductCurrency = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
 
-  return currentProduct.price.currency;
-};
+    return product.price.currency;
+  }
+);
 
 /**
  * Retrieves the generated result hash for a category ID.
@@ -256,19 +267,19 @@ const getProductImagesState = state => state.product.imagesByProductId;
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  getCurrentProductId,
-  getCurrentBaseProductId,
+  (state, props) => props.variantId,
+  (state, props) => props.productId,
   getProductImagesState,
-  (productId, baseProductId, images) => {
-    let entry = images[productId];
-    const productImages = images[productId];
+  (variantId, productId, images) => {
+    let entry = images[variantId];
+    const productImages = images[variantId];
 
     /**
      * Check if there are any images.
      * If not then default back to the base product's images.
      */
     if (!productImages || !productImages.images || !productImages.images.length) {
-      entry = images[baseProductId];
+      entry = images[productId];
     }
 
     if (!entry || entry.isFetching || isUndefined(entry.images)) {
