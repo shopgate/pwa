@@ -64,10 +64,9 @@ class ProductContent extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.props.productId !== nextProps.productId
-      || this.state.productId !== nextState.productId
+      this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
-      || this.state.options.length !== nextState.options.length
+      || !isEqual(this.state.options, nextState.options)
     );
   }
 
