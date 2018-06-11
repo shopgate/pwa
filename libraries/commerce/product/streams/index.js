@@ -14,10 +14,10 @@ export const productWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId`);
 
 export const galleryWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:initalSlide?`);
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
 
 export const galleryWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:initalSlide?`);
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
 
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
