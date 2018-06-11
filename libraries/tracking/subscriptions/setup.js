@@ -1,17 +1,34 @@
 import get from 'lodash/get';
+import event from '@shopgate/pwa-core/classes/Event';
 import logGroup from '@shopgate/pwa-core/helpers/logGroup';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { TYPE_PHONE, OS_ALL } from '@shopgate/pwa-common/constants/Device';
 import { componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
 import core from '@shopgate/tracking-core/core/Core';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import {
+  appWillStart$,
+  appDidStart$,
+} from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
+import { APP_EVENT_VIEW_DID_APPEAR } from '../constants';
+import { pwaDidAppear } from '../action-creators';
 
 /**
  * Setup tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function setup(subscribe) {
+  subscribe(appWillStart$, ({ dispatch }) => {
+    registerEvents([
+      APP_EVENT_VIEW_DID_APPEAR,
+    ]);
+
+    event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
+      dispatch(pwaDidAppear());
+    });
+  });
+
   /**
    * Gets triggered when the app starts.
    */
