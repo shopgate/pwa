@@ -17,6 +17,7 @@ import {
 } from '@shopgate/pwa-common-commerce/category/streams';
 import { getCurrentCategories } from '@shopgate/pwa-common-commerce/category/selectors';
 import { productsReceived$ } from './product';
+import { pwaDidAppear$ } from './app';
 
 /**
  * Emits when the root category was entered.
@@ -66,11 +67,18 @@ const categoryDataPreloaded$ = categoryIdChanged$
   .filter(({ getState }) => getProductsResult(getState()).totalProductCount !== null);
 
 /**
+ * Emits when the category route comes active again after a legacy page was active.
+ */
+const categoryRouteReappeared$ = pwaDidAppear$
+  .filter(({ pathname }) => pathname.startsWith(CATEGORY_PATH));
+
+/**
  * Emits when a category or root category is ready to be tracked,
  * considering loaded or preloaded data.
  */
 export const categoryIsReady$ = categoryDataLoaded$.merge(
   categoryDataPreloaded$,
   rootCategoryLoaded$,
-  rootCategoryPreloaded$
+  rootCategoryPreloaded$,
+  categoryRouteReappeared$
 );
