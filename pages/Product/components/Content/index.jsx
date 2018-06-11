@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
-// Import Reviews from 'Components/Reviews';
+import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import ImageSlider from '../ImageSlider';
 import Header from '../Header';
@@ -145,11 +145,11 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
 
           {/* REVIEWS */}
-          {/* <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
+          <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
           <Portal name={portals.PRODUCT_REVIEWS}>
-            <Reviews />
+            <Reviews productId={this.state.productId} />
           </Portal>
-          <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
+          <Portal name={portals.PRODUCT_REVIEWS_AFTER} />
 
           {/* TAX DISCLAIMER */}
           <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />

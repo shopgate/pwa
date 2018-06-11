@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Link';
-import { forgotPasswordUrl } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
+
+const { forgotPasswordUrl } = appConfig;
 
 /**
  * The ForgotPassword component.
