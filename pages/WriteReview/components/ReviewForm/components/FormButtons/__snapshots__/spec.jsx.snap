@@ -23,6 +23,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
       >
         <button
           className="css-kevfw8 css-1mhi2x7"
+          data-test-id="reviewCancelButton"
           onClick={[Function]}
           type="button"
         >
@@ -45,7 +46,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
           onClick={null}
           rippleClassName=""
           rippleSize={null}
-          testId="Button"
+          testId="sendReviewButton"
           type="secondary"
           wrapContent={true}
         >
@@ -54,7 +55,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             disabled={false}
             flat={false}
             onClick={null}
-            testId="Button"
+            testId="sendReviewButton"
             type="secondary"
             wrapContent={false}
           >
@@ -62,11 +63,11 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               className="css-187rja2 "
               disabled={false}
               onClick={null}
-              testId="Button"
+              testId="sendReviewButton"
             >
               <button
                 className="css-187rja2  css-1rn65c0"
-                data-test-id="Button"
+                data-test-id="sendReviewButton"
                 disabled={false}
                 onClick={null}
               >
