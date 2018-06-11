@@ -122,6 +122,16 @@
         "key": "value.frontend"
       }
     },
+    "shopAlias": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/shop/%(shopId)s",
+        "value": "cname"
+      }
+    },
     "productPropertiesFilter": {
       "type": "bigApi",
       "destination": "frontend",
