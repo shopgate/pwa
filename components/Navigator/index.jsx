@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
@@ -12,6 +13,8 @@ import CartButton from './components/CartButton';
 // Import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
 import styles from './style';
+
+export const NavigatorContext = React.createContext({something: 4});
 
 /**
  * The navigator component.
@@ -40,6 +43,59 @@ class Navigator extends PureComponent {
   };
 
   /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchField: false,
+      searchQuery: '',
+    };
+
+    this.context2 = {
+      searchField: this.state.searchField,
+      searchQuery: this.state.searchQuery,
+      toggleSearchField: this.toggleSearchActive,
+      setSearchQuery: this.toggleSearchActive,
+    };
+
+    UIEvents.addListener('UI_NAVIGATOR_SEARCH_FIELD', this.toggleSearchField);
+  }
+
+  /**
+   * 
+   */
+  toggleSearchField = (active) => {
+    console.warn(this.context2);
+    if (this.state.search === active) {
+      return;
+    }
+
+    this.setState({
+      searchField: active,
+    });
+
+    if (active) {
+      this.handleSubmitSearch();
+    }
+  }
+
+  setSearchQuery = (query) => {
+
+  }
+
+  /**
+   * 
+   */
+  handleSubmitSearch = () => {
+    if (this.state.searchQuery) {
+      // do the thing.
+      // replace or push
+    }
+  }
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -53,8 +109,9 @@ class Navigator extends PureComponent {
       color: this.props.textColor,
     };
 
+    console.warn(this.context2);
     return (
-      <Fragment>
+      <NavigatorContext.Provider value={this.context2}>
         <Portal name={portals.NAV_BAR_BEFORE} />
         <Portal name={portals.NAV_BAR}>
           <header
@@ -75,7 +132,10 @@ class Navigator extends PureComponent {
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
                   <Grid.Item className={styles.title} component="div" grow={1}>
                     {this.props.showTitle &&
-                      <Content />
+                      <Content
+                        searchActive={this.state.searchField}
+                        searchQuery={this.state.searchQuery}
+                      />
                     }
                   </Grid.Item>
                 </Portal>
@@ -88,7 +148,7 @@ class Navigator extends PureComponent {
                   </div>
                   */}
                   {this.props.showSearch &&
-                    <SearchButton onClick={this.props.submitSearch} />
+                    <SearchButton searchActive={this.state.searchField} />
                   }
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE} />
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON} props={{ CartButton }}>
@@ -108,7 +168,7 @@ class Navigator extends PureComponent {
           </header>
         </Portal>
         <Portal name={portals.NAV_BAR_AFTER} />
-      </Fragment>
+      </NavigatorContext.Provider>
     );
   }
 }

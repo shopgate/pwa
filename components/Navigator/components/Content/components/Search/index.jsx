@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import classNames from 'classnames';
+import { UIEvents } from '@shopgate/pwa-core';
 import SearchSuggestions from './components/SearchSuggestions';
 import connect from './connector';
 import styles from './style';
+
+console.warn(typeof UIEvents);
 /**
  * The navigator search component.
  */
@@ -13,7 +16,7 @@ class Search extends Component {
     getQueryParam: PropTypes.func.isRequired,
     active: PropTypes.bool,
     placeholder: PropTypes.string,
-    searchPhrase: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
+    searchPhrase: PropTypes.string,
     setSearchPhrase: PropTypes.func,
     submitSearch: PropTypes.func,
     toggleSearch: PropTypes.func,
@@ -39,13 +42,20 @@ class Search extends Component {
   constructor(props) {
     super(props);
 
-    this.inputElement = null;
+    this.inputField = React.createRef();
     this.state = {
-      // Determines if this component is rendered
       active: false,
-      // Value of the input element
       inputValue: '',
     };
+
+    UIEvents.addListener('SEARCH', this.toggleActive);
+  }
+
+  /**
+   * 
+   */
+  toggleActive = (active) => {
+    this.setState({ active });
   }
 
   /**
@@ -67,7 +77,7 @@ class Search extends Component {
           },
           // Auto-focus input element
           () => {
-            this.inputElement.focus();
+            this.inputField.focus();
           }
         );
       }
@@ -91,7 +101,7 @@ class Search extends Component {
    * Updates the search query.
    */
   updateQuery = () => {
-    const { value } = this.inputElement;
+    const { value } = this.inputField;
     this.props.setSearchPhrase(value);
   };
 
@@ -105,7 +115,7 @@ class Search extends Component {
    */
   handleInput = () => {
     this.setState({
-      inputValue: this.inputElement.value,
+      inputValue: this.inputField.value,
     });
     this.updateQueryDebounced();
   };
@@ -114,15 +124,8 @@ class Search extends Component {
    * Sets cursor at the end of input on focus.
    */
   handleFocus = () => {
-    this.inputElement.selectionStart = this.state.inputValue.length;
-    this.inputElement.selectionEnd = this.state.inputValue.length;
-  };
-
-  /**
-   * Handles blur events on the input element.
-   */
-  handleOverlayClick = () => {
-    this.props.toggleSearch(false);
+    this.inputField.selectionStart = this.state.inputValue.length;
+    this.inputField.selectionEnd = this.state.inputValue.length;
   };
 
   /**
@@ -132,12 +135,12 @@ class Search extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!this.inputElement.value) {
+    if (!this.inputField.value) {
       // Do not submit if the field is empty.
       return;
     }
 
-    this.inputElement.blur();
+    this.inputField.blur();
     this.updateQuery();
     this.props.submitSearch();
   };
@@ -161,8 +164,8 @@ class Search extends Component {
 
     const containerClassName = classNames(
       styles.container,
-      { [styles.animation.in]: this.props.active },
-      { [styles.animation.out]: !this.props.active }
+      { [styles.animation.in]: this.state.active },
+      { [styles.animation.out]: !this.state.active }
     );
 
     const { inputValue } = this.state;
@@ -185,7 +188,7 @@ class Search extends Component {
             onChange={this.handleInput}
             onBlur={this.handleBlur}
             placeholder={inputPlaceholder}
-            ref={(element) => { this.inputElement = element; }}
+            ref={this.inputField}
             onFocus={this.handleFocus}
           />
           <div

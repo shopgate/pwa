@@ -1,48 +1,56 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import connect from './connector';
 import Logo from './components/Logo';
 import Title from './components/Title';
-import Search from './components/Search';
+import Search from './components/Search2';
 
 /**
- * The navigator content component.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * The NavigatorContent component.
  */
-const Content = (props) => {
-  let currentTitle = null;
+class NavigatorContent extends Component {
+  static propTypes = {
+    searchActive: PropTypes.bool.isRequired,
+    searchQuery: PropTypes.string.isRequired,
+  };
 
-  if (!props.searchActive) {
-    if (props.path === INDEX_PATH) {
-      currentTitle = <Logo />;
-    } else {
-      const isSearching = props.searchQuery !== null;
-
-      currentTitle = <Title onClick={isSearching ? props.submitSearch : null} />;
-    }
+  /**
+   * 
+   */
+  get isIndexRoute() {
+    return this.props.path === INDEX_PATH;
   }
 
-  return (
-    <Fragment>
-      {currentTitle}
-      <Search active={props.searchActive} />
-    </Fragment>
-  );
-};
+  /**
+   * 
+   */
+  get isSearchActive() {
+    return this.state.searchField;
+  }
 
-Content.propTypes = {
-  submitSearch: PropTypes.func.isRequired,
-  path: PropTypes.string,
-  searchActive: PropTypes.bool,
-  searchQuery: PropTypes.string,
-};
+  /**
+   * @return {JSX}
+   */
+  render() {
+    let currentTitle = null;
 
-Content.defaultProps = {
-  path: null,
-  searchActive: false,
-  searchQuery: null,
-};
+    if (!this.props.searchActive) {
+      const isSearching = true;//this.state.searchQuery !== null;
+      currentTitle = <Title onClick={isSearching ? this.props.submitSearch : null} />;
+    }
 
-export default connect(Content);
+    return (
+      <Fragment>
+        {/*currentTitle*/}
+        {this.isIndexRoute && <Logo />}
+        {!this.isIndexRoute && <Title />}
+        <Search
+          active={this.props.searchActive}
+          query={this.props.searchQuery}
+        />
+      </Fragment>
+    );
+  }
+}
+
+export default NavigatorContent;

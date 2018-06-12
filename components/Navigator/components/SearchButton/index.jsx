@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MagnifierIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
 import Ripple from '@shopgate/pwa-ui-shared/Ripple';
+import { UIEvents } from '@shopgate/pwa-core';
 import styles from './style';
 
 /**
@@ -9,12 +10,8 @@ import styles from './style';
  */
 class SearchButton extends Component {
   static propTypes = {
-    onClick: PropTypes.func,
-  };
-
-  static defaultProps = {
-    onClick: () => {},
-  };
+    searchActive: PropTypes.bool.isRequired,
+  }
 
   /**
    * This component doesn't need to update at all.
@@ -22,6 +19,10 @@ class SearchButton extends Component {
    */
   shouldComponentUpdate() {
     return false;
+  }
+
+  handleClick = () => {
+    UIEvents.emit('UI_NAVIGATOR_SEARCH_FIELD', !this.props.searchActive);
   }
 
   /**
@@ -36,7 +37,7 @@ class SearchButton extends Component {
       >
         <Ripple
           className={styles.buttonContent}
-          onComplete={this.props.onClick}
+          onClick={this.handleClick}
         >
           <MagnifierIcon />
         </Ripple>
