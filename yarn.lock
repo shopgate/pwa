@@ -86,86 +86,17 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/eslint-config@5.4.0-beta.3":
-  version "5.4.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.4.0-beta.3.tgz#4e44cb678b3d62c9aac185ac867c339a6c1f8cfe"
-  dependencies:
-    babel-eslint "^8.2.1"
-    eslint-config-airbnb "^16.1.0"
-    eslint-plugin-eslint-comments "^1.1.0"
-    eslint-plugin-extra-rules "0.8.1"
-    eslint-plugin-import "^2.8.0"
-    eslint-plugin-jsx-a11y "^6.0.3"
-    eslint-plugin-react "^7.6.1"
-    react-hot-loader "4.0.1"
-
-"@shopgate/pwa-common-commerce@5.4.0-beta.3":
-  version "5.4.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.4.0-beta.3.tgz#53c465f48e24ffa64c263907ec208a957f08612a"
-  dependencies:
-    recompose "^0.26.0"
-    reselect "^3.0.1"
-
-"@shopgate/pwa-common@5.4.0-beta.3":
-  version "5.4.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.4.0-beta.3.tgz#f9cfe5c9ea2ef86a100173e6e30d03e03e7a2411"
-  dependencies:
-    classnames "^2.2.5"
-    crypto-js "3.1.9-1"
-    glamor "^2.20.40"
-    gsap "^1.20.2"
-    history "^4.7.2"
-    intl-messageformat "^2.1.0"
-    jsdom "11.1.0"
-    path-match "^1.2.4"
-    react-dotdotdot "^1.1.0"
-    react-id-swiper "1.4.0"
-    react-inline-transition-group "^2.1.7"
-    react-portal "^3.1.0"
-    react-redux "^5.0.6"
-    react-tap-event-plugin "^3.0.2"
-    recompose "^0.26.0"
-    redux "^3.7.2"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    remote-redux-devtools "^0.5.12"
-    reselect "^3.0.1"
-    rxjs "^5.4.3"
-    url-search-params "^0.10.0"
-
-"@shopgate/pwa-core@5.4.0-beta.3":
-  version "5.4.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.4.0-beta.3.tgz#97d3461f75b1c80cc2647c91ef05f4b9e57c2903"
-  dependencies:
-    crypto-js "3.1.9-1"
-    isomorphic-fetch "^2.2.1"
-    lodash "^4.6.1"
-
-"@shopgate/pwa-unit-test@5.4.0-beta.3":
-  version "5.4.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.4.0-beta.3.tgz#eb20885ce667e4ff8ab0ea98c6bb1370c06cb9f0"
-  dependencies:
-    babel-core "^6.26.0"
-    babel-preset-es2015 "^6.24.1"
-    cheerio "^1.0.0-rc.2"
-    enzyme "^3.2.0"
-    enzyme-adapter-react-16 "^1.1.1"
-    enzyme-to-json "^3.3.3"
-    identity-obj-proxy "^3.0.0"
-    jest-enzyme "^4.0.1"
-    react-hot-loader "4.0.1"
-    react-tap-event-plugin "^3.0.2"
-    react-test-renderer "^16.2.0"
-
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
 
-"@shopgate/tracking-core@5.4.0-beta.3":
-  version "5.4.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.4.0-beta.3.tgz#81215c81033f222336053d36d9960a288bf8cb29"
+"@shopgate/react-hammerjs@^0.5.8":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.8.tgz#e5a7eeaad3c1fb73963d881987f52e143a05eb6e"
+  dependencies:
+    hammerjs "^2.0.8"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
@@ -2915,6 +2846,49 @@ eslint@^4.17.0:
     table "4.0.2"
     text-table "~0.2.0"
 
+eslint@^4.19.1:
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.19.1.tgz#32d1d653e1d90408854bfb296f076ec7e186a300"
+  dependencies:
+    ajv "^5.3.0"
+    babel-code-frame "^6.22.0"
+    chalk "^2.1.0"
+    concat-stream "^1.6.0"
+    cross-spawn "^5.1.0"
+    debug "^3.1.0"
+    doctrine "^2.1.0"
+    eslint-scope "^3.7.1"
+    eslint-visitor-keys "^1.0.0"
+    espree "^3.5.4"
+    esquery "^1.0.0"
+    esutils "^2.0.2"
+    file-entry-cache "^2.0.0"
+    functional-red-black-tree "^1.0.1"
+    glob "^7.1.2"
+    globals "^11.0.1"
+    ignore "^3.3.3"
+    imurmurhash "^0.1.4"
+    inquirer "^3.0.6"
+    is-resolvable "^1.0.0"
+    js-yaml "^3.9.1"
+    json-stable-stringify-without-jsonify "^1.0.1"
+    levn "^0.3.0"
+    lodash "^4.17.4"
+    minimatch "^3.0.2"
+    mkdirp "^0.5.1"
+    natural-compare "^1.4.0"
+    optionator "^0.8.2"
+    path-is-inside "^1.0.2"
+    pluralize "^7.0.0"
+    progress "^2.0.0"
+    regexpp "^1.0.1"
+    require-uncached "^1.0.3"
+    semver "^5.3.0"
+    strip-ansi "^4.0.0"
+    strip-json-comments "~2.0.1"
+    table "4.0.2"
+    text-table "~0.2.0"
+
 espree@3.0.0-alpha-1:
   version "3.0.0-alpha-1"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.0.0-alpha-1.tgz#ca1380bd81f2fae94b2638ae7cc449b71f91eaa3"
@@ -2922,7 +2896,7 @@ espree@3.0.0-alpha-1:
     acorn "^2.6.4"
     acorn-jsx "^2.0.1"
 
-espree@^3.5.2:
+espree@^3.5.2, espree@^3.5.4:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
   dependencies:
@@ -6476,6 +6450,15 @@ react-addons-test-utils@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.6.2.tgz#c12b6efdc2247c10da7b8770d185080a7b047156"
 
+react-dom@^16.2.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.0.tgz#099f067dd5827ce36a29eaf9a6cdc7cbf6216b1e"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
 react-dom@^16.3.2:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
@@ -6615,6 +6598,15 @@ react-transition-hooks@^1.2.0:
   dependencies:
     create-react-class "^15.5.2"
     prop-types "^15.5.8"
+
+react@^16.2.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.4.0.tgz#402c2db83335336fba1962c08b98c6272617d585"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react@^16.3.2:
   version "16.3.2"
@@ -6803,6 +6795,10 @@ regex-not@^1.0.0, regex-not@^1.0.2:
   dependencies:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
+
+regexpp@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-1.1.0.tgz#0e3516dd0b7904f413d2d4193dce4618c3a689ab"
 
 regexpu-core@^2.0.0:
   version "2.0.0"
