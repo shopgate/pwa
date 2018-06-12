@@ -33,6 +33,6 @@ const widgetsInitialState = {
   ...routerState,
 };
 
-export {
+export default {
   widgetsInitialState,
 };

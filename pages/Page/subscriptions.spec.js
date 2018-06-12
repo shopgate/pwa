@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { SET_VIEW_TITLE } from '@shopgate/pwa-common/constants/ActionTypes';
 import { REQUEST_ROOT_CATEGORIES } from '@shopgate/pwa-common-commerce/category/constants';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import { pageWillEnter$, receivedVisiblePageConfig$ } from './streams';
 import { widgetsInitialState } from './mock';
 import subscribe from './subscriptions';
 
@@ -17,13 +17,15 @@ jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequ
 describe('RootCategory subscriptions', () => {
   let subscribeMock;
   let first;
+  let second;
   let store = mockedStore();
 
   it('should subscribe', () => {
     subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(1);
-    [first] = subscribeMock.mock.calls;
-    expect(first[0]).toBe(routeWillEnter$);
+    expect(subscribeMock.mock.calls.length).toBe(2);
+    [first, second] = subscribeMock.mock.calls;
+    expect(first[0]).toBe(pageWillEnter$);
+    expect(second[0]).toBe(receivedVisiblePageConfig$);
   });
 
   describe('pageWillEnter$', () => {
