@@ -1,5 +1,5 @@
 {
-  "version": "5.4.0-beta.3",
+  "version": "5.4.1",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -120,6 +120,16 @@
         "service": "shop",
         "path": "/v1/%(shopId)s",
         "key": "name"
+      }
+    },
+    "shopCNAME": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/shop/%(shopId)s",
+        "value": "cname"
       }
     },
     "webCheckoutShopify": {
