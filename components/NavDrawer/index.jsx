@@ -188,6 +188,7 @@ class NavDrawer extends Component {
               icon={HeartIcon}
               close={this.handleClose}
               withIndicator={this.props.highlightFavorites}
+              testId="favoritesButton"
             >
               <I18n.Text string="navigation.favorites" />
             </Item>

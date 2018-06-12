@@ -92,4 +92,10 @@ export default {
   writeReviewRatedStars: "[data-test-id='reviewForm'] [data-test-id='ratedStars: 0']",
   writeReviewCancelButton: "[data-test-id='reviewCancelButton']",
   writeReviewSendButton: "[data-test-id='sendReviewButton']",
+  navDrawerFavoritesButton: "[data-test-id='favoritesButton']",
+  favoritesPageEmptyFavComponent: "[data-test-id='emptyFavComponent']",
+  favoritesPageContinueShoppingButton: "[data-test-id='continueButton']",
+  productWithManyProps4Link: "[data-test-id='link: /item/393939']",
+  productWithManyProps4FavListPrice: "[data-test-id='minPrice: 0 price: 199 currency: EUR']",
+  availabilityTextInStock: "[data-test-id='availabilityText: In stock']",
 };
