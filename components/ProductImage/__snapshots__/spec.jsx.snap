@@ -17,7 +17,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
     </div>
   </div>
   <div
-    className="css-n44iz3 null"
+    className="css-n44iz3"
   />
 </div>
 `;
@@ -30,7 +30,13 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
     alt={null}
     animating={true}
     backgroundColor="#fff"
-    className="css-1lwoc2u null"
+    className="css-1lwoc2u"
+    classNames={
+      Object {
+        "container": null,
+        "glowContainer": null,
+      }
+    }
     forcePlaceholder={false}
     highestResolutionLoaded={[Function]}
     onError={[Function]}
@@ -50,16 +56,10 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       ]
     }
     src="http://placehold.it/300x300"
-    styleUpdate={
-      Object {
-        "container": null,
-        "glowContainer": null,
-      }
-    }
     transition={null}
   />
   <div
-    className="css-n44iz3 null"
+    className="css-n44iz3"
   />
 </div>
 `;
