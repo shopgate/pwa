@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import variables from 'Styles/variables';
-import parseHTML from './helpers/parseHTML';
-import { handleYouTube } from './helpers/handleDOM';
+import parseHTML from '@shopgate/pwa-common/helpers/html/parseHTML';
+import { handleYouTube } from '@shopgate/pwa-common/helpers/html/handleDOM';
 import styles from './style';
 
 /**
@@ -32,7 +32,7 @@ class Html extends Component {
     super(props, context);
 
     this.state = {
-      html: parseHTML(props.settings.html, props.settings),
+      html: parseHTML(props.settings.html, true, props.settings, true),
     };
   }
 
