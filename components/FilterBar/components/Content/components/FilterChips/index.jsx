@@ -4,7 +4,6 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import {
   FILTER_TYPE_RANGE,
   FILTER_TYPE_MULTISELECT,
-  FILTER_TYPE_SINGLE_SELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
 import Chip from '@shopgate/pwa-ui-shared/Chip';
 import ChipLayout from 'Components/ChipLayout';
@@ -55,7 +54,6 @@ const FilterChips = ({
         break;
       }
       case FILTER_TYPE_MULTISELECT:
-      case FILTER_TYPE_SINGLE_SELECT:
         filter.values.forEach((value, index) => chips.push((
           <Chip
             key={`${filter.label}-${index + 1}`}
