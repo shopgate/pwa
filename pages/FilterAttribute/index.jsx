@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FILTER_TYPE_SINGLE_SELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import View from 'Components/View';
 import Attribute from './components/Attribute';
 import Item from './components/Item';
@@ -63,7 +64,11 @@ class FilterAttribute extends Component {
       this.props.removeTemporaryFilter(attributeId, valueIndex);
     } else {
       // Add to selection.
-      values = [...values, valueId];
+      if (currentAttribute.type === FILTER_TYPE_SINGLE_SELECT) {
+        values = [valueId];
+      } else {
+        values = [...values, valueId];
+      }
 
       this.props.mergeTemporaryFilters({
         [currentAttribute.id]: {
@@ -100,6 +105,7 @@ class FilterAttribute extends Component {
                 value={value.id}
                 onClick={() => this.handleSelection(currentAttribute.id, value.id)}
                 checked={activeValues.includes(value.id)}
+                singleSelect={currentAttribute.type === FILTER_TYPE_SINGLE_SELECT}
               />
             ))}
           </Attribute>
