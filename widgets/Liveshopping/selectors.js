@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
-import {getPopulatedProductsResult} from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getPopulatedProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 
 /**
