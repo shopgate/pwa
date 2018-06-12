@@ -7,6 +7,7 @@ import successAddProductsToCart from '../action-creators/successAddProductsToCar
 import errorAddProductsToCart from '../action-creators/errorAddProductsToCart';
 import setCartProductPendingCount from '../action-creators/setCartProductPendingCount';
 import { getProductPendingCount, getAddToCartMetadata } from '../selectors';
+import { getProductById } from '../../product/selectors/product';
 import { messagesHaveErrors } from '../helpers';
 
 /**
@@ -15,9 +16,15 @@ import { messagesHaveErrors } from '../helpers';
  * @return {Function} A redux thunk.
  */
 const addToCart = productData => (dispatch, getState) => {
-  const pendingProductCount = getProductPendingCount(getState());
+  const state = getState();
+  const pendingProductCount = getProductPendingCount(state);
   const products = productData.map(product => {
-    const metadata = getAddToCartMetadata(getState(), product.productId);
+    const { productData } = getProductById(state, product.productId);
+    const productId = productData.baseProductId || product.productId;
+
+    // it's a variant if it has a baseProductId
+    const variantProductId = productData.baseProductId ? productData.id : undefined;
+    const metadata = getAddToCartMetadata(state, productId, variantProductId);
     return product.metadata && product || {
       ...product,
       ...(metadata) && { metadata },
