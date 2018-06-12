@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
 import styles from './style';
@@ -40,13 +42,28 @@ const CTAButtons = props => (
       once={props.favoritesOnce}
       readOnlyOnFetch
     />
-    <AddToCartButton
-      className={styles.cartButton}
-      handleAddToCart={() => handleAddToCart(props)}
-      isLoading={false}
-      isDisabled={!props.isOrderable}
-      isOrderable={!props.isBaseProduct && props.isOrderable}
-    />
+    <Portal name={portals.FAVORITES_ADD_TO_CART_BEFORE} />
+    <Portal
+      name={portals.FAVORITES_ADD_TO_CART}
+      props={{
+        className: styles.cartButton,
+        handleAddToCart: () => handleAddToCart(props),
+        isLoading: false,
+        isBaseProduct: props.isBaseProduct,
+        isDisabled: !props.isOrderable,
+        noShadow: false,
+        productId: props.productId,
+      }}
+    >
+      <AddToCartButton
+        className={styles.cartButton}
+        handleAddToCart={() => handleAddToCart(props)}
+        isLoading={false}
+        isDisabled={!props.isOrderable}
+        isOrderable={!props.isBaseProduct && props.isOrderable}
+      />
+    </Portal>
+    <Portal name={portals.FAVORITES_ADD_TO_CART_AFTER} />
   </div>
 );
 

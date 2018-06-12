@@ -22,14 +22,14 @@ import ProductContext from '../../context';
  */
 const ProductHeader = () => (
   <ProductContext.Consumer>
-    {({ productId, variantId }) => {
+    {({ productId, variantId, options }) => {
       const id = variantId || productId;
       return (
         <div className={styles.content}>
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons productId={id} />
+            <CTAButtons productId={id} options={options} />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
@@ -86,41 +86,41 @@ const ProductHeader = () => (
               <Grid.Item component="div" className={styles.priceContainer}>
                 <Portal name={portals.PRODUCT_INFO_ROW2}>
 
-                  {/* PRICE STRIKED
+                  {/* PRICE STRIKED */}
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_PRICE_STRIKED_BEFORE} />
                     <Portal name={portals.PRODUCT_PRICE_STRIKED}>
-                      <PriceStriked />
+                      <PriceStriked productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_PRICE_STRIKED_AFTER} />
-                  </div> */}
+                  </div>
 
-                  {/* PRICE
+                  {/* PRICE */}
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_PRICE_BEFORE} />
                     <Portal name={portals.PRODUCT_PRICE}>
-                      <Price />
+                      <Price productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_PRICE_AFTER} />
-                  </div> */}
+                  </div>
 
-                  {/* PRICE INFO
+                  {/* PRICE INFO */}
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_PRICE_INFO_BEFORE} />
                     <Portal name={portals.PRODUCT_PRICE_INFO}>
-                      <PriceInfo />
+                      <PriceInfo productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_PRICE_INFO_AFTER} />
-                  </div> */}
+                  </div>
 
-                  {/* TIER PRICES
+                  {/* TIER PRICES */}
                   <div className={styles.priceInfo}>
                     <Portal name={portals.PRODUCT_TIERS_BEFORE} />
                     <Portal name={portals.PRODUCT_TIERS}>
-                      <Tiers />
+                      <Tiers productId={id} options={options} />
                     </Portal>
                     <Portal name={portals.PRODUCT_TIERS_AFTER} />
-                  </div> */}
+                  </div>
 
                 </Portal>
               </Grid.Item>

@@ -9,6 +9,7 @@ import commerceCart from '@shopgate/pwa-common-commerce/cart/subscriptions';
 import commerceFavorites from '@shopgate/pwa-common-commerce/favorites/subscriptions';
 import commerceFilter from '@shopgate/pwa-common-commerce/filter/subscriptions';
 import commerceProduct from '@shopgate/pwa-common-commerce/product/subscriptions';
+import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions';
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
@@ -28,12 +29,13 @@ import cart from 'Pages/Cart/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
+import filterbar from 'Components/FilterBar/subscriptions';
+import gallery from 'Pages/ProductGallery/subscriptions';
 import login from 'Pages/Login/subscriptions';
 import startPage from 'Pages/StartPage/subscriptions';
 import page from 'Pages/Page/subscriptions';
 import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
-import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
@@ -55,6 +57,7 @@ const subscriptions = [
   commerceFavorites,
   commerceFilter,
   commerceProduct,
+  commerceReviews,
   commerceSearch,
   // Tracking subscribers.
   trackingSetup,
@@ -75,6 +78,7 @@ const subscriptions = [
   favorites,
   filter,
   filterbar,
+  gallery,
   login,
   startPage,
   page,

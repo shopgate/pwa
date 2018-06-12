@@ -7,7 +7,7 @@ import Router from '@virtuous/react-conductor/Router';
 import Route from '@virtuous/react-conductor/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
 import App from '@shopgate/pwa-common/App';
-import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH, LOGIN_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
@@ -42,11 +42,13 @@ const Pages = () => (
           <SnackBar />
           <Router>
             <Route pattern={`${INDEX_PATH}`} component={routes.StartPage} />
-            <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} />
+            <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
             <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
             <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
+            <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
+            <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
           </Router>
           <Portal name={APP_ROUTES} props={appRoutesProps} />
           {isDev && (

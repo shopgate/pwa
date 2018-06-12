@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
-// Import Reviews from 'Components/Reviews';
+import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
-// Import ImageSlider from './components/ImageSlider';
+import ImageSlider from '../ImageSlider';
 import Header from '../Header';
 // Import VariantSelects from './components/VariantSelects';
-// Import Options from './components/Options';
+import Options from '../Options';
 import Description from '../Description';
-// Import Properties from './components/Properties';
+import Properties from '../Properties';
 import connect from './connector';
 import ProductContext from '../../context';
 
@@ -40,6 +41,7 @@ class ProductContent extends Component {
     this.state = {
       productId: props.isBaseProduct === true ? props.productId : null,
       variantId: props.isBaseProduct === false ? props.productId : null,
+      options: {},
     };
   }
 
@@ -62,10 +64,24 @@ class ProductContent extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.props.productId !== nextProps.productId
-      || this.state.productId !== nextState.productId
+      this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
+      || !isEqual(this.state.options, nextState.options)
     );
+  }
+
+  /**
+   * Stores the selected options in local state.
+   * @param {string} optionId The ID of the option.
+   * @param {string} value The option value.
+   */
+  storeOptionSelection = (optionId, value) => {
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        [optionId]: value,
+      },
+    }));
   }
 
   /**
@@ -76,20 +92,22 @@ class ProductContent extends Component {
       return null;
     }
 
+    const id = this.state.variantId || this.state.productId;
+
     return (
       <ProductContext.Provider value={this.state}>
         <Fragment>
           {/* IMAGE */}
-          {/* <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+          <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
           <Portal name={portals.PRODUCT_IMAGE}>
-            <ImageSlider />
+            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
           </Portal>
-          <Portal name={portals.PRODUCT_IMAGE_AFTER} /> */}
+          <Portal name={portals.PRODUCT_IMAGE_AFTER} />
 
           {/* HEADER */}
           <Portal name={portals.PRODUCT_HEADER_BEFORE} />
           <Portal name={portals.PRODUCT_HEADER}>
-            <Header productId={this.props.productId} />
+            <Header />
           </Portal>
           <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
@@ -101,32 +119,36 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} /> */}
 
           {/* OPTIONS */}
-          {/* <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
+          <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
           <Portal name={portals.PRODUCT_OPTIONS}>
-            <Options />
+            <Options
+              productId={id}
+              storeSelection={this.storeOptionSelection}
+              currentOptions={this.state.options}
+            />
           </Portal>
-          <Portal name={portals.PRODUCT_OPTIONS_AFTER} /> */}
+          <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
 
           {/* DESCRIPTION */}
           <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
           <Portal name={portals.PRODUCT_DESCRIPTION}>
-            <Description productId={this.props.productId} />
+            <Description productId={id} />
           </Portal>
           <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
           {/* PROPERTIES */}
-          {/* <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
+          <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
           <Portal name={portals.PRODUCT_PROPERTIES}>
-            <Properties />
+            <Properties productId={id} />
           </Portal>
-          <Portal name={portals.PRODUCT_PROPERTIES_AFTER} /> */}
+          <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
 
           {/* REVIEWS */}
-          {/* <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
+          <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
           <Portal name={portals.PRODUCT_REVIEWS}>
-            <Reviews />
+            <Reviews productId={this.state.productId} />
           </Portal>
-          <Portal name={portals.PRODUCT_REVIEWS_AFTER} /> */}
+          <Portal name={portals.PRODUCT_REVIEWS_AFTER} />
 
           {/* TAX DISCLAIMER */}
           <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
