@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import reducers from '../reducers';
 import {
-  getProductBasePrice,
+  getProductUnitPrice,
   getProductCurrency,
 } from './product';
 import {
@@ -27,7 +27,7 @@ import {
 describe('Product.Price selectors', () => {
   describe('Simple data selectors', () => {
     it('should validate simple data selectors', () => {
-      expect(getProductBasePrice(basicProductState)).toBe(89);
+      expect(getProductUnitPrice(basicProductState)).toBe(89);
       expect(getProductCurrency(basicProductState)).toBe('EUR');
     });
   });

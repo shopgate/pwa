@@ -2,18 +2,17 @@ import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
   getCurrentProduct,
-  getProductBasePrice,
-} from '../selectors/product';
+  getProductUnitPrice,
+} from './product';
 import {
-  getCurrentProductOptions,
   getRawProductOptions,
   hasProductOptions,
   areProductOptionsSet,
-} from '../selectors/options';
+} from './options';
 import {
   hasCurrentProductVariants,
   isProductChildrenSelected,
-} from '../selectors/variants';
+} from './variants';
 
 /**
  * Calculates the additional price for the current product.
@@ -21,13 +20,13 @@ import {
  * @returns {number}
  */
 export const getProductPriceAddition = createSelector(
-  getCurrentProductOptions,
+  (state, props) => props.options,
   getRawProductOptions,
   validateSelectorParams(
-    (currentOptions, productOptions) => {
+    (options, productOptions) => {
       // Get all item modifiers.
-      const modifiers = Object.keys(currentOptions).map((optionId) => {
-        const itemId = currentOptions[optionId];
+      const modifiers = Object.keys(options).map((optionId) => {
+        const itemId = options[optionId];
         const optionItems = productOptions.find(item => item.id === optionId).values;
         const selectedItem = optionItems.find(item => item.id === itemId);
 
@@ -47,7 +46,7 @@ export const getProductPriceAddition = createSelector(
  * @returns {number}
  */
 export const getProductTotalPrice = createSelector(
-  getProductBasePrice,
+  getProductUnitPrice,
   getProductPriceAddition,
   validateSelectorParams((basePrice, priceAddition) => basePrice + priceAddition)
 );

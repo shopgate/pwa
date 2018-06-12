@@ -12,19 +12,28 @@ import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 
 /**
+ * @param {Object} state The current application state.
+ * @return {Object}
+ */
+export const getProductState = state => state.product;
+
+/**
  * Selects all products from the store.
  * @param {Object} state The current application state.
  * @return {Object} The collection of products.
  */
-export const getProducts = state => state.product.productsById;
+export const getProducts = createSelector(
+  getProductState,
+  state => state.productsById
+);
 
 /**
  * Retrieves the current product or variant page from the store.
  * @param {Object} state The current application state.
+ * @param {Object} props The current component props.
  * @return {string} The id of the current product.
  */
-export const getCurrentProductId = state =>
-  state.product.currentProduct.productVariantId || state.product.currentProduct.productId;
+export const getCurrentProductId = (state, props) => (props ? props.productId : null);
 
 /**
  * Gets the product id from the current history state pathname.
@@ -68,7 +77,7 @@ export const getCurrentBaseProductId = state => state.product.currentProduct.pro
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  getCurrentBaseProductId,
+  (state, props) => props.productId,
   getProducts,
   (productId, products) => {
     const entry = products[productId];
@@ -86,9 +95,9 @@ export const getCurrentBaseProduct = createSelector(
  * @returns {Object} The current product.
  */
 export const getCurrentProduct = createSelector(
-  getCurrentProductId,
   getProducts,
-  (productId, products) => {
+  (state, props) => props.productId,
+  (products, productId) => {
     const entry = products[productId];
     // No return null when data is there but product data is updating.
     if (!entry || isUndefined(entry.productData)) {
@@ -104,28 +113,32 @@ export const getCurrentProduct = createSelector(
  * @param {Object} state The application state.
  * @returns {number|null}
  */
-export const getProductBasePrice = (state) => {
-  const currentProduct = getCurrentProduct(state);
-  if (!currentProduct) {
-    return null;
-  }
+export const getProductUnitPrice = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
 
-  return currentProduct.price.unitPrice;
-};
+    return product.price.unitPrice;
+  }
+);
 
 /**
  * Retrieves the price currency from a product.
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getProductCurrency = (state) => {
-  const currentProduct = getCurrentProduct(state);
-  if (!currentProduct) {
-    return null;
-  }
+export const getProductCurrency = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
 
-  return currentProduct.price.currency;
-};
+    return product.price.currency;
+  }
+);
 
 /**
  * Retrieves the generated result hash for a category ID.
@@ -244,9 +257,12 @@ export const getProductName = createSelector(
 /**
  * Selects the product images state.
  * @param {Object} state The current application state.
- * @return {Object} The product images state.
+ * @return {Object}
  */
-const getProductImagesState = state => state.product.imagesByProductId;
+const getProductImagesState = createSelector(
+  getProductState,
+  state => state.imagesByProductId
+);
 
 /**
  * Retrieves the current product images or the images of the parent product.
@@ -255,26 +271,28 @@ const getProductImagesState = state => state.product.imagesByProductId;
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  getCurrentProductId,
-  getCurrentBaseProductId,
+  (state, props) => props.productId,
+  getCurrentProduct,
   getProductImagesState,
-  (productId, baseProductId, images) => {
-    let entry = images[productId];
-    const productImages = images[productId];
-
-    /**
-     * Check if there are any images.
-     * If not then default back to the base product's images.
-     */
-    if (!productImages || !productImages.images || !productImages.images.length) {
-      entry = images[baseProductId];
-    }
-
-    if (!entry || entry.isFetching || isUndefined(entry.images)) {
+  (productId, product, images) => {
+    if (!productId) {
       return null;
     }
 
-    return entry.images;
+    const variantEntry = images[productId];
+    const baseProductEntry = (product && product.baseProductId) && images[product.baseProductId];
+
+    // If the variant doesn't have images.
+    if (!variantEntry || !variantEntry.images || !variantEntry.images.length) {
+      // Check the base product.
+      if (!baseProductEntry || !baseProductEntry.images || !baseProductEntry.images.length) {
+        return null;
+      }
+
+      return baseProductEntry.images;
+    }
+
+    return variantEntry.images;
   }
 );
 
@@ -432,9 +450,9 @@ const getProductPropertiesState = state => state.product.propertiesByProductId;
  * @return {string|null}
  */
 export const getProductProperties = createSelector(
-  getCurrentProductId,
   getProductPropertiesState,
-  (productId, properties) => {
+  (state, props) => props.productId,
+  (properties, productId) => {
     const entry = properties[productId];
     if (!entry || entry.isFetching || isUndefined(entry.properties)) {
       return null;

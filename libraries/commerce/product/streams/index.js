@@ -1,5 +1,5 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import {
@@ -11,9 +11,13 @@ import {
 import { getSelectedVariant } from '../selectors/variants';
 
 export const productWillEnter$ = routeWillEnter$
-  .filter(({ action }) => (
-    action.route.pattern === `${ITEM_PATH}/:productId`
-  ));
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId`);
+
+export const galleryWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
+
+export const galleryWillLeave$ = routeWillLeave$
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/gallery/:slide`);
 
 export const productReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT)
