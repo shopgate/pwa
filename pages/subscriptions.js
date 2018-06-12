@@ -1,6 +1,7 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { EVENT_PIPELINE_ERROR } from '@shopgate/pwa-core/constants/Pipeline';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
+import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
+import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipelineErrorDialog';
 
 /**
@@ -8,6 +9,10 @@ import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipeline
  * @param {Function} subscribe The subscribe function.
  */
 export default function app(subscribe) {
+  subscribe(appWillStart$, () => {
+    authRoutes.set('/checkout', '/login');
+  });
+
   subscribe(appDidStart$, ({ dispatch }) => {
     // Add event callbacks.
     event.addCallback(EVENT_PIPELINE_ERROR, params => dispatch(pipelineErrorDialog(params)));
