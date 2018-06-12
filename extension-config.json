@@ -128,8 +128,8 @@
       "params": {
         "method": "GET",
         "service": "shop",
-        "path": "/v1/shop/%(shopId)s",
-        "value": "cname"
+        "path": "/v1/%(shopId)s",
+        "key": "cname"
       }
     },
     "productPropertiesFilter": {
