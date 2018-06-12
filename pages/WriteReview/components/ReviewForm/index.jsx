@@ -215,7 +215,7 @@ class ReviewForm extends Component {
       return <LoadingIndicator />;
     }
     return (
-      <section className={styles.container}>
+      <section className={styles.container} data-test-id="reviewForm">
         <form onSubmit={this.handleSubmit}>
           <RatingScale
             onChange={(rate) => {
