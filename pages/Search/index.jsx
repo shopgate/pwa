@@ -25,8 +25,8 @@ Search.defaultProps = {
 
 export default () => (
   <RouteContext.Consumer>
-    {({ params }) => (
-      <Search searchPhrase={params.searchPhrase || null} />
+    {({ query }) => (
+      <Search searchPhrase={query.s || null} />
     )}
   </RouteContext.Consumer>
 );

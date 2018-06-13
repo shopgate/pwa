@@ -1,10 +1,14 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
+import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
+import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor/constants';
+import * as events from '@virtuous/conductor-events';
+import getRouteById from '@virtuous/conductor-helpers/getRouteById';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
@@ -12,9 +16,8 @@ import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
 // Import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
+import NavigatorContext from './context';
 import styles from './style';
-
-export const NavigatorContext = React.createContext({something: 4});
 
 /**
  * The navigator component.
@@ -23,8 +26,7 @@ export const NavigatorContext = React.createContext({something: 4});
  */
 class Navigator extends PureComponent {
   static propTypes = {
-    filterOpen: PropTypes.bool.isRequired,
-    submitSearch: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
     backgroundColor: PropTypes.string,
     navigatorEnabled: PropTypes.bool,
     showLoadingBar: PropTypes.bool,
@@ -49,26 +51,47 @@ class Navigator extends PureComponent {
     super(props);
 
     this.state = {
+      routePattern: '',
       searchField: false,
       searchQuery: '',
     };
 
-    this.context2 = {
-      searchField: this.state.searchField,
-      searchQuery: this.state.searchQuery,
-      toggleSearchField: this.toggleSearchActive,
-      setSearchQuery: this.toggleSearchActive,
-    };
-
     UIEvents.addListener('UI_NAVIGATOR_SEARCH_FIELD', this.toggleSearchField);
+
+    events.onWillPush(this.setRoutePattern);
+    events.onWillPop(this.setRoutePattern);
+    events.onWillReplace(this.setRoutePattern);
   }
 
   /**
-   * 
+   * @param {string} id The id of the route that entered.
+   */
+  setRoutePattern = (id) => {
+    const { pattern } = getRouteById(id);
+
+    if (this.state.routePattern !== pattern) {
+      this.setState({
+        routePattern: pattern,
+      });
+    }
+  }
+
+  /**
+   * @param {string} query The new search query.
+   */
+  setSearchQuery = (query) => {
+    if (this.state.searchQuery !== query) {
+      this.setState({
+        searchQuery: query,
+      });
+    }
+  }
+
+  /**
+   * @param {boolean} active The new state for the search field.
    */
   toggleSearchField = (active) => {
-    console.warn(this.context2);
-    if (this.state.search === active) {
+    if (this.state.searchField === active) {
       return;
     }
 
@@ -76,22 +99,22 @@ class Navigator extends PureComponent {
       searchField: active,
     });
 
-    if (active) {
+    if (!active) {
       this.handleSubmitSearch();
     }
   }
 
-  setSearchQuery = (query) => {
-
-  }
-
   /**
-   * 
+   * Navigate to the search route. If we are already
+   * on the search route then perform a history replace
+   * action instead. This is to not pollute the history.
    */
   handleSubmitSearch = () => {
     if (this.state.searchQuery) {
-      // do the thing.
-      // replace or push
+      const isSearchRoute = (this.state.routePattern === SEARCH_PATH);
+      const action = (isSearchRoute) ? ACTION_REPLACE : ACTION_PUSH;
+
+      this.props.navigate(action, `/search?s=${this.state.searchQuery}`);
     }
   }
 
@@ -109,9 +132,14 @@ class Navigator extends PureComponent {
       color: this.props.textColor,
     };
 
-    console.warn(this.context2);
+    const context = {
+      ...this.state,
+      toggleSearchField: this.toggleSearchField,
+      setSearchQuery: this.setSearchQuery,
+    };
+
     return (
-      <NavigatorContext.Provider value={this.context2}>
+      <NavigatorContext.Provider value={context}>
         <Portal name={portals.NAV_BAR_BEFORE} />
         <Portal name={portals.NAV_BAR}>
           <header
@@ -132,10 +160,7 @@ class Navigator extends PureComponent {
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
                   <Grid.Item className={styles.title} component="div" grow={1}>
                     {this.props.showTitle &&
-                      <Content
-                        searchActive={this.state.searchField}
-                        searchQuery={this.state.searchQuery}
-                      />
+                      <Content routePattern={this.state.routePattern} />
                     }
                   </Grid.Item>
                 </Portal>
@@ -148,7 +173,7 @@ class Navigator extends PureComponent {
                   </div>
                   */}
                   {this.props.showSearch &&
-                    <SearchButton searchActive={this.state.searchField} />
+                    <SearchButton />
                   }
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE} />
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON} props={{ CartButton }}>

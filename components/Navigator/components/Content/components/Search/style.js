@@ -3,21 +3,20 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
+  left: 0,
+  top: 5,
   position: 'absolute',
+  transition: 'transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   width: '100%',
-  margin: `0 0 0 -${variables.gap.big}px`,
-  top: '4px',
+  willChange: 'transform',
 }).toString();
 
 const input = css({
-  display: 'block',
-  position: 'relative',
   width: '100%',
   fontSize: '1rem',
   border: `1px ${colors.shade7} solid`,
   padding: `0 ${variables.gap.big}px`,
   background: colors.light,
-  lineHeight: '19px',
   height: '46px',
   borderRadius: '2px',
   outline: 'none',
@@ -34,31 +33,8 @@ const overlay = css({
   zIndex: 10,
 }).toString();
 
-const slideInSearchBar = css.keyframes({
-  '0%': {
-    transform: 'translateX(100%)',
-    opacity: 0.5,
-  },
-  '100%': { transform: 'translateX(0)' },
-});
-
-const slideOutSearchBar = css.keyframes({
-  '0%': { transform: 'translateX(0)' },
-  '100%': { transform: 'translateX(100%)' },
-});
-
-const animation = {
-  in: css({
-    animation: `${slideInSearchBar} 150ms 1 both cubic-bezier(0.25, 0.1, 0.25, 1)`,
-  }).toString(),
-  out: css({
-    animation: `${slideOutSearchBar} 150ms 1 both ease-in`,
-  }).toString(),
-};
-
 export default {
   container,
   input,
-  animation,
   overlay,
 };

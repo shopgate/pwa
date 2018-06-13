@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isCurrentViewLoading } from '@shopgate/pwa-common/selectors/view';
-import submitSearch from './actions/submitSearch';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import { isProgressBarShowing } from './selectors';
 
 /**
@@ -25,7 +25,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  submitSearch: () => dispatch(submitSearch()),
+  navigate: (action, href) => dispatch(navigate(action, href)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+export default connect(mapStateToProps, mapDispatchToProps);

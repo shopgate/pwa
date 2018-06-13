@@ -1,7 +1,4 @@
 export default {
-  entering: {
-
-  },
   entered: {
     transform: 'translate3d(0, 0, 0)',
   },
