@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -109,13 +110,16 @@ class ProductImage extends Component {
       );
     }
 
+    const classes = classNames(
+      styles.container,
+      this.props.classNames.container
+    );
+
     return (
       <Image
         {...this.props}
         backgroundColor={colors.light}
-        className={`${styles.container}${this.props.classNames.container
-          ? ' ' + this.props.classNames.container
-          : ''}`}
+        className={classes}
         onError={this.imageLoadingFailed}
       />
     );
@@ -135,12 +139,15 @@ class ProductImage extends Component {
    * @return {JSX}
    */
   render() {
+    const classes = classNames(
+      styles.glowContainer,
+      this.props.classNames.glowContainer
+    );
+
     return (
       <div className={styles.container}>
         {this.renderedContent}
-        <div className={`${styles.glowContainer}${this.props.classNames.glowContainer
-          ? ' ' + this.props.classNames.glowContainer
-          : ''}`} />
+        <div className={classes} />
       </div>
     );
   }

@@ -65,10 +65,14 @@ const createProductSliderItem = ({
         <Link href={`${ITEM_PATH}/${bin2hex(id)}`}>
           <Grid>
             <Grid.Item className={styles.imagePane}>
-              <ProductImage 
-                classNames={{container: styles.updateImageContainer, glowContainer: styles.updateImageGlowContainer }} 
-                src={featuredImageUrl} 
-                alt={name} />
+              <ProductImage
+                classNames={{
+                  container: styles.updateImageContainer,
+                  glowContainer: styles.updateImageGlowContainer,
+                }}
+                src={featuredImageUrl}
+                alt={name}
+              />
             </Grid.Item>
             <Grid.Item className={styles.infoPane}>
               <div>
