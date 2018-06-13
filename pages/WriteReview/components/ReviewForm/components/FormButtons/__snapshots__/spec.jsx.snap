@@ -55,7 +55,6 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             disabled={false}
             flat={false}
             onClick={null}
-            testId="sendReviewButton"
             type="secondary"
             wrapContent={false}
           >
@@ -63,11 +62,10 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               className="css-187rja2 "
               disabled={false}
               onClick={null}
-              testId="sendReviewButton"
             >
               <button
                 className="css-187rja2  css-1rn65c0"
-                data-test-id="sendReviewButton"
+                data-test-id="Button"
                 disabled={false}
                 onClick={null}
               >

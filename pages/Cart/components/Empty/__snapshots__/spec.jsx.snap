@@ -46,7 +46,6 @@ exports[`<CartEmpty /> should render 1`] = `
       onClick={[Function]}
       rippleClassName=""
       rippleSize={null}
-      testId="Button"
       type="secondary"
       wrapContent={true}
     >

@@ -26,7 +26,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
@@ -69,7 +68,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
@@ -94,7 +92,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         onClick={[Function]}
         rippleClassName=""
         rippleSize={null}
-        testId="Button"
         type="plain"
         wrapContent={true}
       >
@@ -103,7 +100,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           disabled={false}
           flat={false}
           onClick={[Function]}
-          testId="Button"
           type="plain"
           wrapContent={false}
         >
@@ -111,7 +107,6 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             className="css-1xxwysr css-rz4b27"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-1xxwysr css-rz4b27 css-1rn65c0"
@@ -183,7 +178,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
@@ -226,7 +220,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
@@ -252,7 +245,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
@@ -295,7 +287,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
@@ -320,7 +311,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         onClick={[Function]}
         rippleClassName=""
         rippleSize={null}
-        testId="Button"
         type="plain"
         wrapContent={true}
       >
@@ -329,7 +319,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           disabled={false}
           flat={false}
           onClick={[Function]}
-          testId="Button"
           type="plain"
           wrapContent={false}
         >
@@ -337,7 +326,6 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1xxwysr css-rz4b27"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
           >
             <button
               className="css-1xxwysr css-rz4b27 css-1rn65c0"

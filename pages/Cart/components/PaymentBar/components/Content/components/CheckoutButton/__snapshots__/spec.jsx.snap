@@ -12,7 +12,6 @@ exports[`<CheckoutButton /> Checkout is possible should render without any props
     onClick={null}
     rippleClassName=""
     rippleSize={null}
-    testId="Button"
     type="secondary"
     wrapContent={true}
   >

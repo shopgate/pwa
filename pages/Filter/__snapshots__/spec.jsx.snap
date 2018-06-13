@@ -1184,7 +1184,6 @@ exports[`<Filter> page should render 1`] = `
                       disabled={true}
                       flat={true}
                       onClick={[Function]}
-                      testId="Button"
                       type="regular"
                       wrapContent={true}
                     >
@@ -1192,7 +1191,6 @@ exports[`<Filter> page should render 1`] = `
                         className="css-4q16hk "
                         disabled={true}
                         onClick={[Function]}
-                        testId="Button"
                       >
                         <button
                           className="css-4q16hk  css-1rn65c0"
