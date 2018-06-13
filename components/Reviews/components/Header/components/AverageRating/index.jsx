@@ -11,6 +11,7 @@ import { container } from './style';
 /**
  * The average rating and number of ratings for a product.
  * @param {Object} rating The rating values.
+ * @param {String} productId The related product ID.
  * @returns {JSX}
  */
 const AverageRating = ({ rating, productId }) => {
