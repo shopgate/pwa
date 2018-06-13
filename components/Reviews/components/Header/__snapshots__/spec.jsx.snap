@@ -69,6 +69,7 @@ exports[`<Header /> should render empty 1`] = `
                 <div
                   aria-label="reviews.rating_stars"
                   className="css-13azwyo "
+                  data-test-id="ratedStars: 0"
                 >
                   <div
                     className="css-4s85e9"
@@ -302,11 +303,13 @@ exports[`<Header /> should render empty 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
+                  testId={null}
                   type="secondary"
                   wrapContent={true}
                 >
                   <div
                     className="css-1yv2jt6"
+                    data-test-id={null}
                   >
                     <RippleButton
                       className=""
@@ -315,6 +318,7 @@ exports[`<Header /> should render empty 1`] = `
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
+                      testId="Button"
                       type="secondary"
                       wrapContent={true}
                     >
@@ -323,6 +327,7 @@ exports[`<Header /> should render empty 1`] = `
                         disabled={false}
                         flat={true}
                         onClick={[Function]}
+                        testId="Button"
                         type="secondary"
                         wrapContent={false}
                       >
@@ -330,6 +335,7 @@ exports[`<Header /> should render empty 1`] = `
                           className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
                           <button
                             className="css-dh0pju  css-1rn65c0"
@@ -452,6 +458,7 @@ exports[`<Header /> should render rating summary 1`] = `
                 <div
                   aria-label="reviews.rating_stars"
                   className="css-13azwyo "
+                  data-test-id="ratedStars: 2.5"
                 >
                   <div
                     className="css-4s85e9"
@@ -820,11 +827,13 @@ exports[`<Header /> should render rating summary 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
+                  testId={null}
                   type="secondary"
                   wrapContent={true}
                 >
                   <div
                     className="css-1yv2jt6"
+                    data-test-id={null}
                   >
                     <RippleButton
                       className=""
@@ -833,6 +842,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
+                      testId="Button"
                       type="secondary"
                       wrapContent={true}
                     >
@@ -841,6 +851,7 @@ exports[`<Header /> should render rating summary 1`] = `
                         disabled={false}
                         flat={true}
                         onClick={[Function]}
+                        testId="Button"
                         type="secondary"
                         wrapContent={false}
                       >
@@ -848,6 +859,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
                           <button
                             className="css-dh0pju  css-1rn65c0"

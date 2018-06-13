@@ -183,6 +183,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo "
+                        data-test-id="ratedStars: 2.5"
                       >
                         <div
                           className="css-4s85e9"
@@ -551,11 +552,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
+                        testId={null}
                         type="secondary"
                         wrapContent={true}
                       >
                         <div
                           className="css-1yv2jt6"
+                          data-test-id={null}
                         >
                           <RippleButton
                             className=""
@@ -564,6 +567,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             onClick={[Function]}
                             rippleClassName=""
                             rippleSize={null}
+                            testId="Button"
                             type="secondary"
                             wrapContent={true}
                           >
@@ -572,6 +576,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               disabled={false}
                               flat={true}
                               onClick={[Function]}
+                              testId="Button"
                               type="secondary"
                               wrapContent={false}
                             >
@@ -579,6 +584,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 className="css-dh0pju "
                                 disabled={false}
                                 onClick={[Function]}
+                                testId="Button"
                               >
                                 <button
                                   className="css-dh0pju  css-1rn65c0"
@@ -707,6 +713,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -1164,6 +1171,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -1621,6 +1629,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -2078,6 +2087,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -2524,11 +2534,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   onClick={[Function]}
                   rippleClassName=""
                   rippleSize={null}
+                  testId={null}
                   type="secondary"
                   wrapContent={true}
                 >
                   <div
                     className="css-omcrdt"
+                    data-test-id={null}
                   >
                     <RippleButton
                       className=""
@@ -2537,6 +2549,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
+                      testId="Button"
                       type="secondary"
                       wrapContent={true}
                     >
@@ -2545,6 +2558,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                         disabled={false}
                         flat={true}
                         onClick={[Function]}
+                        testId="Button"
                         type="secondary"
                         wrapContent={false}
                       >
@@ -2552,6 +2566,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                           className="css-dh0pju "
                           disabled={false}
                           onClick={[Function]}
+                          testId="Button"
                         >
                           <button
                             className="css-dh0pju  css-1rn65c0"
@@ -2712,6 +2727,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo "
+                        data-test-id="ratedStars: 2.5"
                       >
                         <div
                           className="css-4s85e9"
@@ -3080,11 +3096,13 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
+                        testId={null}
                         type="secondary"
                         wrapContent={true}
                       >
                         <div
                           className="css-1yv2jt6"
+                          data-test-id={null}
                         >
                           <RippleButton
                             className=""
@@ -3093,6 +3111,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             onClick={[Function]}
                             rippleClassName=""
                             rippleSize={null}
+                            testId="Button"
                             type="secondary"
                             wrapContent={true}
                           >
@@ -3101,6 +3120,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               disabled={false}
                               flat={true}
                               onClick={[Function]}
+                              testId="Button"
                               type="secondary"
                               wrapContent={false}
                             >
@@ -3108,6 +3128,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 className="css-dh0pju "
                                 disabled={false}
                                 onClick={[Function]}
+                                testId="Button"
                               >
                                 <button
                                   className="css-dh0pju  css-1rn65c0"
@@ -3220,6 +3241,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -3677,6 +3699,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo css-hgkz41"
+                        data-test-id="ratedStars: 5"
                       >
                         <div
                           className="css-4s85e9"
@@ -4193,6 +4216,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                       <div
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo "
+                        data-test-id="ratedStars: 0"
                       >
                         <div
                           className="css-4s85e9"
@@ -4426,11 +4450,13 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                         onClick={[Function]}
                         rippleClassName=""
                         rippleSize={null}
+                        testId={null}
                         type="secondary"
                         wrapContent={true}
                       >
                         <div
                           className="css-1yv2jt6"
+                          data-test-id={null}
                         >
                           <RippleButton
                             className=""
@@ -4439,6 +4465,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                             onClick={[Function]}
                             rippleClassName=""
                             rippleSize={null}
+                            testId="Button"
                             type="secondary"
                             wrapContent={true}
                           >
@@ -4447,6 +4474,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                               disabled={false}
                               flat={true}
                               onClick={[Function]}
+                              testId="Button"
                               type="secondary"
                               wrapContent={false}
                             >
@@ -4454,6 +4482,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                                 className="css-dh0pju "
                                 disabled={false}
                                 onClick={[Function]}
+                                testId="Button"
                               >
                                 <button
                                   className="css-dh0pju  css-1rn65c0"
