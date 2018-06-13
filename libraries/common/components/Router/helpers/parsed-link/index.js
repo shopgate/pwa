@@ -10,6 +10,20 @@ import actions from './actions';
  */
 class ParsedLink {
   /**
+   * Returns shopgate domain.
+   * @returns {string}
+   */
+  static get shopgateDomain() {
+    return 'shopgate.com';
+  }
+  /**
+   * Returns shopgate playground domain.
+   * @returns {string}
+   */
+  static get shopgatePGDomain() {
+    return 'shopgatepg.com';
+  }
+  /**
    * Checks if href looks like a shopgate shop link.
    * Shopgate shop links can have two variants. [shopName].shopgate.com or CNAME.
    * @param {string} href Href.
@@ -30,13 +44,21 @@ class ParsedLink {
     }
     // Check if link ends with shopgate.com. If not it is not a shopgate shop link.
     const isShopgatedomain =
-            parsed.hostname.endsWith('shopgate.com') || parsed.hostname.endsWith('shopgatepg.com');
+            parsed.hostname.endsWith(this.shopgateDomain)
+            || parsed.hostname.endsWith(this.shopgatePGDomain);
+
     if (!isShopgatedomain) {
       return false;
     }
 
     // If hostame is www.shopgate.com or just shopgate.com this is also not a shopgate shop link.
-    if (['www.shopgate.com', 'shopgate.com'].includes(parsed.hostname)) {
+    if (
+      [
+        `www.${this.shopgateDomain}`,
+        this.shopgateDomain,
+      ]
+        .includes(parsed.hostname)
+    ) {
       return false;
     }
 
@@ -64,7 +86,10 @@ class ParsedLink {
     const regexQueryParams = /[?&]([^=#]+)=([^&#]*)/g;
 
     // Look for an actual url
-    const parser = new URL(this.href, 'http://shopgate.com'); // We don't care about location
+    const parser = new URL(
+      this.href,
+      `http://${this.constructor.shopgateDomain}`
+    ); // We don't care about location
     const queryParams = {};
 
     // Parse url queries
