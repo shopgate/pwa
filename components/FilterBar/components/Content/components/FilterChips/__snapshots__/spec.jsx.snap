@@ -35,7 +35,7 @@ exports[`FilterChips should render all types of filters and remove them on click
           },
           "SingleSelect": Object {
             "label": "Single selection",
-            "type": undefined,
+            "type": "single_select",
             "value": "SingleSelected",
           },
         }
