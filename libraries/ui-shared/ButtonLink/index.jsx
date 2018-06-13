@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import ActionButton from '../ActionButton';
+import connect from './connector';
 
 /**
  * Simple wrapper around ActionButton so it's easy to render buttons which behave as links.
@@ -10,27 +10,22 @@ class ButtonLink extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     href: PropTypes.string.isRequired,
+    navigate: PropTypes.func,
     noGap: PropTypes.bool,
   };
 
   static defaultProps = {
+    navigate: () => {},
     noGap: false,
   };
-
-  /**
-   * Prepares the link.
-   * @param {Object} props Props
-   */
-  constructor(props) {
-    super(props);
-    this.link = new ParsedLink(this.props.href);
-  }
 
   /**
    * Opens the given url on click.
    * @returns {undefined}
    */
-  handleClick = () => this.link.open();
+  handleClick = () => {
+    this.props.navigate(this.props.href);
+  };
 
   /**
    * Renders an ActionButton and handles link handling.
@@ -45,4 +40,4 @@ class ButtonLink extends Component {
   }
 }
 
-export default ButtonLink;
+export default connect(ButtonLink);
