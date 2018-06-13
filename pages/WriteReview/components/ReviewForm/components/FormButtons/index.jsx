@@ -19,10 +19,11 @@ const FormButtons = (props) => {
         type="button"
         className={`${buttonStyle.button} ${buttonStyle.content}`}
         onClick={props.cancel}
+        data-test-id="reviewCancelButton"
       >
         <I18n.Text string="common.cancel" />
       </button>
-      <RippleButton type="secondary" disabled={props.isLoading}>
+      <RippleButton type="secondary" disabled={props.isLoading} testId="sendReviewButton">
         <I18n.Text string="common.submit" />
       </RippleButton>
     </div>

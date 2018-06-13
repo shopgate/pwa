@@ -24,7 +24,7 @@ const ImageSliderWidget = ({ settings, className }) => (
       if (image.link) {
         return (
           <Link key={key} href={image.link} className={styles.link} data-test-id="withLink">
-            <img src={image.image} alt={image.alt} className={styles.image} />
+            <img src={image.image} alt={image.alt} className={styles.image} data-test-id={`link : ${settings.link}`} />
           </Link>
         );
       }
