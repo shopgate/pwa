@@ -23,6 +23,10 @@ const istanbul = require('istanbul-lib-coverage');
 
 const map = istanbul.createCoverageMap({});
 
+beforeEach(() => {
+  cy.fixture('userCredentials.json').as('user');
+});
+
 Cypress.on('window:before:unload', (e) => {
   const coverage = e.currentTarget.__coverage__;
 
