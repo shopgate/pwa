@@ -57,7 +57,7 @@ const CTAButtons = props => (
     >
       <AddToCartButton
         className={styles.cartButton}
-        handleAddToCart={() => handleAddToCart(props)}
+        onClick={() => handleAddToCart(props)}
         isLoading={false}
         isDisabled={!props.isOrderable}
         isOrderable={!props.isBaseProduct && props.isOrderable}

@@ -1,62 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import View from 'Components/View';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import connect from './connector';
 import EmptyFavorites from './components/EmptyFavorites';
 import FavoritesList from './components/FavoritesList';
+
 /**
- * Favorites page.
+ * @param {Object} props The component props.
+ * @return {JSX}
  */
-class Favorites extends Component {
-  static propTypes = {
-    initialLoading: PropTypes.bool.isRequired,
-    products: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * Title getter.
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.favorites');
-  }
-
-  /**
-   * Initial render with just a loading spinner.
-   * For normal app start should never be visible since it's only rendered when redux is not yet
-   * filled with favorites data.
-   * Will happen only if connection is very slow and user is very fast, or opens the favorites
-   * via an interjection.
-   * @returns {XML}
-   */
-  initialRender() {
+const Favorites = ({ initialLoading, products }) => {
+  if (initialLoading) {
     return (
-      <View title={this.title}>
+      <View>
         <LoadingIndicator />
       </View>
     );
   }
 
-  /**
-   *
-   * @returns {XML}
-   */
-  render() {
-    if (this.props.initialLoading) {
-      return this.initialRender();
-    }
-    return (
-      <View title={this.title}>
-        <EmptyFavorites products={this.props.products} />
-        <FavoritesList products={this.props.products} />
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      {!products.length && <EmptyFavorites />}
+      {(products.length > 0) && <FavoritesList products={products} />}
+    </View>
+  );
+};
+
+Favorites.propTypes = {
+  initialLoading: PropTypes.bool,
+  products: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+Favorites.defaultProps = {
+  initialLoading: true,
+  products: [],
+};
 
 export default connect(Favorites);

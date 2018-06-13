@@ -25,12 +25,12 @@ class CTAButtons extends Component {
   render() {
     return (
       <div className={styles.buttons}>
-        {/* <FavoritesButton
-            active={props.isFavorite}
-            productId={props.productId}
-            className={styles.favButton}
-            rippleClassName={styles.ripple}
-          /> */}
+        <FavoritesButton
+          active={this.props.isFavorite}
+          productId={this.props.productId}
+          className={styles.favButton}
+          rippleClassName={styles.ripple}
+        />
         <AddToCartButton
           buttonSize={styles.cartButtonSize}
           className={styles.cartButton}
@@ -44,10 +44,11 @@ class CTAButtons extends Component {
   }
 }
 CTAButtons.propTypes = {
-  // IsFavorite: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
   addToCart: PropTypes.func,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
+  options: PropTypes.shape(),
   productId: PropTypes.string,
 };
 
@@ -55,6 +56,7 @@ CTAButtons.defaultProps = {
   addToCart: () => {},
   isLoading: false,
   isDisabled: false,
+  options: null,
   productId: null,
 };
 
