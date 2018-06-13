@@ -9,11 +9,12 @@ describe('<SearchButton />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('should trigger the onClick callback', () => {
+  it('should trigger the onClick callback', () => {
     const onClickMock = jest.fn();
     const wrapper = shallow(<SearchButton onClick={onClickMock} />);
-    const buttonTag = wrapper.find('button');
-    buttonTag.simulate('click', { preventDefault: () => {} });
+    const buttonTag = wrapper.find('Ripple');
+    buttonTag.simulate('click');
+    buttonTag.props().onComplete();
     expect(onClickMock).toBeCalled();
   });
 });

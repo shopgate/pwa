@@ -13,16 +13,16 @@ import enableNavigatorSearch from './actions/enableNavigatorSearch';
 import disableNavigatorSearch from './actions/disableNavigatorSearch';
 import toggleCartIcon from './actions/toggleCartIcon';
 
+// Derived streams.
+export const searchRouteDidEnter$ = routeDidEnter(SEARCH_PATH);
+export const cartFilterRoutesDidEnter$ = routeDidEnter(CART_PATH).merge(routeDidEnter(FILTER_PATH));
+export const cartFilterRoutesDidLeave$ = routeDidLeave(CART_PATH).merge(routeDidLeave(FILTER_PATH));
+
 /**
  * Navigator subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function navigator(subscribe) {
-  // Derived streams.
-  const searchRouteDidEnter$ = routeDidEnter(SEARCH_PATH);
-  const cartFilterRoutesDidEnter$ = routeDidEnter(CART_PATH).merge(routeDidEnter(FILTER_PATH));
-  const cartFilterRoutesDidLeave$ = routeDidLeave(CART_PATH).merge(routeDidLeave(FILTER_PATH));
-
   /**
    * Gets triggered on all route changes.
    */
