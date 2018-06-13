@@ -1,5 +1,9 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
+import {
+  FILTER_TYPE_SINGLE_SELECT,
+  FILTER_TYPE_MULTISELECT,
+} from '@shopgate/pwa-common-commerce/filter/constants';
 import { GRID_VIEW } from '../../pages/Category/constants';
 
 const mockedStoreDefault = {
@@ -29,12 +33,12 @@ const mockedStoreAllSelected = {
       {
         filters: {
           SingleSelect: {
-            type: 'single_select',
+            type: FILTER_TYPE_SINGLE_SELECT,
             label: 'Single selection',
             value: 'SingleSelected',
           },
           MultiSelect: {
-            type: 'multiselect',
+            type: FILTER_TYPE_MULTISELECT,
             label: 'MultiSelect',
             values: ['one', 'two'],
           },
