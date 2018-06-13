@@ -48,6 +48,7 @@ const Pages = () => (
             <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
             <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
             <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
+            <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
             <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />

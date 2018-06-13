@@ -270,13 +270,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -1757,13 +1757,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -3368,13 +3368,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -4908,13 +4908,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -6232,13 +6232,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="logoutButtonNavDrawer"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="logoutButtonNavDrawer"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -6640,13 +6640,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -8292,13 +8292,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -9708,7 +9708,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="NavDrawerStartPage"
       withIndicator={false}
     >
       <Translate
@@ -10462,13 +10462,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -12114,13 +12114,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="NavDrawerStartPage"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="NavDrawerStartPage"
                     onClick={[Function]}
                   >
                     <Ripple

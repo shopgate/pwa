@@ -166,6 +166,7 @@ class NavDrawer extends Component {
             icon={HomeIcon}
             label="navigation.home"
             close={this.handleClose}
+            testId="NavDrawerStartPage"
           />
         </Portal>
         <Portal name={commonPortals.NAV_MENU_HOME_AFTER} props={props} />
@@ -331,6 +332,7 @@ class NavDrawer extends Component {
               icon={LogoutIcon}
               close={this.handleClose}
               label="navigation.logout"
+              testId="logoutButtonNavDrawer"
             />
           )}
         </Portal>
