@@ -323,7 +323,7 @@ export const getProductStockInfo = createSelector(
     }
     return product.productData.stock;
   }
-)
+);
 
 /**
  * Retrieves the current product orderable information.
@@ -422,7 +422,7 @@ export const getProductDescription = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product properties state.
  */
-const getProductPropertiesState = state => state.product.propertiesByProductId;
+export const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
  * Retrieves the current product properties.

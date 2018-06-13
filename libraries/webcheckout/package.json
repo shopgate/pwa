@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-webcheckout-shopify",
-  "version": "5.4.0-beta.1",
+  "version": "5.4.1-beta.1",
   "description": "Webcheckout Shopify library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -21,10 +21,10 @@
     "cover": "jest --coverage"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "5.4.0-beta.1",
-    "@shopgate/pwa-common": "5.4.0-beta.1",
-    "@shopgate/pwa-core": "5.4.0-beta.1",
-    "@shopgate/pwa-unit-test": "5.4.0-beta.1",
+    "@shopgate/eslint-config": "5.4.1-beta.1",
+    "@shopgate/pwa-common": "5.4.1-beta.1",
+    "@shopgate/pwa-core": "5.4.1-beta.1",
+    "@shopgate/pwa-unit-test": "5.4.1-beta.1",
     "jest": "^22.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

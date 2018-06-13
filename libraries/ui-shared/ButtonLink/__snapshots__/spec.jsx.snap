@@ -14,12 +14,13 @@ exports[`<ButtonLink> On click action should create component and open page on c
     onClick={[Function]}
     rippleClassName=""
     rippleSize={null}
-    testId="Button"
+    testId={null}
     type="secondary"
     wrapContent={true}
   >
     <div
       className="css-omcrdt"
+      data-test-id={null}
     >
       <RippleButton
         className=""

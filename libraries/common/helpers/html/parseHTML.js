@@ -5,6 +5,7 @@ import {
   getInlineScripts,
   getHTMLContent,
   getDOMContainer,
+  getStyles,
 } from './handleDOM';
 import decodeHTML from './decodeHTML';
 
@@ -14,9 +15,10 @@ import decodeHTML from './decodeHTML';
  * @param {string} html The HTML string. It might contain script tags.
  * @param {boolean} decode Whether the html must be decoded.
  * @param {Object} settings The settings are used to create a unique ID.
+ * @param {boolean} [processStyles=false] When true, found styles are also added to the DOM.
  * @returns {string} The HTML without any script tags.
  */
-const parseHTML = (html, decode, settings) => {
+const parseHTML = (html, decode, settings, processStyles = false) => {
   const id = CryptoJs.MD5(JSON.stringify(settings)).toString();
   const container = getDOMContainer(`html-sanitizer-${id}`);
 
@@ -60,6 +62,10 @@ const parseHTML = (html, decode, settings) => {
     externalScripts.forEach((scriptTag) => {
       container.appendChild(scriptTag);
     });
+
+    if (processStyles) {
+      getStyles(dom).forEach(style => container.appendChild(style));
+    }
 
     return getHTMLContent(dom.body.childNodes).innerHTML;
   } catch (err) {
