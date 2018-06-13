@@ -20,11 +20,12 @@ const AllReviewsLink = ({ productId, totalReviewCount }) => {
   }
 
   const publicProductId = bin2hex(productId);
+  const params = { count: totalReviewCount };
 
   return (
     <div className={container} data-test-id="showAllReviewsButton">
       <ButtonLink href={`${ITEM_PATH}/${publicProductId}/reviews`}>
-        <I18n.Text string="reviews.button_all" params={{ count: totalReviewCount }} />
+        <I18n.Text string="reviews.button_all" params={params} />
       </ButtonLink>
     </div>
   );
