@@ -16,7 +16,7 @@ import styles from './style';
  * @return {JSX} The rendered dialog.
  */
 const BasicDialog = ({ children, actions, title }) => (
-  <div className={styles.container}>
+  <div className={styles.container} data-test-id="basicDialog">
     <div className={styles.content}>
       {title && ( // Render the title if required.
         <div className={styles.title}>
