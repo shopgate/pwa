@@ -35,7 +35,7 @@ class UserMenu extends Component {
    */
   renderLoggedIn(user) {
     return (
-      <div>
+      <div data-test-id="userMenu">
 
         {/* Header */}
         <Portal
@@ -67,7 +67,7 @@ class UserMenu extends Component {
         <List>
           <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={{ Item: List.Item }} />
           <Portal name={commonPortals.NAV_MENU_LOGOUT}>
-            <List.Item title="navigation.logout" onClick={this.props.logout} />
+            <List.Item title="navigation.logout" onClick={this.props.logout} testId="logoutButton" />
           </Portal>
           <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={{ Item: List.Item }} />
         </List>
@@ -81,7 +81,7 @@ class UserMenu extends Component {
    */
   renderLoggedOut() { // eslint-disable-line  class-methods-use-this
     return (
-      <div>
+      <div data-test-id="userMenu">
         <Headline>
           <I18n.Text string="navigation.your_account" />
         </Headline>
