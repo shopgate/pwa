@@ -41,7 +41,7 @@ export default {
   productWithManufacturerPropManufacturerPropList: "[data-test-id='property: supa dupa Company']",
   productWithManufacturerPropProductDetailPagePrice: "[data-test-id='minPrice: 0 price: 5 currency: EUR']",
   productWithManufactruerPropProductDetailPageDescription: "[data-test-id='Product with manufacture prop']",
-  addToCartButton: "[data-test-id='AddToCartButton']",
+  addToCartButton: "[data-test-id='addToCartButton']",
   favoriteButton: "[data-test-id='favoriteButton']",
   reviewSection: "[data-test-id='reviewSection']",
   taxDisclaimer: "[data-test-id='taxDisclaimer'] span",
