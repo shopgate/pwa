@@ -9,6 +9,21 @@ export const getUserState = state => state.user;
 
 /**
  * @param {Object} state The current application state.
+ * @return {Object}
+ */
+export const getUserData = createSelector(
+  getUserState,
+  (user) => {
+    if (!user.data) {
+      return null;
+    }
+
+    return user.data;
+  }
+);
+
+/**
+ * @param {Object} state The current application state.
  * @return {Object|null}
  */
 export const getUserLogin = createSelector(
@@ -37,13 +52,20 @@ export const isUserLoggedIn = createSelector(
     return login.isLoggedIn;
   }
 );
-
 /**
- * Gets user.data from the redux store.
- * @param {Object} state The application state.
- * @return {Object|null}
+ * @param {Object} state The global state.
+ * @returns {string} A user name.
  */
-export const getUserData = state => state.user.data;
+export const getUserDisplayName = createSelector(
+  getUserData,
+  (data) => {
+    if (!data) {
+      return null;
+    }
+
+    return `${data.firstName} ${data.lastName}`;
+  }
+);
 
 /**
  * Gets the register url.

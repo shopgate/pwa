@@ -1,5 +1,7 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import {
+  ITEM_PATH,
   RECEIVE_PRODUCT,
   RECEIVE_PRODUCT_CACHED,
 } from '@shopgate/pwa-common-commerce/product/constants';
@@ -9,6 +11,12 @@ import {
   ERROR_SUBMIT_REVIEW,
   RESET_SUBMIT_REVIEW,
 } from '../constants';
+
+export const reviewsWillEnter$ = routeWillEnter$
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/reviews`);
+
+export const reviewsWillLeave$ = routeWillLeave$
+  .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/reviews`);
 
 /**
  * Gets triggered when the user tried to submit a review.
