@@ -42,5 +42,8 @@ export default {
   tabBar: {
     height: 49,
   },
+  borderRadius: {
+    default: 11
+  },
   ...variables,
 };
