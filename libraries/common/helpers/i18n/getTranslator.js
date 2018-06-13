@@ -21,8 +21,14 @@ const getMessageFromCache = (locales, langCode, key) => {
     return messageCache[hash];
   }
 
+  let message = getPath(locales, key, key);
+
+  if (typeof message !== 'string') {
+    message = key;
+  }
+
   messageCache[hash] = new IntlMessageFormat(
-    getPath(locales, key, key),
+    message,
     langCode
   );
 

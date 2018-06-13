@@ -1,4 +1,4 @@
-export const SEARCH_PATH = '/search/:searchPhrase';
+export const SEARCH_PATH = '/search';
 
 export const SEARCH_SUGGESTIONS_LIFETIME = 86400000; // 24 hours in milliseconds
 
