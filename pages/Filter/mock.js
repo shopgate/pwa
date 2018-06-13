@@ -166,6 +166,25 @@ const mockedState = {
             ],
             url: '/filter/width',
           },
+          {
+            id: 'Category',
+            label: 'Category',
+            type: 'single_select',
+            source: 'factfinder',
+            values: [
+              {
+                id: '20',
+                label: '20',
+                hits: 1,
+              },
+              {
+                id: '40',
+                label: '40',
+                hits: 1,
+              },
+            ],
+            url: '/filter/category',
+          },
         ],
         isFetching: false,
         expires: 1524061454824,
