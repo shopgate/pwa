@@ -22,7 +22,10 @@ class ParsedLink {
     }
     const parsed = new URL(href);
     // Check if hostname is shop's CNAME
-    if (parsed.hostname === shopCNAME) {
+    if (
+      typeof shopCNAME === 'string'
+      && parsed.hostname === shopCNAME.toLowerCase()
+    ) {
       return true;
     }
     // Check if link ends with shopgate.com. If not it is not a shopgate shop link.

@@ -40,6 +40,7 @@ describe('ParsedLink', () => {
       'http://m.example.com',
       'http://m.example.com/page/cms',
       'https://m.example.com/page/cms',
+      'https://M.ExamPle.com/page/CMS',
     ];
     const negatives = [
       'https://example.com/bar',
