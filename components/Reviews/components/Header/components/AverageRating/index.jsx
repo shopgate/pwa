@@ -7,7 +7,6 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import connect from './connector';
 import { container } from './style';
-import { link } from '../../../../../../../theme-gmd/node_modules/glamor';
 
 /**
  * The average rating and number of ratings for a product.
