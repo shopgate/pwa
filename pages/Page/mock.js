@@ -1,4 +1,4 @@
-const widgetRoute = {
+const widgetsPageRoute = {
   id: 'd82ea770-5627-4d1e-a301-a06bbe0d5cbd',
   params: {
     pageId: 'cms_test',
@@ -18,21 +18,57 @@ const homeRoute = {
   state: {},
 };
 
+const page = {
+  cms_test: {
+    title: 'CMS Test Page',
+    widgets: [
+      {
+        type: '@shopgate/commerce-widgets/html',
+        settings: {
+          html: 'Hi Test test',
+          latestEditorMode: 'source',
+          defaultPadding: true,
+        },
+        id: 'cms_test-0-@shopgate/commerce-widgets/html',
+      },
+    ],
+    isFetching: false,
+    expires: 9999999999999,
+  },
+};
+
 const routerState = {
   router: {
     routing: false,
     stack: [
       { ...homeRoute },
-      { ...widgetRoute },
+      { ...widgetsPageRoute },
     ],
   },
 };
 
 const widgetsInitialState = {
   page: {},
+  ui: {
+    general: {
+      title: null,
+    },
+  },
   ...routerState,
 };
 
-export default {
+const widgetsState = {
+  page,
+  ui: {
+    general: {
+      title: null,
+    },
+  },
+  ...routerState,
+};
+
+export {
+  widgetsState,
   widgetsInitialState,
+  widgetsPageRoute,
 };

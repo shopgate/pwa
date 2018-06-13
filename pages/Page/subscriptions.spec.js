@@ -1,10 +1,19 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { SET_VIEW_TITLE } from '@shopgate/pwa-common/constants/ActionTypes';
-import { REQUEST_ROOT_CATEGORIES } from '@shopgate/pwa-common-commerce/category/constants';
+import {
+  SET_VIEW_TITLE,
+  REQUEST_PAGE_CONFIG,
+} from '@shopgate/pwa-common/constants/ActionTypes';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
-import { pageWillEnter$, receivedVisiblePageConfig$ } from './streams';
-import { widgetsInitialState } from './mock';
+import {
+  pageWillEnter$,
+  receivedVisiblePageConfig$,
+} from './streams';
+import {
+  widgetsInitialState,
+  widgetsState,
+  widgetsPageRoute,
+} from './mock';
 import subscribe from './subscriptions';
 
 const mockedStore = configureStore([thunk]);
@@ -14,11 +23,33 @@ jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequ
   mockedResolver(mockInstance, resolve, reject);
 }));
 
+/**
+ * Creates the dispatched REQUEST_PAGE_CONFIG action object.
+ * @param {Object} pageId The page to get the widgets for.
+ * @returns {Object} The dispatched action object.
+ */
+const results = [
+  {
+    type: REQUEST_PAGE_CONFIG,
+    pageId: widgetsPageRoute.params.pageId,
+  },
+  {
+    type: SET_VIEW_TITLE,
+    title: widgetsState.page.cms_test.title,
+  },
+];
+
 describe('RootCategory subscriptions', () => {
   let subscribeMock;
   let first;
   let second;
   let store = mockedStore();
+
+  beforeAll(() => {
+    jest.resetAllMocks();
+    store.clearActions();
+    subscribeMock = jest.fn();
+  });
 
   it('should subscribe', () => {
     subscribe(subscribeMock);
@@ -31,7 +62,7 @@ describe('RootCategory subscriptions', () => {
   describe('pageWillEnter$', () => {
     it('should fetch page config', () => {
       const action = {
-        route: null,
+        route: widgetsPageRoute,
       };
       const mockedState = {
         ...widgetsInitialState,
@@ -43,8 +74,25 @@ describe('RootCategory subscriptions', () => {
         dispatch: store.dispatch,
       });
       const actions = store.getActions();
-      expect(actions[0].type).toBe(REQUEST_ROOT_CATEGORIES);
-      expect(actions[1].type).toBe(SET_VIEW_TITLE);
+      expect(actions[0]).toEqual(results[0]);
+    });
+
+    it('should fetch page config', () => {
+      const action = {
+        config: widgetsState.page.cms_test,
+      };
+      const mockedState = {
+        ...widgetsState,
+      };
+
+      store = mockedStore(mockedState);
+      second[1]({
+        action,
+        dispatch: store.dispatch,
+      });
+
+      const actions = store.getActions();
+      expect(actions[0]).toEqual(results[1]);
     });
   });
 });

@@ -111,5 +111,4 @@ describe('Category subscriptions', () => {
       expect(actions[0].title).toBe(categoryState.category.categoriesById.women.name);
     });
   });
-
 });
