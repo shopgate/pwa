@@ -44,11 +44,11 @@ const Layout = ({ coupon, currency, handleDelete }, context) => (
       <CouponFreeShipping freeShipping={coupon.freeShipping} />
       { (coupon.savedPrice && coupon.savedPrice.value > 0) &&
         <Fragment>
-          <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context}/>
+          <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context} />
           <Portal name={portals.CART_ITEM_PRICE} props={context}>
-            <CouponPrice currency={currency} savedPrice={coupon.savedPrice}/>
+            <CouponPrice currency={currency} savedPrice={coupon.savedPrice} />
           </Portal>
-          <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context}/>
+          <Portal name={portals.CART_ITEM_PRICE_AFTER} props={context} />
         </Fragment>
       }
     </Grid.Item>
