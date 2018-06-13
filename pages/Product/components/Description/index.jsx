@@ -12,7 +12,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Description = ({ html, navigate }) => {
-  if (html === '') {
+  if (!html || html === '') {
     return null;
   }
 
