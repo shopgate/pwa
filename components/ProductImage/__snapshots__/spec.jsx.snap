@@ -2,7 +2,7 @@
 
 exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
 <div
-  className="css-1lwoc2u"
+  className="css-13bn7r8"
 >
   <div
     className="css-y5kkpq"
@@ -24,13 +24,13 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
 
 exports[`<ProductImage /> should render the image without a placeholder 1`] = `
 <div
-  className="css-1lwoc2u"
+  className="css-13bn7r8"
 >
   <Image
     alt={null}
     animating={true}
     backgroundColor="#fff"
-    className="css-1lwoc2u"
+    className="css-13bn7r8"
     classNames={
       Object {
         "container": null,
