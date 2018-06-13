@@ -3,6 +3,7 @@
 exports[`<BasicDialog /> should render with minimal props 1`] = `
 <div
   className="css-hrxvvd"
+  data-test-id="basicDialog"
 >
   <div
     className="css-1sirlct"
@@ -20,6 +21,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
 exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 <div
   className="css-hrxvvd"
+  data-test-id="basicDialog"
 >
   <div
     className="css-1sirlct"
@@ -86,6 +88,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 exports[`<BasicDialog /> should trigger correct actions 1`] = `
 <div
   className="css-hrxvvd"
+  data-test-id="basicDialog"
 >
   <div
     className="css-1sirlct"
