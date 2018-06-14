@@ -27,11 +27,14 @@ export const cachedProductReceived$ = main$
   .filter(({ action }) => action.type === RECEIVE_PRODUCT_CACHED)
   .distinctUntilChanged();
 
-export const receivedVisibleProduct$ = productReceived$
+export const receivedVisibleProduct$ = productReceived$.merge(cachedProductReceived$)
   .filter(({ action }) => {
     const route = getCurrentRoute();
 
-    if (typeof action.productId === 'undefined') {
+    if (
+      typeof action.productData === 'undefined'
+      || typeof action.productData.id === 'undefined'
+    ) {
       return false;
     }
 
@@ -39,7 +42,7 @@ export const receivedVisibleProduct$ = productReceived$
       return false;
     }
 
-    return action.productId === hex2bin(route.params.productId);
+    return action.productData.id === hex2bin(route.params.productId);
   });
 
 /**
