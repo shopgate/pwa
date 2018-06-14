@@ -55,10 +55,10 @@ export const Favorites = Loadable({
   loading: () => null,
 });
 
-// Export const Search = Loadable({
-//   Loader: () => import('./Search'),
-//   Loading: () => null,
-// });
+export const Search = Loadable({
+  loader: () => import('./Search'),
+  loading: () => null,
+});
 
 export const Login = Loadable({
   loader: () => import('./Login'),

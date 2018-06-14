@@ -12,6 +12,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
@@ -42,7 +43,7 @@ const Pages = () => (
           <ModalContainer component={Dialog} />
           <SnackBar />
           <Router>
-            <Route pattern={`${INDEX_PATH}`} component={routes.StartPage} />
+            <Route pattern={INDEX_PATH} component={routes.StartPage} />
             <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
             <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
@@ -55,6 +56,7 @@ const Pages = () => (
             }
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
             <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
+            <Route pattern={SEARCH_PATH} component={routes.Search} preload />
           </Router>
           <Portal name={APP_ROUTES} props={appRoutesProps} />
           {isDev && (
