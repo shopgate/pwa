@@ -12,7 +12,7 @@ const CouponFreeShipping = ({ freeShipping }) => {
     return null;
   }
   return (
-    <span><I18n.Text string="cart.free_shipping" /></span>
+    <div><I18n.Text string="cart.free_shipping" /></div>
   );
 };
 
