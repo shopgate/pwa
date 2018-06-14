@@ -22,7 +22,7 @@ const Translate = ({
   params,
   className,
 }, context) => {
-  if (typeof string !== 'string') {
+  if (typeof string !== 'string' || string.length === 0) {
     return string;
   }
 

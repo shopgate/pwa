@@ -18,6 +18,7 @@ class Ripple extends PureComponent {
     color: PropTypes.string,
     disabled: PropTypes.bool,
     fill: PropTypes.bool,
+    onClick: PropTypes.func,
     onComplete: PropTypes.func,
     overflow: PropTypes.bool,
     size: PropTypes.number,
@@ -28,6 +29,7 @@ class Ripple extends PureComponent {
     color: themeConfig.colors.dark,
     disabled: false,
     fill: false,
+    onClick: () => {},
     onComplete: () => {},
     overflow: false,
     size: null,
@@ -216,6 +218,7 @@ class Ripple extends PureComponent {
       return;
     }
     this.addRipple(event, true);
+    this.props.onClick();
   };
 
   /**

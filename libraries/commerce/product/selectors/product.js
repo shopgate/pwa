@@ -1,12 +1,9 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import {
-  getSortOrder,
-  getSearchPhrase,
-  getHistoryPathname,
-} from '@shopgate/pwa-common/selectors/history';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
@@ -169,15 +166,15 @@ export const getProductCurrency = createSelector(
 );
 
 /**
- * Retrieves the generated result hash for a category ID.
+ * Retrieves the generated result hash for a category id or search phrase.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {string} The result hash.
  */
-const getResultHash = createSelector(
+export const getResultHash = createSelector(
   (state, props) => props.categoryId,
-  getSearchPhrase,
-  getSortOrder,
+  (state, props) => props.searchPhrase,
+  (state, props) => props.sortOrder || DEFAULT_SORT,
   getActiveFilters,
   (categoryId, searchPhrase, sort, filters) => {
     if (categoryId) {
@@ -206,7 +203,7 @@ const getResultHash = createSelector(
  * @param {Object} props The component props.
  * @returns {Object} The result.
  */
-const getResultByHash = createSelector(
+export const getResultByHash = createSelector(
   state => state.product,
   getResultHash,
   (productState, hash) => productState.resultsByHash[hash]
@@ -215,12 +212,13 @@ const getResultByHash = createSelector(
 /**
  * Populates the product result object.
  * @param {Object} state The application state.
+ * @param {Object} props The component props.
  * @param {string} hash The result hash.
  * @param {Object} result The result.
  * @return {Object} The product result.
  */
-export const getPopulatedProductsResult = (state, hash, result) => {
-  const sort = getSortOrder(state);
+export const getPopulatedProductsResult = (state, props, hash, result) => {
+  const sort = props.sortOrder || DEFAULT_SORT;
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 
@@ -244,6 +242,7 @@ export const getPopulatedProductsResult = (state, hash, result) => {
  */
 export const getProductsResult = createSelector(
   state => state,
+  props => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult
