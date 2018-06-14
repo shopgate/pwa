@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
@@ -55,8 +54,6 @@ class Navigator extends PureComponent {
       searchField: false,
       searchQuery: '',
     };
-
-    UIEvents.addListener('UI_NAVIGATOR_SEARCH_FIELD', this.toggleSearchField);
 
     events.onWillPush(this.setRoutePattern);
     events.onWillPop(this.setRoutePattern);

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Logo from './components/Logo';
@@ -8,7 +8,7 @@ import Search from './components/Search';
 /**
  * The NavigatorContent component.
  */
-class NavigatorContent extends Component {
+class NavigatorContent extends PureComponent {
   static propTypes = {
     routePattern: PropTypes.string,
   };
