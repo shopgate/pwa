@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ACTION_POP } from '@virtuous/conductor/constants';
 import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
@@ -9,7 +9,7 @@ import styles from './style';
 /**
  * The Navigator Title component.
  */
-class Title extends Component {
+class Title extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     onClick: PropTypes.func,
@@ -40,15 +40,6 @@ class Title extends Component {
       this.previousTitle = this.title;
       this.title = nextProps.title;
     }
-  }
-
-  /**
-   * Checks if the title was reset and if the component should update.
-   * @param {Object} nextProps The next incoming props.
-   * @returns {boolean} Whether the component should update.
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.title !== nextProps.title;
   }
 
   /**
