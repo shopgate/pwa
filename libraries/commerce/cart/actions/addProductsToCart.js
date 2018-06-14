@@ -15,10 +15,12 @@ import { messagesHaveErrors } from '../helpers';
  * @return {Function} A redux thunk.
  */
 const addToCart = productData => (dispatch, getState) => {
-  const pendingProductCount = getProductPendingCount(getState());
+  // Summarize the quantities of all products that are about to be added.
+  const nextPendingCount = productData.reduce((count, { quantity }) =>
+    count + quantity, getProductPendingCount(getState()));
 
   dispatch(addProductsToCart(productData));
-  dispatch(setCartProductPendingCount(pendingProductCount + 1));
+  dispatch(setCartProductPendingCount(nextPendingCount));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_PRODUCTS);
   request.setInput({ products: productData })
