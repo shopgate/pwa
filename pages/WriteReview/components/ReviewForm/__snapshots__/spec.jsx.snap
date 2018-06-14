@@ -52,6 +52,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -815,6 +816,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -837,7 +839,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -846,7 +848,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -854,11 +856,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -994,6 +996,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -1953,6 +1956,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -1975,7 +1979,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -1984,7 +1988,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -1992,11 +1996,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -2078,6 +2082,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -3037,6 +3042,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -3059,7 +3065,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -3068,7 +3074,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -3076,11 +3082,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -3162,6 +3168,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -4122,6 +4129,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -4144,7 +4152,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -4153,7 +4161,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -4161,11 +4169,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -4247,6 +4255,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -5207,6 +5216,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -5229,7 +5239,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -5238,7 +5248,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -5246,11 +5256,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -5332,6 +5342,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -6291,6 +6302,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -6313,7 +6325,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -6322,7 +6334,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -6330,11 +6342,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -6406,6 +6418,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
     >
       <section
         className="css-rbxhca"
+        data-test-id="reviewForm"
       >
         <form
           onSubmit={[Function]}
@@ -7172,6 +7185,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
               >
                 <button
                   className="css-kevfw8 css-1mhi2x7"
+                  data-test-id="reviewCancelButton"
                   onClick={[Function]}
                   type="button"
                 >
@@ -7194,7 +7208,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   onClick={null}
                   rippleClassName=""
                   rippleSize={null}
-                  testId="Button"
+                  testId="sendReviewButton"
                   type="secondary"
                   wrapContent={true}
                 >
@@ -7203,7 +7217,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
@@ -7211,11 +7225,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
