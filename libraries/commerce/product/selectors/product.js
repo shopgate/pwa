@@ -1,12 +1,9 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import {
-  getSortOrder,
-  getSearchPhrase,
-  getHistoryPathname,
-} from '@shopgate/pwa-common/selectors/history';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
@@ -65,19 +62,12 @@ export const getHistoryPathProductId = createSelector(
 export const getProductById = (state, id) => getProducts(state)[id];
 
 /**
- * Retrieves the current base product page from the store.
- * @param {Object} state The current application state.
- * @return {string} The id of the current base product.
- */
-export const getCurrentBaseProductId = state => state.product.currentProduct.productId;
-
-/**
  * Retrieves the current base product data from the store.
  * @param {Object} state The current application state.
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  (state, props) => props.productId,
+  getCurrentProductId,
   getProducts,
   (productId, products) => {
     const entry = products[productId];
@@ -96,7 +86,7 @@ export const getCurrentBaseProduct = createSelector(
  */
 export const getCurrentProduct = createSelector(
   getProducts,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (products, productId) => {
     const entry = products[productId];
     // No return null when data is there but product data is updating.
@@ -105,6 +95,41 @@ export const getCurrentProduct = createSelector(
     }
 
     return entry.productData;
+  }
+);
+
+/**
+ * @param {Object} state The global state.
+ * @return {Object|null}
+ */
+export const getProductFlags = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.flags;
+  }
+);
+
+/**
+ * Retrieves the current base product page from the store.
+ * @param {Object} state The current application state.
+ * @return {string} The id of the current base product.
+ */
+export const getCurrentBaseProductId = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    if (product.baseProductId) {
+      return product.baseProductId;
+    }
+
+    return product.id;
   }
 );
 
@@ -141,15 +166,15 @@ export const getProductCurrency = createSelector(
 );
 
 /**
- * Retrieves the generated result hash for a category ID.
+ * Retrieves the generated result hash for a category id or search phrase.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
  * @returns {string} The result hash.
  */
-const getResultHash = createSelector(
+export const getResultHash = createSelector(
   (state, props) => props.categoryId,
-  getSearchPhrase,
-  getSortOrder,
+  (state, props) => props.searchPhrase,
+  (state, props) => props.sortOrder || DEFAULT_SORT,
   getActiveFilters,
   (categoryId, searchPhrase, sort, filters) => {
     if (categoryId) {
@@ -178,7 +203,7 @@ const getResultHash = createSelector(
  * @param {Object} props The component props.
  * @returns {Object} The result.
  */
-const getResultByHash = createSelector(
+export const getResultByHash = createSelector(
   state => state.product,
   getResultHash,
   (productState, hash) => productState.resultsByHash[hash]
@@ -187,12 +212,13 @@ const getResultByHash = createSelector(
 /**
  * Populates the product result object.
  * @param {Object} state The application state.
+ * @param {Object} props The component props.
  * @param {string} hash The result hash.
  * @param {Object} result The result.
  * @return {Object} The product result.
  */
-export const getPopulatedProductsResult = (state, hash, result) => {
-  const sort = getSortOrder(state);
+export const getPopulatedProductsResult = (state, props, hash, result) => {
+  const sort = props.sortOrder || DEFAULT_SORT;
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 
@@ -216,6 +242,7 @@ export const getPopulatedProductsResult = (state, hash, result) => {
  */
 export const getProductsResult = createSelector(
   state => state,
+  props => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult
@@ -228,7 +255,7 @@ export const getProductsResult = createSelector(
  */
 export const getProductData = createSelector(
   getProducts,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (products, productId) => {
     if (!productId || !products[productId] || !products[productId].productData) {
       return null;
@@ -271,7 +298,7 @@ const getProductImagesState = createSelector(
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  (state, props) => props.productId,
+  getCurrentProductId,
   getCurrentProduct,
   getProductImagesState,
   (productId, product, images) => {
@@ -384,7 +411,7 @@ const getProductShippingState = state => state.product.shippingByProductId;
  */
 export const getProductShipping = createSelector(
   getProductShippingState,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (shipping, productId) => {
     const entry = shipping[productId];
 
@@ -425,7 +452,7 @@ const getProductDescriptionState = state => state.product.descriptionsByProductI
  * @return {string|null}
  */
 export const getProductDescription = createSelector(
-  (state, props) => props.productId,
+  getCurrentProductId,
   getProductDescriptionState,
   (productId, descriptions) => {
     const entry = descriptions[productId];
@@ -451,7 +478,7 @@ export const getProductPropertiesState = state => state.product.propertiesByProd
  */
 export const getProductProperties = createSelector(
   getProductPropertiesState,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (properties, productId) => {
     const entry = properties[productId];
     if (!entry || entry.isFetching || isUndefined(entry.properties)) {
@@ -489,13 +516,28 @@ export const isBaseProduct = createSelector(
 );
 
 /**
+ * @param {Object} state The global state.
+ * @return {boolean}
+ */
+export const hasVariants = createSelector(
+  getProductFlags,
+  (flags) => {
+    if (!flags) {
+      return false;
+    }
+
+    return flags.hasVariants;
+  }
+);
+
+/**
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {string|null}
  */
 export const getBaseProductId = createSelector(
   getProductData,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (productData, productId) => {
     if (!productData) {
       return null;
@@ -516,7 +558,7 @@ export const getBaseProductId = createSelector(
  */
 export const getVariantId = createSelector(
   isBaseProduct,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (isBase, productId) => {
     if (isBase) {
       return null;

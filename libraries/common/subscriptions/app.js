@@ -9,10 +9,12 @@ import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import * as events from '@virtuous/conductor-events';
 import { navigate } from '../action-creators/router';
-import routeWillEnter from '../actions/router/routeWillEnter';
-import routeWillLeave from '../actions/router/routeWillLeave';
-import routeDidEnter from '../actions/router/routeDidEnter';
-import routeDidLeave from '../actions/router/routeDidLeave';
+import routeWillPush from '../actions/router/routeWillPush';
+import routeDidPush from '../actions/router/routeDidPush';
+import routeWillPop from '../actions/router/routeWillPop';
+import routeDidPop from '../actions/router/routeDidPop';
+import routeWillReplace from '../actions/router/routeWillReplace';
+import routeDidReplace from '../actions/router/routeDidReplace';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -34,10 +36,12 @@ export default function app(subscribe) {
   subscribe(appWillStart$, ({ dispatch, action }) => {
     dispatch(registerLinkEvents(action.location));
 
-    events.onWillPush(id => dispatch(routeWillEnter(id)));
-    events.onDidPush(id => dispatch(routeDidEnter(id)));
-    events.onWillPop(() => dispatch(routeWillLeave()));
-    events.onDidPop(() => dispatch(routeDidLeave()));
+    events.onWillPush(id => dispatch(routeWillPush(id)));
+    events.onDidPush(id => dispatch(routeDidPush(id)));
+    events.onWillPop(() => dispatch(routeWillPop()));
+    events.onDidPop(() => dispatch(routeDidPop()));
+    events.onWillReplace(id => dispatch(routeWillReplace(id)));
+    events.onDidReplace(id => dispatch(routeDidReplace(id)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([

@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(removeFavorites(productId, withRelatives)),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps, null, { pure: () => null });

@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/tracking-core",
-  "version": "5.4.1",
+  "version": "5.4.1-beta.1",
   "description": "Tracking core library for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
@@ -19,8 +19,8 @@
     "test": "mocha --recursive --compilers js:babel-core/register ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "5.4.1",
-    "@shopgate/pwa-core": "5.4.1",
+    "@shopgate/eslint-config": "5.4.1-beta.1",
+    "@shopgate/pwa-core": "5.4.1-beta.1",
     "babel-preset-latest": "^6.24.1",
     "chai": "^3.5.0",
     "jest": "^22.4.3",

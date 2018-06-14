@@ -10,7 +10,10 @@ export const getRouterState = state => state.router;
  * @param {Object} state The global state.
  * @return {Object}
  */
-export const getRouterStack = state => getRouterState(state).stack;
+export const getRouterStack = createSelector(
+  getRouterState,
+  state => state.stack
+);
 
 /**
  * @param {Object} state The global state.
