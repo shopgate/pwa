@@ -30,6 +30,7 @@ describe('ParsedLink', () => {
     mockedExternalLink.mockClear();
     mockedReactRouter.mockClear();
   });
+
   describe('.isShopgateShopLink', () => {
     const positives = [
       'http://foo.shopgate.com',
@@ -59,12 +60,14 @@ describe('ParsedLink', () => {
         expect(ParsedLink.isShopgateShopLink(href)).toBe(true);
       });
     });
+
     negatives.forEach((href) => {
       it(`should return false for ${href} link`, () => {
         expect(ParsedLink.isShopgateShopLink(href)).toBe(false);
       });
     });
   });
+
   describe('Main', () => {
     it('should parse a simple link', () => {
       const href = 'https://example.com/foo?bar=1';
@@ -78,20 +81,26 @@ describe('ParsedLink', () => {
         },
       ]);
     });
+
     it('should warn when invalid action is added', () => {
       const link = new ParsedLink('/foo');
       link.addLinkAction('foo');
+
       expect(mockedWarnLog).toHaveBeenCalled();
     });
+
     it('should call all handlers with appropriate action on open', () => {
       const link = new ParsedLink('https://example.com/foo');
       link.open(undefined, true);
+
       expect(mockedExternalLink).toHaveBeenCalled();
       expect(mockedWarnLog).not.toHaveBeenCalled();
     });
+
     it('should recognize internal shopgate link as internal', () => {
       const link = new ParsedLink('https://foo.shopgate.com/page/cms');
       link.open();
+
       expect(mockedExternalLink).not.toHaveBeenCalled();
       expect(mockedWarnLog).not.toHaveBeenCalled();
       expect(mockedReactRouter).toHaveBeenCalled();

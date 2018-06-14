@@ -16,6 +16,7 @@ class ParsedLink {
   static get shopgateDomain() {
     return 'shopgate.com';
   }
+
   /**
    * Returns shopgate playground domain.
    * @returns {string}
@@ -23,6 +24,7 @@ class ParsedLink {
   static get shopgatePGDomain() {
     return 'shopgatepg.com';
   }
+
   /**
    * Checks if href looks like a shopgate shop link.
    * Shopgate shop links can have two variants. [shopName].shopgate.com or CNAME.
@@ -34,7 +36,9 @@ class ParsedLink {
     if (!href.startsWith('http')) {
       return false;
     }
+
     const parsed = new URL(href);
+
     // Check if hostname is shop's CNAME
     if (
       typeof shopCNAME === 'string'
@@ -42,6 +46,7 @@ class ParsedLink {
     ) {
       return true;
     }
+
     // Check if link ends with shopgate.com. If not it is not a shopgate shop link.
     const isShopgatedomain =
             parsed.hostname.endsWith(this.shopgateDomain)
