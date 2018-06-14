@@ -5,7 +5,7 @@ import UncheckedIcon from '../icons/RadioUncheckedIcon';
 import styles from './style';
 
 /**
- * The radiobox template component.
+ * The RadioButton template component.
  * @param {Object} props The component properties.
  * @returns {JSX}
  */
