@@ -9,7 +9,7 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  isFavorite: isCurrentProductOnFavoriteList(state),
+  isFavorite: isCurrentProductOnFavoriteList(state, props),
   isLoading: !hasProductData(state, props),
   isDisabled: !isProductOrderable(state, props),
 });
@@ -23,4 +23,25 @@ const mapDispatchToProps = dispatch => ({
   addToCart: products => dispatch(addProductsToCart(products)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.isFavorite !== next.isFavorite) {
+    return false;
+  }
+
+  if (prev.isLoading !== next.isLoading) {
+    return false;
+  }
+
+  if (prev.isDisabled !== next.isDisabled) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

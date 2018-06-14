@@ -1,4 +1,5 @@
 import React from 'react';
+import pure from 'recompose/pure';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
@@ -142,4 +143,4 @@ const ProductHeader = () => (
   </ProductContext.Consumer>
 );
 
-export default ProductHeader;
+export default pure(ProductHeader);

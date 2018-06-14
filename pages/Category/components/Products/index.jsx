@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
@@ -6,7 +6,7 @@ import connect from './connector';
 /**
  * The Category products component.
  */
-class CategoryProducts extends Component {
+class CategoryProducts extends PureComponent {
   static propTypes = {
     categoryId: PropTypes.string,
     getProducts: PropTypes.func,

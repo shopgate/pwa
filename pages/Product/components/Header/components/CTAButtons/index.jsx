@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
@@ -10,7 +10,24 @@ import connect from './connector';
  *
  * @param {Object} props Props.
  */
-class CTAButtons extends Component {
+class CTAButtons extends PureComponent {
+  static propTypes = {
+    isFavorite: PropTypes.bool.isRequired,
+    addToCart: PropTypes.func,
+    isDisabled: PropTypes.bool,
+    isLoading: PropTypes.bool,
+    options: PropTypes.shape(),
+    productId: PropTypes.string,
+  };
+
+  static defaultProps = {
+    addToCart: () => {},
+    isLoading: false,
+    isDisabled: false,
+    options: {},
+    productId: null,
+  };
+
   handleAddToCart = () => {
     this.props.addToCart({
       productId: this.props.productId,
@@ -25,12 +42,12 @@ class CTAButtons extends Component {
   render() {
     return (
       <div className={styles.buttons}>
-        {/* <FavoritesButton
-            active={props.isFavorite}
-            productId={props.productId}
-            className={styles.favButton}
-            rippleClassName={styles.ripple}
-          /> */}
+        <FavoritesButton
+          active={this.props.isFavorite}
+          productId={this.props.productId}
+          className={styles.favButton}
+          rippleClassName={styles.ripple}
+        />
         <AddToCartButton
           buttonSize={styles.cartButtonSize}
           className={styles.cartButton}
@@ -43,19 +60,5 @@ class CTAButtons extends Component {
     );
   }
 }
-CTAButtons.propTypes = {
-  // IsFavorite: PropTypes.bool.isRequired,
-  addToCart: PropTypes.func,
-  isDisabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  productId: PropTypes.string,
-};
-
-CTAButtons.defaultProps = {
-  addToCart: () => {},
-  isLoading: false,
-  isDisabled: false,
-  productId: null,
-};
 
 export default connect(CTAButtons);
