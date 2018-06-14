@@ -65,7 +65,7 @@ const getProducts = ({
     const state = getState();
     const { offset, limit, ...hashParams } = params;
 
-    const { sort = DEFAULT_SORT } = params;
+    const { sort = DEFAULT_SORT } = hashParams;
     const filters = getActiveFilters(state);
 
     // We need to process the params to handle edge cases in the pipeline params.
