@@ -6,7 +6,6 @@ import connect from './connector';
 import styles from './style';
 
 /**
- * ContinueButton component
  * @param {props} props The component props.
  * @returns {JSX}
  */

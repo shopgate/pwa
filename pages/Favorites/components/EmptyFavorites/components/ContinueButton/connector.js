@@ -1,5 +1,5 @@
+import { connect } from 'react-redux';
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
-import connect from '@shopgate/pwa-common/components/Router/helpers/connect/index';
 
 /**
  * Maps action dispatchers to the component props.

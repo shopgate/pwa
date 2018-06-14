@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import ProductImage from 'Components/ProductImage';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import styles from './style';
@@ -19,6 +19,9 @@ const Image = ({ product }) => (
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"
+      state={{
+        title: product.name,
+      }}
     >
       <ProductImage src={product.featuredImageUrl} />
     </Link>

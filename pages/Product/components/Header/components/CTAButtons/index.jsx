@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-// Import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
+import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
 import styles from './style';
 import connect from './connector';
@@ -12,7 +12,7 @@ import connect from './connector';
  */
 class CTAButtons extends PureComponent {
   static propTypes = {
-    // IsFavorite: PropTypes.bool.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
@@ -42,12 +42,12 @@ class CTAButtons extends PureComponent {
   render() {
     return (
       <div className={styles.buttons}>
-        {/* <FavoritesButton
-            active={props.isFavorite}
-            productId={props.productId}
-            className={styles.favButton}
-            rippleClassName={styles.ripple}
-          /> */}
+        <FavoritesButton
+          active={this.props.isFavorite}
+          productId={this.props.productId}
+          className={styles.favButton}
+          rippleClassName={styles.ripple}
+        />
         <AddToCartButton
           buttonSize={styles.cartButtonSize}
           className={styles.cartButton}

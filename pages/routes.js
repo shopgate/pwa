@@ -50,10 +50,10 @@ export const Cart = Loadable({
   loading: () => null,
 });
 
-// Export const Favorites = Loadable({
-//   Loader: () => import('./Favorites'),
-//   Loading: () => null,
-// });
+export const Favorites = Loadable({
+  loader: () => import('./Favorites'),
+  loading: () => null,
+});
 
 // Export const Search = Loadable({
 //   Loader: () => import('./Search'),
