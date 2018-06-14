@@ -5,6 +5,7 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Icon from './components/Icon';
 import CouponPrice from './components/CouponPrice';
+import CouponFreeShipping from './components/CouponFreeShipping';
 import Title from './components/Title';
 import Code from './components/Code';
 import Delete from './components/Delete';
@@ -40,6 +41,7 @@ const Layout = ({ coupon, currency, handleDelete }, context) => (
     </Grid.Item>
     <Grid.Item className={`${styles.content} ${styles.contentLast}`} grow={1} shrink={0}>
       <Delete handleDelete={handleDelete} />
+      <CouponFreeShipping freeShipping={coupon.freeShipping} />
       { (coupon.savedPrice && coupon.savedPrice.value > 0) &&
         <Fragment>
           <Portal name={portals.CART_ITEM_PRICE_BEFORE} props={context} />

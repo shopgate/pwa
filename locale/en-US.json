@@ -100,7 +100,8 @@
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
     "coupon_was_added": "Coupon has been added to cart!",
-    "coupons_not_supported": "Add coupons and gift certificates during checkout"
+    "coupons_not_supported": "Add coupons and gift certificates during checkout",
+    "free_shipping": "Free Shipping"
   },
   "login": {
     "headline": "Welcome",
