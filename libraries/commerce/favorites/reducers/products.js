@@ -22,6 +22,7 @@ const products = (state = {
   lastChange: 0,
   lastFetch: 0,
   expires: 0,
+  ids: [],
 }, action) => {
   switch (action.type) {
     case REQUEST_ADD_FAVORITES:
@@ -29,8 +30,8 @@ const products = (state = {
         ...state,
         isFetching: true, // Prevents fetch on enter.
         ids: uniq([
+          ...state.ids,
           action.productId,
-          ...(state.ids || []),
         ]),
         lastChange: Date.now(),
         outOfSync: true,
@@ -70,7 +71,7 @@ const products = (state = {
       return {
         ...state,
         isFetching: true,
-        ids: state.ids || [],
+        ids: state.ids,
         expires: 0,
         // No `.ready` prop here! It should be undefined on first request and stay true later!
       };
@@ -88,7 +89,7 @@ const products = (state = {
       return {
         ...state,
         isFetching: false,
-        ids: state.ids || [],
+        ids: state.ids,
         expires: 0,
         ready: true,
       };

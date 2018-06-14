@@ -5,49 +5,74 @@ import {
 } from '../../product/selectors/product';
 import { getKnownRelatives } from '../../product/selectors/variants';
 
+const defaultIds = [];
+
 /**
- * Gets favorite products ids.
- * @param {Object} state State.
+ * @param {Object} state The global state.
+ * @return {Object}
+ */
+export const getFavoritesState = state => state.favorites;
+
+/**
+ * @param {Object} state The global state.
+ * @return {Object|null}
+ */
+export const getFavoritesProducts = createSelector(
+  getFavoritesState,
+  (state) => {
+    if (!state.products) {
+      return null;
+    }
+
+    return state.products;
+  }
+);
+
+/**
+ * @param {Object} state The global state.
  * @returns {Array}
  */
-export const getFavoritesProductsIds = (state) => {
-  if (
-    state.favorites
-    && state.favorites.products
-    && state.favorites.products.ids
-  ) {
-    return state.favorites.products.ids;
+export const getFavoritesProductsIds = createSelector(
+  getFavoritesProducts,
+  (products) => {
+    if (!products || !products.ids) {
+      return defaultIds;
+    }
+
+    return products.ids;
   }
-  return [];
-};
+);
+
 /**
- * Favorites selector.
+ * @param {Object} state The global state.
  */
 export const getFavorites = createSelector(
   getFavoritesProductsIds,
   getProducts,
   (productIds, products) => productIds
     .filter(id => !!products[id] && products[id].productData)
-    .map((id) => {
-      const { productData } = products[id];
-      return {
-        ...productData,
-      };
-    })
+    .map(id => products[id].productData)
 );
 
 /**
  * True when favorites where not yet fetched for the first time.
- * @param {Object} state State.
- * @returns {bool}
+ * @param {Object} state The global state.
+ * @returns {boolean}
  */
-export const isInitialLoading = state => !(
-  state.favorites
-  && state.favorites.products
-  && state.favorites.products.ready
+export const isInitialLoading = createSelector(
+  getFavoritesProducts,
+  (products) => {
+    if (!products) {
+      return true;
+    }
+
+    return !products.ready;
+  }
 );
+
 /**
- * Gets favorites list count.
+ * @param {Object} state The global state.
+ * @return {number}
  */
 export const getFavoritesCount = createSelector(
   getFavoritesProductsIds,
@@ -55,7 +80,8 @@ export const getFavoritesCount = createSelector(
 );
 
 /**
- * Returns true when favorites list is not empty.
+ * @param {Object} state The global state.
+ * @return {boolean}
  */
 export const hasFavorites = createSelector(
   getFavoritesCount,
@@ -63,14 +89,23 @@ export const hasFavorites = createSelector(
 );
 
 /**
- * Returns true if state is being updated.
- * @param {Object} state State.
+ * @param {Object} state The global state.
  * @return {boolean}
  */
-export const isFetching = state => state.favorites.products.isFetching;
+export const isFetching = createSelector(
+  getFavoritesProducts,
+  (products) => {
+    if (!products) {
+      return false;
+    }
+
+    return products.isFetching;
+  }
+);
 
 /**
- * Returns true when the current product is on the favorites list
+ * @param {Object} state The global state.
+ * @return {boolean}
  */
 export const isCurrentProductOnFavoriteList = createSelector(
   getCurrentProductId,

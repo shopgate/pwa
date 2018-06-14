@@ -1,33 +1,25 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import {
-  userDidLogin$,
-  userDidLogout$,
-} from '@shopgate/pwa-common/streams/user';
-import {
-  favoritesDidEnter$,
+  shouldFetchFavorites$,
+  shouldFetchFreshFavorites$,
   favoritesSyncIdle$,
-  favoritesError$,
 } from '../streams';
 import getFavorites from '../actions/getFavorites';
 import { FETCH_FAVORITES_THROTTLE } from '../constants';
+
 /**
- * Favorites page subscriptions.
- * @param {function} subscribe Subscribe function.
+ * @param {Function} subscribe Subscribes to an observable.
  */
-const favorites = (subscribe) => {
+export default function favorites(subscribe) {
   if (!appConfig.hasFavorites) {
     return;
   }
-  // On App start, did log in, did log out and favorites page enter we need to fetch.
-  subscribe(
-    appDidStart$.merge(favoritesDidEnter$),
-    ({ dispatch }) => {
-      dispatch(getFavorites());
-    }
-  );
 
-  subscribe(userDidLogin$.merge(userDidLogout$), ({ dispatch }) => {
+  subscribe(shouldFetchFavorites$, ({ dispatch }) => {
+    dispatch(getFavorites());
+  });
+
+  subscribe(shouldFetchFreshFavorites$, ({ dispatch }) => {
     dispatch(getFavorites(true));
   });
 
@@ -38,13 +30,8 @@ const favorites = (subscribe) => {
   let fetchThrottle;
   subscribe(favoritesSyncIdle$, ({ dispatch }) => {
     clearTimeout(fetchThrottle);
-    fetchThrottle = setTimeout(() => dispatch(getFavorites(true)), FETCH_FAVORITES_THROTTLE);
+    fetchThrottle = setTimeout(() => {
+      dispatch(getFavorites(true));
+    }, FETCH_FAVORITES_THROTTLE);
   });
-
-  subscribe(favoritesError$, ({ dispatch }) => {
-    // No clearTimeout. This is special case. Should fetch ASAP.
-    dispatch(getFavorites(true));
-  });
-};
-
-export default favorites;
+}
