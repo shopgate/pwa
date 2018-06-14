@@ -848,7 +848,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >

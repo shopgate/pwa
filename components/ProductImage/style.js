@@ -6,6 +6,7 @@ const placeholderOffset = (1.0 - placeholderIconScale) * 50;
 
 const container = css({
   position: 'relative',
+  borderRadius: 3,
   overflow: 'hidden',
 }).toString();
 

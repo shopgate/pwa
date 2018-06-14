@@ -39,7 +39,8 @@ class ProductImage extends Component {
     forcePlaceholder: false,
     classNames: {
       container: null,
-      glowContainer: null
+      glowContainer: null,
+      imageContainer: null
     },
     highestResolutionLoaded: () => { },
     ratio: null,
@@ -139,15 +140,20 @@ class ProductImage extends Component {
    * @return {JSX}
    */
   render() {
-    const classes = classNames(
+    const glowClasses = classNames(
       styles.glowContainer,
       this.props.classNames.glowContainer
     );
 
+    const classes = classNames(
+      styles.container,
+      this.props.classNames.imageContainer
+    );
+
     return (
-      <div className={styles.container}>
+      <div className={classes}>
         {this.renderedContent}
-        <div className={classes} />
+        <div className={glowClasses} />
       </div>
     );
   }
