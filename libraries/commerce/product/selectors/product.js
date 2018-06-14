@@ -65,19 +65,12 @@ export const getHistoryPathProductId = createSelector(
 export const getProductById = (state, id) => getProducts(state)[id];
 
 /**
- * Retrieves the current base product page from the store.
- * @param {Object} state The current application state.
- * @return {string} The id of the current base product.
- */
-export const getCurrentBaseProductId = state => state.product.currentProduct.productId;
-
-/**
  * Retrieves the current base product data from the store.
  * @param {Object} state The current application state.
  * @returns {Object} The current product.
  */
 export const getCurrentBaseProduct = createSelector(
-  (state, props) => props.productId,
+  getCurrentProductId,
   getProducts,
   (productId, products) => {
     const entry = products[productId];
@@ -96,7 +89,7 @@ export const getCurrentBaseProduct = createSelector(
  */
 export const getCurrentProduct = createSelector(
   getProducts,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (products, productId) => {
     const entry = products[productId];
     // No return null when data is there but product data is updating.
@@ -105,6 +98,26 @@ export const getCurrentProduct = createSelector(
     }
 
     return entry.productData;
+  }
+);
+
+/**
+ * Retrieves the current base product page from the store.
+ * @param {Object} state The current application state.
+ * @return {string} The id of the current base product.
+ */
+export const getCurrentBaseProductId = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    if (product.baseProductId) {
+      return product.baseProductId;
+    }
+
+    return product.id;
   }
 );
 
@@ -228,7 +241,7 @@ export const getProductsResult = createSelector(
  */
 export const getProductData = createSelector(
   getProducts,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (products, productId) => {
     if (!productId || !products[productId] || !products[productId].productData) {
       return null;
@@ -271,7 +284,7 @@ const getProductImagesState = createSelector(
  * @return {Array|null}
  */
 export const getProductImages = createSelector(
-  (state, props) => props.productId,
+  getCurrentProductId,
   getCurrentProduct,
   getProductImagesState,
   (productId, product, images) => {
@@ -384,7 +397,7 @@ const getProductShippingState = state => state.product.shippingByProductId;
  */
 export const getProductShipping = createSelector(
   getProductShippingState,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (shipping, productId) => {
     const entry = shipping[productId];
 
@@ -425,7 +438,7 @@ const getProductDescriptionState = state => state.product.descriptionsByProductI
  * @return {string|null}
  */
 export const getProductDescription = createSelector(
-  (state, props) => props.productId,
+  getCurrentProductId,
   getProductDescriptionState,
   (productId, descriptions) => {
     const entry = descriptions[productId];
@@ -451,7 +464,7 @@ export const getProductPropertiesState = state => state.product.propertiesByProd
  */
 export const getProductProperties = createSelector(
   getProductPropertiesState,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (properties, productId) => {
     const entry = properties[productId];
     if (!entry || entry.isFetching || isUndefined(entry.properties)) {
@@ -495,7 +508,7 @@ export const isBaseProduct = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProductData,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (productData, productId) => {
     if (!productData) {
       return null;
@@ -516,7 +529,7 @@ export const getBaseProductId = createSelector(
  */
 export const getVariantId = createSelector(
   isBaseProduct,
-  (state, props) => props.productId,
+  getCurrentProductId,
   (isBase, productId) => {
     if (isBase) {
       return null;
