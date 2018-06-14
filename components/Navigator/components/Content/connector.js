@@ -22,4 +22,25 @@ const mapDispatchToProps = dispatch => ({
   submitSearch: () => dispatch(submitSearch()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if ((!prev.path && next.path) || (prev.path !== next.path)) {
+    return false;
+  }
+
+  if ((!prev.searchQuery && next.searchQuery) || (prev.searchQuery !== next.searchQuery)) {
+    return false;
+  }
+
+  if (prev.searchActive !== next.searchActive) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

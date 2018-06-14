@@ -7,12 +7,12 @@ import connect from './connector';
 import styles from './style';
 
 /**
- * The Product Description component.
- * @param {Object} props The component
+ * The product description.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Description = ({ html, navigate }) => {
-  if (html === '') {
+  if (!html || html === '') {
     return null;
   }
 

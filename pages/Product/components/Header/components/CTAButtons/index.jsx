@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
+// Import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
 import styles from './style';
 import connect from './connector';
@@ -10,7 +10,24 @@ import connect from './connector';
  *
  * @param {Object} props Props.
  */
-class CTAButtons extends Component {
+class CTAButtons extends PureComponent {
+  static propTypes = {
+    // IsFavorite: PropTypes.bool.isRequired,
+    addToCart: PropTypes.func,
+    isDisabled: PropTypes.bool,
+    isLoading: PropTypes.bool,
+    options: PropTypes.shape(),
+    productId: PropTypes.string,
+  };
+
+  static defaultProps = {
+    addToCart: () => {},
+    isLoading: false,
+    isDisabled: false,
+    options: {},
+    productId: null,
+  };
+
   handleAddToCart = () => {
     this.props.addToCart({
       productId: this.props.productId,
@@ -43,19 +60,5 @@ class CTAButtons extends Component {
     );
   }
 }
-CTAButtons.propTypes = {
-  // IsFavorite: PropTypes.bool.isRequired,
-  addToCart: PropTypes.func,
-  isDisabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  productId: PropTypes.string,
-};
-
-CTAButtons.defaultProps = {
-  addToCart: () => {},
-  isLoading: false,
-  isDisabled: false,
-  productId: null,
-};
 
 export default connect(CTAButtons);

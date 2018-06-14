@@ -28,8 +28,14 @@ const mapDispatchToProps = dispatch => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (prev.products.length !== next.products.length) return false;
-  if (prev.totalProductCount !== next.totalProductCount) return false;
+  if (prev.products.length !== next.products.length) {
+    return false;
+  }
+
+  if (prev.totalProductCount !== next.totalProductCount) {
+    return false;
+  }
+
   return true;
 };
 
