@@ -16,6 +16,7 @@ const defaultAppConfig = {
   publicPath: 'https://example.com/public',
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
+  shopCNAME: null,
 };
 
 /**
