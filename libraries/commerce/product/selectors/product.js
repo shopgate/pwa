@@ -99,6 +99,21 @@ export const getCurrentProduct = createSelector(
 );
 
 /**
+ * @param {Object} state The global state.
+ * @return {Object|null}
+ */
+export const getProductFlags = createSelector(
+  getCurrentProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.flags;
+  }
+);
+
+/**
  * Retrieves the current base product page from the store.
  * @param {Object} state The current application state.
  * @return {string} The id of the current base product.
@@ -497,6 +512,21 @@ export const isBaseProduct = createSelector(
     }
 
     return productData.baseProductId === null;
+  }
+);
+
+/**
+ * @param {Object} state The global state.
+ * @return {boolean}
+ */
+export const hasVariants = createSelector(
+  getProductFlags,
+  (flags) => {
+    if (!flags) {
+      return false;
+    }
+
+    return flags.hasVariants;
   }
 );
 
