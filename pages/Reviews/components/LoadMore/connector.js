@@ -11,13 +11,14 @@ import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchRev
 /**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
+ * @param {Object} props The current component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  currentReviewCount: getCurrentReviewCount(state),
-  isFetching: getReviewsFetchingState(state),
-  productId: getCurrentBaseProductId(state),
-  totalReviewCount: getReviewsTotalCount(state),
+const mapStateToProps = (state, props) => ({
+  currentReviewCount: getCurrentReviewCount(state, props),
+  isFetching: getReviewsFetchingState(state, props),
+  productId: getCurrentBaseProductId(state, props),
+  totalReviewCount: getReviewsTotalCount(state, props),
 });
 
 /**
@@ -30,4 +31,25 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchReviews(productId, limit, offset)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.currentReviewCount && next.currentReviewCount) {
+    return false;
+  }
+
+  if (prev.isFetching !== next.isFetching) {
+    return false;
+  }
+
+  if (prev.totalReviewCount !== next.totalReviewCount) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

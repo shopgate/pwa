@@ -40,10 +40,10 @@ export const ProductGallery = Loadable({
   loading: () => null,
 });
 
-// Export const Reviews = Loadable({
-//   Loader: () => import('./Reviews'),
-//   Loading: () => null,
-// });
+export const Reviews = Loadable({
+  loader: () => import('./Reviews'),
+  loading: () => null,
+});
 
 export const Cart = Loadable({
   loader: () => import('./Cart'),
