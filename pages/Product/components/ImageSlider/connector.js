@@ -37,8 +37,14 @@ const mapDispatchToProps = (dispatch, props) => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.images && next.images) return false;
-  if (!prev.product && next.product) return false;
+  if (!prev.images && next.images) {
+    return false;
+  }
+
+  if (!prev.product && next.product) {
+    return false;
+  }
+
   return true;
 };
 

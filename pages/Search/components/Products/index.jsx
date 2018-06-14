@@ -1,28 +1,33 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
 
 /**
- * The Category products component.
+ * The SearchProducts component.
  */
-class CategoryProducts extends PureComponent {
+class SearchProducts extends Component {
   static propTypes = {
-    categoryId: PropTypes.string,
-    getProducts: PropTypes.func,
+    getProducts: PropTypes.func.isRequired,
+    searchPhrase: PropTypes.string.isRequired,
     products: PropTypes.arrayOf(PropTypes.shape()),
+    sortOrder: PropTypes.string,
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
-    categoryId: null,
-    getProducts: () => { },
     products: null,
+    sortOrder: DEFAULT_SORT,
     totalProductCount: null,
   };
 
   fetchProducts = () => {
-    this.props.getProducts(this.props.categoryId, this.props.products.length);
+    this.props.getProducts(
+      this.props.searchPhrase,
+      this.props.products.length,
+      this.props.sortOrder
+    );
   }
 
   /**
@@ -43,4 +48,4 @@ class CategoryProducts extends PureComponent {
   }
 }
 
-export default connect(CategoryProducts);
+export default connect(SearchProducts);

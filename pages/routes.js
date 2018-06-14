@@ -40,25 +40,25 @@ export const ProductGallery = Loadable({
   loading: () => null,
 });
 
-// Export const Reviews = Loadable({
-//   Loader: () => import('./Reviews'),
-//   Loading: () => null,
-// });
+export const Reviews = Loadable({
+  loader: () => import('./Reviews'),
+  loading: () => null,
+});
 
 export const Cart = Loadable({
   loader: () => import('./Cart'),
   loading: () => null,
 });
 
-// Export const Favorites = Loadable({
-//   Loader: () => import('./Favorites'),
-//   Loading: () => null,
-// });
+export const Favorites = Loadable({
+  loader: () => import('./Favorites'),
+  loading: () => null,
+});
 
-// Export const Search = Loadable({
-//   Loader: () => import('./Search'),
-//   Loading: () => null,
-// });
+export const Search = Loadable({
+  loader: () => import('./Search'),
+  loading: () => null,
+});
 
 export const Login = Loadable({
   loader: () => import('./Login'),

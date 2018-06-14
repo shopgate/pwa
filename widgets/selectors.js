@@ -98,6 +98,7 @@ const getResultByHash = createSelector(
  */
 export const getProductsResult = createSelector(
   state => state,
+  (state, props) => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult

@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
-import { getProductShipping } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
 
 /**
+ * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  shipping: getProductShipping(state, props),
+  rating: getProductRating(state, props),
+  reviews: getProductReviews(state, props),
 });
 
 /**
@@ -16,7 +19,11 @@ const mapStateToProps = (state, props) => ({
  * @return {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.shipping && next.shipping) {
+  if (!prev.rating && next.rating) {
+    return false;
+  }
+
+  if (!prev.reviews.length && next.reviews.length) {
     return false;
   }
 

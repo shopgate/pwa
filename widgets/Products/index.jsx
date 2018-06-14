@@ -85,9 +85,14 @@ class ProductsWidget extends Component {
    */
   getProducts = () => {
     const { getProducts, id } = this.props;
-    const { productLimit, queryParams, queryType } = this.props.settings;
+    const {
+      productLimit,
+      queryParams,
+      queryType,
+      sortOrder,
+    } = this.props.settings;
 
-    const sort = transformDisplayOptions(this.props.settings.sortOrder);
+    const sort = transformDisplayOptions(sortOrder);
 
     const options = {
       limit: productLimit,

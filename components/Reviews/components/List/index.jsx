@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Review from './components/Review';
 
@@ -13,12 +13,11 @@ const List = ({ reviews }) => {
   }
 
   return (
-    <div>
-      {reviews.map((review, key) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Review key={key} review={review} />
+    <Fragment>
+      {reviews.map(review => (
+        <Review key={review.id} review={review} />
       ))}
-    </div>
+    </Fragment>
   );
 };
 

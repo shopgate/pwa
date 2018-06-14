@@ -1,9 +1,13 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
+import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
+import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor/constants';
+import * as events from '@virtuous/conductor-events';
+import getRouteById from '@virtuous/conductor-helpers/getRouteById';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
@@ -11,6 +15,7 @@ import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
 // Import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
+import NavigatorContext from './context';
 import styles from './style';
 
 /**
@@ -20,8 +25,7 @@ import styles from './style';
  */
 class Navigator extends PureComponent {
   static propTypes = {
-    filterOpen: PropTypes.bool.isRequired,
-    submitSearch: PropTypes.func.isRequired,
+    navigate: PropTypes.func.isRequired,
     backgroundColor: PropTypes.string,
     navigatorEnabled: PropTypes.bool,
     showLoadingBar: PropTypes.bool,
@@ -40,6 +44,78 @@ class Navigator extends PureComponent {
   };
 
   /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      routePattern: '',
+      searchField: false,
+      searchQuery: '',
+    };
+
+    events.onWillPush(this.setRoutePattern);
+    events.onWillPop(this.setRoutePattern);
+    events.onWillReplace(this.setRoutePattern);
+  }
+
+  /**
+   * @param {string} id The id of the route that entered.
+   */
+  setRoutePattern = (id) => {
+    const { pattern } = getRouteById(id);
+
+    if (this.state.routePattern !== pattern) {
+      this.setState({
+        routePattern: pattern,
+      });
+    }
+  }
+
+  /**
+   * @param {string} query The new search query.
+   */
+  setSearchQuery = (query) => {
+    if (this.state.searchQuery !== query) {
+      this.setState({
+        searchQuery: query,
+      });
+    }
+  }
+
+  /**
+   * @param {boolean} active The new state for the search field.
+   */
+  toggleSearchField = (active) => {
+    if (this.state.searchField === active) {
+      return;
+    }
+
+    this.setState({
+      searchField: active,
+    });
+
+    if (!active) {
+      this.handleSubmitSearch();
+    }
+  }
+
+  /**
+   * Navigate to the search route. If we are already
+   * on the search route then perform a history replace
+   * action instead. This is to not pollute the history.
+   */
+  handleSubmitSearch = () => {
+    if (this.state.searchQuery) {
+      const isSearchRoute = (this.state.routePattern === SEARCH_PATH);
+      const action = (isSearchRoute) ? ACTION_REPLACE : ACTION_PUSH;
+
+      this.props.navigate(action, `/search?s=${this.state.searchQuery}`);
+    }
+  }
+
+  /**
    * Renders the component.
    * @returns {JSX}
    */
@@ -53,8 +129,14 @@ class Navigator extends PureComponent {
       color: this.props.textColor,
     };
 
+    const context = {
+      ...this.state,
+      toggleSearchField: this.toggleSearchField,
+      setSearchQuery: this.setSearchQuery,
+    };
+
     return (
-      <Fragment>
+      <NavigatorContext.Provider value={context}>
         <Portal name={portals.NAV_BAR_BEFORE} />
         <Portal name={portals.NAV_BAR}>
           <header
@@ -75,7 +157,7 @@ class Navigator extends PureComponent {
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
                   <Grid.Item className={styles.title} component="div" grow={1}>
                     {this.props.showTitle &&
-                      <Content />
+                      <Content routePattern={this.state.routePattern} />
                     }
                   </Grid.Item>
                 </Portal>
@@ -88,7 +170,7 @@ class Navigator extends PureComponent {
                   </div>
                   */}
                   {this.props.showSearch &&
-                    <SearchButton onClick={this.props.submitSearch} />
+                    <SearchButton />
                   }
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE} />
                   <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON} props={{ CartButton }}>
@@ -108,7 +190,7 @@ class Navigator extends PureComponent {
           </header>
         </Portal>
         <Portal name={portals.NAV_BAR_AFTER} />
-      </Fragment>
+      </NavigatorContext.Provider>
     );
   }
 }

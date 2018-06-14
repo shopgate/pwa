@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
+import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 
 /**
  * Maps the contents of the state to the component props.
@@ -18,7 +18,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  getProducts: (categoryId, offset) => dispatch(fetchCategoryProducts(categoryId, offset)),
+  getProducts: (phrase, offset) => dispatch(getSearchResults(phrase, offset)),
 });
 
 /**
@@ -28,14 +28,8 @@ const mapDispatchToProps = dispatch => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (prev.products.length !== next.products.length) {
-    return false;
-  }
-
-  if (prev.totalProductCount !== next.totalProductCount) {
-    return false;
-  }
-
+  if (prev.products.length !== next.products.length) return false;
+  if (prev.totalProductCount !== next.totalProductCount) return false;
   return true;
 };
 

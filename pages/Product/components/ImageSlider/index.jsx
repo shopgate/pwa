@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Hammer from '@shopgate/react-hammerjs';
 import ProductImage from 'Components/ProductImage';
@@ -23,7 +23,7 @@ const resolutions = [
  * @param {Object} props.product Basic product data from the product state.
  * @param {Array} props.images Array of image urls.
  */
-class ImageSlider extends Component {
+class ImageSlider extends PureComponent {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.string),
     navigate: PropTypes.func,
@@ -35,17 +35,6 @@ class ImageSlider extends Component {
     product: null,
     navigate: () => {},
   };
-
-  /**
-   * Checks whether the component should update.
-   * @param {Object} nextProps The next component props.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    if (!this.props.images && nextProps.images) return true;
-    if (!this.props.product && nextProps.product) return true;
-    return false;
-  }
 
   currentSlide = 0;
 
