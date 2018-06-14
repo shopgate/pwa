@@ -856,11 +856,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="css-187rja2 "
                       disabled={false}
                       onClick={null}
-                      testId="Button"
+                      testId="sendReviewButton"
                     >
                       <button
                         className="css-187rja2  css-1rn65c0"
-                        data-test-id="Button"
+                        data-test-id="sendReviewButton"
                         disabled={false}
                         onClick={null}
                       >
@@ -1988,7 +1988,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     disabled={false}
                     flat={false}
                     onClick={null}
-                    testId="Button"
+                    testId="sendReviewButton"
                     type="secondary"
                     wrapContent={false}
                   >
