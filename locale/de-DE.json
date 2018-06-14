@@ -95,7 +95,8 @@
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
-    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein"
+    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
+    "free_shipping": "Kostenloser Versand"
   },
   "login": {
     "headline": "Willkommen!",
