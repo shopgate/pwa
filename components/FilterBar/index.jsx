@@ -261,7 +261,7 @@ class FilterBar extends Component {
 
     return (
       <div>
-        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle}>
+        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle} data-test-id="filterBar">
           <Content componentUpdated={this.setSpacerHeight} />
         </div>
         <div style={{ height: this.state.spacerHeight }} />

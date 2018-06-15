@@ -10,7 +10,7 @@ import connect from './connector';
  * @return {JSX|null}
  */
 const ShippingCostsLabel = ({ isDisabled, shipping }) => (
-  <div className={`${styles.shippingInfo} ${isDisabled ? styles.disabled : ''}`}>
+  <div className={`${styles.shippingInfo} ${isDisabled ? styles.disabled : ''}`} data-test-id="shippingLabel">
     <I18n.Text string={shipping === null ? 'shipping.unknown' : 'titles.shipping'} />
     {shipping !== null ? ':' : ''}
   </div>

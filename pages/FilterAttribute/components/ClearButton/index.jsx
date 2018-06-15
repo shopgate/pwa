@@ -17,6 +17,7 @@ const ClearButton = ({ values, currentAttribute, removeTemporaryFilter }) => (
       type="regular"
       onClick={() => removeTemporaryFilter(currentAttribute.id)}
       disabled={!values.length}
+      testId="clearAllButton"
     >
       <I18n.Text string="filter.clear" />
     </Button>

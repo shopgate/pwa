@@ -58,7 +58,7 @@ const Item = ({ display, product }) => (
         <Fragment>
           <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
-            <div itemProp="name">
+            <div itemProp="name" data-test-id={`Productname: ${product.name}`}>
               <Ellipsis>{product.name}</Ellipsis>
             </div>
           </Portal>

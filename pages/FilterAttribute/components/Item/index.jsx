@@ -14,7 +14,7 @@ const Item = ({ checked, label, onClick }) => (
   <RippleButton type="plain" onClick={onClick} className={styles.item}>
     <Grid>
       <Grid.Item grow={1} shrink={1}>
-        <div className={styles.label}>
+        <div className={styles.label} data-test-id={label}>
           {label}
         </div>
       </Grid.Item>
