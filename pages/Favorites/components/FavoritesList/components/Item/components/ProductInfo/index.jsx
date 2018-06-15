@@ -42,11 +42,11 @@ const ProductInfo = ({ product }) => (
         <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_AFTER} props={{ product }} />
         <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_BEFORE} props={{ product }} />
         <Portal name={portals.FAVORITES_AVAILABILITY_TEXT} props={{ product }}>
-        <AvailableText
-          text={product.availability.text}
-          state={product.availability.state}
-          showWhenAvailable
-        />
+          <AvailableText
+            text={product.availability.text}
+            state={product.availability.state}
+            showWhenAvailable
+          />
         </Portal>
         <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{ product} } />
       </Grid.Item>
