@@ -23,7 +23,7 @@ class MultiSelect extends Component {
   /**
    * Updates the current filter options selection.
    * @param {string} attributeId An attribute id.
-   * @param {string} valueId A a string containing the selected value.
+   * @param {string} valueId A string containing the selected value.
    */
   handleSelection = (attributeId, valueId) => {
     const { currentAttribute, temporaryFilters } = this.props;
