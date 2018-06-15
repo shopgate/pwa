@@ -88,8 +88,14 @@ class Item extends Component {
             <Portal name={portals.FAVORITES_PRODUCT} props={{ product: this.props.product }}>
               <Grid className={styles.row}>
                 <Grid.Item className={styles.leftColumn}>
-                  <Portal name={portals.FAVORITES_PRODUCT_IMAGE_BEFORE} />
-                  <Portal name={portals.FAVORITES_PRODUCT_IMAGE}>
+                  <Portal
+                    name={portals.FAVORITES_PRODUCT_IMAGE_BEFORE}
+                    props={{ product: this.props.product }}
+                  />
+                  <Portal
+                    name={portals.FAVORITES_PRODUCT_IMAGE}
+                    props={{ product: this.props.product }}
+                  >
                     <Image product={this.props.product} />
                   </Portal>
                   <Portal

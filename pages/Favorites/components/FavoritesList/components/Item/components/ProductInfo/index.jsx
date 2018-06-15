@@ -19,7 +19,7 @@ import styles from './style';
 const ProductInfo = ({ product }) => (
   <Fragment>
     <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={{ product }} />
-    <Portal name={portals.FAVORITES_PRODUCT_NAME} props={{ product }} >
+    <Portal name={portals.FAVORITES_PRODUCT_NAME} props={{ product }}>
       <div className={styles.name}>
         <Link
           tagName="a"
@@ -48,15 +48,15 @@ const ProductInfo = ({ product }) => (
             showWhenAvailable
           />
         </Portal>
-        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{ product} } />
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{ product }} />
       </Grid.Item>
-      <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={{ product }} />
-      <Portal name={portals.FAVORITES_PRODUCT_PRICE_TEXT} props={{ product }}>
-        <Grid.Item className={styles.priceContainer}>
+      <Grid.Item className={styles.priceContainer}>
+        <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={{ product }} />
+        <Portal name={portals.FAVORITES_PRODUCT_PRICE} props={{ product }}>
           <Price price={product.price} />
-        </Grid.Item>
-      </Portal>
-      <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={{ product }} />
+        </Portal>
+        <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={{ product }} />
+      </Grid.Item>
     </Grid>
   </Fragment>
 );
