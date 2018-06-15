@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UIEvents } from '@shopgate/pwa-core';
+import { UI_TOGGLE_NAVDRAWER } from '@shopgate/pwa-common/constants/ui';
 import Button from '@shopgate/pwa-common/components/Button';
 import BurgerIcon from '@shopgate/pwa-ui-shared/icons/BurgerIcon';
 import connect from './connector';
@@ -10,7 +12,6 @@ import styles from './style';
  */
 class NavButton extends Component {
   static propTypes = {
-    toggleNavDrawer: PropTypes.func.isRequired,
     showIconShadow: PropTypes.bool,
   };
 
@@ -31,7 +32,7 @@ class NavButton extends Component {
    * Handles a click on the icon.
    */
   handleClick = () => {
-    this.props.toggleNavDrawer(true);
+    UIEvents.emit(UI_TOGGLE_NAVDRAWER, true);
   }
 
   /**

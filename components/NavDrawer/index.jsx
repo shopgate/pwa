@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { UIEvents } from '@shopgate/pwa-core';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
+import { UI_TOGGLE_NAVDRAWER } from '@shopgate/pwa-common/constants/ui';
 import * as categoryPortals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import * as favoritesPortals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import * as cartPortals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
@@ -35,12 +37,10 @@ import connect from './connector';
  */
 class NavDrawer extends Component {
   static propTypes = {
-    toggleNavDrawer: PropTypes.func.isRequired,
     cartProductCount: PropTypes.number,
     entries: PropTypes.shape(),
     highlightFavorites: PropTypes.bool,
     logout: PropTypes.func,
-    navDrawerActive: PropTypes.bool,
     user: PropTypes.shape(),
   };
 
@@ -49,7 +49,6 @@ class NavDrawer extends Component {
     entries: {},
     highlightFavorites: false,
     logout: () => {},
-    navDrawerActive: false,
     user: null,
   };
 
@@ -61,15 +60,12 @@ class NavDrawer extends Component {
     super(props);
 
     this.contentRef = null;
-  }
 
-  /**
-   * Reset scroll position when drawer opens.
-   */
-  componentWillReceiveProps({ navDrawerActive }) {
-    if (this.contentRef && navDrawerActive && !this.props.navDrawerActive) {
-      this.contentRef.scrollTop = 0;
-    }
+    this.state = {
+      open: false,
+    };
+
+    UIEvents.addListener(UI_TOGGLE_NAVDRAWER, this.toggleDrawer);
   }
 
   /**
@@ -81,10 +77,25 @@ class NavDrawer extends Component {
   };
 
   /**
+   * @param {boolean} open The new state of the drawer.
+   */
+  toggleDrawer = (open) => {
+    if (this.state.open === open) {
+      return;
+    }
+
+    this.setState({ open });
+
+    if (!open) {
+      this.contentRef.scrollTop = 0;
+    }
+  }
+
+  /**
    * Handles the close event for the drawer and propagates the changes to the store.
    */
   handleClose = () => {
-    this.props.toggleNavDrawer(false);
+    UIEvents.emit(UI_TOGGLE_NAVDRAWER, false);
   };
 
   /**
@@ -113,7 +124,6 @@ class NavDrawer extends Component {
       entries,
       user,
       cartProductCount,
-      navDrawerActive,
       logout,
     } = this.props;
 
@@ -126,7 +136,7 @@ class NavDrawer extends Component {
 
     return (
       <Layout
-        active={navDrawerActive}
+        active={this.state.open}
         close={this.handleClose}
         setContentRef={this.setContentRef}
       >

@@ -1,7 +1,6 @@
 import {
   TOGGLE_NAVIGATOR_CART_ICON,
   TOGGLE_NAVIGATOR_SEARCH,
-  TOGGLE_NAV_DRAWER,
   TOGGLE_PROGRESS_BAR,
   TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
@@ -58,11 +57,6 @@ export default (
       return {
         ...state,
         searchActive: action.active,
-      };
-    case TOGGLE_NAV_DRAWER:
-      return {
-        ...state,
-        navDrawerActive: action.active,
       };
     case TOGGLE_LOGIN:
       return {

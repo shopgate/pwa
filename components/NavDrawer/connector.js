@@ -3,7 +3,6 @@ import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/s
 import { hasFavorites } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import logout from '@shopgate/pwa-common/actions/user/logout';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import toggleNavDrawer from 'Components/Navigator/actions/toggleNavDrawer';
 import { getMenuById } from './selectors';
 import { QUICKLINKS_MENU } from './constants';
 
@@ -18,7 +17,6 @@ const mapStateToProps = state => ({
     quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
   },
   highlightFavorites: hasFavorites(state),
-  navDrawerActive: state.navigator.navDrawerActive,
   user: isUserLoggedIn(state) ? state.user.data : null,
 });
 
@@ -29,7 +27,6 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  toggleNavDrawer: active => dispatch(toggleNavDrawer(active)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

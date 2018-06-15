@@ -1,7 +1,6 @@
 import {
   TOGGLE_NAVIGATOR_CART_ICON,
   TOGGLE_NAVIGATOR_SEARCH,
-  TOGGLE_NAV_DRAWER,
   TOGGLE_PROGRESS_BAR,
   TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
@@ -50,16 +49,6 @@ export const toggleCartIcon = active => ({
  */
 export const toggleSearch = active => ({
   type: TOGGLE_NAVIGATOR_SEARCH,
-  active,
-});
-
-/**
- * Toggles the navigation drawer visibility state.
- * @param {boolean} active Whether to show the navigation drawer.
- * @returns {Object} The action object.
- */
-export const toggleNavDrawer = active => ({
-  type: TOGGLE_NAV_DRAWER,
   active,
 });
 
