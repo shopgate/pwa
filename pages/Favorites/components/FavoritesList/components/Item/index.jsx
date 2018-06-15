@@ -81,17 +81,20 @@ class Item extends Component {
               styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
             }
           >
-            <Portal name={portals.FAVORITES_PRODUCT_BEFORE} props={{product: this.props.product}} />
-            <Portal name={portals.FAVORITES_PRODUCT} props={{product: this.props.product}}>
+            <Portal
+              name={portals.FAVORITES_PRODUCT_BEFORE}
+              props={{product: this.props.product}}
+            />
+            <Portal name={portals.FAVORITES_PRODUCT} props={{ product: this.props.product }}>
               <Grid className={styles.row}>
                 <Grid.Item className={styles.leftColumn}>
                   <Portal name={portals.FAVORITES_PRODUCT_IMAGE_BEFORE} />
                   <Portal name={portals.FAVORITES_PRODUCT_IMAGE}>
-                    <Image product={this.props.product}/>
+                    <Image product={this.props.product} />
                   </Portal>
                   <Portal
                     name={portals.FAVORITES_PRODUCT_IMAGE_AFTER}
-                    props={{product: this.props.product}}
+                    props={{ product: this.props.product }}
                   />
                   <CTAButtons
                     productId={this.props.product.id}
@@ -100,7 +103,7 @@ class Item extends Component {
                     onRippleComplete={(active) => {
                       this.setState({
                         visible: active,
-                      })
+                      });
                     }}
                     favoritesOnce
                   />
@@ -108,22 +111,25 @@ class Item extends Component {
                 <Grid.Item grow={1} className={styles.rightColumn}>
                   <Portal
                     name={portals.FAVORITES_PRODUCT_INFO_BEFORE}
-                    props={{product: this.props.product}}
+                    props={{ product: this.props.product }}
                   />
                   <Portal
                     name={portals.FAVORITES_PRODUCT_INFO}
-                    props={{product: this.props.product}}
+                    props={{ product: this.props.product }}
                   >
-                    <ProductInfo product={this.props.product}/>
+                    <ProductInfo product={this.props.product} />
                   </Portal>
                   <Portal
                     name={portals.FAVORITES_PRODUCT_INFO_AFTER}
-                    props={{product: this.props.product}}
+                    props={{ product: this.props.product }}
                   />
                 </Grid.Item>
               </Grid>
             </Portal>
-            <Portal name={portals.FAVORITES_PRODUCT_AFTER} props={{product: this.props.product}} />
+            <Portal
+              name={portals.FAVORITES_PRODUCT_AFTER}
+              props={{ product: this.props.product }}
+            />
           </CardItem>
         )}
       </Transition>

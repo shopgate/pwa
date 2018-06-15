@@ -18,8 +18,8 @@ import styles from './style';
  */
 const ProductInfo = ({ product }) => (
   <Fragment>
-    <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={{product}} />
-    <Portal name={portals.FAVORITES_PRODUCT_NAME} props={{product}} >
+    <Portal name={portals.FAVORITES_PRODUCT_NAME_BEFORE} props={{ product }} />
+    <Portal name={portals.FAVORITES_PRODUCT_NAME} props={{ product }} >
       <div className={styles.name}>
         <Link
           tagName="a"
@@ -32,31 +32,31 @@ const ProductInfo = ({ product }) => (
         </Link>
       </div>
     </Portal>
-    <Portal name={portals.FAVORITES_PRODUCT_NAME_AFTER} props={{product}} />
+    <Portal name={portals.FAVORITES_PRODUCT_NAME_AFTER} props={{ product }} />
     <Grid className={styles.detailsRow}>
       <Grid.Item className={styles.propertiesContainer}>
-        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_BEFORE} props={{product}} />
-        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS} props={{product}}>
-          <ProductCharacteristics characteristics={product.characteristics}/>
+        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_BEFORE} props={{ product }} />
+        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS} props={{ product }}>
+          <ProductCharacteristics characteristics={product.characteristics} />
         </Portal>
-        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_AFTER} props={{product}} />
-        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_BEFORE} props={{product}} />
-        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT} props={{product}}>
+        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_AFTER} props={{ product }} />
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_BEFORE} props={{ product }} />
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT} props={{ product }}>
         <AvailableText
           text={product.availability.text}
           state={product.availability.state}
           showWhenAvailable
         />
         </Portal>
-        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{product}} />
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{ product} } />
       </Grid.Item>
-      <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={{product}} />
-      <Portal name={portals.FAVORITES_PRODUCT_PRICE_TEXT} props={{product}}>
+      <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={{ product }} />
+      <Portal name={portals.FAVORITES_PRODUCT_PRICE_TEXT} props={{ product }}>
         <Grid.Item className={styles.priceContainer}>
-          <Price price={product.price}/>
+          <Price price={product.price} />
         </Grid.Item>
       </Portal>
-      <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={{product}} />
+      <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={{ product }} />
     </Grid>
   </Fragment>
 );
