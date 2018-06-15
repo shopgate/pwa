@@ -83,7 +83,7 @@ class Item extends Component {
           >
             <Portal
               name={portals.FAVORITES_PRODUCT_BEFORE}
-              props={{product: this.props.product}}
+              props={{ product: this.props.product }}
             />
             <Portal name={portals.FAVORITES_PRODUCT} props={{ product: this.props.product }}>
               <Grid className={styles.row}>
