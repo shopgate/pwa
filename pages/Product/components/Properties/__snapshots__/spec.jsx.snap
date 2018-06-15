@@ -58,6 +58,7 @@ exports[`<Properties /> should render table with properties 1`] = `
           </td>
           <td
             className="css-19ob0vg"
+            data-test-id="property: bar"
           >
             bar
           </td>
@@ -72,6 +73,7 @@ exports[`<Properties /> should render table with properties 1`] = `
           </td>
           <td
             className="css-19ob0vg"
+            data-test-id="property: foo"
           >
             foo
           </td>

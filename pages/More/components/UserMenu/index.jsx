@@ -35,7 +35,7 @@ class UserMenu extends Component {
    */
   renderLoggedIn(user) {
     return (
-      <div>
+      <div data-test-id="userMenu">
 
         {/* Header */}
         <Portal
@@ -65,11 +65,11 @@ class UserMenu extends Component {
           }}
         />
         <List>
-          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={{ Item: List.Item }} />
           <Portal name={commonPortals.NAV_MENU_LOGOUT}>
-            <List.Item title="navigation.logout" onClick={this.props.logout} />
+            <List.Item title="navigation.logout" onClick={this.props.logout} testId="logoutButton" />
           </Portal>
-          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} />
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={{ Item: List.Item }} />
         </List>
       </div>
     );
@@ -81,20 +81,20 @@ class UserMenu extends Component {
    */
   renderLoggedOut() { // eslint-disable-line  class-methods-use-this
     return (
-      <div>
+      <div data-test-id="userMenu">
         <Headline>
           <I18n.Text string="navigation.your_account" />
         </Headline>
         <Grid className={styles.grid}>
           <Grid.Item className={styles.gridItem}>
-            <Button className={styles.button}>
+            <Button className={styles.button} testId="UserMenuLogin">
               <Link href={LOGIN_PATH}>
                 <I18n.Text string="login.button" />
               </Link>
             </Button>
           </Grid.Item>
           <Grid.Item className={styles.gridItem}>
-            <Button className={styles.button}>
+            <Button className={styles.button} testId="UserMenuRegister">
               <Link href={REGISTER_PATH}>
                 {/* Proper registration link will be handled later. */}
                 <I18n.Text string="login.signup" />

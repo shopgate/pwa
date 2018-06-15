@@ -51,7 +51,7 @@ const Item = ({ product, display, isFavorite }) => (
     {/* FAVORITES BUTTONS */}
     <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={{ productId: product.id }} />
     <Portal name={portals.PRODUCT_ITEM_FAVORITES_BUTTON} props={{ productId: product.id }}>
-      <div className={styles.favorites}>
+      <div className={styles.favorites} data-test-id="favorites">
         <FavoritesButton active={isFavorite} productId={product.id} noShadow removeWithRelatives />
       </div>
     </Portal>
@@ -65,7 +65,7 @@ const Item = ({ product, display, isFavorite }) => (
           <Fragment>
             <Portal name={portals.PRODUCT_ITEM_NAME_BEFORE} props={{ productId: product.id }} />
             <Portal name={portals.PRODUCT_ITEM_NAME} props={{ productId: product.id }}>
-              <div className={styles.title} itemProp="name">
+              <div className={styles.title} itemProp="name" data-test-id={`Productname: ${product.name}`}>
                 <Ellipsis>{product.name}</Ellipsis>
               </div>
             </Portal>

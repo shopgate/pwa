@@ -4,13 +4,13 @@ import variables from 'Styles/variables';
 
 const header = css({
   position: 'fixed',
-  height: `calc(${variables.navigator.height}px + var(--safe-area-inset-top))`,
+  height: `calc(${variables.navbar.height}px + var(--safe-area-inset-top))`,
   paddingTop: 'var(--safe-area-inset-top)',
   left: 0,
   top: 0,
   width: '100%',
   background: colors.light,
-  zIndex: 2,
+  zIndex: 4,
 }).toString();
 
 const grid = css({

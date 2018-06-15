@@ -25,7 +25,7 @@ const content = (
   keyboardHeight = 0,
   considerPaddingTop = false
 ) => {
-  const navHeight = hasNavigator ? variables.navigator.height : 0;
+  const navHeight = hasNavigator ? variables.navbar.height : 0;
 
   return css({
     overflow: 'auto',

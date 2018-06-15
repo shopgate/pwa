@@ -1,74 +1,225 @@
-import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import configureStore from 'redux-mock-store';
-import { DISMISS_TOASTS } from '@shopgate/pwa-common/constants/ActionTypes';
-import subscribe from './subscriptions';
+import dismissToasts from '@shopgate/pwa-common/action-creators/toast/dismissToasts';
+import { CREATE_TOAST } from '@shopgate/pwa-common/constants/ActionTypes';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
+import {
+  favoritesWillRemoveItem$,
+  favoritesDidUpdate$,
+} from '@shopgate/pwa-common-commerce/favorites/streams';
+import {
+  showTabBar,
+  hideTabBar,
+} from 'Components/TabBar/actions';
 
-const mockedStore = configureStore();
+import subscriptions from './subscriptions';
 
-jest.mock('./constants', () => ({
-  FAVORITES_SHOW_TOAST_DELAY: 0,
-}));
+/**
+ * Creates a mocked store.
+ * @param {string} pathname The pathname for the state.
+ * @param {boolean} hasFavorites Tells if products are on the favorite list.
+ * @return {Object}
+ */
+const createMockedStore = (pathname = FAVORITES_PATH, hasFavorites = true) => {
+  const mockStore = configureStore();
+
+  const mockedState = {
+    history: {
+      pathname,
+    },
+    favorites: {
+      products: {
+        ids: hasFavorites ? ['one', 'two'] : [],
+      },
+    },
+  };
+
+  return mockStore(mockedState);
+};
+
+jest.useFakeTimers();
+
+/* eslint-disable prefer-destructuring */
 describe('Favorites subscriptions', () => {
-  let subscribeMock;
-  let first;
+  let mockedSubscribe;
+
   beforeAll(() => {
-    subscribeMock = jest.fn();
+    mockedSubscribe = jest.fn();
+    subscriptions(mockedSubscribe);
   });
-  it('should subscribe', () => {
-    subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(2);
-    [first] = subscribeMock.mock.calls;
-    expect(first[0]).toBe(favoritesWillRemoveItem$);
+
+  it('should call subscribe as expected', () => {
+    expect(mockedSubscribe).toHaveBeenCalledTimes(4);
   });
 
   describe('favoritesWillRemoveItem$', () => {
-    it('should return when currentPath is not favorites page', () => {
-      /**
-       * Get state function.
-       * @returns {Object}
-       */
-      const getState = () => ({
-        history: {
-          pathname: 'foo',
-        },
-      });
-      // Didn't pass dispatch. If won't return early, exception would be thrown.
-      expect(first[1]({ getState })).toBe(undefined);
+    const action = {
+      productId: 123,
+    };
+
+    let stream;
+    let callback;
+
+    beforeAll(() => {
+      [stream, callback] = mockedSubscribe.mock.calls[0];
     });
-    it('should dispatch create toast action', (done) => {
-      /**
-       * Get state function.
-       * @returns {Object}
-       */
-      const getState = () => ({
-        history: {
-          pathname: FAVORITES_PATH,
-        },
-      });
-      const action = {
-        productId: 123,
-      };
+
+    it('should be initialized as expected', () => {
+      expect(stream).toEqual(favoritesWillRemoveItem$);
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should show a toast message when the favorites page is active', () => {
+      const store = createMockedStore(FAVORITES_PATH, true);
+      const { getState } = store;
+      // The mock-store dispatch can't be use here since it can't handle the dispatched action.
       const dispatch = jest.fn();
-      first[1]({
+
+      callback({
+        dispatch,
         getState,
         action,
-        dispatch,
       });
-      setTimeout(() => {
-        dispatch.mock.calls[0][0](dispatch);
-        expect(typeof dispatch.mock.calls[1][0] === 'object').toBe(true);
-        done();
-      }, 1);
+
+      jest.runAllTimers();
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      // Dispatch the actual CREATE_TOAST action
+      dispatch.mock.calls[0][0](dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      // Inspect the action payload
+      const payload = dispatch.mock.calls[1][0];
+      expect(payload).toBeInstanceOf(Object);
+      expect(payload.type).toBe(CREATE_TOAST);
+      expect(payload.options).toBeInstanceOf(Object);
+    });
+
+    it('should not show a toast message when the favorites page is not active', () => {
+      const { dispatch, getState, getActions } = createMockedStore('/somepath', true);
+
+      callback({
+        dispatch,
+        getState,
+        action,
+      });
+
+      jest.runAllTimers();
+
+      expect(getActions()).toHaveLength(0);
     });
   });
+
+  describe('favoritesDidUpdate$', () => {
+    let stream;
+    let callback;
+
+    beforeAll(() => {
+      [stream, callback] = mockedSubscribe.mock.calls[1];
+    });
+
+    it('should be initialized as expected', () => {
+      expect(stream).toEqual(favoritesDidUpdate$);
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should show the tabbar on the favorites route when products are on the list', () => {
+      const { dispatch, getState, getActions } = createMockedStore(FAVORITES_PATH, true);
+
+      callback({
+        dispatch,
+        getState,
+      });
+
+      const actions = getActions();
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toEqual(showTabBar());
+    });
+
+    it('should hide the tabbar on the favorites route when the list is empty', () => {
+      const { dispatch, getState, getActions } = createMockedStore(FAVORITES_PATH, false);
+
+      callback({
+        dispatch,
+        getState,
+      });
+
+      const actions = getActions();
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toEqual(hideTabBar(false));
+    });
+
+    it('should not update the tabbar visiblity if the favorites route is not active', () => {
+      const { dispatch, getState, getActions } = createMockedStore('/somepath', true);
+
+      callback({
+        dispatch,
+        getState,
+      });
+
+      expect(getActions()).toHaveLength(0);
+    });
+  });
+
+  describe('routeDidEnter', () => {
+    let callback;
+
+    beforeAll(() => {
+      [, callback] = mockedSubscribe.mock.calls[2];
+    });
+
+    it('should be initialized as expected', () => {
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should show the tabbar on the favorites route when products are on the list', () => {
+      const { dispatch, getState, getActions } = createMockedStore(FAVORITES_PATH, true);
+
+      callback({
+        dispatch,
+        getState,
+      });
+
+      const actions = getActions();
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toEqual(showTabBar());
+    });
+
+    it('should hide the tabbar on the favorites route when the list is empty', () => {
+      const { dispatch, getState, getActions } = createMockedStore(FAVORITES_PATH, false);
+
+      callback({
+        dispatch,
+        getState,
+      });
+
+      const actions = getActions();
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toEqual(hideTabBar());
+    });
+  });
+
   describe('routeDidLeave', () => {
-    it('dimissToast when route did leave', () => {
-      const didLeave = subscribeMock.mock.calls[1];
-      const store = mockedStore();
-      didLeave[1](store);
-      const actionStack = store.getActions();
-      expect(actionStack[0].type).toEqual(DISMISS_TOASTS);
+    let callback;
+
+    beforeAll(() => {
+      [, callback] = mockedSubscribe.mock.calls[3];
+    });
+
+    it('should be initialized as expected', () => {
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should dismiss the toast and show the tabbar again', () => {
+      const { dispatch, getActions } = createMockedStore(FAVORITES_PATH, true);
+
+      callback({
+        dispatch,
+      });
+
+      const actions = getActions();
+      expect(actions).toHaveLength(2);
+      expect(actions[0]).toEqual(dismissToasts());
+      expect(actions[1]).toEqual(showTabBar());
     });
   });
 });
+/* eslint-enable prefer-destructuring */

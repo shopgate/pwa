@@ -49,7 +49,7 @@
       "range": "{from} ou plus: {price}"
     },
     "msrp": "MSRP",
-    "currency": "USD"
+    "currency": "EUR"
   },
   "product": {
    "description_heading": "à propos",
@@ -99,7 +99,8 @@
     "redeem_coupon": "Enter votre code coupon",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
-    "coupon_was_added": "Le coupon a été ajouté à votre panier!"
+    "coupon_was_added": "Le coupon a été ajouté à votre panier!",
+    "free_shipping": "Livraison gratuite"
   },
    "login": {
     "headline": "Bienvenue",
@@ -110,19 +111,21 @@
     "forgot_password_popup": "Veuillez utiliser le site sur ordinateur pour réinitialiser votre mot de passe.",
     "button": "Se connecter",
     "no_account": "Vous n'êtes pas inscrit?",
+    "signup": "S'enregistrer",
     "register": "Créer un compte ici!",
     "logout_message": "Vous avez été déconnecté",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
   },
  "navigation": {
     "login_register": "Se connecter / S'inscrire",
+    "your_account": "Ton compte",
     "home": "Accueil",
     "categories": "Catégories",
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
     "cart": "Panier",
     "shipping": "Méthodes de livraison",
-    "about": "à propos",
+    "about": "Mentions légales",
     "payment": "Méthodes de paiement",
     "terms": "Termes",
     "privacy": "Politique de confidentialité",

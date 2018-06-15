@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -19,6 +20,7 @@ class ProductImage extends Component {
    */
   static propTypes = {
     alt: PropTypes.string,
+    classNames: PropTypes.objectOf(PropTypes.string),
     animating: PropTypes.bool,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
@@ -35,7 +37,11 @@ class ProductImage extends Component {
     alt: null,
     animating: true,
     forcePlaceholder: false,
-    highestResolutionLoaded: () => {},
+    classNames: {
+      container: null,
+      glowContainer: null
+    },
+    highestResolutionLoaded: () => { },
     ratio: null,
     resolutions: [
       {
@@ -97,19 +103,23 @@ class ProductImage extends Component {
       // Image is not present or could not be loaded, show a placeholder.
       return (
         <div className={styles.placeholderContainer}>
-          <div className={styles.placeholderContent}>
+          <div className={styles.placeholderContent} data-test-id="placeHolder">
             <Placeholder className={styles.placeholder} />
           </div>
         </div>
       );
     }
 
-    // Return the actual image.
+    const classes = classNames(
+      styles.container,
+      this.props.classNames.container
+    );
+
     return (
       <Image
         {...this.props}
         backgroundColor={colors.light}
-        className={styles.container}
+        className={classes}
         onError={this.imageLoadingFailed}
       />
     );
@@ -129,10 +139,15 @@ class ProductImage extends Component {
    * @return {JSX}
    */
   render() {
+    const classes = classNames(
+      styles.glowContainer,
+      this.props.classNames.glowContainer
+    );
+
     return (
       <div className={styles.container}>
-        { this.renderedContent }
-        <div className={styles.glowContainer} />
+        {this.renderedContent}
+        <div className={classes} />
       </div>
     );
   }

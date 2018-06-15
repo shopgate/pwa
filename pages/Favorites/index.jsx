@@ -32,7 +32,7 @@ class Favorites extends Component {
    * filled with favorites data.
    * Will happen only if connection is very slow and user is very fast, or opens the favorites
    * via an interjection.
-   * @returns {XML}
+   * @returns {JSX}
    */
   initialRender() {
     return (
@@ -44,7 +44,7 @@ class Favorites extends Component {
 
   /**
    *
-   * @returns {XML}
+   * @returns {JSX}
    */
   render() {
     if (this.props.initialLoading) {

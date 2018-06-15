@@ -84,7 +84,7 @@
   },
   "modal": {
     "confirm": "Bestätigen",
-    "dismiss": "Okay",
+    "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
     "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
@@ -100,7 +100,8 @@
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
-    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein"
+    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
+    "free_shipping": "Kostenloser Versand"
   },
   "login": {
     "headline": "Willkommen!",

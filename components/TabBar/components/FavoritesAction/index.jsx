@@ -39,7 +39,13 @@ class TabBarFavoritesAction extends Component {
   render() {
     return (
       <Fragment>
-        <Portal name={portals.TAB_BAR_FAVORITES_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_FAVORITES_BEFORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
         <Portal
           name={portals.TAB_BAR_FAVORITES}
           props={{
@@ -59,7 +65,13 @@ class TabBarFavoritesAction extends Component {
             <FavoritesIconBadge />
           </TabBarAction>
         </Portal>
-        <Portal name={portals.TAB_BAR_FAVORITES_AFTER} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_FAVORITES_AFTER}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
       </Fragment>
     );
   }
