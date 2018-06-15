@@ -12,26 +12,26 @@ import { messagesHaveErrors } from '../helpers';
 
 /**
  * Adds a product to the cart. Includes metadata if available and not provided before.
- * @param {Array} productData The options for the products to be added.
+ * @param {Array} productsToAdd The options for the products to be added.
  * @return {Function} A redux thunk.
  */
-const addToCart = productData => (dispatch, getState) => {
+const addToCart = productsToAdd => (dispatch, getState) => {
   const state = getState();
   const pendingProductCount = getProductPendingCount(state);
-  const products = productData.map(product => {
+  const products = productsToAdd.map((product) => {
     const { productData } = getProductById(state, product.productId);
 
-    // destructure into a productId and a variantId (only productId if not adding a variant)
+    // Restructure into a productId and a variantId (only productId if not adding a variant)
     const productId = productData.baseProductId || product.productId;
     const variantProductId = productData.baseProductId ? productData.id : undefined;
     const metadata = getAddToCartMetadata(state, productId, variantProductId);
 
-    // return the current product if it already had metadata, otherwise add some, if any available
-    return product.metadata && product || {
+    // Return the current product if it already had metadata, otherwise add some, if any available
+    return (product.metadata && product) || {
       ...product,
       ...(metadata) && { metadata },
-    }
-  })
+    };
+  });
 
   dispatch(addProductsToCart(products));
   dispatch(setCartProductPendingCount(pendingProductCount + 1));

@@ -188,7 +188,7 @@ export const getAddToCartMetadata = createSelector(
   getProductMetadata,
   getSelectedVariantMetadata,
   (metaData, variantMetaData) => {
-    // prioritize variant metadata over the product metadata
+    // Prioritize variant metadata over the product metadata
     if (variantMetaData) {
       // Use the metadata from the getProductVariants data if available.
       return variantMetaData;
