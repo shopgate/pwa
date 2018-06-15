@@ -90,6 +90,5 @@ describe('<Link />', () => {
     wrapper.find('div[role="link"]').at(0).simulate('click');
 
     expect(mockConstructor).not.toHaveBeenCalledWith('/category/toClick');
-    expect(mockOpen).not.toHaveBeenCalled();
   });
 });
