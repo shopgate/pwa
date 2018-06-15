@@ -20,11 +20,13 @@ const addToCart = productData => (dispatch, getState) => {
   const pendingProductCount = getProductPendingCount(state);
   const products = productData.map(product => {
     const { productData } = getProductById(state, product.productId);
-    const productId = productData.baseProductId || product.productId;
 
-    // it's a variant if it has a baseProductId
+    // destructure into a productId and a variantId (only productId if not adding a variant)
+    const productId = productData.baseProductId || product.productId;
     const variantProductId = productData.baseProductId ? productData.id : undefined;
     const metadata = getAddToCartMetadata(state, productId, variantProductId);
+
+    // return the current product if it already had metadata, otherwise add some, if any available
     return product.metadata && product || {
       ...product,
       ...(metadata) && { metadata },
