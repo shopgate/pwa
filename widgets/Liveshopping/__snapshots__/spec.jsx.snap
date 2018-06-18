@@ -33,10 +33,11 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       key="1234"
     >
       <Card
-        className=""
+        className="css-agwt9q"
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323334"
         >
           <Grid
@@ -53,6 +54,12 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               <ProductImage
                 alt="First product"
                 animating={true}
+                classNames={
+                  Object {
+                    "container": "css-mvioy2",
+                    "glowContainer": "css-mvioy2",
+                  }
+                }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
@@ -99,7 +106,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <PriceStriked
-                    className="css-osh41h"
+                    className="css-2cfc5f"
                     currency="EUR"
                     value={20}
                   />
@@ -111,7 +118,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <Price
-                    className="css-ljd097"
+                    className="css-84byly"
                     currency="EUR"
                     discounted={false}
                     fractions={true}
@@ -132,10 +139,11 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       key="1235"
     >
       <Card
-        className=""
+        className="css-agwt9q"
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323335"
         >
           <Grid
@@ -152,6 +160,12 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               <ProductImage
                 alt="Second product"
                 animating={true}
+                classNames={
+                  Object {
+                    "container": "css-mvioy2",
+                    "glowContainer": "css-mvioy2",
+                  }
+                }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
@@ -198,7 +212,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <PriceStriked
-                    className="css-osh41h"
+                    className="css-2cfc5f"
                     currency="EUR"
                     value={20}
                   />
@@ -210,7 +224,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                   shrink={1}
                 >
                   <Price
-                    className="css-ljd097"
+                    className="css-84byly"
                     currency="EUR"
                     discounted={false}
                     fractions={true}
@@ -260,10 +274,11 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       key="1234"
     >
       <Card
-        className=""
+        className="css-agwt9q"
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323334"
         >
           <Grid
@@ -280,6 +295,12 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
               <ProductImage
                 alt="First product"
                 animating={true}
+                classNames={
+                  Object {
+                    "container": "css-mvioy2",
+                    "glowContainer": "css-mvioy2",
+                  }
+                }
                 forcePlaceholder={false}
                 highestResolutionLoaded={[Function]}
                 ratio={null}
@@ -326,7 +347,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                   shrink={1}
                 >
                   <PriceStriked
-                    className="css-osh41h"
+                    className="css-2cfc5f"
                     currency="EUR"
                     value={20}
                   />
@@ -338,7 +359,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                   shrink={1}
                 >
                   <Price
-                    className="css-ljd097"
+                    className="css-84byly"
                     currency="EUR"
                     discounted={false}
                     fractions={true}
