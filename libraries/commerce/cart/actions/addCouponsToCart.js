@@ -22,7 +22,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorAddCouponsToCart(couponIds, messages, requestsPending));
         reject();
         return;

@@ -422,7 +422,7 @@ export const getProductDescription = createSelector(
  * @param {Object} state The current application state.
  * @return {Object} The product properties state.
  */
-const getProductPropertiesState = state => state.product.propertiesByProductId;
+export const getProductPropertiesState = state => state.product.propertiesByProductId;
 
 /**
  * Retrieves the current product properties.
@@ -449,7 +449,8 @@ export const getProductProperties = createSelector(
  */
 export const getProductMetadata = createSelector(
   getProductById,
-  product => product.productData.metadata || null
+  // skip product, if not found or return null if no metadata is set
+  product => product && product.productData.metadata || null
 );
 
 /**

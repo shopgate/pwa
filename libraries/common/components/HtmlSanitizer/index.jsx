@@ -58,7 +58,7 @@ class HtmlSanitizer extends Component {
       const link = new ParsedLink(href);
 
       event.preventDefault();
-      link.open(history);
+      link.open();
     }
   };
 
