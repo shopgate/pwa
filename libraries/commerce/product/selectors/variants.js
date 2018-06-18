@@ -148,8 +148,8 @@ export const getSelectedVariantMetadata = createSelector(
       return null;
     }
 
-    // prefer variant data, if available
-    if(variants) {
+    // Prefer variant data, if available
+    if (variants) {
       // Get the product data of the selected product from the variants.
       const productData = variants.products.find(({ id }) => id === variantId);
 
@@ -158,7 +158,7 @@ export const getSelectedVariantMetadata = createSelector(
       }
     }
 
-    // check if variant data is available in product list
+    // Check if variant data is available in product list
     const product = getProductById(state, variantId);
     if (product && product.productData.metadata) {
       return product.productData.metadata || null;
