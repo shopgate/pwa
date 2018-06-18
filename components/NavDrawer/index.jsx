@@ -158,7 +158,7 @@ class NavDrawer extends Component {
         {/* Home */}
         <Portal name={commonPortals.NAV_MENU_HOME_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_HOME} props={props}>
-          <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose}>
+          <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose} testId="NavDrawerStartPage">
             <I18n.Text string="navigation.home" />
           </Item>
         </Portal>
@@ -301,7 +301,7 @@ class NavDrawer extends Component {
           }}
         >
           {user && (
-            <Item onClick={logout} icon={LogoutIcon} close={this.handleClose}>
+            <Item onClick={logout} icon={LogoutIcon} close={this.handleClose} testId="logoutButtonNavDrawer">
               <I18n.Text string="navigation.logout" />
             </Item>
           )}
