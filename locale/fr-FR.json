@@ -99,7 +99,8 @@
     "redeem_coupon": "Enter votre code coupon",
     "coupon_code": "Code",
     "default_coupon_label": "Coupon",
-    "coupon_was_added": "Le coupon a été ajouté à votre panier!"
+    "coupon_was_added": "Le coupon a été ajouté à votre panier!",
+    "free_shipping": "Livraison gratuite"
   },
    "login": {
     "headline": "Bienvenue",
