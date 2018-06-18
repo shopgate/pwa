@@ -35,6 +35,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       Object {
         "container": null,
         "glowContainer": null,
+        "imageContainer": null,
       }
     }
     forcePlaceholder={false}
