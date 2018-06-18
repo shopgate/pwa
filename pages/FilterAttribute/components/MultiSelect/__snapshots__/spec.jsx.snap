@@ -160,7 +160,7 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                         }
                                       >
                                         <div
-                                          onTouchTap={[Function]}
+                                          onClick={[Function]}
                                         >
                                           <Checked
                                             className="css-17u2540"
@@ -328,7 +328,7 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                         }
                                       >
                                         <div
-                                          onTouchTap={[Function]}
+                                          onClick={[Function]}
                                         >
                                           <Unchecked
                                             className="css-1gf5nsk"
