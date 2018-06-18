@@ -496,7 +496,7 @@ export const getProductProperties = createSelector(
  */
 export const getProductMetadata = createSelector(
   getProductById,
-  product => product.productData.metadata || null
+  product => (product ? product.productData.metadata : null)
 );
 
 /**

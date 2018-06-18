@@ -35,7 +35,7 @@ const updateProductsInCart = updateData => (dispatch) => {
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorUpdateProductsInCart(updateData, messages, requestsPending));
         return;
       }
