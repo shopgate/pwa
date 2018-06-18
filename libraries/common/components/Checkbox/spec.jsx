@@ -102,7 +102,7 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    wrapper.simulate('touchTap');
+    wrapper.simulate('click');
     expect(spy).toHaveBeenCalledWith(true);
   });
 
@@ -133,7 +133,7 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    wrapper.simulate('touchTap');
+    wrapper.simulate('click');
     expect(wrapper.state('checked')).toBe(true);
   });
 });
