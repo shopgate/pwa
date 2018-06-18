@@ -21,7 +21,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     }
   >
     <div
-      onTouchTap={[Function]}
+      onClick={[Function]}
     >
       <RadioChecked
         className="css-17u2540"
@@ -74,7 +74,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
     }
   >
     <div
-      onTouchTap={[Function]}
+      onClick={[Function]}
     >
       <RadioUnchecked
         className="css-1gf5nsk"
