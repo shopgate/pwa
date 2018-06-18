@@ -50,10 +50,14 @@ const Pages = () => (
             <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
             <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
             <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
+<<<<<<< HEAD
             {
               appConfig.hasFavorites
               && <Route pattern={`${FAVORITES_PATH}`} component={routes.Favorites} />
             }
+=======
+            <Route pattern={`${ITEM_PATH}/:productId/write_review`} component={routes.WriteReview} />
+>>>>>>> PWA-420-Implement-Add-Review-page
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
             <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />
