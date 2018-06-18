@@ -98,4 +98,11 @@ export default {
   productWithManyProps4Link: "[data-test-id='link: /item/393939']",
   productWithManyProps4FavListPrice: "[data-test-id='minPrice: 0 price: 199 currency: EUR']",
   availabilityTextInStock: "[data-test-id='availabilityText: In stock']",
+  navDrawerCategoriesButton: "[data-test-id='navDrawerCategories']",
+  navDrawerShippingButton: "[data-test-id='navDrawerShippingButton']",
+  navDrawerPaymentButton: "[data-test-id='navDrawerPaymentButton']",
+  navDrawerTermsButton: "[data-test-id='navDrawerTermsButton']",
+  navDrawerPrivacyButton: "[data-test-id='navDrawerPrivacyButton']",
+  navDrawerReturnPolicy: "[data-test-id='navDrawerReturnPolicyButton']",
+  navDrawerImprintButton: "[data-test-id='navDrawerImprintButton']",
 };
