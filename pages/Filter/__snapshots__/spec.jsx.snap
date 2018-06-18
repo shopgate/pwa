@@ -640,6 +640,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/manufacturer"
                               >
                                 <div
@@ -734,6 +735,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/color"
                               >
                                 <div
@@ -823,6 +825,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/length"
                               >
                                 <div
@@ -937,6 +940,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/size"
                               >
                                 <div
@@ -1031,6 +1035,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/title"
                               >
                                 <div
@@ -1120,6 +1125,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/width"
                               >
                                 <div
