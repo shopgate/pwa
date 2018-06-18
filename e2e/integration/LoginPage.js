@@ -19,7 +19,7 @@ describe('IOS11Test login page', () => {
     cy.get(els.userMenuLogin)
       .should('be.visible')
       .click();
-    cy.get(els.loginPageUsernameInput)
+    cy.get(els.loginPageEmailInput)
       .should('be.visible');
   });
 

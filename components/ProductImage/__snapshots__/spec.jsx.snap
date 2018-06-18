@@ -31,6 +31,12 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
     animating={true}
     backgroundColor="#fff"
     className="css-1lwoc2u"
+    classNames={
+      Object {
+        "container": null,
+        "glowContainer": null,
+      }
+    }
     forcePlaceholder={false}
     highestResolutionLoaded={[Function]}
     onError={[Function]}
