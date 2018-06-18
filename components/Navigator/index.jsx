@@ -7,7 +7,7 @@ import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
 import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor/constants';
 import * as events from '@virtuous/conductor-events';
-import getRouteById from '@virtuous/conductor-helpers/getRouteById';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import colors from 'Styles/colors';
 import connect from './connector';
 import NavButton from './components/NavButton';
@@ -55,16 +55,16 @@ class Navigator extends PureComponent {
       searchQuery: '',
     };
 
-    events.onWillPush(this.setRoutePattern);
-    events.onWillPop(this.setRoutePattern);
-    events.onWillReplace(this.setRoutePattern);
+    events.onDidPush(this.setRoutePattern);
+    events.onDidPop(this.setRoutePattern);
+    events.onDidReplace(this.setRoutePattern);
   }
 
   /**
    * @param {string} id The id of the route that entered.
    */
-  setRoutePattern = (id) => {
-    const { pattern } = getRouteById(id);
+  setRoutePattern = () => {
+    const { pattern } = getCurrentRoute();
 
     if (this.state.routePattern !== pattern) {
       this.setState({
