@@ -18,6 +18,7 @@ class Link extends Component {
     href: PropTypes.string.isRequired,
     navigate: PropTypes.func.isRequired,
     className: PropTypes.string,
+    disabled: PropTypes.bool,
     replace: PropTypes.bool,
     state: PropTypes.shape(),
     tag: PropTypes.string,
@@ -25,6 +26,7 @@ class Link extends Component {
 
   static defaultProps = {
     className: '',
+    disabled: false,
     replace: false,
     tag: 'div',
     state: {},
@@ -34,6 +36,10 @@ class Link extends Component {
    * Opens the link.
    */
   handleOpenLink = () => {
+    if (this.props.disabled) {
+      return;
+    }
+
     const action = this.props.replace ? ACTION_REPLACE : ACTION_PUSH;
     this.props.navigate(action, this.props.href, this.props.state);
   };

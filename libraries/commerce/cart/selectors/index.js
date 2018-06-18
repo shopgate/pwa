@@ -2,12 +2,9 @@ import { createSelector } from 'reselect';
 import sumBy from 'lodash/sumBy';
 import {
   getRawProductOptions,
-  getCurrentProductOptions,
   hasProductOptions,
   areProductOptionsSet,
 } from '../../product/selectors/options';
-import { getProductMetadata } from '../../product/selectors/product';
-import { getSelectedVariantMetadata } from '../../product/selectors/variants';
 import {
   CART_ITEM_TYPE_PRODUCT,
   CART_ITEM_TYPE_COUPON,

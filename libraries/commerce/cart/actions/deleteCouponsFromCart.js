@@ -22,7 +22,7 @@ const deleteCouponsFromCart = couponIds => (dispatch) => {
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorDeleteCouponsFromCart(couponIds, messages, requestsPending));
         return;
       }

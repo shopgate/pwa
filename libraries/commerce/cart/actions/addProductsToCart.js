@@ -40,7 +40,7 @@ const addProductToCart = data => (dispatch, getState) => {
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         /**
          * If the addProductsToCart request fails, the pipeline doesn't respond with an error,
          * but a messages array within the response payload. So by now we also have to dispatch
