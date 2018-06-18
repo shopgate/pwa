@@ -158,7 +158,7 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
                                         }
                                       >
                                         <div
-                                          onTouchTap={[Function]}
+                                          onClick={[Function]}
                                         >
                                           <RadioChecked
                                             className="css-17u2540"
@@ -326,7 +326,7 @@ exports[`FilterAttribute: SingleSelect should render single selection 1`] = `
                                         }
                                       >
                                         <div
-                                          onTouchTap={[Function]}
+                                          onClick={[Function]}
                                         >
                                           <RadioUnchecked
                                             className="css-1gf5nsk"
