@@ -105,7 +105,7 @@ class Checkbox extends Component {
    */
   render() {
     return (
-      <div className={this.props.className} onTouchTap={this.handleCheck}>
+      <div className={this.props.className} onClick={this.handleCheck}>
         {this.renderInput()}
         {this.renderLabelIfItIsOnThe('left')}
         {this.renderIcon()}
