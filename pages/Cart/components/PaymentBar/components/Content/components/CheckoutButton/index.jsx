@@ -11,9 +11,8 @@ import connect from './connector';
  * @returns {JSX}
  */
 const CheckoutButton = ({ isActive }) => (
-  <Link href={CHECKOUT_PATH}>
+  <Link href={CHECKOUT_PATH} disabled={!isActive}>
     <RippleButton
-      disabled={!isActive}
       flat={false}
       type="secondary"
     >

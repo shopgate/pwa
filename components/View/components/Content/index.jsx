@@ -1,44 +1,29 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import throttle from 'lodash/throttle';
-import isEqual from 'lodash/isEqual';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';
-import connect from './connector';
 import styles from './style';
 
 /**
  * The view content.
  */
-class ViewContent extends PureComponent {
+class ViewContent extends Component {
   static propTypes = {
-    setTop: PropTypes.func.isRequired,
     children: PropTypes.node,
     hasNavigator: PropTypes.bool,
-    head: PropTypes.shape(),
     isFullscreen: PropTypes.bool,
-    pathname: PropTypes.string,
     title: PropTypes.string,
-    viewTop: PropTypes.bool,
   };
 
   static defaultProps = {
     children: null,
     hasNavigator: true,
-    head: {
-      meta: [],
-      link: [],
-      script: [],
-      style: [],
-    },
     isFullscreen: false,
-    pathname: PAGE_ID_INDEX,
     title: appConfig.shopName,
-    viewTop: true,
   };
 
   /**
@@ -47,36 +32,15 @@ class ViewContent extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.pathname = props.pathname;
+    this.element = React.createRef();
+
     this.state = {
       keyboardHeight: 0,
+      shadow: false,
     };
 
     event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
-
-  /**
-   * Sets the navigator title when the component mounts.
-   */
-  componentDidMount() {
-    this.props.setTop(true);
-  }
-
-  /**
-   * Sets the new navigator title if it has changed.
-   * @param {Object} nextProps The new component props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.pathname !== nextProps.pathname) {
-      return;
-    }
-
-    if (nextProps.viewTop && (nextProps.viewTop !== this.props.viewTop)) {
-      // Scroll to top
-      this.element.scrollTop = 0;
-    }
-  }
-
   /**
    * @return {string}
    */
@@ -87,7 +51,7 @@ class ViewContent extends PureComponent {
       this.state.keyboardHeight
     );
 
-    if (!this.props.viewTop) {
+    if (this.state.shadow) {
       contentStyle += ` ${styles.contentShaded}`;
     }
 
@@ -95,11 +59,17 @@ class ViewContent extends PureComponent {
   }
 
   /**
-   * Creates an internal reference to an element.
-   * @param {Object} ref The reference to an element.
+   * Toggles the shadow above the page.
+   * @param {boolean} active The new shadow state.
    */
-  setRef = (ref) => {
-    this.element = ref;
+  setShadow = (active) => {
+    if (this.state.shadow === active) {
+      return;
+    }
+
+    this.setState({
+      shadow: active,
+    });
   }
 
   /**
@@ -108,7 +78,7 @@ class ViewContent extends PureComponent {
    * @param {boolean} overlap The height of the keyboard.
    */
   handleKeyboardChange = ({ open, overlap }) => {
-    const height = open ? overlap : 0;
+    const height = (open) ? overlap : 0;
 
     if (height !== this.state.keyboardHeight) {
       this.setState({
@@ -121,16 +91,8 @@ class ViewContent extends PureComponent {
    * Handles the scroll event of this component's element.
    */
   handleScroll = throttle(() => {
-    if (!this.element) {
-      return;
-    }
-
-    const isViewTop = (this.element.scrollTop === 0);
-
-    if (isViewTop !== this.props.viewTop) {
-      this.props.setTop(isViewTop);
-    }
-  }, 50);
+    this.setShadow(this.element.current.scrollTop !== 0);
+  }, 10);
 
   /**
    * Handles the swipe down gesture.
@@ -158,39 +120,27 @@ class ViewContent extends PureComponent {
    * @return {JSX}
    */
   render() {
-    const { children, head } = this.props;
-    const {
-      meta,
-      link,
-      script,
-      style,
-    } = head;
-
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article className={this.contentStyle} ref={this.setRef} onScroll={this.handleScroll}>
-          <Helmet
-            title={this.props.title}
-            meta={meta}
-            link={link}
-            script={script}
-            style={style}
-          />
-          {children}
+        <article className={this.contentStyle} ref={this.element} onScroll={this.handleScroll}>
+          <Helmet title={this.props.title} />
+          {this.props.children}
         </article>
       </Swipeable>
     );
   }
 }
 
-export default connect(props => (
+/**
+ * @param {Object} props The component props.
+ * @return {JSX}
+ */
+const ViewContentConsumer = props => (
   <RouteContext.Consumer>
-    {({ pathname, state }) => (
-      <ViewContent
-        pathname={pathname}
-        title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName}
-        {...props}
-      />
+    {({ state }) => (
+      <ViewContent {...props} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName}/>
     )}
   </RouteContext.Consumer>
-));
+);
+
+export default ViewContentConsumer;
