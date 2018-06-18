@@ -88,7 +88,7 @@ const handle = css({
 
 const basketAnimation = css({
   transformOrigin: 'center center',
-  animation: `${basketKeyframes} 500ms linear 0s alternate infinit`,
+  animation: `${basketKeyframes} 500ms linear 0s alternate infinite`,
 }).toString();
 
 export default {
