@@ -37,6 +37,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323334"
         >
           <Grid
@@ -136,6 +137,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323335"
         >
           <Grid
@@ -264,6 +266,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       >
         <Link
           className=""
+          disabled={false}
           href="/item/31323334"
         >
           <Grid
