@@ -411,13 +411,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -732,13 +732,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -873,13 +873,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -1021,13 +1021,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -1162,13 +1162,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -1321,13 +1321,13 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -1898,13 +1898,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2040,13 +2040,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={true}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2343,13 +2343,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2484,13 +2484,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2632,13 +2632,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2773,13 +2773,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -2932,13 +2932,13 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -3509,13 +3509,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -3651,13 +3651,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -3954,13 +3954,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -4095,13 +4095,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -4243,13 +4243,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -4384,13 +4384,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -4543,13 +4543,13 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5049,13 +5049,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5191,13 +5191,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5494,13 +5494,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5635,13 +5635,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5783,13 +5783,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -5924,13 +5924,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -6083,13 +6083,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -6781,13 +6781,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -6923,13 +6923,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -7226,13 +7226,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -7367,13 +7367,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -7515,13 +7515,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -7656,13 +7656,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -7815,13 +7815,13 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -8433,13 +8433,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -8575,13 +8575,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -8878,13 +8878,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -9019,13 +9019,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -9167,13 +9167,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -9308,13 +9308,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -9467,13 +9467,13 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -9752,7 +9752,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="navDrawerCategories"
       withIndicator={false}
     >
       <Translate
@@ -9797,7 +9797,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="favoritesButton"
       withIndicator={false}
     >
       <Translate
@@ -9891,7 +9891,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="navDrawerShippingButton"
       withIndicator={false}
     >
       <Translate
@@ -9935,7 +9935,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="navDrawerPaymentButton"
       withIndicator={false}
     >
       <Translate
@@ -9982,7 +9982,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="navDrawerTermsButton"
       withIndicator={false}
     >
       <Translate
@@ -10026,7 +10026,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="navDrawerPrivacyButton"
       withIndicator={false}
     >
       <Translate
@@ -10088,7 +10088,7 @@ exports[`<NavDrawer /> should render without optional props 1`] = `
       icon={[Function]}
       onClick={[Function]}
       primary={false}
-      testId={null}
+      testId="navDrawerImprintButton"
       withIndicator={false}
     >
       <Translate
@@ -10603,13 +10603,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -10745,13 +10745,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -11048,13 +11048,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -11189,13 +11189,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -11337,13 +11337,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -11478,13 +11478,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -11637,13 +11637,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -12255,13 +12255,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerCategories"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerCategories"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -12397,13 +12397,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="favoritesButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="favoritesButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -12700,13 +12700,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerShippingButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerShippingButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -12841,13 +12841,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPaymentButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPaymentButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -12989,13 +12989,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerTermsButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerTermsButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -13130,13 +13130,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerPrivacyButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerPrivacyButton"
                     onClick={[Function]}
                   >
                     <Ripple
@@ -13289,13 +13289,13 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                   icon={[Function]}
                   onClick={[Function]}
                   primary={false}
-                  testId={null}
+                  testId="navDrawerImprintButton"
                   withIndicator={false}
                 >
                   <div
                     aria-hidden={true}
                     className="css-klayg"
-                    data-test-id={null}
+                    data-test-id="navDrawerImprintButton"
                     onClick={[Function]}
                   >
                     <Ripple

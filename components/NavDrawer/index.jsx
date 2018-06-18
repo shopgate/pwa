@@ -158,7 +158,12 @@ class NavDrawer extends Component {
         {/* Home */}
         <Portal name={commonPortals.NAV_MENU_HOME_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_HOME} props={props}>
-          <Item href={INDEX_PATH} icon={HomeIcon} close={this.handleClose} testId="NavDrawerStartPage">
+          <Item
+            href={INDEX_PATH}
+            icon={HomeIcon}
+            close={this.handleClose}
+            testId="NavDrawerStartPage"
+          >
             <I18n.Text string="navigation.home" />
           </Item>
         </Portal>
@@ -167,7 +172,12 @@ class NavDrawer extends Component {
         {/* Categories */}
         <Portal name={categoryPortals.NAV_MENU_CATEGORIES_BEFORE} props={props} />
         <Portal name={categoryPortals.NAV_MENU_CATEGORIES} props={props}>
-          <Item href={CATEGORY_PATH} icon={ViewListIcon} close={this.handleClose}>
+          <Item
+            href={CATEGORY_PATH}
+            icon={ViewListIcon}
+            close={this.handleClose}
+            testId="navDrawerCategories"
+          >
             <I18n.Text string="navigation.categories" />
           </Item>
         </Portal>
@@ -188,6 +198,7 @@ class NavDrawer extends Component {
               icon={HeartIcon}
               close={this.handleClose}
               withIndicator={this.props.highlightFavorites}
+              testId="favoritesButton"
             >
               <I18n.Text string="navigation.favorites" />
             </Item>
@@ -235,7 +246,12 @@ class NavDrawer extends Component {
         {/* Shipping */}
         <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
         <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
-          <Item href={`${PAGE_PATH}/shipping`} icon={LocalShippingIcon} close={this.handleClose}>
+          <Item
+            href={`${PAGE_PATH}/shipping`}
+            icon={LocalShippingIcon}
+            close={this.handleClose}
+            testId="navDrawerShippingButton"
+          >
             <I18n.Text string="navigation.shipping" />
           </Item>
         </Portal>
@@ -244,7 +260,12 @@ class NavDrawer extends Component {
         {/* Payment */}
         <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
         <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
-          <Item href={`${PAGE_PATH}/payment`} icon={CreditCardIcon} close={this.handleClose}>
+          <Item
+            href={`${PAGE_PATH}/payment`}
+            icon={CreditCardIcon}
+            close={this.handleClose}
+            testId="navDrawerPaymentButton"
+          >
             <I18n.Text string="navigation.payment" />
           </Item>
         </Portal>
@@ -255,7 +276,12 @@ class NavDrawer extends Component {
         {/* Terms */}
         <Portal name={commonPortals.NAV_MENU_TERMS_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_TERMS} props={props}>
-          <Item href={`${PAGE_PATH}/terms`} icon={DescriptionIcon} close={this.handleClose}>
+          <Item
+            href={`${PAGE_PATH}/terms`}
+            icon={DescriptionIcon}
+            close={this.handleClose}
+            testId="navDrawerTermsButton"
+          >
             <I18n.Text string="navigation.terms" />
           </Item>
         </Portal>
@@ -264,7 +290,12 @@ class NavDrawer extends Component {
         {/* Privacy */}
         <Portal name={commonPortals.NAV_MENU_PRIVACY_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_PRIVACY} props={props}>
-          <Item href={`${PAGE_PATH}/privacy`} icon={SecurityIcon} close={this.handleClose}>
+          <Item
+            href={`${PAGE_PATH}/privacy`}
+            icon={SecurityIcon}
+            close={this.handleClose}
+            testId="navDrawerPrivacyButton"
+          >
             <I18n.Text string="navigation.privacy" />
           </Item>
         </Portal>
@@ -274,7 +305,12 @@ class NavDrawer extends Component {
         <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
         {showReturnPolicy && (
           <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
-            <Item href={`${PAGE_PATH}/return_policy`} icon={DescriptionIcon} close={this.handleClose}>
+            <Item
+              href={`${PAGE_PATH}/return_policy`}
+              icon={DescriptionIcon}
+              close={this.handleClose}
+              testId="navDrawerReturnPolicyButton"
+            >
               <I18n.Text string="navigation.return_policy" />
             </Item>
           </Portal>
@@ -284,7 +320,12 @@ class NavDrawer extends Component {
         {/* Imprint */}
         <Portal name={commonPortals.NAV_MENU_IMPRINT_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_IMPRINT} props={props}>
-          <Item href={`${PAGE_PATH}/imprint`} icon={InfoIcon} close={this.handleClose}>
+          <Item
+            href={`${PAGE_PATH}/imprint`}
+            icon={InfoIcon}
+            close={this.handleClose}
+            testId="navDrawerImprintButton"
+          >
             <I18n.Text string="navigation.about" />
           </Item>
         </Portal>
@@ -301,7 +342,12 @@ class NavDrawer extends Component {
           }}
         >
           {user && (
-            <Item onClick={logout} icon={LogoutIcon} close={this.handleClose} testId="logoutButtonNavDrawer">
+            <Item
+              onClick={logout}
+              icon={LogoutIcon}
+              close={this.handleClose}
+              testId="logoutButtonNavDrawer"
+            >
               <I18n.Text string="navigation.logout" />
             </Item>
           )}
