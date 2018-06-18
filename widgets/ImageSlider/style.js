@@ -17,4 +17,5 @@ const image = css({
 export default {
   link,
   image,
+  wrapper,
 };
