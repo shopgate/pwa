@@ -36,13 +36,17 @@ const ProductCard = ({
     itemScope
     itemType="http://schema.org/Product"
   >
-    <ProductImage 
-      classNames={{
-        imageContainer: styles.updateImageContainer, 
-        container: styles.updateContainer }} 
-      itemProp="image" 
-      src={product.featuredImageUrl} 
-      alt={product.name} />
+    <ProductImage
+      classNames={
+        {
+        imageContainer: styles.updateImageContainer,
+        container: styles.updateContainer,
+        }
+      }
+      itemProp="image"
+      src={product.featuredImageUrl}
+      alt={product.name}
+    />
     {!!(!hidePrice && product.price && product.price.discount) && (
       <div className={styles.badgeWrapper}>
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
