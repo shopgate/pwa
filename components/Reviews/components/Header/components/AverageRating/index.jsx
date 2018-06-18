@@ -11,7 +11,7 @@ import connect from './connector';
 /**
  * The average rating and number of ratings for a product.
  * @param {Object} rating The rating values.
- * @param {String} productId The related product ID.
+ * @param {string} productId The related product ID.
  * @returns {JSX}
  */
 const AverageRating = ({ rating, productId }) => {
@@ -35,12 +35,12 @@ const AverageRating = ({ rating, productId }) => {
       <RatingStars value={average} display="large" />
       <RatingCount count={count} />
     </Link>
-  )
+  );
 };
 
 AverageRating.propTypes = {
-  rating: PropTypes.shape(),
   productId: PropTypes.string,
+  rating: PropTypes.shape(),
 };
 
 AverageRating.defaultProps = {
