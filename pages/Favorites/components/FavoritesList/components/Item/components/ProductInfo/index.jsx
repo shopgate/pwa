@@ -36,11 +36,15 @@ const ProductInfo = ({ product }) => (
     <Grid className={styles.detailsRow}>
       <Grid.Item className={styles.propertiesContainer}>
         <ProductCharacteristics characteristics={product.characteristics} />
-        <AvailableText
-          text={product.availability.text}
-          state={product.availability.state}
-          showWhenAvailable
-        />
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_BEFORE} props={{ product }} />
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT} props={{ product }} >
+          <AvailableText
+            text={product.availability.text}
+            state={product.availability.state}
+            showWhenAvailable
+          />
+        </Portal>
+        <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{ product }} />
       </Grid.Item>
       <Grid.Item className={styles.priceContainer}>
         <Price price={product.price} />
