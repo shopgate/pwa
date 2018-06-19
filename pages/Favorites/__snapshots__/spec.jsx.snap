@@ -31,6 +31,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
             >
               <div
                 className="css-xsezhq"
+                data-test-id="emptyFavComponent"
               >
                 <emptyFavoritesIcon>
                   <svg
@@ -118,7 +119,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                       onClick={[Function]}
                       rippleClassName=""
                       rippleSize={null}
-                      testId="Button"
+                      testId="continueButton"
                       type="secondary"
                       wrapContent={true}
                     >
@@ -127,7 +128,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                         disabled={false}
                         flat={false}
                         onClick={[Function]}
-                        testId="Button"
+                        testId="continueButton"
                         type="secondary"
                         wrapContent={false}
                       >
@@ -135,11 +136,11 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                           className="css-187rja2 css-63oe3q"
                           disabled={false}
                           onClick={[Function]}
-                          testId="Button"
+                          testId="continueButton"
                         >
                           <button
                             className="css-187rja2 css-63oe3q css-1rn65c0"
-                            data-test-id="Button"
+                            data-test-id="continueButton"
                             disabled={false}
                             onClick={[Function]}
                           >

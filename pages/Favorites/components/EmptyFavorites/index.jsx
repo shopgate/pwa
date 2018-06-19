@@ -33,7 +33,7 @@ class EmptyFavorites extends Component {
 
     return (
       <div className={styles.container}>
-        <div className={styles.iconContainer}>
+        <div className={styles.iconContainer} data-test-id="emptyFavComponent">
           <Icon />
           <I18n.Text string="favorites.empty" className={styles.title} />
         </div>
