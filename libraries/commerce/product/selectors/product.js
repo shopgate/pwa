@@ -537,8 +537,7 @@ export const hasVariants = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProductData,
-  getCurrentProductId,
-  (productData, productId) => {
+  (productData) => {
     if (!productData) {
       return null;
     }
@@ -547,7 +546,7 @@ export const getBaseProductId = createSelector(
       return productData.baseProductId;
     }
 
-    return productId;
+    return productData.id;
   }
 );
 
@@ -578,7 +577,7 @@ export const isProductOrderable = createSelector(
   isBaseProduct,
   getProductStock,
   (isBase, stock) => {
-    if (!isBase || !stock) {
+    if (isBase || !stock) {
       return false;
     }
 
