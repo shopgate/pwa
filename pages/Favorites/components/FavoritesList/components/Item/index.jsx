@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import Grid from '@shopgate/pwa-common/components/Grid';
