@@ -179,6 +179,7 @@ class NavDrawer extends Component {
             icon={ViewListIcon}
             label="navigation.categories"
             close={this.handleClose}
+            testId="navDrawerCategories"
           />
         </Portal>
         <Portal name={categoryPortals.NAV_MENU_CATEGORIES_AFTER} props={props} />
@@ -199,6 +200,7 @@ class NavDrawer extends Component {
               close={this.handleClose}
               label="navigation.favorites"
               withIndicator={this.props.highlightFavorites}
+              testId="favoritesButton"
             />
           </Portal>
         )}
@@ -248,6 +250,7 @@ class NavDrawer extends Component {
             icon={LocalShippingIcon}
             close={this.handleClose}
             label="navigation.shipping"
+            testId="navDrawerShippingButton"
           />
         </Portal>
         <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
@@ -260,6 +263,7 @@ class NavDrawer extends Component {
             icon={CreditCardIcon}
             close={this.handleClose}
             label="navigation.payment"
+            testId="navDrawerPaymentButton"
           />
         </Portal>
         <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
@@ -274,6 +278,7 @@ class NavDrawer extends Component {
             icon={DescriptionIcon}
             close={this.handleClose}
             label="navigation.terms"
+            testId="navDrawerTermsButton"
           />
         </Portal>
         <Portal name={commonPortals.NAV_MENU_TERMS_AFTER} props={props} />
@@ -286,6 +291,7 @@ class NavDrawer extends Component {
             icon={SecurityIcon}
             close={this.handleClose}
             label="navigation.privacy"
+            testId="navDrawerPrivacyButton"
           />
         </Portal>
         <Portal name={commonPortals.NAV_MENU_PRIVACY_AFTER} props={props} />
@@ -299,6 +305,7 @@ class NavDrawer extends Component {
               icon={DescriptionIcon}
               close={this.handleClose}
               label="navigation.return_policy"
+              testId="navDrawerReturnPolicyButton"
             />
           </Portal>
         )}
@@ -312,6 +319,7 @@ class NavDrawer extends Component {
             icon={InfoIcon}
             close={this.handleClose}
             label="navigation.about"
+            testId="navDrawerImprintButton"
           />
         </Portal>
         <Portal name={commonPortals.NAV_MENU_IMPRINT_AFTER} props={props} />
