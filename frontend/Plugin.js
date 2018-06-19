@@ -154,6 +154,14 @@ class SgGoogleNative extends SgTrackingPlugin {
      */
     this.register.viewContent(() => false);
 
+    if (typeof this.register.customEvent === 'function') {
+      this.register.customEvent((data) => {
+        console.warn(data);
+        this.sendCustomEventCommand(data.eventCategory, data);
+        return false;
+      });
+    }
+
     /*
      * Custom events starts here
      */
