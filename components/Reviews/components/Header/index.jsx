@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -17,6 +18,7 @@ const Header = ({ productId, rating, withTopGap }) => {
   if (!rating) {
     return null;
   }
+
   const { average = 0 } = rating;
   const containerClass = withTopGap ? styles.withTopGapContainer : styles.container;
 
@@ -52,14 +54,19 @@ const Header = ({ productId, rating, withTopGap }) => {
 };
 
 Header.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.string,
   rating: PropTypes.shape(),
   withTopGap: PropTypes.bool,
 };
 
 Header.defaultProps = {
+  productId: null,
   rating: null,
   withTopGap: false,
 };
 
-export default Header;
+export default props => (
+  <RouteContext>
+    {({ params }) => <Header {...props} productId={params.productId || null} />}
+  </RouteContext>
+);
