@@ -6,7 +6,7 @@ import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOpti
 import {
   mockedStateWithoutReview,
   mockedStateWithAll,
-} from 'Components/Reviews/mock';
+} from '@shopgate/pwa-common-commerce/reviews/mock';
 import Header from './index';
 
 const mockedStore = configureStore();

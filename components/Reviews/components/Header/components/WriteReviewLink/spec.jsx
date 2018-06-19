@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 import {
   mockedStateWithAll,
   mockedStateProductEmpty,
-} from 'Components/Reviews/mock';
+} from '@shopgate/pwa-common-commerce/reviews/mock';
 import WriteReviewLink from './index';
 
 const mockedStore = configureStore();

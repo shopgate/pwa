@@ -8,7 +8,7 @@ import {
   mockedStateWithoutReview,
   mockedStateWithTwoReviews,
   setMocks,
-} from './mock';
+} from '@shopgate/pwa-common-commerce/reviews/mock';
 
 const mockedStore = configureStore();
 
