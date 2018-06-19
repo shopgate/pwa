@@ -35,11 +35,7 @@ const ProductInfo = ({ product }) => (
     <Portal name={portals.FAVORITES_PRODUCT_NAME_AFTER} props={{ product }} />
     <Grid className={styles.detailsRow}>
       <Grid.Item className={styles.propertiesContainer}>
-        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_BEFORE} props={{ product }} />
-        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS} props={{ product }}>
-          <ProductCharacteristics characteristics={product.characteristics} />
-        </Portal>
-        <Portal name={portals.FAVORITES_PRODUCT_CHARACTERISTICS_AFTER} props={{ product }} />
+        <ProductCharacteristics characteristics={product.characteristics} />
         <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_BEFORE} props={{ product }} />
         <Portal name={portals.FAVORITES_AVAILABILITY_TEXT} props={{ product }}>
           <AvailableText
@@ -51,11 +47,7 @@ const ProductInfo = ({ product }) => (
         <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={{ product }} />
       </Grid.Item>
       <Grid.Item className={styles.priceContainer}>
-        <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={{ product }} />
-        <Portal name={portals.FAVORITES_PRODUCT_PRICE} props={{ product }}>
-          <Price price={product.price} />
-        </Portal>
-        <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={{ product }} />
+        <Price price={product.price} />
       </Grid.Item>
     </Grid>
   </Fragment>
