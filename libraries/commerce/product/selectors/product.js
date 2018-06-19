@@ -576,8 +576,9 @@ export const getVariantId = createSelector(
 export const isProductOrderable = createSelector(
   isBaseProduct,
   getProductStock,
-  (isBase, stock) => {
-    if (isBase || !stock) {
+  hasVariants,
+  (isBase, stock, variants) => {
+    if (!stock || (isBase && variants)) {
       return false;
     }
 
