@@ -60,6 +60,7 @@ const card = css({
   background: '#FFF',
   height: '100%',
   margin: '0px 8px',
+  borderRadius: variables.borderRadius.default,
 }).toString();
 
 const headline = css({

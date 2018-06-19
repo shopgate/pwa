@@ -46,6 +46,14 @@ const wishlist = css({
   transform: 'translate3d(0, -50%, 0)',
 }).toString();
 
+const updateImageContainer = css({
+  borderRadius: '0px',
+}).toString();
+
+const updateContainer = css({
+  borderRadius: '0px',
+}).toString();
+
 export default {
   badgeWrapper,
   basicPrice,
@@ -54,4 +62,6 @@ export default {
   priceWrapper,
   title,
   wishlist,
+  updateImageContainer,
+  updateContainer
 };
