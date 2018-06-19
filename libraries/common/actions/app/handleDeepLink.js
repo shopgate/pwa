@@ -7,7 +7,7 @@ import handleLink from './handleLink';
  * @return {Function} A redux thunk.
  */
 const handleDeepLink = (payload = {}) => (dispatch) => {
-  handleLink(payload, dispatch);
+  dispatch(handleLink(payload));
   dispatch(openDeepLink(payload));
 };
 
