@@ -226,10 +226,12 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
                                     pushHistory={[Function]}
                                   >
                                     <Connect(Link)
+                                      disabled={false}
                                       href="/checkout"
                                     >
                                       <Link
                                         className=""
+                                        disabled={false}
                                         href="/checkout"
                                         navigate={[Function]}
                                         replace={false}
@@ -279,6 +281,7 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
                                                     color="#000"
                                                     disabled={false}
                                                     fill={true}
+                                                    onClick={[Function]}
                                                     onComplete={[Function]}
                                                     overflow={false}
                                                     size={null}
@@ -561,10 +564,12 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                     pushHistory={[Function]}
                                   >
                                     <Connect(Link)
+                                      disabled={false}
                                       href="/checkout"
                                     >
                                       <Link
                                         className=""
+                                        disabled={false}
                                         href="/checkout"
                                         navigate={[Function]}
                                         replace={false}
@@ -614,6 +619,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                                     color="#000"
                                                     disabled={false}
                                                     fill={true}
+                                                    onClick={[Function]}
                                                     onComplete={[Function]}
                                                     overflow={false}
                                                     size={null}
@@ -958,10 +964,12 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                     pushHistory={[Function]}
                                   >
                                     <Connect(Link)
+                                      disabled={false}
                                       href="/checkout"
                                     >
                                       <Link
                                         className=""
+                                        disabled={false}
                                         href="/checkout"
                                         navigate={[Function]}
                                         replace={false}
@@ -1011,6 +1019,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                                     color="#000"
                                                     disabled={false}
                                                     fill={true}
+                                                    onClick={[Function]}
                                                     onComplete={[Function]}
                                                     overflow={false}
                                                     size={null}
@@ -1292,10 +1301,12 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                     pushHistory={[Function]}
                                   >
                                     <Connect(Link)
+                                      disabled={false}
                                       href="/checkout"
                                     >
                                       <Link
                                         className=""
+                                        disabled={false}
                                         href="/checkout"
                                         navigate={[Function]}
                                         replace={false}
@@ -1345,6 +1356,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                                     color="#000"
                                                     disabled={false}
                                                     fill={true}
+                                                    onClick={[Function]}
                                                     onComplete={[Function]}
                                                     overflow={false}
                                                     size={null}
@@ -1626,10 +1638,12 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                     pushHistory={[Function]}
                                   >
                                     <Connect(Link)
+                                      disabled={false}
                                       href="/checkout"
                                     >
                                       <Link
                                         className=""
+                                        disabled={false}
                                         href="/checkout"
                                         navigate={[Function]}
                                         replace={false}
@@ -1679,6 +1693,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                                     color="#000"
                                                     disabled={false}
                                                     fill={true}
+                                                    onClick={[Function]}
                                                     onComplete={[Function]}
                                                     overflow={false}
                                                     size={null}

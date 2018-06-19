@@ -13,9 +13,12 @@ exports[`Shipping label should render free shipping 1`] = `
     }
   }
 >
-  <Connect(Shipping)>
+  <Connect(Shipping)
+    productId="fakeId"
+  >
     <Shipping
       dispatch={[Function]}
+      productId="fakeId"
       shipping={
         Object {
           "currency": "EUR",
@@ -68,9 +71,12 @@ exports[`Shipping label should render shipping price 1`] = `
     }
   }
 >
-  <Connect(Shipping)>
+  <Connect(Shipping)
+    productId="fakeId"
+  >
     <Shipping
       dispatch={[Function]}
+      productId="fakeId"
       shipping={
         Object {
           "currency": "EUR",

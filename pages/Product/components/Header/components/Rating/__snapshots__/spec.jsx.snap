@@ -13,9 +13,12 @@ exports[`Rating (product header) Rendering should render rating when data is ava
     }
   }
 >
-  <Connect(Rating)>
+  <Connect(Rating)
+    productId="foo"
+  >
     <Rating
       dispatch={[Function]}
+      productId="foo"
       rating={
         Object {
           "average": 50,

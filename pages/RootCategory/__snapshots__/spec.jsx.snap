@@ -219,6 +219,7 @@ exports[`<RootCategory> page should render 1`] = `
                                   >
                                     <Link
                                       className=""
+                                      disabled={false}
                                       href="/category/6d656e"
                                       navigate={[Function]}
                                       onClick={null}
@@ -333,6 +334,7 @@ exports[`<RootCategory> page should render 1`] = `
                                   >
                                     <Link
                                       className=""
+                                      disabled={false}
                                       href="/category/776f6d656e"
                                       navigate={[Function]}
                                       onClick={null}

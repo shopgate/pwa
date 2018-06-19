@@ -159,6 +159,7 @@ exports[`<Category> page should render 1`] = `
                                     >
                                       <Link
                                         className=""
+                                        disabled={false}
                                         href="/category/74657374"
                                         navigate={[Function]}
                                         onClick={null}
@@ -645,6 +646,7 @@ exports[`<Category> page should render 1`] = `
                                           >
                                             <Link
                                               className="css-b4pchx"
+                                              disabled={false}
                                               href="/item/393133"
                                               itemProp="item"
                                               itemScope={true}

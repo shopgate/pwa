@@ -27,7 +27,7 @@ describe('Rating (product header)', () => {
    */
   const getComponent = state => mount(
     <Provider store={mockedStore(state)}>
-      <Rating />
+      <Rating productId="foo" />
     </Provider>,
     mockRenderOptions
   );

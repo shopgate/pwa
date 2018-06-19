@@ -43,6 +43,9 @@ const mockedState = {
       },
     },
   },
+  favorites: {
+    products: {},
+  },
   filter: {
     activeFilters: null,
   },

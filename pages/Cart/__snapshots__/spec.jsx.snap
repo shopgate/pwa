@@ -174,6 +174,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
                             color="#000"
                             disabled={false}
                             fill={true}
+                            onClick={[Function]}
                             onComplete={[Function]}
                             overflow={false}
                             size={null}
@@ -451,6 +452,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                         >
                                           <Link
                                             className=""
+                                            disabled={false}
                                             href="/item/746573745f70726f64756374"
                                             itemProp="item"
                                             itemScope={true}
@@ -1343,6 +1345,9 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                                       </Cross>
                                                     </button>
                                                   </Delete>
+                                                  <CouponFreeShipping
+                                                    freeShipping={false}
+                                                  />
                                                   <Portal
                                                     name="cart.item.price.before"
                                                     props={
@@ -1909,6 +1914,7 @@ exports[`<Cart> page Initial page should render empty 1`] = `
                             color="#000"
                             disabled={false}
                             fill={true}
+                            onClick={[Function]}
                             onComplete={[Function]}
                             overflow={false}
                             size={null}
@@ -2170,6 +2176,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                                         >
                                           <Link
                                             className=""
+                                            disabled={false}
                                             href="/item/746573745f70726f64756374"
                                             itemProp="item"
                                             itemScope={true}
