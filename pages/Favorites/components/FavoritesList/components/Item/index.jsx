@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import { findDOMNode } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -81,61 +79,25 @@ class Item extends Component {
               styles.getFavItemTransitionStyle(state, this.state.visible, this.height)
             }
           >
-            <Portal
-              name={portals.FAVORITES_PRODUCT_BEFORE}
-              props={{ product: this.props.product }}
-            />
-            <Portal name={portals.FAVORITES_PRODUCT} props={{ product: this.props.product }}>
-              <Grid className={styles.row}>
-                <Grid.Item className={styles.leftColumn}>
-                  <Portal
-                    name={portals.FAVORITES_PRODUCT_IMAGE_BEFORE}
-                    props={{ product: this.props.product }}
-                  />
-                  <Portal
-                    name={portals.FAVORITES_PRODUCT_IMAGE}
-                    props={{ product: this.props.product }}
-                  >
-                    <Image product={this.props.product} />
-                  </Portal>
-                  <Portal
-                    name={portals.FAVORITES_PRODUCT_IMAGE_AFTER}
-                    props={{ product: this.props.product }}
-                  />
-                  <CTAButtons
-                    productId={this.props.product.id}
-                    active={this.state.visible}
-                    removeThrottle={styles.favItemTransitionDuration + 200}
-                    onRippleComplete={(active) => {
-                      this.setState({
-                        visible: active,
-                      });
-                    }}
-                    favoritesOnce
-                  />
-                </Grid.Item>
-                <Grid.Item grow={1} className={styles.rightColumn}>
-                  <Portal
-                    name={portals.FAVORITES_PRODUCT_INFO_BEFORE}
-                    props={{ product: this.props.product }}
-                  />
-                  <Portal
-                    name={portals.FAVORITES_PRODUCT_INFO}
-                    props={{ product: this.props.product }}
-                  >
-                    <ProductInfo product={this.props.product} />
-                  </Portal>
-                  <Portal
-                    name={portals.FAVORITES_PRODUCT_INFO_AFTER}
-                    props={{ product: this.props.product }}
-                  />
-                </Grid.Item>
-              </Grid>
-            </Portal>
-            <Portal
-              name={portals.FAVORITES_PRODUCT_AFTER}
-              props={{ product: this.props.product }}
-            />
+            <Grid className={styles.row}>
+              <Grid.Item className={styles.leftColumn}>
+                <Image product={this.props.product} />
+                <CTAButtons
+                  productId={this.props.product.id}
+                  active={this.state.visible}
+                  removeThrottle={styles.favItemTransitionDuration + 200}
+                  onRippleComplete={(active) => {
+                    this.setState({
+                      visible: active,
+                    });
+                  }}
+                  favoritesOnce
+                />
+              </Grid.Item>
+              <Grid.Item grow={1} className={styles.rightColumn}>
+                <ProductInfo product={this.props.product} />
+              </Grid.Item>
+            </Grid>
           </CardItem>
         )}
       </Transition>
