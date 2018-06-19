@@ -162,7 +162,7 @@ class AddToCartButton extends Component {
 
     return (
       <button
-        data-test-id="AddToCartButton"
+        data-test-id="addToCartButton"
         className={`${this.props.className} ${className} ${buttonStyle}`}
         onClick={this.handleClick}
       >
