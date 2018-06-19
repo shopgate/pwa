@@ -142,6 +142,15 @@ const basicProductState = {
     variantsByProductId: {},
     optionsByProductId: {},
     resultsByHash: {},
+    imagesByProductId: {
+      913: {
+        isFetching: false,
+        expires: 99999999999,
+        images: [
+          'https://img-cdn.shopgate.com/image.jpg',
+        ],
+      },
+    },
     currentProduct: {
       productId: '913',
       productVariantId: null,
@@ -239,6 +248,20 @@ const productWithOneOption = {
       },
     },
     resultsByHash: {},
+    imagesByProductId: {
+      913: {
+        isFetching: false,
+        expires: 99999999999,
+        images: [
+          'https://img-cdn.shopgate.com/image.jpg',
+        ],
+      },
+      1097: {
+        isFetching: false,
+        expires: 99999999999,
+        images: [],
+      },
+    },
     currentProduct: {
       productId: '1097',
       productVariantId: null,
