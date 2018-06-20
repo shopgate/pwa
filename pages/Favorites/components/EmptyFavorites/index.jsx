@@ -9,7 +9,7 @@ import ContinueButton from './components/ContinueButton';
  */
 const EmptyFavorites = () => (
   <div className={styles.container}>
-    <div className={styles.iconContainer}>
+    <div className={styles.iconContainer} data-test-id="emptyFavComponent">
       <Icon />
       <I18n.Text string="favorites.empty" className={styles.title} />
     </div>

@@ -12,7 +12,7 @@ import styles from './style';
  */
 const ImageSliderWidget = ({ settings, className }) => (
   <ImageSlider
-    className={className}
+    className={[className, styles.wrapper].join(' ')}
     autoPlay={settings.autostart}
     indicators={settings.pagination}
     interval={settings.delay}

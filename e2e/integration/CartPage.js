@@ -3,7 +3,7 @@
 import {clearProductFromCart} from '../helper/cart';
 import els from '../elements/de';
 
-describe('AndroidGMDTest CategoryPage', () => {
+describe('AndroidGMDTest CartPage', () => {
   it('it should check for empty cart', () => {
     cy.visit('');
     cy.get(els.navigatorButton)
