@@ -27,17 +27,20 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
     if (typeof newReview[field] === 'string') {
       newReview[field] = newReview[field].trim();
     }
+
     if (fields.indexOf(field) !== -1) {
       pipelineData[field] = newReview[field];
     }
   });
 
   dispatch(requestSubmitReview(review));
+
   if (update) {
     const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_UPDATE_PRODUCT_REVIEW)
       .setInput(pipelineData)
       .setRetries(0)
       .dispatch();
+
     request
       .then(() => {
         dispatch(receiveSubmitReview(newReview));
@@ -48,7 +51,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
         dispatch(resetSubmittedReview(originalReview));
       });
 
-    return request;
+    return; // Stop here.
   }
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW)
@@ -56,6 +59,7 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
     .setHandledErrors([EEXIST])
     .setInput(pipelineData)
     .dispatch();
+
   request
     .then(() => {
       dispatch(receiveSubmitReview(newReview));
@@ -72,8 +76,6 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
       logger.error(error);
       dispatch(errorSubmitReview(newReview.productId));
     });
-
-  return request;
 };
 
 export default submitReview;
