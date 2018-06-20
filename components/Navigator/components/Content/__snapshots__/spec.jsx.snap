@@ -31,7 +31,7 @@ exports[`<NavigatorContent /> should render the logo 1`] = `
       <Consumer>
         <NavigatorSearch
           active={false}
-          query=""
+          query="shirt"
           setSearchQuery={[MockFunction]}
           toggleSearchField={[MockFunction]}
         >
@@ -141,7 +141,7 @@ exports[`<NavigatorContent /> should render the title 1`] = `
       <Consumer>
         <NavigatorSearch
           active={false}
-          query=""
+          query="shirt"
           setSearchQuery={[MockFunction]}
           toggleSearchField={[MockFunction]}
         >

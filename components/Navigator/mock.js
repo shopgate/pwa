@@ -20,7 +20,7 @@ export const defaultState = {
     filterOpen: false,
     enabled: false,
     searchActive: false,
-    searchPhrase: '',
+    searchQuery: '',
     showCartIcon: true,
     showSearch: false,
     showTitle: false,
@@ -35,6 +35,11 @@ export const defaultState = {
   router,
   view: {
     isLoading: false,
+  },
+  ui: {
+    general: {
+      title: null,
+    },
   },
 };
 

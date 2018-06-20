@@ -16,7 +16,7 @@ beforeEach(() => {
 
 /**
  * Creates component with provided store state.
- * @param {Object} mockedState Mocked stage.
+ * @param {Object} props Mocked props.
  * @return {ReactWrapper}
  */
 const createComponent = (props) => {

@@ -1,18 +1,21 @@
 import React from 'react';
 
-const context = {
+const defaultContext = {
   searchField: false,
   toggleSearchField: jest.fn(),
-  searchQuery: '',
+  searchQuery: 'shirt',
   setSearchQuery: jest.fn(),
 };
+let context;
 
 export const NavigatorContext = ({
   Provider(props) {
-    /* eslint-disable-next-line react/prop-types */
+    /* eslint-disable react/prop-types */
+    context = props.value || defaultContext;
     return React.createElement('div', props, props.children);
+    /* eslint-enable react/prop-types */
   },
   Consumer(props) {
-    return props.children(context);
+    return props.children(context || defaultContext);
   },
 });

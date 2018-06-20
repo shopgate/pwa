@@ -58,7 +58,7 @@ exports[`CTAs (product header) should render CTAButtons when data is available 1
         >
           <button
             className="null css-wuq2ta css-15s4nvk"
-            data-test-id="AddToCartButton"
+            data-test-id="addToCartButton"
             onClick={[Function]}
           >
             <div
