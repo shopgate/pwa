@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
+import shouldUpdate from 'recompose/shouldUpdate';
 import Navigator from 'Components/Navigator';
 import NavDrawer from 'Components/NavDrawer';
 import styles from './style';
 
 /**
- * The viewport component.
+ * The Viewport component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
@@ -22,4 +22,17 @@ Viewport.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default pure(Viewport);
+/**
+ * @param {Object} prev The previous component props.
+ * @param {Object} next The next component props.
+ * @return {boolean}
+ */
+function viewportShouldUpdate(prev, next) {
+  if (!prev.children && next.children) {
+    return true;
+  }
+
+  return false;
+}
+
+export default shouldUpdate(viewportShouldUpdate)(Viewport);

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
-import shouldUpdate from 'recompose/shouldUpdate';
+import pure from 'recompose/pure';
 import ViewContent from './components/Content';
 import styles from './style';
 
@@ -51,4 +50,4 @@ View.defaultProps = {
   style: null,
 };
 
-export default View;
+export default pure(View);

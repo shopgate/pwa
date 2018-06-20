@@ -1,20 +1,24 @@
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { addFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import { favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { favoritesWillEnter$, favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
- * Favorites page subscriptions.
- * @param {Function} subscribe The subscribe function.
+ * @param {Function} subscribe Subscribes to an observable.
  */
 export default function favorites(subscribe) {
+  subscribe(favoritesWillEnter$, ({ dispatch }) => {
+    dispatch(setTitle('titles.favorites'));
+  });
+
   subscribe(favoritesWillRemoveItem$, ({ dispatch, action, getState }) => {
-    if (getHistoryPathname(getState()) !== FAVORITES_PATH) {
-      // No toast message when favorites is not active page.
+    if (getCurrentRoute(getState()).pattern !== FAVORITES_PATH) {
       return;
     }
+
     // Animations are too fast. This should wait a little bit.
     setTimeout(() => {
       dispatch(createToast({
