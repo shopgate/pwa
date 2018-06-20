@@ -134,7 +134,7 @@ class SelectBox extends Component {
 
     return (
       <div className={this.props.className} data-test-id={this.props.testId}>
-        <button className={button} onClick={this.handleOpenList}>
+        <button className={button} onClick={this.handleOpenList} data-test-id={buttonLabel}>
           <span className={selection}>
             <I18n.Text string={buttonLabel} />
           </span>
