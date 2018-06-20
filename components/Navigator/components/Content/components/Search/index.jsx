@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import NavigatorContext from '../../../../context';
+import { NavigatorContext } from '../../../../context';
 import styles from './style';
 import transition from './transition';
 

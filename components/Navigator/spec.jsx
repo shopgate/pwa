@@ -4,6 +4,8 @@ import { mount } from 'enzyme';
 import { getStore } from './mock';
 import Navigator from './index';
 
+jest.mock('./context');
+
 // eslint-disable-next-line react/prop-types
 jest.mock('./components/CartButton', () => ({ children }) => (<div>{children} </div>));
 // eslint-disable-next-line react/prop-types
