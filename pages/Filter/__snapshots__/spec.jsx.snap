@@ -1253,6 +1253,7 @@ exports[`<Filter> page should render 1`] = `
                             >
                               <Link
                                 className=""
+                                disabled={false}
                                 href="/filter/category"
                               >
                                 <div
