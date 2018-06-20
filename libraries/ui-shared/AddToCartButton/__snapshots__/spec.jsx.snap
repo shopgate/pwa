@@ -13,7 +13,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
 >
   <button
     className="null css-68omm3 css-31obrv"
-    data-test-id="AddToCartButton"
+    data-test-id="addToCartButton"
     onClick={[Function]}
   >
     <div
@@ -112,7 +112,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
 >
   <button
     className="null css-68omm3 css-31obrv"
-    data-test-id="AddToCartButton"
+    data-test-id="addToCartButton"
     onClick={[Function]}
   >
     <div
@@ -211,7 +211,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
 >
   <button
     className="null css-68omm3 css-1ncyhu"
-    data-test-id="AddToCartButton"
+    data-test-id="addToCartButton"
     onClick={[Function]}
   >
     <div
