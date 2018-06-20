@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { getPopulatedProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getProductState,
+  getPopulatedProductsResult,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 import * as pipelines from '@shopgate/pwa-common-commerce/product/constants/Pipelines';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 
@@ -20,7 +23,7 @@ const getResultHash = () => generateResultHash({
  * @returns {Object} The result.
  */
 const getResultByHash = createSelector(
-  state => state.product,
+  getProductState,
   getResultHash,
   (productState, hash) => productState.resultsByHash[hash]
 );
@@ -33,6 +36,7 @@ const getResultByHash = createSelector(
  */
 export const getProductsResult = createSelector(
   state => state,
+  (state, props) => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult
