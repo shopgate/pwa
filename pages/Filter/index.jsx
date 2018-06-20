@@ -84,12 +84,17 @@ class Filter extends Component {
           }, 300),
         };
       }
-      default:
       case FILTER_TYPE_MULTISELECT:
         return {
           ...filter,
           url: `${filter.url}${this.props.queryParams}`,
           active: temporaryFilter ? temporaryFilter.values : null,
+        };
+      default:
+        return {
+          ...filter,
+          url: `${filter.url}${this.props.queryParams}`,
+          active: temporaryFilter ? temporaryFilter.value : null,
         };
     }
   };
