@@ -58,8 +58,8 @@ class PriceRangeSlider extends Component {
    */
   onChange = (value) => {
     const roundedValue = [
-      Math.round(value[0]),
-      Math.round(value[1]),
+      Math.floor(value[0]),
+      Math.ceil(value[1]),
     ];
 
     this.setState({
