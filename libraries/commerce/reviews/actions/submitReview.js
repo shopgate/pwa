@@ -18,7 +18,7 @@ import getProduct from '../../product/actions/getProduct';
  */
 const submitReview = (review, update = false) => (dispatch, getState) => {
   const newReview = review;
-  const originalReview = getUserReviewForProduct(getState());
+  const originalReview = getUserReviewForProduct(getState(), { productId: review.productId });
   const fields = ['rate', 'title', 'review', 'author', 'productId'];
   const pipelineData = {};
 

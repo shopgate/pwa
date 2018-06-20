@@ -170,10 +170,10 @@ const getUserReviewsByProductId = createSelector(
  * Retrieves a user review for a product.
  */
 export const getUserReviewForProduct = createSelector(
-  getCurrentBaseProductId,
   getUserReviewsByProductId,
   getReviews,
-  (productId, userReviews, allReviews) => {
+  (state, props) => props.productId,
+  (userReviews, allReviews, productId) => {
     if (!userReviews || !userReviews[productId] || !allReviews[userReviews[productId].review]) {
       return {};
     }
