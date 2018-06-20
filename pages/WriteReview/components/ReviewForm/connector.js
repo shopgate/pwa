@@ -16,7 +16,7 @@ import { getBaseProductId } from '@shopgate/pwa-common-commerce/product/selector
 const mapStateToProps = (state, props) => ({
   authorName: getUserDisplayName(state),
   productId: getBaseProductId(state, props),
-  review: getUserReviewForProduct(state),
+  review: getUserReviewForProduct(state, props),
   isLoadingUserReview: getUserReviewFirstFetchState(state),
 });
 

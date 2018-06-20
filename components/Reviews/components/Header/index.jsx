@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
@@ -67,6 +68,6 @@ Header.defaultProps = {
 
 export default props => (
   <RouteContext>
-    {({ params }) => <Header {...props} productId={params.productId || null} />}
+    {({ params }) => <Header {...props} productId={hex2bin(params.productId) || null} />}
   </RouteContext>
 );
