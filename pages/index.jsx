@@ -54,6 +54,7 @@ const Pages = () => (
               appConfig.hasFavorites
               && <Route pattern={`${FAVORITES_PATH}`} component={routes.Favorites} />
             }
+            <Route pattern={`${ITEM_PATH}/:productId/write_review`} component={routes.WriteReview} />
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
             <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />
