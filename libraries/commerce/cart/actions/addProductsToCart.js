@@ -17,7 +17,8 @@ import { messagesHaveErrors } from '../helpers';
  */
 const addToCart = productsToAdd => (dispatch, getState) => {
   const state = getState();
-  const pendingProductCount = getProductPendingCount(state);
+  let nextProductPendingCount = getProductPendingCount(state);
+
   const products = productsToAdd.map((product) => {
     const { productData } = getProductById(state, product.productId);
 
@@ -26,6 +27,8 @@ const addToCart = productsToAdd => (dispatch, getState) => {
     const variantProductId = productData.baseProductId ? productData.id : undefined;
     const metadata = getAddToCartMetadata(state, productId, variantProductId);
 
+    // Add the quantity to the next product pending count.
+    nextProductPendingCount += product.quantity;
     // Return the current product if it already had metadata, otherwise add some, if any available
     return (product.metadata && product) || {
       ...product,
@@ -34,7 +37,7 @@ const addToCart = productsToAdd => (dispatch, getState) => {
   });
 
   dispatch(addProductsToCart(products));
-  dispatch(setCartProductPendingCount(pendingProductCount + 1));
+  dispatch(setCartProductPendingCount(nextProductPendingCount));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_PRODUCTS);
 
