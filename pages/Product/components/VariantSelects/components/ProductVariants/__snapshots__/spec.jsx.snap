@@ -402,6 +402,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                       modalComponent={[Function]}
                       onChange={[Function]}
                       onClose={[Function]}
+                      onSelect={[Function]}
                       placeholder={
                         <Translate
                           className=""
@@ -731,6 +732,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                       modalComponent={[Function]}
                       onChange={[Function]}
                       onClose={[Function]}
+                      onSelect={[Function]}
                       placeholder={
                         <Translate
                           className=""
@@ -1218,6 +1220,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                       modalComponent={[Function]}
                       onChange={[Function]}
                       onClose={[Function]}
+                      onSelect={[Function]}
                       placeholder={
                         <Translate
                           className=""
@@ -1556,6 +1559,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                       modalComponent={[Function]}
                       onChange={[Function]}
                       onClose={[Function]}
+                      onSelect={[Function]}
                       placeholder={
                         <Translate
                           className=""
