@@ -1,14 +1,18 @@
 import { connect } from 'react-redux';
-import openFilterView from '../../actions/openFilterView';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
+import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
 /**
- * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
  * @param {Object} props The components props.
- * @return {Object} The extended component props.
+ * @return {Object}
  */
 const mapDispatchToProps = (dispatch, props) => ({
-  handleOpenFilters: () => dispatch(openFilterView(props)),
+  navigate() {
+    dispatch(navigate(ACTION_PUSH, `${FILTER_PATH}${parseObjectToQueryString(props.query)}`));
+  },
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps, null, { pure: () => null });
