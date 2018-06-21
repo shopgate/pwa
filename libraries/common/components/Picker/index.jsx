@@ -65,6 +65,7 @@ class Picker extends Component {
     modalComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     onChange: PropTypes.func,
     onClose: PropTypes.func,
+    onSelect: PropTypes.func,
     placeholder: PropTypes.node,
     value: PropTypes.oneOfType([
       PropTypes.string,
@@ -85,6 +86,7 @@ class Picker extends Component {
     items: [],
     onChange: () => {},
     onClose: () => {},
+    onSelect: () => {},
     placeholder: 'Pick ...',
     value: null,
   };
@@ -143,6 +145,9 @@ class Picker extends Component {
       this.state.selectedIndex !== nextSelectedIndex
     ) {
       this.props.onChange(nextValue);
+      this.props.onSelect(nextValue);
+    } else {
+      this.props.onSelect(nextValue);
     }
   };
 
