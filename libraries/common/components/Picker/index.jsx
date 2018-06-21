@@ -145,10 +145,8 @@ class Picker extends Component {
       this.state.selectedIndex !== nextSelectedIndex
     ) {
       this.props.onChange(nextValue);
-      this.props.onSelect(nextValue);
-    } else {
-      this.props.onSelect(nextValue);
     }
+    this.props.onSelect(nextValue);
   };
 
   /**
