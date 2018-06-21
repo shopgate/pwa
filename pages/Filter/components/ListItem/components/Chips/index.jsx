@@ -13,16 +13,11 @@ const Chips = ({ values }) => {
     return null;
   }
 
-  let valuesSanitized = values;
-  if (typeof values === 'string') {
-    valuesSanitized = [values];
-  } else if (values && values.length === 0) {
-    return null;
-  }
+  const collection = [].concat(values);
 
   return (
     <ChipLayout maxRows={3} moreLabel="filter.view_all" invertMoreButton>
-      {valuesSanitized.map(value => (
+      {collection.map(value => (
         <Chip invert removable={false} key={value}>
           {value}
         </Chip>

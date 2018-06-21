@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import { navigate } from '@shopgate/pwa-common/action-creators/router';
-import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
+import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
 /**
@@ -11,7 +11,8 @@ import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
  */
 const mapDispatchToProps = (dispatch, props) => ({
   navigate() {
-    dispatch(navigate(ACTION_PUSH, `${FILTER_PATH}${parseObjectToQueryString(props.query)}`));
+    const query = parseObjectToQueryString(props.query);
+    dispatch(navigate(ACTION_PUSH, `${CATEGORY_PATH}/${props.categoryId}/filter${query}`));
   },
 });
 

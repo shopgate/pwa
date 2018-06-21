@@ -20,10 +20,10 @@ export const Category = Loadable({
   loading: () => null,
 });
 
-// Export const Filter = Loadable({
-//   Loader: () => import('./Filter'),
-//   Loading: () => null,
-// });
+export const Filter = Loadable({
+  loader: () => import('./Filter'),
+  loading: () => null,
+});
 
 // Export const FilterAttribute = Loadable({
 //   Loader: () => import('./FilterAttribute'),

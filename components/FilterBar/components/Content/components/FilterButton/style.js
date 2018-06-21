@@ -11,7 +11,7 @@ const button = css({
   height: variables.filterbar.height,
   position: 'relative',
   zIndex: 1,
-});
+}).toString();
 
 const filterButton = css({
   display: 'flex',
@@ -24,7 +24,7 @@ const filterButtonLabel = css({
   lineHeight: 1,
   paddingTop: 1,
   paddingRight: variables.gap.small,
-});
+}).toString();
 
 const filterButtonRipple = css({
   display: 'flex',

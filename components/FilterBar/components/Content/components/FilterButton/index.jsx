@@ -40,8 +40,8 @@ FilterButton.defaultProps = {
 
 export default () => (
   <RouteContext.Consumer>
-    {({ query }) => (
-      <FilterButton query={query || {}} />
+    {({ query, params }) => (
+      <FilterButton categoryId={params.categoryId || null} query={query || {}} />
     )}
   </RouteContext.Consumer>
 );
