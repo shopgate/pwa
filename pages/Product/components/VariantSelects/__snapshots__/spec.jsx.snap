@@ -382,6 +382,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                   modalComponent={[Function]}
                   onChange={[Function]}
                   onClose={[Function]}
+                  onSelect={[Function]}
                   placeholder={
                     <Translate
                       className=""
@@ -1758,6 +1759,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                   modalComponent={[Function]}
                   onChange={[Function]}
                   onClose={[Function]}
+                  onSelect={[Function]}
                   placeholder={
                     <Translate
                       className=""
@@ -4709,6 +4711,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                   modalComponent={[Function]}
                   onChange={[Function]}
                   onClose={[Function]}
+                  onSelect={[Function]}
                   placeholder={
                     <Translate
                       className=""
