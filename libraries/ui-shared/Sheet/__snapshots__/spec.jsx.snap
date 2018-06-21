@@ -128,7 +128,7 @@ exports[`<Sheet /> should open 1`] = `
       color="#000"
       duration={200}
       isVisible={true}
-      level={3}
+      level={4}
       onClick={[Function]}
       opacity={20}
     >
@@ -142,7 +142,7 @@ exports[`<Sheet /> should open 1`] = `
               "background": "#000",
               "opacity": 0,
               "transition": "opacity 200ms ease-out",
-              "zIndex": 3,
+              "zIndex": 4,
             },
             "enter": Object {
               "opacity": 0.2,
@@ -169,7 +169,7 @@ exports[`<Sheet /> should open 1`] = `
                   "background": "#000",
                   "opacity": 0,
                   "transition": "opacity 200ms ease-out",
-                  "zIndex": 3,
+                  "zIndex": 4,
                 }
               }
               childrenEnterStyle={
@@ -193,7 +193,7 @@ exports[`<Sheet /> should open 1`] = `
                     "background": "#000",
                     "opacity": 0,
                     "transition": "opacity 200ms ease-out",
-                    "zIndex": 3,
+                    "zIndex": 4,
                   }
                 }
               />
@@ -231,7 +231,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     color="#000"
     duration={200}
     isVisible={false}
-    level={3}
+    level={4}
     onClick={[Function]}
     opacity={20}
   />
@@ -263,7 +263,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     color="#000"
     duration={200}
     isVisible={true}
-    level={3}
+    level={4}
     onClick={[Function]}
     opacity={20}
   />
@@ -305,7 +305,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
     color="#000"
     duration={200}
     isVisible={true}
-    level={3}
+    level={4}
     onClick={[Function]}
     opacity={20}
   />
@@ -452,7 +452,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       color="#000"
       duration={200}
       isVisible={false}
-      level={3}
+      level={4}
       onClick={[Function]}
       opacity={20}
     >
@@ -466,7 +466,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               "background": "#000",
               "opacity": 0,
               "transition": "opacity 200ms ease-out",
-              "zIndex": 3,
+              "zIndex": 4,
             },
             "enter": Object {
               "opacity": 0.2,
@@ -493,7 +493,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   "background": "#000",
                   "opacity": 0,
                   "transition": "opacity 200ms ease-out",
-                  "zIndex": 3,
+                  "zIndex": 4,
                 }
               }
               childrenEnterStyle={
@@ -517,7 +517,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     "background": "#000",
                     "opacity": 0,
                     "transition": "opacity 200ms ease-out",
-                    "zIndex": 3,
+                    "zIndex": 4,
                   }
                 }
               />
