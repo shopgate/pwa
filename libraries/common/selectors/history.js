@@ -18,7 +18,7 @@ export const getHistoryState = state => state.history;
  */
 export const getQueryParams = createSelector(
   getCurrentRoute,
-  route => route.query
+  route => (route ? route.query : null)
 );
 
 /**
@@ -28,13 +28,14 @@ export const getQueryParams = createSelector(
  * @return {*} The URL parameter value.
  */
 export const getQueryParam = createSelector(
-  (state, param) => param,
   getQueryParams,
-  (param, params) => {
-    const queryParam = params[param];
+  (state, param) => param,
+  (params, param) => {
+    if (!params || !params[param]) {
+      return null;
+    }
 
-    if (!queryParam) return null;
-    return queryParam;
+    return params[param];
   }
 );
 

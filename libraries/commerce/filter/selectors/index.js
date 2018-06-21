@@ -27,14 +27,20 @@ export const getFilters = state => state.filter;
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getStoredFilterHash = state => state.filter.activeHash;
+export const getStoredFilterHash = createSelector(
+  getFilters,
+  filter => filter.activeHash
+);
 
 /**
  * Gets all active filters stacks.
  * @param {Object} state The application state.
  * @returns {Array}
  */
-export const getActiveFiltersStack = state => getFilters(state).activeFilters;
+export const getActiveFiltersStack = createSelector(
+  getFilters,
+  filter => filter.activeFilters
+);
 
 /**
  * Gets the currently active filters.
@@ -97,8 +103,9 @@ export const getFilterHash = createSelector(
  * @param {Object} state The current application state.
  * @return {Object}
  */
-export const getAvailableFiltersStack = state => (
-  getFilters(state).availableFilters
+export const getAvailableFiltersStack = createSelector(
+  getFilters,
+  filter => filter.availableFilters
 );
 
 /**
@@ -133,8 +140,9 @@ export const hasActiveFilters = createSelector(
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getTemporaryFilters = state => (
-  getFilters(state).temporaryFilters
+export const getTemporaryFilters = createSelector(
+  getFilters,
+  filter => filter.temporaryFilters
 );
 
 /**
