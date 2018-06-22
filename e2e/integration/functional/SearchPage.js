@@ -9,6 +9,7 @@ describe('function tests search page', () => {
     cy.get(els.searchButton)
       .should('be.visible')
       .click();
+    cy.wait(2000);
     cy.get(els.searchInput)
       .should('be.visible')
       .type('product with many properties -4- {enter}');

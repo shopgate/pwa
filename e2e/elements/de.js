@@ -52,7 +52,7 @@ export default {
   optionsPicker: "[data-test-id='optionsPicker']",
   optionPickerBallColor: "[data-test-id='Ball color']",
   optionPickerGlow: "[data-test-id='glow']",
-  ratingStars: "[data-test-id='ratedStarsAverage']",
+  ratingStars: "[data-test-id='link: /item/393339/write_review']",
   productWithRating3Review1Title: "[data-test-id='reviewTitle: test2']",
   productWithRating3Review2Title: "[data-test-id='reviewTitle: test3']",
   showAllReviewsButton: "[data-test-id='showAllReviewsButton']",
