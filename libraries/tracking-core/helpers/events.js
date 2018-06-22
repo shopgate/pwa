@@ -24,6 +24,7 @@ export const TRACK_APP_REVIEW_PROMPT = 'appReviewPrompt';
 export const TRACK_SET_CAMPAIGN_WITH_URL = 'setCampaignWithUrl';
 export const TRACK_LOGIN_SUCCESS = 'loginSuccess';
 export const TRACK_LOGIN_FAILED = 'loginFailed';
+export const TRACK_CUSTOM_EVENT = 'customEvent';
 export const REMOVE_TRACKER = 'removeTracker';
 export const ADD_TRACKER = 'addTracker';
 
@@ -55,6 +56,7 @@ export const customEvents = [
   TRACK_OPEN_SMART_APP_DOWNLOAD_LINK,
   TRACK_OPEN_PUSH_NOTIFICATION,
   TRACK_APP_REVIEW_PROMPT,
+  TRACK_CUSTOM_EVENT,
 ];
 
 export default [
@@ -85,4 +87,5 @@ export default [
   ADD_TRACKER,
   TRACK_LOGIN_SUCCESS,
   TRACK_LOGIN_FAILED,
+  TRACK_CUSTOM_EVENT,
 ];

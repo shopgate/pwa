@@ -141,7 +141,7 @@ class Sheet extends Component {
         {this.props.backdrop &&
           <Backdrop
             isVisible={this.state.isOpen}
-            level={3}
+            level={4}
             onClick={this.handleClose}
             opacity={20}
           />
