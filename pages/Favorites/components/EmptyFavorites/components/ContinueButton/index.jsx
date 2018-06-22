@@ -15,6 +15,7 @@ const ContinueButton = ({ goBackHistory }) => (
     className={styles.button}
     onClick={goBackHistory}
     type="secondary"
+    testId="continueButton"
   >
     <I18n.Text string="favorites.continue" />
   </RippleButton>
