@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { container } from './style';
