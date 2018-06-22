@@ -174,7 +174,10 @@ class PipelineManager {
 
     const { code, message } = request.error || {};
 
-    request.reject(new Error(message));
+    const err = new Error(message);
+    err.code = code;
+
+    request.reject(err);
 
     // Stop if this error code was set to be suppressed.
     if (this.suppressedErrors.includes(code)) {
