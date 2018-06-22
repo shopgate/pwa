@@ -1,7 +1,7 @@
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import conductor from '@virtuous/conductor';
+import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import commitTemporaryFilters from './commitTemporaryFilters';
-import { FILTER_PATH } from '../constants';
+import { CATEGORY_PATH } from '../../category/constants';
 
 /**
  * Applies the filters to the products and navigates back to the previous route containing products.
@@ -12,12 +12,12 @@ import { FILTER_PATH } from '../constants';
 const applyFilters = (roundDisplayAmounts = true) => (dispatch, getState) => {
   dispatch(commitTemporaryFilters(roundDisplayAmounts));
 
-  const path = getHistoryPathname(getState());
+  const route = getCurrentRoute(getState());
 
-  if (path.startsWith(`${FILTER_PATH}/`)) {
-    dispatch(goBackHistory(2));
-  } else if (path.startsWith(FILTER_PATH)) {
-    dispatch(goBackHistory(1));
+  if (route.pattern === `${CATEGORY_PATH}/:categoryId/filter`) {
+    conductor.pop();
+  } else if (route.pattern === `${CATEGORY_PATH}/:categoryId/filter/:attribute`) {
+    conductor.pop(2);
   }
 };
 

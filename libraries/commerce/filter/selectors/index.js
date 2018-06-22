@@ -4,16 +4,9 @@ import find from 'lodash/find';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSearchPhrase, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentCategoryId } from '../../category/selectors';
-
-/**
- * Retrieves the router params from the props.
- * @param {Object} _ The application state. (Will be ignored!)
- * @param {Object} props The component props.
- * @returns {Object} The router params.
- */
-const getParamsFromProps = (_, props = {}) => props.params;
 
 /**
  * Gets the filters reducer.
@@ -49,7 +42,7 @@ export const getActiveFiltersStack = createSelector(
  * @returns {Object|null}
  */
 export const getActiveFilters = createSelector(
-  getParamsFromProps,
+  getCurrentParams,
   getActiveFiltersStack,
   (params, activeFilters) => {
     let stack;
@@ -206,7 +199,7 @@ export const haveFiltersChanged = createSelector(
     }
 
     const numTempFilters = Object.keys(tempFilters).length;
-    const numActiveFilters = Object.keys(activeFilters).length;
+    const numActiveFilters = !activeFilters ? 0 : Object.keys(activeFilters).length;
 
     // Compare each temporary filter to it's available default.
     const changedFromDefault = !Object.keys(tempFilters).every(key => (
