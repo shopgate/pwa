@@ -9,24 +9,26 @@ import FilterContent from './components/Content';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Filter = ({ id }) => (
+const Filter = ({ id, search }) => (
   <View>
-    {id && <FilterContent categoryId={id} />}
+    {id && <FilterContent categoryId={id} s={search} />}
   </View>
 );
 
 Filter.propTypes = {
   id: PropTypes.string,
+  search: PropTypes.string,
 };
 
 Filter.defaultProps = {
   id: null,
+  search: null,
 };
 
 export default () => (
   <RouteContext.Consumer>
-    {({ params }) => (
-      <Filter id={hex2bin(params.categoryId) || null} />
+    {({ params, query }) => (
+      <Filter id={hex2bin(params.categoryId) || null} search={query.s || null} />
     )}
   </RouteContext.Consumer>
 );

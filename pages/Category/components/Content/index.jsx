@@ -13,7 +13,7 @@ import connect from './connector';
  */
 const CategoryContent = ({ categories, categoryId, hasProducts }) => (
   <Fragment>
-    {((!categories || !categories.length) && hasProducts) && <FilterBar />}
+    {((!categories || !categories.length) && hasProducts) && <FilterBar categoryId={categoryId} />}
     <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId }} />
     <Portal name={portals.CATEGORY_LIST} props={{ categoryId }}>
       {categories && categories.length && <CategoryList categories={categories} />}

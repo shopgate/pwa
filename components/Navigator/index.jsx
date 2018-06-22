@@ -13,7 +13,7 @@ import connect from './connector';
 import NavButton from './components/NavButton';
 import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
-// Import ApplyFilterButton from './components/ApplyFilterButton';
+import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
 import NavigatorContext from './context';
 import styles from './style';
@@ -27,6 +27,7 @@ class Navigator extends PureComponent {
   static propTypes = {
     navigate: PropTypes.func.isRequired,
     backgroundColor: PropTypes.string,
+    filterOpen: PropTypes.bool,
     navigatorEnabled: PropTypes.bool,
     showLoadingBar: PropTypes.bool,
     showSearch: PropTypes.bool,
@@ -36,6 +37,7 @@ class Navigator extends PureComponent {
 
   static defaultProps = {
     backgroundColor: colors.light,
+    filterOpen: false,
     navigatorEnabled: true,
     showLoadingBar: false,
     showSearch: true,
@@ -164,11 +166,11 @@ class Navigator extends PureComponent {
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_AFTER} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS} >
-                  {/*(this.props.filterOpen) &&
-                  <div className={styles.applyButton}>
-                    <ApplyFilterButton />
-                  </div>
-                  */}
+                  {(this.props.filterOpen) &&
+                    <div className={styles.applyButton}>
+                      <ApplyFilterButton />
+                    </div>
+                  }
                   {this.props.showSearch &&
                     <SearchButton />
                   }
