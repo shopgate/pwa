@@ -15,6 +15,7 @@ const SearchSuggestion = ({ suggestion, onClick }) => (
     className={styles.listItem}
     title={suggestion}
     onClick={onClick}
+    testId={`searchSuggestion ${suggestion}`}
   />
 );
 

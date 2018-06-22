@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import els from '../elements/de';
+import els from '../../elements/de';
 
 describe('AndroidGMDTest startPage', () => {
   it('should check Navigation Drawer', () => {

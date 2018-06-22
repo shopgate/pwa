@@ -1,5 +1,6 @@
 /// <reference types="Cypress" />
-import els from '../elements/de';
+
+import els from '../../elements/de';
 
 describe('AndroidGMDTest productPage', () => {
   it('should check for productImage', () => {
