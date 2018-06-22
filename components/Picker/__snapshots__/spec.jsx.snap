@@ -21,6 +21,7 @@ exports[`<Picker /> should render the picker 1`] = `
     modalComponent={[Function]}
     onChange={[Function]}
     onClose={[Function]}
+    onSelect={[Function]}
     placeholder="Pick ..."
     value={null}
   >
