@@ -3,7 +3,7 @@ import isEqual from 'lodash/isEqual';
 import find from 'lodash/find';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { getSearchPhrase, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentCategoryId } from '../../category/selectors';
@@ -222,7 +222,7 @@ export const haveFiltersChanged = createSelector(
  * @returns {Object}
  */
 export const getCurrentFilterAttribute = createSelector(
-  getHistoryPathname,
+  (state, props) => props.url,
   getAvailableFilters,
   (url, filters) => {
     if (!url || !filters || !filters.length) {

@@ -76,7 +76,7 @@ export const getHistoryAction = createSelector(
  */
 export const getHistoryPathname = createSelector(
   getCurrentRoute,
-  route => route.pathname
+  route => (route ? route.pathname : null)
 );
 
 /**

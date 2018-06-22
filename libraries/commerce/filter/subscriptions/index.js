@@ -1,3 +1,4 @@
+import { ACTION_PUSH, ACTION_POP } from '@virtuous/conductor/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { getCurrentCategoryId } from '../../category/selectors';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
@@ -28,13 +29,22 @@ export default function filters(subscribe) {
   // Const historyWillReset$ = main$
   //   .filter(({ action }) => action.type === HISTORY_WILL_RESET);
 
-  subscribe(filterWillEnter$, ({ dispatch, getState, prevState }) => {
-    dispatch(setTemporaryFilters(getActiveFilters(getState())));
-    dispatch(setFilterHash(getFilterHash(prevState)));
+  subscribe(filterWillEnter$, ({
+    dispatch,
+    getState,
+    prevState,
+    action,
+  }) => {
+    if (action.historyAction === ACTION_PUSH) {
+      dispatch(setTemporaryFilters(getActiveFilters(getState())));
+      dispatch(setFilterHash(getFilterHash(prevState)));
+    }
   });
 
-  subscribe(filterWillLeave$, ({ dispatch }) => {
-    dispatch(setFilterHash(''));
+  subscribe(filterWillLeave$, ({ dispatch, action }) => {
+    if (action.historyAction === ACTION_POP) {
+      dispatch(setFilterHash(''));
+    }
   });
 
   subscribe(filterableRoutesWillEnter$, ({ dispatch, getState }) => {
