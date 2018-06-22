@@ -3,7 +3,7 @@
 import { clearProductFromCart } from '../helper/cart';
 import els from '../elements/de';
 
-describe('IOS11Test CategoryPage', () => {
+describe('IOS11Test CartPage', () => {
   it('it should check for empty cart', () => {
     cy.visit('');
     cy.get(els.tabBarCart)
