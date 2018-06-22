@@ -160,6 +160,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 <Link
                   className="css-1us3hnd"
                   data-test-id="ratedStarsAverage"
+                  disabled={false}
                   href="/item/666f6f/write_review"
                   itemProp="item"
                   itemScope={true}
@@ -2704,6 +2705,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 <Link
                   className="css-1us3hnd"
                   data-test-id="ratedStarsAverage"
+                  disabled={false}
                   href="/item/666f6f/write_review"
                   itemProp="item"
                   itemScope={true}
@@ -4193,6 +4195,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
                 <Link
                   className="css-1us3hnd"
                   data-test-id="ratedStarsAverage"
+                  disabled={false}
                   href="/item/666f6f/write_review"
                   itemProp="item"
                   itemScope={true}
