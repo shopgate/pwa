@@ -26,11 +26,11 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="remove foo"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="remove foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -69,11 +69,11 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="foo"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -183,11 +183,11 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="remove foo"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="remove foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -226,11 +226,11 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="foo"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -252,11 +252,11 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="remove bar"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="remove bar"
               disabled={false}
               onClick={[Function]}
             >
@@ -295,11 +295,11 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="bar"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="bar"
               disabled={false}
               onClick={[Function]}
             >
