@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Label from './components/Label';
 import Chips from './components/Chips';
 import CrossButton from './components/CrossButton';
@@ -12,12 +16,14 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ListItem = ({ filter }) => {
+const ListItem = ({ filter, id, search }) => {
   const isActive = !!(filter.active && filter.active.length > 0);
+
+  const link = id ? `${CATEGORY_PATH}/${id}${filter.url}` : `${SEARCH_PATH}${filter.url}`;
 
   return (
     <div className={styles.item} data-test-id="filterListItem">
-      <Link href={filter.url}>
+      <Link href={link}>
         <Grid>
           <Grid.Item className={styles.gridItem} grow={1} shrink={0}>
             <Label label={filter.label} />
@@ -36,6 +42,19 @@ const ListItem = ({ filter }) => {
 
 ListItem.propTypes = {
   filter: PropTypes.shape().isRequired,
+  id: PropTypes.string,
+  search: PropTypes.string,
 };
 
-export default ListItem;
+ListItem.defaultProps = {
+  id: null,
+  search: null,
+};
+
+export default props => (
+  <RouteContext.Consumer>
+    {({ params, query }) => (
+      <ListItem {...props} id={params.categoryId || null} search={query.s || null} />
+    )}
+  </RouteContext.Consumer>
+);

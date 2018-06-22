@@ -1,5 +1,6 @@
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
-import { filterWillEnter$, filterWillLeave$ } from '@shopgate/pwa-common-commerce/filter/streams';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
+import { filterWillEnter$, filterableRoutesWillReenter$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import { setFilterOpened, setFilterClosed } from 'Components/Navigator/action-creators';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
@@ -8,13 +9,16 @@ import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorS
  * @param {Function} subscribe Subscribes to streams.
  */
 export default function filter(subscribe) {
-  subscribe(filterWillEnter$, ({ dispatch }) => {
+  subscribe(filterWillEnter$, ({ dispatch, action }) => {
     dispatch(setTitle('titles.filter'));
-    dispatch(setFilterOpened());
-    dispatch(disableNavigatorSearch());
+
+    if (action.historyAction === ACTION_PUSH) {
+      dispatch(setFilterOpened());
+      dispatch(disableNavigatorSearch());
+    }
   });
 
-  subscribe(filterWillLeave$, ({ dispatch }) => {
+  subscribe(filterableRoutesWillReenter$, ({ dispatch }) => {
     dispatch(setFilterClosed());
     dispatch(enableNavigatorSearch());
   });

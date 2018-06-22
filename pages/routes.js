@@ -25,10 +25,10 @@ export const Filter = Loadable({
   loading: () => null,
 });
 
-// Export const FilterAttribute = Loadable({
-//   Loader: () => import('./FilterAttribute'),
-//   Loading: () => null,
-// });
+export const FilterAttribute = Loadable({
+  loader: () => import('./FilterAttribute'),
+  loading: () => null,
+});
 
 export const Product = Loadable({
   loader: () => import('./Product'),
