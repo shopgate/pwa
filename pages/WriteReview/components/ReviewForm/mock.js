@@ -1,3 +1,4 @@
+import { mockedStateWithoutReview as noReviews, reviewRouteMock } from '@shopgate/pwa-common-commerce/reviews/mock';
 /**
  * Creates mocked review object.
  * @param {string|number} id Anything that can be an id.
@@ -128,25 +129,7 @@ export const mockReview = id => ({
  * @type {Object}
  */
 export const mockedStateWithoutReview = {
-  product: {
-    currentProduct: {
-      productId: 'foo',
-    },
-    productsById: {
-      foo: {
-        productData: {
-          productId: 'foo',
-        },
-      },
-    },
-  },
-  reviews: {
-    reviewsById: {},
-    userReviewsByProductId: {},
-  },
-  history: {
-    pathname: '/item/666f6f/write_review',
-  },
+  ...noReviews,
   user: {
     login: {
       isLoggedIn: true,
@@ -159,6 +142,12 @@ export const mockedStateWithoutReview = {
   },
   view: {
     isLoading: false,
+  },
+  router: {
+    routing: false,
+    stack: [
+      reviewRouteMock,
+    ],
   },
 };
 

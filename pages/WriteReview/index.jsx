@@ -49,3 +49,5 @@ export default () => (
     )}
   </RouteContext.Consumer>
 );
+
+export { WriteReview as UnwrappedWriteReview };

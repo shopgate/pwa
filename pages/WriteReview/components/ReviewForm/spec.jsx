@@ -31,7 +31,7 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
   /* eslint-enable global-require */
   return mount(
     <Provider store={store}>
-      <ReviewForm submit={() => {}} />
+      <ReviewForm submit={() => {}} productId="foo" />
     </Provider>,
     mockRenderOptions
   );

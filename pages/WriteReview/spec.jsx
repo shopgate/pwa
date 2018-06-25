@@ -16,11 +16,11 @@ const mockedStore = configureStore();
  */
 const createComponent = () => {
   /* eslint-disable global-require */
-  const WriteReview = require('./index').default;
+  const { UnwrappedWriteReview } = require('./index');
   /* eslint-enable global-require */
   return mount(
     <Provider store={mockedStore(mockedState)}>
-      <WriteReview />
+      <UnwrappedWriteReview productId="foo" />
     </Provider>,
     mockRenderOptions
   );
