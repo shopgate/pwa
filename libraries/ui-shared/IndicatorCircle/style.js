@@ -4,13 +4,23 @@ const rotate = css.keyframes({
   '100%': { transform: 'rotate(360deg)' },
 });
 
-const spinner = css({
-  animation: `${rotate} 1.6s linear infinite`,
-  margin: 'auto',
-  transformOrigin: 'center center',
-  maxWidth: '100%',
-  maxHeight: '100%',
-}).toString();
+/**
+ * Styles for spinner.
+ * @param {boolean} paused Animation should be paused.
+ * @returns {string}
+ */
+const spinner = (paused) => {
+  const styles = {
+    margin: 'auto',
+    transformOrigin: 'center center',
+    maxWidth: '100%',
+    maxHeight: '100%',
+  };
+  if (!paused) {
+    styles.animation = `${rotate} 1.6s linear infinite`;
+  }
+  return css(styles).toString();
+};
 
 const dash = css.keyframes({
   '0%': {
@@ -31,18 +41,24 @@ const dash = css.keyframes({
  * Styles for the rotating circle.
  * @param {string} color The color of the circle. Default color is "accent".
  * @param {string} strokeWidth The stroke width of the circle.
+ * @param {boolean} paused Animation should be paused.
  * @return {string} CSS class name.
  */
-const circle = (color, strokeWidth) => css({
-  animation: `${dash} 1.2s ease-in-out infinite`,
-  fill: 'none',
-  stroke: color,
-  strokeDasharray: '1, 200',
-  strokeDashoffset: 0,
-  strokeLinecap: 'round',
-  strokeMiterlimit: 10,
-  strokeWidth,
-}).toString();
+const circle = (color, strokeWidth, paused) => {
+  const styles = {
+    fill: 'none',
+    stroke: color,
+    strokeDasharray: '1, 200',
+    strokeDashoffset: 0,
+    strokeLinecap: 'round',
+    strokeMiterlimit: 10,
+    strokeWidth,
+  };
+  if (!paused) {
+    styles.animation = `${dash} 1.2s ease-in-out infinite`;
+  }
+  return css(styles).toString();
+};
 
 export default {
   spinner,
