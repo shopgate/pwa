@@ -60,6 +60,8 @@ const Pages = () => (
             <Route pattern={`${CART_PATH}`} component={routes.Cart} />
             <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />
+            <Route pattern={`${SEARCH_PATH}/filter`} component={routes.Filter} />
+            <Route pattern={`${SEARCH_PATH}/filter/:attribute`} component={routes.FilterAttribute} />
           </Router>
           <Portal name={APP_ROUTES} props={appRoutesProps} />
           {isDev && (

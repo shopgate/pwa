@@ -11,7 +11,7 @@ import FilterContent from './components/Content';
  */
 const Filter = ({ id, search }) => (
   <View>
-    {id && <FilterContent categoryId={id} s={search} />}
+    {(id || search) && <FilterContent categoryId={id} s={search} />}
   </View>
 );
 
