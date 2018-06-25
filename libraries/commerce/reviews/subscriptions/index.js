@@ -12,7 +12,13 @@ export default function product(subscribe) {
   }
 
   subscribe(shouldFetchReviews$, ({ action, dispatch }) => {
-    const { id, baseProductId } = action.productData;
-    dispatch(getProductReviews(baseProductId || id, 2));
+    if (action.productData) {
+      const { id, baseProductId } = action.productData;
+      dispatch(getProductReviews(baseProductId || id, 2));
+    }
+
+    if (action.review) {
+      dispatch(getProductReviews(action.review.productId, 2));
+    }
   });
 }

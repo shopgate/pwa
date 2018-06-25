@@ -32,12 +32,13 @@ export default function setup(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, async () => {
+  subscribe(appDidStart$, async ({ getState }) => {
     const clientInformationResponse = await getWebStorageEntry({ name: 'clientInformation' });
 
     const clientInformation = {
       type: get(clientInformationResponse, 'value.device.type', TYPE_PHONE),
       os: get(clientInformationResponse, 'value.device.os.platform', OS_ALL),
+      state: getState(),
     };
 
     // TODO: instantiate the UnifiedPlugin only if a native tracker is configured (FB, AppsFlyer)

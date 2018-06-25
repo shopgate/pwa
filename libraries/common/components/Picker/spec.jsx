@@ -22,6 +22,7 @@ describe('<Picker />', () => {
     },
   ];
   const mockOnChange = jest.fn();
+  const mockOnSelect = jest.fn();
 
   /**
    * The view component
@@ -36,6 +37,7 @@ describe('<Picker />', () => {
     renderComponent({
       items: mockItems,
       onChange: mockOnChange,
+      onSelect: mockOnSelect,
     });
 
     renderedElement.update();
@@ -72,7 +74,7 @@ describe('<Picker />', () => {
         jest.useFakeTimers();
 
         beforeEach(() => {
-          mockOnChange.mock.calls = [];
+          jest.clearAllMocks();
           renderedElement.find('li button').first().simulate('click');
           jest.runAllTimers();
         });
@@ -82,15 +84,20 @@ describe('<Picker />', () => {
         });
 
         it('should trigger onChange when the value changed', () => {
-          expect(mockOnChange).toBeCalled();
+          expect(mockOnChange).toHaveBeenCalledTimes(1);
         });
 
-        it('should not trigger onChange when the value did not change', () => {
+        it('should trigger onSelect when the value changed', () => {
+          expect(mockOnSelect).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not trigger onChange when the value did not change, but trigger onSelect', () => {
           renderedInstance.setState({ selectedIndex: 0 });
           renderedInstance.toggleOpenState(true);
-          renderedElement.find('li button').first().simulate('touchStart');
+          renderedElement.find('li button').first().simulate('click');
           jest.runAllTimers();
-          expect(mockOnChange.mock.calls.length).toBe(1);
+          expect(mockOnChange).toHaveBeenCalledTimes(1);
+          expect(mockOnSelect).toHaveBeenCalledTimes(2);
         });
       });
     });

@@ -1,18 +1,16 @@
-import { ACTION_PUSH } from '@virtuous/conductor/constants'; 
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import { navigate } from '../../action-creators/router';
 import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
 
 /**
- * Opens a DeepLink.
- * @param {Object} [payload={}] The deep link event payload.
- * @param {Function} dispatch The redux dispatch function.
- * @return {boolean} True if the parsed link handled the link.
+ * @param {Object} payload The link payload.
+ * @return {Function}
  */
-const handleLink = (payload = {}, dispatch) => {
+const handleLink = payload => (dispatch) => {
   const { link = null } = payload;
 
   if (!link) {
-    return false;
+    return;
   }
 
   if (link.startsWith(INDEX_PATH_DEEPLINK)) {
@@ -22,12 +20,10 @@ const handleLink = (payload = {}, dispatch) => {
      * but not open a real page. Additionally the history is reset.
      */
     // TODO: Reset the history here
-    // dispatch(resetHistory());
+    // Dispatch(resetHistory());
   }
 
   dispatch(navigate(ACTION_PUSH, link));
-
-  return true;
 };
 
 export default handleLink;

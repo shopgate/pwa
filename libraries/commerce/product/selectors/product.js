@@ -242,7 +242,7 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
  */
 export const getProductsResult = createSelector(
   state => state,
-  props => props,
+  (state, props) => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult

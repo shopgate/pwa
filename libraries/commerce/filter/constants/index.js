@@ -16,6 +16,7 @@ export const MERGE_TEMPORARY_FILTERS = 'MERGE_TEMPORARY_FILTERS';
 export const SET_TEMPORARY_FILTERS = 'SET_TEMPORARY_FILTERS';
 export const REMOVE_TEMPORARY_FILTER = 'REMOVE_TEMPORARY_FILTER';
 
+export const FILTER_TYPE_SINGLE_SELECT = 'single_select';
 export const FILTER_TYPE_MULTISELECT = 'multiselect';
 export const FILTER_TYPE_RANGE = 'range';
 
