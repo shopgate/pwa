@@ -6,8 +6,8 @@ import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/s
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = state => ({
-  productId: getCurrentBaseProductId(state),
+const mapStateToProps = (state, props) => ({
+  productId: getCurrentBaseProductId(state, props),
 });
 
 export default connect(mapStateToProps);

@@ -6,9 +6,11 @@ import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { mockedStateWithAll } from '@shopgate/pwa-common-commerce/reviews/mock';
 
+const mockedStore = configureStore();
 const mockedView = MockedView;
 jest.mock('Components/View', () => mockedView);
-const mockedStore = configureStore();
+jest.mock('Components/Reviews/components/Header', () => () => 'div');
+
 /**
  * Creates component
  * @return {ReactWrapper}
@@ -17,6 +19,7 @@ const createComponent = () => {
   /* eslint-disable global-require */
   const { UnwrappedReviews } = require('./index');
   /* eslint-enable global-require */
+
   return mount(
     <Provider store={mockedStore(mockedStateWithAll)}>
       <UnwrappedReviews id="foo" />
@@ -31,7 +34,6 @@ describe('<Reviews> page', () => {
     expect(component).toMatchSnapshot();
     expect(component.find('Reviews').exists()).toBe(true);
     expect(component.find('RatingStars').exists()).toBe(true);
-    expect(component.find('AverageRating').exists()).toBe(true);
     expect(component.find('LoadMore').exists()).toBe(true);
     expect(component.find('Review').length).toEqual(4);
   });

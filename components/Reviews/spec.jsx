@@ -12,6 +12,12 @@ import {
 
 const mockedStore = configureStore();
 
+const Header = function () {
+  return (<div />);
+};
+const mock = Header;
+jest.mock('Components/Reviews/components/Header', () => mock);
+
 beforeEach(() => {
   jest.resetModules();
 });
@@ -27,7 +33,7 @@ const createComponent = (mockedState) => {
   /* eslint-enable global-require */
   return mount(
     <Provider store={mockedStore(mockedState)}>
-      <Reviews />
+      <Reviews productId="foo" />
     </Provider>,
     mockRenderOptions
   );

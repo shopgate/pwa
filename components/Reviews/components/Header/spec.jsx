@@ -7,7 +7,7 @@ import {
   mockedStateWithoutReview,
   mockedStateWithAll,
 } from '@shopgate/pwa-common-commerce/reviews/mock';
-import Header from './index';
+import { UnwrappedHeader } from './index';
 
 const mockedStore = configureStore();
 
@@ -19,7 +19,7 @@ const mockedStore = configureStore();
  */
 const createComponent = (mockedState, props = {}) => mount(
   <Provider store={mockedStore(mockedState)}>
-    <Header {...props} />
+    <UnwrappedHeader {...props} />
   </Provider>,
   mockRenderOptions
 );
@@ -27,8 +27,9 @@ const createComponent = (mockedState, props = {}) => mount(
 describe('<Header />', () => {
   let header = null;
   it('should render empty', () => {
-    const { rating } = mockedStateWithoutReview.product.productsById.foo.productData;
-    header = createComponent(mockedStateWithoutReview, { rating });
+    const productId = 'foo';
+    const { rating } = mockedStateWithoutReview.product.productsById[productId].productData;
+    header = createComponent(mockedStateWithoutReview, { productId, rating });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
@@ -36,8 +37,9 @@ describe('<Header />', () => {
   });
 
   it('should render rating summary', () => {
-    const { rating } = mockedStateWithAll.product.productsById.foo.productData;
-    header = createComponent(mockedStateWithAll, { rating });
+    const productId = 'foo';
+    const { rating } = mockedStateWithAll.product.productsById[productId].productData;
+    header = createComponent(mockedStateWithAll, { productId, rating });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(rating.average);

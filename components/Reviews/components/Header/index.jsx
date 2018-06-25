@@ -26,7 +26,7 @@ const Header = ({ productId, rating, withTopGap }) => {
   if (!average) {
     return (
       <div className={styles.container}>
-        <AverageRating rating={rating} />
+        <AverageRating rating={rating} productId={productId} />
         <div className={styles.noReviews}>
           {appConfig.showWriteReview && (
             <Fragment>
@@ -41,7 +41,7 @@ const Header = ({ productId, rating, withTopGap }) => {
 
   return (
     <div className={containerClass} id="reviewsExcerpt">
-      <AverageRating rating={rating} />
+      <AverageRating rating={rating} productId={productId} />
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
           <span className={styles.averageRatingNumber}>
@@ -71,3 +71,5 @@ export default props => (
     {({ params }) => <Header {...props} productId={hex2bin(params.productId) || null} />}
   </RouteContext>
 );
+
+export { Header as UnwrappedHeader };

@@ -18,7 +18,7 @@ const mockedStore = configureStore();
 const createComponent = (mockedState) => {
   const Component = (
     <Provider store={mockedStore(mockedState)}>
-      <WriteReviewLink />
+      <WriteReviewLink productId="foo" />
     </Provider>
   );
   return mount(Component);
@@ -35,11 +35,5 @@ describe('<WriteReviewLink>', () => {
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
     expect(component.find('span').exists()).toBe(true);
-  });
-
-  it('should not render when current product is empty', () => {
-    component = createComponent(mockedStateProductEmpty);
-    expect(component).toMatchSnapshot();
-    expect(component.find('span').exists()).toBe(false);
   });
 });
