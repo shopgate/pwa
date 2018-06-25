@@ -1,18 +1,17 @@
-import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
-import { getCurrentCategoryId } from '../../../category/selectors';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 /**
  * Creates the filter params.
  * @param {Object} state The application state.
  * @return {Object}
  */
-const buildFilterParams = (state) => {
-  const categoryId = getCurrentCategoryId(state);
-  const searchPhrase = getSearchPhrase(state);
+const buildFilterParams = () => {
+  const { params, query } = getCurrentRoute();
 
   return {
-    ...categoryId && { categoryId },
-    ...searchPhrase && { searchPhrase },
+    ...params.categoryId && { categoryId: hex2bin(params.categoryId) },
+    ...query.s && { searchPhrase: query.s },
   };
 };
 

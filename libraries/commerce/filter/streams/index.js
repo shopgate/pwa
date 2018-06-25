@@ -5,10 +5,16 @@ import { SEARCH_PATH } from '../../search/constants';
 import { FILTER_PATH } from '../constants';
 
 export const filterWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`);
+  .filter(({ action }) => (
+    action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`
+    || action.route.pattern === `${SEARCH_PATH}${FILTER_PATH}`
+  ));
 
 export const filterWillLeave$ = routeWillLeave$
-  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`);
+  .filter(({ action }) => (
+    action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`
+    || action.route.pattern === `${SEARCH_PATH}${FILTER_PATH}`
+  ));
 
 export const filterableRoutesWillEnter$ = routeWillEnter$
   .filter(({ action }) => (
@@ -38,4 +44,7 @@ export const filterableRoutesWillLeave$ = routeWillLeave$
   ));
 
 export const attributeWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}/:attribute`);
+  .filter(({ action }) => (
+    action.route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}/:attribute`
+    || action.route.pattern === `${SEARCH_PATH}${FILTER_PATH}/:attribute`
+  ));
