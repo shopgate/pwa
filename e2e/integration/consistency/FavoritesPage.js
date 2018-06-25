@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import els from '../elements/de';
+import els from '../../elements/de';
 
 describe('AndroidGMDTest FavoritesPage', () => {
   it('it should check for favorites placeholder', () => {
