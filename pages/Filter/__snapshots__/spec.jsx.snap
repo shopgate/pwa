@@ -174,6 +174,25 @@ exports[`<Filter> page should render 1`] = `
               },
             ],
           },
+          Object {
+            "id": "Category",
+            "label": "Category",
+            "source": "factfinder",
+            "type": "single_select",
+            "url": "/filter/category",
+            "values": Array [
+              Object {
+                "hits": 1,
+                "id": "20",
+                "label": "20",
+              },
+              Object {
+                "hits": 1,
+                "id": "40",
+                "label": "40",
+              },
+            ],
+          },
         ]
       }
       mergeTemporaryFilters={[Function]}
@@ -329,6 +348,25 @@ exports[`<Filter> page should render 1`] = `
               "source": "attributes",
               "type": "multiselect",
               "url": "/filter/width",
+              "values": Array [
+                Object {
+                  "hits": 1,
+                  "id": "20",
+                  "label": "20",
+                },
+                Object {
+                  "hits": 1,
+                  "id": "40",
+                  "label": "40",
+                },
+              ],
+            },
+            Object {
+              "id": "Category",
+              "label": "Category",
+              "source": "factfinder",
+              "type": "single_select",
+              "url": "/filter/category",
               "values": Array [
                 Object {
                   "hits": 1,
@@ -1159,6 +1197,96 @@ exports[`<Filter> page should render 1`] = `
                                               className="css-1dqssvt"
                                             >
                                               Width
+                                            </div>
+                                          </Label>
+                                        </li>
+                                      </GridItem>
+                                    </ul>
+                                  </Grid>
+                                </div>
+                              </Link>
+                            </div>
+                          </ListItem>
+                        </li>
+                      </ListItem>
+                    </Item>
+                    <Item
+                      className={null}
+                      isSelected={false}
+                      key=".$Category"
+                    >
+                      <ListItem
+                        className="css-9hjfag null"
+                        isSelected={false}
+                      >
+                        <li
+                          className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                        >
+                          <ListItem
+                            filter={
+                              Object {
+                                "active": null,
+                                "id": "Category",
+                                "label": "Category",
+                                "source": "factfinder",
+                                "type": "single_select",
+                                "url": "/filter/category",
+                                "values": Array [
+                                  Object {
+                                    "hits": 1,
+                                    "id": "20",
+                                    "label": "20",
+                                  },
+                                  Object {
+                                    "hits": 1,
+                                    "id": "40",
+                                    "label": "40",
+                                  },
+                                ],
+                              }
+                            }
+                            key="Category"
+                          >
+                            <div
+                              className="css-tfp87"
+                              data-test-id="filterListItem"
+                            >
+                              <Link
+                                className=""
+                                disabled={false}
+                                href="/filter/category"
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-c6ki83 "
+                                  data-test-id="link: /filter/category"
+                                  onClick={[Function]}
+                                  role="link"
+                                >
+                                  <Grid
+                                    className=""
+                                    component="ul"
+                                    wrap={false}
+                                  >
+                                    <ul
+                                      className=" css-h7r55a"
+                                    >
+                                      <GridItem
+                                        className="css-n2trdm"
+                                        component="li"
+                                        grow={1}
+                                        shrink={0}
+                                      >
+                                        <li
+                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                        >
+                                          <Label
+                                            label="Category"
+                                          >
+                                            <div
+                                              className="css-1dqssvt"
+                                            >
+                                              Category
                                             </div>
                                           </Label>
                                         </li>

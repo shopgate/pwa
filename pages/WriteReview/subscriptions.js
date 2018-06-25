@@ -1,9 +1,6 @@
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
-
 import {
   requestReviewSubmit$,
   responseReviewSubmit$,
@@ -15,26 +12,21 @@ import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
+import { reviewsRoutesWillEnter$ } from './streams';
 
 /**
- * Review form subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function writeReview(subscribe) {
-  const reviewsRouteDidEnter$ = routeDidEnter(ITEM_PATH);
-
-  /**
-   * Gets triggered on entering the write review route.
-   */
-  subscribe(reviewsRouteDidEnter$, ({ dispatch, getState }) => {
+  subscribe(reviewsRoutesWillEnter$, ({ action, dispatch, getState }) => {
     const state = getState();
-    const productId = getCurrentBaseProductId(state);
+    const { productId } = action.route.params;
 
-    if (!state.user.login.isLoggedIn) {
+    if (!productId || !state.user.login.isLoggedIn) {
       return;
     }
-    // Only dispatch when review is not yet in store
-    dispatch(getUserReview(productId));
+
+    dispatch(getUserReview(hex2bin(productId)));
   });
 
   /**

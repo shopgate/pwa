@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from './components/AverageRating';
-// import WriteReviewLink from './components/WriteReviewLink';
+import WriteReviewLink from './components/WriteReviewLink';
 import styles from './style';
 
 /**
@@ -13,10 +15,11 @@ import styles from './style';
  * @param {bool} withTopGap Adds additional top gap when true.
  * @returns {JSX}
  */
-const Header = ({ rating, withTopGap }) => {
+const Header = ({ productId, rating, withTopGap }) => {
   if (!rating) {
     return null;
   }
+
   const { average = 0 } = rating;
   const containerClass = withTopGap ? styles.withTopGapContainer : styles.container;
 
@@ -25,8 +28,12 @@ const Header = ({ rating, withTopGap }) => {
       <div className={styles.container}>
         <AverageRating rating={rating} />
         <div className={styles.noReviews}>
-          {appConfig.showWriteReview && (<I18n.Text string="reviews.no_reviews" />)}
-          {/* appConfig.showWriteReview && (<WriteReviewLink />) */}
+          {appConfig.showWriteReview && (
+            <Fragment>
+              <I18n.Text string="reviews.no_reviews" />
+              <WriteReviewLink productId={productId} />
+            </Fragment>
+          )}
         </div>
       </div>
     );
@@ -41,20 +48,26 @@ const Header = ({ rating, withTopGap }) => {
             {average / RATING_SCALE_DIVISOR}
           </span>
         </I18n.Text>
-        {/* appConfig.showWriteReview && (<WriteReviewLink />) */}
+        {appConfig.showWriteReview && <WriteReviewLink productId={productId} />}
       </div>
     </div>
   );
 };
 
 Header.propTypes = {
+  productId: PropTypes.string,
   rating: PropTypes.shape(),
   withTopGap: PropTypes.bool,
 };
 
 Header.defaultProps = {
+  productId: null,
   rating: null,
   withTopGap: false,
 };
 
-export default Header;
+export default props => (
+  <RouteContext>
+    {({ params }) => <Header {...props} productId={hex2bin(params.productId) || null} />}
+  </RouteContext>
+);

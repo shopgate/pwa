@@ -11,6 +11,7 @@ import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipeline
 export default function app(subscribe) {
   subscribe(appWillStart$, () => {
     authRoutes.set('/checkout', '/login');
+    authRoutes.set('/item/:productId/write_review', '/login');
   });
 
   subscribe(appDidStart$, ({ dispatch }) => {
