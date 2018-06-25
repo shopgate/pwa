@@ -221,18 +221,19 @@ exports[`<Favorites> page Initial page should render an initial page with loadin
             >
               <IndicatorCircle
                 color="#5ccee3"
+                paused={true}
                 size={32}
                 strokeWidth={3}
               >
                 <svg
-                  className="css-17zev8s"
+                  className="css-1llkk3e"
                   height={32}
                   viewBox="25 25 50 50"
                   width={32}
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <circle
-                    className="css-o43ryf"
+                    className="css-1w8vil2"
                     cx="50"
                     cy="50"
                     r="20"
