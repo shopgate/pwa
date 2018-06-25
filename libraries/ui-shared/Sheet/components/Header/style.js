@@ -31,8 +31,13 @@ const title = css({
   alignSelf: 'center',
 }).toString();
 
+const shadow = css({
+  boxShadow: 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px',
+});
+
 export default {
   closeButton,
   closeIcon,
   title,
+  shadow,
 };

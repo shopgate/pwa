@@ -25,6 +25,16 @@ export const getProducts = createSelector(
 );
 
 /**
+ * Selects all products from the store.
+ * @param {Object} state The current application state.
+ * @return {Object} The collection of products.
+ */
+const getVariants = createSelector(
+  getProductState,
+  state => state.variantsByProductId
+);
+
+/**
  * Retrieves the current product or variant page from the store.
  * @param {Object} state The current application state.
  * @param {Object} props The current component props.
@@ -595,4 +605,21 @@ export const isProductOrderable = createSelector(
 export const hasProductData = createSelector(
   getProductData,
   productData => !!productData
+);
+
+/**
+ * Retrieves the product variant data.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductVariants = createSelector(
+  getVariants,
+  (state, props) => props.productId,
+  (variants, productId) => {
+    if (!productId || !variants[productId]) {
+      return null;
+    }
+
+    return variants[productId].variants;
+  }
 );

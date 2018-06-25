@@ -1,5 +1,6 @@
-import React, { Component, Children } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
 import Header from './components/Header';
@@ -39,7 +40,7 @@ class Sheet extends Component {
     children: null,
     duration: 300,
     isOpen: false,
-    onClose: null,
+    onClose: () => {},
     onOpen: () => {},
     title: '',
   };
@@ -51,31 +52,25 @@ class Sheet extends Component {
   constructor(props) {
     super(props);
 
-    this.mounted = false;
+    this.content = React.createRef();
+
     this.state = {
       isOpen: props.isOpen,
+      scrolled: false,
     };
   }
 
   /**
-   * Set flag when component mounts.
-   */
-  componentDidMount() {
-    this.mounted = true;
-  }
-
-  /**
    * Change isOpen state for new incoming props.
-   * @param {Object} nextProps Next Props
+   * @param {Object} nextProps The next component props.
    */
-  componentWillReceiveProps(nextProps) {
-    if (this.state.isOpen !== nextProps.isOpen) {
-      this.setState({ isOpen: nextProps.isOpen });
+  componentWillReceiveProps({ isOpen }) {
+    if (this.state.isOpen !== isOpen) {
+      this.setState({ isOpen });
     }
   }
 
   /**
-   * Only update when the state is changed.
    * @param {Object} nextProps The next component props.
    * @param {Object} nextState The next component state.
    * @returns {boolean}
@@ -83,7 +78,7 @@ class Sheet extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return (
       this.state.isOpen !== nextState.isOpen ||
-      nextProps.children !== this.props.children
+      this.state.scrolled !== nextState.scrolled
     );
   }
 
@@ -103,16 +98,31 @@ class Sheet extends Component {
    * Close the Sheet.
    */
   handleClose = () => {
-    this.setState({ isOpen: false });
+    this.props.onClose();
+
+    this.setState({
+      isOpen: false,
+      scrolled: false,
+    });
   };
+
+  /**
+   * Close the Sheet.
+   */
+  handleScroll = throttle(() => {
+    const scrolled = this.content.current.scrollTop !== 0;
+
+    if (this.state.scrolled !== scrolled) {
+      this.setState({ scrolled });
+    }
+  }, 10);
 
   /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    const child = Children.toArray(this.props.children)[0];
-    const processedChild = child ? (
+    const children = React.Children.map(this.props.children, child => (
       React.cloneElement(
         child,
         // Only add onClose prop to other components
@@ -120,7 +130,7 @@ class Sheet extends Component {
           { onClose: this.props.onClose }
         ) : {}
       )
-    ) : null;
+    ));
 
     return (
       <section>
@@ -128,14 +138,22 @@ class Sheet extends Component {
           className={styles.container}
           isOpen={this.state.isOpen}
           onOpen={this.props.onOpen}
-          onClose={this.props.onClose}
+          onClose={this.handleClose}
           animation={this.animationProps}
         >
           {this.props.title &&
-            <Sheet.Header title={this.props.title} onToggleClose={this.handleClose} />
+            <Sheet.Header
+              onToggleClose={this.handleClose}
+              shadow={this.state.scrolled}
+              title={this.props.title}
+            />
           }
-          <div className={`${styles.content} ${!this.props.backdrop && styles.shadow}`}>
-            {processedChild}
+          <div
+            ref={this.content}
+            onScroll={this.handleScroll}
+            className={`${styles.content} ${!this.props.backdrop && styles.shadow}`}
+          >
+            {children}
           </div>
         </Drawer>
         {this.props.backdrop &&
