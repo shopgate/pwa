@@ -17,6 +17,7 @@ const SearchSuggestion = ({ suggestion, onClick }) => (
       onClick={onClick}
       role="button"
       aria-hidden
+      data-test-id={`searchSuggestion ${suggestion}`}
     >
       {suggestion}
     </div>

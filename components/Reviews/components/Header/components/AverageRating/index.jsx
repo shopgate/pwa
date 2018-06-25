@@ -10,8 +10,7 @@ import { container } from './style';
 
 /**
  * The average rating and number of ratings for a product.
- * @param {Object} rating The rating values.
- * @param {String} productId The related product ID.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
 const AverageRating = ({ rating, productId }) => {
@@ -19,26 +18,23 @@ const AverageRating = ({ rating, productId }) => {
     return null;
   }
 
-  const { average = 0, count = 0 } = rating;
-  const publicProductId = bin2hex(productId);
-
   return (
     <Link
-      data-test-id="ratedStarsAverage"
       tagName="a"
-      href={`${ITEM_PATH}/${publicProductId}/write_review`}
+      href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`}
       className={container}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Review"
     >
-      <RatingStars value={average} display="large" />
-      <RatingCount count={count} />
+      <RatingStars value={rating.average} display="large" />
+      <RatingCount count={rating.count} />
     </Link >
   );
 };
 
 AverageRating.propTypes = {
+  productId: PropTypes.string,
   rating: PropTypes.shape(),
 };
 
@@ -47,6 +43,7 @@ AverageRating.defaultProps = {
     average: 0,
     count: 0,
   },
+  productId: null,
 };
 
 export default connect(AverageRating);

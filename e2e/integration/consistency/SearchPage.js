@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import els from '../elements/de';
+import els from '../../elements/de';
 
 describe('IOS11Test searchPage', () => {
   it('should check for search input', () => {
