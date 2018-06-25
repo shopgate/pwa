@@ -1,0 +1,37 @@
+import { css } from 'glamor';
+import colors from 'Styles/colors';
+
+const button = css({
+  background: '#f7f7f7',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  minHeight: 56,
+  outline: 0,
+  padding: '12px 16px',
+  '& ~ &': {
+    marginTop: 8,
+  },
+}).toString();
+
+const buttonDisabled = css({
+  color: colors.shade4,
+}).toString();
+
+const label = css({
+  fontSize: 12,
+  marginTop: -2,
+  marginBottom: 4,
+});
+
+const selection = css({
+  fontWeight: 500,
+  lineHeight: 1.125,
+});
+
+export default {
+  button,
+  buttonDisabled,
+  label,
+  selection,
+};

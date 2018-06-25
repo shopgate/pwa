@@ -7,7 +7,7 @@ import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import ImageSlider from '../ImageSlider';
 import Header from '../Header';
-// Import VariantSelects from './components/VariantSelects';
+import Characteristics from '../Characteristics';
 import Options from '../Options';
 import Description from '../Description';
 import Properties from '../Properties';
@@ -20,6 +20,7 @@ import ProductContext from '../../context';
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
+    characteristics: PropTypes.shape(),
     isBaseProduct: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
@@ -27,6 +28,7 @@ class ProductContent extends Component {
 
   static defaultProps = {
     baseProductId: null,
+    characteristics: null,
     isBaseProduct: null,
     productId: null,
     variantId: null,
@@ -39,9 +41,10 @@ class ProductContent extends Component {
     super(props);
 
     this.state = {
+      characteristics: {},
+      options: {},
       productId: props.isBaseProduct === true ? props.productId : null,
       variantId: props.isBaseProduct === false ? props.productId : null,
-      options: {},
     };
   }
 
@@ -51,7 +54,10 @@ class ProductContent extends Component {
   componentWillReceiveProps(nextProps) {
     const isBaseProduct = (nextProps.isBaseProduct === true);
 
+    // const characteristics = !this.props.characteristics ? nextProps.characteristics : this.props.characteristics;
+
     this.setState({
+      // characteristics,
       productId: (isBaseProduct) ? this.props.productId : nextProps.baseProductId,
       variantId: (isBaseProduct) ? null : this.props.productId,
     });
@@ -63,6 +69,7 @@ class ProductContent extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
+    return true;
     return (
       this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
@@ -85,6 +92,23 @@ class ProductContent extends Component {
   }
 
   /**
+   * Stores a selected characteristic in local state.
+   */
+  setCharacteristic = ({ id, value }) => {
+    // TODO: check if characteristic even changed.
+    if (false) {
+      return;
+    }
+
+    this.setState({
+      characteristics: {
+        ...this.state.characteristics,
+        [id]: value,
+      },
+    });
+  }
+
+  /**
    * @return {JSX}
    */
   render() {
@@ -94,8 +118,13 @@ class ProductContent extends Component {
 
     const id = this.state.variantId || this.state.productId;
 
+    const contextValue = {
+      ...this.state,
+      setCharacteristic: this.setCharacteristic,
+    };
+
     return (
-      <ProductContext.Provider value={this.state}>
+      <ProductContext.Provider value={contextValue}>
         <Fragment>
           {/* IMAGE */}
           <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
@@ -111,12 +140,15 @@ class ProductContent extends Component {
           </Portal>
           <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
-          {/* VARIANT SELECT */}
-          {/* <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
+          {/* CHARACTERISTICS */}
+          <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
           <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-            <VariantSelects />
+            <Characteristics
+              productId={this.props.productId}
+              selectedCharacteristics={this.state.characteristics}
+            />
           </Portal>
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} /> */}
+          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
 
           {/* OPTIONS */}
           <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />

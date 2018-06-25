@@ -113,7 +113,7 @@ class ViewContent extends Component {
       },
     });
 
-    this.element.dispatchEvent(swipeEvent);
+    this.element.current.dispatchEvent(swipeEvent);
   };
 
   /**
