@@ -99,6 +99,7 @@ exports[`<FilterBar> should render 1`] = `
                         >
                           <button
                             className="css-62xi8"
+                            data-test-id="filter.sort.default"
                             onClick={[Function]}
                           >
                             <span
@@ -188,6 +189,7 @@ exports[`<FilterBar> should render 1`] = `
                                   >
                                     <button
                                       className="css-soupjv"
+                                      data-test-id="filter.sort.most_popular"
                                       onClick={[Function]}
                                     >
                                       <Item>
@@ -219,6 +221,7 @@ exports[`<FilterBar> should render 1`] = `
                                   >
                                     <button
                                       className="css-soupjv"
+                                      data-test-id="filter.sort.price_desc"
                                       onClick={[Function]}
                                     >
                                       <Item>
@@ -250,6 +253,7 @@ exports[`<FilterBar> should render 1`] = `
                                   >
                                     <button
                                       className="css-soupjv"
+                                      data-test-id="filter.sort.price_asc"
                                       onClick={[Function]}
                                     >
                                       <Item>

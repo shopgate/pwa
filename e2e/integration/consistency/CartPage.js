@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
-import { clearProductFromCart } from '../helper/cart';
-import els from '../elements/de';
+import { clearProductFromCart } from '../../helper/cart';
+import els from '../../elements/de';
 
 describe('IOS11Test CartPage', () => {
   it('it should check for empty cart', () => {
@@ -12,7 +12,7 @@ describe('IOS11Test CartPage', () => {
       .should('be.visible');
   });
 
-  it('it should check for product in cart', () => {
+  it('should check for product in cart', () => {
     cy.visit('');
     cy.get(els.allProductCategory)
       .click();
