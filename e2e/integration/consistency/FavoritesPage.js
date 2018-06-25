@@ -2,7 +2,7 @@
 
 import els from '../../elements/de';
 
-describe('AndroidGMDTest FavoritesPage', () => {
+describe('IOS11Test FavoritesPage', () => {
   it('should check for favorites placeholder', () => {
     cy.visit('');
 
