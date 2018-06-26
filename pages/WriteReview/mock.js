@@ -141,7 +141,7 @@ export const mockedStateWithoutReview = {
     },
   },
   view: {
-    isLoading: false,
+    isLoading: {},
   },
   router: {
     routing: false,

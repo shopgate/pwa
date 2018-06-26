@@ -9,7 +9,7 @@ import {
   mockedStateWithReview,
   mockedStateWithUserReviewLoading,
   mockedStateWithoutProductData,
-} from './mock';
+} from '../../mock';
 
 const mockedStore = configureStore();
 
