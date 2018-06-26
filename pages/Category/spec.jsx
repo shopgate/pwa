@@ -68,7 +68,8 @@ const results = [
 ];
 /**
  * Creates component
- * @param {boolean} state State that would be used for store.
+ * @param {Object} state State that would be used for store.
+ * @param {Object} props Props used to initialize the component.
  * @return {ReactWrapper}
  */
 const createComponent = (state, props = { id: 'women' }) => {
