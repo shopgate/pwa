@@ -54,10 +54,7 @@ class ProductContent extends Component {
   componentWillReceiveProps(nextProps) {
     const isBaseProduct = (nextProps.isBaseProduct === true);
 
-    // const characteristics = !this.props.characteristics ? nextProps.characteristics : this.props.characteristics;
-
     this.setState({
-      // characteristics,
       productId: (isBaseProduct) ? this.props.productId : nextProps.baseProductId,
       variantId: (isBaseProduct) ? null : this.props.productId,
     });
@@ -69,12 +66,28 @@ class ProductContent extends Component {
    * @return {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
-    return true;
     return (
       this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
       || !isEqual(this.state.options, nextState.options)
+      || !isEqual(this.state.characteristics, nextState.characteristics)
     );
+  }
+
+  /**
+   * Stores a selected characteristic in local state.
+   */
+  setCharacteristic = ({ id, value }) => {
+    if (this.state.characteristics[id] === value) {
+      return;
+    }
+
+    this.setState({
+      characteristics: {
+        ...this.state.characteristics,
+        [id]: value,
+      },
+    });
   }
 
   /**
@@ -89,23 +102,6 @@ class ProductContent extends Component {
         [optionId]: value,
       },
     }));
-  }
-
-  /**
-   * Stores a selected characteristic in local state.
-   */
-  setCharacteristic = ({ id, value }) => {
-    // TODO: check if characteristic even changed.
-    if (false) {
-      return;
-    }
-
-    this.setState({
-      characteristics: {
-        ...this.state.characteristics,
-        [id]: value,
-      },
-    });
   }
 
   /**

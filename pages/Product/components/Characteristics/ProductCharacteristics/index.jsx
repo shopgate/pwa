@@ -18,14 +18,6 @@ class ProductCharacteristics extends Component {
     variants: null,
   }
 
-  constructor() {
-    super();
-
-    this.state.charactristics = {
-      
-    }
-  }
-
   // TODO: offset to function
   getSelectedValue = (charId) => {
     const { selectedCharacteristics } = this.props;
