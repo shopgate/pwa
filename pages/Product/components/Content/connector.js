@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import {
   getBaseProductId,
+  getProductVariants,
   getVariantId,
   isBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCharacteristics } from './selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -14,28 +16,9 @@ import {
 const mapStateToProps = (state, props) => ({
   isBaseProduct: isBaseProduct(state, props),
   baseProductId: getBaseProductId(state, props),
+  // characteristics: getCharacteristics(state, props),
+  variants: getProductVariants(state, props),
   variantId: getVariantId(state, props),
 });
 
-/**
- * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
- * @return {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.isBaseProduct && next.isBaseProduct) {
-    return false;
-  }
-
-  if (!prev.isBaseProduct && next.isBaseProduct) {
-    return false;
-  }
-
-  if (!prev.variantId && next.variantId) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);
