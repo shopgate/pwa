@@ -4,6 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import CategoryList from 'Components/CategoryList';
 import Products from '../Products';
+import Empty from '../Empty';
 import connect from './connector';
 
 /**
@@ -22,6 +23,12 @@ const CategoryContent = ({ categories, categoryId, hasProducts }) => (
       {hasProducts && <Products categoryId={categoryId} />}
     </Portal>
     <Portal name={portals.PRODUCT_LIST_AFTER} props={{ categoryId }} />
+
+    <Empty
+      categoryId={categoryId}
+      headlineText="category.no_result.heading"
+      bodyText="category.no_result.body"
+    />
   </Fragment>
 );
 
