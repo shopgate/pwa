@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 /**
  * Mocked AddToCartButton.
  * @type {MockedAddToCartButton}
+ * @deprecated
  */
 // eslint-disable-next-line react/prefer-stateless-function
 export const MockedAddToCartButton = class extends Component {
