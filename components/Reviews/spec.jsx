@@ -33,7 +33,7 @@ const createComponent = (mockedState) => {
   );
 };
 
-describe.skip('<Reviews />', () => {
+describe('<Reviews />', () => {
   let component = null;
 
   it('should render when no reviews and rating given', () => {
