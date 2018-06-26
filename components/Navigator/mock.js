@@ -31,6 +31,7 @@ export const defaultState = {
     showIconShadow: false,
     showProgressBar: true,
     viewTracking: true,
+    navDrawerActive: false,
   },
   router,
   view: {

@@ -22,7 +22,7 @@ class CartButton extends Component {
   };
 
   static defaultProps = {
-    openCart: () => {}
+    openCart: () => {},
   };
 
   /**
@@ -93,3 +93,5 @@ class CartButton extends Component {
 }
 
 export default connect(CartButton);
+
+export { CartButton as UnwrappedCartButton };
