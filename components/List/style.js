@@ -3,20 +3,20 @@ import colors from 'Styles/colors';
 
 const gap = 20;
 
+const container = css({
+  margin: `0 ${gap}px`,
+  borderBottom: `0.5px ${colors.dividers} solid`,
+}).toString();
+
 const item = css({
-  marginLeft: gap,
-  marginRight: gap,
+  position: 'relative',
   borderTop: `0.5px ${colors.dividers} solid`,
-  ':last-child': {
-    borderBottom: `0.5px ${colors.dividers} solid`,
+  ':empty': {
+    borderTop: 'none',
   },
 }).toString();
 
-const innerContainer = css({
-  position: 'relative',
-}).toString();
-
 export default {
+  container,
   item,
-  innerContainer,
 };
