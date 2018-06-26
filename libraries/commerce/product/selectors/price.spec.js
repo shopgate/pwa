@@ -22,7 +22,7 @@ import {
   productWithVariants,
   productWithSelectedVariant,
   productWithVariantsAndOptions,
-} from './price.mock';
+} from './../mock';
 
 describe('Product.Price selectors', () => {
   describe('Simple data selectors', () => {
