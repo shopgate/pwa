@@ -5,7 +5,6 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
-import styles from './style';
 
 /**
  * The checkout button component.
@@ -15,8 +14,7 @@ const CheckoutButton = ({ isActive }) => (
   <Link href={CHECKOUT_PATH} disabled={!isActive}>
     <RippleButton
       flat={false}
-      type="secondary"
-      rippleClassName={styles.checkoutButton}
+      type="checkout"
     >
       <I18n.Text string="cart.checkout" />
     </RippleButton>
