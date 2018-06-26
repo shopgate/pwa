@@ -9,6 +9,11 @@ const options = {
 
 const buttonSize = 40;
 const iconSize = 20;
+const useCtaColors = (themeConfig.colors.ctaPrimary && themeConfig.colors.ctaPrimaryContrast);
+const ctaPrimary = useCtaColors ? themeConfig.colors.ctaPrimary : themeConfig.colors.primary;
+const ctaPrimaryContrast = useCtaColors
+  ? themeConfig.colors.ctaPrimaryContrast
+  : themeConfig.colors.primaryContrast;
 
 /**
  * Keyframe animations to create spring animation.
@@ -100,16 +105,16 @@ const buttonWrapperNoShadow = (bSize, iSize) => css({
  * Styling that is applied to the button when cart icon is shown.
  */
 const buttonReady = css({
-  background: themeConfig.colors.primary,
-  color: themeConfig.colors.primaryContrast,
+  background: ctaPrimary,
+  color: ctaPrimaryContrast,
 }).toString();
 
 /**
  * Styling that is applied to the button when checkmark is shown.
  */
 const buttonSuccess = css({
-  background: themeConfig.colors.primaryContrast,
-  color: themeConfig.colors.primary,
+  background: ctaPrimaryContrast,
+  color: ctaPrimary,
 }).toString();
 
 /**
@@ -117,7 +122,7 @@ const buttonSuccess = css({
  */
 const buttonDisabled = css({
   background: themeConfig.colors.shade5,
-  color: themeConfig.colors.primaryContrast,
+  color: ctaPrimaryContrast,
   boxShadow: '0 3px 4px rgba(0, 0, 0, 0.13)',
 }).toString();
 
