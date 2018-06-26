@@ -8,6 +8,7 @@ const buttonTypes = [
   'regular',
   'primary',
   'secondary',
+  'checkout',
 ];
 
 /**
@@ -47,6 +48,8 @@ class Button extends Component {
       case 'regular':
         return styles.regular(disabled);
       default:
+      case 'checkout':
+        return styles.checkout(disabled, flat);
       case 'primary':
         return styles.primary(disabled, flat);
       case 'secondary':
