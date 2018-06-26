@@ -52,6 +52,7 @@ clean:
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
 		rm -rf ./node_modules/
+		rm -rf ./.cache-loader/
 		lerna bootstrap
 
 # Lerna change all the version numbers.

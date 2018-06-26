@@ -31,8 +31,7 @@ const handlePushNotification = (payload = {}) => (dispatch) => {
       .dispatch();
   }
 
-  handleLink({ link }, dispatch);
-
+  dispatch(handleLink(payload));
   dispatch(openPushNotification(notificationId, link));
 };
 
