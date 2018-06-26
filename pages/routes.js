@@ -70,7 +70,7 @@ export const Login = Loadable({
 //   Loading: () => null,
 // });
 
-// Export const WriteReview = Loadable({
-//   Loader: () => import('./WriteReview'),
-//   Loading: () => null,
-// });
+export const WriteReview = Loadable({
+  loader: () => import('./WriteReview'),
+  loading: () => null,
+});

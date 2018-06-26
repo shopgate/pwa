@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import els from '../elements/de';
+import els from '../../elements/de';
 
 describe('AndroidGMDTest CategoryPage', () => {
   it('should check title', () => {
