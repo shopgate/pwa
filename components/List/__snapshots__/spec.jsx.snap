@@ -5,21 +5,21 @@ exports[`<List /> should not render invalid children 1`] = `
   className=""
 >
   <List
-    className=""
+    className="css-1tmmo7v"
   >
     <ul
-      className="css-gkw1j5 "
+      className="css-gkw1j5 css-1tmmo7v"
     >
       <ListItem
-        className="css-1can6k9"
+        className={null}
         isSelected={false}
         key="child-0/.0"
       >
         <li
-          className="css-1p5q8vq css-1can6k9 css-16gj3o1"
+          className="css-1p5q8vq css-16gj3o1"
         >
           <div
-            className="css-13azwyo"
+            className="css-15cnm0c"
           >
             <Item
               className={null}
@@ -85,21 +85,21 @@ exports[`<List /> should render with two children 1`] = `
   className=""
 >
   <List
-    className=""
+    className="css-1tmmo7v"
   >
     <ul
-      className="css-gkw1j5 "
+      className="css-gkw1j5 css-1tmmo7v"
     >
       <ListItem
-        className="css-1can6k9"
+        className={null}
         isSelected={false}
         key="child-0/.0"
       >
         <li
-          className="css-1p5q8vq css-1can6k9 css-16gj3o1"
+          className="css-1p5q8vq css-16gj3o1"
         >
           <div
-            className="css-13azwyo"
+            className="css-15cnm0c"
           >
             <Item
               className={null}
@@ -150,15 +150,15 @@ exports[`<List /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="css-1can6k9"
+        className={null}
         isSelected={false}
         key="child-1/.1"
       >
         <li
-          className="css-1p5q8vq css-1can6k9 css-16gj3o1"
+          className="css-1p5q8vq css-16gj3o1"
         >
           <div
-            className="css-13azwyo"
+            className="css-15cnm0c"
           >
             <Item
               className={null}
