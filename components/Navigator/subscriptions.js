@@ -38,6 +38,7 @@ export default function navigator(subscribe) {
   subscribe(searchRouteDidEnter$, ({ dispatch, getState }) => {
     const state = getState();
 
+    console.warn(state.navigator.searchPhrase);
     // If search input is empty, set it to the value of the search query param.
     if (!state.navigator.searchPhrase) {
       dispatch(setSearchPhrase(getSearchPhrase(state)));

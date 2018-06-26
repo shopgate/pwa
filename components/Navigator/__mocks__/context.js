@@ -1,6 +1,6 @@
 import React from 'react';
 
-const defaultContext = {
+export const defaultContext = {
   searchField: false,
   toggleSearchField: jest.fn(),
   searchQuery: 'shirt',

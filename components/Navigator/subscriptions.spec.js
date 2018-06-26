@@ -93,7 +93,7 @@ describe('Navigator subscriptions', () => {
         ...defaultState,
         navigator: {
           ...defaultState.navigator,
-          searchPhrase: 'Shirt',
+          searchPhrase: 'Shirt red',
         },
       };
 
@@ -109,6 +109,7 @@ describe('Navigator subscriptions', () => {
         ...defaultState,
         navigator: {
           ...defaultState.navigator,
+          showSearch: false,
           showCartIcon: false,
         },
         cart: {
@@ -126,11 +127,6 @@ describe('Navigator subscriptions', () => {
     it('should hide cart icon and disable search', () => {
       const state = {
         ...defaultState,
-        ...defaultState,
-        navigator: {
-          ...defaultState.navigator,
-          showSearch: true,
-        },
         cart: {
           items: [{ type: 'product', quantity: 1 }],
           productPendingCount: 0,
