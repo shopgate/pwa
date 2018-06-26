@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setCategoryViewMode } from 'Pages/Category/action-creators';
+import { setCategoryViewMode } from './action-creators';
 
 /**
  * Maps the contents of the state to the component props.

@@ -30,7 +30,7 @@ const createComponent = (state) => {
   );
 };
 
-describe('<ProductVariants />', () => {
+describe.skip('<ProductVariants />', () => {
   it('shouldn\'t render without variants', () => {
     const state = cloneDeep(mockData.mockedState);
     state.product.variantsByProductId = {};

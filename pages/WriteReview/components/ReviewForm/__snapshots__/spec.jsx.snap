@@ -14,6 +14,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -41,6 +42,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -312,11 +314,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -352,11 +350,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -475,11 +469,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -514,11 +504,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -637,11 +623,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -676,11 +658,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -797,11 +775,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -869,6 +843,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -921,6 +896,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -975,6 +951,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -1452,11 +1429,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -1492,11 +1465,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -1615,11 +1584,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -1654,11 +1619,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -1777,11 +1738,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -1816,11 +1773,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -1937,11 +1890,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -2009,6 +1958,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -2061,6 +2011,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -2538,11 +2489,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -2578,11 +2525,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -2701,11 +2644,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -2740,11 +2679,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -2863,11 +2798,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -2902,11 +2833,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -3023,11 +2950,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -3095,6 +3018,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -3147,6 +3071,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -3624,11 +3549,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -3664,11 +3585,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -3787,11 +3704,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -3826,11 +3739,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -3949,11 +3858,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -3988,11 +3893,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -4182,6 +4083,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -4234,6 +4136,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -4711,11 +4614,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -4751,11 +4650,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -4874,11 +4769,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -4913,11 +4804,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -5036,11 +4923,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -5075,11 +4958,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -5269,6 +5148,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -5321,6 +5201,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -5798,11 +5679,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className=""
                       params={Object {}}
                       string=""
-                    >
-                      <span
-                        className=""
-                      />
-                    </Translate>
+                    />
                   </div>
                 </ErrorText>
               </span>
@@ -5838,11 +5715,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -5961,11 +5834,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -6000,11 +5869,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -6123,11 +5988,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -6162,11 +6023,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -6283,11 +6140,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -6355,6 +6208,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}
@@ -6407,6 +6261,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
   }
 >
   <Connect(ReviewForm)
+    productId="foo"
     submit={[Function]}
   >
     <ReviewForm
@@ -6720,11 +6575,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -6883,11 +6734,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -7006,11 +6853,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -7045,11 +6888,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </Hint>
               <Label
@@ -7166,11 +7005,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     className=""
                     params={Object {}}
                     string=""
-                  >
-                    <span
-                      className=""
-                    />
-                  </Translate>
+                  />
                 </div>
               </ErrorText>
             </div>
@@ -7238,6 +7073,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           color="#000"
                           disabled={false}
                           fill={true}
+                          onClick={[Function]}
                           onComplete={[Function]}
                           overflow={false}
                           size={null}

@@ -3,6 +3,7 @@
 exports[`<ProductDescription /> should not render if no data is available 1`] = `
 <Description
   html={null}
+  navigate={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -96,6 +97,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
 exports[`<ProductDescription /> should render description if data is available 1`] = `
 <Description
   html="<h1>foo</h1>"
+  navigate={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -138,6 +140,7 @@ exports[`<ProductDescription /> should render description if data is available 1
           decode={false}
           settings={
             Object {
+              "handleClick": [Function],
               "html": "<h1>foo</h1>",
             }
           }

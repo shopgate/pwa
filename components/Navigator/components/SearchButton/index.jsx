@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MagnifierIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
 import Ripple from '@shopgate/pwa-ui-shared/Ripple';
-import NavigatorContext from '../../context';
+import { NavigatorContext } from '../../context';
 import styles from './style';
 
 /**
@@ -54,3 +54,5 @@ export default () => (
     )}
   </NavigatorContext.Consumer>
 );
+
+export { SearchButton as UnwrappedSearchButton };

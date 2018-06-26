@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import NavigatorContext from '../../../../context';
+import { NavigatorContext } from '../../../../context';
 import styles from './style';
 import transition from './transition';
 
@@ -29,7 +29,7 @@ class NavigatorSearch extends Component {
     this.inputField = React.createRef();
 
     this.state = {
-      value: '',
+      value: props.query,
     };
   }
 
@@ -48,6 +48,9 @@ class NavigatorSearch extends Component {
     }
   }
 
+  /**
+   * Marks the whole input on focus.
+   */
   handleFocus = () => {
     this.inputField.current.selectionStart = 0;
     this.inputField.current.selectionEnd = this.state.value.length;
@@ -55,12 +58,17 @@ class NavigatorSearch extends Component {
 
   /**
    * Handles blur events on the input element.
+   * @param {SyntheticEvent} event A click event.
    */
   disableField = (event) => {
     event.preventDefault();
     this.props.toggleSearchField(false);
   };
 
+  /**
+   * Handles input events on the input element.
+   * @param {SyntheticEvent} event An input event.
+   */
   handleInput = (event) => {
     event.preventDefault();
     this.props.setSearchQuery(event.target.value);
@@ -85,7 +93,6 @@ class NavigatorSearch extends Component {
             >
               <input
                 className={styles.input}
-                onBlur={this.handleBlur}
                 onChange={this.handleInput}
                 onFocus={this.handleFocus}
                 placeholder={placeholder}

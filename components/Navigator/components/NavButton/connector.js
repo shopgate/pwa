@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import toggleNavDrawer from '../../actions/toggleNavDrawer';
+import { isIconShadowShowing } from './../../selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -7,7 +8,7 @@ import toggleNavDrawer from '../../actions/toggleNavDrawer';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  showIconShadow: state.navigator.showIconShadow,
+  showIconShadow: isIconShadowShowing(state),
 });
 
 /**

@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RootCategory> page should render 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(shouldUpdate(RootCategory))>
+    <shouldUpdate(RootCategory)
+      categories={
+        Array [
+          Object {
+            "children": Array [],
+            "childrenCount": 0,
+            "childrenSort": "import",
+            "description": "",
+            "expires": 9999999999999,
+            "externalUrl": "http://material-fashion.myshopify.com/collections/men",
+            "id": "men",
+            "imageUrl": "https://shopgate-public.s3.amazonaws.com/categories/24453/1346609@2x.jpg",
+            "isFetching": false,
+            "name": "Men",
+            "parent": Object {
+              "id": null,
+              "name": "Default- category",
+            },
+            "path": "Men",
+            "productCount": 6,
+            "sort": 0,
+          },
+          Object {
+            "children": Array [],
+            "childrenCount": 1,
+            "childrenSort": "import",
+            "description": "",
+            "expires": 9999999999999,
+            "externalUrl": "http://material-fashion.myshopify.com/collections/women",
+            "id": "women",
+            "imageUrl": "https://shopgate-public.s3.amazonaws.com/categories/24453/1346610@2x.jpg",
+            "isFetching": false,
+            "name": "Women",
+            "parent": Object {
+              "id": null,
+              "name": "Default- category",
+            },
+            "path": "Women",
+            "productCount": 6,
+            "sort": 0,
+          },
+        ]
+      }
+      dispatch={[Function]}
+    >
+      <RootCategory
+        categories={
+          Array [
+            Object {
+              "children": Array [],
+              "childrenCount": 0,
+              "childrenSort": "import",
+              "description": "",
+              "expires": 9999999999999,
+              "externalUrl": "http://material-fashion.myshopify.com/collections/men",
+              "id": "men",
+              "imageUrl": "https://shopgate-public.s3.amazonaws.com/categories/24453/1346609@2x.jpg",
+              "isFetching": false,
+              "name": "Men",
+              "parent": Object {
+                "id": null,
+                "name": "Default- category",
+              },
+              "path": "Men",
+              "productCount": 6,
+              "sort": 0,
+            },
+            Object {
+              "children": Array [],
+              "childrenCount": 1,
+              "childrenSort": "import",
+              "description": "",
+              "expires": 9999999999999,
+              "externalUrl": "http://material-fashion.myshopify.com/collections/women",
+              "id": "women",
+              "imageUrl": "https://shopgate-public.s3.amazonaws.com/categories/24453/1346610@2x.jpg",
+              "isFetching": false,
+              "name": "Women",
+              "parent": Object {
+                "id": null,
+                "name": "Default- category",
+              },
+              "path": "Women",
+              "productCount": 6,
+              "sort": 0,
+            },
+          ]
+        }
+        dispatch={[Function]}
+      >
+        <MockedView>
+          <div>
+            <CategoryList
+              categories={
+                Array [
+                  Object {
+                    "children": Array [],
+                    "childrenCount": 0,
+                    "childrenSort": "import",
+                    "description": "",
+                    "expires": 9999999999999,
+                    "externalUrl": "http://material-fashion.myshopify.com/collections/men",
+                    "id": "men",
+                    "imageUrl": "https://shopgate-public.s3.amazonaws.com/categories/24453/1346609@2x.jpg",
+                    "isFetching": false,
+                    "name": "Men",
+                    "parent": Object {
+                      "id": null,
+                      "name": "Default- category",
+                    },
+                    "path": "Men",
+                    "productCount": 6,
+                    "sort": 0,
+                  },
+                  Object {
+                    "children": Array [],
+                    "childrenCount": 1,
+                    "childrenSort": "import",
+                    "description": "",
+                    "expires": 9999999999999,
+                    "externalUrl": "http://material-fashion.myshopify.com/collections/women",
+                    "id": "women",
+                    "imageUrl": "https://shopgate-public.s3.amazonaws.com/categories/24453/1346610@2x.jpg",
+                    "isFetching": false,
+                    "name": "Women",
+                    "parent": Object {
+                      "id": null,
+                      "name": "Default- category",
+                    },
+                    "path": "Women",
+                    "productCount": 6,
+                    "sort": 0,
+                  },
+                ]
+              }
+            >
+              <List>
+                <List
+                  className=""
+                >
+                  <ul
+                    className="css-gkw1j5 "
+                  >
+                    <ListItem
+                      className="css-1brrprg css-1ym3l2n"
+                      isSelected={false}
+                      key="child-0/.$men"
+                    >
+                      <li
+                        className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                      >
+                        <div
+                          className="css-1nnz83b"
+                        >
+                          <Portal
+                            key="men"
+                            name="category.item"
+                            props={
+                              Object {
+                                "categoryId": "men",
+                              }
+                            }
+                          >
+                            <Item
+                              className={null}
+                              image={null}
+                              isDisabled={false}
+                              isSelected={false}
+                              link="/category/6d656e"
+                              onClick={null}
+                              rightComponent={null}
+                              testId={null}
+                              title="Men"
+                            >
+                              <Glow
+                                className={null}
+                                color="#f7f7f7"
+                                styles={
+                                  Object {
+                                    "container": null,
+                                    "glow": null,
+                                  }
+                                }
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-13azwyo"
+                                  onTouchTap={[Function]}
+                                  style={null}
+                                >
+                                  <div
+                                    className="css-1bmd5dz"
+                                    style={Object {}}
+                                  />
+                                  <Connect(Link)
+                                    href="/category/6d656e"
+                                    onClick={null}
+                                    state={
+                                      Object {
+                                        "title": "Men",
+                                      }
+                                    }
+                                  >
+                                    <Link
+                                      className=""
+                                      disabled={false}
+                                      href="/category/6d656e"
+                                      navigate={[Function]}
+                                      onClick={null}
+                                      replace={false}
+                                      state={
+                                        Object {
+                                          "title": "Men",
+                                        }
+                                      }
+                                      tag="div"
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-c6ki83 "
+                                        onClick={[Function]}
+                                        role="link"
+                                      >
+                                        <Grid
+                                          className="css-1qcr7hz"
+                                          component="div"
+                                          wrap={false}
+                                        >
+                                          <div
+                                            className="css-1qcr7hz css-h7r55a"
+                                          >
+                                            <div
+                                              className="css-jwxytc"
+                                            />
+                                            <GridItem
+                                              className="css-10fxwvh"
+                                              component="div"
+                                              grow={1}
+                                              shrink={1}
+                                            >
+                                              <div
+                                                className="css-10fxwvh css-1gs0ko2"
+                                              >
+                                                Men
+                                              </div>
+                                            </GridItem>
+                                          </div>
+                                        </Grid>
+                                      </div>
+                                    </Link>
+                                  </Connect(Link)>
+                                </div>
+                              </Glow>
+                            </Item>
+                          </Portal>
+                        </div>
+                      </li>
+                    </ListItem>
+                    <ListItem
+                      className="css-1brrprg"
+                      isSelected={false}
+                      key="child-1/.$women"
+                    >
+                      <li
+                        className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                      >
+                        <div
+                          className="css-1nnz83b"
+                        >
+                          <Portal
+                            key="women"
+                            name="category.item"
+                            props={
+                              Object {
+                                "categoryId": "women",
+                              }
+                            }
+                          >
+                            <Item
+                              className={null}
+                              image={null}
+                              isDisabled={false}
+                              isSelected={false}
+                              link="/category/776f6d656e"
+                              onClick={null}
+                              rightComponent={null}
+                              testId={null}
+                              title="Women"
+                            >
+                              <Glow
+                                className={null}
+                                color="#f7f7f7"
+                                styles={
+                                  Object {
+                                    "container": null,
+                                    "glow": null,
+                                  }
+                                }
+                              >
+                                <div
+                                  aria-hidden={true}
+                                  className="css-13azwyo"
+                                  onTouchTap={[Function]}
+                                  style={null}
+                                >
+                                  <div
+                                    className="css-1bmd5dz"
+                                    style={Object {}}
+                                  />
+                                  <Connect(Link)
+                                    href="/category/776f6d656e"
+                                    onClick={null}
+                                    state={
+                                      Object {
+                                        "title": "Women",
+                                      }
+                                    }
+                                  >
+                                    <Link
+                                      className=""
+                                      disabled={false}
+                                      href="/category/776f6d656e"
+                                      navigate={[Function]}
+                                      onClick={null}
+                                      replace={false}
+                                      state={
+                                        Object {
+                                          "title": "Women",
+                                        }
+                                      }
+                                      tag="div"
+                                    >
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-c6ki83 "
+                                        onClick={[Function]}
+                                        role="link"
+                                      >
+                                        <Grid
+                                          className="css-1qcr7hz"
+                                          component="div"
+                                          wrap={false}
+                                        >
+                                          <div
+                                            className="css-1qcr7hz css-h7r55a"
+                                          >
+                                            <div
+                                              className="css-jwxytc"
+                                            />
+                                            <GridItem
+                                              className="css-10fxwvh"
+                                              component="div"
+                                              grow={1}
+                                              shrink={1}
+                                            >
+                                              <div
+                                                className="css-10fxwvh css-1gs0ko2"
+                                              >
+                                                Women
+                                              </div>
+                                            </GridItem>
+                                          </div>
+                                        </Grid>
+                                      </div>
+                                    </Link>
+                                  </Connect(Link)>
+                                </div>
+                              </Glow>
+                            </Item>
+                          </Portal>
+                        </div>
+                      </li>
+                    </ListItem>
+                  </ul>
+                </List>
+              </List>
+            </CategoryList>
+          </div>
+        </MockedView>
+      </RootCategory>
+    </shouldUpdate(RootCategory)>
+  </Connect(shouldUpdate(RootCategory))>
+</Provider>
+`;
+
+exports[`<RootCategory> page should render empty 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(shouldUpdate(RootCategory))>
+    <shouldUpdate(RootCategory)
+      categories={null}
+      dispatch={[Function]}
+    >
+      <RootCategory
+        categories={null}
+        dispatch={[Function]}
+      >
+        <MockedView>
+          <div />
+        </MockedView>
+      </RootCategory>
+    </shouldUpdate(RootCategory)>
+  </Connect(shouldUpdate(RootCategory))>
+</Provider>
+`;

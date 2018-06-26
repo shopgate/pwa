@@ -15,7 +15,7 @@ import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
 // Import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
-import NavigatorContext from './context';
+import { NavigatorContext } from './context';
 import styles from './style';
 
 /**

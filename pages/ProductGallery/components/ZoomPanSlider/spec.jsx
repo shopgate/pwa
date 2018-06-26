@@ -1,7 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import Image from '@shopgate/pwa-common/components/Image';
 import ZoomPanSlider from './index';
+import { MockedComponent } from './../../mock';
+
+const mockedHammer = MockedComponent;
+jest.mock('@shopgate/react-hammerjs/src/Hammer', () => mockedHammer);
 
 /**
  * Test element component.
@@ -13,7 +17,7 @@ describe('<ZoomPanSlider />', () => {
   it('renders with children', () => {
     const numChildren = 5;
 
-    const wrapper = mount((
+    const wrapper = shallow((
       <ZoomPanSlider>
         <TestElement />
         <TestElement />
@@ -22,7 +26,6 @@ describe('<ZoomPanSlider />', () => {
         <TestElement />
       </ZoomPanSlider>
     ));
-
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(TestElement).length).toBe(numChildren);
   });
@@ -30,7 +33,7 @@ describe('<ZoomPanSlider />', () => {
   it('wraps children in zoom containers', () => {
     const numChildren = 2;
 
-    const wrapper = mount((
+    const wrapper = shallow((
       <ZoomPanSlider>
         <TestElement />
         <TestElement />

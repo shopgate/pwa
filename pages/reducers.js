@@ -18,7 +18,7 @@ import router from '@virtuous/redux-conductor/reducer';
 import navigator from 'Components/Navigator/reducer';
 import extensions from 'Extensions/reducers';
 import general from 'Components/View/reducer';
-import categoryPage from 'Pages/Category/reducer';
+import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
 
 const reducers = combineReducers({
   cart,
@@ -38,7 +38,7 @@ const reducers = combineReducers({
   toast,
   ui: combineReducers({
     general,
-    categoryPage,
+    viewSwitch,
   }),
   url,
   user,

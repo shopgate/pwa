@@ -7,40 +7,23 @@ import ReviewForm from './components/ReviewForm';
 
 /**
  * The view that holds a review form.
+ * @param {string} productId The product id prop
+ * @return {JSX}
+ * @constructor
  */
-class WriteReview extends Component {
-  static propTypes = {
-    productId: PropTypes.string,
-  }
+const WriteReview = ({ productId }) => (
+  <View>
+    {productId && <ReviewForm productId={productId} />}
+  </View>
+);
 
-  static defaultProps = {
-    productId: null,
-  }
+WriteReview.propTypes = {
+  productId: PropTypes.string,
+};
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * Get view title.
-   */
-  get title() {
-    const { __ } = this.context.i18n();
-    return __('titles.reviews');
-  }
-
-  /**
-   * Render view
-   * @return {JSX}
-   */
-  render() {
-    return (
-      <View>
-        {this.props.productId && <ReviewForm productId={this.props.productId} />}
-      </View>
-    );
-  }
-}
+WriteReview.defaultProps = {
+  productId: null,
+};
 
 export default () => (
   <RouteContext.Consumer>
@@ -49,3 +32,5 @@ export default () => (
     )}
   </RouteContext.Consumer>
 );
+
+export { WriteReview as UnwrappedWriteReview };
