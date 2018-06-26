@@ -36,7 +36,7 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
         backdrop={false}
         duration={300}
         isOpen={true}
-        onClose={null}
+        onClose={[Function]}
         onOpen={[Function]}
         title=""
       >
@@ -52,7 +52,7 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
             }
             className="css-h69706"
             isOpen={true}
-            onClose={null}
+            onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
@@ -67,9 +67,11 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
             >
               <div
                 className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
                 <Content
                   key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
                 >
                   <div>
@@ -374,7 +376,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
         backdrop={false}
         duration={300}
         isOpen={true}
-        onClose={null}
+        onClose={[Function]}
         onOpen={[Function]}
         title=""
       >
@@ -390,7 +392,7 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
             }
             className="css-h69706"
             isOpen={true}
-            onClose={null}
+            onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
@@ -405,9 +407,11 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
             >
               <div
                 className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
                 <Content
                   key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
                 >
                   <div>
@@ -711,7 +715,7 @@ exports[`<PaymentBar /> should not be visible if prop isVisible is false 1`] = `
         backdrop={false}
         duration={300}
         isOpen={false}
-        onClose={null}
+        onClose={[Function]}
         onOpen={[Function]}
         title=""
       >
@@ -727,7 +731,7 @@ exports[`<PaymentBar /> should not be visible if prop isVisible is false 1`] = `
             }
             className="css-h69706"
             isOpen={false}
-            onClose={null}
+            onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           />
@@ -774,7 +778,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
         backdrop={false}
         duration={300}
         isOpen={true}
-        onClose={null}
+        onClose={[Function]}
         onOpen={[Function]}
         title=""
       >
@@ -790,7 +794,7 @@ exports[`<PaymentBar /> should render without any props 1`] = `
             }
             className="css-h69706"
             isOpen={true}
-            onClose={null}
+            onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
@@ -805,9 +809,11 @@ exports[`<PaymentBar /> should render without any props 1`] = `
             >
               <div
                 className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
                 <Content
                   key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
                 >
                   <div>
@@ -1111,7 +1117,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
         backdrop={false}
         duration={300}
         isOpen={true}
-        onClose={null}
+        onClose={[Function]}
         onOpen={[Function]}
         title=""
       >
@@ -1127,7 +1133,7 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
             }
             className="css-h69706"
             isOpen={true}
-            onClose={null}
+            onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
@@ -1142,9 +1148,11 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
             >
               <div
                 className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
                 <Content
                   key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
                 >
                   <div>
@@ -1448,7 +1456,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
         backdrop={false}
         duration={300}
         isOpen={true}
-        onClose={null}
+        onClose={[Function]}
         onOpen={[Function]}
         title=""
       >
@@ -1464,7 +1472,7 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
             }
             className="css-h69706"
             isOpen={true}
-            onClose={null}
+            onClose={[Function]}
             onDidClose={[Function]}
             onOpen={[Function]}
           >
@@ -1479,9 +1487,11 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
             >
               <div
                 className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
                 <Content
                   key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
                 >
                   <div>

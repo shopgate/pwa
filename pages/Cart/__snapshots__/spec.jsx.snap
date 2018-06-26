@@ -1657,7 +1657,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                 backdrop={false}
                 duration={300}
                 isOpen={true}
-                onClose={null}
+                onClose={[Function]}
                 onOpen={[Function]}
                 title=""
               >
@@ -1673,7 +1673,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                     }
                     className="css-h69706"
                     isOpen={true}
-                    onClose={null}
+                    onClose={[Function]}
                     onDidClose={[Function]}
                     onOpen={[Function]}
                   >
@@ -1688,14 +1688,17 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                     >
                       <div
                         className="css-1aon90l css-k5vpvg"
+                        onScroll={[Function]}
                       >
                         <SizeMe(Content)
                           key=".0"
+                          onClose={[Function]}
                           onSize={[Function]}
                         >
                           <SizeMeRenderer(Content)
                             disablePlaceholder={false}
                             explicitRef={[Function]}
+                            onClose={[Function]}
                             onSize={[Function]}
                             size={
                               Object {
@@ -2832,7 +2835,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                 backdrop={false}
                 duration={300}
                 isOpen={true}
-                onClose={null}
+                onClose={[Function]}
                 onOpen={[Function]}
                 title=""
               >
@@ -2848,7 +2851,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                     }
                     className="css-h69706"
                     isOpen={true}
-                    onClose={null}
+                    onClose={[Function]}
                     onDidClose={[Function]}
                     onOpen={[Function]}
                   >
@@ -2863,14 +2866,17 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                     >
                       <div
                         className="css-1aon90l css-k5vpvg"
+                        onScroll={[Function]}
                       >
                         <SizeMe(Content)
                           key=".0"
+                          onClose={[Function]}
                           onSize={[Function]}
                         >
                           <SizeMeRenderer(Content)
                             disablePlaceholder={false}
                             explicitRef={[Function]}
+                            onClose={[Function]}
                             onSize={[Function]}
                             size={
                               Object {
