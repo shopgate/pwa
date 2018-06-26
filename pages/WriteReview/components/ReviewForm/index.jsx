@@ -65,7 +65,6 @@ class ReviewForm extends Component {
     let stateUpdate = {
       productId: nextProps.productId,
     };
-    console.warn('props', nextProps);
 
     stateUpdate = {
       ...stateUpdate,
@@ -198,7 +197,6 @@ class ReviewForm extends Component {
      * Rate is a good indicator for that since it's the only property of review which is
      * required and has no default value.
      */
-    console.warn(this.props.isLoadingUserReview, this.state.rate);
     if (this.props.isLoadingUserReview && !this.state.rate) {
       return <LoadingIndicator />;
     }
