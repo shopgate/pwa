@@ -6,11 +6,11 @@ const button = css({
   padding: '16px 16px 16px 72px',
   textAlign: 'left',
   width: '100%',
-}).toString();
+});
 
-const buttonDisabled = css({
+const buttonDisabled = css(button, {
   color: colors.shade4,
-}).toString();
+});
 
 export default {
   button,

@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import classNames from 'classnames';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import List from 'Components/List';
-import styles from './style';
+import SheetItem from '../SheetItem';
 
 const portals = document.getElementById('portals');
 
 /**
- * 
+ * The characteristic sheet.
  */
 class CharacteristicSheet extends Component {
+  static propTypes = {
+    items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    label: PropTypes.string.isRequired,
+    open: PropTypes.bool.isRequired,
+    onSelect: PropTypes.func,
+  };
 
+  static defaultProps = {
+    onSelect() {},
+  };
+
+  /**
+   * @param {Object} event The event object.
+   */
   handleItemClick = (event) => {
     event.stopPropagation();
-    this.props.selectCharacteristic(event.target.value);
+    this.props.onSelect(event.target.value);
   }
 
   /**
-   * 
+   * @return {JSX}
    */
   render() {
     const { items, label, open } = this.props;
@@ -26,25 +39,9 @@ class CharacteristicSheet extends Component {
     const sheet = (
       <Sheet title={label} isOpen={open}>
         <List>
-          {items.map((item) => {
-            const classes = classNames(
-              styles.button,
-              { [styles.buttonDisabled]: !item.selectable }
-            );
-
-            const props = {
-              className: classes,
-              key: item.id,
-              value: item.id,
-              ...item.selectable && { onClick: this.handleItemClick },
-            };
-
-            return (
-              <button {...props}>
-                {item.label}
-              </button>
-            );
-          })}
+          {items.map(item => (
+            <SheetItem key={item.id} item={item} onClick={this.handleItemClick} />
+          ))}
         </List>
       </Sheet>
     );

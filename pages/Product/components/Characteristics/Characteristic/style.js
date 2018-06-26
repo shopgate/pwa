@@ -22,12 +22,12 @@ const label = css({
   fontSize: 12,
   marginTop: -2,
   marginBottom: 4,
-});
+}).toString();
 
 const selection = css({
   fontWeight: 500,
   lineHeight: 1.125,
-});
+}).toString();
 
 export default {
   button,

@@ -6,7 +6,7 @@ import Sheet from './components/Sheet';
 import ProductContext from '../../../context';
 
 /**
- * 
+ * A single characteristic.
  */
 class Characteristic extends Component {
   static propTypes = {
@@ -27,8 +27,7 @@ class Characteristic extends Component {
   };
 
   /**
-   * 
-   * @param {*} props 
+   * @param {Object} props  The component props.
    */
   constructor(props) {
     super(props);
@@ -39,9 +38,32 @@ class Characteristic extends Component {
   }
 
   /**
-   * 
+   * @return {string}
    */
-  handleButtonClick = () => {
+  get label() {
+    return this.props.label;
+  }
+
+  /**
+   * @param {string} defaultLabel The default button label.
+   * @return {string}
+   */
+  getButtonLabel = (defaultLabel) => {
+    if (!this.props.selected) {
+      return defaultLabel;
+    }
+
+    const value = this.props.values.find(val => val.id === this.props.selected);
+
+    return value.label;
+  }
+
+  /**
+   * @param {Object} event The event object.
+   */
+  handleButtonClick = (event) => {
+    event.preventDefault();
+
     if (this.props.disabled) {
       return;
     }
@@ -52,7 +74,7 @@ class Characteristic extends Component {
   }
 
   /**
-   * 
+   * @param {string} valueId The ID of the selected value.
    */
   handleItemSelection = (valueId) => {
     this.props.setCharacteristic({
@@ -65,39 +87,17 @@ class Characteristic extends Component {
     });
   }
 
-  findValueById = (value) => {
-    return value.id === this.props.selected;
-  }
-
-  getButtonLabel = (defaultLabel) => {
-    if (!this.props.selected) {
-      return defaultLabel;
-    }
-
-    const value = this.props.values.find(this.findValueById);
-
-    return value.label;
-  }
-
-  get label() {
-    return this.props.label.toLowerCase();
-  }
-
   /**
-   * 
+   * @return {JSX}
    */
   render() {
-    const { disabled, selected, values } = this.props;
-
     const { __ } = this.context.i18n();
-
+    const { disabled, selected, values } = this.props;
     const displayLabel = this.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
-
     const buttonLabel = this.getButtonLabel(translatedLabel);
-
     const classes = classNames(
-      [styles.button],
+      styles.button,
       { [styles.buttonDisabled]: disabled }
     );
 
@@ -111,7 +111,7 @@ class Characteristic extends Component {
           label={translatedLabel}
           open={this.state.sheet}
           items={values}
-          selectCharacteristic={this.handleItemSelection}
+          onSelect={this.handleItemSelection}
         />
       </Fragment>
     );
