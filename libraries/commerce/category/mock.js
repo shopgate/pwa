@@ -137,8 +137,61 @@ const uiState = {
   },
 };
 
+const emptyState = {
+  ...initialCategoryState,
+  category: {
+    ...initialCategoryState.category,
+    categoriesById: {
+      test: {
+        id: 'test',
+        name: 'test',
+        parent: {
+          id: 'women',
+          name: 'Women',
+        },
+        path: 'Default- category=>Women=>test',
+        description: '',
+        imageUrl: null,
+        externalUrl: '',
+        sort: 10001,
+        productCount: 0,
+        childrenSort: 'import',
+        childrenCount: 0,
+        children: [],
+        isFetching: false,
+        expires: 9999999999999,
+      },
+    },
+  },
+  product: {
+    resultsByHash: {},
+  },
+  filter: {
+    activeFilters: null,
+  },
+  router: {
+    ...routerState.router,
+    stack: [
+      ...routerState.router.stack,
+      {
+        id: '5a227cfd-c55a-4e9b-9deb-d2ee20154030',
+        params: {
+          categoryId: '74657374',
+        },
+        pathname: '/category/74657374',
+        pattern: '/category/:categoryId',
+        query: {},
+        state: {
+          title: 'test',
+        },
+      },
+    ],
+  },
+};
+
 export {
   initialCategoryState,
+  emptyState,
   categoryState,
   routerState,
   categoryRouteMock,
