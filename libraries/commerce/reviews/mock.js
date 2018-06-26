@@ -29,6 +29,17 @@ const reviewRouteMock = {
   state: {},
 };
 
+const writeReviewRouteMock = {
+  id: '24284d52-05b3-4da5-b035-6b23dc81b068',
+  params: {
+    productId: '666f6f',
+  },
+  pathname: '/item/666f6f/write_review',
+  pattern: '/item/:productId/write_review',
+  query: {},
+  state: {},
+};
+
 const mockedProduct = {
   id: 'foo',
   rating: {
@@ -129,6 +140,7 @@ const mockedStateWithoutReview = {
     reviewsById: {},
     reviewsByProductId: {},
     reviewsByHash: {},
+    userReviewsByProductId: {},
   },
   ui: {
     general: {},
@@ -166,5 +178,6 @@ export {
   mockedStateWithTwoReviews,
   mockedStateWithAll,
   reviewRouteMock,
+  writeReviewRouteMock,
   setMocks,
 };
