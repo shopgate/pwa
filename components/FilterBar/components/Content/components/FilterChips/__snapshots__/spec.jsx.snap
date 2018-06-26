@@ -73,11 +73,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="remove Single selection: SingleSelected"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="remove Single selection: SingleSelected"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -116,11 +116,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="Single selection: SingleSelected"
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="Single selection: SingleSelected"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -143,11 +143,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="remove MultiSelect: one"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="remove MultiSelect: one"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -186,11 +186,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="MultiSelect: one"
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="MultiSelect: one"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -213,11 +213,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="remove MultiSelect: two"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="remove MultiSelect: two"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -256,11 +256,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="MultiSelect: two"
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="MultiSelect: two"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -283,11 +283,11 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId="remove [object Object], — ,[object Object]"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id="remove [object Object], — ,[object Object]"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -326,11 +326,43 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Button"
+                    testId={
+                      Array [
+                        <FormatPrice
+                          className=""
+                          currency="EUR"
+                          fractions={false}
+                          price={0}
+                        />,
+                        " — ",
+                        <FormatPrice
+                          className=""
+                          currency="EUR"
+                          fractions={false}
+                          price={1}
+                        />,
+                      ]
+                    }
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="Button"
+                      data-test-id={
+                        Array [
+                          <FormatPrice
+                            className=""
+                            currency="EUR"
+                            fractions={false}
+                            price={0}
+                          />,
+                          " — ",
+                          <FormatPrice
+                            className=""
+                            currency="EUR"
+                            fractions={false}
+                            price={1}
+                          />,
+                        ]
+                      }
                       disabled={false}
                       onClick={[Function]}
                     >
