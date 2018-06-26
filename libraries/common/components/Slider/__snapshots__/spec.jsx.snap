@@ -53,7 +53,7 @@ exports[`<Slider /> renders with a fraction indicator 1`] = `
           className="swiper-wrapper"
         >
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s0"
           >
@@ -68,7 +68,7 @@ exports[`<Slider /> renders with a fraction indicator 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s1"
           >
@@ -83,7 +83,7 @@ exports[`<Slider /> renders with a fraction indicator 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s2"
           >
@@ -160,7 +160,7 @@ exports[`<Slider /> renders with bullet indicators 1`] = `
           className="swiper-wrapper"
         >
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s0"
           >
@@ -175,7 +175,7 @@ exports[`<Slider /> renders with bullet indicators 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s1"
           >
@@ -190,7 +190,7 @@ exports[`<Slider /> renders with bullet indicators 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s2"
           >
@@ -239,7 +239,7 @@ exports[`<Slider /> renders with children 1`] = `
     wrapperClass="swiper-wrapper"
   >
     <div
-      className="css-xwe5xi"
+      className="css-1l9a57c"
       data-test-id="Slider"
       key="s0"
     >
@@ -250,7 +250,7 @@ exports[`<Slider /> renders with children 1`] = `
       </SliderItem>
     </div>
     <div
-      className="css-xwe5xi"
+      className="css-1l9a57c"
       data-test-id="Slider"
       key="s1"
     >
@@ -261,7 +261,7 @@ exports[`<Slider /> renders with children 1`] = `
       </SliderItem>
     </div>
     <div
-      className="css-xwe5xi"
+      className="css-1l9a57c"
       data-test-id="Slider"
       key="s2"
     >
@@ -321,7 +321,7 @@ exports[`<Slider /> renders with controls 1`] = `
           className="swiper-wrapper"
         >
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s0"
           >
@@ -336,7 +336,7 @@ exports[`<Slider /> renders with controls 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s1"
           >
@@ -351,7 +351,7 @@ exports[`<Slider /> renders with controls 1`] = `
             </SliderItem>
           </div>
           <div
-            className="sg-swiper-slide css-xwe5xi "
+            className="sg-swiper-slide css-1l9a57c "
             data-test-id="Slider"
             key=".$s2"
           >
