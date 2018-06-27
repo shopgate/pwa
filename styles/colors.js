@@ -6,6 +6,7 @@ if (!(colors.cta && colors.ctaContrast) && (colors.primary && colors.primaryCont
   colors.cta = colors.primary;
   colors.ctaContrast = colors.primaryContrast;
 }
+
 export default {
   accent: '#5ccee3',
   accentContrast: '#fff',
