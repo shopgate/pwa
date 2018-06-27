@@ -139,11 +139,6 @@ const secondary = (disabled, flat) => {
  * @return {Object} An object of style definitions.
  */
 const checkout = (disabled, flat) => {
-  const useCtaColors = (themeConfig.colors.ctaPrimary && themeConfig.colors.ctaPrimaryContrast);
-  const ctaPrimary = useCtaColors ? themeConfig.colors.ctaPrimary : themeConfig.colors.primary;
-  const ctaPrimaryContrast = useCtaColors
-    ? themeConfig.colors.ctaPrimaryContrast
-    : themeConfig.colors.primary;
   if (!flat) {
     if (disabled) {
       // Regular disabled button style.
@@ -151,7 +146,7 @@ const checkout = (disabled, flat) => {
     }
 
     // Regular enabled button style.
-    return createButtonStyles(ctaPrimaryContrast, ctaPrimary);
+    return createButtonStyles(themeConfig.colors.ctaContrast, themeConfig.colors.cta);
   }
 
   if (disabled) {
@@ -160,7 +155,7 @@ const checkout = (disabled, flat) => {
   }
 
   // Flat enabled button style.
-  return createButtonStyles(ctaPrimary, null);
+  return createButtonStyles(themeConfig.colors.cta, null);
 };
 
 export default {
