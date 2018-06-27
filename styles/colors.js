@@ -2,10 +2,9 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const colors = (process.env.NODE_ENV !== 'test' && themeConfig && themeConfig.colors) ? themeConfig.colors : {};
 
-if (!(colors.ctaPrimary && colors.ctaPrimaryContrast)
-  && (colors.primary && colors.primaryContrast)) {
-  colors.ctaPrimary = colors.primary;
-  colors.ctaPrimaryContrast = colors.primaryContrast;
+if (!(colors.cta && colors.ctaContrast) && (colors.primary && colors.primaryContrast)) {
+  colors.cta = colors.primary;
+  colors.ctaContrast = colors.primaryContrast;
 }
 
 export default {
@@ -31,7 +30,7 @@ export default {
   success: '#35cc29',
   warning: '#ff9300',
   error: '#ff0000',
-  ctaPrimary: '#fa5400',
-  ctaPrimaryContrast: '#fff',
+  cta: '#fa5400',
+  ctaContrast: '#fff',
   ...colors,
 };
