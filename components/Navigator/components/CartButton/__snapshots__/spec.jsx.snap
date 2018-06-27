@@ -8,7 +8,7 @@ exports[`<CartButton /> should not be visible with prop visible set to false 1`]
   style={Object {}}
 >
   <Ripple
-    className="css-ugy6xl"
+    className="css-167cazg"
     color="#000"
     disabled={false}
     fill={true}
@@ -38,7 +38,7 @@ exports[`<CartButton /> should render with cartProductCount beeing set to 4 1`] 
   }
 >
   <Ripple
-    className="css-ugy6xl"
+    className="css-167cazg"
     color="#000"
     disabled={false}
     fill={true}
@@ -68,7 +68,7 @@ exports[`<CartButton /> should show '99+' if the cart amount is higher 1`] = `
   }
 >
   <Ripple
-    className="css-ugy6xl"
+    className="css-167cazg"
     color="#000"
     disabled={false}
     fill={true}
@@ -98,7 +98,7 @@ exports[`<CartButton /> should transition if it has cart amount 1`] = `
   }
 >
   <Ripple
-    className="css-ugy6xl"
+    className="css-167cazg"
     color="#000"
     disabled={false}
     fill={true}
