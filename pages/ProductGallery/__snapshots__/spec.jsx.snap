@@ -41,6 +41,7 @@ exports[`<ProductGallery> page should render 1`] = `
                   "state": "ok",
                   "text": "In stock",
                 },
+                "baseProductId": null,
                 "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
                 "flags": Object {
                   "hasChildren": false,

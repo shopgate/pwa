@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './style';
 import Sheet from './components/Sheet';
-import ProductContext from '../../../context';
+import { ProductContext } from '../../../context';
 
 /**
  * A single characteristic.

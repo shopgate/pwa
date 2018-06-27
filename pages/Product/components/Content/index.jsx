@@ -12,7 +12,7 @@ import Options from '../Options';
 import Description from '../Description';
 import Properties from '../Properties';
 import connect from './connector';
-import ProductContext from '../../context';
+import { ProductContext } from '../../context';
 
 /**
  * The product content component.
@@ -121,70 +121,68 @@ class ProductContent extends Component {
 
     return (
       <ProductContext.Provider value={contextValue}>
-        <Fragment>
-          {/* IMAGE */}
-          <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
-          <Portal name={portals.PRODUCT_IMAGE}>
-            <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
-          </Portal>
-          <Portal name={portals.PRODUCT_IMAGE_AFTER} />
+        {/* IMAGE */}
+        <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
+        <Portal name={portals.PRODUCT_IMAGE}>
+          <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
+        </Portal>
+        <Portal name={portals.PRODUCT_IMAGE_AFTER} />
 
-          {/* HEADER */}
-          <Portal name={portals.PRODUCT_HEADER_BEFORE} />
-          <Portal name={portals.PRODUCT_HEADER}>
-            <Header />
-          </Portal>
-          <Portal name={portals.PRODUCT_HEADER_AFTER} />
+        {/* HEADER */}
+        <Portal name={portals.PRODUCT_HEADER_BEFORE} />
+        <Portal name={portals.PRODUCT_HEADER} >
+          <Header />
+        </Portal>
+        <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
-          {/* CHARACTERISTICS */}
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
-          <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-            <Characteristics
-              productId={this.props.productId}
-              selectedCharacteristics={this.state.characteristics}
-            />
-          </Portal>
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
+        {/* CHARACTERISTICS */}
+        <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
+        <Portal name={portals.PRODUCT_VARIANT_SELECT}>
+          <Characteristics
+            productId={this.props.productId}
+            selectedCharacteristics={this.state.characteristics}
+          />
+        </Portal>
+        <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
 
-          {/* OPTIONS */}
-          <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
-          <Portal name={portals.PRODUCT_OPTIONS}>
-            <Options
-              productId={id}
-              storeSelection={this.storeOptionSelection}
-              currentOptions={this.state.options}
-            />
-          </Portal>
-          <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
+        {/* OPTIONS */}
+        <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
+        <Portal name={portals.PRODUCT_OPTIONS}>
+          <Options
+            productId={id}
+            storeSelection={this.storeOptionSelection}
+            currentOptions={this.state.options}
+          />
+        </Portal>
+        <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
 
-          {/* DESCRIPTION */}
-          <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
-          <Portal name={portals.PRODUCT_DESCRIPTION}>
-            <Description productId={id} />
-          </Portal>
-          <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
+        {/* DESCRIPTION */}
+        <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
+        <Portal name={portals.PRODUCT_DESCRIPTION}>
+          <Description productId={id} />
+        </Portal>
+        <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
-          {/* PROPERTIES */}
-          <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
-          <Portal name={portals.PRODUCT_PROPERTIES}>
-            <Properties productId={id} />
-          </Portal>
-          <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
+        {/* PROPERTIES */}
+        <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
+        <Portal name={portals.PRODUCT_PROPERTIES}>
+          <Properties productId={id} />
+        </Portal>
+        <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
 
-          {/* REVIEWS */}
-          <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
-          <Portal name={portals.PRODUCT_REVIEWS}>
-            <Reviews productId={this.state.productId} />
-          </Portal>
-          <Portal name={portals.PRODUCT_REVIEWS_AFTER} />
+        {/* REVIEWS */}
+        <Portal name={portals.PRODUCT_REVIEWS_BEFORE} />
+        <Portal name={portals.PRODUCT_REVIEWS}>
+          <Reviews productId={this.state.productId} />
+        </Portal>
+        <Portal name={portals.PRODUCT_REVIEWS_AFTER} />
 
-          {/* TAX DISCLAIMER */}
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
-            <TaxDisclaimer />
-          </Portal>
-          <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
-        </Fragment>
+        {/* TAX DISCLAIMER */}
+        <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
+        <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
+          <TaxDisclaimer />
+        </Portal>
+        <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
       </ProductContext.Provider>
     );
   }

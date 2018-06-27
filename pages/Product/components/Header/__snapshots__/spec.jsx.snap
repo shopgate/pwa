@@ -1,0 +1,596 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductHeader> should render 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <pure(ProductHeader)
+    productId="913"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <ProductHeader
+      productId="913"
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <Consumer>
+        <div
+          className="css-he61ou"
+        >
+          <Portal
+            name="product.ctas.before"
+            props={null}
+          />
+          <Portal
+            name="product.ctas"
+            props={null}
+          >
+            <Connect(CTAButtons)
+              options={Object {}}
+              productId={null}
+            >
+              <CTAButtons
+                addToCart={[Function]}
+                isDisabled={true}
+                isFavorite={false}
+                isLoading={true}
+                options={Object {}}
+                productId={null}
+              >
+                <div
+                  className="css-7azkrx"
+                >
+                  <Connect(FavoritesButton)
+                    active={false}
+                    className="css-j05drb"
+                    productId={null}
+                    rippleClassName="css-1tdptiz"
+                  >
+                    <FavoritesButton
+                      active={false}
+                      addFavorites={[Function]}
+                      className="css-j05drb"
+                      noShadow={false}
+                      onRippleComplete={[Function]}
+                      once={false}
+                      productId={null}
+                      removeFavorites={[Function]}
+                      removeThrottle={0}
+                      removeWithRelatives={false}
+                      rippleClassName="css-1tdptiz"
+                    />
+                  </Connect(FavoritesButton)>
+                  <AddToCartButton
+                    buttonSize={56}
+                    className={null}
+                    iconSize={24}
+                    isDisabled={true}
+                    isLoading={true}
+                    noShadow={false}
+                    onClick={[Function]}
+                  >
+                    <button
+                      className="null css-wuq2ta css-31obrv"
+                      data-test-id="addToCartButton"
+                      onClick={[Function]}
+                    >
+                      <div
+                        className="css-rukjns css-1gleer"
+                        style={
+                          Object {
+                            "opacity": 1,
+                          }
+                        }
+                      >
+                        <IndicatorCircle
+                          color="#5ccee3"
+                          paused={false}
+                          size={32}
+                          strokeWidth={5}
+                        >
+                          <svg
+                            className="css-17zev8s"
+                            height={32}
+                            viewBox="25 25 50 50"
+                            width={32}
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle
+                              className="css-1n2s8pv"
+                              cx="50"
+                              cy="50"
+                              r="20"
+                            />
+                          </svg>
+                        </IndicatorCircle>
+                      </div>
+                      <div
+                        className="css-rukjns"
+                        style={
+                          Object {
+                            "opacity": 0,
+                            "transform": "translate3d(0, 300%, 0)",
+                          }
+                        }
+                      >
+                        <Tick>
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+                            size="inherit"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Tick>
+                      </div>
+                      <div
+                        className="css-rukjns"
+                        onAnimationEnd={[Function]}
+                        style={
+                          Object {
+                            "opacity": 0,
+                            "transform": "translate3d(0, -50%, 0)",
+                          }
+                        }
+                      >
+                        <CartPlus>
+                          <Icon
+                            className=""
+                            color={null}
+                            content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+                            size="inherit"
+                            viewBox="0 0 24 24"
+                          >
+                            <svg
+                              className="css-yys9hb "
+                              dangerouslySetInnerHTML={
+                                Object {
+                                  "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "fill": null,
+                                  "fontSize": "inherit",
+                                }
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </CartPlus>
+                      </div>
+                    </button>
+                  </AddToCartButton>
+                </div>
+              </CTAButtons>
+            </Connect(CTAButtons)>
+          </Portal>
+          <Portal
+            name="product.ctas.after"
+            props={null}
+          />
+          <Portal
+            name="product.rating.before"
+            props={null}
+          />
+          <Portal
+            name="product.rating"
+            props={null}
+          >
+            <Connect(Rating)
+              productId={null}
+            >
+              <Rating
+                dispatch={[Function]}
+                productId={null}
+                rating={null}
+              />
+            </Connect(Rating)>
+          </Portal>
+          <Portal
+            name="product.rating.after"
+            props={null}
+          />
+          <Portal
+            name="product.name.before"
+            props={null}
+          />
+          <Portal
+            name="product.name"
+            props={null}
+          >
+            <Connect(Name)
+              productId={null}
+            >
+              <Name
+                dispatch={[Function]}
+                name={null}
+                productId={null}
+              >
+                <div
+                  className="css-19910ke"
+                >
+                  <PlaceholderLabel
+                    className="css-3bon8p"
+                    ready={false}
+                    style={null}
+                  >
+                    <div
+                      className="css-qd8qpa css-3bon8p"
+                      style={null}
+                    />
+                  </PlaceholderLabel>
+                </div>
+              </Name>
+            </Connect(Name)>
+          </Portal>
+          <Portal
+            name="product.name.after"
+            props={null}
+          />
+          <Portal
+            name="product.info.before"
+            props={null}
+          />
+          <Grid
+            className=""
+            component="div"
+            wrap={false}
+          >
+            <div
+              className=" css-h7r55a"
+            >
+              <Portal
+                name="product.info"
+                props={null}
+              >
+                <GridItem
+                  className=""
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className=" css-1gs0ko2"
+                  >
+                    <Portal
+                      name="product.info.row1"
+                      props={null}
+                    >
+                      <div
+                        className="css-qboqsd"
+                      >
+                        <Portal
+                          name="product.manufacturer.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.manufacturer"
+                          props={null}
+                        >
+                          <Connect(Manufacturer)
+                            productId={null}
+                          >
+                            <Manufacturer
+                              dispatch={[Function]}
+                              manufacturer={null}
+                              productId={null}
+                            >
+                              <div
+                                className="css-s3s3r0"
+                                data-test-id="manufacturer: null"
+                              >
+                                <PlaceholderLabel
+                                  className="css-1n196ny"
+                                  ready={false}
+                                  style={null}
+                                >
+                                  <div
+                                    className="css-qd8qpa css-1n196ny"
+                                    style={null}
+                                  />
+                                </PlaceholderLabel>
+                              </div>
+                            </Manufacturer>
+                          </Connect(Manufacturer)>
+                        </Portal>
+                        <Portal
+                          name="product.manufacturer.after"
+                          props={null}
+                        />
+                      </div>
+                      <div
+                        className="css-qboqsd"
+                      >
+                        <Portal
+                          name="product.shipping.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.shipping"
+                          props={null}
+                        >
+                          <Connect(Shipping)
+                            productId={null}
+                          >
+                            <Shipping
+                              dispatch={[Function]}
+                              productId={null}
+                              shipping={null}
+                            >
+                              <PlaceholderLabel
+                                className="css-1n196ny"
+                                ready={false}
+                                style={null}
+                              >
+                                <div
+                                  className="css-qd8qpa css-1n196ny"
+                                  style={null}
+                                />
+                              </PlaceholderLabel>
+                            </Shipping>
+                          </Connect(Shipping)>
+                        </Portal>
+                        <Portal
+                          name="product.shipping.after"
+                          props={null}
+                        />
+                      </div>
+                      <div
+                        className="css-qboqsd"
+                      >
+                        <Portal
+                          name="product.availability.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.availability"
+                          props={null}
+                        >
+                          <Connect(Availability)
+                            productId={null}
+                          >
+                            <Availability
+                              availability={null}
+                              dispatch={[Function]}
+                              productId={null}
+                            >
+                              <PlaceholderLabel
+                                className="css-1n196ny"
+                                ready={false}
+                                style={null}
+                              >
+                                <div
+                                  className="css-qd8qpa css-1n196ny"
+                                  style={null}
+                                />
+                              </PlaceholderLabel>
+                            </Availability>
+                          </Connect(Availability)>
+                        </Portal>
+                        <Portal
+                          name="product.availability.after"
+                          props={null}
+                        />
+                      </div>
+                    </Portal>
+                  </div>
+                </GridItem>
+                <GridItem
+                  className="css-1i9coa0"
+                  component="div"
+                  grow={0}
+                  shrink={1}
+                >
+                  <div
+                    className="css-1i9coa0"
+                  >
+                    <Portal
+                      name="product.info.row2"
+                      props={null}
+                    >
+                      <div
+                        className="css-1l9nix6"
+                      >
+                        <Portal
+                          name="product.price-striked.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.price-striked"
+                          props={null}
+                        >
+                          <Connect(PriceStriked)
+                            options={Object {}}
+                            productId={null}
+                          >
+                            <PriceStriked
+                              dispatch={[Function]}
+                              options={Object {}}
+                              price={null}
+                              productId={null}
+                            >
+                              <PlaceholderLabel
+                                className="css-1n196ny"
+                                ready={false}
+                                style={null}
+                              >
+                                <div
+                                  className="css-qd8qpa css-1n196ny"
+                                  style={null}
+                                />
+                              </PlaceholderLabel>
+                            </PriceStriked>
+                          </Connect(PriceStriked)>
+                        </Portal>
+                        <Portal
+                          name="product.price-striked.after"
+                          props={null}
+                        />
+                      </div>
+                      <div
+                        className="css-1l9nix6"
+                      >
+                        <Portal
+                          name="product.price.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.price"
+                          props={null}
+                        >
+                          <Connect(Price)
+                            options={Object {}}
+                            productId={null}
+                          >
+                            <Price
+                              dispatch={[Function]}
+                              options={Object {}}
+                              price={null}
+                              productId={null}
+                            >
+                              <PlaceholderLabel
+                                className="css-q720h0"
+                                ready={false}
+                                style={null}
+                              >
+                                <div
+                                  className="css-qd8qpa css-q720h0"
+                                  style={null}
+                                />
+                              </PlaceholderLabel>
+                            </Price>
+                          </Connect(Price)>
+                        </Portal>
+                        <Portal
+                          name="product.price.after"
+                          props={null}
+                        />
+                      </div>
+                      <div
+                        className="css-1l9nix6"
+                      >
+                        <Portal
+                          name="product.price-info.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.price-info"
+                          props={null}
+                        >
+                          <Connect(PriceInfo)
+                            options={Object {}}
+                            productId={null}
+                          >
+                            <PriceInfo
+                              dispatch={[Function]}
+                              options={Object {}}
+                              price={null}
+                              productId={null}
+                            >
+                              <PlaceholderLabel
+                                className="css-q720h0"
+                                ready={false}
+                                style={null}
+                              >
+                                <div
+                                  className="css-qd8qpa css-q720h0"
+                                  style={null}
+                                />
+                              </PlaceholderLabel>
+                            </PriceInfo>
+                          </Connect(PriceInfo)>
+                        </Portal>
+                        <Portal
+                          name="product.price-info.after"
+                          props={null}
+                        />
+                      </div>
+                      <div
+                        className="css-1l9nix6"
+                      >
+                        <Portal
+                          name="product.tiers.before"
+                          props={null}
+                        />
+                        <Portal
+                          name="product.tiers"
+                          props={null}
+                        >
+                          <Connect(Tiers)
+                            options={Object {}}
+                            productId={null}
+                          >
+                            <Tiers
+                              dispatch={[Function]}
+                              options={Object {}}
+                              price={null}
+                              productId={null}
+                            />
+                          </Connect(Tiers)>
+                        </Portal>
+                        <Portal
+                          name="product.tiers.after"
+                          props={null}
+                        />
+                      </div>
+                    </Portal>
+                  </div>
+                </GridItem>
+              </Portal>
+            </div>
+          </Grid>
+          <Portal
+            name="product.info.after"
+            props={null}
+          />
+        </div>
+      </Consumer>
+    </ProductHeader>
+  </pure(ProductHeader)>
+</Provider>
+`;
