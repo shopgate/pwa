@@ -6,6 +6,7 @@ if (!(colors.cta && colors.ctaContrast) && (colors.primary && colors.primaryCont
   colors.cta = colors.primary;
   colors.ctaContrast = colors.primaryContrast;
 }
+
 export default {
   background: '#f8f8f8',
   light: '#fff',
