@@ -17,6 +17,7 @@ import ProductContext from '../../context';
 /**
  * The product content component.
  */
+@connect
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
@@ -189,4 +190,4 @@ class ProductContent extends Component {
   }
 }
 
-export default connect(ProductContent);
+export default ProductContent;
