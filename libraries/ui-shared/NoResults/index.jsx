@@ -10,7 +10,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const NoResults = props => (
-  <div className={styles.wrapper}>
+  <div className={styles.wrapper} data-test-id="noResults">
     <div className={styles.icon}>
       <Icon />
     </div>
