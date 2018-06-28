@@ -3,6 +3,7 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
 import { pwaDidAppear } from '../action-creators';
 import { APP_EVENT_VIEW_DID_APPEAR } from '../constants';
+import * as helpers from '../helpers';
 import subscription from './setup';
 
 jest.mock('@shopgate/pwa-core/classes/Event');
@@ -52,8 +53,13 @@ describe('setup subscriptions', () => {
     });
 
     it('should dispatch pwaDidAppear when the app event is triggered', () => {
+      const setPWAVisibleStateSpy = jest.spyOn(helpers, 'setPWAVisibleState');
+
       callback({ dispatch });
       event.call(APP_EVENT_VIEW_DID_APPEAR);
+      expect(setPWAVisibleStateSpy).toHaveBeenCalledTimes(1);
+      expect(setPWAVisibleStateSpy).toHaveBeenCalledWith(true);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith(pwaDidAppear());
     });
