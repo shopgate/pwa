@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
+import findIndex from 'lodash/findIndex';
+import find from 'lodash/find';
 import connect from './connector';
 
 /**
@@ -35,19 +37,46 @@ class ProductCharacteristics extends Component {
     return !!Object.values(this.state.characteristics)[charIndex - 1];
   }
 
-  /**
-   * Stores a selected characteristic in local state.
-   */
-  handleSelection = ({ id, value }) => {
-    if (this.state.characteristics[id] === value) {
-      return;
+  // TODO: offset to function
+  prepareState = ({ id, value }, prevState, characteristics) => {
+    if (!prevState[id]) {
+      return prevState;
     }
 
-    this.setState({
-      characteristics: {
-        ...this.state.characteristics,
-        [id]: value,
-      },
+    const state = prevState;
+
+    // Find the current index.
+    const currentIndex = findIndex(characteristics, item => (
+      !!find(item.values, { id: value })
+    ));
+
+    // Find the selections to the right.
+    const left = characteristics.slice(currentIndex + 1);
+
+    // Delete the ones to the right.
+    left.forEach((item) => {
+      delete state[item.id];
+    });
+
+    return state;
+  }
+
+  /**
+   * Stores a selected characteristic into the local state.
+   * @param {Object} selection The selected item.
+   */
+  handleSelection = (selection) => {
+    this.setState(({ characteristics }) => {
+      const { variants } = this.props;
+      const { id, value } = selection;
+      const state = this.prepareState(selection, characteristics, variants.characteristics);
+
+      return {
+        characteristics: {
+          ...state,
+          [id]: value,
+        },
+      };
     });
   }
 
