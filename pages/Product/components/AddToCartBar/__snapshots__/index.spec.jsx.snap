@@ -232,7 +232,7 @@ exports[`<AddToCartBar> Simple Products should render car when data is available
               <button
                 className={
                   Object {
-                    "data-css-wb7fsz": "",
+                    "data-css-hx903l": "",
                   }
                 }
                 data-test-id="addToCartButton"
@@ -500,7 +500,7 @@ exports[`<AddToCartBar> Variants should render car when data is available 1`] = 
               <button
                 className={
                   Object {
-                    "data-css-wb7fsz": "",
+                    "data-css-hx903l": "",
                   }
                 }
                 data-test-id="addToCartButton"
@@ -794,7 +794,7 @@ exports[`<AddToCartBar> Visiblity should be visible 1`] = `
               <button
                 className={
                   Object {
-                    "data-css-wb7fsz": "",
+                    "data-css-hx903l": "",
                   }
                 }
                 data-test-id="addToCartButton"
