@@ -75,6 +75,7 @@ export default function product(subscribe) {
       .filter(({ action }) => (
         action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
       ))
+      .filter(({ getState }) => getCurrentBaseProductId(getState()) !== null)
       .merge(successReviewSubmit$);
 
     subscribe(shouldFetchReviews$, ({ dispatch, getState }) => {
