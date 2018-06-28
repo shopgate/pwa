@@ -1,12 +1,8 @@
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import * as pipelines from '../constants/Pipelines';
+import { SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS } from '../constants/Pipelines';
 import requestSearchSuggestions from '../action-creators/requestSearchSuggestions';
 import receiveSearchSuggestions from '../action-creators/receiveSearchSuggestions';
-import {
-  getCurrentSearchSuggestionsObject,
-  getSearchPhrase,
-} from '../selectors';
+import { getSuggestionsState } from '../selectors';
 import removeHighlightingPlaceholders from '../helpers/removeHighlightingPlaceholders';
 
 /**
@@ -14,18 +10,20 @@ import removeHighlightingPlaceholders from '../helpers/removeHighlightingPlaceho
  * @param {string} searchPhrase The search phrase.
  * @returns {undefined}
  */
-const fetchSearchSuggestions = () => (dispatch, getState) => {
-  const state = getState();
-  const searchPhrase = getSearchPhrase(state);
-  const cachedSuggestions = getCurrentSearchSuggestionsObject(state);
+const fetchSearchSuggestions = searchPhrase => (dispatch, getState) => {
+  if (searchPhrase.length < 3) {
+    return;
+  }
 
-  if (!shouldFetchData(cachedSuggestions)) {
+  const cached = getSuggestionsState(getState())[searchPhrase];
+
+  if (cached && (cached.isFetching || cached.expires >= Date.now())) {
     return;
   }
 
   dispatch(requestSearchSuggestions(searchPhrase));
 
-  new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
+  new PipelineRequest(SHOPGATE_CATALOG_GET_SEARCH_SUGGESTIONS)
     .setInput({ searchPhrase })
     .dispatch()
     .then(({ suggestions }) => {
