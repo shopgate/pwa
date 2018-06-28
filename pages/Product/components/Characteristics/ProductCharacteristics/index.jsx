@@ -9,32 +9,50 @@ import connect from './connector';
 class ProductCharacteristics extends Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
-    selectedCharacteristics: PropTypes.shape(),
     variants: PropTypes.shape(),
   }
 
   static defaultProps = {
-    selectedCharacteristics: {},
     variants: null,
   }
 
+  state = {
+    characteristics: {},
+  };
+
   // TODO: offset to function
   getSelectedValue = (charId) => {
-    const { selectedCharacteristics } = this.props;
-    return selectedCharacteristics[charId] ? selectedCharacteristics[charId] : null;
+    const { characteristics } = this.state;
+    return characteristics[charId] ? characteristics[charId] : null;
   }
 
-  //TODO: offset to function
+  // TODO: offset to function
   isEnabled = (charIndex) => {
     if (charIndex === 0) {
       return true;
     }
 
-    return !!Object.values(this.props.selectedCharacteristics)[charIndex - 1];
+    return !!Object.values(this.state.characteristics)[charIndex - 1];
   }
 
   /**
-   * 
+   * Stores a selected characteristic in local state.
+   */
+  handleSelection = ({ id, value }) => {
+    if (this.state.characteristics[id] === value) {
+      return;
+    }
+
+    this.setState({
+      characteristics: {
+        ...this.state.characteristics,
+        [id]: value,
+      },
+    });
+  }
+
+  /**
+   *
    */
   buildValues = (selection, charId, values, charIndex) => {
     /**
@@ -50,21 +68,14 @@ class ProductCharacteristics extends Component {
     }
 
     const { variants } = this.props;
-
     const { [charId]: a, ...rest } = selection;
 
-    /**
-     * Filter products that match or partially match the
-     * current characteristic selection.
-     */
+    // Filter products that match or partially match the current characteristic selection.
     const products = variants.products.filter(({ characteristics }) => (
       isMatch(characteristics, rest)
     ));
 
-    /**
-     * Check if any of the values are present inside
-     * any of the matching products.
-     */
+    // Check if any of the values are present inside any of the matching products.
     return values.map((value) => {
       const selectable = products.some(({ characteristics }) => (
         isMatch(characteristics, { [charId]: value.id })
@@ -81,7 +92,8 @@ class ProductCharacteristics extends Component {
    * @return {JSX}
    */
   render() {
-    const { selectedCharacteristics, variants } = this.props;
+    const { characteristics } = this.state;
+    const { variants } = this.props;
 
     if (!variants) {
       return null;
@@ -90,7 +102,7 @@ class ProductCharacteristics extends Component {
     return variants.characteristics.map((char, index) => {
       const disabled = !this.isEnabled(index);
       const selected = this.getSelectedValue(char.id);
-      const values = this.buildValues(selectedCharacteristics, char.id, char.values, index);
+      const values = this.buildValues(characteristics, char.id, char.values, index);
 
       return (
         this.props.render({
@@ -100,6 +112,7 @@ class ProductCharacteristics extends Component {
           label: char.label,
           selected,
           values,
+          select: this.handleSelection,
         })
       );
     });

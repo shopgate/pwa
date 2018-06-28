@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './style';
 import Sheet from './components/Sheet';
-import ProductContext from '../../../context';
 
 /**
  * A single characteristic.
@@ -13,7 +12,7 @@ class Characteristic extends Component {
     disabled: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    setCharacteristic: PropTypes.func.isRequired,
+    select: PropTypes.func.isRequired,
     values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     selected: PropTypes.string,
   };
@@ -27,7 +26,7 @@ class Characteristic extends Component {
   };
 
   /**
-   * @param {Object} props  The component props.
+   * @param {Object} props The component props.
    */
   constructor(props) {
     super(props);
@@ -77,7 +76,7 @@ class Characteristic extends Component {
    * @param {string} valueId The ID of the selected value.
    */
   handleItemSelection = (valueId) => {
-    this.props.setCharacteristic({
+    this.props.select({
       id: this.props.id,
       value: valueId,
     });
@@ -118,10 +117,4 @@ class Characteristic extends Component {
   }
 }
 
-export default props => (
-  <ProductContext.Consumer>
-    {({ setCharacteristic }) => (
-      <Characteristic {...props} setCharacteristic={setCharacteristic} />
-    )}
-  </ProductContext.Consumer>
-);
+export default Characteristic;

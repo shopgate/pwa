@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ProductCharacteristics from './ProductCharacteristics';
 import Characteristic from './Characteristic';
 
 /**
- * 
+ * @return {JSX}
  */
-class Characteristics extends Component {
-  render() {
-    return (
-      <ProductCharacteristics
-        productId={this.props.productId}
-        render={props => (
-          <Characteristic {...props} />
-        )}
-        selectedCharacteristics={this.props.selectedCharacteristics}
-      />
-    );
-  }
-}
+const Characteristics = ({ productId }) => (
+  <ProductCharacteristics
+    productId={productId}
+    render={props => <Characteristic {...props} />}
+  />
+);
+
+Characteristics.propTypes = {
+  productId: PropTypes.string.isRequired,
+};
 
 export default Characteristics;

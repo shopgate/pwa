@@ -116,7 +116,6 @@ class ProductContent extends Component {
 
     const contextValue = {
       ...this.state,
-      setCharacteristic: this.setCharacteristic,
     };
 
     return (
