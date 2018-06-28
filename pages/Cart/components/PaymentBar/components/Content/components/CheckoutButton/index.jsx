@@ -9,7 +9,7 @@ import styles from './style';
 
 /**
  * The checkout button component.
- * @param {boolean} isActive Should the button be active.
+ * @param {boolean} isActive Should the button shown as active.
  * @return {JSX}
  */
 const CheckoutButton = ({ isActive }) => (
