@@ -30,6 +30,8 @@ describe('functional tests cart page', () => {
       .should('be.visible');
     cy.get(els.quantityPicker)
       .clear()
+      .type(1)
+      .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 199 currency: EUR"]')
       .should('be.visible');
