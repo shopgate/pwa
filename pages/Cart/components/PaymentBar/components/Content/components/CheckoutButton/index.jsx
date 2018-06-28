@@ -8,15 +8,17 @@ import connect from './connector';
 
 /**
  * The checkout button component.
- * @returns {JSX}
+ * @param {boolean} isActive Should the button be active.
+ * @return {JSX}
  */
 const CheckoutButton = ({ isActive }) => (
   <Link href={CHECKOUT_PATH} disabled={!isActive}>
     <RippleButton
+      disabled={!isActive}
       flat={false}
       type="secondary"
     >
-      <I18n.Text string="cart.checkout"/>
+      <I18n.Text string="cart.checkout" />
     </RippleButton>
   </Link>
 );
