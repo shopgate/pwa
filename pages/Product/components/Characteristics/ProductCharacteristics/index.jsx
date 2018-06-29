@@ -1,9 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
-import findIndex from 'lodash/findIndex';
-import find from 'lodash/find';
 import connect from './connector';
+import { isCharacteristicEnabled, reduceSelection, findSelectionIndex } from './helpers';
 
 /**
  * The ProductCharacteristics component.
@@ -29,36 +28,15 @@ class ProductCharacteristics extends Component {
   }
 
   // TODO: offset to function
-  isEnabled = (charIndex) => {
-    if (charIndex === 0) {
-      return true;
+  prepareState = (id, selection, characteristics) => {
+    if (!selection[id]) {
+      return selection;
     }
-
-    return !!Object.values(this.state.characteristics)[charIndex - 1];
-  }
-
-  // TODO: offset to function
-  prepareState = ({ id, value }, prevState, characteristics) => {
-    if (!prevState[id]) {
-      return prevState;
-    }
-
-    const state = prevState;
 
     // Find the current index.
-    const currentIndex = findIndex(characteristics, item => (
-      !!find(item.values, { id: value })
-    ));
+    const currentIndex = findSelectionIndex(characteristics, id);
 
-    // Find the selections to the right.
-    const left = characteristics.slice(currentIndex + 1);
-
-    // Delete the ones to the right.
-    left.forEach((item) => {
-      delete state[item.id];
-    });
-
-    return state;
+    return reduceSelection(characteristics, selection, currentIndex);
   }
 
   /**
@@ -69,7 +47,7 @@ class ProductCharacteristics extends Component {
     this.setState(({ characteristics }) => {
       const { variants } = this.props;
       const { id, value } = selection;
-      const state = this.prepareState(selection, characteristics, variants.characteristics);
+      const state = this.prepareState(id, characteristics, variants.characteristics);
 
       return {
         characteristics: {
@@ -97,11 +75,23 @@ class ProductCharacteristics extends Component {
     }
 
     const { variants } = this.props;
+    // console.warn(reduceSelection(variants.characteristics, selection, 0,))
     const { [charId]: a, ...rest } = selection;
+
+    // only use the sub-set of the selection
+
+    const subset = {};
+    Object.keys(selection).forEach((item, index) => {
+      if (index < charIndex - 1) {
+        subset[item] = selection[item];
+      }
+    });
+    console.warn(subset);
+    // 
 
     // Filter products that match or partially match the current characteristic selection.
     const products = variants.products.filter(({ characteristics }) => (
-      isMatch(characteristics, rest)
+      isMatch(characteristics, subset)
     ));
 
     // Check if any of the values are present inside any of the matching products.
@@ -129,7 +119,7 @@ class ProductCharacteristics extends Component {
     }
 
     return variants.characteristics.map((char, index) => {
-      const disabled = !this.isEnabled(index);
+      const disabled = !isCharacteristicEnabled(characteristics, index);
       const selected = this.getSelectedValue(char.id);
       const values = this.buildValues(characteristics, char.id, char.values, index);
 
