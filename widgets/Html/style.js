@@ -49,6 +49,9 @@ export default css({
     borderLeft: `.25rem solid ${colors.shade6}`,
     fontStyle: 'italic',
   },
+  ' > :first-child': {
+    marginTop: 0,
+  },
   // Clearfix for floated widget content
   ':after': {
     clear: 'both',
