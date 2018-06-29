@@ -34,13 +34,19 @@ export default css({
   ' img': {
     display: 'initial',
   },
+  ' img[style*="float: left"], img[style*="float:left"], img.pull-left': {
+    marginRight: '1rem',
+  },
+  ' img[style*="float: right"], img[style*="float:right"], img.pull-right': {
+    marginLeft: '1rem',
+  },
   ' code, pre': {
     whiteSpace: 'pre-wrap',
   },
-  ' blockquote, quote': {
+  ' blockquote, q': {
     paddingLeft: '1rem',
     margin: '2rem 0',
-    borderLeft: `.5rem solid ${colors.shade6}`,
+    borderLeft: `.25rem solid ${colors.shade6}`,
     fontStyle: 'italic',
   },
   // Clearfix for floated widget content
