@@ -142,6 +142,16 @@
         "path": "/v1/shop/%(shopId)s/sg_connect_product_properties?parsed=true",
         "key": "value"
       }
+    },
+    "currency": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "currencyId"
+      }
     }
   }
 }
