@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
+/** @type {{currency: string}} */
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import Sort from './components/Sort';
 import ViewSwitch from './components/ViewSwitch';
 import FilterButton from './components/FilterButton';
@@ -20,10 +22,6 @@ class Content extends Component {
 
   static defaultProps = {
     activeFilters: {},
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
@@ -51,23 +49,11 @@ class Content extends Component {
   }
 
   /**
-   * Returns the currency.
-   * @return {string}
-   */
-  get currency() {
-    /**
-     * TODO: Remove context translation for currency and,
-     * instead, get it from shop settings when available.
-     */
-    const { __ } = this.context.i18n();
-    return __('price.currency');
-  }
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
+    const currency = appConfig.currency;
     return (
       <section>
         <div className={styles}>
@@ -75,7 +61,7 @@ class Content extends Component {
           <Sort />
           <FilterButton />
         </div>
-        <FilterChips currency={this.currency} />
+        <FilterChips currency={currency} />
       </section>
     );
   }
