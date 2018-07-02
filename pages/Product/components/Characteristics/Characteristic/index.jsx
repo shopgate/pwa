@@ -25,23 +25,9 @@ class Characteristic extends Component {
     i18n: PropTypes.func,
   };
 
-  /**
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      sheet: false,
-    };
-  }
-
-  /**
-   * @return {string}
-   */
-  get label() {
-    return this.props.label;
-  }
+  state = {
+    sheet: false,
+  };
 
   /**
    * @param {string} defaultLabel The default button label.
@@ -81,6 +67,10 @@ class Characteristic extends Component {
       value: valueId,
     });
 
+    this.closeSheet();
+  }
+
+  closeSheet = () => {
     this.setState({
       sheet: false,
     });
@@ -92,7 +82,7 @@ class Characteristic extends Component {
   render() {
     const { __ } = this.context.i18n();
     const { disabled, selected, values } = this.props;
-    const displayLabel = this.label;
+    const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
     const classes = classNames(
@@ -110,7 +100,9 @@ class Characteristic extends Component {
           label={translatedLabel}
           open={this.state.sheet}
           items={values}
+          onClose={this.closeSheet}
           onSelect={this.handleItemSelection}
+          selectedValue={selected}
         />
       </Fragment>
     );

@@ -12,7 +12,15 @@ const buttonDisabled = css(button, {
   color: colors.shade4,
 });
 
+const buttonSelected = css(button, {
+  background: colors.darkGray,
+  margin: '-1px 0',
+  paddingTop: 17,
+  paddingBottom: 17,
+});
+
 export default {
   button,
   buttonDisabled,
+  buttonSelected,
 };

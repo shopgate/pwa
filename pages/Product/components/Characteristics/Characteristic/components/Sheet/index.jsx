@@ -15,11 +15,15 @@ class CharacteristicSheet extends Component {
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     label: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
+    onClose: PropTypes.func,
     onSelect: PropTypes.func,
+    selectedValue: PropTypes.string,
   };
 
   static defaultProps = {
+    onClose() {},
     onSelect() {},
+    selectedValue: null,
   };
 
   /**
@@ -35,13 +39,24 @@ class CharacteristicSheet extends Component {
    * @return {JSX}
    */
   render() {
-    const { items, label, open } = this.props;
+    const {
+      items,
+      label,
+      onClose,
+      open,
+      selectedValue,
+    } = this.props;
 
     const sheet = (
-      <Sheet title={label} isOpen={open}>
+      <Sheet title={label} isOpen={open} onClose={onClose}>
         <List>
           {items.map(item => (
-            <SheetItem key={item.id} item={item} onClick={this.handleItemClick} />
+            <SheetItem
+              item={item}
+              key={item.id}
+              onClick={this.handleItemClick}
+              selected={item.id === selectedValue}
+            />
           ))}
         </List>
       </Sheet>
