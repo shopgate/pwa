@@ -23,7 +23,7 @@ class SearchButton extends Component {
   }
 
   handleClick = () => {
-    this.props.toggleSearchField(!this.props.searchActive);
+    this.props.toggleSearchField(!this.props.searchActive, true);
   }
 
   /**
