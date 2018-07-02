@@ -63,5 +63,5 @@ export default {
   title,
   wishlist,
   updateImageContainer,
-  updateContainer
+  updateContainer,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasReviews } from 'Config/app.json';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
 import List from './components/List';
@@ -14,7 +14,7 @@ import AllReviewsLink from './components/AllReviewsLink';
  * @returns {JSX|null}
  */
 const Reviews = ({ rating, reviews }) => {
-  if (!hasReviews) {
+  if (!appConfig.hasReviews) {
     return null;
   }
 
