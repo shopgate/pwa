@@ -67,7 +67,7 @@ class ProductCharacteristics extends Component {
 
   handleFinished = () => {
     const { characteristics } = this.state;
-    const { variants } = this.props;
+    const { variantId, variants } = this.props;
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
 
     if (filteredValues.length !== variants.characteristics.length) {
@@ -79,6 +79,10 @@ class ProductCharacteristics extends Component {
     ));
 
     if (!products.length) {
+      return;
+    }
+
+    if (products[0].id === variantId) {
       return;
     }
 
