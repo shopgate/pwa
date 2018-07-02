@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { NavigatorContext } from '../../../../context';
@@ -82,14 +82,15 @@ class NavigatorSearch extends Component {
     const placeholder = __('search.placeholder');
 
     return (
-      <Transition in={this.props.active} timeout={150}>
+      <Transition in={this.props.active} timeout={0}>
         {state => (
-          <Fragment>
+          <div
+            className={styles.container}
+            style={transition[state]}
+          >
             <form
-              className={styles.container}
               data-test-id="Search"
               onSubmit={this.disableField}
-              style={transition[state]}
             >
               <input
                 className={styles.input}
@@ -100,16 +101,15 @@ class NavigatorSearch extends Component {
                 type="search"
                 value={this.state.value}
               />
-              <div
-                aria-hidden
-                className={styles.overlay}
-                onClick={this.disableField}
-                role="button"
-              />
             </form>
-            {/* <SearchSuggestions phrase={this.state.inputValue} /> */}
-          </Fragment>
-      )}
+            <div
+              aria-hidden
+              className={styles.overlay}
+              onClick={this.disableField}
+              role="button"
+            />
+          </div>
+        )}
       </Transition>
     );
   }
