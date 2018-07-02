@@ -101,4 +101,13 @@ export default {
   productWithLongDesciption4GridPrice: "[data-test-id='productGrid'] [data-test-id='link: /item/393239'] [data-test-id='minPrice: 0 price: 939 currency: EUR']",
   manufactureFilter1FilterChip: "[data-test-id='Marke: kungBirgers']",
   manufactureFilter1FilterChipRemove: "[data-test-id='remove Marke: kungBirgers']",
+  productVariantsCategory: "[data-test-id='link: /category/3538']",
+  productsWith2VariantsCategory: "[data-test-id='link: /category/3638']",
+  productWithChild1MotherNameProductGrid: "[data-test-id='productGrid'] [data-test-id='Productname: Product with child 1 Mother( 6 images)']",
+  blackColorVariant: "[data-test-id='Black']",
+  size5ShoeSizeVariant: "[data-test-id='5']",
+  productWithOptionsCategory: "[data-test-id='link: /category/3734']",
+  simpleProductWithOptionsNameProductGrid: "[data-test-id='productGrid'] [data-test-id='Productname: simple Product with options']",
+  redBallColorOption: "[data-test-id='Red Ball']",
+  lowGlowOption: "[data-test-id='low']",
 };
