@@ -164,7 +164,7 @@ let pwaWebviewVisible = true;
 /**
  * Sets the visible state of the PWA webview.
  * It's used to determine, if a legacy page is currently active.
- * @param {boolean} value Tells if the PWA currently visible.
+ * @param {boolean} [value=true] Tells if the PWA currently visible.
  */
 export const setPWAVisibleState = (value = true) => {
   pwaWebviewVisible = value;

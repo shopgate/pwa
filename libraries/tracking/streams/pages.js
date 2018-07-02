@@ -23,7 +23,8 @@ export const blacklistedPaths = [
  * Emits when one of the tracked paths is entered except some special one.
  */
 export const pagesAreReady$ = routeDidChange$
+  .filter(() => isPWAVisible())
   .merge(pwaDidAppear$)
   .filter(({ pathname }) => (
-    isPWAVisible() && !blacklistedPaths.some(path => pathname.startsWith(path))
+    !blacklistedPaths.some(path => pathname.startsWith(path))
   ));
