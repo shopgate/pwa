@@ -7,7 +7,8 @@
  * @param {Array} suggestions An array of strings.
  * @returns {Array}
  */
-const removeHighlightingPlaceholers =
-          suggestions => suggestions.map(item => item.replace(/\$start\$|\$end\$/g, ''));
+const removeHighlightingPlaceholers = (
+  suggestions => suggestions.map(item => item.replace(/\$start\$|\$end\$/g, ''))
+);
 
 export default removeHighlightingPlaceholers;
