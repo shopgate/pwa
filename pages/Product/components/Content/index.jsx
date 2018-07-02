@@ -140,7 +140,8 @@ class ProductContent extends Component {
           <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
           <Portal name={portals.PRODUCT_VARIANT_SELECT}>
             <Characteristics
-              productId={this.props.productId}
+              productId={this.props.baseProductId}
+              variantId={this.props.variantId}
               selectedCharacteristics={this.state.characteristics}
             />
           </Portal>

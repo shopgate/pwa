@@ -11,17 +11,41 @@ class ProductCharacteristics extends Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
     navigate: PropTypes.func,
+    variantId: PropTypes.string,
     variants: PropTypes.shape(),
   }
 
   static defaultProps = {
     navigate() {},
+    variantId: null,
     variants: null,
   }
 
   state = {
     characteristics: {},
   };
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.variants && nextProps.variants) {
+      this.setCharacterics(nextProps);
+    }
+  }
+
+  /**
+   * Sets the characteristics relative to the given props.
+   * @param {Object} props The props to check against.
+   */
+  setCharacterics = (props) => {
+    const { variantId, variants } = props;
+    const { characteristics } = variants.products.find(product => product.id === variantId);
+
+    if (characteristics) {
+      this.setState({ characteristics });
+    }
+  }
 
   // TODO: offset to function
   getSelectedValue = (charId) => {
