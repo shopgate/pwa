@@ -12,12 +12,12 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.productsWith2VariantsCategory)
-      .last()
       .should('be.visible')
+      .last()
       .click();
     cy.get(els.productWithChild1MotherNameProductGrid)
-      .last()
       .should('be.visible')
+      .last()
       .click();
     cy.get(els.variantPickerColor)
       .should('be.visible')
