@@ -8,9 +8,9 @@ import {
   mockedStateWithoutReview,
 } from 'Components/Reviews/mock';
 import Rating from './index';
-import { getElementById } from './mock';
+import { getElementById, setMocks } from './mock';
 
-describe.skip('Rating (product header)', () => {
+describe('Rating (product header)', () => {
   const mockedStore = configureStore();
 
   /**
@@ -24,18 +24,30 @@ describe.skip('Rating (product header)', () => {
     </Provider>,
     mockRenderOptions
   );
+
   describe('Rendering', () => {
     it('should render rating when data is available', () => {
+      setMocks();
       const component = getComponent(mockedStateWithTwoReviews);
       expect(component).toMatchSnapshot();
     });
+
     it('should render nothing when data is not available', () => {
+      setMocks();
+      const component = getComponent(mockedStateWithoutReview);
+      expect(component.html()).toBe(null);
+    });
+
+    it('should render nothing when reviews are deactivated', () => {
+      setMocks(false);
       const component = getComponent(mockedStateWithoutReview);
       expect(component.html()).toBe(null);
     });
   });
+
   describe('Scroll on click', () => {
     const scrollSpy = jest.fn();
+
     it('should scroll to reviews when clicked', () => {
       jest.spyOn(document, 'getElementById').mockImplementation(getElementById(scrollSpy));
       const component = getComponent(mockedStateWithTwoReviews);
@@ -46,6 +58,7 @@ describe.skip('Rating (product header)', () => {
       document.getElementById.mockReset();
       document.getElementById.mockRestore();
     });
+
     it('should do nothing when clicked but no reviews excerpt element', () => {
       jest.spyOn(document, 'getElementById').mockImplementation(() => null);
       const component = getComponent(mockedStateWithTwoReviews);
