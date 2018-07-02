@@ -75,19 +75,13 @@ class ProductCharacteristics extends Component {
     }
 
     const { variants } = this.props;
-    // console.warn(reduceSelection(variants.characteristics, selection, 0,))
-    const { [charId]: a, ...rest } = selection;
-
-    // only use the sub-set of the selection
 
     const subset = {};
     Object.keys(selection).forEach((item, index) => {
-      if (index < charIndex - 1) {
+      if (index < charIndex) {
         subset[item] = selection[item];
       }
     });
-    console.warn(subset);
-    // 
 
     // Filter products that match or partially match the current characteristic selection.
     const products = variants.products.filter(({ characteristics }) => (
