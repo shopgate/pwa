@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hasReviews } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import RatingCount from 'Components/Reviews/components/RatingCount';
 import { container } from './style';
@@ -31,13 +31,13 @@ const scrollToRating = () => {
  * @return {JSX}
  */
 const Rating = ({ rating }) => {
-  if (!hasReviews || !rating || !rating.count) {
+  if (!appConfig.hasReviews || !rating || !rating.count) {
     return null;
   }
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div role="link" className={container} onClick={scrollToRating}>
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div role="link" tabIndex={0} className={container} onClick={scrollToRating}>
       <RatingStars value={rating.average} display="big" />
       <RatingCount count={rating.count} prominent />
     </div>
