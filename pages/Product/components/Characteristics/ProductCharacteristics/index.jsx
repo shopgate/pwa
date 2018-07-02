@@ -9,6 +9,7 @@ import { isCharacteristicEnabled, reduceSelection, findSelectionIndex } from './
  */
 class ProductCharacteristics extends Component {
   static propTypes = {
+    conditioner: PropTypes.shape().isRequired,
     render: PropTypes.func.isRequired,
     navigate: PropTypes.func,
     variantId: PropTypes.string,
@@ -21,9 +22,18 @@ class ProductCharacteristics extends Component {
     variants: null,
   }
 
-  state = {
-    characteristics: {},
-  };
+  /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      characteristics: {},
+    };
+
+    props.conditioner.addConditioner('product-variants', this.checkSelection);
+  }
 
   /**
    * @param {Object} nextProps The next component props.
@@ -40,10 +50,10 @@ class ProductCharacteristics extends Component {
    */
   setCharacterics = (props) => {
     const { variantId, variants } = props;
-    const { characteristics } = variants.products.find(product => product.id === variantId);
+    const result = variants.products.find(product => product.id === variantId);
 
-    if (characteristics) {
-      this.setState({ characteristics });
+    if (result && result.characteristics) {
+      this.setState({ characteristics: result.characteristics });
     }
   }
 
@@ -63,6 +73,24 @@ class ProductCharacteristics extends Component {
     const currentIndex = findSelectionIndex(characteristics, id);
 
     return reduceSelection(characteristics, selection, currentIndex);
+  }
+
+  /**
+   * Checks if all selections have been made.
+   * @return {boolean}
+   */
+  checkSelection = () => {
+    const { characteristics } = this.state;
+    const { variants, variantId } = this.props;
+    const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
+
+    const selected = !!((filteredValues.length === variants.characteristics.length) && variantId);
+
+    if (!selected) {
+      // TODO: handle scroll into view.
+    }
+
+    return selected;
   }
 
   handleFinished = () => {
