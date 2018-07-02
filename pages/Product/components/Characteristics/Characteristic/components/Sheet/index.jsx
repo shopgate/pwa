@@ -27,6 +27,7 @@ class CharacteristicSheet extends Component {
    */
   handleItemClick = (event) => {
     event.stopPropagation();
+    event.nativeEvent.stopImmediatePropagation();
     this.props.onSelect(event.target.value);
   }
 
