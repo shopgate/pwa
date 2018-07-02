@@ -10,10 +10,12 @@ import { isCharacteristicEnabled, reduceSelection, findSelectionIndex } from './
 class ProductCharacteristics extends Component {
   static propTypes = {
     render: PropTypes.func.isRequired,
+    navigate: PropTypes.func,
     variants: PropTypes.shape(),
   }
 
   static defaultProps = {
+    navigate() {},
     variants: null,
   }
 
@@ -39,6 +41,26 @@ class ProductCharacteristics extends Component {
     return reduceSelection(characteristics, selection, currentIndex);
   }
 
+  handleFinished = () => {
+    const { characteristics } = this.state;
+    const { variants } = this.props;
+    const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
+
+    if (filteredValues.length !== variants.characteristics.length) {
+      return;
+    }
+
+    const products = variants.products.filter(product => (
+      isMatch(product.characteristics, characteristics)
+    ));
+
+    if (!products.length) {
+      return;
+    }
+
+    this.props.navigate(products[0].id);
+  }
+
   /**
    * Stores a selected characteristic into the local state.
    * @param {Object} selection The selected item.
@@ -55,7 +77,7 @@ class ProductCharacteristics extends Component {
           [id]: value,
         },
       };
-    });
+    }, this.handleFinished);
   }
 
   /**
