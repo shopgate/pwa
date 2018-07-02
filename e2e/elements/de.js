@@ -115,4 +115,13 @@ export default {
   productWithManyProps4SearchResult: "[data-route-path='/search'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
   noResultText: "[data-test-id='noResults'] span",
   productWithManyProps3SearchResult: "[data-route-path='/search'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many properties - 3 -']",
+  productVariantsCategory: "[data-test-id='link: /category/3538']",
+  productsWith2VariantsCategory: "[data-test-id='link: /category/3638']",
+  productWithChild1MotherNameProductGrid: "[style='display: block;'] [data-test-id='productGrid'] [data-test-id='Productname: Product with child 1 Mother( 6 images)']",
+  blackColorVariant: "[data-test-id='Black']",
+  size5ShoeSizeVariant: "[data-test-id='5']",
+  productWithOptionsCategory: "[data-test-id='link: /category/3734']",
+  simpleProductWithOptionsNameProductGrid: "[data-test-id='productGrid'] [data-test-id='Productname: simple Product with options']",
+  redBallColorOption: "[data-test-id='Red Ball']",
+  lowGlowOption: "[data-test-id='low']",
 };
