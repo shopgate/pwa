@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import isEqual from 'lodash/isEqual';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
@@ -621,5 +622,25 @@ export const getProductVariants = createSelector(
     }
 
     return variants[productId].variants;
+  }
+);
+
+/**
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getVariantAvailabilityByCharacteristics = createSelector(
+  getProductVariants,
+  (state, props) => props.characteristics,
+  (variants, characteristics) => {
+    const found = variants.products.filter(product => (
+      isEqual(product.characteristics, characteristics)
+    ));
+
+    if (!found.length) {
+      return null;
+    }
+
+    return found[0].availability;
   }
 );
