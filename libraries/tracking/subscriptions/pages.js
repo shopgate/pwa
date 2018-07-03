@@ -3,7 +3,7 @@ import { searchIsReady$ } from '../streams/search';
 import { productIsReady$ } from '../streams/product';
 import { pagesAreReady$ } from '../streams/pages';
 import getTrackingData from '../selectors';
-import { track } from '../helpers/index';
+import { track } from '../helpers';
 
 /**
  * Calls the pageview core tracking function.
