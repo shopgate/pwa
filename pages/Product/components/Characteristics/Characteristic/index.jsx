@@ -81,7 +81,7 @@ class Characteristic extends Component {
    */
   render() {
     const { __ } = this.context.i18n();
-    const { disabled, selected, values } = this.props;
+    const { disabled, id, selected, values } = this.props;
     const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
@@ -97,11 +97,12 @@ class Characteristic extends Component {
           <div className={styles.selection}>{buttonLabel}</div>
         </button>
         <Sheet
-          label={translatedLabel}
-          open={this.state.sheet}
+          charId={id}
           items={values}
+          label={translatedLabel}
           onClose={this.closeSheet}
           onSelect={this.handleItemSelection}
+          open={this.state.sheet}
           selectedValue={selected}
         />
       </Fragment>

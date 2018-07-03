@@ -23,7 +23,12 @@ const getStyle = (selected, selectable) => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const SheetItem = ({ item, onClick, selected }) => {
+const SheetItem = ({
+  item,
+  onClick,
+  rightComponent: Right,
+  selected,
+}) => {
   const props = {
     className: getStyle(selected, item.selectable),
     key: item.id,
@@ -34,6 +39,7 @@ const SheetItem = ({ item, onClick, selected }) => {
   return (
     <button {...props}>
       {item.label}
+      {item.selectable && <Right />}
     </button>
   );
 };
@@ -41,11 +47,13 @@ const SheetItem = ({ item, onClick, selected }) => {
 SheetItem.propTypes = {
   item: PropTypes.shape().isRequired,
   onClick: PropTypes.func,
+  rightComponent: PropTypes.func,
   selected: PropTypes.bool,
 };
 
 SheetItem.defaultProps = {
   onClick() {},
+  rightComponent: null,
   selected: false,
 };
 

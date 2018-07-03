@@ -1,7 +1,8 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
 import connect from './connector';
+import VariantsContext from './context';
 import { isCharacteristicEnabled, reduceSelection, findSelectionIndex } from './helpers';
 
 /**
@@ -162,23 +163,27 @@ class ProductCharacteristics extends Component {
       return null;
     }
 
-    return variants.characteristics.map((char, index) => {
-      const disabled = !isCharacteristicEnabled(characteristics, index);
-      const selected = this.getSelectedValue(char.id);
-      const values = this.buildValues(characteristics, char.id, char.values, index);
+    return (
+      <VariantsContext.Provider value={this.state}>
+        {variants.characteristics.map((char, index) => {
+          const disabled = !isCharacteristicEnabled(characteristics, index);
+          const selected = this.getSelectedValue(char.id);
+          const values = this.buildValues(characteristics, char.id, char.values, index);
 
-      return (
-        this.props.render({
-          disabled,
-          id: char.id,
-          key: char.id,
-          label: char.label,
-          selected,
-          values,
-          select: this.handleSelection,
-        })
-      );
-    });
+          return (
+            this.props.render({
+              disabled,
+              id: char.id,
+              key: char.id,
+              label: char.label,
+              select: this.handleSelection,
+              selected,
+              values,
+            })
+          );
+        })}
+      </VariantsContext.Provider>
+    );
   }
 }
 
