@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
 import connect from './connector';
@@ -28,6 +28,8 @@ class ProductCharacteristics extends Component {
   constructor(props) {
     super(props);
 
+    this.refsStore = {};
+
     this.state = {
       characteristics: {},
     };
@@ -41,7 +43,18 @@ class ProductCharacteristics extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.props.variants && nextProps.variants) {
       this.setCharacterics(nextProps);
+      this.setRefs(nextProps);
     }
+  }
+
+  /**
+   * Sets the refs to the charactersistics selects.
+   * @param {Object} props The props to check against.
+   */
+  setRefs = (props) => {
+    props.variants.characteristics.forEach((char) => {
+      this.refsStore[char.id] = React.createRef();
+    });
   }
 
   /**
@@ -76,6 +89,23 @@ class ProductCharacteristics extends Component {
   }
 
   /**
+   * Finds the first unselected characteristic.
+   * @return {Object|null}
+   */
+  findUnselectedCharacteristic() {
+    const { characteristics } = this.state;
+    const unselected = this.props.variants.characteristics.filter(char => (
+      !characteristics.hasOwnProperty(char.id)
+    ));
+
+    if (unselected.length) {
+      return unselected[0];
+    }
+
+    return null;
+  }
+
+  /**
    * Checks if all selections have been made.
    * @return {boolean}
    */
@@ -87,7 +117,12 @@ class ProductCharacteristics extends Component {
     const selected = !!((filteredValues.length === variants.characteristics.length) && variantId);
 
     if (!selected) {
-      // TODO: handle scroll into view.
+      const firstUnselected = this.findUnselectedCharacteristic();
+
+      if (firstUnselected) {
+        const ref = this.refsStore[firstUnselected.id];
+        ref.current.scrollIntoView({ behaviour: 'smooth' });
+      }
     }
 
     return selected;
@@ -204,6 +239,7 @@ class ProductCharacteristics extends Component {
           selected,
           values,
           select: this.handleSelection,
+          charRef: this.refsStore[char.id],
         })
       );
     });
