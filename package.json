@@ -11,7 +11,8 @@
     "precommit": "lint-staged",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
-    "e2e:ios11": "make e2e-ios11"
+    "e2e:ios11": "make e2e-ios11",
+    "start-cloud": "sgconnect backend start & sgconnect frontend start"
   },
   "pre-commit": [
     "precommit"
