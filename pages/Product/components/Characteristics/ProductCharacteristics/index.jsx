@@ -10,6 +10,7 @@ import { isCharacteristicEnabled, reduceSelection, findSelectionIndex } from './
  */
 class ProductCharacteristics extends Component {
   static propTypes = {
+    conditioner: PropTypes.shape().isRequired,
     render: PropTypes.func.isRequired,
     navigate: PropTypes.func,
     variantId: PropTypes.string,
@@ -22,9 +23,20 @@ class ProductCharacteristics extends Component {
     variants: null,
   }
 
-  state = {
-    characteristics: {},
-  };
+  /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.refsStore = {};
+
+    this.state = {
+      characteristics: {},
+    };
+
+    props.conditioner.addConditioner('product-variants', this.checkSelection);
+  }
 
   /**
    * @param {Object} nextProps The next component props.
@@ -32,7 +44,18 @@ class ProductCharacteristics extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.props.variants && nextProps.variants) {
       this.setCharacterics(nextProps);
+      this.setRefs(nextProps);
     }
+  }
+
+  /**
+   * Sets the refs to the charactersistics selects.
+   * @param {Object} props The props to check against.
+   */
+  setRefs = (props) => {
+    props.variants.characteristics.forEach((char) => {
+      this.refsStore[char.id] = React.createRef();
+    });
   }
 
   /**
@@ -41,10 +64,10 @@ class ProductCharacteristics extends Component {
    */
   setCharacterics = (props) => {
     const { variantId, variants } = props;
-    const { characteristics } = variants.products.find(product => product.id === variantId);
+    const result = variants.products.find(product => product.id === variantId);
 
-    if (characteristics) {
-      this.setState({ characteristics });
+    if (result && result.characteristics) {
+      this.setState({ characteristics: result.characteristics });
     }
   }
 
@@ -64,6 +87,46 @@ class ProductCharacteristics extends Component {
     const currentIndex = findSelectionIndex(characteristics, id);
 
     return reduceSelection(characteristics, selection, currentIndex);
+  }
+
+  /**
+   * Finds the first unselected characteristic.
+   * @return {Object|null}
+   */
+  findUnselectedCharacteristic() {
+    const { characteristics } = this.state;
+    const unselected = this.props.variants.characteristics.filter(char => (
+      !characteristics.hasOwnProperty(char.id)
+    ));
+
+    if (unselected.length) {
+      return unselected[0];
+    }
+
+    return null;
+  }
+
+  /**
+   * Checks if all selections have been made.
+   * @return {boolean}
+   */
+  checkSelection = () => {
+    const { characteristics } = this.state;
+    const { variants, variantId } = this.props;
+    const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
+
+    const selected = !!((filteredValues.length === variants.characteristics.length) && variantId);
+
+    if (!selected) {
+      const firstUnselected = this.findUnselectedCharacteristic();
+
+      if (firstUnselected) {
+        const ref = this.refsStore[firstUnselected.id];
+        ref.current.scrollIntoView({ behaviour: 'smooth' });
+      }
+    }
+
+    return selected;
   }
 
   handleFinished = () => {
@@ -172,6 +235,7 @@ class ProductCharacteristics extends Component {
 
           return (
             this.props.render({
+              charRef: this.refsStore[char.id],
               disabled,
               id: char.id,
               key: char.id,

@@ -5,7 +5,7 @@ import {
   getVariantId,
   isBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getCharacteristics } from './selectors';
+import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
 /**
  * Maps the contents of the state to the component props.
@@ -16,9 +16,17 @@ import { getCharacteristics } from './selectors';
 const mapStateToProps = (state, props) => ({
   isBaseProduct: isBaseProduct(state, props),
   baseProductId: getBaseProductId(state, props),
-  // characteristics: getCharacteristics(state, props),
   variants: getProductVariants(state, props),
   variantId: getVariantId(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Function} dispatch The redux dispatch function.
+ * @param {Function} props The component props.
+ * @return {Object} The extended component props.
+ */
+const mapDispatchToProps = dispatch => ({
+  addToCart: products => dispatch(addProductsToCart(products)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps);

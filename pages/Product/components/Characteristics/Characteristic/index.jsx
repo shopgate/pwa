@@ -9,6 +9,10 @@ import Sheet from './components/Sheet';
  */
 class Characteristic extends Component {
   static propTypes = {
+    charRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape(),
+    ]).isRequired,
     disabled: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -92,7 +96,7 @@ class Characteristic extends Component {
 
     return (
       <Fragment>
-        <button className={classes} onClick={this.handleButtonClick}>
+        <button className={classes} onClick={this.handleButtonClick} ref={this.props.charRef}>
           {selected && <div className={styles.label}>{translatedLabel}</div>}
           <div className={styles.selection}>{buttonLabel}</div>
         </button>

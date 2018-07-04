@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
@@ -19,12 +20,12 @@ import { NavigatorContext } from './context';
 import styles from './style';
 
 /**
- * The navigator component.
+ * The Navigator component.
  * @param {Object} props The component props.
- * @returns {JSX}
  */
 class Navigator extends PureComponent {
   static propTypes = {
+    fetchSearchSuggestions: PropTypes.func.isRequired,
     navigate: PropTypes.func.isRequired,
     backgroundColor: PropTypes.string,
     navigatorEnabled: PropTypes.bool,
@@ -80,14 +81,22 @@ class Navigator extends PureComponent {
     if (this.state.searchQuery !== query) {
       this.setState({
         searchQuery: query,
-      });
+      }, this.fetchSuggestions);
     }
   }
 
   /**
-   * @param {boolean} active The new state for the search field.
+   * Fetch search suggestions with the locally set search query.
    */
-  toggleSearchField = (active) => {
+  fetchSuggestions = throttle(() => {
+    this.props.fetchSearchSuggestions(this.state.searchQuery);
+  }, 1000)
+
+  /**
+   * @param {boolean} active The new state for the search field.
+   * @param {boolean} submit Whether or not to submit the search.
+   */
+  toggleSearchField = (active = false, submit = false) => {
     if (this.state.searchField === active) {
       return;
     }
@@ -96,7 +105,7 @@ class Navigator extends PureComponent {
       searchField: active,
     });
 
-    if (!active) {
+    if (submit && !active) {
       this.handleSubmitSearch();
     }
   }

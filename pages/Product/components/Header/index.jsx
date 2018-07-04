@@ -23,14 +23,19 @@ import ProductContext from '../../context';
  */
 const ProductHeader = () => (
   <ProductContext.Consumer>
-    {({ productId, variantId, options }) => {
+    {({
+      productId,
+      variantId,
+      options,
+      conditioner,
+    }) => {
       const id = variantId || productId;
       return (
         <div className={styles.content}>
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons productId={id} options={options} />
+            <CTAButtons productId={id} options={options} conditioner={conditioner} />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 

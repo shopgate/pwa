@@ -12,6 +12,7 @@ import connect from './connector';
  */
 class CTAButtons extends PureComponent {
   static propTypes = {
+    conditioner: PropTypes.shape().isRequired,
     isFavorite: PropTypes.bool.isRequired,
     addToCart: PropTypes.func,
     isDisabled: PropTypes.bool,
@@ -29,10 +30,16 @@ class CTAButtons extends PureComponent {
   };
 
   handleAddToCart = () => {
-    this.props.addToCart({
-      productId: this.props.productId,
-      options: this.props.options,
-      quantity: 1,
+    this.props.conditioner.check().then((fullfilled) => {
+      if (!fullfilled) {
+        return;
+      }
+
+      this.props.addToCart({
+        productId: this.props.productId,
+        options: this.props.options,
+        quantity: 1,
+      });
     });
   }
 

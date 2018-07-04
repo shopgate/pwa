@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProductContext from '../../context';
 import ProductCharacteristics from './ProductCharacteristics';
 import Characteristic from './Characteristic';
 
@@ -7,11 +8,16 @@ import Characteristic from './Characteristic';
  * @return {JSX}
  */
 const Characteristics = ({ productId, variantId }) => (
-  <ProductCharacteristics
-    productId={productId}
-    variantId={variantId}
-    render={props => <Characteristic {...props} />}
-  />
+  <ProductContext.Consumer>
+    {({ conditioner }) => (
+      <ProductCharacteristics
+        productId={productId}
+        variantId={variantId}
+        render={props => <Characteristic {...props} />}
+        conditioner={conditioner}
+      />
+    )}
+  </ProductContext.Consumer>
 );
 
 Characteristics.propTypes = {

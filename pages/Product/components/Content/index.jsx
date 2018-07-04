@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import { Conditioner } from '@shopgate/pwa-core';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Reviews from 'Components/Reviews';
@@ -17,7 +18,6 @@ import ProductContext from '../../context';
 /**
  * The product content component.
  */
-@connect
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
@@ -40,6 +40,10 @@ class ProductContent extends Component {
    */
   constructor(props) {
     super(props);
+
+    this.baseContextValue = {
+      conditioner: new Conditioner(),
+    };
 
     this.state = {
       characteristics: {},
@@ -76,22 +80,6 @@ class ProductContent extends Component {
   }
 
   /**
-   * Stores a selected characteristic in local state.
-   */
-  setCharacteristic = ({ id, value }) => {
-    if (this.state.characteristics[id] === value) {
-      return;
-    }
-
-    this.setState({
-      characteristics: {
-        ...this.state.characteristics,
-        [id]: value,
-      },
-    });
-  }
-
-  /**
    * Stores the selected options in local state.
    * @param {string} optionId The ID of the option.
    * @param {string} value The option value.
@@ -117,6 +105,7 @@ class ProductContent extends Component {
 
     const contextValue = {
       ...this.state,
+      ...this.baseContextValue,
     };
 
     return (
@@ -191,4 +180,4 @@ class ProductContent extends Component {
   }
 }
 
-export default ProductContent;
+export default connect(ProductContent);
