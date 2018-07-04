@@ -28,8 +28,8 @@ class Html extends Component {
    * @param {Object} props The component props.
    * @param {Object} context The component context.
    */
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       html: this.html,
