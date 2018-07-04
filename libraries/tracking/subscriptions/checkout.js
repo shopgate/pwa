@@ -31,19 +31,19 @@ export default function checkout(subscribe) {
         return;
       }
 
-      const type = data.type !== 'legacy' ? 'web_PWA' : 'app_PWA';
+      const source = data.type !== 'legacy' ? 'web_PWA' : 'app_PWA';
 
       analyticsSetCustomValues({
         customDimensions: [{
           index: 4,
-          value: type,
+          value: source,
         }],
       });
 
       const formattedData = {
         ...formatPurchaseData(data.order),
         meta: {
-          type,
+          source,
         },
       };
 
