@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -20,6 +21,7 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    classNames: PropTypes.objectOf(PropTypes.string),
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
     ratio: PropTypes.arrayOf(PropTypes.number),
@@ -35,7 +37,12 @@ class ProductImage extends Component {
     alt: null,
     animating: true,
     forcePlaceholder: false,
-    highestResolutionLoaded: () => {},
+    classNames: {
+      container: null,
+      glowContainer: null,
+      imageContainer: null,
+    },
+    highestResolutionLoaded: () => { },
     ratio: null,
     resolutions: [
       {
@@ -104,12 +111,16 @@ class ProductImage extends Component {
       );
     }
 
-    // Return the actual image.
+    const classes = classNames(
+      styles.container,
+      this.props.classNames.container
+    );
+
     return (
       <Image
         {...this.props}
         backgroundColor={colors.light}
-        className={styles.container}
+        className={classes}
         onError={this.imageLoadingFailed}
       />
     );
@@ -129,10 +140,20 @@ class ProductImage extends Component {
    * @return {JSX}
    */
   render() {
+    const glowClasses = classNames(
+      styles.glowContainer,
+      this.props.classNames.glowContainer
+    );
+
+    const classes = classNames(
+      styles.container,
+      this.props.classNames.imageContainer
+    );
+
     return (
-      <div className={styles.container}>
-        { this.renderedContent }
-        <div className={styles.glowContainer} />
+      <div className={classes}>
+        {this.renderedContent}
+        <div className={glowClasses} />
       </div>
     );
   }

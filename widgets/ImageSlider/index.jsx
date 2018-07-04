@@ -11,7 +11,7 @@ import styles from './style';
  */
 const ImageSliderWidget = ({ settings, className }) => (
   <ImageSlider
-    className={className}
+    className={[className, styles.wrapper].join(' ')}
     autoPlay={settings.autostart}
     indicators={settings.pagination}
     interval={settings.delay}
@@ -22,7 +22,7 @@ const ImageSliderWidget = ({ settings, className }) => (
 
       if (image.link) {
         return (
-          <Link key={key} href={image.link} className={styles.link}>
+          <Link key={key} href={image.link} className={styles.link} data-test-id="withLink">
             <img src={image.image} alt={image.alt} className={styles.image} data-test-id={`link : ${settings.link}`} />
           </Link>
         );

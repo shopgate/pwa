@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import BaseList from '@shopgate/pwa-common/components/List';
 import BaseListItem from '@shopgate/pwa-common/components/List/components/Item';
 import Item from './components/Item';
@@ -33,7 +34,7 @@ class List extends Component {
     }
 
     return (
-      <BaseList className={className}>
+      <BaseList className={classNames(className, styles.container)}>
         {React.Children.map(children, (child, index) => {
           if (!React.isValidElement(child)) {
             return null;
@@ -44,11 +45,10 @@ class List extends Component {
 
           return (
             <BaseListItem
-              className={styles.item}
               isSelected={child.props.isSelected}
               key={key}
             >
-              <div className={styles.innerContainer}>
+              <div className={styles.item}>
                 {child}
               </div>
             </BaseListItem>

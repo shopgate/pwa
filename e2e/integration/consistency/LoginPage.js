@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import els from '../elements/de';
+import els from '../../elements/de';
 
 describe('IOS11Test login page', () => {
   it('should check for user menu', () => {
@@ -19,7 +19,7 @@ describe('IOS11Test login page', () => {
     cy.get(els.userMenuLogin)
       .should('be.visible')
       .click();
-    cy.get(els.loginPageUsernameInput)
+    cy.get(els.loginPageEmailInput)
       .should('be.visible');
   });
 

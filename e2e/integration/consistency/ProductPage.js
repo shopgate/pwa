@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import els from '../elements/de';
+import els from '../../elements/de';
 
 describe('IOS11Test productPage', () => {
   it('should check for productImage', () => {
