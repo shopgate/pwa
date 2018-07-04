@@ -19,20 +19,12 @@ import connect from './connector';
  */
 class Product extends Component {
   static propTypes = {
-    resetCurrentProduct: PropTypes.func.isRequired,
     name: PropTypes.string,
   };
 
   static defaultProps = {
     name: null,
   };
-
-  /**
-   * Component will unmount and reset the current product.
-   */
-  componentWillUnmount() {
-    this.props.resetCurrentProduct();
-  }
 
   /**
    * Renders the component.

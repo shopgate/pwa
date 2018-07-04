@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { getProductName } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import resetCurrentProduct from '@shopgate/pwa-common-commerce/product/action-creators/resetCurrentProduct';
 import getProductData from './actions/getProductData';
 
 /**
@@ -20,7 +19,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getProductData: (selectedVariantId = null, baseProductId = null) =>
     dispatch(getProductData(selectedVariantId, baseProductId)),
-  resetCurrentProduct: () => dispatch(resetCurrentProduct()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
