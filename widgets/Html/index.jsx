@@ -32,7 +32,7 @@ class Html extends Component {
     super(props, context);
 
     this.state = {
-      html: parseHTML(props.settings.html, true, props.settings, true),
+      html: this.html,
     };
   }
 
@@ -42,6 +42,18 @@ class Html extends Component {
   componentDidMount() {
     this.htmlContainer.addEventListener('click', this.handleTap, true);
     handleYouTube(this.htmlContainer);
+  }
+
+  /**
+   * Update the component state when the props change.
+   * @param {Object} nextProps The next props.
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.settings.html !== this.props.settings.html) {
+      this.setState({
+        html: this.html,
+      });
+    }
   }
 
   /**
@@ -60,6 +72,13 @@ class Html extends Component {
     this.htmlContainer.removeEventListener('click', this.handleTap, true);
   }
 
+  /**
+   * Creates the HTML content for the component.
+   * @return {string}
+   */
+  get html() {
+    return parseHTML(this.props.settings.html, true, this.props.settings, true);
+  }
   /**
    * If the user tapped a link element, prevent the default behaviour
    * and handle them via ParsedLink.
@@ -86,9 +105,11 @@ class Html extends Component {
       <div
         className={styles}
         dangerouslySetInnerHTML={{ __html: this.state.html }}
-        ref={(element) => { this.htmlContainer = element; }}
+        ref={(element) => {
+          this.htmlContainer = element;
+        }}
         style={{
-          ...this.props.settings.defaultPadding && { padding: variables.gap.big },
+          ...(this.props.settings.defaultPadding && { padding: variables.gap.big }),
         }}
       />
     );
