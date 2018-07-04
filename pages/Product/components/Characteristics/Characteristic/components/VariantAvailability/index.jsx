@@ -8,13 +8,19 @@ import styles from './style';
  * The VariantAvailability component.
  * @return {JSX}
  */
-const VariantAvailability = ({ availability }) => (
-  <Availability
-    className={styles}
-    state={availability.state}
-    text={availability.text}
-  />
-);
+const VariantAvailability = ({ availability }) => {
+  if (!availability) {
+    return null;
+  }
+
+  return (
+    <Availability
+      className={styles}
+      state={availability.state}
+      text={availability.text}
+    />
+  );
+};
 
 VariantAvailability.propTypes = {
   availability: PropTypes.shape(),
