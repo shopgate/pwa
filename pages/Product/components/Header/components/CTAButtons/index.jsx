@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
-import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
+import CartButton from './components/CartButton';
 import styles from './style';
 import connect from './connector';
 
@@ -12,36 +12,13 @@ import connect from './connector';
  */
 class CTAButtons extends PureComponent {
   static propTypes = {
-    conditioner: PropTypes.shape().isRequired,
     isFavorite: PropTypes.bool.isRequired,
-    addToCart: PropTypes.func,
-    isDisabled: PropTypes.bool,
-    isLoading: PropTypes.bool,
-    options: PropTypes.shape(),
     productId: PropTypes.string,
   };
 
   static defaultProps = {
-    addToCart: () => {},
-    isLoading: false,
-    isDisabled: false,
-    options: {},
     productId: null,
   };
-
-  handleAddToCart = () => {
-    this.props.conditioner.check().then((fullfilled) => {
-      if (!fullfilled) {
-        return;
-      }
-
-      this.props.addToCart({
-        productId: this.props.productId,
-        options: this.props.options,
-        quantity: 1,
-      });
-    });
-  }
 
   /**
    * @returns {JSX}
@@ -51,18 +28,11 @@ class CTAButtons extends PureComponent {
       <div className={styles.buttons}>
         <FavoritesButton
           active={this.props.isFavorite}
-          productId={this.props.productId}
           className={styles.favButton}
+          productId={this.props.productId}
           rippleClassName={styles.ripple}
         />
-        <AddToCartButton
-          buttonSize={styles.cartButtonSize}
-          className={styles.cartButton}
-          isLoading={this.props.isLoading}
-          isDisabled={this.props.isDisabled}
-          iconSize={styles.iconSize}
-          onClick={this.handleAddToCart}
-        />
+        <CartButton />
       </div>
     );
   }

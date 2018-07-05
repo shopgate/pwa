@@ -122,7 +122,7 @@ class ProductCharacteristics extends Component {
 
       if (firstUnselected) {
         const ref = this.refsStore[firstUnselected.id];
-        ref.current.scrollIntoView({ behaviour: 'smooth' });
+        ref.current.scrollIntoView({ behavior: 'smooth' });
       }
     }
 

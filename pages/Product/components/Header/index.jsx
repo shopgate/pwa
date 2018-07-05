@@ -27,7 +27,6 @@ const ProductHeader = () => (
       productId,
       variantId,
       options,
-      conditioner,
     }) => {
       const id = variantId || productId;
       return (
@@ -35,7 +34,7 @@ const ProductHeader = () => (
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons productId={id} options={options} conditioner={conditioner} />
+            <CTAButtons />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
