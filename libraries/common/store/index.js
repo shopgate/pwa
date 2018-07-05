@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import persistState from 'redux-localstorage';
+import { persistState } from '@virtuous/redux-persister';
 import { applyWorker } from 'redux-worker';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
@@ -31,13 +31,16 @@ const configureStore = (reducers, Worker) => createStore(
   composeWithDevTools(
     applyMiddleware(thunk, streams, logger),
     applyWorker(new Worker()),
-    persistState([
-      'cart',
-      'client',
-      'page',
-      'url',
-      'user',
-    ], { key: storeKey })
+    persistState({
+      key: storeKey,
+      paths: [
+        'cart',
+        'client',
+        'page',
+        'url',
+        'user',
+      ],
+    })
   )
 );
 
