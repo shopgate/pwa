@@ -1,5 +1,6 @@
 import { logger } from '../../helpers';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
+import * as processTypes from '../../constants/ProcessTypes';
 
 /**
  * Mocked PipelineRequest.
@@ -26,6 +27,7 @@ class MockedPipelineRequest {
     this.input = {};
     this.handleErrors = errorHandleTypes.ERROR_HANDLE_DEFAULT;
     this.errorBlacklist = [];
+    this.process = processTypes.DEFAULT_PROCESSED;
   }
 
   /**
@@ -59,6 +61,20 @@ class MockedPipelineRequest {
     return new Promise((resolve, reject) => {
       this.constructor.mockedDispatchResolver(this, resolve, reject);
     });
+  }
+
+  /**
+   * @param {string} processed The response process type.
+   * @return {PipelineRequest}
+   */
+  setResponseProcessed(processed = DEFAULT_PROCESSED) {
+    if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
+    if (!Object.values(processTypes).includes(processed)) {
+      throw new Error(`The value '${processed}' is not supported!`);
+    }
+
+    this.process = processed;
+    return this;
   }
 
   /**

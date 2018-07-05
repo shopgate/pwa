@@ -8,6 +8,8 @@ import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentCategoryId } from '../../category/selectors';
 
+const defaultFilters = [];
+
 /**
  * Gets the filters reducer.
  * @param {Object} state The application state.
@@ -32,7 +34,7 @@ export const getStoredFilterHash = createSelector(
  */
 export const getActiveFiltersStack = createSelector(
   getFilters,
-  filter => filter.activeFilters
+  filter => filter.activeFilters || defaultFilters
 );
 
 /**

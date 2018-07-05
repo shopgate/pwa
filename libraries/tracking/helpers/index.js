@@ -158,3 +158,20 @@ export const track = (eventName, data, state) => {
 
   return core.track[eventName](data, undefined, undefined, state);
 };
+
+let pwaWebviewVisible = true;
+
+/**
+ * Sets the visible state of the PWA webview.
+ * It's used to determine, if a legacy page is currently active.
+ * @param {boolean} [value=true] Tells if the PWA currently visible.
+ */
+export const setPWAVisibleState = (value = true) => {
+  pwaWebviewVisible = value;
+};
+
+/**
+ * Checks if the PWA webview is currently visible.
+ * @return {boolean}
+ */
+export const isPWAVisible = () => pwaWebviewVisible;

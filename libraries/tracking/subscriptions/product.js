@@ -6,7 +6,7 @@ import {
   getCurrentProductFormatted,
 } from '../selectors/product';
 import getPage from '../selectors/page';
-import { track } from '../helpers/index';
+import { track } from '../helpers';
 
 /**
  * Product tracking subscriptions.

@@ -1,12 +1,12 @@
 {
   "name": "@shopgate/pwa-ui-material",
-  "version": "5.5.0-beta.6",
+  "version": "5.5.0-beta.12",
   "description": "Shopgate's material design UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/eslint-config": "5.5.0-beta.6",
-    "@shopgate/pwa-common": "5.5.0-beta.6",
-    "@shopgate/pwa-unit-test": "5.5.0-beta.6"
+    "@shopgate/eslint-config": "5.5.0-beta.12",
+    "@shopgate/pwa-common": "5.5.0-beta.12",
+    "@shopgate/pwa-unit-test": "5.5.0-beta.12"
   }
 }

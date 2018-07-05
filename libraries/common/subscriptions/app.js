@@ -5,6 +5,7 @@ import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
+import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import * as events from '@virtuous/conductor-events';
 import { navigate } from '../action-creators/router';
@@ -92,6 +93,9 @@ export default function app(subscribe) {
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
 
+    if (action.location !== INDEX_PATH) {
+      dispatch(navigate(ACTION_PUSH, INDEX_PATH));
+    }
     dispatch(navigate(ACTION_PUSH, action.location));
   });
 
