@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import styles from './style';
+import Transition from 'react-transition-group/Transition';
 import Sheet from './components/Sheet';
+import styles from './style';
+import transition from './transition';
 
 /**
  * A single characteristic.
@@ -14,6 +16,7 @@ class Characteristic extends Component {
       PropTypes.shape(),
     ]).isRequired,
     disabled: PropTypes.bool.isRequired,
+    highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     select: PropTypes.func.isRequired,
@@ -30,8 +33,17 @@ class Characteristic extends Component {
   };
 
   state = {
+    highlight: false,
     sheet: false,
   };
+
+  /**
+   * 
+   * @param {*} nextProps 
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({ highlight: nextProps.highlight });
+  }
 
   /**
    * @param {string} defaultLabel The default button label.
@@ -80,6 +92,10 @@ class Characteristic extends Component {
     });
   }
 
+  removeHighlight = () => {
+    this.setState({ highlight: false })
+  }
+
   /**
    * @return {JSX}
    */
@@ -96,10 +112,19 @@ class Characteristic extends Component {
 
     return (
       <Fragment>
-        <button className={classes} onClick={this.handleButtonClick} ref={this.props.charRef}>
-          {selected && <div className={styles.label}>{translatedLabel}</div>}
-          <div className={styles.selection}>{buttonLabel}</div>
-        </button>
+        <Transition in={this.state.highlight} timeout={500} onEntered={this.removeHighlight}>
+          {state => (
+            <button
+              className={classes}
+              onClick={this.handleButtonClick}
+              ref={this.props.charRef}
+              style={transition[state]}
+            >
+              {selected && <div className={styles.label}>{translatedLabel}</div>}
+              <div className={styles.selection}>{buttonLabel}</div>
+            </button>
+          )}
+        </Transition>
         <Sheet
           charId={id}
           items={values}

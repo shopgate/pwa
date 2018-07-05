@@ -32,6 +32,7 @@ class ProductCharacteristics extends Component {
     this.refsStore = {};
 
     this.state = {
+      highlight: null,
       characteristics: {},
     };
 
@@ -123,6 +124,7 @@ class ProductCharacteristics extends Component {
       if (firstUnselected) {
         const ref = this.refsStore[firstUnselected.id];
         ref.current.scrollIntoView({ behavior: 'smooth' });
+        this.setState({ highlight: firstUnselected.id });
       }
     }
 
@@ -237,6 +239,7 @@ class ProductCharacteristics extends Component {
             this.props.render({
               charRef: this.refsStore[char.id],
               disabled,
+              highlight: this.state.highlight === char.id,
               id: char.id,
               key: char.id,
               label: char.label,

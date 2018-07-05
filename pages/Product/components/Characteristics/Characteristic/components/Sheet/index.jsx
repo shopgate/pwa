@@ -113,5 +113,4 @@ export default props => (
       </VariantContext.Consumer>
     )}
   </ProductContext.Consumer>
-
 );
