@@ -2,6 +2,9 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
 import { getCurrentCategoryId } from '@shopgate/pwa-common-commerce/category/selectors';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
+import showModal from '@shopgate/pwa-common/actions/modal/showModal';
+import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 
 /**
  * Filter subscriptions.
@@ -16,5 +19,23 @@ export default function category(subscribe) {
   subscribe(categoryRouteDidEnter$, ({ dispatch, getState }) => {
     const state = getState();
     dispatch(getCategory(getCurrentCategoryId(state)));
+  });
+
+  /**
+   * Gets triggered on pipeline category error.
+   */
+  subscribe(categoryError$, ({ action, dispatch }) => {
+    const { errorCode } = action;
+    let message = 'modal.body_error';
+    if (errorCode === 'ENOTFOUND') {
+      message = 'category.error.not_found';
+    }
+    dispatch(showModal({
+      confirm: 'modal.ok',
+      dismiss: null,
+      message,
+      title: 'category.error.title',
+    }));
+    dispatch(goBackHistory(1));
   });
 }
