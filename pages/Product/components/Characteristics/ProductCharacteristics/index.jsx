@@ -170,6 +170,7 @@ class ProductCharacteristics extends Component {
           ...state,
           [id]: value,
         },
+        highlight: null,
       };
     }, this.handleFinished);
   }
