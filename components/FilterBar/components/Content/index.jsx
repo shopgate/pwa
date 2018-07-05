@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
-/** @type {{currency: string}} */
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import Sort from './components/Sort';
 import ViewSwitch from './components/ViewSwitch';
