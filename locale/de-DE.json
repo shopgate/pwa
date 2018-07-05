@@ -60,6 +60,10 @@
     "go_to_cart": "Warenkorb"
   },
   "category": {
+    "error": {
+      "title": "Ups",
+      "not_found": "Kategorie ist nicht gefunden"
+    },
     "no_result": {
       "heading": "Ups!",
       "body": "Keine Produkte gefunden."
