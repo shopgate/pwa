@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
   name: getProductName(state),
 });
 
-export default connect(mapStateToProps, null, null, { withRef: true });
+export default connect(mapStateToProps);
