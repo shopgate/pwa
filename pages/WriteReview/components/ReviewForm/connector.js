@@ -17,7 +17,7 @@ const mapStateToProps = (state, props) => ({
   authorName: getUserDisplayName(state),
   productId: getBaseProductId(state, props),
   review: getUserReviewForProduct(state, props),
-  isLoadingUserReview: getUserReviewFirstFetchState(state),
+  isLoadingUserReview: getUserReviewFirstFetchState(state, props),
 });
 
 /**

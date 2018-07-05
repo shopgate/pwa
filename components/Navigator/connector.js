@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 import {
   getBackgroundColor,
   isFilterOpen,
@@ -32,6 +33,7 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   navigate: (action, href) => dispatch(navigate(action, href)),
+  fetchSearchSuggestions: searchPhrase => dispatch(fetchSearchSuggestions(searchPhrase)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

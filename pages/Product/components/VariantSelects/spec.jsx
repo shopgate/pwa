@@ -54,7 +54,7 @@ const renderComponent = (selectionValue, spy) => {
   );
 };
 
-describe('<VariantSelects />', () => {
+describe.skip('<VariantSelects />', () => {
   it('should render with variants', () => {
     const wrapper = mount(renderComponent(selection));
 

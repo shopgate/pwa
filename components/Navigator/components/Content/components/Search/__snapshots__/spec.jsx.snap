@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavButton should render 1`] = `
+<_default
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Consumer>
+    <NavigatorSearch
+      active={true}
+      query="shirt"
+      setSearchQuery={[MockFunction]}
+      toggleSearchField={[MockFunction]}
+    >
+      <Transition
+        appear={false}
+        enter={true}
+        exit={true}
+        in={true}
+        mountOnEnter={false}
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        timeout={150}
+        unmountOnExit={false}
+      >
+        <form
+          className="css-15xpwm2"
+          data-test-id="Search"
+          onSubmit={[Function]}
+          style={
+            Object {
+              "transform": "translate3d(0, 0, 0)",
+            }
+          }
+        >
+          <input
+            className="css-1obolt5"
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="search.placeholder"
+            type="search"
+            value="shirt"
+          />
+          <div
+            aria-hidden={true}
+            className="css-lvd6ix"
+            onClick={[Function]}
+            role="button"
+          />
+        </form>
+      </Transition>
+    </NavigatorSearch>
+  </Consumer>
+</_default>
+`;

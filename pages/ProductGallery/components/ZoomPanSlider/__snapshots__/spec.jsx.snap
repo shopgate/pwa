@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ZoomPanSlider /> renders with children 1`] = `
+<ImageSlider
+  autoPlay={false}
+  className=""
+  classNames={Object {}}
+  controls={false}
+  disabled={false}
+  indicators={false}
+  initialSlide={0}
+  interval={3000}
+  loop={false}
+  maxIndicators={null}
+  onSlideChange={null}
+  slidesPerView={1}
+  snapItems={true}
+>
+  <ZoomPanContainer
+    key="0/.0"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+  <ZoomPanContainer
+    key="1/.1"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+  <ZoomPanContainer
+    key="2/.2"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+  <ZoomPanContainer
+    key="3/.3"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+  <ZoomPanContainer
+    key="4/.4"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+</ImageSlider>
+`;
+
+exports[`<ZoomPanSlider /> wraps children in zoom containers 1`] = `
+<ImageSlider
+  autoPlay={false}
+  className=""
+  classNames={Object {}}
+  controls={false}
+  disabled={false}
+  indicators={false}
+  initialSlide={0}
+  interval={3000}
+  loop={false}
+  maxIndicators={null}
+  onSlideChange={null}
+  slidesPerView={1}
+  snapItems={true}
+>
+  <ZoomPanContainer
+    key="0/.0"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+  <ZoomPanContainer
+    key="1/.1"
+    maxZoom={4}
+    minZoom={1}
+    onZoom={[Function]}
+    smoothness={500}
+    zoomBounce={0.3}
+    zoomOnTap={2}
+  >
+    <TestElement />
+  </ZoomPanContainer>
+</ImageSlider>
+`;

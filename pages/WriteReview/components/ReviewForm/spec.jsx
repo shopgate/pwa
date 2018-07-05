@@ -9,7 +9,7 @@ import {
   mockedStateWithReview,
   mockedStateWithUserReviewLoading,
   mockedStateWithoutProductData,
-} from './mock';
+} from '../../mock';
 
 const mockedStore = configureStore();
 
@@ -31,7 +31,7 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
   /* eslint-enable global-require */
   return mount(
     <Provider store={store}>
-      <ReviewForm submit={() => {}} />
+      <ReviewForm submit={() => {}} productId="foo" />
     </Provider>,
     mockRenderOptions
   );

@@ -26,7 +26,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
         },
       ]
     }
-    setProductOption={
+    storeSelection={
       [MockFunction] {
         "calls": Array [
           Array [
@@ -42,6 +42,7 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
     >
       <div
         data-test-id="label"
+        key="test-id"
       >
         <Picker
           buttonComponent={null}
@@ -69,7 +70,6 @@ exports[`<Options /> Given the component was mounted to the DOM should match sna
               },
             ]
           }
-          key="test-id"
           label="label"
           onChange={[Function]}
           placeholder={

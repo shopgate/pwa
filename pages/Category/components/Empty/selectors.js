@@ -20,12 +20,12 @@ export const isCategoryEmpty = createSelector(
      * for the total number of products. Not having a valid number
      * indicates that a request is ongoing.
      */
-    const hasProductResult = products.length === 0 && isNumber(totalProductCount);
+    const hasProductResult = products.length !== 0 && isNumber(totalProductCount);
 
     /**
      * Check if we have any subcategories, child products or a product result for this category.
      */
-    if (categoryChildrenCount === 0 && (categoryProductCount === 0 || hasProductResult)) {
+    if (categoryChildrenCount === 0 && (categoryProductCount === 0 || !hasProductResult)) {
       return true;
     }
 

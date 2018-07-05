@@ -17,8 +17,12 @@ class CartButton extends Component {
   static propTypes = {
     activeCartRoute: PropTypes.bool.isRequired,
     cartProductCount: PropTypes.number.isRequired,
-    openCart: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+    openCart: PropTypes.func,
+  };
+
+  static defaultProps = {
+    openCart: () => {},
   };
 
   /**
@@ -89,3 +93,5 @@ class CartButton extends Component {
 }
 
 export default connect(CartButton);
+
+export { CartButton as UnwrappedCartButton };
