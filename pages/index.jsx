@@ -3,6 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
+import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import Router from '@virtuous/react-conductor/Router';
 import Route from '@virtuous/react-conductor/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
@@ -15,7 +16,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
-import { APP_ROUTES, APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
+import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
@@ -28,8 +29,6 @@ import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
 
-const appRoutesProps = { View };
-
 /**
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
@@ -37,7 +36,7 @@ const appRoutesProps = { View };
 const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
-      <ThemeContext.Provider value={{}}>
+      <ThemeContext.Provider value={{ View }}>
         <Portal name={APP_GLOBALS} />
         <Viewport>
           <ModalContainer component={Dialog} />
@@ -55,11 +54,11 @@ const Pages = () => (
               && <Route pattern={`${FAVORITES_PATH}`} component={routes.Favorites} />
             }
             <Route pattern={`${ITEM_PATH}/:productId/write_review`} component={routes.WriteReview} />
-            <Route pattern={`${CART_PATH}`} component={routes.Cart} />
-            <Route pattern={`${LOGIN_PATH}`} component={routes.Login} />
+            <Route pattern={CART_PATH} component={routes.Cart} />
+            <Route pattern={LOGIN_PATH} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />
+            {React.Children.map(routePortals, Component => Component)}
           </Router>
-          <Portal name={APP_ROUTES} props={appRoutesProps} />
           {isDev && (
             <Helmet>
               <link href={devFontsUrl} rel="stylesheet" />

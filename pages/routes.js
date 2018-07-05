@@ -65,11 +65,6 @@ export const Login = Loadable({
   loading: () => null,
 });
 
-// Export const Orders = Loadable({
-//   Loader: () => import('./Orders'),
-//   Loading: () => null,
-// });
-
 export const WriteReview = Loadable({
   loader: () => import('./WriteReview'),
   loading: () => null,
