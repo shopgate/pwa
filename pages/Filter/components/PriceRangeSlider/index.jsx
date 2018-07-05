@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-/** @type {{currency: string}} */
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import RangeSlider from '@shopgate/pwa-common/components/RangeSlider';
 import I18n from '@shopgate/pwa-common/components/I18n';
