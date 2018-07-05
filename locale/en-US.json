@@ -57,7 +57,7 @@
   },
   "category": {
     "error": {
-      "title": "Oops",
+      "title": "Oops!",
       "not_found": "Category not found"
     },
     "no_result": {
