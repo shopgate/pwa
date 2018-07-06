@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
 // Import Sort from './components/Sort';
 // Import ViewSwitch from './components/ViewSwitch';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import FilterButton from './components/FilterButton';
 import FilterChips from './components/FilterChips';
 import connect from './connector';
@@ -20,10 +21,6 @@ class Content extends Component {
 
   static defaultProps = {
     activeFilters: {},
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
@@ -51,23 +48,11 @@ class Content extends Component {
   }
 
   /**
-   * Returns the currency.
-   * @return {string}
-   */
-  get currency() {
-    /**
-     * TODO: Remove context translation for currency and,
-     * instead, get it from shop settings when available.
-     */
-    const { __ } = this.context.i18n();
-    return __('price.currency');
-  }
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
+    const currency = appConfig.currency;
     return (
       <section>
         <div className={styles}>
@@ -75,7 +60,7 @@ class Content extends Component {
           {/* <Sort /> */}
           <FilterButton />
         </div>
-        <FilterChips currency={this.currency} />
+        <FilterChips currency={currency} />
       </section>
     );
   }

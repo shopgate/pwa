@@ -1,5 +1,5 @@
 export default {
   exited: {
-    display: 'none',
+    transform: 'translateY(-100%)',
   },
 };
