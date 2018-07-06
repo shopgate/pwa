@@ -78,7 +78,12 @@ class ProductGallery extends Component {
             >
               {this.props.images.map(imageSrc => (
                 <div className={styles.slide} key={imageSrc}>
-                  <Image src={imageSrc} resolutions={resolutions} />
+                  <Image
+                    src={imageSrc}
+                    resolutions={resolutions}
+                    backgroundColor="none"
+                    className={styles.image}
+                  />
                 </div>
               ))}
             </ZoomPanSlider>
