@@ -1,4 +1,6 @@
 import EventEmitter from 'events';
+import registerEvents from '../../commands/registerEvents';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '../../constants/Keyboard';
 import { logger } from '../../helpers';
 
 const HANDLER_ADD = 'add';
@@ -33,6 +35,19 @@ class Event extends EventEmitter {
         this.call(...args);
       };
     }
+
+    // Two array for lookups are faster than one object.
+    // https://jsperf.com/object-hasownproperty-vs-includes-vs-indexof/1
+    /**
+     * Collection of event names which must be registered to the app from webview.
+     * @type {Array}
+     */
+    this.registerableEvents = [EVENT_KEYBOARD_WILL_CHANGE];
+    /**
+     * Collection of event names which are already registered to the app.
+     * @type {Array}
+     */
+    this.registeredEvents = [];
   }
 
   /**
@@ -65,6 +80,7 @@ class Event extends EventEmitter {
     eventNames.forEach((event) => {
       switch (type) {
         case HANDLER_ADD:
+          this.registerEvent(event);
           this.addListener(event, callback);
           break;
         case HANDLER_REMOVE:
@@ -74,6 +90,24 @@ class Event extends EventEmitter {
           break;
       }
     });
+  }
+
+  /**
+   * Checks if event should be registered and registers.
+   * @param {string} event Event name.
+   */
+  registerEvent(event) {
+    if (!this.registerableEvents.includes(event)) {
+      // Event is not meant to be registered to the app
+      return;
+    }
+    if (this.registeredEvents.includes(event)) {
+      // Already registered
+      return;
+    }
+
+    registerEvents([event]);
+    this.registeredEvents.push(event);
   }
 
   /**
