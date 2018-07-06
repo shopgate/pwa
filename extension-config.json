@@ -142,6 +142,16 @@
         "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
         "key": "value.frontend"
       }
+    },
+    "currency": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "currencyId"
+      }
     }
   }
 }
