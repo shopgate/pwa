@@ -2,7 +2,7 @@ import { css } from 'glamor';
 
 const fullSize = {
   width: '100%',
-  height: '100%',
+  height: '100vh',
 };
 
 const container = css({
