@@ -58,7 +58,7 @@
   "category": {
     "error": {
       "title": "Ups",
-      "not_found": "Kategorie ist nicht gefunden"
+      "not_found": "Kategorie nicht gefunden"
     },
     "no_result": {
       "heading": "Ups!",
