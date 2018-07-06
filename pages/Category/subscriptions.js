@@ -26,9 +26,11 @@ export default function category(subscribe) {
   subscribe(categoryError$, ({ action, dispatch }) => {
     const { errorCode } = action;
     let message = 'modal.body_error';
+
     if (errorCode === 'ENOTFOUND') {
       message = 'category.error.not_found';
     }
+
     dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,
