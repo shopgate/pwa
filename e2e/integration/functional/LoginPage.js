@@ -21,6 +21,8 @@ describe('functional tests login page', () => {
     cy.get(els.basicDialogText)
       .should('be.visible')
       .contains('The given credentials are wrong or do not exist.');
+    cy.get(els.basicDialogOkButton)
+      .click();
   });
 
   it('should check for correct credentials', () => {
@@ -37,7 +39,7 @@ describe('functional tests login page', () => {
         .type(userC.password)
         .type('{enter}');
       cy.wait(10000);
-      cy.get(els.navigatorButton)
+      cy.get(els.tabBarMore)
         .should('be.visible')
         .click();
       cy.get(els.loginWelcomeText)
@@ -45,6 +47,9 @@ describe('functional tests login page', () => {
         .contains('Hallo Dennis');
     });
     logOutUser();
+    cy.get(els.backButton)
+      .should('be.visible')
+      .click();
   });
 
   it('should check for forgott password', () => {
