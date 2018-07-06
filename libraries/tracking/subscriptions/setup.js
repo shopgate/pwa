@@ -11,8 +11,9 @@ import {
   appDidStart$,
 } from '@shopgate/pwa-common/streams/app';
 import UnifiedPlugin from '@shopgate/tracking-core/plugins/trackers/Unified';
-import { APP_EVENT_VIEW_DID_APPEAR } from '../constants';
+import { APP_EVENT_VIEW_DID_APPEAR, APP_EVENT_VIEW_DID_DISAPPEAR } from '../constants';
 import { pwaDidAppear } from '../action-creators';
+import { setPWAVisibleState } from '../helpers';
 
 /**
  * Setup tracking subscriptions.
@@ -22,10 +23,16 @@ export default function setup(subscribe) {
   subscribe(appWillStart$, ({ dispatch }) => {
     registerEvents([
       APP_EVENT_VIEW_DID_APPEAR,
+      APP_EVENT_VIEW_DID_DISAPPEAR,
     ]);
 
     event.addCallback(APP_EVENT_VIEW_DID_APPEAR, () => {
+      setPWAVisibleState(true);
       dispatch(pwaDidAppear());
+    });
+
+    event.addCallback(APP_EVENT_VIEW_DID_DISAPPEAR, () => {
+      setPWAVisibleState(false);
     });
   });
 
