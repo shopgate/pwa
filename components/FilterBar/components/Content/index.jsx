@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
+// Import Sort from './components/Sort';
+// Import ViewSwitch from './components/ViewSwitch';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import Sort from './components/Sort';
-import ViewSwitch from './components/ViewSwitch';
 import FilterButton from './components/FilterButton';
 import FilterChips from './components/FilterChips';
 import connect from './connector';
@@ -56,8 +56,8 @@ class Content extends Component {
     return (
       <section>
         <div className={styles}>
-          <ViewSwitch />
-          <Sort />
+          {/* <ViewSwitch /> */}
+          {/* <Sort /> */}
           <FilterButton />
         </div>
         <FilterChips currency={currency} />

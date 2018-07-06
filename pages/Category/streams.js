@@ -5,7 +5,7 @@ import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 export const categoryWillEnter$ = routeWillEnter$
-  .filter(({ action }) => action.route.pathname.startsWith(`${CATEGORY_PATH}/`));
+  .filter(({ action }) => action.route.pattern === `${CATEGORY_PATH}/:categoryId`);
 
 export const receivedVisibleCategory$ = main$
   .filter(({ action }) => {

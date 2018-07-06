@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
-import removeAllTemporaryFilters from '@shopgate/pwa-common-commerce/filter/actions/removeAllTemporaryFilters';
+import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 
 /**
- * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
+ * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  removeAllTemporaryFilters: () => dispatch(removeAllTemporaryFilters()),
+  removeAllTemporaryFilters: () => dispatch(removeTemporaryFilter(null)),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps, null, { pure: () => null });
