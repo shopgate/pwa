@@ -3,7 +3,16 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  flexGrow: 1,
+  height: variables.navigator.height,
+  left: 0,
+  padding: '5px 0',
+  position: 'absolute',
+  top: 0,
+  width: '100%',
+}).toString();
+
+const form = css({
+  height: '100%',
 }).toString();
 
 const input = css({
@@ -12,7 +21,7 @@ const input = css({
   border: `1px ${colors.shade7} solid`,
   padding: `0 ${variables.gap.big}px`,
   background: colors.light,
-  height: '46px',
+  height: '100%',
   borderRadius: '2px',
   outline: 'none',
   position: 'relative',
@@ -31,6 +40,7 @@ const overlay = css({
 
 export default {
   container,
+  form,
   input,
   overlay,
 };
