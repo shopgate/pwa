@@ -41,9 +41,10 @@ class Header extends Component {
    * @returns {JSX}
    */
   render() {
-    const classes = classNames({
-      [styles.shadow]: this.props.shadow,
-    });
+    const classes = classNames(
+      styles.wrapper,
+      { [styles.shadow]: this.props.shadow }
+    );
 
     return (
       <Grid className={classes} component="div" wrap={false}>

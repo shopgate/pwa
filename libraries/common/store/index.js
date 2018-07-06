@@ -1,10 +1,23 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import { persistState } from '@virtuous/redux-persister';
 import { applyWorker } from 'redux-worker';
-import { initPersistentStorage } from './persistent';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
+
+/**
+ * The current version of the state created by this reducer.
+ * @type {string}
+ */
+const STATE_VERSION = 'v1';
+export const storeKey = `shopgate-connect_${STATE_VERSION}`;
+
+let initialState;
+
+if (window.localStorage) {
+  initialState = JSON.parse(window.localStorage.getItem(storeKey));
+}
 
 /**
  * Configures the redux store with all it's middleware and enhancers.
@@ -14,10 +27,20 @@ import logger from './middelwares/logger';
  */
 const configureStore = (reducers, Worker) => createStore(
   reducers, // The reducers.
-  initPersistentStorage(), // The peristent store from localstorage / indexedDb
+  initialState,
   composeWithDevTools(
     applyMiddleware(thunk, streams, logger),
-    applyWorker(new Worker())
+    applyWorker(new Worker()),
+    persistState({
+      key: storeKey,
+      paths: [
+        'cart',
+        'client',
+        'page',
+        'url',
+        'user',
+      ],
+    })
   )
 );
 

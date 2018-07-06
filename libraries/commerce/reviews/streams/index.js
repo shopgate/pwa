@@ -1,3 +1,4 @@
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import {
@@ -52,6 +53,7 @@ export const errorReviewSubmit$ = main$.filter(({ action }) => (
 
 export const shouldFetchReviews$ = main$
   .filter(({ action }) => (
-    action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED
+    (action.type === RECEIVE_PRODUCT || action.type === RECEIVE_PRODUCT_CACHED)
+    && getCurrentRoute().pattern.startsWith(ITEM_PATH)
   ))
   .merge(successReviewSubmit$);
