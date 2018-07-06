@@ -42,7 +42,7 @@
   },
   "price": {
     "from": "From {price}",
-    "range": "Price range from {fromPrice} to {toPrice}",
+    "range": "Price from {fromPrice} to {toPrice}",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
