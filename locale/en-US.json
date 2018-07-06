@@ -47,8 +47,7 @@
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "USD"
+    "msrp": "MSRP"
   },
   "product": {
     "description_heading": "About",
