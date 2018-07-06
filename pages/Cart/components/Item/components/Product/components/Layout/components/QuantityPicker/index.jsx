@@ -195,6 +195,7 @@ class QuantityPicker extends Component {
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}
           min={this.defaultQuantity}
+          data-test-id="quantityPicker"
         />
       </form>
     );
