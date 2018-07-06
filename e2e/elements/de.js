@@ -115,4 +115,9 @@ export default {
   productWithManyProps4SearchResult: "[data-route-path='/search'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
   noResultText: "[data-test-id='noResults'] span",
   productWithManyProps3SearchResult: "[data-route-path='/search'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many properties - 3 -']",
+  quantityPicker: "[data-test-id='quantityPicker']",
+  deleteCouponButton: "[data-test-id='deleteCoupon']",
+  basicCategory: "[data-test-id='link: /category/3537']",
+  productsWithLongNamesCat: "[data-test-id='link: /category/3539']",
+  productWithVeryLongName5Name: "[style='display: block;'] [data-test-id='productGrid'] [data-test-id='Productname: This is a product with a very very long name -5-']",
 };
