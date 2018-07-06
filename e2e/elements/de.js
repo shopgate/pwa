@@ -124,4 +124,9 @@ export default {
   simpleProductWithOptionsNameProductGrid: "[data-test-id='productGrid'] [data-test-id='Productname: simple Product with options']",
   redBallColorOption: "[data-test-id='Red Ball']",
   lowGlowOption: "[data-test-id='low']",
+  quantityPicker: "[data-test-id='quantityPicker']",
+  deleteCouponButton: "[data-test-id='deleteCoupon']",
+  basicCategory: "[data-test-id='link: /category/3537']",
+  productsWithLongNamesCat: "[data-test-id='link: /category/3539']",
+  productWithVeryLongName5Name: "[style='display: block;'] [data-test-id='productGrid'] [data-test-id='Productname: This is a product with a very very long name -5-']",
 };
