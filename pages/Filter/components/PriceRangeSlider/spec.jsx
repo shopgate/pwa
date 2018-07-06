@@ -3,10 +3,13 @@ import { mount } from 'enzyme';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import PriceRangeSlider from './index';
 
+jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+  get currency() { return 'USD'; },
+}));
+
 describe('<PriceRangeSlider />', () => {
   const testLocales = {
     'price.range': 'From {fromPrice} to {toPrice}',
-    'price.currency': 'USD',
   };
 
   const langCode = 'en-US';
