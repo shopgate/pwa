@@ -101,4 +101,9 @@ export default {
   productWithLongDesciption4GridPrice: "[data-test-id='productGrid'] [data-test-id='link: /item/393239'] [data-test-id='minPrice: 0 price: 939 currency: EUR']",
   manufactureFilter1FilterChip: "[data-test-id='Marke: kungBirgers']",
   manufactureFilter1FilterChipRemove: "[data-test-id='remove Marke: kungBirgers']",
+  quantityPicker: "[data-test-id='quantityPicker']",
+  deleteCouponButton: "[data-test-id='deleteCoupon']",
+  basicCategory: "[data-test-id='link: /category/3537']",
+  productsWithLongNamesCat: "[data-test-id='link: /category/3539']",
+  productWithVeryLongName5Name: "[data-test-id='productGrid'] [data-test-id='Productname: This is a product with a very very long name -5-']",
 };
