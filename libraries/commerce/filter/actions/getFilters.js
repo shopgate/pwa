@@ -22,7 +22,7 @@ import processParams from './helpers/processParams';
 const getFilters = () => (dispatch, getState) => {
   const state = getState();
   const activeFilters = getActiveFilters(state);
-  const params = buildFilterParams(state);
+  const params = buildFilterParams();
 
   const hash = generateResultHash({
     pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,

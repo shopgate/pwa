@@ -32,6 +32,21 @@ export const getCurrentRoute = createSelector(
 
 /**
  * @param {Object} state The global state.
+ * @returns {Object|null}
+ */
+export const getCurrentParams = createSelector(
+  getCurrentRoute,
+  (route) => {
+    if (!route || !route.params) {
+      return null;
+    }
+
+    return route.params;
+  }
+);
+
+/**
+ * @param {Object} state The global state.
  * @returns {string|null} The current history pathname.
  */
 export const getCurrentPathname = createSelector(
@@ -47,7 +62,7 @@ export const getCurrentPathname = createSelector(
 
 /**
  * @param {Object} state The global state.
- * @returns {string|null} The current history query.
+ * @returns {Object|null} The current history query.
  */
 export const getCurrentQuery = createSelector(
   getCurrentRoute,

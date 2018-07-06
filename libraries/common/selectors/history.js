@@ -34,20 +34,14 @@ export const getQueryParams = createSelector(
  * @return {*} The URL parameter value.
  */
 export const getQueryParam = createSelector(
-  (state, param) => param,
   getQueryParams,
-  (param, params) => {
-    if (!params) {
+  (state, param) => param,
+  (params, param) => {
+    if (!params || !params[param]) {
       return null;
     }
 
-    const queryParam = params[param];
-
-    if (!queryParam) {
-      return null;
-    }
-
-    return queryParam;
+    return params[param];
   }
 );
 

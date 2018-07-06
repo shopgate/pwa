@@ -23,39 +23,47 @@ export const navigate = (action, location, state) => ({
 /**
  * Creates the dispatched ROUTE_WILL_ENTER action object.
  * @param {Object} route The route object.
+ * @param {string} historyAction The history action.
  * @return {Object} The dispatched action object.
  */
-export const routeWillEnter = route => ({
+export const routeWillEnter = (route, historyAction) => ({
   type: ROUTE_WILL_ENTER,
   route,
+  historyAction,
 });
 
 /**
  * Creates the dispatched ROUTE_DID_ENTER action object.
  * @param {Object} route The route object.
+ * @param {string} historyAction The history action.
  * @return {Object} The dispatched action object.
  */
-export const routeDidEnter = route => ({
+export const routeDidEnter = (route, historyAction) => ({
   type: ROUTE_DID_ENTER,
   route,
+  historyAction,
 });
 
 /**
  * Creates the dispatched ROUTE_WILL_LEAVE action object.
  * @param {Object} route The route object.
+ * @param {string} historyAction The history action.
  * @return {Object} The dispatched action object.
  */
-export const routeWillLeave = route => ({
+export const routeWillLeave = (route, historyAction) => ({
   type: ROUTE_WILL_LEAVE,
   route,
+  historyAction,
 });
 
 /**
  * Creates the dispatched ROUTE_DID_LEAVE action object.
  * @param {Object} route The route object.
+ * @param {string} historyAction The history action.
  * @return {Object} The dispatched action object.
  */
-export const routeDidLeave = route => ({
+export const routeDidLeave = (route, historyAction) => ({
   type: ROUTE_DID_LEAVE,
   route,
+  historyAction,
 });

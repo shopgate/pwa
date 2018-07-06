@@ -1,4 +1,5 @@
 import getPreviousRoute from '@virtuous/conductor-helpers/getPreviousRoute';
+import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import getRouteById from '@virtuous/conductor-helpers/getRouteById';
 import * as actions from '../../action-creators/router';
 
@@ -11,10 +12,10 @@ const routeWillEnter = id => (dispatch) => {
   const prevRoute = getPreviousRoute();
 
   if (prevRoute) {
-    dispatch(actions.routeWillLeave(prevRoute));
+    dispatch(actions.routeWillLeave(prevRoute, ACTION_PUSH));
   }
 
-  dispatch(actions.routeWillEnter(route));
+  dispatch(actions.routeWillEnter(route, ACTION_PUSH));
 };
 
 export default routeWillEnter;
