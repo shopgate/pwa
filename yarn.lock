@@ -86,9 +86,9 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/eslint-config@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.5.0-beta.11.tgz#3768465ab7ea08bf4cb64e79221deefa900682f6"
+"@shopgate/eslint-config@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.5.0.tgz#639a15debf06791b784da1d2593a90e9c14bd6cb"
   dependencies:
     babel-eslint "^8.2.1"
     eslint-config-airbnb "^16.1.0"
@@ -99,16 +99,16 @@
     eslint-plugin-react "^7.6.1"
     react-hot-loader "4.0.1"
 
-"@shopgate/pwa-common-commerce@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.5.0-beta.11.tgz#c62856d3093a1a511e7447480400eb665669865c"
+"@shopgate/pwa-common-commerce@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.5.0.tgz#5a4b318e5d445526ba3576adfd2e36407a249ec6"
   dependencies:
     recompose "^0.26.0"
     reselect "^3.0.1"
 
-"@shopgate/pwa-common@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.5.0-beta.11.tgz#1e538c19968ca108688b752ac2fc0f6abe1537d1"
+"@shopgate/pwa-common@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.5.0.tgz#71a610eaf5118394fb685f17f32489a9826d68fe"
   dependencies:
     classnames "^2.2.5"
     crypto-js "3.1.9-1"
@@ -133,33 +133,37 @@
     rxjs "^5.4.3"
     url-search-params "^0.10.0"
 
-"@shopgate/pwa-core@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.5.0-beta.11.tgz#4251fc099665aaa63fec9b3c314db22b4a858870"
+"@shopgate/pwa-core@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.5.0.tgz#cb7eaa644774c69ad6c3c59c379cc0c2370127cf"
   dependencies:
     crypto-js "3.1.9-1"
     isomorphic-fetch "^2.2.1"
     lodash "^4.6.1"
 
-"@shopgate/pwa-e2e-test@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-5.5.0-beta.11.tgz#161e4eb74bd5b53c4a30724abb08a32279d84df3"
+"@shopgate/pwa-e2e-test@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-5.5.0.tgz#9993f491e5e2b4ae59dc1bc02f6d9be4ef103c37"
 
-"@shopgate/pwa-tracking@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.5.0-beta.11.tgz#5665777378e9320f6846260c4caf2659e2efa3da"
+"@shopgate/pwa-tracking@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.5.0.tgz#acc9a1147590438d1239d267f49f9842769fc00d"
 
-"@shopgate/pwa-ui-ios@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-5.5.0-beta.11.tgz#e42b123be4ec6570da5e68b04bebb54645a6dce5"
+"@shopgate/pwa-ui-ios@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-5.5.0.tgz#91388ed9397d8ea430eb1a7aa3e052c58d7a41b5"
 
-"@shopgate/pwa-ui-shared@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.5.0-beta.11.tgz#4613e5cee7563c738293fc3f93727272fb8d9ddb"
+"@shopgate/pwa-ui-material@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-material/-/pwa-ui-material-5.5.0.tgz#ba9f1203da989e615869aca0d31efbbcaa0aa56c"
 
-"@shopgate/pwa-unit-test@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.5.0-beta.11.tgz#3cdb5b80775032ef4d3fb61f11b85035329ce198"
+"@shopgate/pwa-ui-shared@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.5.0.tgz#cc954931f56803ffef05d36a6675ba7171d65701"
+
+"@shopgate/pwa-unit-test@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.5.0.tgz#a26e19465daa968e7e0accc6ed0595b66e3e8a6f"
   dependencies:
     babel-core "^6.26.0"
     babel-preset-es2015 "^6.24.1"
@@ -173,9 +177,9 @@
     react-tap-event-plugin "^3.0.2"
     react-test-renderer "^16.2.0"
 
-"@shopgate/pwa-webcheckout-shopify@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.5.0-beta.11.tgz#df7ded8fee190d4d8b203c4933e579c03d6a733e"
+"@shopgate/pwa-webcheckout-shopify@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.5.0.tgz#795cef294233f6ad22cbeab0ad16bb38cecb9605"
 
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
@@ -183,9 +187,9 @@
   dependencies:
     hammerjs "^2.0.8"
 
-"@shopgate/tracking-core@5.5.0-beta.11":
-  version "5.5.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.5.0-beta.11.tgz#81635c52d149e3b5ad301c63faed1807d8e8763a"
+"@shopgate/tracking-core@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.5.0.tgz#15b40a37e9dba59fdfca7d5d6dcddfad98f74df1"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
@@ -5470,17 +5474,13 @@ lodash@4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@^4.0.0:
+lodash@^4.0.0, lodash@^4.17.10:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
 lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
-
-lodash@^4.17.10:
-  version "4.17.10"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
 log-driver@^1.2.5:
   version "1.2.7"
