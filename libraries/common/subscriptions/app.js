@@ -31,6 +31,7 @@ export default function app(subscribe) {
     pipelineManager.addSuppressedErrors([
       errorCodes.EACCESS,
       errorCodes.E999,
+      errorCodes.ENOTFOUND,
     ]);
 
     // Map the error events into the Observable streams.

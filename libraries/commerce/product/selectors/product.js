@@ -59,7 +59,7 @@ export const getProductById = (state, id) => getProducts(state)[id];
 /**
  * Retrieves the current base product page from the store.
  * @param {Object} state The current application state.
- * @return {string} The id of the current base product.
+ * @return {string|null} The id of the current base product.
  */
 export const getCurrentBaseProductId = state => state.product.currentProduct.productId;
 
