@@ -19,6 +19,7 @@ class TextField extends Component {
     label: PropTypes.node,
     multiLine: PropTypes.bool,
     onChange: PropTypes.func,
+    onFocusChange: PropTypes.func,
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
     password: PropTypes.bool,
@@ -35,6 +36,7 @@ class TextField extends Component {
     label: '',
     multiLine: false,
     onChange: () => {},
+    onFocusChange: () => {},
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
@@ -91,6 +93,7 @@ class TextField extends Component {
     this.setState({
       isFocused,
     });
+    this.props.onFocusChange(isFocused);
   };
 
   /**
@@ -128,7 +131,7 @@ class TextField extends Component {
 
     // Forward the boolean result to the input field.
     return validationError === true;
-  }
+  };
 
   /**
    * Renders the text field.
