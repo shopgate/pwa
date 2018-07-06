@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProductCharacteristics from '@shopgate/pwa-ui-shared/ProductCharacteristics';
 import ProductContext from '../../context';
-import ProductCharacteristics from './ProductCharacteristics';
 import Characteristic from './Characteristic';
 
 /**
+ * @param {Object} props The component props.
  * @return {JSX}
  */
 const Characteristics = ({ productId, variantId }) => (
