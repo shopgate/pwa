@@ -60,6 +60,10 @@
     "go_to_cart": "Ga naar winkelwagen"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Categorie niet gevonden"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "Geen producten gevonden."
