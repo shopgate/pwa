@@ -43,7 +43,7 @@ const showModal = options => (dispatch, getState) => {
      * when the user interacts with its buttons. Since promise handling is optional for the action,
      * the promise can't be rejected, but resolves with null.
      */
-    logger.warn('Modal creation aborted since an equal one was already added to the modal stack');
+    logger.warn('Modal creation aborted since an identical one was already added to the modal stack', options);
     return Promise.resolve(null);
   }
 
