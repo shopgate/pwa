@@ -11,7 +11,6 @@ const buttonProto = {
   lineHeight: 1,
   color: themeConfig.colors.accent,
   outline: 0,
-  zIndex: 15, // Should overlap the gallery bullets
 };
 
 const buttonFlat = css(buttonProto).toString();
