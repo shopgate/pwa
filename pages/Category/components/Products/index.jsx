@@ -29,10 +29,6 @@ class CategoryProducts extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.products) {
-      return null;
-    }
-
     return (
       <ProductGrid
         handleGetProducts={this.fetchProducts}
