@@ -17,6 +17,7 @@ const defaultAppConfig = {
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
   shopCNAME: null,
+  currency: 'USD',
 };
 
 /**
