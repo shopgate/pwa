@@ -16,9 +16,8 @@ const CheckoutButton = ({ isActive }) => (
   <Link href={CHECKOUT_PATH} disabled={!isActive}>
     <RippleButton
       disabled={!isActive}
-      flat={false}
-      type="checkout"
-      className={styles.button}
+      type="regular"
+      className={isActive ? styles.button : styles.disabledButton}
 
     >
       <I18n.Text
