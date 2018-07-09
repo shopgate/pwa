@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
 import event from '@shopgate/pwa-core/classes/Event';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/Keyboard';
 import { shopName } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
@@ -30,6 +31,7 @@ class View extends Component {
       style: PropTypes.array,
     }),
     isFullscreen: PropTypes.bool,
+    noScrollOnKeyboard: PropTypes.bool,
     style: PropTypes.shape(),
     title: PropTypes.string,
     viewTop: PropTypes.bool,
@@ -46,6 +48,7 @@ class View extends Component {
       style: [],
     },
     isFullscreen: false,
+    noScrollOnKeyboard: false,
     style: null,
     title: '',
     viewTop: true,
@@ -66,6 +69,24 @@ class View extends Component {
     // Store the active pathname at instantiation
     this.pathname = context.routePath;
     this.element = null;
+
+    this.state = {
+      noScroll: false,
+    };
+  }
+
+  /**
+   * Adds keyboardWillChangeListener.
+   */
+  bindKeyboardChange() {
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard)
+  }
+
+  /**
+   * Removed keyboardWillChange listener.
+   */
+  unbindKeyboardChange() {
+    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard);
   }
 
   /**
@@ -78,6 +99,19 @@ class View extends Component {
     }
 
     this.props.setTop(true);
+
+    if (this.props.noScrollOnKeyboard) {
+      this.bindKeyboardChange();
+    }
+  }
+
+  /**
+   * Unbinds keyboard listener
+   */
+  componentDidUnmount() {
+    if (this.props.noScrollOnKeyboard) {
+      this.unbindKeyboardChange();
+    }
   }
 
   /**
@@ -110,6 +144,17 @@ class View extends Component {
    */
   setRef = (ref) => {
     this.element = ref;
+  };
+
+  /**
+   * Keyboard will change callback.
+   * @param {Object} params Event params.
+   * @param {boolean} params.open If keyboard is open.
+   */
+  handleKeyboard = ({ open }) => {
+    this.setState({
+      noScroll: open,
+    });
   };
 
   /**
@@ -177,7 +222,8 @@ class View extends Component {
     const contentStyle = styles.content(
       this.props.hasNavigator,
       this.props.isFullscreen,
-      this.props.considerPaddingTop && this.props.hasTabBar
+      this.props.considerPaddingTop && this.props.hasTabBar,
+      this.state.noScroll
     );
 
     const { children } = this.props;

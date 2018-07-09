@@ -21,12 +21,14 @@ const container = css({
 const content = (
   hasNavigator = true,
   isFullscreen = false,
-  considerPaddingTop = false
+  considerPaddingTop = false,
+  noScroll = false
 ) => {
   const navHeight = hasNavigator ? variables.navbar.height : 0;
+  const overflow = noScroll ? 'hidden' : 'auto';
 
   return css({
-    overflow: 'auto',
+    overflow,
     overflowScrolling: 'touch',
     WebkitOverflowScrolling: 'touch',
     width: '100%',
