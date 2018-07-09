@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import event from '@shopgate/pwa-core/classes/Event';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/Keyboard';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
@@ -43,6 +44,7 @@ class SearchField extends Component {
    * Adds callback for keyboardWillChange.
    */
   componentDidMount() {
+    registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard);
   }
 

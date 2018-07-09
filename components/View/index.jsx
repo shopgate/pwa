@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
 import event from '@shopgate/pwa-core/classes/Event';
-import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/Keyboard';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import { shopName } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
