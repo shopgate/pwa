@@ -87,20 +87,12 @@ class PriceRangeSlider extends Component {
         <I18n.Text string="price.range">
           <I18n.Placeholder forKey="fromPrice">
             <span className={styles.price}>
-              <I18n.Price
-                price={priceMin}
-                currency={currency}
-                fractions={false}
-              />
+              <I18n.Price price={priceMin} currency={currency} fractions={false} />
             </span>
           </I18n.Placeholder>
           <I18n.Placeholder forKey="toPrice">
             <span className={styles.price}>
-              <I18n.Price
-                price={priceMax}
-                currency={currency}
-                fractions={false}
-              />
+              <I18n.Price price={priceMax} currency={currency} fractions={false} />
             </span>
           </I18n.Placeholder>
         </I18n.Text>

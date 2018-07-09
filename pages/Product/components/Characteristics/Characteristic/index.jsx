@@ -38,8 +38,7 @@ class Characteristic extends Component {
   };
 
   /**
-   * 
-   * @param {*} nextProps 
+   * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
     this.setState({ highlight: nextProps.highlight });
@@ -54,7 +53,7 @@ class Characteristic extends Component {
       return defaultLabel;
     }
 
-    const value = this.props.values.find(val => val.id === this.props.selected);
+    const value = this.props.values.find(val => (val.id === this.props.selected));
 
     return value.label;
   }
@@ -69,9 +68,7 @@ class Characteristic extends Component {
       return;
     }
 
-    this.setState({
-      sheet: true,
-    });
+    this.setState({ sheet: true });
   }
 
   /**
@@ -87,13 +84,11 @@ class Characteristic extends Component {
   }
 
   closeSheet = () => {
-    this.setState({
-      sheet: false,
-    });
+    this.setState({ sheet: false });
   }
 
   removeHighlight = () => {
-    this.setState({ highlight: false })
+    this.setState({ highlight: false });
   }
 
   /**
@@ -101,14 +96,17 @@ class Characteristic extends Component {
    */
   render() {
     const { __ } = this.context.i18n();
-    const { disabled, id, selected, values } = this.props;
+    const {
+      disabled,
+      id,
+      selected,
+      values,
+      charRef,
+    } = this.props;
     const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
-    const classes = classNames(
-      styles.button,
-      { [styles.buttonDisabled]: disabled }
-    );
+    const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
 
     return (
       <Fragment>
@@ -117,7 +115,7 @@ class Characteristic extends Component {
             <button
               className={classes}
               onClick={this.handleButtonClick}
-              ref={this.props.charRef}
+              ref={charRef}
               style={transition[state]}
             >
               {selected && <div className={styles.label}>{translatedLabel}</div>}

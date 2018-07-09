@@ -46,6 +46,8 @@ const Pages = () => (
             <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
             <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
             <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
+            <Route pattern={`${CATEGORY_PATH}/:categoryId/filter`} component={routes.Filter} />
+            <Route pattern={`${CATEGORY_PATH}/:categoryId/filter/:attribute`} component={routes.FilterAttribute} />
             <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
             <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
             <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
@@ -57,6 +59,8 @@ const Pages = () => (
             <Route pattern={CART_PATH} component={routes.Cart} />
             <Route pattern={LOGIN_PATH} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />
+            <Route pattern={`${SEARCH_PATH}/filter`} component={routes.Filter} />
+            <Route pattern={`${SEARCH_PATH}/filter/:attribute`} component={routes.FilterAttribute} />
             {React.Children.map(routePortals, Component => Component)}
           </Router>
           {isDev && (

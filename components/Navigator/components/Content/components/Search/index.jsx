@@ -58,10 +58,9 @@ class NavigatorSearch extends Component {
 
   /**
    * Handles blur events on the input element.
-   * @param {SyntheticEvent} event A click event.
    */
-  disableField = (event) => {
-    event.preventDefault();
+  disableField = () => {
+    this.inputField.current.blur();
     this.props.toggleSearchField(false);
   };
 
@@ -70,8 +69,16 @@ class NavigatorSearch extends Component {
    * @param {SyntheticEvent} event An input event.
    */
   handleInput = (event) => {
-    event.preventDefault();
     this.props.setSearchQuery(event.target.value);
+  }
+
+  /**
+   * Disabled the search field and submits the search.
+   * @param {SyntheticEvent} event An input event.
+   */
+  submitSearch = (event) => {
+    event.preventDefault();
+    this.props.toggleSearchField(false, true);
   }
 
   /**
@@ -89,8 +96,9 @@ class NavigatorSearch extends Component {
             style={transition[state]}
           >
             <form
+              className={styles.form}
               data-test-id="Search"
-              onSubmit={this.disableField}
+              onSubmit={this.submitSearch}
             >
               <input
                 className={styles.input}

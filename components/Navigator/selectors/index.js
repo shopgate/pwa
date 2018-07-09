@@ -7,6 +7,7 @@ import {
   getCartProductCount,
   getProductPendingCount,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 
 /**
  * Selects the navigator state.
@@ -22,7 +23,16 @@ export const getNavigatorState = state => state.navigator;
  */
 export const getBackgroundColor = createSelector(
   getNavigatorState,
-  navigatorState => navigatorState.backgroundColor
+  state => state.backgroundColor
+);
+
+/**
+ * @param {Object} state The global state.
+ * @return {Object}
+ */
+export const isFilterOpen = createSelector(
+  getNavigatorState,
+  state => state.filterOpen
 );
 
 /**
@@ -32,7 +42,7 @@ export const getBackgroundColor = createSelector(
  */
 export const getTextColor = createSelector(
   getNavigatorState,
-  navigatorState => navigatorState.textColor
+  state => state.textColor
 );
 
 /**
@@ -62,7 +72,7 @@ export const getSearchPhrase = createSelector(
  */
 export const isSearchShowing = createSelector(
   getNavigatorState,
-  navigatorState => navigatorState.showSearch
+  state => state.showSearch
 );
 
 /**
@@ -76,13 +86,23 @@ export const isProgressBarShowing = createSelector(
 );
 
 /**
+ * @param {Object} state The global state.
+ * @return {boolean}
+ */
+export const showLoadingBar = createSelector(
+  isProgressBarShowing,
+  isViewLoading,
+  (progressBarShowing, viewLoading) => !!(progressBarShowing && viewLoading)
+);
+
+/**
  * Selects the current state from navigator title.
  * @param {Object} state The global state.
  * @return {string}
  */
 export const isTitleShowing = createSelector(
   getNavigatorState,
-  navigatorState => navigatorState.showTitle
+  state => state.showTitle
 );
 
 /**
@@ -92,7 +112,7 @@ export const isTitleShowing = createSelector(
  */
 export const isEnabled = createSelector(
   getNavigatorState,
-  navigatorState => navigatorState.enabled
+  state => state.enabled
 );
 
 /**
@@ -122,7 +142,7 @@ export const isNavDrawerActive = createSelector(
  */
 export const isNavSearchFieldActive = createSelector(
   getNavigatorState,
-  navigatorState => navigatorState.searchActive
+  state => state.searchActive
 );
 
 /**
