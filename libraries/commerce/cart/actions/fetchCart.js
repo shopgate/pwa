@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { PROCESS_LAST } from '@shopgate/pwa-core/constants/ProcessTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import * as pipelines from '../constants/Pipelines';
 import receiveCart from '../action-creators/receiveCart';
@@ -13,6 +14,7 @@ const fetchCart = () => (dispatch) => {
   dispatch(requestCart());
 
   new PipelineRequest(pipelines.SHOPGATE_CART_GET_CART)
+    .setResponseProcessed(PROCESS_LAST)
     .dispatch()
     .then(response => dispatch(receiveCart(response)))
     .catch((error) => {

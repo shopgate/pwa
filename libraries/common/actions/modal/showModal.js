@@ -1,16 +1,15 @@
+import CryptoJs from 'crypto-js';
+import { logger } from '@shopgate/pwa-core/helpers';
 import { createModal } from '../../action-creators/modal';
+import { getModalById } from '../../selectors/modal';
 import promiseMap from './promiseMap';
-
-let modalCount = 0;
 
 /**
  * Creates a runtime unique modal id.
+ * @param {Object} options The modal options.
  * @returns {number}
  */
-const getModalId = () => {
-  modalCount += 1;
-  return modalCount;
-};
+export const getModalId = options => CryptoJs.MD5(JSON.stringify(options)).toString();
 
 /**
  * The modal defaults.
@@ -31,8 +30,22 @@ const defaultModalOptions = {
  * @param {Object} options The modal options.
  * @return {Function} A Redux thunk.
  */
-const showModal = options => (dispatch) => {
-  const id = getModalId();
+const showModal = options => (dispatch, getState) => {
+  const id = getModalId(options);
+
+  // Check if there is already a modal with the same id on the modal stack.
+  const modal = getModalById(getState(), id);
+
+  if (modal) {
+    /**
+     * To prevent bugging the user with duplicate modal, those are not added to the modal stack.
+     * Usually the promise which is returned by showModal resolves with a boolean value
+     * when the user interacts with its buttons. Since promise handling is optional for the action,
+     * the promise can't be rejected, but resolves with null.
+     */
+    logger.warn('Modal creation aborted since an equal one was already added to the modal stack');
+    return Promise.resolve(null);
+  }
 
   const enrichedOptions = {
     ...defaultModalOptions,
