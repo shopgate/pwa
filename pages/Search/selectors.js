@@ -1,14 +1,21 @@
 import { createSelector } from 'reselect';
-import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
+import { getResultByHash } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
-/**
- * Checks if the filter bar is shown within a search page
- * @return {bool}
- */
-export const isFilterBarShown = createSelector(
-  hasActiveFilters,
-  getProductsResult,
-  (activeFilters, { totalProductCount }) =>
-    totalProductCount === null || (totalProductCount > 0 || activeFilters)
+export const showNoResults = createSelector(
+  getResultByHash,
+  (results) => {
+    if (results === null) {
+      return false;
+    }
+
+    if (results && results.isFetching) {
+      return false;
+    }
+
+    if (results && !results.isFetching && (results.products && results.products.length > 0)) {
+      return false;
+    }
+
+    return true;
+  }
 );
