@@ -1,11 +1,17 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
+/**
+ * Manipulates the css when keyboard is opened to keep the UI scrollable.
+ * @param {number} value Keyboard overlap value.
+ * @returns {string}
+ */
 const bottom = value => css({
-  bottom: value,
+  paddingBottom: value,
 }).toString();
 
 const wrapper = css({
+  bottom: 0,
   position: 'absolute',
   left: 0,
   right: 0,
