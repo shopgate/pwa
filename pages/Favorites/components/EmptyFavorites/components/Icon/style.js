@@ -1,39 +1,30 @@
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const outerBorder = css({
+const outerCircle = css({
   fill: '#fff',
 }).toString();
 
-const innerBorder = css({
-  fill: '#d0f4fa',
-  opacity: 0.566,
-}).toString();
-
-const mainCircle = css({
-  fill: '#5ccee3',
-  opacity: 0.292,
+const innerCircle = css({
+  fill: 'currentColor',
+  opacity: 0.065,
 }).toString();
 
 const heart = css({
   fill: '#fff',
-  stroke: '#5ccee3',
+  stroke: 'currentColor',
   strokeWidth: '4px',
-}).toString();
-
-const heartGroup = css({
-  filter: 'url(#shadow)',
 }).toString();
 
 const viewBox = css({
   width: variables.emptyPage.icon,
+  color: colors.primary,
 }).toString();
 
 export default {
-  outerBorder,
-  innerBorder,
-  mainCircle,
+  outerCircle,
+  innerCircle,
   heart,
-  heartGroup,
   viewBox,
 };
