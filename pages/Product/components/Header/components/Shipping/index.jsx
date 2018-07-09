@@ -12,7 +12,7 @@ import styles from './style';
  */
 const Shipping = ({ shipping }) => (
   <PlaceholderLabel className={styles.placeholder} ready={(shipping !== null)}>
-    {shipping && shipping.price !== null && (
+    {shipping && typeof shipping.price !== 'undefined' && shipping.price !== null && (
       <Label className={styles.shipping} price={shipping.price} currency={shipping.currency} />
     )}
   </PlaceholderLabel>
