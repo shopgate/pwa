@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductCharacteristics from '@shopgate/pwa-ui-shared/ProductCharacteristics';
+import ProductCharacteristics from '@shopgate/pwa-common/components/ProductCharacteristics';
 import ProductContext from '../../context';
 import Characteristic from './Characteristic';
 
