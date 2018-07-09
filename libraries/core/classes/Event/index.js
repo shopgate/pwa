@@ -80,7 +80,7 @@ class Event extends EventEmitter {
     eventNames.forEach((event) => {
       switch (type) {
         case HANDLER_ADD:
-          this.registerEvent(event);
+          this.registerAppEvent(event);
           this.addListener(event, callback);
           break;
         case HANDLER_REMOVE:
@@ -96,7 +96,7 @@ class Event extends EventEmitter {
    * Checks if event should be registered and registers.
    * @param {string} event Event name.
    */
-  registerEvent(event) {
+  registerAppEvent(event) {
     if (!this.registerableEvents.includes(event)) {
       // Event is not meant to be registered to the app
       return;
