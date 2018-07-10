@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Link';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
@@ -85,8 +84,7 @@ class Login extends Component {
     this.passwordField.blur();
 
     const { redirect = {} } = this.props;
-    const { location = INDEX_PATH, state = {} } = redirect;
-    this.props.login(this.state, { location, state });
+    this.props.login(this.state, redirect);
   };
 
   /**
