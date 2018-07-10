@@ -1,0 +1,659 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
+<FormElement
+  className=""
+  errorText=""
+  hasValue={true}
+  htmlFor="test-input"
+  isFocused={false}
+  label=""
+  placeholder=""
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder=""
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={false}
+      htmlFor="test-input"
+      isFloating={true}
+      isFocused={false}
+      label=""
+    >
+      <label
+        className="css-u7lqu6 css-16msjt6 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": undefined,
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
+
+exports[`<FormElement /> should render a focused form element 1`] = `
+<FormElement
+  className=""
+  errorText=""
+  hasValue={false}
+  htmlFor="test-input"
+  isFocused={true}
+  label=""
+  placeholder=""
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder=""
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={false}
+      htmlFor="test-input"
+      isFloating={true}
+      isFocused={true}
+      label=""
+    >
+      <label
+        className="css-u7lqu6 css-16msjt6 css-nil"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={true}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": undefined,
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
+
+exports[`<FormElement /> should render a form element with 1 child 1`] = `
+<FormElement
+  className=""
+  errorText=""
+  hasValue={false}
+  htmlFor="test-input"
+  isFocused={false}
+  label=""
+  placeholder=""
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder=""
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={false}
+      htmlFor="test-input"
+      isFloating={false}
+      isFocused={false}
+      label=""
+    >
+      <label
+        className="css-u7lqu6 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <input
+      key="test-key"
+    />
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": undefined,
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
+
+exports[`<FormElement /> should render a form element with no children 1`] = `
+<FormElement
+  className=""
+  errorText=""
+  hasValue={false}
+  htmlFor="test-input"
+  isFocused={false}
+  label=""
+  placeholder=""
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder=""
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={false}
+      htmlFor="test-input"
+      isFloating={false}
+      isFocused={false}
+      label=""
+    >
+      <label
+        className="css-u7lqu6 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": undefined,
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
+
+exports[`<FormElement /> should show the error message 1`] = `
+<FormElement
+  className=""
+  errorText="The error text"
+  hasValue={false}
+  htmlFor="test-input"
+  isFocused={false}
+  label=""
+  placeholder=""
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder=""
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={true}
+      htmlFor="test-input"
+      isFloating={false}
+      isFocused={false}
+      label=""
+    >
+      <label
+        className="css-u7lqu6 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <Underline
+      hasErrorMessage={true}
+      isFocused={false}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": "#ff0000",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText="The error text"
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="The error text"
+        >
+          <span
+            className=""
+          >
+            The error text
+          </span>
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
+
+exports[`<FormElement /> should show the label 1`] = `
+<FormElement
+  className=""
+  errorText=""
+  hasValue={false}
+  htmlFor="test-input"
+  isFocused={false}
+  label="The label"
+  placeholder=""
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder=""
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={false}
+      htmlFor="test-input"
+      isFloating={false}
+      isFocused={false}
+      label="The label"
+    >
+      <label
+        className="css-u7lqu6 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="The label"
+        >
+          <span
+            className=""
+          >
+            The label
+          </span>
+        </Translate>
+      </label>
+    </Label>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": undefined,
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
+
+exports[`<FormElement /> should show the placeholder text 1`] = `
+<FormElement
+  className=""
+  errorText=""
+  hasValue={false}
+  htmlFor="test-input"
+  isFocused={false}
+  label=""
+  placeholder="The placeholder"
+>
+  <div
+    className="css-1vjh8yv "
+  >
+    <Placeholder
+      placeholder="The placeholder"
+      visible={false}
+    >
+      <div
+        className="css-oc0mp css-1jyyyen"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string="The placeholder"
+        >
+          <span
+            className=""
+          >
+            The placeholder
+          </span>
+        </Translate>
+      </div>
+    </Placeholder>
+    <Label
+      hasErrorMessage={false}
+      htmlFor="test-input"
+      isFloating={false}
+      isFocused={false}
+      label=""
+    >
+      <label
+        className="css-u7lqu6 css-1fekhao"
+        htmlFor="test-input"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </label>
+    </Label>
+    <Underline
+      hasErrorMessage={false}
+      isFocused={false}
+    >
+      <div
+        className="css-ycal4l"
+      >
+        <div
+          className="css-1tpmuef"
+          style={
+            Object {
+              "borderBottomColor": undefined,
+              "transform": "scale3d(0,1,1)",
+            }
+          }
+        />
+      </div>
+    </Underline>
+    <ErrorText
+      className=""
+      errorText=""
+    >
+      <div
+        className=" css-hmgfge"
+      >
+        <Translate
+          className=""
+          params={Object {}}
+          string=""
+        >
+          <span
+            className=""
+          />
+        </Translate>
+      </div>
+    </ErrorText>
+  </div>
+</FormElement>
+`;
