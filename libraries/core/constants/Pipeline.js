@@ -29,6 +29,8 @@ export const ELEGACYSGCONNECT = 'ELEGACYSGCONNECT';
 
 // Pipeline no data found
 export const EUNKNOWN = 'EUNKNOWN';
+// Pipeline remote API not found
+export const ENOTFOUND = 'ENOTFOUND';
 
 // Pipeline found duplicate data.
 export const EEXIST = 'EEXIST';
