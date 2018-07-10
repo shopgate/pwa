@@ -143,6 +143,7 @@ class PipelineManager {
       if (!retries) {
         const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
         this.handleError(serial, message);
+        this.removeRequestFromPiplineSequence(request);
         this.requests.delete(serial);
         return;
       }
@@ -190,8 +191,6 @@ class PipelineManager {
 
     request.reject(err);
 
-    this.removeRequestFromPiplineSequence(request);
-
     // Stop if this error code was set to be suppressed.
     if (this.suppressedErrors.includes(code)) {
       return;
@@ -233,7 +232,6 @@ class PipelineManager {
       return;
     }
 
-    this.removeRequestFromPiplineSequence(request);
     event.removeCallback(callbackName, request.callback);
 
     let logColor = '#307bc2';
@@ -253,6 +251,7 @@ class PipelineManager {
     }, logColor);
 
     clearTimeout(entry.timer);
+    this.removeRequestFromPiplineSequence(request);
     this.requests.delete(serial);
   }
 
