@@ -60,7 +60,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
       "container": "css-nil",
       "inactiveIndicator": "css-1hipsfp",
       "indicator": Object {
-        "bullets": "css-17uszht",
+        "bullets": "css-dwzljy",
         "fraction": "css-eyy1lx",
       },
       "slide": "css-nil",
