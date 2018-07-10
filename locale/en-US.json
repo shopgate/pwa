@@ -43,7 +43,7 @@
   },
   "price": {
     "from": "From {price}",
-    "range": "Price range from {fromPrice} to {toPrice}",
+    "range": "Price from {fromPrice} to {toPrice}",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
@@ -60,6 +60,10 @@
     "go_to_cart": "Go to cart"
   },
   "category": {
+    "error": {
+      "title": "Oops",
+      "not_found": "Category not found"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."
