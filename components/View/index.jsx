@@ -77,20 +77,6 @@ class View extends Component {
   }
 
   /**
-   * Adds keyboardWillChangeListener.
-   */
-  bindKeyboardChange() {
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard)
-  }
-
-  /**
-   * Removed keyboardWillChange listener.
-   */
-  unbindKeyboardChange() {
-    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard);
-  }
-
-  /**
    * Sets the navigator title when the component mounts.
    */
   componentDidMount() {
@@ -149,11 +135,25 @@ class View extends Component {
   };
 
   /**
+   * Adds keyboardWillChangeListener.
+   */
+  bindKeyboardChange() {
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * Removed keyboardWillChange listener.
+   */
+  unbindKeyboardChange() {
+    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
    * Keyboard will change callback.
    * @param {Object} params Event params.
-   * @param {boolean} params.open If keyboard is open.
+   * @param { boolean } open If the keyboard is now open.
    */
-  handleKeyboard = ({ open }) => {
+  handleKeyboardChange = ({ open }) => {
     this.setState({
       noScroll: open,
     });

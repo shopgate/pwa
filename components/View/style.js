@@ -16,6 +16,7 @@ const container = css({
  *                  so that it's really fullscreen (including the notch).
  * @param {boolean} considerPaddingTop Whether to consider the natively set inset
  *                  and compensate itor not.
+ * @param {boolean} noScroll Wheather the view should be scrollable or not.
  * @return {string} The content style class.
  */
 const content = (
