@@ -45,14 +45,14 @@ class SearchField extends Component {
    */
   componentDidMount() {
     registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard);
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
   /**
    * Removing callback for keyboardWillChange.
    */
   componentWillUnmount() {
-    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboard);
+    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
   /**
@@ -69,7 +69,7 @@ class SearchField extends Component {
    * @param {number} props.overlap Current overlap.
    * @type {function}
    */
-  handleKeyboard = ({ overlap }) => {
+  handleKeyboardChange = ({ overlap }) => {
     this.setState({
       bottomHeight: overlap,
     });

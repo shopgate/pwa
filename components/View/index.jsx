@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
 import event from '@shopgate/pwa-core/classes/Event';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import { shopName } from 'Config/app.json';
 import connect from './connector';
@@ -101,16 +102,8 @@ class View extends Component {
     this.props.setTop(true);
 
     if (this.props.noScrollOnKeyboard) {
+      registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
       this.bindKeyboardChange();
-    }
-  }
-
-  /**
-   * Unbinds keyboard listener
-   */
-  componentDidUnmount() {
-    if (this.props.noScrollOnKeyboard) {
-      this.unbindKeyboardChange();
     }
   }
 
@@ -135,6 +128,15 @@ class View extends Component {
     if (nextProps.viewTop && (nextProps.viewTop !== this.props.viewTop)) {
       // Scroll to top
       this.element.scrollTop = 0;
+    }
+  }
+
+  /**
+   * Unbinds keyboard listener
+   */
+  componentWillUnmount() {
+    if (this.props.noScrollOnKeyboard) {
+      this.unbindKeyboardChange();
     }
   }
 
