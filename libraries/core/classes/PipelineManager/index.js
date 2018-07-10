@@ -39,6 +39,7 @@ class PipelineManager {
     this.requests.set(request.serial, {
       request,
       retries: request.retries,
+      finished: false,
       ongoing: 0,
       timer: null,
     });
@@ -83,13 +84,16 @@ class PipelineManager {
    * @param {Function} reject Rejects the promise.
    */
   createRequestCallback(serial, resolve, reject) {
-    const { request } = this.requests.get(serial);
+    const entry = this.requests.get(serial);
+    const { request } = entry;
 
     // Add the executor functions to the request object.
     request.resolve = resolve;
     request.reject = reject;
 
     request.callback = (error, serialResult, output) => {
+      entry.finished = true;
+
       // Add the relevant response properties to the request object.
       request.error = error;
       request.output = output;
@@ -168,18 +172,25 @@ class PipelineManager {
   /**
    * Handles a pipeline error.
    * @param {string} serial The pipeline request serial.
-   * @param {string} [customMessage=null] A custom error message.
+   * @param {string} [timeoutMessage=null] A custom error message for timeouts.
    */
-  handleError = (serial, customMessage = null) => {
+  handleError = (serial, timeoutMessage = null) => {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
-    const { code, message } = request.error || {};
+    let { code, message } = request.error || {};
+
+    if (timeoutMessage) {
+      code = ETIMEOUT;
+      message = timeoutMessage;
+    }
 
     const err = new Error(message);
     err.code = code;
 
     request.reject(err);
+
+    this.removeRequestFromPiplineSequence(request);
 
     // Stop if this error code was set to be suppressed.
     if (this.suppressedErrors.includes(code)) {
@@ -194,9 +205,9 @@ class PipelineManager {
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
-        code: customMessage ? ETIMEOUT : code,
         context: pipelineName,
-        message: customMessage || message,
+        code,
+        message,
       });
     }
   }
@@ -222,10 +233,7 @@ class PipelineManager {
       return;
     }
 
-    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-      pipelineSequence.remove(serial);
-    }
-
+    this.removeRequestFromPiplineSequence(request);
     event.removeCallback(callbackName, request.callback);
 
     let logColor = '#307bc2';
@@ -258,14 +266,27 @@ class PipelineManager {
     for (const ser of sequence) {
       const entry = this.requests.get(ser);
 
-      if (!entry.request.output) {
-        break;
-      }
+      if (entry) {
+        // Stop processing the sequence at the fist unfinished entry.
+        if (!entry.finished) {
+          break;
+        }
 
-      this.handleResult(ser);
-      this.handleResultSequence();
+        this.handleResult(ser);
+        this.handleResultSequence();
+      }
     }
     /* eslint-enable no-restricted-syntax */
+  }
+
+  /**
+   * Removes sequentially processed requests from the pipeline sequence.
+   * @param {Object} request A request object.
+   */
+  removeRequestFromPiplineSequence = (request) => {
+    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.remove(request.serial);
+    }
   }
 
   /**
