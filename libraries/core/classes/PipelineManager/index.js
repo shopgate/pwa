@@ -85,12 +85,14 @@ class PipelineManager {
   createRequestCallback(serial, resolve, reject) {
     const { request } = this.requests.get(serial);
 
+    // Add the executor functions to the request object.
+    request.resolve = resolve;
+    request.reject = reject;
+
     request.callback = (error, serialResult, output) => {
-      // Map some values to the request instance to be accessible later.
+      // Add the relevant response properties to the request object.
       request.error = error;
       request.output = output;
-      request.resolve = resolve;
-      request.reject = reject;
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
         this.handleResultSequence();
