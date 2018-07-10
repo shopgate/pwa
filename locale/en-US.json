@@ -60,6 +60,10 @@
     "go_to_cart": "Go to cart"
   },
   "category": {
+    "error": {
+      "title": "Oops",
+      "not_found": "Category not found"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."
