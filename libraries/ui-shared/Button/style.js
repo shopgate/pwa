@@ -132,34 +132,7 @@ const secondary = (disabled, flat) => {
   return createButtonStyles(themeConfig.colors.primary, null);
 };
 
-/**
- * The checkout button style.
- * @param {boolean} disabled Whether this button is disabled.
- * @param {boolean} flat Whether this button should be rendered flat.
- * @return {Object} An object of style definitions.
- */
-const checkout = (disabled, flat) => {
-  if (!flat) {
-    if (disabled) {
-      // Regular disabled button style.
-      return createButtonStyles(themeConfig.colors.shade4, themeConfig.colors.shade7);
-    }
-
-    // Regular enabled button style.
-    return createButtonStyles(themeConfig.colors.ctaContrast, themeConfig.colors.cta);
-  }
-
-  if (disabled) {
-    // Flat disabled button style.
-    return createButtonStyles(themeConfig.colors.shade4, null);
-  }
-
-  // Flat enabled button style.
-  return createButtonStyles(themeConfig.colors.cta, null);
-};
-
 export default {
-  checkout,
   plain,
   regular,
   primary,
