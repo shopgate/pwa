@@ -7,14 +7,14 @@ exports[`<CheckoutButton /> Checkout is possible should render without any props
   href="/checkout"
 >
   <RippleButton
-    className=""
+    className="css-ce5yef"
     disabled={true}
     flat={false}
     onClick={null}
     rippleClassName=""
     rippleSize={null}
     testId="Button"
-    type="secondary"
+    type="regular"
     wrapContent={true}
   >
     <Translate
