@@ -12,7 +12,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
   noShadow={false}
 >
   <button
-    className="null css-68omm3 css-31obrv"
+    className="null css-68omm3 css-nil"
     data-test-id="addToCartButton"
     onClick={[Function]}
   >
@@ -111,7 +111,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   noShadow={false}
 >
   <button
-    className="null css-68omm3 css-31obrv"
+    className="null css-68omm3 css-nil"
     data-test-id="addToCartButton"
     onClick={[Function]}
   >
@@ -210,7 +210,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
   noShadow={false}
 >
   <button
-    className="null css-68omm3 css-1ncyhu"
+    className="null css-68omm3 css-nil"
     data-test-id="addToCartButton"
     onClick={[Function]}
   >
