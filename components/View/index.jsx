@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import ViewContent from './components/Content';
 import styles from './style';
 
@@ -13,9 +13,10 @@ const View = ({
   hasNavigator,
   head,
   isFullscreen,
+  pathname,
   style,
 }) => (
-  <section className={styles} style={style}>
+  <section className={styles} style={style} data-test-id={`view: ${pathname || '-'}`}>
     <ViewContent
       hasNavigator={hasNavigator}
       head={head}
@@ -31,6 +32,7 @@ View.propTypes = {
   hasNavigator: PropTypes.bool,
   head: PropTypes.shape(),
   isFullscreen: PropTypes.bool,
+  pathname: PropTypes.string,
   style: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape(),
@@ -47,7 +49,14 @@ View.defaultProps = {
     style: [],
   },
   isFullscreen: false,
+  pathname: null,
   style: null,
 };
 
-export default pure(View);
+export default props => (
+  <RouteContext.Consumer>
+    {({ pathname }) => (
+      <View {...props} pathname={pathname} />
+    )}
+  </RouteContext.Consumer>
+);
