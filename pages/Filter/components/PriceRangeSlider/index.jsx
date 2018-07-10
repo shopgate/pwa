@@ -34,18 +34,17 @@ class PriceRangeSlider extends Component {
     const initialValue = props.value || [props.min, props.max];
 
     this.state = {
-      realValue: initialValue,
       value: initialValue,
     };
   }
 
   /**
-   * Updates the realValue state.
+   * Updates the value state.
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
     if (!isEqual(nextProps.value, this.props.value)) {
-      this.setState({ realValue: nextProps.value });
+      this.setState({ value: nextProps.value });
     }
   }
 
@@ -60,8 +59,7 @@ class PriceRangeSlider extends Component {
     ];
 
     this.setState({
-      realValue: value,
-      value: roundedValue,
+      value: value,
     });
 
     this.props.onChange(roundedValue[0], roundedValue[1]);
@@ -111,7 +109,7 @@ class PriceRangeSlider extends Component {
           max={max}
           min={min}
           onChange={this.onChange}
-          value={this.state.realValue}
+          value={this.state.value}
         />
       </div>
     );
