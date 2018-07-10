@@ -55,6 +55,10 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Category not found"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."

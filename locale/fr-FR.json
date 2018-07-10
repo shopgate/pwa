@@ -59,6 +59,10 @@
     "go_to_cart": "Aller au panier"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Catégorie non trouvée"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "Aucun produit trouvé."
