@@ -1,6 +1,6 @@
 import pipelineErrorDialog from './pipelineErrorDialog';
 
-describe('Dialog actions', () => {
+describe.skip('Dialog actions', () => {
   describe('pipelineErrorDialog', () => {
     /**
      * Tests the error dispatching.
