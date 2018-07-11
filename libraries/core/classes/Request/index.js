@@ -16,7 +16,6 @@ class Request {
   constructor(manager) {
     this.serial = null;
     this.callbackName = '';
-    this.finished = false;
     this.manager = manager || defaultRequestManager;
   }
 
@@ -51,13 +50,6 @@ class Request {
    */
   getEventCallbackName() {
     return this.callbackName;
-  }
-
-  /**
-   * Sets the finished flag to true.
-   */
-  setFinished() {
-    this.finished = true;
   }
 
   /**
