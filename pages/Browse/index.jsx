@@ -43,7 +43,7 @@ class Browse extends Component {
    */
   render() {
     return (
-      <View>
+      <View noScrollOnKeyboard>
         <Headline text="titles.browse" />
         <SearchField />
         <div data-test-id="categoriesList">
