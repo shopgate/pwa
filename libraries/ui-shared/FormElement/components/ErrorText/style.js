@@ -20,7 +20,7 @@ const error = css({
   fontSize: 12,
   lineHeight: '14px',
   color: themeConfig.colors.error,
-  ...ellipsisLine,
+  // ...ellipsisLine, TODO: needed?
 }).toString();
 
 export default {
