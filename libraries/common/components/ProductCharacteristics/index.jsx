@@ -100,6 +100,12 @@ class ProductCharacteristics extends Component {
   checkSelection = () => {
     const { characteristics } = this.state;
     const { variants, variantId } = this.props;
+
+    // When there are no variants then we can assume that everything is set.
+    if (!variants) {
+      return true;
+    }
+  
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
     const selected = !!((filteredValues.length === variants.characteristics.length) && variantId);
 
