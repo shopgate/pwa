@@ -20,15 +20,15 @@ export const Category = Loadable({
   loading: () => null,
 });
 
-// Export const Filter = Loadable({
-//   Loader: () => import('./Filter'),
-//   Loading: () => null,
-// });
+export const Filter = Loadable({
+  loader: () => import('./Filter'),
+  loading: () => null,
+});
 
-// Export const FilterAttribute = Loadable({
-//   Loader: () => import('./FilterAttribute'),
-//   Loading: () => null,
-// });
+export const FilterAttribute = Loadable({
+  loader: () => import('./FilterAttribute'),
+  loading: () => null,
+});
 
 export const Product = Loadable({
   loader: () => import('./Product'),
@@ -64,11 +64,6 @@ export const Login = Loadable({
   loader: () => import('./Login'),
   loading: () => null,
 });
-
-// Export const Orders = Loadable({
-//   Loader: () => import('./Orders'),
-//   Loading: () => null,
-// });
 
 export const WriteReview = Loadable({
   loader: () => import('./WriteReview'),

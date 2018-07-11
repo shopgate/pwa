@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import { Conditioner } from '@shopgate/pwa-core';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Reviews from 'Components/Reviews';
@@ -40,6 +41,10 @@ class ProductContent extends Component {
   constructor(props) {
     super(props);
 
+    this.baseContextValue = {
+      conditioner: new Conditioner(),
+    };
+
     this.state = {
       characteristics: {},
       options: {},
@@ -75,22 +80,6 @@ class ProductContent extends Component {
   }
 
   /**
-   * Stores a selected characteristic in local state.
-   */
-  setCharacteristic = ({ id, value }) => {
-    if (this.state.characteristics[id] === value) {
-      return;
-    }
-
-    this.setState({
-      characteristics: {
-        ...this.state.characteristics,
-        [id]: value,
-      },
-    });
-  }
-
-  /**
    * Stores the selected options in local state.
    * @param {string} optionId The ID of the option.
    * @param {string} value The option value.
@@ -116,7 +105,7 @@ class ProductContent extends Component {
 
     const contextValue = {
       ...this.state,
-      setCharacteristic: this.setCharacteristic,
+      ...this.baseContextValue,
     };
 
     return (
@@ -135,15 +124,16 @@ class ProductContent extends Component {
         </Portal>
         <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
-        {/* CHARACTERISTICS */}
-        <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
-        <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-          <Characteristics
-            productId={this.props.productId}
-            selectedCharacteristics={this.state.characteristics}
-          />
-        </Portal>
-        <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
+          {/* CHARACTERISTICS */}
+          <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
+          <Portal name={portals.PRODUCT_VARIANT_SELECT}>
+            <Characteristics
+              productId={this.props.baseProductId}
+              variantId={this.props.variantId}
+              selectedCharacteristics={this.state.characteristics}
+            />
+          </Portal>
+          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
 
         {/* OPTIONS */}
         <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import RangeSlider from '@shopgate/pwa-common/components/RangeSlider';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
@@ -21,10 +22,6 @@ class PriceRangeSlider extends Component {
     min: 0,
     onChange: () => {},
     value: null,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
@@ -76,8 +73,7 @@ class PriceRangeSlider extends Component {
    */
   render() {
     const { min, max } = this.props;
-    const { __ } = this.context.i18n();
-    const currency = __('price.currency');
+    const currency = appConfig.currency;
 
     /**
      * The min and max price need to be rounded before they are passed to the I18n component,
@@ -91,20 +87,12 @@ class PriceRangeSlider extends Component {
         <I18n.Text string="price.range">
           <I18n.Placeholder forKey="fromPrice">
             <span className={styles.price}>
-              <I18n.Price
-                price={priceMin}
-                currency={currency}
-                fractions={false}
-              />
+              <I18n.Price price={priceMin} currency={currency} fractions={false} />
             </span>
           </I18n.Placeholder>
           <I18n.Placeholder forKey="toPrice">
             <span className={styles.price}>
-              <I18n.Price
-                price={priceMax}
-                currency={currency}
-                fractions={false}
-              />
+              <I18n.Price price={priceMax} currency={currency} fractions={false} />
             </span>
           </I18n.Placeholder>
         </I18n.Text>

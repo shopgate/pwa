@@ -138,7 +138,7 @@ class ViewContent extends Component {
 const ViewContentConsumer = props => (
   <RouteContext.Consumer>
     {({ state }) => (
-      <ViewContent {...props} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName}/>
+      <ViewContent {...props} title={state.title ? `${state.title} - ${appConfig.shopName}` : appConfig.shopName} />
     )}
   </RouteContext.Consumer>
 );

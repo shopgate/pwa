@@ -1,22 +1,34 @@
-import React, { Component } from 'react';
-import ProductCharacteristics from './ProductCharacteristics';
+import React from 'react';
+import PropTypes from 'prop-types';
+import ProductCharacteristics from '@shopgate/pwa-common/components/ProductCharacteristics';
+import ProductContext from '../../context';
 import Characteristic from './Characteristic';
 
 /**
- * 
+ * @param {Object} props The component props.
+ * @return {JSX}
  */
-class Characteristics extends Component {
-  render() {
-    return (
+const Characteristics = ({ productId, variantId }) => (
+  <ProductContext.Consumer>
+    {({ conditioner }) => (
       <ProductCharacteristics
-        productId={this.props.productId}
-        render={props => (
-          <Characteristic {...props} />
-        )}
-        selectedCharacteristics={this.props.selectedCharacteristics}
+        productId={productId}
+        variantId={variantId}
+        render={props => <Characteristic {...props} />}
+        conditioner={conditioner}
       />
-    );
-  }
-}
+    )}
+  </ProductContext.Consumer>
+);
+
+Characteristics.propTypes = {
+  productId: PropTypes.string,
+  variantId: PropTypes.string,
+};
+
+Characteristics.defaultProps = {
+  productId: null,
+  variantId: null,
+};
 
 export default Characteristics;

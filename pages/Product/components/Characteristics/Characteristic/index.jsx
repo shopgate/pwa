@@ -1,19 +1,25 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import styles from './style';
+import Transition from 'react-transition-group/Transition';
 import Sheet from './components/Sheet';
-import { ProductContext } from '../../../context';
+import styles from './style';
+import transition from './transition';
 
 /**
  * A single characteristic.
  */
 class Characteristic extends Component {
   static propTypes = {
+    charRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape(),
+    ]).isRequired,
     disabled: PropTypes.bool.isRequired,
+    highlight: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    setCharacteristic: PropTypes.func.isRequired,
+    select: PropTypes.func.isRequired,
     values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     selected: PropTypes.string,
   };
@@ -26,22 +32,16 @@ class Characteristic extends Component {
     i18n: PropTypes.func,
   };
 
-  /**
-   * @param {Object} props  The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      sheet: false,
-    };
-  }
+  state = {
+    highlight: false,
+    sheet: false,
+  };
 
   /**
-   * @return {string}
+   * @param {Object} nextProps The next component props.
    */
-  get label() {
-    return this.props.label;
+  componentWillReceiveProps(nextProps) {
+    this.setState({ highlight: nextProps.highlight });
   }
 
   /**
@@ -53,7 +53,7 @@ class Characteristic extends Component {
       return defaultLabel;
     }
 
-    const value = this.props.values.find(val => val.id === this.props.selected);
+    const value = this.props.values.find(val => (val.id === this.props.selected));
 
     return value.label;
   }
@@ -68,23 +68,27 @@ class Characteristic extends Component {
       return;
     }
 
-    this.setState({
-      sheet: true,
-    });
+    this.setState({ sheet: true });
   }
 
   /**
    * @param {string} valueId The ID of the selected value.
    */
   handleItemSelection = (valueId) => {
-    this.props.setCharacteristic({
+    this.props.select({
       id: this.props.id,
       value: valueId,
     });
 
-    this.setState({
-      sheet: false,
-    });
+    this.closeSheet();
+  }
+
+  closeSheet = () => {
+    this.setState({ sheet: false });
+  }
+
+  removeHighlight = () => {
+    this.setState({ highlight: false });
   }
 
   /**
@@ -92,36 +96,45 @@ class Characteristic extends Component {
    */
   render() {
     const { __ } = this.context.i18n();
-    const { disabled, selected, values } = this.props;
-    const displayLabel = this.label;
+    const {
+      disabled,
+      id,
+      selected,
+      values,
+      charRef,
+    } = this.props;
+    const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
-    const classes = classNames(
-      styles.button,
-      { [styles.buttonDisabled]: disabled }
-    );
+    const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
 
     return (
       <Fragment>
-        <button className={classes} onClick={this.handleButtonClick}>
-          {selected && <div className={styles.label}>{translatedLabel}</div>}
-          <div className={styles.selection}>{buttonLabel}</div>
-        </button>
+        <Transition in={this.state.highlight} timeout={500} onEntered={this.removeHighlight}>
+          {state => (
+            <button
+              className={classes}
+              onClick={this.handleButtonClick}
+              ref={charRef}
+              style={transition[state]}
+            >
+              {selected && <div className={styles.label}>{translatedLabel}</div>}
+              <div className={styles.selection}>{buttonLabel}</div>
+            </button>
+          )}
+        </Transition>
         <Sheet
-          label={translatedLabel}
-          open={this.state.sheet}
+          charId={id}
           items={values}
+          label={translatedLabel}
+          onClose={this.closeSheet}
           onSelect={this.handleItemSelection}
+          open={this.state.sheet}
+          selectedValue={selected}
         />
       </Fragment>
     );
   }
 }
 
-export default props => (
-  <ProductContext.Consumer>
-    {({ setCharacteristic }) => (
-      <Characteristic {...props} setCharacteristic={setCharacteristic} />
-    )}
-  </ProductContext.Consumer>
-);
+export default Characteristic;

@@ -9,14 +9,13 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const CrossButton = ({ removeTemporaryFilter, filterId }) => (
-  <button className={styles.cross} onClick={() => removeTemporaryFilter(filterId)}>
+const CrossButton = ({ removeTemporaryFilter }) => (
+  <button className={styles.cross} onClick={removeTemporaryFilter}>
     <CrossIcon className={styles.crossIcon} />
   </button>
 );
 
 CrossButton.propTypes = {
-  filterId: PropTypes.string.isRequired,
   removeTemporaryFilter: PropTypes.func.isRequired,
 };
 

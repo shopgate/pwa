@@ -20,9 +20,11 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = (dispatch, props) => ({
-  handleFilterRemove: (id, index = null) => {
+  handleFilterRemove: (id, index) => {
     dispatch(removeTemporaryFilter(id, index));
-    dispatch(commitTemporaryFilters());
+    setTimeout(() => {
+      dispatch(commitTemporaryFilters());
+    }, 0);
   },
   handleOpenFilters: () => dispatch(openFilterView(props)),
 });

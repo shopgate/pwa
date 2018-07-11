@@ -7,7 +7,7 @@ import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-c
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  removeTemporaryFilter: (id, index = null) => dispatch(removeTemporaryFilter(id, index)),
+  removeTemporaryFilter: (id, index) => dispatch(removeTemporaryFilter(id, index)),
 });
 
 export default connect(null, mapDispatchToProps);

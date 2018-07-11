@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { NavigatorContext } from '../../../../context';
@@ -58,10 +58,9 @@ class NavigatorSearch extends Component {
 
   /**
    * Handles blur events on the input element.
-   * @param {SyntheticEvent} event A click event.
    */
-  disableField = (event) => {
-    event.preventDefault();
+  disableField = () => {
+    this.inputField.current.blur();
     this.props.toggleSearchField(false);
   };
 
@@ -70,8 +69,16 @@ class NavigatorSearch extends Component {
    * @param {SyntheticEvent} event An input event.
    */
   handleInput = (event) => {
-    event.preventDefault();
     this.props.setSearchQuery(event.target.value);
+  }
+
+  /**
+   * Disabled the search field and submits the search.
+   * @param {SyntheticEvent} event An input event.
+   */
+  submitSearch = (event) => {
+    event.preventDefault();
+    this.props.toggleSearchField(false, true);
   }
 
   /**
@@ -82,14 +89,16 @@ class NavigatorSearch extends Component {
     const placeholder = __('search.placeholder');
 
     return (
-      <Transition in={this.props.active} timeout={150}>
+      <Transition in={this.props.active} timeout={0}>
         {state => (
-          <Fragment>
+          <div
+            className={styles.container}
+            style={transition[state]}
+          >
             <form
-              className={styles.container}
+              className={styles.form}
               data-test-id="Search"
-              onSubmit={this.disableField}
-              style={transition[state]}
+              onSubmit={this.submitSearch}
             >
               <input
                 className={styles.input}
@@ -100,16 +109,15 @@ class NavigatorSearch extends Component {
                 type="search"
                 value={this.state.value}
               />
-              <div
-                aria-hidden
-                className={styles.overlay}
-                onClick={this.disableField}
-                role="button"
-              />
             </form>
-            {/* <SearchSuggestions phrase={this.state.inputValue} /> */}
-          </Fragment>
-      )}
+            <div
+              aria-hidden
+              className={styles.overlay}
+              onClick={this.disableField}
+              role="button"
+            />
+          </div>
+        )}
       </Transition>
     );
   }
