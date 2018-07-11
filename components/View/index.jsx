@@ -4,6 +4,8 @@ import Helmet from 'react-helmet';
 import Swipeable from 'react-swipeable';
 import throttle from 'lodash/throttle';
 import event from '@shopgate/pwa-core/classes/Event';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import { shopName } from 'Config/app.json';
 import connect from './connector';
 import styles from './style';
@@ -30,6 +32,7 @@ class View extends Component {
       style: PropTypes.array,
     }),
     isFullscreen: PropTypes.bool,
+    noScrollOnKeyboard: PropTypes.bool,
     style: PropTypes.shape(),
     title: PropTypes.string,
     viewTop: PropTypes.bool,
@@ -46,6 +49,7 @@ class View extends Component {
       style: [],
     },
     isFullscreen: false,
+    noScrollOnKeyboard: false,
     style: null,
     title: '',
     viewTop: true,
@@ -68,10 +72,8 @@ class View extends Component {
     this.element = null;
 
     this.state = {
-      keyboardHeight: 0,
+      noScroll: false,
     };
-
-    event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
 
   /**
@@ -84,6 +86,11 @@ class View extends Component {
     }
 
     this.props.setTop(true);
+
+    if (this.props.noScrollOnKeyboard) {
+      registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
+      this.bindKeyboardChange();
+    }
   }
 
   /**
@@ -111,6 +118,15 @@ class View extends Component {
   }
 
   /**
+   * Unbinds keyboard listener
+   */
+  componentWillUnmount() {
+    if (this.props.noScrollOnKeyboard) {
+      this.unbindKeyboardChange();
+    }
+  }
+
+  /**
    * Creates an internal reference to an element.
    * @param {Object} ref The reference to an element.
    */
@@ -119,16 +135,29 @@ class View extends Component {
   };
 
   /**
-   * Handles a keyboard change event.
-   * @param {boolean} open If the keyboard is now open.
-   * @param {boolean} overlap The height of the keyboard.
+   * Adds keyboardWillChangeListener.
    */
-  handleKeyboardChange = ({ open, overlap }) => {
-    const height = open ? overlap : 0;
-    this.setState({
-      keyboardHeight: height,
-    });
+  bindKeyboardChange() {
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
+
+  /**
+   * Removed keyboardWillChange listener.
+   */
+  unbindKeyboardChange() {
+    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * Keyboard will change callback.
+   * @param {Object} params Event params.
+   * @param { boolean } open If the keyboard is now open.
+   */
+  handleKeyboardChange = ({ open }) => {
+    this.setState({
+      noScroll: open,
+    });
+  };
 
   /**
    * Handles the scroll event of this component's element.
@@ -195,8 +224,8 @@ class View extends Component {
     const contentStyle = styles.content(
       this.props.hasNavigator,
       this.props.isFullscreen,
-      this.state.keyboardHeight,
-      this.props.considerPaddingTop && this.props.hasTabBar
+      this.props.considerPaddingTop && this.props.hasTabBar,
+      this.state.noScroll
     );
 
     const { children } = this.props;
