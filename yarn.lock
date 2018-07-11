@@ -161,25 +161,25 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.22.tgz#99e6df8a7f7475924f4a9ae082944d5ce755491d"
+"@virtuous/conductor-events@1.0.0-beta.23":
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.23.tgz#35a90d1c36536cb8b2480b35cae28c7f2107385a"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.23"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/conductor-helpers@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.22.tgz#b9879a25c00024d1bf2ad7a1433080d023d4bf8d"
+"@virtuous/conductor-helpers@1.0.0-beta.23":
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.23.tgz#1c3a19ad7591b5807f026f6c0a9b03395873f424"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.23"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/conductor@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.22.tgz#7a1bdefb2ed82b34e25021d2a72cc8e7b6a96513"
+"@virtuous/conductor@1.0.0-beta.23":
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.23.tgz#26540519b328b6c941451d54e2ab14d26ee02f56"
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -188,28 +188,39 @@
     react-dom "^16.3.2"
     url-pattern "^1.0.3"
 
-"@virtuous/react-conductor@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.22.tgz#8d2ad879d176f12bd39a6bfe120a43df4b37b3b5"
+"@virtuous/logger@1.0.0-beta.4":
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0-beta.4.tgz#45a1db2b26a3a69b5b733fe42eee3def953a919f"
+
+"@virtuous/react-conductor@1.0.0-beta.23":
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.23.tgz#d7a2f11a64b4f47d20bbde3430c0a17ba2739c44"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
-    "@virtuous/conductor-events" "1.0.0-beta.22"
-    "@virtuous/conductor-helpers" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.23"
+    "@virtuous/conductor-events" "1.0.0-beta.23"
+    "@virtuous/conductor-helpers" "1.0.0-beta.23"
     gsap "^1.20.4"
     react "^16.3.2"
     react-dom "^16.3.2"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.22.tgz#0cfcfa5395ae683622203bb015a1e1fd5ef052fb"
+"@virtuous/redux-conductor@1.0.0-beta.23":
+  version "1.0.0-beta.23"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.23.tgz#39bd49ffb2a0a5b870c2ee4c06a0b52f4914819a"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
-    "@virtuous/conductor-events" "1.0.0-beta.22"
-    "@virtuous/conductor-helpers" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.23"
+    "@virtuous/conductor-events" "1.0.0-beta.23"
+    "@virtuous/conductor-helpers" "1.0.0-beta.23"
     react "^16.3.2"
     react-dom "^16.3.2"
+
+"@virtuous/redux-persister@1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.0.0-beta.2.tgz#9839bcdf04e97351f20cfa0c7a2f648c981677ef"
+  dependencies:
+    "@virtuous/logger" "1.0.0-beta.4"
+    lodash "^4.17.10"
 
 JSONStream@^1.0.4:
   version "1.3.2"
@@ -832,7 +843,7 @@ babel-plugin-syntax-class-properties@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-class-properties/-/babel-plugin-syntax-class-properties-6.13.0.tgz#d7eb23b79a317f8543962c505b827c7d6cac27de"
 
-babel-plugin-syntax-decorators@^6.13.0:
+babel-plugin-syntax-decorators@^6.1.18, babel-plugin-syntax-decorators@^6.13.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-decorators/-/babel-plugin-syntax-decorators-6.13.0.tgz#312563b4dbde3cc806cee3e416cceeaddd11ac0b"
 
@@ -904,6 +915,14 @@ babel-plugin-transform-class-properties@^6.24.1:
     babel-plugin-syntax-class-properties "^6.8.0"
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
+
+babel-plugin-transform-decorators-legacy@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-decorators-legacy/-/babel-plugin-transform-decorators-legacy-1.3.5.tgz#0e492dffa0edd70529072887f8aa86d4dd8b40a1"
+  dependencies:
+    babel-plugin-syntax-decorators "^6.1.18"
+    babel-runtime "^6.2.0"
+    babel-template "^6.3.0"
 
 babel-plugin-transform-decorators@^6.24.1:
   version "6.24.1"
@@ -1343,14 +1362,14 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0, babel-runtime@^6.6.1:
+babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0, babel-runtime@^6.6.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0:
+babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0, babel-template@^6.3.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   dependencies:
@@ -1748,6 +1767,10 @@ class-utils@^0.3.5:
 classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
 
 cli-cursor@^1.0.2:
   version "1.0.2"
@@ -5332,6 +5355,10 @@ lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.4, lodash@^4.17.5, 
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
+lodash@^4.17.10:
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+
 log-driver@^1.2.5:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/log-driver/-/log-driver-1.2.7.tgz#63b95021f0702fedfa2c9bb0a24e7797d71871d8"
@@ -6361,6 +6388,13 @@ prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7,
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
     fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
+prop-types@^15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  dependencies:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 

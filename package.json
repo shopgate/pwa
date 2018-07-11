@@ -11,7 +11,8 @@
     "precommit": "lint-staged",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
-    "e2e:ios11": "make e2e-ios11"
+    "e2e:ios11": "make e2e-ios11",
+    "start-cloud": "sgconnect backend start & sgconnect frontend start"
   },
   "pre-commit": [
     "precommit"
@@ -40,6 +41,7 @@
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-react-transform": "^3.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-inline-elements": "^6.22.0",

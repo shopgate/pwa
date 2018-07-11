@@ -18,7 +18,13 @@ export const getHistoryState = state => state.history;
  */
 export const getQueryParams = createSelector(
   getCurrentRoute,
-  route => route.query
+  (route) => {
+    if (!route) {
+      return null;
+    }
+
+    return route.query;
+  }
 );
 
 /**
@@ -28,13 +34,14 @@ export const getQueryParams = createSelector(
  * @return {*} The URL parameter value.
  */
 export const getQueryParam = createSelector(
-  (state, param) => param,
   getQueryParams,
-  (param, params) => {
-    const queryParam = params[param];
+  (state, param) => param,
+  (params, param) => {
+    if (!params || !params[param]) {
+      return null;
+    }
 
-    if (!queryParam) return null;
-    return queryParam;
+    return params[param];
   }
 );
 
@@ -75,7 +82,13 @@ export const getHistoryAction = createSelector(
  */
 export const getHistoryPathname = createSelector(
   getCurrentRoute,
-  route => route.pathname
+  (route) => {
+    if (!route) {
+      return null;
+    }
+
+    return route.pathname;
+  }
 );
 
 /**

@@ -1,20 +1,5 @@
-import { main$ } from '@shopgate/pwa-common/streams/main';
-import {
-  routeDidEnter,
-  routeDidLeave,
-  historyDidUpdate$,
-} from '@shopgate/pwa-common/streams/history';
-import {
-  HISTORY_POP_ACTION,
-  HISTORY_PUSH_ACTION,
-  HISTORY_REPLACE_ACTION,
-  HISTORY_WILL_RESET,
-} from '@shopgate/pwa-common/constants/ActionTypes';
-import {
-  getHistoryPathname,
-  getHistoryAction,
-  getSearchPhrase,
-} from '@shopgate/pwa-common/selectors/history';
+import { ACTION_PUSH, ACTION_POP } from '@virtuous/conductor/constants';
+import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import { getCurrentCategoryId } from '../../category/selectors';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
 import setFilterHash from '../action-creators/setFilterHash';
@@ -22,11 +7,15 @@ import setTemporaryFilters from '../action-creators/setTemporaryFilters';
 import addActiveFilters from '../action-creators/addActiveFilters';
 import setActiveFilters from '../action-creators/setActiveFilters';
 import removeActiveFilters from '../action-creators/removeActiveFilters';
-import resetActiveFilters from '../action-creators/resetActiveFilters';
+// Import resetActiveFilters from '../action-creators/resetActiveFilters';
 import { getActiveFilters, getFilterHash } from '../selectors';
-import { FILTER_PATH } from '../constants';
-import { CATEGORY_PATH } from '../../category/constants';
-import { SEARCH_PATH } from '../../search/constants';
+import { searchWillUpdate$ } from '../../search/streams';
+import {
+  filterWillEnter$,
+  filterWillLeave$,
+  filterableRoutesWillEnter$,
+  filterableRoutesWillLeave$,
+} from '../streams';
 
 /**
  * Filters subscriptions.
@@ -37,88 +26,36 @@ export default function filters(subscribe) {
    * Gets triggered when the history will reset.
    * In that case the activeFilters stack also needs to be reset.
    */
-  const historyWillReset$ = main$
-    .filter(({ action }) => action.type === HISTORY_WILL_RESET);
+  // Const historyWillReset$ = main$
+  //   .filter(({ action }) => action.type === HISTORY_WILL_RESET);
 
-  /**
-   * Gets triggered when entering the filter route.
-   */
-  const filterRouteDidEnter$ = routeDidEnter(FILTER_PATH);
-
-  /**
-   * Gets triggered when leaving the filter route.
-   */
-  const filterRouteDidLeave$ = routeDidLeave(FILTER_PATH);
-
-  /**
-   * Gets triggered when entering a filterable route by going forward in, or replacing the history.
-   */
-  const filterableRoutesDidEnter$ = routeDidEnter(CATEGORY_PATH).merge(routeDidEnter(SEARCH_PATH))
-    .filter(({ historyAction, initialEnter }) => (
-      historyAction === HISTORY_PUSH_ACTION || initialEnter === true
-    ));
-
-  /**
-   * Gets triggered when leaving a filterable route by going back in history.
-   */
-  const filterableRoutesDidLeave$ = routeDidLeave(CATEGORY_PATH).merge(routeDidLeave(SEARCH_PATH))
-    .filter(({ historyAction }) => historyAction === HISTORY_POP_ACTION);
-
-  /**
-   * Gets triggered when the search route is switched by replacing the history entry and the
-   * search phrase changed.
-   */
-  const searchRouteWasUpdated$ = historyDidUpdate$
-    .filter((input) => {
-      const state = input.getState();
-      const historyAction = getHistoryAction(state);
-
-      // Check for the right history action
-      if (historyAction === HISTORY_REPLACE_ACTION) {
-        const pathName = getHistoryPathname(state);
-        const prevPathName = getHistoryPathname(input.prevState);
-
-        // Check if the transition happened between two search routes
-        if (prevPathName.startsWith(SEARCH_PATH) && pathName.startsWith(SEARCH_PATH)) {
-          const searchPhrase = getSearchPhrase(state);
-          const prevSearchPhrase = getSearchPhrase(input.prevState);
-
-          // Check if the search phrase changed
-          return prevSearchPhrase !== searchPhrase;
-        }
-      }
-
-      return false;
-    });
-
-  /**
-   * Gets triggered when entering a filterable route NOT coming from filters.
-   */
-  const newFilterableRoutesEntered$ = filterableRoutesDidEnter$.filter(({ prevPathname }) => (
-    !prevPathname.startsWith(FILTER_PATH)
-  ));
-
-  subscribe(filterRouteDidLeave$, ({ dispatch }) => {
-    dispatch(setFilterHash(''));
+  subscribe(filterWillEnter$, ({
+    dispatch,
+    getState,
+    prevState,
+    action,
+  }) => {
+    if (action.historyAction === ACTION_PUSH) {
+      dispatch(setTemporaryFilters(getActiveFilters(getState())));
+      dispatch(setFilterHash(getFilterHash(prevState)));
+    }
   });
 
-  subscribe(filterRouteDidEnter$, ({ dispatch, getState, prevState }) => {
-    dispatch(setTemporaryFilters(getActiveFilters(getState())));
-    dispatch(setFilterHash(getFilterHash(prevState)));
+  subscribe(filterWillLeave$, ({ dispatch, action }) => {
+    if (action.historyAction === ACTION_POP) {
+      dispatch(setFilterHash(''));
+    }
   });
 
-  subscribe(newFilterableRoutesEntered$, ({ dispatch }) => {
-    dispatch(mergeTemporaryFilters({}));
-  });
-
-  subscribe(filterableRoutesDidEnter$, ({ dispatch, getState }) => {
+  subscribe(filterableRoutesWillEnter$, ({ dispatch, getState }) => {
+    const state = getState();
     /**
      * Depending on the route there will be a search phrase or a category id. To keep the logic
      * simple both values are selected from the state. The one that doesn't belong to the route will
      * turn to null.
      */
-    const categoryId = getCurrentCategoryId(getState());
-    const searchPhrase = getSearchPhrase(getState());
+    const categoryId = getCurrentCategoryId(state);
+    const searchPhrase = getSearchPhrase(state);
     // Add a new placeholder object for active filters to the activeFilters stack
     dispatch(addActiveFilters({
       categoryId,
@@ -126,18 +63,22 @@ export default function filters(subscribe) {
     }));
   });
 
-  subscribe(searchRouteWasUpdated$, ({ dispatch, getState }) => {
+  subscribe(filterableRoutesWillLeave$, ({ dispatch }) => {
+    dispatch(removeActiveFilters());
+  });
+
+  subscribe(filterableRoutesWillEnter$, ({ dispatch }) => {
+    dispatch(mergeTemporaryFilters({}));
+  });
+
+  subscribe(searchWillUpdate$, ({ dispatch, getState }) => {
     // Reset the current activeFilters object and update the search phrase with the new one
     const searchPhrase = getSearchPhrase(getState());
     dispatch(setActiveFilters({}, { searchPhrase }));
   });
 
-  subscribe(filterableRoutesDidLeave$, ({ dispatch }) => {
-    // Remove the last activeFilters object from the stack
-    dispatch(removeActiveFilters());
-  });
-
-  subscribe(historyWillReset$, ({ dispatch }) => {
-    dispatch(resetActiveFilters());
-  });
+  // TODO: Handle when history is actually reset.
+  // Subscribe(historyWillReset$, ({ dispatch }) => {
+  //   Dispatch(resetActiveFilters());
+  // });
 }

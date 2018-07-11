@@ -3,6 +3,7 @@ import {
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
+  ACTION_RESET,
 } from '@virtuous/conductor/constants';
 import { navigate } from '../action-creators/router';
 import * as handler from './helpers/handleLinks';
@@ -72,6 +73,10 @@ export default function router(subscribe) {
         conductor.replace(location, routeState);
         break;
       }
+      case ACTION_RESET: {
+        conductor.reset();
+        break;
+      }
       default:
         break;
     }
@@ -87,7 +92,11 @@ export default function router(subscribe) {
   subscribe(redirectUser$, ({ action, dispatch }) => {
     if (appConfig.webCheckoutShopify === null) {
       const { location, state } = action.redirect;
-      dispatch(navigate(ACTION_REPLACE, location, state));
+      if (location) {
+        dispatch(navigate(ACTION_REPLACE, location, state));
+      } else {
+        dispatch(navigate(ACTION_POP));
+      }
     }
   });
 }

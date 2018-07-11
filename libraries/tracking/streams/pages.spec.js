@@ -7,6 +7,7 @@ import {
   blacklistedPaths,
   pagesAreReady$,
 } from './pages';
+import { setPWAVisibleState } from '../helpers';
 
 describe('Pages streams', () => {
   let pagesAreReadySubscriber;
@@ -17,6 +18,10 @@ describe('Pages streams', () => {
   });
 
   describe('pagesAreReady$', () => {
+    beforeEach(() => {
+      setPWAVisibleState(true);
+    });
+
     describe('route changes', () => {
       it('should emit when a route is active which is not blacklisted', () => {
         const pathname = '/somepath';
@@ -32,6 +37,15 @@ describe('Pages streams', () => {
         dispatch(updateHistoryWrapped(pathname));
 
         expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
+      });
+
+      it('should not emit when a route is active, but the PWA is not visible', () => {
+        setPWAVisibleState(false);
+        const pathname = '/somepath';
+        const { dispatch } = createStore(pathname);
+        dispatch(updateHistoryWrapped(pathname));
+
+        expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(0);
       });
     });
 

@@ -1,6 +1,11 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+const wrapper = css({
+  position: 'relative',
+  zIndex: 2,
+}).toString();
+
 const closeButton = css({
   lineHeight: 1,
   outline: 0,
@@ -36,6 +41,7 @@ const shadow = css({
 });
 
 export default {
+  wrapper,
   closeButton,
   closeIcon,
   title,

@@ -148,3 +148,8 @@ export const getChildCategoriesById = createSelector(
     return childCategories[categoryId].children.map(id => categories[id]);
   }
 );
+
+export const getCategoryName = createSelector(
+  getCurrentCategory,
+  category => (category ? category.name : null)
+);

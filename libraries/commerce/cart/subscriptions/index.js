@@ -4,12 +4,12 @@ import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencie
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
-import resetHistory from '@shopgate/pwa-common/actions/history/resetHistory';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { ACTION_RESET } from '@virtuous/conductor/constants';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
@@ -76,7 +76,7 @@ export default function cart(subscribe) {
     registerEvents(['checkoutSuccess']);
 
     event.addCallback('checkoutSuccess', () => {
-      dispatch(resetHistory());
+      dispatch(navigate(ACTION_RESET));
       dispatch(fetchCart());
     });
 
@@ -131,7 +131,7 @@ export default function cart(subscribe) {
      * Then reset back to the homepage.
      */
     if (historyLength === 1 && historyPathname === action.options.url) {
-      dispatch(resetHistory(INDEX_PATH));
+      dispatch(navigate(ACTION_RESET));
     }
 
     dispatch(addCouponsToCart([code]));
