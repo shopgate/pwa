@@ -7,6 +7,7 @@ import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import Router from '@virtuous/react-conductor/Router';
 import Route from '@virtuous/react-conductor/Route';
 import ModalContainer from '@shopgate/pwa-common/components/ModalContainer';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import App from '@shopgate/pwa-common/App';
 import { INDEX_PATH, LOGIN_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
@@ -15,6 +16,8 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import Toaster from '@shopgate/pwa-common/components/Toaster';
+import SnackBar2 from '@shopgate/pwa-ui-material/SnackBar';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
@@ -37,38 +40,41 @@ const Pages = () => (
   <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{ View }}>
-        <Portal name={APP_GLOBALS} />
-        <Viewport>
-          <ModalContainer component={Dialog} />
-          <SnackBar />
-          <Router>
-            <Route pattern={INDEX_PATH} component={routes.StartPage} />
-            <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
-            <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
-            <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
-            <Route pattern={`${CATEGORY_PATH}/:categoryId/filter`} component={routes.Filter} />
-            <Route pattern={`${CATEGORY_PATH}/:categoryId/filter/:attribute`} component={routes.FilterAttribute} />
-            <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
-            <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
-            <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
-            {
-              appConfig.hasFavorites
-              && <Route pattern={`${FAVORITES_PATH}`} component={routes.Favorites} />
-            }
-            <Route pattern={`${ITEM_PATH}/:productId/write_review`} component={routes.WriteReview} />
-            <Route pattern={CART_PATH} component={routes.Cart} />
-            <Route pattern={LOGIN_PATH} component={routes.Login} />
-            <Route pattern={SEARCH_PATH} component={routes.Search} preload />
-            <Route pattern={`${SEARCH_PATH}/filter`} component={routes.Filter} />
-            <Route pattern={`${SEARCH_PATH}/filter/:attribute`} component={routes.FilterAttribute} />
-            {React.Children.map(routePortals, Component => Component)}
-          </Router>
-          {isDev && (
-            <Helmet>
-              <link href={devFontsUrl} rel="stylesheet" />
-            </Helmet>
-          )}
-        </Viewport>
+        <ToastProvider>
+          <Portal name={APP_GLOBALS} />
+          <Viewport>
+            <ModalContainer component={Dialog} />
+            <SnackBar />
+            <Toaster render={props => <SnackBar2 {...props} />} />
+            <Router>
+              <Route pattern={INDEX_PATH} component={routes.StartPage} />
+              <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
+              <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
+              <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
+              <Route pattern={`${CATEGORY_PATH}/:categoryId/filter`} component={routes.Filter} />
+              <Route pattern={`${CATEGORY_PATH}/:categoryId/filter/:attribute`} component={routes.FilterAttribute} />
+              <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
+              <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
+              <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
+              {
+                appConfig.hasFavorites
+                && <Route pattern={`${FAVORITES_PATH}`} component={routes.Favorites} />
+              }
+              <Route pattern={`${ITEM_PATH}/:productId/write_review`} component={routes.WriteReview} />
+              <Route pattern={CART_PATH} component={routes.Cart} />
+              <Route pattern={LOGIN_PATH} component={routes.Login} />
+              <Route pattern={SEARCH_PATH} component={routes.Search} preload />
+              <Route pattern={`${SEARCH_PATH}/filter`} component={routes.Filter} />
+              <Route pattern={`${SEARCH_PATH}/filter/:attribute`} component={routes.FilterAttribute} />
+              {React.Children.map(routePortals, Component => Component)}
+            </Router>
+            {isDev && (
+              <Helmet>
+                <link href={devFontsUrl} rel="stylesheet" />
+              </Helmet>
+            )}
+          </Viewport>
+        </ToastProvider>
       </ThemeContext.Provider>
     </AppContext.Provider>
   </App>

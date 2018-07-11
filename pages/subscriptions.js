@@ -15,7 +15,7 @@ export default function app(subscribe) {
     authRoutes.set('/item/:productId/write_review', '/login');
   });
 
-  subscribe(appDidStart$, ({ dispatch }) => {
+  subscribe(appDidStart$, ({ dispatch, events }) => {
     // Add event callbacks.
     event.addCallback(EVENT_PIPELINE_ERROR, params => dispatch(pipelineErrorDialog(params)));
   });
