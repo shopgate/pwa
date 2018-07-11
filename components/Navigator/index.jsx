@@ -61,6 +61,7 @@ class Navigator extends PureComponent {
     events.onDidPush(this.setRoutePattern);
     events.onDidPop(this.setRoutePattern);
     events.onDidReplace(this.setRoutePattern);
+    events.onDidReset(this.setRoutePattern);
   }
 
   /**
