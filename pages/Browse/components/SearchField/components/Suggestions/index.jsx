@@ -11,6 +11,7 @@ import styles from './style';
  */
 class SearchSuggestions extends Component {
   static propTypes = {
+    bottomHeight: PropTypes.number.isRequired,
     fetchSearchSuggestions: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     searchPhrase: PropTypes.string.isRequired,
@@ -84,7 +85,7 @@ class SearchSuggestions extends Component {
     }
 
     return (
-      <div className={styles}>
+      <div className={[styles.wrapper, styles.bottom(this.props.bottomHeight)].join(' ')}>
         <List>
           {suggestions.map(suggestion => (
             <SearchSuggestion
