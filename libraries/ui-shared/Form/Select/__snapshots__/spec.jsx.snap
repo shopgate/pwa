@@ -109,11 +109,11 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         </div>
       </Underline>
       <ErrorText
-        className=""
+        className={null}
         errorText=""
       >
         <div
-          className=" css-hmgfge"
+          className=""
         >
           <Translate
             className=""
@@ -240,11 +240,11 @@ exports[`<Select /> should render select with 2 options 1`] = `
         </div>
       </Underline>
       <ErrorText
-        className=""
+        className={null}
         errorText=""
       >
         <div
-          className=" css-hmgfge"
+          className=""
         >
           <Translate
             className=""
@@ -353,11 +353,11 @@ exports[`<Select /> should render select with no options 1`] = `
         </div>
       </Underline>
       <ErrorText
-        className=""
+        className={null}
         errorText=""
       >
         <div
-          className=" css-hmgfge"
+          className=""
         >
           <Translate
             className=""
