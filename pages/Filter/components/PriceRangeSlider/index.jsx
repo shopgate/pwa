@@ -59,7 +59,7 @@ class PriceRangeSlider extends Component {
     ];
 
     this.setState({
-      value: value,
+      value,
     });
 
     this.props.onChange(roundedValue[0], roundedValue[1]);
@@ -71,7 +71,7 @@ class PriceRangeSlider extends Component {
    */
   render() {
     const { min, max } = this.props;
-    const currency = appConfig.currency;
+    const { currency } = appConfig;
 
     /**
      * The min and max price need to be rounded before they are passed to the I18n component,
