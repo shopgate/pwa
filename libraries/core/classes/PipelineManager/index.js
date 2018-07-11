@@ -22,29 +22,11 @@ class PipelineManager {
     // The open requests at any given time.
     this.requests = new Map();
 
+    // The running requests per pipeline at any given time.
+    this.requestsPerPipeline = new Map();
+
     // The error codes that should be suppressed.
     this.suppressedErrors = [];
-  }
-
-  /**
-   * Adds a new PipelineRequest instance.
-   * @param {PipelineRequest} request The pipeline request instance.
-   * @return {Promise}
-   */
-  add(request) {
-    request.createSerial(`${request.name}.v${request.version}`);
-    request.createEventCallbackName('pipelineResponse');
-
-    // Store the request by serial to be accessible later.
-    this.requests.set(request.serial, {
-      request,
-      retries: request.retries,
-      finished: false,
-      ongoing: 0,
-      timer: null,
-    });
-
-    return this.dispatch(request.serial);
   }
 
   /**
@@ -61,6 +43,27 @@ class PipelineManager {
   }
 
   /**
+   * Adds a new PipelineRequest instance.
+   * @param {PipelineRequest} request The pipeline request instance.
+   * @return {Promise}
+   */
+  add(request) {
+    request.createSerial(`${request.name}.v${request.version}`);
+    request.createEventCallbackName('pipelineResponse');
+
+    // Store the request by serial to be accessible later.
+    this.requests.set(request.serial, {
+      request,
+      retries: request.retries,
+      ongoing: 0,
+      finished: false,
+      timer: null,
+    });
+
+    return this.dispatch(request.serial);
+  }
+
+  /**
    * Dispatches a PipelineRequest instance.
    * @param {string} serial The pipeline request serial.
    * @return {Promise}
@@ -73,6 +76,8 @@ class PipelineManager {
       }
 
       this.createRequestCallback(serial, resolve, reject);
+      this.incrementOngoing(serial);
+
       this.sendRequest(serial);
     });
   }
@@ -98,11 +103,11 @@ class PipelineManager {
      * @param {Object} output The pipeline response payload.
      */
     const callback = (error, serialResult, output) => {
-      entry.finished = true;
-
       // Add the relevant response properties to the request object.
       request.error = error;
       request.output = output;
+
+      entry.finished = true;
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
         this.handleResultSequence();
@@ -126,15 +131,16 @@ class PipelineManager {
    * @return {boolean}
    */
   hasRunningDependencies(serial) {
-    const pipelineName = this.getPipelineNameBySerial(serial);
+    return false;
+    const pipelineName = this.getPipelineNameBySerial(serial, false);
     const dependencies = pipelineDependencies.get(pipelineName);
     let found = 0;
 
     dependencies.forEach((dependency) => {
       // Check if the dependency exists and is ongoing.
-      if (this.requests.has(dependency) && this.requests.get(dependency).ongoing) {
+      if (this.requestsPerPipeline.has(dependency) && this.requestsPerPipeline.get(dependency)) {
         found += 1;
-        pipelineBuffer.set(dependency, pipelineName);
+        // PipelineBuffer.set(dependency, pipelineName);
       }
     });
 
@@ -311,8 +317,6 @@ class PipelineManager {
     const prefix = this.getRetriesPrefix(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
-    this.incrementOngoing(serial);
-
     logGroup(`${prefix}PipelineRequest %c${pipelineName}`, {
       input: entry.request.input,
       serial: entry.request.serial,
@@ -344,6 +348,7 @@ class PipelineManager {
     }
 
     entry.ongoing += 1;
+    this.incrementRequestsPerPipeline(serial);
   }
 
   /**
@@ -359,6 +364,48 @@ class PipelineManager {
 
     if (entry.ongoing) {
       entry.ongoing -= 1;
+    }
+
+    this.decrementRequestsPerPipeline(serial);
+  }
+
+  /**
+   * Increments the running counter for the pipeline of a request.
+   * @param {string} serial The pipeline request serial.
+   */
+  incrementRequestsPerPipeline(serial) {
+    const pipelineName = this.getPipelineNameBySerial(serial, false);
+
+    if (!pipelineName) {
+      return;
+    }
+
+    if (!this.requestsPerPipeline.has(pipelineName)) {
+      this.requestsPerPipeline.set(pipelineName, 1);
+    } else {
+      this.requestsPerPipeline.set(pipelineName, this.requestsPerPipeline.get(pipelineName) + 1);
+    }
+  }
+
+  /**
+   * Decrements the running counter for the pipeline of a request.
+   * @param {string} serial The pipeline request serial.
+   */
+  decrementRequestsPerPipeline(serial) {
+    const pipelineName = this.getPipelineNameBySerial(serial, false);
+
+    if (!pipelineName) {
+      return;
+    }
+
+    if (this.requestsPerPipeline.has(pipelineName)) {
+      const count = this.requestsPerPipeline.get(pipelineName);
+
+      if (count > 1) {
+        this.requestsPerPipeline.set(pipelineName, count - 1);
+      } else {
+        this.requestsPerPipeline.delete(pipelineName);
+      }
     }
   }
 
@@ -380,16 +427,21 @@ class PipelineManager {
   /**
    * Returns the PipelineRequest name.
    * @param {string} serial The pipeline request serial.
+   * @param {boolean} [addVersion=true] Should the pipeline version be added.
    * @return {string}
    */
-  getPipelineNameBySerial(serial) {
+  getPipelineNameBySerial(serial, addVersion = true) {
     const entry = this.requests.get(serial);
 
     if (!entry) {
       return '';
     }
 
-    return `${entry.request.name}.v${entry.request.version}`;
+    if (addVersion) {
+      return `${entry.request.name}.v${entry.request.version}`;
+    }
+
+    return entry.request.name;
   }
 
   /**
@@ -413,7 +465,7 @@ class PipelineManager {
     const entry = this.requests.get(serial);
 
     if (!entry) {
-      return false;
+      return true;
     }
 
     return (

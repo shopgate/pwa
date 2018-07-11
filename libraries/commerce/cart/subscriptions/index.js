@@ -64,12 +64,12 @@ export default function cart(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ dispatch }) => {
-    pipelineDependencies.set(`${pipelines.SHOPGATE_CART_GET_CART}.v1`, [
-      `${pipelines.SHOPGATE_CART_ADD_PRODUCTS}.v1`,
-      `${pipelines.SHOPGATE_CART_UPDATE_PRODUCTS}.v1`,
-      `${pipelines.SHOPGATE_CART_DELETE_PRODUCTS}.v1`,
-      `${pipelines.SHOPGATE_CART_ADD_COUPONS}.v1`,
-      `${pipelines.SHOPGATE_CART_DELETE_COUPONS}.v1`,
+    pipelineDependencies.set(pipelines.SHOPGATE_CART_GET_CART, [
+      pipelines.SHOPGATE_CART_ADD_PRODUCTS,
+      pipelines.SHOPGATE_CART_UPDATE_PRODUCTS,
+      pipelines.SHOPGATE_CART_DELETE_PRODUCTS,
+      pipelines.SHOPGATE_CART_ADD_COUPONS,
+      pipelines.SHOPGATE_CART_DELETE_COUPONS,
     ]);
 
     // Register for the app event that is triggered when the checkout process is finished

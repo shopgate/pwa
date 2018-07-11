@@ -16,7 +16,7 @@ const getInstance = () => {
   return instance;
 };
 
-describe('PipelineBuffer', () => {
+describe('PipelineDependencies', () => {
   beforeEach(() => {
     jest.resetModules();
     jest.clearAllMocks();
