@@ -253,7 +253,7 @@ class PipelineManager {
     }, logColor);
 
     clearTimeout(entry.timer);
-    this.removeRequestFromPiplineSequence(request);
+    this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
   }
 
@@ -274,7 +274,6 @@ class PipelineManager {
         }
 
         this.handleResult(ser);
-        this.handleResultSequence();
       }
     }
     /* eslint-enable no-restricted-syntax */
@@ -282,9 +281,11 @@ class PipelineManager {
 
   /**
    * Removes sequentially processed requests from the pipeline sequence.
-   * @param {Object} request A request object.
+   * @param { string } serial The pipeline request serial.
    */
-  removeRequestFromPiplineSequence = (request) => {
+  removeRequestFromPiplineSequence(serial) {
+    const { request } = this.requests.get(serial);
+
     if (request.process === processTypes.PROCESS_SEQUENTIAL) {
       pipelineSequence.remove(request.serial);
     }
