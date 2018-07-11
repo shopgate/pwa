@@ -30,7 +30,7 @@ const overlay = css({
   top: variables.navigator.height,
   width: '100vw',
   height: '100vh',
-  background: 'transparent',
+  backgroundColor: 'rgba(0,0,0,0.4)',
   zIndex: 10,
 }).toString();
 
