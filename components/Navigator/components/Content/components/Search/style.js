@@ -26,25 +26,26 @@ const input = css({
 
 const overlay = css({
   position: 'fixed',
-  left: -variables.navigator.height,
   top: variables.navigator.height,
-  width: '100vw',
-  height: '100vh',
+  right: 0,
+  bottom: 0,
+  left: 0,
   backgroundColor: 'rgba(0,0,0,0.4)',
   zIndex: 10,
 }).toString();
 
+
 const slideInSearchBar = css.keyframes({
   '0%': {
-    transform: 'translateX(100%)',
+    transform: 'translate3d(100vw, 0, 0)',
     opacity: 0.5,
   },
-  '100%': { transform: 'translateX(0)' },
+  '100%': { transform: 'translate3d(0, 0, 0)' },
 });
 
 const slideOutSearchBar = css.keyframes({
-  '0%': { transform: 'translateX(0)' },
-  '100%': { transform: 'translateX(100%)' },
+  '0%': { transform: 'translate3d(0, 0, 0)' },
+  '100%': { transform: 'translate3d(100vw, 0, 0)' },
 });
 
 const animation = {
@@ -56,9 +57,29 @@ const animation = {
   }).toString(),
 };
 
+const fadeInOverlay = css.keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+const fadeOutOverlay = css.keyframes({
+  '0%': { opacity: 1 },
+  '100%': { opacity: 0 },
+});
+
+const overlayAnimation = {
+  in: css({
+    animation: `${fadeInOverlay} 150ms 1`,
+  }).toString(),
+  out: css({
+    animation: `${fadeOutOverlay} 150ms 1`,
+  }).toString(),
+};
+
 export default {
   container,
   input,
   animation,
   overlay,
+  overlayAnimation,
 };

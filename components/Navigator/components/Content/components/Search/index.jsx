@@ -43,6 +43,8 @@ class Search extends Component {
     this.state = {
       // Determines if this component is rendered
       active: false,
+      // Determines if animation should be triggered.
+      animate: false,
       // Value of the input element
       inputValue: '',
     };
@@ -63,6 +65,7 @@ class Search extends Component {
         this.setState(
           {
             active: true,
+            animate: true, // For showing we want animation.
             inputValue: currentSearchPhrase,
           },
           // Auto-focus input element
@@ -70,7 +73,16 @@ class Search extends Component {
             this.inputElement.focus();
           }
         );
+
+        return;
       }
+
+      // No animation if it comes from the outside.
+      this.setState({
+        active: false,
+        // Hiding comes from the outside where usually many things happen. No animation is safer.
+        animate: false,
+      });
     }
   }
 
@@ -109,7 +121,10 @@ class Search extends Component {
    * Handles blur events on the input element.
    */
   handleOverlayClick = () => {
-    this.props.toggleSearch(false);
+    this.setState({
+      active: false, // Become inactive.
+      animate: true, // With animation.
+    });
   };
 
   /**
@@ -134,7 +149,17 @@ class Search extends Component {
    * whenever an animation ends.
    */
   handleAnimationEnd = () => {
-    this.setState({ active: this.props.active });
+    // Animation end with inactive state => search is just closed.
+    if (!this.state.active) {
+      this.props.toggleSearch(false);
+
+      return;
+    }
+
+    // Component just came in. Resetting animation flag.
+    this.setState({
+      animate: false,
+    });
   };
 
   /**
@@ -142,14 +167,19 @@ class Search extends Component {
    * @returns {JSX}
    */
   render() {
-    if (!this.state.active) {
+    if (!this.state.active && !this.state.animate) {
       return null;
     }
-
     const containerClassName = classNames(
       styles.container,
-      { [styles.animation.in]: this.props.active },
-      { [styles.animation.out]: !this.props.active }
+      { [styles.animation.in]: this.state.active },
+      { [styles.animation.out]: !this.state.active }
+    );
+
+    const overlayClassName = classNames(
+      styles.overlay,
+      { [styles.overlayAnimation.in]: this.state.active },
+      { [styles.overlayAnimation.out]: !this.state.active }
     );
 
     const { inputValue } = this.state;
@@ -175,13 +205,13 @@ class Search extends Component {
             ref={(element) => { this.inputElement = element; }}
             onFocus={this.handleFocus}
           />
-          <div
-            className={styles.overlay}
-            onClick={this.handleOverlayClick}
-            role="button"
-            aria-hidden
-          />
         </form>
+        <div
+          className={overlayClassName}
+          onClick={this.handleOverlayClick}
+          role="button"
+          aria-hidden
+        />
         <SearchSuggestions phrase={this.state.inputValue} />
       </div>
     );
