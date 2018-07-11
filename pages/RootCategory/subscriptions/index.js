@@ -1,6 +1,6 @@
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import fetchRootCategories from '@shopgate/pwa-common-commerce/category/actions/fetchRootCategories';
-import { rootCategoryWillEnter$ } from './streams';
+import { rootCategoryWillEnter$ } from '../streams';
 
 /**
  * @param {Function} subscribe The subscribe function.
