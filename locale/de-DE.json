@@ -42,7 +42,7 @@
   },
   "price": {
     "from": "Ab {price}",
-    "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "range": "Preis von {fromPrice} bis {toPrice}",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
@@ -55,6 +55,10 @@
     "tax_disclaimer": "* Alle Preise inkl. MwSt. evtl. zzgl. Versand"
   },
   "category": {
+    "error": {
+      "title": "Ups",
+      "not_found": "Kategorie nicht gefunden"
+    },
     "no_result": {
       "heading": "Ups!",
       "body": "Keine Produkte gefunden."
