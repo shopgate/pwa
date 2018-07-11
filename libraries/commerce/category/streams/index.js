@@ -6,6 +6,7 @@ import {
 import {
   CATEGORY_PATH,
   RECEIVE_ROOT_CATEGORIES,
+  ERROR_CATEGORY,
 } from '../constants';
 import { FILTER_PATH } from '../../filter/constants';
 
@@ -30,3 +31,8 @@ export const categoryRouteDidEnter$ = routeDidEnter(CATEGORY_PATH);
 export const receivedRootCategories$ = main$.filter(({ action }) => (
   action.type === RECEIVE_ROOT_CATEGORIES
 ));
+
+/**
+ * Gets trigger when category error is dispatched.
+ */
+export const categoryError$ = main$.filter(({ action }) => (action.type === ERROR_CATEGORY));
