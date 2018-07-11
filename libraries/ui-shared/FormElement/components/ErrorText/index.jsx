@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
 
@@ -8,9 +9,9 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ErrorText = props => (
-  <div className={`${props.className} ${styles.error}`}>
-    <I18n.Text string={props.errorText} />
+const ErrorText = ({ className, error, errorText }) => (
+  <div className={classNames(className, error)}>
+    <I18n.Text string={errorText} />
   </div>
 );
 
@@ -20,7 +21,7 @@ ErrorText.propTypes = {
 };
 
 ErrorText.defaultProps = {
-  className: '',
+  className: null,
   errorText: null,
 };
 
