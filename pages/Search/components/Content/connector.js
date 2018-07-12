@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { hasSearchResults } from '@shopgate/pwa-common-commerce/search/selectors';
+import { showNoResults, showFilterBar } from '../../selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -10,8 +8,25 @@ import { hasSearchResults } from '@shopgate/pwa-common-commerce/search/selectors
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  hasResults: hasSearchResults(state, props),
-  isLoading: isViewLoading(state, SEARCH_PATH),
+  showFilterBar: showFilterBar(state, props),
+  showNoResults: showNoResults(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.showNoResults !== next.showNoResults) {
+    return false;
+  }
+
+  if (prev.showFilterBar !== next.showFilterBar) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
