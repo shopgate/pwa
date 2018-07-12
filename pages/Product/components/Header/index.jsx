@@ -34,7 +34,7 @@ const ProductHeader = () => (
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons />
+            <CTAButtons productId={id} />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
