@@ -140,7 +140,7 @@ exports[`<ProductGallery> page should render 1`] = `
                     zoomOnTap={2}
                   >
                     <div
-                      className="css-11jqakt"
+                      className="css-70kdmd"
                     >
                       <MockedComponent
                         direction="DIRECTION_ALL"
@@ -164,7 +164,7 @@ exports[`<ProductGallery> page should render 1`] = `
                         <div>
                           <div>
                             <div
-                              className="css-1t53m48"
+                              className="css-1b510lo"
                             >
                               <div
                                 className="css-ivsd5g"
