@@ -15,13 +15,14 @@ import AppCommand from '../classes/AppCommand';
  * @param {string} params.domain The domain for the cookie
  * @param {int} params.expires The expires datetime
  * @param {string} params.path The path for the cookie
- * @param {Boolean} params.secure
- * @param {Boolean} params.httpOnly
+ * @param {Boolean} params.secure Set is secure
+ * @param {Boolean} params.httpOnly Set is http only
  */
 export default (params) => {
   const command = new AppCommand();
 
   command
     .setCommandName('setCookie')
+    .setLibVersion('14.0')
     .dispatch(params);
 };
