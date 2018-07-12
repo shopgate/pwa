@@ -56,6 +56,10 @@
     "tax_disclaimer": "* Incl. BTW plus verzendkosten"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Categorie niet gevonden"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "Geen producten gevonden."

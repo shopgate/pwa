@@ -22,18 +22,4 @@ const mapDispatchToProps = dispatch => ({
   navigate: url => dispatch(navigate(ACTION_PUSH, url)),
 });
 
-/**
- * Check to see if the product description has arrived.
- * @param {Object} next The next props.
- * @param {Object} prev the previous props.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.html && next.html) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
+export default connect(mapStateToProps, mapDispatchToProps);
