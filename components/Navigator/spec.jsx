@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor/constants';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { NAVIGATE } from '@shopgate/pwa-common/constants/ActionTypes';
+import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import { getStore } from './mock';
 import Navigator from './index';
 
@@ -16,6 +17,11 @@ jest.mock('./components/NavButton', () => ({ children }) => (<div>{children} </d
 
 let mockedRoutePattern = '/';
 jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedRoutePattern }));
+
+const mockedResolver = jest.fn();
+jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
+  mockedResolver(mockInstance, resolve, reject);
+}));
 
 const results = [
   [
@@ -30,13 +36,17 @@ const results = [
     {
       type: NAVIGATE,
       action: ACTION_PUSH,
-      location: '/search?s=shirt',
+      location: '/search?s=skirt',
       state: undefined,
     },
   ],
 ];
 
 describe('Navigator', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   it('should render nothing', () => {
     const component = mount(
       <Provider store={getStore({ enabled: false })}>
@@ -141,7 +151,7 @@ describe('Navigator', () => {
         routePattern: replaceFromPath,
         searchField: true,
       });
-      NavigatorWrapper.instance().toggleSearchField(false);
+      NavigatorWrapper.instance().toggleSearchField(false, true);
 
       expect(store.getActions()).toEqual(results[0]);
     });
@@ -151,11 +161,11 @@ describe('Navigator', () => {
       const pushFromPath = '/category';
 
       NavigatorWrapper.instance().setState({
-        searchQuery: 'shirt',
+        searchQuery: 'skirt',
         routePattern: pushFromPath,
         searchField: true,
       });
-      NavigatorWrapper.instance().toggleSearchField(false);
+      NavigatorWrapper.instance().toggleSearchField(false, true);
 
       expect(store.getActions()).toEqual(results[1]);
     });
