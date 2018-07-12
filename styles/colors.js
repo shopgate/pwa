@@ -2,6 +2,21 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const colors = (process.env.NODE_ENV !== 'test' && themeConfig && themeConfig.colors) ? themeConfig.colors : {};
 
+/**
+ * Backwards compatible check.
+ * `colors` variable comes from webpack and is a result of default colors and colors which were
+ * configures in the shop setting.
+ *
+ * It means it always have primary/primaryContrast colors.
+ *
+ * If there are no cta/ctaContrast colors configures in this variable, then is should fall back
+ * to primary and primaryContrast.
+ */
+if (!(colors.cta && colors.ctaContrast)) {
+  colors.cta = colors.primary;
+  colors.ctaContrast = colors.primaryContrast;
+}
+
 export default {
   accent: '#5ccee3',
   accentContrast: '#fff',
@@ -26,5 +41,7 @@ export default {
   shade12: '#939393',
   success: '#35cc29',
   warning: '#ff9300',
+  cta: '#fa5400',
+  ctaContrast: '#fff',
   ...colors,
 };
