@@ -18,7 +18,9 @@ import appConfig from '../helpers/config';
  */
 export default function router(subscribe) {
   subscribe(navigate$, ({ action, dispatch, getState }) => {
-    const { action: historyAction, location, state: routeState } = action;
+    const { action: historyAction, state: routeState } = action;
+    let { location } = action;
+
     const state = getState();
 
     // Route authentication.
@@ -37,6 +39,12 @@ export default function router(subscribe) {
 
         return;
       }
+    }
+
+    // Override the location if is Shop link is found.
+    if (handler.isShopLink(location)) {
+      const { pathname, search } = new URL(location);
+      location = `${pathname}${search}`;
     }
 
     // If there is one of the known protocols in the url.
