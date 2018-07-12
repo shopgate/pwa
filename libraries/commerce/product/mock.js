@@ -1,3 +1,14 @@
+const productRouteMock = {
+  id: '0903d6a9-2b5c-47a7-bdd4-e95be5311a23',
+  params: {
+    productId: '393133',
+  },
+  pathname: '/item/393133',
+  pattern: '/item/:productId',
+  query: {},
+  state: {},
+};
+
 const mockedProducts = {
   products: [
     {
@@ -83,14 +94,35 @@ const mockedProducts = {
   ],
 };
 
-const basicProductState = {
+const initialState = {
   product: {
+    productsById: {},
+    descriptionsByProductId: {},
+    propertiesByProductId: {},
+    variantsByProductId: {},
+    optionsByProductId: {},
+    resultsByHash: {},
+    imagesByProductId: {},
+    currentProduct: {
+      productId: null,
+      productVariantId: null,
+      quantity: null,
+      options: {},
+    },
+  },
+};
+
+const basicProductState = {
+  ...initialState,
+  product: {
+    ...initialState.product,
     productsById: {
       913: {
         isFetching: false,
         expires: 1497428462438,
         productData: {
           id: '913',
+          baseProductId: null,
           name: 'This is a product with a very very long name -5-',
           manufacturer: '',
           identifiers: {
@@ -139,9 +171,6 @@ const basicProductState = {
         },
       },
     },
-    variantsByProductId: {},
-    optionsByProductId: {},
-    resultsByHash: {},
     imagesByProductId: {
       913: {
         isFetching: false,
@@ -161,13 +190,16 @@ const basicProductState = {
 };
 
 const productWithOneOption = {
+  ...initialState,
   product: {
+    ...initialState.product,
     productsById: {
       1097: {
         isFetching: false,
         expires: 1497429212949,
         productData: {
           id: '1097',
+          baseProductId: null,
           name: 'simple Product with options',
           manufacturer: '',
           identifiers: {
@@ -216,7 +248,6 @@ const productWithOneOption = {
         },
       },
     },
-    variantsByProductId: {},
     optionsByProductId: {
       1097: {
         isFetching: false,
@@ -247,7 +278,6 @@ const productWithOneOption = {
         ],
       },
     },
-    resultsByHash: {},
     imagesByProductId: {
       913: {
         isFetching: false,
@@ -285,13 +315,16 @@ const productWithSelectedOptions = {
 };
 
 const productWithVariants = {
+  ...initialState,
   product: {
+    ...initialState.product,
     productsById: {
       dif01: {
         isFetching: false,
         expires: 1497432294167,
         productData: {
           id: 'dif01',
+          baseProductId: null,
           name: 'Product with children that have different prices',
           manufacturer: '',
           identifiers: {
@@ -380,8 +413,6 @@ const productWithVariants = {
         },
       },
     },
-    optionsByProductId: {},
-    resultsByHash: {},
     currentProduct: {
       productId: 'dif01',
       productVariantId: null,
@@ -389,7 +420,6 @@ const productWithVariants = {
       options: {},
     },
   },
-
 };
 
 const productWithSelectedVariant = {
@@ -460,7 +490,9 @@ const productWithSelectedVariant = {
 };
 
 const productWithVariantsAndOptions = {
+  ...initialState,
   product: {
+    ...initialState.product,
     productsById: {
       SG74: {
         isFetching: false,
@@ -955,7 +987,6 @@ const productWithVariantsAndOptions = {
         ],
       },
     },
-    resultsByHash: {},
     currentProduct: {
       productId: 'SG74',
       productVariantId: null,
@@ -965,9 +996,25 @@ const productWithVariantsAndOptions = {
   },
 };
 
+const getShippingStateForId = (id) => ({
+  shippingByProductId: {
+    [id]: {
+      isFetching: false,
+      expires: 9999999999999,
+      shipping: {
+        currency: 'USD',
+        price: 3.5,
+      },
+    },
+  },
+});
+
 export {
   mockedProducts,
+  initialState,
   basicProductState,
+  getShippingStateForId,
+  productRouteMock,
   productWithOneOption,
   productWithSelectedOptions,
   productWithVariants,

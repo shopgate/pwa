@@ -126,7 +126,10 @@ export const getCategoryProductCount = createSelector(
   getCategoriesState,
   (state, props) => props.categoryId,
   (categories, categoryId) => {
-    if (!categories[categoryId] || !categories[categoryId].productCount) {
+    if (
+      !categories[categoryId]
+      || (!categories[categoryId].productCount && categories[categoryId].productCount !== 0)
+    ) {
       return null;
     }
 
