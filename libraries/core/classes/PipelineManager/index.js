@@ -149,6 +149,18 @@ class PipelineManager {
   }
 
   /**
+   * Runs a pipeline request's dependencies.
+   * @param {string} pipelineName The pipeline request name.
+   */
+  runDependencies(pipelineName) {
+    pipelineBuffer
+      .get(pipelineName)
+      .forEach((dependency) => {
+        this.dispatch(dependency);
+      });
+  }
+
+  /**
    * Handles the request timeout.
    * @param {string} serial The pipeline request serial.
    */
@@ -171,18 +183,6 @@ class PipelineManager {
       this.decrementRetries(serial);
       this.sendRequest(serial);
     }, request.timeout);
-  }
-
-  /**
-   * Runs a pipeline request's dependencies.
-   * @param {string} pipelineName The pipeline request name.
-   */
-  runDependencies(pipelineName) {
-    pipelineBuffer
-      .get(pipelineName)
-      .forEach((dependency) => {
-        this.dispatch(dependency);
-      });
   }
 
   /**
@@ -257,7 +257,6 @@ class PipelineManager {
       serial,
     }, logColor);
 
-    // Cleanup.
     event.removeCallback(callbackName, request.callback);
     clearTimeout(entry.timer);
     this.removeRequestFromPiplineSequence(serial);
@@ -268,22 +267,23 @@ class PipelineManager {
    * Handles the results sequentially.
    */
   handleResultSequence() {
-    const sequence = pipelineSequence.get();
+    // Create a copy of the sequence, to avoid side effects when entries are removed.
+    const [...sequence] = pipelineSequence.get();
 
-    /* eslint-disable no-restricted-syntax */
-    for (const ser of sequence) {
-      const entry = this.requests.get(ser);
+    for (let i = 0; i < sequence.length; i += 1) {
+      const serial = sequence[i];
+      const entry = this.requests.get(serial);
 
-      if (entry) {
-        // Stop processing the sequence at the fist unfinished entry.
-        if (!entry.finished) {
-          break;
-        }
-
-        this.handleResult(ser);
+      if (!entry) {
+        // Remove sequence entries without request.
+        this.removeRequestFromPiplineSequence(serial);
+      } else if (!entry.finished) {
+        // Stop sequence procession at the first not finished request.
+        break;
+      } else {
+        this.handleResult(serial);
       }
     }
-    /* eslint-enable no-restricted-syntax */
   }
 
   /**
@@ -340,10 +340,12 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    */
   removeRequestFromPiplineSequence(serial) {
-    const { request } = this.requests.get(serial);
+    const { request } = this.requests.get(serial) || {};
 
-    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+    if (request && request.process === processTypes.PROCESS_SEQUENTIAL) {
       pipelineSequence.remove(request.serial);
+    } else if (!request) {
+      pipelineSequence.remove(serial);
     }
   }
 
