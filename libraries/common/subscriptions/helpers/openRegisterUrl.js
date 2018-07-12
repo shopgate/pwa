@@ -45,10 +45,7 @@ const openRegisterUrl = (url, state) => {
   const query = `${parseObjectToQueryString(params, true)}${prevParams}`;
 
   // Build the new url with the GET params.
-  const newUrl = `${originalUrlWithoutParams}${query}`;
-
-  const link = new ParsedLink(newUrl);
-  link.open();
+  return `${originalUrlWithoutParams}${query}`;
 };
 
 export default openRegisterUrl;
