@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { getResultByHash } from '../../product/selectors/product';
 
 /**
  * @param {Object} state The appllication state.
@@ -16,16 +15,5 @@ export const getSuggestions = createSelector(
     }
 
     return suggestions[phrase].suggestions;
-  }
-);
-
-export const hasSearchResults = createSelector(
-  getResultByHash,
-  (results) => {
-    if (!results || !results.products || !results.products.length) {
-      return false;
-    }
-
-    return true;
   }
 );
