@@ -27,38 +27,37 @@ describe('ProductGallery subscriptions', () => {
   let galleryEnter;
   let galleryLeave;
   let store = mockedStore();
+
   beforeAll(() => {
     jest.resetAllMocks();
     store.clearActions();
     subscribeMock = jest.fn();
   });
+
   it('should subscribe', () => {
     subscribe(subscribeMock);
     expect(subscribeMock.mock.calls.length).toBe(2);
     [galleryEnter, galleryLeave] = subscribeMock.mock.calls;
     expect(galleryEnter[0]).toBe(galleryWillEnter$);
     expect(galleryLeave[0]).toBe(galleryWillLeave$);
-
   });
 
   describe('galleryWillEnter$', () => {
-
     it('should do nothing when disabled', () => {
-      store = mockedStore(defaultState);
+      store = mockedStore({
+        ...defaultState,
+        navigator: {
+          ...defaultState.navigator,
+          enabled: false,
+        },
+      });
       galleryEnter[1](store);
       const actions = store.getActions();
       expect(actions.length).toEqual(0);
     });
 
     it('should disable navigator when enabled', () => {
-      const state = {
-        ...defaultState,
-        navigator: {
-          ...defaultState.navigator,
-          enabled: true,
-        },
-      };
-      store = mockedStore(state);
+      store = mockedStore(defaultState);
       galleryEnter[1](store);
       const actions = store.getActions();
       expect(actions).toEqual(results[0]);
@@ -67,21 +66,20 @@ describe('ProductGallery subscriptions', () => {
 
   describe('galleryWillLeave$', () => {
     it('should enable navigator when disabled', () => {
-      store = mockedStore(defaultState);
+      store = mockedStore({
+        ...defaultState,
+        navigator: {
+          ...defaultState.navigator,
+          enabled: false,
+        },
+      });
       galleryLeave[1](store);
       const actions = store.getActions();
       expect(actions).toEqual(results[1]);
     });
 
     it('should do nothing when enabled', () => {
-      const state = {
-        ...defaultState,
-        navigator: {
-          ...defaultState.navigator,
-          enabled: true,
-        },
-      };
-      store = mockedStore(state);
+      store = mockedStore(defaultState);
       galleryLeave[1](store);
       const actions = store.getActions();
       expect(actions.length).toEqual(0);

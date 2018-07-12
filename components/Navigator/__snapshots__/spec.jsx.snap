@@ -16,6 +16,7 @@ exports[`Navigator should render search 1`] = `
   <Connect(Navigator)>
     <Navigator
       backgroundColor="red"
+      fetchSearchSuggestions={[Function]}
       filterOpen={false}
       navigate={[Function]}
       navigatorEnabled={true}
@@ -176,38 +177,49 @@ exports[`Navigator should render search 1`] = `
                                     onExit={[Function]}
                                     onExited={[Function]}
                                     onExiting={[Function]}
-                                    timeout={150}
+                                    timeout={0}
                                     unmountOnExit={false}
                                   >
-                                    <form
-                                      className="css-15xpwm2"
-                                      data-test-id="Search"
-                                      onSubmit={[Function]}
+                                    <div
+                                      className="css-24kq4i"
                                       style={
                                         Object {
-                                          "transform": "translate3d(100vw, 0, 0)",
+                                          "transform": "translateY(-100%)",
                                         }
                                       }
                                     >
-                                      <input
-                                        className="css-1obolt5"
-                                        onChange={[Function]}
-                                        onFocus={[Function]}
-                                        placeholder="search.placeholder"
-                                        type="search"
-                                        value=""
-                                      />
+                                      <form
+                                        className="css-sa13d4"
+                                        data-test-id="Search"
+                                        onSubmit={[Function]}
+                                      >
+                                        <input
+                                          className="css-13u5ou6"
+                                          onChange={[Function]}
+                                          onFocus={[Function]}
+                                          placeholder="search.placeholder"
+                                          type="search"
+                                          value=""
+                                        />
+                                      </form>
                                       <div
                                         aria-hidden={true}
-                                        className="css-lvd6ix"
+                                        className="css-16d1k2p"
                                         onClick={[Function]}
                                         role="button"
                                       />
-                                    </form>
+                                    </div>
                                   </Transition>
                                 </NavigatorSearch>
                               </Consumer>
                             </_default>
+                            <Component>
+                              <Consumer>
+                                <Suggestions
+                                  isVisible={false}
+                                />
+                              </Consumer>
+                            </Component>
                           </NavigatorContent>
                         </div>
                       </GridItem>

@@ -67,9 +67,9 @@ Header.defaultProps = {
 };
 
 export default props => (
-  <RouteContext>
+  <RouteContext.Consumer>
     {({ params }) => <Header {...props} productId={hex2bin(params.productId) || null} />}
-  </RouteContext>
+  </RouteContext.Consumer>
 );
 
 export { Header as UnwrappedHeader };

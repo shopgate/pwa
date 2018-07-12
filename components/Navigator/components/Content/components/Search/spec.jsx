@@ -3,14 +3,13 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { defaultContext } from '../../../../context';
-
 import { defaultState } from './../../../../mock';
 
 const mockedStore = configureStore([thunk]);
 let store;
 
-jest.mock('../../../../context');
+jest.mock('./../../../../context');
+const { defaultContext } = require('./../../../../context');
 
 // eslint-disable-next-line require-jsdoc
 const createComponent = (state = defaultState) => {
@@ -20,7 +19,7 @@ const createComponent = (state = defaultState) => {
   return mount(<Search store={store} />, mockRenderOptions);
 };
 
-describe('NavButton', () => {
+describe('Search', () => {
   afterEach(() => {
     jest.resetAllMocks();
     store.clearActions();
@@ -61,6 +60,6 @@ describe('NavButton', () => {
 
     wrapper.find('form').simulate('submit', { preventDefault: () => {} });
     expect(defaultContext.toggleSearchField.mock.calls.length).toEqual(1);
-    expect(defaultContext.toggleSearchField.mock.calls[0]).toEqual([false]);
+    expect(defaultContext.toggleSearchField.mock.calls[0]).toEqual([false, true]);
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NavButton should render 1`] = `
+exports[`Search should render 1`] = `
 <_default
   store={
     Object {
@@ -32,34 +32,33 @@ exports[`NavButton should render 1`] = `
         onExit={[Function]}
         onExited={[Function]}
         onExiting={[Function]}
-        timeout={150}
+        timeout={0}
         unmountOnExit={false}
       >
-        <form
-          className="css-15xpwm2"
-          data-test-id="Search"
-          onSubmit={[Function]}
-          style={
-            Object {
-              "transform": "translate3d(0, 0, 0)",
-            }
-          }
+        <div
+          className="css-24kq4i"
         >
-          <input
-            className="css-1obolt5"
-            onChange={[Function]}
-            onFocus={[Function]}
-            placeholder="search.placeholder"
-            type="search"
-            value="shirt"
-          />
+          <form
+            className="css-sa13d4"
+            data-test-id="Search"
+            onSubmit={[Function]}
+          >
+            <input
+              className="css-13u5ou6"
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="search.placeholder"
+              type="search"
+              value="shirt"
+            />
+          </form>
           <div
             aria-hidden={true}
-            className="css-lvd6ix"
+            className="css-16d1k2p"
             onClick={[Function]}
             role="button"
           />
-        </form>
+        </div>
       </Transition>
     </NavigatorSearch>
   </Consumer>

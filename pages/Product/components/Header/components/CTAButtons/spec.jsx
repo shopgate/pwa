@@ -5,20 +5,26 @@ import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import { ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
+// Import from context since it'll be mocked later
+import { defaultContext } from './../../../../context';
 import {
   mockedState,
   mockedVariantState,
 } from './mock';
 
+const mockedStore = configureStore([thunk]);
 const mockedResolver = jest.fn();
 jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
   mockedResolver(mockInstance, resolve, reject);
 }));
 
+jest.mock('./../../../../context');
+
 describe('CTAs (product header)', () => {
   let store;
-  beforeEach(() => {
-    jest.resetModules();
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
   /**
    * Creates component
@@ -27,9 +33,7 @@ describe('CTAs (product header)', () => {
    * @return {ReactWrapper}
    */
   const createComponent = (state, props) => {
-    const mockedStore = configureStore([thunk]);
     store = mockedStore(state);
-
     /* eslint-disable global-require */
     const CTAButtons = require('./index').default;
     /* eslint-enable global-require */
@@ -37,18 +41,25 @@ describe('CTAs (product header)', () => {
   };
 
   it('should render CTAButtons when data is available', () => {
-    const component = createComponent(mockedState, { productId: 'product_1' });
+    const productId = 'product_1';
+    defaultContext.productId = productId;
+    const component = createComponent(mockedState, { productId });
     expect(component).toMatchSnapshot();
     expect(component.find('FavoritesButton').exists()).toBe(true);
-    expect(component.find('AddToCartButton').exists()).toBe(true);
+    expect(component.find('CartButton').exists()).toBe(true);
   });
 
-  it('should handle add to cart', () => {
-    const component = createComponent(mockedVariantState, { productId: 'product_2' });
-    component.find('AddToCartButton').find('button').simulate('click');
+  it('should handle add to cart', (done) => {
+    const productId = 'product_2';
+    defaultContext.productId = productId;
+    const component = createComponent(mockedVariantState, { productId });
+    component.find('CartButton').find('button').simulate('click');
     component.update();
 
-    const actions = store.getActions();
-    expect(actions[0].type).toBe(ADD_PRODUCTS_TO_CART);
+    window.setTimeout(() => {
+      const actions = store.getActions();
+      expect(actions[0].type).toBe(ADD_PRODUCTS_TO_CART);
+      done();
+    }, 0);
   });
 });

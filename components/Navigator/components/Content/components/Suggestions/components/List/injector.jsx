@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigatorContext } from '../../../../../../context';
 
 export default Component => props => (
-  <NavigatorContext>
+  <NavigatorContext.Consumer>
     {({ searchQuery, toggleSearchField }) => (
       <Component
         searchPhrase={searchQuery}
@@ -10,5 +10,5 @@ export default Component => props => (
         {...props}
       />
     )}
-  </NavigatorContext>
+  </NavigatorContext.Consumer>
 );
