@@ -34,12 +34,12 @@ const overlay = css({
   zIndex: 10,
 }).toString();
 
-
 const slideInSearchBar = css.keyframes({
   '0%': {
     transform: 'translate3d(100vw, 0, 0)',
     opacity: 0.5,
   },
+
   '100%': { transform: 'translate3d(0, 0, 0)' },
 });
 
