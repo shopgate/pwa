@@ -47,38 +47,49 @@ exports[`<NavigatorContent /> should render the logo 1`] = `
             onExit={[Function]}
             onExited={[Function]}
             onExiting={[Function]}
-            timeout={150}
+            timeout={0}
             unmountOnExit={false}
           >
-            <form
-              className="css-15xpwm2"
-              data-test-id="Search"
-              onSubmit={[Function]}
+            <div
+              className="css-24kq4i"
               style={
                 Object {
-                  "transform": "translate3d(100vw, 0, 0)",
+                  "transform": "translateY(-100%)",
                 }
               }
             >
-              <input
-                className="css-1obolt5"
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="search.placeholder"
-                type="search"
-                value="shirt"
-              />
+              <form
+                className="css-sa13d4"
+                data-test-id="Search"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="css-13u5ou6"
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="search.placeholder"
+                  type="search"
+                  value="shirt"
+                />
+              </form>
               <div
                 aria-hidden={true}
-                className="css-lvd6ix"
+                className="css-16d1k2p"
                 onClick={[Function]}
                 role="button"
               />
-            </form>
+            </div>
           </Transition>
         </NavigatorSearch>
       </Consumer>
     </_default>
+    <Component>
+      <Consumer>
+        <Suggestions
+          isVisible={false}
+        />
+      </Consumer>
+    </Component>
   </NavigatorContent>
 </Provider>
 `;
@@ -157,38 +168,49 @@ exports[`<NavigatorContent /> should render the title 1`] = `
             onExit={[Function]}
             onExited={[Function]}
             onExiting={[Function]}
-            timeout={150}
+            timeout={0}
             unmountOnExit={false}
           >
-            <form
-              className="css-15xpwm2"
-              data-test-id="Search"
-              onSubmit={[Function]}
+            <div
+              className="css-24kq4i"
               style={
                 Object {
-                  "transform": "translate3d(100vw, 0, 0)",
+                  "transform": "translateY(-100%)",
                 }
               }
             >
-              <input
-                className="css-1obolt5"
-                onChange={[Function]}
-                onFocus={[Function]}
-                placeholder="search.placeholder"
-                type="search"
-                value="shirt"
-              />
+              <form
+                className="css-sa13d4"
+                data-test-id="Search"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="css-13u5ou6"
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="search.placeholder"
+                  type="search"
+                  value="shirt"
+                />
+              </form>
               <div
                 aria-hidden={true}
-                className="css-lvd6ix"
+                className="css-16d1k2p"
                 onClick={[Function]}
                 role="button"
               />
-            </form>
+            </div>
           </Transition>
         </NavigatorSearch>
       </Consumer>
     </_default>
+    <Component>
+      <Consumer>
+        <Suggestions
+          isVisible={false}
+        />
+      </Consumer>
+    </Component>
   </NavigatorContent>
 </Provider>
 `;

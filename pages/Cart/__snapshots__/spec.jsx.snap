@@ -608,6 +608,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                                           >
                                                             <input
                                                               className="css-7rhxrg"
+                                                              data-test-id="quantityPicker"
                                                               min={1}
                                                               onBlur={[Function]}
                                                               onChange={[Function]}
@@ -1315,6 +1316,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                                   >
                                                     <button
                                                       className="css-18f4jja"
+                                                      data-test-id="deleteCoupon"
                                                       onClick={[Function]}
                                                     >
                                                       <Cross>
@@ -2335,6 +2337,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                                                           >
                                                             <input
                                                               className="css-7rhxrg"
+                                                              data-test-id="quantityPicker"
                                                               min={1}
                                                               onBlur={[Function]}
                                                               onChange={[Function]}

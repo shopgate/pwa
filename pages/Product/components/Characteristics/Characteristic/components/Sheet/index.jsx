@@ -6,7 +6,7 @@ import List from 'Components/List';
 import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
 import SheetItem from '../SheetItem';
 import VariantAvailability from '../VariantAvailability';
-import ProductContext from '../../../../../context';
+import { ProductContext } from './../../../../../context';
 
 const portals = document.getElementById('portals');
 

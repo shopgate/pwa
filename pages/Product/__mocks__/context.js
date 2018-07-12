@@ -1,4 +1,5 @@
 import React from 'react';
+import { Conditioner } from '@shopgate/pwa-core';
 
 export const defaultContext = {
   productId: null,
@@ -6,6 +7,7 @@ export const defaultContext = {
   options: {},
   characteristics: {},
   setCharacteristic: jest.fn(),
+  conditioner: new Conditioner(),
 };
 let context;
 

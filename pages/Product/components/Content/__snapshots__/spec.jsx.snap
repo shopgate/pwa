@@ -17,9 +17,9 @@ exports[`<ProductContent> should render 1`] = `
     productId="913"
   >
     <ProductContent
+      addToCart={[Function]}
       baseProductId="913"
       characteristics={null}
-      dispatch={[Function]}
       isBaseProduct={true}
       productId="913"
       variantId={null}
@@ -29,9 +29,13 @@ exports[`<ProductContent> should render 1`] = `
         value={
           Object {
             "characteristics": Object {},
+            "conditioner": Conditioner {
+              "conditioners": Map {
+                "product-variants" => [Function],
+              },
+            },
             "options": Object {},
             "productId": "913",
-            "setCharacteristic": [Function],
             "variantId": null,
           }
         }
@@ -45,12 +49,158 @@ exports[`<ProductContent> should render 1`] = `
             name="product.image"
             props={null}
           >
-            <Component
+            <Connect(ImageSlider)
               productId="913"
               variantId={null}
             >
-              <div />
-            </Component>
+              <ImageSlider
+                images={
+                  Array [
+                    "https://img-cdn.shopgate.com/image.jpg",
+                  ]
+                }
+                navigate={[Function]}
+                product={
+                  Object {
+                    "ageRating": 0,
+                    "availability": Object {
+                      "state": "ok",
+                      "text": "In stock",
+                    },
+                    "baseProductId": null,
+                    "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                    "flags": Object {
+                      "hasChildren": false,
+                      "hasOptions": false,
+                      "hasVariants": false,
+                    },
+                    "highlight": true,
+                    "id": "913",
+                    "identifiers": Object {
+                      "sku": "857347363",
+                    },
+                    "liveshoppings": Array [],
+                    "manufacturer": "",
+                    "name": "This is a product with a very very long name -5-",
+                    "price": Object {
+                      "currency": "EUR",
+                      "info": "",
+                      "msrp": 0,
+                      "taxAmount": 0,
+                      "taxPercent": 0,
+                      "tiers": Array [],
+                      "unitPrice": 89,
+                      "unitPriceMax": 1000,
+                      "unitPriceMin": 0,
+                      "unitPriceNet": 89,
+                      "unitPriceStriked": 0,
+                      "unitPriceWithTax": 89,
+                    },
+                    "rating": Object {
+                      "average": 0,
+                      "count": 0,
+                      "reviewCount": 0,
+                    },
+                    "stock": Object {
+                      "ignoreQuantity": true,
+                      "info": "In stock",
+                      "maxOrderQuantity": 10000,
+                      "minOrderQuantity": 1,
+                      "orderable": true,
+                      "quantity": 0,
+                    },
+                  }
+                }
+                productId="913"
+                variantId={null}
+              >
+                <Component
+                  direction="DIRECTION_ALL"
+                  onPinchStart={[Function]}
+                  onTap={[Function]}
+                  options={
+                    Object {
+                      "recognizers": Object {
+                        "pinch": Object {
+                          "enable": true,
+                        },
+                      },
+                      "touchAction": "pan-x pan-y",
+                    }
+                  }
+                >
+                  <div>
+                    <ImageSlider
+                      autoPlay={false}
+                      className=""
+                      classNames={Object {}}
+                      controls={false}
+                      disabled={false}
+                      indicators={true}
+                      initialSlide={0}
+                      interval={3000}
+                      loop={true}
+                      maxIndicators={null}
+                      onSlideChange={[Function]}
+                      slidesPerView={1}
+                      snapItems={true}
+                    >
+                      <ProductImage
+                        alt={null}
+                        animating={false}
+                        forcePlaceholder={false}
+                        highestResolutionLoaded={[Function]}
+                        key=".$https=2//img-cdn.shopgate.com/image.jpg"
+                        ratio={null}
+                        resolutions={
+                          Array [
+                            Object {
+                              "height": 440,
+                              "width": 440,
+                            },
+                            Object {
+                              "height": 1024,
+                              "width": 1024,
+                            },
+                          ]
+                        }
+                        src="https://img-cdn.shopgate.com/image.jpg"
+                      >
+                        <Image
+                          alt={null}
+                          animating={false}
+                          backgroundColor="#fff"
+                          className=""
+                          forcePlaceholder={false}
+                          highestResolutionLoaded={[Function]}
+                          onError={[Function]}
+                          onLoad={null}
+                          ratio={null}
+                          resolutions={
+                            Array [
+                              Object {
+                                "height": 440,
+                                "width": 440,
+                              },
+                              Object {
+                                "height": 1024,
+                                "width": 1024,
+                              },
+                            ]
+                          }
+                          src="https://img-cdn.shopgate.com/image.jpg"
+                          transition={null}
+                        >
+                          <div
+                            className="css-1d0r90g "
+                          />
+                        </Image>
+                      </ProductImage>
+                    </ImageSlider>
+                  </div>
+                </Component>
+              </ImageSlider>
+            </Connect(ImageSlider)>
           </Portal>
           <Portal
             name="product.image.after"
@@ -79,15 +229,11 @@ exports[`<ProductContent> should render 1`] = `
                       props={null}
                     >
                       <Connect(CTAButtons)
-                        options={Object {}}
                         productId="913"
                       >
                         <CTAButtons
-                          addToCart={[Function]}
-                          isDisabled={false}
+                          dispatch={[Function]}
                           isFavorite={false}
-                          isLoading={false}
-                          options={Object {}}
                           productId="913"
                         >
                           <div
@@ -95,14 +241,14 @@ exports[`<ProductContent> should render 1`] = `
                           >
                             <Connect(FavoritesButton)
                               active={false}
-                              className="css-j05drb"
+                              className="css-13l587d"
                               productId="913"
                               rippleClassName="css-1tdptiz"
                             >
                               <FavoritesButton
                                 active={false}
                                 addFavorites={[Function]}
-                                className="css-j05drb"
+                                className="css-13l587d"
                                 noShadow={false}
                                 onRippleComplete={[Function]}
                                 once={false}
@@ -113,95 +259,145 @@ exports[`<ProductContent> should render 1`] = `
                                 rippleClassName="css-1tdptiz"
                               />
                             </Connect(FavoritesButton)>
-                            <AddToCartButton
-                              buttonSize={56}
-                              className={null}
-                              iconSize={24}
-                              isDisabled={false}
-                              isLoading={false}
-                              noShadow={false}
-                              onClick={[Function]}
-                            >
-                              <button
-                                className="null css-wuq2ta css-31obrv"
-                                data-test-id="addToCartButton"
-                                onClick={[Function]}
-                              >
-                                <div
-                                  className="css-rukjns"
-                                  style={
-                                    Object {
-                                      "opacity": 1,
-                                      "transform": "translate3d(0, 300%, 0)",
+                            <Component>
+                              <Consumer>
+                                <Connect(CartButton)
+                                  conditioner={
+                                    Conditioner {
+                                      "conditioners": Map {
+                                        "product-variants" => [Function],
+                                      },
                                     }
                                   }
+                                  options={Object {}}
+                                  productId="913"
                                 >
-                                  <Tick>
-                                    <Icon
-                                      className=""
-                                      color={null}
-                                      content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
-                                      size="inherit"
-                                      viewBox="0 0 24 24"
-                                    >
-                                      <svg
-                                        className="css-yys9hb "
-                                        dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
-                                          }
-                                        }
-                                        style={
-                                          Object {
-                                            "fill": null,
-                                            "fontSize": "inherit",
-                                          }
-                                        }
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      />
-                                    </Icon>
-                                  </Tick>
-                                </div>
-                                <div
-                                  className="css-rukjns"
-                                  onAnimationEnd={[Function]}
-                                  style={
-                                    Object {
-                                      "opacity": 1,
-                                      "transform": "translate3d(0, -50%, 0)",
+                                  <CartButton
+                                    addToCart={[Function]}
+                                    conditioner={
+                                      Conditioner {
+                                        "conditioners": Map {
+                                          "product-variants" => [Function],
+                                        },
+                                      }
                                     }
-                                  }
-                                >
-                                  <CartPlus>
-                                    <Icon
-                                      className=""
-                                      color={null}
-                                      content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
-                                      size="inherit"
-                                      viewBox="0 0 24 24"
+                                    disabled={false}
+                                    loading={false}
+                                    options={Object {}}
+                                    productId="913"
+                                  >
+                                    <FloatingActionButton
+                                      background="#fa5400"
+                                      className="css-mp6sl7"
+                                      onClick={[Function]}
+                                      raised={true}
+                                      ref={null}
+                                      size="big"
+                                      type="button"
                                     >
-                                      <svg
-                                        className="css-yys9hb "
-                                        dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
-                                          }
-                                        }
+                                      <button
+                                        className="css-1dbx872 css-mp6sl7 css-1kx79ob css-1g5n8t6"
+                                        onClick={[Function]}
                                         style={
                                           Object {
-                                            "fill": null,
-                                            "fontSize": "inherit",
+                                            "background": "#fa5400",
                                           }
                                         }
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      />
-                                    </Icon>
-                                  </CartPlus>
-                                </div>
-                              </button>
-                            </AddToCartButton>
+                                        type="button"
+                                      >
+                                        <CartButtonIcon
+                                          onSuccess={[Function]}
+                                          success={false}
+                                        >
+                                          <Transition
+                                            appear={false}
+                                            enter={true}
+                                            exit={true}
+                                            in={false}
+                                            mountOnEnter={false}
+                                            onEnter={[Function]}
+                                            onEntered={[Function]}
+                                            onEntering={[Function]}
+                                            onExit={[Function]}
+                                            onExited={[Function]}
+                                            onExiting={[Function]}
+                                            timeout={800}
+                                            unmountOnExit={false}
+                                          >
+                                            <div
+                                              className={
+                                                Object {
+                                                  "data-css-1h3cr19": "",
+                                                }
+                                              }
+                                            >
+                                              <CartPlus
+                                                className="css-b18rpa"
+                                                size={24}
+                                              >
+                                                <Icon
+                                                  className="css-b18rpa"
+                                                  color={null}
+                                                  content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+                                                  size={24}
+                                                  viewBox="0 0 24 24"
+                                                >
+                                                  <svg
+                                                    className="css-yys9hb css-b18rpa"
+                                                    dangerouslySetInnerHTML={
+                                                      Object {
+                                                        "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                                                      }
+                                                    }
+                                                    style={
+                                                      Object {
+                                                        "fill": null,
+                                                        "fontSize": 24,
+                                                      }
+                                                    }
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                  />
+                                                </Icon>
+                                              </CartPlus>
+                                              <Tick
+                                                className="css-v74gh2"
+                                                size={24}
+                                              >
+                                                <Icon
+                                                  className="css-v74gh2"
+                                                  color={null}
+                                                  content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+                                                  size={24}
+                                                  viewBox="0 0 24 24"
+                                                >
+                                                  <svg
+                                                    className="css-yys9hb css-v74gh2"
+                                                    dangerouslySetInnerHTML={
+                                                      Object {
+                                                        "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                                                      }
+                                                    }
+                                                    style={
+                                                      Object {
+                                                        "fill": null,
+                                                        "fontSize": 24,
+                                                      }
+                                                    }
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                  />
+                                                </Icon>
+                                              </Tick>
+                                            </div>
+                                          </Transition>
+                                        </CartButtonIcon>
+                                      </button>
+                                    </FloatingActionButton>
+                                  </CartButton>
+                                </Connect(CartButton)>
+                              </Consumer>
+                            </Component>
                           </div>
                         </CTAButtons>
                       </Connect(CTAButtons)>
@@ -743,20 +939,37 @@ exports[`<ProductContent> should render 1`] = `
             <Characteristics
               productId="913"
               selectedCharacteristics={Object {}}
+              variantId={null}
             >
-              <Connect(ProductCharacteristics)
-                productId="913"
-                render={[Function]}
-                selectedCharacteristics={Object {}}
-              >
-                <ProductCharacteristics
-                  dispatch={[Function]}
+              <Consumer>
+                <Connect(ProductCharacteristics)
+                  conditioner={
+                    Conditioner {
+                      "conditioners": Map {
+                        "product-variants" => [Function],
+                      },
+                    }
+                  }
                   productId="913"
                   render={[Function]}
-                  selectedCharacteristics={Object {}}
-                  variants={null}
-                />
-              </Connect(ProductCharacteristics)>
+                  variantId={null}
+                >
+                  <ProductCharacteristics
+                    conditioner={
+                      Conditioner {
+                        "conditioners": Map {
+                          "product-variants" => [Function],
+                        },
+                      }
+                    }
+                    navigate={[Function]}
+                    productId="913"
+                    render={[Function]}
+                    variantId={null}
+                    variants={null}
+                  />
+                </Connect(ProductCharacteristics)>
+              </Consumer>
             </Characteristics>
           </Portal>
           <Portal

@@ -1,4 +1,5 @@
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
 const router = {
   routing: false,
@@ -22,7 +23,6 @@ export const defaultState = {
     filterAttributeOpen: false,
     loginOpen: false,
     searchActive: false,
-    searchPhrase: '',
     showCartIcon: true,
     showIconShadow: false,
     showProgressBar: true,
@@ -30,6 +30,9 @@ export const defaultState = {
     showTitle: true,
     textColor: 'white',
     viewTracking: false,
+  },
+  search: {
+    suggestion: {},
   },
   router,
   view: {
@@ -47,10 +50,13 @@ export const defaultState = {
  * @param {Object} props Props which would override state.navigator props.
  * @return {Object}
  */
-export const getStore = props => configureStore()({
+export const getStore = props => configureStore([thunk])({
   ...defaultState,
   navigator: {
     ...defaultState.navigator,
     ...props,
+  },
+  search: {
+    suggestions: {},
   },
 });

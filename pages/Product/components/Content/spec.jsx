@@ -28,6 +28,11 @@ describe('<ProductContent>', () => {
       mockRenderOptions
     );
   };
+
+  beforeEach(() => {
+    jest.resetModules();
+  });
+
   it('should render', () => {
     const { productId } = basicProductState.product.currentProduct;
     defaultContext.productId = productId;

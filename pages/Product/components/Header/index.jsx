@@ -15,7 +15,7 @@ import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
 import Tiers from './components/Tiers';
 import styles from './style';
-import { ProductContext } from '../../context';
+import { ProductContext } from './../../context';
 
 /**
  * The ProductHeader component.

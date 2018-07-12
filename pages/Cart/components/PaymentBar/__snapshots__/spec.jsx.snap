@@ -247,33 +247,33 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
                                           role="link"
                                         >
                                           <RippleButton
-                                            className=""
+                                            className="css-1mlc9hd"
                                             disabled={false}
                                             flat={false}
                                             onClick={null}
                                             rippleClassName=""
                                             rippleSize={null}
                                             testId="Button"
-                                            type="secondary"
+                                            type="regular"
                                             wrapContent={true}
                                           >
                                             <Button
-                                              className=""
+                                              className="css-1mlc9hd"
                                               disabled={false}
                                               flat={false}
                                               onClick={null}
                                               testId="Button"
-                                              type="secondary"
+                                              type="regular"
                                               wrapContent={false}
                                             >
                                               <Button
-                                                className="css-187rja2 "
+                                                className="css-kevfw8 css-1mlc9hd"
                                                 disabled={false}
                                                 onClick={null}
                                                 testId="Button"
                                               >
                                                 <button
-                                                  className="css-187rja2  css-1rn65c0"
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
                                                   data-test-id="Button"
                                                   disabled={false}
                                                   onClick={null}
@@ -587,33 +587,33 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                           role="link"
                                         >
                                           <RippleButton
-                                            className=""
+                                            className="css-1mlc9hd"
                                             disabled={false}
                                             flat={false}
                                             onClick={null}
                                             rippleClassName=""
                                             rippleSize={null}
                                             testId="Button"
-                                            type="secondary"
+                                            type="regular"
                                             wrapContent={true}
                                           >
                                             <Button
-                                              className=""
+                                              className="css-1mlc9hd"
                                               disabled={false}
                                               flat={false}
                                               onClick={null}
                                               testId="Button"
-                                              type="secondary"
+                                              type="regular"
                                               wrapContent={false}
                                             >
                                               <Button
-                                                className="css-187rja2 "
+                                                className="css-kevfw8 css-1mlc9hd"
                                                 disabled={false}
                                                 onClick={null}
                                                 testId="Button"
                                               >
                                                 <button
-                                                  className="css-187rja2  css-1rn65c0"
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
                                                   data-test-id="Button"
                                                   disabled={false}
                                                   onClick={null}
@@ -989,33 +989,33 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                           role="link"
                                         >
                                           <RippleButton
-                                            className=""
+                                            className="css-1mlc9hd"
                                             disabled={false}
                                             flat={false}
                                             onClick={null}
                                             rippleClassName=""
                                             rippleSize={null}
                                             testId="Button"
-                                            type="secondary"
+                                            type="regular"
                                             wrapContent={true}
                                           >
                                             <Button
-                                              className=""
+                                              className="css-1mlc9hd"
                                               disabled={false}
                                               flat={false}
                                               onClick={null}
                                               testId="Button"
-                                              type="secondary"
+                                              type="regular"
                                               wrapContent={false}
                                             >
                                               <Button
-                                                className="css-187rja2 "
+                                                className="css-kevfw8 css-1mlc9hd"
                                                 disabled={false}
                                                 onClick={null}
                                                 testId="Button"
                                               >
                                                 <button
-                                                  className="css-187rja2  css-1rn65c0"
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
                                                   data-test-id="Button"
                                                   disabled={false}
                                                   onClick={null}
@@ -1328,33 +1328,33 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                           role="link"
                                         >
                                           <RippleButton
-                                            className=""
+                                            className="css-1mlc9hd"
                                             disabled={false}
                                             flat={false}
                                             onClick={null}
                                             rippleClassName=""
                                             rippleSize={null}
                                             testId="Button"
-                                            type="secondary"
+                                            type="regular"
                                             wrapContent={true}
                                           >
                                             <Button
-                                              className=""
+                                              className="css-1mlc9hd"
                                               disabled={false}
                                               flat={false}
                                               onClick={null}
                                               testId="Button"
-                                              type="secondary"
+                                              type="regular"
                                               wrapContent={false}
                                             >
                                               <Button
-                                                className="css-187rja2 "
+                                                className="css-kevfw8 css-1mlc9hd"
                                                 disabled={false}
                                                 onClick={null}
                                                 testId="Button"
                                               >
                                                 <button
-                                                  className="css-187rja2  css-1rn65c0"
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
                                                   data-test-id="Button"
                                                   disabled={false}
                                                   onClick={null}
@@ -1667,33 +1667,33 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                           role="link"
                                         >
                                           <RippleButton
-                                            className=""
+                                            className="css-1mlc9hd"
                                             disabled={false}
                                             flat={false}
                                             onClick={null}
                                             rippleClassName=""
                                             rippleSize={null}
                                             testId="Button"
-                                            type="secondary"
+                                            type="regular"
                                             wrapContent={true}
                                           >
                                             <Button
-                                              className=""
+                                              className="css-1mlc9hd"
                                               disabled={false}
                                               flat={false}
                                               onClick={null}
                                               testId="Button"
-                                              type="secondary"
+                                              type="regular"
                                               wrapContent={false}
                                             >
                                               <Button
-                                                className="css-187rja2 "
+                                                className="css-kevfw8 css-1mlc9hd"
                                                 disabled={false}
                                                 onClick={null}
                                                 testId="Button"
                                               >
                                                 <button
-                                                  className="css-187rja2  css-1rn65c0"
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
                                                   data-test-id="Button"
                                                   disabled={false}
                                                   onClick={null}
