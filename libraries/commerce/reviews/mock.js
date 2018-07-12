@@ -7,9 +7,9 @@ const hash = '{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","pro
  * @param {Array} ids Fake review ids
  * @return {{reviewsByHash: {}}}
  */
-const reviewsState = (ids = [1]) => ({
+const reviewsState = (ids = [1], _hash = hash) => ({
   reviewsByHash: {
-    [hash]: {
+    [_hash]: {
       isFetching: false,
       expires: 999999999999,
       reviews: ids,
@@ -82,6 +82,7 @@ const mockedStateWithAll = {
         productData: mockedProductWithRating,
       },
     },
+    variantsByProductId: {},
   },
   reviews: {
     reviewsById: {
@@ -157,6 +158,33 @@ const mockedStateProductEmpty = {
   },
 };
 
+const getReviewsStateForId = (id) => {
+  const hash = `{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","productId":"${id}"}`;
+
+  return {
+    reviews: {
+      reviewsById: {
+        1: mockReview(1),
+        2: mockReview(2),
+        3: mockReview(3),
+        4: mockReview(4),
+      },
+      reviewsByProductId: {
+        [id]: {
+          reviews: [
+            1,
+            2,
+            3,
+            4,
+          ],
+          totalReviewCount: 4,
+        },
+      },
+      ...reviewsState([1, 2, 3, 4], hash),
+    }
+  }
+}
+
 /**
  * Sets up mocks.
  * @param {bool} mockReviewsAvailable A feature flag "hasReviews" value.
@@ -172,6 +200,7 @@ const setMocks = (mockReviewsAvailable = true) => {
 
 export {
   hash,
+  getReviewsStateForId,
   mockReview,
   mockedStateProductEmpty,
   mockedStateWithoutReview,
