@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { showNoResults } from '../../selectors';
+import { showNoResults, showFilterBar } from '../../selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,7 +8,7 @@ import { showNoResults } from '../../selectors';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  showFilterBar: !showNoResults(state, props),
+  showFilterBar: showFilterBar(state, props),
   showNoResults: showNoResults(state, props),
 });
 
