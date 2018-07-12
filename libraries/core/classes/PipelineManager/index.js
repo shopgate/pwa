@@ -22,8 +22,8 @@ class PipelineManager {
     // The open requests at any given time.
     this.requests = new Map();
 
-    // The running requests per pipeline at any given time.
-    this.requestsPerPipeline = new Map();
+    // The pipelines which have currently running requests.
+    this.pipelines = new Map();
 
     // The error codes that should be suppressed.
     this.suppressedErrors = [];
@@ -70,13 +70,14 @@ class PipelineManager {
    */
   dispatch(serial) {
     return new Promise((resolve, reject) => {
-      // Stop if this pipeline has any ongoing dependencies.
-      if (this.hasRunningDependencies(serial)) {
+      this.createRequestCallback(serial, resolve, reject);
+
+      const pipelineName = this.getPipelineNameBySerial(serial, false);
+
+      // Stop if this request has any ongoing dependencies.
+      if (this.hasRunningDependencies(pipelineName)) {
         return;
       }
-
-      this.createRequestCallback(serial, resolve, reject);
-      this.incrementOngoing(serial);
 
       this.sendRequest(serial);
     });
@@ -127,18 +128,18 @@ class PipelineManager {
 
   /**
    * Checks wether a pipeline request has running dependencies.
-   * @param {string} serial The pipeline request serial.
+   * @param {string} pipelineName The name of the pipeline.
    * @return {boolean}
    */
-  hasRunningDependencies(serial) {
+  hasRunningDependencies(pipelineName) {
     return false;
-    const pipelineName = this.getPipelineNameBySerial(serial, false);
+
     const dependencies = pipelineDependencies.get(pipelineName);
     let found = 0;
 
     dependencies.forEach((dependency) => {
       // Check if the dependency exists and is ongoing.
-      if (this.requestsPerPipeline.has(dependency) && this.requestsPerPipeline.get(dependency)) {
+      if (this.pipelines.has(dependency) && this.pipelines.get(dependency)) {
         found += 1;
         // PipelineBuffer.set(dependency, pipelineName);
       }
@@ -230,7 +231,7 @@ class PipelineManager {
     const pipelineName = this.getPipelineNameBySerial(serial);
     const callbackName = request.getEventCallbackName();
 
-    this.decrementOngoing(serial);
+    this.decrementRequestOngoing(serial);
     this.runDependencies(pipelineName);
 
     const isRetriesOngoing = this.isRetriesOngoing(serial);
@@ -239,8 +240,6 @@ class PipelineManager {
     if (isRetriesOngoing || isProcessLastOngoing) {
       return;
     }
-
-    event.removeCallback(callbackName, request.callback);
 
     let logColor = '#307bc2';
 
@@ -258,6 +257,8 @@ class PipelineManager {
       serial,
     }, logColor);
 
+    // Cleanup.
+    event.removeCallback(callbackName, request.callback);
     clearTimeout(entry.timer);
     this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
@@ -286,18 +287,6 @@ class PipelineManager {
   }
 
   /**
-   * Removes sequentially processed requests from the pipeline sequence.
-   * @param { string } serial The pipeline request serial.
-   */
-  removeRequestFromPiplineSequence(serial) {
-    const { request } = this.requests.get(serial);
-
-    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-      pipelineSequence.remove(request.serial);
-    }
-  }
-
-  /**
    * Sends the actual request command.
    * @param {string} serial The pipeline request serial.
    */
@@ -308,11 +297,9 @@ class PipelineManager {
       return;
     }
 
+    this.incrementRequestOngoing(serial);
     this.handleTimeout(serial);
-
-    if (entry.request.process === processTypes.PROCESS_SEQUENTIAL) {
-      pipelineSequence.set(serial);
-    }
+    this.addRequestToPipelineSequence(serial);
 
     const prefix = this.getRetriesPrefix(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
@@ -337,10 +324,34 @@ class PipelineManager {
   }
 
   /**
-   * Increments the ongoing count.
+   * Adds sequentially processed requests to the pipeline sequence.
    * @param {string} serial The pipeline request serial.
    */
-  incrementOngoing(serial) {
+  addRequestToPipelineSequence(serial) {
+    const { request } = this.requests.get(serial);
+
+    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.set(serial);
+    }
+  }
+
+  /**
+   * Removes sequentially processed requests from the pipeline sequence.
+   * @param {string} serial The pipeline request serial.
+   */
+  removeRequestFromPiplineSequence(serial) {
+    const { request } = this.requests.get(serial);
+
+    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.remove(request.serial);
+    }
+  }
+
+  /**
+   * Increments the ongoing count for a request.
+   * @param {string} serial The pipeline request serial.
+   */
+  incrementRequestOngoing(serial) {
     const entry = this.requests.get(serial);
 
     if (!entry) {
@@ -348,14 +359,15 @@ class PipelineManager {
     }
 
     entry.ongoing += 1;
-    this.incrementRequestsPerPipeline(serial);
+
+    this.incrementPipelineOngoing(serial);
   }
 
   /**
-   * Decrements the ongoing count.
+   * Decrements the ongoing count for a request.
    * @param {string} serial The pipeline request serial.
    */
-  decrementOngoing(serial) {
+  decrementRequestOngoing(serial) {
     const entry = this.requests.get(serial);
 
     if (!entry) {
@@ -366,45 +378,45 @@ class PipelineManager {
       entry.ongoing -= 1;
     }
 
-    this.decrementRequestsPerPipeline(serial);
+    this.decrementPipelineOngoing(serial);
   }
 
   /**
-   * Increments the running counter for the pipeline of a request.
+   * Increments the ongoing count for the pipeline of a request.
    * @param {string} serial The pipeline request serial.
    */
-  incrementRequestsPerPipeline(serial) {
+  incrementPipelineOngoing(serial) {
     const pipelineName = this.getPipelineNameBySerial(serial, false);
 
     if (!pipelineName) {
       return;
     }
 
-    if (!this.requestsPerPipeline.has(pipelineName)) {
-      this.requestsPerPipeline.set(pipelineName, 1);
+    if (!this.pipelines.has(pipelineName)) {
+      this.pipelines.set(pipelineName, 1);
     } else {
-      this.requestsPerPipeline.set(pipelineName, this.requestsPerPipeline.get(pipelineName) + 1);
+      this.pipelines.set(pipelineName, this.pipelines.get(pipelineName) + 1);
     }
   }
 
   /**
-   * Decrements the running counter for the pipeline of a request.
+   * Decrements the ongoing count for the pipeline of a request.
    * @param {string} serial The pipeline request serial.
    */
-  decrementRequestsPerPipeline(serial) {
+  decrementPipelineOngoing(serial) {
     const pipelineName = this.getPipelineNameBySerial(serial, false);
 
     if (!pipelineName) {
       return;
     }
 
-    if (this.requestsPerPipeline.has(pipelineName)) {
-      const count = this.requestsPerPipeline.get(pipelineName);
+    if (this.pipelines.has(pipelineName)) {
+      const ongoing = this.pipelines.get(pipelineName);
 
-      if (count > 1) {
-        this.requestsPerPipeline.set(pipelineName, count - 1);
+      if (ongoing > 1) {
+        this.pipelines.set(pipelineName, ongoing - 1);
       } else {
-        this.requestsPerPipeline.delete(pipelineName);
+        this.pipelines.delete(pipelineName);
       }
     }
   }
@@ -415,6 +427,7 @@ class PipelineManager {
    */
   decrementRetries(serial) {
     const entry = this.requests.get(serial);
+
     if (!entry) {
       return;
     }
@@ -465,7 +478,7 @@ class PipelineManager {
     const entry = this.requests.get(serial);
 
     if (!entry) {
-      return true;
+      return false;
     }
 
     return (
@@ -479,6 +492,7 @@ class PipelineManager {
    * Checks whether only the last should be processed.
    * @param {string} serial The pipeline request serial.
    * @return {boolean}
+   * @deprecated
    */
   isProcessLastOngoing(serial) {
     const entry = this.requests.get(serial);
