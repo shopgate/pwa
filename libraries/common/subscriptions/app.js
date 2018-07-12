@@ -15,6 +15,8 @@ import routeWillPop from '../actions/router/routeWillPop';
 import routeDidPop from '../actions/router/routeDidPop';
 import routeWillReplace from '../actions/router/routeWillReplace';
 import routeDidReplace from '../actions/router/routeDidReplace';
+import routeWillReset from '../actions/router/routeWillReset';
+import routeDidReset from '../actions/router/routeDidReset';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -42,6 +44,8 @@ export default function app(subscribe) {
     events.onDidPop(() => dispatch(routeDidPop()));
     events.onWillReplace(id => dispatch(routeWillReplace(id)));
     events.onDidReplace(id => dispatch(routeDidReplace(id)));
+    events.onWillReset(id => dispatch(routeWillReset(id)));
+    events.onDidReset(id => dispatch(routeDidReset(id)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
