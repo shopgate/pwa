@@ -47,3 +47,10 @@ export const getCurrentTitle = createSelector(
     return state.title;
   }
 );
+
+/**
+ * Selects whether the current view is loading.
+ * @param {Object} state The current application state.
+ * @return {boolean}
+ */
+export const isCurrentViewLoading = state => isViewLoading(state, getCurrentPathname(state));

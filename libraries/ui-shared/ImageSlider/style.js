@@ -13,7 +13,7 @@ const indicator = {
     bottom: 2,
     left: '50%',
     transform: 'translateX(-50%)',
-    zIndex: 10,
+    zIndex: 1,
   }).toString(),
   fraction: css({
     background: 'rgba(255, 255, 255, .5)',
