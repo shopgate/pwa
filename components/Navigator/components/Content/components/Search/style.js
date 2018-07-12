@@ -24,16 +24,6 @@ const input = css({
   WebkitAppearance: 'none',
 }).toString();
 
-const overlay = css({
-  position: 'fixed',
-  top: variables.navigator.height,
-  right: 0,
-  bottom: 0,
-  left: 0,
-  backgroundColor: 'rgba(0,0,0,0.4)',
-  zIndex: 10,
-}).toString();
-
 const slideInSearchBar = css.keyframes({
   '0%': {
     transform: 'translate3d(100vw, 0, 0)',
@@ -57,29 +47,13 @@ const animation = {
   }).toString(),
 };
 
-const fadeInOverlay = css.keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 },
-});
-
-const fadeOutOverlay = css.keyframes({
-  '0%': { opacity: 1 },
-  '100%': { opacity: 0 },
-});
-
-const overlayAnimation = {
-  in: css({
-    animation: `${fadeInOverlay} 150ms 1`,
-  }).toString(),
-  out: css({
-    animation: `${fadeOutOverlay} 150ms 1`,
-  }).toString(),
-};
+const backdrop = css({
+  top: `calc(${variables.navigator.height}px + var(--safe-area-inset-top))`,
+}).toString();
 
 export default {
+  backdrop,
   container,
   input,
   animation,
-  overlay,
-  overlayAnimation,
 };

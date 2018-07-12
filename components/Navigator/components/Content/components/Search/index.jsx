@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import classNames from 'classnames';
+import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import SearchSuggestions from './components/SearchSuggestions';
 import connect from './connector';
 import styles from './style';
+
 /**
  * The navigator search component.
  */
@@ -176,12 +178,6 @@ class Search extends Component {
       { [styles.animation.out]: !this.state.active }
     );
 
-    const overlayClassName = classNames(
-      styles.overlay,
-      { [styles.overlayAnimation.in]: this.state.active },
-      { [styles.overlayAnimation.out]: !this.state.active }
-    );
-
     const { inputValue } = this.state;
     const { placeholder } = this.props;
     const { __ } = this.context.i18n();
@@ -206,11 +202,10 @@ class Search extends Component {
             onFocus={this.handleFocus}
           />
         </form>
-        <div
-          className={overlayClassName}
+        <Backdrop
           onClick={this.handleOverlayClick}
-          role="button"
-          aria-hidden
+          isVisible={this.state.active}
+          className={styles.backdrop}
         />
         <SearchSuggestions phrase={this.state.inputValue} />
       </div>
