@@ -161,25 +161,25 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.22.tgz#99e6df8a7f7475924f4a9ae082944d5ce755491d"
+"@virtuous/conductor-events@1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.25.tgz#3deb94cf2892bab847777f76759e537217721a10"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.25"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/conductor-helpers@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.22.tgz#b9879a25c00024d1bf2ad7a1433080d023d4bf8d"
+"@virtuous/conductor-helpers@1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.25.tgz#3e61ea1dc86f3412f7de9276ef3189bbeaa465d5"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.25"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/conductor@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.22.tgz#7a1bdefb2ed82b34e25021d2a72cc8e7b6a96513"
+"@virtuous/conductor@1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.25.tgz#fd6be91f3a314a7eeea3067306b09b4dc00d9fc6"
   dependencies:
     history "^4.7.2"
     path-match "^1.2.4"
@@ -192,32 +192,32 @@
   version "1.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0-beta.4.tgz#45a1db2b26a3a69b5b733fe42eee3def953a919f"
 
-"@virtuous/react-conductor@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.22.tgz#8d2ad879d176f12bd39a6bfe120a43df4b37b3b5"
+"@virtuous/react-conductor@1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.25.tgz#19c05be091d855a734948fa6b459ea62d1006f36"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
-    "@virtuous/conductor-events" "1.0.0-beta.22"
-    "@virtuous/conductor-helpers" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.25"
+    "@virtuous/conductor-events" "1.0.0-beta.25"
+    "@virtuous/conductor-helpers" "1.0.0-beta.25"
     gsap "^1.20.4"
     react "^16.3.2"
     react-dom "^16.3.2"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.22":
-  version "1.0.0-beta.22"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.22.tgz#0cfcfa5395ae683622203bb015a1e1fd5ef052fb"
+"@virtuous/redux-conductor@1.0.0-beta.25":
+  version "1.0.0-beta.25"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.25.tgz#a8c5fee1a0e8d0e91427ca5d47b02904195bfbb1"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.22"
-    "@virtuous/conductor-events" "1.0.0-beta.22"
-    "@virtuous/conductor-helpers" "1.0.0-beta.22"
+    "@virtuous/conductor" "1.0.0-beta.25"
+    "@virtuous/conductor-events" "1.0.0-beta.25"
+    "@virtuous/conductor-helpers" "1.0.0-beta.25"
     react "^16.3.2"
     react-dom "^16.3.2"
 
-"@virtuous/redux-persister@1.0.0-beta.2":
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.0.0-beta.2.tgz#9839bcdf04e97351f20cfa0c7a2f648c981677ef"
+"@virtuous/redux-persister@1.0.0-beta.5":
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.0.0-beta.5.tgz#23e998ec3a78c6751b59d129120a9b7646d21fdb"
   dependencies:
     "@virtuous/logger" "1.0.0-beta.4"
     lodash "^4.17.10"

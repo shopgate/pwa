@@ -217,7 +217,15 @@ export const getResultHash = createSelector(
 export const getResultByHash = createSelector(
   state => state.product,
   getResultHash,
-  (productState, hash) => productState.resultsByHash[hash]
+  (productState, hash) => {
+    const results = productState.resultsByHash[hash];
+
+    if (!results) {
+      return null;
+    }
+
+    return results;
+  }
 );
 
 /**
