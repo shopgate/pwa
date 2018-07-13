@@ -43,17 +43,35 @@ describe('ErrorManager', () => {
   it('should return the null when no override message is found', () => {
     const code = 'EUNKNOWN';
     const context = 'shopgate.catalog.getUser';
-    const message = 'Test Message';
     const source = 'pipeline';
 
-    const errorMessage = errorManager.getMessage({
+    const errorMessage = errorManager.getMessage(
+      code,
+      context,
+      source
+    );
+
+    expect(errorMessage).toBeNull();
+  });
+
+  it('should return the message', () => {
+    const code = 'EUNKNOWN';
+    const context = 'shopgate.catalog.getFoo';
+    const message = 'Test Message';
+
+    errorManager.setMessage({
       code,
       context,
       message,
-      source,
     });
 
-    expect(errorMessage).toBeNull();
+    const errorMessage = errorManager.getMessage(
+      code,
+      `${context}.v1`,
+      'pipeline'
+    );
+
+    expect(errorMessage).toBe(message);
   });
 
   it('should add an override message', () => {
