@@ -3,6 +3,7 @@ import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import pathMatch from 'path-match';
 import authRoutes from '../../collections/AuthRoutes';
 
@@ -11,6 +12,13 @@ const matcher = pathMatch({
   strict: false,
   end: true,
 });
+
+const SHOPGATE_DOMAIN = 'shopgate.com';
+const SHOPGATEPG_DOMAIN = 'shopgatepg.com';
+const SHOPGATE_DOMAINS = [
+  SHOPGATE_DOMAIN,
+  `www.${SHOPGATE_DOMAIN}`,
+];
 
 const PROTOCOL_HTTP = 'http:';
 const PROTOCOL_HTTPS = 'https:';
@@ -100,6 +108,42 @@ export const isLegacyPage = location => (
 export const isLegacyLink = location => (
   legacyLinks.includes(getSegments(location)[0])
 );
+
+/**
+ * Checks whether it is a shop link.
+ * @param {string} location The location to open.
+ * @return {boolean}
+ */
+export const isShopLink = (location) => {
+  if (!appConfig.CNAME) {
+    return false;
+  }
+
+  // Check for a non-absolute link.
+  if (!location.startsWith(PROTOCOL_HTTP)) {
+    return false;
+  }
+
+  // Dissect the given location.
+  const { hostname } = new URL(location);
+
+  // Check for an exact match against the shop CNAME.
+  if (hostname === appConfig.CNAME.toLowerCase()) {
+    return true;
+  }
+
+  // Check that the hostname contains a Shopgate domain.
+  if (!(hostname.endsWith(SHOPGATE_DOMAIN) && hostname.endsWith(SHOPGATEPG_DOMAIN))) {
+    return false;
+  }
+
+  // Lastly, check explicitly for Shopgate domains.
+  if (SHOPGATE_DOMAINS.includes(hostname)) {
+    return false;
+  }
+
+  return true;
+};
 
 /**
  * Opens a link in the in-app-broweser.

@@ -125,6 +125,7 @@ exports[`<Sheet /> should open 1`] = `
       </div>
     </Drawer>
     <Backdrop
+      className=""
       color="#000"
       duration={200}
       isVisible={true}
@@ -186,7 +187,7 @@ exports[`<Sheet /> should open 1`] = `
             >
               <div
                 aria-hidden={true}
-                className="css-hlk66h"
+                className="css-hlk66h "
                 onClick={[Function]}
                 style={
                   Object {
@@ -228,6 +229,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
     />
   </Drawer>
   <Backdrop
+    className=""
     color="#000"
     duration={200}
     isVisible={false}
@@ -260,6 +262,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
     />
   </Drawer>
   <Backdrop
+    className=""
     color="#000"
     duration={200}
     isVisible={true}
@@ -302,6 +305,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
     </div>
   </Drawer>
   <Backdrop
+    className=""
     color="#000"
     duration={200}
     isVisible={true}
@@ -449,6 +453,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       </div>
     </Drawer>
     <Backdrop
+      className=""
       color="#000"
       duration={200}
       isVisible={false}
@@ -510,7 +515,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             >
               <div
                 aria-hidden={true}
-                className="css-hlk66h"
+                className="css-hlk66h "
                 onClick={[Function]}
                 style={
                   Object {

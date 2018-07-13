@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-inline-transition-group';
-import styles from './style';
+import style from './style';
 
 /**
  * Backdrop component.
@@ -12,6 +12,7 @@ class Backdrop extends Component {
    * @type {Object}
    */
   static propTypes = {
+    className: PropTypes.string,
     color: PropTypes.string,
     duration: PropTypes.number,
     isVisible: PropTypes.bool,
@@ -25,6 +26,7 @@ class Backdrop extends Component {
    * @type {Object}
    */
   static defaultProps = {
+    className: '',
     color: '#000',
     duration: 200,
     isVisible: false,
@@ -48,7 +50,6 @@ class Backdrop extends Component {
    */
   render() {
     const opacity = (this.props.opacity / 100);
-
     const transition = {
       base: {
         background: this.props.color,
@@ -67,10 +68,12 @@ class Backdrop extends Component {
       },
     };
 
+    const className = `${style} ${this.props.className}`;
+
     return (
       <Transition childrenStyles={transition}>
         {this.props.isVisible ?
-          <div aria-hidden className={styles} onClick={this.props.onClick} /> : null
+          <div aria-hidden className={className} onClick={this.props.onClick} /> : null
         }
       </Transition>
     );

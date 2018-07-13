@@ -1,4 +1,5 @@
-import { ITEMS_PER_LOAD, DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
+import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
 
 /**
@@ -12,16 +13,15 @@ import getProducts from '../../product/actions/getProducts';
 const fetchCategoryProducts = (
   categoryId,
   offset = 0,
-  limit = ITEMS_PER_LOAD,
-  sort = DEFAULT_SORT
+  limit = ITEMS_PER_LOAD
 ) =>
-  (dispatch) => {
+  (dispatch, getState) => {
     dispatch(getProducts({
       params: {
         categoryId,
         offset,
         limit,
-        sort,
+        sort: getSortOrder(getState()),
       },
     }));
   };

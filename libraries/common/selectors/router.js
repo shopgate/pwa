@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import getCurrentRouteHelper from '@virtuous/conductor-helpers/getCurrentRoute';
 
 /**
  * @param {Object} state The global state.
@@ -35,7 +36,7 @@ export const getCurrentRoute = createSelector(
  * @returns {Object|null}
  */
 export const getCurrentParams = createSelector(
-  getCurrentRoute,
+  () => getCurrentRouteHelper(),
   (route) => {
     if (!route || !route.params) {
       return null;
@@ -50,7 +51,7 @@ export const getCurrentParams = createSelector(
  * @returns {string|null} The current history pathname.
  */
 export const getCurrentPathname = createSelector(
-  getCurrentRoute,
+  () => getCurrentRouteHelper(),
   (route) => {
     if (!route || !route.pathname) {
       return null;
@@ -65,7 +66,7 @@ export const getCurrentPathname = createSelector(
  * @returns {Object|null} The current history query.
  */
 export const getCurrentQuery = createSelector(
-  getCurrentRoute,
+  () => getCurrentRouteHelper(),
   (route) => {
     if (!route || !route.query) {
       return null;
@@ -95,7 +96,7 @@ export const getCurrentSearchQuery = createSelector(
  * @returns {string|null} The current history entry state.
  */
 export const getCurrentState = createSelector(
-  getCurrentRoute,
+  () => getCurrentRouteHelper(),
   (route) => {
     if (!route || !route.state) {
       return null;

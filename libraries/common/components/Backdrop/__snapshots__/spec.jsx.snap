@@ -25,7 +25,7 @@ exports[`<Backdrop /> should render 1`] = `
 >
   <div
     aria-hidden={true}
-    className="css-hlk66h"
+    className="css-hlk66h "
     onClick={[Function]}
   />
 </Transition>
