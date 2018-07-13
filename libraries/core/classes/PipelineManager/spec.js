@@ -1,11 +1,12 @@
 import logGroup from '../../helpers/logGroup';
 import { mockedDispatch } from '../AppCommand';
+import event from '../Event';
 import { ERROR_HANDLE_SUPPRESS } from '../../constants/ErrorHandleTypes';
 import pipelineManager from '../PipelineManager';
 import PipelineRequest from '../PipelineRequest';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
-import { PROCESS_LAST, PROCESS_SEQUENTIAL } from '../../constants/ProcessTypes';
+import { PROCESS_LAST, PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
 import { ETIMEOUT } from '../../constants/Pipeline';
 
 jest.mock('../../helpers/logGroup', () => jest.fn());
@@ -16,11 +17,9 @@ jest.mock('../ErrorManager', () => ({
 
 jest.mock('../AppCommand');
 
-const mockedRemove = jest.fn();
-const mockedAdd = jest.fn();
 jest.mock('../Event', () => ({
-  get removeCallback() { return mockedRemove; },
-  get addCallback() { return mockedAdd; },
+  removeCallback: jest.fn(),
+  addCallback: jest.fn(),
 }));
 
 const PIPELINE_NAME = 'TestPipeline';
@@ -43,6 +42,13 @@ describe('PipelineManager', () => {
     request = createRequest();
     pipelineManager.add(request);
     jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    const entry = pipelineManager.requests.get(request.serial);
+    if (entry) {
+      clearTimeout(entry.timer);
+    }
   });
 
   describe('.constructor()', () => {
@@ -166,7 +172,87 @@ describe('PipelineManager', () => {
   });
 
   describe('.createRequestCallback()', () => {
+    const error = {
+      message: 'Something went wrong',
+      code: 'ERROR',
+    };
 
+    const output = {
+      some: 'output',
+    };
+
+    let mockResolve;
+    let mockReject;
+
+    beforeEach(() => {
+      mockResolve = jest.fn();
+      mockReject = jest.fn();
+    });
+
+    it('should create a callback like expected', () => {
+      pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+      expect(request.resolve).toBe(mockResolve);
+      expect(request.reject).toBe(mockReject);
+      expect(request.callback).toBeInstanceOf(Function);
+      expect(event.addCallback).toHaveBeenCalledTimes(1);
+      expect(event.addCallback).toHaveBeenCalledWith(
+        request.getEventCallbackName(),
+        request.callback
+      );
+    });
+
+    describe('should create a callback that invokes handleResults() for default process types', () => {
+      it('should handle the output', () => {
+        const handleResultSpy = jest.spyOn(pipelineManager, 'handleResult');
+        request.setResponseProcessed(PROCESS_ALWAYS);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        request.callback(null, request.serial, output);
+        expect(handleResultSpy).toHaveBeenCalledTimes(1);
+        expect(handleResultSpy).toHaveBeenCalledWith(request.serial);
+        expect(request.error).toEqual(null);
+        expect(request.output).toEqual(output);
+      });
+
+      it('should handle the error', () => {
+        const handleResultSpy = jest.spyOn(pipelineManager, 'handleResult');
+        request.setResponseProcessed(PROCESS_ALWAYS);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+        request.callback(error, request.serial, {});
+        expect(handleResultSpy).toHaveBeenCalledTimes(1);
+        expect(handleResultSpy).toHaveBeenCalledWith(request.serial);
+        expect(request.error).toEqual(error);
+        expect(request.output).toEqual({});
+      });
+    });
+
+    describe('should create a callback that invokes handleResults() for sequential process types', () => {
+      it('should handle the output', () => {
+        const handleResultSequenceSpy = jest.spyOn(pipelineManager, 'handleResultSequence');
+        request.setResponseProcessed(PROCESS_SEQUENTIAL);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        request.callback(null, request.serial, output);
+        expect(handleResultSequenceSpy).toHaveBeenCalledTimes(1);
+        expect(request.error).toEqual(null);
+        expect(request.output).toEqual(output);
+      });
+
+      it('should handle the error', () => {
+        const handleResultSequenceSpy = jest.spyOn(pipelineManager, 'handleResultSequence');
+        request.setResponseProcessed(PROCESS_SEQUENTIAL);
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+
+        pipelineManager.createRequestCallback(request.serial, mockResolve, mockReject);
+        request.callback(error, request.serial, {});
+        expect(handleResultSequenceSpy).toHaveBeenCalledTimes(1);
+        expect(request.error).toEqual(error);
+        expect(request.output).toEqual({});
+      });
+    });
   });
 
   describe('.hasRunningDependencies()', () => {
@@ -260,7 +346,64 @@ describe('PipelineManager', () => {
   });
 
   describe('.handleResult()', () => {
+    beforeEach(() => {
+      pipelineManager.constructor();
+      request = createRequest().setResponseProcessed(PROCESS_SEQUENTIAL);
+      pipelineManager.add(request);
+      request.resolve = jest.fn();
+      request.reject = jest.fn();
+      logGroup.mockClear();
+    });
 
+    it('should work as expected for successful requests', () => {
+      request.output = { request: 'output' };
+
+      // Save the entry for later comparisons.
+      const entry = pipelineManager.requests.get(request.serial);
+
+      expect(pipelineSequence.get()[0]).toBe(request.serial);
+      expect(pipelineManager.pipelines.get(request.name)).toBe(1);
+
+      pipelineManager.handleResult(request.serial);
+      expect(pipelineManager.pipelines.has(request.name)).toBe(false);
+      expect(request.resolve).toHaveBeenCalledWith(request.output);
+      expect(logGroup).toHaveBeenCalledTimes(1);
+      expect(event.removeCallback).toHaveBeenCalledTimes(1);
+      expect(event.removeCallback).toHaveBeenCalledWith(
+        request.getEventCallbackName(),
+        request.callback
+      );
+
+      expect(pipelineSequence.get()).toHaveLength(0);
+      expect(pipelineManager.requests.size).toBe(0);
+      expect(entry.ongoing).toBe(0);
+    });
+
+    it('should work as expected for errorous requests', () => {
+      request.error = { message: 'Error', code: 'ERROR' };
+      const error = new Error(request.error.message);
+      error.code = request.error.code;
+
+      // Save the entry for later comparisons.
+      const entry = pipelineManager.requests.get(request.serial);
+
+      expect(pipelineSequence.get()[0]).toBe(request.serial);
+      expect(pipelineManager.pipelines.get(request.name)).toBe(1);
+
+      pipelineManager.handleResult(request.serial);
+      expect(pipelineManager.pipelines.has(request.name)).toBe(false);
+      expect(request.reject).toHaveBeenCalledWith(error);
+      expect(logGroup).toHaveBeenCalledTimes(1);
+      expect(event.removeCallback).toHaveBeenCalledTimes(1);
+      expect(event.removeCallback).toHaveBeenCalledWith(
+        request.getEventCallbackName(),
+        request.callback
+      );
+
+      expect(pipelineSequence.get()).toHaveLength(0);
+      expect(pipelineManager.requests.size).toBe(0);
+      expect(entry.ongoing).toBe(0);
+    });
   });
 
   describe('.handleResultSequence()', () => {

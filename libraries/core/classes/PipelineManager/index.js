@@ -113,7 +113,7 @@ class PipelineManager {
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
         this.handleResultSequence();
       } else {
-        this.handleResult(serial);
+        this.handleResult(serialResult);
       }
     };
 
@@ -234,10 +234,9 @@ class PipelineManager {
     this.decrementRequestOngoing(serial);
     this.runDependencies(pipelineName);
 
-    const isRetriesOngoing = this.isRetriesOngoing(serial);
     const isProcessLastOngoing = this.isProcessLastOngoing(serial);
 
-    if (isRetriesOngoing || isProcessLastOngoing) {
+    if (isProcessLastOngoing) {
       return;
     }
 
