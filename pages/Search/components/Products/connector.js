@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { getProductsResult } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 
@@ -28,8 +29,14 @@ const mapDispatchToProps = dispatch => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (prev.products.length !== next.products.length) return false;
-  if (prev.totalProductCount !== next.totalProductCount) return false;
+  if (!isEqual(prev.products, next.products)) {
+    return false;
+  }
+
+  if (prev.totalProductCount !== next.totalProductCount) {
+    return false;
+  }
+
   return true;
 };
 
