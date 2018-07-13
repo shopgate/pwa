@@ -1,9 +1,6 @@
 // Pipeline current version.
 export const CURRENT_VERSION = 1;
 
-// Pipeline response error.
-export const EVENT_PIPELINE_ERROR = 'EVENT_PIPELINE_ERROR';
-
 // Error from native app framework - PipelineRequest timeout
 export const E999 = '-999';
 

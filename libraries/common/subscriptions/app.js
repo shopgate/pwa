@@ -4,7 +4,11 @@ import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
 import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
-import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
+import {
+  EACCESS,
+  E999,
+  ENOTFOUND,
+} from '@shopgate/pwa-core/constants/Pipeline';
 import { appDidStart$, appWillStart$ } from '../streams/app';
 import { pipelineError$ } from '../streams/error';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
@@ -29,9 +33,9 @@ export default function app(subscribe) {
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
-      errorCodes.EACCESS,
-      errorCodes.E999,
-      errorCodes.ENOTFOUND,
+      EACCESS,
+      E999,
+      ENOTFOUND,
     ]);
 
     // Map the error events into the Observable streams.
