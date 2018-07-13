@@ -2,8 +2,8 @@ import logGroup from '../../helpers/logGroup';
 import { mockedDispatch } from '../AppCommand';
 import event from '../Event';
 import { ERROR_HANDLE_SUPPRESS } from '../../constants/ErrorHandleTypes';
-import pipelineManager from '../PipelineManager';
 import PipelineRequest from '../PipelineRequest';
+import pipelineManager from '../PipelineManager';
 import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
@@ -99,6 +99,7 @@ describe('PipelineManager', () => {
 
       pipelineManager.add(requestOne);
       pipelineManager.add(requestTwo);
+
       expect(pipelineManager.requests.size).toEqual(2);
       expect(pipelineManager.requests.get(requestOne.serial).request).toBe(requestOne);
       expect(pipelineManager.requests.get(requestTwo.serial).request).toBe(requestTwo);
