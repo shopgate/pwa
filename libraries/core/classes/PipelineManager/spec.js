@@ -4,6 +4,7 @@ import event from '../Event';
 import { ERROR_HANDLE_SUPPRESS } from '../../constants/ErrorHandleTypes';
 import pipelineManager from '../PipelineManager';
 import PipelineRequest from '../PipelineRequest';
+import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
 import { PROCESS_LAST, PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
@@ -110,7 +111,6 @@ describe('PipelineManager', () => {
   describe('.dispatch()', () => {
     it('should send a request', () => {
       const createRequestCallbackSpy = jest.spyOn(pipelineManager, 'createRequestCallback');
-      const hasRunningDependenciesSpy = jest.spyOn(pipelineManager, 'hasRunningDependencies');
       const sendRequestSpy = jest.spyOn(pipelineManager, 'sendRequest');
 
       pipelineManager.constructor();
@@ -123,22 +123,9 @@ describe('PipelineManager', () => {
         expect.any(Function),
         expect.any(Function)
       );
-      expect(hasRunningDependenciesSpy).toHaveBeenCalledTimes(1);
-      const pipelineName = pipelineManager.getPipelineNameBySerial(request.serial, false);
-      expect(hasRunningDependenciesSpy).toHaveBeenCalledWith(pipelineName);
+
       expect(sendRequestSpy).toHaveBeenCalledTimes(1);
       expect(sendRequestSpy).toHaveBeenCalledWith(request.serial);
-    });
-
-    it('should not send the request when dependencies are running', () => {
-      jest
-        .spyOn(pipelineManager, 'hasRunningDependencies')
-        .mockReturnValueOnce(true);
-      const sendRequestSpy = jest.spyOn(pipelineManager, 'sendRequest');
-
-      pipelineManager.constructor();
-      pipelineManager.add(request);
-      expect(sendRequestSpy).not.toHaveBeenCalled();
     });
 
     it('should resolve when a pipeline response comes in', () => {
@@ -256,11 +243,32 @@ describe('PipelineManager', () => {
   });
 
   describe('.hasRunningDependencies()', () => {
+    const PIPELINE_DEPENDANT = 'PIPELINE_DEPENDANT';
+    const PIPELINE_DEPENCENDY = 'PIPELINE_DEPENCENDY';
 
-  });
+    beforeAll(() => {
+      pipelineManager.constructor();
+      pipelineDependencies.set(PIPELINE_DEPENDANT, [
+        PIPELINE_DEPENCENDY,
+      ]);
+    });
 
-  describe('.runDependencies()', () => {
+    it('should return true if dependencies are running', () => {
+      const dependant = createRequest(PIPELINE_DEPENDANT);
+      const dependency = createRequest(PIPELINE_DEPENCENDY);
 
+      pipelineManager.add(dependant);
+      pipelineManager.add(dependency);
+
+      expect(pipelineManager.hasRunningDependencies(dependant.name)).toBe(true);
+    });
+
+    it('should return false if no dependencies are running', () => {
+      const dependency = createRequest(PIPELINE_DEPENCENDY);
+      pipelineManager.add(dependency);
+
+      expect(pipelineManager.hasRunningDependencies(dependency.name)).toBe(false);
+    });
   });
 
   describe('.handleTimeout()', () => {

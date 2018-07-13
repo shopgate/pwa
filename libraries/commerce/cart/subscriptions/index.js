@@ -1,3 +1,4 @@
+import 'rxjs/add/operator/debounceTime';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
@@ -38,9 +39,9 @@ import { CART_PATH } from '../constants';
 export default function cart(subscribe) {
   /**
    * Gets triggered when ever the local cart is out of
-   * sync with the remote cart from the server.
+   * sync with the remote cart from the server. It's debounced to reduce emitting.
    */
-  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
+  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$).debounceTime(0);
 
   /**
    * Gets triggered when the app is started or the cart route is entered.

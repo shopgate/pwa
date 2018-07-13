@@ -10,18 +10,21 @@ import errorCart from '../action-creators/errorCart';
  * @return {Function} A redux thunk.
  */
 const fetchCart = () => (dispatch) => {
-  dispatch(requestCart());
+  const request = new PipelineRequest(pipelines.SHOPGATE_CART_GET_CART);
 
-  new PipelineRequest(pipelines.SHOPGATE_CART_GET_CART)
-    .dispatch()
-    .then(response => dispatch(receiveCart(response)))
-    .catch((error) => {
-      if (error) {
-        // Check if we have an error (no error means an outdated request has been rejected).
-        logger.error(error);
-        dispatch(errorCart());
-      }
-    });
+  if (!request.hasRunningDependencies()) {
+    dispatch(requestCart());
+
+    request.dispatch()
+      .then(response => dispatch(receiveCart(response)))
+      .catch((error) => {
+        if (error) {
+          // Check if we have an error (no error means an outdated request has been rejected).
+          logger.error(error);
+          dispatch(errorCart());
+        }
+      });
+  }
 };
 
 export default fetchCart;

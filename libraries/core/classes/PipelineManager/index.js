@@ -2,7 +2,6 @@ import AppCommand from '../AppCommand';
 import event from '../Event';
 import errorManager from '../ErrorManager';
 import pipelineDependencies from '../PipelineDependencies';
-import pipelineBuffer from '../PipelineBuffer';
 import pipelineSequence from '../PipelineSequence';
 import * as errorSources from '../ErrorManager/constants';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
@@ -48,7 +47,7 @@ class PipelineManager {
    * @return {Promise}
    */
   add(request) {
-    request.createSerial(`${request.name}.v${request.version}`);
+    request.createSerial(`${this.name}.v${this.version}`);
     request.createEventCallbackName('pipelineResponse');
 
     // Store the request by serial to be accessible later.
@@ -71,14 +70,6 @@ class PipelineManager {
   dispatch(serial) {
     return new Promise((resolve, reject) => {
       this.createRequestCallback(serial, resolve, reject);
-
-      const pipelineName = this.getPipelineNameBySerial(serial, false);
-
-      // Stop if this request has any ongoing dependencies.
-      if (this.hasRunningDependencies(pipelineName)) {
-        return;
-      }
-
       this.sendRequest(serial);
     });
   }
@@ -132,32 +123,17 @@ class PipelineManager {
    * @return {boolean}
    */
   hasRunningDependencies(pipelineName) {
-    return false;
-
     const dependencies = pipelineDependencies.get(pipelineName);
     let found = 0;
 
     dependencies.forEach((dependency) => {
       // Check if the dependency exists and is ongoing.
-      if (this.pipelines.has(dependency) && this.pipelines.get(dependency)) {
+      if (this.pipelines.has(dependency) && this.pipelines.get(dependency) > 0) {
         found += 1;
-        // PipelineBuffer.set(dependency, pipelineName);
       }
     });
 
     return found > 0;
-  }
-
-  /**
-   * Runs a pipeline request's dependencies.
-   * @param {string} pipelineName The pipeline request name.
-   */
-  runDependencies(pipelineName) {
-    pipelineBuffer
-      .get(pipelineName)
-      .forEach((dependency) => {
-        this.dispatch(dependency);
-      });
   }
 
   /**
@@ -232,7 +208,6 @@ class PipelineManager {
     const callbackName = request.getEventCallbackName();
 
     this.decrementRequestOngoing(serial);
-    this.runDependencies(pipelineName);
 
     const isProcessLastOngoing = this.isProcessLastOngoing(serial);
 
