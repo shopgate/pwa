@@ -4,7 +4,7 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getHistoryPathname, getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
@@ -185,7 +185,7 @@ export const getProductCurrency = createSelector(
 export const getResultHash = createSelector(
   (state, props) => props.categoryId,
   (state, props) => props.searchPhrase,
-  (state, props) => props.sortOrder || DEFAULT_SORT,
+  state => getSortOrder(state) || DEFAULT_SORT,
   getActiveFilters,
   (categoryId, searchPhrase, sort, filters) => {
     if (categoryId) {
@@ -237,7 +237,7 @@ export const getResultByHash = createSelector(
  * @return {Object} The product result.
  */
 export const getPopulatedProductsResult = (state, props, hash, result) => {
-  const sort = props.sortOrder || DEFAULT_SORT;
+  const sort = getSortOrder(state) || DEFAULT_SORT;
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 

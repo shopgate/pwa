@@ -1,5 +1,5 @@
 import conductor from '@virtuous/conductor';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import commitTemporaryFilters from './commitTemporaryFilters';
 import { CATEGORY_PATH } from '../../category/constants';
 import { SEARCH_PATH } from '../../search/constants';
@@ -11,10 +11,10 @@ import { FILTER_PATH } from '../constants';
  *   be rounded to the next full number.
  * @returns {Function} A redux thunk
  */
-const applyFilters = (roundDisplayAmounts = true) => (dispatch, getState) => {
+const applyFilters = (roundDisplayAmounts = true) => (dispatch) => {
   dispatch(commitTemporaryFilters(roundDisplayAmounts));
 
-  const route = getCurrentRoute(getState());
+  const route = getCurrentRoute();
 
   if (
     route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`
