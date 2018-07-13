@@ -1,3 +1,6 @@
+import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
+import { EINVALIDCREDENTIALS } from '@shopgate/pwa-core/constants/Pipeline';
+import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-common/constants/Pipelines';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   routeDidEnter,
@@ -9,6 +12,13 @@ import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorS
 import disableNavigatorTitle from 'Components/Navigator/actions/disableNavigatorTitle';
 import enableNavigatorTitle from 'Components/Navigator/actions/enableNavigatorTitle';
 import toggleCartIcon from 'Components/Navigator/actions/toggleCartIcon';
+
+// Translate some error messages
+errorManager.setMessage({
+  code: EINVALIDCREDENTIALS,
+  context: SHOPGATE_USER_LOGIN_USER,
+  message: 'login.error',
+});
 
 /**
  * Login subscriptions.
