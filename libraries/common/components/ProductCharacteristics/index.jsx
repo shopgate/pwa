@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
 import connect from './connector';
-import VariantsContext from './context';
+import { VariantContext } from './context';
 import {
   isCharacteristicEnabled,
   getSelectedValue,
@@ -221,7 +221,7 @@ class ProductCharacteristics extends Component {
     }
 
     return (
-      <VariantsContext.Provider value={this.state}>
+      <VariantContext.Provider value={this.state}>
         {variants.characteristics.map((char, index) => {
           const disabled = !isCharacteristicEnabled(characteristics, index);
           const selected = getSelectedValue(char.id, characteristics);
@@ -241,7 +241,7 @@ class ProductCharacteristics extends Component {
             })
           );
         })}
-      </VariantsContext.Provider>
+      </VariantContext.Provider>
     );
   }
 }
