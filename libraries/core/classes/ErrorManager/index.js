@@ -1,7 +1,9 @@
 import EventEmitter from 'events';
-import { DEFAULT_CONTEXT } from './constants';
+import { DEFAULT_CONTEXT, SOURCE_PIPELINE } from './constants';
 
 export const emitter = new EventEmitter();
+
+const pipelineVersionSuffix = /\.v\d+$/;
 
 /**
  * The ErrorManager class.
@@ -26,15 +28,21 @@ class ErrorManager {
    * @param {string} code The error code.
    * @param {string} context The error context.
    * @param {string} source The error source.
-   * @returns {Object|null}
+   * @returns {string|null}
    */
   getMessage(code, context, source) {
     const id = `${source}-${context}-${code}`;
-    const defaultId = `${source}-${DEFAULT_CONTEXT}-${code}`;
-
     if (this.messages[id]) {
       return this.messages[id];
-    } else if (this.messages[defaultId]) {
+    }
+
+    const unversionedId = `${source}-${context.replace(pipelineVersionSuffix, '')}-${code}`;
+    if (this.messages[unversionedId]) {
+      return this.messages[unversionedId];
+    }
+
+    const defaultId = `${source}-${DEFAULT_CONTEXT}-${code}`;
+    if (this.messages[defaultId]) {
       return this.messages[defaultId];
     }
 
@@ -43,13 +51,18 @@ class ErrorManager {
 
   /**
    * Sets an override for a specific error message.
-   * @param {string} error The error object.
-   * @param {string} error.code The error code.
-   * @param {string} error.context The context of the error, relative to the source..
-   * @param {string} error.message The default error message.
-   * @param {string} error.source The source of the error.
+   * @param {Object} params The error object.
+   * @param {string} params.code The error code.
+   * @param {string} params.context The context of the error, relative to the source..
+   * @param {string} params.message The default error message.
+   * @param {string} [params.source=SOURCE_PIPELINE] The source of the error.
    */
-  setMessage(error = {}) {
+  setMessage(params = {}) {
+    const error = {
+      source: SOURCE_PIPELINE,
+      ...params,
+    };
+
     if (!this.validate(error)) {
       return;
     }
@@ -62,7 +75,7 @@ class ErrorManager {
 
   /**
    * Adds a new error object to the queue.
-   * @param {string} error The error object.
+   * @param {Object} error The error object.
    * @param {string} error.code The error code.
    * @param {string} error.context The context of the error, relative to the source..
    * @param {string} error.message The default error message.
@@ -101,7 +114,7 @@ class ErrorManager {
   startTimer = async () => {
     await this.stopTimer();
     this.timer = setInterval(this.dispatch, 500);
-  }
+  };
 
   /**
    * Clears the dispatch interval.
@@ -109,7 +122,7 @@ class ErrorManager {
   stopTimer = async () => {
     await clearInterval(this.timer);
     this.timer = null;
-  }
+  };
 
   /**
    * Dispatched the stored error objects through the event emitter.
@@ -128,7 +141,7 @@ class ErrorManager {
     this.errorQueue.clear();
 
     return true;
-  }
+  };
 
   /**
    * Validates an error object.
