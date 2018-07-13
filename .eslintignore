@@ -3,3 +3,4 @@ dist
 node_modules
 InlineTransitionGroup
 localforage.js
+e2e
