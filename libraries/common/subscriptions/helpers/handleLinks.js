@@ -40,7 +40,6 @@ const legacyPages = [
   '/page/terms',
   '/page/return_policy',
   '/page/privacy',
-  '/page/register',
   '/page/imprint',
   '/page/shipping',
   '/page/payment',
@@ -183,7 +182,7 @@ export const openExternalLink = (location) => {
  */
 export const handleLegacyLink = (options) => {
   if (options.location) {
-    let src = `sgapi:${options.url.substring(1)}`;
+    let src = `sgapi:${options.location.substring(1)}`;
     // `sgapi` links must not end with slash.
     if (src.endsWith('/')) {
       src = src.slice(0, -1);
@@ -253,7 +252,7 @@ export const openLegacyLink = (location) => {
     case LEGACY_LINK_ORDERS:
       handleLegacyLink({
         targetTab: 'main',
-        url: '/orders',
+        location: '/orders',
       });
       break;
     case LEGACY_LINK_CHECKOUT:
@@ -261,19 +260,19 @@ export const openLegacyLink = (location) => {
         targetTab: 'cart',
         flushTab: 'cart',
         navigationType: 'checkout',
-        url: '/checkout/default',
+        location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
       break;
     case LEGACY_LINK_REGISTER:
       handleLegacyLink({
         targetTab: 'main',
-        url: '/register/default',
+        location: '/register/default',
       });
       break;
     case LEGACY_LINK_CONNECT_REGISTER:
       handleLegacyLink({
-        url: `/${LEGACY_LINK_CONNECT_REGISTER}`,
+        location: `/${LEGACY_LINK_CONNECT_REGISTER}`,
         targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
