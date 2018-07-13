@@ -70,11 +70,14 @@ export function getStoreWithSelectedFilters() {
   return configureStore([thunk])(mockedStoreAllSelected);
 }
 
-export function mockAppConfig () {
+/**
+ * Mock app config
+ */
+export function mockAppConfig() {
   jest.mock('@shopgate/pwa-common/helpers/config', () => ({
     default: {
       currency: 'USD',
     },
-    themeConfig: mockThemeConfig
+    themeConfig: mockThemeConfig,
   }));
 }
