@@ -52,7 +52,7 @@ class Content extends Component {
    * @returns {JSX}
    */
   render() {
-    const currency = appConfig.currency;
+    const { currency } = appConfig;
     return (
       <section>
         <div className={styles}>
