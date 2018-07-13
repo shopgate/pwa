@@ -31,8 +31,7 @@ export const LEGACY_LINK_CHANNEL = 'channel';
 export const LEGACY_LINK_ORDERS = 'orders_legacy';
 export const LEGACY_LINK_CART_ADD_COUPON = 'cart_add_coupon';
 export const LEGACY_LINK_CHECKOUT = 'checkout_legacy';
-export const LEGACY_LINK_REGISTER_LEGACY = 'register_legacy';
-export const LEGACY_LINK_REGISTER = 'register';
+export const LEGACY_LINK_REGISTER = 'register_legacy';
 export const LEGACY_LINK_CONNECT_REGISTER = 'connect_register';
 
 const protocols = [PROTOCOL_HTTP, PROTOCOL_HTTPS, PROTOCOL_TEL, PROTOCOL_MAILTO];
@@ -54,7 +53,6 @@ const legacyLinks = [
   LEGACY_LINK_ORDERS,
   LEGACY_LINK_CART_ADD_COUPON,
   LEGACY_LINK_CHECKOUT,
-  LEGACY_LINK_REGISTER_LEGACY,
   LEGACY_LINK_REGISTER,
   LEGACY_LINK_CONNECT_REGISTER,
 ];
@@ -267,7 +265,6 @@ export const openLegacyLink = (location) => {
       });
       break;
     case LEGACY_LINK_REGISTER:
-    case LEGACY_LINK_REGISTER_LEGACY:
       handleLegacyLink({
         targetTab: 'main',
         location: '/register/default',
