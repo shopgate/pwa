@@ -17,7 +17,6 @@ const buttonFlat = css(buttonProto).toString();
 
 const button = css({
   ...buttonProto,
-  boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
 }).toString();
 
 const ripple = css({
