@@ -11,6 +11,7 @@ const container = css({
   bottom: 0,
   backgroundColor: colors.light,
   overflowY: 'scroll',
+  zIndex: 11,
 }).toString();
 
 const listItem = css({
