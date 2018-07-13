@@ -41,12 +41,8 @@ import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
-// App
-import app from './subscriptions';
 
 const subscriptions = [
-  // App subscribers.
-  app,
   // Common subscribers.
   commonApp,
   commonHistory,

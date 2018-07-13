@@ -5,7 +5,7 @@ import Link from '@shopgate/pwa-common/components/Link';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import connect from './connector';
-import styles from './style'
+import styles from './style';
 
 /**
  * The checkout button component.
