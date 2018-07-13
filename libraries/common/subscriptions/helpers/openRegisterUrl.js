@@ -1,6 +1,5 @@
 import { parseObjectToQueryString } from '../../helpers/router';
 import { getRedirectLocation } from '../../selectors/history';
-import ParsedLink from '../../components/Router/helpers/parsed-link';
 import {
   CHECKOUT_PATH,
   INDEX_PATH,

@@ -23,7 +23,8 @@ export const LEGACY_LINK_CHANNEL = 'channel';
 export const LEGACY_LINK_ORDERS = 'orders_legacy';
 export const LEGACY_LINK_CART_ADD_COUPON = 'cart_add_coupon';
 export const LEGACY_LINK_CHECKOUT = 'checkout_legacy';
-export const LEGACY_LINK_REGISTER = 'register_legacy';
+export const LEGACY_LINK_REGISTER_LEGACY = 'register_legacy';
+export const LEGACY_LINK_REGISTER = 'register';
 export const LEGACY_LINK_CONNECT_REGISTER = 'connect_register';
 
 const protocols = [PROTOCOL_HTTP, PROTOCOL_HTTPS, PROTOCOL_TEL, PROTOCOL_MAILTO];
@@ -32,7 +33,6 @@ const legacyPages = [
   '/page/terms',
   '/page/return_policy',
   '/page/privacy',
-  '/page/register',
   '/page/imprint',
   '/page/shipping',
   '/page/payment',
@@ -46,6 +46,7 @@ const legacyLinks = [
   LEGACY_LINK_ORDERS,
   LEGACY_LINK_CART_ADD_COUPON,
   LEGACY_LINK_CHECKOUT,
+  LEGACY_LINK_REGISTER_LEGACY,
   LEGACY_LINK_REGISTER,
   LEGACY_LINK_CONNECT_REGISTER,
 ];
@@ -139,7 +140,7 @@ export const openExternalLink = (location) => {
  */
 export const handleLegacyLink = (options) => {
   if (options.location) {
-    let src = `sgapi:${options.url.substring(1)}`;
+    let src = `sgapi:${options.location.substring(1)}`;
     // `sgapi` links must not end with slash.
     if (src.endsWith('/')) {
       src = src.slice(0, -1);
@@ -209,7 +210,7 @@ export const openLegacyLink = (location) => {
     case LEGACY_LINK_ORDERS:
       handleLegacyLink({
         targetTab: 'main',
-        url: '/orders',
+        location: '/orders',
       });
       break;
     case LEGACY_LINK_CHECKOUT:
@@ -217,19 +218,20 @@ export const openLegacyLink = (location) => {
         targetTab: 'cart',
         flushTab: 'cart',
         navigationType: 'checkout',
-        url: '/checkout/default',
+        location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
       break;
     case LEGACY_LINK_REGISTER:
+    case LEGACY_LINK_REGISTER_LEGACY:
       handleLegacyLink({
         targetTab: 'main',
-        url: '/register/default',
+        location: '/register/default',
       });
       break;
     case LEGACY_LINK_CONNECT_REGISTER:
       handleLegacyLink({
-        url: `/${LEGACY_LINK_CONNECT_REGISTER}`,
+        location: `/${LEGACY_LINK_CONNECT_REGISTER}`,
         targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
       });
