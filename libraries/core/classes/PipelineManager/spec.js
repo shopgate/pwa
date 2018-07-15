@@ -7,7 +7,7 @@ import pipelineManager from '../PipelineManager';
 import pipelineDependencies from '../PipelineDependencies';
 import errorManager from '../ErrorManager';
 import pipelineSequence from '../PipelineSequence';
-import { PROCESS_LAST, PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
+import { PROCESS_SEQUENTIAL, PROCESS_ALWAYS } from '../../constants/ProcessTypes';
 import { ETIMEOUT } from '../../constants/Pipeline';
 
 jest.mock('../../helpers/logGroup', () => jest.fn());
@@ -24,6 +24,8 @@ jest.mock('../Event', () => ({
 }));
 
 const PIPELINE_NAME = 'TestPipeline';
+const PIPELINE_DEPENDANT = 'PIPELINE_DEPENDANT';
+const PIPELINE_DEPENDENCY = 'PIPELINE_DEPENDENCY';
 
 /**
  * Creates a new pipeline request instance.
@@ -38,10 +40,17 @@ describe('PipelineManager', () => {
   beforeEach(() => {
     // Reset modules.
     pipelineSequence.constructor();
+    pipelineDependencies.constructor();
     pipelineManager.constructor();
+
     // Generate a request and add it to the manager. It can be used for most of the tests.
     request = createRequest();
     pipelineManager.add(request);
+
+    pipelineDependencies.set(PIPELINE_DEPENDANT, [
+      PIPELINE_DEPENDENCY,
+    ]);
+
     jest.clearAllMocks();
   });
 
@@ -127,6 +136,18 @@ describe('PipelineManager', () => {
 
       expect(sendRequestSpy).toHaveBeenCalledTimes(1);
       expect(sendRequestSpy).toHaveBeenCalledWith(request.serial);
+    });
+
+    it('should not send the requests when it has running dependencies', () => {
+      const sendRequestSpy = jest.spyOn(pipelineManager, 'sendRequest');
+      const dependant = createRequest(PIPELINE_DEPENDANT);
+      const dependency = createRequest(PIPELINE_DEPENDENCY);
+
+      pipelineManager.add(dependency);
+      pipelineManager.add(dependant);
+
+      expect(sendRequestSpy).toHaveBeenCalledTimes(1);
+      expect(sendRequestSpy).toHaveBeenCalledWith(dependency.serial);
     });
 
     it('should resolve when a pipeline response comes in', () => {
@@ -244,19 +265,9 @@ describe('PipelineManager', () => {
   });
 
   describe('.hasRunningDependencies()', () => {
-    const PIPELINE_DEPENDANT = 'PIPELINE_DEPENDANT';
-    const PIPELINE_DEPENCENDY = 'PIPELINE_DEPENCENDY';
-
-    beforeAll(() => {
-      pipelineManager.constructor();
-      pipelineDependencies.set(PIPELINE_DEPENDANT, [
-        PIPELINE_DEPENCENDY,
-      ]);
-    });
-
     it('should return true if dependencies are running', () => {
       const dependant = createRequest(PIPELINE_DEPENDANT);
-      const dependency = createRequest(PIPELINE_DEPENCENDY);
+      const dependency = createRequest(PIPELINE_DEPENDENCY);
 
       pipelineManager.add(dependant);
       pipelineManager.add(dependency);
@@ -265,10 +276,45 @@ describe('PipelineManager', () => {
     });
 
     it('should return false if no dependencies are running', () => {
-      const dependency = createRequest(PIPELINE_DEPENCENDY);
+      const dependency = createRequest(PIPELINE_DEPENDENCY);
       pipelineManager.add(dependency);
 
       expect(pipelineManager.hasRunningDependencies(dependency.name)).toBe(false);
+    });
+  });
+
+  describe('.handleDeferredRequests', () => {
+    it('should send deferred requests when their dependencies are finished', () => {
+      const sendRequestSpy = jest.spyOn(pipelineManager, 'sendRequest');
+      const dependant = createRequest(PIPELINE_DEPENDANT);
+      const dependencyOne = createRequest(PIPELINE_DEPENDENCY);
+      const dependencyTwo = createRequest(PIPELINE_DEPENDENCY);
+
+      pipelineManager.add(dependencyOne);
+      pipelineManager.add(dependencyTwo);
+      pipelineManager.add(dependant);
+
+      const entryOne = pipelineManager.requests.get(dependencyOne.serial);
+      const entryTwo = pipelineManager.requests.get(dependencyTwo.serial);
+
+      // Two times called for the depencencies.
+      expect(sendRequestSpy).toHaveBeenCalledTimes(2);
+      expect(sendRequestSpy).toHaveBeenCalledWith(entryOne.request.serial);
+      expect(sendRequestSpy).toHaveBeenCalledWith(entryTwo.request.serial);
+
+      pipelineManager.handleDeferredRequests();
+      // Call count didn't change, since dependencies are still running.
+      expect(sendRequestSpy).toHaveBeenCalledTimes(2);
+
+      entryOne.request.callback(null, entryOne.request.serial);
+      pipelineManager.handleDeferredRequests();
+      // Call count didn't change, since one dependency is still running.
+      expect(sendRequestSpy).toHaveBeenCalledTimes(2);
+
+      entryTwo.request.callback(null, entryTwo.request.serial);
+      pipelineManager.handleDeferredRequests();
+      expect(sendRequestSpy).toHaveBeenCalledTimes(3);
+      expect(sendRequestSpy).toHaveBeenCalledWith(dependant.serial);
     });
   });
 
@@ -282,12 +328,10 @@ describe('PipelineManager', () => {
 
       const entry = pipelineManager.requests.get(request.serial);
       expect(entry.retries).toBe(1);
-      expect(entry.ongoing).toBe(1);
 
       jest.runAllTimers();
 
       expect(entry.retries).toBe(0);
-      expect(entry.ongoing).toBe(2);
 
       jest.runAllTimers();
 
@@ -385,10 +429,9 @@ describe('PipelineManager', () => {
 
       expect(pipelineSequence.get()).toHaveLength(0);
       expect(pipelineManager.requests.size).toBe(0);
-      expect(entry.ongoing).toBe(0);
     });
 
-    it('should work as expected for errorous requests', () => {
+    it('should work as expected for erroneous requests', () => {
       request.error = { message: 'Error', code: 'ERROR' };
       const error = new Error(request.error.message);
       error.code = request.error.code;
@@ -411,7 +454,6 @@ describe('PipelineManager', () => {
 
       expect(pipelineSequence.get()).toHaveLength(0);
       expect(pipelineManager.requests.size).toBe(0);
-      expect(entry.ongoing).toBe(0);
     });
   });
 
@@ -495,7 +537,6 @@ describe('PipelineManager', () => {
       const entry = pipelineManager.requests.get(request.serial);
 
       expect(entry.retries).toBe(request.retries);
-      expect(entry.ongoing).toBe(1);
       expect(typeof entry.timer).toBe('number');
       expect(pipelineSequence.get().includes(request.serial)).toBeFalsy();
       expect(logGroup).toHaveBeenCalledTimes(1);
@@ -510,6 +551,7 @@ describe('PipelineManager', () => {
     it('should dispatch a trusted pipeline request to the app', () => {
       request.setTrusted(true);
       pipelineManager.add(request);
+
       expect(logGroup).toHaveBeenCalledTimes(1);
       expect(mockedDispatch).toHaveBeenCalledTimes(1);
       expect(mockedDispatch).toHaveBeenCalledWith({
@@ -526,7 +568,6 @@ describe('PipelineManager', () => {
       const entry = pipelineManager.requests.get(request.serial);
 
       expect(entry.retries).toBe(request.retries);
-      expect(entry.ongoing).toBe(1);
       expect(typeof entry.timer).toBe('number');
       expect(pipelineSequence.get().includes(request.serial)).toBeTruthy();
       expect(logGroup).toHaveBeenCalledTimes(1);
@@ -569,75 +610,6 @@ describe('PipelineManager', () => {
       expect(pipelineSequence.get()).toHaveLength(1);
       pipelineManager.removeRequestFromPiplineSequence(request.serial);
       expect(pipelineSequence.get()).toHaveLength(0);
-    });
-  });
-
-  describe('.incrementRequestOngoing()', () => {
-    let incrementPipelineSpy;
-
-    beforeEach(() => {
-      incrementPipelineSpy = jest.spyOn(pipelineManager, 'incrementPipelineOngoing');
-    });
-
-    it('should ignore invalid serial', () => {
-      const isOngoing = pipelineManager.incrementRequestOngoing('1234');
-      expect(isOngoing).toBeFalsy();
-      expect(incrementPipelineSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it('should increment the ongoing flag', () => {
-      const instance = pipelineManager.requests.get(request.serial);
-
-      expect(instance.ongoing).toEqual(1);
-      pipelineManager.incrementRequestOngoing(request.serial);
-      expect(instance.ongoing).toEqual(2);
-      expect(incrementPipelineSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('should not increment the ongoing flag', () => {
-      pipelineManager.incrementRequestOngoing('1234');
-
-      const instance = pipelineManager.requests.get(request.serial);
-      expect(instance.ongoing).toEqual(1);
-      expect(incrementPipelineSpy).toHaveBeenCalledTimes(0);
-    });
-  });
-
-  describe('.decrementRequestOngoing()', () => {
-    let decrementPipelineSpy;
-
-    beforeEach(() => {
-      decrementPipelineSpy = jest.spyOn(pipelineManager, 'decrementPipelineOngoing');
-    });
-
-    it('should ignore invalid serial', () => {
-      const isOngoing = pipelineManager.decrementRequestOngoing('1234');
-      expect(isOngoing).toBeFalsy();
-      expect(decrementPipelineSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it('should decrement the ongoing flag', () => {
-      const instance = pipelineManager.requests.get(request.serial);
-
-      expect(instance.ongoing).toEqual(1);
-      pipelineManager.decrementRequestOngoing(request.serial);
-      expect(instance.ongoing).toEqual(0);
-      expect(decrementPipelineSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('should not decrement the ongoing flag for an unknown request', () => {
-      pipelineManager.decrementRequestOngoing('1234');
-
-      const instance = pipelineManager.requests.get(request.serial);
-      expect(instance.ongoing).toEqual(1);
-      expect(decrementPipelineSpy).toHaveBeenCalledTimes(0);
-    });
-
-    it('should not decrement the ongoing flag below zero', () => {
-      const instance = pipelineManager.requests.get(request.serial);
-      instance.ongoing = 0;
-      pipelineManager.decrementRequestOngoing(request.serial);
-      expect(instance.ongoing).toEqual(0);
     });
   });
 
@@ -750,56 +722,6 @@ describe('PipelineManager', () => {
       const result = pipelineManager.getRetriesPrefix(request.serial);
       expect(typeof result).toBe('string');
       expect(result.length > 0).toBeTruthy();
-    });
-  });
-
-  describe('.isRetriesOngoing()', () => {
-    it('should ignore invalid serial', () => {
-      const isOngoing = pipelineManager.isRetriesOngoing('1234');
-      expect(isOngoing).toBeFalsy();
-    });
-
-    it('should detect an ongoing request', () => {
-      const isOngoing = pipelineManager.isRetriesOngoing(request.serial);
-      expect(isOngoing).toBeTruthy();
-    });
-
-    it('should return false when no retries are left', () => {
-      const entry = pipelineManager.requests.get(request.serial);
-      entry.retries = 0;
-      const isOngoing = pipelineManager.isRetriesOngoing(request.serial);
-      expect(isOngoing).toBeFalsy();
-    });
-
-    it('should return false when the request is not ongoing anymore', () => {
-      const entry = pipelineManager.requests.get(request.serial);
-      entry.ongoing = 0;
-      const isOngoing = pipelineManager.isRetriesOngoing(request.serial);
-      expect(isOngoing).toBeFalsy();
-    });
-  });
-
-  describe.skip('.isProcessLastOngoing()', () => {
-    it('should ignore invalid serial', () => {
-      const isOngoing = pipelineManager.isProcessLastOngoing('1234');
-      expect(isOngoing).toBeFalsy();
-    });
-
-    it('should be processed last', () => {
-      const req = createRequest(PIPELINE_NAME).setResponseProcessed(PROCESS_LAST);
-
-      pipelineManager.add(req);
-
-      const instance = pipelineManager.requests.get(req.serial);
-      instance.ongoing = 1;
-
-      const isOngoing = pipelineManager.isProcessLastOngoing(req.serial);
-      expect(isOngoing).toBeTruthy();
-    });
-
-    it('should not be processed last', () => {
-      const isOngoing = pipelineManager.isProcessLastOngoing(request.serial);
-      expect(isOngoing).toBeFalsy();
     });
   });
 });

@@ -54,8 +54,8 @@ class PipelineManager {
     this.requests.set(request.serial, {
       request,
       retries: request.retries,
-      ongoing: 0,
       finished: false,
+      deferred: false,
       timer: null,
     });
 
@@ -69,7 +69,17 @@ class PipelineManager {
    */
   dispatch(serial) {
     return new Promise((resolve, reject) => {
+      const entry = this.requests.get(serial);
+      const { name } = entry.request;
+
       this.createRequestCallback(serial, resolve, reject);
+
+      if (this.hasRunningDependencies(name)) {
+        // Requests with running dependencies will be sent after the depencensies are finished.
+        entry.deferred = true;
+        return;
+      }
+
       this.sendRequest(serial);
     });
   }
@@ -134,6 +144,20 @@ class PipelineManager {
     });
 
     return found > 0;
+  }
+
+  /**
+   * Sends deferred requests when they dont' have running dependencies anymore.
+   */
+  handleDeferredRequests() {
+    this.requests.forEach((entry) => {
+      const { deferred, request: { name, serial } } = entry;
+      if (deferred && !this.hasRunningDependencies(name)) {
+        // eslint-disable-next-line no-param-reassign
+        entry.deferred = false;
+        this.sendRequest(serial);
+      }
+    });
   }
 
   /**
@@ -207,13 +231,7 @@ class PipelineManager {
     const pipelineName = this.getPipelineNameBySerial(serial);
     const callbackName = request.getEventCallbackName();
 
-    this.decrementRequestOngoing(serial);
-
-    const isProcessLastOngoing = this.isProcessLastOngoing(serial);
-
-    if (isProcessLastOngoing) {
-      return;
-    }
+    this.decrementPipelineOngoing(serial);
 
     let logColor = '#307bc2';
 
@@ -231,10 +249,14 @@ class PipelineManager {
       serial,
     }, logColor);
 
+    // Cleanup.
     event.removeCallback(callbackName, request.callback);
     clearTimeout(entry.timer);
     this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
+
+    // Take care about requests that where deferred since depencensies where running.
+    this.handleDeferredRequests();
   }
 
   /**
@@ -271,7 +293,7 @@ class PipelineManager {
       return;
     }
 
-    this.incrementRequestOngoing(serial);
+    this.incrementPipelineOngoing(serial);
     this.handleTimeout(serial);
     this.addRequestToPipelineSequence(serial);
 
@@ -321,40 +343,6 @@ class PipelineManager {
     } else if (!request) {
       pipelineSequence.remove(serial);
     }
-  }
-
-  /**
-   * Increments the ongoing count for a request.
-   * @param {string} serial The pipeline request serial.
-   */
-  incrementRequestOngoing(serial) {
-    const entry = this.requests.get(serial);
-
-    if (!entry) {
-      return;
-    }
-
-    entry.ongoing += 1;
-
-    this.incrementPipelineOngoing(serial);
-  }
-
-  /**
-   * Decrements the ongoing count for a request.
-   * @param {string} serial The pipeline request serial.
-   */
-  decrementRequestOngoing(serial) {
-    const entry = this.requests.get(serial);
-
-    if (!entry) {
-      return;
-    }
-
-    if (entry.ongoing) {
-      entry.ongoing -= 1;
-    }
-
-    this.decrementPipelineOngoing(serial);
   }
 
   /**
@@ -443,41 +431,6 @@ class PipelineManager {
     const numRetries = request.retries - retries;
 
     return numRetries ? `Retry ${numRetries}: ` : '';
-  }
-
-  /**
-   * Checks whether retries are ongoing.
-   * @param {string} serial The pipeline request serial.
-   * @return {boolean}
-   */
-  isRetriesOngoing(serial) {
-    const entry = this.requests.get(serial);
-
-    if (!entry) {
-      return false;
-    }
-
-    return (
-      entry.request.process === processTypes.PROCESS_ALWAYS &&
-      entry.retries > 0 &&
-      entry.ongoing > 0
-    );
-  }
-
-  /**
-   * Checks whether only the last should be processed.
-   * @param {string} serial The pipeline request serial.
-   * @return {boolean}
-   * @deprecated
-   */
-  isProcessLastOngoing(serial) {
-    const entry = this.requests.get(serial);
-
-    if (!entry) {
-      return false;
-    }
-
-    return (entry.request.process === processTypes.PROCESS_LAST && entry.ongoing);
   }
 }
 
