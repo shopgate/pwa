@@ -47,7 +47,7 @@ class PipelineManager {
    * @return {Promise}
    */
   add(request) {
-    request.createSerial(`${this.name}.v${this.version}`);
+    request.createSerial(`${request.name}.v${request.version}`);
     request.createEventCallbackName('pipelineResponse');
 
     // Store the request by serial to be accessible later.
@@ -75,7 +75,7 @@ class PipelineManager {
       this.createRequestCallback(serial, resolve, reject);
 
       if (this.hasRunningDependencies(name)) {
-        // Requests with running dependencies will be sent after the depencensies are finished.
+        // Requests with running dependencies will be sent after the dependencies are finished.
         entry.deferred = true;
         return;
       }
@@ -113,9 +113,10 @@ class PipelineManager {
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
         this.handleResultSequence();
-      } else {
-        this.handleResult(serialResult);
+        return;
       }
+
+      this.handleResult(serialResult);
     };
 
     // Take care that the callback always has the correct context.
@@ -152,11 +153,14 @@ class PipelineManager {
   handleDeferredRequests() {
     this.requests.forEach((entry) => {
       const { deferred, request: { name, serial } } = entry;
-      if (deferred && !this.hasRunningDependencies(name)) {
-        // eslint-disable-next-line no-param-reassign
-        entry.deferred = false;
-        this.sendRequest(serial);
+      // Stop processing When the current request isn't deferred, or still has running dependencies.
+      if (!deferred || this.hasRunningDependencies(name)) {
+        return;
       }
+
+      // eslint-disable-next-line no-param-reassign
+      entry.deferred = false;
+      this.sendRequest(serial);
     });
   }
 
