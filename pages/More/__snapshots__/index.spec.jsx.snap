@@ -1108,7 +1108,11 @@ exports[`More should render for logged in user 1`] = `
                             >
                               <Portal
                                 name="nav-menu.logout"
-                                props={null}
+                                props={
+                                  Object {
+                                    "Item": [Function],
+                                  }
+                                }
                               >
                                 <Item
                                   className={null}
