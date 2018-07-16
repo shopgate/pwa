@@ -77,6 +77,13 @@ class Html extends Component {
   }
 
   /**
+   * Updates youtube iframes within the HTML widget.
+   */
+  componentDidUpdate() {
+    handleYouTube(this.htmlContainer);
+  }
+
+  /**
    * Removes the event handler.
    */
   componentWillUnmount() {
