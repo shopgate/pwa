@@ -69,7 +69,7 @@ const mockedState = {
               {
                 id: '60',
                 label: '60',
-                hits: 1
+                hits: 1,
               },
               {
                 id: '80',
@@ -121,7 +121,7 @@ const mockedState = {
                 hits: 1,
               },
             ],
-            url: '/filter/size'
+            url: '/filter/size',
           },
           {
             id: 'Title',
@@ -142,7 +142,7 @@ const mockedState = {
               {
                 id: 'Small',
                 label: 'Small',
-                hits: 1
+                hits: 1,
               },
             ],
             url: '/filter/title',

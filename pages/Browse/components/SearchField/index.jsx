@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import event from '@shopgate/pwa-core/classes/Event';
+import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
+import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import I18n from '@shopgate/pwa-common/components/I18n/';
 import Input from '@shopgate/pwa-common/components/Input/';
 import SearchIcon from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
@@ -32,9 +35,24 @@ class SearchField extends Component {
 
     this.state = {
       focused: false,
+      bottomHeight: 0,
     };
 
     this.input = null;
+  }
+  /**
+   * Adds callback for keyboardWillChange.
+   */
+  componentDidMount() {
+    registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+  }
+
+  /**
+   * Removing callback for keyboardWillChange.
+   */
+  componentWillUnmount() {
+    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
   }
 
   /**
@@ -43,6 +61,18 @@ class SearchField extends Component {
    */
   setInputRef = (ref) => {
     this.input = ref;
+  };
+
+  /**
+   * Handler for keyboardWillChange event.
+   * @param {Object} props Props.
+   * @param {number} props.overlap Current overlap.
+   * @type {function}
+   */
+  handleKeyboardChange = ({ overlap }) => {
+    this.setState({
+      bottomHeight: overlap,
+    });
   };
 
   /**
@@ -76,10 +106,10 @@ class SearchField extends Component {
 
   /**
    * Handles the form submit event.
-   * @param {Object} event The event object.
+   * @param {Object} e The event object.
    */
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
     this.props.submitSearch();
     this.input.blur();
     this.setState({ focused: false });
@@ -155,7 +185,7 @@ class SearchField extends Component {
         { focused && (
           <Fragment>
             <div className={styles.overlay} />
-            <SearchSuggestions />
+            <SearchSuggestions bottomHeight={this.state.bottomHeight} />
           </Fragment>)
         }
       </div>
