@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock'
+import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import {
   mockedState,
   mockedEmpty,
@@ -34,10 +34,9 @@ jest.mock(
 jest.mock('lodash/debounce', () => cb => (...args) => cb(...args));
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get currency() {return 'USD'},
-  themeConfig: mockThemeConfig
+  get currency() { return 'USD'; },
+  themeConfig: mockThemeConfig,
 }));
-
 
 /**
  * Creates component
