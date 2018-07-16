@@ -42,13 +42,12 @@
   },
   "price": {
     "from": "From {price}",
-    "range": "Price range from {fromPrice} to {toPrice}",
+    "range": "Price from {fromPrice} to {toPrice}",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "USD"
+    "msrp": "MSRP"
   },
   "product": {
     "description_heading": "About",
@@ -56,6 +55,10 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Category not found"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."
