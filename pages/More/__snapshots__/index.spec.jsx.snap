@@ -71,6 +71,7 @@ exports[`More should render for logged in user 1`] = `
               >
                 <h1
                   className="css-1vgojmg"
+                  data-test-id="greeting"
                 >
                   <Ellipsis
                     className=""
@@ -136,6 +137,7 @@ exports[`More should render for logged in user 1`] = `
           >
             <h2
               className="css-gi5f02"
+              data-test-id="greeting"
             >
               <Ellipsis
                 className=""
@@ -991,6 +993,7 @@ exports[`More should render for logged in user 1`] = `
             >
               <h2
                 className="css-gi5f02"
+                data-test-id="greeting"
               >
                 <Ellipsis
                   className=""
@@ -1338,6 +1341,7 @@ exports[`More should render for logged out user 1`] = `
               >
                 <h1
                   className="css-1vgojmg"
+                  data-test-id="greeting"
                 >
                   <Ellipsis
                     className=""
@@ -1594,6 +1598,7 @@ exports[`More should render for logged out user 1`] = `
           >
             <h2
               className="css-gi5f02"
+              data-test-id="greeting"
             >
               <Ellipsis
                 className=""
