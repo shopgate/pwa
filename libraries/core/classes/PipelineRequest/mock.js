@@ -67,7 +67,7 @@ class MockedPipelineRequest {
    * @param {string} processed The response process type.
    * @return {PipelineRequest}
    */
-  setResponseProcessed(processed = DEFAULT_PROCESSED) {
+  setResponseProcessed(processed = processTypes.DEFAULT_PROCESSED) {
     if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
     if (!Object.values(processTypes).includes(processed)) {
       throw new Error(`The value '${processed}' is not supported!`);
