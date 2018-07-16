@@ -18,6 +18,7 @@ const CTAButtons = props => (
       productId={props.productId}
       className={styles.favButton}
       rippleClassName={styles.ripple}
+      noShadow={1}
     />
   </div>
 );
