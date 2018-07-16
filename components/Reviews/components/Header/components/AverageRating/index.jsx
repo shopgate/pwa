@@ -5,12 +5,14 @@ import RatingCount from 'Components/Reviews/components/RatingCount';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import connect from './connector';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { container } from './style';
+import connect from './connector';
 
 /**
  * The average rating and number of ratings for a product.
- * @param {Object} props The component props.
+ * @param {Object} rating The rating values.
+ * @param {string} productId The related product ID.
  * @returns {JSX}
  */
 const AverageRating = ({ rating, productId }) => {
@@ -18,18 +20,23 @@ const AverageRating = ({ rating, productId }) => {
     return null;
   }
 
+  const { average = 0, count = 0 } = rating;
+  const publicProductId = bin2hex(productId);
+
   return (
     <Link
+      data-test-id="ratedStarsAverage"
       tagName="a"
-      href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`}
+      href={`${ITEM_PATH}/${publicProductId}/write_review`}
+      disabled={!appConfig.showWriteReview}
       className={container}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Review"
     >
-      <RatingStars value={rating.average} display="large" />
-      <RatingCount count={rating.count} />
-    </Link >
+      <RatingStars value={average} display="large" />
+      <RatingCount count={count} />
+    </Link>
   );
 };
 
