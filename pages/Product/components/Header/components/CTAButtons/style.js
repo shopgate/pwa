@@ -15,6 +15,7 @@ const buttons = css({
 const favButton = css({
   zIndex: 1, // Prevents the icons to be visible outside of the circle
   fontSize: iconSize,
+  boxShadow: 'none',
 }).toString();
 
 const ripple = css({
