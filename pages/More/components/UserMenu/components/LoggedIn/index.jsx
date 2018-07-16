@@ -9,17 +9,20 @@ import List from 'Components/List';
  * @param {function} logout Logout handler.
  * @returns {JSX}
  */
-const LoggedIn = ({ logout }) => (
-  <div data-test-id="userMenu">
-    <List>
-      <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={{ Item: List.Item }} />
-      <Portal name={commonPortals.NAV_MENU_LOGOUT}>
-        <List.Item title="navigation.logout" onClick={logout} testId="logoutButton" />
-      </Portal>
-      <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={{ Item: List.Item }} />
-    </List>
-  </div>
-);
+const LoggedIn = ({ logout }) => {
+  const props = { Item: List.Item };
+  return (
+    <div data-test-id="userMenu">
+      <List>
+        <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
+        <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
+          <List.Item title="navigation.logout" onClick={logout} testId="logoutButton" />
+        </Portal>
+        <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
+      </List>
+    </div>
+  );
+};
 
 LoggedIn.propTypes = {
   logout: PropTypes.func.isRequired,
