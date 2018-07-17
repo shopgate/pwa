@@ -19,10 +19,16 @@ const container = (background = '#f2f2f2', paddingTop = '100%') => css({
 
 const image = css({
   position: 'absolute',
-  top: 0, // Must be here in order to keep CCP-410 fixed.
-  left: 0, // Must be here in order to keep CCP-410 fixed.
-  width: '100%', // Must be here in order to keep CCP-410 fixed.
-  maxHeight: '100%', // Must be here in order to keep CCP-410 fixed.
+  /*
+   * Must be here in order to keep CCP-410 fixed.
+   * Before there was a left:50%, translateX(-50%) hack for centering the images if ratio is
+   * different, but it didn't work since height was not 'auto'.
+   * Adding this hack back would cause PWA-660 regression.
+   * */
+  top: 0,
+  left: 0,
+  width: '100%',
+  maxHeight: '100%',
 }).toString();
 
 export default {
