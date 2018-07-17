@@ -45,6 +45,7 @@ exports[`<Header /> should render empty 1`] = `
         >
           <Link
             className="css-t193cd"
+            data-test-id="ratedStarsAverage"
             disabled={false}
             href="/item/666f6f/write_review"
             itemProp="item"
@@ -434,6 +435,7 @@ exports[`<Header /> should render rating summary 1`] = `
         >
           <Link
             className="css-t193cd"
+            data-test-id="ratedStarsAverage"
             disabled={false}
             href="/item/666f6f/write_review"
             itemProp="item"
