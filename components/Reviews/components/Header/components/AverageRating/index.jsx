@@ -5,6 +5,7 @@ import RatingCount from 'Components/Reviews/components/RatingCount';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { container } from './style';
 import connect from './connector';
 
@@ -27,6 +28,7 @@ const AverageRating = ({ rating, productId }) => {
       data-test-id="ratedStarsAverage"
       tagName="a"
       href={`${ITEM_PATH}/${publicProductId}/write_review`}
+      disabled={!appConfig.showWriteReview}
       className={container}
       itemProp="item"
       itemScope

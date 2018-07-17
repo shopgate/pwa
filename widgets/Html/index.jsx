@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import variables from 'Styles/variables';
@@ -23,6 +24,15 @@ class Html extends Component {
   };
 
   /**
+   * Creates the HTML content for the widget.
+   * @param {Object} settings The settings of the widget.
+   * @return {string}
+   */
+  static createHTML(settings) {
+    return parseHTML(settings.html, true, settings, true);
+  }
+
+  /**
    * Get the escaped HTML from the props, remove and execute the scripts (if any) and put
    * it unescaped in the state.
    * @param {Object} props The component props.
@@ -32,7 +42,7 @@ class Html extends Component {
     super(props, context);
 
     this.state = {
-      html: parseHTML(props.settings.html, true, props.settings, true),
+      html: this.constructor.createHTML(this.props.settings),
     };
   }
 
@@ -45,12 +55,32 @@ class Html extends Component {
   }
 
   /**
+   * Update the component state when the props change.
+   * @param {Object} nextProps The next props.
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!isEqual(this.props.settings, nextProps.settings)) {
+      this.setState({
+        html: this.constructor.createHTML(nextProps.settings),
+      });
+    }
+  }
+
+  /**
    * Only update if the HTML changed.
    * @param  {Object} nextProps The next props for the component.
+   * @param  {Object} nextState The next state for the component.
    * @return {boolean}
    */
-  shouldComponentUpdate(nextProps) {
-    return nextProps.settings.html !== this.props.settings.html;
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.html !== nextState.html;
+  }
+
+  /**
+   * Updates youtube iframes within the HTML widget.
+   */
+  componentDidUpdate() {
+    handleYouTube(this.htmlContainer);
   }
 
   /**
@@ -86,9 +116,11 @@ class Html extends Component {
       <div
         className={styles}
         dangerouslySetInnerHTML={{ __html: this.state.html }}
-        ref={(element) => { this.htmlContainer = element; }}
+        ref={(element) => {
+          this.htmlContainer = element;
+        }}
         style={{
-          ...this.props.settings.defaultPadding && { padding: variables.gap.big },
+          ...(this.props.settings.defaultPadding && { padding: variables.gap.big }),
         }}
       />
     );
