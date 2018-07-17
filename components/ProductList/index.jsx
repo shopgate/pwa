@@ -12,7 +12,12 @@ import Layout from './components/Layout';
  * @returns {JSX}
  */
 const ProductList = ({
-  flags, infiniteLoad, handleGetProducts, products, totalProductCount,
+  flags,
+  infiniteLoad,
+  handleGetProducts,
+  products,
+  totalProductCount,
+  sortOrder,
 }) => {
   if (!infiniteLoad) {
     return (
@@ -38,6 +43,7 @@ const ProductList = ({
       totalItems={totalProductCount}
       initialLimit={6}
       limit={ITEMS_PER_LOAD}
+      sortOrder={sortOrder}
     />
   );
 };
@@ -47,6 +53,7 @@ ProductList.propTypes = {
   handleGetProducts: PropTypes.func,
   infiniteLoad: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
+  sortOrder: PropTypes.string,
   totalProductCount: PropTypes.number,
 };
 
@@ -55,6 +62,7 @@ ProductList.defaultProps = {
   handleGetProducts: () => {},
   infiniteLoad: true,
   products: null,
+  sortOrder: null,
   totalProductCount: null,
 };
 

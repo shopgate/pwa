@@ -12,12 +12,14 @@ class Products extends Component {
   static propTypes = {
     getProducts: PropTypes.func,
     products: PropTypes.arrayOf(PropTypes.shape()),
+    sort: PropTypes.string,
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
     getProducts: () => {},
     products: null,
+    sort: null,
     totalProductCount: null,
   };
 
@@ -35,6 +37,7 @@ class Products extends Component {
         handleGetProducts={this.props.getProducts}
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
+        sortOrder={this.props.sort}
       />
     );
   }

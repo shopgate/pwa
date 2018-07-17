@@ -17,6 +17,7 @@ const ProductGrid = ({
   handleGetProducts,
   products,
   totalProductCount,
+  sortOrder,
 }) => {
   if (!infiniteLoad) {
     return (
@@ -36,6 +37,7 @@ const ProductGrid = ({
       totalItems={totalProductCount}
       initialLimit={6}
       limit={ITEMS_PER_LOAD}
+      sortOrder={sortOrder}
     />
   );
 };
@@ -45,6 +47,7 @@ ProductGrid.propTypes = {
   handleGetProducts: PropTypes.func,
   infiniteLoad: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
+  sortOrder: PropTypes.string,
   totalProductCount: PropTypes.number,
 };
 
@@ -53,6 +56,7 @@ ProductGrid.defaultProps = {
   handleGetProducts: () => { },
   infiniteLoad: true,
   products: null,
+  sortOrder: null,
   totalProductCount: null,
 };
 
