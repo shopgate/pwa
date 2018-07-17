@@ -19,7 +19,7 @@ class InfiniteContainer extends Component {
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
     preloadMultiplier: PropTypes.number,
-    sortOrder: PropTypes.string,
+    requestHash: PropTypes.string,
     totalItems: PropTypes.number,
     wrapper: PropTypes.oneOfType([
       PropTypes.node,
@@ -32,7 +32,7 @@ class InfiniteContainer extends Component {
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
     preloadMultiplier: 2,
-    sortOrder: null,
+    requestHash: null,
     totalItems: null,
     wrapper: 'div',
   };
@@ -88,7 +88,7 @@ class InfiniteContainer extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.sortOrder !== this.props.sortOrder) {
+    if (nextProps.requestHash !== this.props.requestHash) {
       this.resetComponent();
     }
 

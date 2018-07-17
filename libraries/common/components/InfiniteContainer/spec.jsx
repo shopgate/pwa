@@ -195,14 +195,14 @@ describe('<InfiniteContainer />', () => {
     });
   });
 
-  describe('Given that the sortOrder changes', () => {
+  describe('Given that the requestHash changes', () => {
     it('should reset the component', () => {
       const props = {
         items: mockData,
         loader: mockLoader,
         iterator: mockIterator,
         totalItems: mockData.length,
-        sortOrder: 'default',
+        requestHash: 'default',
       };
 
       const wrapper = mount(<InfiniteContainer {...props} />);
@@ -217,7 +217,7 @@ describe('<InfiniteContainer />', () => {
       expect(instance.domScrollContainer).not.toBeNull();
 
       wrapper.setProps({
-        sortOrder: 'price_desc',
+        requestHash: 'price_desc',
       });
 
       expect(instance.domScrollContainer).toBeNull();
