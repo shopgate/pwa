@@ -22,7 +22,7 @@ class Checkout extends Component {
   /**
    * Sets a timeout for showing the indicator.
    */
-  componentWillMount() {
+  componentDidMount() {
     this.timeout = setTimeout(() => {
       this.setState({
         showIndicator: true,
@@ -33,7 +33,7 @@ class Checkout extends Component {
   /**
    * Clears a timeout.
    */
-  componentDidUnmount() {
+  componentWillUnmount() {
     clearTimeout(this.timeout);
   }
   /**
