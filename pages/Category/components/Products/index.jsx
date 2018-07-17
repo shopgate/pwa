@@ -14,15 +14,15 @@ class Products extends Component {
   static propTypes = {
     viewMode: PropTypes.string.isRequired,
     getProducts: PropTypes.func,
+    hash: PropTypes.string,
     products: PropTypes.arrayOf(PropTypes.shape()),
-    sort: PropTypes.string,
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
     getProducts: () => {},
+    hash: null,
     products: null,
-    sort: null,
     totalProductCount: null,
   };
 
@@ -151,7 +151,7 @@ class Products extends Component {
               handleGetProducts={this.props.getProducts}
               products={this.props.products}
               totalProductCount={this.props.totalProductCount}
-              sortOrder={this.props.sort}
+              requestHash={this.props.hash}
             />
           </div>}
         {(!this.initialRender || this.props.viewMode === LIST_VIEW) &&
@@ -160,7 +160,7 @@ class Products extends Component {
               handleGetProducts={this.props.getProducts}
               products={this.props.products}
               totalProductCount={this.props.totalProductCount}
-              sortOrder={this.props.sort}
+              requestHash={this.props.hash}
             />
           </div>}
       </div>

@@ -17,7 +17,7 @@ const ProductList = ({
   handleGetProducts,
   products,
   totalProductCount,
-  sortOrder,
+  requestHash,
 }) => {
   if (!infiniteLoad) {
     return (
@@ -43,7 +43,7 @@ const ProductList = ({
       totalItems={totalProductCount}
       initialLimit={6}
       limit={ITEMS_PER_LOAD}
-      sortOrder={sortOrder}
+      requestHash={requestHash}
     />
   );
 };
@@ -53,7 +53,7 @@ ProductList.propTypes = {
   handleGetProducts: PropTypes.func,
   infiniteLoad: PropTypes.bool,
   products: PropTypes.arrayOf(PropTypes.shape()),
-  sortOrder: PropTypes.string,
+  requestHash: PropTypes.string,
   totalProductCount: PropTypes.number,
 };
 
@@ -62,7 +62,7 @@ ProductList.defaultProps = {
   handleGetProducts: () => {},
   infiniteLoad: true,
   products: null,
-  sortOrder: null,
+  requestHash: null,
   totalProductCount: null,
 };
 
