@@ -19,6 +19,7 @@ class InfiniteContainer extends Component {
     limit: PropTypes.number,
     loadingIndicator: PropTypes.node,
     preloadMultiplier: PropTypes.number,
+    sortOrder: PropTypes.string,
     totalItems: PropTypes.number,
     wrapper: PropTypes.oneOfType([
       PropTypes.node,
@@ -31,6 +32,7 @@ class InfiniteContainer extends Component {
     limit: ITEMS_PER_LOAD,
     loadingIndicator: null,
     preloadMultiplier: 2,
+    sortOrder: null,
     totalItems: null,
     wrapper: 'div',
   };
@@ -74,8 +76,8 @@ class InfiniteContainer extends Component {
 
     // Initially request items if none received.
     if (!this.props.items.length) {
-      const [start, length] = this.state.offset;
-      this.props.loader(start, length);
+      const [start] = this.state.offset;
+      this.props.loader(start);
     }
 
     this.verifyAllDone();
@@ -86,6 +88,10 @@ class InfiniteContainer extends Component {
    * @param {Object} nextProps The next props.
    */
   componentWillReceiveProps(nextProps) {
+    if (nextProps.sortOrder !== this.props.sortOrder) {
+      this.resetComponent();
+    }
+
     if (this.receivedTotalItems(nextProps)) {
       // Trigger loading if totalItems are available
       this.handleLoading(true, nextProps);
@@ -200,6 +206,17 @@ class InfiniteContainer extends Component {
   }
 
   /**
+   * Resets the state and domScrollContainer.
+   */
+  resetComponent() {
+    this.domScrollContainer = null;
+    this.setState({
+      offset: [0, this.props.limit],
+      awaitingItems: true,
+    });
+  }
+
+  /**
    * Verifies if all items are loaded and shown, then set final state and unbind events.
    * @param {Object} [props] The current or next component props.
    * @returns {boolean} Returns true if the component has reached the final state.
@@ -262,7 +279,7 @@ class InfiniteContainer extends Component {
         // We already rendered all received items but there are more available.
         // Therefore request new items.
         this.isLoading = true;
-        loader(start, length);
+        loader(start);
         // If necessary increase render offset for upcoming items.
         if (renderLength < items.length + length) {
           this.increaseOffset();

@@ -1,6 +1,6 @@
 import range from 'lodash/range';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 import InfiniteContainer from './index';
 
@@ -63,9 +63,9 @@ describe('<InfiniteContainer />', () => {
     });
 
     it('should call the loader function', () => {
-      const [offset, limit] = renderedInstance.state.offset;
+      const [offset] = renderedInstance.state.offset;
 
-      expect(mockLoader).toBeCalledWith(offset, limit);
+      expect(mockLoader).toBeCalledWith(offset);
     });
 
     describe('Given the loader requested new items', () => {
@@ -176,7 +176,7 @@ describe('<InfiniteContainer />', () => {
       });
     });
 
-    describe('Given that the initialLimit is NOT used ', () => {
+    describe('Given that the initialLimit is NOT used', () => {
       it('should render without the initialLimit', () => {
         renderComponent({
           items: [],
@@ -191,6 +191,39 @@ describe('<InfiniteContainer />', () => {
         // Check if the iniLimit wasn't used
         expect(renderedElement).toMatchSnapshot();
         expect(renderedElement.find('li').length).toBe(renderedInstance.props.limit);
+      });
+    });
+  });
+
+  describe('Given that the sortOrder changes', () => {
+    it('should reset the component', () => {
+      const props = {
+        items: mockData,
+        loader: mockLoader,
+        iterator: mockIterator,
+        totalItems: mockData.length,
+        sortOrder: 'default',
+      };
+
+      const wrapper = mount(<InfiniteContainer {...props} />);
+      const instance = wrapper.instance();
+      instance.componentDidMount();
+      instance.domScrollContainer = document.createElement('div');
+
+      wrapper.setState({
+        awaitingItems: false,
+        offset: [10, 10],
+      });
+      expect(instance.domScrollContainer).not.toBeNull();
+
+      wrapper.setProps({
+        sortOrder: 'price_desc',
+      });
+
+      expect(instance.domScrollContainer).toBeNull();
+      expect(wrapper.state()).toEqual({
+        offset: [0, 30],
+        awaitingItems: true,
       });
     });
   });
