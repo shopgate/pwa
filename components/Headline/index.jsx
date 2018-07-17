@@ -18,7 +18,7 @@ const Headline = (props) => {
   const content = props.children || <I18n.Text string={props.text} />;
 
   return hasContent ? (
-    <Component className={className}>
+    <Component className={className} data-test-id="greeting">
       <Ellipsis rows={3}>
         {content}
       </Ellipsis>
