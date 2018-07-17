@@ -19,11 +19,10 @@ const container = (background = '#f2f2f2', paddingTop = '100%') => css({
 
 const image = css({
   position: 'absolute',
-  left: '50%',
-  maxHeight: '100%',
-  top: '50%',
-  transform: 'translate3d(-50%, -50%, 0)',
-  width: '100%',
+  top: 0, // Must be here in order to keep CCP-410 fixed.
+  left: 0, // Must be here in order to keep CCP-410 fixed.
+  width: '100%', // Must be here in order to keep CCP-410 fixed.
+  maxHeight: '100%', // Must be here in order to keep CCP-410 fixed.
 }).toString();
 
 export default {
