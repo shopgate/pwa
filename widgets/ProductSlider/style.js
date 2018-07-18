@@ -6,7 +6,9 @@ const sliderContainer = css({
   marginLeft: 'auto',
   marginRight: 'auto',
   position: 'relative',
-  paddingBottom: 8,
+  // Must be 2px more than card's box shadow,
+  // (otherwise there's a white artifact on the iOS visible)
+  paddingBottom: 10,
 }).toString();
 
 const slider = css({

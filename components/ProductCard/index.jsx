@@ -37,12 +37,6 @@ const ProductCard = ({
     itemType="http://schema.org/Product"
   >
     <ProductImage
-      classNames={
-        {
-        imageContainer: styles.updateImageContainer,
-        container: styles.updateContainer,
-        }
-      }
       itemProp="image"
       src={product.featuredImageUrl}
       alt={product.name}

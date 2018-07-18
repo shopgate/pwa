@@ -68,7 +68,6 @@ const createProductSliderItem = ({
               <ProductImage
                 classNames={{
                   container: styles.updateImageContainer,
-                  glowContainer: styles.updateImageGlowContainer,
                 }}
                 src={featuredImageUrl}
                 alt={name}
