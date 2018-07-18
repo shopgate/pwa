@@ -3,6 +3,7 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
 import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
+import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import {
   EACCESS,
@@ -85,12 +86,22 @@ export default function app(subscribe) {
 
   subscribe(pipelineError$, ({ dispatch, action }) => {
     const { error } = action;
+    const {
+      message, code, context, meta,
+    } = error;
 
     dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,
-      message: error.message,
       title: null,
+      message,
+      type: MODAL_PIPELINE_ERROR,
+      params: {
+        pipeline: context,
+        request: meta.input,
+        message: meta.message,
+        code,
+      },
     }));
   });
 }
