@@ -80,6 +80,7 @@ class ErrorManager {
    * @param {string} error.context The context of the error, relative to the source..
    * @param {string} error.message The default error message.
    * @param {string} error.source The source of the error.
+   * @param {Object} error.meta Some meta data.
    */
   queue(error = {}) {
     if (!this.validate(error)) {
