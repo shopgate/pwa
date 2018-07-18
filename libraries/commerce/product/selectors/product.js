@@ -193,6 +193,7 @@ export const getPopulatedProductsResult = (state, hash, result) => {
     products,
     totalProductCount,
     sort,
+    hash,
   };
 };
 
