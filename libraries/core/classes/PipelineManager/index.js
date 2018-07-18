@@ -2,7 +2,6 @@ import AppCommand from '../AppCommand';
 import event from '../Event';
 import errorManager from '../ErrorManager';
 import pipelineDependencies from '../PipelineDependencies';
-import pipelineBuffer from '../PipelineBuffer';
 import pipelineSequence from '../PipelineSequence';
 import * as errorSources from '../ErrorManager/constants';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
@@ -22,28 +21,11 @@ class PipelineManager {
     // The open requests at any given time.
     this.requests = new Map();
 
+    // The pipelines which have currently running requests.
+    this.pipelines = new Map();
+
     // The error codes that should be suppressed.
     this.suppressedErrors = [];
-  }
-
-  /**
-   * Adds a new PipelineRequest instance.
-   * @param {PipelineRequest} request The pipeline request instance.
-   * @return {Promise}
-   */
-  add(request) {
-    request.createSerial(`${request.name}.v${request.version}`);
-    request.createEventCallbackName('pipelineResponse');
-
-    // Store the request by serial to be accessible later.
-    this.requests.set(request.serial, {
-      request,
-      retries: request.retries,
-      ongoing: 0,
-      timer: null,
-    });
-
-    return this.dispatch(request.serial);
   }
 
   /**
@@ -60,18 +42,44 @@ class PipelineManager {
   }
 
   /**
+   * Adds a new PipelineRequest instance.
+   * @param {PipelineRequest} request The pipeline request instance.
+   * @return {Promise}
+   */
+  add(request) {
+    request.createSerial(`${request.name}.v${request.version}`);
+    request.createEventCallbackName('pipelineResponse');
+
+    // Store the request by serial to be accessible later.
+    this.requests.set(request.serial, {
+      request,
+      retries: request.retries,
+      finished: false,
+      deferred: false,
+      timer: null,
+    });
+
+    return this.dispatch(request.serial);
+  }
+
+  /**
    * Dispatches a PipelineRequest instance.
    * @param {string} serial The pipeline request serial.
    * @return {Promise}
    */
   dispatch(serial) {
     return new Promise((resolve, reject) => {
-      // Stop if this pipeline has any ongoing dependencies.
-      if (this.hasRunningDependencies(serial)) {
+      const entry = this.requests.get(serial);
+      const { name } = entry.request;
+
+      this.createRequestCallback(serial, resolve, reject);
+
+      if (this.hasRunningDependencies(name)) {
+        // Requests with running dependencies will be sent after the dependencies are finished.
+        entry.deferred = true;
         return;
       }
 
-      this.createRequestCallback(serial, resolve, reject);
       this.sendRequest(serial);
     });
   }
@@ -83,42 +91,77 @@ class PipelineManager {
    * @param {Function} reject Rejects the promise.
    */
   createRequestCallback(serial, resolve, reject) {
-    const { request } = this.requests.get(serial);
+    const entry = this.requests.get(serial);
+    const { request } = entry;
 
-    request.callback = (error, serialResult, output) => {
-      // Map some values to the request instance to be accessible later.
+    // Add the executor functions to the request object.
+    request.resolve = resolve;
+    request.reject = reject;
+
+    /**
+     * A callback that is invoked when a pipeline response comes in.
+     * @param {Object} error A pipeline error object.
+     * @param {string} serialResult A pipeline serial.
+     * @param {Object} output The pipeline response payload.
+     */
+    const callback = (error, serialResult, output) => {
+      // Add the relevant response properties to the request object.
       request.error = error;
       request.output = output;
-      request.resolve = resolve;
-      request.reject = reject;
+
+      entry.finished = true;
 
       if (request.process === processTypes.PROCESS_SEQUENTIAL) {
         this.handleResultSequence();
-      } else {
-        this.handleResult(serial);
+        return;
       }
+
+      this.handleResult(serialResult);
     };
+
+    // Take care that the callback always has the correct context.
+    request.callback = callback.bind(this);
+
+    const callbackName = request.getEventCallbackName();
+
+    // Register a response listener for the request.
+    event.addCallback(callbackName, request.callback);
   }
 
   /**
    * Checks wether a pipeline request has running dependencies.
-   * @param {string} serial The pipeline request serial.
+   * @param {string} pipelineName The name of the pipeline.
    * @return {boolean}
    */
-  hasRunningDependencies(serial) {
-    const pipelineName = this.getPipelineNameBySerial(serial);
+  hasRunningDependencies(pipelineName) {
     const dependencies = pipelineDependencies.get(pipelineName);
     let found = 0;
 
     dependencies.forEach((dependency) => {
       // Check if the dependency exists and is ongoing.
-      if (this.requests.has(dependency) && this.requests.get(dependency).ongoing) {
+      if (this.pipelines.has(dependency) && this.pipelines.get(dependency) > 0) {
         found += 1;
-        pipelineBuffer.set(dependency, pipelineName);
       }
     });
 
     return found > 0;
+  }
+
+  /**
+   * Sends deferred requests when they dont' have running dependencies anymore.
+   */
+  handleDeferredRequests() {
+    this.requests.forEach((entry) => {
+      const { deferred, request: { name, serial } } = entry;
+      // Stop processing When the current request isn't deferred, or still has running dependencies.
+      if (!deferred || this.hasRunningDependencies(name)) {
+        return;
+      }
+
+      // eslint-disable-next-line no-param-reassign
+      entry.deferred = false;
+      this.sendRequest(serial);
+    });
   }
 
   /**
@@ -128,16 +171,16 @@ class PipelineManager {
   handleTimeout(serial) {
     const entry = this.requests.get(serial);
     const { request, retries } = entry;
-    const callbackName = request.getEventCallbackName();
 
     entry.timer = setTimeout(() => {
-      event.removeCallback(callbackName, request.callback);
-      event.addCallback(callbackName, this.dummyCallback);
-
       if (!retries) {
-        const message = `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`;
-        this.handleError(serial, message);
-        this.requests.delete(serial);
+        const error = {
+          message: `Pipeline '${request.name}.v${request.version}' timed out after ${request.timeout}ms`,
+          code: ETIMEOUT,
+        };
+
+        // Invoke the request callback with the timeout error.
+        request.callback(error, serial);
         return;
       }
 
@@ -147,28 +190,10 @@ class PipelineManager {
   }
 
   /**
-   * Runs a pipeline request's dependencies.
-   * @param {string} pipelineName The pipeline request name.
-   */
-  runDependencies = (pipelineName) => {
-    pipelineBuffer
-      .get(pipelineName)
-      .forEach((dependency) => {
-        this.dispatch(dependency);
-      });
-  }
-
-  /**
-   * A little dummy callback.
-   */
-  dummyCallback = () => {}
-
-  /**
    * Handles a pipeline error.
    * @param {string} serial The pipeline request serial.
-   * @param {string} [customMessage=null] A custom error message.
    */
-  handleError = (serial, customMessage = null) => {
+  handleError(serial) {
     const { request } = this.requests.get(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
 
@@ -192,9 +217,9 @@ class PipelineManager {
     if (request.handleErrors === errorHandleTypes.ERROR_HANDLE_DEFAULT) {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
-        code: customMessage ? ETIMEOUT : code,
         context: pipelineName,
-        message: customMessage || message,
+        code,
+        message,
       });
     }
   }
@@ -203,28 +228,14 @@ class PipelineManager {
    * Handles the result of a dispatched PipelineRequest.
    * @param {string} serial The pipeline request serial.
    */
-  handleResult = (serial) => {
+  handleResult(serial) {
     const entry = this.requests.get(serial);
     const { request } = entry;
     const { input, error, output } = request;
     const pipelineName = this.getPipelineNameBySerial(serial);
     const callbackName = request.getEventCallbackName();
 
-    this.decrementOngoing(serial);
-    this.runDependencies(pipelineName);
-
-    const isRetriesOngoing = this.isRetriesOngoing(serial);
-    const isProcessLastOngoing = this.isProcessLastOngoing(serial);
-
-    if (isRetriesOngoing || isProcessLastOngoing) {
-      return;
-    }
-
-    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
-      pipelineSequence.remove(serial);
-    }
-
-    event.removeCallback(callbackName, request.callback);
+    this.decrementPipelineOngoing(serial);
 
     let logColor = '#307bc2';
 
@@ -242,55 +253,56 @@ class PipelineManager {
       serial,
     }, logColor);
 
+    // Cleanup.
+    event.removeCallback(callbackName, request.callback);
     clearTimeout(entry.timer);
+    this.removeRequestFromPiplineSequence(serial);
     this.requests.delete(serial);
+
+    // Take care about requests that where deferred since depencensies where running.
+    this.handleDeferredRequests();
   }
 
   /**
    * Handles the results sequentially.
    */
-  handleResultSequence = () => {
-    const sequence = pipelineSequence.get();
+  handleResultSequence() {
+    // Create a copy of the sequence, to avoid side effects when entries are removed.
+    const [...sequence] = pipelineSequence.get();
 
-    /* eslint-disable no-restricted-syntax */
-    for (const ser of sequence) {
-      const entry = this.requests.get(ser);
+    for (let i = 0; i < sequence.length; i += 1) {
+      const serial = sequence[i];
+      const entry = this.requests.get(serial);
 
-      if (!entry.request.output) {
+      if (!entry) {
+        // Remove sequence entries without request.
+        this.removeRequestFromPiplineSequence(serial);
+      } else if (!entry.finished) {
+        // Stop sequence procession at the first not finished request.
         break;
+      } else {
+        this.handleResult(serial);
       }
-
-      this.handleResult(ser);
-      this.handleResultSequence();
     }
-    /* eslint-enable no-restricted-syntax */
   }
 
   /**
    * Sends the actual request command.
    * @param {string} serial The pipeline request serial.
    */
-  sendRequest = (serial) => {
+  sendRequest(serial) {
     const entry = this.requests.get(serial);
 
     if (!entry) {
       return;
     }
 
+    this.incrementPipelineOngoing(serial);
     this.handleTimeout(serial);
+    this.addRequestToPipelineSequence(serial);
 
-    if (entry.request.process === processTypes.PROCESS_SEQUENTIAL) {
-      pipelineSequence.set(serial);
-    }
-
-    const callbackName = entry.request.getEventCallbackName();
     const prefix = this.getRetriesPrefix(serial);
     const pipelineName = this.getPipelineNameBySerial(serial);
-
-    this.incrementOngoing(serial);
-
-    event.removeCallback(callbackName, this.dummyCallback);
-    event.addCallback(callbackName, entry.request.callback);
 
     logGroup(`${prefix}PipelineRequest %c${pipelineName}`, {
       input: entry.request.input,
@@ -312,32 +324,68 @@ class PipelineManager {
   }
 
   /**
-   * Increments the ongoing count.
+   * Adds sequentially processed requests to the pipeline sequence.
    * @param {string} serial The pipeline request serial.
    */
-  incrementOngoing = (serial) => {
-    const entry = this.requests.get(serial);
+  addRequestToPipelineSequence(serial) {
+    const { request } = this.requests.get(serial);
 
-    if (!entry) {
-      return;
+    if (request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.set(serial);
     }
-
-    entry.ongoing += 1;
   }
 
   /**
-   * Decrements the ongoing count.
+   * Removes sequentially processed requests from the pipeline sequence.
    * @param {string} serial The pipeline request serial.
    */
-  decrementOngoing = (serial) => {
-    const entry = this.requests.get(serial);
+  removeRequestFromPiplineSequence(serial) {
+    const { request } = this.requests.get(serial) || {};
 
-    if (!entry) {
+    if (request && request.process === processTypes.PROCESS_SEQUENTIAL) {
+      pipelineSequence.remove(request.serial);
+    } else if (!request) {
+      pipelineSequence.remove(serial);
+    }
+  }
+
+  /**
+   * Increments the ongoing count for the pipeline of a request.
+   * @param {string} serial The pipeline request serial.
+   */
+  incrementPipelineOngoing(serial) {
+    const pipelineName = this.getPipelineNameBySerial(serial, false);
+
+    if (!pipelineName) {
       return;
     }
 
-    if (entry.ongoing) {
-      entry.ongoing -= 1;
+    if (!this.pipelines.has(pipelineName)) {
+      this.pipelines.set(pipelineName, 1);
+    } else {
+      this.pipelines.set(pipelineName, this.pipelines.get(pipelineName) + 1);
+    }
+  }
+
+  /**
+   * Decrements the ongoing count for the pipeline of a request.
+   * @param {string} serial The pipeline request serial.
+   */
+  decrementPipelineOngoing(serial) {
+    const pipelineName = this.getPipelineNameBySerial(serial, false);
+
+    if (!pipelineName) {
+      return;
+    }
+
+    if (this.pipelines.has(pipelineName)) {
+      const ongoing = this.pipelines.get(pipelineName);
+
+      if (ongoing > 1) {
+        this.pipelines.set(pipelineName, ongoing - 1);
+      } else {
+        this.pipelines.delete(pipelineName);
+      }
     }
   }
 
@@ -345,8 +393,9 @@ class PipelineManager {
    * Decrements the retries count.
    * @param {string} serial The pipeline request serial.
    */
-  decrementRetries = (serial) => {
+  decrementRetries(serial) {
     const entry = this.requests.get(serial);
+
     if (!entry) {
       return;
     }
@@ -359,16 +408,21 @@ class PipelineManager {
   /**
    * Returns the PipelineRequest name.
    * @param {string} serial The pipeline request serial.
+   * @param {boolean} [addVersion=true] Should the pipeline version be added.
    * @return {string}
    */
-  getPipelineNameBySerial = (serial) => {
+  getPipelineNameBySerial(serial, addVersion = true) {
     const entry = this.requests.get(serial);
 
     if (!entry) {
       return '';
     }
 
-    return `${entry.request.name}.v${entry.request.version}`;
+    if (addVersion) {
+      return `${entry.request.name}.v${entry.request.version}`;
+    }
+
+    return entry.request.name;
   }
 
   /**
@@ -376,45 +430,11 @@ class PipelineManager {
    * @param {string} serial The pipeline request serial.
    * @return {string}
    */
-  getRetriesPrefix = (serial) => {
+  getRetriesPrefix(serial) {
     const { request, retries } = this.requests.get(serial);
     const numRetries = request.retries - retries;
 
     return numRetries ? `Retry ${numRetries}: ` : '';
-  }
-
-  /**
-   * Checks whether retries are ongoing.
-   * @param {string} serial The pipeline request serial.
-   * @return {boolean}
-   */
-  isRetriesOngoing = (serial) => {
-    const entry = this.requests.get(serial);
-
-    if (!entry) {
-      return false;
-    }
-
-    return (
-      entry.request.process === processTypes.PROCESS_ALWAYS &&
-      entry.retries > 0 &&
-      entry.ongoing > 0
-    );
-  }
-
-  /**
-   * Checks whether only the last should be processed.
-   * @param {string} serial The pipeline request serial.
-   * @return {boolean}
-   */
-  isProcessLastOngoing = (serial) => {
-    const entry = this.requests.get(serial);
-
-    if (!entry) {
-      return false;
-    }
-
-    return (entry.request.process === processTypes.PROCESS_LAST && entry.ongoing);
   }
 }
 
