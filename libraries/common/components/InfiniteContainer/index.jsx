@@ -199,9 +199,20 @@ class InfiniteContainer extends Component {
    */
   increaseOffset() {
     const [start, length] = this.state.offset;
+    let newOffset = start + length;
 
+    /**
+     * When items are cached, the initial limit can be "6".
+     * Then, new offset should be limited to the "normal" limit (30).
+     * Otherwise, with cached items, this component would skip the inital number of items
+     * when the cache is out.
+     */
+    if (this.state.offset[0] % this.props.limit) {
+      // Example: when 6, bump to 30, not 36.
+      newOffset = this.props.limit;
+    }
     this.setState({
-      offset: [start + length, this.props.limit],
+      offset: [newOffset, this.props.limit],
     });
   }
 
