@@ -24,16 +24,6 @@ const title = css({
   marginTop: 1,
 }).toString();
 
-const priceWrapper = css({
-  lineHeight: 1.75,
-  alignItems: 'center',
-}).toString();
-
-const basicPrice = css({
-  fontSize: '0.85em',
-  marginTop: -1,
-}).toString();
-
 const badgeWrapper = css({
   lineHeight: 1,
   position: 'absolute',
@@ -52,10 +42,8 @@ const wishlist = css({
 
 export default {
   badgeWrapper,
-  basicPrice,
   container,
   details,
-  priceWrapper,
   title,
   wishlist,
 };
