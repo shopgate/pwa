@@ -2,7 +2,7 @@ import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/Pipelin
 import { FETCH_CHECKOUT_URL_TIMEOUT } from '../constants';
 import fetchCheckoutUrl from './fetchCheckoutUrl';
 
-let mockedResolver = () => {}
+let mockedResolver;
 jest.mock(
   '@shopgate/pwa-core/classes/PipelineRequest',
   () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
@@ -27,7 +27,10 @@ describe('fetchCheckoutUrl', () => {
     mockedResolver = ((mockInstance, resolve) => {
       expect(mockInstance.timeout).toBe(FETCH_CHECKOUT_URL_TIMEOUT);
       expect(mockInstance.retries).toBe(0);
-      resolve({ url: 'https://example.com', expires: 0 });
+      resolve({
+        url: 'https://example.com',
+        expires: 0,
+      });
     });
     const url = await fetchCheckoutUrl()(dispatch);
     expect(url).toBe('https://example.com');
