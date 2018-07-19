@@ -1,5 +1,6 @@
 import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { FETCH_CHECKOUT_URL_TIMEOUT } from '@shopgate/pwa-common-commerce/checkout/constants';
 import {
   routeDidEnter,
   routeDidLeave,
@@ -18,10 +19,10 @@ export default function checkout(subscribe) {
 
   subscribe(checkoutDidEnter$, ({ dispatch }) => {
     dispatch(disableNavigator());
-    // 20 seconds trigger. If user is locked on this page for 20 seconds, go back no matter what.
+    // If user is locked on this page for too long, go back no matter what.
     lockedUserTrigger = setTimeout(() => {
       dispatch(goBackHistory());
-    }, 20000);
+    }, FETCH_CHECKOUT_URL_TIMEOUT);
   });
   subscribe(checkoutDidLeave$, ({ dispatch }) => {
     clearTimeout(lockedUserTrigger);
