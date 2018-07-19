@@ -41,6 +41,7 @@ export default function temporaryFilters(state = {}, action) {
       } else {
         // For multiselect filters only the appropriate value should be removed from the stack.
         temporaryCopy[action.id].values.splice(action.index, 1);
+        temporaryCopy[action.id].valueLabels.splice(action.valueLabelIndex, 1);
       }
 
       return temporaryCopy;
