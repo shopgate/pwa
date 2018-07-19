@@ -24,28 +24,12 @@ const title = css({
   hyphens: 'auto',
 }).toString();
 
-const priceWrapper = css({
-  alignItems: 'center',
-  lineHeight: 1.8,
-  marginTop: 2,
-}).toString();
-
-const basicPrice = css({
-  fontSize: '0.85em',
-  marginTop: -1,
-}).toString();
-
 const badgeWrapper = css({
   lineHeight: 1,
   position: 'absolute',
   left: 15,
   top: 10,
   width: 40,
-}).toString();
-
-const priceStriked = css({
-  fontSize: '0.75rem',
-  marginTop: 2,
 }).toString();
 
 const favorites = css({
@@ -58,11 +42,8 @@ const favorites = css({
 
 export default {
   badgeWrapper,
-  basicPrice,
   container,
   details,
-  priceWrapper,
   title,
-  priceStriked,
   favorites,
 };
