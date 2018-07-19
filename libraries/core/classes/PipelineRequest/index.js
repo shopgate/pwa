@@ -163,6 +163,14 @@ class PipelineRequest extends Request {
   }
 
   /**
+   * Checks if the request has currently running dependencies.
+   * @return {boolean}
+   */
+  hasRunningDependencies() {
+    return pipelineManager.hasRunningDependencies(this.name);
+  }
+
+  /**
    * Dispatches the pipeline.
    * @return {Promise}
    */
