@@ -6,7 +6,7 @@ describe('functional test filter page', () => {
   it('should check for single selection', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .scrollIntoView()
       .should('be.visible')
       .click();

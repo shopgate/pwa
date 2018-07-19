@@ -104,6 +104,7 @@ class CartButton extends Component {
         background={this.color}
         className={styles}
         onClick={this.handleClick}
+        testId="addToCartButton"
       >
         {this.icon}
       </FloatingActionButton>

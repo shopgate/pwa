@@ -3,11 +3,13 @@
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
+// TODO: refactor when bugs are solved
+
 describe('functional tests cart page', () => {
   it('check for increase / decrease quanitity', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -31,7 +33,6 @@ describe('functional tests cart page', () => {
     cy.get(els.quantityPicker)
       .clear()
       .type(1)
-      .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 199 currency: EUR"]')
       .should('be.visible');
@@ -40,6 +41,7 @@ describe('functional tests cart page', () => {
   it('should add sescond product to cart and delete it', () => {
     cy.visit('');
     cy.get(els.basicCategory)
+      .first()
       .scrollIntoView()
       .click();
     cy.get(els.productsWithLongNamesCat)

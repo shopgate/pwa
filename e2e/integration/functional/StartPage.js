@@ -11,9 +11,7 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.productWithBasePrice1ProductPageName)
       .should('be.visible');
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
+    cy.go('back');
   });
 
   it('check for image widget', () => {
@@ -22,9 +20,7 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.basicProductsCategoryTitle)
       .should('be.visible');
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
+    cy.go('back');
   });
 
   it('check for product slider', () => {
@@ -34,22 +30,18 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.productWithLongDesciption4ProductPageName)
       .should('be.visible');
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
+    cy.go('back');
   });
 
   it('check for category list', () => {
     cy.wait(1000);
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .scrollIntoView()
       .should('be.visible')
       .click();
     cy.get(els.allProductsCategoryTitle)
       .should('be.visible');
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
+    cy.go('back');
   });
 
   it('should check for product list grid', () => {
@@ -59,9 +51,7 @@ describe('functional test start page', () => {
       .click();
     cy.get(els.productWithManyProps4ProductPagName)
       .should('be.visible');
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
+    cy.go('back');
   });
 
   it('should check for product list', () => {

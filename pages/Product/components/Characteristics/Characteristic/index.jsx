@@ -117,6 +117,7 @@ class Characteristic extends Component {
               onClick={this.handleButtonClick}
               ref={charRef}
               style={transition[state]}
+              data-test-id={`Characteristic: ${this.props.label}`}
             >
               {selected && <div className={styles.label}>{translatedLabel}</div>}
               <div className={styles.selection}>{buttonLabel}</div>

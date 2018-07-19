@@ -12,20 +12,19 @@ describe('function tests search page', () => {
     cy.wait(2000);
     cy.get(els.searchInput)
       .should('be.visible')
-      .type('product with many properties -4- {enter}');
+      .type('product with many properties -4-{enter}');
     cy.get(els.productWithManyProps4SearchResult)
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.go('back');
     cy.get(els.searchButton)
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
-      .type('product with many properties -3- {enter}');
+      .clear()
+      .type('product with many properties -3-{enter}');
     cy.get(els.productWithManyProps3SearchResult)
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.go('back');
   });
 
   it('should seach with no fitting products', () => {
@@ -33,12 +32,12 @@ describe('function tests search page', () => {
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
+      .clear()
       .type('kfkfkf {enter}');
     cy.get(els.noResultText)
       .contains('Ihre Suche nach "kfkfkf" liefert keine Ergebnisse.')
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.go('back');
   });
 
   it('should check for suggestions', () => {
@@ -46,6 +45,7 @@ describe('function tests search page', () => {
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
+      .clear()
       .type('product');
     cy.get("[data-test-id='searchSuggestion Product']")
       .should('be.visible');

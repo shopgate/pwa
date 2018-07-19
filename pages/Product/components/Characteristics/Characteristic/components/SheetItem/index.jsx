@@ -37,7 +37,7 @@ const SheetItem = ({
   };
 
   return (
-    <button {...props}>
+    <button {...props} data-test-id={`variant: ${item.label}`}>
       {item.label}
       {item.selectable && <Right />}
     </button>

@@ -6,7 +6,7 @@ describe('AndroidGMDTest filter page', () => {
   it('should check for price range slider', () => {
     cy.visit('');
 
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .scrollIntoView()
       .should('be.visible')
       .click();

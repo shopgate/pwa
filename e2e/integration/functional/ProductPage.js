@@ -3,11 +3,14 @@
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
+// TODO: refactor when cart / add to Cart bug is resolved
+
 describe('functional test product page', () => {
   it('should check for variant  select', () => {
     cy.visit('');
 
     cy.get(els.productVariantsCategory)
+      .first()
       .scrollIntoView()
       .should('be.visible')
       .click();
@@ -32,10 +35,10 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.wait(1000);
-    cy.get('[data-test-id="Color"] span')
+    cy.get('[data-test-id="Characteristic: Color"] div')
       .contains('Black')
       .should('be.visible');
-    cy.get('[data-test-id="Shoe size"] span')
+    cy.get('[data-test-id="Characteristic: Shoe size"] div')
       .contains('5')
       .should('be.visible');
     cy.wait(1000);
@@ -51,6 +54,7 @@ describe('functional test product page', () => {
     cy.visit('');
 
     cy.get(els.productWithOptionsCategory)
+      .first()
       .scrollIntoView()
       .click();
     cy.get(els.simpleProductWithOptionsNameProductGrid)
@@ -69,10 +73,10 @@ describe('functional test product page', () => {
     cy.get(els.lowGlowOption)
       .should('be.visible')
       .click();
-    cy.get('[data-test-id="Ball color"] span')
+    cy.get('[data-test-id="Ball color"] div')
       .contains('Red Ball')
       .should('be.visible');
-    cy.get('[data-test-id="glow"] span')
+    cy.get('[data-test-id="glow"] div')
       .contains('low')
       .should('be.visible');
     cy.wait(1000);

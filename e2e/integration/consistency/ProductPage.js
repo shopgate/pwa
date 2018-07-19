@@ -6,7 +6,7 @@ describe('AndroidGMDTest productPage', () => {
   it('should check for productImage', () => {
     cy.visit('');
     // Naviagte to product
-    cy.get(els.allProductCategory)
+    cy.get(els.allProductCategory).first()
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .click();
@@ -99,8 +99,6 @@ describe('AndroidGMDTest productPage', () => {
 
   it('should check for variants', () => {
     cy.visit('/item/393639');
-    cy.get(els.variantsPicker)
-      .should('be.visible');
     cy.get(els.variantPickerColor)
       .should('be.visible');
     cy.get(els.variantPickerShoeSize)
