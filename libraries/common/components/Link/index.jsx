@@ -56,6 +56,7 @@ class Link extends Component {
         className={`${styles} ${this.props.className}`}
         onClick={this.handleOpenLink}
         role="link"
+        data-test-id={`link: ${this.props.href}`}
       >
         {this.props.children}
       </Tag>

@@ -45,6 +45,7 @@ const FloatingActionButton = (props) => {
       ref={ref}
       style={{ background }}
       type={type}
+      data-test-id={props.testId}
     >
       {children}
     </button>
@@ -59,6 +60,7 @@ FloatingActionButton.propTypes = {
   raised: PropTypes.bool,
   ref: PropTypes.node,
   size: PropTypes.oneOf([SIZE_BIG, SIZE_SMALL]),
+  testId: PropTypes.string,
   type: PropTypes.oneOf([TYPE_BUTTON, TYPE_SUBMIT]),
 };
 
@@ -69,6 +71,7 @@ FloatingActionButton.defaultProps = {
   raised: true,
   ref: null,
   size: SIZE_BIG,
+  testId: null,
   type: 'button',
 };
 
