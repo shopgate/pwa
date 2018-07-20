@@ -38,6 +38,10 @@ const disclaimerSpacer = css({
   width: 10,
 }).toString();
 
+const priceInfo = css({
+  textAlign: 'right',
+}).toString();
+
 export default {
   item,
   leftColumn,
@@ -45,4 +49,5 @@ export default {
   content,
   info,
   disclaimerSpacer,
+  priceInfo,
 };
