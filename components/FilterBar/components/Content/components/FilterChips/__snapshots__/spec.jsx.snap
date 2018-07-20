@@ -46,6 +46,7 @@ exports[`FilterChips should render all types of filters and remove them on click
         }
       }
       currency="EUR"
+      currentPathname=""
       handleFilterRemove={[Function]}
       handleOpenFilters={[Function]}
     >
@@ -57,12 +58,13 @@ exports[`FilterChips should render all types of filters and remove them on click
           invertMoreButton={false}
           maxRows={2}
           moreLabel="filter.more"
+          pathname=""
         >
           <div
-            className="css-2g949"
+            className="css-1hor112"
           >
             <div
-              className="css-dzs3g7"
+              className="css-1ck9rgi"
             >
               <Chip
                 invert={false}
@@ -72,7 +74,7 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
@@ -142,7 +144,7 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
@@ -212,7 +214,7 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
@@ -282,7 +284,7 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
@@ -402,7 +404,7 @@ exports[`FilterChips should render all types of filters and remove them on click
               </Chip>
             </div>
             <div
-              className="css-u9gfar"
+              className="css-1sunnf0"
             >
               <RippleButton
                 className="css-rz4b27"
