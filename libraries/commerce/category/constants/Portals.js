@@ -14,6 +14,7 @@ const NAME = 'name';
 const MANUFACTURER = 'manufacturer';
 const AVAILABILITY = 'availability';
 const CATEGORIES = 'categories';
+const STARS = 'stars';
 
 // POSITIONS
 const BEFORE = 'before';
@@ -64,3 +65,7 @@ export const PRODUCT_ITEM_AVAILABILITY_AFTER = `${PRODUCT}-${ITEM}.${AVAILABILIT
 export const NAV_MENU_CATEGORIES_BEFORE = `${NAV_MENU}.${CATEGORIES}.${BEFORE}`;
 export const NAV_MENU_CATEGORIES = `${NAV_MENU}.${CATEGORIES}`;
 export const NAV_MENU_CATEGORIES_AFTER = `${NAV_MENU}.${CATEGORIES}.${AFTER}`;
+
+export const PRODUCT_ITEM_STARS_BEFORE = `${PRODUCT}-${ITEM}.${STARS}.${BEFORE}`;
+export const PRODUCT_ITEM_STARS = `${PRODUCT}-${ITEM}.${STARS}`;
+export const PRODUCT_ITEM_STARS_AFTER = `${PRODUCT}-${ITEM}.${STARS}.${AFTER}`;
