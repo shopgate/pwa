@@ -9,7 +9,6 @@ const container = css({
 const headline = css({
   fontSize: '1.125rem',
   fontWeight: 500,
-  marginBottom: variables.gap.bigger,
 }).toString();
 
 const subline = css({

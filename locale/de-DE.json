@@ -147,5 +147,27 @@
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
     "success_message": "Vielen Dank für Ihre Bewertung!"
+  },
+  "user": {
+    "addresses": {
+      "title": "Addressebuch",
+      "headline": "Addressebuch",
+      "button": "Neue Adresse hinzufügen",
+      "defaults": {
+        "default": "Standardadresse",
+        "shipping": "Standardlieferadresse",
+        "billing": "Standard-Rechnungsadresse"
+      },
+      "setAsDefault": {
+        "default": "Als Standardadresse festlegen",
+        "shipping": "Als Standardlieferadresse festlegen",
+        "billing": "Als Standard-Rechnungsadresse festlegen"
+      },
+      "error": {
+        "add": "Hinzufügen der Adresse fehlgeschlagen, bitte überprüfen Sie Ihre Felder",
+        "update": "Aktualisierung der Adresse fehlgeschlagen, bitte überprüfen Sie Ihre Felder",
+        "setAsDefault": "Adresse konnte nicht als Standard festgelegt werden"
+      }
+    }
   }
 }

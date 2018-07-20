@@ -147,5 +147,27 @@
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Thanks for your review!"
+  },
+  "user": {
+    "addresses": {
+      "title": "Address book",
+      "headline": "Address book",
+      "button": "Add a new address",
+      "defaults": {
+        "default": "Default address",
+        "shipping": "Default shipping address",
+        "billing": "Default billing address"
+      },
+      "setAsDefault": {
+        "default": "Set as your default address",
+        "shipping": "Set as your default shipping address",
+        "billing": "Set as your default billing address"
+      },
+      "error": {
+        "add": "Add address failed, please check your fields",
+        "update": "Update address failed, please check your fields",
+        "setAsDefault": "Could not set address as default"
+      }
+    }
   }
 }
