@@ -66,7 +66,8 @@ class ChipLayout extends Component {
    * @returns {number}
    */
   get maxContentHeight() {
-    return CHIP_ROW_HEIGHT * this.props.maxRows + 8;
+    // 8 -> container padding.
+    return (CHIP_ROW_HEIGHT * this.props.maxRows) + 8;
   }
 
   /**
