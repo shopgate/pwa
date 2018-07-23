@@ -58,7 +58,7 @@ class More extends Component {
 
         { /* When logged in, show user menu within "content" portal */}
         {
-          appConfig.featureFlag.pwa_707_list_of_addresses &&
+          appConfig.featureFlag.user_addresses &&
           isLoggedIn &&
           <UserMenu {...this.props} />
         }
@@ -128,7 +128,7 @@ class More extends Component {
 
         { /* When logged in, show user menu on the bottom */}
         {
-          !appConfig.featureFlag.pwa_707_list_of_addresses &&
+          !appConfig.featureFlag.user_addresses &&
           isLoggedIn &&
           <UserMenu {...this.props} />
         }
