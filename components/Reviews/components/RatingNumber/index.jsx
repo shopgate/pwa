@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 
+/**
+ * Rating number component.
+ * @param {Object} props Props.
+ * @param {number} props.rating Rating value.
+ * @param {string} props.className Class name.
+ * @returns {JSX}
+ */
 const RatingNumber = ({ rating, className }) => {
   if (!rating) {
     return null;
