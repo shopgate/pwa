@@ -47,26 +47,6 @@ const getProductReviewsExcerptState = state => state.reviews.reviewsByProductId;
 export const getReviews = state => state.reviews.reviewsById || {};
 
 /**
- * Retrieves the current product reviews excerpt.
- * @param {Object} state The current application state.
- * @return {Object} The reviews for a product
- */
-export const getProductReviewsExcerpt = createSelector(
-  getCurrentBaseProductId,
-  getProductReviewsExcerptState,
-  getReviews,
-  (productId, productReviewsState, reviewsState) => {
-    const collection = productReviewsState[productId];
-
-    if (!collection || !collection.reviews) {
-      return null;
-    }
-
-    return collection.reviews.map(id => reviewsState[id]);
-  }
-);
-
-/**
  * Retrieves the number of reviews for a product
  * @param {Object} state The current application state.
  * @return {number} The total review count for a product
@@ -82,21 +62,6 @@ export const getProductReviewCount = createSelector(
     }
 
     return collection.totalReviewCount;
-  }
-);
-/**
- * Retrieves the current product reviews.
- * @param {Object} state The current application state.
- * @return {Array|null} The reviews for a product.
- */
-export const getProductReviews = createSelector(
-  getCollectionForCurrentBaseProduct,
-  getReviews,
-  (collection, allReviews) => {
-    if (!collection || !collection.reviews) {
-      return [];
-    }
-    return collection.reviews.map(id => allReviews[id]);
   }
 );
 
@@ -192,4 +157,64 @@ export const getUserReviewFirstFetchState = createSelector(
 export const getDefaultAuthorName = state => (
   (isUserLoggedIn && state.user.data && state.user.data.firstName)
     ? `${state.user.data.firstName} ${state.user.data.lastName}` : ''
+);
+
+/**
+ * Retrieves the current product reviews.
+ * When the user review is available, it will always be the first entry.
+ * @param {Object} state The current application state.
+ * @return {Array|null} The reviews for a product.
+ */
+export const getProductReviews = createSelector(
+  getCollectionForCurrentBaseProduct,
+  getReviews,
+  getUserReviewForProduct,
+  (collection, allReviews, userReview) => {
+    if (!collection || !collection.reviews) {
+      return [];
+    }
+
+    const reviews = collection.reviews.map(id => allReviews[id]);
+    // There is no user review. Returning only from reviews collection.
+    if (!userReview.id) {
+      return reviews;
+    }
+
+    // User review always on top. Avoid duplicates.
+    return [
+      userReview,
+      ...reviews.filter(r => r.id !== userReview.id),
+    ];
+  }
+);
+
+/**
+ * Retrieves the current product reviews excerpt.
+ * When user review is available, it will always be the first entry.
+ * @param {Object} state The current application state.
+ * @return {Object} The reviews for a product
+ */
+export const getProductReviewsExcerpt = createSelector(
+  getCurrentBaseProductId,
+  getProductReviewsExcerptState,
+  getReviews,
+  getUserReviewForProduct,
+  (productId, productReviewsState, reviewsState, userReview) => {
+    const collection = productReviewsState[productId];
+
+    if (!collection || !collection.reviews) {
+      return null;
+    }
+
+    const reviews = collection.reviews.map(id => reviewsState[id]);
+
+    if (!userReview.id) {
+      return reviews;
+    }
+
+    return [
+      userReview,
+      ...reviews.filter(r => r.id !== userReview.id),
+    ];
+  }
 );

@@ -7,12 +7,11 @@ import messageCache from './messageCache';
  * The hash is generated from given language code and translation key.
  * If no instance exists yet, a new instance will be created and returned.
  * @param {string} langCode A language code.
- * @param {string} currency The current currency.
  * @param {boolean} fractions With or without fraction digits.
  * @returns {IntlMessageFormat}
  */
-const getFormattedPriceFromCache = (langCode, currency, fractions) => {
-  const hash = `${langCode}_price_${currency}_${fractions}`;
+const getFormattedNumberFromCache = (langCode, fractions) => {
+  const hash = `${langCode}_number_fr_${fractions}`;
 
   // Check if a cached instance already exists.
   if (messageCache[hash]) {
@@ -20,15 +19,14 @@ const getFormattedPriceFromCache = (langCode, currency, fractions) => {
   }
 
   messageCache[hash] = new IntlMessageFormat(
-    `{price, number, ${currency}}`,
+    '{value, number, decimal}',
     langCode,
     {
       number: {
-        [currency]: {
-          style: 'currency',
-          currency,
-          minimumFractionDigits: fractions ? 2 : 0,
-          maximumFractionDigits: fractions ? 2 : 0,
+        decimal: {
+          style: 'decimal',
+          minimumFractionDigits: fractions,
+          maximumFractionDigits: fractions,
         },
       },
     }
@@ -40,15 +38,14 @@ const getFormattedPriceFromCache = (langCode, currency, fractions) => {
 /**
  * Get a formatted price by currency and language code.
  * @param {string} langCode A language code.
- * @param {number} price The price to format.
- * @param {string} currency The current currency.
- * @param {boolean} fractions With or without fraction digits.
+ * @param {number} value The number to format.
+ * @param {boolean} fractions Nnumber of digits after dot.
  * @returns {string}
  */
-const formatPrice = (langCode, price, currency, fractions) => (
-  getFormattedPriceFromCache(langCode, currency, fractions).format({ price })
+const formatNumber = (langCode, value, fractions) => (
+  getFormattedNumberFromCache(langCode, fractions).format({ value })
 );
 
-const getPriceFormatter = curry(formatPrice);
+const getNumberFormatter = curry(formatNumber);
 
-export default getPriceFormatter;
+export default getNumberFormatter;
