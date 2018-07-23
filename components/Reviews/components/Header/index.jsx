@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from './components/AverageRating';
 import WriteReviewLink from './components/WriteReviewLink';
+import RatingNumber from '../RatingNumber';
 import styles from './style';
 
 /**
@@ -37,9 +37,7 @@ const Header = ({ rating, withTopGap }) => {
       <AverageRating rating={rating} />
       <div className={styles.reviewsLine}>
         <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
-          <span className={styles.averageRatingNumber}>
-            {average / RATING_SCALE_DIVISOR}
-          </span>
+          <RatingNumber rating={average} className={styles.averageRatingNumber} />
         </I18n.Text>
         {appConfig.showWriteReview && (<WriteReviewLink />)}
       </div>
