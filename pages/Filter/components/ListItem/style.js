@@ -7,7 +7,7 @@ const item = css({
 }).toString();
 
 const gridItem = css({
-  minWidth: '50%',
+  minWidth: '40%',
 }).toString();
 
 const ripple = css({
@@ -21,7 +21,7 @@ const ripple = css({
 const rightContainer = css({
   ...gridItem,
   justifyContent: 'flex-end',
-  paddingRight: 50,
+  paddingRight: 40,
   overflow: 'hidden',
 }).toString();
 

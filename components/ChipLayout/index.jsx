@@ -101,7 +101,7 @@ class ChipLayout extends Component {
 
     // Hide or show chips that are hidden due to overflow.
     chips.forEach((child, index) => {
-      const isVisible = child.offsetTop < containerHeight;
+      const isVisible = (child.offsetTop + child.clientHeight) < containerHeight;
       child.setAttribute('style', `display: ${isVisible ? 'flex' : 'none'};`);
 
       if (isVisible) {
@@ -117,6 +117,11 @@ class ChipLayout extends Component {
 
     // Hide elements so that the 'more button' has enough space.
     chips.slice(0, lastVisibleElement + 1).reverse().every((element) => {
+      const offsetBottom = element.offsetTop + element.clientHeight;
+      if (this.moreButtonRef.offsetTop > offsetBottom) {
+        return true;
+      }
+
       const buttonSpaceRequired = this.moreButtonRef.clientWidth + variables.gap.big;
       const elementRight = this.containerRef.clientWidth -
         (element.offsetLeft + element.clientWidth);
