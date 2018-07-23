@@ -13,6 +13,7 @@ describe('<SearchSuggestions />', () => {
     submitSearch: () => {},
     suggestions: [],
     isFetching: false,
+    bottomHeight: 0,
   };
 
   it('should render without props', () => {

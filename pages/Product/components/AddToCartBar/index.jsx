@@ -95,7 +95,12 @@ class AddToCartBar extends Component {
         <div className={styles.base}>
           <div className={styles.statusBar}>
             <CartItemsCount itemCount={itemCount} />
-            <AddMoreButton handleAddToCart={this.handleAddToCart} />
+            <AddMoreButton
+              handleAddToCart={this.handleAddToCart}
+              isDisabled={this.props.isDisabled}
+              isLoading={this.props.isLoading}
+              isOrderable={this.props.isOrderable}
+            />
           </div>
           <AddToCartButton
             isDisabled={this.props.isDisabled}

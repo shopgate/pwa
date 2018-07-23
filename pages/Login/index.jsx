@@ -97,7 +97,8 @@ class Login extends Component {
           <div className={styles.subline}>
             <I18n.Text string="login.subline" />
           </div>
-          <form onSubmit={this.handleSubmitForm}>
+          { /* No validate, browsers reject IDN emails! */ }
+          <form onSubmit={this.handleSubmitForm} noValidate>
             <TextField
               type="email"
               name="email"

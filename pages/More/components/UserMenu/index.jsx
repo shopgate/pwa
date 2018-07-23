@@ -1,148 +1,70 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
-import Button from '@shopgate/pwa-ui-shared/Button';
 import Headline from 'Components/Headline';
-import List from 'Components/List';
-import {
-  PAGE_PATH,
-  LOGIN_PATH,
-  REGISTER_PATH,
-} from '@shopgate/pwa-common/constants/RoutePaths';
-import styles from './style';
+import * as portals from '@shopgate/pwa-common/constants/Portals';
+import LoggedIn from './components/LoggedIn';
+import LoggedOut from './components/LoggedOut';
 
 /**
- * The More component.
+ * User menu component.
+ * Renders log out button when user is logged in or log in / register when user is logged out.
+ *
+ * @param {Object} props Props.
+ * @param {boolean} props.isLoggedIn User is logged in.
+ * @param {function} props.logout Logout function.
+ * @param {Object|null} props.user User info.
+ * @param {Object|null} props.entries More menu entries (for extensions).
+ * @returns {XML}
  */
-class UserMenu extends Component {
-  static propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired,
-    logout: PropTypes.func.isRequired,
-    user: PropTypes.shape(),
+const UserMenu = ({
+  isLoggedIn,
+  logout,
+  user,
+  entries,
+}) => {
+  const portalProps = {
+    handleLogout: logout, // Backwards compat?
+    isLoggedIn,
+    logout,
+    user,
+    entries,
   };
 
-  static defaultProps = {
-    user: null,
-  };
+  return (
+    <Fragment>
+      { /* When user is logged in this menu is shown on the bottom */}
+      { isLoggedIn && <Headline small text="navigation.your_account" /> }
+      {/* USER MENU */}
+      <Portal
+        name={portals.USER_MENU_CONTAINER_BEFORE}
+        props={portalProps}
+      />
+      <Portal
+        name={portals.USER_MENU_CONTAINER}
+        props={portalProps}
+      >
+        { isLoggedIn && <LoggedIn logout={logout} />}
+        { !isLoggedIn && <LoggedOut />}
+      </Portal>
+      <Portal
+        name={portals.USER_MENU_CONTAINER_AFTER}
+        props={portalProps}
+      />
+    </Fragment>
+  );
+};
 
-  /**
-   * Renders the logged-in state.
-   * @param {Object} user The user object.
-   * @returns {JSX}
-   */
-  renderLoggedIn(user) {
-    const props = { Item: List.Item };
-    return (
-      <div data-test-id="userMenu">
+UserMenu.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
+  entries: PropTypes.shape(),
+  user: PropTypes.shape(),
+};
 
-        {/* Header */}
-        <Portal
-          name={commonPortals.NAV_MENU_HEADER_BEFORE}
-          props={{
-            Item: List.Item,
-            user,
-          }}
-        />
-        <Portal
-          name={commonPortals.NAV_MENU_HEADER}
-          props={{
-            Item: List.Item,
-            Headline,
-            user,
-          }}
-        >
-          <Headline>
-            <I18n.Text string="navigation.welcome_message" params={{ name: user.firstName }} />
-          </Headline>
-        </Portal>
-        <Portal
-          name={commonPortals.NAV_MENU_HEADER_AFTER}
-          props={{
-            Item: List.Item,
-            user,
-          }}
-        />
-        <List>
-          <Portal name={commonPortals.NAV_MENU_MY_DETAILS_BEFORE} props={props} />
-          <Portal name={commonPortals.NAV_MENU_MY_DETAILS} props={props}>
-            <List.Item title="navigation.my_details" link={`${PAGE_PATH}/user/details`} testId="myDetailsButton" />
-          </Portal>
-          <Portal name={commonPortals.NAV_MENU_MY_DETAILS_AFTER} props={props} />
-
-          <Portal name={commonPortals.NAV_MENU_CHANGE_PASSWORD_BEFORE} props={props} />
-          <Portal name={commonPortals.NAV_MENU_CHANGE_PASSWORD} props={props}>
-            <List.Item title="navigation.change_password" link={`${PAGE_PATH}/user/password`} testId="myChangePasswordButton" />
-          </Portal>
-          <Portal name={commonPortals.NAV_MENU_CHANGE_PASSWORD_AFTER} props={props} />
-
-          <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_BEFORE} props={props} />
-          <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
-            <List.Item title="navigation.address_book" link={`${PAGE_PATH}/user/addresses`} testId="addressBookButton" />
-          </Portal>
-          <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_AFTER} props={props} />
-
-          <Portal name={commonPortals.NAV_MENU_PAYMENT_OPTIONS_BEFORE} props={props} />
-          <Portal name={commonPortals.NAV_MENU_PAYMENT_OPTIONS} props={props}>
-            <List.Item title="navigation.payment_options" link={`${PAGE_PATH}/user/paymentOptions`} testId="paymentOptionsButton" />
-          </Portal>
-          <Portal name={commonPortals.NAV_MENU_PAYMENT_OPTIONS_AFTER} props={props} />
-
-          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-          <Portal name={commonPortals.NAV_MENU_LOGOUT}>
-            <List.Item title="navigation.logout" onClick={this.props.logout} testId="logoutButton" />
-          </Portal>
-          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
-        </List>
-      </div>
-    );
-  }
-
-  /**
-   * Renders the logged-out state.
-   * @returns {JSX}
-   */
-  renderLoggedOut() { // eslint-disable-line  class-methods-use-this
-    return (
-      <div data-test-id="userMenu">
-        <Headline>
-          <I18n.Text string="navigation.your_account" />
-        </Headline>
-        <Grid className={styles.grid}>
-          <Grid.Item className={styles.gridItem}>
-            <Button className={styles.button} testId="UserMenuLogin">
-              <Link href={LOGIN_PATH}>
-                <I18n.Text string="login.button" />
-              </Link>
-            </Button>
-          </Grid.Item>
-          <Grid.Item className={styles.gridItem}>
-            <Button className={styles.button} testId="UserMenuRegister">
-              <Link href={REGISTER_PATH}>
-                {/* Proper registration link will be handled later. */}
-                <I18n.Text string="login.signup" />
-              </Link>
-            </Button>
-          </Grid.Item>
-        </Grid>
-      </div>
-    );
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    if (this.props.isLoggedIn) {
-      return this.renderLoggedIn(this.props.user);
-    }
-
-    return this.renderLoggedOut();
-  }
-}
+UserMenu.defaultProps = {
+  entries: null,
+  user: null,
+};
 
 export default UserMenu;

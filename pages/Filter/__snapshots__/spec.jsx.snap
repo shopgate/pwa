@@ -492,7 +492,7 @@ exports[`<Filter> page should render 1`] = `
                                           >
                                             <FormatPrice
                                               className=""
-                                              currency="price.currency"
+                                              currency="USD"
                                               fractions={false}
                                               price={12}
                                             >
