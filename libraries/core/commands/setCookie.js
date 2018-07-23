@@ -11,11 +11,11 @@ import AppCommand from '../classes/AppCommand';
  * @param {boolean} params.secure Set is secure
  * @param {boolean} params.httpOnly Set is http only
  */
-export default (params) => {
+export default function setCookie(params) {
   const command = new AppCommand();
 
   command
     .setCommandName('setCookie')
     .setLibVersion('14.0')
     .dispatch(params);
-};
+}

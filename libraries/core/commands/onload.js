@@ -4,7 +4,7 @@ import { hasSGJavaScriptBridge } from '../helpers';
 /**
  * Sends an onload command if in the native app environment.
  */
-export default () => {
+export default function onload() {
   // This command is only needed inside an app environment.
   if (!hasSGJavaScriptBridge()) {
     return;
@@ -15,4 +15,4 @@ export default () => {
   command
     .setCommandName('onload')
     .dispatch();
-};
+}

@@ -5,9 +5,9 @@ import AppCommand from '../classes/AppCommand';
  * @param {Object} params The command parameters.
  * @param {boolean} params.enabled Target tab for the page.
  */
-export default (params) => {
+export default function setScrollingEnabled(params) {
   new AppCommand()
     .setCommandName('setScrollingEnabled')
     .setCommandParams(params)
     .dispatch();
-};
+}

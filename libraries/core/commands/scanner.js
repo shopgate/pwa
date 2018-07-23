@@ -27,7 +27,7 @@ import {
  * @param {string} [params.animation] The entry animation for the webview.
  * @param {ScannerModes} params.modes The scanner modes.
  */
-export const openScanner = (params) => {
+export function openScanner(params) {
   const defaults = {
     src: 'sgapi:scanner',
     animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
@@ -61,14 +61,14 @@ export const openScanner = (params) => {
   command
     .setCommandName('openScanner')
     .dispatch(merged);
-};
+}
 
 /**
  * Sends a closeScanner command to the app.
  * @param {Object} params The command parameters.
  * @param {string} [params.animation] The exit animation for the webview.
  */
-export const closeScanner = (params) => {
+export function closeScanner(params) {
   const defaults = {
     animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
   };
@@ -79,26 +79,26 @@ export const closeScanner = (params) => {
   command
     .setCommandName('closeScanner')
     .dispatch(merged);
-};
+}
 
 /**
  * Sends a startScanner command to the app.
  * It activates the content recognition of the scanner.
  */
-export const startScanner = () => {
+export function startScanner() {
   const command = new AppCommand();
   command
     .setCommandName('startScanner')
     .dispatch();
-};
+}
 
 /**
  * Sends a stopScanner command to the app.
  * It deactivates the content recognition of the scanner.
  */
-export const stopScanner = () => {
+export function stopScanner() {
   const command = new AppCommand();
   command
     .setCommandName('stopScanner')
     .dispatch();
-};
+}

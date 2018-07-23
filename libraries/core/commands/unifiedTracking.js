@@ -146,102 +146,81 @@ function executeCommand(name = '', params = {}) {
 }
 
 /**
- * This command can be used to log a viewContent event to all installed trackers.
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogPageview
- *
+ * This command can be used to log a viewContent event to all installed trackers. *
  * @param {UnifiedPageview} data The payload for the command
  */
-export const analyticsLogPageview = (data) => {
+export function analyticsLogPageview(data) {
   executeCommand('analyticsLogPageview', data);
-};
+}
 
 /**
  * This command can be used to log an event to all installed trackers.
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogEvent
- *
  * @param {UnifiedEvent} data The payload for the command
  */
-export const analyticsLogEvent = (data) => {
+export function analyticsLogEvent(data) {
   executeCommand('analyticsLogEvent', data);
-};
+}
 
 /**
  * This command can be used to log a purchase event to all installed trackers.
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogPurchase
- *
  * @param {UnifiedPurchase} data The payload for the command
  */
-export const analyticsLogPurchase = (data) => {
+export function analyticsLogPurchase(data) {
   executeCommand('analyticsLogPurchase', data);
-};
+}
 
 /**
  * This command can be used to log an addToCart event to all installed trackers.
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogAddToCart
- *
  * @param {UnifiedAddToCart} data The payload for the command
  */
-export const analyticsLogAddToCart = (data) => {
+export function analyticsLogAddToCart(data) {
   executeCommand('analyticsLogAddToCart', data);
-};
+}
 
 /**
- * This command can be used to log an analyticsLogAddedPaymentInfo event to all installed
- * trackers.
- * @see @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogAddedPaymentInfo
- *
+ * This command can be used to log an analyticsLogAddedPaymentInfo event to all installed trackers.
  * @param {UnifiedAddedPaymentInfo} data The payload for the command
  */
-export const analyticsLogAddedPaymentInfo = (data) => {
+export function analyticsLogAddedPaymentInfo(data) {
   executeCommand('analyticsLogAddedPaymentInfo', data);
-};
+}
 
 /**
- * This command can be used to log an initiated checkout event
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogInitiatedCheckout
- *
+ * This command can be used to log an initiated checkout event.
  * @param {UnifiedInitiatedCheckout} data The payload for the command
  */
-export const analyticsLogInitiatedCheckout = (data) => {
+export function analyticsLogInitiatedCheckout(data) {
   executeCommand('analyticsLogInitiatedCheckout', data);
-};
+}
 
 /**
  * Logs which registration type was done.
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogCompletedRegistration
- *
  * @param {UnifiedCompletedRegistration} data The payload for the command
  */
-export const analyticsLogCompletedRegistration = (data) => {
+export function analyticsLogCompletedRegistration(data) {
   executeCommand('analyticsLogCompletedRegistration', data);
-};
+}
 
 /**
  * This command can be used to log an addToWishlist event to all installed trackers.
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogAddToWishlist
- *
  * @param {UnifiedAddToWishlist} data The payload for the command
  */
-export const analyticsLogAddToWishlist = (data) => {
+export function analyticsLogAddToWishlist(data) {
   executeCommand('analyticsLogAddToWishlist', data);
-};
+}
 
 /**
- * This command can be used to log a searched event to all installed trackers
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsLogSearch
- *
+ * This command can be used to log a searched event to all installed trackers.
  * @param {UnifiedSearched} data The payload for the command
  */
-export const analyticsLogSearch = (data) => {
+export function analyticsLogSearch(data) {
   executeCommand('analyticsLogSearch', data);
-};
+}
 
 /**
- * This command set a campaign url a user followed
- * @see https://shopgate.atlassian.net/wiki/display/SPEC/analyticsSetCampaignWithUrl
- *
+ * This command set a campaign url a user followed.
  * @param {UnifiedSetCampaignWithUrl} data The payload for the command
  */
-export const analyticsSetCampaignWithUrl = (data) => {
+export function analyticsSetCampaignWithUrl(data) {
   executeCommand('analyticsSetCampaignWithUrl', data);
-};
+}
