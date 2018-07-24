@@ -10,7 +10,7 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 1`] =
   }
 >
   <div
-    className="css-1fefcn"
+    className="css-7v4dr8"
     dangerouslySetInnerHTML={
       Object {
         "__html": "<h1>Hello World!</h1>",
@@ -31,7 +31,7 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 2`] =
   }
 >
   <div
-    className="css-1fefcn"
+    className="css-7v4dr8"
     dangerouslySetInnerHTML={
       Object {
         "__html": "<h1>Hello User!</h1>",
@@ -52,7 +52,7 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 3`] =
   }
 >
   <div
-    className="css-1fefcn"
+    className="css-7v4dr8"
     dangerouslySetInnerHTML={
       Object {
         "__html": "<h1>Hello World!</h1>",
@@ -69,7 +69,7 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 3`] =
 
 exports[`<HtmlWidget /> Basic rendering should render the HtmlWidget 1`] = `
 <div
-  class="css-1fefcn"
+  class="css-7v4dr8"
 >
   <h1>
     Hello World!
@@ -79,7 +79,7 @@ exports[`<HtmlWidget /> Basic rendering should render the HtmlWidget 1`] = `
 
 exports[`<HtmlWidget /> Basic rendering should render the HtmlWidget with a padding 1`] = `
 <div
-  class="css-1fefcn"
+  class="css-7v4dr8"
   style="padding: 16px;"
 >
   <h1>
@@ -98,7 +98,7 @@ exports[`<HtmlWidget /> strips out the script tags 1`] = `
   }
 >
   <div
-    className="css-1fefcn"
+    className="css-7v4dr8"
     dangerouslySetInnerHTML={
       Object {
         "__html": "  <p>Foo Bar</p> ",
