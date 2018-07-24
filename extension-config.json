@@ -153,6 +153,17 @@
         "key": "currencyId"
       }
     },
+    "user": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": {
+          "addresses": {
+            "splitDefaultsByTags": ["default"]
+          }
+        }
+      }
+    },
     "featureFlag": {
       "type": "static",
       "destination": "frontend",
