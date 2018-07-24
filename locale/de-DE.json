@@ -163,5 +163,27 @@
     "cart": "Warenkorb",
     "more": "Mehr",
     "favorites": "Merkliste"
+  },
+  "user": {
+    "addresses": {
+      "title": "Addressebuch",
+      "headline": "Addressebuch",
+      "button": "Neue Adresse hinzufügen",
+      "defaults": {
+        "default": "Standardadresse",
+        "shipping": "Standardlieferadresse",
+        "billing": "Standard-Rechnungsadresse"
+      },
+      "setAsDefault": {
+        "default": "Als Standardadresse festlegen",
+        "shipping": "Als Standardlieferadresse festlegen",
+        "billing": "Als Standard-Rechnungsadresse festlegen"
+      },
+      "error": {
+        "add": "Hinzufügen der Adresse fehlgeschlagen, bitte überprüfen Sie Ihre Felder",
+        "update": "Aktualisierung der Adresse fehlgeschlagen, bitte überprüfen Sie Ihre Felder",
+        "setAsDefault": "Adresse konnte nicht als Standard festgelegt werden"
+      }
+    }
   }
 }
