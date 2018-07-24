@@ -68,11 +68,6 @@ const updateImageContainer = css({
   borderBottomLeftRadius: variables.borderRadius.default,
 }).toString();
 
-const updateImageGlowContainer = css({
-  borderTopLeftRadius: variables.borderRadius.default,
-  borderBottomLeftRadius: variables.borderRadius.default,
-}).toString();
-
 const cardTitle = css({
   fontWeight: 500,
   lineHeight: 1.25,
@@ -108,5 +103,4 @@ export default {
   timer,
   cardInnerBox,
   updateImageContainer,
-  updateImageGlowContainer
 };

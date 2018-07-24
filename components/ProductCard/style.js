@@ -1,6 +1,10 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
+/* Styles here are very fragile. There is mix of 3d and non-3d layers, border-radius, shadows, etc.
+ * If you for example apply translate3d to `container` it will break the border-radius
+ * inheritance at image and glow pseudo-element . */
+
 const container = css({
   position: 'relative',
   display: 'block',
@@ -20,16 +24,6 @@ const title = css({
   marginTop: 1,
 }).toString();
 
-const priceWrapper = css({
-  lineHeight: 1.75,
-  alignItems: 'center',
-}).toString();
-
-const basicPrice = css({
-  fontSize: '0.85em',
-  marginTop: -1,
-}).toString();
-
 const badgeWrapper = css({
   lineHeight: 1,
   position: 'absolute',
@@ -46,22 +40,10 @@ const wishlist = css({
   transform: 'translate3d(0, -50%, 0)',
 }).toString();
 
-const updateImageContainer = css({
-  borderRadius: '0px',
-}).toString();
-
-const updateContainer = css({
-  borderRadius: '0px',
-}).toString();
-
 export default {
   badgeWrapper,
-  basicPrice,
   container,
   details,
-  priceWrapper,
   title,
   wishlist,
-  updateImageContainer,
-  updateContainer,
 };
