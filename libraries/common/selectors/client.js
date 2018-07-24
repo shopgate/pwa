@@ -107,13 +107,3 @@ export const getPageInsets = createSelector(
     return PAGE_INSETS_ANDROID;
   }
 );
-
-/**
- * Determines what os version handles the insets differently compared to other os versions.
- * @returns {boolean}
- */
-export const considerNativeInset = createSelector(
-  isIos,
-  getOSVersion,
-  (ios, ver) => ios && ver && ver.indexOf('10.') === 0
-);
