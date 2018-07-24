@@ -152,6 +152,17 @@
         "path": "/v1/%(shopId)s",
         "key": "currencyId"
       }
+    },
+    "user": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": {
+          "addresses": {
+            "splitDefaultsByTags": ["default"]
+          }
+        }
+      }
     }
   }
 }

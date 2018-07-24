@@ -1,6 +1,6 @@
+import { hot } from 'react-hot-loader';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { hot } from 'react-hot-loader';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import Route from '@shopgate/pwa-common/components/Router/components/Route';
@@ -13,6 +13,7 @@ import {
   LOGIN_PATH,
   REGISTER_PATH,
   CHECKOUT_PATH,
+  USER_ADDRESS_BOOK_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
@@ -69,8 +70,9 @@ const Pages = () => (
             <Route path={`${CHECKOUT_PATH}`} />
             <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
             <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
+            <Route path={USER_ADDRESS_BOOK_PATH} component={routes.UserAddressBook} />
           </AuthRoutes>
-          
+
           <Portal name={APP_ROUTES} props={{ View }} />
 
           {isDev && (
