@@ -1,7 +1,5 @@
-import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
-import { EINVALIDCREDENTIALS } from '@shopgate/pwa-core/constants/Pipeline';
-import { SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-common/constants/Pipelines';
-import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
+import { errorManager, EINVALIDCREDENTIALS, SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-core';
+import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import { toggleLogin } from 'Components/Navigator/action-creators';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
