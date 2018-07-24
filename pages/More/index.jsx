@@ -9,9 +9,12 @@ import Headline from 'Components/Headline';
 import List from 'Components/List';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import UserMenu from './components/UserMenu';
 import Header from './components/Header';
+
+const { featureFlag: { userAddresses = true } = {} } = appConfig;
 
 /* eslint-disable react/prefer-stateless-function */
 
@@ -51,9 +54,12 @@ class More extends Component {
     return (
       <View>
         <Header user={this.props.user} isLoggedIn={this.props.isLoggedIn} />
-        { /* When not logged in, show user menu on top */}
+        { /* When not logged in, show user menu on top (before "content" portal */}
         { !isLoggedIn && <UserMenu {...this.props} /> }
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
+
+        { /* When logged in, show user menu within "content" portal */}
+        {userAddresses && isLoggedIn && <UserMenu {...this.props} />}
 
         <Headline text="navigation.store_information" small />
 
@@ -119,7 +125,7 @@ class More extends Component {
         )}
 
         { /* When logged in, show user menu on the bottom */}
-        { isLoggedIn && <UserMenu {...this.props} /> }
+        {!userAddresses && isLoggedIn && <UserMenu {...this.props} />}
 
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} props={props} />
 
