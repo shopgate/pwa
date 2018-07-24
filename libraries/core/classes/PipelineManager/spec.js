@@ -411,9 +411,6 @@ describe('PipelineManager', () => {
     it('should work as expected for successful requests', () => {
       request.output = { request: 'output' };
 
-      // Save the entry for later comparisons.
-      const entry = pipelineManager.requests.get(request.serial);
-
       expect(pipelineSequence.get()[0]).toBe(request.serial);
       expect(pipelineManager.pipelines.get(request.name)).toBe(1);
 
@@ -435,9 +432,6 @@ describe('PipelineManager', () => {
       request.error = { message: 'Error', code: 'ERROR' };
       const error = new Error(request.error.message);
       error.code = request.error.code;
-
-      // Save the entry for later comparisons.
-      const entry = pipelineManager.requests.get(request.serial);
 
       expect(pipelineSequence.get()[0]).toBe(request.serial);
       expect(pipelineManager.pipelines.get(request.name)).toBe(1);
