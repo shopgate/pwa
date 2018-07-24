@@ -1,17 +1,13 @@
+import { ACTION_POP } from '@virtuous/conductor/constants';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import { getCategoryName } from '@shopgate/pwa-common-commerce/category/selectors';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { categoryWillEnter$, receivedVisibleCategory$ } from './streams';
-import getCategory from '@shopgate/pwa-common-commerce/category/actions/getCategory';
-import { getCurrentCategoryId } from '@shopgate/pwa-common-commerce/category/selectors';
-import {
-  categoryRouteDidEnter$,
-  categoryError$,
-} from '@shopgate/pwa-common-commerce/category/streams';
+import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
+import { categoryWillEnter$, receivedVisibleCategory$ } from './streams';
 
 /**
  * Filter subscriptions.
@@ -56,6 +52,6 @@ export default function category(subscribe) {
       message,
       title: 'category.error.title',
     }));
-    dispatch(goBackHistory(1));
+    dispatch(navigate(ACTION_POP));
   });
 }

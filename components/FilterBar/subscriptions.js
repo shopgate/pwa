@@ -1,5 +1,4 @@
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 
 /**
@@ -7,13 +6,10 @@ import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters'
  * @param {Function} subscribe The subscribe function.
  */
 export default function filterbar(subscribe) {
-  // Derived streams.
-  const searchRouteDidEnter$ = routeDidEnter(SEARCH_PATH);
-
   /**
    * Gets triggered on entering the search route.
    */
-  subscribe(searchRouteDidEnter$, ({ dispatch }) => {
+  subscribe(searchDidEnter$, ({ dispatch }) => {
     dispatch(getFilters());
   });
 }
