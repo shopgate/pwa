@@ -6,19 +6,18 @@ const placeholderOffset = (1.0 - placeholderIconScale) * 50;
 
 const container = css({
   position: 'relative',
-  borderRadius: 3,
   overflow: 'hidden',
-}).toString();
-
-const glowContainer = css({
-  position: 'absolute',
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-  boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
-  zIndex: 1,
-  pointerEvents: 'none',
+  ':after': {
+    display: 'block',
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
+    pointerEvents: 'none',
+  },
 }).toString();
 
 const placeholderContainer = css({
@@ -52,7 +51,6 @@ const placeholder = css({
 
 export default {
   container,
-  glowContainer,
   placeholderContainer,
   placeholderContent,
   placeholder,

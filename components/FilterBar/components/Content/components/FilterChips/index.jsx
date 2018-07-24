@@ -54,7 +54,7 @@ const FilterChips = ({
         break;
       }
       case FILTER_TYPE_MULTISELECT:
-        filter.values.forEach((value, index) => chips.push((
+        filter.valueLabels.forEach((value, index) => chips.push((
           <Chip
             key={`${filter.label}-${index + 1}`}
             onRemove={() => handleFilterRemove(key, index)}
@@ -71,7 +71,7 @@ const FilterChips = ({
             onRemove={() => handleFilterRemove(key)}
             onClick={handleOpenFilters}
           >
-            {`${filter.label}: ${filter.value}`}
+            {`${filter.label}: ${filter.valueLabel}`}
           </Chip>
         ));
         break;
