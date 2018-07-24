@@ -1,5 +1,5 @@
 import React from 'react';
-import { logger } from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/pwa-core';
 import SimpleInput from './SimpleInput';
 
 /**

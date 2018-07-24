@@ -16,11 +16,11 @@ const defaultToastOptions = {
  * @param {Object} options Options.
  * @returns {function}
  */
-const createToastAction = options => (dispatch) => {
-  dispatch(createToast({
-    ...defaultToastOptions,
-    ...options,
-  }));
-};
-
-export default createToastAction;
+export default function createToastAction(options) {
+  return (dispatch) => {
+    dispatch(createToast({
+      ...defaultToastOptions,
+      ...options,
+    }));
+  };
+}

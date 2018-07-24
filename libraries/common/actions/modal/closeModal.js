@@ -7,14 +7,14 @@ import promiseMap from './promiseMap';
  * @param {boolean} confirmed A flag whether the modal was confirmed or not.
  * @returns {Function} A redux thunk.
  */
-const closeModal = (id, confirmed = false) => (dispatch) => {
-  const promise = promiseMap.get(id);
+export default function closeModal(id, confirmed = false) {
+  return (dispatch) => {
+    const promise = promiseMap.get(id);
 
-  if (promise) {
-    promise.resolve(confirmed);
-  }
+    if (promise) {
+      promise.resolve(confirmed);
+    }
 
-  dispatch(removeModal(id));
-};
-
-export default closeModal;
+    dispatch(removeModal(id));
+  };
+}

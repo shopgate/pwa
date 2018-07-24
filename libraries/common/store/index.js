@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
 import { applyWorker } from 'redux-worker';
+import persistedReducers from '../collections/PersistedReducers';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -11,7 +12,7 @@ import logger from './middelwares/logger';
  * @type {string}
  */
 const STATE_VERSION = 'v1';
-export const storeKey = `shopgate-connect_${STATE_VERSION}`;
+const storeKey = `shopgate-connect_${STATE_VERSION}`;
 
 let initialState;
 
@@ -33,13 +34,7 @@ const configureStore = (reducers, Worker) => createStore(
     applyWorker(new Worker()),
     persistState({
       key: storeKey,
-      paths: [
-        'cart',
-        'client',
-        'page',
-        'url',
-        'user',
-      ],
+      paths: persistedReducers.getAll(),
     })
   )
 );

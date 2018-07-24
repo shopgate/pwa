@@ -20,7 +20,7 @@ const enrichWidgets = action =>
  * @param {Object} action The action object.
  * @return {Object} The store data.
  */
-export default (state = {}, action) => {
+export default function pageReducer(state = {}, action) {
   switch (action.type) {
     case REQUEST_PAGE_CONFIG:
       return {
@@ -45,4 +45,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-};
+}

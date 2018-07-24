@@ -1,4 +1,4 @@
-import { historyDidUpdate$ } from '@shopgate/pwa-common/streams/history';
+import { historyDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 /**
@@ -7,8 +7,7 @@ import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
  */
 export const openedCheckoutLink$ = historyDidUpdate$
   .filter(({ action }) => (
-    action.historyProps &&
-    action.historyProps.pathname &&
-    action.historyProps.pathname === CHECKOUT_PATH
+    action.route &&
+    action.route.pattern &&
+    action.route.pattern === CHECKOUT_PATH
   ));
-

@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 /**
  * Returns url state (state.url)
  * @param {Object} state The application state.
@@ -11,7 +13,17 @@ export const getUrlState = state => state.url;
  * @param {Object} state The application state.
  * @returns {Object|undefined}
  */
-export const getEntryByType = (type, state) => getUrlState(state)[type];
+export const getEntryByType = createSelector(
+  getUrlState,
+  (state, { type }) => type,
+  (urlState, type) => {
+    if (!urlState || !urlState[type]) {
+      return null;
+    }
+
+    return urlState[type];
+  }
+);
 
 /**
  * Returns the url for the given url type.
@@ -19,7 +31,13 @@ export const getEntryByType = (type, state) => getUrlState(state)[type];
  * @param {Object} state The application state.
  * @returns {string|null}
  */
-export const getUrl = (type, state) => {
-  const entry = getEntryByType(type, state);
-  return entry ? entry.url : null;
-};
+export const getUrl = createSelector(
+  getEntryByType,
+  (entry) => {
+    if (!entry) {
+      return null;
+    }
+
+    return entry.url;
+  }
+);

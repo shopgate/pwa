@@ -1,4 +1,4 @@
-import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
+import { routeDidChange$ } from '@shopgate/pwa-common/streams/router';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
@@ -26,5 +26,5 @@ export const pagesAreReady$ = routeDidChange$
   .filter(() => isPWAVisible())
   .merge(pwaDidAppear$)
   .filter(({ pathname }) => (
-    !blacklistedPaths.some(path => pathname.startsWith(path))
+    !blacklistedPaths.some(path => (!pathname ? false : pathname.startsWith(path)))
   ));

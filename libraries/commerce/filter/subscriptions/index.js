@@ -1,5 +1,6 @@
 import { ACTION_PUSH, ACTION_POP } from '@virtuous/conductor/constants';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
+import { historyDidReset$ } from '@shopgate/pwa-common/streams';
 import { getCurrentCategoryId } from '../../category/selectors';
 import mergeTemporaryFilters from '../action-creators/mergeTemporaryFilters';
 import setFilterHash from '../action-creators/setFilterHash';
@@ -7,6 +8,7 @@ import setTemporaryFilters from '../action-creators/setTemporaryFilters';
 import addActiveFilters from '../action-creators/addActiveFilters';
 import setActiveFilters from '../action-creators/setActiveFilters';
 import removeActiveFilters from '../action-creators/removeActiveFilters';
+import resetActiveFilters from '../action-creators/resetActiveFilters';
 // Import resetActiveFilters from '../action-creators/resetActiveFilters';
 import { getActiveFilters, getFilterHash } from '../selectors';
 import { searchWillUpdate$ } from '../../search/streams';
@@ -22,13 +24,6 @@ import {
  * @param {Function} subscribe The subscribe function.
  */
 export default function filters(subscribe) {
-  /**
-   * Gets triggered when the history will reset.
-   * In that case the activeFilters stack also needs to be reset.
-   */
-  // Const historyWillReset$ = main$
-  //   .filter(({ action }) => action.type === HISTORY_WILL_RESET);
-
   subscribe(filterWillEnter$, ({
     dispatch,
     getState,
@@ -77,8 +72,7 @@ export default function filters(subscribe) {
     dispatch(setActiveFilters({}, { searchPhrase }));
   });
 
-  // TODO: Handle when history is actually reset.
-  // Subscribe(historyWillReset$, ({ dispatch }) => {
-  //   Dispatch(resetActiveFilters());
-  // });
+  subscribe(historyDidReset$, ({ dispatch }) => {
+    dispatch(resetActiveFilters());
+  });
 }

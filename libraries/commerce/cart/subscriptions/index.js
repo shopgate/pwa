@@ -4,7 +4,6 @@ import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
 import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import { ACTION_RESET } from '@virtuous/conductor/constants';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
@@ -16,6 +15,7 @@ import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
+  cartDidEnter$,
   cartRequesting$,
   cartReceived$,
   productsAdded$,
@@ -46,7 +46,7 @@ export default function cart(subscribe) {
   /**
    * Gets triggered when the app is started or the cart route is entered.
    */
-  const cartDidEnterOrAppDidStart$ = routeDidEnter(CART_PATH).merge(appDidStart$);
+  const cartDidEnterOrAppDidStart$ = cartDidEnter$.merge(appDidStart$);
 
   const cartBusy$ = cartRequesting$.merge(
     couponsAdded$,

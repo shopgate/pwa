@@ -7,15 +7,15 @@ import * as actions from '../../action-creators/router';
  * @param {string} id A route id.
  * @return {Function} The dispatched action.
  */
-const routeWillEnter = id => (dispatch) => {
-  const route = getRouteById(id);
-  const prevRoute = getPreviousRoute();
+export default function routeWillEnter(id) {
+  return (dispatch) => {
+    const route = getRouteById(id);
+    const prevRoute = getPreviousRoute();
 
-  if (prevRoute) {
-    dispatch(actions.routeWillLeave(prevRoute, ACTION_PUSH));
-  }
+    if (prevRoute) {
+      dispatch(actions.routeWillLeave(prevRoute, ACTION_PUSH));
+    }
 
-  dispatch(actions.routeWillEnter(route, ACTION_PUSH));
-};
-
-export default routeWillEnter;
+    dispatch(actions.routeWillEnter(route, ACTION_PUSH));
+  };
+}
