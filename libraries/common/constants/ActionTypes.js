@@ -81,6 +81,9 @@ export const ERROR_LOGOUT = 'ERROR_LOGOUT';
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const ERROR_USER = 'ERROR_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const SET_DEFAULT_ADDRESS = 'SET_DEFAULT_ADDRESS';
 
 /**
  * --------- URL ------------
