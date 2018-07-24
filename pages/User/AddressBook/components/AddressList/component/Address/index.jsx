@@ -4,7 +4,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import Info from './components/Info';
 import DefaultCard from './components/DefaultCard';
 
-const { user: { addresses: { splitDefaultsByTags } } } = appConfig;
+const { user: { addresses: { splitDefaultsByTags = [] } } } = appConfig;
 
 /**
  * @param {UserAddress} address address
