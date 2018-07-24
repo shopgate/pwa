@@ -10,12 +10,15 @@ import {
   userDidLogin$,
   userDidLogout$,
   legacyConnectRegisterDidFail$,
+  userSetDefaultAddress$,
 } from '../streams/user';
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
 import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
+import { getUserAddressIdSelector } from './../selectors/user';
+import updateAddress from './../actions/user/updateAddress';
 
 /**
  * User subscriptions.
@@ -57,5 +60,26 @@ export default function user(subscribe) {
   subscribe(legacyConnectRegisterDidFail$, () => {
     const link = new ParsedLink(`/${LEGACY_URL_CONNECT_REGISTER}`);
     link.open();
+  });
+
+  // Redux state already changed in reducer,
+  // Dispatch action to backend to sync user selection
+  subscribe(userSetDefaultAddress$, ({ dispatch, action, getState }) => {
+    const { addressId, tag } = action;
+    const address = getUserAddressIdSelector(getState())(addressId);
+
+    // Tag is prefixed with default_ for shipping, billing, etc
+    const defTag = tag === 'default' ? tag : `default_${tag}`;
+
+    // No address or already is default
+    if (!address || (address.tags && address.tags.includes(defTag))) {
+      return;
+    }
+    if (!address.tags) {
+      address.tags = [];
+    }
+
+    address.tags.push(defTag);
+    dispatch(updateAddress(address));
   });
 }

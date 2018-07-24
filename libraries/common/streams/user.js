@@ -7,6 +7,9 @@ import {
   SUCCESS_LOGOUT,
   RECEIVE_USER,
   ERROR_USER,
+  UPDATE_USER,
+  UPDATE_USER_SUCCESS,
+  SET_DEFAULT_ADDRESS,
 } from '../constants/ActionTypes';
 import { main$ } from './main';
 
@@ -56,7 +59,8 @@ export const userDidUpdate$ = main$
   .filter(({ action }) => (
     (action.type === RECEIVE_USER) ||
     (action.type === SUCCESS_LOGOUT) ||
-    (action.type === ERROR_USER)
+    (action.type === ERROR_USER) ||
+    (action.type === UPDATE_USER_SUCCESS)
   ));
 
 /**
@@ -79,3 +83,16 @@ export const loginDidFail$ = main$
  */
 export const legacyConnectRegisterDidFail$ = main$
   .filter(({ action }) => action.type === ERROR_LEGACY_CONNECT_REGISTER);
+
+/**
+ * Gets triggered when we update user data (personal, addresses, etc)
+ * @type {Observable}
+ */
+export const userWillUpdate$ = main$.filter(({ action }) => action.type === UPDATE_USER);
+
+/**
+ * Gets triggered when user requested to set address as default
+ * @type {Observable}
+ */
+export const userSetDefaultAddress$ = main$
+  .filter(({ action }) => action.type === SET_DEFAULT_ADDRESS);
