@@ -158,7 +158,7 @@
       "destination": "frontend",
       "params": {
         "value": {
-          "user_addresses": true
+          "userAddresses": false
         }
       }
     }

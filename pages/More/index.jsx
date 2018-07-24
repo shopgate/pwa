@@ -14,6 +14,8 @@ import connect from './connector';
 import UserMenu from './components/UserMenu';
 import Header from './components/Header';
 
+const { featureFlag: { userAddresses = true } = {} } = appConfig;
+
 /* eslint-disable react/prefer-stateless-function */
 
 /**
@@ -57,11 +59,7 @@ class More extends Component {
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
 
         { /* When logged in, show user menu within "content" portal */}
-        {
-          appConfig.featureFlag.user_addresses &&
-          isLoggedIn &&
-          <UserMenu {...this.props} />
-        }
+        {userAddresses && isLoggedIn && <UserMenu {...this.props} />}
 
         <Headline text="navigation.store_information" small />
 
@@ -127,11 +125,7 @@ class More extends Component {
         )}
 
         { /* When logged in, show user menu on the bottom */}
-        {
-          !appConfig.featureFlag.user_addresses &&
-          isLoggedIn &&
-          <UserMenu {...this.props} />
-        }
+        {!userAddresses && isLoggedIn && <UserMenu {...this.props} />}
 
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} props={props} />
 
