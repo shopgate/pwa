@@ -6,7 +6,7 @@ export { default as BrightnessRequest } from './classes/BrightnessRequest';
 export { default as Conditioner } from './classes/Conditioner';
 export { default as DataRequest } from './classes/DataRequest';
 export { default as DevServerBridge } from './classes/DevServerBridge';
-export { default as emitter } from './classes/ErrorManager';
+export { default as errorManager, emitter } from './classes/ErrorManager';
 export { default as event } from './classes/Event';
 export { default as HttpRequest } from './classes/HttpRequest';
 export { default as PipelineRequest } from './classes/PipelineRequest';
