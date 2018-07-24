@@ -166,23 +166,23 @@
   },
   "user": {
     "addresses": {
-      "title": "Addressebuch",
-      "headline": "Addressebuch",
+      "title": "Addressbuch",
+      "headline": "Addressbuch",
       "button": "Neue Adresse hinzufügen",
       "defaults": {
-        "default": "Standardadresse",
-        "shipping": "Standardlieferadresse",
+        "default": "Standard-Adresse",
+        "shipping": "Standard-Lieferadresse",
         "billing": "Standard-Rechnungsadresse"
       },
       "setAsDefault": {
-        "default": "Als Standardadresse festlegen",
-        "shipping": "Als Standardlieferadresse festlegen",
+        "default": "Als Standard-Adresse festlegen",
+        "shipping": "Als Standard-Lieferadresse festlegen",
         "billing": "Als Standard-Rechnungsadresse festlegen"
       },
       "error": {
-        "add": "Hinzufügen der Adresse fehlgeschlagen, bitte überprüfen Sie Ihre Felder",
-        "update": "Aktualisierung der Adresse fehlgeschlagen, bitte überprüfen Sie Ihre Felder",
-        "setAsDefault": "Adresse konnte nicht als Standard festgelegt werden"
+        "add": "Das Hinzufügen der Adresse ist fehlgeschlagen, bitte überprüfen Sie Ihre Eingaben",
+        "update": "Die Aktualisierung der Adresse ist fehlgeschlagen, bitte überprüfen Sie Ihre Eingaben",
+        "setAsDefault": "Die Adresse konnte nicht als Standard festgelegt werden"
       }
     }
   }
