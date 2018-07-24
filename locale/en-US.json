@@ -180,9 +180,9 @@
         "billing": "Set as your default billing address"
       },
       "error": {
-        "add": "Add address failed, please check your fields",
-        "update": "Update address failed, please check your fields",
-        "setAsDefault": "Could not set address as default"
+        "add": "Adding the address failed, please check your input",
+        "update": "Updating the address failed, please check your input",
+        "setAsDefault": "Could not set the address as default"
       }
     }
   }
