@@ -34,7 +34,8 @@ const slider = css({
 const slide = css({
   position: 'relative',
   width: '100%',
-  height: '100vh',
+  display: 'flex',
+  alignItems: 'center',
 }).toString();
 
 const sliderStyles = {
@@ -54,7 +55,8 @@ const sliderStyles = {
 };
 
 const image = css({
-  height: '100vh',
+  width: '100vw',
+  height: '100vw',
 });
 
 export default {
