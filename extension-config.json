@@ -163,6 +163,15 @@
           }
         }
       }
+    },
+    "featureFlag": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": {
+          "userAddresses": false
+        }
+      }
     }
   }
 }

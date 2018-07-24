@@ -5,7 +5,7 @@
     "cancel": "Annuler",
     "submit": "Envoyer",
     "undo": "Défaire"
-   },
+  },
   "titles": {
     "categories": "Catégories",
     "filter": "Filterer",
@@ -77,7 +77,7 @@
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
     }
   },
- "shipping": {
+  "shipping": {
     "unknown": "avec frais de livraison",
     "free": "Livraison gratuite",
     "free_short": "Fratuit",
@@ -106,7 +106,7 @@
     "coupon_was_added": "Le coupon a été ajouté à votre panier!",
     "free_shipping": "Livraison gratuite"
   },
-   "login": {
+  "login": {
     "headline": "Bienvenue",
     "subline": "Se connecter pour continuer",
     "email": "Email",
@@ -120,13 +120,17 @@
     "logout_message": "Vous avez été déconnecté",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
   },
- "navigation": {
+  "navigation": {
     "login_register": "Se connecter / S'inscrire",
     "your_account": "Ton compte",
     "home": "Accueil",
     "categories": "Catégories",
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
+    "my_details": "Mes Données",
+    "change_password": "Changer mot de passe",
+    "address_book": "Carnet d'adresses",
+    "payment_options": "Options de paiement",
     "cart": "Panier",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
