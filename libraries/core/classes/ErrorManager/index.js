@@ -80,6 +80,7 @@ class ErrorManager {
    * @param {string} error.context The context of the error, relative to the source..
    * @param {string} error.message The default error message.
    * @param {string} error.source The source of the error.
+   * @param {Object} error.meta Some meta data.
    */
   queue(error = {}) {
     if (!this.validate(error)) {
@@ -91,6 +92,7 @@ class ErrorManager {
       context = DEFAULT_CONTEXT,
       message,
       source,
+      meta,
     } = error;
 
     const id = `${source}-${context}-${code}`;
@@ -100,6 +102,10 @@ class ErrorManager {
       code,
       context,
       message: overrideMessage,
+      meta: {
+        ...meta,
+        message,
+      },
       source,
     });
 
@@ -132,7 +138,6 @@ class ErrorManager {
     if (this.errorQueue.size === 0) {
       return false;
     }
-
     this.errorQueue.forEach((error) => {
       emitter.emit(error.source, error);
     });
