@@ -1,7 +1,7 @@
 import appConfig from '../../helpers/config';
 import { RECEIVE_USER, SET_DEFAULT_ADDRESS, SUCCESS_LOGOUT } from '../../constants/ActionTypes';
 
-const { user: { addresses: { splitDefaultsByTags } } } = appConfig;
+const { user: { addresses: { splitDefaultsByTags = [] } } } = appConfig;
 
 /**
  * Stores the user addresses
@@ -16,7 +16,10 @@ export default (state = {}, action) => {
 
       const defaultAddresses = {};
       splitDefaultsByTags.forEach((tag) => {
-        const defA = addresses.find(a => a.tags && a.tags.includes(tag));
+        // Tag is prefixed with default_ for shipping, billing, etc
+        const defTag = tag === 'default' ? tag : `default_${tag}`;
+
+        const defA = addresses.find(a => a.tags && a.tags.includes(defTag));
         defaultAddresses[tag] = defA ? defA.id : null;
       });
 
