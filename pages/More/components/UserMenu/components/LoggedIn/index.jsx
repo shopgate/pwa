@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
 import List from 'Components/List';
-import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { USER_ADDRESSBOOK_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
@@ -22,7 +22,7 @@ const LoggedIn = ({ logout }) => {
           <Portal name={commonPortals.NAV_MENU_MY_DETAILS} props={props}>
             <List.Item
               title="navigation.my_details"
-              link={`${PAGE_PATH}/user/details`}
+              link="/user/details"
               testId="myDetailsButton"
             />
           </Portal>
@@ -32,7 +32,7 @@ const LoggedIn = ({ logout }) => {
           <Portal name={commonPortals.NAV_MENU_CHANGE_PASSWORD} props={props}>
             <List.Item
               title="navigation.change_password"
-              link={`${PAGE_PATH}/user/password`}
+              link="/user/password"
               testId="myChangePasswordButton"
             />
           </Portal>
@@ -42,7 +42,7 @@ const LoggedIn = ({ logout }) => {
           <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
             <List.Item
               title="navigation.address_book"
-              link={`${PAGE_PATH}/user/addresses`}
+              link={`${USER_ADDRESSBOOK_PATH}`}
               testId="addressBookButton"
             />
           </Portal>
@@ -52,7 +52,7 @@ const LoggedIn = ({ logout }) => {
           <Portal name={commonPortals.NAV_MENU_PAYMENT_OPTIONS} props={props}>
             <List.Item
               title="navigation.payment_options"
-              link={`${PAGE_PATH}/user/paymentOptions`}
+              link="/user/paymentOptions"
               testId="paymentOptionsButton"
             />
           </Portal>
