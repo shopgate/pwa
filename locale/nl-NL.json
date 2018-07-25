@@ -56,6 +56,10 @@
     "tax_disclaimer": "* Incl. BTW plus verzendkosten"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Categorie niet gevonden"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "Geen producten gevonden."
@@ -147,5 +151,27 @@
     "review_form_error_length": "Maximum lengte {length} karakters.",
     "press_to_rate_with_x_stars": "Selecteer om te waarderen met {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Bedankt voor uw beoordeling!"
+  },
+  "user": {
+    "addresses": {
+      "title": "Adresboek",
+      "headline": "Adresboek",
+      "button": "Voeg een nieuw adres toe",
+      "defaults": {
+        "default": "Standaard adres",
+        "shipping": "Standaard verzendadres",
+        "billing": "Standaard factuuradres"
+      },
+      "setAsDefault": {
+        "default": "Instellen als uw standaard adres",
+        "shipping": "Instellen als uw standaard verzendadres",
+        "billing": "Instellen als uw standaard factuuradres"
+      },
+      "error": {
+        "add": "Toevoegen van adres mislukt, controleer uw velden",
+        "update": "Updaten van adres mislukt, controleer uw velden",
+        "setAsDefault": "Kon adres niet als standaard instellen"
+      }
+    }
   }
 }
