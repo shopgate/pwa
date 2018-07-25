@@ -12,7 +12,7 @@ const { hasReviews } = appConfig;
  * @return {JSX}
  */
 const RatingStars = ({ product }) => {
-  if (!hasReviews || !product || !product.rating || product.rating.count === 0) {
+  if (!hasReviews || !product || !product.rating || product.rating.average === 0) {
     return null;
   }
 
