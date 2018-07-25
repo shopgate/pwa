@@ -15,8 +15,8 @@ const chipBase = (hasRemoveButton = true) => ({
   paddingRight: themeConfig.variables.gap.small,
   paddingLeft: themeConfig.variables.gap.small * (hasRemoveButton ? 0.5 : 1),
   marginRight: 5,
-  marginTop: 5,
-  marginBottom: 5,
+  marginTop: 4,
+  marginBottom: 4,
   minWidth: 0,
 });
 
