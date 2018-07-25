@@ -11,6 +11,7 @@ const options = {
       },
       _p: () => 'p',
       _d: () => 'd',
+      _n: () => 'n',
     }),
     history: {
       length: 0,
