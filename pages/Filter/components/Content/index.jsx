@@ -106,13 +106,13 @@ class Filter extends Component {
         return {
           ...filter,
           url: `${filter.url}${this.props.queryParams}`,
-          active: temporaryFilter ? temporaryFilter.values : null,
+          active: temporaryFilter ? temporaryFilter.valueLabels : null,
         };
       default:
         return {
           ...filter,
           url: `${filter.url}${this.props.queryParams}`,
-          active: temporaryFilter ? temporaryFilter.value : null,
+          active: temporaryFilter ? temporaryFilter.valueLabels : null,
         };
     }
   };
