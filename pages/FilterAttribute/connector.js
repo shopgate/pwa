@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   mergeTemporaryFilters: temporaryFilters => dispatch(mergeTemporaryFilters(temporaryFilters)),
   setFilterAttributeClosed: () => dispatch(setFilterAttributeClosed()),
   setFilterAttributeOpened: () => dispatch(setFilterAttributeOpened()),
-  removeTemporaryFilter: (id, index = null) => dispatch(removeTemporaryFilter(id, index)),
+  removeTemporaryFilter: (...args) => dispatch(removeTemporaryFilter(...args)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true });
