@@ -7,7 +7,7 @@ import messageCache from './messageCache';
  * The hash is generated from given language code and translation key.
  * If no instance exists yet, a new instance will be created and returned.
  * @param {string} langCode A language code.
- * @param {boolean} fractions With or without fraction digits.
+ * @param {number} fractions With or without fraction digits.
  * @returns {IntlMessageFormat}
  */
 const getFormattedNumberFromCache = (langCode, fractions) => {
@@ -36,7 +36,7 @@ const getFormattedNumberFromCache = (langCode, fractions) => {
 };
 
 /**
- * Get a formatted price by currency and language code.
+ * Get a formatted number by a language code.
  * @param {string} langCode A language code.
  * @param {number} value The number to format.
  * @param {boolean} fractions Nnumber of digits after dot.
