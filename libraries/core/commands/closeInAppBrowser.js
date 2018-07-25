@@ -8,7 +8,7 @@ import { PWA_DEFAULT_TAB } from '../constants/Command';
  * Send all commands that are needed to close the inAppBrowser.
  * @param {boolean} isAndroid True if we are on a android device.
  */
-export default (isAndroid) => {
+export default function closeInAppBrowser(isAndroid) {
   const targetTab = {
     targetTab: 'in_app_browser',
   };
@@ -27,4 +27,4 @@ export default (isAndroid) => {
     targetTab: PWA_DEFAULT_TAB,
     transition: 'slideOutToBottom',
   });
-};
+}

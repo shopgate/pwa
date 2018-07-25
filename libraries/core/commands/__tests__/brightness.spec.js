@@ -2,20 +2,20 @@ import {
   setBrightness,
   resetBrightness,
   getCurrentBrightness,
-} from './brightness';
+} from '../brightness';
 
 import {
   mockedSetCommandName,
   mockedSetCommandParams,
   mockedSetLibVersion,
   mockedDispatch,
-} from '../classes/AppCommand';
+} from '../../classes/AppCommand';
 
-jest.mock('../classes/AppCommand');
+jest.mock('../../classes/AppCommand');
 
 let mockedDispatchRejection = false;
 const mockedBrightnessRequestDispatch = jest.fn();
-jest.mock('../classes/BrightnessRequest', () => ({
+jest.mock('../../classes/BrightnessRequest', () => ({
   dispatch() {
     mockedBrightnessRequestDispatch();
     return !mockedDispatchRejection ? Promise.resolve(100) : Promise.reject(new Error('W00t'));
@@ -23,7 +23,7 @@ jest.mock('../classes/BrightnessRequest', () => ({
 }));
 
 const mockedLoggerError = jest.fn();
-jest.mock('../helpers', () => ({
+jest.mock('../../helpers', () => ({
   logger: {
     error: (...args) => {
       mockedLoggerError(...args);

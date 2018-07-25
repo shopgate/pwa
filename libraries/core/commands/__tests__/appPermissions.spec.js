@@ -1,29 +1,20 @@
-import {
-  getAppPermissions,
-  requestAppPermissions,
-} from './appPermissions';
-
-import {
-  PERMISSION_ID_LOCATION,
-  PERMISSION_ID_CAMERA,
-} from '../constants/AppPermissions';
-
+import { getAppPermissions, requestAppPermissions } from '../appPermissions';
+import { PERMISSION_ID_LOCATION, PERMISSION_ID_CAMERA } from '../../constants/AppPermissions';
 import {
   mockedSetPermissionIds as mockedGetSetter,
   mockedDispatch as mockedGetDispatch,
   mockedPermissionsResponse as mockedGetResponse,
   triggerDispatchError as triggerGetDispatchError,
-} from '../classes/AppPermissionsRequest/GetAppPermissionsRequest';
-
+} from '../../classes/AppPermissionsRequest/GetAppPermissionsRequest';
 import {
   mockedSetPermissions as mockedRequestSetter,
   mockedDispatch as mockedRequestDispatch,
   mockedPermissionsResponse as mockedRequestResponse,
   triggerDispatchError as triggerRequestDispatchError,
-} from '../classes/AppPermissionsRequest/RequestAppPermissionsRequest';
+} from '../../classes/AppPermissionsRequest/RequestAppPermissionsRequest';
 
-jest.mock('../classes/AppPermissionsRequest/GetAppPermissionsRequest');
-jest.mock('../classes/AppPermissionsRequest/RequestAppPermissionsRequest');
+jest.mock('../../classes/AppPermissionsRequest/GetAppPermissionsRequest');
+jest.mock('../../classes/AppPermissionsRequest/RequestAppPermissionsRequest');
 
 describe('App Permissions commands', () => {
   beforeEach(() => {

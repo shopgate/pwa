@@ -1,15 +1,7 @@
-import {
-  plotProjectsEnable,
-  plotProjectsDisable,
-} from './plotProjects';
+import { plotProjectsEnable, plotProjectsDisable } from '../plotProjects';
+import { mockedSetCommandName, mockedSetLibVersion, mockedDispatch } from '../../classes/AppCommand';
 
-import {
-  mockedSetCommandName,
-  mockedSetLibVersion,
-  mockedDispatch,
-} from '../classes/AppCommand';
-
-jest.mock('../classes/AppCommand');
+jest.mock('../../classes/AppCommand');
 
 describe('plotprojects commands', () => {
   beforeEach(() => {

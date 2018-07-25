@@ -3,12 +3,11 @@ import {
   mockedSetCommandParams,
   mockedBuildCommand,
   mockedDispatch,
-} from '../classes/AppCommand';
+} from '../../classes/AppCommand';
+import closeInAppBrowser from '../closeInAppBrowser';
 
-import closeInAppBrowser from './closeInAppBrowser';
-
-jest.mock('../classes/AppCommand');
-jest.mock('../helpers', () => ({
+jest.mock('../../classes/AppCommand');
+jest.mock('../../helpers', () => ({
   hasSGJavaScriptBridge: () => true,
 }));
 

@@ -1,27 +1,9 @@
-import { PWA_DEFAULT_TAB } from '../constants/Command';
-import {
-  SCANNER_ANIMATION_FOREGROUND_BOTTON,
-  SCANNER_ANIMATION_FOREGROUND_LEFT,
-  SCANNER_TYPE_BARCODE,
-  SCANNER_TYPE_CARD,
-  SCANNER_TYPE_IMAGE,
-  SCANNER_MODE_ON,
-  SCANNER_MODE_OFF,
-} from '../constants/Scanner';
+import { PWA_DEFAULT_TAB } from '../../constants/Command';
+import * as constants from '../../constants/Scanner';
+import { mockedSetCommandName, mockedDispatch } from '../../classes/AppCommand';
+import * as commands from '../scanner';
 
-import {
-  mockedSetCommandName,
-  mockedDispatch,
-} from '../classes/AppCommand';
-
-import {
-  openScanner,
-  closeScanner,
-  startScanner,
-  stopScanner,
-} from './scanner';
-
-jest.mock('../classes/AppCommand');
+jest.mock('../../classes/AppCommand');
 
 describe('scanner commands', () => {
   beforeEach(() => {
@@ -33,11 +15,11 @@ describe('scanner commands', () => {
       const expected = {
         src: 'sgapi:scanner',
         modes: {
-          [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
-          [SCANNER_TYPE_CARD]: SCANNER_MODE_OFF,
-          [SCANNER_TYPE_IMAGE]: SCANNER_MODE_OFF,
+          [constants.SCANNER_TYPE_BARCODE]: constants.SCANNER_MODE_OFF,
+          [constants.SCANNER_TYPE_CARD]: constants.SCANNER_MODE_OFF,
+          [constants.SCANNER_TYPE_IMAGE]: constants.SCANNER_MODE_OFF,
         },
-        animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTON,
         eventParams: {
           scannerData: {
             modes: {
@@ -50,7 +32,7 @@ describe('scanner commands', () => {
         },
       };
 
-      openScanner();
+      commands.openScanner();
 
       expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
       expect(mockedSetCommandName).toHaveBeenCalledWith('openScanner');
@@ -62,26 +44,26 @@ describe('scanner commands', () => {
       const expected = {
         src: 'sgapi:scanner',
         modes: {
-          [SCANNER_TYPE_BARCODE]: SCANNER_MODE_OFF,
-          [SCANNER_TYPE_IMAGE]: SCANNER_MODE_ON,
-          [SCANNER_TYPE_CARD]: SCANNER_MODE_OFF,
+          [constants.SCANNER_TYPE_BARCODE]: constants.SCANNER_MODE_OFF,
+          [constants.SCANNER_TYPE_IMAGE]: constants.SCANNER_MODE_ON,
+          [constants.SCANNER_TYPE_CARD]: constants.SCANNER_MODE_OFF,
         },
-        animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTON,
         eventParams: {
           scannerData: {
             modes: {
-              [SCANNER_TYPE_BARCODE]: false,
-              [SCANNER_TYPE_IMAGE]: true,
-              [SCANNER_TYPE_CARD]: false,
+              [constants.SCANNER_TYPE_BARCODE]: false,
+              [constants.SCANNER_TYPE_IMAGE]: true,
+              [constants.SCANNER_TYPE_CARD]: false,
             },
           },
           sourceTab: PWA_DEFAULT_TAB,
         },
       };
 
-      openScanner({
+      commands.openScanner({
         modes: {
-          imageCapturing: SCANNER_MODE_ON,
+          imageCapturing: constants.SCANNER_MODE_ON,
         },
       });
 
@@ -93,10 +75,10 @@ describe('scanner commands', () => {
   describe('closeScanner()', () => {
     it('should work as expected', () => {
       const expected = {
-        animation: SCANNER_ANIMATION_FOREGROUND_BOTTON,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_BOTTON,
       };
 
-      closeScanner();
+      commands.closeScanner();
 
       expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
       expect(mockedSetCommandName).toHaveBeenCalledWith('closeScanner');
@@ -106,11 +88,11 @@ describe('scanner commands', () => {
 
     it('should merge passed parameters properly', () => {
       const expected = {
-        animation: SCANNER_ANIMATION_FOREGROUND_LEFT,
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_LEFT,
       };
 
-      closeScanner({
-        animation: SCANNER_ANIMATION_FOREGROUND_LEFT,
+      commands.closeScanner({
+        animation: constants.SCANNER_ANIMATION_FOREGROUND_LEFT,
       });
 
       expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
@@ -122,7 +104,7 @@ describe('scanner commands', () => {
 
   describe('startScanner()', () => {
     it('should work as expected', () => {
-      startScanner();
+      commands.startScanner();
 
       expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
       expect(mockedSetCommandName).toHaveBeenCalledWith('startScanner');
@@ -132,7 +114,7 @@ describe('scanner commands', () => {
 
   describe('stopScanner()', () => {
     it('should work as expected', () => {
-      stopScanner();
+      commands.stopScanner();
 
       expect(mockedSetCommandName).toHaveBeenCalledTimes(1);
       expect(mockedSetCommandName).toHaveBeenCalledWith('stopScanner');

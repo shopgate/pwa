@@ -17,7 +17,7 @@ export const popTabToRootCmd = params => (
  * @param {Object} params The command parameters.
  * @param {string} params.targetTab The navigation stack that shall be popped to root view.
  */
-export default (params) => {
+export default function popTabToRoot(params) {
   popTabToRootCmd(params)
     .dispatch();
-};
+}

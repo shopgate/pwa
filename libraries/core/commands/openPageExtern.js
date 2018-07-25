@@ -5,10 +5,10 @@ import AppCommand from '../classes/AppCommand';
  * @param {Object} params The command parameters
  * @param {string} params.src The URL which shall be loaded
  */
-export default (params) => {
+export default function openPageExtern(params) {
   const command = new AppCommand();
 
   command
     .setCommandName('openPageExtern')
     .dispatch(params);
-};
+}

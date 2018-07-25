@@ -15,7 +15,7 @@ export const performCommandsAfterDelayCmd = params => (
  * Sends a performCommandsAfterDelay command to the app.
  * @param {Object} params The command parameters.
  */
-export default (params) => {
+export default function performCommandsAfterDelay(params) {
   performCommandsAfterDelayCmd(params)
     .dispatch();
-};
+}
