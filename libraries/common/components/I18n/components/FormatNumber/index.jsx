@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Formats a price.
+ * Formats a number.
  * @param {Object} props The component props.
  * @param {Object} context The component context.
  * @returns {JSX}

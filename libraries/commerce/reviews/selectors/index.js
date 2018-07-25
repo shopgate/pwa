@@ -192,7 +192,7 @@ export const getProductReviews = createSelector(
  * Retrieves the current product reviews excerpt.
  * When user review is available, it will always be the first entry.
  * @param {Object} state The current application state.
- * @return {Object} The reviews for a product
+ * @return {Array|null} The reviews for a product
  */
 export const getProductReviewsExcerpt = createSelector(
   getCurrentBaseProductId,
