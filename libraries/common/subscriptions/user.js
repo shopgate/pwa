@@ -67,17 +67,15 @@ export default function user(subscribe) {
   subscribe(userSetDefaultAddress$, ({ dispatch, action, getState }) => {
     const { addressId, tag } = action;
     const address = getUserAddressIdSelector(getState())(addressId);
-
-    // Tag is prefixed with default_ for shipping, billing, etc
-    const defTag = tag === 'default' ? tag : `default_${tag}`;
-
-    // No address or already is default
-    if (!address || (address.tags && address.tags.includes(defTag))) {
+    if (!address) {
       return;
     }
+
     if (!address.tags) {
       address.tags = [];
     }
+    // Tag is prefixed with default_ for shipping, billing, etc
+    const defTag = tag === 'default' ? tag : `default_${tag}`;
 
     address.tags.push(defTag);
     dispatch(updateAddress(address));
