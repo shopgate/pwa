@@ -23,6 +23,9 @@ const defaultAppConfig = {
       splitDefaultsByTags: ['default'],
     },
   },
+  featureFlag: {
+    userAddresses: true,
+  },
 };
 
 /**
