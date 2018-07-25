@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -7,7 +7,7 @@ import * as categoryPortals from '@shopgate/pwa-common-commerce/category/constan
 import * as favoritesPortals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import * as cartPortals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import * as marketPortals from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH, PAGE_PATH, USER_ADDRESS_BOOK_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -19,6 +19,7 @@ import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import ViewListIcon from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
 import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
+import LocalAddressBookIcon from '@shopgate/pwa-ui-shared/icons/LocalAddressBookIcon';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
@@ -121,6 +122,7 @@ class NavDrawer extends Component {
       Item,
     };
 
+    const { featureFlag: { userAddresses = false } = {} } = appConfig;
     return (
       <Layout
         active={navDrawerActive}
@@ -243,33 +245,56 @@ class NavDrawer extends Component {
         {showQuickLinks && this.renderEntries(entries.quicklinks)}
         {showQuickLinks && <Divider close={this.handleClose} />}
 
-        {/* Shipping */}
-        <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
-        <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
-          <Item
-            href={`${PAGE_PATH}/shipping`}
-            icon={LocalShippingIcon}
-            close={this.handleClose}
-            testId="navDrawerShippingButton"
-          >
-            <I18n.Text string="navigation.shipping" />
-          </Item>
-        </Portal>
-        <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+        {userAddresses &&
+          <Fragment>
+            {/* Address book */}
+            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_BEFORE} props={props} />
+            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
+              <Item
+                href={`${USER_ADDRESS_BOOK_PATH}`}
+                icon={LocalAddressBookIcon}
+                close={this.handleClose}
+                testId="navDrawerAddressBookButton"
+              >
+                <I18n.Text string="navigation.address_book" />
+              </Item>
+            </Portal>
+            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_AFTER} props={props} />
+          </Fragment>
+        }
 
-        {/* Payment */}
-        <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
-        <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
-          <Item
-            href={`${PAGE_PATH}/payment`}
-            icon={CreditCardIcon}
-            close={this.handleClose}
-            testId="navDrawerPaymentButton"
-          >
-            <I18n.Text string="navigation.payment" />
-          </Item>
-        </Portal>
-        <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+        {!userAddresses &&
+          { /* Display previous version's entries, when feature flag is disabled */ } &&
+          <Fragment>
+            {/* Shipping */}
+            <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+            <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
+              <Item
+                href={`${PAGE_PATH}/shipping`}
+                icon={LocalShippingIcon}
+                close={this.handleClose}
+                testId="navDrawerShippingButton"
+              >
+                <I18n.Text string="navigation.shipping" />
+              </Item>
+            </Portal>
+            <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+
+            {/* Payment */}
+            <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+            <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
+              <Item
+                href={`${PAGE_PATH}/payment`}
+                icon={CreditCardIcon}
+                close={this.handleClose}
+                testId="navDrawerPaymentButton"
+              >
+                <I18n.Text string="navigation.payment" />
+              </Item>
+            </Portal>
+            <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+          </Fragment>
+        }
 
         <Divider close={this.handleClose} />
 
