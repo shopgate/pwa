@@ -132,7 +132,12 @@
     "privacy": "Privacybeleid",
     "return_policy": "Retourbeleid",
     "welcome_message": "Welkom {name}",
-    "logout": "Log uit"
+    "logout": "Log uit",
+    "subHeader": {
+      "more": "Meer",
+      "about": "Over ons",
+      "user": "Account instellingen"
+    }
   },
   "reviews": {
     "rating": "Rating",

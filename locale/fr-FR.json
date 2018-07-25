@@ -139,7 +139,12 @@
     "welcome_message": "Bienvenue {name}",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
-    "more_menu": "Plus"
+    "more_menu": "Plus",
+   "subHeader": {
+     "more": "Plus",
+     "about": "À propos de nous",
+     "user": "Paramètres du compte"
+   }
   },
   "reviews": {
     "rating": "Evaluation",

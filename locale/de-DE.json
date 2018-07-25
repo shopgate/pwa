@@ -132,7 +132,12 @@
     "privacy": "Datenschutz",
     "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "subHeader": {
+      "more": "Mehr",
+      "about": "Über uns",
+      "user": "Meine Daten"
+    }
   },
   "reviews": {
     "rating": "Bewertung",
