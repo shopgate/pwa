@@ -11,15 +11,11 @@ import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/consta
  * @returns {JSX}
  */
 const RatingNumber = ({ rating, className }) => {
-  if (!rating) {
+  if (Number.isNaN(rating)) {
     return null;
   }
 
   const number = rating / RATING_SCALE_DIVISOR;
-
-  if (Number.isNaN(number)) {
-    return null;
-  }
 
   return <I18n.Number number={number} className={className} fractions={2} />;
 };
