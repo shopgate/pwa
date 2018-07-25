@@ -37,11 +37,13 @@ const mockedStoreAllSelected = {
             type: FILTER_TYPE_SINGLE_SELECT,
             label: 'Single selection',
             value: 'SingleSelected',
+            valueLabel: 'Single Selected',
           },
           MultiSelect: {
             type: FILTER_TYPE_MULTISELECT,
             label: 'MultiSelect',
             values: ['one', 'two'],
+            valueLabels: ['One', 'Two'],
           },
           Range: {
             type: 'range',
