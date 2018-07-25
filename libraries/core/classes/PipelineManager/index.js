@@ -218,6 +218,9 @@ class PipelineManager {
       errorManager.queue({
         source: errorSources.SOURCE_PIPELINE,
         context: pipelineName,
+        meta: {
+          input: request.input,
+        },
         code,
         message,
       });

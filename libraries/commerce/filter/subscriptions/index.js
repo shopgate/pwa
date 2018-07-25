@@ -9,7 +9,7 @@ import addActiveFilters from '../action-creators/addActiveFilters';
 import setActiveFilters from '../action-creators/setActiveFilters';
 import removeActiveFilters from '../action-creators/removeActiveFilters';
 import resetActiveFilters from '../action-creators/resetActiveFilters';
-// Import resetActiveFilters from '../action-creators/resetActiveFilters';
+import getFilters from '../actions/getFilters';
 import { getActiveFilters, getFilterHash } from '../selectors';
 import { searchWillUpdate$ } from '../../search/streams';
 import {
@@ -70,6 +70,7 @@ export default function filters(subscribe) {
     // Reset the current activeFilters object and update the search phrase with the new one
     const searchPhrase = getSearchPhrase(getState());
     dispatch(setActiveFilters({}, { searchPhrase }));
+    dispatch(getFilters());
   });
 
   subscribe(historyDidReset$, ({ dispatch }) => {

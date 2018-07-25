@@ -22,9 +22,9 @@ class PipelineErrorDialog extends Component {
   static propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     params: PropTypes.shape({
-      errorCode: PropTypes.string, // The error code as string.
+      code: PropTypes.string, // The error code as string.
       message: PropTypes.string.isRequired, // The error message reported by the pipeline.
-      pipelineName: PropTypes.string.isRequired, // The identifier of the pipeline.
+      pipeline: PropTypes.string.isRequired, // The identifier of the pipeline.
       request: PropTypes.shape.isRequired, // The request as sent to the server.
     }).isRequired,
     message: PropTypes.string,
@@ -104,15 +104,15 @@ class PipelineErrorDialog extends Component {
    */
   renderDevErrorMessage = params => (
     <div aria-hidden>
+      <strong>Pipeline:</strong> {params.pipeline}<br />
+      { params.code && (
+        <span>
+          <strong>Code: </strong> {params.code} <br />
+        </span>
+      )}
+      <strong>Message:</strong> {params.message} <br />
       <p>
-        <strong>pipelineRequest:</strong> {params.pipelineName}
-        <br />
-        {params.errorCode && <strong>{params.errorCode}: </strong>}
-        {params.message}
-      </p>
-      <p>
-        <strong>Request:</strong>
-        <br />
+        <strong>Params:</strong><br />
         {JSON.stringify(params.request, null, ' ')}
       </p>
     </div>
