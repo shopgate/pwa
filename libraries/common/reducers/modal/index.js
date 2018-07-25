@@ -6,7 +6,7 @@ import { CREATE_MODAL, REMOVE_MODAL } from '../../constants/ActionTypes';
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = [], action) => {
+export default function modalReducer(state = [], action) {
   switch (action.type) {
     case CREATE_MODAL:
       return [
@@ -18,4 +18,4 @@ export default (state = [], action) => {
     default:
       return state;
   }
-};
+}

@@ -1,14 +1,16 @@
-import event from '@shopgate/pwa-core/classes/Event';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
-import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
+import {
+  event,
+  emitter as errorEmitter,
+  registerEvents,
+  closeInAppBrowser,
+} from '@shopgate/pwa-core';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import * as events from '@virtuous/conductor-events';
-import { navigate } from '../action-creators/router';
+import { navigate, appError, pipelineError } from '../action-creators';
 import routeWillPush from '../actions/router/routeWillPush';
 import routeDidPush from '../actions/router/routeDidPush';
 import routeWillPop from '../actions/router/routeWillPop';
@@ -17,8 +19,7 @@ import routeWillReplace from '../actions/router/routeWillReplace';
 import routeDidReplace from '../actions/router/routeDidReplace';
 import routeWillReset from '../actions/router/routeWillReset';
 import routeDidReset from '../actions/router/routeDidReset';
-import { appDidStart$, appWillStart$ } from '../streams/app';
-import { pipelineError$ } from '../streams/error';
+import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
 import { isAndroid } from '../selectors/client';
@@ -27,7 +28,6 @@ import {
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
-import { appError, pipelineError } from '../action-creators/error';
 
 /**
  * App subscriptions.

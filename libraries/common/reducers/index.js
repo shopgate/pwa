@@ -5,6 +5,6 @@ import { combineReducers } from 'redux';
  * @param {Object} reducers The reducers.
  * @returns {Function}
  */
-const rootReducer = reducers => combineReducers(reducers);
-
-export default rootReducer;
+export default function rootReducer(reducers) {
+  return combineReducers(reducers);
+}
