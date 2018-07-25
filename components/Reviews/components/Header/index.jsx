@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import RatingNumber from '@shopgate/pwa-ui-shared/RatingNumber';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from './components/AverageRating';
 import WriteReviewLink from './components/WriteReviewLink';
-import RatingNumber from '../RatingNumber';
 import styles from './style';
 
 /**
