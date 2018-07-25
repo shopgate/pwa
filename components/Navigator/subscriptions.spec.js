@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { routeDidChange$ } from '@shopgate/pwa-common/streams/history';
+import { routeDidChange$ } from '@shopgate/pwa-common/streams';
 import subscribe, {
   searchRouteDidEnter$,
   cartFilterRoutesDidEnter$,
@@ -18,20 +18,28 @@ import { defaultState } from './mock';
 const mockedStore = configureStore([thunk]);
 
 const results = [
-  [
-    { type: TOGGLE_NAVIGATOR_SEARCH, active: false },
-  ],
-  [
-    { type: SET_NAVIGATOR_SEARCH_QUERY, query: null },
-  ],
-  [
-    { type: TOGGLE_NAVIGATOR_CART_ICON, active: true },
-    { type: SET_SEARCH_ENABLED },
-  ],
-  [
-    { type: TOGGLE_NAVIGATOR_CART_ICON, active: false },
-    { type: SET_SEARCH_DISABLED },
-  ],
+  [{
+    type: TOGGLE_NAVIGATOR_SEARCH,
+    active: false,
+  }],
+  [{
+    type: SET_NAVIGATOR_SEARCH_QUERY,
+    query: null,
+  }],
+  [{
+    type: TOGGLE_NAVIGATOR_CART_ICON,
+    active: true,
+  },
+  {
+    type: SET_SEARCH_ENABLED,
+  }],
+  [{
+    type: TOGGLE_NAVIGATOR_CART_ICON,
+    active: false,
+  },
+  {
+    type: SET_SEARCH_DISABLED,
+  }],
 ];
 
 describe('Navigator subscriptions', () => {
@@ -113,7 +121,10 @@ describe('Navigator subscriptions', () => {
           showCartIcon: false,
         },
         cart: {
-          items: [{ type: 'product', quantity: 1 }],
+          items: [{
+            type: 'product',
+            quantity: 1,
+          }],
           productPendingCount: 0,
         },
       };
@@ -128,7 +139,10 @@ describe('Navigator subscriptions', () => {
       const state = {
         ...defaultState,
         cart: {
-          items: [{ type: 'product', quantity: 1 }],
+          items: [{
+            type: 'product',
+            quantity: 1,
+          }],
           productPendingCount: 0,
         },
       };

@@ -493,6 +493,7 @@ exports[`<FilterBar> should render 1`] = `
                   <FilterChips
                     activeFilters={null}
                     currency="USD"
+                    currentPathname=""
                     handleFilterRemove={[Function]}
                     handleOpenFilters={[Function]}
                   />

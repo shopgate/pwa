@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import persistReducers from '@shopgate/pwa-common/collections/PersistedReducers';
 import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
@@ -19,6 +20,14 @@ import navigator from 'Components/Navigator/reducer';
 import extensions from 'Extensions/reducers';
 import general from 'Components/View/reducer';
 import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
+
+persistReducers.set([
+  'cart',
+  'client',
+  'page',
+  'url',
+  'user',
+]);
 
 const reducers = combineReducers({
   cart,
