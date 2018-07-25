@@ -19,7 +19,6 @@ import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import ViewListIcon from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
 import LocalShippingIcon from '@shopgate/pwa-ui-shared/icons/LocalShippingIcon';
-import LocalAddressBookIcon from '@shopgate/pwa-ui-shared/icons/LocalAddressBookIcon';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import CreditCardIcon from '@shopgate/pwa-ui-shared/icons/CreditCardIcon';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
@@ -252,7 +251,7 @@ class NavDrawer extends Component {
             <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
               <Item
                 href={`${USER_ADDRESS_BOOK_PATH}`}
-                icon={LocalAddressBookIcon}
+                icon={LocalShippingIcon}
                 close={this.handleClose}
                 testId="navDrawerAddressBookButton"
               >
