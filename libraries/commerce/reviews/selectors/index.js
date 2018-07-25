@@ -127,7 +127,6 @@ export const getUserReviewForProduct = createSelector(
 
     return {
       ...allReviews[userReviews[productId].review],
-      productId,
     };
   }
 );
