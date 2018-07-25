@@ -6,12 +6,13 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
   invertMoreButton={false}
   maxRows={2}
   moreLabel="more"
+  pathname=""
 >
   <div
-    className="css-cepqcn"
+    className="css-1hor112"
   >
     <div
-      className="css-1uds9t2"
+      className="css-1ck9rgi"
     >
       <Chip
         invert={false}
@@ -20,7 +21,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removable={true}
       >
         <div
-          className="css-11a1u6a"
+          className="css-bpa25c"
         >
           <Button
             className="css-i7sqdh"
@@ -84,7 +85,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       </Chip>
     </div>
     <div
-      className="css-u9gfar"
+      className="css-1sunnf0"
     >
       <RippleButton
         className="css-rz4b27"
@@ -163,12 +164,13 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
   invertMoreButton={false}
   maxRows={2}
   moreLabel="more"
+  pathname=""
 >
   <div
-    className="css-cepqcn"
+    className="css-1hor112"
   >
     <div
-      className="css-1uds9t2"
+      className="css-1ck9rgi"
     >
       <Chip
         invert={false}
@@ -177,7 +179,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="css-11a1u6a"
+          className="css-bpa25c"
         >
           <Button
             className="css-i7sqdh"
@@ -246,7 +248,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="css-11a1u6a"
+          className="css-bpa25c"
         >
           <Button
             className="css-i7sqdh"
@@ -310,7 +312,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       </Chip>
     </div>
     <div
-      className="css-u9gfar"
+      className="css-1sunnf0"
     >
       <RippleButton
         className="css-rz4b27"
