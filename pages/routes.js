@@ -65,6 +65,11 @@ export const WriteReview = Loadable({
   loading: () => null,
 });
 
+export const Checkout = Loadable({
+  loader: () => import('./Checkout'),
+  loading: () => null,
+});
+
 export const UserAddressBook = Loadable({
   loader: () => import('./User/AddressBook'),
   loading: () => null,

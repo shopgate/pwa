@@ -24,27 +24,30 @@ class MultiSelect extends Component {
    * Updates the current filter options selection.
    * @param {string} attributeId An attribute id.
    * @param {string} valueId A string containing the selected value.
+   * @param {string} valueLabel The human readable value.
    */
-  handleSelection = (attributeId, valueId) => {
+  handleSelection = (attributeId, valueId, valueLabel) => {
     const { currentAttribute, temporaryFilters } = this.props;
 
     // Get the temporary filters for this particular attribute.
     const tempFilters = temporaryFilters[currentAttribute.id] || {};
 
     // Get the values inside the temporary filter.
-    let { values = [] } = tempFilters;
+    let { values = [], valueLabels = [] } = tempFilters;
 
     /**
      * We need to find the index of the value so that we know which item to
      * remove from the temporary filter.
      */
     const valueIndex = values.indexOf(valueId);
+    const valueLabelIndex = valueLabels.indexOf(valueLabel);
 
     if (valueIndex > -1) {
-      this.props.removeTemporaryFilter(attributeId, valueIndex);
+      this.props.removeTemporaryFilter(attributeId, valueIndex, valueLabelIndex);
     } else {
       // Add to selection.
       values = [...values, valueId];
+      valueLabels = [...valueLabels, valueLabel];
 
       this.props.mergeTemporaryFilters({
         [currentAttribute.id]: {
@@ -52,6 +55,7 @@ class MultiSelect extends Component {
           source: currentAttribute.source,
           type: currentAttribute.type,
           values,
+          valueLabels,
         },
       });
     }
@@ -78,7 +82,7 @@ class MultiSelect extends Component {
               key={value.id}
               label={value.label}
               value={value.id}
-              onClick={() => this.handleSelection(currentAttribute.id, value.id)}
+              onClick={() => this.handleSelection(currentAttribute.id, value.id, value.label)}
               checked={activeValues.includes(value.id)}
             />
           ))}

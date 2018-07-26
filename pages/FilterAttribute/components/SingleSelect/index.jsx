@@ -22,8 +22,9 @@ class SingleSelect extends Component {
   /**
    * Updates the current filter options selection.
    * @param {string} valueId The current selected attribute options.
+   * @param {string} valueLabel The human readable value.
    */
-  handleSelection = (valueId) => {
+  handleSelection = (valueId, valueLabel) => {
     const { currentAttribute } = this.props;
     this.props.mergeTemporaryFilters({
       [currentAttribute.id]: {
@@ -31,6 +32,7 @@ class SingleSelect extends Component {
         source: currentAttribute.source,
         type: currentAttribute.type,
         value: valueId,
+        valueLabel,
       },
     });
   };
@@ -54,7 +56,7 @@ class SingleSelect extends Component {
               key={value.id}
               label={value.label}
               value={value.id}
-              onClick={() => this.handleSelection(value.id)}
+              onClick={() => this.handleSelection(value.id, value.label)}
               checked={tempFilter.value === value.id}
               singleSelect
             />
