@@ -1,11 +1,12 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import logger from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/pwa-core/helpers';
 import {
   requestUrl,
   receiveUrl,
   errorUrl,
 } from '@shopgate/pwa-common/action-creators/url';
 import * as pipelines from '../constants/Pipelines';
+import { FETCH_CHECKOUT_URL_TIMEOUT } from '../constants';
 
 const URL_TYPE_CHECKOUT = 'checkout';
 
@@ -18,6 +19,8 @@ const fetchCheckoutUrl = () => dispatch =>
     dispatch(requestUrl(URL_TYPE_CHECKOUT));
 
     new PipelineRequest(pipelines.SHOPGATE_CHECKOUT_GET_URL)
+      .setTimeout(FETCH_CHECKOUT_URL_TIMEOUT) // 12 seconds timeout
+      .setRetries(0)
       .dispatch()
       .then(({ url, expires }) => {
         dispatch(receiveUrl(URL_TYPE_CHECKOUT, url, expires));
