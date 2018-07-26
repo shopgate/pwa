@@ -270,7 +270,7 @@ class NavDrawer extends Component {
           </Fragment>
         }
 
-        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
+        {!userAddresses && showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
 
         {!userAddresses &&
           { /* Display previous version's entries, when feature flag is disabled */ } &&
@@ -302,10 +302,10 @@ class NavDrawer extends Component {
               </Item>
             </Portal>
             <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+
+            <Divider close={this.handleClose} />
           </Fragment>
         }
-
-        <Divider close={this.handleClose} />
 
         {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
 
