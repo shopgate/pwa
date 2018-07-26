@@ -124,6 +124,7 @@ class NavDrawer extends Component {
     };
 
     const { featureFlag: { userAddresses = false } = {} } = appConfig;
+    const { featureFlag: { showMenuSubHeaders = false } = {} } = appConfig;
     return (
       <Layout
         active={navDrawerActive}
@@ -249,7 +250,7 @@ class NavDrawer extends Component {
         {userAddresses && user &&
           <Fragment>
 
-            <SubHeader title="navigation.subHeader.user" />
+            {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
 
             {/* Address book */}
             <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_BEFORE} props={props} />
@@ -269,38 +270,44 @@ class NavDrawer extends Component {
           </Fragment>
         }
 
-        <SubHeader title="navigation.subHeader.more" />
+        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
 
-        {/* Payment */}
-        <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
-        <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
-          <Item
-            href={`${PAGE_PATH}/payment`}
-            icon={CreditCardIcon}
-            close={this.handleClose}
-            testId="navDrawerPaymentButton"
-          >
-            <I18n.Text string="navigation.payment" />
-          </Item>
-        </Portal>
-        <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+        {!userAddresses &&
+          { /* Display previous version's entries, when feature flag is disabled */ } &&
+          <Fragment>
+            {/* Shipping */}
+            <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+            <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
+              <Item
+                href={`${PAGE_PATH}/shipping`}
+                icon={LocalShippingIcon}
+                close={this.handleClose}
+                testId="navDrawerShippingButton"
+              >
+                <I18n.Text string="navigation.shipping" />
+              </Item>
+            </Portal>
+            <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
 
-        <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
-        <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
-          <Item
-            href={`${PAGE_PATH}/shipping`}
-            icon={LocalShippingIcon}
-            close={this.handleClose}
-            testId="navDrawerShippingButton"
-          >
-            <I18n.Text string="navigation.shipping" />
-          </Item>
-        </Portal>
-        <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+            {/* Payment */}
+            <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+            <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
+              <Item
+                href={`${PAGE_PATH}/payment`}
+                icon={CreditCardIcon}
+                close={this.handleClose}
+                testId="navDrawerPaymentButton"
+              >
+                <I18n.Text string="navigation.payment" />
+              </Item>
+            </Portal>
+            <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+          </Fragment>
+        }
 
         <Divider close={this.handleClose} />
 
-        <SubHeader title="navigation.subHeader.about" />
+        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
 
         {/* Terms */}
         <Portal name={commonPortals.NAV_MENU_TERMS_BEFORE} props={props} />
