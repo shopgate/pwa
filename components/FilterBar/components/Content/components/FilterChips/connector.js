@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
 import commitTemporaryFilters from '@shopgate/pwa-common-commerce/filter/actions/commitTemporaryFilters';
 import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
@@ -11,6 +12,7 @@ import openFilterView from '../../actions/openFilterView';
  */
 const mapStateToProps = state => ({
   activeFilters: getActiveFilters(state),
+  currentPathname: getHistoryPathname(state),
 });
 
 /**

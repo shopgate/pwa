@@ -22,6 +22,10 @@ exports[`FilterChips should render all types of filters and remove them on click
           "MultiSelect": Object {
             "label": "MultiSelect",
             "type": "multiselect",
+            "valueLabels": Array [
+              "One",
+              "Two",
+            ],
             "values": Array [
               "one",
               "two",
@@ -37,10 +41,12 @@ exports[`FilterChips should render all types of filters and remove them on click
             "label": "Single selection",
             "type": "single_select",
             "value": "SingleSelected",
+            "valueLabel": "Single Selected",
           },
         }
       }
       currency="EUR"
+      currentPathname=""
       handleFilterRemove={[Function]}
       handleOpenFilters={[Function]}
     >
@@ -52,12 +58,13 @@ exports[`FilterChips should render all types of filters and remove them on click
           invertMoreButton={false}
           maxRows={2}
           moreLabel="filter.more"
+          pathname=""
         >
           <div
-            className="css-2g949"
+            className="css-1hor112"
           >
             <div
-              className="css-dzs3g7"
+              className="css-1ck9rgi"
             >
               <Chip
                 invert={false}
@@ -67,17 +74,17 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="remove Single selection: SingleSelected"
+                    testId="remove Single selection: Single Selected"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="remove Single selection: SingleSelected"
+                      data-test-id="remove Single selection: Single Selected"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -116,15 +123,15 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="Single selection: SingleSelected"
+                    testId="Single selection: Single Selected"
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="Single selection: SingleSelected"
+                      data-test-id="Single selection: Single Selected"
                       disabled={false}
                       onClick={[Function]}
                     >
-                      Single selection: SingleSelected
+                      Single selection: Single Selected
                     </button>
                   </Button>
                 </div>
@@ -137,17 +144,17 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="remove MultiSelect: one"
+                    testId="remove MultiSelect: One"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="remove MultiSelect: one"
+                      data-test-id="remove MultiSelect: One"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -186,15 +193,15 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="MultiSelect: one"
+                    testId="MultiSelect: One"
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="MultiSelect: one"
+                      data-test-id="MultiSelect: One"
                       disabled={false}
                       onClick={[Function]}
                     >
-                      MultiSelect: one
+                      MultiSelect: One
                     </button>
                   </Button>
                 </div>
@@ -207,17 +214,17 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
                     disabled={false}
                     onClick={[Function]}
-                    testId="remove MultiSelect: two"
+                    testId="remove MultiSelect: Two"
                   >
                     <button
                       className="css-i7sqdh css-1rn65c0"
-                      data-test-id="remove MultiSelect: two"
+                      data-test-id="remove MultiSelect: Two"
                       disabled={false}
                       onClick={[Function]}
                     >
@@ -256,15 +263,15 @@ exports[`FilterChips should render all types of filters and remove them on click
                     className="css-1al9zi1"
                     disabled={false}
                     onClick={[Function]}
-                    testId="MultiSelect: two"
+                    testId="MultiSelect: Two"
                   >
                     <button
                       className="css-1al9zi1 css-1rn65c0"
-                      data-test-id="MultiSelect: two"
+                      data-test-id="MultiSelect: Two"
                       disabled={false}
                       onClick={[Function]}
                     >
-                      MultiSelect: two
+                      MultiSelect: Two
                     </button>
                   </Button>
                 </div>
@@ -277,7 +284,7 @@ exports[`FilterChips should render all types of filters and remove them on click
                 removable={true}
               >
                 <div
-                  className="css-11a1u6a"
+                  className="css-bpa25c"
                 >
                   <Button
                     className="css-i7sqdh"
@@ -397,7 +404,7 @@ exports[`FilterChips should render all types of filters and remove them on click
               </Chip>
             </div>
             <div
-              className="css-u9gfar"
+              className="css-1sunnf0"
             >
               <RippleButton
                 className="css-rz4b27"
