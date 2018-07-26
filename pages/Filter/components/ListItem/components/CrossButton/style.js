@@ -2,10 +2,10 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 
 const cross = css({
-  width: 50,
-  height: 50,
+  width: 40,
+  height: 40,
   position: 'absolute',
-  top: 0,
+  top: 5,
   right: 0,
   zIndex: 1,
   fontSize: '1.5rem',

@@ -9,7 +9,7 @@ import styles from './style';
  * The height of one row.
  * @type {number}
  */
-export const CHIP_ROW_HEIGHT = 40;
+export const CHIP_ROW_HEIGHT = 34;
 
 /**
  * The minimum width that a chip should have.
@@ -27,6 +27,9 @@ class ChipLayout extends Component {
     invertMoreButton: PropTypes.bool,
     maxRows: PropTypes.number,
     moreLabel: PropTypes.string,
+    // This prop is required to force rendering when pathname changes.
+    // eslint-disable-next-line react/no-unused-prop-types
+    pathname: PropTypes.string,
   };
 
   static defaultProps = {
@@ -35,6 +38,7 @@ class ChipLayout extends Component {
     invertMoreButton: false,
     maxRows: 2,
     moreLabel: 'more',
+    pathname: '',
   };
 
   /**
@@ -45,7 +49,13 @@ class ChipLayout extends Component {
   }
 
   /**
-   * If the component updates we need to process all children again to check for changes.
+   * Eveyry time pathname or other prop changes this callback is called.
+   * This funtion will start processing hidden elements in order to check if "more" button
+   * should be rendered.
+   *
+   * It must be done on every prop change, including the pathname.
+   * Sometimes this component is rendered invisible, then since `.processHiddenElements` uses
+   * refs.clientHeight it would always be zero.
    */
   componentDidUpdate() {
     this.processHiddenElements();
@@ -56,7 +66,8 @@ class ChipLayout extends Component {
    * @returns {number}
    */
   get maxContentHeight() {
-    return CHIP_ROW_HEIGHT * this.props.maxRows;
+    // 8 -> container padding.
+    return (CHIP_ROW_HEIGHT * this.props.maxRows) + 8;
   }
 
   /**
@@ -91,7 +102,7 @@ class ChipLayout extends Component {
 
     // Hide or show chips that are hidden due to overflow.
     chips.forEach((child, index) => {
-      const isVisible = child.offsetTop < containerHeight;
+      const isVisible = (child.offsetTop + child.clientHeight) < containerHeight;
       child.setAttribute('style', `display: ${isVisible ? 'flex' : 'none'};`);
 
       if (isVisible) {
@@ -107,6 +118,11 @@ class ChipLayout extends Component {
 
     // Hide elements so that the 'more button' has enough space.
     chips.slice(0, lastVisibleElement + 1).reverse().every((element) => {
+      const offsetBottom = element.offsetTop + element.clientHeight;
+      if (this.moreButtonRef.offsetTop > offsetBottom) {
+        return true;
+      }
+
       const buttonSpaceRequired = this.moreButtonRef.clientWidth + variables.gap.big;
       const elementRight = this.containerRef.clientWidth -
         (element.offsetLeft + element.clientWidth);
