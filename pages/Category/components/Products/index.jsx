@@ -11,6 +11,7 @@ import connect from './connector';
 class Products extends Component {
   static propTypes = {
     getProducts: PropTypes.func,
+    hash: PropTypes.string,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
@@ -18,6 +19,7 @@ class Products extends Component {
   static defaultProps = {
     getProducts: () => {},
     products: null,
+    hash: null,
     totalProductCount: null,
   };
 
@@ -35,6 +37,7 @@ class Products extends Component {
         handleGetProducts={this.props.getProducts}
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
+        requestHash={this.props.hash}
       />
     );
   }
