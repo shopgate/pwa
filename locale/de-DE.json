@@ -120,6 +120,10 @@
     "categories": "Kategorien",
     "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
+    "my_details": "Meine Daten",
+    "change_password": "Passwort ändern",
+    "address_book": "Adressbuch",
+    "payment_options": "Zahlungsoptionen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
     "about": "Impressum",
@@ -128,7 +132,12 @@
     "privacy": "Datenschutz",
     "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "menuSubHeader": {
+      "more": "Mehr",
+      "about": "Über uns",
+      "user": "Meine Daten"
+    }
   },
   "reviews": {
     "rating": "Bewertung",

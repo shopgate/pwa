@@ -119,7 +119,11 @@
     "home": "Home",
     "categories": "Categories",
     "favorites": "Favorites",
-    "my_orders": "My orders",
+    "my_orders": "My Orders",
+    "my_details": "My Details",
+    "change_password": "Change Password",
+    "address_book": "Address Book",
+    "payment_options": "Payment Options",
     "cart": "Shopping cart",
     "shipping": "Shipping methods",
     "about": "About us",
@@ -128,7 +132,12 @@
     "privacy": "Privacy policy",
     "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "menuSubHeader": {
+      "more": "More",
+      "about": "About us",
+      "user": "Account settings"
+    }
   },
   "reviews": {
     "rating": "Rating",
