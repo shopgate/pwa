@@ -7,13 +7,12 @@ import messageCache from './messageCache';
  * The hash is generated from given language code and translation key.
  * If no instance exists yet, a new instance will be created and returned.
  * @param {string} langCode A language code.
- * @param {number} price The price to format.
  * @param {string} currency The current currency.
  * @param {boolean} fractions With or without fraction digits.
  * @returns {IntlMessageFormat}
  */
-const getFormattedPriceFromCache = (langCode, price, currency, fractions) => {
-  const hash = `${langCode}_${price}_${currency}_${fractions}`;
+const getFormattedPriceFromCache = (langCode, currency, fractions) => {
+  const hash = `${langCode}_price_${currency}_${fractions}`;
 
   // Check if a cached instance already exists.
   if (messageCache[hash]) {
@@ -47,7 +46,7 @@ const getFormattedPriceFromCache = (langCode, price, currency, fractions) => {
  * @returns {string}
  */
 const formatPrice = (langCode, price, currency, fractions) => (
-  getFormattedPriceFromCache(langCode, price, currency, fractions).format({ price })
+  getFormattedPriceFromCache(langCode, currency, fractions).format({ price })
 );
 
 const getPriceFormatter = curry(formatPrice);

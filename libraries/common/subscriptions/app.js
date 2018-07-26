@@ -3,6 +3,7 @@ import {
   emitter as errorEmitter,
   registerEvents,
   closeInAppBrowser,
+  hideSplashScreen,
 } from '@shopgate/pwa-core';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
@@ -103,6 +104,12 @@ export default function app(subscribe) {
       dispatch(navigate(ACTION_PUSH, INDEX_PATH));
     }
     dispatch(navigate(ACTION_PUSH, action.location));
+    /*
+     * Hide splashscreen must be send AFTER app did start.
+     * Interjections events (like openPushMessage) would not work if this command is sent
+     * before registering to interjections.
+     */
+    hideSplashScreen();
   });
 
   subscribe(pipelineError$, ({ dispatch, action }) => {

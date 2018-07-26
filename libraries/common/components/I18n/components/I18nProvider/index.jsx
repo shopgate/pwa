@@ -5,6 +5,7 @@ import {
   getPriceFormatter,
   getDateFormatter,
   getTimeFormatter,
+  getNumberFormatter,
 } from '../../../../helpers/i18n';
 
 /**
@@ -48,6 +49,7 @@ export default class I18nProvider extends Component {
       _p: getPriceFormatter(lang),
       _d: getDateFormatter(lang),
       _t: getTimeFormatter(lang),
+      _n: getNumberFormatter(lang),
     };
   };
 

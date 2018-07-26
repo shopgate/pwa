@@ -7,13 +7,12 @@ import messageCache from './messageCache';
  * The hash is generated from given language code and translation key.
  * If no instance exists yet, a new instance will be created and returned.
  * @param {string} langCode A language code.
- * @param {number} timestamp The current date's timestamp.
  * @param {string} format The date format.
  *                        Possible values: 'short', 'medium' (default), 'long','full'
  * @returns {IntlMessageFormat}
  */
-const getFormattedDateFromCache = (langCode, timestamp, format) => {
-  const hash = `${langCode}_date_${timestamp}_${format}`;
+const getFormattedDateFromCache = (langCode, format) => {
+  const hash = `${langCode}_date_${format}`;
 
   // Check if a cached instance already exists.
   if (messageCache[hash]) {
@@ -34,7 +33,7 @@ const getFormattedDateFromCache = (langCode, timestamp, format) => {
  * @returns {string}
  */
 const formatDate = (langCode, timestamp, format = 'medium') => (
-  getFormattedDateFromCache(langCode, timestamp, format).format({ timestamp })
+  getFormattedDateFromCache(langCode, format).format({ timestamp })
 );
 
 export default curry(formatDate);

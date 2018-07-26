@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import syncRouter from '@virtuous/redux-conductor';
-import hideSplashScreen from '@shopgate/pwa-core/commands/hideSplashScreen';
 import initSubscribers from './subscriptions';
 import {
   appDidStart,
@@ -63,7 +62,6 @@ class App extends PureComponent {
    */
   componentDidMount() {
     this.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
-    hideSplashScreen();
     this.store.dispatch(fetchClientInformation());
   }
 

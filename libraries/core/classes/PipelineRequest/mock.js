@@ -28,6 +28,7 @@ class MockedPipelineRequest {
     this.handleErrors = errorHandleTypes.ERROR_HANDLE_DEFAULT;
     this.errorBlacklist = [];
     this.process = processTypes.DEFAULT_PROCESSED;
+    this.timeout = undefined;
   }
 
   /**
@@ -37,6 +38,17 @@ class MockedPipelineRequest {
    */
   setInput(mockedInput = {}) {
     this.input = mockedInput;
+    return this;
+  }
+
+  /**
+   * Sets a timeout.
+   * @param {number} timeout Timeout.
+   * @returns {MockedPipelineRequest}
+   */
+  setTimeout(timeout) {
+    this.timeout = timeout;
+
     return this;
   }
 
@@ -67,7 +79,7 @@ class MockedPipelineRequest {
    * @param {string} processed The response process type.
    * @return {PipelineRequest}
    */
-  setResponseProcessed(processed = DEFAULT_PROCESSED) {
+  setResponseProcessed(processed = processTypes.DEFAULT_PROCESSED) {
     if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
     if (!Object.values(processTypes).includes(processed)) {
       throw new Error(`The value '${processed}' is not supported!`);
