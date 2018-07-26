@@ -133,7 +133,7 @@
     "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
     "logout": "Abmelden",
-    "subHeader": {
+    "menuSubHeader": {
       "more": "Mehr",
       "about": "Über uns",
       "user": "Meine Daten"

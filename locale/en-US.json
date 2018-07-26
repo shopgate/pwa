@@ -133,7 +133,7 @@
     "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
     "logout": "Sign out",
-    "subHeader": {
+    "menuSubHeader": {
       "more": "More",
       "about": "About us",
       "user": "Account settings"

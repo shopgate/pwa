@@ -140,11 +140,11 @@
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
     "more_menu": "Plus",
-   "subHeader": {
-     "more": "Plus",
-     "about": "À propos de nous",
-     "user": "Paramètres du compte"
-   }
+    "menuSubHeader": {
+      "more": "Plus",
+      "about": "À propos de nous",
+      "user": "Paramètres du compte"
+    }
   },
   "reviews": {
     "rating": "Evaluation",
