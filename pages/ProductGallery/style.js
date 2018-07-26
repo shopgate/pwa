@@ -57,7 +57,7 @@ const sliderStyles = {
 const image = css({
   width: '100vw',
   height: '100vw',
-});
+}).toString();
 
 export default {
   container,
