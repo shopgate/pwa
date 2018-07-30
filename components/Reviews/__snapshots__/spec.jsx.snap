@@ -4148,7 +4148,110 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
             dispatch={[Function]}
             productId="foo"
             totalReviewCount={2}
-          />
+          >
+            <div
+              className={
+                Object {
+                  "data-css-1pitgg2": "",
+                }
+              }
+              data-test-id="showAllReviewsButton"
+            >
+              <ButtonLink
+                href="/item/666f6f/reviews"
+                noGap={false}
+              >
+                <ActionButton
+                  className=""
+                  disabled={false}
+                  flat={true}
+                  loading={false}
+                  noGap={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId={null}
+                  type="secondary"
+                  wrapContent={true}
+                >
+                  <div
+                    className="css-omcrdt"
+                    data-test-id={null}
+                  >
+                    <RippleButton
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      testId="Button"
+                      type="secondary"
+                      wrapContent={true}
+                    >
+                      <Button
+                        className=""
+                        disabled={false}
+                        flat={true}
+                        onClick={[Function]}
+                        testId="Button"
+                        type="secondary"
+                        wrapContent={false}
+                      >
+                        <Button
+                          className="css-dh0pju "
+                          disabled={false}
+                          onClick={[Function]}
+                          testId="Button"
+                        >
+                          <button
+                            className="css-dh0pju  css-1rn65c0"
+                            data-test-id="Button"
+                            disabled={false}
+                            onClick={[Function]}
+                          >
+                            <Ripple
+                              className="css-8s1fw2 "
+                              color="#000"
+                              disabled={false}
+                              fill={true}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
+                            >
+                              <div
+                                aria-hidden={true}
+                                className="css-8s1fw2 "
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
+                              >
+                                <Translate
+                                  className=""
+                                  params={
+                                    Object {
+                                      "count": 2,
+                                    }
+                                  }
+                                  string="reviews.button_all"
+                                >
+                                  <span
+                                    className=""
+                                  >
+                                    reviews.button_all
+                                  </span>
+                                </Translate>
+                              </div>
+                            </Ripple>
+                          </button>
+                        </Button>
+                      </Button>
+                    </RippleButton>
+                  </div>
+                </ActionButton>
+              </ButtonLink>
+            </div>
+          </AllReviewsLink>
         </Connect(AllReviewsLink)>
       </div>
     </Reviews>
