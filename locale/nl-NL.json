@@ -125,10 +125,6 @@
     "home": "Home",
     "categories": "Categorieën",
     "my_orders": "Mijn bestellingen",
-    "my_details": "Mijn Gegevens",
-    "change_password": "Wachtwoord wijzigen",
-    "address_book": "Adresboek",
-    "payment_options": "Betalingsmogelijkheden",
     "cart": "Winkelwagen",
     "shipping": "Verzendmethoden",
     "about": "Over",
@@ -166,27 +162,5 @@
     "cart": "Winkelwagen",
     "more": "Meer",
     "favorites": "Favorieten"
-  },
-  "user": {
-    "addresses": {
-      "title": "Adresboek",
-      "headline": "Adresboek",
-      "button": "Voeg een nieuw adres toe",
-      "defaults": {
-        "default": "Standaard adres",
-        "shipping": "Standaard verzendadres",
-        "billing": "Standaard factuuradres"
-      },
-      "setAsDefault": {
-        "default": "Instellen als uw standaard adres",
-        "shipping": "Instellen als uw standaard verzendadres",
-        "billing": "Instellen als uw standaard factuuradres"
-      },
-      "error": {
-        "add": "Toevoegen van adres mislukt, controleer uw velden",
-        "update": "Updaten van adres mislukt, controleer uw velden",
-        "setAsDefault": "Kon adres niet als standaard instellen"
-      }
-    }
   }
 }

@@ -1,12 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
 import List from 'Components/List';
-import { USER_ADDRESS_BOOK_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-
-const { featureFlag: { userAddresses = true } = {} } = appConfig;
 
 /**
  * Logged in user menu.
@@ -18,21 +14,6 @@ const LoggedIn = ({ logout }) => {
   return (
     <div data-test-id="userMenu">
       <List>
-
-        {userAddresses &&
-          <Fragment>
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_BEFORE} props={props} />
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
-              <List.Item
-                title="navigation.address_book"
-                link={`${USER_ADDRESS_BOOK_PATH}`}
-                testId="addressBookButton"
-              />
-            </Portal>
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_AFTER} props={props} />
-          </Fragment>
-        }
-
         <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
           <List.Item title="navigation.logout" onClick={logout} testId="logoutButton" />

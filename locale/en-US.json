@@ -125,12 +125,8 @@
     "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
-    "my_orders": "My Orders",
-    "my_details": "My Details",
-    "change_password": "Change Password",
-    "address_book": "Address Book",
-    "payment_options": "Payment Options",
-    "cart": "Shopping Cart",
+    "my_orders": "My orders",
+    "cart": "Shopping cart",
     "shipping": "Shipping Methods",
     "about": "About",
     "contact": "Contact",
@@ -167,27 +163,5 @@
     "cart": "Cart",
     "more": "More",
     "favorites": "Favorites"
-  },
-  "user": {
-    "addresses": {
-      "title": "Address book",
-      "headline": "Address book",
-      "button": "Add a new address",
-      "defaults": {
-        "default": "Default address",
-        "shipping": "Default shipping address",
-        "billing": "Default billing address"
-      },
-      "setAsDefault": {
-        "default": "Set as your default address",
-        "shipping": "Set as your default shipping address",
-        "billing": "Set as your default billing address"
-      },
-      "error": {
-        "add": "Adding the address failed, please check your input",
-        "update": "Updating the address failed, please check your input",
-        "setAsDefault": "Could not set the address as default"
-      }
-    }
   }
 }
