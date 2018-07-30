@@ -22,7 +22,7 @@ class ApplyFilterButton extends Component {
    */
   handleApplyFilters = () => {
     this.props.applyFilters();
-  }
+  };
 
   /**
    * [render description]

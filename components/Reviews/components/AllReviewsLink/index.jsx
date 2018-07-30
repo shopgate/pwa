@@ -4,7 +4,7 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
-import { REVIEW_PREVIEW_COUNT } from 'Pages/Product/constants';
+import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
 import connect from './connector';
 import { container } from './style';
 

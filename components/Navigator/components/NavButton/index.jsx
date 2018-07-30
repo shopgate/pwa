@@ -105,7 +105,7 @@ class NavButton extends Component {
     if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
       this.props.goBackHistory();
     }
-  }
+  };
 
   /**
    * Returns the icon for the button.

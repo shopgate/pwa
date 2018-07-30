@@ -29,7 +29,7 @@ class TabBarMoreAction extends Component {
 
     const link = new ParsedLink(MORE_PATH);
     link.open();
-  }
+  };
 
   /**
    * Renders the component.

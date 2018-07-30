@@ -13,7 +13,6 @@ beforeEach(() => {
 
 /**
  * Creates component with provided store state.
- * @param {Object} mockedState Mocked stage.
  * @return {ReactWrapper}
  */
 const createComponent = () => mount((

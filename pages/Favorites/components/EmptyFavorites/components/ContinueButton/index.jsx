@@ -15,6 +15,10 @@ class ContinueButton extends Component {
     goBackHistory: PropTypes.func.isRequired,
   };
 
+  /**
+   * Render
+   * @return {JSX}
+   */
   render() {
     return (
       <RippleButton onClick={this.props.goBackHistory} className={styles.button} type="secondary" testId="continueButton">
