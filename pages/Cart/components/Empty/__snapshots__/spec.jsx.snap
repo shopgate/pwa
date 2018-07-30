@@ -2,7 +2,7 @@
 
 exports[`<CartEmpty /> should render 1`] = `
 <div
-  className="css-12lnmui"
+  className="css-glkfau"
 >
   <Portal
     name="cart.empty.before"
