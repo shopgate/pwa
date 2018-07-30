@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductContext from '../../../../../../context';
+import { ProductContext } from './../../../../../../context';
 
 export default Component => () => (
   <ProductContext.Consumer>

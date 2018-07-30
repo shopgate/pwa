@@ -73,6 +73,10 @@ describe('Reviews subscriptions', () => {
       const state = {
         ...defaultState,
         ...mockedStateWithTwoReviews,
+        navigator: {
+          ...defaultState.navigator,
+          showSearch: false,
+        },
       };
 
       store = mockedStore(state);
@@ -90,10 +94,6 @@ describe('Reviews subscriptions', () => {
       const state = {
         ...defaultState,
         ...mockedStateWithTwoReviews,
-        navigator: {
-          ...defaultState.navigator,
-          showSearch: true,
-        },
         ui: {
           ...mockedStateWithTwoReviews.ui,
           general: {
@@ -119,6 +119,10 @@ describe('Reviews subscriptions', () => {
       const state = {
         ...defaultState,
         ...mockedStateWithTwoReviews,
+        navigator: {
+          ...defaultState.navigator,
+          showSearch: false,
+        },
       };
 
       store = mockedStore(state);

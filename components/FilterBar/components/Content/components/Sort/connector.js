@@ -20,4 +20,12 @@ const mapDispatchToProps = dispatch => ({
   changeSort: sortValue => dispatch(changeSort(sortValue)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+const areStatePropsEqual = (next, prev) => {
+  if (prev.sort !== next.sort) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

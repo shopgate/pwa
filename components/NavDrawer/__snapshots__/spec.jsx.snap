@@ -22,6 +22,7 @@ exports[`<NavDrawer /> should not render a favorites link at all when feature fl
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={false}
@@ -1509,6 +1510,7 @@ exports[`<NavDrawer /> should render favorites list link with an indicator 1`] =
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={false}
@@ -3120,6 +3122,7 @@ exports[`<NavDrawer /> should render favorites list link without an indicator 1`
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={false}
@@ -4736,6 +4739,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged i
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={false}
@@ -6392,6 +6396,7 @@ exports[`<NavDrawer /> should render the header properly when a user is logged o
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={false}
@@ -8003,6 +8008,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={true}
@@ -8064,7 +8070,7 @@ exports[`<NavDrawer /> should render the navigation drawer opened 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="css-hlk66h"
+                    className="css-hlk66h "
                     onClick={[Function]}
                     style={
                       Object {
@@ -10173,6 +10179,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={true}
@@ -10234,7 +10241,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 >
                   <div
                     aria-hidden={true}
-                    className="css-hlk66h"
+                    className="css-hlk66h "
                     onClick={[Function]}
                     style={
                       Object {
@@ -11825,6 +11832,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
         data-test-id="NavDrawer"
       >
         <Backdrop
+          className=""
           color="#000"
           duration={200}
           isVisible={true}
@@ -11886,7 +11894,7 @@ exports[`<NavDrawer /> should trigger the toggle navigation callback when clicke
                 >
                   <div
                     aria-hidden={true}
-                    className="css-hlk66h"
+                    className="css-hlk66h "
                     onClick={[Function]}
                     style={
                       Object {

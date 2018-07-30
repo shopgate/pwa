@@ -1,3 +1,5 @@
+import { ACTION_POP } from '@virtuous/conductor/constants';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
@@ -6,7 +8,6 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import createToast from '@shopgate/pwa-common/actions/toast/createToast';
@@ -58,7 +59,7 @@ export default function writeReview(subscribe) {
    * Get triggered when a review was successfully submitted
    */
   subscribe(successReviewSubmit$, ({ dispatch }) => {
-    dispatch(goBackHistory());
+    dispatch(navigate(ACTION_POP));
     dispatch(createToast({ message: 'reviews.success_message' }));
   });
   /**

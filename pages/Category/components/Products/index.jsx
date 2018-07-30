@@ -10,13 +10,15 @@ class CategoryProducts extends PureComponent {
   static propTypes = {
     categoryId: PropTypes.string,
     getProducts: PropTypes.func,
+    hash: PropTypes.string,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
 
   static defaultProps = {
     categoryId: null,
-    getProducts: () => { },
+    getProducts() {},
+    hash: null,
     products: null,
     totalProductCount: null,
   };
@@ -29,15 +31,12 @@ class CategoryProducts extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.products) {
-      return null;
-    }
-
     return (
       <ProductGrid
         handleGetProducts={this.fetchProducts}
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
+        requestHash={this.props.hash}
       />
     );
   }

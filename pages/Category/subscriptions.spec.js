@@ -10,6 +10,7 @@ import {
   categoryState,
   initialCategoryState,
 } from '@shopgate/pwa-common-commerce/category/mock';
+import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import { categoryWillEnter$, receivedVisibleCategory$ } from './streams';
 import subscribe from './subscriptions';
 
@@ -21,8 +22,9 @@ jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequ
 
 describe('Category subscriptions', () => {
   let subscribeMock;
-  let first;
-  let second;
+  let categoryEnter;
+  let receive;
+  let categoryErr;
   let store = mockedStore();
   beforeAll(() => {
     jest.resetAllMocks();
@@ -31,11 +33,12 @@ describe('Category subscriptions', () => {
   });
   it('should subscribe', () => {
     subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(2);
+    expect(subscribeMock.mock.calls.length).toBe(3);
 
-    [first, second] = subscribeMock.mock.calls;
-    expect(first[0]).toBe(categoryWillEnter$);
-    expect(second[0]).toBe(receivedVisibleCategory$);
+    [categoryEnter, receive, categoryErr] = subscribeMock.mock.calls;
+    expect(categoryEnter[0]).toBe(categoryWillEnter$);
+    expect(receive[0]).toBe(receivedVisibleCategory$);
+    expect(categoryErr[0]).toBe(categoryError$);
   });
 
   describe('categoryWillEnter$', () => {
@@ -50,7 +53,7 @@ describe('Category subscriptions', () => {
       };
 
       store = mockedStore(mockedState);
-      first[1]({
+      categoryEnter[1]({
         action,
         dispatch: store.dispatch,
       });
@@ -75,7 +78,7 @@ describe('Category subscriptions', () => {
       };
 
       store = mockedStore(mockedState);
-      first[1]({
+      categoryEnter[1]({
         action,
         dispatch: store.dispatch,
       });
@@ -101,7 +104,7 @@ describe('Category subscriptions', () => {
       };
 
       store = mockedStore(mockedState);
-      second[1]({
+      receive[1]({
         action,
         dispatch: store.dispatch,
       });

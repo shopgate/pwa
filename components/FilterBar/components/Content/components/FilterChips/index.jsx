@@ -22,6 +22,7 @@ const FilterChips = ({
   currency,
   handleFilterRemove,
   handleOpenFilters,
+  currentPathname,
 }) => {
   if (activeFilters === null || !Object.keys(activeFilters).length) {
     return null;
@@ -56,7 +57,7 @@ const FilterChips = ({
         break;
       }
       case FILTER_TYPE_MULTISELECT:
-        filter.values.forEach((value, index) => chips.push((
+        filter.valueLabels.forEach((value, index) => chips.push((
           <Chip
             key={`${filter.label}-${index + 1}`}
             onRemove={() => handleFilterRemove(key, index)}
@@ -73,7 +74,7 @@ const FilterChips = ({
             onRemove={() => handleFilterRemove(key)}
             onClick={handleOpenFilters}
           >
-            {`${filter.label}: ${filter.value}`}
+            {`${filter.label}: ${filter.valueLabel}`}
           </Chip>
         ));
         break;
@@ -82,7 +83,11 @@ const FilterChips = ({
 
   return (
     <div className={styles}>
-      <ChipLayout moreLabel="filter.more" handleMoreButton={handleOpenFilters}>
+      <ChipLayout
+        moreLabel="filter.more"
+        handleMoreButton={handleOpenFilters}
+        pathname={currentPathname}
+      >
         {chips}
       </ChipLayout>
     </div>
@@ -92,6 +97,7 @@ const FilterChips = ({
 FilterChips.propTypes = {
   activeFilters: PropTypes.shape(),
   currency: PropTypes.string,
+  currentPathname: PropTypes.string,
   handleFilterRemove: PropTypes.func,
   handleOpenFilters: PropTypes.func,
 };
@@ -99,6 +105,7 @@ FilterChips.propTypes = {
 FilterChips.defaultProps = {
   activeFilters: null,
   currency: '',
+  currentPathname: '',
   handleFilterRemove: () => {},
   handleOpenFilters: () => {},
 };

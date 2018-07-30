@@ -2,9 +2,9 @@ import React from 'react';
 import { NavigatorContext } from '../../../../context';
 
 export default Component => () => (
-  <NavigatorContext>
+  <NavigatorContext.Consumer>
     {({ searchField }) => (
       <Component isVisible={searchField} />
     )}
-  </NavigatorContext>
+  </NavigatorContext.Consumer>
 );
