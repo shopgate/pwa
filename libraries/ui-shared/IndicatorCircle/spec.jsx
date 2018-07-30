@@ -20,7 +20,7 @@ describe('<IndicatorCircle />', () => {
 
     expect(wrapper).toMatchSnapshot();
 
-    const correctCssClass = styles.circle('#fff', 4, true);
+    const correctCssClass = styles.circle('#fff', 4, false);
     const wrongCssClass = styles.circle('#000', 0);
     const circleHtml = wrapper.find('circle');
 

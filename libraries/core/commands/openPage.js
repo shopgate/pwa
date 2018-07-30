@@ -11,10 +11,10 @@ import AppCommand from '../classes/AppCommand';
  * @param {string} params.title The title of the opened page
  * @param {Object} params.navigationBarParams Parameters for the navigation bar.
  */
-export default (params) => {
+export default function openPage(params) {
   const command = new AppCommand();
 
   command
     .setCommandName('openPage')
     .dispatch(params);
-};
+}

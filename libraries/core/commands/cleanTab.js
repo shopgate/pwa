@@ -17,7 +17,7 @@ export const cleanTabCmd = params => (
  * @param {Object} params The command parameters.
  * @param {string} params.targetTab Target tab for the page.
  */
-export default (params) => {
+export default function cleanTab(params) {
   cleanTabCmd(params)
     .dispatch();
-};
+}

@@ -5,10 +5,10 @@ import AppCommand from '../classes/AppCommand';
  * @param {Object} params The command parameters.
  * @param {string} params.targetTab Target tab for the page.
  */
-export default (params) => {
+export default function flushTab(params) {
   const command = new AppCommand();
 
   command
     .setCommandName('flushTab')
     .dispatch(params);
-};
+}

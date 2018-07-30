@@ -2,21 +2,20 @@ import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import getUser from '../actions/user/getUser';
-import { successLogin } from '../action-creators/user';
-import { appDidStart$ } from '../streams/app';
+import { navigate, successLogin } from '../action-creators';
 import {
+  appDidStart$,
   userWillLogin$,
   userLoginResponse$,
   userDidLogin$,
   userDidLogout$,
   legacyConnectRegisterDidFail$,
-} from '../streams/user';
+} from '../streams';
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
 import showModal from '../actions/modal/showModal';
 import { LOGIN_PATH } from '../constants/RoutePaths';
 import { LEGACY_URL_CONNECT_REGISTER } from '../constants/Registration';
-import { navigate } from '../action-creators/router';
 
 /**
  * User subscriptions.

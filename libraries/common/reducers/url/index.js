@@ -5,6 +5,7 @@ import {
 } from '../../constants/ActionTypes';
 
 const URL_LIFETIME = 31536000000; // 1 year in milliseconds
+const defaultState = {};
 
 /**
  * Stores the requested urls
@@ -13,7 +14,7 @@ const URL_LIFETIME = 31536000000; // 1 year in milliseconds
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = {}, action) => {
+export default function urlReducer(state = defaultState, action) {
   switch (action.type) {
     case REQUEST_URL:
       return {
@@ -48,4 +49,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-};
+}

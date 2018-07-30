@@ -3,11 +3,11 @@ import {
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
+  ACTION_RESET,
 } from '@virtuous/conductor/constants';
-import { navigate } from '../action-creators/router';
+import { navigate } from '../action-creators';
 import * as handler from './helpers/handleLinks';
-import { navigate$ } from '../streams/router';
-import { userDidLogin$ } from '../streams/user';
+import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
 
@@ -17,7 +17,9 @@ import appConfig from '../helpers/config';
  */
 export default function router(subscribe) {
   subscribe(navigate$, ({ action, dispatch, getState }) => {
-    const { action: historyAction, location, state: routeState } = action;
+    const { action: historyAction, state: routeState } = action;
+    let { location } = action;
+
     const state = getState();
 
     // Route authentication.
@@ -36,6 +38,12 @@ export default function router(subscribe) {
 
         return;
       }
+    }
+
+    // Override the location if is Shop link is found.
+    if (handler.isShopLink(location)) {
+      const { pathname, search } = new URL(location);
+      location = `${pathname}${search}`;
     }
 
     // If there is one of the known protocols in the url.
@@ -72,6 +80,10 @@ export default function router(subscribe) {
         conductor.replace(location, routeState);
         break;
       }
+      case ACTION_RESET: {
+        conductor.reset();
+        break;
+      }
       default:
         break;
     }
@@ -87,7 +99,11 @@ export default function router(subscribe) {
   subscribe(redirectUser$, ({ action, dispatch }) => {
     if (appConfig.webCheckoutShopify === null) {
       const { location, state } = action.redirect;
-      dispatch(navigate(ACTION_REPLACE, location, state));
+      if (location) {
+        dispatch(navigate(ACTION_REPLACE, location, state));
+      } else {
+        dispatch(navigate(ACTION_POP));
+      }
     }
   });
 }

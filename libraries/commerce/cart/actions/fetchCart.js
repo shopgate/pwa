@@ -10,10 +10,19 @@ import errorCart from '../action-creators/errorCart';
  * @return {Function} A redux thunk.
  */
 const fetchCart = () => (dispatch) => {
+  const request = new PipelineRequest(pipelines.SHOPGATE_CART_GET_CART);
+
+  /**
+   * To avoid unnecessarily dispatched getCart requests, the request is only sent when
+   * no cart modifying requests are currently running.
+   */
+  if (request.hasRunningDependencies()) {
+    return;
+  }
+
   dispatch(requestCart());
 
-  new PipelineRequest(pipelines.SHOPGATE_CART_GET_CART)
-    .dispatch()
+  request.dispatch()
     .then(response => dispatch(receiveCart(response)))
     .catch((error) => {
       if (error) {

@@ -1,24 +1,24 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import PipelineErrorDialog from './index';
 
 describe('<PipelineErrorDialog />', () => {
   const defaultParams = {
-    errorCode: '123',
+    code: '123',
     message: 'Error message',
-    pipelineName: 'fakePipeline',
+    pipeline: 'fakePipeline',
     request: {},
   };
 
   it('should render with minimal props', () => {
-    const wrapper = shallow(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+    const wrapper = mount(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should show a custom message if a message is is provided', () => {
     const message = 'Custom message';
-    const wrapper = shallow((
+    const wrapper = mount((
       <PipelineErrorDialog
         actions={[]}
         message={message}
@@ -31,7 +31,7 @@ describe('<PipelineErrorDialog />', () => {
   });
 
   it('should switch modes on tap', () => {
-    const wrapper = shallow(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+    const wrapper = mount(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     const numTaps = 10;
 
@@ -56,7 +56,7 @@ describe('<PipelineErrorDialog />', () => {
   it('should not switch modes if tapped too slow', () => {
     jest.useFakeTimers();
 
-    const wrapper = shallow(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+    const wrapper = mount(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     const numTaps = 10;
     const numTapsUntilTimeout = Math.round(numTaps / 2);

@@ -1,6 +1,6 @@
 import { ACTION_REPLACE } from '@virtuous/conductor/constants';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
+import { routeWillEnter$, routeDidEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import {
   REQUEST_SEARCH_RESULTS,
   RECEIVE_SEARCH_RESULTS,
@@ -28,8 +28,11 @@ export const searchReceived$ = main$.filter(({ action }) => (
 export const searchWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === SEARCH_PATH);
 
+export const searchDidEnter$ = routeDidEnter$
+  .filter(({ action }) => action.route.pattern === SEARCH_PATH);
+
 export const searchWillLeave$ = routeWillLeave$
   .filter(({ action }) => action.route.pattern === SEARCH_PATH);
-  
+
 export const searchWillUpdate$ = routeWillEnter$
   .filter(({ action }) => action.historyAction === ACTION_REPLACE);

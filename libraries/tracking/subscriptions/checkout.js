@@ -1,6 +1,6 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import analyticsSetCustomValues from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import getCart from '../selectors/cart';
@@ -11,10 +11,8 @@ import { track, formatPurchaseData, setPWAVisibleState } from '../helpers';
  * @param {Function} subscribe The subscribe function.
  */
 export default function checkout(subscribe) {
-  /**
-   * Emits when the checkout route was entered.
-   */
-  const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
+  const checkoutDidEnter$ = routeDidEnter$
+    .filter(({ action }) => action.route.pattern === CHECKOUT_PATH);
 
   subscribe(checkoutDidEnter$, ({ getState }) => {
     setPWAVisibleState(false);

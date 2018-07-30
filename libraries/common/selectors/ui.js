@@ -16,6 +16,8 @@ const getGeneralUI = createSelector(
   uiState => uiState.general
 );
 
+const defaultTitle = '';
+
 /**
  * Selects the title from the UI.
  * @param {Object} state The global state.
@@ -23,7 +25,7 @@ const getGeneralUI = createSelector(
  */
 export const getTitle = createSelector(
   getGeneralUI,
-  general => general.title || ''
+  general => general.title || defaultTitle
 );
 
 /**

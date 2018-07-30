@@ -12,12 +12,12 @@ import WebStorageRequest from '../classes/WebStorageRequest';
  * @param {number} params.timeout The cache time how long the entry shall be stored in seconds
  *   0 or omitting means that the entry won't be deleted automatically
  */
-export const setWebStorageEntry = (params) => {
+export function setWebStorageEntry(params) {
   const command = new AppCommand();
   command
     .setCommandName('setWebStorageEntry')
     .dispatch(params);
-};
+}
 
 /**
  * With this command you can get the value of a WebStorageRequest, that has been set with
@@ -26,9 +26,9 @@ export const setWebStorageEntry = (params) => {
  * @param {string} params.name The name of the entry, that shall be given back.
  * @return {Promise}
  */
-export const getWebStorageEntry = (params) => {
+export function getWebStorageEntry(params) {
   const { name } = params;
 
   const storage = new WebStorageRequest(name);
   return storage.dispatch();
-};
+}

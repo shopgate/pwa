@@ -1,11 +1,6 @@
 import 'rxjs/add/operator/switchMap';
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import {
-  HISTORY_PUSH_ACTION,
-  HISTORY_POP_ACTION,
-  HISTORY_REPLACE_ACTION,
-} from '@shopgate/pwa-common/constants/ActionTypes';
-import { historyDidUpdate$ } from '@shopgate/pwa-common/streams/history';
+import { historyDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import {
   SET_CURRENT_CATEGORY_ID,
   CATEGORY_PATH,
@@ -23,14 +18,7 @@ import { pwaDidAppear$ } from './app';
  * Emits when the root category was entered.
  */
 const rootCategoryDidEnter$ = historyDidUpdate$
-  .filter(({ action }) => (
-    action.historyProps.pathname === CATEGORY_PATH &&
-    (
-      action.historyProps.action === HISTORY_PUSH_ACTION ||
-      action.historyProps.action === HISTORY_POP_ACTION ||
-      action.historyProps.action === HISTORY_REPLACE_ACTION
-    )
-  ));
+  .filter(({ action }) => action.route.pattern === CATEGORY_PATH);
 
 /**
  * Emits when the root category data has been received.

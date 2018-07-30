@@ -17,7 +17,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = defaultState, action) => {
+export default function userLoginReducer(state = defaultState, action) {
   switch (action.type) {
     case REQUEST_LOGIN:
       return {
@@ -48,4 +48,4 @@ export default (state = defaultState, action) => {
     default:
       return state;
   }
-};
+}

@@ -1,24 +1,21 @@
-import { logger } from '@shopgate/pwa-core/helpers';
-import { getWebStorageEntry } from '@shopgate/pwa-core/commands/webStorage';
-import {
-  requestClientInformation,
-  receiveClientInformation,
-  errorClientInformation,
-} from '../../action-creators/client';
+import { logger, getWebStorageEntry } from '@shopgate/pwa-core';
+import * as actions from '../../action-creators/client';
 
 /**
  * Requests the client information from the web storage.
  * @return {Function} A redux thunk.
  */
-const fetchClientInformation = () => (dispatch) => {
-  dispatch(requestClientInformation());
+export default function fetchClientInformation() {
+  return (dispatch) => {
+    dispatch(actions.requestClientInformation());
 
-  getWebStorageEntry({ name: 'clientInformation' })
-    .then(response => dispatch(receiveClientInformation(response.value)))
-    .catch((error) => {
-      logger.error(error);
-      dispatch(errorClientInformation());
-    });
-};
-
-export default fetchClientInformation;
+    getWebStorageEntry({ name: 'clientInformation' })
+      .then(({ value }) => {
+        dispatch(actions.receiveClientInformation(value));
+      })
+      .catch((error) => {
+        logger.error(error);
+        dispatch(actions.errorClientInformation());
+      });
+  };
+}

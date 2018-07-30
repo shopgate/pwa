@@ -99,21 +99,6 @@ export const getProductReviewCount = createSelector(
     return collection.totalReviewCount;
   }
 );
-/**
- * Retrieves the current product reviews.
- * @param {Object} state The current application state.
- * @return {Array|null} The reviews for a product.
- */
-export const getProductReviews = createSelector(
-  getCollectionForCurrentBaseProduct,
-  getReviews,
-  (collection, allReviews) => {
-    if (!collection || !collection.reviews) {
-      return [];
-    }
-    return collection.reviews.map(id => allReviews[id]);
-  }
-);
 
 /**
  * Retrieves the total number of reviews for a current product.
@@ -180,7 +165,6 @@ export const getUserReviewForProduct = createSelector(
 
     return {
       ...allReviews[userReviews[productId].review],
-      productId,
     };
   }
 );

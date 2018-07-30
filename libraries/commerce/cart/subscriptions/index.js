@@ -1,20 +1,21 @@
+import 'rxjs/add/operator/debounceTime';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import pipelineDependencies from '@shopgate/pwa-core/classes/PipelineDependencies';
 import { userDidUpdate$ } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
-import resetHistory from '@shopgate/pwa-common/actions/history/resetHistory';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { ACTION_RESET } from '@virtuous/conductor/constants';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getHistoryLength, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import fetchRegisterUrl from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
 import * as pipelines from '../constants/Pipelines';
 import addCouponsToCart from '../actions/addCouponsToCart';
 import fetchCart from '../actions/fetchCart';
 import {
+  cartDidEnter$,
   cartRequesting$,
   cartReceived$,
   productsAdded$,
@@ -38,14 +39,14 @@ import { CART_PATH } from '../constants';
 export default function cart(subscribe) {
   /**
    * Gets triggered when ever the local cart is out of
-   * sync with the remote cart from the server.
+   * sync with the remote cart from the server. It's debounced to reduce emitting.
    */
-  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$);
+  const cartNeedsSync$ = userDidUpdate$.merge(remoteCartDidUpdate$).debounceTime(0);
 
   /**
    * Gets triggered when the app is started or the cart route is entered.
    */
-  const cartDidEnterOrAppDidStart$ = routeDidEnter(CART_PATH).merge(appDidStart$);
+  const cartDidEnterOrAppDidStart$ = cartDidEnter$.merge(appDidStart$);
 
   const cartBusy$ = cartRequesting$.merge(
     couponsAdded$,
@@ -64,19 +65,19 @@ export default function cart(subscribe) {
    * Gets triggered when the app starts.
    */
   subscribe(appDidStart$, ({ dispatch }) => {
-    pipelineDependencies.set(`${pipelines.SHOPGATE_CART_GET_CART}.v1`, [
-      `${pipelines.SHOPGATE_CART_ADD_PRODUCTS}.v1`,
-      `${pipelines.SHOPGATE_CART_UPDATE_PRODUCTS}.v1`,
-      `${pipelines.SHOPGATE_CART_DELETE_PRODUCTS}.v1`,
-      `${pipelines.SHOPGATE_CART_ADD_COUPONS}.v1`,
-      `${pipelines.SHOPGATE_CART_DELETE_COUPONS}.v1`,
+    pipelineDependencies.set(pipelines.SHOPGATE_CART_GET_CART, [
+      pipelines.SHOPGATE_CART_ADD_PRODUCTS,
+      pipelines.SHOPGATE_CART_UPDATE_PRODUCTS,
+      pipelines.SHOPGATE_CART_DELETE_PRODUCTS,
+      pipelines.SHOPGATE_CART_ADD_COUPONS,
+      pipelines.SHOPGATE_CART_DELETE_COUPONS,
     ]);
 
     // Register for the app event that is triggered when the checkout process is finished
     registerEvents(['checkoutSuccess']);
 
     event.addCallback('checkoutSuccess', () => {
-      dispatch(resetHistory());
+      dispatch(navigate(ACTION_RESET));
       dispatch(fetchCart());
     });
 
@@ -131,7 +132,7 @@ export default function cart(subscribe) {
      * Then reset back to the homepage.
      */
     if (historyLength === 1 && historyPathname === action.options.url) {
-      dispatch(resetHistory(INDEX_PATH));
+      dispatch(navigate(ACTION_RESET));
     }
 
     dispatch(addCouponsToCart([code]));

@@ -1,4 +1,4 @@
-import { appDidStart$ } from '../streams/app';
+import { appDidStart$ } from '../streams';
 import fetchMenu from '../actions/menu/fetchMenu';
 import { QUICKLINKS_MENU } from '../constants/MenuIDs';
 
