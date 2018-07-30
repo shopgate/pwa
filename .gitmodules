@@ -10,3 +10,18 @@
 [submodule "extensions/@shopgate-tracking-ga-native"]
 	path = extensions/@shopgate-tracking-ga-native
 	url = git@github.com:shopgate/tracking-ga-native.git
+[submodule "extensions/@shopgate-checkout"]
+	path = extensions/@shopgate-checkout
+	url = git@github.com:shopgate/ext-checkout.git
+[submodule "extensions/@shopgate-cart"]
+	path = extensions/@shopgate-cart
+	url = git@github.com:shopgate/ext-cart.git
+[submodule "extensions/@shopgate-user"]
+	path = extensions/@shopgate-user
+	url = git@github.com:shopgate/ext-user.git
+[submodule "extensions/@shopgate-shipping"]
+	path = extensions/@shopgate-shipping
+	url = git@github.com:shopgate/ext-shipping.git
+[submodule "extensions/@shopgate-payment"]
+	path = extensions/@shopgate-payment
+	url = git@github.com:shopgate/ext-payment.git

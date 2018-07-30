@@ -1,8 +1,13 @@
 # Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
 export FORCE_COLOR = true
 
-NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
-EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
+NPM_PACKAGES = \
+	commerce common core tracking tracking-core \
+	webcheckout ui-ios ui-material ui-shared
+EXTENSIONS = \
+	@shopgate-product-reviews @shopgate-tracking-ga-native \
+	@shopgate-checkout @shopgate-cart @shopgate-user \
+	@shopgate-payment @shopgate-shipping
 UTILS = eslint-config unit-tests e2e
 THEMES = gmd ios11
 REPO_VERSION = ''
