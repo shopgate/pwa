@@ -26,4 +26,4 @@ export const RESET_SUBMIT_REVIEW = 'RESET_SUBMIT_REVIEW';
  * Max number of reviews shown
  * @type {number}
  */
-export const REVIEW_PREVIEW_COUNT = 1;
+export const REVIEW_PREVIEW_COUNT = 2;
