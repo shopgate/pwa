@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import login from './login';
 import data from './data';
+import addresses from './addresses';
 import { persist } from '../../store/persistent';
 
 /**
@@ -14,6 +15,7 @@ export default persist(
   combineReducers({
     login,
     data,
+    addresses,
   }),
   STATE_VERSION
 );
