@@ -21,3 +21,9 @@ export const REQUEST_SUBMIT_REVIEW = 'REQUEST_SUBMIT_REVIEW';
 export const RECEIVE_SUBMIT_REVIEW = 'RECEIVE_SUBMIT_REVIEW';
 export const ERROR_SUBMIT_REVIEW = 'ERROR_SUBMIT_REVIEW';
 export const RESET_SUBMIT_REVIEW = 'RESET_SUBMIT_REVIEW';
+
+/**
+ * Max number of reviews shown
+ * @type {number}
+ */
+export const REVIEW_PREVIEW_COUNT = 2;

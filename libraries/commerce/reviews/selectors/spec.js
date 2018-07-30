@@ -9,6 +9,7 @@ import {
   getUserReviewForProduct,
   getDefaultAuthorName,
 } from './index';
+import { REVIEW_PREVIEW_COUNT } from '../constants';
 import {
   emptyState,
   finalState,
@@ -35,7 +36,7 @@ describe('Reviews selectors', () => {
   describe('getProductReviewsExcerpt', () => {
     it('should return product reviews when reviews are available', () => {
       const reviews = getProductReviewsExcerpt(finalState);
-      expect(reviews).toEqual(testReviews);
+      expect(reviews).toEqual(testReviews.slice(0, REVIEW_PREVIEW_COUNT));
     });
     it('should return null when state has no reviews for current product', () => {
       const state = _.cloneDeep(finalState);
