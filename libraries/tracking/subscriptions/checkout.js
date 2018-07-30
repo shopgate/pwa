@@ -33,14 +33,23 @@ export default function checkout(subscribe) {
         return;
       }
 
+      const source = data.type !== 'legacy' ? 'web_PWA' : 'app_PWA';
+
       analyticsSetCustomValues({
         customDimensions: [{
           index: 4,
-          value: data.type !== 'legacy' ? 'web_PWA' : 'app_PWA',
+          value: source,
         }],
       });
 
-      track('purchase', formatPurchaseData(data.order), getState());
+      const formattedData = {
+        ...formatPurchaseData(data.order),
+        meta: {
+          source,
+        },
+      };
+
+      track('purchase', formattedData, getState());
     });
   });
 }

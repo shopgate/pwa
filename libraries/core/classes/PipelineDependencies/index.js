@@ -38,11 +38,11 @@ class PipelineDependencies {
    * @return {Set}
    */
   get(pipelineName) {
-    if (!pipelineName) {
+    if (!pipelineName || !this.has(pipelineName)) {
       return new Set();
     }
 
-    return this.has(pipelineName) ? this.dependencies[pipelineName] : new Set();
+    return this.dependencies[pipelineName];
   }
 
   /**

@@ -43,17 +43,35 @@ describe('ErrorManager', () => {
   it('should return the null when no override message is found', () => {
     const code = 'EUNKNOWN';
     const context = 'shopgate.catalog.getUser';
-    const message = 'Test Message';
     const source = 'pipeline';
 
-    const errorMessage = errorManager.getMessage({
+    const errorMessage = errorManager.getMessage(
+      code,
+      context,
+      source
+    );
+
+    expect(errorMessage).toBeNull();
+  });
+
+  it('should return the message', () => {
+    const code = 'EUNKNOWN';
+    const context = 'shopgate.catalog.getFoo';
+    const message = 'Test Message';
+
+    errorManager.setMessage({
       code,
       context,
       message,
-      source,
     });
 
-    expect(errorMessage).toBeNull();
+    const errorMessage = errorManager.getMessage(
+      code,
+      `${context}.v1`,
+      'pipeline'
+    );
+
+    expect(errorMessage).toBe(message);
   });
 
   it('should add an override message', () => {
@@ -206,5 +224,40 @@ describe('ErrorManager', () => {
     expect(callback).toBeCalled();
     expect(callback2).toBeCalled();
     expect(errorManager.errorQueue.size).toEqual(0);
+  });
+
+  it('should set a queue entry with meta data', () => {
+    const code = 'EUNKNOWN';
+    const replacementMessage = 'Replacement Message';
+    const message = 'Original Message';
+    const source = 'pipeline';
+
+    // Setup a replacement message for the error code.
+    errorManager.setMessage({
+      code,
+      source,
+      message: replacementMessage,
+    });
+
+    const callback = jest.fn();
+    emitter.addListener('pipeline', callback);
+
+    errorManager.queue({
+      message,
+      code,
+      source,
+    });
+
+    errorManager.dispatch();
+    expect(callback).toBeCalledWith({
+      id: `${source}-${DEFAULT_CONTEXT}-${code}`,
+      context: DEFAULT_CONTEXT,
+      message: replacementMessage,
+      code,
+      source,
+      meta: {
+        message,
+      },
+    });
   });
 });

@@ -156,7 +156,13 @@ export const track = (eventName, data, state) => {
     return false;
   }
 
-  return core.track[eventName](data, undefined, undefined, state);
+  try {
+    core.track[eventName](data, undefined, undefined, state);
+  } catch (e) {
+    logger.error(e);
+  }
+
+  return core;
 };
 
 let pwaWebviewVisible = true;

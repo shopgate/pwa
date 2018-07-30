@@ -24,4 +24,5 @@ module.exports = {
     '@shopgate/pwa-unit-test/testSetup.js',
   ],
   setupTestFrameworkScriptFile: '@shopgate/pwa-unit-test/envSetup.js',
+  testURL: 'http://localhost',
 };
