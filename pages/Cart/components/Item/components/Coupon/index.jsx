@@ -38,7 +38,7 @@ class Coupon extends Component {
   static childContextTypes = {
     cartItemId: PropTypes.string,
     type: PropTypes.string,
-  }
+  };
 
   /**
    * Constructor.

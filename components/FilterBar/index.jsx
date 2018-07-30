@@ -24,7 +24,6 @@ class FilterBar extends Component {
   /**
    * Constructs a new component instance.
    * @param {Object} props The component properties.
-   * @param {Object} context The component context.
    */
   constructor(props) {
     super(props);
