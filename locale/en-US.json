@@ -119,11 +119,7 @@
     "home": "Home",
     "categories": "Categories",
     "favorites": "Favorites",
-    "my_orders": "My Orders",
-    "my_details": "My Details",
-    "change_password": "Change Password",
-    "address_book": "Address Book",
-    "payment_options": "Payment Options",
+    "my_orders": "My orders",
     "cart": "Shopping cart",
     "shipping": "Shipping methods",
     "about": "About us",
@@ -132,12 +128,7 @@
     "privacy": "Privacy policy",
     "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
-    "logout": "Sign out",
-    "menuSubHeader": {
-      "more": "More",
-      "about": "About us",
-      "user": "Account settings"
-    }
+    "logout": "Sign out"
   },
   "reviews": {
     "rating": "Rating",
@@ -156,27 +147,5 @@
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Thanks for your review!"
-  },
-  "user": {
-    "addresses": {
-      "title": "Address book",
-      "headline": "Address book",
-      "button": "Add a new address",
-      "defaults": {
-        "default": "Default address",
-        "shipping": "Default shipping address",
-        "billing": "Default billing address"
-      },
-      "setAsDefault": {
-        "default": "Set as your default address",
-        "shipping": "Set as your default shipping address",
-        "billing": "Set as your default billing address"
-      },
-      "error": {
-        "add": "Adding the address failed, please check your input",
-        "update": "Updating the address failed, please check your input",
-        "setAsDefault": "Could not set the address as default"
-      }
-    }
   }
 }
