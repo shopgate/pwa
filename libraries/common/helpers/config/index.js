@@ -18,13 +18,8 @@ const defaultAppConfig = {
   webCheckoutShopify: null,
   shopCNAME: null,
   currency: 'USD',
-  user: {
-    addresses: {
-      splitDefaultsByTags: ['default'],
-    },
-  },
   featureFlag: {
-    userAddresses: true,
+    showMenuSubHeaders: false,
   },
 };
 
