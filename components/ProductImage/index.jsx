@@ -70,10 +70,6 @@ class ProductImage extends Component {
     };
   }
 
-  state = {
-    showPlaceholder: false,
-  };
-
   /**
    * Called when the component props change.
    * @param {Object} nextProps The new component properties
@@ -140,11 +136,6 @@ class ProductImage extends Component {
    * @return {JSX}
    */
   render() {
-    const glowClasses = classNames(
-      styles.glowContainer,
-      this.props.classNames.glowContainer
-    );
-
     const classes = classNames(
       styles.container,
       this.props.classNames.imageContainer
@@ -153,7 +144,6 @@ class ProductImage extends Component {
     return (
       <div className={classes}>
         {this.renderedContent}
-        <div className={glowClasses} />
       </div>
     );
   }

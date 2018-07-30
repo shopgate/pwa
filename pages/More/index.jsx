@@ -9,8 +9,12 @@ import Headline from 'Components/Headline';
 import List from 'Components/List';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-import UserMenu from './components/UserMenu/index';
+import UserMenu from './components/UserMenu';
+import Header from './components/Header';
+
+const { featureFlag: { userAddresses = true } = {} } = appConfig;
 
 /* eslint-disable react/prefer-stateless-function */
 
@@ -40,8 +44,6 @@ class More extends Component {
     const {
       entries,
       isLoggedIn,
-      logout,
-      user,
     } = this.props;
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
@@ -51,35 +53,13 @@ class More extends Component {
 
     return (
       <View>
-        {/* USER MENU */}
-        <Portal
-          name={portals.USER_MENU_CONTAINER_BEFORE}
-          props={{
-            ...props,
-            user,
-            handleLogout: logout,
-          }}
-        />
-        <Portal
-          name={portals.USER_MENU_CONTAINER}
-          props={{
-          ...props,
-            user,
-            handleLogout: logout,
-          }}
-        >
-          <UserMenu isLoggedIn={isLoggedIn} logout={logout} user={user} />
-        </Portal>
-        <Portal
-          name={portals.USER_MENU_CONTAINER_AFTER}
-          props={{
-            ...props,
-            user,
-            handleLogout: logout,
-          }}
-        />
-
+        <Header user={this.props.user} isLoggedIn={this.props.isLoggedIn} />
+        { /* When not logged in, show user menu on top (before "content" portal */}
+        { !isLoggedIn && <UserMenu {...this.props} /> }
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
+
+        { /* When logged in, show user menu within "content" portal */}
+        {userAddresses && isLoggedIn && <UserMenu {...this.props} />}
 
         <Headline text="navigation.store_information" small />
 
@@ -143,6 +123,9 @@ class More extends Component {
             </List>
           </div>
         )}
+
+        { /* When logged in, show user menu on the bottom */}
+        {!userAddresses && isLoggedIn && <UserMenu {...this.props} />}
 
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} props={props} />
 

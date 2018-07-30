@@ -159,6 +159,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               >
                 <Link
                   className="css-t193cd"
+                  data-test-id="ratedStarsAverage"
                   disabled={false}
                   href="/item/666f6f/write_review"
                   itemProp="item"
@@ -523,12 +524,23 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   className="css-1nftllw"
                 >
                   reviews.rating
-                  <span
+                  <RatingNumber
                     className="css-shoywj"
                     key=".0"
+                    rating={50}
                   >
-                    2.5
-                  </span>
+                    <FormatNumber
+                      className="css-shoywj"
+                      fractions={2}
+                      number={2.5}
+                    >
+                      <span
+                        className="css-shoywj"
+                      >
+                        n
+                      </span>
+                    </FormatNumber>
+                  </RatingNumber>
                 </span>
               </Translate>
               <Connect(WriteReviewLink)>
@@ -2703,6 +2715,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               >
                 <Link
                   className="css-t193cd"
+                  data-test-id="ratedStarsAverage"
                   disabled={false}
                   href="/item/666f6f/write_review"
                   itemProp="item"
@@ -3067,12 +3080,23 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   className="css-1nftllw"
                 >
                   reviews.rating
-                  <span
+                  <RatingNumber
                     className="css-shoywj"
                     key=".0"
+                    rating={50}
                   >
-                    2.5
-                  </span>
+                    <FormatNumber
+                      className="css-shoywj"
+                      fractions={2}
+                      number={2.5}
+                    >
+                      <span
+                        className="css-shoywj"
+                      >
+                        n
+                      </span>
+                    </FormatNumber>
+                  </RatingNumber>
                 </span>
               </Translate>
               <Connect(WriteReviewLink)>
@@ -4192,6 +4216,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
               >
                 <Link
                   className="css-t193cd"
+                  data-test-id="ratedStarsAverage"
                   disabled={false}
                   href="/item/666f6f/write_review"
                   itemProp="item"

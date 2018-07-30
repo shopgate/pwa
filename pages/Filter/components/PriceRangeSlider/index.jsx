@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import RangeSlider from '@shopgate/pwa-common/components/RangeSlider';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import styles from './style';
@@ -23,10 +24,6 @@ class PriceRangeSlider extends Component {
     value: null,
   };
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
   /**
    * The constructor.
    * @param {Object} props The component props.
@@ -37,18 +34,17 @@ class PriceRangeSlider extends Component {
     const initialValue = props.value || [props.min, props.max];
 
     this.state = {
-      realValue: initialValue,
       value: initialValue,
     };
   }
 
   /**
-   * Updates the realValue state.
+   * Updates the value state.
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
     if (!isEqual(nextProps.value, this.props.value)) {
-      this.setState({ realValue: nextProps.value });
+      this.setState({ value: nextProps.value });
     }
   }
 
@@ -63,8 +59,7 @@ class PriceRangeSlider extends Component {
     ];
 
     this.setState({
-      realValue: value,
-      value: roundedValue,
+      value,
     });
 
     this.props.onChange(roundedValue[0], roundedValue[1]);
@@ -76,8 +71,7 @@ class PriceRangeSlider extends Component {
    */
   render() {
     const { min, max } = this.props;
-    const { __ } = this.context.i18n();
-    const currency = __('price.currency');
+    const { currency } = appConfig;
 
     /**
      * The min and max price need to be rounded before they are passed to the I18n component,
@@ -115,7 +109,7 @@ class PriceRangeSlider extends Component {
           max={max}
           min={min}
           onChange={this.onChange}
-          value={this.state.realValue}
+          value={this.state.value}
         />
       </div>
     );

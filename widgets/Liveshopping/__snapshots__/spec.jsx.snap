@@ -57,7 +57,6 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                 classNames={
                   Object {
                     "container": "css-mvioy2",
-                    "glowContainer": "css-mvioy2",
                   }
                 }
                 forcePlaceholder={false}
@@ -163,7 +162,6 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
                 classNames={
                   Object {
                     "container": "css-mvioy2",
-                    "glowContainer": "css-mvioy2",
                   }
                 }
                 forcePlaceholder={false}
@@ -298,7 +296,6 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
                 classNames={
                   Object {
                     "container": "css-mvioy2",
-                    "glowContainer": "css-mvioy2",
                   }
                 }
                 forcePlaceholder={false}

@@ -26,6 +26,7 @@ import viewport from 'Components/Viewport/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import browse from 'Pages/Browse/subscriptions';
 import category from 'Pages/Category/subscriptions';
+import checkout from 'Pages/Checkout/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
 import login from 'Pages/Login/subscriptions';
@@ -36,15 +37,12 @@ import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
 import cart from 'Pages/Cart/subscriptions';
+import userAddressBook from 'Pages/User/AddressBook/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
-// App
-import app from './subscriptions';
 
 const subscriptions = [
-  // App subscribers.
-  app,
   // Common subscribers.
   commonApp,
   commonHistory,
@@ -72,6 +70,7 @@ const subscriptions = [
   viewport,
   browse,
   category,
+  checkout,
   coupon,
   favorites,
   filter,
@@ -83,6 +82,7 @@ const subscriptions = [
   reviews,
   writeReview,
   cart,
+  userAddressBook,
   // Extensions
   ...extensions,
 ];

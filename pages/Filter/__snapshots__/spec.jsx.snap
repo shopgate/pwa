@@ -492,7 +492,7 @@ exports[`<Filter> page should render 1`] = `
                                           >
                                             <FormatPrice
                                               className=""
-                                              currency="price.currency"
+                                              currency="USD"
                                               fractions={false}
                                               price={12}
                                             >
@@ -697,13 +697,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Brand"
@@ -792,13 +792,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Color"
@@ -882,13 +882,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Length"
@@ -997,13 +997,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Size"
@@ -1092,13 +1092,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Title"
@@ -1182,13 +1182,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Width"
@@ -1272,13 +1272,13 @@ exports[`<Filter> page should render 1`] = `
                                       className=" css-h7r55a"
                                     >
                                       <GridItem
-                                        className="css-n2trdm"
+                                        className="css-1fd9ptn"
                                         component="li"
                                         grow={1}
                                         shrink={0}
                                       >
                                         <li
-                                          className="css-n2trdm css-1gs0ko2 css-1l9a57c"
+                                          className="css-1fd9ptn css-1gs0ko2 css-1l9a57c"
                                         >
                                           <Label
                                             label="Category"

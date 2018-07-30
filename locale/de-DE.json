@@ -43,7 +43,7 @@
   },
   "price": {
     "from": "Ab {price}",
-    "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "range": "Preis von {fromPrice} bis {toPrice}",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
@@ -60,6 +60,10 @@
     "go_to_cart": "Warenkorb"
   },
   "category": {
+    "error": {
+      "title": "Ups",
+      "not_found": "Kategorie nicht gefunden"
+    },
     "no_result": {
       "heading": "Ups!",
       "body": "Keine Produkte gefunden."
@@ -122,6 +126,10 @@
     "home": "Startseite",
     "categories": "Kategorien",
     "my_orders": "Meine Bestellungen",
+    "my_details": "Meine Daten",
+    "change_password": "Passwort ändern",
+    "address_book": "Adressbuch",
+    "payment_options": "Zahlungsoptionen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
     "about": "Impressum",
@@ -159,5 +167,27 @@
     "cart": "Warenkorb",
     "more": "Mehr",
     "favorites": "Merkliste"
+  },
+  "user": {
+    "addresses": {
+      "title": "Addressbuch",
+      "headline": "Addressbuch",
+      "button": "Neue Adresse hinzufügen",
+      "defaults": {
+        "default": "Standard-Adresse",
+        "shipping": "Standard-Lieferadresse",
+        "billing": "Standard-Rechnungsadresse"
+      },
+      "setAsDefault": {
+        "default": "Als Standard-Adresse festlegen",
+        "shipping": "Als Standard-Lieferadresse festlegen",
+        "billing": "Als Standard-Rechnungsadresse festlegen"
+      },
+      "error": {
+        "add": "Das Hinzufügen der Adresse ist fehlgeschlagen, bitte überprüfen Sie Ihre Eingaben",
+        "update": "Die Aktualisierung der Adresse ist fehlgeschlagen, bitte überprüfen Sie Ihre Eingaben",
+        "setAsDefault": "Die Adresse konnte nicht als Standard festgelegt werden"
+      }
+    }
   }
 }

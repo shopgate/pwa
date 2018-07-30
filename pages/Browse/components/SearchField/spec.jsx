@@ -5,6 +5,7 @@ import style from './style';
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
+jest.mock('@shopgate/pwa-core/commands/registerEvents', () => () => {});
 
 /**
  * Converts a style class to a compatible selector.

@@ -45,6 +45,7 @@ exports[`<Header /> should render empty 1`] = `
         >
           <Link
             className="css-t193cd"
+            data-test-id="ratedStarsAverage"
             disabled={false}
             href="/item/666f6f/write_review"
             itemProp="item"
@@ -434,6 +435,7 @@ exports[`<Header /> should render rating summary 1`] = `
         >
           <Link
             className="css-t193cd"
+            data-test-id="ratedStarsAverage"
             disabled={false}
             href="/item/666f6f/write_review"
             itemProp="item"
@@ -798,12 +800,23 @@ exports[`<Header /> should render rating summary 1`] = `
             className="css-1nftllw"
           >
             reviews.rating
-            <span
+            <RatingNumber
               className="css-shoywj"
               key=".0"
+              rating={50}
             >
-              2.5
-            </span>
+              <FormatNumber
+                className="css-shoywj"
+                fractions={2}
+                number={2.5}
+              >
+                <span
+                  className="css-shoywj"
+                >
+                  n
+                </span>
+              </FormatNumber>
+            </RatingNumber>
           </span>
         </Translate>
         <Connect(WriteReviewLink)>

@@ -5,6 +5,7 @@ import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import { UPDATE_HISTORY } from '@shopgate/pwa-common/constants/ActionTypes';
 import { ADD_PRODUCTS_TO_CART } from '@shopgate/pwa-common-commerce/cart/constants';
+import AddToCartButton from './components/AddToCartButton';
 import {
   mockedStateVisible,
   mockedStateHidden,
@@ -15,27 +16,18 @@ import {
   mockedStateVariantsNotOrderable,
 } from './mock';
 
-/**
- * History update mock
- * @param {Object} historyProps The next path
- * @return {{type, historyProps: *}}
- */
-const mockHistoryUpdate = historyProps => ({
-  type: UPDATE_HISTORY,
+const mockConstUpdateHistory = UPDATE_HISTORY;
+
+jest.mock('@shopgate/pwa-common/actions/history/pushHistory.js', () => historyProps => ({
+  type: mockConstUpdateHistory,
   historyProps,
-});
+}));
 
-jest.mock('@shopgate/pwa-common/actions/history/pushHistory.js', () => mockHistoryUpdate);
+const mockConstAddProducts = ADD_PRODUCTS_TO_CART;
 
-/**
- * Mock add to cart action
- * @return {{type}}
- */
-const mockAddProductsToCart = () => ({
-  type: ADD_PRODUCTS_TO_CART,
-});
-
-jest.mock('@shopgate/pwa-common-commerce/cart/actions/addProductsToCart.js', () => mockAddProductsToCart);
+jest.mock('@shopgate/pwa-common-commerce/cart/actions/addProductsToCart.js', () => () => ({
+  type: mockConstAddProducts,
+}));
 
 describe('<AddToCartBar>', () => {
   let store;
@@ -73,14 +65,14 @@ describe('<AddToCartBar>', () => {
       const component = createComponent(mockedStateVariants);
       expect(component).toMatchSnapshot();
       expect(component.find('AddToCartBar').exists()).toBe(true);
-      expect(component.find('AddToCartButton').exists()).toBe(true);
+      expect(component.find(AddToCartButton).exists()).toBe(true);
       expect(component.find('AddMoreButton').exists()).toBe(true);
       expect(component.find('CartItemsCount').exists()).toBe(true);
     });
 
     it('should not add when variant selection is not done', () => {
       const component = createComponent(mockedStateVariants);
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       const actions = store.getActions();
       expect(actions.length).toBe(0);
     });
@@ -89,12 +81,12 @@ describe('<AddToCartBar>', () => {
       const component = createComponent(mockedStateVariantsReady);
       const actions = store.getActions();
 
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       expect(actions[0].type).toBe(ADD_PRODUCTS_TO_CART);
 
       expect(component.find('CartItemsCount').prop('itemCount')).toEqual(1);
 
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       expect(actions[1].type).toBe(UPDATE_HISTORY);
 
       component.find('AddMoreButton').simulate('click');
@@ -103,7 +95,7 @@ describe('<AddToCartBar>', () => {
 
     it('should not add when variant is not orderable', () => {
       const component = createComponent(mockedStateVariantsNotOrderable);
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       const actions = store.getActions();
       expect(actions.length).toBe(0);
 
@@ -117,7 +109,7 @@ describe('<AddToCartBar>', () => {
       const component = createComponent(mockedStateSimpleProduct);
       expect(component).toMatchSnapshot();
       expect(component.find('AddToCartBar').exists()).toBe(true);
-      expect(component.find('AddToCartButton').exists()).toBe(true);
+      expect(component.find(AddToCartButton).exists()).toBe(true);
       expect(component.find('AddMoreButton').exists()).toBe(true);
       expect(component.find('CartItemsCount').exists()).toBe(true);
     });
@@ -126,12 +118,12 @@ describe('<AddToCartBar>', () => {
       const component = createComponent(mockedStateSimpleProduct);
       const actions = store.getActions();
 
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       expect(actions[0].type).toBe(ADD_PRODUCTS_TO_CART);
 
       expect(component.find('CartItemsCount').prop('itemCount')).toEqual(1);
 
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       expect(actions[1].type).toBe(UPDATE_HISTORY);
       expect(actions[1].historyProps).toEqual('/cart');
 
@@ -141,7 +133,7 @@ describe('<AddToCartBar>', () => {
 
     it('should not add when product is not read', () => {
       const component = createComponent(mockedStateSimpleProductNotReady);
-      component.find('AddToCartButton').simulate('click');
+      component.find(AddToCartButton).simulate('click');
       const actions = store.getActions();
       expect(actions.length).toBe(0);
 
