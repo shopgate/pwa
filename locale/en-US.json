@@ -128,7 +128,12 @@
     "privacy": "Privacy policy",
     "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "menuSubHeader": {
+      "more": "More",
+      "about": "About us",
+      "user": "Account settings"
+    }
   },
   "reviews": {
     "rating": "Rating",
