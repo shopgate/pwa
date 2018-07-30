@@ -27,14 +27,14 @@ exports[`CTAs (product header) Rendering should render CTAButtons when data is a
       >
         <Connect(FavoritesButton)
           active={true}
-          className="css-j05drb"
+          className="css-13l587d"
           productId="product_1"
           rippleClassName="css-1tdptiz"
         >
           <FavoritesButton
             active={true}
             addFavorites={[Function]}
-            className="css-j05drb"
+            className="css-13l587d"
             noShadow={false}
             onRippleComplete={[Function]}
             once={false}

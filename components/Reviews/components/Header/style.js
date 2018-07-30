@@ -2,13 +2,15 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
-const container = css({
+const containerDefaults = {
   fontWeight: 500,
   margin: 0,
-}).toString();
+};
+
+const container = css(containerDefaults).toString();
 
 const withTopGapContainer = css({
-  ...container,
+  ...containerDefaults,
   marginTop: variables.gap.xbig,
 }).toString();
 

@@ -64,3 +64,13 @@ export const WriteReview = Loadable({
   loader: () => import('./WriteReview'),
   loading: () => null,
 });
+
+export const Checkout = Loadable({
+  loader: () => import('./Checkout'),
+  loading: () => null,
+});
+
+export const UserAddressBook = Loadable({
+  loader: () => import('./User/AddressBook'),
+  loading: () => null,
+});

@@ -23,6 +23,7 @@ import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkP
 import navigator from 'Components/Navigator/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
 import category from 'Pages/Category/subscriptions';
+import checkout from 'Pages/Checkout/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
@@ -32,15 +33,12 @@ import search from 'Pages/Search/subscriptions';
 import reviews from 'Pages/Reviews/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import writeReview from 'Pages/WriteReview/subscriptions';
+import userAddressBook from 'Pages/User/AddressBook/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
-// App
-import app from './subscriptions';
 
 const subscriptions = [
-  // App subscribers.
-  app,
   // Common subscribers.
   commonApp,
   commonHistory,
@@ -66,6 +64,7 @@ const subscriptions = [
   navigator,
   viewport,
   category,
+  checkout,
   coupon,
   favorites,
   filter,
@@ -75,6 +74,7 @@ const subscriptions = [
   search,
   reviews,
   writeReview,
+  userAddressBook,
   // Extensions
   ...extensions,
 ];

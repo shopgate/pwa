@@ -1,5 +1,5 @@
 {
-  "version": "5.5.0",
+  "version": "5.6.0-beta.7",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -141,6 +141,37 @@
         "service": "config",
         "path": "/v1/shop/%(shopId)s/checkout_web_checkout_shopify?parsed=true",
         "key": "value.frontend"
+      }
+    },
+    "currency": {
+      "type": "bigApi",
+      "destination": "frontend",
+      "params": {
+        "method": "GET",
+        "service": "shop",
+        "path": "/v1/%(shopId)s",
+        "key": "currencyId"
+      }
+    },
+    "user": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": {
+          "addresses": {
+            "splitDefaultsByTags": ["default"]
+          }
+        }
+      }
+    },
+    "featureFlag": {
+      "type": "static",
+      "destination": "frontend",
+      "params": {
+        "value": {
+          "userAddresses": true,
+          "showMenuSubHeaders": true
+        }
       }
     }
   }

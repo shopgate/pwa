@@ -5,7 +5,7 @@
     "cancel": "Annuler",
     "submit": "Envoyer",
     "undo": "Défaire"
-   },
+  },
   "titles": {
     "categories": "Catégories",
     "filter": "Filterer",
@@ -48,8 +48,7 @@
       "set": "{from} articles: {price}",
       "range": "{from} ou plus: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "EUR"
+    "msrp": "MSRP"
   },
   "product": {
    "description_heading": "à propos",
@@ -60,6 +59,10 @@
     "go_to_cart": "Aller au panier"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Catégorie non trouvée"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "Aucun produit trouvé."
@@ -73,7 +76,7 @@
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
     }
   },
- "shipping": {
+  "shipping": {
     "unknown": "avec frais de livraison",
     "free": "Livraison gratuite",
     "free_short": "Fratuit",
@@ -115,13 +118,17 @@
     "logout_message": "Vous avez été déconnecté",
     "error": "Votre nom d'utilisateur et votre mot de passe ne correspondent à aucun compte"
   },
- "navigation": {
+  "navigation": {
     "login_register": "Se connecter / S'inscrire",
     "your_account": "Ton compte",
     "home": "Accueil",
     "categories": "Catégories",
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
+    "my_details": "Mes Données",
+    "change_password": "Changer mot de passe",
+    "address_book": "Carnet d'adresses",
+    "payment_options": "Options de paiement",
     "cart": "Panier",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
@@ -132,7 +139,12 @@
     "welcome_message": "Bienvenue {name}",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
-    "more_menu": "Plus"
+    "more_menu": "Plus",
+    "menuSubHeader": {
+      "more": "Plus",
+      "about": "À propos de nous",
+      "user": "Paramètres du compte"
+    }
   },
   "reviews": {
     "rating": "Evaluation",
@@ -158,5 +170,27 @@
     "cart": "Panier",
     "more": "Plus",
     "favorites": "Favorits"
+  },
+  "user": {
+    "addresses": {
+      "title": "Carnet d'adresses",
+      "headline": "Carnet d'adresses",
+      "button": "Ajouter une nouvelle adresse",
+      "defaults": {
+        "default": "Adresse par défaut",
+        "shipping": "Adresse d'expédition par défaut",
+        "billing": "Adresse de facturation par défaut"
+      },
+      "setAsDefault": {
+        "default": "Définir comme adresse par défaut",
+        "shipping": "Définir comme adresse de livraison par défaut",
+        "billing": "Définir comme adresse de facturation par défaut"
+      },
+      "error": {
+        "add": "L'ajout de l'adresse a échoué, veuillez vérifier vos champs",
+        "update": "La mise à jour de l'adresse a échoué, veuillez vérifier vos champs",
+        "setAsDefault": "Impossible de définir l'adresse par défaut"
+      }
+    }
   }
 }

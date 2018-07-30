@@ -42,13 +42,12 @@
   },
   "price": {
     "from": "From {price}",
-    "range": "Price range from {fromPrice} to {toPrice}",
+    "range": "Price from {fromPrice} to {toPrice}",
     "tier": {
       "set": "{from} items: {price}",
       "range": "{from} or more: {price}"
     },
-    "msrp": "MSRP",
-    "currency": "USD"
+    "msrp": "MSRP"
   },
   "product": {
     "description_heading": "About",
@@ -56,6 +55,10 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs"
   },
   "category": {
+    "error": {
+      "title": "Oops!",
+      "not_found": "Category not found"
+    },
     "no_result": {
       "heading": "Oops!",
       "body": "No products found."
@@ -116,7 +119,11 @@
     "home": "Home",
     "categories": "Categories",
     "favorites": "Favorites",
-    "my_orders": "My orders",
+    "my_orders": "My Orders",
+    "my_details": "My Details",
+    "change_password": "Change Password",
+    "address_book": "Address Book",
+    "payment_options": "Payment Options",
     "cart": "Shopping cart",
     "shipping": "Shipping methods",
     "about": "About us",
@@ -125,7 +132,12 @@
     "privacy": "Privacy policy",
     "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "menuSubHeader": {
+      "more": "More",
+      "about": "About us",
+      "user": "Account settings"
+    }
   },
   "reviews": {
     "rating": "Rating",
@@ -144,5 +156,27 @@
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate} {rate, plural, =1 {star} other {stars}}.",
     "success_message": "Thanks for your review!"
+  },
+  "user": {
+    "addresses": {
+      "title": "Address book",
+      "headline": "Address book",
+      "button": "Add a new address",
+      "defaults": {
+        "default": "Default address",
+        "shipping": "Default shipping address",
+        "billing": "Default billing address"
+      },
+      "setAsDefault": {
+        "default": "Set as your default address",
+        "shipping": "Set as your default shipping address",
+        "billing": "Set as your default billing address"
+      },
+      "error": {
+        "add": "Adding the address failed, please check your input",
+        "update": "Updating the address failed, please check your input",
+        "setAsDefault": "Could not set the address as default"
+      }
+    }
   }
 }

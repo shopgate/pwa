@@ -42,13 +42,12 @@
   },
   "price": {
     "from": "Ab {price}",
-    "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "range": "Preis von {fromPrice} bis {toPrice}",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
     },
-    "msrp": "UVP",
-    "currency": "EUR"
+    "msrp": "UVP"
   },
   "product": {
     "description_heading": "Beschreibung",
@@ -56,6 +55,10 @@
     "tax_disclaimer": "* Alle Preise inkl. MwSt. evtl. zzgl. Versand"
   },
   "category": {
+    "error": {
+      "title": "Ups",
+      "not_found": "Kategorie nicht gefunden"
+    },
     "no_result": {
       "heading": "Ups!",
       "body": "Keine Produkte gefunden."
@@ -117,6 +120,10 @@
     "categories": "Kategorien",
     "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
+    "my_details": "Meine Daten",
+    "change_password": "Passwort ändern",
+    "address_book": "Adressbuch",
+    "payment_options": "Zahlungsoptionen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",
     "about": "Impressum",
@@ -125,7 +132,12 @@
     "privacy": "Datenschutz",
     "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "menuSubHeader": {
+      "more": "Mehr",
+      "about": "Über uns",
+      "user": "Meine Daten"
+    }
   },
   "reviews": {
     "rating": "Bewertung",
@@ -144,5 +156,27 @@
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate} {rate, plural, =1 {einem Stern} other {Sternen}}",
     "success_message": "Vielen Dank für Ihre Bewertung!"
+  },
+  "user": {
+    "addresses": {
+      "title": "Addressbuch",
+      "headline": "Addressbuch",
+      "button": "Neue Adresse hinzufügen",
+      "defaults": {
+        "default": "Standard-Adresse",
+        "shipping": "Standard-Lieferadresse",
+        "billing": "Standard-Rechnungsadresse"
+      },
+      "setAsDefault": {
+        "default": "Als Standard-Adresse festlegen",
+        "shipping": "Als Standard-Lieferadresse festlegen",
+        "billing": "Als Standard-Rechnungsadresse festlegen"
+      },
+      "error": {
+        "add": "Das Hinzufügen der Adresse ist fehlgeschlagen, bitte überprüfen Sie Ihre Eingaben",
+        "update": "Die Aktualisierung der Adresse ist fehlgeschlagen, bitte überprüfen Sie Ihre Eingaben",
+        "setAsDefault": "Die Adresse konnte nicht als Standard festgelegt werden"
+      }
+    }
   }
 }

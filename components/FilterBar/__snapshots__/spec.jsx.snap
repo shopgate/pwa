@@ -488,11 +488,12 @@ exports[`<FilterBar> should render 1`] = `
                   </Connect(FilterButton)>
                 </div>
                 <Connect(FilterChips)
-                  currency="price.currency"
+                  currency="USD"
                 >
                   <FilterChips
                     activeFilters={null}
-                    currency="price.currency"
+                    currency="USD"
+                    currentPathname=""
                     handleFilterRemove={[Function]}
                     handleOpenFilters={[Function]}
                   />
