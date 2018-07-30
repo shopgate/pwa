@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -7,7 +7,7 @@ import * as categoryPortals from '@shopgate/pwa-common-commerce/category/constan
 import * as favoritesPortals from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import * as cartPortals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import * as marketPortals from '@shopgate/pwa-common-commerce/market/constants/Portals';
-import { INDEX_PATH, PAGE_PATH, USER_ADDRESS_BOOK_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { INDEX_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -117,14 +117,16 @@ class NavDrawer extends Component {
 
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
+    const { featureFlag: { showMenuSubHeaders = false } = {} } = appConfig;
+
     const props = {
       handleClose: this.handleClose,
-      SubHeader,
+      Divider,
       Item,
+      user,
+      SubHeader: (showMenuSubHeaders ? SubHeader : null),
     };
 
-    const { featureFlag: { userAddresses = false } = {} } = appConfig;
-    const { featureFlag: { showMenuSubHeaders = false } = {} } = appConfig;
     return (
       <Layout
         active={navDrawerActive}
@@ -133,29 +135,11 @@ class NavDrawer extends Component {
       >
 
         {/* Header */}
-        <Portal
-          name={commonPortals.USER_MENU_CONTAINER_BEFORE}
-          props={{
-            ...props,
-            user,
-          }}
-        />
-        <Portal
-          name={commonPortals.USER_MENU_CONTAINER}
-          props={{
-            ...props,
-            user,
-          }}
-        >
+        <Portal name={commonPortals.USER_MENU_CONTAINER_BEFORE} props={props} />
+        <Portal name={commonPortals.USER_MENU_CONTAINER} props={props}>
           <Header user={user} close={this.handleClose} />
         </Portal>
-        <Portal
-          name={commonPortals.USER_MENU_CONTAINER_AFTER}
-          props={{
-            ...props,
-            user,
-          }}
-        />
+        <Portal name={commonPortals.USER_MENU_CONTAINER_AFTER} props={props} />
 
         <Portal name={commonPortals.NAV_MENU_CONTENT_BEFORE} props={props} />
 
@@ -246,29 +230,6 @@ class NavDrawer extends Component {
 
         {showQuickLinks && this.renderEntries(entries.quicklinks)}
         {showQuickLinks && <Divider close={this.handleClose} />}
-
-        {userAddresses && user &&
-          <Fragment>
-
-            {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
-
-            {/* Address book */}
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_BEFORE} props={props} />
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
-              <Item
-                href={`${USER_ADDRESS_BOOK_PATH}`}
-                icon={LocalShippingIcon}
-                close={this.handleClose}
-                testId="navDrawerAddressBookButton"
-              >
-                <I18n.Text string="navigation.address_book" />
-              </Item>
-            </Portal>
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_AFTER} props={props} />
-
-            <Divider close={this.handleClose} />
-          </Fragment>
-        }
 
         {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
 

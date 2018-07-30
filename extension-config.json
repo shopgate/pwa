@@ -169,7 +169,6 @@
       "destination": "frontend",
       "params": {
         "value": {
-          "userAddresses": true,
           "showMenuSubHeaders": true
         }
       }
