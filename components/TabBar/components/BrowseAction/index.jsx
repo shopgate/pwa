@@ -29,7 +29,7 @@ class TabBarBrowseAction extends Component {
 
     const link = new ParsedLink(BROWSE_PATH);
     link.open();
-  }
+  };
 
   /**
    * Renders the component.

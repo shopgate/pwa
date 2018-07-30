@@ -30,7 +30,7 @@ class TabBarCartAction extends Component {
 
     const link = new ParsedLink(CART_PATH);
     link.open();
-  }
+  };
 
   /**
    * Renders the component.

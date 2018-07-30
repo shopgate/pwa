@@ -123,7 +123,6 @@ class QuantityPicker extends Component {
 
   /**
    * Event handler for the the onFocus event of the input.
-   * @param {Object} event The event object.
    */
   handleInputFocus = () => {
     this.input.select();

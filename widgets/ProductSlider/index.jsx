@@ -99,7 +99,7 @@ class ProductSlider extends Component {
     }
 
     return null;
-  }
+  };
 
   /**
    * Renders the widget.

@@ -30,7 +30,7 @@ class TabBarFavoritesAction extends Component {
 
     const link = new ParsedLink(FAVORITES_PATH);
     link.open();
-  }
+  };
 
   /**
    * Renders the component.
