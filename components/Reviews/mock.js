@@ -113,7 +113,7 @@ export const mockedStateProductEmpty = {
 export const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
     get hasReviews() { return mockReviewsAvailable; },
-    get showWriteReview() { return true},
+    get showWriteReview() { return true; },
     themeConfig: mockedConfig,
   }));
 };

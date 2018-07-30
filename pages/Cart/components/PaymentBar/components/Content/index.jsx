@@ -12,7 +12,6 @@ import styles from './style';
 
 /**
  * The Payment Bar component.
- * @param {Object} props The component props.
  * @return {JSX}
  */
 const Content = () => (

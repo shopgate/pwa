@@ -15,6 +15,7 @@ jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequ
 
 /**
  * Creates component
+ * @param {Object} state State
  * @return {ReactWrapper}
  */
 const createComponent = (state) => {

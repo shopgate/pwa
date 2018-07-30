@@ -85,7 +85,7 @@ export const setBackgroundColor = color => ({
 
 /**
  * Sets the text color of the navigator.
- * @param {boolean} color The navigator's new text color.
+ * @param {string} color The navigator's new text color.
  * @returns {Object} The action object.
  */
 export const setTextColor = color => ({
