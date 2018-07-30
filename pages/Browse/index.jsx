@@ -48,11 +48,20 @@ class Browse extends Component {
         <SearchField />
         <div data-test-id="categoriesList">
           <Headline text="titles.categories" small />
-          <Portal name={BROWSE_CATEGORY_LIST_BEFORE} props={{categories: this.props.categories || []}}/>
-          <Portal name={BROWSE_CATEGORY_LIST} props={{categories: this.props.categories || []}} >
+          <Portal
+            name={BROWSE_CATEGORY_LIST_BEFORE}
+            props={{ categories: this.props.categories || [] }}
+          />
+          <Portal
+            name={BROWSE_CATEGORY_LIST}
+            props={{ categories: this.props.categories || [] }}
+          >
             <CategoryList categories={this.props.categories || []} />
           </Portal>
-          <Portal name={BROWSE_CATEGORY_LIST_AFTER} props={{categories: this.props.categories || []}}/>
+          <Portal
+            name={BROWSE_CATEGORY_LIST_AFTER}
+            props={{ categories: this.props.categories || [] }}
+          />
         </div>
       </View>
     );

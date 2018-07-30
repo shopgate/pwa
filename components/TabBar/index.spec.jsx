@@ -73,7 +73,7 @@ jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
 
 describe('<TabBar />', () => {
   it('should render when visible', () => {
-    const wrapper = createComponent(mockedStateDefault, true, true);
+    const wrapper = createComponent(mockedStateDefault);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('TabBarAction').length).toBe(Object.keys(allTabs).length);
