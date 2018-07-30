@@ -270,42 +270,37 @@ class NavDrawer extends Component {
           </Fragment>
         }
 
-        {!userAddresses && showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
+        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
 
-        {!userAddresses &&
-          { /* Display previous version's entries, when feature flag is disabled */ } &&
-          <Fragment>
-            {/* Shipping */}
-            <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
-            <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
-              <Item
-                href={`${PAGE_PATH}/shipping`}
-                icon={LocalShippingIcon}
-                close={this.handleClose}
-                testId="navDrawerShippingButton"
-              >
-                <I18n.Text string="navigation.shipping" />
-              </Item>
-            </Portal>
-            <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+        {/* Shipping */}
+        <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+        <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
+          <Item
+            href={`${PAGE_PATH}/shipping`}
+            icon={LocalShippingIcon}
+            close={this.handleClose}
+            testId="navDrawerShippingButton"
+          >
+            <I18n.Text string="navigation.shipping" />
+          </Item>
+        </Portal>
+        <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
 
-            {/* Payment */}
-            <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
-            <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
-              <Item
-                href={`${PAGE_PATH}/payment`}
-                icon={CreditCardIcon}
-                close={this.handleClose}
-                testId="navDrawerPaymentButton"
-              >
-                <I18n.Text string="navigation.payment" />
-              </Item>
-            </Portal>
-            <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+        {/* Payment */}
+        <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+        <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
+          <Item
+            href={`${PAGE_PATH}/payment`}
+            icon={CreditCardIcon}
+            close={this.handleClose}
+            testId="navDrawerPaymentButton"
+          >
+            <I18n.Text string="navigation.payment" />
+          </Item>
+        </Portal>
+        <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
 
-            <Divider close={this.handleClose} />
-          </Fragment>
-        }
+        <Divider close={this.handleClose} />
 
         {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
 
