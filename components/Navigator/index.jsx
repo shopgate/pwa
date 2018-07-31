@@ -162,7 +162,7 @@ class Navigator extends PureComponent {
               <Grid className={styles.grid} component="section" wrap={false}>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON} props={{ NavButton }}>
-                  <NavButton />
+                  <NavButton pattern={this.state.routePattern} />
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_BEFORE} />
