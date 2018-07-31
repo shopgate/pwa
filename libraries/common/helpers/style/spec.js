@@ -59,6 +59,7 @@ describe('style helper', () => {
         },
       });
     });
+
     it('should output declarations for 2px size', () => {
       expect(physicalPixelSize('foo', 2)).toEqual({
         foo: 2,
@@ -76,6 +77,7 @@ describe('style helper', () => {
         },
       });
     });
+
     it('should output declarations for 3px size', () => {
       expect(physicalPixelSize('foo', 3)).toEqual({
         foo: 3,
