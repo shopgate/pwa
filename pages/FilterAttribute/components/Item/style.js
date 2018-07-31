@@ -8,21 +8,12 @@ const item = css({
   width: '100%',
 }).toString();
 
-const baseColumn = {
-  display: 'block',
+const column = css({
   padding: '5px 0px',
-};
-
-const label = css({
-  ...baseColumn,
-}).toString();
-
-const checkbox = css({
-  ...baseColumn,
+  wordBreak: 'break-word',
 }).toString();
 
 export default {
   item,
-  label,
-  checkbox,
+  column,
 };
