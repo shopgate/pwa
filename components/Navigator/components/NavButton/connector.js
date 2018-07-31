@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { ACTION_POP } from '@virtuous/conductor/constants';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import toggleNavDrawer from '../../actions/toggleNavDrawer';
 
 /**
@@ -8,6 +10,7 @@ import toggleNavDrawer from '../../actions/toggleNavDrawer';
  */
 const mapDispatchToProps = dispatch => ({
   openNavDrawer: () => dispatch(toggleNavDrawer(true)),
+  close: () => dispatch(navigate(ACTION_POP)),
 });
 
 export default connect(null, mapDispatchToProps);
