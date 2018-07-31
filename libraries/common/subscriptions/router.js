@@ -20,6 +20,19 @@ export default function router(subscribe) {
     const { action: historyAction, state: routeState } = action;
     let { location } = action;
 
+    switch (historyAction) {
+      case ACTION_POP: {
+        conductor.pop();
+        return;
+      }
+      case ACTION_RESET: {
+        conductor.reset();
+        return;
+      }
+      default:
+        break;
+    }
+
     const state = getState();
 
     // Route authentication.
@@ -68,20 +81,12 @@ export default function router(subscribe) {
     }
 
     switch (historyAction) {
-      case ACTION_POP: {
-        conductor.pop();
-        break;
-      }
       case ACTION_PUSH: {
         conductor.push(location, routeState);
         break;
       }
       case ACTION_REPLACE: {
         conductor.replace(location, routeState);
-        break;
-      }
-      case ACTION_RESET: {
-        conductor.reset();
         break;
       }
       default:
