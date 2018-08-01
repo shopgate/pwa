@@ -31,6 +31,12 @@ export const rem = (pixels) => {
  * @returns {Object}
  */
 export const physicalPixelSize = (property, size = 1) => {
+  // Android doesn't accept decimals.
+  if (navigator && navigator.userAgent && navigator.userAgent.includes('Android')) {
+    return {
+      [property]: size,
+    };
+  }
   const double = Math.round((size / 2) * 100) / 100;
   const triple = Math.round((size / 3) * 100) / 100;
 

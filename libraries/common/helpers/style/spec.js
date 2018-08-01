@@ -42,57 +42,77 @@ describe('style helper', () => {
   });
 
   describe('physicalPixelSize', () => {
-    it('should output declarations for 1px size', () => {
-      expect(physicalPixelSize('foo', 1)).toEqual({
-        foo: 1,
-        '@media (min-device-pixel-ratio: 2)': {
-          foo: 0.5,
-        },
-        '@media (-webkit-min-device-pixel-ratio: 2)': {
-          foo: 0.5,
-        },
-        '@media (min-device-pixel-ratio: 3)': {
-          foo: 0.33,
-        },
-        '@media (-webkit-min-device-pixel-ratio: 3)': {
-          foo: 0.33,
-        },
+    describe('non-Android devices', () => {
+      beforeAll(() => {
+        Object.defineProperty(window.navigator, 'userAgent', {
+          value: 'Not And... user agent',
+          configurable: true,
+        });
+      });
+      it('should output declarations for 1px size', () => {
+        expect(physicalPixelSize('foo', 1)).toEqual({
+          foo: 1,
+          '@media (min-device-pixel-ratio: 2)': {
+            foo: 0.5,
+          },
+          '@media (-webkit-min-device-pixel-ratio: 2)': {
+            foo: 0.5,
+          },
+          '@media (min-device-pixel-ratio: 3)': {
+            foo: 0.33,
+          },
+          '@media (-webkit-min-device-pixel-ratio: 3)': {
+            foo: 0.33,
+          },
+        });
+      });
+      it('should output declarations for 2px size', () => {
+        expect(physicalPixelSize('foo', 2)).toEqual({
+          foo: 2,
+          '@media (min-device-pixel-ratio: 2)': {
+            foo: 1,
+          },
+          '@media (-webkit-min-device-pixel-ratio: 2)': {
+            foo: 1,
+          },
+          '@media (min-device-pixel-ratio: 3)': {
+            foo: 0.67,
+          },
+          '@media (-webkit-min-device-pixel-ratio: 3)': {
+            foo: 0.67,
+          },
+        });
+      });
+      it('should output declarations for 3px size', () => {
+        expect(physicalPixelSize('foo', 3)).toEqual({
+          foo: 3,
+          '@media (min-device-pixel-ratio: 2)': {
+            foo: 1.5,
+          },
+          '@media (-webkit-min-device-pixel-ratio: 2)': {
+            foo: 1.5,
+          },
+          '@media (min-device-pixel-ratio: 3)': {
+            foo: 1,
+          },
+          '@media (-webkit-min-device-pixel-ratio: 3)': {
+            foo: 1,
+          },
+        });
       });
     });
 
-    it('should output declarations for 2px size', () => {
-      expect(physicalPixelSize('foo', 2)).toEqual({
-        foo: 2,
-        '@media (min-device-pixel-ratio: 2)': {
-          foo: 1,
-        },
-        '@media (-webkit-min-device-pixel-ratio: 2)': {
-          foo: 1,
-        },
-        '@media (min-device-pixel-ratio: 3)': {
-          foo: 0.67,
-        },
-        '@media (-webkit-min-device-pixel-ratio: 3)': {
-          foo: 0.67,
-        },
+    describe('android devices', () => {
+      beforeAll(() => {
+        Object.defineProperty(window.navigator, 'userAgent', {
+          value: 'Foo Android',
+          configurable: true,
+        });
       });
-    });
-
-    it('should output declarations for 3px size', () => {
-      expect(physicalPixelSize('foo', 3)).toEqual({
-        foo: 3,
-        '@media (min-device-pixel-ratio: 2)': {
-          foo: 1.5,
-        },
-        '@media (-webkit-min-device-pixel-ratio: 2)': {
-          foo: 1.5,
-        },
-        '@media (min-device-pixel-ratio: 3)': {
-          foo: 1,
-        },
-        '@media (-webkit-min-device-pixel-ratio: 3)': {
-          foo: 1,
-        },
+      it('should return natural number rules only', () => {
+        expect(physicalPixelSize('foo', 3)).toEqual({
+          foo: 3,
+        });
       });
     });
   });
