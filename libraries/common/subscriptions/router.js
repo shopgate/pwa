@@ -85,8 +85,6 @@ export default function router(subscribe) {
       return;
     }
 
-    console.warn(historyAction, routeState, location);
-
     switch (historyAction) {
       case ACTION_PUSH: {
         conductor.push(location, routeState);
