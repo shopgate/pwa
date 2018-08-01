@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/action-creators/router';
 import { getProductDescription } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -19,7 +18,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: url => dispatch(navigate(ACTION_PUSH, url)),
+  navigate: url => dispatch(historyPush({ pathname: url })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

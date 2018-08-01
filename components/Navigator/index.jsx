@@ -123,7 +123,9 @@ class Navigator extends PureComponent {
       const isSearchRoute = (this.state.routePattern === SEARCH_PATH);
       const action = (isSearchRoute) ? ACTION_REPLACE : ACTION_PUSH;
 
-      this.props.navigate(action, `/search?s=${this.state.searchQuery}`);
+      this.props.navigate(action, {
+        pathname: `/search?s=${this.state.searchQuery}`,
+      });
     }
   }
 

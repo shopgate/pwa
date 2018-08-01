@@ -1,5 +1,4 @@
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { getCurrentParams, getCurrentQuery } from '@shopgate/pwa-common/selectors/router';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
@@ -18,9 +17,13 @@ const openFilterView = props => (dispatch, getState) => {
   const queryString = parseObjectToQueryString(query);
 
   if (params.categoryId) {
-    dispatch(navigate(ACTION_PUSH, `${CATEGORY_PATH}/${props.categoryId}/filter${queryString}`));
+    dispatch(historyPush({
+      pathname: `${CATEGORY_PATH}/${props.categoryId}/filter${queryString}`,
+    }));
   } else if (query.s) {
-    dispatch(navigate(ACTION_PUSH, `${SEARCH_PATH}/filter${queryString}`));
+    dispatch(historyPush({
+      pathname: `${SEARCH_PATH}/filter${queryString}`,
+    }));
   }
 };
 
