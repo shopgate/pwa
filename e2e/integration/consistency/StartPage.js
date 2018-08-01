@@ -87,14 +87,14 @@ describe('AndroidGMDTest startPage', () => {
 
   it('should check for Product grid widget', () => {
     // Check for ProductgridWidget and first product
-    cy.get(els.productGridWidgetFirstProduct)
+    cy.get(els.productGridWidgetSecondProduct)
       .scrollIntoView()
       .should('be.visible');
   });
 
   it('should check for product list widget', () => {
     // Check for product list widget
-    cy.get(els.productListWidgetFirstProduct)
+    cy.get(els.productListWidgetSecondProduct)
       .scrollIntoView()
       .should('be.visible');
   });

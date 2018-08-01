@@ -4,6 +4,11 @@ import els from '../../elements/de';
 
 describe('function tests search page', () => {
   it('should search with fitting products', () => {
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      // returning false here prevents Cypress from
+      // failing the test
+      return false
+    })
     cy.visit('');
 
     cy.get(els.searchButton)
@@ -11,6 +16,7 @@ describe('function tests search page', () => {
       .click();
     cy.wait(2000);
     cy.get(els.searchInput)
+      .click()
       .should('be.visible')
       .type('product with many properties -4- {enter}');
     cy.get(els.productWithManyProps4SearchResult)

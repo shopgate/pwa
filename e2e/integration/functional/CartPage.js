@@ -44,9 +44,11 @@ describe('functional tests cart page', () => {
       .click();
     cy.get(els.productsWithLongNamesCat)
       .last()
+      .should('be.visible')
       .click();
     cy.get(els.productWithVeryLongName5Name)
       .last()
+      .should('be.visible')
       .click();
     cy.get(els.addToCartButton)
       .click();

@@ -19,7 +19,7 @@ describe('functional tests login page', () => {
       .type('testest {enter}');
     cy.get(els.basicDialogText)
       .should('be.visible')
-      .contains('The given credentials are wrong or do not exist.');
+      .contains('Nutzername oder Passwort sind nicht korrekt');
     cy.get(els.basicDialogOkButton)
       .click();
   });
