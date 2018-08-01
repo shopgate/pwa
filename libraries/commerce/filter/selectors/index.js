@@ -3,17 +3,12 @@ import isEqual from 'lodash/isEqual';
 import find from 'lodash/find';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { getSearchPhrase, getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentCategoryId } from '../../category/selectors';
 
-/**
- * Retrieves the router params from the props.
- * @param {Object} _ The application state. (Will be ignored!)
- * @param {Object} props The component props.
- * @returns {Object} The router params.
- */
-const getParamsFromProps = (_, props = {}) => props.params;
+const defaultFilters = [];
 
 /**
  * Gets the filters reducer.
@@ -27,14 +22,20 @@ export const getFilters = state => state.filter;
  * @param {Object} state The application state.
  * @returns {string}
  */
-export const getStoredFilterHash = state => state.filter.activeHash;
+export const getStoredFilterHash = createSelector(
+  getFilters,
+  filter => filter.activeHash
+);
 
 /**
  * Gets all active filters stacks.
  * @param {Object} state The application state.
  * @returns {Array}
  */
-export const getActiveFiltersStack = state => getFilters(state).activeFilters;
+export const getActiveFiltersStack = createSelector(
+  getFilters,
+  filter => filter.activeFilters || defaultFilters
+);
 
 /**
  * Gets the currently active filters.
@@ -43,7 +44,7 @@ export const getActiveFiltersStack = state => getFilters(state).activeFilters;
  * @returns {Object|null}
  */
 export const getActiveFilters = createSelector(
-  getParamsFromProps,
+  getCurrentParams,
   getActiveFiltersStack,
   (params, activeFilters) => {
     let stack;
@@ -85,7 +86,7 @@ export const getFilterHash = createSelector(
       pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,
       ...categoryId && { categoryId },
       ...searchPhrase && { searchPhrase },
-      ...filters && { filters: {} },
+      ...filters && { filters },
     };
 
     return generateResultHash(hashParams, false);
@@ -97,8 +98,9 @@ export const getFilterHash = createSelector(
  * @param {Object} state The current application state.
  * @return {Object}
  */
-export const getAvailableFiltersStack = state => (
-  getFilters(state).availableFilters
+export const getAvailableFiltersStack = createSelector(
+  getFilters,
+  filter => filter.availableFilters
 );
 
 /**
@@ -133,8 +135,9 @@ export const hasActiveFilters = createSelector(
  * @param {Object} state The application state.
  * @returns {Object}
  */
-export const getTemporaryFilters = state => (
-  getFilters(state).temporaryFilters
+export const getTemporaryFilters = createSelector(
+  getFilters,
+  filter => filter.temporaryFilters
 );
 
 /**
@@ -198,7 +201,7 @@ export const haveFiltersChanged = createSelector(
     }
 
     const numTempFilters = Object.keys(tempFilters).length;
-    const numActiveFilters = Object.keys(activeFilters).length;
+    const numActiveFilters = !activeFilters ? 0 : Object.keys(activeFilters).length;
 
     // Compare each temporary filter to it's available default.
     const changedFromDefault = !Object.keys(tempFilters).every(key => (
@@ -221,7 +224,7 @@ export const haveFiltersChanged = createSelector(
  * @returns {Object}
  */
 export const getCurrentFilterAttribute = createSelector(
-  getHistoryPathname,
+  (state, props) => props.url,
   getAvailableFilters,
   (url, filters) => {
     if (!url || !filters || !filters.length) {

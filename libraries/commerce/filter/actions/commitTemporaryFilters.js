@@ -1,15 +1,15 @@
 import { shallowEqual } from 'recompose';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { getSearchPhrase, getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentCategoryId } from '../../category/selectors';
+import getProducts from '../../product/actions/getProducts';
 import setActiveFilters from '../action-creators/setActiveFilters';
 import {
   getActiveFiltersStack,
   getTemporaryFilters,
   getTemporaryFiltersWithRoundedDisplayAmounts,
 } from '../selectors';
-import getProducts from '../../product/actions/getProducts';
-import buildFilterParams from './helpers/buildFilterParams';
 
 /**
  * Submits the temporary state to the active filters.
@@ -34,20 +34,26 @@ const commitTemporaryFilters = (roundDisplayAmounts = true) => (dispatch, getSta
   }
 
   if (!shallowEqual(temporaryFilters, activeFilters[activeFilters.length - 1].filters)) {
-    dispatch(setActiveFilters(temporaryFilters));
+    const categoryId = getCurrentCategoryId(state);
+    const searchPhrase = getSearchPhrase(state);
 
-    const sort = getSortOrder(state);
-    const params = buildFilterParams(state);
+    dispatch(setActiveFilters(temporaryFilters, {
+      ...categoryId && { categoryId },
+      ...searchPhrase && { searchPhrase },
+    }));
+
+    const params = {
+      ...categoryId && { categoryId },
+      ...searchPhrase && { searchPhrase },
+      limit: ITEMS_PER_LOAD,
+      offset: 0,
+      sort: getSortOrder(state),
+    };
 
     // Enrich the parameters with the getProducts related properties for the initial product "page".
-    dispatch(getProducts({
-      params: {
-        ...params,
-        limit: ITEMS_PER_LOAD,
-        offset: 0,
-        sort,
-      },
-    }));
+    setTimeout(() => {
+      dispatch(getProducts({ params }));
+    }, 0);
   }
 };
 

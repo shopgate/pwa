@@ -1,9 +1,10 @@
 import { createSelector } from 'reselect';
+import isEqual from 'lodash/isEqual';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getHistoryPathname, getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { ITEM_PATH } from '../constants';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
@@ -22,6 +23,16 @@ export const getProductState = state => state.product;
 export const getProducts = createSelector(
   getProductState,
   state => state.productsById
+);
+
+/**
+ * Selects all products from the store.
+ * @param {Object} state The current application state.
+ * @return {Object} The collection of products.
+ */
+const getVariants = createSelector(
+  getProductState,
+  state => state.variantsByProductId
 );
 
 /**
@@ -174,7 +185,7 @@ export const getProductCurrency = createSelector(
 export const getResultHash = createSelector(
   (state, props) => props.categoryId,
   (state, props) => props.searchPhrase,
-  (state, props) => props.sortOrder || DEFAULT_SORT,
+  state => getSortOrder(state) || DEFAULT_SORT,
   getActiveFilters,
   (categoryId, searchPhrase, sort, filters) => {
     if (categoryId) {
@@ -206,7 +217,15 @@ export const getResultHash = createSelector(
 export const getResultByHash = createSelector(
   state => state.product,
   getResultHash,
-  (productState, hash) => productState.resultsByHash[hash]
+  (productState, hash) => {
+    const results = productState.resultsByHash[hash];
+
+    if (!results) {
+      return null;
+    }
+
+    return results;
+  }
 );
 
 /**
@@ -218,7 +237,7 @@ export const getResultByHash = createSelector(
  * @return {Object} The product result.
  */
 export const getPopulatedProductsResult = (state, props, hash, result) => {
-  const sort = props.sortOrder || DEFAULT_SORT;
+  const sort = getSortOrder(state) || DEFAULT_SORT;
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 
@@ -231,6 +250,7 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
     products,
     totalProductCount,
     sort,
+    hash,
   };
 };
 
@@ -537,8 +557,7 @@ export const hasVariants = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProductData,
-  getCurrentProductId,
-  (productData, productId) => {
+  (productData) => {
     if (!productData) {
       return null;
     }
@@ -547,7 +566,7 @@ export const getBaseProductId = createSelector(
       return productData.baseProductId;
     }
 
-    return productId;
+    return productData.id;
   }
 );
 
@@ -577,8 +596,9 @@ export const getVariantId = createSelector(
 export const isProductOrderable = createSelector(
   isBaseProduct,
   getProductStock,
-  (isBase, stock) => {
-    if (!isBase || !stock) {
+  hasVariants,
+  (isBase, stock, variants) => {
+    if (!stock || (isBase && variants)) {
       return false;
     }
 
@@ -595,4 +615,41 @@ export const isProductOrderable = createSelector(
 export const hasProductData = createSelector(
   getProductData,
   productData => !!productData
+);
+
+/**
+ * Retrieves the product variant data.
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getProductVariants = createSelector(
+  getVariants,
+  (state, props) => props.productId,
+  (variants, productId) => {
+    if (!productId || !variants[productId]) {
+      return null;
+    }
+
+    return variants[productId].variants;
+  }
+);
+
+/**
+ * @param {Object} state The current application state.
+ * @return {Object|null}
+ */
+export const getVariantAvailabilityByCharacteristics = createSelector(
+  getProductVariants,
+  (state, props) => props.characteristics,
+  (variants, characteristics) => {
+    const found = variants.products.filter(product => (
+      isEqual(product.characteristics, characteristics)
+    ));
+
+    if (!found.length) {
+      return null;
+    }
+
+    return found[0].availability;
+  }
 );

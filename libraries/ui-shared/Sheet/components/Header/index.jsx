@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
@@ -12,6 +13,7 @@ class Header extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     onToggleClose: PropTypes.func,
+    shadow: PropTypes.bool,
   };
 
   /**
@@ -20,15 +22,18 @@ class Header extends Component {
    */
   static defaultProps = {
     onToggleClose: () => {},
+    shadow: false,
   };
 
   /**
-   * Only re-render when the title changes.
    * @param {Object} nextProps Next Props
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
-    return (this.props.title !== nextProps.title);
+    return (
+      this.props.shadow !== nextProps.shadow ||
+      this.props.title !== nextProps.title
+    );
   }
 
   /**
@@ -36,8 +41,13 @@ class Header extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = classNames(
+      styles.wrapper,
+      { [styles.shadow]: this.props.shadow }
+    );
+
     return (
-      <Grid component="div" wrap={false}>
+      <Grid className={classes} component="div" wrap={false}>
         <button className={styles.closeButton} onClick={this.props.onToggleClose}>
           <Ripple className={styles.closeIcon}>
             <CrossIcon size={24} />

@@ -16,7 +16,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = defaultState, action) => {
+export default function toastReducer(state = defaultState, action) {
   switch (action.type) {
     case CREATE_TOAST:
       if (state.dismissed) {
@@ -45,4 +45,4 @@ export default (state = defaultState, action) => {
     default:
       return state;
   }
-};
+}

@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
-import { getCurrentRoute, getRouterStack } from '@shopgate/pwa-common/selectors/router';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getCurrentQuery, getRouterStack } from '@shopgate/pwa-common/selectors/router';
 import { parseObjectToQueryString } from '../helpers/router';
 import { DEFAULT_SORT } from '../constants/DisplayOptions';
 
@@ -12,29 +13,20 @@ import { DEFAULT_SORT } from '../constants/DisplayOptions';
 export const getHistoryState = state => state.history;
 
 /**
- * Selects the current query params from current route.
- * @param {Object} state The global state.
- * @return {Object}
- */
-export const getQueryParams = createSelector(
-  getCurrentRoute,
-  route => route.query
-);
-
-/**
  * Retrieves a single url parameter from the query parameters object.
  * @param {Object} state The global state.
  * @param {string} param The dedicated url parameter.
  * @return {*} The URL parameter value.
  */
 export const getQueryParam = createSelector(
+  getCurrentQuery,
   (state, param) => param,
-  getQueryParams,
-  (param, params) => {
-    const queryParam = params[param];
+  (params, param) => {
+    if (!params || !params[param]) {
+      return null;
+    }
 
-    if (!queryParam) return null;
-    return queryParam;
+    return params[param];
   }
 );
 
@@ -75,7 +67,13 @@ export const getHistoryAction = createSelector(
  */
 export const getHistoryPathname = createSelector(
   getCurrentRoute,
-  route => route.pathname
+  (route) => {
+    if (!route) {
+      return null;
+    }
+
+    return route.pathname;
+  }
 );
 
 /**
@@ -94,7 +92,7 @@ export const getHistoryLength = createSelector(
  * @return {string}
  */
 export const getQueryParamsAsString = createSelector(
-  getQueryParams,
+  getCurrentQuery,
   queryParams => parseObjectToQueryString(queryParams)
 );
 

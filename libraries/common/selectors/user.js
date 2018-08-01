@@ -72,4 +72,4 @@ export const getUserDisplayName = createSelector(
  * @param {Object} state The application state.
  * @return {string|null}
  */
-export const getRegisterUrl = state => getUrl('register', state);
+export const getRegisterUrl = state => getUrl(state, { type: 'register' });

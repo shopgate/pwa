@@ -1,22 +1,22 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import analyticsSetCustomValues from '@shopgate/pwa-core/commands/analyticsSetCustomValues';
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import getCart from '../selectors/cart';
-import { track, formatPurchaseData } from '../helpers/index';
+import { track, formatPurchaseData, setPWAVisibleState } from '../helpers';
 
 /**
  * Checkout tracking subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function checkout(subscribe) {
-  /**
-   * Emits when the checkout route was entered.
-   */
-  const checkoutDidEnter$ = routeDidEnter(CHECKOUT_PATH);
+  const checkoutDidEnter$ = routeDidEnter$
+    .filter(({ action }) => action.route.pattern === CHECKOUT_PATH);
 
   subscribe(checkoutDidEnter$, ({ getState }) => {
+    setPWAVisibleState(false);
+
     const state = getState();
 
     track('initiatedCheckout', { cart: getCart(state) }, state);
@@ -31,14 +31,23 @@ export default function checkout(subscribe) {
         return;
       }
 
+      const source = data.type !== 'legacy' ? 'web_PWA' : 'app_PWA';
+
       analyticsSetCustomValues({
         customDimensions: [{
           index: 4,
-          value: data.type !== 'legacy' ? 'web_PWA' : 'app_PWA',
+          value: source,
         }],
       });
 
-      track('purchase', formatPurchaseData(data.order), getState());
+      const formattedData = {
+        ...formatPurchaseData(data.order),
+        meta: {
+          source,
+        },
+      };
+
+      track('purchase', formattedData, getState());
     });
   });
 }

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
+import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 
 /**
@@ -62,13 +62,13 @@ export const getRootCategories = createSelector(
  * @returns {string|null} The category ID.
  */
 export const getCurrentCategoryId = createSelector(
-  getCurrentRoute,
-  (route) => {
-    if (!route || !route.params || !route.params.categoryId) {
+  getCurrentParams,
+  (params) => {
+    if (!params || !params.categoryId) {
       return null;
     }
 
-    return hex2bin(route.params.categoryId);
+    return hex2bin(params.categoryId);
   }
 );
 
@@ -126,7 +126,10 @@ export const getCategoryProductCount = createSelector(
   getCategoriesState,
   (state, props) => props.categoryId,
   (categories, categoryId) => {
-    if (!categories[categoryId] || !categories[categoryId].productCount) {
+    if (
+      !categories[categoryId]
+      || (!categories[categoryId].productCount && categories[categoryId].productCount !== 0)
+    ) {
       return null;
     }
 
@@ -147,4 +150,9 @@ export const getChildCategoriesById = createSelector(
     // Map the child ids over the category state.
     return childCategories[categoryId].children.map(id => categories[id]);
   }
+);
+
+export const getCategoryName = createSelector(
+  getCurrentCategory,
+  category => (category ? category.name : null)
 );

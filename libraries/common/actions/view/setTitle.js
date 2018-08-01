@@ -6,10 +6,10 @@ import { getTitle } from '../../selectors/ui';
  * @param {string} title The title text for the navigator.
  * @return {Function} A redux thunk.
  */
-const setTitle = title => (dispatch, getState) => {
-  if (getTitle(getState()) !== title) {
-    dispatch(setViewTitle(title));
-  }
-};
-
-export default setTitle;
+export default function setTitle(title) {
+  return (dispatch, getState) => {
+    if (getTitle(getState()) !== title) {
+      dispatch(setViewTitle(title));
+    }
+  };
+}

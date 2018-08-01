@@ -5,10 +5,10 @@ import AppCommand from '../classes/AppCommand';
  * This registers the WebView to certain app events.
  * @param {Array} events Events that should be registered.
  */
-export default (events) => {
+export default function registerEvents(events) {
   const command = new AppCommand();
 
   command
     .setCommandName('registerEvents')
     .dispatch({ events });
-};
+}

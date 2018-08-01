@@ -3,7 +3,7 @@ import getProducts from './getProducts';
 
 /**
  * Retrieves products by id from the store.
- * @param {string} productIds The product id's to request.
+ * @param {Array} productIds The product id's to request.
  * @param {string} [componentId=null] A unique id for the component that is using this action.
  * @return {Function} A Redux Thunk
  */

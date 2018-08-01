@@ -5,15 +5,17 @@ import {
   UNSET_VIEW_LOADING,
 } from '../../constants/ActionTypes';
 
+const defaultState = {
+  isLoading: {},
+};
+
 /**
  * Stores all the view information.
  * @param {Object} state The current state.
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = {
-  isLoading: {},
-}, action) => {
+export default function viewReducer(state = defaultState, action) {
   switch (action.type) {
     case DECREMENT_VIEW_LOADING:
       return {
@@ -50,4 +52,4 @@ export default (state = {
     default:
       return state;
   }
-};
+}

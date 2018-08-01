@@ -1,5 +1,5 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { PWA_DID_APPEAR } from '../constants';
 
 /**
@@ -9,5 +9,5 @@ export const pwaDidAppear$ = main$
   .filter(({ action }) => action.type === PWA_DID_APPEAR)
   .map(action => ({
     ...action,
-    pathname: getHistoryPathname(action.getState()),
+    pathname: getCurrentPathname(),
   }));

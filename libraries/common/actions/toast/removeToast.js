@@ -5,8 +5,8 @@ import removeToast from '../../action-creators/toast/removeToast';
  * @param {number} id Id.
  * @returns {function}
  */
-const removeToastAction = id => (dispatch) => {
-  dispatch(removeToast(id));
-};
-
-export default removeToastAction;
+export default function removeToastAction(id) {
+  return (dispatch) => {
+    dispatch(removeToast(id));
+  };
+}

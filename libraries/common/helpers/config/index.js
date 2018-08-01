@@ -17,6 +17,7 @@ const defaultAppConfig = {
   shopName: 'Shopgate Connect',
   webCheckoutShopify: null,
   shopCNAME: null,
+  currency: 'USD',
 };
 
 /**
@@ -30,6 +31,15 @@ const defaultThemeConfig = {
 };
 
 /**
+ * Provides a default components config as a fallback.
+ * @type {{portals: {}, widgets: {}}}
+ */
+const defaultComponentsConfig = {
+  portals: {},
+  widgets: {},
+};
+
+/**
  * The app.json config from the theme.
  * @typedef {Object}
  */
@@ -39,7 +49,7 @@ const appConfig = process.env.NODE_ENV !== 'test' ? process.env.APP_CONFIG : def
  * The components.json config from the theme.
  * @typedef {Object}
  */
-export const componentsConfig = process.env.COMPONENTS_CONFIG || {};
+export const componentsConfig = { ...defaultComponentsConfig, ...process.env.COMPONENTS_CONFIG };
 
 /**
  * The theme configuration.

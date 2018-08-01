@@ -1,6 +1,8 @@
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import conductor from '@virtuous/conductor';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import commitTemporaryFilters from './commitTemporaryFilters';
+import { CATEGORY_PATH } from '../../category/constants';
+import { SEARCH_PATH } from '../../search/constants';
 import { FILTER_PATH } from '../constants';
 
 /**
@@ -9,15 +11,21 @@ import { FILTER_PATH } from '../constants';
  *   be rounded to the next full number.
  * @returns {Function} A redux thunk
  */
-const applyFilters = (roundDisplayAmounts = true) => (dispatch, getState) => {
+const applyFilters = (roundDisplayAmounts = true) => (dispatch) => {
   dispatch(commitTemporaryFilters(roundDisplayAmounts));
 
-  const path = getHistoryPathname(getState());
+  const route = getCurrentRoute();
 
-  if (path.startsWith(`${FILTER_PATH}/`)) {
-    dispatch(goBackHistory(2));
-  } else if (path.startsWith(FILTER_PATH)) {
-    dispatch(goBackHistory(1));
+  if (
+    route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}`
+    || route.pattern === `${SEARCH_PATH}${FILTER_PATH}`
+  ) {
+    conductor.pop();
+  } else if (
+    route.pattern === `${CATEGORY_PATH}/:categoryId${FILTER_PATH}/:attribute`
+    || route.pattern === `${SEARCH_PATH}${FILTER_PATH}/:attribute`
+  ) {
+    conductor.pop(2);
   }
 };
 

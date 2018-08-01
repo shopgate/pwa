@@ -8,7 +8,7 @@ exports[`<Chip /> should render a tag 1`] = `
   removable={true}
 >
   <div
-    className="css-11a1u6a"
+    className="css-bpa25c"
   >
     <Button
       className="css-i7sqdh"
@@ -80,7 +80,7 @@ exports[`<Chip /> should render a without removable icon 1`] = `
   removable={false}
 >
   <div
-    className="css-yv6cwk"
+    className="css-19sltcj"
   >
     <Button
       className="css-1al9zi1"

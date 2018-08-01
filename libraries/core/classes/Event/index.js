@@ -14,6 +14,8 @@ class Event extends EventEmitter {
   constructor() {
     super();
 
+    this.setMaxListeners(20);
+
     /**
      * A global implementation of the call function to make it accessible to the app.
      *

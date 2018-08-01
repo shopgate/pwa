@@ -6,10 +6,10 @@ import AppCommand from '../classes/AppCommand';
  * @param {string} params.event The custom event name.
  * @param {Object} params.parameters The custom event parameters.
  */
-export default (params) => {
+export default function broadcastEvent(params) {
   const command = new AppCommand();
 
   command
     .setCommandName('broadcastEvent')
     .dispatch(params);
-};
+}

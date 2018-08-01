@@ -1,6 +1,11 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { openedLink$ } from '@shopgate/pwa-common/streams/history';
-import { routeWillEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
+import {
+  routeWillEnter$,
+  routeDidEnter$,
+  routeWillLeave$,
+  routeDidLeave$,
+} from '@shopgate/pwa-common/streams/router';
 import {
   CART_PATH,
 
@@ -38,9 +43,21 @@ export const cartWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === CART_PATH);
 
 /**
+* @type {Observable}
+*/
+export const cartDidEnter$ = routeDidEnter$
+  .filter(({ action }) => action.route.pattern === CART_PATH);
+
+/**
  * @type {Observable}
  */
 export const cartWillLeave$ = routeWillLeave$
+  .filter(({ action }) => action.route.pattern === CART_PATH);
+
+/**
+ * @type {Observable}
+ */
+export const cartDidLeave$ = routeDidLeave$
   .filter(({ action }) => action.route.pattern === CART_PATH);
 
 /**
