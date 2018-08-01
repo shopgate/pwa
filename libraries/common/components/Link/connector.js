@@ -7,7 +7,7 @@ import { navigate } from '../../action-creators/router';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: (action, href, state) => dispatch(navigate(action, href, state)),
+  navigate: (action, params) => dispatch(navigate(action, params)),
 });
 
 export default connect(null, mapDispatchToProps);

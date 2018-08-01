@@ -41,7 +41,12 @@ class Link extends Component {
     }
 
     const action = this.props.replace ? ACTION_REPLACE : ACTION_PUSH;
-    this.props.navigate(action, this.props.href, this.props.state);
+
+    this.props.navigate({
+      action,
+      pathname: this.props.href,
+      state: this.props.state,
+    });
   };
 
   /**

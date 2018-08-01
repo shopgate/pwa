@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 
 /**
  * Connects the dispatch function to a callable function in the props.
@@ -7,7 +7,7 @@ import { navigate } from '@shopgate/pwa-common/action-creators/router';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: link => dispatch(navigate(link)),
+  navigate: link => dispatch(historyPush({ pathname: link })),
 });
 
 export default connect(null, mapDispatchToProps);

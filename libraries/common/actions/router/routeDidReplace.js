@@ -6,7 +6,7 @@ import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/rout
 /**
  * @return {Function} The dispatched action.
  */
-export default function routeDidReplace() {
+export function routeDidReplace() {
   return (dispatch, getState) => {
     const incoming = getCurrentRoute();
     const outgoing = getCurrentRouteSelector(getState());

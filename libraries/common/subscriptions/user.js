@@ -1,8 +1,8 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import getUser from '../actions/user/getUser';
-import { navigate, successLogin } from '../action-creators';
+import { successLogin } from '../action-creators';
+import { historyPush } from '../actions/router';
 import {
   appDidStart$,
   userWillLogin$,
@@ -55,6 +55,8 @@ export default function user(subscribe) {
   });
 
   subscribe(legacyConnectRegisterDidFail$, ({ dispatch }) => {
-    dispatch(navigate(ACTION_PUSH, `/${LEGACY_URL_CONNECT_REGISTER}`));
+    dispatch(historyPush({
+      pathname: `/${LEGACY_URL_CONNECT_REGISTER}`,
+    }));
   });
 }

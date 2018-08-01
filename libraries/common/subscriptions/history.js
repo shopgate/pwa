@@ -1,10 +1,9 @@
 import { event } from '@shopgate/pwa-core';
-import { ACTION_RESET } from '@virtuous/conductor/constants';
 import {
   routeDidChange$,
   userDidLogout$,
 } from '../streams';
-import { navigate } from '../action-creators';
+import { historyReset } from '../actions/router';
 
 /**
  * History subscriptions.
@@ -12,7 +11,7 @@ import { navigate } from '../action-creators';
  */
 export default function history(subscribe) {
   subscribe(userDidLogout$, ({ dispatch }) => {
-    dispatch(navigate(ACTION_RESET));
+    dispatch(historyReset());
   });
 
   subscribe(routeDidChange$, () => {

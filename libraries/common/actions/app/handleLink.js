@@ -1,5 +1,4 @@
-import { ACTION_PUSH, ACTION_RESET } from '@virtuous/conductor/constants';
-import { navigate } from '../../action-creators/router';
+import { historyPush, historyReset } from '../../actions/router';
 import { INDEX_PATH_DEEPLINK } from '../../constants/RoutePaths';
 
 /**
@@ -20,10 +19,12 @@ export default function handleLink(payload) {
        * the parsed link helper will only emit the openLink events for the link to inform the
        * streams, but not open a real page. Additionally the history is reset.
        */
-      dispatch(navigate(ACTION_RESET));
+      dispatch(historyReset());
       return;
     }
 
-    dispatch(navigate(ACTION_PUSH, link));
+    dispatch(historyPush({
+      pathname: link,
+    }));
   };
 }

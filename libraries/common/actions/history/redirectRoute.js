@@ -1,5 +1,4 @@
-import { ACTION_POP, ACTION_REPLACE } from '@virtuous/conductor/constants';
-import { navigate } from '../../action-creators/router';
+import { historyPop, historyReplace } from '../../actions/router';
 import { setRedirectLocation } from '../../action-creators/history';
 import { getRedirectLocation } from '../../selectors/history';
 
@@ -19,10 +18,12 @@ export default function redirectRoute() {
        * Otherwise syncHistory would abort.
        */
       dispatch(setRedirectLocation(null));
-      dispatch(navigate(ACTION_REPLACE, redirectLocation));
+      dispatch(historyReplace({
+        pathname: redirectLocation,
+      }));
     } else {
       // No further redirect set. Go back the previous page.
-      dispatch(navigate(ACTION_POP));
+      dispatch(historyPop());
     }
   };
 }
