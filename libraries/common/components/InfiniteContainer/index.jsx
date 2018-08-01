@@ -163,8 +163,8 @@ class InfiniteContainer extends Component {
    */
   needsToReceiveItems(props = this.props) {
     return (
-      props.items.length !== props.totalItems ||
       props.totalItems === null
+      || props.items.length < props.totalItems
     );
   }
 
@@ -207,7 +207,7 @@ class InfiniteContainer extends Component {
      * Otherwise, with cached items, this component would skip the inital number of items
      * when the cache is out.
      */
-    if (this.state.offset[0] % this.props.limit) {
+    if (start % this.props.limit) {
       // Example: when 6, bump to 30, not 36.
       newOffset = this.props.limit;
     }
