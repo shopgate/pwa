@@ -28,6 +28,8 @@ const defaultAppConfig = {
   },
 };
 
+export const themeName = process.env.THEME || 'theme';
+
 /**
  * Provides a default theme config as a fallback.
  * @type {Object}
