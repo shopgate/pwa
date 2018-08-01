@@ -6,7 +6,7 @@ import { getCurrentRoute as getCurrentRouteSelector } from '../../selectors/rout
 /**
  * @return {Function} The dispatched action.
  */
-export function routeWillLeave() {
+export function routeWillPop() {
   return (dispatch, getState) => {
     const incoming = getCurrentRoute();
     const outgoing = getCurrentRouteSelector(getState());
