@@ -123,6 +123,7 @@ class NavDrawer extends Component {
       handleClose: this.handleClose,
       Divider,
       Item,
+      logout,
       user,
       SubHeader: (showMenuSubHeaders ? SubHeader : null),
     };
@@ -226,127 +227,134 @@ class NavDrawer extends Component {
           }}
         />
 
-        <Divider close={this.handleClose} />
-
+        {showQuickLinks && <Divider close={this.handleClose} />}
         {showQuickLinks && this.renderEntries(entries.quicklinks)}
         {showQuickLinks && <Divider close={this.handleClose} />}
 
-        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
+        <Portal name={commonPortals.NAV_MENU_STORE_INFORMATION_BEFORE} props={props} />
+        <Portal name={commonPortals.NAV_MENU_STORE_INFORMATION} props={props}>
+          <Divider close={this.handleClose} />
 
-        {/* Shipping */}
-        <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
-        <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
-          <Item
-            href={`${PAGE_PATH}/shipping`}
-            icon={LocalShippingIcon}
-            close={this.handleClose}
-            testId="navDrawerShippingButton"
-          >
-            <I18n.Text string="navigation.shipping" />
-          </Item>
-        </Portal>
-        <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+          {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
 
-        {/* Payment */}
-        <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
-        <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
-          <Item
-            href={`${PAGE_PATH}/payment`}
-            icon={CreditCardIcon}
-            close={this.handleClose}
-            testId="navDrawerPaymentButton"
-          >
-            <I18n.Text string="navigation.payment" />
-          </Item>
-        </Portal>
-        <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
-
-        <Divider close={this.handleClose} />
-
-        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
-
-        {/* Terms */}
-        <Portal name={commonPortals.NAV_MENU_TERMS_BEFORE} props={props} />
-        <Portal name={commonPortals.NAV_MENU_TERMS} props={props}>
-          <Item
-            href={`${PAGE_PATH}/terms`}
-            icon={DescriptionIcon}
-            close={this.handleClose}
-            testId="navDrawerTermsButton"
-          >
-            <I18n.Text string="navigation.terms" />
-          </Item>
-        </Portal>
-        <Portal name={commonPortals.NAV_MENU_TERMS_AFTER} props={props} />
-
-        {/* Privacy */}
-        <Portal name={commonPortals.NAV_MENU_PRIVACY_BEFORE} props={props} />
-        <Portal name={commonPortals.NAV_MENU_PRIVACY} props={props}>
-          <Item
-            href={`${PAGE_PATH}/privacy`}
-            icon={SecurityIcon}
-            close={this.handleClose}
-            testId="navDrawerPrivacyButton"
-          >
-            <I18n.Text string="navigation.privacy" />
-          </Item>
-        </Portal>
-        <Portal name={commonPortals.NAV_MENU_PRIVACY_AFTER} props={props} />
-
-        {/* Return Policy */}
-        <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
-        {showReturnPolicy && (
-          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
+          {/* Shipping */}
+          <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
             <Item
-              href={`${PAGE_PATH}/return_policy`}
-              icon={DescriptionIcon}
+              href={`${PAGE_PATH}/shipping`}
+              icon={LocalShippingIcon}
               close={this.handleClose}
-              testId="navDrawerReturnPolicyButton"
+              testId="navDrawerShippingButton"
             >
-              <I18n.Text string="navigation.return_policy" />
+              <I18n.Text string="navigation.shipping" />
             </Item>
           </Portal>
-        )}
-        <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
+          <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
 
-        {/* Imprint */}
-        <Portal name={commonPortals.NAV_MENU_IMPRINT_BEFORE} props={props} />
-        <Portal name={commonPortals.NAV_MENU_IMPRINT} props={props}>
-          <Item
-            href={`${PAGE_PATH}/imprint`}
-            icon={InfoIcon}
-            close={this.handleClose}
-            testId="navDrawerImprintButton"
-          >
-            <I18n.Text string="navigation.about" />
-          </Item>
+          {/* Payment */}
+          <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+          <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
+            <Item
+              href={`${PAGE_PATH}/payment`}
+              icon={CreditCardIcon}
+              close={this.handleClose}
+              testId="navDrawerPaymentButton"
+            >
+              <I18n.Text string="navigation.payment" />
+            </Item>
+          </Portal>
+          <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+
+          <Divider close={this.handleClose} />
+
+          {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
+
+          {/* Terms */}
+          <Portal name={commonPortals.NAV_MENU_TERMS_BEFORE} props={props} />
+          <Portal name={commonPortals.NAV_MENU_TERMS} props={props}>
+            <Item
+              href={`${PAGE_PATH}/terms`}
+              icon={DescriptionIcon}
+              close={this.handleClose}
+              testId="navDrawerTermsButton"
+            >
+              <I18n.Text string="navigation.terms" />
+            </Item>
+          </Portal>
+          <Portal name={commonPortals.NAV_MENU_TERMS_AFTER} props={props} />
+
+          {/* Privacy */}
+          <Portal name={commonPortals.NAV_MENU_PRIVACY_BEFORE} props={props} />
+          <Portal name={commonPortals.NAV_MENU_PRIVACY} props={props}>
+            <Item
+              href={`${PAGE_PATH}/privacy`}
+              icon={SecurityIcon}
+              close={this.handleClose}
+              testId="navDrawerPrivacyButton"
+            >
+              <I18n.Text string="navigation.privacy" />
+            </Item>
+          </Portal>
+          <Portal name={commonPortals.NAV_MENU_PRIVACY_AFTER} props={props} />
+
+          {/* Return Policy */}
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
+          {showReturnPolicy && (
+            <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
+              <Item
+                href={`${PAGE_PATH}/return_policy`}
+                icon={DescriptionIcon}
+                close={this.handleClose}
+                testId="navDrawerReturnPolicyButton"
+              >
+                <I18n.Text string="navigation.return_policy" />
+              </Item>
+            </Portal>
+          )}
+          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
+
+          {/* Imprint */}
+          <Portal name={commonPortals.NAV_MENU_IMPRINT_BEFORE} props={props} />
+          <Portal name={commonPortals.NAV_MENU_IMPRINT} props={props}>
+            <Item
+              href={`${PAGE_PATH}/imprint`}
+              icon={InfoIcon}
+              close={this.handleClose}
+              testId="navDrawerImprintButton"
+            >
+              <I18n.Text string="navigation.about" />
+            </Item>
+          </Portal>
+          <Portal name={commonPortals.NAV_MENU_IMPRINT_AFTER} props={props} />
         </Portal>
-        <Portal name={commonPortals.NAV_MENU_IMPRINT_AFTER} props={props} />
 
         {user && <Divider close={this.handleClose} />}
 
-        {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
+        <Portal name={commonPortals.NAV_MENU_STORE_INFORMATION_AFTER} props={props} />
 
-        <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-        <Portal
-          name={commonPortals.NAV_MENU_LOGOUT}
-          props={{
-            ...props,
-            handleLogout: logout,
-          }}
-        >
-          {user && (
-            <Item
-              onClick={logout}
-              icon={LogoutIcon}
-              close={this.handleClose}
-              testId="logoutButtonNavDrawer"
-            >
-              <I18n.Text string="navigation.logout" />
-            </Item>
-          )}
+        <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_BEFORE} props={props} />
+        <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT} props={props}>
+          {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
+
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
+          <Portal
+            name={commonPortals.NAV_MENU_LOGOUT}
+            props={props}
+          >
+            {user && (
+              <Item
+                onClick={logout}
+                icon={LogoutIcon}
+                close={this.handleClose}
+                testId="logoutButtonNavDrawer"
+              >
+                <I18n.Text string="navigation.logout" />
+              </Item>
+            )}
+          </Portal>
+          <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
         </Portal>
-        <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
+        <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_AFTER} props={props} />
 
         <Portal name={commonPortals.NAV_MENU_CONTENT_AFTER} props={props} />
 
