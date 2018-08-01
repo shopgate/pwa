@@ -21,7 +21,7 @@ const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
 const STORE_INFORMATION = 'store-information';
-const MY_ACCOUNT = 'my-acount';
+const MY_ACCOUNT = 'my-account';
 const LOGOUT = 'logout';
 const CONTAINER = 'container';
 
