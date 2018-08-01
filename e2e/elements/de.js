@@ -76,7 +76,7 @@ export default {
   filterAttributeManufacturer1: "[data-test-id='filterAttributes'] [data-test-id='kungBirgers']",
   clearAllButton: "[data-test-id='clearAllButton']",
   applyFilterButton: "[data-test-id='applyFilterButton']",
-  loginWelcomeText: "[data-test-id='userMenu'] span",
+  loginWelcomeText: "[data-test-id='greeting'] span",
   logOutButtonMoreMenu: "[data-test-id='userMenu'] [data-test-id='logoutButton']",
   basicDialogOkButton: "[data-test-id='basicDialog'] [data-test-id='Button']",
   reviewsTitle: "[data-test-id='title: Bewertungen']",
@@ -119,4 +119,5 @@ export default {
   basicCategory: "[data-test-id='link: /category/3537']",
   productsWithLongNamesCat: "[data-test-id='link: /category/3539']",
   productWithVeryLongName5Name: "[data-test-id='productGrid'] [data-test-id='Productname: This is a product with a very very long name -5-']",
+  addToCartBarButton: "[data-test-id='addToCartBarButton']",
 };

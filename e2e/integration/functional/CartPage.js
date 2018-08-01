@@ -14,7 +14,7 @@ describe('functional tests cart page', () => {
     cy.get(els.productWithManyProps4GridViewName)
       .should('be.visible')
       .click();
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .should('be.visible')
       .click();
     cy.get(els.cartButton)
@@ -49,7 +49,7 @@ describe('functional tests cart page', () => {
     cy.get(els.productWithVeryLongName5Name)
       .last()
       .click();
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .click();
     cy.get(els.cartButton)
       .click();

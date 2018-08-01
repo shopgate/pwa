@@ -20,8 +20,20 @@ describe('functional tests login page', () => {
       .type('{enter}');
     cy.get(els.basicDialogText)
       .should('be.visible')
-      .contains('The given credentials are wrong or do not exist.');
+      .contains('Nutzername oder Passwort sind nicht korrekt');
     cy.get(els.basicDialogOkButton)
+      .click();
+  });
+
+  it('should check for forgott password', () => {
+    cy.get(els.forgotPasswordButton)
+      .should('be.visible')
+      .click();
+    cy.get(els.basicDialogText)
+      .should('be.visible')
+      .contains('Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.');
+    cy.get(els.basicDialogOkButton)
+      .should('be.visible')
       .click();
   });
 
@@ -47,24 +59,8 @@ describe('functional tests login page', () => {
         .contains('Hallo Dennis');
     });
     logOutUser();
-    cy.get(els.backButton)
-      .should('be.visible')
-      .click();
   });
 
-  it('should check for forgott password', () => {
-    cy.get(els.navigatorButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.navigationDrawerLoginButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.forgotPasswordButton)
-      .should('be.visible')
-      .click();
-    cy.get(els.basicDialogText)
-      .should('be.visible')
-      .contains('Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.');
-  });
+
 });
 
