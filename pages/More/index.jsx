@@ -110,19 +110,19 @@ class More extends Component {
             </Portal>
             <Portal name={portals.NAV_MENU_IMPRINT_AFTER} props={props} />
           </List>
-
-          {showQuickLinks && (
-            <div>
-              <Headline small text="navigation.more_menu" />
-              <List>
-                {entries.quicklinks.map(entry => (
-                  <List.Item key={entry.url} title={entry.label} link={entry.url} />
-                ))}
-              </List>
-            </div>
-          )}
         </Portal>
         <Portal name={portals.NAV_MENU_STORE_INFORMATION_AFTER} props={props} />
+
+        {showQuickLinks && (
+          <div>
+            <Headline small text="navigation.more_menu" />
+            <List>
+              {entries.quicklinks.map(entry => (
+                <List.Item key={entry.url} title={entry.label} link={entry.url} />
+              ))}
+            </List>
+          </div>
+        )}
 
         { /* When logged in, show user menu on the bottom */ }
         {isLoggedIn && <UserMenu {...this.props} />}
