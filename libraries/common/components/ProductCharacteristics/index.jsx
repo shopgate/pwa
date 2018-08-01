@@ -105,7 +105,7 @@ class ProductCharacteristics extends Component {
     if (!variants) {
       return true;
     }
-  
+
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
     const selected = !!((filteredValues.length === variants.characteristics.length) && variantId);
 

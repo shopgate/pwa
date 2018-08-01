@@ -1,10 +1,7 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-<<<<<<< HEAD
-=======
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
->>>>>>> develop
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentBaseProductId } from '../../product/selectors/product';
 
@@ -13,6 +10,12 @@ import { getCurrentBaseProductId } from '../../product/selectors/product';
  * @return {Object}
  */
 const getReviewsState = state => state.reviews;
+
+/**
+ * @param {Object} state The global state.
+ * @return {Object}
+ */
+const getProductReviewsExcerptState = state => state.reviews.reviewsByProductId;
 
 /**
  * Select the product reviews state.
@@ -64,26 +67,6 @@ const getReviewsByProductId = createSelector(
 export const getReviews = createSelector(
   getReviewsState,
   state => state.reviewsById || {}
-);
-
-/**
- * Retrieves the current product reviews excerpt.
- * @param {Object} state The current application state.
- * @return {Object} The reviews for a product
- */
-export const getProductReviewsExcerpt = createSelector(
-  getReviewsByProductId,
-  getReviews,
-  (state, props) => props.productId,
-  (productReviewsState, reviewsState, productId) => {
-    const collection = productReviewsState[productId];
-
-    if (!collection || !collection.reviews) {
-      return null;
-    }
-
-    return collection.reviews.map(id => reviewsState[id]);
-  }
 );
 
 /**
