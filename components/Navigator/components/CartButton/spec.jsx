@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { cartState, emptyState } from '@shopgate/pwa-common-commerce/cart/mock';
+import { cartState } from '@shopgate/pwa-common-commerce/cart/mock';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import CartButtonBadge from './components/CartButtonBadge';
 
@@ -13,12 +13,17 @@ describe('<CartButton />', () => {
   const createComponent = (state) => {
     // eslint-disable-next-line global-require
     const CartButton = require('./index').default;
-    store = mockedStore({ ...state, navigator: { showCartIcon: true } });
+    store = mockedStore({
+      ...state,
+      navigator: { showCartIcon: true },
+    });
     return mount(<CartButton store={store} />);
   };
 
   it('should not be visible with prop visible set to false', () => {
-    const wrapper = createComponent(emptyState);
+    const wrapper = shallow((
+      <CartButton cartProductCount={0} visible={false} activeCartRoute={false} />
+    ));
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('0');
 

@@ -6,8 +6,8 @@ import openFilterView from '../../actions/openFilterView';
  * @param {Object} props The components props.
  * @return {Object}
  */
-const mapDispatchToProps = (dispatch, props) => ({
-  navigate: () => dispatch(openFilterView(props)),
+const mapDispatchToProps = dispatch => ({
+  navigate: () => dispatch(openFilterView()),
 });
 
 export default connect(null, mapDispatchToProps, null, { pure: () => null });

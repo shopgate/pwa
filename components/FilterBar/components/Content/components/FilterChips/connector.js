@@ -18,17 +18,16 @@ const mapStateToProps = state => ({
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
- * @param {Object} props The components props.
  * @return {Object} The extended component props.
  */
-const mapDispatchToProps = (dispatch, props) => ({
+const mapDispatchToProps = dispatch => ({
   handleFilterRemove: (id, index) => {
     dispatch(removeTemporaryFilter(id, index));
     setTimeout(() => {
       dispatch(commitTemporaryFilters());
     }, 0);
   },
-  handleOpenFilters: () => dispatch(openFilterView(props)),
+  handleOpenFilters: () => dispatch(openFilterView()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
