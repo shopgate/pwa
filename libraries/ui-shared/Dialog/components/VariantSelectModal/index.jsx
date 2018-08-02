@@ -30,7 +30,9 @@ const reorderActions = (actions, { productId }, navigate) => {
         act.action();
         // Navigate to product details page
         if (productId) {
-          navigate(`${ITEM_PATH}/${bin2hex(productId)}`);
+          navigate({
+            pathname: `${ITEM_PATH}/${bin2hex(productId)}`,
+          });
         }
       },
     };
