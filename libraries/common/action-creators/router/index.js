@@ -10,7 +10,7 @@ import {
  * Creates the dispatched NAVIGATE action object.
  * @param {Object} params The history params.
  * @param {string} params.action The history action.
- * @param {string} params.location The history location.
+ * @param {string} params.pathname The history pathname.
  * @param {boolean} params.silent Whether or not to navigate silently (no events).
  * @param {Object} params.state The history state.
  * @param {number} params.steps The number of steps to navigate by.

@@ -114,6 +114,7 @@ export default function app(subscribe) {
     dispatch(historyPush({
       pathname: action.location,
     }));
+
     /*
      * Hide splashscreen must be send AFTER app did start.
      * Interjections events (like openPushMessage) would not work if this command is sent
