@@ -48,8 +48,6 @@ class More extends Component {
       Headline,
       Item: List.Item,
       List,
-      logout: this.props.logout,
-      user: isLoggedIn ? this.props.user : undefined,
     };
 
     return (
