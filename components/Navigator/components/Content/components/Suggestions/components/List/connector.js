@@ -18,7 +18,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: href => dispatch(historyPush({ pathname: href })),
+  navigate: pathname => dispatch(historyPush({ pathname })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

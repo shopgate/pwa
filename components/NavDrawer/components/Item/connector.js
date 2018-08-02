@@ -7,8 +7,8 @@ import { historyPush } from '@shopgate/pwa-common/actions/router';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: (href, state) => dispatch(historyPush({
-    pathname: href,
+  navigate: (pathname, state) => dispatch(historyPush({
+    pathname,
     state,
   })),
 });

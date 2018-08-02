@@ -32,9 +32,9 @@ const mapStateToProps = state => ({
  * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: (action, href) => dispatch(navigate({
+  navigate: (action, pathname) => dispatch(navigate({
     action,
-    pathname: href,
+    pathname,
   })),
   fetchSearchSuggestions: searchPhrase => dispatch(fetchSearchSuggestions(searchPhrase)),
 });

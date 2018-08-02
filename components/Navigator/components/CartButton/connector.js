@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  openCart: () => dispatch(historyPush({ location: CART_PATH })),
+  openCart: () => dispatch(historyPush({ pathname: CART_PATH })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);
