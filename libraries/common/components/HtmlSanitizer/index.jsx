@@ -24,7 +24,6 @@ class HtmlSanitizer extends Component {
    * Registers the event handler for when the user taps inside the html content.
    */
   componentDidMount() {
-    this.htmlContainer.addEventListener('touchstart', this.handleTap, true);
     this.htmlContainer.addEventListener('click', this.handleTap, true);
   }
 
@@ -41,7 +40,6 @@ class HtmlSanitizer extends Component {
    * Removes the event handler.
    */
   componentWillUnmount() {
-    this.htmlContainer.removeEventListener('touchstart', this.handleTap, true);
     this.htmlContainer.removeEventListener('click', this.handleTap, true);
   }
 
