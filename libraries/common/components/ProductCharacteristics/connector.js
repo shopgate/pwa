@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { ACTION_REPLACE } from '@virtuous/conductor/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { getProductVariants } from '@shopgate/pwa-common-commerce/product/selectors/product';
@@ -20,7 +19,9 @@ const mapStateToProps = (state, props) => ({
  * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: productId => dispatch(navigate(ACTION_REPLACE, `${ITEM_PATH}/${bin2hex(productId)}`)),
+  navigate: productId => dispatch(historyReplace({
+    pathname: `${ITEM_PATH}/${bin2hex(productId)}`,
+  })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

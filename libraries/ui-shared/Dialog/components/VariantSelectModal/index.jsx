@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import BasicDialog from '../BasicDialog';
 import connect from './connector';
 
@@ -31,8 +30,9 @@ const reorderActions = (actions, { productId }, navigate) => {
         act.action();
         // Navigate to product details page
         if (productId) {
-          const href = `${ITEM_PATH}/${bin2hex(productId)}`;
-          navigate(ACTION_PUSH, href);
+          navigate({
+            pathname: `${ITEM_PATH}/${bin2hex(productId)}`,
+          });
         }
       },
     };
