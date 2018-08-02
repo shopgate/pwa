@@ -32,6 +32,8 @@ import Header from './components/Header';
 import SubHeader from './components/SubHeader';
 import connect from './connector';
 
+const { featureFlag: { showMenuSubHeaders = false } = {} } = appConfig;
+
 /**
  * The NavDrawer component.
  */
@@ -117,13 +119,10 @@ class NavDrawer extends Component {
 
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
-    const { featureFlag: { showMenuSubHeaders = false } = {} } = appConfig;
-
     const props = {
       handleClose: this.handleClose,
       Divider,
       Item,
-      logout,
       user,
       SubHeader: (showMenuSubHeaders ? SubHeader : null),
     };
@@ -338,10 +337,7 @@ class NavDrawer extends Component {
               {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
 
               <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-              <Portal
-                name={commonPortals.NAV_MENU_LOGOUT}
-                props={props}
-              >
+              <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
                 <Item
                   onClick={logout}
                   icon={LogoutIcon}
