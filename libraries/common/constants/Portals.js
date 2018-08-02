@@ -20,11 +20,8 @@ const HOME = 'home';
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
-const MY_ORDERS = 'my-orders';
-const MY_DETAILS = 'my-details';
-const CHANGE_PASSWORD = 'change-password';
-const ADDRESS_BOOK = 'address-book';
-const PAYMENT_OPTIONS = 'payment-options';
+const STORE_INFORMATION = 'store-information';
+const MY_ACCOUNT = 'my-account';
 const LOGOUT = 'logout';
 const CONTAINER = 'container';
 
@@ -63,25 +60,13 @@ export const NAV_MENU_IMPRINT_BEFORE = `${NAV_MENU}.${IMPRINT}.${BEFORE}`;
 export const NAV_MENU_IMPRINT = `${NAV_MENU}.${IMPRINT}`;
 export const NAV_MENU_IMPRINT_AFTER = `${NAV_MENU}.${IMPRINT}.${AFTER}`;
 
-export const NAV_MENU_MY_ORDERS_BEFORE = `${NAV_MENU}.${MY_ORDERS}.${BEFORE}`;
-export const NAV_MENU_MY_ORDERS = `${NAV_MENU}.${MY_ORDERS}`;
-export const NAV_MENU_MY_ORDERS_AFTER = `${NAV_MENU}.${MY_ORDERS}.${AFTER}`;
+export const NAV_MENU_STORE_INFORMATION_BEFORE = `${NAV_MENU}.${STORE_INFORMATION}.${BEFORE}`;
+export const NAV_MENU_STORE_INFORMATION = `${NAV_MENU}.${STORE_INFORMATION}`;
+export const NAV_MENU_STORE_INFORMATION_AFTER = `${NAV_MENU}.${STORE_INFORMATION}.${AFTER}`;
 
-export const NAV_MENU_MY_DETAILS_BEFORE = `${NAV_MENU}.${MY_DETAILS}.${BEFORE}`;
-export const NAV_MENU_MY_DETAILS = `${NAV_MENU}.${MY_DETAILS}`;
-export const NAV_MENU_MY_DETAILS_AFTER = `${NAV_MENU}.${MY_DETAILS}.${AFTER}`;
-
-export const NAV_MENU_CHANGE_PASSWORD_BEFORE = `${NAV_MENU}.${CHANGE_PASSWORD}.${BEFORE}`;
-export const NAV_MENU_CHANGE_PASSWORD = `${NAV_MENU}.${CHANGE_PASSWORD}`;
-export const NAV_MENU_CHANGE_PASSWORD_AFTER = `${NAV_MENU}.${CHANGE_PASSWORD}.${AFTER}`;
-
-export const NAV_MENU_ADDRESS_BOOK_BEFORE = `${NAV_MENU}.${ADDRESS_BOOK}.${BEFORE}`;
-export const NAV_MENU_ADDRESS_BOOK = `${NAV_MENU}.${ADDRESS_BOOK}`;
-export const NAV_MENU_ADDRESS_BOOK_AFTER = `${NAV_MENU}.${ADDRESS_BOOK}.${AFTER}`;
-
-export const NAV_MENU_PAYMENT_OPTIONS_BEFORE = `${NAV_MENU}.${PAYMENT_OPTIONS}.${BEFORE}`;
-export const NAV_MENU_PAYMENT_OPTIONS = `${NAV_MENU}.${PAYMENT_OPTIONS}`;
-export const NAV_MENU_PAYMENT_OPTIONS_AFTER = `${NAV_MENU}.${PAYMENT_OPTIONS}.${AFTER}`;
+export const NAV_MENU_MY_ACCOUNT_BEFORE = `${NAV_MENU}.${MY_ACCOUNT}.${BEFORE}`;
+export const NAV_MENU_MY_ACCOUNT = `${NAV_MENU}.${MY_ACCOUNT}`;
+export const NAV_MENU_MY_ACCOUNT_AFTER = `${NAV_MENU}.${MY_ACCOUNT}.${AFTER}`;
 
 export const NAV_MENU_LOGOUT_BEFORE = `${NAV_MENU}.${LOGOUT}.${BEFORE}`;
 export const NAV_MENU_LOGOUT = `${NAV_MENU}.${LOGOUT}`;
