@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { ACTION_POP } from '@virtuous/conductor/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 import { isViewLoading } from '@shopgate/pwa-common/selectors/view';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 
@@ -19,7 +18,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  cancel: () => dispatch(navigate(ACTION_POP)),
+  cancel: () => dispatch(historyPop()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

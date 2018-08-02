@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/action-creators/router';
 import {
   getProductImages,
   getCurrentBaseProduct,
@@ -27,7 +26,9 @@ const mapStateToProps = (state, props) => ({
  */
 const mapDispatchToProps = (dispatch, props) => ({
   navigate: currentSlide =>
-    dispatch(navigate(ACTION_PUSH, `${ITEM_PATH}/${bin2hex(props.productId)}/gallery/${currentSlide}`)),
+    dispatch(historyPush({
+      pathname: `${ITEM_PATH}/${bin2hex(props.productId)}/gallery/${currentSlide}`,
+    })),
 });
 
 /**
