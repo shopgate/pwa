@@ -18,7 +18,7 @@ import appConfig from '../helpers/config';
  */
 export default function router(subscribe) {
   subscribe(navigate$, ({ action, dispatch, getState }) => {
-    const { params: { action: historyAction, state: routeState } } = action;
+    const { params: { action: historyAction, silent, state: routeState } } = action;
 
     switch (historyAction) {
       case ACTION_POP: {
@@ -87,11 +87,11 @@ export default function router(subscribe) {
 
     switch (historyAction) {
       case ACTION_PUSH: {
-        conductor.push(location, routeState);
+        conductor.push(location, routeState, silent);
         break;
       }
       case ACTION_REPLACE: {
-        conductor.replace(location, routeState);
+        conductor.replace(location, routeState, silent);
         break;
       }
       default:

@@ -107,6 +107,7 @@ export default function app(subscribe) {
     if (action.location !== INDEX_PATH) {
       dispatch(historyPush({
         pathname: INDEX_PATH,
+        silent: true,
       }));
     }
 
