@@ -16,7 +16,12 @@ const item = css({
   },
 }).toString();
 
+const itemWithImage = css({
+  marginLeft: 56,
+}).toString();
+
 export default {
   container,
   item,
+  itemWithImage,
 };

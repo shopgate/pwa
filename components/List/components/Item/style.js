@@ -28,10 +28,18 @@ const grid = css({
   zIndex: 2,
 }).toString();
 
+const image = css({
+  alignSelf: 'flex-start',
+  flexShrink: 0,
+  margin: `0 ${variables.gap.big}px 0 -56px`,
+  width: 40,
+}).toString();
+
 export default {
   disabled,
   selected,
   title,
   grid,
+  image,
 };
 
