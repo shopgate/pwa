@@ -1,8 +1,9 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
+import variables from 'Styles/variables';
 
 const item = css({
-  marginLeft: 72,
+  marginLeft: variables.gap.big,
 }).toString();
 
 const itemNotLast = css({
@@ -10,8 +11,11 @@ const itemNotLast = css({
   marginBottom: 1,
 }).toString();
 
+const itemWithImage = css({
+  marginLeft: 72,
+}).toString();
+
 const innerContainer = css({
-  marginLeft: -72,
   minHeight: 56,
   position: 'relative',
 }).toString();
@@ -25,6 +29,7 @@ const glow = css({
 export default {
   item,
   itemNotLast,
+  itemWithImage,
   innerContainer,
   glow,
 };

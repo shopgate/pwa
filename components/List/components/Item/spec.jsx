@@ -7,10 +7,11 @@ import List from '../../index';
 describe('<List.Item />', () => {
   const title = 'My Title';
 
-  it('should render with a title', () => {
+  it('should render with a title but no image', () => {
     const wrapper = mount(<List.Item title={title} />);
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('img').length).toEqual(0);
   });
 
   it('should render with an image', () => {
