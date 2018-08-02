@@ -125,25 +125,20 @@
     "categories": "Catégories",
     "favorites": "Favorits",
     "my_orders": "Mes Commandes",
-    "my_details": "Mes Données",
-    "change_password": "Changer mot de passe",
-    "address_book": "Carnet d'adresses",
-    "payment_options": "Options de paiement",
     "cart": "Panier",
     "shipping": "Méthodes de livraison",
     "about": "Mentions légales",
     "payment": "Méthodes de paiement",
     "terms": "Termes",
     "privacy": "Politique de confidentialité",
-    "return_policy": "Politique de retour",
     "welcome_message": "Bienvenue {name}",
+    "return_policy": "Politique de retour",
     "logout": "Se déconnecter",
     "store_information": "Informations sur le magasin",
     "more_menu": "Plus",
     "menuSubHeader": {
       "more": "Plus",
-      "about": "À propos de nous",
-      "user": "Paramètres du compte"
+      "about": "À propos de nous"
     }
   },
   "reviews": {
@@ -170,27 +165,5 @@
     "cart": "Panier",
     "more": "Plus",
     "favorites": "Favorits"
-  },
-  "user": {
-    "addresses": {
-      "title": "Carnet d'adresses",
-      "headline": "Carnet d'adresses",
-      "button": "Ajouter une nouvelle adresse",
-      "defaults": {
-        "default": "Adresse par défaut",
-        "shipping": "Adresse d'expédition par défaut",
-        "billing": "Adresse de facturation par défaut"
-      },
-      "setAsDefault": {
-        "default": "Définir comme adresse par défaut",
-        "shipping": "Définir comme adresse de livraison par défaut",
-        "billing": "Définir comme adresse de facturation par défaut"
-      },
-      "error": {
-        "add": "L'ajout de l'adresse a échoué, veuillez vérifier vos champs",
-        "update": "La mise à jour de l'adresse a échoué, veuillez vérifier vos champs",
-        "setAsDefault": "Impossible de définir l'adresse par défaut"
-      }
-    }
   }
 }
