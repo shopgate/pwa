@@ -4,11 +4,6 @@ import els from '../../elements/de';
 
 describe('function tests search page', () => {
   it('should search with fitting products', () => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-      // returning false here prevents Cypress from
-      // failing the test
-      return false
-    })
     cy.visit('');
 
     cy.get(els.searchButton)
