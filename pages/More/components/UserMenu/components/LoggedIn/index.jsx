@@ -1,12 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import Headline from 'Components/Headline';
 import * as commonPortals from '@shopgate/pwa-common/constants/Portals';
 import List from 'Components/List';
-import { USER_ADDRESS_BOOK_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-
-const { featureFlag: { userAddresses = true } = {} } = appConfig;
 
 /**
  * Logged in user menu.
@@ -16,30 +13,22 @@ const { featureFlag: { userAddresses = true } = {} } = appConfig;
 const LoggedIn = ({ logout }) => {
   const props = { Item: List.Item };
   return (
-    <div data-test-id="userMenu">
-      <List>
-
-        {userAddresses &&
-          <Fragment>
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_BEFORE} props={props} />
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK} props={props}>
-              <List.Item
-                title="navigation.address_book"
-                link={`${USER_ADDRESS_BOOK_PATH}`}
-                testId="addressBookButton"
-              />
+    <Fragment>
+      <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_BEFORE} props={props} />
+      <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT} props={props}>
+        <div data-test-id="userMenu">
+          <Headline small text="navigation.your_account" />
+          <List>
+            <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
+            <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
+              <List.Item title="navigation.logout" onClick={logout} testId="logoutButton" />
             </Portal>
-            <Portal name={commonPortals.NAV_MENU_ADDRESS_BOOK_AFTER} props={props} />
-          </Fragment>
-        }
-
-        <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
-        <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
-          <List.Item title="navigation.logout" onClick={logout} testId="logoutButton" />
-        </Portal>
-        <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
-      </List>
-    </div>
+            <Portal name={commonPortals.NAV_MENU_LOGOUT_AFTER} props={props} />
+          </List>
+        </div>
+      </Portal>
+      <Portal name={commonPortals.NAV_MENU_MY_ACCOUNT_AFTER} props={props} />
+    </Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import { LOGIN_PATH, CHECKOUT_PATH, USER_ADDRESS_BOOK_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { LOGIN_PATH, CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
@@ -19,7 +19,6 @@ export default function tabBar(subscribe) {
     FILTER_PATH,
     LOGIN_PATH,
     CHECKOUT_PATH,
-    USER_ADDRESS_BOOK_PATH,
   ];
 
   /**

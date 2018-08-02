@@ -9,12 +9,9 @@ import Headline from 'Components/Headline';
 import List from 'Components/List';
 import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import showReturnPolicy from '@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import UserMenu from './components/UserMenu';
 import Header from './components/Header';
-
-const { featureFlag: { userAddresses = true } = {} } = appConfig;
 
 /* eslint-disable react/prefer-stateless-function */
 
@@ -48,70 +45,71 @@ class More extends Component {
     const showQuickLinks = entries.quicklinks && !!entries.quicklinks.length;
 
     const props = {
+      Headline,
       Item: List.Item,
+      List,
     };
 
     return (
       <View>
         <Header user={this.props.user} isLoggedIn={this.props.isLoggedIn} />
-        { /* When not logged in, show user menu on top (before "content" portal */}
+        { /* When not logged in, show user menu on top */ }
         { !isLoggedIn && <UserMenu {...this.props} /> }
         <Portal name={portals.NAV_MENU_CONTENT_BEFORE} props={props} />
 
-        { /* When logged in, show user menu within "content" portal */}
-        {userAddresses && isLoggedIn && <UserMenu {...this.props} />}
+        <Portal name={portals.NAV_MENU_STORE_INFORMATION_BEFORE} props={props} />
+        <Portal name={portals.NAV_MENU_STORE_INFORMATION} props={props}>
+          <Headline text="navigation.store_information" small />
 
-        <Headline text="navigation.store_information" small />
+          <List>
+            {/* SHIPPING */}
+            <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
+            <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
+              <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
+            </Portal>
+            <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
 
-        <List>
+            {/* PAYMENT */}
+            <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
+            <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
+              <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
+            </Portal>
+            <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
 
-          {/* SHIPPING */}
-          <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
-          <Portal name={marketPortals.NAV_MENU_SHIPPING} props={props}>
-            <List.Item title="navigation.shipping" link={`${PAGE_PATH}/shipping`} />
-          </Portal>
-          <Portal name={marketPortals.NAV_MENU_SHIPPING_AFTER} props={props} />
+            {/* TERMS */}
+            <Portal name={portals.NAV_MENU_TERMS_BEFORE} props={props} />
+            <Portal name={portals.NAV_MENU_TERMS} props={props}>
+              <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
+            </Portal>
+            <Portal name={portals.NAV_MENU_TERMS_AFTER} props={props} />
 
-          {/* PAYMENT */}
-          <Portal name={marketPortals.NAV_MENU_PAYMENT_BEFORE} props={props} />
-          <Portal name={marketPortals.NAV_MENU_PAYMENT} props={props}>
-            <List.Item title="navigation.payment" link={`${PAGE_PATH}/payment`} />
-          </Portal>
-          <Portal name={marketPortals.NAV_MENU_PAYMENT_AFTER} props={props} />
+            {/* PRIVACY POLICY */}
+            <Portal name={portals.NAV_MENU_PRIVACY_BEFORE} props={props} />
+            <Portal name={portals.NAV_MENU_PRIVACY} props={props}>
+              <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
+            </Portal>
+            <Portal name={portals.NAV_MENU_PRIVACY_AFTER} props={props} />
 
-          {/* TERMS */}
-          <Portal name={portals.NAV_MENU_TERMS_BEFORE} props={props} />
-          <Portal name={portals.NAV_MENU_TERMS} props={props}>
-            <List.Item title="navigation.terms" link={`${PAGE_PATH}/terms`} />
-          </Portal>
-          <Portal name={portals.NAV_MENU_TERMS_AFTER} props={props} />
+            {/* RETURN POLICY */}
+            <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
+            {showReturnPolicy && (
+              <Fragment>
+                <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
+                  <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
+                </Portal>
+              </Fragment>
+            )}
+            <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
 
-          {/* PRIVACY POLICY */}
-          <Portal name={portals.NAV_MENU_PRIVACY_BEFORE} props={props} />
-          <Portal name={portals.NAV_MENU_PRIVACY} props={props}>
-            <List.Item title="navigation.privacy" link={`${PAGE_PATH}/privacy`} />
-          </Portal>
-          <Portal name={portals.NAV_MENU_PRIVACY_AFTER} props={props} />
-
-          {/* RETURN POLICY */}
-          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_BEFORE} props={props} />
-          {showReturnPolicy && (
-            <Fragment>
-              <Portal name={marketPortals.NAV_MENU_RETURN_POLICY} props={props}>
-                <List.Item title="navigation.return_policy" link={`${PAGE_PATH}/return_policy`} />
-              </Portal>
-            </Fragment>
-          )}
-          <Portal name={marketPortals.NAV_MENU_RETURN_POLICY_AFTER} props={props} />
-
-          {/* IMPRINT */}
-          <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} props={props} />
-          <Portal name={portals.NAV_MENU_IMPRINT} props={props}>
-            <List.Item title="navigation.about" link={`${PAGE_PATH}/imprint`} />
-          </Portal>
-          <Portal name={portals.NAV_MENU_IMPRINT_AFTER} props={props} />
-
-        </List>
+            {/* IMPRINT */}
+            <Portal name={portals.NAV_MENU_IMPRINT_BEFORE} props={props} />
+            <Portal name={portals.NAV_MENU_IMPRINT} props={props}>
+              <List.Item title="navigation.about" link={`${PAGE_PATH}/imprint`} />
+            </Portal>
+            <Portal name={portals.NAV_MENU_IMPRINT_AFTER} props={props} />
+          </List>
+        </Portal>
+        <Portal name={portals.NAV_MENU_STORE_INFORMATION_AFTER} props={props} />
 
         {showQuickLinks && (
           <div>
@@ -124,8 +122,8 @@ class More extends Component {
           </div>
         )}
 
-        { /* When logged in, show user menu on the bottom */}
-        {!userAddresses && isLoggedIn && <UserMenu {...this.props} />}
+        { /* When logged in, show user menu on the bottom */ }
+        {isLoggedIn && <UserMenu {...this.props} />}
 
         <Portal name={portals.NAV_MENU_CONTENT_AFTER} props={props} />
 
