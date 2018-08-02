@@ -124,7 +124,7 @@ class NavDrawer extends Component {
       Divider,
       Item,
       user,
-      SubHeader: (showMenuSubHeaders ? SubHeader : null),
+      SubHeader: (showMenuSubHeaders ? SubHeader : undefined),
     };
 
     return (
