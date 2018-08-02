@@ -229,7 +229,6 @@ class NavDrawer extends Component {
 
         {showQuickLinks && <Divider close={this.handleClose} />}
         {showQuickLinks && this.renderEntries(entries.quicklinks)}
-        {showQuickLinks && <Divider close={this.handleClose} />}
 
         <Portal name={commonPortals.NAV_MENU_STORE_INFORMATION_BEFORE} props={props} />
         <Portal name={commonPortals.NAV_MENU_STORE_INFORMATION} props={props}>
