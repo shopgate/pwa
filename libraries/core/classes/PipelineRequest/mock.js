@@ -1,5 +1,6 @@
 import { logger } from '../../helpers';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
+import * as processTypes from '../../constants/ProcessTypes';
 
 /**
  * Mocked PipelineRequest.
@@ -24,9 +25,23 @@ class MockedPipelineRequest {
   constructor(name) {
     this.name = name;
     this.input = {};
+    this.trusted = false;
     this.handleErrors = errorHandleTypes.ERROR_HANDLE_DEFAULT;
     this.errorBlacklist = [];
     this.timeout = undefined;
+  }
+
+  /**
+   * @param {number} version The version number of the pipeline request.
+   * @return {PipelineRequest}
+   */
+  setVersion(version) {
+    if (typeof version !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof version}'`);
+    if (version < 0) throw new Error(`Expected positive integer. Received: '${version}'`);
+    if (version === 0) throw new Error('Has to be > 0!');
+
+    this.version = version;
+    return this;
   }
 
   /**
@@ -40,13 +55,10 @@ class MockedPipelineRequest {
   }
 
   /**
-   * Sets a timeout.
-   * @param {number} timeout Timeout.
-   * @returns {MockedPipelineRequest}
+   * @return {PipelineRequest}
    */
-  setTimeout(timeout) {
-    this.timeout = timeout;
-
+  setTrusted() {
+    this.trusted = true;
     return this;
   }
 
@@ -64,13 +76,28 @@ class MockedPipelineRequest {
   }
 
   /**
-   * Returns promise and calls `MockedPipelineRequest.mockedDispatchResolver()`.
-   * @returns {Promise}
+   * Sets a timeout.
+   * @param {number} timeout Timeout.
+   * @returns {MockedPipelineRequest}
    */
-  dispatch() {
-    return new Promise((resolve, reject) => {
-      this.constructor.mockedDispatchResolver(this, resolve, reject);
-    });
+  setTimeout(timeout) {
+    this.timeout = timeout;
+
+    return this;
+  }
+
+  /**
+   * @param {string} processed The response process type.
+   * @return {PipelineRequest}
+   */
+  setResponseProcessed(processed) {
+    if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
+    if (!Object.values(processTypes).includes(processed)) {
+      throw new Error(`The value '${processed}' is not supported!`);
+    }
+
+    this.process = processed;
+    return this;
   }
 
   /**
@@ -99,6 +126,21 @@ class MockedPipelineRequest {
   }
 
   /**
+   * Sets a flag to suppress errors.
+   * When true, no EVENT_PIPELINE_ERROR would be triggered.
+   * @param {bool} value Value.
+   * @return {PipelineRequest}
+   * @deprecated
+   */
+  setSuppressErrors(value) {
+    logger.warn('Deprecated: setSuppressErrors() will be removed. Use setHandleErrors() instead!');
+    const handle = value ?
+      errorHandleTypes.ERROR_HANDLE_SUPPRESS : errorHandleTypes.ERROR_HANDLE_DEFAULT;
+    this.setHandleErrors(handle);
+    return this;
+  }
+
+  /**
    * Sets handled errors.
    * @param {Array} errors Blacklisted errors.
    * @returns {MockedPipelineRequest}
@@ -112,18 +154,13 @@ class MockedPipelineRequest {
   }
 
   /**
-   * Sets a flag to suppress errors.
-   * When true, no EVENT_PIPELINE_ERROR would be triggered.
-   * @param {bool} value Value.
-   * @return {PipelineRequest}
-   * @deprecated
+   * Returns promise and calls `MockedPipelineRequest.mockedDispatchResolver()`.
+   * @returns {Promise}
    */
-  setSuppressErrors(value) {
-    logger.warn('Deprecated: setSuppressErrors() will be removed. Use setHandleErrors() instead!');
-    const handle = value ?
-      errorHandleTypes.ERROR_HANDLE_SUPPRESS : errorHandleTypes.ERROR_HANDLE_DEFAULT;
-    this.setHandleErrors(handle);
-    return this;
+  dispatch() {
+    return new Promise((resolve, reject) => {
+      this.constructor.mockedDispatchResolver(this, resolve, reject);
+    });
   }
 }
 
