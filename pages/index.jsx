@@ -12,6 +12,7 @@ import { INDEX_PATH, LOGIN_PATH, PAGE_PATH } from '@shopgate/pwa-common/constant
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
@@ -52,6 +53,10 @@ const Pages = () => (
             <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
             <Route pattern={`${ITEM_PATH}/:productId/write_review`} component={routes.WriteReview} />
             <Route pattern={CART_PATH} component={routes.Cart} />
+            {
+              appConfig.hasFavorites
+              && <Route pattern={FAVORITES_PATH} component={routes.Favorites} />
+            }
             <Route pattern={LOGIN_PATH} component={routes.Login} />
             <Route pattern={SEARCH_PATH} component={routes.Search} preload />
             <Route pattern={`${SEARCH_PATH}/filter`} component={routes.Filter} />
