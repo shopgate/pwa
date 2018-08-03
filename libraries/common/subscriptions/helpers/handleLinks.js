@@ -113,25 +113,25 @@ export const isLegacyLink = location => (
  * @return {boolean}
  */
 export const isShopLink = (location) => {
-  if (!appConfig.CNAME) {
+  if (!appConfig.shopCNAME) {
     return false;
   }
 
   // Check for a non-absolute link.
-  if (!location.startsWith(PROTOCOL_HTTP)) {
+  if (!location.startsWith(PROTOCOL_HTTPS) && !location.startsWith(PROTOCOL_HTTP)) {
     return false;
   }
 
-  // Dissect the given location.
+  // Dissect the hostname form the given location.
   const { hostname } = new URL(location);
 
   // Check for an exact match against the shop CNAME.
-  if (hostname === appConfig.CNAME.toLowerCase()) {
+  if (hostname === appConfig.shopCNAME.toLowerCase()) {
     return true;
   }
 
   // Check that the hostname contains a Shopgate domain.
-  if (!(hostname.endsWith(SHOPGATE_DOMAIN) && hostname.endsWith(SHOPGATEPG_DOMAIN))) {
+  if (!hostname.endsWith(SHOPGATE_DOMAIN || !hostname.endsWith(SHOPGATEPG_DOMAIN))) {
     return false;
   }
 

@@ -8,16 +8,17 @@ import {
 
 /**
  * Creates the dispatched NAVIGATE action object.
- * @param {string} action The desired history action.
- * @param {string} location The desired history location.
- * @param {Object} state The desired history state.
+ * @param {Object} params The history params.
+ * @param {string} params.action The history action.
+ * @param {string} params.pathname The history pathname.
+ * @param {boolean} params.silent Whether or not to navigate silently (no events).
+ * @param {Object} params.state The history state.
+ * @param {number} params.steps The number of steps to navigate by.
  * @return {Object} The dispatched action object.
  */
-export const navigate = (action, location, state) => ({
+export const navigate = params => ({
   type: NAVIGATE,
-  action,
-  location,
-  state,
+  params,
 });
 
 /**

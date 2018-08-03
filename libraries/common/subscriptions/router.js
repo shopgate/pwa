@@ -6,6 +6,7 @@ import {
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
 import { navigate } from '../action-creators';
+import { historyPop, historyReplace } from '../actions/router';
 import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
@@ -17,10 +18,23 @@ import appConfig from '../helpers/config';
  */
 export default function router(subscribe) {
   subscribe(navigate$, ({ action, dispatch, getState }) => {
-    const { action: historyAction, state: routeState } = action;
-    let { location } = action;
+    const { params: { action: historyAction, silent, state: routeState } } = action;
+
+    switch (historyAction) {
+      case ACTION_POP: {
+        conductor.pop();
+        return;
+      }
+      case ACTION_RESET: {
+        conductor.reset();
+        return;
+      }
+      default:
+        break;
+    }
 
     const state = getState();
+    let { pathname: location } = action.params;
 
     // Route authentication.
     if (!isUserLoggedIn(state)) {
@@ -29,10 +43,14 @@ export default function router(subscribe) {
 
       // If protected then navigate to the protector instead.
       if (protector) {
-        dispatch(navigate(historyAction, protector, {
-          redirect: {
-            location: action.location,
-            state: routeState,
+        dispatch(navigate({
+          action: historyAction,
+          pathname: protector,
+          state: {
+            redirect: {
+              location: action.location,
+              state: routeState,
+            },
           },
         }));
 
@@ -68,20 +86,12 @@ export default function router(subscribe) {
     }
 
     switch (historyAction) {
-      case ACTION_POP: {
-        conductor.pop();
-        break;
-      }
       case ACTION_PUSH: {
-        conductor.push(location, routeState);
+        conductor.push(location, routeState, silent);
         break;
       }
       case ACTION_REPLACE: {
-        conductor.replace(location, routeState);
-        break;
-      }
-      case ACTION_RESET: {
-        conductor.reset();
+        conductor.replace(location, routeState, silent);
         break;
       }
       default:
@@ -100,9 +110,12 @@ export default function router(subscribe) {
     if (appConfig.webCheckoutShopify === null) {
       const { location, state } = action.redirect;
       if (location) {
-        dispatch(navigate(ACTION_REPLACE, location, state));
+        dispatch(historyReplace({
+          pathname: location,
+          state,
+        }));
       } else {
-        dispatch(navigate(ACTION_POP));
+        dispatch(historyPop());
       }
     }
   });
