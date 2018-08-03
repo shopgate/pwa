@@ -31,9 +31,11 @@ class SnackBar extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
+    const visible = !!nextProps.toasts.length;
+
     this.setState({
       snacks: nextProps.toasts,
-      ...!!nextProps.toasts.length && { visible: true },
+      visible,
     });
   }
 
@@ -58,8 +60,8 @@ class SnackBar extends Component {
 
   handleAction = () => {
     clearTimeout(this.timer);
-    this.hide();
     this.state.snacks[0].action();
+    this.hide();
   }
 
   handleEntered = () => {
@@ -94,7 +96,9 @@ class SnackBar extends Component {
                 <I18n.Text className={styles.label} string={message || ''} />
               </Ellipsis>
               {(action && actionLabel) && (
-                <button className={styles.button} onClick={this.handleAction}>{actionLabel}</button>
+                <button className={styles.button} onClick={this.handleAction}>
+                  <I18n.Text string={actionLabel} />
+                </button>
               )}
             </div>
           </div>

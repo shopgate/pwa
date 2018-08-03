@@ -8,6 +8,7 @@ import ToastContext from './context';
  */
 class ToastProvider extends Component {
   static ADD = 'toast_add';
+  static FLUSH = 'toast_flush';
 
   static propTypes = {
     children: PropTypes.oneOfType([
@@ -27,6 +28,7 @@ class ToastProvider extends Component {
     };
 
     UIEvents.addListener(this.constructor.ADD, this.addToast);
+    UIEvents.addListener(this.constructor.FLUSH, this.flushToasts);
   }
 
   /**
@@ -77,6 +79,12 @@ class ToastProvider extends Component {
     toasts.shift();
 
     this.setState({ toasts });
+  }
+
+  flushToasts = () => {
+    if (this.state.toasts.length) {
+      this.setState({ toasts: [] });
+    }
   }
 
   /**
