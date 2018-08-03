@@ -1,5 +1,4 @@
-import { ACTION_POP } from '@virtuous/conductor/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
@@ -52,6 +51,6 @@ export default function category(subscribe) {
       message,
       title: 'category.error.title',
     }));
-    dispatch(navigate(ACTION_POP));
+    dispatch(historyPop());
   });
 }

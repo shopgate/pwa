@@ -72,7 +72,7 @@ class CouponField extends Component {
       .then(() => {
         this.setState({ value: '' });
       }).catch(() => {});
-  }
+  };
 
   /**
    * Handle change inside the input field
@@ -82,7 +82,7 @@ class CouponField extends Component {
     this.setState({
       value,
     });
-  }
+  };
 
   /**
    * Internal focus event handler.

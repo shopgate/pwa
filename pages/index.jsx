@@ -12,7 +12,6 @@ import App from '@shopgate/pwa-common/App';
 import { INDEX_PATH, LOGIN_PATH, PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
