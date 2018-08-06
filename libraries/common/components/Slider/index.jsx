@@ -7,104 +7,6 @@ import styles from './style';
 import connect from './connector';
 
 /**
- * Prevents multi-touch gestures on the slider.
- * @param {string} type The event type, must be one of the touchXYZ events.
- * @param {Object} slider The slider instance.
- */
-const fixTouchEvents = (type, slider) => {
-  // Get a reference to the dom element.
-  const domRef = slider.container[0];
-
-  let realHandler = null;
-
-  // Find the real handler attached to the container.
-  if (type === 'touchstart') {
-    realHandler = slider.onTouchStart;
-  } else if (type === 'touchmove') {
-    realHandler = slider.onTouchMove;
-  } else if (type === 'touchend') {
-    realHandler = slider.onTouchEnd;
-  }
-
-  // Remove it ...
-  domRef.removeEventListener(type, realHandler);
-
-  // ... and replace it with our custom wrapper.
-  domRef.addEventListener(type, (event) => {
-    if (event.touches.length <= 1) {
-      // Only fire this event if this is not a multi-touch gesture.
-      realHandler(event);
-    }
-  }, false);
-};
-
-/**
- * Initializes the slider component.
- * @param {Object} slider The slider object.
- * @param {Object} component The React slider component.
- * @param {boolean} disabled Whether the slider is disabled.
- */
-const initSlider = (slider, component, disabled) => {
-  const thisComponent = component;
-  thisComponent.slider = slider;
-
-  fixTouchEvents('touchstart', slider);
-  fixTouchEvents('touchmove', slider);
-  fixTouchEvents('touchend', slider);
-
-  if (disabled) {
-    slider.lockSwipes();
-  } else {
-    slider.unlockSwipes();
-  }
-};
-
-/**
- * Retriggers the creation of loop DOM elements once the start/end of the slider has been reached.
- * @param {Object} slider The Slider object.
- */
-const fixLoopLimits = (slider) => {
-  const numSlides = slider.slides.length;
-  const active = slider.activeIndex;
-
-  // Creation of the loop should be triggered if active index is either first or last 'real' slide.
-  const shouldUpdate = (
-    active === slider.loopedSlides ||
-    active === numSlides - slider.loopedSlides - 1
-  );
-
-  if (shouldUpdate) {
-    // Update the fake slides.
-    slider.reLoop();
-  }
-};
-
-/**
- * Causes the slider to re-translate to the real slide if its looping. Staying on the loop
- * proxy slides may cause undefined behaviours due to missing events.
- * @param {Object} slider The Slider object.
- */
-const fixFakeLoop = (slider) => {
-  if (slider.params.loop) {
-    // The slider is looping, re-center it to the original dom element if required.
-    slider.fixLoop();
-  }
-};
-
-/**
- * Updates slider.
- * @param {Swiper} slider Slider.
- */
-const updateSlider = (slider) => {
-  // If no slider given, skip.
-  if (!slider || !slider.update) {
-    return;
-  }
-
-  slider.update();
-};
-
-/**
  * The basic slider component.
  */
 class Slider extends Component {
@@ -154,6 +56,82 @@ class Slider extends Component {
     snapItems: true,
   };
 
+  /**
+   * Prevents multi-touch gestures on the slider.
+   * @param {string} type The event type, must be one of the touchXYZ events.
+   * @param {Object} slider The slider instance.
+   */
+  static fixTouchEvents(type, slider) {
+    // Get a reference to the dom element.
+    const domRef = slider.container[0];
+
+    let realHandler = null;
+
+    // Find the real handler attached to the container.
+    if (type === 'touchstart') {
+      realHandler = slider.onTouchStart;
+    } else if (type === 'touchmove') {
+      realHandler = slider.onTouchMove;
+    } else if (type === 'touchend') {
+      realHandler = slider.onTouchEnd;
+    }
+
+    // Remove it ...
+    domRef.removeEventListener(type, realHandler);
+
+    // ... and replace it with our custom wrapper.
+    domRef.addEventListener(type, (event) => {
+      if (event.touches.length <= 1) {
+        // Only fire this event if this is not a multi-touch gesture.
+        realHandler(event);
+      }
+    }, false);
+  }
+
+  /**
+   * Retriggers the creation of loop DOM elements once the start/end of the slider has been reached.
+   * @param {Object} slider The Slider object.
+   */
+  static fixLoopLimits(slider) {
+    const numSlides = slider.slides.length;
+    const active = slider.activeIndex;
+
+    // Creation of the loop should be triggered if active index is either first or last 'real' slide.
+    const shouldUpdate = (
+      active === slider.loopedSlides ||
+      active === numSlides - slider.loopedSlides - 1
+    );
+
+    if (shouldUpdate) {
+      // Update the fake slides.
+      slider.reLoop();
+    }
+  }
+
+  /**
+   * Causes the slider to re-translate to the real slide if its looping. Staying on the loop
+   * proxy slides may cause undefined behaviours due to missing events.
+   * @param {Object} slider The Slider object.
+   */
+  static fixFakeLoop(slider) {
+    if (slider.params.loop) {
+      // The slider is looping, re-center it to the original dom element if required.
+      slider.fixLoop();
+    }
+  }
+
+  /**
+   * Updates slider.
+   * @param {Swiper} slider Slider.
+   */
+  static updateSlider(slider) {
+    // If no slider given, skip.
+    if (!slider || !slider.update) {
+      return;
+    }
+
+    slider.update();
+  };
   /**
    * A reference to the SliderItem Component.
    * @type {React.Component}
@@ -241,7 +219,7 @@ class Slider extends Component {
    */
   componentDidUpdate() {
     // Force Swiper update.
-    updateSlider(this.slider);
+    this.constructor.updateSlider(this.slider);
   }
 
   /**
@@ -262,7 +240,16 @@ class Slider extends Component {
    */
   initSlider = (slider) => {
     this.slider = slider;
-    initSlider(slider, this, this.props.disabled);
+
+    this.constructor.fixTouchEvents('touchstart', slider);
+    this.constructor.fixTouchEvents('touchmove', slider);
+    this.constructor.fixTouchEvents('touchend', slider);
+
+    if (this.props.disabled) {
+      slider.lockSwipes();
+    } else {
+      slider.unlockSwipes();
+    }
   };
 
   /**
@@ -318,9 +305,9 @@ class Slider extends Component {
       slidesPerView,
       loop,
       freeMode: !snapItems,
-      onTouchStart: fixLoopLimits,
-      onTransitionStart: fixLoopLimits,
-      onTransitionEnd: fixFakeLoop,
+      onTouchStart: this.constructor.fixLoopLimits,
+      onTransitionStart: this.constructor.fixLoopLimits,
+      onTransitionEnd: this.constructor.fixFakeLoop,
       onSlideChangeEnd: this.handleSlideChange,
       onInit: this.initSlider,
     };
