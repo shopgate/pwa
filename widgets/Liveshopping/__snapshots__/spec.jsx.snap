@@ -18,6 +18,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
     }
     controls={false}
     disabled={false}
+    historyPath=""
     indicators={true}
     initialSlide={0}
     interval={3000}
@@ -257,6 +258,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
     }
     controls={false}
     disabled={false}
+    historyPath=""
     indicators={true}
     initialSlide={0}
     interval={3000}
