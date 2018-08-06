@@ -116,6 +116,12 @@ class SimpleInput extends Component {
    * Internal blur event handler.
    */
   handleBlur = () => {
+    /**
+     * When switching between the PWA and legacy pages the handleFocus event calleback was sometime
+     * called in blurred state. By setting the input state explicitly this doesn't happen anymore.
+     */
+    this.ref.blur();
+
     const newState = {
       isFocused: false,
     };
