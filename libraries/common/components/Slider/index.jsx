@@ -322,4 +322,6 @@ class Slider extends Component {
   }
 }
 
+export { Slider as UnwrappedSlider };
+
 export default connect(Slider);
