@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import SliderItem from './components/Item';
 import styles from './style';
+import connect from './connector';
 
 /**
  * Prevents multi-touch gestures on the slider.
@@ -91,6 +92,19 @@ const fixFakeLoop = (slider) => {
 };
 
 /**
+ * Updates slider.
+ * @param {Swiper} slider Slider.
+ */
+const updateSlider = (slider) => {
+  // If no slider given, skip.
+  if (!slider || !slider.update) {
+    return;
+  }
+
+  slider.update();
+};
+
+/**
  * The basic slider component.
  */
 class Slider extends Component {
@@ -105,6 +119,7 @@ class Slider extends Component {
     classNames: PropTypes.shape(),
     controls: PropTypes.bool,
     disabled: PropTypes.bool,
+    historyPath: PropTypes.string,
     indicators: PropTypes.bool,
     initialSlide: PropTypes.number,
     interval: PropTypes.number,
@@ -128,6 +143,7 @@ class Slider extends Component {
     classNames: {},
     controls: false,
     disabled: false,
+    historyPath: '',
     indicators: false,
     initialSlide: 0,
     interval: 3000,
@@ -150,7 +166,6 @@ class Slider extends Component {
    */
   constructor(props) {
     super(props);
-
     this.slider = null; // The slider instance.
   }
 
@@ -168,6 +183,65 @@ class Slider extends Component {
     } else {
       this.slider.unlockSwipes();
     }
+  }
+
+  /**
+   * Implements shouldComponent update lifecycle method with several reasons:
+   * 1. Usually this component renders way to often because of the state changes.
+   * 2. HistoryPathname is connected to the redux store additionally to force updates whenever
+   * the pathname changes. It's required since sometimes the slider renders while being hidden
+   * and then, the size calculations are completely wrong.
+   *
+   * @param {Object} nextProps Next props.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    // Check if children changed.
+    const oldKeys = this.props.children.map(c => c.key);
+    const newKeys = nextProps.children.map(c => c.key);
+    const childrenDifferent = (
+      oldKeys.length !== newKeys.length || oldKeys.some((k, i) => newKeys[i] !== k)
+    );
+
+    if (childrenDifferent) {
+      return true;
+    }
+
+    // Check if primitives changed.
+    const primitiveTypes = [
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.bool,
+    ];
+
+    const primitivesChanged = Object.keys(this.constructor.propTypes).some((propName) => {
+      if (propName === 'children') {
+        // Not testing children
+        return false;
+      }
+
+      const propType = this.constructor.propTypes[propName];
+
+      if (propName === 'slidesPerView' || primitiveTypes.includes(propType)) {
+        return this.props[propName] !== nextProps[propName];
+      }
+      return false;
+    });
+
+    if (primitivesChanged) {
+      return true;
+    }
+
+    // Compare objects.
+    return JSON.stringify(this.props.classNames) !== JSON.stringify(nextProps.classNames);
+  }
+
+  /**
+   * Calls when component did update.
+   */
+  componentDidUpdate() {
+    // Force Swiper update.
+    updateSlider(this.slider);
   }
 
   /**
@@ -261,4 +335,4 @@ class Slider extends Component {
   }
 }
 
-export default Slider;
+export default connect(Slider);
