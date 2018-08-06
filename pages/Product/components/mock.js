@@ -33,6 +33,4 @@ const basicProductState = {
   },
 };
 
-export {
-  basicProductState,
-}
+export { basicProductState };

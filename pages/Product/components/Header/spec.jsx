@@ -9,13 +9,15 @@ import { basicProductState } from './../mock';
 
 const mockedStore = configureStore([thunk]);
 
-jest.mock('Components/Reviews/components/Header', () => function () {
-  return (<div />);
-});
+jest.mock('Components/Reviews/components/Header', () => () => <div />);
 
 jest.mock('./../../context');
 
 describe.skip('<ProductHeader>', () => {
+  /**
+   * @param {Object} state A redux store.
+   * @returns {JSX}
+   */
   const createComponent = (state) => {
     // eslint-disable-next-line global-require
     const ProductHeader = require('./index').default;

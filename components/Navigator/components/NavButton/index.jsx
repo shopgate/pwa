@@ -11,8 +11,8 @@ import styles from './style';
  */
 class NavButton extends Component {
   static propTypes = {
-    openNavDrawer: PropTypes.func.isRequired,
     close: PropTypes.func.isRequired,
+    openNavDrawer: PropTypes.func.isRequired,
     pattern: PropTypes.string.isRequired,
   };
 

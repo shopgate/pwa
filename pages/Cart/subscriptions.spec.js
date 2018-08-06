@@ -14,15 +14,27 @@ const mockedStore = configureStore([thunk]);
 
 const results = [
   [
-    { type: SET_VIEW_TITLE, title: 'titles.cart' },
+    {
+      type: SET_VIEW_TITLE,
+      title: 'titles.cart',
+    },
     { type: SET_SEARCH_DISABLED },
   ],
   [
-    { type: SET_VIEW_TITLE, title: 'titles.cart' },
-    { type: TOGGLE_NAVIGATOR_CART_ICON, active: false },
+    {
+      type: SET_VIEW_TITLE,
+      title: 'titles.cart',
+    },
+    {
+      type: TOGGLE_NAVIGATOR_CART_ICON,
+      active: false,
+    },
   ],
   [
-    { type: SET_VIEW_TITLE, title: 'titles.cart' },
+    {
+      type: SET_VIEW_TITLE,
+      title: 'titles.cart',
+    },
   ],
 ];
 

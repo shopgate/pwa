@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
