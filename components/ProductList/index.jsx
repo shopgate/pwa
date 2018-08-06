@@ -41,7 +41,7 @@ const ProductList = ({
       items={products}
       loadingIndicator={<LoadingIndicator />}
       totalItems={totalProductCount}
-      initialLimit={6}
+      initialLimit={10}
       limit={ITEMS_PER_LOAD}
       requestHash={requestHash}
     />
