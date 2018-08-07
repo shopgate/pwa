@@ -17,13 +17,12 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import SnackBar2 from '@shopgate/pwa-ui-material/SnackBar';
+import SnackBar from '@shopgate/pwa-ui-material/SnackBar';
 import { AppContext, ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
-import SnackBar from 'Components/SnackBar';
 import locale from '../locale';
 import reducers from './reducers';
 import subscribers from './subscribers';
@@ -44,8 +43,7 @@ const Pages = () => (
           <Portal name={APP_GLOBALS} />
           <Viewport>
             <ModalContainer component={Dialog} />
-            <SnackBar />
-            <Toaster render={props => <SnackBar2 {...props} />} />
+            <Toaster render={props => <SnackBar {...props} />} />
             <Router>
               <Route pattern={INDEX_PATH} component={routes.StartPage} />
               <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
