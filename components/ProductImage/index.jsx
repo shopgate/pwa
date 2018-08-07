@@ -62,10 +62,6 @@ class ProductImage extends Component {
     };
   }
 
-  state = {
-    showPlaceholder: false,
-  };
-
   /**
    * Called when the component props change.
    * @param {Object} nextProps The new component properties

@@ -12,10 +12,10 @@ import {
   RECEIVE_PRODUCT_CACHED,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import getProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/getProductReviews';
+import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
 import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
 import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
 import getProductData from './actions/getProductData';
-import { REVIEW_PREVIEW_COUNT } from './constants';
 
 /**
  * Product subscriptions.

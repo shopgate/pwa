@@ -66,11 +66,11 @@ const Pages = () => (
           <Route path={`${REGISTER_PATH}`} />
 
           <AuthRoutes to={`${LOGIN_PATH}`}>
-            <Route path={`${CHECKOUT_PATH}`} />
+            <Route path={`${CHECKOUT_PATH}`} component={routes.Checkout} />
             <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
             <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
           </AuthRoutes>
-          
+
           <Portal name={APP_ROUTES} props={{ View }} />
 
           {isDev && (

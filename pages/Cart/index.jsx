@@ -54,7 +54,7 @@ class Cart extends Component {
     this.setState({
       containerPaddingStyle: styles.getContainerPaddingStyle(height),
     });
-  }
+  };
 
   /**
    * Returns the translated view title.
