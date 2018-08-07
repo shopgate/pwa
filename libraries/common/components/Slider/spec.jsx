@@ -138,7 +138,7 @@ describe('<Slider />', () => {
       mockedOnSlideChange.mockClear();
     });
 
-    it('should throw error when updating slider when not ready', () => {
+    it('should not throw error when updating slider when not ready', () => {
       instance.constructor.updateSlider();
     });
 

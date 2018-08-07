@@ -96,7 +96,10 @@ class Slider extends Component {
     const numSlides = slider.slides.length;
     const active = slider.activeIndex;
 
-    // Creation of the loop should be triggered if active index is either first or last 'real' slide.
+    /**
+     * Creation of the loop should be triggered if active index is either first
+     * or last 'real' slide.
+     */
     const shouldUpdate = (
       active === slider.loopedSlides ||
       active === numSlides - slider.loopedSlides - 1
@@ -131,7 +134,7 @@ class Slider extends Component {
     }
 
     slider.update();
-  };
+  }
   /**
    * A reference to the SliderItem Component.
    * @type {React.Component}
