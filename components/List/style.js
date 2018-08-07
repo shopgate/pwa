@@ -2,6 +2,8 @@ import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
+export const IMAGE_SPACE = 72;
+
 const item = css({
   marginLeft: variables.gap.big,
 }).toString();
@@ -12,7 +14,7 @@ const itemNotLast = css({
 }).toString();
 
 const itemWithImage = css({
-  marginLeft: 72,
+  marginLeft: IMAGE_SPACE,
 }).toString();
 
 const innerContainer = css({
