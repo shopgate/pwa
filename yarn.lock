@@ -86,9 +86,9 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/eslint-config@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.6.0-beta.2.tgz#b0c9d0cd4e0ea07e9635702ee5130555a9080a3a"
+"@shopgate/eslint-config@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.6.0-beta.10.tgz#5314af070badc7d6afdbf4aee860e085a5164144"
   dependencies:
     babel-eslint "^8.2.1"
     eslint-config-airbnb "^16.1.0"
@@ -99,16 +99,16 @@
     eslint-plugin-react "^7.6.1"
     react-hot-loader "4.0.1"
 
-"@shopgate/pwa-common-commerce@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.6.0-beta.2.tgz#a3b438aa1246720c3db92bd52c85ff3517faaabe"
+"@shopgate/pwa-common-commerce@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.6.0-beta.10.tgz#ff1431430ca239ed747a4f5dde705473a9c8b8ea"
   dependencies:
     recompose "^0.26.0"
     reselect "^3.0.1"
 
-"@shopgate/pwa-common@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.6.0-beta.2.tgz#e2cdda7009041776da6d75495260e9a24bcc52c6"
+"@shopgate/pwa-common@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.6.0-beta.10.tgz#552cfa4d652c772dcf88d8268ee57b4a074892b5"
   dependencies:
     classnames "^2.2.5"
     crypto-js "3.1.9-1"
@@ -133,33 +133,33 @@
     rxjs "^5.4.3"
     url-search-params "^0.10.0"
 
-"@shopgate/pwa-core@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.6.0-beta.2.tgz#fc160290935d2e47886360f09b579e073cec2f39"
+"@shopgate/pwa-core@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.6.0-beta.10.tgz#9a08a27e903cbe340222d9725b73a6bab53aa633"
   dependencies:
     crypto-js "3.1.9-1"
     isomorphic-fetch "^2.2.1"
     lodash "^4.6.1"
 
-"@shopgate/pwa-e2e-test@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-5.6.0-beta.2.tgz#ff7c66fedd162bf536eecd6fc3504c83acb4e7ca"
+"@shopgate/pwa-e2e-test@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-5.6.0-beta.10.tgz#ea1d7ae1f0e910599f599a44abeddcaae7e0d3e5"
 
-"@shopgate/pwa-tracking@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.6.0-beta.2.tgz#79002e86e8d1c9ce0daf8064f4738871c678ca00"
+"@shopgate/pwa-tracking@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.6.0-beta.10.tgz#6c7d2b5d656f22978a952d1ebf12f03e3bb533c5"
 
-"@shopgate/pwa-ui-ios@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-5.6.0-beta.2.tgz#64f09b5b7398c606ce2276fe63ab06fa9388e53d"
+"@shopgate/pwa-ui-material@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-material/-/pwa-ui-material-5.6.0-beta.10.tgz#96cbac0542d7354c4214c99a52731d4640acef4e"
 
-"@shopgate/pwa-ui-shared@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.6.0-beta.2.tgz#2a2e42350d4976f60b9cd035aaa7118ab731ff56"
+"@shopgate/pwa-ui-shared@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.6.0-beta.10.tgz#d07cfc657782928e7f10d17cc90aa23b57244b7f"
 
-"@shopgate/pwa-unit-test@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.6.0-beta.2.tgz#d0b1102442def8e6fa6262d91523a39416ec1831"
+"@shopgate/pwa-unit-test@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.6.0-beta.10.tgz#1832c35b53a5789a4f585a3e6601fa0c87f36e4d"
   dependencies:
     babel-core "^6.26.0"
     babel-preset-es2015 "^6.24.1"
@@ -173,9 +173,9 @@
     react-tap-event-plugin "^3.0.2"
     react-test-renderer "^16.2.0"
 
-"@shopgate/pwa-webcheckout-shopify@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.6.0-beta.2.tgz#28d6cb7acc665d4f540ce8897d52e19325d362c0"
+"@shopgate/pwa-webcheckout-shopify@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.6.0-beta.10.tgz#212c5fc0bc0eef94fad772447a5f15cb97f3c659"
 
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
@@ -183,9 +183,9 @@
   dependencies:
     hammerjs "^2.0.8"
 
-"@shopgate/tracking-core@5.6.0-beta.2":
-  version "5.6.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.6.0-beta.2.tgz#ad7b8d58f91d6adfe0ff91eefc4b0970dc48894a"
+"@shopgate/tracking-core@5.6.0-beta.10":
+  version "5.6.0-beta.10"
+  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.6.0-beta.10.tgz#7f0dd91b7b812fe908b558d1323c9efd58409df1"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
@@ -2275,6 +2275,14 @@ cosmiconfig@^4.0.0:
     parse-json "^4.0.0"
     require-from-string "^2.0.1"
 
+cosmiconfig@^5.0.2:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-5.0.5.tgz#a809e3c2306891ce17ab70359dc8bdf661fe2cd0"
+  dependencies:
+    is-directory "^0.3.1"
+    js-yaml "^3.9.0"
+    parse-json "^4.0.0"
+
 coveralls@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/coveralls/-/coveralls-3.0.0.tgz#22ef730330538080d29b8c151dc9146afde88a99"
@@ -3354,6 +3362,12 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+find-up@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-3.0.0.tgz#49169f1d7993430646da61ecc5ae355c21c97b73"
+  dependencies:
+    locate-path "^3.0.0"
+
 flat-cache@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-1.3.0.tgz#d3030b32b38154f4e3b7e9c709f490f7ef97c481"
@@ -3565,6 +3579,10 @@ get-port@^3.2.0:
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
+
+get-stdin@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -3968,6 +3986,21 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
+husky@^1.0.0-rc.13:
+  version "1.0.0-rc.13"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-1.0.0-rc.13.tgz#49c3cc210bfeac24d4ad272f770b7505c9091828"
+  dependencies:
+    cosmiconfig "^5.0.2"
+    execa "^0.9.0"
+    find-up "^3.0.0"
+    get-stdin "^6.0.0"
+    is-ci "^1.1.0"
+    pkg-dir "^3.0.0"
+    please-upgrade-node "^3.1.1"
+    read-pkg "^4.0.1"
+    run-node "^1.0.0"
+    slash "^2.0.0"
+
 hyphenate-style-name@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
@@ -4142,7 +4175,7 @@ is-ci@1.0.10:
   dependencies:
     ci-info "^1.0.0"
 
-is-ci@^1.0.10:
+is-ci@^1.0.10, is-ci@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-1.1.0.tgz#247e4162e7860cebbdaf30b774d6b0ac7dcfe7a5"
   dependencies:
@@ -5482,6 +5515,13 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+locate-path@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
+  dependencies:
+    p-locate "^3.0.0"
+    path-exists "^3.0.0"
+
 lodash-es@^4.17.5, lodash-es@^4.2.1:
   version "4.17.7"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.7.tgz#db240a3252c3dd8360201ac9feef91ac977ea856"
@@ -6459,11 +6499,23 @@ p-limit@^1.1.0:
   dependencies:
     p-try "^1.0.0"
 
+p-limit@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.0.0.tgz#e624ed54ee8c460a778b3c9f3670496ff8a57aec"
+  dependencies:
+    p-try "^2.0.0"
+
 p-locate@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
   dependencies:
     p-limit "^1.1.0"
+
+p-locate@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
+  dependencies:
+    p-limit "^2.0.0"
 
 p-map@^1.1.1:
   version "1.2.0"
@@ -6472,6 +6524,10 @@ p-map@^1.1.1:
 p-try@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
+
+p-try@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
 
 package-json@^4.0.1:
   version "4.0.1"
@@ -6639,6 +6695,12 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
+pkg-dir@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-3.0.0.tgz#2749020f239ed990881b1f71210d51eb6523bea3"
+  dependencies:
+    find-up "^3.0.0"
+
 pkg-up@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-2.0.0.tgz#c819ac728059a461cab1c3889a2be3c49a004d7f"
@@ -6648,6 +6710,12 @@ pkg-up@^2.0.0:
 please-upgrade-node@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.0.1.tgz#0a681f2c18915e5433a5ca2cd94e0b8206a782db"
+
+please-upgrade-node@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.1.1.tgz#ed320051dfcc5024fae696712c8288993595e8ac"
+  dependencies:
+    semver-compare "^1.0.0"
 
 pluralize@^7.0.0:
   version "7.0.0"
@@ -7068,6 +7136,14 @@ read-pkg@^3.0.0:
     normalize-package-data "^2.3.2"
     path-type "^3.0.0"
 
+read-pkg@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-4.0.1.tgz#963625378f3e1c4d48c85872b5a6ec7d5d093237"
+  dependencies:
+    normalize-package-data "^2.3.2"
+    parse-json "^4.0.0"
+    pify "^3.0.0"
+
 "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.4, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.1.5, readable-stream@^2.2.2:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.5.tgz#b4f85003a938cbb6ecbce2a124fb1012bd1a838d"
@@ -7477,6 +7553,10 @@ run-async@^2.2.0:
   dependencies:
     is-promise "^2.1.0"
 
+run-node@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/run-node/-/run-node-1.0.0.tgz#46b50b946a2aa2d4947ae1d886e9856fd9cabe5e"
+
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
@@ -7573,6 +7653,10 @@ sc-formatter@~3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/sc-formatter/-/sc-formatter-3.0.2.tgz#9abdb14e71873ce7157714d3002477bbdb33c4e6"
 
+semver-compare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
+
 "semver@2 || 3 || 4 || 5", semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
@@ -7657,6 +7741,10 @@ sinon@^1.17.6:
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
+
+slash@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
 
 slice-ansi@0.0.4:
   version "0.0.4"

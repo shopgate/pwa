@@ -41,8 +41,8 @@ class SnackBar extends Component {
 
   /**
    * Only re-render when the visibility of the component should change.
-   * @param {*} nextProps The next component props.
-   * @param {*} nextState The next component state.
+   * @param {Object} nextProps The next component props.
+   * @param {Object} nextState The next component state.
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
@@ -51,6 +51,7 @@ class SnackBar extends Component {
 
   /**
    * Returns the first snack from the state.
+   * @returns {Object}
    */
   get snack() {
     return this.state.snacks.length ? this.state.snacks[0] : defaultToast;
