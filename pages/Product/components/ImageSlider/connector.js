@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { historyPush } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 import {
   getProductImages,
   getCurrentBaseProduct,
