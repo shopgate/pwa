@@ -9,10 +9,10 @@ import {
 } from '@shopgate/pwa-common-commerce/reviews/streams';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
-import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import { productRoutesWillEnter$, reviewsRouteWillEnter$ } from './streams';
 
 /**
@@ -57,9 +57,12 @@ export default function writeReview(subscribe) {
   /**
    * Get triggered when a review was successfully submitted
    */
-  subscribe(successReviewSubmit$, ({ dispatch }) => {
+  subscribe(successReviewSubmit$, ({ dispatch, events }) => {
     dispatch(historyPop());
-    dispatch(createToast({ message: 'reviews.success_message' }));
+    events.emit(ToastProvider.ADD, {
+      id: 'reviews.success_message',
+      message: 'reviews.success_message',
+    });
   });
   /**
    * When user is logged out reviews relation should be removed.

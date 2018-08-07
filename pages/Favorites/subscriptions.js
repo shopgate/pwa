@@ -2,8 +2,8 @@ import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { addFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { favoritesWillEnter$, favoritesWillRemoveItem$ } from '@shopgate/pwa-common-commerce/favorites/streams';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import createToast from '@shopgate/pwa-common/actions/toast/createToast';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
 /**
@@ -14,20 +14,19 @@ export default function favorites(subscribe) {
     dispatch(setTitle('titles.favorites'));
   });
 
-  subscribe(favoritesWillRemoveItem$, ({ dispatch, action, getState }) => {
-    if (getCurrentRoute(getState()).pattern !== FAVORITES_PATH) {
+  subscribe(favoritesWillRemoveItem$, ({ action, dispatch, events }) => {
+    if (getCurrentRoute().pattern !== FAVORITES_PATH) {
       return;
     }
 
     // Animations are too fast. This should wait a little bit.
     setTimeout(() => {
-      dispatch(createToast({
-        action: 'common.undo',
-        actionOnClick: addFavorites(action.productId),
-        duration: 2500,
+      events.emit(ToastProvider.ADD, {
+        id: 'favorites.removed',
         message: 'favorites.removed',
-        replaceable: true,
-      }));
+        action: () => dispatch(addFavorites(action.productId, true)),
+        actionLabel: 'common.undo',
+      });
     }, FAVORITES_SHOW_TOAST_DELAY);
   });
 }
