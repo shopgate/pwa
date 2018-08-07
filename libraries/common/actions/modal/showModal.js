@@ -1,5 +1,5 @@
 import CryptoJs from 'crypto-js';
-import { logger } from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/pwa-core';
 import { createModal } from '../../action-creators/modal';
 import { getModalById } from '../../selectors/modal';
 import promiseMap from './promiseMap';
@@ -30,37 +30,37 @@ const defaultModalOptions = {
  * @param {Object} options The modal options.
  * @return {Function} A Redux thunk.
  */
-const showModal = options => (dispatch, getState) => {
-  const id = getModalId(options);
+export default function showModal(options) {
+  return (dispatch, getState) => {
+    const id = getModalId(options);
 
-  // Check if there is already a modal with the same id on the modal stack.
-  const modal = getModalById(getState(), id);
+    // Check if there is already a modal with the same id on the modal stack.
+    const modal = getModalById(getState(), id);
 
-  if (modal) {
-    /**
-     * To prevent bugging the user with duplicate modal, those are not added to the modal stack.
-     * Usually the promise which is returned by showModal resolves with a boolean value
-     * when the user interacts with its buttons. Since promise handling is optional for the action,
-     * the promise can't be rejected, but resolves with null.
-     */
-    logger.warn('Modal creation aborted since an identical one was already added to the modal stack', options);
-    return Promise.resolve(null);
-  }
+    if (modal) {
+      /**
+       * To prevent bugging the user with duplicate modal, those are not added to the modal stack.
+       * Usually the promise which is returned by showModal resolves with a boolean value
+       * when the user interacts with its buttons. Since promise handling is optional for the
+       * action, the promise can't be rejected, but resolves with null.
+       */
+      logger.warn('Modal creation aborted since an identical one was already added to the modal stack', options);
+      return Promise.resolve(null);
+    }
 
-  const enrichedOptions = {
-    ...defaultModalOptions,
-    ...options,
-    id,
-  };
+    const enrichedOptions = {
+      ...defaultModalOptions,
+      ...options,
+      id,
+    };
 
-  dispatch(createModal(enrichedOptions));
+    dispatch(createModal(enrichedOptions));
 
-  return new Promise((resolve, reject) => {
-    promiseMap.set(id, {
-      resolve,
-      reject,
+    return new Promise((resolve, reject) => {
+      promiseMap.set(id, {
+        resolve,
+        reject,
+      });
     });
-  });
-};
-
-export default showModal;
+  };
+}

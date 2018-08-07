@@ -3,14 +3,16 @@ import {
   SEARCH_PATH,
   RECEIVE_SEARCH_RESULTS,
 } from '@shopgate/pwa-common-commerce/search/constants';
-import { routeDidNotChange } from '@shopgate/pwa-common/streams/history';
+import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
+import { routeDidLeave$ } from '@shopgate/pwa-common/streams';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { pwaDidAppear$ } from './app';
 
 /**
  * Emits when the search route is active.
  */
-const searchIsActive$ = routeDidNotChange(SEARCH_PATH);
+const searchIsActive$ = searchDidEnter$
+  .zip(routeDidLeave$.filter(({ action }) => action.route.pattern !== SEARCH_PATH));
 
 /**
  * Emits when the search route comes active again after a legacy page was active.

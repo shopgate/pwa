@@ -15,8 +15,9 @@ import styles from './style';
 class Link extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    historyPush: PropTypes.func.isRequired,
+    historyReplace: PropTypes.func.isRequired,
     href: PropTypes.string.isRequired,
-    navigate: PropTypes.func.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     replace: PropTypes.bool,
@@ -40,8 +41,16 @@ class Link extends Component {
       return;
     }
 
-    const action = this.props.replace ? ACTION_REPLACE : ACTION_PUSH;
-    this.props.navigate(action, this.props.href, this.props.state);
+    const params = {
+      pathname: this.props.href,
+      state: this.props.state,
+    };
+
+    if (this.props.replace) {
+      this.props.historyReplace(params);
+    } else {
+      this.props.historyPush(params);
+    }
   };
 
   /**
@@ -52,7 +61,6 @@ class Link extends Component {
     const { tag: Tag } = this.props;
     return (
       <Tag
-        aria-hidden
         className={`${styles} ${this.props.className}`}
         onClick={this.handleOpenLink}
         role="link"

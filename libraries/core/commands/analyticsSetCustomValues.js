@@ -6,10 +6,10 @@ import AppCommand from '../classes/AppCommand';
  * @param {Array} [params.customDimensions] Array of customDimensions
  * @param {Array} [params.customMetrics] Array of customMetrics
  */
-export default (params) => {
+export default function analyticsSetCustomValues(params) {
   const command = new AppCommand();
 
   command
     .setCommandName('analyticsSetCustomValues')
     .dispatch(params);
-};
+}

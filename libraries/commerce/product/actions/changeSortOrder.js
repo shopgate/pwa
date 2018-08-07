@@ -1,5 +1,4 @@
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
-import { ACTION_REPLACE } from '@virtuous/conductor/constants';
+import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { parseObjectToQueryString } from '@shopgate/pwa-common/helpers/router';
 
@@ -15,7 +14,10 @@ const changeSortOrder = sort => (dispatch) => {
     sort,
   });
 
-  dispatch(navigate(ACTION_REPLACE, `${window.location.pathname}${newQuery}`, state));
+  dispatch(historyReplace({
+    pathname: `${window.location.pathname}${newQuery}`,
+    state,
+  }));
 };
 
 export default changeSortOrder;

@@ -250,6 +250,7 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
     products,
     totalProductCount,
     sort,
+    hash,
   };
 };
 

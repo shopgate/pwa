@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { logger } from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/pwa-core';
 
 /**
  * Returns a translation and replaces placeholder with children output.

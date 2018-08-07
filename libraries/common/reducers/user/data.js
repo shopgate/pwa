@@ -11,7 +11,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = {}, action) => {
+export default function userDataReducer(state = {}, action) {
   switch (action.type) {
     case REQUEST_USER:
       return {
@@ -33,4 +33,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-};
+}
