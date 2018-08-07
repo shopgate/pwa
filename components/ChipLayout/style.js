@@ -18,14 +18,14 @@ const layout = css({
   display: 'flex',
   alignContent: 'flex-start',
   flexWrap: 'wrap',
-  padding: '7px 5px',
+  padding: '8px 5px',
   overflow: 'hidden',
 }).toString();
 
 const moreButtonWrapper = css({
   position: 'absolute',
   right: 0,
-  bottom: variables.gap.small * 0.5,
+  bottom: 0,
   marginLeft: 'auto',
   marginRight: variables.gap.small,
 }).toString();

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -16,7 +15,7 @@ import styles from './style';
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const ListItem = ({ filter, id, search }) => {
+const ListItem = ({ filter, id }) => {
   const isActive = !!(filter.active && filter.active.length > 0);
 
   const link = id ? `${CATEGORY_PATH}/${id}${filter.url}` : `${SEARCH_PATH}${filter.url}`;
@@ -43,12 +42,10 @@ const ListItem = ({ filter, id, search }) => {
 ListItem.propTypes = {
   filter: PropTypes.shape().isRequired,
   id: PropTypes.string,
-  search: PropTypes.string,
 };
 
 ListItem.defaultProps = {
   id: null,
-  search: null,
 };
 
 export default props => (

@@ -1,6 +1,4 @@
-import {
-  REQUEST_PRODUCT_DATA,
-} from '../constants';
+import { REQUEST_PRODUCT_DATA } from '../constants';
 
 /**
  * Creates the dispatched REQUEST_PRODUCT_DATA action object.

@@ -15,13 +15,11 @@ import styles from './style';
 class CategoryListWidget extends Component {
   static propTypes = {
     settings: PropTypes.shape().isRequired,
-    categoryId: PropTypes.string,
     getCategory: PropTypes.func,
     items: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
-    categoryId: null,
     getCategory: () => {},
     items: null,
   };

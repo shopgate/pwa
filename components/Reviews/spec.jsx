@@ -12,9 +12,10 @@ import {
 
 const mockedStore = configureStore();
 
-const Header = function () {
-  return (<div />);
-};
+/**
+ * @returns {JSX}
+ */
+const Header = () => <div />;
 const mock = Header;
 jest.mock('Components/Reviews/components/Header', () => mock);
 

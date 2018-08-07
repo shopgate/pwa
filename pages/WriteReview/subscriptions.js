@@ -1,3 +1,4 @@
+import { historyPop } from '@shopgate/pwa-common/actions/router';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
@@ -6,13 +7,12 @@ import {
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
-import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import { productRoutesWillEnter$, reviewsRouteWillEnter$ } from './streams';
 
 /**
@@ -57,9 +57,12 @@ export default function writeReview(subscribe) {
   /**
    * Get triggered when a review was successfully submitted
    */
-  subscribe(successReviewSubmit$, ({ dispatch }) => {
-    dispatch(goBackHistory());
-    dispatch(createToast({ message: 'reviews.success_message' }));
+  subscribe(successReviewSubmit$, ({ dispatch, events }) => {
+    dispatch(historyPop());
+    events.emit(ToastProvider.ADD, {
+      id: 'reviews.success_message',
+      message: 'reviews.success_message',
+    });
   });
   /**
    * When user is logged out reviews relation should be removed.

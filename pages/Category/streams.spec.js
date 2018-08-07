@@ -39,7 +39,6 @@ describe('Category streams', () => {
   });
 
   describe('receivedVisibleCategory$', () => {
-
     it('should return true', () => {
       mockedParams = {
         categoryId: '666f6f',

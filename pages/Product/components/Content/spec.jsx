@@ -10,13 +10,14 @@ import { basicProductState } from './../mock';
 const mockedStore = configureStore([thunk]);
 
 jest.mock('@shopgate/react-hammerjs/src/Hammer', () => ({ children }) => children);
-
-jest.mock('Components/Reviews/components/Header', () => function () {
-  return (<div />);
-});
+jest.mock('Components/Reviews/components/Header', () => () => <div />);
 jest.mock('./../../context');
 
 describe('<ProductContent>', () => {
+  /**
+   * @param {Object} state The state
+   * @returns {JSX}
+   */
   const createComponent = (state) => {
     // eslint-disable-next-line global-require
     const ProductContent = require('./index').default;

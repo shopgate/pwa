@@ -28,15 +28,14 @@ const createComponent = (props) => {
       },
     },
   });
-  return mount(
+  return mount((
     <Provider store={store}>
       <NavigatorContent {...props} />
     </Provider>, mockRenderOptions
-  );
+  ));
 };
 
 describe('<NavigatorContent />', () => {
-
   it('should render the logo', () => {
     const wrapper = createComponent({ routePattern: '/' });
 

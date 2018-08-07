@@ -15,7 +15,7 @@ import { QUICKLINKS_MENU } from './constants';
 const mapStateToProps = state => ({
   cartProductCount: getCartProductDisplayCount(state),
   entries: {
-    quicklinks: getMenuById(state, QUICKLINKS_MENU).entries,
+    quicklinks: getMenuById(state, { id: QUICKLINKS_MENU }).entries,
   },
   highlightFavorites: hasFavorites(state),
   navDrawerActive: state.navigator.navDrawerActive,

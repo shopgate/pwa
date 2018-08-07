@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * 
- * @param {*} selected 
- * @param {*} selectable 
+ * @param {boolean} selected Whether or not the item is selected.
+ * @param {boolean} selectable Whether or not the item can be selected.
+ * @returns {string}
  */
 const getStyle = (selected, selectable) => {
   if (selected) {

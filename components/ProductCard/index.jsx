@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Link from '@shopgate/pwa-common/components/Link';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import ProductImage from 'Components/ProductImage';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
-import PriceInfo from '@shopgate/pwa-ui-shared/PriceInfo';
-import Price from '@shopgate/pwa-ui-shared/Price';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
-import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
+import ProductImage from 'Components/ProductImage';
+import ProductGridPrice from 'Components/ProductGridPrice';
 import styles from './style';
 
 /**
@@ -56,31 +53,13 @@ const ProductCard = ({
           </div>
         )}
         {!hidePrice && (
-          <Grid className={styles.priceWrapper} wrap>
-            <Grid.Item grow={1}>
-              <Price
-                unitPrice={product.price.unitPrice}
-                unitPriceMin={product.price.unitPriceMin}
-                discounted={!!product.price.discount}
-                currency={product.price.currency}
-              />
-            </Grid.Item>
-            {product.price.unitPriceStriked > 0 && (
-              <Grid.Item>
-                <PriceStriked
-                  value={product.price.unitPriceStriked}
-                  currency={product.price.currency}
-                />
-              </Grid.Item>
-            )}
-          </Grid>
-        )}
-        {(!hidePrice && product.price.info) && (
-          <Grid>
-            <Grid.Item>
-              <PriceInfo className={styles.basicPrice} text={product.price.info} />
-            </Grid.Item>
-          </Grid>
+          <Fragment>
+            <Portal name={portals.PRODUCT_ITEM_PRICE_BEFORE} props={{ productId: product.id }} />
+            <Portal name={portals.PRODUCT_ITEM_PRICE} props={{ productId: product.id }}>
+              <ProductGridPrice price={product.price} />
+              <Portal name={portals.PRODUCT_ITEM_PRICE_AFTER} props={{ productId: product.id }} />
+            </Portal>
+          </Fragment>
         )}
       </div>
     )}

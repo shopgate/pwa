@@ -20,6 +20,11 @@ const mapDispatchToProps = dispatch => ({
   changeSort: sortValue => dispatch(changeSort(sortValue)),
 });
 
+/**
+ * @param {*} next The next state props.
+ * @param {*} prev The previous state props.
+ * @return {boolean}
+ */
 const areStatePropsEqual = (next, prev) => {
   if (prev.sort !== next.sort) {
     return false;

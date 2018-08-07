@@ -1,8 +1,7 @@
-import event from '@shopgate/pwa-core/classes/Event';
-import { EVENT_PIPELINE_ERROR } from '@shopgate/pwa-core/constants/Pipeline';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
-import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipelineErrorDialog';
+import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
+import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
 
 /**
  * App subscriptions.
@@ -11,12 +10,12 @@ import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipeline
 export default function app(subscribe) {
   subscribe(appWillStart$, () => {
     // TODO: use constants for these pathnames
+    // TODO: move checkout route protectuion to checkout extension
     authRoutes.set('/checkout', '/login');
     authRoutes.set('/item/:productId/write_review', '/login');
   });
 
-  subscribe(appDidStart$, ({ dispatch }) => {
-    // Add event callbacks.
-    event.addCallback(EVENT_PIPELINE_ERROR, params => dispatch(pipelineErrorDialog(params)));
+  subscribe(routeWillEnter$, ({ events }) => {
+    events.emit(ToastProvider.FLUSH);
   });
 }

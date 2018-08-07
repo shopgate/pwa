@@ -11,14 +11,15 @@ import PaymentBar from './index';
 
 const mockedStore = configureStore();
 
+/**
+ * @param {Object} obj Some object.
+ * @returns {Object}
+ */
 function mockedSizeMe(obj) {
   return obj;
 }
-jest.mock('react-sizeme', () => {
-  return function () {
-    return mockedSizeMe;
-  };
-});
+
+jest.mock('react-sizeme', () => () => mockedSizeMe);
 
 /**
  * Mock the connect() methods of the relevant sub-components.
