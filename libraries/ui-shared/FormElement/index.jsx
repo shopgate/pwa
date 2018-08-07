@@ -15,6 +15,8 @@ class FormElement extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     errorText: PropTypes.node,
+    hasPlaceholder: PropTypes.bool,
+    hasUnderline: PropTypes.bool,
     hasValue: PropTypes.bool,
     isFocused: PropTypes.bool,
     label: PropTypes.node,
@@ -29,6 +31,8 @@ class FormElement extends Component {
     label: '',
     isFocused: false,
     hasValue: false,
+    hasPlaceholder: true,
+    hasUnderline: true,
   };
 
   /**
@@ -58,7 +62,11 @@ class FormElement extends Component {
   render() {
     return (
       <div className={`${style.formElement} ${this.props.className}`}>
-        <Placeholder visible={this.isPlaceholderVisible} placeholder={this.props.placeholder} />
+
+        {this.props.hasPlaceholder &&
+          <Placeholder visible={this.isPlaceholderVisible} placeholder={this.props.placeholder} />
+        }
+
         <Label
           htmlFor={this.props.htmlFor}
           label={this.props.label}
@@ -69,7 +77,9 @@ class FormElement extends Component {
 
         {this.props.children}
 
-        <Underline isFocused={this.props.isFocused} hasErrorMessage={this.hasErrorMessage} />
+        {this.props.hasUnderline &&
+          <Underline isFocused={this.props.isFocused} hasErrorMessage={this.hasErrorMessage} />
+        }
         <ErrorText errorText={this.props.errorText} />
       </div>
     );
