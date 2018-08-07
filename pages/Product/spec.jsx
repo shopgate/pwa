@@ -2,9 +2,10 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MockedView } from 'Components/View/mock';
 
-const Mock = function () {
-  return (<div />);
-};
+/**
+ * @returns {JSX}
+ */
+const Mock = () => <div />;
 const mock = Mock;
 const mockedView = MockedView;
 

@@ -41,21 +41,37 @@ const router = {
 
 const results = [
   [
-    { productId: 'foo', type: REQUEST_USER_REVIEW },
+    {
+      productId: 'foo',
+      type: REQUEST_USER_REVIEW,
+    },
   ],
   [
-    { title: 'titles.reviews', type: SET_VIEW_TITLE },
+    {
+      title: 'titles.reviews',
+      type: SET_VIEW_TITLE,
+    },
   ],
   [
-    { pathname: '/item/666f6f/write_review', type: SET_VIEW_LOADING },
+    {
+      pathname: '/item/666f6f/write_review',
+      type: SET_VIEW_LOADING,
+    },
   ],
   [
-    { pathname: '/item/666f6f/write_review', type: UNSET_VIEW_LOADING },
+    {
+      pathname: '/item/666f6f/write_review',
+      type: UNSET_VIEW_LOADING,
+    },
   ],
   [
     {
       options: {
-        action: null, actionOnClick: null, duration: 4000, id: 1, message: 'reviews.success_message',
+        action: null,
+        actionOnClick: null,
+        duration: 4000,
+        id: 1,
+        message: 'reviews.success_message',
       },
       type: CREATE_TOAST,
     },
@@ -171,7 +187,10 @@ describe('Reviews subscriptions', () => {
 
   describe('requestReviewSubmit$', () => {
     it('should set view loading', () => {
-      store = mockedStore({ router, view: { isLoading: {} } });
+      store = mockedStore({
+        router,
+        view: { isLoading: {} },
+      });
       submitReview[1](store);
       const actions = store.getActions();
       expect(actions).toEqual(results[2]);

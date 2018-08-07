@@ -124,16 +124,16 @@ class ProductContent extends Component {
         </Portal>
         <Portal name={portals.PRODUCT_HEADER_AFTER} />
 
-          {/* CHARACTERISTICS */}
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
-          <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-            <Characteristics
-              productId={this.props.baseProductId}
-              variantId={this.props.variantId}
-              selectedCharacteristics={this.state.characteristics}
-            />
-          </Portal>
-          <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
+        {/* CHARACTERISTICS */}
+        <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
+        <Portal name={portals.PRODUCT_VARIANT_SELECT}>
+          <Characteristics
+            productId={this.props.baseProductId}
+            variantId={this.props.variantId}
+            selectedCharacteristics={this.state.characteristics}
+          />
+        </Portal>
+        <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
 
         {/* OPTIONS */}
         <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />

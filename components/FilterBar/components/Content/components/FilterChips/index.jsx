@@ -5,8 +5,6 @@ import {
   FILTER_TYPE_RANGE,
   FILTER_TYPE_MULTISELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { RouteContext } from '@virtuous/react-conductor/Router';
 import Chip from '@shopgate/pwa-ui-shared/Chip';
 import ChipLayout from 'Components/ChipLayout';
 import connect from './connector';

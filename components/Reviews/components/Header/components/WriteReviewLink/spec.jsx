@@ -2,10 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
-import {
-  mockedStateWithAll,
-  mockedStateProductEmpty,
-} from '@shopgate/pwa-common-commerce/reviews/mock';
+import { mockedStateWithAll } from '@shopgate/pwa-common-commerce/reviews/mock';
 import WriteReviewLink from './index';
 
 const mockedStore = configureStore();

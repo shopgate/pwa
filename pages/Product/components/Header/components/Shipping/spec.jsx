@@ -18,13 +18,13 @@ describe('Shipping label', () => {
    * @param {Object} state The mocked redux state
    * @return {ReactWrapper}
    */
-  const createComponent = (state) => (mount(
-      <Provider store={mockedStore(state)}>
-        <Shipping productId="fakeId" />
-      </Provider>,
-      mockRenderOptions
-    ));
-  
+  const createComponent = state => (mount(
+    <Provider store={mockedStore(state)}>
+      <Shipping productId="fakeId" />
+    </Provider>,
+    mockRenderOptions
+  ));
+
   it('should render shipping price', () => {
     const component = createComponent(mockedStoreWithShippingPrice);
     expect(component).toMatchSnapshot();
