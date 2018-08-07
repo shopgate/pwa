@@ -101,7 +101,6 @@ class ProductCharacteristics extends Component {
     const { characteristics } = this.state;
     const { variants, variantId } = this.props;
 
-    // When there are no variants then we can assume that everything is set.
     if (!variants) {
       return true;
     }

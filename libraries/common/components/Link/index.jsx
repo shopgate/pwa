@@ -61,7 +61,6 @@ class Link extends Component {
     const { tag: Tag } = this.props;
     return (
       <Tag
-        aria-hidden
         className={`${styles} ${this.props.className}`}
         onClick={this.handleOpenLink}
         role="link"
