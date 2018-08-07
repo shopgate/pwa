@@ -1,6 +1,8 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 
+export const IMAGE_SPACE = 56;
+
 const gap = 20;
 
 const container = css({
@@ -17,7 +19,7 @@ const item = css({
 }).toString();
 
 const itemWithImage = css({
-  marginLeft: 56,
+  marginLeft: IMAGE_SPACE,
 }).toString();
 
 export default {
