@@ -225,4 +225,39 @@ describe('ErrorManager', () => {
     expect(callback2).toBeCalled();
     expect(errorManager.errorQueue.size).toEqual(0);
   });
+
+  it('should set a queue entry with meta data', () => {
+    const code = 'EUNKNOWN';
+    const replacementMessage = 'Replacement Message';
+    const message = 'Original Message';
+    const source = 'pipeline';
+
+    // Setup a replacement message for the error code.
+    errorManager.setMessage({
+      code,
+      source,
+      message: replacementMessage,
+    });
+
+    const callback = jest.fn();
+    emitter.addListener('pipeline', callback);
+
+    errorManager.queue({
+      message,
+      code,
+      source,
+    });
+
+    errorManager.dispatch();
+    expect(callback).toBeCalledWith({
+      id: `${source}-${DEFAULT_CONTEXT}-${code}`,
+      context: DEFAULT_CONTEXT,
+      message: replacementMessage,
+      code,
+      source,
+      meta: {
+        message,
+      },
+    });
+  });
 });

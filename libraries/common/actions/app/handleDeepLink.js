@@ -6,9 +6,9 @@ import handleLink from './handleLink';
  * @param {Object} [payload={}] The deep link event payload.
  * @return {Function} A redux thunk.
  */
-const handleDeepLink = (payload = {}) => (dispatch) => {
-  dispatch(handleLink(payload));
-  dispatch(openDeepLink(payload));
-};
-
-export default handleDeepLink;
+export default function handleDeepLink(payload = {}) {
+  return (dispatch) => {
+    dispatch(handleLink(payload));
+    dispatch(openDeepLink(payload));
+  };
+}

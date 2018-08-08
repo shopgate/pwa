@@ -1,17 +1,19 @@
+import persistedReducers from '../../collections/PersistedReducers';
 import {
   REQUEST_CLIENT_INFORMATION,
   RECEIVE_CLIENT_INFORMATION,
   ERROR_CLIENT_INFORMATION,
 } from '../../constants/ActionTypes';
 
+persistedReducers.set('client');
+
 /**
  * Stores all the client information.
- * This part of the store is stored in the localStorage!
  * @param {Object} [state] The current state.
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = {}, action) => {
+export default function clientReducer(state = {}, action) {
   switch (action.type) {
     case REQUEST_CLIENT_INFORMATION:
       return {
@@ -32,4 +34,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-};
+}

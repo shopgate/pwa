@@ -1,3 +1,4 @@
+import { CONDUCTOR_RESET } from '@virtuous/redux-conductor/constants';
 import { main$ } from './main';
 import {
   NAVIGATE,
@@ -36,3 +37,23 @@ export const routeWillLeave$ = main$
  */
 export const routeDidLeave$ = main$
   .filter(({ action }) => action.type === ROUTE_DID_LEAVE);
+
+  /**
+ * @type {Observable}
+ */
+export const routeDidChange$ = routeWillEnter$
+  .merge(routeDidEnter$)
+  .merge(routeWillLeave$)
+  .merge(routeDidLeave$);
+
+/**
+* @type {Observable}
+*/
+export const historyDidUpdate$ = routeDidEnter$.merge(routeDidLeave$);
+
+/**
+* @type {Observable}
+*/
+export const historyDidReset$ = main$
+  .filter(({ action }) => action.type === CONDUCTOR_RESET)
+  .zip(routeDidEnter$);

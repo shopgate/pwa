@@ -16,7 +16,6 @@ class Request {
   constructor(manager) {
     this.serial = null;
     this.callbackName = '';
-    this.finished = false;
     this.manager = manager || defaultRequestManager;
   }
 
@@ -33,7 +32,7 @@ class Request {
    */
   createSerial(serialKey) {
     if (!this.serial) {
-      this.serial = CryptoJs.MD5(`${serialKey}${Date.now()}`).toString();
+      this.serial = CryptoJs.MD5(`${serialKey}${Date.now() + Math.random()}`).toString();
     }
   }
 
@@ -51,13 +50,6 @@ class Request {
    */
   getEventCallbackName() {
     return this.callbackName;
-  }
-
-  /**
-   * Sets the finished flag to true.
-   */
-  setFinished() {
-    this.finished = true;
   }
 
   /**

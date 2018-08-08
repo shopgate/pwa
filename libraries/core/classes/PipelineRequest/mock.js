@@ -28,6 +28,7 @@ class MockedPipelineRequest {
     this.handleErrors = errorHandleTypes.ERROR_HANDLE_DEFAULT;
     this.errorBlacklist = [];
     this.process = processTypes.DEFAULT_PROCESSED;
+    this.timeout = undefined;
   }
 
   /**
@@ -37,6 +38,17 @@ class MockedPipelineRequest {
    */
   setInput(mockedInput = {}) {
     this.input = mockedInput;
+    return this;
+  }
+
+  /**
+   * Sets a timeout.
+   * @param {number} timeout Timeout.
+   * @returns {MockedPipelineRequest}
+   */
+  setTimeout(timeout) {
+    this.timeout = timeout;
+
     return this;
   }
 

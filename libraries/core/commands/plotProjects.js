@@ -4,7 +4,7 @@ import AppCommand from '../classes/AppCommand';
  * Enables the geofencing provider plotProjects
  * @param {string} token The public token that is needed to enable plot projects
  */
-export const plotProjectsEnable = (token) => {
+export function plotProjectsEnable(token) {
   const command = new AppCommand();
 
   command
@@ -13,16 +13,16 @@ export const plotProjectsEnable = (token) => {
     .dispatch({
       publicToken: token,
     });
-};
+}
 
 /**
  * Disables the geofencing provider plotProjects
  */
-export const plotProjectsDisable = () => {
+export function plotProjectsDisable() {
   const command = new AppCommand();
 
   command
     .setCommandName('plotProjectsDisable')
     .setLibVersion('18.0')
     .dispatch();
-};
+}
