@@ -40,21 +40,17 @@ class Checkbox extends Component {
         hasUnderline={false}
         hasPlaceholder={false}
       >
-        <Grid>
-          <Grid.Item grow={0}>
-            <UICheckbox
-              defaultChecked
-              name={name}
-              onCheck={onChange}
-              checkedClassName={className}
-              unCheckedClassName={className}
-            />
-          </Grid.Item>
-          <Grid.Item grow={1} className={style.label}>
-            <I18n.Text string={label} />
-          </Grid.Item>
-        </Grid>
-
+        <UICheckbox
+          defaultChecked
+          name={name}
+          onCheck={onChange}
+          checkedClassName={className}
+          unCheckedClassName={className}
+          labelPosition="right"
+          label={
+            <I18n.Text className={style.label} string={label} />
+          }
+        />
       </FormElement>
     );
   }
