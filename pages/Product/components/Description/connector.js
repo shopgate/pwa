@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { getProductDescription } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
