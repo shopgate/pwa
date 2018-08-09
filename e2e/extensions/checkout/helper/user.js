@@ -13,7 +13,7 @@ export function logOutUser() {
 
   cy.get(els.loginWelcomeText).then(($loginWelcomeText) => {
     if ($loginWelcomeText.text().includes('Hallo Dennis')) {
-      cy.get(els.logOutButtonNavDrawer)
+      cy.get(els.logOutButton)
         .wait(2000)
         .scrollIntoView()
         .should('be.visible')
@@ -36,11 +36,11 @@ export function logInUser() {
     .should('be.visible')
     .click();
   cy.wait(3000);
-  
+
   cy.get(els.navigationDrawerLoginButton)
     .should('be.visible')
     .click();
-  
+
     cy.get('@user').then((user) => {
       const userC = user;
 
@@ -53,5 +53,5 @@ export function logInUser() {
         .clear()
         .type(userC.password)
         .type('{enter}');
-    }); 
+    });
 }

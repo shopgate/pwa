@@ -13,7 +13,7 @@ export function logOutUser() {
 
   cy.get(els.loginWelcomeText).then(($loginWelcomeText) => {
     if ($loginWelcomeText.text().includes('Hallo Dennis')) {
-      cy.get(els.logOutButtonNavDrawer)
+      cy.get(els.logOutButton)
         .wait(2000)
         .scrollIntoView()
         .should('be.visible')

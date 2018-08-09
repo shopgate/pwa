@@ -29,7 +29,7 @@ export default {
   totalsComponentSpan: "[data-test-id='totalsComponent'] span",
   navigatorButton: "[data-test-id='Navigator'] [data-test-id='Button']",
   loginWelcomeText: "[data-test-id='NavDrawerLoginButton'] span",
-  logOutButtonNavDrawer: "[data-test-id='logoutButtonNavDrawer']",
+  logOutButton: "[data-test-id='logoutButton']",
   basicDialogOkButton: "[data-test-id='basicDialog'] [data-test-id='Button']",
   couponFieldInput: "[data-test-id='couponField'] input",
   basicDialogText: "[data-test-id='basicDialog'] span",
