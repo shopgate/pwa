@@ -107,7 +107,7 @@ describe('Native Checkout', () => {
   });
 
   it('should check for correct expected cart total', () => {
-    cy.get(els.totalComponentSpan)
+    cy.get(els.totalsComponentSpan)
       .contains('10,00')
       .should('be.visible');
       clearProductFromCart();
