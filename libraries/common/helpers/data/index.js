@@ -42,9 +42,13 @@ export const isExternal = url => (
  * @param {number} dimension.height Height in pixels.
  * @returns {string}
  */
-export const getActualImageSource = (src, { width, height }) => (
-  `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`
-);
+export const getActualImageSource = (src, { width, height }) => {
+  if (new URL(src).search) {
+    // Don't add any query string is it's already there.
+    return src;
+  }
+  return `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`;
+};
 
 /**
  * Finds the index of a property inside an array.

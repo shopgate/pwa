@@ -263,6 +263,30 @@ export const getProductImages = createSelector(
   }
 );
 
+export const getProductOptimizedImages = createSelector(
+  getCurrentProductId,
+  getCurrentBaseProductId,
+  getProductImagesState,
+  (productId, baseProductId, images) => {
+    let entry = images[productId];
+    const productImages = images[productId];
+
+    /**
+     * Check if there are any images.
+     * If not then default back to the base product's images.
+     */
+    if (!productImages || !productImages.optimizedImages || !productImages.optimizedImages.length) {
+      entry = images[baseProductId];
+    }
+
+    if (!entry || entry.isFetching || isUndefined(entry.optimizedImages)) {
+      return null;
+    }
+
+    return entry.optimizedImages;
+  }
+)
+
 /**
  * Retrieves the current product rating.
  * @param {Object} state The current application state.
