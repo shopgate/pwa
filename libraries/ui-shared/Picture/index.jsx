@@ -6,6 +6,7 @@ export const SourceSetType = PropTypes.shape({
   png: PropTypes.string.isRequired,
   webp: PropTypes.string,
   jpeg2000: PropTypes.string,
+  jpeg: PropTypes.string,
 });
 
 const favorTypes = ['webp', 'jpeg2000'];
@@ -15,12 +16,16 @@ const favorTypes = ['webp', 'jpeg2000'];
  * @param {Object} sources Sources.
  * @returns {JSX}
  */
-const SourceSet = ({sources}) => Object.keys(sources)
+const SourceSet = ({ sources }) => Object.keys(sources)
   // Push favorite formats on top
   .sort(((a, b) => favorTypes.includes(b)))
-  .map((type) => (
+  .map(type => (
     <source key={type} srcSet={sources[type]} type={`image/${type}`} />
   ));
+
+SourceSet.propTypes = {
+  sources: PropTypes.shape(SourceSetType).isRequired,
+};
 
 /**
  * Picture component
@@ -28,28 +33,43 @@ const SourceSet = ({sources}) => Object.keys(sources)
  * @param {SourceSetType} props.sources SourcesSet collection
  * @param {string} props.alt Alt attribute.
  * @param {bool} props.square Enforce square image.
+ * @param {string} props.testId Test id (for e2e tests).
+ * @param {string} props.imgClassName Img class name.
  * @returns {JSX}
  */
-const Picture = ({ sources, alt, square }) => {
-  return (
-    <div className={styles.getWrapperStyle(square)}>
-      <picture>
-        <SourceSet sources={sources} />
-        <img src={sources.jpeg} alt={alt} className={styles.getImageStyle(square)} />
-      </picture>
-    </div>
-  )
-};
+const Picture = ({
+  sources,
+  alt,
+  square,
+  testId,
+  imgClassName,
+}) => (
+  <div className={styles.getWrapperStyle(square)}>
+    <picture>
+      <SourceSet sources={sources} />
+      <img
+        src={sources.jpeg}
+        alt={alt}
+        className={styles.getImageStyle(imgClassName, square)}
+        data-test-id={testId}
+      />
+    </picture>
+  </div>
+);
 
 Picture.propTypes = {
   sources: SourceSetType.isRequired,
   alt: PropTypes.string,
+  imgClassName: PropTypes.string,
   square: PropTypes.bool,
+  testId: PropTypes.string,
 };
 
 Picture.defaultProps = {
   alt: '',
   square: false,
+  testId: null,
+  imgClassName: '',
 };
 
 export default Picture;

@@ -13,6 +13,8 @@ const squareImage = {
   position: 'absolute',
   top: 0,
   left: 0,
+  width: '100%',
+  maxHeight: '100%',
 };
 
 /**
@@ -30,15 +32,16 @@ const getWrapperStyle = (square) => {
 
 /**
  * Gets img style.
+ * @param {string} className Default class name.
  * @param {bool} square Image is square.
  * @returns {string}
  */
-const getImageStyle = (square) => {
+const getImageStyle = (className, square) => {
   if (!square) {
-    return '';
+    return className;
   }
 
-  return css(squareImage).toString();
+  return `${className} ${css(squareImage).toString()}`;
 };
 
 export default {
