@@ -24,6 +24,7 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .click()
       .type(2)
+      .wait(100)
       .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 398 currency: EUR"]')
@@ -31,6 +32,7 @@ describe('functional tests cart page', () => {
     cy.get(els.quantityPicker)
       .clear()
       .type(1)
+      .wait(100)
       .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 199 currency: EUR"]')
