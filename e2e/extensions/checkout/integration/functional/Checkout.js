@@ -34,7 +34,7 @@ describe('Native Checkout functional', () => {
       .should('be.visible')
       .click()
       .wait(2000);
-    cy.get(els.totalComponentSpan)
+    cy.get(els.totalsComponentSpan)
       .contains('-10')
       .scrollIntoView()
       .should('be.visible');
