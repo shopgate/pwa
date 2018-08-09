@@ -45,7 +45,7 @@ export const isExternal = url => (
 export const getActualImageSource = (src, { width, height }) => {
   if (new URL(src).search) {
     // Don't add any query string is it's already there.
-    return src;
+    //return src;
   }
   return `${src}?w=${width}&h=${height}&q=70&zc=resize&fillc=FFFFFF`;
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './style';
 
 export const SourceSetType = PropTypes.shape({
   png: PropTypes.string.isRequired,
@@ -21,22 +22,34 @@ const SourceSet = ({sources}) => Object.keys(sources)
     <source key={type} srcSet={sources[type]} type={`image/${type}`} />
   ));
 
-const Picture = ({ className, sources, alt }) => (
-  <picture>
-    <SourceSet sources={sources} />
-    <img src={sources.jpeg} alt={alt} className={className} />
-  </picture>
-);
+/**
+ * Picture component
+ * @param {Object} props Props.
+ * @param {SourceSetType} props.sources SourcesSet collection
+ * @param {string} props.alt Alt attribute.
+ * @param {bool} props.square Enforce square image.
+ * @returns {JSX}
+ */
+const Picture = ({ sources, alt, square }) => {
+  return (
+    <div className={styles.getWrapperStyle(square)}>
+      <picture>
+        <SourceSet sources={sources} />
+        <img src={sources.jpeg} alt={alt} className={styles.getImageStyle(square)} />
+      </picture>
+    </div>
+  )
+};
 
 Picture.propTypes = {
   sources: SourceSetType.isRequired,
   alt: PropTypes.string,
-  className: PropTypes.string,
+  square: PropTypes.bool,
 };
 
 Picture.defaultProps = {
   alt: '',
-  className: '',
+  square: false,
 };
 
 export default Picture;
