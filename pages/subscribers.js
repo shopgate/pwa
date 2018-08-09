@@ -13,11 +13,11 @@ import commerceReviews from '@shopgate/pwa-common-commerce/reviews/subscriptions
 import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 // PWA Tracking
 /* eslint-disable capitalized-comments */
-// import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
-// import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
+import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
+import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
 // import trackingProduct from '@shopgate/pwa-tracking/subscriptions/product';
 // import trackingUser from '@shopgate/pwa-tracking/subscriptions/user';
-// import trackingCart from '@shopgate/pwa-tracking/subscriptions/cart';
+import trackingCart from '@shopgate/pwa-tracking/subscriptions/cart';
 // import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
 // import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
 // import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
@@ -61,11 +61,11 @@ const subscriptions = [
   commerceSearch,
   // Tracking subscribers.
   /* eslint-disable capitalized-comments */
-  // trackingSetup,
-  // trackingPages,
+  trackingSetup,
+  trackingPages,
   // trackingProduct,
   // trackingUser,
-  // trackingCart,
+  trackingCart,
   // trackingCheckout,
   // trackingSearch,
   // trackingDeeplinkPush,
