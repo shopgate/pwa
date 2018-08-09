@@ -38,8 +38,10 @@ export const routeWillLeave$ = main$
 export const routeDidLeave$ = main$
   .filter(({ action }) => action.type === ROUTE_DID_LEAVE);
 
-  /**
+// TODO: fix or remove
+/**
  * @type {Observable}
+ * @deprecated use routeDidEnter$
  */
 export const routeDidChange$ = routeWillEnter$
   .merge(routeDidEnter$)

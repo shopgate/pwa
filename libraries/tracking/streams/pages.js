@@ -1,4 +1,4 @@
-import { routeDidChange$ } from '@shopgate/pwa-common/streams/router';
+import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
@@ -22,9 +22,10 @@ export const blacklistedPaths = [
 /**
  * Emits when one of the tracked paths is entered except some special one.
  */
-export const pagesAreReady$ = routeDidChange$
+export const pagesAreReady$ = routeDidEnter$
   .filter(() => isPWAVisible())
   .merge(pwaDidAppear$)
-  .filter(({ pathname }) => (
-    !blacklistedPaths.some(path => (!pathname ? false : pathname.startsWith(path)))
-  ));
+  .filter(({ action }) => {
+    const { pathname } = action.route;
+    return !blacklistedPaths.some(path => (!pathname ? false : pathname.startsWith(path)));
+  });
