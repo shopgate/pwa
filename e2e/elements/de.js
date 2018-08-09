@@ -81,7 +81,7 @@ export default {
   filterAttributeManufacturer1: "[data-test-id='filterAttributes'] [data-test-id='kungBirgers']",
   clearAllButton: "[data-test-id='clearAllButton']",
   applyFilterButton: "[data-test-id='applyFilterButton']",
-  logOutButtonNavDrawer: "[data-test-id='logoutButtonNavDrawer']",
+  logOutButton: "[data-test-id='logoutButtonNavDrawer']",
   reviewsTitle: "[data-test-id='title: Bewertungen']",
   basicDialogOkButton: "[data-test-id='basicDialog'] [data-test-id='Button']",
   writeReviewName: "[data-test-id='reviewForm'] input[id='author']",
