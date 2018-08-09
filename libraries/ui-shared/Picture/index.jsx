@@ -5,11 +5,11 @@ import styles from './style';
 export const SourceSetType = PropTypes.shape({
   png: PropTypes.string.isRequired,
   webp: PropTypes.string,
-  jpeg2000: PropTypes.string,
+  jp2: PropTypes.string,
   jpeg: PropTypes.string,
 });
 
-const favorTypes = ['webp', 'jpeg2000'];
+const favorTypes = ['webp', 'jp2'];
 
 /**
  * Source set.
