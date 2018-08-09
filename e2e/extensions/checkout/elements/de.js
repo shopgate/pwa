@@ -26,7 +26,7 @@ export default {
   expectedCartitemProductWithBasePrice1: "[data-test-id='cartItem: product with base price 1']",
   expectedCartItemQuanitity: "[data-test-id='quantity: 1']",
   expectedCartItemProductWithBasePrice1Price: "[data-test-id='minPrice: 0 price: 10 currency: EUR']",
-  totalComponentSpan: "[data-test-id='total'] span",
+  totalsComponentSpan: "[data-test-id='totalsComponent'] span",
   navigatorButton: "[data-test-id='Navigator'] [data-test-id='Button']",
   loginWelcomeText: "[data-test-id='NavDrawerLoginButton'] span",
   logOutButtonNavDrawer: "[data-test-id='logoutButtonNavDrawer']",
