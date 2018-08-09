@@ -18,16 +18,20 @@ describe('functional tests category page', () => {
   });
 
   it('check for sorting', () => {
-    cy.get(els.allProductCategory).first()
+    cy.get(els.allProductCategory)
+      .first()
       .scrollIntoView()
-      .click();
+      .click()
+      .wait(3000);
     cy.get(els.sortingDropDown)
+      .first()
       .click();
     cy.get(els.sortingAscButton)
       .click();
     cy.get(els.prodcutWithStrikePrice3GridPrice)
       .should('be.visible');
     cy.get(els.sortingDropDown)
+      .first()
       .click();
     cy.get(els.sortingDescButton)
       .click();
@@ -36,8 +40,7 @@ describe('functional tests category page', () => {
   });
 
   it('check for sorting reset', () => {
-    cy.get(els.backButton)
-      .click();
+    cy.go('back');
     cy.get(els.allProductCategory).first()
       .should('be.visible')
       .click();

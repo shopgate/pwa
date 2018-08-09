@@ -5,6 +5,7 @@ import els from '../elements/de';
  */
 export function logOutUser() {
   cy.visit('');
+  cy.reload();
 
   cy.get(els.navigatorButton)
     .should('be.visible')

@@ -16,7 +16,7 @@ export default {
   filterButton: "[data-test-id='filterBar'] [data-test-id='filterButton']",
   backButton: "[data-test-id='backButton']",
   searchButton: "[data-test-id='SearchButton']",
-  sortingDropDown: "[data-test-id='sorting']",
+  sortingDropDown: "[data-test-id='sorting'] button",
   viewSwitch: "[data-test-id='viewSwitch']",
   productWithManyProps4GridViewImage: "[data-test-id='productGrid'] img[alt='Product with many Properties - 4 -']",
   productWithManyProps4GridViewName: "[data-test-id='view: /category/3733'] [data-test-id='productGrid'] [data-test-id='Productname: Product with many Properties - 4 -']",
