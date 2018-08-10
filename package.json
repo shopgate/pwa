@@ -16,7 +16,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint"
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx}": "yarn run lint"
     }
   },
   "dependencies": {
@@ -80,6 +85,7 @@
     "eslint-plugin-import": "^2.7.0",
     "husky": "^1.0.0-rc.13",
     "jest": "^22.4.2",
+    "lint-staged": "^7.2.0",
     "nyc": "^11.8.0",
     "react-addons-test-utils": "^15.6.2",
     "react-transform-catch-errors": "^1.0.2",
