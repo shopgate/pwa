@@ -1,6 +1,7 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
+import { IMAGE_SPACE } from '../../style';
 
 const disabled = css({
   color: colors.shade5,
@@ -28,10 +29,18 @@ const grid = css({
   zIndex: 2,
 }).toString();
 
+const image = css({
+  alignSelf: 'flex-start',
+  flexShrink: 0,
+  margin: `0 ${variables.gap.big}px 0 -${IMAGE_SPACE}px`,
+  width: 40,
+}).toString();
+
 export default {
   disabled,
   selected,
   title,
   grid,
+  image,
 };
 

@@ -53,7 +53,6 @@ exports[`<List.Item /> should render with a link 1`] = `
             <div
               className="css-l3889c css-h7r55a"
             >
-              <div />
               <GridItem
                 className="css-10fxwvh"
                 component="div"
@@ -109,7 +108,6 @@ exports[`<List.Item /> should render with a right component 1`] = `
     <div
       className="css-l3889c css-h7r55a"
     >
-      <div />
       <GridItem
         className="css-10fxwvh"
         component="div"
@@ -151,7 +149,7 @@ exports[`<List.Item /> should render with a right component 1`] = `
 </Item>
 `;
 
-exports[`<List.Item /> should render with a title 1`] = `
+exports[`<List.Item /> should render with a title but no image 1`] = `
 <Item
   className={null}
   image={null}
@@ -171,7 +169,6 @@ exports[`<List.Item /> should render with a title 1`] = `
     <div
       className="css-l3889c css-h7r55a"
     >
-      <div />
       <GridItem
         className="css-10fxwvh"
         component="div"
@@ -224,7 +221,9 @@ exports[`<List.Item /> should render with an image 1`] = `
     <div
       className="css-l3889c css-h7r55a"
     >
-      <div>
+      <div
+        className="css-1mhrjzj"
+      >
         <img
           alt="Alternative text"
           src="url/to/image"
@@ -302,7 +301,6 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
           <div
             className="css-l3889c css-h7r55a"
           >
-            <div />
             <GridItem
               className="css-10fxwvh"
               component="div"
@@ -353,7 +351,6 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
     <div
       className="css-l3889c css-h7r55a"
     >
-      <div />
       <GridItem
         className="css-10fxwvh css-19uk9mv"
         component="div"
@@ -401,7 +398,6 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
     <div
       className="css-l3889c css-14bkd8f css-h7r55a"
     >
-      <div />
       <GridItem
         className="css-10fxwvh"
         component="div"
