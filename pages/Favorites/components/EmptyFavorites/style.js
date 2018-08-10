@@ -3,7 +3,7 @@ import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 const container = css({
-  background: colors.background,
+  background: colors.light,
   flexGrow: 1,
   padding: variables.gap.big,
   paddingBottom: variables.emptyPage.buttonVerticalGap,
