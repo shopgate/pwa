@@ -1,6 +1,6 @@
-/.cache-loader/
-/extensions/
-/public/
-/coverage/
-e2e/
-**/dist/
+.cache-loader
+extensions
+public
+coverage
+public
+config
