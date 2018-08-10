@@ -1,6 +1,6 @@
+node_modules
 .cache-loader
-extensions
-public
 coverage
-public
-config
+/extensions/
+/config/
+/public/
