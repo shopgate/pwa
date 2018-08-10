@@ -1,11 +1,22 @@
 import { css } from 'glamor';
 import colors from 'Styles/colors';
 import variables from 'Styles/variables';
+import { physicalPixelSize } from '@shopgate/pwa-common/helpers/style';
 
 const leftColumnWidth = 72;
 
 const item = css({
   padding: variables.gap.big,
+  position: 'relative',
+  ':after': {
+    content: '""',
+    position: 'absolute',
+    right: variables.gap.big,
+    bottom: 0,
+    left: variables.gap.big,
+    background: colors.dividers,
+    ...physicalPixelSize('height', 1),
+  },
 }).toString();
 
 const leftColumn = css({

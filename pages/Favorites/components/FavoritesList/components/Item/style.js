@@ -1,11 +1,23 @@
 import { css } from 'glamor';
+import { physicalPixelSize } from '@shopgate/pwa-common/helpers/style';
 import variables from 'Styles/variables';
+import colors from 'Styles/colors';
 
 const favItemTransitionDuration = 500;
 
 const row = css({
   padding: variables.gap.big,
   justifyContent: 'space-between',
+  position: 'relative',
+  ':after': {
+    content: '""',
+    position: 'absolute',
+    right: variables.gap.big,
+    bottom: 0,
+    left: variables.gap.big,
+    background: colors.dividers,
+    ...physicalPixelSize('height', 1),
+  },
 }).toString();
 
 const leftColumn = css({

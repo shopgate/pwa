@@ -65,9 +65,11 @@ class Item extends Component {
 
     return (
       <Grid className={gridStyles} component="div">
-        <div className={styles.image}>
-          {this.props.image}
-        </div>
+        {this.props.image && (
+          <div className={styles.image}>
+            {this.props.image}
+          </div>
+        )}
         <Grid.Item
           className={titleStyles}
           component="div"
