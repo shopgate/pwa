@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Slider from '@shopgate/pwa-common/components/Slider';
+import Slider, { UnwrappedSlider } from '@shopgate/pwa-common/components/Slider';
 import defaultStyles from './style';
 
 /**
@@ -8,12 +8,12 @@ import defaultStyles from './style';
  */
 class ImageSlider extends Component {
   static propTypes = {
-    ...Slider.propTypes,
+    ...UnwrappedSlider.propTypes,
     classNames: PropTypes.shape(),
   };
 
   static defaultProps = {
-    ...Slider.defaultProps,
+    ...UnwrappedSlider.defaultProps,
     classNames: {},
   };
 
