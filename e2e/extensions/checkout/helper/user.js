@@ -28,3 +28,30 @@ export function logOutUser() {
     }
   });
 }
+
+export function logInUser() {
+  cy.visit('');
+
+  cy.get(els.navigatorButton)
+    .should('be.visible')
+    .click();
+  cy.wait(3000);
+
+  cy.get(els.navigationDrawerLoginButton)
+    .should('be.visible')
+    .click();
+
+    cy.get('@user').then((user) => {
+      const userC = user;
+
+      cy.get(els.loginPageEmailInput)
+        .should('be.visible')
+        .clear()
+        .type(userC.username);
+      cy.get(els.loginPagePasswordInput)
+        .should('be.visible')
+        .clear()
+        .type(userC.password)
+        .type('{enter}');
+    });
+}
