@@ -111,6 +111,9 @@ e2e-gmd:
 e2e-ios11:
 		cd themes/ios11 && yarn run e2e
 
+e2e-checkout:
+		cd themes/gmd && yarn run e2e:checkout
+
 # DEFINITIONS
 
 define prepare-release
