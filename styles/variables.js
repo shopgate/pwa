@@ -43,7 +43,7 @@ export default {
     height: 49,
   },
   borderRadius: {
-    default: 11
+    default: 11,
   },
   ...variables,
 };

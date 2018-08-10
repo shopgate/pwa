@@ -27,7 +27,7 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
             products={Array []}
           >
             <div
-              className="css-4wo01b"
+              className="css-11v28hy"
               data-test-id="emptyFavComponent"
             >
               <div

@@ -1,5 +1,5 @@
 const materialShadow = 'rgba(0, 0, 0, .117647) 0 1px 6px, rgba(0, 0, 0, .117647) 0 1px 4px';
-const colors =  {
+const colors = {
   background: '#f8f8f8',
   light: '#fff',
   dark: '#000',

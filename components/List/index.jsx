@@ -15,11 +15,13 @@ class List extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
+    hasImages: PropTypes.bool,
   };
 
   static defaultProps = {
     children: null,
     className: '',
+    hasImages: false,
   };
 
   /**
@@ -27,7 +29,7 @@ class List extends Component {
    * @returns {JSX}
    */
   render() {
-    const { className, children } = this.props;
+    const { className, children, hasImages } = this.props;
 
     if (!React.Children.count(children)) {
       return null;
@@ -45,6 +47,7 @@ class List extends Component {
 
           return (
             <BaseListItem
+              className={hasImages ? styles.itemWithImage : null}
               isSelected={child.props.isSelected}
               key={key}
             >

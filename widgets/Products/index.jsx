@@ -101,7 +101,7 @@ class ProductsWidget extends Component {
     };
 
     getProducts(queryType, queryParams, options, id);
-  }
+  };
 
   /**
    * Determines whether or not we already have all products.

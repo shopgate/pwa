@@ -34,8 +34,7 @@ const content = css({
     margin: '-.35em',
     padding: '.35em',
     position: 'relative',
-    zIndex: 1,
-  }
+  },
 }).toString();
 
 const placeholder = css({
