@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/theme-gmd",
-  "version": "5.6.0-beta.10",
+  "version": "5.6.0",
   "description": "Google Material Design theme for the Shopgate Connect PWA.",
   "repository": "shopgate/theme-gmd",
   "bugs": "https://github.com/shopgate/theme-gmd/issues",
@@ -12,7 +12,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "e2e": "cypress open -P ./e2e"
+    "e2e": "cypress open -P ./e2e",
+    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout"
   },
   "lint-staged": {
     "concurrent": false,
@@ -24,15 +25,15 @@
     "precommit"
   ],
   "dependencies": {
-    "@shopgate/pwa-common": "5.6.0-beta.10",
-    "@shopgate/pwa-common-commerce": "5.6.0-beta.10",
-    "@shopgate/pwa-core": "5.6.0-beta.10",
-    "@shopgate/pwa-tracking": "5.6.0-beta.10",
-    "@shopgate/pwa-ui-material": "5.6.0-beta.10",
-    "@shopgate/pwa-ui-shared": "5.6.0-beta.10",
-    "@shopgate/pwa-webcheckout-shopify": "5.6.0-beta.10",
+    "@shopgate/pwa-common": "5.6.0",
+    "@shopgate/pwa-common-commerce": "5.6.0",
+    "@shopgate/pwa-core": "5.6.0",
+    "@shopgate/pwa-tracking": "5.6.0",
+    "@shopgate/pwa-ui-material": "5.6.0",
+    "@shopgate/pwa-ui-shared": "5.6.0",
+    "@shopgate/pwa-webcheckout-shopify": "5.6.0",
     "@shopgate/react-hammerjs": "^0.5.3",
-    "@shopgate/tracking-core": "5.6.0-beta.10",
+    "@shopgate/tracking-core": "5.6.0",
     "babel-core": "^6.26.0",
     "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-lodash": "^3.3.2",
@@ -70,9 +71,9 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "5.6.0-beta.10",
-    "@shopgate/pwa-e2e-test": "5.6.0-beta.10",
-    "@shopgate/pwa-unit-test": "5.6.0-beta.10",
+    "@shopgate/eslint-config": "5.6.0",
+    "@shopgate/pwa-e2e-test": "5.6.0",
+    "@shopgate/pwa-unit-test": "5.6.0",
     "coveralls": "^3.0.0",
     "cypress": "^2.1.0",
     "eslint": "^4.17.0",
