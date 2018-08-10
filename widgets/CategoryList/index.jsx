@@ -56,13 +56,15 @@ class CategoryListWidget extends Component {
     return (
       <div className={styles.container} data-test-id="categoryList">
         {(settings.headline) ? <h3 className={styles.headline}>{settings.headline}</h3> : null}
-        <List>
+        <List hasImages={settings.showImages}>
           {items.map((item) => {
             // We have to decode the link before using it.
             const link = `/category/${bin2hex(item.id)}`;
 
             // Only show an avatar if the setting `showImages` is true.
-            const Avatar = (settings.showImages) ? <Image src={item.imageUrl} /> : null;
+            const Avatar = settings.showImages && item.imageUrl ? (
+              <Image src={item.imageUrl} />
+              ) : null;
 
             return (
               <List.Item
