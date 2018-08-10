@@ -112,7 +112,7 @@ class View extends Component {
    */
   setRef = (ref) => {
     this.element = ref;
-  }
+  };
 
   /**
    * Handles a keyboard change event.
@@ -124,7 +124,7 @@ class View extends Component {
     this.setState({
       keyboardHeight: height,
     });
-  }
+  };
 
   /**
    * Handles the scroll event of this component's element.
@@ -143,16 +143,16 @@ class View extends Component {
 
   /**
    * Handles the swipe down gesture.
-   * @param {Object} event The event object.
+   * @param {Object} e The event object.
    * @param {number} x The change on the x axis.
    * @param {number} y The change on the y axis.
    * @param {boolean} isFlick Whether this is a flick or swipe.
    * @param {number} velocity The velocity of the gesture.
    */
-  handleSwipe = (event, x, y, isFlick, velocity) => {
+  handleSwipe = (e, x, y, isFlick, velocity) => {
     const swipeEvent = new CustomEvent('swipe', {
       detail: {
-        event,
+        event: e,
         x,
         y,
         isFlick,

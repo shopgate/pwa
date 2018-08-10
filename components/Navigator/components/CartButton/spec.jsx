@@ -12,7 +12,9 @@ jest.mock('./connector', () => obj => obj);
 
 describe('<CartButton />', () => {
   it('should not be visible with prop visible set to false', () => {
-    const wrapper = shallow(<CartButton cartProductCount={0} visible={false} activeCartRoute={false} />);
+    const wrapper = shallow((
+      <CartButton cartProductCount={0} visible={false} activeCartRoute={false} />
+    ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('0');

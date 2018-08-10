@@ -25,7 +25,7 @@ class BackButton extends PureComponent {
   handleClick = (event) => {
     event.preventDefault();
     this.props.goBackHistory();
-  }
+  };
 
   /**
    * Renders the component.

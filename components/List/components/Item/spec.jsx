@@ -7,10 +7,11 @@ import List from '../../index';
 describe('<List.Item />', () => {
   const title = 'My Title';
 
-  it('should render with a title', () => {
+  it('should render with a title but no image', () => {
     const wrapper = mount(<List.Item title={title} />);
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('img').exists()).toBeFalsy();
   });
 
   it('should render with an image', () => {
@@ -19,7 +20,7 @@ describe('<List.Item />', () => {
     const wrapper = mount(<List.Item title={title} image={image} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').length).toEqual(1);
+    expect(wrapper.find('img').exists()).toBeTruthy();
   });
 
   it('should render with a right component', () => {
@@ -38,21 +39,21 @@ describe('<List.Item />', () => {
     const wrapper = mount(<List.Item title={title} isSelected />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Glow).length).toEqual(0);
+    expect(wrapper.find(Glow).exists()).toBeFalsy();
   });
 
   it('should render without a Glow when disabled', () => {
     const wrapper = mount(<List.Item title={title} isDisabled />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Glow).length).toEqual(0);
+    expect(wrapper.find(Glow).exists()).toBeFalsy();
   });
 
   it('should render with a link', () => {
     const wrapper = mount(<List.Item title={title} link="url/to/somewhere" />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Link).length).toEqual(1);
+    expect(wrapper.find(Link).exists()).toBeTruthy();
   });
 
   it('should render with an onClick element', () => {
