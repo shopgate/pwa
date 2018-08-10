@@ -450,8 +450,8 @@ export const getProductProperties = createSelector(
  */
 export const getProductMetadata = createSelector(
   getProductById,
-  // skip product, if not found or return null if no metadata is set
-  product => product && product.productData.metadata || null
+  // Skip product, if not found or return null if no metadata is set
+  product => (product && product.productData.metadata) || null
 );
 
 /**
