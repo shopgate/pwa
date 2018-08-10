@@ -123,7 +123,7 @@ class ProductSlider extends Component {
       <div className={styles.slider}>
         {this.renderHeadline()}
         <Slider
-          autoPlay={sliderSettings.autoPlay}
+          autoPlay={sliderSettings.autostart}
           loop={false}
           indicators={false}
           controls={false}
