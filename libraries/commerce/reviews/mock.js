@@ -4,8 +4,9 @@ const hash = '{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","pro
 
 /**
  * Get a reviews state.
- * @param {Array} ids Fake review ids
- * @return {{reviewsByHash: {}}}
+ * @param {Array} ids Fake review IDs.
+ * @param {string} _hash The review hash.
+ * @return {Object}
  */
 const reviewsState = (ids = [1], _hash = hash) => ({
   reviewsByHash: {
@@ -158,8 +159,12 @@ const mockedStateProductEmpty = {
   },
 };
 
+/**
+ * @param {string} id The productID.
+ * @return {Object}
+ */
 const getReviewsStateForId = (id) => {
-  const hash = `{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","productId":"${id}"}`;
+  const filterHash = `{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","productId":"${id}"}`;
 
   return {
     reviews: {
@@ -180,10 +185,10 @@ const getReviewsStateForId = (id) => {
           totalReviewCount: 4,
         },
       },
-      ...reviewsState([1, 2, 3, 4], hash),
-    }
-  }
-}
+      ...reviewsState([1, 2, 3, 4], filterHash),
+    },
+  };
+};
 
 /**
  * Sets up mocks.
@@ -193,7 +198,7 @@ const getReviewsStateForId = (id) => {
 const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
     get hasReviews() { return mockReviewsAvailable; },
-    get showWriteReview() { return true},
+    get showWriteReview() { return true; },
     themeConfig: mockedConfig,
   }));
 };
