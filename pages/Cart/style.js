@@ -5,7 +5,7 @@ import variables from 'Styles/variables';
 export const cartItemTransitionDuration = 300;
 
 const container = css({
-  background: colors.background,
+  background: colors.light,
   flexGrow: 1,
 }).toString();
 
