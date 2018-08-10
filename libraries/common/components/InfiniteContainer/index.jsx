@@ -121,8 +121,8 @@ class InfiniteContainer extends Component {
     if (!this.domScrollContainer) {
       this.domScrollContainer = getScrollParent(this.domElement);
 
-      // Make sure that there are still items left to be received.
-      if (this.needsToReceiveItems()) {
+      // Make sure that there are still items left to be received/rendered.
+      if (!this.allItemsAreRendered()) {
         this.bindEvents();
       }
     }
