@@ -8,9 +8,6 @@ module.exports = {
     mocha: true,
     'cypress/globals': true,
   },
-  plugins: [
-    'cypress',
-  ],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
@@ -19,7 +16,7 @@ module.exports = {
     },
   },
   rules: {
-    'capitalized-comments': ['error', 'always'],
+    'capitalized-comments': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
       objects: 'always-multiline',
