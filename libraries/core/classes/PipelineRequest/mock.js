@@ -1,6 +1,7 @@
 import { logger } from '../../helpers';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
 import * as processTypes from '../../constants/ProcessTypes';
+import PipelineRequest from './index';
 
 /**
  * Mocked PipelineRequest.
@@ -8,7 +9,7 @@ import * as processTypes from '../../constants/ProcessTypes';
  *
  * For more information and usage examples, please check the README.
  */
-class MockedPipelineRequest {
+class MockedPipelineRequest extends PipelineRequest {
   /**
    * Getter for mockedDispatchResolver which is an additional helper function for custom, mock-only
    * `dispatch()` resolver.
@@ -23,6 +24,8 @@ class MockedPipelineRequest {
    * @param {string} name The pipeline name.
    */
   constructor(name) {
+    super(name);
+
     this.name = name;
     this.input = {};
     this.handleErrors = errorHandleTypes.ERROR_HANDLE_DEFAULT;
