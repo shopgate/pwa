@@ -1,0 +1,6 @@
+{
+    "integrationFolder": "./integration",
+    "fixturesFolder": "../../../../../node_modules/@shopgate/pwa-e2e-test/fixtures",
+    "pluginsFile": "../../../../../node_modules/@shopgate/pwa-e2e-test/plugins/",
+    "supportFile": "../../../../../node_modules/@shopgate/pwa-e2e-test/support/"
+}
