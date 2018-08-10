@@ -6,7 +6,11 @@ module.exports = {
     node: true,
     jest: true,
     mocha: true,
+    'cypress/globals': true,
   },
+  plugins: [
+    'cypress',
+  ],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
