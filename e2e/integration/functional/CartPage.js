@@ -14,16 +14,17 @@ describe('functional tests cart page', () => {
     cy.get(els.productWithManyProps4GridViewName)
       .should('be.visible')
       .click();
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .should('be.visible')
       .click();
     cy.get(els.cartButton)
       .should('be.visible')
       .click();
-    cy.get(els.quantityPicker)
+      cy.get(els.quantityPicker)
       .should('be.visible')
       .click()
       .type(2)
+      .wait(100)
       .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 398 currency: EUR"]')
@@ -31,6 +32,7 @@ describe('functional tests cart page', () => {
     cy.get(els.quantityPicker)
       .clear()
       .type(1)
+      .wait(100)
       .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 199 currency: EUR"]')
@@ -49,7 +51,7 @@ describe('functional tests cart page', () => {
     cy.get(els.productWithVeryLongName5Name)
       .last()
       .click();
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .click();
     cy.get(els.cartButton)
       .click();

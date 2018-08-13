@@ -49,7 +49,7 @@ describe('IOS11Test productPage', () => {
   });
 
   it('should check for addToCartButton', () => {
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .should('be.visible');
   });
 

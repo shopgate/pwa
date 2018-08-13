@@ -2,7 +2,7 @@
 
 import els from '../../elements/de';
 
-describe('functional tests more page', () => {
+describe('functional tests category page', () => {
   it('should check for back button', () => {
     cy.visit('');
 
