@@ -6,7 +6,8 @@ import {
 
 /**
  * Maps state to props.
- *
+ * @param {Object} state State.
+ * @returns {Object}
  */
 const mapStateToProps = state => ({
   products: getFavorites(state),
