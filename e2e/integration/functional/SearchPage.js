@@ -11,6 +11,7 @@ describe('function tests search page', () => {
       .click();
     cy.wait(2000);
     cy.get(els.searchInput)
+      .click()
       .should('be.visible')
       .type('product with many properties -4- {enter}');
     cy.get(els.productWithManyProps4SearchResult)

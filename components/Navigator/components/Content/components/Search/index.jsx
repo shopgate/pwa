@@ -92,6 +92,11 @@ class Search extends Component {
    * Updates the search query.
    */
   updateQuery = () => {
+    // Input element can be null.
+    if (!this.inputElement) {
+      return;
+    }
+
     const { value } = this.inputElement;
     this.props.setSearchPhrase(value);
   };
