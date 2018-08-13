@@ -26,6 +26,7 @@ describe('functional tests cart page', () => {
       .should('be.visible')
       .click()
       .type(2)
+      .wait(100)
       .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 398 currency: EUR"]')
@@ -33,6 +34,8 @@ describe('functional tests cart page', () => {
     cy.get(els.quantityPicker)
       .clear()
       .type(1)
+      .wait(100)
+      .focus()
       .blur();
     cy.get('[data-test-id="minPrice: 0 price: 199 currency: EUR"]')
       .should('be.visible');
@@ -45,10 +48,12 @@ describe('functional tests cart page', () => {
       .scrollIntoView()
       .click();
     cy.get(els.productsWithLongNamesCat)
+      .should('be.visible')
       .last()
       .click();
     cy.get(els.productWithVeryLongName5Name)
       .last()
+      .should('be.visible')
       .click();
     cy.get(els.addToCartButton)
       .click();

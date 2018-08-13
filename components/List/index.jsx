@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import BaseList from '@shopgate/pwa-common/components/List';
 import BaseListItem from '@shopgate/pwa-common/components/List/components/Item';
 import Item from './components/Item';
@@ -13,10 +14,12 @@ class List extends Component {
 
   static propTypes = {
     children: PropTypes.node,
+    hasImages: PropTypes.bool,
   };
 
   static defaultProps = {
     children: null,
+    hasImages: false,
   };
 
   /**
@@ -24,7 +27,7 @@ class List extends Component {
    * @returns {JSX}
    */
   render() {
-    const { children } = this.props;
+    const { children, hasImages } = this.props;
 
     if (!React.Children.count(children)) {
       return null;
@@ -43,15 +46,19 @@ class List extends Component {
           // Whether or not this child is the last.
           const isLast = (index === children.length - 1);
 
-          let classes = styles.item;
+          const classes = [styles.item];
 
           if (!isLast) {
-            classes += ` ${styles.itemNotLast}`;
+            classes.push(styles.itemNotLast);
+          }
+
+          if (hasImages) {
+            classes.push(styles.itemWithImage);
           }
 
           return (
             <BaseListItem
-              className={classes}
+              className={classNames(classes)}
               isSelected={isSelected}
               key={key}
             >
