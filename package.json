@@ -1,6 +1,12 @@
 {
   "name": "@shopgate/pwa",
   "private": true,
+  "workspaces": [
+    "extensions/*/frontend",
+    "libraries/*",
+    "themes/*",
+    "utils/*"
+  ],
   "scripts": {
     "setup": "sgconnect init && lerna bootstrap",
     "clean": "make clean",
@@ -8,31 +14,34 @@
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore  --ext .js --ext .jsx .",
-    "precommit": "lint-staged",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
     "e2e:ios11": "make e2e-ios11",
+    "e2e:checkout": "make e2e-checkout",
     "start-cloud": "sgconnect backend start & sgconnect frontend start"
   },
-  "pre-commit": [
-    "precommit"
-  ],
-  "lint-staged": {
-    "*.js": "yarn run lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
-  "workspaces": [
-    "extensions/*/frontend",
-    "libraries/*",
-    "themes/*",
-    "utils/*"
-  ],
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx}": "yarn run lint"
+    },
+    "ignore": [
+      "**/themes/**/*",
+      "**/extensions/**/*"
+    ]
+  },
   "devDependencies": {
     "@sourceallies/coveralls-merge": "^1.0.0",
     "coveralls": "^3.0.1",
     "eslint": "^4.17.0",
+    "husky": "^1.0.0-rc.13",
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.2.0",
     "uver": "^1.1.0",
     "why-did-you-update": "^0.1.1",
     "yargs": "^11.0.0"
