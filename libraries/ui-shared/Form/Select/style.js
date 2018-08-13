@@ -1,7 +1,7 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const select = css({
+  appearance: 'none',
   position: 'relative',
   padding: 0,
   width: '100%',
