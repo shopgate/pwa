@@ -227,14 +227,13 @@
     "@virtuous/conductor-events" "1.0.0-beta.29"
     "@virtuous/conductor-helpers" "1.0.0-beta.29"
 
-"@virtuous/redux-persister@1.1.0-beta.3":
-  version "1.1.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.3.tgz#b214b9dabbc541fd3594086fe6165037edfdd465"
+"@virtuous/redux-persister@1.1.0-beta.5":
+  version "1.1.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.5.tgz#907d5a082521e3919770085f9f5726b6b80f4af0"
   dependencies:
     "@virtuous/logger" "^1.0.0"
     babel-plugin-lodash "^3.3.4"
     babel-plugin-minify-mangle-names "^0.4.3"
-    greenlet "^1.0.1"
     lodash "^4.17.10"
 
 JSONStream@^1.0.4:
@@ -3675,10 +3674,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
-
-greenlet@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/greenlet/-/greenlet-1.0.1.tgz#5d2708dc75bda084ee06d27ebb207671cbf202be"
 
 growl@1.9.2:
   version "1.9.2"
