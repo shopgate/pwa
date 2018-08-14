@@ -35,8 +35,8 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
-const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
+const Pages = ({ store }) => (
+  <App locale={locale} store={store}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{ View }}>
         <ToastProvider>
