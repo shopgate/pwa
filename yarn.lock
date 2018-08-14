@@ -227,9 +227,9 @@
     "@virtuous/conductor-events" "1.0.0-beta.29"
     "@virtuous/conductor-helpers" "1.0.0-beta.29"
 
-"@virtuous/redux-persister@1.1.0-beta.3":
-  version "1.1.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.3.tgz#b214b9dabbc541fd3594086fe6165037edfdd465"
+"@virtuous/redux-persister@1.1.0-beta.4":
+  version "1.1.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.4.tgz#59322ac86b089adb85385dd13da2d5bb07bda634"
   dependencies:
     "@virtuous/logger" "^1.0.0"
     babel-plugin-lodash "^3.3.4"

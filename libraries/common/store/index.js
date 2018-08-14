@@ -23,20 +23,22 @@ if (window.localStorage) {
 /**
  * Configures the redux store with all it's middleware and enhancers.
  * @param {Function} reducers The reducers from the theme.
- * @param {Function} Worker The web worker.
+ * @param {WebWorker} worker The web worker.
  * @return {Object} The redux store.
  */
-const configureStore = (reducers, Worker) => createStore(
-  reducers, // The reducers.
-  initialState,
-  composeWithDevTools(
-    applyMiddleware(thunk, streams, logger),
-    applyWorker(new Worker()),
-    persistState({
-      key: storeKey,
-      paths: persistedReducers.getAll(),
-    })
-  )
-);
+export function configureStore(reducers, worker) {
+  return createStore(
+    reducers,
+    initialState,
+    composeWithDevTools(
+      applyMiddleware(thunk, streams, logger),
+      applyWorker(worker),
+      persistState({
+        key: storeKey,
+        paths: persistedReducers.getAll(),
+      })
+    )
+  );
+}
 
 export default configureStore;
