@@ -81,7 +81,7 @@ export default {
   clearAllButton: "[data-test-id='clearAllButton']",
   applyFilterButton: "[data-test-id='applyFilterButton']",
   logOutButton: "[data-test-id='logoutButtonNavDrawer']",
-  reviewsTitle: "[data-test-id='title: Bewertungen']",
+  reviewsTitle: "[data-test-id='title: titles.reviews']",
   basicDialogOkButton: "[data-test-id='basicDialog'] [data-test-id='Button']",
   writeReviewName: "[data-test-id='reviewForm'] input[id='author']",
   loginWelcomeText: "[data-test-id='NavDrawerLoginButton'] div",
