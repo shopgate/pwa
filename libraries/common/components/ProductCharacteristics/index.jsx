@@ -44,12 +44,21 @@ class ProductCharacteristics extends Component {
   }
 
   /**
+   * Initializes refs and characteristics when variants are already present within the props.
+   */
+  componentWillMount() {
+    if (this.props.variants) {
+      this.updateRefs(this.props);
+    }
+  }
+
+  /**
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
     if (!this.props.variants && nextProps.variants) {
-      this.setCharacterics(nextProps);
-      this.setRefs(nextProps);
+      // Initialize refs and characteristics when the variants prop was updated with a valid value.
+      this.updateRefs(nextProps);
     }
   }
 
@@ -74,6 +83,15 @@ class ProductCharacteristics extends Component {
     if (result && result.characteristics) {
       this.setState({ characteristics: result.characteristics });
     }
+  }
+
+  /**
+   * Initializes refs and characteristics.
+   * @param {Object} props Component props.
+   */
+  updateRefs(props) {
+    this.setCharacterics(props);
+    this.setRefs(props);
   }
 
   /**

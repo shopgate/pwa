@@ -41,7 +41,17 @@ const getVariants = createSelector(
  * @param {Object} props The current component props.
  * @return {string} The id of the current product.
  */
-export const getCurrentProductId = (state, props) => (props ? props.productId : null);
+export const getCurrentProductId = (state, props) => {
+  if (!props) {
+    return null;
+  }
+
+  if (props.variantId) {
+    return props.variantId;
+  }
+
+  return props.productId;
+};
 
 /**
  * Gets the product id from the current history state pathname.
@@ -531,7 +541,9 @@ export const isBaseProduct = createSelector(
       return null;
     }
 
-    return productData.baseProductId === null;
+    const hasVariants = productData.flags && productData.flags.hasVariants;
+
+    return !(productData.baseProductId !== null || hasVariants === false);
   }
 );
 
@@ -642,6 +654,10 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
   getProductVariants,
   (state, props) => props.characteristics,
   (variants, characteristics) => {
+    if (!variants) {
+      return null;
+    }
+
     const found = variants.products.filter(product => (
       isEqual(product.characteristics, characteristics)
     ));

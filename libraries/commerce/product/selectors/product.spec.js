@@ -27,9 +27,6 @@ describe('Product selectors', () => {
 
     let mockedState = {
       product: {
-        currentProduct: {
-          productId: 'product1',
-        },
         propertiesByProductId: {
           product1: {
             isFetching: false,
@@ -53,7 +50,7 @@ describe('Product selectors', () => {
         properties: [property1.label],
       };
 
-      const properties = getProductProperties(mockedState);
+      const properties = getProductProperties(mockedState, { productId: 'product1' });
       expect(properties.length).toEqual(1);
       expect(properties[0].label).toEqual(property1.label);
       expect(properties[0].label).not.toEqual(property2.label);
@@ -64,7 +61,7 @@ describe('Product selectors', () => {
         type: PROPERTIES_FILTER_BLACKLIST,
         properties: [property1.label],
       };
-      const properties = getProductProperties(mockedState);
+      const properties = getProductProperties(mockedState, { productId: 'product1' });
       expect(properties.length).toEqual(1);
       expect(properties[0].label).not.toEqual(property1.label);
       expect(properties[0].label).toEqual(property2.label);
@@ -76,7 +73,7 @@ describe('Product selectors', () => {
         properties: [property1.label],
       };
 
-      const properties = getProductProperties(mockedState);
+      const properties = getProductProperties(mockedState, { productId: 'product1' });
       expect(properties.length).toEqual(2);
       expect(properties).toEqual([
         property1,
@@ -87,27 +84,29 @@ describe('Product selectors', () => {
     it('should not filter when no config is set', () => {
       mockedConfig = null;
 
-      const properties = getProductProperties(mockedState);
+      const properties = getProductProperties(mockedState, { productId: 'product1' });
       expect(properties.length).toEqual(2);
       expect(properties).toEqual([
         property1,
         property2,
       ]);
     });
+
     it('should filter all when whitelist is empty array', () => {
       mockedConfig = {
         type: PROPERTIES_FILTER_WHITELIST,
         properties: [],
       };
-      const properties = getProductProperties(mockedState);
+      const properties = getProductProperties(mockedState, { productId: 'product1' });
       expect(properties.length).toEqual(0);
     });
+
     it('should pass all when blacklist is empty array', () => {
       mockedConfig = {
         type: PROPERTIES_FILTER_BLACKLIST,
         properties: [],
       };
-      const properties = getProductProperties(mockedState);
+      const properties = getProductProperties(mockedState, { productId: 'product1' });
       expect(properties.length).toEqual(2);
     });
   });
@@ -120,6 +119,9 @@ describe('Product selectors', () => {
             productData: {
               baseProductId: null,
               id: 'product_1',
+              flags: {
+                hasVariants: true,
+              },
             },
           },
           product_2: {
@@ -140,20 +142,21 @@ describe('Product selectors', () => {
             isFetching: false,
             productData: {
               baseProductId: null,
+              id: 'product_4',
               flags: {
                 hasVariants: false,
               },
-              id: 'product_4',
             },
           },
         },
       },
     };
+
     it('should indicate base product', () => {
-      expect(isBaseProduct(mockedBaseProductState, 'product_1')).toBe(true);
-      expect(isBaseProduct(mockedBaseProductState, 'product_2')).toBe(false);
-      expect(isBaseProduct(mockedBaseProductState, 'product_3')).toBe(null);
-      expect(isBaseProduct(mockedBaseProductState, 'product_4')).toBe(false);
+      expect(isBaseProduct(mockedBaseProductState, { productId: 'product_1' })).toBe(true);
+      expect(isBaseProduct(mockedBaseProductState, { productId: 'product_2' })).toBe(false);
+      expect(isBaseProduct(mockedBaseProductState, { productId: 'product_3' })).toBe(null);
+      expect(isBaseProduct(mockedBaseProductState, { productId: 'product_4' })).toBe(false);
     });
   });
 });
