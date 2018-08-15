@@ -5,6 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import redirects from '../collections/Redirects';
 import { navigate } from '../action-creators';
 import { historyPop, historyReplace } from '../actions/router';
 import * as handler from './helpers/handleLinks';
@@ -39,6 +40,13 @@ export default function router(subscribe) {
     // Remove trailing slashes from the location.
     if (location && location.length > 1 && location.endsWith('/')) {
       location = location.slice(0, -1);
+    }
+
+    // Check for a redirect url and change location if one is found.
+    const redirect = redirects.get(location);
+
+    if (redirect) {
+      location = redirect;
     }
 
     // Route authentication.
