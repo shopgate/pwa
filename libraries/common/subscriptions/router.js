@@ -36,6 +36,11 @@ export default function router(subscribe) {
     const state = getState();
     let { pathname: location } = action.params;
 
+    // Remove trailing slashes from the location.
+    if (location && location.length > 1 && location.endsWith('/')) {
+      location = location.slice(0, -1);
+    }
+
     // Route authentication.
     if (!isUserLoggedIn(state)) {
       // Determine whether or not this location is protected.
@@ -48,7 +53,7 @@ export default function router(subscribe) {
           pathname: protector,
           state: {
             redirect: {
-              location: action.location,
+              location,
               state: routeState,
             },
           },
