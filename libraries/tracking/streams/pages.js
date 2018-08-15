@@ -25,4 +25,5 @@ export const blacklistedPaths = [
 export const pagesAreReady$ = routeDidEnter$
   .filter(() => isPWAVisible())
   .merge(pwaDidAppear$)
-  .filter(({ pathname }) => !blacklistedPaths.some(path => (!pathname ? false : pathname.startsWith(path))));
+  .filter(({ pathname }) =>
+    !blacklistedPaths.some(path => (!pathname ? false : pathname.startsWith(path))));

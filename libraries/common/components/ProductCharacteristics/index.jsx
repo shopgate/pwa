@@ -41,14 +41,9 @@ class ProductCharacteristics extends Component {
     };
 
     props.conditioner.addConditioner('product-variants', this.checkSelection);
-  }
 
-  /**
-   * Initializes refs and characteristics when variants are already present within the props.
-   */
-  componentWillMount() {
-    if (this.props.variants) {
-      this.updateRefs(this.props);
+    if (props.variants) {
+      this.updateRefs(props);
     }
   }
 

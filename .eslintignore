@@ -1,8 +1,7 @@
-coverage
-dist
-extensions
-e2e
 InlineTransitionGroup
 localforage.js
 node_modules
-themes
+.cache-loader
+coverage
+/pipelines/
+/trustedPipelines/

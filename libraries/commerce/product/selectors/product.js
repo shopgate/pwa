@@ -530,6 +530,7 @@ export const getProductMetadata = createSelector(
 );
 
 /**
+ * Determines if a product is a base product.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {boolean|null}
@@ -543,6 +544,10 @@ export const isBaseProduct = createSelector(
 
     const hasVariants = productData.flags && productData.flags.hasVariants;
 
+    /**
+     * Perform the actual check. Base products are products which have related variant products.
+     * At those variant products the baseProductId is used to reference the base product.
+     */
     return !(productData.baseProductId !== null || hasVariants === false);
   }
 );

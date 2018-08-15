@@ -11,52 +11,6 @@ import connect from './connector';
  */
 class Slider extends Component {
   /**
-   * The component prop types.
-   * @type {Object}
-   */
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    autoPlay: PropTypes.bool,
-    className: PropTypes.string,
-    classNames: PropTypes.shape(),
-    controls: PropTypes.bool,
-    disabled: PropTypes.bool,
-    historyPath: PropTypes.string,
-    indicators: PropTypes.bool,
-    initialSlide: PropTypes.number,
-    interval: PropTypes.number,
-    loop: PropTypes.bool,
-    maxIndicators: PropTypes.number,
-    onSlideChange: PropTypes.func,
-    slidesPerView: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    snapItems: PropTypes.bool,
-  };
-
-  /**
-   * The component default props.
-   * @type {Object}
-   */
-  static defaultProps = {
-    autoPlay: false,
-    className: '',
-    classNames: {},
-    controls: false,
-    disabled: false,
-    historyPath: '',
-    indicators: false,
-    initialSlide: 0,
-    interval: 3000,
-    loop: false,
-    maxIndicators: null,
-    onSlideChange: null,
-    slidesPerView: 1,
-    snapItems: true,
-  };
-
-  /**
    * Prevents multi-touch gestures on the slider.
    * @param {string} type The event type, must be one of the touchXYZ events.
    * @param {Object} slider The slider instance.
@@ -140,6 +94,52 @@ class Slider extends Component {
    * @type {React.Component}
    */
   static Item = SliderItem;
+
+  /**
+   * The component prop types.
+   * @type {Object}
+   */
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    autoPlay: PropTypes.bool,
+    className: PropTypes.string,
+    classNames: PropTypes.shape(),
+    controls: PropTypes.bool,
+    disabled: PropTypes.bool,
+    historyPath: PropTypes.string,
+    indicators: PropTypes.bool,
+    initialSlide: PropTypes.number,
+    interval: PropTypes.number,
+    loop: PropTypes.bool,
+    maxIndicators: PropTypes.number,
+    onSlideChange: PropTypes.func,
+    slidesPerView: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    snapItems: PropTypes.bool,
+  };
+
+  /**
+   * The component default props.
+   * @type {Object}
+   */
+  static defaultProps = {
+    autoPlay: false,
+    className: '',
+    classNames: {},
+    controls: false,
+    disabled: false,
+    historyPath: '',
+    indicators: false,
+    initialSlide: 0,
+    interval: 3000,
+    loop: false,
+    maxIndicators: null,
+    onSlideChange: null,
+    slidesPerView: 1,
+    snapItems: true,
+  };
 
   /**
    * Creates the component.

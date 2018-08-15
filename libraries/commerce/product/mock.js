@@ -996,7 +996,11 @@ const productWithVariantsAndOptions = {
   },
 };
 
-const getShippingStateForId = (id) => ({
+/**
+ * @param {string} id The product ID.
+ * @return {Object}
+ */
+const getShippingStateForId = id => ({
   shippingByProductId: {
     [id]: {
       isFetching: false,

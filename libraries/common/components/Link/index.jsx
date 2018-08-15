@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  ACTION_PUSH,
-  ACTION_REPLACE,
-} from '@virtuous/conductor/constants';
 import connect from './connector';
 import styles from './style';
 

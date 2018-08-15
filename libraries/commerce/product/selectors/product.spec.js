@@ -39,6 +39,8 @@ describe('Product selectors', () => {
       },
     };
 
+    const selectorProps = { productId: 'product1' };
+
     beforeEach(() => {
       // Deepcopy
       mockedState = JSON.parse(JSON.stringify(mockedState));
@@ -50,7 +52,7 @@ describe('Product selectors', () => {
         properties: [property1.label],
       };
 
-      const properties = getProductProperties(mockedState, { productId: 'product1' });
+      const properties = getProductProperties(mockedState, selectorProps);
       expect(properties.length).toEqual(1);
       expect(properties[0].label).toEqual(property1.label);
       expect(properties[0].label).not.toEqual(property2.label);
@@ -61,7 +63,7 @@ describe('Product selectors', () => {
         type: PROPERTIES_FILTER_BLACKLIST,
         properties: [property1.label],
       };
-      const properties = getProductProperties(mockedState, { productId: 'product1' });
+      const properties = getProductProperties(mockedState, selectorProps);
       expect(properties.length).toEqual(1);
       expect(properties[0].label).not.toEqual(property1.label);
       expect(properties[0].label).toEqual(property2.label);
@@ -73,7 +75,7 @@ describe('Product selectors', () => {
         properties: [property1.label],
       };
 
-      const properties = getProductProperties(mockedState, { productId: 'product1' });
+      const properties = getProductProperties(mockedState, selectorProps);
       expect(properties.length).toEqual(2);
       expect(properties).toEqual([
         property1,
@@ -84,7 +86,7 @@ describe('Product selectors', () => {
     it('should not filter when no config is set', () => {
       mockedConfig = null;
 
-      const properties = getProductProperties(mockedState, { productId: 'product1' });
+      const properties = getProductProperties(mockedState, selectorProps);
       expect(properties.length).toEqual(2);
       expect(properties).toEqual([
         property1,
@@ -97,7 +99,7 @@ describe('Product selectors', () => {
         type: PROPERTIES_FILTER_WHITELIST,
         properties: [],
       };
-      const properties = getProductProperties(mockedState, { productId: 'product1' });
+      const properties = getProductProperties(mockedState, selectorProps);
       expect(properties.length).toEqual(0);
     });
 
@@ -106,10 +108,11 @@ describe('Product selectors', () => {
         type: PROPERTIES_FILTER_BLACKLIST,
         properties: [],
       };
-      const properties = getProductProperties(mockedState, { productId: 'product1' });
+      const properties = getProductProperties(mockedState, selectorProps);
       expect(properties.length).toEqual(2);
     });
   });
+
   describe('getIsBaseProduct', () => {
     const mockedBaseProductState = {
       product: {
