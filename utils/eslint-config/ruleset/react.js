@@ -5,5 +5,6 @@ module.exports = {
       ignoreCase: true,
       requiredFirst: true,
     }],
+    'jsx-a11y/label-has-for': 0,
   },
 };
