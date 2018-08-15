@@ -25,6 +25,10 @@ class Item extends Component {
     withIndicator: PropTypes.bool,
   };
 
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   static defaultProps = {
     close: () => { },
     count: null,
@@ -34,10 +38,6 @@ class Item extends Component {
     primary: false,
     testId: null,
     withIndicator: false,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**

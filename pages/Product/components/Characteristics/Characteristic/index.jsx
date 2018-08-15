@@ -24,12 +24,12 @@ class Characteristic extends Component {
     selected: PropTypes.string,
   };
 
-  static defaultProps = {
-    selected: null,
-  };
-
   static contextTypes = {
     i18n: PropTypes.func,
+  };
+
+  static defaultProps = {
+    selected: null,
   };
 
   state = {

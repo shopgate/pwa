@@ -1,3 +1,4 @@
+// eslint-disable-next-line spaced-comment
 /// <reference types="Cypress" />
 import els from '../../elements/de';
 

@@ -12,6 +12,15 @@ import connect from './connector';
  */
 class Html extends Component {
   /**
+   * Creates the HTML content for the widget.
+   * @param {Object} settings The settings of the widget.
+   * @return {string}
+   */
+  static createHTML(settings) {
+    return parseHTML(settings.html, true, settings, true);
+  }
+
+  /**
    * The widget properties.
    * @type {Object}
    */
@@ -22,15 +31,6 @@ class Html extends Component {
       html: PropTypes.string.isRequired,
     }).isRequired,
   };
-
-  /**
-   * Creates the HTML content for the widget.
-   * @param {Object} settings The settings of the widget.
-   * @return {string}
-   */
-  static createHTML(settings) {
-    return parseHTML(settings.html, true, settings, true);
-  }
 
   /**
    * Get the escaped HTML from the props, remove and execute the scripts (if any) and put

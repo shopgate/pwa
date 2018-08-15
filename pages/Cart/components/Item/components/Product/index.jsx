@@ -39,17 +39,17 @@ class Product extends Component {
     updateProduct: PropTypes.func,
   };
 
+  static childContextTypes = {
+    cartItemId: PropTypes.string,
+    type: PropTypes.string,
+    product: PropTypes.shape(),
+  };
+
   static defaultProps = {
     isIos: false,
     deleteProduct: () => {},
     onToggleFocus: () => {},
     updateProduct: () => {},
-  };
-
-  static childContextTypes = {
-    cartItemId: PropTypes.string,
-    type: PropTypes.string,
-    product: PropTypes.shape(),
   };
 
   /**
