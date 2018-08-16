@@ -5,7 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
-import redirects from '../collections/Redirects';
+import { redirects } from '../collections';
 import { navigate } from '../action-creators';
 import { historyPop, historyReplace } from '../actions/router';
 import * as handler from './helpers/handleLinks';
