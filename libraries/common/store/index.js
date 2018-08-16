@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
-import { applyWorker } from 'redux-worker';
+// import { applyWorker } from 'redux-worker';
 import persistedReducers from '../collections/PersistedReducers';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
@@ -26,13 +26,13 @@ if (window.localStorage) {
  * @param {WebWorker} worker The web worker.
  * @return {Object} The redux store.
  */
-export function configureStore(reducers, worker) {
+export function configureStore(reducers /* worker */) {
   return createStore(
     reducers,
     initialState,
     composeWithDevTools(
       applyMiddleware(thunk, streams, logger),
-      applyWorker(worker),
+      // applyWorker(worker),
       persistState({
         key: storeKey,
         paths: persistedReducers.getAll(),
