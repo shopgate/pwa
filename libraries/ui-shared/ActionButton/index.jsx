@@ -8,6 +8,8 @@ import styles from './style';
  * The action button component.
  */
 class ActionButton extends Component {
+  static clickDelay = 300;
+
   static propTypes = {
     ...RippleButton.propTypes,
     onClick: PropTypes.func.isRequired,
@@ -24,8 +26,6 @@ class ActionButton extends Component {
     noGap: false,
     testId: null,
   };
-
-  static clickDelay = 300;
 
   /**
    * Getter for the calculated button props.

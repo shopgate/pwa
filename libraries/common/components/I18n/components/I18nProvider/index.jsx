@@ -19,12 +19,12 @@ export default class I18nProvider extends Component {
     children: PropTypes.node,
   };
 
-  static defaultProps = {
-    children: null,
-  };
-
   static childContextTypes = {
     i18n: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    children: null,
   };
 
   /**

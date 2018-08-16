@@ -1,5 +1,4 @@
 import configureStore from '@shopgate/pwa-common/store';
-import historyReducer from '@shopgate/pwa-common/reducers/history';
 import productReducers from '@shopgate/pwa-common-commerce/product/reducers';
 import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { updateHistory } from '@shopgate/pwa-common/action-creators/history';
@@ -23,7 +22,6 @@ jest.mock('redux-logger', () => ({
 export const createStore = (pathname = '/somepath') => {
   mockedInitialPathname = pathname;
   return configureStore({
-    history: historyReducer,
     product: productReducers,
   });
 };

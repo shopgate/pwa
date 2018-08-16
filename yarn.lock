@@ -227,14 +227,13 @@
     "@virtuous/conductor-events" "1.0.0-beta.29"
     "@virtuous/conductor-helpers" "1.0.0-beta.29"
 
-"@virtuous/redux-persister@1.1.0-beta.4":
-  version "1.1.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.4.tgz#59322ac86b089adb85385dd13da2d5bb07bda634"
+"@virtuous/redux-persister@1.1.0-beta.5":
+  version "1.1.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-persister/-/redux-persister-1.1.0-beta.5.tgz#907d5a082521e3919770085f9f5726b6b80f4af0"
   dependencies:
     "@virtuous/logger" "^1.0.0"
     babel-plugin-lodash "^3.3.4"
     babel-plugin-minify-mangle-names "^0.4.3"
-    greenlet "^1.0.1"
     lodash "^4.17.10"
 
 JSONStream@^1.0.4:
@@ -2828,12 +2827,11 @@ eslint-module-utils@^2.1.1:
     debug "^2.6.8"
     pkg-dir "^1.0.0"
 
-eslint-module-utils@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.2.0.tgz#b270362cd88b1a48ad308976ce7fa54e98411746"
+eslint-plugin-cypress@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-cypress/-/eslint-plugin-cypress-2.0.1.tgz#647e942cacbfd71b0f1a1ed6978472fbd475c60a"
   dependencies:
-    debug "^2.6.8"
-    pkg-dir "^1.0.0"
+    globals "^11.0.1"
 
 eslint-plugin-eslint-comments@^1.1.0:
   version "1.1.0"
@@ -2848,21 +2846,6 @@ eslint-plugin-extra-rules@0.8.1:
     console-assert "1.0.0"
     espree "3.0.0-alpha-1"
     quote "0.4.0"
-
-eslint-plugin-import@^2.7.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.10.0.tgz#fa09083d5a75288df9c6c7d09fe12255985655e7"
-  dependencies:
-    builtin-modules "^1.1.1"
-    contains-path "^0.1.0"
-    debug "^2.6.8"
-    doctrine "1.5.0"
-    eslint-import-resolver-node "^0.3.1"
-    eslint-module-utils "^2.2.0"
-    has "^1.0.1"
-    lodash "^4.17.4"
-    minimatch "^3.0.3"
-    read-pkg-up "^2.0.0"
 
 eslint-plugin-import@^2.8.0:
   version "2.9.0"
@@ -3675,10 +3658,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
-
-greenlet@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/greenlet/-/greenlet-1.0.1.tgz#5d2708dc75bda084ee06d27ebb207671cbf202be"
 
 growl@1.9.2:
   version "1.9.2"
