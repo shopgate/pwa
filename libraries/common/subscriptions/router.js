@@ -42,13 +42,6 @@ export default function router(subscribe) {
       location = location.slice(0, -1);
     }
 
-    // Check for a redirect url and change location if one is found.
-    const redirect = redirects.get(location);
-
-    if (redirect) {
-      location = redirect;
-    }
-
     // Route authentication.
     if (!isUserLoggedIn(state)) {
       // Determine whether or not this location is protected.
@@ -69,6 +62,13 @@ export default function router(subscribe) {
 
         return;
       }
+    }
+
+    // Check for a redirect url and change location if one is found.
+    const redirect = redirects.get(location);
+
+    if (redirect) {
+      location = redirect;
     }
 
     // Override the location if is Shop link is found.
