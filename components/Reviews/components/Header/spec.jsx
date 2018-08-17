@@ -7,7 +7,7 @@ import {
   mockedStateWithoutReview,
   mockedStateWithAll,
 } from '@shopgate/pwa-common-commerce/reviews/mock';
-import { UnwrappedHeader } from './index';
+import Header from './index';
 
 const mockedStore = configureStore();
 
@@ -19,7 +19,7 @@ const mockedStore = configureStore();
  */
 const createComponent = (mockedState, props = {}) => mount(
   <Provider store={mockedStore(mockedState)}>
-    <UnwrappedHeader {...props} />
+    <Header {...props} />
   </Provider>,
   mockRenderOptions
 );
@@ -30,6 +30,7 @@ describe('<Header />', () => {
     const productId = 'foo';
     const { rating } = mockedStateWithoutReview.product.productsById[productId].productData;
     header = createComponent(mockedStateWithoutReview, { productId, rating });
+
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
