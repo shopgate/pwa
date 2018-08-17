@@ -5,7 +5,7 @@ import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
-import hideSplashScreen from '@shopgate/pwa-core/commands/hideSplashScreen';
+import onload from '@shopgate/pwa-core/commands/onload';
 import {
   EACCESS,
   E999,
@@ -86,11 +86,11 @@ export default function app(subscribe) {
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
     /*
-     * Hide splashscreen must be send AFTER app did start.
+     * Onload must be send AFTER app did start.
      * Interjections events (like openPushMessage) would not work if this command is sent
      * before registering to interjections.
      */
-    hideSplashScreen();
+    onload();
   });
 
   subscribe(pipelineError$, ({ dispatch, action }) => {
