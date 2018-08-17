@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import { REVIEW_PREVIEW_COUNT } from '../constants';
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentBaseProductId } from '../../product/selectors/product';
 
@@ -214,6 +215,6 @@ export const getProductReviewsExcerpt = createSelector(
     return [
       userReview,
       ...reviews.filter(r => r.id !== userReview.id),
-    ];
+    ].slice(0, REVIEW_PREVIEW_COUNT);
   }
 );
