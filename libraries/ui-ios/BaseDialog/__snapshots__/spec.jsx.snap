@@ -2,158 +2,146 @@
 
 exports[`<BasicDialog /> should render with minimal props 1`] = `
 <div
-  className="css-hrxvvd"
+  className="css-x4sjtj"
   data-test-id="basicDialog"
 >
   <div
-    className="css-1sirlct"
+    className="css-15zk481"
   />
   <div
-    className="css-1h5vk0a"
-  >
-    <div
-      className="css-hw75se"
-    />
-  </div>
+    className="css-tftgv9"
+  />
 </div>
 `;
 
 exports[`<BasicDialog /> should show correct number of buttons 1`] = `
 <div
-  className="css-hrxvvd"
+  className="css-x4sjtj"
   data-test-id="basicDialog"
 >
   <div
-    className="css-1sirlct"
+    className="css-15zk481"
   />
   <div
-    className="css-1h5vk0a"
+    className="css-tftgv9"
   >
-    <div
-      className="css-hw75se"
+    <Button
+      className="css-1r3j2wk "
+      disabled={false}
+      flat={true}
+      key="action0"
+      onClick={[MockFunction]}
+      testId="Button"
+      type="primary"
+      wrapContent={true}
     >
-      <Button
-        className="css-2gpjuu"
-        disabled={false}
-        flat={true}
-        key="action0"
-        onClick={[MockFunction]}
-        testId="Button"
-        type="primary"
-        wrapContent={true}
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="action0"
-        />
-      </Button>
-      <Button
-        className="css-2gpjuu"
-        disabled={false}
-        flat={true}
-        key="action1"
-        onClick={[MockFunction]}
-        testId="Button"
-        type="primary"
-        wrapContent={true}
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="action1"
-        />
-      </Button>
-      <Button
-        className="css-2gpjuu"
-        disabled={false}
-        flat={true}
-        key="action2"
-        onClick={[MockFunction]}
-        testId="Button"
-        type="primary"
-        wrapContent={true}
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="action2"
-        />
-      </Button>
-    </div>
+      <Translate
+        className="css-auznqr"
+        params={Object {}}
+        string="action0"
+      />
+    </Button>
+    <Button
+      className="css-1r3j2wk "
+      disabled={false}
+      flat={true}
+      key="action1"
+      onClick={[MockFunction]}
+      testId="Button"
+      type="primary"
+      wrapContent={true}
+    >
+      <Translate
+        className="css-auznqr"
+        params={Object {}}
+        string="action1"
+      />
+    </Button>
+    <Button
+      className="css-1r3j2wk "
+      disabled={false}
+      flat={true}
+      key="action2"
+      onClick={[MockFunction]}
+      testId="Button"
+      type="primary"
+      wrapContent={true}
+    >
+      <Translate
+        className="css-auznqr"
+        params={Object {}}
+        string="action2"
+      />
+    </Button>
   </div>
 </div>
 `;
 
 exports[`<BasicDialog /> should trigger correct actions 1`] = `
 <div
-  className="css-hrxvvd"
+  className="css-x4sjtj"
   data-test-id="basicDialog"
 >
   <div
-    className="css-1sirlct"
+    className="css-15zk481"
   />
   <div
-    className="css-1h5vk0a"
+    className="css-tftgv9"
   >
-    <div
-      className="css-hw75se"
+    <Button
+      className="css-1r3j2wk "
+      disabled={false}
+      flat={true}
+      key="action0"
+      onClick={[MockFunction]}
+      testId="Button"
+      type="primary"
+      wrapContent={true}
     >
-      <Button
-        className="css-2gpjuu"
-        disabled={false}
-        flat={true}
-        key="action0"
-        onClick={[MockFunction]}
-        testId="Button"
-        type="primary"
-        wrapContent={true}
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="action0"
-        />
-      </Button>
-      <Button
-        className="css-2gpjuu"
-        disabled={false}
-        flat={true}
-        key="action1"
-        onClick={
-          [MockFunction] {
-            "calls": Array [
-              Array [],
-            ],
-          }
+      <Translate
+        className="css-auznqr"
+        params={Object {}}
+        string="action0"
+      />
+    </Button>
+    <Button
+      className="css-1r3j2wk "
+      disabled={false}
+      flat={true}
+      key="action1"
+      onClick={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
         }
-        testId="Button"
-        type="primary"
-        wrapContent={true}
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="action1"
-        />
-      </Button>
-      <Button
-        className="css-2gpjuu"
-        disabled={false}
-        flat={true}
-        key="action2"
-        onClick={[MockFunction]}
-        testId="Button"
-        type="primary"
-        wrapContent={true}
-      >
-        <Translate
-          className=""
-          params={Object {}}
-          string="action2"
-        />
-      </Button>
-    </div>
+      }
+      testId="Button"
+      type="primary"
+      wrapContent={true}
+    >
+      <Translate
+        className="css-auznqr"
+        params={Object {}}
+        string="action1"
+      />
+    </Button>
+    <Button
+      className="css-1r3j2wk "
+      disabled={false}
+      flat={true}
+      key="action2"
+      onClick={[MockFunction]}
+      testId="Button"
+      type="primary"
+      wrapContent={true}
+    >
+      <Translate
+        className="css-auznqr"
+        params={Object {}}
+        string="action2"
+      />
+    </Button>
   </div>
 </div>
 `;

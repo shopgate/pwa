@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from '@shopgate/pwa-common/components/Button';
+import Button from '@shopgate/pwa-ui-shared/Button';
 import BasicDialog from './';
 
 describe('<BasicDialog />', () => {
