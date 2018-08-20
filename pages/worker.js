@@ -1,4 +1,4 @@
-import { createWorker } from 'redux-worker';
+import { createWorker } from '@virtuous/redux-web-worker';
 import reducer from './reducers';
 
 const worker = createWorker();
