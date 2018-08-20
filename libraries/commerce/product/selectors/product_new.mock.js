@@ -127,7 +127,7 @@ export const mockedShippingByProductId = {
       price: 499,
     },
   },
-  product_2: {
+  product_5: {
     isFetching: true,
   },
 };
@@ -137,7 +137,7 @@ export const mockedDescriptionsByProductId = {
     isFetching: false,
     description: 'Lorem ipsum dolor',
   },
-  product_2: {
+  product_5: {
     isFetching: true,
   },
 };
@@ -159,8 +159,78 @@ export const mockedPropertiesByProductId = {
       mockedProperty2,
     ],
   },
-  product_2: {
+  product_5: {
     isFetching: true,
+  },
+};
+
+export const mockedProductImagesBase = [
+  'https://img-cdn.shopgate.com/a43fac2d',
+  'https://img-cdn.shopgate.com/b543f421',
+];
+
+export const mockedProductImagesVariant = [
+  'https://img-cdn.shopgate.com/a43fac2d',
+  'https://img-cdn.shopgate.com/b543f421',
+];
+
+export const mockedImagesByProductId = {
+  product_1: {
+    isFetching: false,
+    images: mockedProductImagesBase,
+  },
+  product_2: {
+    isFetching: false,
+    images: mockedProductImagesVariant,
+  },
+  product_3: {
+    isFetching: false,
+    images: [],
+  },
+  product_5: {
+    isFetching: true,
+  },
+};
+
+export const mockedVariantsByProductId = {
+  product_1: {
+    isFetching: false,
+    variants: {
+      products: [
+        {
+          id: 'product_2',
+          characteristics: { 1: '1' },
+          availability: {
+            text: 'In stock',
+            state: 'ok',
+          },
+        },
+        {
+          id: 'product_3',
+          characteristics: { 1: '2' },
+          availability: {
+            text: 'Only 3 items left',
+            state: 'warning',
+          },
+        },
+      ],
+      characteristics: [
+        {
+          id: '1',
+          label: 'Color',
+          values: [
+            {
+              id: '1',
+              label: 'Black',
+            },
+            {
+              id: '2',
+              label: 'Green',
+            },
+          ],
+        },
+      ],
+    },
   },
 };
 
@@ -170,5 +240,7 @@ export const mockedProductState = {
     shippingByProductId: mockedShippingByProductId,
     descriptionsByProductId: mockedDescriptionsByProductId,
     propertiesByProductId: mockedPropertiesByProductId,
+    imagesByProductId: mockedImagesByProductId,
+    variantsByProductId: mockedVariantsByProductId,
   },
 };
