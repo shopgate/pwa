@@ -4,6 +4,29 @@ import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
 
 describe('functional test product page', () => {
+  it('should check for correct error message if no variant are selected', () => {
+    cy.visit('');
+
+    cy.get(els.productVariantsCategory)
+      .scrollIntoView()
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWith2VariantsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productWithChild1MotherNameProductGrid)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.addToCartBarButton)
+      .should('be.visible')
+      .click()
+      .wait(1000);
+    cy.get(els.cartButton)
+      .should('not.be.visible');
+  });
+
   it('should check for variant  select', () => {
     cy.visit('');
 
@@ -41,9 +64,15 @@ describe('functional test product page', () => {
     cy.wait(1000);
     cy.get(els.addToCartBarButton)
       .should('be.visible')
-      .click();
+      .click()
+      .wait(1000);
     cy.get(els.cartButton += ' div')
+      .should('be.visible')
       .contains('1');
+  });
+
+  it('should clear cart', () => {
+
     clearProductFromCart();
   });
 
@@ -80,7 +109,11 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.cartButton += ' div')
-      .contains('1');
+    .contains('1')
+  });
+
+  it('should clear cart', () => {
+
     clearProductFromCart();
   });
 });

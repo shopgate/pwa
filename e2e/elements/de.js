@@ -119,5 +119,10 @@ export default {
   basicCategory: "[data-test-id='link: /category/3537']",
   productsWithLongNamesCat: "[data-test-id='link: /category/3539']",
   productWithVeryLongName5Name: "[data-test-id='productGrid'] [data-test-id='Productname: This is a product with a very very long name -5-']",
+  productWithChild1ColorBlackSize5CartItem: "[data-test-id='cartItem'] [data-test-id='link: /item/3936392d393732']",
   addToCartBarButton: "[data-test-id='addToCartBarButton']",
+  accessoriesSizeFilterLChip: "[data-test-id='Accessories Size: L']",
+  accessoriesSizeFilterLChipRemove: "[data-test-id='remove Accessories Size: L']",
+  filterListItemAccessoriesSize: "[data-test-id='filterListItem'] [data-test-id='link: /filter/accessories-size']",
+  filterAttributeAccessoriesSize1: "[data-test-id='filterAttributes'] [data-test-id='L']",
 };
