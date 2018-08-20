@@ -8,8 +8,32 @@ describe('function tests search page', () => {
 
     cy.get(els.searchButton)
       .should('be.visible')
+      .click()
+      .wait(2000);
+    cy.get(els.searchInput)
+      .click()
+      .should('be.visible')
+      .type('product with many properties -4- {enter}');
+    cy.get(els.productWithManyProps4SearchResult)
+      .should('be.visible');
+    cy.get(els.backButton)
       .click();
-    cy.wait(2000);
+    cy.get(els.searchButton)
+      .should('be.visible')
+      .click();
+    cy.get(els.searchInput)
+      .type('product with many properties -3- {enter}');
+    cy.get(els.productWithManyProps3SearchResult)
+      .should('be.visible');
+    cy.get(els.backButton)
+      .click();
+  });
+
+  it('should search again with fitting product', () => {
+    cy.get(els.searchButton)
+      .should('be.visible')
+      .click()
+      .wait(2000);
     cy.get(els.searchInput)
       .click()
       .should('be.visible')
