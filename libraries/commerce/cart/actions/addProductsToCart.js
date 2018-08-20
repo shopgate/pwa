@@ -19,7 +19,7 @@ const addProductToCart = data => (dispatch, getState) => {
   const state = getState();
   const pendingProductCount = getProductPendingCount(state);
   const options = getAddToCartOptions(state, data);
-  const metadata = getProductMetadata(state, data.productId);
+  const metadata = getProductMetadata(state, { productId: data.productId });
   const products = [
     {
       productId: data.productId,
