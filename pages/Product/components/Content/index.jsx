@@ -21,12 +21,14 @@ import { ProductContext } from '../../context';
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
+    isFetching: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
   };
 
   static defaultProps = {
     baseProductId: null,
+    isFetching: false,
     productId: null,
     variantId: null,
   };
@@ -52,6 +54,10 @@ class ProductContent extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
+    if (nextProps.isFetching) {
+      return;
+    }
+
     this.setState({
       productId: nextProps.variantId ? nextProps.baseProductId : nextProps.productId,
       variantId: nextProps.variantId ? nextProps.variantId : null,
