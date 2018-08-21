@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
-import FormElement from '../../FormElement';
+import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import style from './style';
 
 /**
