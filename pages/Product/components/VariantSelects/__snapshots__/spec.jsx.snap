@@ -533,7 +533,9 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                             onSelect={[Function]}
                             selectedIndex={-1}
                           >
-                            <List>
+                            <List
+                              hasImages={false}
+                            >
                               <List
                                 className=""
                               >
@@ -541,15 +543,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                   className="css-gkw1j5 "
                                 >
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-0/.$1"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -626,9 +628,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -689,15 +688,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg"
+                                    className="css-1nftllw"
                                     isSelected={false}
                                     key="child-1/.$2"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -749,9 +748,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                             <div
                                               className="css-1qcr7hz css-h7r55a"
                                             >
-                                              <div
-                                                className="css-jwxytc"
-                                              />
                                               <GridItem
                                                 className="css-10fxwvh css-19uk9mv"
                                                 component="div"
@@ -2265,7 +2261,9 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                             onSelect={[Function]}
                             selectedIndex={1}
                           >
-                            <List>
+                            <List
+                              hasImages={false}
+                            >
                               <List
                                 className=""
                               >
@@ -2273,15 +2271,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                   className="css-gkw1j5 "
                                 >
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-0/.$1"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -2358,9 +2356,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -2421,15 +2416,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={true}
                                     key="child-1/.$2"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-e0ucs9"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-e0ucs9"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -2506,9 +2501,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-14bkd8f css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -2569,15 +2561,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-2/.$3"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -2629,9 +2621,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                             <div
                                               className="css-1qcr7hz css-h7r55a"
                                             >
-                                              <div
-                                                className="css-jwxytc"
-                                              />
                                               <GridItem
                                                 className="css-10fxwvh css-19uk9mv"
                                                 component="div"
@@ -2689,15 +2678,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-3/.$4"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -2774,9 +2763,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -2837,15 +2823,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-4/.$5"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -2922,9 +2908,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -2985,15 +2968,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-5/.$6"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3070,9 +3053,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -3133,15 +3113,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-6/.$7"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3218,9 +3198,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -3281,15 +3258,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-7/.$8"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3366,9 +3343,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -3429,15 +3403,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-8/.$9"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3514,9 +3488,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -3577,15 +3548,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-9/.$10"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3662,9 +3633,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -3725,15 +3693,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-10/.$11"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3810,9 +3778,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -3873,15 +3838,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-11/.$12"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -3958,9 +3923,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -4021,15 +3983,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg"
+                                    className="css-1nftllw"
                                     isSelected={false}
                                     key="child-12/.$13"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -4106,9 +4068,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5032,7 +4991,9 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                             onSelect={[Function]}
                             selectedIndex={-1}
                           >
-                            <List>
+                            <List
+                              hasImages={false}
+                            >
                               <List
                                 className=""
                               >
@@ -5040,15 +5001,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                   className="css-gkw1j5 "
                                 >
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-0/.$7"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -5125,9 +5086,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5188,15 +5146,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-1/.$8"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -5273,9 +5231,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5336,15 +5291,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-2/.$9"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -5421,9 +5376,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5484,15 +5436,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-3/.$10"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -5569,9 +5521,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5632,15 +5581,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-4/.$11"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -5717,9 +5666,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5780,15 +5726,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg css-1ym3l2n"
+                                    className="css-1nftllw css-1ym3l2n"
                                     isSelected={false}
                                     key="child-5/.$12"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-1ym3l2n css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -5865,9 +5811,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
@@ -5928,15 +5871,15 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="css-1brrprg"
+                                    className="css-1nftllw"
                                     isSelected={false}
                                     key="child-6/.$13"
                                   >
                                     <li
-                                      className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                                      className="css-1p5q8vq css-1nftllw css-16gj3o1"
                                     >
                                       <div
-                                        className="css-1nnz83b"
+                                        className="css-1ckzvk7"
                                       >
                                         <Item
                                           className={null}
@@ -6013,9 +5956,6 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                                                   <div
                                                     className="css-1qcr7hz css-h7r55a"
                                                   >
-                                                    <div
-                                                      className="css-jwxytc"
-                                                    />
                                                     <GridItem
                                                       className="css-10fxwvh"
                                                       component="div"
