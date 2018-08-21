@@ -1,9 +1,11 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 import upperFirst from 'lodash/upperFirst';
 import { logger } from '@shopgate/pwa-core/helpers';
 import {
   PROPERTIES_FILTER_BLACKLIST,
   PROPERTIES_FILTER_WHITELIST,
 } from '../constants/';
+
 import {
   mockedProductState,
   mockedProductsById,
@@ -17,6 +19,7 @@ import {
   mockedProductImagesVariant,
   mockedVariantsByProductId,
 } from './product.mock';
+
 import {
   getProductState,
   getProducts,
@@ -60,6 +63,7 @@ jest.mock('@shopgate/pwa-core/helpers', () => {
     ...original,
     logger: {
       warn: jest.fn(),
+      error: jest.fn(),
     },
   };
 });
@@ -186,6 +190,7 @@ describe('Product selectors', () => {
   describe('getProductId()', () => {
     it('should return null when no props are passed', () => {
       expect(getProductId()).toBeNull();
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when no productId was passed within the props', () => {
@@ -217,6 +222,11 @@ describe('Product selectors', () => {
   });
 
   describe('getProduct()', () => {
+    it('should return null and log an error when no props are passed', () => {
+      expect(getProduct(mockedMainState)).toBeNull();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
     it('should return null when the product is not selectable yet', () => {
       const productId = 'product_5';
       expect(getProduct({}, { productId })).toBeNull();
@@ -494,7 +504,7 @@ describe('Product selectors', () => {
   describe('getProductVariants()', () => {
     it('should return null when no data can be selected for the passed productId', () => {
       const productId = 'unavailable';
-      expect(getProductVariants({}, { productId })).toBeNull();
+      expect(getProductVariants(mockedMainState, { productId })).toBeNull();
     });
 
     it('should return null when a product is present but no data is available yet', () => {
@@ -584,6 +594,11 @@ describe('Product selectors', () => {
   });
 
   describe('getBaseProductId()', () => {
+    it('should return null and log an error when no props are passed', () => {
+      expect(getBaseProductId(mockedMainState)).toBeNull();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
     it('should return null when the product is not available', () => {
       const productId = 'unavailable';
       expect(getBaseProductId(mockedMainState, { productId })).toBeNull();
@@ -607,6 +622,11 @@ describe('Product selectors', () => {
   });
 
   describe('getBaseProduct()', () => {
+    it('should return null and log an error when no props are passed', () => {
+      expect(getBaseProduct(mockedMainState)).toBeNull();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
     it('should return null when the product is not available', () => {
       const productId = 'unavailable';
       expect(getBaseProduct(mockedMainState, { productId })).toBeNull();
@@ -669,8 +689,9 @@ describe('Product selectors', () => {
   });
 
   describe('getVariantAvailabilityByCharacteristics()', () => {
-    it('should return null when no props where passed', () => {
+    it('should return null and log an error message when no props where passed', () => {
       expect(getVariantAvailabilityByCharacteristics(mockedMainState)).toBeNull();
+      expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when no variants are available yet', () => {
@@ -726,3 +747,5 @@ describe('Product selectors', () => {
     });
   });
 });
+
+/* eslint-enable extra-rules/no-single-line-objects */

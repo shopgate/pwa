@@ -80,7 +80,9 @@ export const getProductVariantsState = createSelector(
 );
 
 /**
- * Retrieves a product by ID from state.
+ * Retrieves a product by id from state. Different to getProduct() which returns the product
+ * entity data if available, this selector returns the pure state enty for a given productId.
+ * So the exires and the isFetching property is processable.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object|null} The dedicated product.
@@ -90,7 +92,7 @@ export const getProductById = createSelector(
   (state, props) => props,
   (products, props) => {
     if (typeof props !== 'object') {
-      logger.warn('Invocation of getProductById() with a productId will be deprecated soon. Use a getProduct() instead.');
+      logger.warn('Invocation of getProductById() with a productId will be deprecated soon. Please provide a props object.');
       return products[props] || null;
     }
 
@@ -109,6 +111,15 @@ export const getProductById = createSelector(
  * @return {string|null} The id of the current product.
  */
 export const getProductId = (state, props) => {
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 some product selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a productId or a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getProductId() needs to be called with a props object that includes a productId.');
+  }
+
   if (!props) {
     return null;
   }
@@ -244,13 +255,13 @@ export const getProductFlags = createSelector(
  * @return {Object|null}
  */
 export const getProductMetadata = createSelector(
-  getProductById,
+  getProduct,
   (product) => {
     if (!product) {
       return null;
     }
 
-    return product.productData.metadata;
+    return product.metadata;
   }
 );
 
@@ -340,7 +351,7 @@ export const isBaseProduct = createSelector(
     }
 
     /**
-     * Perform the actual check. Base products are simple products with and without variants.
+     * Base products are simple products without variants or products with related variant products.
      * At variant products the baseProductId is used to reference the base product.
      */
     return product.baseProductId === null || productHasVariants;
@@ -560,7 +571,7 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
 );
 
 /**
- * Retrieves the current product orderable information.
+ * Retrieves the product orderable information.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @todo Check if this selector can be combined with isOrderable().
