@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import { RouteContext } from '@virtuous/react-conductor/Router';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RatingNumber from '@shopgate/pwa-ui-shared/RatingNumber';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -64,10 +62,4 @@ Header.defaultProps = {
   withTopGap: false,
 };
 
-export default props => (
-  <RouteContext.Consumer>
-    {({ params }) => <Header {...props} productId={hex2bin(params.productId) || null} />}
-  </RouteContext.Consumer>
-);
-
-export { Header as UnwrappedHeader };
+export default Header;
