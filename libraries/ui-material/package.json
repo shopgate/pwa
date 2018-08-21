@@ -4,9 +4,11 @@
   "description": "Shopgate's material design UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
+  "dependencies": {
+    "@shopgate/pwa-common": "5.6.0"
+  },
   "devDependencies": {
     "@shopgate/eslint-config": "5.6.0",
-    "@shopgate/pwa-common": "5.6.0",
     "@shopgate/pwa-unit-test": "5.6.0"
   }
 }

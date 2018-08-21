@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
+import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import style from './style';
 
 /**
