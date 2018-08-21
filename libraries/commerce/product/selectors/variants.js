@@ -124,7 +124,7 @@ export const getSelectedVariant = createSelector(
       return null;
     }
 
-    const product = getProductById(state, variantId);
+    const product = getProductById(state, { variantId });
 
     if (product) {
       return product.productData;
@@ -159,7 +159,7 @@ export const getSelectedVariantMetadata = createSelector(
     }
 
     // Check if variant data is available in product list
-    const product = getProductById(state, variantId);
+    const product = getProductById(state, { variantId });
     if (product && product.productData.metadata) {
       return product.productData.metadata || null;
     }
