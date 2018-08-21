@@ -31,13 +31,11 @@ describe('<BasicDialog />', () => {
     const wrapper = shallow(<BasicDialog {...props} />);
 
     expect(wrapper).toMatchSnapshot();
-
     expect(wrapper.find(Button).length).toBe(props.actions.length);
   });
 
   it('should trigger correct actions', () => {
     const wrapper = shallow(<BasicDialog {...props} />);
-
     const button = wrapper.find(Button).at(1);
     button.simulate('click');
 
