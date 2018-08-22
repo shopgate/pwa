@@ -86,106 +86,11 @@
   dependencies:
     lodash.once "^4.1.1"
 
-"@shopgate/eslint-config@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-5.6.0-beta.8.tgz#c33f81a5ae0978194b759e1afc7ac6ae4a917a32"
-  dependencies:
-    babel-eslint "^8.2.1"
-    eslint-config-airbnb "^16.1.0"
-    eslint-plugin-eslint-comments "^1.1.0"
-    eslint-plugin-extra-rules "0.8.1"
-    eslint-plugin-import "^2.8.0"
-    eslint-plugin-jsx-a11y "^6.0.3"
-    eslint-plugin-react "^7.6.1"
-    react-hot-loader "4.0.1"
-
-"@shopgate/pwa-common-commerce@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-5.6.0-beta.8.tgz#28d28991af0a4ca21270bc7799b947b4e6998368"
-  dependencies:
-    recompose "^0.26.0"
-    reselect "^3.0.1"
-
-"@shopgate/pwa-common@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-5.6.0-beta.8.tgz#208348b1a1162e58491950c9073483ad1991a985"
-  dependencies:
-    classnames "^2.2.5"
-    crypto-js "3.1.9-1"
-    glamor "^2.20.40"
-    gsap "^1.20.2"
-    history "^4.7.2"
-    intl-messageformat "^2.1.0"
-    jsdom "11.1.0"
-    path-match "^1.2.4"
-    react-dotdotdot "^1.1.0"
-    react-id-swiper "1.4.0"
-    react-inline-transition-group "^2.1.7"
-    react-portal "^3.1.0"
-    react-redux "^5.0.6"
-    react-tap-event-plugin "^3.0.2"
-    recompose "^0.26.0"
-    redux "^3.7.2"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    remote-redux-devtools "^0.5.12"
-    reselect "^3.0.1"
-    rxjs "^5.4.3"
-    url-search-params "^0.10.0"
-
-"@shopgate/pwa-core@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-5.6.0-beta.8.tgz#c82c75b514859073c509599d3d4e132f5aa2db59"
-  dependencies:
-    crypto-js "3.1.9-1"
-    isomorphic-fetch "^2.2.1"
-    lodash "^4.6.1"
-
-"@shopgate/pwa-e2e-test@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-5.6.0-beta.8.tgz#5aa1d44562218cacf578a5efbd4e0946d9fb9a15"
-
-"@shopgate/pwa-tracking@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-5.6.0-beta.8.tgz#625def9ded87574157a867be769a01c2334e4bfe"
-
-"@shopgate/pwa-ui-ios@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-5.6.0-beta.8.tgz#6ba8a05652cc4dede89b22dcd8b0222bc5850c8f"
-
-"@shopgate/pwa-ui-shared@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-5.6.0-beta.8.tgz#24602c79aeda6d1389b955f9c3707e0b77d393df"
-
-"@shopgate/pwa-unit-test@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-5.6.0-beta.8.tgz#7b97a04eb26f2deeaab12ecf34382054eee300b0"
-  dependencies:
-    babel-core "^6.26.0"
-    babel-preset-es2015 "^6.24.1"
-    cheerio "^1.0.0-rc.2"
-    enzyme "^3.2.0"
-    enzyme-adapter-react-16 "^1.1.1"
-    enzyme-to-json "^3.3.3"
-    identity-obj-proxy "^3.0.0"
-    jest-enzyme "^4.0.1"
-    react-hot-loader "4.0.1"
-    react-tap-event-plugin "^3.0.2"
-    react-test-renderer "^16.2.0"
-
-"@shopgate/pwa-webcheckout-shopify@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-5.6.0-beta.8.tgz#6b9994c8cae8584a3eb892931071cb6b5f2769bc"
-
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
-
-"@shopgate/tracking-core@5.6.0-beta.8":
-  version "5.6.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-5.6.0-beta.8.tgz#97f8bea7c6a0fd98d79abdbdedcb17d0bfc0c842"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"

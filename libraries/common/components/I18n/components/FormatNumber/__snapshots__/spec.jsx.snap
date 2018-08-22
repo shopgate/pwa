@@ -2,7 +2,7 @@
 
 exports[`<FormatNumber> should format 0.1 into 0.10 1`] = `
 <I18nProvider
-  lang="de-DE"
+  lang="en-US"
   locales={Object {}}
 >
   <div>
@@ -23,7 +23,7 @@ exports[`<FormatNumber> should format 0.1 into 0.10 1`] = `
 
 exports[`<FormatNumber> should format 1 into 1 1`] = `
 <I18nProvider
-  lang="de-DE"
+  lang="en-US"
   locales={Object {}}
 >
   <div>
@@ -44,7 +44,7 @@ exports[`<FormatNumber> should format 1 into 1 1`] = `
 
 exports[`<FormatNumber> should format 1 into 1.00 1`] = `
 <I18nProvider
-  lang="de-DE"
+  lang="en-US"
   locales={Object {}}
 >
   <div>
@@ -65,7 +65,7 @@ exports[`<FormatNumber> should format 1 into 1.00 1`] = `
 
 exports[`<FormatNumber> should format 1 into 1.000 1`] = `
 <I18nProvider
-  lang="de-DE"
+  lang="en-US"
   locales={Object {}}
 >
   <div>
