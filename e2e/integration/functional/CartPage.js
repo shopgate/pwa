@@ -140,7 +140,14 @@ describe('functional tests cart page', () => {
     cy.get(els.cartButton)
       .should('be.visible')
       .click();
-    cy.debug();
+    cy.get(els.simpleProductWithOptionsCartItemLink)
+      .should('be.visible');
+    cy.get(els.cartItemLi)
+      .contains('Green Ball')
+      .should('be.visible');
+    cy.get(els.cartItemLi)
+      .contains('bright')
+      .should('be.visible');
   });
 
   it('should check for delete product from cart', () => {

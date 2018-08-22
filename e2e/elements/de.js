@@ -138,4 +138,6 @@ export default {
   basicCategory: "[data-test-id='link: /category/3537']",
   productsWithLongNamesCat: "[data-test-id='link: /category/3539']",
   productWithVeryLongName5Name: "[style='display: block;'] [data-test-id='productGrid'] [data-test-id='Productname: This is a product with a very very long name -5-']",
+  cartItemLi: "[data-test-id='cartItem'] li",
+  simpleProductWithOptionsCartItemLink: "[data-test-id='link: /item/31303937']",
 };
