@@ -367,21 +367,18 @@ export const isBaseProduct = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProduct,
-  isBaseProduct,
-  (product, productIsBaseProduct) => {
+  (product) => {
     if (!product) {
       return null;
     }
 
-    if (product.baseProductId !== null) {
-      return product.baseProductId;
+    const { baseProductId = null } = product;
+
+    if (baseProductId !== null) {
+      return baseProductId;
     }
 
-    if (productIsBaseProduct) {
-      return product.id;
-    }
-
-    return null;
+    return product.id;
   }
 );
 

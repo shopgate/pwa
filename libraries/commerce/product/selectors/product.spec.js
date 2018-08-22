@@ -609,6 +609,12 @@ describe('Product selectors', () => {
       expect(getBaseProductId(mockedMainState, { productId })).toBe(productId);
     });
 
+    it('should return the id of a base product when no baseProductId prop is set', () => {
+      const productId = 'product_5';
+      delete mockedMainState.product.productsById[productId].productData.baseProductId;
+      expect(getBaseProductId(mockedMainState, { productId })).toBe(productId);
+    });
+
     it('should return the id of a simple product', () => {
       const productId = 'product_5';
       expect(getBaseProductId(mockedMainState, { productId })).toBe(productId);
