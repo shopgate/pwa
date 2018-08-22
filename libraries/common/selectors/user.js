@@ -63,7 +63,7 @@ export const getUserDisplayName = createSelector(
       return null;
     }
 
-    return `${data.firstName} ${data.lastName}`;
+    return [data.firstName, data.lastName].join(' ').trim();
   }
 );
 
