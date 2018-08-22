@@ -40,6 +40,16 @@ class Select extends Component {
       isFocused: false,
     };
   }
+  /**
+   * Update state with new props.
+   * @param {Object} nextProps The new props.
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      ...this.state,
+      value: nextProps.value,
+    });
+  }
 
   /**
    * @param {string} value The entered text.
