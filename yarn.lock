@@ -107,11 +107,114 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@shopgate/eslint-config@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-6.0.0-beta.6.tgz#8ba1bbc3d2ed5badcd1f5e17e9a5369f72df1ab8"
+  dependencies:
+    babel-eslint "^8.2.1"
+    eslint-config-airbnb "^16.1.0"
+    eslint-import-resolver-babel-module "4.0.0"
+    eslint-plugin-cypress "^2.0.1"
+    eslint-plugin-eslint-comments "^1.1.0"
+    eslint-plugin-extra-rules "0.8.1"
+    eslint-plugin-import "^2.8.0"
+    eslint-plugin-jsx-a11y "^6.0.3"
+    eslint-plugin-react "^7.6.1"
+    react-hot-loader "4.0.1"
+
+"@shopgate/pwa-common-commerce@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-6.0.0-beta.6.tgz#45de2a9d840f89e43581782855013f5c6e8b7154"
+  dependencies:
+    recompose "^0.26.0"
+    reselect "^3.0.1"
+
+"@shopgate/pwa-common@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.0.0-beta.6.tgz#f7d77311a60fd57807688fd288b137e26e813ee7"
+  dependencies:
+    "@virtuous/conductor" "1.0.0-beta.29"
+    "@virtuous/conductor-events" "1.0.0-beta.29"
+    "@virtuous/conductor-helpers" "1.0.0-beta.29"
+    "@virtuous/react-conductor" "1.0.0-beta.29"
+    "@virtuous/redux-conductor" "1.0.0-beta.29"
+    "@virtuous/redux-persister" "1.1.0-beta.5"
+    classnames "^2.2.5"
+    crypto-js "3.1.9-1"
+    glamor "^2.20.40"
+    gsap "^1.20.2"
+    history "^4.7.2"
+    intl-messageformat "^2.1.0"
+    jsdom "11.1.0"
+    path-match "^1.2.4"
+    react-dotdotdot "^1.1.0"
+    react-id-swiper "1.4.0"
+    react-inline-transition-group "^2.1.7"
+    react-portal "^3.1.0"
+    react-redux "^5.0.6"
+    react-tap-event-plugin "^3.0.2"
+    recompose "^0.26.0"
+    redux "^3.7.2"
+    redux-devtools-extension "^2.13.2"
+    redux-logger "^3.0.6"
+    redux-thunk "^2.2.0"
+    reselect "^3.0.1"
+    rxjs "^5.4.3"
+    url-search-params "^0.10.0"
+
+"@shopgate/pwa-core@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-core/-/pwa-core-6.0.0-beta.6.tgz#d7921fe422ab4f3275acf795522843d6a796f780"
+  dependencies:
+    crypto-js "3.1.9-1"
+    isomorphic-fetch "^2.2.1"
+    lodash "^4.6.1"
+
+"@shopgate/pwa-e2e-test@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-e2e-test/-/pwa-e2e-test-6.0.0-beta.6.tgz#c47e27d0f34ce3fabcc71f2d379e2bbf40725068"
+
+"@shopgate/pwa-tracking@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-tracking/-/pwa-tracking-6.0.0-beta.6.tgz#feab7c703940a6b2de1445277a79cdb9ee24181b"
+
+"@shopgate/pwa-ui-ios@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-ios/-/pwa-ui-ios-6.0.0-beta.6.tgz#13b67994594250a52fe3f76460fb1949b606a1b9"
+
+"@shopgate/pwa-ui-shared@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-ui-shared/-/pwa-ui-shared-6.0.0-beta.6.tgz#7b333d82a233b6285d46a8a2e55446ae27908242"
+
+"@shopgate/pwa-unit-test@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-unit-test/-/pwa-unit-test-6.0.0-beta.6.tgz#dc6b243253f1f3e0bc4a8883f5f636f1597ebd97"
+  dependencies:
+    babel-core "^6.26.0"
+    babel-preset-es2015 "^6.24.1"
+    cheerio "^1.0.0-rc.2"
+    enzyme "^3.2.0"
+    enzyme-adapter-react-16 "^1.1.1"
+    enzyme-to-json "^3.3.3"
+    identity-obj-proxy "^3.0.0"
+    jest-enzyme "^4.0.1"
+    react-hot-loader "4.0.1"
+    react-tap-event-plugin "^3.0.2"
+    react-test-renderer "^16.2.0"
+
+"@shopgate/pwa-webcheckout-shopify@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/pwa-webcheckout-shopify/-/pwa-webcheckout-shopify-6.0.0-beta.6.tgz#22fda271e46c7b46f14da9c184a781c029944b4f"
+
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
+
+"@shopgate/tracking-core@6.0.0-beta.6":
+  version "6.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-6.0.0-beta.6.tgz#25983f3a01eb4a8f97550c54b7c0ee8c3ace301e"
 
 "@sourceallies/coveralls-merge@^1.0.0":
   version "1.0.0"
@@ -236,9 +339,9 @@
     babel-plugin-minify-mangle-names "^0.4.3"
     lodash "^4.17.10"
 
-"@virtuous/redux-web-worker@1.0.0-beta.3":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-web-worker/-/redux-web-worker-1.0.0-beta.3.tgz#0cfd379b7e786f1f382829eb9c8119389cde90cc"
+"@virtuous/redux-web-worker@1.0.0-beta.4":
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-web-worker/-/redux-web-worker-1.0.0-beta.4.tgz#0cbb5537c304be9531c0ac517cffa0194be1396b"
 
 JSONStream@^1.0.4:
   version "1.3.2"
