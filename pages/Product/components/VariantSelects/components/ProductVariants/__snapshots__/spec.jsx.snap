@@ -229,7 +229,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         Object {
                           "disabled": false,
                           "label": "Black",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -257,13 +257,13 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "1",
                         },
                         Object {
                           "disabled": false,
                           "label": "Blue",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -291,7 +291,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "2",
                         },
                       ]
@@ -330,7 +330,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                           Object {
                             "disabled": false,
                             "label": "Black",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -358,13 +358,13 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "1",
                           },
                           Object {
                             "disabled": false,
                             "label": "Blue",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -392,7 +392,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "2",
                           },
                         ]
@@ -491,7 +491,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                         Object {
                           "disabled": true,
                           "label": "0",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -519,13 +519,13 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "1",
                         },
                         Object {
                           "disabled": true,
                           "label": "11",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -553,13 +553,13 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "2",
                         },
                         Object {
                           "disabled": true,
                           "label": "7",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -587,7 +587,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "3",
                         },
                       ]
@@ -626,7 +626,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                           Object {
                             "disabled": true,
                             "label": "0",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -654,13 +654,13 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "1",
                           },
                           Object {
                             "disabled": true,
                             "label": "11",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -688,13 +688,13 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "2",
                           },
                           Object {
                             "disabled": true,
                             "label": "7",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -722,7 +722,7 @@ exports[`<ProductVariants /> should render with variants 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "3",
                           },
                         ]
@@ -1047,7 +1047,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         Object {
                           "disabled": false,
                           "label": "Black",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -1075,13 +1075,13 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "1",
                         },
                         Object {
                           "disabled": false,
                           "label": "Blue",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -1109,7 +1109,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "2",
                         },
                       ]
@@ -1148,7 +1148,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                           Object {
                             "disabled": false,
                             "label": "Black",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -1176,13 +1176,13 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "1",
                           },
                           Object {
                             "disabled": false,
                             "label": "Blue",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -1210,7 +1210,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "2",
                           },
                         ]
@@ -1290,7 +1290,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                         Object {
                           "disabled": false,
                           "label": "0",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -1325,13 +1325,13 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "1",
                         },
                         Object {
                           "disabled": false,
                           "label": "11",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -1366,13 +1366,13 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "2",
                         },
                         Object {
                           "disabled": false,
                           "label": "7",
-                          "rightComponent": <UNDEFINED>
+                          "rightComponent": <React.Fragment>
                             <Portal
                               name="product.variant-select.picker.availability.before"
                               props={
@@ -1400,7 +1400,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                 }
                               }
                             />
-                          </UNDEFINED>,
+                          </React.Fragment>,
                           "value": "3",
                         },
                       ]
@@ -1439,7 +1439,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                           Object {
                             "disabled": false,
                             "label": "0",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -1474,13 +1474,13 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "1",
                           },
                           Object {
                             "disabled": false,
                             "label": "11",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -1515,13 +1515,13 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "2",
                           },
                           Object {
                             "disabled": false,
                             "label": "7",
-                            "rightComponent": <UNDEFINED>
+                            "rightComponent": <React.Fragment>
                               <Portal
                                 name="product.variant-select.picker.availability.before"
                                 props={
@@ -1549,7 +1549,7 @@ exports[`<ProductVariants /> should update after selectionUpdate 1`] = `
                                   }
                                 }
                               />
-                            </UNDEFINED>,
+                            </React.Fragment>,
                             "value": "3",
                           },
                         ]

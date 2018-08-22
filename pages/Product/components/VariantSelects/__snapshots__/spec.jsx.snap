@@ -24,7 +24,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
             Object {
               "disabled": false,
               "label": "Pink",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -52,13 +52,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "1",
             },
             Object {
               "disabled": true,
               "label": "Black",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -86,7 +86,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "2",
             },
           ]
@@ -128,7 +128,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
             Object {
               "disabled": false,
               "label": "S",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -156,13 +156,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "1",
             },
             Object {
               "disabled": false,
               "label": "M",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -190,13 +190,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "2",
             },
             Object {
               "disabled": true,
               "label": "asjdaksdlkasdkalsklaeksoas iodialskdajsdjasdjkajdkajsd adshj",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -224,13 +224,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "3",
             },
             Object {
               "disabled": false,
               "label": "XS",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -258,13 +258,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "4",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -292,13 +292,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "5",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -326,13 +326,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "6",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -360,13 +360,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "7",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -394,13 +394,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "8",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -428,13 +428,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "9",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -462,13 +462,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "10",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -496,13 +496,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "11",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -530,13 +530,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "12",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -564,7 +564,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "13",
             },
           ]
@@ -606,7 +606,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -634,13 +634,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "7",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -668,13 +668,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "8",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -702,13 +702,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "9",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -736,13 +736,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "10",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -770,13 +770,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "11",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -804,13 +804,13 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "12",
             },
             Object {
               "disabled": false,
               "label": "XL",
-              "rightComponent": <UNDEFINED>
+              "rightComponent": <React.Fragment>
                 <Portal
                   name="product.variant-select.picker.availability.before"
                   props={
@@ -838,7 +838,7 @@ exports[`<VariantSelects /> should render with variants 1`] = `
                     }
                   }
                 />
-              </UNDEFINED>,
+              </React.Fragment>,
               "value": "13",
             },
           ]
