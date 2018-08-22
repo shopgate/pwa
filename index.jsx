@@ -29,11 +29,6 @@ initSubscribers(subscribers);
 const store = configureStore(reducers, new Worker());
 syncRouter(store);
 
-store.subscribe(() => {
-  console.warn('new original state');
-  console.dir(store.getState());
-});
-
 store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
 store.dispatch(fetchClientInformation());
 
