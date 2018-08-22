@@ -125,4 +125,6 @@ export default {
   accessoriesSizeFilterLChipRemove: "[data-test-id='remove Accessories Size: L']",
   filterListItemAccessoriesSize: "[data-test-id='filterListItem'] [data-test-id='link: /filter/accessories-size']",
   filterAttributeAccessoriesSize1: "[data-test-id='filterAttributes'] [data-test-id='L']",
+  cartItemLi: "[data-test-id='cartItem'] li",
+  simpleProductWithOptionsCartItemLink: "[data-test-id='link: /item/31303937']"
 };
