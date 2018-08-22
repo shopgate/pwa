@@ -327,6 +327,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       "calls": Array [
         Array [],
       ],
+      "results": undefined,
     }
   }
   onOpen={[Function]}
@@ -349,6 +350,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           "calls": Array [
             Array [],
           ],
+          "results": undefined,
         }
       }
       onDidClose={[Function]}

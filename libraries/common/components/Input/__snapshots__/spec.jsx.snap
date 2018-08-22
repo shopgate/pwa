@@ -312,6 +312,7 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
           "a",
         ],
       ],
+      "results": undefined,
     }
   }
 >
@@ -332,6 +333,7 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
             "a",
           ],
         ],
+        "results": undefined,
       }
     }
     onFocusChange={[Function]}
