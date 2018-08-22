@@ -173,6 +173,7 @@ exports[`More should render for logged in user 1`] = `
           </Headline>
           <List
             className=""
+            hasImages={false}
           >
             <List
               className="css-1tmmo7v"
@@ -273,7 +274,6 @@ exports[`More should render for logged in user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -422,7 +422,6 @@ exports[`More should render for logged in user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -571,7 +570,6 @@ exports[`More should render for logged in user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -720,7 +718,6 @@ exports[`More should render for logged in user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -913,7 +910,6 @@ exports[`More should render for logged in user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -1069,6 +1065,7 @@ exports[`More should render for logged in user 1`] = `
                 >
                   <List
                     className=""
+                    hasImages={false}
                   >
                     <List
                       className="css-1tmmo7v"
@@ -1161,7 +1158,6 @@ exports[`More should render for logged in user 1`] = `
                                           <div
                                             className="css-l3889c css-h7r55a"
                                           >
-                                            <div />
                                             <GridItem
                                               className="css-10fxwvh"
                                               component="div"
@@ -1634,6 +1630,7 @@ exports[`More should render for logged out user 1`] = `
           </Headline>
           <List
             className=""
+            hasImages={false}
           >
             <List
               className="css-1tmmo7v"
@@ -1734,7 +1731,6 @@ exports[`More should render for logged out user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -1883,7 +1879,6 @@ exports[`More should render for logged out user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -2032,7 +2027,6 @@ exports[`More should render for logged out user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -2181,7 +2175,6 @@ exports[`More should render for logged out user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
@@ -2374,7 +2367,6 @@ exports[`More should render for logged out user 1`] = `
                                     <div
                                       className="css-l3889c css-h7r55a"
                                     >
-                                      <div />
                                       <GridItem
                                         className="css-10fxwvh"
                                         component="div"
