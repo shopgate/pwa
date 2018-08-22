@@ -2,7 +2,7 @@ export default {
   navigatorButton: "[data-test-id='Navigator'] [data-test-id='Button']",
   navigationDrawerLoginButton: "[data-test-id='NavDrawerLoginButton']",
   navigationDrawerEntry: "[data-test-id='NavDrawer'] [data-test-id='Ripple'] span",
-  shopLogo: "[data-test-id='Navigator'] img[alt='TestAutomation']",
+  shopLogo: "[data-test-id='Navigator'] img",
   imageSliderImage1: "[data-test-id='Slider']:nth-child(2)  img[data-test-id='withoutLink']",
   imageSliderImage2: "[data-test-id='Slider']:nth-child(3)  img[data-test-id='withoutLink']",
   imageWidgetWithLink1: "[data-test-id='imageWidget: /category/3537']",
