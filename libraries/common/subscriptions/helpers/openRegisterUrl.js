@@ -9,6 +9,7 @@ import {
  * Append any necessary params and open the register URL.
  * @param {string} url The url to open.
  * @param {Object} state The current state.
+ * @returns {string}
  */
 const openRegisterUrl = (url, state) => {
   // Get the current redirect location.

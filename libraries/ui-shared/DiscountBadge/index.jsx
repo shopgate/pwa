@@ -11,14 +11,17 @@ import styles from './style';
  * @returns {JSX}
  */
 const DiscountBadge = ({
-  text, className, display, discount,
+  text,
+  className,
+  display,
+  discount,
 }) => (
   <div data-test-id={text}>
     <I18n.Text
       className={`${styles[display]} ${className}`}
       string={text}
       params={[discount]}
-  />
+    />
   </div>
 );
 

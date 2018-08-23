@@ -5,6 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import { redirects } from '../collections';
 import { navigate } from '../action-creators';
 import { historyPop, historyReplace } from '../actions/router';
 import * as handler from './helpers/handleLinks';
@@ -61,6 +62,13 @@ export default function router(subscribe) {
 
         return;
       }
+    }
+
+    // Check for a redirect url and change location if one is found.
+    const redirect = redirects.get(location);
+
+    if (redirect) {
+      location = redirect;
     }
 
     // Override the location if is Shop link is found.

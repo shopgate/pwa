@@ -6,6 +6,7 @@ module.exports = {
     node: true,
     jest: true,
     mocha: true,
+    'cypress/globals': true,
   },
   parserOptions: {
     ecmaVersion: 6,
@@ -15,7 +16,7 @@ module.exports = {
     },
   },
   rules: {
-    'capitalized-comments': ['error', 'always'],
+    'capitalized-comments': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
       objects: 'always-multiline',

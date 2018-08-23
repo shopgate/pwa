@@ -5,6 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -210,6 +211,19 @@ describe('Router subscriptions', () => {
       callback(createCallbackPayload({ params }));
 
       testExpectedCall(conductor.push, params);
+    });
+
+    it('should redirect to another location correctly', () => {
+      redirects.set('/some_route', '/some_other_route');
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route',
+      };
+
+      callback(createCallbackPayload({ params }));
+      testExpectedCall(conductor.push);
+      expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
     });
 
     it('should convert shop links as expected', () => {

@@ -11,6 +11,8 @@ import styles from './style';
  * The ContextMenu component.
  */
 class ContextMenu extends Component {
+  static Item = Item;
+
   static propTypes = {
     children: PropTypes.node,
   };
@@ -18,8 +20,6 @@ class ContextMenu extends Component {
   static defaultProps = {
     children: null,
   };
-
-  static Item = Item;
 
   /**
    * The Constructor.

@@ -26,6 +26,14 @@ class FavoritesButton extends Component {
     rippleClassName: PropTypes.string,
   };
 
+  /**
+   * Context types definition.
+   * @type {{i18n: shim}}
+   */
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
   static defaultProps = {
     active: false,
     addFavorites: () => {},
@@ -38,14 +46,6 @@ class FavoritesButton extends Component {
     removeThrottle: 0,
     removeWithRelatives: false,
     rippleClassName: '',
-  };
-
-  /**
-   * Context types definition.
-   * @type {{i18n: shim}}
-   */
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
