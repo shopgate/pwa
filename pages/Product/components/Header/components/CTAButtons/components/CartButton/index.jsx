@@ -107,6 +107,7 @@ class CartButton extends Component {
       <FloatingActionButton
         background={this.color}
         className={styles}
+        disabled={this.props.disabled}
         onClick={this.handleClick}
       >
         {this.icon}
