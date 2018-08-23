@@ -42,6 +42,7 @@ describe('Filters subscriptions', () => {
     expect(Object.keys(subscriptions).length).toBe(Object.keys(streams).length);
   });
 
+  // TODO: searchRouteWasUpdated$ is not there anymore. Test the substitute instead here
   it('searchRouteWasUpdated$', () => {
     const dispatch = jest.fn();
     subscriptions.searchRouteWasUpdated$.cb({
