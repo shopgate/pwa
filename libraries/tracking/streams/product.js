@@ -32,6 +32,9 @@ export const productReceived$ = main$
  */
 const currentProductIdChanged$ = main$
   .filter(({ action, prevState }) => {
+    // Disabled for now since product data needs to be selected different within PWA 6.0
+    return false;
+    // eslint-disable-next-line no-unreachable
     const prevId = getCurrentBaseProductId(prevState);
     return (
       action.type === SET_PRODUCT_ID &&

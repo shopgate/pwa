@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "6.0.0-beta.7",
+  "version": "5.7.0-beta.2",
   "description": "Common library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -14,11 +14,6 @@
     "shopgate",
     "connect"
   ],
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "cover": "jest --coverage"
-  },
   "dependencies": {
     "@virtuous/conductor": "1.0.0-beta.29",
     "@virtuous/conductor-events": "1.0.0-beta.29",
@@ -26,12 +21,10 @@
     "@virtuous/react-conductor": "1.0.0-beta.29",
     "@virtuous/redux-conductor": "1.0.0-beta.29",
     "@virtuous/redux-persister": "1.1.0-beta.5",
-    "@virtuous/redux-web-worker": "1.0.0-beta.4",
     "classnames": "^2.2.5",
     "crypto-js": "3.1.9-1",
     "glamor": "^2.20.40",
     "gsap": "^1.20.2",
-    "history": "^4.7.2",
     "intl-messageformat": "^2.1.0",
     "jsdom": "11.1.0",
     "path-match": "^1.2.4",
@@ -51,11 +44,9 @@
     "url-search-params": "^0.10.0"
   },
   "devDependencies": {
-    "@shopgate/eslint-config": "6.0.0-beta.7",
-    "@shopgate/pwa-core": "6.0.0-beta.7",
-    "@shopgate/pwa-unit-test": "6.0.0-beta.7",
+    "@shopgate/eslint-config": "5.7.0-beta.2",
+    "@shopgate/pwa-core": "5.7.0-beta.2",
     "@shopgate/react-hammerjs": "^0.5.3",
-    "jest": "^22.4.3",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.3.2",

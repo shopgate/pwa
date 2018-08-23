@@ -102,6 +102,12 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       "calls": Array [
         Array [],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
     }
   }
   hasLoading={false}
@@ -200,6 +206,12 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     [MockFunction] {
       "calls": Array [
         Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
       ],
     }
   }
