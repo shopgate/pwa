@@ -1,3 +1,4 @@
+export const mockedVariantProductMetadata = { some: 'product metadata' };
 export const mockedProductsById = {
   // Base product with variants
   product_1: {
@@ -39,6 +40,7 @@ export const mockedProductsById = {
         minOrderQuantity: 1,
         maxOrderQuantity: 10000,
       },
+      metadata: mockedVariantProductMetadata,
     },
   },
   // Variant product of product_1 which is not ordeable
@@ -117,6 +119,43 @@ export const mockedProductsById = {
       },
     },
   },
+  // Taken from the original getKnownRelatives() selector test for variants.
+  parent: {
+    productData: {
+      id: 'parent',
+      baseProductId: null,
+      flags: {
+        hasVariants: true,
+      },
+    },
+  },
+  child: {
+    productData: {
+      id: 'child',
+      baseProductId: 'parent',
+      flags: {
+        hasVariants: false,
+      },
+    },
+  },
+  child2: {
+    productData: {
+      id: 'child2',
+      baseProductId: 'parent',
+      flags: {
+        hasVariants: false,
+      },
+    },
+  },
+  notAChild: {
+    productData: {
+      id: 'notAChild',
+      baseProductId: 'foo',
+      flags: {
+        hasVariants: false,
+      },
+    },
+  },
 };
 
 export const mockedShippingByProductId = {
@@ -192,6 +231,8 @@ export const mockedImagesByProductId = {
   },
 };
 
+export const mockedVariantMetadata = { some: 'variant metadata' };
+
 export const mockedVariantsByProductId = {
   product_1: {
     isFetching: false,
@@ -212,6 +253,7 @@ export const mockedVariantsByProductId = {
             text: 'Only 3 items left',
             state: 'warning',
           },
+          metadata: mockedVariantMetadata,
         },
       ],
       characteristics: [

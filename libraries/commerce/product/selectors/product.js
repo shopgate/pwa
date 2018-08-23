@@ -160,7 +160,7 @@ export const getProductName = createSelector(
       return null;
     }
 
-    return product.name;
+    return product.name || null;
   }
 );
 
@@ -177,7 +177,7 @@ export const getProductRating = createSelector(
       return null;
     }
 
-    return product.rating;
+    return product.rating || null;
   }
 );
 
@@ -194,7 +194,7 @@ export const getProductManufacturer = createSelector(
       return null;
     }
 
-    return product.manufacturer;
+    return product.manufacturer || null;
   }
 );
 
@@ -211,7 +211,7 @@ export const getProductStock = createSelector(
       return null;
     }
 
-    return product.stock;
+    return product.stock || null;
   }
 );
 
@@ -228,7 +228,7 @@ export const getProductAvailability = createSelector(
       return null;
     }
 
-    return product.availability;
+    return product.availability || null;
   }
 );
 
@@ -245,7 +245,7 @@ export const getProductFlags = createSelector(
       return null;
     }
 
-    return product.flags;
+    return product.flags || null;
   }
 );
 
@@ -261,7 +261,7 @@ export const getProductMetadata = createSelector(
       return null;
     }
 
-    return product.metadata;
+    return product.metadata || null;
   }
 );
 
@@ -278,7 +278,7 @@ export const getProductPrice = createSelector(
       return null;
     }
 
-    return product.price;
+    return product.price || null;
   }
 );
 
@@ -324,7 +324,7 @@ export const getProductUnitPrice = createSelector(
  * @param {Object} props The component props.
  * @return {boolean}
  */
-export const hasVariants = createSelector(
+export const hasProductVariants = createSelector(
   getProductFlags,
   (flags) => {
     if (!flags) {
@@ -344,8 +344,8 @@ export const hasVariants = createSelector(
  */
 export const isBaseProduct = createSelector(
   getProduct,
-  hasVariants,
-  (product, productHasVariants) => {
+  hasProductVariants,
+  (product, hasVariants) => {
     if (!product) {
       return false;
     }
@@ -354,7 +354,7 @@ export const isBaseProduct = createSelector(
      * Base products are simple products without variants or products with related variant products.
      * At variant products the baseProductId is used to reference the base product.
      */
-    return product.baseProductId === null || productHasVariants;
+    return product.baseProductId === null || hasVariants;
   }
 );
 
@@ -398,6 +398,25 @@ export const getBaseProduct = createSelector(
     const { productData = null } = products[baseProductId] || {};
 
     return productData;
+  }
+);
+
+/**
+ * Determines if a base product has variants.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasBaseProductVariants = createSelector(
+  getBaseProduct,
+  (baseProduct) => {
+    if (!baseProduct) {
+      return false;
+    }
+
+    const { flags: { hasVariants = false } = {} } = baseProduct;
+
+    return hasVariants;
   }
 );
 
@@ -575,7 +594,7 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
  * @return {boolean}
  */
 export const isProductOrderable = createSelector(
-  hasVariants,
+  hasProductVariants,
   isOrderable,
   (withVariants, orderable) => {
     if (!orderable || withVariants) {

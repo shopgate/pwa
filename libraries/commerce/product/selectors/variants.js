@@ -1,169 +1,96 @@
 import { createSelector } from 'reselect';
+import { logger } from '@shopgate/pwa-core/helpers';
 import {
-  getBaseProductId,
-  getBaseProduct,
-  getProductById,
+  getProduct,
   getProducts,
+  getProductById,
+  getProductVariants,
+  hasBaseProductVariants,
 } from './product';
 
 /**
- * Selects collection of all stored product variants from the store.
+ * Gets the variant id out of the props.
  * @param {Object} state The current application state.
- * @return {Object} The collection of product variants.
+ * @param {Object} props The component props.
+ * @returns {string|null}
  */
-const getVariantsState = state => state.product.variantsByProductId;
-
-/**
- * Gets the id of the currently selected product variant.
- * @param {Object} state The application state.
- * @returns {string}
- */
-export const getCurrentProductVariantId = createSelector(
-  state => state.product,
-  (productState) => {
-    if (
-      !productState
-      || !productState.currentProduct
-      || !productState.currentProduct.productVariantId
-    ) {
-      return null;
-    }
-
-    return productState.currentProduct.productVariantId;
+export const getVariantId = (state, props) => {
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 the variant selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getVariantId() needs to be called with a props object that includes a variantId.');
   }
-);
+
+  const { variantId = null } = props || {};
+
+  return variantId;
+};
 
 /**
- * Checks if the current product has variants.
- * @param {Object} state The application state.
+ * Checks if currently a variant is selected. It checks if the props contain a variantId.
+ * For determination the props need to include a variantId.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @returns {boolean}
  */
-export const hasCurrentProductVariants = createSelector(
-  getBaseProduct,
-  (product) => {
-    if (!product) {
-      return false;
-    }
-
-    return product.flags.hasVariants;
-  }
-);
+export const isVariantSelected = (state, props) => !!getVariantId(state, props);
 
 /**
- * Checks if the children for the current product is selected.
- * @param {Object} state The application state.
- * @returns {boolean}
- */
-export const isProductChildrenSelected = state => !!getCurrentProductVariantId(state);
-
-/**
- * Retrieves product variants by product ID from state.
+ * Retrieves a product for the selected variantId from the store.
  * @param {Object} state The current application state.
- * @param {string} productId The product ID.
- * @return {Object|null} The dedicated variants. Or null when the requested data is unavailable.
- */
-export const getVariantsByProductId = createSelector(
-  getVariantsState,
-  (state, props, productId) => productId,
-  (variants, productId) => {
-    if (!variants || !variants[productId] || variants[productId].isFetching === true) {
-      return null;
-    }
-
-    return variants[productId];
-  }
-);
-
-/**
- * Retrieves product variants for the currently selected base product from state.
- * @param {Object} state The current application state.
- * @return {Object|null} The dedicated variants. Or null when the requested data is unavailable.
- */
-export const getBaseProductVariants = createSelector(
-  getVariantsState,
-  getBaseProductId,
-  (variantsState, productId) => {
-    if (
-      !variantsState ||
-      !variantsState[productId] ||
-      variantsState[productId].isFetching === true
-    ) {
-      return null;
-    }
-
-    return variantsState[productId];
-  }
-);
-
-/**
- * Retrieves the current product variants.
- * @param {Object} state The application state.
- * @returns {boolean}
- */
-export const getProductVariants = createSelector(
-  getBaseProductVariants,
-  (variants) => {
-    if (!variants) {
-      return null;
-    }
-
-    return variants.variants;
-  }
-);
-
-/**
- * Retrieves the current selected product variant.
- * @param {Object} state The application state.
+ * @param {Object} props The component props.
  * @returns {Object|null} The selected variant or null if none is selected
  */
 export const getSelectedVariant = createSelector(
-  getCurrentProductVariantId,
-  state => state,
-  (variantId, state) => {
-    if (!variantId) {
+  getProduct,
+  isVariantSelected,
+  (product, selected) => {
+    if (!product || !selected) {
       return null;
     }
 
-    const product = getProductById(state, { variantId });
-
-    if (product) {
-      return product.productData;
-    }
-
-    return null;
+    return product;
   }
 );
 
 /**
  * Retrieves the metadata from the product data within the variants.
  * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object|null}
  */
 export const getSelectedVariantMetadata = createSelector(
   getProductVariants,
-  (state, productId, variantId) => variantId,
-  state => state,
-  (variants, variantId, state) => {
-    if (!variantId) {
+  getSelectedVariant,
+  getVariantId,
+  (variants, variant, variantId) => {
+    if (!variants && !variant) {
       return null;
     }
-
     // Prefer variant data, if available
-    if (variants) {
+    if (variants && variantId !== null) {
       // Get the product data of the selected product from the variants.
-      const productData = variants.products.find(({ id }) => id === variantId);
+      const { metadata } = variants.products.find(({ id }) => id === variantId) || {};
 
-      if (productData) {
-        return productData.metadata || null;
+      if (metadata) {
+        return metadata;
       }
     }
 
     // Check if variant data is available in product list
-    const product = getProductById(state, { variantId });
-    if (product && product.productData.metadata) {
-      return product.productData.metadata || null;
+    // istanbul ignore else
+    if (variant) {
+      return variant.metadata || null;
     }
+    /**
+     * This statement should never be reached since getProductVariants will not return data when the
+     * variant product entity can't be found to determine a baseProductId.
+     */
 
+    // istanbul ignore next
     return null;
   }
 );
@@ -202,6 +129,7 @@ export const getKnownProductRelatives = createSelector(
     return relativesByBaseProductId;
   }
 );
+
 /**
  * Returns relatives which are already fetched into a client app for given product id.
  * @param {Object} state Current state.
@@ -224,3 +152,13 @@ export const getKnownRelatives = createSelector(
     return knownRelations[parentId] || [];
   }
 );
+
+/**
+ * Fallbacks to the selector names < PWA 6.0
+ */
+export const getCurrentProductVariantId = getVariantId;
+export const hasCurrentProductVariants = hasBaseProductVariants;
+export const isProductChildrenSelected = isVariantSelected;
+export const getVariantsByProductId = getProductVariants;
+export const getBaseProductVariants = getProductVariants;
+export { getProductVariants } from './product';
