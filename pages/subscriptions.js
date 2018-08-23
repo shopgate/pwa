@@ -1,8 +1,6 @@
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
 import redirects from '@shopgate/pwa-common/collections/Redirects';
 import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
-import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
-import ToastProvider from '@shopgate/pwa-common/providers/toast';
 import {
   CHECKOUT_PATH,
   LOGIN_PATH,
@@ -26,9 +24,5 @@ export default function app(subscribe) {
     redirects.set(CHECKOUT_PATH, CHECKOUT_LEGACY_PATH);
     redirects.set(REGISTER_PATH, REGISTER_LEGACY_PATH);
     redirects.set(ORDERS_PATH, ORDERS_LEGACY_PATH);
-  });
-
-  subscribe(routeWillEnter$, ({ events }) => {
-    events.emit(ToastProvider.FLUSH);
   });
 }
