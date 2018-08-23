@@ -1,0 +1,38 @@
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import {
+  NAV_MENU_CART,
+  NAV_MENU_CART_AFTER,
+  NAV_MENU_CART_BEFORE,
+} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
+import consume from '../../consumer';
+
+const LABEL = 'navigation.cart';
+
+/**
+ * @param {Function} props.navigate The navigate action.
+ * @returns {JSX}
+ */
+const CartButton = ({ navigate }) => (
+  <Fragment>
+    <Portal name={NAV_MENU_CART_BEFORE} />
+    <Portal name={NAV_MENU_CART}>
+      <NavDrawer.Item
+        label={LABEL}
+        icon={ShoppingCartIcon}
+        onClick={navigate(CART_PATH, LABEL)}
+      />
+    </Portal>
+    <Portal name={NAV_MENU_CART_AFTER} />
+  </Fragment>
+);
+
+CartButton.propTypes = {
+  navigate: PropTypes.func.isRequired,
+};
+
+export default consume(CartButton);

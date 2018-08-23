@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import { UI_TOGGLE_NAVDRAWER } from '@shopgate/pwa-common/constants/ui';
 import Button from '@shopgate/pwa-common/components/Button';
-import BurgerIcon from '@shopgate/pwa-ui-shared/icons/BurgerIcon';
+import { ArrowIcon, BurgerIcon, CrossIcon } from '@shopgate/pwa-ui-shared';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
+import { showBackButton, showCloseButton } from './helpers';
 import connect from './connector';
 import styles from './style';
 
@@ -12,7 +14,8 @@ import styles from './style';
  */
 class NavButton extends Component {
   static propTypes = {
-    showIconShadow: PropTypes.bool,
+    close: PropTypes.func.isRequired,
+    pattern: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -32,7 +35,11 @@ class NavButton extends Component {
    * Handles a click on the icon.
    */
   handleClick = () => {
-    UIEvents.emit(UI_TOGGLE_NAVDRAWER, true);
+    if (this.state.backButton || this.state.closeButton) {
+      this.props.close();
+    } else {
+      NavDrawer.open();
+    }
   }
 
   /**
