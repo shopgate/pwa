@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
+  mockProductId,
   mockedStateWithoutReview,
   mockedStateWithInvalidReview,
   mockedStateWithReview,
@@ -31,7 +32,7 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
   /* eslint-enable global-require */
   return mount(
     <Provider store={store}>
-      <ReviewForm submit={() => {}} productId="foo" />
+      <ReviewForm submit={() => { }} productId={mockProductId} />
     </Provider>,
     mockRenderOptions
   );

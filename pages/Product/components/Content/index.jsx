@@ -21,16 +21,14 @@ import { ProductContext } from '../../context';
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
-    characteristics: PropTypes.shape(),
-    isBaseProduct: PropTypes.bool,
+    isFetching: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
   };
 
   static defaultProps = {
     baseProductId: null,
-    characteristics: null,
-    isBaseProduct: null,
+    isFetching: false,
     productId: null,
     variantId: null,
   };
@@ -46,10 +44,9 @@ class ProductContent extends Component {
     };
 
     this.state = {
-      characteristics: {},
       options: {},
-      productId: props.isBaseProduct === true ? props.productId : null,
-      variantId: props.isBaseProduct === false ? props.productId : null,
+      productId: props.variantId ? props.baseProductId : props.productId,
+      variantId: props.variantId ? props.variantId : null,
     };
   }
 
@@ -57,11 +54,13 @@ class ProductContent extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const isBaseProduct = (nextProps.isBaseProduct === true);
+    if (nextProps.isFetching) {
+      return;
+    }
 
     this.setState({
-      productId: (isBaseProduct) ? this.props.productId : nextProps.baseProductId,
-      variantId: (isBaseProduct) ? null : this.props.productId,
+      productId: nextProps.variantId ? nextProps.baseProductId : nextProps.productId,
+      variantId: nextProps.variantId ? nextProps.variantId : null,
     });
   }
 
@@ -75,7 +74,6 @@ class ProductContent extends Component {
       this.state.productId !== nextState.productId
       || this.state.variantId !== nextState.variantId
       || !isEqual(this.state.options, nextState.options)
-      || !isEqual(this.state.characteristics, nextState.characteristics)
     );
   }
 
@@ -128,9 +126,8 @@ class ProductContent extends Component {
         <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
         <Portal name={portals.PRODUCT_VARIANT_SELECT}>
           <Characteristics
-            productId={this.props.baseProductId}
-            variantId={this.props.variantId}
-            selectedCharacteristics={this.state.characteristics}
+            productId={this.state.productId}
+            variantId={this.state.variantId}
           />
         </Portal>
         <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />

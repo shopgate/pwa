@@ -33,8 +33,9 @@ class CartButton extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.clicked !== nextState.clicked
-      || this.props.disabled !== nextProps.disabled
+      this.state.clicked !== nextState.clicked ||
+      this.props.disabled !== nextProps.disabled ||
+      this.props.loading !== nextProps.loading
     );
   }
 

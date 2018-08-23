@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
+  mockProductId,
   mockedStateWithoutReview,
   mockedStateWithAll,
 } from '@shopgate/pwa-common-commerce/reviews/mock';
@@ -26,8 +27,9 @@ const createComponent = (mockedState, props = {}) => mount(
 
 describe('<Header />', () => {
   let header = null;
+
   it('should render empty', () => {
-    const productId = 'foo';
+    const productId = mockProductId;
     const { rating } = mockedStateWithoutReview.product.productsById[productId].productData;
     header = createComponent(mockedStateWithoutReview, { productId, rating });
 
@@ -38,7 +40,7 @@ describe('<Header />', () => {
   });
 
   it('should render rating summary', () => {
-    const productId = 'foo';
+    const productId = mockProductId;
     const { rating } = mockedStateWithAll.product.productsById[productId].productData;
     header = createComponent(mockedStateWithAll, { productId, rating });
     expect(header.find('Header').exists()).toBe(true);
