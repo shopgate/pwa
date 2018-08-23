@@ -190,7 +190,7 @@ export const getProductName = createSelector(
       return null;
     }
 
-    return product.name || null;
+    return product.name;
   }
 );
 
@@ -207,7 +207,7 @@ export const getProductRating = createSelector(
       return null;
     }
 
-    return product.rating || null;
+    return product.rating;
   }
 );
 
@@ -224,7 +224,7 @@ export const getProductManufacturer = createSelector(
       return null;
     }
 
-    return product.manufacturer || null;
+    return product.manufacturer;
   }
 );
 
@@ -241,7 +241,7 @@ export const getProductStock = createSelector(
       return null;
     }
 
-    return product.stock || null;
+    return product.stock;
   }
 );
 
@@ -258,7 +258,7 @@ export const getProductAvailability = createSelector(
       return null;
     }
 
-    return product.availability || null;
+    return product.availability;
   }
 );
 
@@ -275,7 +275,7 @@ export const getProductFlags = createSelector(
       return null;
     }
 
-    return product.flags || null;
+    return product.flags;
   }
 );
 
@@ -291,7 +291,7 @@ export const getProductMetadata = createSelector(
       return null;
     }
 
-    return product.metadata || null;
+    return product.metadata;
   }
 );
 
@@ -308,7 +308,7 @@ export const getProductPrice = createSelector(
       return null;
     }
 
-    return product.price || null;
+    return product.price;
   }
 );
 

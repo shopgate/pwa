@@ -305,11 +305,6 @@ describe('Product selectors', () => {
           expect(selector({}, { productId })).toBeNull();
         });
 
-        it('should return null when the property is not undefined', () => {
-          delete mockedMainState.product.productsById[productId].productData[property];
-          expect(selector(mockedMainState, { productId })).toBeNull();
-        });
-
         it('should return the property as expected', () => {
           expect(selector(mockedMainState, { productId })).toEqual(productData[property]);
         });
