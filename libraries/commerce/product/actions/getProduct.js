@@ -16,7 +16,7 @@ import { getProductById } from '../selectors/product';
  */
 const getProduct = (productId, forceFetch = false) => (dispatch, getState) => {
   const state = getState();
-  const product = getProductById(state, productId);
+  const product = getProductById(state, { productId });
 
   if (!forceFetch && !shouldFetchData(product)) {
     if (product.productData) {

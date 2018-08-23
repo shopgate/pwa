@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import {
-  getCurrentBaseProductId,
-  getCurrentBaseProduct,
+  getBaseProductId,
+  getBaseProduct,
   getProductById,
   getProducts,
 } from './product';
@@ -39,7 +39,7 @@ export const getCurrentProductVariantId = createSelector(
  * @returns {boolean}
  */
 export const hasCurrentProductVariants = createSelector(
-  getCurrentBaseProduct,
+  getBaseProduct,
   (product) => {
     if (!product) {
       return false;
@@ -79,9 +79,9 @@ export const getVariantsByProductId = createSelector(
  * @param {Object} state The current application state.
  * @return {Object|null} The dedicated variants. Or null when the requested data is unavailable.
  */
-export const getCurrentBaseProductVariants = createSelector(
+export const getBaseProductVariants = createSelector(
   getVariantsState,
-  getCurrentBaseProductId,
+  getBaseProductId,
   (variantsState, productId) => {
     if (
       !variantsState ||
@@ -101,7 +101,7 @@ export const getCurrentBaseProductVariants = createSelector(
  * @returns {boolean}
  */
 export const getProductVariants = createSelector(
-  getCurrentBaseProductVariants,
+  getBaseProductVariants,
   (variants) => {
     if (!variants) {
       return null;
@@ -124,7 +124,7 @@ export const getSelectedVariant = createSelector(
       return null;
     }
 
-    const product = getProductById(state, variantId);
+    const product = getProductById(state, { variantId });
 
     if (product) {
       return product.productData;
@@ -159,7 +159,7 @@ export const getSelectedVariantMetadata = createSelector(
     }
 
     // Check if variant data is available in product list
-    const product = getProductById(state, variantId);
+    const product = getProductById(state, { variantId });
     if (product && product.productData.metadata) {
       return product.productData.metadata || null;
     }
