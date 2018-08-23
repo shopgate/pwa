@@ -15,5 +15,7 @@ exports[`<ProgressBar /> renders an indeterminate progress bar. 1`] = `
   onExiting={[Function]}
   timeout={300}
   unmountOnExit={false}
-/>
+>
+  <Component />
+</Transition>
 `;
