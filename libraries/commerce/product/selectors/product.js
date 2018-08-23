@@ -105,7 +105,8 @@ export const getProductById = createSelector(
 );
 
 /**
- * Retrieves the id of the current selected product from the component props.
+ * Retrieves the id of the current selected product from the component props. When the props
+ * contain a variant id it will return this one instead of the product id.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {string|null} The id of the current product.
@@ -131,6 +132,35 @@ export const getProductId = (state, props) => {
 
   return props.productId || null;
 };
+
+/**
+ * Gets the variant id out of the selector props.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {string|null}
+ */
+export const getVariantProductId = (state, props) => {
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 the variant selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getVariantId() needs to be called with a props object that includes a variantId.');
+  }
+
+  const { variantId = null } = props || {};
+
+  return variantId;
+};
+
+/**
+ * Checks if currently a variant is selected within the props.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {boolean}
+ */
+export const isVariantSelected = (state, props) => !!getVariantProductId(state, props);
 
 /**
  * Retrieves the product data for the passed productId from the store.
@@ -530,12 +560,30 @@ export const getProductVariants = createSelector(
 );
 
 /**
+ * Retrieves a product for the selected variant id from the store.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {Object|null} The selected variant or null if none is selected
+ */
+export const getSelectedVariant = createSelector(
+  getProduct,
+  isVariantSelected,
+  (product, selected) => {
+    if (!product || !selected) {
+      return null;
+    }
+
+    return product;
+  }
+);
+
+/**
  * Determines if a product is orderable.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {boolean}
  */
-export const isOrderable = createSelector(
+export const isProductOrderable = createSelector(
   getProductStock,
   stockInfo => !!(stockInfo && stockInfo.orderable)
 );
@@ -583,25 +631,6 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
     }
 
     return found.availability;
-  }
-);
-
-/**
- * Retrieves the product orderable information.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @todo Check if this selector can be combined with isOrderable().
- * @return {boolean}
- */
-export const isProductOrderable = createSelector(
-  hasProductVariants,
-  isOrderable,
-  (withVariants, orderable) => {
-    if (!orderable || withVariants) {
-      return false;
-    }
-
-    return orderable;
   }
 );
 
@@ -698,7 +727,7 @@ export const getProductsResult = createSelector(
 );
 
 /**
- * Mappings for PWA < 6.0
+ * Selector mappings for PWA < 6.0
  * @deprecated
  */
 export const getCurrentProduct = getProduct;
@@ -708,3 +737,4 @@ export const getCurrentBaseProduct = getBaseProduct;
 export const getCurrentProductStock = getProductStock;
 export const getProductStockInfo = getProductStock;
 export const getProductBasePrice = getProductUnitPrice;
+export const isOrderable = isProductOrderable;

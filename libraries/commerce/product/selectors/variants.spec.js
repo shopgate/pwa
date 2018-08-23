@@ -1,17 +1,11 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import { logger } from '@shopgate/pwa-core/helpers';
-
 import {
   mockedProductState,
-  mockedProductsById,
   mockedVariantProductMetadata,
   mockedVariantMetadata,
 } from './product.mock';
 
 import {
-  getVariantId,
-  isVariantSelected,
-  getSelectedVariant,
   getSelectedVariantMetadata,
   getKnownRelatives,
 } from './variants';
@@ -34,60 +28,6 @@ describe('Variants selectors', () => {
     // Create a deep copy of the state to avoid unintended selector caching.
     mockedState = JSON.parse(JSON.stringify({ ...mockedProductState }));
     jest.clearAllMocks();
-  });
-
-  describe('getVariantId()', () => {
-    it('should return null and log a message when no props are passed', () => {
-      expect(getVariantId(mockedState)).toBeNull();
-      expect(logger.error).toHaveBeenCalledTimes(1);
-    });
-
-    it('should return null when the props dont contain a variantId', () => {
-      expect(getVariantId(mockedState, { productId: 'product_1' })).toBeNull();
-    });
-
-    it('should return the expected variant id', () => {
-      const variantId = 'product_2';
-      expect(getVariantId(mockedState, { variantId })).toBe(variantId);
-    });
-  });
-
-  describe('isVariantSelected()', () => {
-    it('should return false when no variantId was passed', () => {
-      expect(isVariantSelected({}, { productId: 'product_1' })).toBe(false);
-    });
-
-    it('should return true when a variantId was passed', () => {
-      const productId = 'product_1';
-      const variantId = 'product_2';
-      expect(isVariantSelected(mockedState, { productId, variantId })).toBe(true);
-    });
-  });
-
-  describe('getSelectedVariant()', () => {
-    it('should return null when no variant is selected', () => {
-      const productId = 'product_1';
-      expect(getSelectedVariant(mockedState, { productId })).toBeNull();
-    });
-
-    it('should return null when no variant is selected', () => {
-      const productId = 'product_1';
-      const variantId = 'unknown';
-      expect(getSelectedVariant(mockedState, { productId, variantId })).toBeNull();
-    });
-
-    it('should return null for a fetching product', () => {
-      const productId = 'product_1';
-      const variantId = 'product_4';
-      expect(getSelectedVariant(mockedState, { productId, variantId })).toBeNull();
-    });
-
-    it('should return a product', () => {
-      const productId = 'product_1';
-      const variantId = 'product_2';
-      const { productData } = mockedProductsById[variantId];
-      expect(getSelectedVariant(mockedState, { productId, variantId })).toEqual(productData);
-    });
   });
 
   describe('getSelectedVariantMetadata()', () => {

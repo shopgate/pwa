@@ -1,60 +1,13 @@
 import { createSelector } from 'reselect';
-import { logger } from '@shopgate/pwa-core/helpers';
 import {
-  getProduct,
   getProducts,
   getProductById,
   getProductVariants,
   hasBaseProductVariants,
-} from './product';
-
-/**
- * Gets the variant id out of the props.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {string|null}
- */
-export const getVariantId = (state, props) => {
-  if (typeof props === 'undefined') {
-    /**
-     * Before PWA 6.0 the variant selectors relied on a "currentProduct" state which doesn't exist
-     * anymore. Their successors require a props object which contains a variantId.
-     * To support debugging an error will be logged, if the props are missing at invocation.
-     */
-    logger.error('getVariantId() needs to be called with a props object that includes a variantId.');
-  }
-
-  const { variantId = null } = props || {};
-
-  return variantId;
-};
-
-/**
- * Checks if currently a variant is selected. It checks if the props contain a variantId.
- * For determination the props need to include a variantId.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {boolean}
- */
-export const isVariantSelected = (state, props) => !!getVariantId(state, props);
-
-/**
- * Retrieves a product for the selected variantId from the store.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @returns {Object|null} The selected variant or null if none is selected
- */
-export const getSelectedVariant = createSelector(
-  getProduct,
   isVariantSelected,
-  (product, selected) => {
-    if (!product || !selected) {
-      return null;
-    }
-
-    return product;
-  }
-);
+  getSelectedVariant,
+  getVariantProductId,
+} from './product';
 
 /**
  * Retrieves the metadata from the product data within the variants.
@@ -65,7 +18,7 @@ export const getSelectedVariant = createSelector(
 export const getSelectedVariantMetadata = createSelector(
   getProductVariants,
   getSelectedVariant,
-  getVariantId,
+  getVariantProductId,
   (variants, variant, variantId) => {
     if (!variants && !variant) {
       return null;
@@ -154,11 +107,12 @@ export const getKnownRelatives = createSelector(
 );
 
 /**
- * Fallbacks to the selector names < PWA 6.0
+ * Selector mappings for PWA < 6.0
+ * @deprecated
  */
-export const getCurrentProductVariantId = getVariantId;
+export const getCurrentProductVariantId = getVariantProductId;
 export const hasCurrentProductVariants = hasBaseProductVariants;
 export const isProductChildrenSelected = isVariantSelected;
 export const getVariantsByProductId = getProductVariants;
-export const getBaseProductVariants = getProductVariants;
+export const getCurrentBaseProductVariants = getProductVariants;
 export { getProductVariants } from './product';

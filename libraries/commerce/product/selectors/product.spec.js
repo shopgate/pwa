@@ -30,6 +30,8 @@ import {
   getProductVariantsState,
   getProductById,
   getProductId,
+  getVariantProductId,
+  isVariantSelected,
   getProduct,
   getProductName,
   getProductRating,
@@ -46,15 +48,15 @@ import {
   getProductProperties,
   getProductImages,
   getProductVariants,
-  isOrderable,
+  isProductOrderable,
   hasProductVariants,
+  getSelectedVariant,
   isBaseProduct,
   getBaseProductId,
   getBaseProduct,
   hasBaseProductVariants,
   getVariantId,
   getVariantAvailabilityByCharacteristics,
-  isProductOrderable,
 } from './product';
 
 jest.mock('@shopgate/pwa-core/helpers', () => {
@@ -219,6 +221,34 @@ describe('Product selectors', () => {
       const productId = 'product_id';
       const variantId = null;
       expect(getProductId({}, { productId, variantId })).toBe(productId);
+    });
+  });
+
+  describe('getVariantProductId()', () => {
+    it('should return null and log a message when no props are passed', () => {
+      expect(getVariantProductId(mockedMainState)).toBeNull();
+      expect(logger.error).toHaveBeenCalledTimes(1);
+    });
+
+    it('should return null when the props dont contain a variantId', () => {
+      expect(getVariantProductId(mockedMainState, { productId: 'product_1' })).toBeNull();
+    });
+
+    it('should return the expected variant id', () => {
+      const variantId = 'product_2';
+      expect(getVariantProductId(mockedMainState, { variantId })).toBe(variantId);
+    });
+  });
+
+  describe('isVariantSelected()', () => {
+    it('should return false when no variantId was passed', () => {
+      expect(isVariantSelected({}, { productId: 'product_1' })).toBe(false);
+    });
+
+    it('should return true when a variantId was passed', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+      expect(isVariantSelected(mockedMainState, { productId, variantId })).toBe(true);
     });
   });
 
@@ -551,25 +581,25 @@ describe('Product selectors', () => {
     });
   });
 
-  describe('isOrderable()', () => {
+  describe('isProductOrderable()', () => {
     it('should return false when the product is not available', () => {
       const productId = 'unavailable';
-      expect(isOrderable(mockedMainState, { productId })).toBe(false);
+      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
     });
 
     it('should return false when the product does not have stock info', () => {
       const productId = 'product_4';
-      expect(isOrderable(mockedMainState, { productId })).toBe(false);
+      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
     });
 
     it('should return false when the product is not orderable', () => {
       const productId = 'product_3';
-      expect(isOrderable(mockedMainState, { productId })).toBe(false);
+      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
     });
 
     it('should return true when the product is orderable', () => {
       const productId = 'product_5';
-      expect(isOrderable(mockedMainState, { productId })).toBe(true);
+      expect(isProductOrderable(mockedMainState, { productId })).toBe(true);
     });
   });
 
@@ -587,6 +617,32 @@ describe('Product selectors', () => {
     it('should return true when the product has variants', () => {
       const productId = 'product_1';
       expect(hasProductVariants(mockedMainState, { productId })).toBe(true);
+    });
+  });
+
+  describe('getSelectedVariant()', () => {
+    it('should return null when no variant is selected', () => {
+      const productId = 'product_1';
+      expect(getSelectedVariant(mockedMainState, { productId })).toBeNull();
+    });
+
+    it('should return null when no variant is selected', () => {
+      const productId = 'product_1';
+      const variantId = 'unknown';
+      expect(getSelectedVariant(mockedMainState, { productId, variantId })).toBeNull();
+    });
+
+    it('should return null for a fetching product', () => {
+      const productId = 'product_1';
+      const variantId = 'product_4';
+      expect(getSelectedVariant(mockedMainState, { productId, variantId })).toBeNull();
+    });
+
+    it('should return a product', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+      const { productData } = mockedProductsById[variantId];
+      expect(getSelectedVariant(mockedMainState, { productId, variantId })).toEqual(productData);
     });
   });
 
@@ -768,33 +824,6 @@ describe('Product selectors', () => {
 
       const props = { productId, characteristics };
       expect(getVariantAvailabilityByCharacteristics(mockedMainState, props)).toEqual(availability);
-    });
-  });
-
-  describe('isProductOrderable()', () => {
-    it('should return false when the product is not available', () => {
-      const productId = 'unavailable';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
-    });
-
-    it('should return false when the product is currently fetching', () => {
-      const productId = 'product_4';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
-    });
-
-    it('should return false when the product is a base product', () => {
-      const productId = 'product_1';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
-    });
-
-    it('should return false when the product is a not orderable variant', () => {
-      const productId = 'product_3';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
-    });
-
-    it('should return true when the product is an orderable variant', () => {
-      const productId = 'product_2';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(true);
     });
   });
 });
