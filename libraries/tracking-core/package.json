@@ -15,9 +15,6 @@
     "shopgate",
     "connect"
   ],
-  "scripts": {
-    "test": "mocha --recursive --compilers js:babel-core/register ./tests/CoreTest ./tests/FbPixelTest ./tests/UnifiedTest ./tests/GaBaseTest ./tests/BaseTest ./tests/AppHandlerTest ./tests/urlMappingTest ./tests/helperTest"
-  },
   "devDependencies": {
     "@shopgate/eslint-config": "5.7.0-beta.2",
     "@shopgate/pwa-core": "5.7.0-beta.2",

@@ -14,11 +14,6 @@
     "shopgate",
     "connect"
   ],
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "cover": "jest --coverage"
-  },
   "dependencies": {
     "recompose": "^0.26.0",
     "reselect": "^3.0.1"
@@ -29,7 +24,6 @@
     "@shopgate/pwa-unit-test": "5.7.0-beta.2",
     "@shopgate/react-hammerjs": "^0.5.3",
     "@shopgate/tracking-core": "5.7.0-beta.2",
-    "jest": "^23.5.0",
     "lodash": "^4.17.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"

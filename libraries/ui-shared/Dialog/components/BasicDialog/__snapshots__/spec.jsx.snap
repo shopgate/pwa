@@ -125,7 +125,12 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
             "calls": Array [
               Array [],
             ],
-            "results": undefined,
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
           }
         }
         testId="Button"
