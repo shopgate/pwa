@@ -1,12 +1,13 @@
+// eslint-disable-next-line spaced-comment
 /// <reference types="Cypress" />
 
 import els from '../../elements/de';
 import { clearProductFromCart } from '../../helper/cart';
-import{ logOutUser } from '../../helper/user';
+import { logOutUser } from '../../helper/user';
 
 describe('Native Checkout', () => {
   it('should check for correct title', () => {
-    cy.visit('')
+    cy.visit('');
     cy.get(els.liveShoppingWidgetWithExpectedProduct)
       .should('be.visible')
       .click();
@@ -110,7 +111,7 @@ describe('Native Checkout', () => {
     cy.get(els.totalsComponentSpan)
       .contains('10,00')
       .should('be.visible');
-      clearProductFromCart();
-      logOutUser();
+    clearProductFromCart();
+    logOutUser();
   });
 });

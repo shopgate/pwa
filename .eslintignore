@@ -1,6 +1,6 @@
-/.cache-loader/
+node_modules
+.cache-loader
+coverage
 /extensions/
+/config/
 /public/
-/coverage/
-e2e/
-**/dist/

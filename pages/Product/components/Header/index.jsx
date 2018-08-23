@@ -63,7 +63,7 @@ const ProductHeader = () => (
                   <div className={styles.productInfo}>
                     <Portal name={portals.PRODUCT_MANUFACTURER_BEFORE} />
                     <Portal name={portals.PRODUCT_MANUFACTURER}>
-                      <Manufacturer productId={productId} />
+                      <Manufacturer productId={id} />
                     </Portal>
                     <Portal name={portals.PRODUCT_MANUFACTURER_AFTER} />
                   </div>

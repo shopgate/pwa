@@ -19,6 +19,12 @@ import styles from './style';
  * The Review Form.
  */
 class ReviewForm extends Component {
+  static validationLengths = {
+    [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
+    [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
+    [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
+  };
+
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
@@ -27,20 +33,14 @@ class ReviewForm extends Component {
     review: PropTypes.shape(),
   };
 
-  static defaultProps = {
-    authorName: '',
-    productId: null,
-    review: {},
-  };
-
   static contextTypes = {
     i18n: PropTypes.func,
   };
 
-  static validationLengths = {
-    [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
-    [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
-    [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
+  static defaultProps = {
+    authorName: '',
+    productId: null,
+    review: {},
   };
 
   /**
