@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { Provider as StoreProvider } from 'redux-props';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import syncRouter from '@virtuous/redux-conductor';
 import hideSplashScreen from '@shopgate/pwa-core/commands/hideSplashScreen';
@@ -17,12 +18,10 @@ import smoothscrollPolyfill from './helpers/scrollPolyfill';
 injectTapEventPlugin();
 smoothscrollPolyfill();
 
-// If (process.env.NODE_ENV !== 'production') {
-//   Const { whyDidYouUpdate } = require('why-did-you-update');
-//   WhyDidYouUpdate(React, {
-
-//   });
-// }
+if (process.env.NODE_ENV !== 'production') {
+  const { whyDidYouUpdate } = require('why-did-you-update');
+  // whyDidYouUpdate(React);
+}
 
 /**
  * The application component.
@@ -73,13 +72,15 @@ class App extends PureComponent {
    */
   render() {
     return (
-      <Provider store={this.store}>
-        <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
-          <div>
-            {this.props.children}
-          </div>
-        </I18n.Provider>
-      </Provider>
+      <StoreProvider store={this.store}>
+        <Provider store={this.store}>
+          <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
+            <div>
+              {this.props.children}
+            </div>
+          </I18n.Provider>
+        </Provider>
+      </StoreProvider>
     );
   }
 }

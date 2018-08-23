@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavDrawer Divider should match the snapshot 1`] = `
+<NavDrawerDivider>
+  <hr
+    className={
+      Object {
+        "data-css-1lcpvs2": "",
+      }
+    }
+  />
+</NavDrawerDivider>
+`;

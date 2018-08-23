@@ -32,6 +32,12 @@
   dependencies:
     "@babel/types" "7.0.0-beta.40"
 
+"@babel/helper-split-export-declaration@7.0.0-beta.44":
+  version "7.0.0-beta.44"
+  resolved "https://registry.yarnpkg.com/@babel/helper-split-export-declaration/-/helper-split-export-declaration-7.0.0-beta.44.tgz#c0b351735e0fbcb3822c8ad8db4e583b05ebd9dc"
+  dependencies:
+    "@babel/types" "7.0.0-beta.44"
+
 "@babel/highlight@7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.0.0-beta.40.tgz#b43d67d76bf46e1d10d227f68cddcd263786b255"
@@ -6614,7 +6620,7 @@ react-transition-hooks@^1.2.0:
     create-react-class "^15.5.2"
     prop-types "^15.5.8"
 
-react@^16.3.2:
+react@16.3.2, react@^16.3.2:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
@@ -6748,6 +6754,10 @@ redux-mock-store@^1.3.0:
   resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.5.1.tgz#fca4335392e66605420b5559fe02fc5b8bb6d63c"
   dependencies:
     lodash.isplainobject "^4.0.6"
+
+redux-props@^1.0.0-beta.3:
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/redux-props/-/redux-props-1.0.0-beta.3.tgz#4629cca6c73ba137fa3489a5c0cd3d0cfbb8e7f3"
 
 redux-test-utils@^0.1.3:
   version "0.1.3"
