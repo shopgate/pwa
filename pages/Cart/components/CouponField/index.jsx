@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { RouteContext } from '@virtuous/react-conductor/Router';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import connect from './connector';
 import Layout from './components/Layout';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../constants';
+
+const defaultState = {
+  value: '',
+};
 
 /**
  * The Coupon Field component.
  */
 class CouponField extends Component {
   static propTypes = {
+    visible: PropTypes.bool.isRequired,
     addCoupon: PropTypes.func,
     isIos: PropTypes.bool,
     isLoading: PropTypes.bool,
-    isVisible: PropTypes.bool,
+    isSupported: PropTypes.bool,
     onToggleFocus: PropTypes.func,
   };
 
@@ -21,20 +27,22 @@ class CouponField extends Component {
     addCoupon: () => {},
     isIos: false,
     isLoading: false,
-    isVisible: true,
+    isSupported: true,
     onToggleFocus: () => {},
   };
 
-  /**
-   * Constructor.
-   * @param {Object} props The components props.
-   */
-  constructor(props) {
-    super(props);
+  state = defaultState;
 
-    this.state = {
-      value: '',
-    };
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    /**
+     * Reset the form values when the page is not visible to the user.
+     */
+    if (this.props.visible && !nextProps.visible) {
+      this.setState(defaultState);
+    }
   }
 
   /**
@@ -69,9 +77,8 @@ class CouponField extends Component {
     }
 
     this.props.addCoupon(this.state.value)
-      .then(() => {
-        this.setState({ value: '' });
-      }).catch(() => {});
+      .then(this.reset)
+      .catch(() => {});
   };
 
   /**
@@ -114,12 +121,16 @@ class CouponField extends Component {
     this.props.onToggleFocus(isFocused);
   };
 
+  reset = () => {
+    this.setState(defaultState);
+  }
+
   /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    if (!this.props.isVisible) {
+    if (!this.props.isSupported) {
       return null;
     }
 
@@ -146,4 +157,10 @@ class CouponField extends Component {
   }
 }
 
-export default connect(CouponField);
+export default connect(props => (
+  <RouteContext.Consumer>
+    {({ visible }) => (
+      <CouponField {...props} visible={visible} />
+    )}
+  </RouteContext.Consumer>
+));
