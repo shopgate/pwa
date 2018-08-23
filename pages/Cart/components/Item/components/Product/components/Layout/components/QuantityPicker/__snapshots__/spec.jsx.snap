@@ -85,6 +85,7 @@ exports[`<QuantityPicker /> Given onChange callback is triggered correctly shoul
           123,
         ],
       ],
+      "results": undefined,
     }
   }
   onToggleEditMode={[Function]}
@@ -122,6 +123,7 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
           false,
         ],
       ],
+      "results": undefined,
     }
   }
   quantity={1}
@@ -155,6 +157,7 @@ exports[`<QuantityPicker /> Given onToggleEditMode callback is triggered correct
           true,
         ],
       ],
+      "results": undefined,
     }
   }
   quantity={1}
