@@ -4,9 +4,12 @@ cache:
   - node_modules
 language: node_js
 node_js:
-- 8.10.0
+- "10"
+cache:
+  directories:
+    - node_modules
 before_script: cd frontend/ && yarn install
-script: yarn run cover
+script: yarn run cover --maxWorkers=4 --ci
 after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
