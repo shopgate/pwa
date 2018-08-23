@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hasProductData, isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProduct, isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
 /**
@@ -9,7 +9,7 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
  */
 const mapStateToProps = (state, props) => ({
   disabled: !isProductOrderable(state, props),
-  loading: !hasProductData(state, props),
+  loading: !getProduct(state, props),
 });
 
 /**

@@ -19,16 +19,13 @@ exports[`<ProductContent> should render 1`] = `
     <ProductContent
       addToCart={[Function]}
       baseProductId="913"
-      characteristics={null}
-      isBaseProduct={true}
+      isFetching={false}
       productId="913"
       variantId={null}
-      variants={null}
     >
       <Provider
         value={
           Object {
-            "characteristics": Object {},
             "conditioner": Conditioner {
               "conditioners": Map {
                 "product-variants" => [Function],
@@ -136,6 +133,7 @@ exports[`<ProductContent> should render 1`] = `
                       classNames={Object {}}
                       controls={false}
                       disabled={false}
+                      historyPath=""
                       indicators={true}
                       initialSlide={0}
                       interval={3000}
@@ -938,7 +936,6 @@ exports[`<ProductContent> should render 1`] = `
           >
             <Characteristics
               productId="913"
-              selectedCharacteristics={Object {}}
               variantId={null}
             >
               <Consumer>
