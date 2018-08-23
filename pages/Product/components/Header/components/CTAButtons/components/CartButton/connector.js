@@ -8,7 +8,7 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  disabled: isProductPageOrderable(state, props),
+  disabled: !isProductPageOrderable(state, props),
   loading: isProductPageLoading(state, props),
 });
 
