@@ -14,10 +14,15 @@ export const isCategoryEmpty = createSelector(
   getCurrentCategoryChildCount,
   getProductsResult,
   (productCount, childrenCount, { products, totalProductCount }) => {
-    if (
-      (childrenCount === 0 && productCount === 0)
-      || (totalProductCount !== null && products.length === 0)
-    ) {
+    if (childrenCount !== 0) {
+      return false;
+    }
+
+    if (productCount === 0) {
+      return true;
+    }
+
+    if (totalProductCount !== null && products.length === 0) {
       return true;
     }
 
