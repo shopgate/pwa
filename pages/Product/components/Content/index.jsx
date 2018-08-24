@@ -22,6 +22,7 @@ class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
     isFetching: PropTypes.bool,
+    isVariant: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
   };
@@ -29,6 +30,7 @@ class ProductContent extends Component {
   static defaultProps = {
     baseProductId: null,
     isFetching: false,
+    isVariant: false,
     productId: null,
     variantId: null,
   };
@@ -54,14 +56,34 @@ class ProductContent extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isFetching) {
-      return;
+    const productChanged = this.props.productId !== nextProps.productId;
+
+    let { productId } = nextProps;
+
+    if (productChanged) {
+      if (nextProps.isFetching) {
+        ({ productId } = this.props);
+      } else if (nextProps.baseProductId) {
+        productId = nextProps.baseProductId;
+      }
+    } else if (nextProps.baseProductId) {
+      productId = nextProps.baseProductId;
+    }
+
+    let variantId = null;
+
+    if (nextProps.variantId) {
+      ({ variantId } = nextProps);
+    } else if (nextProps.isVariant) {
+      variantId = nextProps.productId;
     }
 
     this.setState({
-      productId: nextProps.variantId ? nextProps.baseProductId : nextProps.productId,
-      variantId: nextProps.variantId ? nextProps.variantId : null,
+      productId,
+      variantId,
     });
+
+    console.warn(this.state);
   }
 
   /**

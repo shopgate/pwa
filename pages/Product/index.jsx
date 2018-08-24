@@ -9,9 +9,9 @@ import ProductContent from './components/Content';
  * The product detail page (PDP).
  * @return {JSX}
  */
-const Product = ({ id }) => (
+const Product = ({ id, isVariant }) => (
   <View>
-    {id && <ProductContent productId={id} />}
+    {id && <ProductContent productId={id} isVariant={isVariant} />}
   </View>
 );
 
@@ -25,8 +25,8 @@ Product.defaultProps = {
 
 export default () => (
   <RouteContext.Consumer>
-    {({ params }) => (
-      <Product id={hex2bin(params.productId) || null} />
+    {({ params, state }) => (
+      <Product id={hex2bin(params.productId) || null} isVariant={state.isVariant || false} />
     )}
   </RouteContext.Consumer>
 );
