@@ -1,12 +1,23 @@
-import { mockedProductState } from './product.mock';
+import {
+  mockedState as mockedProductState,
+  mockedVariantStateAllFetching,
+  mockedVariantStateVariantDataFetching,
+  mockedVariantStateVariantsFetching,
+  mockedVariantStateComplete,
+} from './product.mock';
 import {
   isProductPageLoading,
   isProductPageOrderable,
 } from './page';
 
-describe('Product page selectors', () => {
-  let mockedState;
+/**
+ * Creates a deep copy of a passed to avoid unintended selector caching.
+ * @param {Object} mockedState A mocked state.
+ * @return {Object}
+ */
+const createState = mockedState => JSON.parse(JSON.stringify(mockedState));
 
+describe('Product page selectors', () => {
   const propsBase = {
     productId: 'product_1',
   };
@@ -16,9 +27,10 @@ describe('Product page selectors', () => {
     variantId: 'product_2',
   };
 
+  let mockedDefaultState;
+
   beforeEach(() => {
-    // Create a deep copy of the state to avoid unintended selector caching.
-    mockedState = JSON.parse(JSON.stringify(mockedProductState));
+    mockedDefaultState = JSON.parse(JSON.stringify(mockedProductState));
     jest.clearAllMocks();
   });
 
@@ -26,37 +38,38 @@ describe('Product page selectors', () => {
     describe('Simple products without variants', () => {
       it('should return true if the product is fetching', () => {
         const productId = 'product_4';
-        expect(isProductPageLoading(mockedState, { productId })).toBe(true);
+        expect(isProductPageLoading(mockedDefaultState, { productId })).toBe(true);
       });
 
       it('should return false if the product is loaded', () => {
         const productId = 'product_5';
-        expect(isProductPageLoading(mockedState, { productId })).toBe(false);
+        expect(isProductPageLoading(mockedDefaultState, { productId })).toBe(false);
       });
     });
 
     describe('Products with variants', () => {
       it('should return true if the base product is fetching', () => {
-        delete mockedState.product.productsById[propsBase.productId].productData;
-        expect(isProductPageLoading(mockedState, propsBase)).toBe(true);
+        const state = createState(mockedVariantStateAllFetching);
+        expect(isProductPageLoading(state, propsBase)).toBe(true);
       });
 
       it('should return true if the variant data is fetching', () => {
-        delete mockedState.product.variantsByProductId[propsBase.productId].variants;
-        expect(isProductPageLoading(mockedState, propsBase)).toBe(true);
+        const state = createState(mockedVariantStateVariantDataFetching);
+        expect(isProductPageLoading(state, propsBase)).toBe(true);
       });
 
       it('should return false if basic data is loaded, but no variant product is selected yet', () => {
-        expect(isProductPageLoading(mockedState, propsBase)).toBe(false);
+        expect(isProductPageLoading(mockedDefaultState, propsBase)).toBe(false);
       });
 
       it('should return true if a variant is selected, but the product data is fetching', () => {
-        delete mockedState.product.productsById[propsFull.variantId].productData;
-        expect(isProductPageLoading(mockedState, propsFull)).toBe(true);
+        const state = createState(mockedVariantStateVariantsFetching);
+        expect(isProductPageLoading(state, propsFull)).toBe(true);
       });
 
       it('should return false if a variant product is selected an all data is present', () => {
-        expect(isProductPageLoading(mockedState, propsFull)).toBe(false);
+        const state = createState(mockedVariantStateComplete);
+        expect(isProductPageLoading(state, propsFull)).toBe(false);
       });
     });
   });
@@ -65,37 +78,38 @@ describe('Product page selectors', () => {
     describe('Simple products without variants', () => {
       it('should return false if the product is fetching', () => {
         const productId = 'product_4';
-        expect(isProductPageOrderable(mockedState, { productId })).toBe(false);
+        expect(isProductPageOrderable(mockedDefaultState, { productId })).toBe(false);
       });
 
       it('should return true if the product is loaded', () => {
         const productId = 'product_5';
-        expect(isProductPageOrderable(mockedState, { productId })).toBe(true);
+        expect(isProductPageOrderable(mockedDefaultState, { productId })).toBe(true);
       });
     });
 
     describe('Products with variants', () => {
       it('should return false if the base product is fetching', () => {
-        delete mockedState.product.productsById[propsBase.productId].productData;
-        expect(isProductPageOrderable(mockedState, propsBase)).toBe(false);
+        const state = createState(mockedVariantStateAllFetching);
+        expect(isProductPageOrderable(state, propsBase)).toBe(false);
       });
 
       it('should return false if the variant data is fetching', () => {
-        delete mockedState.product.variantsByProductId[propsBase.productId].variants;
-        expect(isProductPageOrderable(mockedState, propsBase)).toBe(false);
+        const state = createState(mockedVariantStateVariantDataFetching);
+        expect(isProductPageOrderable(state, propsBase)).toBe(false);
       });
 
       it('should return false if basic data is loaded, but no variant product is selected yet', () => {
-        expect(isProductPageOrderable(mockedState, propsBase)).toBe(false);
+        expect(isProductPageOrderable(mockedDefaultState, propsBase)).toBe(false);
       });
 
       it('should return false if a variant is selected, but the product data is fetching', () => {
-        delete mockedState.product.productsById[propsFull.variantId].productData;
-        expect(isProductPageOrderable(mockedState, propsFull)).toBe(false);
+        const state = createState(mockedVariantStateVariantsFetching);
+        expect(isProductPageOrderable(state, propsFull)).toBe(false);
       });
 
       it('should return true if a variant product is selected an all data is present', () => {
-        expect(isProductPageOrderable(mockedState, propsFull)).toBe(true);
+        const state = createState(mockedVariantStateComplete);
+        expect(isProductPageOrderable(state, propsFull)).toBe(true);
       });
     });
   });

@@ -1,3 +1,5 @@
+import cloneDeep from 'lodash/cloneDeep';
+
 export const mockedVariantProductMetadata = { some: 'product metadata' };
 export const mockedProductsById = {
   // Base product with variants
@@ -185,6 +187,7 @@ export const mockedProperty1 = {
   label: 'Article No.',
   value: '9252529931',
 };
+
 export const mockedProperty2 = {
   label: 'Manufacturer',
   value: 'Nike',
@@ -276,7 +279,7 @@ export const mockedVariantsByProductId = {
   },
 };
 
-export const mockedProductState = {
+export const mockedState = {
   product: {
     productsById: mockedProductsById,
     shippingByProductId: mockedShippingByProductId,
@@ -284,5 +287,42 @@ export const mockedProductState = {
     propertiesByProductId: mockedPropertiesByProductId,
     imagesByProductId: mockedImagesByProductId,
     variantsByProductId: mockedVariantsByProductId,
+    optionsByProductId: {},
   },
 };
+
+/**
+ * The following mocked states can be used simplified product variant testing. They mimic the
+ * product state in different stages of product data fetching.
+ * product_1 is the base product of product_2 and product_2.
+ */
+
+// Base product and all its variants are available.
+export const mockedVariantStateComplete = {
+  product: {
+    productsById: {
+      product_1: cloneDeep(mockedState.product.productsById.product_1),
+      product_2: cloneDeep(mockedState.product.productsById.product_2),
+      product_3: cloneDeep(mockedState.product.productsById.product_3),
+    },
+    variantsByProductId: mockedVariantsByProductId,
+  },
+};
+
+// Everything is fetching.
+export const mockedVariantStateAllFetching = cloneDeep(mockedVariantStateComplete);
+delete mockedVariantStateAllFetching.product.variantsByProductId.product_1;
+delete mockedVariantStateAllFetching.product.productsById.product_1;
+delete mockedVariantStateAllFetching.product.productsById.product_2;
+delete mockedVariantStateAllFetching.product.productsById.product_3;
+
+// Base product is available, but variants data and variants ara fetching.
+export const mockedVariantStateVariantDataFetching = cloneDeep(mockedVariantStateComplete);
+delete mockedVariantStateVariantDataFetching.product.variantsByProductId.product_1;
+delete mockedVariantStateVariantDataFetching.product.productsById.product_2;
+delete mockedVariantStateVariantDataFetching.product.productsById.product_3;
+
+// Base product and variants data is available, but variants ara fetching.
+export const mockedVariantStateVariantsFetching = cloneDeep(mockedVariantStateComplete);
+delete mockedVariantStateVariantsFetching.product.productsById.product_2;
+delete mockedVariantStateVariantsFetching.product.productsById.product_3;

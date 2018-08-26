@@ -397,18 +397,22 @@ export const isBaseProduct = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProduct,
-  (product) => {
-    if (!product) {
-      return null;
+  (state, props = {}) => props,
+  (product, props) => {
+    if (product) {
+      // First try to determine a baseProductId via a selected product.
+      const { baseProductId = null } = product;
+
+      if (baseProductId !== null) {
+        return baseProductId;
+      }
+
+      return product.id;
     }
 
-    const { baseProductId = null } = product;
-
-    if (baseProductId !== null) {
-      return baseProductId;
-    }
-
-    return product.id;
+    const { productId } = props;
+    // Use the productId from the props as fallback.
+    return typeof productId !== 'undefined' ? productId : null;
   }
 );
 

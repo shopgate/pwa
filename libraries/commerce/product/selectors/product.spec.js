@@ -7,7 +7,7 @@ import {
 } from '../constants/';
 
 import {
-  mockedProductState,
+  mockedState as mockedProductState,
   mockedProductsById,
   mockedShippingByProductId,
   mockedDescriptionsByProductId,
@@ -79,11 +79,11 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 }));
 
 describe('Product selectors', () => {
-  let mockedMainState;
+  let mockedState;
 
   beforeEach(() => {
     // Create a deep copy of the state to avoid unintended selector caching.
-    mockedMainState = JSON.parse(JSON.stringify(mockedProductState));
+    mockedState = JSON.parse(JSON.stringify(mockedProductState));
     mockedConfig = null;
     jest.clearAllMocks();
   });
@@ -94,8 +94,8 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      const { product } = mockedMainState;
-      expect(getProductState(mockedMainState)).toEqual(product);
+      const { product } = mockedState;
+      expect(getProductState(mockedState)).toEqual(product);
     });
   });
 
@@ -105,7 +105,7 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      expect(getProducts(mockedMainState)).toEqual(mockedProductsById);
+      expect(getProducts(mockedState)).toEqual(mockedProductsById);
     });
   });
 
@@ -115,7 +115,7 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      expect(getProductShippingState(mockedMainState)).toEqual(mockedShippingByProductId);
+      expect(getProductShippingState(mockedState)).toEqual(mockedShippingByProductId);
     });
   });
 
@@ -125,7 +125,7 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      expect(getProductDescriptionState(mockedMainState)).toEqual(mockedDescriptionsByProductId);
+      expect(getProductDescriptionState(mockedState)).toEqual(mockedDescriptionsByProductId);
     });
   });
 
@@ -135,7 +135,7 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      expect(getProductPropertiesState(mockedMainState)).toEqual(mockedPropertiesByProductId);
+      expect(getProductPropertiesState(mockedState)).toEqual(mockedPropertiesByProductId);
     });
   });
 
@@ -145,7 +145,7 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      expect(getProductImagesState(mockedMainState)).toEqual(mockedImagesByProductId);
+      expect(getProductImagesState(mockedState)).toEqual(mockedImagesByProductId);
     });
   });
 
@@ -155,7 +155,7 @@ describe('Product selectors', () => {
     });
 
     it('should work as expected', () => {
-      expect(getProductVariantsState(mockedMainState)).toEqual(mockedVariantsByProductId);
+      expect(getProductVariantsState(mockedState)).toEqual(mockedVariantsByProductId);
     });
   });
 
@@ -176,16 +176,16 @@ describe('Product selectors', () => {
     });
 
     it('should return a product', () => {
-      expect(getProductById(mockedMainState, { productId })).toEqual(product);
+      expect(getProductById(mockedState, { productId })).toEqual(product);
     });
 
     it('should return a product when a product id was passed in the deprecated way', () => {
-      expect(getProductById(mockedMainState, productId)).toEqual(product);
+      expect(getProductById(mockedState, productId)).toEqual(product);
       expect(logger.warn).toHaveBeenCalledTimes(1);
     });
 
     it('should null when no props objects was passed', () => {
-      expect(getProductById(mockedMainState)).toBeNull();
+      expect(getProductById(mockedState)).toBeNull();
       expect(logger.warn).toHaveBeenCalledTimes(1);
     });
   });
@@ -226,17 +226,17 @@ describe('Product selectors', () => {
 
   describe('getVariantProductId()', () => {
     it('should return null and log a message when no props are passed', () => {
-      expect(getVariantProductId(mockedMainState)).toBeNull();
+      expect(getVariantProductId(mockedState)).toBeNull();
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when the props dont contain a variantId', () => {
-      expect(getVariantProductId(mockedMainState, { productId: 'product_1' })).toBeNull();
+      expect(getVariantProductId(mockedState, { productId: 'product_1' })).toBeNull();
     });
 
     it('should return the expected variant id', () => {
       const variantId = 'product_2';
-      expect(getVariantProductId(mockedMainState, { variantId })).toBe(variantId);
+      expect(getVariantProductId(mockedState, { variantId })).toBe(variantId);
     });
   });
 
@@ -248,13 +248,13 @@ describe('Product selectors', () => {
     it('should return true when a variantId was passed', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
-      expect(isVariantSelected(mockedMainState, { productId, variantId })).toBe(true);
+      expect(isVariantSelected(mockedState, { productId, variantId })).toBe(true);
     });
   });
 
   describe('getProduct()', () => {
     it('should return null and log an error when no props are passed', () => {
-      expect(getProduct(mockedMainState)).toBeNull();
+      expect(getProduct(mockedState)).toBeNull();
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
@@ -265,20 +265,20 @@ describe('Product selectors', () => {
 
     it('should return null when the product data is not available yet', () => {
       const productId = 'product_4';
-      expect(getProduct(mockedMainState, { productId })).toBeNull();
+      expect(getProduct(mockedState, { productId })).toBeNull();
     });
 
     it('should return product data of a simple product', () => {
       const productId = 'product_5';
       const { productData } = mockedProductsById[productId];
-      expect(getProduct(mockedMainState, { productId })).toEqual(productData);
+      expect(getProduct(mockedState, { productId })).toEqual(productData);
     });
 
     it('should return product data of a variant product', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const { productData } = mockedProductsById[variantId];
-      expect(getProduct(mockedMainState, { productId, variantId })).toEqual(productData);
+      expect(getProduct(mockedState, { productId, variantId })).toEqual(productData);
     });
   });
 
@@ -306,7 +306,7 @@ describe('Product selectors', () => {
         });
 
         it('should return the property as expected', () => {
-          expect(selector(mockedMainState, { productId })).toEqual(productData[property]);
+          expect(selector(mockedState, { productId })).toEqual(productData[property]);
         });
       });
     });
@@ -317,7 +317,7 @@ describe('Product selectors', () => {
       });
 
       it('should return the property as expected', () => {
-        expect(getProductCurrency(mockedMainState, { productId }))
+        expect(getProductCurrency(mockedState, { productId }))
           .toBe(productData.price.currency);
       });
     });
@@ -328,7 +328,7 @@ describe('Product selectors', () => {
       });
 
       it('should return the property as expected', () => {
-        expect(getProductUnitPrice(mockedMainState, { productId }))
+        expect(getProductUnitPrice(mockedState, { productId }))
           .toBe(productData.price.unitPrice);
       });
     });
@@ -342,18 +342,18 @@ describe('Product selectors', () => {
 
     it('should return null when a product is present but no data is available yet', () => {
       const productId = 'product_4';
-      expect(getProductShipping(mockedMainState, { productId })).toBeNull();
+      expect(getProductShipping(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when data is currently fetching', () => {
       const productId = 'product_5';
-      expect(getProductShipping(mockedMainState, { productId })).toBeNull();
+      expect(getProductShipping(mockedState, { productId })).toBeNull();
     });
 
     it('should return data when available', () => {
       const productId = 'product_1';
       const { shipping } = mockedShippingByProductId[productId];
-      expect(getProductShipping(mockedMainState, { productId })).toEqual(shipping);
+      expect(getProductShipping(mockedState, { productId })).toEqual(shipping);
     });
   });
 
@@ -365,18 +365,18 @@ describe('Product selectors', () => {
 
     it('should return null when a product is present but no data is available yet', () => {
       const productId = 'product_4';
-      expect(getProductProperties(mockedMainState, { productId })).toBeNull();
+      expect(getProductProperties(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when data is currently fetching', () => {
       const productId = 'product_5';
-      expect(getProductProperties(mockedMainState, { productId })).toBeNull();
+      expect(getProductProperties(mockedState, { productId })).toBeNull();
     });
 
     it('should return data when available', () => {
       const productId = 'product_1';
       const { properties } = mockedPropertiesByProductId[productId];
-      expect(getProductProperties(mockedMainState, { productId })).toEqual(properties);
+      expect(getProductProperties(mockedState, { productId })).toEqual(properties);
     });
 
     describe('Black and whitelisting of properties', () => {
@@ -388,7 +388,7 @@ describe('Product selectors', () => {
           properties: [mockedProperty1.label],
         };
 
-        const properties = getProductProperties(mockedMainState, selectorProps);
+        const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(1);
         expect(properties[0].label).toEqual(mockedProperty1.label);
         expect(properties[0].label).not.toEqual(mockedProperty2.label);
@@ -400,7 +400,7 @@ describe('Product selectors', () => {
           properties: [mockedProperty1.label],
         };
 
-        const properties = getProductProperties(mockedMainState, selectorProps);
+        const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(1);
         expect(properties[0].label).not.toEqual(mockedProperty1.label);
         expect(properties[0].label).toEqual(mockedProperty2.label);
@@ -412,7 +412,7 @@ describe('Product selectors', () => {
           properties: [mockedProperty1.label],
         };
 
-        const properties = getProductProperties(mockedMainState, selectorProps);
+        const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(2);
         expect(properties).toEqual([
           mockedProperty1,
@@ -423,7 +423,7 @@ describe('Product selectors', () => {
       it('should not filter when no config is set', () => {
         mockedConfig = null;
 
-        const properties = getProductProperties(mockedMainState, selectorProps);
+        const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(2);
         expect(properties).toEqual([
           mockedProperty1,
@@ -437,7 +437,7 @@ describe('Product selectors', () => {
           properties: [],
         };
 
-        const properties = getProductProperties(mockedMainState, selectorProps);
+        const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(0);
       });
 
@@ -447,7 +447,7 @@ describe('Product selectors', () => {
           properties: [],
         };
 
-        const properties = getProductProperties(mockedMainState, selectorProps);
+        const properties = getProductProperties(mockedState, selectorProps);
         expect(properties.length).toEqual(2);
       });
     });
@@ -461,18 +461,18 @@ describe('Product selectors', () => {
 
     it('should return null when a product is present but no data is available yet', () => {
       const productId = 'product_4';
-      expect(getProductDescription(mockedMainState, { productId })).toBeNull();
+      expect(getProductDescription(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when data is currently fetching', () => {
       const productId = 'product_5';
-      expect(getProductDescription(mockedMainState, { productId })).toBeNull();
+      expect(getProductDescription(mockedState, { productId })).toBeNull();
     });
 
     it('should return data when available', () => {
       const productId = 'product_1';
       const { description } = mockedDescriptionsByProductId[productId];
-      expect(getProductDescription(mockedMainState, { productId })).toEqual(description);
+      expect(getProductDescription(mockedState, { productId })).toEqual(description);
     });
   });
 
@@ -484,234 +484,234 @@ describe('Product selectors', () => {
 
     it('should return null when a product is present but no data is available yet', () => {
       const productId = 'product_4';
-      expect(getProductImages(mockedMainState, { productId })).toBeNull();
+      expect(getProductImages(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when data is currently fetching', () => {
       const productId = 'product_5';
-      expect(getProductImages(mockedMainState, { productId })).toBeNull();
+      expect(getProductImages(mockedState, { productId })).toBeNull();
     });
 
     it('should return images when available', () => {
       const productId = 'product_1';
-      expect(getProductImages(mockedMainState, { productId })).toEqual(mockedProductImagesBase);
+      expect(getProductImages(mockedState, { productId })).toEqual(mockedProductImagesBase);
     });
 
     it('should return images for a variant when productId and variantId are passed', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
-      expect(getProductImages(mockedMainState, { productId, variantId }))
+      expect(getProductImages(mockedState, { productId, variantId }))
         .toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when only the variantId is passed', () => {
       const variantId = 'product_2';
-      expect(getProductImages(mockedMainState, { variantId })).toEqual(mockedProductImagesVariant);
+      expect(getProductImages(mockedState, { variantId })).toEqual(mockedProductImagesVariant);
     });
 
     it('should return images for a variant when the id of a variant is passed as a productId', () => {
       const productId = 'product_2';
-      expect(getProductImages(mockedMainState, { productId })).toEqual(mockedProductImagesVariant);
+      expect(getProductImages(mockedState, { productId })).toEqual(mockedProductImagesVariant);
     });
 
     it('should return images of the base product when a variant has no images', () => {
       const productId = 'product_1';
       const variantId = 'product_3';
-      expect(getProductImages(mockedMainState, { productId, variantId }))
+      expect(getProductImages(mockedState, { productId, variantId }))
         .toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when a variant has no images and only the variantId is passed', () => {
       const variantId = 'product_3';
-      expect(getProductImages(mockedMainState, { variantId })).toEqual(mockedProductImagesBase);
+      expect(getProductImages(mockedState, { variantId })).toEqual(mockedProductImagesBase);
     });
 
     it('should return images of the base product when the id of a variant is passed as a productId', () => {
       const productId = 'product_3';
-      expect(getProductImages(mockedMainState, { productId })).toEqual(mockedProductImagesBase);
+      expect(getProductImages(mockedState, { productId })).toEqual(mockedProductImagesBase);
     });
   });
 
   describe('getProductVariants()', () => {
     it('should return null when no data can be selected for the passed productId', () => {
       const productId = 'unavailable';
-      expect(getProductVariants(mockedMainState, { productId })).toBeNull();
+      expect(getProductVariants(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when a product is present but no data is available yet', () => {
       const productId = 'product_1';
 
-      delete mockedMainState.product.variantsByProductId[productId];
+      delete mockedState.product.variantsByProductId[productId];
 
-      expect(getProductVariants(mockedMainState, { productId })).toBeNull();
+      expect(getProductVariants(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when data is currently fetching', () => {
       const productId = 'product_1';
 
-      const state = mockedMainState.product.variantsByProductId[productId];
+      const state = mockedState.product.variantsByProductId[productId];
       state.isFetching = true;
       state.variants = undefined;
 
-      expect(getProductVariants(mockedMainState, { productId })).toBeNull();
+      expect(getProductVariants(mockedState, { productId })).toBeNull();
     });
 
     it('should return data when the productId of a base product is passed', () => {
       const productId = 'product_1';
       const { variants } = mockedVariantsByProductId[productId];
-      expect(getProductVariants(mockedMainState, { productId })).toEqual(variants);
+      expect(getProductVariants(mockedState, { productId })).toEqual(variants);
     });
 
     it('should return data when the productId of a base product and a variantId is passed', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const { variants } = mockedVariantsByProductId[productId];
-      expect(getProductVariants(mockedMainState, { productId, variantId })).toEqual(variants);
+      expect(getProductVariants(mockedState, { productId, variantId })).toEqual(variants);
     });
 
     it('should return data when only the id of a variant is passed', () => {
       const productId = 'product_2';
       const { variants } = mockedVariantsByProductId.product_1;
-      expect(getProductVariants(mockedMainState, { productId })).toEqual(variants);
+      expect(getProductVariants(mockedState, { productId })).toEqual(variants);
     });
   });
 
   describe('isProductOrderable()', () => {
     it('should return false when the product is not available', () => {
       const productId = 'unavailable';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
+      expect(isProductOrderable(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when the product does not have stock info', () => {
       const productId = 'product_4';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
+      expect(isProductOrderable(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when the product is not orderable', () => {
       const productId = 'product_3';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(false);
+      expect(isProductOrderable(mockedState, { productId })).toBe(false);
     });
 
     it('should return true when the product is orderable', () => {
       const productId = 'product_5';
-      expect(isProductOrderable(mockedMainState, { productId })).toBe(true);
+      expect(isProductOrderable(mockedState, { productId })).toBe(true);
     });
   });
 
   describe('hasProductVariants()', () => {
     it('should return false when the product is not available', () => {
       const productId = 'unavailable';
-      expect(hasProductVariants(mockedMainState, { productId })).toBe(false);
+      expect(hasProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when the product does not have variants', () => {
       const productId = 'product_5';
-      expect(hasProductVariants(mockedMainState, { productId })).toBe(false);
+      expect(hasProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return true when the product has variants', () => {
       const productId = 'product_1';
-      expect(hasProductVariants(mockedMainState, { productId })).toBe(true);
+      expect(hasProductVariants(mockedState, { productId })).toBe(true);
     });
   });
 
   describe('getSelectedVariant()', () => {
     it('should return null when no variant is selected', () => {
       const productId = 'product_1';
-      expect(getSelectedVariant(mockedMainState, { productId })).toBeNull();
+      expect(getSelectedVariant(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when no variant is selected', () => {
       const productId = 'product_1';
       const variantId = 'unknown';
-      expect(getSelectedVariant(mockedMainState, { productId, variantId })).toBeNull();
+      expect(getSelectedVariant(mockedState, { productId, variantId })).toBeNull();
     });
 
     it('should return null for a fetching product', () => {
       const productId = 'product_1';
       const variantId = 'product_4';
-      expect(getSelectedVariant(mockedMainState, { productId, variantId })).toBeNull();
+      expect(getSelectedVariant(mockedState, { productId, variantId })).toBeNull();
     });
 
     it('should return a product', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const { productData } = mockedProductsById[variantId];
-      expect(getSelectedVariant(mockedMainState, { productId, variantId })).toEqual(productData);
+      expect(getSelectedVariant(mockedState, { productId, variantId })).toEqual(productData);
     });
   });
 
   describe('isBaseProduct()', () => {
     it('should indicate base products', () => {
-      expect(isBaseProduct(mockedMainState, { productId: 'product_1' })).toBe(true);
-      expect(isBaseProduct(mockedMainState, { productId: 'product_2' })).toBe(false);
-      expect(isBaseProduct(mockedMainState, { productId: 'product_4' })).toBe(false);
-      expect(isBaseProduct(mockedMainState, { productId: 'product_5' })).toBe(true);
+      expect(isBaseProduct(mockedState, { productId: 'product_1' })).toBe(true);
+      expect(isBaseProduct(mockedState, { productId: 'product_2' })).toBe(false);
+      expect(isBaseProduct(mockedState, { productId: 'product_4' })).toBe(false);
+      expect(isBaseProduct(mockedState, { productId: 'product_5' })).toBe(true);
     });
   });
 
   describe('getBaseProductId()', () => {
     it('should return null and log an error when no props are passed', () => {
-      expect(getBaseProductId(mockedMainState)).toBeNull();
+      expect(getBaseProductId(mockedState)).toBeNull();
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
-    it('should return null when the product is not available', () => {
+    it('should return the passed productId when no product is not available for the id', () => {
       const productId = 'unavailable';
-      expect(getBaseProductId(mockedMainState, { productId })).toBeNull();
+      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
     it('should return the id of a base product when no variant is selected yet', () => {
       const productId = 'product_1';
-      expect(getBaseProductId(mockedMainState, { productId })).toBe(productId);
+      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
     it('should return the id of a base product when no baseProductId prop is set', () => {
       const productId = 'product_5';
-      delete mockedMainState.product.productsById[productId].productData.baseProductId;
-      expect(getBaseProductId(mockedMainState, { productId })).toBe(productId);
+      delete mockedState.product.productsById[productId].productData.baseProductId;
+      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
     it('should return the id of a simple product', () => {
       const productId = 'product_5';
-      expect(getBaseProductId(mockedMainState, { productId })).toBe(productId);
+      expect(getBaseProductId(mockedState, { productId })).toBe(productId);
     });
 
     it('should return the id of a base product when a variant is selected ', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
-      expect(getBaseProductId(mockedMainState, { productId, variantId })).toBe(productId);
+      expect(getBaseProductId(mockedState, { productId, variantId })).toBe(productId);
     });
   });
 
   describe('getBaseProduct()', () => {
     it('should return null and log an error when no props are passed', () => {
-      expect(getBaseProduct(mockedMainState)).toBeNull();
+      expect(getBaseProduct(mockedState)).toBeNull();
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
     it('should return null when the product is not available', () => {
       const productId = 'unavailable';
-      expect(getBaseProduct(mockedMainState, { productId })).toBeNull();
+      expect(getBaseProduct(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when the base product is not available', () => {
       const productId = 'product_2';
-      delete mockedMainState.product.productsById.product_1;
-      expect(getBaseProduct(mockedMainState, { productId })).toBeNull();
+      delete mockedState.product.productsById.product_1;
+      expect(getBaseProduct(mockedState, { productId })).toBeNull();
     });
 
     it('should return the the base product when no variant is selected yet', () => {
       const productId = 'product_1';
       const { productData } = mockedProductsById[productId];
-      expect(getBaseProduct(mockedMainState, { productId })).toEqual(productData);
+      expect(getBaseProduct(mockedState, { productId })).toEqual(productData);
     });
 
     it('should return the the base product when a variant is selected', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const { productData } = mockedProductsById[productId];
-      expect(getBaseProduct(mockedMainState, { productId, variantId }))
+      expect(getBaseProduct(mockedState, { productId, variantId }))
         .toEqual(productData);
     });
 
@@ -719,80 +719,80 @@ describe('Product selectors', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const { productData } = mockedProductsById[productId];
-      expect(getBaseProduct(mockedMainState, { variantId })).toEqual(productData);
+      expect(getBaseProduct(mockedState, { variantId })).toEqual(productData);
     });
   });
 
   describe('hasBaseProductVariants()', () => {
     it('should return false when the product is not available', () => {
       const productId = 'unavailable';
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(false);
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when the base product is not available', () => {
       const productId = 'product_2';
-      delete mockedMainState.product.productsById.product_1;
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(false);
+      delete mockedState.product.productsById.product_1;
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when the flags are missing', () => {
       const productId = 'product_1';
-      delete mockedMainState.product.productsById[productId].productData.flags;
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(false);
+      delete mockedState.product.productsById[productId].productData.flags;
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when no product data is available yet', () => {
       const productId = 'product_4';
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(false);
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return false when the product does not have variants', () => {
       const productId = 'product_5';
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(false);
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(false);
     });
 
     it('should return true when the product has variants', () => {
       const productId = 'product_1';
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(true);
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(true);
     });
 
     it('should return true when the products base product has variants', () => {
       const productId = 'product_2';
-      expect(hasBaseProductVariants(mockedMainState, { productId })).toBe(true);
+      expect(hasBaseProductVariants(mockedState, { productId })).toBe(true);
     });
   });
 
   describe('getVariantId()', () => {
     it('should return null when the product is not available', () => {
       const productId = 'unavailable';
-      expect(getVariantId(mockedMainState, { productId })).toBeNull();
+      expect(getVariantId(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when the product is a simple product', () => {
       const productId = 'product_5';
-      expect(getVariantId(mockedMainState, { productId })).toBeNull();
+      expect(getVariantId(mockedState, { productId })).toBeNull();
     });
 
     it('should return null when the product is a base product', () => {
       const productId = 'product_1';
-      expect(getVariantId(mockedMainState, { productId })).toBeNull();
+      expect(getVariantId(mockedState, { productId })).toBeNull();
     });
 
     it('should return a productId when the product is a variant product', () => {
       const productId = 'product_2';
-      expect(getVariantId(mockedMainState, { productId })).toBe(productId);
+      expect(getVariantId(mockedState, { productId })).toBe(productId);
     });
 
     it('should return the productId of the variant if base product and variant are selected', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
-      expect(getVariantId(mockedMainState, { productId, variantId })).toBe(variantId);
+      expect(getVariantId(mockedState, { productId, variantId })).toBe(variantId);
     });
   });
 
   describe('getVariantAvailabilityByCharacteristics()', () => {
     it('should return null and log an error message when no props where passed', () => {
-      expect(getVariantAvailabilityByCharacteristics(mockedMainState)).toBeNull();
+      expect(getVariantAvailabilityByCharacteristics(mockedState)).toBeNull();
       expect(logger.error).toHaveBeenCalledTimes(1);
     });
 
@@ -800,14 +800,14 @@ describe('Product selectors', () => {
       const productId = 'unavailable';
       const characteristics = {};
       const props = { productId, characteristics };
-      expect(getVariantAvailabilityByCharacteristics(mockedMainState, props)).toBeNull();
+      expect(getVariantAvailabilityByCharacteristics(mockedState, props)).toBeNull();
     });
 
     it('should return null when no matching product was found', () => {
       const productId = 'product_1';
       const characteristics = { 1: '5' };
       const props = { productId, characteristics };
-      expect(getVariantAvailabilityByCharacteristics(mockedMainState, props)).toBeNull();
+      expect(getVariantAvailabilityByCharacteristics(mockedState, props)).toBeNull();
     });
 
     it('should return data when a matching product was found', () => {
@@ -818,7 +818,7 @@ describe('Product selectors', () => {
       } = mockedVariantsByProductId[productId].variants.products[1];
 
       const props = { productId, characteristics };
-      expect(getVariantAvailabilityByCharacteristics(mockedMainState, props)).toEqual(availability);
+      expect(getVariantAvailabilityByCharacteristics(mockedState, props)).toEqual(availability);
     });
   });
 });

@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import {
-  mockedProductState,
+  mockedState as mockedProductState,
   mockedVariantProductMetadata,
   mockedVariantMetadata,
 } from './product.mock';
