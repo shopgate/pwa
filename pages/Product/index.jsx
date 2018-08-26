@@ -17,10 +17,12 @@ const Product = ({ id, isVariant }) => (
 
 Product.propTypes = {
   id: PropTypes.string,
+  isVariant: PropTypes.bool,
 };
 
 Product.defaultProps = {
   id: null,
+  isVariant: false,
 };
 
 export default () => (

@@ -21,7 +21,6 @@ import { ProductContext } from '../../context';
 class ProductContent extends Component {
   static propTypes = {
     baseProductId: PropTypes.string,
-    isFetching: PropTypes.bool,
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
     variantId: PropTypes.string,
@@ -29,7 +28,6 @@ class ProductContent extends Component {
 
   static defaultProps = {
     baseProductId: null,
-    isFetching: false,
     isVariant: false,
     productId: null,
     variantId: null,
@@ -53,28 +51,29 @@ class ProductContent extends Component {
   }
 
   /**
+   * Maps the single productId from the route and the different properties from the connector
+   * selectors to a productId and a variantId and updates the component state with them.
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    const productChanged = this.props.productId !== nextProps.productId;
-
     let { productId } = nextProps;
 
-    if (productChanged) {
-      if (nextProps.isFetching) {
-        ({ productId } = this.props);
-      } else if (nextProps.baseProductId) {
-        productId = nextProps.baseProductId;
-      }
-    } else if (nextProps.baseProductId) {
+    if (nextProps.baseProductId) {
+      // Take the baseProductId as productId since the productId from the route can be everything.
       productId = nextProps.baseProductId;
     }
 
-    let variantId = null;
+    let { variantId } = nextProps;
 
-    if (nextProps.variantId) {
-      ({ variantId } = nextProps);
-    } else if (nextProps.isVariant) {
+    const productIdChanged = this.props.productId !== nextProps.productId;
+
+    if (productIdChanged && nextProps.isVariant) {
+      if (this.props.baseProductId) {
+        // Use the previous baseProductId as productId when the component switched to a variant.
+        productId = this.props.baseProductId;
+      }
+
+      // Map the productId from the route to the variantId.
       variantId = nextProps.productId;
     }
 
@@ -82,8 +81,6 @@ class ProductContent extends Component {
       productId,
       variantId,
     });
-
-    console.warn(this.state);
   }
 
   /**
@@ -93,9 +90,9 @@ class ProductContent extends Component {
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.state.productId !== nextState.productId
-      || this.state.variantId !== nextState.variantId
-      || !isEqual(this.state.options, nextState.options)
+      this.state.productId !== nextState.productId ||
+      this.state.variantId !== nextState.variantId ||
+      !isEqual(this.state.options, nextState.options)
     );
   }
 
@@ -168,14 +165,14 @@ class ProductContent extends Component {
         {/* DESCRIPTION */}
         <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
         <Portal name={portals.PRODUCT_DESCRIPTION}>
-          <Description productId={id} />
+          <Description productId={this.state.productId} variantId={this.state.variantId} />
         </Portal>
         <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
 
         {/* PROPERTIES */}
         <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
         <Portal name={portals.PRODUCT_PROPERTIES}>
-          <Properties productId={id} />
+          <Properties productId={this.state.productId} variantId={this.state.variantId} />
         </Portal>
         <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
 

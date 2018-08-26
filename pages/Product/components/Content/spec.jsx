@@ -1,47 +1,354 @@
+/* eslint-disable extra-rules/no-single-line-objects, require-jsdoc */
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { defaultContext } from '../../__mocks__/context';
-import { basicProductState } from './../mock';
+import cloneDeep from 'lodash/cloneDeep';
+import {
+  mockedState as mockedProductState,
+  mockedVariantStateAllFetching,
+  mockedVariantStateVariantDataFetching,
+  mockedVariantStateVariantsFetching,
+  mockedVariantStateComplete,
+} from '@shopgate/pwa-common-commerce/product/selectors/product.mock';
+import ProductContent from './index';
 
+const UPADTE_STATE = 'UPDATE_STATE';
 const mockedStore = configureStore([thunk]);
-
 jest.mock('@shopgate/react-hammerjs/src/Hammer', () => ({ children }) => children);
-jest.mock('Components/Reviews/components/Header', () => () => <div />);
 jest.mock('./../../context');
 
-describe('<ProductContent>', () => {
+// Mock all child components to keep the snapshots small. The tests only check the applied props.
+jest.mock('../ImageSlider', () => {
+  const ImageSlider = () => <div />;
+  return ImageSlider;
+});
+jest.mock('../Header', () => {
+  const ProductHeader = () => <div />;
+  return ProductHeader;
+});
+jest.mock('../Characteristics', () => {
+  const Characteristics = () => <div />;
+  return Characteristics;
+});
+jest.mock('../Options', () => {
+  const Options = () => <div />;
+  return Options;
+});
+jest.mock('../Description', () => {
+  const Description = () => <div />;
+  return Description;
+});
+jest.mock('../Properties', () => {
+  const Properties = () => <div />;
+  return Properties;
+});
+jest.mock('Components/Reviews', () => {
+  const Reviews = () => <div />;
+  return Reviews;
+});
+jest.mock('@shopgate/pwa-ui-shared/TaxDisclaimer', () => {
+  const TaxDisclaimer = () => <div />;
+  return TaxDisclaimer;
+});
+
+// Create a deep copy of the state to avoid unintended selector caching.
+const createState = state => ({
+  ...cloneDeep(state),
+});
+
+/**
+ * Creates new component instance.
+ * @param {Object} initialState A mocked initial state.
+ * @param {Object} props A props object.
+ * @return {JSX}
+ */
+const createComponent = (initialState, props = {}) => {
   /**
-   * @param {Object} state The state
-   * @returns {JSX}
+   * The component relies on a mixture of props which come from its parent component, and
+   * some which some from its connector. So we use a mocked store here, which is updated via an
+   * artificial action.
    */
-  const createComponent = (state) => {
-    // eslint-disable-next-line global-require
-    const ProductContent = require('./index').default;
-    const store = mockedStore(state);
-    return mount(
-      <Provider store={store}>
-        <ProductContent productId={state.product.currentProduct.productId} />
-      </Provider>,
-      mockRenderOptions
-    );
+  const store = mockedStore(() => {
+    const actions = store.getActions();
+    const lastAction = actions[actions.length - 1] || {};
+
+    if (lastAction.type === UPADTE_STATE) {
+      return createState(lastAction.state);
+    }
+
+    return createState(initialState);
+  });
+
+  const component = mount(<ProductContent {...props} store={store} />);
+
+  return {
+    store,
+    component,
   };
+};
+
+/**
+ * Triggers an update of the mocked store state.
+ * @param {Object} state The new state.
+ * @return {Object}
+ */
+const updateState = state => ({
+  type: UPADTE_STATE,
+  state,
+});
+
+/**
+ * Runs a bunch of tests to check if the component created props for its children in the right way.
+ * @param {JSX} component The component to test.
+ * @param {Object} props The expected state / child component props.
+ */
+const runComponentTests = (component, props) => {
+  const { productId, variantId } = props;
+
+  expect(component).toMatchSnapshot();
+
+  // Check the generated component state.
+  const { state } = component.find('ProductContent').instance();
+  expect(state).toEqual({
+    productId,
+    variantId,
+    options: {},
+  });
+
+  const children = [
+    component.find('ImageSlider'),
+    component.find('ProductHeader'),
+    component.find('Characteristics'),
+    component.find('Options'),
+    component.find('Description'),
+    component.find('Properties'),
+    component.find('Reviews'),
+    component.find('TaxDisclaimer'),
+  ];
+
+  // Check if all expected children where rendered.
+  children.forEach((child) => {
+    expect(child.exists()).toBeTruthy();
+  });
+
+  const [
+    ImageSlider,
+    ProductHeader,
+    Characteristics,
+    Options,
+    Description,
+    Properties,
+    Reviews,
+    TaxDisclaimer,
+  ] = children;
+
+  // Perform a check if all props where assigned in the right way.
+  expect(ImageSlider.props()).toMatchObject({ productId, variantId });
+  expect(ProductHeader.props()).toMatchObject({});
+  expect(Characteristics.props()).toMatchObject({ productId, variantId });
+  expect(Description.props()).toMatchObject({ productId, variantId });
+  expect(Properties.props()).toMatchObject({ productId, variantId });
+  expect(TaxDisclaimer.props()).toEqual({});
+
+  // Options do not accept props with a variantId yet
+  const optionsProps = Options.props();
+  expect(optionsProps).toMatchObject({ productId: variantId || productId });
+  expect(optionsProps.variantId).toBeUndefined();
+
+  // Reviews only relate to a base product. So a variantId should be never passed.
+  const reviewsProps = Reviews.props();
+  expect(reviewsProps).toMatchObject({ productId });
+  expect(reviewsProps.variantId).toBeUndefined();
+};
+
+describe('<ProductContent />', () => {
+  let mockedState;
 
   beforeEach(() => {
-    jest.resetModules();
+    mockedState = createState(mockedProductState);
   });
 
-  it('should render', () => {
-    const { productId } = basicProductState.product.currentProduct;
-    defaultContext.productId = productId;
-    const cmp = createComponent(basicProductState);
-    expect(cmp).toMatchSnapshot();
-    expect(cmp.find('ProductHeader').length).toEqual(1);
-    expect(cmp.find('Characteristics').length).toEqual(1);
-    expect(cmp.find('Options').length).toEqual(1);
-    expect(cmp.find('TaxDisclaimer').length).toEqual(1);
+  describe('rendering when all product data is available', () => {
+    it('should render a product without variants as expected', () => {
+      const productId = 'product_5';
+      const variantId = null;
+
+      const { component } = createComponent(mockedState, { productId });
+      runComponentTests(component, { productId, variantId });
+    });
+
+    it('should render a variant product as expected', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+
+      const { component } = createComponent(mockedState, { productId: variantId });
+      runComponentTests(component, { productId, variantId });
+    });
+
+    it('should render variant product updates as expected', () => {
+      const productId = 'product_1';
+      const variantId = 'product_2';
+      const variantIdUpdate = 'product_3';
+
+      // Render the component with a base product.
+      const { component } = createComponent(mockedState, { productId: variantId });
+      runComponentTests(component, { productId, variantId });
+
+      // Update the productId with the id of another variant.
+      component.setProps({ productId: variantIdUpdate });
+      runComponentTests(component, { productId, variantId: variantIdUpdate });
+    });
+  });
+
+  describe('rendering when product data is not available yet', () => {
+    describe('simple product', () => {
+      const productId = 'product_5';
+      const variantId = null;
+
+      let component;
+      let store;
+
+      beforeAll(() => {
+        // Prepare state with an unavailable base product.
+        delete mockedState.product.productsById[productId];
+        ({ component, store } = createComponent(mockedState, { productId }));
+      });
+
+      it('should initialize as expected', () => {
+        runComponentTests(component, { productId, variantId });
+      });
+
+      it('should render as expected when data became available', () => {
+        // Update the store with complete product data.
+        store.dispatch(updateState(mockedProductState));
+        component.update();
+
+        runComponentTests(component, { productId, variantId });
+      });
+    });
+
+    describe('product with variants', () => {
+      describe('initialized with variant id', () => {
+        const productId = 'product_1';
+        const variantId = 'product_2';
+
+        let component;
+        let store;
+
+        beforeAll(() => {
+          // Prepare state with no product data available.
+          ({ component, store } = createComponent(
+            mockedVariantStateAllFetching,
+            { productId: variantId }
+          ));
+        });
+
+        it('should initialize as expected', () => {
+          // The variantId is still used as productId since real productId can't be determined yet.
+          runComponentTests(component, { productId: variantId, variantId: null });
+        });
+
+        it('should update as expected when base product data came in but the rest is still fetching', () => {
+          // Update the store with fetching variant data.
+          store.dispatch(updateState(mockedVariantStateVariantDataFetching));
+          component.update();
+
+          // The variantId is still used as productId since real productId can't be determined yet.
+          runComponentTests(component, { productId: variantId, variantId: null });
+        });
+
+        it('should update as expected when variant data came in but the variant is still fetching', () => {
+          // Update the store with fetching variant product.
+          store.dispatch(updateState(mockedVariantStateVariantsFetching));
+          component.update();
+
+          // The variantId is still used as productId since real productId can't be determined yet.
+          runComponentTests(component, { productId: variantId, variantId: null });
+        });
+
+        it('should update as expected when all data is available', () => {
+          // Update the store with complete product data.
+          store.dispatch(updateState(mockedVariantStateComplete));
+          component.update();
+
+          // All data is available, so the correct parametrization can be determined.
+          runComponentTests(component, { productId, variantId });
+        });
+      });
+
+      describe('initialized with baseProductId', () => {
+        const productId = 'product_1';
+        const variantId = 'product_2';
+
+        let component;
+        let store;
+
+        beforeAll(() => {
+          // Prepare state where variants are not available yet
+          ({ component, store } = createComponent(
+            mockedVariantStateVariantsFetching,
+            { productId }
+          ));
+        });
+
+        it('should initialize as expected', () => {
+          runComponentTests(component, { productId, variantId: null });
+        });
+
+        it('should update as expected when a variantId was set', () => {
+          // Simulate the product switch.
+          component.setProps({ productId: variantId, isVariant: true });
+          runComponentTests(component, { productId, variantId });
+        });
+
+        it('should update as expected when the variant product data came in', () => {
+          store.dispatch(updateState(mockedVariantStateComplete));
+          component.update();
+
+          // All data is available, so the correct parametrization can be determined.
+          runComponentTests(component, { productId, variantId });
+        });
+      });
+
+      describe('switch to another variant product', () => {
+        const productId = 'product_1';
+        const variantId = 'product_2';
+        const variantIdUpdate = 'product_3';
+
+        let component;
+        let store;
+
+        beforeAll(() => {
+          // Clone the mocked variants state and remove the variant which we want to switch to.
+          const initialState = createState(mockedVariantStateComplete);
+          delete initialState.product.productsById[variantIdUpdate];
+
+          // Prepare state where variants are not available yet
+          ({ component, store } = createComponent(
+            initialState,
+            { productId, variantId }
+          ));
+        });
+
+        it('should initialize as expected', () => {
+          runComponentTests(component, { productId, variantId });
+        });
+
+        it('should update as expected when the variantId is changed but the product data is not available yet', () => {
+          // Simulate the product switch.
+          component.setProps({ productId: variantIdUpdate, isVariant: true });
+          runComponentTests(component, { productId, variantId: variantIdUpdate });
+        });
+
+        it('should update as expected when the product data is available', () => {
+          store.dispatch(updateState(mockedVariantStateComplete));
+          component.update();
+          runComponentTests(component, { productId, variantId: variantIdUpdate });
+        });
+      });
+    });
   });
 });
+
+/* eslint-enable extra-rules/no-single-line-objects, require-jsdoc */
