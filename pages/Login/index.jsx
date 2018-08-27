@@ -10,12 +10,18 @@ import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
 import styles from './style';
 
+const defaultState = {
+  login: '',
+  password: '',
+};
+
 /**
  * The login view component.
  */
 class Login extends Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool,
     redirect: PropTypes.shape(),
   };
@@ -24,6 +30,7 @@ class Login extends Component {
     isLoading: false,
     redirect: {},
   };
+
   /**
    * Constructor.
    * @param {Object} props The component props.
@@ -34,10 +41,19 @@ class Login extends Component {
     this.userField = null;
     this.passwordField = null;
 
-    this.state = {
-      login: '',
-      password: '',
-    };
+    this.state = defaultState;
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    /**
+     * Reset the form values when the page is not visible to the user.
+     */
+    if (this.props.visible && !nextProps.visible) {
+      this.setState(defaultState);
+    }
   }
 
   /**
@@ -144,8 +160,12 @@ class Login extends Component {
 
 export default connect(props => (
   <RouteContext.Consumer>
-    {({ state }) => (
-      <Login {...props} redirect={state.redirect} />
+    {({ state, visible }) => (
+      <Login
+        {...props}
+        redirect={state.redirect}
+        visible={visible}
+      />
     )}
   </RouteContext.Consumer>
 ));

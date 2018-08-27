@@ -1,5 +1,6 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
@@ -24,9 +25,6 @@ import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
-import reducers from './reducers';
-import subscribers from './subscribers';
-import Worker from './worker';
 import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
@@ -35,8 +33,8 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
-const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
+const Pages = ({ store }) => (
+  <App locale={locale} store={store}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{ View }}>
         <ToastProvider>
@@ -77,5 +75,9 @@ const Pages = () => (
     </AppContext.Provider>
   </App>
 );
+
+Pages.propTypes = {
+  store: PropTypes.shape().isRequired,
+};
 
 export default hot(module)(Pages);
