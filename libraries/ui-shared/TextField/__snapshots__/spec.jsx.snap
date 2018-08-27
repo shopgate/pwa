@@ -1654,7 +1654,16 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           "a",
         ],
       ],
-      "results": undefined,
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
     }
   }
   onFocusChange={[Function]}
@@ -1829,7 +1838,12 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           "",
         ],
       ],
-      "results": undefined,
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
     }
   }
   password={false}

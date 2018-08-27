@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-tracking",
-  "version": "5.7.0-beta.2",
+  "version": "5.7.3",
   "description": "Tracking library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -14,19 +14,12 @@
     "shopgate",
     "connect"
   ],
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "cover": "jest --coverage"
-  },
   "devDependencies": {
-    "@shopgate/eslint-config": "5.7.0-beta.2",
-    "@shopgate/pwa-common": "5.7.0-beta.2",
-    "@shopgate/pwa-common-commerce": "5.7.0-beta.2",
-    "@shopgate/pwa-core": "5.7.0-beta.2",
-    "@shopgate/pwa-unit-test": "5.7.0-beta.2",
-    "@shopgate/tracking-core": "5.7.0-beta.2",
-    "jest": "^23.5.0",
+    "@shopgate/eslint-config": "5.7.3",
+    "@shopgate/pwa-common": "5.7.3",
+    "@shopgate/pwa-common-commerce": "5.7.3",
+    "@shopgate/pwa-core": "5.7.3",
+    "@shopgate/tracking-core": "5.7.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "reselect": "^3.0.1",

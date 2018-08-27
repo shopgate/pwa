@@ -115,7 +115,16 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
           Array [],
           Array [],
         ],
-        "results": undefined,
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
       }
     }
     toast={[Function]}
@@ -134,7 +143,16 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
             Array [],
             Array [],
           ],
-          "results": undefined,
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
         }
       }
       removeToast={[Function]}
@@ -149,7 +167,12 @@ exports[`<Toast /> should call actionOnClick on action click 2`] = `
                 undefined,
               ],
             ],
-            "results": undefined,
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
+            ],
           },
           "duration": 2,
           "id": 5,
