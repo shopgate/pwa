@@ -65,6 +65,14 @@ class Navigator extends PureComponent {
   }
 
   /**
+   * Initially set the route pattern. This is necessary to determine which
+   * route is the first when the app is opened.
+   */
+  componentDidMount() {
+    this.setRoutePattern();
+  }
+
+  /**
    * @param {string} id The id of the route that entered.
    */
   setRoutePattern = () => {
