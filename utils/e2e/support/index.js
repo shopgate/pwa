@@ -14,10 +14,10 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-//import './commands';
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
-require('./commands')
+// require('./commands')
 
 const istanbul = require('istanbul-lib-coverage');
 
