@@ -169,8 +169,8 @@ describe('<ProductContent />', () => {
     mockedState = createState(mockedProductState);
   });
 
-  describe('rendering when all product data is available', () => {
-    it('should render a product without variants as expected', () => {
+  describe('rendering when all relevant data is available inside the store', () => {
+    it('should render a product without variants', () => {
       const productId = 'product_5';
       const variantId = null;
 
@@ -178,7 +178,7 @@ describe('<ProductContent />', () => {
       runComponentTests(component, { productId, variantId });
     });
 
-    it('should render a variant product as expected', () => {
+    it('should render a variant product', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
 
@@ -186,50 +186,48 @@ describe('<ProductContent />', () => {
       runComponentTests(component, { productId, variantId });
     });
 
-    it('should render variant product updates as expected', () => {
+    it('should handle variant product updates', () => {
       const productId = 'product_1';
       const variantId = 'product_2';
       const variantIdUpdate = 'product_3';
 
-      // Render the component with a base product.
       const { component } = createComponent(mockedState, { productId: variantId });
       runComponentTests(component, { productId, variantId });
 
-      // Update the productId with the id of another variant.
       component.setProps({ productId: variantIdUpdate });
       runComponentTests(component, { productId, variantId: variantIdUpdate });
     });
   });
 
-  describe('rendering when product data is not available yet', () => {
-    describe('simple product', () => {
-      const productId = 'product_5';
-      const variantId = null;
+  describe('rendering when product data is not available inside the store', () => {
+    describe('simple products', () => {
+      describe('initialization', () => {
+        const productId = 'product_5';
+        const variantId = null;
 
-      let component;
-      let store;
+        let component;
+        let store;
 
-      beforeAll(() => {
-        // Prepare state with an unavailable base product.
-        delete mockedState.product.productsById[productId];
-        ({ component, store } = createComponent(mockedState, { productId }));
-      });
+        beforeAll(() => {
+          delete mockedState.product.productsById[productId];
+          ({ component, store } = createComponent(mockedState, { productId }));
+        });
 
-      it('should initialize as expected', () => {
-        runComponentTests(component, { productId, variantId });
-      });
+        it('should initialize as expected when product data is not available yet', () => {
+          runComponentTests(component, { productId, variantId });
+        });
 
-      it('should render as expected when data became available', () => {
-        // Update the store with complete product data.
-        store.dispatch(updateState(mockedProductState));
-        component.update();
+        it('should update as expected when data became available', () => {
+          store.dispatch(updateState(mockedProductState));
+          component.update();
 
-        runComponentTests(component, { productId, variantId });
+          runComponentTests(component, { productId, variantId });
+        });
       });
     });
 
-    describe('product with variants', () => {
-      describe('initialized with variant id', () => {
+    describe('products with variant products', () => {
+      describe('initialization with a variant product', () => {
         const productId = 'product_1';
         const variantId = 'product_2';
 
@@ -244,12 +242,12 @@ describe('<ProductContent />', () => {
           ));
         });
 
-        it('should initialize as expected', () => {
+        it('should initialize as expected when no data is available at all', () => {
           // The variantId is still used as productId since real productId can't be determined yet.
           runComponentTests(component, { productId: variantId, variantId: null });
         });
 
-        it('should update as expected when base product data came in but the rest is still fetching', () => {
+        it('should render as expected when base product data came in but the rest is still fetching', () => {
           // Update the store with fetching variant data.
           store.dispatch(updateState(mockedVariantStateVariantDataFetching));
           component.update();
@@ -258,8 +256,7 @@ describe('<ProductContent />', () => {
           runComponentTests(component, { productId: variantId, variantId: null });
         });
 
-        it('should update as expected when variant data came in but the variant is still fetching', () => {
-          // Update the store with fetching variant product.
+        it('should render as expected when variant data came in but the variant product data is still fetching', () => {
           store.dispatch(updateState(mockedVariantStateVariantsFetching));
           component.update();
 
@@ -267,17 +264,15 @@ describe('<ProductContent />', () => {
           runComponentTests(component, { productId: variantId, variantId: null });
         });
 
-        it('should update as expected when all data is available', () => {
-          // Update the store with complete product data.
+        it('should render as expected when all data comes available', () => {
           store.dispatch(updateState(mockedVariantStateComplete));
           component.update();
 
-          // All data is available, so the correct parametrization can be determined.
           runComponentTests(component, { productId, variantId });
         });
       });
 
-      describe('initialized with baseProductId', () => {
+      describe('switch from a base product to a variant product whose data is not fetched yet', () => {
         const productId = 'product_1';
         const variantId = 'product_2';
 
@@ -285,33 +280,30 @@ describe('<ProductContent />', () => {
         let store;
 
         beforeAll(() => {
-          // Prepare state where variants are not available yet
           ({ component, store } = createComponent(
             mockedVariantStateVariantsFetching,
             { productId }
           ));
         });
 
-        it('should initialize as expected', () => {
+        it('should initialize with the base product', () => {
           runComponentTests(component, { productId, variantId: null });
         });
 
-        it('should update as expected when a variantId was set', () => {
-          // Simulate the product switch.
+        it('should render as expected when switching to the variant product whose data is not available yet', () => {
           component.setProps({ productId: variantId, isVariant: true });
           runComponentTests(component, { productId, variantId });
         });
 
-        it('should update as expected when the variant product data came in', () => {
+        it('should render as expected when the variant product data comes available', () => {
           store.dispatch(updateState(mockedVariantStateComplete));
           component.update();
 
-          // All data is available, so the correct parametrization can be determined.
           runComponentTests(component, { productId, variantId });
         });
       });
 
-      describe('switch to another variant product', () => {
+      describe('switch from one variant product to another one', () => {
         const productId = 'product_1';
         const variantId = 'product_2';
         const variantIdUpdate = 'product_3';
@@ -320,28 +312,25 @@ describe('<ProductContent />', () => {
         let store;
 
         beforeAll(() => {
-          // Clone the mocked variants state and remove the variant which we want to switch to.
           const initialState = createState(mockedVariantStateComplete);
           delete initialState.product.productsById[variantIdUpdate];
 
-          // Prepare state where variants are not available yet
           ({ component, store } = createComponent(
             initialState,
             { productId, variantId }
           ));
         });
 
-        it('should initialize as expected', () => {
+        it('should initialize with the initial variant product', () => {
           runComponentTests(component, { productId, variantId });
         });
 
-        it('should update as expected when the variantId is changed but the product data is not available yet', () => {
-          // Simulate the product switch.
+        it('should render as expected when switching to another variant product whose data is not fetched yet', () => {
           component.setProps({ productId: variantIdUpdate, isVariant: true });
           runComponentTests(component, { productId, variantId: variantIdUpdate });
         });
 
-        it('should update as expected when the product data is available', () => {
+        it('should render as expected when the variant product data comes available ', () => {
           store.dispatch(updateState(mockedVariantStateComplete));
           component.update();
           runComponentTests(component, { productId, variantId: variantIdUpdate });

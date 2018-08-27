@@ -56,12 +56,7 @@ class ProductContent extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    let { productId } = nextProps;
-
-    if (nextProps.baseProductId) {
-      // Take the baseProductId as productId since the productId from the route can be everything.
-      productId = nextProps.baseProductId;
-    }
+    let productId = (nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId);
 
     let { variantId } = nextProps;
 
