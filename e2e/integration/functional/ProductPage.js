@@ -39,7 +39,7 @@ describe('functional test product page', () => {
       .contains('5')
       .should('be.visible');
     cy.wait(1000);
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .should('be.visible')
       .click();
     cy.get(els.cartButton += ' div')
@@ -76,7 +76,7 @@ describe('functional test product page', () => {
       .contains('low')
       .should('be.visible');
     cy.wait(1000);
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .should('be.visible')
       .click();
     cy.get(els.cartButton += ' div')
