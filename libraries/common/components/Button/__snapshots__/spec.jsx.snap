@@ -43,6 +43,12 @@ exports[`<Button /> should trigger the click event 1`] = `
       "calls": Array [
         Array [],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
     }
   }
 >

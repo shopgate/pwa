@@ -327,6 +327,12 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       "calls": Array [
         Array [],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
     }
   }
   onOpen={[Function]}
@@ -348,6 +354,12 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         [MockFunction] {
           "calls": Array [
             Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
           ],
         }
       }

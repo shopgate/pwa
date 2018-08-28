@@ -7,6 +7,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   classNames={Object {}}
   controls={false}
   disabled={false}
+  historyPath=""
   indicators={false}
   initialSlide={0}
   interval={3000}
@@ -52,7 +53,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
 `;
 
 exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
-<Slider
+<Connect(Slider)
   autoPlay={false}
   className=""
   classNames={
@@ -70,6 +71,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
   }
   controls={false}
   disabled={false}
+  historyPath=""
   indicators={false}
   initialSlide={0}
   interval={3000}
@@ -140,5 +142,5 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
       transition={null}
     />
   </SliderItem>
-</Slider>
+</Connect(Slider)>
 `;
