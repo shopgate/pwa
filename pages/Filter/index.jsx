@@ -6,6 +6,7 @@ import Content from './components/Content';
 
 const map = {
   categoryId: 'params.categoryId',
+  filters: 'state.filters',
   searchPhrase: 'query.s',
   visible: 'visible',
 };
@@ -16,14 +17,22 @@ const map = {
 const Filter = () => (
   <View>
     <Consume context={RouteContext} props={map}>
-      {({ categoryId, searchPhrase, visible }) => (
-        visible && (
+      {(consumed) => {
+        const {
+          categoryId,
+          filters,
+          searchPhrase,
+          visible,
+        } = consumed;
+
+        return visible && (
           <Content
+            activeFilters={filters}
             {...categoryId && { categoryId }}
             {...searchPhrase && { searchPhrase }}
           />
-        )
-      )}
+        );
+      }}
     </Consume>
   </View>
 );

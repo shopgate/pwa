@@ -7,22 +7,29 @@ import consume from './consumer';
 // TODO: Create the Apply button via react portal
 // TODO: Contains the clear button
 
-const defaultFilters = {};
-
 /**
  * The FilterContent component.
  */
 class FilterContent extends Component {
   static propTypes = {
+    activeFilters: PropTypes.shape(),
     filters: PropTypes.arrayOf(PropTypes.shape()),
   }
 
   static defaultProps = {
+    activeFilters: null,
     filters: null,
   }
 
-  state = {
-    activeFilters: defaultFilters,
+  /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeFilters: props.activeFilters,
+    };
   }
 
   addFilter = () => {
@@ -34,7 +41,7 @@ class FilterContent extends Component {
   }
 
   resetFilters = () => {
-    this.setState({ activeFilters: defaultFilters });
+    this.setState({ activeFilters: {} });
   }
 
   /**

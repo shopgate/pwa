@@ -9,15 +9,27 @@ import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
  * @returns {Function} A redux thunk.
  */
 const openFilterRoute = () => (dispatch) => {
-  const { params: { categoryId }, query } = getCurrentRoute();
+  const {
+    id,
+    params: { categoryId },
+    query,
+    state,
+  } = getCurrentRoute();
+
+  const forwardState = {
+    filters: state.filters || null,
+    parentId: id,
+  };
 
   if (categoryId) {
     dispatch(historyPush({
       pathname: `${CATEGORY_PATH}/${categoryId}/filter`,
+      state: forwardState,
     }));
   } else if (query.s) {
     dispatch(historyPush({
       pathname: `${SEARCH_PATH}/filter`,
+      state: forwardState,
     }));
   }
 };
