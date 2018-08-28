@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import {
   getBaseProductId,
-  getProduct,
   getVariantId,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
@@ -14,7 +13,6 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
  */
 const mapStateToProps = (state, props) => ({
   baseProductId: getBaseProductId(state, props),
-  isFetching: !getProduct(state, props),
   variantId: getVariantId(state, props),
 });
 
