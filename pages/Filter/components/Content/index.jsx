@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import connect from './connector';
+import consume from './consumer';
 
 // TODO: Allows to add/update/remove an active filter
 // TODO: Render the UI components based on filter type
@@ -50,4 +50,4 @@ class FilterContent extends Component {
   }
 }
 
-export default connect(FilterContent);
+export default consume(FilterContent);
