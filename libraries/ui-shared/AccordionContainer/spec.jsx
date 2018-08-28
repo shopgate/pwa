@@ -1,36 +1,38 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Accordion from './index';
+import AccordionContainer from './index';
 
 /**
  * @returns {JSX}
  */
 const Child = () => <div />;
 
-describe('<Accordion />', () => {
+describe('<AccordionContainer />', () => {
   it('should render children with props', () => {
     const wrapper = shallow((
-      <Accordion>
+      <AccordionContainer>
         {props => <Child {...props} />}
-      </Accordion>
+      </AccordionContainer>
     ));
 
     const props = wrapper.find('Child').props();
 
+    expect(wrapper).toMatchSnapshot();
     expect(props.isOpen).toEqual(false);
-    expect(typeof props.open).toEqual('function');
-    expect(typeof props.close).toEqual('function');
+    expect(typeof props.handleOpen).toEqual('function');
+    expect(typeof props.handleClose).toEqual('function');
   });
 
   it('should update children props when state changes', () => {
     const wrapper = shallow((
-      <Accordion>
+      <AccordionContainer>
         {props => <Child {...props} />}
-      </Accordion>
+      </AccordionContainer>
     ));
 
     wrapper.setState({ open: true });
 
+    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Child').props().isOpen).toEqual(true);
   });
 });

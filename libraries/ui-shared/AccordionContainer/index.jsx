@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Th Accordion component.
+ * The Accordion container component.
  */
-class Accordion extends Component {
+class AccordionContainer extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
   }
@@ -35,11 +35,11 @@ class Accordion extends Component {
    */
   render() {
     return this.props.children({
-      close: this.close,
+      handleClose: this.close,
       isOpen: this.state.open,
-      open: this.open,
+      handleOpen: this.open,
     });
   }
 }
 
-export default Accordion;
+export default AccordionContainer;
