@@ -118,7 +118,7 @@ class Characteristic extends Component {
               ref={charRef}
               style={transition[state]}
             >
-              {selected && <div className={styles.label}>{translatedLabel}</div>}
+              {selected && <div className={styles.label}>{displayLabel}</div>}
               <div className={styles.selection}>{buttonLabel}</div>
             </button>
           )}
