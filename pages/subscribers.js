@@ -30,7 +30,6 @@ import cart from 'Pages/Cart/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
-import filterAttribute from 'Pages/FilterAttribute/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import gallery from 'Pages/ProductGallery/subscriptions';
 import login from 'Pages/Login/subscriptions';
@@ -76,7 +75,6 @@ const subscriptions = [
   coupon,
   favorites,
   filter,
-  filterAttribute,
   filterbar,
   gallery,
   login,
