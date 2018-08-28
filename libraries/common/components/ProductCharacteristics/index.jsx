@@ -154,7 +154,7 @@ class ProductCharacteristics extends Component {
       return;
     }
 
-    this.props.navigate(products[0].id);
+    this.props.navigate(products[0].id, true);
   }
 
   /**

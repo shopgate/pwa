@@ -105,7 +105,8 @@ export const getProductById = createSelector(
 );
 
 /**
- * Retrieves the id of the current selected product from the component props.
+ * Retrieves the id of the current selected product from the component props. When the props
+ * contain a variant id it will return this one instead of the product id.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {string|null} The id of the current product.
@@ -131,6 +132,35 @@ export const getProductId = (state, props) => {
 
   return props.productId || null;
 };
+
+/**
+ * Gets the variant id out of the selector props.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {string|null}
+ */
+export const getVariantProductId = (state, props) => {
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 the variant selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getVariantId() needs to be called with a props object that includes a variantId.');
+  }
+
+  const { variantId = null } = props || {};
+
+  return variantId;
+};
+
+/**
+ * Checks if currently a variant is selected within the props.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {boolean}
+ */
+export const isVariantSelected = (state, props) => !!getVariantProductId(state, props);
 
 /**
  * Retrieves the product data for the passed productId from the store.
@@ -324,7 +354,7 @@ export const getProductUnitPrice = createSelector(
  * @param {Object} props The component props.
  * @return {boolean}
  */
-export const hasVariants = createSelector(
+export const hasProductVariants = createSelector(
   getProductFlags,
   (flags) => {
     if (!flags) {
@@ -344,8 +374,8 @@ export const hasVariants = createSelector(
  */
 export const isBaseProduct = createSelector(
   getProduct,
-  hasVariants,
-  (product, productHasVariants) => {
+  hasProductVariants,
+  (product, hasVariants) => {
     if (!product) {
       return false;
     }
@@ -354,7 +384,7 @@ export const isBaseProduct = createSelector(
      * Base products are simple products without variants or products with related variant products.
      * At variant products the baseProductId is used to reference the base product.
      */
-    return product.baseProductId === null || productHasVariants;
+    return product.baseProductId === null || hasVariants;
   }
 );
 
@@ -367,18 +397,22 @@ export const isBaseProduct = createSelector(
  */
 export const getBaseProductId = createSelector(
   getProduct,
-  (product) => {
-    if (!product) {
-      return null;
+  (state, props = {}) => props,
+  (product, props) => {
+    if (product) {
+      // First try to determine a baseProductId via a selected product.
+      const { baseProductId = null } = product;
+
+      if (baseProductId !== null) {
+        return baseProductId;
+      }
+
+      return product.id;
     }
 
-    const { baseProductId = null } = product;
-
-    if (baseProductId !== null) {
-      return baseProductId;
-    }
-
-    return product.id;
+    const { productId } = props;
+    // Use the productId from the props as fallback.
+    return typeof productId !== 'undefined' ? productId : null;
   }
 );
 
@@ -398,6 +432,25 @@ export const getBaseProduct = createSelector(
     const { productData = null } = products[baseProductId] || {};
 
     return productData;
+  }
+);
+
+/**
+ * Determines if a base product has variants.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasBaseProductVariants = createSelector(
+  getBaseProduct,
+  (baseProduct) => {
+    if (!baseProduct) {
+      return false;
+    }
+
+    const { flags: { hasVariants = false } = {} } = baseProduct;
+
+    return hasVariants;
   }
 );
 
@@ -511,12 +564,30 @@ export const getProductVariants = createSelector(
 );
 
 /**
+ * Retrieves a product for the selected variant id from the store.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {Object|null} The selected variant or null if none is selected
+ */
+export const getSelectedVariant = createSelector(
+  getProduct,
+  isVariantSelected,
+  (product, selected) => {
+    if (!product || !selected) {
+      return null;
+    }
+
+    return product;
+  }
+);
+
+/**
  * Determines if a product is orderable.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {boolean}
  */
-export const isOrderable = createSelector(
+export const isProductOrderable = createSelector(
   getProductStock,
   stockInfo => !!(stockInfo && stockInfo.orderable)
 );
@@ -564,25 +635,6 @@ export const getVariantAvailabilityByCharacteristics = createSelector(
     }
 
     return found.availability;
-  }
-);
-
-/**
- * Retrieves the product orderable information.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @todo Check if this selector can be combined with isOrderable().
- * @return {boolean}
- */
-export const isProductOrderable = createSelector(
-  hasVariants,
-  isOrderable,
-  (withVariants, orderable) => {
-    if (!orderable || withVariants) {
-      return false;
-    }
-
-    return orderable;
   }
 );
 
@@ -679,7 +731,7 @@ export const getProductsResult = createSelector(
 );
 
 /**
- * Mappings for PWA < 6.0
+ * Selector mappings for PWA < 6.0
  * @deprecated
  */
 export const getCurrentProduct = getProduct;
@@ -689,3 +741,4 @@ export const getCurrentBaseProduct = getBaseProduct;
 export const getCurrentProductStock = getProductStock;
 export const getProductStockInfo = getProductStock;
 export const getProductBasePrice = getProductUnitPrice;
+export const isOrderable = isProductOrderable;

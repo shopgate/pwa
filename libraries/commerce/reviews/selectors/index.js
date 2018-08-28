@@ -145,7 +145,7 @@ const getUserReviewsByProductId = createSelector(
 export const getUserReviewForProduct = createSelector(
   getUserReviewsByProductId,
   getReviews,
-  (state, props) => props.productId,
+  (state, props = {}) => props.productId,
   (userReviews, allReviews, productId) => {
     if (!userReviews || !userReviews[productId] || !allReviews[userReviews[productId].review]) {
       return {};
