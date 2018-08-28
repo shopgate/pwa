@@ -71,7 +71,7 @@ class Slider extends Component {
    * @param {Object} slider The Slider object.
    */
   static fixFakeLoop(slider) {
-    if (slider.params.loop) {
+    if (slider.params.loop && slider.slides.length !== slider.imagesLoaded) {
       // The slider is looping, re-center it to the original dom element if required.
       slider.fixLoop();
     }
