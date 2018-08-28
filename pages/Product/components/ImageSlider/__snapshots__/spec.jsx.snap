@@ -429,6 +429,7 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
           classNames={Object {}}
           controls={false}
           disabled={false}
+          historyPath=""
           indicators={true}
           initialSlide={0}
           interval={3000}
