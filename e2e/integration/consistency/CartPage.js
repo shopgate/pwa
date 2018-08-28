@@ -18,7 +18,7 @@ describe('IOS11Test CartPage', () => {
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .click();
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartBarButton)
       .click();
     cy.get(els.cartButton)
       .click();
