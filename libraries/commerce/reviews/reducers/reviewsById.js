@@ -2,6 +2,7 @@ import {
   RECEIVE_PRODUCT_REVIEWS,
   RECEIVE_REVIEWS,
   RECEIVE_USER_REVIEW,
+  RECEIVE_SUBMIT_REVIEW,
 } from '../constants';
 
 /**
@@ -20,6 +21,7 @@ function reviewsById(state = {}, action) {
         [review.id]: review,
       }), state);
     }
+    case RECEIVE_SUBMIT_REVIEW:
     case RECEIVE_USER_REVIEW:
       return {
         ...state,
