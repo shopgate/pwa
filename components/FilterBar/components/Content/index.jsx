@@ -4,7 +4,7 @@ import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import Sort from './components/Sort';
 import FilterButton from './components/FilterButton';
-import FilterChips from './components/FilterChips';
+// import FilterChips from './components/FilterChips';
 import connect from './connector';
 import styles from './style';
 
@@ -60,7 +60,7 @@ class Content extends Component {
           <Sort />
           <FilterButton />
         </div>
-        <FilterChips currency={currency} />
+        {/* <FilterChips currency={currency} /> */}
       </section>
     );
   }
