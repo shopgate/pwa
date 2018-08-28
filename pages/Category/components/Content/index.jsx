@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import CategoryList from 'Components/CategoryList';
-import FilterBar from 'Components/FilterBar';
+// import FilterBar from 'Components/FilterBar';
 import Products from '../Products';
 import Empty from '../Empty';
 import connect from './connector';
@@ -14,10 +14,10 @@ import connect from './connector';
  */
 const CategoryContent = ({ categories, categoryId, hasProducts }) => (
   <Fragment>
-    {
+    {/*
       ((!categories || !categories.length) && !!hasProducts) &&
-      <FilterBar categoryId={categoryId} />
-    }
+      { <FilterBar categoryId={categoryId} />}
+    */}
     <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId }} />
     <Portal name={portals.CATEGORY_LIST} props={{ categoryId }}>
       {categories && categories.length && <CategoryList categories={categories} />}

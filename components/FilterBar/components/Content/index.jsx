@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compareObjects } from '@shopgate/pwa-common/helpers/redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-// Import ViewSwitch from './components/ViewSwitch';
 import Sort from './components/Sort';
 import FilterButton from './components/FilterButton';
 import FilterChips from './components/FilterChips';

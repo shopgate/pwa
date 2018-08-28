@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import openFilterView from '../../actions/openFilterView';
+import openFilterRoute from '../../actions/openFilterRoute';
 
 /**
  * @param {Function} dispatch The redux dispatch function.
@@ -7,7 +7,7 @@ import openFilterView from '../../actions/openFilterView';
  * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: () => dispatch(openFilterView()),
+  navigate: () => dispatch(openFilterRoute()),
 });
 
 export default connect(null, mapDispatchToProps, null, { pure: () => null });

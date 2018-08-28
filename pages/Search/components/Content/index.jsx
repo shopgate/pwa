@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-import FilterBar from 'Components/FilterBar';
+// import FilterBar from 'Components/FilterBar';
 import Products from '../Products';
 import connect from './connector';
 
@@ -39,7 +39,7 @@ class SearchContent extends Component {
 
     return (
       <Fragment>
-        {showFilterBar && <FilterBar searchPhrase={searchPhrase} />}
+        {/* showFilterBar && <FilterBar searchPhrase={searchPhrase} /> */}
         <Products searchPhrase={searchPhrase} sortOrder={DEFAULT_SORT} />
         {showNoResults && (
           <NoResults
