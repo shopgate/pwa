@@ -2,17 +2,17 @@ import {
   REQUEST_FILTERS,
   RECEIVE_FILTERS,
   ERROR_FILTERS,
-} from '../constants';
-import { PRODUCT_LIFETIME } from '../../product/constants';
+} from '@shopgate/pwa-common-commerce/filter/constants';
+// TODO: Remove dependency to product
+import { PRODUCT_LIFETIME } from '@shopgate/pwa-common-commerce/product/constants';
 import enrichFilters from './helpers/enrichFilters';
 
 /**
- * Stores a collection of available filters by the related hash of the request parameters.
  * @param {Object} [state={}] The current state.
  * @param {Object} action The current redux action.
  * @return {Object} The new state.
  */
-export default function availableFilters(state = {}, action) {
+export default function resultsByHash(state = {}, action) {
   switch (action.type) {
     case REQUEST_FILTERS: {
       return {

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { Provider as StoreProvider } from 'redux-props';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
 
@@ -37,13 +38,15 @@ class App extends PureComponent {
    */
   render() {
     return (
-      <Provider store={this.props.store}>
-        <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
-          <div>
-            {this.props.children}
-          </div>
-        </I18n.Provider>
-      </Provider>
+      <StoreProvider store={this.props.store}>
+        <Provider store={this.props.store}>
+          <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
+            <div>
+              {this.props.children}
+            </div>
+          </I18n.Provider>
+        </Provider>
+      </StoreProvider>
     );
   }
 }

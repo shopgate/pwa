@@ -1,12 +1,6 @@
 import { combineReducers } from 'redux';
-import activeFilters from './activeFilters';
-import activeHash from './activeHash';
-import availableFilters from './availableFilters';
-import temporaryFilters from './temporaryFilters';
+import resultsByHash from './resultsByHash';
 
 export default combineReducers({
-  activeFilters,
-  availableFilters,
-  activeHash,
-  temporaryFilters,
+  resultsByHash,
 });

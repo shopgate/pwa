@@ -18,6 +18,39 @@ const defaultFilters = [];
 export const getFilters = state => state.filter;
 
 /**
+ * Gets the filter results.
+ * @param {Object} state The current application state.
+ * @return {Object}
+ */
+export const getFilterResults = createSelector(
+  getFilters,
+  filter => filter.resultsByHash
+);
+
+/**
+ * Gets filters by a result hash.
+ * @param {Object} state The current application state.
+ * @param {Object} props The cprops.
+ * @return {Object}
+ */
+export const getFiltersByHash = createSelector(
+  getFilterResults,
+  (state, props) => props.categoryId,
+  (state, props) => props.searchPhrase,
+  (results, categoryId, searchPhrase) => {
+    const hash = generateResultHash({
+      pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,
+      ...categoryId && { categoryId: hex2bin(categoryId) },
+      ...searchPhrase && { searchPhrase },
+    }, false, false);
+
+    const { filters } = results[hash] || {};
+
+    return filters || null;
+  }
+);
+
+/**
  * Gets the filter hash from the history state.
  * @param {Object} state The application state.
  * @returns {string}
