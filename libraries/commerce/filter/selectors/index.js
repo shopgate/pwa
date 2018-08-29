@@ -44,9 +44,7 @@ export const getFiltersByHash = createSelector(
       ...searchPhrase && { searchPhrase },
     }, false, false);
 
-    const { filters } = results[hash] || {};
-
-    return filters || null;
+    return (results[hash] && results[hash].filters) || null;
   }
 );
 
