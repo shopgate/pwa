@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@virtuous/react-conductor/Router';
+import colors from 'Styles/colors';
 import ViewContent from './components/Content';
 import styles from './style';
 
@@ -9,14 +10,18 @@ import styles from './style';
  * @return {JSX}
  */
 const View = ({
+  background,
   children,
   hasNavigator,
   head,
   isFullscreen,
   pathname,
-  style,
 }) => (
-  <section className={styles} style={style} data-test-id={`view: ${pathname || '-'}`}>
+  <section
+    className={styles}
+    data-test-id={`view: ${pathname || '-'}`}
+    style={{ background }}
+  >
     <ViewContent
       hasNavigator={hasNavigator}
       head={head}
@@ -28,18 +33,16 @@ const View = ({
 );
 
 View.propTypes = {
+  background: PropTypes.string,
   children: PropTypes.node,
   hasNavigator: PropTypes.bool,
   head: PropTypes.shape(),
   isFullscreen: PropTypes.bool,
   pathname: PropTypes.string,
-  style: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape(),
-  ]),
 };
 
 View.defaultProps = {
+  background: colors.light,
   children: null,
   hasNavigator: true,
   head: {
@@ -50,7 +53,6 @@ View.defaultProps = {
   },
   isFullscreen: false,
   pathname: null,
-  style: null,
 };
 
 export default props => (

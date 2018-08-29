@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import PriceSlider from './components/PriceSlider';
 import consume from './consumer';
 
 // TODO: Allows to add/update/remove an active filter
@@ -48,11 +49,30 @@ class FilterContent extends Component {
    * @returns {JSX}
    */
   render() {
+    const { filters } = this.props;
+
+    if (!filters) {
+      return null;
+    }
+
     return (
-      <div>
-        {JSON.stringify(this.state)}
-        {JSON.stringify(this.props.filters)}
-      </div>
+      <Fragment>
+        {filters.map((filter) => {
+          switch (filter.type) {
+            case 'range': {
+              return (
+                <PriceSlider
+                  key={filter.id}
+                  min={filter.minimum}
+                  max={filter.maximum}
+                />
+              );
+            }
+            default:
+              return null;
+          }
+        })}
+      </Fragment>
     );
   }
 }
