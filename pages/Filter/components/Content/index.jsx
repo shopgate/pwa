@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import PriceSlider from './components/PriceSlider';
+import Selector from './components/Selector';
 import consume from './consumer';
 
 // TODO: Allows to add/update/remove an active filter
@@ -69,7 +70,7 @@ class FilterContent extends Component {
               );
             }
             default:
-              return null;
+              return <Selector key={filter.id} label={filter.label} values={filter.values} />;
           }
         })}
       </Fragment>
