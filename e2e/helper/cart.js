@@ -14,7 +14,7 @@ export function clearProductFromCart() {
     cy.get(els.contextMenuButton)
       .contains('Entfernen')
       .click();
-    cy.wait(2000);
+    cy.wait(500);
   });
 }
 
