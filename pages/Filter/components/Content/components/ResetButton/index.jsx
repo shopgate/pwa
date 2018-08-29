@@ -10,12 +10,7 @@ import styles from './style';
  */
 const FilterResetButton = ({ active, onClick }) => (
   <div className={styles}>
-    <Button
-      flat
-      type="primary"
-      onClick={onClick}
-      disabled={!active}
-    >
+    <Button flat type="primary" onClick={onClick} disabled={!active}>
       <I18n.Text string="filter.reset" />
     </Button>
   </div>
