@@ -2,6 +2,7 @@ import React from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
+import colors from 'Styles/colors';
 import Content from './components/Content';
 
 const map = {
@@ -15,7 +16,7 @@ const map = {
  * @returns {JSX}
  */
 const Filter = () => (
-  <View>
+  <View background={colors.background}>
     <Consume context={RouteContext} props={map}>
       {(consumed) => {
         const {
