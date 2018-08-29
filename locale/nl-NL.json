@@ -36,9 +36,7 @@
     },
     "apply": "Toepassen",
     "more": "meer",
-    "clear": "Wissen",
-    "clear_all": "Wis alles",
-    "view_all": "Bekijk alles"
+    "reset": "Wis alles"
   },
   "price": {
     "from": "Vanaf {price}",
