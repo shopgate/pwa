@@ -36,9 +36,7 @@
     },
     "apply": "Apply",
     "more": "more",
-    "clear": "Clear",
-    "clear_all": "Clear all",
-    "view_all": "View all"
+    "reset": "Reset"
   },
   "price": {
     "from": "From {price}",
