@@ -18,9 +18,7 @@ const defaultAppConfig = {
   webCheckoutShopify: null,
   shopCNAME: null,
   currency: 'USD',
-  featureFlag: {
-    showMenuSubHeaders: false,
-  },
+  showGmdMenuSubHeaders: false,
 };
 
 export const themeName = process.env.THEME || 'theme';

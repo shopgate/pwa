@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
@@ -8,7 +8,7 @@ import style from './style';
 /**
  * A component that provides a styled checkbox for user input in material design.
  */
-class Checkbox extends Component {
+class Checkbox extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
