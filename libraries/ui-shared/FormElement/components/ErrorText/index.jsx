@@ -9,8 +9,8 @@ import styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const ErrorText = ({ className, error, errorText }) => (
-  <div className={classNames(className, error)}>
+const ErrorText = ({ className, errorText }) => (
+  <div className={classNames(className, styles.error)}>
     <I18n.Text string={errorText} />
   </div>
 );
