@@ -199,8 +199,10 @@ describe('Reviews reducers', () => {
           type: RECEIVE_SUBMIT_REVIEW,
           review: reviewWithProductId,
         });
+
         expect(state.userReviewsByProductId.foo.isFetching).toBe(false);
         expect(state.userReviewsByProductId.foo.review).toEqual('id');
+        expect(state.reviewsById[reviewWithProductId.id]).toEqual(reviewWithProductId);
       });
     });
     describe(ERROR_SUBMIT_REVIEW, () => {
