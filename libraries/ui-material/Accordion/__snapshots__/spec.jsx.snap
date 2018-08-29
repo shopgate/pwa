@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> should not render without a label 1`] = `""`;
+
+exports[`<Accordion /> should not render without children 1`] = `""`;
+
+exports[`<Accordion /> should open on click 1`] = `
+<Accordion
+  label="something"
+>
+  <AccordionContainer>
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-sd5zv3": "",
+        }
+      }
+      onClick={[Function]}
+    >
+      something
+    </div>
+  </AccordionContainer>
+</Accordion>
+`;
+
+exports[`<Accordion /> should open on click 2`] = `
+<Accordion
+  label="something"
+>
+  <AccordionContainer>
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-sd5zv3": "",
+        }
+      }
+      onClick={[Function]}
+    >
+      something
+    </div>
+    <section
+      className={
+        Object {
+          "data-css-1ri92y8": "",
+        }
+      }
+    >
+      Some content.
+    </section>
+  </AccordionContainer>
+</Accordion>
+`;
+
+exports[`<Accordion /> should render in closed state 1`] = `
+<AccordionContainer>
+  <Component />
+</AccordionContainer>
+`;
