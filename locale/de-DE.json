@@ -36,9 +36,7 @@
     },
     "apply": "Anwenden",
     "more": "mehr",
-    "clear": "Zurücksetzen",
-    "clear_all": "Alle zurücksetzen",
-    "view_all": "mehr"
+    "reset": "Zurücksetzen"
   },
   "price": {
     "from": "Ab {price}",

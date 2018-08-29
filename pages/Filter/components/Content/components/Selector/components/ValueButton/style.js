@@ -3,6 +3,8 @@ import { css } from 'glamor';
 export const container = css({
   display: 'flex',
   borderRadius: 2,
+  justifyContent: 'center',
+  outline: 0,
   lineHeight: 1,
   padding: '0 8px',
   border: '1px solid #ebebeb',
