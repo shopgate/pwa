@@ -4,6 +4,7 @@ import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import { FILTER_TYPE_RANGE } from '@shopgate/pwa-common-commerce/filter/constants';
 import PriceSlider from './components/PriceSlider';
+import Selector from './components/Selector';
 import ResetButton from './components/ResetButton';
 import buildInitialFilters from './helpers/buildInitialFilters';
 import consume from './consumer';
@@ -94,7 +95,7 @@ class FilterContent extends Component {
             );
           }
 
-          return null;
+          return <Selector id={filter.id} key={filter.id} label={filter.label} values={filter.values} />;
         })}
         <ResetButton active={this.hasChanged} onClick={this.reset} />
       </Fragment>
