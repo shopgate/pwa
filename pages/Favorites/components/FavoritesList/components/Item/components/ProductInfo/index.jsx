@@ -49,7 +49,11 @@ const ProductInfo = ({ product }) => {
           <Portal name={portals.FAVORITES_AVAILABILITY_TEXT_AFTER} props={props} />
         </Grid.Item>
         <Grid.Item className={styles.priceContainer}>
-          <Price price={product.price} />
+          <Portal name={portals.FAVORITES_PRODUCT_PRICE_BEFORE} props={props} />
+          <Portal name={portals.FAVORITES_PRODUCT_PRICE} props={props}>
+            <Price price={product.price} />
+          </Portal>
+          <Portal name={portals.FAVORITES_PRODUCT_PRICE_AFTER} props={props} />
         </Grid.Item>
       </Grid>
     </Fragment>
