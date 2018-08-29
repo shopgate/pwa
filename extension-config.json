@@ -153,13 +153,13 @@
         "key": "currencyId"
       }
     },
-    "featureFlag": {
-      "type": "static",
+    "showGmdMenuSubHeaders": {
+      "type": "admin",
       "destination": "frontend",
+      "default": false,
       "params": {
-        "value": {
-          "showMenuSubHeaders": false
-        }
+        "type": "json",
+        "label": "Show GMD menu headers"
       }
     }
   }

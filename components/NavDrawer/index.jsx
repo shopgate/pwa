@@ -32,7 +32,7 @@ import Header from './components/Header';
 import SubHeader from './components/SubHeader';
 import connect from './connector';
 
-const { featureFlag: { showMenuSubHeaders = false } = {} } = appConfig;
+const { showGmdMenuSubHeaders = false } = appConfig;
 
 /**
  * The NavDrawer component.
@@ -124,7 +124,7 @@ class NavDrawer extends Component {
       Divider,
       Item,
       user,
-      SubHeader: (showMenuSubHeaders ? SubHeader : undefined),
+      SubHeader: (showGmdMenuSubHeaders ? SubHeader : undefined),
     };
 
     return (
@@ -233,7 +233,7 @@ class NavDrawer extends Component {
         <Portal name={commonPortals.NAV_MENU_STORE_INFORMATION} props={props}>
           <Divider close={this.handleClose} />
 
-          {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
+          {showGmdMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.more" />}
 
           {/* Shipping */}
           <Portal name={marketPortals.NAV_MENU_SHIPPING_BEFORE} props={props} />
@@ -265,7 +265,7 @@ class NavDrawer extends Component {
 
           <Divider close={this.handleClose} />
 
-          {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
+          {showGmdMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.about" />}
 
           {/* Terms */}
           <Portal name={commonPortals.NAV_MENU_TERMS_BEFORE} props={props} />
@@ -334,7 +334,7 @@ class NavDrawer extends Component {
             <Fragment>
               <Divider close={this.handleClose} />
 
-              {showMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
+              {showGmdMenuSubHeaders && <SubHeader title="navigation.menuSubHeader.user" />}
 
               <Portal name={commonPortals.NAV_MENU_LOGOUT_BEFORE} props={props} />
               <Portal name={commonPortals.NAV_MENU_LOGOUT} props={props}>
