@@ -14,12 +14,12 @@ const Accordion = ({ label, children }) => {
 
   return (
     <AccordionContainer>
-      {({ handleOpen, handleClose, isOpen }) => (
+      {({ handleOpen, handleClose, open }) => (
         <Fragment>
-          <div onClick={isOpen ? handleClose : handleOpen} aria-hidden className={styles.container}>
+          <div onClick={open ? handleClose : handleOpen} aria-hidden className={styles.container}>
             {label}
           </div>
-          {isOpen && (
+          {open && (
             <section className={styles.content}>
               {children}
             </section>

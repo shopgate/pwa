@@ -36,7 +36,7 @@ class AccordionContainer extends Component {
   render() {
     return this.props.children({
       handleClose: this.close,
-      isOpen: this.state.open,
+      open: this.state.open,
       handleOpen: this.open,
     });
   }
