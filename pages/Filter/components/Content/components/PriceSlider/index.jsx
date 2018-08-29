@@ -12,6 +12,7 @@ import styles from './style';
  */
 class PriceSlider extends Component {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     max: PropTypes.number,
     min: PropTypes.number,
     onChange: PropTypes.func,
@@ -60,7 +61,7 @@ class PriceSlider extends Component {
     ];
 
     this.setState({ value });
-    this.props.onChange(roundedValue[0], roundedValue[1]);
+    this.props.onChange(this.props.id, roundedValue);
   };
 
   /**
