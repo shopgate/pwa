@@ -138,8 +138,6 @@ class FilterContent extends Component {
 
   save = () => {
     const { filters } = this.state;
-
-    //
     const parentFilters = Object.keys(filters).length ? filters : null;
 
     conductor.update(this.props.parentId, { filters: parentFilters });
