@@ -1,37 +1,53 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import * as styles from './style';
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * The value button component.
  */
-const ValueButton = ({
-  id, label, isActive, onClick,
-}) => {
-  if (!label || !id) {
-    return null;
+class ValueButton extends PureComponent {
+  static propTypes = {
+    id: PropTypes.string,
+    isActive: PropTypes.bool,
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+  };
+
+  static defaultProps = {
+    id: null,
+    label: null,
+    isActive: false,
+    onClick() { },
+  };
+
+  /**
+   * @param {SyntheticEvent} event The synthetic event object.
+   */
+  handleOnclick = (event) => {
+    event.preventDefault();
+    const { id, onClick } = this.props;
+    onClick(id);
   }
 
-  return (
-    <button className={isActive ? styles.active : styles.container} onClick={() => onClick(id)}>
-      {label}
-    </button>
-  );
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { isActive, label } = this.props;
 
-ValueButton.propTypes = {
-  id: PropTypes.string,
-  isActive: PropTypes.bool,
-  label: PropTypes.string,
-  onClick: PropTypes.func,
-};
-
-ValueButton.defaultProps = {
-  id: null,
-  label: null,
-  isActive: false,
-  onClick() { },
-};
+    return (
+      <button
+        className={classNames({
+          [styles.inactive]: !isActive,
+          [styles.active]: isActive,
+        })}
+        onClick={this.handleOnclick}
+      >
+        {label}
+      </button>
+    );
+  }
+}
 
 export default ValueButton;

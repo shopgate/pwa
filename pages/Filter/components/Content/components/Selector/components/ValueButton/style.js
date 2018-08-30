@@ -1,6 +1,6 @@
 import { css } from 'glamor';
 
-export const container = css({
+export const inactive = css({
   display: 'flex',
   borderRadius: 2,
   justifyContent: 'center',
@@ -15,7 +15,7 @@ export const container = css({
   flexShrink: 0,
 });
 
-export const active = css(container, {
+export const active = css(inactive, {
   borderColor: '#5ccee3',
   color: '#5ccee3',
 });
