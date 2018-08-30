@@ -36,9 +36,9 @@ export const PAGE_CONTENT_BEFORE = `${PAGE}.${CONTENT}.${BEFORE}`;
 export const PAGE_CONTENT = `${PAGE}.${CONTENT}`;
 export const PAGE_CONTENT_AFTER = `${PAGE}.${CONTENT}.${AFTER}`;
 
-export const PAGE_CONTENT_LOGIN_BEFORE = `${PAGE}.${LOGIN}.${BEFORE}`;
-export const PAGE_CONTENT_LOGIN = `${PAGE}.${LOGIN}`;
-export const PAGE_CONTENT_AFTER_LOGIN = `${PAGE}.${LOGIN}.${AFTER}`;
+export const PAGE_LOGIN_BEFORE = `${PAGE}.${LOGIN}.${BEFORE}`;
+export const PAGE_LOGIN = `${PAGE}.${LOGIN}`;
+export const PAGE_AFTER_LOGIN = `${PAGE}.${LOGIN}.${AFTER}`;
 
 export const NAV_MENU_HEADER_BEFORE = `${NAV_MENU}.${HEADER}.${BEFORE}`;
 export const NAV_MENU_HEADER = `${NAV_MENU}.${HEADER}`;
