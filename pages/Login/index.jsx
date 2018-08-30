@@ -4,6 +4,12 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PAGE_CONTENT_LOGIN_BEFORE,
+  PAGE_CONTENT_LOGIN,
+  PAGE_CONTENT_LOGIN_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
@@ -90,49 +96,53 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <section className={styles.container} data-test-id="LoginPage">
-          <div className={styles.headline}>
-            <I18n.Text string="login.headline" />
-          </div>
-          <div className={styles.subline}>
-            <I18n.Text string="login.subline" />
-          </div>
-          { /* No validate, browsers reject IDN emails! */ }
-          <form onSubmit={this.handleSubmitForm} noValidate>
-            <TextField
-              type="email"
-              name="email"
-              className={styles.input}
-              label="login.email"
-              onChange={this.handleEmailChange}
-              value={this.state.login}
-              setRef={this.setUserFieldRef}
-            />
-            <TextField
-              password
-              name="password"
-              className={styles.input}
-              label="login.password"
-              onChange={this.handlePasswordChange}
-              value={this.state.password}
-              setRef={this.setPasswordFieldRef}
-            />
-            <div className={styles.forgotWrapper}>
-              <ForgotPassword />
+        <Portal name={PAGE_CONTENT_LOGIN_BEFORE} />
+        <Portal name={PAGE_CONTENT_LOGIN} >
+          <section className={styles.container} data-test-id="LoginPage">
+            <div className={styles.headline}>
+              <I18n.Text string="login.headline" />
             </div>
-            <div className={styles.buttonWrapper} data-test-id="LoginButton">
-              <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
-                <I18n.Text string="login.button" />
-              </RippleButton>
+            <div className={styles.subline}>
+              <I18n.Text string="login.subline" />
             </div>
-          </form>
-          <div>
-            <I18n.Text string="login.no_account" className={styles.noAccount} />
-            <Link href="/register" className={styles.signup}>
-              <I18n.Text string="login.register" />
-            </Link>
-          </div>
-        </section>
+            { /* No validate, browsers reject IDN emails! */ }
+            <form onSubmit={this.handleSubmitForm} noValidate>
+              <TextField
+                type="email"
+                name="email"
+                className={styles.input}
+                label="login.email"
+                onChange={this.handleEmailChange}
+                value={this.state.login}
+                setRef={this.setUserFieldRef}
+              />
+              <TextField
+                password
+                name="password"
+                className={styles.input}
+                label="login.password"
+                onChange={this.handlePasswordChange}
+                value={this.state.password}
+                setRef={this.setPasswordFieldRef}
+              />
+              <div className={styles.forgotWrapper}>
+                <ForgotPassword />
+              </div>
+              <div className={styles.buttonWrapper} data-test-id="LoginButton">
+                <RippleButton className={styles.button} type="secondary" disabled={this.props.isLoading}>
+                  <I18n.Text string="login.button" />
+                </RippleButton>
+              </div>
+            </form>
+            <div>
+              <I18n.Text string="login.no_account" className={styles.noAccount} />
+              <Link href="/register" className={styles.signup}>
+                <I18n.Text string="login.register" />
+              </Link>
+            </div>
+          </section>
+        </Portal>
+        <Portal name={PAGE_CONTENT_LOGIN_AFTER} />
       </View>
     );
   }
