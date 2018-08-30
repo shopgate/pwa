@@ -96,9 +96,9 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <Portal name={PAGE_LOGIN_BEFORE} />
-        <Portal name={PAGE_LOGIN} >
-          <section className={styles.container} data-test-id="LoginPage">
+        <section className={styles.container} data-test-id="LoginPage">
+          <Portal name={PAGE_LOGIN_BEFORE} />
+          <Portal name={PAGE_LOGIN} >
             <div className={styles.headline}>
               <I18n.Text string="login.headline" />
             </div>
@@ -140,9 +140,9 @@ class Login extends Component {
                 <I18n.Text string="login.register" />
               </Link>
             </div>
-          </section>
-        </Portal>
-        <Portal name={PAGE_LOGIN_AFTER} />
+          </Portal>
+          <Portal name={PAGE_LOGIN_AFTER} />
+        </section>
       </View>
     );
   }
