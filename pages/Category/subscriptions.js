@@ -3,13 +3,18 @@ import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import { getCategoryName } from '@shopgate/pwa-common-commerce/category/selectors';
+import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import { categoryWillEnter$, receivedVisibleCategory$ } from './streams';
+import {
+  categoryWillEnter$,
+  categoryDidEnter$,
+  receivedVisibleCategory$,
+} from './streams';
 
 /**
- * Filter subscriptions.
+ * Category subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function category(subscribe) {
@@ -28,6 +33,10 @@ export default function category(subscribe) {
     if (title) {
       dispatch(setTitle(title));
     }
+  });
+
+  subscribe(categoryDidEnter$, ({ dispatch }) => {
+    dispatch(getFilters());
   });
 
   subscribe(receivedVisibleCategory$, ({ dispatch, action }) => {
