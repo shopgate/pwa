@@ -1,11 +1,10 @@
 import { css } from 'glamor';
 
 export const inactive = css({
-  display: 'flex',
   border: '1px solid #ebebeb',
   borderRadius: 2,
+  color: 'inherit',
   height: 42,
-  lineHeight: 1,
   marginLeft: 8,
   marginBottom: 8,
   maxWidth: '100%',
