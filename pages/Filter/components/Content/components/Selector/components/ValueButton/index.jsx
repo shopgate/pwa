@@ -21,11 +21,7 @@ class ValueButton extends PureComponent {
     onClick() { },
   };
 
-  /**
-   * @param {SyntheticEvent} event The synthetic event object.
-   */
-  handleOnclick = (event) => {
-    event.preventDefault();
+  handleOnclick = () => {
     const { id, onClick } = this.props;
     onClick(id);
   }
