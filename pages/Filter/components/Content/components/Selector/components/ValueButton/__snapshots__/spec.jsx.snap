@@ -1,16 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ValueButton /> should not render of id is missing 1`] = `""`;
-
-exports[`<ValueButton /> should not render of label is missing 1`] = `""`;
-
-exports[`<ValueButton /> should render 1`] = `
+exports[`<ValueButton /> should handle click event 1`] = `
 <button
-  className={
-    Object {
-      "data-css-121lp7l": "",
-    }
-  }
+  className="css-dax1th"
+  onClick={[Function]}
+>
+  somelabel
+</button>
+`;
+
+exports[`<ValueButton /> should render as active 1`] = `
+<button
+  className="css-172rr27"
+  onClick={[Function]}
+>
+  somelabel
+</button>
+`;
+
+exports[`<ValueButton /> should render as inactive 1`] = `
+<button
+  className="css-dax1th"
   onClick={[Function]}
 >
   somelabel

@@ -1,10 +1,10 @@
 import { css } from 'glamor';
 
-export const container = css({
+export const inactive = css({
   border: '1px solid #ebebeb',
   borderRadius: 2,
+  color: 'inherit',
   height: 42,
-  lineHeight: 1,
   marginLeft: 8,
   marginBottom: 8,
   maxWidth: '100%',
@@ -16,7 +16,7 @@ export const container = css({
   whiteSpace: 'nowrap',
 });
 
-export const active = css(container, {
+export const active = css(inactive, {
   borderColor: '#5ccee3',
   color: '#5ccee3',
 });

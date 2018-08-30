@@ -24,7 +24,7 @@ class FilterContent extends Component {
   }
 
   static defaultProps = {
-    activeFilters: {},
+    activeFilters: null,
     filters: null,
     parentId: null,
   }
@@ -38,6 +38,7 @@ class FilterContent extends Component {
     this.initialFilters = buildInitialFilters(props.filters, props.activeFilters);
     this.navigatorPosition = document.getElementById(PORTAL_NAVIGATOR_BUTTON);
     this.state = {
+      currentFilters: props.activeFilters || {},
       filters: {},
     };
   }
@@ -57,8 +58,16 @@ class FilterContent extends Component {
    * Determine if there are filters that have been changed.
    * @returns {boolean}
    */
+  get canReset() {
+    return Object.keys(this.state.currentFilters).length || Object.keys(this.state.filters).length;
+  }
+
+  /**
+   * Determine if there are filters that have been changed.
+   * @returns {boolean}
+   */
   get hasChanged() {
-    return Object.keys(this.state.filters).length > 0;
+    return Object.keys(this.state.filters).length > 0 || (Object.keys(this.state.currentFilters).length === 0 && this.props.activeFilters);
   }
 
   /**
@@ -75,6 +84,7 @@ class FilterContent extends Component {
    */
   update = (id, value) => {
     const { filters } = this.props;
+
     const filter = filters.find(entry => entry.id === id);
     let initialValue;
 
@@ -119,11 +129,18 @@ class FilterContent extends Component {
   updateDebounced = debounce(this.update, 50)
 
   reset = () => {
-    this.setState({ filters: this.props.activeFilters || {} });
+    this.initialFilters = buildInitialFilters(this.props.filters, {});
+    this.setState({
+      currentFilters: {},
+      filters: {},
+    });
   }
 
   save = () => {
-    conductor.update(this.props.parentId, { filters: this.state.filters });
+    const { filters } = this.state;
+    const parentFilters = Object.keys(filters).length ? filters : null;
+
+    conductor.update(this.props.parentId, { filters: parentFilters });
     conductor.pop();
   }
 
@@ -164,7 +181,7 @@ class FilterContent extends Component {
             />
           );
         })}
-        <ResetButton active={this.hasChanged} onClick={this.reset} />
+        <ResetButton active={this.canReset} onClick={this.reset} />
         {ReactDOM.createPortal(
           <ApplyButton active={this.hasChanged} onClick={this.save} />,
           this.navigatorPosition
