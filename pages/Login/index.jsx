@@ -9,6 +9,9 @@ import {
   PAGE_LOGIN_BEFORE,
   PAGE_LOGIN,
   PAGE_LOGIN_AFTER,
+  PAGE_LOGIN_REGISTER_LINK_BEFORE,
+  PAGE_LOGIN_REGISTER_LINK,
+  PAGE_LOGIN_REGISTER_LINK_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import connect from './connector';
@@ -135,10 +138,14 @@ class Login extends Component {
               </div>
             </form>
             <div>
-              <I18n.Text string="login.no_account" className={styles.noAccount} />
-              <Link href="/register" className={styles.signup}>
-                <I18n.Text string="login.register" />
-              </Link>
+              <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
+              <Portal name={PAGE_LOGIN_REGISTER_LINK} >
+                <I18n.Text string="login.no_account" className={styles.noAccount} />
+                <Link href="/register" className={styles.signup}>
+                  <I18n.Text string="login.register" />
+                </Link>
+              </Portal>
+              <Portal name={PAGE_LOGIN_REGISTER_LINK_AFTER} />
             </div>
           </Portal>
           <Portal name={PAGE_LOGIN_AFTER} />
