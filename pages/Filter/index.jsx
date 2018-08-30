@@ -8,6 +8,7 @@ import Content from './components/Content';
 const map = {
   categoryId: 'params.categoryId',
   filters: 'state.filters',
+  parentId: 'state.parentId',
   searchPhrase: 'query.s',
   visible: 'visible',
 };
@@ -22,6 +23,7 @@ const Filter = () => (
         const {
           categoryId,
           filters,
+          parentId,
           searchPhrase,
           visible,
         } = consumed;
@@ -29,6 +31,7 @@ const Filter = () => (
         return visible && (
           <Content
             activeFilters={filters}
+            parentId={parentId}
             {...categoryId && { categoryId }}
             {...searchPhrase && { searchPhrase }}
           />
