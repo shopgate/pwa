@@ -5,9 +5,9 @@ import Link from '@shopgate/pwa-common/components/Router/components/Link';
 import View from 'Components/View';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
-  PAGE_CONTENT_LOGIN_BEFORE,
-  PAGE_CONTENT_LOGIN,
-  PAGE_CONTENT_LOGIN_AFTER,
+  PAGE_LOGIN_BEFORE,
+  PAGE_LOGIN,
+  PAGE_LOGIN_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
@@ -96,8 +96,8 @@ class Login extends Component {
   render() {
     return (
       <View>
-        <Portal name={PAGE_CONTENT_LOGIN_BEFORE} />
-        <Portal name={PAGE_CONTENT_LOGIN} >
+        <Portal name={PAGE_LOGIN_BEFORE} />
+        <Portal name={PAGE_LOGIN} >
           <section className={styles.container} data-test-id="loginPage">
             <div className={styles.headline}>
               <I18n.Text string="login.headline" />
@@ -142,7 +142,7 @@ class Login extends Component {
             </div>
           </section>
         </Portal>
-        <Portal name={PAGE_CONTENT_LOGIN_AFTER} />
+        <Portal name={PAGE_LOGIN_AFTER} />
       </View>
     );
   }
