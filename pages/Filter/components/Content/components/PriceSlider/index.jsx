@@ -84,7 +84,7 @@ class PriceSlider extends Component {
      * The size is 2 characters more than the max possible number length
      * to reserve space for the currency symbol and a little spacing around.
      */
-    const priceLength = `${priceMax.toString().length + 2}ch`;
+    const priceLength = `${(max / 100).toString().length + 2}ch`;
 
     return (
       <Item>

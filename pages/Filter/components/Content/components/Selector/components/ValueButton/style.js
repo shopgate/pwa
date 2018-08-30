@@ -1,18 +1,19 @@
 import { css } from 'glamor';
 
 export const container = css({
-  display: 'flex',
-  borderRadius: 2,
-  justifyContent: 'center',
-  outline: 0,
-  lineHeight: 1,
-  padding: '0 8px',
   border: '1px solid #ebebeb',
+  borderRadius: 2,
+  height: 42,
+  lineHeight: 1,
   marginLeft: 8,
   marginBottom: 8,
-  height: 42,
+  maxWidth: '100%',
   minWidth: 42,
-  flexShrink: 0,
+  outline: 0,
+  overflow: 'hidden',
+  padding: '0 8px',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 });
 
 export const active = css(container, {

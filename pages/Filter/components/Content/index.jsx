@@ -1,10 +1,14 @@
 import React, { Component, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
+import conductor from '@virtuous/conductor';
 import { FILTER_TYPE_RANGE } from '@shopgate/pwa-common-commerce/filter/constants';
+import { PORTAL_NAVIGATOR_BUTTON } from 'Components/Navigator/constants';
 import PriceSlider from './components/PriceSlider';
 import Selector from './components/Selector';
+import ApplyButton from './components/ApplyButton';
 import ResetButton from './components/ResetButton';
 import buildInitialFilters from './helpers/buildInitialFilters';
 import consume from './consumer';
@@ -16,11 +20,13 @@ class FilterContent extends Component {
   static propTypes = {
     activeFilters: PropTypes.shape(), /* eslint-disable-line */
     filters: PropTypes.arrayOf(PropTypes.shape()),
+    parentId: PropTypes.string,
   }
 
   static defaultProps = {
     activeFilters: {},
     filters: null,
+    parentId: null,
   }
 
   /**
@@ -30,7 +36,10 @@ class FilterContent extends Component {
     super(props);
 
     this.initialFilters = buildInitialFilters(props.filters, props.activeFilters);
-    this.state = this.initialFilters;
+    this.navigatorPosition = document.getElementById(PORTAL_NAVIGATOR_BUTTON);
+    this.state = {
+      filters: {},
+    };
   }
 
   /**
@@ -42,7 +51,6 @@ class FilterContent extends Component {
     }
 
     this.initialFilters = buildInitialFilters(filters, activeFilters);
-    this.reset();
   }
 
   /**
@@ -50,21 +58,73 @@ class FilterContent extends Component {
    * @returns {boolean}
    */
   get hasChanged() {
-    return !isEqual(this.state, this.initialFilters);
+    return Object.keys(this.state.filters).length > 0;
   }
+
+  /**
+   * @param {string} id The filter is to look for.
+   * @returns {Array}
+   */
+  getFilterValue = id => (
+    this.state.filters[id] || this.initialFilters[id]
+  )
 
   /**
    * @param {string} id The id of the filter to add.
    * @param {Array} value The selected values of the filter.
    */
   update = (id, value) => {
-    this.setState({ [id]: value });
+    const { filters } = this.props;
+    const filter = filters.find(entry => entry.id === id);
+    let initialValue;
+
+    // In the case of a range filter, use the min and max.
+    if (filter.type === FILTER_TYPE_RANGE) {
+      initialValue = [filter.minimum, filter.maximum];
+    }
+
+    // Check if given value is the same as the initial value.
+    if (isEqual(value, initialValue)) {
+      this.remove(id);
+      return;
+    }
+
+    this.add(id, value);
+  }
+
+  /**
+   * @param {string} id The filter is to add.
+   * @param {Array} value The values that changed.
+   */
+  add = (id, value) => {
+    this.setState({
+      filters: {
+        ...this.state.filters,
+        [id]: value,
+      },
+    });
+  }
+
+  /**
+   * @param {string} id The filter is to remove.
+   */
+  remove = (id) => {
+    this.setState((prevState) => {
+      // Separate the given id from the other set filters.
+      const { [id]: removed, ...activeFilters } = prevState.filters;
+      return { filters: activeFilters };
+    });
   }
 
   updateDebounced = debounce(this.update, 50)
 
   reset = () => {
-    this.setState(this.initialFilters);
+    this.setState({ filters: this.props.activeFilters || {} });
+  }
+
+  save = () => {
+    conductor.update(this.props.parentId, { filters: this.state.filters });
+    conductor.pop();
   }
 
   /**
@@ -80,7 +140,7 @@ class FilterContent extends Component {
     return (
       <Fragment>
         {filters.map((filter) => {
-          const value = this.state[filter.id];
+          const value = this.getFilterValue(filter.id);
 
           if (filter.type === FILTER_TYPE_RANGE) {
             return (
@@ -95,9 +155,20 @@ class FilterContent extends Component {
             );
           }
 
-          return <Selector id={filter.id} key={filter.id} label={filter.label} values={filter.values} />;
+          return (
+            <Selector
+              id={filter.id}
+              key={filter.id}
+              label={filter.label}
+              values={filter.values}
+            />
+          );
         })}
         <ResetButton active={this.hasChanged} onClick={this.reset} />
+        {ReactDOM.createPortal(
+          <ApplyButton active={this.hasChanged} onClick={this.save} />,
+          this.navigatorPosition
+        )}
       </Fragment>
     );
   }
