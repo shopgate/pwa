@@ -1,8 +1,8 @@
 import { css } from 'glamor';
 
 export const toggle = css({
+  padding: '12px 48px 12px 16px',
   position: 'relative',
-  padding: '16px 48px 16px 16px',
 });
 
 export const chevronContainer = css({
