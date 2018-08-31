@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as styles from './style';
 
 /**
  * The accordion content component.
  */
-class AccordionContent extends PureComponent {
+class AccordionContent extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     open: PropTypes.bool,
