@@ -1,4 +1,5 @@
 import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
+import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { getCurrentReviewCount } from '@shopgate/pwa-common-commerce/reviews/selectors';
@@ -21,7 +22,12 @@ export default function reviews(subscribe) {
       // No need to fetch.
       return;
     }
-    dispatch(fetchReviews(getCurrentBaseProductId(getState()), REVIEW_ITEMS_PER_PAGE));
+    dispatch(fetchReviews(
+      getCurrentBaseProductId(getState()),
+      REVIEW_ITEMS_PER_PAGE,
+      0,
+      SORT_DATE_DESC
+    ));
   });
 }
 
