@@ -1,3 +1,5 @@
+import conductor from '@virtuous/conductor';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
@@ -25,14 +27,14 @@ const PROTOCOL_HTTPS = 'https:';
 const PROTOCOL_TEL = 'tel:';
 const PROTOCOL_MAILTO = 'mailto:';
 
-export const LEGACY_LINK_ACCOUNT = 'account';
-export const LEGACY_LINK_STOREFINDER = 'storefinder';
-export const LEGACY_LINK_CHANNEL = 'channel';
-export const LEGACY_LINK_ORDERS = 'orders_legacy';
-export const LEGACY_LINK_CART_ADD_COUPON = 'cart_add_coupon';
-export const LEGACY_LINK_CHECKOUT = 'checkout_legacy';
-export const LEGACY_LINK_REGISTER = 'register_legacy';
-export const LEGACY_LINK_CONNECT_REGISTER = 'connect_register';
+export const LEGACY_LINK_ACCOUNT = '/account';
+export const LEGACY_LINK_STOREFINDER = '/storefinder';
+export const LEGACY_LINK_CHANNEL = '/channel';
+export const LEGACY_LINK_ORDERS = '/orders_legacy';
+export const LEGACY_LINK_CART_ADD_COUPON = '/cart_add_coupon';
+export const LEGACY_LINK_CHECKOUT = '/checkout_legacy';
+export const LEGACY_LINK_REGISTER = '/register_legacy';
+export const LEGACY_LINK_CONNECT_REGISTER = '/connect_register';
 
 const protocols = [PROTOCOL_HTTP, PROTOCOL_HTTPS, PROTOCOL_TEL, PROTOCOL_MAILTO];
 
@@ -56,13 +58,6 @@ const legacyLinks = [
   LEGACY_LINK_REGISTER,
   LEGACY_LINK_CONNECT_REGISTER,
 ];
-
-/**
- * Returns the segments of a URL.
- * @param {string} location The location to open.
- * @return {Array}
- */
-export const getSegments = location => location.split('/').splice(1);
 
 /**
  * Checks whether the location starts with a URL protocol.
@@ -103,9 +98,11 @@ export const isLegacyPage = location => (
  * @param {string} location The location to open.
  * @return {boolean}
  */
-export const isLegacyLink = location => (
-  legacyLinks.includes(getSegments(location)[0])
-);
+export const isLegacyLink = location => {
+  return !!legacyLinks.find((link) => {
+    return location.startsWith(link);
+  });
+};
 
 /**
  * Checks whether it is a shop link.
@@ -243,7 +240,9 @@ export const openNativeLink = (location) => {
  * @param {string} location The location to open.
  */
 export const openLegacyLink = (location) => {
-  switch (getSegments(location)[0]) {
+  const [route] = location.split('?');
+
+  switch (route) {
     case LEGACY_LINK_ACCOUNT:
     case LEGACY_LINK_STOREFINDER:
     case LEGACY_LINK_CHANNEL:

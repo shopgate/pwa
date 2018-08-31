@@ -5,6 +5,8 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
 import { historyPop, historyReplace } from '../actions/router';
@@ -12,13 +14,16 @@ import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
+import setViewLoading from '../actions/view/setViewLoading';
+import unsetViewLoading from '../actions/view/unsetViewLoading';
 
 /**
  * Router subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function router(subscribe) {
-  subscribe(navigate$, ({ action, dispatch, getState }) => {
+  subscribe(navigate$, async (params) => {
+    const { action, dispatch, getState } = params;
     const { params: { action: historyAction, silent, state: routeState } } = action;
 
     switch (historyAction) {
@@ -64,10 +69,25 @@ export default function router(subscribe) {
       }
     }
 
-    // Check for a redirect url and change location if one is found.
-    const redirect = redirects.get(location);
+    // Check for a redirect and change location if one is found.
+    let redirect = redirects.get(location);
 
     if (redirect) {
+      // Check if a redirect handler was assigned and execute it.
+      if (typeof redirect === 'function' || redirect instanceof Promise) {
+        const { pathname } = getCurrentRoute();
+        dispatch(setViewLoading(pathname));
+
+        try {
+          redirect = await redirect(params);
+          dispatch(unsetViewLoading(pathname));
+        } catch (e) {
+          logger.error(e);
+          dispatch(unsetViewLoading(pathname));
+          return;
+        }
+      }
+
       location = redirect;
     }
 
