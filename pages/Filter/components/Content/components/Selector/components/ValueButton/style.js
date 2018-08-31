@@ -14,6 +14,8 @@ export const inactive = css({
   padding: '0 8px',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
+  transition: 'color 100ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  willChange: 'color, border-color',
 });
 
 export const active = css(inactive, {

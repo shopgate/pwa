@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import conductor from '@virtuous/conductor';
-import { FILTER_TYPE_RANGE } from '@shopgate/pwa-common-commerce/filter/constants';
+import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import { PORTAL_NAVIGATOR_BUTTON } from 'Components/Navigator/constants';
 import PriceSlider from './components/PriceSlider';
 import Selector from './components/Selector';
@@ -178,6 +178,9 @@ class FilterContent extends Component {
               key={filter.id}
               label={filter.label}
               values={filter.values}
+              multi={filter.type === FILTER_TYPE_MULTISELECT}
+              onChange={this.update}
+              selected={value}
             />
           );
         })}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import classNames from 'classnames';
 import * as styles from './style';
 
@@ -34,4 +33,4 @@ Toggle.defaultProps = {
   selected: null,
 };
 
-export default pure(Toggle);
+export default Toggle;
