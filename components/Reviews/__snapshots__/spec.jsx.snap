@@ -123,7 +123,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
       }
     >
       <div
-        className="css-154rzf7"
+        className="css-1ej66kr"
         data-test-id="reviewSection"
       >
         <Header
@@ -2679,7 +2679,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
       }
     >
       <div
-        className="css-154rzf7"
+        className="css-1ej66kr"
         data-test-id="reviewSection"
       >
         <Header
@@ -4181,7 +4181,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
       reviews={null}
     >
       <div
-        className="css-154rzf7"
+        className="css-1ej66kr"
         data-test-id="reviewSection"
       >
         <Header
