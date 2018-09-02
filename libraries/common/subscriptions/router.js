@@ -9,7 +9,7 @@ import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
-import { historyPop, historyReplace } from '../actions/router';
+import { historyRedirect } from '../actions/router';
 import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
@@ -80,10 +80,15 @@ export default function router(subscribe) {
 
         try {
           redirect = await redirect(params);
-          dispatch(unsetViewLoading(pathname));
         } catch (e) {
+          redirect = null;
           logger.error(e);
-          dispatch(unsetViewLoading(pathname));
+        }
+
+        dispatch(unsetViewLoading(pathname));
+
+        if (!redirect) {
+          // Stop processing when no redirect was created.
           return;
         }
       }
@@ -100,7 +105,7 @@ export default function router(subscribe) {
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
-        handler.openExternalLink(location);
+        handler.openExternalLink(location, historyAction);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
       }
@@ -109,12 +114,12 @@ export default function router(subscribe) {
     }
 
     if (location && handler.isLegacyPage(location)) {
-      handler.openLegacy(location);
+      handler.openLegacy(location, historyAction);
       return;
     }
 
     if (location && handler.isLegacyLink(location)) {
-      handler.openLegacyLink(location);
+      handler.openLegacyLink(location, historyAction);
       return;
     }
 
@@ -141,15 +146,7 @@ export default function router(subscribe) {
 
   subscribe(redirectUser$, ({ action, dispatch }) => {
     if (appConfig.webCheckoutShopify === null) {
-      const { location, state } = action.redirect;
-      if (location) {
-        dispatch(historyReplace({
-          pathname: location,
-          state,
-        }));
-      } else {
-        dispatch(historyPop());
-      }
+      dispatch(historyRedirect(action.redirect));
     }
   });
 }

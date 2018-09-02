@@ -56,7 +56,7 @@ export default function user(subscribe) {
 
   subscribe(legacyConnectRegisterDidFail$, ({ dispatch }) => {
     dispatch(historyPush({
-      pathname: `/${LEGACY_URL_CONNECT_REGISTER}`,
+      pathname: LEGACY_URL_CONNECT_REGISTER,
     }));
   });
 }

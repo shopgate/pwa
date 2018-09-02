@@ -3,6 +3,8 @@ export * from './historyPop';
 export * from './historyReplace';
 export * from './historyReset';
 
+export * from './historyRedirect';
+
 export * from './routeDidPop';
 export * from './routeDidPush';
 export * from './routeDidReplace';

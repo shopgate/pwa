@@ -1,4 +1,5 @@
 import conductor from '@virtuous/conductor';
+import { ACTION_REPLACE } from '@virtuous/conductor/constants';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
@@ -98,11 +99,7 @@ export const isLegacyPage = location => (
  * @param {string} location The location to open.
  * @return {boolean}
  */
-export const isLegacyLink = location => {
-  return !!legacyLinks.find((link) => {
-    return location.startsWith(link);
-  });
-};
+export const isLegacyLink = location => !!legacyLinks.find(link => location.startsWith(link));
 
 /**
  * Checks whether it is a shop link.
@@ -141,10 +138,34 @@ export const isShopLink = (location) => {
 };
 
 /**
+ * Check if the given pathname is a protector route.
+ * @param {string} location The location to check.
+ * @return {boolean}
+ */
+export const isProtector = location => Array.from(authRoutes.getAll().values()).includes(location);
+
+/**
+ * Finalizes the navigation to a legacy page or the in-app-browser.
+ * @param {string} historyAction he history action which was used to navigate.
+ */
+export const finializeNavigation = (historyAction) => {
+  const { pathname } = getCurrentRoute();
+
+  if (isProtector(pathname) && historyAction === ACTION_REPLACE) {
+    /**
+     * A replace action on a protector route indicates that the authentication was successful.
+     * So the protector route can be popped from the history stack.
+     */
+    conductor.pop();
+  }
+};
+
+/**
  * Opens a link in the in-app-broweser.
  * @param {string} location The location to open.
+ * @param {string} historyAction The history action which was used to open the link.
  */
-export const openExternalLink = (location) => {
+export const openExternalLink = (location, historyAction) => {
   showTab({
     targetTab: 'in_app_browser',
     animation: 'slideInFromBottom',
@@ -165,6 +186,8 @@ export const openExternalLink = (location) => {
   flushTab({
     targetTab: 'in_app_browser',
   });
+
+  finializeNavigation(historyAction);
 };
 
 /**
@@ -176,6 +199,7 @@ export const openExternalLink = (location) => {
  * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
  * @param {string} options.flushTab The tab that should be flushed
  * @param {Function} options.backCallback Function that is executed when hitting the back button.
+ * @param {string} options.historyAction The history action which was used to open the link.
  */
 export const handleLegacyLink = (options) => {
   if (options.location) {
@@ -214,16 +238,20 @@ export const handleLegacyLink = (options) => {
       targetTab: options.targetTab,
     });
   }
+
+  finializeNavigation(options.historyAction);
 };
 
 /**
  * Opens a legacy CMS page.
  * @param {string} location The location to open.
+ * @param {string} historyAction The history action which was used to open the link.
  */
-export const openLegacy = (location) => {
+export const openLegacy = (location, historyAction) => {
   handleLegacyLink({
     targetTab: 'main',
     location,
+    historyAction,
   });
 };
 
@@ -238,20 +266,22 @@ export const openNativeLink = (location) => {
 /**
  * Opens a legacy links.
  * @param {string} location The location to open.
+ * @param {string} historyAction The history action which was used to open the link.
  */
-export const openLegacyLink = (location) => {
+export const openLegacyLink = (location, historyAction) => {
   const [route] = location.split('?');
 
   switch (route) {
     case LEGACY_LINK_ACCOUNT:
     case LEGACY_LINK_STOREFINDER:
     case LEGACY_LINK_CHANNEL:
-      openLegacy(location);
+      openLegacy(location, historyAction);
       break;
     case LEGACY_LINK_ORDERS:
       handleLegacyLink({
         targetTab: 'main',
         location: '/orders',
+        historyAction,
       });
       break;
     case LEGACY_LINK_CHECKOUT:
@@ -261,12 +291,14 @@ export const openLegacyLink = (location) => {
         navigationType: 'checkout',
         location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
+        historyAction,
       });
       break;
     case LEGACY_LINK_REGISTER:
       handleLegacyLink({
         targetTab: 'main',
         location: '/register/default',
+        historyAction,
       });
       break;
     case LEGACY_LINK_CONNECT_REGISTER:
@@ -274,6 +306,7 @@ export const openLegacyLink = (location) => {
         location: `/${LEGACY_LINK_CONNECT_REGISTER}`,
         targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
+        historyAction,
       });
       break;
     case LEGACY_LINK_CART_ADD_COUPON:

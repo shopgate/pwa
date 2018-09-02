@@ -1,3 +1,4 @@
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import event from '@shopgate/pwa-core/classes/Event';
 import {
   userWillLogin$,
@@ -5,7 +6,7 @@ import {
   userWillLogout$,
 } from '@shopgate/pwa-common/streams/user';
 import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router';
+import { historyRedirect } from '@shopgate/pwa-common/actions/router';
 import { hasShopifyCheckout } from '../selectors';
 import login from '../actions/login';
 import logout from '../actions/logout';
@@ -29,15 +30,7 @@ export default function shopify(subscribe) {
   const shouldRedirect$ = userDidLogin$.zip(shopifyDidRespond$).map(([first]) => first);
 
   subscribe(shouldRedirect$, ({ dispatch, action }) => {
-    const { location, state } = action.redirect || {};
-    if (location) {
-      dispatch(historyReplace({
-        pathname: location,
-        state,
-      }));
-    } else {
-      dispatch(historyPop());
-    }
+    dispatch(historyRedirect(action.redirect));
   });
 
   /**
@@ -45,8 +38,8 @@ export default function shopify(subscribe) {
    */
   subscribe(appDidStart$, ({ dispatch }) => {
     event.addCallback('userLoggedIn', () => {
-      // Since no redirect data is available here, we can only pop login page away.
-      dispatch(historyPop());
+      const { state: { redirect } = {} } = getCurrentRoute();
+      dispatch(historyRedirect(redirect));
     });
   });
 
