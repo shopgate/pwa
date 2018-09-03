@@ -18,7 +18,7 @@ const HEADER = 'header';
 const CONTENT = 'content';
 const HOME = 'home';
 const LOGIN = 'login'
-const LOGIN_REGISTER_LINK = 'login-register-link'
+const REGISTER_LINK = 'register-link'
 const TERMS = 'terms';
 const PRIVACY = 'privacy';
 const IMPRINT = 'imprint';
@@ -41,9 +41,9 @@ export const PAGE_LOGIN_BEFORE = `${PAGE}.${LOGIN}.${BEFORE}`;
 export const PAGE_LOGIN = `${PAGE}.${LOGIN}`;
 export const PAGE_LOGIN_AFTER = `${PAGE}.${LOGIN}.${AFTER}`;
 
-export const PAGE_LOGIN_REGISTER_LINK_BEFORE = `${PAGE}.${LOGIN_REGISTER_LINK}.${BEFORE}`;
-export const PAGE_LOGIN_REGISTER_LINK = `${PAGE}.${LOGIN_REGISTER_LINK}`;
-export const PAGE_LOGIN_REGISTER_LINK_AFTER = `${PAGE}.${LOGIN_REGISTER_LINK}.${AFTER}`;
+export const PAGE_LOGIN_REGISTER_LINK_BEFORE = `${PAGE}.${LOGIN}.${REGISTER_LINK}.${BEFORE}`;
+export const PAGE_LOGIN_REGISTER_LINK = `${PAGE}.${LOGIN}.${REGISTER_LINK}`;
+export const PAGE_LOGIN_REGISTER_LINK_AFTER = `${PAGE}.${LOGIN}.${REGISTER_LINK}.${AFTER}`;
 
 export const NAV_MENU_HEADER_BEFORE = `${NAV_MENU}.${HEADER}.${BEFORE}`;
 export const NAV_MENU_HEADER = `${NAV_MENU}.${HEADER}`;
