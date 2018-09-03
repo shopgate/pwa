@@ -169,7 +169,7 @@ class FilterBar extends Component {
               ...transition[state],
             }}
           >
-            <Content componentUpdated={this.setSpacerHeight} />
+            <Content />
           </div>
         )}
       </Transition>

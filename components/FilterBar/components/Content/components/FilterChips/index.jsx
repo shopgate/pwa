@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import {
   FILTER_TYPE_RANGE,
@@ -17,7 +18,6 @@ import styles from './style';
  */
 const FilterChips = ({
   activeFilters,
-  currency,
   handleFilterRemove,
   handleOpenFilters,
   currentPathname,
@@ -46,9 +46,9 @@ const FilterChips = ({
             onRemove={() => handleFilterRemove(key)}
             onClick={handleOpenFilters}
           >
-            <I18n.Price price={piceMin} currency={currency} fractions={false} />
+            <I18n.Price price={piceMin} currency={appConfig.currency} fractions={false} />
             &nbsp;&mdash;&nbsp;
-            <I18n.Price price={priceMax} currency={currency} fractions={false} />
+            <I18n.Price price={priceMax} currency={appConfig.currency} fractions={false} />
           </Chip>
         ));
 
@@ -94,7 +94,6 @@ const FilterChips = ({
 
 FilterChips.propTypes = {
   activeFilters: PropTypes.shape(),
-  currency: PropTypes.string,
   currentPathname: PropTypes.string,
   handleFilterRemove: PropTypes.func,
   handleOpenFilters: PropTypes.func,
@@ -102,7 +101,6 @@ FilterChips.propTypes = {
 
 FilterChips.defaultProps = {
   activeFilters: null,
-  currency: '',
   currentPathname: '',
   handleFilterRemove: () => {},
   handleOpenFilters: () => {},

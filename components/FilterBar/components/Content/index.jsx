@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-// import appConfig from '@shopgate/pwa-common/helpers/config';
 import Sort from './components/Sort';
 import FilterButton from './components/FilterButton';
-// import FilterChips from './components/FilterChips';
+import FilterChips from './components/FilterChips';
 import styles from './style';
 
 /**
@@ -15,7 +14,7 @@ const FilterBarContent = () => (
       <Sort />
       <FilterButton />
     </div>
-    {/* <FilterChips currency={appConfig.currency} /> */}
+    <FilterChips />
   </Fragment>
 );
 
