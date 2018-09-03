@@ -86,7 +86,7 @@ class FilterContent extends Component {
     const { filters } = this.props;
 
     const filter = filters.find(entry => entry.id === id);
-    let initialValue;
+    let initialValue = [];
 
     // In the case of a range filter, use the min and max.
     if (filter.type === FILTER_TYPE_RANGE) {
