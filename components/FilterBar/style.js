@@ -7,8 +7,7 @@ const wrapper = css({
   position: 'fixed',
   width: '100%',
   zIndex: 3,
-  transition: 'transform 100ms linear',
-  willChange: 'transform',
+  transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
 }).toString();
 
 const shaded = css({
