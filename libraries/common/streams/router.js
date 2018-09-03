@@ -58,4 +58,5 @@ export const historyDidUpdate$ = routeDidEnter$.merge(routeDidLeave$);
 */
 export const historyDidReset$ = main$
   .filter(({ action }) => action.type === CONDUCTOR_RESET)
-  .zip(routeDidEnter$);
+  .zip(routeDidEnter$)
+  .map(([first]) => first);
