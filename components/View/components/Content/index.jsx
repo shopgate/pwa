@@ -6,13 +6,16 @@ import throttle from 'lodash/throttle';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
 import { RouteContext } from '@virtuous/react-conductor/Router';
+import Above from '../Above';
+import Below from '../Below';
 import styles from './style';
 
 /**
- * The view content.
+ * The ViewContent component.
  */
 class ViewContent extends Component {
   static propTypes = {
+    setRef: PropTypes.func.isRequired,
     children: PropTypes.node,
     hasNavigator: PropTypes.bool,
     isFullscreen: PropTypes.bool,
@@ -41,6 +44,14 @@ class ViewContent extends Component {
 
     event.addCallback('keyboardWillChange', this.handleKeyboardChange);
   }
+
+  /**
+   * Sets the View ref into the ViewProvider.
+   */
+  componentDidMount() {
+    this.props.setRef('ref', this.element);
+  }
+
   /**
    * @return {string}
    */
@@ -124,7 +135,9 @@ class ViewContent extends Component {
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
         <article className={this.contentStyle} ref={this.element} onScroll={this.handleScroll}>
           <Helmet title={this.props.title} />
+          <Above />
           {this.props.children}
+          <Below />
         </article>
       </Swipeable>
     );
