@@ -39,7 +39,7 @@ class Checkbox extends Component {
 
     if (typeof props.defaultChecked !== 'undefined') {
       // Uncontrolled input.
-      this.state = { checked: false };
+      this.state = { checked: props.defaultChecked };
     }
   }
 

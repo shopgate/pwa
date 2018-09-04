@@ -12,6 +12,7 @@ class Checkbox extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
+    defaultChecked: PropTypes.bool,
     errorText: PropTypes.node,
     label: PropTypes.node,
     onChange: PropTypes.func,
@@ -19,6 +20,7 @@ class Checkbox extends PureComponent {
 
   static defaultProps = {
     className: '',
+    defaultChecked: false,
     errorText: '',
     label: '',
     onChange: () => {},
@@ -29,7 +31,7 @@ class Checkbox extends PureComponent {
    */
   render() {
     const {
-      name, label, onChange, className,
+      name, label, onChange, className, defaultChecked
     } = this.props;
     return (
       <FormElement
@@ -40,7 +42,7 @@ class Checkbox extends PureComponent {
         hasPlaceholder={false}
       >
         <UICheckbox
-          defaultChecked
+          defaultChecked={defaultChecked}
           name={name}
           onCheck={onChange}
           checkedClassName={className}
