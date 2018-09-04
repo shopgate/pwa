@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleOpenFilters: () => dispatch(openFilterRoute()),
+  openFilters: () => dispatch(openFilterRoute()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

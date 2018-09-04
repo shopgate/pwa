@@ -77,6 +77,13 @@ class FilterBar extends Component {
   }
 
   /**
+   * Set the top value of the View when the component updates.
+   */
+  componentDidUpdate() {
+    this.updateView();
+  }
+
+  /**
    * Unbinds the event handlers from the scroll element.
    */
   componentWillUnmount() {
