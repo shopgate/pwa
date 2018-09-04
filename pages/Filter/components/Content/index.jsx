@@ -59,7 +59,9 @@ class FilterContent extends Component {
    * @returns {boolean}
    */
   get canReset() {
-    return Object.keys(this.state.currentFilters).length || Object.keys(this.state.filters).length;
+    return (
+      !!(Object.keys(this.state.currentFilters).length || Object.keys(this.state.filters).length)
+    );
   }
 
   /**
@@ -67,7 +69,10 @@ class FilterContent extends Component {
    * @returns {boolean}
    */
   get hasChanged() {
-    return Object.keys(this.state.filters).length > 0 || (Object.keys(this.state.currentFilters).length === 0 && this.props.activeFilters);
+    return (
+      Object.keys(this.state.filters).length > 0
+      || !!(Object.keys(this.state.currentFilters).length === 0 && this.props.activeFilters)
+    );
   }
 
   /**
