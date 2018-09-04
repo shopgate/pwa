@@ -8,7 +8,10 @@ export const toggle = css({
 
 export const label = css({
   alignSelf: 'flex-start',
+  whiteSpace: 'no-wrap',
+  flexShrink: 0,
   textAlign: 'left',
+  marginRight: '3rem',
 });
 
 export const selected = css({

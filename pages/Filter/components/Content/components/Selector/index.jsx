@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { Accordion } from '@shopgate/pwa-ui-material';
 import Item from '../Item';
 import ValueButton from './components/ValueButton';
@@ -8,29 +7,118 @@ import Toggle from './components/Toggle';
 import * as styles from './style';
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * The selector component.
  */
-const Selector = ({ label, values, selected }) => (
-  <Item>
-    <Accordion renderLabel={props => <Toggle {...props} label={label} selected={selected} />}>
-      <div className={styles.content}>
-        {values.map(value => (
-          <ValueButton key={value.id} id={value.id} label={value.label} />
-        ))}
-      </div>
-    </Accordion>
-  </Item>
-);
+class Selector extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    multi: PropTypes.bool,
+    onChange: PropTypes.func,
+    selected: PropTypes.node,
+  };
 
-Selector.propTypes = {
-  label: PropTypes.string.isRequired,
-  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  selected: PropTypes.node,
-};
+  static defaultProps = {
+    multi: false,
+    onChange() {},
+    selected: null,
+  };
 
-Selector.defaultProps = {
-  selected: null,
-};
+  state = {
+    selected: this.props.selected || [],
+  };
 
-export default pure(Selector);
+  /**
+   * @param {Object} nextProps The new incoming props.
+   */
+  componentWillReceiveProps({ selected }) {
+    if (selected !== this.state.selected) {
+      this.setState({ selected });
+    }
+  }
+
+  /**
+   * @returns {string}
+   */
+  get selectedDisplay() {
+    const { selected } = this.state;
+    const { values } = this.props;
+
+    if (!selected.length) {
+      return null;
+    }
+
+    return values.reduce((prevValues, value) => {
+      if (selected.includes(value.id)) {
+        prevValues.push(value.label);
+      }
+
+      return prevValues;
+    }, []).join(', ');
+  }
+
+  /**
+   * @param {SyntheticEvent} event The button click event.
+   */
+  handleClick = (event) => {
+    const { value } = event.target;
+    const { selected } = this.state;
+    const { id, multi, onChange } = this.props;
+    let newSelected = [...selected, value];
+
+    // If in single select mode, only allow one selected value.
+    if (!multi && selected.length === 1) {
+      newSelected = [value];
+    }
+
+    // If the clicked value was already selected, remove it again.
+    if (selected.includes(value)) {
+      newSelected = selected.filter(item => item !== value);
+    }
+
+    // Set it if it wasn't selected already.
+    this.setState({ selected: newSelected });
+    onChange(id, newSelected);
+  }
+
+  /**
+   * @param {Object} props The send render props.
+   * @return {JSX}
+   */
+  renderLabel = (props) => {
+    const { label } = this.props;
+
+    return (
+      <Toggle {...props} label={label} selected={this.selectedDisplay} />
+    );
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { values } = this.props;
+    const { selected } = this.state;
+
+    return (
+      <Item>
+        <Accordion renderLabel={this.renderLabel}>
+          <div className={styles.content}>
+            {values.map(value => (
+              <ValueButton
+                key={value.id}
+                id={value.id}
+                label={value.label}
+                isActive={(selected && selected.includes(value.id))}
+                onClick={this.handleClick}
+              />
+            ))}
+          </div>
+        </Accordion>
+      </Item>
+    );
+  }
+}
+
+export default Selector;
