@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import List from 'Components/List';
 import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
@@ -92,7 +92,7 @@ class CharacteristicSheet extends Component {
       </Sheet>
     );
 
-    return ReactDOM.createPortal(
+    return createPortal(
       sheet,
       portals
     );
