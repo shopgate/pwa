@@ -18,9 +18,10 @@ class AccordionContainer extends Component {
    * @param {Object} nextState The next component state.
    * @returns {boolean}
    */
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.open !== nextState.open;
-  }
+  // TODO: Deal with in the optimiziation ticket.
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.state.open !== nextState.open;
+  // }
 
   open = () => {
     this.setState({ open: true });
