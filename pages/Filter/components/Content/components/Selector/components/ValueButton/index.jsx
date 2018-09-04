@@ -21,16 +21,13 @@ class ValueButton extends PureComponent {
     onClick() { },
   };
 
-  handleOnclick = () => {
-    const { id, onClick } = this.props;
-    onClick(id);
-  }
-
   /**
    * @returns {JSX}
    */
   render() {
-    const { isActive, label } = this.props;
+    const {
+      label, id, isActive, onClick,
+    } = this.props;
 
     return (
       <button
@@ -38,7 +35,8 @@ class ValueButton extends PureComponent {
           [styles.inactive]: !isActive,
           [styles.active]: isActive,
         })}
-        onClick={this.handleOnclick}
+        value={id}
+        onClick={onClick}
       >
         {label}
       </button>
