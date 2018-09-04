@@ -2,6 +2,7 @@
 # Changelog
 
 ## [Unreleased]
+### Added
 - New `Portal` constant `PAGE_LOGIN` and `PAGE_LOGIN_REGISTER_LINK` added.
 
 ### [2.4.0](https://github.com/shopgate/pwa-common/compare/v2.3.0...v2.4.0) - February 07, 2018
