@@ -14,7 +14,7 @@ module.exports = (on, config) => {
   console.warn(ip, port);
   
 
-  // Build a new config object..
+  // Build a new config object.
   const newConfig = Object.assign({}, config, {
     env: Object.assign({}, config.env, {
       ENVIRONMENT: 'staging',
