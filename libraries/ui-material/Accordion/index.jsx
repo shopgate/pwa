@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import pure from 'recompose/pure';
 import { AccordionContainer, ChevronIcon } from '@shopgate/pwa-ui-shared';
 import AccordionContent from './components/AccordionContent';
 import * as styles from './style';
@@ -38,4 +37,4 @@ Accordion.propTypes = {
   renderLabel: PropTypes.func.isRequired,
 };
 
-export default pure(Accordion);
+export default Accordion;

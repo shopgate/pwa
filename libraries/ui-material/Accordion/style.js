@@ -1,16 +1,15 @@
 import { css } from 'glamor';
 
 export const toggle = css({
-  padding: '12px 48px 12px 16px',
+  padding: '12px 56px 12px 16px',
   position: 'relative',
 });
 
 export const chevronContainer = css({
   position: 'absolute',
   fontSize: '1.5rem',
-  top: '50%',
-  right: '16px',
-  transform: 'translate3d(0, -50%, 0)',
+  top: '.6875rem',
+  right: '1rem',
 });
 
 export const chevron = css({

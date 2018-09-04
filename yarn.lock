@@ -174,21 +174,21 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.35.tgz#f986830065da63b1f93033d23af69a6e4bf3e1ac"
+"@virtuous/conductor-events@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.37.tgz#49c4d9563cd21c7e36b806baf022c242e5b6c8ca"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
 
-"@virtuous/conductor-helpers@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.35.tgz#8c08f206a81d7912b4b5943de28212ac10bdd820"
+"@virtuous/conductor-helpers@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.37.tgz#f1412231aaa0daf8335fe89bd908529e1797d264"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
 
-"@virtuous/conductor@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.35.tgz#152031721daadaa8096163967747d3ad5d431426"
+"@virtuous/conductor@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.37.tgz#8ad4722af4c6437f2170aa745d6e1c8f49bc24a2"
   dependencies:
     history "^4.7.2"
     lodash "^4.17.10"
@@ -200,24 +200,24 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.35.tgz#5ba95caecd1ecc6e747f3eda0fb9427fc9fb5467"
+"@virtuous/react-conductor@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.37.tgz#f3639bed2eaaf54c7426375812c7862d1867802b"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
-    "@virtuous/conductor-events" "1.0.0-beta.35"
-    "@virtuous/conductor-helpers" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
+    "@virtuous/conductor-events" "1.0.0-beta.37"
+    "@virtuous/conductor-helpers" "1.0.0-beta.37"
     gsap "^1.20.4"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.35.tgz#52d6ca2d14fee14b94dbca3ad32d5e63ad0bd1c6"
+"@virtuous/redux-conductor@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.37.tgz#5972eca9c7c21fda13a00add0624f12d8d9acdd9"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
-    "@virtuous/conductor-events" "1.0.0-beta.35"
-    "@virtuous/conductor-helpers" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
+    "@virtuous/conductor-events" "1.0.0-beta.37"
+    "@virtuous/conductor-helpers" "1.0.0-beta.37"
 
 "@virtuous/redux-persister@1.1.0-beta.5":
   version "1.1.0-beta.5"
@@ -2582,7 +2582,7 @@ doctrine@^2.0.2, doctrine@^2.1.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-helpers@^3.2.0, dom-helpers@^3.3.1:
+dom-helpers@^3.2.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.3.1.tgz#fc1a4e15ffdf60ddde03a480a9c0fece821dd4a6"
 
@@ -6729,10 +6729,6 @@ react-is@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"
 
-react-lifecycles-compat@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
-
 react-loadable@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-5.3.1.tgz#9699e9a08fed49bacd69caaa282034b62a76bcdd"
@@ -6825,15 +6821,6 @@ react-transition-group@^2.2.1:
     loose-envify "^1.3.1"
     prop-types "^15.5.8"
     warning "^3.0.0"
-
-react-transition-group@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.4.0.tgz#1d9391fabfd82e016f26fabd1eec329dbd922b5a"
-  dependencies:
-    dom-helpers "^3.3.1"
-    loose-envify "^1.3.1"
-    prop-types "^15.6.2"
-    react-lifecycles-compat "^3.0.4"
 
 react-transition-hooks@^1.2.0:
   version "1.2.0"
