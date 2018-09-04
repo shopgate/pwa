@@ -12,6 +12,7 @@ class Checkbox extends Component {
     checked: PropTypes.bool,
     className: PropTypes.string,
     defaultChecked: PropTypes.bool,
+    disabled: PropTypes.bool,
     label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     labelPosition: PropTypes.oneOf(['left', 'right']),
     name: PropTypes.string,
@@ -22,6 +23,7 @@ class Checkbox extends Component {
     checked: undefined,
     className: undefined,
     defaultChecked: undefined,
+    disabled: false,
     label: null,
     labelPosition: 'left',
     name: undefined,
@@ -39,7 +41,7 @@ class Checkbox extends Component {
 
     if (typeof props.defaultChecked !== 'undefined') {
       // Uncontrolled input.
-      this.state = { checked: false };
+      this.state = { checked: props.checked };
     }
   }
 
@@ -58,6 +60,10 @@ class Checkbox extends Component {
    * If the checkbox is uncontrolled, it keeps track of the value.
    */
   handleCheck = () => {
+    if (this.props.disabled) {
+      return;
+    }
+
     const checked = !this.isChecked();
 
     if (typeof this.props.defaultChecked !== 'undefined') {
