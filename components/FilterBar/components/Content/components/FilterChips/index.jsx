@@ -42,7 +42,8 @@ class FilterChips extends Component {
       // remove index from key, if it exists
     }
 
-    conductor.update(routeId, { filters: rest });
+    const newFilters = (Object.keys(rest).length) ? rest : null;
+    conductor.update(routeId, { filters: newFilters });
   }
 
   /**
