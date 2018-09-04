@@ -33,7 +33,7 @@ class Checkbox extends PureComponent {
     } = this.props;
     return (
       <FormElement
-        className={className}
+        className={`${className} ${style.root}`}
         htmlFor={name}
         errorText={this.props.errorText}
         hasUnderline={false}
