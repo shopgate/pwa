@@ -11,7 +11,8 @@ const buildParams = (obj, paths) => {
   const params = {};
 
   Object.entries(paths).forEach(([prop, path]) => {
-    params[prop] = get(obj, path) || null;
+    const value = get(obj, path);
+    params[prop] = (typeof value !== 'undefined') ? value : null;
   });
 
   return params;
