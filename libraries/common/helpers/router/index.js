@@ -7,7 +7,7 @@ const match = /^(.*)index.html/.exec(window.location.pathname);
  * Creates the router history.
  */
 export const history = createBrowserHistory({
-  basename: match ? match[0] : '/test123/index',
+  basename: match ? match[0] : '',
 });
 
 /**
