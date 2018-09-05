@@ -1,7 +1,4 @@
-import {
-  mockedProducts as mockedList,
-  basicProductState as productsState,
-} from '../product/mock';
+import { mockedProducts as mockedList } from '../product/mock';
 
 const mockedStateWithoutProducts = {
   favorites: {
@@ -13,8 +10,29 @@ const mockedStateWithoutProducts = {
   },
 };
 
+/**
+ * Creates a products state from the mocked list.
+ * @return {Object}
+ */
+const createProductsState = () => {
+  const productsById = mockedList.products.reduce((result, current) => ({
+    ...result,
+    [current.id]: {
+      isFetching: false,
+      expires: 0,
+      productData: current,
+    },
+  }), {});
+
+  return {
+    product: {
+      productsById,
+    },
+  };
+};
+
 const mockedStateWithProducts = {
-  ...productsState,
+  ...createProductsState(),
   favorites: {
     products: {
       isFetching: false,

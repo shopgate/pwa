@@ -1,3 +1,4 @@
+import { logger } from '@shopgate/pwa-core/helpers';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import { EUNKNOWN, EACCESS } from '@shopgate/pwa-core/constants/Pipeline';
 import fetchReviews from './fetchReviews';
@@ -7,7 +8,6 @@ import submitReview from './submitReview';
 import { finalState } from '../selectors/mock';
 import * as pipelines from '../constants/Pipelines';
 
-const { console } = global;
 let mockedResolver;
 jest.mock(
   '@shopgate/pwa-core/classes/PipelineRequest',
@@ -18,14 +18,18 @@ jest.mock(
   )
 );
 
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
+}));
+
 describe('Reviews actions', () => {
   describe('fetchReviews', () => {
     beforeEach(() => {
-      console.error = jest.fn();
+      jest.clearAllMocks();
     });
-    afterEach(() => {
-      console.error.mockClear();
-    });
+
     /**
      * Assertion helper function
      * @param {string} variant ('then' or 'catch')
@@ -44,12 +48,13 @@ describe('Reviews actions', () => {
             offset: 1,
             sort: 'dateDesc',
           });
-          expect(console.error).toHaveBeenCalledTimes(variant === 'then' ? 0 : 1);
+          expect(logger.error).toHaveBeenCalledTimes(variant === 'then' ? 0 : 1);
           expect(mockedDispatch).toHaveBeenCalledTimes(2);
           done();
         });
       }, 0);
     };
+
     it('should resolve and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve) => {
         resolve({
@@ -59,6 +64,7 @@ describe('Reviews actions', () => {
       };
       testFetch('then', done);
     });
+
     it('should fail and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
         reject({
@@ -68,6 +74,7 @@ describe('Reviews actions', () => {
       testFetch('catch', done);
     });
   });
+
   describe('getProductReviews', () => {
     /**
      * Assertion helper function
@@ -91,6 +98,7 @@ describe('Reviews actions', () => {
         });
       }, 0);
     };
+
     it('should resolve and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve) => {
         resolve({
@@ -100,6 +108,7 @@ describe('Reviews actions', () => {
       };
       testGetProductReviews('then', done, finalState);
     });
+
     it('should reject and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
         reject({
@@ -109,6 +118,7 @@ describe('Reviews actions', () => {
       testGetProductReviews('catch', done, finalState);
     });
   });
+
   describe('getUserReview', () => {
     /**
      * Assertion helper function
@@ -131,6 +141,7 @@ describe('Reviews actions', () => {
         });
       }, 0);
     };
+
     it('should resolve and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve) => {
         resolve({
@@ -140,6 +151,7 @@ describe('Reviews actions', () => {
       };
       testGetUserReview('then', done, finalState);
     });
+
     it('should reject and call appropriate actions', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
         reject({
@@ -149,6 +161,7 @@ describe('Reviews actions', () => {
       testGetUserReview('catch', done, finalState);
     });
   });
+
   describe('submitReview', () => {
     const testReviewInput = {
       productId: 'foo',
@@ -189,6 +202,7 @@ describe('Reviews actions', () => {
         });
       }, 0);
     };
+
     it('should resolve and call appropriate actions on update', (done) => {
       mockedResolver = (mockInstance, resolve) => {
         resolve({
@@ -198,6 +212,7 @@ describe('Reviews actions', () => {
       };
       testSubmitReview('then', testReviewInput, true, finalState, done);
     });
+
     it('should resolve and call appropriate actions on add', (done) => {
       mockedResolver = (mockInstance, resolve) => {
         resolve({
@@ -207,6 +222,7 @@ describe('Reviews actions', () => {
       };
       testSubmitReview('then', testReviewInput, false, finalState, done);
     });
+
     it('should reject and call appropriate actions on add', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
         reject({
@@ -216,6 +232,7 @@ describe('Reviews actions', () => {
       };
       testSubmitReview('catch', testReviewInput, false, finalState, done);
     });
+
     it('should reject and call appropriate actions on update', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
         reject({

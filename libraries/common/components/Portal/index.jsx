@@ -32,13 +32,6 @@ class Portal extends Component {
   }
 
   /**
-   * Catches errors.
-   */
-  componentDidCatch() {
-    this.setState({ hasError: true });
-  }
-
-  /**
    * Returns the portal components.
    * @param {string} name - The component name to match.
    * @param {Object} props - The props to pass to the component.
@@ -80,6 +73,13 @@ class Portal extends Component {
     });
 
     return components;
+  }
+
+  /**
+   * Catches errors.
+   */
+  componentDidCatch() {
+    this.setState({ hasError: true });
   }
 
   /**

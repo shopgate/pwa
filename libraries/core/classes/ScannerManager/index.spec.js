@@ -66,8 +66,9 @@ describe('ScannerManager', () => {
   describe('.constructor()', () => {
     it('should register necessary only once', () => {
       expect(registerEvents).toHaveBeenCalledTimes(1);
-      new ScannerManager();
+      const newInstance = new ScannerManager();
       expect(registerEvents).toHaveBeenCalledTimes(1);
+      expect(newInstance).toBeInstanceOf(ScannerManager);
     });
 
     it('should work as expected when no options are passed', () => {
@@ -81,8 +82,6 @@ describe('ScannerManager', () => {
       instance = new ScannerManager({ autoClose: false });
       expect(instance.autoClose).toBe(false);
     });
-
-
   });
 
   describe('.registerScanHandler()', () => {

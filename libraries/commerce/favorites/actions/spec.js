@@ -26,6 +26,12 @@ jest.mock(
   )
 );
 
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: {
+    error: jest.fn(),
+  },
+}));
+
 describe('Favorites - actions', () => {
   describe(pipelines.SHOPGATE_USER_GET_FAVORITES, () => {
     /**
@@ -48,6 +54,7 @@ describe('Favorites - actions', () => {
         });
       }, 0);
     };
+
     it('should call appropriate actions on *resolved* pipeline request', (done) => {
       mockedResolver = (mockInstance, resolve) => {
         resolve({
@@ -57,6 +64,7 @@ describe('Favorites - actions', () => {
       };
       testFetch('then', done);
     });
+
     it('should call appropriate action on *rejected* pipeline request', (done) => {
       mockedResolver = (mockInstance, resolve, reject) => {
         reject({
@@ -66,6 +74,7 @@ describe('Favorites - actions', () => {
       };
       testFetch('catch', done);
     });
+
     it('should not call pipeline when data is cached and valid', (done) => {
       const mockedDispatch = jest.fn();
       const promise = getFavorites()(mockedDispatch, mockedGetState('then', { validCache: true }));
@@ -76,6 +85,7 @@ describe('Favorites - actions', () => {
       });
     });
   });
+
   describe(pipelines.SHOPGATE_USER_PUT_FAVORITES, () => {
     const mockedDispatch = jest.fn();
     it('should add', (done) => {
@@ -114,7 +124,7 @@ describe('Favorites - actions', () => {
       mockedResolver = (mockInstance, resolve) => {
         resolve();
       };
-      removeFavorites('SG117', true)(mockedDispatch, mockedGetState('then', {
+      removeFavorites('SG118', true)(mockedDispatch, mockedGetState('then', {
         withProducts: true,
       }));
       expect(mockedDispatch.mock.calls.length).toBe(4);
