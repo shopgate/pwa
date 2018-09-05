@@ -10,11 +10,12 @@ import getProducts from '../../product/actions/getProducts';
  * @param {string} sort The sort order of the products.
  * @return {Function} The dispatched action.
  */
-const fetchCategoryProducts = (
+const fetchCategoryProducts = ({
   categoryId,
+  filters = null,
   offset = 0,
-  limit = ITEMS_PER_LOAD
-) =>
+  limit = ITEMS_PER_LOAD,
+}) =>
   (dispatch, getState) => {
     dispatch(getProducts({
       params: {
@@ -23,6 +24,7 @@ const fetchCategoryProducts = (
         limit,
         sort: getSortOrder(getState()),
       },
+      filters,
     }));
   };
 
