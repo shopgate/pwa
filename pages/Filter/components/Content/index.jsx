@@ -61,7 +61,9 @@ class FilterContent extends Component {
    * @returns {boolean}
    */
   get canReset() {
-    return Object.keys(this.state.currentFilters).length || Object.keys(this.state.filters).length;
+    return (
+      !!(Object.keys(this.state.currentFilters).length || Object.keys(this.state.filters).length)
+    );
   }
 
   /**
@@ -69,7 +71,10 @@ class FilterContent extends Component {
    * @returns {boolean}
    */
   get hasChanged() {
-    return Object.keys(this.state.filters).length > 0 || (Object.keys(this.state.currentFilters).length === 0 && this.props.activeFilters);
+    return (
+      Object.keys(this.state.filters).length > 0
+      || !!(Object.keys(this.state.currentFilters).length === 0 && this.props.activeFilters)
+    );
   }
 
   /**
@@ -88,7 +93,7 @@ class FilterContent extends Component {
     const { filters } = this.props;
 
     const filter = filters.find(entry => entry.id === id);
-    let initialValue;
+    let initialValue = [];
 
     // In the case of a range filter, use the min and max.
     if (filter.type === FILTER_TYPE_RANGE) {
