@@ -128,16 +128,16 @@
     "@types/jquery" "*"
 
 "@types/chai@*":
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.3.tgz#b8a74352977a23b604c01aa784f5b793443fb7dc"
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.4.tgz#5ca073b330d90b4066d6ce18f60d57f2084ce8ca"
 
 "@types/chai@4.0.8":
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.0.8.tgz#d27600e9ba2f371e08695d90a0fe0408d89c7be7"
 
 "@types/jquery@*":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.1.tgz#55758d44d422756d6329cbf54e6d41931d7ba28f"
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.6.tgz#5932ead926307ca21e5b36808257f7c926b06565"
 
 "@types/jquery@3.2.16":
   version "3.2.16"
@@ -167,28 +167,28 @@
     "@types/sinon" "*"
 
 "@types/sinon@*":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.3.1.tgz#32458f9b166cd44c23844eee4937814276f35199"
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-5.0.2.tgz#7a9d64df40b26dd48d673f745addc2fdb2bda193"
 
 "@types/sinon@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.35.tgz#f986830065da63b1f93033d23af69a6e4bf3e1ac"
+"@virtuous/conductor-events@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.37.tgz#49c4d9563cd21c7e36b806baf022c242e5b6c8ca"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
 
-"@virtuous/conductor-helpers@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.35.tgz#8c08f206a81d7912b4b5943de28212ac10bdd820"
+"@virtuous/conductor-helpers@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.37.tgz#f1412231aaa0daf8335fe89bd908529e1797d264"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
 
-"@virtuous/conductor@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.35.tgz#152031721daadaa8096163967747d3ad5d431426"
+"@virtuous/conductor@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.37.tgz#8ad4722af4c6437f2170aa745d6e1c8f49bc24a2"
   dependencies:
     history "^4.7.2"
     lodash "^4.17.10"
@@ -200,24 +200,24 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.35.tgz#5ba95caecd1ecc6e747f3eda0fb9427fc9fb5467"
+"@virtuous/react-conductor@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.37.tgz#f3639bed2eaaf54c7426375812c7862d1867802b"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
-    "@virtuous/conductor-events" "1.0.0-beta.35"
-    "@virtuous/conductor-helpers" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
+    "@virtuous/conductor-events" "1.0.0-beta.37"
+    "@virtuous/conductor-helpers" "1.0.0-beta.37"
     gsap "^1.20.4"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
 
-"@virtuous/redux-conductor@1.0.0-beta.35":
-  version "1.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.35.tgz#52d6ca2d14fee14b94dbca3ad32d5e63ad0bd1c6"
+"@virtuous/redux-conductor@1.0.0-beta.37":
+  version "1.0.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.37.tgz#5972eca9c7c21fda13a00add0624f12d8d9acdd9"
   dependencies:
-    "@virtuous/conductor" "1.0.0-beta.35"
-    "@virtuous/conductor-events" "1.0.0-beta.35"
-    "@virtuous/conductor-helpers" "1.0.0-beta.35"
+    "@virtuous/conductor" "1.0.0-beta.37"
+    "@virtuous/conductor-events" "1.0.0-beta.37"
+    "@virtuous/conductor-helpers" "1.0.0-beta.37"
 
 "@virtuous/redux-persister@1.1.0-beta.5":
   version "1.1.0-beta.5"
@@ -3688,8 +3688,8 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
 gsap@^1.20.2:
-  version "1.20.4"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.4.tgz#005fba2a7bfbb3b9d27bd77e1634d2bad365a86a"
+  version "1.20.6"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-1.20.6.tgz#0f6829052e94fbfffa92be3265f24b88729c9d1d"
 
 gsap@^1.20.4:
   version "1.20.5"
@@ -5432,7 +5432,7 @@ lodash.union@^4.6.0:
 
 lodash@4.17.4:
   version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+  resolved "http://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
 lodash@^4.13.1, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.5"
@@ -5759,7 +5759,7 @@ mixin-deep@^1.2.0:
 
 mkdirp@0.5.0:
   version "0.5.0"
-  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.0.tgz#1d73076a6df986cd9344e15e71fcc05a4c9abf12"
+  resolved "http://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz#1d73076a6df986cd9344e15e71fcc05a4c9abf12"
   dependencies:
     minimist "0.0.8"
 
@@ -7274,8 +7274,8 @@ rx-lite@*, rx-lite@^4.0.8:
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
 rxjs@^5.0.0-beta.11:
-  version "5.5.10"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.10.tgz#fde02d7a614f6c8683d0d1957827f492e09db045"
+  version "5.5.12"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.12.tgz#6fa61b8a77c3d793dbaf270bee2f43f652d741cc"
   dependencies:
     symbol-observable "1.0.1"
 
