@@ -149,10 +149,17 @@ class FilterContent extends Component {
   }
 
   save = () => {
-    const { filters } = this.state;
-    const parentFilters = Object.keys(filters).length ? filters : null;
+    const { currentFilters, filters } = this.state;
 
-    conductor.update(this.props.parentId, { filters: parentFilters });
+    // Create a set of active filters by combining state and currentFilters.
+    const activeFilters = {
+      ...currentFilters,
+      ...filters,
+    };
+
+    const newFilters = Object.keys(activeFilters).length ? activeFilters : null;
+
+    conductor.update(this.props.parentId, { filters: newFilters });
     conductor.pop();
   }
 
