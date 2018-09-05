@@ -9,4 +9,5 @@ export default css({
   borderRadius: 2,
   background: themeConfig.colors.light,
   overflow: 'hidden',
+  position: 'relative',
 }).toString();
