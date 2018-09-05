@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CART_MAX_ITEMS } from '@shopgate/pwa-common-commerce/cart/constants';
+import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import connect from './connector';
 import style from './style';
 
