@@ -1,4 +1,7 @@
-import { mockedProducts as mockedList, productsState } from '../product/mock';
+import {
+  mockedProducts as mockedList,
+  basicProductState as productsState,
+} from '../product/mock';
 
 const mockedStateWithoutProducts = {
   favorites: {
