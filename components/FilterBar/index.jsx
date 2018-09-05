@@ -77,6 +77,13 @@ class FilterBar extends Component {
   }
 
   /**
+   * Set the top value of the View when the component updates.
+   */
+  componentDidUpdate() {
+    this.updateView();
+  }
+
+  /**
    * Unbinds the event handlers from the scroll element.
    */
   componentWillUnmount() {
@@ -158,21 +165,23 @@ class FilterBar extends Component {
     );
 
     return (
-      <Transition in={this.state.visible} timeout={200}>
-        {state => (
-          <div
-            className={classes}
-            data-test-id="filterBar"
-            ref={this.node}
-            style={{
-              ...this.style,
-              ...transition[state],
-            }}
-          >
-            <Content componentUpdated={this.setSpacerHeight} />
-          </div>
-        )}
-      </Transition>
+      <section className={styles.container}>
+        <Transition in={this.state.visible} timeout={200}>
+          {state => (
+            <div
+              className={classes}
+              data-test-id="filterBar"
+              ref={this.node}
+              style={{
+                ...this.style,
+                ...transition[state],
+              }}
+            >
+              <Content />
+            </div>
+          )}
+        </Transition>
+      </section>
     );
   }
 }

@@ -82,7 +82,7 @@ class FilterContent extends Component {
    * @returns {Array}
    */
   getFilterValue = id => (
-    this.state.filters[id] || this.initialFilters[id]
+    this.state.filters[id] ? this.state.filters[id].value : this.initialFilters[id].value
   )
 
   /**
@@ -106,7 +106,12 @@ class FilterContent extends Component {
       return;
     }
 
-    this.add(id, value);
+    this.add(id, {
+      id,
+      type: filter.type,
+      label: filter.label,
+      value,
+    });
   }
 
   /**

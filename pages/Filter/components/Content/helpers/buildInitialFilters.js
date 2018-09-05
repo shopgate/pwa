@@ -17,7 +17,10 @@ const buildInitialFilters = (filters, activeFilters) => {
       id, maximum, minimum, type,
     } = filter;
 
-    defaults[id] = (type === FILTER_TYPE_RANGE) ? [minimum, maximum] : [];
+    defaults[id] = {
+      type,
+      value: (type === FILTER_TYPE_RANGE) ? [minimum, maximum] : [],
+    };
   });
 
   return {
