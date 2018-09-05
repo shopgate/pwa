@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
+import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import Router from '@virtuous/react-conductor/Router';
 import Route from '@virtuous/react-conductor/Route';
@@ -42,7 +43,7 @@ const Pages = ({ store }) => (
           <Viewport>
             <ModalContainer component={Dialog} />
             <Toaster render={props => <SnackBar {...props} />} />
-            <Router>
+            <Router history={history}>
               <Route pattern={INDEX_PATH} component={routes.StartPage} />
               <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
               <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />

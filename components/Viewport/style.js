@@ -1,5 +1,4 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 
 /**
  * By default the GMD theme doesn't have a tabbar. But it's conceivable that 3rd party developers
@@ -8,7 +7,6 @@ import colors from 'Styles/colors';
  */
 css.global('html', {
   '--tabbar-height': '0px',
-  background: colors.light,
 });
 
 css.global('body', {
