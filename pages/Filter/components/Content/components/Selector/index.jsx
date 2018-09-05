@@ -4,6 +4,7 @@ import { Accordion } from '@shopgate/pwa-ui-material';
 import Item from '../Item';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
+import Selected from './components/Selected';
 import * as styles from './style';
 
 /**
@@ -39,26 +40,6 @@ class Selector extends Component {
   }
 
   /**
-   * @returns {string}
-   */
-  get selectedDisplay() {
-    const { selected } = this.state;
-    const { values } = this.props;
-
-    if (!selected.length) {
-      return null;
-    }
-
-    return values.reduce((prevValues, value) => {
-      if (selected.includes(value.id)) {
-        prevValues.push(value.label);
-      }
-
-      return prevValues;
-    }, []).join(', ');
-  }
-
-  /**
    * @param {SyntheticEvent} event The button click event.
    */
   handleClick = (event) => {
@@ -87,10 +68,15 @@ class Selector extends Component {
    * @return {JSX}
    */
   renderLabel = (props) => {
-    const { label } = this.props;
+    const { label, values } = this.props;
+    const { selected } = this.state;
 
     return (
-      <Toggle {...props} label={label} selected={this.selectedDisplay} />
+      <Toggle
+        {...props}
+        label={label}
+        selected={<Selected values={values} selected={selected} />}
+      />
     );
   }
 

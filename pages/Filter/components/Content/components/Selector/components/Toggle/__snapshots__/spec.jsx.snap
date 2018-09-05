@@ -5,7 +5,7 @@ exports[`<Toggle /> should render with selected 1`] = `
   class="css-mih9ue"
 >
   <span
-    class="css-15nmtmk css-15q2ai2"
+    class="css-1xpxwoo css-15q2ai2"
   >
     somelabel
   </span>
@@ -22,7 +22,7 @@ exports[`<Toggle /> should render with selected as open 1`] = `
   class="css-mih9ue"
 >
   <span
-    class="css-15nmtmk css-l6c9n4"
+    class="css-1xpxwoo css-l6c9n4"
   >
     somelabel
   </span>
@@ -39,7 +39,7 @@ exports[`<Toggle /> should render without selected 1`] = `
   class="css-mih9ue"
 >
   <span
-    class="css-15nmtmk css-15q2ai2"
+    class="css-1xpxwoo css-15q2ai2"
   >
     somelabel
   </span>
@@ -51,7 +51,7 @@ exports[`<Toggle /> should render without selected as open 1`] = `
   class="css-mih9ue"
 >
   <span
-    class="css-15nmtmk css-l6c9n4"
+    class="css-1xpxwoo css-l6c9n4"
   >
     somelabel
   </span>
