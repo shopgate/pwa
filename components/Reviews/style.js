@@ -1,7 +1,8 @@
 import { css } from 'glamor';
+import variables from 'Styles/variables';
 
 const container = css({
-  marginBottom: '35px',
+  marginBottom: variables.gap.small,
 }).toString();
 
 export default {
