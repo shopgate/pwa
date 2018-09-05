@@ -101,6 +101,7 @@ describe('<Widgets />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
   });
+
   it('should render only one widget when the second one is not published and third one is invalid', () => {
     const widgets = [
       {
@@ -146,6 +147,7 @@ describe('<Widgets />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').length).toBe(1);
   });
+
   it('should schedule a re-render when widget is scheduled', () => {
     const minutesToNextFullHour = 60 - new Date().getMinutes();
     const msToNextFullHour = minutesToNextFullHour * 60000;
@@ -186,6 +188,7 @@ describe('<Widgets />', () => {
     wrapper.instance().componentWillUnmount();
     expect(clearTimeout).toHaveBeenCalled();
   });
+
   it('should render only wrapper when widgets array is empty', () => {
     const widgets = [];
     const wrapper = mount((
@@ -196,6 +199,7 @@ describe('<Widgets />', () => {
     ));
     expect(wrapper.find('Image').exists()).toBe(false);
   });
+
   it('should render null when no widgets are passed', () => {
     const wrapper = mount((
       <Widgets
@@ -204,6 +208,7 @@ describe('<Widgets />', () => {
     ));
     expect(wrapper.html()).toBe(null);
   });
+
   it('should check settings of child widgets inside widget-grid', () => {
     const widgets = [
       {

@@ -7,22 +7,15 @@ import Slider from './index';
 jest.mock('swiper/dist/css/swiper.min.css', () => {});
 
 describe('<Slider />', () => {
-  const defaultState = {
-    history: {
-      pathname: '',
-    },
-  };
-
   /**
    * Creates a component.
    * @param {Array} children Children.
    * @param {Object} [props={}] Props.
-   * @param {Object} [state=defaultState] State.
    * @returns {Object}
    */
-  const createComponent = (children, props = {}, state = defaultState) => (
+  const createComponent = (children, props = {}) => (
     mount((
-      <Provider store={configureStore()(state)}>
+      <Provider store={configureStore()()}>
         <Slider {...props}>
           {children}
         </Slider>

@@ -3,13 +3,24 @@ import { shallow } from 'enzyme';
 import { Disconnected as Link } from './index';
 
 describe('<Link />', () => {
-  const navigate = jest.fn();
-  const location = '/';
+  const historyPush = jest.fn();
+  const historyReplace = jest.fn();
+  const pathname = '/';
   const state = { x: 5 };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('renders with children', () => {
     const wrapper = shallow((
-      <Link href={location} navigate={navigate}><span /></Link>
+      <Link
+        href={pathname}
+        historyPush={historyPush}
+        historyReplace={historyReplace}
+      >
+        <span />
+      </Link>
     ));
 
     expect(wrapper).toMatchSnapshot();
@@ -19,9 +30,10 @@ describe('<Link />', () => {
   it('handles a push', () => {
     const wrapper = shallow((
       <Link
-        href={location}
-        navigate={navigate}
+        href={pathname}
         state={state}
+        historyPush={historyPush}
+        historyReplace={historyReplace}
       >
         <span />
       </Link>
@@ -29,14 +41,18 @@ describe('<Link />', () => {
 
     wrapper.find('div').simulate('click');
 
-    expect(navigate).toHaveBeenLastCalledWith('PUSH', location, state);
+    expect(historyPush).toHaveBeenLastCalledWith({
+      pathname,
+      state,
+    });
   });
 
   it('handles a replace', () => {
     const wrapper = shallow((
       <Link
-        href={location}
-        navigate={navigate}
+        href={pathname}
+        historyPush={historyPush}
+        historyReplace={historyReplace}
         state={state}
         replace
       >
@@ -46,6 +62,9 @@ describe('<Link />', () => {
 
     wrapper.find('div').simulate('click');
 
-    expect(navigate).toHaveBeenLastCalledWith('REPLACE', location, state);
+    expect(historyReplace).toHaveBeenLastCalledWith({
+      pathname,
+      state,
+    });
   });
 });
