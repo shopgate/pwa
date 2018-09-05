@@ -73,12 +73,12 @@ class SimpleInput extends Component {
    * @param {Object} nextProps The new properties.
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value) {
-      /**
-       * Only set the state value if the value prop has been changed,
-       * otherwise use the current input state.
-       */
-      const sanitizedValue = this.props.onSanitize(nextProps.value || '');
+    /**
+     * Only set the state value if the value prop has been changed,
+     * otherwise use the current input state.
+     */
+    const sanitizedValue = this.props.onSanitize(nextProps.value || '');
+    if (sanitizedValue !== this.state.value) {
       this.updateValue(sanitizedValue);
     }
   }
@@ -139,10 +139,10 @@ class SimpleInput extends Component {
     const sanitizedValue = this.props.onSanitize(event.target.value || '');
 
     // Update the state.
-    this.updateValue(sanitizedValue);
-
-    // Emit an event.
-    this.props.onChange(sanitizedValue);
+    this.updateValue(sanitizedValue, () => {
+      // Emit an event.
+      this.props.onChange(sanitizedValue);
+    });
   };
 
   /**
@@ -157,8 +157,9 @@ class SimpleInput extends Component {
   /**
    * Updates and validates the internal state value of the input field.
    * @param {string} newValue The new value.
+   * @param {function} cb Callback which is called upon when the state was changed.
    */
-  updateValue(newValue) {
+  updateValue(newValue, cb) {
     const newState = {
       value: newValue,
     };
@@ -168,7 +169,7 @@ class SimpleInput extends Component {
       newState.isValid = this.props.onValidate(newValue, false);
     }
 
-    this.setState(newState);
+    this.setState(newState, cb);
   }
 
   /**
