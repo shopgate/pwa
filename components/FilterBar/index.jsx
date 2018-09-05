@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import classNames from 'classnames';
+import { UIEvents } from '@shopgate/pwa-core';
 import colors from 'Styles/colors';
 import Content from './components/Content';
 import styles from './style';
 import transition from './transition';
+import { FILTERBAR_UPDATE } from './constants';
 
 /**
  * The FilterBar component.
@@ -35,6 +37,8 @@ class FilterBar extends Component {
       shadow: false,
       visible: true,
     };
+
+    UIEvents.addListener(FILTERBAR_UPDATE, this.updateView);
   }
 
   /**
@@ -50,12 +54,16 @@ class FilterBar extends Component {
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    if (!this.props.viewRef && nextProps.viewRef) {
+    // Check if a new viewRef came in.
+    const hasNewRef = (!this.props.viewRef && nextProps.viewRef);
+
+    // Chcek if newly set filters came in.
+    const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
+
+    if (hasNewRef) {
       this.updateView();
       this.setScrollListener(nextProps.viewRef);
     }
-
-    const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
 
     if (hasFilters !== this.state.active) {
       this.setState({ active: hasFilters });
