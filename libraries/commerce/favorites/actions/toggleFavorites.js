@@ -83,7 +83,7 @@ const removeProductFromFavorites = (productId, dispatch) => {
  */
 const removeFavorites = (productId, withRelatives = false) => (dispatch, getState) => {
   if (withRelatives) {
-    const allIds = getProductRelativesOnFavorites(getState(), productId);
+    const allIds = getProductRelativesOnFavorites(getState(), { productId });
     allIds.forEach(id => removeProductFromFavorites(id, dispatch));
     return;
   }

@@ -33,7 +33,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
       className="css-hw75se"
     >
       <Button
-        className="css-2gpjuu"
+        className="css-7vankg"
         disabled={false}
         flat={true}
         key="action0"
@@ -49,7 +49,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
         />
       </Button>
       <Button
-        className="css-2gpjuu"
+        className="css-7vankg"
         disabled={false}
         flat={true}
         key="action1"
@@ -65,7 +65,7 @@ exports[`<BasicDialog /> should show correct number of buttons 1`] = `
         />
       </Button>
       <Button
-        className="css-2gpjuu"
+        className="css-7vankg"
         disabled={false}
         flat={true}
         key="action2"
@@ -100,7 +100,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
       className="css-hw75se"
     >
       <Button
-        className="css-2gpjuu"
+        className="css-7vankg"
         disabled={false}
         flat={true}
         key="action0"
@@ -116,7 +116,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
         />
       </Button>
       <Button
-        className="css-2gpjuu"
+        className="css-7vankg"
         disabled={false}
         flat={true}
         key="action1"
@@ -124,6 +124,12 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
           [MockFunction] {
             "calls": Array [
               Array [],
+            ],
+            "results": Array [
+              Object {
+                "isThrow": false,
+                "value": undefined,
+              },
             ],
           }
         }
@@ -138,7 +144,7 @@ exports[`<BasicDialog /> should trigger correct actions 1`] = `
         />
       </Button>
       <Button
-        className="css-2gpjuu"
+        className="css-7vankg"
         disabled={false}
         flat={true}
         key="action2"

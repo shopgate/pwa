@@ -3,7 +3,7 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
 import * as pipelines from '../constants/Pipelines';
-import { getCurrentBaseProductId } from '../../product/selectors/product';
+import { getBaseProductId } from '../../product/selectors/product';
 
 /**
  * @param {Object} state The global state.
@@ -33,7 +33,7 @@ const getReviewsByHash = createSelector(
  * @return {Object|null} The reviews for a product.
  */
 const getCollectionForCurrentBaseProduct = createSelector(
-  getCurrentBaseProductId,
+  getBaseProductId,
   getReviewsByHash,
   (productId, reviews) => {
     const hash = generateResultHash({
@@ -75,7 +75,7 @@ export const getReviews = createSelector(
  * @return {number} The total review count for a product
  */
 export const getProductReviewCount = createSelector(
-  getCurrentBaseProductId,
+  getBaseProductId,
   getReviewsByProductId,
   (productId, reviewsState) => {
     const collection = reviewsState[productId];
@@ -145,7 +145,7 @@ const getUserReviewsByProductId = createSelector(
 export const getUserReviewForProduct = createSelector(
   getUserReviewsByProductId,
   getReviews,
-  (state, props) => props.productId,
+  (state, props = {}) => props.productId,
   (userReviews, allReviews, productId) => {
     if (!userReviews || !userReviews[productId] || !allReviews[userReviews[productId].review]) {
       return {};
@@ -162,16 +162,16 @@ export const getUserReviewForProduct = createSelector(
  * @return {bool} True if user review for current product is being fetched.
  */
 export const getUserReviewFirstFetchState = createSelector(
-  getCurrentBaseProductId,
+  getBaseProductId,
   getUserReviewsByProductId,
-  (productId, userReviews) =>
-    !!(
-      userReviews
+  (productId, userReviews) => !!(
+    userReviews
       && productId
       && userReviews[productId]
       && !userReviews[productId].review
       && userReviews[productId].isFetching
-    )
+  )
+
 );
 
 /**
@@ -220,7 +220,7 @@ export const getProductReviews = createSelector(
  * @return {Array|null} The reviews for a product
  */
 export const getProductReviewsExcerpt = createSelector(
-  getCurrentBaseProductId,
+  getBaseProductId,
   getProductReviewsExcerptState,
   getReviews,
   getUserReviewForProduct,

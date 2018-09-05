@@ -19,8 +19,11 @@ const mapStateToProps = (state, props) => ({
  * @return {Object}
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: productId => dispatch(historyReplace({
+  navigate: (productId, isVariant) => dispatch(historyReplace({
     pathname: `${ITEM_PATH}/${bin2hex(productId)}`,
+    state: {
+      isVariant,
+    },
   })),
 });
 

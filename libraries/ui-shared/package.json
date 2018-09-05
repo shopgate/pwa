@@ -1,14 +1,15 @@
 {
   "name": "@shopgate/pwa-ui-shared",
-  "version": "6.0.0-beta.7",
+  "version": "6.0.0-beta.12",
   "description": "Shopgate's shared UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/eslint-config": "6.0.0-beta.7",
-    "@shopgate/pwa-common": "6.0.0-beta.7",
-    "@shopgate/pwa-common-commerce": "6.0.0-beta.7",
-    "@shopgate/pwa-unit-test": "6.0.0-beta.7",
+    "@shopgate/pwa-common": "6.0.0-beta.12",
+    "@shopgate/pwa-common-commerce": "6.0.0-beta.12",
     "react": "^16.3.2"
+  },
+  "peerDependencies": {
+    "react": "16"
   }
 }

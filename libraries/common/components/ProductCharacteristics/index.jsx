@@ -37,14 +37,12 @@ class ProductCharacteristics extends Component {
 
     this.state = {
       highlight: null,
-      characteristics: {},
+      characteristics: this.getCharacteristics(props),
     };
 
-    props.conditioner.addConditioner('product-variants', this.checkSelection);
+    this.setRefs(props);
 
-    if (props.variants) {
-      this.updateRefs(props);
-    }
+    props.conditioner.addConditioner('product-variants', this.checkSelection);
   }
 
   /**
@@ -53,7 +51,10 @@ class ProductCharacteristics extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.props.variants && nextProps.variants) {
       // Initialize refs and characteristics when the variants prop was updated with a valid value.
-      this.updateRefs(nextProps);
+      this.setRefs(nextProps);
+      this.setState({
+        characteristics: this.getCharacteristics(nextProps),
+      });
     }
   }
 
@@ -62,31 +63,29 @@ class ProductCharacteristics extends Component {
    * @param {Object} props The props to check against.
    */
   setRefs = (props) => {
-    props.variants.characteristics.forEach((char) => {
-      this.refsStore[char.id] = React.createRef();
-    });
-  }
+    const { variants } = props;
 
-  /**
-   * Sets the characteristics relative to the given props.
-   * @param {Object} props The props to check against.
-   */
-  setCharacterics = (props) => {
-    const { variantId, variants } = props;
-    const result = variants.products.find(product => product.id === variantId);
-
-    if (result && result.characteristics) {
-      this.setState({ characteristics: result.characteristics });
+    if (variants) {
+      variants.characteristics.forEach((char) => {
+        this.refsStore[char.id] = React.createRef();
+      });
     }
   }
 
   /**
-   * Initializes refs and characteristics.
-   * @param {Object} props Component props.
+   * Creates the characteristics relative to the given props.
+   * @param {Object} props The props to check against.
+   * @return {Object}
    */
-  updateRefs(props) {
-    this.setCharacterics(props);
-    this.setRefs(props);
+  getCharacteristics = (props) => {
+    const { variantId, variants } = props;
+
+    if (!variants) {
+      return {};
+    }
+
+    const { characteristics } = variants.products.find(product => product.id === variantId) || {};
+    return characteristics || {};
   }
 
   /**
@@ -155,7 +154,7 @@ class ProductCharacteristics extends Component {
       return;
     }
 
-    this.props.navigate(products[0].id);
+    this.props.navigate(products[0].id, true);
   }
 
   /**

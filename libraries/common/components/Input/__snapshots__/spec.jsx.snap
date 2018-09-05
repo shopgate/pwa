@@ -312,6 +312,16 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
           "a",
         ],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
     }
   }
 >
@@ -331,6 +341,16 @@ exports[`<Input /> should trigger the onChange callback 1`] = `
           Array [
             "a",
           ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
         ],
       }
     }
