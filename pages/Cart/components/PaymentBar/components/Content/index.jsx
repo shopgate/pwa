@@ -50,4 +50,4 @@ const Content = () => (
   </div>
 );
 
-export default sizeMe({ monitorHeight: true })(Content);
+export default sizeMe({ monitorHeight: true, noPlaceholder: true })(Content);
