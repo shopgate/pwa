@@ -4,6 +4,7 @@ import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchC
 import fetchCategoryProducts from '@shopgate/pwa-common-commerce/category/actions/fetchCategoryProducts';
 import { getCategoryName } from '@shopgate/pwa-common-commerce/category/selectors';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
+import { } from '@shopgate/pwa-common-commerce/filter/constants';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { categoryError$ } from '@shopgate/pwa-common-commerce/category/streams';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
@@ -20,10 +21,13 @@ import {
 export default function category(subscribe) {
   subscribe(categoryWillEnter$, ({ dispatch, action, getState }) => {
     let { title } = action.route.state;
+    const { filters = null } = action.route.state;
     const categoryId = hex2bin(action.route.params.categoryId);
 
     dispatch(fetchCategory(categoryId));
-    dispatch(fetchCategoryProducts(categoryId));
+    dispatch(fetchCategoryProducts({
+      categoryId, filters,
+    }));
 
     // If a title didn't come in then try to lookup the category and grab its name.
     if (!title) {
@@ -35,8 +39,9 @@ export default function category(subscribe) {
     }
   });
 
-  subscribe(categoryDidEnter$, ({ dispatch }) => {
+  subscribe(categoryDidEnter$, ({ dispatch, events }) => {
     dispatch(getFilters());
+    // event.addListener();
   });
 
   subscribe(receivedVisibleCategory$, ({ dispatch, action }) => {
