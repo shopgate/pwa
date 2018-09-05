@@ -5,25 +5,23 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 
 /**
- * Component that hides children when the keyboard appears.
+ * Keyboard state consumer.
  */
-class KeyboardVisibility extends PureComponent {
+class KeyboardConsumer extends PureComponent {
   static propTypes = {
-    children: PropTypes.node.isRequired,
-    behavior: PropTypes.oneOf(['hide', 'show']),
+    children: PropTypes.func.isRequired,
   }
-
-  static defaultProps = {
-    behavior: 'hide',
-  }
-
   /**
    * Initializes the state.
    * @param {Object} props The components props.
    */
   constructor(props) {
     super(props);
-    this.state = { isVisible: false };
+    this.state = {
+      open: false,
+      overlap: 0,
+      duration: 0,
+    };
     registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
   }
 
@@ -42,10 +40,10 @@ class KeyboardVisibility extends PureComponent {
   }
 
   /**
-   * Stores current keyboard visibility state.
+   * Stores current keyboard state.
    */
-  handleKeyboardChange = ({ open }) => {
-    this.setState({ isVisible: open });
+  handleKeyboardChange = ({ open, overlap, duration }) => {
+    this.setState({ open, overlap, duration });
   }
 
   /**
@@ -53,11 +51,8 @@ class KeyboardVisibility extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (this.props.behavior === 'hide') {
-      return !this.state.isVisible ? this.props.children : null;
-    }
-    return this.state.isVisible ? this.props.children : null;
+    return this.props.children(this.state);
   }
 }
 
-export default KeyboardVisibility;
+export default KeyboardConsumer;
