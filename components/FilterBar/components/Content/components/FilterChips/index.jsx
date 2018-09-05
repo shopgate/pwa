@@ -31,15 +31,29 @@ class FilterChips extends Component {
   /**
    * Removes the given filter id from the route state.
    * @param {string} id The id of the filter to remove.
-   * @param {number} index The index of the value to remove (multiselect).
+   * @param {number} value The value to remove (multiselect).
    */
-  handleRemove = (id, index = null) => {
+  handleRemove = (id, value) => {
     const { filters, routeId } = this.props;
-    const { [id]: filterId, ...rest } = filters;
+    const { [id]: selected, ...rest } = filters;
 
-    if (filters[id].type === FILTER_TYPE_MULTISELECT) {
+    if (selected.type === FILTER_TYPE_MULTISELECT) {
       // Check for one key, just remove all in that case
-      // remove index from key, if it exists
+      if (selected.value.length > 1) {
+        // Remove the index from the selected filter.
+        const newSelected = {
+          ...selected,
+          value: selected.value.filter(entry => entry !== value),
+        };
+
+        const newFilters = {
+          ...filters,
+          [id]: newSelected,
+        };
+
+        conductor.update(routeId, { filters: newFilters });
+        return;
+      }
     }
 
     const newFilters = (Object.keys(rest).length) ? rest : null;
@@ -87,11 +101,11 @@ class FilterChips extends Component {
           break;
         }
         case FILTER_TYPE_MULTISELECT:
-          filter.value.forEach((value, index) => chips.push((
+          filter.value.forEach(value => chips.push((
             <Chip
-              id={filter.id}
-              key={`filter-${key}`}
-              onRemove={id => this.handleRemove(id, index)}
+              id={value}
+              key={`filter-${value}`}
+              onRemove={() => this.handleRemove(filter.id, value)}
               onClick={openFilters}
             >
               {`${filter.label}: ${value}`}

@@ -105,7 +105,9 @@ class FilterContent extends Component {
     }
 
     this.add(id, {
+      id,
       type: filter.type,
+      label: filter.label,
       value,
     });
   }

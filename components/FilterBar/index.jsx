@@ -165,21 +165,23 @@ class FilterBar extends Component {
     );
 
     return (
-      <Transition in={this.state.visible} timeout={200}>
-        {state => (
-          <div
-            className={classes}
-            data-test-id="filterBar"
-            ref={this.node}
-            style={{
-              ...this.style,
-              ...transition[state],
-            }}
-          >
-            <Content />
-          </div>
-        )}
-      </Transition>
+      <section className={styles.container}>
+        <Transition in={this.state.visible} timeout={200}>
+          {state => (
+            <div
+              className={classes}
+              data-test-id="filterBar"
+              ref={this.node}
+              style={{
+                ...this.style,
+                ...transition[state],
+              }}
+            >
+              <Content />
+            </div>
+          )}
+        </Transition>
+      </section>
     );
   }
 }
