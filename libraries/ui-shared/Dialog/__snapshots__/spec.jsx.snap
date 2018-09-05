@@ -36,7 +36,7 @@ exports[`<Dialog /> should render a special dialog 1`] = `
       Object {
         "errorCode": "",
         "message": "",
-        "pipelineName": "",
+        "pipeline": "",
         "request": Object {},
       }
     }
@@ -55,7 +55,7 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
     onClick={[Function]}
     opacity={50}
   />
-  <Connect(VariantSelectModal)
+  <VariantSelectModal
     actions={Array []}
     message="Test"
     params={

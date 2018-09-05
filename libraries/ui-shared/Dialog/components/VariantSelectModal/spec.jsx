@@ -1,19 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import VariantSelectModal from './index';
+import { UnwrappedVariantSelectModal as VariantSelectModal } from './index';
 
 const message = 'This is the message.';
 const title = 'This is the title.';
-const mockOpen = jest.fn();
-
-jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (
-  class {
-    open = mockOpen;
-  }));
 
 describe('<VariantSelectModal />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(<VariantSelectModal message={message} actions={[]} />);
+    const wrapper = shallow(<VariantSelectModal
+      message={message}
+      actions={[]}
+      navigate={() => {}}
+    />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.html()).toMatch(message);
@@ -21,6 +19,7 @@ describe('<VariantSelectModal />', () => {
 
   it('should render the actions', () => {
     const mockConfirm = jest.fn();
+    const mockNavigate = jest.fn();
     /**
      * Mocks named function
      */
@@ -44,8 +43,9 @@ describe('<VariantSelectModal />', () => {
     const mockedProps = {
       message,
       title,
-      actions: [...actions],
       params,
+      actions: [...actions],
+      navigate: mockNavigate,
     };
 
     const wrapper = shallow(<VariantSelectModal {...mockedProps} />);
@@ -57,6 +57,6 @@ describe('<VariantSelectModal />', () => {
 
     last.action();
     expect(mockConfirm).toHaveBeenCalledTimes(1);
-    expect(mockOpen).toHaveBeenCalledTimes(1);
+    expect(mockNavigate).toHaveBeenCalledTimes(1);
   });
 });
