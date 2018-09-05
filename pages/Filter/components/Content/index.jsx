@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import conductor from '@virtuous/conductor';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import * as portals from '@shopgate/pwa-common-commerce/filter/constants/Portals';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import { PORTAL_NAVIGATOR_BUTTON } from 'Components/Navigator/constants';
 import PriceSlider from './components/PriceSlider';
@@ -162,18 +164,25 @@ class FilterContent extends Component {
     return (
       <Fragment>
         {filters.map((filter) => {
+          const portalProps = { filter };
           const value = this.getFilterValue(filter.id);
 
           if (filter.type === FILTER_TYPE_RANGE) {
             return (
-              <PriceSlider
-                id={filter.id}
-                key={filter.id}
-                min={filter.minimum}
-                max={filter.maximum}
-                onChange={this.updateDebounced}
-                value={value}
-              />
+              <Fragment>
+                <Portal name={portals.FILTER_PRICE_RANGE_BEFORE} props={portalProps} />
+                <Portal name={portals.FILTER_PRICE_RANGE} props={portalProps}>
+                  <PriceSlider
+                    id={filter.id}
+                    key={filter.id}
+                    min={filter.minimum}
+                    max={filter.maximum}
+                    onChange={this.updateDebounced}
+                    value={value}
+                  />
+                </Portal>
+                <Portal name={portals.FILTER_PRICE_RANGE_AFTER} props={portalProps} />
+              </Fragment>
             );
           }
 
