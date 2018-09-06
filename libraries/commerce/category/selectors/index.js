@@ -62,8 +62,13 @@ export const getRootCategories = createSelector(
  * @returns {string|null} The category ID.
  */
 export const getCurrentCategoryId = createSelector(
+  (state, props = {}) => props.categoryId,
   getCurrentParams,
-  (params) => {
+  (categoryId, params) => {
+    if (typeof categoryId !== 'undefined') {
+      return categoryId;
+    }
+
     if (!params || !params.categoryId) {
       return null;
     }
