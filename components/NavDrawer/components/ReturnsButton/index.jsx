@@ -9,7 +9,7 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import consume from '../../consumer';
+import connect from '../../connector';
 
 const LABEL = 'navigation.return_policy';
 const PAYMENT_PATH = `${PAGE_PATH}/return_policy`;
@@ -36,4 +36,4 @@ ReturnsButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default consume(ReturnsButton);
+export default connect(ReturnsButton);

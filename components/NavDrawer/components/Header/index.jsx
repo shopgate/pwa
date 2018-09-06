@@ -5,7 +5,7 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
 import colors from 'Styles/colors';
-import consume from './consumer';
+import connect from './connector';
 import styles from './style';
 
 const enhance = onlyUpdateForKeys(['email']);
@@ -53,4 +53,4 @@ NavDrawerHeader.defaultProps = {
   name: null,
 };
 
-export default consume(enhance(NavDrawerHeader));
+export default connect(enhance(NavDrawerHeader));

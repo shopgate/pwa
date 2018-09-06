@@ -9,7 +9,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import consume from '../../consumer';
+import connect from '../../connector';
 import Badge from './components/Badge';
 
 const LABEL = 'navigation.cart';
@@ -37,4 +37,4 @@ CartButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default consume(CartButton);
+export default connect(CartButton);

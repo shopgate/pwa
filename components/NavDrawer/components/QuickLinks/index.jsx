@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import consume from './consumer';
+import connect from './connector';
 
 /**
  * @param {Array} props.links An array of quicklinks.
@@ -22,4 +22,4 @@ const QuickLinks = ({ links, navigate }) => (
   )
 );
 
-export default consume(QuickLinks);
+export default connect(QuickLinks);

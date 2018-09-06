@@ -10,7 +10,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import Badge from './components/Badge';
-import consume from '../../consumer';
+import connect from '../../connector';
 
 const LABEL = 'navigation.favorites';
 
@@ -37,4 +37,4 @@ FavoritesButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default consume(FavoritesButton);
+export default connect(FavoritesButton);

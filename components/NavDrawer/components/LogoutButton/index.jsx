@@ -9,7 +9,7 @@ import {
 import Portal from '@shopgate/pwa-common/components/Portal';
 import LogoutIcon from '@shopgate/pwa-ui-shared/icons/LogoutIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import consume from './consumer';
+import connect from './connector';
 
 const enhance = onlyUpdateForKeys(['loggedIn']);
 
@@ -38,4 +38,4 @@ LogoutButton.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-export default consume(enhance(LogoutButton));
+export default connect(enhance(LogoutButton));

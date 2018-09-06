@@ -9,7 +9,7 @@ import { PAGE_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import DescriptionIcon from '@shopgate/pwa-ui-shared/icons/DescriptionIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import consume from '../../consumer';
+import connect from '../../connector';
 
 const LABEL = 'navigation.terms';
 const PAYMENT_PATH = `${PAGE_PATH}/terms`;
@@ -36,4 +36,4 @@ TermsButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default consume(TermsButton);
+export default connect(TermsButton);

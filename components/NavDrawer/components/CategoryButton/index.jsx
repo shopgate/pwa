@@ -9,7 +9,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import ViewListIcon from '@shopgate/pwa-ui-shared/icons/ViewListIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import consume from '../../consumer';
+import connect from '../../connector';
 
 const LABEL = 'navigation.categories';
 
@@ -35,4 +35,4 @@ CategoryButton.propTypes = {
   navigate: PropTypes.func.isRequired,
 };
 
-export default consume(CategoryButton);
+export default connect(CategoryButton);
