@@ -3,13 +3,14 @@ import { shallow, mount } from 'enzyme';
 import Image from '../../components/Image';
 import ZoomPanContainer from './index';
 
+jest.mock('@shopgate/react-hammerjs/src/Hammer', () => ({ children }) => children);
 /**
  * Test element component.
  * @returns {JSX}
  */
 const TestElement = () => <Image src="http://placekitten.com/300/300" />;
 
-describe.skip('<ZoomPanContainer />', () => {
+describe('<ZoomPanContainer />', () => {
   it('renders with children', () => {
     const numChildren = 5;
     const Component = (
