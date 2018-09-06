@@ -13,7 +13,7 @@ const createComponent = (state = defaultState) => {
   // eslint-disable-next-line global-require
   const NavButton = require('./index').default;
   store = mockedStore(state);
-  return mount(<NavButton store={store} />);
+  return mount(<NavButton store={store} pattern="/some-route" />);
 };
 
 describe('NavButton', () => {

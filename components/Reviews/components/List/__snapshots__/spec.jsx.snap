@@ -13,6 +13,7 @@ exports[`<List /> should render list with reviews 1`] = `
       Object {
         "author": "",
         "date": "2017-09-06T12:38:51.000Z",
+        "id": "a",
         "rate": 100,
         "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
         "title": "",
@@ -20,6 +21,7 @@ exports[`<List /> should render list with reviews 1`] = `
       Object {
         "author": "username123",
         "date": "2017-09-06T12:37:40.000Z",
+        "id": "b",
         "rate": 40,
         "review": "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.",
         "title": "Test review 2 ",
@@ -27,6 +29,7 @@ exports[`<List /> should render list with reviews 1`] = `
       Object {
         "author": "Carina Hoffmann",
         "date": "2017-09-06T12:30:23.000Z",
+        "id": "c",
         "rate": 60,
         "review": "Test review",
         "title": "",
@@ -34,6 +37,7 @@ exports[`<List /> should render list with reviews 1`] = `
       Object {
         "author": "",
         "date": "2017-09-06T12:30:23.000Z",
+        "id": "d",
         "rate": 20,
         "review": "",
         "title": "",
@@ -42,10 +46,12 @@ exports[`<List /> should render list with reviews 1`] = `
   }
 >
   <Review
+    key="a"
     review={
       Object {
         "author": "",
         "date": "2017-09-06T12:38:51.000Z",
+        "id": "a",
         "rate": 100,
         "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
         "title": "",
@@ -467,6 +473,7 @@ exports[`<List /> should render list with reviews 1`] = `
           Object {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
+            "id": "a",
             "rate": 100,
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
@@ -497,10 +504,12 @@ exports[`<List /> should render list with reviews 1`] = `
     </div>
   </Review>
   <Review
+    key="b"
     review={
       Object {
         "author": "username123",
         "date": "2017-09-06T12:37:40.000Z",
+        "id": "b",
         "rate": 40,
         "review": "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.",
         "title": "Test review 2 ",
@@ -816,6 +825,7 @@ exports[`<List /> should render list with reviews 1`] = `
           Object {
             "author": "username123",
             "date": "2017-09-06T12:37:40.000Z",
+            "id": "b",
             "rate": 40,
             "review": "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "Test review 2 ",
@@ -862,10 +872,12 @@ exports[`<List /> should render list with reviews 1`] = `
     </div>
   </Review>
   <Review
+    key="c"
     review={
       Object {
         "author": "Carina Hoffmann",
         "date": "2017-09-06T12:30:23.000Z",
+        "id": "c",
         "rate": 60,
         "review": "Test review",
         "title": "",
@@ -1215,6 +1227,7 @@ exports[`<List /> should render list with reviews 1`] = `
           Object {
             "author": "Carina Hoffmann",
             "date": "2017-09-06T12:30:23.000Z",
+            "id": "c",
             "rate": 60,
             "review": "Test review",
             "title": "",
@@ -1261,10 +1274,12 @@ exports[`<List /> should render list with reviews 1`] = `
     </div>
   </Review>
   <Review
+    key="d"
     review={
       Object {
         "author": "",
         "date": "2017-09-06T12:30:23.000Z",
+        "id": "d",
         "rate": 20,
         "review": "",
         "title": "",
@@ -1536,6 +1551,7 @@ exports[`<List /> should render list with reviews 1`] = `
           Object {
             "author": "",
             "date": "2017-09-06T12:30:23.000Z",
+            "id": "d",
             "rate": 20,
             "review": "",
             "title": "",

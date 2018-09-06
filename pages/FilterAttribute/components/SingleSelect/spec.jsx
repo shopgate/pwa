@@ -7,7 +7,7 @@ jest.mock('Components/View', () => mockedView);
 
 jest.mock('../ClearButton/connector.js', () => Component => Component);
 
-describe('FilterAttribute: SingleSelect', () => {
+describe.skip('FilterAttribute: SingleSelect', () => {
   const defaultProps = {
     mergeTemporaryFilters: jest.fn(),
     removeTemporaryFilter: jest.fn(),

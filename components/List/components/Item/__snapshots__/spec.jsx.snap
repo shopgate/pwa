@@ -33,41 +33,15 @@ exports[`<List.Item /> should render with a link 1`] = `
         style={Object {}}
       />
       <Link
-        className=""
-        disabled={false}
         href="url/to/somewhere"
         onClick={null}
+        state={
+          Object {
+            "title": "My Title",
+          }
+        }
       >
-        <div
-          aria-hidden={true}
-          className="css-c6ki83 "
-          data-test-id="link: url/to/somewhere"
-          onClick={[Function]}
-          role="link"
-        >
-          <Grid
-            className="css-1qcr7hz"
-            component="div"
-            wrap={false}
-          >
-            <div
-              className="css-1qcr7hz css-h7r55a"
-            >
-              <GridItem
-                className="css-10fxwvh"
-                component="div"
-                grow={1}
-                shrink={1}
-              >
-                <div
-                  className="css-10fxwvh css-1gs0ko2"
-                >
-                  My Title
-                </div>
-              </GridItem>
-            </div>
-          </Grid>
-        </div>
+        <div />
       </Link>
     </div>
   </Glow>

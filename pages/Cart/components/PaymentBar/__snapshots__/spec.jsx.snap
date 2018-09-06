@@ -234,14 +234,14 @@ exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/checkout"
-                                        navigate={[Function]}
                                         replace={false}
                                         state={Object {}}
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"
@@ -574,14 +574,14 @@ exports[`<PaymentBar /> should disable the component, if the isDisabled prop is 
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/checkout"
-                                        navigate={[Function]}
                                         replace={false}
                                         state={Object {}}
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"
@@ -976,14 +976,14 @@ exports[`<PaymentBar /> should render without any props 1`] = `
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/checkout"
-                                        navigate={[Function]}
                                         replace={false}
                                         state={Object {}}
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"
@@ -1315,14 +1315,14 @@ exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/checkout"
-                                        navigate={[Function]}
                                         replace={false}
                                         state={Object {}}
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"
@@ -1654,14 +1654,14 @@ exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/checkout"
-                                        navigate={[Function]}
                                         replace={false}
                                         state={Object {}}
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"

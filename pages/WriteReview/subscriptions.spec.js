@@ -31,9 +31,14 @@ const mockedStore = configureStore([thunk]);
 jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
 
 const mockedResolver = jest.fn();
-jest.doMock('@shopgate/pwa-core/classes/PipelineRequest', mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
-  mockedResolver(mockInstance, resolve, reject);
-}));
+jest.mock(
+  '@shopgate/pwa-core/classes/PipelineRequest',
+  () => (
+    mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
+      mockedResolver(mockInstance, resolve, reject);
+    })
+  )
+);
 
 const router = {
   routing: false,
@@ -100,9 +105,11 @@ describe('Reviews subscriptions', () => {
     subscribeMock = jest.fn();
     getCurrentRoute.mockReturnValue({ ...writeReviewRouteMock });
   });
-  it('should subscribe', () => {
+
+  beforeEach(() => {
+    jest.clearAllMocks();
     subscribe(subscribeMock);
-    expect(subscribeMock.mock.calls.length).toBe(6);
+
     [
       productEnter,
       reviewsEnter,
@@ -111,6 +118,10 @@ describe('Reviews subscriptions', () => {
       submitSuccess,
       userLogout,
     ] = subscribeMock.mock.calls;
+  });
+
+  it('should subscribe', () => {
+    expect(subscribeMock.mock.calls.length).toBe(6);
     expect(productEnter[0]).toBe(productRoutesWillEnter$);
     expect(reviewsEnter[0]).toBe(reviewsRouteWillEnter$);
     expect(submitReview[0]).toBe(requestReviewSubmit$);

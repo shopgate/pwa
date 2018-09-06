@@ -59,7 +59,7 @@ beforeEach(() => {
   jest.resetModules();
 });
 
-describe('<Filter> page', () => {
+describe.skip('<Filter> page', () => {
   it('should render', () => {
     const component = createComponent(mockedState);
     expect(component.find('Filter').exists()).toBe(true);

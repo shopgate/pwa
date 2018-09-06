@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import { ACTION_POP, ACTION_PUSH } from '@virtuous/conductor/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
@@ -10,8 +9,7 @@ import { NAVIGATE } from '@shopgate/pwa-common/constants/ActionTypes';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { emptyState, cartState, couponState } from '@shopgate/pwa-common-commerce/cart/mock';
 
-const mockedView = MockedView;
-jest.mock('Components/View', () => mockedView);
+jest.mock('Components/View');
 
 let store;
 

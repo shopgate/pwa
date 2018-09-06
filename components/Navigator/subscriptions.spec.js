@@ -1,8 +1,8 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { routeDidChange$ } from '@shopgate/pwa-common/streams';
+import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
 import subscribe, {
-  searchRouteDidEnter$,
   cartFilterRoutesDidEnter$,
   cartFilterRoutesDidLeave$,
 } from './subscriptions';
@@ -61,7 +61,7 @@ describe('Navigator subscriptions', () => {
     expect(subscribeMock.mock.calls.length).toBe(4);
     [routeEnter, searchEnter, cartFilterLeave, cartFilterEnter] = subscribeMock.mock.calls;
     expect(routeEnter[0]).toBe(routeDidChange$);
-    expect(searchEnter[0]).toBe(searchRouteDidEnter$);
+    expect(searchEnter[0]).toBe(searchDidEnter$);
     expect(cartFilterLeave[0]).toBe(cartFilterRoutesDidLeave$);
     expect(cartFilterEnter[0]).toBe(cartFilterRoutesDidEnter$);
   });
@@ -89,6 +89,7 @@ describe('Navigator subscriptions', () => {
       expect(actions).toEqual(results[0]);
     });
   });
+
   describe('searchRouteDidEnter$', () => {
     it('should set search phrase', () => {
       store = mockedStore(defaultState);
@@ -96,6 +97,7 @@ describe('Navigator subscriptions', () => {
       const actions = store.getActions();
       expect(actions).toEqual(results[1]);
     });
+
     it('should not set search phrase', () => {
       const mockedState = {
         ...defaultState,
@@ -111,6 +113,7 @@ describe('Navigator subscriptions', () => {
       expect(actions[0]).toBe(undefined);
     });
   });
+
   describe('cartFilterRoutesDidLeave$', () => {
     it('should show cart icon and enable search', () => {
       const state = {
@@ -134,6 +137,7 @@ describe('Navigator subscriptions', () => {
       expect(actions).toEqual(results[2]);
     });
   });
+
   describe('cartFilterRoutesDidEnter$', () => {
     it('should hide cart icon and disable search', () => {
       const state = {

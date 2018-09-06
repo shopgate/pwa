@@ -7,10 +7,8 @@ import { basicProductState } from '@shopgate/pwa-common-commerce/product/mock';
 import { categoryState, childCategoryRouteMock, routerState, emptyState } from '@shopgate/pwa-common-commerce/category/mock';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { MockedView } from 'Components/View/mock';
 
-const mockedView = MockedView;
-jest.mock('Components/View', () => mockedView);
+jest.mock('Components/View');
 
 const mockedResolver = jest.fn();
 jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
@@ -61,9 +59,11 @@ const mockedState = {
 const results = [
   [{
     type: 'NAVIGATE',
-    action: 'PUSH',
-    location: '/category/74657374',
-    state: { title: 'test' },
+    params: {
+      action: 'PUSH',
+      pathname: '/category/74657374',
+      state: { title: 'test' },
+    },
   }],
 ];
 /**
@@ -88,6 +88,7 @@ describe('<Category> page', () => {
   beforeEach(() => {
     jest.resetModules();
   });
+
   it('should render', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('ProductGrid').length).toEqual(1);

@@ -36,10 +36,13 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       <Card
         className=""
       >
-        <Link
-          className=""
-          disabled={false}
+        <Connect(Link)
           href="/item/31323334"
+          state={
+            Object {
+              "title": "First product",
+            }
+          }
         >
           <Grid
             className=""
@@ -125,7 +128,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               </Grid>
             </GridItem>
           </Grid>
-        </Link>
+        </Connect(Link)>
       </Card>
     </div>
     <div
@@ -136,10 +139,13 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       <Card
         className=""
       >
-        <Link
-          className=""
-          disabled={false}
+        <Connect(Link)
           href="/item/31323335"
+          state={
+            Object {
+              "title": "Second product",
+            }
+          }
         >
           <Grid
             className=""
@@ -225,7 +231,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
               </Grid>
             </GridItem>
           </Grid>
-        </Link>
+        </Connect(Link)>
       </Card>
     </div>
   </ImageSlider>
@@ -266,10 +272,13 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
       <Card
         className=""
       >
-        <Link
-          className=""
-          disabled={false}
+        <Connect(Link)
           href="/item/31323334"
+          state={
+            Object {
+              "title": "First product",
+            }
+          }
         >
           <Grid
             className=""
@@ -355,7 +364,7 @@ exports[`<LiveshoppingWidget /> should render the widget with no slider for one 
               </Grid>
             </GridItem>
           </Grid>
-        </Link>
+        </Connect(Link)>
       </Card>
     </div>
   </ImageSlider>
