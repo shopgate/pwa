@@ -13,12 +13,8 @@ exports[`<ProductHeader> should render 1`] = `
     }
   }
 >
-  <pure(ProductHeader)
-    productId="913"
-  >
-    <ProductHeader
-      productId="913"
-    >
+  <pure(ProductHeader)>
+    <ProductHeader>
       <Consumer>
         <div
           className="css-he61ou"
@@ -32,12 +28,12 @@ exports[`<ProductHeader> should render 1`] = `
             props={null}
           >
             <Connect(CTAButtons)
-              productId={null}
+              productId="913"
             >
               <CTAButtons
                 dispatch={[Function]}
                 isFavorite={false}
-                productId={null}
+                productId="913"
               >
                 <div
                   className="css-7azkrx"
@@ -45,7 +41,7 @@ exports[`<ProductHeader> should render 1`] = `
                   <Connect(FavoritesButton)
                     active={false}
                     className="css-13l587d"
-                    productId={null}
+                    productId="913"
                     rippleClassName="css-1tdptiz"
                   >
                     <FavoritesButton
@@ -55,16 +51,14 @@ exports[`<ProductHeader> should render 1`] = `
                       noShadow={false}
                       onRippleComplete={[Function]}
                       once={false}
-                      productId={null}
+                      productId="913"
                       removeFavorites={[Function]}
                       removeThrottle={0}
                       removeWithRelatives={false}
                       rippleClassName="css-1tdptiz"
                     />
                   </Connect(FavoritesButton)>
-                  <Component
-                    productId={null}
-                  >
+                  <Component>
                     <Consumer>
                       <Connect(CartButton)
                         conditioner={
@@ -73,7 +67,7 @@ exports[`<ProductHeader> should render 1`] = `
                           }
                         }
                         options={Object {}}
-                        productId={null}
+                        productId="913"
                       >
                         <CartButton
                           addToCart={[Function]}
@@ -82,14 +76,15 @@ exports[`<ProductHeader> should render 1`] = `
                               "conditioners": Map {},
                             }
                           }
-                          disabled={true}
-                          loading={true}
+                          disabled={false}
+                          loading={false}
                           options={Object {}}
-                          productId={null}
+                          productId="913"
                         >
                           <FloatingActionButton
                             background="#fa5400"
                             className="css-mp6sl7"
+                            disabled={false}
                             onClick={[Function]}
                             raised={true}
                             ref={null}
@@ -98,6 +93,7 @@ exports[`<ProductHeader> should render 1`] = `
                           >
                             <button
                               className="css-1dbx872 css-mp6sl7 css-1kx79ob css-1g5n8t6"
+                              disabled={false}
                               onClick={[Function]}
                               style={
                                 Object {
@@ -106,27 +102,93 @@ exports[`<ProductHeader> should render 1`] = `
                               }
                               type="button"
                             >
-                              <IndicatorCircle
-                                color="#fff"
-                                paused={false}
-                                size={32}
-                                strokeWidth={4}
+                              <CartButtonIcon
+                                onSuccess={[Function]}
+                                success={false}
                               >
-                                <svg
-                                  className="css-12jxe4c"
-                                  height={32}
-                                  viewBox="25 25 50 50"
-                                  width={32}
-                                  xmlns="http://www.w3.org/2000/svg"
+                                <Transition
+                                  appear={false}
+                                  enter={true}
+                                  exit={true}
+                                  in={false}
+                                  mountOnEnter={false}
+                                  onEnter={[Function]}
+                                  onEntered={[Function]}
+                                  onEntering={[Function]}
+                                  onExit={[Function]}
+                                  onExited={[Function]}
+                                  onExiting={[Function]}
+                                  timeout={800}
+                                  unmountOnExit={false}
                                 >
-                                  <circle
-                                    className="css-1srioz5"
-                                    cx="50"
-                                    cy="50"
-                                    r="20"
-                                  />
-                                </svg>
-                              </IndicatorCircle>
+                                  <div
+                                    className={
+                                      Object {
+                                        "data-css-1h3cr19": "",
+                                      }
+                                    }
+                                  >
+                                    <CartPlus
+                                      className="css-b18rpa"
+                                      size={24}
+                                    >
+                                      <Icon
+                                        className="css-b18rpa"
+                                        color={null}
+                                        content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+                                        size={24}
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <svg
+                                          className="css-yys9hb css-b18rpa"
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "fill": null,
+                                              "fontSize": 24,
+                                            }
+                                          }
+                                          viewBox="0 0 24 24"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </Icon>
+                                    </CartPlus>
+                                    <Tick
+                                      className="css-v74gh2"
+                                      size={24}
+                                    >
+                                      <Icon
+                                        className="css-v74gh2"
+                                        color={null}
+                                        content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+                                        size={24}
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <svg
+                                          className="css-yys9hb css-v74gh2"
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "fill": null,
+                                              "fontSize": 24,
+                                            }
+                                          }
+                                          viewBox="0 0 24 24"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </Icon>
+                                    </Tick>
+                                  </div>
+                                </Transition>
+                              </CartButtonIcon>
                             </button>
                           </FloatingActionButton>
                         </CartButton>
@@ -150,12 +212,18 @@ exports[`<ProductHeader> should render 1`] = `
             props={null}
           >
             <Connect(Rating)
-              productId={null}
+              productId="913"
             >
               <Rating
                 dispatch={[Function]}
-                productId={null}
-                rating={null}
+                productId="913"
+                rating={
+                  Object {
+                    "average": 0,
+                    "count": 0,
+                    "reviewCount": 0,
+                  }
+                }
               />
             </Connect(Rating)>
           </Portal>
@@ -172,25 +240,26 @@ exports[`<ProductHeader> should render 1`] = `
             props={null}
           >
             <Connect(Name)
-              productId={null}
+              productId="913"
             >
               <Name
                 dispatch={[Function]}
-                name={null}
-                productId={null}
+                name="This is a product with a very very long name -5-"
+                productId="913"
               >
                 <div
                   className="css-19910ke"
                 >
                   <PlaceholderLabel
                     className="css-3bon8p"
-                    ready={false}
+                    ready={true}
                     style={null}
                   >
-                    <div
-                      className="css-qd8qpa css-3bon8p"
-                      style={null}
-                    />
+                    <span
+                      data-test-id="name: This is a product with a very very long name -5-"
+                    >
+                      This is a product with a very very long name -5-
+                    </span>
                   </PlaceholderLabel>
                 </div>
               </Name>
@@ -241,26 +310,30 @@ exports[`<ProductHeader> should render 1`] = `
                           props={null}
                         >
                           <Connect(Manufacturer)
-                            productId={null}
+                            productId="913"
                           >
                             <Manufacturer
                               dispatch={[Function]}
-                              manufacturer={null}
-                              productId={null}
+                              manufacturer=""
+                              productId="913"
                             >
                               <div
                                 className="css-s3s3r0"
-                                data-test-id="manufacturer: null"
+                                data-test-id="manufacturer: "
                               >
                                 <PlaceholderLabel
                                   className="css-1n196ny"
-                                  ready={false}
+                                  ready={true}
                                   style={null}
                                 >
-                                  <div
-                                    className="css-qd8qpa css-1n196ny"
-                                    style={null}
-                                  />
+                                  <Manufacturer
+                                    className=""
+                                    text=""
+                                  >
+                                    <div
+                                      className="css-1ncyhu "
+                                    />
+                                  </Manufacturer>
                                 </PlaceholderLabel>
                               </div>
                             </Manufacturer>
@@ -283,22 +356,58 @@ exports[`<ProductHeader> should render 1`] = `
                           props={null}
                         >
                           <Connect(Shipping)
-                            productId={null}
+                            productId="913"
                           >
                             <Shipping
                               dispatch={[Function]}
-                              productId={null}
-                              shipping={null}
+                              productId="913"
+                              shipping={
+                                Object {
+                                  "currency": "USD",
+                                  "price": 3.5,
+                                }
+                              }
                             >
                               <PlaceholderLabel
                                 className="css-1n196ny"
-                                ready={false}
+                                ready={true}
                                 style={null}
                               >
-                                <div
-                                  className="css-qd8qpa css-1n196ny"
-                                  style={null}
-                                />
+                                <Label
+                                  className="css-117ocmm"
+                                  currency="USD"
+                                  price={3.5}
+                                >
+                                  <div
+                                    className="css-117ocmm css-1ixzglu"
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="shipping.cost"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        shipping.cost
+                                        <FormatPrice
+                                          className=""
+                                          currency="USD"
+                                          forKey="price"
+                                          fractions={true}
+                                          key=".0"
+                                          price={3.5}
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            p
+                                          </span>
+                                        </FormatPrice>
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Label>
                               </PlaceholderLabel>
                             </Shipping>
                           </Connect(Shipping)>
@@ -320,22 +429,36 @@ exports[`<ProductHeader> should render 1`] = `
                           props={null}
                         >
                           <Connect(Availability)
-                            productId={null}
+                            productId="913"
                           >
                             <Availability
-                              availability={null}
+                              availability={
+                                Object {
+                                  "state": "ok",
+                                  "text": "In stock",
+                                }
+                              }
                               dispatch={[Function]}
-                              productId={null}
+                              productId="913"
                             >
                               <PlaceholderLabel
                                 className="css-1n196ny"
-                                ready={false}
+                                ready={true}
                                 style={null}
                               >
-                                <div
-                                  className="css-qd8qpa css-1n196ny"
-                                  style={null}
-                                />
+                                <Availability
+                                  className="css-117ocmm"
+                                  showWhenAvailable={true}
+                                  state="ok"
+                                  text="In stock"
+                                >
+                                  <div
+                                    className="css-117ocmm css-1ixzglu"
+                                    data-test-id="availabilityText: In stock"
+                                  >
+                                    In stock
+                                  </div>
+                                </Availability>
                               </PlaceholderLabel>
                             </Availability>
                           </Connect(Availability)>
@@ -374,24 +497,35 @@ exports[`<ProductHeader> should render 1`] = `
                         >
                           <Connect(PriceStriked)
                             options={Object {}}
-                            productId={null}
+                            productId="913"
                           >
                             <PriceStriked
                               dispatch={[Function]}
                               options={Object {}}
-                              price={null}
-                              productId={null}
+                              price={
+                                Object {
+                                  "currency": "EUR",
+                                  "info": "",
+                                  "msrp": 0,
+                                  "taxAmount": 0,
+                                  "taxPercent": 0,
+                                  "tiers": Array [],
+                                  "totalPrice": 89,
+                                  "unitPrice": 89,
+                                  "unitPriceMax": 1000,
+                                  "unitPriceMin": 0,
+                                  "unitPriceNet": 89,
+                                  "unitPriceStriked": 0,
+                                  "unitPriceWithTax": 89,
+                                }
+                              }
+                              productId="913"
                             >
                               <PlaceholderLabel
                                 className="css-1n196ny"
-                                ready={false}
+                                ready={true}
                                 style={null}
-                              >
-                                <div
-                                  className="css-qd8qpa css-1n196ny"
-                                  style={null}
-                                />
-                              </PlaceholderLabel>
+                              />
                             </PriceStriked>
                           </Connect(PriceStriked)>
                         </Portal>
@@ -413,23 +547,62 @@ exports[`<ProductHeader> should render 1`] = `
                         >
                           <Connect(Price)
                             options={Object {}}
-                            productId={null}
+                            productId="913"
                           >
                             <Price
                               dispatch={[Function]}
                               options={Object {}}
-                              price={null}
-                              productId={null}
+                              price={
+                                Object {
+                                  "currency": "EUR",
+                                  "info": "",
+                                  "msrp": 0,
+                                  "taxAmount": 0,
+                                  "taxPercent": 0,
+                                  "tiers": Array [],
+                                  "totalPrice": 89,
+                                  "unitPrice": 89,
+                                  "unitPriceMax": 1000,
+                                  "unitPriceMin": 0,
+                                  "unitPriceNet": 89,
+                                  "unitPriceStriked": 0,
+                                  "unitPriceWithTax": 89,
+                                }
+                              }
+                              productId="913"
                             >
                               <PlaceholderLabel
                                 className="css-q720h0"
-                                ready={false}
+                                ready={true}
                                 style={null}
                               >
-                                <div
-                                  className="css-qd8qpa css-q720h0"
-                                  style={null}
-                                />
+                                <Price
+                                  className="css-1051jlf"
+                                  currency="EUR"
+                                  discounted={false}
+                                  fractions={true}
+                                  taxDisclaimer={true}
+                                  unitPrice={89}
+                                  unitPriceMin={0}
+                                >
+                                  <div
+                                    className="css-izofhs css-1051jlf"
+                                    data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="EUR"
+                                      fractions={true}
+                                      price={89}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        p
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </Price>
                               </PlaceholderLabel>
                             </Price>
                           </Connect(Price)>
@@ -452,24 +625,35 @@ exports[`<ProductHeader> should render 1`] = `
                         >
                           <Connect(PriceInfo)
                             options={Object {}}
-                            productId={null}
+                            productId="913"
                           >
                             <PriceInfo
                               dispatch={[Function]}
                               options={Object {}}
-                              price={null}
-                              productId={null}
+                              price={
+                                Object {
+                                  "currency": "EUR",
+                                  "info": "",
+                                  "msrp": 0,
+                                  "taxAmount": 0,
+                                  "taxPercent": 0,
+                                  "tiers": Array [],
+                                  "totalPrice": 89,
+                                  "unitPrice": 89,
+                                  "unitPriceMax": 1000,
+                                  "unitPriceMin": 0,
+                                  "unitPriceNet": 89,
+                                  "unitPriceStriked": 0,
+                                  "unitPriceWithTax": 89,
+                                }
+                              }
+                              productId="913"
                             >
                               <PlaceholderLabel
                                 className="css-q720h0"
-                                ready={false}
+                                ready={true}
                                 style={null}
-                              >
-                                <div
-                                  className="css-qd8qpa css-q720h0"
-                                  style={null}
-                                />
-                              </PlaceholderLabel>
+                              />
                             </PriceInfo>
                           </Connect(PriceInfo)>
                         </Portal>
@@ -491,13 +675,29 @@ exports[`<ProductHeader> should render 1`] = `
                         >
                           <Connect(Tiers)
                             options={Object {}}
-                            productId={null}
+                            productId="913"
                           >
                             <Tiers
                               dispatch={[Function]}
                               options={Object {}}
-                              price={null}
-                              productId={null}
+                              price={
+                                Object {
+                                  "currency": "EUR",
+                                  "info": "",
+                                  "msrp": 0,
+                                  "taxAmount": 0,
+                                  "taxPercent": 0,
+                                  "tiers": Array [],
+                                  "totalPrice": 89,
+                                  "unitPrice": 89,
+                                  "unitPriceMax": 1000,
+                                  "unitPriceMin": 0,
+                                  "unitPriceNet": 89,
+                                  "unitPriceStriked": 0,
+                                  "unitPriceWithTax": 89,
+                                }
+                              }
+                              productId="913"
                             />
                           </Connect(Tiers)>
                         </Portal>

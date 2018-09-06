@@ -29,18 +29,22 @@ describe('Favorites subscriptions', () => {
     [willEnter, willRemoveItem] = subscribeMock.mock.calls;
   });
 
-  it('should subscripe', () => {
+  it('should subscribe', () => {
     expect(subscribeMock).toHaveBeenCalledTimes(2);
-    expect(willEnter[0]).toBe(favoritesWillEnter$);
-    expect(willRemoveItem[0]).toBe(favoritesWillRemoveItem$);
   });
 
   describe('favoritesWillEnter$', () => {
+    let stream;
     let callback;
     const dispatch = jest.fn();
 
     beforeEach(() => {
-      [, callback] = willEnter;
+      [stream, callback] = willEnter;
+    });
+
+    it('should subscribe', () => {
+      expect(subscribeMock).toHaveBeenCalledTimes(2);
+      expect(stream).toBe(favoritesWillEnter$);
     });
 
     it('should set the title on enter', () => {
@@ -52,6 +56,7 @@ describe('Favorites subscriptions', () => {
   });
 
   describe('favoritesWillRemoveItem$', () => {
+    let stream;
     let callback;
 
     const action = { productId: 'abc123' };
@@ -61,7 +66,12 @@ describe('Favorites subscriptions', () => {
     };
 
     beforeEach(() => {
-      [, callback] = willRemoveItem;
+      [stream, callback] = willRemoveItem;
+    });
+
+    it('should subscribe', () => {
+      expect(subscribeMock).toHaveBeenCalledTimes(2);
+      expect(stream).toBe(favoritesWillRemoveItem$);
     });
 
     it('should do nothing when not on the favorites page', () => {

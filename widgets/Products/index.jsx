@@ -185,4 +185,4 @@ class ProductsWidget extends Component {
 
 export default connect(ProductsWidget);
 
-export { ProductsWidget as Unwrapped };
+export { ProductsWidget as UnwrappedProductsWidget };
