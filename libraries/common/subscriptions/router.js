@@ -3,11 +3,13 @@ import {
   ACTION_POP,
   ACTION_PUSH,
   ACTION_REPLACE,
+  ACTION_RESET,
 } from '@virtuous/conductor/constants';
-import { navigate } from '../action-creators/router';
+import { redirects } from '../collections';
+import { navigate } from '../action-creators';
+import { historyPop, historyReplace } from '../actions/router';
 import * as handler from './helpers/handleLinks';
-import { navigate$ } from '../streams/router';
-import { userDidLogin$ } from '../streams/user';
+import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
 
@@ -17,8 +19,28 @@ import appConfig from '../helpers/config';
  */
 export default function router(subscribe) {
   subscribe(navigate$, ({ action, dispatch, getState }) => {
-    const { action: historyAction, location, state: routeState } = action;
+    const { params: { action: historyAction, silent, state: routeState } } = action;
+
+    switch (historyAction) {
+      case ACTION_POP: {
+        conductor.pop();
+        return;
+      }
+      case ACTION_RESET: {
+        conductor.reset();
+        return;
+      }
+      default:
+        break;
+    }
+
     const state = getState();
+    let { pathname: location } = action.params;
+
+    // Remove trailing slashes from the location.
+    if (location && location.length > 1 && location.endsWith('/')) {
+      location = location.slice(0, -1);
+    }
 
     // Route authentication.
     if (!isUserLoggedIn(state)) {
@@ -27,10 +49,14 @@ export default function router(subscribe) {
 
       // If protected then navigate to the protector instead.
       if (protector) {
-        dispatch(navigate(historyAction, protector, {
-          redirect: {
-            location: action.location,
-            state: routeState,
+        dispatch(navigate({
+          action: historyAction,
+          pathname: protector,
+          state: {
+            redirect: {
+              location,
+              state: routeState,
+            },
           },
         }));
 
@@ -38,8 +64,21 @@ export default function router(subscribe) {
       }
     }
 
+    // Check for a redirect url and change location if one is found.
+    const redirect = redirects.get(location);
+
+    if (redirect) {
+      location = redirect;
+    }
+
+    // Override the location if is Shop link is found.
+    if (handler.isShopLink(location)) {
+      const { pathname, search } = new URL(location);
+      location = `${pathname}${search}`;
+    }
+
     // If there is one of the known protocols in the url.
-    if (handler.hasKnownProtocols(location)) {
+    if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
         handler.openExternalLink(location);
       } else if (handler.isNativeLink(location)) {
@@ -49,27 +88,23 @@ export default function router(subscribe) {
       return;
     }
 
-    if (handler.isLegacyPage(location)) {
+    if (location && handler.isLegacyPage(location)) {
       handler.openLegacy(location);
       return;
     }
 
-    if (handler.isLegacyLink(location)) {
+    if (location && handler.isLegacyLink(location)) {
       handler.openLegacyLink(location);
       return;
     }
 
     switch (historyAction) {
-      case ACTION_POP: {
-        conductor.pop();
-        break;
-      }
       case ACTION_PUSH: {
-        conductor.push(location, routeState);
+        conductor.push(location, routeState, silent);
         break;
       }
       case ACTION_REPLACE: {
-        conductor.replace(location, routeState);
+        conductor.replace(location, routeState, silent);
         break;
       }
       default:
@@ -87,7 +122,14 @@ export default function router(subscribe) {
   subscribe(redirectUser$, ({ action, dispatch }) => {
     if (appConfig.webCheckoutShopify === null) {
       const { location, state } = action.redirect;
-      dispatch(navigate(ACTION_REPLACE, location, state));
+      if (location) {
+        dispatch(historyReplace({
+          pathname: location,
+          state,
+        }));
+      } else {
+        dispatch(historyPop());
+      }
     }
   });
 }

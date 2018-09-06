@@ -1,21 +1,28 @@
-import event from '@shopgate/pwa-core/classes/Event';
-import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
-import closeInAppBrowser from '@shopgate/pwa-core/commands/closeInAppBrowser';
-import { emitter as errorEmitter } from '@shopgate/pwa-core/classes/ErrorManager';
+import {
+  event,
+  emitter as errorEmitter,
+  registerEvents,
+  closeInAppBrowser,
+  onload,
+} from '@shopgate/pwa-core';
 import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorManager/constants';
+import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
 import * as events from '@virtuous/conductor-events';
-import { navigate } from '../action-creators/router';
-import routeWillPush from '../actions/router/routeWillPush';
-import routeDidPush from '../actions/router/routeDidPush';
-import routeWillPop from '../actions/router/routeWillPop';
-import routeDidPop from '../actions/router/routeDidPop';
-import routeWillReplace from '../actions/router/routeWillReplace';
-import routeDidReplace from '../actions/router/routeDidReplace';
-import { appDidStart$, appWillStart$ } from '../streams/app';
-import { pipelineError$ } from '../streams/error';
+import { appError, pipelineError } from '../action-creators';
+import {
+  historyPush,
+  routeWillPush,
+  routeDidPush,
+  routeWillPop,
+  routeDidPop,
+  routeWillReplace,
+  routeDidReplace,
+  routeWillReset,
+  routeDidReset,
+} from '../actions/router';
+import { appDidStart$, appWillStart$, pipelineError$ } from '../streams';
 import registerLinkEvents from '../actions/app/registerLinkEvents';
 import showModal from '../actions/modal/showModal';
 import { isAndroid } from '../selectors/client';
@@ -24,7 +31,6 @@ import {
   showPreviousTab,
   pageContext,
 } from '../helpers/legacy';
-import { appError, pipelineError } from '../action-creators/error';
 
 /**
  * App subscriptions.
@@ -41,11 +47,14 @@ export default function app(subscribe) {
     events.onDidPop(() => dispatch(routeDidPop()));
     events.onWillReplace(id => dispatch(routeWillReplace(id)));
     events.onDidReplace(id => dispatch(routeDidReplace(id)));
+    events.onWillReset(id => dispatch(routeWillReset(id)));
+    events.onDidReset(id => dispatch(routeDidReset(id)));
 
     // Suppress errors globally
     pipelineManager.addSuppressedErrors([
       errorCodes.EACCESS,
       errorCodes.E999,
+      errorCodes.ENOTFOUND,
     ]);
 
     // Map the error events into the Observable streams.
@@ -77,7 +86,9 @@ export default function app(subscribe) {
      */
     event.addCallback('closeInAppBrowser', (data = {}) => {
       if (data.redirectTo) {
-        dispatch(navigate(ACTION_PUSH, data.redirectTo));
+        dispatch(historyPush({
+          pathname: data.redirectTo,
+        }));
       }
 
       closeInAppBrowser(isAndroid(getState()));
@@ -92,17 +103,32 @@ export default function app(subscribe) {
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
 
-    dispatch(navigate(ACTION_PUSH, action.location));
+    /*
+     * Onload must be send AFTER app did start.
+     * Interjections events (like openPushMessage) would not work if this command is sent
+     * before registering to interjections.
+     */
+    onload();
   });
 
   subscribe(pipelineError$, ({ dispatch, action }) => {
     const { error } = action;
+    const {
+      message, code, context, meta,
+    } = error;
 
     dispatch(showModal({
       confirm: 'modal.ok',
       dismiss: null,
-      message: error.message,
       title: null,
+      message,
+      type: MODAL_PIPELINE_ERROR,
+      params: {
+        pipeline: context,
+        request: meta.input,
+        message: meta.message,
+        code,
+      },
     }));
   });
 }

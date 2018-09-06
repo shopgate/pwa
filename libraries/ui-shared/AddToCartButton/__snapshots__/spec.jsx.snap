@@ -12,8 +12,8 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
   noShadow={false}
 >
   <button
-    className="null css-68omm3 css-31obrv"
-    data-test-id="AddToCartButton"
+    className="null css-68omm3 css-nil"
+    data-test-id="addToCartButton"
     onClick={[Function]}
   >
     <div
@@ -102,6 +102,12 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       "calls": Array [
         Array [],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
     }
   }
   hasLoading={false}
@@ -111,8 +117,8 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   noShadow={false}
 >
   <button
-    className="null css-68omm3 css-31obrv"
-    data-test-id="AddToCartButton"
+    className="null css-68omm3 css-nil"
+    data-test-id="addToCartButton"
     onClick={[Function]}
   >
     <div
@@ -201,6 +207,12 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       "calls": Array [
         Array [],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": Promise {},
+        },
+      ],
     }
   }
   hasLoading={false}
@@ -210,8 +222,8 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
   noShadow={false}
 >
   <button
-    className="null css-68omm3 css-1ncyhu"
-    data-test-id="AddToCartButton"
+    className="null css-68omm3 css-nil"
+    data-test-id="addToCartButton"
     onClick={[Function]}
   >
     <div

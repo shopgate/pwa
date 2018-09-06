@@ -19,7 +19,7 @@ const addProductToCart = data => (dispatch, getState) => {
   const state = getState();
   const pendingProductCount = getProductPendingCount(state);
   const options = getAddToCartOptions(state, data);
-  const metadata = getProductMetadata(state, data.productId);
+  const metadata = getProductMetadata(state, { productId: data.productId });
   const products = [
     {
       productId: data.productId,
@@ -30,17 +30,18 @@ const addProductToCart = data => (dispatch, getState) => {
   ];
 
   dispatch(addProductsToCart(products));
-  dispatch(setCartProductPendingCount(pendingProductCount + 1));
+  dispatch(setCartProductPendingCount(pendingProductCount + data.quantity));
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CART_ADD_PRODUCTS);
-  request.setInput({ products })
+
+  return request.setInput({ products })
     .setResponseProcessed(PROCESS_SEQUENTIAL)
     .setRetries(0)
     .dispatch()
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         /**
          * If the addProductsToCart request fails, the pipeline doesn't respond with an error,
          * but a messages array within the response payload. So by now we also have to dispatch

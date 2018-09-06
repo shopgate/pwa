@@ -4,96 +4,97 @@ import PropTypes from 'prop-types';
 import Swiper from 'react-id-swiper';
 import SliderItem from './components/Item';
 import styles from './style';
-
-/**
- * Prevents multi-touch gestures on the slider.
- * @param {string} type The event type, must be one of the touchXYZ events.
- * @param {Object} slider The slider instance.
- */
-const fixTouchEvents = (type, slider) => {
-  // Get a reference to the dom element.
-  const domRef = slider.container[0];
-
-  let realHandler = null;
-
-  // Find the real handler attached to the container.
-  if (type === 'touchstart') {
-    realHandler = slider.onTouchStart;
-  } else if (type === 'touchmove') {
-    realHandler = slider.onTouchMove;
-  } else if (type === 'touchend') {
-    realHandler = slider.onTouchEnd;
-  }
-
-  // Remove it ...
-  domRef.removeEventListener(type, realHandler);
-
-  // ... and replace it with our custom wrapper.
-  domRef.addEventListener(type, (event) => {
-    if (event.touches.length <= 1) {
-      // Only fire this event if this is not a multi-touch gesture.
-      realHandler(event);
-    }
-  }, false);
-};
-
-/**
- * Initializes the slider component.
- * @param {Object} slider The slider object.
- * @param {Object} component The React slider component.
- * @param {boolean} disabled Whether the slider is disabled.
- */
-const initSlider = (slider, component, disabled) => {
-  const thisComponent = component;
-  thisComponent.slider = slider;
-
-  fixTouchEvents('touchstart', slider);
-  fixTouchEvents('touchmove', slider);
-  fixTouchEvents('touchend', slider);
-
-  if (disabled) {
-    slider.lockSwipes();
-  } else {
-    slider.unlockSwipes();
-  }
-};
-
-/**
- * Retriggers the creation of loop DOM elements once the start/end of the slider has been reached.
- * @param {Object} slider The Slider object.
- */
-const fixLoopLimits = (slider) => {
-  const numSlides = slider.slides.length;
-  const active = slider.activeIndex;
-
-  // Creation of the loop should be triggered if active index is either first or last 'real' slide.
-  const shouldUpdate = (
-    active === slider.loopedSlides ||
-    active === numSlides - slider.loopedSlides - 1
-  );
-
-  if (shouldUpdate) {
-    // Update the fake slides.
-    slider.reLoop();
-  }
-};
-
-/**
- * Causes the slider to re-translate to the real slide if its looping. Staying on the loop
- * proxy slides may cause undefined behaviours due to missing events.
- * @param {Object} slider The Slider object.
- */
-const fixFakeLoop = (slider) => {
-  if (slider.params.loop) {
-    // The slider is looping, re-center it to the original dom element if required.
-    slider.fixLoop();
-  }
-};
+import connect from './connector';
 
 /**
  * The basic slider component.
  */
 class Slider extends Component {
+  /**
+   * Prevents multi-touch gestures on the slider.
+   * @param {string} type The event type, must be one of the touchXYZ events.
+   * @param {Object} slider The slider instance.
+   */
+  static fixTouchEvents(type, slider) {
+    // Get a reference to the dom element.
+    const domRef = slider.container[0];
+
+    let realHandler = null;
+
+    // Find the real handler attached to the container.
+    if (type === 'touchstart') {
+      realHandler = slider.onTouchStart;
+    } else if (type === 'touchmove') {
+      realHandler = slider.onTouchMove;
+    } else if (type === 'touchend') {
+      realHandler = slider.onTouchEnd;
+    }
+
+    // Remove it ...
+    domRef.removeEventListener(type, realHandler);
+
+    // ... and replace it with our custom wrapper.
+    domRef.addEventListener(type, (event) => {
+      if (event.touches.length <= 1) {
+        // Only fire this event if this is not a multi-touch gesture.
+        realHandler(event);
+      }
+    }, false);
+  }
+
+  /**
+   * Retriggers the creation of loop DOM elements once the start/end of the slider has been reached.
+   * @param {Object} slider The Slider object.
+   */
+  static fixLoopLimits(slider) {
+    const numSlides = slider.slides.length;
+    const active = slider.activeIndex;
+
+    /**
+     * Creation of the loop should be triggered if active index is either first
+     * or last 'real' slide.
+     */
+    const shouldUpdate = (
+      active === slider.loopedSlides ||
+      active === numSlides - slider.loopedSlides - 1
+    );
+
+    if (shouldUpdate) {
+      // Update the fake slides.
+      slider.reLoop();
+    }
+  }
+
+  /**
+   * Causes the slider to re-translate to the real slide if its looping. Staying on the loop
+   * proxy slides may cause undefined behaviours due to missing events.
+   * @param {Object} slider The Slider object.
+   */
+  static fixFakeLoop(slider) {
+    if (slider.params.loop && slider.slides.length !== slider.imagesLoaded) {
+      // The slider is looping, re-center it to the original dom element if required.
+      slider.fixLoop();
+    }
+  }
+
+  /**
+   * Updates slider.
+   * @param {Swiper} slider Slider.
+   */
+  static updateSlider(slider) {
+    // If no slider given, skip.
+    if (!slider || !slider.update) {
+      return;
+    }
+
+    slider.update();
+  }
+  /**
+   * A reference to the SliderItem Component.
+   * @type {React.Component}
+   */
+  static Item = SliderItem;
+
   /**
    * The component prop types.
    * @type {Object}
@@ -105,6 +106,7 @@ class Slider extends Component {
     classNames: PropTypes.shape(),
     controls: PropTypes.bool,
     disabled: PropTypes.bool,
+    historyPath: PropTypes.string,
     indicators: PropTypes.bool,
     initialSlide: PropTypes.number,
     interval: PropTypes.number,
@@ -128,6 +130,7 @@ class Slider extends Component {
     classNames: {},
     controls: false,
     disabled: false,
+    historyPath: '',
     indicators: false,
     initialSlide: 0,
     interval: 3000,
@@ -139,18 +142,11 @@ class Slider extends Component {
   };
 
   /**
-   * A reference to the SliderItem Component.
-   * @type {React.Component}
-   */
-  static Item = SliderItem;
-
-  /**
    * Creates the component.
    * @param {Object} props The component properties.
    */
   constructor(props) {
     super(props);
-
     this.slider = null; // The slider instance.
   }
 
@@ -171,6 +167,65 @@ class Slider extends Component {
   }
 
   /**
+   * Implements shouldComponent update lifecycle method with several reasons:
+   * 1. Usually this component renders way to often because of the state changes.
+   * 2. HistoryPathname is connected to the redux store additionally to force updates whenever
+   * the pathname changes. It's required since sometimes the slider renders while being hidden
+   * and then, the size calculations are completely wrong.
+   *
+   * @param {Object} nextProps Next props.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    // Check if children changed.
+    const oldKeys = this.props.children.map(c => c.key);
+    const newKeys = nextProps.children.map(c => c.key);
+    const childrenDifferent = (
+      oldKeys.length !== newKeys.length || oldKeys.some((k, i) => newKeys[i] !== k)
+    );
+
+    if (childrenDifferent) {
+      return true;
+    }
+
+    // Check if primitives changed.
+    const primitiveTypes = [
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.bool,
+    ];
+
+    const primitivesChanged = Object.keys(this.constructor.propTypes).some((propName) => {
+      if (propName === 'children') {
+        // Not testing children
+        return false;
+      }
+
+      const propType = this.constructor.propTypes[propName];
+
+      if (propName === 'slidesPerView' || primitiveTypes.includes(propType)) {
+        return this.props[propName] !== nextProps[propName];
+      }
+      return false;
+    });
+
+    if (primitivesChanged) {
+      return true;
+    }
+
+    // Compare objects.
+    return JSON.stringify(this.props.classNames) !== JSON.stringify(nextProps.classNames);
+  }
+
+  /**
+   * Calls when component did update.
+   */
+  componentDidUpdate() {
+    // Force Swiper update.
+    this.constructor.updateSlider(this.slider);
+  }
+
+  /**
    * Called when the current slide has changed.
    * @param {Object} slider The slider instance of this component.
    */
@@ -188,7 +243,16 @@ class Slider extends Component {
    */
   initSlider = (slider) => {
     this.slider = slider;
-    initSlider(slider, this, this.props.disabled);
+
+    this.constructor.fixTouchEvents('touchstart', slider);
+    this.constructor.fixTouchEvents('touchmove', slider);
+    this.constructor.fixTouchEvents('touchend', slider);
+
+    if (this.props.disabled) {
+      slider.lockSwipes();
+    } else {
+      slider.unlockSwipes();
+    }
   };
 
   /**
@@ -244,9 +308,9 @@ class Slider extends Component {
       slidesPerView,
       loop,
       freeMode: !snapItems,
-      onTouchStart: fixLoopLimits,
-      onTransitionStart: fixLoopLimits,
-      onTransitionEnd: fixFakeLoop,
+      onTouchStart: this.constructor.fixLoopLimits,
+      onTransitionStart: this.constructor.fixLoopLimits,
+      onTransitionEnd: this.constructor.fixFakeLoop,
       onSlideChangeEnd: this.handleSlideChange,
       onInit: this.initSlider,
     };
@@ -261,4 +325,6 @@ class Slider extends Component {
   }
 }
 
-export default Slider;
+export { Slider as UnwrappedSlider };
+
+export default connect(Slider);

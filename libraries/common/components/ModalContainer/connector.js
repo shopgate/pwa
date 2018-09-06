@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import closeModal from '../../actions/modal/closeModal';
+import { getFirstModal } from '../../selectors/modal';
 
 /**
  * Maps the contents of the state to the component props.
@@ -7,7 +8,7 @@ import closeModal from '../../actions/modal/closeModal';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  modal: state.modal[0],
+  modal: getFirstModal(state),
 });
 
 /**

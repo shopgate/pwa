@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import StarIcon from '../icons/StarIcon';
 import StarHalfIcon from '../icons/StarHalfIcon';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import RatingStars from './index';
 
 const numEmptyStars = 5;

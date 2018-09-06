@@ -8,6 +8,7 @@
     "transform-object-rest-spread",
     "transform-class-properties",
     "transform-export-extensions",
+    "transform-decorators-legacy",
     "dynamic-import-node",
     ["transform-runtime", {
       "helpers": false,

@@ -10,7 +10,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = {}, action) => {
+export default function menusByIdReducer(state = {}, action) {
   switch (action.type) {
     case REQUEST_MENU: {
       return {
@@ -43,4 +43,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-};
+}

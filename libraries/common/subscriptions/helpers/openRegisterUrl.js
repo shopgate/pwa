@@ -1,6 +1,5 @@
 import { parseObjectToQueryString } from '../../helpers/router';
 import { getRedirectLocation } from '../../selectors/history';
-import ParsedLink from '../../components/Router/helpers/parsed-link';
 import {
   CHECKOUT_PATH,
   INDEX_PATH,
@@ -10,6 +9,7 @@ import {
  * Append any necessary params and open the register URL.
  * @param {string} url The url to open.
  * @param {Object} state The current state.
+ * @returns {string}
  */
 const openRegisterUrl = (url, state) => {
   // Get the current redirect location.
@@ -45,10 +45,7 @@ const openRegisterUrl = (url, state) => {
   const query = `${parseObjectToQueryString(params, true)}${prevParams}`;
 
   // Build the new url with the GET params.
-  const newUrl = `${originalUrlWithoutParams}${query}`;
-
-  const link = new ParsedLink(newUrl);
-  link.open();
+  return `${originalUrlWithoutParams}${query}`;
 };
 
 export default openRegisterUrl;

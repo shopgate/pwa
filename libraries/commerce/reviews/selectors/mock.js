@@ -46,11 +46,6 @@ export const testReviews = [
   },
 ];
 export const emptyState = {
-  product: {
-    currentProduct: {
-      product: null,
-    },
-  },
   reviews: {
     reviewsByHash: {},
     reviewsById: {},
@@ -67,8 +62,12 @@ export const emptyState = {
 
 export const finalState = {
   product: {
-    currentProduct: {
-      productId: '9209597131',
+    productsById: {
+      9209597131: {
+        productData: {
+          id: '9209597131',
+        },
+      },
     },
   },
   reviews: {

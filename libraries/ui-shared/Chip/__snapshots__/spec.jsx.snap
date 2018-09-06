@@ -8,17 +8,17 @@ exports[`<Chip /> should render a tag 1`] = `
   removable={true}
 >
   <div
-    className="css-11a1u6a"
+    className="css-bpa25c"
   >
     <Button
       className="css-i7sqdh"
       disabled={false}
       onClick={[Function]}
-      testId="Button"
+      testId="remove text"
     >
       <button
         className="css-i7sqdh css-1rn65c0"
-        data-test-id="Button"
+        data-test-id="remove text"
         disabled={false}
         onClick={[Function]}
       >
@@ -57,11 +57,11 @@ exports[`<Chip /> should render a tag 1`] = `
       className="css-1al9zi1"
       disabled={false}
       onClick={[Function]}
-      testId="Button"
+      testId="text"
     >
       <button
         className="css-1al9zi1 css-1rn65c0"
-        data-test-id="Button"
+        data-test-id="text"
         disabled={false}
         onClick={[Function]}
       >
@@ -80,17 +80,17 @@ exports[`<Chip /> should render a without removable icon 1`] = `
   removable={false}
 >
   <div
-    className="css-yv6cwk"
+    className="css-19sltcj"
   >
     <Button
       className="css-1al9zi1"
       disabled={false}
       onClick={[Function]}
-      testId="Button"
+      testId="text"
     >
       <button
         className="css-1al9zi1 css-1rn65c0"
-        data-test-id="Button"
+        data-test-id="text"
         disabled={false}
         onClick={[Function]}
       >

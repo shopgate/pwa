@@ -15,7 +15,7 @@ const getViewState = state => state.view;
  */
 export const getLoadingViews = createSelector(
   getViewState,
-  viewState => viewState.isLoading
+  state => state.isLoading
 );
 
 /**
@@ -26,17 +26,11 @@ export const getLoadingViews = createSelector(
  */
 export const isViewLoading = createSelector(
   getLoadingViews,
-  (state, pathname) => pathname,
-  (loadingViews, currentPath) =>
+  getCurrentPathname,
+  (loadingViews, currentPath) => (
     Object.keys(loadingViews).includes(currentPath) && loadingViews[currentPath] > 0
+  )
 );
-
-/**
- * Selects whether the current view is loading.
- * @param {Object} state The current application state.
- * @return {boolean}
- */
-export const isCurrentViewLoading = state => isViewLoading(state, getCurrentPathname(state));
 
 /**
  * Selects the current route title.
@@ -46,7 +40,17 @@ export const isCurrentViewLoading = state => isViewLoading(state, getCurrentPath
 export const getCurrentTitle = createSelector(
   getCurrentState,
   (state) => {
-    if (!state || !state.title) return null;
+    if (!state || !state.title) {
+      return null;
+    }
+
     return state.title;
   }
 );
+
+/**
+ * Selects whether the current view is loading.
+ * @param {Object} state The current application state.
+ * @return {boolean}
+ */
+export const isCurrentViewLoading = state => isViewLoading(state, getCurrentPathname(state));

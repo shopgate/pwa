@@ -54,15 +54,13 @@ class HtmlSanitizer extends Component {
 
   /**
    * If the user tapped a link element, prevent the default behaviour.
-   * and handle them via ParsedLink.
    * @param {Object} event The touchstart event.
    */
   handleTap = (event) => {
-    event.preventDefault();
-
     const aTag = event.target.closest('a');
 
     if (aTag && aTag.attributes.href) {
+      event.preventDefault();
       const href = aTag.attributes.href.value;
       this.props.settings.handleClick(href);
     }

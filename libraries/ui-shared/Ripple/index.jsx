@@ -64,7 +64,7 @@ class Ripple extends PureComponent {
     const { fill } = this.props;
 
     // Reference to Ripple container (for now and later).
-    this.rootNode = findDOMNode(this);
+    this.rootNode = findDOMNode(this); // eslint-disable-line react/no-find-dom-node
 
     // Initially set the position values to be in the middle of the element.
     // If the Ripple's starting point has to follow the user's touch

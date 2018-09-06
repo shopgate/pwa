@@ -1,18 +1,18 @@
 import { createSelector } from 'reselect';
+import isEqual from 'lodash/isEqual';
+import { logger } from '@shopgate/pwa-core/helpers';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { isUndefined } from '@shopgate/pwa-common/helpers/validation';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { ITEM_PATH } from '../constants';
+import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 
 /**
+ * Retrieves the product state from the store.
  * @param {Object} state The current application state.
- * @return {Object}
+ * @return {Object} The product state.
  */
-export const getProductState = state => state.product;
+export const getProductState = state => state.product || {};
 
 /**
  * Selects all products from the store.
@@ -21,89 +21,255 @@ export const getProductState = state => state.product;
  */
 export const getProducts = createSelector(
   getProductState,
-  state => state.productsById
+  state => state.productsById || {}
 );
 
 /**
- * Retrieves the current product or variant page from the store.
+ * Selects the product shipping state.
  * @param {Object} state The current application state.
- * @param {Object} props The current component props.
- * @return {string} The id of the current product.
+ * @param {Object} props The component props.
+ * @return {Object} The product shipping state.
  */
-export const getCurrentProductId = (state, props) => (props ? props.productId : null);
+export const getProductShippingState = createSelector(
+  getProductState,
+  state => state.shippingByProductId || {}
+);
 
 /**
- * Gets the product id from the current history state pathname.
+ * Selects the product description state.
  * @param {Object} state The current application state.
- * @return {null|string} Product id or null
+ * @param {Object} props The component props.
+ * @return {Object} The product description state.
  */
-export const getHistoryPathProductId = createSelector(
-  getHistoryPathname,
-  (pathname) => {
-    if (!pathname.startsWith(ITEM_PATH)) {
+export const getProductDescriptionState = createSelector(
+  getProductState,
+  state => state.descriptionsByProductId || {}
+);
+
+/**
+ * Selects the product properties state.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object} The product properties state.
+ */
+export const getProductPropertiesState = createSelector(
+  getProductState,
+  state => state.propertiesByProductId || {}
+);
+
+/**
+ * Selects the product images state.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object} The product images state.
+ */
+export const getProductImagesState = createSelector(
+  getProductState,
+  state => state.imagesByProductId || {}
+);
+
+/**
+ * Selects the product variants state.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object} The product variants state.
+ */
+export const getProductVariantsState = createSelector(
+  getProductState,
+  state => state.variantsByProductId || {}
+);
+
+/**
+ * Retrieves a product by id from state. Different to getProduct() which returns the product
+ * entity data if available, this selector returns the pure state enty for a given productId.
+ * So the exires and the isFetching property is processable.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null} The dedicated product.
+ */
+export const getProductById = createSelector(
+  getProducts,
+  (state, props) => props,
+  (products, props) => {
+    if (typeof props !== 'object') {
+      logger.warn('Invocation of getProductById() with a productId will be deprecated soon. Please provide a props object.');
+      return products[props] || null;
+    }
+
+    if (!props.productId) {
       return null;
     }
 
-    const pathSegments = pathname.split('/');
-    if (!pathSegments[2]) {
-      return null;
-    }
-
-    return hex2bin(pathSegments[2]);
+    return products[props.productId] || null;
   }
 );
 
 /**
- * Retrieves a product by ID from state.
+ * Retrieves the id of the current selected product from the component props. When the props
+ * contain a variant id it will return this one instead of the product id.
  * @param {Object} state The current application state.
- * @param {string} id The product ID.
- * @return {Object} The dedicated product.
+ * @param {Object} props The component props.
+ * @return {string|null} The id of the current product.
  */
-export const getProductById = (state, id) => getProducts(state)[id];
-
-/**
- * Retrieves the current base product data from the store.
- * @param {Object} state The current application state.
- * @returns {Object} The current product.
- */
-export const getCurrentBaseProduct = createSelector(
-  getCurrentProductId,
-  getProducts,
-  (productId, products) => {
-    const entry = products[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.productData)) {
-      return null;
-    }
-
-    return entry.productData;
+export const getProductId = (state, props) => {
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 some product selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a productId or a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getProductId() needs to be called with a props object that includes a productId.');
   }
-);
+
+  if (!props) {
+    return null;
+  }
+
+  // Since a variantId can have falsy values, we need an "undefined" check here.
+  if (typeof props.variantId !== 'undefined' && props.variantId !== null) {
+    return props.variantId;
+  }
+
+  return props.productId || null;
+};
 
 /**
- * Retrieves the current product data from the store.
+ * Gets the variant id out of the selector props.
  * @param {Object} state The current application state.
- * @returns {Object} The current product.
+ * @param {Object} props The component props.
+ * @returns {string|null}
  */
-export const getCurrentProduct = createSelector(
+export const getVariantProductId = (state, props) => {
+  if (typeof props === 'undefined') {
+    /**
+     * Before PWA 6.0 the variant selectors relied on a "currentProduct" state which doesn't exist
+     * anymore. Their successors require a props object which contains a variantId.
+     * To support debugging an error will be logged, if the props are missing at invocation.
+     */
+    logger.error('getVariantId() needs to be called with a props object that includes a variantId.');
+  }
+
+  const { variantId = null } = props || {};
+
+  return variantId;
+};
+
+/**
+ * Checks if currently a variant is selected within the props.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {boolean}
+ */
+export const isVariantSelected = (state, props) => !!getVariantProductId(state, props);
+
+/**
+ * Retrieves the product data for the passed productId from the store.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object} The current product.
+ */
+export const getProduct = createSelector(
   getProducts,
-  getCurrentProductId,
+  getProductId,
   (products, productId) => {
-    const entry = products[productId];
-    // No return null when data is there but product data is updating.
-    if (!entry || isUndefined(entry.productData)) {
-      return null;
-    }
-
-    return entry.productData;
+    const { productData } = products[productId] || {};
+    return productData || null;
   }
 );
 
 /**
- * @param {Object} state The global state.
+ * Retrieves the product name.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductName = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.name;
+  }
+);
+
+/**
+ * Retrieves the product rating.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getProductRating = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.rating;
+  }
+);
+
+/**
+ * Retrieves the product manufacturer.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductManufacturer = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.manufacturer;
+  }
+);
+
+/**
+ * Retrieves the product stock information.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getProductStock = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.stock;
+  }
+);
+
+/**
+ * Retrieves the product availability.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getProductAvailability = createSelector(
+  getProduct,
+  (product) => {
+    if (!product) {
+      return null;
+    }
+
+    return product.availability;
+  }
+);
+
+/**
+ * Retrieves the product flags.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
  * @return {Object|null}
  */
 export const getProductFlags = createSelector(
-  getCurrentProduct,
+  getProduct,
   (product) => {
     if (!product) {
       return null;
@@ -114,67 +280,374 @@ export const getProductFlags = createSelector(
 );
 
 /**
- * Retrieves the current base product page from the store.
+ * Retrieves the metadata for the given product.
  * @param {Object} state The current application state.
- * @return {string} The id of the current base product.
+ * @return {Object|null}
  */
-export const getCurrentBaseProductId = createSelector(
-  getCurrentProduct,
+export const getProductMetadata = createSelector(
+  getProduct,
   (product) => {
     if (!product) {
       return null;
     }
 
-    if (product.baseProductId) {
-      return product.baseProductId;
-    }
-
-    return product.id;
+    return product.metadata;
   }
 );
 
 /**
- * Retrieves the base price from a product.
- * @param {Object} state The application state.
- * @returns {number|null}
+ * Retrieves the product price object.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string}
  */
-export const getProductUnitPrice = createSelector(
-  getCurrentProduct,
+export const getProductPrice = createSelector(
+  getProduct,
   (product) => {
     if (!product) {
       return null;
     }
 
-    return product.price.unitPrice;
+    return product.price;
   }
 );
 
 /**
- * Retrieves the price currency from a product.
- * @param {Object} state The application state.
- * @returns {string}
+ * Retrieves the product currency.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @todo Move to the price selectors
+ * @return {string|null}
  */
 export const getProductCurrency = createSelector(
-  getCurrentProduct,
+  getProductPrice,
+  (price) => {
+    if (!price) {
+      return null;
+    }
+
+    return price.currency;
+  }
+);
+
+/**
+ * Retrieves the unit price from a product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @todo Move to the price selectors
+ * @return {number|null}
+ */
+export const getProductUnitPrice = createSelector(
+  getProductPrice,
+  (price) => {
+    if (!price) {
+      return null;
+    }
+
+    return price.unitPrice;
+  }
+);
+
+/**
+ * Determines if a product has variants.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasProductVariants = createSelector(
+  getProductFlags,
+  (flags) => {
+    if (!flags) {
+      return false;
+    }
+
+    return flags.hasVariants;
+  }
+);
+
+/**
+ * Determines if a product is a base product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @todo Check if returning null is correct.
+ * @return {boolean|null}
+ */
+export const isBaseProduct = createSelector(
+  getProduct,
+  hasProductVariants,
+  (product, hasVariants) => {
+    if (!product) {
+      return false;
+    }
+
+    /**
+     * Base products are simple products without variants or products with related variant products.
+     * At variant products the baseProductId is used to reference the base product.
+     */
+    return product.baseProductId === null || hasVariants;
+  }
+);
+
+/**
+ * Determines a baseProductId for the products which are referenced within the props.
+ * When a variantId is passed, the selector will return the id of the related base product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getBaseProductId = createSelector(
+  getProduct,
+  (state, props = {}) => props,
+  (product, props) => {
+    if (product) {
+      // First try to determine a baseProductId via a selected product.
+      const { baseProductId = null } = product;
+
+      if (baseProductId !== null) {
+        return baseProductId;
+      }
+
+      return product.id;
+    }
+
+    const { productId } = props;
+    // Use the productId from the props as fallback.
+    return typeof productId !== 'undefined' ? productId : null;
+  }
+);
+
+/**
+ * Retrieves the base product data for the passed productId from the store.
+ * @param {Object} state The current application state.
+ * @returns {Object|null} The current product.
+ */
+export const getBaseProduct = createSelector(
+  getProducts,
+  getBaseProductId,
+  (products, baseProductId) => {
+    if (!baseProductId) {
+      return null;
+    }
+
+    const { productData = null } = products[baseProductId] || {};
+
+    return productData;
+  }
+);
+
+/**
+ * Determines if a base product has variants.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const hasBaseProductVariants = createSelector(
+  getBaseProduct,
+  (baseProduct) => {
+    if (!baseProduct) {
+      return false;
+    }
+
+    const { flags: { hasVariants = false } = {} } = baseProduct;
+
+    return hasVariants;
+  }
+);
+
+/**
+ * Retrieves the shipping data for the given product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getProductShipping = createSelector(
+  getProductShippingState,
+  getProductId,
+  (shipping, productId) => {
+    const entry = shipping[productId];
+
+    if (!entry || !entry.shipping) {
+      return null;
+    }
+
+    return entry.shipping;
+  }
+);
+
+/**
+ * Retrieves the properties for the given product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getProductProperties = createSelector(
+  getProductPropertiesState,
+  getProductId,
+  (properties, productId) => {
+    const entry = properties[productId];
+
+    if (!entry || !entry.properties) {
+      return null;
+    }
+
+    return filterProperties(entry.properties);
+  }
+);
+
+/**
+ * Retrieves the description for the given product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getProductDescription = createSelector(
+  getProductDescriptionState,
+  getProductId,
+  (descriptions, productId) => {
+    const entry = descriptions[productId];
+
+    if (!entry || !entry.description) {
+      return null;
+    }
+
+    return entry.description;
+  }
+);
+
+/**
+ * Retrieves the images for the given product. If the props contain a variantId, and the related
+ * product does not have images, the selector tries to pick images from it's base product.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Array|null}
+ */
+export const getProductImages = createSelector(
+  getProductImagesState,
+  getProductId,
+  getBaseProductId,
+  (images, productId, baseProductId) => {
+    const { images: productImages } = images[productId] || {};
+    const { images: baseProductImages } = (baseProductId !== null && images[baseProductId]) || {};
+
+    // If the product doesn't have images...
+    if (!Array.isArray(productImages) || !productImages.length) {
+      // ...check the base product.
+      if (!Array.isArray(baseProductImages) || !baseProductImages.length) {
+        return null;
+      }
+
+      return baseProductImages;
+    }
+
+    return productImages;
+  }
+);
+
+/**
+ * Retrieves the product variant data.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getProductVariants = createSelector(
+  getProductVariantsState,
+  getBaseProductId,
+  (variants, baseProductId) => {
+    const entry = variants[baseProductId];
+
+    if (!entry || !entry.variants) {
+      return null;
+    }
+
+    return entry.variants;
+  }
+);
+
+/**
+ * Retrieves a product for the selected variant id from the store.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @returns {Object|null} The selected variant or null if none is selected
+ */
+export const getSelectedVariant = createSelector(
+  getProduct,
+  isVariantSelected,
+  (product, selected) => {
+    if (!product || !selected) {
+      return null;
+    }
+
+    return product;
+  }
+);
+
+/**
+ * Determines if a product is orderable.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {boolean}
+ */
+export const isProductOrderable = createSelector(
+  getProductStock,
+  stockInfo => !!(stockInfo && stockInfo.orderable)
+);
+
+/**
+ * Retrieves the product id of a variant product. When no variantId is passed within
+ * the props, the selector will return NULL.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {string|null}
+ */
+export const getVariantId = createSelector(
+  getProduct,
   (product) => {
     if (!product) {
       return null;
     }
 
-    return product.price.currency;
+    const { id, baseProductId } = product;
+
+    return baseProductId !== null ? id : null;
+  }
+);
+
+/**
+ * Retrieves an availability object for a passed set of variant characteristics.
+ * @param {Object} state The current application state.
+ * @param {Object} props The component props.
+ * @return {Object|null}
+ */
+export const getVariantAvailabilityByCharacteristics = createSelector(
+  getProductVariants,
+  (state, props = {}) => props.characteristics,
+  (variants, characteristics) => {
+    if (!variants) {
+      return null;
+    }
+
+    const found = variants.products.find(product => (
+      isEqual(product.characteristics, characteristics)
+    ));
+
+    if (!found) {
+      return null;
+    }
+
+    return found.availability;
   }
 );
 
 /**
  * Retrieves the generated result hash for a category id or search phrase.
- * @param {Object} state The application state.
+ * @param {Object} state The current application state.
  * @param {Object} props The component props.
- * @returns {string} The result hash.
+ * @returns {string|null} The result hash.
  */
 export const getResultHash = createSelector(
-  (state, props) => props.categoryId,
-  (state, props) => props.searchPhrase,
-  (state, props) => props.sortOrder || DEFAULT_SORT,
+  (state, props = {}) => props.categoryId,
+  (state, props = {}) => props.searchPhrase,
+  state => getSortOrder(state) || DEFAULT_SORT,
   getActiveFilters,
   (categoryId, searchPhrase, sort, filters) => {
     if (categoryId) {
@@ -206,7 +679,15 @@ export const getResultHash = createSelector(
 export const getResultByHash = createSelector(
   state => state.product,
   getResultHash,
-  (productState, hash) => productState.resultsByHash[hash]
+  (productState, hash) => {
+    const results = productState.resultsByHash[hash];
+
+    if (!results) {
+      return null;
+    }
+
+    return results;
+  }
 );
 
 /**
@@ -218,19 +699,20 @@ export const getResultByHash = createSelector(
  * @return {Object} The product result.
  */
 export const getPopulatedProductsResult = (state, props, hash, result) => {
-  const sort = props.sortOrder || DEFAULT_SORT;
+  const sort = getSortOrder(state) || DEFAULT_SORT;
   let products = [];
   let totalProductCount = !hash ? 0 : null;
 
   if (result && result.products) {
     totalProductCount = result.totalResultCount;
-    products = result.products.map(id => getProductById(state, id).productData);
+    products = result.products.map(productId => getProductById(state, { productId }).productData);
   }
 
   return {
     products,
     totalProductCount,
     sort,
+    hash,
   };
 };
 
@@ -242,357 +724,21 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
  */
 export const getProductsResult = createSelector(
   state => state,
-  props => props,
+  (state, props) => props,
   getResultHash,
   getResultByHash,
   getPopulatedProductsResult
 );
 
 /**
- * Retrieves the product name for the given id.
- * @param {Object} state The current application state.
- * @return {string|null}
+ * Selector mappings for PWA < 6.0
+ * @deprecated
  */
-export const getProductData = createSelector(
-  getProducts,
-  getCurrentProductId,
-  (products, productId) => {
-    if (!productId || !products[productId] || !products[productId].productData) {
-      return null;
-    }
-
-    return products[productId].productData;
-  }
-);
-
-/**
- * Retrieves the product name for the given id.
- * @param {Object} state The current application state.
- * @return {string|null}
- */
-export const getProductName = createSelector(
-  getProductData,
-  (productData) => {
-    if (!productData) {
-      return null;
-    }
-
-    return productData.name;
-  }
-);
-
-/**
- * Selects the product images state.
- * @param {Object} state The current application state.
- * @return {Object}
- */
-const getProductImagesState = createSelector(
-  getProductState,
-  state => state.imagesByProductId
-);
-
-/**
- * Retrieves the current product images or the images of the parent product.
- * If the current product does not have images, we try to select the images from the base product.
- * @param {Object} state The current application state.
- * @return {Array|null}
- */
-export const getProductImages = createSelector(
-  getCurrentProductId,
-  getCurrentProduct,
-  getProductImagesState,
-  (productId, product, images) => {
-    if (!productId) {
-      return null;
-    }
-
-    const variantEntry = images[productId];
-    const baseProductEntry = (product && product.baseProductId) && images[product.baseProductId];
-
-    // If the variant doesn't have images.
-    if (!variantEntry || !variantEntry.images || !variantEntry.images.length) {
-      // Check the base product.
-      if (!baseProductEntry || !baseProductEntry.images || !baseProductEntry.images.length) {
-        return null;
-      }
-
-      return baseProductEntry.images;
-    }
-
-    return variantEntry.images;
-  }
-);
-
-/**
- * Retrieves the current product rating.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductRating = createSelector(
-  getProductData,
-  (productData) => {
-    if (!productData) {
-      return null;
-    }
-
-    return productData.rating;
-  }
-);
-
-/**
- * Retrieves manufacturer for a given product.
- * @param {Object} state The current application state.
- * @return {string|null}
- */
-export const getProductManufacturer = createSelector(
-  getProductData,
-  (productData) => {
-    if (!productData) {
-      return null;
-    }
-
-    return productData.manufacturer;
-  }
-);
-
-/**
- * Retrieves the current product stock information.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getCurrentProductStock = createSelector(
-  getCurrentProduct,
-  (product) => {
-    if (!product) {
-      return null;
-    }
-
-    return product.stock;
-  }
-);
-
-/**
- * Retrieves the product stock information.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductStock = createSelector(
-  getProductData,
-  (productData) => {
-    if (!productData) {
-      return null;
-    }
-
-    return productData.stock;
-  }
-);
-
-/**
- * Retrieves the product orderable information.
- * @param {Object} state The current application state.
- * @return {boolean}
- */
-export const isOrderable = createSelector(
-  getProductStock,
-  stockInfo => stockInfo && stockInfo.orderable
-);
-
-/**
- * Selects the product shipping state.
- * @param {Object} state The current application state.
- * @return {Object} The product shipping state.
- */
-const getProductShippingState = state => state.product.shippingByProductId;
-
-/**
- * Retrieves the current product shipping data.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductShipping = createSelector(
-  getProductShippingState,
-  getCurrentProductId,
-  (shipping, productId) => {
-    const entry = shipping[productId];
-
-    if (!entry || entry.isFetching || isUndefined(entry.shipping)) {
-      return null;
-    }
-
-    return entry.shipping;
-  }
-);
-
-/**
- * Retrieves the current product availability.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductAvailability = createSelector(
-  getProductData,
-  (productData) => {
-    if (!productData) {
-      return null;
-    }
-
-    return productData.availability;
-  }
-);
-
-/**
- * Selects the product description state.
- * @param {Object} state The current application state.
- * @return {Object} The product description state.
- */
-const getProductDescriptionState = state => state.product.descriptionsByProductId;
-
-/**
- * Retrieves the current product description.
- * @param {Object} state The current application state.
- * @return {string|null}
- */
-export const getProductDescription = createSelector(
-  getCurrentProductId,
-  getProductDescriptionState,
-  (productId, descriptions) => {
-    const entry = descriptions[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.description)) {
-      return null;
-    }
-
-    return entry.description;
-  }
-);
-
-/**
- * Selects the product properties state.
- * @param {Object} state The current application state.
- * @return {Object} The product properties state.
- */
-export const getProductPropertiesState = state => state.product.propertiesByProductId;
-
-/**
- * Retrieves the current product properties.
- * @param {Object} state The current application state.
- * @return {string|null}
- */
-export const getProductProperties = createSelector(
-  getProductPropertiesState,
-  getCurrentProductId,
-  (properties, productId) => {
-    const entry = properties[productId];
-    if (!entry || entry.isFetching || isUndefined(entry.properties)) {
-      return null;
-    }
-
-    return filterProperties(entry.properties);
-  }
-);
-
-/**
- * Retrieves the metadata for the given product.
- * @param {Object} state The current application state.
- * @return {Object|null}
- */
-export const getProductMetadata = createSelector(
-  getProductById,
-  product => product.productData.metadata || null
-);
-
-/**
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {boolean|null}
- */
-export const isBaseProduct = createSelector(
-  getProductData,
-  (productData) => {
-    if (!productData) {
-      return null;
-    }
-
-    return productData.baseProductId === null;
-  }
-);
-
-/**
- * @param {Object} state The global state.
- * @return {boolean}
- */
-export const hasVariants = createSelector(
-  getProductFlags,
-  (flags) => {
-    if (!flags) {
-      return false;
-    }
-
-    return flags.hasVariants;
-  }
-);
-
-/**
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {string|null}
- */
-export const getBaseProductId = createSelector(
-  getProductData,
-  getCurrentProductId,
-  (productData, productId) => {
-    if (!productData) {
-      return null;
-    }
-
-    if (productData.baseProductId) {
-      return productData.baseProductId;
-    }
-
-    return productId;
-  }
-);
-
-/**
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {string|null}
- */
-export const getVariantId = createSelector(
-  isBaseProduct,
-  getCurrentProductId,
-  (isBase, productId) => {
-    if (isBase) {
-      return null;
-    }
-
-    return productId;
-  }
-);
-
-/**
- * Retrieves the current product orderable information.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {boolean}
- */
-export const isProductOrderable = createSelector(
-  isBaseProduct,
-  getProductStock,
-  (isBase, stock) => {
-    if (!isBase || !stock) {
-      return false;
-    }
-
-    return stock.orderable;
-  }
-);
-
-/**
- * Determines whether or not the product is fetching.
- * @param {Object} state The current application state.
- * @param {Object} props The component props.
- * @return {boolean}
- */
-export const hasProductData = createSelector(
-  getProductData,
-  productData => !!productData
-);
+export const getCurrentProduct = getProduct;
+export const getCurrentProductId = getProductId;
+export const getCurrentBaseProductId = getBaseProductId;
+export const getCurrentBaseProduct = getBaseProduct;
+export const getCurrentProductStock = getProductStock;
+export const getProductStockInfo = getProductStock;
+export const getProductBasePrice = getProductUnitPrice;
+export const isOrderable = isProductOrderable;

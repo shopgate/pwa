@@ -1,12 +1,12 @@
 // ***********************************************************
 // This example support/index.js is processed and
-// loaded automatically before your test files.
+// Loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
-// behavior that modifies Cypress.
+// Behavior that modifies Cypress.
 //
 // You can change the location of this file or turn off
-// automatically serving support files with the
+// Automatically serving support files with the
 // 'supportFile' configuration option.
 //
 // You can read more here:
@@ -15,9 +15,6 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
 
 const istanbul = require('istanbul-lib-coverage');
 
@@ -28,7 +25,7 @@ beforeEach(() => {
 });
 
 Cypress.on('window:before:unload', (e) => {
-  const coverage = e.currentTarget.__coverage__;
+  const coverage = e.currentTarget.__coverage__; // eslint-disable-line no-underscore-dangle
 
   if (coverage) {
     map.merge(coverage);
@@ -37,7 +34,7 @@ Cypress.on('window:before:unload', (e) => {
 
 after(() => {
   cy.window().then((win) => {
-    const coverage = win.__coverage__;
+    const coverage = win.__coverage__; // eslint-disable-line no-underscore-dangle
 
     if (coverage) {
       map.merge(coverage);

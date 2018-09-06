@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getProductById } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   getSubTotal,
   getCurrency,
@@ -30,7 +30,7 @@ const getProducts = createSelector(
 export const getAddToCartProducts = (state, products) => (
   products
     .map(product => ({
-      product: getProductById(state, product.productId).productData,
+      product: getProduct(state, { productId: product.productId }),
       quantity: product.quantity,
     }))
     .map(formatAddToCartProductData)

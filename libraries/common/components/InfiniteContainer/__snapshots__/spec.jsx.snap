@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<InfiniteContainer /> Given that the initialLimit is used in the correct ways Given that the initialLimit is NOT used  should render without the initialLimit 1`] = `
+exports[`<InfiniteContainer /> Given that the initialLimit is used in the correct ways Given that the initialLimit is NOT used should render without the initialLimit 1`] = `
 <div>
   <div>
     <div>

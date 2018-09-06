@@ -1,11 +1,10 @@
-import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { PROCESS_SEQUENTIAL } from '@shopgate/pwa-core/constants/ProcessTypes';
-import { logger } from '@shopgate/pwa-core/helpers';
+import { PipelineRequest, PROCESS_SEQUENTIAL, logger } from '@shopgate/pwa-core';
 import * as pipelines from '../constants/Pipelines';
 import addCoupons from '../action-creators/addCouponsToCart';
 import errorAddCouponsToCart from '../action-creators/errorAddCouponsToCart';
 import successAddCouponsToCart from '../action-creators/successAddCouponsToCart';
 import { messagesHaveErrors } from '../helpers';
+
 /**
  * Adds coupons to the cart.
  * @param {Array} couponIds The IDs of the coupons that shall be added to the cart.
@@ -22,7 +21,7 @@ const addCouponsToCart = couponIds => dispatch => new Promise((resolve, reject) 
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorAddCouponsToCart(couponIds, messages, requestsPending));
         reject();
         return;

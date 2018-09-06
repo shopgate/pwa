@@ -25,20 +25,20 @@ class RatingStars extends Component {
     onSelection: PropTypes.func,
   };
 
-  static defaultProps = {
-    className: '',
-    display: 'small',
-    isSelectable: false,
-    onSelection: () => {
-    },
-  };
-
   /**
    * Context types definition.
    * @type {{i18n: shim}}
    */
   static contextTypes = {
     i18n: PropTypes.func,
+  };
+
+  static defaultProps = {
+    className: '',
+    display: 'small',
+    isSelectable: false,
+    onSelection: () => {
+    },
   };
 
   /**

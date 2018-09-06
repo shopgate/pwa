@@ -22,7 +22,7 @@ const deleteProductsFromCart = cartItemIds => (dispatch) => {
     .then(({ messages }) => {
       const requestsPending = request.hasPendingRequests();
 
-      if (messagesHaveErrors(messages)) {
+      if (messages && messagesHaveErrors(messages)) {
         dispatch(errorDeleteProductsFromCart(cartItemIds, messages, requestsPending));
       }
 

@@ -15,7 +15,11 @@ export const history = createBrowserHistory({
  * @param {string} queryString An URL query string.
  * @returns {Object}
  */
-export const parseQueryStringToObject = (queryString) => {
+export const parseQueryStringToObject = (queryString = null) => {
+  if (!queryString) {
+    return {};
+  }
+
   const urlParams = new URLSearchParams(queryString);
   const keys = Array.from(urlParams.keys());
 
@@ -32,6 +36,10 @@ export const parseQueryStringToObject = (queryString) => {
  * @returns {string}
  */
 export const parseObjectToQueryString = (obj, includePrefix = true) => {
+  if (!obj) {
+    return '';
+  }
+
   const urlParams = new URLSearchParams();
   const keys = Object.keys(obj);
 

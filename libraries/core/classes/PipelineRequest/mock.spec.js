@@ -86,6 +86,13 @@ describe('MockPipelineRequest', () => {
     expect(request.handleErrors).toEqual(errorHandleTypes.ERROR_HANDLE_DEFAULT);
   });
 
+  it('should handle deprecated setHandledErrors', () => {
+    const PipelineClass = mockedPipelineRequestFactory(() => {});
+    const request = new PipelineClass('test');
+    request.setHandledErrors(['SAMPLE_ERROR']);
+    expect(request.errorBlacklist).toEqual(['SAMPLE_ERROR']);
+  });
+
   describe('setHandleErrors()', () => {
     it('should throw if input not one of the possible values', (done) => {
       const PipelineClass = mockedPipelineRequestFactory(() => {});

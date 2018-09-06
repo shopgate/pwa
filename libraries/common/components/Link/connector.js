@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { navigate } from '../../action-creators/router';
+import { historyPush, historyReplace } from '../../actions/router';
 
 /**
  * Maps action dispatchers to the component props.
@@ -7,7 +7,8 @@ import { navigate } from '../../action-creators/router';
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: (action, href, state) => dispatch(navigate(action, href, state)),
+  historyPush: params => dispatch(historyPush(params)),
+  historyReplace: params => dispatch(historyReplace(params)),
 });
 
 export default connect(null, mapDispatchToProps);

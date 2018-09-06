@@ -125,10 +125,11 @@ exports[`<Sheet /> should open 1`] = `
       </div>
     </Drawer>
     <Backdrop
+      className=""
       color="#000"
       duration={200}
       isVisible={true}
-      level={3}
+      level={4}
       onClick={[Function]}
       opacity={20}
     >
@@ -142,7 +143,7 @@ exports[`<Sheet /> should open 1`] = `
               "background": "#000",
               "opacity": 0,
               "transition": "opacity 200ms ease-out",
-              "zIndex": 3,
+              "zIndex": 4,
             },
             "enter": Object {
               "opacity": 0.2,
@@ -169,7 +170,7 @@ exports[`<Sheet /> should open 1`] = `
                   "background": "#000",
                   "opacity": 0,
                   "transition": "opacity 200ms ease-out",
-                  "zIndex": 3,
+                  "zIndex": 4,
                 }
               }
               childrenEnterStyle={
@@ -186,14 +187,14 @@ exports[`<Sheet /> should open 1`] = `
             >
               <div
                 aria-hidden={true}
-                className="css-hlk66h"
+                className="css-hlk66h "
                 onClick={[Function]}
                 style={
                   Object {
                     "background": "#000",
                     "opacity": 0,
                     "transition": "opacity 200ms ease-out",
-                    "zIndex": 3,
+                    "zIndex": 4,
                   }
                 }
               />
@@ -228,10 +229,11 @@ exports[`<Sheet /> should render closed without content 1`] = `
     />
   </Drawer>
   <Backdrop
+    className=""
     color="#000"
     duration={200}
     isVisible={false}
-    level={3}
+    level={4}
     onClick={[Function]}
     opacity={20}
   />
@@ -260,10 +262,11 @@ exports[`<Sheet /> should render opened without content 1`] = `
     />
   </Drawer>
   <Backdrop
+    className=""
     color="#000"
     duration={200}
     isVisible={true}
-    level={3}
+    level={4}
     onClick={[Function]}
     opacity={20}
   />
@@ -302,10 +305,11 @@ exports[`<Sheet /> should render with content and title 1`] = `
     </div>
   </Drawer>
   <Backdrop
+    className=""
     color="#000"
     duration={200}
     isVisible={true}
-    level={3}
+    level={4}
     onClick={[Function]}
     opacity={20}
   />
@@ -322,6 +326,12 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     [MockFunction] {
       "calls": Array [
         Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
       ],
     }
   }
@@ -344,6 +354,12 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         [MockFunction] {
           "calls": Array [
             Array [],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
           ],
         }
       }
@@ -449,10 +465,11 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       </div>
     </Drawer>
     <Backdrop
+      className=""
       color="#000"
       duration={200}
       isVisible={false}
-      level={3}
+      level={4}
       onClick={[Function]}
       opacity={20}
     >
@@ -466,7 +483,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               "background": "#000",
               "opacity": 0,
               "transition": "opacity 200ms ease-out",
-              "zIndex": 3,
+              "zIndex": 4,
             },
             "enter": Object {
               "opacity": 0.2,
@@ -493,7 +510,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   "background": "#000",
                   "opacity": 0,
                   "transition": "opacity 200ms ease-out",
-                  "zIndex": 3,
+                  "zIndex": 4,
                 }
               }
               childrenEnterStyle={
@@ -510,14 +527,14 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             >
               <div
                 aria-hidden={true}
-                className="css-hlk66h"
+                className="css-hlk66h "
                 onClick={[Function]}
                 style={
                   Object {
                     "background": "#000",
                     "opacity": 0,
                     "transition": "opacity 200ms ease-out",
-                    "zIndex": 3,
+                    "zIndex": 4,
                   }
                 }
               />

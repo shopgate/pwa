@@ -1,5 +1,4 @@
 import remove from 'lodash/remove';
-import { persist } from '@shopgate/pwa-common/store/persistent';
 import {
   ADD_PRODUCTS_TO_CART,
   DELETE_PRODUCTS_FROM_CART,
@@ -10,12 +9,6 @@ import {
   ERROR_CART,
   SET_CART_PENDING_PRODUCT_COUNT,
 } from '../constants';
-
-/**
- * The current version of the state created by this reducer.
- * @type {string}
- */
-const STATE_VERSION = 'v1';
 
 const defaultState = {
   items: [],
@@ -31,7 +24,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const reducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case ADD_PRODUCTS_TO_CART:
     case ERROR_ADD_PRODUCTS_TO_CART: {
@@ -92,5 +85,3 @@ const reducer = (state = defaultState, action) => {
       return state;
   }
 };
-
-export default persist('cart', reducer, STATE_VERSION);

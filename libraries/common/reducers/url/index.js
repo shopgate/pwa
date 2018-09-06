@@ -3,21 +3,9 @@ import {
   RECEIVE_URL,
   ERROR_URL,
 } from '../../constants/ActionTypes';
-import { persist } from '../../store/persistent';
 
 const URL_LIFETIME = 31536000000; // 1 year in milliseconds
-
-/**
- * The current version of the state created by this reducer.
- * @type {string}
- */
-const STATE_VERSION = 'v1';
-
-/**
- * A blacklist of keys to not include in the localstorage.
- * @type {string}
- */
-const blacklist = ['checkout'];
+const defaultState = {};
 
 /**
  * Stores the requested urls
@@ -26,7 +14,7 @@ const blacklist = ['checkout'];
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const reducer = (state = {}, action) => {
+export default function urlReducer(state = defaultState, action) {
   switch (action.type) {
     case REQUEST_URL:
       return {
@@ -61,6 +49,4 @@ const reducer = (state = {}, action) => {
     default:
       return state;
   }
-};
-
-export default persist('url', reducer, STATE_VERSION, blacklist);
+}

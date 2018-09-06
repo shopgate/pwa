@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import {
   getProducts,
-  getCurrentProductId,
+  getProductId,
 } from '../../product/selectors/product';
 import { getKnownRelatives } from '../../product/selectors/variants';
 
@@ -11,7 +11,7 @@ const defaultIds = [];
  * @param {Object} state The global state.
  * @return {Object}
  */
-export const getFavoritesState = state => state.favorites;
+export const getFavoritesState = state => state.favorites || {};
 
 /**
  * @param {Object} state The global state.
@@ -108,7 +108,7 @@ export const isFetching = createSelector(
  * @return {boolean}
  */
 export const isCurrentProductOnFavoriteList = createSelector(
-  getCurrentProductId,
+  getProductId,
   getFavoritesProductsIds,
   (productId, ids) => ids.indexOf(productId) !== -1
 );

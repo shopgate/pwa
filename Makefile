@@ -51,7 +51,9 @@ clean:
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
 		lerna clean --yes
+		rm -f ./.git/hooks/pre-commit
 		rm -rf ./node_modules/
+		rm -rf ./.cache-loader/
 		lerna bootstrap
 
 # Lerna change all the version numbers.
@@ -109,6 +111,9 @@ e2e-gmd:
 
 e2e-ios11:
 		cd themes/ios11 && yarn run e2e
+
+e2e-checkout:
+		cd themes/gmd && yarn run e2e:checkout
 
 # DEFINITIONS
 

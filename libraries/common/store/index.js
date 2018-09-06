@@ -1,24 +1,49 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { applyWorker } from 'redux-worker';
-import { initPersistentStorage } from './persistent';
+import { persistState } from '@virtuous/redux-persister';
+import syncRouter from '@virtuous/redux-conductor';
+import persistedReducers from '../collections/PersistedReducers';
+import initScubribers from '../subscriptions';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
 /**
+ * The current version of the state created by this reducer.
+ * @type {string}
+ */
+const STATE_VERSION = 'v1';
+const storeKey = `shopgate-connect_${STATE_VERSION}`;
+
+let initialState;
+
+if (window.localStorage) {
+  initialState = JSON.parse(window.localStorage.getItem(storeKey));
+}
+
+/**
  * Configures the redux store with all it's middleware and enhancers.
  * @param {Function} reducers The reducers from the theme.
- * @param {Function} Worker The web worker.
+ * @param {Array} subscribers The subscribers to the streams middleware.
  * @return {Object} The redux store.
  */
-const configureStore = (reducers, Worker) => createStore(
-  reducers, // The reducers.
-  initPersistentStorage(), // The peristent store from localstorage / indexedDb
-  composeWithDevTools(
-    applyMiddleware(thunk, streams, logger),
-    applyWorker(new Worker())
-  )
-);
+export function configureStore(reducers, subscribers) {
+  const store = createStore(
+    reducers,
+    initialState,
+    composeWithDevTools(
+      applyMiddleware(thunk, streams, logger),
+      persistState({
+        key: storeKey,
+        paths: persistedReducers.getAll(),
+      })
+    )
+  );
+
+  initScubribers(subscribers);
+  syncRouter(store);
+
+  return store;
+}
 
 export default configureStore;

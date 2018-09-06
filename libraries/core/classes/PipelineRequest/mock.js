@@ -1,5 +1,7 @@
 import { logger } from '../../helpers';
 import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
+import * as processTypes from '../../constants/ProcessTypes';
+import PipelineRequest from './index';
 
 /**
  * Mocked PipelineRequest.
@@ -7,7 +9,7 @@ import * as errorHandleTypes from '../../constants/ErrorHandleTypes';
  *
  * For more information and usage examples, please check the README.
  */
-class MockedPipelineRequest {
+class MockedPipelineRequest extends PipelineRequest {
   /**
    * Getter for mockedDispatchResolver which is an additional helper function for custom, mock-only
    * `dispatch()` resolver.
@@ -22,10 +24,14 @@ class MockedPipelineRequest {
    * @param {string} name The pipeline name.
    */
   constructor(name) {
+    super(name);
+
     this.name = name;
     this.input = {};
     this.handleErrors = errorHandleTypes.ERROR_HANDLE_DEFAULT;
     this.errorBlacklist = [];
+    this.process = processTypes.DEFAULT_PROCESSED;
+    this.timeout = undefined;
   }
 
   /**
@@ -35,6 +41,17 @@ class MockedPipelineRequest {
    */
   setInput(mockedInput = {}) {
     this.input = mockedInput;
+    return this;
+  }
+
+  /**
+   * Sets a timeout.
+   * @param {number} timeout Timeout.
+   * @returns {MockedPipelineRequest}
+   */
+  setTimeout(timeout) {
+    this.timeout = timeout;
+
     return this;
   }
 
@@ -59,6 +76,20 @@ class MockedPipelineRequest {
     return new Promise((resolve, reject) => {
       this.constructor.mockedDispatchResolver(this, resolve, reject);
     });
+  }
+
+  /**
+   * @param {string} processed The response process type.
+   * @return {PipelineRequest}
+   */
+  setResponseProcessed(processed = processTypes.DEFAULT_PROCESSED) {
+    if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
+    if (!Object.values(processTypes).includes(processed)) {
+      throw new Error(`The value '${processed}' is not supported!`);
+    }
+
+    this.process = processed;
+    return this;
   }
 
   /**
