@@ -26,6 +26,15 @@ class NavDrawerItem extends Component {
   };
 
   /**
+   * Only re-render when the label prop changes.
+   * @param {Object} nextProps The next component props.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    return this.props.label !== nextProps.label;
+  }
+
+  /**
    * Handles an Item click by executing it's href.
    * @param {Object} props The component props.
    */
