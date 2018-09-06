@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Provider as StoreProvider } from 'redux-props';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
 
 // if (process.env.NODE_ENV !== 'production') {
 //   const { whyDidYouUpdate } = require('why-did-you-update');
-//   whyDidYouUpdate(React, {});
+//   whyDidYouUpdate(React);
 // }
 
 /**
@@ -36,15 +35,13 @@ class App extends Component {
    */
   render() {
     return (
-      <StoreProvider store={this.props.store}>
-        <Provider store={this.props.store}>
-          <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
-            <div>
-              {this.props.children}
-            </div>
-          </I18n.Provider>
-        </Provider>
-      </StoreProvider>
+      <Provider store={this.props.store}>
+        <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
+          <div>
+            {this.props.children}
+          </div>
+        </I18n.Provider>
+      </Provider>
     );
   }
 }
