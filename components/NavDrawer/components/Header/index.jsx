@@ -1,51 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
+import colors from 'Styles/colors';
+import consume from './consumer';
 import styles from './style';
-import Item from '../Item';
 
 /**
- * The Header component.
+ * The NavDrawerHeader component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Header = (props) => {
-  if (!props.user) {
+const NavDrawerHeader = ({ email, name, openLogin }) => {
+  if (!email) {
     return (
-      <div className={styles.container} data-test-id="NavDrawerLoginButton">
-        <Item
-          close={props.close}
-          href={LOGIN_PATH}
-          icon={AccountBoxIcon}
-          label="navigation.login_register"
-          primary
-        />
-      </div>
+      <NavDrawer.Item
+        icon={props => <AccountBoxIcon color={colors.light} {...props} />}
+        label="navigation.login_register"
+        onClick={openLogin}
+        style={{
+          background: colors.primary,
+          color: colors.light,
+        }}
+      />
     );
   }
 
   return (
     <div className={`${styles.container} ${styles.loggedIn}`} data-test-id="NavDrawerLoginButton">
       <div className={styles.welcome} data-test-id="LoginWelcome">
-        <I18n.Text string="navigation.welcome_message" params={{ name: props.user.firstName }} />
+        <I18n.Text string="navigation.welcome_message" params={{ name }} />
       </div>
       <div className={styles.mail}>
-        {props.user.mail}
+        {email}
       </div>
     </div>
   );
 };
 
-Header.propTypes = {
-  close: PropTypes.func,
-  user: PropTypes.shape(),
+NavDrawerHeader.propTypes = {
+  openLogin: PropTypes.func.isRequired,
+  email: PropTypes.string,
+  name: PropTypes.string,
 };
 
-Header.defaultProps = {
-  close: () => {},
-  user: null,
+NavDrawerHeader.defaultProps = {
+  email: null,
+  name: null,
 };
 
-export default Header;
+export default consume(NavDrawerHeader);

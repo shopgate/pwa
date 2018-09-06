@@ -10,6 +10,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import consume from '../../consumer';
+import Badge from './components/Badge';
 
 const LABEL = 'navigation.cart';
 
@@ -22,6 +23,7 @@ const CartButton = ({ navigate }) => (
     <Portal name={NAV_MENU_CART_BEFORE} />
     <Portal name={NAV_MENU_CART}>
       <NavDrawer.Item
+        badge={Badge}
         label={LABEL}
         icon={ShoppingCartIcon}
         onClick={navigate(CART_PATH, LABEL)}
