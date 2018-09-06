@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
 import openFilterRoute from '../../actions/openFilterRoute';
 
 /**
@@ -18,6 +19,7 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   openFilters: () => dispatch(openFilterRoute()),
+  updateFilters: filters => dispatch(updateFilters(filters)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

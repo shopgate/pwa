@@ -181,7 +181,7 @@ class FilterContent extends Component {
 
           if (filter.type === FILTER_TYPE_RANGE) {
             return (
-              <Fragment>
+              <Fragment key={filter.id}>
                 <Portal name={portals.FILTER_PRICE_RANGE_BEFORE} props={portalProps} />
                 <Portal name={portals.FILTER_PRICE_RANGE} props={portalProps}>
                   <PriceSlider
