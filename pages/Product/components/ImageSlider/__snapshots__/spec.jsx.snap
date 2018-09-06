@@ -1,0 +1,498 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductImageSlider /> should render featured image if only product data a is available 1`] = `
+<Connect(ImageSlider)
+  productId="913"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ImageSlider
+    images={null}
+    navigate={[Function]}
+    product={
+      Object {
+        "ageRating": 0,
+        "availability": Object {
+          "state": "ok",
+          "text": "In stock",
+        },
+        "baseProductId": null,
+        "featuredImageUrl": "featured.png",
+        "flags": Object {
+          "hasChildren": false,
+          "hasOptions": false,
+          "hasVariants": false,
+        },
+        "highlight": true,
+        "id": "913",
+        "identifiers": Object {
+          "sku": "857347363",
+        },
+        "liveshoppings": Array [],
+        "manufacturer": "",
+        "name": "This is a product with a very very long name -5-",
+        "price": Object {
+          "currency": "EUR",
+          "info": "",
+          "msrp": 0,
+          "taxAmount": 0,
+          "taxPercent": 0,
+          "tiers": Array [],
+          "unitPrice": 89,
+          "unitPriceMax": 1000,
+          "unitPriceMin": 0,
+          "unitPriceNet": 89,
+          "unitPriceStriked": 0,
+          "unitPriceWithTax": 89,
+        },
+        "rating": Object {
+          "average": 0,
+          "count": 0,
+          "reviewCount": 0,
+        },
+        "stock": Object {
+          "ignoreQuantity": true,
+          "info": "In stock",
+          "maxOrderQuantity": 10000,
+          "minOrderQuantity": 1,
+          "orderable": true,
+          "quantity": 0,
+        },
+      }
+    }
+    productId="913"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Component
+      direction="DIRECTION_ALL"
+      onPinchStart={[Function]}
+      onTap={[Function]}
+      options={
+        Object {
+          "recognizers": Object {
+            "pinch": Object {
+              "enable": true,
+            },
+          },
+          "touchAction": "pan-x pan-y",
+        }
+      }
+    >
+      <div>
+        <ProductImage
+          alt={null}
+          animating={true}
+          forcePlaceholder={false}
+          highestResolutionLoaded={[Function]}
+          ratio={null}
+          resolutions={
+            Array [
+              Object {
+                "height": 440,
+                "width": 440,
+              },
+              Object {
+                "height": 1024,
+                "width": 1024,
+              },
+            ]
+          }
+          src="featured.png"
+        >
+          <Image
+            alt={null}
+            animating={true}
+            backgroundColor="#fff"
+            className=""
+            forcePlaceholder={false}
+            highestResolutionLoaded={[Function]}
+            onError={[Function]}
+            onLoad={null}
+            ratio={null}
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+                Object {
+                  "height": 1024,
+                  "width": 1024,
+                },
+              ]
+            }
+            src="featured.png"
+            transition={null}
+          >
+            <div
+              className="css-1d0r90g "
+            />
+          </Image>
+        </ProductImage>
+      </div>
+    </Component>
+  </ImageSlider>
+</Connect(ImageSlider)>
+`;
+
+exports[`<ProductImageSlider /> should render image placeholder if no data is available 1`] = `
+<Connect(ImageSlider)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ImageSlider
+    images={null}
+    navigate={[Function]}
+    product={null}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Component
+      direction="DIRECTION_ALL"
+      onPinchStart={[Function]}
+      onTap={[Function]}
+      options={
+        Object {
+          "recognizers": Object {
+            "pinch": Object {
+              "enable": true,
+            },
+          },
+          "touchAction": "pan-x pan-y",
+        }
+      }
+    >
+      <div>
+        <ProductImage
+          alt={null}
+          animating={true}
+          forcePlaceholder={true}
+          highestResolutionLoaded={[Function]}
+          ratio={null}
+          resolutions={
+            Array [
+              Object {
+                "height": 440,
+                "width": 440,
+              },
+              Object {
+                "height": 1024,
+                "width": 1024,
+              },
+            ]
+          }
+          src={null}
+        >
+          <div
+            className="css-y5kkpq"
+          >
+            <div
+              className="css-15j45j0"
+              data-test-id="placeHolder"
+            >
+              <Placeholder
+                className="css-19rc2oq"
+              >
+                <Icon
+                  className="css-19rc2oq"
+                  color={null}
+                  content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                  size="inherit"
+                  viewBox="0 0 24 24"
+                >
+                  <svg
+                    className="css-yys9hb css-19rc2oq"
+                    dangerouslySetInnerHTML={
+                      Object {
+                        "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                      }
+                    }
+                    style={
+                      Object {
+                        "fill": null,
+                        "fontSize": "inherit",
+                      }
+                    }
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  />
+                </Icon>
+              </Placeholder>
+            </div>
+          </div>
+        </ProductImage>
+      </div>
+    </Component>
+  </ImageSlider>
+</Connect(ImageSlider)>
+`;
+
+exports[`<ProductImageSlider /> should render image slider if all data is available 1`] = `
+<Connect(ImageSlider)
+  productId="913"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ImageSlider
+    images={
+      Array [
+        "https://img-cdn.shopgate.com/image.jpg",
+      ]
+    }
+    navigate={[Function]}
+    product={
+      Object {
+        "ageRating": 0,
+        "availability": Object {
+          "state": "ok",
+          "text": "In stock",
+        },
+        "baseProductId": null,
+        "featuredImageUrl": "featured.png",
+        "flags": Object {
+          "hasChildren": false,
+          "hasOptions": false,
+          "hasVariants": false,
+        },
+        "highlight": true,
+        "id": "913",
+        "identifiers": Object {
+          "sku": "857347363",
+        },
+        "liveshoppings": Array [],
+        "manufacturer": "",
+        "name": "This is a product with a very very long name -5-",
+        "price": Object {
+          "currency": "EUR",
+          "info": "",
+          "msrp": 0,
+          "taxAmount": 0,
+          "taxPercent": 0,
+          "tiers": Array [],
+          "unitPrice": 89,
+          "unitPriceMax": 1000,
+          "unitPriceMin": 0,
+          "unitPriceNet": 89,
+          "unitPriceStriked": 0,
+          "unitPriceWithTax": 89,
+        },
+        "rating": Object {
+          "average": 0,
+          "count": 0,
+          "reviewCount": 0,
+        },
+        "stock": Object {
+          "ignoreQuantity": true,
+          "info": "In stock",
+          "maxOrderQuantity": 10000,
+          "minOrderQuantity": 1,
+          "orderable": true,
+          "quantity": 0,
+        },
+      }
+    }
+    productId="913"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  >
+    <Component
+      direction="DIRECTION_ALL"
+      onPinchStart={[Function]}
+      onTap={[Function]}
+      options={
+        Object {
+          "recognizers": Object {
+            "pinch": Object {
+              "enable": true,
+            },
+          },
+          "touchAction": "pan-x pan-y",
+        }
+      }
+    >
+      <div>
+        <ImageSlider
+          autoPlay={false}
+          className=""
+          classNames={Object {}}
+          controls={false}
+          disabled={false}
+          historyPath=""
+          indicators={true}
+          initialSlide={0}
+          interval={3000}
+          loop={true}
+          maxIndicators={null}
+          onSlideChange={[Function]}
+          slidesPerView={1}
+          snapItems={true}
+        >
+          <ProductImage
+            alt={null}
+            animating={false}
+            forcePlaceholder={false}
+            highestResolutionLoaded={[Function]}
+            key=".$https=2//img-cdn.shopgate.com/image.jpg"
+            ratio={null}
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+                Object {
+                  "height": 1024,
+                  "width": 1024,
+                },
+              ]
+            }
+            src="https://img-cdn.shopgate.com/image.jpg"
+          >
+            <Image
+              alt={null}
+              animating={false}
+              backgroundColor="#fff"
+              className=""
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              onError={[Function]}
+              onLoad={null}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                  Object {
+                    "height": 1024,
+                    "width": 1024,
+                  },
+                ]
+              }
+              src="https://img-cdn.shopgate.com/image.jpg"
+              transition={null}
+            >
+              <div
+                className="css-1d0r90g "
+              />
+            </Image>
+          </ProductImage>
+        </ImageSlider>
+      </div>
+    </Component>
+  </ImageSlider>
+</Connect(ImageSlider)>
+`;

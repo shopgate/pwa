@@ -15,10 +15,9 @@ module.exports = {
   testPathIgnorePatterns: [
     ...defaultConfig.testPathIgnorePatterns,
     '/extensions/',
-    '/widgets/',
   ],
   coveragePathIgnorePatterns: [
     '/extensions/',
-    '/widgets/',
+    '/e2e/'
   ],
 };

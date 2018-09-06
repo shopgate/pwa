@@ -9,13 +9,15 @@ import Chip from '@shopgate/pwa-ui-shared/Chip';
  * @return {JSX|null}
  */
 const Chips = ({ values }) => {
-  if (!values || (values && values.length === 0)) {
+  if (!values) {
     return null;
   }
 
+  const collection = [].concat(values);
+
   return (
     <ChipLayout maxRows={3} moreLabel="filter.view_all" invertMoreButton>
-      {values.map(value => (
+      {collection.map(value => (
         <Chip invert removable={false} key={value}>
           {value}
         </Chip>
@@ -25,7 +27,10 @@ const Chips = ({ values }) => {
 };
 
 Chips.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.string),
+  values: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
 };
 
 Chips.defaultProps = {

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { ACTION_PUSH } from '@virtuous/conductor/constants';
-import { navigate } from '@shopgate/pwa-common/action-creators/router';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { getProductDescription } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
@@ -19,21 +18,7 @@ const mapStateToProps = (state, props) => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  navigate: url => dispatch(navigate(ACTION_PUSH, url)),
+  navigate: pathname => dispatch(historyPush({ pathname })),
 });
 
-/**
- * Check to see if the product description has arrived.
- * @param {Object} next The next props.
- * @param {Object} prev the previous props.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.html && next.html) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
+export default connect(mapStateToProps, mapDispatchToProps);

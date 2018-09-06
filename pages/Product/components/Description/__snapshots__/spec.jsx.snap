@@ -3,6 +3,7 @@
 exports[`<ProductDescription /> should not render if no data is available 1`] = `
 <Description
   html={null}
+  navigate={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -15,7 +16,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
   }
 >
   <div
-    className="css-1mfzgeo"
+    className="css-1yk42h8"
   >
     <div
       className="css-10lhp8m"
@@ -96,6 +97,7 @@ exports[`<ProductDescription /> should not render if no data is available 1`] = 
 exports[`<ProductDescription /> should render description if data is available 1`] = `
 <Description
   html="<h1>foo</h1>"
+  navigate={[Function]}
   store={
     Object {
       "clearActions": [Function],
@@ -108,7 +110,7 @@ exports[`<ProductDescription /> should render description if data is available 1
   }
 >
   <div
-    className="css-1mfzgeo"
+    className="css-1yk42h8"
   >
     <div
       className="css-10lhp8m"
@@ -131,13 +133,14 @@ exports[`<ProductDescription /> should render description if data is available 1
       ready={true}
     >
       <div
-        className="css-1yao1fe"
+        className="css-jo3g31"
         data-test-id="<h1>foo</h1>"
       >
         <HtmlSanitizer
           decode={false}
           settings={
             Object {
+              "handleClick": [Function],
               "html": "<h1>foo</h1>",
             }
           }

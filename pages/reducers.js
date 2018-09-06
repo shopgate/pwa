@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import persistReducers from '@shopgate/pwa-common/collections/PersistedReducers';
 import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
@@ -6,7 +7,6 @@ import page from '@shopgate/pwa-common/reducers/page';
 import view from '@shopgate/pwa-common/reducers/view';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
-import toast from '@shopgate/pwa-common/reducers/toast';
 import cart from '@shopgate/pwa-common-commerce/cart/reducers';
 import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
@@ -18,7 +18,15 @@ import router from '@virtuous/redux-conductor/reducer';
 import navigator from 'Components/Navigator/reducer';
 import extensions from 'Extensions/reducers';
 import general from 'Components/View/reducer';
-import categoryPage from 'Pages/Category/reducer';
+import viewSwitch from 'Components/FilterBar/components/Content/components/ViewSwitch/reducer';
+
+persistReducers.set([
+  'cart',
+  'client',
+  'page',
+  'url',
+  'user',
+]);
 
 const reducers = combineReducers({
   cart,
@@ -35,10 +43,9 @@ const reducers = combineReducers({
   router,
   reviews,
   search,
-  toast,
   ui: combineReducers({
     general,
-    categoryPage,
+    viewSwitch,
   }),
   url,
   user,

@@ -1,37 +1,51 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Content from './index';
-import Logo from './components/Logo';
-import Title from './components/Title';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import NavigatorContent from './index';
+import { defaultState } from '../../mock';
 
+const mockedStore = configureStore();
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => (obj) => {
-  const newObj = obj;
+jest.mock('../../context');
 
-  newObj.defaultProps = {
-    ...newObj.defaultProps,
-    historyLength: 1,
-    action: 'POP',
-    title: 'My Title',
-    submitSearch: () => {},
-    getQueryParam: () => null,
-  };
-
-  return newObj;
+beforeEach(() => {
+  jest.resetModules();
 });
 
-describe('<Content />', () => {
+/**
+ * Creates component with provided store state.
+ * @param {Object} props Mocked props.
+ * @return {ReactWrapper}
+ */
+const createComponent = (props) => {
+  const store = mockedStore({
+    ...defaultState,
+    ui: {
+      general: {
+        title: 'test',
+      },
+    },
+  });
+  return mount((
+    <Provider store={store}>
+      <NavigatorContent {...props} />
+    </Provider>, mockRenderOptions
+  ));
+};
+
+describe('<NavigatorContent />', () => {
   it('should render the logo', () => {
-    const wrapper = shallow(<Content path="/" />);
+    const wrapper = createComponent({ routePattern: '/' });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Logo).exists()).toBe(true);
+    expect(wrapper.find('Logo').exists()).toBe(true);
   });
 
   it('should render the title', () => {
-    const wrapper = shallow(<Content path="some/other/path" />);
-
+    const wrapper = createComponent({ routePattern: 'some/other/path' });
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Title).exists()).toBe(true);
+    expect(wrapper.find('Title').exists()).toBe(true);
   });
 });

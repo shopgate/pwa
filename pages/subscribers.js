@@ -14,13 +14,14 @@ import commerceSearch from '@shopgate/pwa-common-commerce/search/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
-import trackingProduct from '@shopgate/pwa-tracking/subscriptions/product';
-import trackingUser from '@shopgate/pwa-tracking/subscriptions/user';
+// import trackingProduct from '@shopgate/pwa-tracking/subscriptions/product';
+// import trackingUser from '@shopgate/pwa-tracking/subscriptions/user';
 import trackingCart from '@shopgate/pwa-tracking/subscriptions/cart';
-import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
-import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
-import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
+// import trackingCheckout from '@shopgate/pwa-tracking/subscriptions/checkout';
+// import trackingSearch from '@shopgate/pwa-tracking/subscriptions/search';
+// import trackingDeeplinkPush from '@shopgate/pwa-tracking/subscriptions/deeplinkPush';
 // Theme
+import app from 'Pages/subscriptions';
 import navigator from 'Components/Navigator/subscriptions';
 import viewport from 'Components/Viewport/subscriptions';
 import rootCategory from 'Pages/RootCategory/subscriptions';
@@ -29,6 +30,7 @@ import cart from 'Pages/Cart/subscriptions';
 import coupon from 'Pages/Cart/components/CouponField/subscriptions';
 import favorites from 'Pages/Favorites/subscriptions';
 import filter from 'Pages/Filter/subscriptions';
+import filterAttribute from 'Pages/FilterAttribute/subscriptions';
 import filterbar from 'Components/FilterBar/subscriptions';
 import gallery from 'Pages/ProductGallery/subscriptions';
 import login from 'Pages/Login/subscriptions';
@@ -40,12 +42,8 @@ import writeReview from 'Pages/WriteReview/subscriptions';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 // Extensions
 import extensions from 'Extensions/subscribers';
-// App
-import app from './subscriptions';
 
 const subscriptions = [
-  // App subscribers.
-  app,
   // Common subscribers.
   commonApp,
   commonHistory,
@@ -62,13 +60,14 @@ const subscriptions = [
   // Tracking subscribers.
   trackingSetup,
   trackingPages,
-  trackingProduct,
-  trackingUser,
+  // trackingProduct,
+  // trackingUser,
   trackingCart,
-  trackingCheckout,
-  trackingSearch,
-  trackingDeeplinkPush,
+  // trackingCheckout,
+  // trackingSearch,
+  // trackingDeeplinkPush,
   // Theme subscribers.
+  app,
   navigator,
   viewport,
   rootCategory,
@@ -77,6 +76,7 @@ const subscriptions = [
   coupon,
   favorites,
   filter,
+  filterAttribute,
   filterbar,
   gallery,
   login,

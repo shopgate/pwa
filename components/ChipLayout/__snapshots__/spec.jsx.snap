@@ -6,12 +6,13 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
   invertMoreButton={false}
   maxRows={2}
   moreLabel="more"
+  pathname=""
 >
   <div
-    className="css-2g949"
+    className="css-1hor112"
   >
     <div
-      className="css-dzs3g7"
+      className="css-1ck9rgi"
     >
       <Chip
         invert={false}
@@ -20,17 +21,17 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removable={true}
       >
         <div
-          className="css-11a1u6a"
+          className="css-bpa25c"
         >
           <Button
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="remove foo"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="remove foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -69,11 +70,11 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="foo"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -84,7 +85,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       </Chip>
     </div>
     <div
-      className="css-u9gfar"
+      className="css-1sunnf0"
     >
       <RippleButton
         className="css-rz4b27"
@@ -163,12 +164,13 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
   invertMoreButton={false}
   maxRows={2}
   moreLabel="more"
+  pathname=""
 >
   <div
-    className="css-2g949"
+    className="css-1hor112"
   >
     <div
-      className="css-dzs3g7"
+      className="css-1ck9rgi"
     >
       <Chip
         invert={false}
@@ -177,17 +179,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="css-11a1u6a"
+          className="css-bpa25c"
         >
           <Button
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="remove foo"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="remove foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -226,11 +228,11 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="foo"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="foo"
               disabled={false}
               onClick={[Function]}
             >
@@ -246,17 +248,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removable={true}
       >
         <div
-          className="css-11a1u6a"
+          className="css-bpa25c"
         >
           <Button
             className="css-i7sqdh"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="remove bar"
           >
             <button
               className="css-i7sqdh css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="remove bar"
               disabled={false}
               onClick={[Function]}
             >
@@ -295,11 +297,11 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             className="css-1al9zi1"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="bar"
           >
             <button
               className="css-1al9zi1 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="bar"
               disabled={false}
               onClick={[Function]}
             >
@@ -310,7 +312,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       </Chip>
     </div>
     <div
-      className="css-u9gfar"
+      className="css-1sunnf0"
     >
       <RippleButton
         className="css-rz4b27"

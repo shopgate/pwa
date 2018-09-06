@@ -8,7 +8,7 @@ import { isRelativeProductOnList } from '@shopgate/pwa-common-commerce/favorites
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, { product }) => ({
-  isFavorite: isRelativeProductOnList(state, product.id),
+  isFavorite: isRelativeProductOnList(state, { productId: product.id }),
 });
 
 export default connect(mapStateToProps);

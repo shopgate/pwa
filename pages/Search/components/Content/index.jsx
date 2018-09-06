@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
+import FilterBar from 'Components/FilterBar';
 import Products from '../Products';
 import connect from './connector';
 
@@ -10,9 +11,9 @@ import connect from './connector';
  */
 class SearchContent extends Component {
   static propTypes = {
-    hasResults: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
     searchPhrase: PropTypes.string.isRequired,
+    showFilterBar: PropTypes.bool.isRequired,
+    showNoResults: PropTypes.bool.isRequired,
   }
 
   /**
@@ -21,8 +22,8 @@ class SearchContent extends Component {
    */
   shouldComponentUpdate(nextProps) {
     return (
-      this.props.hasResults !== nextProps.hasResults
-      || this.props.isLoading !== nextProps.isLoading
+      (this.props.showNoResults !== nextProps.showNoResults)
+      || (this.props.showFilterBar !== nextProps.showFilterBar)
     );
   }
 
@@ -30,11 +31,17 @@ class SearchContent extends Component {
    * @return {JSX}
    */
   render() {
-    const { hasResults, isLoading, searchPhrase } = this.props;
+    const {
+      searchPhrase,
+      showFilterBar,
+      showNoResults,
+    } = this.props;
+
     return (
       <Fragment>
+        {showFilterBar && <FilterBar searchPhrase={searchPhrase} />}
         <Products searchPhrase={searchPhrase} sortOrder={DEFAULT_SORT} />
-        {(!hasResults && !isLoading) && (
+        {showNoResults && (
           <NoResults
             headlineText="search.no_result.heading"
             bodyText="search.no_result.body"

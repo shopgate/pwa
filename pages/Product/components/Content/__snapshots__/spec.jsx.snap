@@ -1,0 +1,3480 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductContent /> rendering when all relevant data is available inside the store should handle variant product updates 1`] = `
+<Connect(ProductContent)
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={false}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_2",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when all relevant data is available inside the store should handle variant product updates 2`] = `
+<Connect(ProductContent)
+  productId="product_3"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={false}
+    productId="product_3"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_3"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_3",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_3"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when all relevant data is available inside the store should render a product without variants 1`] = `
+<Connect(ProductContent)
+  productId="product_5"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_5"
+    isVariant={false}
+    productId="product_5"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_5",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_5"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_5"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when all relevant data is available inside the store should render a variant product 1`] = `
+<Connect(ProductContent)
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={false}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_2",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products initialization with a variant product should initialize as expected when no data is available at all 1`] = `
+<Connect(ProductContent)
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_2"
+    isVariant={false}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_2",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_2"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products initialization with a variant product should render as expected when all data comes available 1`] = `
+<Connect(ProductContent)
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={false}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_2",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products initialization with a variant product should render as expected when base product data came in but the rest is still fetching 1`] = `
+<Connect(ProductContent)
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_2"
+    isVariant={false}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_2",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_2"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products initialization with a variant product should render as expected when variant data came in but the variant product data is still fetching 1`] = `
+<Connect(ProductContent)
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_2"
+    isVariant={false}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_2",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_2"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_2"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products switch from a base product to a variant product whose data is not fetched yet should initialize with the base product 1`] = `
+<Connect(ProductContent)
+  productId="product_1"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={false}
+    productId="product_1"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_1"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products switch from a base product to a variant product whose data is not fetched yet should render as expected when switching to the variant product whose data is not available yet 1`] = `
+<Connect(ProductContent)
+  isVariant={true}
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_2"
+    isVariant={true}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_2",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products switch from a base product to a variant product whose data is not fetched yet should render as expected when the variant product data comes available 1`] = `
+<Connect(ProductContent)
+  isVariant={true}
+  productId="product_2"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={true}
+    productId="product_2"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_2",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products switch from one variant product to another one should initialize with the initial variant product 1`] = `
+<Connect(ProductContent)
+  productId="product_1"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  variantId="product_2"
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={false}
+    productId="product_1"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_2",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_2"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_2"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products switch from one variant product to another one should render as expected when switching to another variant product whose data is not fetched yet 1`] = `
+<Connect(ProductContent)
+  isVariant={true}
+  productId="product_3"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  variantId="product_2"
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={true}
+    productId="product_3"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_3",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_3"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store products with variant products switch from one variant product to another one should render as expected when the variant product data comes available  1`] = `
+<Connect(ProductContent)
+  isVariant={true}
+  productId="product_3"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  variantId="product_2"
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_1"
+    isVariant={true}
+    productId="product_3"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId="product_2"
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_1",
+          "variantId": "product_3",
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_3"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_1"
+            variantId="product_3"
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_1"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store simple products initialization should initialize as expected when product data is not available yet 1`] = `
+<Connect(ProductContent)
+  productId="product_5"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_5"
+    isVariant={false}
+    productId="product_5"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_5",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_5"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_5"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;
+
+exports[`<ProductContent /> rendering when product data is not available inside the store simple products initialization should update as expected when data became available 1`] = `
+<Connect(ProductContent)
+  productId="product_5"
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <ProductContent
+    addToCart={[Function]}
+    baseProductId="product_5"
+    isVariant={false}
+    productId="product_5"
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+    variantId={null}
+  >
+    <Provider
+      value={
+        Object {
+          "conditioner": Conditioner {
+            "conditioners": Map {},
+          },
+          "options": Object {},
+          "productId": "product_5",
+          "variantId": null,
+        }
+      }
+    >
+      <div>
+        <Portal
+          name="product.image.before"
+          props={null}
+        />
+        <Portal
+          name="product.image"
+          props={null}
+        >
+          <ImageSlider
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </ImageSlider>
+        </Portal>
+        <Portal
+          name="product.image.after"
+          props={null}
+        />
+        <Portal
+          name="product.header.before"
+          props={null}
+        />
+        <Portal
+          name="product.header"
+          props={null}
+        >
+          <ProductHeader>
+            <div />
+          </ProductHeader>
+        </Portal>
+        <Portal
+          name="product.header.after"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select.before"
+          props={null}
+        />
+        <Portal
+          name="product.variant-select"
+          props={null}
+        >
+          <Characteristics
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Characteristics>
+        </Portal>
+        <Portal
+          name="product.variant-select.after"
+          props={null}
+        />
+        <Portal
+          name="product.options.before"
+          props={null}
+        />
+        <Portal
+          name="product.options"
+          props={null}
+        >
+          <Options
+            currentOptions={Object {}}
+            productId="product_5"
+            storeSelection={[Function]}
+          >
+            <div />
+          </Options>
+        </Portal>
+        <Portal
+          name="product.options.after"
+          props={null}
+        />
+        <Portal
+          name="product.description.before"
+          props={null}
+        />
+        <Portal
+          name="product.description"
+          props={null}
+        >
+          <Description
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Description>
+        </Portal>
+        <Portal
+          name="product.description.after"
+          props={null}
+        />
+        <Portal
+          name="product.properties.before"
+          props={null}
+        />
+        <Portal
+          name="product.properties"
+          props={null}
+        >
+          <Properties
+            productId="product_5"
+            variantId={null}
+          >
+            <div />
+          </Properties>
+        </Portal>
+        <Portal
+          name="product.properties.after"
+          props={null}
+        />
+        <Portal
+          name="product.reviews.before"
+          props={null}
+        />
+        <Portal
+          name="product.reviews"
+          props={null}
+        >
+          <Reviews
+            productId="product_5"
+          >
+            <div />
+          </Reviews>
+        </Portal>
+        <Portal
+          name="product.reviews.after"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer.before"
+          props={null}
+        />
+        <Portal
+          name="product.tax-disclaimer"
+          props={null}
+        >
+          <TaxDisclaimer>
+            <div />
+          </TaxDisclaimer>
+        </Portal>
+        <Portal
+          name="product.tax-disclaimer.after"
+          props={null}
+        />
+      </div>
+    </Provider>
+  </ProductContent>
+</Connect(ProductContent)>
+`;

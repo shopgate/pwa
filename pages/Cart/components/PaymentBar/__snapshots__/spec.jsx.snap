@@ -1,722 +1,1760 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PaymentBar /> should be visible if prop isVisible is true 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
+<Provider
+  store={
     Object {
-      "shipping.free_short": "Free",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <PaymentBar
-    currency="USD"
-    isVisible={true}
-  >
-    <Sheet
-      animation={
-        Object {
-          "in": "css-31n36f",
-          "out": "css-gyrv08",
-        }
+  <I18nProvider
+    lang="en-US"
+    locales={
+      Object {
+        "shipping.free_short": "Free",
       }
-      backdrop={false}
-      duration={300}
-      isOpen={true}
-      onClose={null}
-      onOpen={[Function]}
-      title=""
+    }
+  >
+    <PaymentBar
+      currency="USD"
+      isVisible={true}
+      onSize={[Function]}
     >
-      <section>
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": 300,
-              "in": "css-31n36f",
-              "out": "css-gyrv08",
-            }
+      <Sheet
+        animation={
+          Object {
+            "in": "css-31n36f",
+            "out": "css-gyrv08",
           }
-          className="css-h69706"
-          isOpen={true}
-          onClose={null}
-          onOpen={[Function]}
-        >
-          <div
-            className="css-h69706 css-1rg7udn css-31n36f"
-            onAnimationEnd={[Function]}
-            style={
+        }
+        backdrop={false}
+        duration={300}
+        isOpen={true}
+        onClose={[Function]}
+        onOpen={[Function]}
+        title=""
+      >
+        <section>
+          <Drawer
+            alwaysActive={false}
+            animation={
               Object {
-                "animationDuration": "300ms",
+                "duration": 300,
+                "in": "css-31n36f",
+                "out": "css-gyrv08",
               }
             }
+            className="css-h69706"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-h69706 css-1rg7udn css-31n36f"
+              onAnimationEnd={[Function]}
+              style={
+                Object {
+                  "animationDuration": "300ms",
+                }
+              }
             >
-              <Grid
-                className="css-7hjff2"
-                component="ul"
-                key=".0"
-                wrap={false}
+              <div
+                className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
-                <ul
-                  className="css-7hjff2 css-h7r55a"
+                <Content
+                  key=".0"
+                  onClose={[Function]}
+                  onSize={[Function]}
                 >
-                  <GridItem
-                    className="css-1e1nulz"
-                    component="li"
-                    grow={1}
-                    shrink={1}
-                  >
-                    <li
-                      className="css-1e1nulz css-1gs0ko2"
+                  <div>
+                    <Portal
+                      name="cart.payment-bar.before"
+                      props={null}
+                    />
+                    <Portal
+                      name="cart.payment-bar"
+                      props={null}
                     >
-                      <div
-                        className="css-w6053m"
+                      <Grid
+                        className="css-7hjff2"
+                        component="ul"
+                        wrap={false}
                       >
-                        <SubTotalLabel
-                          isDisabled={false}
+                        <ul
+                          className="css-7hjff2 css-h7r55a"
                         >
-                          <div
-                            className="css-16equ4n "
+                          <GridItem
+                            className="css-1e1nulz"
+                            component="li"
+                            grow={1}
+                            shrink={1}
                           >
-                            <Translate
-                              className=""
-                              params={Object {}}
-                              string="cart.subtotal"
+                            <li
+                              className="css-1e1nulz css-1gs0ko2"
                             >
-                              <span
-                                className=""
+                              <div
+                                className="css-w6053m"
                               >
-                                cart.subtotal
-                              </span>
-                            </Translate>
-                            :
-                          </div>
-                        </SubTotalLabel>
-                        <ShippingCostsLabel
-                          isDisabled={false}
-                          shipping={2.99}
-                        >
-                          <div
-                            className="css-1h55xt0 "
-                          >
-                            <div
-                              className="css-1e5ezpm"
-                            >
-                              <InfoOutline>
-                                <Icon
-                                  className=""
-                                  color={null}
-                                  content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>"
-                                  size="inherit"
-                                  viewBox="0 0 24 24"
+                                <SubTotalLabel
+                                  isDisabled={false}
                                 >
-                                  <svg
-                                    className="css-yys9hb "
-                                    dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\\"/>",
-                                      }
-                                    }
-                                    style={
-                                      Object {
-                                        "fill": null,
-                                        "fontSize": "inherit",
-                                      }
-                                    }
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  />
-                                </Icon>
-                              </InfoOutline>
-                            </div>
-                            <Translate
-                              className=""
-                              params={Object {}}
-                              string="titles.shipping"
-                            >
-                              <span
-                                className=""
-                              >
-                                titles.shipping
-                              </span>
-                            </Translate>
-                            :
-                          </div>
-                        </ShippingCostsLabel>
-                      </div>
-                    </li>
-                  </GridItem>
-                  <GridItem
-                    className="css-127o4v1"
-                    component="li"
-                    grow={1}
-                    shrink={1}
-                  >
-                    <li
-                      className="css-127o4v1 css-1gs0ko2"
-                    >
-                      <div
-                        className="css-w6053m"
-                      >
-                        <SubTotal
-                          currency="USD"
-                          isDisabled={false}
-                          value={4.99}
-                        >
-                          <div
-                            className="css-rxk16i "
-                          >
-                            <FormatPrice
-                              currency="USD"
-                              fractions={true}
-                              price={4.99}
-                            >
-                              <span>
-                                $4.99
-                              </span>
-                            </FormatPrice>
-                          </div>
-                        </SubTotal>
-                        <ShippingCosts
-                          currency="USD"
-                          isDisabled={false}
-                          value={2.99}
-                        >
-                          <div
-                            className="css-13f0gfi "
-                          >
-                            <FormatPrice
-                              currency="USD"
-                              fractions={true}
-                              price={2.99}
-                            >
-                              <span>
-                                $2.99
-                              </span>
-                            </FormatPrice>
-                          </div>
-                        </ShippingCosts>
-                      </div>
-                    </li>
-                  </GridItem>
-                  <GridItem
-                    className="css-127o4v1"
-                    component="li"
-                    grow={1}
-                    shrink={1}
-                  >
-                    <li
-                      className="css-127o4v1 css-1gs0ko2"
-                    >
-                      <div
-                        className="css-w6053m"
-                      >
-                        <div
-                          className="css-tmwobs"
-                        >
-                          <CheckoutButton
-                            isActive={true}
-                            pushHistory={[Function]}
-                          >
-                            <RippleButton
-                              className=""
-                              disabled={false}
-                              flat={false}
-                              onClick={[Function]}
-                              rippleClassName=""
-                              rippleSize={null}
-                              type="secondary"
-                              wrapContent={true}
-                            >
-                              <Button
-                                className=""
-                                disabled={false}
-                                flat={false}
-                                onClick={[Function]}
-                                type="secondary"
-                                wrapContent={false}
-                              >
-                                <Button
-                                  className="css-5xfjjh "
-                                  disabled={false}
-                                  onClick={[Function]}
-                                >
-                                  <button
-                                    className="css-5xfjjh  css-1rn65c0"
-                                    disabled={false}
-                                    onClick={[Function]}
+                                  <div
+                                    className=""
                                   >
-                                    <Ripple
-                                      className="css-8s1fw2 "
-                                      color="#000"
-                                      fill={true}
-                                      overflow={false}
-                                      size={null}
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.subtotal"
                                     >
-                                      <div
-                                        aria-hidden={true}
-                                        className="css-8s1fw2 "
-                                        onClick={[Function]}
-                                        style={null}
+                                      <span
+                                        className=""
                                       >
-                                        <Translate
-                                          className=""
-                                          params={Object {}}
-                                          string="cart.checkout"
+                                        cart.subtotal
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </SubTotalLabel>
+                                <ShippingCostsLabel
+                                  isDisabled={false}
+                                  shipping={2.99}
+                                >
+                                  <div
+                                    className="css-1h55xt0 "
+                                    data-test-id="shippingLabel"
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="titles.shipping"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        titles.shipping
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </ShippingCostsLabel>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotal
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={4.99}
+                                >
+                                  <div
+                                    className="css-syjz65 "
+                                    data-test-id="subTotal: 4.99"
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={4.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $4.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </SubTotal>
+                                <ShippingCosts
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={2.99}
+                                >
+                                  <div
+                                    className="css-13f0gfi "
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={2.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $2.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </ShippingCosts>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <div
+                                  className="css-tmwobs"
+                                >
+                                  <CheckoutButton
+                                    isActive={true}
+                                    pushHistory={[Function]}
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/checkout"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/checkout"
+                                        navigate={[Function]}
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
                                         >
-                                          <span
-                                            className=""
+                                          <RippleButton
+                                            className="css-1mlc9hd"
+                                            disabled={false}
+                                            flat={false}
+                                            onClick={null}
+                                            rippleClassName=""
+                                            rippleSize={null}
+                                            testId="Button"
+                                            type="regular"
+                                            wrapContent={true}
                                           >
-                                            cart.checkout
-                                          </span>
-                                        </Translate>
-                                      </div>
-                                    </Ripple>
-                                  </button>
-                                </Button>
-                              </Button>
-                            </RippleButton>
-                          </CheckoutButton>
-                        </div>
-                      </div>
-                    </li>
-                  </GridItem>
-                </ul>
-              </Grid>
+                                            <Button
+                                              className="css-1mlc9hd"
+                                              disabled={false}
+                                              flat={false}
+                                              onClick={null}
+                                              testId="Button"
+                                              type="regular"
+                                              wrapContent={false}
+                                            >
+                                              <Button
+                                                className="css-kevfw8 css-1mlc9hd"
+                                                disabled={false}
+                                                onClick={null}
+                                                testId="Button"
+                                              >
+                                                <button
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                  data-test-id="Button"
+                                                  disabled={false}
+                                                  onClick={null}
+                                                >
+                                                  <Ripple
+                                                    className="css-8s1fw2 "
+                                                    color="#000"
+                                                    disabled={false}
+                                                    fill={true}
+                                                    onClick={[Function]}
+                                                    onComplete={[Function]}
+                                                    overflow={false}
+                                                    size={null}
+                                                  >
+                                                    <div
+                                                      aria-hidden={true}
+                                                      className="css-8s1fw2 "
+                                                      data-test-id="Ripple"
+                                                      onClick={[Function]}
+                                                      style={null}
+                                                    >
+                                                      <Translate
+                                                        className=""
+                                                        params={Object {}}
+                                                        string="cart.checkout"
+                                                      >
+                                                        <span
+                                                          className=""
+                                                        >
+                                                          cart.checkout
+                                                        </span>
+                                                      </Translate>
+                                                    </div>
+                                                  </Ripple>
+                                                </button>
+                                              </Button>
+                                            </Button>
+                                          </RippleButton>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </CheckoutButton>
+                                </div>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </Portal>
+                    <Portal
+                      name="cart.payment-bar.after"
+                      props={null}
+                    />
+                  </div>
+                </Content>
+              </div>
             </div>
-          </div>
-        </Drawer>
-      </section>
-    </Sheet>
-  </PaymentBar>
-</I18nProvider>
+          </Drawer>
+        </section>
+      </Sheet>
+    </PaymentBar>
+  </I18nProvider>
+</Provider>
 `;
 
 exports[`<PaymentBar /> should disable the component, if the isDisabled prop is true 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
+<Provider
+  store={
     Object {
-      "shipping.free_short": "Free",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <PaymentBar
-    currency="USD"
-    isDisabled={true}
-    isVisible={true}
-    onSize={[Function]}
-  >
-    <Sheet
-      animation={
-        Object {
-          "in": "css-31n36f",
-          "out": "css-gyrv08",
-        }
+  <I18nProvider
+    lang="en-US"
+    locales={
+      Object {
+        "shipping.free_short": "Free",
       }
-      backdrop={false}
-      duration={300}
-      isOpen={true}
-      onClose={null}
-      onOpen={[Function]}
-      title=""
+    }
+  >
+    <PaymentBar
+      currency="USD"
+      isDisabled={true}
+      isVisible={true}
+      onSize={[Function]}
     >
-      <section>
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": 300,
-              "in": "css-31n36f",
-              "out": "css-gyrv08",
-            }
+      <Sheet
+        animation={
+          Object {
+            "in": "css-31n36f",
+            "out": "css-gyrv08",
           }
-          className="css-h69706"
-          isOpen={true}
-          onClose={null}
-          onOpen={[Function]}
-        >
-          <div
-            className="css-h69706 css-1rg7udn css-31n36f"
-            onAnimationEnd={[Function]}
-            style={
+        }
+        backdrop={false}
+        duration={300}
+        isOpen={true}
+        onClose={[Function]}
+        onOpen={[Function]}
+        title=""
+      >
+        <section>
+          <Drawer
+            alwaysActive={false}
+            animation={
               Object {
-                "animationDuration": "300ms",
+                "duration": 300,
+                "in": "css-31n36f",
+                "out": "css-gyrv08",
               }
             }
+            className="css-h69706"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-h69706 css-1rg7udn css-31n36f"
+              onAnimationEnd={[Function]}
+              style={
+                Object {
+                  "animationDuration": "300ms",
+                }
+              }
             >
-              <SizeMe(Content)
-                key=".0"
-                onSize={[Function]}
+              <div
+                className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
-                <SizeMeRenderer(Content)
-                  disablePlaceholder={false}
-                  explicitRef={[Function]}
+                <Content
+                  key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
-                  size={
-                    Object {
-                      "height": undefined,
-                      "position": undefined,
-                      "width": undefined,
-                    }
-                  }
                 >
-                  <SizeMeReferenceWrapper>
-                    <SizeMePlaceholder>
-                      <div
-                        style={
-                          Object {
-                            "height": "100%",
-                            "width": "100%",
-                          }
-                        }
-                      />
-                    </SizeMePlaceholder>
-                  </SizeMeReferenceWrapper>
-                </SizeMeRenderer(Content)>
-              </SizeMe(Content)>
+                  <div>
+                    <Portal
+                      name="cart.payment-bar.before"
+                      props={null}
+                    />
+                    <Portal
+                      name="cart.payment-bar"
+                      props={null}
+                    >
+                      <Grid
+                        className="css-7hjff2"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-7hjff2 css-h7r55a"
+                        >
+                          <GridItem
+                            className="css-1e1nulz"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-1e1nulz css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotalLabel
+                                  isDisabled={false}
+                                >
+                                  <div
+                                    className=""
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.subtotal"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.subtotal
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </SubTotalLabel>
+                                <ShippingCostsLabel
+                                  isDisabled={false}
+                                  shipping={2.99}
+                                >
+                                  <div
+                                    className="css-1h55xt0 "
+                                    data-test-id="shippingLabel"
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="titles.shipping"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        titles.shipping
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </ShippingCostsLabel>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotal
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={4.99}
+                                >
+                                  <div
+                                    className="css-syjz65 "
+                                    data-test-id="subTotal: 4.99"
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={4.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $4.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </SubTotal>
+                                <ShippingCosts
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={2.99}
+                                >
+                                  <div
+                                    className="css-13f0gfi "
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={2.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $2.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </ShippingCosts>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <div
+                                  className="css-tmwobs"
+                                >
+                                  <CheckoutButton
+                                    isActive={true}
+                                    pushHistory={[Function]}
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/checkout"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/checkout"
+                                        navigate={[Function]}
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <RippleButton
+                                            className="css-1mlc9hd"
+                                            disabled={false}
+                                            flat={false}
+                                            onClick={null}
+                                            rippleClassName=""
+                                            rippleSize={null}
+                                            testId="Button"
+                                            type="regular"
+                                            wrapContent={true}
+                                          >
+                                            <Button
+                                              className="css-1mlc9hd"
+                                              disabled={false}
+                                              flat={false}
+                                              onClick={null}
+                                              testId="Button"
+                                              type="regular"
+                                              wrapContent={false}
+                                            >
+                                              <Button
+                                                className="css-kevfw8 css-1mlc9hd"
+                                                disabled={false}
+                                                onClick={null}
+                                                testId="Button"
+                                              >
+                                                <button
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                  data-test-id="Button"
+                                                  disabled={false}
+                                                  onClick={null}
+                                                >
+                                                  <Ripple
+                                                    className="css-8s1fw2 "
+                                                    color="#000"
+                                                    disabled={false}
+                                                    fill={true}
+                                                    onClick={[Function]}
+                                                    onComplete={[Function]}
+                                                    overflow={false}
+                                                    size={null}
+                                                  >
+                                                    <div
+                                                      aria-hidden={true}
+                                                      className="css-8s1fw2 "
+                                                      data-test-id="Ripple"
+                                                      onClick={[Function]}
+                                                      style={null}
+                                                    >
+                                                      <Translate
+                                                        className=""
+                                                        params={Object {}}
+                                                        string="cart.checkout"
+                                                      >
+                                                        <span
+                                                          className=""
+                                                        >
+                                                          cart.checkout
+                                                        </span>
+                                                      </Translate>
+                                                    </div>
+                                                  </Ripple>
+                                                </button>
+                                              </Button>
+                                            </Button>
+                                          </RippleButton>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </CheckoutButton>
+                                </div>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </Portal>
+                    <Portal
+                      name="cart.payment-bar.after"
+                      props={null}
+                    />
+                  </div>
+                </Content>
+              </div>
             </div>
-          </div>
-        </Drawer>
-      </section>
-    </Sheet>
-  </PaymentBar>
-</I18nProvider>
+          </Drawer>
+        </section>
+      </Sheet>
+    </PaymentBar>
+  </I18nProvider>
+</Provider>
 `;
 
 exports[`<PaymentBar /> should not be visible if prop isVisible is false 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
+<Provider
+  store={
     Object {
-      "shipping.free_short": "Free",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <PaymentBar
-    currency="USD"
-    isVisible={false}
-    onSize={[Function]}
-  >
-    <Sheet
-      animation={
-        Object {
-          "in": "css-31n36f",
-          "out": "css-gyrv08",
-        }
+  <I18nProvider
+    lang="en-US"
+    locales={
+      Object {
+        "shipping.free_short": "Free",
       }
-      backdrop={false}
-      duration={300}
-      isOpen={false}
-      onClose={null}
-      onOpen={[Function]}
-      title=""
+    }
+  >
+    <PaymentBar
+      currency="USD"
+      isVisible={false}
+      onSize={[Function]}
     >
-      <section>
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": 300,
-              "in": "css-31n36f",
-              "out": "css-gyrv08",
-            }
+      <Sheet
+        animation={
+          Object {
+            "in": "css-31n36f",
+            "out": "css-gyrv08",
           }
-          className="css-h69706"
-          isOpen={false}
-          onClose={null}
-          onOpen={[Function]}
-        />
-      </section>
-    </Sheet>
-  </PaymentBar>
-</I18nProvider>
+        }
+        backdrop={false}
+        duration={300}
+        isOpen={false}
+        onClose={[Function]}
+        onOpen={[Function]}
+        title=""
+      >
+        <section>
+          <Drawer
+            alwaysActive={false}
+            animation={
+              Object {
+                "duration": 300,
+                "in": "css-31n36f",
+                "out": "css-gyrv08",
+              }
+            }
+            className="css-h69706"
+            isOpen={false}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
+          />
+        </section>
+      </Sheet>
+    </PaymentBar>
+  </I18nProvider>
+</Provider>
 `;
 
 exports[`<PaymentBar /> should render without any props 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
+<Provider
+  store={
     Object {
-      "shipping.free_short": "Free",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <PaymentBar
-    currency="USD"
-    isVisible={true}
-    onSize={[Function]}
-  >
-    <Sheet
-      animation={
-        Object {
-          "in": "css-31n36f",
-          "out": "css-gyrv08",
-        }
+  <I18nProvider
+    lang="en-US"
+    locales={
+      Object {
+        "shipping.free_short": "Free",
       }
-      backdrop={false}
-      duration={300}
-      isOpen={true}
-      onClose={null}
-      onOpen={[Function]}
-      title=""
+    }
+  >
+    <PaymentBar
+      currency="USD"
+      isVisible={true}
+      onSize={[Function]}
     >
-      <section>
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": 300,
-              "in": "css-31n36f",
-              "out": "css-gyrv08",
-            }
+      <Sheet
+        animation={
+          Object {
+            "in": "css-31n36f",
+            "out": "css-gyrv08",
           }
-          className="css-h69706"
-          isOpen={true}
-          onClose={null}
-          onOpen={[Function]}
-        >
-          <div
-            className="css-h69706 css-1rg7udn css-31n36f"
-            onAnimationEnd={[Function]}
-            style={
+        }
+        backdrop={false}
+        duration={300}
+        isOpen={true}
+        onClose={[Function]}
+        onOpen={[Function]}
+        title=""
+      >
+        <section>
+          <Drawer
+            alwaysActive={false}
+            animation={
               Object {
-                "animationDuration": "300ms",
+                "duration": 300,
+                "in": "css-31n36f",
+                "out": "css-gyrv08",
               }
             }
+            className="css-h69706"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-h69706 css-1rg7udn css-31n36f"
+              onAnimationEnd={[Function]}
+              style={
+                Object {
+                  "animationDuration": "300ms",
+                }
+              }
             >
-              <SizeMe(Content)
-                key=".0"
-                onSize={[Function]}
+              <div
+                className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
-                <SizeMeRenderer(Content)
-                  disablePlaceholder={false}
-                  explicitRef={[Function]}
+                <Content
+                  key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
-                  size={
-                    Object {
-                      "height": undefined,
-                      "position": undefined,
-                      "width": undefined,
-                    }
-                  }
                 >
-                  <SizeMeReferenceWrapper>
-                    <SizeMePlaceholder>
-                      <div
-                        style={
-                          Object {
-                            "height": "100%",
-                            "width": "100%",
-                          }
-                        }
-                      />
-                    </SizeMePlaceholder>
-                  </SizeMeReferenceWrapper>
-                </SizeMeRenderer(Content)>
-              </SizeMe(Content)>
+                  <div>
+                    <Portal
+                      name="cart.payment-bar.before"
+                      props={null}
+                    />
+                    <Portal
+                      name="cart.payment-bar"
+                      props={null}
+                    >
+                      <Grid
+                        className="css-7hjff2"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-7hjff2 css-h7r55a"
+                        >
+                          <GridItem
+                            className="css-1e1nulz"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-1e1nulz css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotalLabel
+                                  isDisabled={false}
+                                >
+                                  <div
+                                    className=""
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.subtotal"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.subtotal
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </SubTotalLabel>
+                                <ShippingCostsLabel
+                                  isDisabled={false}
+                                  shipping={2.99}
+                                >
+                                  <div
+                                    className="css-1h55xt0 "
+                                    data-test-id="shippingLabel"
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="titles.shipping"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        titles.shipping
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </ShippingCostsLabel>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotal
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={4.99}
+                                >
+                                  <div
+                                    className="css-syjz65 "
+                                    data-test-id="subTotal: 4.99"
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={4.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $4.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </SubTotal>
+                                <ShippingCosts
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={2.99}
+                                >
+                                  <div
+                                    className="css-13f0gfi "
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={2.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $2.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </ShippingCosts>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <div
+                                  className="css-tmwobs"
+                                >
+                                  <CheckoutButton
+                                    isActive={true}
+                                    pushHistory={[Function]}
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/checkout"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/checkout"
+                                        navigate={[Function]}
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <RippleButton
+                                            className="css-1mlc9hd"
+                                            disabled={false}
+                                            flat={false}
+                                            onClick={null}
+                                            rippleClassName=""
+                                            rippleSize={null}
+                                            testId="Button"
+                                            type="regular"
+                                            wrapContent={true}
+                                          >
+                                            <Button
+                                              className="css-1mlc9hd"
+                                              disabled={false}
+                                              flat={false}
+                                              onClick={null}
+                                              testId="Button"
+                                              type="regular"
+                                              wrapContent={false}
+                                            >
+                                              <Button
+                                                className="css-kevfw8 css-1mlc9hd"
+                                                disabled={false}
+                                                onClick={null}
+                                                testId="Button"
+                                              >
+                                                <button
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                  data-test-id="Button"
+                                                  disabled={false}
+                                                  onClick={null}
+                                                >
+                                                  <Ripple
+                                                    className="css-8s1fw2 "
+                                                    color="#000"
+                                                    disabled={false}
+                                                    fill={true}
+                                                    onClick={[Function]}
+                                                    onComplete={[Function]}
+                                                    overflow={false}
+                                                    size={null}
+                                                  >
+                                                    <div
+                                                      aria-hidden={true}
+                                                      className="css-8s1fw2 "
+                                                      data-test-id="Ripple"
+                                                      onClick={[Function]}
+                                                      style={null}
+                                                    >
+                                                      <Translate
+                                                        className=""
+                                                        params={Object {}}
+                                                        string="cart.checkout"
+                                                      >
+                                                        <span
+                                                          className=""
+                                                        >
+                                                          cart.checkout
+                                                        </span>
+                                                      </Translate>
+                                                    </div>
+                                                  </Ripple>
+                                                </button>
+                                              </Button>
+                                            </Button>
+                                          </RippleButton>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </CheckoutButton>
+                                </div>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </Portal>
+                    <Portal
+                      name="cart.payment-bar.after"
+                      props={null}
+                    />
+                  </div>
+                </Content>
+              </div>
             </div>
-          </div>
-        </Drawer>
-      </section>
-    </Sheet>
-  </PaymentBar>
-</I18nProvider>
+          </Drawer>
+        </section>
+      </Sheet>
+    </PaymentBar>
+  </I18nProvider>
+</Provider>
 `;
 
 exports[`<PaymentBar /> should show formatted shipping costs 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
+<Provider
+  store={
     Object {
-      "shipping.free_short": "Free",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <PaymentBar
-    currency="USD"
-    isVisible={true}
-    onSize={[Function]}
-  >
-    <Sheet
-      animation={
-        Object {
-          "in": "css-31n36f",
-          "out": "css-gyrv08",
-        }
+  <I18nProvider
+    lang="en-US"
+    locales={
+      Object {
+        "shipping.free_short": "Free",
       }
-      backdrop={false}
-      duration={300}
-      isOpen={true}
-      onClose={null}
-      onOpen={[Function]}
-      title=""
+    }
+  >
+    <PaymentBar
+      currency="USD"
+      isVisible={true}
+      onSize={[Function]}
     >
-      <section>
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": 300,
-              "in": "css-31n36f",
-              "out": "css-gyrv08",
-            }
+      <Sheet
+        animation={
+          Object {
+            "in": "css-31n36f",
+            "out": "css-gyrv08",
           }
-          className="css-h69706"
-          isOpen={true}
-          onClose={null}
-          onOpen={[Function]}
-        >
-          <div
-            className="css-h69706 css-1rg7udn css-31n36f"
-            onAnimationEnd={[Function]}
-            style={
+        }
+        backdrop={false}
+        duration={300}
+        isOpen={true}
+        onClose={[Function]}
+        onOpen={[Function]}
+        title=""
+      >
+        <section>
+          <Drawer
+            alwaysActive={false}
+            animation={
               Object {
-                "animationDuration": "300ms",
+                "duration": 300,
+                "in": "css-31n36f",
+                "out": "css-gyrv08",
               }
             }
+            className="css-h69706"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-h69706 css-1rg7udn css-31n36f"
+              onAnimationEnd={[Function]}
+              style={
+                Object {
+                  "animationDuration": "300ms",
+                }
+              }
             >
-              <SizeMe(Content)
-                key=".0"
-                onSize={[Function]}
+              <div
+                className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
-                <SizeMeRenderer(Content)
-                  disablePlaceholder={false}
-                  explicitRef={[Function]}
+                <Content
+                  key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
-                  size={
-                    Object {
-                      "height": undefined,
-                      "position": undefined,
-                      "width": undefined,
-                    }
-                  }
                 >
-                  <SizeMeReferenceWrapper>
-                    <SizeMePlaceholder>
-                      <div
-                        style={
-                          Object {
-                            "height": "100%",
-                            "width": "100%",
-                          }
-                        }
-                      />
-                    </SizeMePlaceholder>
-                  </SizeMeReferenceWrapper>
-                </SizeMeRenderer(Content)>
-              </SizeMe(Content)>
+                  <div>
+                    <Portal
+                      name="cart.payment-bar.before"
+                      props={null}
+                    />
+                    <Portal
+                      name="cart.payment-bar"
+                      props={null}
+                    >
+                      <Grid
+                        className="css-7hjff2"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-7hjff2 css-h7r55a"
+                        >
+                          <GridItem
+                            className="css-1e1nulz"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-1e1nulz css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotalLabel
+                                  isDisabled={false}
+                                >
+                                  <div
+                                    className=""
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.subtotal"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.subtotal
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </SubTotalLabel>
+                                <ShippingCostsLabel
+                                  isDisabled={false}
+                                  shipping={2.99}
+                                >
+                                  <div
+                                    className="css-1h55xt0 "
+                                    data-test-id="shippingLabel"
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="titles.shipping"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        titles.shipping
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </ShippingCostsLabel>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotal
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={4.99}
+                                >
+                                  <div
+                                    className="css-syjz65 "
+                                    data-test-id="subTotal: 4.99"
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={4.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $4.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </SubTotal>
+                                <ShippingCosts
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={2.99}
+                                >
+                                  <div
+                                    className="css-13f0gfi "
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={2.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $2.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </ShippingCosts>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <div
+                                  className="css-tmwobs"
+                                >
+                                  <CheckoutButton
+                                    isActive={true}
+                                    pushHistory={[Function]}
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/checkout"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/checkout"
+                                        navigate={[Function]}
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <RippleButton
+                                            className="css-1mlc9hd"
+                                            disabled={false}
+                                            flat={false}
+                                            onClick={null}
+                                            rippleClassName=""
+                                            rippleSize={null}
+                                            testId="Button"
+                                            type="regular"
+                                            wrapContent={true}
+                                          >
+                                            <Button
+                                              className="css-1mlc9hd"
+                                              disabled={false}
+                                              flat={false}
+                                              onClick={null}
+                                              testId="Button"
+                                              type="regular"
+                                              wrapContent={false}
+                                            >
+                                              <Button
+                                                className="css-kevfw8 css-1mlc9hd"
+                                                disabled={false}
+                                                onClick={null}
+                                                testId="Button"
+                                              >
+                                                <button
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                  data-test-id="Button"
+                                                  disabled={false}
+                                                  onClick={null}
+                                                >
+                                                  <Ripple
+                                                    className="css-8s1fw2 "
+                                                    color="#000"
+                                                    disabled={false}
+                                                    fill={true}
+                                                    onClick={[Function]}
+                                                    onComplete={[Function]}
+                                                    overflow={false}
+                                                    size={null}
+                                                  >
+                                                    <div
+                                                      aria-hidden={true}
+                                                      className="css-8s1fw2 "
+                                                      data-test-id="Ripple"
+                                                      onClick={[Function]}
+                                                      style={null}
+                                                    >
+                                                      <Translate
+                                                        className=""
+                                                        params={Object {}}
+                                                        string="cart.checkout"
+                                                      >
+                                                        <span
+                                                          className=""
+                                                        >
+                                                          cart.checkout
+                                                        </span>
+                                                      </Translate>
+                                                    </div>
+                                                  </Ripple>
+                                                </button>
+                                              </Button>
+                                            </Button>
+                                          </RippleButton>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </CheckoutButton>
+                                </div>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </Portal>
+                    <Portal
+                      name="cart.payment-bar.after"
+                      props={null}
+                    />
+                  </div>
+                </Content>
+              </div>
             </div>
-          </div>
-        </Drawer>
-      </section>
-    </Sheet>
-  </PaymentBar>
-</I18nProvider>
+          </Drawer>
+        </section>
+      </Sheet>
+    </PaymentBar>
+  </I18nProvider>
+</Provider>
 `;
 
 exports[`<PaymentBar /> should show the formatted subtotal 1`] = `
-<I18nProvider
-  lang="en-US"
-  locales={
+<Provider
+  store={
     Object {
-      "shipping.free_short": "Free",
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
     }
   }
 >
-  <PaymentBar
-    currency="USD"
-    isVisible={true}
-    onSize={[Function]}
-  >
-    <Sheet
-      animation={
-        Object {
-          "in": "css-31n36f",
-          "out": "css-gyrv08",
-        }
+  <I18nProvider
+    lang="en-US"
+    locales={
+      Object {
+        "shipping.free_short": "Free",
       }
-      backdrop={false}
-      duration={300}
-      isOpen={true}
-      onClose={null}
-      onOpen={[Function]}
-      title=""
+    }
+  >
+    <PaymentBar
+      currency="USD"
+      isVisible={true}
+      onSize={[Function]}
     >
-      <section>
-        <Drawer
-          alwaysActive={false}
-          animation={
-            Object {
-              "duration": 300,
-              "in": "css-31n36f",
-              "out": "css-gyrv08",
-            }
+      <Sheet
+        animation={
+          Object {
+            "in": "css-31n36f",
+            "out": "css-gyrv08",
           }
-          className="css-h69706"
-          isOpen={true}
-          onClose={null}
-          onOpen={[Function]}
-        >
-          <div
-            className="css-h69706 css-1rg7udn css-31n36f"
-            onAnimationEnd={[Function]}
-            style={
+        }
+        backdrop={false}
+        duration={300}
+        isOpen={true}
+        onClose={[Function]}
+        onOpen={[Function]}
+        title=""
+      >
+        <section>
+          <Drawer
+            alwaysActive={false}
+            animation={
               Object {
-                "animationDuration": "300ms",
+                "duration": 300,
+                "in": "css-31n36f",
+                "out": "css-gyrv08",
               }
             }
+            className="css-h69706"
+            isOpen={true}
+            onClose={[Function]}
+            onDidClose={[Function]}
+            onOpen={[Function]}
           >
             <div
-              className="css-1tkozuj css-k5vpvg"
+              className="css-h69706 css-1rg7udn css-31n36f"
+              onAnimationEnd={[Function]}
+              style={
+                Object {
+                  "animationDuration": "300ms",
+                }
+              }
             >
-              <SizeMe(Content)
-                key=".0"
-                onSize={[Function]}
+              <div
+                className="css-1aon90l css-k5vpvg"
+                onScroll={[Function]}
               >
-                <SizeMeRenderer(Content)
-                  disablePlaceholder={false}
-                  explicitRef={[Function]}
+                <Content
+                  key=".0"
+                  onClose={[Function]}
                   onSize={[Function]}
-                  size={
-                    Object {
-                      "height": undefined,
-                      "position": undefined,
-                      "width": undefined,
-                    }
-                  }
                 >
-                  <SizeMeReferenceWrapper>
-                    <SizeMePlaceholder>
-                      <div
-                        style={
-                          Object {
-                            "height": "100%",
-                            "width": "100%",
-                          }
-                        }
-                      />
-                    </SizeMePlaceholder>
-                  </SizeMeReferenceWrapper>
-                </SizeMeRenderer(Content)>
-              </SizeMe(Content)>
+                  <div>
+                    <Portal
+                      name="cart.payment-bar.before"
+                      props={null}
+                    />
+                    <Portal
+                      name="cart.payment-bar"
+                      props={null}
+                    >
+                      <Grid
+                        className="css-7hjff2"
+                        component="ul"
+                        wrap={false}
+                      >
+                        <ul
+                          className="css-7hjff2 css-h7r55a"
+                        >
+                          <GridItem
+                            className="css-1e1nulz"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-1e1nulz css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotalLabel
+                                  isDisabled={false}
+                                >
+                                  <div
+                                    className=""
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.subtotal"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.subtotal
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </SubTotalLabel>
+                                <ShippingCostsLabel
+                                  isDisabled={false}
+                                  shipping={2.99}
+                                >
+                                  <div
+                                    className="css-1h55xt0 "
+                                    data-test-id="shippingLabel"
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="titles.shipping"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        titles.shipping
+                                      </span>
+                                    </Translate>
+                                    :
+                                  </div>
+                                </ShippingCostsLabel>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <SubTotal
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={4.99}
+                                >
+                                  <div
+                                    className="css-syjz65 "
+                                    data-test-id="subTotal: 4.99"
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={4.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $4.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </SubTotal>
+                                <ShippingCosts
+                                  currency="USD"
+                                  isDisabled={false}
+                                  value={2.99}
+                                >
+                                  <div
+                                    className="css-13f0gfi "
+                                  >
+                                    <FormatPrice
+                                      className=""
+                                      currency="USD"
+                                      fractions={true}
+                                      price={2.99}
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        $2.99
+                                      </span>
+                                    </FormatPrice>
+                                  </div>
+                                </ShippingCosts>
+                              </div>
+                            </li>
+                          </GridItem>
+                          <GridItem
+                            className="css-127o4v1"
+                            component="li"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <li
+                              className="css-127o4v1 css-1gs0ko2"
+                            >
+                              <div
+                                className="css-w6053m"
+                              >
+                                <div
+                                  className="css-tmwobs"
+                                >
+                                  <CheckoutButton
+                                    isActive={true}
+                                    pushHistory={[Function]}
+                                  >
+                                    <Connect(Link)
+                                      disabled={false}
+                                      href="/checkout"
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/checkout"
+                                        navigate={[Function]}
+                                        replace={false}
+                                        state={Object {}}
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <RippleButton
+                                            className="css-1mlc9hd"
+                                            disabled={false}
+                                            flat={false}
+                                            onClick={null}
+                                            rippleClassName=""
+                                            rippleSize={null}
+                                            testId="Button"
+                                            type="regular"
+                                            wrapContent={true}
+                                          >
+                                            <Button
+                                              className="css-1mlc9hd"
+                                              disabled={false}
+                                              flat={false}
+                                              onClick={null}
+                                              testId="Button"
+                                              type="regular"
+                                              wrapContent={false}
+                                            >
+                                              <Button
+                                                className="css-kevfw8 css-1mlc9hd"
+                                                disabled={false}
+                                                onClick={null}
+                                                testId="Button"
+                                              >
+                                                <button
+                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                  data-test-id="Button"
+                                                  disabled={false}
+                                                  onClick={null}
+                                                >
+                                                  <Ripple
+                                                    className="css-8s1fw2 "
+                                                    color="#000"
+                                                    disabled={false}
+                                                    fill={true}
+                                                    onClick={[Function]}
+                                                    onComplete={[Function]}
+                                                    overflow={false}
+                                                    size={null}
+                                                  >
+                                                    <div
+                                                      aria-hidden={true}
+                                                      className="css-8s1fw2 "
+                                                      data-test-id="Ripple"
+                                                      onClick={[Function]}
+                                                      style={null}
+                                                    >
+                                                      <Translate
+                                                        className=""
+                                                        params={Object {}}
+                                                        string="cart.checkout"
+                                                      >
+                                                        <span
+                                                          className=""
+                                                        >
+                                                          cart.checkout
+                                                        </span>
+                                                      </Translate>
+                                                    </div>
+                                                  </Ripple>
+                                                </button>
+                                              </Button>
+                                            </Button>
+                                          </RippleButton>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </CheckoutButton>
+                                </div>
+                              </div>
+                            </li>
+                          </GridItem>
+                        </ul>
+                      </Grid>
+                    </Portal>
+                    <Portal
+                      name="cart.payment-bar.after"
+                      props={null}
+                    />
+                  </div>
+                </Content>
+              </div>
             </div>
-          </div>
-        </Drawer>
-      </section>
-    </Sheet>
-  </PaymentBar>
-</I18nProvider>
+          </Drawer>
+        </section>
+      </Sheet>
+    </PaymentBar>
+  </I18nProvider>
+</Provider>
 `;

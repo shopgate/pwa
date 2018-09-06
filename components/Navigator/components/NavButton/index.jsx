@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { UIEvents } from '@shopgate/pwa-core';
-import { UI_TOGGLE_NAVDRAWER } from '@shopgate/pwa-common/constants/ui';
 import Button from '@shopgate/pwa-common/components/Button';
 import { ArrowIcon, BurgerIcon, CrossIcon } from '@shopgate/pwa-ui-shared';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
@@ -18,17 +16,49 @@ class NavButton extends Component {
     pattern: PropTypes.string.isRequired,
   };
 
-  static defaultProps = {
-    showIconShadow: false,
-  };
+  state = {
+    backButton: false,
+    closeButton: false,
+  }
 
   /**
-   * The component only should update if the type changed.
-   * @param {Object} nextProps The next props.
+   * @param {Object} nextProps The next component props.
+   */
+  componentWillReceiveProps(nextProps) {
+    const backButton = showBackButton(nextProps.pattern);
+    const closeButton = showCloseButton(nextProps.pattern);
+
+    this.setState({
+      backButton,
+      closeButton,
+    });
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   * @param {Object} nextState The next component state.
    * @returns {boolean}
    */
-  shouldComponentUpdate(nextProps) {
-    return nextProps.showIconShadow !== this.props.showIconShadow;
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.backButton !== nextState.backButton
+      || this.state.closeButton !== nextState.closeButton
+    );
+  }
+
+  /**
+   * @returns {JSX}
+   */
+  get icon() {
+    if (this.state.closeButton) {
+      return <CrossIcon />;
+    }
+
+    if (this.state.backButton) {
+      return <ArrowIcon />;
+    }
+
+    return <BurgerIcon />;
   }
 
   /**
@@ -49,7 +79,7 @@ class NavButton extends Component {
   render() {
     return (
       <Button className={styles} onClick={this.handleClick}>
-        <BurgerIcon />
+        {this.icon}
       </Button>
     );
   }

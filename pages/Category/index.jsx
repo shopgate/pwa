@@ -30,3 +30,5 @@ export default () => (
     )}
   </RouteContext.Consumer>
 );
+
+export { Category as UnwrappedCategory };

@@ -1,8 +1,16 @@
-import event from '@shopgate/pwa-core/classes/Event';
-import { EVENT_PIPELINE_ERROR } from '@shopgate/pwa-core/constants/Pipeline';
 import authRoutes from '@shopgate/pwa-common/collections/AuthRoutes';
-import { appWillStart$, appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipelineErrorDialog';
+import redirects from '@shopgate/pwa-common/collections/Redirects';
+import { appWillStart$ } from '@shopgate/pwa-common/streams/app';
+import {
+  CHECKOUT_PATH,
+  LOGIN_PATH,
+  REGISTER_PATH,
+  ORDERS_PATH,
+} from '@shopgate/pwa-common/constants/RoutePaths';
+import { LEGACY_URL as REGISTER_LEGACY_PATH } from '@shopgate/pwa-common/constants/Registration';
+import { LEGACY_URL as CHECKOUT_LEGACY_PATH } from '@shopgate/pwa-common-commerce/checkout/constants';
+import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 
 /**
  * App subscriptions.
@@ -10,11 +18,11 @@ import pipelineErrorDialog from '@shopgate/pwa-ui-shared/Dialog/actions/pipeline
  */
 export default function app(subscribe) {
   subscribe(appWillStart$, () => {
-    authRoutes.set('/checkout', '/login');
-  });
+    authRoutes.set(CHECKOUT_PATH, LOGIN_PATH, ORDERS_PATH);
+    authRoutes.set(`${ITEM_PATH}/:productId/write_review`, LOGIN_PATH);
 
-  subscribe(appDidStart$, ({ dispatch }) => {
-    // Add event callbacks.
-    event.addCallback(EVENT_PIPELINE_ERROR, params => dispatch(pipelineErrorDialog(params)));
+    redirects.set(CHECKOUT_PATH, CHECKOUT_LEGACY_PATH);
+    redirects.set(REGISTER_PATH, REGISTER_LEGACY_PATH);
+    redirects.set(ORDERS_PATH, ORDERS_LEGACY_PATH);
   });
 }

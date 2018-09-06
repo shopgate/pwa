@@ -6,7 +6,7 @@ import NavDrawer from 'Components/NavDrawer';
 import styles from './style';
 
 /**
- * The viewport component.
+ * The Viewport component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */

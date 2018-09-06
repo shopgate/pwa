@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Link from '@shopgate/pwa-common/components/Router/components/Link';
+import Link from '@shopgate/pwa-common/components/Link';
 import Image from '@shopgate/pwa-common/components/Image';
 import Slider from '@shopgate/pwa-common/components/Slider';
 import ImageSliderWidget from './index';

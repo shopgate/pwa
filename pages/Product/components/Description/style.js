@@ -3,7 +3,6 @@ import colors from 'Styles/colors';
 
 const container = css({
   fontSize: 14,
-  marginTop: 8,
   padding: '13px 16px 16px',
   userSelect: 'all',
 }).toString();
@@ -34,8 +33,7 @@ const content = css({
     margin: '-.35em',
     padding: '.35em',
     position: 'relative',
-    zIndex: 1,
-  }
+  },
 }).toString();
 
 const placeholder = css({

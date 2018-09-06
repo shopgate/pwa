@@ -4,9 +4,10 @@ import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
+  mockProductId,
   mockedStateWithoutReview,
   mockedStateWithAll,
-} from 'Components/Reviews/mock';
+} from '@shopgate/pwa-common-commerce/reviews/mock';
 import Header from './index';
 
 const mockedStore = configureStore();
@@ -26,9 +27,12 @@ const createComponent = (mockedState, props = {}) => mount(
 
 describe('<Header />', () => {
   let header = null;
+
   it('should render empty', () => {
-    const { rating } = mockedStateWithoutReview.product.productsById.foo.productData;
-    header = createComponent(mockedStateWithoutReview, { rating });
+    const productId = mockProductId;
+    const { rating } = mockedStateWithoutReview.product.productsById[productId].productData;
+    header = createComponent(mockedStateWithoutReview, { productId, rating });
+
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(0);
@@ -36,8 +40,9 @@ describe('<Header />', () => {
   });
 
   it('should render rating summary', () => {
-    const { rating } = mockedStateWithAll.product.productsById.foo.productData;
-    header = createComponent(mockedStateWithAll, { rating });
+    const productId = mockProductId;
+    const { rating } = mockedStateWithAll.product.productsById[productId].productData;
+    header = createComponent(mockedStateWithAll, { productId, rating });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(rating.average);

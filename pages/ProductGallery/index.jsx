@@ -35,3 +35,5 @@ export default () => (
     )}
   </RouteContext.Consumer>
 );
+
+export { ProductGallery as UnwrappedProductGallery };

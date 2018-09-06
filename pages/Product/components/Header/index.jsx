@@ -15,7 +15,7 @@ import Price from './components/Price';
 import PriceInfo from './components/PriceInfo';
 import Tiers from './components/Tiers';
 import styles from './style';
-import ProductContext from '../../context';
+import { ProductContext } from './../../context';
 
 /**
  * The ProductHeader component.
@@ -23,14 +23,18 @@ import ProductContext from '../../context';
  */
 const ProductHeader = () => (
   <ProductContext.Consumer>
-    {({ productId, variantId, options }) => {
+    {({
+      productId,
+      variantId,
+      options,
+    }) => {
       const id = variantId || productId;
       return (
         <div className={styles.content}>
           {/* CTAs */}
           <Portal name={portals.PRODUCT_CTAS_BEFORE} />
           <Portal name={portals.PRODUCT_CTAS}>
-            <CTAButtons productId={id} options={options} />
+            <CTAButtons productId={id} />
           </Portal>
           <Portal name={portals.PRODUCT_CTAS_AFTER} />
 
@@ -59,7 +63,7 @@ const ProductHeader = () => (
                   <div className={styles.productInfo}>
                     <Portal name={portals.PRODUCT_MANUFACTURER_BEFORE} />
                     <Portal name={portals.PRODUCT_MANUFACTURER}>
-                      <Manufacturer productId={productId} />
+                      <Manufacturer productId={id} />
                     </Portal>
                     <Portal name={portals.PRODUCT_MANUFACTURER_AFTER} />
                   </div>

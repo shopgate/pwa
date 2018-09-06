@@ -50,7 +50,7 @@ class Cart extends Component {
     this.setState({
       containerPaddingStyle: styles.getContainerPaddingStyle(height),
     });
-  }
+  };
 
   /**
    * Toggles the visibility of the payment bar.

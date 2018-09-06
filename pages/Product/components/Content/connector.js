@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import {
   getBaseProductId,
   getVariantId,
-  isBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
 /**
  * Maps the contents of the state to the component props.
@@ -12,30 +12,17 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  isBaseProduct: isBaseProduct(state, props),
   baseProductId: getBaseProductId(state, props),
   variantId: getVariantId(state, props),
 });
 
 /**
- * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
- * @return {boolean}
+ * @param {Function} dispatch The redux dispatch function.
+ * @param {Function} props The component props.
+ * @return {Object} The extended component props.
  */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.isBaseProduct && next.isBaseProduct) {
-    return false;
-  }
+const mapDispatchToProps = dispatch => ({
+  addToCart: products => dispatch(addProductsToCart(products)),
+});
 
-  if (!prev.isBaseProduct && next.isBaseProduct) {
-    return false;
-  }
-
-  if (!prev.variantId && next.variantId) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps, mapDispatchToProps);

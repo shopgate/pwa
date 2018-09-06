@@ -1,40 +1,43 @@
-import { routeDidEnter } from '@shopgate/pwa-common/streams/history';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
+import { historyPop } from '@shopgate/pwa-common/actions/router';
+import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import { getCurrentBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { userDidLogout$ } from '@shopgate/pwa-common/streams/user';
-
 import {
   requestReviewSubmit$,
   responseReviewSubmit$,
   successReviewSubmit$,
 } from '@shopgate/pwa-common-commerce/reviews/streams';
-import goBackHistory from '@shopgate/pwa-common/actions/history/goBackHistory';
 import setViewLoading from '@shopgate/pwa-common/actions/view/setViewLoading';
 import unsetViewLoading from '@shopgate/pwa-common/actions/view/unsetViewLoading';
-import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import getUserReview from '@shopgate/pwa-common-commerce/reviews/actions/getUserReview';
 import flushUserReview from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
+import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { productRoutesWillEnter$, reviewsRouteWillEnter$ } from './streams';
 
 /**
- * Review form subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function writeReview(subscribe) {
-  const reviewsRouteDidEnter$ = routeDidEnter(ITEM_PATH);
-
   /**
-   * Gets triggered on entering the write review route.
+   * Gets triggered when item, reviews or write_reviews route will be entered.
    */
-  subscribe(reviewsRouteDidEnter$, ({ dispatch, getState }) => {
+  subscribe(productRoutesWillEnter$, ({ action, dispatch, getState }) => {
     const state = getState();
-    const productId = getCurrentBaseProductId(state);
+    const { productId } = action.route.params;
 
-    if (!state.user.login.isLoggedIn) {
+    if (!productId || !state.user.login.isLoggedIn) {
       return;
     }
-    // Only dispatch when review is not yet in store
-    dispatch(getUserReview(productId));
+
+    dispatch(getUserReview(hex2bin(productId)));
+  });
+
+  /**
+   * Get triggered when reviews or write_reviews route will be entered.
+   */
+  subscribe(reviewsRouteWillEnter$, ({ dispatch }) => {
+    dispatch(setTitle('titles.reviews'));
   });
 
   /**
@@ -54,9 +57,12 @@ export default function writeReview(subscribe) {
   /**
    * Get triggered when a review was successfully submitted
    */
-  subscribe(successReviewSubmit$, ({ dispatch }) => {
-    dispatch(goBackHistory());
-    dispatch(createToast({ message: 'reviews.success_message' }));
+  subscribe(successReviewSubmit$, ({ dispatch, events }) => {
+    dispatch(historyPop());
+    events.emit(ToastProvider.ADD, {
+      id: 'reviews.success_message',
+      message: 'reviews.success_message',
+    });
   });
   /**
    * When user is logged out reviews relation should be removed.

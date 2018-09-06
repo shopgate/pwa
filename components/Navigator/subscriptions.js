@@ -1,11 +1,7 @@
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { FILTER_PATH } from '@shopgate/pwa-common-commerce/filter/constants';
-import {
-  routeDidChange$,
-  routeDidEnter,
-  routeDidLeave,
-} from '@shopgate/pwa-common/streams/history';
+import { searchDidEnter$ } from '@shopgate/pwa-common-commerce/search/streams';
+import { cartDidEnter$, cartDidLeave$ } from '@shopgate/pwa-common-commerce/cart/streams';
+import { filterDidEnter$, filterDidLeave$ } from '@shopgate/pwa-common-commerce/filter/streams';
+import { routeDidChange$ } from '@shopgate/pwa-common/streams';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
 import toggleNavSearchField from 'Components/Navigator/actions/toggleNavSearchField';
 import { setSearchPhrase } from './action-creators';
@@ -13,29 +9,26 @@ import enableNavigatorSearch from './actions/enableNavigatorSearch';
 import disableNavigatorSearch from './actions/disableNavigatorSearch';
 import toggleCartIcon from './actions/toggleCartIcon';
 
+// Derived streams.
+export const cartFilterRoutesDidEnter$ = cartDidEnter$.merge(filterDidEnter$);
+export const cartFilterRoutesDidLeave$ = cartDidLeave$.merge(filterDidLeave$);
+
 /**
  * Navigator subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function navigator(subscribe) {
-  // Derived streams.
-  const searchRouteDidEnter$ = routeDidEnter(SEARCH_PATH);
-  const cartFilterRoutesDidEnter$ = routeDidEnter(CART_PATH).merge(routeDidEnter(FILTER_PATH));
-  const cartFilterRoutesDidLeave$ = routeDidLeave(CART_PATH).merge(routeDidLeave(FILTER_PATH));
-
   /**
    * Gets triggered on all route changes.
    */
-  subscribe(routeDidChange$, ({ dispatch, pathname, prevPathname }) => {
-    if (pathname !== prevPathname) {
-      dispatch(toggleNavSearchField(false));
-    }
+  subscribe(routeDidChange$, ({ dispatch }) => {
+    dispatch(toggleNavSearchField(false));
   });
 
   /**
    * Gets triggered on entering the search route.
    */
-  subscribe(searchRouteDidEnter$, ({ dispatch, getState }) => {
+  subscribe(searchDidEnter$, ({ dispatch, getState }) => {
     const state = getState();
 
     // If search input is empty, set it to the value of the search query param.

@@ -1,0 +1,1989 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Category> page should render 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Category
+    id="women"
+  >
+    <MockedView>
+      <div>
+        <Connect(CategoryContent)
+          categoryId="women"
+        >
+          <CategoryContent
+            categories={
+              Array [
+                Object {
+                  "children": Array [],
+                  "childrenCount": 0,
+                  "childrenSort": "import",
+                  "description": "",
+                  "expires": 9999999999999,
+                  "externalUrl": "",
+                  "id": "test",
+                  "imageUrl": null,
+                  "isFetching": false,
+                  "name": "test",
+                  "parent": Object {
+                    "id": "women",
+                    "name": "Women",
+                  },
+                  "path": "Default- category=>Women=>test",
+                  "productCount": 0,
+                  "sort": 10001,
+                },
+              ]
+            }
+            categoryId="women"
+            dispatch={[Function]}
+            hasProducts={6}
+          >
+            <Portal
+              name="category.list.before"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Portal
+              name="category.list"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            >
+              <CategoryList
+                categories={
+                  Array [
+                    Object {
+                      "children": Array [],
+                      "childrenCount": 0,
+                      "childrenSort": "import",
+                      "description": "",
+                      "expires": 9999999999999,
+                      "externalUrl": "",
+                      "id": "test",
+                      "imageUrl": null,
+                      "isFetching": false,
+                      "name": "test",
+                      "parent": Object {
+                        "id": "women",
+                        "name": "Women",
+                      },
+                      "path": "Default- category=>Women=>test",
+                      "productCount": 0,
+                      "sort": 10001,
+                    },
+                  ]
+                }
+              >
+                <List>
+                  <List
+                    className=""
+                  >
+                    <ul
+                      className="css-gkw1j5 "
+                    >
+                      <ListItem
+                        className="css-1brrprg"
+                        isSelected={false}
+                        key="child-0/.$test"
+                      >
+                        <li
+                          className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                        >
+                          <div
+                            className="css-1nnz83b"
+                          >
+                            <Portal
+                              key="test"
+                              name="category.item"
+                              props={
+                                Object {
+                                  "categoryId": "test",
+                                }
+                              }
+                            >
+                              <Item
+                                className={null}
+                                image={null}
+                                isDisabled={false}
+                                isSelected={false}
+                                link="/category/74657374"
+                                onClick={null}
+                                rightComponent={null}
+                                testId={null}
+                                title="test"
+                              >
+                                <Glow
+                                  className={null}
+                                  color="#f7f7f7"
+                                  styles={
+                                    Object {
+                                      "container": null,
+                                      "glow": null,
+                                    }
+                                  }
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-13azwyo"
+                                    onTouchTap={[Function]}
+                                    style={null}
+                                  >
+                                    <div
+                                      className="css-1bmd5dz"
+                                      style={Object {}}
+                                    />
+                                    <Connect(Link)
+                                      href="/category/74657374"
+                                      onClick={null}
+                                      state={
+                                        Object {
+                                          "title": "test",
+                                        }
+                                      }
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/category/74657374"
+                                        navigate={[Function]}
+                                        onClick={null}
+                                        replace={false}
+                                        state={
+                                          Object {
+                                            "title": "test",
+                                          }
+                                        }
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <Grid
+                                            className="css-1qcr7hz"
+                                            component="div"
+                                            wrap={false}
+                                          >
+                                            <div
+                                              className="css-1qcr7hz css-h7r55a"
+                                            >
+                                              <div
+                                                className="css-jwxytc"
+                                              />
+                                              <GridItem
+                                                className="css-10fxwvh"
+                                                component="div"
+                                                grow={1}
+                                                shrink={1}
+                                              >
+                                                <div
+                                                  className="css-10fxwvh css-1gs0ko2"
+                                                >
+                                                  test
+                                                </div>
+                                              </GridItem>
+                                            </div>
+                                          </Grid>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </Glow>
+                              </Item>
+                            </Portal>
+                          </div>
+                        </li>
+                      </ListItem>
+                    </ul>
+                  </List>
+                </List>
+              </CategoryList>
+            </Portal>
+            <Portal
+              name="category.list.after"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Portal
+              name="product.list.before"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Portal
+              name="product.list"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            >
+              <Connect(CategoryProducts)
+                categoryId="women"
+              >
+                <CategoryProducts
+                  categoryId="women"
+                  getProducts={[Function]}
+                  products={
+                    Array [
+                      Object {
+                        "ageRating": 0,
+                        "availability": Object {
+                          "state": "ok",
+                          "text": "In stock",
+                        },
+                        "baseProductId": null,
+                        "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                        "flags": Object {
+                          "hasChildren": false,
+                          "hasOptions": false,
+                          "hasVariants": false,
+                        },
+                        "highlight": true,
+                        "id": "913",
+                        "identifiers": Object {
+                          "sku": "857347363",
+                        },
+                        "liveshoppings": Array [],
+                        "manufacturer": "",
+                        "name": "This is a product with a very very long name -5-",
+                        "price": Object {
+                          "currency": "EUR",
+                          "info": "",
+                          "msrp": 0,
+                          "taxAmount": 0,
+                          "taxPercent": 0,
+                          "tiers": Array [],
+                          "unitPrice": 89,
+                          "unitPriceMax": 1000,
+                          "unitPriceMin": 0,
+                          "unitPriceNet": 89,
+                          "unitPriceStriked": 0,
+                          "unitPriceWithTax": 89,
+                        },
+                        "rating": Object {
+                          "average": 0,
+                          "count": 0,
+                          "reviewCount": 0,
+                        },
+                        "stock": Object {
+                          "ignoreQuantity": true,
+                          "info": "In stock",
+                          "maxOrderQuantity": 10000,
+                          "minOrderQuantity": 1,
+                          "orderable": true,
+                          "quantity": 0,
+                        },
+                      },
+                    ]
+                  }
+                  sort="relevance"
+                  totalProductCount={1}
+                >
+                  <ProductGrid
+                    flags={null}
+                    handleGetProducts={[Function]}
+                    infiniteLoad={true}
+                    products={
+                      Array [
+                        Object {
+                          "ageRating": 0,
+                          "availability": Object {
+                            "state": "ok",
+                            "text": "In stock",
+                          },
+                          "baseProductId": null,
+                          "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                          "flags": Object {
+                            "hasChildren": false,
+                            "hasOptions": false,
+                            "hasVariants": false,
+                          },
+                          "highlight": true,
+                          "id": "913",
+                          "identifiers": Object {
+                            "sku": "857347363",
+                          },
+                          "liveshoppings": Array [],
+                          "manufacturer": "",
+                          "name": "This is a product with a very very long name -5-",
+                          "price": Object {
+                            "currency": "EUR",
+                            "info": "",
+                            "msrp": 0,
+                            "taxAmount": 0,
+                            "taxPercent": 0,
+                            "tiers": Array [],
+                            "unitPrice": 89,
+                            "unitPriceMax": 1000,
+                            "unitPriceMin": 0,
+                            "unitPriceNet": 89,
+                            "unitPriceStriked": 0,
+                            "unitPriceWithTax": 89,
+                          },
+                          "rating": Object {
+                            "average": 0,
+                            "count": 0,
+                            "reviewCount": 0,
+                          },
+                          "stock": Object {
+                            "ignoreQuantity": true,
+                            "info": "In stock",
+                            "maxOrderQuantity": 10000,
+                            "minOrderQuantity": 1,
+                            "orderable": true,
+                            "quantity": 0,
+                          },
+                        },
+                      ]
+                    }
+                    totalProductCount={1}
+                  >
+                    <InfiniteContainer
+                      initialLimit={6}
+                      items={
+                        Array [
+                          Object {
+                            "ageRating": 0,
+                            "availability": Object {
+                              "state": "ok",
+                              "text": "In stock",
+                            },
+                            "baseProductId": null,
+                            "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                            "flags": Object {
+                              "hasChildren": false,
+                              "hasOptions": false,
+                              "hasVariants": false,
+                            },
+                            "highlight": true,
+                            "id": "913",
+                            "identifiers": Object {
+                              "sku": "857347363",
+                            },
+                            "liveshoppings": Array [],
+                            "manufacturer": "",
+                            "name": "This is a product with a very very long name -5-",
+                            "price": Object {
+                              "currency": "EUR",
+                              "info": "",
+                              "msrp": 0,
+                              "taxAmount": 0,
+                              "taxPercent": 0,
+                              "tiers": Array [],
+                              "unitPrice": 89,
+                              "unitPriceMax": 1000,
+                              "unitPriceMin": 0,
+                              "unitPriceNet": 89,
+                              "unitPriceStriked": 0,
+                              "unitPriceWithTax": 89,
+                            },
+                            "rating": Object {
+                              "average": 0,
+                              "count": 0,
+                              "reviewCount": 0,
+                            },
+                            "stock": Object {
+                              "ignoreQuantity": true,
+                              "info": "In stock",
+                              "maxOrderQuantity": 10000,
+                              "minOrderQuantity": 1,
+                              "orderable": true,
+                              "quantity": 0,
+                            },
+                          },
+                        ]
+                      }
+                      iterator={[Function]}
+                      limit={30}
+                      loader={[Function]}
+                      loadingIndicator={<LoadingIndicator />}
+                      preloadMultiplier={2}
+                      totalItems={1}
+                      wrapper={[Function]}
+                    >
+                      <div>
+                        <div>
+                          <Grid
+                            className="css-1icypl2"
+                            component="ul"
+                            data-test-id="productGrid"
+                            itemScope={true}
+                            itemType="http://schema.org/ItemList"
+                            wrap={true}
+                          >
+                            <ul
+                              className="css-1icypl2 css-h7r55a css-u7q1iu"
+                              data-test-id="productGrid"
+                              itemScope={true}
+                              itemType="http://schema.org/ItemList"
+                            >
+                              <GridItem
+                                className="css-pd41kd"
+                                component="li"
+                                grow={0}
+                                itemProp="itemListElement"
+                                itemScope={true}
+                                itemType="http://schema.org/ListItem"
+                                key="913"
+                                shrink={1}
+                              >
+                                <li
+                                  className="css-pd41kd"
+                                  itemProp="itemListElement"
+                                  itemScope={true}
+                                  itemType="http://schema.org/ListItem"
+                                >
+                                  <Portal
+                                    name="product.item.before"
+                                    props={
+                                      Object {
+                                        "productId": "913",
+                                      }
+                                    }
+                                  />
+                                  <Portal
+                                    name="product.item"
+                                    props={
+                                      Object {
+                                        "productId": "913",
+                                      }
+                                    }
+                                  >
+                                    <Connect(pure(Item))
+                                      product={
+                                        Object {
+                                          "ageRating": 0,
+                                          "availability": Object {
+                                            "state": "ok",
+                                            "text": "In stock",
+                                          },
+                                          "baseProductId": null,
+                                          "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                          "flags": Object {
+                                            "hasChildren": false,
+                                            "hasOptions": false,
+                                            "hasVariants": false,
+                                          },
+                                          "highlight": true,
+                                          "id": "913",
+                                          "identifiers": Object {
+                                            "sku": "857347363",
+                                          },
+                                          "liveshoppings": Array [],
+                                          "manufacturer": "",
+                                          "name": "This is a product with a very very long name -5-",
+                                          "price": Object {
+                                            "currency": "EUR",
+                                            "info": "",
+                                            "msrp": 0,
+                                            "taxAmount": 0,
+                                            "taxPercent": 0,
+                                            "tiers": Array [],
+                                            "unitPrice": 89,
+                                            "unitPriceMax": 1000,
+                                            "unitPriceMin": 0,
+                                            "unitPriceNet": 89,
+                                            "unitPriceStriked": 0,
+                                            "unitPriceWithTax": 89,
+                                          },
+                                          "rating": Object {
+                                            "average": 0,
+                                            "count": 0,
+                                            "reviewCount": 0,
+                                          },
+                                          "stock": Object {
+                                            "ignoreQuantity": true,
+                                            "info": "In stock",
+                                            "maxOrderQuantity": 10000,
+                                            "minOrderQuantity": 1,
+                                            "orderable": true,
+                                            "quantity": 0,
+                                          },
+                                        }
+                                      }
+                                    >
+                                      <pure(Item)
+                                        dispatch={[Function]}
+                                        isFavorite={false}
+                                        product={
+                                          Object {
+                                            "ageRating": 0,
+                                            "availability": Object {
+                                              "state": "ok",
+                                              "text": "In stock",
+                                            },
+                                            "baseProductId": null,
+                                            "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                            "flags": Object {
+                                              "hasChildren": false,
+                                              "hasOptions": false,
+                                              "hasVariants": false,
+                                            },
+                                            "highlight": true,
+                                            "id": "913",
+                                            "identifiers": Object {
+                                              "sku": "857347363",
+                                            },
+                                            "liveshoppings": Array [],
+                                            "manufacturer": "",
+                                            "name": "This is a product with a very very long name -5-",
+                                            "price": Object {
+                                              "currency": "EUR",
+                                              "info": "",
+                                              "msrp": 0,
+                                              "taxAmount": 0,
+                                              "taxPercent": 0,
+                                              "tiers": Array [],
+                                              "unitPrice": 89,
+                                              "unitPriceMax": 1000,
+                                              "unitPriceMin": 0,
+                                              "unitPriceNet": 89,
+                                              "unitPriceStriked": 0,
+                                              "unitPriceWithTax": 89,
+                                            },
+                                            "rating": Object {
+                                              "average": 0,
+                                              "count": 0,
+                                              "reviewCount": 0,
+                                            },
+                                            "stock": Object {
+                                              "ignoreQuantity": true,
+                                              "info": "In stock",
+                                              "maxOrderQuantity": 10000,
+                                              "minOrderQuantity": 1,
+                                              "orderable": true,
+                                              "quantity": 0,
+                                            },
+                                          }
+                                        }
+                                      >
+                                        <Item
+                                          dispatch={[Function]}
+                                          display={null}
+                                          isFavorite={false}
+                                          product={
+                                            Object {
+                                              "ageRating": 0,
+                                              "availability": Object {
+                                                "state": "ok",
+                                                "text": "In stock",
+                                              },
+                                              "baseProductId": null,
+                                              "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                              "flags": Object {
+                                                "hasChildren": false,
+                                                "hasOptions": false,
+                                                "hasVariants": false,
+                                              },
+                                              "highlight": true,
+                                              "id": "913",
+                                              "identifiers": Object {
+                                                "sku": "857347363",
+                                              },
+                                              "liveshoppings": Array [],
+                                              "manufacturer": "",
+                                              "name": "This is a product with a very very long name -5-",
+                                              "price": Object {
+                                                "currency": "EUR",
+                                                "info": "",
+                                                "msrp": 0,
+                                                "taxAmount": 0,
+                                                "taxPercent": 0,
+                                                "tiers": Array [],
+                                                "unitPrice": 89,
+                                                "unitPriceMax": 1000,
+                                                "unitPriceMin": 0,
+                                                "unitPriceNet": 89,
+                                                "unitPriceStriked": 0,
+                                                "unitPriceWithTax": 89,
+                                              },
+                                              "rating": Object {
+                                                "average": 0,
+                                                "count": 0,
+                                                "reviewCount": 0,
+                                              },
+                                              "stock": Object {
+                                                "ignoreQuantity": true,
+                                                "info": "In stock",
+                                                "maxOrderQuantity": 10000,
+                                                "minOrderQuantity": 1,
+                                                "orderable": true,
+                                                "quantity": 0,
+                                              },
+                                            }
+                                          }
+                                        >
+                                          <Connect(Link)
+                                            className="css-b4pchx"
+                                            href="/item/393133"
+                                            itemProp="item"
+                                            itemScope={true}
+                                            itemType="http://schema.org/Product"
+                                            state={
+                                              Object {
+                                                "title": "This is a product with a very very long name -5-",
+                                              }
+                                            }
+                                            tagName="a"
+                                          >
+                                            <Link
+                                              className="css-b4pchx"
+                                              disabled={false}
+                                              href="/item/393133"
+                                              itemProp="item"
+                                              itemScope={true}
+                                              itemType="http://schema.org/Product"
+                                              navigate={[Function]}
+                                              replace={false}
+                                              state={
+                                                Object {
+                                                  "title": "This is a product with a very very long name -5-",
+                                                }
+                                              }
+                                              tag="div"
+                                              tagName="a"
+                                            >
+                                              <div
+                                                aria-hidden={true}
+                                                className="css-c6ki83 css-b4pchx"
+                                                onClick={[Function]}
+                                                role="link"
+                                              >
+                                                <Portal
+                                                  name="product-item.image.before"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.image"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                >
+                                                  <ProductImage
+                                                    alt="This is a product with a very very long name -5-"
+                                                    animating={true}
+                                                    forcePlaceholder={false}
+                                                    highestResolutionLoaded={[Function]}
+                                                    itemProp="image"
+                                                    ratio={null}
+                                                    resolutions={
+                                                      Array [
+                                                        Object {
+                                                          "blur": 2,
+                                                          "height": 50,
+                                                          "width": 50,
+                                                        },
+                                                        Object {
+                                                          "height": 440,
+                                                          "width": 440,
+                                                        },
+                                                      ]
+                                                    }
+                                                    src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
+                                                  >
+                                                    <Image
+                                                      alt="This is a product with a very very long name -5-"
+                                                      animating={true}
+                                                      backgroundColor="#fff"
+                                                      className=""
+                                                      forcePlaceholder={false}
+                                                      highestResolutionLoaded={[Function]}
+                                                      itemProp="image"
+                                                      onError={[Function]}
+                                                      onLoad={null}
+                                                      ratio={null}
+                                                      resolutions={
+                                                        Array [
+                                                          Object {
+                                                            "blur": 2,
+                                                            "height": 50,
+                                                            "width": 50,
+                                                          },
+                                                          Object {
+                                                            "height": 440,
+                                                            "width": 440,
+                                                          },
+                                                        ]
+                                                      }
+                                                      src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
+                                                      transition={null}
+                                                    >
+                                                      <div
+                                                        className="css-1d0r90g "
+                                                      />
+                                                    </Image>
+                                                  </ProductImage>
+                                                </Portal>
+                                                <Portal
+                                                  name="product-item.image.after"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.favorites-button.before"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.favorites-button"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                >
+                                                  <div
+                                                    className="css-apqpkv"
+                                                    data-test-id="favorites"
+                                                  >
+                                                    <Connect(FavoritesButton)
+                                                      active={false}
+                                                      noShadow={true}
+                                                      productId="913"
+                                                      removeWithRelatives={true}
+                                                    >
+                                                      <FavoritesButton
+                                                        active={false}
+                                                        addFavorites={[Function]}
+                                                        className=""
+                                                        noShadow={true}
+                                                        onRippleComplete={[Function]}
+                                                        once={false}
+                                                        productId="913"
+                                                        removeFavorites={[Function]}
+                                                        removeThrottle={0}
+                                                        removeWithRelatives={true}
+                                                        rippleClassName=""
+                                                      />
+                                                    </Connect(FavoritesButton)>
+                                                  </div>
+                                                </Portal>
+                                                <Portal
+                                                  name="product-item.favorites-button.after"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <div
+                                                  className="css-16e7pt1"
+                                                >
+                                                  <Portal
+                                                    name="product-item.name.before"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.name"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  >
+                                                    <div
+                                                      className="css-1xzic9e"
+                                                      data-test-id="Productname: This is a product with a very very long name -5-"
+                                                      itemProp="name"
+                                                    >
+                                                      <Ellipsis
+                                                        className=""
+                                                        ellipsis="..."
+                                                        rows={3}
+                                                      >
+                                                        <Dotdotdot
+                                                          clamp={3}
+                                                          className=""
+                                                          ellipsis="..."
+                                                          tagName="div"
+                                                          truncationChar="…"
+                                                          useNativeClamp={true}
+                                                        >
+                                                          <div
+                                                            className=""
+                                                          >
+                                                            This is a product with a very very long name -5-
+                                                          </div>
+                                                        </Dotdotdot>
+                                                      </Ellipsis>
+                                                    </div>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="product-item.name.after"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.price.before"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.price"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  >
+                                                    <Grid
+                                                      className="css-1glzrmu"
+                                                      component="ul"
+                                                      wrap={true}
+                                                    >
+                                                      <ul
+                                                        className="css-1glzrmu css-h7r55a css-u7q1iu"
+                                                      >
+                                                        <GridItem
+                                                          className=""
+                                                          component="li"
+                                                          grow={1}
+                                                          shrink={1}
+                                                        >
+                                                          <li
+                                                            className=" css-1gs0ko2"
+                                                          >
+                                                            <Price
+                                                              className=""
+                                                              currency="EUR"
+                                                              discounted={false}
+                                                              fractions={true}
+                                                              taxDisclaimer={false}
+                                                              unitPrice={89}
+                                                              unitPriceMin={0}
+                                                            >
+                                                              <div
+                                                                className="css-izofhs "
+                                                                data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                                              >
+                                                                <FormatPrice
+                                                                  className=""
+                                                                  currency="EUR"
+                                                                  fractions={true}
+                                                                  price={89}
+                                                                >
+                                                                  <span
+                                                                    className=""
+                                                                  >
+                                                                    p
+                                                                  </span>
+                                                                </FormatPrice>
+                                                              </div>
+                                                            </Price>
+                                                          </li>
+                                                        </GridItem>
+                                                      </ul>
+                                                    </Grid>
+                                                    <Grid
+                                                      className=""
+                                                      component="ul"
+                                                      wrap={false}
+                                                    >
+                                                      <ul
+                                                        className=" css-h7r55a"
+                                                      />
+                                                    </Grid>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="product-item.price.after"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                </div>
+                                              </div>
+                                            </Link>
+                                          </Connect(Link)>
+                                        </Item>
+                                      </pure(Item)>
+                                    </Connect(pure(Item))>
+                                  </Portal>
+                                  <Portal
+                                    name="product.item.after"
+                                    props={
+                                      Object {
+                                        "productId": "913",
+                                      }
+                                    }
+                                  />
+                                </li>
+                              </GridItem>
+                            </ul>
+                          </Grid>
+                        </div>
+                      </div>
+                    </InfiniteContainer>
+                  </ProductGrid>
+                </CategoryProducts>
+              </Connect(CategoryProducts)>
+            </Portal>
+            <Portal
+              name="product.list.after"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Connect(Empty)
+              bodyText="category.no_result.body"
+              categoryId="women"
+              headlineText="category.no_result.heading"
+            >
+              <Empty
+                bodyText="category.no_result.body"
+                categoryId="women"
+                dispatch={[Function]}
+                headlineText="category.no_result.heading"
+                isVisible={false}
+              />
+            </Connect(Empty)>
+          </CategoryContent>
+        </Connect(CategoryContent)>
+      </div>
+    </MockedView>
+  </Category>
+</Provider>
+`;
+
+exports[`<Category> page should render empty 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Category
+    id="women"
+  >
+    <MockedView>
+      <div>
+        <Connect(CategoryContent)
+          categoryId="women"
+        >
+          <CategoryContent
+            categories={
+              Array [
+                Object {
+                  "children": Array [],
+                  "childrenCount": 0,
+                  "childrenSort": "import",
+                  "description": "",
+                  "expires": 9999999999999,
+                  "externalUrl": "",
+                  "id": "test",
+                  "imageUrl": null,
+                  "isFetching": false,
+                  "name": "test",
+                  "parent": Object {
+                    "id": "women",
+                    "name": "Women",
+                  },
+                  "path": "Default- category=>Women=>test",
+                  "productCount": 0,
+                  "sort": 10001,
+                },
+              ]
+            }
+            categoryId="women"
+            dispatch={[Function]}
+            hasProducts={6}
+          >
+            <Portal
+              name="category.list.before"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Portal
+              name="category.list"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            >
+              <CategoryList
+                categories={
+                  Array [
+                    Object {
+                      "children": Array [],
+                      "childrenCount": 0,
+                      "childrenSort": "import",
+                      "description": "",
+                      "expires": 9999999999999,
+                      "externalUrl": "",
+                      "id": "test",
+                      "imageUrl": null,
+                      "isFetching": false,
+                      "name": "test",
+                      "parent": Object {
+                        "id": "women",
+                        "name": "Women",
+                      },
+                      "path": "Default- category=>Women=>test",
+                      "productCount": 0,
+                      "sort": 10001,
+                    },
+                  ]
+                }
+              >
+                <List>
+                  <List
+                    className=""
+                  >
+                    <ul
+                      className="css-gkw1j5 "
+                    >
+                      <ListItem
+                        className="css-1brrprg"
+                        isSelected={false}
+                        key="child-0/.$test"
+                      >
+                        <li
+                          className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                        >
+                          <div
+                            className="css-1nnz83b"
+                          >
+                            <Portal
+                              key="test"
+                              name="category.item"
+                              props={
+                                Object {
+                                  "categoryId": "test",
+                                }
+                              }
+                            >
+                              <Item
+                                className={null}
+                                image={null}
+                                isDisabled={false}
+                                isSelected={false}
+                                link="/category/74657374"
+                                onClick={null}
+                                rightComponent={null}
+                                testId={null}
+                                title="test"
+                              >
+                                <Glow
+                                  className={null}
+                                  color="#f7f7f7"
+                                  styles={
+                                    Object {
+                                      "container": null,
+                                      "glow": null,
+                                    }
+                                  }
+                                >
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-13azwyo"
+                                    onTouchTap={[Function]}
+                                    style={null}
+                                  >
+                                    <div
+                                      className="css-1bmd5dz"
+                                      style={Object {}}
+                                    />
+                                    <Connect(Link)
+                                      href="/category/74657374"
+                                      onClick={null}
+                                      state={
+                                        Object {
+                                          "title": "test",
+                                        }
+                                      }
+                                    >
+                                      <Link
+                                        className=""
+                                        disabled={false}
+                                        href="/category/74657374"
+                                        navigate={[Function]}
+                                        onClick={null}
+                                        replace={false}
+                                        state={
+                                          Object {
+                                            "title": "test",
+                                          }
+                                        }
+                                        tag="div"
+                                      >
+                                        <div
+                                          aria-hidden={true}
+                                          className="css-c6ki83 "
+                                          onClick={[Function]}
+                                          role="link"
+                                        >
+                                          <Grid
+                                            className="css-1qcr7hz"
+                                            component="div"
+                                            wrap={false}
+                                          >
+                                            <div
+                                              className="css-1qcr7hz css-h7r55a"
+                                            >
+                                              <div
+                                                className="css-jwxytc"
+                                              />
+                                              <GridItem
+                                                className="css-10fxwvh"
+                                                component="div"
+                                                grow={1}
+                                                shrink={1}
+                                              >
+                                                <div
+                                                  className="css-10fxwvh css-1gs0ko2"
+                                                >
+                                                  test
+                                                </div>
+                                              </GridItem>
+                                            </div>
+                                          </Grid>
+                                        </div>
+                                      </Link>
+                                    </Connect(Link)>
+                                  </div>
+                                </Glow>
+                              </Item>
+                            </Portal>
+                          </div>
+                        </li>
+                      </ListItem>
+                    </ul>
+                  </List>
+                </List>
+              </CategoryList>
+            </Portal>
+            <Portal
+              name="category.list.after"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Portal
+              name="product.list.before"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Portal
+              name="product.list"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            >
+              <Connect(CategoryProducts)
+                categoryId="women"
+              >
+                <CategoryProducts
+                  categoryId="women"
+                  getProducts={[Function]}
+                  products={
+                    Array [
+                      Object {
+                        "ageRating": 0,
+                        "availability": Object {
+                          "state": "ok",
+                          "text": "In stock",
+                        },
+                        "baseProductId": null,
+                        "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                        "flags": Object {
+                          "hasChildren": false,
+                          "hasOptions": false,
+                          "hasVariants": false,
+                        },
+                        "highlight": true,
+                        "id": "913",
+                        "identifiers": Object {
+                          "sku": "857347363",
+                        },
+                        "liveshoppings": Array [],
+                        "manufacturer": "",
+                        "name": "This is a product with a very very long name -5-",
+                        "price": Object {
+                          "currency": "EUR",
+                          "info": "",
+                          "msrp": 0,
+                          "taxAmount": 0,
+                          "taxPercent": 0,
+                          "tiers": Array [],
+                          "unitPrice": 89,
+                          "unitPriceMax": 1000,
+                          "unitPriceMin": 0,
+                          "unitPriceNet": 89,
+                          "unitPriceStriked": 0,
+                          "unitPriceWithTax": 89,
+                        },
+                        "rating": Object {
+                          "average": 0,
+                          "count": 0,
+                          "reviewCount": 0,
+                        },
+                        "stock": Object {
+                          "ignoreQuantity": true,
+                          "info": "In stock",
+                          "maxOrderQuantity": 10000,
+                          "minOrderQuantity": 1,
+                          "orderable": true,
+                          "quantity": 0,
+                        },
+                      },
+                    ]
+                  }
+                  sort="relevance"
+                  totalProductCount={1}
+                >
+                  <ProductGrid
+                    flags={null}
+                    handleGetProducts={[Function]}
+                    infiniteLoad={true}
+                    products={
+                      Array [
+                        Object {
+                          "ageRating": 0,
+                          "availability": Object {
+                            "state": "ok",
+                            "text": "In stock",
+                          },
+                          "baseProductId": null,
+                          "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                          "flags": Object {
+                            "hasChildren": false,
+                            "hasOptions": false,
+                            "hasVariants": false,
+                          },
+                          "highlight": true,
+                          "id": "913",
+                          "identifiers": Object {
+                            "sku": "857347363",
+                          },
+                          "liveshoppings": Array [],
+                          "manufacturer": "",
+                          "name": "This is a product with a very very long name -5-",
+                          "price": Object {
+                            "currency": "EUR",
+                            "info": "",
+                            "msrp": 0,
+                            "taxAmount": 0,
+                            "taxPercent": 0,
+                            "tiers": Array [],
+                            "unitPrice": 89,
+                            "unitPriceMax": 1000,
+                            "unitPriceMin": 0,
+                            "unitPriceNet": 89,
+                            "unitPriceStriked": 0,
+                            "unitPriceWithTax": 89,
+                          },
+                          "rating": Object {
+                            "average": 0,
+                            "count": 0,
+                            "reviewCount": 0,
+                          },
+                          "stock": Object {
+                            "ignoreQuantity": true,
+                            "info": "In stock",
+                            "maxOrderQuantity": 10000,
+                            "minOrderQuantity": 1,
+                            "orderable": true,
+                            "quantity": 0,
+                          },
+                        },
+                      ]
+                    }
+                    totalProductCount={1}
+                  >
+                    <InfiniteContainer
+                      initialLimit={6}
+                      items={
+                        Array [
+                          Object {
+                            "ageRating": 0,
+                            "availability": Object {
+                              "state": "ok",
+                              "text": "In stock",
+                            },
+                            "baseProductId": null,
+                            "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                            "flags": Object {
+                              "hasChildren": false,
+                              "hasOptions": false,
+                              "hasVariants": false,
+                            },
+                            "highlight": true,
+                            "id": "913",
+                            "identifiers": Object {
+                              "sku": "857347363",
+                            },
+                            "liveshoppings": Array [],
+                            "manufacturer": "",
+                            "name": "This is a product with a very very long name -5-",
+                            "price": Object {
+                              "currency": "EUR",
+                              "info": "",
+                              "msrp": 0,
+                              "taxAmount": 0,
+                              "taxPercent": 0,
+                              "tiers": Array [],
+                              "unitPrice": 89,
+                              "unitPriceMax": 1000,
+                              "unitPriceMin": 0,
+                              "unitPriceNet": 89,
+                              "unitPriceStriked": 0,
+                              "unitPriceWithTax": 89,
+                            },
+                            "rating": Object {
+                              "average": 0,
+                              "count": 0,
+                              "reviewCount": 0,
+                            },
+                            "stock": Object {
+                              "ignoreQuantity": true,
+                              "info": "In stock",
+                              "maxOrderQuantity": 10000,
+                              "minOrderQuantity": 1,
+                              "orderable": true,
+                              "quantity": 0,
+                            },
+                          },
+                        ]
+                      }
+                      iterator={[Function]}
+                      limit={30}
+                      loader={[Function]}
+                      loadingIndicator={<LoadingIndicator />}
+                      preloadMultiplier={2}
+                      totalItems={1}
+                      wrapper={[Function]}
+                    >
+                      <div>
+                        <div>
+                          <Grid
+                            className="css-1icypl2"
+                            component="ul"
+                            data-test-id="productGrid"
+                            itemScope={true}
+                            itemType="http://schema.org/ItemList"
+                            wrap={true}
+                          >
+                            <ul
+                              className="css-1icypl2 css-h7r55a css-u7q1iu"
+                              data-test-id="productGrid"
+                              itemScope={true}
+                              itemType="http://schema.org/ItemList"
+                            >
+                              <GridItem
+                                className="css-pd41kd"
+                                component="li"
+                                grow={0}
+                                itemProp="itemListElement"
+                                itemScope={true}
+                                itemType="http://schema.org/ListItem"
+                                key="913"
+                                shrink={1}
+                              >
+                                <li
+                                  className="css-pd41kd"
+                                  itemProp="itemListElement"
+                                  itemScope={true}
+                                  itemType="http://schema.org/ListItem"
+                                >
+                                  <Portal
+                                    name="product.item.before"
+                                    props={
+                                      Object {
+                                        "productId": "913",
+                                      }
+                                    }
+                                  />
+                                  <Portal
+                                    name="product.item"
+                                    props={
+                                      Object {
+                                        "productId": "913",
+                                      }
+                                    }
+                                  >
+                                    <Connect(pure(Item))
+                                      product={
+                                        Object {
+                                          "ageRating": 0,
+                                          "availability": Object {
+                                            "state": "ok",
+                                            "text": "In stock",
+                                          },
+                                          "baseProductId": null,
+                                          "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                          "flags": Object {
+                                            "hasChildren": false,
+                                            "hasOptions": false,
+                                            "hasVariants": false,
+                                          },
+                                          "highlight": true,
+                                          "id": "913",
+                                          "identifiers": Object {
+                                            "sku": "857347363",
+                                          },
+                                          "liveshoppings": Array [],
+                                          "manufacturer": "",
+                                          "name": "This is a product with a very very long name -5-",
+                                          "price": Object {
+                                            "currency": "EUR",
+                                            "info": "",
+                                            "msrp": 0,
+                                            "taxAmount": 0,
+                                            "taxPercent": 0,
+                                            "tiers": Array [],
+                                            "unitPrice": 89,
+                                            "unitPriceMax": 1000,
+                                            "unitPriceMin": 0,
+                                            "unitPriceNet": 89,
+                                            "unitPriceStriked": 0,
+                                            "unitPriceWithTax": 89,
+                                          },
+                                          "rating": Object {
+                                            "average": 0,
+                                            "count": 0,
+                                            "reviewCount": 0,
+                                          },
+                                          "stock": Object {
+                                            "ignoreQuantity": true,
+                                            "info": "In stock",
+                                            "maxOrderQuantity": 10000,
+                                            "minOrderQuantity": 1,
+                                            "orderable": true,
+                                            "quantity": 0,
+                                          },
+                                        }
+                                      }
+                                    >
+                                      <pure(Item)
+                                        dispatch={[Function]}
+                                        isFavorite={false}
+                                        product={
+                                          Object {
+                                            "ageRating": 0,
+                                            "availability": Object {
+                                              "state": "ok",
+                                              "text": "In stock",
+                                            },
+                                            "baseProductId": null,
+                                            "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                            "flags": Object {
+                                              "hasChildren": false,
+                                              "hasOptions": false,
+                                              "hasVariants": false,
+                                            },
+                                            "highlight": true,
+                                            "id": "913",
+                                            "identifiers": Object {
+                                              "sku": "857347363",
+                                            },
+                                            "liveshoppings": Array [],
+                                            "manufacturer": "",
+                                            "name": "This is a product with a very very long name -5-",
+                                            "price": Object {
+                                              "currency": "EUR",
+                                              "info": "",
+                                              "msrp": 0,
+                                              "taxAmount": 0,
+                                              "taxPercent": 0,
+                                              "tiers": Array [],
+                                              "unitPrice": 89,
+                                              "unitPriceMax": 1000,
+                                              "unitPriceMin": 0,
+                                              "unitPriceNet": 89,
+                                              "unitPriceStriked": 0,
+                                              "unitPriceWithTax": 89,
+                                            },
+                                            "rating": Object {
+                                              "average": 0,
+                                              "count": 0,
+                                              "reviewCount": 0,
+                                            },
+                                            "stock": Object {
+                                              "ignoreQuantity": true,
+                                              "info": "In stock",
+                                              "maxOrderQuantity": 10000,
+                                              "minOrderQuantity": 1,
+                                              "orderable": true,
+                                              "quantity": 0,
+                                            },
+                                          }
+                                        }
+                                      >
+                                        <Item
+                                          dispatch={[Function]}
+                                          display={null}
+                                          isFavorite={false}
+                                          product={
+                                            Object {
+                                              "ageRating": 0,
+                                              "availability": Object {
+                                                "state": "ok",
+                                                "text": "In stock",
+                                              },
+                                              "baseProductId": null,
+                                              "featuredImageUrl": "https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b",
+                                              "flags": Object {
+                                                "hasChildren": false,
+                                                "hasOptions": false,
+                                                "hasVariants": false,
+                                              },
+                                              "highlight": true,
+                                              "id": "913",
+                                              "identifiers": Object {
+                                                "sku": "857347363",
+                                              },
+                                              "liveshoppings": Array [],
+                                              "manufacturer": "",
+                                              "name": "This is a product with a very very long name -5-",
+                                              "price": Object {
+                                                "currency": "EUR",
+                                                "info": "",
+                                                "msrp": 0,
+                                                "taxAmount": 0,
+                                                "taxPercent": 0,
+                                                "tiers": Array [],
+                                                "unitPrice": 89,
+                                                "unitPriceMax": 1000,
+                                                "unitPriceMin": 0,
+                                                "unitPriceNet": 89,
+                                                "unitPriceStriked": 0,
+                                                "unitPriceWithTax": 89,
+                                              },
+                                              "rating": Object {
+                                                "average": 0,
+                                                "count": 0,
+                                                "reviewCount": 0,
+                                              },
+                                              "stock": Object {
+                                                "ignoreQuantity": true,
+                                                "info": "In stock",
+                                                "maxOrderQuantity": 10000,
+                                                "minOrderQuantity": 1,
+                                                "orderable": true,
+                                                "quantity": 0,
+                                              },
+                                            }
+                                          }
+                                        >
+                                          <Connect(Link)
+                                            className="css-b4pchx"
+                                            href="/item/393133"
+                                            itemProp="item"
+                                            itemScope={true}
+                                            itemType="http://schema.org/Product"
+                                            state={
+                                              Object {
+                                                "title": "This is a product with a very very long name -5-",
+                                              }
+                                            }
+                                            tagName="a"
+                                          >
+                                            <Link
+                                              className="css-b4pchx"
+                                              disabled={false}
+                                              href="/item/393133"
+                                              itemProp="item"
+                                              itemScope={true}
+                                              itemType="http://schema.org/Product"
+                                              navigate={[Function]}
+                                              replace={false}
+                                              state={
+                                                Object {
+                                                  "title": "This is a product with a very very long name -5-",
+                                                }
+                                              }
+                                              tag="div"
+                                              tagName="a"
+                                            >
+                                              <div
+                                                aria-hidden={true}
+                                                className="css-c6ki83 css-b4pchx"
+                                                onClick={[Function]}
+                                                role="link"
+                                              >
+                                                <Portal
+                                                  name="product-item.image.before"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.image"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                >
+                                                  <ProductImage
+                                                    alt="This is a product with a very very long name -5-"
+                                                    animating={true}
+                                                    forcePlaceholder={false}
+                                                    highestResolutionLoaded={[Function]}
+                                                    itemProp="image"
+                                                    ratio={null}
+                                                    resolutions={
+                                                      Array [
+                                                        Object {
+                                                          "blur": 2,
+                                                          "height": 50,
+                                                          "width": 50,
+                                                        },
+                                                        Object {
+                                                          "height": 440,
+                                                          "width": 440,
+                                                        },
+                                                      ]
+                                                    }
+                                                    src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
+                                                  >
+                                                    <Image
+                                                      alt="This is a product with a very very long name -5-"
+                                                      animating={true}
+                                                      backgroundColor="#fff"
+                                                      className=""
+                                                      forcePlaceholder={false}
+                                                      highestResolutionLoaded={[Function]}
+                                                      itemProp="image"
+                                                      onError={[Function]}
+                                                      onLoad={null}
+                                                      ratio={null}
+                                                      resolutions={
+                                                        Array [
+                                                          Object {
+                                                            "blur": 2,
+                                                            "height": 50,
+                                                            "width": 50,
+                                                          },
+                                                          Object {
+                                                            "height": 440,
+                                                            "width": 440,
+                                                          },
+                                                        ]
+                                                      }
+                                                      src="https://img-cdn.shopgate.com/30188/1/fce216e970614ec94f701b4fc234d1908b48c3b097303c9698e3a6f46787cf3b"
+                                                      transition={null}
+                                                    >
+                                                      <div
+                                                        className="css-1d0r90g "
+                                                      />
+                                                    </Image>
+                                                  </ProductImage>
+                                                </Portal>
+                                                <Portal
+                                                  name="product-item.image.after"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.favorites-button.before"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <Portal
+                                                  name="product-item.favorites-button"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                >
+                                                  <div
+                                                    className="css-apqpkv"
+                                                    data-test-id="favorites"
+                                                  >
+                                                    <Connect(FavoritesButton)
+                                                      active={false}
+                                                      noShadow={true}
+                                                      productId="913"
+                                                      removeWithRelatives={true}
+                                                    >
+                                                      <FavoritesButton
+                                                        active={false}
+                                                        addFavorites={[Function]}
+                                                        className=""
+                                                        noShadow={true}
+                                                        onRippleComplete={[Function]}
+                                                        once={false}
+                                                        productId="913"
+                                                        removeFavorites={[Function]}
+                                                        removeThrottle={0}
+                                                        removeWithRelatives={true}
+                                                        rippleClassName=""
+                                                      />
+                                                    </Connect(FavoritesButton)>
+                                                  </div>
+                                                </Portal>
+                                                <Portal
+                                                  name="product-item.favorites-button.after"
+                                                  props={
+                                                    Object {
+                                                      "productId": "913",
+                                                    }
+                                                  }
+                                                />
+                                                <div
+                                                  className="css-16e7pt1"
+                                                >
+                                                  <Portal
+                                                    name="product-item.name.before"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.name"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  >
+                                                    <div
+                                                      className="css-1xzic9e"
+                                                      data-test-id="Productname: This is a product with a very very long name -5-"
+                                                      itemProp="name"
+                                                    >
+                                                      <Ellipsis
+                                                        className=""
+                                                        ellipsis="..."
+                                                        rows={3}
+                                                      >
+                                                        <Dotdotdot
+                                                          clamp={3}
+                                                          className=""
+                                                          ellipsis="..."
+                                                          tagName="div"
+                                                          truncationChar="…"
+                                                          useNativeClamp={true}
+                                                        >
+                                                          <div
+                                                            className=""
+                                                          >
+                                                            This is a product with a very very long name -5-
+                                                          </div>
+                                                        </Dotdotdot>
+                                                      </Ellipsis>
+                                                    </div>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="product-item.name.after"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.price.before"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="product-item.price"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  >
+                                                    <Grid
+                                                      className="css-1glzrmu"
+                                                      component="ul"
+                                                      wrap={true}
+                                                    >
+                                                      <ul
+                                                        className="css-1glzrmu css-h7r55a css-u7q1iu"
+                                                      >
+                                                        <GridItem
+                                                          className=""
+                                                          component="li"
+                                                          grow={1}
+                                                          shrink={1}
+                                                        >
+                                                          <li
+                                                            className=" css-1gs0ko2"
+                                                          >
+                                                            <Price
+                                                              className=""
+                                                              currency="EUR"
+                                                              discounted={false}
+                                                              fractions={true}
+                                                              taxDisclaimer={false}
+                                                              unitPrice={89}
+                                                              unitPriceMin={0}
+                                                            >
+                                                              <div
+                                                                className="css-izofhs "
+                                                                data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                                              >
+                                                                <FormatPrice
+                                                                  className=""
+                                                                  currency="EUR"
+                                                                  fractions={true}
+                                                                  price={89}
+                                                                >
+                                                                  <span
+                                                                    className=""
+                                                                  >
+                                                                    p
+                                                                  </span>
+                                                                </FormatPrice>
+                                                              </div>
+                                                            </Price>
+                                                          </li>
+                                                        </GridItem>
+                                                      </ul>
+                                                    </Grid>
+                                                    <Grid
+                                                      className=""
+                                                      component="ul"
+                                                      wrap={false}
+                                                    >
+                                                      <ul
+                                                        className=" css-h7r55a"
+                                                      />
+                                                    </Grid>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="product-item.price.after"
+                                                    props={
+                                                      Object {
+                                                        "productId": "913",
+                                                      }
+                                                    }
+                                                  />
+                                                </div>
+                                              </div>
+                                            </Link>
+                                          </Connect(Link)>
+                                        </Item>
+                                      </pure(Item)>
+                                    </Connect(pure(Item))>
+                                  </Portal>
+                                  <Portal
+                                    name="product.item.after"
+                                    props={
+                                      Object {
+                                        "productId": "913",
+                                      }
+                                    }
+                                  />
+                                </li>
+                              </GridItem>
+                            </ul>
+                          </Grid>
+                        </div>
+                      </div>
+                    </InfiniteContainer>
+                  </ProductGrid>
+                </CategoryProducts>
+              </Connect(CategoryProducts)>
+            </Portal>
+            <Portal
+              name="product.list.after"
+              props={
+                Object {
+                  "categoryId": "women",
+                }
+              }
+            />
+            <Connect(Empty)
+              bodyText="category.no_result.body"
+              categoryId="women"
+              headlineText="category.no_result.heading"
+            >
+              <Empty
+                bodyText="category.no_result.body"
+                categoryId="women"
+                dispatch={[Function]}
+                headlineText="category.no_result.heading"
+                isVisible={false}
+              />
+            </Connect(Empty)>
+          </CategoryContent>
+        </Connect(CategoryContent)>
+      </div>
+    </MockedView>
+  </Category>
+</Provider>
+`;

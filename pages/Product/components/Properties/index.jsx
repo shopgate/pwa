@@ -18,7 +18,7 @@ const Properties = ({ properties }) => {
       <table className={styles.table}>
         <tbody>
           {properties.map(({ label, value }) => (
-            <tr key={label}>
+            <tr key={`${label}${value}`}>
               <td className={styles.cell}>{label}</td>
               <td className={styles.cell} data-test-id={`property: ${value}`}>{value}</td>
             </tr>

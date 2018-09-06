@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import openFilterView from '../../actions/openFilterView';
 
 /**
- * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
  * @param {Object} props The components props.
- * @return {Object} The extended component props.
+ * @return {Object}
  */
-const mapDispatchToProps = (dispatch, props) => ({
-  handleOpenFilters: () => dispatch(openFilterView(props)),
+const mapDispatchToProps = dispatch => ({
+  navigate: () => dispatch(openFilterView()),
 });
 
-export default connect(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps, null, { pure: () => null });

@@ -1,0 +1,2925 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart> page Initial page should navigate back on button press 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Cart)>
+    <Cart
+      cartItems={Array []}
+      dispatch={[Function]}
+      isLoading={false}
+      messages={Array []}
+    >
+      <MockedView>
+        <div>
+          <Connect(Empty)>
+            <Empty
+              goBackHistory={[Function]}
+            >
+              <div
+                className="css-12lnmui"
+              >
+                <Portal
+                  name="cart.empty.before"
+                  props={null}
+                />
+                <Portal
+                  name="cart.empty"
+                  props={null}
+                >
+                  <div
+                    className="css-aphe06"
+                  >
+                    <div
+                      className="css-11342l"
+                    >
+                      <Icon>
+                        <svg
+                          viewBox="0 0 208 208"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            className={
+                              Object {
+                                "data-css-4gyzyg": "",
+                              }
+                            }
+                            cx="104"
+                            cy="104"
+                            r="104"
+                          />
+                          <ellipse
+                            className={
+                              Object {
+                                "data-css-1fnid0t": "",
+                              }
+                            }
+                            cx="104"
+                            cy="161"
+                            rx="65"
+                            ry="7"
+                          />
+                          <g
+                            className={
+                              Object {
+                                "data-css-1wsj2pd": "",
+                              }
+                            }
+                          >
+                            <path
+                              d="M84.4 121.4c.4-.1.9-.3 1.4-.4 1.6-.4 3.2-.5 4.8-.5h.8c-.1 0-.3-.1-.6-.2-2-.4-4-.4-6 .1-.9.2-1.7.4-2.5.8.2-.6.5-1.2.9-1.7l.9-1.2c.4-.5.9-1 1.5-1.4.7-.5 1.5-.9 2.4-1.1 1.6-.4 3.3-.4 4.9 0 5.7 1.4 10.7 1.6 11.2.8.2-.4-4.9 10.7-11.7 9.7-6.8-.8-10.1-3.2-13-1.3-.2.1 1.1-2.3 5-3.6z"
+                            />
+                            <path
+                              d="M92.6 140.8l.5-.9c.6-1 1.3-1.9 2.1-2.7l.4-.4h-.1l-.4.2c-1.2.8-2.2 1.9-2.9 3.2-.3.5-.6 1.1-.8 1.7-.2-.4-.3-.8-.4-1.3-.1-.4-.1-.7-.1-1.1 0-.5 0-.9.1-1.4.1-.6.3-1.2.6-1.8.6-1 1.4-1.9 2.5-2.5 3.5-2.2 6.1-4.7 5.9-5.3-.1-.3 3.1 7.7-.8 10.8-3.8 3.1-6.6 3.6-7.1 6.1-.2 0-.7-1.9.5-4.6z"
+                            />
+                            <path
+                              d="M122 128.1c-2.1-.4-3.5 1.7-7.2 3.8s-9.2-3.1-9-2.9c.5.4 3.3-.9 6.2-3 .8-.6 1.8-1 2.8-1.2.6 0 1.1 0 1.6.1.4.1.8.2 1.1.4.3.1.6.3.8.5.3.2.6.5.9.8-.5 0-1.1.1-1.6.2-1.2.2-2.4.6-3.5 1.3-.1.1-.2.2-.3.2.1 0 .3-.1.5-.2.9-.4 1.9-.7 2.9-.8.3 0 .7-.1.9-.1 2.7-.1 4.1.9 3.9.9z"
+                            />
+                            <path
+                              d="M130.3 119.2l-.6.2c-3.5 1.3-7.5.1-9.7-2.9l-.9-1.4c1.3.4 2.6.5 4 .4 2.6-.3 5.1.8 6.7 2.9l.5.8z"
+                            />
+                            <path
+                              d="M135.8 133.9l-.9-.8c-2.3-2.1-3-5.5-1.6-8.2l.2-.4.6.5c1.6 1.5 2.3 3.6 1.8 5.8-.2.9-.2 2-.1 3.1z"
+                            />
+                            <path
+                              d="M137.2 114.4l-.7.6c-1.8 1.6-2.4 4.2-1.4 6.4l.1.3.4-.4c1.3-1.1 1.9-2.8 1.5-4.4 0-.8 0-1.7.1-2.5z"
+                            />
+                          </g>
+                          <g
+                            className={
+                              Object {
+                                "data-css-itadob": "",
+                              }
+                            }
+                          >
+                            <path
+                              d="M161.1 102.2l-2.7-7.7c-.4-1.3-1.5-2.2-2.8-2.4-1.3-.2-2.3-1.1-2.7-2.4L142 55.5c-.5-1.4-1.9-2.3-3.4-2.4H68.4c-1.5.1-2.8 1-3.4 2.4l-10.8 34c-.3 1.3-1.4 2.2-2.7 2.4-1.3.2-2.4 1.1-2.8 2.4l-2.6 7.7c-.5 1.4.1 2.5 1.2 2.5h42c1.6-.1 3.2-.7 4.4-1.8l3.2-3.1v-.1c.6-3.2 3.6-5.3 6.8-4.7.1 0 .2 0 .3.1l37 7.7c1.4.3 2.6 1 3.4 2h15.3c1.3 0 1.9-1.1 1.4-2.4zM82.6 88.1c0 1.4-1.2 2.5-2.6 2.5h-9.3c-1.1.1-2-.7-2.1-1.8 0-.2 0-.5.1-.7l5.2-24.7c.4-1.4 1.7-2.4 3.1-2.5h3c1.4 0 2.6 1.1 2.6 2.5v24.7zm25.5 2.5h-8.4c-1.3.1-2.3-.9-2.4-2.2v-.3l2.1-24.5c.2-1.4 1.4-2.5 2.8-2.5h3.1c1.4 0 2.7 1.1 2.8 2.5l2.1 24.5c0 1.3-.9 2.4-2.1 2.5zm29.2-.1c-.2.1-.5.1-.7.1h-9.3c-1.4 0-2.6-1.1-2.6-2.5V63.6c0-1.4 1.2-2.5 2.6-2.5h3.1c1.5 0 2.8 1 3.1 2.5l5.2 24.6c.3 1-.4 2-1.4 2.3z"
+                            />
+                            <path
+                              d="M99 99.9c-.4 2.2 1.1 4.3 3.3 4.8l37.2 7.8c1 .2 2 0 2.8-.6.8-.6 1.4-1.5 1.6-2.5.4-2.2-1.1-4.3-3.3-4.8l-37.2-7.8c-.2 0-.5-.1-.7-.1-1.7.1-3.4 1.4-3.7 3.2z"
+                            />
+                          </g>
+                        </svg>
+                      </Icon>
+                    </div>
+                    <div
+                      className="css-b9wt33"
+                      data-test-id="emptyCartPlaceHolderString"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="cart.empty"
+                      >
+                        <span
+                          className=""
+                        >
+                          cart.empty
+                        </span>
+                      </Translate>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="cart.empty.after"
+                  props={null}
+                />
+                <div
+                  className="css-1dq8tqy"
+                >
+                  <RippleButton
+                    className="css-63oe3q"
+                    disabled={false}
+                    flat={false}
+                    onClick={[Function]}
+                    rippleClassName=""
+                    rippleSize={null}
+                    testId="Button"
+                    type="secondary"
+                    wrapContent={true}
+                  >
+                    <Button
+                      className="css-63oe3q"
+                      disabled={false}
+                      flat={false}
+                      onClick={[Function]}
+                      testId="Button"
+                      type="secondary"
+                      wrapContent={false}
+                    >
+                      <Button
+                        className="css-187rja2 css-63oe3q"
+                        disabled={false}
+                        onClick={[Function]}
+                        testId="Button"
+                      >
+                        <button
+                          className="css-187rja2 css-63oe3q css-1rn65c0"
+                          data-test-id="Button"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-8s1fw2 "
+                            color="#000"
+                            disabled={false}
+                            fill={true}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-8s1fw2 "
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="cart.continue"
+                              >
+                                <span
+                                  className=""
+                                >
+                                  cart.continue
+                                </span>
+                              </Translate>
+                            </div>
+                          </Ripple>
+                        </button>
+                      </Button>
+                    </Button>
+                  </RippleButton>
+                </div>
+              </div>
+            </Empty>
+          </Connect(Empty)>
+        </div>
+      </MockedView>
+    </Cart>
+  </Connect(Cart)>
+</Provider>
+`;
+
+exports[`<Cart> page Initial page should render coupon 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Cart)>
+    <Cart
+      cartItems={
+        Array [
+          Object {
+            "coupon": null,
+            "id": "123",
+            "messages": Array [],
+            "product": Object {
+              "appliedDiscounts": Array [],
+              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+              "id": "test_product",
+              "name": "Test Product",
+              "price": Object {
+                "default": 20,
+                "special": null,
+                "unit": 20,
+              },
+              "properties": Array [
+                Object {
+                  "label": "Weight",
+                  "value": "15kg",
+                },
+              ],
+            },
+            "quantity": 1,
+            "type": "product",
+          },
+          Object {
+            "coupon": Object {
+              "code": "FOREVER",
+              "description": null,
+              "label": "Coupon",
+              "savedPrice": Object {
+                "type": "fixed",
+                "value": 5,
+              },
+            },
+            "id": "234",
+            "messages": Array [],
+            "product": null,
+            "quantity": 1,
+            "type": "coupon",
+          },
+        ]
+      }
+      dispatch={[Function]}
+      isLoading={false}
+      messages={Array []}
+    >
+      <MockedView>
+        <div>
+          <section
+            className="css-1g0wxuv"
+            style={
+              Object {
+                "paddingBottom": "78px",
+                "paddingTop": 4,
+              }
+            }
+          >
+            <Portal
+              name="cart.item-list.before"
+              props={null}
+            />
+            <Portal
+              name="cart.item-list"
+              props={null}
+            >
+              <CardList>
+                <List
+                  className=""
+                >
+                  <ul
+                    className="css-gkw1j5 "
+                  >
+                    <Portal
+                      name="cart.item.before"
+                      props={
+                        Object {
+                          "cartItemId": "123",
+                          "type": "product",
+                        }
+                      }
+                    />
+                    <Portal
+                      name="cart.item"
+                      props={
+                        Object {
+                          "cartItemId": "123",
+                          "type": "product",
+                        }
+                      }
+                    >
+                      <Item
+                        item={
+                          Object {
+                            "coupon": null,
+                            "id": "123",
+                            "messages": Array [],
+                            "product": Object {
+                              "appliedDiscounts": Array [],
+                              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                              "id": "test_product",
+                              "name": "Test Product",
+                              "price": Object {
+                                "default": 20,
+                                "special": null,
+                                "unit": 20,
+                              },
+                              "properties": Array [
+                                Object {
+                                  "label": "Weight",
+                                  "value": "15kg",
+                                },
+                              ],
+                            },
+                            "quantity": 1,
+                            "type": "product",
+                          }
+                        }
+                        togglePaymentBar={[Function]}
+                      >
+                        <Connect(Product)
+                          id="123"
+                          key="123"
+                          messages={Array []}
+                          onToggleFocus={[Function]}
+                          product={
+                            Object {
+                              "appliedDiscounts": Array [],
+                              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                              "id": "test_product",
+                              "name": "Test Product",
+                              "price": Object {
+                                "default": 20,
+                                "special": null,
+                                "unit": 20,
+                              },
+                              "properties": Array [
+                                Object {
+                                  "label": "Weight",
+                                  "value": "15kg",
+                                },
+                              ],
+                            }
+                          }
+                          quantity={1}
+                        >
+                          <Product
+                            currency="USD"
+                            deleteProduct={[Function]}
+                            id="123"
+                            isIos={false}
+                            messages={Array []}
+                            onToggleFocus={[Function]}
+                            product={
+                              Object {
+                                "appliedDiscounts": Array [],
+                                "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                                "id": "test_product",
+                                "name": "Test Product",
+                                "price": Object {
+                                  "default": 20,
+                                  "special": null,
+                                  "unit": 20,
+                                },
+                                "properties": Array [
+                                  Object {
+                                    "label": "Weight",
+                                    "value": "15kg",
+                                  },
+                                ],
+                              }
+                            }
+                            quantity={1}
+                            updateProduct={[Function]}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={true}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={300}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                key="123"
+                                style={
+                                  Object {
+                                    "opactity": 1,
+                                    "transition": "height 300ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+                                  }
+                                }
+                              >
+                                <Item
+                                  className={null}
+                                  isSelected={false}
+                                >
+                                  <ListItem
+                                    className="css-9hjfag null"
+                                    isSelected={false}
+                                  >
+                                    <li
+                                      className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                                    >
+                                      <div
+                                        data-test-id="cartItem"
+                                      >
+                                        <Connect(Link)
+                                          href="/item/746573745f70726f64756374"
+                                          itemProp="item"
+                                          itemScope={true}
+                                          itemType="http://schema.org/Product"
+                                          tagName="a"
+                                        >
+                                          <Link
+                                            className=""
+                                            disabled={false}
+                                            href="/item/746573745f70726f64756374"
+                                            itemProp="item"
+                                            itemScope={true}
+                                            itemType="http://schema.org/Product"
+                                            navigate={[Function]}
+                                            replace={false}
+                                            state={Object {}}
+                                            tag="div"
+                                            tagName="a"
+                                          >
+                                            <div
+                                              aria-hidden={true}
+                                              className="css-c6ki83 "
+                                              onClick={[Function]}
+                                              role="link"
+                                            >
+                                              <Layout
+                                                currency="USD"
+                                                editMode={false}
+                                                handleDelete={[Function]}
+                                                handleUpdate={[Function]}
+                                                product={
+                                                  Object {
+                                                    "appliedDiscounts": Array [],
+                                                    "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                                                    "id": "test_product",
+                                                    "name": "Test Product",
+                                                    "price": Object {
+                                                      "default": 20,
+                                                      "special": null,
+                                                      "unit": 20,
+                                                    },
+                                                    "properties": Array [
+                                                      Object {
+                                                        "label": "Weight",
+                                                        "value": "15kg",
+                                                      },
+                                                    ],
+                                                  }
+                                                }
+                                                quantity={1}
+                                                toggleEditMode={[Function]}
+                                              >
+                                                <Grid
+                                                  className="css-1ifkpbu"
+                                                  component="ul"
+                                                  wrap={false}
+                                                >
+                                                  <ul
+                                                    className="css-1ifkpbu css-h7r55a"
+                                                  >
+                                                    <GridItem
+                                                      className="css-1tfmogy"
+                                                      component="li"
+                                                      grow={0}
+                                                      shrink={1}
+                                                    >
+                                                      <li
+                                                        className="css-1tfmogy"
+                                                      >
+                                                        <div
+                                                          className="css-pll4f2"
+                                                        >
+                                                          <Portal
+                                                            name="cart.item.image.before"
+                                                            props={
+                                                              Object {
+                                                                "cartItemId": "123",
+                                                                "type": "product",
+                                                              }
+                                                            }
+                                                          />
+                                                          <Portal
+                                                            name="cart.item.image"
+                                                            props={
+                                                              Object {
+                                                                "cartItemId": "123",
+                                                                "type": "product",
+                                                              }
+                                                            }
+                                                          >
+                                                            <ProductImage
+                                                              alt={null}
+                                                              animating={true}
+                                                              forcePlaceholder={false}
+                                                              highestResolutionLoaded={[Function]}
+                                                              ratio={null}
+                                                              resolutions={
+                                                                Array [
+                                                                  Object {
+                                                                    "blur": 2,
+                                                                    "height": 50,
+                                                                    "width": 50,
+                                                                  },
+                                                                  Object {
+                                                                    "height": 440,
+                                                                    "width": 440,
+                                                                  },
+                                                                ]
+                                                              }
+                                                              src="https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa"
+                                                            >
+                                                              <Image
+                                                                alt={null}
+                                                                animating={true}
+                                                                backgroundColor="#fff"
+                                                                className=""
+                                                                forcePlaceholder={false}
+                                                                highestResolutionLoaded={[Function]}
+                                                                onError={[Function]}
+                                                                onLoad={null}
+                                                                ratio={null}
+                                                                resolutions={
+                                                                  Array [
+                                                                    Object {
+                                                                      "blur": 2,
+                                                                      "height": 50,
+                                                                      "width": 50,
+                                                                    },
+                                                                    Object {
+                                                                      "height": 440,
+                                                                      "width": 440,
+                                                                    },
+                                                                  ]
+                                                                }
+                                                                src="https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa"
+                                                                transition={null}
+                                                              >
+                                                                <div
+                                                                  className="css-1d0r90g "
+                                                                />
+                                                              </Image>
+                                                            </ProductImage>
+                                                          </Portal>
+                                                          <Portal
+                                                            name="cart.item.image.after"
+                                                            props={
+                                                              Object {
+                                                                "cartItemId": "123",
+                                                                "type": "product",
+                                                              }
+                                                            }
+                                                          />
+                                                        </div>
+                                                        <QuantityPicker
+                                                          editMode={false}
+                                                          onChange={[Function]}
+                                                          onToggleEditMode={[Function]}
+                                                          quantity={1}
+                                                        >
+                                                          <form
+                                                            onSubmit={[Function]}
+                                                          >
+                                                            <input
+                                                              className="css-7rhxrg"
+                                                              data-test-id="quantityPicker"
+                                                              min={1}
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onClick={[Function]}
+                                                              onFocus={[Function]}
+                                                              type="number"
+                                                              value={1}
+                                                            />
+                                                          </form>
+                                                        </QuantityPicker>
+                                                      </li>
+                                                    </GridItem>
+                                                    <GridItem
+                                                      className="css-1v8t41k"
+                                                      component="li"
+                                                      grow={1}
+                                                      shrink={1}
+                                                    >
+                                                      <li
+                                                        className="css-1v8t41k css-1gs0ko2"
+                                                      >
+                                                        <Title
+                                                          handleRemove={[Function]}
+                                                          toggleEditMode={[Function]}
+                                                          value="Test Product"
+                                                        >
+                                                          <Grid
+                                                            className=""
+                                                            component="ul"
+                                                            wrap={false}
+                                                          >
+                                                            <ul
+                                                              className=" css-h7r55a"
+                                                            >
+                                                              <GridItem
+                                                                className=""
+                                                                component="li"
+                                                                grow={1}
+                                                                shrink={1}
+                                                              >
+                                                                <li
+                                                                  className=" css-1gs0ko2"
+                                                                >
+                                                                  <Portal
+                                                                    name="cart.item.name.before"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                  <Portal
+                                                                    name="cart.item.name"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  >
+                                                                    <div
+                                                                      className="css-1t70ecf"
+                                                                    >
+                                                                      Test Product
+                                                                    </div>
+                                                                  </Portal>
+                                                                  <Portal
+                                                                    name="cart.item.name.after"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                </li>
+                                                              </GridItem>
+                                                              <GridItem
+                                                                className="css-8ynteh"
+                                                                component="li"
+                                                                grow={0}
+                                                                shrink={0}
+                                                              >
+                                                                <li
+                                                                  className="css-8ynteh css-1l9a57c"
+                                                                >
+                                                                  <div
+                                                                    className="css-4d31t7"
+                                                                  >
+                                                                    <ContextMenu>
+                                                                      <div
+                                                                        className="css-13azwyo"
+                                                                        data-test-id="contextMenu"
+                                                                      >
+                                                                        <button
+                                                                          className="css-d6h5ju"
+                                                                          onClick={[Function]}
+                                                                        >
+                                                                          <MoreVert>
+                                                                            <Icon
+                                                                              className=""
+                                                                              color={null}
+                                                                              content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\\"/>"
+                                                                              size="inherit"
+                                                                              viewBox="0 0 24 24"
+                                                                            >
+                                                                              <svg
+                                                                                className="css-yys9hb "
+                                                                                dangerouslySetInnerHTML={
+                                                                                  Object {
+                                                                                    "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\\"/>",
+                                                                                  }
+                                                                                }
+                                                                                style={
+                                                                                  Object {
+                                                                                    "fill": null,
+                                                                                    "fontSize": "inherit",
+                                                                                  }
+                                                                                }
+                                                                                viewBox="0 0 24 24"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                              />
+                                                                            </Icon>
+                                                                          </MoreVert>
+                                                                        </button>
+                                                                        <Portal
+                                                                          isOpened={false}
+                                                                          onClose={[Function]}
+                                                                          onOpen={[Function]}
+                                                                          onUpdate={[Function]}
+                                                                        />
+                                                                      </div>
+                                                                    </ContextMenu>
+                                                                  </div>
+                                                                </li>
+                                                              </GridItem>
+                                                            </ul>
+                                                          </Grid>
+                                                        </Title>
+                                                        <Grid
+                                                          className="css-w0l9fz"
+                                                          component="ul"
+                                                          wrap={false}
+                                                        >
+                                                          <ul
+                                                            className="css-w0l9fz css-h7r55a"
+                                                          >
+                                                            <GridItem
+                                                              className=""
+                                                              component="li"
+                                                              grow={1}
+                                                              shrink={1}
+                                                            >
+                                                              <li
+                                                                className=" css-1gs0ko2"
+                                                              >
+                                                                <Properties
+                                                                  properties={
+                                                                    Array [
+                                                                      Object {
+                                                                        "label": "Weight",
+                                                                        "value": "15kg",
+                                                                      },
+                                                                    ]
+                                                                  }
+                                                                >
+                                                                  <ul>
+                                                                    <li
+                                                                      key="Weight-15kg"
+                                                                    >
+                                                                      Weight
+                                                                      : 
+                                                                      15kg
+                                                                    </li>
+                                                                  </ul>
+                                                                </Properties>
+                                                              </li>
+                                                            </GridItem>
+                                                            <GridItem
+                                                              className=""
+                                                              component="li"
+                                                              grow={1}
+                                                              shrink={0}
+                                                            >
+                                                              <li
+                                                                className=" css-1gs0ko2 css-1l9a57c"
+                                                              >
+                                                                <ProductPrice
+                                                                  currency="USD"
+                                                                  defaultPrice={20}
+                                                                  specialPrice={null}
+                                                                >
+                                                                  <Portal
+                                                                    name="cart.item.price.before"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                  <Portal
+                                                                    name="cart.item.price"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  >
+                                                                    <Price
+                                                                      className="css-19tnmii"
+                                                                      currency="USD"
+                                                                      discounted={false}
+                                                                      fractions={true}
+                                                                      taxDisclaimer={true}
+                                                                      unitPrice={20}
+                                                                      unitPriceMin={0}
+                                                                    >
+                                                                      <div
+                                                                        className="css-izofhs css-19tnmii"
+                                                                        data-test-id="minPrice: 0 price: 20 currency: USD"
+                                                                      >
+                                                                        <FormatPrice
+                                                                          className=""
+                                                                          currency="USD"
+                                                                          fractions={true}
+                                                                          price={20}
+                                                                        >
+                                                                          <span
+                                                                            className=""
+                                                                          >
+                                                                            p
+                                                                          </span>
+                                                                        </FormatPrice>
+                                                                      </div>
+                                                                    </Price>
+                                                                  </Portal>
+                                                                  <Portal
+                                                                    name="cart.item.price.after"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                </ProductPrice>
+                                                              </li>
+                                                            </GridItem>
+                                                          </ul>
+                                                        </Grid>
+                                                      </li>
+                                                    </GridItem>
+                                                  </ul>
+                                                </Grid>
+                                              </Layout>
+                                            </div>
+                                          </Link>
+                                        </Connect(Link)>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </Item>
+                              </div>
+                            </Transition>
+                          </Product>
+                        </Connect(Product)>
+                      </Item>
+                    </Portal>
+                    <Portal
+                      name="cart.item.after"
+                      props={
+                        Object {
+                          "cartItemId": "123",
+                          "type": "product",
+                        }
+                      }
+                    />
+                    <Portal
+                      name="cart.item.before"
+                      props={
+                        Object {
+                          "cartItemId": "234",
+                          "type": "coupon",
+                        }
+                      }
+                    />
+                    <Portal
+                      name="cart.item"
+                      props={
+                        Object {
+                          "cartItemId": "234",
+                          "type": "coupon",
+                        }
+                      }
+                    >
+                      <Item
+                        item={
+                          Object {
+                            "coupon": Object {
+                              "code": "FOREVER",
+                              "description": null,
+                              "label": "Coupon",
+                              "savedPrice": Object {
+                                "type": "fixed",
+                                "value": 5,
+                              },
+                            },
+                            "id": "234",
+                            "messages": Array [],
+                            "product": null,
+                            "quantity": 1,
+                            "type": "coupon",
+                          }
+                        }
+                        togglePaymentBar={[Function]}
+                      >
+                        <Connect(Coupon)
+                          coupon={
+                            Object {
+                              "code": "FOREVER",
+                              "description": null,
+                              "label": "Coupon",
+                              "savedPrice": Object {
+                                "type": "fixed",
+                                "value": 5,
+                              },
+                            }
+                          }
+                          id="234"
+                          key="234"
+                          messages={Array []}
+                        >
+                          <Coupon
+                            coupon={
+                              Object {
+                                "code": "FOREVER",
+                                "description": null,
+                                "label": "Coupon",
+                                "savedPrice": Object {
+                                  "type": "fixed",
+                                  "value": 5,
+                                },
+                              }
+                            }
+                            currency="USD"
+                            deleteCoupon={[Function]}
+                            id="234"
+                            messages={Array []}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={true}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={300}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                key="234"
+                                style={
+                                  Object {
+                                    "opactity": 1,
+                                    "transition": "height 300ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="css-ibd9un"
+                                >
+                                  <Item
+                                    className={null}
+                                    isSelected={false}
+                                  >
+                                    <ListItem
+                                      className="css-9hjfag null"
+                                      isSelected={false}
+                                    >
+                                      <li
+                                        className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                                      >
+                                        <Layout
+                                          coupon={
+                                            Object {
+                                              "code": "FOREVER",
+                                              "description": null,
+                                              "label": "Coupon",
+                                              "savedPrice": Object {
+                                                "type": "fixed",
+                                                "value": 5,
+                                              },
+                                            }
+                                          }
+                                          currency="USD"
+                                          handleDelete={[Function]}
+                                        >
+                                          <Grid
+                                            className="css-1brxa1x"
+                                            component="ul"
+                                            wrap={false}
+                                          >
+                                            <ul
+                                              className="css-1brxa1x css-h7r55a"
+                                            >
+                                              <GridItem
+                                                className="css-1mpsxnk"
+                                                component="li"
+                                                grow={0}
+                                                shrink={1}
+                                              >
+                                                <li
+                                                  className="css-1mpsxnk"
+                                                >
+                                                  <Portal
+                                                    name="cart.item.image.before"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="cart.item.image"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  >
+                                                    <_default>
+                                                      <Icon
+                                                        className=""
+                                                        color={null}
+                                                        content="
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #81c6e5;
+      }
+
+      .cls-1 {
+        opacity: 0.19;
+      }
+
+      .cls-2 {
+        fill: none;
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5, .cls-6 {
+        opacity: 0.09;
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-7 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id=\\"clip-path\\">
+      <path class=\\"cls-1\\" d=\\"M39.407,6.8A23.038,23.038,0,0,0,6.6,39.15a23.007,23.007,0,0,0,32.552.2l.1-.1A23.078,23.078,0,0,0,39.407,6.8Z\\" transform=\\"translate(0 0)\\"/>
+    </clipPath>
+    <linearGradient id=\\"linear-gradient\\" x1=\\"0.273\\" y1=\\"0.267\\" x2=\\"0.705\\" y2=\\"0.641\\" gradientUnits=\\"objectBoundingBox\\">
+      <stop offset=\\"0\\"/>
+      <stop offset=\\"1\\" stop-opacity=\\"0.251\\"/>
+    </linearGradient>
+    <linearGradient id=\\"linear-gradient-2\\" x1=\\"0.5\\" y1=\\"0\\" x2=\\"0.5\\" y2=\\"1\\" xlink:href=\\"#linear-gradient\\"/>
+  </defs>
+  <g transform=\\"translate(283 -149)\\">
+    <path class=\\"cls-2\\" d=\\"M39.474-83.7a22.758,22.758,0,0,0-32.346-.1,23.309,23.309,0,0,0-.1,32.455A22.484,22.484,0,0,0,23.1-44.5a22.282,22.282,0,0,0,16.123-6.644l.1-.1A23.26,23.26,0,0,0,39.474-83.7Z\\" transform=\\"translate(3265.005 8065.5)\\"/>
+    <path class=\\"cls-3\\" d=\\"M39.407,6.8A23.038,23.038,0,0,0,6.6,39.15a23.007,23.007,0,0,0,32.552.2l.1-.1A23.078,23.078,0,0,0,39.407,6.8Z\\" transform=\\"translate(3265 7975)\\"/>
+    <g class=\\"cls-4\\" transform=\\"translate(3265 7975)\\">
+      <path class=\\"cls-5\\" d=\\"M3173.978,8072.545l-20.807,21.038,17.736,17.381,20.526-22.043Z\\" transform=\\"translate(-3140.448 -8060)\\"/>
+    </g>
+    <path class=\\"cls-6\\" d=\\"M3160.986,8075.234l-6.975,6.144,6.15,6.08,6.542-6.665Z\\" transform=\\"translate(124.137 -86.315)\\"/>
+    <path class=\\"cls-2\\" d=\\"M5.454-46.5a4.99,4.99,0,0,1,4.954,5.009,4.99,4.99,0,0,1-4.954,5.009A4.99,4.99,0,0,1,.5-41.491,4.99,4.99,0,0,1,5.454-46.5Z\\" transform=\\"translate(3275.621 8032.744)\\"/>
+    <path class=\\"cls-2\\" d=\\"M32.454-10.482A4.99,4.99,0,0,1,27.5-15.491,4.99,4.99,0,0,1,32.454-20.5a4.99,4.99,0,0,1,4.954,5.009A4.99,4.99,0,0,1,32.454-10.482Z\\" transform=\\"translate(3262.269 8020.033)\\"/>
+    <g transform=\\"translate(3276.244 7986.244)\\">
+      <path class=\\"cls-7\\" d=\\"M5.008,0a5.073,5.073,0,0,1,5.008,5.12,5.073,5.073,0,0,1-5.008,5.12A5.073,5.073,0,0,1,0,5.12,5.073,5.073,0,0,1,5.008,0Z\\" transform=\\"translate(0 0)\\"/>
+      <path class=\\"cls-7\\" d=\\"M2.553,23.044a1.533,1.533,0,0,1-1.067.467,1.448,1.448,0,0,1-1.067-.467,1.559,1.559,0,0,1,0-2.127L20.485.428a1.481,1.481,0,0,1,2.083,0,1.614,1.614,0,0,1,.051,2.127Z\\" transform=\\"translate(0.511 0)\\"/>
+      <path class=\\"cls-7\\" d=\\"M4.854,9.927A4.918,4.918,0,0,1,0,4.963,4.918,4.918,0,0,1,4.854,0,4.918,4.918,0,0,1,9.709,4.963,4.918,4.918,0,0,1,4.854,9.927Z\\" transform=\\"translate(13.802 13.584)\\"/>
+    </g>
+  </g>
+"
+                                                        size="inherit"
+                                                        viewBox="3548 7826 45.999 46"
+                                                      >
+                                                        <svg
+                                                          className="css-yys9hb "
+                                                          dangerouslySetInnerHTML={
+                                                            Object {
+                                                              "__html": "
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #81c6e5;
+      }
+
+      .cls-1 {
+        opacity: 0.19;
+      }
+
+      .cls-2 {
+        fill: none;
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-5, .cls-6 {
+        opacity: 0.09;
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-7 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id=\\"clip-path\\">
+      <path class=\\"cls-1\\" d=\\"M39.407,6.8A23.038,23.038,0,0,0,6.6,39.15a23.007,23.007,0,0,0,32.552.2l.1-.1A23.078,23.078,0,0,0,39.407,6.8Z\\" transform=\\"translate(0 0)\\"/>
+    </clipPath>
+    <linearGradient id=\\"linear-gradient\\" x1=\\"0.273\\" y1=\\"0.267\\" x2=\\"0.705\\" y2=\\"0.641\\" gradientUnits=\\"objectBoundingBox\\">
+      <stop offset=\\"0\\"/>
+      <stop offset=\\"1\\" stop-opacity=\\"0.251\\"/>
+    </linearGradient>
+    <linearGradient id=\\"linear-gradient-2\\" x1=\\"0.5\\" y1=\\"0\\" x2=\\"0.5\\" y2=\\"1\\" xlink:href=\\"#linear-gradient\\"/>
+  </defs>
+  <g transform=\\"translate(283 -149)\\">
+    <path class=\\"cls-2\\" d=\\"M39.474-83.7a22.758,22.758,0,0,0-32.346-.1,23.309,23.309,0,0,0-.1,32.455A22.484,22.484,0,0,0,23.1-44.5a22.282,22.282,0,0,0,16.123-6.644l.1-.1A23.26,23.26,0,0,0,39.474-83.7Z\\" transform=\\"translate(3265.005 8065.5)\\"/>
+    <path class=\\"cls-3\\" d=\\"M39.407,6.8A23.038,23.038,0,0,0,6.6,39.15a23.007,23.007,0,0,0,32.552.2l.1-.1A23.078,23.078,0,0,0,39.407,6.8Z\\" transform=\\"translate(3265 7975)\\"/>
+    <g class=\\"cls-4\\" transform=\\"translate(3265 7975)\\">
+      <path class=\\"cls-5\\" d=\\"M3173.978,8072.545l-20.807,21.038,17.736,17.381,20.526-22.043Z\\" transform=\\"translate(-3140.448 -8060)\\"/>
+    </g>
+    <path class=\\"cls-6\\" d=\\"M3160.986,8075.234l-6.975,6.144,6.15,6.08,6.542-6.665Z\\" transform=\\"translate(124.137 -86.315)\\"/>
+    <path class=\\"cls-2\\" d=\\"M5.454-46.5a4.99,4.99,0,0,1,4.954,5.009,4.99,4.99,0,0,1-4.954,5.009A4.99,4.99,0,0,1,.5-41.491,4.99,4.99,0,0,1,5.454-46.5Z\\" transform=\\"translate(3275.621 8032.744)\\"/>
+    <path class=\\"cls-2\\" d=\\"M32.454-10.482A4.99,4.99,0,0,1,27.5-15.491,4.99,4.99,0,0,1,32.454-20.5a4.99,4.99,0,0,1,4.954,5.009A4.99,4.99,0,0,1,32.454-10.482Z\\" transform=\\"translate(3262.269 8020.033)\\"/>
+    <g transform=\\"translate(3276.244 7986.244)\\">
+      <path class=\\"cls-7\\" d=\\"M5.008,0a5.073,5.073,0,0,1,5.008,5.12,5.073,5.073,0,0,1-5.008,5.12A5.073,5.073,0,0,1,0,5.12,5.073,5.073,0,0,1,5.008,0Z\\" transform=\\"translate(0 0)\\"/>
+      <path class=\\"cls-7\\" d=\\"M2.553,23.044a1.533,1.533,0,0,1-1.067.467,1.448,1.448,0,0,1-1.067-.467,1.559,1.559,0,0,1,0-2.127L20.485.428a1.481,1.481,0,0,1,2.083,0,1.614,1.614,0,0,1,.051,2.127Z\\" transform=\\"translate(0.511 0)\\"/>
+      <path class=\\"cls-7\\" d=\\"M4.854,9.927A4.918,4.918,0,0,1,0,4.963,4.918,4.918,0,0,1,4.854,0,4.918,4.918,0,0,1,9.709,4.963,4.918,4.918,0,0,1,4.854,9.927Z\\" transform=\\"translate(13.802 13.584)\\"/>
+    </g>
+  </g>
+",
+                                                            }
+                                                          }
+                                                          style={
+                                                            Object {
+                                                              "fill": null,
+                                                              "fontSize": "inherit",
+                                                            }
+                                                          }
+                                                          viewBox="3548 7826 45.999 46"
+                                                          xmlns="http://www.w3.org/2000/svg"
+                                                        />
+                                                      </Icon>
+                                                    </_default>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="cart.item.image.after"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                </li>
+                                              </GridItem>
+                                              <GridItem
+                                                className="css-pr0j1e"
+                                                component="li"
+                                                grow={1}
+                                                shrink={1}
+                                              >
+                                                <li
+                                                  className="css-pr0j1e css-1gs0ko2"
+                                                >
+                                                  <Portal
+                                                    name="cart.item.name.before"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="cart.item.name"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  >
+                                                    <Title
+                                                      value="Coupon"
+                                                    >
+                                                      <div
+                                                        className="css-j3xpc9"
+                                                      >
+                                                        Coupon
+                                                      </div>
+                                                    </Title>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="cart.item.name.after"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="cart.item.coupon-code.before"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="cart.item.coupon-code"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  >
+                                                    <Code
+                                                      value="FOREVER"
+                                                    >
+                                                      <div>
+                                                        <Translate
+                                                          className=""
+                                                          params={Object {}}
+                                                          string="cart.coupon_code"
+                                                        >
+                                                          <span
+                                                            className=""
+                                                          >
+                                                            cart.coupon_code
+                                                          </span>
+                                                        </Translate>
+                                                        : 
+                                                        FOREVER
+                                                      </div>
+                                                    </Code>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="cart.item.coupon-code.before"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                </li>
+                                              </GridItem>
+                                              <GridItem
+                                                className="css-pr0j1e css-1nehkc5"
+                                                component="li"
+                                                grow={1}
+                                                shrink={0}
+                                              >
+                                                <li
+                                                  className="css-pr0j1e css-1nehkc5 css-1gs0ko2 css-1l9a57c"
+                                                >
+                                                  <Delete
+                                                    handleDelete={[Function]}
+                                                  >
+                                                    <button
+                                                      className="css-18f4jja"
+                                                      data-test-id="deleteCoupon"
+                                                      onClick={[Function]}
+                                                    >
+                                                      <Cross>
+                                                        <Icon
+                                                          className=""
+                                                          color={null}
+                                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                                          size="inherit"
+                                                          viewBox="0 0 24 24"
+                                                        >
+                                                          <svg
+                                                            className="css-yys9hb "
+                                                            dangerouslySetInnerHTML={
+                                                              Object {
+                                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                                              }
+                                                            }
+                                                            style={
+                                                              Object {
+                                                                "fill": null,
+                                                                "fontSize": "inherit",
+                                                              }
+                                                            }
+                                                            viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                          />
+                                                        </Icon>
+                                                      </Cross>
+                                                    </button>
+                                                  </Delete>
+                                                  <CouponFreeShipping
+                                                    freeShipping={false}
+                                                  />
+                                                  <Portal
+                                                    name="cart.item.price.before"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                  <Portal
+                                                    name="cart.item.price"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  >
+                                                    <CouponPrice
+                                                      currency="USD"
+                                                      savedPrice={
+                                                        Object {
+                                                          "type": "fixed",
+                                                          "value": 5,
+                                                        }
+                                                      }
+                                                    >
+                                                      <Price
+                                                        className="css-z3o1vk"
+                                                        currency="USD"
+                                                        discounted={true}
+                                                        fractions={true}
+                                                        taxDisclaimer={false}
+                                                        unitPrice={-5}
+                                                        unitPriceMin={0}
+                                                      >
+                                                        <div
+                                                          className="css-izofhs css-z3o1vk css-1ncyhu"
+                                                          data-test-id="minPrice: 0 price: -5 currency: USD"
+                                                        >
+                                                          <FormatPrice
+                                                            className=""
+                                                            currency="USD"
+                                                            fractions={true}
+                                                            price={-5}
+                                                          >
+                                                            <span
+                                                              className=""
+                                                            >
+                                                              p
+                                                            </span>
+                                                          </FormatPrice>
+                                                        </div>
+                                                      </Price>
+                                                    </CouponPrice>
+                                                  </Portal>
+                                                  <Portal
+                                                    name="cart.item.price.after"
+                                                    props={
+                                                      Object {
+                                                        "cartItemId": "234",
+                                                        "type": "coupon",
+                                                      }
+                                                    }
+                                                  />
+                                                </li>
+                                              </GridItem>
+                                            </ul>
+                                          </Grid>
+                                        </Layout>
+                                      </li>
+                                    </ListItem>
+                                  </Item>
+                                </div>
+                              </div>
+                            </Transition>
+                          </Coupon>
+                        </Connect(Coupon)>
+                      </Item>
+                    </Portal>
+                    <Portal
+                      name="cart.item.after"
+                      props={
+                        Object {
+                          "cartItemId": "234",
+                          "type": "coupon",
+                        }
+                      }
+                    />
+                    <Portal
+                      key=".1"
+                      name="cart.coupon-field.before"
+                      props={null}
+                    />
+                    <Portal
+                      key=".2"
+                      name="cart.coupon-field"
+                      props={null}
+                    >
+                      <Connect(CouponField)
+                        onToggleFocus={[Function]}
+                      >
+                        <CouponField
+                          addCoupon={[Function]}
+                          isIos={false}
+                          isLoading={false}
+                          isVisible={true}
+                          onToggleFocus={[Function]}
+                        >
+                          <div>
+                            <Layout
+                              handleAddCoupon={[Function]}
+                              handleFocusChange={[Function]}
+                              handleValueChange={[Function]}
+                              iconStyle={
+                                Object {
+                                  "opacity": 0,
+                                }
+                              }
+                              isButtonDisabled={true}
+                              isFocused={false}
+                              isLoading={false}
+                              labelStyle={
+                                Object {
+                                  "display": "block",
+                                }
+                              }
+                              value=""
+                            >
+                              <div
+                                className="css-gtkn00"
+                              >
+                                <form
+                                  className="css-pgykgj"
+                                  data-test-id="couponField"
+                                  onSubmit={[Function]}
+                                >
+                                  <label
+                                    className="css-m5j1fd"
+                                    htmlFor="coupon-code-field"
+                                    style={
+                                      Object {
+                                        "display": "block",
+                                      }
+                                    }
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.redeem_coupon"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.redeem_coupon
+                                      </span>
+                                    </Translate>
+                                  </label>
+                                  <Component
+                                    className="css-gm6ek6"
+                                    disabled={false}
+                                    name="coupon-code-field"
+                                    onChange={[Function]}
+                                    onFocusChange={[Function]}
+                                    value=""
+                                  >
+                                    <SimpleInput
+                                      autoComplete={false}
+                                      autoCorrect={false}
+                                      className="css-gm6ek6"
+                                      disabled={false}
+                                      id={null}
+                                      name="coupon-code-field"
+                                      onChange={[Function]}
+                                      onFocusChange={[Function]}
+                                      onSanitize={[Function]}
+                                      onValidate={[Function]}
+                                      password={false}
+                                      setRef={[Function]}
+                                      type="text"
+                                      validateOnBlur={true}
+                                      value=""
+                                    >
+                                      <input
+                                        autoComplete="off"
+                                        autoCorrect="off"
+                                        className="css-gm6ek6"
+                                        disabled={false}
+                                        id={null}
+                                        name="coupon-code-field"
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        type="text"
+                                        value=""
+                                      />
+                                    </SimpleInput>
+                                  </Component>
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8dl7x"
+                                    data-test-id="CouponSubmitButton"
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "opacity": 0,
+                                      }
+                                    }
+                                  >
+                                    <CouponFieldIcon
+                                      disabled={true}
+                                    >
+                                      <Icon
+                                        className=""
+                                        color={null}
+                                        content="
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  "
+                                        size="inherit"
+                                        viewBox="1671 5924 30 30"
+                                      >
+                                        <svg
+                                          className="css-yys9hb "
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  ",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "fill": null,
+                                              "fontSize": "inherit",
+                                            }
+                                          }
+                                          viewBox="1671 5924 30 30"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </Icon>
+                                    </CouponFieldIcon>
+                                  </div>
+                                  <div
+                                    className="css-1usne35"
+                                  >
+                                    <div
+                                      className="css-11zbu8 css-1txaqv6"
+                                    />
+                                  </div>
+                                </form>
+                              </div>
+                            </Layout>
+                          </div>
+                        </CouponField>
+                      </Connect(CouponField)>
+                    </Portal>
+                    <Portal
+                      key=".3"
+                      name="cart.coupon-field.after"
+                      props={null}
+                    />
+                  </ul>
+                </List>
+              </CardList>
+            </Portal>
+            <Portal
+              name="cart.item-list.after"
+              props={null}
+            />
+            <PaymentBar
+              isVisible={true}
+              onSize={[Function]}
+            >
+              <Sheet
+                animation={
+                  Object {
+                    "in": "css-31n36f",
+                    "out": "css-gyrv08",
+                  }
+                }
+                backdrop={false}
+                duration={300}
+                isOpen={true}
+                onClose={[Function]}
+                onOpen={[Function]}
+                title=""
+              >
+                <section>
+                  <Drawer
+                    alwaysActive={false}
+                    animation={
+                      Object {
+                        "duration": 300,
+                        "in": "css-31n36f",
+                        "out": "css-gyrv08",
+                      }
+                    }
+                    className="css-h69706"
+                    isOpen={true}
+                    onClose={[Function]}
+                    onDidClose={[Function]}
+                    onOpen={[Function]}
+                  >
+                    <div
+                      className="css-h69706 css-1rg7udn css-31n36f"
+                      onAnimationEnd={[Function]}
+                      style={
+                        Object {
+                          "animationDuration": "300ms",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-1aon90l css-k5vpvg"
+                        onScroll={[Function]}
+                      >
+                        <SizeMe(Content)
+                          key=".0"
+                          onClose={[Function]}
+                          onSize={[Function]}
+                        >
+                          <SizeMeRenderer(Content)
+                            disablePlaceholder={false}
+                            explicitRef={[Function]}
+                            onClose={[Function]}
+                            onSize={[Function]}
+                            size={
+                              Object {
+                                "height": undefined,
+                                "position": undefined,
+                                "width": undefined,
+                              }
+                            }
+                          >
+                            <SizeMeReferenceWrapper>
+                              <SizeMePlaceholder>
+                                <div
+                                  style={
+                                    Object {
+                                      "height": "100%",
+                                      "width": "100%",
+                                    }
+                                  }
+                                />
+                              </SizeMePlaceholder>
+                            </SizeMeReferenceWrapper>
+                          </SizeMeRenderer(Content)>
+                        </SizeMe(Content)>
+                      </div>
+                    </div>
+                  </Drawer>
+                </section>
+              </Sheet>
+            </PaymentBar>
+            <Connect(Footer)>
+              <Footer
+                dispatch={[Function]}
+                showCouponsHint={false}
+                showTaxDisclaimer={false}
+              />
+            </Connect(Footer)>
+          </section>
+        </div>
+      </MockedView>
+    </Cart>
+  </Connect(Cart)>
+</Provider>
+`;
+
+exports[`<Cart> page Initial page should render empty 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Cart)>
+    <Cart
+      cartItems={Array []}
+      dispatch={[Function]}
+      isLoading={false}
+      messages={Array []}
+    >
+      <MockedView>
+        <div>
+          <Connect(Empty)>
+            <Empty
+              goBackHistory={[Function]}
+            >
+              <div
+                className="css-12lnmui"
+              >
+                <Portal
+                  name="cart.empty.before"
+                  props={null}
+                />
+                <Portal
+                  name="cart.empty"
+                  props={null}
+                >
+                  <div
+                    className="css-aphe06"
+                  >
+                    <div
+                      className="css-11342l"
+                    >
+                      <Icon>
+                        <svg
+                          viewBox="0 0 208 208"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <circle
+                            className={
+                              Object {
+                                "data-css-4gyzyg": "",
+                              }
+                            }
+                            cx="104"
+                            cy="104"
+                            r="104"
+                          />
+                          <ellipse
+                            className={
+                              Object {
+                                "data-css-1fnid0t": "",
+                              }
+                            }
+                            cx="104"
+                            cy="161"
+                            rx="65"
+                            ry="7"
+                          />
+                          <g
+                            className={
+                              Object {
+                                "data-css-1wsj2pd": "",
+                              }
+                            }
+                          >
+                            <path
+                              d="M84.4 121.4c.4-.1.9-.3 1.4-.4 1.6-.4 3.2-.5 4.8-.5h.8c-.1 0-.3-.1-.6-.2-2-.4-4-.4-6 .1-.9.2-1.7.4-2.5.8.2-.6.5-1.2.9-1.7l.9-1.2c.4-.5.9-1 1.5-1.4.7-.5 1.5-.9 2.4-1.1 1.6-.4 3.3-.4 4.9 0 5.7 1.4 10.7 1.6 11.2.8.2-.4-4.9 10.7-11.7 9.7-6.8-.8-10.1-3.2-13-1.3-.2.1 1.1-2.3 5-3.6z"
+                            />
+                            <path
+                              d="M92.6 140.8l.5-.9c.6-1 1.3-1.9 2.1-2.7l.4-.4h-.1l-.4.2c-1.2.8-2.2 1.9-2.9 3.2-.3.5-.6 1.1-.8 1.7-.2-.4-.3-.8-.4-1.3-.1-.4-.1-.7-.1-1.1 0-.5 0-.9.1-1.4.1-.6.3-1.2.6-1.8.6-1 1.4-1.9 2.5-2.5 3.5-2.2 6.1-4.7 5.9-5.3-.1-.3 3.1 7.7-.8 10.8-3.8 3.1-6.6 3.6-7.1 6.1-.2 0-.7-1.9.5-4.6z"
+                            />
+                            <path
+                              d="M122 128.1c-2.1-.4-3.5 1.7-7.2 3.8s-9.2-3.1-9-2.9c.5.4 3.3-.9 6.2-3 .8-.6 1.8-1 2.8-1.2.6 0 1.1 0 1.6.1.4.1.8.2 1.1.4.3.1.6.3.8.5.3.2.6.5.9.8-.5 0-1.1.1-1.6.2-1.2.2-2.4.6-3.5 1.3-.1.1-.2.2-.3.2.1 0 .3-.1.5-.2.9-.4 1.9-.7 2.9-.8.3 0 .7-.1.9-.1 2.7-.1 4.1.9 3.9.9z"
+                            />
+                            <path
+                              d="M130.3 119.2l-.6.2c-3.5 1.3-7.5.1-9.7-2.9l-.9-1.4c1.3.4 2.6.5 4 .4 2.6-.3 5.1.8 6.7 2.9l.5.8z"
+                            />
+                            <path
+                              d="M135.8 133.9l-.9-.8c-2.3-2.1-3-5.5-1.6-8.2l.2-.4.6.5c1.6 1.5 2.3 3.6 1.8 5.8-.2.9-.2 2-.1 3.1z"
+                            />
+                            <path
+                              d="M137.2 114.4l-.7.6c-1.8 1.6-2.4 4.2-1.4 6.4l.1.3.4-.4c1.3-1.1 1.9-2.8 1.5-4.4 0-.8 0-1.7.1-2.5z"
+                            />
+                          </g>
+                          <g
+                            className={
+                              Object {
+                                "data-css-itadob": "",
+                              }
+                            }
+                          >
+                            <path
+                              d="M161.1 102.2l-2.7-7.7c-.4-1.3-1.5-2.2-2.8-2.4-1.3-.2-2.3-1.1-2.7-2.4L142 55.5c-.5-1.4-1.9-2.3-3.4-2.4H68.4c-1.5.1-2.8 1-3.4 2.4l-10.8 34c-.3 1.3-1.4 2.2-2.7 2.4-1.3.2-2.4 1.1-2.8 2.4l-2.6 7.7c-.5 1.4.1 2.5 1.2 2.5h42c1.6-.1 3.2-.7 4.4-1.8l3.2-3.1v-.1c.6-3.2 3.6-5.3 6.8-4.7.1 0 .2 0 .3.1l37 7.7c1.4.3 2.6 1 3.4 2h15.3c1.3 0 1.9-1.1 1.4-2.4zM82.6 88.1c0 1.4-1.2 2.5-2.6 2.5h-9.3c-1.1.1-2-.7-2.1-1.8 0-.2 0-.5.1-.7l5.2-24.7c.4-1.4 1.7-2.4 3.1-2.5h3c1.4 0 2.6 1.1 2.6 2.5v24.7zm25.5 2.5h-8.4c-1.3.1-2.3-.9-2.4-2.2v-.3l2.1-24.5c.2-1.4 1.4-2.5 2.8-2.5h3.1c1.4 0 2.7 1.1 2.8 2.5l2.1 24.5c0 1.3-.9 2.4-2.1 2.5zm29.2-.1c-.2.1-.5.1-.7.1h-9.3c-1.4 0-2.6-1.1-2.6-2.5V63.6c0-1.4 1.2-2.5 2.6-2.5h3.1c1.5 0 2.8 1 3.1 2.5l5.2 24.6c.3 1-.4 2-1.4 2.3z"
+                            />
+                            <path
+                              d="M99 99.9c-.4 2.2 1.1 4.3 3.3 4.8l37.2 7.8c1 .2 2 0 2.8-.6.8-.6 1.4-1.5 1.6-2.5.4-2.2-1.1-4.3-3.3-4.8l-37.2-7.8c-.2 0-.5-.1-.7-.1-1.7.1-3.4 1.4-3.7 3.2z"
+                            />
+                          </g>
+                        </svg>
+                      </Icon>
+                    </div>
+                    <div
+                      className="css-b9wt33"
+                      data-test-id="emptyCartPlaceHolderString"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="cart.empty"
+                      >
+                        <span
+                          className=""
+                        >
+                          cart.empty
+                        </span>
+                      </Translate>
+                    </div>
+                  </div>
+                </Portal>
+                <Portal
+                  name="cart.empty.after"
+                  props={null}
+                />
+                <div
+                  className="css-1dq8tqy"
+                >
+                  <RippleButton
+                    className="css-63oe3q"
+                    disabled={false}
+                    flat={false}
+                    onClick={[Function]}
+                    rippleClassName=""
+                    rippleSize={null}
+                    testId="Button"
+                    type="secondary"
+                    wrapContent={true}
+                  >
+                    <Button
+                      className="css-63oe3q"
+                      disabled={false}
+                      flat={false}
+                      onClick={[Function]}
+                      testId="Button"
+                      type="secondary"
+                      wrapContent={false}
+                    >
+                      <Button
+                        className="css-187rja2 css-63oe3q"
+                        disabled={false}
+                        onClick={[Function]}
+                        testId="Button"
+                      >
+                        <button
+                          className="css-187rja2 css-63oe3q css-1rn65c0"
+                          data-test-id="Button"
+                          disabled={false}
+                          onClick={[Function]}
+                        >
+                          <Ripple
+                            className="css-8s1fw2 "
+                            color="#000"
+                            disabled={false}
+                            fill={true}
+                            onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="css-8s1fw2 "
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
+                            >
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="cart.continue"
+                              >
+                                <span
+                                  className=""
+                                >
+                                  cart.continue
+                                </span>
+                              </Translate>
+                            </div>
+                          </Ripple>
+                        </button>
+                      </Button>
+                    </Button>
+                  </RippleButton>
+                </div>
+              </div>
+            </Empty>
+          </Connect(Empty)>
+        </div>
+      </MockedView>
+    </Cart>
+  </Connect(Cart)>
+</Provider>
+`;
+
+exports[`<Cart> page Initial page should render with items 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Cart)>
+    <Cart
+      cartItems={
+        Array [
+          Object {
+            "coupon": null,
+            "id": "123",
+            "messages": Array [],
+            "product": Object {
+              "appliedDiscounts": Array [],
+              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+              "id": "test_product",
+              "name": "Test Product",
+              "price": Object {
+                "default": 20,
+                "special": null,
+                "unit": 20,
+              },
+              "properties": Array [
+                Object {
+                  "label": "Weight",
+                  "value": "15kg",
+                },
+              ],
+            },
+            "quantity": 1,
+            "type": "product",
+          },
+        ]
+      }
+      dispatch={[Function]}
+      isLoading={false}
+      messages={Array []}
+    >
+      <MockedView>
+        <div>
+          <section
+            className="css-1g0wxuv"
+            style={
+              Object {
+                "paddingBottom": "78px",
+                "paddingTop": 4,
+              }
+            }
+          >
+            <Portal
+              name="cart.item-list.before"
+              props={null}
+            />
+            <Portal
+              name="cart.item-list"
+              props={null}
+            >
+              <CardList>
+                <List
+                  className=""
+                >
+                  <ul
+                    className="css-gkw1j5 "
+                  >
+                    <Portal
+                      name="cart.item.before"
+                      props={
+                        Object {
+                          "cartItemId": "123",
+                          "type": "product",
+                        }
+                      }
+                    />
+                    <Portal
+                      name="cart.item"
+                      props={
+                        Object {
+                          "cartItemId": "123",
+                          "type": "product",
+                        }
+                      }
+                    >
+                      <Item
+                        item={
+                          Object {
+                            "coupon": null,
+                            "id": "123",
+                            "messages": Array [],
+                            "product": Object {
+                              "appliedDiscounts": Array [],
+                              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                              "id": "test_product",
+                              "name": "Test Product",
+                              "price": Object {
+                                "default": 20,
+                                "special": null,
+                                "unit": 20,
+                              },
+                              "properties": Array [
+                                Object {
+                                  "label": "Weight",
+                                  "value": "15kg",
+                                },
+                              ],
+                            },
+                            "quantity": 1,
+                            "type": "product",
+                          }
+                        }
+                        togglePaymentBar={[Function]}
+                      >
+                        <Connect(Product)
+                          id="123"
+                          key="123"
+                          messages={Array []}
+                          onToggleFocus={[Function]}
+                          product={
+                            Object {
+                              "appliedDiscounts": Array [],
+                              "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                              "id": "test_product",
+                              "name": "Test Product",
+                              "price": Object {
+                                "default": 20,
+                                "special": null,
+                                "unit": 20,
+                              },
+                              "properties": Array [
+                                Object {
+                                  "label": "Weight",
+                                  "value": "15kg",
+                                },
+                              ],
+                            }
+                          }
+                          quantity={1}
+                        >
+                          <Product
+                            currency="USD"
+                            deleteProduct={[Function]}
+                            id="123"
+                            isIos={false}
+                            messages={Array []}
+                            onToggleFocus={[Function]}
+                            product={
+                              Object {
+                                "appliedDiscounts": Array [],
+                                "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                                "id": "test_product",
+                                "name": "Test Product",
+                                "price": Object {
+                                  "default": 20,
+                                  "special": null,
+                                  "unit": 20,
+                                },
+                                "properties": Array [
+                                  Object {
+                                    "label": "Weight",
+                                    "value": "15kg",
+                                  },
+                                ],
+                              }
+                            }
+                            quantity={1}
+                            updateProduct={[Function]}
+                          >
+                            <Transition
+                              appear={false}
+                              enter={true}
+                              exit={true}
+                              in={true}
+                              mountOnEnter={false}
+                              onEnter={[Function]}
+                              onEntered={[Function]}
+                              onEntering={[Function]}
+                              onExit={[Function]}
+                              onExited={[Function]}
+                              onExiting={[Function]}
+                              timeout={300}
+                              unmountOnExit={false}
+                            >
+                              <div
+                                key="123"
+                                style={
+                                  Object {
+                                    "opactity": 1,
+                                    "transition": "height 300ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+                                  }
+                                }
+                              >
+                                <Item
+                                  className={null}
+                                  isSelected={false}
+                                >
+                                  <ListItem
+                                    className="css-9hjfag null"
+                                    isSelected={false}
+                                  >
+                                    <li
+                                      className="css-1p5q8vq css-9hjfag null css-16gj3o1"
+                                    >
+                                      <div
+                                        data-test-id="cartItem"
+                                      >
+                                        <Connect(Link)
+                                          href="/item/746573745f70726f64756374"
+                                          itemProp="item"
+                                          itemScope={true}
+                                          itemType="http://schema.org/Product"
+                                          tagName="a"
+                                        >
+                                          <Link
+                                            className=""
+                                            disabled={false}
+                                            href="/item/746573745f70726f64756374"
+                                            itemProp="item"
+                                            itemScope={true}
+                                            itemType="http://schema.org/Product"
+                                            navigate={[Function]}
+                                            replace={false}
+                                            state={Object {}}
+                                            tag="div"
+                                            tagName="a"
+                                          >
+                                            <div
+                                              aria-hidden={true}
+                                              className="css-c6ki83 "
+                                              onClick={[Function]}
+                                              role="link"
+                                            >
+                                              <Layout
+                                                currency="USD"
+                                                editMode={false}
+                                                handleDelete={[Function]}
+                                                handleUpdate={[Function]}
+                                                product={
+                                                  Object {
+                                                    "appliedDiscounts": Array [],
+                                                    "featuredImageUrl": "https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa",
+                                                    "id": "test_product",
+                                                    "name": "Test Product",
+                                                    "price": Object {
+                                                      "default": 20,
+                                                      "special": null,
+                                                      "unit": 20,
+                                                    },
+                                                    "properties": Array [
+                                                      Object {
+                                                        "label": "Weight",
+                                                        "value": "15kg",
+                                                      },
+                                                    ],
+                                                  }
+                                                }
+                                                quantity={1}
+                                                toggleEditMode={[Function]}
+                                              >
+                                                <Grid
+                                                  className="css-1ifkpbu"
+                                                  component="ul"
+                                                  wrap={false}
+                                                >
+                                                  <ul
+                                                    className="css-1ifkpbu css-h7r55a"
+                                                  >
+                                                    <GridItem
+                                                      className="css-1tfmogy"
+                                                      component="li"
+                                                      grow={0}
+                                                      shrink={1}
+                                                    >
+                                                      <li
+                                                        className="css-1tfmogy"
+                                                      >
+                                                        <div
+                                                          className="css-pll4f2"
+                                                        >
+                                                          <Portal
+                                                            name="cart.item.image.before"
+                                                            props={
+                                                              Object {
+                                                                "cartItemId": "123",
+                                                                "type": "product",
+                                                              }
+                                                            }
+                                                          />
+                                                          <Portal
+                                                            name="cart.item.image"
+                                                            props={
+                                                              Object {
+                                                                "cartItemId": "123",
+                                                                "type": "product",
+                                                              }
+                                                            }
+                                                          >
+                                                            <ProductImage
+                                                              alt={null}
+                                                              animating={true}
+                                                              forcePlaceholder={false}
+                                                              highestResolutionLoaded={[Function]}
+                                                              ratio={null}
+                                                              resolutions={
+                                                                Array [
+                                                                  Object {
+                                                                    "blur": 2,
+                                                                    "height": 50,
+                                                                    "width": 50,
+                                                                  },
+                                                                  Object {
+                                                                    "height": 440,
+                                                                    "width": 440,
+                                                                  },
+                                                                ]
+                                                              }
+                                                              src="https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa"
+                                                            >
+                                                              <Image
+                                                                alt={null}
+                                                                animating={true}
+                                                                backgroundColor="#fff"
+                                                                className=""
+                                                                forcePlaceholder={false}
+                                                                highestResolutionLoaded={[Function]}
+                                                                onError={[Function]}
+                                                                onLoad={null}
+                                                                ratio={null}
+                                                                resolutions={
+                                                                  Array [
+                                                                    Object {
+                                                                      "blur": 2,
+                                                                      "height": 50,
+                                                                      "width": 50,
+                                                                    },
+                                                                    Object {
+                                                                      "height": 440,
+                                                                      "width": 440,
+                                                                    },
+                                                                  ]
+                                                                }
+                                                                src="https://img-cdn.shopgate.com/30794/1/d11b2e01b66f7a505fbd98b6ed7463c092aeaebae11ee8bec20ffc13344297fa"
+                                                                transition={null}
+                                                              >
+                                                                <div
+                                                                  className="css-1d0r90g "
+                                                                />
+                                                              </Image>
+                                                            </ProductImage>
+                                                          </Portal>
+                                                          <Portal
+                                                            name="cart.item.image.after"
+                                                            props={
+                                                              Object {
+                                                                "cartItemId": "123",
+                                                                "type": "product",
+                                                              }
+                                                            }
+                                                          />
+                                                        </div>
+                                                        <QuantityPicker
+                                                          editMode={false}
+                                                          onChange={[Function]}
+                                                          onToggleEditMode={[Function]}
+                                                          quantity={1}
+                                                        >
+                                                          <form
+                                                            onSubmit={[Function]}
+                                                          >
+                                                            <input
+                                                              className="css-7rhxrg"
+                                                              data-test-id="quantityPicker"
+                                                              min={1}
+                                                              onBlur={[Function]}
+                                                              onChange={[Function]}
+                                                              onClick={[Function]}
+                                                              onFocus={[Function]}
+                                                              type="number"
+                                                              value={1}
+                                                            />
+                                                          </form>
+                                                        </QuantityPicker>
+                                                      </li>
+                                                    </GridItem>
+                                                    <GridItem
+                                                      className="css-1v8t41k"
+                                                      component="li"
+                                                      grow={1}
+                                                      shrink={1}
+                                                    >
+                                                      <li
+                                                        className="css-1v8t41k css-1gs0ko2"
+                                                      >
+                                                        <Title
+                                                          handleRemove={[Function]}
+                                                          toggleEditMode={[Function]}
+                                                          value="Test Product"
+                                                        >
+                                                          <Grid
+                                                            className=""
+                                                            component="ul"
+                                                            wrap={false}
+                                                          >
+                                                            <ul
+                                                              className=" css-h7r55a"
+                                                            >
+                                                              <GridItem
+                                                                className=""
+                                                                component="li"
+                                                                grow={1}
+                                                                shrink={1}
+                                                              >
+                                                                <li
+                                                                  className=" css-1gs0ko2"
+                                                                >
+                                                                  <Portal
+                                                                    name="cart.item.name.before"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                  <Portal
+                                                                    name="cart.item.name"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  >
+                                                                    <div
+                                                                      className="css-1t70ecf"
+                                                                    >
+                                                                      Test Product
+                                                                    </div>
+                                                                  </Portal>
+                                                                  <Portal
+                                                                    name="cart.item.name.after"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                </li>
+                                                              </GridItem>
+                                                              <GridItem
+                                                                className="css-8ynteh"
+                                                                component="li"
+                                                                grow={0}
+                                                                shrink={0}
+                                                              >
+                                                                <li
+                                                                  className="css-8ynteh css-1l9a57c"
+                                                                >
+                                                                  <div
+                                                                    className="css-4d31t7"
+                                                                  >
+                                                                    <ContextMenu>
+                                                                      <div
+                                                                        className="css-13azwyo"
+                                                                        data-test-id="contextMenu"
+                                                                      >
+                                                                        <button
+                                                                          className="css-d6h5ju"
+                                                                          onClick={[Function]}
+                                                                        >
+                                                                          <MoreVert>
+                                                                            <Icon
+                                                                              className=""
+                                                                              color={null}
+                                                                              content="<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\\"/>"
+                                                                              size="inherit"
+                                                                              viewBox="0 0 24 24"
+                                                                            >
+                                                                              <svg
+                                                                                className="css-yys9hb "
+                                                                                dangerouslySetInnerHTML={
+                                                                                  Object {
+                                                                                    "__html": "<path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/><path d=\\"M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z\\"/>",
+                                                                                  }
+                                                                                }
+                                                                                style={
+                                                                                  Object {
+                                                                                    "fill": null,
+                                                                                    "fontSize": "inherit",
+                                                                                  }
+                                                                                }
+                                                                                viewBox="0 0 24 24"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                              />
+                                                                            </Icon>
+                                                                          </MoreVert>
+                                                                        </button>
+                                                                        <Portal
+                                                                          isOpened={false}
+                                                                          onClose={[Function]}
+                                                                          onOpen={[Function]}
+                                                                          onUpdate={[Function]}
+                                                                        />
+                                                                      </div>
+                                                                    </ContextMenu>
+                                                                  </div>
+                                                                </li>
+                                                              </GridItem>
+                                                            </ul>
+                                                          </Grid>
+                                                        </Title>
+                                                        <Grid
+                                                          className="css-w0l9fz"
+                                                          component="ul"
+                                                          wrap={false}
+                                                        >
+                                                          <ul
+                                                            className="css-w0l9fz css-h7r55a"
+                                                          >
+                                                            <GridItem
+                                                              className=""
+                                                              component="li"
+                                                              grow={1}
+                                                              shrink={1}
+                                                            >
+                                                              <li
+                                                                className=" css-1gs0ko2"
+                                                              >
+                                                                <Properties
+                                                                  properties={
+                                                                    Array [
+                                                                      Object {
+                                                                        "label": "Weight",
+                                                                        "value": "15kg",
+                                                                      },
+                                                                    ]
+                                                                  }
+                                                                >
+                                                                  <ul>
+                                                                    <li
+                                                                      key="Weight-15kg"
+                                                                    >
+                                                                      Weight
+                                                                      : 
+                                                                      15kg
+                                                                    </li>
+                                                                  </ul>
+                                                                </Properties>
+                                                              </li>
+                                                            </GridItem>
+                                                            <GridItem
+                                                              className=""
+                                                              component="li"
+                                                              grow={1}
+                                                              shrink={0}
+                                                            >
+                                                              <li
+                                                                className=" css-1gs0ko2 css-1l9a57c"
+                                                              >
+                                                                <ProductPrice
+                                                                  currency="USD"
+                                                                  defaultPrice={20}
+                                                                  specialPrice={null}
+                                                                >
+                                                                  <Portal
+                                                                    name="cart.item.price.before"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                  <Portal
+                                                                    name="cart.item.price"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  >
+                                                                    <Price
+                                                                      className="css-19tnmii"
+                                                                      currency="USD"
+                                                                      discounted={false}
+                                                                      fractions={true}
+                                                                      taxDisclaimer={true}
+                                                                      unitPrice={20}
+                                                                      unitPriceMin={0}
+                                                                    >
+                                                                      <div
+                                                                        className="css-izofhs css-19tnmii"
+                                                                        data-test-id="minPrice: 0 price: 20 currency: USD"
+                                                                      >
+                                                                        <FormatPrice
+                                                                          className=""
+                                                                          currency="USD"
+                                                                          fractions={true}
+                                                                          price={20}
+                                                                        >
+                                                                          <span
+                                                                            className=""
+                                                                          >
+                                                                            p
+                                                                          </span>
+                                                                        </FormatPrice>
+                                                                      </div>
+                                                                    </Price>
+                                                                  </Portal>
+                                                                  <Portal
+                                                                    name="cart.item.price.after"
+                                                                    props={
+                                                                      Object {
+                                                                        "cartItemId": "123",
+                                                                        "type": "product",
+                                                                      }
+                                                                    }
+                                                                  />
+                                                                </ProductPrice>
+                                                              </li>
+                                                            </GridItem>
+                                                          </ul>
+                                                        </Grid>
+                                                      </li>
+                                                    </GridItem>
+                                                  </ul>
+                                                </Grid>
+                                              </Layout>
+                                            </div>
+                                          </Link>
+                                        </Connect(Link)>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </Item>
+                              </div>
+                            </Transition>
+                          </Product>
+                        </Connect(Product)>
+                      </Item>
+                    </Portal>
+                    <Portal
+                      name="cart.item.after"
+                      props={
+                        Object {
+                          "cartItemId": "123",
+                          "type": "product",
+                        }
+                      }
+                    />
+                    <Portal
+                      key=".1"
+                      name="cart.coupon-field.before"
+                      props={null}
+                    />
+                    <Portal
+                      key=".2"
+                      name="cart.coupon-field"
+                      props={null}
+                    >
+                      <Connect(CouponField)
+                        onToggleFocus={[Function]}
+                      >
+                        <CouponField
+                          addCoupon={[Function]}
+                          isIos={false}
+                          isLoading={false}
+                          isVisible={true}
+                          onToggleFocus={[Function]}
+                        >
+                          <div>
+                            <Layout
+                              handleAddCoupon={[Function]}
+                              handleFocusChange={[Function]}
+                              handleValueChange={[Function]}
+                              iconStyle={
+                                Object {
+                                  "opacity": 0,
+                                }
+                              }
+                              isButtonDisabled={true}
+                              isFocused={false}
+                              isLoading={false}
+                              labelStyle={
+                                Object {
+                                  "display": "block",
+                                }
+                              }
+                              value=""
+                            >
+                              <div
+                                className="css-gtkn00"
+                              >
+                                <form
+                                  className="css-pgykgj"
+                                  data-test-id="couponField"
+                                  onSubmit={[Function]}
+                                >
+                                  <label
+                                    className="css-m5j1fd"
+                                    htmlFor="coupon-code-field"
+                                    style={
+                                      Object {
+                                        "display": "block",
+                                      }
+                                    }
+                                  >
+                                    <Translate
+                                      className=""
+                                      params={Object {}}
+                                      string="cart.redeem_coupon"
+                                    >
+                                      <span
+                                        className=""
+                                      >
+                                        cart.redeem_coupon
+                                      </span>
+                                    </Translate>
+                                  </label>
+                                  <Component
+                                    className="css-gm6ek6"
+                                    disabled={false}
+                                    name="coupon-code-field"
+                                    onChange={[Function]}
+                                    onFocusChange={[Function]}
+                                    value=""
+                                  >
+                                    <SimpleInput
+                                      autoComplete={false}
+                                      autoCorrect={false}
+                                      className="css-gm6ek6"
+                                      disabled={false}
+                                      id={null}
+                                      name="coupon-code-field"
+                                      onChange={[Function]}
+                                      onFocusChange={[Function]}
+                                      onSanitize={[Function]}
+                                      onValidate={[Function]}
+                                      password={false}
+                                      setRef={[Function]}
+                                      type="text"
+                                      validateOnBlur={true}
+                                      value=""
+                                    >
+                                      <input
+                                        autoComplete="off"
+                                        autoCorrect="off"
+                                        className="css-gm6ek6"
+                                        disabled={false}
+                                        id={null}
+                                        name="coupon-code-field"
+                                        onBlur={[Function]}
+                                        onChange={[Function]}
+                                        onFocus={[Function]}
+                                        type="text"
+                                        value=""
+                                      />
+                                    </SimpleInput>
+                                  </Component>
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8dl7x"
+                                    data-test-id="CouponSubmitButton"
+                                    onClick={[Function]}
+                                    style={
+                                      Object {
+                                        "opacity": 0,
+                                      }
+                                    }
+                                  >
+                                    <CouponFieldIcon
+                                      disabled={true}
+                                    >
+                                      <Icon
+                                        className=""
+                                        color={null}
+                                        content="
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  "
+                                        size="inherit"
+                                        viewBox="1671 5924 30 30"
+                                      >
+                                        <svg
+                                          className="css-yys9hb "
+                                          dangerouslySetInnerHTML={
+                                            Object {
+                                              "__html": "
+    <g transform=\\"translate(1357 5547)\\">
+      <g>
+        <path
+          class=\\"css-15bqap9\\"
+          d=\\"M15,0A15,15,0,1,1,0,15,15,15,0,0,1,15,0Z\\"
+          transform=\\"translate(314 377)\\"
+        />
+        <path
+          class=\\"css-w22cl\\"
+          d=\\"M20,11H7.8l5.6-5.6L12,4,4,12l8,8,1.4-1.4L7.8,13H20V11Z\\"
+          transform=\\"translate(341 404) rotate(180)\\"
+        />
+      </g>
+    </g>
+  ",
+                                            }
+                                          }
+                                          style={
+                                            Object {
+                                              "fill": null,
+                                              "fontSize": "inherit",
+                                            }
+                                          }
+                                          viewBox="1671 5924 30 30"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </Icon>
+                                    </CouponFieldIcon>
+                                  </div>
+                                  <div
+                                    className="css-1usne35"
+                                  >
+                                    <div
+                                      className="css-11zbu8 css-1txaqv6"
+                                    />
+                                  </div>
+                                </form>
+                              </div>
+                            </Layout>
+                          </div>
+                        </CouponField>
+                      </Connect(CouponField)>
+                    </Portal>
+                    <Portal
+                      key=".3"
+                      name="cart.coupon-field.after"
+                      props={null}
+                    />
+                  </ul>
+                </List>
+              </CardList>
+            </Portal>
+            <Portal
+              name="cart.item-list.after"
+              props={null}
+            />
+            <PaymentBar
+              isVisible={true}
+              onSize={[Function]}
+            >
+              <Sheet
+                animation={
+                  Object {
+                    "in": "css-31n36f",
+                    "out": "css-gyrv08",
+                  }
+                }
+                backdrop={false}
+                duration={300}
+                isOpen={true}
+                onClose={[Function]}
+                onOpen={[Function]}
+                title=""
+              >
+                <section>
+                  <Drawer
+                    alwaysActive={false}
+                    animation={
+                      Object {
+                        "duration": 300,
+                        "in": "css-31n36f",
+                        "out": "css-gyrv08",
+                      }
+                    }
+                    className="css-h69706"
+                    isOpen={true}
+                    onClose={[Function]}
+                    onDidClose={[Function]}
+                    onOpen={[Function]}
+                  >
+                    <div
+                      className="css-h69706 css-1rg7udn css-31n36f"
+                      onAnimationEnd={[Function]}
+                      style={
+                        Object {
+                          "animationDuration": "300ms",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-1aon90l css-k5vpvg"
+                        onScroll={[Function]}
+                      >
+                        <SizeMe(Content)
+                          key=".0"
+                          onClose={[Function]}
+                          onSize={[Function]}
+                        >
+                          <SizeMeRenderer(Content)
+                            disablePlaceholder={false}
+                            explicitRef={[Function]}
+                            onClose={[Function]}
+                            onSize={[Function]}
+                            size={
+                              Object {
+                                "height": undefined,
+                                "position": undefined,
+                                "width": undefined,
+                              }
+                            }
+                          >
+                            <SizeMeReferenceWrapper>
+                              <SizeMePlaceholder>
+                                <div
+                                  style={
+                                    Object {
+                                      "height": "100%",
+                                      "width": "100%",
+                                    }
+                                  }
+                                />
+                              </SizeMePlaceholder>
+                            </SizeMeReferenceWrapper>
+                          </SizeMeRenderer(Content)>
+                        </SizeMe(Content)>
+                      </div>
+                    </div>
+                  </Drawer>
+                </section>
+              </Sheet>
+            </PaymentBar>
+            <Connect(Footer)>
+              <Footer
+                dispatch={[Function]}
+                showCouponsHint={false}
+                showTaxDisclaimer={false}
+              />
+            </Connect(Footer)>
+          </section>
+        </div>
+      </MockedView>
+    </Cart>
+  </Connect(Cart)>
+</Provider>
+`;
