@@ -29,6 +29,15 @@ class Form extends PureComponent {
    */
   handleSubmit = (event) => {
     event.preventDefault();
+
+    const inputFocused = [...this.formElement.current
+      .querySelectorAll('input')]
+      .some(input => document.activeElement === input);
+
+    if (inputFocused) {
+      document.activeElement.blur();
+    }
+
     this.props.onSubmit();
   }
 
