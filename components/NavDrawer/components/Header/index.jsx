@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { onlyUpdateForKeys } from 'recompose';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
 import colors from 'Styles/colors';
 import consume from './consumer';
 import styles from './style';
+
+const enhance = onlyUpdateForKeys(['email']);
 
 /**
  * The NavDrawerHeader component.
@@ -50,4 +53,4 @@ NavDrawerHeader.defaultProps = {
   name: null,
 };
 
-export default consume(NavDrawerHeader);
+export default consume(enhance(NavDrawerHeader));

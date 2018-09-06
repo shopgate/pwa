@@ -1,4 +1,5 @@
 import React from 'react';
+import { pure } from 'recompose';
 import consume from './consumer';
 import styles from './style';
 
@@ -12,4 +13,4 @@ const FavoritesButtonBadge = ({ visible }) => (
   )
 );
 
-export default consume(FavoritesButtonBadge);
+export default consume(pure(FavoritesButtonBadge));

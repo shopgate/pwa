@@ -1,4 +1,5 @@
 import React from 'react';
+import { pure } from 'recompose';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import consume from './consumer';
 import styles from './style';
@@ -16,4 +17,4 @@ const CartButtonBadge = ({ count }) => (
   )
 );
 
-export default consume(CartButtonBadge);
+export default consume(pure(CartButtonBadge));
