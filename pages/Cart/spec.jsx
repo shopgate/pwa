@@ -8,8 +8,14 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { NAVIGATE } from '@shopgate/pwa-common/constants/ActionTypes';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { emptyState, cartState, couponState } from '@shopgate/pwa-common-commerce/cart/mock';
+import Cart from './index';
 
 jest.mock('Components/View');
+jest.mock('@virtuous/react-conductor/Router', () => ({
+  RouteContext: {
+    Consumer: props => props.children({ visible: true }),
+  },
+}));
 
 let store;
 
@@ -21,9 +27,7 @@ let store;
 const createComponent = (state) => {
   const mockedStore = configureStore([thunk]);
   store = mockedStore(state);
-  /* eslint-disable global-require */
-  const Cart = require('./index').default;
-  /* eslint-enable global-require */
+
   return mount(
     <Provider store={store} >
       <Cart />
@@ -33,10 +37,6 @@ const createComponent = (state) => {
 };
 
 describe('<Cart> page', () => {
-  beforeEach(() => {
-    jest.resetModules();
-  });
-
   describe('Initial page', () => {
     it('should render empty', () => {
       const component = createComponent(emptyState);
@@ -52,8 +52,13 @@ describe('<Cart> page', () => {
       component.find('RippleButton').simulate('click');
       component.update();
       const actions = store.getActions();
-      expect(actions[0].type).toEqual(NAVIGATE);
-      expect(actions[0].action).toEqual(ACTION_POP);
+
+      expect(actions[0]).toEqual({
+        type: NAVIGATE,
+        params: {
+          action: ACTION_POP,
+        },
+      });
     });
 
     it('should render with items', () => {
@@ -72,15 +77,20 @@ describe('<Cart> page', () => {
       component.update();
       const actions = store.getActions();
 
-      expect(actions[0].type).toEqual(NAVIGATE);
-      expect(actions[0].action).toEqual(ACTION_PUSH);
-      expect(actions[0].location).toEqual(`${ITEM_PATH}/746573745f70726f64756374`);
+      expect(actions[0]).toEqual({
+        type: NAVIGATE,
+        params: {
+          pathname: `${ITEM_PATH}/746573745f70726f64756374`,
+          state: {},
+          action: ACTION_PUSH,
+        },
+      });
     });
 
-    it('should render coupon', () => {
+    it('should render a coupon', () => {
       const component = createComponent(couponState);
       expect(component).toMatchSnapshot();
-      expect(component.find('CouponField').length).toEqual(1);
+      expect(component.find('Coupon').length).toEqual(1);
     });
 
     it('should toggle payment bar coupon field focus', () => {

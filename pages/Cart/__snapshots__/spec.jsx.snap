@@ -214,7 +214,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
 </Provider>
 `;
 
-exports[`<Cart> page Initial page should render coupon 1`] = `
+exports[`<Cart> page Initial page should render a coupon 1`] = `
 <Provider
   store={
     Object {
@@ -453,18 +453,18 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                           <Link
                                             className=""
                                             disabled={false}
+                                            historyPush={[Function]}
+                                            historyReplace={[Function]}
                                             href="/item/746573745f70726f64756374"
                                             itemProp="item"
                                             itemScope={true}
                                             itemType="http://schema.org/Product"
-                                            navigate={[Function]}
                                             replace={false}
                                             state={Object {}}
                                             tag="div"
                                             tagName="a"
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-c6ki83 "
                                               onClick={[Function]}
                                               role="link"
@@ -1449,123 +1449,132 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                       name="cart.coupon-field"
                       props={null}
                     >
-                      <Connect(CouponField)
+                      <Connect(Component)
                         onToggleFocus={[Function]}
                       >
-                        <CouponField
+                        <Component
                           addCoupon={[Function]}
                           isIos={false}
                           isLoading={false}
-                          isVisible={true}
+                          isSupported={true}
                           onToggleFocus={[Function]}
                         >
-                          <div>
-                            <Layout
-                              handleAddCoupon={[Function]}
-                              handleFocusChange={[Function]}
-                              handleValueChange={[Function]}
-                              iconStyle={
-                                Object {
-                                  "opacity": 0,
-                                }
-                              }
-                              isButtonDisabled={true}
-                              isFocused={false}
+                          <Consumer>
+                            <CouponField
+                              addCoupon={[Function]}
+                              isIos={false}
                               isLoading={false}
-                              labelStyle={
-                                Object {
-                                  "display": "block",
-                                }
-                              }
-                              value=""
+                              isSupported={true}
+                              onToggleFocus={[Function]}
+                              visible={true}
                             >
-                              <div
-                                className="css-gtkn00"
-                              >
-                                <form
-                                  className="css-pgykgj"
-                                  data-test-id="couponField"
-                                  onSubmit={[Function]}
-                                >
-                                  <label
-                                    className="css-m5j1fd"
-                                    htmlFor="coupon-code-field"
-                                    style={
-                                      Object {
-                                        "display": "block",
-                                      }
+                              <div>
+                                <Layout
+                                  handleAddCoupon={[Function]}
+                                  handleFocusChange={[Function]}
+                                  handleValueChange={[Function]}
+                                  iconStyle={
+                                    Object {
+                                      "opacity": 0,
                                     }
+                                  }
+                                  isButtonDisabled={true}
+                                  isFocused={false}
+                                  isLoading={false}
+                                  labelStyle={
+                                    Object {
+                                      "display": "block",
+                                    }
+                                  }
+                                  value=""
+                                >
+                                  <div
+                                    className="css-gtkn00"
                                   >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string="cart.redeem_coupon"
+                                    <form
+                                      className="css-pgykgj"
+                                      data-test-id="couponField"
+                                      onSubmit={[Function]}
                                     >
-                                      <span
-                                        className=""
+                                      <label
+                                        className="css-m5j1fd"
+                                        htmlFor="coupon-code-field"
+                                        style={
+                                          Object {
+                                            "display": "block",
+                                          }
+                                        }
                                       >
-                                        cart.redeem_coupon
-                                      </span>
-                                    </Translate>
-                                  </label>
-                                  <Component
-                                    className="css-gm6ek6"
-                                    disabled={false}
-                                    name="coupon-code-field"
-                                    onChange={[Function]}
-                                    onFocusChange={[Function]}
-                                    value=""
-                                  >
-                                    <SimpleInput
-                                      autoComplete={false}
-                                      autoCorrect={false}
-                                      className="css-gm6ek6"
-                                      disabled={false}
-                                      id={null}
-                                      name="coupon-code-field"
-                                      onChange={[Function]}
-                                      onFocusChange={[Function]}
-                                      onSanitize={[Function]}
-                                      onValidate={[Function]}
-                                      password={false}
-                                      setRef={[Function]}
-                                      type="text"
-                                      validateOnBlur={true}
-                                      value=""
-                                    >
-                                      <input
-                                        autoComplete="off"
-                                        autoCorrect="off"
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.redeem_coupon"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.redeem_coupon
+                                          </span>
+                                        </Translate>
+                                      </label>
+                                      <Component
                                         className="css-gm6ek6"
                                         disabled={false}
-                                        id={null}
                                         name="coupon-code-field"
-                                        onBlur={[Function]}
                                         onChange={[Function]}
-                                        onFocus={[Function]}
-                                        type="text"
+                                        onFocusChange={[Function]}
                                         value=""
-                                      />
-                                    </SimpleInput>
-                                  </Component>
-                                  <div
-                                    aria-hidden={true}
-                                    className="css-8dl7x"
-                                    data-test-id="CouponSubmitButton"
-                                    onClick={[Function]}
-                                    style={
-                                      Object {
-                                        "opacity": 0,
-                                      }
-                                    }
-                                  >
-                                    <CouponFieldIcon
-                                      disabled={true}
-                                    >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="
+                                      >
+                                        <SimpleInput
+                                          autoComplete={false}
+                                          autoCorrect={false}
+                                          className="css-gm6ek6"
+                                          disabled={false}
+                                          id={null}
+                                          name="coupon-code-field"
+                                          onChange={[Function]}
+                                          onFocusChange={[Function]}
+                                          onSanitize={[Function]}
+                                          onValidate={[Function]}
+                                          password={false}
+                                          setRef={[Function]}
+                                          type="text"
+                                          validateOnBlur={true}
+                                          value=""
+                                        >
+                                          <input
+                                            autoComplete="off"
+                                            autoCorrect="off"
+                                            className="css-gm6ek6"
+                                            disabled={false}
+                                            id={null}
+                                            name="coupon-code-field"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            type="text"
+                                            value=""
+                                          />
+                                        </SimpleInput>
+                                      </Component>
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8dl7x"
+                                        data-test-id="CouponSubmitButton"
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 0,
+                                          }
+                                        }
+                                      >
+                                        <CouponFieldIcon
+                                          disabled={true}
+                                        >
+                                          <Icon
+                                            className=""
+                                            color={null}
+                                            content="
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -1581,14 +1590,14 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
       </g>
     </g>
   "
-                                        size="inherit"
-                                        viewBox="1671 5924 30 30"
-                                      >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "
+                                            size="inherit"
+                                            viewBox="1671 5924 30 30"
+                                          >
+                                            <svg
+                                              className="css-yys9hb "
+                                              dangerouslySetInnerHTML={
+                                                Object {
+                                                  "__html": "
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -1604,33 +1613,35 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
       </g>
     </g>
   ",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": "inherit",
-                                            }
-                                          }
-                                          viewBox="1671 5924 30 30"
-                                          xmlns="http://www.w3.org/2000/svg"
+                                                }
+                                              }
+                                              style={
+                                                Object {
+                                                  "fill": null,
+                                                  "fontSize": "inherit",
+                                                }
+                                              }
+                                              viewBox="1671 5924 30 30"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </CouponFieldIcon>
+                                      </div>
+                                      <div
+                                        className="css-1usne35"
+                                      >
+                                        <div
+                                          className="css-11zbu8 css-1txaqv6"
                                         />
-                                      </Icon>
-                                    </CouponFieldIcon>
+                                      </div>
+                                    </form>
                                   </div>
-                                  <div
-                                    className="css-1usne35"
-                                  >
-                                    <div
-                                      className="css-11zbu8 css-1txaqv6"
-                                    />
-                                  </div>
-                                </form>
+                                </Layout>
                               </div>
-                            </Layout>
-                          </div>
-                        </CouponField>
-                      </Connect(CouponField)>
+                            </CouponField>
+                          </Consumer>
+                        </Component>
+                      </Connect(Component)>
                     </Portal>
                     <Portal
                       key=".3"
@@ -2182,18 +2193,18 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                                           <Link
                                             className=""
                                             disabled={false}
+                                            historyPush={[Function]}
+                                            historyReplace={[Function]}
                                             href="/item/746573745f70726f64756374"
                                             itemProp="item"
                                             itemScope={true}
                                             itemType="http://schema.org/Product"
-                                            navigate={[Function]}
                                             replace={false}
                                             state={Object {}}
                                             tag="div"
                                             tagName="a"
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-c6ki83 "
                                               onClick={[Function]}
                                               role="link"
@@ -2628,123 +2639,132 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                       name="cart.coupon-field"
                       props={null}
                     >
-                      <Connect(CouponField)
+                      <Connect(Component)
                         onToggleFocus={[Function]}
                       >
-                        <CouponField
+                        <Component
                           addCoupon={[Function]}
                           isIos={false}
                           isLoading={false}
-                          isVisible={true}
+                          isSupported={true}
                           onToggleFocus={[Function]}
                         >
-                          <div>
-                            <Layout
-                              handleAddCoupon={[Function]}
-                              handleFocusChange={[Function]}
-                              handleValueChange={[Function]}
-                              iconStyle={
-                                Object {
-                                  "opacity": 0,
-                                }
-                              }
-                              isButtonDisabled={true}
-                              isFocused={false}
+                          <Consumer>
+                            <CouponField
+                              addCoupon={[Function]}
+                              isIos={false}
                               isLoading={false}
-                              labelStyle={
-                                Object {
-                                  "display": "block",
-                                }
-                              }
-                              value=""
+                              isSupported={true}
+                              onToggleFocus={[Function]}
+                              visible={true}
                             >
-                              <div
-                                className="css-gtkn00"
-                              >
-                                <form
-                                  className="css-pgykgj"
-                                  data-test-id="couponField"
-                                  onSubmit={[Function]}
-                                >
-                                  <label
-                                    className="css-m5j1fd"
-                                    htmlFor="coupon-code-field"
-                                    style={
-                                      Object {
-                                        "display": "block",
-                                      }
+                              <div>
+                                <Layout
+                                  handleAddCoupon={[Function]}
+                                  handleFocusChange={[Function]}
+                                  handleValueChange={[Function]}
+                                  iconStyle={
+                                    Object {
+                                      "opacity": 0,
                                     }
+                                  }
+                                  isButtonDisabled={true}
+                                  isFocused={false}
+                                  isLoading={false}
+                                  labelStyle={
+                                    Object {
+                                      "display": "block",
+                                    }
+                                  }
+                                  value=""
+                                >
+                                  <div
+                                    className="css-gtkn00"
                                   >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string="cart.redeem_coupon"
+                                    <form
+                                      className="css-pgykgj"
+                                      data-test-id="couponField"
+                                      onSubmit={[Function]}
                                     >
-                                      <span
-                                        className=""
+                                      <label
+                                        className="css-m5j1fd"
+                                        htmlFor="coupon-code-field"
+                                        style={
+                                          Object {
+                                            "display": "block",
+                                          }
+                                        }
                                       >
-                                        cart.redeem_coupon
-                                      </span>
-                                    </Translate>
-                                  </label>
-                                  <Component
-                                    className="css-gm6ek6"
-                                    disabled={false}
-                                    name="coupon-code-field"
-                                    onChange={[Function]}
-                                    onFocusChange={[Function]}
-                                    value=""
-                                  >
-                                    <SimpleInput
-                                      autoComplete={false}
-                                      autoCorrect={false}
-                                      className="css-gm6ek6"
-                                      disabled={false}
-                                      id={null}
-                                      name="coupon-code-field"
-                                      onChange={[Function]}
-                                      onFocusChange={[Function]}
-                                      onSanitize={[Function]}
-                                      onValidate={[Function]}
-                                      password={false}
-                                      setRef={[Function]}
-                                      type="text"
-                                      validateOnBlur={true}
-                                      value=""
-                                    >
-                                      <input
-                                        autoComplete="off"
-                                        autoCorrect="off"
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.redeem_coupon"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.redeem_coupon
+                                          </span>
+                                        </Translate>
+                                      </label>
+                                      <Component
                                         className="css-gm6ek6"
                                         disabled={false}
-                                        id={null}
                                         name="coupon-code-field"
-                                        onBlur={[Function]}
                                         onChange={[Function]}
-                                        onFocus={[Function]}
-                                        type="text"
+                                        onFocusChange={[Function]}
                                         value=""
-                                      />
-                                    </SimpleInput>
-                                  </Component>
-                                  <div
-                                    aria-hidden={true}
-                                    className="css-8dl7x"
-                                    data-test-id="CouponSubmitButton"
-                                    onClick={[Function]}
-                                    style={
-                                      Object {
-                                        "opacity": 0,
-                                      }
-                                    }
-                                  >
-                                    <CouponFieldIcon
-                                      disabled={true}
-                                    >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="
+                                      >
+                                        <SimpleInput
+                                          autoComplete={false}
+                                          autoCorrect={false}
+                                          className="css-gm6ek6"
+                                          disabled={false}
+                                          id={null}
+                                          name="coupon-code-field"
+                                          onChange={[Function]}
+                                          onFocusChange={[Function]}
+                                          onSanitize={[Function]}
+                                          onValidate={[Function]}
+                                          password={false}
+                                          setRef={[Function]}
+                                          type="text"
+                                          validateOnBlur={true}
+                                          value=""
+                                        >
+                                          <input
+                                            autoComplete="off"
+                                            autoCorrect="off"
+                                            className="css-gm6ek6"
+                                            disabled={false}
+                                            id={null}
+                                            name="coupon-code-field"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            type="text"
+                                            value=""
+                                          />
+                                        </SimpleInput>
+                                      </Component>
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8dl7x"
+                                        data-test-id="CouponSubmitButton"
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 0,
+                                          }
+                                        }
+                                      >
+                                        <CouponFieldIcon
+                                          disabled={true}
+                                        >
+                                          <Icon
+                                            className=""
+                                            color={null}
+                                            content="
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -2760,14 +2780,14 @@ exports[`<Cart> page Initial page should render with items 1`] = `
       </g>
     </g>
   "
-                                        size="inherit"
-                                        viewBox="1671 5924 30 30"
-                                      >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "
+                                            size="inherit"
+                                            viewBox="1671 5924 30 30"
+                                          >
+                                            <svg
+                                              className="css-yys9hb "
+                                              dangerouslySetInnerHTML={
+                                                Object {
+                                                  "__html": "
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -2783,33 +2803,35 @@ exports[`<Cart> page Initial page should render with items 1`] = `
       </g>
     </g>
   ",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": "inherit",
-                                            }
-                                          }
-                                          viewBox="1671 5924 30 30"
-                                          xmlns="http://www.w3.org/2000/svg"
+                                                }
+                                              }
+                                              style={
+                                                Object {
+                                                  "fill": null,
+                                                  "fontSize": "inherit",
+                                                }
+                                              }
+                                              viewBox="1671 5924 30 30"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </CouponFieldIcon>
+                                      </div>
+                                      <div
+                                        className="css-1usne35"
+                                      >
+                                        <div
+                                          className="css-11zbu8 css-1txaqv6"
                                         />
-                                      </Icon>
-                                    </CouponFieldIcon>
+                                      </div>
+                                    </form>
                                   </div>
-                                  <div
-                                    className="css-1usne35"
-                                  >
-                                    <div
-                                      className="css-11zbu8 css-1txaqv6"
-                                    />
-                                  </div>
-                                </form>
+                                </Layout>
                               </div>
-                            </Layout>
-                          </div>
-                        </CouponField>
-                      </Connect(CouponField)>
+                            </CouponField>
+                          </Consumer>
+                        </Component>
+                      </Connect(Component)>
                     </Portal>
                     <Portal
                       key=".3"

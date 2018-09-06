@@ -52,67 +52,10 @@ exports[`<FilterBar> should render 1`] = `
                 <div
                   className="css-1cqgl9p"
                 >
-                  <Connect(ViewSwitch)>
-                    <ViewSwitch
-                      toggleViewMode={[Function]}
-                      viewMode="grid"
-                    >
-                      <button
-                        className="css-1x5kceo"
-                        data-test-id="viewSwitch"
-                        onClick={[Function]}
-                      >
-                        <Ripple
-                          className="css-ugy6xl"
-                          color="#000"
-                          disabled={false}
-                          fill={false}
-                          onComplete={[Function]}
-                          overflow={true}
-                          size={null}
-                        >
-                          <div
-                            aria-hidden={true}
-                            className="css-ugy6xl"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
-                          >
-                            <List>
-                              <Icon
-                                className=""
-                                color={null}
-                                content="<path d=\\"M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z\\"/>"
-                                size="inherit"
-                                viewBox="0 0 24 24"
-                              >
-                                <svg
-                                  className="css-yys9hb "
-                                  dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z\\"/>",
-                                    }
-                                  }
-                                  style={
-                                    Object {
-                                      "fill": null,
-                                      "fontSize": "inherit",
-                                    }
-                                  }
-                                  viewBox="0 0 24 24"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                />
-                              </Icon>
-                            </List>
-                          </div>
-                        </Ripple>
-                      </button>
-                    </ViewSwitch>
-                  </Connect(ViewSwitch)>
                   <Connect(Sort)>
                     <Sort
                       changeSort={[Function]}
-                      sort="desc"
+                      sort="relevance"
                     >
                       <SelectBox
                         className="css-1bjlaf3"
@@ -131,7 +74,7 @@ exports[`<FilterBar> should render 1`] = `
                         duration={225}
                         handleSelectionUpdate={[Function]}
                         icon={[Function]}
-                        initialValue="desc"
+                        initialValue="relevance"
                         item={[Function]}
                         items={
                           Array [
@@ -157,7 +100,7 @@ exports[`<FilterBar> should render 1`] = `
                         >
                           <button
                             className="css-659uo0"
-                            data-test-id="filter.sort.default"
+                            data-test-id="filter.sort.most_popular"
                             onClick={[Function]}
                           >
                             <span
@@ -166,12 +109,12 @@ exports[`<FilterBar> should render 1`] = `
                               <Translate
                                 className=""
                                 params={Object {}}
-                                string="filter.sort.default"
+                                string="filter.sort.most_popular"
                               >
                                 <span
                                   className=""
                                 >
-                                  filter.sort.default
+                                  filter.sort.most_popular
                                 </span>
                               </Translate>
                             </span>
@@ -256,6 +199,7 @@ exports[`<FilterBar> should render 1`] = `
                                           color="#000"
                                           disabled={false}
                                           fill={true}
+                                          onClick={[Function]}
                                           onComplete={[Function]}
                                           overflow={false}
                                           size={null}
@@ -302,6 +246,7 @@ exports[`<FilterBar> should render 1`] = `
                                           color="#000"
                                           disabled={false}
                                           fill={true}
+                                          onClick={[Function]}
                                           onComplete={[Function]}
                                           overflow={false}
                                           size={null}
@@ -348,6 +293,7 @@ exports[`<FilterBar> should render 1`] = `
                                           color="#000"
                                           disabled={false}
                                           fill={true}
+                                          onClick={[Function]}
                                           onComplete={[Function]}
                                           overflow={false}
                                           size={null}
@@ -383,109 +329,120 @@ exports[`<FilterBar> should render 1`] = `
                       </SelectBox>
                     </Sort>
                   </Connect(Sort)>
-                  <Connect(FilterButton)>
-                    <FilterButton
-                      handleOpenFilters={[Function]}
-                    >
-                      <button
-                        className="css-1x5kceo"
-                        data-test-id="filterButton"
-                        onClick={[Function]}
+                  <_default>
+                    <Consumer>
+                      <Connect(Component)
+                        categoryId="1337"
+                        navigate={[Function]}
+                        query={Object {}}
                       >
-                        <Ripple
-                          className="css-1xo5u0j"
-                          color="#000"
-                          disabled={false}
-                          fill={true}
-                          onComplete={[Function]}
-                          overflow={false}
-                          size={null}
+                        <Component
+                          categoryId="1337"
+                          navigate={[Function]}
+                          query={Object {}}
                         >
-                          <div
-                            aria-hidden={true}
-                            className="css-1xo5u0j"
-                            data-test-id="Ripple"
+                          <button
+                            className="css-1x5kceo"
+                            data-test-id="filterButton"
                             onClick={[Function]}
-                            style={null}
                           >
-                            <Grid
-                              className=""
-                              component="div"
-                              wrap={false}
+                            <Ripple
+                              className="css-1xo5u0j"
+                              color="#000"
+                              disabled={false}
+                              fill={true}
+                              onClick={[Function]}
+                              onComplete={[Function]}
+                              overflow={false}
+                              size={null}
                             >
                               <div
-                                className=" css-h7r55a"
+                                aria-hidden={true}
+                                className="css-1xo5u0j"
+                                data-test-id="Ripple"
+                                onClick={[Function]}
+                                style={null}
                               >
-                                <GridItem
-                                  className="css-1cqgl9p"
-                                  component="div"
-                                  grow={0}
-                                  shrink={1}
-                                >
-                                  <div
-                                    className="css-1cqgl9p"
-                                  >
-                                    <span
-                                      className="css-1vl2hbo"
-                                    >
-                                      <Translate
-                                        className=""
-                                        params={Object {}}
-                                        string="titles.filter"
-                                      >
-                                        <span
-                                          className=""
-                                        >
-                                          titles.filter
-                                        </span>
-                                      </Translate>
-                                    </span>
-                                  </div>
-                                </GridItem>
-                                <GridItem
+                                <Grid
                                   className=""
                                   component="div"
-                                  grow={0}
-                                  shrink={1}
+                                  wrap={false}
                                 >
                                   <div
-                                    className=""
+                                    className=" css-h7r55a"
                                   >
-                                    <Filter>
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>"
-                                        size="inherit"
-                                        viewBox="0 0 24 24"
+                                    <GridItem
+                                      className="css-1cqgl9p"
+                                      component="div"
+                                      grow={0}
+                                      shrink={1}
+                                    >
+                                      <div
+                                        className="css-1cqgl9p"
                                       >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": "inherit",
-                                            }
-                                          }
-                                          viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Filter>
+                                        <span
+                                          className="css-1vl2hbo"
+                                        >
+                                          <Translate
+                                            className=""
+                                            params={Object {}}
+                                            string="titles.filter"
+                                          >
+                                            <span
+                                              className=""
+                                            >
+                                              titles.filter
+                                            </span>
+                                          </Translate>
+                                        </span>
+                                      </div>
+                                    </GridItem>
+                                    <GridItem
+                                      className=""
+                                      component="div"
+                                      grow={0}
+                                      shrink={1}
+                                    >
+                                      <div
+                                        className=""
+                                      >
+                                        <Filter>
+                                          <Icon
+                                            className=""
+                                            color={null}
+                                            content="<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>"
+                                            size="inherit"
+                                            viewBox="0 0 24 24"
+                                          >
+                                            <svg
+                                              className="css-yys9hb "
+                                              dangerouslySetInnerHTML={
+                                                Object {
+                                                  "__html": "<path d=\\"M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z\\"/>",
+                                                }
+                                              }
+                                              style={
+                                                Object {
+                                                  "fill": null,
+                                                  "fontSize": "inherit",
+                                                }
+                                              }
+                                              viewBox="0 0 24 24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </Filter>
+                                      </div>
+                                    </GridItem>
                                   </div>
-                                </GridItem>
+                                </Grid>
                               </div>
-                            </Grid>
-                          </div>
-                        </Ripple>
-                      </button>
-                    </FilterButton>
-                  </Connect(FilterButton)>
+                            </Ripple>
+                          </button>
+                        </Component>
+                      </Connect(Component)>
+                    </Consumer>
+                  </_default>
                 </div>
                 <Connect(FilterChips)
                   currency="USD"
@@ -493,7 +450,7 @@ exports[`<FilterBar> should render 1`] = `
                   <FilterChips
                     activeFilters={null}
                     currency="USD"
-                    currentPathname=""
+                    currentPathname="/"
                     handleFilterRemove={[Function]}
                     handleOpenFilters={[Function]}
                   />
