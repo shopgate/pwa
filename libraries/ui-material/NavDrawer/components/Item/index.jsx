@@ -13,6 +13,7 @@ class NavDrawerItem extends Component {
     badge: PropTypes.func,
     icon: PropTypes.func,
     onClick: PropTypes.func,
+    style: PropTypes.shape(),
     testId: PropTypes.string,
   };
 
@@ -20,6 +21,7 @@ class NavDrawerItem extends Component {
     badge: null,
     icon: null,
     onClick: () => {},
+    style: {},
     testId: null,
   };
 
@@ -41,6 +43,7 @@ class NavDrawerItem extends Component {
       badge: Badge,
       icon: Icon,
       label,
+      style,
       testId,
     } = this.props;
 
@@ -50,9 +53,12 @@ class NavDrawerItem extends Component {
         data-test-id={testId}
         onClick={this.handleClick}
         role="link"
+        style={style}
       >
-        {Icon && <Icon className={styles.icon} size={24} />}
-        <I18n.Text string={label} />
+        <div className={styles.iconWrapper}>
+          {Icon && <Icon className={styles.icon} size={24} />}
+        </div>
+        <I18n.Text className={styles.label} string={label} />
         {Badge && <Badge />}
       </button>
     );

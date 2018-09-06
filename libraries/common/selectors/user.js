@@ -52,9 +52,10 @@ export const isUserLoggedIn = createSelector(
     return login.isLoggedIn;
   }
 );
+
 /**
  * @param {Object} state The global state.
- * @returns {string} A user name.
+ * @returns {string}
  */
 export const getUserDisplayName = createSelector(
   getUserData,
@@ -64,6 +65,21 @@ export const getUserDisplayName = createSelector(
     }
 
     return [data.firstName, data.lastName].join(' ').trim();
+  }
+);
+
+/**
+ * @param {Object} state The global state.
+ * @returns {string}
+ */
+export const getUserEmail = createSelector(
+  getUserData,
+  (data) => {
+    if (!data) {
+      return null;
+    }
+
+    return data.mail || null;
   }
 );
 

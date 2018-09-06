@@ -5,6 +5,7 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import { getCurrentRoute } from '@virtuous/conductor-helpers';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
 import { historyPop, historyReplace } from '../actions/router';
@@ -40,6 +41,13 @@ export default function router(subscribe) {
     // Remove trailing slashes from the location.
     if (location && location.length > 1 && location.endsWith('/')) {
       location = location.slice(0, -1);
+    }
+
+    const { pathname: currentPathname } = getCurrentRoute();
+
+    // Prevent the current route from being pushed again.
+    if (historyAction === ACTION_PUSH && location === currentPathname) {
+      return;
     }
 
     // Route authentication.

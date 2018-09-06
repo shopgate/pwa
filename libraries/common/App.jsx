@@ -37,7 +37,7 @@ class App extends PureComponent {
   render() {
     return (
       <StoreProvider store={this.props.store}>
-        <Provider store={this.store}>
+        <Provider store={this.props.store}>
           <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
             <div>
               {this.props.children}

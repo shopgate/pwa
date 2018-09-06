@@ -1,6 +1,7 @@
 import { css } from 'glamor';
 
 export const contentStyle = css({
+  fontSize: 14,
   height: '100%',
   overflowY: 'scroll',
   paddingBottom: 'var(--safe-area-inset-bottom)',

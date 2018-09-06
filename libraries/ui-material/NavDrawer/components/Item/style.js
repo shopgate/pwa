@@ -2,6 +2,7 @@ import { css } from 'glamor';
 
 const button = css({
   alignItems: 'flex-start',
+  color: 'inherit',
   display: 'flex',
   fontWeight: 500,
   outline: 0,
@@ -9,8 +10,16 @@ const button = css({
   position: 'relative',
   width: '100%',
   ':first-child': {
-    paddingTop: 'var(--safe-area-inset-top)',
+    paddingTop: 'calc(16px + var(--safe-area-inset-top))',
   },
+}).toString();
+
+const label = css({
+  marginTop: 2,
+}).toString();
+
+const iconWrapper = css({
+  width: 72,
 }).toString();
 
 const icon = css({
@@ -21,5 +30,7 @@ const icon = css({
 
 export default {
   button,
+  label,
+  iconWrapper,
   icon,
 };
