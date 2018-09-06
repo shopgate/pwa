@@ -6,7 +6,8 @@ import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import style from './style';
 
 /**
- * A component that provides a styled checkbox for user input in material design.
+ * A component that provides a styled checkbox field.
+ * @returns {JSX}
  */
 class Checkbox extends PureComponent {
   static propTypes = {
@@ -31,18 +32,18 @@ class Checkbox extends PureComponent {
    */
   render() {
     const {
-      name, label, onChange, className, defaultChecked
+      name, label, onChange, className, errorText, ...restProps
     } = this.props;
     return (
       <FormElement
         className={`${className} ${style.root}`}
         htmlFor={name}
-        errorText={this.props.errorText}
+        errorText={errorText}
         hasUnderline={false}
         hasPlaceholder={false}
       >
         <UICheckbox
-          defaultChecked={defaultChecked}
+          {...restProps}
           name={name}
           onCheck={onChange}
           checkedClassName={className}
