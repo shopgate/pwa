@@ -13,6 +13,7 @@ class SimpleInput extends Component {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     id: PropTypes.string,
+    isControlled: PropTypes.bool,
     name: PropTypes.string,
     onChange: PropTypes.func,
     onFocusChange: PropTypes.func,
@@ -31,6 +32,7 @@ class SimpleInput extends Component {
     className: '',
     disabled: false,
     id: null,
+    isControlled: false,
     name: null,
     onChange: () => {},
     onFocusChange: () => {},
@@ -79,7 +81,7 @@ class SimpleInput extends Component {
      */
     const sanitizedValue = this.props.onSanitize(nextProps.value || '');
     if (sanitizedValue !== this.state.value) {
-      this.updateValue(sanitizedValue);
+      this.updateValue(sanitizedValue, true);
     }
   }
 
@@ -139,10 +141,10 @@ class SimpleInput extends Component {
     const sanitizedValue = this.props.onSanitize(event.target.value || '');
 
     // Update the state.
-    this.updateValue(sanitizedValue, () => {
-      // Emit an event.
-      this.props.onChange(sanitizedValue);
-    });
+    this.updateValue(sanitizedValue, !this.props.isControlled);
+
+    // Emit an event.
+    this.props.onChange(sanitizedValue);
   };
 
   /**
@@ -157,9 +159,9 @@ class SimpleInput extends Component {
   /**
    * Updates and validates the internal state value of the input field.
    * @param {string} newValue The new value.
-   * @param {function} cb Callback which is called upon when the state was changed.
+   * @param {boolean} setOwnState Specifies whether or not to update the internal state.
    */
-  updateValue(newValue, cb) {
+  updateValue(newValue, setOwnState) {
     const newState = {
       value: newValue,
     };
@@ -169,7 +171,10 @@ class SimpleInput extends Component {
       newState.isValid = this.props.onValidate(newValue, false);
     }
 
-    this.setState(newState, cb);
+    // Uncontrolled when setOwnState is true
+    if (setOwnState) {
+      this.setState(newState);
+    }
   }
 
   /**

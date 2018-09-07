@@ -1,6 +1,5 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import style from './style';
 
@@ -12,6 +11,7 @@ class RadioGroup extends Component {
     children: PropTypes.node,
     default: PropTypes.string,
     errorText: PropTypes.string,
+    isControlled: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
   }
@@ -20,6 +20,7 @@ class RadioGroup extends Component {
     onChange: () => {},
     children: null,
     errorText: '',
+    isControlled: false,
     label: '',
     default: null,
   }
@@ -54,7 +55,9 @@ class RadioGroup extends Component {
           {Children.map(children, child => cloneElement(child, {
             active: this.state.active === child.props.name,
             onChange: () => {
-              this.setState({ active: child.props.name });
+              if (!this.props.isControlled) {
+                this.setState({ active: child.props.name });
+              }
               onChange(child.props.name);
             },
           }))}

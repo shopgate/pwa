@@ -21,7 +21,7 @@ class Checkbox extends PureComponent {
 
   static defaultProps = {
     className: '',
-    defaultChecked: false,
+    defaultChecked: undefined,
     errorText: '',
     label: '',
     onChange: () => {},
