@@ -16,8 +16,8 @@
   "devDependencies": {
     "@shopgate/eslint-config": "5.7.3",
     "jest": "^23.5.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react": "~16.3.2",
+    "react-dom": "~16.3.2"
   },
   "peerDependencies": {
     "jest": "23.x",

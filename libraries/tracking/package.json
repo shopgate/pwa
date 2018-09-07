@@ -20,8 +20,8 @@
     "@shopgate/pwa-common-commerce": "5.7.3",
     "@shopgate/pwa-core": "5.7.3",
     "@shopgate/tracking-core": "5.7.3",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "~16.3.2",
+    "react-dom": "~16.3.2",
     "reselect": "^3.0.1",
     "rxjs": "^5.4.3"
   }
