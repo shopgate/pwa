@@ -1,9 +1,5 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
-import {
-  routeWillEnter$,
-  routeDidEnter$,
-  routeWillLeave$,
-} from '@shopgate/pwa-common/streams/router';
+import { routeWillEnter$, routeDidEnter$, routeWillLeave$ } from '@shopgate/pwa-common/streams/router';
 import { CATEGORY_PATH, RECEIVE_CATEGORY } from '@shopgate/pwa-common-commerce/category/constants';
 import { filtersDidUpdate$ } from '@shopgate/pwa-common-commerce/filter/streams';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
