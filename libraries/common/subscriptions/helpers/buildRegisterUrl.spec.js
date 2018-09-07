@@ -5,9 +5,7 @@ import buildRegisterUrl from './buildRegisterUrl';
 
 describe('buildRegisterUrl', () => {
   it('should create the expected url when no redirect was passed', () => {
-    const url = LEGACY_URL;
-
-    const result = queryString.parseUrl(buildRegisterUrl(url));
+    const result = queryString.parseUrl(buildRegisterUrl(LEGACY_URL));
 
     expect(result.url).toBe(LEGACY_URL);
     expect(result.query).toEqual({
@@ -16,9 +14,7 @@ describe('buildRegisterUrl', () => {
   });
 
   it('should create the expected url when no redirect was passed and the source url includes GET parameters', () => {
-    const url = `${LEGACY_URL}?foo=bar`;
-
-    const result = queryString.parseUrl(buildRegisterUrl(url));
+    const result = queryString.parseUrl(buildRegisterUrl(`${LEGACY_URL}?foo=bar`));
 
     expect(result.url).toBe(LEGACY_URL);
     expect(result.query).toEqual({
@@ -28,22 +24,16 @@ describe('buildRegisterUrl', () => {
   });
 
   it('should create the expected url when a common redirect url with GET parameters was passed', () => {
-    const url = LEGACY_URL;
-    const redirect = '/some_url?foo=bar';
-
-    const result = queryString.parseUrl(buildRegisterUrl(url, redirect));
+    const result = queryString.parseUrl(buildRegisterUrl(LEGACY_URL, '/some_url?foo=bar'));
 
     expect(result.url).toBe(LEGACY_URL);
     expect(result.query).toEqual({
-      sgcloud_callback_data: `{"redirectTo":"${redirect}"}`,
+      sgcloud_callback_data: '{"redirectTo":"/some_url?foo=bar"}',
     });
   });
 
   it('should create the expected url when a checkout redirect url was passed', () => {
-    const url = `${LEGACY_URL}?foo=bar`;
-    const redirect = CHECKOUT_PATH;
-
-    const result = queryString.parseUrl(buildRegisterUrl(url, redirect));
+    const result = queryString.parseUrl(buildRegisterUrl(`${LEGACY_URL}?foo=bar`, CHECKOUT_PATH));
 
     expect(result.url).toBe(LEGACY_URL);
     expect(result.query).toEqual({

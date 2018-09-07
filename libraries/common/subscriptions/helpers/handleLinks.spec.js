@@ -1,5 +1,4 @@
-import authRoutes from '../../collections/AuthRoutes';
-import { isShopLink, isProtector } from './handleLinks';
+import { isShopLink } from './handleLinks';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopCNAME: 'm.example.com',
@@ -41,25 +40,6 @@ describe('handleLinks helpers', () => {
       it(`should return false for ${href} link`, () => {
         expect(isShopLink(href)).toBe(false);
       });
-    });
-  });
-
-  describe('isProtector()', () => {
-    const PROTECTOR = '/protector';
-    const PROTECTED = '/protected';
-
-    beforeEach(() => {
-      authRoutes.constructor();
-      authRoutes.set('/protected_not_relevant', '/protector_not_relevant');
-      authRoutes.set(PROTECTED, PROTECTOR);
-    });
-
-    it('should return true for a protector route', () => {
-      expect(isProtector(PROTECTOR)).toBe(true);
-    });
-
-    it('should return false for a protected route', () => {
-      expect(isProtector(PROTECTED)).toBe(false);
     });
   });
 });

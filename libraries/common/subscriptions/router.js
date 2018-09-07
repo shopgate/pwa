@@ -16,6 +16,7 @@ import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
 import setViewLoading from '../actions/view/setViewLoading';
 import unsetViewLoading from '../actions/view/unsetViewLoading';
+import authRoutes from '../collections/AuthRoutes';
 
 /**
  * Router subscriptions.
@@ -50,7 +51,7 @@ export default function router(subscribe) {
     // Route authentication.
     if (!isUserLoggedIn(state)) {
       // Determine whether or not this location is protected.
-      const protector = handler.getProtector(location);
+      const protector = authRoutes.getProtector(location);
 
       // If protected then navigate to the protector instead.
       if (protector) {
@@ -73,7 +74,6 @@ export default function router(subscribe) {
     let redirect = redirects.get(location);
 
     if (redirect) {
-      // Check if a redirect handler was assigned and execute it.
       if (typeof redirect === 'function' || redirect instanceof Promise) {
         const { pathname } = getCurrentRoute();
         dispatch(setViewLoading(pathname));
@@ -88,7 +88,6 @@ export default function router(subscribe) {
         dispatch(unsetViewLoading(pathname));
 
         if (!redirect) {
-          // Stop processing when no redirect was created.
           return;
         }
       }

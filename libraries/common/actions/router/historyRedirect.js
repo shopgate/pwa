@@ -8,15 +8,16 @@ import { historyPop, historyReplace } from './index';
  */
 export function historyRedirect(params = {}) {
   return (dispatch) => {
-    const { location, state = {} } = params;
+    const { location, state } = params;
 
-    if (location) {
-      dispatch(historyReplace({
-        pathname: location,
-        state,
-      }));
-    } else {
+    if (!location) {
       dispatch(historyPop());
+      return;
     }
+
+    dispatch(historyReplace({
+      pathname: location,
+      state,
+    }));
   };
 }

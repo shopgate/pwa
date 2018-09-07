@@ -7,14 +7,7 @@ import showTab from '@shopgate/pwa-core/commands/showTab';
 import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import pathMatch from 'path-match';
 import authRoutes from '../../collections/AuthRoutes';
-
-const matcher = pathMatch({
-  sensitive: false,
-  strict: false,
-  end: true,
-});
 
 const SHOPGATE_DOMAIN = 'shopgate.com';
 const SHOPGATEPG_DOMAIN = 'shopgatepg.com';
@@ -138,20 +131,16 @@ export const isShopLink = (location) => {
 };
 
 /**
- * Check if the given pathname is a protector route.
- * @param {string} location The location to check.
- * @return {boolean}
+ * Takes care that protector routes are removed from the history stack when a user is redirected
+ * to a protected route after a successful login.
+ * Usually those routes are replaced with the protected route, but at redirects to a legacy app page
+ * or the in-app-browser they need to be removed from history.
+ * @param {string} historyAction The history action which was used to navigate.
  */
-export const isProtector = location => Array.from(authRoutes.getAll().values()).includes(location);
-
-/**
- * Finalizes the navigation to a legacy page or the in-app-browser.
- * @param {string} historyAction he history action which was used to navigate.
- */
-export const finializeNavigation = (historyAction) => {
+export const handleAppRedirect = (historyAction) => {
   const { pathname } = getCurrentRoute();
 
-  if (isProtector(pathname) && historyAction === ACTION_REPLACE) {
+  if (authRoutes.isProtector(pathname) && historyAction === ACTION_REPLACE) {
     /**
      * A replace action on a protector route indicates that the authentication was successful.
      * So the protector route can be popped from the history stack.
@@ -187,7 +176,7 @@ export const openExternalLink = (location, historyAction) => {
     targetTab: 'in_app_browser',
   });
 
-  finializeNavigation(historyAction);
+  handleAppRedirect(historyAction);
 };
 
 /**
@@ -239,7 +228,7 @@ export const handleLegacyLink = (options) => {
     });
   }
 
-  finializeNavigation(options.historyAction);
+  handleAppRedirect(options.historyAction);
 };
 
 /**
@@ -314,41 +303,4 @@ export const openLegacyLink = (location, historyAction) => {
       logger.warn(`openLegacyLink not handled: ${location}`);
       break;
   }
-};
-
-/**
- * Check if the given pathname is a protected route.
- * @param {string} location The location to check.
- * @returns {boolean}
- */
-export const getProtector = (location) => {
-  /**
-   * Try to make a direct match with the location.
-   * If we get lucky then we don't have to iterate over the protected patterns.
-   */
-  let protector = authRoutes.get(location);
-
-  /**
-   * If we didn't find a direct match then we need to match
-   * the given location against the protected patters.
-   */
-  if (!protector) {
-    // Get the protected patterns as an array.
-    const patterns = Array.from(authRoutes.getAll().keys());
-
-    // Loop over the patterns until a match is found.
-    patterns.some((pattern) => {
-      // Check for a match.
-      const match = matcher(pattern)(location);
-
-      // Match found, set the proector.
-      if (match) {
-        protector = authRoutes.get(pattern);
-      }
-
-      return match;
-    });
-  }
-
-  return protector;
 };

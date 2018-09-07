@@ -1,8 +1,5 @@
 import queryString from 'query-string';
-import {
-  CHECKOUT_PATH,
-  INDEX_PATH,
-} from '../../constants/RoutePaths';
+import { CHECKOUT_PATH, INDEX_PATH } from '../../constants/RoutePaths';
 
 /**
  * Generates an url for registrations via the webcheckout. It injects additional parameters
@@ -21,7 +18,7 @@ const getRegisterUrl = (url, redirect = '') => {
   parsed.query.sgcloud_callback_data = JSON.stringify({ redirectTo });
 
   // Explicitly check if we are about to be redirected to the checkout.
-  if (redirect && redirect.startsWith(CHECKOUT_PATH)) {
+  if (redirect.startsWith(CHECKOUT_PATH)) {
     parsed.query.sgcloud_checkout = 1;
   }
 
