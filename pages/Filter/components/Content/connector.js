@@ -1,4 +1,4 @@
-import { consume } from 'redux-props';
+import { connect } from 'react-redux';
 import { getFiltersByHash } from '@shopgate/pwa-common-commerce/filter/selectors';
 
 /**
@@ -6,8 +6,8 @@ import { getFiltersByHash } from '@shopgate/pwa-common-commerce/filter/selectors
  * @param {Object} props The component props.
  * @returns {Object}
  */
-const mapProps = ({ state, props }) => ({
+const mapStateToProps = (state, props) => ({
   filters: getFiltersByHash(state, props),
 });
 
-export default consume({ mapProps });
+export default connect(mapStateToProps);

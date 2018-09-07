@@ -13,7 +13,7 @@ import Selector from './components/Selector';
 import ApplyButton from './components/ApplyButton';
 import ResetButton from './components/ResetButton';
 import buildInitialFilters from './helpers/buildInitialFilters';
-import consume from './consumer';
+import connect from './connector';
 
 /**
  * The FilterContent component.
@@ -220,4 +220,4 @@ class FilterContent extends Component {
   }
 }
 
-export default consume(FilterContent);
+export default connect(FilterContent);
