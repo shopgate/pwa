@@ -40,13 +40,6 @@ jest.mock(
   )
 );
 
-const router = {
-  routing: false,
-  stack: [
-    { ...writeReviewRouteMock },
-  ],
-};
-
 const results = [
   [
     {
@@ -203,7 +196,6 @@ describe('Reviews subscriptions', () => {
   describe('requestReviewSubmit$', () => {
     it('should set view loading', () => {
       store = mockedStore({
-        router,
         view: { isLoading: {} },
       });
       submitReview[1](store);
@@ -221,7 +213,6 @@ describe('Reviews subscriptions', () => {
       };
 
       store = mockedStore({
-        router,
         view,
       });
       submitResponse[1](store);
@@ -233,7 +224,7 @@ describe('Reviews subscriptions', () => {
 
   describe.skip('successReviewSubmit$', () => {
     it('should navigate back and show toast', () => {
-      store = mockedStore({ router });
+      store = mockedStore({ });
       submitSuccess[1](store);
 
       const actions = store.getActions();
@@ -243,7 +234,7 @@ describe('Reviews subscriptions', () => {
 
   describe('userDidLogout$', () => {
     it('should unset userReviews state', () => {
-      store = mockedStore({ router });
+      store = mockedStore({});
       userLogout[1](store);
 
       const actions = store.getActions();

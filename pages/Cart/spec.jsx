@@ -73,7 +73,7 @@ describe('<Cart> page', () => {
 
     it('should navigate to PDP on item tap', () => {
       const component = createComponent(cartState);
-      component.first('Connect(Product)').find('Link').simulate('click');
+      component.find('Connect(Product)').find('Link').simulate('click');
       component.update();
       const actions = store.getActions();
 
