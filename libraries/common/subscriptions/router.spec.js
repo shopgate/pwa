@@ -20,6 +20,8 @@ jest.mock('@virtuous/conductor', () => ({
   replace: jest.fn(),
 }));
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
+
 let mockedShopCNAME = null;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get shopCNAME() { return mockedShopCNAME; },
