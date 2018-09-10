@@ -506,7 +506,7 @@ export const getProductDescription = createSelector(
   (descriptions, productId) => {
     const entry = descriptions[productId];
 
-    if (!entry || !entry.description) {
+    if (!entry || typeof entry.description === 'undefined') {
       return null;
     }
 
