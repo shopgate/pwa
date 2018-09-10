@@ -31,6 +31,7 @@ class Characteristics extends PureComponent {
         variantId={variantId}
         render={this.renderer}
         conditioner={conditioner}
+        finishTimeout={200}
       />
     );
   }
