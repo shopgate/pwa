@@ -12,32 +12,13 @@ class RadioItem extends PureComponent {
   static propTypes = {
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    active: PropTypes.bool,
+    checked: PropTypes.bool,
     onChange: PropTypes.func,
   }
 
   static defaultProps = {
-    active: false,
+    checked: false,
     onChange: () => {},
-  }
-
-  /**
-   * Initializes the component
-   * @param {Object} props The components props.
-   */
-  constructor(props) {
-    super(props);
-    this.id = `${props.name}${Math.random()}`;
-  }
-
-  /**
-   * Renders the icon.
-   * @returns {JSX}
-   */
-  renderIcon() {
-    return this.props.active ?
-      <CheckedIcon className={style.active} /> :
-      <UncheckedIcon />;
   }
 
   /**
@@ -46,17 +27,20 @@ class RadioItem extends PureComponent {
    */
   render() {
     const {
-      active, label, name, onChange,
+      label, name, onChange, checked,
     } = this.props;
 
     return (
-      <label className={style.container} htmlFor={this.id}>
-        {this.renderIcon()}
+      <label className={style.container} htmlFor={this.key}>
+
+        {checked && <CheckedIcon className={style.active} />}
+        {!checked && <UncheckedIcon />}
+
         <input
           className={style.input}
-          checked={active}
+          checked={checked}
           type="radio"
-          id={this.id}
+          id={this.key}
           name={name}
           onChange={onChange}
         />
