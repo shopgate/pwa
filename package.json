@@ -27,7 +27,7 @@
   },
   "lint-staged": {
     "linters": {
-      "*.{js,jsx}": "yarn run lint"
+      "*.{js,jsx}": "eslint --quiet --ignore-pattern /themes/ --ignore-pattern /extensions/ --ext .js --ext .jsx ."
     }
   },
   "devDependencies": {
