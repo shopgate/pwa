@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Link from '@shopgate/pwa-common/components/Link';
+import { REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import View from 'Components/View';
@@ -161,7 +162,7 @@ class Login extends Component {
               <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
               <Portal name={PAGE_LOGIN_REGISTER_LINK} >
                 <I18n.Text string="login.no_account" className={styles.noAccount} />
-                <Link href="/register" className={styles.signup}>
+                <Link href={REGISTER_PATH} className={styles.signup}>
                   <I18n.Text string="login.register" />
                 </Link>
               </Portal>
