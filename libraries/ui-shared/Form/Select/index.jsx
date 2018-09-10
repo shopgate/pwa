@@ -11,6 +11,7 @@ class Select extends Component {
     name: PropTypes.string.isRequired,
     className: PropTypes.string,
     errorText: PropTypes.node,
+    isControlled: PropTypes.bool,
     label: PropTypes.node,
     onChange: PropTypes.func,
     options: PropTypes.shape(),
@@ -21,6 +22,7 @@ class Select extends Component {
   static defaultProps = {
     className: '',
     errorText: '',
+    isControlled: false,
     placeholder: '',
     label: '',
     onChange: () => {},
@@ -55,7 +57,9 @@ class Select extends Component {
    * @param {string} value The entered text.
    */
   handleChange = ({ target }) => {
-    this.setState({ value: target.value });
+    if (!this.props.isControlled) {
+      this.setState({ value: target.value });
+    }
     this.props.onChange(target.value);
   };
 
