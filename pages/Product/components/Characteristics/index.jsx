@@ -1,25 +1,59 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import ProductCharacteristics from '@shopgate/pwa-common/components/ProductCharacteristics';
 import { ProductContext } from './../../context';
 import Characteristic from './Characteristic';
 
 /**
- * @param {Object} props The component props.
- * @return {JSX}
+ * The Characteristics component.
  */
-const Characteristics = ({ productId, variantId }) => (
-  <ProductContext.Consumer>
-    {({ conditioner }) => (
+class Characteristics extends PureComponent {
+  static propTypes = {
+    productId: PropTypes.string,
+    variantId: PropTypes.string,
+  };
+
+  static defaultProps = {
+    productId: null,
+    variantId: null,
+  };
+
+  /**
+   * @param {Object} props The consumer props.
+   * @returns {JSX}
+   */
+  consumeRenderer = ({ conditioner }) => {
+    const { productId, variantId } = this.props;
+
+    return (
       <ProductCharacteristics
         productId={productId}
         variantId={variantId}
-        render={props => <Characteristic {...props} />}
+        render={this.renderer}
         conditioner={conditioner}
       />
-    )}
-  </ProductContext.Consumer>
-);
+    );
+  }
+
+  /**
+   * @param {Object} props The renderer props.
+   * @returns {JSX}
+   */
+  renderer = props => (
+    <Characteristic {...props} />
+  );
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <ProductContext.Consumer>
+        {this.consumeRenderer}
+      </ProductContext.Consumer>
+    );
+  }
+}
 
 Characteristics.propTypes = {
   productId: PropTypes.string,
