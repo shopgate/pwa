@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import { logger } from '@shopgate/pwa-core/helpers';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig } from '../../helpers/config';
@@ -45,7 +46,11 @@ class Portal extends Component {
       return true;
     }
 
-    if (this.props.children !== nextProps.children) {
+    if (!isEqual(this.props.children, nextProps.children)) {
+      return true;
+    }
+
+    if (!isEqual(this.props.props, nextProps.props)) {
       return true;
     }
 
