@@ -25,7 +25,7 @@ const NavDrawerContainer = () => (
     <Header />
     <HomeButton />
     <CategoryButton />
-    { appConfig.hasFavorites && <FavoritesButton /> }
+    {appConfig.hasFavorites && <FavoritesButton />}
     <CartButton />
     <QuickLinks />
     <NavDrawer.Divider />
@@ -33,7 +33,7 @@ const NavDrawerContainer = () => (
     <PaymentButton />
     <TermsButton />
     <PrivacyButton />
-    { showReturnPolicy && <ReturnsButton /> }
+    {showReturnPolicy && <ReturnsButton />}
     <ImprintButton />
     <LogoutButton />
     <ClientInformation />
