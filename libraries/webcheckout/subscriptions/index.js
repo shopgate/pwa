@@ -1,11 +1,9 @@
-import event from '@shopgate/pwa-core/classes/Event';
 import {
   userWillLogin$,
   userDidLogin$,
   userWillLogout$,
 } from '@shopgate/pwa-common/streams/user';
-import { appDidStart$ } from '@shopgate/pwa-common/streams/app';
-import redirectRoute from '@shopgate/pwa-common/actions/history/redirectRoute';
+import { historyRedirect } from '@shopgate/pwa-common/actions/router';
 import { hasShopifyCheckout } from '../selectors';
 import login from '../actions/login';
 import logout from '../actions/logout';
@@ -28,17 +26,8 @@ export default function shopify(subscribe) {
    */
   const shouldRedirect$ = userDidLogin$.zip(shopifyDidRespond$).map(([first]) => first);
 
-  subscribe(shouldRedirect$, ({ dispatch }) => {
-    dispatch(redirectRoute());
-  });
-
-  /**
-   * Removes the login page if the user logged-in in the web checkout
-   */
-  subscribe(appDidStart$, ({ dispatch }) => {
-    event.addCallback('userLoggedIn', () => {
-      dispatch(redirectRoute());
-    });
+  subscribe(shouldRedirect$, ({ dispatch, action }) => {
+    dispatch(historyRedirect(action.redirect));
   });
 
   /**

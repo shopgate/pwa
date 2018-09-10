@@ -65,7 +65,7 @@ export default function app(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ action, dispatch, getState }) => {
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
     // Register for custom events
     registerEvents([
       'showPreviousTab',
