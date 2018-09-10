@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
@@ -9,7 +9,7 @@ import transition from './transition';
 /**
  * The CartButtonIcon component.
  */
-class CartButtonIcon extends Component {
+class CartButtonIcon extends PureComponent {
   static propTypes = {
     onSuccess: PropTypes.func.isRequired,
     success: PropTypes.bool.isRequired,
