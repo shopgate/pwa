@@ -36,7 +36,7 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
-  return false;
+  return true;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });
