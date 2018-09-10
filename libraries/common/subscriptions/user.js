@@ -1,3 +1,4 @@
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import event from '@shopgate/pwa-core/classes/Event';
 import registerEvents from '@shopgate/pwa-core/commands/registerEvents';
 import getUser from '../actions/user/getUser';
@@ -51,12 +52,15 @@ export default function user(subscribe) {
   subscribe(appDidStart$, ({ dispatch }) => {
     registerEvents(['userLoggedIn']);
 
-    event.addCallback('userLoggedIn', () => dispatch(successLogin()));
+    event.addCallback('userLoggedIn', () => {
+      const { state: { redirect } = {} } = getCurrentRoute();
+      dispatch(successLogin(redirect));
+    });
   });
 
   subscribe(legacyConnectRegisterDidFail$, ({ dispatch }) => {
     dispatch(historyPush({
-      pathname: `/${LEGACY_URL_CONNECT_REGISTER}`,
+      pathname: LEGACY_URL_CONNECT_REGISTER,
     }));
   });
 }

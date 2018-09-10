@@ -5,20 +5,26 @@ import {
   ACTION_REPLACE,
   ACTION_RESET,
 } from '@virtuous/conductor/constants';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { logger } from '@shopgate/pwa-core';
 import { redirects } from '../collections';
 import { navigate } from '../action-creators';
-import { historyPop, historyReplace } from '../actions/router';
+import { historyRedirect } from '../actions/router';
 import * as handler from './helpers/handleLinks';
 import { navigate$, userDidLogin$ } from '../streams';
 import { isUserLoggedIn } from '../selectors/user';
 import appConfig from '../helpers/config';
+import setViewLoading from '../actions/view/setViewLoading';
+import unsetViewLoading from '../actions/view/unsetViewLoading';
+import authRoutes from '../collections/AuthRoutes';
 
 /**
  * Router subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default function router(subscribe) {
-  subscribe(navigate$, ({ action, dispatch, getState }) => {
+  subscribe(navigate$, async (params) => {
+    const { action, dispatch, getState } = params;
     const { params: { action: historyAction, silent, state: routeState } } = action;
 
     switch (historyAction) {
@@ -45,7 +51,7 @@ export default function router(subscribe) {
     // Route authentication.
     if (!isUserLoggedIn(state)) {
       // Determine whether or not this location is protected.
-      const protector = handler.getProtector(location);
+      const protector = authRoutes.getProtector(location);
 
       // If protected then navigate to the protector instead.
       if (protector) {
@@ -64,10 +70,28 @@ export default function router(subscribe) {
       }
     }
 
-    // Check for a redirect url and change location if one is found.
-    const redirect = redirects.get(location);
+    // Check for a redirect and change location if one is found.
+    let redirect = redirects.get(location);
 
     if (redirect) {
+      if (typeof redirect === 'function' || redirect instanceof Promise) {
+        const { pathname } = getCurrentRoute();
+        dispatch(setViewLoading(pathname));
+
+        try {
+          redirect = await redirect(params);
+        } catch (e) {
+          redirect = null;
+          logger.error(e);
+        }
+
+        dispatch(unsetViewLoading(pathname));
+
+        if (!redirect) {
+          return;
+        }
+      }
+
       location = redirect;
     }
 
@@ -80,7 +104,7 @@ export default function router(subscribe) {
     // If there is one of the known protocols in the url.
     if (location && handler.hasKnownProtocols(location)) {
       if (handler.isExternalLink(location)) {
-        handler.openExternalLink(location);
+        handler.openExternalLink(location, historyAction);
       } else if (handler.isNativeLink(location)) {
         handler.openNativeLink(location);
       }
@@ -89,12 +113,12 @@ export default function router(subscribe) {
     }
 
     if (location && handler.isLegacyPage(location)) {
-      handler.openLegacy(location);
+      handler.openLegacy(location, historyAction);
       return;
     }
 
     if (location && handler.isLegacyLink(location)) {
-      handler.openLegacyLink(location);
+      handler.openLegacyLink(location, historyAction);
       return;
     }
 
@@ -121,15 +145,7 @@ export default function router(subscribe) {
 
   subscribe(redirectUser$, ({ action, dispatch }) => {
     if (appConfig.webCheckoutShopify === null) {
-      const { location, state } = action.redirect;
-      if (location) {
-        dispatch(historyReplace({
-          pathname: location,
-          state,
-        }));
-      } else {
-        dispatch(historyPop());
-      }
+      dispatch(historyRedirect(action.redirect));
     }
   });
 }
