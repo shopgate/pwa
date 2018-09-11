@@ -46,11 +46,13 @@ class Checkbox extends PureComponent {
           {...restProps}
           name={name}
           onCheck={onChange}
-          checkedClassName={className}
+          checkedClassName={`${className} ${style.checked}`}
           unCheckedClassName={className}
           labelPosition="right"
           label={
-            <I18n.Text className={style.label} string={label} />
+            <div className={style.labelWrapper}>
+              <I18n.Text className={style.label} string={label} />
+            </div>
           }
         />
       </FormElement>
