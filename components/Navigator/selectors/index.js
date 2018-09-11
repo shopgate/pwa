@@ -130,16 +130,6 @@ export const isLoadingBarShowing = createSelector(
  * @param {Object} state The global state.
  * @return {string}
  */
-export const isNavDrawerActive = createSelector(
-  getNavigatorState,
-  navigatorState => navigatorState.navDrawerActive
-);
-
-/**
- * Selects the current state of the navigation drawer.
- * @param {Object} state The global state.
- * @return {string}
- */
 export const isNavSearchFieldActive = createSelector(
   getNavigatorState,
   state => state.searchActive

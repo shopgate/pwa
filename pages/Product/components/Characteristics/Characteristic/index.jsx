@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
@@ -9,7 +9,7 @@ import transition from './transition';
 /**
  * A single characteristic.
  */
-class Characteristic extends Component {
+class Characteristic extends PureComponent {
   static propTypes = {
     charRef: PropTypes.oneOfType([
       PropTypes.func,
@@ -92,36 +92,47 @@ class Characteristic extends Component {
   }
 
   /**
+   * Renders the transition contents.
+   * @param {string} state The current transition state.
+   * @returns {JSX}
+   */
+  transitionRenderer = (state) => {
+    const { __ } = this.context.i18n();
+    const {
+      disabled, selected, charRef, label,
+    } = this.props;
+    const translatedLabel = __('product.pick_an_attribute', [label]);
+    const buttonLabel = this.getButtonLabel(translatedLabel);
+    const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
+
+    return (
+      <button
+        className={classes}
+        onClick={this.handleButtonClick}
+        ref={charRef}
+        style={transition[state]}
+      >
+        {selected && <div className={styles.label}>{label}</div>}
+        <div className={styles.selection}>{buttonLabel}</div>
+      </button>
+    );
+  }
+
+  /**
    * @return {JSX}
    */
   render() {
     const { __ } = this.context.i18n();
     const {
-      disabled,
-      id,
-      selected,
-      values,
-      charRef,
+      id, selected, values,
     } = this.props;
     const displayLabel = this.props.label;
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
-    const buttonLabel = this.getButtonLabel(translatedLabel);
-    const classes = classNames(styles.button, { [styles.buttonDisabled]: disabled });
 
     return (
       <Fragment>
         <Transition in={this.state.highlight} timeout={500} onEntered={this.removeHighlight}>
-          {state => (
-            <button
-              className={classes}
-              onClick={this.handleButtonClick}
-              ref={charRef}
-              style={transition[state]}
-            >
-              {selected && <div className={styles.label}>{displayLabel}</div>}
-              <div className={styles.selection}>{buttonLabel}</div>
-            </button>
-          )}
+          {this.transitionRenderer}
         </Transition>
         <Sheet
           charId={id}

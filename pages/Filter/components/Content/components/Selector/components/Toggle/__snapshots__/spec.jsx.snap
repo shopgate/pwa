@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toggle /> should render with selected 1`] = `
+<div
+  class="css-mih9ue"
+>
+  <span
+    class="css-1xpxwoo css-15q2ai2"
+  >
+    somelabel
+  </span>
+  <span
+    class="css-1nwx09j"
+  >
+    Some, Thing, Selected
+  </span>
+</div>
+`;
+
+exports[`<Toggle /> should render with selected as open 1`] = `
+<div
+  class="css-mih9ue"
+>
+  <span
+    class="css-1xpxwoo css-l6c9n4"
+  >
+    somelabel
+  </span>
+  <span
+    class="css-1nwx09j"
+  >
+    Some, Thing, Selected
+  </span>
+</div>
+`;
+
+exports[`<Toggle /> should render without selected 1`] = `
+<div
+  class="css-mih9ue"
+>
+  <span
+    class="css-1xpxwoo css-15q2ai2"
+  >
+    somelabel
+  </span>
+</div>
+`;
+
+exports[`<Toggle /> should render without selected as open 1`] = `
+<div
+  class="css-mih9ue"
+>
+  <span
+    class="css-1xpxwoo css-l6c9n4"
+  >
+    somelabel
+  </span>
+</div>
+`;
