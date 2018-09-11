@@ -12,7 +12,7 @@ describe('<ChipsLayout />', () => {
   it('should render with one chip', () => {
     const Component = (
       <ChipsLayout>
-        <Chip>foo</Chip>
+        <Chip id="some-id">foo</Chip>
       </ChipsLayout>
     );
     const wrapper = mount(Component);
@@ -26,8 +26,8 @@ describe('<ChipsLayout />', () => {
   it('should render with two chips', () => {
     const Component = (
       <ChipsLayout>
-        <Chip>foo</Chip>
-        <Chip>bar</Chip>
+        <Chip id="some-id">foo</Chip>
+        <Chip id="some-other-id">bar</Chip>
       </ChipsLayout>
     );
     const wrapper = mount(Component);
