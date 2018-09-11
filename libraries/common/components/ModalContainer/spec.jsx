@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import configureStore from '../../store';
+import { configureStore } from '../../store';
 import modalReducer from '../../reducers/modal';
 import showModal from '../../actions/modal/showModal';
 import ModalContainer from './index';

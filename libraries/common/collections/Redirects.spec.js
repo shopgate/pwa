@@ -45,6 +45,13 @@ describe('Redirects', () => {
       redirects.set(FROM);
       expect(redirects.redirects.size).toEqual(0);
     });
+
+    it('should add a promise as redirect', () => {
+      const promise = new Promise(() => {});
+      redirects.set(FROM, promise);
+      expect(redirects.redirects.size).toEqual(1);
+      expect(redirects.get(FROM)).toBe(promise);
+    });
   });
 
   describe('unset()', () => {
