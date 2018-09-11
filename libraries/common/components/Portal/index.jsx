@@ -46,7 +46,7 @@ class Portal extends Component {
       return true;
     }
 
-    if (!shallowCompare(this.props.children, nextProps.children)) {
+    if (!shallowCompare(this, this.props.children, nextProps.children)) {
       return true;
     }
 
