@@ -106,6 +106,14 @@ export const getCurrentCategoryChildCount = createSelector(
 );
 
 /**
+ * @type {number}
+ */
+export const hasChildren = createSelector(
+  getCurrentCategoryChildCount,
+  count => count > 0
+);
+
+/**
  * Retrieves the current categories collection from the state.
  * @param {Object} state The application state.
  * @param {Object} props The component props.
@@ -135,6 +143,14 @@ export const getCategoryProductCount = createSelector(
 
     return categories[categoryId].productCount;
   }
+);
+
+/**
+ * @type {number}
+ */
+export const hasProducts = createSelector(
+  getCategoryProductCount,
+  count => count > 0
 );
 
 export const getChildCategoriesById = createSelector(
