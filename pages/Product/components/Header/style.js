@@ -46,10 +46,6 @@ const placeholder = {
   }).toString(),
 };
 
-const disclaimerSpacer = css({
-  width: 10,
-}).toString();
-
 export default {
   content,
   productInfo,
@@ -57,5 +53,4 @@ export default {
   priceInfo,
   price,
   placeholder,
-  disclaimerSpacer,
 };

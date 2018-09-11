@@ -15,22 +15,4 @@ const mapStateToProps = (state, props) => ({
   hasProducts: getCategoryProductCount(state, props),
 });
 
-/**
- * Check to see if the categories have arrived.
- * @param {*} next The next state.
- * @param {*} prev the previous state.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.categories && next.categories) {
-    return false;
-  }
-
-  if (prev.hasProducts !== next.hasProducts) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);

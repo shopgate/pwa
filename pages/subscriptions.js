@@ -20,7 +20,8 @@ import { NavDrawer } from '@shopgate/pwa-ui-material';
  */
 export default function app(subscribe) {
   subscribe(appWillStart$, () => {
-    authRoutes.set(CHECKOUT_PATH, LOGIN_PATH, ORDERS_PATH);
+    authRoutes.set(CHECKOUT_PATH, LOGIN_PATH);
+    authRoutes.set(ORDERS_PATH, LOGIN_PATH);
     authRoutes.set(`${ITEM_PATH}/:productId/write_review`, LOGIN_PATH);
 
     redirects.set(CHECKOUT_PATH, CHECKOUT_LEGACY_PATH);
