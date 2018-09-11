@@ -1,7 +1,7 @@
 import { UPDATE_FILTERS } from '../constants';
 
 /**
- * @param {Object} filters The set filers.
+ * @param {Object} filters The set filters.
  * @return {Object}
  */
 export const updateFilters = filters => ({
