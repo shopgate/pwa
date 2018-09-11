@@ -74,6 +74,7 @@ class TextElement extends PureComponent {
         onChange={element.handleChange}
         errorText={errorText}
         isControlled
+        translateErrorText={false}
       />
     );
   }

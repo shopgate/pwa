@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Form from '@shopgate/pwa-ui-shared/Form';
@@ -28,6 +29,7 @@ import buildFormElements from './builders/buildFormElements';
 import buildFormDefaults from './builders/buildFormDefaults';
 import buildCountryList from './builders/buildCountryList';
 import buildProvinceList from './builders/buildProvinceList';
+import buildValidationErrorList from './builders/buildValidationErrorList';
 
 /**
  * Takes a string and converts it to a part to be used in a portal name
@@ -55,12 +57,17 @@ class Builder extends Component {
     className: PropTypes.string,
     defaults: PropTypes.shape(),
     onSubmit: PropTypes.func,
+    validationErrors: PropTypes.arrayOf(PropTypes.shape({
+      path: PropTypes.string,
+      message: PropTypes.string,
+    })),
   }
 
   static defaultProps = {
-    defaults: {},
     className: '',
+    defaults: {},
     onSubmit: () => {},
+    validationErrors: [],
   }
 
   /**
@@ -74,7 +81,8 @@ class Builder extends Component {
     this.state = {
       elementVisibility: {},
       formData: {},
-      errors: {},
+      // Convert errors structure to direct access errors
+      errors: buildValidationErrorList(props.validationErrors),
     };
 
     // Reorganize form elements into a structure that can be easily rendered
@@ -109,6 +117,39 @@ class Builder extends Component {
     });
     this.state = newState;
   }
+
+  /**
+   * Handles response of validation errors
+   * @param {Object} nextProps The new props object with changed data
+   */
+  componentWillReceiveProps(nextProps) {
+    const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
+    if (!isEqual(this.state.errors, newValidationErrors)) {
+      this.setState({ errors: newValidationErrors });
+    }
+  }
+
+  /**
+   * Sorts the elements by "sortOrder" property
+   *
+   * @typedef {Object} FormElement
+   * @property {number} sortOrder
+   *
+   * @param {FormElement} element1 First element
+   * @param {FormElement} element2 Second element
+   * @returns {number}
+   */
+  elementSortFunc = (element1, element2) => {
+    // Keep relative sort order when no specific sort order was set for both
+    if (element2.sortOrder === undefined) {
+      return -1;
+    } else if (element1.sortOrder === undefined) {
+      return 1;
+    }
+
+    // Sort in ascending order of sortOrder otherwise
+    return element1.sortOrder - element2.sortOrder;
+  };
 
   /**
    * Element change handler based on it's type,
@@ -160,28 +201,6 @@ class Builder extends Component {
 
     // Trigger the given update action
     this.props.handleUpdate(updateData, hasErrors);
-  };
-
-  /**
-   * Sorts the elements by "sortOrder" property
-   *
-   * @typedef {Object} FormElement
-   * @property {number} sortOrder
-   *
-   * @param {FormElement} element1 First element
-   * @param {FormElement} element2 Second element
-   * @returns {number}
-   */
-  elementSortFunc = (element1, element2) => {
-    // Keep relative sort order when no specific sort order was set for both
-    if (element2.sortOrder === undefined) {
-      return -1;
-    } else if (element1.sortOrder === undefined) {
-      return 1;
-    }
-
-    // Sort in ascending order of sortOrder otherwise
-    return element1.sortOrder - element2.sortOrder;
   };
 
   /**

@@ -54,6 +54,7 @@ class CheckboxElement extends PureComponent {
         className={style.fields}
         label={element.label}
         onChange={element.handleChange}
+        translateErrorText={false}
       />
     );
   }

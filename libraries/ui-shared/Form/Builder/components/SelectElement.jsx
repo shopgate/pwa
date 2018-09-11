@@ -56,6 +56,7 @@ class SelectElement extends PureComponent {
         onChange={element.handleChange}
         errorText={errorText}
         isControlled
+        translateErrorText={false}
       />
     );
   }
