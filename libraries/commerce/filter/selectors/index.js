@@ -4,7 +4,7 @@ import find from 'lodash/find';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSearchPhrase } from '@shopgate/pwa-common/selectors/history';
-import { getCurrentParams } from '@shopgate/pwa-common/selectors/router';
+import { getCurrentState } from '@shopgate/pwa-common/selectors/router';
 import * as pipelines from '../constants/Pipelines';
 import { getCurrentCategoryId } from '../../category/selectors';
 
@@ -70,30 +70,16 @@ export const getActiveFiltersStack = createSelector(
 
 /**
  * Gets the currently active filters.
- * @param {Object} state The application state.
- * @param {Object} props The component props.
  * @returns {Object|null}
  */
 export const getActiveFilters = createSelector(
-  getCurrentParams,
-  getActiveFiltersStack,
-  (params, activeFilters) => {
-    let stack;
-
-    if (params && params.categoryId) {
-      // If the params contain a categoryId, it's used to search the filter stack for a match
-      const paramCategoryId = hex2bin(params.categoryId) || null;
-      stack = activeFilters.find(({ categoryId }) => paramCategoryId === categoryId);
-    } else {
-      // Otherwise the most recent entry is taken from the stack
-      stack = activeFilters[activeFilters.length - 1];
-    }
-
-    if (!stack) {
+  getCurrentState,
+  ({ filters }) => {
+    if (!filters) {
       return null;
     }
 
-    return stack.filters;
+    return filters;
   }
 );
 
