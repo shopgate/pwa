@@ -129,7 +129,7 @@ class FilterBar extends Component {
    * Update the ViewProvider with the height of the bar.
    */
   updateView = () => {
-    if (!this.node) {
+    if (!this.node.current) {
       return;
     }
 
