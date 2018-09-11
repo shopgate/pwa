@@ -217,6 +217,14 @@ exports[`Navigator should render search 1`] = `
                       name="nav-bar.navigator.icons"
                       props={null}
                     >
+                      <div
+                        className={
+                          Object {
+                            "data-css-sa13d4": "",
+                          }
+                        }
+                        id="NAVIGATOR_BUTTON"
+                      />
                       <_default>
                         <Consumer>
                           <SearchButton

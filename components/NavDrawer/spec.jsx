@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
-import Item from './components/Item';
 import headerStyles from './components/Header/style';
 
 // Mock the portal
@@ -92,7 +91,7 @@ describe.skip('<NavDrawer />', () => {
 
     expect(wrapper).toMatchSnapshot();
 
-    const item = wrapper.find(Item).at(0).find('div[aria-hidden]').at(0);
+    const item = wrapper.find('Item').at(0).find('div[aria-hidden]').at(0);
 
     expect(toggleNavDrawerMock).not.toHaveBeenCalled();
 

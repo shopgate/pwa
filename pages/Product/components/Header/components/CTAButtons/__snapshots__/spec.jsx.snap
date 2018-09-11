@@ -13,110 +13,129 @@ exports[`CTAs (product header) should render CTAButtons when data is available 1
     }
   }
 >
-  <Connect(CTAButtons)
+  <Connect(pure(CTAButtons))
     productId="product_1"
   >
-    <CTAButtons
+    <pure(CTAButtons)
       dispatch={[Function]}
       isFavorite={true}
       productId="product_1"
     >
-      <div
-        className="css-7azkrx"
+      <CTAButtons
+        dispatch={[Function]}
+        isFavorite={true}
+        productId="product_1"
       >
-        <Connect(FavoritesButton)
-          active={true}
-          className="css-13l587d"
-          productId="product_1"
-          rippleClassName="css-1tdptiz"
+        <Portal
+          name="product.ctas.before"
+          props={null}
+        />
+        <Portal
+          name="product.ctas"
+          props={null}
         >
-          <FavoritesButton
-            active={true}
-            addFavorites={[Function]}
-            className="css-13l587d"
-            noShadow={false}
-            onRippleComplete={[Function]}
-            once={false}
-            productId="product_1"
-            removeFavorites={[Function]}
-            removeThrottle={0}
-            removeWithRelatives={false}
-            rippleClassName="css-1tdptiz"
-          />
-        </Connect(FavoritesButton)>
-        <Component>
-          <Consumer>
-            <Connect(CartButton)
-              conditioner={
-                Conditioner {
-                  "conditioners": Map {},
-                }
-              }
-              options={Object {}}
+          <div
+            className="css-7azkrx"
+          >
+            <Connect(FavoritesButton)
+              active={true}
+              className="css-13l587d"
               productId="product_1"
+              rippleClassName="css-1tdptiz"
             >
-              <CartButton
-                addToCart={[Function]}
-                conditioner={
-                  Conditioner {
-                    "conditioners": Map {},
-                  }
-                }
-                disabled={false}
-                loading={true}
-                options={Object {}}
+              <FavoritesButton
+                active={true}
+                addFavorites={[Function]}
+                className="css-13l587d"
+                noShadow={false}
+                onRippleComplete={[Function]}
+                once={false}
                 productId="product_1"
-              >
-                <FloatingActionButton
-                  background="#fa5400"
-                  className="css-mp6sl7"
-                  disabled={false}
-                  onClick={[Function]}
-                  raised={true}
-                  ref={null}
-                  size="big"
-                  type="button"
+                removeFavorites={[Function]}
+                removeThrottle={0}
+                removeWithRelatives={false}
+                rippleClassName="css-1tdptiz"
+              />
+            </Connect(FavoritesButton)>
+            <Component>
+              <Consumer>
+                <Connect(CartButton)
+                  conditioner={
+                    Conditioner {
+                      "conditioners": Map {},
+                    }
+                  }
+                  options={Object {}}
+                  productId="product_1"
                 >
-                  <button
-                    className="css-1dbx872 css-mp6sl7 css-1kx79ob css-1g5n8t6"
-                    disabled={false}
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "background": "#fa5400",
+                  <CartButton
+                    addToCart={[Function]}
+                    conditioner={
+                      Conditioner {
+                        "conditioners": Map {},
                       }
                     }
-                    type="button"
+                    disabled={false}
+                    loading={true}
+                    options={Object {}}
+                    productId="product_1"
                   >
-                    <IndicatorCircle
-                      color="#fff"
-                      paused={false}
-                      size={32}
-                      strokeWidth={4}
+                    <FloatingActionButton
+                      background="#fa5400"
+                      className="css-mp6sl7"
+                      disabled={false}
+                      onClick={[Function]}
+                      raised={true}
+                      ref={null}
+                      size="big"
+                      type="button"
                     >
-                      <svg
-                        className="css-12jxe4c"
-                        height={32}
-                        viewBox="25 25 50 50"
-                        width={32}
-                        xmlns="http://www.w3.org/2000/svg"
+                      <button
+                        className="css-1dbx872 css-mp6sl7 css-1kx79ob css-1g5n8t6"
+                        disabled={false}
+                        onClick={[Function]}
+                        style={
+                          Object {
+                            "background": "#fa5400",
+                          }
+                        }
+                        type="button"
                       >
-                        <circle
-                          className="css-1srioz5"
-                          cx="50"
-                          cy="50"
-                          r="20"
-                        />
-                      </svg>
-                    </IndicatorCircle>
-                  </button>
-                </FloatingActionButton>
-              </CartButton>
-            </Connect(CartButton)>
-          </Consumer>
-        </Component>
-      </div>
-    </CTAButtons>
-  </Connect(CTAButtons)>
+                        <IndicatorCircle
+                          color="#fff"
+                          paused={false}
+                          size={32}
+                          strokeWidth={4}
+                        >
+                          <svg
+                            className="css-12jxe4c"
+                            height={32}
+                            viewBox="25 25 50 50"
+                            width={32}
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle
+                              className="css-1srioz5"
+                              cx="50"
+                              cy="50"
+                              r="20"
+                            />
+                          </svg>
+                        </IndicatorCircle>
+                      </button>
+                    </FloatingActionButton>
+                  </CartButton>
+                </Connect(CartButton)>
+              </Consumer>
+            </Component>
+          </div>
+        </Portal>
+        <Portal
+          name="product.ctas.after"
+          props={null}
+        />
+      </CTAButtons>
+    </pure(CTAButtons)>
+  </Connect(pure(CTAButtons))>
 </Provider>
 `;

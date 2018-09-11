@@ -19,15 +19,12 @@ exports[`<ProductHeader> should render 1`] = `
         <div
           className="css-he61ou"
         >
-          <Portal
-            name="product.ctas.before"
-            props={null}
-          />
-          <Portal
-            name="product.ctas"
-            props={null}
+          <Connect(pure(CTAButtons))
+            productId="913"
           >
-            <Connect(CTAButtons)
+            <pure(CTAButtons)
+              dispatch={[Function]}
+              isFavorite={false}
               productId="913"
             >
               <CTAButtons
@@ -35,184 +32,196 @@ exports[`<ProductHeader> should render 1`] = `
                 isFavorite={false}
                 productId="913"
               >
-                <div
-                  className="css-7azkrx"
+                <Portal
+                  name="product.ctas.before"
+                  props={null}
+                />
+                <Portal
+                  name="product.ctas"
+                  props={null}
                 >
-                  <Connect(FavoritesButton)
-                    active={false}
-                    className="css-13l587d"
-                    productId="913"
-                    rippleClassName="css-1tdptiz"
+                  <div
+                    className="css-7azkrx"
                   >
-                    <FavoritesButton
+                    <Connect(FavoritesButton)
                       active={false}
-                      addFavorites={[Function]}
                       className="css-13l587d"
-                      noShadow={false}
-                      onRippleComplete={[Function]}
-                      once={false}
                       productId="913"
-                      removeFavorites={[Function]}
-                      removeThrottle={0}
-                      removeWithRelatives={false}
                       rippleClassName="css-1tdptiz"
-                    />
-                  </Connect(FavoritesButton)>
-                  <Component>
-                    <Consumer>
-                      <Connect(CartButton)
-                        conditioner={
-                          Conditioner {
-                            "conditioners": Map {},
-                          }
-                        }
-                        options={Object {}}
+                    >
+                      <FavoritesButton
+                        active={false}
+                        addFavorites={[Function]}
+                        className="css-13l587d"
+                        noShadow={false}
+                        onRippleComplete={[Function]}
+                        once={false}
                         productId="913"
-                      >
-                        <CartButton
-                          addToCart={[Function]}
+                        removeFavorites={[Function]}
+                        removeThrottle={0}
+                        removeWithRelatives={false}
+                        rippleClassName="css-1tdptiz"
+                      />
+                    </Connect(FavoritesButton)>
+                    <Component>
+                      <Consumer>
+                        <Connect(CartButton)
                           conditioner={
                             Conditioner {
                               "conditioners": Map {},
                             }
                           }
-                          disabled={false}
-                          loading={false}
                           options={Object {}}
                           productId="913"
                         >
-                          <FloatingActionButton
-                            background="#fa5400"
-                            className="css-mp6sl7"
+                          <CartButton
+                            addToCart={[Function]}
+                            conditioner={
+                              Conditioner {
+                                "conditioners": Map {},
+                              }
+                            }
                             disabled={false}
-                            onClick={[Function]}
-                            raised={true}
-                            ref={null}
-                            size="big"
-                            type="button"
+                            loading={false}
+                            options={Object {}}
+                            productId="913"
                           >
-                            <button
-                              className="css-1dbx872 css-mp6sl7 css-1kx79ob css-1g5n8t6"
+                            <FloatingActionButton
+                              background="#fa5400"
+                              className="css-mp6sl7"
                               disabled={false}
                               onClick={[Function]}
-                              style={
-                                Object {
-                                  "background": "#fa5400",
-                                }
-                              }
+                              raised={true}
+                              ref={null}
+                              size="big"
                               type="button"
                             >
-                              <CartButtonIcon
-                                onSuccess={[Function]}
-                                success={false}
+                              <button
+                                className="css-1dbx872 css-mp6sl7 css-1kx79ob css-1g5n8t6"
+                                disabled={false}
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "background": "#fa5400",
+                                  }
+                                }
+                                type="button"
                               >
-                                <Transition
-                                  appear={false}
-                                  enter={true}
-                                  exit={true}
-                                  in={false}
-                                  mountOnEnter={false}
-                                  onEnter={[Function]}
-                                  onEntered={[Function]}
-                                  onEntering={[Function]}
-                                  onExit={[Function]}
-                                  onExited={[Function]}
-                                  onExiting={[Function]}
-                                  timeout={800}
-                                  unmountOnExit={false}
+                                <CartButtonIcon
+                                  onSuccess={[Function]}
+                                  success={false}
                                 >
-                                  <div
-                                    className={
-                                      Object {
-                                        "data-css-1h3cr19": "",
-                                      }
-                                    }
+                                  <Transition
+                                    appear={false}
+                                    enter={true}
+                                    exit={true}
+                                    in={false}
+                                    mountOnEnter={false}
+                                    onEnter={[Function]}
+                                    onEntered={[Function]}
+                                    onEntering={[Function]}
+                                    onExit={[Function]}
+                                    onExited={[Function]}
+                                    onExiting={[Function]}
+                                    timeout={800}
+                                    unmountOnExit={false}
                                   >
-                                    <CartPlus
-                                      className="css-b18rpa"
-                                      size={24}
+                                    <div
+                                      className={
+                                        Object {
+                                          "data-css-1h3cr19": "",
+                                        }
+                                      }
                                     >
-                                      <Icon
+                                      <CartPlus
                                         className="css-b18rpa"
-                                        color={null}
-                                        content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb css-b18rpa"
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className="css-b18rpa"
+                                          color={null}
+                                          content="<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </CartPlus>
-                                    <Tick
-                                      className="css-v74gh2"
-                                      size={24}
-                                    >
-                                      <Icon
+                                        >
+                                          <svg
+                                            className="css-yys9hb css-b18rpa"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M0 0h24v24H0zm18.31 6l-2.76 5z\\" fill=\\"none\\"/><path d=\\"M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </CartPlus>
+                                      <Tick
                                         className="css-v74gh2"
-                                        color={null}
-                                        content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
                                         size={24}
-                                        viewBox="0 0 24 24"
                                       >
-                                        <svg
-                                          className="css-yys9hb css-v74gh2"
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": 24,
-                                            }
-                                          }
+                                        <Icon
+                                          className="css-v74gh2"
+                                          color={null}
+                                          content="<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>"
+                                          size={24}
                                           viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Tick>
-                                  </div>
-                                </Transition>
-                              </CartButtonIcon>
-                            </button>
-                          </FloatingActionButton>
-                        </CartButton>
-                      </Connect(CartButton)>
-                    </Consumer>
-                  </Component>
-                </div>
+                                        >
+                                          <svg
+                                            className="css-yys9hb css-v74gh2"
+                                            dangerouslySetInnerHTML={
+                                              Object {
+                                                "__html": "<path d=\\"M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z\\"/>",
+                                              }
+                                            }
+                                            style={
+                                              Object {
+                                                "fill": null,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Tick>
+                                    </div>
+                                  </Transition>
+                                </CartButtonIcon>
+                              </button>
+                            </FloatingActionButton>
+                          </CartButton>
+                        </Connect(CartButton)>
+                      </Consumer>
+                    </Component>
+                  </div>
+                </Portal>
+                <Portal
+                  name="product.ctas.after"
+                  props={null}
+                />
               </CTAButtons>
-            </Connect(CTAButtons)>
-          </Portal>
-          <Portal
-            name="product.ctas.after"
-            props={null}
-          />
-          <Portal
-            name="product.rating.before"
-            props={null}
-          />
-          <Portal
-            name="product.rating"
-            props={null}
+            </pure(CTAButtons)>
+          </Connect(pure(CTAButtons))>
+          <Connect(pure(Rating))
+            productId="913"
           >
-            <Connect(Rating)
+            <pure(Rating)
+              dispatch={[Function]}
               productId="913"
+              rating={
+                Object {
+                  "average": 0,
+                  "count": 0,
+                  "reviewCount": 0,
+                }
+              }
             >
               <Rating
                 dispatch={[Function]}
@@ -225,21 +234,14 @@ exports[`<ProductHeader> should render 1`] = `
                   }
                 }
               />
-            </Connect(Rating)>
-          </Portal>
-          <Portal
-            name="product.rating.after"
-            props={null}
-          />
-          <Portal
-            name="product.name.before"
-            props={null}
-          />
-          <Portal
-            name="product.name"
-            props={null}
+            </pure(Rating)>
+          </Connect(pure(Rating))>
+          <Connect(pure(Name))
+            productId="913"
           >
-            <Connect(Name)
+            <pure(Name)
+              dispatch={[Function]}
+              name="This is a product with a very very long name -5-"
               productId="913"
             >
               <Name
@@ -247,118 +249,129 @@ exports[`<ProductHeader> should render 1`] = `
                 name="This is a product with a very very long name -5-"
                 productId="913"
               >
-                <div
-                  className="css-19910ke"
+                <Portal
+                  name="product.name.before"
+                  props={null}
+                />
+                <Portal
+                  name="product.name"
+                  props={null}
                 >
-                  <PlaceholderLabel
-                    className="css-3bon8p"
-                    ready={true}
-                    style={null}
+                  <div
+                    className="css-19910ke"
                   >
-                    <span
-                      data-test-id="name: This is a product with a very very long name -5-"
+                    <PlaceholderLabel
+                      className="css-3bon8p"
+                      ready={true}
+                      style={null}
                     >
-                      This is a product with a very very long name -5-
-                    </span>
-                  </PlaceholderLabel>
-                </div>
+                      <span
+                        data-test-id="name: This is a product with a very very long name -5-"
+                      >
+                        This is a product with a very very long name -5-
+                      </span>
+                    </PlaceholderLabel>
+                  </div>
+                </Portal>
+                <Portal
+                  name="product.name.after"
+                  props={null}
+                />
               </Name>
-            </Connect(Name)>
-          </Portal>
-          <Portal
-            name="product.name.after"
-            props={null}
-          />
-          <Portal
-            name="product.info.before"
-            props={null}
-          />
-          <Grid
-            className=""
-            component="div"
-            wrap={false}
+            </pure(Name)>
+          </Connect(pure(Name))>
+          <pure(ProductInfo)
+            options={Object {}}
+            productId="913"
           >
-            <div
-              className=" css-h7r55a"
+            <ProductInfo
+              options={Object {}}
+              productId="913"
             >
+              <Portal
+                name="product.info.before"
+                props={null}
+              />
               <Portal
                 name="product.info"
                 props={null}
               >
-                <GridItem
+                <Grid
                   className=""
                   component="div"
-                  grow={1}
-                  shrink={1}
+                  wrap={false}
                 >
                   <div
-                    className=" css-1gs0ko2"
+                    className=" css-h7r55a"
                   >
-                    <Portal
-                      name="product.info.row1"
-                      props={null}
+                    <GridItem
+                      className=""
+                      component="div"
+                      grow={1}
+                      shrink={1}
                     >
                       <div
-                        className="css-qboqsd"
+                        className=" css-1gs0ko2"
                       >
-                        <Portal
-                          name="product.manufacturer.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.manufacturer"
-                          props={null}
+                        <div
+                          className="css-qboqsd"
                         >
-                          <Connect(Manufacturer)
+                          <Connect(pure(Manufacturer))
                             productId="913"
                           >
-                            <Manufacturer
+                            <pure(Manufacturer)
                               dispatch={[Function]}
                               manufacturer=""
                               productId="913"
                             >
-                              <div
-                                className="css-s3s3r0"
-                                data-test-id="manufacturer: "
+                              <Manufacturer
+                                dispatch={[Function]}
+                                manufacturer=""
+                                productId="913"
                               >
-                                <PlaceholderLabel
-                                  className="css-1n196ny"
-                                  ready={true}
-                                  style={null}
+                                <Portal
+                                  name="product.manufacturer.before"
+                                  props={null}
+                                />
+                                <Portal
+                                  name="product.manufacturer"
+                                  props={null}
                                 >
-                                  <Manufacturer
-                                    className=""
-                                    text=""
+                                  <div
+                                    className="css-s3s3r0"
+                                    data-test-id="manufacturer: "
                                   >
-                                    <div
-                                      className="css-1ncyhu "
-                                    />
-                                  </Manufacturer>
-                                </PlaceholderLabel>
-                              </div>
-                            </Manufacturer>
-                          </Connect(Manufacturer)>
-                        </Portal>
-                        <Portal
-                          name="product.manufacturer.after"
-                          props={null}
-                        />
-                      </div>
-                      <div
-                        className="css-qboqsd"
-                      >
-                        <Portal
-                          name="product.shipping.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.shipping"
-                          props={null}
+                                    <PlaceholderLabel
+                                      className="css-1n196ny"
+                                      ready={true}
+                                      style={null}
+                                    >
+                                      <Manufacturer
+                                        className=""
+                                        text=""
+                                      >
+                                        <div
+                                          className="css-1ncyhu "
+                                        />
+                                      </Manufacturer>
+                                    </PlaceholderLabel>
+                                  </div>
+                                </Portal>
+                                <Portal
+                                  name="product.manufacturer.after"
+                                  props={null}
+                                />
+                              </Manufacturer>
+                            </pure(Manufacturer)>
+                          </Connect(pure(Manufacturer))>
+                        </div>
+                        <div
+                          className="css-qboqsd"
                         >
-                          <Connect(Shipping)
+                          <Connect(pure(Shipping))
                             productId="913"
                           >
-                            <Shipping
+                            <pure(Shipping)
                               dispatch={[Function]}
                               productId="913"
                               shipping={
@@ -368,70 +381,81 @@ exports[`<ProductHeader> should render 1`] = `
                                 }
                               }
                             >
-                              <PlaceholderLabel
-                                className="css-1n196ny"
-                                ready={true}
-                                style={null}
+                              <Shipping
+                                dispatch={[Function]}
+                                productId="913"
+                                shipping={
+                                  Object {
+                                    "currency": "USD",
+                                    "price": 3.5,
+                                  }
+                                }
                               >
-                                <Label
-                                  className="css-117ocmm"
-                                  currency="USD"
-                                  price={3.5}
+                                <Portal
+                                  name="product.shipping.before"
+                                  props={null}
+                                />
+                                <Portal
+                                  name="product.shipping"
+                                  props={null}
                                 >
-                                  <div
-                                    className="css-117ocmm css-1ixzglu"
+                                  <PlaceholderLabel
+                                    className="css-1n196ny"
+                                    ready={true}
+                                    style={null}
                                   >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string="shipping.cost"
+                                    <Label
+                                      className="css-117ocmm"
+                                      currency="USD"
+                                      price={3.5}
                                     >
-                                      <span
-                                        className=""
+                                      <div
+                                        className="css-117ocmm css-1ixzglu"
                                       >
-                                        shipping.cost
-                                        <FormatPrice
+                                        <Translate
                                           className=""
-                                          currency="USD"
-                                          forKey="price"
-                                          fractions={true}
-                                          key=".0"
-                                          price={3.5}
+                                          params={Object {}}
+                                          string="shipping.cost"
                                         >
                                           <span
                                             className=""
                                           >
-                                            p
+                                            shipping.cost
+                                            <FormatPrice
+                                              className=""
+                                              currency="USD"
+                                              forKey="price"
+                                              fractions={true}
+                                              key=".0"
+                                              price={3.5}
+                                            >
+                                              <span
+                                                className=""
+                                              >
+                                                p
+                                              </span>
+                                            </FormatPrice>
                                           </span>
-                                        </FormatPrice>
-                                      </span>
-                                    </Translate>
-                                  </div>
-                                </Label>
-                              </PlaceholderLabel>
-                            </Shipping>
-                          </Connect(Shipping)>
-                        </Portal>
-                        <Portal
-                          name="product.shipping.after"
-                          props={null}
-                        />
-                      </div>
-                      <div
-                        className="css-qboqsd"
-                      >
-                        <Portal
-                          name="product.availability.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.availability"
-                          props={null}
+                                        </Translate>
+                                      </div>
+                                    </Label>
+                                  </PlaceholderLabel>
+                                </Portal>
+                                <Portal
+                                  name="product.shipping.after"
+                                  props={null}
+                                />
+                              </Shipping>
+                            </pure(Shipping)>
+                          </Connect(pure(Shipping))>
+                        </div>
+                        <div
+                          className="css-qboqsd"
                         >
-                          <Connect(Availability)
+                          <Connect(pure(Availability))
                             productId="913"
                           >
-                            <Availability
+                            <pure(Availability)
                               availability={
                                 Object {
                                   "state": "ok",
@@ -441,65 +465,69 @@ exports[`<ProductHeader> should render 1`] = `
                               dispatch={[Function]}
                               productId="913"
                             >
-                              <PlaceholderLabel
-                                className="css-1n196ny"
-                                ready={true}
-                                style={null}
+                              <Availability
+                                availability={
+                                  Object {
+                                    "state": "ok",
+                                    "text": "In stock",
+                                  }
+                                }
+                                dispatch={[Function]}
+                                productId="913"
                               >
-                                <Availability
-                                  className="css-117ocmm"
-                                  showWhenAvailable={true}
-                                  state="ok"
-                                  text="In stock"
+                                <Portal
+                                  name="product.availability.before"
+                                  props={null}
+                                />
+                                <Portal
+                                  name="product.availability"
+                                  props={null}
                                 >
-                                  <div
-                                    className="css-117ocmm css-1ixzglu"
-                                    data-test-id="availabilityText: In stock"
+                                  <PlaceholderLabel
+                                    className="css-1n196ny"
+                                    ready={true}
+                                    style={null}
                                   >
-                                    In stock
-                                  </div>
-                                </Availability>
-                              </PlaceholderLabel>
-                            </Availability>
-                          </Connect(Availability)>
-                        </Portal>
-                        <Portal
-                          name="product.availability.after"
-                          props={null}
-                        />
+                                    <Availability
+                                      className="css-117ocmm"
+                                      showWhenAvailable={true}
+                                      state="ok"
+                                      text="In stock"
+                                    >
+                                      <div
+                                        className="css-117ocmm css-1ixzglu"
+                                        data-test-id="availabilityText: In stock"
+                                      >
+                                        In stock
+                                      </div>
+                                    </Availability>
+                                  </PlaceholderLabel>
+                                </Portal>
+                                <Portal
+                                  name="product.availability.after"
+                                  props={null}
+                                />
+                              </Availability>
+                            </pure(Availability)>
+                          </Connect(pure(Availability))>
+                        </div>
                       </div>
-                    </Portal>
-                  </div>
-                </GridItem>
-                <GridItem
-                  className="css-1i9coa0"
-                  component="div"
-                  grow={0}
-                  shrink={1}
-                >
-                  <div
-                    className="css-1i9coa0"
-                  >
-                    <Portal
-                      name="product.info.row2"
-                      props={null}
+                    </GridItem>
+                    <GridItem
+                      className="css-1i9coa0"
+                      component="div"
+                      grow={0}
+                      shrink={1}
                     >
                       <div
-                        className="css-1l9nix6"
+                        className="css-1i9coa0"
                       >
-                        <Portal
-                          name="product.price-striked.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.price-striked"
-                          props={null}
-                        >
-                          <Connect(PriceStriked)
+                        <div>
+                          <Connect(pure(PriceStriked))
                             options={Object {}}
                             productId="913"
                           >
-                            <PriceStriked
+                            <pure(PriceStriked)
                               dispatch={[Function]}
                               options={Object {}}
                               price={
@@ -521,113 +549,56 @@ exports[`<ProductHeader> should render 1`] = `
                               }
                               productId="913"
                             >
-                              <PlaceholderLabel
-                                className="css-1n196ny"
-                                ready={true}
-                                style={null}
-                              />
-                            </PriceStriked>
-                          </Connect(PriceStriked)>
-                        </Portal>
-                        <Portal
-                          name="product.price-striked.after"
-                          props={null}
-                        />
-                      </div>
-                      <div
-                        className="css-1l9nix6"
-                      >
-                        <Portal
-                          name="product.price.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.price"
-                          props={null}
-                        >
-                          <Connect(Price)
-                            options={Object {}}
-                            productId="913"
-                          >
-                            <Price
-                              dispatch={[Function]}
-                              options={Object {}}
-                              price={
-                                Object {
-                                  "currency": "EUR",
-                                  "info": "",
-                                  "msrp": 0,
-                                  "taxAmount": 0,
-                                  "taxPercent": 0,
-                                  "tiers": Array [],
-                                  "totalPrice": 89,
-                                  "unitPrice": 89,
-                                  "unitPriceMax": 1000,
-                                  "unitPriceMin": 0,
-                                  "unitPriceNet": 89,
-                                  "unitPriceStriked": 0,
-                                  "unitPriceWithTax": 89,
+                              <PriceStriked
+                                dispatch={[Function]}
+                                options={Object {}}
+                                price={
+                                  Object {
+                                    "currency": "EUR",
+                                    "info": "",
+                                    "msrp": 0,
+                                    "taxAmount": 0,
+                                    "taxPercent": 0,
+                                    "tiers": Array [],
+                                    "totalPrice": 89,
+                                    "unitPrice": 89,
+                                    "unitPriceMax": 1000,
+                                    "unitPriceMin": 0,
+                                    "unitPriceNet": 89,
+                                    "unitPriceStriked": 0,
+                                    "unitPriceWithTax": 89,
+                                  }
                                 }
-                              }
-                              productId="913"
-                            >
-                              <PlaceholderLabel
-                                className="css-q720h0"
-                                ready={true}
-                                style={null}
+                                productId="913"
                               >
-                                <Price
-                                  className="css-1051jlf"
-                                  currency="EUR"
-                                  discounted={false}
-                                  fractions={true}
-                                  taxDisclaimer={true}
-                                  unitPrice={89}
-                                  unitPriceMin={0}
+                                <Portal
+                                  name="product.price-striked.before"
+                                  props={null}
+                                />
+                                <Portal
+                                  name="product.price-striked"
+                                  props={null}
                                 >
-                                  <div
-                                    className="css-izofhs css-1051jlf"
-                                    data-test-id="minPrice: 0 price: 89 currency: EUR"
-                                  >
-                                    <FormatPrice
-                                      className=""
-                                      currency="EUR"
-                                      fractions={true}
-                                      price={89}
-                                    >
-                                      <span
-                                        className=""
-                                      >
-                                        p
-                                      </span>
-                                    </FormatPrice>
-                                  </div>
-                                </Price>
-                              </PlaceholderLabel>
-                            </Price>
-                          </Connect(Price)>
-                        </Portal>
-                        <Portal
-                          name="product.price.after"
-                          props={null}
-                        />
-                      </div>
-                      <div
-                        className="css-1l9nix6"
-                      >
-                        <Portal
-                          name="product.price-info.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.price-info"
-                          props={null}
-                        >
-                          <Connect(PriceInfo)
+                                  <PlaceholderLabel
+                                    className="css-1n196ny"
+                                    ready={true}
+                                    style={null}
+                                  />
+                                </Portal>
+                                <Portal
+                                  name="product.price-striked.after"
+                                  props={null}
+                                />
+                              </PriceStriked>
+                            </pure(PriceStriked)>
+                          </Connect(pure(PriceStriked))>
+                        </div>
+                        <div>
+                          <Connect(pure(Price))
                             options={Object {}}
                             productId="913"
                           >
-                            <PriceInfo
+                            <pure(Price)
                               dispatch={[Function]}
                               options={Object {}}
                               price={
@@ -649,35 +620,84 @@ exports[`<ProductHeader> should render 1`] = `
                               }
                               productId="913"
                             >
-                              <PlaceholderLabel
-                                className="css-q720h0"
-                                ready={true}
-                                style={null}
-                              />
-                            </PriceInfo>
-                          </Connect(PriceInfo)>
-                        </Portal>
-                        <Portal
-                          name="product.price-info.after"
-                          props={null}
-                        />
-                      </div>
-                      <div
-                        className="css-1l9nix6"
-                      >
-                        <Portal
-                          name="product.tiers.before"
-                          props={null}
-                        />
-                        <Portal
-                          name="product.tiers"
-                          props={null}
-                        >
-                          <Connect(Tiers)
+                              <Price
+                                dispatch={[Function]}
+                                options={Object {}}
+                                price={
+                                  Object {
+                                    "currency": "EUR",
+                                    "info": "",
+                                    "msrp": 0,
+                                    "taxAmount": 0,
+                                    "taxPercent": 0,
+                                    "tiers": Array [],
+                                    "totalPrice": 89,
+                                    "unitPrice": 89,
+                                    "unitPriceMax": 1000,
+                                    "unitPriceMin": 0,
+                                    "unitPriceNet": 89,
+                                    "unitPriceStriked": 0,
+                                    "unitPriceWithTax": 89,
+                                  }
+                                }
+                                productId="913"
+                              >
+                                <Portal
+                                  name="product.price.before"
+                                  props={null}
+                                />
+                                <Portal
+                                  name="product.price"
+                                  props={null}
+                                >
+                                  <PlaceholderLabel
+                                    className="css-q720h0"
+                                    ready={true}
+                                    style={null}
+                                  >
+                                    <Price
+                                      className="css-1051jlf"
+                                      currency="EUR"
+                                      discounted={false}
+                                      fractions={true}
+                                      taxDisclaimer={true}
+                                      unitPrice={89}
+                                      unitPriceMin={0}
+                                    >
+                                      <div
+                                        className="css-izofhs css-1051jlf"
+                                        data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                      >
+                                        <FormatPrice
+                                          className=""
+                                          currency="EUR"
+                                          fractions={true}
+                                          price={89}
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            p
+                                          </span>
+                                        </FormatPrice>
+                                      </div>
+                                    </Price>
+                                  </PlaceholderLabel>
+                                </Portal>
+                                <Portal
+                                  name="product.price.after"
+                                  props={null}
+                                />
+                              </Price>
+                            </pure(Price)>
+                          </Connect(pure(Price))>
+                        </div>
+                        <div>
+                          <Connect(pure(PriceInfo))
                             options={Object {}}
                             productId="913"
                           >
-                            <Tiers
+                            <pure(PriceInfo)
                               dispatch={[Function]}
                               options={Object {}}
                               price={
@@ -698,24 +718,117 @@ exports[`<ProductHeader> should render 1`] = `
                                 }
                               }
                               productId="913"
-                            />
-                          </Connect(Tiers)>
-                        </Portal>
-                        <Portal
-                          name="product.tiers.after"
-                          props={null}
-                        />
+                            >
+                              <PriceInfo
+                                dispatch={[Function]}
+                                options={Object {}}
+                                price={
+                                  Object {
+                                    "currency": "EUR",
+                                    "info": "",
+                                    "msrp": 0,
+                                    "taxAmount": 0,
+                                    "taxPercent": 0,
+                                    "tiers": Array [],
+                                    "totalPrice": 89,
+                                    "unitPrice": 89,
+                                    "unitPriceMax": 1000,
+                                    "unitPriceMin": 0,
+                                    "unitPriceNet": 89,
+                                    "unitPriceStriked": 0,
+                                    "unitPriceWithTax": 89,
+                                  }
+                                }
+                                productId="913"
+                              >
+                                <Portal
+                                  name="product.price-info.before"
+                                  props={null}
+                                />
+                                <Portal
+                                  name="product.price-info"
+                                  props={null}
+                                >
+                                  <PlaceholderLabel
+                                    className="css-q720h0"
+                                    ready={true}
+                                    style={null}
+                                  />
+                                </Portal>
+                                <Portal
+                                  name="product.price-info.after"
+                                  props={null}
+                                />
+                              </PriceInfo>
+                            </pure(PriceInfo)>
+                          </Connect(pure(PriceInfo))>
+                        </div>
+                        <div>
+                          <Connect(pure(Tiers))
+                            options={Object {}}
+                            productId="913"
+                          >
+                            <pure(Tiers)
+                              dispatch={[Function]}
+                              options={Object {}}
+                              price={
+                                Object {
+                                  "currency": "EUR",
+                                  "info": "",
+                                  "msrp": 0,
+                                  "taxAmount": 0,
+                                  "taxPercent": 0,
+                                  "tiers": Array [],
+                                  "totalPrice": 89,
+                                  "unitPrice": 89,
+                                  "unitPriceMax": 1000,
+                                  "unitPriceMin": 0,
+                                  "unitPriceNet": 89,
+                                  "unitPriceStriked": 0,
+                                  "unitPriceWithTax": 89,
+                                }
+                              }
+                              productId="913"
+                            >
+                              <Tiers
+                                dispatch={[Function]}
+                                options={Object {}}
+                                price={
+                                  Object {
+                                    "currency": "EUR",
+                                    "info": "",
+                                    "msrp": 0,
+                                    "taxAmount": 0,
+                                    "taxPercent": 0,
+                                    "tiers": Array [],
+                                    "totalPrice": 89,
+                                    "unitPrice": 89,
+                                    "unitPriceMax": 1000,
+                                    "unitPriceMin": 0,
+                                    "unitPriceNet": 89,
+                                    "unitPriceStriked": 0,
+                                    "unitPriceWithTax": 89,
+                                  }
+                                }
+                                productId="913"
+                              />
+                            </pure(Tiers)>
+                          </Connect(pure(Tiers))>
+                        </div>
                       </div>
-                    </Portal>
+                    </GridItem>
+                    <pure(TaxDisclaimer)>
+                      <TaxDisclaimer />
+                    </pure(TaxDisclaimer)>
                   </div>
-                </GridItem>
+                </Grid>
               </Portal>
-            </div>
-          </Grid>
-          <Portal
-            name="product.info.after"
-            props={null}
-          />
+              <Portal
+                name="product.info.after"
+                props={null}
+              />
+            </ProductInfo>
+          </pure(ProductInfo)>
         </div>
       </Consumer>
     </ProductHeader>

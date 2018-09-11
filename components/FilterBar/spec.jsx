@@ -31,6 +31,7 @@ describe('<FilterBar>', () => {
           handleSortChange={() => {}}
           handleOpenFiltersView={() => {}}
           getFilters={() => {}}
+          setTop={() => {}}
         />
       </Provider>,
       mockRenderOptions

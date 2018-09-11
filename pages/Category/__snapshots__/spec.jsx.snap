@@ -16,7 +16,9 @@ exports[`<Category> page should render 1`] = `
   <Category
     id="women"
   >
-    <MockedView>
+    <MockedView
+      background="#f8f8f8"
+    >
       <div>
         <Connect(CategoryContent)
           categoryId="women"
@@ -180,12 +182,12 @@ exports[`<Category> page should render 1`] = `
                                           role="link"
                                         >
                                           <Grid
-                                            className="css-1qcr7hz"
+                                            className="css-4bx66l"
                                             component="div"
                                             wrap={false}
                                           >
                                             <div
-                                              className="css-1qcr7hz css-h7r55a"
+                                              className="css-4bx66l css-h7r55a"
                                             >
                                               <GridItem
                                                 className="css-10fxwvh"
@@ -1031,7 +1033,9 @@ exports[`<Category> page should render empty 1`] = `
   <Category
     id="women"
   >
-    <MockedView>
+    <MockedView
+      background="#f8f8f8"
+    >
       <div>
         <Connect(CategoryContent)
           categoryId="women"
@@ -1195,12 +1199,12 @@ exports[`<Category> page should render empty 1`] = `
                                           role="link"
                                         >
                                           <Grid
-                                            className="css-1qcr7hz"
+                                            className="css-4bx66l"
                                             component="div"
                                             wrap={false}
                                           >
                                             <div
-                                              className="css-1qcr7hz css-h7r55a"
+                                              className="css-4bx66l css-h7r55a"
                                             >
                                               <GridItem
                                                 className="css-10fxwvh"
