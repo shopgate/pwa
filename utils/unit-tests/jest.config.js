@@ -5,9 +5,13 @@ module.exports = {
   ],
   testRegex: '(/__tests__/.*|(\\.|/)spec)\\.(js|jsx)?$',
   testPathIgnorePatterns: [
-    'node_modules',
-    'dist',
-    'coverage',
+    '/node_modules/',
+    '/dist/',
+    '/coverage/',
+    '/config/',
+  ],
+  transformIgnorePatterns: [
+    '/node_modules/',
   ],
   unmockedModulePathPatterns: [
     '<rootDir>/node_modules/react/',

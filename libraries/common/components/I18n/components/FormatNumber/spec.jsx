@@ -18,7 +18,7 @@ describe('<FormatNumber>', () => {
    * @returns {Object}
    */
   const makeComponent = (number, fractions) => (mount((
-    <I18n.Provider lang="de-DE" locales={{}}>
+    <I18n.Provider lang="en-US" locales={{}}>
       <div>
         <FormatNumber number={number} fractions={fractions} />
       </div>
