@@ -11,8 +11,5 @@
   },
   "peerDependencies": {
     "react": "16"
-  },
-  "dependencies": {
-    "react-addons-shallow-compare": "^15.6.2"
   }
 }
