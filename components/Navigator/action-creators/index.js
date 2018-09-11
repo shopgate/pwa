@@ -2,14 +2,8 @@ import {
   TOGGLE_NAVIGATOR_CART_ICON,
   TOGGLE_NAVIGATOR_SEARCH,
   TOGGLE_PROGRESS_BAR,
-  TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
-  SET_NAVIGATOR_SEARCH_QUERY,
-  SET_FILTER_OPENED,
-  SET_FILTER_CLOSED,
-  SET_FILTER_ATTRIBUTE_OPENED,
-  SET_FILTER_ATTRIBUTE_CLOSED,
   SET_ICON_SHADOW_ENABLED,
   SET_ICON_SHADOW_DISABLED,
   SET_SEARCH_ENABLED,
@@ -18,8 +12,6 @@ import {
   SET_TITLE_DISABLED,
   SET_NAVIGATOR_ENABLED,
   SET_NAVIGATOR_DISABLED,
-  ENABLE_VIEW_TRACKING,
-  DISABLE_VIEW_TRACKING,
 } from '../constants';
 
 /**
@@ -53,16 +45,6 @@ export const toggleSearch = active => ({
 });
 
 /**
- * Toggles the login open state.
- * @param {boolean} active Whether the login is open.
- * @returns {Object} The action object.
- */
-export const toggleLogin = active => ({
-  type: TOGGLE_LOGIN,
-  active,
-});
-
-/**
  * Sets the background color of the navigator.
  * @param {boolean} color The navigator's new background color.
  * @returns {Object} The action object.
@@ -80,48 +62,6 @@ export const setBackgroundColor = color => ({
 export const setTextColor = color => ({
   type: SET_NAVIGATOR_COLOR,
   color,
-});
-
-/**
- * Sets the navigator search string.
- * @param {string} query The search string.
- * @returns {Object} The action object.
- */
-export const setSearchPhrase = query => ({
-  type: SET_NAVIGATOR_SEARCH_QUERY,
-  query,
-});
-
-/**
- * Creates the dispatched SET_FILTER_OPENED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterOpened = () => ({
-  type: SET_FILTER_OPENED,
-});
-
-/**
- * Creates the dispatched SET_FILTER_CLOSED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterClosed = () => ({
-  type: SET_FILTER_CLOSED,
-});
-
-/**
- * Creates the dispatched SET_FILTER_ATTRIBUTE_OPENED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterAttributeOpened = () => ({
-  type: SET_FILTER_ATTRIBUTE_OPENED,
-});
-
-/**
- * Creates the dispatched SET_FILTER_ATTRIBUTE_CLOSED action object.
- * @return {Object} The dispatched action object.
- */
-export const setFilterAttributeClosed = () => ({
-  type: SET_FILTER_ATTRIBUTE_CLOSED,
 });
 
 /**
@@ -186,20 +126,4 @@ export const enable = () => ({
  */
 export const disable = () => ({
   type: SET_NAVIGATOR_DISABLED,
-});
-
-/**
- * Creates the ENABLE_VIEW_TRACKING redux action object.
- * @returns {Object} The action object.
- */
-export const enableViewTracking = () => ({
-  type: ENABLE_VIEW_TRACKING,
-});
-
-/**
- * Creates the DISABLE_VIEW_TRACKING redux action object.
- * @returns {Object} The action object.
- */
-export const disableViewTracking = () => ({
-  type: DISABLE_VIEW_TRACKING,
 });

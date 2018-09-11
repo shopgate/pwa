@@ -1,9 +1,5 @@
 import { createSelector } from 'reselect';
 import {
-  getHistoryPathname,
-  getQueryParamsAsString,
-} from '@shopgate/pwa-common/selectors/history';
-import {
   getCartProductCount,
   getProductPendingCount,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -24,15 +20,6 @@ export const getNavigatorState = state => state.navigator;
 export const getBackgroundColor = createSelector(
   getNavigatorState,
   state => state.backgroundColor
-);
-
-/**
- * @param {Object} state The global state.
- * @return {Object}
- */
-export const isFilterOpen = createSelector(
-  getNavigatorState,
-  state => state.filterOpen
 );
 
 /**
@@ -126,16 +113,6 @@ export const isLoadingBarShowing = createSelector(
 );
 
 /**
- * Selects the current state of the navigation drawer.
- * @param {Object} state The global state.
- * @return {string}
- */
-export const isNavSearchFieldActive = createSelector(
-  getNavigatorState,
-  state => state.searchActive
-);
-
-/**
  * Checks if the cart button is available.
  * @return {boolean}
  */
@@ -146,18 +123,4 @@ export const isCartButtonVisible = createSelector(
   (count, pendingCount, navigator) => (
     navigator.showCartIcon && (count + pendingCount) > 0
   )
-);
-
-/**
- * Selects the navigator state for tracking.
- * @param {Object} state The application state.
- * @return {Object}
- */
-export const getTrackingNavigatorState = createSelector(
-  getHistoryPathname,
-  getQueryParamsAsString,
-  (pathname, queryString) => ({
-    pathname,
-    queryString,
-  })
 );

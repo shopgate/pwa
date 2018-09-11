@@ -3,7 +3,6 @@ import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import fetchSearchSuggestions from '@shopgate/pwa-common-commerce/search/actions/fetchSearchSuggestions';
 import {
   getBackgroundColor,
-  isFilterOpen,
   isEnabled,
   isNavSearchFieldActive,
   isSearchShowing,
@@ -18,9 +17,7 @@ import {
  */
 const mapStateToProps = state => ({
   backgroundColor: getBackgroundColor(state),
-  filterOpen: isFilterOpen(state),
   navigatorEnabled: isEnabled(state),
-  searchActive: isNavSearchFieldActive(state),
   showSearch: isSearchShowing(state),
   showTitle: isTitleShowing(state),
   showLoadingBar: showLoadingBar(state),

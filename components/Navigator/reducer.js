@@ -1,15 +1,8 @@
 import {
   TOGGLE_NAVIGATOR_CART_ICON,
-  TOGGLE_NAVIGATOR_SEARCH,
   TOGGLE_PROGRESS_BAR,
-  TOGGLE_LOGIN,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
-  SET_NAVIGATOR_SEARCH_QUERY,
-  SET_FILTER_OPENED,
-  SET_FILTER_CLOSED,
-  SET_FILTER_ATTRIBUTE_OPENED,
-  SET_FILTER_ATTRIBUTE_CLOSED,
   SET_ICON_SHADOW_ENABLED,
   SET_ICON_SHADOW_DISABLED,
   SET_SEARCH_ENABLED,
@@ -18,8 +11,6 @@ import {
   SET_TITLE_DISABLED,
   SET_NAVIGATOR_ENABLED,
   SET_NAVIGATOR_DISABLED,
-  ENABLE_VIEW_TRACKING,
-  DISABLE_VIEW_TRACKING,
 } from './constants';
 
 /**
@@ -32,10 +23,6 @@ export default (
   state = {
     backgroundColor: null,
     enabled: true,
-    filterOpen: false,
-    filterAttributeOpen: false,
-    loginOpen: false,
-    searchActive: false,
     searchPhrase: '',
     showCartIcon: true,
     showIconShadow: false,
@@ -43,7 +30,6 @@ export default (
     showSearch: true,
     showTitle: true,
     textColor: null,
-    viewTracking: false,
   },
   action
 ) => {
@@ -52,16 +38,6 @@ export default (
       return {
         ...state,
         showCartIcon: action.active,
-      };
-    case TOGGLE_NAVIGATOR_SEARCH:
-      return {
-        ...state,
-        searchActive: action.active,
-      };
-    case TOGGLE_LOGIN:
-      return {
-        ...state,
-        loginOpen: action.active,
       };
     case TOGGLE_PROGRESS_BAR:
       return {
@@ -77,32 +53,6 @@ export default (
       return {
         ...state,
         textColor: action.color,
-      };
-    case SET_NAVIGATOR_SEARCH_QUERY:
-      return {
-        ...state,
-        searchPhrase: action.query,
-      };
-    case SET_FILTER_OPENED:
-      return {
-        ...state,
-        filterOpen: true,
-        searchActive: false,
-      };
-    case SET_FILTER_CLOSED:
-      return {
-        ...state,
-        filterOpen: false,
-      };
-    case SET_FILTER_ATTRIBUTE_OPENED:
-      return {
-        ...state,
-        filterAttributeOpen: true,
-      };
-    case SET_FILTER_ATTRIBUTE_CLOSED:
-      return {
-        ...state,
-        filterAttributeOpen: false,
       };
     case SET_ICON_SHADOW_ENABLED:
       return {
@@ -143,16 +93,6 @@ export default (
       return {
         ...state,
         enabled: false,
-      };
-    case ENABLE_VIEW_TRACKING:
-      return {
-        ...state,
-        viewTracking: true,
-      };
-    case DISABLE_VIEW_TRACKING:
-      return {
-        ...state,
-        viewTracking: false,
       };
     default:
       return state;
