@@ -1,3 +1,5 @@
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
+import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { historyPop } from '@shopgate/pwa-common/actions/router';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import fetchCategory from '@shopgate/pwa-common-commerce/category/actions/fetchCategory';
@@ -11,6 +13,7 @@ import {
   categoryWillEnter$,
   categoryDidEnter$,
   receivedVisibleCategory$,
+  categoryFiltersDidUpdate$,
 } from './streams';
 
 /**
@@ -20,10 +23,13 @@ import {
 export default function category(subscribe) {
   subscribe(categoryWillEnter$, ({ dispatch, action, getState }) => {
     let { title } = action.route.state;
+    const filters = getActiveFilters();
     const categoryId = hex2bin(action.route.params.categoryId);
 
     dispatch(fetchCategory(categoryId));
-    dispatch(fetchCategoryProducts(categoryId));
+    dispatch(fetchCategoryProducts({
+      categoryId, filters,
+    }));
 
     // If a title didn't come in then try to lookup the category and grab its name.
     if (!title) {
@@ -33,6 +39,16 @@ export default function category(subscribe) {
     if (title) {
       dispatch(setTitle(title));
     }
+  });
+
+  subscribe(categoryFiltersDidUpdate$, ({ dispatch }) => {
+    const { params } = getCurrentRoute();
+    const categoryId = hex2bin(params.categoryId);
+    const filters = getActiveFilters();
+
+    dispatch(fetchCategoryProducts({
+      categoryId, filters,
+    }));
   });
 
   subscribe(categoryDidEnter$, ({ dispatch }) => {

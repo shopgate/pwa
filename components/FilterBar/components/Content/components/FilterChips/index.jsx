@@ -21,6 +21,7 @@ class FilterChips extends Component {
   static propTypes = {
     openFilters: PropTypes.func.isRequired,
     routeId: PropTypes.string.isRequired,
+    updateFilters: PropTypes.func.isRequired,
     currentPathname: PropTypes.string,
     filters: PropTypes.shape(),
   };
@@ -43,7 +44,7 @@ class FilterChips extends Component {
    * @param {number} value The value to remove (multiselect).
    */
   handleRemove = (id, value) => {
-    const { filters, routeId } = this.props;
+    const { filters, routeId, updateFilters } = this.props;
     const { [id]: selected, ...rest } = filters;
 
     if (selected.type === FILTER_TYPE_MULTISELECT) {
@@ -61,12 +62,14 @@ class FilterChips extends Component {
         };
 
         conductor.update(routeId, { filters: newFilters });
+        updateFilters(newFilters);
         return;
       }
     }
 
     const newFilters = (Object.keys(rest).length) ? rest : null;
     conductor.update(routeId, { filters: newFilters });
+    updateFilters(newFilters);
   }
 
   /**

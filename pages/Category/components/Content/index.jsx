@@ -15,12 +15,12 @@ import connect from './connector';
 const CategoryContent = ({ categories, categoryId, hasProducts }) => (
   <Fragment>
     {
-      ((!categories || !categories.length) && !!hasProducts) &&
+      ((!categories || categories.length === 0) && !!hasProducts) &&
       <Bar />
     }
     <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId }} />
     <Portal name={portals.CATEGORY_LIST} props={{ categoryId }}>
-      {categories && categories.length && <CategoryList categories={categories} />}
+      {(categories && categories.length !== 0) && <CategoryList categories={categories} />}
     </Portal>
     <Portal name={portals.CATEGORY_LIST_AFTER} props={{ categoryId }} />
     <Portal name={portals.PRODUCT_LIST_BEFORE} props={{ categoryId }} />
