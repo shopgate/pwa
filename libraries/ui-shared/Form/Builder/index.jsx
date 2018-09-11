@@ -123,8 +123,9 @@ class Builder extends Component {
    * @param {Object} nextProps The new props object with changed data
    */
   componentWillReceiveProps(nextProps) {
+    const oldValidationErrors = buildValidationErrorList(this.props.validationErrors);
     const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
-    if (!isEqual(this.state.errors, newValidationErrors)) {
+    if (!isEqual(oldValidationErrors, newValidationErrors)) {
       this.setState({ errors: newValidationErrors });
     }
   }
@@ -166,10 +167,19 @@ class Builder extends Component {
       },
     };
 
+    // Remove validation error message on first change of the element
+    Object.keys(newState.errors).forEach((key) => {
+      // Action listeners might add some again
+      if (this.state.formData[key] !== newState.formData[key]) {
+        delete newState.errors[key];
+      }
+    });
+    const hasBackendValidationErrors = Object.keys(newState.errors).length > 0;
+
     // Handle context sensitive functionality by via "action" listener and use the "new" state
     const updatedState = this.actionListener.notify(elementId, this.state, newState);
 
-    // TODO: handle validation errors and set "hasErrors" accordingly - only "requred" check, yet
+    // TODO: handle frontend validation errors and set "hasErrors" accordingly
     let hasErrors = false;
 
     // Check "required" fields for all visible elements and enable rendering on changes
@@ -182,6 +192,9 @@ class Builder extends Component {
       const tmpResult = tmpVal === null || tmpVal === undefined || tmpVal === '' || tmpVal === false;
       hasErrors = hasErrors || tmpResult;
     });
+
+    const hasFrontendValidationErrors = Object.keys(updatedState.errors).length <= 0;
+    const hasValidationErrors = hasBackendValidationErrors && hasFrontendValidationErrors;
 
     // Handle state internally and send an "onChange" event to parent if this finished
     this.setState(updatedState);
@@ -200,7 +213,7 @@ class Builder extends Component {
     });
 
     // Trigger the given update action
-    this.props.handleUpdate(updateData, hasErrors);
+    this.props.handleUpdate(updateData, hasErrors || hasValidationErrors);
   };
 
   /**
