@@ -11,6 +11,7 @@ import * as events from '@virtuous/conductor-events';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import colors from 'Styles/colors';
 import connect from './connector';
+import { PORTAL_NAVIGATOR_BUTTON } from './constants';
 import NavButton from './components/NavButton';
 import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
@@ -180,7 +181,8 @@ class Navigator extends PureComponent {
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_AFTER} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_BEFORE} />
-                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS} >
+                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS}>
+                  <div className={styles.portal} id={PORTAL_NAVIGATOR_BUTTON} />
                   {this.props.showSearch &&
                     <SearchButton />
                   }

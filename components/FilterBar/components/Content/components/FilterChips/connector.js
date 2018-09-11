@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
-import removeTemporaryFilter from '@shopgate/pwa-common-commerce/filter/action-creators/removeTemporaryFilter';
-import commitTemporaryFilters from '@shopgate/pwa-common-commerce/filter/actions/commitTemporaryFilters';
-import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
-import openFilterView from '../../actions/openFilterView';
+import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import openFilterRoute from '../../actions/openFilterRoute';
 
 /**
  * Maps the contents of the state to the component props.
@@ -11,7 +9,6 @@ import openFilterView from '../../actions/openFilterView';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  activeFilters: getActiveFilters(state),
   currentPathname: getHistoryPathname(state),
 });
 
@@ -21,13 +18,8 @@ const mapStateToProps = state => ({
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({
-  handleFilterRemove: (id, index) => {
-    dispatch(removeTemporaryFilter(id, index));
-    setTimeout(() => {
-      dispatch(commitTemporaryFilters());
-    }, 0);
-  },
-  handleOpenFilters: () => dispatch(openFilterView()),
+  openFilters: () => dispatch(openFilterRoute()),
+  updateFilters: filters => dispatch(updateFilters(filters)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps);

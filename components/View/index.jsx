@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RouteContext } from '@virtuous/react-conductor/Router';
-import ViewContent from './components/Content';
+import { ViewContext } from 'Components/View/context';
+import colors from 'Styles/colors';
+import ViewProvider from '../../providers/View';
+import Content from './components/Content';
 import styles from './style';
 
 /**
@@ -9,48 +12,47 @@ import styles from './style';
  * @return {JSX}
  */
 const View = ({
+  background,
   children,
   hasNavigator,
-  head,
   isFullscreen,
   pathname,
-  style,
 }) => (
-  <section className={styles} style={style} data-test-id={`view: ${pathname || '-'}`}>
-    <ViewContent
-      hasNavigator={hasNavigator}
-      head={head}
-      isFullscreen={isFullscreen}
+  <ViewProvider>
+    <section
+      className={styles}
+      data-test-id={`view: ${pathname || '-'}`}
+      style={{ background }}
     >
-      {children}
-    </ViewContent>
-  </section>
+      <ViewContext.Consumer>
+        {({ set }) => (
+          <Content
+            hasNavigator={hasNavigator}
+            isFullscreen={isFullscreen}
+            setRef={set}
+          >
+            {children}
+          </Content>
+        )}
+      </ViewContext.Consumer>
+    </section>
+  </ViewProvider>
 );
 
 View.propTypes = {
+  background: PropTypes.string,
   children: PropTypes.node,
   hasNavigator: PropTypes.bool,
-  head: PropTypes.shape(),
   isFullscreen: PropTypes.bool,
   pathname: PropTypes.string,
-  style: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape(),
-  ]),
 };
 
 View.defaultProps = {
+  background: colors.light,
   children: null,
   hasNavigator: true,
-  head: {
-    meta: [],
-    link: [],
-    script: [],
-    style: [],
-  },
   isFullscreen: false,
   pathname: null,
-  style: null,
 };
 
 export default props => (

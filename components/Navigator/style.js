@@ -28,8 +28,13 @@ const title = css({
   position: 'relative',
 }).toString();
 
+const portal = css({
+  height: '100%',
+});
+
 export default {
   header,
   grid,
   title,
+  portal,
 };

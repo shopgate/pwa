@@ -34,11 +34,9 @@
       "price_desc": "Prijs: Hoog naar Laag",
       "price_asc": "Prijs: Laag naar Hoog"
     },
-    "apply": "Toepassen",
+    "apply": "Klaar",
     "more": "meer",
-    "clear": "Wissen",
-    "clear_all": "Wis alles",
-    "view_all": "Bekijk alles"
+    "reset": "Wis alles"
   },
   "price": {
     "from": "Vanaf {price}",
