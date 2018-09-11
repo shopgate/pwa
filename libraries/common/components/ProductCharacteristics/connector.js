@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { historyReplace } from '@shopgate/pwa-common/actions/router';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
@@ -27,4 +28,17 @@ const mapDispatchToProps = dispatch => ({
   })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if ((!prev.variants && next.variants) || !isEqual(prev.variants, next.variants)) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

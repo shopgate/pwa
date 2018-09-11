@@ -1,8 +1,17 @@
-const sdkConfig = require('../../../.sgcloud/frontend.json');
-
 module.exports = (on, config) => {
-  const ip = sdkConfig.ip || '127.0.0.1';
-  const port = sdkConfig.port || 8080;
+  let ip;
+  let port;
+
+  if (process.env.IP && process.env.PORT) {
+    ip = process.env.IP;
+    port = process.env.PORT;
+  } else {
+    const sdkConfig = require('../../../.sgcloud/frontend.json'); // eslint-disable-line global-require
+    ip = sdkConfig.ip || '127.0.0.1';
+    port = sdkConfig.port || 8080;
+  }
+
+  console.warn(ip, port);
 
   // Build a new config object.
   const newConfig = Object.assign({}, config, {

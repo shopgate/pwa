@@ -2,7 +2,7 @@ import {
   successLogin,
   receiveUser,
 } from '../action-creators/user';
-import configureStore from '../store';
+import { configureStore } from '../store';
 import { userDidLogin$, userDidUpdate$ } from './user';
 
 jest.mock('redux-logger', () => ({

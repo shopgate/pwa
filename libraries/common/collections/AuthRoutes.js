@@ -1,3 +1,5 @@
+import pathMatch from 'path-match';
+
 /**
  * Class to maintain the routes that should be protected by authentication.
  */
@@ -7,6 +9,11 @@ class AuthRoutes {
    */
   constructor() {
     this.routes = new Map();
+    this.matcher = pathMatch({
+      sensitive: false,
+      strict: false,
+      end: true,
+    });
   }
 
   /**
@@ -37,6 +44,52 @@ class AuthRoutes {
     }
 
     this.routes.set(civilian, bouncer);
+  }
+
+  /**
+   * Check if the given pathname is a protector route.
+   * @param {string} location The location to check.
+   * @return {boolean}
+   */
+  isProtector(location) {
+    return Array.from(this.routes.values()).includes(location);
+  }
+
+  /**
+   * Check if the given pathname is a protected route.
+   * @param {string} location The location to check.
+   * @returns {boolean}
+   */
+  getProtector(location) {
+    /**
+     * Try to make a direct match with the location.
+     * If we get lucky then we don't have to iterate over the protected patterns.
+     */
+    let protector = this.get(location);
+
+    /**
+     * If we didn't find a direct match then we need to match
+     * the given location against the protected patters.
+     */
+    if (!protector) {
+      // Get the protected patterns as an array.
+      const patterns = Array.from(this.routes.keys());
+
+      // Loop over the patterns until a match is found.
+      patterns.some((pattern) => {
+        // Check for a match.
+        const match = this.matcher(pattern)(location);
+
+        // Match found, set the proector.
+        if (match) {
+          protector = this.routes.get(pattern);
+        }
+
+        return match;
+      });
+    }
+
+    return protector;
   }
 }
 

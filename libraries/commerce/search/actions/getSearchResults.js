@@ -1,3 +1,4 @@
+import { getActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import getProducts from '../../product/actions/getProducts';
@@ -18,6 +19,7 @@ const getSearchResults = (searchPhrase, offset = 0) => (dispatch, getState) => {
 
   const limit = ITEMS_PER_LOAD;
   const sort = getSortOrder(getState());
+  const filters = getActiveFilters();
 
   const promise = dispatch(getProducts({
     params: {
@@ -26,6 +28,7 @@ const getSearchResults = (searchPhrase, offset = 0) => (dispatch, getState) => {
       limit,
       sort,
     },
+    filters,
     onBeforeDispatch: () => {
       // Dispatch the request action before the related pipeline request is executed.
       dispatch(requestSearchResults(searchPhrase, offset));

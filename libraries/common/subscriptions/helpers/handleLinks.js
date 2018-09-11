@@ -1,17 +1,13 @@
+import conductor from '@virtuous/conductor';
+import { ACTION_REPLACE } from '@virtuous/conductor/constants';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import flushTab from '@shopgate/pwa-core/commands/flushTab';
 import openPage from '@shopgate/pwa-core/commands/openPage';
 import showTab from '@shopgate/pwa-core/commands/showTab';
 import popTabToRoot from '@shopgate/pwa-core/commands/popTabToRoot';
 import { logger } from '@shopgate/pwa-core/helpers';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import pathMatch from 'path-match';
 import authRoutes from '../../collections/AuthRoutes';
-
-const matcher = pathMatch({
-  sensitive: false,
-  strict: false,
-  end: true,
-});
 
 const SHOPGATE_DOMAIN = 'shopgate.com';
 const SHOPGATEPG_DOMAIN = 'shopgatepg.com';
@@ -25,14 +21,14 @@ const PROTOCOL_HTTPS = 'https:';
 const PROTOCOL_TEL = 'tel:';
 const PROTOCOL_MAILTO = 'mailto:';
 
-export const LEGACY_LINK_ACCOUNT = 'account';
-export const LEGACY_LINK_STOREFINDER = 'storefinder';
-export const LEGACY_LINK_CHANNEL = 'channel';
-export const LEGACY_LINK_ORDERS = 'orders_legacy';
-export const LEGACY_LINK_CART_ADD_COUPON = 'cart_add_coupon';
-export const LEGACY_LINK_CHECKOUT = 'checkout_legacy';
-export const LEGACY_LINK_REGISTER = 'register_legacy';
-export const LEGACY_LINK_CONNECT_REGISTER = 'connect_register';
+export const LEGACY_LINK_ACCOUNT = '/account';
+export const LEGACY_LINK_STOREFINDER = '/storefinder';
+export const LEGACY_LINK_CHANNEL = '/channel';
+export const LEGACY_LINK_ORDERS = '/orders_legacy';
+export const LEGACY_LINK_CART_ADD_COUPON = '/cart_add_coupon';
+export const LEGACY_LINK_CHECKOUT = '/checkout_legacy';
+export const LEGACY_LINK_REGISTER = '/register_legacy';
+export const LEGACY_LINK_CONNECT_REGISTER = '/connect_register';
 
 const protocols = [PROTOCOL_HTTP, PROTOCOL_HTTPS, PROTOCOL_TEL, PROTOCOL_MAILTO];
 
@@ -56,13 +52,6 @@ const legacyLinks = [
   LEGACY_LINK_REGISTER,
   LEGACY_LINK_CONNECT_REGISTER,
 ];
-
-/**
- * Returns the segments of a URL.
- * @param {string} location The location to open.
- * @return {Array}
- */
-export const getSegments = location => location.split('/').splice(1);
 
 /**
  * Checks whether the location starts with a URL protocol.
@@ -103,9 +92,7 @@ export const isLegacyPage = location => (
  * @param {string} location The location to open.
  * @return {boolean}
  */
-export const isLegacyLink = location => (
-  legacyLinks.includes(getSegments(location)[0])
-);
+export const isLegacyLink = location => !!legacyLinks.find(link => location.startsWith(link));
 
 /**
  * Checks whether it is a shop link.
@@ -144,10 +131,30 @@ export const isShopLink = (location) => {
 };
 
 /**
+ * Takes care that protector routes are removed from the history stack when a user is redirected
+ * to a protected route after a successful login.
+ * Usually those routes are replaced with the protected route, but at redirects to a legacy app page
+ * or the in-app-browser they need to be removed from history.
+ * @param {string} historyAction The history action which was used to navigate.
+ */
+export const handleAppRedirect = (historyAction) => {
+  const { pathname } = getCurrentRoute();
+
+  if (authRoutes.isProtector(pathname) && historyAction === ACTION_REPLACE) {
+    /**
+     * A replace action on a protector route indicates that the authentication was successful.
+     * So the protector route can be popped from the history stack.
+     */
+    conductor.pop();
+  }
+};
+
+/**
  * Opens a link in the in-app-broweser.
  * @param {string} location The location to open.
+ * @param {string} historyAction The history action which was used to open the link.
  */
-export const openExternalLink = (location) => {
+export const openExternalLink = (location, historyAction) => {
   showTab({
     targetTab: 'in_app_browser',
     animation: 'slideInFromBottom',
@@ -168,6 +175,8 @@ export const openExternalLink = (location) => {
   flushTab({
     targetTab: 'in_app_browser',
   });
+
+  handleAppRedirect(historyAction);
 };
 
 /**
@@ -179,6 +188,7 @@ export const openExternalLink = (location) => {
  * @param {string} options.popTabToRoot Type of the navigation bar that should be displayed.
  * @param {string} options.flushTab The tab that should be flushed
  * @param {Function} options.backCallback Function that is executed when hitting the back button.
+ * @param {string} options.historyAction The history action which was used to open the link.
  */
 export const handleLegacyLink = (options) => {
   if (options.location) {
@@ -217,16 +227,20 @@ export const handleLegacyLink = (options) => {
       targetTab: options.targetTab,
     });
   }
+
+  handleAppRedirect(options.historyAction);
 };
 
 /**
  * Opens a legacy CMS page.
  * @param {string} location The location to open.
+ * @param {string} historyAction The history action which was used to open the link.
  */
-export const openLegacy = (location) => {
+export const openLegacy = (location, historyAction) => {
   handleLegacyLink({
     targetTab: 'main',
     location,
+    historyAction,
   });
 };
 
@@ -241,18 +255,22 @@ export const openNativeLink = (location) => {
 /**
  * Opens a legacy links.
  * @param {string} location The location to open.
+ * @param {string} historyAction The history action which was used to open the link.
  */
-export const openLegacyLink = (location) => {
-  switch (getSegments(location)[0]) {
+export const openLegacyLink = (location, historyAction) => {
+  const [route] = location.split('?');
+
+  switch (route) {
     case LEGACY_LINK_ACCOUNT:
     case LEGACY_LINK_STOREFINDER:
     case LEGACY_LINK_CHANNEL:
-      openLegacy(location);
+      openLegacy(location, historyAction);
       break;
     case LEGACY_LINK_ORDERS:
       handleLegacyLink({
         targetTab: 'main',
         location: '/orders',
+        historyAction,
       });
       break;
     case LEGACY_LINK_CHECKOUT:
@@ -262,12 +280,14 @@ export const openLegacyLink = (location) => {
         navigationType: 'checkout',
         location: '/checkout/default',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
+        historyAction,
       });
       break;
     case LEGACY_LINK_REGISTER:
       handleLegacyLink({
         targetTab: 'main',
         location: '/register/default',
+        historyAction,
       });
       break;
     case LEGACY_LINK_CONNECT_REGISTER:
@@ -275,6 +295,7 @@ export const openLegacyLink = (location) => {
         location: `/${LEGACY_LINK_CONNECT_REGISTER}`,
         targetTab: 'main',
         backCallback: 'SGAction.popTabToRoot(); SGAction.showTab({ targetTab: "main" });',
+        historyAction,
       });
       break;
     case LEGACY_LINK_CART_ADD_COUPON:
@@ -282,41 +303,4 @@ export const openLegacyLink = (location) => {
       logger.warn(`openLegacyLink not handled: ${location}`);
       break;
   }
-};
-
-/**
- * Check if the given pathname is a protected route.
- * @param {string} location The location to check.
- * @returns {boolean}
- */
-export const getProtector = (location) => {
-  /**
-   * Try to make a direct match with the location.
-   * If we get lucky then we don't have to iterate over the protected patterns.
-   */
-  let protector = authRoutes.get(location);
-
-  /**
-   * If we didn't find a direct match then we need to match
-   * the given location against the protected patters.
-   */
-  if (!protector) {
-    // Get the protected patterns as an array.
-    const patterns = Array.from(authRoutes.getAll().keys());
-
-    // Loop over the patterns until a match is found.
-    patterns.some((pattern) => {
-      // Check for a match.
-      const match = matcher(pattern)(location);
-
-      // Match found, set the proector.
-      if (match) {
-        protector = authRoutes.get(pattern);
-      }
-
-      return match;
-    });
-  }
-
-  return protector;
 };

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccordionContainer /> should render children with props 1`] = `
+<Child
+  handleClose={[Function]}
+  handleOpen={[Function]}
+  isOpen={false}
+/>
+`;
+
+exports[`<AccordionContainer /> should update children props when state changes 1`] = `
+<Child
+  handleClose={[Function]}
+  handleOpen={[Function]}
+  isOpen={true}
+/>
+`;

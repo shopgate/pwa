@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isMatch from 'lodash/isMatch';
 import connect from './connector';
@@ -12,16 +12,18 @@ import {
 /**
  * The ProductCharacteristics component.
  */
-class ProductCharacteristics extends Component {
+class ProductCharacteristics extends PureComponent {
   static propTypes = {
     conditioner: PropTypes.shape().isRequired,
     render: PropTypes.func.isRequired,
+    finishTimeout: PropTypes.number,
     navigate: PropTypes.func,
     variantId: PropTypes.string,
     variants: PropTypes.shape(),
   }
 
   static defaultProps = {
+    finishTimeout: 0,
     navigate() {},
     variantId: null,
     variants: null,
@@ -135,7 +137,7 @@ class ProductCharacteristics extends Component {
 
   handleFinished = () => {
     const { characteristics } = this.state;
-    const { variantId, variants } = this.props;
+    const { variantId, variants, finishTimeout } = this.props;
     const filteredValues = Object.keys(characteristics).filter(key => !!characteristics[key]);
 
     if (filteredValues.length !== variants.characteristics.length) {
@@ -154,7 +156,9 @@ class ProductCharacteristics extends Component {
       return;
     }
 
-    this.props.navigate(products[0].id, true);
+    setTimeout(() => {
+      this.props.navigate(products[0].id, true);
+    }, finishTimeout);
   }
 
   /**

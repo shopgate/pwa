@@ -34,7 +34,6 @@ const chip = (hasRemoveButton = true, inverted = false) => css({
 
 const removeButton = css({
   flexShrink: 0,
-  margin: 0,
   padding: 0,
 }).toString();
 
