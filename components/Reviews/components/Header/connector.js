@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getBaseProductId, getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,6 +8,7 @@ import { getProductRating } from '@shopgate/pwa-common-commerce/product/selector
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
+  productId: getBaseProductId(state, props),
   rating: getProductRating(state, props),
 });
 
