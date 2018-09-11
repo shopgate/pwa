@@ -9,7 +9,7 @@ const disabled = css({
 
 const selected = css({
   background: colors.shade7,
-  boxShadow: `0 -1px 0 0 ${colors.shade7}, 0 1px 0 0 ${colors.shade7}`,
+  boxShadow: `-16px 0 0 0 ${colors.shade7} !important`,
 }).toString();
 
 const title = css({
@@ -23,6 +23,7 @@ const title = css({
 
 const grid = css({
   alignItems: 'center',
+  boxShadow: `0 1px 0 0 ${colors.darkGray}`,
   minHeight: variables.navigator.height,
   padding: `${variables.gap.small}px 0`,
   position: 'relative',

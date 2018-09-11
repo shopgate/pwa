@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style';
+import PropertyRows from './components/PropertyRows';
 import connect from './connector';
 
 /**
@@ -17,12 +18,7 @@ const Properties = ({ properties }) => {
     <div className={styles.content}>
       <table className={styles.table}>
         <tbody>
-          {properties.map(({ label, value }) => (
-            <tr key={`${label}${value}`}>
-              <td className={styles.cell}>{label}</td>
-              <td className={styles.cell} data-test-id={`property: ${value}`}>{value}</td>
-            </tr>
-          ))}
+          <PropertyRows properties={properties} />
         </tbody>
       </table>
     </div>

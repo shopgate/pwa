@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Picker from 'Components/Picker';
-import PriceDifference from './components/PriceDifference';
+import Option from './components/Option';
 import connect from './connector';
-import styles from './style';
 
 /**
  * The Product Options component.
  */
-class Options extends Component {
+class Options extends PureComponent {
   static propTypes = {
     storeSelection: PropTypes.func.isRequired,
     currentOptions: PropTypes.shape(),
@@ -58,22 +55,11 @@ class Options extends Component {
   }
 
   /**
-   * Only update when options change.
-   * @param {Object} nextProps The incoming props.
-   * @param {Object} nextState The new state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.options !== nextProps.options ||
-      this.props.currentOptions !== nextProps.currentOptions;
-  }
-
-  /**
    * Renders the component
    * @returns {JSX}
    */
   render() {
-    const { options, currentOptions } = this.props;
+    const { options, currentOptions, storeSelection } = this.props;
 
     if (options === null) {
       return null;
@@ -86,31 +72,15 @@ class Options extends Component {
             return null;
           }
 
-          const params = [
-            option.label,
-          ];
-
           return (
-            <div key={option.id} data-test-id={option.label}>
-              <Picker
-                label={option.label}
-                items={option.items.map(item => ({
-                  ...item,
-                  rightComponent: (
-                    <PriceDifference
-                      className={styles.price}
-                      currency={item.currency}
-                      difference={item.price}
-                    />
-                  ),
-                }))}
-                placeholder={
-                  <I18n.Text string="product.pick_an_attribute" params={params} />
-                }
-                value={currentOptions[option.id]}
-                onChange={value => this.props.storeSelection(option.id, value)}
-              />
-            </div>
+            <Option
+              key={option.id}
+              label={option.label}
+              id={option.id}
+              items={option.items}
+              value={currentOptions[option.id]}
+              onChange={storeSelection}
+            />
           );
         })}
       </div>
