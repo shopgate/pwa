@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import { logger } from '@shopgate/pwa-core/helpers';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig } from '../../helpers/config';
@@ -10,7 +9,7 @@ const { portals = null } = componentsConfig;
 /**
  * The Portal component.
  */
-class Portal extends Component {
+class Portal extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.node,
@@ -34,27 +33,6 @@ class Portal extends Component {
       hasError: false,
       components: this.getComponents(props),
     };
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.components.length !== nextState.components.length) {
-      return true;
-    }
-
-    if (!isEqual(this.props.children, nextProps.children)) {
-      return true;
-    }
-
-    if (!isEqual(this.props.props, nextProps.props)) {
-      return true;
-    }
-
-    return false;
   }
 
   /**
