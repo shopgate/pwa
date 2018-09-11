@@ -48,6 +48,13 @@ export default function router(subscribe) {
       location = location.slice(0, -1);
     }
 
+    const { pathname: currentPathname } = getCurrentRoute();
+
+    // Prevent the current route from being pushed again.
+    if (historyAction === ACTION_PUSH && location === currentPathname) {
+      return;
+    }
+
     // Route authentication.
     if (!isUserLoggedIn(state)) {
       // Determine whether or not this location is protected.

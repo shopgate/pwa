@@ -1,14 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
 
-// If (process.env.NODE_ENV !== 'production') {
-//   Const { whyDidYouUpdate } = require('why-did-you-update');
-//   WhyDidYouUpdate(React, {
-
-//   });
+// if (process.env.NODE_ENV !== 'production') {
+//   const { whyDidYouUpdate } = require('why-did-you-update');
+//   whyDidYouUpdate(React);
 // }
 
 /**
@@ -17,7 +15,7 @@ import I18n from './components/I18n';
  * the theme's Main.jsx file which uses this component as the root element.
  * @returns {JSX}
  */
-class App extends PureComponent {
+class App extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     locale: PropTypes.shape().isRequired,
