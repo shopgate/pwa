@@ -1,59 +1,41 @@
-import * as streams from '../streams';
-import filters from './index';
+import getFilters from '../actions/getFilters';
+import { filterDidEnter$ } from '../streams';
+import subscriptions from './index';
 
-const mockedSetActiveFilters = jest.fn();
-jest.mock(
-  '../action-creators/setActiveFilters',
-  () => (...args) => () => mockedSetActiveFilters(...args)
-);
+jest.mock('../actions/getFilters', () => jest.fn().mockReturnValue('getFilters'));
 
-const mockedGetFilters = jest.fn();
-jest.mock('../actions/getFilters', () => (...args) => () => mockedGetFilters(...args));
-
-jest.mock('@shopgate/pwa-common/selectors/history', () => ({
-  getSearchPhrase: () => 'searchPhraseTest',
-  getHistoryPathname: () => '/search',
-}));
-
-describe.skip('Filters subscriptions', () => {
+describe('Filter subscriptions', () => {
   const subscribe = jest.fn();
-  const subscriptions = {};
+  const dispatch = jest.fn();
 
   beforeEach(() => {
-    mockedSetActiveFilters.mockReset();
-    mockedGetFilters.mockReset();
+    jest.clearAllMocks();
+    subscriptions(subscribe);
   });
 
-  it('should subscribe to streams', () => {
-    filters(subscribe);
-    const streamNames = Object.keys(streams);
-    subscribe.mock.calls.forEach((call) => {
-      const [stream, cb] = call;
-      streamNames.some((name) => {
-        if (stream === streams[name]) {
-          subscriptions[name] = {
-            cb,
-          };
-          return true;
-        }
-        return false;
-      });
-    });
-    expect(Object.keys(subscriptions).length).toBe(Object.keys(streams).length);
+  it('should subscribe as expected', () => {
+    expect(subscribe).toHaveBeenCalledTimes(1);
   });
 
-  // TODO: searchRouteWasUpdated$ is not there anymore. Test the substitute instead here
-  it('searchRouteWasUpdated$', () => {
-    const dispatch = jest.fn();
-    subscriptions.searchRouteWasUpdated$.cb({
-      dispatch,
-      getState: () => {},
-    });
-    dispatch.mock.calls[0][0]();
-    dispatch.mock.calls[1][0]();
+  describe('filterDidEnter$', () => {
+    let stream;
+    let callback;
 
-    expect(mockedSetActiveFilters).toHaveBeenCalledTimes(1);
-    expect(mockedGetFilters).toHaveBeenCalledTimes(1);
+    beforeEach(() => {
+      [[stream, callback]] = subscribe.mock.calls;
+    });
+
+    it('should setup as expected', () => {
+      expect(stream).toEqual(filterDidEnter$);
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should call get filters when stream emits', () => {
+      callback({ dispatch });
+      expect(getFilters).toHaveBeenCalledTimes(1);
+      expect(getFilters).toHaveBeenCalledWith();
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(getFilters());
+    });
   });
 });
-

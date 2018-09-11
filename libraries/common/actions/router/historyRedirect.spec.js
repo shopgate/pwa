@@ -37,7 +37,6 @@ describe('historyRedirect action', () => {
     expect(historyReplace).toHaveBeenCalledTimes(1);
     expect(historyReplace).toHaveBeenCalledWith({
       pathname: location,
-      state: {},
     });
   });
 
