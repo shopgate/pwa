@@ -1,0 +1,2613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormBuilder /> should call onChange callback when input is changed 1`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "foo": Object {
+          "default": "default",
+          "label": "foo",
+          "type": "text",
+          "visible": true,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "foo": "default",
+          },
+          false,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  id="foo"
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="default"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="foo"
+              leftElement={null}
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value="default"
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={true}
+                htmlFor="foo.foo"
+                isFocused={false}
+                label="foo"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.foo"
+                    isFloating={true}
+                    isFocused={false}
+                    label="foo"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+                      htmlFor="foo.foo"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="foo"
+                      >
+                        <span
+                          className=""
+                        >
+                          foo
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.foo"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value="default"
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.foo"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value="default"
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.foo"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value="default"
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "bar": Object {
+          "actions": Array [
+            Object {
+              "rules": Array [
+                Object {
+                  "context": "foo",
+                  "data": Array [
+                    "abc",
+                  ],
+                  "type": "notIn",
+                },
+              ],
+              "type": "setVisibility",
+            },
+          ],
+          "label": "bar",
+          "type": "text",
+        },
+        "foo": Object {
+          "label": "foo",
+          "type": "text",
+          "visible": true,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="foo"
+              leftElement={null}
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value=""
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={false}
+                htmlFor="foo.foo"
+                isFocused={false}
+                label="foo"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.foo"
+                    isFloating={false}
+                    isFocused={false}
+                    label="foo"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-1fekhao"
+                      htmlFor="foo.foo"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="foo"
+                      >
+                        <span
+                          className=""
+                        >
+                          foo
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.foo"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value=""
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.foo"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value=""
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.foo"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value=""
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
+          props={null}
+        />
+        <Portal
+          name="foo.bar.before"
+          props={null}
+        />
+        <Portal
+          name="foo.bar"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "actions": Array [
+                  Object {
+                    "rules": Array [
+                      Object {
+                        "context": "foo",
+                        "data": Array [
+                          "abc",
+                        ],
+                        "type": "notIn",
+                      },
+                    ],
+                    "type": "setVisibility",
+                  },
+                ],
+                "custom": false,
+                "handleChange": [Function],
+                "id": "bar",
+                "label": "bar",
+                "type": "text",
+              }
+            }
+            errorText=""
+            name="foo.bar"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="bar"
+              leftElement={null}
+              multiLine={false}
+              name="foo.bar"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value=""
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={false}
+                htmlFor="foo.bar"
+                isFocused={false}
+                label="bar"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.bar"
+                    isFloating={false}
+                    isFocused={false}
+                    label="bar"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-1fekhao"
+                      htmlFor="foo.bar"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="bar"
+                      >
+                        <span
+                          className=""
+                        >
+                          bar
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.bar"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value=""
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.bar"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value=""
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.bar"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value=""
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.bar.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "bar": Object {
+          "actions": Array [
+            Object {
+              "rules": Array [
+                Object {
+                  "context": "foo",
+                  "data": Array [
+                    "abc",
+                  ],
+                  "type": "notIn",
+                },
+              ],
+              "type": "setVisibility",
+            },
+          ],
+          "label": "bar",
+          "type": "text",
+        },
+        "foo": Object {
+          "label": "foo",
+          "type": "text",
+          "visible": true,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="abc"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="foo"
+              leftElement={null}
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value="abc"
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={true}
+                htmlFor="foo.foo"
+                isFocused={false}
+                label="foo"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.foo"
+                    isFloating={true}
+                    isFocused={false}
+                    label="foo"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+                      htmlFor="foo.foo"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="foo"
+                      >
+                        <span
+                          className=""
+                        >
+                          foo
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.foo"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value="abc"
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.foo"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value="abc"
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.foo"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value="abc"
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
+          props={null}
+        />
+        <Portal
+          name="foo.bar.before"
+          props={null}
+        />
+        <Portal
+          name="foo.bar"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "actions": Array [
+                  Object {
+                    "rules": Array [
+                      Object {
+                        "context": "foo",
+                        "data": Array [
+                          "abc",
+                        ],
+                        "type": "notIn",
+                      },
+                    ],
+                    "type": "setVisibility",
+                  },
+                ],
+                "custom": false,
+                "handleChange": [Function],
+                "id": "bar",
+                "label": "bar",
+                "type": "text",
+              }
+            }
+            errorText=""
+            name="foo.bar"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={false}
+          />
+        </Portal>
+        <Portal
+          name="foo.bar.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should not render invisible field 1`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "firstName": Object {
+          "label": "foo",
+          "type": "text",
+          "visible": false,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.firstName.before"
+          props={null}
+        />
+        <Portal
+          name="foo.firstName"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "firstName",
+                "label": "foo",
+                "type": "text",
+                "visible": false,
+              }
+            }
+            errorText=""
+            name="foo.firstName"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={false}
+          />
+        </Portal>
+        <Portal
+          name="foo.firstName.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should render empty form 1`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {},
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      />
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should render two text fields 1`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "firstName": Object {
+          "label": "foo",
+          "type": "text",
+          "visible": true,
+        },
+        "lastName": Object {
+          "label": "bar",
+          "type": "text",
+          "visible": true,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.firstName.before"
+          props={null}
+        />
+        <Portal
+          name="foo.firstName"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "firstName",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.firstName"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="foo"
+              leftElement={null}
+              multiLine={false}
+              name="foo.firstName"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value=""
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={false}
+                htmlFor="foo.firstName"
+                isFocused={false}
+                label="foo"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.firstName"
+                    isFloating={false}
+                    isFocused={false}
+                    label="foo"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-1fekhao"
+                      htmlFor="foo.firstName"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="foo"
+                      >
+                        <span
+                          className=""
+                        >
+                          foo
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.firstName"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value=""
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.firstName"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value=""
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.firstName"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value=""
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.firstName.after"
+          props={null}
+        />
+        <Portal
+          name="foo.lastName.before"
+          props={null}
+        />
+        <Portal
+          name="foo.lastName"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "handleChange": [Function],
+                "id": "lastName",
+                "label": "bar",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.lastName"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value=""
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="bar"
+              leftElement={null}
+              multiLine={false}
+              name="foo.lastName"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value=""
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={false}
+                htmlFor="foo.lastName"
+                isFocused={false}
+                label="bar"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.lastName"
+                    isFloating={false}
+                    isFocused={false}
+                    label="bar"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-1fekhao"
+                      htmlFor="foo.lastName"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="bar"
+                      >
+                        <span
+                          className=""
+                        >
+                          bar
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.lastName"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value=""
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.lastName"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value=""
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.lastName"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value=""
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.lastName.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should reset value when rule applies 1`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "bar": Object {
+          "actions": Array [
+            Object {
+              "params": Object {
+                "type": "fixed",
+                "value": "cheat",
+              },
+              "rules": Array [
+                Object {
+                  "context": "foo",
+                  "data": Array [
+                    "default",
+                  ],
+                  "type": "notIn",
+                },
+              ],
+              "type": "setValue",
+            },
+          ],
+          "default": "default",
+          "label": "bar",
+          "type": "text",
+        },
+        "foo": Object {
+          "default": "default",
+          "label": "foo",
+          "type": "text",
+          "visible": true,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="default"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="foo"
+              leftElement={null}
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value="default"
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={true}
+                htmlFor="foo.foo"
+                isFocused={false}
+                label="foo"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.foo"
+                    isFloating={true}
+                    isFocused={false}
+                    label="foo"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+                      htmlFor="foo.foo"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="foo"
+                      >
+                        <span
+                          className=""
+                        >
+                          foo
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.foo"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value="default"
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.foo"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value="default"
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.foo"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value="default"
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
+          props={null}
+        />
+        <Portal
+          name="foo.bar.before"
+          props={null}
+        />
+        <Portal
+          name="foo.bar"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "actions": Array [
+                  Object {
+                    "params": Object {
+                      "type": "fixed",
+                      "value": "cheat",
+                    },
+                    "rules": Array [
+                      Object {
+                        "context": "foo",
+                        "data": Array [
+                          "default",
+                        ],
+                        "type": "notIn",
+                      },
+                    ],
+                    "type": "setValue",
+                  },
+                ],
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "bar",
+                "label": "bar",
+                "type": "text",
+              }
+            }
+            errorText=""
+            name="foo.bar"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="default"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="bar"
+              leftElement={null}
+              multiLine={false}
+              name="foo.bar"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value="default"
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={true}
+                htmlFor="foo.bar"
+                isFocused={false}
+                label="bar"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.bar"
+                    isFloating={true}
+                    isFocused={false}
+                    label="bar"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+                      htmlFor="foo.bar"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="bar"
+                      >
+                        <span
+                          className=""
+                        >
+                          bar
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.bar"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value="default"
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.bar"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value="default"
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.bar"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value="default"
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.bar.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
+
+exports[`<FormBuilder /> should reset value when rule applies 2`] = `
+<FormBuilder
+  className=""
+  config={
+    Object {
+      "fields": Object {
+        "bar": Object {
+          "actions": Array [
+            Object {
+              "params": Object {
+                "type": "fixed",
+                "value": "cheat",
+              },
+              "rules": Array [
+                Object {
+                  "context": "foo",
+                  "data": Array [
+                    "default",
+                  ],
+                  "type": "notIn",
+                },
+              ],
+              "type": "setValue",
+            },
+          ],
+          "default": "default",
+          "label": "bar",
+          "type": "text",
+        },
+        "foo": Object {
+          "default": "default",
+          "label": "foo",
+          "type": "text",
+          "visible": true,
+        },
+      },
+    }
+  }
+  defaults={Object {}}
+  handleUpdate={[Function]}
+  name="foo"
+  onSubmit={[Function]}
+>
+  <Form
+    onSubmit={[Function]}
+  >
+    <form
+      action="#"
+      onKeyPress={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className=""
+      >
+        <Portal
+          name="foo.foo.before"
+          props={null}
+        />
+        <Portal
+          name="foo.foo"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "foo",
+                "label": "foo",
+                "type": "text",
+                "visible": true,
+              }
+            }
+            errorText=""
+            name="foo.foo"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="abc"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="foo"
+              leftElement={null}
+              multiLine={false}
+              name="foo.foo"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value="abc"
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={true}
+                htmlFor="foo.foo"
+                isFocused={false}
+                label="foo"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.foo"
+                    isFloating={true}
+                    isFocused={false}
+                    label="foo"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+                      htmlFor="foo.foo"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="foo"
+                      >
+                        <span
+                          className=""
+                        >
+                          foo
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.foo"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value="abc"
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.foo"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value="abc"
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.foo"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value="abc"
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.foo.after"
+          props={null}
+        />
+        <Portal
+          name="foo.bar.before"
+          props={null}
+        />
+        <Portal
+          name="foo.bar"
+          props={null}
+        >
+          <TextElement
+            element={
+              Object {
+                "actions": Array [
+                  Object {
+                    "params": Object {
+                      "type": "fixed",
+                      "value": "cheat",
+                    },
+                    "rules": Array [
+                      Object {
+                        "context": "foo",
+                        "data": Array [
+                          "default",
+                        ],
+                        "type": "notIn",
+                      },
+                    ],
+                    "type": "setValue",
+                  },
+                ],
+                "custom": false,
+                "default": "default",
+                "handleChange": [Function],
+                "id": "bar",
+                "label": "bar",
+                "type": "text",
+              }
+            }
+            errorText=""
+            name="foo.bar"
+            style={
+              Object {
+                "field": "",
+              }
+            }
+            value="cheat"
+            visible={true}
+          >
+            <TextField
+              className=""
+              errorText=""
+              isControlled={true}
+              label="bar"
+              leftElement={null}
+              multiLine={false}
+              name="foo.bar"
+              onChange={[Function]}
+              placeholder=""
+              rightElement={null}
+              type="text"
+              value="cheat"
+            >
+              <FormElement
+                className=""
+                errorText=""
+                hasPlaceholder={true}
+                hasUnderline={true}
+                hasValue={true}
+                htmlFor="foo.bar"
+                isFocused={false}
+                label="bar"
+                placeholder=""
+              >
+                <div
+                  className="css-1vjh8yv "
+                >
+                  <Placeholder
+                    placeholder=""
+                    visible={false}
+                  >
+                    <div
+                      className="css-oc0mp css-1jyyyen"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </Placeholder>
+                  <Label
+                    hasErrorMessage={false}
+                    htmlFor="foo.bar"
+                    isFloating={true}
+                    isFocused={false}
+                    label="bar"
+                  >
+                    <label
+                      className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+                      htmlFor="foo.bar"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string="bar"
+                      >
+                        <span
+                          className=""
+                        >
+                          bar
+                        </span>
+                      </Translate>
+                    </label>
+                  </Label>
+                  <Grid
+                    className=""
+                    component="ul"
+                    wrap={false}
+                  >
+                    <ul
+                      className=" css-h7r55a"
+                    >
+                      <GridItem
+                        className=""
+                        component="li"
+                        grow={1}
+                        shrink={1}
+                      >
+                        <li
+                          className=" css-1gs0ko2"
+                        >
+                          <Component
+                            className="css-keangt"
+                            isControlled={true}
+                            multiLine={false}
+                            name="foo.bar"
+                            onChange={[Function]}
+                            type="text"
+                            validateOnBlur={true}
+                            value="cheat"
+                          >
+                            <SimpleInput
+                              autoComplete={false}
+                              autoCorrect={false}
+                              className="css-keangt"
+                              disabled={false}
+                              id={null}
+                              isControlled={true}
+                              multiLine={false}
+                              name="foo.bar"
+                              onChange={[Function]}
+                              onFocusChange={[Function]}
+                              onSanitize={[Function]}
+                              onValidate={[Function]}
+                              password={false}
+                              setRef={[Function]}
+                              type="text"
+                              validateOnBlur={true}
+                              value="cheat"
+                            >
+                              <input
+                                autoComplete="off"
+                                autoCorrect="off"
+                                className="css-keangt"
+                                disabled={false}
+                                id={null}
+                                name="foo.bar"
+                                onBlur={[Function]}
+                                onChange={[Function]}
+                                onFocus={[Function]}
+                                type="text"
+                                value="cheat"
+                              />
+                            </SimpleInput>
+                          </Component>
+                        </li>
+                      </GridItem>
+                    </ul>
+                  </Grid>
+                  <Underline
+                    hasErrorMessage={false}
+                    isFocused={false}
+                  >
+                    <div
+                      className="css-ycal4l"
+                    >
+                      <div
+                        className="css-1tpmuef"
+                        style={
+                          Object {
+                            "borderBottomColor": undefined,
+                            "transform": "scale3d(0,1,1)",
+                          }
+                        }
+                      />
+                    </div>
+                  </Underline>
+                  <ErrorText
+                    className={null}
+                    errorText=""
+                  >
+                    <div
+                      className="css-hmgfge"
+                    >
+                      <Translate
+                        className=""
+                        params={Object {}}
+                        string=""
+                      >
+                        <span
+                          className=""
+                        />
+                      </Translate>
+                    </div>
+                  </ErrorText>
+                </div>
+              </FormElement>
+            </TextField>
+          </TextElement>
+        </Portal>
+        <Portal
+          name="foo.bar.after"
+          props={null}
+        />
+      </div>
+    </form>
+  </Form>
+</FormBuilder>
+`;
