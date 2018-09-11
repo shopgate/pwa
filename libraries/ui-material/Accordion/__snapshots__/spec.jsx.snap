@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> should not render without a label 1`] = `<Accordion />`;
+
+exports[`<Accordion /> should not render without children 1`] = `
+<Accordion
+  label="something"
+/>
+`;
+
+exports[`<Accordion /> should render in closed state 1`] = `
+<Accordion
+  label="something"
+>
+  Some content.
+</Accordion>
+`;
