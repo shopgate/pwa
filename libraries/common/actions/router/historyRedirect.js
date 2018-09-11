@@ -1,4 +1,5 @@
-import { historyPop, historyReplace } from './index';
+import { historyPop } from './historyPop';
+import { historyReplace } from './historyReplace';
 
 /**
  * Performs a redirect. When the action params contain a location, the current history entry

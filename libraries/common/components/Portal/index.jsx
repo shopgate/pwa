@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import { logger } from '@shopgate/pwa-core/helpers';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig } from '../../helpers/config';
@@ -46,11 +46,11 @@ class Portal extends Component {
       return true;
     }
 
-    if (!isEqual(this.props.children, nextProps.children)) {
+    if (!shallowCompare(this.props.children, nextProps.children)) {
       return true;
     }
 
-    if (!isEqual(this.props.props, nextProps.props)) {
+    if (!shallowCompare(this, this.props.props, nextProps.props)) {
       return true;
     }
 
