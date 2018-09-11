@@ -9,8 +9,8 @@ import requestFilters from '../action-creators/requestFilters';
 import receiveFilters from '../action-creators/receiveFilters';
 import errorFilters from '../action-creators/errorFilters';
 import {
-  getAvailableFiltersStack,
   getActiveFilters,
+  getFilterResults,
 } from '../selectors';
 import buildFilterParams from './helpers/buildFilterParams';
 import processParams from './helpers/processParams';
@@ -27,9 +27,9 @@ const getFilters = () => (dispatch, getState) => {
   const hash = generateResultHash({
     pipeline: pipelines.SHOPGATE_CATALOG_GET_FILTERS,
     ...params,
-  }, false);
+  }, false, false);
 
-  const result = getAvailableFiltersStack(state)[hash];
+  const result = getFilterResults(state)[hash];
 
   if (!shouldFetchFilters(result)) {
     return;

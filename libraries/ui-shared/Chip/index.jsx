@@ -11,6 +11,7 @@ import styles from './style';
 class Chip extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    id: PropTypes.string.isRequired,
     invert: PropTypes.bool,
     onClick: PropTypes.func,
     onRemove: PropTypes.func,
@@ -56,6 +57,10 @@ class Chip extends Component {
     return themeConfig.colors.accent;
   }
 
+  handleRemove = () => {
+    this.props.onRemove(this.props.id);
+  }
+
   /**
    * Renders the remove icon of the chip if it can be removable.
    * @returns {JSX|null}
@@ -66,14 +71,13 @@ class Chip extends Component {
     }
 
     return (
-      <Button className={styles.removeButton} onClick={this.props.onRemove} testId={`remove ${this.props.children}`}>
+      <Button className={styles.removeButton} onClick={this.handleRemove}>
         <CrossIcon size={16} color={this.crossFontColor} />
       </Button>
     );
   }
 
   /**
-   * Renders the component.
    * @returns {JSX}
    */
   render() {
@@ -83,7 +87,7 @@ class Chip extends Component {
         className={this.wrapperStyle}
       >
         {this.renderRemoveIcon()}
-        <Button className={styles.name} onClick={this.props.onClick} testId={this.props.children}>
+        <Button className={styles.name} onClick={this.props.onClick}>
           {this.props.children}
         </Button>
       </div>
