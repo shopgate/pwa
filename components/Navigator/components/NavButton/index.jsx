@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
 import { ArrowIcon, BurgerIcon, CrossIcon } from '@shopgate/pwa-ui-shared';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { showBackButton, showCloseButton } from './helpers';
 import connect from './connector';
 import styles from './style';
@@ -12,7 +13,6 @@ import styles from './style';
 class NavButton extends Component {
   static propTypes = {
     close: PropTypes.func.isRequired,
-    openNavDrawer: PropTypes.func.isRequired,
     pattern: PropTypes.string.isRequired,
   };
 
@@ -68,7 +68,7 @@ class NavButton extends Component {
     if (this.state.backButton || this.state.closeButton) {
       this.props.close();
     } else {
-      this.props.openNavDrawer();
+      NavDrawer.open();
     }
   }
 

@@ -1,0 +1,1 @@
+export const FILTERBAR_UPDATE = 'FILTERBAR_UPDATE';

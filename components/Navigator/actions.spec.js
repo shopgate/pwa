@@ -13,7 +13,6 @@ import setNavigatorBrackground from './actions/setNavigatorBackground';
 import setNavigatorColor from './actions/setNavigatorColor';
 import setNavigatorSearchPhrase from './actions/setNavigatorSearchPhrase';
 import toggleCartIcon from './actions/toggleCartIcon';
-import toggleNavDrawer from './actions/toggleNavDrawer';
 import toggleNavSearchField from './actions/toggleNavSearchField';
 import toggleProgressBar from './actions/toggleProgressBar';
 
@@ -61,7 +60,6 @@ const params = {
   setNavigatorColor: 'red',
   setNavigatorSearchPhrase: 'shirt',
   toggleCartIcon: false,
-  toggleNavDrawer: false,
   toggleNavSearchField: true,
   toggleProgressBar: true,
 };
@@ -79,7 +77,6 @@ const actions = [
   setNavigatorColor,
   setNavigatorSearchPhrase,
   toggleCartIcon,
-  toggleNavDrawer,
   toggleNavSearchField,
   toggleProgressBar,
 ];
@@ -103,7 +100,6 @@ const results = [
   [{ type: types.SET_NAVIGATOR_COLOR, color: 'red' }],
   [{ type: types.SET_NAVIGATOR_SEARCH_QUERY, query: 'shirt' }],
   [{ type: types.TOGGLE_NAVIGATOR_CART_ICON, active: false }],
-  [{ type: types.TOGGLE_NAV_DRAWER, active: false }],
   [{ type: types.TOGGLE_NAVIGATOR_SEARCH, active: true }],
   [{ type: types.TOGGLE_PROGRESS_BAR, active: true }],
 ];

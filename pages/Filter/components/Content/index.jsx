@@ -1,165 +1,223 @@
 import React, { Component, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
+import conductor from '@virtuous/conductor';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/filter/constants/Portals';
-import {
-  FILTER_TYPE_RANGE,
-  FILTER_TYPE_MULTISELECT,
-} from '@shopgate/pwa-common-commerce/filter/constants';
-import CardList from '@shopgate/pwa-ui-shared/CardList';
-import PriceRangeSlider from '../PriceRangeSlider';
-import ListItem from '../ListItem';
-import ClearAllButton from '../ClearAllButton';
+import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
+import { PORTAL_NAVIGATOR_BUTTON } from 'Components/Navigator/constants';
+import PriceSlider from './components/PriceSlider';
+import Selector from './components/Selector';
+import ApplyButton from './components/ApplyButton';
+import ResetButton from './components/ResetButton';
+import buildInitialFilters from './helpers/buildInitialFilters';
 import connect from './connector';
-import styles from './style';
 
 /**
- * The Search view component.
+ * The FilterContent component.
  */
-class Filter extends Component {
+class FilterContent extends Component {
   static propTypes = {
-    queryParams: PropTypes.string.isRequired,
-    temporaryFilters: PropTypes.shape().isRequired,
-    availableFilters: PropTypes.arrayOf(PropTypes.shape()),
-    mergeTemporaryFilters: PropTypes.func,
-    removeTemporaryFilter: PropTypes.func,
-  };
+    activeFilters: PropTypes.shape(), /* eslint-disable-line */
+    filters: PropTypes.arrayOf(PropTypes.shape()),
+    parentId: PropTypes.string,
+  }
 
   static defaultProps = {
-    availableFilters: [],
-    mergeTemporaryFilters() {},
-    removeTemporaryFilter() {},
-  };
+    activeFilters: null,
+    filters: null,
+    parentId: null,
+  }
+
+  /**
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
+
+    this.initialFilters = buildInitialFilters(props.filters, props.activeFilters);
+    this.navigatorPosition = document.getElementById(PORTAL_NAVIGATOR_BUTTON);
+    this.state = {
+      currentFilters: props.activeFilters || {},
+      filters: {},
+    };
+  }
 
   /**
    * @param {Object} nextProps The next component props.
-   * @return {boolean}
    */
-  shouldComponentUpdate(nextProps) {
-    if (this.props.queryParams !== nextProps.queryParams) {
-      return true;
+  componentWillReceiveProps({ activeFilters, filters }) {
+    if (Object.keys(this.initialFilters).length > 0) {
+      return;
     }
 
-    if (!isEqual(this.props.temporaryFilters, nextProps.temporaryFilters)) {
-      return true;
-    }
-
-    if (!isEqual(this.props.availableFilters, nextProps.availableFilters)) {
-      return true;
-    }
-
-    return false;
+    this.initialFilters = buildInitialFilters(filters, activeFilters);
   }
 
   /**
- * Returns the currently available filters.
- * @return {Array}
- */
-  get enrichedAvailableFilters() {
-    // TODO: Handle other filter types (multiselect here)
-    return this.props.availableFilters.map(filter => this.updateFilter(filter));
+   * Determine if there are filters that have been changed.
+   * @returns {boolean}
+   */
+  get canReset() {
+    return (
+      !!(Object.keys(this.state.currentFilters).length || Object.keys(this.state.filters).length)
+    );
   }
 
   /**
-   * Updates the filter.
-   * @param {Object} filter The current filter.
-   * @returns {Object} The updated filter.
+   * Determine if there are filters that have been changed.
+   * @returns {boolean}
    */
-  updateFilter = (filter) => {
-    const temporaryFilter = cloneDeep(this.props.temporaryFilters[filter.id]);
-
-    switch (filter.type) {
-      case FILTER_TYPE_RANGE: {
-        const filterMin = Math.floor(filter.minimum / 100);
-        const filterMax = Math.ceil(filter.maximum / 100);
-
-        return {
-          ...filter,
-          active: temporaryFilter
-            ? [temporaryFilter.minimum, temporaryFilter.maximum]
-            : [filter.minimum, filter.maximum],
-          handleChange: debounce((minimum, maximum) => {
-            const roundedInputMin = Math.floor(minimum / 100);
-            const roundedInputMax = Math.ceil(maximum / 100);
-
-            // Check if there is a change. If not we can remove the filter again
-            if (roundedInputMin <= filterMin && roundedInputMax >= filterMax) {
-              this.props.removeTemporaryFilter(filter.id);
-              return;
-            }
-
-            this.props.mergeTemporaryFilters({
-              [filter.id]: {
-                label: filter.label,
-                type: filter.type,
-                minimum,
-                maximum,
-              },
-            });
-          }, 300),
-        };
-      }
-      case FILTER_TYPE_MULTISELECT:
-        return {
-          ...filter,
-          url: `${filter.url}${this.props.queryParams}`,
-          active: temporaryFilter ? temporaryFilter.valueLabels : null,
-        };
-      default:
-        return {
-          ...filter,
-          url: `${filter.url}${this.props.queryParams}`,
-          active: temporaryFilter ? temporaryFilter.valueLabels : null,
-        };
-    }
-  };
+  get hasChanged() {
+    return (
+      Object.keys(this.state.filters).length > 0
+      || !!(Object.keys(this.state.currentFilters).length === 0 && this.props.activeFilters)
+    );
+  }
 
   /**
-   * Renders the component.
+   * @param {string} id The filter is to look for.
+   * @returns {Array}
+   */
+  getFilterValue = id => (
+    this.state.filters[id] ? this.state.filters[id].value : this.initialFilters[id].value
+  )
+
+  /**
+   * @param {string} id The id of the filter to add.
+   * @param {Array} value The selected values of the filter.
+   */
+  update = (id, value) => {
+    const { filters } = this.props;
+
+    const filter = filters.find(entry => entry.id === id);
+    let initialValue = [];
+
+    // In the case of a range filter, use the min and max.
+    if (filter.type === FILTER_TYPE_RANGE) {
+      initialValue = [filter.minimum, filter.maximum];
+    }
+
+    // Check if given value is the same as the initial value.
+    if (isEqual(value, initialValue)) {
+      this.remove(id);
+      return;
+    }
+
+    this.add(id, {
+      id,
+      type: filter.type,
+      label: filter.label,
+      value,
+    });
+  }
+
+  /**
+   * @param {string} id The filter is to add.
+   * @param {Array} value The values that changed.
+   */
+  add = (id, value) => {
+    this.setState({
+      filters: {
+        ...this.state.filters,
+        [id]: value,
+      },
+    });
+  }
+
+  /**
+   * @param {string} id The filter is to remove.
+   */
+  remove = (id) => {
+    this.setState((prevState) => {
+      // Separate the given id from the other set filters.
+      const { [id]: removed, ...activeFilters } = prevState.filters;
+      return { filters: activeFilters };
+    });
+  }
+
+  updateDebounced = debounce(this.update, 50)
+
+  reset = () => {
+    this.initialFilters = buildInitialFilters(this.props.filters, {});
+    this.setState({
+      currentFilters: {},
+      filters: {},
+    });
+  }
+
+  save = () => {
+    const { currentFilters, filters } = this.state;
+
+    // Create a set of active filters by combining state and currentFilters.
+    const activeFilters = {
+      ...currentFilters,
+      ...filters,
+    };
+
+    const newFilters = Object.keys(activeFilters).length ? activeFilters : null;
+
+    conductor.update(this.props.parentId, { filters: newFilters });
+    conductor.pop();
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
-    // There are no available filters to show.
-    if (!this.props.availableFilters) {
+    const { filters } = this.props;
+
+    if (!filters) {
       return null;
     }
 
-    const hasFilters = Object.keys(this.props.temporaryFilters).length > 0;
-
     return (
-      <div className={styles.container}>
-        <CardList>
-          {this.enrichedAvailableFilters.map(filter => (
-            <CardList.Item key={filter.id}>
-              {(filter.type === FILTER_TYPE_RANGE) && (
-                <Fragment>
-                  <Portal name={portals.FILTER_PRICE_RANGE_BEFORE} props={{ filter }} />
-                  <Portal name={portals.FILTER_PRICE_RANGE} props={{ filter }}>
-                    <div key={filter.id} className={styles.filterContainer}>
-                      <PriceRangeSlider
-                        min={filter.minimum}
-                        max={filter.maximum}
-                        value={filter.active}
-                        onChange={filter.handleChange}
-                      />
-                    </div>
-                  </Portal>
-                  <Portal name={portals.FILTER_PRICE_RANGE_AFTER} props={{ filter }} />
-                </Fragment>
-              )}
-              {(filter.type !== FILTER_TYPE_RANGE) && (
-                <ListItem filter={filter} key={filter.id} />
-              )}
-            </CardList.Item>
-          ))}
-        </CardList>
-        <ClearAllButton isActive={hasFilters} />
-      </div>
+      <Fragment>
+        {filters.map((filter) => {
+          const portalProps = { filter };
+          const value = this.getFilterValue(filter.id);
+
+          if (filter.type === FILTER_TYPE_RANGE) {
+            return (
+              <Fragment key={filter.id}>
+                <Portal name={portals.FILTER_PRICE_RANGE_BEFORE} props={portalProps} />
+                <Portal name={portals.FILTER_PRICE_RANGE} props={portalProps}>
+                  <PriceSlider
+                    id={filter.id}
+                    key={filter.id}
+                    min={filter.minimum}
+                    max={filter.maximum}
+                    onChange={this.updateDebounced}
+                    value={value}
+                  />
+                </Portal>
+                <Portal name={portals.FILTER_PRICE_RANGE_AFTER} props={portalProps} />
+              </Fragment>
+            );
+          }
+
+          return (
+            <Selector
+              id={filter.id}
+              key={filter.id}
+              label={filter.label}
+              values={filter.values}
+              multi={filter.type === FILTER_TYPE_MULTISELECT}
+              onChange={this.update}
+              selected={value}
+            />
+          );
+        })}
+        <ResetButton active={this.canReset} onClick={this.reset} />
+        {ReactDOM.createPortal(
+          <ApplyButton active={this.hasChanged} onClick={this.save} />,
+          this.navigatorPosition
+        )}
+      </Fragment>
     );
   }
 }
 
-export default connect(Filter);
+export default connect(FilterContent);
