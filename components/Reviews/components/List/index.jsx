@@ -1,32 +1,43 @@
-import React, { Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Review from './components/Review';
+import Title from './components/Title';
+import Rating from './components/Rating';
+import Text from './components/Text';
+import Info from './components/Info';
+import styles from './style';
+import connect from './connector';
 
 /**
  * Review List Component
- * @param {Object} reviews A list of reviews
- * @returns {JSX|null}
  */
-const List = ({ reviews }) => {
-  if (!reviews || !reviews.length) {
-    return null;
+class List extends PureComponent {
+  static propTypes = {
+    reviews: PropTypes.arrayOf(PropTypes.shape()),
+  };
+
+  static defaultProps = {
+    reviews: null,
+  };
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { reviews } = this.props;
+
+    if (!reviews || reviews.length === 0) {
+      return null;
+    }
+
+    return reviews.map(review => (
+      <div key={review.id} className={styles} data-test-id={`reviewTitle: ${review.title}`}>
+        <Title title={review.title} />
+        <Rating rate={review.rate} />
+        <Text review={review.review} />
+        <Info review={review} />
+      </div>
+    ));
   }
+}
 
-  return (
-    <Fragment>
-      {reviews.map(review => (
-        <Review key={review.id} review={review} />
-      ))}
-    </Fragment>
-  );
-};
-
-List.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape()),
-};
-
-List.defaultProps = {
-  reviews: null,
-};
-
-export default List;
+export default connect(List);
