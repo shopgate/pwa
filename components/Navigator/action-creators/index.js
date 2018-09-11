@@ -1,6 +1,5 @@
 import {
   TOGGLE_NAVIGATOR_CART_ICON,
-  TOGGLE_NAVIGATOR_SEARCH,
   TOGGLE_PROGRESS_BAR,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
@@ -31,16 +30,6 @@ export const toggleProgressBar = active => ({
  */
 export const toggleCartIcon = active => ({
   type: TOGGLE_NAVIGATOR_CART_ICON,
-  active,
-});
-
-/**
- * Toggles the navigator search.
- * @param {boolean} active The search active state.
- * @returns {Object} The action object.
- */
-export const toggleSearch = active => ({
-  type: TOGGLE_NAVIGATOR_SEARCH,
   active,
 });
 
