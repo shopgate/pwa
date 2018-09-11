@@ -9,7 +9,6 @@ const item = css({
 }).toString();
 
 const itemNotLast = css({
-  boxShadow: `0 1px 0 0 ${colors.darkGray}`,
   marginBottom: 1,
 }).toString();
 
@@ -22,16 +21,9 @@ const innerContainer = css({
   position: 'relative',
 }).toString();
 
-const glow = css({
-  bottom: -1,
-  height: '100%',
-  top: -1,
-}).toString();
-
 export default {
   item,
   itemNotLast,
   itemWithImage,
   innerContainer,
-  glow,
 };
