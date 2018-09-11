@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { getProductOptions } from '@shopgate/pwa-common-commerce/product/selectors/options';
 
 /**
@@ -18,6 +19,10 @@ const mapStateToProps = (state, props) => ({
  */
 const areStatePropsEqual = (next, prev) => {
   if (!prev.options && next.options) {
+    return false;
+  }
+
+  if (!isEqual(prev.options, next.options)) {
     return false;
   }
 
