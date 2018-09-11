@@ -97,8 +97,8 @@ class FilterBar extends Component {
   componentWillUnmount() {
     const { viewRef } = this.props;
 
-    if (viewRef) {
-      viewRef.removeEventListener('swipe', this.handleSwipe);
+    if (viewRef.current) {
+      viewRef.current.removeEventListener('swipe', this.handleSwipe);
     }
   }
 
