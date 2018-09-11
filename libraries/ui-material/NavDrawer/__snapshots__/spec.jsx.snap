@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavDrawer should match the snapshot 1`] = `
+<React.Fragment>
+  <Transition
+    appear={false}
+    enter={true}
+    exit={true}
+    in={false}
+    mountOnEnter={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    timeout={300}
+    unmountOnExit={false}
+  />
+  <Backdrop
+    className=""
+    color="#000"
+    duration={200}
+    isVisible={false}
+    level={4}
+    onClick={[Function]}
+    opacity={20}
+  />
+</React.Fragment>
+`;

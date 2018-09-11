@@ -45,5 +45,3 @@ export function configureStore(reducers, subscribers) {
 
   return store;
 }
-
-export default configureStore;
