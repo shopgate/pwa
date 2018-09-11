@@ -24,7 +24,24 @@ import CountryElement from './components/CountryElement';
 import ProvinceElement from './components/ProvinceElement';
 import RadioElement from './components/RadioElement';
 import CheckboxElement from './components/CheckboxElement';
-import iso3166 from './iso-3166-2';
+import buildFormElements from './builders/buildFormElements';
+import buildFormDefaults from './builders/buildFormDefaults';
+import buildCountryList from './builders/buildCountryList';
+import buildProvinceList from './builders/buildProvinceList';
+
+/**
+ * Takes a string and converts it to a part to be used in a portal name
+ * @param {string} s The string to be sanitized
+ * @return {string}
+ */
+const sanitize = s => s.replace(/[\\._]/, '-');
+/**
+ * Optional select element
+ * @type {Object}
+ */
+const emptySelectOption = {
+  '': '',
+};
 
 /**
  * Takes a form configuration and handles rendering and updates of the form fields.
@@ -60,16 +77,20 @@ class Builder extends Component {
       errors: {},
     };
 
-    this.emptySelection = {
-      key: '',
-      label: '',
-    };
+    // Reorganize form elements into a structure that can be easily rendered
+    const formElements = buildFormElements(props.config, this.elementChangeHandler);
+    // Compute defaults
+    const formDefaults = buildFormDefaults(formElements, props.defaults);
+    // Assign defaults to state
+    this.state.formData = formDefaults;
 
-    // Reorganize form elements into a strucure that can be easily rendered
-    const formElements = this.buildFormElements(props.config);
-    const formDefaults = this.buildFormDefaults(formElements);
+    // Handle fixed visibilities
+    formElements.forEach((element) => {
+      // Assume as visible except it's explicitly set to "false"
+      this.state.elementVisibility[element.id] = element.visible !== false;
+    });
 
-    this.actionListener = new ActionListener(this.getProvincesList, formDefaults);
+    this.actionListener = new ActionListener(buildProvinceList, formDefaults);
     this.actionListener.attachAll(formElements);
 
     // Sort the elements after attaching action listeners to keep action hierarchy same as creation
@@ -78,33 +99,7 @@ class Builder extends Component {
     // Assemble combined country/province list based on the config element
     const countryElement = this.formElements.find(el => el.type === ELEMENT_TYPE_COUNTRY);
     if (countryElement) {
-      // Check validity of the country element options list "countries"
-      if (typeof countryElement.countries === 'object' &&
-        !Array.isArray(countryElement.countries)) {
-        logger.error("Error: Invalid property type 'countries' in element " +
-          `'${countryElement.id}'. Must be 'array', 'null' or 'undefined'`);
-      } else {
-        // Build country display list for the country element (whitelist)
-        // For 'null', 'undefined' and '[]' it shows all countries
-        let countryKeys;
-        if (countryElement.countries && countryElement.countries.length > 0) {
-          countryKeys = countryElement.countries;
-        } else {
-          countryKeys = Object.keys(iso3166);
-        }
-        this.countryList = countryKeys.reduce((reducer, countryCode) => ({
-          ...reducer,
-          [countryCode]: iso3166[countryCode].name,
-        }), {});
-
-        // Add a "no selection" element
-        if (!countryElement.required) {
-          this.countryList = {
-            [this.emptySelection.key]: this.emptySelection.label,
-            ...this.countryList,
-          };
-        }
-      }
+      this.countryList = buildCountryList(countryElement, emptySelectOption);
     }
 
     // Final form initialization, by triggering actionListeners and enable rendering for elements
@@ -116,159 +111,22 @@ class Builder extends Component {
   }
 
   /**
-   * Returns a list of provinces based on the given country id
-   *
-   * @param {string} countryCode Country code of the country to fetch provinces from
-   * @return {Object}
+   * Element change handler based on it's type,
+   * @param {string} elementId Element to create the handler for
+   * @param {string} value Element value
    */
-  getProvincesList = (countryCode) => {
-    if (!iso3166) {
-      return {};
-    }
-
-    let provinceList = {};
-    const provinceElement = this.formElements.find(el => el.type === ELEMENT_TYPE_PROVINCE);
-    if (provinceElement) {
-      /** @property {iso3166} divisions */
-      provinceList = iso3166[countryCode] ? iso3166[countryCode].divisions : {};
-      if (!provinceElement.required) {
-        provinceList = {
-          [this.emptySelection.key]: this.emptySelection.label,
-          ...provinceList,
-        };
-      }
-    }
-    return provinceList;
-  }
-
-  /**
-   * Takes a list of which elements to render based on the respective element type
-   *
-   * @param {Form} formConfig Configuration of which form fields to render
-   * @return {FormElement[]}
-   */
-  buildFormElements = (formConfig) => {
-    /**
-     * @type {FormElement[]}
-     */
-    let elementList = [];
-
-    let hasCountryElement = false;
-    let hasProvinceElement = false;
-
-    /**
-     * @param {string} id id
-     * @param {AnyFormField} field field
-     * @param {boolean} custom custom
-     */
-    const addFormElement = (id, field, custom) => {
-      // The "custom" field is just a placeholder for more fields
-      if (id === 'custom') {
-        return;
-      }
-
-      // Make sure country and province elements are only added once
-      if (field.type === ELEMENT_TYPE_COUNTRY) {
-        if (hasCountryElement) {
-          logger.error(`Error: Can not add multiple elements of type '${field.type}'`);
-          return;
-        }
-        hasCountryElement = true;
-      }
-      if (field.type === ELEMENT_TYPE_PROVINCE) {
-        if (hasProvinceElement) {
-          logger.error(`Error: Can not add multiple elements of type '${field.type}'`);
-          return;
-        }
-        hasProvinceElement = true;
-      }
-
-      elementList.push({
-        id,
-        ...field,
-        custom,
-      });
-    };
-
-    // Add all non-custom attributes and mark them as such
-    Object.keys(formConfig.fields).forEach((id) => {
-      addFormElement(id, formConfig.fields[id], false);
-    });
-
-    // Add custom fields to the element list
-    if (formConfig.fields.custom) {
-      Object.keys(formConfig.fields.custom).forEach((id) => {
-        addFormElement(id, formConfig.fields.custom[id], true);
-      });
-    }
-
-    // Generate handler functions for each element
-    elementList = elementList.map(element => ({
-      ...element,
-      handleChange: this.createElementChangeHandler(element),
-    }));
-
-    // Handle fixed visibilities
-    elementList.forEach((element) => {
-      // Assume as visible except it's explicitly set to "false"
-      this.state.elementVisibility[element.id] = element.visible !== false;
-    });
-
-    return elementList;
-  }
-
-  /**
-   * @param {Object} formElements form elements
-   * @returns {Object}
-   */
-  buildFormDefaults = (formElements) => {
-    const formDefaults = {};
-
-    // Take only those defaults from props, that are actually represented by an element
-    formElements.forEach((element) => {
-      let defaultState = null;
-
-      // Use default from element config as a base
-      if (element.default !== undefined) {
-        defaultState = element.default;
-      }
-
-      // Take defaults from "customAttributes" property or from the higher level, based on element
-      if (element.custom && this.props.defaults.customAttributes !== undefined) {
-        if (this.props.defaults.customAttributes[element.id] !== undefined) {
-          defaultState = this.props.defaults.customAttributes[element.id];
-        }
-      } else if (!element.custom && this.props.defaults[element.id] !== undefined) {
-        defaultState = this.props.defaults[element.id];
-      }
-
-      // Save default into the form state and into defaults property if one was set
-      if (defaultState !== undefined) {
-        this.state.formData[element.id] = defaultState;
-        formDefaults[element.id] = defaultState;
-      }
-    });
-
-    return formDefaults;
-  }
-
-  /**
-   * Takes an element and generates a change handler based on it's type,
-   * @param {Object} element Element to create the handler for
-   * @returns {function}
-   */
-  createElementChangeHandler = element => (value) => {
+  elementChangeHandler = (elementId, value) => {
     // Apply value change to new state
     const newState = {
       ...this.state,
       formData: {
         ...this.state.formData,
-        [element.id]: value,
+        [elementId]: value,
       },
     };
 
     // Handle context sensitive functionality by via "action" listener and use the "new" state
-    const updatedState = this.actionListener.notify(element.id, this.state, newState);
+    const updatedState = this.actionListener.notify(elementId, this.state, newState);
 
     // TODO: handle validation errors and set "hasErrors" accordingly - only "requred" check, yet
     let hasErrors = false;
@@ -338,6 +196,10 @@ class Builder extends Component {
     const elementValue = this.state.formData[element.id];
     const elementVisible = this.state.elementVisibility[element.id] || false;
 
+    if (!elementVisible) {
+      return null;
+    }
+
     /*
      * Elements do check the type before they render themselves, but not even trying to render
      * creates a better React DOM
@@ -384,7 +246,10 @@ class Builder extends Component {
       case ELEMENT_TYPE_PROVINCE: {
         const countryElement = this.formElements.find(el => el.type === ELEMENT_TYPE_COUNTRY);
         const provincesList = countryElement && this.state.formData[countryElement.id]
-          ? this.getProvincesList(this.state.formData[countryElement.id])
+          ? buildProvinceList(
+            this.state.formData[countryElement.id],
+            element.required ? null : emptySelectOption
+          )
           : {};
 
         return (
@@ -437,15 +302,6 @@ class Builder extends Component {
    * @return {JSX}
    */
   render() {
-    /**
-     * Takes a string and converts it to a part to be used in a portal name
-     * @param {string} s The string to be sanitized
-     * @return {string}
-     */
-    function sanitize(s) {
-      return s.replace(/[\\._]/, '-');
-    }
-
     return (
       <Fragment>
         <Form onSubmit={this.props.onSubmit}>
@@ -470,4 +326,4 @@ class Builder extends Component {
   }
 }
 
-export { Builder };
+export default Builder;

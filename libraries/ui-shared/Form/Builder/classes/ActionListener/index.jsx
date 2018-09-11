@@ -170,7 +170,6 @@ class ActionListener {
         ? ''
         : Object.keys(this.getProvincesList(countryValue))[0];
     }
-
     return newState;
   }
 
