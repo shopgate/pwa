@@ -18,7 +18,7 @@ describe('<AccordionContainer />', () => {
     const props = wrapper.find('Child').props();
 
     expect(wrapper).toMatchSnapshot();
-    expect(props.isOpen).toEqual(false);
+    expect(props.open).toEqual(false);
     expect(typeof props.handleOpen).toEqual('function');
     expect(typeof props.handleClose).toEqual('function');
   });
@@ -33,6 +33,6 @@ describe('<AccordionContainer />', () => {
     wrapper.setState({ open: true });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Child').props().isOpen).toEqual(true);
+    expect(wrapper.find('Child').props().open).toEqual(true);
   });
 });
