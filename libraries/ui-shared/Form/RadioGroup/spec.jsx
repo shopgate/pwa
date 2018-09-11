@@ -3,15 +3,19 @@ import { mount } from 'enzyme';
 import RadioItem from './components/Item';
 import RadioGroup from '.';
 
+const defProps = {
+  name: 'radio',
+};
+
 describe('<RadioGroup />', () => {
   it('should render empty group', () => {
-    const wrapper = mount(<RadioGroup />);
+    const wrapper = mount(<RadioGroup {...defProps} />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render group with item', () => {
+  it('should render column group with items', () => {
     const wrapper = mount((
-      <RadioGroup>
+      <RadioGroup {...defProps}>
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
@@ -21,21 +25,30 @@ describe('<RadioGroup />', () => {
     expect(typeof wrapper.find(RadioItem).prop('onChange')).toEqual('function');
   });
 
-  it('should make default as active', () => {
+  it('should render rows group with items', () => {
     const wrapper = mount((
-      <RadioGroup default="foo">
+      <RadioGroup {...defProps} direction="rows">
+        <RadioItem name="foo" label="foo" />
+      </RadioGroup>
+    ));
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should use default value', () => {
+    const wrapper = mount((
+      <RadioGroup {...defProps} value="foo">
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(RadioItem).length).toEqual(1);
-    expect(wrapper.find(RadioItem).prop('active')).toEqual(true);
+    expect(wrapper.find(RadioItem).prop('checked')).toEqual(true);
   });
 
-  it('should have on active at a time', () => {
+  it('should have on value at a time', () => {
     const wrapper = mount((
-      <RadioGroup>
+      <RadioGroup {...defProps}>
         <RadioItem name="foo" label="foo" />
         <RadioItem name="bar" label="bar" />
       </RadioGroup>
@@ -44,30 +57,35 @@ describe('<RadioGroup />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(RadioItem).length).toEqual(2);
 
-    // First element active
-    expect(wrapper.find(RadioItem).at(0).prop('onChange')());
-    wrapper.update();
-    expect(wrapper.find(RadioItem).at(0).prop('active')).toEqual(true);
-    expect(wrapper.find(RadioItem).at(1).prop('active')).toEqual(false);
+    const radio1 = wrapper.find(RadioItem).at(0).find('input');
+    const radio2 = wrapper.find(RadioItem).at(1).find('input');
 
-    // Second element active
-    expect(wrapper.find(RadioItem).at(1).prop('onChange')());
+    // First element value
+    radio1.simulate('change');
     wrapper.update();
-    expect(wrapper.find(RadioItem).at(0).prop('active')).toEqual(false);
-    expect(wrapper.find(RadioItem).at(1).prop('active')).toEqual(true);
+    expect(wrapper.find(RadioItem).at(0).prop('checked')).toEqual(true);
+    expect(wrapper.find(RadioItem).at(1).prop('checked')).toEqual(false);
+
+    // Second element value
+    radio2.simulate('change');
+    wrapper.update();
+    expect(wrapper.find(RadioItem).at(0).prop('checked')).toEqual(false);
+    expect(wrapper.find(RadioItem).at(1).prop('checked')).toEqual(true);
   });
 
   it('should call onChange callback', () => {
     const onChange = jest.fn();
     const wrapper = mount((
-      <RadioGroup onChange={onChange}>
+      <RadioGroup {...defProps} onChange={onChange}>
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(RadioItem).length).toEqual(1);
-    wrapper.find(RadioItem).prop('onChange')();
+
+    const radio = wrapper.find(RadioItem).at(0).find('input');
+    radio.simulate('change');
 
     expect(onChange).toHaveBeenCalledWith('foo');
   });

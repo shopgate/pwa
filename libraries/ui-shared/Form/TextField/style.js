@@ -1,5 +1,8 @@
 import { css } from 'glamor';
 
+// Selects a date input that is not focused.
+const bluredDateSelector = 'input[type="date"]:in-range:not(:focus)';
+
 /**
  * The styles for the input field.
  */
@@ -11,6 +14,18 @@ const input = css({
   outline: 0,
   fontSize: 16,
   lineHeight: '19px',
+  // Fixes layout issue with webkit. Height is 0 in some webkit browsers.
+  '& input[type="date"]': {
+    minHeight: '1.3rem',
+  },
+  // Removes placeholder texts on chrome when input is not focused.
+  [`& ${bluredDateSelector}::-webkit-datetime-edit-year-field, ` +
+    `${bluredDateSelector}::-webkit-datetime-edit-month-field, ` +
+    `${bluredDateSelector}::-webkit-datetime-edit-day-field, ` +
+    `${bluredDateSelector}::-webkit-datetime-edit-text`
+  ]: {
+    color: 'transparent',
+  },
 }).toString();
 
 /**

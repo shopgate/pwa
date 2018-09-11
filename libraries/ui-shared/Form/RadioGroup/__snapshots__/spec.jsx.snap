@@ -2,10 +2,13 @@
 
 exports[`<RadioGroup /> should call onChange callback 1`] = `
 <RadioGroup
-  default={null}
+  direction="column"
   errorText=""
+  isControlled={false}
   label=""
+  name="radio"
   onChange={[MockFunction]}
+  value={null}
 >
   <FormElement
     className=""
@@ -65,15 +68,14 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
         className="css-zbxrv7"
       >
         <RadioItem
-          active={false}
-          key=".0"
+          checked={false}
+          key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
             className="css-1cqgl9p"
-            htmlFor="foo0.30210713149961976"
           >
             <RadioUnchecked>
               <Icon
@@ -104,7 +106,6 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
-              id="foo0.30210713149961976"
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -146,12 +147,15 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
 </RadioGroup>
 `;
 
-exports[`<RadioGroup /> should have on active at a time 1`] = `
+exports[`<RadioGroup /> should have on value at a time 1`] = `
 <RadioGroup
-  default={null}
+  direction="column"
   errorText=""
+  isControlled={false}
   label=""
+  name="radio"
   onChange={[Function]}
+  value={null}
 >
   <FormElement
     className=""
@@ -211,15 +215,14 @@ exports[`<RadioGroup /> should have on active at a time 1`] = `
         className="css-zbxrv7"
       >
         <RadioItem
-          active={false}
-          key=".0"
+          checked={false}
+          key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
             className="css-1cqgl9p"
-            htmlFor="foo0.4545178122079825"
           >
             <RadioUnchecked>
               <Icon
@@ -250,7 +253,6 @@ exports[`<RadioGroup /> should have on active at a time 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
-              id="foo0.4545178122079825"
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -269,15 +271,14 @@ exports[`<RadioGroup /> should have on active at a time 1`] = `
           </label>
         </RadioItem>
         <RadioItem
-          active={false}
-          key=".1"
+          checked={false}
+          key="radio_bar/.1"
           label="bar"
           name="bar"
           onChange={[Function]}
         >
           <label
             className="css-1cqgl9p"
-            htmlFor="bar0.5481175653818215"
           >
             <RadioUnchecked>
               <Icon
@@ -308,7 +309,6 @@ exports[`<RadioGroup /> should have on active at a time 1`] = `
             <input
               checked={false}
               className="css-gyrv08"
-              id="bar0.5481175653818215"
               name="bar"
               onChange={[Function]}
               type="radio"
@@ -350,12 +350,15 @@ exports[`<RadioGroup /> should have on active at a time 1`] = `
 </RadioGroup>
 `;
 
-exports[`<RadioGroup /> should make default as active 1`] = `
+exports[`<RadioGroup /> should render column group with items 1`] = `
 <RadioGroup
-  default="foo"
+  direction="column"
   errorText=""
+  isControlled={false}
   label=""
+  name="radio"
   onChange={[Function]}
+  value={null}
 >
   <FormElement
     className=""
@@ -415,31 +418,28 @@ exports[`<RadioGroup /> should make default as active 1`] = `
         className="css-zbxrv7"
       >
         <RadioItem
-          active={true}
-          key=".0"
+          checked={false}
+          key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
             className="css-1cqgl9p"
-            htmlFor="foo0.532946595670658"
           >
-            <RadioChecked
-              className="css-1ncyhu"
-            >
+            <RadioUnchecked>
               <Icon
-                className="css-1ncyhu"
+                className=""
                 color={null}
-                content="<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
+                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb css-1ncyhu"
+                  className="css-yys9hb "
                   dangerouslySetInnerHTML={
                     Object {
-                      "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
+                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
                     }
                   }
                   style={
@@ -452,11 +452,10 @@ exports[`<RadioGroup /> should make default as active 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 />
               </Icon>
-            </RadioChecked>
+            </RadioUnchecked>
             <input
-              checked={true}
+              checked={false}
               className="css-gyrv08"
-              id="foo0.532946595670658"
               name="foo"
               onChange={[Function]}
               type="radio"
@@ -500,10 +499,13 @@ exports[`<RadioGroup /> should make default as active 1`] = `
 
 exports[`<RadioGroup /> should render empty group 1`] = `
 <RadioGroup
-  default={null}
+  direction="column"
   errorText=""
+  isControlled={false}
   label=""
+  name="radio"
   onChange={[Function]}
+  value={null}
 >
   <FormElement
     className=""
@@ -585,12 +587,162 @@ exports[`<RadioGroup /> should render empty group 1`] = `
 </RadioGroup>
 `;
 
-exports[`<RadioGroup /> should render group with item 1`] = `
+exports[`<RadioGroup /> should render rows group with items 1`] = `
 <RadioGroup
-  default={null}
+  direction="rows"
   errorText=""
+  isControlled={false}
   label=""
+  name="radio"
   onChange={[Function]}
+  value={null}
+>
+  <FormElement
+    className=""
+    errorText=""
+    hasPlaceholder={true}
+    hasUnderline={false}
+    hasValue={true}
+    htmlFor="none"
+    isFocused={false}
+    label=""
+    placeholder=""
+  >
+    <div
+      className="css-1vjh8yv "
+    >
+      <Placeholder
+        placeholder=""
+        visible={false}
+      >
+        <div
+          className="css-oc0mp css-1jyyyen"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </Placeholder>
+      <Label
+        hasErrorMessage={false}
+        htmlFor="none"
+        isFloating={true}
+        isFocused={false}
+        label=""
+      >
+        <label
+          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
+          htmlFor="none"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </label>
+      </Label>
+      <div
+        className="css-ij4y8v"
+      >
+        <RadioItem
+          checked={false}
+          key="radio_foo/.0"
+          label="foo"
+          name="foo"
+          onChange={[Function]}
+        >
+          <label
+            className="css-1cqgl9p"
+          >
+            <RadioUnchecked>
+              <Icon
+                className=""
+                color={null}
+                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
+                size="inherit"
+                viewBox="0 0 24 24"
+              >
+                <svg
+                  className="css-yys9hb "
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
+                    }
+                  }
+                  style={
+                    Object {
+                      "fill": null,
+                      "fontSize": "inherit",
+                    }
+                  }
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Icon>
+            </RadioUnchecked>
+            <input
+              checked={false}
+              className="css-gyrv08"
+              name="foo"
+              onChange={[Function]}
+              type="radio"
+            />
+            <Translate
+              className="css-1wx4qok"
+              params={Object {}}
+              string="foo"
+            >
+              <span
+                className="css-1wx4qok"
+              >
+                foo
+              </span>
+            </Translate>
+          </label>
+        </RadioItem>
+      </div>
+      <ErrorText
+        className={null}
+        errorText=""
+      >
+        <div
+          className="css-hmgfge"
+        >
+          <Translate
+            className=""
+            params={Object {}}
+            string=""
+          >
+            <span
+              className=""
+            />
+          </Translate>
+        </div>
+      </ErrorText>
+    </div>
+  </FormElement>
+</RadioGroup>
+`;
+
+exports[`<RadioGroup /> should use default value 1`] = `
+<RadioGroup
+  direction="column"
+  errorText=""
+  isControlled={false}
+  label=""
+  name="radio"
+  onChange={[Function]}
+  value="foo"
 >
   <FormElement
     className=""
@@ -650,29 +802,30 @@ exports[`<RadioGroup /> should render group with item 1`] = `
         className="css-zbxrv7"
       >
         <RadioItem
-          active={false}
-          key=".0"
+          checked={true}
+          key="radio_foo/.0"
           label="foo"
           name="foo"
           onChange={[Function]}
         >
           <label
             className="css-1cqgl9p"
-            htmlFor="foo0.3277093784514742"
           >
-            <RadioUnchecked>
+            <RadioChecked
+              className="css-1ncyhu"
+            >
               <Icon
-                className=""
+                className="css-1ncyhu"
                 color={null}
-                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
+                content="<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
                 size="inherit"
                 viewBox="0 0 24 24"
               >
                 <svg
-                  className="css-yys9hb "
+                  className="css-yys9hb css-1ncyhu"
                   dangerouslySetInnerHTML={
                     Object {
-                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
+                      "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
                     }
                   }
                   style={
@@ -685,11 +838,10 @@ exports[`<RadioGroup /> should render group with item 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 />
               </Icon>
-            </RadioUnchecked>
+            </RadioChecked>
             <input
-              checked={false}
+              checked={true}
               className="css-gyrv08"
-              id="foo0.3277093784514742"
               name="foo"
               onChange={[Function]}
               type="radio"
