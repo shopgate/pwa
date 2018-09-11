@@ -29,13 +29,13 @@ const title = css({
   fontWeight: 500,
 }).toString();
 
-const applyButton = css({
-  marginRight: 4,
-}).toString();
+const portal = css({
+  height: '100%',
+});
 
 export default {
   header,
   grid,
   title,
-  applyButton,
+  portal,
 };

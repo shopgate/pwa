@@ -11,10 +11,11 @@ import * as events from '@virtuous/conductor-events';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import colors from 'Styles/colors';
 import connect from './connector';
+import { PORTAL_NAVIGATOR_BUTTON } from './constants';
 import NavButton from './components/NavButton';
 import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
-import ApplyFilterButton from './components/ApplyFilterButton';
+// import ApplyFilterButton from './components/ApplyFilterButton';
 import Content from './components/Content';
 import { NavigatorContext } from './context';
 import styles from './style';
@@ -183,12 +184,13 @@ class Navigator extends PureComponent {
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_AFTER} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_BEFORE} />
-                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS} >
-                  {(this.props.filterOpen) &&
+                <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS}>
+                  {/* (this.props.filterOpen) &&
                     <div className={styles.applyButton}>
                       <ApplyFilterButton />
                     </div>
-                  }
+                  */ }
+                  <div className={styles.portal} id={PORTAL_NAVIGATOR_BUTTON} />
                   {this.props.showSearch &&
                     <SearchButton />
                   }
