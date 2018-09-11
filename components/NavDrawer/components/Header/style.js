@@ -18,12 +18,14 @@ const loggedIn = css({
 }).toString();
 
 const ellipsis = {
-  textOverflow: 'ellipsis',
-  overflow: 'hidden',
   lineHeight: 1.3,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 };
 
 const welcome = css({
+  fontSize: 16,
   fontWeight: 500,
   ...ellipsis,
 }).toString();
