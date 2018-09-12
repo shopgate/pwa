@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { UnwrappedProduct as Product } from './index';
+import Product from './index';
 
 /**
  * @returns {JSX}
@@ -14,7 +14,7 @@ jest.mock('./context');
 
 describe('<Product> page', () => {
   it('should render', () => {
-    const wrapper = mount(<Product id={null} />);
+    const wrapper = mount(<Product />);
     expect(wrapper.find('Product').exists()).toBe(true);
   });
 });

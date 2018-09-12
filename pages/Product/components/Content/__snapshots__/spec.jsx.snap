@@ -65,136 +65,45 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_2"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_2"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_2"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_2"
         >
-          <Description
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -269,136 +178,45 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_3"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_3"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_3"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_3"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_3"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_3"
         >
-          <Description
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -473,136 +291,45 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_5"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_5"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_5"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_5"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_5"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_5"
+          variantId={null}
         >
-          <Description
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_5"
         >
-          <Properties
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_5"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -677,136 +404,45 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_2"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_2"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_2"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_2"
         >
-          <Description
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -881,136 +517,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_2"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_2"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_2"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_2"
+          variantId={null}
         >
-          <Description
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_2"
         >
-          <Properties
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_2"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -1085,136 +630,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_2"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_2"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_2"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_2"
         >
-          <Description
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -1289,136 +743,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_2"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_2"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_2"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_2"
+          variantId={null}
         >
-          <Description
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_2"
         >
-          <Properties
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_2"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -1493,136 +856,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_2"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_2"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_2"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_2"
+          variantId={null}
         >
-          <Description
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_2"
         >
-          <Properties
-            productId="product_2"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_2"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -1697,136 +969,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_1"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_1"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_1"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId={null}
         >
-          <Description
-            productId="product_1"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -1902,136 +1083,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_2"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_2"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_2"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_2"
         >
-          <Description
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -2107,136 +1197,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_2"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_2"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_2"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_2"
         >
-          <Description
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -2312,136 +1311,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_2"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_2"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_2"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_2"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_2"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_2"
         >
-          <Description
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_2"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -2518,136 +1426,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_3"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_3"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_3"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_3"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_3"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_3"
         >
-          <Description
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -2724,136 +1541,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_1"
+          variantId="product_3"
         >
-          <ImageSlider
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_1"
+          variantId="product_3"
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_3"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_1"
+          variantId="product_3"
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_3"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_1"
+          variantId="product_3"
         >
-          <Description
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_1"
         >
-          <Properties
-            productId="product_1"
-            variantId="product_3"
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -2928,136 +1654,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_5"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_5"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_5"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_5"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_5"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_5"
+          variantId={null}
         >
-          <Description
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_5"
         >
-          <Properties
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_5"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>
@@ -3132,136 +1767,45 @@ exports[`<ProductContent /> rendering when product data is not available inside 
       }
     >
       <div>
-        <Portal
-          name="product.image.before"
-          props={null}
-        />
-        <Portal
-          name="product.image"
-          props={null}
+        <ImageSlider
+          productId="product_5"
+          variantId={null}
         >
-          <ImageSlider
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </ImageSlider>
-        </Portal>
-        <Portal
-          name="product.image.after"
-          props={null}
-        />
-        <Portal
-          name="product.header.before"
-          props={null}
-        />
-        <Portal
-          name="product.header"
-          props={null}
+          <div />
+        </ImageSlider>
+        <ProductHeader>
+          <div />
+        </ProductHeader>
+        <Characteristics
+          productId="product_5"
+          variantId={null}
         >
-          <ProductHeader>
-            <div />
-          </ProductHeader>
-        </Portal>
-        <Portal
-          name="product.header.after"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select.before"
-          props={null}
-        />
-        <Portal
-          name="product.variant-select"
-          props={null}
+          <div />
+        </Characteristics>
+        <Options
+          currentOptions={Object {}}
+          productId="product_5"
+          storeSelection={[Function]}
         >
-          <Characteristics
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Characteristics>
-        </Portal>
-        <Portal
-          name="product.variant-select.after"
-          props={null}
-        />
-        <Portal
-          name="product.options.before"
-          props={null}
-        />
-        <Portal
-          name="product.options"
-          props={null}
+          <div />
+        </Options>
+        <Description
+          productId="product_5"
+          variantId={null}
         >
-          <Options
-            currentOptions={Object {}}
-            productId="product_5"
-            storeSelection={[Function]}
-          >
-            <div />
-          </Options>
-        </Portal>
-        <Portal
-          name="product.options.after"
-          props={null}
-        />
-        <Portal
-          name="product.description.before"
-          props={null}
-        />
-        <Portal
-          name="product.description"
-          props={null}
+          <div />
+        </Description>
+        <Properties
+          productId="product_5"
+          variantId={null}
         >
-          <Description
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Description>
-        </Portal>
-        <Portal
-          name="product.description.after"
-          props={null}
-        />
-        <Portal
-          name="product.properties.before"
-          props={null}
-        />
-        <Portal
-          name="product.properties"
-          props={null}
+          <div />
+        </Properties>
+        <Reviews
+          productId="product_5"
         >
-          <Properties
-            productId="product_5"
-            variantId={null}
-          >
-            <div />
-          </Properties>
-        </Portal>
-        <Portal
-          name="product.properties.after"
-          props={null}
-        />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
-        >
-          <Reviews
-            productId="product_5"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
         <TaxDisclaimer>
           <div />
         </TaxDisclaimer>

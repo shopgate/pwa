@@ -369,16 +369,17 @@ exports[`Rating (product header) Rendering should render rating when data is ava
               prominent={true}
             >
               <Translate
-                className="css-oixusm"
+                className="css-a7xi3l css-oixusm"
                 params={
                   Object {
                     "count": 4,
+                    "prominent": true,
                   }
                 }
                 string="reviews.review_count"
               >
                 <span
-                  className="css-oixusm"
+                  className="css-a7xi3l css-oixusm"
                 >
                   reviews.review_count
                 </span>
