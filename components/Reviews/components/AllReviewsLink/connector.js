@@ -16,7 +16,7 @@ const mapStateToProps = (state, props) => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (prev.totalReviewCount !== next.totalReviewCount) {
+  if (prev.count !== next.count) {
     return false;
   }
 

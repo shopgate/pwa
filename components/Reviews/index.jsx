@@ -11,20 +11,21 @@ import List from './components/List';
 import Header from './components/Header';
 import AllReviewsLink from './components/AllReviewsLink';
 import styles from './style';
+import connect from './connector';
 
 /**
  * @param {Object} rating Rating of the product.
  * @param {Array} reviews Reviews which should be shown in the product page.
  * @returns {JSX}
  */
-const Reviews = ({ productId }) => (
+const Reviews = ({ productId, reviews }) => (
   <Fragment>
     <Portal name={PRODUCT_REVIEWS_BEFORE} />
     <Portal name={PRODUCT_REVIEWS}>
       {appConfig.hasReviews && (
         <div className={styles.container} data-test-id="reviewSection">
           <Header productId={productId} />
-          <List productId={productId} />
+          <List productId={productId} reviews={reviews} />
           <AllReviewsLink productId={productId} />
         </div>
       )}
@@ -35,10 +36,12 @@ const Reviews = ({ productId }) => (
 
 Reviews.propTypes = {
   productId: PropTypes.string,
+  reviews: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 Reviews.defaultProps = {
   productId: null,
+  reviews: null,
 };
 
-export default Reviews;
+export default connect(Reviews);

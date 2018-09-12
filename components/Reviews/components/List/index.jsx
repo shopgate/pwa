@@ -5,7 +5,6 @@ import Rating from './components/Rating';
 import Text from './components/Text';
 import Info from './components/Info';
 import styles from './style';
-import connect from './connector';
 
 /**
  * Review List Component
@@ -40,4 +39,4 @@ class List extends PureComponent {
   }
 }
 
-export default connect(List);
+export default List;

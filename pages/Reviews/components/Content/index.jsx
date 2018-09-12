@@ -11,8 +11,8 @@ import connect from './connector';
  */
 const ReviewsContent = ({ productId, rating, reviews }) => (
   <Fragment>
-    <Header rating={rating} withTopGap />
-    <List reviews={reviews} />
+    <Header productId={productId} rating={rating} withTopGap />
+    <List productId={productId} reviews={reviews} />
     <LoadMoreButton productId={productId} />
   </Fragment>
 );

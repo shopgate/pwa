@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NoReviews from './components/NoReviews';
 import ReviewsExcerpt from './components/ReviewsExcerpt';
+import connect from './connector';
 
 /**
  * The header of the reviews component
@@ -33,4 +34,4 @@ Header.defaultProps = {
   withTopGap: false,
 };
 
-export default Header;
+export default connect(Header);
