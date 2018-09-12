@@ -23,7 +23,6 @@ export default (
   state = {
     backgroundColor: null,
     enabled: true,
-    searchPhrase: '',
     showCartIcon: true,
     showIconShadow: false,
     showProgressBar: true,

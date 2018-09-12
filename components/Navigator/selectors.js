@@ -83,16 +83,6 @@ export const showLoadingBar = createSelector(
 );
 
 /**
- * Selects the current state from navigator title.
- * @param {Object} state The global state.
- * @return {string}
- */
-export const isTitleShowing = createSelector(
-  getNavigatorState,
-  state => state.showTitle
-);
-
-/**
  * Selects the current state state from navigator disabled status.
  * @param {Object} state The global state.
  * @return {string}

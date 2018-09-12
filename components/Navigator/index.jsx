@@ -31,7 +31,6 @@ class Navigator extends PureComponent {
     navigatorEnabled: PropTypes.bool,
     showLoadingBar: PropTypes.bool,
     showSearch: PropTypes.bool,
-    showTitle: PropTypes.bool,
     textColor: PropTypes.string,
   };
 
@@ -40,7 +39,6 @@ class Navigator extends PureComponent {
     navigatorEnabled: true,
     showLoadingBar: false,
     showSearch: true,
-    showTitle: true,
     textColor: colors.dark,
   };
 
@@ -174,9 +172,7 @@ class Navigator extends PureComponent {
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
                   <Grid.Item className={styles.title} component="div" grow={1}>
-                    {this.props.showTitle &&
-                      <Content routePattern={this.state.routePattern} />
-                    }
+                    <Content routePattern={this.state.routePattern} />
                   </Grid.Item>
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_AFTER} />

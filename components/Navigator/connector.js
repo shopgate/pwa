@@ -6,7 +6,6 @@ import {
   isEnabled,
   isNavSearchFieldActive,
   isSearchShowing,
-  isTitleShowing,
   showLoadingBar,
   getTextColor,
 } from './selectors';
@@ -19,7 +18,6 @@ const mapStateToProps = state => ({
   backgroundColor: getBackgroundColor(state),
   navigatorEnabled: isEnabled(state),
   showSearch: isSearchShowing(state),
-  showTitle: isTitleShowing(state),
   showLoadingBar: showLoadingBar(state),
   textColor: getTextColor(state),
 });
