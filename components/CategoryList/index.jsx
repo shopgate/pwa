@@ -5,6 +5,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import List from 'Components/List';
+import styles from './style';
 
 /**
  * The category list component.
@@ -17,7 +18,7 @@ const CategoryList = ({ categories }) => {
   }
 
   return (
-    <List>
+    <List className={styles}>
       {categories.map(category => (
         <Portal
           key={category.id}

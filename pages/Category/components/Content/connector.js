@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import {
   getChildCategoriesById,
-  getCategoryProductCount,
+  hasChildren,
+  hasProducts,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
@@ -12,7 +13,8 @@ import {
  */
 const mapStateToProps = (state, props) => ({
   categories: getChildCategoriesById(state, props),
-  hasProducts: getCategoryProductCount(state, props),
+  hasProducts: hasProducts(state, props),
+  hasChildren: hasChildren(state, props),
 });
 
 export default connect(mapStateToProps);
