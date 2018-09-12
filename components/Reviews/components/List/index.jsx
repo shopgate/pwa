@@ -7,7 +7,7 @@ import Info from './components/Info';
 import styles from './style';
 
 /**
- * Review List Component
+ * Review List Component.
  */
 class List extends PureComponent {
   static propTypes = {
