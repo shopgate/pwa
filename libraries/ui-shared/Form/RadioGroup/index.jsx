@@ -16,6 +16,7 @@ class RadioGroup extends Component {
     isControlled: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
+    translateErrorText: PropTypes.bool,
     /* Radio group value */
     value: PropTypes.string,
   }
@@ -27,6 +28,7 @@ class RadioGroup extends Component {
     errorText: '',
     isControlled: false,
     label: '',
+    translateErrorText: true,
     value: null,
   }
 
@@ -64,13 +66,14 @@ class RadioGroup extends Component {
    */
   render() {
     const {
-      children, label, errorText, direction, name,
+      children, label, errorText, direction, name, translateErrorText,
     } = this.props;
 
     return (
       <FormElement
         label={label}
         errorText={errorText}
+        translateErrorText={translateErrorText}
         htmlFor="none"
         hasUnderline={false}
         hasValue

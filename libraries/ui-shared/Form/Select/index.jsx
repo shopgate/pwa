@@ -16,6 +16,7 @@ class Select extends Component {
     onChange: PropTypes.func,
     options: PropTypes.shape(),
     placeholder: PropTypes.node,
+    translateErrorText: PropTypes.bool,
     value: PropTypes.string,
   };
 
@@ -27,6 +28,7 @@ class Select extends Component {
     label: '',
     onChange: () => {},
     options: {},
+    translateErrorText: true,
     value: '',
   };
 
@@ -74,7 +76,7 @@ class Select extends Component {
    * @return {JSX}
    */
   render() {
-    const { name, options } = this.props;
+    const { name, options, translateErrorText } = this.props;
     return (
       <FormElement
         className={this.props.className}
@@ -82,6 +84,7 @@ class Select extends Component {
         htmlFor={name}
         label={this.props.label}
         errorText={this.props.errorText}
+        translateErrorText={translateErrorText}
         isFocused={this.state.isFocused}
         hasValue={!!this.state.value}
       >

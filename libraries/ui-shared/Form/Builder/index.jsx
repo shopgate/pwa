@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { isEqual } from 'lodash';
 import { logger } from '@shopgate/pwa-core/helpers';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Form from '@shopgate/pwa-ui-shared/Form';
@@ -28,6 +29,7 @@ import buildFormElements from './builders/buildFormElements';
 import buildFormDefaults from './builders/buildFormDefaults';
 import buildCountryList from './builders/buildCountryList';
 import buildProvinceList from './builders/buildProvinceList';
+import buildValidationErrorList from './builders/buildValidationErrorList';
 
 /**
  * Takes a string and converts it to a part to be used in a portal name
@@ -55,12 +57,17 @@ class Builder extends Component {
     className: PropTypes.string,
     defaults: PropTypes.shape(),
     onSubmit: PropTypes.func,
+    validationErrors: PropTypes.arrayOf(PropTypes.shape({
+      path: PropTypes.string,
+      message: PropTypes.string,
+    })),
   }
 
   static defaultProps = {
-    defaults: {},
     className: '',
+    defaults: {},
     onSubmit: () => {},
+    validationErrors: [],
   }
 
   /**
@@ -74,7 +81,8 @@ class Builder extends Component {
     this.state = {
       elementVisibility: {},
       formData: {},
-      errors: {},
+      // Convert errors structure to direct access errors
+      errors: buildValidationErrorList(props.validationErrors),
     };
 
     // Reorganize form elements into a structure that can be easily rendered
@@ -111,56 +119,16 @@ class Builder extends Component {
   }
 
   /**
-   * Element change handler based on it's type,
-   * @param {string} elementId Element to create the handler for
-   * @param {string} value Element value
+   * Handles response of validation errors
+   * @param {Object} nextProps The new props object with changed data
    */
-  elementChangeHandler = (elementId, value) => {
-    // Apply value change to new state
-    const newState = {
-      ...this.state,
-      formData: {
-        ...this.state.formData,
-        [elementId]: value,
-      },
-    };
-
-    // Handle context sensitive functionality by via "action" listener and use the "new" state
-    const updatedState = this.actionListener.notify(elementId, this.state, newState);
-
-    // TODO: handle validation errors and set "hasErrors" accordingly - only "requred" check, yet
-    let hasErrors = false;
-
-    // Check "required" fields for all visible elements and enable rendering on changes
-    this.formElements.forEach((formElement) => {
-      if (!updatedState.elementVisibility[formElement.id] || !formElement.required) {
-        return;
-      }
-
-      const tmpVal = updatedState.formData[formElement.id];
-      const tmpResult = tmpVal === null || tmpVal === undefined || tmpVal === '' || tmpVal === false;
-      hasErrors = hasErrors || tmpResult;
-    });
-
-    // Handle state internally and send an "onChange" event to parent if this finished
-    this.setState(updatedState);
-
-    // Transform to external structure (unavailable ones will be set undefined)
-    const updateData = {};
-    this.formElements.forEach((el) => {
-      if (el.custom) {
-        if (updateData.customAttributes === undefined) {
-          updateData.customAttributes = {};
-        }
-        updateData.customAttributes[el.id] = updatedState.formData[el.id];
-      } else {
-        updateData[el.id] = updatedState.formData[el.id];
-      }
-    });
-
-    // Trigger the given update action
-    this.props.handleUpdate(updateData, hasErrors);
-  };
+  componentWillReceiveProps(nextProps) {
+    const oldValidationErrors = buildValidationErrorList(this.props.validationErrors);
+    const newValidationErrors = buildValidationErrorList(nextProps.validationErrors);
+    if (!isEqual(oldValidationErrors, newValidationErrors)) {
+      this.setState({ errors: newValidationErrors });
+    }
+  }
 
   /**
    * Sorts the elements by "sortOrder" property
@@ -182,6 +150,70 @@ class Builder extends Component {
 
     // Sort in ascending order of sortOrder otherwise
     return element1.sortOrder - element2.sortOrder;
+  };
+
+  /**
+   * Element change handler based on it's type,
+   * @param {string} elementId Element to create the handler for
+   * @param {string} value Element value
+   */
+  elementChangeHandler = (elementId, value) => {
+    // Apply value change to new state
+    const newState = {
+      ...this.state,
+      formData: {
+        ...this.state.formData,
+        [elementId]: value,
+      },
+    };
+
+    // Remove validation error message on first change of the element
+    Object.keys(newState.errors).forEach((key) => {
+      // Action listeners might add some again
+      if (this.state.formData[key] !== newState.formData[key]) {
+        delete newState.errors[key];
+      }
+    });
+    const hasBackendValidationErrors = Object.keys(newState.errors).length > 0;
+
+    // Handle context sensitive functionality by via "action" listener and use the "new" state
+    const updatedState = this.actionListener.notify(elementId, this.state, newState);
+
+    // TODO: handle frontend validation errors and set "hasErrors" accordingly
+    let hasErrors = false;
+
+    // Check "required" fields for all visible elements and enable rendering on changes
+    this.formElements.forEach((formElement) => {
+      if (!updatedState.elementVisibility[formElement.id] || !formElement.required) {
+        return;
+      }
+
+      const tmpVal = updatedState.formData[formElement.id];
+      const tmpResult = tmpVal === null || tmpVal === undefined || tmpVal === '' || tmpVal === false;
+      hasErrors = hasErrors || tmpResult;
+    });
+
+    const hasFrontendValidationErrors = Object.keys(updatedState.errors).length <= 0;
+    const hasValidationErrors = hasBackendValidationErrors && hasFrontendValidationErrors;
+
+    // Handle state internally and send an "onChange" event to parent if this finished
+    this.setState(updatedState);
+
+    // Transform to external structure (unavailable ones will be set undefined)
+    const updateData = {};
+    this.formElements.forEach((el) => {
+      if (el.custom) {
+        if (updateData.customAttributes === undefined) {
+          updateData.customAttributes = {};
+        }
+        updateData.customAttributes[el.id] = updatedState.formData[el.id];
+      } else {
+        updateData[el.id] = updatedState.formData[el.id];
+      }
+    });
+
+    // Trigger the given update action
+    this.props.handleUpdate(updateData, hasErrors || hasValidationErrors);
   };
 
   /**

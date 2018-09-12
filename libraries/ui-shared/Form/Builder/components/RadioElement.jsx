@@ -56,6 +56,7 @@ class RadioElement extends PureComponent {
         onChange={element.handleChange}
         errorText={errorText}
         isControlled
+        translateErrorText={false}
       >
         {Object.keys(element.options).map(itemName => (
           <RadioItem

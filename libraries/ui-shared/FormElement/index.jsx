@@ -21,6 +21,7 @@ class FormElement extends Component {
     isFocused: PropTypes.bool,
     label: PropTypes.node,
     placeholder: PropTypes.node,
+    translateErrorText: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -33,6 +34,7 @@ class FormElement extends Component {
     hasValue: false,
     hasPlaceholder: true,
     hasUnderline: true,
+    translateErrorText: true,
   };
 
   /**
@@ -60,17 +62,22 @@ class FormElement extends Component {
    * @return {JSX}
    */
   render() {
-    return (
-      <div className={`${style.formElement} ${this.props.className}`}>
+    const {
+      isFocused, errorText, translateErrorText,
+      placeholder, hasPlaceholder, htmlFor, label, className,
+    } = this.props;
 
-        {this.props.hasPlaceholder &&
-          <Placeholder visible={this.isPlaceholderVisible} placeholder={this.props.placeholder} />
+    return (
+      <div className={`${style.formElement} ${className}`}>
+
+        {hasPlaceholder &&
+          <Placeholder visible={this.isPlaceholderVisible} placeholder={placeholder} />
         }
 
         <Label
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-          isFocused={this.props.isFocused}
+          htmlFor={htmlFor}
+          label={label}
+          isFocused={isFocused}
           isFloating={this.isLabelFloating}
           hasErrorMessage={this.hasErrorMessage}
         />
@@ -78,9 +85,9 @@ class FormElement extends Component {
         {this.props.children}
 
         {this.props.hasUnderline &&
-          <Underline isFocused={this.props.isFocused} hasErrorMessage={this.hasErrorMessage} />
+          <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
         }
-        <ErrorText errorText={this.props.errorText} />
+        <ErrorText errorText={errorText} translate={translateErrorText} />
       </div>
     );
   }

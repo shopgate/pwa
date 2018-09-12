@@ -17,6 +17,7 @@ class Checkbox extends PureComponent {
     errorText: PropTypes.node,
     label: PropTypes.node,
     onChange: PropTypes.func,
+    translateErrorText: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -25,6 +26,7 @@ class Checkbox extends PureComponent {
     errorText: '',
     label: '',
     onChange: () => {},
+    translateErrorText: true,
   };
 
   /**
@@ -32,13 +34,14 @@ class Checkbox extends PureComponent {
    */
   render() {
     const {
-      name, label, onChange, className, errorText, ...restProps
+      name, label, onChange, className, errorText, translateErrorText, ...restProps
     } = this.props;
     return (
       <FormElement
         className={`${className} ${style.root}`}
         htmlFor={name}
         errorText={errorText}
+        translateErrorText={translateErrorText}
         hasUnderline={false}
         hasPlaceholder={false}
       >
