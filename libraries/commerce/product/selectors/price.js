@@ -3,16 +3,15 @@ import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
   getCurrentProduct,
   getProductUnitPrice,
+  hasBaseProductVariants,
+  isVariantSelected,
+
 } from './product';
 import {
   getRawProductOptions,
   hasProductOptions,
   areProductOptionsSet,
 } from './options';
-import {
-  hasCurrentProductVariants,
-  isProductChildrenSelected,
-} from './variants';
 
 /**
  * Calculates the additional price for the current product.
@@ -20,7 +19,7 @@ import {
  * @returns {number}
  */
 export const getProductPriceAddition = createSelector(
-  (state, props) => props.options,
+  (state, props = {}) => props.options,
   getRawProductOptions,
   validateSelectorParams(
     (options, productOptions) => {
@@ -59,8 +58,8 @@ export const getProductTotalPrice = createSelector(
  * @returns {boolean} The product options.
  */
 export const isFullPriceAvailable = createSelector(
-  hasCurrentProductVariants,
-  isProductChildrenSelected,
+  hasBaseProductVariants,
+  isVariantSelected,
   hasProductOptions,
   areProductOptionsSet,
   (hasVariants, isChildrenSelected, hasOptions, areOptionsSet) => {

@@ -79,7 +79,7 @@ class Widgets extends Component {
    * @returns {boolean}
    */
   hasSchedulableWidgets() {
-    return this.props.widgets.some(widget => widget.settings.plan);
+    return (this.props.widgets || []).some(widget => widget.settings.plan);
   }
 
   /**

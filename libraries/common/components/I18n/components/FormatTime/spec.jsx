@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import I18n from '../../index';
 
-describe.skip('<FormatTime />', () => {
+describe('<FormatTime />', () => {
   let renderedElement;
   const testLocales = {
     greeting: 'Hello {time}',

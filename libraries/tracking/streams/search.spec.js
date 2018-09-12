@@ -7,7 +7,7 @@ import {
 import { pwaDidAppear } from '../action-creators';
 import { searchIsReady$ } from './search';
 
-describe('Search streams', () => {
+describe.skip('Search streams', () => {
   let searchIsReadySubscriber;
 
   beforeEach(() => {

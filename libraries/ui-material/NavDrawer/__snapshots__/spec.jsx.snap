@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavDrawer should match the snapshot 1`] = `
-<React.Fragment>
+<Fragment>
   <Transition
     appear={false}
     enter={true}
@@ -16,7 +16,9 @@ exports[`NavDrawer should match the snapshot 1`] = `
     onExiting={[Function]}
     timeout={300}
     unmountOnExit={false}
-  />
+  >
+    <Component />
+  </Transition>
   <Backdrop
     className=""
     color="#000"
@@ -26,5 +28,5 @@ exports[`NavDrawer should match the snapshot 1`] = `
     onClick={[Function]}
     opacity={20}
   />
-</React.Fragment>
+</Fragment>
 `;

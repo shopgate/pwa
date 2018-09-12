@@ -3,7 +3,7 @@ import { createStore } from './specHelper';
 import { pwaDidAppear } from '../action-creators';
 import { categoryIsReady$ } from './category';
 
-describe('Search streams', () => {
+describe.skip('Search streams', () => {
   let categoryIsReadySubscriber;
 
   beforeEach(() => {

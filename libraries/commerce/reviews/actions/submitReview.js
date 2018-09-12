@@ -51,12 +51,12 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
         dispatch(resetSubmittedReview(originalReview));
       });
 
-    return; // Stop here.
+    return request;
   }
 
   const request = new PipelineRequest(pipelines.SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW)
     .setRetries(0)
-    .setHandledErrors([EEXIST])
+    .setErrorBlacklist([EEXIST])
     .setInput(pipelineData)
     .dispatch();
 
@@ -76,6 +76,8 @@ const submitReview = (review, update = false) => (dispatch, getState) => {
       logger.error(error);
       dispatch(errorSubmitReview(newReview.productId));
     });
+
+  return request;
 };
 
 export default submitReview;

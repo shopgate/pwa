@@ -16,7 +16,7 @@ jest.mock('redux-logger', () => ({
  */
 const mockedReducer = (state = {}) => state;
 
-describe('streams/user.js', () => {
+describe.skip('streams/user.js', () => {
   const { dispatch } = configureStore({ mocked: mockedReducer });
   let loginMockSubscriber;
   let updateMockSubscriber;

@@ -4,6 +4,15 @@ import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes'
 import { MODAL_VARIANT_SELECT } from './constants';
 import Dialog from './index';
 
+jest.mock('./components/VariantSelectModal', () => {
+  /**
+   * VariantSelectModal mock.
+   * @return {JSX}
+   */
+  const VariantSelectModal = () => <div />;
+  return VariantSelectModal;
+});
+
 describe('<Dialog />', () => {
   it('should render without props', () => {
     const wrapper = shallow(<Dialog modal={{ message: 'msg' }} />);
@@ -21,7 +30,7 @@ describe('<Dialog />', () => {
     const params = {
       errorCode: '',
       message: '',
-      pipelineName: '',
+      pipeline: '',
       request: {},
     };
 
@@ -45,10 +54,10 @@ describe('<Dialog />', () => {
 
     const wrapper = shallow(<Dialog
       modal={{
-          message: 'Test',
-          type: MODAL_VARIANT_SELECT,
-          params,
-        }}
+        message: 'Test',
+        type: MODAL_VARIANT_SELECT,
+        params,
+      }}
     />);
 
     expect(wrapper).toMatchSnapshot();

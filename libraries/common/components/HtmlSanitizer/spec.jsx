@@ -3,23 +3,7 @@ import { mount } from 'enzyme';
 import { JSDOM } from 'jsdom';
 import HtmlSanitizer from './index';
 
-const mockConstructor = jest.fn();
-jest.mock('../Router/helpers/parsed-link', () => (class {
-  /**
-   * Mocked version of the ParsedLink constructor.
-   * @param {string} href Link location.
-   */
-  constructor(href) {
-    mockConstructor(href);
-  }
-
-  /* eslint-disable class-methods-use-this */
-  /**
-   * Mocked version of open function.
-   */
-  open() {}
-  /* eslint-enable class-methods-use-this */
-}));
+const mockedHandleClick = jest.fn();
 
 describe('<HtmlSanitizer />', () => {
   it('should render the HtmlSanitizer', () => {
@@ -103,7 +87,7 @@ describe('<HtmlSanitizer />', () => {
 
   describe('Link handling', () => {
     beforeEach(() => {
-      mockConstructor.mockClear();
+      mockedHandleClick.mockClear();
     });
 
     it('follows a link from a plain <a>', () => {
@@ -112,7 +96,10 @@ describe('<HtmlSanitizer />', () => {
       const html = '&lt;a id=&quot;link&quot; href=&quot;#follow-me-and-everything-is-alright&quot;&gt;Plain Link&lt;/a&gt;';
       const wrapper = mount(
         (
-          <HtmlSanitizer decode>
+          <HtmlSanitizer
+            decode
+            settings={{ handleClick: mockedHandleClick }}
+          >
             {html}
           </HtmlSanitizer>
         ), {
@@ -128,7 +115,8 @@ describe('<HtmlSanitizer />', () => {
       };
       wrapper.instance().handleTap(event);
 
-      expect(mockConstructor).toHaveBeenCalledTimes(1);
+      expect(mockedHandleClick).toHaveBeenCalledTimes(1);
+      expect(mockedHandleClick).toHaveBeenCalledWith('#follow-me-and-everything-is-alright');
     });
 
     it('follows a link from a <a> with other HTML inside', () => {
@@ -137,7 +125,10 @@ describe('<HtmlSanitizer />', () => {
       const html = '&lt;a id=&quot;link&quot; href=&quot;#I-ll-be-the-one-to-tuck-you-in-at-night&quot;&gt;&lt;span&gt;Span Link&lt;/span&gt;&lt;/a&gt;';
       const wrapper = mount(
         (
-          <HtmlSanitizer decode>
+          <HtmlSanitizer
+            decode
+            settings={{ handleClick: mockedHandleClick }}
+          >
             {html}
           </HtmlSanitizer>
         ), {
@@ -154,7 +145,8 @@ describe('<HtmlSanitizer />', () => {
       };
       wrapper.instance().handleTap(event);
 
-      expect(mockConstructor).toHaveBeenCalledTimes(1);
+      expect(mockedHandleClick).toHaveBeenCalledTimes(1);
+      expect(mockedHandleClick).toHaveBeenCalledWith('#I-ll-be-the-one-to-tuck-you-in-at-night');
     });
   });
 });

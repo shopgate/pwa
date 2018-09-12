@@ -12,7 +12,7 @@ const subjectActionsTypes = {
   errorReviewSubmit$: [actionTypes.ERROR_SUBMIT_REVIEW, actionTypes.RESET_SUBMIT_REVIEW],
 };
 
-describe('Reviews streams', () => {
+describe.skip('Reviews streams', () => {
   it('should filter correctly', () => {
     const possibleSubjects = Object.keys(subjects);
     Object.keys(actionTypes).forEach((typeName) => {

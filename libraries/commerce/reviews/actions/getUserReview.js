@@ -18,7 +18,7 @@ const getUserReview = productId => (dispatch, getState) => {
   }
   dispatch(requestUserReview(productId));
   const request = new PipelineRequest(pipelines.SHOPGATE_USER_GET_REVIEW)
-    .setHandledErrors([EUNKNOWN, EACCESS])
+    .setErrorBlacklist([EUNKNOWN, EACCESS])
     .setInput({
       productId,
     })
