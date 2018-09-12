@@ -8,7 +8,7 @@ import connect from './connector';
  * @returns {JSX}
  */
 const QuickLinks = ({ links, navigate }) => (
-  links && (
+  (links && links.length > 0) && (
     <Fragment>
       <NavDrawer.Divider />
       {links.map(link => (
