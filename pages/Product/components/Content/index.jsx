@@ -178,12 +178,7 @@ class ProductContent extends Component {
         </Portal>
         <Portal name={portals.PRODUCT_REVIEWS_AFTER} />
 
-        {/* TAX DISCLAIMER */}
-        <Portal name={portals.PRODUCT_TAX_DISCLAIMER_BEFORE} />
-        <Portal name={portals.PRODUCT_TAX_DISCLAIMER}>
-          <TaxDisclaimer />
-        </Portal>
-        <Portal name={portals.PRODUCT_TAX_DISCLAIMER_AFTER} />
+        <TaxDisclaimer />
       </ProductContext.Provider>
     );
   }
