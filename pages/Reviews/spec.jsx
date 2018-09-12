@@ -28,6 +28,6 @@ describe('<Reviews> page', () => {
     expect(component.find('Reviews').exists()).toBe(true);
     expect(component.find('RatingStars').exists()).toBe(true);
     expect(component.find('LoadMore').exists()).toBe(true);
-    expect(component.find('Review').length).toEqual(4);
+    expect(component.find('List > div').length).toEqual(4);
   });
 });

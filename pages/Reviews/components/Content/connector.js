@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { getProductReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
 
@@ -23,7 +24,7 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
-  if (!prev.reviews.length && next.reviews.length) {
+  if (!isEqual(prev.reviews, next.reviews)) {
     return false;
   }
 
