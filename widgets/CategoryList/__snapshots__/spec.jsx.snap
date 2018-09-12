@@ -51,13 +51,14 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       Yay Categories
     </h3>
     <List
+      className={null}
       hasImages={false}
     >
       <List
-        className=""
+        className={null}
       >
         <ul
-          className="css-gkw1j5 "
+          className={null}
         >
           <ListItem
             className="css-1nftllw css-jz0ijb"

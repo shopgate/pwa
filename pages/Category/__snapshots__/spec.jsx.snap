@@ -49,7 +49,8 @@ exports[`<Category> page should render 1`] = `
             }
             categoryId="women"
             dispatch={[Function]}
-            hasProducts={6}
+            hasChildren={true}
+            hasProducts={true}
           >
             <Portal
               name="category.list.before"
@@ -93,13 +94,26 @@ exports[`<Category> page should render 1`] = `
                 }
               >
                 <List
+                  className={
+                    Object {
+                      "data-css-1tgouoh": "",
+                    }
+                  }
                   hasImages={false}
                 >
                   <List
-                    className=""
+                    className={
+                      Object {
+                        "data-css-1tgouoh": "",
+                      }
+                    }
                   >
                     <ul
-                      className="css-gkw1j5 "
+                      className={
+                        Object {
+                          "data-css-1tgouoh": "",
+                        }
+                      }
                     >
                       <ListItem
                         className="css-1nftllw"
@@ -1066,7 +1080,8 @@ exports[`<Category> page should render empty 1`] = `
             }
             categoryId="women"
             dispatch={[Function]}
-            hasProducts={6}
+            hasChildren={true}
+            hasProducts={true}
           >
             <Portal
               name="category.list.before"
@@ -1110,13 +1125,26 @@ exports[`<Category> page should render empty 1`] = `
                 }
               >
                 <List
+                  className={
+                    Object {
+                      "data-css-1tgouoh": "",
+                    }
+                  }
                   hasImages={false}
                 >
                   <List
-                    className=""
+                    className={
+                      Object {
+                        "data-css-1tgouoh": "",
+                      }
+                    }
                   >
                     <ul
-                      className="css-gkw1j5 "
+                      className={
+                        Object {
+                          "data-css-1tgouoh": "",
+                        }
+                      }
                     >
                       <ListItem
                         className="css-1nftllw"
