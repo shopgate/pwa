@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import TextField from './index';
-import SimpleInput from '../../../common/components/Input/components/SimpleInput'
 
 const inputProps = {
   name: 'test-input',
