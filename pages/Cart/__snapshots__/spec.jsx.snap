@@ -301,7 +301,7 @@ exports[`<Cart> page Initial page should render a coupon 1`] = `
                   className=""
                 >
                   <ul
-                    className="css-gkw1j5 "
+                    className=""
                   >
                     <Portal
                       name="cart.item.before"
@@ -2299,7 +2299,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                   className=""
                 >
                   <ul
-                    className="css-gkw1j5 "
+                    className=""
                   >
                     <Portal
                       name="cart.item.before"
