@@ -1,21 +1,102 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Content /> should render the logo 1`] = `
-<Fragment>
-  <Logo />
-  <Connect(Search)
-    active={false}
-  />
-</Fragment>
+exports[`<NavigatorContent /> should render the logo 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <NavigatorContent
+    routePattern="/"
+  >
+    <Logo>
+      <img
+        alt="Shopgate Connect"
+        className={
+          Object {
+            "data-css-bqj31d": "",
+          }
+        }
+        src="https://example.com/logo"
+      />
+    </Logo>
+    <Search>
+      <div />
+    </Search>
+    <Suggestions>
+      <div />
+    </Suggestions>
+  </NavigatorContent>
+</Provider>
 `;
 
-exports[`<Content /> should render the title 1`] = `
-<Fragment>
-  <Connect(Title)
-    onClick={[Function]}
-  />
-  <Connect(Search)
-    active={false}
-  />
-</Fragment>
+exports[`<NavigatorContent /> should render the title 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <NavigatorContent
+    routePattern="some/other/path"
+  >
+    <Connect(Title)>
+      <Title
+        dispatch={[Function]}
+        onClick={[Function]}
+        title="test"
+      >
+        <div
+          aria-hidden={true}
+          onClick={[Function]}
+        >
+          <div
+            className="css-iykibm "
+          >
+            <Translate
+              className=""
+              params={Object {}}
+              string=""
+            />
+          </div>
+          <div
+            className="css-iykibm "
+            data-test-id="title: test"
+          >
+            <Translate
+              className=""
+              params={Object {}}
+              string="test"
+            >
+              <span
+                className=""
+              >
+                test
+              </span>
+            </Translate>
+          </div>
+        </div>
+      </Title>
+    </Connect(Title)>
+    <Search>
+      <div />
+    </Search>
+    <Suggestions>
+      <div />
+    </Suggestions>
+  </NavigatorContent>
+</Provider>
 `;

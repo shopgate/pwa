@@ -26,7 +26,7 @@ const Tiers = ({ price }) => {
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
         <div className={styles.wrapper}>
-          {price.tiers.map(tier => <Tier tier={tier} price={price} />)}
+          {price.tiers.map(tier => <Tier tier={tier} price={price} key={`${Object.values(tier).join('_')}`} />)}
         </div>
       </Portal>
       <Portal name={PRODUCT_TIERS_AFTER} />

@@ -27,17 +27,19 @@ const results = [
   [
     {
       type: NAVIGATE,
-      action: ACTION_REPLACE,
-      location: '/search?s=shirt',
-      state: undefined,
+      params: {
+        action: ACTION_REPLACE,
+        pathname: '/search?s=shirt',
+      },
     },
   ],
   [
     {
       type: NAVIGATE,
-      action: ACTION_PUSH,
-      location: '/search?s=skirt',
-      state: undefined,
+      params: {
+        action: ACTION_PUSH,
+        pathname: '/search?s=skirt',
+      },
     },
   ],
 ];
@@ -56,6 +58,7 @@ describe('Navigator', () => {
     );
     expect(component.html()).toBe(null);
   });
+
   it('should render the component and update when props change', () => {
     const component = mount(
       <Provider store={getStore({ enabled: true })}>
@@ -88,7 +91,7 @@ describe('Navigator', () => {
       mockRenderOptions
     );
 
-    expect(component.find('Navigator').instance().state.routePattern).toEqual('');
+    expect(component.find('Navigator').instance().state.routePattern).toEqual('/');
 
     mockedRoutePattern = '/search';
     component.find('Navigator').instance().setRoutePattern();

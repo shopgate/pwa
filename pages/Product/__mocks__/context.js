@@ -9,6 +9,7 @@ export const defaultContext = {
   setCharacteristic: jest.fn(),
   conditioner: new Conditioner(),
 };
+
 let context;
 
 export const ProductContext = ({

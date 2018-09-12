@@ -11,21 +11,17 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
   >
     Lorem ipsum
   </h3>
-  <Slider
+  <Connect(Slider)
     autoPlay={false}
-    className=""
     classNames={
       Object {
         "container": "css-y5yof0",
       }
     }
     controls={false}
-    disabled={false}
     indicators={false}
-    initialSlide={0}
     interval={1000}
     loop={false}
-    onSlideChange={null}
     slidesPerView={2.3}
     snapItems={false}
   >
@@ -1169,7 +1165,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
         />
       </Card>
     </SliderItem>
-  </Slider>
+  </Connect(Slider)>
 </div>
 `;
 
@@ -1177,21 +1173,17 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
 <div
   className="css-1qazn57"
 >
-  <Slider
+  <Connect(Slider)
     autoPlay={false}
-    className=""
     classNames={
       Object {
         "container": "css-y5yof0",
       }
     }
     controls={false}
-    disabled={false}
     indicators={false}
-    initialSlide={0}
     interval={1000}
     loop={false}
-    onSlideChange={null}
     slidesPerView={2.3}
     snapItems={false}
   >
@@ -1385,7 +1377,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
         />
       </Card>
     </SliderItem>
-  </Slider>
+  </Connect(Slider)>
 </div>
 `;
 
@@ -1400,21 +1392,17 @@ exports[`<ProductSlider /> should render the headline 1`] = `
   >
     Lorem ipsum
   </h3>
-  <Slider
+  <Connect(Slider)
     autoPlay={false}
-    className=""
     classNames={
       Object {
         "container": "css-y5yof0",
       }
     }
     controls={false}
-    disabled={false}
     indicators={false}
-    initialSlide={0}
     interval={1000}
     loop={false}
-    onSlideChange={null}
     slidesPerView={2.3}
     snapItems={false}
   >
@@ -1608,7 +1596,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
         />
       </Card>
     </SliderItem>
-  </Slider>
+  </Connect(Slider)>
 </div>
 `;
 
@@ -1616,21 +1604,17 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
 <div
   className="css-1qazn57"
 >
-  <Slider
+  <Connect(Slider)
     autoPlay={false}
-    className=""
     classNames={
       Object {
         "container": "css-y5yof0",
       }
     }
     controls={false}
-    disabled={false}
     indicators={false}
-    initialSlide={0}
     interval={1000}
     loop={false}
-    onSlideChange={null}
     slidesPerView={2.3}
     snapItems={false}
   >
@@ -1824,6 +1808,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
         />
       </Card>
     </SliderItem>
-  </Slider>
+  </Connect(Slider)>
 </div>
 `;
