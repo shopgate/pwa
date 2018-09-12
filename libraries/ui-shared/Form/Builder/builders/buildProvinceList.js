@@ -1,4 +1,3 @@
-import memoize from 'lodash/memoize';
 import iso3166 from './../iso-3166-2';
 
 /**
@@ -8,7 +7,7 @@ import iso3166 from './../iso-3166-2';
  * @param {?Object} optional object to prepend optional choice
  * @return {Object}
  */
-export default memoize((countryCode, optional = null) => {
+export default (countryCode, optional = null) => {
   if (!iso3166) {
     return {};
   }
@@ -22,4 +21,4 @@ export default memoize((countryCode, optional = null) => {
     ...optional,
     ...provinceList,
   };
-});
+};

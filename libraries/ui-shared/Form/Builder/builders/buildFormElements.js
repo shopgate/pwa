@@ -1,6 +1,9 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import { ELEMENT_TYPE_COUNTRY, ELEMENT_TYPE_PROVINCE } from '../elementTypes';
 
+/** Noop function */
+const noop = () => {};
+
 /**
  * Takes a list of which elements to render based on the respective element type
  *
@@ -8,7 +11,7 @@ import { ELEMENT_TYPE_COUNTRY, ELEMENT_TYPE_PROVINCE } from '../elementTypes';
  * @param {function} elementChangeHandler change handler
  * @return {FormElement[]}
  */
-export default (formConfig, elementChangeHandler) => {
+export default (formConfig, elementChangeHandler = noop) => {
   /**
    * @type {FormElement[]}
    */
@@ -22,9 +25,9 @@ export default (formConfig, elementChangeHandler) => {
    * @param {AnyFormField} field field
    * @param {boolean} custom custom
    */
-  const addFormElement = (id, field, custom) => {
+  const addFormElement = (id, field, custom = false) => {
     // The "custom" field is just a placeholder for more fields
-    if (id === 'custom') {
+    if (typeof field.type !== 'string') {
       return;
     }
 
@@ -43,7 +46,6 @@ export default (formConfig, elementChangeHandler) => {
       }
       hasProvinceElement = true;
     }
-
     elementList.push({
       id,
       ...field,
@@ -52,14 +54,17 @@ export default (formConfig, elementChangeHandler) => {
     });
   };
 
+  // Extract custom fields, do not mix with normal fields
+  const { custom, ...restFields } = formConfig.fields;
+
   // Add all non-custom attributes and mark them as such
-  Object.keys(formConfig.fields).forEach((id) => {
-    addFormElement(id, formConfig.fields[id], false);
+  Object.keys(restFields).forEach((id) => {
+    addFormElement(id, formConfig.fields[id]);
   });
 
   // Add custom fields to the element list
-  if (formConfig.fields.custom) {
-    Object.keys(formConfig.fields.custom).forEach((id) => {
+  if (custom) {
+    Object.keys(custom).forEach((id) => {
       addFormElement(id, formConfig.fields.custom[id], true);
     });
   }
