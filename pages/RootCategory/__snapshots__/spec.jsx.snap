@@ -93,13 +93,26 @@ exports[`<RootCategory> page should render 1`] = `
         }
       >
         <List
+          className={
+            Object {
+              "data-css-1tgouoh": "",
+            }
+          }
           hasImages={false}
         >
           <List
-            className=""
+            className={
+              Object {
+                "data-css-1tgouoh": "",
+              }
+            }
           >
             <ul
-              className="css-gkw1j5 "
+              className={
+                Object {
+                  "data-css-1tgouoh": "",
+                }
+              }
             >
               <ListItem
                 className="css-1nftllw css-jz0ijb"
