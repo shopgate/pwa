@@ -14,7 +14,7 @@ class List extends Component {
 
   static propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string,
+    className: PropTypes.oneOfType([PropTypes.string, PropTypes.shape()]),
     hasImages: PropTypes.bool,
   };
 

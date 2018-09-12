@@ -12,9 +12,9 @@ import connect from './connector';
  * @param {Object} props.categoryId The category id.
  * @returns {JSX}
  */
-const CategoryContent = (
-  { categories, categoryId, hasChildren, hasProducts }
-) => (
+const CategoryContent = ({
+  categories, categoryId, hasChildren, hasProducts,
+}) => (
   <Fragment>
     {(!hasChildren && hasProducts) && <Bar />}
     <Portal name={portals.CATEGORY_LIST_BEFORE} props={{ categoryId }} />
