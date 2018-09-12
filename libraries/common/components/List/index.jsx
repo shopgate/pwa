@@ -1,42 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from './components/Item';
-import styles from './style';
 
 /**
- * The list component.
- * @param {Object} props - The component props.
- * @param {React.Children} props.children - Some content to display inside.
+ * The List component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class List extends Component {
-  static Item = ListItem;
+const List = ({ children, className }) => (
+  <ul className={className}>{children}</ul>
+);
 
-  static propTypes = {
-    className: PropTypes.string,
-  };
+List.Item = ListItem;
 
-  static defaultProps = {
-    className: '',
-  };
+List.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.shape()]),
+};
 
-  /**
-   * Composes the props.
-   * @returns {Object} The composed props.
-   */
-  getProps() {
-    return {
-      ...this.props,
-      className: `${styles} ${this.props.className}`,
-    };
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return React.createElement('ul', this.getProps());
-  }
-}
+List.defaultProps = {
+  className: '',
+};
 
 export default List;
