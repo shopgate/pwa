@@ -106,68 +106,11 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@shopgate/eslint-config@6.0.0-beta.9":
-  version "6.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@shopgate/eslint-config/-/eslint-config-6.0.0-beta.9.tgz#f9fe9994d9565bff11c3ef3678e586b57e3ec481"
-  dependencies:
-    babel-eslint "^8.2.1"
-    eslint-config-airbnb "^16.1.0"
-    eslint-import-resolver-babel-module "4.0.0"
-    eslint-plugin-cypress "^2.0.1"
-    eslint-plugin-eslint-comments "^1.1.0"
-    eslint-plugin-extra-rules "0.8.1"
-    eslint-plugin-import "^2.8.0"
-    eslint-plugin-jsx-a11y "^6.0.3"
-    eslint-plugin-react "^7.6.1"
-
-"@shopgate/pwa-common-commerce@6.0.0-beta.9":
-  version "6.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common-commerce/-/pwa-common-commerce-6.0.0-beta.9.tgz#21b5271c00aa779fa10e544b3d82f1e0568b6891"
-  dependencies:
-    recompose "^0.26.0"
-    reselect "^3.0.1"
-
-"@shopgate/pwa-common@6.0.0-beta.9":
-  version "6.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@shopgate/pwa-common/-/pwa-common-6.0.0-beta.9.tgz#1fa011ec8351c8a1f7a87214f1c55dbf8b3af1c7"
-  dependencies:
-    "@virtuous/conductor" "1.0.0-beta.34"
-    "@virtuous/conductor-events" "1.0.0-beta.34"
-    "@virtuous/conductor-helpers" "1.0.0-beta.34"
-    "@virtuous/react-conductor" "1.0.0-beta.34"
-    "@virtuous/redux-conductor" "1.0.0-beta.34"
-    "@virtuous/redux-persister" "1.1.0-beta.5"
-    classnames "^2.2.5"
-    crypto-js "3.1.9-1"
-    glamor "^2.20.40"
-    gsap "^1.20.2"
-    intl-messageformat "^2.1.0"
-    jsdom "11.1.0"
-    path-match "^1.2.4"
-    react-dotdotdot "^1.1.0"
-    react-id-swiper "1.4.0"
-    react-inline-transition-group "^2.1.7"
-    react-portal "^3.1.0"
-    react-redux "^5.0.6"
-    react-tap-event-plugin "^3.0.2"
-    recompose "^0.26.0"
-    redux "^3.7.2"
-    redux-devtools-extension "^2.13.2"
-    redux-logger "^3.0.6"
-    redux-thunk "^2.2.0"
-    reselect "^3.0.1"
-    rxjs "^5.4.3"
-    url-search-params "^0.10.0"
-
 "@shopgate/react-hammerjs@0.5.3", "@shopgate/react-hammerjs@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@shopgate/react-hammerjs/-/react-hammerjs-0.5.3.tgz#53ee13c39a2a78ed2c9187052820767cbd0c930e"
   dependencies:
     hammerjs "^2.0.8"
-
-"@shopgate/tracking-core@6.0.0-beta.9":
-  version "6.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@shopgate/tracking-core/-/tracking-core-6.0.0-beta.9.tgz#d7a9069cb852237fe9a56dad41318bae3671842c"
 
 "@types/blob-util@1.3.3":
   version "1.3.3"
@@ -231,39 +174,17 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
-"@virtuous/conductor-events@1.0.0-beta.34":
-  version "1.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.34.tgz#e4d6a2e4a07bf8992656022ad2e7775c7788836b"
-  dependencies:
-    "@virtuous/conductor" "1.0.0-beta.34"
-
 "@virtuous/conductor-events@1.0.0-beta.38":
   version "1.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@virtuous/conductor-events/-/conductor-events-1.0.0-beta.38.tgz#83a21fc385407649801a63d67945ea7eac32609a"
   dependencies:
     "@virtuous/conductor" "1.0.0-beta.38"
 
-"@virtuous/conductor-helpers@1.0.0-beta.34":
-  version "1.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.34.tgz#f3364307114f4d3a0fb2bfc49df61f2e1af809f7"
-  dependencies:
-    "@virtuous/conductor" "1.0.0-beta.34"
-
 "@virtuous/conductor-helpers@1.0.0-beta.38":
   version "1.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@virtuous/conductor-helpers/-/conductor-helpers-1.0.0-beta.38.tgz#a06da76b5856a7567b3a207b60dfc74dc9dee564"
   dependencies:
     "@virtuous/conductor" "1.0.0-beta.38"
-
-"@virtuous/conductor@1.0.0-beta.34":
-  version "1.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@virtuous/conductor/-/conductor-1.0.0-beta.34.tgz#41c981fa9221baaa6c3b9e469e56ddd9b794f010"
-  dependencies:
-    history "^4.7.2"
-    lodash "^4.17.10"
-    path-match "^1.2.4"
-    query-string "^6.1.0"
-    url-pattern "^1.0.3"
 
 "@virtuous/conductor@1.0.0-beta.38":
   version "1.0.0-beta.38"
@@ -279,17 +200,6 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@virtuous/logger/-/logger-1.0.0.tgz#d635e4f2449926032d9af36d943bcc37940d37de"
 
-"@virtuous/react-conductor@1.0.0-beta.34":
-  version "1.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.34.tgz#efc2015d9027cf8051a5a5ba5c25653c59536a00"
-  dependencies:
-    "@virtuous/conductor" "1.0.0-beta.34"
-    "@virtuous/conductor-events" "1.0.0-beta.34"
-    "@virtuous/conductor-helpers" "1.0.0-beta.34"
-    gsap "^1.20.4"
-    react-transition-group "^2.2.1"
-    uuid "^3.1.0"
-
 "@virtuous/react-conductor@1.0.0-beta.38":
   version "1.0.0-beta.38"
   resolved "https://registry.yarnpkg.com/@virtuous/react-conductor/-/react-conductor-1.0.0-beta.38.tgz#de25dae48cf2ac046a88de8ebbab4a0d6e836412"
@@ -300,14 +210,6 @@
     gsap "^1.20.4"
     react-transition-group "^2.2.1"
     uuid "^3.1.0"
-
-"@virtuous/redux-conductor@1.0.0-beta.34":
-  version "1.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@virtuous/redux-conductor/-/redux-conductor-1.0.0-beta.34.tgz#fe5fc15af12840ac834e9fbdeabb5d66d8b9ef90"
-  dependencies:
-    "@virtuous/conductor" "1.0.0-beta.34"
-    "@virtuous/conductor-events" "1.0.0-beta.34"
-    "@virtuous/conductor-helpers" "1.0.0-beta.34"
 
 "@virtuous/redux-conductor@1.0.0-beta.38":
   version "1.0.0-beta.38"
@@ -3069,49 +2971,6 @@ eslint@^4.17.0:
     table "4.0.2"
     text-table "~0.2.0"
 
-eslint@^4.19.1:
-  version "4.19.1"
-  resolved "http://registry.npmjs.org/eslint/-/eslint-4.19.1.tgz#32d1d653e1d90408854bfb296f076ec7e186a300"
-  dependencies:
-    ajv "^5.3.0"
-    babel-code-frame "^6.22.0"
-    chalk "^2.1.0"
-    concat-stream "^1.6.0"
-    cross-spawn "^5.1.0"
-    debug "^3.1.0"
-    doctrine "^2.1.0"
-    eslint-scope "^3.7.1"
-    eslint-visitor-keys "^1.0.0"
-    espree "^3.5.4"
-    esquery "^1.0.0"
-    esutils "^2.0.2"
-    file-entry-cache "^2.0.0"
-    functional-red-black-tree "^1.0.1"
-    glob "^7.1.2"
-    globals "^11.0.1"
-    ignore "^3.3.3"
-    imurmurhash "^0.1.4"
-    inquirer "^3.0.6"
-    is-resolvable "^1.0.0"
-    js-yaml "^3.9.1"
-    json-stable-stringify-without-jsonify "^1.0.1"
-    levn "^0.3.0"
-    lodash "^4.17.4"
-    minimatch "^3.0.2"
-    mkdirp "^0.5.1"
-    natural-compare "^1.4.0"
-    optionator "^0.8.2"
-    path-is-inside "^1.0.2"
-    pluralize "^7.0.0"
-    progress "^2.0.0"
-    regexpp "^1.0.1"
-    require-uncached "^1.0.3"
-    semver "^5.3.0"
-    strip-ansi "^4.0.0"
-    strip-json-comments "~2.0.1"
-    table "4.0.2"
-    text-table "~0.2.0"
-
 espree@3.0.0-alpha-1:
   version "3.0.0-alpha-1"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.0.0-alpha-1.tgz#ca1380bd81f2fae94b2638ae7cc449b71f91eaa3"
@@ -3119,7 +2978,7 @@ espree@3.0.0-alpha-1:
     acorn "^2.6.4"
     acorn-jsx "^2.0.1"
 
-espree@^3.5.2, espree@^3.5.4:
+espree@^3.5.2:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/espree/-/espree-3.5.4.tgz#b0f447187c8a8bed944b815a660bddf5deb5d1a7"
   dependencies:
@@ -7154,10 +7013,6 @@ regex-not@^1.0.0, regex-not@^1.0.2:
   dependencies:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
-
-regexpp@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-1.1.0.tgz#0e3516dd0b7904f413d2d4193dce4618c3a689ab"
 
 regexpu-core@^2.0.0:
   version "2.0.0"
