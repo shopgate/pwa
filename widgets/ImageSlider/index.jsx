@@ -61,3 +61,5 @@ export default shouldUpdate((prev, next) => {
   if (!prev.settings && next.settings) return true;
   return false;
 })(ImageSliderWidget);
+
+export { ImageSliderWidget as UnwrappedImageSliderWidget };

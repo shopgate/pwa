@@ -2,6 +2,7 @@
 
 exports[`<HtmlWidget /> Basic rendering should re-render when html updates 1`] = `
 <Html
+  navigate={[MockFunction]}
   settings={
     Object {
       "defaultPadding": false,
@@ -23,6 +24,7 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 1`] =
 
 exports[`<HtmlWidget /> Basic rendering should re-render when html updates 2`] = `
 <Html
+  navigate={[MockFunction]}
   settings={
     Object {
       "defaultPadding": false,
@@ -44,6 +46,7 @@ exports[`<HtmlWidget /> Basic rendering should re-render when html updates 2`] =
 
 exports[`<HtmlWidget /> Basic rendering should re-render when html updates 3`] = `
 <Html
+  navigate={[MockFunction]}
   settings={
     Object {
       "defaultPadding": true,
@@ -90,6 +93,7 @@ exports[`<HtmlWidget /> Basic rendering should render the HtmlWidget with a padd
 
 exports[`<HtmlWidget /> strips out the script tags 1`] = `
 <Html
+  navigate={[MockFunction]}
   settings={
     Object {
       "defaultPadding": false,

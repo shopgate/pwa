@@ -101,6 +101,7 @@ exports[`<ProductGallery> page should render 1`] = `
                 }
                 controls={false}
                 disabled={false}
+                historyPath=""
                 indicators={true}
                 initialSlide={0}
                 interval={3000}
@@ -121,6 +122,7 @@ exports[`<ProductGallery> page should render 1`] = `
                   }
                   controls={false}
                   disabled={false}
+                  historyPath=""
                   indicators={true}
                   initialSlide={0}
                   interval={3000}

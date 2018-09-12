@@ -186,3 +186,4 @@ LiveshoppingWidget.propTypes = {
 };
 
 export default connect(LiveshoppingWidget);
+export { LiveshoppingWidget as UnwrappedLiveshoppingWidget };
