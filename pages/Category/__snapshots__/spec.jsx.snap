@@ -16,7 +16,9 @@ exports[`<Category> page should render 1`] = `
   <Category
     id="women"
   >
-    <MockedView>
+    <MockedView
+      background="#f8f8f8"
+    >
       <div>
         <Connect(CategoryContent)
           categoryId="women"
@@ -90,7 +92,9 @@ exports[`<Category> page should render 1`] = `
                   ]
                 }
               >
-                <List>
+                <List
+                  hasImages={false}
+                >
                   <List
                     className=""
                   >
@@ -98,15 +102,15 @@ exports[`<Category> page should render 1`] = `
                       className="css-gkw1j5 "
                     >
                       <ListItem
-                        className="css-1brrprg"
+                        className="css-1nftllw"
                         isSelected={false}
                         key="child-0/.$test"
                       >
                         <li
-                          className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                          className="css-1p5q8vq css-1nftllw css-16gj3o1"
                         >
                           <div
-                            className="css-1nnz83b"
+                            className="css-1ckzvk7"
                           >
                             <Portal
                               key="test"
@@ -160,8 +164,9 @@ exports[`<Category> page should render 1`] = `
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/category/74657374"
-                                        navigate={[Function]}
                                         onClick={null}
                                         replace={false}
                                         state={
@@ -172,22 +177,18 @@ exports[`<Category> page should render 1`] = `
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"
                                         >
                                           <Grid
-                                            className="css-1qcr7hz"
+                                            className="css-4bx66l"
                                             component="div"
                                             wrap={false}
                                           >
                                             <div
-                                              className="css-1qcr7hz css-h7r55a"
+                                              className="css-4bx66l css-h7r55a"
                                             >
-                                              <div
-                                                className="css-jwxytc"
-                                              />
                                               <GridItem
                                                 className="css-10fxwvh"
                                                 component="div"
@@ -247,6 +248,7 @@ exports[`<Category> page should render 1`] = `
                 <CategoryProducts
                   categoryId="women"
                   getProducts={[Function]}
+                  hash="{\\"categoryId\\":\\"women\\",\\"filters\\":{},\\"pipeline\\":\\"shopgate.catalog.getProducts\\",\\"sort\\":\\"relevance\\"}"
                   products={
                     Array [
                       Object {
@@ -360,6 +362,7 @@ exports[`<Category> page should render 1`] = `
                         },
                       ]
                     }
+                    requestHash="{\\"categoryId\\":\\"women\\",\\"filters\\":{},\\"pipeline\\":\\"shopgate.catalog.getProducts\\",\\"sort\\":\\"relevance\\"}"
                     totalProductCount={1}
                   >
                     <InfiniteContainer
@@ -422,6 +425,7 @@ exports[`<Category> page should render 1`] = `
                       loader={[Function]}
                       loadingIndicator={<LoadingIndicator />}
                       preloadMultiplier={2}
+                      requestHash="{\\"categoryId\\":\\"women\\",\\"filters\\":{},\\"pipeline\\":\\"shopgate.catalog.getProducts\\",\\"sort\\":\\"relevance\\"}"
                       totalItems={1}
                       wrapper={[Function]}
                     >
@@ -653,11 +657,12 @@ exports[`<Category> page should render 1`] = `
                                             <Link
                                               className="css-b4pchx"
                                               disabled={false}
+                                              historyPush={[Function]}
+                                              historyReplace={[Function]}
                                               href="/item/393133"
                                               itemProp="item"
                                               itemScope={true}
                                               itemType="http://schema.org/Product"
-                                              navigate={[Function]}
                                               replace={false}
                                               state={
                                                 Object {
@@ -668,7 +673,6 @@ exports[`<Category> page should render 1`] = `
                                               tagName="a"
                                             >
                                               <div
-                                                aria-hidden={true}
                                                 className="css-c6ki83 css-b4pchx"
                                                 onClick={[Function]}
                                                 role="link"
@@ -872,63 +876,82 @@ exports[`<Category> page should render 1`] = `
                                                       }
                                                     }
                                                   >
-                                                    <Grid
-                                                      className="css-1glzrmu"
-                                                      component="ul"
-                                                      wrap={true}
+                                                    <ProductGridPrice
+                                                      price={
+                                                        Object {
+                                                          "currency": "EUR",
+                                                          "info": "",
+                                                          "msrp": 0,
+                                                          "taxAmount": 0,
+                                                          "taxPercent": 0,
+                                                          "tiers": Array [],
+                                                          "unitPrice": 89,
+                                                          "unitPriceMax": 1000,
+                                                          "unitPriceMin": 0,
+                                                          "unitPriceNet": 89,
+                                                          "unitPriceStriked": 0,
+                                                          "unitPriceWithTax": 89,
+                                                        }
+                                                      }
                                                     >
-                                                      <ul
-                                                        className="css-1glzrmu css-h7r55a css-u7q1iu"
+                                                      <Grid
+                                                        className="css-1glzrmu"
+                                                        component="ul"
+                                                        wrap={true}
                                                       >
-                                                        <GridItem
-                                                          className=""
-                                                          component="li"
-                                                          grow={1}
-                                                          shrink={1}
+                                                        <ul
+                                                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                                                         >
-                                                          <li
-                                                            className=" css-1gs0ko2"
+                                                          <GridItem
+                                                            className=""
+                                                            component="li"
+                                                            grow={1}
+                                                            shrink={1}
                                                           >
-                                                            <Price
-                                                              className=""
-                                                              currency="EUR"
-                                                              discounted={false}
-                                                              fractions={true}
-                                                              taxDisclaimer={false}
-                                                              unitPrice={89}
-                                                              unitPriceMin={0}
+                                                            <li
+                                                              className=" css-1gs0ko2"
                                                             >
-                                                              <div
-                                                                className="css-izofhs "
-                                                                data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                                              <Price
+                                                                className=""
+                                                                currency="EUR"
+                                                                discounted={false}
+                                                                fractions={true}
+                                                                taxDisclaimer={false}
+                                                                unitPrice={89}
+                                                                unitPriceMin={0}
                                                               >
-                                                                <FormatPrice
-                                                                  className=""
-                                                                  currency="EUR"
-                                                                  fractions={true}
-                                                                  price={89}
+                                                                <div
+                                                                  className="css-izofhs "
+                                                                  data-test-id="minPrice: 0 price: 89 currency: EUR"
                                                                 >
-                                                                  <span
+                                                                  <FormatPrice
                                                                     className=""
+                                                                    currency="EUR"
+                                                                    fractions={true}
+                                                                    price={89}
                                                                   >
-                                                                    p
-                                                                  </span>
-                                                                </FormatPrice>
-                                                              </div>
-                                                            </Price>
-                                                          </li>
-                                                        </GridItem>
-                                                      </ul>
-                                                    </Grid>
-                                                    <Grid
-                                                      className=""
-                                                      component="ul"
-                                                      wrap={false}
-                                                    >
-                                                      <ul
-                                                        className=" css-h7r55a"
-                                                      />
-                                                    </Grid>
+                                                                    <span
+                                                                      className=""
+                                                                    >
+                                                                      p
+                                                                    </span>
+                                                                  </FormatPrice>
+                                                                </div>
+                                                              </Price>
+                                                            </li>
+                                                          </GridItem>
+                                                        </ul>
+                                                      </Grid>
+                                                      <Grid
+                                                        className=""
+                                                        component="ul"
+                                                        wrap={false}
+                                                      >
+                                                        <ul
+                                                          className=" css-h7r55a"
+                                                        />
+                                                      </Grid>
+                                                    </ProductGridPrice>
                                                   </Portal>
                                                   <Portal
                                                     name="product-item.price.after"
@@ -1010,7 +1033,9 @@ exports[`<Category> page should render empty 1`] = `
   <Category
     id="women"
   >
-    <MockedView>
+    <MockedView
+      background="#f8f8f8"
+    >
       <div>
         <Connect(CategoryContent)
           categoryId="women"
@@ -1084,7 +1109,9 @@ exports[`<Category> page should render empty 1`] = `
                   ]
                 }
               >
-                <List>
+                <List
+                  hasImages={false}
+                >
                   <List
                     className=""
                   >
@@ -1092,15 +1119,15 @@ exports[`<Category> page should render empty 1`] = `
                       className="css-gkw1j5 "
                     >
                       <ListItem
-                        className="css-1brrprg"
+                        className="css-1nftllw"
                         isSelected={false}
                         key="child-0/.$test"
                       >
                         <li
-                          className="css-1p5q8vq css-1brrprg css-16gj3o1"
+                          className="css-1p5q8vq css-1nftllw css-16gj3o1"
                         >
                           <div
-                            className="css-1nnz83b"
+                            className="css-1ckzvk7"
                           >
                             <Portal
                               key="test"
@@ -1154,8 +1181,9 @@ exports[`<Category> page should render empty 1`] = `
                                       <Link
                                         className=""
                                         disabled={false}
+                                        historyPush={[Function]}
+                                        historyReplace={[Function]}
                                         href="/category/74657374"
-                                        navigate={[Function]}
                                         onClick={null}
                                         replace={false}
                                         state={
@@ -1166,22 +1194,18 @@ exports[`<Category> page should render empty 1`] = `
                                         tag="div"
                                       >
                                         <div
-                                          aria-hidden={true}
                                           className="css-c6ki83 "
                                           onClick={[Function]}
                                           role="link"
                                         >
                                           <Grid
-                                            className="css-1qcr7hz"
+                                            className="css-4bx66l"
                                             component="div"
                                             wrap={false}
                                           >
                                             <div
-                                              className="css-1qcr7hz css-h7r55a"
+                                              className="css-4bx66l css-h7r55a"
                                             >
-                                              <div
-                                                className="css-jwxytc"
-                                              />
                                               <GridItem
                                                 className="css-10fxwvh"
                                                 component="div"
@@ -1241,6 +1265,7 @@ exports[`<Category> page should render empty 1`] = `
                 <CategoryProducts
                   categoryId="women"
                   getProducts={[Function]}
+                  hash="{\\"categoryId\\":\\"women\\",\\"filters\\":{},\\"pipeline\\":\\"shopgate.catalog.getProducts\\",\\"sort\\":\\"relevance\\"}"
                   products={
                     Array [
                       Object {
@@ -1354,6 +1379,7 @@ exports[`<Category> page should render empty 1`] = `
                         },
                       ]
                     }
+                    requestHash="{\\"categoryId\\":\\"women\\",\\"filters\\":{},\\"pipeline\\":\\"shopgate.catalog.getProducts\\",\\"sort\\":\\"relevance\\"}"
                     totalProductCount={1}
                   >
                     <InfiniteContainer
@@ -1416,6 +1442,7 @@ exports[`<Category> page should render empty 1`] = `
                       loader={[Function]}
                       loadingIndicator={<LoadingIndicator />}
                       preloadMultiplier={2}
+                      requestHash="{\\"categoryId\\":\\"women\\",\\"filters\\":{},\\"pipeline\\":\\"shopgate.catalog.getProducts\\",\\"sort\\":\\"relevance\\"}"
                       totalItems={1}
                       wrapper={[Function]}
                     >
@@ -1647,11 +1674,12 @@ exports[`<Category> page should render empty 1`] = `
                                             <Link
                                               className="css-b4pchx"
                                               disabled={false}
+                                              historyPush={[Function]}
+                                              historyReplace={[Function]}
                                               href="/item/393133"
                                               itemProp="item"
                                               itemScope={true}
                                               itemType="http://schema.org/Product"
-                                              navigate={[Function]}
                                               replace={false}
                                               state={
                                                 Object {
@@ -1662,7 +1690,6 @@ exports[`<Category> page should render empty 1`] = `
                                               tagName="a"
                                             >
                                               <div
-                                                aria-hidden={true}
                                                 className="css-c6ki83 css-b4pchx"
                                                 onClick={[Function]}
                                                 role="link"
@@ -1866,63 +1893,82 @@ exports[`<Category> page should render empty 1`] = `
                                                       }
                                                     }
                                                   >
-                                                    <Grid
-                                                      className="css-1glzrmu"
-                                                      component="ul"
-                                                      wrap={true}
+                                                    <ProductGridPrice
+                                                      price={
+                                                        Object {
+                                                          "currency": "EUR",
+                                                          "info": "",
+                                                          "msrp": 0,
+                                                          "taxAmount": 0,
+                                                          "taxPercent": 0,
+                                                          "tiers": Array [],
+                                                          "unitPrice": 89,
+                                                          "unitPriceMax": 1000,
+                                                          "unitPriceMin": 0,
+                                                          "unitPriceNet": 89,
+                                                          "unitPriceStriked": 0,
+                                                          "unitPriceWithTax": 89,
+                                                        }
+                                                      }
                                                     >
-                                                      <ul
-                                                        className="css-1glzrmu css-h7r55a css-u7q1iu"
+                                                      <Grid
+                                                        className="css-1glzrmu"
+                                                        component="ul"
+                                                        wrap={true}
                                                       >
-                                                        <GridItem
-                                                          className=""
-                                                          component="li"
-                                                          grow={1}
-                                                          shrink={1}
+                                                        <ul
+                                                          className="css-1glzrmu css-h7r55a css-u7q1iu"
                                                         >
-                                                          <li
-                                                            className=" css-1gs0ko2"
+                                                          <GridItem
+                                                            className=""
+                                                            component="li"
+                                                            grow={1}
+                                                            shrink={1}
                                                           >
-                                                            <Price
-                                                              className=""
-                                                              currency="EUR"
-                                                              discounted={false}
-                                                              fractions={true}
-                                                              taxDisclaimer={false}
-                                                              unitPrice={89}
-                                                              unitPriceMin={0}
+                                                            <li
+                                                              className=" css-1gs0ko2"
                                                             >
-                                                              <div
-                                                                className="css-izofhs "
-                                                                data-test-id="minPrice: 0 price: 89 currency: EUR"
+                                                              <Price
+                                                                className=""
+                                                                currency="EUR"
+                                                                discounted={false}
+                                                                fractions={true}
+                                                                taxDisclaimer={false}
+                                                                unitPrice={89}
+                                                                unitPriceMin={0}
                                                               >
-                                                                <FormatPrice
-                                                                  className=""
-                                                                  currency="EUR"
-                                                                  fractions={true}
-                                                                  price={89}
+                                                                <div
+                                                                  className="css-izofhs "
+                                                                  data-test-id="minPrice: 0 price: 89 currency: EUR"
                                                                 >
-                                                                  <span
+                                                                  <FormatPrice
                                                                     className=""
+                                                                    currency="EUR"
+                                                                    fractions={true}
+                                                                    price={89}
                                                                   >
-                                                                    p
-                                                                  </span>
-                                                                </FormatPrice>
-                                                              </div>
-                                                            </Price>
-                                                          </li>
-                                                        </GridItem>
-                                                      </ul>
-                                                    </Grid>
-                                                    <Grid
-                                                      className=""
-                                                      component="ul"
-                                                      wrap={false}
-                                                    >
-                                                      <ul
-                                                        className=" css-h7r55a"
-                                                      />
-                                                    </Grid>
+                                                                    <span
+                                                                      className=""
+                                                                    >
+                                                                      p
+                                                                    </span>
+                                                                  </FormatPrice>
+                                                                </div>
+                                                              </Price>
+                                                            </li>
+                                                          </GridItem>
+                                                        </ul>
+                                                      </Grid>
+                                                      <Grid
+                                                        className=""
+                                                        component="ul"
+                                                        wrap={false}
+                                                      >
+                                                        <ul
+                                                          className=" css-h7r55a"
+                                                        />
+                                                      </Grid>
+                                                    </ProductGridPrice>
                                                   </Portal>
                                                   <Portal
                                                     name="product-item.price.after"

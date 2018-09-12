@@ -29,7 +29,7 @@ exports[`Navigator should render search 1`] = `
       <Provider
         value={
           Object {
-            "routePattern": "",
+            "routePattern": "/",
             "searchField": false,
             "searchQuery": "",
             "setSearchQuery": [Function],
@@ -40,7 +40,7 @@ exports[`Navigator should render search 1`] = `
         <div
           value={
             Object {
-              "routePattern": "",
+              "routePattern": "/",
               "searchField": false,
               "searchQuery": "",
               "setSearchQuery": [Function],
@@ -95,7 +95,9 @@ exports[`Navigator should render search 1`] = `
                         }
                       }
                     >
-                      <Component>
+                      <Component
+                        pattern="/"
+                      >
                         <div>
                            
                         </div>
@@ -123,40 +125,19 @@ exports[`Navigator should render search 1`] = `
                           className="css-1kjnwv2 css-1gs0ko2"
                         >
                           <NavigatorContent
-                            routePattern=""
+                            routePattern="/"
                           >
-                            <Connect(Title)>
-                              <Title
-                                dispatch={[Function]}
-                                onClick={[Function]}
-                                title=""
-                              >
-                                <div
-                                  aria-hidden={true}
-                                  onClick={[Function]}
-                                >
-                                  <div
-                                    className="css-iykibm "
-                                  >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string=""
-                                    />
-                                  </div>
-                                  <div
-                                    className="css-iykibm "
-                                    data-test-id="title: "
-                                  >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string=""
-                                    />
-                                  </div>
-                                </div>
-                              </Title>
-                            </Connect(Title)>
+                            <Logo>
+                              <img
+                                alt="Shopgate Connect"
+                                className={
+                                  Object {
+                                    "data-css-bqj31d": "",
+                                  }
+                                }
+                                src="https://example.com/logo"
+                              />
+                            </Logo>
                             <_default>
                               <Consumer>
                                 <NavigatorSearch
@@ -236,6 +217,14 @@ exports[`Navigator should render search 1`] = `
                       name="nav-bar.navigator.icons"
                       props={null}
                     >
+                      <div
+                        className={
+                          Object {
+                            "data-css-sa13d4": "",
+                          }
+                        }
+                        id="NAVIGATOR_BUTTON"
+                      />
                       <_default>
                         <Consumer>
                           <SearchButton

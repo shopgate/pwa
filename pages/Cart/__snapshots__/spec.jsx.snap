@@ -214,7 +214,7 @@ exports[`<Cart> page Initial page should navigate back on button press 1`] = `
 </Provider>
 `;
 
-exports[`<Cart> page Initial page should render coupon 1`] = `
+exports[`<Cart> page Initial page should render a coupon 1`] = `
 <Provider
   store={
     Object {
@@ -453,18 +453,18 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                                           <Link
                                             className=""
                                             disabled={false}
+                                            historyPush={[Function]}
+                                            historyReplace={[Function]}
                                             href="/item/746573745f70726f64756374"
                                             itemProp="item"
                                             itemScope={true}
                                             itemType="http://schema.org/Product"
-                                            navigate={[Function]}
                                             replace={false}
                                             state={Object {}}
                                             tag="div"
                                             tagName="a"
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-c6ki83 "
                                               onClick={[Function]}
                                               role="link"
@@ -1449,123 +1449,132 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                       name="cart.coupon-field"
                       props={null}
                     >
-                      <Connect(CouponField)
+                      <Connect(Component)
                         onToggleFocus={[Function]}
                       >
-                        <CouponField
+                        <Component
                           addCoupon={[Function]}
                           isIos={false}
                           isLoading={false}
-                          isVisible={true}
+                          isSupported={true}
                           onToggleFocus={[Function]}
                         >
-                          <div>
-                            <Layout
-                              handleAddCoupon={[Function]}
-                              handleFocusChange={[Function]}
-                              handleValueChange={[Function]}
-                              iconStyle={
-                                Object {
-                                  "opacity": 0,
-                                }
-                              }
-                              isButtonDisabled={true}
-                              isFocused={false}
+                          <Consumer>
+                            <CouponField
+                              addCoupon={[Function]}
+                              isIos={false}
                               isLoading={false}
-                              labelStyle={
-                                Object {
-                                  "display": "block",
-                                }
-                              }
-                              value=""
+                              isSupported={true}
+                              onToggleFocus={[Function]}
+                              visible={true}
                             >
-                              <div
-                                className="css-gtkn00"
-                              >
-                                <form
-                                  className="css-pgykgj"
-                                  data-test-id="couponField"
-                                  onSubmit={[Function]}
-                                >
-                                  <label
-                                    className="css-m5j1fd"
-                                    htmlFor="coupon-code-field"
-                                    style={
-                                      Object {
-                                        "display": "block",
-                                      }
+                              <div>
+                                <Layout
+                                  handleAddCoupon={[Function]}
+                                  handleFocusChange={[Function]}
+                                  handleValueChange={[Function]}
+                                  iconStyle={
+                                    Object {
+                                      "opacity": 0,
                                     }
+                                  }
+                                  isButtonDisabled={true}
+                                  isFocused={false}
+                                  isLoading={false}
+                                  labelStyle={
+                                    Object {
+                                      "display": "block",
+                                    }
+                                  }
+                                  value=""
+                                >
+                                  <div
+                                    className="css-gtkn00"
                                   >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string="cart.redeem_coupon"
+                                    <form
+                                      className="css-pgykgj"
+                                      data-test-id="couponField"
+                                      onSubmit={[Function]}
                                     >
-                                      <span
-                                        className=""
+                                      <label
+                                        className="css-m5j1fd"
+                                        htmlFor="coupon-code-field"
+                                        style={
+                                          Object {
+                                            "display": "block",
+                                          }
+                                        }
                                       >
-                                        cart.redeem_coupon
-                                      </span>
-                                    </Translate>
-                                  </label>
-                                  <Component
-                                    className="css-gm6ek6"
-                                    disabled={false}
-                                    name="coupon-code-field"
-                                    onChange={[Function]}
-                                    onFocusChange={[Function]}
-                                    value=""
-                                  >
-                                    <SimpleInput
-                                      autoComplete={false}
-                                      autoCorrect={false}
-                                      className="css-gm6ek6"
-                                      disabled={false}
-                                      id={null}
-                                      name="coupon-code-field"
-                                      onChange={[Function]}
-                                      onFocusChange={[Function]}
-                                      onSanitize={[Function]}
-                                      onValidate={[Function]}
-                                      password={false}
-                                      setRef={[Function]}
-                                      type="text"
-                                      validateOnBlur={true}
-                                      value=""
-                                    >
-                                      <input
-                                        autoComplete="off"
-                                        autoCorrect="off"
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.redeem_coupon"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.redeem_coupon
+                                          </span>
+                                        </Translate>
+                                      </label>
+                                      <Component
                                         className="css-gm6ek6"
                                         disabled={false}
-                                        id={null}
                                         name="coupon-code-field"
-                                        onBlur={[Function]}
                                         onChange={[Function]}
-                                        onFocus={[Function]}
-                                        type="text"
+                                        onFocusChange={[Function]}
                                         value=""
-                                      />
-                                    </SimpleInput>
-                                  </Component>
-                                  <div
-                                    aria-hidden={true}
-                                    className="css-8dl7x"
-                                    data-test-id="CouponSubmitButton"
-                                    onClick={[Function]}
-                                    style={
-                                      Object {
-                                        "opacity": 0,
-                                      }
-                                    }
-                                  >
-                                    <CouponFieldIcon
-                                      disabled={true}
-                                    >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="
+                                      >
+                                        <SimpleInput
+                                          autoComplete={false}
+                                          autoCorrect={false}
+                                          className="css-gm6ek6"
+                                          disabled={false}
+                                          id={null}
+                                          name="coupon-code-field"
+                                          onChange={[Function]}
+                                          onFocusChange={[Function]}
+                                          onSanitize={[Function]}
+                                          onValidate={[Function]}
+                                          password={false}
+                                          setRef={[Function]}
+                                          type="text"
+                                          validateOnBlur={true}
+                                          value=""
+                                        >
+                                          <input
+                                            autoComplete="off"
+                                            autoCorrect="off"
+                                            className="css-gm6ek6"
+                                            disabled={false}
+                                            id={null}
+                                            name="coupon-code-field"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            type="text"
+                                            value=""
+                                          />
+                                        </SimpleInput>
+                                      </Component>
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8dl7x"
+                                        data-test-id="CouponSubmitButton"
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 0,
+                                          }
+                                        }
+                                      >
+                                        <CouponFieldIcon
+                                          disabled={true}
+                                        >
+                                          <Icon
+                                            className=""
+                                            color={null}
+                                            content="
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -1581,14 +1590,14 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
       </g>
     </g>
   "
-                                        size="inherit"
-                                        viewBox="1671 5924 30 30"
-                                      >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "
+                                            size="inherit"
+                                            viewBox="1671 5924 30 30"
+                                          >
+                                            <svg
+                                              className="css-yys9hb "
+                                              dangerouslySetInnerHTML={
+                                                Object {
+                                                  "__html": "
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -1604,33 +1613,35 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
       </g>
     </g>
   ",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": "inherit",
-                                            }
-                                          }
-                                          viewBox="1671 5924 30 30"
-                                          xmlns="http://www.w3.org/2000/svg"
+                                                }
+                                              }
+                                              style={
+                                                Object {
+                                                  "fill": null,
+                                                  "fontSize": "inherit",
+                                                }
+                                              }
+                                              viewBox="1671 5924 30 30"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </CouponFieldIcon>
+                                      </div>
+                                      <div
+                                        className="css-1usne35"
+                                      >
+                                        <div
+                                          className="css-11zbu8 css-1txaqv6"
                                         />
-                                      </Icon>
-                                    </CouponFieldIcon>
+                                      </div>
+                                    </form>
                                   </div>
-                                  <div
-                                    className="css-1usne35"
-                                  >
-                                    <div
-                                      className="css-11zbu8 css-1txaqv6"
-                                    />
-                                  </div>
-                                </form>
+                                </Layout>
                               </div>
-                            </Layout>
-                          </div>
-                        </CouponField>
-                      </Connect(CouponField)>
+                            </CouponField>
+                          </Consumer>
+                        </Component>
+                      </Connect(Component)>
                     </Portal>
                     <Portal
                       key=".3"
@@ -1698,7 +1709,7 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                           onSize={[Function]}
                         >
                           <SizeMeRenderer(Content)
-                            disablePlaceholder={false}
+                            disablePlaceholder={true}
                             explicitRef={[Function]}
                             onClose={[Function]}
                             onSize={[Function]}
@@ -1711,16 +1722,274 @@ exports[`<Cart> page Initial page should render coupon 1`] = `
                             }
                           >
                             <SizeMeReferenceWrapper>
-                              <SizeMePlaceholder>
-                                <div
-                                  style={
-                                    Object {
-                                      "height": "100%",
-                                      "width": "100%",
-                                    }
+                              <Content
+                                onClose={[Function]}
+                                size={
+                                  Object {
+                                    "height": undefined,
+                                    "position": undefined,
+                                    "width": undefined,
                                   }
-                                />
-                              </SizeMePlaceholder>
+                                }
+                              >
+                                <div>
+                                  <Portal
+                                    name="cart.payment-bar.before"
+                                    props={null}
+                                  />
+                                  <Portal
+                                    name="cart.payment-bar"
+                                    props={null}
+                                  >
+                                    <Grid
+                                      className="css-7hjff2"
+                                      component="ul"
+                                      wrap={false}
+                                    >
+                                      <ul
+                                        className="css-7hjff2 css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-1e1nulz"
+                                          component="li"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <li
+                                            className="css-1e1nulz css-1gs0ko2"
+                                          >
+                                            <div
+                                              className="css-w6053m"
+                                            >
+                                              <Connect(SubTotalLabel)>
+                                                <SubTotalLabel
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                >
+                                                  <div
+                                                    className=""
+                                                  >
+                                                    <Translate
+                                                      className=""
+                                                      params={Object {}}
+                                                      string="cart.subtotal"
+                                                    >
+                                                      <span
+                                                        className=""
+                                                      >
+                                                        cart.subtotal
+                                                      </span>
+                                                    </Translate>
+                                                    :
+                                                  </div>
+                                                </SubTotalLabel>
+                                              </Connect(SubTotalLabel)>
+                                              <Connect(ShippingCostsLabel)>
+                                                <ShippingCostsLabel
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                  shipping={null}
+                                                >
+                                                  <div
+                                                    className="css-1h55xt0 "
+                                                    data-test-id="shippingLabel"
+                                                  >
+                                                    <Translate
+                                                      className=""
+                                                      params={Object {}}
+                                                      string="shipping.unknown"
+                                                    >
+                                                      <span
+                                                        className=""
+                                                      >
+                                                        shipping.unknown
+                                                      </span>
+                                                    </Translate>
+                                                  </div>
+                                                </ShippingCostsLabel>
+                                              </Connect(ShippingCostsLabel)>
+                                            </div>
+                                          </li>
+                                        </GridItem>
+                                        <GridItem
+                                          className="css-127o4v1"
+                                          component="li"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <li
+                                            className="css-127o4v1 css-1gs0ko2"
+                                          >
+                                            <div
+                                              className="css-w6053m"
+                                            >
+                                              <Connect(SubTotal)>
+                                                <SubTotal
+                                                  currency="USD"
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                  value={0}
+                                                >
+                                                  <div
+                                                    className="css-syjz65 "
+                                                    data-test-id="subTotal: 0"
+                                                  >
+                                                    <FormatPrice
+                                                      className=""
+                                                      currency="USD"
+                                                      fractions={true}
+                                                      price={0}
+                                                    >
+                                                      <span
+                                                        className=""
+                                                      >
+                                                        p
+                                                      </span>
+                                                    </FormatPrice>
+                                                  </div>
+                                                </SubTotal>
+                                              </Connect(SubTotal)>
+                                              <Connect(ShippingCosts)>
+                                                <ShippingCosts
+                                                  currency="USD"
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                  value={null}
+                                                >
+                                                  <div
+                                                    className="css-13f0gfi"
+                                                    data-test-id="noShippingPrice"
+                                                  >
+                                                     
+                                                  </div>
+                                                </ShippingCosts>
+                                              </Connect(ShippingCosts)>
+                                            </div>
+                                          </li>
+                                        </GridItem>
+                                        <GridItem
+                                          className="css-127o4v1"
+                                          component="li"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <li
+                                            className="css-127o4v1 css-1gs0ko2"
+                                          >
+                                            <div
+                                              className="css-w6053m"
+                                            >
+                                              <div
+                                                className="css-tmwobs"
+                                              >
+                                                <Connect(CheckoutButton)>
+                                                  <CheckoutButton
+                                                    dispatch={[Function]}
+                                                    isActive={true}
+                                                  >
+                                                    <Connect(Link)
+                                                      disabled={false}
+                                                      href="/checkout"
+                                                    >
+                                                      <Link
+                                                        className=""
+                                                        disabled={false}
+                                                        historyPush={[Function]}
+                                                        historyReplace={[Function]}
+                                                        href="/checkout"
+                                                        replace={false}
+                                                        state={Object {}}
+                                                        tag="div"
+                                                      >
+                                                        <div
+                                                          className="css-c6ki83 "
+                                                          onClick={[Function]}
+                                                          role="link"
+                                                        >
+                                                          <RippleButton
+                                                            className="css-1mlc9hd"
+                                                            disabled={false}
+                                                            flat={false}
+                                                            onClick={null}
+                                                            rippleClassName=""
+                                                            rippleSize={null}
+                                                            testId="Button"
+                                                            type="regular"
+                                                            wrapContent={true}
+                                                          >
+                                                            <Button
+                                                              className="css-1mlc9hd"
+                                                              disabled={false}
+                                                              flat={false}
+                                                              onClick={null}
+                                                              testId="Button"
+                                                              type="regular"
+                                                              wrapContent={false}
+                                                            >
+                                                              <Button
+                                                                className="css-kevfw8 css-1mlc9hd"
+                                                                disabled={false}
+                                                                onClick={null}
+                                                                testId="Button"
+                                                              >
+                                                                <button
+                                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                                  data-test-id="Button"
+                                                                  disabled={false}
+                                                                  onClick={null}
+                                                                >
+                                                                  <Ripple
+                                                                    className="css-8s1fw2 "
+                                                                    color="#000"
+                                                                    disabled={false}
+                                                                    fill={true}
+                                                                    onClick={[Function]}
+                                                                    onComplete={[Function]}
+                                                                    overflow={false}
+                                                                    size={null}
+                                                                  >
+                                                                    <div
+                                                                      aria-hidden={true}
+                                                                      className="css-8s1fw2 "
+                                                                      data-test-id="Ripple"
+                                                                      onClick={[Function]}
+                                                                      style={null}
+                                                                    >
+                                                                      <Translate
+                                                                        className=""
+                                                                        params={Object {}}
+                                                                        string="cart.checkout"
+                                                                      >
+                                                                        <span
+                                                                          className=""
+                                                                        >
+                                                                          cart.checkout
+                                                                        </span>
+                                                                      </Translate>
+                                                                    </div>
+                                                                  </Ripple>
+                                                                </button>
+                                                              </Button>
+                                                            </Button>
+                                                          </RippleButton>
+                                                        </div>
+                                                      </Link>
+                                                    </Connect(Link)>
+                                                  </CheckoutButton>
+                                                </Connect(CheckoutButton)>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        </GridItem>
+                                      </ul>
+                                    </Grid>
+                                  </Portal>
+                                  <Portal
+                                    name="cart.payment-bar.after"
+                                    props={null}
+                                  />
+                                </div>
+                              </Content>
                             </SizeMeReferenceWrapper>
                           </SizeMeRenderer(Content)>
                         </SizeMe(Content)>
@@ -2182,18 +2451,18 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                                           <Link
                                             className=""
                                             disabled={false}
+                                            historyPush={[Function]}
+                                            historyReplace={[Function]}
                                             href="/item/746573745f70726f64756374"
                                             itemProp="item"
                                             itemScope={true}
                                             itemType="http://schema.org/Product"
-                                            navigate={[Function]}
                                             replace={false}
                                             state={Object {}}
                                             tag="div"
                                             tagName="a"
                                           >
                                             <div
-                                              aria-hidden={true}
                                               className="css-c6ki83 "
                                               onClick={[Function]}
                                               role="link"
@@ -2628,123 +2897,132 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                       name="cart.coupon-field"
                       props={null}
                     >
-                      <Connect(CouponField)
+                      <Connect(Component)
                         onToggleFocus={[Function]}
                       >
-                        <CouponField
+                        <Component
                           addCoupon={[Function]}
                           isIos={false}
                           isLoading={false}
-                          isVisible={true}
+                          isSupported={true}
                           onToggleFocus={[Function]}
                         >
-                          <div>
-                            <Layout
-                              handleAddCoupon={[Function]}
-                              handleFocusChange={[Function]}
-                              handleValueChange={[Function]}
-                              iconStyle={
-                                Object {
-                                  "opacity": 0,
-                                }
-                              }
-                              isButtonDisabled={true}
-                              isFocused={false}
+                          <Consumer>
+                            <CouponField
+                              addCoupon={[Function]}
+                              isIos={false}
                               isLoading={false}
-                              labelStyle={
-                                Object {
-                                  "display": "block",
-                                }
-                              }
-                              value=""
+                              isSupported={true}
+                              onToggleFocus={[Function]}
+                              visible={true}
                             >
-                              <div
-                                className="css-gtkn00"
-                              >
-                                <form
-                                  className="css-pgykgj"
-                                  data-test-id="couponField"
-                                  onSubmit={[Function]}
-                                >
-                                  <label
-                                    className="css-m5j1fd"
-                                    htmlFor="coupon-code-field"
-                                    style={
-                                      Object {
-                                        "display": "block",
-                                      }
+                              <div>
+                                <Layout
+                                  handleAddCoupon={[Function]}
+                                  handleFocusChange={[Function]}
+                                  handleValueChange={[Function]}
+                                  iconStyle={
+                                    Object {
+                                      "opacity": 0,
                                     }
+                                  }
+                                  isButtonDisabled={true}
+                                  isFocused={false}
+                                  isLoading={false}
+                                  labelStyle={
+                                    Object {
+                                      "display": "block",
+                                    }
+                                  }
+                                  value=""
+                                >
+                                  <div
+                                    className="css-gtkn00"
                                   >
-                                    <Translate
-                                      className=""
-                                      params={Object {}}
-                                      string="cart.redeem_coupon"
+                                    <form
+                                      className="css-pgykgj"
+                                      data-test-id="couponField"
+                                      onSubmit={[Function]}
                                     >
-                                      <span
-                                        className=""
+                                      <label
+                                        className="css-m5j1fd"
+                                        htmlFor="coupon-code-field"
+                                        style={
+                                          Object {
+                                            "display": "block",
+                                          }
+                                        }
                                       >
-                                        cart.redeem_coupon
-                                      </span>
-                                    </Translate>
-                                  </label>
-                                  <Component
-                                    className="css-gm6ek6"
-                                    disabled={false}
-                                    name="coupon-code-field"
-                                    onChange={[Function]}
-                                    onFocusChange={[Function]}
-                                    value=""
-                                  >
-                                    <SimpleInput
-                                      autoComplete={false}
-                                      autoCorrect={false}
-                                      className="css-gm6ek6"
-                                      disabled={false}
-                                      id={null}
-                                      name="coupon-code-field"
-                                      onChange={[Function]}
-                                      onFocusChange={[Function]}
-                                      onSanitize={[Function]}
-                                      onValidate={[Function]}
-                                      password={false}
-                                      setRef={[Function]}
-                                      type="text"
-                                      validateOnBlur={true}
-                                      value=""
-                                    >
-                                      <input
-                                        autoComplete="off"
-                                        autoCorrect="off"
+                                        <Translate
+                                          className=""
+                                          params={Object {}}
+                                          string="cart.redeem_coupon"
+                                        >
+                                          <span
+                                            className=""
+                                          >
+                                            cart.redeem_coupon
+                                          </span>
+                                        </Translate>
+                                      </label>
+                                      <Component
                                         className="css-gm6ek6"
                                         disabled={false}
-                                        id={null}
                                         name="coupon-code-field"
-                                        onBlur={[Function]}
                                         onChange={[Function]}
-                                        onFocus={[Function]}
-                                        type="text"
+                                        onFocusChange={[Function]}
                                         value=""
-                                      />
-                                    </SimpleInput>
-                                  </Component>
-                                  <div
-                                    aria-hidden={true}
-                                    className="css-8dl7x"
-                                    data-test-id="CouponSubmitButton"
-                                    onClick={[Function]}
-                                    style={
-                                      Object {
-                                        "opacity": 0,
-                                      }
-                                    }
-                                  >
-                                    <CouponFieldIcon
-                                      disabled={true}
-                                    >
-                                      <Icon
-                                        className=""
-                                        color={null}
-                                        content="
+                                      >
+                                        <SimpleInput
+                                          autoComplete={false}
+                                          autoCorrect={false}
+                                          className="css-gm6ek6"
+                                          disabled={false}
+                                          id={null}
+                                          name="coupon-code-field"
+                                          onChange={[Function]}
+                                          onFocusChange={[Function]}
+                                          onSanitize={[Function]}
+                                          onValidate={[Function]}
+                                          password={false}
+                                          setRef={[Function]}
+                                          type="text"
+                                          validateOnBlur={true}
+                                          value=""
+                                        >
+                                          <input
+                                            autoComplete="off"
+                                            autoCorrect="off"
+                                            className="css-gm6ek6"
+                                            disabled={false}
+                                            id={null}
+                                            name="coupon-code-field"
+                                            onBlur={[Function]}
+                                            onChange={[Function]}
+                                            onFocus={[Function]}
+                                            type="text"
+                                            value=""
+                                          />
+                                        </SimpleInput>
+                                      </Component>
+                                      <div
+                                        aria-hidden={true}
+                                        className="css-8dl7x"
+                                        data-test-id="CouponSubmitButton"
+                                        onClick={[Function]}
+                                        style={
+                                          Object {
+                                            "opacity": 0,
+                                          }
+                                        }
+                                      >
+                                        <CouponFieldIcon
+                                          disabled={true}
+                                        >
+                                          <Icon
+                                            className=""
+                                            color={null}
+                                            content="
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -2760,14 +3038,14 @@ exports[`<Cart> page Initial page should render with items 1`] = `
       </g>
     </g>
   "
-                                        size="inherit"
-                                        viewBox="1671 5924 30 30"
-                                      >
-                                        <svg
-                                          className="css-yys9hb "
-                                          dangerouslySetInnerHTML={
-                                            Object {
-                                              "__html": "
+                                            size="inherit"
+                                            viewBox="1671 5924 30 30"
+                                          >
+                                            <svg
+                                              className="css-yys9hb "
+                                              dangerouslySetInnerHTML={
+                                                Object {
+                                                  "__html": "
     <g transform=\\"translate(1357 5547)\\">
       <g>
         <path
@@ -2783,33 +3061,35 @@ exports[`<Cart> page Initial page should render with items 1`] = `
       </g>
     </g>
   ",
-                                            }
-                                          }
-                                          style={
-                                            Object {
-                                              "fill": null,
-                                              "fontSize": "inherit",
-                                            }
-                                          }
-                                          viewBox="1671 5924 30 30"
-                                          xmlns="http://www.w3.org/2000/svg"
+                                                }
+                                              }
+                                              style={
+                                                Object {
+                                                  "fill": null,
+                                                  "fontSize": "inherit",
+                                                }
+                                              }
+                                              viewBox="1671 5924 30 30"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </CouponFieldIcon>
+                                      </div>
+                                      <div
+                                        className="css-1usne35"
+                                      >
+                                        <div
+                                          className="css-11zbu8 css-1txaqv6"
                                         />
-                                      </Icon>
-                                    </CouponFieldIcon>
+                                      </div>
+                                    </form>
                                   </div>
-                                  <div
-                                    className="css-1usne35"
-                                  >
-                                    <div
-                                      className="css-11zbu8 css-1txaqv6"
-                                    />
-                                  </div>
-                                </form>
+                                </Layout>
                               </div>
-                            </Layout>
-                          </div>
-                        </CouponField>
-                      </Connect(CouponField)>
+                            </CouponField>
+                          </Consumer>
+                        </Component>
+                      </Connect(Component)>
                     </Portal>
                     <Portal
                       key=".3"
@@ -2877,7 +3157,7 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                           onSize={[Function]}
                         >
                           <SizeMeRenderer(Content)
-                            disablePlaceholder={false}
+                            disablePlaceholder={true}
                             explicitRef={[Function]}
                             onClose={[Function]}
                             onSize={[Function]}
@@ -2890,16 +3170,274 @@ exports[`<Cart> page Initial page should render with items 1`] = `
                             }
                           >
                             <SizeMeReferenceWrapper>
-                              <SizeMePlaceholder>
-                                <div
-                                  style={
-                                    Object {
-                                      "height": "100%",
-                                      "width": "100%",
-                                    }
+                              <Content
+                                onClose={[Function]}
+                                size={
+                                  Object {
+                                    "height": undefined,
+                                    "position": undefined,
+                                    "width": undefined,
                                   }
-                                />
-                              </SizeMePlaceholder>
+                                }
+                              >
+                                <div>
+                                  <Portal
+                                    name="cart.payment-bar.before"
+                                    props={null}
+                                  />
+                                  <Portal
+                                    name="cart.payment-bar"
+                                    props={null}
+                                  >
+                                    <Grid
+                                      className="css-7hjff2"
+                                      component="ul"
+                                      wrap={false}
+                                    >
+                                      <ul
+                                        className="css-7hjff2 css-h7r55a"
+                                      >
+                                        <GridItem
+                                          className="css-1e1nulz"
+                                          component="li"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <li
+                                            className="css-1e1nulz css-1gs0ko2"
+                                          >
+                                            <div
+                                              className="css-w6053m"
+                                            >
+                                              <Connect(SubTotalLabel)>
+                                                <SubTotalLabel
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                >
+                                                  <div
+                                                    className=""
+                                                  >
+                                                    <Translate
+                                                      className=""
+                                                      params={Object {}}
+                                                      string="cart.subtotal"
+                                                    >
+                                                      <span
+                                                        className=""
+                                                      >
+                                                        cart.subtotal
+                                                      </span>
+                                                    </Translate>
+                                                    :
+                                                  </div>
+                                                </SubTotalLabel>
+                                              </Connect(SubTotalLabel)>
+                                              <Connect(ShippingCostsLabel)>
+                                                <ShippingCostsLabel
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                  shipping={null}
+                                                >
+                                                  <div
+                                                    className="css-1h55xt0 "
+                                                    data-test-id="shippingLabel"
+                                                  >
+                                                    <Translate
+                                                      className=""
+                                                      params={Object {}}
+                                                      string="shipping.unknown"
+                                                    >
+                                                      <span
+                                                        className=""
+                                                      >
+                                                        shipping.unknown
+                                                      </span>
+                                                    </Translate>
+                                                  </div>
+                                                </ShippingCostsLabel>
+                                              </Connect(ShippingCostsLabel)>
+                                            </div>
+                                          </li>
+                                        </GridItem>
+                                        <GridItem
+                                          className="css-127o4v1"
+                                          component="li"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <li
+                                            className="css-127o4v1 css-1gs0ko2"
+                                          >
+                                            <div
+                                              className="css-w6053m"
+                                            >
+                                              <Connect(SubTotal)>
+                                                <SubTotal
+                                                  currency="USD"
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                  value={0}
+                                                >
+                                                  <div
+                                                    className="css-syjz65 "
+                                                    data-test-id="subTotal: 0"
+                                                  >
+                                                    <FormatPrice
+                                                      className=""
+                                                      currency="USD"
+                                                      fractions={true}
+                                                      price={0}
+                                                    >
+                                                      <span
+                                                        className=""
+                                                      >
+                                                        p
+                                                      </span>
+                                                    </FormatPrice>
+                                                  </div>
+                                                </SubTotal>
+                                              </Connect(SubTotal)>
+                                              <Connect(ShippingCosts)>
+                                                <ShippingCosts
+                                                  currency="USD"
+                                                  dispatch={[Function]}
+                                                  isDisabled={false}
+                                                  value={null}
+                                                >
+                                                  <div
+                                                    className="css-13f0gfi"
+                                                    data-test-id="noShippingPrice"
+                                                  >
+                                                     
+                                                  </div>
+                                                </ShippingCosts>
+                                              </Connect(ShippingCosts)>
+                                            </div>
+                                          </li>
+                                        </GridItem>
+                                        <GridItem
+                                          className="css-127o4v1"
+                                          component="li"
+                                          grow={1}
+                                          shrink={1}
+                                        >
+                                          <li
+                                            className="css-127o4v1 css-1gs0ko2"
+                                          >
+                                            <div
+                                              className="css-w6053m"
+                                            >
+                                              <div
+                                                className="css-tmwobs"
+                                              >
+                                                <Connect(CheckoutButton)>
+                                                  <CheckoutButton
+                                                    dispatch={[Function]}
+                                                    isActive={true}
+                                                  >
+                                                    <Connect(Link)
+                                                      disabled={false}
+                                                      href="/checkout"
+                                                    >
+                                                      <Link
+                                                        className=""
+                                                        disabled={false}
+                                                        historyPush={[Function]}
+                                                        historyReplace={[Function]}
+                                                        href="/checkout"
+                                                        replace={false}
+                                                        state={Object {}}
+                                                        tag="div"
+                                                      >
+                                                        <div
+                                                          className="css-c6ki83 "
+                                                          onClick={[Function]}
+                                                          role="link"
+                                                        >
+                                                          <RippleButton
+                                                            className="css-1mlc9hd"
+                                                            disabled={false}
+                                                            flat={false}
+                                                            onClick={null}
+                                                            rippleClassName=""
+                                                            rippleSize={null}
+                                                            testId="Button"
+                                                            type="regular"
+                                                            wrapContent={true}
+                                                          >
+                                                            <Button
+                                                              className="css-1mlc9hd"
+                                                              disabled={false}
+                                                              flat={false}
+                                                              onClick={null}
+                                                              testId="Button"
+                                                              type="regular"
+                                                              wrapContent={false}
+                                                            >
+                                                              <Button
+                                                                className="css-kevfw8 css-1mlc9hd"
+                                                                disabled={false}
+                                                                onClick={null}
+                                                                testId="Button"
+                                                              >
+                                                                <button
+                                                                  className="css-kevfw8 css-1mlc9hd css-1rn65c0"
+                                                                  data-test-id="Button"
+                                                                  disabled={false}
+                                                                  onClick={null}
+                                                                >
+                                                                  <Ripple
+                                                                    className="css-8s1fw2 "
+                                                                    color="#000"
+                                                                    disabled={false}
+                                                                    fill={true}
+                                                                    onClick={[Function]}
+                                                                    onComplete={[Function]}
+                                                                    overflow={false}
+                                                                    size={null}
+                                                                  >
+                                                                    <div
+                                                                      aria-hidden={true}
+                                                                      className="css-8s1fw2 "
+                                                                      data-test-id="Ripple"
+                                                                      onClick={[Function]}
+                                                                      style={null}
+                                                                    >
+                                                                      <Translate
+                                                                        className=""
+                                                                        params={Object {}}
+                                                                        string="cart.checkout"
+                                                                      >
+                                                                        <span
+                                                                          className=""
+                                                                        >
+                                                                          cart.checkout
+                                                                        </span>
+                                                                      </Translate>
+                                                                    </div>
+                                                                  </Ripple>
+                                                                </button>
+                                                              </Button>
+                                                            </Button>
+                                                          </RippleButton>
+                                                        </div>
+                                                      </Link>
+                                                    </Connect(Link)>
+                                                  </CheckoutButton>
+                                                </Connect(CheckoutButton)>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        </GridItem>
+                                      </ul>
+                                    </Grid>
+                                  </Portal>
+                                  <Portal
+                                    name="cart.payment-bar.after"
+                                    props={null}
+                                  />
+                                </div>
+                              </Content>
                             </SizeMeReferenceWrapper>
                           </SizeMeRenderer(Content)>
                         </SizeMe(Content)>

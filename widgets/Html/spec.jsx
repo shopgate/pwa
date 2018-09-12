@@ -2,27 +2,15 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { JSDOM } from 'jsdom';
 import variables from 'Styles/variables';
-import HtmlWidget from './index';
-
-const mockConstructor = jest.fn();
-jest.mock('@shopgate/pwa-common/components/Router/helpers/parsed-link', () => (class {
-  /**
-   * Mocked version of the ParsedLink constructor.
-   * @param {string} href Link location.
-   */
-  constructor(href) {
-    mockConstructor(href);
-  }
-
-  /* eslint-disable class-methods-use-this */
-  /**
-   * Mocked version of open function.
-   */
-  open() {}
-  /* eslint-enable class-methods-use-this */
-}));
+import { UnwrappedHtml as HtmlWidget } from './index';
 
 describe('<HtmlWidget />', () => {
+  const navigate = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('Basic rendering', () => {
     const settings = {
       defaultPadding: false,
@@ -33,22 +21,20 @@ describe('<HtmlWidget />', () => {
 
     const renderSpy = jest.spyOn(HtmlWidget.prototype, 'render');
 
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
-
     it('should render the HtmlWidget', () => {
-      const wrapper = mount(<HtmlWidget settings={settings} />);
+      const wrapper = mount(<HtmlWidget settings={settings} navigate={navigate} />);
 
       expect(wrapper.render()).toMatchSnapshot();
       expect(wrapper.childAt(0).prop('style')).toEqual({});
     });
 
     it('should render the HtmlWidget with a padding', () => {
-      const wrapper = mount(<HtmlWidget settings={{
+      const wrapper = mount(<HtmlWidget
+        settings={{
         ...settings,
         defaultPadding: true,
       }}
+        navigate={navigate}
       />);
 
       expect(wrapper.render()).toMatchSnapshot();
@@ -57,7 +43,7 @@ describe('<HtmlWidget />', () => {
 
     it('should re-render when html updates', () => {
       const updatedHTML = settings.html.replace('World', 'User');
-      const wrapper = mount(<HtmlWidget settings={settings} />);
+      const wrapper = mount(<HtmlWidget settings={settings} navigate={navigate} />);
 
       expect(wrapper).toMatchSnapshot();
       expect(wrapper.html().includes('<h1>Hello World!</h1>')).toBe(true);
@@ -104,16 +90,12 @@ describe('<HtmlWidget />', () => {
       html: '&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt;var x = 42;&lt;/script&gt; &lt;p&gt;Foo Bar&lt;/p&gt; &lt;script&gt;var y = 23;&lt;/script&gt;',
     };
 
-    const wrapper = mount(<HtmlWidget settings={settings} />);
+    const wrapper = mount(<HtmlWidget settings={settings} navigate={navigate} />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   describe('Link handling', () => {
-    beforeEach(() => {
-      mockConstructor.mockClear();
-    });
-
     it('follows a link from a plain <a>', () => {
       const doc = new JSDOM('<!doctype html><html><body><div>/<div></body></html>').window.document;
 
@@ -121,7 +103,8 @@ describe('<HtmlWidget />', () => {
         defaultPadding: false,
         html: '&lt;a id=&quot;link&quot; href=&quot;#follow-me-and-everything-is-alright&quot;&gt;Plain Link&lt;/a&gt;',
       };
-      const wrapper = mount(<HtmlWidget settings={settings} />, {
+
+      const wrapper = mount(<HtmlWidget settings={settings} navigate={navigate} />, {
         attachTo: doc.getElementsByTagName('div')[0],
       });
 
@@ -134,7 +117,7 @@ describe('<HtmlWidget />', () => {
 
       wrapper.instance().handleTap(event);
 
-      expect(mockConstructor).toHaveBeenCalledTimes(1);
+      expect(navigate).toHaveBeenCalledTimes(1);
     });
 
     it('follows a link from a <a> with other HTML inside', () => {
@@ -144,7 +127,8 @@ describe('<HtmlWidget />', () => {
         defaultPadding: false,
         html: '&lt;a id=&quot;link&quot; href=&quot;#I-ll-be-the-one-to-tuck-you-in-at-night&quot;&gt;&lt;span&gt;Span Link&lt;/span&gt;&lt;/a&gt;',
       };
-      const wrapper = mount(<HtmlWidget settings={settings} />, {
+
+      const wrapper = mount(<HtmlWidget settings={settings} navigate={navigate} />, {
         attachTo: doc.getElementsByTagName('div')[0],
       });
 
@@ -158,7 +142,7 @@ describe('<HtmlWidget />', () => {
 
       wrapper.instance().handleTap(event);
 
-      expect(mockConstructor).toHaveBeenCalledTimes(1);
+      expect(navigate).toHaveBeenCalledTimes(1);
     });
   });
 });

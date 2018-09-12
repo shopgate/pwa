@@ -16,3 +16,5 @@ MockedView.propTypes = {
 MockedView.defaultProps = {
   children: null,
 };
+
+export default MockedView;

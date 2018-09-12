@@ -41,16 +41,6 @@ export default function category(subscribe) {
     }
   });
 
-  subscribe(categoryFiltersDidUpdate$, ({ dispatch }) => {
-    const { params } = getCurrentRoute();
-    const categoryId = hex2bin(params.categoryId);
-    const filters = getActiveFilters();
-
-    dispatch(fetchCategoryProducts({
-      categoryId, filters,
-    }));
-  });
-
   subscribe(categoryDidEnter$, ({ dispatch }) => {
     dispatch(getFilters());
   });
@@ -77,5 +67,15 @@ export default function category(subscribe) {
       title: 'category.error.title',
     }));
     dispatch(historyPop());
+  });
+
+  subscribe(categoryFiltersDidUpdate$, ({ dispatch }) => {
+    const { params } = getCurrentRoute();
+    const categoryId = hex2bin(params.categoryId);
+    const filters = getActiveFilters();
+
+    dispatch(fetchCategoryProducts({
+      categoryId, filters,
+    }));
   });
 }

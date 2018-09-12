@@ -97,8 +97,8 @@ class FilterBar extends Component {
   componentWillUnmount() {
     const { viewRef } = this.props;
 
-    if (viewRef) {
-      viewRef.removeEventListener('swipe', this.handleSwipe);
+    if (viewRef.current) {
+      viewRef.current.removeEventListener('swipe', this.handleSwipe);
     }
   }
 
@@ -129,7 +129,7 @@ class FilterBar extends Component {
    * Update the ViewProvider with the height of the bar.
    */
   updateView = () => {
-    if (!this.node) {
+    if (!this.node.current) {
       return;
     }
 

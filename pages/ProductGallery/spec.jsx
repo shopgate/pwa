@@ -4,14 +4,11 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { basicProductState } from '@shopgate/pwa-common-commerce/product/mock';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { MockedView } from 'Components/View/mock';
-import { MockedComponent } from './mock';
+import { UnwrappedProductGallery } from './index';
 
 const mockedStore = configureStore();
-const mockedView = MockedView;
-const mockedHammer = MockedComponent;
-jest.mock('Components/View', () => mockedView);
-jest.mock('@shopgate/react-hammerjs/src/Hammer', () => mockedHammer);
+jest.mock('Components/View');
+jest.mock('@shopgate/react-hammerjs', () => require.requireActual('./mock').MockedComponent);
 
 describe('<ProductGallery> page', () => {
   /**
@@ -21,10 +18,6 @@ describe('<ProductGallery> page', () => {
    * @return {ReactWrapper}
    */
   const createComponent = (state, props) => {
-    /* eslint-disable global-require */
-    const { UnwrappedProductGallery } = require('./index');
-    /* eslint-enable global-require */
-
     const store = mockedStore(state);
     return mount(
       <Provider store={store} >

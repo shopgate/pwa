@@ -42,42 +42,81 @@ exports[`<Properties /> should render table with properties 1`] = `
   }
 >
   <div
-    className="css-ybnu97"
+    className={
+      Object {
+        "data-css-ugj8xm": "",
+      }
+    }
   >
     <table
-      className="css-13asv6l"
+      className={
+        Object {
+          "data-css-13asv6l": "",
+        }
+      }
     >
       <tbody>
-        <tr
-          key="foobar"
+        <PropertyRows
+          properties={
+            Array [
+              Object {
+                "label": "foo",
+                "value": "bar",
+              },
+              Object {
+                "label": "bar",
+                "value": "foo",
+              },
+            ]
+          }
         >
-          <td
-            className="css-19ob0vg"
+          <tr
+            key="foobar"
           >
-            foo
-          </td>
-          <td
-            className="css-19ob0vg"
-            data-test-id="property: bar"
+            <td
+              className={
+                Object {
+                  "data-css-19ob0vg": "",
+                }
+              }
+            >
+              foo
+            </td>
+            <td
+              className={
+                Object {
+                  "data-css-19ob0vg": "",
+                }
+              }
+              data-test-id="property: bar"
+            >
+              bar
+            </td>
+          </tr>
+          <tr
+            key="barfoo"
           >
-            bar
-          </td>
-        </tr>
-        <tr
-          key="barfoo"
-        >
-          <td
-            className="css-19ob0vg"
-          >
-            bar
-          </td>
-          <td
-            className="css-19ob0vg"
-            data-test-id="property: foo"
-          >
-            foo
-          </td>
-        </tr>
+            <td
+              className={
+                Object {
+                  "data-css-19ob0vg": "",
+                }
+              }
+            >
+              bar
+            </td>
+            <td
+              className={
+                Object {
+                  "data-css-19ob0vg": "",
+                }
+              }
+              data-test-id="property: foo"
+            >
+              foo
+            </td>
+          </tr>
+        </PropertyRows>
       </tbody>
     </table>
   </div>
