@@ -33,8 +33,8 @@ class RadioItem extends PureComponent {
     return (
       <label className={style.container} htmlFor={this.key}>
 
-        {checked && <CheckedIcon className={style.active} />}
-        {!checked && <UncheckedIcon />}
+        {checked && <CheckedIcon className={`${style.active} ${style.icon}`} />}
+        {!checked && <UncheckedIcon className={style.icon} />}
 
         <input
           className={style.input}

@@ -15,6 +15,9 @@ const container = {
     // Fixes layout issue with webkit. Height is 0 in some webkit browsers.
     '& input[type="date"]': {
       minHeight: '1.3rem',
+      appearance: 'none',
+      paddingLeft: 0,
+      marginLeft: 0,
     },
     // Removes placeholder texts on chrome when input is not focused.
     [`& ${bluredDateSelector}::-webkit-datetime-edit-year-field, ` +
@@ -22,6 +25,7 @@ const container = {
        `${bluredDateSelector}::-webkit-datetime-edit-day-field, ` +
        `${bluredDateSelector}::-webkit-datetime-edit-text`
     ]: {
+      padding: 0,
       color: 'transparent',
     },
   }).toString(),
