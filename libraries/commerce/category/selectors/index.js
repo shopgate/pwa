@@ -106,7 +106,10 @@ export const getCurrentCategoryChildCount = createSelector(
 );
 
 /**
- * @type {number}
+ * Returns true when the given category id contains children.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @returns {boolean}
  */
 export const hasChildren = createSelector(
   getCurrentCategoryChildCount,
@@ -146,7 +149,10 @@ export const getCategoryProductCount = createSelector(
 );
 
 /**
- * @type {number}
+ * Returns true when the given category id contains products.
+ * @param {Object} state The application state.
+ * @param {Object} props The component props.
+ * @returns {boolean}
  */
 export const hasProducts = createSelector(
   getCategoryProductCount,

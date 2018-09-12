@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from './components/Item';
 
 /**
  * The List component.
  * @param {Object} props The component props.
+ * @returns {JSX}
  */
 const List = ({ children, className }) => (
   <ul className={className}>{children}</ul>
@@ -13,7 +14,8 @@ const List = ({ children, className }) => (
 List.Item = ListItem;
 
 List.propTypes = {
-  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.shape()]),
 };
 
 List.defaultProps = {
