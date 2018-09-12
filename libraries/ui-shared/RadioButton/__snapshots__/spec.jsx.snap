@@ -21,6 +21,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     }
   >
     <div
+      aria-hidden={true}
       onClick={[Function]}
     >
       <RadioChecked
@@ -74,6 +75,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
     }
   >
     <div
+      aria-hidden={true}
       onClick={[Function]}
     >
       <RadioUnchecked

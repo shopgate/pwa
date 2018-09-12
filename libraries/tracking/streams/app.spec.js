@@ -2,7 +2,7 @@ import { createStore } from './specHelper';
 import { pwaDidAppear } from '../action-creators';
 import { pwaDidAppear$ } from './app';
 
-describe('App streams', () => {
+describe.skip('App streams', () => {
   let mockedDidAppearSubscriber;
 
   beforeEach(() => {

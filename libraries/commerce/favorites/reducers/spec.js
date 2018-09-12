@@ -12,6 +12,7 @@ import { mockedList } from '../mock';
 describe('Favorites - reducers', () => {
   describe('Simple fetching', () => {
     let state = {};
+
     it('should react on REQUEST_FAVORITES ', () => {
       state = reducers(state, { type: REQUEST_FAVORITES });
       expect(typeof state.products).toBe('object');
@@ -20,6 +21,7 @@ describe('Favorites - reducers', () => {
       // Expires should be zero since it's fetching.
       expect(state.products.expires).toBe(0);
     });
+
     it('should react on RECEIVE_FAVORITES', () => {
       state = reducers(state, {
         type: RECEIVE_FAVORITES,
@@ -35,6 +37,7 @@ describe('Favorites - reducers', () => {
       expect(state.products.ids instanceof Array).toBe(true);
       expect(typeof state.products.ids[0]).toBe('string');
     });
+
     it('should react on ERROR_FETCH_FAVORITES', () => {
       state = reducers(state, { type: ERROR_FETCH_FAVORITES });
       // Fetching is finished.
@@ -44,19 +47,23 @@ describe('Favorites - reducers', () => {
       // Data is NOT removed.
       expect(state.products.ids.length).toBe(2);
     });
+
     it('should keep the old data on next request', () => {
       state = reducers(state, { type: REQUEST_FAVORITES });
       expect(state.products.ids.length).toBe(2);
     });
+
     it('should save array even if ERROR is dispatched first', () => {
       const result = reducers({}, { type: ERROR_FETCH_FAVORITES });
       expect(result.products.ids instanceof Array).toBe(true);
     });
   });
+
   describe('Add/remove Favorites', () => {
     let state = {
       products: {
         ready: true,
+        ids: [],
       },
     };
     const productId = 'product_1';
@@ -104,6 +111,7 @@ describe('Favorites - reducers', () => {
       expect(typeof state).toBe('object');
       expect(state.products.ids).not.toContain(productId);
     });
+
     it('should react on REQUEST_SYNC_FAVORITES', () => {
       state = reducers(state, {
         type: REQUEST_SYNC_FAVORITES,
@@ -112,6 +120,7 @@ describe('Favorites - reducers', () => {
       expect(state.products.outOfSync).toBe(true);
       expect(state.products.ids).not.toContain(productId);
     });
+
     it('should react on RECEIVE_SYNC_FAVORITES', () => {
       state = reducers(state, {
         type: RECEIVE_SYNC_FAVORITES,
@@ -119,6 +128,7 @@ describe('Favorites - reducers', () => {
       expect(typeof state).toBe('object');
       expect(state.products.outOfSync).toBe(true);
     });
+
     it('should react on IDLE_SYNC_FAVORITES', () => {
       state = reducers(state, {
         type: IDLE_SYNC_FAVORITES,
@@ -126,6 +136,7 @@ describe('Favorites - reducers', () => {
       expect(typeof state).toBe('object');
       expect(state.products.outOfSync).toBe(false);
     });
+
     it('should react on ERROR_SYNC_FAVORITES', () => {
       state = reducers(state, {
         type: ERROR_SYNC_FAVORITES,

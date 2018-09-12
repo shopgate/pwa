@@ -83,3 +83,5 @@ VariantSelectModal.defaultProps = {
 };
 
 export default connect(VariantSelectModal);
+
+export { VariantSelectModal as UnwrappedVariantSelectModal };

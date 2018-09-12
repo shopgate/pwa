@@ -9,7 +9,7 @@ import {
 } from './pages';
 import { setPWAVisibleState } from '../helpers';
 
-describe('Pages streams', () => {
+describe.skip('Pages streams', () => {
   let pagesAreReadySubscriber;
 
   beforeEach(() => {

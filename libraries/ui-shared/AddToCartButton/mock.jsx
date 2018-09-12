@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 // eslint-disable-next-line react/prefer-stateless-function
 export const MockedAddToCartButton = class extends Component {
   static propTypes = {
-    handleAddToCart: PropTypes.func,
+    onClick: PropTypes.func,
   };
   static defaultProps = {
-    handleAddToCart: () => {},
+    onClick: () => {},
   };
   /**
    * Renders mocked button.
@@ -19,7 +19,7 @@ export const MockedAddToCartButton = class extends Component {
    */
   render() {
     return (
-      <button onClick={this.props.handleAddToCart} />
+      <button onClick={this.props.onClick} />
     );
   }
 };

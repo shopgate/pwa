@@ -13,7 +13,7 @@ export default function getUser() {
 
     return new PipelineRequest(pipelines.SHOPGATE_USER_GET_USER)
       .setTrusted()
-      .setHandledErrors([EACCESS])
+      .setErrorBlacklist([EACCESS])
       .dispatch()
       .then((user) => {
         dispatch(actions.receiveUser(user));

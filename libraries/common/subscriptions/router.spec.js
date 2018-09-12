@@ -24,6 +24,7 @@ jest.mock('@virtuous/conductor', () => ({
   replace: jest.fn(),
 }));
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
 
 let mockedShopCNAME = null;

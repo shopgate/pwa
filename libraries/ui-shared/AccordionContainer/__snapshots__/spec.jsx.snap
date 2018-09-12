@@ -4,7 +4,7 @@ exports[`<AccordionContainer /> should render children with props 1`] = `
 <Child
   handleClose={[Function]}
   handleOpen={[Function]}
-  isOpen={false}
+  open={false}
 />
 `;
 
@@ -12,6 +12,6 @@ exports[`<AccordionContainer /> should update children props when state changes 
 <Child
   handleClose={[Function]}
   handleOpen={[Function]}
-  isOpen={true}
+  open={true}
 />
 `;

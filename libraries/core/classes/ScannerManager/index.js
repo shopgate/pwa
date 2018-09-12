@@ -21,11 +21,7 @@ export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
 export const APP_EVENT_SCANNER_ERROR_CONFIRMED = 'scannerErrorConfirmed';
 export const APP_EVENT_SCANNER_RESULT_PROCESSED = 'scannerResultProcessed';
 
-registerEvents([
-  APP_EVENT_CLOSE_SCANNER,
-  APP_EVENT_SCANNER_DID_SCAN,
-  APP_EVENT_SCANNER_ERROR_CONFIRMED,
-]);
+let eventsRegistered = false;
 
 /**
  * A callback that is invoked whenever the scanner recognized supported content.
@@ -62,6 +58,17 @@ class ScannerManager {
      */
     this.scannerDidScanListener = this.scannerDidScanListener.bind(this);
     this.closeScanner = this.closeScanner.bind(this);
+
+    if (!eventsRegistered) {
+      // Register the necessary events if it not already happened.
+      registerEvents([
+        APP_EVENT_CLOSE_SCANNER,
+        APP_EVENT_SCANNER_DID_SCAN,
+        APP_EVENT_SCANNER_ERROR_CONFIRMED,
+      ]);
+
+      eventsRegistered = true;
+    }
   }
 
   /**

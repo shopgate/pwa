@@ -2,7 +2,6 @@
 
 exports[`<Link /> renders with children 1`] = `
 <div
-  aria-hidden={true}
   className="css-c6ki83 "
   onClick={[Function]}
   role="link"
