@@ -189,4 +189,78 @@ describe('<FormBuilder />', () => {
     // Should call with updated state.
     expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false);
   });
+
+  describe('FormBuilder::elementChangeHandler', () => {
+    it('should take the updated state from action listener', () => {
+      // Create mocked Form builder.
+      const handleUpdate = jest.fn();
+      const builder = new FormBuilder({
+        validationErrors: [],
+        config: {
+          fields: {
+            foo: {
+              label: 'foo',
+              type: 'text',
+              visible: true,
+              default: 'default',
+            },
+          },
+        },
+        handleUpdate,
+      });
+      builder.actionListener.notify = () => ({
+        formData: {
+          foo: 'bar',
+        },
+        errors: {},
+        elementVisibility: {
+          foo: true,
+        },
+      });
+
+      // Trigger update
+      builder.elementChangeHandler('foo', 'bar');
+
+      // Test
+      expect(handleUpdate).toHaveBeenCalledWith({
+        foo: 'bar',
+      }, false);
+    });
+
+    it('should consider backend validations', () => {
+      // Create mocked Form builder.
+      const handleUpdate = jest.fn();
+      const builder = new FormBuilder({
+        validationErrors: [{}],
+        config: {
+          fields: {
+            foo: {
+              label: 'foo',
+              type: 'text',
+              visible: true,
+              default: 'default',
+            },
+          },
+        },
+        handleUpdate,
+      });
+      builder.actionListener.notify = () => ({
+        formData: {
+          foo: 'bar',
+        },
+        errors: {},
+        elementVisibility: {
+          foo: true,
+        },
+      });
+
+      // Trigger update
+      builder.elementChangeHandler('foo', 'bar');
+
+      // Test
+      expect(handleUpdate).toHaveBeenCalledWith({
+        foo: 'bar',
+      }, true);
+    });
+  });
 });

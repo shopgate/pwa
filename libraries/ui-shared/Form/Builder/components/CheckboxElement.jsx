@@ -19,12 +19,10 @@ class CheckboxElement extends PureComponent {
       PropTypes.bool.isRequired,
       PropTypes.number.isRequired,
     ]),
-    visible: PropTypes.bool,
   };
 
   static defaultProps = {
     value: false,
-    visible: false,
     style: { fields: '' },
   };
 
@@ -36,15 +34,9 @@ class CheckboxElement extends PureComponent {
       element,
       style,
       errorText,
-      visible,
       value,
       name,
     } = this.props;
-
-    // Don't render element if type doesn't match or if the element is not visible
-    if (element.type !== ELEMENT_TYPE_CHECKBOX || !visible) {
-      return null;
-    }
 
     return (
       <Checkbox

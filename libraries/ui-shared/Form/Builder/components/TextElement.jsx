@@ -35,7 +35,6 @@ class TextElement extends PureComponent {
       PropTypes.bool.isRequired,
       PropTypes.number.isRequired,
     ]),
-    visible: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -54,15 +53,9 @@ class TextElement extends PureComponent {
       name,
       style,
       value,
-      visible,
     } = this.props;
 
     const type = mapping[element.type];
-
-    // Don't render element if type doesn't match or if the element is not visible
-    if (typeof type === 'undefined' || !visible) {
-      return null;
-    }
 
     return (
       <TextField

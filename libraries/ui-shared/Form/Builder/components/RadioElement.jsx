@@ -20,12 +20,10 @@ class RadioElement extends PureComponent {
       PropTypes.bool.isRequired,
       PropTypes.number.isRequired,
     ]),
-    visible: PropTypes.bool,
   };
 
   static defaultProps = {
     value: '',
-    visible: false,
     style: { fields: '' },
   };
 
@@ -39,13 +37,7 @@ class RadioElement extends PureComponent {
       name,
       style,
       value,
-      visible,
     } = this.props;
-
-    // Don't render element if type doesn't match or if the element is not visible
-    if (element.type !== ELEMENT_TYPE_RADIO || !visible) {
-      return null;
-    }
 
     return (
       <RadioGroup

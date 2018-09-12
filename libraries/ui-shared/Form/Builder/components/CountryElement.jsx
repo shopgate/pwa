@@ -20,13 +20,11 @@ class CountryElement extends PureComponent {
       PropTypes.bool.isRequired,
       PropTypes.number.isRequired,
     ]),
-    visible: PropTypes.bool,
   };
 
   static defaultProps = {
     countryList: {},
     value: '',
-    visible: false,
     style: { fields: '' },
   };
 
@@ -41,13 +39,7 @@ class CountryElement extends PureComponent {
       name,
       style,
       value,
-      visible,
     } = this.props;
-
-    // Don't render element if type doesn't match or if the element is not visible
-    if (element.type !== ELEMENT_TYPE_COUNTRY || !visible) {
-      return null;
-    }
 
     return (
       <Select
