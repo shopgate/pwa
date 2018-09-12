@@ -8,21 +8,28 @@ import style from './style';
  */
 class RadioGroup extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     children: PropTypes.node,
-    default: PropTypes.string,
+    /* Flex direction for radio group */
+    direction: PropTypes.string,
     errorText: PropTypes.string,
     isControlled: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
+    translateErrorText: PropTypes.bool,
+    /* Radio group value */
+    value: PropTypes.string,
   }
 
   static defaultProps = {
     onChange: () => {},
     children: null,
+    direction: 'column',
     errorText: '',
     isControlled: false,
     label: '',
-    default: null,
+    translateErrorText: true,
+    value: null,
   }
 
   /**
@@ -31,7 +38,26 @@ class RadioGroup extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { active: props.default };
+    this.state = { value: props.value };
+  }
+
+  /**
+   * @param {Object} nextProps props
+   */
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isControlled && this.state.value !== nextProps.value) {
+      this.setState({ value: nextProps.value });
+    }
+  }
+
+  /**
+   * @param {string} event click from radio element
+   */
+  handleChange = ({ target: { name } }) => {
+    if (!this.props.isControlled) {
+      this.setState({ value: name });
+    }
+    this.props.onChange(name);
   }
 
   /**
@@ -40,27 +66,25 @@ class RadioGroup extends Component {
    */
   render() {
     const {
-      children, onChange, label, errorText,
+      children, label, errorText, direction, name, translateErrorText,
     } = this.props;
 
     return (
       <FormElement
         label={label}
         errorText={errorText}
+        translateErrorText={translateErrorText}
         htmlFor="none"
         hasUnderline={false}
         hasValue
       >
-        <div className={style.container}>
+        <div className={style.container(direction)}>
           {Children.map(children, child => cloneElement(child, {
-            active: this.state.active === child.props.name,
-            onChange: () => {
-              if (!this.props.isControlled) {
-                this.setState({ active: child.props.name });
-              }
-              onChange(child.props.name);
-            },
-          }))}
+            key: `${name}_${child.props.name}`,
+            checked: this.state.value === child.props.name,
+            onChange: this.handleChange,
+          }))
+          }
         </div>
       </FormElement>
     );

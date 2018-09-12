@@ -55,7 +55,7 @@ exports[`<TextField> should focus the input 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -87,7 +87,7 @@ exports[`<TextField> should focus the input 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -99,9 +99,10 @@ exports[`<TextField> should focus the input 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -117,7 +118,7 @@ exports[`<TextField> should focus the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -156,7 +157,7 @@ exports[`<TextField> should focus the input 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -228,7 +229,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -260,7 +261,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -271,9 +272,10 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -289,7 +291,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -328,7 +330,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -400,7 +402,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -432,7 +434,7 @@ exports[`<TextField> should render a simple text field 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -443,9 +445,10 @@ exports[`<TextField> should render a simple text field 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -461,7 +464,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -500,7 +503,7 @@ exports[`<TextField> should render a simple text field 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -573,7 +576,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -605,7 +608,7 @@ exports[`<TextField> should render the text field as password 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -617,9 +620,10 @@ exports[`<TextField> should render the text field as password 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -635,7 +639,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -674,7 +678,7 @@ exports[`<TextField> should render the text field as password 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -746,7 +750,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-16msjt6 css-1fekhao"
+          className="css-1nn9zl4 css-16msjt6 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -778,7 +782,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -789,9 +793,10 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -807,7 +812,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -846,181 +851,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
-        </div>
-      </ErrorText>
-    </div>
-  </FormElement>
-</TextField>
-`;
-
-exports[`<TextField> should replace the error text with custom validation error 1`] = `
-<TextField
-  className=""
-  errorText=""
-  label=""
-  leftElement={null}
-  multiLine={false}
-  name="test-input"
-  onChange={[Function]}
-  onValidate={[Function]}
-  placeholder=""
-  rightElement={null}
-  type="text"
-  value=""
->
-  <FormElement
-    className=""
-    errorText=""
-    hasPlaceholder={true}
-    hasUnderline={true}
-    hasValue={false}
-    htmlFor="test-input"
-    isFocused={false}
-    label=""
-    placeholder=""
-  >
-    <div
-      className="css-1vjh8yv "
-    >
-      <Placeholder
-        placeholder=""
-        visible={false}
-      >
-        <div
-          className="css-oc0mp css-1jyyyen"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
-        </div>
-      </Placeholder>
-      <Label
-        hasErrorMessage={false}
-        htmlFor="test-input"
-        isFloating={false}
-        isFocused={false}
-        label=""
-      >
-        <label
-          className="css-u7lqu6 css-1fekhao"
-          htmlFor="test-input"
-        >
-          <Translate
-            className=""
-            params={Object {}}
-            string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
-        </label>
-      </Label>
-      <Grid
-        className=""
-        component="ul"
-        wrap={false}
-      >
-        <ul
-          className=" css-h7r55a"
-        >
-          <GridItem
-            className=""
-            component="li"
-            grow={1}
-            shrink={1}
-          >
-            <li
-              className=" css-1gs0ko2"
-            >
-              <Component
-                className="css-keangt"
-                multiLine={false}
-                name="test-input"
-                onChange={[Function]}
-                onValidate={[Function]}
-                type="text"
-                validateOnBlur={true}
-                value=""
-              >
-                <SimpleInput
-                  autoComplete={false}
-                  autoCorrect={false}
-                  className="css-keangt"
-                  disabled={false}
-                  id={null}
-                  multiLine={false}
-                  name="test-input"
-                  onChange={[Function]}
-                  onFocusChange={[Function]}
-                  onSanitize={[Function]}
-                  onValidate={[Function]}
-                  password={false}
-                  setRef={[Function]}
-                  type="text"
-                  validateOnBlur={true}
-                  value=""
-                >
-                  <input
-                    autoComplete="off"
-                    autoCorrect="off"
-                    className="css-keangt"
-                    disabled={false}
-                    id={null}
-                    name="test-input"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    type="text"
-                    value=""
-                  />
-                </SimpleInput>
-              </Component>
-            </li>
-          </GridItem>
-        </ul>
-      </Grid>
-      <Underline
-        hasErrorMessage={false}
-        isFocused={false}
-      >
-        <div
-          className="css-ycal4l"
-        >
-          <div
-            className="css-1tpmuef"
-            style={
-              Object {
-                "borderBottomColor": undefined,
-                "transform": "scale3d(0,1,1)",
-              }
-            }
-          />
-        </div>
-      </Underline>
-      <ErrorText
-        className={null}
-        errorText=""
-      >
-        <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -1093,7 +924,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -1125,7 +956,7 @@ exports[`<TextField> should sanitize the input 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1137,9 +968,10 @@ exports[`<TextField> should sanitize the input 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -1155,7 +987,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1194,7 +1026,7 @@ exports[`<TextField> should sanitize the input 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -1266,7 +1098,7 @@ exports[`<TextField> should show the error message 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -1298,7 +1130,7 @@ exports[`<TextField> should show the error message 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1309,9 +1141,10 @@ exports[`<TextField> should show the error message 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -1327,7 +1160,7 @@ exports[`<TextField> should show the error message 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1365,7 +1198,7 @@ exports[`<TextField> should show the error message 1`] = `
         errorText="This is an error here"
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -1439,7 +1272,7 @@ exports[`<TextField> should show the label 1`] = `
         label="This is the label"
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -1473,7 +1306,7 @@ exports[`<TextField> should show the label 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1484,9 +1317,10 @@ exports[`<TextField> should show the label 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -1502,7 +1336,7 @@ exports[`<TextField> should show the label 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1541,7 +1375,7 @@ exports[`<TextField> should show the label 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -1615,7 +1449,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -1647,7 +1481,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -1658,9 +1492,10 @@ exports[`<TextField> should show the placeholder text 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -1676,7 +1511,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1715,7 +1550,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -1750,6 +1585,16 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         Array [
           "a",
         ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
       ],
     }
   }
@@ -1798,7 +1643,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -1830,7 +1675,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={
@@ -1843,6 +1688,16 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                         "a",
                       ],
                     ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
                   }
                 }
                 type="text"
@@ -1852,9 +1707,10 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={
@@ -1866,6 +1722,16 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                         Array [
                           "a",
                         ],
+                      ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
                       ],
                     }
                   }
@@ -1881,7 +1747,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -1920,7 +1786,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
@@ -1954,6 +1820,12 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           "",
           true,
         ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
       ],
     }
   }
@@ -2002,7 +1874,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         label=""
       >
         <label
-          className="css-u7lqu6 css-1fekhao"
+          className="css-1nn9zl4 css-1fekhao"
           htmlFor="test-input"
         >
           <Translate
@@ -2034,7 +1906,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
               className=" css-1gs0ko2"
             >
               <Component
-                className="css-keangt"
+                className="css-xtw4m3"
                 multiLine={false}
                 name="test-input"
                 onChange={[Function]}
@@ -2046,6 +1918,12 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                         true,
                       ],
                     ],
+                    "results": Array [
+                      Object {
+                        "isThrow": false,
+                        "value": undefined,
+                      },
+                    ],
                   }
                 }
                 type="text"
@@ -2055,9 +1933,10 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                 <SimpleInput
                   autoComplete={false}
                   autoCorrect={false}
-                  className="css-keangt"
+                  className="css-xtw4m3"
                   disabled={false}
                   id={null}
+                  isControlled={false}
                   multiLine={false}
                   name="test-input"
                   onChange={[Function]}
@@ -2071,6 +1950,12 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                           true,
                         ],
                       ],
+                      "results": Array [
+                        Object {
+                          "isThrow": false,
+                          "value": undefined,
+                        },
+                      ],
                     }
                   }
                   password={false}
@@ -2082,7 +1967,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="css-keangt"
+                    className="css-xtw4m3"
                     disabled={false}
                     id={null}
                     name="test-input"
@@ -2121,7 +2006,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         errorText=""
       >
         <div
-          className="css-1g88oka"
+          className="css-hmgfge"
         >
           <Translate
             className=""
