@@ -14,17 +14,18 @@ const favorTypes = ['webp', 'jp2'];
 /**
  * Source set.
  * @param {Object} sources Sources.
+ * @param {function} onError onError callback.
  * @returns {JSX}
  */
-const SourceSet = ({ sources }) => Object.keys(sources)
+const SourceSet = ({ sources, onError }) => Object.keys(sources)
   // Push favorite formats on top
   .sort(((a, b) => favorTypes.includes(b)))
   .map(type => (
-    <source key={type} srcSet={sources[type]} type={`image/${type}`} />
+    <source key={type} srcSet={sources[type]} type={`image/${type}`} onError={onError} />
   ));
 
 SourceSet.propTypes = {
-  sources: PropTypes.shape(SourceSetType).isRequired,
+  sources: SourceSetType.isRequired,
 };
 
 /**
@@ -43,15 +44,18 @@ const Picture = ({
   square,
   testId,
   imgClassName,
+  className,
+  onError,
 }) => (
-  <div className={styles.getWrapperStyle(square)}>
+  <div className={`${className} ${styles.getWrapperStyle(square)}`}>
     <picture>
-      <SourceSet sources={sources} />
+      <SourceSet sources={sources} onError={(e) => console.warn(e.target)} />
       <img
         src={sources.jpeg}
         alt={alt}
         className={styles.getImageStyle(imgClassName, square)}
         data-test-id={testId}
+        onError={onError}
       />
     </picture>
   </div>
@@ -60,16 +64,20 @@ const Picture = ({
 Picture.propTypes = {
   sources: SourceSetType.isRequired,
   alt: PropTypes.string,
+  className: PropTypes.string,
   imgClassName: PropTypes.string,
+  onError: PropTypes.func,
   square: PropTypes.bool,
   testId: PropTypes.string,
 };
 
 Picture.defaultProps = {
   alt: '',
+  className: '',
+  imgClassName: '',
+  onError: () => {},
   square: false,
   testId: null,
-  imgClassName: '',
 };
 
 export default Picture;

@@ -37,7 +37,7 @@ OptimizedImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   className: PropTypes.string,
-  sources: PropTypes.shape(SourceSetType),
+  sources: SourceSetType,
   testId: PropTypes.string,
 };
 

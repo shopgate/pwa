@@ -8,10 +8,11 @@ describe('Picture', () => {
       <Picture
         sources={{
           jpeg: 'https://example.com/foo.jpeg',
-          webp: 'http://example.com/foo.webp'
+          webp: 'http://example.com/foo.webp',
         }}
       />
     ));
+    expect(component).toMatchSnapshot();
     expect(component.find('source').at(0).props().srcSet.endsWith('webp')).toBe(true);
   });
-})
+});

@@ -47,4 +47,4 @@ const getImageStyle = (className, square) => {
 export default {
   getWrapperStyle,
   getImageStyle,
-}
+};
