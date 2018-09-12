@@ -22,10 +22,6 @@ const mockGetProvincesList = () => ({
 });
 
 describe('ActionListener', () => {
-  it('should create instance', () => {
-    const ignore = new ActionListener(mockGetProvincesList, {});
-  });
-
   it('should create correct createSetVisibilityHandler', () => {
     const element = { id: 'province' };
     const action = {
