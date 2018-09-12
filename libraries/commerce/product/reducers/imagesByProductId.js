@@ -29,6 +29,7 @@ export default function imagesByProductId(state = {}, action) {
           isFetching: false,
           expires: Date.now() + PRODUCT_LIFETIME,
           images: action.productImages,
+          optimizedImages: action.productOptimizedImages || null,
         },
       };
     case ERROR_PRODUCT_IMAGES:

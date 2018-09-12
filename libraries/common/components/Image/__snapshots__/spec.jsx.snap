@@ -24,7 +24,7 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
       },
     ]
   }
-  src="foo/bar"
+  src="https://example.com/foo/bar"
   transition={null}
 >
   <div
@@ -57,7 +57,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       },
     ]
   }
-  src="foo/bar"
+  src="https://example.com/foo/bar"
   transition={null}
 >
   <div
@@ -68,7 +68,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       className="css-d5cgrh"
       data-test-id="image"
       role="presentation"
-      src="foo/bar?w=440&h=440&q=70&zc=resize&fillc=FFFFFF"
+      src="https://example.com/foo/bar?w=440&h=440&q=70&zc=resize&fillc=FFFFFF"
       style={Object {}}
     />
   </div>

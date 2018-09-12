@@ -17,14 +17,14 @@ describe('<Image />', () => {
   };
 
   it('should render placeholders if forced to', () => {
-    const wrapper = mount(<Image src="foo/bar" forcePlaceholder />);
+    const wrapper = mount(<Image src="https://example.com/foo/bar" forcePlaceholder />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').length).toEqual(0);
   });
 
   it('should render placeholders if src is null', () => {
-    const wrapper = mount(<Image src="foo/bar" />);
+    const wrapper = mount(<Image src="https://example.com/foo/bar" />);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').length).toEqual(1);

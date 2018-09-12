@@ -28,6 +28,7 @@ class Slider extends Component {
     loop: PropTypes.bool,
     maxIndicators: PropTypes.number,
     onSlideChange: PropTypes.func,
+    preloadImages: PropTypes.bool,
     slidesPerView: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
@@ -52,6 +53,7 @@ class Slider extends Component {
     loop: false,
     maxIndicators: null,
     onSlideChange: null,
+    preloadImages: true,
     slidesPerView: 1,
     snapItems: true,
   };
@@ -272,6 +274,7 @@ class Slider extends Component {
       maxIndicators,
       slidesPerView,
       snapItems,
+      preloadImages,
     } = this.props;
     const hasMultipleChildren = children.length > 1;
 
@@ -313,6 +316,7 @@ class Slider extends Component {
       onTransitionEnd: this.constructor.fixFakeLoop,
       onSlideChangeEnd: this.handleSlideChange,
       onInit: this.initSlider,
+      preloadImages,
     };
 
     return (

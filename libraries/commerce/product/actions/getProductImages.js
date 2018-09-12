@@ -24,7 +24,8 @@ const getProductImages = productId => (dispatch, getState) => {
   new PipelineRequest(pipelines.SHOPGATE_CATALOG_GET_PRODUCT_IMAGES)
     .setInput({ productId })
     .dispatch()
-    .then(result => dispatch(receiveProductImages(productId, result.images)))
+    .then(result =>
+      dispatch(receiveProductImages(productId, result.images, result.optimizedImages)))
     .catch((error) => {
       logger.error(error);
       dispatch(errorProductImages(productId));

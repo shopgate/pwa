@@ -14,6 +14,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
   loop={false}
   maxIndicators={null}
   onSlideChange={null}
+  preloadImages={true}
   slidesPerView={1}
   snapItems={true}
 >
@@ -41,7 +42,7 @@ exports[`<ImageSlider /> should not use a slider for only one image 1`] = `
         },
       ]
     }
-    src="foo/bar"
+    src="https://example.com/foo/bar"
     transition={null}
   >
     <div
@@ -77,6 +78,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
   loop={false}
   maxIndicators={10}
   onSlideChange={null}
+  preloadImages={false}
   slidesPerView={1}
   snapItems={true}
 >
@@ -106,7 +108,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
           },
         ]
       }
-      src="foo/bar"
+      src="https://example.com/foo/bar"
       transition={null}
     />
   </SliderItem>
@@ -136,7 +138,7 @@ exports[`<ImageSlider /> should wrap each image into a Slider.Item 1`] = `
           },
         ]
       }
-      src="bar/foo"
+      src="https://example.com/bar/foo"
       transition={null}
     />
   </SliderItem>

@@ -264,6 +264,35 @@ export const getProductImages = createSelector(
 );
 
 /**
+ * Returns optimizedImages for the current product
+ * @param {Object} state The current application state.
+ * @return {Array|null}
+ */
+export const getCurrentProductOptimizedImages = createSelector(
+  getCurrentProductId,
+  getCurrentBaseProductId,
+  getProductImagesState,
+  (productId, baseProductId, images) => {
+    let entry = images[productId];
+    const productImages = images[productId];
+
+    /**
+     * Check if there are any images.
+     * If not then default back to the base product's images.
+     */
+    if (!productImages || !productImages.optimizedImages || !productImages.optimizedImages.length) {
+      entry = images[baseProductId];
+    }
+
+    if (!entry || entry.isFetching || isUndefined(entry.optimizedImages)) {
+      return null;
+    }
+
+    return entry.optimizedImages;
+  }
+);
+
+/**
  * Retrieves the current product rating.
  * @param {Object} state The current application state.
  * @return {Object|null}
@@ -450,8 +479,8 @@ export const getProductProperties = createSelector(
  */
 export const getProductMetadata = createSelector(
   getProductById,
-  // skip product, if not found or return null if no metadata is set
-  product => product && product.productData.metadata || null
+  // Skip product, if not found or return null if no metadata is set
+  product => (product && product.productData.metadata) || null
 );
 
 /**

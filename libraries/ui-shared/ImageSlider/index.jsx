@@ -63,6 +63,7 @@ class ImageSlider extends Component {
     return (
       <Slider
         {...this.props}
+        preloadImages={false}
         classNames={styles}
         maxIndicators={10}
       >
