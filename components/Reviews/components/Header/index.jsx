@@ -12,10 +12,14 @@ import connect from './connector';
  */
 const Header = ({ productId, rating, withTopGap }) => {
   if (!rating) {
-    return <NoReviews productId={productId} />;
+    return null;
   }
 
   const { average = 0, count = 0 } = rating;
+
+  if (!average) {
+    return <NoReviews productId={productId} />;
+  }
 
   return (
     <ReviewsExcerpt productId={productId} average={average} count={count} withTopGap={withTopGap} />
