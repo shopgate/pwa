@@ -1,10 +1,10 @@
 import { errorManager, EINVALIDCREDENTIALS, SHOPGATE_USER_LOGIN_USER } from '@shopgate/pwa-core';
 import { appWillStart$ } from '@shopgate/pwa-common/streams';
-import disableNavigatorSearch from 'Components/Navigator/actions/disableNavigatorSearch';
-import enableNavigatorSearch from 'Components/Navigator/actions/enableNavigatorSearch';
-import disableNavigatorTitle from 'Components/Navigator/actions/disableNavigatorTitle';
-import enableNavigatorTitle from 'Components/Navigator/actions/enableNavigatorTitle';
-import toggleCartIcon from 'Components/Navigator/actions/toggleCartIcon';
+import {
+  toggleNavigatorCart,
+  toggleNavigatorSearch,
+  toggleNavigatorTitle,
+} from 'Components/Navigator/action-creators';
 import { loginWillEnter$, loginWillLeave$ } from './streams';
 
 /**
@@ -22,14 +22,14 @@ export default function login(subscribe) {
   });
 
   subscribe(loginWillEnter$, ({ dispatch }) => {
-    dispatch(disableNavigatorTitle());
-    dispatch(disableNavigatorSearch());
-    dispatch(toggleCartIcon(false));
+    dispatch(toggleNavigatorTitle(false));
+    dispatch(toggleNavigatorSearch(false));
+    dispatch(toggleNavigatorCart(false));
   });
 
   subscribe(loginWillLeave$, ({ dispatch }) => {
-    dispatch(enableNavigatorTitle());
-    dispatch(enableNavigatorSearch());
-    dispatch(toggleCartIcon(true));
+    dispatch(toggleNavigatorTitle(true));
+    dispatch(toggleNavigatorSearch(true));
+    dispatch(toggleNavigatorCart(true));
   });
 }

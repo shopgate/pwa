@@ -1,45 +1,40 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
+import { UIEvents } from '@shopgate/pwa-core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
-import { ACTION_PUSH, ACTION_REPLACE } from '@virtuous/conductor/constants';
+import {
+  ACTION_PUSH,
+  ACTION_REPLACE,
+} from '@virtuous/conductor/constants';
 import * as events from '@virtuous/conductor-events';
 import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import colors from 'Styles/colors';
 import connect from './connector';
-import { PORTAL_NAVIGATOR_BUTTON } from './constants';
+import {
+  PORTAL_NAVIGATOR_BUTTON,
+  TOGGLE_NAVIGATOR,
+  SET_NAVIGATOR_BACKGROUND,
+  SET_NAVIGATOR_COLOR,
+} from './constants';
 import NavButton from './components/NavButton';
 import SearchButton from './components/SearchButton';
 import CartButton from './components/CartButton';
 import Content from './components/Content';
+import ProgressBar from './components/ProgressBar';
 import { NavigatorContext } from './context';
 import styles from './style';
 
 /**
  * The Navigator component.
- * @param {Object} props The component props.
  */
 class Navigator extends PureComponent {
   static propTypes = {
-    fetchSearchSuggestions: PropTypes.func.isRequired,
+    fetchSuggestions: PropTypes.func.isRequired,
     navigate: PropTypes.func.isRequired,
-    backgroundColor: PropTypes.string,
-    navigatorEnabled: PropTypes.bool,
-    showLoadingBar: PropTypes.bool,
-    showSearch: PropTypes.bool,
-    textColor: PropTypes.string,
-  };
-
-  static defaultProps = {
-    backgroundColor: colors.light,
-    navigatorEnabled: true,
-    showLoadingBar: false,
-    showSearch: true,
-    textColor: colors.dark,
   };
 
   /**
@@ -49,54 +44,91 @@ class Navigator extends PureComponent {
     super(props);
 
     this.state = {
+      backgroundColor: colors.light,
       routePattern: '',
       searchField: false,
       searchQuery: '',
+      textColor: colors.dark,
+      visible: true,
     };
+  }
 
+  /**
+   * Initially set the route pattern and event listeners. This is necessary to determine which
+   * route is the first when the app is opened.
+   */
+  componentDidMount() {
     events.onDidPush(this.setRoutePattern);
     events.onDidPop(this.setRoutePattern);
     events.onDidReplace(this.setRoutePattern);
     events.onDidReset(this.setRoutePattern);
-  }
-
-  /**
-   * Initially set the route pattern. This is necessary to determine which
-   * route is the first when the app is opened.
-   */
-  componentDidMount() {
+    UIEvents.on(TOGGLE_NAVIGATOR, this.setVisible);
+    UIEvents.on(SET_NAVIGATOR_BACKGROUND, this.setBackground);
+    UIEvents.on(SET_NAVIGATOR_COLOR, this.setColor);
     this.setRoutePattern();
   }
 
   /**
-   * @param {string} id The id of the route that entered.
+   * @returns {Object}
    */
-  setRoutePattern = () => {
-    const { pattern } = getCurrentRoute();
-
-    if (this.state.routePattern !== pattern) {
-      this.setState({
-        routePattern: pattern,
-      });
-    }
+  get barStyle() {
+    return {
+      background: this.state.backgroundColor,
+      color: this.state.textColor,
+    };
   }
 
   /**
-   * @param {string} query The new search query.
+   * @returns {Object}
+   */
+  get providedContext() {
+    return {
+      ...this.state,
+      toggleSearchField: this.toggleSearchField,
+      setSearchQuery: this.setSearchQuery,
+    };
+  }
+
+  /**
+   * @param {string} color The next background color.
+   */
+  setBackground = (color) => {
+    this.setState({ backgroundColor: color });
+  }
+
+  /**
+   * @param {string} color The next text color.
+   */
+  setColor = (color) => {
+    this.setState({ textColor: color });
+  }
+
+  /**
+   * @param {boolean} visible The next visible state.
+   */
+  setVisible = (visible) => {
+    this.setState({ visible });
+  }
+
+  setRoutePattern = () => {
+    const { pattern } = getCurrentRoute();
+    this.setState({ routePattern: pattern });
+  }
+
+  /**
+   * @param {string} query The next search query.
    */
   setSearchQuery = (query) => {
-    if (this.state.searchQuery !== query) {
-      this.setState({
-        searchQuery: query,
-      }, this.fetchSuggestions);
-    }
+    this.setState({
+      searchQuery: query,
+    }, this.fetchSuggestions);
   }
 
   /**
    * Fetch search suggestions with the locally set search query.
    */
   fetchSuggestions = throttle(() => {
-    this.props.fetchSearchSuggestions(this.state.searchQuery);
+    this.props.fetchSuggestions(this.state.searchQuery);
   }, 1000)
 
   /**
@@ -132,43 +164,27 @@ class Navigator extends PureComponent {
   }
 
   /**
-   * Renders the component.
    * @returns {JSX}
    */
   render() {
-    if (!this.props.navigatorEnabled) {
+    if (!this.state.visible) {
       return null;
     }
 
-    const headerStyle = {
-      background: this.props.backgroundColor,
-      color: this.props.textColor,
-    };
-
-    const context = {
-      ...this.state,
-      toggleSearchField: this.toggleSearchField,
-      setSearchQuery: this.setSearchQuery,
-    };
-
     return (
-      <NavigatorContext.Provider value={context}>
+      <NavigatorContext.Provider value={this.providedContext}>
         <Portal name={portals.NAV_BAR_BEFORE} />
         <Portal name={portals.NAV_BAR}>
           <header
             className={styles.header}
             data-test-id="Navigator"
             role="banner"
-            style={headerStyle}
+            style={this.barStyle}
           >
             <Portal name={portals.NAV_BAR_NAVIGATOR_BEFORE} />
             <Portal name={portals.NAV_BAR_NAVIGATOR}>
               <Grid className={styles.grid} component="section" wrap={false}>
-                <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_BEFORE} />
-                <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON} props={{ NavButton }}>
-                  <NavButton pattern={this.state.routePattern} />
-                </Portal>
-                <Portal name={portals.NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER} />
+                <NavButton pattern={this.state.routePattern} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_CENTER}>
                   <Grid.Item className={styles.title} component="div" grow={1}>
@@ -179,24 +195,14 @@ class Navigator extends PureComponent {
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_BEFORE} />
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS}>
                   <div className={styles.portal} id={PORTAL_NAVIGATOR_BUTTON} />
-                  {this.props.showSearch &&
-                    <SearchButton />
-                  }
-                  <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_BEFORE} />
-                  <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON} props={{ CartButton }}>
-                    <CartButton />
-                  </Portal>
-                  <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_CART_BUTTON_AFTER} />
+                  <SearchButton />
+                  <CartButton />
                 </Portal>
                 <Portal name={portals.NAV_BAR_NAVIGATOR_ICONS_AFTER} />
               </Grid>
             </Portal>
             <Portal name={portals.NAV_BAR_NAVIGATOR_AFTER} />
-            <Portal name={portals.NAV_BAR_PROGRESS_BAR_BEFORE} />
-            <Portal name={portals.NAV_BAR_PROGRESS_BAR} props={{ ProgressBar }}>
-              <ProgressBar isVisible={this.props.showLoadingBar} />
-            </Portal>
-            <Portal name={portals.NAV_BAR_PROGRESS_BAR_AFTER} />
+            <ProgressBar />
           </header>
         </Portal>
         <Portal name={portals.NAV_BAR_AFTER} />

@@ -5,11 +5,13 @@ import variables from 'Styles/variables';
 const header = css({
   background: colors.light,
   height: `calc(${variables.navbar.height}px + var(--safe-area-inset-top))`,
+  left: 0,
   paddingTop: 'var(--safe-area-inset-top)',
-  position: 'relative',
+  position: 'fixed',
+  top: 0,
   width: '100%',
   zIndex: 2,
-}).toString();
+});
 
 const grid = css({
   alignItems: 'center',

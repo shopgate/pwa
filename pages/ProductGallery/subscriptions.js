@@ -2,8 +2,7 @@ import {
   galleryWillEnter$,
   galleryWillLeave$,
 } from '@shopgate/pwa-common-commerce/product/streams';
-import disableNavigator from 'Components/Navigator/actions/disableNavigator';
-import enableNavigator from 'Components/Navigator/actions/enableNavigator';
+import { toggleNavigator } from 'Components/Navigator/action-creators/';
 
 /**
  * Product gallery subscriptions.
@@ -11,10 +10,10 @@ import enableNavigator from 'Components/Navigator/actions/enableNavigator';
  */
 export default function gallery(subscribe) {
   subscribe(galleryWillEnter$, ({ dispatch }) => {
-    dispatch(disableNavigator());
+    dispatch(toggleNavigator(false));
   });
 
   subscribe(galleryWillLeave$, ({ dispatch }) => {
-    dispatch(enableNavigator());
+    dispatch(toggleNavigator(true));
   });
 }

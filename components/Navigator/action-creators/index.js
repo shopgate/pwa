@@ -1,118 +1,79 @@
 import {
-  TOGGLE_NAVIGATOR_CART_ICON,
-  TOGGLE_PROGRESS_BAR,
+  TOGGLE_NAVIGATOR,
+  TOGGLE_NAVIGATOR_CART,
+  TOGGLE_NAVIGATOR_SEARCH,
+  TOGGLE_NAVIGATOR_TITLE,
+  TOGGLE_PROGRESSBAR,
   SET_NAVIGATOR_BACKGROUND,
   SET_NAVIGATOR_COLOR,
-  SET_ICON_SHADOW_ENABLED,
-  SET_ICON_SHADOW_DISABLED,
-  SET_SEARCH_ENABLED,
-  SET_SEARCH_DISABLED,
-  SET_TITLE_ENABLED,
-  SET_TITLE_DISABLED,
-  SET_NAVIGATOR_ENABLED,
-  SET_NAVIGATOR_DISABLED,
 } from '../constants';
 
 /**
- * Toggles the navigator progress bar..
- * @param {boolean} active The state of the progress bar.
+ * Toggles the navigator.
+ * @param {boolean} visible The next state of the navigator.
  * @returns {Object} The action object.
  */
-export const toggleProgressBar = active => ({
-  type: TOGGLE_PROGRESS_BAR,
-  active,
+export const toggleNavigator = visible => ({
+  type: TOGGLE_NAVIGATOR,
+  visible,
 });
 
 /**
  * Toggles the navigator cart icon.
- * @param {boolean} active The cart icon active state.
+ * @param {boolean} visible The next state of the cart icon.
  * @returns {Object} The action object.
  */
-export const toggleCartIcon = active => ({
-  type: TOGGLE_NAVIGATOR_CART_ICON,
-  active,
+export const toggleNavigatorCart = visible => ({
+  type: TOGGLE_NAVIGATOR_CART,
+  visible,
+});
+
+/**
+ * Toggles the navigator search.
+ * @param {boolean} visible The next state of the search.
+ * @returns {Object} The action object.
+ */
+export const toggleNavigatorSearch = visible => ({
+  type: TOGGLE_NAVIGATOR_SEARCH,
+  visible,
+});
+
+/**
+ * Toggles the navigator title.
+ * @param {boolean} visible The next state of the TITLE.
+ * @returns {Object} The action object.
+ */
+export const toggleNavigatorTitle = visible => ({
+  type: TOGGLE_NAVIGATOR_TITLE,
+  visible,
+});
+
+/**
+ * Toggles the navigator progress bar.
+ * @param {boolean} visible The next state of the progress bar.
+ * @returns {Object} The action object.
+ */
+export const toggleProgressBar = visible => ({
+  type: TOGGLE_PROGRESSBAR,
+  visible,
 });
 
 /**
  * Sets the background color of the navigator.
- * @param {boolean} color The navigator's new background color.
+ * @param {boolean} color The next background color.
  * @returns {Object} The action object.
  */
-export const setBackgroundColor = color => ({
+export const setNavigatorBackgroundColor = color => ({
   type: SET_NAVIGATOR_BACKGROUND,
   color,
 });
 
 /**
  * Sets the text color of the navigator.
- * @param {string} color The navigator's new text color.
+ * @param {string} color The nexttext color.
  * @returns {Object} The action object.
  */
-export const setTextColor = color => ({
+export const setNavigatorTextColor = color => ({
   type: SET_NAVIGATOR_COLOR,
   color,
-});
-
-/**
- * Enables the navigators icon shadows.
- * @returns {Object} The action object.
- */
-export const enableIconShadow = () => ({
-  type: SET_ICON_SHADOW_ENABLED,
-});
-
-/**
- * Disables the navigators icon shadows.
- * @returns {Object} The action object.
- */
-export const disableIconShadow = () => ({
-  type: SET_ICON_SHADOW_DISABLED,
-});
-
-/**
- * Enables the navigator search.
- * @returns {Object} The action object.
- */
-export const enableSearch = () => ({
-  type: SET_SEARCH_ENABLED,
-});
-
-/**
- * Disables the navigator search.
- * @returns {Object} The action object.
- */
-export const disableSearch = () => ({
-  type: SET_SEARCH_DISABLED,
-});
-
-/**
- * Enables the navigator title.
- * @returns {Object} The action object.
- */
-export const enableTitle = () => ({
-  type: SET_TITLE_ENABLED,
-});
-
-/**
- * Disables the navigator title
- * @returns {Object} The action object.
- */
-export const disableTitle = () => ({
-  type: SET_TITLE_DISABLED,
-});
-
-/**
- * Creates the SET_NAVIGATOR_ENABLED redux action object.
- * @returns {Object} The action object.
- */
-export const enable = () => ({
-  type: SET_NAVIGATOR_ENABLED,
-});
-
-/**
- * Creates the SET_NAVIGATOR_DISABLED redux action object.
- * @returns {Object} The action object.
- */
-export const disable = () => ({
-  type: SET_NAVIGATOR_DISABLED,
 });
