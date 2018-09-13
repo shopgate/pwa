@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
 import { persistState } from '@virtuous/redux-persister';
 import syncRouter from '@virtuous/redux-conductor';
 import persistedReducers from '../collections/PersistedReducers';
@@ -32,7 +33,7 @@ export function configureStore(reducers, subscribers) {
     reducers,
     initialState,
     composeWithDevTools(
-      applyMiddleware(thunk, streams, logger),
+      applyMiddleware(thunk, benchmarkMiddleware, streams, logger),
       persistState({
         key: storeKey,
         paths: persistedReducers.getAll(),
