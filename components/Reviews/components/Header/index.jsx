@@ -1,11 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import RatingNumber from '@shopgate/pwa-ui-shared/RatingNumber';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-import AverageRating from './components/AverageRating';
-import WriteReviewLink from './components/WriteReviewLink';
-import styles from './style';
+import NoReviews from './components/NoReviews';
+import ReviewsExcerpt from './components/ReviewsExcerpt';
+import connect from './connector';
 
 /**
  * The header of the reviews component
@@ -18,35 +15,14 @@ const Header = ({ productId, rating, withTopGap }) => {
     return null;
   }
 
-  const { average = 0 } = rating;
-  const containerClass = withTopGap ? styles.withTopGapContainer : styles.container;
+  const { average = 0, count = 0 } = rating;
 
   if (!average) {
-    return (
-      <div className={styles.container}>
-        <AverageRating rating={rating} productId={productId} />
-        <div className={styles.noReviews}>
-          {appConfig.showWriteReview && (
-            <Fragment>
-              <I18n.Text string="reviews.no_reviews" />
-              <WriteReviewLink productId={productId} />
-            </Fragment>
-          )}
-        </div>
-      </div>
-    );
+    return <NoReviews productId={productId} />;
   }
 
   return (
-    <div className={containerClass} id="reviewsExcerpt">
-      <AverageRating rating={rating} productId={productId} />
-      <div className={styles.reviewsLine}>
-        <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
-          <RatingNumber rating={average} className={styles.averageRatingNumber} />
-        </I18n.Text>
-        {appConfig.showWriteReview && <WriteReviewLink productId={productId} />}
-      </div>
-    </div>
+    <ReviewsExcerpt productId={productId} average={average} count={count} withTopGap={withTopGap} />
   );
 };
 
@@ -62,4 +38,4 @@ Header.defaultProps = {
   withTopGap: false,
 };
 
-export default Header;
+export default connect(Header);

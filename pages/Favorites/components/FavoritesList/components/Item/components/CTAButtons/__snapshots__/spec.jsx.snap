@@ -20,6 +20,7 @@ exports[`<CTAButtons /> should render buttons 1`] = `
       active={null}
       addToCart={[Function]}
       favoritesOnce={false}
+      hasVariants={true}
       isBaseProduct={true}
       isOrderable={true}
       onRippleComplete={[Function]}
@@ -73,10 +74,10 @@ exports[`<CTAButtons /> should render buttons 1`] = `
         >
           <MockedAddToCartButton
             className="css-ipacgg"
-            handleAddToCart={[Function]}
             isDisabled={false}
             isLoading={false}
             isOrderable={false}
+            onClick={[Function]}
           >
             <button
               onClick={[Function]}

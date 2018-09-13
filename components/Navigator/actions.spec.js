@@ -109,6 +109,7 @@ describe('Navigator actions', () => {
   afterEach(() => {
     store.clearActions();
   });
+
   actions.forEach((action, index) => {
     it(`should ${action.name}`, () => {
       store = getStore(

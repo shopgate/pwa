@@ -50,7 +50,7 @@ describe('<Header />', () => {
   });
 
   it('should render null when no review is provided', () => {
-    header = createComponent(mockedStateWithAll);
+    header = createComponent(mockedStateWithAll, { productId: 'some-id' });
     expect(header.html()).toBe(null);
   });
 });

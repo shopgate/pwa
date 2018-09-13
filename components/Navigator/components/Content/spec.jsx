@@ -2,17 +2,28 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import NavigatorContent from './index';
 import { defaultState } from '../../mock';
+import NavigatorContent from './index';
+
+jest.mock('./components/Search', () => {
+  /**
+   * Mock for the SearchComponent
+   * @return {JSX}
+   */
+  const Search = () => <div />;
+  return Search;
+});
+
+jest.mock('./components/Suggestions', () => {
+  /**
+   * Mock for the SuggestionsComponent
+   * @return {JSX}
+   */
+  const Suggestions = () => <div />;
+  return Suggestions;
+});
 
 const mockedStore = configureStore();
-// Mock the redux connect() method instead of providing a fake store.
-jest.mock('../../context');
-
-beforeEach(() => {
-  jest.resetModules();
-});
 
 /**
  * Creates component with provided store state.
@@ -28,24 +39,30 @@ const createComponent = (props) => {
       },
     },
   });
+
   return mount((
     <Provider store={store}>
       <NavigatorContent {...props} />
-    </Provider>, mockRenderOptions
+    </Provider>
   ));
 };
 
 describe('<NavigatorContent />', () => {
   it('should render the logo', () => {
     const wrapper = createComponent({ routePattern: '/' });
-
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('Logo').exists()).toBe(true);
+    expect(wrapper.find('Title').exists()).toBe(false);
+    expect(wrapper.find('Search').exists()).toBe(true);
+    expect(wrapper.find('Suggestions').exists()).toBe(true);
   });
 
   it('should render the title', () => {
     const wrapper = createComponent({ routePattern: 'some/other/path' });
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Logo').exists()).toBe(false);
     expect(wrapper.find('Title').exists()).toBe(true);
+    expect(wrapper.find('Search').exists()).toBe(true);
+    expect(wrapper.find('Suggestions').exists()).toBe(true);
   });
 });

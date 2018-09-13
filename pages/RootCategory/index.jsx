@@ -29,3 +29,5 @@ export default inject(connect(shouldUpdate((prev, next) => (
   (!prev.categories && next.categories) ||
   (!prev.open && next.open)
 ))(RootCategory)));
+
+export { RootCategory as UnwrappedRootCategory };

@@ -1,29 +1,39 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { cartState } from '@shopgate/pwa-common-commerce/cart/mock';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
+import CartButton, { UnwrappedCartButton } from './index';
 import CartButtonBadge from './components/CartButtonBadge';
 
-const mockedStore = configureStore();
+const mockedStore = configureStore([thunk]);
 let store;
+
+const mockedPathname = CART_PATH;
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({
+  pathname: mockedPathname,
+}));
 
 describe('<CartButton />', () => {
   // eslint-disable-next-line require-jsdoc
-  const createComponent = (state) => {
-    // eslint-disable-next-line global-require
-    const CartButton = require('./index').default;
+  const createComponent = (state, props = {}) => {
     store = mockedStore({
       ...state,
       navigator: { showCartIcon: true },
     });
-    return mount(<CartButton store={store} />);
+    return mount(<CartButton {...props} store={store} />);
   };
 
   it('should not be visible with prop visible set to false', () => {
-    const wrapper = shallow((
-      <CartButton cartProductCount={0} visible={false} activeCartRoute={false} />
-    ));
+    const wrapper = shallow((<UnwrappedCartButton
+      store={{}}
+      cartProductCount={0}
+      visible={false}
+      activeCartRoute={false}
+    />));
+
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(CartButtonBadge).render().text()).toBe('0');
 
@@ -66,8 +76,6 @@ describe('<CartButton />', () => {
   });
 
   it('should not delay transition when the cart page is left', () => {
-    // eslint-disable-next-line global-require
-    const { UnwrappedCartButton } = require('./index');
     const wrapper =
             shallow(<UnwrappedCartButton cartProductCount={5} visible activeCartRoute={false} />);
     expect(wrapper.state().useAnimationDelay).toBe(true);
@@ -87,9 +95,10 @@ describe('<CartButton />', () => {
 
     const result = [{
       type: 'NAVIGATE',
-      action: 'PUSH',
-      location: '/cart',
-      state: undefined,
+      params: {
+        action: 'PUSH',
+        pathname: '/cart',
+      },
     }];
     expect(store.getActions()).toEqual(result);
   });

@@ -71,9 +71,10 @@ describe('<ProductImageSlider />', () => {
     wrapper.find('ImageSlider').at(0).instance().handleOpenGallery();
     const navigateAction = [{
       type: 'NAVIGATE',
-      action: 'PUSH',
-      location: '/item/393133/gallery/0',
-      state: undefined,
+      params: {
+        action: 'PUSH',
+        pathname: '/item/393133/gallery/0',
+      },
     }];
 
     expect(store.getActions()).toEqual(navigateAction);

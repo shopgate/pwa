@@ -13,10 +13,10 @@ exports[`Shipping label should render free shipping 1`] = `
     }
   }
 >
-  <Connect(Shipping)
+  <Connect(pure(Shipping))
     productId="fakeId"
   >
-    <Shipping
+    <pure(Shipping)
       dispatch={[Function]}
       productId="fakeId"
       shipping={
@@ -26,48 +26,59 @@ exports[`Shipping label should render free shipping 1`] = `
         }
       }
     >
-      <Portal
-        name="product.shipping.before"
-        props={null}
-      />
-      <Portal
-        name="product.shipping"
-        props={null}
+      <Shipping
+        dispatch={[Function]}
+        productId="fakeId"
+        shipping={
+          Object {
+            "currency": "EUR",
+            "price": 0,
+          }
+        }
       >
-        <PlaceholderLabel
-          className="css-1n196ny"
-          ready={true}
-          style={null}
+        <Portal
+          name="product.shipping.before"
+          props={null}
+        />
+        <Portal
+          name="product.shipping"
+          props={null}
         >
-          <Label
-            className="css-117ocmm"
-            currency="EUR"
-            price={0}
+          <PlaceholderLabel
+            className="css-1n196ny"
+            ready={true}
+            style={null}
           >
-            <div
-              className="css-117ocmm css-1ixzglu"
+            <Label
+              className="css-117ocmm"
+              currency="EUR"
+              price={0}
             >
-              <Translate
-                className=""
-                params={Object {}}
-                string="shipping.free"
+              <div
+                className="css-117ocmm css-1ixzglu"
               >
-                <span
+                <Translate
                   className=""
+                  params={Object {}}
+                  string="shipping.free"
                 >
-                  shipping.free
-                </span>
-              </Translate>
-            </div>
-          </Label>
-        </PlaceholderLabel>
-      </Portal>
-      <Portal
-        name="product.shipping.after"
-        props={null}
-      />
-    </Shipping>
-  </Connect(Shipping)>
+                  <span
+                    className=""
+                  >
+                    shipping.free
+                  </span>
+                </Translate>
+              </div>
+            </Label>
+          </PlaceholderLabel>
+        </Portal>
+        <Portal
+          name="product.shipping.after"
+          props={null}
+        />
+      </Shipping>
+    </pure(Shipping)>
+  </Connect(pure(Shipping))>
 </Provider>
 `;
 
@@ -84,10 +95,10 @@ exports[`Shipping label should render shipping price 1`] = `
     }
   }
 >
-  <Connect(Shipping)
+  <Connect(pure(Shipping))
     productId="fakeId"
   >
-    <Shipping
+    <pure(Shipping)
       dispatch={[Function]}
       productId="fakeId"
       shipping={
@@ -97,61 +108,72 @@ exports[`Shipping label should render shipping price 1`] = `
         }
       }
     >
-      <Portal
-        name="product.shipping.before"
-        props={null}
-      />
-      <Portal
-        name="product.shipping"
-        props={null}
+      <Shipping
+        dispatch={[Function]}
+        productId="fakeId"
+        shipping={
+          Object {
+            "currency": "EUR",
+            "price": 1,
+          }
+        }
       >
-        <PlaceholderLabel
-          className="css-1n196ny"
-          ready={true}
-          style={null}
+        <Portal
+          name="product.shipping.before"
+          props={null}
+        />
+        <Portal
+          name="product.shipping"
+          props={null}
         >
-          <Label
-            className="css-117ocmm"
-            currency="EUR"
-            price={1}
+          <PlaceholderLabel
+            className="css-1n196ny"
+            ready={true}
+            style={null}
           >
-            <div
-              className="css-117ocmm css-1ixzglu"
+            <Label
+              className="css-117ocmm"
+              currency="EUR"
+              price={1}
             >
-              <Translate
-                className=""
-                params={Object {}}
-                string="shipping.cost"
+              <div
+                className="css-117ocmm css-1ixzglu"
               >
-                <span
+                <Translate
                   className=""
+                  params={Object {}}
+                  string="shipping.cost"
                 >
-                  shipping.cost
-                  <FormatPrice
+                  <span
                     className=""
-                    currency="EUR"
-                    forKey="price"
-                    fractions={true}
-                    key=".0"
-                    price={1}
                   >
-                    <span
+                    shipping.cost
+                    <FormatPrice
                       className=""
+                      currency="EUR"
+                      forKey="price"
+                      fractions={true}
+                      key=".0"
+                      price={1}
                     >
-                      p
-                    </span>
-                  </FormatPrice>
-                </span>
-              </Translate>
-            </div>
-          </Label>
-        </PlaceholderLabel>
-      </Portal>
-      <Portal
-        name="product.shipping.after"
-        props={null}
-      />
-    </Shipping>
-  </Connect(Shipping)>
+                      <span
+                        className=""
+                      >
+                        p
+                      </span>
+                    </FormatPrice>
+                  </span>
+                </Translate>
+              </div>
+            </Label>
+          </PlaceholderLabel>
+        </Portal>
+        <Portal
+          name="product.shipping.after"
+          props={null}
+        />
+      </Shipping>
+    </pure(Shipping)>
+  </Connect(pure(Shipping))>
 </Provider>
 `;

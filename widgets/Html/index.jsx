@@ -125,3 +125,5 @@ class Html extends Component {
 }
 
 export default connect(Html);
+
+export { Html as UnwrappedHtml };

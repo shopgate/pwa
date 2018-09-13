@@ -177,40 +177,14 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -394,40 +368,14 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -611,40 +559,14 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_5"
         >
-          <Reviews
-            productId="product_5"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -828,40 +750,14 @@ exports[`<ProductContent /> rendering when all relevant data is available inside
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -1045,40 +941,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_2"
         >
-          <Reviews
-            productId="product_2"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -1262,40 +1132,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -1479,40 +1323,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_2"
         >
-          <Reviews
-            productId="product_2"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -1696,40 +1514,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_2"
         >
-          <Reviews
-            productId="product_2"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -1913,40 +1705,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -2131,40 +1897,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -2349,40 +2089,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -2567,40 +2281,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -2786,40 +2474,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -3005,40 +2667,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_1"
         >
-          <Reviews
-            productId="product_1"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -3222,40 +2858,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_5"
         >
-          <Reviews
-            productId="product_5"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>
@@ -3439,40 +3049,14 @@ exports[`<ProductContent /> rendering when product data is not available inside 
           name="product.properties.after"
           props={null}
         />
-        <Portal
-          name="product.reviews.before"
-          props={null}
-        />
-        <Portal
-          name="product.reviews"
-          props={null}
+        <Reviews
+          productId="product_5"
         >
-          <Reviews
-            productId="product_5"
-          >
-            <div />
-          </Reviews>
-        </Portal>
-        <Portal
-          name="product.reviews.after"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer.before"
-          props={null}
-        />
-        <Portal
-          name="product.tax-disclaimer"
-          props={null}
-        >
-          <TaxDisclaimer>
-            <div />
-          </TaxDisclaimer>
-        </Portal>
-        <Portal
-          name="product.tax-disclaimer.after"
-          props={null}
-        />
+          <div />
+        </Reviews>
+        <TaxDisclaimer>
+          <div />
+        </TaxDisclaimer>
       </div>
     </Provider>
   </ProductContent>

@@ -4,13 +4,13 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 
 // A whitelist of route patterns where the <- icon should be shown.
-const backWhitelist = [
+export const backWhitelist = [
   `${CATEGORY_PATH}/:categoryId/filter/:attribute`,
   `${SEARCH_PATH}/filter/:attribute`,
 ];
 
 // A whitelist of route patterns where the X icon should be shown.
-const crossWhitelist = [
+export const crossWhitelist = [
   LOGIN_PATH,
   `${ITEM_PATH}/:productId/write_review`,
   `${CATEGORY_PATH}/:categoryId/filter`,

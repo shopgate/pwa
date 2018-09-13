@@ -25,7 +25,7 @@ export const defaultState = {
     searchActive: false,
     showCartIcon: true,
     showIconShadow: false,
-    showProgressBar: true,
+    showProgressBar: false,
     showSearch: true,
     showTitle: true,
     textColor: 'white',

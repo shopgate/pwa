@@ -164,3 +164,5 @@ export default connect(props => (
     )}
   </RouteContext.Consumer>
 ));
+
+export { CouponField as UnwrappedCouponField };

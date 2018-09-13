@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WriteReview> page should not crash 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <WriteReview
+    productId="foo"
+  >
+    <MockedView>
+      <div>
+        <Component
+          productId="foo"
+        />
+      </div>
+    </MockedView>
+  </WriteReview>
+</Provider>
+`;
