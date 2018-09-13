@@ -41,3 +41,5 @@ class ButtonLink extends Component {
 }
 
 export default connect(ButtonLink);
+
+export { ButtonLink as UnwrappedButtonLink };

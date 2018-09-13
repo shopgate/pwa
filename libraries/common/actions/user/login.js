@@ -21,7 +21,7 @@ export default function login(credentials, redirect) {
 
     new PipelineRequest(SHOPGATE_USER_LOGIN_USER)
       .setTrusted()
-      .setHandledErrors([
+      .setErrorBlacklist([
         EINVALIDCALL,
         ELEGACYSGCONNECT,
       ])

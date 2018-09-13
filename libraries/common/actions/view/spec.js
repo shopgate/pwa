@@ -20,6 +20,7 @@ describe('Actions: view', () => {
   const getState = () => state;
   const dispatch = jest.fn();
   const pathName = 'fooPath';
+
   describe('setViewLoading', () => {
     it('should set path loading state', () => {
       setViewLoading(pathName)(dispatch, getState);
@@ -28,6 +29,7 @@ describe('Actions: view', () => {
       expect(action.type).toBe(SET_VIEW_LOADING);
       expect(action.pathname).toBe(pathName);
     });
+
     it('should increment loading state', () => {
       state.view.isLoading[pathName] = 1;
       setViewLoading(pathName)(dispatch, getState);
@@ -37,6 +39,7 @@ describe('Actions: view', () => {
       expect(action.pathname).toBe(pathName);
     });
   });
+
   describe('unsetViewLoading', () => {
     it('should decrement loading state', () => {
       state.view.isLoading[pathName] = 2;
@@ -46,6 +49,7 @@ describe('Actions: view', () => {
       expect(action.type).toBe(DECREMENT_VIEW_LOADING);
       expect(action.pathname).toBe(pathName);
     });
+
     it('should unset when loading state counter is 1', () => {
       state.view.isLoading[pathName] = 1;
       unsetViewLoading(pathName)(dispatch, getState);
@@ -54,6 +58,7 @@ describe('Actions: view', () => {
       expect(action.type).toBe(UNSET_VIEW_LOADING);
       expect(action.pathname).toBe(pathName);
     });
+
     it('should unset when flush flag is true', () => {
       state.view.isLoading[pathName] = 2;
       unsetViewLoading(pathName, true)(dispatch, getState);
@@ -61,11 +66,6 @@ describe('Actions: view', () => {
       expect(typeof action).toBe('object');
       expect(action.type).toBe(UNSET_VIEW_LOADING);
       expect(action.pathname).toBe(pathName);
-    });
-    it('should abort when path was not set', () => {
-      delete state.view.isLoading[pathName];
-      unsetViewLoading(pathName, true)(dispatch, getState);
-      expect(typeof dispatch.mock.calls[5]).toBe('undefined');
     });
   });
 });

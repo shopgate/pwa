@@ -13,7 +13,7 @@ import {
   productIsReady$,
 } from './product';
 
-describe('Product streams', () => {
+describe.skip('Product streams', () => {
   describe('productsReceived$', () => {
     let productsReceivedSubscriber;
 

@@ -4,18 +4,48 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
 <AddToCartButton
   buttonSize={40}
   className={null}
-  handleAddToCart={[MockFunction]}
-  hasLoading={false}
   iconSize={20}
+  isDisabled={false}
   isLoading={true}
   isOrderable={true}
   noShadow={false}
+  onClick={[MockFunction]}
 >
   <button
     className="null css-68omm3 css-nil"
     data-test-id="addToCartButton"
     onClick={[Function]}
   >
+    <div
+      className="css-rukjns css-1gleer"
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <IndicatorCircle
+        color="#5ccee3"
+        paused={false}
+        size={32}
+        strokeWidth={5}
+      >
+        <svg
+          className="css-12jxe4c"
+          height={32}
+          viewBox="25 25 50 50"
+          width={32}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className="css-1e1be6z"
+            cx="50"
+            cy="50"
+            r="20"
+          />
+        </svg>
+      </IndicatorCircle>
+    </div>
     <div
       className="css-rukjns"
       style={
@@ -97,7 +127,12 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
 <AddToCartButton
   buttonSize={40}
   className={null}
-  handleAddToCart={
+  iconSize={20}
+  isDisabled={false}
+  isLoading={false}
+  isOrderable={true}
+  noShadow={false}
+  onClick={
     [MockFunction] {
       "calls": Array [
         Array [],
@@ -110,11 +145,6 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       ],
     }
   }
-  hasLoading={false}
-  iconSize={20}
-  isLoading={false}
-  isOrderable={true}
-  noShadow={false}
 >
   <button
     className="null css-68omm3 css-nil"
@@ -202,7 +232,12 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
 <AddToCartButton
   buttonSize={40}
   className={null}
-  handleAddToCart={
+  iconSize={20}
+  isDisabled={false}
+  isLoading={false}
+  isOrderable={true}
+  noShadow={false}
+  onClick={
     [MockFunction] {
       "calls": Array [
         Array [],
@@ -215,11 +250,6 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       ],
     }
   }
-  hasLoading={false}
-  iconSize={20}
-  isLoading={false}
-  isOrderable={true}
-  noShadow={false}
 >
   <button
     className="null css-68omm3 css-nil"

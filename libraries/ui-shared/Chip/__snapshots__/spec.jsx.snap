@@ -2,6 +2,7 @@
 
 exports[`<Chip /> should render a tag 1`] = `
 <Chip
+  id="some-id"
   invert={false}
   onClick={[Function]}
   onRemove={[Function]}
@@ -11,14 +12,14 @@ exports[`<Chip /> should render a tag 1`] = `
     className="css-bpa25c"
   >
     <Button
-      className="css-i7sqdh"
+      className="css-hazg82"
       disabled={false}
       onClick={[Function]}
-      testId="remove text"
+      testId="Button"
     >
       <button
-        className="css-i7sqdh css-1rn65c0"
-        data-test-id="remove text"
+        className="css-hazg82 css-1rn65c0"
+        data-test-id="Button"
         disabled={false}
         onClick={[Function]}
       >
@@ -57,11 +58,11 @@ exports[`<Chip /> should render a tag 1`] = `
       className="css-1al9zi1"
       disabled={false}
       onClick={[Function]}
-      testId="text"
+      testId="Button"
     >
       <button
         className="css-1al9zi1 css-1rn65c0"
-        data-test-id="text"
+        data-test-id="Button"
         disabled={false}
         onClick={[Function]}
       >
@@ -74,6 +75,7 @@ exports[`<Chip /> should render a tag 1`] = `
 
 exports[`<Chip /> should render a without removable icon 1`] = `
 <Chip
+  id="some-id"
   invert={false}
   onClick={[Function]}
   onRemove={[Function]}
@@ -86,11 +88,11 @@ exports[`<Chip /> should render a without removable icon 1`] = `
       className="css-1al9zi1"
       disabled={false}
       onClick={[Function]}
-      testId="text"
+      testId="Button"
     >
       <button
         className="css-1al9zi1 css-1rn65c0"
-        data-test-id="text"
+        data-test-id="Button"
         disabled={false}
         onClick={[Function]}
       >
