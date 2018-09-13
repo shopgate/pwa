@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/pwa-ui-material';
 import Item from '../Item';
@@ -10,7 +10,7 @@ import * as styles from './style';
 /**
  * The selector component.
  */
-class Selector extends Component {
+class Selector extends PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,

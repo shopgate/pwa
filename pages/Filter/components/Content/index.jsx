@@ -1,11 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import conductor from '@virtuous/conductor';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/filter/constants/Portals';
+import {
+  FILTER_PRICE_RANGE,
+  FILTER_PRICE_RANGE_AFTER,
+  FILTER_PRICE_RANGE_BEFORE,
+} from '@shopgate/pwa-common-commerce/filter/constants/Portals';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
 import { PORTAL_NAVIGATOR_BUTTON } from 'Components/Navigator/constants';
 import PriceSlider from './components/PriceSlider';
@@ -18,9 +22,9 @@ import connect from './connector';
 /**
  * The FilterContent component.
  */
-class FilterContent extends Component {
+class FilterContent extends PureComponent {
   static propTypes = {
-    activeFilters: PropTypes.shape(), /* eslint-disable-line */
+    activeFilters: PropTypes.shape(),
     filters: PropTypes.arrayOf(PropTypes.shape()),
     parentId: PropTypes.string,
   }
@@ -182,8 +186,8 @@ class FilterContent extends Component {
           if (filter.type === FILTER_TYPE_RANGE) {
             return (
               <Fragment key={filter.id}>
-                <Portal name={portals.FILTER_PRICE_RANGE_BEFORE} props={portalProps} />
-                <Portal name={portals.FILTER_PRICE_RANGE} props={portalProps}>
+                <Portal name={FILTER_PRICE_RANGE_BEFORE} props={portalProps} />
+                <Portal name={FILTER_PRICE_RANGE} props={portalProps}>
                   <PriceSlider
                     id={filter.id}
                     key={filter.id}
@@ -193,7 +197,7 @@ class FilterContent extends Component {
                     value={value}
                   />
                 </Portal>
-                <Portal name={portals.FILTER_PRICE_RANGE_AFTER} props={portalProps} />
+                <Portal name={FILTER_PRICE_RANGE_AFTER} props={portalProps} />
               </Fragment>
             );
           }

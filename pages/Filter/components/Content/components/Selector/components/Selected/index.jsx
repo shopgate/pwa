@@ -1,43 +1,56 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import * as styles from './style';
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * The filter selected component.
  */
-const Selected = ({ selected, values }) => {
-  if (!selected || !selected.length) {
-    return null;
+class Selected extends PureComponent {
+  static propTypes = {
+    values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    selected: PropTypes.arrayOf(PropTypes.string),
+  };
+
+  static defaultProps = {
+    selected: null,
+  };
+
+  /**
+   * @returns {Array}
+   */
+  getItems() {
+    const { selected, values } = this.props;
+
+    return values.reduce((prevValues, value) => {
+      if (selected.includes(value.id)) {
+        prevValues.push(value.label);
+      }
+
+      return prevValues;
+    }, []);
   }
 
-  const items = values.reduce((prevValues, value) => {
-    if (selected.includes(value.id)) {
-      prevValues.push(value.label);
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    if (!this.props.selected || this.props.selected.length === 0) {
+      return null;
     }
 
-    return prevValues;
-  }, []);
+    const items = this.getItems();
 
-  return (
-    <div>
-      {items.map((item, index) => (
-        <Fragment key={item}>
-          <span className={styles.item}>{item}</span>
-          {(index < items.length - 1) ? ', ' : ''}
-        </Fragment>
-      ))}
-    </div>
-  );
-};
-
-Selected.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  selected: PropTypes.arrayOf(PropTypes.string),
-};
-
-Selected.defaultProps = {
-  selected: null,
-};
+    return (
+      <div>
+        {items.map((item, index) => (
+          <Fragment key={item}>
+            <span className={styles.item}>{item}</span>
+            {(index < items.length - 1) ? ', ' : ''}
+          </Fragment>
+        ))}
+      </div>
+    );
+  }
+}
 
 export default Selected;
