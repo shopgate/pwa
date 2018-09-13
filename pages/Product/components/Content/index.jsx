@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import { Conditioner } from '@shopgate/pwa-core';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import * as portals from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Reviews from 'Components/Reviews';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import ImageSlider from '../ImageSlider';
@@ -18,7 +15,7 @@ import { ProductContext } from '../../context';
 /**
  * The product content component.
  */
-class ProductContent extends Component {
+class ProductContent extends PureComponent {
   static propTypes = {
     baseProductId: PropTypes.string,
     isVariant: PropTypes.bool,
@@ -57,10 +54,8 @@ class ProductContent extends Component {
    */
   componentWillReceiveProps(nextProps) {
     let productId = (nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId);
-
     let { variantId } = nextProps;
-
-    const productIdChanged = this.props.productId !== nextProps.productId;
+    const productIdChanged = (this.props.productId !== nextProps.productId);
 
     if (productIdChanged && nextProps.isVariant) {
       if (this.props.baseProductId) {
@@ -76,19 +71,6 @@ class ProductContent extends Component {
       productId,
       variantId,
     });
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next state.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.productId !== nextState.productId ||
-      this.state.variantId !== nextState.variantId ||
-      !isEqual(this.state.options, nextState.options)
-    );
   }
 
   /**
@@ -109,12 +91,7 @@ class ProductContent extends Component {
    * @return {JSX}
    */
   render() {
-    if (!this.state.productId && !this.state.variantId) {
-      return null;
-    }
-
     const id = this.state.variantId || this.state.productId;
-
     const contextValue = {
       ...this.state,
       ...this.baseContextValue,
@@ -122,57 +99,17 @@ class ProductContent extends Component {
 
     return (
       <ProductContext.Provider value={contextValue}>
-        {/* IMAGE */}
-        <Portal name={portals.PRODUCT_IMAGE_BEFORE} />
-        <Portal name={portals.PRODUCT_IMAGE}>
-          <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
-        </Portal>
-        <Portal name={portals.PRODUCT_IMAGE_AFTER} />
-
-        {/* HEADER */}
-        <Portal name={portals.PRODUCT_HEADER_BEFORE} />
-        <Portal name={portals.PRODUCT_HEADER} >
-          <Header />
-        </Portal>
-        <Portal name={portals.PRODUCT_HEADER_AFTER} />
-
-        {/* CHARACTERISTICS */}
-        <Portal name={portals.PRODUCT_VARIANT_SELECT_BEFORE} />
-        <Portal name={portals.PRODUCT_VARIANT_SELECT}>
-          <Characteristics
-            productId={this.state.productId}
-            variantId={this.state.variantId}
-          />
-        </Portal>
-        <Portal name={portals.PRODUCT_VARIANT_SELECT_AFTER} />
-
-        {/* OPTIONS */}
-        <Portal name={portals.PRODUCT_OPTIONS_BEFORE} />
-        <Portal name={portals.PRODUCT_OPTIONS}>
-          <Options
-            productId={id}
-            storeSelection={this.storeOptionSelection}
-            currentOptions={this.state.options}
-          />
-        </Portal>
-        <Portal name={portals.PRODUCT_OPTIONS_AFTER} />
-
-        {/* DESCRIPTION */}
-        <Portal name={portals.PRODUCT_DESCRIPTION_BEFORE} />
-        <Portal name={portals.PRODUCT_DESCRIPTION}>
-          <Description productId={this.state.productId} variantId={this.state.variantId} />
-        </Portal>
-        <Portal name={portals.PRODUCT_DESCRIPTION_AFTER} />
-
-        {/* PROPERTIES */}
-        <Portal name={portals.PRODUCT_PROPERTIES_BEFORE} />
-        <Portal name={portals.PRODUCT_PROPERTIES}>
-          <Properties productId={this.state.productId} variantId={this.state.variantId} />
-        </Portal>
-        <Portal name={portals.PRODUCT_PROPERTIES_AFTER} />
-
+        <ImageSlider productId={this.state.productId} variantId={this.state.variantId} />
+        <Header />
+        <Characteristics productId={this.state.productId} variantId={this.state.variantId} />
+        <Options
+          productId={id}
+          storeSelection={this.storeOptionSelection}
+          currentOptions={this.state.options}
+        />
+        <Description productId={this.state.productId} variantId={this.state.variantId} />
+        <Properties productId={this.state.productId} variantId={this.state.variantId} />
         <Reviews productId={this.state.productId} />
-
         <TaxDisclaimer />
       </ProductContext.Provider>
     );

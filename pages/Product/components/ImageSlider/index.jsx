@@ -1,5 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_IMAGE,
+  PRODUCT_IMAGE_AFTER,
+  PRODUCT_IMAGE_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import Hammer from '@shopgate/react-hammerjs';
 import ProductImage from 'Components/ProductImage';
 import BaseImageSlider from '@shopgate/pwa-ui-shared/ImageSlider';
@@ -19,9 +25,6 @@ const resolutions = [
 /**
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.
- * @param {Object} props The component props.
- * @param {Object} props.product Basic product data from the product state.
- * @param {Array} props.images Array of image urls.
  */
 class ImageSlider extends PureComponent {
   static propTypes = {
@@ -80,19 +83,25 @@ class ImageSlider extends PureComponent {
     }
 
     return (
-      <Hammer
-        onPinchStart={this.handleOpenGallery}
-        onTap={this.handleOpenGallery}
-        direction="DIRECTION_ALL"
-        options={{
-          touchAction: 'pan-x pan-y',
-          recognizers: {
-            pinch: { enable: true },
-          },
-        }}
-      >
-        <div>{content}</div>
-      </Hammer>
+      <Fragment>
+        <Portal name={PRODUCT_IMAGE_BEFORE} />
+        <Portal name={PRODUCT_IMAGE}>
+          <Hammer
+            onPinchStart={this.handleOpenGallery}
+            onTap={this.handleOpenGallery}
+            direction="DIRECTION_ALL"
+            options={{
+              touchAction: 'pan-x pan-y',
+              recognizers: {
+                pinch: { enable: true },
+              },
+            }}
+          >
+            <div>{content}</div>
+          </Hammer>
+        </Portal>
+        <Portal name={PRODUCT_IMAGE_AFTER} />
+      </Fragment>
     );
   }
 }
