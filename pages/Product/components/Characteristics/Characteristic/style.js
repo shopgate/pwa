@@ -9,10 +9,8 @@ const button = css({
   minHeight: 56,
   outline: 0,
   padding: '12px 16px',
+  marginBottom: 8,
   transition: 'background 250ms ease-in, color 250ms ease-in',
-  '& ~ &': {
-    marginTop: 8,
-  },
 }).toString();
 
 const buttonDisabled = css({

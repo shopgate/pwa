@@ -101,51 +101,35 @@ exports[`<ProductImageSlider /> should render featured image if only product dat
       }
     }
   >
-    <Component
-      direction="DIRECTION_ALL"
-      onPinchStart={[Function]}
-      onTap={[Function]}
-      options={
-        Object {
-          "recognizers": Object {
-            "pinch": Object {
-              "enable": true,
-            },
-          },
-          "touchAction": "pan-x pan-y",
-        }
-      }
+    <Portal
+      name="product.image.before"
+      props={null}
+    />
+    <Portal
+      name="product.image"
+      props={null}
     >
-      <div>
-        <ProductImage
-          alt={null}
-          animating={true}
-          forcePlaceholder={false}
-          highestResolutionLoaded={[Function]}
-          ratio={null}
-          resolutions={
-            Array [
-              Object {
-                "height": 440,
-                "width": 440,
+      <Component
+        direction="DIRECTION_ALL"
+        onPinchStart={[Function]}
+        onTap={[Function]}
+        options={
+          Object {
+            "recognizers": Object {
+              "pinch": Object {
+                "enable": true,
               },
-              Object {
-                "height": 1024,
-                "width": 1024,
-              },
-            ]
+            },
+            "touchAction": "pan-x pan-y",
           }
-          src="featured.png"
-        >
-          <Image
+        }
+      >
+        <div>
+          <ProductImage
             alt={null}
             animating={true}
-            backgroundColor="#fff"
-            className=""
             forcePlaceholder={false}
             highestResolutionLoaded={[Function]}
-            onError={[Function]}
-            onLoad={null}
             ratio={null}
             resolutions={
               Array [
@@ -160,15 +144,44 @@ exports[`<ProductImageSlider /> should render featured image if only product dat
               ]
             }
             src="featured.png"
-            transition={null}
           >
-            <div
-              className="css-1d0r90g "
-            />
-          </Image>
-        </ProductImage>
-      </div>
-    </Component>
+            <Image
+              alt={null}
+              animating={true}
+              backgroundColor="#fff"
+              className=""
+              forcePlaceholder={false}
+              highestResolutionLoaded={[Function]}
+              onError={[Function]}
+              onLoad={null}
+              ratio={null}
+              resolutions={
+                Array [
+                  Object {
+                    "height": 440,
+                    "width": 440,
+                  },
+                  Object {
+                    "height": 1024,
+                    "width": 1024,
+                  },
+                ]
+              }
+              src="featured.png"
+              transition={null}
+            >
+              <div
+                className="css-1d0r90g "
+              />
+            </Image>
+          </ProductImage>
+        </div>
+      </Component>
+    </Portal>
+    <Portal
+      name="product.image.after"
+      props={null}
+    />
   </ImageSlider>
 </Connect(ImageSlider)>
 `;
@@ -222,82 +235,95 @@ exports[`<ProductImageSlider /> should render image placeholder if no data is av
       }
     }
   >
-    <Component
-      direction="DIRECTION_ALL"
-      onPinchStart={[Function]}
-      onTap={[Function]}
-      options={
-        Object {
-          "recognizers": Object {
-            "pinch": Object {
-              "enable": true,
-            },
-          },
-          "touchAction": "pan-x pan-y",
-        }
-      }
+    <Portal
+      name="product.image.before"
+      props={null}
+    />
+    <Portal
+      name="product.image"
+      props={null}
     >
-      <div>
-        <ProductImage
-          alt={null}
-          animating={true}
-          forcePlaceholder={true}
-          highestResolutionLoaded={[Function]}
-          ratio={null}
-          resolutions={
-            Array [
-              Object {
-                "height": 440,
-                "width": 440,
+      <Component
+        direction="DIRECTION_ALL"
+        onPinchStart={[Function]}
+        onTap={[Function]}
+        options={
+          Object {
+            "recognizers": Object {
+              "pinch": Object {
+                "enable": true,
               },
-              Object {
-                "height": 1024,
-                "width": 1024,
-              },
-            ]
+            },
+            "touchAction": "pan-x pan-y",
           }
-          src={null}
-        >
-          <div
-            className="css-y5kkpq"
+        }
+      >
+        <div>
+          <ProductImage
+            alt={null}
+            animating={true}
+            forcePlaceholder={true}
+            highestResolutionLoaded={[Function]}
+            ratio={null}
+            resolutions={
+              Array [
+                Object {
+                  "height": 440,
+                  "width": 440,
+                },
+                Object {
+                  "height": 1024,
+                  "width": 1024,
+                },
+              ]
+            }
+            src={null}
           >
             <div
-              className="css-15j45j0"
-              data-test-id="placeHolder"
+              className="css-y5kkpq"
             >
-              <Placeholder
-                className="css-19rc2oq"
+              <div
+                className="css-15j45j0"
+                data-test-id="placeHolder"
               >
-                <Icon
+                <Placeholder
                   className="css-19rc2oq"
-                  color={null}
-                  content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
-                  size="inherit"
-                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="css-yys9hb css-19rc2oq"
-                    dangerouslySetInnerHTML={
-                      Object {
-                        "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
-                      }
-                    }
-                    style={
-                      Object {
-                        "fill": null,
-                        "fontSize": "inherit",
-                      }
-                    }
+                  <Icon
+                    className="css-19rc2oq"
+                    color={null}
+                    content="<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>"
+                    size="inherit"
                     viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  />
-                </Icon>
-              </Placeholder>
+                  >
+                    <svg
+                      className="css-yys9hb css-19rc2oq"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<circle cx=\\"12\\" cy=\\"12\\" r=\\"3.2\\"/><path d=\\"M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\"/>",
+                        }
+                      }
+                      style={
+                        Object {
+                          "fill": null,
+                          "fontSize": "inherit",
+                        }
+                      }
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    />
+                  </Icon>
+                </Placeholder>
+              </div>
             </div>
-          </div>
-        </ProductImage>
-      </div>
-    </Component>
+          </ProductImage>
+        </div>
+      </Component>
+    </Portal>
+    <Portal
+      name="product.image.after"
+      props={null}
+    />
   </ImageSlider>
 </Connect(ImageSlider)>
 `;
@@ -407,67 +433,52 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
       }
     }
   >
-    <Component
-      direction="DIRECTION_ALL"
-      onPinchStart={[Function]}
-      onTap={[Function]}
-      options={
-        Object {
-          "recognizers": Object {
-            "pinch": Object {
-              "enable": true,
-            },
-          },
-          "touchAction": "pan-x pan-y",
-        }
-      }
+    <Portal
+      name="product.image.before"
+      props={null}
+    />
+    <Portal
+      name="product.image"
+      props={null}
     >
-      <div>
-        <ImageSlider
-          autoPlay={false}
-          className=""
-          classNames={Object {}}
-          controls={false}
-          disabled={false}
-          indicators={true}
-          initialSlide={0}
-          interval={3000}
-          loop={true}
-          maxIndicators={null}
-          onSlideChange={[Function]}
-          slidesPerView={1}
-          snapItems={true}
-        >
-          <ProductImage
-            alt={null}
-            animating={false}
-            forcePlaceholder={false}
-            highestResolutionLoaded={[Function]}
-            key=".$https=2//img-cdn.shopgate.com/image.jpg"
-            ratio={null}
-            resolutions={
-              Array [
-                Object {
-                  "height": 440,
-                  "width": 440,
-                },
-                Object {
-                  "height": 1024,
-                  "width": 1024,
-                },
-              ]
-            }
-            src="https://img-cdn.shopgate.com/image.jpg"
+      <Component
+        direction="DIRECTION_ALL"
+        onPinchStart={[Function]}
+        onTap={[Function]}
+        options={
+          Object {
+            "recognizers": Object {
+              "pinch": Object {
+                "enable": true,
+              },
+            },
+            "touchAction": "pan-x pan-y",
+          }
+        }
+      >
+        <div>
+          <ImageSlider
+            autoPlay={false}
+            className=""
+            classNames={Object {}}
+            controls={false}
+            disabled={false}
+            historyPath=""
+            indicators={true}
+            initialSlide={0}
+            interval={3000}
+            loop={true}
+            maxIndicators={null}
+            onSlideChange={[Function]}
+            slidesPerView={1}
+            snapItems={true}
           >
-            <Image
+            <ProductImage
               alt={null}
               animating={false}
-              backgroundColor="#fff"
-              className=""
               forcePlaceholder={false}
               highestResolutionLoaded={[Function]}
-              onError={[Function]}
-              onLoad={null}
+              key=".$https=2//img-cdn.shopgate.com/image.jpg"
               ratio={null}
               resolutions={
                 Array [
@@ -482,16 +493,45 @@ exports[`<ProductImageSlider /> should render image slider if all data is availa
                 ]
               }
               src="https://img-cdn.shopgate.com/image.jpg"
-              transition={null}
             >
-              <div
-                className="css-1d0r90g "
-              />
-            </Image>
-          </ProductImage>
-        </ImageSlider>
-      </div>
-    </Component>
+              <Image
+                alt={null}
+                animating={false}
+                backgroundColor="#fff"
+                className=""
+                forcePlaceholder={false}
+                highestResolutionLoaded={[Function]}
+                onError={[Function]}
+                onLoad={null}
+                ratio={null}
+                resolutions={
+                  Array [
+                    Object {
+                      "height": 440,
+                      "width": 440,
+                    },
+                    Object {
+                      "height": 1024,
+                      "width": 1024,
+                    },
+                  ]
+                }
+                src="https://img-cdn.shopgate.com/image.jpg"
+                transition={null}
+              >
+                <div
+                  className="css-1d0r90g "
+                />
+              </Image>
+            </ProductImage>
+          </ImageSlider>
+        </div>
+      </Component>
+    </Portal>
+    <Portal
+      name="product.image.after"
+      props={null}
+    />
   </ImageSlider>
 </Connect(ImageSlider)>
 `;

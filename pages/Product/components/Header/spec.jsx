@@ -6,25 +6,34 @@ import { Provider } from 'react-redux';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { defaultContext } from './../../__mocks__/context';
 import { basicProductState } from './../mock';
+import ProductHeader from './index';
 
 const mockedStore = configureStore([thunk]);
 
 jest.mock('Components/Reviews/components/Header', () => () => <div />);
 
-jest.mock('./../../context');
+const mockedContext = {
+  ...defaultContext,
+  productId: basicProductState.product.currentProduct.productId,
+};
 
-describe.skip('<ProductHeader>', () => {
+jest.mock('./../../context', () => ({
+  ProductContext: {
+    Consumer: props => props.children(mockedContext),
+  },
+}));
+
+describe('<ProductHeader>', () => {
   /**
    * @param {Object} state A redux store.
+   * @param {string} productId A productId.
    * @returns {JSX}
    */
-  const createComponent = (state) => {
-    // eslint-disable-next-line global-require
-    const ProductHeader = require('./index').default;
+  const createComponent = (state, productId) => {
     const store = mockedStore(state);
     return mount(
       <Provider store={store}>
-        <ProductHeader productId={defaultContext.productId} />
+        <ProductHeader productId={productId} />
       </Provider>,
       mockRenderOptions
     );
@@ -47,8 +56,6 @@ describe.skip('<ProductHeader>', () => {
   });
 
   it('should render', () => {
-    const { productId } = basicProductState.product.currentProduct;
-    defaultContext.productId = productId;
     const cmp = createComponent(basicProductState);
     expect(cmp).toMatchSnapshot();
     components.forEach((c) => {

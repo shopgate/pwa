@@ -10,4 +10,17 @@ const mapStateToProps = (state, props) => ({
   isFavorite: isCurrentProductOnFavoriteList(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.isFavorite !== next.isFavorite) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

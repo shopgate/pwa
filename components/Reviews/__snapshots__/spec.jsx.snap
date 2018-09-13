@@ -19,78 +19,6 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
     <Reviews
       dispatch={[Function]}
       productId="foo"
-      rating={
-        Object {
-          "average": 50,
-          "count": 4,
-        }
-      }
-      reviews={
-        Array [
-          Object {
-            "author": "",
-            "date": "2017-09-06T12:38:51.000Z",
-            "id": 1,
-            "rate": 100,
-            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-            "title": "",
-          },
-          Object {
-            "author": "",
-            "date": "2017-09-06T12:38:51.000Z",
-            "id": 2,
-            "rate": 100,
-            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-            "title": "",
-          },
-          Object {
-            "author": "",
-            "date": "2017-09-06T12:38:51.000Z",
-            "id": 3,
-            "rate": 100,
-            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-            "title": "",
-          },
-          Object {
-            "author": "",
-            "date": "2017-09-06T12:38:51.000Z",
-            "id": 4,
-            "rate": 100,
-            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-            "title": "",
-          },
-        ]
-      }
-    />
-  </Connect(Reviews)>
-</Provider>
-`;
-
-exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
-<Provider
-  store={
-    Object {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(Reviews)
-    productId="foo"
-  >
-    <Reviews
-      dispatch={[Function]}
-      productId="foo"
-      rating={
-        Object {
-          "average": 50,
-          "count": 4,
-        }
-      }
       reviews={
         Array [
           Object {
@@ -128,75 +56,139 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
         ]
       }
     >
-      <div
-        className="css-154rzf7"
-        data-test-id="reviewSection"
+      <Portal
+        name="product.reviews.before"
+        props={null}
+      />
+      <Portal
+        name="product.reviews"
+        props={null}
+      />
+      <Portal
+        name="product.reviews.after"
+        props={null}
+      />
+    </Reviews>
+  </Connect(Reviews)>
+</Provider>
+`;
+
+exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(Reviews)
+    productId="foo"
+  >
+    <Reviews
+      dispatch={[Function]}
+      productId="foo"
+      reviews={
+        Array [
+          Object {
+            "author": "",
+            "date": "2017-09-06T12:38:51.000Z",
+            "id": 1,
+            "rate": 100,
+            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+            "title": "",
+          },
+          Object {
+            "author": "",
+            "date": "2017-09-06T12:38:51.000Z",
+            "id": 2,
+            "rate": 100,
+            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+            "title": "",
+          },
+          Object {
+            "author": "",
+            "date": "2017-09-06T12:38:51.000Z",
+            "id": 3,
+            "rate": 100,
+            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+            "title": "",
+          },
+          Object {
+            "author": "",
+            "date": "2017-09-06T12:38:51.000Z",
+            "id": 4,
+            "rate": 100,
+            "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+            "title": "",
+          },
+        ]
+      }
+    >
+      <Portal
+        name="product.reviews.before"
+        props={null}
+      />
+      <Portal
+        name="product.reviews"
+        props={null}
       >
-        <Header
-          productId="foo"
-          rating={
-            Object {
-              "average": 50,
-              "count": 4,
-            }
-          }
+        <div
+          className="css-1ej66kr"
+          data-test-id="reviewSection"
         >
-          <div />
-        </Header>
-        <List
-          reviews={
-            Array [
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 1,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              },
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 2,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              },
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 3,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              },
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 4,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              },
-            ]
-          }
-        >
-          <Review
-            key="1"
-            review={
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 1,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              }
+          <Header
+            productId="foo"
+          >
+            <div />
+          </Header>
+          <List
+            productId="foo"
+            reviews={
+              Array [
+                Object {
+                  "author": "",
+                  "date": "2017-09-06T12:38:51.000Z",
+                  "id": 1,
+                  "rate": 100,
+                  "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                  "title": "",
+                },
+                Object {
+                  "author": "",
+                  "date": "2017-09-06T12:38:51.000Z",
+                  "id": 2,
+                  "rate": 100,
+                  "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                  "title": "",
+                },
+                Object {
+                  "author": "",
+                  "date": "2017-09-06T12:38:51.000Z",
+                  "id": 3,
+                  "rate": 100,
+                  "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                  "title": "",
+                },
+                Object {
+                  "author": "",
+                  "date": "2017-09-06T12:38:51.000Z",
+                  "id": 4,
+                  "rate": 100,
+                  "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                  "title": "",
+                },
+              ]
             }
           >
             <div
               className="css-1yhq1gr"
               data-test-id="reviewTitle: "
+              key="1"
             >
               <Title
                 title=""
@@ -638,23 +630,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </div>
               </Info>
             </div>
-          </Review>
-          <Review
-            key="2"
-            review={
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 2,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              }
-            }
-          >
             <div
               className="css-1yhq1gr"
               data-test-id="reviewTitle: "
+              key="2"
             >
               <Title
                 title=""
@@ -1096,23 +1075,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </div>
               </Info>
             </div>
-          </Review>
-          <Review
-            key="3"
-            review={
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 3,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              }
-            }
-          >
             <div
               className="css-1yhq1gr"
               data-test-id="reviewTitle: "
+              key="3"
             >
               <Title
                 title=""
@@ -1554,23 +1520,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </div>
               </Info>
             </div>
-          </Review>
-          <Review
-            key="4"
-            review={
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 4,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              }
-            }
-          >
             <div
               className="css-1yhq1gr"
               data-test-id="reviewTitle: "
+              key="4"
             >
               <Title
                 title=""
@@ -2012,127 +1965,133 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </div>
               </Info>
             </div>
-          </Review>
-        </List>
-        <Connect(AllReviewsLink)
-          productId="foo"
-        >
-          <AllReviewsLink
-            dispatch={[Function]}
+          </List>
+          <Connect(AllReviewsLink)
             productId="foo"
-            totalReviewCount={4}
           >
-            <div
-              className={
-                Object {
-                  "data-css-1pitgg2": "",
-                }
-              }
-              data-test-id="showAllReviewsButton"
+            <AllReviewsLink
+              count={4}
+              dispatch={[Function]}
+              productId="foo"
             >
-              <Connect(ButtonLink)
-                href="/item/666f6f/reviews"
+              <div
+                className={
+                  Object {
+                    "data-css-1pitgg2": "",
+                  }
+                }
+                data-test-id="showAllReviewsButton"
               >
-                <ButtonLink
+                <Connect(ButtonLink)
                   href="/item/666f6f/reviews"
-                  navigate={[Function]}
-                  noGap={false}
                 >
-                  <ActionButton
-                    className=""
-                    disabled={false}
-                    flat={true}
-                    loading={false}
+                  <ButtonLink
+                    href="/item/666f6f/reviews"
+                    navigate={[Function]}
                     noGap={false}
-                    onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
-                    testId={null}
-                    type="secondary"
-                    wrapContent={true}
                   >
-                    <div
-                      className="css-omcrdt"
-                      data-test-id={null}
+                    <ActionButton
+                      className=""
+                      disabled={false}
+                      flat={true}
+                      loading={false}
+                      noGap={false}
+                      onClick={[Function]}
+                      rippleClassName=""
+                      rippleSize={null}
+                      testId={null}
+                      type="secondary"
+                      wrapContent={true}
                     >
-                      <RippleButton
-                        className=""
-                        disabled={false}
-                        flat={true}
-                        onClick={[Function]}
-                        rippleClassName=""
-                        rippleSize={null}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={true}
+                      <div
+                        className="css-omcrdt"
+                        data-test-id={null}
                       >
-                        <Button
+                        <RippleButton
                           className=""
                           disabled={false}
                           flat={true}
                           onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
                           testId="Button"
                           type="secondary"
-                          wrapContent={false}
+                          wrapContent={true}
                         >
                           <Button
-                            className="css-dh0pju "
+                            className=""
                             disabled={false}
+                            flat={true}
                             onClick={[Function]}
                             testId="Button"
+                            type="secondary"
+                            wrapContent={false}
                           >
-                            <button
-                              className="css-dh0pju  css-1rn65c0"
-                              data-test-id="Button"
+                            <Button
+                              className="css-dh0pju "
                               disabled={false}
                               onClick={[Function]}
+                              testId="Button"
                             >
-                              <Ripple
-                                className="css-8s1fw2 "
-                                color="#000"
+                              <button
+                                className="css-dh0pju  css-1rn65c0"
+                                data-test-id="Button"
                                 disabled={false}
-                                fill={true}
                                 onClick={[Function]}
-                                onComplete={[Function]}
-                                overflow={false}
-                                size={null}
                               >
-                                <div
-                                  aria-hidden={true}
+                                <Ripple
                                   className="css-8s1fw2 "
-                                  data-test-id="Ripple"
+                                  color="#000"
+                                  disabled={false}
+                                  fill={true}
                                   onClick={[Function]}
-                                  style={null}
+                                  onComplete={[Function]}
+                                  overflow={false}
+                                  size={null}
                                 >
-                                  <Translate
-                                    className=""
-                                    params={
-                                      Object {
-                                        "count": 4,
-                                      }
-                                    }
-                                    string="reviews.button_all"
+                                  <div
+                                    aria-hidden={true}
+                                    className="css-8s1fw2 "
+                                    data-test-id="Ripple"
+                                    onClick={[Function]}
+                                    style={null}
                                   >
-                                    <span
+                                    <Translate
                                       className=""
+                                      params={
+                                        Object {
+                                          "count": 4,
+                                          "dispatch": [Function],
+                                          "productId": "foo",
+                                        }
+                                      }
+                                      string="reviews.button_all"
                                     >
-                                      reviews.button_all
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </Ripple>
-                            </button>
+                                      <span
+                                        className=""
+                                      >
+                                        reviews.button_all
+                                      </span>
+                                    </Translate>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
                           </Button>
-                        </Button>
-                      </RippleButton>
-                    </div>
-                  </ActionButton>
-                </ButtonLink>
-              </Connect(ButtonLink)>
-            </div>
-          </AllReviewsLink>
-        </Connect(AllReviewsLink)>
-      </div>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
+                  </ButtonLink>
+                </Connect(ButtonLink)>
+              </div>
+            </AllReviewsLink>
+          </Connect(AllReviewsLink)>
+        </div>
+      </Portal>
+      <Portal
+        name="product.reviews.after"
+        props={null}
+      />
     </Reviews>
   </Connect(Reviews)>
 </Provider>
@@ -2157,12 +2116,6 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
     <Reviews
       dispatch={[Function]}
       productId="foo"
-      rating={
-        Object {
-          "average": 50,
-          "count": 4,
-        }
-      }
       reviews={
         Array [
           Object {
@@ -2184,59 +2137,50 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
         ]
       }
     >
-      <div
-        className="css-154rzf7"
-        data-test-id="reviewSection"
+      <Portal
+        name="product.reviews.before"
+        props={null}
+      />
+      <Portal
+        name="product.reviews"
+        props={null}
       >
-        <Header
-          productId="foo"
-          rating={
-            Object {
-              "average": 50,
-              "count": 4,
-            }
-          }
+        <div
+          className="css-1ej66kr"
+          data-test-id="reviewSection"
         >
-          <div />
-        </Header>
-        <List
-          reviews={
-            Array [
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 1,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              },
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 2,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              },
-            ]
-          }
-        >
-          <Review
-            key="1"
-            review={
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 1,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              }
+          <Header
+            productId="foo"
+          >
+            <div />
+          </Header>
+          <List
+            productId="foo"
+            reviews={
+              Array [
+                Object {
+                  "author": "",
+                  "date": "2017-09-06T12:38:51.000Z",
+                  "id": 1,
+                  "rate": 100,
+                  "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                  "title": "",
+                },
+                Object {
+                  "author": "",
+                  "date": "2017-09-06T12:38:51.000Z",
+                  "id": 2,
+                  "rate": 100,
+                  "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
+                  "title": "",
+                },
+              ]
             }
           >
             <div
               className="css-1yhq1gr"
               data-test-id="reviewTitle: "
+              key="1"
             >
               <Title
                 title=""
@@ -2678,23 +2622,10 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 </div>
               </Info>
             </div>
-          </Review>
-          <Review
-            key="2"
-            review={
-              Object {
-                "author": "",
-                "date": "2017-09-06T12:38:51.000Z",
-                "id": 2,
-                "rate": 100,
-                "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
-                "title": "",
-              }
-            }
-          >
             <div
               className="css-1yhq1gr"
               data-test-id="reviewTitle: "
+              key="2"
             >
               <Title
                 title=""
@@ -3136,18 +3067,22 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 </div>
               </Info>
             </div>
-          </Review>
-        </List>
-        <Connect(AllReviewsLink)
-          productId="foo"
-        >
-          <AllReviewsLink
-            dispatch={[Function]}
+          </List>
+          <Connect(AllReviewsLink)
             productId="foo"
-            totalReviewCount={2}
-          />
-        </Connect(AllReviewsLink)>
-      </div>
+          >
+            <AllReviewsLink
+              count={2}
+              dispatch={[Function]}
+              productId="foo"
+            />
+          </Connect(AllReviewsLink)>
+        </div>
+      </Portal>
+      <Portal
+        name="product.reviews.after"
+        props={null}
+      />
     </Reviews>
   </Connect(Reviews)>
 </Provider>
@@ -3172,42 +3107,44 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
     <Reviews
       dispatch={[Function]}
       productId="foo"
-      rating={
-        Object {
-          "average": 0,
-          "count": 0,
-        }
-      }
       reviews={null}
     >
-      <div
-        className="css-154rzf7"
-        data-test-id="reviewSection"
+      <Portal
+        name="product.reviews.before"
+        props={null}
+      />
+      <Portal
+        name="product.reviews"
+        props={null}
       >
-        <Header
-          productId="foo"
-          rating={
-            Object {
-              "average": 0,
-              "count": 0,
-            }
-          }
+        <div
+          className="css-1ej66kr"
+          data-test-id="reviewSection"
         >
-          <div />
-        </Header>
-        <List
-          reviews={null}
-        />
-        <Connect(AllReviewsLink)
-          productId="foo"
-        >
-          <AllReviewsLink
-            dispatch={[Function]}
+          <Header
             productId="foo"
-            totalReviewCount={null}
+          >
+            <div />
+          </Header>
+          <List
+            productId="foo"
+            reviews={null}
           />
-        </Connect(AllReviewsLink)>
-      </div>
+          <Connect(AllReviewsLink)
+            productId="foo"
+          >
+            <AllReviewsLink
+              count={null}
+              dispatch={[Function]}
+              productId="foo"
+            />
+          </Connect(AllReviewsLink)>
+        </div>
+      </Portal>
+      <Portal
+        name="product.reviews.after"
+        props={null}
+      />
     </Reviews>
   </Connect(Reviews)>
 </Provider>

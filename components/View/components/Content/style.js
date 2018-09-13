@@ -1,5 +1,4 @@
 import { css } from 'glamor';
-import colors from 'Styles/colors';
 import variables from 'Styles/variables';
 
 /**
@@ -19,7 +18,6 @@ const content = (
   const navAndStatusBarHeight = `calc(${navHeight}px + var(--safe-area-inset-top))`;
 
   return css({
-    background: colors.light,
     overflow: 'auto',
     overflowScrolling: 'touch',
     WebkitOverflowScrolling: 'touch',

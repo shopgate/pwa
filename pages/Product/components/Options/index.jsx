@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Picker from 'Components/Picker';
-import PriceDifference from './components/PriceDifference';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_OPTIONS,
+  PRODUCT_OPTIONS_AFTER,
+  PRODUCT_OPTIONS_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import Option from './components/Option';
 import connect from './connector';
-import styles from './style';
 
 /**
  * The Product Options component.
  */
-class Options extends Component {
+class Options extends PureComponent {
   static propTypes = {
     storeSelection: PropTypes.func.isRequired,
     currentOptions: PropTypes.shape(),
@@ -29,7 +32,25 @@ class Options extends Component {
       return;
     }
 
-    this.props.options.forEach((option) => {
+    this.handleStoreSelection(this.props);
+  }
+
+  /**
+   * When the component receives the product options
+   * it will set the first value of each option as active
+   * @param {Object} nextProps The incoming props.
+   */
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.options && nextProps.options) {
+      this.handleStoreSelection(nextProps);
+    }
+  }
+
+  /**
+   * @param {Object} props The component props.
+   */
+  handleStoreSelection = (props) => {
+    props.options.forEach((option) => {
       // Only options of type 'select' have a default value. Type 'text' has no default.
       if (option.type !== 'select') {
         return;
@@ -40,80 +61,39 @@ class Options extends Component {
   }
 
   /**
-   * When the component receives the product options
-   * it will set the first value of each option as active
-   * @param {Object} nextProps The incoming props.
-   */
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.options && nextProps.options) {
-      nextProps.options.forEach((option) => {
-        // Only options of type 'select' have a default value. Type 'text' has no default.
-        if (option.type !== 'select') {
-          return;
-        }
-
-        this.props.storeSelection(option.id, option.items[0].value);
-      });
-    }
-  }
-
-  /**
-   * Only update when options change.
-   * @param {Object} nextProps The incoming props.
-   * @param {Object} nextState The new state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.options !== nextProps.options ||
-      this.props.currentOptions !== nextProps.currentOptions;
-  }
-
-  /**
    * Renders the component
    * @returns {JSX}
    */
   render() {
-    const { options, currentOptions } = this.props;
-
-    if (options === null) {
-      return null;
-    }
+    const { options, currentOptions, storeSelection } = this.props;
 
     return (
-      <div data-test-id="optionsPicker">
-        {options.map((option) => {
-          if (option.type !== 'select') {
-            return null;
-          }
-
-          const params = [
-            option.label,
-          ];
-
-          return (
-            <div key={option.id} data-test-id={option.label}>
-              <Picker
-                label={option.label}
-                items={option.items.map(item => ({
-                  ...item,
-                  rightComponent: (
-                    <PriceDifference
-                      className={styles.price}
-                      currency={item.currency}
-                      difference={item.price}
-                    />
-                  ),
-                }))}
-                placeholder={
-                  <I18n.Text string="product.pick_an_attribute" params={params} />
+      <Fragment>
+        <Portal name={PRODUCT_OPTIONS_BEFORE} />
+        <Portal name={PRODUCT_OPTIONS}>
+          {(options !== null) && (
+            <div data-test-id="optionsPicker">
+              {options.map((option) => {
+                if (option.type !== 'select') {
+                  return null;
                 }
-                value={currentOptions[option.id]}
-                onChange={value => this.props.storeSelection(option.id, value)}
-              />
+
+                return (
+                  <Option
+                    key={option.id}
+                    label={option.label}
+                    id={option.id}
+                    items={option.items}
+                    value={currentOptions[option.id]}
+                    onChange={storeSelection}
+                  />
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+          )}
+        </Portal>
+        <Portal name={PRODUCT_OPTIONS_AFTER} />
+      </Fragment>
     );
   }
 }

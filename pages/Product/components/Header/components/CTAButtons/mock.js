@@ -13,6 +13,9 @@ export const mockedState = {
             hasVariants: true,
             hasOptions: false,
           },
+          stock: {
+            orderable: true,
+          },
         },
       },
       product_2: {

@@ -6,6 +6,28 @@ import { clearProductFromCart } from '../../helper/cart';
 // TODO: refactor when cart / add to Cart bug is resolved
 
 describe('functional test product page', () => {
+  it('should check for correct error message if no variant are selected', () => {
+    cy.visit('');
+
+    cy.get(els.productVariantsCategory)
+      .scrollIntoView()
+      .should('be.visible')
+      .click();
+    cy.get(els.productsWith2VariantsCategory)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.productWithChild1MotherNameProductGrid)
+      .should('be.visible')
+      .last()
+      .click();
+    cy.get(els.addToCartButton)
+      .should('be.visible')
+      .click()
+      .wait(1000);
+    cy.get(els.cartButton)
+      .should('not.be.visible');
+  });
   it('should check for variant  select', () => {
     cy.visit('');
 
@@ -44,9 +66,14 @@ describe('functional test product page', () => {
     cy.wait(1000);
     cy.get(els.addToCartButton)
       .should('be.visible')
-      .click();
+      .click()
+      .wait(1000);
     cy.get(els.cartButton += ' div')
+      .should('be.visible')
       .contains('1');
+  });
+
+  it('should clear cart', () => {
     clearProductFromCart();
   });
 
@@ -84,7 +111,10 @@ describe('functional test product page', () => {
       .should('be.visible')
       .click();
     cy.get(els.cartButton += ' div')
-      .contains('1');
+      .contains('1')
+  });
+
+  it('should clear cart', () => {
     clearProductFromCart();
   });
 });

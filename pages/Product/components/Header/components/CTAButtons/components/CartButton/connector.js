@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { hasProductData, isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isProductOrderable } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
 /**
@@ -9,7 +10,7 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
  */
 const mapStateToProps = (state, props) => ({
   disabled: !isProductOrderable(state, props),
-  loading: !hasProductData(state, props),
+  loading: isProductPageLoading(state, props),
 });
 
 /**
@@ -21,4 +22,21 @@ const mapDispatchToProps = dispatch => ({
   addToCart: products => dispatch(addProductsToCart(products)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @return {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.disabled !== next.disabled) {
+    return false;
+  }
+
+  if (prev.loading !== next.loading) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { areStatePropsEqual });

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import isEqual from 'lodash/isEqual';
 import { getProductReviewsExcerpt } from '@shopgate/pwa-common-commerce/reviews/selectors';
 
 /**
@@ -10,7 +10,23 @@ import { getProductReviewsExcerpt } from '@shopgate/pwa-common-commerce/reviews/
  */
 const mapStateToProps = (state, props) => ({
   reviews: getProductReviewsExcerpt(state, props),
-  rating: getProductRating(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (!prev.reviews && next.reviews) {
+    return false;
+  }
+
+  if (!isEqual(prev.reviews, next.reviews)) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

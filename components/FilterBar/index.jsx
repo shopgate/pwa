@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import clamp from 'lodash/clamp';
+import Transition from 'react-transition-group/Transition';
+import classNames from 'classnames';
+import { UIEvents } from '@shopgate/pwa-core';
 import colors from 'Styles/colors';
-import variables from 'Styles/variables';
-import styles from './style';
 import Content from './components/Content';
-import connect from './connector';
+import styles from './style';
+import transition from './transition';
+import { FILTERBAR_UPDATE } from './constants';
 
 /**
- * The Filter bar component.
+ * The FilterBar component.
  */
 class FilterBar extends Component {
   static propTypes = {
-    isActive: PropTypes.bool,
+    setTop: PropTypes.func.isRequired,
+    filters: PropTypes.shape(),
     viewRef: PropTypes.shape(),
   };
 
   static defaultProps = {
-    isActive: false,
+    filters: null,
     viewRef: null,
   };
 
@@ -28,245 +31,167 @@ class FilterBar extends Component {
   constructor(props) {
     super(props);
 
-    this.element = null;
-    this.scrollElement = null;
-    this.animationFrameRequestId = 0;
-    this.prevScrollTop = 0;
-    this.isVisible = true;
-    this.origin = 0;
-
+    this.node = React.createRef();
     this.state = {
-      offset: 0,
-      hasShadow: false,
-      spacerHeight: variables.filterbar.height,
+      active: props.filters !== null,
+      shadow: false,
+      visible: true,
     };
+
+    UIEvents.addListener(FILTERBAR_UPDATE, this.updateView);
   }
 
   /**
-   * Called after mount. Sets up the scroll DOM elements.
+   * Sets up the scroll DOM elements.
    */
   componentDidMount() {
-    this.setupScrollElement();
-    this.setSpacerHeight();
+    this.updateView();
+    this.setScrollListener();
   }
 
   /**
-   * Called before the component receives new properties. Sets up the scroll DOM elements.
+   * Check for a new viewRef and update the scroll element.
    * @param {Object} nextProps The next component props.
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.viewRef !== nextProps.viewRef) {
-      this.setupScrollElement(nextProps.viewRef);
+    // Check if a new viewRef came in.
+    const hasNewRef = (!this.props.viewRef && nextProps.viewRef);
+
+    // Chcek if newly set filters came in.
+    const hasFilters = nextProps.filters !== null && Object.keys(nextProps.filters).length > 0;
+
+    if (hasNewRef) {
+      this.updateView();
+      this.setScrollListener(nextProps.viewRef);
+    }
+
+    if (hasFilters !== this.state.active) {
+      this.setState({ active: hasFilters });
     }
   }
 
   /**
-   * Only re-render the component when a props/state change occurs.
+   * Only re-render the component when there is a state change.
    * @param {Object} nextProps The next set of component props.
    * @param {Object} nextState The next state of the component.
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      this.props.isActive !== nextProps.isActive ||
-      this.state.offset !== nextState.offset ||
-      this.state.hasShadow !== nextState.hasShadow ||
-      this.state.spacerHeight !== nextState.spacerHeight
+      this.state.active !== nextState.active ||
+      this.state.shadow !== nextState.shadow ||
+      this.state.visible !== nextState.visible
     );
   }
 
   /**
-   * Update the spacer height if the component updates.
+   * Set the top value of the View when the component updates.
    */
   componentDidUpdate() {
-    this.setSpacerHeight();
-  }
-
-  /**
-   * Called before the component un-mounts.
-   */
-  componentWillUnmount() {
-    this.unbindEvents();
-  }
-
-  /**
-   * Returns the filter bar wrapper styles.
-   * @returns {Object} The filter bar wrapper styles.
-   */
-  get wrapperStyle() {
-    // Control the scrolling of the filter bar by applying a transform style property.
-    return {
-      background: (this.props.isActive) ? colors.accent : colors.background,
-      color: (this.props.isActive) ? colors.accentContrast : 'inherit',
-      transform: `translate3d(0, ${this.state.offset}px, 0)`,
-    };
-  }
-
-  /**
-   * Sets up the scroll DOM element and binds all event handlers.
-   * @param {HTMLElement|null} element The element that will be scrolling.
-   */
-  setupScrollElement(element = this.props.viewRef) {
-    if (this.scrollElement) {
-      return;
-    }
-
-    this.scrollElement = element;
-    this.bindEvents();
-  }
-
-  /**
-   * If the bar is visible, the scrolling container requires a spacer element to prevent
-   * overlapping of scrollable contents when scrolled up. This method calculates the
-   * spacers total height.
-   */
-  setSpacerHeight = () => {
-    const { element } = this;
-
-    if (!element) {
-      return;
-    }
-
-    /**
-     * Wait for the next tick to be sure the component has updated when
-     * this is triggered from the child components.
-     */
-    setTimeout(() => {
-      const height = element.offsetHeight;
-
-      if (height > 0 && height !== this.state.spacerHeight) {
-        this.setState({ spacerHeight: height });
-      }
-    }, 100);
-  }
-
-  /**
-   * Sets the reference to the DOM element.
-   * @param {DOMNode} element The DOM element.
-   */
-  setRef = (element) => {
-    this.element = element;
-  };
-
-  /**
-   * Binds the DOM event handlers to the scroll element.
-   */
-  bindEvents() {
-    if (!this.scrollElement) {
-      return;
-    }
-
-    this.scrollElement.addEventListener('swipe', this.handleSwipe);
-    this.animate();
+    this.updateView();
   }
 
   /**
    * Unbinds the event handlers from the scroll element.
    */
-  unbindEvents() {
-    if (this.scrollElement) {
-      this.scrollElement.removeEventListener('swipe', this.handleSwipe);
-      cancelAnimationFrame(this.animationFrameRequestId);
+  componentWillUnmount() {
+    const { viewRef } = this.props;
+
+    if (viewRef.current) {
+      viewRef.current.removeEventListener('swipe', this.handleSwipe);
     }
   }
 
   /**
-   * Continuous animation of the filter bar.
+   * @returns {Object}
    */
-  animate = () => {
-    const { scrollTop } = this.scrollElement;
-    const elementHeight = this.element.offsetHeight;
-
-    if (scrollTop <= elementHeight) {
-      this.isVisible = true;
-    }
-
-    const delta = scrollTop - this.prevScrollTop;
-
-    // Only update the state if the current scroll delta has changed.
-    if (delta !== 0) {
-      const { offset } = this.state;
-
-      let nextOffset;
-
-      /**
-       * When the page is scrolled down (due to iOS rubber band effect)
-       * then force the position to be at the top.
-       */
-      if (scrollTop < 1) {
-        nextOffset = 0;
-      } else if (this.isVisible) {
-        nextOffset = clamp(offset - delta, -elementHeight, 0);
-      } else {
-        nextOffset = -elementHeight;
-      }
-
-      if (delta < 0) {
-        // Shift the origin if the scroll direction is upwards.
-        this.origin = Math.min(scrollTop + nextOffset, this.origin);
-      }
-
-      if (nextOffset <= -elementHeight) {
-        // Hide the component if it left the viewport.
-        this.isVisible = false;
-      }
-
-      // Update the shadow state
-      const hasShadow = (
-        this.isVisible && this.origin + nextOffset > 0
-      );
-
-      // Update the state
-      this.setState({
-        offset: nextOffset,
-        hasShadow,
-      });
-
-      this.prevScrollTop = scrollTop;
-    }
-    // Continuously call the animate() method.
-    this.animationFrameRequestId = requestAnimationFrame(this.animate);
-  };
+  get style() {
+    const { active } = this.state;
+    return {
+      background: active ? colors.accent : colors.background,
+      color: active ? colors.accentContrast : 'inherit',
+    };
+  }
 
   /**
-   * Handles the swipe events.
-   * @param {Object} event The swipe event as received from ViewContent.
+   * Binds an event handler to the received props.viewRef.
+   * @param {HTMLElement|null} node The node that will be scrolling.
+   */
+  setScrollListener(node = this.props.viewRef) {
+    if (!node) {
+      return;
+    }
+
+    node.current.addEventListener('swipe', this.handleSwipe);
+  }
+
+  /**
+   * Update the ViewProvider with the height of the bar.
+   */
+  updateView = () => {
+    if (!this.node.current) {
+      return;
+    }
+
+    this.props.setTop(this.node.current.clientHeight);
+  }
+
+  /**
+   * @param {CustomEvent} event The swipe event.
    */
   handleSwipe = (event) => {
-    if (this.isVisible) {
+    // Display a shadow if we are scrolled at all.
+    const shadow = event.target.scrollTop > 0;
+
+    if (!this.node) {
       return;
     }
 
-    const { isFlick, y } = event.detail;
-
-    if (!isFlick || y >= 0) {
-      // Only react to flick events with a downward motion.
-      return;
+    // Hide when we scrolled down further that the height of the bar.
+    if (event.detail.y > this.node.current.clientHeight) {
+      this.setState({
+        shadow,
+        visible: false,
+      });
+    // Show when we scrolled up further up a little
+    } else if (event.detail.y < -24) {
+      this.setState({
+        shadow,
+        visible: true,
+      });
     }
-
-    this.isVisible = true;
-    this.origin = this.scrollElement.scrollTop;
-  };
+  }
 
   /**
    * Renders the component.
    * @returns {JSX}
    */
   render() {
-    const classes = [
+    const classes = classNames(
       styles.wrapper,
-      ...(this.state.hasShadow) && [styles.shaded],
-    ];
+      { [styles.shaded]: this.state.shadow }
+    );
 
     return (
-      <div>
-        <div ref={this.setRef} className={classes.join(' ')} style={this.wrapperStyle} data-test-id="filterBar">
-          <Content componentUpdated={this.setSpacerHeight} />
-        </div>
-        <div style={{ height: this.state.spacerHeight }} />
-      </div>
+      <section className={styles.container}>
+        <Transition in={this.state.visible} timeout={200}>
+          {state => (
+            <div
+              className={classes}
+              data-test-id="filterBar"
+              ref={this.node}
+              style={{
+                ...this.style,
+                ...transition[state],
+              }}
+            >
+              <Content />
+            </div>
+          )}
+        </Transition>
+      </section>
     );
   }
 }
 
-export default connect(FilterBar);
+export default FilterBar;

@@ -1,8 +1,10 @@
 import { hot } from 'react-hot-loader';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
+import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import Router from '@virtuous/react-conductor/Router';
 import Route from '@virtuous/react-conductor/Route';
@@ -24,9 +26,6 @@ import Viewport from 'Components/Viewport';
 import View from 'Components/View';
 import Dialog from '@shopgate/pwa-ui-shared/Dialog';
 import locale from '../locale';
-import reducers from './reducers';
-import subscribers from './subscribers';
-import Worker from './worker';
 import * as routes from './routes';
 
 const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900';
@@ -35,8 +34,8 @@ const devFontsUrl = 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500
  * The theme's main component defines all the routes (views) inside the application.
  * @returns {JSX}
  */
-const Pages = () => (
-  <App locale={locale} reducers={reducers} subscribers={subscribers} Worker={Worker}>
+const Pages = ({ store }) => (
+  <App locale={locale} store={store}>
     <AppContext.Provider value={{ ...appConfig }}>
       <ThemeContext.Provider value={{ View }}>
         <ToastProvider>
@@ -44,13 +43,12 @@ const Pages = () => (
           <Viewport>
             <ModalContainer component={Dialog} />
             <Toaster render={props => <SnackBar {...props} />} />
-            <Router>
+            <Router history={history}>
               <Route pattern={INDEX_PATH} component={routes.StartPage} />
               <Route pattern={`${PAGE_PATH}/:pageId`} component={routes.Page} preload />
               <Route pattern={`${CATEGORY_PATH}`} component={routes.RootCategory} />
               <Route pattern={`${CATEGORY_PATH}/:categoryId`} component={routes.Category} preload />
               <Route pattern={`${CATEGORY_PATH}/:categoryId/filter`} component={routes.Filter} />
-              <Route pattern={`${CATEGORY_PATH}/:categoryId/filter/:attribute`} component={routes.FilterAttribute} />
               <Route pattern={`${ITEM_PATH}/:productId`} component={routes.Product} preload />
               <Route pattern={`${ITEM_PATH}/:productId/gallery/:slide`} component={routes.ProductGallery} />
               <Route pattern={`${ITEM_PATH}/:productId/reviews`} component={routes.Reviews} />
@@ -63,7 +61,6 @@ const Pages = () => (
               <Route pattern={LOGIN_PATH} component={routes.Login} />
               <Route pattern={SEARCH_PATH} component={routes.Search} preload />
               <Route pattern={`${SEARCH_PATH}/filter`} component={routes.Filter} />
-              <Route pattern={`${SEARCH_PATH}/filter/:attribute`} component={routes.FilterAttribute} />
               {React.Children.map(routePortals, Component => Component)}
             </Router>
             {isDev && (
@@ -77,5 +74,9 @@ const Pages = () => (
     </AppContext.Provider>
   </App>
 );
+
+Pages.propTypes = {
+  store: PropTypes.shape().isRequired,
+};
 
 export default hot(module)(Pages);

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
+import colors from 'Styles/colors';
 import CategoryContent from './components/Content';
 
 /**
@@ -10,7 +11,7 @@ import CategoryContent from './components/Content';
  * @returns {JSX}
  */
 const Category = ({ id }) => (
-  <View>
+  <View background={colors.background}>
     {id && <CategoryContent categoryId={id} />}
   </View>
 );

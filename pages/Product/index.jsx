@@ -1,34 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import View from 'Components/View';
+import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import ProductContent from './components/Content';
 
+const props = {
+  open: 'open',
+  id: 'params.productId',
+  isVariant: 'state.isVariant',
+};
+
 /**
  * The product detail page (PDP).
- * @return {JSX}
  */
-const Product = ({ id }) => (
-  <View>
-    {id && <ProductContent productId={id} />}
-  </View>
-);
+class Product extends PureComponent {
+  /**
+   * @param {Object} props The consomer props.
+   * @returns {JSX}
+   */
+  consumeRenderer = ({ open, id, isVariant }) => {
+    if (!open) {
+      return null;
+    }
 
-Product.propTypes = {
-  id: PropTypes.string,
-};
+    return <ProductContent productId={hex2bin(id) || null} isVariant={isVariant || false} />;
+  }
 
-Product.defaultProps = {
-  id: null,
-};
+  /**
+   * @return {JSX}
+   */
+  render() {
+    return (
+      <View>
+        <Consume context={RouteContext} props={props}>
+          {this.consumeRenderer}
+        </Consume>
+      </View>
+    );
+  }
+}
 
-export default () => (
-  <RouteContext.Consumer>
-    {({ params }) => (
-      <Product id={hex2bin(params.productId) || null} />
-    )}
-  </RouteContext.Consumer>
-);
-
-export { Product as UnwrappedProduct };
+export default Product;

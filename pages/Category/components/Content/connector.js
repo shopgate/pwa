@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import {
   getChildCategoriesById,
-  getCategoryProductCount,
+  hasChildren,
+  hasProducts,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
@@ -12,25 +13,8 @@ import {
  */
 const mapStateToProps = (state, props) => ({
   categories: getChildCategoriesById(state, props),
-  hasProducts: getCategoryProductCount(state, props),
+  hasProducts: hasProducts(state, props),
+  hasChildren: hasChildren(state, props),
 });
 
-/**
- * Check to see if the categories have arrived.
- * @param {*} next The next state.
- * @param {*} prev the previous state.
- * @returns {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.categories && next.categories) {
-    return false;
-  }
-
-  if (prev.hasProducts !== next.hasProducts) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);

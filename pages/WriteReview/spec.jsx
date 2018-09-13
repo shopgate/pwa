@@ -1,13 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { MockedView } from 'Components/View/mock';
 import { mount } from 'enzyme';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { mockedState } from './mock';
 
-const mockedView = MockedView;
-jest.mock('Components/View', () => mockedView);
+jest.mock('Components/View');
 jest.mock('./components/ReviewForm', () => () => '');
 const mockedStore = configureStore();
 /**
@@ -29,6 +27,7 @@ const createComponent = () => {
 describe('<WriteReview> page', () => {
   it('should not crash', () => {
     const component = createComponent();
+    expect(component).toMatchSnapshot();
     expect(component.find('WriteReview').exists()).toBe(true);
   });
 });

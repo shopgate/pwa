@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @return {JSX}
  */
-const MockView = ({ children }) => (
+const MockedView = ({ children }) => (
   <div>{children}</div>
 );
 
-MockView.propTypes = {
+MockedView.propTypes = {
   children: PropTypes.node,
 };
 
-MockView.defaultProps = {
+MockedView.defaultProps = {
   children: null,
 };

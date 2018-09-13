@@ -19,13 +19,9 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
       initialLoading={false}
       products={Array []}
     >
-      <MockedView
-        title="titles.favorites"
-      >
+      <MockedView>
         <div>
-          <EmptyFavorites
-            products={Array []}
-          >
+          <EmptyFavorites>
             <div
               className="css-4wo01b"
             >
@@ -103,88 +99,80 @@ exports[`<Favorites> page Empty page should render an empty page 1`] = `
                   </span>
                 </Translate>
               </div>
-              <Connect(SGConnect)>
-                <SGConnect
+              <Connect(ContinueButton)>
+                <ContinueButton
                   goBackHistory={[Function]}
-                  routedConnectPathname=""
                 >
-                  <ContinueButton
-                    goBackHistory={[Function]}
-                    routedConnectPathname=""
+                  <RippleButton
+                    className="css-63oe3q"
+                    disabled={false}
+                    flat={false}
+                    onClick={[Function]}
+                    rippleClassName=""
+                    rippleSize={null}
+                    testId="continueButton"
+                    type="secondary"
+                    wrapContent={true}
                   >
-                    <RippleButton
+                    <Button
                       className="css-63oe3q"
                       disabled={false}
                       flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="continueButton"
                       type="secondary"
-                      wrapContent={true}
+                      wrapContent={false}
                     >
                       <Button
-                        className="css-63oe3q"
+                        className="css-187rja2 css-63oe3q"
                         disabled={false}
-                        flat={false}
                         onClick={[Function]}
                         testId="continueButton"
-                        type="secondary"
-                        wrapContent={false}
                       >
-                        <Button
-                          className="css-187rja2 css-63oe3q"
+                        <button
+                          className="css-187rja2 css-63oe3q css-1rn65c0"
+                          data-test-id="continueButton"
                           disabled={false}
                           onClick={[Function]}
-                          testId="continueButton"
                         >
-                          <button
-                            className="css-187rja2 css-63oe3q css-1rn65c0"
-                            data-test-id="continueButton"
+                          <Ripple
+                            className="css-8s1fw2 "
+                            color="#000"
                             disabled={false}
+                            fill={true}
                             onClick={[Function]}
+                            onComplete={[Function]}
+                            overflow={false}
+                            size={null}
                           >
-                            <Ripple
+                            <div
+                              aria-hidden={true}
                               className="css-8s1fw2 "
-                              color="#000"
-                              disabled={false}
-                              fill={true}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
+                              data-test-id="Ripple"
+                              onClick={[Function]}
+                              style={null}
                             >
-                              <div
-                                aria-hidden={true}
-                                className="css-8s1fw2 "
-                                data-test-id="Ripple"
-                                onClick={[Function]}
-                                style={null}
+                              <Translate
+                                className=""
+                                params={Object {}}
+                                string="favorites.continue"
                               >
-                                <Translate
+                                <span
                                   className=""
-                                  params={Object {}}
-                                  string="favorites.continue"
                                 >
-                                  <span
-                                    className=""
-                                  >
-                                    favorites.continue
-                                  </span>
-                                </Translate>
-                              </div>
-                            </Ripple>
-                          </button>
-                        </Button>
+                                  favorites.continue
+                                </span>
+                              </Translate>
+                            </div>
+                          </Ripple>
+                        </button>
                       </Button>
-                    </RippleButton>
-                  </ContinueButton>
-                </SGConnect>
-              </Connect(SGConnect)>
+                    </Button>
+                  </RippleButton>
+                </ContinueButton>
+              </Connect(ContinueButton)>
             </div>
           </EmptyFavorites>
-          <FavoritesList
-            products={Array []}
-          />
         </div>
       </MockedView>
     </Favorites>
@@ -211,9 +199,7 @@ exports[`<Favorites> page Initial page should render an initial page with loadin
       initialLoading={true}
       products={Array []}
     >
-      <MockedView
-        title="titles.favorites"
-      >
+      <MockedView>
         <div>
           <LoadingIndicator>
             <div

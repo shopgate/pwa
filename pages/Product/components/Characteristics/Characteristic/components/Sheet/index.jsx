@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import List from 'Components/List';
 import VariantContext from '@shopgate/pwa-common/components/ProductCharacteristics/context';
@@ -13,7 +13,7 @@ const portals = document.getElementById('portals');
 /**
  * The CharacteristicSheet component.
  */
-class CharacteristicSheet extends Component {
+class CharacteristicSheet extends PureComponent {
   static propTypes = {
     charId: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -69,11 +69,7 @@ class CharacteristicSheet extends Component {
    */
   render() {
     const {
-      items,
-      label,
-      onClose,
-      open,
-      selectedValue,
+      items, label, onClose, open, selectedValue,
     } = this.props;
 
     const sheet = (
@@ -92,14 +88,15 @@ class CharacteristicSheet extends Component {
       </Sheet>
     );
 
-    return ReactDOM.createPortal(
-      sheet,
-      portals
-    );
+    return createPortal(sheet, portals);
   }
 }
 
-export default props => (
+/**
+ * @param {Object} props The original component props.
+ * @returns {JSX}
+ */
+const SheetComponent = props => (
   <ProductContext.Consumer>
     {({ productId }) => (
       <VariantContext.Consumer>
@@ -114,3 +111,5 @@ export default props => (
     )}
   </ProductContext.Consumer>
 );
+
+export default SheetComponent;

@@ -1,60 +1,69 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './style';
 
 /**
- * @param {boolean} selected Whether or not the item is selected.
- * @param {boolean} selectable Whether or not the item can be selected.
- * @returns {string}
+ * The SheetItem component.
  */
-const getStyle = (selected, selectable) => {
-  if (selected) {
-    return styles.buttonSelected;
-  }
-
-  if (!selectable) {
-    return styles.buttonDisabled;
-  }
-
-  return styles.button;
-};
-
-/**
- * @param {Object} props The component props.
- * @return {JSX}
- */
-const SheetItem = ({
-  item,
-  onClick,
-  rightComponent: Right,
-  selected,
-}) => {
-  const props = {
-    className: getStyle(selected, item.selectable),
-    key: item.id,
-    value: item.id,
-    ...item.selectable && { onClick },
+class SheetItem extends PureComponent {
+  static propTypes = {
+    item: PropTypes.shape().isRequired,
+    onClick: PropTypes.func,
+    rightComponent: PropTypes.func,
+    selected: PropTypes.bool,
   };
 
-  return (
-    <button {...props} data-test-id={`variant: ${item.label}`}>
-      {item.label}
-      {item.selectable && <Right />}
-    </button>
-  );
-};
+  static defaultProps = {
+    onClick() { },
+    rightComponent: null,
+    selected: false,
+  };
 
-SheetItem.propTypes = {
-  item: PropTypes.shape().isRequired,
-  onClick: PropTypes.func,
-  rightComponent: PropTypes.func,
-  selected: PropTypes.bool,
-};
+  /**
+   * @param {boolean} selectable Whether or not the item can be selected.
+   * @returns {string}
+   */
+  getStyle = (selectable) => {
+    const { selected } = this.props;
 
-SheetItem.defaultProps = {
-  onClick() {},
-  rightComponent: null,
-  selected: false,
-};
+    if (selected) {
+      return styles.buttonSelected;
+    }
+
+    if (!selectable) {
+      return styles.buttonDisabled;
+    }
+
+    return styles.button;
+  };
+
+  /**
+   * @returns {Object}
+   */
+  buildProps = () => {
+    const { item, onClick } = this.props;
+
+    return {
+      className: this.getStyle(item.selectable),
+      key: item.id,
+      value: item.id,
+      ...item.selectable && { onClick },
+    };
+  };
+
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { item, rightComponent: Right } = this.props;
+
+    return (
+      <button {...this.buildProps()}>
+        {item.label}
+        {item.selectable && <Right />}
+      </button>
+    );
+  }
+}
 
 export default SheetItem;

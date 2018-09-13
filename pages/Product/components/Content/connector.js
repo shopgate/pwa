@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getBaseProductId,
-  getProductVariants,
   getVariantId,
-  isBaseProduct,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 
@@ -14,9 +12,7 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  isBaseProduct: isBaseProduct(state, props),
   baseProductId: getBaseProductId(state, props),
-  variants: getProductVariants(state, props),
   variantId: getVariantId(state, props),
 });
 

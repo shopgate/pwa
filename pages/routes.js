@@ -25,11 +25,6 @@ export const Filter = Loadable({
   loading: () => null,
 });
 
-export const FilterAttribute = Loadable({
-  loader: () => import('./FilterAttribute'),
-  loading: () => null,
-});
-
 export const Product = Loadable({
   loader: () => import('./Product'),
   loading: () => null,

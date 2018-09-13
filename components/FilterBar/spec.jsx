@@ -13,6 +13,12 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   themeConfig: mockThemeConfig,
 }));
 
+jest.mock('@virtuous/react-conductor/Router', () => ({
+  RouteContext: {
+    Consumer: props => props.children({ params: { categoryId: '1337' }, id: 'abc-132' }),
+  },
+}));
+
 describe('<FilterBar>', () => {
   global.requestAnimationFrame = () => {};
 
@@ -25,6 +31,7 @@ describe('<FilterBar>', () => {
           handleSortChange={() => {}}
           handleOpenFiltersView={() => {}}
           getFilters={() => {}}
+          setTop={() => {}}
         />
       </Provider>,
       mockRenderOptions
