@@ -40,7 +40,7 @@ export const toggleNavigatorSearch = visible => ({
 
 /**
  * Toggles the navigator title.
- * @param {boolean} visible The next state of the TITLE.
+ * @param {boolean} visible The next state of the title.
  * @returns {Object} The action object.
  */
 export const toggleNavigatorTitle = visible => ({

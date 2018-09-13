@@ -31,7 +31,7 @@ import styles from './style';
 /**
  * The Navigator component.
  */
-class Navigator extends PureComponent {
+export class Navigator extends PureComponent {
   static propTypes = {
     fetchSuggestions: PropTypes.func.isRequired,
     navigate: PropTypes.func.isRequired,
