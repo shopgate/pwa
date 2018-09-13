@@ -43,6 +43,7 @@ exports[`<Password> should render a password field 1`] = `
       isFocused={false}
       label=""
       placeholder=""
+      translateErrorText={true}
     >
       <div
         className="css-1vjh8yv "
@@ -233,6 +234,7 @@ exports[`<Password> should render a password field 1`] = `
         <ErrorText
           className={null}
           errorText=""
+          translate={true}
         >
           <div
             className="css-hmgfge"
@@ -340,6 +342,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
       isFocused={false}
       label=""
       placeholder=""
+      translateErrorText={true}
     >
       <div
         className="css-1vjh8yv "
@@ -572,6 +575,7 @@ exports[`<Password> should trigger the onChange callback 1`] = `
         <ErrorText
           className={null}
           errorText=""
+          translate={true}
         >
           <div
             className="css-hmgfge"

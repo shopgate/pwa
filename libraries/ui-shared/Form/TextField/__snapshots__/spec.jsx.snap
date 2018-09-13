@@ -25,6 +25,7 @@ exports[`<TextField> should focus the input 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -155,6 +156,7 @@ exports[`<TextField> should focus the input 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -199,6 +201,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -328,6 +331,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -372,6 +376,7 @@ exports[`<TextField> should render a simple text field 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -501,6 +506,7 @@ exports[`<TextField> should render a simple text field 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -546,6 +552,7 @@ exports[`<TextField> should render the text field as password 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -676,6 +683,7 @@ exports[`<TextField> should render the text field as password 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -720,6 +728,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -849,6 +858,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -894,6 +904,7 @@ exports[`<TextField> should sanitize the input 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -1024,6 +1035,7 @@ exports[`<TextField> should sanitize the input 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -1068,6 +1080,7 @@ exports[`<TextField> should show the error message 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -1196,6 +1209,7 @@ exports[`<TextField> should show the error message 1`] = `
       <ErrorText
         className={null}
         errorText="This is an error here"
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -1242,6 +1256,7 @@ exports[`<TextField> should show the label 1`] = `
     isFocused={false}
     label="This is the label"
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -1373,6 +1388,7 @@ exports[`<TextField> should show the label 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -1417,6 +1433,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
     isFocused={false}
     label=""
     placeholder="This is the placeholder text"
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -1548,6 +1565,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -1613,6 +1631,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -1784,6 +1803,7 @@ exports[`<TextField> should trigger the onChange callback 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
@@ -1844,6 +1864,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     isFocused={false}
     label=""
     placeholder=""
+    translateErrorText={true}
   >
     <div
       className="css-1vjh8yv "
@@ -2004,6 +2025,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
       <ErrorText
         className={null}
         errorText=""
+        translate={true}
       >
         <div
           className="css-hmgfge"
