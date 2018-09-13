@@ -4,6 +4,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
 import showModal, { getModalId } from './showModal';
 import { CREATE_MODAL } from '../../constants/ActionTypes';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {
     warn: jest.fn(),
