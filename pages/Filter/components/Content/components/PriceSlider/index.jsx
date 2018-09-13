@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import RangeSlider from '@shopgate/pwa-common/components/RangeSlider';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import Item from '../Item';
+import Label from './components/Label';
 import styles from './style';
 
 /**
  * The PriceSlider component.
  */
-class PriceSlider extends Component {
+class PriceSlider extends PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     max: PropTypes.number,
@@ -70,7 +69,6 @@ class PriceSlider extends Component {
    */
   render() {
     const { min, max } = this.props;
-    const { currency } = appConfig;
 
     /**
      * The min and max price need to be rounded before they are passed to the I18n component,
@@ -89,18 +87,7 @@ class PriceSlider extends Component {
     return (
       <Item>
         <div className={styles.wrapper} data-test-id="priceRangeSlider">
-          <I18n.Text string="price.range">
-            <I18n.Placeholder forKey="fromPrice">
-              <span className={styles.price} style={{ minWidth: priceLength }}>
-                <I18n.Price price={priceMin} currency={currency} fractions={false} />
-              </span>
-            </I18n.Placeholder>
-            <I18n.Placeholder forKey="toPrice">
-              <span className={styles.price} style={{ minWidth: priceLength }}>
-                <I18n.Price price={priceMax} currency={currency} fractions={false} />
-              </span>
-            </I18n.Placeholder>
-          </I18n.Text>
+          <Label priceLength={priceLength} priceMax={priceMax} priceMin={priceMin} />
           <RangeSlider
             classNames={styles.rangeSlider}
             easing="exponential"
