@@ -11,6 +11,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -76,6 +77,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
     <ErrorText
       className={null}
       errorText=""
+      translate={true}
     >
       <div
         className="css-hmgfge"
@@ -106,6 +108,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   isFocused={true}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -170,6 +173,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
     <ErrorText
       className={null}
       errorText=""
+      translate={true}
     >
       <div
         className="css-hmgfge"
@@ -200,6 +204,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -268,6 +273,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
     <ErrorText
       className={null}
       errorText=""
+      translate={true}
     >
       <div
         className="css-hmgfge"
@@ -298,6 +304,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -363,6 +370,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
     <ErrorText
       className={null}
       errorText=""
+      translate={true}
     >
       <div
         className="css-hmgfge"
@@ -393,6 +401,7 @@ exports[`<FormElement /> should show the error message 1`] = `
   isFocused={false}
   label=""
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -457,6 +466,7 @@ exports[`<FormElement /> should show the error message 1`] = `
     <ErrorText
       className={null}
       errorText="The error text"
+      translate={true}
     >
       <div
         className="css-hmgfge"
@@ -489,6 +499,7 @@ exports[`<FormElement /> should show the label 1`] = `
   isFocused={false}
   label="The label"
   placeholder=""
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -556,6 +567,7 @@ exports[`<FormElement /> should show the label 1`] = `
     <ErrorText
       className={null}
       errorText=""
+      translate={true}
     >
       <div
         className="css-hmgfge"
@@ -586,6 +598,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   isFocused={false}
   label=""
   placeholder="The placeholder"
+  translateErrorText={true}
 >
   <div
     className="css-1vjh8yv "
@@ -653,6 +666,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
     <ErrorText
       className={null}
       errorText=""
+      translate={true}
     >
       <div
         className="css-hmgfge"

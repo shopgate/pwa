@@ -99,7 +99,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
               value="default"
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -347,7 +347,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -553,7 +553,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
               value=""
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -801,7 +801,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
               value="abc"
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -1127,7 +1127,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -1320,7 +1320,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
               value=""
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -1575,7 +1575,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -1786,7 +1786,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
               value="default"
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -2041,7 +2041,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="abc"
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
@@ -2252,7 +2252,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
               value="cheat"
             >
               <div
-                className="css-n6iwau "
+                className="css-e4z0u6 "
               >
                 <Hint
                   hintText=""
