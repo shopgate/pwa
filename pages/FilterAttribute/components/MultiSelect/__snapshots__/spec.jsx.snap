@@ -152,6 +152,7 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                             className="css-37nc4w css-5oj2eb"
                                           />
                                         }
+                                        disabled={false}
                                         label={null}
                                         labelPosition="left"
                                         onCheck={[Function]}
@@ -322,6 +323,7 @@ exports[`FilterAttribute: MultiSelect should render single selection 1`] = `
                                             className="css-37nc4w css-5oj2eb"
                                           />
                                         }
+                                        disabled={false}
                                         label={null}
                                         labelPosition="left"
                                         onCheck={[Function]}
