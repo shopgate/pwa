@@ -186,6 +186,10 @@ class ActionListener {
         ...nextState.elementVisibility,
         [element.id]: this.evaluateRules(element, action, nextState),
       },
+      // Copy form data to be able to check changes and all follow up actions
+      formData: {
+        ...nextState.formData,
+      },
     };
 
     if (newState.formData[element.id] === undefined &&
@@ -296,30 +300,54 @@ class ActionListener {
      * @returns {string|boolean|number}
      */
     const transform = (subject) => {
+      // Get optional params to be applied in the transformation process
+      let args = action.params.value || [];
+      if (Array.isArray(action.params.value)) {
+        args = action.params.value;
+      }
+
       switch (typeof subject) {
         case 'string': {
-          if (typeof String.prototype[action.params.type] !== 'function') {
+          if (typeof String.prototype[action.params.type] !== 'function' &&
+            typeof String[action.params.type] !== 'function'
+          ) {
             logger.error("Error: Invalid transform function passed to actions 'params.type' " +
               `attribute in element '${element.id}'. Must be withing 'String.prototype'!`);
             return subject;
           }
-          break;
+
+          if (typeof String.prototype[action.params.type] === 'function') {
+            return String.prototype[action.params.type].apply(subject, args);
+          }
+          return String[action.params.type](subject);
         }
         case 'boolean': {
-          if (typeof Boolean.prototype[action.params.type] !== 'function') {
+          if (typeof Boolean.prototype[action.params.type] !== 'function' &&
+            typeof Boolean[action.params.type] !== 'function'
+          ) {
             logger.error("Error: Invalid transform function passed to actions 'params.type' " +
               `attribute in element '${element.id}'. Must be withing 'String.prototype'!`);
             return subject;
           }
-          break;
+
+          if (typeof Boolean.prototype[action.params.type] === 'function') {
+            return Boolean.prototype[action.params.type].apply(subject, args);
+          }
+          return Boolean[action.params.type](subject);
         }
         case 'number': {
-          if (typeof Number.prototype[action.params.type] !== 'function') {
+          if (typeof Number.prototype[action.params.type] !== 'function' &&
+            typeof Number[action.params.type] !== 'function'
+          ) {
             logger.error("Error: Invalid transform function passed to actions 'params.type' " +
               `attribute in element '${element.id}'. Must be withing 'String.prototype'!`);
             return subject;
           }
-          break;
+
+          if (typeof Number.prototype[action.params.type] === 'function') {
+            return Number.prototype[action.params.type].apply(subject, args);
+          }
+          return Number[action.params.type](subject);
         }
 
         default:
@@ -327,13 +355,6 @@ class ActionListener {
            + "'boolean' or 'number'");
           return subject;
       }
-
-      // Apply transformation (with optional arguments) and return the result
-      let args = action.params.value || [];
-      if (Array.isArray(action.params.value)) {
-        args = action.params.value;
-      }
-      return String.prototype[action.params.type].apply(subject, args);
     };
 
     let newState = {
