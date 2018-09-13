@@ -1,5 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_VARIANT_SELECT,
+  PRODUCT_VARIANT_SELECT_AFTER,
+  PRODUCT_VARIANT_SELECT_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import ProductCharacteristics from '@shopgate/pwa-common/components/ProductCharacteristics';
 import { ProductContext } from './../../context';
 import Characteristic from './Characteristic';
@@ -49,9 +55,15 @@ class Characteristics extends PureComponent {
    */
   render() {
     return (
-      <ProductContext.Consumer>
-        {this.consumeRenderer}
-      </ProductContext.Consumer>
+      <Fragment>
+        <Portal name={PRODUCT_VARIANT_SELECT_BEFORE} />
+        <Portal name={PRODUCT_VARIANT_SELECT}>
+          <ProductContext.Consumer>
+            {this.consumeRenderer}
+          </ProductContext.Consumer>
+        </Portal>
+        <Portal name={PRODUCT_VARIANT_SELECT_AFTER} />
+      </Fragment>
     );
   }
 }
