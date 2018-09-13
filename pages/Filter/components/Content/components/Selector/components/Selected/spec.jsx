@@ -14,7 +14,7 @@ const values = [
 ];
 
 describe('Filter: <Selected />', () => {
-  it('should net render without selected', () => {
+  it('should not render without selected', () => {
     const wrapper = shallow(<Selected values={values} />);
     expect(wrapper).toMatchSnapshot();
   });
