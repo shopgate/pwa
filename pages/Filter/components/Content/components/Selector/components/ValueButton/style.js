@@ -1,4 +1,5 @@
 import { css } from 'glamor';
+import colors from 'Styles/colors';
 
 export const inactive = css({
   border: '1px solid #ebebeb',
@@ -19,6 +20,6 @@ export const inactive = css({
 });
 
 export const active = css(inactive, {
-  borderColor: '#5ccee3',
-  color: '#5ccee3',
+  borderColor: colors.accent,
+  color: colors.accent,
 });

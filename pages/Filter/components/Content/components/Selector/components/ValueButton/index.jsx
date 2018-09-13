@@ -22,22 +22,25 @@ class ValueButton extends PureComponent {
   };
 
   /**
+   * @returns {string}
+   */
+  get className() {
+    const { isActive } = this.props;
+
+    return classNames({
+      [styles.inactive]: !isActive,
+      [styles.active]: isActive,
+    });
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
-    const {
-      label, id, isActive, onClick,
-    } = this.props;
+    const { label, id, onClick } = this.props;
 
     return (
-      <button
-        className={classNames({
-          [styles.inactive]: !isActive,
-          [styles.active]: isActive,
-        })}
-        value={id}
-        onClick={onClick}
-      >
+      <button className={this.className} value={id} onClick={onClick}>
         {label}
       </button>
     );
