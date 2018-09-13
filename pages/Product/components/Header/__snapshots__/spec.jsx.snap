@@ -13,8 +13,15 @@ exports[`<ProductHeader> should render 1`] = `
     }
   }
 >
-  <pure(ProductHeader)>
-    <ProductHeader>
+  <ProductHeader>
+    <Portal
+      name="product.header.before"
+      props={null}
+    />
+    <Portal
+      name="product.header"
+      props={null}
+    >
       <Consumer>
         <div
           className="css-he61ou"
@@ -831,7 +838,11 @@ exports[`<ProductHeader> should render 1`] = `
           </pure(ProductInfo)>
         </div>
       </Consumer>
-    </ProductHeader>
-  </pure(ProductHeader)>
+    </Portal>
+    <Portal
+      name="product.header.after"
+      props={null}
+    />
+  </ProductHeader>
 </Provider>
 `;

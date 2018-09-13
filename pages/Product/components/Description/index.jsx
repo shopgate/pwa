@@ -1,5 +1,11 @@
-import React from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_DESCRIPTION,
+  PRODUCT_DESCRIPTION_AFTER,
+  PRODUCT_DESCRIPTION_BEFORE,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import PlaceholderParagraph from '@shopgate/pwa-ui-shared/PlaceholderParagraph';
@@ -8,43 +14,52 @@ import styles from './style';
 
 /**
  * The product description.
- * @param {Object} props The component props.
- * @returns {JSX}
  */
-const Description = ({ html, navigate }) => {
-  if (html === '') {
-    return null;
-  }
-
-  const settings = {
-    html,
-    handleClick: navigate,
+class Description extends PureComponent {
+  static propTypes = {
+    html: PropTypes.string,
+    navigate: PropTypes.func,
   };
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.title}>
-        <I18n.Text string="product.description_heading" />
-      </div>
-      <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
-        <div className={styles.content} data-test-id={html}>
-          <HtmlSanitizer settings={settings}>
-            {html}
-          </HtmlSanitizer>
-        </div>
-      </PlaceholderParagraph>
-    </div>
-  );
-};
+  static defaultProps = {
+    html: null,
+    navigate: () => { },
+  };
 
-Description.propTypes = {
-  html: PropTypes.string,
-  navigate: PropTypes.func,
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    const { html, navigate } = this.props;
 
-Description.defaultProps = {
-  html: null,
-  navigate: () => {},
-};
+    return (
+      <Fragment>
+        <Portal name={PRODUCT_DESCRIPTION_BEFORE} />
+        <Portal name={PRODUCT_DESCRIPTION}>
+          {(html !== '') && (
+            <div className={styles.container}>
+              <div className={styles.title}>
+                <I18n.Text string="product.description_heading" />
+              </div>
+              <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
+                <div className={styles.content} data-test-id={html}>
+                  <HtmlSanitizer
+                    settings={{
+                      html,
+                      handleClick: navigate,
+                    }}
+                  >
+                    {html}
+                  </HtmlSanitizer>
+                </div>
+              </PlaceholderParagraph>
+            </div>
+          )}
+        </Portal>
+        <Portal name={PRODUCT_DESCRIPTION_AFTER} />
+      </Fragment>
+    );
+  }
+}
 
 export default connect(Description);
