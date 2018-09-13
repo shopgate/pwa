@@ -50,8 +50,9 @@ export default class KeyFigure {
     if (this.method === KEY_FIGURE_METHOD_OBSERVER) {
       // Create observer and start observing.
       const observer = {
-        instance: new PerformanceObserver(() => {}),
+        instance: new PerformanceObserver(event => observer.stored.push(...event.getEntries())),
         events: [],
+        stored: [],
       };
       observer.instance.observe({
         entryTypes: ['measure', 'paint', 'navigation', 'resource'],
@@ -73,8 +74,10 @@ export default class KeyFigure {
     }
 
     if (this.method === KEY_FIGURE_METHOD_OBSERVER) {
-      const { instance } = this.measure.observers[key].pop();
-      const events = instance.takeRecords();
+      const { instance, stored } = this.measure.observers[key].pop();
+      const records = instance.takeRecords();
+      const events = records.length === 0 ? stored : records;
+
       instance.disconnect(); // Stops observing
 
       const renders = events

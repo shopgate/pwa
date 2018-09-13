@@ -28,6 +28,11 @@ class BenchmarkController {
       'ActionEvents',
       new KeyFigure(KEY_FIGURE_MODE_ADD, KEY_FIGURE_METHOD_OBSERVER)
     );
+    this.addKeyFigure(
+      'GlobalEvents',
+      new KeyFigure(KEY_FIGURE_MODE_ADD, KEY_FIGURE_METHOD_OBSERVER)
+    );
+    this.getKeyFigure('GlobalEvents').startMeasure('global');
   }
 
   /**
@@ -163,7 +168,7 @@ class BenchmarkController {
    * Prints the most rendering components.
    */
   printsMostRenderedComponents() {
-    const measure = this.getKeyFigure('ActionEvents').measure.inclusive;
+    const measure = this.getKeyFigure('GlobalEvents').measure.inclusive;
     const result = [];
 
     Object.keys(measure)
@@ -209,13 +214,47 @@ class BenchmarkController {
   }
 
   /**
+   * Prints summary.
+   */
+  printTotals() {
+    const measure = this.getKeyFigure('GlobalEvents').measure.inclusive;
+    const result = [];
+
+    Object.keys(measure)
+      .forEach(action => Object.keys(measure[action])
+        .forEach((component) => {
+          const found = result.find(r => r.name === component);
+          if (found) {
+            found.render += measure[action][component].render;
+            found.renderTime += measure[action][component].renderTime;
+            return;
+          }
+
+          result.push({
+            name: component,
+            render: measure[action][component].render,
+            renderTime: measure[action][component].renderTime,
+          });
+        }));
+
+    const sumRenders = result.reduce((current, acc) => current + acc.render, 0);
+    const sumRenderTime = result.reduce((current, acc) => current + acc.renderTime, 0);
+    const avgRenderTime = sumRenderTime / sumRenders;
+
+    console.log('%cRender total', 'font-size: 24px; margin-top: 32px; margin-bottom: 12px;');
+    console.log(`%cRenders: ${sumRenders}; Execution Time: ${sumRenderTime}ms; Average Execution Time: ${avgRenderTime}ms`, 'font-size: 16px; margin-bottom: 12px;');
+  }
+
+  /**
    * Pretty prints result.
    */
   print() {
+    this.getKeyFigure('GlobalEvents').stopMeasure('global');
     this.printMostCalledActions();
     this.printHighestAverageAction();
     this.printsActionsWithMostRenders();
     this.printsMostRenderedComponents();
+    this.printTotals();
   }
 }
 
