@@ -1,26 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import syncRouter from '@virtuous/redux-conductor';
-import initSubscribers from './subscriptions';
-import {
-  appDidStart,
-  appWillStart,
-} from './action-creators/app';
-import fetchClientInformation from './actions/client/fetchClientInformation';
-import configureStore from './store';
+import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
-import smoothscrollPolyfill from './helpers/scrollPolyfill';
 
-injectTapEventPlugin();
-smoothscrollPolyfill();
-
-// If (process.env.NODE_ENV !== 'production') {
-//   Const { whyDidYouUpdate } = require('why-did-you-update');
-//   WhyDidYouUpdate(React, {
-
-//   });
+// if (process.env.NODE_ENV !== 'production') {
+//   const { whyDidYouUpdate } = require('why-did-you-update');
+//   whyDidYouUpdate(React);
 // }
 
 /**
@@ -29,40 +15,18 @@ smoothscrollPolyfill();
  * the theme's Main.jsx file which uses this component as the root element.
  * @returns {JSX}
  */
-class App extends PureComponent {
+class App extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     locale: PropTypes.shape().isRequired,
-    reducers: PropTypes.func.isRequired,
-    Worker: PropTypes.func.isRequired,
-    subscribers: PropTypes.arrayOf(PropTypes.func),
+    store: PropTypes.shape().isRequired,
   };
-
-  static defaultProps = {
-    subscribers: [],
-  };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    // Initialize the subscriptions to observable streams.
-    initSubscribers(this.props.subscribers);
-
-    this.store = configureStore(props.reducers, props.Worker);
-    syncRouter(this.store);
-    this.store.dispatch(appWillStart(`${window.location.pathname}${window.location.search}`));
-  }
 
   /**
    * Registers the component for the native events and fires the onload AppCommand.
    */
   componentDidMount() {
-    this.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
-    this.store.dispatch(fetchClientInformation());
+    this.props.store.dispatch(appDidStart(`${window.location.pathname}${window.location.search}`));
   }
 
   /**
@@ -71,7 +35,7 @@ class App extends PureComponent {
    */
   render() {
     return (
-      <Provider store={this.store}>
+      <Provider store={this.props.store}>
         <I18n.Provider locales={this.props.locale} lang={process.env.LOCALE}>
           <div>
             {this.props.children}

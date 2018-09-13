@@ -1,5 +1,3 @@
-import { createStore, combineReducers } from 'redux';
-import reducers from '../reducers';
 import {
   getProductUnitPrice,
   getProductCurrency,
@@ -13,7 +11,6 @@ import {
   getProductTotalPrice,
   isFullPriceAvailable,
 } from './price';
-import setProductVariantId from '../action-creators/setProductVariantId';
 import {
   basicProductState,
   productWithOneOption,
@@ -26,52 +23,70 @@ import {
 describe('Product.Price selectors', () => {
   describe('Simple data selectors', () => {
     it('should validate simple data selectors', () => {
-      expect(getProductUnitPrice(basicProductState)).toBe(89);
-      expect(getProductCurrency(basicProductState)).toBe('EUR');
+      expect(getProductUnitPrice(basicProductState, { productId: '913' })).toBe(89);
+      expect(getProductCurrency(basicProductState, { productId: '913' })).toBe('EUR');
     });
   });
 
   describe('Additional price calculation', () => {
     it('should calculate no additional costs for a basic product', () => {
-      expect(getProductPriceAddition(basicProductState)).toBe(0);
-      expect(getProductTotalPrice(basicProductState)).toBe(89);
+      expect(getProductPriceAddition(basicProductState, { productId: '913' })).toBe(0);
+      expect(getProductTotalPrice(basicProductState, { productId: '913' })).toBe(89);
     });
 
     it('should calculate no additional cost when no options are selected', () => {
-      expect(getProductPriceAddition(productWithOneOption)).toBe(0);
-      expect(getProductTotalPrice(productWithOneOption)).toBe(10);
+      expect(getProductPriceAddition(productWithOneOption, { productId: '1097' })).toBe(0);
+      expect(getProductTotalPrice(productWithOneOption, { productId: '1097' })).toBe(10);
     });
 
     it('should calculate additional cost when one option is selected', () => {
-      expect(getProductPriceAddition(productWithSelectedOptions)).toBe(1);
-      expect(getProductTotalPrice(productWithSelectedOptions)).toBe(11);
+      const props = {
+        productId: '1097',
+        options: {
+          1: '1',
+        },
+      };
+
+      expect(getProductPriceAddition(productWithSelectedOptions, props)).toBe(1);
+      expect(getProductTotalPrice(productWithSelectedOptions, props)).toBe(11);
     });
 
     it('should calculate no additional cost for a product with just variants', () => {
-      expect(getProductPriceAddition(productWithSelectedVariant)).toBe(0);
-      expect(getProductTotalPrice(productWithSelectedVariant)).toBe(26);
+      expect(getProductPriceAddition(productWithSelectedVariant, { productId: 'dif01-exp' })).toBe(0);
+      expect(getProductTotalPrice(productWithSelectedVariant, { productId: 'dif01-exp' })).toBe(26);
     });
   });
 
   describe('Min price calculation', () => {
     it('price should be available for a basic product', () => {
-      expect(isFullPriceAvailable(basicProductState)).toBe(true);
+      expect(isFullPriceAvailable(basicProductState, { productId: '913' })).toBe(true);
     });
 
     it('price should not be available for a product with unselected options', () => {
-      expect(isFullPriceAvailable(productWithOneOption)).toBe(false);
+      const props = {
+        productId: '1097',
+        options: {},
+      };
+      expect(isFullPriceAvailable(productWithOneOption, props)).toBe(false);
     });
 
     it('price should be available for a product with selected options', () => {
-      expect(isFullPriceAvailable(productWithSelectedOptions)).toBe(true);
+      const props = {
+        productId: '1097',
+        options: {
+          1: '1',
+        },
+      };
+
+      expect(isFullPriceAvailable(productWithSelectedOptions, props)).toBe(true);
     });
 
     it('price should not be available for a product with unselected variants', () => {
-      expect(isFullPriceAvailable(productWithVariants)).toBe(false);
+      expect(isFullPriceAvailable(productWithVariants, { productId: 'dif01' })).toBe(false);
     });
 
     it('price should be available for a product with selected variants', () => {
-      expect(isFullPriceAvailable(productWithSelectedVariant)).toBe(true);
+      expect(isFullPriceAvailable(productWithSelectedVariant, { productId: 'dif01-exp' })).toBe(true);
     });
   });
 
@@ -84,52 +99,87 @@ describe('Product.Price selectors', () => {
    * - Additional costs per item are correct.
    */
   describe('Scenario #1: Product with variants and options', () => {
-    const store = createStore(
-      combineReducers({ product: reducers }),
-      productWithVariantsAndOptions
-    );
+    const state = productWithVariantsAndOptions;
 
     it('Step 1: Opening the product', () => {
-      const state = store.getState();
+      const props = {
+        productId: 'SG74',
+        productVariantId: null,
+        currentOptions: {},
+      };
 
       // No additional price can be calculated at the moment.
-      expect(getProductPriceAddition(state)).toBe(0);
-      expect(getProductTotalPrice(state)).toBe(10.51);
-      expect(isFullPriceAvailable(state)).toBe(false);
+      expect(getProductPriceAddition(state, props)).toBe(0);
+      expect(getProductTotalPrice(state, props)).toBe(10.51);
+      expect(isFullPriceAvailable(state, props)).toBe(false);
 
       // No product options can be found since they are on the variant only.
-      expect(getRawProductOptions(state)).toBeFalsy();
+      expect(getRawProductOptions(state, props)).toBeFalsy();
     });
 
     it('Step 2: Select a children/variant', () => {
-      store.dispatch(setProductVariantId('SG76'));
-      const state = store.getState();
+      const props = {
+        productId: 'SG74',
+        variantId: 'SG76',
+        currentOptions: {},
+      };
 
-      // Additional price can still not be calculated because options are now available.
-      expect(getProductPriceAddition(state)).toBe(0);
-      expect(getProductTotalPrice(state)).toBe(10.52);
-      expect(isFullPriceAvailable(state)).toBe(false);
+      // Additional price can still not be calculated because options are not available.
+      expect(getProductPriceAddition(state, props)).toBe(0);
+      expect(getProductTotalPrice(state, props)).toBe(10.52);
+      expect(isFullPriceAvailable(state, props)).toBe(false);
 
       // Product options are now available.
-      expect(getRawProductOptions(state).length).toBe(1);
+      expect(getRawProductOptions(state, props).length).toBe(1);
 
       // Peak into the calculated relative additional prices.
-      const availableOptions = getProductOptions(state);
+      const availableOptions = getProductOptions(state, props);
       expect(availableOptions[0].items[0].price).toBe(5);
       expect(availableOptions[0].items[1].price).toBe(4);
     });
 
+    it('Step 3: Select the option', () => {
+      const props = {
+        productId: 'SG74',
+        variantId: 'SG76',
+        options: {
+          1: '5',
+        },
+        currentOptions: {
+          1: '5',
+        },
+      };
+
+      // Additional price can now be calculated.
+      expect(getProductPriceAddition(state, props)).toBe(5);
+      expect(getProductTotalPrice(state, props)).toBe(15.52);
+
+      // Peak into the calculated relative additional prices.
+      const availableOptions = getProductOptions(state, props);
+      expect(availableOptions[0].items[0].price).toBe(0);
+      expect(availableOptions[0].items[1].price).toBe(-1);
+      expect(isFullPriceAvailable(state, props)).toBe(true);
+    });
+
     it('Step 4: Change to a different variant', () => {
-      store.dispatch(setProductVariantId('SG78'));
-      const state = store.getState();
+      const props = {
+        productId: 'SG74',
+        variantId: 'SG78',
+        options: {
+          1: '5',
+        },
+        currentOptions: {
+          1: '5',
+        },
+      };
 
       // Additional price should still be calculated
-      expect(getProductPriceAddition(state)).toBe(5);
-      expect(getProductTotalPrice(state)).toBe(15.54);
-      expect(isFullPriceAvailable(state)).toBe(true);
+      expect(getProductPriceAddition(state, props)).toBe(5);
+      expect(getProductTotalPrice(state, props)).toBe(15.54);
+      expect(isFullPriceAvailable(state, props)).toBe(true);
 
       // Product options are still available.
-      expect(getRawProductOptions(state).length).toBe(1);
+      expect(getRawProductOptions(state, props).length).toBe(1);
     });
   });
 });

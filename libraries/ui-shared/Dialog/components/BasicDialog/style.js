@@ -45,6 +45,7 @@ const innerActions = css({
 
 const button = css({
   marginRight: `-${themeConfig.variables.gap.small / 2}px`,
+  textAlign: 'right',
 }).toString();
 
 export default {

@@ -8,6 +8,7 @@ import { DEFAULT_SORT } from '../constants/DisplayOptions';
 /**
  * Selects the history state.
  * @param {Object} state The global state.
+ * @deprecated
  * @return {Object}
  */
 export const getHistoryState = state => state.history;
@@ -110,6 +111,7 @@ export const getHistoryLocation = createSelector(
 /**
  * Gets the current redirectLocation from the history state.
  * @param {Object} state The current application state.
+ * @deprecated
  * @return {string|null}
  */
 export const getRedirectLocation = createSelector(

@@ -1,4 +1,5 @@
 import event from '../Event';
+import registerEvents from '../../commands/registerEvents';
 
 import ScannerManager, {
   APP_EVENT_SCANNER_DID_SCAN,
@@ -20,7 +21,7 @@ jest.mock('../Event');
 
 const mockedBroadcastEventCmd = jest.fn();
 jest.mock('../../commands/broadcastEvent', () => (...args) => mockedBroadcastEventCmd(...args));
-jest.mock('../../commands/registerEvents', () => () => {});
+jest.mock('../../commands/registerEvents', () => jest.fn());
 
 const mockedOpenScannerCmd = jest.fn();
 const mockedCloseScannerCmd = jest.fn();
@@ -63,6 +64,13 @@ describe('ScannerManager', () => {
   });
 
   describe('.constructor()', () => {
+    it('should register necessary only once', () => {
+      expect(registerEvents).toHaveBeenCalledTimes(1);
+      const newInstance = new ScannerManager();
+      expect(registerEvents).toHaveBeenCalledTimes(1);
+      expect(newInstance).toBeInstanceOf(ScannerManager);
+    });
+
     it('should work as expected when no options are passed', () => {
       expect(instance.autoClose).toBe(true);
       expect(instance.supportedTypes).toEqual(expect.any(Array));

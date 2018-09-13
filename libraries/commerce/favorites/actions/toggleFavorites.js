@@ -62,7 +62,7 @@ export const requestSync = () => (dispatch, getState) => {
 const addFavorites = productId => (dispatch) => {
   dispatch(requestAddFavorites(productId));
   syncPendingCount += 1;
-  setTimeout(() => dispatch(requestSync()), 0);
+  dispatch(requestSync());
 };
 /**
  * Removes single product from favorites.
@@ -72,7 +72,7 @@ const addFavorites = productId => (dispatch) => {
 const removeProductFromFavorites = (productId, dispatch) => {
   dispatch(requestRemoveFavorites(productId));
   syncPendingCount += 1;
-  setTimeout(() => dispatch(requestSync()), 0);
+  dispatch(requestSync());
 };
 
 /**
@@ -83,7 +83,7 @@ const removeProductFromFavorites = (productId, dispatch) => {
  */
 const removeFavorites = (productId, withRelatives = false) => (dispatch, getState) => {
   if (withRelatives) {
-    const allIds = getProductRelativesOnFavorites(getState(), productId);
+    const allIds = getProductRelativesOnFavorites(getState(), { productId });
     allIds.forEach(id => removeProductFromFavorites(id, dispatch));
     return;
   }

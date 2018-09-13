@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Accordion /> should not render without a renderLabel prop 1`] = `<Accordion />`;
+
+exports[`<Accordion /> should not render without children 1`] = `
+<Accordion
+  renderLabel={[Function]}
+/>
+`;
+
+exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
+<Accordion
+  renderLabel={[Function]}
+>
+  <AccordionContainer>
+    <div
+      aria-hidden={true}
+      className={
+        Object {
+          "data-css-17o6uz7": "",
+        }
+      }
+      onClick={[Function]}
+    >
+      <div
+        className={
+          Object {
+            "data-css-45t5cu": "",
+          }
+        }
+      >
+        <Chevron
+          className="css-lklcs2"
+        >
+          <Icon
+            className="css-lklcs2"
+            color={null}
+            content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+            size="inherit"
+            viewBox="0 0 24 24"
+          >
+            <svg
+              className="css-yys9hb css-lklcs2"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+                }
+              }
+              style={
+                Object {
+                  "fill": null,
+                  "fontSize": "inherit",
+                }
+              }
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            />
+          </Icon>
+        </Chevron>
+      </div>
+    </div>
+    <AccordionContent
+      open={false}
+    >
+      <section
+        className={
+          Object {
+            "data-css-6vzl24": "",
+          }
+        }
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <div
+          className={
+            Object {
+              "data-css-yh2lvw": "",
+            }
+          }
+        >
+          Some content.
+        </div>
+      </section>
+    </AccordionContent>
+  </AccordionContainer>
+</Accordion>
+`;

@@ -26,6 +26,7 @@ describe('Favorites - selectors', () => {
       expect(result instanceof Array).toBe(true);
       expect(result.length).toBe(0);
     });
+
     it('should return empty array when product data is available but empty', () => {
       const result = getFavorites({
         product: {
@@ -44,6 +45,7 @@ describe('Favorites - selectors', () => {
       expect(result instanceof Array).toBe(true);
       expect(result.length).toBe(0);
     });
+
     it('should return products', () => {
       const state = {
         product: {
@@ -72,6 +74,7 @@ describe('Favorites - selectors', () => {
       expect(result[0].name).toBe(mockedList.products[0].name);
     });
   });
+
   describe('getFavoritesCount', () => {
     it('should return positive number', () => {
       const result = getFavoritesCount({
@@ -84,6 +87,7 @@ describe('Favorites - selectors', () => {
       expect(result).toBe(1);
     });
   });
+
   it('should return 0', () => {
     const result = getFavoritesCount({
       favorites: {
@@ -94,6 +98,7 @@ describe('Favorites - selectors', () => {
     });
     expect(result).toBe(0);
   });
+
   describe('hasFavorites', () => {
     it('should return false', () => {
       const result = hasFavorites({
@@ -105,6 +110,7 @@ describe('Favorites - selectors', () => {
       });
       expect(result).toBe(false);
     });
+
     it('should return true', () => {
       const result = hasFavorites({
         favorites: {
@@ -115,6 +121,7 @@ describe('Favorites - selectors', () => {
       });
       expect(result).toBe(true);
     });
+
     /**
      * `.hasFavorites` uses all state related selectors. This checks all possible type errors
      * when selector tries to reach property from unready state.
@@ -124,6 +131,7 @@ describe('Favorites - selectors', () => {
       expect(result).toBe(false);
     });
   });
+
   describe('isInitialLoading', () => {
     const notInitedState = {
       favorites: {},
@@ -139,24 +147,18 @@ describe('Favorites - selectors', () => {
     it('should return true when state is not yet prepared', () => {
       expect(isInitialLoading(notInitedState)).toBe(true);
     });
+
     it('should return false when state is fetched for the first  time', () => {
       expect(isInitialLoading(initedState)).toBe(false);
     });
   });
+
   describe('isCurrentProductOnFavoriteList', () => {
-    const currentProductState = {
-      product: {
-        currentProduct: {
-          productId: 'product_1',
-        },
-      },
-    };
     const initialState = {
-      ...currentProductState,
       favorites: {},
     };
+
     const state = {
-      ...currentProductState,
       favorites: {
         products: {
           ids: ['product_1'],
@@ -164,13 +166,17 @@ describe('Favorites - selectors', () => {
       },
     };
 
+    const props = { productId: 'product_1' };
+
     it('should return false when product is not listed', () => {
-      expect(isCurrentProductOnFavoriteList(initialState)).toBe(false);
+      expect(isCurrentProductOnFavoriteList(initialState, props)).toBe(false);
     });
+
     it('should return true when product is listed', () => {
-      expect(isCurrentProductOnFavoriteList(state)).toBe(true);
+      expect(isCurrentProductOnFavoriteList(state, props)).toBe(true);
     });
   });
+
   describe('isFetching', () => {
     const state = {
       favorites: {
@@ -179,14 +185,24 @@ describe('Favorites - selectors', () => {
         },
       },
     };
-    it('should return true', () => {
-      expect(isFetching(state)).toBe(true);
+
+    let mockedState;
+
+    beforeEach(() => {
+      // Take care that the selector always works with a fresh state.
+      mockedState = JSON.parse(JSON.stringify(state));
     });
+
+    it('should return true', () => {
+      expect(isFetching(mockedState)).toBe(true);
+    });
+
     it('should return false', () => {
-      state.favorites.products.isFetching = false;
-      expect(isFetching(state)).toBe(false);
+      mockedState.favorites.products.isFetching = false;
+      expect(isFetching(mockedState)).toBe(false);
     });
   });
+
   describe('getProductRelativesOnFavorites & isRelativeProductOnList', () => {
     const products = {
       product: {
@@ -230,6 +246,7 @@ describe('Favorites - selectors', () => {
         },
       },
     };
+
     it('should return parent', () => {
       const state = {
         ...products,
@@ -239,10 +256,12 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual(['parent']);
-      expect(isRelativeProductOnList(state, 'parent')).toBe(true);
-      expect(isRelativeProductOnList(state, 'notAChild')).toEqual(false);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'parent' })).toEqual(['parent']);
+      expect(isRelativeProductOnList(state, { productId: 'parent' })).toBe(true);
+      expect(isRelativeProductOnList(state, { productId: 'notAChild' })).toEqual(false);
     });
+
     it('should return parent and child', () => {
       const state = {
         ...products,
@@ -252,11 +271,13 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'child')).toEqual(['parent', 'child']);
-      expect(isRelativeProductOnList(state, 'child')).toEqual(true);
-      expect(isRelativeProductOnList(state, 'parent')).toEqual(true);
-      expect(isRelativeProductOnList(state, 'notAChild')).toEqual(false);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'child' })).toEqual(['parent', 'child']);
+      expect(isRelativeProductOnList(state, { productId: 'child' })).toEqual(true);
+      expect(isRelativeProductOnList(state, { productId: 'parent' })).toEqual(true);
+      expect(isRelativeProductOnList(state, { productId: 'notAChild' })).toEqual(false);
     });
+
     it('should return all relatives', () => {
       const state = {
         ...products,
@@ -266,12 +287,14 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'child')).toEqual(['parent', 'child', 'child2']);
-      expect(isRelativeProductOnList(state, 'child')).toEqual(true);
-      expect(isRelativeProductOnList(state, 'parent')).toEqual(true);
-      expect(isRelativeProductOnList(state, 'child2')).toEqual(true);
-      expect(isRelativeProductOnList(state, 'notAChild')).toEqual(false);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'child' })).toEqual(['parent', 'child', 'child2']);
+      expect(isRelativeProductOnList(state, { productId: 'child' })).toEqual(true);
+      expect(isRelativeProductOnList(state, { productId: 'parent' })).toEqual(true);
+      expect(isRelativeProductOnList(state, { productId: 'child2' })).toEqual(true);
+      expect(isRelativeProductOnList(state, { productId: 'notAChild' })).toEqual(false);
     });
+
     it('should return child', () => {
       const state = {
         ...products,
@@ -281,9 +304,11 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'child')).toEqual(['child']);
-      expect(isRelativeProductOnList(state, 'child')).toEqual(true);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'child' })).toEqual(['child']);
+      expect(isRelativeProductOnList(state, { productId: 'child' })).toEqual(true);
     });
+
     it('should return nothing for parent which is not on the list', () => {
       const state = {
         ...products,
@@ -293,8 +318,10 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual([]);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'parent' })).toEqual([]);
     });
+
     it('should return parent product when parent is a simple product', () => {
       const state = {
         product: {
@@ -316,9 +343,11 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual(['parent']);
-      expect(isRelativeProductOnList(state, 'parent')).toEqual(true);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'parent' })).toEqual(['parent']);
+      expect(isRelativeProductOnList(state, { productId: 'parent' })).toEqual(true);
     });
+
     it('should return nothing when parent is a simple product but not on fav list', () => {
       const state = {
         product: {
@@ -340,8 +369,9 @@ describe('Favorites - selectors', () => {
           },
         },
       };
-      expect(getProductRelativesOnFavorites(state, 'parent')).toEqual([]);
-      expect(isRelativeProductOnList(state, 'parent')).toEqual(false);
+
+      expect(getProductRelativesOnFavorites(state, { productId: 'parent' })).toEqual([]);
+      expect(isRelativeProductOnList(state, { productId: 'parent' })).toEqual(false);
     });
   });
 });

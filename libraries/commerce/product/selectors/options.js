@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { validateSelectorParams } from '@shopgate/pwa-common/helpers/data';
 import {
+  getProductId,
   getProductState,
   getCurrentProduct,
   getProductCurrency,
@@ -36,7 +37,7 @@ const findProductOptionItem = (options, optionId, itemId) => (
  * @returns {Object} The product options.
  */
 export const getRawProductOptions = createSelector(
-  (state, props) => props.productId,
+  getProductId,
   getProductOptionsState,
   (productId, productOptionsState) => {
     const productOptions = productOptionsState[productId];
@@ -85,7 +86,7 @@ const getOptionItems = createSelector(
  */
 export const getProductOptions = createSelector(
   getProductCurrency,
-  (state, props) => props.currentOptions,
+  (state, props = {}) => props.currentOptions,
   getRawProductOptions,
   validateSelectorParams((currency, currentOptions, options) => (
     options.map(option => ({
@@ -120,7 +121,7 @@ export const hasProductOptions = createSelector(
  */
 export const areProductOptionsSet = createSelector(
   getRawProductOptions,
-  (state, props) => props.options,
+  (state, props = {}) => props.options || false,
   validateSelectorParams((options, currentOptions) => (
     options.length === Object.keys(currentOptions).length
   ))

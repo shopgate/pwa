@@ -6,7 +6,12 @@ describe('<AddToCartButton />', () => {
   it('should render in loading state and should not be clickable', () => {
     const spy = jest.fn(() => new Promise(resolve => resolve()));
 
-    const wrapper = mount(<AddToCartButton handleAddToCart={spy} isLoading isOrderable />);
+    const wrapper = mount(<AddToCartButton
+      onClick={spy}
+      isLoading
+      isOrderable
+      isDisabled={false}
+    />);
     wrapper.find('button').prop('onClick')();
 
     expect(wrapper).toMatchSnapshot();
@@ -15,7 +20,12 @@ describe('<AddToCartButton />', () => {
 
   it('should render with checkmark icon and should not be clickable the second time', () => {
     const spy = jest.fn(() => new Promise(resolve => resolve()));
-    const wrapper = mount(<AddToCartButton handleAddToCart={spy} isLoading={false} isOrderable />);
+    const wrapper = mount(<AddToCartButton
+      onClick={spy}
+      isLoading={false}
+      isOrderable
+      isDisabled={false}
+    />);
 
     wrapper.find('button').prop('onClick')();
     wrapper.update();
@@ -29,7 +39,12 @@ describe('<AddToCartButton />', () => {
 
   it('should render with cart icon and should be clickable', () => {
     const spy = jest.fn(() => new Promise(resolve => resolve()));
-    const wrapper = mount(<AddToCartButton handleAddToCart={spy} isLoading={false} isOrderable />);
+    const wrapper = mount(<AddToCartButton
+      onClick={spy}
+      isLoading={false}
+      isOrderable
+      isDisabled={false}
+    />);
     wrapper.find('button').prop('onClick')();
 
     expect(wrapper).toMatchSnapshot();

@@ -1,4 +1,5 @@
 import conductor from '@virtuous/conductor';
+import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import {
   ACTION_POP,
   ACTION_PUSH,
@@ -7,6 +8,9 @@ import {
 } from '@virtuous/conductor/constants';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
+import setViewLoading from '../actions/view/setViewLoading';
+import unsetViewLoading from '../actions/view/unsetViewLoading';
+import { historyRedirect } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
 import { navigate$ } from '../streams';
@@ -20,12 +24,22 @@ jest.mock('@virtuous/conductor', () => ({
   replace: jest.fn(),
 }));
 
+jest.mock('@shopgate/pwa-core/classes/AppCommand');
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => jest.fn());
+
 let mockedShopCNAME = null;
+let mockedWebCheckoutConfig = null;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get shopCNAME() { return mockedShopCNAME; },
+  get webCheckoutShopify() { return mockedWebCheckoutConfig; },
 }));
 
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
+jest.mock('../actions/router', () => ({
+  historyRedirect: jest.fn(),
+}));
+jest.mock('../actions/view/setViewLoading', () => jest.fn());
+jest.mock('../actions/view/unsetViewLoading', () => jest.fn());
 
 describe('Router subscriptions', () => {
   const subscribe = jest.fn();
@@ -46,18 +60,21 @@ describe('Router subscriptions', () => {
 
   beforeAll(() => {
     jest.spyOn(logger, 'warn').mockImplementation();
+    jest.spyOn(logger, 'error').mockImplementation();
 
     // Setup a protected route
     authRoutes.set(protectedRoute, protectorRoute);
+    getCurrentRoute.mockReturnValue({ pathname: protectorRoute });
   });
 
   beforeEach(() => {
     jest.clearAllMocks();
     mockedShopCNAME = null;
+    mockedWebCheckoutConfig = null;
     subscriptions(subscribe);
   });
 
-  it('should subscribe as expected', () => {
+  it('should subscribe as expected', async () => {
     expect(subscribe).toHaveBeenCalledTimes(2);
   });
 
@@ -113,6 +130,7 @@ describe('Router subscriptions', () => {
 
     beforeEach(() => {
       [[stream, callback]] = subscribe.mock.calls;
+      redirects.constructor();
     });
 
     it('should setup as expected', () => {
@@ -120,22 +138,22 @@ describe('Router subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should not do anything when no suitable action is passed', () => {
-      callback(createCallbackPayload({ params: { action: 'W00P' } }));
+    it('should not do anything when no suitable action is passed', async () => {
+      await callback(createCallbackPayload({ params: { action: 'W00P' } }));
       testExpectedCall();
     });
 
-    it('should handle the ACTION_POP history action as expected', () => {
-      callback(createCallbackPayload({ params: { action: ACTION_POP } }));
+    it('should handle the ACTION_POP history action as expected', async () => {
+      await callback(createCallbackPayload({ params: { action: ACTION_POP } }));
       testExpectedCall(conductor.pop);
     });
 
-    it('should handle the ACTION_RESET history action as expected', () => {
-      callback(createCallbackPayload({ params: { action: ACTION_RESET } }));
+    it('should handle the ACTION_RESET history action as expected', async () => {
+      await callback(createCallbackPayload({ params: { action: ACTION_RESET } }));
       testExpectedCall(conductor.reset);
     });
 
-    it('should handle the ACTION_PUSH history action as expected', () => {
+    it('should handle the ACTION_PUSH history action as expected', async () => {
       getState.mockReturnValueOnce({ user: { login: { isLoggedIn: true } } });
 
       const params = {
@@ -145,22 +163,22 @@ describe('Router subscriptions', () => {
         silent: true,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(conductor.push, params);
     });
 
-    it('should handle the ACTION_REPLACE history action as expected', () => {
+    it('should handle the ACTION_REPLACE history action as expected', async () => {
       const params = {
         action: ACTION_REPLACE,
         pathname: '/some_route',
         silent: false,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(conductor.replace, params);
     });
 
-    it('should remove trailing slashes from pathnames', () => {
+    it('should remove trailing slashes from pathnames', async () => {
       const params = {
         action: ACTION_PUSH,
         pathname: '/some_route/',
@@ -168,14 +186,14 @@ describe('Router subscriptions', () => {
         silent: true,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(conductor.push, {
         ...params,
         pathname: params.pathname.slice(0, -1),
       });
     });
 
-    it('should redirect to a protector route when the user is not logged in', () => {
+    it('should redirect to a protector route when the user is not logged in', async () => {
       getState.mockReturnValueOnce({ user: { login: { isLoggedIn: false } } });
 
       const params = {
@@ -184,7 +202,7 @@ describe('Router subscriptions', () => {
         silent: false,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(dispatch);
       expect(dispatch).toHaveBeenCalledWith(navigate({
         action: params.action,
@@ -198,7 +216,7 @@ describe('Router subscriptions', () => {
       }));
     });
 
-    it('should not redirect to a protector route when the user is logged in', () => {
+    it('should not redirect to a protector route when the user is logged in', async () => {
       getState.mockReturnValueOnce({ user: { login: { isLoggedIn: true } } });
 
       const params = {
@@ -208,12 +226,12 @@ describe('Router subscriptions', () => {
         silent: true,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
 
       testExpectedCall(conductor.push, params);
     });
 
-    it('should redirect to another location correctly', () => {
+    it('should redirect to another location correctly', async () => {
       redirects.set('/some_route', '/some_other_route');
 
       const params = {
@@ -221,12 +239,55 @@ describe('Router subscriptions', () => {
         pathname: '/some_route',
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(conductor.push);
       expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
     });
 
-    it('should convert shop links as expected', () => {
+    it('should redirect to another location when the redirect handler is a promise', async () => {
+      /**
+       * @return {Promise}
+       */
+      const redirectHandler = () => Promise.resolve('/some_other_route');
+
+      redirects.set('/some_route', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(conductor.push).toHaveBeenCalledTimes(1);
+      expect(conductor.push).toHaveBeenCalledWith('/some_other_route', params.state, params.silent);
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(setViewLoading).toHaveBeenCalledWith(protectorRoute);
+      expect(unsetViewLoading).toHaveBeenCalledWith(protectorRoute);
+    });
+
+    it('should abort navigation when a redirect handler rejects', async () => {
+      const error = new Error('W00ps');
+
+      /**
+       * @return {Promise}
+       */
+      const redirectHandler = () => Promise.reject(error);
+      redirects.set('/some_route', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route',
+      };
+
+      await expect(callback(createCallbackPayload({ params }))).resolves.toBe();
+      expect(conductor.push).not.toHaveBeenCalled();
+      expect(logger.error).toHaveBeenCalledWith(error);
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(setViewLoading).toHaveBeenCalledWith(protectorRoute);
+      expect(unsetViewLoading).toHaveBeenCalledWith(protectorRoute);
+    });
+
+    it('should convert shop links as expected', async () => {
       mockedShopCNAME = 'm.awesomeshop.com';
 
       const params = {
@@ -234,23 +295,23 @@ describe('Router subscriptions', () => {
         pathname: `https://${mockedShopCNAME}/some_route`,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(conductor.push);
       expect(conductor.push).toHaveBeenCalledWith('/some_route', params.state, params.silent);
     });
 
-    it('should handle external links like expected', () => {
+    it('should handle external links like expected', async () => {
       const params = {
         action: ACTION_PUSH,
         pathname: 'https://www.awesome-shop.com/some_route',
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(openExternalLinkSpy);
-      expect(openExternalLinkSpy).toHaveBeenCalledWith(params.pathname);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
     });
 
-    it('should handle native links like expected', () => {
+    it('should handle native links like expected', async () => {
       /**
        * Replace the implementation of handler.openNative link temporarily. It reassigns
        * window.location.href intenrnally, which would cause a jest error.
@@ -261,31 +322,62 @@ describe('Router subscriptions', () => {
         pathname: 'tel:+49123456789',
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(openNativeLinkSpy);
       expect(openNativeLinkSpy).toHaveBeenCalledWith(params.pathname);
     });
 
-    it('should open a legacy page as expected', () => {
+    it('should open a legacy page as expected', async () => {
       const params = {
         action: ACTION_PUSH,
         pathname: '/page/imprint',
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(openLegacySpy);
-      expect(openLegacySpy).toHaveBeenCalledWith(params.pathname);
+      expect(openLegacySpy).toHaveBeenCalledWith(params.pathname, params.action);
     });
 
-    it('should open a legacy link as expected', () => {
+    it('should open a legacy link as expected', async () => {
       const params = {
         action: ACTION_PUSH,
-        pathname: `/${handler.LEGACY_LINK_ACCOUNT}`,
+        pathname: handler.LEGACY_LINK_ACCOUNT,
       };
 
-      callback(createCallbackPayload({ params }));
+      await callback(createCallbackPayload({ params }));
       testExpectedCall(openLegacyLinkSpy);
-      expect(openLegacyLinkSpy).toHaveBeenCalledWith(params.pathname);
+      expect(openLegacyLinkSpy).toHaveBeenCalledWith(params.pathname, params.action);
+    });
+  });
+
+  describe('redirectUser$', () => {
+    let callback;
+
+    beforeEach(() => {
+      [, [, callback]] = subscribe.mock.calls;
+    });
+
+    it('should redirect when no web checkout config is set', () => {
+      const redirect = {
+        pathname: protectedRoute,
+        state: {},
+      };
+
+      callback(createCallbackPayload({ redirect }));
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyRedirect).toHaveBeenCalledWith(redirect);
+    });
+
+    it('should not redirect when a web checkout config is set', () => {
+      mockedWebCheckoutConfig = { config: 'key' };
+
+      const redirect = {
+        pathname: protectedRoute,
+        state: {},
+      };
+
+      callback(createCallbackPayload({ redirect }));
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });

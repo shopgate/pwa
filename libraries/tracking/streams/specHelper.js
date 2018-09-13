@@ -3,13 +3,14 @@ import productReducers from '@shopgate/pwa-common-commerce/product/reducers';
 import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import { updateHistory } from '@shopgate/pwa-common/action-creators/history';
 
+/*
 let mockedInitialPathname;
 jest.mock('history/createBrowserHistory', () => () => ({
   location: {
     get pathname() { return mockedInitialPathname; },
   },
 }));
-
+*/
 jest.mock('redux-logger', () => ({
   createLogger: () => () => next => action => next(action),
 }));
@@ -20,6 +21,7 @@ jest.mock('redux-logger', () => ({
  * @return {Onject}
  */
 export const createStore = (pathname = '/somepath') => {
+  // eslint-disable-next-line no-undef
   mockedInitialPathname = pathname;
   return configureStore({
     product: productReducers,

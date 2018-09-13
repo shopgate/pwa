@@ -31,11 +31,7 @@ exports[`<TextField /> should focus the input 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -53,11 +49,7 @@ exports[`<TextField /> should focus the input 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -152,11 +144,7 @@ exports[`<TextField /> should focus the input 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -194,11 +182,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -216,11 +200,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -315,11 +295,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -357,11 +333,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -379,11 +351,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -478,11 +446,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -520,11 +484,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -542,11 +502,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -641,11 +597,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -683,11 +635,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -705,11 +653,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -804,11 +748,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -846,11 +786,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -868,11 +804,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -1010,11 +942,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -1032,11 +960,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -1131,11 +1055,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -1173,11 +1093,7 @@ exports[`<TextField /> should show the error message 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -1195,11 +1111,7 @@ exports[`<TextField /> should show the error message 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -1361,11 +1273,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -1460,11 +1368,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -1502,11 +1406,7 @@ exports[`<TextField /> should show the label 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -1625,11 +1525,7 @@ exports[`<TextField /> should show the label 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -1653,6 +1549,16 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
         Array [
           "a",
         ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
       ],
     }
   }
@@ -1678,11 +1584,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -1700,11 +1602,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -1799,11 +1697,7 @@ exports[`<TextField /> should trigger the onChange callback 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>
@@ -1828,6 +1722,12 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           "",
         ],
       ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
     }
   }
   password={false}
@@ -1849,11 +1749,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </Hint>
     <Label
@@ -1871,11 +1767,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </label>
     </Label>
     <FormElement
@@ -1970,11 +1862,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           className=""
           params={Object {}}
           string=""
-        >
-          <span
-            className=""
-          />
-        </Translate>
+        />
       </div>
     </ErrorText>
   </div>

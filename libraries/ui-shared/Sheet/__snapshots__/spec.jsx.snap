@@ -6,7 +6,7 @@ exports[`<Sheet /> should open 1`] = `
   backdrop={true}
   duration={300}
   isOpen={true}
-  onClose={null}
+  onClose={[Function]}
   onOpen={[Function]}
   title="Test-Title"
 >
@@ -22,7 +22,7 @@ exports[`<Sheet /> should open 1`] = `
       }
       className="css-h69706"
       isOpen={true}
-      onClose={null}
+      onClose={[Function]}
       onDidClose={[Function]}
       onOpen={[Function]}
     >
@@ -37,15 +37,16 @@ exports[`<Sheet /> should open 1`] = `
       >
         <Header
           onToggleClose={[Function]}
+          shadow={false}
           title="Test-Title"
         >
           <Grid
-            className=""
+            className="css-1hncgty"
             component="div"
             wrap={false}
           >
             <div
-              className=" css-h7r55a"
+              className="css-1hncgty css-h7r55a"
             >
               <button
                 className="css-b3dcfs"
@@ -56,6 +57,7 @@ exports[`<Sheet /> should open 1`] = `
                   color="#000"
                   disabled={false}
                   fill={false}
+                  onClick={[Function]}
                   onComplete={[Function]}
                   overflow={false}
                   size={null}
@@ -115,6 +117,7 @@ exports[`<Sheet /> should open 1`] = `
         </Header>
         <div
           className="css-1aon90l false"
+          onScroll={[Function]}
         >
           <div
             key=".0"
@@ -220,12 +223,13 @@ exports[`<Sheet /> should render closed without content 1`] = `
     }
     className="css-h69706"
     isOpen={false}
-    onClose={null}
+    onClose={[Function]}
     onDidClose={[Function]}
     onOpen={[Function]}
   >
     <div
       className="css-1aon90l false"
+      onScroll={[Function]}
     />
   </Drawer>
   <Backdrop
@@ -253,12 +257,13 @@ exports[`<Sheet /> should render opened without content 1`] = `
     }
     className="css-h69706"
     isOpen={true}
-    onClose={null}
+    onClose={[Function]}
     onDidClose={[Function]}
     onOpen={[Function]}
   >
     <div
       className="css-1aon90l false"
+      onScroll={[Function]}
     />
   </Drawer>
   <Backdrop
@@ -286,16 +291,18 @@ exports[`<Sheet /> should render with content and title 1`] = `
     }
     className="css-h69706"
     isOpen={true}
-    onClose={null}
+    onClose={[Function]}
     onDidClose={[Function]}
     onOpen={[Function]}
   >
     <Header
       onToggleClose={[Function]}
+      shadow={false}
       title="Test-Title"
     />
     <div
       className="css-1aon90l false"
+      onScroll={[Function]}
     >
       <div
         key=".0"
@@ -326,6 +333,17 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     [MockFunction] {
       "calls": Array [
         Array [],
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
       ],
     }
   }
@@ -344,13 +362,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       }
       className="css-h69706"
       isOpen={false}
-      onClose={
-        [MockFunction] {
-          "calls": Array [
-            Array [],
-          ],
-        }
-      }
+      onClose={[Function]}
       onDidClose={[Function]}
       onOpen={[Function]}
     >
@@ -365,15 +377,16 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       >
         <Header
           onToggleClose={[Function]}
+          shadow={false}
           title="Test-Title"
         >
           <Grid
-            className=""
+            className="css-1hncgty"
             component="div"
             wrap={false}
           >
             <div
-              className=" css-h7r55a"
+              className="css-1hncgty css-h7r55a"
             >
               <button
                 className="css-b3dcfs"
@@ -384,6 +397,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   color="#000"
                   disabled={false}
                   fill={false}
+                  onClick={[Function]}
                   onComplete={[Function]}
                   overflow={false}
                   size={null}
@@ -443,6 +457,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         </Header>
         <div
           className="css-1aon90l false"
+          onScroll={[Function]}
         >
           <div
             key=".0"

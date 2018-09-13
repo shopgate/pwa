@@ -1,6 +1,7 @@
 import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
 
-const hash = '{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","productId":"foo"}';
+const mockProductId = 'foo';
+const hash = `{"filters":{},"pipeline":"shopgate.catalog.getProductReviews","productId":"${mockProductId}"}`;
 
 /**
  * Get a reviews state.
@@ -42,7 +43,8 @@ const writeReviewRouteMock = {
 };
 
 const mockedProduct = {
-  id: 'foo',
+  id: mockProductId,
+  baseProductId: null,
   rating: {
     average: 0,
     count: 0,
@@ -50,7 +52,7 @@ const mockedProduct = {
 };
 
 const mockedProductWithRating = {
-  id: 'foo',
+  id: mockProductId,
   rating: {
     average: 50,
     count: 4,
@@ -77,9 +79,8 @@ const mockReview = id => ({
  */
 const mockedStateWithAll = {
   product: {
-    currentProduct: mockedProduct,
     productsById: {
-      foo: {
+      [mockProductId]: {
         productData: mockedProductWithRating,
       },
     },
@@ -93,7 +94,7 @@ const mockedStateWithAll = {
       4: mockReview(4),
     },
     reviewsByProductId: {
-      foo: {
+      [mockProductId]: {
         reviews: [
           1,
           2,
@@ -116,9 +117,9 @@ const mockedStateWithAll = {
 const mockedStateWithTwoReviews = (() => {
   // Must do deep clone here.
   const mockedState = JSON.parse(JSON.stringify(mockedStateWithAll));
-  mockedState.reviews.reviewsByProductId.foo.reviews =
-    mockedState.reviews.reviewsByProductId.foo.reviews.slice(0, 2);
-  mockedState.reviews.reviewsByProductId.foo.totalReviewCount = 2;
+  mockedState.reviews.reviewsByProductId[mockProductId].reviews =
+    mockedState.reviews.reviewsByProductId[mockProductId].reviews.slice(0, 2);
+  mockedState.reviews.reviewsByProductId[mockProductId].totalReviewCount = 2;
   mockedState.reviews.reviewsByHash[hash].reviews.slice(0, 2);
   mockedState.reviews.reviewsByHash[hash].reviews.totalReviewCount = 2;
 
@@ -133,7 +134,7 @@ const mockedStateWithoutReview = {
   product: {
     currentProduct: mockedProduct,
     productsById: {
-      foo: {
+      [mockProductId]: {
         productData: mockedProduct,
       },
     },
@@ -197,6 +198,7 @@ const getReviewsStateForId = (id) => {
  */
 const setMocks = (mockReviewsAvailable = true) => {
   jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
+    ...require.requireActual('@shopgate/pwa-common/helpers/config'),
     get hasReviews() { return mockReviewsAvailable; },
     get showWriteReview() { return true; },
     themeConfig: mockedConfig,
@@ -205,6 +207,7 @@ const setMocks = (mockReviewsAvailable = true) => {
 
 export {
   hash,
+  mockProductId,
   getReviewsStateForId,
   mockReview,
   mockedStateProductEmpty,

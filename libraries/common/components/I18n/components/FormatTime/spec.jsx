@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import I18n from '../../index';
 
-describe.skip('<FormatTime />', () => {
+describe('<FormatTime />', () => {
   let renderedElement;
   const testLocales = {
     greeting: 'Hello {time}',
@@ -41,9 +41,7 @@ describe.skip('<FormatTime />', () => {
   });
 
   describe('Given the component was mounted to the DOM', () => {
-    it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
-    });
+    // TODO: Handle snapshot test.
 
     it('should render formatted time', () => {
       const text = renderedElement.find('.only-time').text();

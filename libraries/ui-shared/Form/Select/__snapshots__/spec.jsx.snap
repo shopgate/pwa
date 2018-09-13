@@ -39,11 +39,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </div>
       </Placeholder>
       <Label
@@ -61,11 +57,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </label>
       </Label>
       <select
@@ -110,6 +102,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       </Underline>
       <ErrorText
         className={null}
+        error={null}
         errorText=""
       >
         <div
@@ -119,11 +112,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </div>
       </ErrorText>
     </div>
@@ -170,11 +159,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </div>
       </Placeholder>
       <Label
@@ -192,11 +177,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </label>
       </Label>
       <select
@@ -241,6 +222,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
       </Underline>
       <ErrorText
         className={null}
+        error={null}
         errorText=""
       >
         <div
@@ -250,11 +232,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </div>
       </ErrorText>
     </div>
@@ -296,11 +274,7 @@ exports[`<Select /> should render select with no options 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </div>
       </Placeholder>
       <Label
@@ -318,11 +292,7 @@ exports[`<Select /> should render select with no options 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </label>
       </Label>
       <select
@@ -354,6 +324,7 @@ exports[`<Select /> should render select with no options 1`] = `
       </Underline>
       <ErrorText
         className={null}
+        error={null}
         errorText=""
       >
         <div
@@ -363,11 +334,7 @@ exports[`<Select /> should render select with no options 1`] = `
             className=""
             params={Object {}}
             string=""
-          >
-            <span
-              className=""
-            />
-          </Translate>
+          />
         </div>
       </ErrorText>
     </div>

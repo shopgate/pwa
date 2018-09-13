@@ -9,7 +9,6 @@ import { SOURCE_APP, SOURCE_PIPELINE } from '@shopgate/pwa-core/classes/ErrorMan
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import pipelineManager from '@shopgate/pwa-core/classes/PipelineManager';
 import * as errorCodes from '@shopgate/pwa-core/constants/Pipeline';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import * as events from '@virtuous/conductor-events';
 import { appError, pipelineError } from '../action-creators';
 import {
@@ -66,7 +65,7 @@ export default function app(subscribe) {
   /**
    * Gets triggered when the app starts.
    */
-  subscribe(appDidStart$, ({ action, dispatch, getState }) => {
+  subscribe(appDidStart$, ({ dispatch, getState }) => {
     // Register for custom events
     registerEvents([
       'showPreviousTab',
@@ -103,17 +102,6 @@ export default function app(subscribe) {
     event.addCallback('viewWillDisappear', () => {});
     event.addCallback('viewDidDisappear', () => {});
     event.addCallback('pageInsetsChanged', () => {});
-
-    if (action.location !== INDEX_PATH) {
-      dispatch(historyPush({
-        pathname: INDEX_PATH,
-        silent: true,
-      }));
-    }
-
-    dispatch(historyPush({
-      pathname: action.location,
-    }));
 
     /*
      * Onload must be send AFTER app did start.

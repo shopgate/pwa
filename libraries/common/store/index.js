@@ -2,8 +2,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
-import { applyWorker } from 'redux-worker';
+import syncRouter from '@virtuous/redux-conductor';
 import persistedReducers from '../collections/PersistedReducers';
+import initScubribers from '../subscriptions';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -23,20 +24,24 @@ if (window.localStorage) {
 /**
  * Configures the redux store with all it's middleware and enhancers.
  * @param {Function} reducers The reducers from the theme.
- * @param {Function} Worker The web worker.
+ * @param {Array} subscribers The subscribers to the streams middleware.
  * @return {Object} The redux store.
  */
-const configureStore = (reducers, Worker) => createStore(
-  reducers, // The reducers.
-  initialState,
-  composeWithDevTools(
-    applyMiddleware(thunk, streams, logger),
-    applyWorker(new Worker()),
-    persistState({
-      key: storeKey,
-      paths: persistedReducers.getAll(),
-    })
-  )
-);
+export function configureStore(reducers, subscribers) {
+  const store = createStore(
+    reducers,
+    initialState,
+    composeWithDevTools(
+      applyMiddleware(thunk, streams, logger),
+      persistState({
+        key: storeKey,
+        paths: persistedReducers.getAll(),
+      })
+    )
+  );
 
-export default configureStore;
+  initScubribers(subscribers);
+  syncRouter(store);
+
+  return store;
+}

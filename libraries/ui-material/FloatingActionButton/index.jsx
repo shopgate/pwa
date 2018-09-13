@@ -20,6 +20,7 @@ const FloatingActionButton = (props) => {
     background,
     children,
     className,
+    disabled,
     onClick,
     raised,
     ref,
@@ -41,6 +42,7 @@ const FloatingActionButton = (props) => {
   return (
     <button
       className={classes}
+      disabled={disabled}
       onClick={onClick}
       ref={ref}
       style={{ background }}
@@ -56,6 +58,7 @@ FloatingActionButton.propTypes = {
   children: PropTypes.node.isRequired,
   background: PropTypes.string,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   raised: PropTypes.bool,
   ref: PropTypes.node,
@@ -67,6 +70,7 @@ FloatingActionButton.propTypes = {
 FloatingActionButton.defaultProps = {
   background: colors.primary,
   className: null,
+  disabled: false,
   onClick: () => {},
   raised: true,
   ref: null,

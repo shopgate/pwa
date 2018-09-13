@@ -7,7 +7,6 @@ import * as pipelines from '../constants/Pipelines';
 import requestProducts from '../action-creators/requestProducts';
 import receiveProducts from '../action-creators/receiveProducts';
 import errorProducts from '../action-creators/errorProducts';
-import { getActiveFilters } from '../../filter/selectors';
 
 /**
  * Process the pipeline params to be compatible.
@@ -54,6 +53,7 @@ const processParams = (params, filters, includeSort = true, includeFilters = tru
  */
 const getProducts = ({
   params = {},
+  filters = null,
   pipeline = pipelines.SHOPGATE_CATALOG_GET_PRODUCTS,
   cached = true,
   id = null,
@@ -66,7 +66,6 @@ const getProducts = ({
     const { offset, limit, ...hashParams } = params;
 
     const { sort = DEFAULT_SORT } = hashParams;
-    const filters = getActiveFilters(state);
 
     // We need to process the params to handle edge cases in the pipeline params.
     const requestParams = processParams(params, filters, includeSort, includeFilters);
