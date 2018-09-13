@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import { persistState } from '@virtuous/redux-persister';
 import syncRouter from '@virtuous/redux-conductor';
 import persistedReducers from '../collections/PersistedReducers';
-import initScubribers from '../subscriptions';
+import initSubcribers from '../subscriptions';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
 
@@ -40,7 +40,7 @@ export function configureStore(reducers, subscribers) {
     )
   );
 
-  initScubribers(subscribers);
+  initSubcribers(subscribers);
   syncRouter(store);
 
   return store;
