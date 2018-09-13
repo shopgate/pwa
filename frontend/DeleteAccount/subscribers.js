@@ -1,6 +1,7 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
+import ToastProvider from '@shopgate/pwa-common/providers/toast';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
-import createToast from '@shopgate/pwa-common/actions/toast/createToast';
 import deleteAccountAction from './action';
 
 export default (subscribe) => {
@@ -18,16 +19,13 @@ export default (subscribe) => {
     }
   });
 
-  subscribe(deleteAccountSuccess$, ({ dispatch }) => {
-    dispatch({
-      type: 'TOGGLE_NAV_DRAWER',
-      active: false,
-    });
+  subscribe(deleteAccountSuccess$, ({ events }) => {
+    NavDrawer.close();
 
-    dispatch(createToast({
-      duration: 2000,
+    events.emit(ToastProvider.ADD, {
+      id: 'user.account.deleted',
       message: 'user.delete_account_success',
-    }));
+    });
   });
 
   subscribe(deleteAccountFailed$, ({ dispatch }) => {
