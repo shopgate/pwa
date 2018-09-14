@@ -56,6 +56,7 @@ endif
 clean:
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
+		make clean-build
 		lerna clean --yes
 		rm -f ./.git/hooks/pre-commit
 		rm -rf ./node_modules/
