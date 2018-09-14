@@ -35,6 +35,16 @@
       "id": "de-DE",
       "path": "frontend/locale/de-DE.json",
       "type": "translations"
+    },
+    {
+      "id": "fr-FR",
+      "path": "frontend/locale/fr-FR.json",
+      "type": "translations"
+    },
+    {
+      "id": "nl-NL",
+      "path": "frontend/locale/nl-NL.json",
+      "type": "translations"
     }
   ]
 }

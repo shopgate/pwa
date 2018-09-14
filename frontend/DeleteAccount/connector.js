@@ -11,11 +11,11 @@ const mapStateToProps = state => ({
 });
 
 /**
- * @param {function} dispatch The redux dispatch function.
+ * @param {Function} dispatch The redux dispatch function.
  * @return {{deleteAccountRequest: (function(): *)}}
  */
 const mapDispatchToProps = dispatch => ({
-  deleteAccountRequest: () => dispatch({
+  deleteAccount: () => dispatch({
     type: 'DELETE_ACCOUNT_REQUESTED',
   }),
 });

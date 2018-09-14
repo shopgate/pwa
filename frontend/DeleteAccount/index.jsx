@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { NavDrawer } from '@shopgate/pwa-ui-material';
 import SecurityIcon from '@shopgate/pwa-ui-shared/icons/SecurityIcon';
 import connect from './connector';
 
 /**
- * Delete account button component
+ * The DeleteAccount component
  */
 class DeleteAccount extends Component {
   static propTypes = {
-    deleteAccountRequest: PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired,
     isShown: PropTypes.bool,
   }
 
@@ -21,25 +21,25 @@ class DeleteAccount extends Component {
    * Handler to request account removal
    */
   handleDeleteAccount = () => {
-    this.props.deleteAccountRequest();
+    this.props.deleteAccount();
   }
 
   /**
-   * Render function
-   * @return {*}
+   * @return {JSX|null}
    */
   render() {
-    // eslint-disable-next-line react/prop-types
-    const { Item, isShown } = this.props;
+    const { isShown } = this.props;
 
     if (!isShown) {
       return null;
     }
 
     return (
-      <Item key="deleteuser" onClick={this.handleDeleteAccount} title="user.delete_account" icon={SecurityIcon}>
-        <I18n.Text string="user.delete_account" />
-      </Item>
+      <NavDrawer.Item
+        icon={SecurityIcon}
+        label="user.delete_account"
+        onClick={this.handleDeleteAccount}
+      />
     );
   }
 }
