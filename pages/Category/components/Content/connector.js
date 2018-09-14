@@ -1,9 +1,5 @@
 import { connect } from 'react-redux';
-import {
-  getChildCategoriesById,
-  hasChildren,
-  hasProducts,
-} from '@shopgate/pwa-common-commerce/category/selectors';
+import { hasChildren, hasProducts } from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -12,9 +8,25 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  categories: getChildCategoriesById(state, props),
   hasProducts: hasProducts(state, props),
   hasChildren: hasChildren(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if (prev.hasProducts !== next.hasProducts) {
+    return false;
+  }
+
+  if (prev.hasChildren !== next.hasChildren) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });

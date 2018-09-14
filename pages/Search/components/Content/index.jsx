@@ -32,9 +32,7 @@ class SearchContent extends Component {
    */
   render() {
     const {
-      searchPhrase,
-      showFilterBar,
-      showNoResults,
+      searchPhrase, showFilterBar, showNoResults,
     } = this.props;
 
     return (
