@@ -7,6 +7,12 @@ UTILS = eslint-config unit-tests e2e
 THEMES = gmd ios11
 REPO_VERSION = ''
 
+setup:
+		sgconnect init
+		git submodule init
+		git submodule update
+		make clean
+
 checkout-develop:
 		git checkout develop
 		git submodule foreach --recursive git checkout develop
