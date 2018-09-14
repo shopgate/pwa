@@ -10,3 +10,6 @@
 [submodule "extensions/@shopgate-tracking-ga-native"]
 	path = extensions/@shopgate-tracking-ga-native
 	url = git@github.com:shopgate/tracking-ga-native.git
+[submodule "extensions/@shopgate-user-privacy"]
+	path = extensions/@shopgate-user-privacy
+	url = git@github.com:shopgate/ext-user-privacy.git
