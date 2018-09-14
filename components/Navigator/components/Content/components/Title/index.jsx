@@ -2,14 +2,16 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ACTION_POP } from '@virtuous/conductor/constants';
 import getCurrentAction from '@virtuous/conductor-helpers/getCurrentAction';
+import { UIEvents } from '@shopgate/pwa-core';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import connect from './connector';
 import styles from './style';
+import { TOGGLE_NAVIGATOR_TITLE } from '../../../../constants';
 
 /**
- * The Navigator Title component.
+ * The NavigatorTitle component.
  */
-class Title extends PureComponent {
+class NavigatorTitle extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     onClick: PropTypes.func,
@@ -20,8 +22,6 @@ class Title extends PureComponent {
   };
 
   /**
-   * The constructor.
-   * Sets the initial state from connected props.
    * @param {Object} props The component props.
    */
   constructor(props) {
@@ -29,6 +29,11 @@ class Title extends PureComponent {
 
     this.previousTitle = '';
     this.title = props.title;
+    this.state = {
+      visible: true,
+    };
+
+    UIEvents.on(TOGGLE_NAVIGATOR_TITLE, this.toggle);
   }
 
   /**
@@ -64,12 +69,21 @@ class Title extends PureComponent {
   }
 
   /**
-   * Renders the component.
-   * Displays the Title.
+   * @param {boolean} visible The next visibility state.
+   */
+  toggle = (visible) => {
+    this.setState({ visible });
+  }
+
+  /**
    * @returns {JSX}
    */
   render() {
     const transition = this.transitionClass;
+
+    if (!this.state.visible) {
+      return null;
+    }
 
     return (
       <div aria-hidden onClick={this.props.onClick}>
@@ -87,4 +101,4 @@ class Title extends PureComponent {
   }
 }
 
-export default connect(Title);
+export default connect(NavigatorTitle);

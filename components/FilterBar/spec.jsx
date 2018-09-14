@@ -6,6 +6,7 @@ import { themeConfig as mockThemeConfig } from '@shopgate/pwa-common/helpers/con
 import FilterBar from './index';
 import { getDefaultStore } from './mock';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-common-commerce/filter/actions/getFilters', () => () => ({ type: 'foo' }));
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({

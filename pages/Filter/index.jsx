@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Consume from '@shopgate/pwa-common/components/Consume';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
@@ -14,31 +14,46 @@ const map = {
 };
 
 /**
- * @returns {JSX}
+ * The filter page.
  */
-const Filter = () => (
-  <View background={colors.background}>
-    <Consume context={RouteContext} props={map}>
-      {(consumed) => {
-        const {
-          categoryId,
-          filters,
-          parentId,
-          searchPhrase,
-          visible,
-        } = consumed;
+class Filter extends PureComponent {
+  /**
+   * @param {Object} consumed The consumed context props.
+   * @returns {JSX}
+   */
+  consumeRenderer = (consumed) => {
+    if (!consumed.visible) {
+      return null;
+    }
 
-        return visible && (
-          <Content
-            activeFilters={filters}
-            parentId={parentId}
-            {...categoryId && { categoryId }}
-            {...searchPhrase && { searchPhrase }}
-          />
-        );
-      }}
-    </Consume>
-  </View>
-);
+    const {
+      categoryId,
+      filters,
+      parentId,
+      searchPhrase,
+    } = consumed;
+
+    return (
+      <Content
+        activeFilters={filters}
+        parentId={parentId}
+        {...categoryId && { categoryId }}
+        {...searchPhrase && { searchPhrase }}
+      />
+    );
+  }
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <View background={colors.background}>
+        <Consume context={RouteContext} props={map}>
+          {this.consumeRenderer}
+        </Consume>
+      </View>
+    );
+  }
+}
 
 export default Filter;

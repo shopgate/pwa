@@ -7,7 +7,7 @@ import getCurrentRoute from '@virtuous/conductor-helpers/getCurrentRoute';
 import setTitle from '@shopgate/pwa-common/actions/view/setTitle';
 import getSearchResults from '@shopgate/pwa-common-commerce/search/actions/getSearchResults';
 import getFilters from '@shopgate/pwa-common-commerce/filter/actions/getFilters';
-import toggleProgressBar from '../../components/Navigator/actions/toggleProgressBar';
+import { toggleProgressBar } from 'Components/Navigator/action-creators';
 import { searchFiltersDidUpdate$ } from './streams';
 
 /**

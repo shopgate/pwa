@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { getFiltersByHash } from '@shopgate/pwa-common-commerce/filter/selectors';
 
 /**
@@ -10,4 +11,17 @@ const mapStateToProps = (state, props) => ({
   filters: getFiltersByHash(state, props),
 });
 
-export default connect(mapStateToProps);
+/**
+ * @param {Object} next The next component props.
+ * @param {Object} prev The previous component props.
+ * @returns {boolean}
+ */
+const areStatePropsEqual = (next, prev) => {
+  if ((!prev.filters && next.filters) || (!isEqual(prev.filters, next.filters))) {
+    return false;
+  }
+
+  return true;
+};
+
+export default connect(mapStateToProps, null, null, { areStatePropsEqual });
