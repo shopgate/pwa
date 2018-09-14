@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { hasChildren, hasProducts } from '@shopgate/pwa-common-commerce/category/selectors';
+import isEqual from 'lodash/isEqual';
+import {
+  getChildCategoriesById,
+  getCurrentCategoryChildCount,
+  hasChildren,
+} from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,8 +13,9 @@ import { hasChildren, hasProducts } from '@shopgate/pwa-common-commerce/category
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  hasProducts: hasProducts(state, props),
+  categories: getChildCategoriesById(state, props),
   hasChildren: hasChildren(state, props),
+  childrenCount: getCurrentCategoryChildCount(state, props),
 });
 
 /**
@@ -18,11 +24,15 @@ const mapStateToProps = (state, props) => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (prev.hasProducts !== next.hasProducts) {
+  if (prev.hasChildren !== next.hasChildren) {
     return false;
   }
 
-  if (prev.hasChildren !== next.hasChildren) {
+  if (!isEqual(prev.categories, next.categories)) {
+    return false;
+  }
+
+  if (prev.childrenCount !== next.childrenCount) {
     return false;
   }
 

@@ -1,15 +1,13 @@
 import { connect } from 'react-redux';
-import { hasChildren, hasProducts } from '@shopgate/pwa-common-commerce/category/selectors';
+import { isRelativeProductOnList } from '@shopgate/pwa-common-commerce/favorites/selectors';
 
 /**
- * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  hasProducts: hasProducts(state, props),
-  hasChildren: hasChildren(state, props),
+  isFavorite: isRelativeProductOnList(state, props),
 });
 
 /**
@@ -18,11 +16,7 @@ const mapStateToProps = (state, props) => ({
  * @returns {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (prev.hasProducts !== next.hasProducts) {
-    return false;
-  }
-
-  if (prev.hasChildren !== next.hasChildren) {
+  if (prev.isFavorite !== next.isFavorite) {
     return false;
   }
 

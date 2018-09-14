@@ -1,33 +1,33 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import shouldUpdate from 'recompose/shouldUpdate';
 import CategoryList from 'Components/CategoryList';
 import View from 'Components/View';
 import connect from './connector';
-import inject from './injector';
 
 /**
- * @param {Object} props The component props.
- * @return {JSX}
+ * The root category page.
  */
-const RootCategory = ({ categories, open }) => (
-  <View>
-    {(open && categories) && <CategoryList categories={categories} />}
-  </View>
-);
+class RootCategory extends PureComponent {
+  static propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.shape()),
+  };
 
-RootCategory.propTypes = {
-  open: PropTypes.bool.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.shape()),
-};
+  static defaultProps = {
+    categories: null,
+  };
 
-RootCategory.defaultProps = {
-  categories: null,
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <View>
+        <CategoryList categories={this.props.categories} prerender={8} />
+      </View>
+    );
+  }
+}
 
-export default inject(connect(shouldUpdate((prev, next) => (
-  (!prev.categories && next.categories) ||
-  (!prev.open && next.open)
-))(RootCategory)));
+export default connect(RootCategory);
 
 export { RootCategory as UnwrappedRootCategory };
