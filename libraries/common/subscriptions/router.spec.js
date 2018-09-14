@@ -17,6 +17,7 @@ import { navigate$ } from '../streams';
 import { navigate } from '../action-creators';
 import subscriptions from './router';
 
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@virtuous/conductor', () => ({
   pop: jest.fn(),
   push: jest.fn(),

@@ -39,8 +39,8 @@ class NavDrawerItem extends Component {
    * @param {Object} props The component props.
    */
   handleClick = () => {
-    this.props.onClick();
     UIEvents.emit('navdrawer_close');
+    setTimeout(this.props.onClick, 300);
   };
 
   /**
