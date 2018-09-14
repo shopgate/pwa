@@ -78,6 +78,7 @@ class NavigatorSearch extends Component {
    */
   submitSearch = (event) => {
     event.preventDefault();
+    this.inputField.current.blur();
     this.props.toggleSearchField(false, true);
   }
 
