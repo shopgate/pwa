@@ -50,7 +50,7 @@ export function configureStore(reducers, subscribers) {
 /**
  * Configures a mocked store for tests.
  * @param {Function} reducers The reducers to use in the mock store.
- * @param {Array} subscribers Streams subscribers to initialize.
+ * @param {Function|Array} subscribers Streams subscribers to initialize.
  * @returns {Store}
  */
 export function createMockStore(reducers = null, subscribers = null) {
@@ -65,7 +65,7 @@ export function createMockStore(reducers = null, subscribers = null) {
   const store = mockedStore(state);
 
   if (subscribers !== null) {
-    initSubscribers(subscribers);
+    initSubscribers([].concat(subscribers));
   }
 
   return store;
