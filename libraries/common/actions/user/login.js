@@ -14,17 +14,18 @@ import {
 
 /**
  * Login the current user.
+ * @param {Object} parameters login,password or open auth payload.
+ * @param {string} strategy basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
-export default ({ login, password }) => (dispatch) => {
-  dispatch(requestLogin(login, password));
+export default (parameters, strategy = 'basic') => (dispatch) => {
+  const { login, password } = parameters;
+
+  dispatch(requestLogin(login, password, strategy));
 
   const params = {
-    strategy: 'basic',
-    parameters: {
-      login,
-      password,
-    },
+    strategy,
+    parameters,
   };
 
   new PipelineRequest(SHOPGATE_USER_LOGIN_USER)

@@ -18,12 +18,14 @@ import {
  * in order to may access it within a stream subscription.
  * @param {string} user The user name.
  * @param {string} password The user password.
+ * @param {string} strategy login strategy
  * @returns {Object} The dispatched action object.
  */
-export const requestLogin = (user, password) => ({
+export const requestLogin = (user, password, strategy = 'basic') => ({
   type: REQUEST_LOGIN,
   user,
   password,
+  strategy,
 });
 
 /**

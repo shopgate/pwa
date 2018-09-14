@@ -38,6 +38,7 @@ describe('Action Creators: user', () => {
         type: REQUEST_LOGIN,
         user,
         password,
+        strategy: 'basic',
       };
       expect(requestLogin(user, password)).toEqual(expected);
     });

@@ -20,6 +20,8 @@ const defaultAppConfig = {
   currency: 'USD',
 };
 
+export const themeName = process.env.THEME || 'theme';
+
 /**
  * Provides a default theme config as a fallback.
  * @type {Object}
