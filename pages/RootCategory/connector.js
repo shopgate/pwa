@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
  * @return {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (next.categories !== null && prev.categories === null) {
+  if (!prev.categories && next.categories) {
     return false;
   }
 
