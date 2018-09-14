@@ -1,5 +1,5 @@
 import { css } from 'glamor';
 
 export default css({
-  marginBottom: 4,
+  marginTop: 4,
 });
