@@ -42,7 +42,7 @@ class Description extends PureComponent {
                 <I18n.Text string="product.description_heading" />
               </div>
               <PlaceholderParagraph className={styles.placeholder} ready={!!html}>
-                <div className={styles.content} data-test-id={html}>
+                <div className={styles.content} data-test-id="description">
                   <HtmlSanitizer
                     settings={{
                       html,
