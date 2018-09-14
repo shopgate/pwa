@@ -296,7 +296,9 @@ exports[`<Cart> page Initial page should render a coupon 1`] = `
               name="cart.item-list"
               props={null}
             >
-              <CardList>
+              <CardList
+                className=""
+              >
                 <List
                   className=""
                 >
@@ -2294,7 +2296,9 @@ exports[`<Cart> page Initial page should render with items 1`] = `
               name="cart.item-list"
               props={null}
             >
-              <CardList>
+              <CardList
+                className=""
+              >
                 <List
                   className=""
                 >
