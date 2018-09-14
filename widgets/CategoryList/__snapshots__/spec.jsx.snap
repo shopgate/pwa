@@ -78,6 +78,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   isSelected={false}
                   key="1"
                   link="/category/31"
+                  linkState={null}
                   onClick={null}
                   rightComponent={null}
                   testId={null}
@@ -106,11 +107,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       <Link
                         href="/category/31"
                         onClick={null}
-                        state={
-                          Object {
-                            "title": "Headline",
-                          }
-                        }
+                        state={null}
                       >
                         <div />
                       </Link>
@@ -138,6 +135,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   isSelected={false}
                   key="2"
                   link="/category/32"
+                  linkState={null}
                   onClick={null}
                   rightComponent={null}
                   testId={null}
@@ -166,11 +164,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       <Link
                         href="/category/32"
                         onClick={null}
-                        state={
-                          Object {
-                            "title": "Headline",
-                          }
-                        }
+                        state={null}
                       >
                         <div />
                       </Link>

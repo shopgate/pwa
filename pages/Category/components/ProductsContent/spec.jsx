@@ -1,18 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import RootCategory from './index';
-import reducers from '../reducers';
+import reducers from 'Pages/reducers';
+import ProductsContent from './index';
 
 const store = createMockStore(reducers);
-jest.mock('../../components/View/context.js');
+jest.mock('../../../../components/View/context.js');
 
-describe('Pages: <RootCategory />', () => {
+describe('<ProductsContent />', () => {
   it('should render', () => {
-    const wrapper = shallow((
+    const wrapper = mount((
       <Provider store={store}>
-        <RootCategory />
+        <ProductsContent categoryId="1234" />
       </Provider>
     ));
     expect(wrapper).toMatchSnapshot();

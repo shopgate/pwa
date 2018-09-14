@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemFavoritesButton /> should not render when its not a favorite 1`] = `
+<Connect(ItemFavoritesButton)
+  productId="1234"
+/>
+`;
+
+exports[`<ItemFavoritesButton /> should render if its a favorite 1`] = `
+<Connect(ItemFavoritesButton)
+  isFavorite={true}
+  productId="1234"
+/>
+`;

@@ -1,17 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import Category from './index';
+import Bar from './index';
 
 const store = createMockStore();
-jest.mock('../../components/View/context.js');
+jest.mock('../../../../components/View/context.js');
 
-describe('Pages: <Category />', () => {
+describe('<Bar />', () => {
   it('should render', () => {
-    const wrapper = shallow((
+    const wrapper = mount((
       <Provider store={store}>
-        <Category />
+        <Bar />
       </Provider>
     ));
     expect(wrapper).toMatchSnapshot();
