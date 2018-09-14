@@ -4,6 +4,7 @@ import { generateResultHash, shouldFetchData } from '@shopgate/pwa-common/helper
 import { DEFAULT_SORT } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { isNumber } from '@shopgate/pwa-common/helpers/validation';
 import * as pipelines from '../constants/Pipelines';
+import buildRequestFilters from '../../filter/actions/helpers/buildRequestFilters';
 import requestProducts from '../action-creators/requestProducts';
 import receiveProducts from '../action-creators/receiveProducts';
 import errorProducts from '../action-creators/errorProducts';
@@ -14,12 +15,14 @@ import errorProducts from '../action-creators/errorProducts';
  * use them together the categoryId field has to be extracted into the filter field.
  * Then the pipeline is happy.
  * @param {Object} params The request params.
- * @param {Object} filters The current active filters.
+ * @param {Object} activeFilters The current active filters.
  * @param {boolean} includeSort Tells if the sort parameters shall be included to the request.
  * @param {boolean} includeFilters Tells if the filter parameters shall be included to the request.
  * @returns {Object} A set of compatible params.
  */
-const processParams = (params, filters, includeSort = true, includeFilters = true) => {
+const processParams = (params, activeFilters, includeSort = true, includeFilters = true) => {
+  const filters = buildRequestFilters(activeFilters);
+
   const newParams = {
     ...params,
     ...(includeFilters && filters && Object.keys(filters).length) && { filters },
