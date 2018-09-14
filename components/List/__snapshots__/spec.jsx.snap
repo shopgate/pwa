@@ -12,12 +12,12 @@ exports[`<List /> should not render invalid children 1`] = `
       className={null}
     >
       <ListItem
-        className="css-1nftllw css-jz0ijb"
+        className="css-1nftllw css-1ym3l2n"
         isSelected={false}
         key="child-0/.0"
       >
         <li
-          className="css-1p5q8vq css-1nftllw css-jz0ijb css-16gj3o1"
+          className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
         >
           <div
             className="css-1ckzvk7"
@@ -35,12 +35,12 @@ exports[`<List /> should not render invalid children 1`] = `
               title="List Item"
             >
               <Grid
-                className="css-4bx66l"
+                className="css-1qcr7hz"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="css-4bx66l css-h7r55a"
+                  className="css-1qcr7hz css-h7r55a"
                 >
                   <GridItem
                     className="css-10fxwvh"
@@ -84,12 +84,12 @@ exports[`<List /> should render a child and add styles for list items with image
       className={null}
     >
       <ListItem
-        className="css-1nftllw css-jz0ijb css-1brrprg"
+        className="css-1nftllw css-1ym3l2n css-1brrprg"
         isSelected={false}
         key="child-0/.0"
       >
         <li
-          className="css-1p5q8vq css-1nftllw css-jz0ijb css-1brrprg css-16gj3o1"
+          className="css-1p5q8vq css-1nftllw css-1ym3l2n css-1brrprg css-16gj3o1"
         >
           <div
             className="css-1ckzvk7"
@@ -107,12 +107,12 @@ exports[`<List /> should render a child and add styles for list items with image
               title="List Item"
             >
               <Grid
-                className="css-4bx66l"
+                className="css-1qcr7hz"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="css-4bx66l css-h7r55a"
+                  className="css-1qcr7hz css-h7r55a"
                 >
                   <GridItem
                     className="css-10fxwvh"
@@ -149,12 +149,12 @@ exports[`<List /> should render with two children 1`] = `
       className={null}
     >
       <ListItem
-        className="css-1nftllw css-jz0ijb"
+        className="css-1nftllw css-1ym3l2n"
         isSelected={false}
         key="child-0/.0"
       >
         <li
-          className="css-1p5q8vq css-1nftllw css-jz0ijb css-16gj3o1"
+          className="css-1p5q8vq css-1nftllw css-1ym3l2n css-16gj3o1"
         >
           <div
             className="css-1ckzvk7"
@@ -172,12 +172,12 @@ exports[`<List /> should render with two children 1`] = `
               title="List Item"
             >
               <Grid
-                className="css-4bx66l"
+                className="css-1qcr7hz"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="css-4bx66l css-h7r55a"
+                  className="css-1qcr7hz css-h7r55a"
                 >
                   <GridItem
                     className="css-10fxwvh"
@@ -221,12 +221,12 @@ exports[`<List /> should render with two children 1`] = `
               title="List Item"
             >
               <Grid
-                className="css-4bx66l"
+                className="css-1qcr7hz"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="css-4bx66l css-h7r55a"
+                  className="css-1qcr7hz css-h7r55a"
                 >
                   <GridItem
                     className="css-10fxwvh"

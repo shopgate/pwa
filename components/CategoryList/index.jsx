@@ -9,8 +9,10 @@ import List from 'Components/List';
 import styles from './style';
 
 /**
- * The category list component.
- * @param {Array} categories The categories to display.
+ * The CategoryList component.
+ * @param {Object} props The component props.
+ * @param {Array} props.categories The categories to display.
+ * @param {Array} props.categories The number of rows to prerender.
  * @returns {JSX}
  */
 const CategoryList = ({ categories, prerender }) => {
