@@ -3,7 +3,6 @@ import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
-import { isCartButtonVisible } from '../../selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -13,7 +12,6 @@ import { isCartButtonVisible } from '../../selectors';
 const mapStateToProps = state => ({
   activeCartRoute: getCurrentPathname(state) === CART_PATH,
   cartProductCount: getCartProductDisplayCount(state),
-  visible: isCartButtonVisible(state),
 });
 
 /**

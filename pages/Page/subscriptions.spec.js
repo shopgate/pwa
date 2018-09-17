@@ -19,6 +19,8 @@ import subscribe from './subscriptions';
 const mockedStore = configureStore([thunk]);
 
 const mockedResolver = jest.fn();
+
+jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
   mockedResolver(mockInstance, resolve, reject);
 }));

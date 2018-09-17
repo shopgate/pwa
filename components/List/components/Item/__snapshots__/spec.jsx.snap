@@ -7,6 +7,7 @@ exports[`<List.Item /> should render with a link 1`] = `
   isDisabled={false}
   isSelected={false}
   link="url/to/somewhere"
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
@@ -35,11 +36,7 @@ exports[`<List.Item /> should render with a link 1`] = `
       <Link
         href="url/to/somewhere"
         onClick={null}
-        state={
-          Object {
-            "title": "My Title",
-          }
-        }
+        state={null}
       >
         <div />
       </Link>
@@ -55,6 +52,7 @@ exports[`<List.Item /> should render with a right component 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={
     <span>
@@ -65,12 +63,12 @@ exports[`<List.Item /> should render with a right component 1`] = `
   title="My Title"
 >
   <Grid
-    className="css-4bx66l"
+    className="css-1qcr7hz"
     component="div"
     wrap={false}
   >
     <div
-      className="css-4bx66l css-h7r55a"
+      className="css-1qcr7hz css-h7r55a"
     >
       <GridItem
         className="css-10fxwvh"
@@ -110,18 +108,19 @@ exports[`<List.Item /> should render with a title but no image 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
   <Grid
-    className="css-4bx66l"
+    className="css-1qcr7hz"
     component="div"
     wrap={false}
   >
     <div
-      className="css-4bx66l css-h7r55a"
+      className="css-1qcr7hz css-h7r55a"
     >
       <GridItem
         className="css-10fxwvh"
@@ -152,18 +151,19 @@ exports[`<List.Item /> should render with an image 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
   <Grid
-    className="css-4bx66l"
+    className="css-1qcr7hz"
     component="div"
     wrap={false}
   >
     <div
-      className="css-4bx66l css-h7r55a"
+      className="css-1qcr7hz css-h7r55a"
     >
       <div
         className="css-1mhrjzj"
@@ -197,6 +197,7 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
   isDisabled={false}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={[Function]}
   rightComponent={null}
   testId={null}
@@ -228,12 +229,12 @@ exports[`<List.Item /> should render with an onClick element 1`] = `
           style={Object {}}
         />
         <Grid
-          className="css-4bx66l"
+          className="css-1qcr7hz"
           component="div"
           wrap={false}
         >
           <div
-            className="css-4bx66l css-h7r55a"
+            className="css-1qcr7hz css-h7r55a"
           >
             <GridItem
               className="css-10fxwvh"
@@ -262,18 +263,19 @@ exports[`<List.Item /> should render without a Glow when disabled 1`] = `
   isDisabled={true}
   isSelected={false}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
   <Grid
-    className="css-4bx66l"
+    className="css-1qcr7hz"
     component="div"
     wrap={false}
   >
     <div
-      className="css-4bx66l css-h7r55a"
+      className="css-1qcr7hz css-h7r55a"
     >
       <GridItem
         className="css-10fxwvh css-19uk9mv"
@@ -299,18 +301,19 @@ exports[`<List.Item /> should render without a Glow when selected 1`] = `
   isDisabled={false}
   isSelected={true}
   link={null}
+  linkState={null}
   onClick={null}
   rightComponent={null}
   testId={null}
   title="My Title"
 >
   <Grid
-    className="css-4bx66l css-7q9yf9"
+    className="css-1qcr7hz css-7q9yf9"
     component="div"
     wrap={false}
   >
     <div
-      className="css-4bx66l css-7q9yf9 css-h7r55a"
+      className="css-1qcr7hz css-7q9yf9 css-h7r55a"
     >
       <GridItem
         className="css-10fxwvh"

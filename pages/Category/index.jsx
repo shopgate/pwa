@@ -1,35 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import Consume from '@shopgate/pwa-common/components/Consume';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import View from 'Components/View';
 import colors from 'Styles/colors';
 import CategoryContent from './components/Content';
 
+const map = {
+  id: 'params.categoryId',
+  visible: 'visible',
+};
+
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * The category page component.
  */
-const Category = ({ id }) => (
-  <View background={colors.background}>
-    {id && <CategoryContent categoryId={id} />}
-  </View>
-);
+class Category extends PureComponent {
+  /**
+   * @param {Object} props the consumed props.
+   * @returns {JSX}
+   */
+  consumeRenderer = ({ id, visible }) => {
+    if (!visible) {
+      return null;
+    }
 
-Category.propTypes = {
-  id: PropTypes.string,
-};
+    return <CategoryContent categoryId={hex2bin(id) || null} />;
+  }
 
-Category.defaultProps = {
-  id: null,
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <View background={colors.background}>
+        <Consume context={RouteContext} props={map}>
+          {this.consumeRenderer}
+        </Consume>
+      </View>
+    );
+  }
+}
 
-export default () => (
-  <RouteContext.Consumer>
-    {({ params }) => (
-      <Category id={hex2bin(params.categoryId) || null} />
-    )}
-  </RouteContext.Consumer>
-);
-
-export { Category as UnwrappedCategory };
+export default Category;

@@ -1,6 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  NAV_BAR_NAVIGATOR_NAV_BUTTON,
+  NAV_BAR_NAVIGATOR_NAV_BUTTON_BEFORE,
+  NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import { ArrowIcon, BurgerIcon, CrossIcon } from '@shopgate/pwa-ui-shared';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { showBackButton, showCloseButton } from './helpers';
@@ -78,9 +84,15 @@ class NavButton extends Component {
    */
   render() {
     return (
-      <Button className={styles} onClick={this.handleClick}>
-        {this.icon}
-      </Button>
+      <Fragment>
+        <Portal name={NAV_BAR_NAVIGATOR_NAV_BUTTON_BEFORE} />
+        <Portal name={NAV_BAR_NAVIGATOR_NAV_BUTTON} props={{ NavButton }}>
+          <Button className={styles} onClick={this.handleClick}>
+            {this.icon}
+          </Button>
+        </Portal>
+        <Portal name={NAV_BAR_NAVIGATOR_NAV_BUTTON_AFTER} />
+      </Fragment>
     );
   }
 }
