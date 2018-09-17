@@ -1,4 +1,5 @@
 import processFilters from './processFilters';
+import buildRequestFilters from './buildRequestFilters';
 
 /**
  * Process the pipeline params to be compatible with the current API specifications.
@@ -10,7 +11,7 @@ import processFilters from './processFilters';
  * @returns {Object} A set of compatible params.
  */
 const processParams = (params, filters) => {
-  const processedFilters = processFilters(filters);
+  const processedFilters = processFilters(buildRequestFilters(filters));
 
   let newParams = {
     ...params,
