@@ -46,11 +46,12 @@ describe('AndroidGMDTest productPage', () => {
 
   it('should check for desctiption', () => {
     cy.get(els.productWithManufactruerPropProductDetailPageDescription)
+      .contains('Product with manufacture prop')
       .should('be.visible');
   });
 
   it('should check for addToCartButton', () => {
-    cy.get(els.addToCartButtonProductPage)
+    cy.get(els.addToCartButton)
       .should('be.visible');
   });
 

@@ -23,7 +23,7 @@ describe('AndroidGMDTest CartPage', () => {
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .click();
-    cy.get(els.addToCartButtonProductPage)
+    cy.get(els.addToCartButton)
       .click();
     cy.get(els.cartButton)
       .click();

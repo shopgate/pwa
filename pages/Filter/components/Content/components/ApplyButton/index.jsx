@@ -21,7 +21,7 @@ class FilterApplyButton extends PureComponent {
 
     return (
       <div className={styles}>
-        <Button flat type="primary" onClick={onClick} disabled={!active} data-test-id="applyFilterButton">
+        <Button flat type="primary" onClick={onClick} disabled={!active} testId="applyFilterButton">
           <I18n.Text string="filter.apply" />
         </Button>
       </div>

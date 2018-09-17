@@ -16,17 +16,16 @@ describe('function tests search page', () => {
       .type('product with many properties -4- {enter}');
     cy.get(els.productWithManyProps4SearchResult)
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.go('back');
     cy.get(els.searchButton)
       .should('be.visible')
       .click();
     cy.get(els.searchInput)
+      .clear()
       .type('product with many properties -3- {enter}');
     cy.get(els.productWithManyProps3SearchResult)
       .should('be.visible');
-    cy.get(els.backButton)
-      .click();
+    cy.go('back');
   });
 
   it('should search again with fitting product', () => {
@@ -37,6 +36,7 @@ describe('function tests search page', () => {
     cy.get(els.searchInput)
       .click()
       .should('be.visible')
+      .clear()
       .type('product with many properties -4-{enter}');
     cy.get(els.productWithManyProps4SearchResult)
       .should('be.visible');

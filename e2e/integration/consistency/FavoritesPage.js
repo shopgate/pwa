@@ -58,7 +58,7 @@ describe('AndroidGMDTest FavouritesPage', () => {
   });
 
   it('should check for cart button', () => {
-    cy.get(els.addToCartButtonFavoritePage)
+    cy.get(els.addToCartButton)
       .should('be.visible');
   });
 
