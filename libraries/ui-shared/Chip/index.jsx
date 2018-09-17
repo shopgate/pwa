@@ -71,7 +71,7 @@ class Chip extends Component {
     }
 
     return (
-      <Button className={styles.removeButton} onClick={this.handleRemove}>
+      <Button className={styles.removeButton} onClick={this.handleRemove} testId="removeFilter">
         <CrossIcon size={16} color={this.crossFontColor} />
       </Button>
     );
@@ -85,6 +85,7 @@ class Chip extends Component {
       <div
         ref={(element) => { this.elementRef = element; }}
         className={this.wrapperStyle}
+        data-test-id={this.props.id}
       >
         {this.renderRemoveIcon()}
         <Button className={styles.name} onClick={this.props.onClick}>
