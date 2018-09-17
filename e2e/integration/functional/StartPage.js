@@ -44,7 +44,7 @@ describe('functional test start page', () => {
     cy.go('back');
   });
 
-  it('should check for product list grid', () => {
+  it('should check for product grid grid', () => {
     cy.get(els.productGridWidgetSecondProduct)
       .scrollIntoView()
       .should('be.visible')
@@ -52,15 +52,5 @@ describe('functional test start page', () => {
     cy.get(els.productWithManyProps4ProductPagName)
       .should('be.visible');
     cy.go('back');
-  });
-
-  it('should check for product list', () => {
-    cy.wait(1000);
-    cy.get(els.productListWidgetSecondProduct)
-      .scrollIntoView()
-      .should('be.visible')
-      .click();
-    cy.get(els.productWithManyProps4ProductPagName)
-      .should('be.visible');
   });
 });

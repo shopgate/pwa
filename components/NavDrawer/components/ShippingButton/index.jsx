@@ -26,6 +26,7 @@ const ShippingButton = ({ navigate }) => (
         label={LABEL}
         icon={LocalShippingIcon}
         onClick={navigate(SHIPPING_PATH, LABEL)}
+        testId="navDrawerShippingButton"
       />
     </Portal>
     <Portal name={NAV_MENU_SHIPPING_AFTER} />

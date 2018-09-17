@@ -84,12 +84,12 @@ class Selector extends Component {
    * @returns {JSX}
    */
   render() {
-    const { values } = this.props;
+    const { values, id } = this.props;
     const { selected } = this.state;
 
     return (
       <Item>
-        <Accordion renderLabel={this.renderLabel}>
+        <Accordion renderLabel={this.renderLabel} testId={id}>
           <div className={styles.content}>
             {values.map(value => (
               <ValueButton

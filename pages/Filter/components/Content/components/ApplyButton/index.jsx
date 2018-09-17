@@ -10,7 +10,7 @@ import styles from './style';
  */
 const FilterApplyButton = ({ active, onClick }) => (
   <div className={styles}>
-    <Button flat type="primary" onClick={onClick} disabled={!active}>
+    <Button flat type="primary" onClick={onClick} disabled={!active} testId="applyFilterButton">
       <I18n.Text string="filter.apply" />
     </Button>
   </div>

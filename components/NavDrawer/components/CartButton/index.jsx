@@ -27,6 +27,7 @@ const CartButton = ({ navigate }) => (
         label={LABEL}
         icon={ShoppingCartIcon}
         onClick={navigate(CART_PATH, LABEL)}
+        testId="navDrawerCartButton"
       />
     </Portal>
     <Portal name={NAV_MENU_CART_AFTER} />

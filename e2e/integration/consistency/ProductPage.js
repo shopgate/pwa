@@ -50,7 +50,7 @@ describe('AndroidGMDTest productPage', () => {
   });
 
   it('should check for addToCartButton', () => {
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartButtonProductPage)
       .should('be.visible');
   });
 

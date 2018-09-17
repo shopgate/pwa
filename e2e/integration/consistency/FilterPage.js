@@ -29,12 +29,8 @@ describe('AndroidGMDTest filter page', () => {
       .click();
     cy.get(els.filterAttributeManufacturer1)
       .should('be.visible')
+      .first()
       .click();
-  });
-
-  it('should check for clear all button', () => {
-    cy.get(els.clearAllButton)
-      .should('be.visible');
   });
 
   it('should check for filter aplly button', () => {

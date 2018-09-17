@@ -4,7 +4,7 @@ import els from '../../elements/de';
 
 // TODO: refactor when bugs solved
 
-describe('AndroidGMDTest FavoritesPage', () => {
+describe('AndroidGMDTest FavouritesPage', () => {
   it('it should check for favorites placeholder', () => {
     cy.visit('');
 
@@ -58,7 +58,7 @@ describe('AndroidGMDTest FavoritesPage', () => {
   });
 
   it('should check for cart button', () => {
-    cy.get(els.addToCartButton)
+    cy.get(els.addToCartButtonFavoritePage)
       .should('be.visible');
   });
 

@@ -26,6 +26,7 @@ const PrivacyButton = ({ navigate }) => (
         label={LABEL}
         icon={SecurityIcon}
         onClick={navigate(PRIVACY_PATH, LABEL)}
+        testId="navDrawerPrivacyButton"
       />
     </Portal>
     <Portal name={NAV_MENU_PRIVACY_AFTER} />

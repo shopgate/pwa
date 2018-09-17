@@ -26,6 +26,7 @@ const ReturnsButton = ({ navigate }) => (
         label={LABEL}
         icon={InfoIcon}
         onClick={navigate(PAYMENT_PATH, LABEL)}
+        testId="navDrawerImprintButton"
       />
     </Portal>
     <Portal name={NAV_MENU_IMPRINT_AFTER} />

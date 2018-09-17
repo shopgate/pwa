@@ -37,6 +37,7 @@ class ValueButton extends PureComponent {
         })}
         value={id}
         onClick={onClick}
+        data-test-id={id}
       >
         {label}
       </button>

@@ -26,6 +26,7 @@ const NavDrawerHeader = ({ email, name, openLogin }) => {
           background: colors.primary,
           color: colors.light,
         }}
+        testId="navDrawerLoginButton"
       />
     );
   }

@@ -26,6 +26,7 @@ const ReturnsButton = ({ navigate }) => (
         label={LABEL}
         icon={DescriptionIcon}
         onClick={navigate(PAYMENT_PATH, LABEL)}
+        testId="navDrawerReturnsButton"
       />
     </Portal>
     <Portal name={NAV_MENU_RETURN_POLICY_AFTER} />

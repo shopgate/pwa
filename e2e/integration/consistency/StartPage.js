@@ -93,13 +93,6 @@ describe('AndroidGMDTest startPage', () => {
       .should('be.visible');
   });
 
-  it('should check for product list widget', () => {
-    // Check for product list widget
-    cy.get(els.productListWidgetSecondProduct)
-      .scrollIntoView()
-      .should('be.visible');
-  });
-
   it('should check for category list widget', () => {
     // Check for category list widget and first category
     cy.get(els.categoryListWidgetFirstProduct)
