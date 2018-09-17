@@ -10,16 +10,7 @@ import Content from './components/Content';
 import PaymentBar from './index';
 
 const mockedStore = configureStore();
-
-/**
- * @param {Object} obj Some object.
- * @returns {Object}
- */
-function mockedSizeMe(obj) {
-  return obj;
-}
-
-jest.mock('react-sizeme', () => () => mockedSizeMe);
+jest.mock('../../../../components/View/context.js');
 
 /**
  * Mock the connect() methods of the relevant sub-components.
@@ -133,15 +124,15 @@ describe('<PaymentBar />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should be visible if prop isVisible is true', () => {
-    const wrapper = renderComponent({ isVisible: true });
+  it('should be visible if prop visible is true', () => {
+    const wrapper = renderComponent({ visible: true });
 
     expect(wrapper.find('FormatPrice').exists()).toBeTruthy();
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should not be visible if prop isVisible is false', () => {
-    const wrapper = renderComponent({ isVisible: false });
+  it('should not be visible if prop visible is false', () => {
+    const wrapper = renderComponent({ visible: false });
 
     expect(wrapper.find('FormatPrice').exists()).toBeFalsy();
     expect(wrapper).toMatchSnapshot();
