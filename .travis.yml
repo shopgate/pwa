@@ -4,8 +4,7 @@ git:
 before_install:
 - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
 - git submodule update --init --recursive
-- cd themes/gmd && mkdir extensions && touch reducers.js && cat 'export default null;' > reducers.js
-- cd themes/ios11 && mkdir extensions && touch reducers.js && cat 'export default null;' > reducers.js
+- bash scripts/buildExtensionIndex.sh
 language: node_js
 node_js:
 - "10"
