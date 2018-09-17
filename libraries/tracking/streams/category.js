@@ -58,7 +58,7 @@ const categoryDataPreloaded$ = categoryIdChanged$
  * Emits when the category route comes active again after a legacy page was active.
  */
 const categoryRouteReappeared$ = pwaDidAppear$
-  .filter(({ pathname }) => pathname.startsWith(CATEGORY_PATH));
+  .filter(({ action }) => action.route.pattern.startsWith(CATEGORY_PATH));
 
 /**
  * Emits when a category or root category is ready to be tracked,

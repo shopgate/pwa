@@ -2,7 +2,6 @@ import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { pwaDidAppear$ } from './app';
 import { isPWAVisible } from '../helpers';
@@ -12,11 +11,10 @@ import { isPWAVisible } from '../helpers';
  * @type {Array}
  */
 export const blacklistedPaths = [
-  SEARCH_PATH,
   CATEGORY_PATH,
-  ITEM_PATH,
-  CHECKOUT_PATH,
   FAVORITES_PATH,
+  ITEM_PATH,
+  SEARCH_PATH,
 ];
 
 /**
@@ -25,5 +23,4 @@ export const blacklistedPaths = [
 export const pagesAreReady$ = routeDidEnter$
   .filter(() => isPWAVisible())
   .merge(pwaDidAppear$)
-  .filter(({ pathname }) =>
-    !blacklistedPaths.some(path => (!pathname ? false : pathname.startsWith(path))));
+  .filter(({ action }) => !blacklistedPaths.find(path => action.route.pattern.startsWith(path)));

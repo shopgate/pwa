@@ -18,7 +18,7 @@ const searchIsActive$ = searchDidEnter$
  * Emits when the search route comes active again after a legacy page was active.
  */
 const searchRouteReappeared$ = pwaDidAppear$
-  .filter(({ pathname }) => pathname.startsWith(SEARCH_PATH));
+  .filter(({ action }) => action.route.pattern === SEARCH_PATH);
 
 /**
  * Emits when search results are received.
