@@ -10,7 +10,7 @@ const wrapper = css({
   transition: 'transform .25s cubic-bezier(0, 0, .2, 1)',
   width: '100%',
   willChange: 'transform',
-  zIndex: 1,
+  zIndex: 51,
 });
 
 const box = css({

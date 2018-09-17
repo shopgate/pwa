@@ -2,10 +2,16 @@
 export FORCE_COLOR = true
 
 NPM_PACKAGES = commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
-EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native
+EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
 UTILS = eslint-config unit-tests e2e
 THEMES = gmd ios11
 REPO_VERSION = ''
+
+setup:
+		sgconnect init
+		git submodule init
+		git submodule update
+		make clean
 
 checkout-develop:
 		git checkout develop
@@ -50,6 +56,7 @@ endif
 clean:
 		find . -name "*error.log" -type f -delete
 		find . -name "*debug.log" -type f -delete
+		make clean-build
 		lerna clean --yes
 		rm -f ./.git/hooks/pre-commit
 		rm -rf ./node_modules/
