@@ -1,32 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import Consume from '@shopgate/pwa-common/components/Consume';
 import View from 'Components/View';
 import { RouteContext } from '@virtuous/react-conductor/Router';
 import Content from './components/Content';
 
+const map = {
+  searchPhrase: 'query.s',
+  visible: 'visible',
+};
+
 /**
- * The Search component.
- * @param {string} props.searchPhrase The search phrase.
- * @return {JSX}
+ * The search page component.
  */
-const Search = ({ searchPhrase }) => (
-  <View>
-    {searchPhrase && <Content searchPhrase={searchPhrase} />}
-  </View>
-);
+class Search extends PureComponent {
+  /**
+   * @param {Object} props the consumed props.
+   * @returns {JSX}
+   */
+  consumeRenderer = ({ searchPhrase, visible }) => {
+    if (!visible) {
+      return null;
+    }
 
-Search.propTypes = {
-  searchPhrase: PropTypes.string,
-};
+    return <Content searchPhrase={searchPhrase} />;
+  }
 
-Search.defaultProps = {
-  searchPhrase: null,
-};
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    return (
+      <View>
+        <Consume context={RouteContext} props={map}>
+          {this.consumeRenderer}
+        </Consume>
+      </View>
+    );
+  }
+}
 
-export default () => (
-  <RouteContext.Consumer>
-    {({ query }) => (
-      <Search searchPhrase={query.s || null} />
-    )}
-  </RouteContext.Consumer>
-);
+export default Search;
