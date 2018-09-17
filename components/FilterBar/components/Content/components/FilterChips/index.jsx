@@ -53,7 +53,7 @@ class FilterChips extends Component {
         // Remove the index from the selected filter.
         const newSelected = {
           ...selected,
-          value: selected.value.filter(entry => entry !== value),
+          value: selected.value.filter(entry => entry.id !== value),
         };
 
         const newFilters = {
@@ -112,29 +112,18 @@ class FilterChips extends Component {
 
           break;
         }
-        case FILTER_TYPE_MULTISELECT:
+        default:
           filter.value.forEach(value => chips.push((
             <Chip
-              id={value}
-              key={`filter-${value}`}
-              onRemove={() => this.handleRemove(filter.id, value)}
+              id={value.id}
+              key={`filter-${value.id}`}
+              onRemove={() => this.handleRemove(filter.id, value.id)}
               onClick={openFilters}
             >
-              {`${filter.label}: ${value}`}
+              {`${filter.label}: ${value.label}`}
             </Chip>
           )));
-          break;
-        default:
-          chips.push((
-            <Chip
-              id={filter.id}
-              key={`filter-${key}`}
-              onRemove={this.handleRemove}
-              onClick={openFilters}
-            >
-              {`${filter.label}: ${filter.value}`}
-            </Chip>
-          ));
+
           break;
       }
     });

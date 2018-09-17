@@ -85,9 +85,13 @@ class FilterContent extends PureComponent {
    * @param {string} id The filter is to look for.
    * @returns {Array}
    */
-  getFilterValue = id => (
-    this.state.filters[id] ? this.state.filters[id].value : this.initialFilters[id].value
-  )
+  getFilterValue = (id) => {
+    const value = this.state.filters[id]
+      ? this.state.filters[id].value
+      : this.initialFilters[id].value;
+
+    return value.map(entry => entry.id || entry);
+  }
 
   /**
    * @param {string} id The id of the filter to add.
@@ -110,11 +114,26 @@ class FilterContent extends PureComponent {
       return;
     }
 
+    let stateValue = value;
+
+    if (Array.isArray(filter.values)) {
+      // The value only contains a list of ids. Within the route state id and label is required.
+      stateValue = value.map((valueId) => {
+        const match = filter.values.find(entry => entry.id === valueId);
+
+        return {
+          id: match.id,
+          label: match.label,
+        };
+      });
+    }
+
     this.add(id, {
       id,
       type: filter.type,
       label: filter.label,
-      value,
+      value: stateValue,
+      ...(filter.source && { source: filter.source }),
     });
   }
 
