@@ -4,17 +4,19 @@ import List from '@shopgate/pwa-common/components/List';
 import Item from './components/Item';
 
 /**
- * The main card list component.
+ * The CardList component.
  */
 class CardList extends Component {
   static Item = Item;
 
   static propTypes = {
     children: PropTypes.node,
+    className: PropTypes.oneOfType([PropTypes.string, PropTypes.shape()]),
   };
 
   static defaultProps = {
     children: null,
+    className: '',
   };
 
   /**
@@ -22,14 +24,14 @@ class CardList extends Component {
    * @return {JSX}
    */
   render() {
-    const { children } = this.props;
+    const { children, className } = this.props;
 
     if (!Children.count(children)) {
       return null;
     }
 
     return (
-      <List>
+      <List className={className}>
         {Children.map(children, (child) => {
           if (!isValidElement(child)) {
             return null;
