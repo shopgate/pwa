@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import ProgressBar from '@shopgate/pwa-ui-shared/ProgressBar';
@@ -14,7 +14,7 @@ import connect from './connector';
 /**
  * The ProgressBarContainer component
  */
-class ProgressBarContainer extends Component {
+class ProgressBarContainer extends PureComponent {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
   };
@@ -30,15 +30,6 @@ class ProgressBarContainer extends Component {
     };
 
     UIEvents.on(TOGGLE_PROGRESSBAR, this.toggle);
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.visible !== nextState.visible;
   }
 
   /**

@@ -11,7 +11,7 @@ const defaultState = {
 };
 
 /**
- * The Coupon Field component.
+ * The CouponField component.
  */
 class CouponField extends Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class CouponField extends Component {
     isIos: PropTypes.bool,
     isLoading: PropTypes.bool,
     isSupported: PropTypes.bool,
-    onToggleFocus: PropTypes.func,
+    onFocus: PropTypes.func,
   };
 
   static defaultProps = {
@@ -28,7 +28,7 @@ class CouponField extends Component {
     isIos: false,
     isLoading: false,
     isSupported: true,
-    onToggleFocus: () => {},
+    onFocus: () => {},
   };
 
   state = defaultState;
@@ -114,11 +114,8 @@ class CouponField extends Component {
       }, CART_INPUT_AUTO_SCROLL_DELAY);
     }
 
-    this.setState({
-      isFocused,
-    });
-
-    this.props.onToggleFocus(isFocused);
+    this.setState({ isFocused });
+    this.props.onFocus(isFocused);
   };
 
   reset = () => {
@@ -126,7 +123,6 @@ class CouponField extends Component {
   }
 
   /**
-   * Renders the component.
    * @returns {JSX}
    */
   render() {
