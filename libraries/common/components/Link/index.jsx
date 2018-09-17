@@ -39,7 +39,7 @@ class Link extends Component {
 
     const params = {
       pathname: this.props.href,
-      state: this.props.state,
+      state: this.props.state || {},
     };
 
     if (this.props.replace) {
