@@ -1,31 +1,35 @@
-import { createStore } from './specHelper';
+import { createMockStore } from '@shopgate/pwa-common/store';
 import { pwaDidAppear } from '../action-creators';
 import { pwaDidAppear$ } from './app';
 
-describe.skip('App streams', () => {
-  let mockedDidAppearSubscriber;
+let mockedPattern;
+jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedPattern }));
+
+describe('App streams', () => {
+  let pwaDidAppearSubscriber;
+  let dispatch;
 
   beforeEach(() => {
-    mockedDidAppearSubscriber = jest.fn();
-    pwaDidAppear$.subscribe(mockedDidAppearSubscriber);
+    mockedPattern = '';
+    jest.clearAllMocks();
+    ({ dispatch } = createMockStore());
+    pwaDidAppearSubscriber = jest.fn();
+    pwaDidAppear$.subscribe(pwaDidAppearSubscriber);
   });
 
   describe('pwaDidAppear$', () => {
     it('should emit when the pwaDidAppear action is dispatched', () => {
-      const mockedPathname = '/somepath';
-      const { dispatch } = createStore(mockedPathname);
-
+      mockedPattern = '/somepath';
       dispatch(pwaDidAppear());
 
-      expect(mockedDidAppearSubscriber).toHaveBeenCalledTimes(1);
-      const [[{ pathname }]] = mockedDidAppearSubscriber.mock.calls;
-      expect(pathname).toEqual(mockedPathname);
+      expect(pwaDidAppearSubscriber).toHaveBeenCalledTimes(1);
+      const [[{ action }]] = pwaDidAppearSubscriber.mock.calls;
+      expect(action.route.pattern).toEqual(mockedPattern);
     });
 
     it('should not emit when another action is dispatched', () => {
-      const { dispatch } = createStore();
       dispatch({ type: 'someaction' });
-      expect(mockedDidAppearSubscriber).not.toHaveBeenCalled();
+      expect(pwaDidAppearSubscriber).not.toHaveBeenCalled();
     });
   });
 });

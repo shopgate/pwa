@@ -1,5 +1,4 @@
-import configureStore from 'redux-mock-store';
-import middleware from '@shopgate/pwa-common/store/middelwares/streams';
+import { createMockStore } from '@shopgate/pwa-common/store';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
 import { setPWAVisibleState } from '../helpers';
 import { pwaDidAppear } from '../action-creators';
@@ -11,17 +10,29 @@ import {
 let mockedPattern;
 jest.mock('@virtuous/conductor-helpers/getCurrentRoute', () => () => ({ pattern: mockedPattern }));
 
-const mockedStore = configureStore([middleware]);
-const store = mockedStore();
+/**
+ * A wrapper for the route did enter action creator. Beside returning the action object of the
+ * original action creator, it also updates the pattern of the mocked current route.
+ * @param {string} pattern The route pattern.
+ * @return {Object} The dispatched action object.
+ */
+const routeDidEnterWrapped = (pattern) => {
+  mockedPattern = pattern;
+  return routeDidEnter({
+    pattern,
+  });
+};
 
 describe('Page streams', () => {
-  const { dispatch } = store;
   let pagesAreReadySubscriber;
+  let dispatch;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    store.clearActions();
+
     mockedPattern = '';
+    ({ dispatch } = createMockStore());
+
     pagesAreReadySubscriber = jest.fn();
     pagesAreReady$.subscribe(pagesAreReadySubscriber);
   });
@@ -32,44 +43,31 @@ describe('Page streams', () => {
     });
 
     it('should emit when a route is active which is not blacklisted', () => {
-      const pattern = '/somepath';
-      dispatch(routeDidEnter({
-        pattern,
-      }));
-
+      dispatch(routeDidEnterWrapped('/somepath'));
       expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
     });
 
     it('should not emit when a blacklisted route is active', () => {
-      const pattern = blacklistedPaths[0];
-      dispatch(routeDidEnter({
-        pattern,
-      }));
-
+      dispatch(routeDidEnterWrapped(blacklistedPaths[0]));
       expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
     });
 
     it('should not emit when a route is active, but the PWA is not visible', () => {
       setPWAVisibleState(false);
-
-      const pattern = '/somepath';
-      dispatch(routeDidEnter({
-        pattern,
-      }));
-
-      expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(0);
+      dispatch(routeDidEnterWrapped('/somepath'));
+      expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
     });
   });
 
   describe('coming back from legacy pages', () => {
     it('should emit when pwaDidAppear is dispatched and a not blacklisted route is active', () => {
-      mockedPattern = '/somepath';
+      dispatch(routeDidEnterWrapped('/somepath'));
       dispatch(pwaDidAppear());
       expect(pagesAreReadySubscriber).toHaveBeenCalledTimes(1);
     });
 
     it('should not emit when pwaDidAppear is dispatched and a blacklisted is active', () => {
-      [mockedPattern] = blacklistedPaths;
+      dispatch(routeDidEnterWrapped(blacklistedPaths[0]));
       dispatch(pwaDidAppear());
       expect(pagesAreReadySubscriber).not.toHaveBeenCalled();
     });
