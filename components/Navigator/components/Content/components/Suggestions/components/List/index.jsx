@@ -45,6 +45,7 @@ class SuggestionList extends Component {
             onClick={this.handleClick}
             key={suggestion}
             value={suggestion}
+            data-test-id={`searchSuggestion ${suggestion}`}
           >
             {suggestion}
           </button>

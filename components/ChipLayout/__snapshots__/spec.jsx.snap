@@ -23,16 +23,17 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       >
         <div
           className="css-bpa25c"
+          data-test-id="some-id"
         >
           <Button
             className="css-hazg82"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="removeFilter"
           >
             <button
               className="css-hazg82 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
             >
@@ -183,16 +184,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       >
         <div
           className="css-bpa25c"
+          data-test-id="some-id"
         >
           <Button
             className="css-hazg82"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="removeFilter"
           >
             <button
               className="css-hazg82 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
             >
@@ -253,16 +255,17 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       >
         <div
           className="css-bpa25c"
+          data-test-id="some-other-id"
         >
           <Button
             className="css-hazg82"
             disabled={false}
             onClick={[Function]}
-            testId="Button"
+            testId="removeFilter"
           >
             <button
               className="css-hazg82 css-1rn65c0"
-              data-test-id="Button"
+              data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
             >

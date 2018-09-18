@@ -5,9 +5,10 @@ import { logOutUser } from '../../helper/user';
 
 describe('AndroidGMDTest reviews page', () => {
   it('should check for review name', () => {
-    logOutUser();
+    cy.visit('');
 
     cy.get(els.allProductCategory)
+      .first()
       .click();
     cy.get(els.productWithManyProps4GridViewName)
       .should('be.visible')
@@ -56,11 +57,6 @@ describe('AndroidGMDTest reviews page', () => {
 
   it('should check for send review button', () => {
     cy.get(els.writeReviewSendButton)
-      .should('be.visible');
-  });
-
-  it('should check for back button', () => {
-    cy.get(els.backButton)
       .should('be.visible');
     logOutUser();
   });

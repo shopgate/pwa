@@ -42,7 +42,6 @@ const ProductCard = ({
         <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
       </div>
     )}
-    {/* <FavoritesButton className={styles.wishlist} productId={product.id} /> */}
     {(!(hidePrice && hideRating)) && (
       <div className={styles.details}>
         {!hideRating && product.rating && product.rating.average > 0 && (

@@ -188,6 +188,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -236,6 +237,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://other.example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -350,6 +352,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
           >
             <div
               className="css-c6ki83 css-63oe3q"
+              data-test-id="link: http://example.com"
               onClick={[Function]}
               role="link"
             >
@@ -653,6 +656,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -725,6 +729,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -773,6 +778,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -1002,6 +1008,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -1050,6 +1057,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >
@@ -1098,6 +1106,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
                             >
                               <div
                                 className="css-c6ki83 css-63oe3q"
+                                data-test-id="link: http://example.com"
                                 onClick={[Function]}
                                 role="link"
                               >

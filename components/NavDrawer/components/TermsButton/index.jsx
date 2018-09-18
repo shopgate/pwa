@@ -26,6 +26,7 @@ const TermsButton = ({ navigate }) => (
         label={LABEL}
         icon={DescriptionIcon}
         onClick={navigate(PAYMENT_PATH, LABEL)}
+        testId="navDrawerTermsButton"
       />
     </Portal>
     <Portal name={NAV_MENU_TERMS_AFTER} />
