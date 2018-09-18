@@ -154,8 +154,18 @@ class BrowserConnector {
    * @param {Object} response The server response.
    * @return {BrowserConnector}
    */
-  processResponse(response) {
+  processResponse = (response) => {
     const { cmds = [] } = response || {};
+
+    if (cmds.length === 0) {
+      if (this.command.c === appCommands.COMMAND_SEND_PIPELINE_REQUEST) {
+        event.call(`pipelineResponse:${this.command.p.serial}`, [
+          response.error || null,
+          this.command.p.serial,
+          (!response.error ? response : undefined),
+        ]);
+      }
+    }
 
     // Process the response commands.
     cmds.forEach((command) => {
