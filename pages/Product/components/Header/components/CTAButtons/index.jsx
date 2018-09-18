@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FavoritesButton from 'Components/FavoritesButton';
+import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import styles from './style';
 import connect from './connector';
 
@@ -18,6 +18,7 @@ const CTAButtons = props => (
       productId={props.productId}
       className={styles.favButton}
       rippleClassName={styles.ripple}
+      noShadow
     />
   </div>
 );

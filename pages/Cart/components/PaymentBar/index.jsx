@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sheet from 'Components/Sheet';
+import Sheet from '@shopgate/pwa-ui-shared/Sheet';
 import Content from './components/Content';
 import styles from './style';
 

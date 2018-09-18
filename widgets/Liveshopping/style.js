@@ -49,14 +49,23 @@ const priceBase = css({
 
 const priceStriked = css({
   ...priceBase,
-  fontSize: '0.875rem',
+  fontSize: '0.8rem',
 }).toString();
 
 const price = css({
   ...priceBase,
   color: colors.primary,
-  fontSize: '1.25rem',
+  fontSize: '1.15rem',
   lineHeight: 1,
+}).toString();
+
+const cardInnerBox = css({
+  borderRadius: variables.borderRadius.default,
+}).toString();
+
+const updateImageContainer = css({
+  borderTopLeftRadius: variables.borderRadius.default,
+  borderBottomLeftRadius: variables.borderRadius.default,
 }).toString();
 
 const cardTitle = css({
@@ -92,4 +101,6 @@ export default {
   cardsWrapper,
   cardTitle,
   timer,
+  cardInnerBox,
+  updateImageContainer,
 };

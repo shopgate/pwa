@@ -6,7 +6,9 @@ const sliderContainer = css({
   marginLeft: 'auto',
   marginRight: 'auto',
   position: 'relative',
-  paddingBottom: 8,
+  // Must be 2px more than card's box shadow,
+  // (otherwise there's a white artifact on the iOS visible)
+  paddingBottom: 10,
 }).toString();
 
 const slider = css({
@@ -60,6 +62,7 @@ const card = css({
   background: '#FFF',
   height: '100%',
   margin: '0px 8px',
+  borderRadius: variables.borderRadius.default,
 }).toString();
 
 const headline = css({

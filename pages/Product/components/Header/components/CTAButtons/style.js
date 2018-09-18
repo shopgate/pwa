@@ -13,7 +13,7 @@ const buttons = css({
 }).toString();
 
 const favButton = css({
-  zIndex: 15, // Prevents the icons to be visible outside of the circle
+  zIndex: 1, // Prevents the icons to be visible outside of the circle
   fontSize: iconSize,
 }).toString();
 

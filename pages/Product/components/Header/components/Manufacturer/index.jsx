@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceholderLabel from 'Components/PlaceholderLabel';
-import BaseManufacturer from 'Components/Manufacturer';
+import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
+import BaseManufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import connect from './connector';
 import styles from './style';
 
@@ -11,7 +11,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Manufacturer = ({ manufacturer }) => (
-  <div className={styles.infoContainer}>
+  <div className={styles.infoContainer} data-test-id={`manufacturer: ${manufacturer}`}>
     <PlaceholderLabel className={styles.placeholder} ready={(manufacturer !== null)}>
       <BaseManufacturer text={(manufacturer || '')} />
     </PlaceholderLabel>

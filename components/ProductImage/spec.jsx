@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Image from '@shopgate/pwa-common/components/Image';
-import Placeholder from 'Components/icons/PlaceholderIcon';
+import Placeholder from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import ProductImage from './index';
 
 describe('<ProductImage />', () => {

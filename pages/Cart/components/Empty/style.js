@@ -5,7 +5,7 @@ import variables from 'Styles/variables';
 const wrapper = css({
   display: 'flex',
   flexDirection: 'column',
-  background: colors.shade8,
+  background: colors.light,
   textAlign: 'center',
   height: '100%',
 }).toString();

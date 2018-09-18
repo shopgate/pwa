@@ -10,7 +10,6 @@ import 'Styles/fonts';
 import 'Extensions/portals';
 import React from 'react';
 import { render } from 'react-dom';
-import onload from '@shopgate/pwa-core/commands/onload';
 import Pages from './pages';
 
-render(<Pages />, document.getElementById('root'), onload);
+render(<Pages />, document.getElementById('root'));

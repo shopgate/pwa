@@ -34,7 +34,8 @@ const slider = css({
 const slide = css({
   position: 'relative',
   width: '100%',
-  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
 }).toString();
 
 const sliderStyles = {
@@ -53,10 +54,16 @@ const sliderStyles = {
   }).toString(),
 };
 
+const image = css({
+  width: '100vw',
+  height: '100vw',
+}).toString();
+
 export default {
   container,
   navButton,
   slider,
   slide,
   sliderStyles,
+  image,
 };

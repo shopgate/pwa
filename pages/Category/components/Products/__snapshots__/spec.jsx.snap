@@ -4,6 +4,7 @@ exports[`<Products> should render the grid 1`] = `
 <Products
   getProducts={[Function]}
   handleGetProducts={[Function]}
+  hash={null}
   products={Array []}
   totalProductCount={null}
 >
@@ -12,6 +13,7 @@ exports[`<Products> should render the grid 1`] = `
     handleGetProducts={[Function]}
     infiniteLoad={true}
     products={Array []}
+    requestHash={null}
     totalProductCount={null}
   >
     <InfiniteContainer
@@ -22,6 +24,7 @@ exports[`<Products> should render the grid 1`] = `
       loader={[Function]}
       loadingIndicator={<LoadingIndicator />}
       preloadMultiplier={2}
+      requestHash={null}
       totalItems={null}
       wrapper={[Function]}
     >
@@ -30,12 +33,14 @@ exports[`<Products> should render the grid 1`] = `
           <Grid
             className="css-ifln79"
             component="ul"
+            data-test-id="productGrid"
             itemScope={true}
             itemType="http://schema.org/ItemList"
             wrap={true}
           >
             <ul
               className="css-ifln79 css-h7r55a css-u7q1iu"
+              data-test-id="productGrid"
               itemScope={true}
               itemType="http://schema.org/ItemList"
             />
@@ -43,22 +48,23 @@ exports[`<Products> should render the grid 1`] = `
         </div>
         <LoadingIndicator>
           <div
-            className="css-emdeqc"
+            className="css-1aid7je"
           >
             <IndicatorCircle
-              color="#00c3e6"
+              color="#5ccee3"
+              paused={false}
               size={32}
               strokeWidth={3}
             >
               <svg
-                className="css-17zev8s"
+                className="css-12jxe4c"
                 height={32}
                 viewBox="25 25 50 50"
                 width={32}
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <circle
-                  className="css-2z29ld"
+                  className="css-1ei1yr2"
                   cx="50"
                   cy="50"
                   r="20"

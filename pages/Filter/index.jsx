@@ -9,7 +9,7 @@ import {
   FILTER_TYPE_MULTISELECT,
 } from '@shopgate/pwa-common-commerce/filter/constants';
 import View from 'Components/View';
-import CardList from 'Components/CardList';
+import CardList from '@shopgate/pwa-ui-shared/CardList';
 import PriceRangeSlider from './components/PriceRangeSlider';
 import ListItem from './components/ListItem';
 import ClearAllButton from './components/ClearAllButton';
@@ -84,12 +84,17 @@ class Filter extends Component {
           }, 300),
         };
       }
-      default:
       case FILTER_TYPE_MULTISELECT:
         return {
           ...filter,
           url: `${filter.url}${this.props.queryParams}`,
-          active: temporaryFilter ? temporaryFilter.values : null,
+          active: temporaryFilter ? temporaryFilter.valueLabels : null,
+        };
+      default:
+        return {
+          ...filter,
+          url: `${filter.url}${this.props.queryParams}`,
+          active: temporaryFilter ? temporaryFilter.valueLabel : null,
         };
     }
   };

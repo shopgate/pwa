@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import HomeIcon from 'Components/icons/HomeIcon';
+import HomeIcon from '@shopgate/pwa-ui-ios/icons/HomeIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
@@ -29,7 +29,7 @@ class TabBarHomeAction extends Component {
 
     const link = new ParsedLink(INDEX_PATH);
     link.open();
-  }
+  };
 
   /**
    * Renders the component.
@@ -38,7 +38,13 @@ class TabBarHomeAction extends Component {
   render() {
     return (
       <Fragment>
-        <Portal name={portals.TAB_BAR_HOME_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_HOME_BEFORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
         <Portal
           name={portals.TAB_BAR_HOME}
           props={{
@@ -56,7 +62,13 @@ class TabBarHomeAction extends Component {
             onClick={this.handleClick}
           />
         </Portal>
-        <Portal name={portals.TAB_BAR_HOME_AFTER} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_HOME_AFTER}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
       </Fragment>
     );
   }

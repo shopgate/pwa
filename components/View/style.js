@@ -14,21 +14,22 @@ const container = css({
  * @param {boolean} hasNavigator Whether to add the top offset when the navigator is visible.
  * @param {boolean} isFullscreen Whether remove all offsets,
  *                  so that it's really fullscreen (including the notch).
- * @param {number} keyboardHeight The space that is taken by the keyboard.
  * @param {boolean} considerPaddingTop Whether to consider the natively set inset
- *                  and compensate itor not.
+ *                  and compensate it or not.
+ * @param {boolean} noScroll Wheather the view should be scrollable or not.
  * @return {string} The content style class.
  */
 const content = (
   hasNavigator = true,
   isFullscreen = false,
-  keyboardHeight = 0,
-  considerPaddingTop = false
+  considerPaddingTop = false,
+  noScroll = false
 ) => {
-  const navHeight = hasNavigator ? variables.navigator.height : 0;
+  const navHeight = hasNavigator ? variables.navbar.height : 0;
+  const overflow = noScroll ? 'hidden' : 'auto';
 
   return css({
-    overflow: 'auto',
+    overflow,
     overflowScrolling: 'touch',
     WebkitOverflowScrolling: 'touch',
     width: '100%',
@@ -36,11 +37,10 @@ const content = (
     top: isFullscreen ? 0 : `calc(${navHeight}px + var(--safe-area-inset-top))`,
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
+    paddingBottom: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
     bottom: 0,
     ...considerPaddingTop && {
-      marginBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px + var(--safe-area-inset-bottom))`,
-      bottom: -24,
+      marginBottom: 'calc(var(--tabbar-height) + var(--safe-area-inset-bottom))',
     },
   }).toString();
 };

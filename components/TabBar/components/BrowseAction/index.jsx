@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ParsedLink from '@shopgate/pwa-common/components/Router/helpers/parsed-link';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
-import BrowseIcon from 'Components/icons/BrowseIcon';
+import BrowseIcon from '@shopgate/pwa-ui-shared/icons/BrowseIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import styles from './style';
@@ -29,7 +29,7 @@ class TabBarBrowseAction extends Component {
 
     const link = new ParsedLink(BROWSE_PATH);
     link.open();
-  }
+  };
 
   /**
    * Renders the component.
@@ -38,7 +38,13 @@ class TabBarBrowseAction extends Component {
   render() {
     return (
       <Fragment>
-        <Portal name={portals.TAB_BAR_BROWSE_BEFORE} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_BROWSE_BEFORE}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
         <Portal
           name={portals.TAB_BAR_BROWSE}
           props={{
@@ -56,7 +62,13 @@ class TabBarBrowseAction extends Component {
             onClick={this.handleClick}
           />
         </Portal>
-        <Portal name={portals.TAB_BAR_BROWSE_AFTER} props={this.props} />
+        <Portal
+          name={portals.TAB_BAR_BROWSE_AFTER}
+          props={{
+            ...this.props,
+            TabBarAction,
+          }}
+        />
       </Fragment>
     );
   }

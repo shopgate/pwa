@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import event from '@shopgate/pwa-core/classes/Event';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import {
+  PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE,
+  PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY,
+  PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER,
+} from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { EVENT_ADD_TO_CART_MISSING_VARIANT } from '@shopgate/pwa-common-commerce/cart/constants';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RouteGuard from '@shopgate/pwa-common/components/Router/components/RouteGuard';
 import Picker from 'Components/Picker';
-import Availability from 'Components/Availability';
+import Availability from '@shopgate/pwa-ui-shared/Availability';
 import VariantPickerButton from './components/VariantPickerButton';
 import ProductVariants from './components/ProductVariants';
 import connect from './connector';
@@ -38,15 +44,41 @@ const createPickerItem = (value) => {
     rightComponent: null,
   };
 
-  if (value.availability) {
-    result.rightComponent = (
-      <Availability
-        text={value.availability.text}
-        state={value.availability.state}
-        className={styles.availability}
+  const { text, state } = value.availability || {};
+
+  result.rightComponent = (
+    <Fragment>
+      <Portal
+        name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE}
+        props={{
+          text,
+          state,
+        }}
       />
-    );
-  }
+      <Portal
+        name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY}
+        props={{
+          text,
+          state,
+        }}
+      >
+        { value.availability &&
+          <Availability
+            text={text}
+            state={state}
+            className={styles.availability}
+          />
+        }
+      </Portal>
+      <Portal
+        name={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_AFTER}
+        props={{
+          text,
+          state,
+        }}
+      />
+    </Fragment>
+  );
 
   return result;
 };
@@ -215,23 +247,25 @@ class VariantSelects extends Component {
     };
 
     return (
-      <Picker
-        buttonComponent={VariantPickerButton}
-        buttonProps={buttonProps}
-        items={items}
-        value={item.value}
-        placeholder={
-          <I18n.Text string="product.pick_an_attribute" params={[item.label]} />
-        }
-        label={item.label}
-        onClose={this.handleOnClose}
-        onChange={value => this.handleOnChange(item.id, value)}
-        key={item.id}
-        disabled={item.disabled}
-        duration={duration}
-        ref={(element) => { this.pickers[item.id] = element; }}
-        isOpen={this.state.openPickerId === item.id}
-      />
+      <div data-test-id={item.label}>
+        <Picker
+          buttonComponent={VariantPickerButton}
+          buttonProps={buttonProps}
+          items={items}
+          value={item.value}
+          placeholder={
+            <I18n.Text string="product.pick_an_attribute" params={[item.label]} />
+          }
+          label={item.label}
+          onClose={this.handleOnClose}
+          onChange={value => this.handleOnChange(item.id, value)}
+          key={item.id}
+          disabled={item.disabled}
+          duration={duration}
+          ref={(element) => { this.pickers[item.id] = element; }}
+          isOpen={this.state.openPickerId === item.id}
+        />
+      </div>
     );
   }
 
@@ -268,7 +302,7 @@ class VariantSelects extends Component {
     }
 
     return (
-      <div>
+      <div data-test-id="variantsPicker">
         <RouteGuard>
           {this.createPickers(selection)}
         </RouteGuard>

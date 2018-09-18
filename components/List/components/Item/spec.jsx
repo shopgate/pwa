@@ -1,16 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Link from '@shopgate/pwa-common/components/Router/components/Link';
-import Glow from 'Components/Glow';
+import Glow from '@shopgate/pwa-ui-shared/Glow';
 import List from '../../index';
 
-describe.skip('<List.Item />', () => {
+describe('<List.Item />', () => {
   const title = 'My Title';
 
-  it('should render with a title', () => {
+  it('should render with a title but no image', () => {
     const wrapper = mount(<List.Item title={title} />);
 
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('img').exists()).toBeFalsy();
   });
 
   it('should render with an image', () => {
@@ -18,7 +19,8 @@ describe.skip('<List.Item />', () => {
 
     const wrapper = mount(<List.Item title={title} image={image} />);
 
-    expect(wrapper.find('img').length).toEqual(1);
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('img').exists()).toBeTruthy();
   });
 
   it('should render with a right component', () => {
@@ -37,31 +39,62 @@ describe.skip('<List.Item />', () => {
     const wrapper = mount(<List.Item title={title} isSelected />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Glow).length).toEqual(0);
+    expect(wrapper.find(Glow).exists()).toBeFalsy();
   });
 
   it('should render without a Glow when disabled', () => {
     const wrapper = mount(<List.Item title={title} isDisabled />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Glow).length).toEqual(0);
+    expect(wrapper.find(Glow).exists()).toBeFalsy();
   });
 
   it('should render with a link', () => {
     const wrapper = mount(<List.Item title={title} link="url/to/somewhere" />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Link).length).toEqual(1);
+    expect(wrapper.find(Link).exists()).toBeTruthy();
   });
 
   it('should render with an onClick element', () => {
     const spy = jest.fn();
 
-    const wrapper = mount(<List.Item title={title} onClick={spy} />);
+    // eslint-disable-next-line require-jsdoc
+    const clickHandler = () => {
+      /**
+       * The spy can't be assigned directly to the event, since the snapshot gets too big
+       * and the test execution is heavily slowed down.
+       */
+      spy();
+    };
+
+    const wrapper = mount(<List.Item title={title} onClick={clickHandler} />);
 
     wrapper.simulate('click');
 
     expect(wrapper).toMatchSnapshot();
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should update the component when the isDisabled prop changed', () => {
+    const wrapper = mount(<List.Item title={title} isDisabled />);
+    const props = wrapper.props();
+    const updated = wrapper.instance().shouldComponentUpdate({
+      ...props,
+      isDisabled: false,
+    });
+
+    expect(updated).toBe(true);
+  });
+
+  it('should update the component when the isSelected prop changed', () => {
+    const wrapper = mount(<List.Item title={title} isSelected />);
+    const props = wrapper.props();
+    const updated = wrapper.instance().shouldComponentUpdate({
+      ...props,
+      isSelected: false,
+    });
+
+    expect(updated).toBe(true);
   });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { mount,shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import cloneDeep from 'lodash/cloneDeep';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
@@ -15,6 +15,7 @@ jest.mock('@shopgate/pwa-core/classes/PipelineRequest', () => mockedPipelineRequ
 
 /**
  * Creates component
+ * @param {Object} state State
  * @return {ReactWrapper}
  */
 const createComponent = (state) => {

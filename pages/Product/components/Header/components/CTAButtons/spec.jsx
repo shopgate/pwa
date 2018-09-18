@@ -3,10 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
-
-import {
-  mockedState,
-} from './mock';
+import { mockedState } from './mock';
 
 describe('CTAs (product header)', () => {
   let store;

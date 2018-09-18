@@ -43,7 +43,7 @@
   },
   "price": {
     "from": "Ab {price}",
-    "range": "Preisspanne von {fromPrice} bis {toPrice}",
+    "range": "Preis von {fromPrice} bis {toPrice}",
     "tier": {
       "set": "{from} Stück: {price}",
       "range": "{from} oder mehr: {price}"
@@ -60,6 +60,10 @@
     "go_to_cart": "Warenkorb"
   },
   "category": {
+    "error": {
+      "title": "Ups",
+      "not_found": "Kategorie nicht gefunden"
+    },
     "no_result": {
       "heading": "Ups!",
       "body": "Keine Produkte gefunden."
@@ -84,7 +88,7 @@
   },
   "modal": {
     "confirm": "Bestätigen",
-    "dismiss": "Okay",
+    "dismiss": "Abbrechen",
     "ok": "Okay",
     "title_error": "Ups!",
     "body_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
@@ -100,7 +104,8 @@
     "coupon_code": "Code",
     "default_coupon_label": "Gutschein",
     "coupon_was_added": "Gutschein wurde hinzugefügt!",
-    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein"
+    "coupons_not_supported": "Lösen Sie Gutscheine und Geschenkkarten im nächsten Schritt ein",
+    "free_shipping": "Kostenloser Versand"
   },
   "login": {
     "headline": "Willkommen!",
@@ -120,6 +125,7 @@
     "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
+    "favorites": "Merkliste",
     "my_orders": "Meine Bestellungen",
     "cart": "Warenkorb",
     "shipping": "Versandarten",

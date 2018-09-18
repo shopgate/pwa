@@ -7,8 +7,8 @@ import {
 } from '@shopgate/pwa-common/constants/ActionTypes';
 import Button from '@shopgate/pwa-common/components/Button';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import ArrowIcon from 'Components/icons/ArrowIcon';
-import CrossIcon from 'Components/icons/CrossIcon';
+import ArrowIcon from '@shopgate/pwa-ui-shared/icons/ArrowIcon';
+import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import connect from './connector';
 import {
   NAV_STATE_INDEX,
@@ -105,7 +105,7 @@ class NavButton extends Component {
     if (this.props.filterOpen || this.state.type === NAV_STATE_BACK) {
       this.props.goBackHistory();
     }
-  }
+  };
 
   /**
    * Returns the icon for the button.
@@ -143,7 +143,7 @@ class NavButton extends Component {
         className={styles.button}
         onClick={this.handleClick}
       >
-        <div className={styles.buttonContent}>
+        <div className={styles.buttonContent} data-test-id="backButton">
           {Icon}
         </div>
       </Button>
