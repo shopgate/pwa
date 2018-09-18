@@ -75,6 +75,7 @@ exports[`<Header /> should render empty 1`] = `
               >
                 <div
                   className="css-c6ki83 css-1us3hnd"
+                  data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
                   role="link"
                 >
@@ -492,6 +493,7 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 <div
                   className="css-c6ki83 css-1us3hnd"
+                  data-test-id="link: /item/666f6f/write_review"
                   onClick={[Function]}
                   role="link"
                 >
