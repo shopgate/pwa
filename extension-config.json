@@ -152,6 +152,15 @@
         "path": "/v1/%(shopId)s",
         "key": "currencyId"
       }
+    },
+    "showGmdMenuSubHeaders": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": false,
+      "params": {
+        "type": "json",
+        "label": "Show GMD menu headers"
+      }
     }
   }
 }

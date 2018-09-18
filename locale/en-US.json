@@ -116,6 +116,7 @@
   },
   "navigation": {
     "login_register": "Login / Register",
+    "your_account": "Your Account",
     "home": "Home",
     "categories": "Categories",
     "favorites": "Favorites",
@@ -126,9 +127,13 @@
     "payment": "Payment methods",
     "terms": "Terms",
     "privacy": "Privacy policy",
-    "return_policy": "Return policy",
     "welcome_message": "Welcome {name}",
-    "logout": "Sign out"
+    "return_policy": "Return policy",
+    "logout": "Sign out",
+    "menuSubHeader": {
+      "more": "More",
+      "about": "About us"
+    }
   },
   "reviews": {
     "rating": "Rating",
