@@ -71,7 +71,7 @@ const Pages = () => (
             <Route path={`${ORDERS_PATH}`} component={routes.Orders} />
             <Route path={`${ITEM_PATH}/:productId/write_review/`} component={routes.WriteReview} />
           </AuthRoutes>
-          
+
           <Portal name={APP_ROUTES} props={{ View }} />
         </Viewport>
       </ThemeContext.Provider>

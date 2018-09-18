@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import Headline from 'Components/Headline';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import LoggedIn from './components/LoggedIn';
 import LoggedOut from './components/LoggedOut';
@@ -34,7 +33,6 @@ const UserMenu = ({
   return (
     <Fragment>
       { /* When user is logged in this menu is shown on the bottom */}
-      { isLoggedIn && <Headline small text="navigation.your_account" /> }
       {/* USER MENU */}
       <Portal
         name={portals.USER_MENU_CONTAINER_BEFORE}
