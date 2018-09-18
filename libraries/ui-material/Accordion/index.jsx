@@ -8,7 +8,7 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Accordion = ({ renderLabel, children }) => {
+const Accordion = ({ renderLabel, children, testId }) => {
   if (!renderLabel || !children) {
     return null;
   }
@@ -17,7 +17,12 @@ const Accordion = ({ renderLabel, children }) => {
     <AccordionContainer>
       {({ handleOpen, handleClose, open }) => (
         <Fragment>
-          <div onClick={open ? handleClose : handleOpen} className={styles.toggle} aria-hidden>
+          <div
+            onClick={open ? handleClose : handleOpen}
+            className={styles.toggle}
+            data-test-id={testId}
+            aria-hidden
+          >
             {renderLabel({ open })}
             <div className={styles.chevronContainer}>
               <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
@@ -35,6 +40,11 @@ const Accordion = ({ renderLabel, children }) => {
 Accordion.propTypes = {
   children: PropTypes.node.isRequired,
   renderLabel: PropTypes.func.isRequired,
+  testId: PropTypes.string,
+};
+
+Accordion.defaultProps = {
+  testId: null,
 };
 
 export default Accordion;
