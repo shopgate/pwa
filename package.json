@@ -25,6 +25,7 @@
     }
   },
   "dependencies": {
+<<<<<<< HEAD
     "@shopgate/pwa-common": "6.0.0-beta.13",
     "@shopgate/pwa-common-commerce": "6.0.0-beta.13",
     "@shopgate/pwa-core": "6.0.0-beta.13",

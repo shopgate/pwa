@@ -17,6 +17,9 @@ import ReturnsButton from './components/ReturnsButton';
 import ImprintButton from './components/ImprintButton';
 import LogoutButton from './components/LogoutButton';
 
+// TODO: Add submenu header support
+// const { showGmdMenuSubHeaders = false } = appConfig;
+
 /**
  * @returns {JSX}
  */

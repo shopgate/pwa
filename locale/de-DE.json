@@ -114,6 +114,7 @@
   },
   "navigation": {
     "login_register": "Anmelden",
+    "your_account": "Mein Konto",
     "home": "Startseite",
     "categories": "Kategorien",
     "favorites": "Merkliste",
@@ -124,9 +125,13 @@
     "payment": "Zahlungsarten",
     "terms": "AGB",
     "privacy": "Datenschutz",
-    "return_policy": "Widerrufsbelehrung",
     "welcome_message": "Hallo {name}",
-    "logout": "Abmelden"
+    "return_policy": "Widerrufsbelehrung",
+    "logout": "Abmelden",
+    "menuSubHeader": {
+      "more": "Mehr",
+      "about": "Über uns"
+    }
   },
   "reviews": {
     "rating": "Bewertung",
