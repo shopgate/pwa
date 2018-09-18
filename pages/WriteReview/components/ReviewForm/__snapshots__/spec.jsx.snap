@@ -277,6 +277,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 <ErrorText
                   className="css-c6548q"
                   errorText=""
+                  translate={true}
                   validationError={null}
                 >
                   <div
@@ -297,6 +298,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
             errorText=""
             hintText=""
             id="author"
+            isControlled={false}
             label="reviews.review_form_author"
             multiLine={false}
             name="author"
@@ -306,11 +308,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
             onValidate={[Function]}
             password={false}
             setRef={[Function]}
+            translateErrorText={true}
             type="text"
             value=""
           >
             <div
-              className="css-1vjh8yv "
+              className="css-e4z0u6 "
             >
               <Hint
                 hintText=""
@@ -352,6 +355,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
               </Label>
               <FormElement
                 id="author"
+                isControlled={false}
                 multiLine={false}
                 name="author"
                 onChange={[Function]}
@@ -366,6 +370,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 <Component
                   className="css-keangt"
                   id="author"
+                  isControlled={false}
                   multiLine={false}
                   name="author"
                   onChange={[Function]}
@@ -384,6 +389,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     className="css-keangt"
                     disabled={false}
                     id="author"
+                    isControlled={false}
                     multiLine={false}
                     name="author"
                     onChange={[Function]}
@@ -433,6 +439,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
               <ErrorText
                 className=""
                 errorText=""
+                translate={true}
                 validationError={null}
               >
                 <div
@@ -452,6 +459,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
             errorText=""
             hintText=""
             id="title"
+            isControlled={false}
             label="reviews.review_form_title"
             multiLine={false}
             name="title"
@@ -461,11 +469,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
             onValidate={[Function]}
             password={false}
             setRef={[Function]}
+            translateErrorText={true}
             type="text"
             value=""
           >
             <div
-              className="css-1vjh8yv "
+              className="css-e4z0u6 "
             >
               <Hint
                 hintText=""
@@ -507,6 +516,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
               </Label>
               <FormElement
                 id="title"
+                isControlled={false}
                 multiLine={false}
                 name="title"
                 onChange={[Function]}
@@ -521,6 +531,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 <Component
                   className="css-keangt"
                   id="title"
+                  isControlled={false}
                   multiLine={false}
                   name="title"
                   onChange={[Function]}
@@ -539,6 +550,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     className="css-keangt"
                     disabled={false}
                     id="title"
+                    isControlled={false}
                     multiLine={false}
                     name="title"
                     onChange={[Function]}
@@ -588,6 +600,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
               <ErrorText
                 className=""
                 errorText=""
+                translate={true}
                 validationError={null}
               >
                 <div
@@ -607,6 +620,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
             errorText=""
             hintText=""
             id="review"
+            isControlled={false}
             label="reviews.review_form_text"
             multiLine={true}
             name="review"
@@ -616,6 +630,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
             onValidate={[Function]}
             password={false}
             setRef={[Function]}
+            translateErrorText={true}
             type="text"
             value=""
           >
@@ -662,6 +677,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
               </Label>
               <FormElement
                 id="review"
+                isControlled={false}
                 multiLine={true}
                 name="review"
                 onChange={[Function]}
@@ -676,6 +692,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 <Component
                   className="css-16r2m5c"
                   id="review"
+                  isControlled={false}
                   multiLine={true}
                   name="review"
                   onChange={[Function]}
@@ -694,6 +711,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     className="css-16r2m5c"
                     disabled={false}
                     id="review"
+                    isControlled={false}
                     multiLine={true}
                     name="review"
                     onChange={[Function]}
@@ -741,6 +759,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
               <ErrorText
                 className=""
                 errorText=""
+                translate={true}
                 validationError={null}
               >
                 <div
